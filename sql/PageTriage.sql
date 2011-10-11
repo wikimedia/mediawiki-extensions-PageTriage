@@ -2,12 +2,12 @@
 -- mapping table for users to revisions
 -- this information persists forever.
 CREATE TABLE /*_*/pagetriage (
-	ptr_user_id int UNSIGNED NOT NULL,
+	ptr_user int UNSIGNED NOT NULL,
 	ptr_recentchanges_id int NOT NULL,
 	ptr_timestamp varbinary(14) NOT NULL
 ) /*$wgDBTableOptions*/;
 
-CREATE UNIQUE INDEX /*i*/ptr_user_rc ON /*_*/pagetriage (ptr_user_id,ptr_recentchanges_id);
+CREATE UNIQUE INDEX /*i*/ptr_user_rc ON /*_*/pagetriage (ptr_user,ptr_recentchanges_id);
 
 -- this stores when a page was checked.  we'll be interested in that sometimes.
 CREATE INDEX /*i*/ptr_timestamp ON /*_*/pagetriage (ptr_timestamp);
@@ -18,9 +18,9 @@ CREATE INDEX /*i*/ptr_timestamp ON /*_*/pagetriage (ptr_timestamp);
 -- If it's cleared, it'll lead to edit conflicts for a few minutes but it's not a big deal.
 CREATE TABLE /*_*/pagetriage_checkouts (
 	ptc_id int UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	ptc_user_id int UNSIGNED NOT NULL,
+	ptc_user int UNSIGNED NOT NULL,
 	ptc_recentchanges_id int NOT NULL,	
 	ptc_timestamp varbinary(14) NOT NULL
 ) /*$wgDBTableOptions*/;
 
-CREATE UNIQUE INDEX /*i*/ptc_user_rc ON /*_*/pagetriage_checkouts (ptc_user_id,ptc_recentchanges_id);
+CREATE UNIQUE INDEX /*i*/ptc_user_rc ON /*_*/pagetriage_checkouts (ptc_user,ptc_recentchanges_id);
