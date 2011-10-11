@@ -1,4 +1,4 @@
-<?
+<?php
 if ( !defined( 'MEDIAWIKI' ) ) {
 	echo "PageTriage extension\n";
 	exit( 1 );

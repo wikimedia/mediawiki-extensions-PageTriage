@@ -1,4 +1,4 @@
-<?
+<?php
 
 class SpecialPageTriageList extends SpecialPage {
 
