@@ -36,8 +36,17 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'efPageTriageSchemaUpdates';
  * @param $updater DatabaseUpdater
  * @return bool
  */
-function efPageTriageSchemaUpdates( $updater ) {
+function efPageTriageSchemaUpdates( $updater = null ) {
 	$base = dirname( __FILE__ ) . "/sql";
-	$updater->addExtensionTable( 'pagetriage', "$base/PageTriage.sql" );
+	if ( $updater === null ) {
+		global $wgDBtype, $wgExtNewTables, $wgExtNewFields;
+		if ( $wgDBtype == 'mysql' ) {
+			$wgExtNewTables[] = array( 'pagetriage', $base . '/PageTriage.sql' );
+		}
+	} else {
+		if ( $updater->getDB()->getType() == 'mysql' ) {
+			$updater->addExtensionTable( 'pagetriage', "$base/PageTriage.sql" );
+		}
+	}
 	return true;
 }
