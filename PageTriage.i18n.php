@@ -12,8 +12,9 @@ $messages = array();
  * @author Ryan Kaldari
  */
 $messages['en'] = array(
-	'pagetriage-desc' => 'Facilitates reviwing and approving new articles',
+	'pagetriage-desc' => 'Facilitates reviewing and approving new pages',
 	'pagetriage' => 'Page Triage',
+	'pagetriagelist' => 'Page Triage List',
 );
 
 /**

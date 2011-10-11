@@ -21,12 +21,14 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname( __FILE__ ) . '/';
 
-$wgAutoloadClasses['SpecialPageTriage'] = $dir . 'SpecialPageTriage.php';
-$wgAutoloadClasses['SpecialPageTriageList'] = $dir . 'SpecialPageTriageList.php';
 $wgExtensionMessagesFiles['PageTriage'] = $dir . 'PageTriage.i18n.php';
 $wgExtensionAliasesFiles['PageTriage'] = $dir . 'PageTriage.alias.php';
+
+$wgAutoloadClasses['SpecialPageTriage'] = $dir . 'SpecialPageTriage.php';
 $wgSpecialPages['PageTriage'] = 'SpecialPageTriage';
 $wgSpecialPageGroups['PageTriage'] = 'changes';
+
+$wgAutoloadClasses['SpecialPageTriageList'] = $dir . 'SpecialPageTriageList.php';
 $wgSpecialPages['PageTriageList'] = 'SpecialPageTriageList';
 $wgSpecialPageGroups['PageTriageList'] = 'changes';
 
@@ -50,3 +52,10 @@ function efPageTriageSchemaUpdates( $updater = null ) {
 	}
 	return true;
 }
+
+// Register ResourceLoader modules
+$wgResourceModules['ext.pageTriage.core'] = array(
+	'localBasePath' => dirname( __FILE__ ),
+	'remoteExtPath' => 'PageTriage',
+	'scripts' => 'ext.pageTriage.core.js'
+);
