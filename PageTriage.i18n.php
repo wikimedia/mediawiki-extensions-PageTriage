@@ -15,3 +15,10 @@ $messages['en'] = array(
 	'pagetriage-desc' => 'Facilitates reviwing and approving new articles',
 	'pagetriage' => 'Page Triage',
 );
+
+/**
+ * Message documentation (Message documentation)
+ */
+$messages['qqq'] = array(
+	'pagetriage-desc' => '{{desc}}',
+);

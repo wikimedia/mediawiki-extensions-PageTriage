@@ -26,3 +26,14 @@ $wgExtensionMessagesFiles['PageTriage'] = $dir . 'PageTriage.i18n.php';
 $wgExtensionAliasesFiles['PageTriage'] = $dir . 'PageTriage.alias.php';
 $wgSpecialPages['PageTriage'] = 'SpecialPageTriage';
 $wgSpecialPageGroups['PageTriage'] = 'changes';
+
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'efPageTriageSchemaUpdates';
+
+/**
+ * @param $updater DatabaseUpdater
+ * @return bool
+ */
+function efPageTriageSchemaUpdates( $updater ) {
+	$base = dirname( __FILE__ ) . "/sql";
+	$updater->addExtensionTable( 'pagetriage', "$base/PageTriage.sql" );
+}
