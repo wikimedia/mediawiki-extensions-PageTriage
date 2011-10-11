@@ -13,6 +13,7 @@ $specialPageAliases = array();
  */
 $specialPageAliases['en'] = array(
 	'PageTriage' => array( 'PageTriage' ),
+	'PageTriageList' => array( 'PageTriageList' ),
 );
 
 /**
