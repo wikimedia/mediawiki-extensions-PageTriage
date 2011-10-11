@@ -22,10 +22,13 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 
 $wgAutoloadClasses['SpecialPageTriage'] = $dir . 'SpecialPageTriage.php';
+$wgAutoloadClasses['SpecialPageTriageList'] = $dir . 'SpecialPageTriageList.php';
 $wgExtensionMessagesFiles['PageTriage'] = $dir . 'PageTriage.i18n.php';
 $wgExtensionAliasesFiles['PageTriage'] = $dir . 'PageTriage.alias.php';
 $wgSpecialPages['PageTriage'] = 'SpecialPageTriage';
 $wgSpecialPageGroups['PageTriage'] = 'changes';
+$wgSpecialPages['PageTriageList'] = 'SpecialPageTriageList';
+$wgSpecialPageGroups['PageTriageList'] = 'changes';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efPageTriageSchemaUpdates';
 
