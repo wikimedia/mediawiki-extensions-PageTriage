@@ -13,8 +13,8 @@ $messages = array();
  */
 $messages['en'] = array(
 	'pagetriage-desc' => 'Facilitates reviewing and approving new pages',
-	'pagetriage' => 'Page Triage',
-	'pagetriagelist' => 'Page Triage List',
+	'pagetriage' => 'Page triage',
+	'pagetriagelist' => 'Page triage list',
 );
 
 /**
