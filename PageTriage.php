@@ -36,4 +36,5 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'efPageTriageSchemaUpdates';
 function efPageTriageSchemaUpdates( $updater ) {
 	$base = dirname( __FILE__ ) . "/sql";
 	$updater->addExtensionTable( 'pagetriage', "$base/PageTriage.sql" );
+	return true;
 }
