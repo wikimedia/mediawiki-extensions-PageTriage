@@ -15,6 +15,7 @@ $messages['en'] = array(
 	'pagetriage-desc' => 'Facilitates reviewing and approving new pages',
 	'pagetriage' => 'Page triage',
 	'pagetriagelist' => 'Page triage list',
+	'pagetriage-api-invalidid' => 'The ID you provided ($1) is not valid.',
 );
 
 /**
@@ -22,4 +23,5 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'pagetriage-desc' => '{{desc}}',
+	'pagetriage-api-invalidid' => 'Invalid title error message for pagetriage API',
 );

@@ -23,4 +23,8 @@ CREATE TABLE /*_*/pagetriage_checkouts (
 	ptc_timestamp varbinary(14) NOT NULL
 ) /*$wgDBTableOptions*/;
 
-CREATE UNIQUE INDEX /*i*/ptc_user_rc ON /*_*/pagetriage_checkouts (ptc_user,ptc_recentchanges_id);
+-- this index is for retrieving data
+CREATE INDEX /*i*/ptc_user_rc ON /*_*/pagetriage_checkouts (ptc_user,ptc_recentchanges_id);
+
+-- this index is for enforcing one checkout per page.
+CREATE UNIQUE INDEX /*i*/ptc_recentchanges_id ON /*_*/pagetriage_checkouts (ptc_recentchanges_id);
