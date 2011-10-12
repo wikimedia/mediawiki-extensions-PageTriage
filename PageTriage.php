@@ -32,7 +32,7 @@ $wgAutoloadClasses['SpecialPageTriageList'] = $dir . 'SpecialPageTriageList.php'
 $wgSpecialPages['PageTriageList'] = 'SpecialPageTriageList';
 $wgSpecialPageGroups['PageTriageList'] = 'changes';
 
-$wgAutoloadClasses['ApiWikiLove'] = $dir . 'api/ApiWikiLove.php';
+$wgAutoloadClasses['ApiQueryPageTriage'] = $dir . 'api/ApiQueryPageTriage.php';
 
 // api modules
 $wgAPIModules['pagetriage'] = 'ApiQueryPageTriage';

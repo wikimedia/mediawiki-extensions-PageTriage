@@ -1,42 +1,40 @@
 ( function( $ ) { 
 
-var	$currentArticle = 'Hello World'; // the title of the current article being reviewed
+// These vars are hard coded for testing/development, but should be fetched from the PageTriage API
+var	$currentArticle = 'Hello World';
+var $testArticleId = 1;
 	
 $.pageTriage = {
-	tagArticle: function() {
-		var tagsToApply = new Array;
-		$.each( $( '#ptr-checkboxes input:checkbox' ), function( index, value ) {
-			if ( $( this ).is( ':checked' ) ) {
-				// Add it to the list
-			}
-		} );
-		
+
+	requestPage: function() {
 		var sendData = {
-			'action': 'edit',
-			'title': $currentArticle,
-			'text' : $newText,
-			'token': mw.user.tokens.get( 'editToken' ), // MW 1.18 and later
-			'summary': 'Triaging the page',
-			'notminor': true
+			'action': 'pagetriage',
+			'mode': 'checkout',
+			'format': 'json',
+			'id' : $testArticleId
 		};
 
 		$.ajax( {
 			'url': mw.util.wikiScript( 'api' ),
 			'data': sendData,
 			'dataType': 'json',
-			'type': 'POST'
+			'type': 'GET',
+			'success': function( data ) {
+				var pageTitle = $currentArticle; // TODO: Get this from the API data instead
+				$.pageTriage.loadPage( pageTitle );
+			}
 		} );
 	},
 
-	loadPage: function() {
+	loadPage: function( pageTitle ) {
 	
 		// Get some info about the latest revision of the article
 		var sendData = {
 			'action': 'query',
 			'prop': 'revisions',
-			'titles': $currentArticle,
+			'titles': pageTitle,
 			'rvlimit': 1,
-			'rvprop': 'timestamp',
+			'rvprop': 'timestamp', // Add some other properties here as needed
 			'format': 'json'
 		};
 		$.ajax( {
@@ -64,8 +62,39 @@ $.pageTriage = {
 			+ '/index.php?title=' + encodeURIComponent( $currentArticle ) + '&action=render'
 		);
 		
+	},
+	
+	tagPage: function() {
+		var tagsToApply = new Array;
+		$.each( $( '#ptr-checkboxes input:checkbox' ), function( index, value ) {
+			if ( $( this ).is( ':checked' ) ) {
+				// Add it to the list
+			}
+		} );
+		
+		// Build the new version of the article with tags added.
+		
+		var sendData = {
+			'action': 'edit',
+			'title': $currentArticle,
+			'text' : $newText,
+			'token': mw.user.tokens.get( 'editToken' ), // MW 1.18 and later
+			'summary': 'Triaging the page',
+			'notminor': true
+		};
+
+		$.ajax( {
+			'url': mw.util.wikiScript( 'api' ),
+			'data': sendData,
+			'dataType': 'json',
+			'type': 'POST',
+			'success': function( data ) {
+				// Record the triaging and start the process over again.
+			}
+		} );
 	}
+	
 };
 
-$( document ).ready( $.pageTriage.loadPage );
+$( document ).ready( $.pageTriage.requestPage );
 } ) ( jQuery );

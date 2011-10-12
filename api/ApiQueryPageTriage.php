@@ -48,7 +48,7 @@ class ApiQueryPageTriage extends ApiBase {
 		// expire old checkouts.
 		// TODO: make the time configurable.
 		wfDebug( __METHOD__ . " expiring PageTriage checkouts older than 15 minutes\n" );
-		$dbw = $this->repo->getMasterDb();
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete(
 			'pagetriage_checkouts',
 			'ptc_timestamp < ' . $dbw->timestamp( time() - 15 * 60 ),
@@ -100,7 +100,7 @@ class ApiQueryPageTriage extends ApiBase {
 	public function getAllowedParams() {
 		return array(
 			'id' => array(
-				ApiBase::PARAM_REQUIRED => true,
+				ApiBase::PARAM_TYPE => 'integer',
 			),
 			'mode' => array(
 				ApiBase::PARAM_DFLT => 'checkout',
