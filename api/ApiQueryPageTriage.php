@@ -39,7 +39,7 @@ class ApiQueryPageTriage extends ApiBase {
 		$userId = $context->getUser()->getId();
 
 		$params = $this->extractRequestParams();
-		$action = $params['action'];
+		$mode = $params['mode'];
 
 		if( !preg_match('/^\D+$/', $params['id'] ) ) {
 			$this->dieUsageMsg( array( 'pagetriage-api-invalidid', $params['id'] ) );
@@ -57,7 +57,7 @@ class ApiQueryPageTriage extends ApiBase {
 
 		$res = $this->getResult();
 
-		if( $action === 'checkout' ) {
+		if( $mode === 'checkout' ) {
 			// the unique index on ptc_recentchanges_id ensures that this will fail if there's an existing row.
 			// doing it this way allows for atomic checking w/o starting a transaction.
 			//
@@ -82,7 +82,7 @@ class ApiQueryPageTriage extends ApiBase {
 			} else {
 				$res->addValue( 'pagetriage', 'result', 'already-checked-out' );				
 			}			
-		} elseif ( $action === 'checkin' ) {
+		} elseif ( $mode === 'checkin' ) {
 			// delete this user's row, if any.
 			$dbw->delete(
 				'pagetriage_checkouts',
@@ -102,7 +102,7 @@ class ApiQueryPageTriage extends ApiBase {
 			'id' => array(
 				ApiBase::PARAM_REQUIRED => true,
 			),
-			'action' => array(
+			'mode' => array(
 				ApiBase::PARAM_DFLT => 'checkout',
 				ApiBase::PARAM_ISMULTI => false,
 				ApiBase::PARAM_TYPE => array(
@@ -115,7 +115,7 @@ class ApiQueryPageTriage extends ApiBase {
 	public function getParamDescription() {
 		return array(
 			'id' => 'The ID of the recentchanges entry you\'d like to check out/in',
-			'action' => 'What you\'d like to do',
+			'mode' => 'What you\'d like to do',
 		);
 	}
 
@@ -125,8 +125,8 @@ class ApiQueryPageTriage extends ApiBase {
 
 	public function getExamples() {
 		return array(
-			'api.php?action=pagetriage&ptrid=12345',
-			'api.php?action=pagetriage&ptrid=12345&action=checkin',
+			'api.php?action=pagetriage&id=12345',
+			'api.php?action=pagetriage&id=12345&mode=checkin',
 		);
 	}
 
