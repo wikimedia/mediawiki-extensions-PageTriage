@@ -14,7 +14,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'PageTriage',
 	'version' => '0.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:PageTriage',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:PageTriage',
 	'author' => '',
 	'descriptionmsg' => 'pagetriage-desc',
 );
