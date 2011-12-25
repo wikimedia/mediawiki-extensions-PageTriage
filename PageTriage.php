@@ -22,7 +22,7 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 
 $wgExtensionMessagesFiles['PageTriage'] = $dir . 'PageTriage.i18n.php';
-$wgExtensionAliasesFiles['PageTriage'] = $dir . 'PageTriage.alias.php';
+$wgExtensionMessagesFiles['PageTriageAlias'] = $dir . 'PageTriage.alias.php';
 
 $wgAutoloadClasses['SpecialPageTriage'] = $dir . 'SpecialPageTriage.php';
 $wgSpecialPages['PageTriage'] = 'SpecialPageTriage';
