@@ -1,4 +1,28 @@
 <?php
+/**
+ * MediaWiki PageTriage extension
+ * http://www.mediawiki.org/wiki/Extension:PageTriage
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * This program is distributed WITHOUT ANY WARRANTY.
+ */
+
+/**
+ * This file loads everything needed for the PageTriage extension to function.
+ *
+ * @file
+ * @ingroup Extensions
+ * @author Ryan Kaldari
+ */
 
 # Alert the user that this is not a valid entry point to MediaWiki if they try to access the special pages file directly.
 if ( !defined( 'MEDIAWIKI' ) ) {
