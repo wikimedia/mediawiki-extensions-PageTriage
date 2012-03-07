@@ -52,10 +52,6 @@ $wgAutoloadClasses['SpecialPageTriage'] = $dir . 'SpecialPageTriage.php';
 $wgSpecialPages['PageTriage'] = 'SpecialPageTriage';
 $wgSpecialPageGroups['PageTriage'] = 'changes';
 
-$wgAutoloadClasses['SpecialPageTriageList'] = $dir . 'SpecialPageTriageList.php';
-$wgSpecialPages['PageTriageList'] = 'SpecialPageTriageList';
-$wgSpecialPageGroups['PageTriageList'] = 'changes';
-
 $wgAutoloadClasses['ApiQueryPageTriage'] = $dir . 'api/ApiQueryPageTriage.php';
 
 // api modules

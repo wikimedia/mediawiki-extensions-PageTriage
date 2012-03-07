@@ -1,29 +1,33 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) {
-	echo "PageTriage extension\n";
-	exit( 1 );
-}
-
+/**
+ * This file defines the SpecialPageTriage class which handles the functionality for the 
+ * PageTriage list view (Special:PageTriage).
+ *
+ * @file
+ * @ingroup Extensions
+ * @author Ryan Kaldari
+ */ 
 class SpecialPageTriage extends SpecialPage {
-
+	
+	/**
+	 * Initialize the special page.
+	 */
 	public function __construct() {
-		// Register special page
 		parent::__construct( 'PageTriage' );
 	}
-
+	
+	/**
+	 * Define what happens when the special page is loaded by the user.
+	 * @param $sub string The subpage, if any
+	 */
 	public function execute( $sub ) {
 		global $wgOut;
-
-		// Begin output
-		$this->setHeaders();
 		
-		// Output ResourceLoader module for styling and javascript functions
-		$wgOut->addModules( 'ext.pageTriage.core' );
+		// Output the title of the page
+		$wgOut->setPageTitle( wfMessage( 'pagetriage' ) );
 		
-		$wgOut->addHTML( Xml::openElement( 'div', array( 'id' => 'ptr-stuff' ) ) );
-		$wgOut->addHTML( "Hello World" );
-		$wgOut->addHTML( Xml::closeElement( 'div' ) );
-		
+		// Output the list (or something)
+		$wgOut->addHtml( 'Hello World!' );
 	}
 
 }
