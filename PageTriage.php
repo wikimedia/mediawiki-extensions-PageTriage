@@ -51,11 +51,18 @@ $wgExtensionMessagesFiles['PageTriageAlias'] = $dir . 'PageTriage.alias.php';
 $wgAutoloadClasses['SpecialPageTriage'] = $dir . 'SpecialPageTriage.php';
 $wgSpecialPages['PageTriage'] = 'SpecialPageTriage';
 $wgSpecialPageGroups['PageTriage'] = 'changes';
+$wgAutoloadClasses['ArticleMetadata'] = $dir . 'includes/ArticleMetadata.php';
 
 $wgAutoloadClasses['ApiQueryPageTriage'] = $dir . 'api/ApiQueryPageTriage.php';
+$wgAutoloadClasses['ApiPageTriageGetMetadata'] = $dir . 'api/ApiPageTriageGetMetadata.php';
+
+// custom exceptions
+$wgAutoloadClasses['MWArticleMetadataMissingPageIdException'] = $dir . 'includes/ArticleMetadata.php';
+$wgAutoloadClasses['MWArticleMetadataMetaDataOutofBoundException'] = $dir . 'includes/ArticleMetadata.php';
 
 // api modules
 $wgAPIModules['pagetriage'] = 'ApiQueryPageTriage';
+$wgAPIModules['pagetriagegetmetadata'] = 'ApiPageTriageGetMetadata';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efPageTriageSchemaUpdates';
 
@@ -75,8 +82,14 @@ function efPageTriageSchemaUpdates( $updater = null ) {
 			$updater->addExtensionTable( 'pagetriage', "$base/PageTriage.sql" );
 		}
 	}
+	$updater->addExtensionTable( 'pagetriage_tags', $base . '/PageTriageTags.sql' );
+	$updater->addExtensionTable( 'pagetriage_page_tags', $base . '/PageTriagePageTags.sql' );
+	$updater->addExtensionTable( 'pagetriage_page', $base . '/PageTriagePage.sql' );
+
 	return true;
 }
+
+$wgPageTriagePageIdPerRequest = 20;
 
 // Register ResourceLoader modules
 $wgResourceModules['ext.pageTriage.core'] = array(
