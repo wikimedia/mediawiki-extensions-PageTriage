@@ -25,4 +25,5 @@ VALUES
 ('user_editcount', 'User total edit'),
 ('user_creation_date', 'User registration date'),
 ('user_autoconfirmed', 'Check if user is autoconfirmed' ),
+('user_bot', 'Check if user is in bot group'),
 ('user_block_status', 'User block status');

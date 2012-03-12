@@ -70,6 +70,8 @@ class ArticleMetadata {
 
 	/**
 	 * Set the metadata to cache
+	 * @param $pageId int - page id
+	 * @param $singleData mixed - data to be saved
 	 */
 	protected function setMetadataToCache( $pageId, $singleData ) {
 		global $wgMemc;
@@ -257,16 +259,18 @@ class ArticleMetadata {
 
 	/**
 	 * Compile article basic data like title, number of bytes
+	 * @param $metaData array
 	 */
 	protected function compileArticleBasicData( &$metaData ) {
 		global $wgLang;
 
 		$dbr = wfGetDB( DB_SLAVE );
 
+		// Article page length, creation date, number of edit, title, article triage status
 		$res = $dbr->select(
-				array( 'page', 'revision' ),
-				array( 'page_id', 'page_namespace', 'page_title', 'page_len', 'COUNT(rev_id) AS rev_count', 'MIN(rev_timestamp) AS creation_date' ),
-				array( 'page_id' => $this->mPageId, 'page_id = rev_page'),
+				array( 'page', 'revision', 'pagetriage_page' ),
+				array( 'page_id', 'page_namespace', 'page_title', 'page_len', 'COUNT(rev_id) AS rev_count', 'MIN(rev_timestamp) AS creation_date', 'ptrp_triaged' ),
+				array( 'page_id' => $this->mPageId, 'page_id = rev_page', 'page_id = ptrp_page_id'),
 				__METHOD__,
 				array ( 'GROUP BY' => 'page_id' )
 		);
@@ -276,6 +280,7 @@ class ArticleMetadata {
 			$metaData[$row->page_id]['creation_date'] = $row->creation_date;
 			$metaData[$row->page_id]['rev_count'] = $row->rev_count;
 			$metaData[$row->page_id]['title'] = $title->getPrefixedText();
+			$metaData[$row->page_id]['patrol_status'] = $row->ptrp_triaged;
 		}
 		// Remove any non-existing page_id from $this->mPageId
 		foreach ( $this->mPageId as $key => $pageId ) {
@@ -287,6 +292,7 @@ class ArticleMetadata {
 			return false;
 		}
 
+		// Article link count
 		$res = $dbr->select(
 				array( 'page', 'pagelinks' ),
 				array( 'page_id', 'COUNT(pl_from) AS linkcount' ),
@@ -298,11 +304,12 @@ class ArticleMetadata {
 			$metaData[$row->page_id]['linkcount'] = $row->linkcount;
 		}
 		foreach ( $this->mPageId as $pageId ) {
-			if ( !isset( $metaData[$row->page_id]['linkcount'] ) ) {
-				$metaData[$row->page_id]['linkcount'] = '0';	
+			if ( !isset( $metaData[$pageId]['linkcount'] ) ) {
+				$metaData[$pageId]['linkcount'] = '0';	
 			}
 		}
 
+		// Article category count
 		$res = $dbr->select(
 				array( 'page', 'categorylinks' ),
 				array( 'page_id', 'COUNT(cl_to) AS category_count' ),
@@ -319,18 +326,15 @@ class ArticleMetadata {
 			}
 		}
 
+		// Article snippet
 		$res = $dbr->select(
-				array( 'text', 'revision', 'page', 'pagetriage_page' ),
-				array( 'page_id', 'old_text', 'ptrp_triaged' ),
-				array( 'page_id' => $this->mPageId, 'page_id = rev_page', 'rev_text_id = old_id' ),
-				__METHOD__,
-				array(),
-				array( 'pagetriage_page' => array( 'LEFT JOIN', 'page_id = ptrp_page_id' ) )
+				array( 'text', 'revision', 'page' ),
+				array( 'page_id', 'old_text' ),
+				array( 'page_id' => $this->mPageId, 'page_latest = rev_id', 'rev_text_id = old_id' ),
+				__METHOD__
 		);
-
 		foreach ( $res as $row ) {
 			$metaData[$row->page_id]['snippet'] = $wgLang->truncate( $row->old_text, 150 );
-			$metaData[$row->page_id]['patrol_status'] = $row->ptrp_triaged ? $row->ptrp_triaged : '0';
 		}
 
 		return true;
@@ -371,6 +375,7 @@ class ArticleMetadata {
 			$metaData[$row->page_id]['user_editcount'] = $user->getEditCount();
 			$metaData[$row->page_id]['user_creation_date'] = wfTimestamp( TS_MW, $user->getRegistration() );
 			$metaData[$row->page_id]['user_autoconfirmed'] = $user->isAllowed( 'autoconfirmed' );
+			$metaData[$row->page_id]['user_bot'] = $user->isAllowed( 'bot' );
 			$metaData[$row->page_id]['user_block_status'] = $user->isBlocked() ? '1' : '0';
 		}
 	}
