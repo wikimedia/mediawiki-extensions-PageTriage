@@ -52,6 +52,7 @@ $wgAutoloadClasses['SpecialPageTriage'] = $dir . 'SpecialPageTriage.php';
 $wgSpecialPages['PageTriage'] = 'SpecialPageTriage';
 $wgSpecialPageGroups['PageTriage'] = 'changes';
 $wgAutoloadClasses['ArticleMetadata'] = $dir . 'includes/ArticleMetadata.php';
+$wgAutoloadClasses['PageTriageHooks'] = $dir . 'PageTriage.hooks.php';
 
 $wgAutoloadClasses['ApiQueryPageTriage'] = $dir . 'api/ApiQueryPageTriage.php';
 $wgAutoloadClasses['ApiPageTriageGetMetadata'] = $dir . 'api/ApiPageTriageGetMetadata.php';
@@ -64,7 +65,12 @@ $wgAutoloadClasses['MWArticleMetadataMetaDataOutofBoundException'] = $dir . 'inc
 $wgAPIModules['pagetriage'] = 'ApiQueryPageTriage';
 $wgAPIModules['pagetriagegetmetadata'] = 'ApiPageTriageGetMetadata';
 
+// hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efPageTriageSchemaUpdates';
+$wgHooks['SpecialMovepageAfterMove'][] = 'PageTriageHooks::onSpecialMovepageAfterMove';
+$wgHooks['NewRevisionFromEditComplete'][] = 'PageTriageHooks::onNewRevisionFromEditComplete';
+$wgHooks['ArticleInsertComplete'][] = 'PageTriageHooks::onArticleInsertComplete';
+$wgHooks['ArticleSaveComplete'][] = 'PageTriageHooks::onArticleSaveComplete';
 
 /**
  * @param $updater DatabaseUpdater

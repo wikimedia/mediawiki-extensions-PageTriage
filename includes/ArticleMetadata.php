@@ -374,8 +374,8 @@ class ArticleMetadata {
 			$metaData[$row->page_id]['user_name'] = $user->getName();
 			$metaData[$row->page_id]['user_editcount'] = $user->getEditCount();
 			$metaData[$row->page_id]['user_creation_date'] = wfTimestamp( TS_MW, $user->getRegistration() );
-			$metaData[$row->page_id]['user_autoconfirmed'] = $user->isAllowed( 'autoconfirmed' );
-			$metaData[$row->page_id]['user_bot'] = $user->isAllowed( 'bot' );
+			$metaData[$row->page_id]['user_autoconfirmed'] = $user->isAllowed( 'autoconfirmed' ) ? '1' : '0';
+			$metaData[$row->page_id]['user_bot'] = $user->isAllowed( 'bot' ) ? '1' : '0';
 			$metaData[$row->page_id]['user_block_status'] = $user->isBlocked() ? '1' : '0';
 		}
 	}
