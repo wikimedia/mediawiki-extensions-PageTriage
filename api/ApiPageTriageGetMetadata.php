@@ -11,8 +11,8 @@ class ApiPageTriageGetMetadata extends ApiBase {
 			$this->dieUsage( 'Too many pages in the request', 'exceed-page-limit' );
 		}
 		
-		$articleMetadata = new ArticleMetadata( );
-		$metaData = $articleMetadata->getMetadata( $params['page_id'] );
+		$articleMetadata = new ArticleMetadata( $params['page_id'] );
+		$metaData = $articleMetadata->getMetadata();
 
 		$result = array( 'result' => 'success', 'page' => $metaData );
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
