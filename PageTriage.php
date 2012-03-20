@@ -43,6 +43,10 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'pagetriage-desc',
 );
 
+// Begin configuration variables
+$wgPageTriagePageIdPerRequest = 20;
+// End configuration variables
+
 $dir = dirname( __FILE__ ) . '/';
 
 $wgExtensionMessagesFiles['PageTriage'] = $dir . 'PageTriage.i18n.php';
@@ -73,6 +77,7 @@ $wgHooks['SpecialMovepageAfterMove'][] = 'PageTriageHooks::onSpecialMovepageAfte
 $wgHooks['NewRevisionFromEditComplete'][] = 'PageTriageHooks::onNewRevisionFromEditComplete';
 $wgHooks['ArticleInsertComplete'][] = 'PageTriageHooks::onArticleInsertComplete';
 $wgHooks['ArticleSaveComplete'][] = 'PageTriageHooks::onArticleSaveComplete';
+$wgHooks['UnitTestsList'][] = 'efPageTriageUnitTests'; // unit tests
 
 /**
  * @param $updater DatabaseUpdater
@@ -98,7 +103,16 @@ function efPageTriageSchemaUpdates( $updater = null ) {
 	return true;
 }
 
-$wgPageTriagePageIdPerRequest = 20;
+/**
+ * UnitTestsList hook handler - adds unit test files to the unit tester
+ * @param $files array
+ * @return bool
+ */
+function efPageTriageUnitTests( &$files ) {
+	$base = dirname( __FILE__ ) . '/tests';
+	$files[] = $base . '/phpunit/SpecialPageTriageTest.php';
+	return true;
+}
 
 // Register ResourceLoader modules
 $wgResourceModules['ext.pageTriage.core'] = array(
