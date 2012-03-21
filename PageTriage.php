@@ -60,6 +60,7 @@ $wgAutoloadClasses['PageTriageUtil'] = $dir . 'includes/PageTriageUtil.php';
 $wgAutoloadClasses['PageTriageHooks'] = $dir . 'PageTriage.hooks.php';
 
 $wgAutoloadClasses['ApiQueryPageTriage'] = $dir . 'api/ApiQueryPageTriage.php';
+$wgAutoloadClasses['ApiPageTriageList'] = $dir . 'api/ApiPageTriageList.php';
 $wgAutoloadClasses['ApiPageTriageGetMetadata'] = $dir . 'api/ApiPageTriageGetMetadata.php';
 
 // custom exceptions
@@ -69,6 +70,7 @@ $wgAutoloadClasses['MWPageTriageUtilInvalidNumberException'] = $dir . 'includes/
 
 // api modules
 $wgAPIModules['pagetriage'] = 'ApiQueryPageTriage';
+$wgAPIModules['pagetriagelist'] = 'ApiPageTriageList';
 $wgAPIModules['pagetriagegetmetadata'] = 'ApiPageTriageGetMetadata';
 
 // hooks
