@@ -7,16 +7,13 @@
  */
 class ApiPageTriageList extends ApiBase {
 
-	// Holds the various options for filtering the list
-	protected $opts;
-
 	public function execute() {
 		
 		// Get the API parameters and store them
-		$this->opts = $this->extractRequestParams();
+		$opts = $this->extractRequestParams();
 		
 		// Retrieve the list of page IDs
-		$pages = $this->getPageIds();
+		$pages = $this->getPageIds( $opts );
 		$pages = implode( ', ', $pages );
 		
 		// Output the results
@@ -26,9 +23,10 @@ class ApiPageTriageList extends ApiBase {
 	
 	/**
 	 * Return all the page ids in PageTraige matching the specified filters
+	 * @param $opts array of filtering options
 	 * @return an array of ids
 	 */
-	protected function getPageIds() {
+	public static function getPageIds( $opts = array() ) {
 	
 		// Initialize required variables
 		$pages = array();
@@ -39,8 +37,8 @@ class ApiPageTriageList extends ApiBase {
 		$dbr = wfGetDB( DB_SLAVE );
 		
 		// If a limit was specified, limit the results to that number
-		if ( $this->opts['limit'] ) {
-			$options = array( 'LIMIT' => $this->opts['limit'] );
+		if ( isset( $opts['limit'] ) && is_numeric( $opts['limit'] ) && $opts['limit'] > 0 ) {
+			$options = array( 'LIMIT' => $opts['limit'] );
 		}
 		
 		// TODO: Handle filtering options

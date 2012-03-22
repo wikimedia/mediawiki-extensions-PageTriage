@@ -55,7 +55,7 @@ class SpecialPageTriage extends SpecialPage {
 		$triageInterface .= $this->getTriageHeader();
 		
 		// Get the list of articles
-		$triageInterface .= $this->getTriageList();
+		$triageInterface .= $this->getFormattedTriageList();
 		
 		// Get triage footer
 		$triageInterface .= $this->getTriageFooter();
@@ -85,185 +85,39 @@ class SpecialPageTriage extends SpecialPage {
 
 	/**
 	 * Builds the list of articles to triage.
-	 * This is a paginated list of articles and associated metadata.
+	 * This is a list of articles and associated metadata.
 	 * @return string HTML for the list
 	 */
-	public function getTriageList() {
-		global $wgOut;
+	public function getFormattedTriageList() {
 		
-		$pager = new TriagePager( $this, $this->opts );
+		// Retrieve the IDs of all the pages that match our filtering options
+		$pageList = ApiPageTriageList::getPageIds( $this->opts->getAllValues() );
 		
-		if( $pager->getNumRows() ) {
-			$navigation = $pager->getNavigationBar();
-			$htmlOut = $navigation . $pager->getBody() . $navigation;
-		} else {
-			$htmlOut = wfMessage( 'specialpage-empty' );
-		}
-		
-		return $htmlOut;
-	}
-	
-}
-
-class TriagePager extends ReverseChronologicalPager {
-
-	// Holds the various options for viewing the list
-	protected $opts;
-	
-	public function __construct( $special, FormOptions $opts ) {
-		parent::__construct( $special->getContext() );
-		$this->mLimit = $opts->getValue( 'limit' );
-		$this->mOffset = $opts->getValue( 'offset' );
-		$this->opts = $opts;
-	}
-	
-	/**
-	 * Sort the list by rc_timestamp
-	 * @return string
-	 */
-	public function getIndexField() {
-		return 'rc_timestamp';
-	}
-	
-	/**
-	 * Set the database query to retrieve all the pages that need triaging
-	 * @return array of query settings
-	 */
-	public function getQueryInfo() {
-	
-		$conds = array();
-		$conds['rc_new'] = 1;
-		
-		$namespace = $this->opts->getValue( 'namespace' );
-		if ( $namespace === 'all' ) {
-			$namespace = false;
-		} else {
-			$namespace = intval( $namespace );
-		}
-		
-		if( $namespace !== false ) {
-			$conds['rc_namespace'] = $namespace;
-			$rcIndexes = array( 'new_name_timestamp' );
-		} else {
-			$rcIndexes = array( 'rc_timestamp' );
-		}
-		
-		if( !$this->opts->getValue( 'showbots' ) ) {
-			$conds['rc_bot'] = 0;
-		}
-		
-		if ( !$this->opts->getValue( 'showredirs' ) ) {
-			$conds['page_is_redirect'] = 0;
-		}
-		
-		$tables = array( 'recentchanges', 'page' );
-		
-		$fields = array(
-			'rc_namespace', 'rc_title', 'rc_cur_id', 'rc_user', 'rc_user_text',
-			'rc_comment', 'rc_timestamp', 'rc_patrolled','rc_id', 'rc_deleted',
-			'page_len AS length', 'page_latest AS rev_id', 'rc_this_oldid',
-			'page_namespace', 'page_title'
-		);
-		$join_conds = array( 'page' => array( 'INNER JOIN', 'page_id=rc_cur_id' ) );
-		
-		$info = array(
-			'tables' 	 => $tables,
-			'fields' 	 => $fields,
-			'conds' 	 => $conds,
-			'join_conds' => $join_conds
-		);
-		
-		return $info;
-	}
-	
-	public function formatRow( $result ) {
-	
-		// Create a revision object to work with
-		$row = array(
-			'comment' => $result->rc_comment,
-			'deleted' => $result->rc_deleted,
-			'user_text' => $result->rc_user_text,
-			'user' => $result->rc_user,
-		);
-		$rev = new Revision( $row );
-
-		$lang = $this->getLanguage();
-
-		$title = Title::newFromRow( $result );
-		$spanTime = Html::element( 'span', array( 'class' => 'mw-pagetriage-time' ),
-			$lang->timeanddate( $result->rc_timestamp, true )
-		);
-		$time = Linker::linkKnown(
-			$title,
-			$spanTime,
-			array(),
-			array( 'oldid' => $result->rc_this_oldid ),
-			array()
-		);
-
-		$query = array( 'redirect' => 'no' );
-
-		// If the user is allowed to triage and the page hasn't been triaged yet, add an rcid param
-		// to the article link.
-		if( $this->getUser()->useNPPatrol() && !$result->rc_patrolled ) {
-			$query['rcid'] = $result->rc_id;
-		}
-
-		$pageLink = Linker::linkKnown(
-			$title,
-			null,
-			array( 'class' => 'mw-pagetriage-pagename' ),
-			$query
-		);
-		$histLink = Linker::linkKnown(
-			$title,
-			wfMsgHtml( 'hist' ),
-			array(),
-			array( 'action' => 'history' )
-		);
-		$history = Html::rawElement( 'span', array( 'class' => 'mw-pagetriage-history' ), wfMsg( 'parentheses', $histLink ) );
-
-		$length = Html::element( 'span', array( 'class' => 'mw-pagetriage-length' ),
-				$this->msg( 'nbytes' )->numParams( $result->length )->text()
-		);
-
-		$userLink = Linker::revUserTools( $rev );
-		$comment = Linker::revComment( $rev );
-
-		if ( $result->rc_patrolled ) {
-			$class = 'mw-pagetriage-triaged';
-		} else {
-			$class = 'mw-pagetriage-not-triaged';
-		}
-
 		$htmlOut = '';
-		$htmlOut .= Xml::openElement( 'div', array(
-			'style' => 'border: 1px solid #CCCCCC; border-top: none;',
-			'class' => $class,
-		) );
-		$htmlOut .= "$pageLink $history &#183; $length<br/>";
-		$htmlOut .= "&#160;&#160;&#160;&#160;By $userLink";
-		$htmlOut .= Xml::closeElement( 'div' );
+		
+		if ( $pageList ) {
+			foreach ( $pageList as $pageId ) {
+				$formattedRow = $this->buildRow( $pageId );
+				$htmlOut .= $formattedRow;
+			}
+		} else {
+			$htmlOut .= wfMessage( 'specialpage-empty' );
+		}
 		
 		return $htmlOut;
 	}
 	
 	/**
-	 * Begin div at the start of the list
-	 * @return string HTML
+	 * Builds a single row for the article list.
+	 * @param $pageId integer ID for a single page
+	 * @return string HTML for the row
 	 */
-	public function getStartBody() {
-		$htmlOut = Xml::openElement( 'div', array( 'style' => 'border-top: 1px solid #CCCCCC' ) );
-		return $htmlOut;
-	}
-	
-	/**
-	 * Close div at the end of the list
-	 * @return string HTML
-	 */
-	public function getEndBody() {
-		$htmlOut = Xml::closeElement( 'div' );
-		return $htmlOut;
+	protected function buildRow( $pageId ) {
+		
+		// TODO: get all the metadata for the page
+		
+		return '<div>'.$pageId.'</div>';
+		
 	}
 	
 }
