@@ -88,6 +88,22 @@ class PageTriageHooks {
 	}
 
 	/**
+	 * Remove the metadata we added when the article is deleted.
+	 *
+	 * 'ArticleDeleteComplete': after an article is deleted
+	 * $article: the WikiPage that was deleted
+	 * $user: the user that deleted the article
+	 * $reason: the reason the article was deleted
+	 * $id: id of the article that was deleted
+	 */
+	public static function onArticleDeleteComplete( $article, $user, $reason, $id ) {
+		// delete everything
+		$articleMetadata = new ArticleMetadata( array( $id ) );
+		$articleMetadata->deleteMetadata();
+		return true;
+	}
+
+	/**
 	 * Add page to page triage queue
 	 */
 	private static function addToPageTriageQueue( $pageId ) {

@@ -5,8 +5,6 @@ Special:NewPages and the patrolled edits feature.
 It is very focused on the Wikipedia article creation workflow, though it could probably be adapted
 for use on other wikis.
 
-PageTriage is licensed under the same terms as MediaWiki itself.
-
 PageTriage by:
 @author Ryan Kaldari <rkaldari@wikimedia.org>
 @author Benny Situ <bsitu@wikimedia.org>

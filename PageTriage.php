@@ -87,16 +87,6 @@ $wgHooks['UnitTestsList'][] = 'efPageTriageUnitTests'; // unit tests
  */
 function efPageTriageSchemaUpdates( $updater = null ) {
 	$base = dirname( __FILE__ ) . "/sql";
-	if ( $updater === null ) {
-		global $wgDBtype, $wgExtNewTables, $wgExtNewFields;
-		if ( $wgDBtype == 'mysql' ) {
-			$wgExtNewTables[] = array( 'pagetriage', $base . '/PageTriage.sql' );
-		}
-	} else {
-		if ( $updater->getDB()->getType() == 'mysql' ) {
-			$updater->addExtensionTable( 'pagetriage', "$base/PageTriage.sql" );
-		}
-	}
 	$updater->addExtensionTable( 'pagetriage_tags', $base . '/PageTriageTags.sql' );
 	$updater->addExtensionTable( 'pagetriage_page_tags', $base . '/PageTriagePageTags.sql' );
 	$updater->addExtensionTable( 'pagetriage_page', $base . '/PageTriagePage.sql' );
@@ -113,6 +103,8 @@ function efPageTriageSchemaUpdates( $updater = null ) {
 function efPageTriageUnitTests( &$files ) {
 	$base = dirname( __FILE__ ) . '/tests';
 	$files[] = $base . '/phpunit/SpecialPageTriageTest.php';
+	$files[] = $base . '/phpunit/ArticleMetadataTest.php';
+	$files[] = $base . '/phpunit/ApiPageTriageGetMetadataTest.php';
 	return true;
 }
 

@@ -51,6 +51,47 @@ class ArticleMetadata {
 	}
 
 	/**
+	 * Delete all the metadata for an article
+	 *
+	 * @param $pageId - the page id to be deleted
+	 */
+	protected function deleteMetadata( $pageId = null ) {
+		if( is_null($pageId) ) {
+			$pageId = $this->mPageId;
+		}
+
+		// $pageId can be an array or a single value.
+		
+		$dbw->begin();
+		$dbw->delete(
+			'pagetriage_page_tags',
+			array( 'ptrpt_page_id' => $pageId ),
+			__METHOD__,
+			array()
+		);
+		
+		$dbw->delete(
+			'pagetriage_page',
+			array( 'ptrp_page_id' => $pageId ),
+			__METHOD__,
+			array()
+		);
+
+		$dbw->delete(
+			'pagetriage_log',
+			array( 'ptrl_page_id' => $pageId ),
+			__METHOD__,
+			array()
+		);
+		
+		// also remove it from the cache
+		$this->flushMetadataFromCache( $pageId );
+		$dbw->commit();
+		
+		return true;
+	}
+
+	/**
 	 * Flush the metadata in cache
 	 * @param $pageId - page id to be flushed, if null is provided, all
 	 *                  page id in $this->mPageId will be flushed
