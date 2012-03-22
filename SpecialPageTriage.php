@@ -25,13 +25,14 @@ class SpecialPageTriage extends SpecialPage {
 	 */
 	public function execute( $sub ) {
 		global $wgOut;
-		
+
 		// Initialize variable to hold list view options
 		$opts = new FormOptions();
 		
 		// Set the defaults for the list view options
 		$opts->add( 'showbots', true );
 		$opts->add( 'showredirs', false );
+		$opts->add( 'showtriaged', false );
 		$opts->add( 'limit', (int)$this->getUser()->getOption( 'rclimit' ) );
 		$opts->add( 'offset', '' );
 		$opts->add( 'namespace', '0' );
@@ -96,9 +97,13 @@ class SpecialPageTriage extends SpecialPage {
 		$htmlOut = '';
 		
 		if ( $pageList ) {
+			$articleMetadata = new ArticleMetadata( $pageList );
+			$metaData = $articleMetadata->getMetadata();
 			foreach ( $pageList as $pageId ) {
-				$formattedRow = $this->buildRow( $pageId );
-				$htmlOut .= $formattedRow;
+				if ( isset( $metaData[$pageId] ) ) {
+					$formattedRow = $this->buildRow( $pageId, $metaData[$pageId] );
+					$htmlOut .= $formattedRow;
+				}
 			}
 		} else {
 			$htmlOut .= wfMessage( 'specialpage-empty' );
@@ -110,13 +115,17 @@ class SpecialPageTriage extends SpecialPage {
 	/**
 	 * Builds a single row for the article list.
 	 * @param $pageId integer ID for a single page
+	 * @param $metaData array the meta data for $pageId
 	 * @return string HTML for the row
 	 */
-	protected function buildRow( $pageId ) {
+	protected function buildRow( $pageId, $metaData ) {
 		
-		// TODO: get all the metadata for the page
-		
-		return '<div>'.$pageId.'</div>';
+		// TODO: Build the row from metadata provided
+		return '<div>'	
+				. $pageId . ' '
+				. htmlspecialchars( $metaData['title'] ) . ' '
+				. htmlspecialchars( $metaData['user_name'] ) .
+			'</div>';
 		
 	}
 	

@@ -27,7 +27,7 @@ class ApiPageTriageList extends ApiBase {
 	 * @return an array of ids
 	 */
 	public static function getPageIds( $opts = array() ) {
-	
+
 		// Initialize required variables
 		$pages = array();
 		$conds = array();
@@ -42,10 +42,32 @@ class ApiPageTriageList extends ApiBase {
 		}
 		
 		// TODO: Handle filtering options
+		$tables = array( 'pagetriage_page', 'page' );
+		$conds[] = 'ptrp_page_id = page_id';
+
+		if ( $opts['namespace'] ) {
+			$conds['page_namespace'] = $opts['namespace'];
+		}
+		if ( $opts['showredirs'] ) {
+			$conds['page_is_redirect'] = 1;
+		}
+		if ( $opts['showbots'] ) {
+			$conds[] = 'ptrp_page_id = ptrpt_page_id AND ptrpt_tag_id = ptrt_tag_id';
+			$conds['ptrt_tag_name'] = 'user_bot';
+			$conds['ptrpt_value'] = '1';
+			$tables[] = 'pagetriage_page_tags';
+			$tables[] = 'pagetriage_tags';
+		}
+		
+		if ( $opts['showtriaged'] ) {
+			$conds['ptrp_triaged'] = array( 0, 1 );
+		} else {
+			$conds['ptrp_triaged'] = 0;
+		}
 		
 		// Pull page IDs from database
 		$res = $dbr->select(
-			'pagetriage_page',
+			$tables,
 			'ptrp_page_id',
 			$conds,
 			__METHOD__,
@@ -68,6 +90,9 @@ class ApiPageTriageList extends ApiBase {
 			'showredirs' => array(
 				ApiBase::PARAM_TYPE => 'boolean',
 			),
+			'showtriaged'=> array(
+				ApiBase::PARAM_TYPE => 'boolean',	
+			),
 			'limit' => array(
 				ApiBase::PARAM_DFLT => '5000',
 				ApiBase::PARAM_TYPE => 'integer',
@@ -83,6 +108,7 @@ class ApiPageTriageList extends ApiBase {
 		return array(
 			'showbots' => 'Whether to include bot edits or not',
 			'showredirs' => 'Whether to include redirects or not',
+			'showtriaged' => 'Whether to include triaged or not',
 			'limit' => 'The maximum number of results to return',
 			'namespace' => 'What namespace to pull pages from',
 		);
