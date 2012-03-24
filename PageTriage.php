@@ -59,7 +59,6 @@ $wgAutoloadClasses['ArticleMetadata'] = $dir . 'includes/ArticleMetadata.php';
 $wgAutoloadClasses['PageTriageUtil'] = $dir . 'includes/PageTriageUtil.php';
 $wgAutoloadClasses['PageTriageHooks'] = $dir . 'PageTriage.hooks.php';
 
-$wgAutoloadClasses['ApiQueryPageTriage'] = $dir . 'api/ApiQueryPageTriage.php';
 $wgAutoloadClasses['ApiPageTriageList'] = $dir . 'api/ApiPageTriageList.php';
 $wgAutoloadClasses['ApiPageTriageGetMetadata'] = $dir . 'api/ApiPageTriageGetMetadata.php';
 
@@ -69,7 +68,6 @@ $wgAutoloadClasses['MWArticleMetadataMetaDataOutofBoundException'] = $dir . 'inc
 $wgAutoloadClasses['MWPageTriageUtilInvalidNumberException'] = $dir . 'includes/PageTriageUtil.php';
 
 // api modules
-$wgAPIModules['pagetriage'] = 'ApiQueryPageTriage';
 $wgAPIModules['pagetriagelist'] = 'ApiPageTriageList';
 $wgAPIModules['pagetriagegetmetadata'] = 'ApiPageTriageGetMetadata';
 
@@ -109,8 +107,40 @@ function efPageTriageUnitTests( &$files ) {
 }
 
 // Register ResourceLoader modules
-$wgResourceModules['ext.pageTriage.core'] = array(
-	'localBasePath' => dirname( __FILE__ ),
-	'remoteExtPath' => 'PageTriage',
-	'scripts' => 'ext.pageTriage.core.js'
+$ptResourceTemplate = array(
+	'localBasePath' => dirname( __FILE__ ). '/modules',
+	'remoteExtPath' => 'PageTriage/modules'
+);
+
+$wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + array(
+	'scripts' => array(
+		'external/underscore.js',
+		'external/backbone.js'
+	)
+);
+
+/*$wgResourceModules['ext.pageTriage.core'] = $ptResourceTemplate + array(
+	'scripts' => 'ext.pageTriage.core/ext.pageTriage.core.js'
+);
+*/
+
+$wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + array(
+	'dependencies' => array(
+		'ext.pageTriage.external'
+	),
+	'scripts' => array(
+		'ext.pageTriage.models/ext.pageTriage.article.js'
+	)
+);
+
+$wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
+	'dependencies' => array(
+		'ext.pageTriage.models',
+	),
+	'scripts' => array(
+		'ext.pageTriage.views/ext.pageTriage.articleListItem.js'
+	),
+	'styles' => array(
+		'ext.pageTriage.views/ext.pageTriage.articleListItem.css'
+	)
 );

@@ -14,10 +14,19 @@ class ApiPageTriageList extends ApiBase {
 		
 		// Retrieve the list of page IDs
 		$pages = $this->getPageIds( $opts );
-		$pages = implode( ', ', $pages );
+		
+		// fetch metadata for those pages
+		$articleMetadata = new ArticleMetadata( $pages );
+		$metaData = $articleMetadata->getMetadata();
+		
+		// convert this to a slightly different format that's more Backbone-friendly
+		$metaDataSend = array();
+		foreach( $metaData as $pageId => $attrs ) {
+			$metaDataSend[] = $attrs + array( 'pageid' => $pageId );
+		}
 		
 		// Output the results
-		$result = array( 'result' => 'success', 'pages' => $pages );
+		$result = array( 'result' => 'success', 'pages' => $metaDataSend );
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 	

@@ -1,0 +1,29 @@
+
+.mwe-pt-article-row {
+	width: 100%;
+}
+
+.mwe-pt-status-icon {
+	float: left;
+	width: 50px;
+}
+
+.mwe-pt-info-pane {
+	margin-left: 50px;
+}
+
+.mwe-pt-page-title {
+	font-size: 1.2em;
+}
+
+.mwe-pt-histlink {
+	font-size: 0.5em;
+}
+
+.mwe-pt-metadata {
+	font-size:0.8em;
+}
+
+.mwe-pt-snippet {
+	color: #bebebe;
+}

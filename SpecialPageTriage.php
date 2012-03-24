@@ -24,8 +24,10 @@ class SpecialPageTriage extends SpecialPage {
 	 * @param $sub string The subpage, if any
 	 */
 	public function execute( $sub ) {
-		global $wgOut;
+		$out = $this->getOutput();
 
+		// TODO: check user permissions, make sure they're logged in and have the pagepatrol userright
+		
 		// Initialize variable to hold list view options
 		$opts = new FormOptions();
 		
@@ -47,41 +49,29 @@ class SpecialPageTriage extends SpecialPage {
 		$this->opts = $opts;
 		
 		// Output the title of the page
-		$wgOut->setPageTitle( wfMessage( 'pagetriage' ) );
-		
+		$out->setPageTitle( wfMessage( 'pagetriage' ) );
+
+		// load the JS
+		$out->addModules( 'ext.pageTriage.init' );
+		$out->addModules( 'ext.pageTriage.external' );
+		$out->addModules( 'ext.pageTriage.models' );
+		$out->addModules( 'ext.pageTriage.views' );
+				
 		// This will hold the HTML for the triage interface
 		$triageInterface = '';
 		
-		// Get triage header
-		$triageInterface .= $this->getTriageHeader();
-		
+		$triageInterface .= "<div id='pageTriageHeader'></div>";
+		// TODO: this should load with a spinner instead of "please wait"
+		$triageInterface .= "<div id='listView'>Please wait...</div>";
+		$triageInterface .= "<div id='pageTriageFooter'></div>";
+		$triageInterface .= "<div id='backboneTemplates'></div>";
+				
 		// Get the list of articles
-		$triageInterface .= $this->getFormattedTriageList();
-		
-		// Get triage footer
-		$triageInterface .= $this->getTriageFooter();
+		//$triageInterface .= $this->getFormattedTriageList();
 		
 		// Output the HTML for the page
-		$wgOut->addHtml( $triageInterface );
+		$out->addHtml( $triageInterface );
 		
-	}
-	
-	/**
-	 * Builds the header for the list.
-	 * This will include the filtering interface and some metadata about the list.
-	 * @return string HTML for the header
-	 */
-	public function getTriageHeader() {
-		return Html::Element( 'p', array(), 'Page Triage Header goes here' );
-	}
-	
-	/**
-	 * Builds the footer for the list.
-	 * This will include the Top Triagers, more list metadata, and a link to detailed statastics.
-	 * @return string HTML for the footer
-	 */
-	public function getTriageFooter() {
-		return Html::Element( 'p', array(), 'Page Triage Footer goes here' );
 	}
 
 	/**
