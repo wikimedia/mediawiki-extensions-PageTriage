@@ -15,12 +15,12 @@ $( function() {
 		model: mw.pageTriage.Article,
 		url: mw.config.get('wgServer') +
 			mw.config.get('wgScriptPath') +
-			'api.php?action=pagetriagelist&format=json',
+			'/api.php?action=pagetriagelist&format=json',
 
 		parse: function( response ) {
 			// extract the useful bits of json.
 			return response.pagetriagelist.pages;
 		}
-
 	} );
+	
 } );
