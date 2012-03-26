@@ -16,6 +16,7 @@ $messages['en'] = array(
 	'pagetriage' => 'Page triage',
 	'pagetriagelist' => 'Page triage list',
 	'pagetriage-api-invalidid' => 'The ID you provided ($1) is not valid.',
+	'pagetriage-markpatrolled' => 'Unpatrolled',
 );
 
 /**

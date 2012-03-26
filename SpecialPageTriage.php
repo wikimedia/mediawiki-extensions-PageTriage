@@ -27,6 +27,11 @@ class SpecialPageTriage extends SpecialPage {
 		$out = $this->getOutput();
 
 		// TODO: check user permissions, make sure they're logged in and have the pagepatrol userright
+
+		global $wgUser;
+		$wgUser->setOption( 'pagetriage-lastuse', wfTimestampNow() );
+		$wgUser->saveSettings();
+		$wgUser->invalidateCache();
 		
 		// Initialize variable to hold list view options
 		$opts = new FormOptions();

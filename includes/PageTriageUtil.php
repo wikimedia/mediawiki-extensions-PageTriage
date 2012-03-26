@@ -6,6 +6,34 @@
 class PageTriageUtil {
 
 	/**
+	 * Get whether or not a page needs triaging
+	 *
+	 * @param $article Article object
+	 * 
+	 * @return Mixed null if the page is not in the triage system,
+	 * otherwise whether or not the page is untriaged.
+	 * Return convention is this way so that null and false are equivalent
+	 * with a straight boolean test.
+	 */
+	public static function doesPageNeedTriage( $article ) {
+		if ( ! $article || ! $article->getId() ) {
+			throw new MWException( "Invalid argument to " . __METHOD__ );
+		}
+
+		$dbr = wfGetDB( DB_SLAVE );
+
+		$row = $dbr->selectRow( 'pagetriage_page', 'ptrp_triaged',
+			array( 'ptrp_page_id' => $article->getID() )
+		);
+
+		if ( ! $row ) {
+			return null;
+		}
+
+		return !(boolean)$row->ptrp_triaged;
+	}
+
+	/**
 	 * Get a list of stat for untriaged articles
 	 * @return array
 	 *

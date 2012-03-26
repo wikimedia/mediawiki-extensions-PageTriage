@@ -78,6 +78,10 @@ $wgHooks['NewRevisionFromEditComplete'][] = 'PageTriageHooks::onNewRevisionFromE
 $wgHooks['ArticleInsertComplete'][] = 'PageTriageHooks::onArticleInsertComplete';
 $wgHooks['ArticleSaveComplete'][] = 'PageTriageHooks::onArticleSaveComplete';
 $wgHooks['UnitTestsList'][] = 'efPageTriageUnitTests'; // unit tests
+$wgHooks['GetPreferences'][] = 'PageTriageHooks::onGetPreferences';
+$wgHooks['ArticleViewHeader'][] = 'PageTriageHooks::onArticleViewHeader';
+
+$wgPageTriageMarkPatrolledLinkExpiry = 3600 * 24 * 30; // 30 days
 
 /**
  * @param $updater DatabaseUpdater
@@ -143,4 +147,8 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 	'styles' => array(
 		'ext.pageTriage.views/ext.pageTriage.articleListItem.css'
 	)
+);
+
+$wgResourceModules['ext.pageTriage.article'] = $ptResourceTemplate + array(
+	'styles' => 'ext.pageTriage.article/ext.pageTriage.article.css',
 );

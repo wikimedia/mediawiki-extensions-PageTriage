@@ -118,4 +118,51 @@ class PageTriageHooks {
 		$dbw->replace( 'pagetriage_page', array( 'ptrp_page_id' ), $row, __METHOD__ );	
 	}
 
+	/**
+	 * Add last time user visited the triage page to preferences.
+	 * @param $user User object
+	 * @param &$preferences Preferences object
+	 */
+	public static function onGetPreferences( $user, &$preferences ) {
+		$preferences['pagetriage-lastuse'] = array(
+			'type' => 'hidden',
+		);
+
+		return true;
+	}
+
+	/**
+	 * Adds "mark as patrolled" link to articles
+	 *
+	 * @param &$article Article object to show link for.
+	 * @param &$outputDone Set if there is no more output to do.
+	 * @param &$pcache Set if you want to use the parser cache.
+	 * @return type description
+	 */
+	public static function onArticleViewHeader( &$article, &$outputDone, &$pcache ) {
+		global $wgUser, $wgPageTriageMarkPatrolledLinkExpiry, $wgOut;
+
+		$lastUse = $wgUser->getOption('pagetriage-lastuse');
+		$lastUse = wfTimestamp( TS_UNIX, $lastUse );
+		$now = wfTimestamp( TS_UNIX, wfTimestampNow() );
+
+		$periodSince = $now - $lastUse;
+
+		if ( !$lastUse || $periodSince > $wgPageTriageMarkPatrolledLinkExpiry ) {
+			return true;
+		}
+
+		if ( ! PageTriageUtil::doesPageNeedTriage( $article ) ) {
+			return true;
+		}
+
+		$wgOut->addModules( array('ext.pageTriage.article') );
+
+		$msg = wfMessage( 'pagetriage-markpatrolled' )->parse();
+		$html = Html::element( 'div', array( 'class' => 'mw-pagetriage-markpatrolled' ), $msg );
+
+		$wgOut->addHTML( $html );
+
+		return true;
+	}
 }
