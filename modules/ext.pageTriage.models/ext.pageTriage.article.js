@@ -1,13 +1,18 @@
-	var Article = Backbone.Model.extend( {
-		defaults: {
-			title: 'Empty Article',
-			pageid: ''
-		},
+$( function() {
+	mw.pageTriage = {
+		Article: Backbone.Model.extend( {
+			defaults: {
+				title: 'Empty Article',
+				pageid: ''
+			},
 
-	} );
-
-	var ArticleList = Backbone.Collection.extend( {
-		model: Article,
+		} ),
+	};
+	
+	// can't include this in the declaration above because it references the
+	// object created therein.
+	mw.pageTriage.ArticleList = Backbone.Collection.extend( {
+		model: mw.pageTriage.Article,
 		url: '/w/api.php?action=pagetriagelist&format=json',
 
 		parse: function( response ) {
@@ -16,4 +21,4 @@
 		}
 
 	} );
-
+} );

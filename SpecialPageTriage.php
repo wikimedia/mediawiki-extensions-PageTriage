@@ -57,10 +57,7 @@ class SpecialPageTriage extends SpecialPage {
 		$out->setPageTitle( wfMessage( 'pagetriage' ) );
 
 		// load the JS
-		$out->addModules( 'ext.pageTriage.init' );
-		$out->addModules( 'ext.pageTriage.external' );
-		$out->addModules( 'ext.pageTriage.models' );
-		$out->addModules( 'ext.pageTriage.views' );
+		$out->addModules( array( 'ext.pageTriage.external', 'ext.pageTriage.models', 'ext.pageTriage.views' ) );
 				
 		// This will hold the HTML for the triage interface
 		$triageInterface = '';

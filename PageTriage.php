@@ -133,13 +133,18 @@ $wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + array(
 		'ext.pageTriage.external'
 	),
 	'scripts' => array(
-		'ext.pageTriage.models/ext.pageTriage.article.js'
+		'ext.pageTriage.models/ext.pageTriage.article.js',
+		'ext.pageTriage.views/ext.pageTriage.articleListItem.js'		
+	),
+	'styles' => array(
+		'ext.pageTriage.views/ext.pageTriage.articleListItem.css'
 	)
 );
 
+/*
 $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 	'dependencies' => array(
-		'ext.pageTriage.models',
+		'ext.pageTriage.models'
 	),
 	'scripts' => array(
 		'ext.pageTriage.views/ext.pageTriage.articleListItem.js'
@@ -148,6 +153,7 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 		'ext.pageTriage.views/ext.pageTriage.articleListItem.css'
 	)
 );
+*/
 
 $wgResourceModules['ext.pageTriage.article'] = $ptResourceTemplate + array(
 	'styles' => 'ext.pageTriage.article/ext.pageTriage.article.css',
