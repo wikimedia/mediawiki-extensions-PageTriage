@@ -21,16 +21,21 @@ $( function() {
 				<div class="mwe-pt-info-pane"> \
 				<div> \
 				<span class="mwe-pt-page-title"><%= title %></span> \
-				<span class="mwe-pt-histlink">(hist)</span> \
+				<span class="mwe-pt-histlink">(<%= gM( "pagetriage-hist" ) %>)</span> \
 				<span class="mwe-pt-metadata"> \
 				&#xb7; \
-				bytes \
+				<%= gM( "pagetriage-bytes", page_len ) %> \
 				&#xb7; \
-				edits \
+				<%= gM( "pagetriage-edits", rev_count ) %> \
 				&#xb7; \
-				images \
-				&#xb7; \
-				categories \
+				<% if( category_count == "0" ) { %> \
+					<span class="mwe-pt-metadata-warning"><%= gM( "pagetriage-no-categories" ) %></span> \
+				<% } else { %> \
+					<%= gM( "pagetriage-categories", category_count ) %> \
+				<% } %> \
+				<% if( linkcount == "0" ) { %> \
+					&#xb7; <span class="mwe-pt-metadata-warning"><%= gM("pagetriage-orphan") %></span> \
+				<% } %> \
 				</span> \
 				</div> \
 				<div class="mwe-pt-snippet"> \

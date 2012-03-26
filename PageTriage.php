@@ -133,17 +133,14 @@ $wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + array(
 		'ext.pageTriage.external'
 	),
 	'scripts' => array(
-		'ext.pageTriage.models/ext.pageTriage.article.js',
-		'ext.pageTriage.views/ext.pageTriage.articleListItem.js'		
-	),
-	'styles' => array(
-		'ext.pageTriage.views/ext.pageTriage.articleListItem.css'
+		'ext.pageTriage.models/ext.pageTriage.article.js'
 	)
 );
 
-/*
+
 $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 	'dependencies' => array(
+		'mediawiki.jqueryMsg',
 		'ext.pageTriage.models'
 	),
 	'scripts' => array(
@@ -151,9 +148,17 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 	),
 	'styles' => array(
 		'ext.pageTriage.views/ext.pageTriage.articleListItem.css'
+	),
+	'messages' => array(
+		'pagetriage-hist',
+		'pagetriage-bytes',
+		'pagetriage-edits',
+		'pagetriage-categories',
+		'pagetriage-no-categories',
+		'pagetriage-images',
+		'pagetriage-orphan',
 	)
 );
-*/
 
 $wgResourceModules['ext.pageTriage.article'] = $ptResourceTemplate + array(
 	'styles' => 'ext.pageTriage.article/ext.pageTriage.article.css',
