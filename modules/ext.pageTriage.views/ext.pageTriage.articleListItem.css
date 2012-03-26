@@ -6,14 +6,31 @@
 .mwe-pt-status-icon {
 	float: left;
 	width: 50px;
+	height: 100%;
+}
+
+.mwe-pt-status-icon-new {
+	background-color: #f2b3b3;
+}
+
+.mwe-pt-status-icon-triaged {
+	background-color: #c3ead7;
+}
+
+.mwe-pt-status-icon-deleted {
+	background-color: #b3b3b3;
 }
 
 .mwe-pt-info-pane {
 	margin-left: 50px;
 }
 
-.mwe-pt-page-title {
+/* info about the article */
+.mwe-pt-article {
 	font-size: 1.2em;
+}
+
+.mwe-pt-page-title {
 	font-weight: bold;
 }
 
@@ -22,7 +39,6 @@
 }
 
 .mwe-pt-metadata {
-	font-size:1.2em;
 }
 
 .mwe-pt-metadata-warning {
@@ -30,7 +46,11 @@
 	font-weight: bold;
 }
 
+/* info about the article's author */
+.mwe-pt-author {
+}
+
+/* the article snippet */
 .mwe-pt-snippet {
 	color: #bebebe;
 }
-

@@ -321,6 +321,7 @@ class ArticleMetadata {
 			$metaData[$row->page_id]['creation_date'] = $row->creation_date;
 			$metaData[$row->page_id]['rev_count'] = $row->rev_count;
 			$metaData[$row->page_id]['title'] = $title->getPrefixedText();
+			$metaData[$row->page_id]['partial_url'] = $title->getPartialURL();
 			$metaData[$row->page_id]['patrol_status'] = $row->ptrp_triaged;
 		}
 		// Remove any non-existing page_id from $this->mPageId

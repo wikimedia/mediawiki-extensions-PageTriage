@@ -26,4 +26,5 @@ VALUES
 ('user_creation_date', 'User registration date'),
 ('user_autoconfirmed', 'Check if user is autoconfirmed' ),
 ('user_bot', 'Check if user is in bot group'),
-('user_block_status', 'User block status');
+('user_block_status', 'User block status'),
+('internal_url', 'Internal link fragment');

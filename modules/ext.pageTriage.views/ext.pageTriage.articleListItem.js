@@ -1,57 +1,10 @@
 $( function() {
 	// view for the article list
 
-
-	// TODO: find a way to insert these templates raw with RL instead of appending them to
-	// the DOM with javascript later (which is lame)
-
-	// This template is repeated many times for each element in list view
-	// TODO there's some words in here which need to become wfMsg() calls
-	$( "#backboneTemplates" ).append('<script type="text/template" id="listItemTemplate"> \
-			<div class="mwe-pt-article-row"> \
-				<div class="mwe-pt-status-icon"> \
-				<% if ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) { %> \
-					[DEL] <!-- deleted --> \
-				<% } else if ( patrol_status == "1" ) { %> \
-					[PTR] <!-- patrolled --> \
-				<% } else { %> \
-					[NEW] <!-- not patrolled --> \
-				<% } %> \
-				</div> \
-				<div class="mwe-pt-info-pane"> \
-				<div> \
-				<span class="mwe-pt-page-title"><%= title %></span> \
-				<span class="mwe-pt-histlink">(<%= gM( "pagetriage-hist" ) %>)</span> \
-				<span class="mwe-pt-metadata"> \
-				&#xb7; \
-				<%= gM( "pagetriage-bytes", page_len ) %> \
-				&#xb7; \
-				<%= gM( "pagetriage-edits", rev_count ) %> \
-				&#xb7; \
-				<% if( category_count == "0" ) { %> \
-					<span class="mwe-pt-metadata-warning"><%= gM( "pagetriage-no-categories" ) %></span> \
-				<% } else { %> \
-					<%= gM( "pagetriage-categories", category_count ) %> \
-				<% } %> \
-				<% if( linkcount == "0" ) { %> \
-					&#xb7; <span class="mwe-pt-metadata-warning"><%= gM("pagetriage-orphan") %></span> \
-				<% } %> \
-				</span> \
-				</div> \
-				<div class="mwe-pt-snippet"> \
-				<%= snippet %> \
-				</div> \
-				</div> \
-			</div> \
-			<br/> \
-		</script>'
-	);
-
 	// instantiate the collection of articles
 	var articles = new mw.pageTriage.ArticleList;
 
 	// single list item
-	// TODO: move this into its own file?
 	var ListItem = Backbone.View.extend( {
 		tagName: "div",
 		template: _.template( $( "#listItemTemplate" ).html() ),
@@ -106,5 +59,6 @@ $( function() {
 
 	} );
 
+	// create an instance of the list view, which makes everything go.
 	var list = new ListView();
 } );
