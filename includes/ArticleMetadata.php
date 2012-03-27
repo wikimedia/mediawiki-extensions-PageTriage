@@ -435,21 +435,29 @@ class ArticleMetadata {
 		}
 		
 		$res = $dbr->select(
-				array( 'revision', 'user' ),
-				array( 'rev_page AS page_id', 'user_id', 'user_name', 'user_real_name', 'user_registration', 'user_editcount' ),
-				array( 'rev_id' => $revId, 'rev_user = user_id' ),
+				array( 'revision', 'user', 'ipblocks' ),
+				array( 'rev_page AS page_id', 'user_id', 'user_name', 'user_real_name', 'user_registration', 'user_editcount', 'ipb_id', 'rev_user_text' ),
+				array( 'rev_id' => $revId ),
 				__METHOD__,
-				array()
+				array(),
+				array( 'user' => array( 'LEFT JOIN', 'rev_user = user_id' ), 'ipblocks' => array( 'LEFT JOIN', 'rev_user = ipb_user AND rev_user_text = ipb_address' ) )
 		);
 		
 		foreach ( $res as $row ) {
-			$user = User::newFromRow( $row );
-			$metaData[$row->page_id]['user_name'] = $user->getName();
-			$metaData[$row->page_id]['user_editcount'] = $user->getEditCount();
-			$metaData[$row->page_id]['user_creation_date'] = wfTimestamp( TS_MW, $user->getRegistration() );
-			$metaData[$row->page_id]['user_autoconfirmed'] = $user->isAllowed( 'autoconfirmed' ) ? '1' : '0';
-			$metaData[$row->page_id]['user_bot'] = $user->isAllowed( 'bot' ) ? '1' : '0';
-			$metaData[$row->page_id]['user_block_status'] = $user->isBlocked() ? '1' : '0';
+			if ( $row->user_id ) {
+				$user = User::newFromRow( $row );
+				$metaData[$row->page_id]['user_name'] = $user->getName();
+				$metaData[$row->page_id]['user_editcount'] = $user->getEditCount();
+				$metaData[$row->page_id]['user_creation_date'] = wfTimestamp( TS_MW, $user->getRegistration() );
+				$metaData[$row->page_id]['user_autoconfirmed'] = $user->isAllowed( 'autoconfirmed' ) ? '1' : '0';
+				$metaData[$row->page_id]['user_bot'] = $user->isAllowed( 'bot' ) ? '1' : '0';
+				$metaData[$row->page_id]['user_block_status'] = $row->ipb_id ? '1' : '0';	
+			} else {
+				$metaData[$row->page_id]['user_name'] = $row->rev_user_text;
+				$metaData[$row->page_id]['user_autoconfirmed'] = '0';
+				$metaData[$row->page_id]['user_bot'] = '0';
+				$metaData[$row->page_id]['user_block_status'] = $row->ipb_id ? '1' : '0';		
+			}
 		}
 	}
 
