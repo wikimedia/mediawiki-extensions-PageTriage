@@ -22,6 +22,12 @@ $messages['en'] = array(
 	'pagetriage-categories' => '$1 {{PLURAL:$1|category|categories}}',
 	'pagetriage-no-categories' => 'No categories',
 	'pagetriage-orphan' => 'Orphan',
+	'pagetriage-no-author' => 'No author information present',
+	'pagetriage-byline' => 'By $1',
+	'pagetriage-editcount' => '$1 edits since $2',
+	'pagetriage-author-not-autoconfirmed' => 'Non-autoconfirmed',
+	'pagetriage-author-blocked' => 'Blocked',
+	'pagetriage-author-bot' => 'Bot',
 );
 
 /**
@@ -37,4 +43,12 @@ $messages['qqq'] = array(
 	'pagetriage-categories' => 'The number of categories in the article',
 	'pagetriage-no-categories' => 'Label indicating an article with no categories',
 	'pagetriage-orphan' => 'Label indicating an article has no external links (orphan)',
+	'pagetriage-no-author' => 'Error message for missing article author information',
+	'pagetriage-byline' => 'Text indicating the article author. $1 is the author username',
+	'pagetriage-editcount' => 'Display of article author\'s editing experience. $1 is total edit count, $2 is author\'s join date',
+	'pagetriage-author-not-autoconfirmed' => 'String indicating that the author was not yet autoconfirmed when the article was last edited',
+	'pagetriage-author-blocked' => 'String indicating that the author was blocked when the article was last edited',
+	'pagetriage-author-bot' => 'String indicating that the author is a bot',
+	
+	
 );

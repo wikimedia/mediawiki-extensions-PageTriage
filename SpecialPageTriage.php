@@ -116,7 +116,30 @@ class SpecialPageTriage extends SpecialPage {
 								</span>
 							</div>
 							<div class="mwe-pt-author">
-							Author info goes here...
+							<% if( typeof( user_name ) != 'undefined' ) { %>
+								<%= gM( 'pagetriage-byline', user_name ) %>
+								<span class="mwe-pt-talk-contribs">(talk &#xb7; contribs)</span>
+								&#xb7;
+								<%= gM( 'pagetriage-editcount', user_editcount, user_creation_date ) %>
+								<% if( user_bot == "1" ) { %>
+									&#xb7;
+									<%= gM( 'pagetriage-author-bot' ) %>
+								<% } %>
+								<% if( user_autoconfirmed == "0" ) { %>
+									&#xb7;
+									<span class="mwe-pt-metadata-warning">
+									<%= gM( 'pagetriage-author-not-autoconfirmed' ) %>
+									</span>
+								<% } %>
+								<% if( user_block_status == "1" ) { %>
+									&#xb7;
+									<span class="mwe-pt-metadata-warning">
+									<%= gM( 'pagetriage-author-blocked' ) %>
+									</span>
+								<% } %>
+							<% } else { %>
+								<%= gM('pagetriage-no-author') %>
+							<% } %>
 							</div>
 							<div class="mwe-pt-snippet">
 								<%= snippet %>

@@ -58,6 +58,10 @@
 .mwe-pt-author {
 }
 
+.mwe-pt-talk-contribs {
+	font-size: 0.8em;
+}
+
 /* the article snippet */
 .mwe-pt-snippet {
 	color: #bebebe;

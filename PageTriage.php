@@ -157,6 +157,13 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 		'pagetriage-no-categories',
 		'pagetriage-images',
 		'pagetriage-orphan',
+		'pagetriage-no-author',
+		'pagetriage-byline',
+		'pagetriage-editcount',
+		'pagetriage-author-not-autoconfirmed',
+		'pagetriage-author-blocked',
+		'pagetriage-author-bot',
+		
 	)
 );
 
