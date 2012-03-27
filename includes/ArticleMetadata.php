@@ -303,8 +303,6 @@ class ArticleMetadata {
 	 * @param $metaData array
 	 */
 	protected function compileArticleBasicData( &$metaData ) {
-		global $wgLang;
-
 		$dbr = wfGetDB( DB_SLAVE );
 
 		// Article page length, creation date, number of edit, title, article triage status
@@ -376,10 +374,43 @@ class ArticleMetadata {
 				__METHOD__
 		);
 		foreach ( $res as $row ) {
-			$metaData[$row->page_id]['snippet'] = $wgLang->truncate( $row->old_text, 150 );
+			$metaData[$row->page_id]['snippet'] = self::generateArticleSnippet( $row->old_text ); 
 		}
 
 		return true;
+	}
+	
+	/**
+	 * Generate article snippet for listview from article text
+	 * @param $text string - page text
+	 * @return string
+	 */
+	public static function generateArticleSnippet( $text ) {
+		global $wgLang;
+
+		$attempt = 1;
+		$openCurPos  = strpos($text, '{{');
+		$closeCurPos = strpos($text, '}}');
+
+		while( $openCurPos !== false && $closeCurPos !== false && $openCurPos < $closeCurPos ) {
+			// replace all templates with empty string
+			$text = preg_replace( '/\{\{[^\{]((?!\{\{).)*?\}\}/is', '', $text );
+
+  	  		$openCurPos  = strpos($text, '{{');
+  	  		$closeCurPos = strpos($text, '}}');
+
+  	  		$attempt++;
+  	  		// only try 5 nested levels at max
+			if ( $attempt > 5 ) {
+				break;
+  	  		}
+  	  	}
+
+  	  	// stip out non-useful data for snippet
+  	  	$text = str_replace( array('{', '}'), '', $text );
+  	  	$text = trim( strip_tags( MessageCache::singleton()->parse( $text )->getText() ) );
+
+		return $wgLang->truncate( $text, 150 );
 	}
 
 	/**
