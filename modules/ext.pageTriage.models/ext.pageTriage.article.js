@@ -13,9 +13,7 @@ $( function() {
 	// object created therein.
 	mw.pageTriage.ArticleList = Backbone.Collection.extend( {
 		model: mw.pageTriage.Article,
-		url: mw.config.get('wgServer') +
-			mw.config.get('wgScriptPath') +
-			'/api.php?action=pagetriagelist&format=json',
+		url: mw.util.wikiScript( 'api' ) + '?action=pagetriagelist&format=json',
 
 		parse: function( response ) {
 			// extract the useful bits of json.
