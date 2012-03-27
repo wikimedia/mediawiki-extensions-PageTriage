@@ -1,6 +1,14 @@
 
-.mwe-pt-article-row {
-	width: 100%;
+.mwe-pt-info-pane-even {
+	background-color: #efefef;
+}
+
+.mwe-pt-info-pane-odd {
+	background-color: white;
+}
+
+.mwe-pt-info-pane {
+	margin-left: 50px;
 }
 
 .mwe-pt-status-icon {
@@ -19,10 +27,6 @@
 
 .mwe-pt-status-icon-deleted {
 	background-color: #b3b3b3;
-}
-
-.mwe-pt-info-pane {
-	margin-left: 50px;
 }
 
 /* info about the article */
@@ -44,6 +48,10 @@
 .mwe-pt-metadata-warning {
 	color: red;
 	font-weight: bold;
+}
+
+.mwe-pt-creation-date {
+	float: right;
 }
 
 /* info about the article's author */

@@ -69,9 +69,8 @@ class SpecialPageTriage extends SpecialPage {
 		
 		// this template is repeated many times, once for each item in list view.
 		$triageInterface .= <<<HTML
-			<div id="backboneTemplates">
 				<script type="text/template" id="listItemTemplate">
-					<div class="mwe-pt-article-row">
+					<div id="mwe-pt-article-row">
 						<% if ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) { %>
 							<div class="mwe-pt-status-icon mwe-pt-status-icon-deleted">
 								[DEL] <!-- deleted -->
@@ -86,7 +85,11 @@ class SpecialPageTriage extends SpecialPage {
 							</div>
 						<% } %>
 						</div>
-						<div class="mwe-pt-info-pane">
+						<% if ( position % 2 == 0 ) { %>
+							<div class="mwe-pt-info-pane mwe-pt-info-pane-even">
+						<% } else { %>
+							<div class="mwe-pt-info-pane mwe-pt-info-pane-odd">
+						<% } %>
 							<div class="mwe-pt-article">
 								<span class="mwe-pt-page-title"><a href="<%= partial_url %>"><%= title %></a></span>
 								<span class="mwe-pt-histlink">
@@ -107,17 +110,20 @@ class SpecialPageTriage extends SpecialPage {
 											&#xb7; <span class="mwe-pt-metadata-warning"><%= gM("pagetriage-orphan") %></span>
 										<% } %>
 								</span>
+								<span class="mwe-pt-creation-date">
+									<!-- TODO: format nicely, but remember to also make localizable... -->
+									<%= creation_date %>
+								</span>
 							</div>
 							<div class="mwe-pt-author">
+							Author info goes here...
 							</div>
 							<div class="mwe-pt-snippet">
 								<%= snippet %>
 							</div>
 						</div>
 					</div>
-					<br/>
 				</script>
-			</div>
 HTML;
 				
 		// Get the list of articles

@@ -4,6 +4,11 @@ $( function() {
 	// instantiate the collection of articles
 	var articles = new mw.pageTriage.ArticleList;
 
+	// set the default sort order.
+	articles.comparator = function( article ) {
+		return -article.get( "creation_date" );
+	};
+
 	// single list item
 	var ListItem = Backbone.View.extend( {
 		tagName: "div",
@@ -30,6 +35,7 @@ $( function() {
 		initialize: function() {
 
 			// these events are triggered when items are added to the articles collection
+			this.position = 0;
 			articles.bind( 'add', this.addOne, this );
 			articles.bind( 'reset', this.addAll, this );
 		
@@ -41,11 +47,19 @@ $( function() {
 		},
 
 		render: function() {
+			this.position = 0;
 			// TODO: refresh the view (show/hide the parts that aren't attached to the ListItem view)
 		},
 
 		// add a single article to the list
 		addOne: function( article ) {
+			// define position, for making alternating background colors.
+			// this is added at the last minute, so it gets updated when the sort changes.
+			if(! this.position ) {
+				this.position = 0;
+			}
+			article.set( 'position', this.position++ );
+			
 			// pass in the specific article instance
 			var view = new ListItem( { model: article } );
 			this.$( "#listView" ).append( view.render().el );
