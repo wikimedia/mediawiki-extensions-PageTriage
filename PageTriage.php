@@ -119,7 +119,8 @@ $ptResourceTemplate = array(
 $wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + array(
 	'scripts' => array(
 		'external/underscore.js',
-		'external/backbone.js'
+		'external/backbone.js', // required for underscore
+		'external/date.js'
 	)
 );
 
