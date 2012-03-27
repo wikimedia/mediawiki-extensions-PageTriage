@@ -91,7 +91,7 @@ class SpecialPageTriage extends SpecialPage {
 							<div class="mwe-pt-info-pane mwe-pt-info-pane-odd">
 						<% } %>
 							<div class="mwe-pt-article">
-								<span class="mwe-pt-page-title"><a href="<%= partial_url %>"><%= title %></a></span>
+								<span class="mwe-pt-page-title"><a href="<%= mw.util.wikiGetlink( title ) %>"><%= title %></a></span>
 								<span class="mwe-pt-histlink">
 									(<a href="<%= mw.config.get("wgScriptPath") + "/index.php?title=" + partial_url + "&action=history" %>"><%= gM( "pagetriage-hist" ) %></a>)
 								</span>
@@ -111,16 +111,20 @@ class SpecialPageTriage extends SpecialPage {
 										<% } %>
 								</span>
 								<span class="mwe-pt-creation-date">
-									<!-- TODO: format nicely, but remember to also make localizable... -->
-									<%= creation_date %>
+									<%= creation_date_pretty %>
 								</span>
 							</div>
 							<div class="mwe-pt-author">
 							<% if( typeof( user_name ) != 'undefined' ) { %>
-								<%= gM( 'pagetriage-byline', user_name ) %>
-								<span class="mwe-pt-talk-contribs">(talk &#xb7; contribs)</span>
+								<%= gM( 'pagetriage-byline' ) %>
+								<a href="<%= user_title.getUrl() %>"><%= user_name %></a>
+								<span class="mwe-pt-talk-contribs">
+									(<a href="<%= user_talk_title.getUrl() %>">talk</a>
+									&#xb7;
+									<a href="<%= user_contribs_title.getUrl() %>">contribs</a>)
+								</span>
 								&#xb7;
-								<%= gM( 'pagetriage-editcount', user_editcount, user_creation_date ) %>
+								<%= gM( 'pagetriage-editcount', user_editcount, user_creation_date_pretty ) %>
 								<% if( user_bot == "1" ) { %>
 									&#xb7;
 									<%= gM( 'pagetriage-author-bot' ) %>

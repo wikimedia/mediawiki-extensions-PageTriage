@@ -120,7 +120,48 @@ $wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + array(
 	'scripts' => array(
 		'external/underscore.js',
 		'external/backbone.js', // required for underscore
-		'external/date.js'
+		'external/date.js',
+		'external/datejs-mw.js'
+	),
+	'messages' => array(
+		'sunday',
+		'monday',
+		'tuesday',
+		'wedneday',
+		'thursday',
+		'friday',
+		'saturday',
+		'sun',
+		'mon',
+		'tue',
+		'wed',
+		'thu',
+		'fri',
+		'sat',		
+		'january',
+		'february',
+		'march',
+		'april',
+		'may-long',
+		'june',
+		'july',
+		'august',
+		'september',
+		'october',
+		'november',
+		'december',
+		'jan',
+		'feb',
+		'mar',
+		'apr',
+		'may',
+		'jun',
+		'jul',
+		'aug',
+		'sep',
+		'oct',
+		'nov',
+		'dec'
 	)
 );
 
@@ -131,6 +172,7 @@ $wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + array(
 
 $wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + array(
 	'dependencies' => array(
+		'mediawiki.Title',
 		'ext.pageTriage.external'
 	),
 	'scripts' => array(
@@ -164,7 +206,9 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 		'pagetriage-author-not-autoconfirmed',
 		'pagetriage-author-blocked',
 		'pagetriage-author-bot',
-		
+		'pagetriage-creation-dateformat',
+		'pagetriage-user-creation-dateformat',
+		'pagetriage-special-contributions',
 	)
 );
 
