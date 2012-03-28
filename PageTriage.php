@@ -187,10 +187,11 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 		'ext.pageTriage.models'
 	),
 	'scripts' => array(
-		'ext.pageTriage.views/ext.pageTriage.articleListItem.js'
+		'ext.pageTriage.views/ext.pageTriage.listItem.js',
+		'ext.pageTriage.views/ext.pageTriage.listView.js'
 	),
 	'styles' => array(
-		'ext.pageTriage.views/ext.pageTriage.articleListItem.css'
+		'ext.pageTriage.views/ext.pageTriage.listItem.css'
 	),
 	'messages' => array(
 		'pagetriage-hist',
