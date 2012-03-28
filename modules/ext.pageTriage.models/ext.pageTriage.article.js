@@ -31,6 +31,7 @@ $( function() {
 					article.set( 'user_talk_title', new mw.Title( userName, mw.config.get('wgNamespaceIds')['user_talk'] ) );
 					article.set( 'user_contribs_title', new mw.Title( gM( 'pagetriage-special-contributions' ) + '/' + userName ) );
 				}
+				article.set( 'title_url', mw.util.wikiUrlencode( article.get( 'title' ) ) )
 			}
 
 		} ),

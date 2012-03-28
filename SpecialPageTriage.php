@@ -95,7 +95,7 @@ class SpecialPageTriage extends SpecialPage {
 							<div class="mwe-pt-article">
 								<span class="mwe-pt-page-title"><a href="<%= mw.util.wikiGetlink( title ) %>"><%= title %></a></span>
 								<span class="mwe-pt-histlink">
-									(<a href="<%= mw.config.get("wgScriptPath") + "/index.php?title=" + partial_url + "&action=history" %>"><%= gM( "pagetriage-hist" ) %></a>)
+									(<a href="<%= mw.config.get("wgScriptPath") + "/index.php?title=" + title_url + "&action=history" %>"><%= gM( "pagetriage-hist" ) %></a>)
 								</span>
 								<span class="mwe-pt-metadata">
 									&#xb7;
