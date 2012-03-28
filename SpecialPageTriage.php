@@ -70,26 +70,27 @@ class SpecialPageTriage extends SpecialPage {
 		// this template is repeated many times, once for each item in list view.
 		$triageInterface .= <<<HTML
 				<script type="text/template" id="listItemTemplate">
-					<div id="mwe-pt-article-row">
-						<% if ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) { %>
-							<div class="mwe-pt-status-icon mwe-pt-status-icon-deleted">
+					<% if ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) { %>
+						<div class="mwe-pt-article-row mwe-pt-deleted">
+							<div class="mwe-pt-status-icon">
 								[DEL] <!-- deleted -->
 							</div>
-						<% } else if ( patrol_status == "1" ) { %>
+					<% } else if ( patrol_status == "1" ) { %>
+						<div class="mwe-pt-article-row mwe-pt-triaged">
 							<div class="mwe-pt-status-icon mwe-pt-status-icon-triaged">
 								[TRI] <!-- triaged -->
 							</div>
-						<% } else { %>
+					<% } else { %>
+						<div class="mwe-pt-article-row mwe-pt-new">
 							<div class="mwe-pt-status-icon mwe-pt-status-icon-new">
-								[NEW] <!-- not patrolled -->
+								[NEW] <!-- not triaged -->
 							</div>
-						<% } %>
-						</div>
-						<% if ( position % 2 == 0 ) { %>
-							<div class="mwe-pt-info-pane mwe-pt-info-pane-even">
-						<% } else { %>
-							<div class="mwe-pt-info-pane mwe-pt-info-pane-odd">
-						<% } %>
+					<% } %>
+					<% if ( position % 2 == 0 ) { %>
+						<div class="mwe-pt-info-pane mwe-pt-info-pane-even">
+					<% } else { %>
+						<div class="mwe-pt-info-pane mwe-pt-info-pane-odd">
+					<% } %>
 							<div class="mwe-pt-article">
 								<span class="mwe-pt-page-title"><a href="<%= mw.util.wikiGetlink( title ) %>"><%= title %></a></span>
 								<span class="mwe-pt-histlink">

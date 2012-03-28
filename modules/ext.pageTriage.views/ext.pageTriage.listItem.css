@@ -9,8 +9,7 @@
 
 .mwe-pt-info-pane {
 	margin-left: 50px;
-	padding-bottom: 1em;
-	border: 2px;
+	padding: 0.5em 0.5em 0.6em 0.5em;
 }
 
 .mwe-pt-status-icon {
@@ -19,22 +18,27 @@
 	height: 50px;
 }
 
-.mwe-pt-status-icon-new {
+.mwe-pt-article-row {
+	border: 1px solid #ccc;
+	border-top: none;
+}
+
+.mwe-pt-article-row.mwe-pt-new {
 	background-color: #f2b3b3;
 }
 
-.mwe-pt-status-icon-triaged {
+.mwe-pt-article-row.mwe-pt-triaged {
 	background-color: #c3ead7;
 }
 
-.mwe-pt-status-icon-deleted {
+.mwe-pt-article-row.mwe-pt-deleted {
 	background-color: #b3b3b3;
 }
 
 /* info about the article */
 .mwe-pt-article {
-	font-size: 1.2em;
-	margin-left: 5px;
+	font-size: 1.1em;
+	line-height: 1.6em;
 }
 
 .mwe-pt-page-title {
