@@ -31,6 +31,10 @@ $messages['en'] = array(
 	'pagetriage-creation-dateformat' => 'HH:mm, d MMMM yyyy',
 	'pagetriage-user-creation-dateformat' => 'yyyy-MM-dd',
 	'pagetriage-special-contributions' => 'Special:Contributions',
+	'pagetriage-showing' => 'Showing',
+	'pagetriage-filter-list-prompt' => 'Filter List',
+	'pagetriage-article-count' => 'There are currently $1 $2 articles',
+	'pagetriage-viewing' => 'Viewing',
 );
 
 /**
@@ -55,4 +59,9 @@ $messages['qqq'] = array(
 	'pagetriage-creation-dateformat' => 'Format specifier for the article creation date. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers',
 	'pagetriage-user-creation-dateformat' => 'Format specifier for the author\'s account creation date. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers',
 	'pagetriage-special-contributions' => 'The name of Special:Contributions on this wiki',
+	'pagetriage-showing' => 'The label for which filters are being shown',
+	'pagetriage-filter-list-prompt' => 'Prompt to choose filters for the list view',
+	'pagetriage-article-count' => 'A description of the number of articles in the list. $1 is the count, $2 is the type (for example, "untriaged")',
+	'pagetriage-viewing' => 'Label for the sort-order buttons (oldest/newest)',
+	
 );

@@ -215,6 +215,10 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 		'pagetriage-creation-dateformat',
 		'pagetriage-user-creation-dateformat',
 		'pagetriage-special-contributions',
+		'pagetriage-showing',
+		'pagetriage-filter-list-prompt',
+		'pagetriage-article-count',
+		'pagetriage-viewing',
 	)
 );
 

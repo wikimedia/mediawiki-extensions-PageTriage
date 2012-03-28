@@ -1,12 +1,22 @@
 .mwe-pt-navigation-bar {
 	width: 100%;
 	background-color: #e6f0f6;
-	font-weight: bold;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
 }
 
 .sticky #mwe-pt-list-control-nav {
 	position: fixed;
 	top: 0;
 	left: 160px;
-	padding-left: 16px;
+	margin-left: 16px;
+}
+
+.mwe-pt-control-label {
+	padding-left: 1em;
+}
+
+.mwe-pt-control-label-right {
+	float: right;
+	padding-right: 1em;
 }

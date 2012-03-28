@@ -158,9 +158,10 @@ class SpecialPageTriage extends SpecialPage {
 				</script>
 				
 				<script type="text/template" id="listControlNavTemplate">
-					control navbar<br>
-					has some controls<br>
-					in it<br>
+					<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-showing' ) %></b> some things</span>
+					<span class="mwe-pt-control-label-right"><%= gM( 'pagetriage-article-count', 100, 'untriaged' ) %></span><br/>
+					<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-list-prompt' ) %> &#x25b8;</b></span><!-- &#x25be; is the down arrow -->
+					<span class="mwe-pt-control-label-right"><b><%= gM( 'pagetriage-viewing' ) %></b> Sort Controls</span>
 				</script>
 				
 				<script type="text/template" id="listStatsNavTemplate">
