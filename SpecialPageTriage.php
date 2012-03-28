@@ -62,13 +62,14 @@ class SpecialPageTriage extends SpecialPage {
 		// This will hold the HTML for the triage interface
 		$triageInterface = '';
 		
-		$triageInterface .= "<div id='pageTriageHeader'></div>";
+		$triageInterface .= "<div id='mwe-pt-list-control-nav' class='mwe-pt-navigation-bar'></div>";
 		// TODO: this should load with a spinner instead of "please wait"
-		$triageInterface .= "<div id='listView'>Please wait...</div>";
-		$triageInterface .= "<div id='pageTriageFooter'></div>";
+		$triageInterface .= "<div id='mwe-pt-list-view'>Please wait...</div>";
+		$triageInterface .= "<div id='mwe-pt-list-stats-nav' class='mwe-pt-navigation-bar'></div>";
 		
-		// this template is repeated many times, once for each item in list view.
+		// These are the templates that backbone/underscore render on the client.
 		$triageInterface .= <<<HTML
+				<!-- individual list item template -->
 				<script type="text/template" id="listItemTemplate">
 					<% if ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) { %>
 						<div class="mwe-pt-article-row mwe-pt-deleted">
@@ -155,6 +156,15 @@ class SpecialPageTriage extends SpecialPage {
 						</div>
 					</div>
 				</script>
+				
+				<script type="text/template" id="listControlNavTemplate">
+					control navbar
+				</script>
+				
+				<script type="text/template" id="listStatsNavTemplate">
+					stats navbar
+				</script>
+				
 HTML;
 				
 		// Get the list of articles

@@ -21,15 +21,22 @@ $( function() {
 			articles.bind( 'reset', this.addAll, this );
 		
 			// this event is triggered when the collection finishes loading.
-			articles.bind( 'all', this.render, this );
+			//articles.bind( 'all', this.render, this );
 
 			// on init, make sure to load the contents of the collection.
 			articles.fetch();
 		},
 
 		render: function() {
+			// reset the position indicator
 			this.position = 0;
-			// TODO: refresh the view (show/hide the parts that aren't attached to the ListItem view)
+			
+			// add the navigation bits
+			var controlNav = new mw.pageTriage.ListControlNav();
+			$( "#mwe-pt-list-control-nav").html( controlNav.render().el );
+			
+			var statsNav = new mw.pageTriage.ListStatsNav();
+			$( "#mwe-pt-list-stats-nav").html( statsNav.render().el );
 		},
 
 		// add a single article to the list
@@ -43,17 +50,18 @@ $( function() {
 			
 			// pass in the specific article instance
 			var view = new mw.pageTriage.ListItem( { model: article } );
-			this.$( "#listView" ).append( view.render().el );
+			this.$( "#mwe-pt-list-view" ).append( view.render().el );
 		},
 
 		// add all the items in the articles collection
 		addAll: function() {
-			$("#listView").empty(); // remove the spinner before displaying.
+			$("#mwe-pt-list-view").empty(); // remove the spinner before displaying.
 			articles.each( this.addOne );
 	    }
 
 	} );
 
 	// create an instance of the list view, which makes everything go.
-	var list = new mw.pageTriage.ListView();	
+	var list = new mw.pageTriage.ListView();
+	list.render();
 } );

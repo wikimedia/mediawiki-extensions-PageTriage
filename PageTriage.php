@@ -121,7 +121,8 @@ $wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + array(
 		'external/underscore.js',
 		'external/backbone.js', // required for underscore
 		'external/date.js',
-		'external/datejs-mw.js'
+		'external/datejs-mw.js',
+		'external/jquery.waypoints.js'
 	),
 	'messages' => array(
 		'sunday',
@@ -188,10 +189,14 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 	),
 	'scripts' => array(
 		'ext.pageTriage.views/ext.pageTriage.listItem.js',
+		'ext.pageTriage.views/ext.pageTriage.listControlNav.js',
+		'ext.pageTriage.views/ext.pageTriage.listStatsNav.js',
 		'ext.pageTriage.views/ext.pageTriage.listView.js'
 	),
 	'styles' => array(
-		'ext.pageTriage.views/ext.pageTriage.listItem.css'
+		'ext.pageTriage.views/ext.pageTriage.listItem.css',
+		'ext.pageTriage.views/ext.pageTriage.listControlNav.css',
+		'ext.pageTriage.views/ext.pageTriage.listStatsNav.css'
 	),
 	'messages' => array(
 		'pagetriage-hist',
