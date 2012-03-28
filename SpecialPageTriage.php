@@ -158,7 +158,9 @@ class SpecialPageTriage extends SpecialPage {
 				</script>
 				
 				<script type="text/template" id="listControlNavTemplate">
-					control navbar
+					control navbar<br>
+					has some controls<br>
+					in it<br>
 				</script>
 				
 				<script type="text/template" id="listStatsNavTemplate">

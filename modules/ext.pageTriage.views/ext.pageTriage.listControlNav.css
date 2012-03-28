@@ -3,3 +3,10 @@
 	background-color: #e6f0f6;
 	font-weight: bold;
 }
+
+.sticky #mwe-pt-list-control-nav {
+	position: fixed;
+	top: 0;
+	left: 160px;
+	padding-left: 16px;
+}

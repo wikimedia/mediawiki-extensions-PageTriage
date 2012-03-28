@@ -7,6 +7,12 @@ $( function() {
 
 		// listen for changes to the model and re-render.
 		initialize: function() {
+				$('.top').addClass('hidden');
+				$.waypoints.settings.scrollThrottle = 30;
+				$('#mwe-pt-list-control-nav').waypoint(function(event, direction) {
+					$(this).parent().toggleClass('sticky', direction === "down");
+					event.stopPropagation();
+				});
 		},
 
 		render: function() {
