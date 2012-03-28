@@ -1,3 +1,6 @@
+// Article represents the metadata for a single article.
+// ArticleList is a collection of articles for use in the list view
+//
 $( function() {
 	mw.pageTriage = {
 		Article: Backbone.Model.extend( {

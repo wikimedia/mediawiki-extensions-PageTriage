@@ -123,23 +123,25 @@ class SpecialPageTriage extends SpecialPage {
 									&#xb7;
 									<a href="<%= user_contribs_title.getUrl() %>">contribs</a>)
 								</span>
-								&#xb7;
-								<%= gM( 'pagetriage-editcount', user_editcount, user_creation_date_pretty ) %>
-								<% if( user_bot == "1" ) { %>
+								<% if( typeof ( user_editcount ) != 'undefined' ) { %>
 									&#xb7;
-									<%= gM( 'pagetriage-author-bot' ) %>
-								<% } %>
-								<% if( user_autoconfirmed == "0" ) { %>
-									&#xb7;
-									<span class="mwe-pt-metadata-warning">
-									<%= gM( 'pagetriage-author-not-autoconfirmed' ) %>
-									</span>
-								<% } %>
-								<% if( user_block_status == "1" ) { %>
-									&#xb7;
-									<span class="mwe-pt-metadata-warning">
-									<%= gM( 'pagetriage-author-blocked' ) %>
-									</span>
+									<%= gM( 'pagetriage-editcount', user_editcount, user_creation_date_pretty ) %>
+									<% if( user_bot == "1" ) { %>
+										&#xb7;
+										<%= gM( 'pagetriage-author-bot' ) %>
+									<% } %>
+									<% if( user_autoconfirmed == "0" ) { %>
+										&#xb7;
+										<span class="mwe-pt-metadata-warning">
+										<%= gM( 'pagetriage-author-not-autoconfirmed' ) %>
+										</span>
+									<% } %>
+									<% if( user_block_status == "1" ) { %>
+										&#xb7;
+										<span class="mwe-pt-metadata-warning">
+										<%= gM( 'pagetriage-author-blocked' ) %>
+										</span>
+									<% } %>
 								<% } %>
 							<% } else { %>
 								<%= gM('pagetriage-no-author') %>
