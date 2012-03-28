@@ -380,6 +380,7 @@ class ArticleMetadata {
 		foreach ( $res as $row ) {
 			if ( $row->user_id ) {
 				$user = User::newFromRow( $row );
+				$metaData[$row->page_id]['user_id'] = $user->getId();
 				$metaData[$row->page_id]['user_name'] = $user->getName();
 				$metaData[$row->page_id]['user_editcount'] = $user->getEditCount();
 				$metaData[$row->page_id]['user_creation_date'] = wfTimestamp( TS_MW, $user->getRegistration() );
@@ -387,6 +388,7 @@ class ArticleMetadata {
 				$metaData[$row->page_id]['user_bot'] = $user->isAllowed( 'bot' ) ? '1' : '0';
 				$metaData[$row->page_id]['user_block_status'] = $row->ipb_id ? '1' : '0';	
 			} else {
+				$metaData[$row->page_id]['user_id'] = 0;
 				$metaData[$row->page_id]['user_name'] = $row->rev_user_text;
 				$metaData[$row->page_id]['user_autoconfirmed'] = '0';
 				$metaData[$row->page_id]['user_bot'] = '0';
