@@ -21,6 +21,8 @@ $( function() {
 				if( article.get( 'user_creation_date' ) ) {
 					var user_creation_date_parsed = Date.parseExact( article.get( 'user_creation_date' ), 'yyyyMMddHHmmss' );
 					article.set( 'user_creation_date_pretty', user_creation_date_parsed.toString( gM( 'pagetriage-user-creation-dateformat' ) ) );
+				} else {
+					article.set( 'user_creation_date_pretty', '');
 				}
 				
 				var userName = article.get( 'user_name' );
