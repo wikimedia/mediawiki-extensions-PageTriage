@@ -54,7 +54,7 @@ class PageTriageUtil {
 		
 		$res = $dbr->selectRow( 
 			array( 'pagetriage_page' ),
-			array( 'COUNT(ptrp_id) AS total' ),
+			array( 'COUNT(ptrp_page_id) AS total' ),
 			array( 'ptrp_triaged' => 0 )
 		);
 
@@ -145,7 +145,7 @@ class PageTriageUtil {
 
 		$res = $dbr->selectRow(
 			array( 'pagetriage_page' ),
-			array( 'COUNT(ptrp_id) AS num' ),
+			array( 'COUNT(ptrp_page_id) AS num' ),
 			array( 'ptrp_triaged = 1', 'ptrp_timestamp > ' . $dbr->addQuotes( $dbr->timestamp( wfTimestamp( TS_UNIX ) - 7 * 24 * 60 * 60 ) ) ),
 			__METHOD__
 		);

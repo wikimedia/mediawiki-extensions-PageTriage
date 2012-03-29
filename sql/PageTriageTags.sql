@@ -21,7 +21,6 @@ VALUES
 ('page_len', 'Number of bytes of article'),
 ('creation_date', 'Article creation date'),
 ('snippet', 'Beginning of article snippet'),
-('partial_url', 'Internal link fragment'),
 ('user_name', 'User name'),
 ('user_editcount', 'User total edit'),
 ('user_creation_date', 'User registration date'),
