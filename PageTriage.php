@@ -186,7 +186,8 @@ $wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + array(
 $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 	'dependencies' => array(
 		'mediawiki.jqueryMsg',
-		'ext.pageTriage.models'
+		'ext.pageTriage.models',
+		'jquery.ui.button'
 	),
 	'scripts' => array(
 		'ext.pageTriage.views/ext.pageTriage.listItem.js',
@@ -220,6 +221,7 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 		'pagetriage-filter-list-prompt',
 		'pagetriage-article-count',
 		'pagetriage-viewing',
+		'pagetriage-triage'
 	)
 );
 

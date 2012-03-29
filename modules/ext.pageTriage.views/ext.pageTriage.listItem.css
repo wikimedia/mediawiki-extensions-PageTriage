@@ -9,7 +9,7 @@
 
 .mwe-pt-info-pane {
 	margin-left: 31px;
-	padding: 0.5em 0.5em 0.6em 0.5em;
+	padding: 0.5em 0.6em 0.6em 0.5em;
 }
 
 .mwe-pt-status-icon {
@@ -37,16 +37,25 @@
 }
 
 .mwe-pt-deleted .mwe-pt-status-icon {
+	/* @embed */
 	background-image: url('images/icon_marked_for_deletion.png');
 	background-repeat: no-repeat;
 }
 .mwe-pt-new .mwe-pt-status-icon {
+	/* @embed */
 	background-image: url('images/icon_not_triaged.png');
 	background-repeat: no-repeat;
 }
 .mwe-pt-triaged .mwe-pt-status-icon {
+	/* @embed */
 	background-image: url('images/icon_triaged.png');
 	background-repeat: no-repeat;
+}
+
+.mwe-pt-list-triage-button {
+	position: absolute;
+	top: 2.2em;
+	right: 0.6em;
 }
 
 /* info about the article */

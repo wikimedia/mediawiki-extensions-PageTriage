@@ -51,6 +51,10 @@ $( function() {
 			// pass in the specific article instance
 			var view = new mw.pageTriage.ListItem( { model: article } );
 			this.$( "#mwe-pt-list-view" ).append( view.render().el );
+			this.$( ".mwe-pt-list-triage-button" ).button({
+				label: mw.msg( 'pagetriage-triage' ),
+				icons: { primary:'ui-icon-search' }
+			});
 		},
 
 		// add all the items in the articles collection

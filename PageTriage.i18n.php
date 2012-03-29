@@ -35,6 +35,7 @@ $messages['en'] = array(
 	'pagetriage-filter-list-prompt' => 'Filter List',
 	'pagetriage-article-count' => 'There are currently $1 $2 articles',
 	'pagetriage-viewing' => 'Viewing',
+	'pagetriage-triage' => 'Triage',
 );
 
 /**
