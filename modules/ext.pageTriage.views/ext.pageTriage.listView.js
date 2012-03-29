@@ -32,9 +32,9 @@ $( function() {
 			this.position = 0;
 			
 			// add the navigation bits
-			var controlNav = new mw.pageTriage.ListControlNav();
-			$( "#mwe-pt-list-control-nav").html( controlNav.render().el );
-			
+			var controlNav = new mw.pageTriage.ListControlNav( { articles: articles } );
+			controlNav.render();
+
 			var statsNav = new mw.pageTriage.ListStatsNav();
 			$( "#mwe-pt-list-stats-nav").html( statsNav.render().el );
 		},

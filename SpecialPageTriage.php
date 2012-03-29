@@ -68,6 +68,7 @@ class SpecialPageTriage extends SpecialPage {
 		$triageInterface .= "<div id='mwe-pt-list-stats-nav' class='mwe-pt-navigation-bar'></div>";
 		
 		// These are the templates that backbone/underscore render on the client.
+		// It would be awesome if they lived in separate files, but we need to figure out how to make RL do that for us.
 		$triageInterface .= <<<HTML
 				<!-- individual list item template -->
 				<script type="text/template" id="listItemTemplate">
@@ -160,8 +161,17 @@ class SpecialPageTriage extends SpecialPage {
 				<script type="text/template" id="listControlNavTemplate">
 					<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-showing' ) %></b> some things</span>
 					<span class="mwe-pt-control-label-right"><%= gM( 'pagetriage-article-count', 100, 'untriaged' ) %></span><br/>
-					<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-list-prompt' ) %> &#x25b8;</b></span><!-- &#x25be; is the down arrow -->
+					<span id="mwe-pt-filter-dropdown-control" class="mwe-pt-control-label">
+						<b>
+							<%= gM( 'pagetriage-filter-list-prompt' ) %>
+							<span id="mwe-pt-dropdown-arrow">&#x25b8;</span>
+							<!--<span class="mwe-pt-dropdown-open">&#x25be;</span>-->
+						</b>
+					</span>
 					<span class="mwe-pt-control-label-right"><b><%= gM( 'pagetriage-viewing' ) %></b> Sort Controls</span>
+					<div id="mwe-pt-control-dropdown">
+						foo bar
+					</div>
 				</script>
 				
 				<script type="text/template" id="listStatsNavTemplate">

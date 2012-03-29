@@ -20,3 +20,26 @@
 	float: right;
 	padding-right: 1em;
 }
+
+.mwe-pt-control-dropdown {
+	visibility: hidden;
+	width: 250px
+	height: ;
+}
+
+#mwe-pt-control-dropdown {
+	position: absolute;
+	background-color: #bebebe;
+	left: 5em;
+	visibility: hidden;
+}
+
+#mwe-pt-filter-dropdown-control {
+	/* make this match the overall link color */
+	color: blue;
+}
+
+span:hover #mwe-pt-filter-dropdown-control {
+	/* TODO: make this actually work */
+	cursor: pointer;
+}
