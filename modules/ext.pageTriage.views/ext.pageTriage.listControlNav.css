@@ -1,12 +1,7 @@
 .mwe-pt-navigation-bar {
-	background-color: #e6f0f6;
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 	border: 1px solid #ccc;
-}
-
-#mwe-pt-list-stats-nav {
-	border-top: none;
 }
 
 .sticky #mwe-pt-list-control-nav {
@@ -35,7 +30,6 @@
 #mwe-pt-control-dropdown {
 	position: absolute;
 	z-index: 50;
-	background-color: #bebebe;
 	left: 5em;
 	visibility: hidden;
 }
