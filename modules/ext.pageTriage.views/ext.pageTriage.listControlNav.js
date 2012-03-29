@@ -51,8 +51,18 @@ $( function() {
 			
 			// the filter dropdown menu control
 			$( '#mwe-pt-filter-dropdown-control' ).click( function( e ) {
+				$( 'body' ).one( 'click', function() {
+					_this.toggleFilterMenu();
+				} );
+
+				// this event "covers up" the body event, which keeps meny from closing when
+				// the user clicks inside.
+				$( '#mwe-pt-control-dropdown' ).click( function( e ) {
+					e.stopPropagation();
+				} );
+
 				_this.toggleFilterMenu();
-				e.stopPropagation;
+				e.stopPropagation();
 			} );
 		},
 		
@@ -74,6 +84,6 @@ $( function() {
 				$( '#mwe-pt-dropdown-arrow' ).html( '&#x25be;' );
 				this.filterMenuVisible = 1;				
 			}
-		}
+		}		
 	} );
 } );
