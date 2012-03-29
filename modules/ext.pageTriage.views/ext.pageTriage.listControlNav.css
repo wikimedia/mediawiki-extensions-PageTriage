@@ -1,8 +1,12 @@
 .mwe-pt-navigation-bar {
-	width: 100%;
 	background-color: #e6f0f6;
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
+	border: 1px solid #ccc;
+}
+
+#mwe-pt-list-stats-nav {
+	border-top: none;
 }
 
 .sticky #mwe-pt-list-control-nav {
@@ -35,8 +39,7 @@
 }
 
 #mwe-pt-filter-dropdown-control {
-	/* make this match the overall link color */
-	color: blue;
+	color: #0645AD;
 }
 
 span:hover #mwe-pt-filter-dropdown-control {

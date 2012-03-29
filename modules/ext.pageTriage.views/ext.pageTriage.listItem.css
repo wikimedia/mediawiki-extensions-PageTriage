@@ -8,17 +8,20 @@
 }
 
 .mwe-pt-info-pane {
-	margin-left: 50px;
+	margin-left: 31px;
 	padding: 0.5em 0.5em 0.6em 0.5em;
 }
 
 .mwe-pt-status-icon {
-	float: left;
-	width: 50px;
-	height: 50px;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 21px;
+	height: 21px;
 }
 
 .mwe-pt-article-row {
+	position: relative;
 	border: 1px solid #ccc;
 	border-top: none;
 }
@@ -26,13 +29,24 @@
 .mwe-pt-article-row.mwe-pt-new {
 	background-color: #f2b3b3;
 }
-
 .mwe-pt-article-row.mwe-pt-triaged {
 	background-color: #c3ead7;
 }
-
 .mwe-pt-article-row.mwe-pt-deleted {
 	background-color: #b3b3b3;
+}
+
+.mwe-pt-deleted .mwe-pt-status-icon {
+	background-image: url('images/icon_marked_for_deletion.png');
+	background-repeat: no-repeat;
+}
+.mwe-pt-new .mwe-pt-status-icon {
+	background-image: url('images/icon_not_triaged.png');
+	background-repeat: no-repeat;
+}
+.mwe-pt-triaged .mwe-pt-status-icon {
+	background-image: url('images/icon_triaged.png');
+	background-repeat: no-repeat;
 }
 
 /* info about the article */

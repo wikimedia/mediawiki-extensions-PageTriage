@@ -74,19 +74,13 @@ class SpecialPageTriage extends SpecialPage {
 				<script type="text/template" id="listItemTemplate">
 					<% if ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) { %>
 						<div class="mwe-pt-article-row mwe-pt-deleted">
-							<div class="mwe-pt-status-icon">
-								[DEL] <!-- deleted -->
-							</div>
+							<div class="mwe-pt-status-icon">&#160;</div>
 					<% } else if ( patrol_status == "1" ) { %>
 						<div class="mwe-pt-article-row mwe-pt-triaged">
-							<div class="mwe-pt-status-icon mwe-pt-status-icon-triaged">
-								[TRI] <!-- triaged -->
-							</div>
+							<div class="mwe-pt-status-icon">&#160;</div>
 					<% } else { %>
 						<div class="mwe-pt-article-row mwe-pt-new">
-							<div class="mwe-pt-status-icon mwe-pt-status-icon-new">
-								[NEW] <!-- not triaged -->
-							</div>
+							<div class="mwe-pt-status-icon">&#160;</div>
 					<% } %>
 					<% if ( position % 2 == 0 ) { %>
 						<div class="mwe-pt-info-pane mwe-pt-info-pane-even">
