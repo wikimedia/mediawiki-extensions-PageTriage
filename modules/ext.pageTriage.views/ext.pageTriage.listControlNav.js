@@ -53,7 +53,8 @@ $( function() {
 			// set the width of the floating bar when the window resizes, if it's floating.
 			// the left nav is 176 pixels
 			// the right margin is 16 pixels
-			$( '#mwe-pt-list-control-nav' ).css( 'width', $(window).width() - 176 - 16 + "px" );
+			// border is 2 pixels
+			$( '#mwe-pt-list-control-nav' ).css( 'width', $(window).width() - 176 - 16 - 2 + "px" );
 		},
 		
 		toggleFilterMenu: function() {
