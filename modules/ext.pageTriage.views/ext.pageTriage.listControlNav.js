@@ -23,8 +23,8 @@ $( function() {
 			// do things that need doing on window resize
 			var resizeTimer;
 			$( window ).resize( function() {
-				clearTimeout(resizeTimer);
-				resizeTimer = setTimeout(this.resize, 100);
+				clearTimeout(mw.pageTriage.resizeTimer);
+				mw.pageTriage.resizeTimer = setTimeout(_this.resize, 100);
 			});
 								
 			// hover for the dropdown menu control
@@ -51,11 +51,12 @@ $( function() {
 			
 			// the filter dropdown menu control
 			$( '#mwe-pt-filter-dropdown-control' ).click( function( e ) {
+				// close the meny when the user clicks away
 				$( 'body' ).one( 'click', function() {
 					_this.toggleFilterMenu();
 				} );
 
-				// this event "covers up" the body event, which keeps meny from closing when
+				// this event "covers up" the body event, which keeps the menu from closing when
 				// the user clicks inside.
 				$( '#mwe-pt-control-dropdown' ).click( function( e ) {
 					e.stopPropagation();
