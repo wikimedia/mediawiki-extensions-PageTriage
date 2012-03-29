@@ -33,6 +33,7 @@
 
 #mwe-pt-control-dropdown {
 	position: absolute;
+	z-index: 50;
 	background-color: #bebebe;
 	left: 5em;
 	visibility: hidden;
