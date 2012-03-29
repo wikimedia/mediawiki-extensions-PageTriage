@@ -42,3 +42,7 @@ span:hover #mwe-pt-filter-dropdown-control {
 	/* TODO: make this actually work */
 	cursor: pointer;
 }
+
+.mwe-pt-control-options {
+	margin-left: 2em;
+}

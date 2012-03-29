@@ -62,10 +62,10 @@ class SpecialPageTriage extends SpecialPage {
 		// This will hold the HTML for the triage interface
 		$triageInterface = '';
 		
-		$triageInterface .= "<div id='mwe-pt-list-control-nav' class='mwe-pt-navigation-bar'></div>";
+		$triageInterface .= "<div id='mwe-pt-list-control-nav' class='mwe-pt-navigation-bar mwe-pt-control-gradient'></div>";
 		// TODO: this should load with a spinner instead of "please wait"
 		$triageInterface .= "<div id='mwe-pt-list-view'>Please wait...</div>";
-		$triageInterface .= "<div id='mwe-pt-list-stats-nav' class='mwe-pt-navigation-bar'></div>";
+		$triageInterface .= "<div id='mwe-pt-list-stats-nav' class='mwe-pt-navigation-bar mwe-pt-control-gradient'></div>";
 		
 		// These are the templates that backbone/underscore render on the client.
 		// It would be awesome if they lived in separate files, but we need to figure out how to make RL do that for us.
@@ -164,9 +164,41 @@ class SpecialPageTriage extends SpecialPage {
 						</b>
 					</span>
 					<span class="mwe-pt-control-label-right"><b><%= gM( 'pagetriage-viewing' ) %></b> Sort Controls</span>
-					<div id="mwe-pt-control-dropdown">
-						foo bar
+					<div id="mwe-pt-control-dropdown" class="mwe-pt-control-gradient shadow">
+					<form>
+						<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-show-heading' ) %></b></span>
+						<div class="mwe-pt-control-options">
+							<input type="checkbox" /> <%= gM( 'pagetriage-filter-triaged-edits' ) %> <br/>
+							<input type="checkbox" /> <%= gM( 'pagetriage-filter-nominated-for-deletion' ) %> <br/>
+							<input type="checkbox" /> <%= gM( 'pagetriage-filter-bot-edits' ) %> <br/>
+							<input type="checkbox" /> <%= gM( 'pagetriage-filter-redirects' ) %> <br/>
+						</div>
+						<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-namespace-heading' ) %></b></span>
+						<div class="mwe-pt-control-options">
+							<select id="mwe-pt-filter-namespace">
+								<option>(namespaces)</option>
+							</select>
+						</div>
+						<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-user-heading' ) %></b></span>
+						<div class="mwe-pt-control-options">
+							<input type=text id="mwe-pt-filter-user" />
+						</div>
+						<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-tag-heading' ) %></b></span>
+						<div class="mwe-pt-control-options">
+							<input type=text id="mwe-pt-filter-tag" />
+						</div>
+						<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-second-show-heading' ) %></b></span>
+						<div class="mwe-pt-control-options">
+							<input type="checkbox" /> <%= gM( 'pagetriage-filter-no-categories' ) %> <br/>
+							<input type="checkbox" /> <%= gM( 'pagetriage-filter-orphan' ) %> <br/>
+							<input type="checkbox" /> <%= gM( 'pagetriage-filter-non-autoconfirmed' ) %> <br/>
+							<input type="checkbox" /> <%= gM( 'pagetriage-filter-blocked' ) %> <br/>
+						</div>
+						<div class="mwe-pt-control-options">
+							<a class="mwe-pt-filter-set-button ui-button-green"></a>
+						</div>
 					</div>
+					</form>
 				</script>
 				
 				<script type="text/template" id="listStatsNavTemplate">

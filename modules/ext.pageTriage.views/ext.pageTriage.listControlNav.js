@@ -39,6 +39,13 @@ $( function() {
 			_this = this;
 			// render and return the template.  fill with the current model.
 			$( "#mwe-pt-list-control-nav").html( this.template() );
+
+			// make a button
+			$( ".mwe-pt-filter-set-button" ).button( {
+				label: mw.msg( 'pagetriage-filter-set-button' ) + ' &#x25b8;'
+			});
+			
+			
 			
 			// now that the template's been inserted, set up some events for controlling it
 			

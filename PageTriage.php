@@ -167,11 +167,6 @@ $wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + array(
 	)
 );
 
-/*$wgResourceModules['ext.pageTriage.core'] = $ptResourceTemplate + array(
-	'scripts' => 'ext.pageTriage.core/ext.pageTriage.core.js'
-);
-*/
-
 $wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + array(
 	'dependencies' => array(
 		'mediawiki.Title',
@@ -196,6 +191,7 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 		'ext.pageTriage.views/ext.pageTriage.listView.js'
 	),
 	'styles' => array(
+		'ext.pageTriage.views/ext.pageTriage.css', // stuff that's shared across all views
 		'ext.pageTriage.views/ext.pageTriage.listItem.css',
 		'ext.pageTriage.views/ext.pageTriage.listControlNav.css',
 		'ext.pageTriage.views/ext.pageTriage.listStatsNav.css'
@@ -221,7 +217,22 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 		'pagetriage-filter-list-prompt',
 		'pagetriage-article-count',
 		'pagetriage-viewing',
-		'pagetriage-triage'
+		'pagetriage-triage',
+		'pagetriage-show-only',
+		'pagetriage-filter-show-heading',
+		'pagetriage-filter-triaged-edits',
+		'pagetriage-filter-nominated-for-deletion',
+		'pagetriage-filter-bot-edits',
+		'pagetriage-filter-redirects',
+		'pagetriage-filter-namespace-heading',
+		'pagetriage-filter-user-heading',
+		'pagetriage-filter-tag-heading',
+		'pagetriage-filter-second-show-heading',
+		'pagetriage-filter-no-categories',
+		'pagetriage-filter-orphan',
+		'pagetriage-filter-non-autoconfirmed',
+		'pagetriage-filter-blocked',
+		'pagetriage-filter-set-button',
 	)
 );
 
