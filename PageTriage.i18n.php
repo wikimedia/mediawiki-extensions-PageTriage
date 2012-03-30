@@ -50,6 +50,7 @@ $messages['en'] = array(
 	'pagetriage-filter-non-autoconfirmed' => 'Are by non-Autoconfirmed users',
 	'pagetriage-filter-blocked' => 'Are by blocked users',
 	'pagetriage-filter-set-button' => 'Set Filters',
+	'pagetriage-stats-untriaged-age' => 'Article Ages: Average: $1, Oldest: $2',
 );
 
 /**
@@ -92,4 +93,5 @@ $messages['qqq'] = array(
 	'pagetriage-filter-non-autoconfirmed' => 'Checkbox text for articles by non-Autoconfirmed users',
 	'pagetriage-filter-blocked' => 'Checkbox text for articles by blocked users',
 	'pagetriage-filter-set-button' => 'Button text for the set filter button',
+	'pagetriage-stats-untriaged-age' => 'Navigation text displaying triage stats',
 );

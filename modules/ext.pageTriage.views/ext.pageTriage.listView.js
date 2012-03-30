@@ -33,15 +33,14 @@ $( function() {
 		render: function() {
 			// reset the position indicator
 			this.position = 0;
-			
-			var statsNav = new mw.pageTriage.ListStatsNav();
-			$( "#mwe-pt-list-stats-nav").html( statsNav.render().el );
 		},
 		
 		// add stats data to the navigation
 		addNav: function( stats ) {
 			var controlNav = new mw.pageTriage.ListControlNav( { model: stats } );
-			controlNav.render();	
+			controlNav.render();
+			var statsNav = new mw.pageTriage.ListStatsNav( { model: stats } );
+			$( "#mwe-pt-list-stats-nav").html( statsNav.render().el );
 		},
 
 		// add a single article to the list

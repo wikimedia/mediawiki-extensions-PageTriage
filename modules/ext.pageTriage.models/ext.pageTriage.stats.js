@@ -15,6 +15,12 @@ $( function() {
 		
 		formatMetadata: function ( stats ) {
 			stats.set( 'ptr_untriaged_article_count', stats.get( 'untriagedarticle' )['count'] );
+			stats.set( 'ptrAverage', 
+					stats.get( 'untriagedarticle' )['age-50th-percentile'] ? 
+					stats.get( 'untriagedarticle' )['age-50th-percentile'] : '' );
+			stats.set( 'ptrOldest', 
+					stats.get( 'untriagedarticle' )['age-100th-percentile'] ? 
+					stats.get( 'untriagedarticle' )['age-100th-percentile'] : '' );
 		},
 		url: mw.util.wikiScript( 'api' ) + '?action=pagetriagestats&format=json',
 

@@ -11,7 +11,7 @@ $( function() {
 
 		render: function() {
 			// insert the template into the document.  fill with the current model.
-			this.$el.html( this.template(  ) );
+			this.$el.html( this.template( this.model.toJSON() ) );
 			return this;
 		}		
 
