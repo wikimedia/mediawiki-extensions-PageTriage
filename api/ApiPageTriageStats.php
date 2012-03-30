@@ -17,7 +17,7 @@ class ApiPageTriageStats extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiPageTriageStatsNav.php $';
+		return __CLASS__ . ': $Id$';
 	}
 
 	public function getDescription() {
