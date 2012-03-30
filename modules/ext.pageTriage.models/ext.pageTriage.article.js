@@ -24,7 +24,7 @@ $( function() {
 				} else {
 					article.set( 'user_creation_date_pretty', '');
 				}
-				
+								
 				var userName = article.get( 'user_name' );
 				if( userName ) {
 					article.set( 'user_title', new mw.Title( userName, mw.config.get('wgNamespaceIds')['user'] ) );
@@ -41,7 +41,30 @@ $( function() {
 	// object created therein.
 	mw.pageTriage.ArticleList = Backbone.Collection.extend( {
 		model: mw.pageTriage.Article,
-		url: mw.util.wikiScript( 'api' ) + '?action=pagetriagelist&format=json',
+		
+		apiParams: {
+			namespace: 0,
+			/*
+			showbots: null,
+			showredirs: null,
+			showtriaged: null,
+			limit: 10,
+			namespace: 0,
+			no_category: 1,
+			no_inbound_links: 1,
+			non_autoconfirmed_users: 1,
+			blocked_users: 1,
+			*/
+		},
+		
+		url: function() {
+			var paramString = '';
+			for ( var key in this.apiParams ) {
+				paramString += '&' + key + '=' + this.apiParams[key];
+			}
+			var url = mw.util.wikiScript( 'api' ) + '?action=pagetriagelist&format=json' + paramString;
+			return url;
+		},
 
 		parse: function( response ) {
 			// extract the useful bits of json.

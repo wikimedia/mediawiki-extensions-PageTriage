@@ -40,14 +40,12 @@ $( function() {
 			// render and return the template.  fill with the current model.
 			$( "#mwe-pt-list-control-nav").html( this.template( this.model.toJSON() ) );
 
+			// now that the template's been inserted, set up some events for controlling it
+
 			// make a button
 			$( ".mwe-pt-filter-set-button" ).button( {
 				label: mw.msg( 'pagetriage-filter-set-button' ) + ' &#x25b8;'
 			});
-			
-			
-			
-			// now that the template's been inserted, set up some events for controlling it
 			
 			// the filter dropdown menu control
 			$( '#mwe-pt-filter-dropdown-control' ).click( function( e ) {

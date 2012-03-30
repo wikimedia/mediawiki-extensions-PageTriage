@@ -176,7 +176,14 @@ class SpecialPageTriage extends SpecialPage {
 						<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-namespace-heading' ) %></b></span>
 						<div class="mwe-pt-control-options">
 							<select id="mwe-pt-filter-namespace">
-								<option>(namespaces)</option>
+								<%
+									var wgFormattedNamespaces = mw.config.get( 'wgFormattedNamespaces' );
+									var nsOptions = '';
+									for ( var key in wgFormattedNamespaces ) {
+										nsOptions += String('<option value=' + String(key) + '>' + wgFormattedNamespaces[key] + '</option>');
+									}
+									print(nsOptions);
+								%>
 							</select>
 						</div>
 						<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-user-heading' ) %></b></span>
@@ -202,7 +209,7 @@ class SpecialPageTriage extends SpecialPage {
 				</script>
 				
 				<script type="text/template" id="listStatsNavTemplate">
-					<% if ( ptrAverage ) { %> <%= gM( 'pagetriage-stats-untriaged-age', ptrAverage, ptrOldest ) %> <% } %>
+					stats navbar
 				</script>
 				
 HTML;
