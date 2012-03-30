@@ -61,6 +61,7 @@ $wgAutoloadClasses['PageTriageHooks'] = $dir . 'PageTriage.hooks.php';
 
 $wgAutoloadClasses['ApiPageTriageList'] = $dir . 'api/ApiPageTriageList.php';
 $wgAutoloadClasses['ApiPageTriageGetMetadata'] = $dir . 'api/ApiPageTriageGetMetadata.php';
+$wgAutoloadClasses['ApiPageTriageStats'] = $dir . 'api/ApiPageTriageStats.php';
 
 // custom exceptions
 $wgAutoloadClasses['MWArticleMetadataMissingPageIdException'] = $dir . 'includes/ArticleMetadata.php';
@@ -70,6 +71,7 @@ $wgAutoloadClasses['MWPageTriageUtilInvalidNumberException'] = $dir . 'includes/
 // api modules
 $wgAPIModules['pagetriagelist'] = 'ApiPageTriageList';
 $wgAPIModules['pagetriagegetmetadata'] = 'ApiPageTriageGetMetadata';
+$wgAPIModules['pagetriagestats'] = 'ApiPageTriageStats';
 
 // hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efPageTriageSchemaUpdates';
@@ -173,7 +175,8 @@ $wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + array(
 		'ext.pageTriage.external'
 	),
 	'scripts' => array(
-		'ext.pageTriage.models/ext.pageTriage.article.js'
+		'ext.pageTriage.models/ext.pageTriage.article.js',
+		'ext.pageTriage.models/ext.pageTriage.stats.js'
 	)
 );
 

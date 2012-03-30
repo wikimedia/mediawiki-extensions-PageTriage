@@ -3,12 +3,13 @@ $( function() {
 
 	// instantiate the collection of articles
 	var articles = new mw.pageTriage.ArticleList;
+	var stats = new mw.pageTriage.Stats;
 
 	// set the default sort order.
 	articles.comparator = function( article ) {
 		return -article.get( "creation_date" );
 	};
-	
+
 	// overall list view
 	// currently, this is the main application view.
 	mw.pageTriage.ListView = Backbone.View.extend( {
@@ -19,24 +20,28 @@ $( function() {
 			this.position = 0;
 			articles.bind( 'add', this.addOne, this );
 			articles.bind( 'reset', this.addAll, this );
+			stats.bind( 'change', this.addNav, this );
 		
 			// this event is triggered when the collection finishes loading.
 			//articles.bind( 'all', this.render, this );
 
 			// on init, make sure to load the contents of the collection.
 			articles.fetch();
+			stats.fetch();
 		},
 
 		render: function() {
 			// reset the position indicator
 			this.position = 0;
 			
-			// add the navigation bits
-			var controlNav = new mw.pageTriage.ListControlNav( { articles: articles } );
-			controlNav.render();
-
 			var statsNav = new mw.pageTriage.ListStatsNav();
 			$( "#mwe-pt-list-stats-nav").html( statsNav.render().el );
+		},
+		
+		// add stats data to the navigation
+		addNav: function( stats ) {
+			var controlNav = new mw.pageTriage.ListControlNav( { model: stats } );
+			controlNav.render();	
 		},
 
 		// add a single article to the list

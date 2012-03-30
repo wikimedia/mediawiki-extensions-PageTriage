@@ -38,7 +38,7 @@ $( function() {
 		render: function() {
 			_this = this;
 			// render and return the template.  fill with the current model.
-			$( "#mwe-pt-list-control-nav").html( this.template() );
+			$( "#mwe-pt-list-control-nav").html( this.template( this.model.toJSON() ) );
 
 			// make a button
 			$( ".mwe-pt-filter-set-button" ).button( {

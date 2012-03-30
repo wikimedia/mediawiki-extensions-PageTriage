@@ -155,7 +155,7 @@ class SpecialPageTriage extends SpecialPage {
 				
 				<script type="text/template" id="listControlNavTemplate">
 					<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-showing' ) %></b> some things</span>
-					<span class="mwe-pt-control-label-right"><%= gM( 'pagetriage-article-count', 100, 'untriaged' ) %></span><br/>
+					<span class="mwe-pt-control-label-right"><%= gM( 'pagetriage-article-count', ptr_untriaged_article_count, 'untriaged' ) %></span><br/>
 					<span id="mwe-pt-filter-dropdown-control" class="mwe-pt-control-label">
 						<b>
 							<%= gM( 'pagetriage-filter-list-prompt' ) %>
