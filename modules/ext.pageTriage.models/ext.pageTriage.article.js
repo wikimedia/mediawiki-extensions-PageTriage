@@ -57,19 +57,34 @@ $( function() {
 			*/
 		},
 		
+		initialize: function( options ) {
+			this.eventBus = options.eventBus;
+			this.eventBus.bind( "filterSet", this.setParams );
+			//this.eventBus.bind( "paramsSet", this.fetch );
+		},
+		
 		url: function() {
 			var paramString = '';
 			for ( var key in this.apiParams ) {
 				paramString += '&' + key + '=' + this.apiParams[key];
 			}
 			var url = mw.util.wikiScript( 'api' ) + '?action=pagetriagelist&format=json' + paramString;
+			console.log('fetching ' + url);
 			return url;
 		},
 
 		parse: function( response ) {
 			// extract the useful bits of json.
 			return response.pagetriagelist.pages;
+		},
+		
+		setParams: function( apiParams ) {
+			console.log('setParams called with ' + apiParams);
+			
+			this.apiParams = apiParams;
+			this.eventBus.trigger( "paramsSet", this.apiParams );
 		}
+		
 	} );
 	
 } );

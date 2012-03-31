@@ -6,9 +6,11 @@ $( function() {
 		template: _.template( $( "#listControlNavTemplate" ).html() ),
 		filterMenuVisible: 0,
 
-		initialize: function() {
+		initialize: function( options ) {
 			var _this = this;
-			
+
+			this.eventBus = options.eventBus; // access the eventBus
+
 			// make a floating top navbar
 			// TODO: there's a bump when the control div detaches from the page.
 			//       fill some element under it to make it scroll smoothly
@@ -26,6 +28,11 @@ $( function() {
 				clearTimeout(mw.pageTriage.resizeTimer);
 				mw.pageTriage.resizeTimer = setTimeout(_this.resize, 100);
 			});
+
+			this.eventBus.bind( "renderStats", function( stats ) {
+				// fill in the counter when the stats view gets loaded.
+				$( "#mwe-pt-control-stats" ).html( gM( 'pagetriage-article-count', stats.get('ptr_untriaged_article_count'), 'untriaged' ) );
+			} );
 								
 			// hover for the dropdown menu control
 			/*
@@ -38,14 +45,17 @@ $( function() {
 		render: function() {
 			_this = this;
 			// render and return the template.  fill with the current model.
-			$( "#mwe-pt-list-control-nav").html( this.template( this.model.toJSON() ) );
+			$( "#mwe-pt-list-control-nav").html( this.template( ) );
 
+			//
 			// now that the template's been inserted, set up some events for controlling it
-
+			//
+			
 			// make a button
-			$( ".mwe-pt-filter-set-button" ).button( {
-				label: mw.msg( 'pagetriage-filter-set-button' ) + ' &#x25b8;'
-			});
+			$( ".mwe-pt-filter-set-button" ).button().click( function( e ) {
+				_this.filterSet();
+				e.stopPropagation();
+			} );
 			
 			// the filter dropdown menu control
 			$( '#mwe-pt-filter-dropdown-control' ).click( function( e ) {
@@ -62,7 +72,7 @@ $( function() {
 
 				_this.toggleFilterMenu();
 				e.stopPropagation();
-			} );
+			} );			
 		},
 		
 		resize: function() {
@@ -83,6 +93,21 @@ $( function() {
 				$( '#mwe-pt-dropdown-arrow' ).html( '&#x25be;' );
 				this.filterMenuVisible = 1;				
 			}
-		}		
+		},
+		
+		filterSet: function() {
+			console.log('clicked');
+			this.toggleFilterMenu();
+			
+			// fetch the values from the menu
+			var apiParams = {};
+			if( $('#mwe-pt-filter-namespace').val() ) {
+				apiParams['namespace'] = $('#mwe-pt-filter-namespace').val();
+			}
+
+			this.model.apiParams = apiParams;
+			this.model.fetch();
+		}
+		
 	} );
 } );

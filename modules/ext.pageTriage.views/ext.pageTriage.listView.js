@@ -1,9 +1,14 @@
 $( function() {
 	// view for the article list
+	
+	// create an event aggregator
+	var eventBus = _.extend( {}, Backbone.Events );
 
 	// instantiate the collection of articles
-	var articles = new mw.pageTriage.ArticleList;
-	var stats = new mw.pageTriage.Stats;
+	var articles = new mw.pageTriage.ArticleList( { eventBus: eventBus } );
+	
+	// grab pageTriage statistics
+	var stats = new mw.pageTriage.Stats( { eventBus: eventBus } );
 
 	// set the default sort order.
 	articles.comparator = function( article ) {
@@ -14,13 +19,14 @@ $( function() {
 	// currently, this is the main application view.
 	mw.pageTriage.ListView = Backbone.View.extend( {
 
-		initialize: function() {
+		initialize: function( options ) {
+			this.eventBus = options.eventBus; // access the eventBus
 
 			// these events are triggered when items are added to the articles collection
 			this.position = 0;
 			articles.bind( 'add', this.addOne, this );
 			articles.bind( 'reset', this.addAll, this );
-			stats.bind( 'change', this.addNav, this );
+			stats.bind( 'change', this.addStats, this );
 		
 			// this event is triggered when the collection finishes loading.
 			//articles.bind( 'all', this.render, this );
@@ -33,13 +39,14 @@ $( function() {
 		render: function() {
 			// reset the position indicator
 			this.position = 0;
+			
+			var controlNav = new mw.pageTriage.ListControlNav( { eventBus: this.eventBus, model: articles } );
+			controlNav.render();
 		},
 		
 		// add stats data to the navigation
-		addNav: function( stats ) {
-			var controlNav = new mw.pageTriage.ListControlNav( { model: stats } );
-			controlNav.render();
-			var statsNav = new mw.pageTriage.ListStatsNav( { model: stats } );
+		addStats: function( stats ) {
+			var statsNav = new mw.pageTriage.ListStatsNav( { eventBus: this.eventBus, model: stats } );
 			$( "#mwe-pt-list-stats-nav").html( statsNav.render().el );
 		},
 
@@ -53,7 +60,7 @@ $( function() {
 			article.set( 'position', this.position++ );
 			
 			// pass in the specific article instance
-			var view = new mw.pageTriage.ListItem( { model: article } );
+			var view = new mw.pageTriage.ListItem( { eventBus: this.eventBus, model: article } );
 			this.$( "#mwe-pt-list-view" ).append( view.render().el );
 			this.$( ".mwe-pt-list-triage-button" ).button({
 				label: mw.msg( 'pagetriage-triage' ),
@@ -70,6 +77,6 @@ $( function() {
 	} );
 
 	// create an instance of the list view, which makes everything go.
-	var list = new mw.pageTriage.ListView();
+	var list = new mw.pageTriage.ListView( { eventBus: eventBus } );
 	list.render();
 } );
