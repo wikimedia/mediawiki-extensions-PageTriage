@@ -15,9 +15,14 @@ class PageTriageUtil {
 	 * Return convention is this way so that null and false are equivalent
 	 * with a straight boolean test.
 	 */
-	public static function doesPageNeedTriage( $article ) {
-		if ( ! $article || ! $article->getId() ) {
+	public static function doesPageNeedTriage( $article ) {		
+		if ( ! $article ) {
 			throw new MWException( "Invalid argument to " . __METHOD__ );
+		}
+
+		if ( ! $article->getId() ) {
+			// article doesn't exist.  this happens a lot.
+			return null;
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
