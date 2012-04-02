@@ -1,7 +1,9 @@
 .mwe-pt-navigation-bar {
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
 	border: 1px solid #ccc;
+}
+
+#mwe-pt-list-control-nav-content {
+	padding: 0.5em 1em;
 }
 
 .sticky #mwe-pt-list-control-nav {
@@ -12,37 +14,48 @@
 	z-index: 1;
 }
 
-.mwe-pt-control-label {
-	padding-left: 1em;
+.mwe-pt-control-section {
+	margin-top: 0.4em;
 }
 
 .mwe-pt-control-label-right {
 	float: right;
-	padding-right: 1em;
 }
 
-.mwe-pt-control-dropdown {
-	visibility: hidden;
-	width: 250px
-	height: ;
+.mwe-pt-control-options {
+	margin-left: 1em;
+	margin-right: 0.5em;
+	white-space: nowrap;
+}
+
+.mwe-pt-control-buttons {
+	margin: 0.2em 0em 0em -0.4em;
 }
 
 #mwe-pt-control-dropdown {
 	position: absolute;
 	z-index: 50;
-	left: 5em;
+	top: 23px;
+	left: 48px;
 	visibility: hidden;
+	border: 1px solid #aaa;
+	padding: 0.5em 1em 0.2em 1em;
+}
+
+#mwe-pt-control-dropdown-pokey {
+	/* @embed */
+	background-image: url('images/dialog_pokey_north.png');
+	background-repeat: no-repeat;
+	width: 21px;
+	height: 11px;
+	position: absolute;
+	z-index: 51;
+	top: -11px;
+	left: 5px;
 }
 
 #mwe-pt-filter-dropdown-control {
 	color: #0645AD;
-}
-
-span:hover #mwe-pt-filter-dropdown-control {
-	/* TODO: make this actually work */
 	cursor: pointer;
-}
-
-.mwe-pt-control-options {
-	margin-left: 2em;
+	position: relative;
 }

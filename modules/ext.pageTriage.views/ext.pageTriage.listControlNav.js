@@ -46,14 +46,22 @@ $( function() {
 		render: function() {
 			_this = this;
 			// render and return the template.  fill with the current model.
-			$( "#mwe-pt-list-control-nav").html( this.template( ) );
+			$( "#mwe-pt-list-control-nav-content").html( this.template( ) );
+			
+			// align the filter dropdown box with the dropdown control widget
+			var newLeft = $( '#mwe-pt-filter-dropdown-control' ).width() - 20;
+			$( "#mwe-pt-control-dropdown" ).css({left: newLeft});
 
 			//
 			// now that the template's been inserted, set up some events for controlling it
 			//
 			
 			// make a button
-			$( ".mwe-pt-filter-set-button" ).button().click( function( e ) {
+			$( ".mwe-pt-filter-set-button" ).button( {
+				label: mw.msg( 'pagetriage-filter-set-button' ),
+				icons: { secondary:'ui-icon-triangle-1-e' }
+			} );
+			$( ".mwe-pt-filter-set-button" ).click( function( e ) {
 				_this.filterSet();
 				e.stopPropagation();
 			} );
