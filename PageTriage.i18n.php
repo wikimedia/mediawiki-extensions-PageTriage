@@ -51,6 +51,7 @@ $messages['en'] = array(
 	'pagetriage-filter-blocked' => 'Are by blocked users',
 	'pagetriage-filter-set-button' => 'Set Filters',
 	'pagetriage-stats-untriaged-age' => 'Article Ages: Average: $1, Oldest: $2',
+	'pagetriage-stats-less-than-a-day' => 'less than one day'
 );
 
 /**
@@ -94,4 +95,5 @@ $messages['qqq'] = array(
 	'pagetriage-filter-blocked' => 'Checkbox text for articles by blocked users',
 	'pagetriage-filter-set-button' => 'Button text for the set filter button',
 	'pagetriage-stats-untriaged-age' => 'Navigation text displaying triage stats',
+	'pagetriage-stats-less-than-a-day' => 'show this message if the article age is less than one day, part of variable $1 and $2 of {{msg-pagetriage|pagetriage-stats-untriaged-age}} '
 );
