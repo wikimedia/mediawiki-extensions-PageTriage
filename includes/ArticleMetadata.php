@@ -55,12 +55,13 @@ class ArticleMetadata {
 	 *
 	 * @param $pageId - the page id to be deleted
 	 */
-	protected function deleteMetadata( $pageId = null ) {
+	public function deleteMetadata( $pageId = null ) {
 		if( is_null($pageId) ) {
 			$pageId = $this->mPageId;
 		}
 
 		// $pageId can be an array or a single value.
+		$dbw  = wfGetDB( DB_MASTER );
 		
 		$dbw->begin();
 		$dbw->delete(
