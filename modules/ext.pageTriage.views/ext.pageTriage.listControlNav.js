@@ -23,6 +23,7 @@ $( function() {
 			});
 			
 			// do things that need doing on window resize
+			// TODO: switch this to use _.debounce() instead
 			var resizeTimer;
 			$( window ).resize( function() {
 				clearTimeout(mw.pageTriage.resizeTimer);
