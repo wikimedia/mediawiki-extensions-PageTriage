@@ -217,7 +217,7 @@ if ( isset( $_SERVER ) && isset( $_SERVER['REQUEST_METHOD'] ) ) {
 }
 
 if ( !isset( $argv[1] ) || !isset( $argv[2] ) || !isset( $argv[3] ) ) {
-	print( 'The correct syntax is:\nimportNewPages.php <# of articles> <username> <password>\n' );
+	print( "The correct syntax is:\nimportNewPages.php <# of articles> <username> <password> <source API path> <destination API path>\n" );
 	die();
 }
 
