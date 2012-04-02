@@ -322,6 +322,8 @@ class ArticleMetadata {
 	public static function generateArticleSnippet( $text ) {
 		global $wgLang;
 
+		$text = strip_tags( $text );
+
 		$attempt = 1;
 		$openCurPos  = strpos($text, '{{');
 		$closeCurPos = strpos($text, '}}');
@@ -340,9 +342,9 @@ class ArticleMetadata {
   	  		}
   	  	}
 
-  	  	// stip out non-useful data for snippet
-  	  	$text = str_replace( array('{', '}'), '', $text );
   	  	$text = trim( strip_tags( MessageCache::singleton()->parse( $text )->getText() ) );
+  	  	// stip out non-useful data for snippet
+  	  	$text = str_replace( array('{', '}', '[edit]' ), '', $text );
 
 		return $wgLang->truncate( $text, 150 );
 	}
