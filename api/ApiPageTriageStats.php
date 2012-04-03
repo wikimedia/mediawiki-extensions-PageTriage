@@ -3,9 +3,18 @@
 class ApiPageTriageStats extends ApiBase {
 
 	public function execute() {
-		$data = array( 
-				'untriagedarticle' => PageTriageUtil::getUntriagedArticleStat(), 
-				'toptriager' => PageTriageUtil::getTopTriager() 
+		$topTriager = PageTriageUtil::getTopTriager();
+		// Grab at most top 5 from cache
+		if ( count( $topTriager ) > 5 ) {
+			$topTriager = array_slice( PageTriageUtil::getTopTriager(), 0 , 5 );
+		}
+
+		$data = array(
+				'untriagedarticle' => PageTriageUtil::getUntriagedArticleStat(),
+				'toptriager' => array(
+					'total' => count( $topTriager ),
+					'data' => $topTriager
+				)
 			);
 
 		$result = array( 'result' => 'success', 'stats' => $data );

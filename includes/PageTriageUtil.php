@@ -93,7 +93,7 @@ class PageTriageUtil {
 	 *                       last-day, last-week, last-month, last-year
 	 * @return array
 	 */
-	public static function getTopTriager( $time = 'last-day' ) {
+	public static function getTopTriager( $time = 'last-week' ) {
 		global $wgMemc;
 
 		$now = wfTimestamp( TS_UNIX );
@@ -118,7 +118,7 @@ class PageTriageUtil {
 		if ( $topTriager === false ) {
 			$res = $dbr->select(
 				array( 'pagetriage_log', 'user' ),
-				array( 'user_name', 'COUNT(ptrl_id) AS num' ),
+				array( 'user_name', 'user_id', 'COUNT(ptrl_id) AS num' ),
 				array( 'user_id = ptrl_user_id', 'ptrl_timestamp > ' . $dbr->addQuotes( $dbr->timestamp( $timeFrame[$time]['ts'] ) ) ),
 				__METHOD__,
 				array( 'GROUP BY' => 'user_id', 'ORDER BY' => 'num DESC', 'LIMIT' => 50 )

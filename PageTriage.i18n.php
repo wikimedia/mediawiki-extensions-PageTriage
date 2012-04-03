@@ -52,6 +52,7 @@ $messages['en'] = array(
 	'pagetriage-filter-set-button' => 'Set Filters',
 	'pagetriage-stats-untriaged-age' => 'Article Ages: Average: $1, Oldest: $2',
 	'pagetriage-stats-less-than-a-day' => 'less than one day',
+	'pagetriage-stats-top-triagers' => 'Top {{PLURAL:$1|triager|$1 triagers}}: $2',
 	'pagetriage-filter-ns-article' => 'Article',
 );
 
@@ -95,7 +96,8 @@ $messages['qqq'] = array(
 	'pagetriage-filter-non-autoconfirmed' => 'Checkbox text for articles by non-Autoconfirmed users',
 	'pagetriage-filter-blocked' => 'Checkbox text for articles by blocked users',
 	'pagetriage-filter-set-button' => 'Button text for the set filter button',
-	'pagetriage-stats-untriaged-age' => 'Navigation text displaying triage stats',
+	'pagetriage-stats-untriaged-age' => 'Navigation text displaying triage stats, $1 and $2 are the ages of average and oldest articles respectively',
 	'pagetriage-stats-less-than-a-day' => 'show this message if the article age is less than one day, part of variable $1 and $2 of {{msg-pagetriage|pagetriage-stats-untriaged-age}} ',
+	'pagetriage-stats-top-triagers' => 'Text that shows top triagers, $1 is the total number, $2 shows the detail',
 	'pagetriage-filter-ns-article' => 'The name of the main article namespace',
 );

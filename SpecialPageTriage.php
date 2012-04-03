@@ -228,7 +228,12 @@ class SpecialPageTriage extends SpecialPage {
 				</script>
 				
 				<script type="text/template" id="listStatsNavTemplate">
-					<% if ( ptrAverage ) { %> <%= gM( 'pagetriage-stats-untriaged-age', ptrAverage, ptrOldest ) %> <% } %>
+					<div id="mwe-pt-top-triager">
+						<%= ptrTopTriager %>
+					</div>
+					<div id="mwe-pt-article-age-stats">
+						<% if ( ptrAverage ) { %> <%= gM( 'pagetriage-stats-untriaged-age', ptrAverage, ptrOldest ) %> <% } %>
+					</div>
 				</script>
 				
 HTML;
