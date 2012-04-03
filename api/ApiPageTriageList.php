@@ -62,7 +62,7 @@ class ApiPageTriageList extends ApiBase {
 			$conds['page_is_redirect'] = 1;
 		}
 		// Show by namespace
-		if ( $opts['namespace'] ) {
+		if ( array_key_exists( 'namespace', $opts ) ) {
 			$conds['page_namespace'] = $opts['namespace'];
 		}
 
