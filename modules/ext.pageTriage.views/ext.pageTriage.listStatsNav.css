@@ -1,3 +1,11 @@
 #mwe-pt-list-stats-nav {
 	border-top: none;
 }
+
+.stickyBottom #mwe-pt-list-stats-nav {
+	position: fixed;
+	bottom: 0;
+	left: 160px;
+	margin-left: 16px;
+	z-index: 1;
+}

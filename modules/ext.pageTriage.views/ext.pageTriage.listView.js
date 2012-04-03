@@ -47,7 +47,7 @@ $( function() {
 		// add stats data to the navigation
 		addStats: function( stats ) {
 			var statsNav = new mw.pageTriage.ListStatsNav( { eventBus: this.eventBus, model: stats } );
-			$( "#mwe-pt-list-stats-nav").html( statsNav.render().el );
+			statsNav.render();
 		},
 
 		// add a single article to the list
@@ -72,6 +72,7 @@ $( function() {
 		addAll: function() {
 			$("#mwe-pt-list-view").empty(); // remove the spinner before displaying.
 			articles.each( this.addOne );
+			this.eventBus.trigger( 'listAddAll' );
 	    }
 
 	} );

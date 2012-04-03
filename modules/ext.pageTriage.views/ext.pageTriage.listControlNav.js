@@ -12,39 +12,33 @@ $( function() {
 			this.eventBus = options.eventBus; // access the eventBus
 
 			// make a floating top navbar
-			// TODO: there's a bump when the control div detaches from the page.
-			//       fill some element under it to make it scroll smoothly
-			$( '.top' ).addClass( 'hidden' );
 			$.waypoints.settings.scrollThrottle = 30;
 			$( '#mwe-pt-list-control-nav' ).waypoint( function( event, direction ) {
-				$( this ).parent().toggleClass( 'sticky', direction === "down" );
+				$( this ).parent().toggleClass( 'stickyTop', direction === "down" );
+				
+				// pad the element that scrolls under the bar, so it doesn't jump beneath it when the bar
+				// changes to fixed positioning.
+				if( direction === 'down' ) {
+					$( '#mwe-pt-list-view' ).css('padding-top', $( '#mwe-pt-list-control-nav' ).height() );
+				} else {
+					$( '#mwe-pt-list-view' ).css('padding-top', 0 );
+				}
+				
 				_this.resize();
 				event.stopPropagation();
 			});
 			
 			// do things that need doing on window resize
-			// TODO: switch this to use _.debounce() instead
-			var resizeTimer;
-			$( window ).resize( function() {
-				clearTimeout(mw.pageTriage.resizeTimer);
-				mw.pageTriage.resizeTimer = setTimeout(_this.resize, 100);
-			});
+			$( window ).resize( _.debounce(_this.resize, 100 ) );
 
 			this.eventBus.bind( "renderStats", function( stats ) {
 				// fill in the counter when the stats view gets loaded.
 				$( "#mwe-pt-control-stats" ).html( gM( 'pagetriage-article-count', stats.get('ptr_untriaged_article_count') ) );
 			} );
-								
-			// hover for the dropdown menu control
-			/*
-			$( '#mwe-pt-filter-dropdown-control' ).hover( function() {
-				_this.toggleFilterMenu();
-			} );
-			*/
 		},
 
 		render: function() {
-			_this = this;
+			var _this = this;
 			// render and return the template.  fill with the current model.
 			$( "#mwe-pt-list-control-nav-content").html( this.template( ) );
 			
@@ -63,6 +57,7 @@ $( function() {
 			} );
 			$( ".mwe-pt-filter-set-button" ).click( function( e ) {
 				_this.filterSet();
+				_this.toggleFilterMenu();				
 				e.stopPropagation();
 			} );
 			
@@ -106,7 +101,6 @@ $( function() {
 		
 		filterSet: function() {
 			console.log('clicked');
-			this.toggleFilterMenu();
 			
 			// fetch the values from the menu
 			var apiParams = {};

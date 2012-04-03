@@ -6,7 +6,7 @@
 	padding: 0.5em 1em;
 }
 
-.sticky #mwe-pt-list-control-nav {
+.stickyTop #mwe-pt-list-control-nav {
 	position: fixed;
 	top: 0;
 	left: 160px;

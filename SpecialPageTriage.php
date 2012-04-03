@@ -61,13 +61,15 @@ class SpecialPageTriage extends SpecialPage {
 				
 		// This will hold the HTML for the triage interface
 		$triageInterface = '';
-		
+
 		$triageInterface .= "<div id='mwe-pt-list-control-nav' class='mwe-pt-navigation-bar mwe-pt-control-gradient'>";
 		$triageInterface .= "<div id='mwe-pt-list-control-nav-content'></div>";
 		$triageInterface .= "</div>";
+		
 		// TODO: this should load with a spinner instead of "please wait"
 		$triageInterface .= "<div id='mwe-pt-list-view'>Please wait...</div>";
 		$triageInterface .= "<div id='mwe-pt-list-stats-nav' class='mwe-pt-navigation-bar mwe-pt-control-gradient'></div>";
+		$triageInterface .= "<div id='mwe-pt-list-stats-nav-anchor'></div>";
 		
 		// These are the templates that backbone/underscore render on the client.
 		// It would be awesome if they lived in separate files, but we need to figure out how to make RL do that for us.
