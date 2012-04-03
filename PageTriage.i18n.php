@@ -54,6 +54,7 @@ $messages['en'] = array(
 	'pagetriage-stats-less-than-a-day' => 'less than one day',
 	'pagetriage-stats-top-triagers' => 'Top {{PLURAL:$1|triager|$1 triagers}}: $2',
 	'pagetriage-filter-ns-article' => 'Article',
+	'pagetriage-filter-ns-all' => 'All',
 );
 
 /**
@@ -99,5 +100,6 @@ $messages['qqq'] = array(
 	'pagetriage-stats-untriaged-age' => 'Navigation text displaying triage stats, $1 and $2 are the ages of average and oldest articles respectively',
 	'pagetriage-stats-less-than-a-day' => 'show this message if the article age is less than one day, part of variable $1 and $2 of {{msg-pagetriage|pagetriage-stats-untriaged-age}} ',
 	'pagetriage-stats-top-triagers' => 'Text that shows top triagers, $1 is the total number, $2 shows the detail',
-	'pagetriage-filter-ns-article' => 'The name of the main article namespace',
+	'pagetriage-filter-ns-article' => 'The name of the main article namespace, for the namespace filter select list',
+	'pagetriage-filter-ns-all' => 'For the namespace filter select list, text indicating that all namespaces will be selected',
 );

@@ -56,7 +56,7 @@ $( function() {
 				icons: { secondary:'ui-icon-triangle-1-e' }
 			} );
 			$( ".mwe-pt-filter-set-button" ).click( function( e ) {
-				_this.filterSet();
+				_this.filterSync();
 				_this.toggleFilterMenu();				
 				e.stopPropagation();
 			} );
@@ -93,23 +93,96 @@ $( function() {
 				$( '#mwe-pt-control-dropdown' ).css( 'visibility', 'hidden' );
 				this.filterMenuVisible = 0;
 			} else {
+				this.menuSync();
 				$( '#mwe-pt-control-dropdown' ).css( 'visibility', 'visible' );
 				$( '#mwe-pt-dropdown-arrow' ).html( '&#x25be;' );
 				this.filterMenuVisible = 1;				
 			}
 		},
 		
-		filterSet: function() {
-			console.log('clicked');
-			
+		// sync the filters with the contents of the menu
+		filterSync: function() {			
 			// fetch the values from the menu
 			var apiParams = {};
 			if( $('#mwe-pt-filter-namespace').val() ) {
 				apiParams['namespace'] = $('#mwe-pt-filter-namespace').val();
 			}
 
-			this.model.apiParams = apiParams;
+			// these are conditionals because the keys shouldn't exist if the checkbox isn't checked.
+			if( $('#mwe-pt-filter-triaged-edits').prop('checked') ) {
+				apiParams['showtriaged'] = '1';
+			}
+			
+			/*
+			if( $('#mwe-pt-filter-nominated-for-deletion').prop('checked') ) {
+				apiParams[''] = '1';
+			}
+			*/
+
+			if( $('#mwe-pt-filter-bot-edits').prop('checked') ) {
+				apiParams['showbots'] = '1';
+			}
+
+			if( $('#mwe-pt-filter-redirects').prop('checked') ) {
+				apiParams['showredirs'] = '1';
+			}
+
+			/*
+			api doesn't support these.
+			if( $('#mwe-pt-filter-user').val() ) {
+				apiParams[''] = $('#mwe-pt-filter-user').val();
+			}
+			
+			if( $('#mwe-pt-filter-tag').val() ) {
+				apiParams[''] = $('#mwe-pt-filter-tag').val();
+			}
+			*/
+
+			if( $('#mwe-pt-filter-no-categories').prop('checked') ) {
+				apiParams['no_category'] = '1';
+			}
+
+			if( $('#mwe-pt-filter-orphan').prop('checked') ) {
+				apiParams['no_inbound_links'] = '1';
+			}
+
+			if( $('#mwe-pt-filter-non-autoconfirmed').prop('checked') ) {
+				apiParams['non_autoconfirmed_users'] = '1';
+			}
+
+			if( $('#mwe-pt-filter-blocked').prop('checked') ) {
+				apiParams['blocked_users'] = '1';
+			}
+			
+			// persist the limit parameter
+			apiParams['limit'] = this.model.getParam('limit');
+			
+			this.model.setParams( apiParams );
 			this.model.fetch();
+			this.render();
+		},
+		
+		// sync the menu with the contents of the filters
+		menuSync: function() {			
+			$( '#mwe-pt-filter-namespace' ).val( this.model.getParam( 'namespace' ) );
+			
+			$( '#mwe-pt-filter-triaged-edits' ).prop( 'checked', this.model.getParam( 'showtriaged' )=="1"?true:false );
+			// api doesn't support this?
+			//$( '#mwe-pt-filter-nominated-for-deletion' ).prop( 'checked', this.model.getParam('')=="1"?true:false );
+			$( '#mwe-pt-filter-bot-edits' ).prop( 'checked', this.model.getParam( 'showbots' )=="1"?true:false );
+			$( '#mwe-pt-filter-redirects' ).prop( 'checked', this.model.getParam( 'showredirs' )=="1"?true:false );
+			
+			/* api doesn't support these
+			$( '#mwe-pt-filter-user' ).val( this.model.getParam('') );
+			$( '#mwe-pt-filter-tag' ).val( this.model.getParam('') );
+			*/
+			
+			$( '#mwe-pt-filter-no-categories' ).prop( 'checked', this.model.getParam( 'no_category' )=="1"?true:false );
+			$( '#mwe-pt-filter-orphan' ).prop( 'checked', this.model.getParam( 'no_inbound_links' )=="1"?true:false );
+			$( '#mwe-pt-filter-non-autoconfirmed' ).prop( 'checked', this.model.getParam( 'non_autoconfirmed_users' )=="1"?true:false );
+			$( '#mwe-pt-filter-blocked' ).prop( 'checked', this.model.getParam( 'blocked_users' )=="1"?true:false );
+			
+			
 		}
 		
 	} );

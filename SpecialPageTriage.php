@@ -173,16 +173,17 @@ class SpecialPageTriage extends SpecialPage {
 								<div class="mwe-pt-control-section">
 									<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-show-heading' ) %></b></span>
 									<div class="mwe-pt-control-options">
-										<input type="checkbox" /> <%= gM( 'pagetriage-filter-triaged-edits' ) %> <br/>
-										<input type="checkbox" /> <%= gM( 'pagetriage-filter-nominated-for-deletion' ) %> <br/>
-										<input type="checkbox" /> <%= gM( 'pagetriage-filter-bot-edits' ) %> <br/>
-										<input type="checkbox" /> <%= gM( 'pagetriage-filter-redirects' ) %> <br/>
+										<input type="checkbox" id="mwe-pt-filter-triaged-edits" /> <%= gM( 'pagetriage-filter-triaged-edits' ) %> <br/>
+										<input type="checkbox" id="mwe-pt-filter-nominated-for-deletion" /> <%= gM( 'pagetriage-filter-nominated-for-deletion' ) %> <br/>
+										<input type="checkbox" id="mwe-pt-filter-bot-edits" /> <%= gM( 'pagetriage-filter-bot-edits' ) %> <br/>
+										<input type="checkbox" id="mwe-pt-filter-redirects" /> <%= gM( 'pagetriage-filter-redirects' ) %> <br/>
 									</div>
 								</div>
 								<div class="mwe-pt-control-section">
 									<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-namespace-heading' ) %></b></span>
 									<div class="mwe-pt-control-options">
 										<select id="mwe-pt-filter-namespace">
+											<option value=""><%= gM( 'pagetriage-filter-ns-all' ) %></option>
 											<%
 												var wgFormattedNamespaces = mw.config.get( 'wgFormattedNamespaces' );
 												var nsOptions = '';
@@ -213,10 +214,10 @@ class SpecialPageTriage extends SpecialPage {
 								<div class="mwe-pt-control-section">
 									<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-second-show-heading' ) %></b></span>
 									<div class="mwe-pt-control-options">
-										<input type="checkbox" /> <%= gM( 'pagetriage-filter-no-categories' ) %> <br/>
-										<input type="checkbox" /> <%= gM( 'pagetriage-filter-orphan' ) %> <br/>
-										<input type="checkbox" /> <%= gM( 'pagetriage-filter-non-autoconfirmed' ) %> <br/>
-										<input type="checkbox" /> <%= gM( 'pagetriage-filter-blocked' ) %> <br/>
+										<input type="checkbox" id="mwe-pt-filter-no-categories" /> <%= gM( 'pagetriage-filter-no-categories' ) %> <br/>
+										<input type="checkbox" id="mwe-pt-filter-orphan" /> <%= gM( 'pagetriage-filter-orphan' ) %> <br/>
+										<input type="checkbox" id="mwe-pt-filter-non-autoconfirmed" /> <%= gM( 'pagetriage-filter-non-autoconfirmed' ) %> <br/>
+										<input type="checkbox" id="mwe-pt-filter-blocked" /> <%= gM( 'pagetriage-filter-blocked' ) %> <br/>
 									</div>
 								</div>
 								<div class="mwe-pt-control-buttons">

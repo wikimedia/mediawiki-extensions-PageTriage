@@ -44,6 +44,7 @@ $( function() {
 		
 		apiParams: {
 			namespace: 0,
+			limit: 50,
 			/*
 			showbots: null,
 			showredirs: null,
@@ -78,11 +79,13 @@ $( function() {
 			return response.pagetriagelist.pages;
 		},
 		
-		setParams: function( apiParams ) {
-			console.log('setParams called with ' + apiParams);
-			
+		setParams: function( apiParams ) {			
 			this.apiParams = apiParams;
 			this.eventBus.trigger( "paramsSet", this.apiParams );
+		},
+		
+		getParam: function( key ) {
+			return this.apiParams[key];
 		}
 		
 	} );

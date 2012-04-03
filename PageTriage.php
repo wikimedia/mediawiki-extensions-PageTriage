@@ -242,6 +242,7 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 		'pagetriage-stats-top-triagers',
 		'days',
 		'pagetriage-filter-ns-article',
+		'pagetriage-filter-ns-all',
 	)
 );
 
