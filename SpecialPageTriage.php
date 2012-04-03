@@ -186,8 +186,8 @@ class SpecialPageTriage extends SpecialPage {
 												var nsOptions = '';
 												for ( var key in wgFormattedNamespaces ) {
 													if ( wgFormattedNamespaces[key] == '' ) {
-														nsOptions += String('<option value="' + String(key) + '">Article</option>');
-													} else {
+														nsOptions += String('<option value="' + String(key) + '">' + gM( 'pagetriage-filter-ns-article' ) + '</option>');
+													} else if( key > 0 ) {
 														nsOptions += String('<option value="' + String(key) + '">' + wgFormattedNamespaces[key] + '</option>');
 													}
 												}

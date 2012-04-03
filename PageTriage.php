@@ -200,6 +200,7 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 		'ext.pageTriage.views/ext.pageTriage.listStatsNav.css'
 	),
 	'messages' => array(
+		'days',
 		'pagetriage-hist',
 		'pagetriage-bytes',
 		'pagetriage-edits',
@@ -238,7 +239,7 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 		'pagetriage-filter-set-button',
 		'pagetriage-stats-untriaged-age',
 		'pagetriage-stats-less-than-a-day',
-		'days',
+		'pagetriage-filter-ns-article',
 	)
 );
 
