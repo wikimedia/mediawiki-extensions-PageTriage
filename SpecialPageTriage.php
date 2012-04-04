@@ -25,10 +25,7 @@ class SpecialPageTriage extends SpecialPage {
 	 */
 	public function execute( $sub ) {
 		$out = $this->getOutput();
-
-//$data = array( array( 'user_name' => 'Bsitu'), array( 'user_name' => 'Test1' ) );
-//print_r( PageTriageUtil::pageStatusForUser( $data ));		
-//die;		
+		
 		// TODO: check user permissions, make sure they're logged in and have the pagepatrol userright
 
 		global $wgUser;
