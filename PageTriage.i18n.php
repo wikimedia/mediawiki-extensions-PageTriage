@@ -56,6 +56,7 @@ $messages['en'] = array(
 	'pagetriage-filter-ns-article' => 'Article',
 	'pagetriage-filter-ns-all' => 'All',
 	'pagetriage-more' => 'More',
+	'pagetriage-filter-stat-namespace' => 'Namespace: $1',
 );
 
 /**
@@ -104,4 +105,5 @@ $messages['qqq'] = array(
 	'pagetriage-filter-ns-article' => 'The name of the main article namespace, for the namespace filter select list',
 	'pagetriage-filter-ns-all' => 'For the namespace filter select list, text indicating that all namespaces will be selected',
 	'pagetriage-more' => 'Text for a link that loads more articles into list',
+	'pagetriage-filter-stat-namespace' => 'Status display for the namespace filter.  $1 is the name of the namespace.',
 );

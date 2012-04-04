@@ -164,7 +164,7 @@ class SpecialPageTriage extends SpecialPage {
 				
 				<!-- top nav template -->
 				<script type="text/template" id="listControlNavTemplate">
-					<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-showing' ) %></b> some things</span>
+					<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-showing' ) %></b> <%= filterStatus %></span>
 					<span class="mwe-pt-control-label-right" id="mwe-pt-control-stats"></span><br/>
 					<span id="mwe-pt-filter-dropdown-control" class="mwe-pt-control-label">
 						<b>

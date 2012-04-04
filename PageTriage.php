@@ -245,6 +245,7 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 		'pagetriage-filter-ns-article',
 		'pagetriage-filter-ns-all',
 		'pagetriage-more',
+		'pagetriage-filter-stat-namespace',
 	)
 );
 

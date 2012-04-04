@@ -5,6 +5,7 @@ $( function() {
 		tagName: "div",
 		template: _.template( $( "#listControlNavTemplate" ).html() ),
 		filterMenuVisible: 0,
+		filterStatus: 'All',
 
 		initialize: function( options ) {
 			var _this = this;
@@ -35,12 +36,15 @@ $( function() {
 				// fill in the counter when the stats view gets loaded.
 				$( "#mwe-pt-control-stats" ).html( gM( 'pagetriage-article-count', stats.get('ptr_untriaged_article_count') ) );
 			} );
+
+			// update the filter display on load.
+			this.menuSync();
 		},
 
 		render: function() {
 			var _this = this;
 			// render and return the template.  fill with the current model.
-			$( "#mwe-pt-list-control-nav-content").html( this.template( ) );
+			$( "#mwe-pt-list-control-nav-content").html( this.template( { filterStatus: this.filterStatus } ) );
 			
 			// align the filter dropdown box with the dropdown control widget
 			var newLeft = $( '#mwe-pt-filter-dropdown-control' ).width() - 20;
@@ -156,16 +160,27 @@ $( function() {
 			
 			// persist the limit parameter
 			apiParams['limit'] = this.model.getParam('limit');
-			
+						
 			this.model.setParams( apiParams );
 			this.model.fetch();
+
+			this.menuSync(); // make sure the menu is now up-to-date.
 			this.render();
 		},
 		
 		// sync the menu with the contents of the filters
-		menuSync: function() {			
+		menuSync: function() {
+			var newFilterStatus = [];
+
 			$( '#mwe-pt-filter-namespace' ).val( this.model.getParam( 'namespace' ) );
+
+			// update the status display
+			if( this.model.getParam( 'namespace' ) > -1 ) { // still true for ns 0
+				newFilterStatus.push( gM( 'pagetriage-filter-stat-namespace', this.model.getParam( 'namespace' ) ) );	
+			}
 			
+			// TODO: update the status for everything else.
+				
 			$( '#mwe-pt-filter-triaged-edits' ).prop( 'checked', this.model.getParam( 'showtriaged' )=="1"?true:false );
 			// api doesn't support this?
 			//$( '#mwe-pt-filter-nominated-for-deletion' ).prop( 'checked', this.model.getParam('')=="1"?true:false );
@@ -182,7 +197,7 @@ $( function() {
 			$( '#mwe-pt-filter-non-autoconfirmed' ).prop( 'checked', this.model.getParam( 'non_autoconfirmed_users' )=="1"?true:false );
 			$( '#mwe-pt-filter-blocked' ).prop( 'checked', this.model.getParam( 'blocked_users' )=="1"?true:false );
 			
-			
+			this.filterStatus = newFilterStatus.join('.');			
 		}
 		
 	} );
