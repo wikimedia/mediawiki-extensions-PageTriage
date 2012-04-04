@@ -107,13 +107,25 @@ class PageTriageHooks {
 	 * Add page to page triage queue
 	 */
 	private static function addToPageTriageQueue( $pageId ) {
+		$dbr = wfGetDB( DB_SLAVE );
 		$dbw = wfGetDB( DB_MASTER );
-			
+		
+		// Pull page creation date from database
+		$res = $dbr->select(
+			'revision',
+			'MIN(rev_timestamp) AS creation_date',
+			array( 'rev_page' => $pageId ),
+			__METHOD__
+		);
+		foreach ( $res as $row ) {
+			$creationDate = $row->creation_date;
+		}
+		
 		$row = array(
-				'ptrp_page_id' => $pageId,
-				'ptrp_triaged' => 0,
-				'ptrp_timestamp' => $dbw->timestamp( wfTimestampNow() )
-			);
+			'ptrp_page_id' => $pageId,
+			'ptrp_triaged' => 0,
+			'ptrp_timestamp' => $creationDate
+		);
 
 		$dbw->replace( 'pagetriage_page', array( 'ptrp_page_id' ), $row, __METHOD__ );	
 	}
