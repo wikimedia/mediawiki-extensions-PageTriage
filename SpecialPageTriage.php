@@ -26,6 +26,9 @@ class SpecialPageTriage extends SpecialPage {
 	public function execute( $sub ) {
 		$out = $this->getOutput();
 
+//$data = array( array( 'user_name' => 'Bsitu'), array( 'user_name' => 'Test1' ) );
+//print_r( PageTriageUtil::pageStatusForUser( $data ));		
+//die;		
 		// TODO: check user permissions, make sure they're logged in and have the pagepatrol userright
 
 		global $wgUser;
@@ -124,9 +127,9 @@ class SpecialPageTriage extends SpecialPage {
 							<div class="mwe-pt-author">
 							<% if( typeof( user_name ) != 'undefined' ) { %>
 								<%= gM( 'pagetriage-byline' ) %>
-								<a href="<%= user_title.getUrl() %>"><%= user_name %></a>
+								<a <%= userPageLinkClass %> href="<%= user_title.getUrl() %>"><%= user_name %></a>
 								<span class="mwe-pt-talk-contribs">
-									(<a href="<%= user_talk_title.getUrl() %>">talk</a>
+									(<a <%= talkPageLinkClass %> href="<%= user_talk_title.getUrl()+'&redlink=1' %>">talk</a>
 									&#xb7;
 									<a href="<%= user_contribs_title.getUrl() %>">contribs</a>)
 								</span>
@@ -245,7 +248,21 @@ class SpecialPageTriage extends SpecialPage {
 				<!-- bottom nav template -->
 				<script type="text/template" id="listStatsNavTemplate">
 					<div id="mwe-pt-top-triager">
-						<%= ptrTopTriager %>
+						<%
+						if ( toptriager.total ) {
+						%>
+							<%= ptrTopTriagerStr %>
+							<%
+								for ( var m in ptrTopTriager ) {
+							%>
+									<!-- Todo: escape user name  -->
+									<a <%= ptrTopTriager[m].linkCSS %> href="<%= ptrTopTriager[m].title.getUrl() %>"><%= ptrTopTriager[m].userName %></a>
+							<%
+								}
+							%>
+						<%
+						}
+						%>
 					</div>
 					<div id="mwe-pt-article-age-stats">
 						<% if ( ptrAverage ) { %> <%= gM( 'pagetriage-stats-untriaged-age', ptrAverage, ptrOldest ) %> <% } %>

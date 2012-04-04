@@ -212,6 +212,76 @@ class PageTriageUtil {
 			return false;
 		}
 	}
+	
+	/**
+	 * Check the existance of user page and talk page for a list of users
+	 * @param $users array - contains user_name db keys
+	 * @return array
+	 */
+	public static function pageStatusForUser( $users ) {
+		global $wgMemc;
+
+		$return = array();
+		$title  = array();
+		$dataToCache = array();
+
+		foreach ( $users as $user ) {
+			$user = (array) $user;
+			$key = wfMemcKey( 'pagetriage', 'user-page-status', $user['user_name']);
+			$data = $wgMemc->get( $key );
+			if ( $data !== false ) {
+				foreach ( $data as $pageKey => $status ) {
+					if ( $status === 1 ) {
+						$return[$pageKey] = $status;
+					}
+				}
+			} else {
+				$u = Title::newFromText( $user['user_name'], NS_USER );
+				if ( $u ) {
+					$t = Title::makeTitle( NS_USER_TALK, $u->getDBkey() );
+					$title[$u->getDBkey()] = array( 'user_name' => $user['user_name'], 'u' => $u, 't' => $t );
+				}
+			}
+		}
+
+		if ( $title ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select(
+				array( 'page' ),
+				array( 'page_namespace', 'page_title' ),
+				array( 'page_title' => array_keys( $title ), 'page_namespace' => array( NS_USER, NS_USER_TALK ) ),
+				__METHOD__
+			);
+			
+			$dataToCache = array();
+			foreach ( $res as $row ) {
+				$user = $title[$row->page_title];
+				if ( $row->page_namespace == NS_USER ) {
+					$dataToCache[$user['user_name']][$user['u']->getPrefixedDBkey()] = 1;
+				} else {
+					$dataToCache[$user['user_name']][$user['t']->getPrefixedDBkey()] = 1;
+				}
+			}
+
+			foreach ( $title as $key => $value ) {
+				$data = array();
+				if ( !isset( $dataToCache[$value['user_name']][$value['u']->getPrefixedDBkey()] ) ) {
+					$dataToCache[$value['user_name']][$value['u']->getPrefixedDBkey()] = 0;
+				} else {
+					$return[$value['u']->getPrefixedDBkey()] = 1;
+				}
+				if ( !isset( $dataToCache[$value['user_name']][$value['t']->getPrefixedDBkey()] ) ) {
+					$dataToCache[$value['user_name']][$value['t']->getPrefixedDBkey()] = 0;
+				} else {
+					$return[$value['t']->getPrefixedDBkey()] = 1;
+				}
+				$memcKey = wfMemcKey( 'pagetriage', 'user-page-status', $value['user_name'] );
+				$wgMemc->set( $memcKey, $dataToCache[$value['user_name']], 3600 );
+			}
+		}
+
+		return $return;
+	}
 
 }
 

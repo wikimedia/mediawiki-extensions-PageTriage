@@ -14,7 +14,8 @@ class ApiPageTriageStats extends ApiBase {
 				'toptriager' => array(
 					'total' => count( $topTriager ),
 					'data' => $topTriager
-				)
+				),
+				'userpagestatus' => PageTriageUtil::pageStatusForUser( $topTriager )
 			);
 
 		$result = array( 'result' => 'success', 'stats' => $data );

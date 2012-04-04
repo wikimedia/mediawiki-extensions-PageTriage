@@ -28,7 +28,7 @@ class ApiPageTriageList extends ApiBase {
 		}
 
 		// Output the results
-		$result = array( 'result' => 'success', 'pages' => $metaDataSend );
+		$result = array( 'result' => 'success', 'pages' => $metaDataSend, 'userpagestatus' => PageTriageUtil::pageStatusForUser( $metaDataSend ) );
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 

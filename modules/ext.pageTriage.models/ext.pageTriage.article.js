@@ -30,6 +30,9 @@ $( function() {
 					article.set( 'user_title', new mw.Title( userName, mw.config.get('wgNamespaceIds')['user'] ) );
 					article.set( 'user_talk_title', new mw.Title( userName, mw.config.get('wgNamespaceIds')['user_talk'] ) );
 					article.set( 'user_contribs_title', new mw.Title( gM( 'pagetriage-special-contributions' ) + '/' + userName ) );
+					article.set( 'userPageLinkClass', article.get( 'user_title' ).exists() ? '' : 'class="new"' );
+					article.set( 'talkPageLinkClass', article.get( 'user_talk_title' ).exists() ? '' : 'class="new"' );
+					
 				}
 				article.set( 'title_url', mw.util.wikiUrlencode( article.get( 'title' ) ) );
 			}
@@ -75,6 +78,9 @@ $( function() {
 		},
 
 		parse: function( response ) {
+			for ( var title in response.pagetriagelist.userpagestatus ) {
+				mw.Title.exist.set( title );
+			}
 			// extract the useful bits of json.
 			return response.pagetriagelist.pages;
 		},

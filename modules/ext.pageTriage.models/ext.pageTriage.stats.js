@@ -15,7 +15,19 @@ $( function() {
 		
 		formatMetadata: function ( stats ) {
 			stats.set( 'ptr_untriaged_article_count', stats.get( 'untriagedarticle' )['count'] );
-			stats.set( 'ptrTopTriager', this.formatTopTriager( stats.get( 'toptriager' ) ) );
+			
+			var topTriager = {};
+			for ( var i in stats.get( 'toptriager' )['data'] ) {
+				var title = new mw.Title( stats.get( 'toptriager' )['data'][i]['user_name'], mw.config.get('wgNamespaceIds')['user'] );
+				topTriager[i] = { 
+					title: title,
+					linkCSS: mw.Title.exists( title) ? '' : 'class="new"',
+					userName: stats.get( 'toptriager' )['data'][i]['user_name']
+				};
+			}
+
+			stats.set( 'ptrTopTriager',  topTriager );
+			stats.set( 'ptrTopTriagerStr', gM( 'pagetriage-stats-top-triagers', Number( stats.get( 'toptriager' ).total ) ) );
 			stats.set( 'ptrAverage', this.formatDaysFromNow( stats.get( 'untriagedarticle' )['age-50th-percentile'] ) );
 			stats.set( 'ptrOldest', this.formatDaysFromNow( stats.get( 'untriagedarticle' )['age-100th-percentile'] ) );
 		},
@@ -67,6 +79,9 @@ $( function() {
 		url: mw.util.wikiScript( 'api' ) + '?action=pagetriagestats&format=json',
 
 		parse: function( response ) {
+			for ( var title in response.userpagestatus ) {
+				mw.Title.exist.set( title );
+			}
 			// extract the useful bits of json.
 			return response.pagetriagestats.stats;
 		}
