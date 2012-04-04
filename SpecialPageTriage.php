@@ -158,6 +158,7 @@ class SpecialPageTriage extends SpecialPage {
 					</div>
 				</script>
 				
+				<!-- top nav template -->
 				<script type="text/template" id="listControlNavTemplate">
 					<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-showing' ) %></b> some things</span>
 					<span class="mwe-pt-control-label-right" id="mwe-pt-control-stats"></span><br/>
@@ -230,6 +231,14 @@ class SpecialPageTriage extends SpecialPage {
 					<span class="mwe-pt-control-label-right"><b><%= gM( 'pagetriage-viewing' ) %></b> Sort Controls</span>
 				</script>
 				
+				<!-- load more link template -->
+				<script type="text/template" id="listMoreLinkTemplate">
+					<div id="mwe-pt-list-more">
+						<a href="#" style="display: none;"> <%= gM( 'pagetriage-more' ) %> </a>
+					</div>
+				</script>
+				
+				<!-- bottom nav template -->
 				<script type="text/template" id="listStatsNavTemplate">
 					<div id="mwe-pt-top-triager">
 						<%= ptrTopTriager %>

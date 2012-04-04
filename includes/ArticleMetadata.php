@@ -388,7 +388,7 @@ class ArticleMetadata {
 				$metaData[$row->page_id]['user_creation_date'] = wfTimestamp( TS_MW, $user->getRegistration() );
 				$metaData[$row->page_id]['user_autoconfirmed'] = $user->isAllowed( 'autoconfirmed' ) ? '1' : '0';
 				$metaData[$row->page_id]['user_bot'] = $user->isAllowed( 'bot' ) ? '1' : '0';
-				$metaData[$row->page_id]['user_block_status'] = $row->ipb_id ? '1' : '0';	
+				$metaData[$row->page_id]['user_block_status'] = $row->ipb_id ? '1' : '0';
 			} else {
 				$metaData[$row->page_id]['user_id'] = 0;
 				$metaData[$row->page_id]['user_name'] = $row->rev_user_text;
