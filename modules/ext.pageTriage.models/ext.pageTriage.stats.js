@@ -8,20 +8,20 @@ $( function() {
 			title: 'PageTriage Dashboard Data',
 			pageid: ''
 		},
-		
+
 		initialize: function() {
 			this.bind( 'change', this.formatMetadata, this );
 		},
-		
+
 		formatMetadata: function ( stats ) {
 			stats.set( 'ptr_untriaged_article_count', stats.get( 'untriagedarticle' )['count'] );
-			
+
 			var topTriager = {};
 			for ( var i in stats.get( 'toptriager' )['data'] ) {
 				var title = new mw.Title( stats.get( 'toptriager' )['data'][i]['user_name'], mw.config.get('wgNamespaceIds')['user'] );
-				topTriager[i] = { 
+				topTriager[i] = {
 					title: title,
-					linkCSS: mw.Title.exists( title) ? '' : 'class="new"',
+					linkCSS: title.exists() ? '' : 'class="new"',
 					userName: stats.get( 'toptriager' )['data'][i]['user_name']
 				};
 			}
@@ -60,26 +60,10 @@ $( function() {
 			}
 		},
 
-		formatTopTriager: function ( topTriager ) {
-			if ( topTriager.total > 0 ) {
-				var topTriagerList = '';
-				for ( var key in topTriager.data ) {
-					if ( topTriagerList ) {
-						topTriagerList += ', ' + topTriager.data[key].user_name;
-					} else {
-						topTriagerList += topTriager.data[key].user_name;
-					}
-				}
-				return gM( 'pagetriage-stats-top-triagers', Number( topTriager.total ), topTriagerList );
-			} else {
-				return '';
-			}
-		},
-
 		url: mw.util.wikiScript( 'api' ) + '?action=pagetriagestats&format=json',
 
 		parse: function( response ) {
-			for ( var title in response.userpagestatus ) {
+			for ( var title in response.pagetriagestats.stats.userpagestatus ) {
 				mw.Title.exist.set( title );
 			}
 			// extract the useful bits of json.
