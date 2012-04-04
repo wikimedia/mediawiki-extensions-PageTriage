@@ -87,7 +87,11 @@ class SpecialPageTriage extends SpecialPage {
 						<div class="mwe-pt-article-row mwe-pt-new">
 							<div class="mwe-pt-status-icon">&#160;</div>
 					<% } %>
+					<!--
 					<a class="mwe-pt-list-triage-button ui-button-blue" href="<%= mw.util.wikiGetlink( title ) %>"></a>
+					-->
+					<a class="mwe-pt-list-triage-button ui-button-blue" href="javascript:alert('Would load zoom interface');"></a>
+					
 					<% if ( position % 2 == 0 ) { %>
 						<div class="mwe-pt-info-pane mwe-pt-info-pane-even">
 					<% } else { %>
