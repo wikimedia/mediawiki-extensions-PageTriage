@@ -56,12 +56,14 @@ $wgAutoloadClasses['SpecialPageTriage'] = $dir . 'SpecialPageTriage.php';
 $wgSpecialPages['PageTriage'] = 'SpecialPageTriage';
 $wgSpecialPageGroups['PageTriage'] = 'changes';
 $wgAutoloadClasses['ArticleMetadata'] = $dir . 'includes/ArticleMetadata.php';
+$wgAutoloadClasses['PageTriage'] = $dir . 'includes/PageTriage.php';
 $wgAutoloadClasses['PageTriageUtil'] = $dir . 'includes/PageTriageUtil.php';
 $wgAutoloadClasses['PageTriageHooks'] = $dir . 'PageTriage.hooks.php';
 
 $wgAutoloadClasses['ApiPageTriageList'] = $dir . 'api/ApiPageTriageList.php';
 $wgAutoloadClasses['ApiPageTriageGetMetadata'] = $dir . 'api/ApiPageTriageGetMetadata.php';
 $wgAutoloadClasses['ApiPageTriageStats'] = $dir . 'api/ApiPageTriageStats.php';
+$wgAutoloadClasses['ApiPageTriageAction'] = $dir . 'api/ApiPageTriageAction.php';
 
 // custom exceptions
 $wgAutoloadClasses['MWArticleMetadataMissingPageIdException'] = $dir . 'includes/ArticleMetadata.php';
@@ -72,6 +74,7 @@ $wgAutoloadClasses['MWPageTriageUtilInvalidNumberException'] = $dir . 'includes/
 $wgAPIModules['pagetriagelist'] = 'ApiPageTriageList';
 $wgAPIModules['pagetriagegetmetadata'] = 'ApiPageTriageGetMetadata';
 $wgAPIModules['pagetriagestats'] = 'ApiPageTriageStats';
+$wgAPIModules['pagetriageaction'] = 'ApiPageTriageAction';
 
 // hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efPageTriageSchemaUpdates';
