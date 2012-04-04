@@ -68,11 +68,7 @@ $( function() {
 		},
 		
 		url: function() {
-			var paramString = '';
-			for ( var key in this.apiParams ) {
-				paramString += '&' + key + '=' + this.apiParams[key];
-			}
-			var url = mw.util.wikiScript( 'api' ) + '?action=pagetriagelist&format=json' + paramString;
+			var url = mw.util.wikiScript( 'api' ) + '?action=pagetriagelist&format=json&' + $.param( this.apiParams );
 			console.log('fetching ' + url);
 			return url;
 		},
