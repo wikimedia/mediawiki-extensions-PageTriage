@@ -56,7 +56,16 @@ $messages['en'] = array(
 	'pagetriage-filter-ns-article' => 'Article',
 	'pagetriage-filter-ns-all' => 'All',
 	'pagetriage-more' => 'More',
+	'pagetriage-filter-stat-all' => 'All',
 	'pagetriage-filter-stat-namespace' => 'Namespace: $1',
+	'pagetriage-filter-stat-triaged' => 'Triaged',
+	'pagetriage-filter-stat-bots' => 'Bots',
+	'pagetriage-filter-stat-redirects' => 'Redirects',
+	'pagetriage-filter-stat-no-categories' => 'No categories',
+	'pagetriage-filter-stat-orphan' => 'Orphans',
+	'pagetriage-filter-stat-non-autoconfirmed' => 'New editors',
+	'pagetriage-filter-stat-blocked' => 'Blocked users',
+	
 );
 
 /**
@@ -105,5 +114,16 @@ $messages['qqq'] = array(
 	'pagetriage-filter-ns-article' => 'The name of the main article namespace, for the namespace filter select list',
 	'pagetriage-filter-ns-all' => 'For the namespace filter select list, text indicating that all namespaces will be selected',
 	'pagetriage-more' => 'Text for a link that loads more articles into list',
-	'pagetriage-filter-stat-namespace' => 'Status display for the namespace filter.  $1 is the name of the namespace.',
+	'pagetriage-filter-stat-all' => 'Status display component for all pages (no filter)',
+	'pagetriage-filter-stat-namespace' => 'Status display component for the namespace filter.  $1 is the name of the namespace.',
+	'pagetriage-filter-stat-triaged' => 'Status display component for triaged pages',
+	'pagetriage-filter-stat-bots' => 'Status display component for bot-created pages',
+	'pagetriage-filter-stat-redirects' => 'Status display component for redirects',
+	'pagetriage-filter-stat-no-categories' => 'Status display component for articles with no categories',
+	'pagetriage-filter-stat-orphan' => 'Status display component for orphan articles',
+	'pagetriage-filter-stat-non-autoconfirmed' => 'Status display component for articles by non-autoconfirmed editors',
+	'pagetriage-filter-stat-blocked' => 'Status display component for articles by blocked users',
+	
+
+	
 );

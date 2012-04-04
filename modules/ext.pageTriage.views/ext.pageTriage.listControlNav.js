@@ -5,7 +5,8 @@ $( function() {
 		tagName: "div",
 		template: _.template( $( "#listControlNavTemplate" ).html() ),
 		filterMenuVisible: 0,
-		filterStatus: 'All',
+		filterStatus: gM( 'pagetriage-filter-stat-all'),
+		newFilterStatus: [],
 
 		initialize: function( options ) {
 			var _this = this;
@@ -43,6 +44,10 @@ $( function() {
 
 		render: function() {
 			var _this = this;
+			
+			if(! this.filterStatus ) {
+				this.filterStatus = gM( 'pagetriage-filter-stat-all');
+			}
 			// render and return the template.  fill with the current model.
 			$( "#mwe-pt-list-control-nav-content").html( this.template( { filterStatus: this.filterStatus } ) );
 			
@@ -60,24 +65,15 @@ $( function() {
 				icons: { secondary:'ui-icon-triangle-1-e' }
 			} );
 			$( ".mwe-pt-filter-set-button" ).click( function( e ) {
+				console.log('set button clicked');
 				_this.filterSync();
 				_this.toggleFilterMenu();				
 				e.stopPropagation();
 			} );
 			
 			// the filter dropdown menu control
+			console.log('click event set on body and menu');
 			$( '#mwe-pt-filter-dropdown-control' ).click( function( e ) {
-				// close the meny when the user clicks away
-				$( 'body' ).one( 'click', function() {
-					_this.toggleFilterMenu();
-				} );
-
-				// this event "covers up" the body event, which keeps the menu from closing when
-				// the user clicks inside.
-				$( '#mwe-pt-control-dropdown' ).click( function( e ) {
-					e.stopPropagation();
-				} );
-
 				_this.toggleFilterMenu();
 				e.stopPropagation();
 			} );			
@@ -91,15 +87,32 @@ $( function() {
 			$( '#mwe-pt-list-control-nav' ).css( 'width', $(window).width() - 176 - 16 - 2 + "px" );
 		},
 		
-		toggleFilterMenu: function() {
-			if( this.filterMenuVisible ) {
+		toggleFilterMenu: function( action ) {
+			var _this = this;
+			if( (action && action == 'close') || this.filterMenuVisible ) {
 				$( '#mwe-pt-dropdown-arrow' ).html( '&#x25b8;' );
 				$( '#mwe-pt-control-dropdown' ).css( 'visibility', 'hidden' );
+				$( 'body' ).unbind( 'click' ); // remove these events since they're not needed til next time.
+				$( '#mwe-pt-control-dropdown' ).unbind( 'click' );
 				this.filterMenuVisible = 0;
-			} else {
+			} else if( (action && action == 'open') || !this.filterMenuVisible ) {
 				this.menuSync();
 				$( '#mwe-pt-control-dropdown' ).css( 'visibility', 'visible' );
 				$( '#mwe-pt-dropdown-arrow' ).html( '&#x25be;' );
+
+				// close the menu when the user clicks away
+				$( 'body' ).click( 'click', function() {
+					console.log('body clicked');
+					_this.toggleFilterMenu( 'close' );
+				} );
+
+				// this event "covers up" the body event, which keeps the menu from closing when
+				// the user clicks inside.
+				$( '#mwe-pt-control-dropdown' ).click( function( e ) {
+					console.log('menu clicked');
+					e.stopPropagation();
+				} );
+
 				this.filterMenuVisible = 1;				
 			}
 		},
@@ -170,34 +183,47 @@ $( function() {
 		
 		// sync the menu with the contents of the filters
 		menuSync: function() {
-			var newFilterStatus = [];
+			this.newFilterStatus = [];
 
 			$( '#mwe-pt-filter-namespace' ).val( this.model.getParam( 'namespace' ) );
 
 			// update the status display
 			if( this.model.getParam( 'namespace' ) > -1 ) { // still true for ns 0
-				newFilterStatus.push( gM( 'pagetriage-filter-stat-namespace', this.model.getParam( 'namespace' ) ) );	
+				var ns = this.model.getParam( 'namespace' );
+				var nsText;
+				if( ns == 0 ) {
+					nsText = gM( 'pagetriage-filter-ns-article' );
+				} else {
+					nsText = mw.config.get( 'wgFormattedNamespaces' )[ns];
+				}
+				this.newFilterStatus.push( gM( 'pagetriage-filter-stat-namespace', nsText ) );	
 			}
 			
-			// TODO: update the status for everything else.
-				
-			$( '#mwe-pt-filter-triaged-edits' ).prop( 'checked', this.model.getParam( 'showtriaged' )=="1"?true:false );
-			// api doesn't support this?
-			//$( '#mwe-pt-filter-nominated-for-deletion' ).prop( 'checked', this.model.getParam('')=="1"?true:false );
-			$( '#mwe-pt-filter-bot-edits' ).prop( 'checked', this.model.getParam( 'showbots' )=="1"?true:false );
-			$( '#mwe-pt-filter-redirects' ).prop( 'checked', this.model.getParam( 'showredirs' )=="1"?true:false );
-			
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-triaged-edits' ), 'showtriaged', 'pagetriage-filter-stat-triaged');
+			// api doesn't suppor this one.
+			//this.menuCheckboxUpdate( $( '#mwe-pt-filter-nominated-for-deletion' ' ), '', '');
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-bot-edits' ), 'showbots', 'pagetriage-filter-stat-bots');
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-redirects' ), 'showredirs', 'pagetriage-filter-stat-redirects');
+
 			/* api doesn't support these
 			$( '#mwe-pt-filter-user' ).val( this.model.getParam('') );
 			$( '#mwe-pt-filter-tag' ).val( this.model.getParam('') );
 			*/
-			
-			$( '#mwe-pt-filter-no-categories' ).prop( 'checked', this.model.getParam( 'no_category' )=="1"?true:false );
-			$( '#mwe-pt-filter-orphan' ).prop( 'checked', this.model.getParam( 'no_inbound_links' )=="1"?true:false );
-			$( '#mwe-pt-filter-non-autoconfirmed' ).prop( 'checked', this.model.getParam( 'non_autoconfirmed_users' )=="1"?true:false );
-			$( '#mwe-pt-filter-blocked' ).prop( 'checked', this.model.getParam( 'blocked_users' )=="1"?true:false );
-			
-			this.filterStatus = newFilterStatus.join('.');			
+
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-no-categories' ), 'no_category', 'pagetriage-filter-stat-no-categories');
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-orphan' ), 'no_inbound_links', 'pagetriage-filter-stat-orphan');
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-non-autoconfirmed' ), 'non_autoconfirmed_users', 'pagetriage-filter-stat-non-autoconfirmed');
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-blocked' ), 'blocked_users', 'pagetriage-filter-stat-blocked');
+
+			this.filterStatus = this.newFilterStatus.join(' &#xb7; ');			
+		},
+		
+		menuCheckboxUpdate: function( $checkbox, param, message ) {
+			// update a checkbox in the menu with data from the model.
+			$checkbox.prop( 'checked', this.model.getParam( param )=="1"?true:false );
+			if( this.model.getParam( param ) ) {
+				this.newFilterStatus.push( gM( message ) );
+			}
 		}
 		
 	} );

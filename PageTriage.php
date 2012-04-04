@@ -249,6 +249,14 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 		'pagetriage-filter-ns-all',
 		'pagetriage-more',
 		'pagetriage-filter-stat-namespace',
+		'pagetriage-filter-stat-triaged',
+		'pagetriage-filter-stat-bots',
+		'pagetriage-filter-stat-redirects',
+		'pagetriage-filter-stat-all',
+		'pagetriage-filter-stat-no-categories',
+		'pagetriage-filter-stat-orphan',
+		'pagetriage-filter-stat-non-autoconfirmed',
+		'pagetriage-filter-stat-blocked',
 	)
 );
 
