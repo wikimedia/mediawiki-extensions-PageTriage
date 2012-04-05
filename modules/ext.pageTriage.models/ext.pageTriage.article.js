@@ -48,7 +48,7 @@ $( function() {
 		apiParams: {
 			namespace: 0,
 			limit: 50,
-			dir: 'oldestfirst',
+			dir: 'newestfirst',
 			/*
 			showbots: null,
 			showredirs: null,

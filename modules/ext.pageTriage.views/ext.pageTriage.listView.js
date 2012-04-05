@@ -37,6 +37,22 @@ $( function() {
 			
 			var controlNav = new mw.pageTriage.ListControlNav( { eventBus: this.eventBus, model: articles } );
 			controlNav.render();
+			
+			// create the more link
+			_this = this;
+			$( '#mwe-pt-list-view' ).after( $( '<div id="mwe-pt-list-more"></div>' )
+				.append( $( '<a></a>' ).msg( 'pagetriage-more' )
+					.click( function() {
+						_this.loadMore();
+					} )
+				)
+			);
+		},
+		
+		loadMore: function() {
+			var lastArticle = articles.last(1);
+			articles.apiParams.offset = lastArticle[0].attributes.creation_date;
+			articles.fetch( {add: true} );
 		},
 		
 		// add stats data to the navigation
@@ -53,11 +69,10 @@ $( function() {
 				this.position = 0;
 			}
 			article.set( 'position', this.position++ );
-			
 			// pass in the specific article instance
 			var view = new mw.pageTriage.ListItem( { eventBus: this.eventBus, model: article } );
-			this.$( "#mwe-pt-list-view" ).append( view.render().el );
-			this.$( ".mwe-pt-list-triage-button" ).button({
+			$( "#mwe-pt-list-view" ).append( view.render().el );
+			$( ".mwe-pt-list-triage-button" ).button({
 				label: mw.msg( 'pagetriage-triage' ),
 				icons: { primary:'ui-icon-search' }
 			});
@@ -66,7 +81,7 @@ $( function() {
 		// add all the items in the articles collection
 		addAll: function() {
 			$("#mwe-pt-list-view").empty(); // remove the spinner before displaying.
-			articles.each( this.addOne );
+			articles.forEach( this.addOne, this );
 			this.eventBus.trigger( 'listAddAll' );
 	    }
 

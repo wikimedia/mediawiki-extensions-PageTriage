@@ -148,7 +148,7 @@ class ApiPageTriageList extends ApiBase {
 			'limit' => array(
 				ApiBase::PARAM_MAX => '200',
 				ApiBase::PARAM_DFLT => '20',
-				ApiBase::PARAM_MIN => '10',
+				ApiBase::PARAM_MIN => '1',
 				ApiBase::PARAM_TYPE => 'integer',
 			),
 			'offset' => array(
