@@ -260,6 +260,7 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 		'pagetriage-filter-stat-orphan',
 		'pagetriage-filter-stat-non-autoconfirmed',
 		'pagetriage-filter-stat-blocked',
+		'pagetriage-filter-all',
 	)
 );
 

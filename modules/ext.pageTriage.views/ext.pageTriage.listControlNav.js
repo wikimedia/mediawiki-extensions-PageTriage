@@ -65,14 +65,12 @@ $( function() {
 				icons: { secondary:'ui-icon-triangle-1-e' }
 			} );
 			$( ".mwe-pt-filter-set-button" ).click( function( e ) {
-				console.log('set button clicked');
 				_this.filterSync();
 				_this.toggleFilterMenu();				
 				e.stopPropagation();
 			} );
 			
 			// the filter dropdown menu control
-			console.log('click event set on body and menu');
 			$( '#mwe-pt-filter-dropdown-control' ).click( function( e ) {
 				_this.toggleFilterMenu();
 				e.stopPropagation();
@@ -112,14 +110,12 @@ $( function() {
 
 				// close the menu when the user clicks away
 				$( 'body' ).click( 'click', function() {
-					console.log('body clicked');
 					_this.toggleFilterMenu( 'close' );
 				} );
 
 				// this event "covers up" the body event, which keeps the menu from closing when
 				// the user clicks inside.
 				$( '#mwe-pt-control-dropdown' ).click( function( e ) {
-					console.log('menu clicked');
 					e.stopPropagation();
 				} );
 
@@ -225,7 +221,12 @@ $( function() {
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-non-autoconfirmed' ), 'non_autoconfirmed_users', 'pagetriage-filter-stat-non-autoconfirmed');
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-blocked' ), 'blocked_users', 'pagetriage-filter-stat-blocked');
 
-			this.filterStatus = this.newFilterStatus.join(' &#xb7; ');			
+			this.filterStatus = this.newFilterStatus.join(' &#xb7; ');
+			
+			if( ! $("input[name=mwe-pt-filter-radio]:checked").val() ) {
+				// none of the radio buttons are selected.  pick the default.
+				$( '#mwe-pt-filter-all' ).prop( 'checked', true );
+			}
 		},
 		
 		menuCheckboxUpdate: function( $checkbox, param, message ) {
