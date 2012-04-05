@@ -76,7 +76,17 @@ $( function() {
 			$( '#mwe-pt-filter-dropdown-control' ).click( function( e ) {
 				_this.toggleFilterMenu();
 				e.stopPropagation();
-			} );			
+			} );
+			
+			// Activate sort links
+			$( '#mwe-pt-sort-newest' ).click( function() {
+				// TODO: Make this change the direction param and run a new fetch
+				return false;
+			} );
+			$( '#mwe-pt-sort-oldest' ).click( function() {
+				// TODO: Make this change the direction param and run a new fetch
+				return false;
+			} );
 		},
 		
 		resize: function() {

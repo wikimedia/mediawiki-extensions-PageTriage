@@ -212,7 +212,10 @@ class SpecialPageTriage extends SpecialPage {
 							</form>
 						</div>
 					</span>
-					<span class="mwe-pt-control-label-right"><b><%= gM( 'pagetriage-viewing' ) %></b> Sort Controls</span>
+					<span class="mwe-pt-control-label-right"><b><%= gM( 'pagetriage-sort-by' ) %></b>
+						<a href="#" id="mwe-pt-sort-newest"><%= gM( 'pagetriage-newest' ) %></a>
+						<a href="#" id="mwe-pt-sort-oldest"><%= gM( 'pagetriage-oldest' ) %></a>
+					</span>
 				</script>
 				
 				<!-- bottom nav template -->
