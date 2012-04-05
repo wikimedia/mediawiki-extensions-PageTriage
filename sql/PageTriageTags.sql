@@ -16,7 +16,7 @@ VALUES
 ('prod_status', 'PROD status'),
 ('blp_prod_status', 'BLP PROD status'),
 ('afd_status', 'AFD status'),
-('patrol_status', 'Already review/triaged'),
+('patrol_status', 'Already reviewed'),
 ('rev_count', 'Number of edits to the article'),
 ('page_len', 'Number of bytes of article'),
 ('creation_date', 'Article creation date'),

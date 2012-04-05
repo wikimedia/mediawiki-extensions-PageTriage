@@ -61,7 +61,7 @@ class SpecialPageTriage extends SpecialPage {
 						<div class="mwe-pt-article-row mwe-pt-deleted">
 							<div class="mwe-pt-status-icon">&#160;</div>
 					<% } else if ( patrol_status == "1" ) { %>
-						<div class="mwe-pt-article-row mwe-pt-triaged">
+						<div class="mwe-pt-article-row mwe-pt-reviewed">
 							<div class="mwe-pt-status-icon">&#160;</div>
 					<% } else { %>
 						<div class="mwe-pt-article-row mwe-pt-new">
@@ -158,7 +158,7 @@ class SpecialPageTriage extends SpecialPage {
 								<div class="mwe-pt-control-section">
 									<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-show-heading' ) %></b></span>
 									<div class="mwe-pt-control-options">
-										<input type="checkbox" id="mwe-pt-filter-triaged-edits" /> <%= gM( 'pagetriage-filter-triaged-edits' ) %> <br/>
+										<input type="checkbox" id="mwe-pt-filter-reviewed-edits" /> <%= gM( 'pagetriage-filter-reviewed-edits' ) %> <br/>
 										<input type="checkbox" id="mwe-pt-filter-nominated-for-deletion" /> <%= gM( 'pagetriage-filter-nominated-for-deletion' ) %> <br/>
 										<input type="checkbox" id="mwe-pt-filter-bot-edits" /> <%= gM( 'pagetriage-filter-bot-edits' ) %> <br/>
 										<input type="checkbox" id="mwe-pt-filter-redirects" /> <%= gM( 'pagetriage-filter-redirects' ) %> <br/>
@@ -235,7 +235,7 @@ class SpecialPageTriage extends SpecialPage {
 							%>
 						</div>
 						<div class="mwe-pt-article-age-stats">
-							<% if ( ptrAverage ) { %> <%= gM( 'pagetriage-stats-untriaged-age', ptrAverage, ptrOldest ) %> <% } %>
+							<% if ( ptrAverage ) { %> <%= gM( 'pagetriage-stats-unreviewed-age', ptrAverage, ptrOldest ) %> <% } %>
 						</div>
 					</div>
 				</script>

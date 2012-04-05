@@ -14,7 +14,7 @@ class ApiPageTriageAction extends ApiBase {
 		$params = $this->extractRequestParams();
 		
 		$pageTriage = new PageTriage( $params['pageid'] );
-		$pageTriage->setTriageStatus( $params['triaged'], $wgUser );
+		$pageTriage->setTriageStatus( $params['reviewed'], $wgUser );
 
 		$result = array( 'result' => 'success' );
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
@@ -34,7 +34,7 @@ class ApiPageTriageAction extends ApiBase {
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE => 'integer'
 			),
-			'triaged' => array(
+			'reviewed' => array(
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE => array(
 					'1',
@@ -61,13 +61,13 @@ class ApiPageTriageAction extends ApiBase {
 
 	public function getParamDescription() {
 		return array(
-			'pageid' => 'The article for which to be marked as triaged or untriaged',
-			'triaged' => 'whether the article is triaged or not',
+			'pageid' => 'The article for which to be marked as reviewed or unreviewed',
+			'reviewed' => 'whether the article is reviewed or not',
 			'token' => 'edit token'
 		);
 	}
 
 	public function getDescription() {
-		return 'Mark an article as triaged or untriaged';
+		return 'Mark an article as reviewed or unreviewed';
 	}
 }

@@ -61,11 +61,11 @@ class ApiPageTriageList extends ApiBase {
 		$tables	  = array( 'pagetriage_page', 'page' );
 		$conds    = array( 'ptrp_page_id = page_id' );
 
-		// Show triaged
-		if ( $opts['showtriaged'] ) {
-			$conds['ptrp_triaged'] = array( 0, 1 );
+		// Show reviewed
+		if ( $opts['showreviewed'] ) {
+			$conds['ptrp_reviewed'] = array( 0, 1 );
 		} else {
-			$conds['ptrp_triaged'] = 0;
+			$conds['ptrp_reviewed'] = 0;
 		}
 		// Show redirect
 		if ( $opts['showredirs'] ) {
@@ -142,7 +142,7 @@ class ApiPageTriageList extends ApiBase {
 			'showredirs' => array(
 				ApiBase::PARAM_TYPE => 'boolean',
 			),
-			'showtriaged'=> array(
+			'showreviewed'=> array(
 				ApiBase::PARAM_TYPE => 'boolean',	
 			),
 			'limit' => array(
@@ -181,7 +181,7 @@ class ApiPageTriageList extends ApiBase {
 		return array(
 			'showbots' => 'Whether to include bot edits or not', // default is not to show bot
 			'showredirs' => 'Whether to include redirects or not', // default is not to show redirects
-			'showtriaged' => 'Whether to include triaged or not', // default is not to show triaged
+			'showreviewed' => 'Whether to include reviewed or not', // default is not to show reviewed
 			'limit' => 'The maximum number of results to return',
 			'offset' => 'Timestamp to start from',
 			'dir' => 'The direction the list should be sorted in - oldestfirst or newestfirst',

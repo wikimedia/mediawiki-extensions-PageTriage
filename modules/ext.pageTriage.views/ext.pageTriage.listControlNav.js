@@ -35,7 +35,7 @@ $( function() {
 
 			this.eventBus.bind( "renderStats", function( stats ) {
 				// fill in the counter when the stats view gets loaded.
-				$( "#mwe-pt-control-stats" ).html( gM( 'pagetriage-article-count', stats.get('ptr_untriaged_article_count') ) );
+				$( "#mwe-pt-control-stats" ).html( gM( 'pagetriage-article-count', stats.get('ptr_unreviewed_article_count') ) );
 			} );
 
 			// update the filter display on load.
@@ -126,8 +126,8 @@ $( function() {
 			}
 
 			// these are conditionals because the keys shouldn't exist if the checkbox isn't checked.
-			if( $('#mwe-pt-filter-triaged-edits').prop('checked') ) {
-				apiParams['showtriaged'] = '1';
+			if( $('#mwe-pt-filter-reviewed-edits').prop('checked') ) {
+				apiParams['showreviewed'] = '1';
 			}
 			
 			/*
@@ -199,7 +199,7 @@ $( function() {
 				this.newFilterStatus.push( gM( 'pagetriage-filter-stat-namespace', nsText ) );	
 			}
 			
-			this.menuCheckboxUpdate( $( '#mwe-pt-filter-triaged-edits' ), 'showtriaged', 'pagetriage-filter-stat-triaged');
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-reviewed-edits' ), 'showreviewed', 'pagetriage-filter-stat-reviewed');
 			// api doesn't suppor this one.
 			//this.menuCheckboxUpdate( $( '#mwe-pt-filter-nominated-for-deletion' ' ), '', '');
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-bot-edits' ), 'showbots', 'pagetriage-filter-stat-bots');

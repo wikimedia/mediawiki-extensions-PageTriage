@@ -52,7 +52,7 @@ $( function() {
 			/*
 			showbots: null,
 			showredirs: null,
-			showtriaged: null,
+			showreviewed: null,
 			no_category: 1,
 			no_inbound_links: 1,
 			non_autoconfirmed_users: 1,

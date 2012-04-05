@@ -10,7 +10,7 @@ class ApiPageTriageStats extends ApiBase {
 		}
 
 		$data = array(
-				'untriagedarticle' => PageTriageUtil::getUntriagedArticleStat(),
+				'unreviewedarticle' => PageTriageUtil::getUnreviewedArticleStat(),
 				'toptriager' => array(
 					'total' => count( $topTriager ),
 					'data' => $topTriager

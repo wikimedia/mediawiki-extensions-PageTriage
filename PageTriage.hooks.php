@@ -3,7 +3,7 @@
 class PageTriageHooks {
 
 	/**
-	 * Mark a page as untriaged after moving the page if the new title is in main namespace 
+	 * Mark a page as unreviewed after moving the page if the new title is in main namespace 
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/SpecialMovepageAfterMove
 	 * @param $movePage: MovePageForm object

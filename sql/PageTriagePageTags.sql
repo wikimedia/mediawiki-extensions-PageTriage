@@ -1,4 +1,4 @@
--- Store the metadata for article to be triaged
+-- Store the metadata for article to be reviewed
 CREATE TABLE /*_*/pagetriage_page_tags (
 	ptrpt_page_id int unsigned NOT NULL,
 	ptrpt_tag_id int unsigned NOT NULL,

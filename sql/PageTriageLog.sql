@@ -3,7 +3,7 @@ CREATE TABLE /*_*/pagetriage_log (
 	ptrl_id int unsigned NOT NULL PRIMARY KEY auto_increment,
 	ptrl_page_id int unsigned NOT NULL,
 	ptrl_user_id int unsigned NOT NULL,
-	ptrl_triaged tinyint unsigned not null default 0,
+	ptrl_reviewed tinyint unsigned not null default 0,
 	ptrl_comment varbinary(255),
 	ptrl_timestamp varbinary(14) NOT NULL
 ) /*$wgDBTableOptions*/;

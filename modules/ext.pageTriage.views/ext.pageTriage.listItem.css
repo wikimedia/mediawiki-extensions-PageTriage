@@ -29,7 +29,7 @@
 .mwe-pt-article-row.mwe-pt-new {
 	background-color: #f2b3b3;
 }
-.mwe-pt-article-row.mwe-pt-triaged {
+.mwe-pt-article-row.mwe-pt-reviewed {
 	background-color: #c3ead7;
 }
 .mwe-pt-article-row.mwe-pt-deleted {
@@ -43,12 +43,12 @@
 }
 .mwe-pt-new .mwe-pt-status-icon {
 	/* @embed */
-	background-image: url('images/icon_not_triaged.png');
+	background-image: url('images/icon_not_reviewed.png');
 	background-repeat: no-repeat;
 }
-.mwe-pt-triaged .mwe-pt-status-icon {
+.mwe-pt-reviewed .mwe-pt-status-icon {
 	/* @embed */
-	background-image: url('images/icon_triaged.png');
+	background-image: url('images/icon_reviewed.png');
 	background-repeat: no-repeat;
 }
 

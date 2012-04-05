@@ -4,7 +4,7 @@ class PageTriage {
 
 	// database property
 	protected $mPageId;
-	protected $mTriaged;
+	protected $mReviewed;
 	protected $mTimestamp;
 
 	// additional property
@@ -39,7 +39,7 @@ class PageTriage {
 		
 		$row = array(
 			'ptrp_page_id' => $this->mPageId,
-			'ptrp_triaged' => '0',
+			'ptrp_reviewed' => '0',
 			'ptrp_timestamp' => $res->creation_date
 		);
 
@@ -50,20 +50,20 @@ class PageTriage {
 	
 	/**
 	 * set the triage status of an article in pagetriage queue
-	 * @param $triaged string - '1'/'0'
+	 * @param $reviewed string - '1'/'0'
 	 * @param $user User
 	 */
-	public function setTriageStatus( $triaged, User $user = null ) {
+	public function setTriageStatus( $reviewed, User $user = null ) {
 		$dbw = wfGetDB( DB_MASTER );
 		
 		$row = array();
-		if ( $triaged === '1' ) {
-			$row['ptrp_triaged'] = '1';
+		if ( $reviewed === '1' ) {
+			$row['ptrp_reviewed'] = '1';
 		} else {
-			$row['ptrp_triaged'] = '0';
+			$row['ptrp_reviewed'] = '0';
 		}
 
-		$this->mTriaged = $row['ptrp_triaged'];
+		$this->mReviewed = $row['ptrp_reviewed'];
 
 		$dbw->begin();
 		$dbw->update( 'pagetriage_page', $row, array( 'ptrp_page_id' => $this->mPageId ), __METHOD__ );
@@ -84,7 +84,7 @@ class PageTriage {
 		
 		$res = $dbr->selectRow(
 			array( 'pagetriage_page' ),
-			array( 'ptrp_triaged', 'ptrp_timestamp' ),
+			array( 'ptrp_reviewed', 'ptrp_timestamp' ),
 			array( 'ptrp_page_id' => $this->mPageId ),
 			__METHOD__
 		);
@@ -93,7 +93,7 @@ class PageTriage {
 			return false;
 		}
 		
-		$this->mTriaged = $res->ptrp_triaged;
+		$this->mReviewed = $res->ptrp_reviewed;
 		$this->mTimestamp = $res->ptrp_timestamp;
 		return true;
 	}
@@ -129,7 +129,7 @@ class PageTriage {
 		$row = array(
 			'ptrl_page_id' => $this->mPageId,
 			'ptrl_user_id' => $user->getID(),
-			'ptrl_triaged' => $this->mTriaged,
+			'ptrl_reviewed' => $this->mReviewed,
 			'ptrl_timestamp' => $dbw->timestamp( wfTimestampNow() )
 		);
 		

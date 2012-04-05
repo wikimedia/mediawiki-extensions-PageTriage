@@ -14,7 +14,7 @@ $( function() {
 		},
 
 		formatMetadata: function ( stats ) {
-			stats.set( 'ptr_untriaged_article_count', stats.get( 'untriagedarticle' )['count'] );
+			stats.set( 'ptr_unreviewed_article_count', stats.get( 'unreviewedarticle' )['count'] );
 
 			var topTriager = {};
 			for ( var i in stats.get( 'toptriager' )['data'] ) {
@@ -28,8 +28,8 @@ $( function() {
 
 			stats.set( 'ptrTopTriager',  topTriager );
 			stats.set( 'ptrTopTriagerStr', gM( 'pagetriage-stats-top-triagers', Number( stats.get( 'toptriager' ).total ) ) );
-			stats.set( 'ptrAverage', this.formatDaysFromNow( stats.get( 'untriagedarticle' )['age-50th-percentile'] ) );
-			stats.set( 'ptrOldest', this.formatDaysFromNow( stats.get( 'untriagedarticle' )['age-100th-percentile'] ) );
+			stats.set( 'ptrAverage', this.formatDaysFromNow( stats.get( 'unreviewedarticle' )['age-50th-percentile'] ) );
+			stats.set( 'ptrOldest', this.formatDaysFromNow( stats.get( 'unreviewedarticle' )['age-100th-percentile'] ) );
 		},
 
 		formatDaysFromNow: function ( dateStr ) {

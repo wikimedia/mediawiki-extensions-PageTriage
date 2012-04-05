@@ -243,7 +243,7 @@ class ArticleMetadata {
 		// Article page length, creation date, number of edit, title, article triage status
 		$res = $dbr->select(
 				array( 'page', 'revision', 'pagetriage_page' ),
-				array( 'page_id', 'page_namespace', 'page_title', 'page_len', 'COUNT(rev_id) AS rev_count', 'MIN(rev_timestamp) AS creation_date', 'ptrp_triaged' ),
+				array( 'page_id', 'page_namespace', 'page_title', 'page_len', 'COUNT(rev_id) AS rev_count', 'MIN(rev_timestamp) AS creation_date', 'ptrp_reviewed' ),
 				array( 'page_id' => $this->mPageId, 'page_id = rev_page', 'page_id = ptrp_page_id'),
 				__METHOD__,
 				array ( 'GROUP BY' => 'page_id' )
@@ -254,7 +254,7 @@ class ArticleMetadata {
 			$metaData[$row->page_id]['creation_date'] = $row->creation_date;
 			$metaData[$row->page_id]['rev_count'] = $row->rev_count;
 			$metaData[$row->page_id]['title'] = $title->getPrefixedText();
-			$metaData[$row->page_id]['patrol_status'] = $row->ptrp_triaged;
+			$metaData[$row->page_id]['patrol_status'] = $row->ptrp_reviewed;
 		}
 		// Remove any non-existing page_id from $this->mPageId
 		foreach ( $this->mPageId as $key => $pageId ) {
