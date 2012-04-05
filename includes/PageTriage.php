@@ -77,7 +77,7 @@ class PageTriage {
 	
 	/**
 	 * Load a page triage record
-	 * @return false
+	 * @return bool
 	 */
 	public function retrieve() {
 		$dbr = wfGetDB( DB_SLAVE );
