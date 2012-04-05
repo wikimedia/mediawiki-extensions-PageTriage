@@ -48,7 +48,6 @@ $( function() {
 		apiParams: {
 			namespace: 0,
 			limit: 50,
-			offset: 0,
 			dir: 'oldestfirst',
 			/*
 			showbots: null,

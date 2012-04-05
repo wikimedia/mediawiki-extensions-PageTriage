@@ -50,8 +50,10 @@ class ApiPageTriageList extends ApiBase {
 		
 		if ( strtolower( $opts['dir'] ) === 'oldestfirst' ) {
 			$options['ORDER BY'] = 'ptrp_timestamp ASC';
+			$offsetOperator = ' > ';
 		} else {
 			$options['ORDER BY'] = 'ptrp_timestamp DESC';
+			$offsetOperator = ' < ';
 		}
 
 		// Start building the massive filter which includes meta data
@@ -72,6 +74,10 @@ class ApiPageTriageList extends ApiBase {
 		// Show by namespace
 		if ( array_key_exists( 'namespace', $opts ) ) {
 			$conds['page_namespace'] = $opts['namespace'];
+		}
+		// Offset the list
+		if ( array_key_exists( 'offset', $opts ) && is_numeric( $opts['offset'] ) ) {
+			$conds[] = 'ptrp_timestamp' . $offsetOperator . $opts['offset'];
 		}
 
 		if ( $tagConds ) {
@@ -145,6 +151,9 @@ class ApiPageTriageList extends ApiBase {
 				ApiBase::PARAM_MIN => '10',
 				ApiBase::PARAM_TYPE => 'integer',
 			),
+			'offset' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+			),
 			'dir' => array(
 				ApiBase::PARAM_TYPE => 'string',
 			),
@@ -174,6 +183,7 @@ class ApiPageTriageList extends ApiBase {
 			'showredirs' => 'Whether to include redirects or not', // default is not to show redirects
 			'showtriaged' => 'Whether to include triaged or not', // default is not to show triaged
 			'limit' => 'The maximum number of results to return',
+			'offset' => 'Timestamp to start from',
 			'dir' => 'The direction the list should be sorted in - oldestfirst or newestfirst',
 			'namespace' => 'What namespace to pull pages from',
 			'no_category' => 'Whether to show only pages with no category',
