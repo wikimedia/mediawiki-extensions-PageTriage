@@ -6,6 +6,8 @@
 #mwe-pt-list-more {
 	text-align: center;
 	background-color: #E8F2F8;
-    margin: 1em 0 0 0;
-    padding: 0.5em;
+	margin: 0;
+	padding: 0.5em;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
 }
