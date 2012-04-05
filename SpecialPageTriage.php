@@ -217,25 +217,26 @@ class SpecialPageTriage extends SpecialPage {
 				
 				<!-- bottom nav template -->
 				<script type="text/template" id="listStatsNavTemplate">
-					<div id="mwe-pt-top-triager">
-						<%
-						if ( toptriager.total ) {
-						%>
-							<%= ptrTopTriagerStr %>
+					<div id="mwe-pt-stats-nav">
+						<div class="mwe-pt-top-triager">
 							<%
-								for ( var m in ptrTopTriager ) {
+							if ( toptriager.total ) {
 							%>
-									<!-- Todo: escape user name  -->
-									<a <%= ptrTopTriager[m].linkCSS %> href="<%= ptrTopTriager[m].title.getUrl() %>"><%= ptrTopTriager[m].userName %></a>
+								<span class="mwe-pt-stats-label"><%= ptrTopTriagerStr %></span>
+								<%
+									for ( var m in ptrTopTriager ) {
+								%>
+										<a <%= ptrTopTriager[m].linkCSS %> href="<%= ptrTopTriager[m].title.getUrl() %>"><%= mw.html.escape( ptrTopTriager[m].userName ) %></a>
+								<%
+									}
+								%>
 							<%
-								}
+							}
 							%>
-						<%
-						}
-						%>
-					</div>
-					<div id="mwe-pt-article-age-stats">
-						<% if ( ptrAverage ) { %> <%= gM( 'pagetriage-stats-untriaged-age', ptrAverage, ptrOldest ) %> <% } %>
+						</div>
+						<div class="mwe-pt-article-age-stats">
+							<% if ( ptrAverage ) { %> <%= gM( 'pagetriage-stats-untriaged-age', ptrAverage, ptrOldest ) %> <% } %>
+						</div>
 					</div>
 				</script>
 				

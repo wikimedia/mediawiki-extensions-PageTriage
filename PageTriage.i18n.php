@@ -50,7 +50,7 @@ $messages['en'] = array(
 	'pagetriage-filter-non-autoconfirmed' => 'Are by new editors',
 	'pagetriage-filter-blocked' => 'Are by blocked users',
 	'pagetriage-filter-set-button' => 'Set Filters',
-	'pagetriage-stats-untriaged-age' => 'Article Ages: Average: $1, Oldest: $2',
+	'pagetriage-stats-untriaged-age' => '<span class="mwe-pt-stats-label">Article Ages:</span> Average: $1, Oldest: $2',
 	'pagetriage-stats-less-than-a-day' => 'less than one day',
 	'pagetriage-stats-top-triagers' => 'Top {{PLURAL:$1|triager|$1 triagers}}:',
 	'pagetriage-filter-ns-article' => 'Article',
