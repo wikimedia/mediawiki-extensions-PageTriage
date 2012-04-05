@@ -48,12 +48,12 @@ $( function() {
 		apiParams: {
 			namespace: 0,
 			limit: 50,
+			offset: 0,
+			dir: 'oldestfirst',
 			/*
 			showbots: null,
 			showredirs: null,
 			showtriaged: null,
-			limit: 10,
-			namespace: 0,
 			no_category: 1,
 			no_inbound_links: 1,
 			non_autoconfirmed_users: 1,
@@ -69,7 +69,6 @@ $( function() {
 		
 		url: function() {
 			var url = mw.util.wikiScript( 'api' ) + '?action=pagetriagelist&format=json&' + $.param( this.apiParams );
-			console.log('fetching ' + url);
 			return url;
 		},
 

@@ -33,26 +33,6 @@ class SpecialPageTriage extends SpecialPage {
 		$wgUser->saveSettings();
 		$wgUser->invalidateCache();
 		
-		// Initialize variable to hold list view options
-		$opts = new FormOptions();
-		
-		// Set the defaults for the list view options
-		$opts->add( 'showbots', true );
-		$opts->add( 'showredirs', false );
-		$opts->add( 'showtriaged', false );
-		$opts->add( 'limit', (int)$this->getUser()->getOption( 'rclimit' ) );
-		$opts->add( 'offset', '' );
-		$opts->add( 'namespace', '0' );
-		
-		// Get the option values from the page request
-		$opts->fetchValuesFromRequest( $this->getRequest() );
-		
-		// Validate the data for the options
-		$opts->validateIntBounds( 'limit', 0, 5000 );
-		
-		// Bind options to member variable
-		$this->opts = $opts;
-		
 		// Output the title of the page
 		$out->setPageTitle( wfMessage( 'pagetriage' ) );
 

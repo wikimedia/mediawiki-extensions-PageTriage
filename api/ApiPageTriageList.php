@@ -20,15 +20,17 @@ class ApiPageTriageList extends ApiBase {
 			// fetch metadata for those pages
 			$articleMetadata = new ArticleMetadata( $pages );
 			$metaData = $articleMetadata->getMetadata();
-
-			// convert this to a slightly different format that's more Backbone-friendly
-			foreach( $metaData as $pageId => $attrs ) {
-				$metaDataSend[] = $attrs + array( 'pageid' => $pageId );
+			
+			// Sort data according to page order returned by our query. Also convert it to a 
+			// slightly different format that's more Backbone-friendly.
+			$sortedMetaData = array();
+			foreach ( $pages as $page ) {
+				$sortedMetaData[] = array( 'pageid' => $page ) + $metaData[ $page ];
 			}
 		}
 
 		// Output the results
-		$result = array( 'result' => 'success', 'pages' => $metaDataSend, 'userpagestatus' => PageTriageUtil::pageStatusForUser( $metaDataSend ) );
+		$result = array( 'result' => 'success', 'pages' => $sortedMetaData, 'userpagestatus' => PageTriageUtil::pageStatusForUser( $metaDataSend ) );
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
@@ -44,7 +46,13 @@ class ApiPageTriageList extends ApiBase {
 		$pages = $options = array();
 
 		// Get the expected limit as defined in getAllowedParams
-		$options = array( 'LIMIT' => $opts['limit'] );
+		$options['LIMIT'] = $opts['limit'];
+		
+		if ( strtolower( $opts['dir'] ) === 'oldestfirst' ) {
+			$options['ORDER BY'] = 'ptrp_timestamp ASC';
+		} else {
+			$options['ORDER BY'] = 'ptrp_timestamp DESC';
+		}
 
 		// Start building the massive filter which includes meta data
 		$tagConds = self::buildTagQuery( $opts );
@@ -102,7 +110,7 @@ class ApiPageTriageList extends ApiBase {
 					// no inbound links
 					'no_inbound_links' => array( 'name' => 'linkcount', 'op' => '=', 'val' => '0' ),
 					// non auto confirmed users
-					'non_auto_confirmed_users' => array( 'name' => 'user_autoconfirmed', 'op' => '=', 'val' => '0' ),
+					'non_autoconfirmed_users' => array( 'name' => 'user_autoconfirmed', 'op' => '=', 'val' => '0' ),
 					// blocked users
 					'blocked_users' => array( 'name' => 'user_block_status', 'op' => '=', 'val' => '1' ),
 					// show bots
@@ -137,6 +145,9 @@ class ApiPageTriageList extends ApiBase {
 				ApiBase::PARAM_MIN => '10',
 				ApiBase::PARAM_TYPE => 'integer',
 			),
+			'dir' => array(
+				ApiBase::PARAM_TYPE => 'string',
+			),
 			'namespace' => array(
 				ApiBase::PARAM_DFLT => '0',
 				ApiBase::PARAM_TYPE => 'integer',
@@ -147,7 +158,7 @@ class ApiPageTriageList extends ApiBase {
 			'no_inbound_links' => array(
 				ApiBase::PARAM_TYPE => 'boolean',	
 			),
-			'non_auto_confirmed_users' => array(
+			'non_autoconfirmed_users' => array(
 				ApiBase::PARAM_TYPE => 'boolean',	
 			),
 			'blocked_users' => array(
@@ -163,10 +174,11 @@ class ApiPageTriageList extends ApiBase {
 			'showredirs' => 'Whether to include redirects or not', // default is not to show redirects
 			'showtriaged' => 'Whether to include triaged or not', // default is not to show triaged
 			'limit' => 'The maximum number of results to return',
+			'dir' => 'The direction the list should be sorted in - oldestfirst or newestfirst',
 			'namespace' => 'What namespace to pull pages from',
 			'no_category' => 'Whether to show only pages with no category',
 			'no_inbound_links' => 'Whether to show only pages with no inbound links',
-			'non_auto_confirmed_users' => 'Whether to show only pages created by non auto confirmed users',
+			'non_autoconfirmed_users' => 'Whether to show only pages created by non auto confirmed users',
 			'blocked_users' => 'Whether to show only pages created by blocked users'
 		);
 	}

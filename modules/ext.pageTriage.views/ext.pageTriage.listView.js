@@ -10,11 +10,6 @@ $( function() {
 	// grab pageTriage statistics
 	var stats = new mw.pageTriage.Stats( { eventBus: eventBus } );
 
-	// set the default sort order.
-	articles.comparator = function( article ) {
-		return -article.get( "creation_date" );
-	};
-
 	// overall list view
 	// currently, this is the main application view.
 	mw.pageTriage.ListView = Backbone.View.extend( {
