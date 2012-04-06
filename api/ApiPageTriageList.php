@@ -13,6 +13,7 @@ class ApiPageTriageList extends ApiBase {
 
 		// Retrieve the list of page IDs
 		$pages = $this->getPageIds( $opts );
+		$sortedMetaData = array();
 
 		if ( $pages ) {
 			// fetch metadata for those pages
@@ -21,7 +22,6 @@ class ApiPageTriageList extends ApiBase {
 			
 			// Sort data according to page order returned by our query. Also convert it to a 
 			// slightly different format that's more Backbone-friendly.
-			$sortedMetaData = array();
 			foreach ( $pages as $page ) {
 				$sortedMetaData[] = array( 'pageid' => $page ) + $metaData[ $page ];
 			}
