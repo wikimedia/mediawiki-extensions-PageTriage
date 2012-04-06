@@ -59,7 +59,7 @@ class SpecialPageTriage extends SpecialPage {
 		
 		// TODO: this should load with a spinner instead of "please wait"
 		$triageInterface .= "<div id='mwe-pt-list-view'>Please wait...</div>";
-		$triageInterface .= "<div id='mwe-pt-list-more'>";
+		$triageInterface .= "<div id='mwe-pt-list-more' style='display: none;'>";
 		$triageInterface .= "<a href='#' id='mwe-pt-list-more-link'>".wfMessage( 'pagetriage-more' )."</a>";
 		$triageInterface .= "</div>";
 		$triageInterface .= "<div id='mwe-pt-list-load-more-anchor'></div>";
