@@ -86,6 +86,7 @@ $wgHooks['UnitTestsList'][] = 'efPageTriageUnitTests'; // unit tests
 $wgHooks['GetPreferences'][] = 'PageTriageHooks::onGetPreferences';
 $wgHooks['ArticleViewHeader'][] = 'PageTriageHooks::onArticleViewHeader';
 $wgHooks['ArticleDeleteComplete'][] = 'PageTriageHooks::onArticleDeleteComplete';
+$wgHooks['MarkPatrolledComplete'][] = 'PageTriageHooks::onMarkPatrolledComplete';
 
 $wgPageTriageMarkPatrolledLinkExpiry = 3600 * 24 * 30; // 30 days
 

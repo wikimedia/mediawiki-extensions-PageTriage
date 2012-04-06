@@ -158,4 +158,26 @@ class PageTriageHooks {
 
 		return true;
 	}
+	
+	/**
+	 * Sync records from patrol queue to triage queue 
+	 *
+	 * 'MarkPatrolledComplete': after an edit is marked patrolled
+	 * $rcid: ID of the revision marked as patrolled
+	 * $user: user (object) who marked the edit patrolled
+	 * $wcOnlySysopsCanPatrol: config setting indicating whether the user
+	 * must be a sysop to patrol the edit
+	 */
+	public static function onMarkPatrolledComplete( $rcid, &$user, $wcOnlySysopsCanPatrol ) {
+		$rc = RecentChange::newFromId( $rcid );
+
+		if ( $rc ) {
+			$pt = new PageTriage( $rc->getAttribute( 'rc_cur_id' ) );
+			if ( $pt->addToPageTriageQueue() ) {
+				$pt->setTriageStatus( '1', $user, true );	
+			}
+		}
+
+		return true;
+	}
 }
