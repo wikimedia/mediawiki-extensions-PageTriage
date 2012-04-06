@@ -40,7 +40,7 @@ $( function() {
 
 		render: function() {
 			// insert the template into the document.  fill with the current model.
-			$( "#mwe-pt-list-stats-nav").html( this.template( this.model.toJSON() ) );
+			$( "#mwe-pt-list-stats-nav-content" ).html( this.template( this.model.toJSON() ) );
 
 			if( $( '#mwe-pt-list-stats-nav-anchor' ).offset().top < $.waypoints('viewportHeight') ) {
 				// turn off floating nav, bring the bar back into the list.

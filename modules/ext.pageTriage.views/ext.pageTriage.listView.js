@@ -22,7 +22,7 @@ $( function() {
 			articles.bind( 'add', this.addOne, this );
 			articles.bind( 'reset', this.addAll, this );
 			stats.bind( 'change', this.addStats, this );
-		
+
 			// this event is triggered when the collection finishes loading.
 			//articles.bind( 'all', this.render, this );
 
@@ -37,22 +37,48 @@ $( function() {
 			
 			var controlNav = new mw.pageTriage.ListControlNav( { eventBus: this.eventBus, model: articles } );
 			controlNav.render();
-			
-			// create the more link
-			_this = this;
-			$( '#mwe-pt-list-view' ).after( $( '<div id="mwe-pt-list-more"></div>' )
-				.append( $( '<a></a>' ).msg( 'pagetriage-more' )
-					.click( function() {
-						_this.loadMore();
-					} )
-				)
-			);
 		},
 		
-		loadMore: function() {
+		initializeInfiniteScrolling: function() {
+			// make the article list infinitely scrolling
+			_this = this;
+			var $anchor = $( '#mwe-pt-list-load-more-anchor' );
+			opts = { offset: '100%' };
+			$anchor.waypoint( function( event, direction ) {
+				if ( direction == 'down' ) {
+					_this.automaticLoadMore();
+				}
+			}, opts );
+		},
+		
+		automaticLoadMore: function() {
 			var lastArticle = articles.last(1);
 			articles.apiParams.offset = lastArticle[0].attributes.creation_date;
-			articles.fetch( {add: true} );
+			articles.fetch( {
+				add: true,
+				success: function() {
+					$( '.mwe-pt-article-row' ).last().css( 'border-bottom', 'none' );
+					$.waypoints( 'refresh' );
+				}
+			} );
+		},
+		
+		manualLoadMore: function() {
+			$( '#mwe-pt-list-more' ).empty();
+			$( '#mwe-pt-list-more' ).append( $.createSpinner( 'more-spinner' ) );
+			var lastArticle = articles.last(1);
+			articles.apiParams.offset = lastArticle[0].attributes.creation_date;
+			articles.fetch( {
+				add: true,
+				success: function() {
+					$.removeSpinner( 'more-spinner' );
+					$( '#mwe-pt-list-more' ).append( 
+						$( '<a></a>' ).msg( 'pagetriage-more' ).click( function() {
+							_this.manualLoadMore();
+						} )
+					);
+				}
+			} );
 		},
 		
 		// add stats data to the navigation
@@ -80,8 +106,22 @@ $( function() {
 
 		// add all the items in the articles collection
 		addAll: function() {
-			$("#mwe-pt-list-view").empty(); // remove the spinner before displaying.
+			$( '#mwe-pt-list-view' ).empty(); // remove the spinner before displaying.
 			articles.forEach( this.addOne, this );
+			if ( mw.config.get( 'wgPageTriageInfiniteScrolling' ) ) {
+				$( '.mwe-pt-article-row' ).last().css( 'border-bottom', 'none' );
+				this.initializeInfiniteScrolling();
+			} else {
+				_this = this;
+				// Add a 'More' link
+				$( '#mwe-pt-list-view' ).after( $( '<div id="mwe-pt-list-more"></div>' )
+					.append( $( '<a></a>' ).msg( 'pagetriage-more' )
+						.click( function() {
+							_this.manualLoadMore();
+						} )
+					)
+				);
+			}
 			this.eventBus.trigger( 'listAddAll' );
 	    }
 

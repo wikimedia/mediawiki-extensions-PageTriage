@@ -3,11 +3,11 @@
 class ApiPageTriageGetMetadata extends ApiBase {
 	
 	public function execute() {
-		global $wgPageTriagePageIdPerRequest;
+		global $wgPageTriagePagesPerRequest;
 
 		$params = $this->extractRequestParams();
 
-		if ( count( $params['page_id'] ) > $wgPageTriagePageIdPerRequest ) {
+		if ( count( $params['page_id'] ) > $wgPageTriagePagesPerRequest ) {
 			$this->dieUsage( 'Too many pages in the request', 'exceed-page-limit' );
 		}
 		

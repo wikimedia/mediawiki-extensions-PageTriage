@@ -5,9 +5,17 @@
 
 #mwe-pt-list-more {
 	text-align: center;
+	font-size: 17px;
+	line-height: 20px;
 	background-color: #E8F2F8;
 	margin: 0;
-	padding: 0.5em;
+	padding: 0.4em;
 	border-right: 1px solid #ccc;
 	border-left: 1px solid #ccc;
+	min-height: 21px;
 }
+
+#mwe-pt-list-more a {
+	cursor: pointer;
+}
+

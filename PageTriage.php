@@ -44,7 +44,8 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 // Begin configuration variables
-$wgPageTriagePageIdPerRequest = 20;
+$wgPageTriagePagesPerRequest = 20; // Maximum number of articles for the API to retrieve at once
+$wgPageTriageInfiniteScrolling = false; // Whether or not to use infinite scrolling in the page list
 // End configuration variables
 
 $dir = dirname( __FILE__ ) . '/';
@@ -189,7 +190,8 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 	'dependencies' => array(
 		'mediawiki.jqueryMsg',
 		'ext.pageTriage.models',
-		'jquery.ui.button'
+		'jquery.ui.button',
+		'jquery.spinner'
 	),
 	'scripts' => array(
 		'ext.pageTriage.views/ext.pageTriage.listItem.js',

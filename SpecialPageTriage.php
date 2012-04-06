@@ -24,6 +24,7 @@ class SpecialPageTriage extends SpecialPage {
 	 * @param $sub string The subpage, if any
 	 */
 	public function execute( $sub ) {
+		global $wgPageTriageInfiniteScrolling;
 		$out = $this->getOutput();
 		
 		// TODO: check user permissions, make sure they're logged in and have the pagepatrol userright
@@ -35,6 +36,16 @@ class SpecialPageTriage extends SpecialPage {
 		
 		// Output the title of the page
 		$out->setPageTitle( wfMessage( 'pagetriage' ) );
+		
+		// Set whether or not to do infinite scrolling
+		if ( is_bool( $wgPageTriageInfiniteScrolling ) ) {
+			// Convert to string
+			$infiniteScroll = $wgPageTriageInfiniteScrolling ? "true" : "false";
+		} else {
+			$infiniteScroll = $wgPageTriageInfiniteScrolling;
+		}
+		$out->addScript( "<script type=\"text/javascript\">mw.config.set({\"wgPageTriageInfiniteScrolling\":" . 
+			$infiniteScroll . "});</script>" );
 
 		// load the JS
 		$out->addModules( array( 'ext.pageTriage.external', 'ext.pageTriage.models', 'ext.pageTriage.views' ) );
@@ -48,7 +59,10 @@ class SpecialPageTriage extends SpecialPage {
 		
 		// TODO: this should load with a spinner instead of "please wait"
 		$triageInterface .= "<div id='mwe-pt-list-view'>Please wait...</div>";
-		$triageInterface .= "<div id='mwe-pt-list-stats-nav' class='mwe-pt-navigation-bar mwe-pt-control-gradient'></div>";
+		$triageInterface .= "<div id='mwe-pt-list-load-more-anchor'></div>";
+		$triageInterface .= "<div id='mwe-pt-list-stats-nav' class='mwe-pt-navigation-bar mwe-pt-control-gradient'>";
+		$triageInterface .= "<div id='mwe-pt-list-stats-nav-content'></div>";
+		$triageInterface .= "</div>";
 		$triageInterface .= "<div id='mwe-pt-list-stats-nav-anchor'></div>";
 		
 		// These are the templates that backbone/underscore render on the client.
