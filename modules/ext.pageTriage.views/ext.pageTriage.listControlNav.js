@@ -140,11 +140,9 @@ $( function() {
 				apiParams['showreviewed'] = '1';
 			}
 			
-			/*
 			if( $('#mwe-pt-filter-nominated-for-deletion').prop('checked') ) {
-				apiParams[''] = '1';
+				apiParams['showdeleted'] = '1';
 			}
-			*/
 
 			if( $('#mwe-pt-filter-bot-edits').prop('checked') ) {
 				apiParams['showbots'] = '1';
@@ -153,13 +151,12 @@ $( function() {
 			if( $('#mwe-pt-filter-redirects').prop('checked') ) {
 				apiParams['showredirs'] = '1';
 			}
-
-			/*
-			api doesn't support these.
-			if( $('#mwe-pt-filter-user').val() ) {
-				apiParams[''] = $('#mwe-pt-filter-user').val();
-			}
 			
+			if( $('#mwe-pt-filter-user-selected').prop('checked') && $('#mwe-pt-filter-user').val() ) {
+				apiParams['username'] = $('#mwe-pt-filter-user').val();
+			}
+
+			/* api doesn't support this yet
 			if( $('#mwe-pt-filter-tag').val() ) {
 				apiParams[''] = $('#mwe-pt-filter-tag').val();
 			}
@@ -210,13 +207,18 @@ $( function() {
 			}
 			
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-reviewed-edits' ), 'showreviewed', 'pagetriage-filter-stat-reviewed');
-			// api doesn't suppor this one.
-			//this.menuCheckboxUpdate( $( '#mwe-pt-filter-nominated-for-deletion' ' ), '', '');
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-nominated-for-deletion' ), 'showdeleted', 'pagetriage-filter-stat-nominated-for-deletion');
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-bot-edits' ), 'showbots', 'pagetriage-filter-stat-bots');
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-redirects' ), 'showredirs', 'pagetriage-filter-stat-redirects');
 
-			/* api doesn't support these
-			$( '#mwe-pt-filter-user' ).val( this.model.getParam('') );
+			var username = this.model.getParam( 'username' );
+			if( username ) {
+				this.newFilterStatus.push( gM( 'pagetriage-filter-stat-username', username ) );
+				$( '#mwe-pt-filter-user-selected' ).prop( 'checked', true );
+			}
+			$( '#mwe-pt-filter-user' ).val( username );
+
+			/* api doesn't support this
 			$( '#mwe-pt-filter-tag' ).val( this.model.getParam('') );
 			*/
 

@@ -63,11 +63,11 @@ $( function() {
 		initialize: function( options ) {
 			this.eventBus = options.eventBus;
 			this.eventBus.bind( "filterSet", this.setParams );
-			//this.eventBus.bind( "paramsSet", this.fetch );
 		},
 		
 		url: function() {
 			var url = mw.util.wikiScript( 'api' ) + '?action=pagetriagelist&format=json&' + $.param( this.apiParams );
+			console.log( 'fetch url: ' + url );
 			return url;
 		},
 

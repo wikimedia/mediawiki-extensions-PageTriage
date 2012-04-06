@@ -219,7 +219,7 @@ class SpecialPageTriage extends SpecialPage {
 										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-bot-edits" /> <%= gM( 'pagetriage-filter-bot-edits' ) %> <br/>
 										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-user-selected" /> <%= gM( 'pagetriage-filter-user-heading' ) %>
 										<div class="mwe-pt-control-options">
-											<span class="mwe-pt-filter-sub-input"><input type=text id="mwe-pt-filter-username" /></span>
+											<span class="mwe-pt-filter-sub-input"><input type=text id="mwe-pt-filter-user" /></span>
 										</div>
 									</div>
 								</div>

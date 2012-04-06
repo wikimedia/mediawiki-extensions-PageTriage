@@ -57,7 +57,7 @@ class ApiPageTriageList extends ApiBase {
 		// Start building the massive filter which includes meta data
 		$tables	  = array( 'pagetriage_page', 'page' );
 		$conds    = array( 'ptrp_page_id = page_id' );
-
+		
 		// Include reviewed
 		if ( !$opts['showreviewed'] ) {
 			$conds['ptrp_reviewed'] = 0;
@@ -66,6 +66,10 @@ class ApiPageTriageList extends ApiBase {
 		if ( !$opts['showredirs'] ) {
 			$conds['page_is_redirect'] = 0;
 		}
+		// Include marked for deletion
+		if ( !$opts['showdeleted'] ) {
+			$conds['ptrp_deleted'] = 0;
+		}		
 		// Show by namespace
 		if ( array_key_exists( 'namespace', $opts ) ) {
 			$conds['page_namespace'] = $opts['namespace'];
@@ -117,7 +121,7 @@ class ApiPageTriageList extends ApiBase {
 					// bots
 					'showbots' => array( 'name' => 'user_bot', 'op' => '=', 'val' => '1' ),
 					// user name
-					'username' => array( 'name' => 'user_name', 'op' => '=', 'val' => $opts['username'] )
+					'username' => array( 'name' => 'user_name', 'op' => '=', 'val' => false ) // false means use the actual value
 				);
 
 		$tags = ArticleMetadata::getValidTags();
@@ -125,8 +129,14 @@ class ApiPageTriageList extends ApiBase {
 		// only single tag search is allowed
 		foreach ( $searchableTags as $key => $val ) {
 			if ( $opts[$key] ) {
-				$tagConds = " ptrpt_page_id = ptrp_page_id AND ptrpt_tag_id = '" . $tags[$val['name']] . "' AND 
-				              ptrpt_value " . $val['op'] . " " . $dbr->addQuotes( $val['val'] );
+				if( $val['val'] === false ) {
+					// if val is false, use the value that was supplied via the api call
+					$tagConds = " ptrpt_page_id = ptrp_page_id AND ptrpt_tag_id = '" . $tags[$val['name']] . "' AND 
+					              ptrpt_value " . $val['op'] . " " . $dbr->addQuotes( $opts['key'] );
+				} else {
+					$tagConds = " ptrpt_page_id = ptrp_page_id AND ptrpt_tag_id = '" . $tags[$val['name']] . "' AND 
+					              ptrpt_value " . $val['op'] . " " . $dbr->addQuotes( $val['val'] );
+				}
 				break;
 			}
 		}

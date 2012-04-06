@@ -62,13 +62,15 @@ $messages['en'] = array(
 	'pagetriage-more' => 'More',
 	'pagetriage-filter-stat-all' => 'All',
 	'pagetriage-filter-stat-namespace' => 'Namespace: $1',
-	'pagetriage-filter-stat-reviewed' => 'Reviewed',
+	'pagetriage-filter-stat-reviewed' => 'Include reviewed',
 	'pagetriage-filter-stat-bots' => 'Bots',
-	'pagetriage-filter-stat-redirects' => 'Redirects',
+	'pagetriage-filter-stat-redirects' => 'Include redirects',
+	'pagetriage-filter-stat-nominated-for-deletion' => 'Include deleted',
 	'pagetriage-filter-stat-no-categories' => 'No categories',
 	'pagetriage-filter-stat-orphan' => 'Orphans',
 	'pagetriage-filter-stat-non-autoconfirmed' => 'New editors',
 	'pagetriage-filter-stat-blocked' => 'Blocked users',
+	'pagetriage-filter-stat-username' => 'Username: $1',
 	
 );
 
@@ -127,10 +129,12 @@ $messages['qqq'] = array(
 	'pagetriage-filter-stat-reviewed' => 'Status display component for reviewed pages',
 	'pagetriage-filter-stat-bots' => 'Status display component for bot-created pages',
 	'pagetriage-filter-stat-redirects' => 'Status display component for redirects',
+	'pagetriage-filter-stat-nominated-for-deletion' => 'Status dispay component for articles nominated for deletion',
 	'pagetriage-filter-stat-no-categories' => 'Status display component for articles with no categories',
 	'pagetriage-filter-stat-orphan' => 'Status display component for orphan articles',
 	'pagetriage-filter-stat-non-autoconfirmed' => 'Status display component for articles by non-autoconfirmed editors',
 	'pagetriage-filter-stat-blocked' => 'Status display component for articles by blocked users',
+	'pagetriage-filter-stat-username' => 'Status display component for filter by username. $1 is the username.',
 	
 
 	
