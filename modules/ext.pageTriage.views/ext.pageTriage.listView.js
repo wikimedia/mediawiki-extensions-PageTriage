@@ -60,16 +60,19 @@ $( function() {
 		
 		automaticLoadMore: function() {
 			var _this = this;
+			$( '#mwe-pt-list-more' ).append( $.createSpinner( 'more-spinner' ) );
 			var lastArticle = articles.last(1);
 			articles.apiParams.offset = lastArticle[0].attributes.creation_date;
 			articles.fetch( {
 				add: true,
 				success: function() {
+					$.removeSpinner( 'more-spinner' );
 					$( '.mwe-pt-article-row' ).last().css( 'border-bottom', 'none' );
 					$.waypoints( 'refresh' );
 					_this.eventBus.trigger( "articleListChange" );
 					if ( !articles.moreToLoad ) {
 						$( '#mwe-pt-list-load-more-anchor' ).waypoint( 'destroy' );
+						$( '#mwe-pt-list-more' ).hide();
 					}
 				}
 			} );
@@ -124,12 +127,11 @@ $( function() {
 		addAll: function() {
 			$( '#mwe-pt-list-view' ).empty(); // remove the spinner before displaying.
 			articles.forEach( this.addOne, this );
+			$( '#mwe-pt-list-more' ).show();
 			if ( mw.config.get( 'wgPageTriageInfiniteScrolling' ) ) {
 				$( '.mwe-pt-article-row' ).last().css( 'border-bottom', 'none' );
 				this.initializeInfiniteScrolling();
-			} else {
-				// Show 'More' link
-				$( '#mwe-pt-list-more' ).show();
+				$( '#mwe-pt-list-more-link' ).hide();
 			}
 			this.eventBus.trigger( 'articleListChange' );
 	    }
