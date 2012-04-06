@@ -66,6 +66,9 @@ $( function() {
 				success: function() {
 					$( '.mwe-pt-article-row' ).last().css( 'border-bottom', 'none' );
 					$.waypoints( 'refresh' );
+					if ( !articles.moreToLoad ) {
+						$( '#mwe-pt-list-load-more-anchor' ).waypoint( 'destroy' );
+					}
 				}
 			} );
 		},
@@ -80,6 +83,10 @@ $( function() {
 				success: function() {
 					$.removeSpinner( 'more-spinner' );
 					$( '#mwe-pt-list-more-link' ).show();
+					if ( !articles.moreToLoad ) {
+						$( '.mwe-pt-article-row' ).last().css( 'border-bottom', 'none' );
+						$( '#mwe-pt-list-more' ).hide();
+					}
 				}
 			} );
 		},

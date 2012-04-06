@@ -43,6 +43,7 @@ $( function() {
 	// can't include this in the declaration above because it references the
 	// object created therein.
 	mw.pageTriage.ArticleList = Backbone.Collection.extend( {
+		moreToLoad: true,
 		model: mw.pageTriage.Article,
 		
 		apiParams: {
@@ -72,6 +73,17 @@ $( function() {
 		},
 
 		parse: function( response ) {
+			// See if the fetch returned an extra page or not. This lets us know if there are more 
+			// pages to load in a subsequent fetch.
+			if ( response.pagetriagelist.pages && response.pagetriagelist.pages.length > this.apiParams.limit ) {
+				// Remove the extra page from the list
+				response.pagetriagelist.pages.pop();
+			} else {
+				// We have no more pages to load.
+				this.moreToLoad = false;
+			}
+			
+			// Check if user pages exist or should be redlinks
 			for ( var title in response.pagetriagelist.userpagestatus ) {
 				mw.Title.exist.set( title );
 			}

@@ -44,7 +44,7 @@ class ApiPageTriageList extends ApiBase {
 		$pages = $options = array();
 
 		// Get the expected limit as defined in getAllowedParams
-		$options['LIMIT'] = $opts['limit'];
+		$options['LIMIT'] = $opts['limit'] + 1;
 		
 		if ( strtolower( $opts['dir'] ) === 'oldestfirst' ) {
 			$options['ORDER BY'] = 'ptrp_timestamp ASC';
