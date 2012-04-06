@@ -180,6 +180,7 @@ $( function() {
 			
 			// persist the limit parameter
 			apiParams['limit'] = this.model.getParam('limit');
+			apiParams['dir'] = this.model.getParam('dir');
 						
 			this.model.setParams( apiParams );
 			this.model.fetch();

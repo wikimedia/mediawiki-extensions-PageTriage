@@ -131,11 +131,11 @@ class ApiPageTriageList extends ApiBase {
 			if ( $opts[$key] ) {
 				if( $val['val'] === false ) {
 					// if val is false, use the value that was supplied via the api call
-					$tagConds = " ptrpt_page_id = ptrp_page_id AND ptrpt_tag_id = '" . $tags[$val['name']] . "' AND 
-					              ptrpt_value " . $val['op'] . " " . $dbr->addQuotes( $opts['key'] );
+					$tagConds = " ptrpt_page_id = ptrp_page_id AND ptrpt_tag_id = '" . $tags[$val['name']] . "' AND ptrpt_value " .
+						$val['op'] . " " . $dbr->addQuotes( $opts[$key] );
 				} else {
-					$tagConds = " ptrpt_page_id = ptrp_page_id AND ptrpt_tag_id = '" . $tags[$val['name']] . "' AND 
-					              ptrpt_value " . $val['op'] . " " . $dbr->addQuotes( $val['val'] );
+					$tagConds = " ptrpt_page_id = ptrp_page_id AND ptrpt_tag_id = '" . $tags[$val['name']] . "' AND ptrpt_value " .
+						$val['op'] . " " . $dbr->addQuotes( $val['val'] );
 				}
 				break;
 			}
