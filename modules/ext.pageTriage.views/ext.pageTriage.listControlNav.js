@@ -100,8 +100,11 @@ $( function() {
 				event.stopPropagation();
 			} );
 			
-			//$.waypoints('refresh'); // this ends up happening a lot. :(
-			if( $( '#mwe-pt-list-view' ).offset().top > $('body').scrollTop() ) {
+			// Different browsers represent the document's scroll position differently.
+			// I would expect jQuery to deal with this in some graceful fashion, but nooo...
+			var scrollTop = $('body').scrollTop() || $('html').scrollTop() || $(window).scrollTop();
+			
+			if( $( '#mwe-pt-list-view' ).offset().top > scrollTop ) {
 				// turn off floating nav, bring the bar back into the list.
 				$( '#mwe-pt-list-control-nav' ).parent().removeClass('stickyTop');
 				this.floatNav = false;
