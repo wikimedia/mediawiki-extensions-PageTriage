@@ -37,7 +37,7 @@ $( function() {
 				article.set( 'title_url', mw.util.wikiUrlencode( article.get( 'title' ) ) );
 			}
 
-		} ),
+		} )
 	};
 	
 	// can't include this in the declaration above because it references the
@@ -49,7 +49,7 @@ $( function() {
 		apiParams: {
 			namespace: 0,
 			limit: 20,
-			dir: 'newestfirst',
+			dir: 'newestfirst'
 			/*
 			showbots: null,
 			showredirs: null,

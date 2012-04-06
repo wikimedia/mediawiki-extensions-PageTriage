@@ -69,7 +69,7 @@ $( function() {
 			// the right margin is 16 pixels
 			// border is 2 pixels
 			$( '#mwe-pt-list-stats-nav' ).css( 'width', $(window).width() - 176 - 16 - 2 + "px" );
-		},	
+		}
 
 	} );
 } );
