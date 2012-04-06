@@ -59,6 +59,7 @@ $( function() {
 		},
 		
 		automaticLoadMore: function() {
+			var _this = this;
 			var lastArticle = articles.last(1);
 			articles.apiParams.offset = lastArticle[0].attributes.creation_date;
 			articles.fetch( {
@@ -69,11 +70,13 @@ $( function() {
 					if ( !articles.moreToLoad ) {
 						$( '#mwe-pt-list-load-more-anchor' ).waypoint( 'destroy' );
 					}
+					_this.eventBus.trigger( "articleListChange" );
 				}
 			} );
 		},
 		
 		manualLoadMore: function() {
+			var _this = this;
 			$( '#mwe-pt-list-more-link' ).hide();
 			$( '#mwe-pt-list-more' ).append( $.createSpinner( 'more-spinner' ) );
 			var lastArticle = articles.last(1);
@@ -87,6 +90,8 @@ $( function() {
 						$( '.mwe-pt-article-row' ).last().css( 'border-bottom', 'none' );
 						$( '#mwe-pt-list-more' ).hide();
 					}
+					$.waypoints( 'refresh' );
+					_this.eventBus.trigger( "articleListChange" );
 				}
 			} );
 		},
@@ -125,7 +130,7 @@ $( function() {
 				// Show 'More' link
 				$( '#mwe-pt-list-more' ).show();
 			}
-			this.eventBus.trigger( 'listAddAll' );
+			this.eventBus.trigger( 'articleListChange' );
 	    }
 
 	} );

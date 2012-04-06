@@ -29,7 +29,7 @@ $( function() {
 
 			// when the list view is updated, do this stuff.
 			// (mostly, update the floating-ness of the stats bar)
-			this.eventBus.bind( "listAddAll", function() {
+			this.eventBus.bind( "articleListChange", function() {
 				_this.render();
 			} );
 			
