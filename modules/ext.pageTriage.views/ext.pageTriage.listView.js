@@ -25,6 +25,13 @@ $( function() {
 
 			// this event is triggered when the collection finishes loading.
 			//articles.bind( 'all', this.render, this );
+			
+			// bind manualLoadMore function to 'More' link
+			_this = this;
+			$( '#mwe-pt-list-more-link' ).click( function() {
+				_this.manualLoadMore();
+				return false;
+			} );
 
 			// on init, make sure to load the contents of the collection.
 			articles.fetch();
@@ -64,7 +71,7 @@ $( function() {
 		},
 		
 		manualLoadMore: function() {
-			$( '#mwe-pt-list-more' ).empty();
+			$( '#mwe-pt-list-more-link' ).hide();
 			$( '#mwe-pt-list-more' ).append( $.createSpinner( 'more-spinner' ) );
 			var lastArticle = articles.last(1);
 			articles.apiParams.offset = lastArticle[0].attributes.creation_date;
@@ -72,11 +79,7 @@ $( function() {
 				add: true,
 				success: function() {
 					$.removeSpinner( 'more-spinner' );
-					$( '#mwe-pt-list-more' ).append( 
-						$( '<a></a>' ).msg( 'pagetriage-more' ).click( function() {
-							_this.manualLoadMore();
-						} )
-					);
+					$( '#mwe-pt-list-more-link' ).show();
 				}
 			} );
 		},
@@ -112,15 +115,8 @@ $( function() {
 				$( '.mwe-pt-article-row' ).last().css( 'border-bottom', 'none' );
 				this.initializeInfiniteScrolling();
 			} else {
-				_this = this;
-				// Add a 'More' link
-				$( '#mwe-pt-list-view' ).after( $( '<div id="mwe-pt-list-more"></div>' )
-					.append( $( '<a></a>' ).msg( 'pagetriage-more' )
-						.click( function() {
-							_this.manualLoadMore();
-						} )
-					)
-				);
+				// Show 'More' link
+				$( '#mwe-pt-list-more' ).show();
 			}
 			this.eventBus.trigger( 'listAddAll' );
 	    }

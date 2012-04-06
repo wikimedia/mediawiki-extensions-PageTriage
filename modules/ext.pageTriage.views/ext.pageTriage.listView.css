@@ -4,6 +4,7 @@
  */
 
 #mwe-pt-list-more {
+	display: none;
 	text-align: center;
 	font-size: 17px;
 	line-height: 20px;
@@ -15,7 +16,7 @@
 	min-height: 21px;
 }
 
-#mwe-pt-list-more a {
+#mwe-pt-list-more-link {
 	cursor: pointer;
 }
 
