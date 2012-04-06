@@ -79,11 +79,13 @@ $( function() {
 			// Activate sort links
 			$( '#mwe-pt-sort-newest' ).click( function() {
 				_this.model.setParam( 'dir', 'newestfirst' );
+				_this.model.setParam( 'offset', 0 );
 				_this.model.fetch();
 				return false;
 			} );
 			$( '#mwe-pt-sort-oldest' ).click( function() {
 				_this.model.setParam( 'dir', 'oldestfirst' );
+				_this.model.setParam( 'offset', 0 );
 				_this.model.fetch();
 				return false;
 			} );

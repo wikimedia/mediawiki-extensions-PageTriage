@@ -76,7 +76,7 @@ class ApiPageTriageList extends ApiBase {
 			$conds['page_namespace'] = $opts['namespace'];
 		}
 		// Offset the list
-		if ( array_key_exists( 'offset', $opts ) && is_numeric( $opts['offset'] ) ) {
+		if ( array_key_exists( 'offset', $opts ) && is_numeric( $opts['offset'] ) && $opts['offset'] > 0 ) {
 			$conds[] = 'ptrp_timestamp' . $offsetOperator . $opts['offset'];
 		}
 
