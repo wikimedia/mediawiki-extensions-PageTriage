@@ -81,7 +81,10 @@ $( function() {
 		
 		setParams: function( apiParams ) {			
 			this.apiParams = apiParams;
-			this.eventBus.trigger( "paramsSet", this.apiParams );
+		},
+		
+		setParam: function( paramName, paramValue ) {			
+			this.apiParams[paramName] = paramValue;
 		},
 		
 		getParam: function( key ) {

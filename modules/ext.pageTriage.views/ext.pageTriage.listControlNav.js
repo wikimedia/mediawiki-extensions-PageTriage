@@ -78,11 +78,13 @@ $( function() {
 			
 			// Activate sort links
 			$( '#mwe-pt-sort-newest' ).click( function() {
-				// TODO: Make this change the direction param and run a new fetch
+				_this.model.setParam( 'dir', 'newestfirst' );
+				_this.model.fetch();
 				return false;
 			} );
 			$( '#mwe-pt-sort-oldest' ).click( function() {
-				// TODO: Make this change the direction param and run a new fetch
+				_this.model.setParam( 'dir', 'oldestfirst' );
+				_this.model.fetch();
 				return false;
 			} );
 		},
