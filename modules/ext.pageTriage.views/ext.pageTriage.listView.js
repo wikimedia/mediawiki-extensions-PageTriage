@@ -27,7 +27,7 @@ $( function() {
 			//articles.bind( 'all', this.render, this );
 			
 			// bind manualLoadMore function to 'More' link
-			_this = this;
+			var _this = this;
 			$( '#mwe-pt-list-more-link' ).click( function() {
 				_this.manualLoadMore();
 				return false;
@@ -48,7 +48,7 @@ $( function() {
 		
 		initializeInfiniteScrolling: function() {
 			// make the article list infinitely scrolling
-			_this = this;
+			var _this = this;
 			var $anchor = $( '#mwe-pt-list-load-more-anchor' );
 			opts = { offset: '100%' };
 			$anchor.waypoint( function( event, direction ) {
@@ -67,10 +67,10 @@ $( function() {
 				success: function() {
 					$( '.mwe-pt-article-row' ).last().css( 'border-bottom', 'none' );
 					$.waypoints( 'refresh' );
+					_this.eventBus.trigger( "articleListChange" );
 					if ( !articles.moreToLoad ) {
 						$( '#mwe-pt-list-load-more-anchor' ).waypoint( 'destroy' );
 					}
-					_this.eventBus.trigger( "articleListChange" );
 				}
 			} );
 		},

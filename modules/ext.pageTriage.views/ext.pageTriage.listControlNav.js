@@ -12,23 +12,8 @@ $( function() {
 			var _this = this;
 
 			this.eventBus = options.eventBus; // access the eventBus
-
-			// make a floating top navbar
-			$.waypoints.settings.scrollThrottle = 30;
-			$( '#mwe-pt-list-control-nav' ).waypoint( function( event, direction ) {
-				$( this ).parent().toggleClass( 'stickyTop', direction === "down" );
-				
-				// pad the element that scrolls under the bar, so it doesn't jump beneath it when the bar
-				// changes to fixed positioning.
-				if( direction === 'down' ) {
-					$( '#mwe-pt-list-view' ).css('padding-top', $( '#mwe-pt-list-control-nav' ).height() );
-				} else {
-					$( '#mwe-pt-list-view' ).css('padding-top', 0 );
-				}
-				
-				_this.resize();
-				event.stopPropagation();
-			});
+			
+			this.setWaypoint();
 			
 			// do things that need doing on window resize
 			$( window ).resize( _.debounce(_this.resize, 100 ) );
@@ -36,6 +21,10 @@ $( function() {
 			this.eventBus.bind( "renderStats", function( stats ) {
 				// fill in the counter when the stats view gets loaded.
 				$( "#mwe-pt-control-stats" ).html( gM( 'pagetriage-article-count', stats.get('ptr_unreviewed_article_count') ) );
+			} );
+
+			this.eventBus.bind( 'articleListChange', function() {
+				_this.setWaypoint();
 			} );
 
 			// update the filter display on load.
@@ -89,6 +78,38 @@ $( function() {
 				_this.model.fetch();
 				return false;
 			} );
+		},
+		
+		setWaypoint: function() {
+			// make a floating top navbar
+			$( '#mwe-pt-list-control-nav' ).waypoint('destroy');  // remove the old, maybe inaccurate ones.
+			var _this = this;
+			$.waypoints.settings.scrollThrottle = 30;
+			$( '#mwe-pt-list-control-nav' ).waypoint( function( event, direction ) {
+				$( this ).parent().toggleClass( 'stickyTop', direction === "down" );
+				
+				// pad the element that scrolls under the bar, so it doesn't jump beneath it when the bar
+				// changes to fixed positioning.
+				if( direction === 'down' ) {
+					$( '#mwe-pt-list-view' ).css('padding-top', $( '#mwe-pt-list-control-nav' ).height() );
+				} else {
+					$( '#mwe-pt-list-view' ).css('padding-top', 0 );
+				}
+				
+				_this.resize();
+				event.stopPropagation();
+			} );
+			
+			//$.waypoints('refresh'); // this ends up happening a lot. :(
+			if( $( '#mwe-pt-list-view' ).offset().top > $('body').scrollTop() ) {
+				// turn off floating nav, bring the bar back into the list.
+				$( '#mwe-pt-list-control-nav' ).parent().removeClass('stickyTop');
+				this.floatNav = false;
+			} else {
+				// top nav isn't visible.  turn on the floating navbar
+				$( '#mwe-pt-list-control-nav' ).parent().addClass('stickyTop');
+				this.floatNav = true;
+			}
 		},
 		
 		resize: function() {

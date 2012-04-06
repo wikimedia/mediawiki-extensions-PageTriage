@@ -30,18 +30,28 @@ $( function() {
 			// when the list view is updated, do this stuff.
 			// (mostly, update the floating-ness of the stats bar)
 			this.eventBus.bind( "articleListChange", function() {
-				_this.render();
+				_this.setPosition();
 			} );
 			
 			// set the navbar's initial size
 			this.resize();
+			$.waypoints('refresh');
 			
 		},
 
 		render: function() {
 			// insert the template into the document.  fill with the current model.
 			$( "#mwe-pt-list-stats-nav-content" ).html( this.template( this.model.toJSON() ) );
-
+			
+			this.setPosition();
+			
+			// broadcast the stats in case any other views want to display bits of them.
+			// (the control view displays a summary)
+			this.eventBus.trigger( 'renderStats', this.model );
+			return this;
+		},
+		
+		setPosition: function() {
 			if( $( '#mwe-pt-list-stats-nav-anchor' ).offset().top < $.waypoints('viewportHeight') ) {
 				// turn off floating nav, bring the bar back into the list.
 				$( '#mwe-pt-list-stats-nav' ).parent().removeClass('stickyBottom');
@@ -51,11 +61,6 @@ $( function() {
 				$( '#mwe-pt-list-stats-nav' ).parent().addClass('stickyBottom');
 				this.floatNav = true;
 			}
-			
-			// broadcast the stats in case any other views want to display bits of them.
-			// (the control view displays a summary)
-			this.eventBus.trigger( 'renderStats', this.model );
-			return this;
 		},
 		
 		resize: function() {
