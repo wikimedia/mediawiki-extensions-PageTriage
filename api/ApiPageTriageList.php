@@ -14,8 +14,6 @@ class ApiPageTriageList extends ApiBase {
 		// Retrieve the list of page IDs
 		$pages = $this->getPageIds( $opts );
 
-		$metaDataSend = array();
-
 		if ( $pages ) {
 			// fetch metadata for those pages
 			$articleMetadata = new ArticleMetadata( $pages );
@@ -30,7 +28,7 @@ class ApiPageTriageList extends ApiBase {
 		}
 
 		// Output the results
-		$result = array( 'result' => 'success', 'pages' => $sortedMetaData, 'userpagestatus' => PageTriageUtil::pageStatusForUser( $metaDataSend ) );
+		$result = array( 'result' => 'success', 'pages' => $sortedMetaData, 'userpagestatus' => PageTriageUtil::pageStatusForUser( $sortedMetaData ) );
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
