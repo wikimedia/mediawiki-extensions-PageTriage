@@ -207,6 +207,7 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 		'ext.pageTriage.views/ext.pageTriage.listView.css'
 	),
 	'messages' => array(
+		'comma-separator',
 		'days',
 		'pagetriage-hist',
 		'pagetriage-bytes',

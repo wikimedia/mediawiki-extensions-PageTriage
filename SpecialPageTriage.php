@@ -245,12 +245,13 @@ class SpecialPageTriage extends SpecialPage {
 							%>
 								<span class="mwe-pt-stats-label"><%= ptrTopTriagerStr %></span>
 								<%
-									for ( var m in ptrTopTriager ) {
+								var triagerLinks = new Array();
+								for ( var m in ptrTopTriager ) {
+									triagerLinks.push( "<a " + ptrTopTriager[m].linkCSS + " href=\"" + ptrTopTriager[m].title.getUrl() + "\">" + mw.html.escape( ptrTopTriager[m].userName ) + "</a>" );
+								}
+								var triagers = triagerLinks.join( gM( 'comma-separator' ) );
 								%>
-										<a <%= ptrTopTriager[m].linkCSS %> href="<%= ptrTopTriager[m].title.getUrl() %>"><%= mw.html.escape( ptrTopTriager[m].userName ) %></a>
-								<%
-									}
-								%>
+								<%= triagers %>
 							<%
 							}
 							%>
