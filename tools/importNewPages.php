@@ -221,7 +221,7 @@ if ( !isset( $argv[1] ) || !isset( $argv[2] ) || !isset( $argv[3] ) ) {
 	die();
 }
 
-if ( $argv[4] ) {
+if ( isset( $argv[4] ) ) {
 	$source = new WikiApi( $argv[4] );
 } else {
 	$source = new WikiApi( 'http://en.wikipedia.org/w/api.php' );
@@ -235,7 +235,7 @@ if ( $argv[1] > 0 && $argv[1] <= 10000 ) {
 	$pages = $source->getNewPages( 0, 10 );
 }
 
-if ( $argv[5] ) {
+if ( isset( $argv[5] ) ) {
 	$destination = new WikiApi( $argv[5] );
 } else {
 	$destination = new WikiApi( 'http://ee-prototype.wmflabs.org/w/api.php' );
