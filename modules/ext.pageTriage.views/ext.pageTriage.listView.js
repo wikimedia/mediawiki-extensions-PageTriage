@@ -109,7 +109,8 @@ $( function() {
 			if(! this.position ) {
 				this.position = 0;
 			}
-			article.set( 'position', this.position++ );
+			this.position++;
+			article.set( 'position', this.position );
 			// pass in the specific article instance
 			var view = new mw.pageTriage.ListItem( { eventBus: this.eventBus, model: article } );
 			$( "#mwe-pt-list-view" ).append( view.render().el );
