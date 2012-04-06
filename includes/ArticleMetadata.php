@@ -43,6 +43,9 @@ class ArticleMetadata {
 					}
 					$dbw->replace( 'pagetriage_page_tags', array( 'ptrpt_page_id', 'ptrpt_tag_id' ), $row, __METHOD__ );
 				}
+				$deleted = ( $data['prod_status'] || $data['blp_prod_status'] || $data['csd_status'] || $data['afd_status'] );	
+				$pt = new PageTriage( $pageId );
+				$pt->setDeleted( $deleted ? '1' : '0' );
 				$dbw->commit();
 			}
 		}

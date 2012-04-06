@@ -6,6 +6,7 @@ class PageTriage {
 	protected $mPageId;
 	protected $mReviewed;
 	protected $mTimestamp;
+	protected $mDeleted;
 
 	// additional property
 	protected $mMetadata;
@@ -97,6 +98,25 @@ class PageTriage {
 	}
 	
 	/**
+	 * Set the deleted status
+	 */
+	public function setDeleted( $deleted ) {
+		if ( $deleted === '1' ) {
+			$this->mDeleted = '1';
+		} else {
+			$this->mDeleted = '0';
+		}
+
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->update(
+			'pagetriage_page', 
+			array( 'ptrp_deleted' => $this->mDeleted ), 
+			array( 'ptrp_page_id' => $this->mPageId ), 
+			__METHOD__ 
+		);
+	}
+	
+	/**
 	 * Load a page triage record
 	 * @return bool
 	 */
@@ -109,7 +129,7 @@ class PageTriage {
 		
 		$res = $dbr->selectRow(
 			array( 'pagetriage_page' ),
-			array( 'ptrp_reviewed', 'ptrp_timestamp' ),
+			array( 'ptrp_reviewed', 'ptrp_timestamp', 'ptrp_deleted' ),
 			array( 'ptrp_page_id' => $this->mPageId ),
 			__METHOD__
 		);
@@ -120,6 +140,7 @@ class PageTriage {
 
 		$this->mReviewed = $res->ptrp_reviewed;
 		$this->mTimestamp = $res->ptrp_timestamp;
+		$this->mDeleted = $res->ptrp_deleted;
 		$this->mLoaded = true;
 		return true;
 	}

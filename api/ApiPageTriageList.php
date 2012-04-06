@@ -12,7 +12,7 @@ class ApiPageTriageList extends ApiBase {
 		$opts = $this->extractRequestParams();
 
 		// Retrieve the list of page IDs
-		$pages = $this->getPageIds( $opts );
+		$pages = self::getPageIds( $opts );
 		$sortedMetaData = array();
 
 		if ( $pages ) {
@@ -153,7 +153,10 @@ class ApiPageTriageList extends ApiBase {
 				ApiBase::PARAM_TYPE => 'boolean',
 			),
 			'showreviewed'=> array(
-				ApiBase::PARAM_TYPE => 'boolean',	
+				ApiBase::PARAM_TYPE => 'boolean',
+			),
+			'showdeleted' => array(
+				ApiBase::PARAM_TYPE => 'boolean',
 			),
 			'limit' => array(
 				ApiBase::PARAM_MAX => '200',
@@ -191,9 +194,10 @@ class ApiPageTriageList extends ApiBase {
 
 	public function getParamDescription() {
 		return array(
-			'showbots' => 'Whether to include bot edits or not', // default is not to show bot
+			'showbots' => 'Whether to show only bot edits',
 			'showredirs' => 'Whether to include redirects or not', // default is not to show redirects
 			'showreviewed' => 'Whether to include reviewed or not', // default is not to show reviewed
+			'showdeleted' => 'Whether to include "proposed for deleted" or not', // default is not to show deleted
 			'limit' => 'The maximum number of results to return',
 			'offset' => 'Timestamp to start from',
 			'dir' => 'The direction the list should be sorted in - oldestfirst or newestfirst',
