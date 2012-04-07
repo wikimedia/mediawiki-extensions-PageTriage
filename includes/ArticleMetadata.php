@@ -122,7 +122,7 @@ class ArticleMetadata {
 		global $wgMemc;
 
 		$this->flushMetadataFromCache( $pageId );
-		$wgMemc->set(  $this->memcKeyPrefix() . '-' . $pageId, $singleData );
+		$wgMemc->set(  $this->memcKeyPrefix() . '-' . $pageId, $singleData, 86400 ); // 24 hours
 	}
 
 	/**
