@@ -60,6 +60,14 @@ $wgAutoloadClasses['ArticleMetadata'] = $dir . 'includes/ArticleMetadata.php';
 $wgAutoloadClasses['PageTriage'] = $dir . 'includes/PageTriage.php';
 $wgAutoloadClasses['PageTriageUtil'] = $dir . 'includes/PageTriageUtil.php';
 $wgAutoloadClasses['PageTriageHooks'] = $dir . 'PageTriage.hooks.php';
+$wgAutoloadClasses['ArticleCompileProcessor'] = $dir . 'includes/ArticleMetadata.php';
+$wgAutoloadClasses['ArticleCompileInterface'] = $dir . 'includes/ArticleMetadata.php';
+$wgAutoloadClasses['ArticleCompileBasicData'] = $dir . 'includes/ArticleMetadata.php';
+$wgAutoloadClasses['ArticleCompileLinkCount'] = $dir . 'includes/ArticleMetadata.php';
+$wgAutoloadClasses['ArticleCompileCategoryCount'] = $dir . 'includes/ArticleMetadata.php';
+$wgAutoloadClasses['ArticleCompileSnippet'] = $dir . 'includes/ArticleMetadata.php';
+$wgAutoloadClasses['ArticleCompileUserData'] = $dir . 'includes/ArticleMetadata.php';
+$wgAutoloadClasses['ArticleCompileDeletionTag'] = $dir . 'includes/ArticleMetadata.php';
 
 $wgAutoloadClasses['ApiPageTriageList'] = $dir . 'api/ApiPageTriageList.php';
 $wgAutoloadClasses['ApiPageTriageGetMetadata'] = $dir . 'api/ApiPageTriageGetMetadata.php';
@@ -68,7 +76,6 @@ $wgAutoloadClasses['ApiPageTriageAction'] = $dir . 'api/ApiPageTriageAction.php'
 
 // custom exceptions
 $wgAutoloadClasses['MWArticleMetadataMissingPageIdException'] = $dir . 'includes/ArticleMetadata.php';
-$wgAutoloadClasses['MWArticleMetadataMetaDataOutofBoundException'] = $dir . 'includes/ArticleMetadata.php';
 $wgAutoloadClasses['MWPageTriageUtilInvalidNumberException'] = $dir . 'includes/PageTriageUtil.php';
 
 // api modules

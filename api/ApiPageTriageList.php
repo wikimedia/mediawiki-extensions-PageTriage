@@ -23,7 +23,7 @@ class ApiPageTriageList extends ApiBase {
 			// Sort data according to page order returned by our query. Also convert it to a 
 			// slightly different format that's more Backbone-friendly.
 			foreach ( $pages as $page ) {
-				$sortedMetaData[] = array( 'pageid' => $page ) + $metaData[ $page ];
+				$sortedMetaData[] = array( 'pageid' => $page ) + $metaData[$page];
 			}
 		}
 

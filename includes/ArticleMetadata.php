@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Handles article metadata retrieval and saving to cache
+ */
 class ArticleMetadata {
 
 	protected $mPageId;
@@ -8,49 +11,13 @@ class ArticleMetadata {
 	 * @param $pageId array - list of page id
 	 */
 	public function __construct( $pageId = array() ) {
+		$pageId = self::validatePageId( $pageId );
+
 		if ( !$pageId ) {
 			throw new MWArticleMetadataMissingPageIdException( 'Missing page id' );	
 		}
 
 		$this->mPageId = $pageId;
-	}
-
-	/**
-	 * Compile the metadata for an article, should be triggered on article save
-	 * @return array|bool
-	 */
-	public function compileMetadata( ) {
-		$metaData = array();
-
-		//Start the data compilation
-		if ( $this->compileArticleBasicData( $metaData ) ) {
-			$this->compileUserBasicData( $metaData );
-			$this->compileDeletionTagData( $metaData );
-
-			$tags = self::getValidTags();
-			$dbw  = wfGetDB( DB_MASTER );
-			foreach ( $metaData as $pageId => $data ) {
-				$this->setMetadataToCache( $pageId, $data );
-				//Make sure either all or none metadata for a single page_id
-				$dbw->begin();
-				foreach ( $data as $key => $val) {
-					if ( isset( $tags[$key] ) ) {
-						$row = array (
-							'ptrpt_page_id' => $pageId,
-							'ptrpt_tag_id' => $tags[$key],
-							'ptrpt_value' => $val
-						);
-					}
-					$dbw->replace( 'pagetriage_page_tags', array( 'ptrpt_page_id', 'ptrpt_tag_id' ), $row, __METHOD__ );
-				}
-				$deleted = ( $data['prod_status'] || $data['blp_prod_status'] || $data['csd_status'] || $data['afd_status'] );	
-				$pt = new PageTriage( $pageId );
-				$pt->setDeleted( $deleted ? '1' : '0' );
-				$dbw->commit();
-			}
-		}
-
-		return $metaData;
 	}
 
 	/**
@@ -100,7 +67,7 @@ class ArticleMetadata {
 	 * @param $pageId - page id to be flushed, if null is provided, all
 	 *                  page id in $this->mPageId will be flushed
 	 */
-	protected function flushMetadataFromCache( $pageId = null ) {
+	public function flushMetadataFromCache( $pageId = null ) {
 		global $wgMemc;
 
 		$keyPrefix = $this->memcKeyPrefix();
@@ -118,7 +85,7 @@ class ArticleMetadata {
 	 * @param $pageId int - page id
 	 * @param $singleData mixed - data to be saved
 	 */
-	protected function setMetadataToCache( $pageId, $singleData ) {
+	public function setMetadataToCache( $pageId, $singleData ) {
 		global $wgMemc;
 
 		$this->flushMetadataFromCache( $pageId );
@@ -130,7 +97,7 @@ class ArticleMetadata {
 	 * @param $pageId - the page id to get the cache data for, if null is provided
 	 *                  all page id in $this->mPageId will be obtained
 	 */
-	protected function getMetadataFromCache( $pageId = null ) {
+	public function getMetadataFromCache( $pageId = null ) {
 		global $wgMemc;
 
 		$keyPrefix = $this->memcKeyPrefix();
@@ -187,23 +154,23 @@ class ArticleMetadata {
 				$pageData[$row->ptrpt_page_id][$row->ptrt_tag_name] = $row->ptrpt_value;
 			}
 
-			foreach ( $pageData as $pageId => $val ) {
-				$this->setMetadataToCache( $pageId, $val );
-			}
-			$metaData += $pageData;
-
-			// Double check articles with no metadata yet, maybe we do not want to do this on the fly since 
-			// compiling page especially multipla pages at the same request is quite expensive
-			// @todo discuss this
 			foreach ( $articles as $key => $pageId ) {
-				if ( isset( $metaData[$pageId] ) ) {
+				if ( isset( $pageData[$pageId] ) ) {
 					unset( $articles[$key] );
 				}
 			}
 			if ( $articles ) {
-				$self = new ArticleMetadata( $articles );
-				$metaData += $self->compileMetadata( $articles );
+				$acp = ArticleCompileProcessor::newFromPageId( $articles );
+				if ( $acp ) {
+					$pageData += $acp->compileMetadata();
+				}
 			}
+			
+			foreach ( $pageData as $pageId => $val ) {
+				$this->setMetadataToCache( $pageId, $val );
+			}
+			
+			$metaData += $pageData;
 		}
 
 		return $metaData;
@@ -235,58 +202,300 @@ class ArticleMetadata {
 
 		return $tags;
 	}
+	
+	/**
+	 * Typecast the value in page id array to int
+	 * @param $pageIds array
+	 * @return array
+	 */
+	public static function validatePageId( $pageIds = array() ) {
+		$cleanUp = array();
+		foreach ( $pageIds as $val ) {
+			$casted = intval( $val );
+			if ( $casted ) {
+				$cleanUp[] = $casted;
+			}
+		}
+		return $cleanUp;
+	}
+	
+}
+
+class MWArticleMetadataMissingPageIdException extends MWException {}
+
+/**
+ * Compiling metadata for articles
+ */
+class ArticleCompileProcessor {
+
+	protected $component;
+	protected $mPageId;
+	protected $metadata;
+	protected $defaultMode;
 
 	/**
-	 * Compile article basic data like title, number of bytes
-	 * @param $metaData array
+	 * @param $pageId array - list of page id 
 	 */
-	protected function compileArticleBasicData( &$metaData ) {
-		$dbr = wfGetDB( DB_SLAVE );
+	private function __construct( $pageId = array() ) {
+		$this->mPageId = $pageId;
 
-		// Article page length, creation date, number of edit, title, article triage status
+		$this->component = array(
+			'BasicData' => 'off',
+			'LinkCount' => 'off',
+			'CategoryCount' => 'off',
+			'Snippet' => 'off',
+			'UserData' => 'off',
+			'DeletionTag' => 'off'
+		);
+		$this->metadata = array_fill_keys( $this->mPageId, array() );
+		$this->defaultMode = true;
+	}
+	
+	/**
+	 * Factory for creating an instance
+	 * @param $pageId array
+	 * @return ArticleCompileProcessor|false
+	 */
+	public static function newFromPageId( $pageId = array() ) {
+		$pageId = ArticleMetadata::validatePageId( $pageId );
+
+		if ( $pageId ) {
+			return new ArticleCompileProcessor( $pageId ); 
+		} else {
+			return false;	
+		}
+	}
+	
+	/**
+	 * Register a component to the processor for compiling
+	 * @param $component string
+	 */
+	public function registerComponent( $component ) {
+		$this->defaultMode = false;
+		if ( isset( $this->component[$component] ) ) {
+			$this->component[$component] = 'on';		
+		}
+	}
+	
+	/**
+	 * Wrapper function for compiling the data
+	 * @return array
+	 */
+	public function compileMetadata() {
+		$this->prepare();
+		$this->process();
+		$this->save();
+		return $this->metadata;
+	}
+	
+	/**
+	 * Set up the data before compiling
+	 */
+	protected function prepare() {
+		if ( $this->defaultMode ) {
+			foreach ( $this->component as $key => $val ) {
+				$this->component[$key] = 'on';
+			}
+		} else {
+			// These two set of data are related
+			if ( $this->component['CategoryCount'] == 'on' || $this->component['DeletionTag'] == 'on' ) {
+				$this->component['CategoryCount'] = 'on';
+				$this->component['DeletionTag'] = 'on';
+			}
+			
+		}
+	}
+	
+	/**
+	 * Compile all of the registered components in order
+	 */
+	protected function process() {
+		$completed = array();
+
+		foreach ( $this->component as $key => $val ) {
+			if ( $val === 'on' ) {
+				$compClass = 'ArticleCompile' . $key;
+				$comp = new $compClass( $this->mPageId );
+				if ( !$comp->compile() ) {
+					break;	
+				}
+				foreach ( $comp->getMetadata() as $pageId => $row ) {
+					$this->metadata[$pageId] += $row;
+				}
+				$completed[] = $key;
+			}
+		}
+		
+		// Subtract deletion tags from category count
+		if ( in_array( 'CategoryCount', $completed ) ) {
+			$deletionTags = ArticleCompileDeletionTag::getDeletionTags();
+			foreach ( $this->metadata as $pageId => $row ) {
+				foreach( $deletionTags as $val ) {
+					if ( $this->metadata[$pageId][$val] ) {
+						$this->metadata[$pageId]['category_count'] -= 1;
+						// This won't be saved to db, only for later reference later
+						$this->metadata[$pageId]['deleted'] = '1';
+					}
+				}
+
+				if ( $this->metadata[$pageId]['category_count'] < 0 ) {
+					$this->metadata[$pageId]['category_count'] = '0';
+				}
+	
+			}
+		}	
+	}
+
+	/**
+	 * Save the compiling result to database as well as cache
+	 */
+	protected function save() {
+		$dbw  = wfGetDB( DB_MASTER );
+
+		$tags = ArticleMetadata::getValidTags();
+
+		foreach ( $this->metadata as $pageId => $data ) {
+			//Flush cache so a new copy of cache will be generated
+			$ArticleMetadata = new ArticleMetadata( array( $pageId ) );
+			$ArticleMetadata->flushMetadataFromCache();
+			//Make sure either all or none metadata for a single page_id
+			$dbw->begin();
+			foreach ( $data as $key => $val) {
+				if ( isset( $tags[$key] ) ) {
+					$row = array (
+						'ptrpt_page_id' => $pageId,
+						'ptrpt_tag_id' => $tags[$key],
+						'ptrpt_value' => $val
+					);
+				}
+				$dbw->replace( 'pagetriage_page_tags', array( 'ptrpt_page_id', 'ptrpt_tag_id' ), $row, __METHOD__ );
+			}
+			if ( isset( $data['deleted'] ) ) {
+				$pt = new PageTriage( $pageId );
+				$pt->setDeleted( $data['deleted'] ? '1' : '0' );
+			}
+			$dbw->commit();
+		}
+	}
+
+}
+
+/**
+ * The following are private classes used by ArticleCompileProcessor
+ */
+
+interface ArticleCompileInterface {
+	public function compile();
+	public function getMetadata();
+}
+
+/**
+ * Article page length, creation date, number of edit, title, article triage status
+ */
+class ArticleCompileBasicData implements ArticleCompileInterface {
+	private $mPageId;
+	private $metadata;
+
+	public function __construct( $pageId ) {
+		$this->mPageId = $pageId;
+		$this->metadata = array();
+	}
+
+	public function compile() {
+		$dbr = wfGetDB( DB_SLAVE );
+		
 		$res = $dbr->select(
-				array( 'page', 'revision', 'pagetriage_page' ),
-				array( 'page_id', 'page_namespace', 'page_title', 'page_len', 'COUNT(rev_id) AS rev_count', 'MIN(rev_timestamp) AS creation_date', 'ptrp_reviewed' ),
-				array( 'page_id' => $this->mPageId, 'page_id = rev_page', 'page_id = ptrp_page_id'),
+				array ( 'page', 'revision', 'pagetriage_page' ),
+				array (
+					'page_id', 'page_namespace', 'page_title', 'page_len', 
+					'COUNT(rev_id) AS rev_count', 'ptrp_reviewed',
+					'MIN(rev_timestamp) AS creation_date'
+				),
+				array ( 'page_id' => $this->mPageId, 'page_id = rev_page', 'page_id = ptrp_page_id'),
 				__METHOD__,
 				array ( 'GROUP BY' => 'page_id' )
 		);
 		foreach ( $res as $row ) {
 			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
-			$metaData[$row->page_id]['page_len'] = $row->page_len;
-			$metaData[$row->page_id]['creation_date'] = $row->creation_date;
-			$metaData[$row->page_id]['rev_count'] = $row->rev_count;
-			$metaData[$row->page_id]['title'] = $title->getPrefixedText();
-			$metaData[$row->page_id]['patrol_status'] = $row->ptrp_reviewed;
-		}
-		// Remove any non-existing page_id from $this->mPageId
-		foreach ( $this->mPageId as $key => $pageId ) {
-			if ( !isset( $metaData[$pageId] ) ) {
-				unset($this->mPageId[$key]);
-			}
-		}
-		if ( !$this->mPageId ) {
-			return false;
+			$this->metadata[$row->page_id]['page_len'] = $row->page_len;
+			$this->metadata[$row->page_id]['creation_date'] = $row->creation_date;
+			$this->metadata[$row->page_id]['rev_count'] = $row->rev_count;
+			$this->metadata[$row->page_id]['title'] = $title->getPrefixedText();
+			$this->metadata[$row->page_id]['patrol_status'] = $row->ptrp_reviewed;
 		}
 
-		// Article link count
+		if ( count( $this->metadata) == 0 ) {
+			return false;
+		} else {
+			return true;	
+		}
+	}
+	
+	public function getMetadata() {
+		return $this->metadata;	
+	}
+	
+}
+
+/**
+ * Article link count
+ */
+class ArticleCompileLinkCount implements ArticleCompileInterface {
+	private $mPageId;
+	private $metadata;
+	
+	public function __construct( $pageId ) {
+		$this->mPageId = $pageId;
+		$this->metadata = array();
+	}
+
+	public function compile() {
+		$dbr = wfGetDB( DB_SLAVE );
+
 		$res = $dbr->select(
 				array( 'page', 'pagelinks' ),
 				array( 'page_id', 'COUNT(pl_from) AS linkcount' ),
-				array( 'page_id' => $this->mPageId, 'page_namespace = pl_namespace', 'page_title = pl_title' ),
+				array( 
+					'page_id' => $this->mPageId, 
+					'page_namespace = pl_namespace', 
+					'page_title = pl_title' 
+				),
 				__METHOD__,
 				array ( 'GROUP BY' => 'page_id' )
 		);
 		foreach ( $res as $row ) {
-			$metaData[$row->page_id]['linkcount'] = $row->linkcount;
+			$this->metadata[$row->page_id]['linkcount'] = $row->linkcount;
 		}
 		foreach ( $this->mPageId as $pageId ) {
-			if ( !isset( $metaData[$pageId]['linkcount'] ) ) {
-				$metaData[$pageId]['linkcount'] = '0';	
+			if ( !isset( $this->metadata[$pageId]['linkcount'] ) ) {
+				$this->metadata[$pageId]['linkcount'] = '0';	
 			}
 		}
 
-		// Article category count
+		return true;
+	}
+	
+	public function getMetadata() {
+		return $this->metadata;	
+	}
+	
+}
+
+/**
+ * Article category count
+ */
+class ArticleCompileCategoryCount implements ArticleCompileInterface {
+	private $mPageId;
+	private $metadata;
+	
+	public function __construct( $pageId ) {
+		$this->mPageId = $pageId;
+		$this->metadata = array();
+	}
+
+	public function compile() {
+		$dbr = wfGetDB( DB_SLAVE );
+
 		$res = $dbr->select(
 				array( 'page', 'categorylinks' ),
 				array( 'page_id', 'COUNT(cl_to) AS category_count' ),
@@ -295,13 +504,37 @@ class ArticleMetadata {
 				array ( 'GROUP BY' => 'page_id' )
 		);
 		foreach ( $res as $row ) {
-			$metaData[$row->page_id]['category_count'] = $row->category_count;
+			$this->metadata[$row->page_id]['category_count'] = $row->category_count;
 		}
 		foreach ( $this->mPageId as $pageId ) {
-			if ( !isset( $metaData[$pageId]['category_count'] ) ) {
-				$metaData[$pageId]['category_count'] = '0';
+			if ( !isset( $this->metadata[$pageId]['category_count'] ) ) {
+				$this->metadata[$pageId]['category_count'] = '0';
 			}
 		}
+
+		return true;
+	}
+	
+	public function getMetadata() {
+		return $this->metadata;	
+	}
+	
+}
+
+/**
+ * Article snippet
+ */
+class ArticleCompileSnippet implements ArticleCompileInterface {
+	private $mPageId;
+	private $metadata;
+	
+	public function __construct( $pageId ) {
+		$this->mPageId = $pageId;
+		$this->metadata = array();
+	}
+
+	public function compile() {
+		$dbr = wfGetDB( DB_SLAVE );
 
 		// Article snippet
 		$res = $dbr->select(
@@ -311,10 +544,14 @@ class ArticleMetadata {
 				__METHOD__
 		);
 		foreach ( $res as $row ) {
-			$metaData[$row->page_id]['snippet'] = self::generateArticleSnippet( $row->old_text ); 
+			$this->metadata[$row->page_id]['snippet'] = self::generateArticleSnippet( $row->old_text ); 
 		}
-
+		
 		return true;
+	}
+	
+	public function getMetadata() {
+		return $this->metadata;	
 	}
 	
 	/**
@@ -351,14 +588,24 @@ class ArticleMetadata {
 
 		return $wgLang->truncate( $text, 150 );
 	}
+	
+}
 
-	/**
-	 * Compile user basic data like username for the author
-	 * @param $metaData array
-	 */
-	protected function compileUserBasicData( &$metaData ) {
+/**
+ * Article User data
+ */
+class ArticleCompileUserData implements ArticleCompileInterface {
+	private $mPageId;
+	private $metadata;
+	
+	public function __construct( $pageId ) {
+		$this->mPageId = $pageId;
+		$this->metadata = array();
+	}
+
+	public function compile() {
 		$dbr = wfGetDB( DB_SLAVE );
-		
+
 		$res = $dbr->select(
 				array( 'revision' ),
 				array( 'MIN(rev_id) AS rev_id' ),
@@ -366,56 +613,83 @@ class ArticleMetadata {
 				__METHOD__,
 				array( 'GROUP BY' => 'rev_page' )
 		);
-		
+
 		$revId = array();
 		
 		foreach ( $res as $row ) {
 			$revId[] = $row->rev_id;
 		}
-		
+
 		$res = $dbr->select(
 				array( 'revision', 'user', 'ipblocks' ),
-				array( 'rev_page AS page_id', 'user_id', 'user_name', 'user_real_name', 'user_registration', 'user_editcount', 'ipb_id', 'rev_user_text' ),
+				array( 
+					'rev_page AS page_id', 'user_id', 'user_name', 
+					'user_real_name', 'user_registration', 'user_editcount', 
+					'ipb_id', 'rev_user_text' 
+				),
 				array( 'rev_id' => $revId ),
 				__METHOD__,
 				array(),
-				array( 'user' => array( 'LEFT JOIN', 'rev_user = user_id' ), 'ipblocks' => array( 'LEFT JOIN', 'rev_user = ipb_user AND rev_user_text = ipb_address' ) )
+				array( 'user' => array( 
+							'LEFT JOIN', 'rev_user = user_id' ), 
+							'ipblocks' => array( 'LEFT JOIN', 'rev_user = ipb_user AND rev_user_text = ipb_address' ) 
+				)
 		);
 		
 		foreach ( $res as $row ) {
 			if ( $row->user_id ) {
 				$user = User::newFromRow( $row );
-				$metaData[$row->page_id]['user_id'] = $user->getId();
-				$metaData[$row->page_id]['user_name'] = $user->getName();
-				$metaData[$row->page_id]['user_editcount'] = $user->getEditCount();
-				$metaData[$row->page_id]['user_creation_date'] = wfTimestamp( TS_MW, $user->getRegistration() );
-				$metaData[$row->page_id]['user_autoconfirmed'] = $user->isAllowed( 'autoconfirmed' ) ? '1' : '0';
-				$metaData[$row->page_id]['user_bot'] = $user->isAllowed( 'bot' ) ? '1' : '0';
-				$metaData[$row->page_id]['user_block_status'] = $row->ipb_id ? '1' : '0';
+				$this->metadata[$row->page_id]['user_id'] = $user->getId();
+				$this->metadata[$row->page_id]['user_name'] = $user->getName();
+				$this->metadata[$row->page_id]['user_editcount'] = $user->getEditCount();
+				$this->metadata[$row->page_id]['user_creation_date'] = wfTimestamp( TS_MW, $user->getRegistration() );
+				$this->metadata[$row->page_id]['user_autoconfirmed'] = $user->isAllowed( 'autoconfirmed' ) ? '1' : '0';
+				$this->metadata[$row->page_id]['user_bot'] = $user->isAllowed( 'bot' ) ? '1' : '0';
+				$this->metadata[$row->page_id]['user_block_status'] = $row->ipb_id ? '1' : '0';
 			} else {
-				$metaData[$row->page_id]['user_id'] = 0;
-				$metaData[$row->page_id]['user_name'] = $row->rev_user_text;
-				$metaData[$row->page_id]['user_autoconfirmed'] = '0';
-				$metaData[$row->page_id]['user_bot'] = '0';
-				$metaData[$row->page_id]['user_block_status'] = $row->ipb_id ? '1' : '0';		
+				$this->metadata[$row->page_id]['user_id'] = 0;
+				$this->metadata[$row->page_id]['user_name'] = $row->rev_user_text;
+				$this->metadata[$row->page_id]['user_autoconfirmed'] = '0';
+				$this->metadata[$row->page_id]['user_bot'] = '0';
+				$this->metadata[$row->page_id]['user_block_status'] = $row->ipb_id ? '1' : '0';		
 			}
 		}
+
+		return true;
+	}
+	
+	public function getMetadata() {
+		return $this->metadata;	
 	}
 
-	/**
-	 * Compile the deletion tag data
-	 * @param $metaData array
-	 */
-	protected function compileDeletionTagData( &$metaData ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		
-		$deletionTags = array (
+}
+
+/**
+ * Article Deletion Tag
+ */
+class ArticleCompileDeletionTag implements ArticleCompileInterface {
+	private $mPageId;
+	private $metadata;
+	
+	public function __construct( $pageId ) {
+		$this->mPageId = $pageId;
+		$this->metadata = array();
+	}
+
+	public static function getDeletionTags() {
+		return array (
 			'All_articles_proposed_for_deletion' => 'prod_status',
 			'BLP_articles_proposed_for_deletion' => 'blp_prod_status',
 			'Candidates_for_speedy_deletion' => 'csd_status',
 			'Articles_for_deletion' => 'afd_status'
 		);
-		
+	}
+	
+	public function compile() {
+		$dbr = wfGetDB( DB_SLAVE );
+
+		$deletionTags = self::getDeletionTags();
+
 		$res = $dbr->select(
 				array( 'categorylinks' ),
 				array( 'cl_from AS page_id', 'cl_to' ),
@@ -424,26 +698,23 @@ class ArticleMetadata {
 		);
 
 		foreach ( $res as $row ) {
-			$metaData[$row->page_id][$deletionTags[$row->cl_to]] = '1';
+			$this->metadata[$row->page_id][$deletionTags[$row->cl_to]] = '1';
 		}
 
 		// Fill in 0 for page not tagged with any of these status
-		// Subtract from category_count
 		foreach ( $this->mPageId as $pageId ) {
 			foreach ( $deletionTags as $status ) {
-				if ( !isset( $metaData[$pageId][$status] ) ) {
-					$metaData[$pageId][$status] = '0';	
-				} else {
-					$metaData[$pageId]['category_count'] -= 1;	
+				if ( !isset( $this->metadata[$pageId][$status] ) ) {
+					$this->metadata[$pageId][$status] = '0';	
 				}
 			}
-			
-			if ( $metaData[$pageId]['category_count'] < 0 ) {
-				$metaData[$pageId]['category_count'] = '0';
-			}
 		}
-	}
-}
 
-class MWArticleMetadataMissingPageIdException extends MWException {}
-class MWArticleMetadataMetaDataOutofBoundException extends MWException {}
+		return true;
+	}
+	
+	public function getMetadata() {
+		return $this->metadata;	
+	}
+	
+}

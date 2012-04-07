@@ -18,9 +18,11 @@ class PageTriageHooks {
 			self::addToPageTriageQueue( $pageId );
 		}
 
-		//@Todo - find a solution for partial data compilation
-		$articleMetadata = new ArticleMetadata( array( $pageId ) );
-		$articleMetadata->compileMetadata();
+		$acp = ArticleCompileProcessor::newFromPageId( array( $pageId ) );
+		if ( $acp ) {
+			$acp->registerComponent( 'BasicData' );
+			$acp->compileMetadata();
+		}
 
 		return true;
 	}
@@ -82,8 +84,11 @@ class PageTriageHooks {
 	 * @return bool
 	 */
 	public static function onArticleSaveComplete( $article, $user, $text, $summary, $minoredit, $watchthis, $sectionanchor, $flags, $revision, $status, $baseRevId ) {
-		$articleMetadata = new ArticleMetadata( array( $article->getId() ) );
-		$articleMetadata->compileMetadata();
+		$acp = ArticleCompileProcessor::newFromPageId( array( $article->getId() ) );
+		if ( $acp ) {
+			$acp->compileMetadata();
+		}
+
 		return true;
 	}
 

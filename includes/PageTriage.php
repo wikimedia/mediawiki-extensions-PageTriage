@@ -94,7 +94,14 @@ class PageTriage {
 		if ( $dbw->affectedRows() > 0 && !is_null( $user ) && !$user->isAnon() ) {
 			$this->logUserTriageAction( $user );
 		}
-		$dbw->commit();	
+		$dbw->commit();
+
+		// Regenerate article basic data
+		$acp = ArticleCompileProcessor::newFromPageId( array( $this->mPageId ) );
+		if ( $acp ) {
+			$acp->registerComponent( 'BasicData' );
+			$acp->compileMetadata();
+		}
 	}
 	
 	/**
