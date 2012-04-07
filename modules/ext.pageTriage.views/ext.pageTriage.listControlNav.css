@@ -16,6 +16,7 @@
 
 .mwe-pt-control-section {
 	margin-top: 0.4em;
+	z-index: 51;
 }
 
 .mwe-pt-control-label-right {

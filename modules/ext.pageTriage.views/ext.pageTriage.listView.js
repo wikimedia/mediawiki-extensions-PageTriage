@@ -62,7 +62,11 @@ $( function() {
 			var _this = this;
 			$( '#mwe-pt-list-more' ).append( $.createSpinner( 'more-spinner' ) );
 			var lastArticle = articles.last(1);
-			articles.apiParams.offset = lastArticle[0].attributes.creation_date;
+			if( 0 in lastArticle ) {
+				articles.apiParams.offset = lastArticle[0].attributes.creation_date;
+			} else {
+				articles.apiParams.offset = 0;
+			}
 			articles.fetch( {
 				add: true,
 				success: function() {
@@ -83,7 +87,11 @@ $( function() {
 			$( '#mwe-pt-list-more-link' ).hide();
 			$( '#mwe-pt-list-more' ).append( $.createSpinner( 'more-spinner' ) );
 			var lastArticle = articles.last(1);
-			articles.apiParams.offset = lastArticle[0].attributes.creation_date;
+			if( 0 in lastArticle ) {
+				articles.apiParams.offset = lastArticle[0].attributes.creation_date;
+			} else {
+				articles.apiParams.offset = 0;
+			}
 			articles.fetch( {
 				add: true,
 				success: function() {
