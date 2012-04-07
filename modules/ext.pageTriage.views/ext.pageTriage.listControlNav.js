@@ -223,7 +223,7 @@ $( function() {
 			if( this.model.getParam( 'namespace' ) > -1 ) { // still true for ns 0
 				var ns = this.model.getParam( 'namespace' );
 				var nsText;
-				if( ns === 0 ) {
+				if( Number(ns) === 0 ) {
 					nsText = gM( 'pagetriage-filter-ns-article' );
 				} else {
 					nsText = mw.config.get( 'wgFormattedNamespaces' )[ns];
