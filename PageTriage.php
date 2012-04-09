@@ -279,4 +279,9 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 
 $wgResourceModules['ext.pageTriage.article'] = $ptResourceTemplate + array(
 	'styles' => 'ext.pageTriage.article/ext.pageTriage.article.css',
+	'scripts' => 'ext.pageTriage.article/ext.pageTriage.article.js',
+	'messages' => array (
+			'pagetriage-reviewed',
+			'pagetriage-mark-as-reviewed-error',
+		),
 );

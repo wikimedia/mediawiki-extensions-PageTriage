@@ -138,7 +138,14 @@ class PageTriageHooks {
 	 * @return type description
 	 */
 	public static function onArticleViewHeader( &$article, &$outputDone, &$pcache ) {
-		global $wgUser, $wgPageTriageMarkPatrolledLinkExpiry, $wgOut;
+		global $wgUser, $wgPageTriageMarkPatrolledLinkExpiry, $wgOut, $wgRequest;
+
+		// the presence of rcid means this is coming from Special:NewPages,
+		// and hence don't make any interference, this also applies to
+		// user with no right
+		if ( $wgRequest->getVal( 'rcid' ) || !$article->getTitle()->quickUserCan( 'patrol' ) ) {
+			return true;
+		}
 
 		$lastUse = $wgUser->getOption('pagetriage-lastuse');
 		$lastUse = wfTimestamp( TS_UNIX, $lastUse );
@@ -150,14 +157,24 @@ class PageTriageHooks {
 			return true;
 		}
 
-		if ( ! PageTriageUtil::doesPageNeedTriage( $article ) ) {
-			return true;
+		$status = PageTriageUtil::doesPageNeedTriage( $article );
+
+		if ( $status === true) {
+			// show 'Mark as reviewed' link
+			$msg = wfMessage( 'pagetriage-markpatrolled' )->escaped();
+			$msg = Html::element( 'a', array( 'href' => '#', 'class' => 'mw-pagetriage-markpatrolled-link' ), $msg );
+			
+		} else if ( $status === false ) {
+			// show 'Reviewed' text
+			$msg= wfMessage( 'pagetriage-reviewed' )->escaped();
+		} else {
+			// Do nothing as this page is not in PageTriage queue
+			return true;	
 		}
 
 		$wgOut->addModules( array('ext.pageTriage.article') );
 
-		$msg = wfMessage( 'pagetriage-markpatrolled' )->parse();
-		$html = Html::element( 'div', array( 'class' => 'mw-pagetriage-markpatrolled' ), $msg );
+		$html = Html::rawElement( 'div', array( 'class' => 'mw-pagetriage-markpatrolled' ), $msg );
 
 		$wgOut->addHTML( $html );
 

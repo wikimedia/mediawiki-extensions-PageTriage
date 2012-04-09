@@ -5,19 +5,34 @@ class ApiPageTriageAction extends ApiBase {
 	public function execute() {
 		global $wgUser;
 
-		if ( $wgUser->isAnon() || $wgUser->isBlocked( false )  ) {
-			$this->dieUsage( "You don't have permission to do that", 'permission-denied' );
-		}
-		
-		//@Todo: Add more user permission checking
-
 		$params = $this->extractRequestParams();
+
+		if ( $wgUser->isAnon() || $wgUser->isBlocked( false )  ) {
+			$this->permissionError();
+		}
+
+		$article = Article::newFromID( $params['pageid'] );
+		if ( $article ) {
+			if ( !$article->getTitle()->quickUserCan( 'patrol' ) ) {
+				$this->permissionError();	
+			}
+		} else {
+			$this->pageError();
+		}
 		
 		$pageTriage = new PageTriage( $params['pageid'] );
 		$pageTriage->setTriageStatus( $params['reviewed'], $wgUser );
 
 		$result = array( 'result' => 'success' );
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+	}
+
+	private function permissionError() {
+		$this->dieUsage( "You don't have permission to do that", 'permission-denied' );	
+	}
+
+	private function pageError() {
+		$this->dieUsage( "The page specified does not exist", 'bad-page' );	
 	}
 
 	public function needsToken() {

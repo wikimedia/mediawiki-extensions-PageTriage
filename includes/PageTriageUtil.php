@@ -15,7 +15,7 @@ class PageTriageUtil {
 	 * Return convention is this way so that null and false are equivalent
 	 * with a straight boolean test.
 	 */
-	public static function doesPageNeedTriage( $article ) {		
+	public static function doesPageNeedTriage( $article ) {
 		if ( ! $article ) {
 			throw new MWException( "Invalid argument to " . __METHOD__ );
 		}
