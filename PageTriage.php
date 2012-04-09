@@ -285,3 +285,8 @@ $wgResourceModules['ext.pageTriage.article'] = $ptResourceTemplate + array(
 			'pagetriage-mark-as-reviewed-error',
 		),
 );
+
+/** Rate limit setting for PageTriage **/
+$wgRateLimits += array( 
+	'pagetriage-mark-action' => array( 'user' => array( 1, 3 ) )
+);

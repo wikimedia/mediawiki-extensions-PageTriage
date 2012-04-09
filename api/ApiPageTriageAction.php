@@ -7,10 +7,6 @@ class ApiPageTriageAction extends ApiBase {
 
 		$params = $this->extractRequestParams();
 
-		if ( $wgUser->isAnon() || $wgUser->isBlocked( false )  ) {
-			$this->permissionError();
-		}
-
 		$article = Article::newFromID( $params['pageid'] );
 		if ( $article ) {
 			if ( !$article->getTitle()->quickUserCan( 'patrol' ) ) {
@@ -19,7 +15,11 @@ class ApiPageTriageAction extends ApiBase {
 		} else {
 			$this->pageError();
 		}
-		
+
+		if ( $wgUser->pingLimiter( 'pagetriage-mark-action' ) ) {
+			$this->dieUsageMsg( array( 'actionthrottledtext' ) );
+		}
+
 		$pageTriage = new PageTriage( $params['pageid'] );
 		$pageTriage->setTriageStatus( $params['reviewed'], $wgUser );
 
