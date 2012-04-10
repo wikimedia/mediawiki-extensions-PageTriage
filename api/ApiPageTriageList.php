@@ -71,7 +71,7 @@ class ApiPageTriageList extends ApiBase {
 			$conds['ptrp_deleted'] = 0;
 		}		
 		// Show by namespace
-		if ( array_key_exists( 'namespace', $opts ) ) {
+		if ( isset( $opts['namespace'] ) ) {
 			$conds['page_namespace'] = $opts['namespace'];
 		}
 		// Offset the list by timestamp
@@ -181,7 +181,6 @@ class ApiPageTriageList extends ApiBase {
 				ApiBase::PARAM_TYPE => 'string',
 			),
 			'namespace' => array(
-				ApiBase::PARAM_DFLT => '0',
 				ApiBase::PARAM_TYPE => 'integer',
 			),
 			'no_category' => array(
