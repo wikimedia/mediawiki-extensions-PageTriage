@@ -10,7 +10,7 @@ class ArticleMetadata {
 	/**
 	 * @param $pageId array - list of page id
 	 */
-	public function __construct( $pageId = array() ) {
+	public function __construct( array $pageId ) {
 		$pageId = self::validatePageId( $pageId );
 
 		if ( !$pageId ) {
@@ -144,7 +144,7 @@ class ArticleMetadata {
 
 			$res = $dbr->select(
 					array( 'pagetriage_page_tags', 'pagetriage_tags', 'pagetriage_page' ),
-					array( 'ptrpt_page_id', 'ptrt_tag_name', 'ptrpt_value', 'ptrp_reviewed', 'ptrp_timestamp', 'ptrp_deleted' ),
+					array( 'ptrpt_page_id', 'ptrt_tag_name', 'ptrpt_value', 'ptrp_reviewed', 'ptrp_timestamp' ),
 					array( 'ptrpt_page_id' => $articles, 'ptrpt_tag_id = ptrt_tag_id', 'ptrpt_page_id = ptrp_page_id' ),
 					__METHOD__
 			);
@@ -155,7 +155,6 @@ class ArticleMetadata {
 				if ( !isset( $pageData[$row->ptrpt_page_id]['creation_date'] ) ) {
 					$pageData[$row->ptrpt_page_id]['creation_date'] = $row->ptrp_timestamp;
 					$pageData[$row->ptrpt_page_id]['patrol_status'] = $row->ptrp_reviewed;
-					$pageData[$row->ptrpt_page_id]['deleted'] = $row->ptrp_deleted;
 				}
 			}
 
@@ -241,7 +240,7 @@ class ArticleCompileProcessor {
 	/**
 	 * @param $pageId array - list of page id 
 	 */
-	private function __construct( $pageId = array() ) {
+	private function __construct( array $pageId ) {
 		$this->mPageId = $pageId;
 
 		$this->component = array(
@@ -335,12 +334,9 @@ class ArticleCompileProcessor {
 		if ( in_array( 'CategoryCount', $completed ) ) {
 			$deletionTags = ArticleCompileDeletionTag::getDeletionTags();
 			foreach ( $this->metadata as $pageId => $row ) {
-				$this->metadata[$pageId]['deleted'] = '0';
 				foreach( $deletionTags as $val ) {
 					if ( $this->metadata[$pageId][$val] ) {
 						$this->metadata[$pageId]['category_count'] -= 1;
-						// This won't be saved to db, only for later reference
-						$this->metadata[$pageId]['deleted'] = '1';
 					}
 				}
 
@@ -390,21 +386,32 @@ class ArticleCompileProcessor {
  * The following are private classes used by ArticleCompileProcessor
  */
 
-interface ArticleCompileInterface {
-	public function compile();
-	public function getMetadata();
+abstract class ArticleCompileInterface {
+	protected $mPageId;
+	protected $metadata;
+	
+	/**
+	 * @param $pageId array
+	 */
+	public function __construct( array $pageId ) {
+		$this->mPageId = $pageId;
+		$this->metadata = array_fill_keys( $pageId, array() );
+	}
+	
+	public abstract function compile();
+
+	public function getMetadata() {
+		return $this->metadata;	
+	}
 }
 
 /**
  * Article page length, creation date, number of edit, title, article triage status
  */
-class ArticleCompileBasicData implements ArticleCompileInterface {
-	private $mPageId;
-	private $metadata;
+class ArticleCompileBasicData extends ArticleCompileInterface {
 
 	public function __construct( $pageId ) {
-		$this->mPageId = $pageId;
-		$this->metadata = array();
+		parent::__construct( $pageId );
 	}
 
 	public function compile() {
@@ -439,22 +446,15 @@ class ArticleCompileBasicData implements ArticleCompileInterface {
 		}
 	}
 	
-	public function getMetadata() {
-		return $this->metadata;	
-	}
-	
 }
 
 /**
  * Article link count
  */
-class ArticleCompileLinkCount implements ArticleCompileInterface {
-	private $mPageId;
-	private $metadata;
-	
+class ArticleCompileLinkCount extends ArticleCompileInterface {
+
 	public function __construct( $pageId ) {
-		$this->mPageId = $pageId;
-		$this->metadata = array();
+		parent::__construct( $pageId );
 	}
 
 	public function compile() {
@@ -482,23 +482,16 @@ class ArticleCompileLinkCount implements ArticleCompileInterface {
 
 		return true;
 	}
-	
-	public function getMetadata() {
-		return $this->metadata;	
-	}
-	
+
 }
 
 /**
  * Article category count
  */
-class ArticleCompileCategoryCount implements ArticleCompileInterface {
-	private $mPageId;
-	private $metadata;
-	
+class ArticleCompileCategoryCount extends ArticleCompileInterface {
+
 	public function __construct( $pageId ) {
-		$this->mPageId = $pageId;
-		$this->metadata = array();
+		parent::__construct( $pageId );
 	}
 
 	public function compile() {
@@ -523,22 +516,15 @@ class ArticleCompileCategoryCount implements ArticleCompileInterface {
 		return true;
 	}
 	
-	public function getMetadata() {
-		return $this->metadata;	
-	}
-	
 }
 
 /**
  * Article snippet
  */
-class ArticleCompileSnippet implements ArticleCompileInterface {
-	private $mPageId;
-	private $metadata;
-	
+class ArticleCompileSnippet extends ArticleCompileInterface {
+
 	public function __construct( $pageId ) {
-		$this->mPageId = $pageId;
-		$this->metadata = array();
+		parent::__construct( $pageId );
 	}
 
 	public function compile() {
@@ -556,10 +542,6 @@ class ArticleCompileSnippet implements ArticleCompileInterface {
 		}
 		
 		return true;
-	}
-	
-	public function getMetadata() {
-		return $this->metadata;	
 	}
 	
 	/**
@@ -602,13 +584,10 @@ class ArticleCompileSnippet implements ArticleCompileInterface {
 /**
  * Article User data
  */
-class ArticleCompileUserData implements ArticleCompileInterface {
-	private $mPageId;
-	private $metadata;
+class ArticleCompileUserData extends ArticleCompileInterface {
 	
 	public function __construct( $pageId ) {
-		$this->mPageId = $pageId;
-		$this->metadata = array();
+		parent::__construct( $pageId );
 	}
 
 	public function compile() {
@@ -665,23 +644,17 @@ class ArticleCompileUserData implements ArticleCompileInterface {
 
 		return true;
 	}
-	
-	public function getMetadata() {
-		return $this->metadata;	
-	}
 
 }
 
 /**
  * Article Deletion Tag
  */
-class ArticleCompileDeletionTag implements ArticleCompileInterface {
-	private $mPageId;
-	private $metadata;
-	
+class ArticleCompileDeletionTag extends ArticleCompileInterface {
+
 	public function __construct( $pageId ) {
 		$this->mPageId = $pageId;
-		$this->metadata = array();
+		$this->metadata = array_fill_keys( $this->mPageId, array( 'deleted' => '0' ) );
 	}
 
 	public static function getDeletionTags() {
@@ -707,6 +680,8 @@ class ArticleCompileDeletionTag implements ArticleCompileInterface {
 
 		foreach ( $res as $row ) {
 			$this->metadata[$row->page_id][$deletionTags[$row->cl_to]] = '1';
+			// This won't be saved to metadata, only for later reference
+			$this->metadata[$row->page_id]['deleted'] = '1';
 		}
 
 		// Fill in 0 for page not tagged with any of these status
@@ -720,9 +695,5 @@ class ArticleCompileDeletionTag implements ArticleCompileInterface {
 
 		return true;
 	}
-	
-	public function getMetadata() {
-		return $this->metadata;	
-	}
-	
+
 }
