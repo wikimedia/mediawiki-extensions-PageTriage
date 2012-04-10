@@ -193,7 +193,7 @@ $wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + array(
 );
 
 
-$wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
+$wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 	'dependencies' => array(
 		'mediawiki.jqueryMsg',
 		'ext.pageTriage.models',
@@ -201,17 +201,17 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 		'jquery.spinner'
 	),
 	'scripts' => array(
-		'ext.pageTriage.views/ext.pageTriage.listItem.js',
-		'ext.pageTriage.views/ext.pageTriage.listControlNav.js',
-		'ext.pageTriage.views/ext.pageTriage.listStatsNav.js',
-		'ext.pageTriage.views/ext.pageTriage.listView.js'
+		'ext.pageTriage.views.list/ext.pageTriage.listItem.js',
+		'ext.pageTriage.views.list/ext.pageTriage.listControlNav.js',
+		'ext.pageTriage.views.list/ext.pageTriage.listStatsNav.js',
+		'ext.pageTriage.views.list/ext.pageTriage.listView.js'
 	),
 	'styles' => array(
-		'ext.pageTriage.views/ext.pageTriage.css', // stuff that's shared across all views
-		'ext.pageTriage.views/ext.pageTriage.listItem.css',
-		'ext.pageTriage.views/ext.pageTriage.listControlNav.css',
-		'ext.pageTriage.views/ext.pageTriage.listStatsNav.css',
-		'ext.pageTriage.views/ext.pageTriage.listView.css'
+		'ext.pageTriage.css', // stuff that's shared across all views
+		'ext.pageTriage.views.list/ext.pageTriage.listItem.css',
+		'ext.pageTriage.views.list/ext.pageTriage.listControlNav.css',
+		'ext.pageTriage.views.list/ext.pageTriage.listStatsNav.css',
+		'ext.pageTriage.views.list/ext.pageTriage.listView.css'
 	),
 	'messages' => array(
 		'comma-separator',
@@ -274,6 +274,25 @@ $wgResourceModules['ext.pageTriage.views'] = $ptResourceTemplate + array(
 		'pagetriage-filter-stat-blocked',
 		'pagetriage-filter-stat-username',
 		'pagetriage-filter-all',
+	)
+);
+
+$wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array(
+	'dependencies' => array(
+		'mediawiki.jqueryMsg',
+		'ext.pageTriage.models',
+		'jquery.ui.button',
+		'jquery.spinner'
+	),
+	'scripts' => array(
+		'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.js',
+	),
+	'styles' => array(
+		'ext.pageTriage.css', // stuff that's shared across all views
+		'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.css',
+	),
+	'messages' => array(
+		
 	)
 );
 

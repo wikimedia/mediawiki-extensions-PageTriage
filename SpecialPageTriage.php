@@ -48,7 +48,7 @@ class SpecialPageTriage extends SpecialPage {
 			$infiniteScroll . "});</script>" );
 
 		// load the JS
-		$out->addModules( array( 'ext.pageTriage.external', 'ext.pageTriage.models', 'ext.pageTriage.views' ) );
+		$out->addModules( array( 'ext.pageTriage.external', 'ext.pageTriage.models', 'ext.pageTriage.views.list' ) );
 				
 		// This will hold the HTML for the triage interface
 		$triageInterface = '';
@@ -226,7 +226,6 @@ class SpecialPageTriage extends SpecialPage {
 								<div class="mwe-pt-control-buttons">
 									<div id="mwe-pt-filter-set-button" class="mwe-pt-filter-set-button ui-button-green"></div>
 								</div>
-							</div>
 							</form>
 						</div>
 					</span>
