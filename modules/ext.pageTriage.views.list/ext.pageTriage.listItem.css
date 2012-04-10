@@ -10,6 +10,7 @@
 .mwe-pt-info-pane {
 	margin-left: 31px;
 	padding: 0.5em 0.6em 0.6em 0.5em;
+	min-height: 4.8em;
 }
 
 .mwe-pt-status-icon {
