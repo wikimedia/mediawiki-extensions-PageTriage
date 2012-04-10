@@ -143,15 +143,20 @@ class ArticleMetadata {
 			$dbr = wfGetDB( DB_SLAVE );
 
 			$res = $dbr->select(
-					array( 'pagetriage_page_tags', 'pagetriage_tags' ),
-					array( 'ptrpt_page_id', 'ptrt_tag_name', 'ptrpt_value' ),
-					array( 'ptrpt_page_id' => $articles, 'ptrpt_tag_id = ptrt_tag_id' ),
+					array( 'pagetriage_page_tags', 'pagetriage_tags', 'pagetriage_page' ),
+					array( 'ptrpt_page_id', 'ptrt_tag_name', 'ptrpt_value', 'ptrp_reviewed', 'ptrp_timestamp', 'ptrp_deleted' ),
+					array( 'ptrpt_page_id' => $articles, 'ptrpt_tag_id = ptrt_tag_id', 'ptrpt_page_id = ptrp_page_id' ),
 					__METHOD__
 			);
 
 			$pageData = array();
 			foreach ( $res as $row ) {
 				$pageData[$row->ptrpt_page_id][$row->ptrt_tag_name] = $row->ptrpt_value;
+				if ( !isset( $pageData[$row->ptrpt_page_id]['creation_date'] ) ) {
+					$pageData[$row->ptrpt_page_id]['creation_date'] = $row->ptrp_timestamp;
+					$pageData[$row->ptrpt_page_id]['patrol_status'] = $row->ptrp_reviewed;
+					$pageData[$row->ptrpt_page_id]['deleted'] = $row->ptrp_deleted;
+				}
 			}
 
 			foreach ( $articles as $key => $pageId ) {
@@ -330,10 +335,11 @@ class ArticleCompileProcessor {
 		if ( in_array( 'CategoryCount', $completed ) ) {
 			$deletionTags = ArticleCompileDeletionTag::getDeletionTags();
 			foreach ( $this->metadata as $pageId => $row ) {
+				$this->metadata[$pageId]['deleted'] = '0';
 				foreach( $deletionTags as $val ) {
 					if ( $this->metadata[$pageId][$val] ) {
 						$this->metadata[$pageId]['category_count'] -= 1;
-						// This won't be saved to db, only for later reference later
+						// This won't be saved to db, only for later reference
 						$this->metadata[$pageId]['deleted'] = '1';
 					}
 				}
@@ -418,9 +424,11 @@ class ArticleCompileBasicData implements ArticleCompileInterface {
 		foreach ( $res as $row ) {
 			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 			$this->metadata[$row->page_id]['page_len'] = $row->page_len;
-			$this->metadata[$row->page_id]['creation_date'] = $row->creation_date;
 			$this->metadata[$row->page_id]['rev_count'] = $row->rev_count;
 			$this->metadata[$row->page_id]['title'] = $title->getPrefixedText();
+			// The following data won't be saved into metadata since they are not metadata tags
+			// just for saving into cache later
+			$this->metadata[$row->page_id]['creation_date'] = $row->creation_date;
 			$this->metadata[$row->page_id]['patrol_status'] = $row->ptrp_reviewed;
 		}
 

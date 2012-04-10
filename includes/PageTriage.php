@@ -95,13 +95,9 @@ class PageTriage {
 			$this->logUserTriageAction( $user );
 		}
 		$dbw->commit();
-
-		// Regenerate article basic data
-		$acp = ArticleCompileProcessor::newFromPageId( array( $this->mPageId ) );
-		if ( $acp ) {
-			$acp->registerComponent( 'BasicData' );
-			$acp->compileMetadata();
-		}
+		// flush the cache so cached triage status is updated
+		$articleMetadata = new ArticleMetadata( array( $this->mPageId ) );
+		$articleMetadata->flushMetadataFromCache();
 	}
 	
 	/**
