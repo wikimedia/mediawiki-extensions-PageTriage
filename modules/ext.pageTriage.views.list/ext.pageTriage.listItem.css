@@ -54,9 +54,8 @@
 }
 
 .mwe-pt-list-triage-button {
-	position: absolute;
-	top: 2.2em;
-	right: 0.6em;
+	float: right;
+	clear: right;
 }
 
 /* info about the article */
