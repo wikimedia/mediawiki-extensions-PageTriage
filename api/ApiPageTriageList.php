@@ -47,10 +47,10 @@ class ApiPageTriageList extends ApiBase {
 		$options['LIMIT'] = $opts['limit'] + 1;
 		
 		if ( strtolower( $opts['dir'] ) === 'oldestfirst' ) {
-			$options['ORDER BY'] = 'ptrp_timestamp ASC';
+			$options['ORDER BY'] = 'ptrp_timestamp ASC, ptrp_page_id ASC';
 			$offsetOperator = ' > ';
 		} else {
-			$options['ORDER BY'] = 'ptrp_timestamp DESC';
+			$options['ORDER BY'] = 'ptrp_timestamp DESC, ptrp_page_id DESC';
 			$offsetOperator = ' < ';
 		}
 
@@ -74,9 +74,16 @@ class ApiPageTriageList extends ApiBase {
 		if ( array_key_exists( 'namespace', $opts ) ) {
 			$conds['page_namespace'] = $opts['namespace'];
 		}
-		// Offset the list
+		// Offset the list by timestamp
 		if ( array_key_exists( 'offset', $opts ) && is_numeric( $opts['offset'] ) && $opts['offset'] > 0 ) {
-			$conds[] = 'ptrp_timestamp' . $offsetOperator . $opts['offset'];
+			// Offset the list by page ID as well (in case multiple pages have the same timestamp)
+			if ( array_key_exists( 'pageoffset', $opts ) && is_numeric( $opts['pageoffset'] ) && $opts['pageoffset'] > 0 ) {
+				$conds[] = '( ptrp_timestamp' . $offsetOperator . $opts['offset'] . ') OR ' .
+					'( ptrp_timestamp = ' . $opts['offset'] .' AND ' . 
+					'ptrp_page_id ' . $offsetOperator . $opts['pageoffset'] . ')';
+			} else {
+				$conds[] = 'ptrp_timestamp' . $offsetOperator . $opts['offset'];
+			}
 		}
 
 		$tagConds = self::buildTagQuery( $opts );
@@ -167,6 +174,9 @@ class ApiPageTriageList extends ApiBase {
 			'offset' => array(
 				ApiBase::PARAM_TYPE => 'integer',
 			),
+			'pageoffset' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+			),
 			'dir' => array(
 				ApiBase::PARAM_TYPE => 'string',
 			),
@@ -200,6 +210,7 @@ class ApiPageTriageList extends ApiBase {
 			'showdeleted' => 'Whether to include "proposed for deleted" or not', // default is not to show deleted
 			'limit' => 'The maximum number of results to return',
 			'offset' => 'Timestamp to start from',
+			'pageoffset' => 'Page ID to start from (requires offset param to be passed as well)',
 			'dir' => 'The direction the list should be sorted in - oldestfirst or newestfirst',
 			'namespace' => 'What namespace to pull pages from',
 			'no_category' => 'Whether to show only pages with no category',

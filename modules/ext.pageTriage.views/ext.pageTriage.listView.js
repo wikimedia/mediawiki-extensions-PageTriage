@@ -67,6 +67,7 @@ $( function() {
 			} else {
 				articles.apiParams.offset = 0;
 			}
+			articles.apiParams.pageoffset = lastArticle[0].attributes.pageid;
 			articles.fetch( {
 				add: true,
 				success: function() {
@@ -92,6 +93,7 @@ $( function() {
 			} else {
 				articles.apiParams.offset = 0;
 			}
+			articles.apiParams.pageoffset = lastArticle[0].attributes.pageid;
 			articles.fetch( {
 				add: true,
 				success: function() {
