@@ -11,14 +11,14 @@ class SpecialPageTriage extends SpecialPage {
 
 	// Holds the various options for viewing the list
 	protected $opts;
-	
+
 	/**
 	 * Initialize the special page.
 	 */
 	public function __construct() {
 		parent::__construct( 'PageTriage' );
 	}
-	
+
 	/**
 	 * Define what happens when the special page is loaded by the user.
 	 * @param $sub string The subpage, if any
@@ -26,7 +26,7 @@ class SpecialPageTriage extends SpecialPage {
 	public function execute( $sub ) {
 		global $wgRequest, $wgPageTriageInfiniteScrolling;
 		$out = $this->getOutput();
-		
+
 		// TODO: check user permissions, make sure they're logged in and have the pagepatrol userright
 
 		global $wgUser;
@@ -36,7 +36,7 @@ class SpecialPageTriage extends SpecialPage {
 		
 		// Output the title of the page
 		$out->setPageTitle( wfMessage( 'pagetriage' ) );
-		
+
 		// Allow infinite scrolling override from query string parameter
 		// We don't use getBool() here since the param is optional
 		if ( $wgRequest->getText( 'infinite' ) === 'true' ) {
@@ -44,7 +44,7 @@ class SpecialPageTriage extends SpecialPage {
 		} else if ( $wgRequest->getText( 'infinite' ) === 'false' ) {
 			$wgPageTriageInfiniteScrolling = false;
 		}
-		
+
 		// Set the infinite scrolling flag in JavaScript
 		$out->addScript( "<script type=\"text/javascript\">mw.config.set({\"wgPageTriageInfiniteScrolling\":" . 
 			$wgPageTriageInfiniteScrolling . "});</script>" );
@@ -58,7 +58,7 @@ class SpecialPageTriage extends SpecialPage {
 		$triageInterface .= "<div id='mwe-pt-list-control-nav' class='mwe-pt-navigation-bar mwe-pt-control-gradient'>";
 		$triageInterface .= "<div id='mwe-pt-list-control-nav-content'></div>";
 		$triageInterface .= "</div>";
-		
+
 		// TODO: this should load with a spinner instead of "please wait"
 		$triageInterface .= "<div id='mwe-pt-list-view'>Please wait...</div>";
 		$triageInterface .= "<div id='mwe-pt-list-more' style='display: none;'>";
@@ -69,7 +69,7 @@ class SpecialPageTriage extends SpecialPage {
 		$triageInterface .= "<div id='mwe-pt-list-stats-nav-content'></div>";
 		$triageInterface .= "</div>";
 		$triageInterface .= "<div id='mwe-pt-list-stats-nav-anchor'></div>";
-		
+
 		// These are the templates that backbone/underscore render on the client.
 		// It would be awesome if they lived in separate files, but we need to figure out how to make RL do that for us.
 		// Syntax documentation can be found at http://documentcloud.github.com/underscore/#template.
@@ -156,7 +156,7 @@ class SpecialPageTriage extends SpecialPage {
 						</div>
 					</div>
 				</script>
-				
+
 				<!-- top nav template -->
 				<script type="text/template" id="listControlNavTemplate">
 					<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-showing' ) %></b> <%= filterStatus %></span>
@@ -232,7 +232,7 @@ class SpecialPageTriage extends SpecialPage {
 						<a href="#" id="mwe-pt-sort-oldest"><%= gM( 'pagetriage-oldest' ) %></a>
 					</span>
 				</script>
-				
+
 				<!-- bottom nav template -->
 				<script type="text/template" id="listStatsNavTemplate">
 					<div id="mwe-pt-stats-nav">
@@ -244,7 +244,7 @@ class SpecialPageTriage extends SpecialPage {
 								<%
 								var triagerLinks = new Array();
 								for ( var m in ptrTopTriager ) {
-									triagerLinks.push( "<a " + ptrTopTriager[m].linkCSS + " href=\"" + ptrTopTriager[m].title.getUrl() + "\">" + mw.html.escape( ptrTopTriager[m].userName ) + "</a>" );
+									triagerLinks.push( "<a " + ptrTopTriager[m].linkCSS + " href=\"" + ptrTopTriager[m].title.getUrl() + "\">" + mw.html.escape(ptrTopTriager[m].userName ) + "</a>" );
 								}
 								var triagers = triagerLinks.join( gM( 'comma-separator' ) );
 								%>
@@ -258,12 +258,12 @@ class SpecialPageTriage extends SpecialPage {
 						</div>
 					</div>
 				</script>
-				
+
 HTML;
 
 		// Output the HTML for the page
 		$out->addHtml( $triageInterface );
-	
+
 	}
 
 }

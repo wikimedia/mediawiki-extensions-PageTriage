@@ -1,6 +1,6 @@
 $( function() {
 	// controls navbar
-	
+
 	mw.pageTriage.ListControlNav = Backbone.View.extend( {
 		tagName: "div",
 		template: _.template( $( "#listControlNavTemplate" ).html() ),
@@ -14,7 +14,7 @@ $( function() {
 			this.eventBus = options.eventBus; // access the eventBus
 			
 			this.setWaypoint();
-			
+
 			// do things that need doing on window resize
 			$( window ).resize( _.debounce(_this.resize, 100 ) );
 
@@ -33,7 +33,7 @@ $( function() {
 
 		render: function() {
 			var _this = this;
-			
+
 			if(! this.filterStatus ) {
 				this.filterStatus = gM( 'pagetriage-filter-stat-all');
 			}
@@ -47,7 +47,7 @@ $( function() {
 			//
 			// now that the template's been inserted, set up some events for controlling it
 			//
-			
+
 			// make a button
 			$( ".mwe-pt-filter-set-button" ).button( {
 				label: mw.msg( 'pagetriage-filter-set-button' ),
@@ -55,16 +55,16 @@ $( function() {
 			} );
 			$( ".mwe-pt-filter-set-button" ).click( function( e ) {
 				_this.filterSync();
-				_this.toggleFilterMenu();				
+				_this.toggleFilterMenu();
 				e.stopPropagation();
 			} );
-			
+
 			// the filter dropdown menu control
 			$( '#mwe-pt-filter-dropdown-control' ).click( function( e ) {
 				_this.toggleFilterMenu();
 				e.stopPropagation();
 			} );
-			
+
 			// Activate sort links
 			$( '#mwe-pt-sort-newest' ).click( function() {
 				_this.model.setParam( 'dir', 'newestfirst' );
@@ -81,7 +81,7 @@ $( function() {
 				return false;
 			} );
 		},
-		
+
 		setWaypoint: function() {
 			// make a floating top navbar
 			$( '#mwe-pt-list-control-nav' ).waypoint('destroy');  // remove the old, maybe inaccurate ones.
@@ -97,11 +97,11 @@ $( function() {
 				} else {
 					$( '#mwe-pt-list-view' ).css('padding-top', 0 );
 				}
-				
+
 				_this.resize();
 				event.stopPropagation();
 			} );
-			
+
 			// Different browsers represent the document's scroll position differently.
 			// I would expect jQuery to deal with this in some graceful fashion, but nooo...
 			var scrollTop = $('body').scrollTop() || $('html').scrollTop() || $(window).scrollTop();
@@ -116,7 +116,7 @@ $( function() {
 				this.floatNav = true;
 			}
 		},
-		
+
 		resize: function() {
 			// set the width of the floating bar when the window resizes, if it's floating.
 			// the left nav is 176 pixels
@@ -124,7 +124,7 @@ $( function() {
 			// border is 2 pixels
 			$( '#mwe-pt-list-control-nav' ).css( 'width', $(window).width() - 176 - 16 - 2 + "px" );
 		},
-		
+
 		toggleFilterMenu: function( action ) {
 			var _this = this;
 			if( (action && action == 'close') || this.filterMenuVisible ) {
@@ -149,12 +149,12 @@ $( function() {
 					e.stopPropagation();
 				} );
 
-				this.filterMenuVisible = 1;				
+				this.filterMenuVisible = 1;
 			}
 		},
-		
+
 		// sync the filters with the contents of the menu
-		filterSync: function() {			
+		filterSync: function() {
 			// fetch the values from the menu
 			var apiParams = {};
 			if( $('#mwe-pt-filter-namespace').val() ) {
@@ -165,7 +165,7 @@ $( function() {
 			if( $('#mwe-pt-filter-reviewed-edits').prop('checked') ) {
 				apiParams['showreviewed'] = '1';
 			}
-			
+
 			if( $('#mwe-pt-filter-nominated-for-deletion').prop('checked') ) {
 				apiParams['showdeleted'] = '1';
 			}
@@ -177,7 +177,7 @@ $( function() {
 			if( $('#mwe-pt-filter-redirects').prop('checked') ) {
 				apiParams['showredirs'] = '1';
 			}
-			
+
 			if( $('#mwe-pt-filter-user-selected').prop('checked') && $('#mwe-pt-filter-user').val() ) {
 				apiParams['username'] = $('#mwe-pt-filter-user').val();
 			}
@@ -214,7 +214,7 @@ $( function() {
 			this.menuSync(); // make sure the menu is now up-to-date.
 			this.render();
 		},
-		
+
 		// sync the menu with the contents of the filters
 		menuSync: function() {
 			this.newFilterStatus = [];
@@ -230,9 +230,9 @@ $( function() {
 				} else {
 					nsText = mw.config.get( 'wgFormattedNamespaces' )[ns];
 				}
-				this.newFilterStatus.push( gM( 'pagetriage-filter-stat-namespace', nsText ) );	
+				this.newFilterStatus.push( gM( 'pagetriage-filter-stat-namespace', nsText ) );
 			}
-			
+
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-reviewed-edits' ), 'showreviewed', 'pagetriage-filter-stat-reviewed');
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-nominated-for-deletion' ), 'showdeleted', 'pagetriage-filter-stat-nominated-for-deletion');
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-bot-edits' ), 'showbots', 'pagetriage-filter-stat-bots');
@@ -261,7 +261,7 @@ $( function() {
 				$( '#mwe-pt-filter-all' ).prop( 'checked', true );
 			}
 		},
-		
+
 		menuCheckboxUpdate: function( $checkbox, param, message ) {
 			// update a checkbox in the menu with data from the model.
 			$checkbox.prop( 'checked', this.model.getParam( param )=="1"?true:false );

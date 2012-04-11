@@ -25,7 +25,7 @@
 		callback: function( data ) {
 			$( '.mw-pagetriage-markpatrolled' ).html( 
 				data.error ? 
-					mw.msg( 'pagetriage-mark-as-reviewed-error' ) : 
+					mw.msg( 'pagetriage-mark-as-reviewed-error' ) :
 					mw.msg( 'pagetriage-reviewed' ) 
 			);
 		}

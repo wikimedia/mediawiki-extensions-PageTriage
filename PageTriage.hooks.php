@@ -40,7 +40,7 @@ class PageTriageHooks {
 	public static function onNewRevisionFromEditComplete( $article, $rev, $baseID, $user ) {
 		$prev = $rev->getPrevious();
 		if ( $prev && !$article->isRedirect() && $article->isRedirect( $prev->getRawText() ) ) {
-			self::addToPageTriageQueue( $article->getId(), $article->mTitle, $user );	
+			self::addToPageTriageQueue( $article->getId(), $article->mTitle, $user );
 		}
 		return true;
 	}
@@ -123,7 +123,7 @@ class PageTriageHooks {
 		// Without autopatrol right, we consider the system updates the triage status to '0' or adds a brand new
 		// record with '0' triage status to the queue, hence we should not pass a user for logging
 		if ( $patrolled ) {
-			$pageTriage->addToPageTriageQueue( '1', $user );	
+			$pageTriage->addToPageTriageQueue( '1', $user );
 		} else {
 			$pageTriage->addToPageTriageQueue( '0' );
 		}
@@ -183,7 +183,7 @@ class PageTriageHooks {
 			$msg= wfMessage( 'pagetriage-reviewed' )->escaped();
 		} else {
 			// Do nothing as this page is not in PageTriage queue
-			return true;	
+			return true;
 		}
 
 		$wgOut->addModules( array('ext.pageTriage.article') );
@@ -194,7 +194,7 @@ class PageTriageHooks {
 
 		return true;
 	}
-	
+
 	/**
 	 * Sync records from patrol queue to triage queue 
 	 *

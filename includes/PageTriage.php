@@ -55,7 +55,7 @@ class PageTriage {
 			'ptrp_reviewed' => $reviewed,
 			'ptrp_timestamp' => $res->creation_date
 		);
-		
+
 		$dbw->insert( 'pagetriage_page', $row, __METHOD__, array( 'IGNORE' ) );
 
 		$this->mReviewed = $reviewed;
@@ -63,10 +63,10 @@ class PageTriage {
 		if ( !is_null( $user ) && !$user->isAnon() ) {
 			$this->logUserTriageAction( $user );
 		}
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * set the triage status of an article in pagetriage queue
 	 * @param $reviewed string - '1'/'0'
@@ -78,7 +78,7 @@ class PageTriage {
 		if ( !in_array( $reviewed, array( '1', '0') ) ) {
 			$reviewed = '0';
 		}
-		
+
 		if ( !$this->retrieve() || $this->mReviewed == $reviewed ) {
 			return;
 		}
@@ -108,7 +108,7 @@ class PageTriage {
 		$articleMetadata = new ArticleMetadata( array( $this->mPageId ) );
 		$articleMetadata->flushMetadataFromCache();
 	}
-	
+
 	/**
 	 * Set the deleted status
 	 */
@@ -127,7 +127,7 @@ class PageTriage {
 			__METHOD__ 
 		);
 	}
-	
+
 	/**
 	 * Load a page triage record
 	 * @return bool
@@ -156,16 +156,16 @@ class PageTriage {
 		$this->mLoaded = true;
 		return true;
 	}
-	
+
 	public function retrieveTriageLog() {
 		// get the triage log	
 	}
-	
+
 	public function loadMetadata() {
 		$metaData = new ArticleMetadata( array( $this->mPageId ) );
 		$this->mMetadata = $metaData->getMetadata();	
 	}
-	
+
 	/**
 	 * Get the metadata for this page
 	 * @return array
@@ -177,7 +177,7 @@ class PageTriage {
 
 		return $this->mMetadata;
 	}
-	
+
 	/**
 	 * Log the user triage action
 	 * @param $user User
@@ -191,7 +191,7 @@ class PageTriage {
 			'ptrl_reviewed' => $this->mReviewed,
 			'ptrl_timestamp' => $dbw->timestamp( wfTimestampNow() )
 		);
-		
+
 		$row['ptrl_id'] = $dbw->nextSequenceValue( 'pagetriage_log_ptrl_id' );
 		$dbw->insert( 'pagetriage_log', $row, __METHOD__ );
 	}

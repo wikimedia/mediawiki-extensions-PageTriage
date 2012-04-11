@@ -139,7 +139,5 @@ $messages['qqq'] = array(
 	'pagetriage-filter-stat-non-autoconfirmed' => 'Status display component for articles by non-autoconfirmed editors',
 	'pagetriage-filter-stat-blocked' => 'Status display component for articles by blocked users',
 	'pagetriage-filter-stat-username' => 'Status display component for filter by username. $1 is the username.',
-	
 
-	
 );

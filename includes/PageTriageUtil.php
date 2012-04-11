@@ -131,7 +131,7 @@ class PageTriageUtil {
 
 		return $topTriager;
 	}
-	
+
 	/**
 	 * Get the number of reviewed articles in last week
 	 * @return int
@@ -158,14 +158,14 @@ class PageTriageUtil {
 		if ( $res ) {
 			$reviewedArticleNum = $res->num;
 		} else {
-			$reviewedArticleNum = 0;	
+			$reviewedArticleNum = 0;
 		}
 
 		$wgMemc->set( $key, $reviewedArticleNum, 6 * 60 * 60 );
 
 		return $reviewedArticleNum;
 	}
-	
+
 	/**
 	 * Calculate the age of unreviewed articles by percentile
 	 * @param $percentile int
@@ -189,7 +189,7 @@ class PageTriageUtil {
 		} else {
 			$order = 'DESC';
 		}
-		
+
 		$start = floor( ( $percentile / 100 ) * $count ) - 1;
 		
 		if ( $start < 0 ) {
@@ -212,7 +212,7 @@ class PageTriageUtil {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Check the existance of user page and talk page for a list of users
 	 * @param $users array - contains user_name db keys
@@ -252,7 +252,7 @@ class PageTriageUtil {
 				array( 'page_title' => array_keys( $title ), 'page_namespace' => array( NS_USER, NS_USER_TALK ) ),
 				__METHOD__
 			);
-			
+
 			$dataToCache = array();
 			foreach ( $res as $row ) {
 				$user = $title[$row->page_title];

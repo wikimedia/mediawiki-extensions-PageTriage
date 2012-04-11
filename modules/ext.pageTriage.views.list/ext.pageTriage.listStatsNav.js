@@ -1,6 +1,6 @@
 $( function() {
 	// statistics bar
-	
+
 	mw.pageTriage.ListStatsNav = Backbone.View.extend( {
 		tagName: "div",
 		template: _.template( $( "#listStatsNavTemplate" ).html() ),
@@ -9,7 +9,7 @@ $( function() {
 		initialize: function( options ) {
 			var _this = this;
 			this.eventBus = options.eventBus;
-			
+
 			// make a floating bottom navbar
 			$.waypoints.settings.scrollThrottle = 30;
 			$( '#mwe-pt-list-stats-nav-anchor' ).waypoint( function( event, direction ) {
@@ -18,12 +18,12 @@ $( function() {
 
 					_this.resize();
 				}
-				
+
 				event.stopPropagation();
 			}, {
 				offset: '100%'  // bottom of page
 			});
-			
+
 			// do things that need doing on window resize
 			$( window ).resize( _.debounce( _this.resize, 100 ) );
 
@@ -32,7 +32,7 @@ $( function() {
 			this.eventBus.bind( "articleListChange", function() {
 				_this.setPosition();
 			} );
-			
+
 			// set the navbar's initial size
 			this.resize();
 			$.waypoints('refresh');
@@ -44,13 +44,13 @@ $( function() {
 			$( "#mwe-pt-list-stats-nav-content" ).html( this.template( this.model.toJSON() ) );
 			
 			this.setPosition();
-			
+
 			// broadcast the stats in case any other views want to display bits of them.
 			// (the control view displays a summary)
 			this.eventBus.trigger( 'renderStats', this.model );
 			return this;
 		},
-		
+
 		setPosition: function() {
 			if( $( '#mwe-pt-list-stats-nav-anchor' ).offset().top < $.waypoints('viewportHeight') ) {
 				// turn off floating nav, bring the bar back into the list.
@@ -62,7 +62,7 @@ $( function() {
 				this.floatNav = true;
 			}
 		},
-		
+
 		resize: function() {
 			// set the width of the floating bar when the window resizes, if it's floating.
 			// the left nav is 176 pixels

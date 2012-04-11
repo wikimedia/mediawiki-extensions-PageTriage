@@ -19,7 +19,7 @@ class ApiPageTriageList extends ApiBase {
 			// fetch metadata for those pages
 			$articleMetadata = new ArticleMetadata( $pages );
 			$metaData = $articleMetadata->getMetadata();
-			
+
 			// Sort data according to page order returned by our query. Also convert it to a 
 			// slightly different format that's more Backbone-friendly.
 			foreach ( $pages as $page ) {
@@ -57,7 +57,7 @@ class ApiPageTriageList extends ApiBase {
 		// Start building the massive filter which includes meta data
 		$tables	  = array( 'pagetriage_page', 'page' );
 		$conds    = array( 'ptrp_page_id = page_id' );
-		
+
 		// Include reviewed
 		if ( !$opts['showreviewed'] ) {
 			$conds['ptrp_reviewed'] = 0;
@@ -69,7 +69,7 @@ class ApiPageTriageList extends ApiBase {
 		// Include marked for deletion
 		if ( !$opts['showdeleted'] ) {
 			$conds['ptrp_deleted'] = 0;
-		}		
+		}
 		// Show by namespace
 		if ( isset( $opts['namespace'] ) ) {
 			$conds['page_namespace'] = $opts['namespace'];
@@ -111,7 +111,7 @@ class ApiPageTriageList extends ApiBase {
 
 		return $pages;
 	}
-	
+
 	private static function buildTagQuery( $opts ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$tagConds = '';
@@ -184,16 +184,16 @@ class ApiPageTriageList extends ApiBase {
 				ApiBase::PARAM_TYPE => 'integer',
 			),
 			'no_category' => array(
-				ApiBase::PARAM_TYPE => 'boolean',	
+				ApiBase::PARAM_TYPE => 'boolean',
 			),
 			'no_inbound_links' => array(
-				ApiBase::PARAM_TYPE => 'boolean',	
+				ApiBase::PARAM_TYPE => 'boolean',
 			),
 			'non_autoconfirmed_users' => array(
-				ApiBase::PARAM_TYPE => 'boolean',	
+				ApiBase::PARAM_TYPE => 'boolean',
 			),
 			'blocked_users' => array(
-				ApiBase::PARAM_TYPE => 'boolean',	
+				ApiBase::PARAM_TYPE => 'boolean',
 			),
 			'username' => array(
 				ApiBase::PARAM_TYPE => 'user',

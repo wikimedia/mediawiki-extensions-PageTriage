@@ -1,12 +1,12 @@
 $( function() {
 	// view for the article list
-	
+
 	// create an event aggregator
 	var eventBus = _.extend( {}, Backbone.Events );
 
 	// instantiate the collection of articles
 	var articles = new mw.pageTriage.ArticleList( { eventBus: eventBus } );
-	
+
 	// grab pageTriage statistics
 	var stats = new mw.pageTriage.Stats( { eventBus: eventBus } );
 
@@ -45,7 +45,7 @@ $( function() {
 			var controlNav = new mw.pageTriage.ListControlNav( { eventBus: this.eventBus, model: articles } );
 			controlNav.render();
 		},
-		
+
 		// make the article list infinitely scrolling
 		initializeInfiniteScrolling: function() {
 			var _this = this;
@@ -60,7 +60,7 @@ $( function() {
 			$( '#mwe-pt-list-more' ).empty();
 			$( '#mwe-pt-list-more' ).append( $.createSpinner( 'more-spinner' ) );
 		},
-		
+
 		// load more method for infinite scrolling
 		automaticLoadMore: function() {
 			var _this = this;
@@ -85,7 +85,7 @@ $( function() {
 				}
 			} );
 		},
-		
+
 		// manual load more method (i.e. infinite scrolling turned off)
 		manualLoadMore: function() {
 			var _this = this;
@@ -112,7 +112,7 @@ $( function() {
 				}
 			} );
 		},
-		
+
 		// add stats data to the navigation
 		addStats: function( stats ) {
 			var statsNav = new mw.pageTriage.ListStatsNav( { eventBus: this.eventBus, model: stats } );
@@ -140,7 +140,7 @@ $( function() {
 		// add all the items in the articles collection
 		// this only gets executed when the article collection list is reset
 		addAll: function() {
-			
+
 			// remove the spinner/wait message and any previously displayed articles before loading
 			// new articles
 			$( '#mwe-pt-list-view' ).empty();
@@ -148,7 +148,7 @@ $( function() {
 			// load the new articles
 			articles.forEach( this.addOne, this );
 			$( '#mwe-pt-list-stats-nav' ).css( 'border-top', 'none' );
-			
+
 			// if there are more articles that can be loaded, set up loading machanism
 			if ( articles.moreToLoad ) {
 				if ( mw.config.get( 'wgPageTriageInfiniteScrolling' ) ) {
@@ -160,7 +160,7 @@ $( function() {
 			} else {
 				$( '#mwe-pt-list-more' ).hide();
 			}
-			
+
 			$.waypoints( 'refresh' );
 			this.eventBus.trigger( 'articleListChange' );
 	    }

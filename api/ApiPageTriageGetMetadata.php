@@ -1,7 +1,7 @@
 <?php
 
 class ApiPageTriageGetMetadata extends ApiBase {
-	
+
 	public function execute() {
 		global $wgPageTriagePagesPerRequest;
 
@@ -10,7 +10,7 @@ class ApiPageTriageGetMetadata extends ApiBase {
 		if ( count( $params['page_id'] ) > $wgPageTriagePagesPerRequest ) {
 			$this->dieUsage( 'Too many pages in the request', 'exceed-page-limit' );
 		}
-		
+
 		$articleMetadata = new ArticleMetadata( $params['page_id'] );
 		$metaData = $articleMetadata->getMetadata();
 

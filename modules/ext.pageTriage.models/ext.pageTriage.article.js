@@ -8,11 +8,11 @@ $( function() {
 				title: 'Empty Article',
 				pageid: ''
 			},
-			
+
 			initialize: function() {
 				this.bind( 'change', this.formatMetadata, this );
 			},
-			
+
 			formatMetadata: function ( article ) {
 				var creation_date_parsed = Date.parseExact( article.get( 'creation_date' ), 'yyyyMMddHHmmss' );
 				article.set('creation_date_pretty', creation_date_parsed.toString( gM( 'pagetriage-creation-dateformat' ) ) );
@@ -24,7 +24,7 @@ $( function() {
 				} else {
 					article.set( 'user_creation_date_pretty', '');
 				}
-								
+
 				var userName = article.get( 'user_name' );
 				if( userName ) {
 					article.set( 'user_title', new mw.Title( userName, mw.config.get('wgNamespaceIds')['user'] ) );
@@ -39,13 +39,13 @@ $( function() {
 
 		} )
 	};
-	
+
 	// can't include this in the declaration above because it references the
 	// object created therein.
 	mw.pageTriage.ArticleList = Backbone.Collection.extend( {
 		moreToLoad: true,
 		model: mw.pageTriage.Article,
-		
+
 		apiParams: {
 			namespace: 0,
 			limit: 20,
@@ -60,12 +60,12 @@ $( function() {
 			blocked_users: 1,
 			*/
 		},
-		
+
 		initialize: function( options ) {
 			this.eventBus = options.eventBus;
 			this.eventBus.bind( "filterSet", this.setParams );
 		},
-		
+
 		url: function() {
 			var url = mw.util.wikiScript( 'api' ) + '?action=pagetriagelist&format=json&' + $.param( this.apiParams );
 			return url;
@@ -82,7 +82,7 @@ $( function() {
 				// We have no more pages to load.
 				this.moreToLoad = false;
 			}
-			
+
 			// Check if user pages exist or should be redlinks
 			for ( var title in response.pagetriagelist.userpagestatus ) {
 				mw.Title.exist.set( title );
@@ -90,19 +90,19 @@ $( function() {
 			// extract the useful bits of json.
 			return response.pagetriagelist.pages;
 		},
-		
-		setParams: function( apiParams ) {			
+
+		setParams: function( apiParams ) {
 			this.apiParams = apiParams;
 		},
-		
-		setParam: function( paramName, paramValue ) {			
+
+		setParam: function( paramName, paramValue ) {
 			this.apiParams[paramName] = paramValue;
 		},
 		
 		getParam: function( key ) {
 			return this.apiParams[key];
 		}
-		
+
 	} );
-	
+
 } );

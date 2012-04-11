@@ -1,7 +1,7 @@
 <?php
 
 class ApiPageTriageAction extends ApiBase {
-	
+
 	public function execute() {
 		global $wgUser;
 
@@ -10,7 +10,7 @@ class ApiPageTriageAction extends ApiBase {
 		$article = Article::newFromID( $params['pageid'] );
 		if ( $article ) {
 			if ( !$article->getTitle()->quickUserCan( 'patrol' ) ) {
-				$this->permissionError();	
+				$this->permissionError();
 			}
 		} else {
 			$this->pageError();
@@ -28,11 +28,11 @@ class ApiPageTriageAction extends ApiBase {
 	}
 
 	private function permissionError() {
-		$this->dieUsage( "You don't have permission to do that", 'permission-denied' );	
+		$this->dieUsage( "You don't have permission to do that", 'permission-denied' );
 	}
 
 	private function pageError() {
-		$this->dieUsage( "The page specified does not exist", 'bad-page' );	
+		$this->dieUsage( "The page specified does not exist", 'bad-page' );
 	}
 
 	public function needsToken() {
