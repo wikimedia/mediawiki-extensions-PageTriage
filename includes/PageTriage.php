@@ -22,12 +22,15 @@ class PageTriage {
 
 	/**
 	 * Add page to page triage queue
+	 * @param $reviewed string '1'/'0'
+	 * @param $user User
+	 * @param $fromRc bool
 	 * @return bool
 	 */
-	public function addToPageTriageQueue() {
+	public function addToPageTriageQueue( $reviewed = '0', User $user = null, $fromRc = false ) {
 		if ( $this->retrieve() ) {
-			if ( $this->mReviewed ) {
-				$this->setTriageStatus( '0' );
+			if ( $this->mReviewed != $reviewed ) {
+				$this->setTriageStatus( $reviewed, $user, $fromRc );
 			}
 			return true;
 		}
@@ -49,12 +52,18 @@ class PageTriage {
 
 		$row = array(
 			'ptrp_page_id' => $this->mPageId,
-			'ptrp_reviewed' => '0',
+			'ptrp_reviewed' => $reviewed,
 			'ptrp_timestamp' => $res->creation_date
 		);
 		
 		$dbw->insert( 'pagetriage_page', $row, __METHOD__, array( 'IGNORE' ) );
 
+		$this->mReviewed = $reviewed;
+
+		if ( !is_null( $user ) && !$user->isAnon() ) {
+			$this->logUserTriageAction( $user );
+		}
+		
 		return true;
 	}
 	
@@ -95,7 +104,7 @@ class PageTriage {
 			$this->logUserTriageAction( $user );
 		}
 		$dbw->commit();
-		// flush the cache so cached triage status is updated
+		// flush the cache so triage status is updated
 		$articleMetadata = new ArticleMetadata( array( $this->mPageId ) );
 		$articleMetadata->flushMetadataFromCache();
 	}

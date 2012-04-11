@@ -15,7 +15,7 @@ class PageTriageHooks {
 		$pageId = $newTitle->getArticleID();
 
 		if ( $newTitle->getNamespace() === NS_MAIN ) {
-			self::addToPageTriageQueue( $pageId );
+			self::addToPageTriageQueue( $pageId, $newTitle );
 		}
 
 		$acp = ArticleCompileProcessor::newFromPageId( array( $pageId ) );
@@ -40,7 +40,7 @@ class PageTriageHooks {
 	public static function onNewRevisionFromEditComplete( $article, $rev, $baseID, $user ) {
 		$prev = $rev->getPrevious();
 		if ( $prev && !$article->isRedirect() && $article->isRedirect( $prev->getRawText() ) ) {
-			self::addToPageTriageQueue( $article->getId() );	
+			self::addToPageTriageQueue( $article->getId(), $article->mTitle, $user );	
 		}
 		return true;
 	}
@@ -61,7 +61,7 @@ class PageTriageHooks {
 	 * @return bool
 	 */
 	public static function onArticleInsertComplete( $article, $user, $text, $summary, $isMinor, $isWatch, $section, $flags, $revision ) {
-		self::addToPageTriageQueue( $article->getId() );	
+		self::addToPageTriageQueue( $article->getId(), $article->mTitle, $user );	
 
 		return true;
 	}
@@ -111,9 +111,23 @@ class PageTriageHooks {
 	/**
 	 * Add page to page triage queue
 	 */
-	private static function addToPageTriageQueue( $pageId ) {
+	private static function addToPageTriageQueue( $pageId, $title, $user = null ) {
+		global $wgUser, $wgUseRCPatrol, $wgUseNPPatrol;
+		
+		$user = is_null( $user ) ? $wgUser : $user;
+
+		$patrolled = ( $wgUseRCPatrol || $wgUseNPPatrol ) && !count(
+					$title->getUserPermissionsErrors( 'autopatrol', $user ) );
+
 		$pageTriage = new PageTriage( $pageId );
-		$pageTriage->addToPageTriageQueue();
+		// Without autopatrol right, we consider the system updates the triage status to '0' or adds a brand new
+		// record with '0' triage status to the queue, hence we should not pass a user for logging
+		if ( $patrolled ) {
+			$pageTriage->addToPageTriageQueue( '1', $user );	
+		} else {
+			$pageTriage->addToPageTriageQueue( '0' );
+		}
+		
 	}
 
 	/**
@@ -195,9 +209,7 @@ class PageTriageHooks {
 
 		if ( $rc ) {
 			$pt = new PageTriage( $rc->getAttribute( 'rc_cur_id' ) );
-			if ( $pt->addToPageTriageQueue() ) {
-				$pt->setTriageStatus( '1', $user, true );	
-			}
+			$pt->addToPageTriageQueue( '1', $user, true );
 		}
 
 		return true;
