@@ -64,10 +64,11 @@ $( function() {
 			var lastArticle = articles.last(1);
 			if( 0 in lastArticle ) {
 				articles.apiParams.offset = lastArticle[0].attributes.creation_date;
+				articles.apiParams.pageoffset = lastArticle[0].attributes.pageid;
 			} else {
 				articles.apiParams.offset = 0;
+				articles.apiParams.pageoffset = 0;
 			}
-			articles.apiParams.pageoffset = lastArticle[0].attributes.pageid;
 			articles.fetch( {
 				add: true,
 				success: function() {
@@ -90,10 +91,11 @@ $( function() {
 			var lastArticle = articles.last(1);
 			if( 0 in lastArticle ) {
 				articles.apiParams.offset = lastArticle[0].attributes.creation_date;
+				articles.apiParams.pageoffset = lastArticle[0].attributes.pageid;
 			} else {
 				articles.apiParams.offset = 0;
+				articles.apiParams.pageoffset = 0;
 			}
-			articles.apiParams.pageoffset = lastArticle[0].attributes.pageid;
 			articles.fetch( {
 				add: true,
 				success: function() {

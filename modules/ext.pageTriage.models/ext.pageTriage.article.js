@@ -77,6 +77,7 @@ $( function() {
 			if ( response.pagetriagelist.pages && response.pagetriagelist.pages.length > this.apiParams.limit ) {
 				// Remove the extra page from the list
 				response.pagetriagelist.pages.pop();
+				this.moreToLoad = true;
 			} else {
 				// We have no more pages to load.
 				this.moreToLoad = false;
