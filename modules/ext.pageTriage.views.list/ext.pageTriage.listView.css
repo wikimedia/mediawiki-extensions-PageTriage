@@ -10,8 +10,8 @@
 	background-color: #E8F2F8;
 	margin: 0;
 	padding: 0.4em;
-	border-right: 1px solid #ccc;
-	border-left: 1px solid #ccc;
+	border: 1px solid #ccc;
+	border-top: none;
 	min-height: 21px;
 }
 

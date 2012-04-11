@@ -3,6 +3,7 @@
 }
 
 .stickyBottom #mwe-pt-list-stats-nav {
+	border-top: 1px solid #ccc !important;
 	position: fixed;
 	bottom: 0;
 	left: 160px;

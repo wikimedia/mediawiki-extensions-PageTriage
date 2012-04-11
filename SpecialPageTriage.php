@@ -24,7 +24,7 @@ class SpecialPageTriage extends SpecialPage {
 	 * @param $sub string The subpage, if any
 	 */
 	public function execute( $sub ) {
-		global $wgPageTriageInfiniteScrolling;
+		global $wgRequest, $wgPageTriageInfiniteScrolling;
 		$out = $this->getOutput();
 		
 		// TODO: check user permissions, make sure they're logged in and have the pagepatrol userright
@@ -37,17 +37,24 @@ class SpecialPageTriage extends SpecialPage {
 		// Output the title of the page
 		$out->setPageTitle( wfMessage( 'pagetriage' ) );
 		
-		// Set whether or not to do infinite scrolling
+		// Set whether or not to do infinite scrolling based on config variable
 		if ( is_bool( $wgPageTriageInfiniteScrolling ) ) {
 			// Convert to string
 			$infiniteScroll = $wgPageTriageInfiniteScrolling ? "true" : "false";
 		} else {
 			$infiniteScroll = $wgPageTriageInfiniteScrolling;
 		}
+		
+		// Allow override from query string parameter
+		if ( $wgRequest->getVal( 'infinite' ) ) {
+			$infiniteScroll = true;
+		}
+		
+		// Set the infinite scrolling flag in JavaScript
 		$out->addScript( "<script type=\"text/javascript\">mw.config.set({\"wgPageTriageInfiniteScrolling\":" . 
 			$infiniteScroll . "});</script>" );
 
-		// load the JS
+		// Load the JS
 		$out->addModules( array( 'ext.pageTriage.external', 'ext.pageTriage.models', 'ext.pageTriage.views.list' ) );
 				
 		// This will hold the HTML for the triage interface

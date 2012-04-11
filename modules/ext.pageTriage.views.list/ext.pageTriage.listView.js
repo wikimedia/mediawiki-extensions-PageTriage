@@ -46,8 +46,8 @@ $( function() {
 			controlNav.render();
 		},
 		
+		// make the article list infinitely scrolling
 		initializeInfiniteScrolling: function() {
-			// make the article list infinitely scrolling
 			var _this = this;
 			var $anchor = $( '#mwe-pt-list-load-more-anchor' );
 			opts = { offset: '100%' };
@@ -56,11 +56,15 @@ $( function() {
 					_this.automaticLoadMore();
 				}
 			}, opts );
+			// replace more link with spinner in hidden div since we'll never need the more link
+			$( '#mwe-pt-list-more' ).empty();
+			$( '#mwe-pt-list-more' ).append( $.createSpinner( 'more-spinner' ) );
 		},
 		
+		// load more method for infinite scrolling
 		automaticLoadMore: function() {
 			var _this = this;
-			$( '#mwe-pt-list-more' ).append( $.createSpinner( 'more-spinner' ) );
+			$( '#mwe-pt-list-more' ).show(); // show spinner
 			var lastArticle = articles.last(1);
 			if( 0 in lastArticle ) {
 				articles.apiParams.offset = lastArticle[0].attributes.creation_date;
@@ -72,18 +76,17 @@ $( function() {
 			articles.fetch( {
 				add: true,
 				success: function() {
-					$.removeSpinner( 'more-spinner' );
-					$( '.mwe-pt-article-row' ).last().css( 'border-bottom', 'none' );
+					$( '#mwe-pt-list-more' ).hide(); // hide spinner
 					$.waypoints( 'refresh' );
 					_this.eventBus.trigger( "articleListChange" );
 					if ( !articles.moreToLoad ) {
 						$( '#mwe-pt-list-load-more-anchor' ).waypoint( 'destroy' );
-						$( '#mwe-pt-list-more' ).hide();
 					}
 				}
 			} );
 		},
 		
+		// manual load more method (i.e. infinite scrolling turned off)
 		manualLoadMore: function() {
 			var _this = this;
 			$( '#mwe-pt-list-more-link' ).hide();
@@ -102,7 +105,6 @@ $( function() {
 					$.removeSpinner( 'more-spinner' );
 					$( '#mwe-pt-list-more-link' ).show();
 					if ( !articles.moreToLoad ) {
-						$( '.mwe-pt-article-row' ).last().css( 'border-bottom', 'none' );
 						$( '#mwe-pt-list-more' ).hide();
 					}
 					$.waypoints( 'refresh' );
@@ -121,7 +123,7 @@ $( function() {
 		addOne: function( article ) {
 			// define position, for making alternating background colors.
 			// this is added at the last minute, so it gets updated when the sort changes.
-			if(! this.position ) {
+			if( !this.position ) {
 				this.position = 0;
 			}
 			this.position++;
@@ -136,15 +138,30 @@ $( function() {
 		},
 
 		// add all the items in the articles collection
+		// this only gets executed when the article collection list is reset
 		addAll: function() {
-			$( '#mwe-pt-list-view' ).empty(); // remove the spinner before displaying.
+			
+			// remove the spinner/wait message and any previously displayed articles before loading
+			// new articles
+			$( '#mwe-pt-list-view' ).empty();
+			
+			// load the new articles
 			articles.forEach( this.addOne, this );
-			$( '#mwe-pt-list-more' ).show();
-			if ( mw.config.get( 'wgPageTriageInfiniteScrolling' ) ) {
-				$( '.mwe-pt-article-row' ).last().css( 'border-bottom', 'none' );
-				this.initializeInfiniteScrolling();
-				$( '#mwe-pt-list-more-link' ).hide();
+			$( '#mwe-pt-list-stats-nav' ).css( 'border-top', 'none' );
+			
+			// if there are more articles that can be loaded, set up loading machanism
+			if ( articles.moreToLoad ) {
+				if ( mw.config.get( 'wgPageTriageInfiniteScrolling' ) ) {
+					this.initializeInfiniteScrolling();
+				} else {
+					// Show 'More' link
+					$( '#mwe-pt-list-more' ).show();
+				}
+			} else {
+				$( '#mwe-pt-list-more' ).hide();
 			}
+			
+			$.waypoints( 'refresh' );
 			this.eventBus.trigger( 'articleListChange' );
 	    }
 
