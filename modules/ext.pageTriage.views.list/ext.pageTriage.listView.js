@@ -145,20 +145,32 @@ $( function() {
 			// new articles
 			$( '#mwe-pt-list-view' ).empty();
 			
-			// load the new articles
-			articles.forEach( this.addOne, this );
-			$( '#mwe-pt-list-stats-nav' ).css( 'border-top', 'none' );
-
-			// if there are more articles that can be loaded, set up loading machanism
-			if ( articles.moreToLoad ) {
-				if ( mw.config.get( 'wgPageTriageInfiniteScrolling' ) ) {
-					this.initializeInfiniteScrolling();
-				} else {
-					// Show 'More' link
-					$( '#mwe-pt-list-more' ).show();
+			// remove any error messages and hide the div that contains them
+			$( '#mwe-pt-list-errors' ).empty();
+			$( '#mwe-pt-list-errors' ).hide();
+			
+			// hide the 'More' div if it is visible
+			$( '#mwe-pt-list-more' ).hide();
+			
+			if ( articles.length ) {
+				// load the new articles
+				articles.forEach( this.addOne, this );
+				$( '#mwe-pt-list-stats-nav' ).css( 'border-top', 'none' );
+	
+				// if there are more articles that can be loaded, set up loading machanism
+				if ( articles.moreToLoad ) {
+					if ( mw.config.get( 'wgPageTriageInfiniteScrolling' ) ) {
+						this.initializeInfiniteScrolling();
+					} else {
+						// Show 'More' link
+						$( '#mwe-pt-list-more' ).show();
+					}
 				}
+				
 			} else {
-				$( '#mwe-pt-list-more' ).hide();
+				// show an error message
+				$( '#mwe-pt-list-errors' ).html( mw.msg( 'pagetriage-no-pages' ) );
+				$( '#mwe-pt-list-errors' ).show();
 			}
 
 			$.waypoints( 'refresh' );

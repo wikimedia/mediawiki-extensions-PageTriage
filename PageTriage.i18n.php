@@ -73,7 +73,7 @@ $messages['en'] = array(
 	'pagetriage-filter-stat-non-autoconfirmed' => 'New editors',
 	'pagetriage-filter-stat-blocked' => 'Blocked users',
 	'pagetriage-filter-stat-username' => 'Username: $1',
-	
+	'pagetriage-no-pages' => 'No pages match your criteria.',
 );
 
 /**
@@ -139,5 +139,5 @@ $messages['qqq'] = array(
 	'pagetriage-filter-stat-non-autoconfirmed' => 'Status display component for articles by non-autoconfirmed editors',
 	'pagetriage-filter-stat-blocked' => 'Status display component for articles by blocked users',
 	'pagetriage-filter-stat-username' => 'Status display component for filter by username. $1 is the username.',
-
+	'pagetriage-no-pages' => 'Message to display when no pages were retrieved',
 );
