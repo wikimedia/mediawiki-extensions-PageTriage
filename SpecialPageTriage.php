@@ -260,58 +260,10 @@ class SpecialPageTriage extends SpecialPage {
 				</script>
 				
 HTML;
-				
-		// Get the list of articles
-		//$triageInterface .= $this->getFormattedTriageList();
-		
+
 		// Output the HTML for the page
 		$out->addHtml( $triageInterface );
-		
+	
 	}
 
-	/**
-	 * Builds the list of articles to triage.
-	 * This is a list of articles and associated metadata.
-	 * @return string HTML for the list
-	 */
-	public function getFormattedTriageList() {
-		
-		// Retrieve the IDs of all the pages that match our filtering options
-		$pageList = ApiPageTriageList::getPageIds( $this->opts->getAllValues() );
-		
-		$htmlOut = '';
-		
-		if ( $pageList ) {
-			$articleMetadata = new ArticleMetadata( $pageList );
-			$metaData = $articleMetadata->getMetadata();
-			foreach ( $pageList as $pageId ) {
-				if ( isset( $metaData[$pageId] ) ) {
-					$formattedRow = $this->buildRow( $pageId, $metaData[$pageId] );
-					$htmlOut .= $formattedRow;
-				}
-			}
-		} else {
-			$htmlOut .= wfMessage( 'specialpage-empty' );
-		}
-		
-		return $htmlOut;
-	}
-	
-	/**
-	 * Builds a single row for the article list.
-	 * @param $pageId integer ID for a single page
-	 * @param $metaData array the meta data for $pageId
-	 * @return string HTML for the row
-	 */
-	protected function buildRow( $pageId, $metaData ) {
-		
-		// TODO: Build the row from metadata provided
-		return '<div>'	
-				. $pageId . ' '
-				. htmlspecialchars( $metaData['title'] ) . ' '
-				. htmlspecialchars( $metaData['user_name'] ) .
-			'</div>';
-		
-	}
-	
 }
