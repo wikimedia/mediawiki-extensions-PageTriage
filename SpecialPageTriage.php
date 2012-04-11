@@ -112,10 +112,7 @@ class SpecialPageTriage extends SpecialPage {
 								<span class="mwe-pt-creation-date">
 									<%= creation_date_pretty %>
 								</span>
-								<!--
 								<a class="mwe-pt-list-triage-button ui-button-blue" href="<%= mw.util.wikiGetlink( title ) %>"></a>
-								-->
-								<a class="mwe-pt-list-triage-button ui-button-blue" href="javascript:alert('Would load zoom interface');"></a>
 							</div>
 							<div class="mwe-pt-author">
 							<% if( typeof( user_name ) != 'undefined' ) { %>
