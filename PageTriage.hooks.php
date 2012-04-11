@@ -15,13 +15,18 @@ class PageTriageHooks {
 		$pageId = $newTitle->getArticleID();
 
 		if ( $newTitle->getNamespace() === NS_MAIN ) {
-			self::addToPageTriageQueue( $pageId, $newTitle );
-		}
+			// New record, compile all data
+			if ( self::addToPageTriageQueue( $pageId, $newTitle ) ) {
+				$component = '';
+			} else {
+				$component = 'BasicData';
+			}
 
-		$acp = ArticleCompileProcessor::newFromPageId( array( $pageId ) );
-		if ( $acp ) {
-			$acp->registerComponent( 'BasicData' );
-			$acp->compileMetadata();
+			$acp = ArticleCompileProcessor::newFromPageId( array( $pageId ) );
+			if ( $acp ) {
+				$acp->registerComponent( $component );
+				$acp->compileMetadata();
+			}
 		}
 
 		return true;
@@ -123,9 +128,9 @@ class PageTriageHooks {
 		// Without autopatrol right, we consider the system updates the triage status to '0' or adds a brand new
 		// record with '0' triage status to the queue, hence we should not pass a user for logging
 		if ( $patrolled ) {
-			$pageTriage->addToPageTriageQueue( '1', $user );
+			return $pageTriage->addToPageTriageQueue( '1', $user );
 		} else {
-			$pageTriage->addToPageTriageQueue( '0' );
+			return $pageTriage->addToPageTriageQueue( '0' );
 		}
 		
 	}
@@ -209,7 +214,13 @@ class PageTriageHooks {
 
 		if ( $rc ) {
 			$pt = new PageTriage( $rc->getAttribute( 'rc_cur_id' ) );
-			$pt->addToPageTriageQueue( '1', $user, true );
+			if ( $pt->addToPageTriageQueue( '1', $user, $fromRc = true ) ) {
+				// Compile metadata for new page triage record
+				$acp = ArticleCompileProcessor::newFromPageId( $rc->getAttribute( 'rc_cur_id' ) );
+				if ( $acp ) {
+					$acp->compileMetadata();
+				}	
+			}
 		}
 
 		return true;

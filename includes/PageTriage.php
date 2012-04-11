@@ -25,14 +25,14 @@ class PageTriage {
 	 * @param $reviewed string '1'/'0'
 	 * @param $user User
 	 * @param $fromRc bool
-	 * @return bool
+	 * @return bool - true: add new record, false: update existing record
 	 */
 	public function addToPageTriageQueue( $reviewed = '0', User $user = null, $fromRc = false ) {
 		if ( $this->retrieve() ) {
 			if ( $this->mReviewed != $reviewed ) {
 				$this->setTriageStatus( $reviewed, $user, $fromRc );
 			}
-			return true;
+			return false;
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
@@ -47,7 +47,7 @@ class PageTriage {
 		);
 
 		if ( !$res ) {
-			return false;
+			throw new MWPageTriageMissingRevisionException( 'Page missing revision!' );
 		}
 
 		$row = array(
@@ -197,3 +197,5 @@ class PageTriage {
 	}
 	
 }
+
+class PageTriageMissingRevisionException extends MWException {}

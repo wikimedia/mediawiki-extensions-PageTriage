@@ -96,6 +96,7 @@ class ArticleMetadata {
 	 * Get the metadata from cache
 	 * @param $pageId - the page id to get the cache data for, if null is provided
 	 *                  all page id in $this->mPageId will be obtained
+	 * @return array
 	 */
 	public function getMetadataFromCache( $pageId = null ) {
 		global $wgMemc;
@@ -138,7 +139,7 @@ class ArticleMetadata {
 			}
 		}
 
-		// Articles with no metadata after cache attempt
+		// Grab metadata from database after cache attempt
 		if ( $articles ) {
 			$dbr = wfGetDB( DB_SLAVE );
 
@@ -163,6 +164,7 @@ class ArticleMetadata {
 					unset( $articles[$key] );
 				}
 			}
+			// Compile the data if it is not available
 			if ( $articles ) {
 				$acp = ArticleCompileProcessor::newFromPageId( $articles );
 				if ( $acp ) {
@@ -275,9 +277,9 @@ class ArticleCompileProcessor {
 	 * @param $component string
 	 */
 	public function registerComponent( $component ) {
-		$this->defaultMode = false;
 		if ( isset( $this->component[$component] ) ) {
-			$this->component[$component] = 'on';	
+			$this->component[$component] = 'on';
+			$this->defaultMode = false;
 		}
 	}
 
