@@ -39,7 +39,12 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'PageTriage',
 	'version' => '0.1',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:PageTriage',
-	'author' => '',
+	'author' => array(
+		'Ryan Kaldari',
+		'Benny Situ',
+		'Ian Baker',
+		'Andrew Garrett',
+	),
 	'descriptionmsg' => 'pagetriage-desc',
 );
 
