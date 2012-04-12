@@ -9,15 +9,14 @@ class ArticleMetadata {
 
 	/**
 	 * @param $pageId array - list of page id
+	 * @param $validated bool - whether the page ids are validated
 	 */
-	public function __construct( array $pageId ) {
-		$pageId = self::validatePageId( $pageId );
-
-		if ( !$pageId ) {
-			throw new MWArticleMetadataMissingPageIdException( 'Missing page id' );
+	public function __construct( array $pageId, $validated = true ) {
+		if ( $validated ) {
+			$this->mPageId = $pageId;	
+		} else {
+			$this->mPageId = self::validatePageId( $pageId );
 		}
-
-		$this->mPageId = $pageId;
 	}
 
 	/**
@@ -26,38 +25,40 @@ class ArticleMetadata {
 	 * @param $pageId - the page id to be deleted
 	 */
 	public function deleteMetadata( $pageId = null ) {
-		if( is_null($pageId) ) {
+		if ( is_null( $pageId ) ) {
 			$pageId = $this->mPageId;
 		}
 
-		// $pageId can be an array or a single value.
-		$dbw  = wfGetDB( DB_MASTER );
-
-		$dbw->begin();
-		$dbw->delete(
-			'pagetriage_page_tags',
-			array( 'ptrpt_page_id' => $pageId ),
-			__METHOD__,
-			array()
-		);
-
-		$dbw->delete(
-			'pagetriage_page',
-			array( 'ptrp_page_id' => $pageId ),
-			__METHOD__,
-			array()
-		);
-
-		$dbw->delete(
-			'pagetriage_log',
-			array( 'ptrl_page_id' => $pageId ),
-			__METHOD__,
-			array()
-		);
-
-		// also remove it from the cache
-		$this->flushMetadataFromCache( $pageId );
-		$dbw->commit();
+		if ( $pageId ) {
+			// $pageId can be an array or a single value.
+			$dbw  = wfGetDB( DB_MASTER );
+	
+			$dbw->begin();
+			$dbw->delete(
+				'pagetriage_page_tags',
+				array( 'ptrpt_page_id' => $pageId ),
+				__METHOD__,
+				array()
+			);
+	
+			$dbw->delete(
+				'pagetriage_page',
+				array( 'ptrp_page_id' => $pageId ),
+				__METHOD__,
+				array()
+			);
+	
+			$dbw->delete(
+				'pagetriage_log',
+				array( 'ptrl_page_id' => $pageId ),
+				__METHOD__,
+				array()
+			);
+	
+			// also remove it from the cache
+			$this->flushMetadataFromCache( $pageId );
+			$dbw->commit();
+		}
 
 		return true;
 	}
@@ -200,7 +201,7 @@ class ArticleMetadata {
 				array( 'ptrt_tag_id', 'ptrt_tag_name' ),
 				array( ),
 				__METHOD__
-			);
+		);
 
 		foreach ( $res as $row ) {
 			$tags[$row->ptrt_tag_name] = $row->ptrt_tag_id;
@@ -210,24 +211,52 @@ class ArticleMetadata {
 	}
 
 	/**
-	 * Typecast the value in page id array to int
+	 * Typecast the value in page id array to int and verify that it's
+	 * in page triage queue
 	 * @param $pageIds array
 	 * @return array
 	 */
 	public static function validatePageId( array $pageIds ) {
+		static $cache = array();
+
 		$cleanUp = array();
-		foreach ( $pageIds as $val ) {
+		foreach ( $pageIds as $key => $val ) {
 			$casted = intval( $val );
 			if ( $casted ) {
-				$cleanUp[] = $casted;
+				if ( isset( $cache[$casted] ) ) {
+					if ( $cache[$casted] ) {
+						$cleanUp[] = $casted;
+					}
+					unset( $pageIds[$key] );
+				} else {
+					$pageIds[$key] = $casted;
+					$cahce[$casted] = false;
+				}
+			} else {
+				unset( $pageIds[$key] );
 			}
 		}
+		
+		if ( $pageIds ) {
+			$dbr = wfGetDB( DB_SLAVE );
+
+			$res = $dbr->select(
+					array( 'pagetriage_page' ),
+					array( 'ptrp_page_id' ),
+					array( 'ptrp_page_id' => $pageIds ),
+					__METHOD__
+			);
+
+			foreach ( $res as $row ) {
+				$cleanUp[] = $row->ptrp_page_id;
+				$cache[$row->ptrp_page_id] = true;
+			}
+		}
+		
 		return $cleanUp;
 	}
 
 }
-
-class MWArticleMetadataMissingPageIdException extends MWException {}
 
 /**
  * Compiling metadata for articles
@@ -242,7 +271,7 @@ class ArticleCompileProcessor {
 	/**
 	 * @param $pageId array - list of page id
 	 */
-	private function __construct( array $pageId ) {
+	private function __construct( $pageId ) {
 		$this->mPageId = $pageId;
 
 		$this->component = array(
@@ -260,11 +289,13 @@ class ArticleCompileProcessor {
 	/**
 	 * Factory for creating an instance
 	 * @param $pageId array
+	 * @param $validated bool - whether page ids are validated
 	 * @return ArticleCompileProcessor|false
 	 */
-	public static function newFromPageId( $pageId = array() ) {
-		$pageId = ArticleMetadata::validatePageId( $pageId );
-
+	public static function newFromPageId( array $pageId, $validated = true ) {
+		if ( !$validated ) {
+			$pageId = ArticleMetadata::validatePageId( $pageId );
+		}
 		if ( $pageId ) {
 			return new ArticleCompileProcessor( $pageId );
 		} else {

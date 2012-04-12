@@ -9,7 +9,6 @@ class PageTriage {
 	protected $mDeleted;
 
 	// additional property
-	protected $mMetadata;
 	protected $mLoaded;
 
 	/**
@@ -155,27 +154,6 @@ class PageTriage {
 		$this->mDeleted = $res->ptrp_deleted;
 		$this->mLoaded = true;
 		return true;
-	}
-
-	public function retrieveTriageLog() {
-		// get the triage log	
-	}
-
-	public function loadMetadata() {
-		$metaData = new ArticleMetadata( array( $this->mPageId ) );
-		$this->mMetadata = $metaData->getMetadata();	
-	}
-
-	/**
-	 * Get the metadata for this page
-	 * @return array
-	 */
-	public function getMetadata() {
-		if ( is_null( $this->mMetadata ) ) {
-			$this->loadMetadata();
-		}
-
-		return $this->mMetadata;
 	}
 
 	/**
