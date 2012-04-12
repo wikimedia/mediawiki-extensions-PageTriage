@@ -10,7 +10,15 @@ $( function() {
 	// overall toolbar view
 	// currently, this is the main application view.
 	mw.pageTriage.ToolbarView = Backbone.View.extend( {
-		render: function() {
+		initialize: function() {
+			// decide here which tools to put on the bar, based on namespace, status, etc.
+			// create instances of each of those tools
+			
+		},
+		
+		render: function() {			
+			// build the bar and insert into the page.
+			
 			console.log( 'would insert toolbar on this page' );
 		}
 		
