@@ -18,14 +18,6 @@ class ApiPageTriageGetMetadata extends ApiBase {
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
-	public function needsToken() {
-		return true;
-	}
-
-	public function getTokenSalt() {
-		return '';
-	}
-
 	public function getAllowedParams() {
 		return array(
 			'page_id' => array(
@@ -34,14 +26,6 @@ class ApiPageTriageGetMetadata extends ApiBase {
 				ApiBase::PARAM_ISMULTI => true,
 			),
 		);
-	}
-
-	public function mustBePosted() {
-		return true;
-	}
-
-	public function isWriteMode() {
-		return true;
 	}
 
 	public function getVersion() {

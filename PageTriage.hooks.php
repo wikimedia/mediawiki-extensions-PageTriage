@@ -233,4 +233,16 @@ class PageTriageHooks {
 		$out->addModules( 'ext.pageTriage.startup' );
 		return true;
 	}
+	
+	/**
+	 * Update Article metadata when a user gets blocked 
+	 *
+	 * 'BlockIpComplete': after an IP address or user is blocked
+	 * $block: the Block object that was saved
+	 * $performer: the user who did the block (not the one being blocked)
+	 */
+	public static function onBlockIpComplete( $block, $performer ) {
+		PageTriageUtil::updateMetadataOnBlockChange( $block );
+		return true;
+	}
 }

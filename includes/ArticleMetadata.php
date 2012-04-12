@@ -62,6 +62,31 @@ class ArticleMetadata {
 
 		return true;
 	}
+	
+	/**
+	 * Update the metadata in cache
+	 * @param $update array - key => value pair for update
+	 * @param $pageId int
+	 */
+	public function updateMetadataInCache( $update, $pageId = null ) {
+		global $wgMemc;
+
+		$keyPrefix = $this->memcKeyPrefix();
+
+		if ( $pageId ) {
+			$pageId = array( $pageId );
+		} else {
+			$pageId = $this->mPageId;
+		}
+		
+		foreach ( $pageId as $val ) {
+			$data =  $wgMemc->get( $keyPrefix . '-' . $val );
+			if ( $data !== false ) {
+				$wgMemc->replace( $keyPrefix . '-' . $val, array_merge( $data, $update ), 86400 );
+			}
+		}
+		
+	}
 
 	/**
 	 * Flush the metadata in cache
@@ -236,7 +261,7 @@ class ArticleMetadata {
 				unset( $pageIds[$key] );
 			}
 		}
-		
+
 		if ( $pageIds ) {
 			$dbr = wfGetDB( DB_SLAVE );
 
@@ -252,7 +277,7 @@ class ArticleMetadata {
 				$cache[$row->ptrp_page_id] = true;
 			}
 		}
-		
+
 		return $cleanUp;
 	}
 

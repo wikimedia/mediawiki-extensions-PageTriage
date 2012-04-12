@@ -101,6 +101,7 @@ $wgHooks['ArticleViewHeader'][] = 'PageTriageHooks::onArticleViewHeader';
 $wgHooks['ArticleDeleteComplete'][] = 'PageTriageHooks::onArticleDeleteComplete';
 $wgHooks['MarkPatrolledComplete'][] = 'PageTriageHooks::onMarkPatrolledComplete';
 $wgHooks['BeforePageDisplay'][] = 'PageTriageHooks::beforePageDisplay';
+$wgHooks['BlockIpComplete'][] = 'PageTriageHooks::onBlockIpComplete';
 
 $wgPageTriageMarkPatrolledLinkExpiry = 3600 * 24 * 30; // 30 days
 

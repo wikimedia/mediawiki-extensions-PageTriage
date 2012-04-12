@@ -283,6 +283,47 @@ class PageTriageUtil {
 		return $return;
 	}
 
+	/**
+	 * Update user metadata when a user's block status is updated
+	 * @param $block Block - Block object
+	 * @param $status int 1/0
+	 */
+	public static function updateMetadataOnBlockChange( $block, $status = 1 ) {
+		// do instant update if the number of page to be updated is less or equal to
+		// the number below, otherwise, delay this to the cron
+		$maxNumToProcess = 500;
+
+		$tags = ArticleMetadata::getValidTags();
+
+		$dbr = wfGetDB( DB_SLAVE );
+
+		$res = $dbr->select(
+			array( 'pagetriage_page_tags' ),
+			array( 'ptrpt_page_id' ),
+			array( 'ptrpt_tag_id' => $tags['user_name'], 'ptrpt_value' => (string)$block->getTarget() ),
+			__METHOD__,
+			array( 'LIMIT' => $maxNumToProcess + 1 )
+		);
+
+		if ( $dbr->numRows( $res ) > $maxNumToProcess ) {
+			return;
+		}
+
+		$pageIds = array();
+		foreach ( $res as $row ) {
+			$pageIds[] = $row->ptrpt_page_id;
+		}
+
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->update(  
+			'pagetriage_page_tags',
+			array( 'ptrpt_value' => $status ),
+			array( 'ptrpt_page_id' => $pageIds, 'ptrpt_tag_id' => $tags['user_block_status'] )
+		);
+
+		$metadata = new ArticleMetadata( $pageIds );
+		$metadata->updateMetadataInCache( array( 'user_block_status' => $status ) );
+	}
 }
 
 class MWPageTriageUtilInvalidNumberException extends MWException {}
