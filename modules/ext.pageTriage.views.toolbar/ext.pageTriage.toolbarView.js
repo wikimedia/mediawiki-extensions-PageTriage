@@ -10,9 +10,13 @@ $( function() {
 	// overall toolbar view
 	// currently, this is the main application view.
 	mw.pageTriage.ToolbarView = Backbone.View.extend( {
+		render: function() {
+			console.log( 'would insert toolbar on this page' );
+		}
+		
 	} );
 
 	// create an instance of the list view, which makes everything go.
-	var list = new mw.pageTriage.ToolbarView( { eventBus: eventBus } );
-	list.render();
+	var toolbar = new mw.pageTriage.ToolbarView( { eventBus: eventBus } );
+	toolbar.render();
 } );

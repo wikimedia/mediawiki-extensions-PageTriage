@@ -101,6 +101,7 @@ $wgHooks['GetPreferences'][] = 'PageTriageHooks::onGetPreferences';
 $wgHooks['ArticleViewHeader'][] = 'PageTriageHooks::onArticleViewHeader';
 $wgHooks['ArticleDeleteComplete'][] = 'PageTriageHooks::onArticleDeleteComplete';
 $wgHooks['MarkPatrolledComplete'][] = 'PageTriageHooks::onMarkPatrolledComplete';
+$wgHooks['BeforePageDisplay'][] = 'PageTriageHooks::beforePageDisplay';
 
 $wgPageTriageMarkPatrolledLinkExpiry = 3600 * 24 * 30; // 30 days
 
@@ -301,6 +302,10 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 	'messages' => array(
 
 	)
+);
+
+$wgResourceModules['ext.pageTriage.startup'] = $ptResourceTemplate + array(
+	'scripts' => 'ext.pageTriage.startup/ext.pageTriage.startup.js',
 );
 
 $wgResourceModules['ext.pageTriage.article'] = $ptResourceTemplate + array(

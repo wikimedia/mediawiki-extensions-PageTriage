@@ -225,4 +225,12 @@ class PageTriageHooks {
 
 		return true;
 	}
+	
+	/**
+	 * BeforePageDisplay hook
+	 */
+	public static function beforePageDisplay( $out ) {
+		$out->addModules( 'ext.pageTriage.startup' );
+		return true;
+	}
 }
