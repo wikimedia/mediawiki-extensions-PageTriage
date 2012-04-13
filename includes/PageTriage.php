@@ -10,6 +10,7 @@ class PageTriage {
 
 	// additional property
 	protected $mLoaded;
+	protected $mArticleMetadata;
 
 	/**
 	 * @param $pageId int
@@ -172,6 +173,39 @@ class PageTriage {
 
 		$row['ptrl_id'] = $dbw->nextSequenceValue( 'pagetriage_log_ptrl_id' );
 		$dbw->insert( 'pagetriage_log', $row, __METHOD__ );
+	}
+	
+	protected function loadArticleMetadata() {
+		if ( !$this->mArticleMetadata ) {
+			$this->mArticleMetadata = new ArticleMetadata( array( $this->mPageId ));
+		}
+	}
+	
+	/**
+	 * Delete the page from page triage queue and log
+	 */
+	public function deleteFromPageTriage() {
+		$dbw = wfGetDB( DB_MASTER );
+
+		$this->loadArticleMetadata();
+
+		$dbw->begin();
+
+		$dbw->delete(
+				'pagetriage_page',
+				array( 'ptrp_page_id' => $this->mPageId ),
+				__METHOD__,
+				array()
+		);
+		$dbw->delete(
+				'pagetriage_log',
+				array( 'ptrl_page_id' => $this->mPageId ),
+				__METHOD__,
+				array()
+		);
+		$this->mArticleMetadata->deleteMetadata();
+
+		$dbw->commit();
 	}
 	
 }

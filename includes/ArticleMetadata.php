@@ -24,40 +24,17 @@ class ArticleMetadata {
 	 *
 	 * @param $pageId - the page id to be deleted
 	 */
-	public function deleteMetadata( $pageId = null ) {
-		if ( is_null( $pageId ) ) {
-			$pageId = $this->mPageId;
-		}
-
-		if ( $pageId ) {
-			// $pageId can be an array or a single value.
+	public function deleteMetadata() {
+		if ( $this->mPageId ) {
 			$dbw  = wfGetDB( DB_MASTER );
-	
-			$dbw->begin();
 			$dbw->delete(
 				'pagetriage_page_tags',
-				array( 'ptrpt_page_id' => $pageId ),
+				array( 'ptrpt_page_id' => $this->mPageId ),
 				__METHOD__,
 				array()
 			);
-	
-			$dbw->delete(
-				'pagetriage_page',
-				array( 'ptrp_page_id' => $pageId ),
-				__METHOD__,
-				array()
-			);
-	
-			$dbw->delete(
-				'pagetriage_log',
-				array( 'ptrl_page_id' => $pageId ),
-				__METHOD__,
-				array()
-			);
-	
 			// also remove it from the cache
-			$this->flushMetadataFromCache( $pageId );
-			$dbw->commit();
+			$this->flushMetadataFromCache();
 		}
 
 		return true;
@@ -85,7 +62,6 @@ class ArticleMetadata {
 				$wgMemc->replace( $keyPrefix . '-' . $val, array_merge( $data, $update ), 86400 );
 			}
 		}
-		
 	}
 
 	/**
@@ -158,12 +134,7 @@ class ArticleMetadata {
 	public function getMetadata() {
 		$articles = $this->mPageId;
 		$metaData = $this->getMetadataFromCache();
-
-		foreach ( $articles as $key => $pageId ) {
-			if ( isset( $metaData[$pageId] ) ) {
-				unset( $articles[$key] );
-			}
-		}
+		$articles = self::getPageWithoutMetadata( $articles, $metaData );
 
 		// Grab metadata from database after cache attempt
 		if ( $articles ) {
@@ -185,11 +156,7 @@ class ArticleMetadata {
 				}
 			}
 
-			foreach ( $articles as $key => $pageId ) {
-				if ( isset( $pageData[$pageId] ) ) {
-					unset( $articles[$key] );
-				}
-			}
+			$articles = self::getPageWithoutMetadata( $articles, $pageData );
 			// Compile the data if it is not available
 			if ( $articles ) {
 				$acp = ArticleCompileProcessor::newFromPageId( $articles );
@@ -208,6 +175,18 @@ class ArticleMetadata {
 		return $metaData;
 	}
 
+	/**
+	 * Get the pages without metadata yet
+	 */
+	private static function getPageWithoutMetadata( $articles, $data ) {
+		foreach ( $articles as $key => $pageId ) {
+			if ( isset( $data[$pageId] ) ) {
+				unset( $articles[$key] );
+			}
+		}
+		return $articles;
+	}
+	
 	/**
 	 * Return a list of valid metadata
 	 * @return array

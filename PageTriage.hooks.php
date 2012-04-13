@@ -108,8 +108,8 @@ class PageTriageHooks {
 	 */
 	public static function onArticleDeleteComplete( $article, $user, $reason, $id ) {
 		// delete everything
-		$articleMetadata = new ArticleMetadata( array( $id ) );
-		$articleMetadata->deleteMetadata();
+		$pageTriage = new PageTriage( $id );
+		$pageTriage->deleteFromPageTriage();
 		return true;
 	}
 
