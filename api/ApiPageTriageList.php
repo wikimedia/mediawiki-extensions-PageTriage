@@ -231,6 +231,6 @@ class ApiPageTriageList extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiPageTriageList.php $';
+		return __CLASS__ . ': $Id$';
 	}
 }
