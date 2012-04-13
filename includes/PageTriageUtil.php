@@ -151,7 +151,7 @@ class PageTriageUtil {
 		$res = $dbr->selectRow(
 			array( 'pagetriage_page' ),
 			array( 'COUNT(ptrp_page_id) AS num' ),
-			array( 'ptrp_reviewed = 1', 'ptrp_timestamp > ' . $dbr->addQuotes( $dbr->timestamp( wfTimestamp( TS_UNIX ) - 7 * 24 * 60 * 60 ) ) ),
+			array( 'ptrp_reviewed = 1', 'ptrp_created > ' . $dbr->addQuotes( $dbr->timestamp( wfTimestamp( TS_UNIX ) - 7 * 24 * 60 * 60 ) ) ),
 			__METHOD__
 		);
 
@@ -200,14 +200,14 @@ class PageTriageUtil {
 		
 		$res = $dbr->selectRow(
 			array( 'pagetriage_page' ),
-			array( 'ptrp_timestamp' ),
+			array( 'ptrp_created' ),
 			array( 'ptrp_reviewed' => 0 ),
 			__METHOD__,
-			array( 'ORDER BY' => "ptrp_timestamp $order", 'LIMIT' => '1', 'OFFSET' => $start )
+			array( 'ORDER BY' => "ptrp_created $order", 'LIMIT' => '1', 'OFFSET' => $start )
 		);
 
 		if ( $res ) {
-			return $res->ptrp_timestamp;
+			return $res->ptrp_created;
 		} else {
 			return false;
 		}

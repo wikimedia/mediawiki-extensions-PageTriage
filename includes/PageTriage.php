@@ -53,7 +53,7 @@ class PageTriage {
 		$row = array(
 			'ptrp_page_id' => $this->mPageId,
 			'ptrp_reviewed' => $reviewed,
-			'ptrp_timestamp' => $res->creation_date
+			'ptrp_created' => $res->creation_date
 		);
 
 		$dbw->insert( 'pagetriage_page', $row, __METHOD__, array( 'IGNORE' ) );
@@ -141,7 +141,7 @@ class PageTriage {
 		
 		$res = $dbr->selectRow(
 			array( 'pagetriage_page' ),
-			array( 'ptrp_reviewed', 'ptrp_timestamp', 'ptrp_deleted' ),
+			array( 'ptrp_reviewed', 'ptrp_created', 'ptrp_deleted' ),
 			array( 'ptrp_page_id' => $this->mPageId ),
 			__METHOD__
 		);
@@ -151,7 +151,7 @@ class PageTriage {
 		}
 
 		$this->mReviewed = $res->ptrp_reviewed;
-		$this->mTimestamp = $res->ptrp_timestamp;
+		$this->mTimestamp = $res->ptrp_created;
 		$this->mDeleted = $res->ptrp_deleted;
 		$this->mLoaded = true;
 		return true;

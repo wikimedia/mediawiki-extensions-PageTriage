@@ -47,10 +47,10 @@ class ApiPageTriageList extends ApiBase {
 		$options['LIMIT'] = $opts['limit'] + 1;
 		
 		if ( strtolower( $opts['dir'] ) === 'oldestfirst' ) {
-			$options['ORDER BY'] = 'ptrp_timestamp ASC, ptrp_page_id ASC';
+			$options['ORDER BY'] = 'ptrp_created ASC, ptrp_page_id ASC';
 			$offsetOperator = ' > ';
 		} else {
-			$options['ORDER BY'] = 'ptrp_timestamp DESC, ptrp_page_id DESC';
+			$options['ORDER BY'] = 'ptrp_created DESC, ptrp_page_id DESC';
 			$offsetOperator = ' < ';
 		}
 
@@ -78,11 +78,11 @@ class ApiPageTriageList extends ApiBase {
 		if ( array_key_exists( 'offset', $opts ) && is_numeric( $opts['offset'] ) && $opts['offset'] > 0 ) {
 			// Offset the list by page ID as well (in case multiple pages have the same timestamp)
 			if ( array_key_exists( 'pageoffset', $opts ) && is_numeric( $opts['pageoffset'] ) && $opts['pageoffset'] > 0 ) {
-				$conds[] = '( ptrp_timestamp' . $offsetOperator . $opts['offset'] . ') OR ' .
-					'( ptrp_timestamp = ' . $opts['offset'] .' AND ' . 
+				$conds[] = '( ptrp_created' . $offsetOperator . $opts['offset'] . ') OR ' .
+					'( ptrp_created = ' . $opts['offset'] .' AND ' . 
 					'ptrp_page_id ' . $offsetOperator . $opts['pageoffset'] . ')';
 			} else {
-				$conds[] = 'ptrp_timestamp' . $offsetOperator . $opts['offset'];
+				$conds[] = 'ptrp_created' . $offsetOperator . $opts['offset'];
 			}
 		}
 

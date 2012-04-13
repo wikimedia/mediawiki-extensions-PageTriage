@@ -142,7 +142,7 @@ class ArticleMetadata {
 
 			$res = $dbr->select(
 					array( 'pagetriage_page_tags', 'pagetriage_tags', 'pagetriage_page' ),
-					array( 'ptrpt_page_id', 'ptrt_tag_name', 'ptrpt_value', 'ptrp_reviewed', 'ptrp_timestamp' ),
+					array( 'ptrpt_page_id', 'ptrt_tag_name', 'ptrpt_value', 'ptrp_reviewed', 'ptrp_created' ),
 					array( 'ptrpt_page_id' => $articles, 'ptrpt_tag_id = ptrt_tag_id', 'ptrpt_page_id = ptrp_page_id' ),
 					__METHOD__
 			);
@@ -151,7 +151,7 @@ class ArticleMetadata {
 			foreach ( $res as $row ) {
 				$pageData[$row->ptrpt_page_id][$row->ptrt_tag_name] = $row->ptrpt_value;
 				if ( !isset( $pageData[$row->ptrpt_page_id]['creation_date'] ) ) {
-					$pageData[$row->ptrpt_page_id]['creation_date'] = $row->ptrp_timestamp;
+					$pageData[$row->ptrpt_page_id]['creation_date'] = $row->ptrp_created;
 					$pageData[$row->ptrpt_page_id]['patrol_status'] = $row->ptrp_reviewed;
 				}
 			}
