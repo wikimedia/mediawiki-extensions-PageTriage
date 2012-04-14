@@ -36,28 +36,37 @@ class updateUserMetadata extends Maintenance {
 		$this->init();
 		$this->output( "Started processing... \n" );
 
-		// Make the start time really old
-		$startTime = wfTimestamp( TS_UNIX ) - 60 * 60 * 24 * 365 * 10;
+		// Scan for data updated more than a day ago
+		$startTime = wfTimestamp( TS_UNIX ) - 60 * 60 * 24;
 		$count = $this->batchSize;
-		$startId = 0;
+
+		$row = $this->dbr->selectRow(
+			array( 'pagetriage_page' ),
+			array( 'MAX(ptrp_page_id) AS max_id' ),
+			array(),
+			__METHOD__
+		);
+
+		// No data to process, exit
+		if ( $row === false ) {
+			return;
+		}
+
+		$startId = $row->max_id + 1;
 
 		while ( $count === $this->batchSize ) {
 			$count = 0;
 			$startTime = $this->dbr->addQuotes( $this->dbr->timestamp( $startTime ) );
 
-			// Data should expire in a day, keep this inside loop so 
-			// it's update to second
-			$expiration = wfTimestamp( TS_UNIX ) - 60 * 60 * 24;
 			$res = $this->dbr->select(
 				array( 'pagetriage_page' ),
-				array( 'ptrp_page_id', 'ptrp_created' ),
+				array( 'ptrp_page_id', 'ptrp_tags_updated' ),
 				array(
-					'(ptrp_created > ' . $startTime . ') OR 
-					(ptrp_created = ' . $startTime . ' AND ptrp_page_id > ' . $startId . ')', 
-					'ptrp_tags_updated < ' . $this->dbr->addQuotes( $this->dbr->timestamp( $expiration ) )
+					'(ptrp_tags_updated < ' . $startTime . ') OR 
+					(ptrp_tags_updated = ' . $startTime . ' AND ptrp_page_id < ' . $startId . ')'
 				),
 				__METHOD__,
-				array( 'LIMIT' => $this->batchSize, 'ORDER BY' => 'ptrp_created, ptrp_page_id' )
+				array( 'LIMIT' => $this->batchSize, 'ORDER BY' => 'ptrp_tags_updated DESC, ptrp_page_id DESC' )
 			);
 
 			$pageId = array();
@@ -67,8 +76,10 @@ class updateUserMetadata extends Maintenance {
 			}
 
 			if ( $pageId ) {
-				// update the startTime with the last row
-				$startTime = wfTimestamp( TS_UNIX, $row->ptrp_created );
+				// update the startTime with the last row if it's set, check in case it's not set
+				if ( $row->ptrp_tags_updated ) {
+					$startTime = wfTimestamp( TS_UNIX, $row->ptrp_tags_updated );
+				}
 				$startId = $row->ptrp_page_id;
 
 				$acp = ArticleCompileProcessor::newFromPageId( $pageId );
