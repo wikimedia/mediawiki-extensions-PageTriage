@@ -5,8 +5,9 @@ class PageTriage {
 	// database property
 	protected $mPageId;
 	protected $mReviewed;
-	protected $mTimestamp;
+	protected $mCreated;
 	protected $mDeleted;
+	protected $mTagsUpdated;
 
 	// additional property
 	protected $mLoaded;
@@ -110,22 +111,23 @@ class PageTriage {
 	}
 
 	/**
-	 * Set the deleted status
-	 */
-	public function setDeleted( $deleted ) {
-		if ( $deleted === '1' ) {
-			$this->mDeleted = '1';
-		} else {
-			$this->mDeleted = '0';
+	 * Update the database record
+	 * @param $row array key => value pair to be updated
+	 * Todo: ptrpt_reviewed should not updated from this function, add exception to catch this
+	 *       or find a better solution
+ 	 */
+	public function update( $row ) {
+		if ( !$row ) {
+			return;
 		}
-
+		
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update(
 			'pagetriage_page', 
-			array( 'ptrp_deleted' => $this->mDeleted ), 
+			$row, 
 			array( 'ptrp_page_id' => $this->mPageId ), 
 			__METHOD__ 
-		);
+		);	
 	}
 
 	/**
@@ -141,7 +143,7 @@ class PageTriage {
 		
 		$res = $dbr->selectRow(
 			array( 'pagetriage_page' ),
-			array( 'ptrp_reviewed', 'ptrp_created', 'ptrp_deleted' ),
+			array( 'ptrp_reviewed', 'ptrp_created', 'ptrp_deleted', 'ptrp_tags_updated' ),
 			array( 'ptrp_page_id' => $this->mPageId ),
 			__METHOD__
 		);
@@ -151,8 +153,9 @@ class PageTriage {
 		}
 
 		$this->mReviewed = $res->ptrp_reviewed;
-		$this->mTimestamp = $res->ptrp_created;
+		$this->mCreated = $res->ptrp_created;
 		$this->mDeleted = $res->ptrp_deleted;
+		$this->mTagsUpdated = wfTimestamp( TS_UNIX, $res->ptrp_tags_updated );
 		$this->mLoaded = true;
 		return true;
 	}
@@ -206,6 +209,23 @@ class PageTriage {
 		$this->mArticleMetadata->deleteMetadata();
 
 		$dbw->commit();
+	}
+	
+	/**
+	 * Set the tags updated timestamp
+	 */
+	public static function bulkSetTagsUpdated( $pageIds ) {
+		$dbw = wfGetDB( DB_MASTER );
+
+		$now = wfTimestampNow();	
+		$dbw->update(
+			'pagetriage_page', 
+			array( 'ptrp_tags_updated' => $dbw->timestamp( $now ) ), 
+			array( 'ptrp_page_id' => $pageIds ), 
+			__METHOD__ 
+		);
+
+		return $now;
 	}
 	
 }

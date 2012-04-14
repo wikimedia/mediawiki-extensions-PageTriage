@@ -315,11 +315,14 @@ class PageTriageUtil {
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
+		$dbw->start();
 		$dbw->update(  
 			'pagetriage_page_tags',
 			array( 'ptrpt_value' => $status ),
 			array( 'ptrpt_page_id' => $pageIds, 'ptrpt_tag_id' => $tags['user_block_status'] )
 		);
+		PageTriage::bulkSetTagsUpdated( $pageIds );
+		$dbw->commit();
 
 		$metadata = new ArticleMetadata( $pageIds );
 		$metadata->updateMetadataInCache( array( 'user_block_status' => $status ) );

@@ -407,10 +407,12 @@ class ArticleCompileProcessor {
 				}
 				$dbw->replace( 'pagetriage_page_tags', array( 'ptrpt_page_id', 'ptrpt_tag_id' ), $row, __METHOD__ );
 			}
+			$pt = new PageTriage( $pageId );
+			$row = array( 'ptrp_tags_updated' => $dbw->timestamp( wfTimestampNow() ) );
 			if ( isset( $data['deleted'] ) ) {
-				$pt = new PageTriage( $pageId );
-				$pt->setDeleted( $data['deleted'] ? '1' : '0' );
+				$row['ptrp_deleted'] = $data['deleted'] ? '1' : '0';
 			}
+			$pt->update( $row );
 			$dbw->commit();
 		}
 	}
