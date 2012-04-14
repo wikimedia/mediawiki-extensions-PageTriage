@@ -1,5 +1,5 @@
 $( function() {
-	// single list list view item
+	// view for a single list item
 	
 	mw.pageTriage.ListItem = Backbone.View.extend( {
 		tagName: "div",
