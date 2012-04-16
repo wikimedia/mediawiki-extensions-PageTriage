@@ -97,7 +97,7 @@ $wgHooks['ArticleInsertComplete'][] = 'PageTriageHooks::onArticleInsertComplete'
 $wgHooks['ArticleSaveComplete'][] = 'PageTriageHooks::onArticleSaveComplete';
 $wgHooks['UnitTestsList'][] = 'efPageTriageUnitTests'; // unit tests
 $wgHooks['GetPreferences'][] = 'PageTriageHooks::onGetPreferences';
-$wgHooks['ArticleViewHeader'][] = 'PageTriageHooks::onArticleViewHeader';
+$wgHooks['ArticleViewFooter'][] = 'PageTriageHooks::onArticleViewFooter';
 $wgHooks['ArticleDeleteComplete'][] = 'PageTriageHooks::onArticleDeleteComplete';
 $wgHooks['MarkPatrolledComplete'][] = 'PageTriageHooks::onMarkPatrolledComplete';
 $wgHooks['BeforePageDisplay'][] = 'PageTriageHooks::beforePageDisplay';
@@ -117,6 +117,9 @@ function efPageTriageSchemaUpdates( $updater = null ) {
 	$updater->addExtensionTable( 'pagetriage_log', $base . '/PageTriageLog.sql' );
 
 	$updater->modifyField( 'pagetriage_page', 'ptrp_triaged', "$base/PageTriageRename.sql", true );
+	$updater->addExtensionField( 'pagetriage_page', 'ptrp_created', "$base/PageTriageTimestamps.patch.sql", true );
+	$updater->addExtensionField( 'pagetriage_page', 'ptrp_tags_updated', "$base/PageTriageTimestamps.patch.sql", true );
+	$updater->addExtensionField( 'pagetriage_page', 'ptrp_deleted', "$base/PageTriagePageDeleted.sql", true );
 
 	return true;
 }

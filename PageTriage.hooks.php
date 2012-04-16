@@ -156,7 +156,7 @@ class PageTriageHooks {
 	 * @param &$pcache Set if you want to use the parser cache.
 	 * @return type description
 	 */
-	public static function onArticleViewHeader( &$article, &$outputDone, &$pcache ) {
+	public static function onArticleViewFooter( &$article ) {
 		global $wgUser, $wgPageTriageMarkPatrolledLinkExpiry, $wgOut, $wgRequest;
 
 		// the presence of rcid means this is coming from Special:NewPages,
