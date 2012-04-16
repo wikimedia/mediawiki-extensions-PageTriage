@@ -50,7 +50,8 @@ $wgExtensionCredits['specialpage'][] = array(
 
 // Begin configuration variables
 $wgPageTriagePagesPerRequest = 20; // Maximum number of articles for the API to retrieve at once
-$wgPageTriageInfiniteScrolling = false; // Whether or not to use infinite scrolling in the page list
+$wgPageTriageInfiniteScrolling = true; // Whether or not to use infinite scrolling in the page list
+$wgPageTriageMarkPatrolledLinkExpiry = 3600 * 24 * 30; // 30 days
 // End configuration variables
 
 $dir = dirname( __FILE__ ) . '/';
@@ -102,8 +103,6 @@ $wgHooks['ArticleDeleteComplete'][] = 'PageTriageHooks::onArticleDeleteComplete'
 $wgHooks['MarkPatrolledComplete'][] = 'PageTriageHooks::onMarkPatrolledComplete';
 $wgHooks['BeforePageDisplay'][] = 'PageTriageHooks::beforePageDisplay';
 $wgHooks['BlockIpComplete'][] = 'PageTriageHooks::onBlockIpComplete';
-
-$wgPageTriageMarkPatrolledLinkExpiry = 3600 * 24 * 30; // 30 days
 
 /**
  * @param $updater DatabaseUpdater
