@@ -165,7 +165,9 @@ class ArticleMetadata {
 				}
 			}
 
-			foreach ( $pageData as $pageId => $val ) {
+			$defaultVal = array_fill_keys( array_keys( self::getValidTags() ), '' );
+			foreach ( $pageData as $pageId => &$val ) {
+				$val += $defaultVal;
 				$this->setMetadataToCache( $pageId, $val );
 			}
 
