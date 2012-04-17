@@ -3,7 +3,8 @@
 class PageTriageHooks {
 
 	/**
-	 * Mark a page as unreviewed after moving the page if the new title is in main namespace 
+	 * Mark a page as unreviewed after moving the page if the new title is in main namespace
+	 * Note: Page will be automatically marked as triaged for users with autopatrol right
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/SpecialMovepageAfterMove
 	 * @param $movePage: MovePageForm object
@@ -34,6 +35,7 @@ class PageTriageHooks {
 
 	/**
 	 * Check if a page is created from a redirect page, then insert into it PageTriage Queue
+	 * Note: Page will be automatically marked as triaged for users with autopatrol right
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/NewRevisionFromEditComplete
 	 * @param $article: the WikiPage edited
