@@ -1,8 +1,4 @@
 ( function( $ ) {
-	if ( !mw.pageTriage ) {
-		mw.pageTriage = {};
-	}
-
 	mw.pageTriage.action = {
 		submit: function() {
 			apiRequest = {
@@ -34,6 +30,7 @@
 	$( '.mw-pagetriage-markpatrolled-link' )
 		.click( function() {
 				mw.pageTriage.action.submit();
+				return false;
 			} )
 		.end();
 } ) ( jQuery );

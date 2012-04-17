@@ -315,6 +315,9 @@ $wgResourceModules['ext.pageTriage.startup'] = $ptResourceTemplate + array(
 );
 
 $wgResourceModules['ext.pageTriage.article'] = $ptResourceTemplate + array(
+	'dependencies' => array(
+		'ext.pageTriage.models'
+	),
 	'styles' => 'ext.pageTriage.article/ext.pageTriage.article.css',
 	'scripts' => 'ext.pageTriage.article/ext.pageTriage.article.js',
 	'messages' => array (
