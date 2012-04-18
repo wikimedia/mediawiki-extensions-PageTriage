@@ -12,24 +12,36 @@ class PageTriageHooks {
 	 * @param $newTitle: new title object
 	 * @return bool
 	 */
-	public static function onSpecialMovepageAfterMove( $movePage, &$oldTitle, &$newTitle ) {
-		$pageId = $newTitle->getArticleID();
+	public static function onSpecialMovepageAfterMove( $movePage, &$oldTitle, &$newTitle ) {		
+		$pendindId = array();
 
 		if ( $newTitle->getNamespace() === NS_MAIN ) {
-			// New record, compile all data
+			$pageId = $newTitle->getArticleID();
+			// New record added to pagetriage queue, compile all data
 			if ( self::addToPageTriageQueue( $pageId, $newTitle ) ) {
-				$component = '';
+				$pendindId[] = $pageId;
 			} else {
-				$component = 'BasicData';
-			}
-
-			$acp = ArticleCompileProcessor::newFromPageId( array( $pageId ) );
-			if ( $acp ) {
-				$acp->registerComponent( $component );
-				$acp->compileMetadata();
+				$acp = ArticleCompileProcessor::newFromPageId( array( $pageId ) );
+				if ( $acp ) {
+					$acp->registerComponent( 'BasicData' );
+					$acp->compileMetadata();
+				}
 			}
 		}
 
+		// check if there is a new page id for redirect left behind
+		$oldPageId = $oldTitle->getArticleID();
+		if ( $oldPageId ) {
+			self::addToPageTriageQueue( $oldPageId, $oldTitle );
+			$pendindId[] = $oldPageId;
+		}
+
+		if ( $pendindId ) {		
+			$acp = ArticleCompileProcessor::newFromPageId( $pendindId );
+			if ( $acp ) {
+				$acp->compileMetadata();
+			}
+		}
 		return true;
 	}
 
