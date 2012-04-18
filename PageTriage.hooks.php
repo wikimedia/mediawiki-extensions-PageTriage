@@ -230,7 +230,7 @@ class PageTriageHooks {
 			$pt = new PageTriage( $rc->getAttribute( 'rc_cur_id' ) );
 			if ( $pt->addToPageTriageQueue( '1', $user, $fromRc = true ) ) {
 				// Compile metadata for new page triage record
-				$acp = ArticleCompileProcessor::newFromPageId( $rc->getAttribute( 'rc_cur_id' ) );
+				$acp = ArticleCompileProcessor::newFromPageId( array( $rc->getAttribute( 'rc_cur_id' ) ) );
 				if ( $acp ) {
 					$acp->compileMetadata();
 				}	
