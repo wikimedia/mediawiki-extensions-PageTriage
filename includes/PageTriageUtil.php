@@ -315,7 +315,7 @@ class PageTriageUtil {
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
-		$dbw->start();
+		$dbw->begin();
 		$dbw->update(  
 			'pagetriage_page_tags',
 			array( 'ptrpt_value' => $status ),
