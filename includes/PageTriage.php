@@ -123,11 +123,11 @@ class PageTriage {
 		
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update(
-			'pagetriage_page', 
+			'pagetriage_page',
 			$row, 
-			array( 'ptrp_page_id' => $this->mPageId ), 
-			__METHOD__ 
-		);	
+			array( 'ptrp_page_id' => $this->mPageId ),
+			__METHOD__
+		);
 	}
 
 	/**
@@ -183,7 +183,7 @@ class PageTriage {
 			$this->mArticleMetadata = new ArticleMetadata( array( $this->mPageId ));
 		}
 	}
-	
+
 	/**
 	 * Delete the page from page triage queue and log
 	 */
@@ -210,24 +210,24 @@ class PageTriage {
 
 		$dbw->commit();
 	}
-	
+
 	/**
 	 * Set the tags updated timestamp
 	 */
 	public static function bulkSetTagsUpdated( $pageIds ) {
 		$dbw = wfGetDB( DB_MASTER );
 
-		$now = wfTimestampNow();	
+		$now = wfTimestampNow();
 		$dbw->update(
 			'pagetriage_page', 
-			array( 'ptrp_tags_updated' => $dbw->timestamp( $now ) ), 
+			array( 'ptrp_tags_updated' => $dbw->timestamp( $now ) ),
 			array( 'ptrp_page_id' => $pageIds ), 
-			__METHOD__ 
+			__METHOD__
 		);
 
 		return $now;
 	}
-	
+
 }
 
 class PageTriageMissingRevisionException extends MWException {}

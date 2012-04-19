@@ -123,7 +123,7 @@ class PageTriageUtil {
 				__METHOD__,
 				array( 'GROUP BY' => 'user_id', 'ORDER BY' => 'num DESC', 'LIMIT' => 50 )
 			);
-			
+
 			$topTriager = iterator_to_array( $res );
 
 			$wgMemc->set( $key, $topTriager, $timeFrame[$time]['expire'] );

@@ -39,7 +39,7 @@ class ArticleMetadata {
 
 		return true;
 	}
-	
+
 	/**
 	 * Update the metadata in cache
 	 * @param $update array - key => value pair for update
@@ -188,7 +188,7 @@ class ArticleMetadata {
 		}
 		return $articles;
 	}
-	
+
 	/**
 	 * Return a list of valid metadata
 	 * @return array

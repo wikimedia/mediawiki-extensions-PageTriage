@@ -29,7 +29,7 @@ class updateUserMetadata extends Maintenance {
 	}
 
 	protected function init() {
-		$this->dbr = wfGetDB( DB_SLAVE );	
+		$this->dbr = wfGetDB( DB_SLAVE );
 	}
 
 	public function execute() {
