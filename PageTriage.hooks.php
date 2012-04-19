@@ -12,32 +12,34 @@ class PageTriageHooks {
 	 * @param $newTitle: new title object
 	 * @return bool
 	 */
-	public static function onSpecialMovepageAfterMove( $movePage, &$oldTitle, &$newTitle ) {		
-		$pendindId = array();
+	public static function onSpecialMovepageAfterMove( $movePage, &$oldTitle, &$newTitle ) {
+		$pendingId = array();
 
 		if ( $newTitle->getNamespace() === NS_MAIN ) {
 			$pageId = $newTitle->getArticleID();
 			// New record added to pagetriage queue, compile all data
 			if ( self::addToPageTriageQueue( $pageId, $newTitle ) ) {
-				$pendindId[] = $pageId;
+				$pendingId[] = $pageId;
 			} else {
 				$acp = ArticleCompileProcessor::newFromPageId( array( $pageId ) );
 				if ( $acp ) {
+					// compile only basic data
 					$acp->registerComponent( 'BasicData' );
 					$acp->compileMetadata();
 				}
 			}
 		}
 
-		// check if there is a new page id for redirect left behind
+		// Check if there is a new page id for redirect left behind
 		$oldPageId = $oldTitle->getArticleID();
 		if ( $oldPageId ) {
 			self::addToPageTriageQueue( $oldPageId, $oldTitle );
-			$pendindId[] = $oldPageId;
+			$pendingId[] = $oldPageId;
 		}
 
-		if ( $pendindId ) {		
-			$acp = ArticleCompileProcessor::newFromPageId( $pendindId );
+		// Compile all the data in $pendingId
+		if ( $pendingId ) {
+			$acp = ArticleCompileProcessor::newFromPageId( $pendingId );
 			if ( $acp ) {
 				$acp->compileMetadata();
 			}
@@ -80,7 +82,7 @@ class PageTriageHooks {
 	 * @return bool
 	 */
 	public static function onArticleInsertComplete( $article, $user, $text, $summary, $isMinor, $isWatch, $section, $flags, $revision ) {
-		self::addToPageTriageQueue( $article->getId(), $article->mTitle, $user );	
+		self::addToPageTriageQueue( $article->getId(), $article->mTitle, $user );
 
 		return true;
 	}
@@ -192,14 +194,14 @@ class PageTriageHooks {
 
 		$status = PageTriageUtil::doesPageNeedTriage( $article );
 
-		if ( $status === true) {
+		if ( $status === true ) {
 			// show 'Mark as reviewed' link
 			$msg = wfMessage( 'pagetriage-markpatrolled' )->escaped();
 			$msg = Html::element( 'a', array( 'href' => '#', 'class' => 'mw-pagetriage-markpatrolled-link' ), $msg );
 			
 		} else if ( $status === false ) {
 			// show 'Reviewed' text
-			$msg= wfMessage( 'pagetriage-reviewed' )->escaped();
+			$msg = wfMessage( 'pagetriage-reviewed' )->escaped();
 		} else {
 			// Do nothing as this page is not in PageTriage queue
 			return true;
@@ -233,13 +235,13 @@ class PageTriageHooks {
 				$acp = ArticleCompileProcessor::newFromPageId( array( $rc->getAttribute( 'rc_cur_id' ) ) );
 				if ( $acp ) {
 					$acp->compileMetadata();
-				}	
+				}
 			}
 		}
 
 		return true;
 	}
-	
+
 	/**
 	 * BeforePageDisplay hook
 	 */
@@ -247,7 +249,7 @@ class PageTriageHooks {
 		$out->addModules( 'ext.pageTriage.startup' );
 		return true;
 	}
-	
+
 	/**
 	 * Update Article metadata when a user gets blocked 
 	 *
