@@ -114,12 +114,6 @@ function efPageTriageSchemaUpdates( $updater = null ) {
 	$updater->addExtensionTable( 'pagetriage_page_tags', $base . '/PageTriagePageTags.sql' );
 	$updater->addExtensionTable( 'pagetriage_page', $base . '/PageTriagePage.sql' );
 	$updater->addExtensionTable( 'pagetriage_log', $base . '/PageTriageLog.sql' );
-
-	$updater->modifyField( 'pagetriage_page', 'ptrp_triaged', "$base/PageTriageRename.sql", true );
-	$updater->addExtensionField( 'pagetriage_page', 'ptrp_created', "$base/PageTriageTimestamps.patch.sql", true );
-	$updater->addExtensionField( 'pagetriage_page', 'ptrp_tags_updated', "$base/PageTriageTimestamps.patch.sql", true );
-	$updater->addExtensionField( 'pagetriage_page', 'ptrp_deleted', "$base/PageTriagePageDeleted.sql", true );
-
 	return true;
 }
 
