@@ -27,12 +27,13 @@ class SpecialPageTriage extends SpecialPage {
 		global $wgRequest, $wgPageTriageInfiniteScrolling;
 		$out = $this->getOutput();
 
-		// TODO: check user permissions, make sure they're logged in and have the pagepatrol userright
-
 		global $wgUser;
-		$wgUser->setOption( 'pagetriage-lastuse', wfTimestampNow() );
-		$wgUser->saveSettings();
-		$wgUser->invalidateCache();
+
+		if ( !$wgUser->isAnon() ) {
+			$wgUser->setOption( 'pagetriage-lastuse', wfTimestampNow() );
+			$wgUser->saveSettings();
+			$wgUser->invalidateCache();
+		}
 		
 		// Output the title of the page
 		$out->setPageTitle( wfMessage( 'pagetriage' ) );
