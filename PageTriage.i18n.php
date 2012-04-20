@@ -17,6 +17,7 @@ $messages['en'] = array(
 	'pagetriage-api-invalidid' => 'The ID you provided ($1) is not valid.',
 	'pagetriage-markpatrolled' => 'Mark this page as reviewed',
 	'pagetriage-reviewed' => 'Reviewed',
+	'pagetriage-unreviewed' => 'Unreviewed',
 	'pagetriage-mark-as-reviewed-error' => 'Error occurred in marking as reviewed',
 	'pagetriage-hist' => 'hist',
 	'pagetriage-bytes' => '$1 {{PLURAL:$1|byte|bytes}}',
