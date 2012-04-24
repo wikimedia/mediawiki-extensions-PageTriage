@@ -127,6 +127,7 @@ function efPageTriageUnitTests( &$files ) {
 	$files[] = $base . '/phpunit/SpecialPageTriageTest.php';
 	$files[] = $base . '/phpunit/ArticleMetadataTest.php';
 	$files[] = $base . '/phpunit/ApiPageTriageGetMetadataTest.php';
+	$files[] = $base . '/phpunit/ApiPageTriageActionTest.php';
 	return true;
 }
 
