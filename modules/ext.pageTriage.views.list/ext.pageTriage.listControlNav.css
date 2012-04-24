@@ -9,8 +9,6 @@
 .stickyTop #mwe-pt-list-control-nav {
 	position: fixed;
 	top: 0;
-	left: 160px;
-	margin-left: 16px;
 	z-index: 1;
 }
 

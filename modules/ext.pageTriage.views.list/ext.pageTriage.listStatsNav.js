@@ -65,10 +65,8 @@ $( function() {
 
 		resize: function() {
 			// set the width of the floating bar when the window resizes, if it's floating.
-			// the left nav is 176 pixels
-			// the right margin is 16 pixels
 			// border is 2 pixels
-			$( '#mwe-pt-list-stats-nav' ).css( 'width', $(window).width() - 176 - 16 - 2 + "px" );
+			$( '#mwe-pt-list-stats-nav' ).css( 'width', $( '#mw-content-text' ).width() - 2 + 'px' );
 		}
 
 	} );
