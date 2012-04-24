@@ -52,6 +52,7 @@ $wgExtensionCredits['specialpage'][] = array(
 $wgPageTriagePagesPerRequest = 20; // Maximum number of articles for the API to retrieve at once
 $wgPageTriageInfiniteScrolling = true; // Whether or not to use infinite scrolling in the page list
 $wgPageTriageMarkPatrolledLinkExpiry = 3600 * 24 * 30; // 30 days
+$wgPageTriageNoIndexTemplates = 'No_index_templates'; // Pages containing templates defined in this title would not be indexed.
 // End configuration variables
 
 $dir = dirname( __FILE__ ) . '/';
