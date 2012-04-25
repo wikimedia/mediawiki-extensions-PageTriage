@@ -8,23 +8,124 @@
 class ArticleMetadataTest extends MediaWikiTestCase {
 
 	protected $pageTriage;
+	protected $dbr;
+	protected $pageId;
+	protected $articleMetadata;
 
 	protected function setUp() {
 		parent::setUp();
-		
-		$title = Title::newFromText( "Some test article" );
-        $page = WikiPage::factory( $title );
+		$this->dbr = wfGetDB( DB_SLAVE );
+
+		// Set up some page_id to test
+		$count = $start = 0;
+		while ( $count < 6 ) {
+			$res =  $this->dbr->selectRow(
+						array( 'page', 'pagetriage_page' ),
+						array( 'page_id' ),
+						array(
+							'page_is_redirect' => 0,
+							'page_random >= ' . $start,
+							'page_id = ptrp_page_id'
+						),
+						__METHOD__,
+						array(
+							'ORDER BY' => 'page_id',
+							'LIMIT' => 1,
+						)
+				);
+			if ( $res ) {
+				$this->pageId[$res->page_id] = $res->page_id;
+				$start = $res->page_id;
+			}
+			$count++;
+		}
+
+		$this->articleMetadata = new ArticleMetadata( $this->pageId );
 	}
 
 	protected function tearDown() {
 		parent::tearDown();
-		
 	}
 
-	public function testDeleteMetadata() {
-		// TODO: delete an article's metadata
+	public function testGetValidTags() {
+		$tags = ArticleMetadata::getValidTags();
 
-		return true;
+		$validTags = array (
+					'title',
+					'linkcount',
+					'category_count',
+					'csd_status',
+					'prod_status',
+					'blp_prod_status',
+					'afd_status',
+					'rev_count',
+					'page_len',
+					'snippet',
+					'user_name',
+					'user_editcount',
+					'user_creation_date',
+					'user_autoconfirmed',
+					'user_bot',
+					'user_block_status',
+					'user_id'
+				);
+
+		$this->assertEmpty( array_diff( array_keys ( $tags ), $validTags ) );
+	}
+
+	/**
+	 * @depends testGetValidTags
+	 *
+	 */
+	public function testValidatePageId() {
+		$pageId = array_merge( $this->pageId, array ( 'cs', '99999999', 'abcde', '5ab', '200' ) );
+
+		$pageId = ArticleMetadata::validatePageId( $pageId );
+
+		foreach ( $pageId as $val ) {
+			$this->assertEquals( (string)$val, (string)(int)$val );
+		}
+
+		$res = $this->dbr->select(
+			array ( 'pagetriage_page' ),
+			array ( 'ptrp_page_id' ),
+			array ( 'ptrp_page_id' => $pageId )
+		);
+		$this->assertEquals( count( $pageId ), $this->dbr->numRows( $res ) );
+	}
+
+	/**
+	 *  @depends testValidatePageId
+	 *
+	 */
+	public function testGetMetadata() {
+		$data = $this->articleMetadata->getMetadata();
+		$this->assertGreaterThan( 0, count( $data ) );
+		$tags = ArticleMetadata::getValidTags() +
+			array(
+				'creation_date' => 'creation_date',
+				'patrol_status' => 'patrol_status',
+				'deleted' => 'deleted'
+			);
+
+		foreach ( $data as $pageId => $val ) {
+			foreach ( $val as $tagName => $tagValue ) {
+				$this->assertArrayHasKey( $tagName, $tags );
+			}
+		}
+	}
+
+	/**
+	 * @depends testGetMetadata
+	 */
+	public function testDeleteMetadata( ) {
+		$this->articleMetadata->deleteMetadata();
+		$res = $this->dbr->select(
+			array ( 'pagetriage_page_tags' ),
+			array ( 'ptrpt_page_id' ),
+			array ( 'ptrpt_page_id' => $this->pageId )
+		);
+		$this->assertEquals( 0, $this->dbr->numRows( $res ) );
 	}
 
 }
