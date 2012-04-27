@@ -43,6 +43,7 @@ $( function() {
 			// align the filter dropdown box with the dropdown control widget
 			var newLeft = $( '#mwe-pt-filter-dropdown-control' ).width() - 20;
 			$( "#mwe-pt-control-dropdown" ).css({left: newLeft});
+			$( "#mwe-pt-control-dropdown-pokey" ).css({left: newLeft + 5});
 
 			//
 			// now that the template's been inserted, set up some events for controlling it
@@ -128,12 +129,14 @@ $( function() {
 			if( (action && action == 'close') || this.filterMenuVisible ) {
 				$( '#mwe-pt-dropdown-arrow' ).html( '&#x25b8;' );
 				$( '#mwe-pt-control-dropdown' ).css( 'visibility', 'hidden' );
+				$( '#mwe-pt-control-dropdown-pokey' ).css( 'visibility', 'hidden' );
 				$( 'body' ).unbind( 'click' ); // remove these events since they're not needed til next time.
 				$( '#mwe-pt-control-dropdown' ).unbind( 'click' );
 				this.filterMenuVisible = 0;
 			} else if( (action && action == 'open') || !this.filterMenuVisible ) {
 				this.menuSync();
 				$( '#mwe-pt-control-dropdown' ).css( 'visibility', 'visible' );
+				$( '#mwe-pt-control-dropdown-pokey' ).css( 'visibility', 'visible' );
 				$( '#mwe-pt-dropdown-arrow' ).html( '&#x25be;' );
 
 				// close the menu when the user clicks away
