@@ -15,52 +15,52 @@
  * Interface to cURL
  **/
 class Http {
-    private $curlHandle;
-    private $id;
-        
+	private $curlHandle;
+	private $id;
+
 	function __construct() {
-        $this->id = rand( 0, 1000000 );
-        $this->curlHandle = curl_init();
-        curl_setopt( $this->curlHandle, CURLOPT_COOKIEJAR, '/tmp/cookies'.$this->id.'.dat' );
-        curl_setopt( $this->curlHandle, CURLOPT_COOKIEFILE, '/tmp/cookies'.$this->id.'.dat' );
-        curl_setopt( $this->curlHandle, CURLOPT_MAXCONNECTS, 10 );
-        curl_setopt( $this->curlHandle, CURLOPT_CLOSEPOLICY, CURLCLOSEPOLICY_LEAST_RECENTLY_USED );
-    }
-    
-    function get( $url ) {
-        curl_setopt( $this->curlHandle, CURLOPT_URL, $url );
-        curl_setopt( $this->curlHandle, CURLOPT_USERAGENT, 'php PageTriageBot' );
-        curl_setopt( $this->curlHandle, CURLOPT_HTTPGET, 1 );
-        curl_setopt( $this->curlHandle, CURLOPT_RETURNTRANSFER, 1 );
-        curl_setopt( $this->curlHandle, CURLOPT_TIMEOUT, 60 );
-        curl_setopt( $this->curlHandle, CURLOPT_CONNECTTIMEOUT, 10 );
-        curl_setopt( $this->curlHandle, CURLOPT_HEADER, 0 );
-        curl_setopt( $this->curlHandle, CURLOPT_ENCODING, 'UTF-8' );
-        curl_setopt( $this->curlHandle, CURLOPT_FOLLOWLOCATION, 1 );
-        curl_setopt( $this->curlHandle, CURLOPT_MAXREDIRS, 5 );
-        return curl_exec( $this->curlHandle );
-    }
-    
-    function post( $url, $postVars ) {
-        curl_setopt( $this->curlHandle, CURLOPT_URL, $url );
-        curl_setopt( $this->curlHandle, CURLOPT_USERAGENT, 'php PageTriageBot' );
-        curl_setopt( $this->curlHandle, CURLOPT_POST, 1 );
-        curl_setopt( $this->curlHandle, CURLOPT_RETURNTRANSFER, 1 );
-        curl_setopt( $this->curlHandle, CURLOPT_TIMEOUT, 60 );
-        curl_setopt( $this->curlHandle, CURLOPT_CONNECTTIMEOUT, 10 );
-        curl_setopt( $this->curlHandle, CURLOPT_HTTPHEADER, array( 'Expect:' ) );
-        curl_setopt( $this->curlHandle, CURLOPT_ENCODING, 'UTF-8' );
-        curl_setopt( $this->curlHandle, CURLOPT_FOLLOWLOCATION, 0 );
-        curl_setopt( $this->curlHandle, CURLOPT_MAXREDIRS, 5 );
-        curl_setopt( $this->curlHandle, CURLOPT_POSTFIELDS, $postVars );
-        return curl_exec( $this->curlHandle );
-    }
-    
-    function __destruct() {
-        curl_close( $this->curlHandle );
-        @unlink('/tmp/cookies'.$this->id.'.dat');
-    }
-    
+		$this->id = rand( 0, 1000000 );
+		$this->curlHandle = curl_init();
+		curl_setopt( $this->curlHandle, CURLOPT_COOKIEJAR, '/tmp/cookies'.$this->id.'.dat' );
+		curl_setopt( $this->curlHandle, CURLOPT_COOKIEFILE, '/tmp/cookies'.$this->id.'.dat' );
+		curl_setopt( $this->curlHandle, CURLOPT_MAXCONNECTS, 10 );
+		curl_setopt( $this->curlHandle, CURLOPT_CLOSEPOLICY, CURLCLOSEPOLICY_LEAST_RECENTLY_USED );
+	}
+
+	function get( $url ) {
+		curl_setopt( $this->curlHandle, CURLOPT_URL, $url );
+		curl_setopt( $this->curlHandle, CURLOPT_USERAGENT, 'php PageTriageBot' );
+		curl_setopt( $this->curlHandle, CURLOPT_HTTPGET, 1 );
+		curl_setopt( $this->curlHandle, CURLOPT_RETURNTRANSFER, 1 );
+		curl_setopt( $this->curlHandle, CURLOPT_TIMEOUT, 60 );
+		curl_setopt( $this->curlHandle, CURLOPT_CONNECTTIMEOUT, 10 );
+		curl_setopt( $this->curlHandle, CURLOPT_HEADER, 0 );
+		curl_setopt( $this->curlHandle, CURLOPT_ENCODING, 'UTF-8' );
+		curl_setopt( $this->curlHandle, CURLOPT_FOLLOWLOCATION, 1 );
+		curl_setopt( $this->curlHandle, CURLOPT_MAXREDIRS, 5 );
+		return curl_exec( $this->curlHandle );
+	}
+
+	function post( $url, $postVars ) {
+		curl_setopt( $this->curlHandle, CURLOPT_URL, $url );
+		curl_setopt( $this->curlHandle, CURLOPT_USERAGENT, 'php PageTriageBot' );
+		curl_setopt( $this->curlHandle, CURLOPT_POST, 1 );
+		curl_setopt( $this->curlHandle, CURLOPT_RETURNTRANSFER, 1 );
+		curl_setopt( $this->curlHandle, CURLOPT_TIMEOUT, 60 );
+		curl_setopt( $this->curlHandle, CURLOPT_CONNECTTIMEOUT, 10 );
+		curl_setopt( $this->curlHandle, CURLOPT_HTTPHEADER, array( 'Expect:' ) );
+		curl_setopt( $this->curlHandle, CURLOPT_ENCODING, 'UTF-8' );
+		curl_setopt( $this->curlHandle, CURLOPT_FOLLOWLOCATION, 0 );
+		curl_setopt( $this->curlHandle, CURLOPT_MAXREDIRS, 5 );
+		curl_setopt( $this->curlHandle, CURLOPT_POSTFIELDS, $postVars );
+		return curl_exec( $this->curlHandle );
+	}
+
+	function __destruct() {
+		curl_close( $this->curlHandle );
+		@unlink('/tmp/cookies'.$this->id.'.dat');
+	}
+
 }
 
 /**
@@ -69,146 +69,146 @@ class Http {
 class WikiApi {
 	private $http, $token, $url;
 
-    /**
-     * Construct the class instance
-     * @param $url string The URL used to access the API
-     **/
-    function __construct( $url ) {
-        $this->http = new Http;
-        $this->url = $url;
-    }
-
-    /**
-     * Send a get query to the API
-     * @param $query The query string
-     * @return The result from the API
-     **/
-    function get( $query ) {
-    	$result = $this->http->get( $this->url.$query );
-		return unserialize( $result );
-    }
-    
-    /**
-     * Send a post query to the API
-     * @param $query The query string
-     * @return The result from the API
-     **/
-    function post( $query, $postVars ) {
-    	$result = $this->http->post( $this->url.$query, $postVars );
-		return unserialize( $result );
-    }
-    
-    /**
-     * Log into the wiki via the API
-     * @param $username The user's username
-     * @param $password The user's password
-     * @return The result from the API
-     **/    
-    function login( $username, $password ) {
-    	$postVars = array( 'lgname' => $username, 'lgpassword' => $password );
-        $result = $this->post( '?action=login&format=php', $postVars );
-        if ( $result['login']['result'] === 'NeedToken' ) {
-        	// Do it again with the token
-        	$postVars['lgtoken'] = $result['login']['token'];
-        	$result = $this->post( '?action=login&format=php', $postVars );
-        }
-        if ( $result['login']['result'] !== 'Success' ) {
-            echo "Login failed.\n";
-            die();
-        } else {
-            return $result;
-        }
-    }
-    
-    /**
-     * Get an edit token for the user
-     * @return The token
-     **/        
-    function getToken () {
-    	$params = array(
-    		'action' => 'query',
-    		'format' => 'php',
-            'prop' => 'info',
-            'intoken' => 'edit',
-            'titles' => 'Main Page'
-        );
-        $params = http_build_query( $params );
-        $result = $this->get( '?'.$params );
-        foreach ( $result['query']['pages'] as $page ) {
-            return $page['edittoken'];
-        }
-    }
-    
 	/**
-     * Get the contents of a page
-     * @param $title string The title of the wikipedia page to fetch
-     * @return The wikitext for the page (or false)
-     **/
-    function getPage( $title ) {
-    	$params = array(
-    		'action' => 'query',
-    		'format' => 'php',
-            'prop' => 'revisions',
-            'titles' => $title,
-            'rvlimit' => 1,
-            'rvprop' => 'content'
-        );
-        $params = http_build_query( $params );
-        $result = $this->get('?'.$params );
-        foreach ( $result['query']['pages'] as $page ) {
-            if ( isset( $page['revisions'][0]['*'] ) ) {
-                return $page['revisions'][0]['*'];
-            } else {
-                return false;
-            }
-        }
-    }
-    
-    /**
-     * Get the newest pages from the wiki
-     * @param $namespace The namespace to limit the search to
-     * @param $limit The maximum number of pages to return
-     * @return array of titles
-     **/
-   	function getNewPages( $namespace = 0, $limit = 10 ) {
-        $params = array(
-        	'action' => 'query',
-        	'list' => 'recentchanges',
-        	'format' => 'php',
-            'rctype' => 'new',
-            'rcprop' => 'title',
-            'rcnamespace' => $namespace,
-            'rclimit' => $limit
-        );
-        $params = http_build_query( $params );
-        $result = $this->get( '?'.$params );
-        $pages = $result['query']['recentchanges'];
-        $pageTitles = array();
-        foreach ( $pages as $page ) {
-        	$pageTitles[] = $page['title'];
-        }
-        return $pageTitles;
-    }
-    
-    /**
-     * Create a new page on the wiki
-     * @param $title The title of the new page
-     * @param $text The text of the new page
-     * @return The result from the API
-     **/    
+	 * Construct the class instance
+	 * @param $url string The URL used to access the API
+	 **/
+	function __construct( $url ) {
+		$this->http = new Http;
+		$this->url = $url;
+	}
+
+	/**
+	 * Send a get query to the API
+	 * @param $query The query string
+	 * @return The result from the API
+	 **/
+	function get( $query ) {
+		$result = $this->http->get( $this->url.$query );
+		return unserialize( $result );
+	}
+
+	/**
+	 * Send a post query to the API
+	 * @param $query The query string
+	 * @return The result from the API
+	 **/
+	function post( $query, $postVars ) {
+		$result = $this->http->post( $this->url.$query, $postVars );
+		return unserialize( $result );
+	}
+
+	/**
+	 * Log into the wiki via the API
+	 * @param $username The user's username
+	 * @param $password The user's password
+	 * @return The result from the API
+	 **/
+	function login( $username, $password ) {
+		$postVars = array( 'lgname' => $username, 'lgpassword' => $password );
+		$result = $this->post( '?action=login&format=php', $postVars );
+		if ( $result['login']['result'] === 'NeedToken' ) {
+			// Do it again with the token
+			$postVars['lgtoken'] = $result['login']['token'];
+			$result = $this->post( '?action=login&format=php', $postVars );
+		}
+		if ( $result['login']['result'] !== 'Success' ) {
+			echo "Login failed.\n";
+			die();
+		} else {
+			return $result;
+		}
+	}
+
+	/**
+	 * Get an edit token for the user
+	 * @return The token
+	 **/
+	function getToken () {
+		$params = array(
+			'action' => 'query',
+			'format' => 'php',
+			'prop' => 'info',
+			'intoken' => 'edit',
+			'titles' => 'Main Page'
+		);
+		$params = http_build_query( $params );
+		$result = $this->get( '?'.$params );
+		foreach ( $result['query']['pages'] as $page ) {
+			return $page['edittoken'];
+		}
+	}
+
+	/**
+	 * Get the contents of a page
+	 * @param $title string The title of the wikipedia page to fetch
+	 * @return The wikitext for the page (or false)
+	 **/
+	function getPage( $title ) {
+		$params = array(
+			'action' => 'query',
+			'format' => 'php',
+			'prop' => 'revisions',
+			'titles' => $title,
+			'rvlimit' => 1,
+			'rvprop' => 'content'
+		);
+		$params = http_build_query( $params );
+		$result = $this->get('?'.$params );
+		foreach ( $result['query']['pages'] as $page ) {
+			if ( isset( $page['revisions'][0]['*'] ) ) {
+				return $page['revisions'][0]['*'];
+			} else {
+				return false;
+			}
+		}
+	}
+
+	/**
+	 * Get the newest pages from the wiki
+	 * @param $namespace The namespace to limit the search to
+	 * @param $limit The maximum number of pages to return
+	 * @return array of titles
+	 **/
+	function getNewPages( $namespace = 0, $limit = 10 ) {
+		$params = array(
+			'action' => 'query',
+			'list' => 'recentchanges',
+			'format' => 'php',
+			'rctype' => 'new',
+			'rcprop' => 'title',
+			'rcnamespace' => $namespace,
+			'rclimit' => $limit
+		);
+		$params = http_build_query( $params );
+		$result = $this->get( '?'.$params );
+		$pages = $result['query']['recentchanges'];
+		$pageTitles = array();
+		foreach ( $pages as $page ) {
+			$pageTitles[] = $page['title'];
+		}
+		return $pageTitles;
+	}
+
+	/**
+	 * Create a new page on the wiki
+	 * @param $title The title of the new page
+	 * @param $text The text of the new page
+	 * @return The result from the API
+	 **/
 	function createPage ( $title, $text ) {
-        if ( !$this->token ) {
-            $this->token = $this->getToken();
-        }
-        $params = array(
-            'title' => $title,
-            'text' => $text,
-            'token' => $this->token,
-            'summary' => 'Importing article from another wiki for testing purposes',
-            'createonly' => '1'
-        );
-        return $this->post('?action=edit&format=php', $params);
-    }
+		if ( !$this->token ) {
+			$this->token = $this->getToken();
+		}
+		$params = array(
+			'title' => $title,
+			'text' => $text,
+			'token' => $this->token,
+			'summary' => 'Importing article from another wiki for testing purposes',
+			'createonly' => '1'
+		);
+		return $this->post('?action=edit&format=php', $params);
+	}
 }
 
 if ( isset( $_SERVER ) && isset( $_SERVER['REQUEST_METHOD'] ) ) {
@@ -226,7 +226,7 @@ if ( isset( $argv[4] ) ) {
 } else {
 	$source = new WikiApi( 'http://en.wikipedia.org/w/api.php' );
 }
- 
+
 $pages = array();
 
 if ( $argv[1] > 0 && $argv[1] <= 10000 ) {
@@ -252,5 +252,5 @@ foreach ( $pages as $page ) {
 		echo "Success: $page\n";
 	}
 }
- 
+
 echo "Done.\n";
