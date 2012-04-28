@@ -14,7 +14,7 @@
 /**
  * Interface to cURL
  **/
-class Http {
+class PageTriageHttp {
 	private $curlHandle;
 	private $id;
 
@@ -27,6 +27,9 @@ class Http {
 		curl_setopt( $this->curlHandle, CURLOPT_CLOSEPOLICY, CURLCLOSEPOLICY_LEAST_RECENTLY_USED );
 	}
 
+	/**
+	 * @param $url string
+	 */
 	function get( $url ) {
 		curl_setopt( $this->curlHandle, CURLOPT_URL, $url );
 		curl_setopt( $this->curlHandle, CURLOPT_USERAGENT, 'php PageTriageBot' );
@@ -41,6 +44,11 @@ class Http {
 		return curl_exec( $this->curlHandle );
 	}
 
+	/**
+	 * @param $url string
+	 * @param $postVars
+	 * @return mixed
+	 */
 	function post( $url, $postVars ) {
 		curl_setopt( $this->curlHandle, CURLOPT_URL, $url );
 		curl_setopt( $this->curlHandle, CURLOPT_USERAGENT, 'php PageTriageBot' );
@@ -74,14 +82,14 @@ class WikiApi {
 	 * @param $url string The URL used to access the API
 	 **/
 	function __construct( $url ) {
-		$this->http = new Http;
+		$this->http = new PageTriageHttp;
 		$this->url = $url;
 	}
 
 	/**
 	 * Send a get query to the API
-	 * @param $query The query string
-	 * @return The result from the API
+	 * @param $query string y The query string
+	 * @return string The result from the API
 	 **/
 	function get( $query ) {
 		$result = $this->http->get( $this->url.$query );
@@ -90,9 +98,10 @@ class WikiApi {
 
 	/**
 	 * Send a post query to the API
-	 * @param $query The query string
-	 * @return The result from the API
-	 **/
+	 * @param $query string The query string
+	 * @param $postVars
+	 * @return string The result from the API
+	 */
 	function post( $query, $postVars ) {
 		$result = $this->http->post( $this->url.$query, $postVars );
 		return unserialize( $result );
@@ -100,9 +109,9 @@ class WikiApi {
 
 	/**
 	 * Log into the wiki via the API
-	 * @param $username The user's username
-	 * @param $password The user's password
-	 * @return The result from the API
+	 * @param $username string The user's username
+	 * @param $password string The user's password
+	 * @return string The result from the API
 	 **/
 	function login( $username, $password ) {
 		$postVars = array( 'lgname' => $username, 'lgpassword' => $password );
@@ -122,7 +131,7 @@ class WikiApi {
 
 	/**
 	 * Get an edit token for the user
-	 * @return The token
+	 * @return string The token
 	 **/
 	function getToken () {
 		$params = array(
@@ -142,7 +151,7 @@ class WikiApi {
 	/**
 	 * Get the contents of a page
 	 * @param $title string The title of the wikipedia page to fetch
-	 * @return The wikitext for the page (or false)
+	 * @return string The wikitext for the page (or false)
 	 **/
 	function getPage( $title ) {
 		$params = array(
@@ -166,8 +175,8 @@ class WikiApi {
 
 	/**
 	 * Get the newest pages from the wiki
-	 * @param $namespace The namespace to limit the search to
-	 * @param $limit The maximum number of pages to return
+	 * @param $namespace int The namespace to limit the search to
+	 * @param $limit int The maximum number of pages to return
 	 * @return array of titles
 	 **/
 	function getNewPages( $namespace = 0, $limit = 10 ) {
@@ -192,9 +201,9 @@ class WikiApi {
 
 	/**
 	 * Create a new page on the wiki
-	 * @param $title The title of the new page
-	 * @param $text The text of the new page
-	 * @return The result from the API
+	 * @param $title string The title of the new page
+	 * @param $text string The text of the new page
+	 * @return string The result from the API
 	 **/
 	function createPage ( $title, $text ) {
 		if ( !$this->token ) {
