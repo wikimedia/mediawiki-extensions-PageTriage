@@ -35,7 +35,7 @@ $messages['en'] = array(
 	'pagetriage-special-contributions' => 'Special:Contributions',
 	'pagetriage-showing' => 'Showing',
 	'pagetriage-filter-list-prompt' => 'Filter list',
-	'pagetriage-article-count' => 'There are currently $1 unreviewed pages', // FIXME: Add PLURAL
+	'pagetriage-article-count' => 'There {{PLURAL:$1|is currently $1 unreviewed page|are currently $1 unreviewed pages}}',
 	'pagetriage-viewing' => 'Viewing',
 	'pagetriage-sort-by' => 'Sort by:',
 	'pagetriage-newest' => 'Newest',
@@ -74,6 +74,8 @@ $messages['en'] = array(
 	'pagetriage-filter-stat-blocked' => 'Blocked users',
 	'pagetriage-filter-stat-username' => 'Username: $1',
 	'pagetriage-no-pages' => 'No pages match your criteria.',
+	'pagetriage-warning-prototype' => 'This is a prototype for testing purposes.',
+	'pagetriage-warning-browser' => 'This tool may not work correctly in browsers older than Explorer 8.',
 );
 
 /**

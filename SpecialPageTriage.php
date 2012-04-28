@@ -36,7 +36,7 @@ class SpecialPageTriage extends SpecialPage {
 		}
 		
 		// Output the title of the page
-		$out->setPageTitle( wfMessage( 'pagetriage' ) );
+		$out->setPagetitle( $this->msg( 'pagetriage' ) );
 
 		// Set whether or not to do infinite scrolling based on config variable
 		if ( is_bool( $wgPageTriageInfiniteScrolling ) ) {
@@ -60,6 +60,12 @@ class SpecialPageTriage extends SpecialPage {
 
 		// Load the JS
 		$out->addModules( array( 'ext.pageTriage.external', 'ext.pageTriage.models', 'ext.pageTriage.views.list' ) );
+		
+		$warnings = '';
+		$warnings .= "<div id='mwe-pt-list-warnings'>";
+		$warnings .= "<div>".$this->msg( 'pagetriage-warning-prototype' )."</div>";
+		$warnings .= "</div>";
+		$out->addHtml( $warnings );
 				
 		// This will hold the HTML for the triage interface
 		$triageInterface = '';
@@ -72,7 +78,7 @@ class SpecialPageTriage extends SpecialPage {
 		$triageInterface .= "<div id='mwe-pt-list-view'>Please wait...</div>";
 		$triageInterface .= "<div id='mwe-pt-list-errors' style='display: none;'></div>";
 		$triageInterface .= "<div id='mwe-pt-list-more' style='display: none;'>";
-		$triageInterface .= "<a href='#' id='mwe-pt-list-more-link'>".wfMessage( 'pagetriage-more' )."</a>";
+		$triageInterface .= "<a href='#' id='mwe-pt-list-more-link'>".$this->msg( 'pagetriage-more' )."</a>";
 		$triageInterface .= "</div>";
 		$triageInterface .= "<div id='mwe-pt-list-load-more-anchor'></div>";
 		$triageInterface .= "<div id='mwe-pt-list-stats-nav' class='mwe-pt-navigation-bar mwe-pt-control-gradient'>";
@@ -271,7 +277,7 @@ class SpecialPageTriage extends SpecialPage {
 
 HTML;
 
-		// Output the HTML for the page
+		// Output the HTML for the triage interface
 		$out->addHtml( $triageInterface );
 
 	}

@@ -280,6 +280,7 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'pagetriage-filter-stat-username',
 		'pagetriage-filter-all',
 		'pagetriage-no-pages',
+		'pagetriage-warning-browser',
 	)
 );
 

@@ -25,13 +25,18 @@ $( function() {
 
 			// this event is triggered when the collection finishes loading.
 			//articles.bind( 'all', this.render, this );
-			
+
 			// bind manualLoadMore function to 'More' link
 			var _this = this;
 			$( '#mwe-pt-list-more-link' ).click( function() {
 				_this.manualLoadMore();
 				return false;
 			} );
+
+			// Show a warning if we're using an old version version of Explorer
+			if ( $.browser.msie && parseInt( $.browser.version ) < 8 ) {
+				$( '#mwe-pt-list-warnings' ).append( '<div>'+mw.msg( 'pagetriage-warning-browser' )+'</div>' );
+			}
 
 			// on init, make sure to load the contents of the collection.
 			articles.fetch();
