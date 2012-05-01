@@ -7,7 +7,7 @@
  * @ingroup Extensions
  * @author Ryan Kaldari
  */ 
-class SpecialPageTriage extends SpecialPage {
+class SpecialPageTriage extends UnlistedSpecialPage {
 
 	// Holds the various options for viewing the list
 	protected $opts;
