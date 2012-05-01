@@ -177,8 +177,8 @@ class SpecialPageTriage extends SpecialPage {
 							<span id="mwe-pt-dropdown-arrow">&#x25b8;</span>
 							<!--<span class="mwe-pt-dropdown-open">&#x25be;</span>-->
 						</b>
+						<div id="mwe-pt-control-dropdown-pokey"></div>
 						<div id="mwe-pt-control-dropdown" class="mwe-pt-control-gradient shadow">
-							<div id="mwe-pt-control-dropdown-pokey"></div>
 							<form>
 								<div class="mwe-pt-control-section">
 									<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-show-heading' ) %></b></span>
