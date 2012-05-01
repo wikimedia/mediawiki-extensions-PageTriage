@@ -56,6 +56,7 @@ $( function() {
 			var _this = this;
 			var $anchor = $( '#mwe-pt-list-load-more-anchor' );
 			opts = { offset: '100%' };
+			$anchor.waypoint( 'destroy' );
 			$anchor.waypoint( function( event, direction ) {
 				if ( direction == 'down' ) {
 					_this.automaticLoadMore();
