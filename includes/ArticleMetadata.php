@@ -141,9 +141,27 @@ class ArticleMetadata {
 			$dbr = wfGetDB( DB_SLAVE );
 
 			$res = $dbr->select(
-					array( 'pagetriage_page_tags', 'pagetriage_tags', 'pagetriage_page' ),
-					array( 'ptrpt_page_id', 'ptrt_tag_name', 'ptrpt_value', 'ptrp_reviewed', 'ptrp_created' ),
-					array( 'ptrpt_page_id' => $articles, 'ptrpt_tag_id = ptrt_tag_id', 'ptrpt_page_id = ptrp_page_id' ),
+					array(
+						'pagetriage_page_tags',
+						'pagetriage_tags',
+						'pagetriage_page',
+						'page'
+					),
+					array(
+						'ptrpt_page_id',
+						'ptrt_tag_name',
+						'ptrpt_value',
+						'ptrp_reviewed',
+						'ptrp_created',
+						'page_title',
+						'page_namespace'
+					),
+					array(
+						'ptrpt_page_id' => $articles,
+						'ptrpt_tag_id = ptrt_tag_id',
+						'ptrpt_page_id = ptrp_page_id',
+						'page_id = ptrp_page_id'
+					),
 					__METHOD__
 			);
 
@@ -153,6 +171,10 @@ class ArticleMetadata {
 				if ( !isset( $pageData[$row->ptrpt_page_id]['creation_date'] ) ) {
 					$pageData[$row->ptrpt_page_id]['creation_date'] = $row->ptrp_created;
 					$pageData[$row->ptrpt_page_id]['patrol_status'] = $row->ptrp_reviewed;
+					$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+					if ( $title ) {
+						$pageData[$row->ptrpt_page_id]['title'] = $title->getPrefixedText();
+					}
 				}
 			}
 
@@ -406,8 +428,8 @@ class ArticleCompileProcessor {
 						'ptrpt_tag_id' => $tags[$key],
 						'ptrpt_value' => $val
 					);
+					$dbw->replace( 'pagetriage_page_tags', array( 'ptrpt_page_id', 'ptrpt_tag_id' ), $row, __METHOD__ );
 				}
-				$dbw->replace( 'pagetriage_page_tags', array( 'ptrpt_page_id', 'ptrpt_tag_id' ), $row, __METHOD__ );
 			}
 			$pt = new PageTriage( $pageId );
 			$row = array( 'ptrp_tags_updated' => $dbw->timestamp( wfTimestampNow() ) );
@@ -471,11 +493,13 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 			$this->metadata[$row->page_id]['page_len'] = $row->page_len;
 			$this->metadata[$row->page_id]['rev_count'] = $row->rev_count;
-			$this->metadata[$row->page_id]['title'] = $title->getPrefixedText();
 			// The following data won't be saved into metadata since they are not metadata tags
 			// just for saving into cache later
 			$this->metadata[$row->page_id]['creation_date'] = $row->creation_date;
 			$this->metadata[$row->page_id]['patrol_status'] = $row->ptrp_reviewed;
+			if ( $title ) {
+				$this->metadata[$row->page_id]['title'] = $title->getPrefixedText();
+			}
 		}
 
 		if ( count( $this->metadata) == 0 ) {
