@@ -24,7 +24,9 @@ class SpecialPageTriage extends UnlistedSpecialPage {
 	 * @param $sub string The subpage, if any
 	 */
 	public function execute( $sub ) {
-		global $wgRequest, $wgPageTriageInfiniteScrolling;
+		global $wgRequest, $wgPageTriageInfiniteScrolling, 
+			$wgPageTriageStickyControlNav, $wgPageTriageStickyStatsNav;
+
 		$out = $this->getOutput();
 
 		global $wgUser;
@@ -38,13 +40,10 @@ class SpecialPageTriage extends UnlistedSpecialPage {
 		// Output the title of the page
 		$out->setPagetitle( $this->msg( 'pagetriage' ) );
 
-		// Set whether or not to do infinite scrolling based on config variable
-		if ( is_bool( $wgPageTriageInfiniteScrolling ) ) {
-			// Convert to string
-			$infiniteScroll = $wgPageTriageInfiniteScrolling ? 'true' : 'false';
-		} else {
-			$infiniteScroll = $wgPageTriageInfiniteScrolling;
-		}
+		// Make sure global vars are strings rather than booleans (for passing to mw.config)
+		$infiniteScroll = $this->booleanToString( $wgPageTriageInfiniteScrolling );
+		$stickyControlNav = $this->booleanToString( $wgPageTriageStickyControlNav );
+		$stickyStatsNav = $this->booleanToString( $wgPageTriageStickyStatsNav );
 		
 		// Allow infinite scrolling override from query string parameter
 		// We don't use getBool() here since the param is optional
@@ -54,9 +53,12 @@ class SpecialPageTriage extends UnlistedSpecialPage {
 			$infiniteScroll = 'false';
 		}
 
-		// Set the infinite scrolling flag in JavaScript
-		$out->addScript( "<script type=\"text/javascript\">mw.config.set({\"wgPageTriageInfiniteScrolling\":" . 
-			$infiniteScroll . "});</script>" );
+		// Set the config flags in JavaScript
+		$out->addScript( "<script type=\"text/javascript\">mw.config.set({" .
+			"\"wgPageTriageInfiniteScrolling\":" . $infiniteScroll . ", " .
+			"\"wgPageTriageStickyControlNav\":" . $stickyControlNav . ", " .
+			"\"wgPageTriageStickyStatsNav\":" . $stickyStatsNav .
+			"});</script>" );
 
 		// Load the JS
 		$out->addModules( array( 'ext.pageTriage.external', 'ext.pageTriage.models', 'ext.pageTriage.views.list' ) );
@@ -280,6 +282,19 @@ HTML;
 		// Output the HTML for the triage interface
 		$out->addHtml( $triageInterface );
 
+	}
+
+	/**
+	 * Helper function to convert booleans to strings (for passing to mw.config)
+	 * @param boolean $value The value to convert into a string
+	 */
+	private function booleanToString( $value ) {
+		if ( is_string( $value ) ) {
+			return $value;
+		} else {
+			// Convert to string
+			return $value ? 'true' : 'false';
+		}
 	}
 
 }

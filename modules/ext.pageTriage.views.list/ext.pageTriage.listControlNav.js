@@ -13,20 +13,24 @@ $( function() {
 
 			this.eventBus = options.eventBus; // access the eventBus
 			
-			this.setWaypoint();
-
-			// do things that need doing on window resize
-			$( window ).resize( _.debounce( _this.resize, 100 ) );
+			if ( mw.config.get( 'wgPageTriageStickyControlNav' ) ) {
+				this.setWaypoint(); // create scrolling waypoint
+	
+				// reset the width when the window is resized
+				$( window ).resize( _.debounce( _this.setWidth, 100 ) );
+	
+				// when the list view is updated, see if we need to change the
+				// float state of the navbar
+				this.eventBus.bind( 'articleListChange', function() {
+					_this.setPosition();
+				} );
+			}
 
 			this.eventBus.bind( "renderStats", function( stats ) {
 				// fill in the counter when the stats view gets loaded.
 				$( "#mwe-pt-control-stats" ).html( gM( 'pagetriage-article-count', stats.get('ptr_unreviewed_article_count') ) );
 			} );
-
-			this.eventBus.bind( 'articleListChange', function() {
-				_this.setWaypoint();
-			} );
-
+			
 			// update the filter display on load.
 			this.menuSync();
 		},
@@ -83,26 +87,27 @@ $( function() {
 			} );
 		},
 
+		// Create a waypoint trigger that floats the navbar when the user scrolls down
 		setWaypoint: function() {
-			// make a floating top navbar
-			$( '#mwe-pt-list-control-nav' ).waypoint('destroy');  // remove the old, maybe inaccurate ones.
+			$( '#mw-content-text' ).waypoint('destroy');  // remove the old, maybe inaccurate ones.
 			var _this = this;
 			$.waypoints.settings.scrollThrottle = 30;
-			$( '#mwe-pt-list-control-nav' ).waypoint( function( event, direction ) {
-				$( this ).parent().toggleClass( 'stickyTop', direction === "down" );
-				
-				// pad the element that scrolls under the bar, so it doesn't jump beneath it when the bar
-				// changes to fixed positioning.
+			$( '#mw-content-text' ).waypoint( function( event, direction ) {
 				if( direction === 'down' ) {
-					$( '#mwe-pt-list-view' ).css('padding-top', $( '#mwe-pt-list-control-nav' ).height() );
+					$( '#mwe-pt-list-control-nav' ).parent().addClass('stickyTop');
+					_this.setWidth();
+					// pad the top of the list so it doesn't jump when the navbar changes to fixed positioning.
+					$( '#mwe-pt-list-view' ).css( 'padding-top', $( '#mwe-pt-list-control-nav' ).height() );
 				} else {
-					$( '#mwe-pt-list-view' ).css('padding-top', 0 );
+					$( '#mwe-pt-list-control-nav' ).parent().removeClass('stickyTop');
+					$( '#mwe-pt-list-view' ).css( 'padding-top', 0 );
 				}
-
-				_this.resize();
 				event.stopPropagation();
 			} );
-
+		},
+		
+		// See if the navbar needs to be floated (for non-scrolling events)
+		setPosition: function() {
 			// Different browsers represent the document's scroll position differently.
 			// I would expect jQuery to deal with this in some graceful fashion, but nooo...
 			var scrollTop = $('body').scrollTop() || $('html').scrollTop() || $(window).scrollTop();
@@ -110,15 +115,17 @@ $( function() {
 			if( $( '#mwe-pt-list-view' ).offset().top > scrollTop ) {
 				// turn off floating nav, bring the bar back into the list.
 				$( '#mwe-pt-list-control-nav' ).parent().removeClass('stickyTop');
-				this.floatNav = false;
+				$( '#mwe-pt-list-view' ).css( 'padding-top', 0 );
 			} else {
 				// top nav isn't visible.  turn on the floating navbar
 				$( '#mwe-pt-list-control-nav' ).parent().addClass('stickyTop');
-				this.floatNav = true;
+				this.setWidth();
+				// pad the top of the list so it doesn't jump when the navbar changes to fixed positioning.
+				$( '#mwe-pt-list-view' ).css( 'padding-top', $( '#mwe-pt-list-control-nav' ).height() );
 			}
 		},
 
-		resize: function() {
+		setWidth: function() {
 			// set the width of the floating bar when the window resizes, if it's floating.
 			// border is 2 pixels
 			$( '#mwe-pt-list-control-nav' ).css( 'width', $( '#mw-content-text' ).width() - 2 + 'px' );
