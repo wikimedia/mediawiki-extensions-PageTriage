@@ -165,6 +165,42 @@ class PageTriageHooks {
 	}
 
 	/**
+	 * Determines whether to show no-index for the article specified, show no-index if
+	 * 1. the page contains a template listed in $wgPageTriageNoIndexTemplates page
+	 * 2. the page is in triage queue and has not been triaged
+	 * @param $article Article
+	 * @return bool
+	 */
+	private static function shouldShowNoIndex( $article ) {
+		global $wgPageTriageNoIndexTemplates;
+
+		$showNoIndex = false;
+		if ( $wgPageTriageNoIndexTemplates && $article->mParserOutput instanceof ParserOutput) {
+			$noIndexTitle = Title::newFromText( $wgPageTriageNoIndexTemplates, NS_MEDIAWIKI );
+			if ( $noIndexTitle ) {
+				$noIndexArticle = Article::newFromID( $noIndexTitle->getArticleID() );
+				if ( $noIndexArticle ) {
+					$noIndexTemplate = explode( '|', $noIndexArticle->fetchContent() );
+					foreach ( $article->mParserOutput->getTemplates() as $ns => $templates ) {
+						foreach ( $templates as $template => $pageId ) {
+							if ( in_array( $template, $noIndexTemplate ) ) {
+								$showNoIndex = true;
+								break 2;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		if ( !$showNoIndex && PageTriageUtil::doesPageNeedTriage( $article ) ) {
+			$showNoIndex = true;
+		}
+
+		return $showNoIndex;
+	}
+	
+	/**
 	 * Adds "mark as patrolled" link to articles
 	 *
 	 * @param &$article Article object to show link for.
@@ -217,6 +253,11 @@ class PageTriageHooks {
 		$html = Html::rawElement( 'div', array( 'class' => 'mw-pagetriage-markpatrolled' ), $msg );
 
 		$wgOut->addHTML( $html );
+
+		// Overwrite the noindex rule defined in Article::view(), this also affects main namespace
+		if ( self::shouldShowNoIndex( $article ) ) {
+			$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		}
 
 		return true;
 	}
