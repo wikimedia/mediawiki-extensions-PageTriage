@@ -178,12 +178,13 @@ class PageTriageHooks {
 		// the presence of rcid means this is coming from Special:NewPages,
 		// and hence don't make any interference, this also applies to
 		// user with no right
-		if ( $wgRequest->getVal( 'rcid' ) || !$article->getTitle()->quickUserCan( 'patrol' ) ) {
+		if ( $wgRequest->getVal( 'rcid' ) ) {
 			return true;
 		}
 
 		$lastUse = $wgUser->getOption('pagetriage-lastuse');
-		$lastUse = wfTimestamp( TS_UNIX, $lastUse );
+		if ( $lastUse )
+			$lastUse = wfTimestamp( TS_UNIX, $lastUse );
 		$now = wfTimestamp( TS_UNIX, wfTimestampNow() );
 
 		$periodSince = $now - $lastUse;
@@ -195,9 +196,13 @@ class PageTriageHooks {
 		$status = PageTriageUtil::doesPageNeedTriage( $article );
 
 		if ( $status === true ) {
-			// show 'Mark as reviewed' link
-			$msg = wfMessage( 'pagetriage-markpatrolled' )->escaped();
-			$msg = Html::element( 'a', array( 'href' => '#', 'class' => 'mw-pagetriage-markpatrolled-link' ), $msg );
+			if ( $article->getTitle()->quickUserCan('patrol') ) {
+				// show 'Mark as reviewed' link
+				$msg = wfMessage( 'pagetriage-markpatrolled' )->text();
+				$msg = Html::element( 'a', array( 'href' => '#', 'class' => 'mw-pagetriage-markpatrolled-link' ), $msg );
+			} else {
+				$msg = wfMessage( 'pagetriage-unreviewed' )->escaped();
+			}
 			
 		} else if ( $status === false ) {
 			// show 'Reviewed' text
