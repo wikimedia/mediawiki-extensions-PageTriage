@@ -74,8 +74,13 @@ class ApiPageTriageList extends ApiBase {
 		if ( isset( $opts['namespace'] ) ) {
 			$conds['page_namespace'] = $opts['namespace'];
 		}
+
+		// Database setup
+		$dbr = wfGetDB( DB_SLAVE );
+
 		// Offset the list by timestamp
 		if ( array_key_exists( 'offset', $opts ) && is_numeric( $opts['offset'] ) && $opts['offset'] > 0 ) {
+			$opts['offset'] = $dbr->addQuotes( $dbr->timestamp( $opts['offset'] ) );
 			// Offset the list by page ID as well (in case multiple pages have the same timestamp)
 			if ( array_key_exists( 'pageoffset', $opts ) && is_numeric( $opts['pageoffset'] ) && $opts['pageoffset'] > 0 ) {
 				$conds[] = '( ptrp_created' . $offsetOperator . $opts['offset'] . ') OR ' .
@@ -91,9 +96,6 @@ class ApiPageTriageList extends ApiBase {
 			$conds[] = $tagConds;
 			$tables[] = 'pagetriage_page_tags';
 		}
-
-		// Database setup
-		$dbr = wfGetDB( DB_SLAVE );
 
 		// Pull page IDs from database
 		$res = $dbr->select(
