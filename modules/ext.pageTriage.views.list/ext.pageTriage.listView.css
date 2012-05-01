@@ -21,10 +21,17 @@
 
 #mwe-pt-list-errors {
 	color: #C00;
-	font-size: 17px;
-	line-height: 20px;
+	font-size: 1.2em;
+	line-height: 1.3em;
 	margin: 0;
 	padding: 0.4em;
 	border: 1px solid #CCC;
 	border-top: none;
+}
+
+#mwe-pt-list-warnings {
+	color: #C00;
+	font-size: 1.2em;
+	line-height: 1.3em;
+	margin-bottom: 0.5em;
 }
