@@ -61,7 +61,7 @@ class PageTriageHooks {
 	public static function onNewRevisionFromEditComplete( $article, $rev, $baseID, $user ) {
 		$prev = $rev->getPrevious();
 		if ( $prev && !$article->isRedirect() && $article->isRedirect( $prev->getRawText() ) ) {
-			self::addToPageTriageQueue( $article->getId(), $article->mTitle, $user );
+			self::addToPageTriageQueue( $article->getId(), $article->getTitle(), $user );
 		}
 		return true;
 	}
@@ -82,7 +82,7 @@ class PageTriageHooks {
 	 * @return bool
 	 */
 	public static function onArticleInsertComplete( $article, $user, $text, $summary, $isMinor, $isWatch, $section, $flags, $revision ) {
-		self::addToPageTriageQueue( $article->getId(), $article->mTitle, $user );
+		self::addToPageTriageQueue( $article->getId(), $article->getTitle(), $user );
 
 		return true;
 	}
