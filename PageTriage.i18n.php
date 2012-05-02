@@ -13,6 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'pagetriage' => 'Page Triage',
+	'pagetriage-new-pages-feed' => 'New Pages Feed',
 	'pagetriage-desc' => 'Facilitates reviewing and approving new pages',
 	'pagetriage-api-invalidid' => 'The ID you provided ($1) is not valid.',
 	'pagetriage-markpatrolled' => 'Mark this page as reviewed',
@@ -84,6 +85,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'pagetriage' => 'The name of this application (Page Triage)',
+	'pagetriage-new-pages-feed' => 'Title of a special page',
 	'pagetriage-desc' => '{{desc}}',
 	'pagetriage-api-invalidid' => 'Invalid title error message for pagetriage API',
 	'pagetriage-markpatrolled' => 'Button text for the mark-as-patrolled button',

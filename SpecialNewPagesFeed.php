@@ -1,13 +1,13 @@
 <?php
 /**
- * This file defines the SpecialPageTriage class which handles the functionality for the 
- * PageTriage list view (Special:PageTriage).
+ * This file defines the SpecialNewPagesFeed class which handles the functionality for the 
+ * New Pages Feed (Special:NewPagesFeed).
  *
  * @file
  * @ingroup Extensions
  * @author Ryan Kaldari
  */ 
-class SpecialPageTriage extends UnlistedSpecialPage {
+class SpecialNewPagesFeed extends UnlistedSpecialPage {
 
 	// Holds the various options for viewing the list
 	protected $opts;
@@ -16,7 +16,7 @@ class SpecialPageTriage extends UnlistedSpecialPage {
 	 * Initialize the special page.
 	 */
 	public function __construct() {
-		parent::__construct( 'PageTriage' );
+		parent::__construct( 'NewPagesFeed' );
 	}
 
 	/**
@@ -38,7 +38,7 @@ class SpecialPageTriage extends UnlistedSpecialPage {
 		}
 		
 		// Output the title of the page
-		$out->setPagetitle( $this->msg( 'pagetriage' ) );
+		$out->setPagetitle( $this->msg( 'pagetriage-new-pages-feed' ) );
 
 		// Make sure global vars are strings rather than booleans (for passing to mw.config)
 		$infiniteScroll = $this->booleanToString( $wgPageTriageInfiniteScrolling );

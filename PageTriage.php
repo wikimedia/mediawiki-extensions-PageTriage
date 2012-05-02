@@ -62,9 +62,9 @@ $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['PageTriage'] = $dir . 'PageTriage.i18n.php';
 $wgExtensionMessagesFiles['PageTriageAlias'] = $dir . 'PageTriage.alias.php';
 
-$wgAutoloadClasses['SpecialPageTriage'] = $dir . 'SpecialPageTriage.php';
-$wgSpecialPages['PageTriage'] = 'SpecialPageTriage';
-$wgSpecialPageGroups['PageTriage'] = 'changes';
+$wgAutoloadClasses['SpecialNewPagesFeed'] = $dir . 'SpecialNewPagesFeed.php';
+$wgSpecialPages['NewPagesFeed'] = 'SpecialNewPagesFeed';
+$wgSpecialPageGroups['NewPagesFeed'] = 'changes';
 $wgAutoloadClasses['ArticleMetadata'] = $dir . 'includes/ArticleMetadata.php';
 $wgAutoloadClasses['PageTriage'] = $dir . 'includes/PageTriage.php';
 $wgAutoloadClasses['PageTriageUtil'] = $dir . 'includes/PageTriageUtil.php';
