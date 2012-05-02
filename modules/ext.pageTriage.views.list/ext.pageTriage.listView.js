@@ -40,10 +40,12 @@ $( function() {
 				} );
 			}
 
-			// Show a warning if we're using an old version version of Explorer
+			// Add a warning if we're using an old version version of Explorer
 			if ( $.browser.msie && parseInt( $.browser.version ) < 8 ) {
 				$( '#mwe-pt-list-warnings' ).append( '<div>'+mw.msg( 'pagetriage-warning-browser' )+'</div>' );
 			}
+			// Display whatever warnings we have
+			$( '#mwe-pt-list-warnings' ).show();
 
 			// on init, make sure to load the contents of the collection.
 			articles.fetch();
