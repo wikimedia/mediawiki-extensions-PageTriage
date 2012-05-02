@@ -75,7 +75,7 @@ $messages['en'] = array(
 	'pagetriage-filter-stat-blocked' => 'Blocked users',
 	'pagetriage-filter-stat-username' => 'Username: $1',
 	'pagetriage-no-pages' => 'No pages match your criteria.',
-	'pagetriage-warning-prototype' => 'This is a prototype, not a final product. Key features are still in development.',
+	'pagetriage-warning-prototype' => 'This is a prototype, not a final product. Key features are still in development. <a href="$1">Learn more</a> · <a href="$2">Leave feedback</a>',
 	'pagetriage-warning-browser' => 'This tool may not work correctly in browsers older than Internet Explorer 8.',
 );
 
@@ -143,5 +143,5 @@ $messages['qqq'] = array(
 	'pagetriage-filter-stat-blocked' => 'Status display component for articles by blocked users',
 	'pagetriage-filter-stat-username' => 'Status display component for filter by username. $1 is the username.',
 	'pagetriage-no-pages' => 'Message to display when no pages were retrieved',
-	'pagetriage-warning-prototype' => 'Warning message.',
+	'pagetriage-warning-prototype' => 'Warning message. $1 and $2 are URLs',
 );

@@ -25,7 +25,8 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 	 */
 	public function execute( $sub ) {
 		global $wgRequest, $wgPageTriageInfiniteScrolling, 
-			$wgPageTriageStickyControlNav, $wgPageTriageStickyStatsNav;
+			$wgPageTriageStickyControlNav, $wgPageTriageStickyStatsNav,
+			$wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl;
 
 		$out = $this->getOutput();
 
@@ -65,8 +66,8 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 		$out->addModules( array( 'ext.pageTriage.external', 'ext.pageTriage.models', 'ext.pageTriage.views.list' ) );
 		
 		$warnings = '';
-		$warnings .= "<div id='mwe-pt-list-warnings'>";
-		$warnings .= "<div>".$this->msg( 'pagetriage-warning-prototype' )->text()."</div>";
+		$warnings .= "<div id='mwe-pt-list-warnings' style='display: none;'>";
+		$warnings .= "<div>".$this->msg( 'pagetriage-warning-prototype', $wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl )->text()."</div>";
 		$warnings .= "</div>";
 		$out->addHtml( $warnings );
 				
