@@ -219,28 +219,32 @@ class PageTriageHooks {
 			return true;
 		}
 
-		$lastUse = $wgUser->getOption('pagetriage-lastuse');
-		if ( $lastUse )
-			$lastUse = wfTimestamp( TS_UNIX, $lastUse );
-		$now = wfTimestamp( TS_UNIX, wfTimestampNow() );
+		// Overwrite the noindex rule defined in Article::view(), this also affects main namespace
+		if ( self::shouldShowNoIndex( $article ) ) {
+			$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		}
 
-		$periodSince = $now - $lastUse;
+		// don't show anything for user with no patrol right
+		if ( !$article->getTitle()->quickUserCan('patrol') ) {
+			return true;
+		}
+		
+		$lastUse = $wgUser->getOption('pagetriage-lastuse');
+		if ( $lastUse ) {
+			$lastUse = wfTimestamp( TS_UNIX, $lastUse );
+			$now = wfTimestamp( TS_UNIX, wfTimestampNow() );
+			$periodSince = $now - $lastUse;
+		}
 
 		if ( !$lastUse || $periodSince > $wgPageTriageMarkPatrolledLinkExpiry ) {
 			return true;
 		}
 
 		$status = PageTriageUtil::doesPageNeedTriage( $article );
-
 		if ( $status === true ) {
-			if ( $article->getTitle()->quickUserCan('patrol') ) {
-				// show 'Mark as reviewed' link
-				$msg = wfMessage( 'pagetriage-markpatrolled' )->text();
-				$msg = Html::element( 'a', array( 'href' => '#', 'class' => 'mw-pagetriage-markpatrolled-link' ), $msg );
-			} else {
-				$msg = wfMessage( 'pagetriage-unreviewed' )->escaped();
-			}
-			
+			// show 'Mark as reviewed' link
+			$msg = wfMessage( 'pagetriage-markpatrolled' )->text();
+			$msg = Html::element( 'a', array( 'href' => '#', 'class' => 'mw-pagetriage-markpatrolled-link' ), $msg );
 		} else if ( $status === false ) {
 			// show 'Reviewed' text
 			$msg = wfMessage( 'pagetriage-reviewed' )->escaped();
@@ -254,11 +258,6 @@ class PageTriageHooks {
 		$html = Html::rawElement( 'div', array( 'class' => 'mw-pagetriage-markpatrolled' ), $msg );
 
 		$wgOut->addHTML( $html );
-
-		// Overwrite the noindex rule defined in Article::view(), this also affects main namespace
-		if ( self::shouldShowNoIndex( $article ) ) {
-			$wgOut->setRobotPolicy( 'noindex,nofollow' );
-		}
 
 		return true;
 	}
