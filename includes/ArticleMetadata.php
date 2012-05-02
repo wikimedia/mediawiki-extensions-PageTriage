@@ -478,35 +478,51 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 	public function compile() {
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$res = $dbr->select(
-				array ( 'page', 'revision', 'pagetriage_page' ),
+		$count = 0;
+		//Process page individually because MIN() GROUP BY is slow
+		foreach ( $this->mPageId as $pageId ) {
+			$row = $dbr->selectRow(
+				array ( 'revision', 'page' ),
 				array (
-					'page_id', 'page_namespace', 'page_title', 'page_len',
-					'COUNT(rev_id) AS rev_count', 'ptrp_reviewed',
+					'COUNT(rev_id) AS rev_count',
 					'MIN(rev_timestamp) AS creation_date'
 				),
-				array ( 'page_id' => $this->mPageId, 'page_id = rev_page', 'page_id = ptrp_page_id'),
-				__METHOD__,
-				array ( 'GROUP BY' => 'page_id' )
+				array ( 'rev_page' => $pageId, 'page_id = rev_page' ),
+				__METHOD__
+			);
+			if ( $row ) {
+				$this->metadata[$pageId]['rev_count'] = $row->rev_count;
+				$this->metadata[$pageId]['creation_date'] = $row->creation_date;
+				$count++;
+			}
+		}
+
+		// no record in page table
+		if ( $count == 0 ) {
+			return false;
+		}
+
+		$res = $dbr->select(
+				array ( 'page', 'pagetriage_page' ),
+				array (
+					'page_id', 'page_namespace', 'page_title', 'page_len',
+					'ptrp_reviewed'
+				),
+				array ( 'page_id' => $this->mPageId, 'page_id = ptrp_page_id'),
+				__METHOD__
 		);
 		foreach ( $res as $row ) {
 			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 			$this->metadata[$row->page_id]['page_len'] = $row->page_len;
-			$this->metadata[$row->page_id]['rev_count'] = $row->rev_count;
 			// The following data won't be saved into metadata since they are not metadata tags
 			// just for saving into cache later
-			$this->metadata[$row->page_id]['creation_date'] = $row->creation_date;
 			$this->metadata[$row->page_id]['patrol_status'] = $row->ptrp_reviewed;
 			if ( $title ) {
 				$this->metadata[$row->page_id]['title'] = $title->getPrefixedText();
 			}
 		}
 
-		if ( count( $this->metadata) == 0 ) {
-			return false;
-		} else {
-			return true;
-		}
+		return true;
 	}
 
 }
@@ -656,18 +672,18 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 	public function compile() {
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$res = $dbr->select(
+		// Process page individually because MIN() GROUP BY is slow
+		$revId = array();
+		foreach ( $this->mPageId as $pageId ) {
+			$res = $dbr->selectRow(
 				array( 'revision' ),
 				array( 'MIN(rev_id) AS rev_id' ),
-				array( 'rev_page' => $this->mPageId ),
-				__METHOD__,
-				array( 'GROUP BY' => 'rev_page' )
-		);
-
-		$revId = array();
-
-		foreach ( $res as $row ) {
-			$revId[] = $row->rev_id;
+				array( 'rev_page' => $pageId ),
+				__METHOD__
+			);
+			if ( $res ) {
+				$revId[] = $res->rev_id;
+			}
 		}
 
 		$res = $dbr->select(
@@ -680,9 +696,9 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 				array( 'rev_id' => $revId ),
 				__METHOD__,
 				array(),
-				array( 'user' => array(
-							'LEFT JOIN', 'rev_user = user_id' ),
-							'ipblocks' => array( 'LEFT JOIN', 'rev_user = ipb_user AND rev_user_text = ipb_address' )
+				array(
+					'user' => array( 'LEFT JOIN', 'rev_user = user_id' ),
+					'ipblocks' => array( 'LEFT JOIN', 'rev_user = ipb_user AND rev_user_text = ipb_address' )
 				)
 		);
 
