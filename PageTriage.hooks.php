@@ -184,8 +184,7 @@ class PageTriageHooks {
 					foreach ( $article->mParserOutput->getTemplates() as $ns => $templates ) {
 						foreach ( $templates as $template => $pageId ) {
 							if ( in_array( $template, $noIndexTemplate ) ) {
-								$showNoIndex = true;
-								break 2;
+								return true;
 							}
 						}
 					}
@@ -193,11 +192,11 @@ class PageTriageHooks {
 			}
 		}
 
-		if ( !$showNoIndex && PageTriageUtil::doesPageNeedTriage( $article ) ) {
-			$showNoIndex = true;
+		if ( PageTriageUtil::doesPageNeedTriage( $article ) ) {
+			return true;
 		}
 
-		return $showNoIndex;
+		return false;
 	}
 	
 	/**
