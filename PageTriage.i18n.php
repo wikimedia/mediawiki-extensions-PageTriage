@@ -77,7 +77,7 @@ $messages['en'] = array(
 	'pagetriage-filter-stat-username' => 'Username: $1',
 	'pagetriage-no-pages' => 'No pages match your criteria.',
 	'pagetriage-warning-prototype' => 'This is a prototype for testing purposes.',
-	'pagetriage-warning-browser' => 'This tool may not work correctly in browsers older than Explorer 8.',
+	'pagetriage-warning-browser' => 'This tool may not work correctly in browsers older than Internet Explorer 8.',
 );
 
 /**
