@@ -685,6 +685,10 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 			}
 		}
 
+		if ( count( $revId ) == 0 ) {
+			return true;
+		}
+
 		$res = $dbr->select(
 				array( 'revision', 'user', 'ipblocks' ),
 				array(
