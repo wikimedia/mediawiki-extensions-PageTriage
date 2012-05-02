@@ -35,7 +35,7 @@ class ApiPageTriageList extends ApiBase {
 	/**
 	 * Return all the page ids in PageTraige matching the specified filters
 	 * @param $opts array of filtering options
-	 * @return an array of ids
+	 * @return array an array of ids
 	 *
 	 * @Todo - enforce a range of timestamp to reduce tag record scan
 	 */
@@ -114,6 +114,10 @@ class ApiPageTriageList extends ApiBase {
 		return $pages;
 	}
 
+	/**
+	 * @param $opts array
+	 * @return string
+	 */
 	private static function buildTagQuery( $opts ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$tagConds = '';

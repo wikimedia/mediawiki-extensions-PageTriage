@@ -201,7 +201,7 @@ $wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + array(
 		'wed',
 		'thu',
 		'fri',
-		'sat',		
+		'sat',
 		'january',
 		'february',
 		'march',

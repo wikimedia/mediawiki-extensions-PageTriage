@@ -7,9 +7,9 @@ class PageTriageHooks {
 	 * main(article) namespace
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/SpecialMovepageAfterMove
-	 * @param $movePage: MovePageForm object
-	 * @param $oldTitle: old title object
-	 * @param $newTitle: new title object
+	 * @param $movePage MovePageForm object
+	 * @param $oldTitle Title old title object
+	 * @param $newTitle Title new title object
 	 * @return bool
 	 */
 	public static function onSpecialMovepageAfterMove( $movePage, &$oldTitle, &$newTitle ) {
@@ -20,7 +20,7 @@ class PageTriageHooks {
 		// Delete cache for record if it's in pagetriage queue
 		$articleMetadata = new ArticleMetadata( array( $pageId ) );
 		$articleMetadata->flushMetadataFromCache();
-		
+
 		$oldNamespace = $oldTitle->getNamespace();
 		$newNamespace = $newTitle->getNamespace();
 		// Do nothing further on if
@@ -44,10 +44,10 @@ class PageTriageHooks {
 	 * Note: Page will be automatically marked as triaged for users with autopatrol right
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/NewRevisionFromEditComplete
-	 * @param $article: the WikiPage edited
-	 * @param $rev: the new revision
-	 * @param $baseID: the revision ID this was based off, if any
-	 * @param $user: the editing user
+	 * @param $article WikiPage the WikiPage edited
+	 * @param $rev Revision the new revision
+	 * @param $baseID int the revision ID this was based on, if any
+	 * @param $user User the editing user
 	 * @return bool
 	 */
 	public static function onNewRevisionFromEditComplete( $article, $rev, $baseID, $user ) {
@@ -62,15 +62,15 @@ class PageTriageHooks {
 	 * Insert new page into PageTriage Queue
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/ArticleInsertComplete
-	 * @param $article: WikiPage created
-	 * @param $user: User creating the article
-	 * @param $text: New content
-	 * @param $summary: Edit summary/comment
-	 * @param $isMinor: Whether or not the edit was marked as minor
-	 * @param $isWatch: (No longer used)
-	 * @param $section: (No longer used)
+	 * @param $article WikiPage created
+	 * @param $user User creating the article
+	 * @param $text string New content
+	 * @param $summary string Edit summary/comment
+	 * @param $isMinor bool Whether or not the edit was marked as minor
+	 * @param $isWatch bool (No longer used)
+	 * @param $section bool (No longer used)
 	 * @param $flags: Flags passed to Article::doEdit()
-	 * @param $revision: New Revision of the article
+	 * @param $revision Revision New Revision of the article
 	 * @return bool
 	 */
 	public static function onArticleInsertComplete( $article, $user, $text, $summary, $isMinor, $isWatch, $section, $flags, $revision ) {
@@ -112,10 +112,10 @@ class PageTriageHooks {
 	 * Remove the metadata we added when the article is deleted.
 	 *
 	 * 'ArticleDeleteComplete': after an article is deleted
-	 * $article: the WikiPage that was deleted
-	 * $user: the user that deleted the article
-	 * $reason: the reason the article was deleted
-	 * $id: id of the article that was deleted
+	 * @param $article WikiPage the WikiPage that was deleted
+	 * @param $user User the user that deleted the article
+	 * @param $reason string the reason the article was deleted
+	 * @param $id int id of the article that was deleted
 	 */
 	public static function onArticleDeleteComplete( $article, $user, $reason, $id ) {
 		// delete everything
@@ -128,12 +128,13 @@ class PageTriageHooks {
 	 * Add page to page triage queue
 	 * @param $pageId int
 	 * @param $title Title
-	 * @param $user User
+	 * @param $user User|null
 	 * @param $patrolled bool - should the page be added to the queue as reviewed or not
+	 * @return bool
 	 */
 	private static function addToPageTriageQueue( $pageId, $title, $user = null, $patrolled = null ) {
 		global $wgUser, $wgUseRCPatrol, $wgUseNPPatrol;
-		
+
 		$user = is_null( $user ) ? $wgUser : $user;
 
 		if ( is_null( $patrolled ) ) {
@@ -148,13 +149,14 @@ class PageTriageHooks {
 		} else {
 			return $pageTriage->addToPageTriageQueue( '0' );
 		}
-		
+
 	}
 
 	/**
 	 * Add last time user visited the triage page to preferences.
 	 * @param $user User object
-	 * @param &$preferences Preferences object
+	 * @param &$preferences array Preferences object
+	 * @return bool
 	 */
 	public static function onGetPreferences( $user, &$preferences ) {
 		$preferences['pagetriage-lastuse'] = array(
@@ -185,7 +187,7 @@ class PageTriageHooks {
 						$noIndexTemplates = explode( '|', $noIndexTemplateText );
 						// Properly format the template names to match what getTemplates() returns
 						$noIndexTemplates = array_map( array( 'PageTriageHooks', 'formatTemplateName' ), $noIndexTemplates );
-						foreach ( $article->mParserOutput->getTemplates() as $ns => $templates ) {
+						foreach ( $article->mParserOutput->getTemplates() as $templates ) {
 							foreach ( $templates as $template => $pageId ) {
 								if ( in_array( $template, $noIndexTemplates ) ) {
 									return true;
@@ -203,7 +205,7 @@ class PageTriageHooks {
 
 		return false;
 	}
-	
+
 	/**
 	 * Formats a template name to match the format returned by getTemplates()
 	 * @param $template string
@@ -219,9 +221,7 @@ class PageTriageHooks {
 	 * Adds "mark as patrolled" link to articles
 	 *
 	 * @param &$article Article object to show link for.
-	 * @param &$outputDone Set if there is no more output to do.
-	 * @param &$pcache Set if you want to use the parser cache.
-	 * @return type description
+	 * @return bool
 	 */
 	public static function onArticleViewFooter( $article ) {
 		global $wgUser, $wgPageTriageMarkPatrolledLinkExpiry, $wgOut, $wgRequest;
@@ -266,7 +266,7 @@ class PageTriageHooks {
 				$msg = wfMessage( 'pagetriage-markpatrolled' )->text();
 				$msg = Html::element( 'a', array( 'href' => '#', 'class' => 'mw-pagetriage-markpatrolled-link' ), $msg );
 			}
-		} else if ( $status === false ) {
+		} elseif ( $status === false ) {
 			// show 'Reviewed' text
 			$msg = wfMessage( 'pagetriage-reviewed' )->escaped();
 		} else {
@@ -284,13 +284,17 @@ class PageTriageHooks {
 	}
 
 	/**
-	 * Sync records from patrol queue to triage queue 
+	 * Sync records from patrol queue to triage queue
 	 *
 	 * 'MarkPatrolledComplete': after an edit is marked patrolled
 	 * $rcid: ID of the revision marked as patrolled
 	 * $user: user (object) who marked the edit patrolled
 	 * $wcOnlySysopsCanPatrol: config setting indicating whether the user
 	 * must be a sysop to patrol the edit
+	 * @param $rcid int
+	 * @param $user User
+	 * @param $wcOnlySysopsCanPatrol
+	 * @return bool
 	 */
 	public static function onMarkPatrolledComplete( $rcid, &$user, $wcOnlySysopsCanPatrol ) {
 		$rc = RecentChange::newFromId( $rcid );
@@ -311,6 +315,8 @@ class PageTriageHooks {
 
 	/**
 	 * BeforePageDisplay hook
+	 * @param $out OutputPage
+	 * @return bool
 	 */
 	public static function onBeforePageDisplay( $out ) {
 		// one could place some conditionals here to determine if the
@@ -340,11 +346,12 @@ class PageTriageHooks {
 	}
 
 	/**
-	 * Update Article metadata when a user gets blocked 
+	 * Update Article metadata when a user gets blocked
 	 *
 	 * 'BlockIpComplete': after an IP address or user is blocked
-	 * $block: the Block object that was saved
-	 * $performer: the user who did the block (not the one being blocked)
+	 * @param $block Block the Block object that was saved
+	 * @param $performer User the user who did the block (not the one being blocked)
+	 * @return bool
 	 */
 	public static function onBlockIpComplete( $block, $performer ) {
 		PageTriageUtil::updateMetadataOnBlockChange( $block );

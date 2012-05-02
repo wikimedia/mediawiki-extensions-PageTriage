@@ -10,7 +10,7 @@ class SpecialPageTriageTest extends ApiTestCase {
 	protected $pageTriage;
 	
 	/**
-	 * @var test user
+	 * @var User test user
 	 */
 	public static $users;
 
@@ -21,7 +21,7 @@ class SpecialPageTriageTest extends ApiTestCase {
 				'pagetriage_test_user_1@example.com',
 				array()
 		);
-		
+
 		parent::setUp();
 		$this->pageTriage = new SpecialPageTriage;
 	}
@@ -31,7 +31,7 @@ class SpecialPageTriageTest extends ApiTestCase {
 		
 		// Remove the made up articles
 	}
-	
+
 	// Create a fake logged in user
 	function testLogin() {
 
@@ -80,7 +80,7 @@ class SpecialPageTriageTest extends ApiTestCase {
 		global $wgUser;
 
 		$wgUser = self::$users['one']->user;
-		
+
 		$params = array(
 			'action' => 'edit',
 			'title' => 'Vacation Disaster Mania',
@@ -88,7 +88,7 @@ class SpecialPageTriageTest extends ApiTestCase {
 			'createonly' => 1,
 			'text' => 'Hello World'
 		);
-		
+
 		list( $result, , $session ) =  $this->doApiRequestWithToken( 
 			$params,
 			$sessionArray['one'],
@@ -99,13 +99,13 @@ class SpecialPageTriageTest extends ApiTestCase {
 		
 		// If it worked, make some more articles for use as test data
 		if ( $result['edit']['result'] == "Success" ) {
-		
+
 			$newArticles = array(
 				'My Lame Garage Band' => 'We rock!',
 				'The Chronicals of Grok' => 'OK, I get it.',
 				'Very thin wafers' => 'Eat it!'
 			);
-			
+
 			foreach ( $newArticles as $title => $text ) {
 				$params = array(
 					'action' => 'edit',
@@ -121,9 +121,9 @@ class SpecialPageTriageTest extends ApiTestCase {
 					self::$users['one']->user
 				);
 			}
-		
+
 		}
-		
+
 	}
 
 }

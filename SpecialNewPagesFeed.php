@@ -1,12 +1,12 @@
 <?php
 /**
- * This file defines the SpecialNewPagesFeed class which handles the functionality for the 
+ * This file defines the SpecialNewPagesFeed class which handles the functionality for the
  * New Pages Feed (Special:NewPagesFeed).
  *
  * @file
  * @ingroup Extensions
  * @author Ryan Kaldari
- */ 
+ */
 class SpecialNewPagesFeed extends UnlistedSpecialPage {
 
 	// Holds the various options for viewing the list
@@ -24,9 +24,9 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 	 * @param $sub string The subpage, if any
 	 */
 	public function execute( $sub ) {
-		global $wgRequest, $wgPageTriageInfiniteScrolling, 
-			$wgPageTriageStickyControlNav, $wgPageTriageStickyStatsNav,
-			$wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl;
+		global $wgRequest, $wgPageTriageInfiniteScrolling,
+		       $wgPageTriageStickyControlNav, $wgPageTriageStickyStatsNav,
+		       $wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl;
 
 		$out = $this->getOutput();
 
@@ -37,7 +37,7 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 			$wgUser->saveSettings();
 			$wgUser->invalidateCache();
 		}
-		
+
 		// Output the title of the page
 		$out->setPagetitle( $this->msg( 'pagetriage-new-pages-feed' ) );
 
@@ -45,7 +45,7 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 		$wgPageTriageInfiniteScrolling = $this->booleanToString( $wgPageTriageInfiniteScrolling );
 		$wgPageTriageStickyControlNav = $this->booleanToString( $wgPageTriageStickyControlNav );
 		$wgPageTriageStickyStatsNav = $this->booleanToString( $wgPageTriageStickyStatsNav );
-		
+
 		// Allow infinite scrolling override from query string parameter
 		// We don't use getBool() here since the param is optional
 		if ( $wgRequest->getText( 'infinite' ) === 'true' ) {
@@ -53,7 +53,7 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 		} else if ( $wgRequest->getText( 'infinite' ) === 'false' ) {
 			$wgPageTriageInfiniteScrolling = 'false';
 		}
-		
+
 		// Set the config flags in JavaScript
 		$globalVars = array(
 			'wgPageTriageInfiniteScrolling' => $wgPageTriageInfiniteScrolling,
@@ -64,13 +64,13 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 
 		// Load the JS
 		$out->addModules( array( 'ext.pageTriage.external', 'ext.pageTriage.util', 'ext.pageTriage.models', 'ext.pageTriage.views.list' ) );
-		
+
 		$warnings = '';
 		$warnings .= "<div id='mwe-pt-list-warnings' style='display: none;'>";
 		$warnings .= "<div>".$this->msg( 'pagetriage-warning-prototype', $wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl )->text()."</div>";
 		$warnings .= "</div>";
 		$out->addHtml( $warnings );
-				
+
 		// This will hold the HTML for the triage interface
 		$triageInterface = '';
 
@@ -208,6 +208,7 @@ HTML;
 	/**
 	 * Helper function to convert booleans to strings (for passing to mw.config)
 	 * @param boolean $value The value to convert into a string
+	 * @return bool|string
 	 */
 	private function booleanToString( $value ) {
 		if ( is_string( $value ) ) {

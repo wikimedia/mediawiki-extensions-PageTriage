@@ -18,10 +18,9 @@ class updateUserMetadata extends Maintenance {
 	protected $batchSize = 500;	
 
 	/**
-	 * Database Object
+	 * @var DatabaseBase
 	 */
-	protected $dbr;
-	protected $dbw;
+	protected $dbr, $dbw;
 
 	public function __construct() {
 		parent::__construct();

@@ -8,8 +8,9 @@ class PageTriageUtil {
 	/**
 	 * Get whether or not a page needs triaging
 	 *
-	 * @param $article Article object
-	 * 
+	 * @param $article WikiPage object
+	 *
+	 * @throws MWException
 	 * @return Mixed null if the page is not in the triage system,
 	 * otherwise whether or not the page is unreviewed.
 	 * Return convention is this way so that null and false are equivalent
@@ -174,6 +175,7 @@ class PageTriageUtil {
 	 * Calculate the age of unreviewed articles by percentile
 	 * @param $percentile int
 	 * @param $count int
+	 * @throws MWPageTriageUtilInvalidNumberException
 	 * @return int|bool
 	 */
 	private static function estimateArticleAgePercentile( $percentile, $count ) {
@@ -227,7 +229,6 @@ class PageTriageUtil {
 
 		$return = array();
 		$title  = array();
-		$dataToCache = array();
 
 		foreach ( $users as $user ) {
 			$user = (array) $user;

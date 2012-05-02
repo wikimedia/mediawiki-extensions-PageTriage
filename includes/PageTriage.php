@@ -11,6 +11,10 @@ class PageTriage {
 
 	// additional property
 	protected $mLoaded;
+
+	/**
+	 * @var ArticleMetadata
+	 */
 	protected $mArticleMetadata;
 
 	/**
@@ -26,6 +30,7 @@ class PageTriage {
 	 * @param $reviewed string '1'/'0'
 	 * @param $user User
 	 * @param $fromRc bool
+	 * @throws MWPageTriageMissingRevisionException
 	 * @return bool - true: add new record, false: update existing record
 	 */
 	public function addToPageTriageQueue( $reviewed = '0', User $user = null, $fromRc = false ) {
@@ -214,6 +219,8 @@ class PageTriage {
 
 	/**
 	 * Set the tags updated timestamp
+	 * @param $pageIds array
+	 * @return string
 	 */
 	public static function bulkSetTagsUpdated( $pageIds ) {
 		$dbw = wfGetDB( DB_MASTER );
@@ -231,4 +238,4 @@ class PageTriage {
 
 }
 
-class MWPageTriageMissingRevisionException extends MWException {}
+class PageTriageMissingRevisionException extends MWException {}
