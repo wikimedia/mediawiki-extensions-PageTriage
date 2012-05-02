@@ -27,7 +27,7 @@ $( function() {
 			}
 
 			stats.set( 'ptrTopTriager',  topTriager );
-			stats.set( 'ptrTopTriagerStr', gM( 'pagetriage-stats-top-triagers', Number( stats.get( 'toptriager' ).total ) ) );
+			stats.set( 'ptrTopTriagerStr', gM( 'pagetriage-stats-top-reviewers', Number( stats.get( 'toptriager' ).total ) ) );
 			stats.set( 'ptrAverage', this.formatDaysFromNow( stats.get( 'unreviewedarticle' )['age-50th-percentile'] ) );
 			stats.set( 'ptrOldest', this.formatDaysFromNow( stats.get( 'unreviewedarticle' )['age-100th-percentile'] ) );
 		},
