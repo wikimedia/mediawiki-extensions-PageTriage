@@ -65,7 +65,7 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 		
 		$warnings = '';
 		$warnings .= "<div id='mwe-pt-list-warnings'>";
-		$warnings .= "<div>".$this->msg( 'pagetriage-warning-prototype' )."</div>";
+		$warnings .= "<div>".$this->msg( 'pagetriage-warning-prototype' )->text()."</div>";
 		$warnings .= "</div>";
 		$out->addHtml( $warnings );
 				

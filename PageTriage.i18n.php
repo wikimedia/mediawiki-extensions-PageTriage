@@ -75,7 +75,7 @@ $messages['en'] = array(
 	'pagetriage-filter-stat-blocked' => 'Blocked users',
 	'pagetriage-filter-stat-username' => 'Username: $1',
 	'pagetriage-no-pages' => 'No pages match your criteria.',
-	'pagetriage-warning-prototype' => 'This is a prototype for testing purposes.',
+	'pagetriage-warning-prototype' => 'This is a prototype, not a final product. Key features are still in development.',
 	'pagetriage-warning-browser' => 'This tool may not work correctly in browsers older than Internet Explorer 8.',
 );
 
@@ -132,7 +132,7 @@ $messages['qqq'] = array(
 	'pagetriage-filter-ns-all' => 'For the namespace filter select list, text indicating that all namespaces will be selected',
 	'pagetriage-more' => 'Text for a link that loads more articles into list',
 	'pagetriage-filter-stat-all' => 'Status display component for all pages (no filter)',
-	'pagetriage-filter-stat-namespace' => 'Status display component for the namespace filter.  $1 is the name of the namespace.',
+	'pagetriage-filter-stat-namespace' => 'Status display component for the namespace filter. $1 is the name of the namespace.',
 	'pagetriage-filter-stat-reviewed' => 'Status display component for reviewed pages',
 	'pagetriage-filter-stat-bots' => 'Status display component for bot-created pages',
 	'pagetriage-filter-stat-redirects' => 'Status display component for redirects',
@@ -143,4 +143,5 @@ $messages['qqq'] = array(
 	'pagetriage-filter-stat-blocked' => 'Status display component for articles by blocked users',
 	'pagetriage-filter-stat-username' => 'Status display component for filter by username. $1 is the username.',
 	'pagetriage-no-pages' => 'Message to display when no pages were retrieved',
+	'pagetriage-warning-prototype' => 'Warning message.',
 );
