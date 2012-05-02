@@ -593,17 +593,16 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 	public function compile() {
 		$dbr = wfGetDB( DB_SLAVE );
 
-		// Article snippet
-		$res = $dbr->select(
-				array( 'text', 'revision', 'page' ),
-				array( 'page_id', 'old_text' ),
-				array( 'page_id' => $this->mPageId, 'page_latest = rev_id', 'rev_text_id = old_id' ),
-				__METHOD__
-		);
-		foreach ( $res as $row ) {
-			$this->metadata[$row->page_id]['snippet'] = self::generateArticleSnippet( $row->old_text );
+		foreach ( $this->mPageId as $pageId ) {
+			// Article snippet
+			$article = WikiPage::newFromID( $pageId );
+			if ( $article ) {
+				$content = $article->getText();
+				if ( $content ) {
+					$this->metadata[$pageId]['snippet'] = self::generateArticleSnippet( $content );
+				}
+			}
 		}
-
 		return true;
 	}
 

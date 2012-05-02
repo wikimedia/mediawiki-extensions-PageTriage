@@ -174,17 +174,19 @@ class PageTriageHooks {
 	private static function shouldShowNoIndex( $article ) {
 		global $wgPageTriageNoIndexTemplates;
 
-		$showNoIndex = false;
 		if ( $wgPageTriageNoIndexTemplates && $article->mParserOutput instanceof ParserOutput) {
 			$noIndexTitle = Title::newFromText( $wgPageTriageNoIndexTemplates, NS_MEDIAWIKI );
 			if ( $noIndexTitle ) {
-				$noIndexArticle = Article::newFromID( $noIndexTitle->getArticleID() );
+				$noIndexArticle = WikiPage::newFromID( $noIndexTitle->getArticleID() );
 				if ( $noIndexArticle ) {
-					$noIndexTemplate = explode( '|', $noIndexArticle->fetchContent() );
-					foreach ( $article->mParserOutput->getTemplates() as $ns => $templates ) {
-						foreach ( $templates as $template => $pageId ) {
-							if ( in_array( $template, $noIndexTemplate ) ) {
-								return true;
+					$noIndexTemplateText = $noIndexArticle->getText();
+					if ( $noIndexTemplateText ) {
+						$noIndexTemplate = explode( '|', $noIndexTemplateText );
+						foreach ( $article->mParserOutput->getTemplates() as $ns => $templates ) {
+							foreach ( $templates as $template => $pageId ) {
+								if ( in_array( $template, $noIndexTemplate ) ) {
+									return true;
+								}
 							}
 						}
 					}
