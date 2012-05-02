@@ -41,24 +41,25 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 		$out->setPagetitle( $this->msg( 'pagetriage-new-pages-feed' ) );
 
 		// Make sure global vars are strings rather than booleans (for passing to mw.config)
-		$infiniteScroll = $this->booleanToString( $wgPageTriageInfiniteScrolling );
-		$stickyControlNav = $this->booleanToString( $wgPageTriageStickyControlNav );
-		$stickyStatsNav = $this->booleanToString( $wgPageTriageStickyStatsNav );
+		$wgPageTriageInfiniteScrolling = $this->booleanToString( $wgPageTriageInfiniteScrolling );
+		$wgPageTriageStickyControlNav = $this->booleanToString( $wgPageTriageStickyControlNav );
+		$wgPageTriageStickyStatsNav = $this->booleanToString( $wgPageTriageStickyStatsNav );
 		
 		// Allow infinite scrolling override from query string parameter
 		// We don't use getBool() here since the param is optional
 		if ( $wgRequest->getText( 'infinite' ) === 'true' ) {
-			$infiniteScroll = 'true';
+			$wgPageTriageInfiniteScrolling = 'true';
 		} else if ( $wgRequest->getText( 'infinite' ) === 'false' ) {
-			$infiniteScroll = 'false';
+			$wgPageTriageInfiniteScrolling = 'false';
 		}
-
+		
 		// Set the config flags in JavaScript
-		$out->addScript( "<script type=\"text/javascript\">mw.config.set({" .
-			"\"wgPageTriageInfiniteScrolling\":" . $infiniteScroll . ", " .
-			"\"wgPageTriageStickyControlNav\":" . $stickyControlNav . ", " .
-			"\"wgPageTriageStickyStatsNav\":" . $stickyStatsNav .
-			"});</script>" );
+		$globalVars = array(
+			'wgPageTriageInfiniteScrolling' => $wgPageTriageInfiniteScrolling,
+			'wgPageTriageStickyControlNav' => $wgPageTriageStickyControlNav,
+			'wgPageTriageStickyStatsNav' => $wgPageTriageStickyStatsNav
+		);
+		$out->addJsConfigVars( $globalVars );
 
 		// Load the JS
 		$out->addModules( array( 'ext.pageTriage.external', 'ext.pageTriage.models', 'ext.pageTriage.views.list' ) );
