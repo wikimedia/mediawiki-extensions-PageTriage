@@ -268,7 +268,6 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'pagetriage-stats-unreviewed-age',
 		'pagetriage-stats-less-than-a-day',
 		'pagetriage-stats-top-reviewers',
-		'days',
 		'blanknamespace',
 		'pagetriage-filter-ns-all',
 		'pagetriage-more',
@@ -305,9 +304,7 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'ext.pageTriage.css', // stuff that's shared across all views
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.css',
 	),
-	'messages' => array(
-
-	)
+	'messages' => array()
 );
 
 $wgResourceModules['ext.pageTriage.startup'] = $ptResourceTemplate + array(
@@ -323,7 +320,7 @@ $wgResourceModules['ext.pageTriage.article'] = $ptResourceTemplate + array(
 	'messages' => array (
 			'pagetriage-reviewed',
 			'pagetriage-mark-as-reviewed-error',
-		),
+	),
 );
 
 /** Rate limit setting for PageTriage **/
