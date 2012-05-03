@@ -258,7 +258,7 @@ class ArticleMetadata {
 					unset( $pageIds[$key] );
 				} else {
 					$pageIds[$key] = $casted;
-					$cahce[$casted] = false;
+					$cache[$casted] = false;
 				}
 			} else {
 				unset( $pageIds[$key] );
@@ -669,12 +669,12 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 	}
 
 	public function compile() {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbw = wfGetDB( DB_MASTER );
 
 		// Process page individually because MIN() GROUP BY is slow
 		$revId = array();
 		foreach ( $this->mPageId as $pageId ) {
-			$res = $dbr->selectRow(
+			$res = $dbw->selectRow(
 				array( 'revision' ),
 				array( 'MIN(rev_id) AS rev_id' ),
 				array( 'rev_page' => $pageId ),
@@ -689,7 +689,7 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 			return true;
 		}
 
-		$res = $dbr->select(
+		$res = $dbw->select(
 				array( 'revision', 'user', 'ipblocks' ),
 				array(
 					'rev_page AS page_id', 'user_id', 'user_name',
@@ -749,11 +749,11 @@ class ArticleCompileDeletionTag extends ArticleCompileInterface {
 	}
 
 	public function compile() {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbw = wfGetDB( DB_MASTER );
 
 		$deletionTags = self::getDeletionTags();
 
-		$res = $dbr->select(
+		$res = $dbw->select(
 				array( 'categorylinks' ),
 				array( 'cl_from AS page_id', 'cl_to' ),
 				array( 'cl_from' => $this->mPageId, 'cl_to' => array_keys( $deletionTags ) ),

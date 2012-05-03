@@ -36,11 +36,12 @@ class PageTriage {
 			return false;
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
 		$dbw = wfGetDB( DB_MASTER );
 
 		// Pull page creation date from database
-		$res = $dbr->selectRow(
+		// must select from master here since the page has just been created, and probably
+		// hasn't propagated to the slaves yet.
+		$res = $dbw->selectRow(
 			'revision',
 			'MIN(rev_timestamp) AS creation_date',
 			array( 'rev_page' => $this->mPageId ),
