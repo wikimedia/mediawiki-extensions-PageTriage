@@ -266,9 +266,11 @@ class ArticleMetadata {
 		}
 
 		if ( $pageIds ) {
-			$dbr = wfGetDB( DB_SLAVE );
+			// this has to read from the master, since page ids that fail to validate
+			// don't get metadata compiled
+			$dbw = wfGetDB( DB_MASTER );
 
-			$res = $dbr->select(
+			$res = $dbw->select(
 					array( 'pagetriage_page' ),
 					array( 'ptrp_page_id' ),
 					array( 'ptrp_page_id' => $pageIds ),
@@ -485,20 +487,19 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 			// do it in more of the:
 			// select 1 from [etc] where [stuff] limit 50
 			// $count = $dbw->numrows()
-			/*
 			$row = $dbw->selectRow(
 				array ( 'revision', 'page' ),
 				array (
-					'COUNT(rev_id) AS rev_count',
 					'MIN(rev_timestamp) AS creation_date'
 				),
 				array ( 'rev_page' => $pageId, 'page_id = rev_page' ),
 				__METHOD__
 			);
-			*/
-			$row = false;
+
 			if ( $row ) {
-				$this->metadata[$pageId]['rev_count'] = $row->rev_count;
+				// TODO: set this for reals
+				//$this->metadata[$pageId]['rev_count'] = $row->rev_count;
+				$this->metadata[$pageId]['rev_count'] = 1;
 				$this->metadata[$pageId]['creation_date'] = $row->creation_date;
 				$count++;
 			}
