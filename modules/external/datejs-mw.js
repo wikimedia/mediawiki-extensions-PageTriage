@@ -30,7 +30,7 @@ mw.loader.using( ['mediawiki.jqueryMsg'], function() {
 		gM('february'),
 		gM('march'),
 		gM('april'),
-		gM('may-long'),
+		gM('may_long'),
 		gM('june'),
 		gM('july'),
 		gM('august'),
