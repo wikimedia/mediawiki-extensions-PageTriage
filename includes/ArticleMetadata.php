@@ -476,12 +476,17 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 	}
 
 	public function compile() {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbw = wfGetDB( DB_MASTER );
 
 		$count = 0;
 		//Process page individually because MIN() GROUP BY is slow
 		foreach ( $this->mPageId as $pageId ) {
-			$row = $dbr->selectRow(
+			// TODO: we know this is bad for pages with many revisions.
+			// do it in more of the:
+			// select 1 from [etc] where [stuff] limit 50
+			// $count = $dbw->numrows()
+			/*
+			$row = $dbw->selectRow(
 				array ( 'revision', 'page' ),
 				array (
 					'COUNT(rev_id) AS rev_count',
@@ -490,6 +495,8 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 				array ( 'rev_page' => $pageId, 'page_id = rev_page' ),
 				__METHOD__
 			);
+			*/
+			$row = false;
 			if ( $row ) {
 				$this->metadata[$pageId]['rev_count'] = $row->rev_count;
 				$this->metadata[$pageId]['creation_date'] = $row->creation_date;
@@ -502,7 +509,7 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 			return false;
 		}
 
-		$res = $dbr->select(
+		$res = $dbw->select(
 				array ( 'page', 'pagetriage_page' ),
 				array (
 					'page_id', 'page_namespace', 'page_title', 'page_len',
@@ -537,9 +544,14 @@ class ArticleCompileLinkCount extends ArticleCompileInterface {
 	}
 
 	public function compile() {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbw = wfGetDB( DB_MASTER );
 
-		$res = $dbr->select(
+		// TODO: in the future, make this more like:
+		// select 1 from page,pagelinks where [etc] limit 50
+		// $count = $dbw->numrows() (or whatever that function is called)
+		// (this limits the damage the count query can do when selecting on the master)
+		/*
+		$res = $dbw->select(
 				array( 'page', 'pagelinks' ),
 				array( 'page_id', 'COUNT(pl_from) AS linkcount' ),
 				array(
@@ -550,6 +562,8 @@ class ArticleCompileLinkCount extends ArticleCompileInterface {
 				__METHOD__,
 				array ( 'GROUP BY' => 'page_id' )
 		);
+		*/
+		$res = array();
 		foreach ( $res as $row ) {
 			$this->metadata[$row->page_id]['linkcount'] = $row->linkcount;
 		}
@@ -575,7 +589,8 @@ class ArticleCompileCategoryCount extends ArticleCompileInterface {
 
 	public function compile() {
 		$dbr = wfGetDB( DB_SLAVE );
-
+		/*
+		TODO: same problem as above.
 		$res = $dbr->select(
 				array( 'page', 'categorylinks' ),
 				array( 'page_id', 'COUNT(cl_to) AS category_count' ),
@@ -583,6 +598,8 @@ class ArticleCompileCategoryCount extends ArticleCompileInterface {
 				__METHOD__,
 				array ( 'GROUP BY' => 'page_id' )
 		);
+		*/
+		$res = array();
 		foreach ( $res as $row ) {
 			$this->metadata[$row->page_id]['category_count'] = $row->category_count;
 		}
@@ -607,8 +624,6 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 	}
 
 	public function compile() {
-		$dbr = wfGetDB( DB_SLAVE );
-
 		foreach ( $this->mPageId as $pageId ) {
 			// Article snippet
 			$article = WikiPage::newFromID( $pageId );
