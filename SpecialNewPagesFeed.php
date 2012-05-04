@@ -85,7 +85,7 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 		$triageInterface .= "<a href='#' id='mwe-pt-list-more-link'>".$this->msg( 'pagetriage-more' )."</a>";
 		$triageInterface .= "</div>";
 		$triageInterface .= "<div id='mwe-pt-list-load-more-anchor'></div>";
-		$triageInterface .= "<div id='mwe-pt-list-stats-nav' class='mwe-pt-navigation-bar mwe-pt-control-gradient'>";
+		$triageInterface .= "<div id='mwe-pt-list-stats-nav' class='mwe-pt-navigation-bar mwe-pt-control-gradient' style='display: none;'>";
 		$triageInterface .= "<div id='mwe-pt-list-stats-nav-content'></div>";
 		$triageInterface .= "</div>";
 		$triageInterface .= "<div id='mwe-pt-list-stats-nav-anchor'></div>";

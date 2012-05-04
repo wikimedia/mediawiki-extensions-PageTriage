@@ -190,7 +190,6 @@ $( function() {
 			if ( articles.length ) {
 				// load the new articles
 				articles.forEach( this.addOne, this );
-				$( '#mwe-pt-list-stats-nav' ).css( 'border-top', 'none' );
 				if ( articles.moreToLoad ) {
 					if ( mw.config.get( 'wgPageTriageInfiniteScrolling' ) ) {
 						this.createNewLoadMoreWaypoint(); // create a new waypoint
@@ -203,6 +202,9 @@ $( function() {
 				$( '#mwe-pt-list-errors' ).html( mw.msg( 'pagetriage-no-pages' ) );
 				$( '#mwe-pt-list-errors' ).show();
 			}
+			
+			// show the stats bar at the bottom
+			$( '#mwe-pt-list-stats-nav' ).show();
 
 			// refresh our waypoints since we've changed the DOM
 			$.waypoints( 'refresh' );
