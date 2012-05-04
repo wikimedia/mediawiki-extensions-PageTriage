@@ -107,6 +107,9 @@ class PageTriageHooks {
 	public static function onArticleSaveComplete( $article, $user, $text, $summary, $minoredit, $watchthis, $sectionanchor, $flags, $revision, $status, $baseRevId ) {
 		$acp = ArticleCompileProcessor::newFromPageId( array( $article->getId() ) );
 		if ( $acp ) {
+			// Register the article object so we can get the content and other useful information 
+			// this is primarily for replication delay from slave
+			$acp->registerArticle( $article );
 			$acp->compileMetadata();
 		}
 
