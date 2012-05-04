@@ -181,10 +181,13 @@ class PageTriageHooks {
 				if ( $noIndexArticle ) {
 					$noIndexTemplateText = $noIndexArticle->getText();
 					if ( $noIndexTemplateText ) {
-						$noIndexTemplate = explode( '|', $noIndexTemplateText );
+						// Collect all the noindex template names into an array
+						$noIndexTemplates = explode( '|', $noIndexTemplateText );
+						// Properly format the template names to match what getTemplates() returns
+						$noIndexTemplates = array_map( array( 'PageTriageHooks', 'formatTemplateName' ), $noIndexTemplates );
 						foreach ( $article->mParserOutput->getTemplates() as $ns => $templates ) {
 							foreach ( $templates as $template => $pageId ) {
-								if ( in_array( $template, $noIndexTemplate ) ) {
+								if ( in_array( $template, $noIndexTemplates ) ) {
 									return true;
 								}
 							}
@@ -201,6 +204,17 @@ class PageTriageHooks {
 		return false;
 	}
 	
+	/**
+	 * Formats a template name to match the format returned by getTemplates()
+	 * @param $template string
+	 * @return string
+	 */
+	private static function formatTemplateName( $template ) {
+		$template = ucfirst( trim( $template ) );
+		$template = str_replace( ' ', '_', $template );
+		return $template;
+	}
+
 	/**
 	 * Adds "mark as patrolled" link to articles
 	 *
