@@ -297,6 +297,7 @@ class ArticleCompileProcessor {
 	protected $mPageId;
 	protected $metadata;
 	protected $defaultMode;
+	protected $articles;
 
 	/**
 	 * @param $pageId array - list of page id
@@ -314,6 +315,7 @@ class ArticleCompileProcessor {
 		);
 		$this->metadata = array_fill_keys( $this->mPageId, array() );
 		$this->defaultMode = true;
+		$this->articles = array();
 	}
 
 	/**
@@ -333,6 +335,16 @@ class ArticleCompileProcessor {
 		}
 	}
 
+	/**
+	 * Cache an up-to-date WikiPage object for later use
+	 * @param $article - Article
+	 */
+	public function registerArticle( WikiPage $article ) {
+		if ( in_array( $article->getId(), $this->mPageId ) ) {
+			$this->articles[$article->getId()] = $article;
+		}
+	}
+	
 	/**
 	 * Register a component to the processor for compiling
 	 * @param $component string
@@ -381,7 +393,7 @@ class ArticleCompileProcessor {
 		foreach ( $this->component as $key => $val ) {
 			if ( $val === 'on' ) {
 				$compClass = 'ArticleCompile' . $key;
-				$comp = new $compClass( $this->mPageId );
+				$comp = new $compClass( $this->mPageId, $this->articles );
 				if ( !$comp->compile() ) {
 					break;
 				}
@@ -452,19 +464,55 @@ class ArticleCompileProcessor {
 abstract class ArticleCompileInterface {
 	protected $mPageId;
 	protected $metadata;
-	
+	protected $articles;
+	protected $dbw;
+
 	/**
 	 * @param $pageId array
 	 */
-	public function __construct( array $pageId ) {
+	public function __construct( array $pageId, $articles = null ) {
 		$this->mPageId = $pageId;
 		$this->metadata = array_fill_keys( $pageId, array() );
+		$this->articles = $articles;
+		$this->dbw = wfGetDB( DB_MASTER );
 	}
 
 	public abstract function compile();
 
 	public function getMetadata() {
 		return $this->metadata;
+	}
+
+	/**
+	 * Provide an edtimated count for an item, for example: if $maxNumToProcess is 
+	 * 100 and the result is greater than 100, then the result should be 100+
+	 * @param $pageId int - page id
+	 * @param $table array - table for query
+	 * @param $conds array - conditions for query
+	 * @param $maxNumProcess int - max number to process/display
+	 * @param $indexName string - the array index name to be saved
+	 */
+	protected function processEstimatedCount( $pageId, $table, $conds, $maxNumToProcess, $indexName ) {
+		$res = $this->dbw->select( $table, '1', $conds, __METHOD__, array( 'LIMIT' => $maxNumToProcess + 1 ) );
+
+		$record = $this->dbw->numRows( $res );
+		if ( $record > $maxNumToProcess ) {
+			$this->metadata[$pageId][$indexName] = $maxNumToProcess . '+';
+		} else {
+			$this->metadata[$pageId][$indexName] = $record;
+		}
+	}
+
+	/**
+	 * Fill in zero for page with no estimated count
+	 * @param $indexName string - the array index name for the count
+	 */
+	protected function fillInZeroCount( $indexName ) {
+		foreach ( $this->mPageId as $pageId ) {
+			if ( !isset( $this->metadata[$pageId][$indexName] ) ) {
+				$this->metadata[$pageId][$indexName] = '0';
+			}
+		}
 	}
 }
 
@@ -473,34 +521,22 @@ abstract class ArticleCompileInterface {
  */
 class ArticleCompileBasicData extends ArticleCompileInterface {
 
-	public function __construct( $pageId ) {
-		parent::__construct( $pageId );
+	public function __construct( $pageId, $articles = null ) {
+		parent::__construct( $pageId, $articles );
 	}
 
 	public function compile() {
-		$dbw = wfGetDB( DB_MASTER );
-
 		$count = 0;
 		//Process page individually because MIN() GROUP BY is slow
 		foreach ( $this->mPageId as $pageId ) {
-			// TODO: we know this is bad for pages with many revisions.
-			// do it in more of the:
-			// select 1 from [etc] where [stuff] limit 50
-			// $count = $dbw->numrows()
-			$row = $dbw->selectRow(
-				array ( 'revision', 'page' ),
-				array (
-					'MIN(rev_timestamp) AS creation_date'
-				),
-				array ( 'rev_page' => $pageId, 'page_id = rev_page' ),
-				__METHOD__
-			);
+			$table = array ( 'revision', 'page' );
+			$conds = array ( 'rev_page' => $pageId, 'page_id = rev_page' );
 
+			$row = $this->dbw->selectRow( $table, array ( 'MIN(rev_timestamp) AS creation_date' ),
+						$conds, __METHOD__ );
 			if ( $row ) {
-				// TODO: set this for reals
-				//$this->metadata[$pageId]['rev_count'] = $row->rev_count;
-				$this->metadata[$pageId]['rev_count'] = 1;
 				$this->metadata[$pageId]['creation_date'] = $row->creation_date;
+				$this->processEstimatedCount( $pageId, $table, $conds, $maxNumToProcess = 100, 'rev_count' );
 				$count++;
 			}
 		}
@@ -510,7 +546,7 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 			return false;
 		}
 
-		$res = $dbw->select(
+		$res = $this->dbw->select(
 				array ( 'page', 'pagetriage_page' ),
 				array (
 					'page_id', 'page_namespace', 'page_title', 'page_len',
@@ -520,7 +556,11 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 				__METHOD__
 		);
 		foreach ( $res as $row ) {
-			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+			if ( isset( $this->articles[$row->page_id] ) ) {
+				$title = $this->articles[$row->page_id]->getTitle();
+			} else {
+				$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+			}
 			$this->metadata[$row->page_id]['page_len'] = $row->page_len;
 			// The following data won't be saved into metadata since they are not metadata tags
 			// just for saving into cache later
@@ -540,40 +580,25 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
  */
 class ArticleCompileLinkCount extends ArticleCompileInterface {
 
-	public function __construct( $pageId ) {
-		parent::__construct( $pageId );
+	public function __construct( $pageId, $articles = null ) {
+		parent::__construct( $pageId, $articles );
 	}
 
 	public function compile() {
-		$dbw = wfGetDB( DB_MASTER );
-
-		// TODO: in the future, make this more like:
-		// select 1 from page,pagelinks where [etc] limit 50
-		// $count = $dbw->numrows() (or whatever that function is called)
-		// (this limits the damage the count query can do when selecting on the master)
-		/*
-		$res = $dbw->select(
-				array( 'page', 'pagelinks' ),
-				array( 'page_id', 'COUNT(pl_from) AS linkcount' ),
-				array(
-					'page_id' => $this->mPageId,
-					'page_namespace = pl_namespace',
-					'page_title = pl_title'
-				),
-				__METHOD__,
-				array ( 'GROUP BY' => 'page_id' )
-		);
-		*/
-		$res = array();
-		foreach ( $res as $row ) {
-			$this->metadata[$row->page_id]['linkcount'] = $row->linkcount;
-		}
 		foreach ( $this->mPageId as $pageId ) {
-			if ( !isset( $this->metadata[$pageId]['linkcount'] ) ) {
-				$this->metadata[$pageId]['linkcount'] = '0';
-			}
+			$this->processEstimatedCount( 
+					$pageId, 
+					array( 'page', 'pagelinks' ), 
+					array(
+						'page_id' => $pageId,
+						'page_namespace = pl_namespace',
+						'page_title = pl_title'
+					), 
+					$maxNumToProcess = 50, 
+					'linkcount'
+			);
 		}
-
+		$this->fillInZeroCount( 'linkcount' );
 		return true;
 	}
 
@@ -584,32 +609,21 @@ class ArticleCompileLinkCount extends ArticleCompileInterface {
  */
 class ArticleCompileCategoryCount extends ArticleCompileInterface {
 
-	public function __construct( $pageId ) {
-		parent::__construct( $pageId );
+	public function __construct( $pageId, $articles = null ) {
+		parent::__construct( $pageId, $articles );
 	}
 
 	public function compile() {
-		$dbr = wfGetDB( DB_SLAVE );
-		/*
-		TODO: same problem as above.
-		$res = $dbr->select(
-				array( 'page', 'categorylinks' ),
-				array( 'page_id', 'COUNT(cl_to) AS category_count' ),
-				array( 'page_id' => $this->mPageId, 'page_id = cl_from' ),
-				__METHOD__,
-				array ( 'GROUP BY' => 'page_id' )
-		);
-		*/
-		$res = array();
-		foreach ( $res as $row ) {
-			$this->metadata[$row->page_id]['category_count'] = $row->category_count;
-		}
 		foreach ( $this->mPageId as $pageId ) {
-			if ( !isset( $this->metadata[$pageId]['category_count'] ) ) {
-				$this->metadata[$pageId]['category_count'] = '0';
-			}
+			$this->processEstimatedCount( 
+					$pageId, 
+					array( 'page', 'categorylinks' ), 
+					array( 'page_id' => $pageId, 'page_id = cl_from' ),
+					$maxNumToProcess = 50, 
+					'category_count'
+			);
 		}
-
+		$this->fillInZeroCount( 'category_count' );
 		return true;
 	}
 
@@ -620,14 +634,19 @@ class ArticleCompileCategoryCount extends ArticleCompileInterface {
  */
 class ArticleCompileSnippet extends ArticleCompileInterface {
 
-	public function __construct( $pageId ) {
-		parent::__construct( $pageId );
+	public function __construct( $pageId, $articles = null ) {
+		parent::__construct( $pageId, $articles );
 	}
 
 	public function compile() {
 		foreach ( $this->mPageId as $pageId ) {
-			// Article snippet
-			$article = WikiPage::newFromID( $pageId );
+			// Article snippet, try if there is an up-to-date wikipage object from article save
+			// else try to create a new one, this is important for replication deley
+			if ( isset( $this->articles[$pageId] ) ) {
+				$article = $this->articles[$pageId];
+			} else {
+				$article = WikiPage::newFromID( $pageId ); 
+			}
 			if ( $article ) {
 				$content = $article->getText();
 				if ( $content ) {
@@ -680,17 +699,15 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
  */
 class ArticleCompileUserData extends ArticleCompileInterface {
 
-	public function __construct( $pageId ) {
-		parent::__construct( $pageId );
+	public function __construct( $pageId, $articles = null ) {
+		parent::__construct( $pageId, $articles );
 	}
 
 	public function compile() {
-		$dbw = wfGetDB( DB_MASTER );
-
 		// Process page individually because MIN() GROUP BY is slow
 		$revId = array();
 		foreach ( $this->mPageId as $pageId ) {
-			$res = $dbw->selectRow(
+			$res = $this->dbw->selectRow(
 				array( 'revision' ),
 				array( 'MIN(rev_id) AS rev_id' ),
 				array( 'rev_page' => $pageId ),
@@ -705,7 +722,7 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 			return true;
 		}
 
-		$res = $dbw->select(
+		$res = $this->dbw->select(
 				array( 'revision', 'user', 'ipblocks' ),
 				array(
 					'rev_page AS page_id', 'user_id', 'user_name',
@@ -750,8 +767,8 @@ class ArticleCompileUserData extends ArticleCompileInterface {
  */
 class ArticleCompileDeletionTag extends ArticleCompileInterface {
 
-	public function __construct( $pageId ) {
-		$this->mPageId = $pageId;
+	public function __construct( $pageId, $articles = null ) {
+		parent::__construct( $pageId, $articles );
 		$this->metadata = array_fill_keys( $this->mPageId, array( 'deleted' => '0' ) );
 	}
 
@@ -765,11 +782,8 @@ class ArticleCompileDeletionTag extends ArticleCompileInterface {
 	}
 
 	public function compile() {
-		$dbw = wfGetDB( DB_MASTER );
-
 		$deletionTags = self::getDeletionTags();
-
-		$res = $dbw->select(
+		$res = $this->dbw->select(
 				array( 'categorylinks' ),
 				array( 'cl_from AS page_id', 'cl_to' ),
 				array( 'cl_from' => $this->mPageId, 'cl_to' => array_keys( $deletionTags ) ),
