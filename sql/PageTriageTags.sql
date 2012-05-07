@@ -7,7 +7,7 @@ CREATE TABLE /*_*/pagetriage_tags (
 
 CREATE UNIQUE INDEX /*i*/ptrt_tag_id ON /*_*/pagetriage_tags (ptrt_tag_name);
 
-INSERT INTO pagetriage_tags (ptrt_tag_name, ptrt_tag_desc) 
+INSERT INTO /*_*/pagetriage_tags (ptrt_tag_name, ptrt_tag_desc) 
 VALUES 
 ('linkcount', 'Number of inbound links'),
 ('category_count', 'Category mapping count'), 
