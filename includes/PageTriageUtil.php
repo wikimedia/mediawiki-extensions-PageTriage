@@ -314,9 +314,13 @@ class PageTriageUtil {
 			$pageIds[] = $row->ptrpt_page_id;
 		}
 
+		if ( !$pageIds ) {
+			return;
+		}
+
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
-		$dbw->update(  
+		$dbw->update(
 			'pagetriage_page_tags',
 			array( 'ptrpt_value' => $status ),
 			array( 'ptrpt_page_id' => $pageIds, 'ptrpt_tag_id' => $tags['user_block_status'] )
