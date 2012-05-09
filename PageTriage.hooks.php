@@ -3,8 +3,8 @@
 class PageTriageHooks {
 
 	/**
-	 * Mark a page as unreviewed after moving the page if the new title is in main namespace
-	 * Note: Page will be automatically marked as triaged for users with autopatrol right
+	 * Mark a page as unreviewed after moving the page from non-main(article) namespace to
+	 * main(article) namespace
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/SpecialMovepageAfterMove
 	 * @param $movePage: MovePageForm object
@@ -13,37 +13,29 @@ class PageTriageHooks {
 	 * @return bool
 	 */
 	public static function onSpecialMovepageAfterMove( $movePage, &$oldTitle, &$newTitle ) {
-		$pendingId = array();
+		global $wgUser;
 
-		if ( $newTitle->getNamespace() === NS_MAIN ) {
-			$pageId = $newTitle->getArticleID();
-			// New record added to pagetriage queue, compile all data
-			if ( self::addToPageTriageQueue( $pageId, $newTitle ) ) {
-				$pendingId[] = $pageId;
-			} else {
-				$acp = ArticleCompileProcessor::newFromPageId( array( $pageId ) );
-				if ( $acp ) {
-					// compile only basic data
-					$acp->registerComponent( 'BasicData' );
-					$acp->compileMetadata();
-				}
-			}
+		$pageId = $newTitle->getArticleID();
+
+		// Delete cache for record if it's in pagetriage queue
+		$articleMetadata = new ArticleMetadata( array( $pageId ) );
+		$articleMetadata->flushMetadataFromCache();
+		
+		$oldNamespace = $oldTitle->getNamespace();
+		$newNamespace = $newTitle->getNamespace();
+		// Do nothing further on if
+		// 1. the page move is within the same namespace or
+		// 2. the new page is not in article (main) namespace
+		if ( $oldNamespace === $newNamespace || $newNamespace !== NS_MAIN ) {
+			return true;
 		}
 
-		// Check if there is a new page id for redirect left behind
-		$oldPageId = $oldTitle->getArticleID();
-		if ( $oldPageId ) {
-			self::addToPageTriageQueue( $oldPageId, $oldTitle );
-			$pendingId[] = $oldPageId;
+		// New record to pagetriage queue, compile metadata
+		if ( self::addToPageTriageQueue( $pageId, $newTitle, $wgUser, false ) ) {
+			$acp = ArticleCompileProcessor::newFromPageId( array( $pageId ) );
+			$acp->compileMetadata();
 		}
 
-		// Compile all the data in $pendingId
-		if ( $pendingId ) {
-			$acp = ArticleCompileProcessor::newFromPageId( $pendingId );
-			if ( $acp ) {
-				$acp->compileMetadata();
-			}
-		}
 		return true;
 	}
 
@@ -134,18 +126,23 @@ class PageTriageHooks {
 
 	/**
 	 * Add page to page triage queue
+	 * @param $pageId int
+	 * @param $title Title
+	 * @param $user User
+	 * @param $patrolled bool - should the page be added to the queue as reviewed or not
 	 */
-	private static function addToPageTriageQueue( $pageId, $title, $user = null ) {
+	private static function addToPageTriageQueue( $pageId, $title, $user = null, $patrolled = null ) {
 		global $wgUser, $wgUseRCPatrol, $wgUseNPPatrol;
 		
 		$user = is_null( $user ) ? $wgUser : $user;
 
-		$patrolled = ( $wgUseRCPatrol || $wgUseNPPatrol ) && !count(
+		if ( is_null( $patrolled ) ) {
+			$patrolled = ( $wgUseRCPatrol || $wgUseNPPatrol ) && !count(
 					$title->getUserPermissionsErrors( 'autopatrol', $user ) );
+		}
 
 		$pageTriage = new PageTriage( $pageId );
-		// Without autopatrol right, we consider the system updates the triage status to '0' or adds a brand new
-		// record with '0' triage status to the queue, hence we should not pass a user for logging
+		// We don't pass $user for logging if the system sets the review/patrol status to '0'
 		if ( $patrolled ) {
 			return $pageTriage->addToPageTriageQueue( '1', $user );
 		} else {
