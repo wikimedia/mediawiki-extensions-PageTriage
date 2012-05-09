@@ -1,0 +1,80 @@
+<!-- individual list item template -->
+<% if ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) { %>
+	<div class="mwe-pt-article-row mwe-pt-deleted">
+		<div class="mwe-pt-status-icon">&#160;</div>
+<% } else if ( patrol_status == "1" ) { %>
+	<div class="mwe-pt-article-row mwe-pt-reviewed">
+		<div class="mwe-pt-status-icon">&#160;</div>
+<% } else { %>
+	<div class="mwe-pt-article-row mwe-pt-new">
+		<div class="mwe-pt-status-icon">&#160;</div>
+<% } %>
+<% if ( position % 2 == 0 ) { %>
+	<div class="mwe-pt-info-pane mwe-pt-info-pane-even">
+<% } else { %>
+	<div class="mwe-pt-info-pane mwe-pt-info-pane-odd">
+<% } %>
+		<div class="mwe-pt-article">
+			<span class="mwe-pt-page-title"><a href="<%= mw.util.wikiGetlink( title ) %>"><%= mw.html.escape( title ) %></a></span>
+			<span class="mwe-pt-histlink">
+				(<a href="<%= mw.config.get("wgScriptPath") + "/index.php?title=" + title_url + "&action=history" %>"><%= gM( "pagetriage-hist" ) %></a>)
+			</span>
+			<span class="mwe-pt-metadata">
+				&#xb7;
+				<%= gM( "pagetriage-bytes", page_len ) %>
+				&#xb7;
+				<%= gM( "pagetriage-edits", rev_count ) %>
+				&#xb7;
+				<% if( category_count == "0" ) { %>
+					<span class="mwe-pt-metadata-warning"><%= gM( "pagetriage-no-categories" ) %></span>
+					<% } else { %>
+						<%= gM( "pagetriage-categories", category_count ) %>
+					<% } %>
+					<% if( linkcount == "0" ) { %>
+						&#xb7; <span class="mwe-pt-metadata-warning"><%= gM("pagetriage-orphan") %></span>
+					<% } %>
+			</span>
+			<span class="mwe-pt-creation-date">
+				<%= creation_date_pretty %>
+			</span>
+			<a class="mwe-pt-list-triage-button ui-button-blue" href="<%= mw.util.wikiGetlink( title ) %>"></a>
+		</div>
+		<div class="mwe-pt-author">
+		<% if( typeof( user_name ) != 'undefined' ) { %>
+			<%= gM( 'pagetriage-byline' ) %>
+			<a <%= userPageLinkClass %> href="<%= user_title.getUrl() %>"><%= mw.html.escape( user_name ) %></a>
+			<span class="mwe-pt-talk-contribs">
+				(<a <%= talkPageLinkClass %> href="<%= user_talk_title.getUrl()+'&redlink=1' %>">talk</a>
+				&#xb7;
+				<a href="<%= user_contribs_title.getUrl() %>">contribs</a>)
+			</span>
+			<!-- editcount is undefined for IP users -->
+			<% if( typeof ( user_editcount ) != 'undefined' ) { %>
+				&#xb7;
+				<%= gM( 'pagetriage-editcount', user_editcount, user_creation_date_pretty ) %>
+				<% if( user_bot == "1" ) { %>
+					&#xb7;
+					<%= gM( 'pagetriage-author-bot' ) %>
+				<% } %>
+				<% if( user_autoconfirmed == "0" ) { %>
+					&#xb7;
+					<span class="mwe-pt-metadata-warning">
+					<%= gM( 'pagetriage-author-not-autoconfirmed' ) %>
+					</span>
+				<% } %>
+			<% } %>
+			<% if( user_block_status == "1" ) { %>
+				&#xb7;
+				<span class="mwe-pt-metadata-warning">
+				<%= gM( 'pagetriage-author-blocked' ) %>
+				</span>
+			<% } %>
+		<% } else { %>
+			<%= gM('pagetriage-no-author') %>
+		<% } %>
+		</div>
+		<div class="mwe-pt-snippet">
+			<%= mw.html.escape( snippet ) %>
+		</div>
+	</div>
+</div>

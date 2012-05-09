@@ -84,6 +84,7 @@ $wgAutoloadClasses['ApiPageTriageList'] = $dir . 'api/ApiPageTriageList.php';
 $wgAutoloadClasses['ApiPageTriageGetMetadata'] = $dir . 'api/ApiPageTriageGetMetadata.php';
 $wgAutoloadClasses['ApiPageTriageStats'] = $dir . 'api/ApiPageTriageStats.php';
 $wgAutoloadClasses['ApiPageTriageAction'] = $dir . 'api/ApiPageTriageAction.php';
+$wgAutoloadClasses['ApiPageTriageTemplate'] = $dir . 'api/ApiPageTriageTemplate.php';
 
 // custom exceptions
 $wgAutoloadClasses['MWPageTriageUtilInvalidNumberException'] = $dir . 'includes/PageTriageUtil.php';
@@ -94,6 +95,7 @@ $wgAPIModules['pagetriagelist'] = 'ApiPageTriageList';
 $wgAPIModules['pagetriagegetmetadata'] = 'ApiPageTriageGetMetadata';
 $wgAPIModules['pagetriagestats'] = 'ApiPageTriageStats';
 $wgAPIModules['pagetriageaction'] = 'ApiPageTriageAction';
+$wgAPIModules['pagetriagetemplate'] = 'ApiPageTriageTemplate';
 
 // hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efPageTriageSchemaUpdates';
@@ -140,6 +142,9 @@ $ptResourceTemplate = array(
 	'localBasePath' => dirname( __FILE__ ). '/modules',
 	'remoteExtPath' => 'PageTriage/modules'
 );
+
+// where can the template API find the templates?
+$ptTemplatePath = $ptResourceTemplate['localBasePath'];
 
 $wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + array(
 	'scripts' => array(
@@ -191,6 +196,12 @@ $wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + array(
 	)
 );
 
+$wgResourceModules['ext.pageTriage.util'] = $ptResourceTemplate + array(
+	'scripts' => array(
+		'ext.pageTriage.util/ext.pageTriage.viewUtil.js' // convenience functions for all views
+	),
+);
+
 $wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + array(
 	'dependencies' => array(
 		'mediawiki.Title',
@@ -207,6 +218,7 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 	'dependencies' => array(
 		'mediawiki.jqueryMsg',
 		'ext.pageTriage.models',
+		'ext.pageTriage.util',
 		'jquery.ui.button',
 		'jquery.spinner'
 	),
