@@ -70,7 +70,9 @@ $( function() {
 				e.stopPropagation();
 			} );
 
-			// Activate sort links
+			// Initialize sort links
+			$( '#mwe-pt-sort-newest' ).attr('checked', 'checked');
+			$( '#mwe-pt-sort-buttons' ).buttonset();
 			$( '#mwe-pt-sort-newest' ).click( function() {
 				_this.model.setParam( 'dir', 'newestfirst' );
 				_this.model.setParam( 'offset', 0 );

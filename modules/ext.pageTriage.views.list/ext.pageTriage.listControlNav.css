@@ -3,7 +3,7 @@
 }
 
 #mwe-pt-list-control-nav-content {
-	padding: 0.5em 1em;
+	padding: 0.5em 1em 1em 1em;
 }
 
 .stickyTop #mwe-pt-list-control-nav {
@@ -65,4 +65,15 @@
 
 .mwe-pt-filter-sub-input {
 	padding-left: 0.5em;
+}
+
+#mwe-pt-sort-buttons {
+	margin-right: 0.3em;
+}
+#mwe-pt-sort-buttons .ui-button {
+	margin-top: 0;
+}
+#mwe-pt-sort-buttons .ui-button-text {
+	font-size: 95%;
+	padding: 0.2em 0.6em 0.1em 0.6em;
 }
