@@ -53,7 +53,7 @@ $wgPageTriagePagesPerRequest = 20; // Maximum number of articles for the API to 
 $wgPageTriageInfiniteScrolling = true; // Whether or not to use infinite scrolling in the page list
 $wgPageTriageStickyControlNav = true; // Whether or not the top nav bar should float
 $wgPageTriageStickyStatsNav = true; // Whether or not the bottom nav bar should float
-$wgPageTriageMarkPatrolledLinkExpiry = 3600 * 24 * 30; // 30 days
+$wgPageTriageMarkPatrolledLinkExpiry = 3600 * 24; // 1 day
 $wgPageTriageNoIndexTemplates = 'No_index_templates'; // Pages containing templates defined in this title would not be indexed.
 $wgPageTriageLearnMoreUrl = 'http://en.wikipedia.org/wiki/Wikipedia:New_Pages_Feed/Help';
 $wgPageTriageFeedbackUrl = 'http://en.wikipedia.org/wiki/Wikipedia_talk:New_Pages_Feed';
@@ -297,6 +297,9 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'pagetriage-filter-all',
 		'pagetriage-no-pages',
 		'pagetriage-warning-browser',
+		'pagetriage-note-reviewed',
+		'pagetriage-note-not-reviewed',
+		'pagetriage-note-deletion',
 	)
 );
 

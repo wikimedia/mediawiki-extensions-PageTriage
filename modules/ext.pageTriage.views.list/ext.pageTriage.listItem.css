@@ -36,22 +36,6 @@
 	background-color: #b3b3b3;
 }
 
-.mwe-pt-deleted .mwe-pt-status-icon {
-	/* @embed */
-	background-image: url('images/icon_marked_for_deletion.png');
-	background-repeat: no-repeat;
-}
-.mwe-pt-new .mwe-pt-status-icon {
-	/* @embed */
-	background-image: url('images/icon_not_reviewed.png');
-	background-repeat: no-repeat;
-}
-.mwe-pt-reviewed .mwe-pt-status-icon {
-	/* @embed */
-	background-image: url('images/icon_reviewed.png');
-	background-repeat: no-repeat;
-}
-
 .mwe-pt-list-triage-button {
 	float: right;
 	clear: right;
