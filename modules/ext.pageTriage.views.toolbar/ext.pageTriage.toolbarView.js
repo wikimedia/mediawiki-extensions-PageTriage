@@ -6,21 +6,23 @@ $( function() {
 
 	// instantiate the collection of articles
 	var articles = new mw.pageTriage.ArticleList( { eventBus: eventBus } );
-	var tools = array();
-
+	var tools = new Array;
+	
 	// overall toolbar view
 	// currently, this is the main application view.
 	mw.pageTriage.ToolbarView = Backbone.View.extend( {
+		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'toolbarView.html' } ),
+		
 		initialize: function() {
 			// decide here which tools to put on the bar, based on namespace, status, etc.
 			// create instances of each of those tools, and build an ordered tools array.
-			tools = array();
+			tools = new Array;
 			
 			// add an articleInfo for testing.
-			tools[] = new mw.pageTriage.articleInfoView( { eventBus: eventBus } );
+			tools.push( new mw.pageTriage.ArticleInfoView( { eventBus: eventBus } ) );
 			
 			// and a generic abstract toolView (which does nothing)
-			tools[] = new mw.pageTriage.toolView( { eventBus: eventBus } );
+			tools.push( new mw.pageTriage.toolView( { eventBus: eventBus } ) );
 			
 		},
 		

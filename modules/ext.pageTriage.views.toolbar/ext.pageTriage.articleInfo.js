@@ -1,9 +1,8 @@
 // view for displaying all the article metadata
 
 $( function() {
-
-	mw.pageTriage.articleInfoView = mw.pageTriage.ToolView.extend( {
-		icon: '' // the default icon
+	mw.pageTriage.ArticleInfoView = mw.pageTriage.ToolView.extend( {
+		icon: '', // the default icon
 		activeIcon: '', // the icon for when the item is selected
 		disabledIcon: '', // the grayed out icon
 		title: 'Page Info',

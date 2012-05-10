@@ -304,6 +304,7 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 	'dependencies' => array(
 		'mediawiki.jqueryMsg',
 		'ext.pageTriage.models',
+		'ext.pageTriage.util',
 		'jquery.ui.button',
 		'jquery.spinner'
 	),

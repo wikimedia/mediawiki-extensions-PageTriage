@@ -5,5 +5,5 @@ jQuery( function( $ ) {
 	}
 
 	// check to see if the curation toolbar should load here.
-	mw.loader.load( 'ext.pageTriage.views.toolbar' );
+	//mw.loader.load( 'ext.pageTriage.views.toolbar' );
 } );

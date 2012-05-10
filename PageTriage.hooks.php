@@ -309,6 +309,9 @@ class PageTriageHooks {
 	 * BeforePageDisplay hook
 	 */
 	public static function beforePageDisplay( $out ) {
+		// one could place some conditionals here to determine if the
+		// curation toolbar should load.  there's also an opportunity to
+		// check things from the JS side in the module that's loaded here.
 		$out->addModules( 'ext.pageTriage.startup' );
 		return true;
 	}
