@@ -50,11 +50,12 @@ $( function() {
 		apiParams: {
 			namespace: 0,
 			limit: 20,
-			dir: 'newestfirst'
+			dir: 'newestfirst',
+			showreviewed: 1,
+			showdeleted: 1
 			/*
 			showbots: null,
 			showredirs: null,
-			showreviewed: null,
 			no_category: 1,
 			no_inbound_links: 1,
 			non_autoconfirmed_users: 1,
