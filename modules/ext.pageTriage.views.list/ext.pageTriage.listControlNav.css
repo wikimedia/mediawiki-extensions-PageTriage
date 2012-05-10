@@ -77,3 +77,15 @@
 	font-size: 95%;
 	padding: 0.2em 0.6em 0.1em 0.6em;
 }
+
+#mwe-pt-sort-buttons .ui-button {
+	/* @embed */
+	background: #7e8183 url('images/sort_button_off.png') repeat-x scroll 50% 100%;
+	color: #0645AD;
+}
+#mwe-pt-sort-buttons .ui-button.ui-state-active {
+	/* @embed */
+	background: #d9e3e8 url('images/sort_button_on.png') repeat-x scroll 50% 100%;
+	color: white;
+	border-color: #6e7273;
+}
