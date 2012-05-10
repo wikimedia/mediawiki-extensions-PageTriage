@@ -57,6 +57,7 @@ $wgPageTriageMarkPatrolledLinkExpiry = 3600 * 24 * 30; // 30 days
 $wgPageTriageNoIndexTemplates = 'No_index_templates'; // Pages containing templates defined in this title would not be indexed.
 $wgPageTriageLearnMoreUrl = 'http://en.wikipedia.org/wiki/Wikipedia:New_Pages_Feed/Help';
 $wgPageTriageFeedbackUrl = 'http://en.wikipedia.org/wiki/Wikipedia_talk:New_Pages_Feed';
+$wgPageTriageEnableCurationToolbar = false; // enable the curation toolbar?
 // End configuration variables
 
 $dir = dirname( __FILE__ ) . '/';
