@@ -27,9 +27,9 @@ $( function() {
 				dataType: 'json',
 				async: false,
 				success: function( result ) {
-					if( result.pagetriagetemplate.result == 'success' ) {
+					if ( result.pagetriagetemplate !== undefined && result.pagetriagetemplate.result === 'success' ) {
 						templateText = result.pagetriagetemplate.template;
-					}						
+					}
 				}
 			} );
 
