@@ -30,10 +30,10 @@ $( function() {
 			// build the bar and insert into the page.
 			
 			_.each( tools, function( tool ) {
-				console.log("tool title: " + tool.title);
+				//console.log("tool title: " + tool.title);
 			} );
 			
-			console.log( 'would insert toolbar on this page' );
+			//console.log( 'would insert toolbar on this page' );
 		}
 		
 	} );
