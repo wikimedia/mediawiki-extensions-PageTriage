@@ -312,6 +312,14 @@ class PageTriageHooks {
 		// one could place some conditionals here to determine if the
 		// curation toolbar should load.  there's also an opportunity to
 		// check things from the JS side in the module that's loaded here.
+		
+		global $wgPageTriageEnableCurationToolbar;
+		
+		if( ! $wgPageTriageEnableCurationToolbar ) {
+			// the curation bar is disabled.  do nothing.
+			return true;
+		}
+		
 		$out->addModules( 'ext.pageTriage.startup' );
 		return true;
 	}
