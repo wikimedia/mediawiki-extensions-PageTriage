@@ -29,14 +29,25 @@ $( function() {
 
 			var userName = article.get( 'user_name' );
 			if( userName ) {
-				article.set( 'user_title', new mw.Title( userName, mw.config.get('wgNamespaceIds')['user'] ) );
-				article.set( 'user_talk_title', new mw.Title( userName, mw.config.get('wgNamespaceIds')['user_talk'] ) );
+				var userTitle     = new mw.Title( userName, mw.config.get('wgNamespaceIds')['user'] );
+				var userTalkTitle = new mw.Title( userName, mw.config.get('wgNamespaceIds')['user_talk'] );
+
+				article.set( 'user_title_url', this.constructLink( userTitle ) );
+				article.set( 'user_talk_title_url', this.constructLink( userTalkTitle ) );
 				article.set( 'user_contribs_title', new mw.Title( gM( 'pagetriage-special-contributions' ) + '/' + userName ) );
-				article.set( 'userPageLinkClass', article.get( 'user_title' ).exists() ? '' : 'class="new"' );
-				article.set( 'talkPageLinkClass', article.get( 'user_talk_title' ).exists() ? '' : 'class="new"' );
-				
+				article.set( 'userPageLinkClass', userTitle.exists() ? '' : 'class="new"' );
+				article.set( 'talkPageLinkClass', userTalkTitle.exists() ? '' : 'class="new"' );
 			}
 			article.set( 'title_url', mw.util.wikiUrlencode( article.get( 'title' ) ) );
+		},
+
+		constructLink: function ( title ) {
+			var url = title.getUrl();
+			if ( !title.exists() ) {
+				var mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
+				url = url + mark + 'action=edit&redlink=1';
+			}
+			return url;
 		}
 
 	} );
