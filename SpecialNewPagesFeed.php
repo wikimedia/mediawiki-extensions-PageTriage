@@ -165,8 +165,10 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 						</div>
 					</span>
 					<span class="mwe-pt-control-label-right"><b><%= gM( 'pagetriage-sort-by' ) %></b>
-						<a href="#" id="mwe-pt-sort-newest"><%= gM( 'pagetriage-newest' ) %></a>
-						<a href="#" id="mwe-pt-sort-oldest"><%= gM( 'pagetriage-oldest' ) %></a>
+						<span id="mwe-pt-sort-buttons">
+							<input type="radio" id="mwe-pt-sort-newest" name="sort"/><label for="mwe-pt-sort-newest"><%= gM( 'pagetriage-newest' ) %></label>
+							<input type="radio" id="mwe-pt-sort-oldest" name="sort"/><label for="mwe-pt-sort-oldest"><%= gM( 'pagetriage-oldest' ) %></label>
+						</span>
 					</span>
 				</script>
 
