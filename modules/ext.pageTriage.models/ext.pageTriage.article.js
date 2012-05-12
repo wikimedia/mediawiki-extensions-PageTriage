@@ -59,24 +59,31 @@ $( function() {
 		model: mw.pageTriage.Article,
 
 		apiParams: {
-			namespace: 0,
 			limit: 20,
 			dir: 'newestfirst',
+			namespace: 0,
 			showreviewed: 1,
-			showdeleted: 1
+			showdeleted: 1,
+			showredirs: 0
 			/*
-			showbots: null,
-			showredirs: null,
-			no_category: 1,
-			no_inbound_links: 1,
-			non_autoconfirmed_users: 1,
-			blocked_users: 1,
+			showbots: 0,
+			no_category: 0,
+			no_inbound_links: 0,
+			non_autoconfirmed_users: 0,
+			blocked_users: 0,
+			username: null
 			*/
 		},
 
 		initialize: function( options ) {
 			this.eventBus = options.eventBus;
 			this.eventBus.bind( "filterSet", this.setParams );
+			
+			// pull any saved filter settings from the user's cookies
+			var savedFilterSettings = $.cookie( 'NewPageFeedFilterOptions' );
+			if ( savedFilterSettings ) {
+				this.setParams( $.parseJSON( savedFilterSettings ) );
+			}
 		},
 
 		url: function() {
@@ -110,6 +117,28 @@ $( function() {
 
 		setParam: function( paramName, paramValue ) {
 			this.apiParams[paramName] = paramValue;
+		},
+		
+		encodeFilterParams: function() {
+			var encodedString = '';
+			var paramArray = new Array;
+			var _this = this;
+			$.each( this.apiParams, function( key, val ) {                    
+				var str = '"' + key + '":';
+				if ( typeof val === 'string' ) {
+					val = '"' + val.replace(/[\"]/g, '\\"') + '"';
+				}
+				str += val;
+				paramArray.push( str );
+			} );
+			encodedString = '{ ' + paramArray.join( ', ' ) + ' }';
+			return encodedString;
+		},
+		
+		// Save the filter parameters to a cookie
+		saveFilterParams: function() {
+			var cookieString = this.encodeFilterParams();
+			$.cookie( 'NewPageFeedFilterOptions', cookieString, { expires: 100 } );
 		},
 		
 		getParam: function( key ) {

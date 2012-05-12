@@ -30,19 +30,13 @@ $( function() {
 				// fill in the counter when the stats view gets loaded.
 				$( "#mwe-pt-control-stats" ).html( gM( 'pagetriage-article-count', stats.get('ptr_unreviewed_article_count') ) );
 			} );
-			
-			// update the filter display on load.
-			this.menuSync();
 		},
 
 		render: function() {
 			var _this = this;
 
-			if(! this.filterStatus ) {
-				this.filterStatus = gM( 'pagetriage-filter-stat-all');
-			}
-			// render and return the template.  fill with the current model.
-			$( "#mwe-pt-list-control-nav-content").html( this.template( { filterStatus: this.filterStatus } ) );
+			// render and return the template. fill with the current model.
+			$( "#mwe-pt-list-control-nav-content").html( this.template() );
 			
 			// align the filter dropdown box with the dropdown control widget
 			var newLeft = $( '#mwe-pt-filter-dropdown-control' ).width() - 20;
@@ -53,14 +47,14 @@ $( function() {
 			// now that the template's been inserted, set up some events for controlling it
 			//
 
-			// make a button
+			// make a submit button
 			$( ".mwe-pt-filter-set-button" ).button( {
 				label: mw.msg( 'pagetriage-filter-set-button' ),
 				icons: { secondary:'ui-icon-triangle-1-e' }
 			} );
 			$( ".mwe-pt-filter-set-button" ).click( function( e ) {
 				_this.filterSync();
-				_this.toggleFilterMenu();
+				_this.toggleFilterMenu( 'close' );
 				e.stopPropagation();
 			} );
 
@@ -69,24 +63,29 @@ $( function() {
 				_this.toggleFilterMenu();
 				e.stopPropagation();
 			} );
-
+			
 			// Initialize sort links
-			$( '#mwe-pt-sort-newest' ).attr('checked', 'checked');
-			$( '#mwe-pt-sort-buttons' ).buttonset();
-			$( '#mwe-pt-sort-newest' ).click( function() {
+			// Uncomment this when 7147 is merged
+			//$( '#mwe-pt-sort-buttons' ).buttonset();
+			$( '#mwe-pt-sort-newest' ).click( function( e ) {
 				_this.model.setParam( 'dir', 'newestfirst' );
 				_this.model.setParam( 'offset', 0 );
 				_this.model.setParam( 'pageoffset', 0 );
+				_this.model.saveFilterParams();
 				_this.model.fetch();
-				return false;
+				e.stopPropagation();
 			} );
-			$( '#mwe-pt-sort-oldest' ).click( function() {
+			$( '#mwe-pt-sort-oldest' ).click( function( e ) {
 				_this.model.setParam( 'dir', 'oldestfirst' );
 				_this.model.setParam( 'offset', 0 );
 				_this.model.setParam( 'pageoffset', 0 );
+				_this.model.saveFilterParams();
 				_this.model.fetch();
-				return false;
+				e.stopPropagation();
 			} );
+			
+			// make sure the menus are synced with the filter settings
+			this.menuSync();
 		},
 
 		// Create a waypoint trigger that floats the navbar when the user scrolls down
@@ -127,12 +126,13 @@ $( function() {
 			}
 		},
 
+		// Set the width of the floating bar when the window resizes, if it's floating
 		setWidth: function() {
-			// set the width of the floating bar when the window resizes, if it's floating.
 			// border is 2 pixels
 			$( '#mwe-pt-list-control-nav' ).css( 'width', $( '#mw-content-text' ).width() - 2 + 'px' );
 		},
 
+		// Toggle whether or not the filter drop-down interface is displayed
 		toggleFilterMenu: function( action ) {
 			var _this = this;
 			if( (action && action == 'close') || this.filterMenuVisible ) {
@@ -163,7 +163,7 @@ $( function() {
 			}
 		},
 
-		// sync the filters with the contents of the menu
+		// Sync the filters with the contents of the menu
 		filterSync: function() {
 			// fetch the values from the menu
 			var apiParams = {};
@@ -219,13 +219,13 @@ $( function() {
 			apiParams['dir'] = this.model.getParam('dir');
 						
 			this.model.setParams( apiParams );
+			this.model.saveFilterParams();
 			this.model.fetch();
 
 			this.menuSync(); // make sure the menu is now up-to-date.
-			this.render();
 		},
 
-		// sync the menu with the contents of the filters
+		// Sync the menu and other UI elements with the contents of the filters
 		menuSync: function() {
 			this.newFilterStatus = [];
 
@@ -265,15 +265,27 @@ $( function() {
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-blocked' ), 'blocked_users', 'pagetriage-filter-stat-blocked');
 
 			this.filterStatus = this.newFilterStatus.join(' &#xb7; ');
+			$( '#mwe-pt-filter-status' ).html( this.filterStatus );
 			
 			if( ! $("input[name=mwe-pt-filter-radio]:checked").val() ) {
 				// none of the radio buttons are selected.  pick the default.
 				$( '#mwe-pt-filter-all' ).prop( 'checked', true );
 			}
+			
+			// Sync the sort toggle
+			if ( this.model.getParam( 'dir' ) === 'oldestfirst' ) {
+				$( '#mwe-pt-sort-oldest' ).prop( 'checked', true );
+				//$( 'label[for="mwe-pt-sort-oldest"]' ).addClass( 'ui-state-active' );
+				//$( 'label[for="mwe-pt-sort-newest"]' ).removeClass( 'ui-state-active' );
+			} else {
+				$( '#mwe-pt-sort-newest' ).prop( 'checked', true );
+				//$( 'label[for="mwe-pt-sort-newest"]' ).addClass( 'ui-state-active' );
+				//$( 'label[for="mwe-pt-sort-oldest"]' ).removeClass( 'ui-state-active' );
+			}
 		},
 
+		// Update a checkbox in the menu with data from the model
 		menuCheckboxUpdate: function( $checkbox, param, message ) {
-			// update a checkbox in the menu with data from the model.
 			$checkbox.prop( 'checked', this.model.getParam( param )=="1"?true:false );
 			if( this.model.getParam( param ) ) {
 				this.newFilterStatus.push( gM( message ) );
