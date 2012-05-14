@@ -102,7 +102,6 @@ $( function() {
 			var _this = this;
 			var opts = { offset: '100%' };
 			$( '#mwe-pt-list-load-more-anchor' ).waypoint( function( event, direction ) {
-				console.debug('waypoint triggered');
 				if ( direction == 'down' ) {
 					_this.automaticLoadMore();
 				}
