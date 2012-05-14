@@ -138,7 +138,7 @@ $( function() {
 		// Save the filter parameters to a cookie
 		saveFilterParams: function() {
 			var cookieString = this.encodeFilterParams();
-			$.cookie( 'NewPageFeedFilterOptions', cookieString, { expires: 100 } );
+			$.cookie( 'NewPageFeedFilterOptions', cookieString, { expires: 1 } );
 		},
 		
 		getParam: function( key ) {
