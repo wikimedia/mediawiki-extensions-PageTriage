@@ -96,7 +96,7 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 		$triageInterface .= <<<HTML
 				<!-- top nav template -->
 				<script type="text/template" id="listControlNavTemplate">
-					<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-showing' ) %></b> <%= filterStatus %></span>
+					<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-showing' ) %></b> <span id="mwe-pt-filter-status"></span></span>
 					<span class="mwe-pt-control-label-right" id="mwe-pt-control-stats"></span><br/>
 					<span id="mwe-pt-filter-dropdown-control" class="mwe-pt-control-label">
 						<b>
@@ -166,8 +166,8 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 					</span>
 					<span class="mwe-pt-control-label-right"><b><%= gM( 'pagetriage-sort-by' ) %></b>
 						<span id="mwe-pt-sort-buttons">
-							<input type="radio" id="mwe-pt-sort-newest" name="sort"/><label for="mwe-pt-sort-newest"><%= gM( 'pagetriage-newest' ) %></label>
-							<input type="radio" id="mwe-pt-sort-oldest" name="sort"/><label for="mwe-pt-sort-oldest"><%= gM( 'pagetriage-oldest' ) %></label>
+							<input type="radio" id="mwe-pt-sort-newest" name="sort" /><label for="mwe-pt-sort-newest"><%= gM( 'pagetriage-newest' ) %></label>
+							<input type="radio" id="mwe-pt-sort-oldest" name="sort" /><label for="mwe-pt-sort-oldest"><%= gM( 'pagetriage-oldest' ) %></label>
 						</span>
 					</span>
 				</script>
