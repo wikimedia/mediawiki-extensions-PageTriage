@@ -1,3 +1,5 @@
+// Handles the interface for actually marking an article as reviewed
+//
 ( function( $ ) {
 	mw.pageTriage.action = {
 		submit: function() {

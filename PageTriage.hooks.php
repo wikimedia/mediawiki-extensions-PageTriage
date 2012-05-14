@@ -228,7 +228,6 @@ class PageTriageHooks {
 	 */
 	public static function onArticleViewFooter( $article ) {
 		global $wgUser, $wgPageTriageMarkPatrolledLinkExpiry, $wgOut, $wgRequest;
-
 		// the presence of rcid means this is coming from Special:NewPages,
 		// and hence don't make any interference, this also applies to
 		// user with no right
@@ -245,8 +244,8 @@ class PageTriageHooks {
 		if ( !$article->getTitle()->quickUserCan('patrol') ) {
 			return true;
 		}
-		
-		$lastUse = $wgUser->getOption('pagetriage-lastuse');
+
+		$lastUse = $wgUser->getOption( 'pagetriage-lastuse' );
 		if ( $lastUse ) {
 			$lastUse = wfTimestamp( TS_UNIX, $lastUse );
 			$now = wfTimestamp( TS_UNIX, wfTimestampNow() );
@@ -259,9 +258,17 @@ class PageTriageHooks {
 
 		$status = PageTriageUtil::doesPageNeedTriage( $article );
 		if ( $status === true ) {
-			// show 'Mark as reviewed' link
-			$msg = wfMessage( 'pagetriage-markpatrolled' )->text();
-			$msg = Html::element( 'a', array( 'href' => '#', 'class' => 'mw-pagetriage-markpatrolled-link' ), $msg );
+			// Users without the autopatrol right can't review their own pages
+			if ( is_callable( array( 'WikiPage', 'getOldestRevision' ) )
+				&& $wgUser->getId() == $article->getOldestRevision()->getUser()
+				&& !$wgUser->isAllowed( 'autopatrol' )
+			) {
+				$msg = wfMessage( 'pagetriage-self-review-error' )->escaped();
+			} else {
+				// show 'Mark as reviewed' link
+				$msg = wfMessage( 'pagetriage-markpatrolled' )->text();
+				$msg = Html::element( 'a', array( 'href' => '#', 'class' => 'mw-pagetriage-markpatrolled-link' ), $msg );
+			}
 		} else if ( $status === false ) {
 			// show 'Reviewed' text
 			$msg = wfMessage( 'pagetriage-reviewed' )->escaped();
