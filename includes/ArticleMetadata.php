@@ -154,7 +154,8 @@ class ArticleMetadata {
 						'ptrp_reviewed',
 						'ptrp_created',
 						'page_title',
-						'page_namespace'
+						'page_namespace',
+						'page_is_redirect'
 					),
 					array(
 						'ptrpt_page_id' => $articles,
@@ -171,6 +172,7 @@ class ArticleMetadata {
 				if ( !isset( $pageData[$row->ptrpt_page_id]['creation_date'] ) ) {
 					$pageData[$row->ptrpt_page_id]['creation_date'] = $row->ptrp_created;
 					$pageData[$row->ptrpt_page_id]['patrol_status'] = $row->ptrp_reviewed;
+					$pageData[$row->ptrpt_page_id]['is_redirect'] = $row->page_is_redirect;
 					$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 					if ( $title ) {
 						$pageData[$row->ptrpt_page_id]['title'] = $title->getPrefixedText();
@@ -550,7 +552,7 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 				array ( 'page', 'pagetriage_page' ),
 				array (
 					'page_id', 'page_namespace', 'page_title', 'page_len',
-					'ptrp_reviewed'
+					'ptrp_reviewed', 'page_is_redirect'
 				),
 				array ( 'page_id' => $this->mPageId, 'page_id = ptrp_page_id'),
 				__METHOD__
@@ -565,6 +567,7 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 			// The following data won't be saved into metadata since they are not metadata tags
 			// just for saving into cache later
 			$this->metadata[$row->page_id]['patrol_status'] = $row->ptrp_reviewed;
+			$this->metadata[$row->page_id]['is_redirect'] = $row->page_is_redirect;
 			if ( $title ) {
 				$this->metadata[$row->page_id]['title'] = $title->getPrefixedText();
 			}

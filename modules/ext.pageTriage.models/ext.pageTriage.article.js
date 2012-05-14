@@ -32,25 +32,37 @@ $( function() {
 				var userTitle     = new mw.Title( userName, mw.config.get('wgNamespaceIds')['user'] );
 				var userTalkTitle = new mw.Title( userName, mw.config.get('wgNamespaceIds')['user_talk'] );
 
-				article.set( 'user_title_url', this.constructLink( userTitle ) );
-				article.set( 'user_talk_title_url', this.constructLink( userTalkTitle ) );
+				article.set( 'user_title_url', this.buildRedLink( userTitle ) );
+				article.set( 'user_talk_title_url', this.buildRedLink( userTalkTitle ) );
 				article.set( 'user_contribs_title', new mw.Title( gM( 'pagetriage-special-contributions' ) + '/' + userName ) );
 				article.set( 'userPageLinkClass', userTitle.exists() ? '' : 'class="new"' );
 				article.set( 'talkPageLinkClass', userTalkTitle.exists() ? '' : 'class="new"' );
 			}
-			article.set( 'title_url', mw.util.wikiUrlencode( article.get( 'title' ) ) );
+			article.set( 'title_url_format', mw.util.wikiUrlencode( article.get( 'title' ) ) );
+
+			var titleUrl = mw.util.wikiGetlink( article.get( 'title' ) );
+			if ( Number( article.get( 'is_redirect' ) ) === 1 ) {
+				titleUrl = this.buildLink( titleUrl, 'redirect=no' );
+			}
+			article.set( 'title_url', titleUrl );
 		},
 
-		constructLink: function ( title ) {
+		buildRedLink: function ( title ) {
 			var url = title.getUrl();
 			if ( !title.exists() ) {
-				var mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
-				url = url + mark + 'action=edit&redlink=1';
+				url = this.buildLink( url, 'action=edit&redlink=1' );
 			}
 			return url;
-		}
+		},
 
-	} );
+		buildLink: function ( url, param ) {
+                      if ( param ) {
+                      	      var mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
+                      	      url += mark + param;
+                      }
+                      return url;
+                }
+        } );
 
 	// can't include this in the declaration above because it references the
 	// object created therein.
