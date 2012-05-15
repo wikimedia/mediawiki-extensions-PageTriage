@@ -119,7 +119,11 @@ class PageTriageUtil {
 			$res = $dbr->select(
 				array( 'pagetriage_log', 'user' ),
 				array( 'user_name', 'user_id', 'COUNT(ptrl_id) AS num' ),
-				array( 'user_id = ptrl_user_id', 'ptrl_timestamp > ' . $dbr->addQuotes( $dbr->timestamp( $timeFrame[$time]['ts'] ) ) ),
+				array(
+					'user_id = ptrl_user_id',
+					"user_name != 'ClueBot NG'", // Once bug 36837 is fixed, remove this
+					'ptrl_timestamp > ' . $dbr->addQuotes( $dbr->timestamp( $timeFrame[$time]['ts'] ) )
+				),
 				__METHOD__,
 				array( 'GROUP BY' => 'user_id', 'ORDER BY' => 'num DESC', 'LIMIT' => 50 )
 			);
