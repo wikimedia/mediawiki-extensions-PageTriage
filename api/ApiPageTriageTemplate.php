@@ -41,7 +41,7 @@ class ApiPageTriageTemplate extends ApiBase {
 				$error = "template file not found: \"$localPath\"";
 				$result = array( 'result' => 'error', 'errormsg' => $error );
 				$this->getResult()->addValue( null, $this->getModuleName(), $result );
-				throw new MWException( __METHOD__ . ': ' . $error );
+				return;
 			}
 			$contents .= file_get_contents( $localPath );
 		}
