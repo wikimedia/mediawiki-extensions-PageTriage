@@ -24,7 +24,7 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 						array( 'page_id' ),
 						array(
 							'page_is_redirect' => 0,
-							'page_random >= ' . $start,
+							'page_id > ' . $start,
 							'page_id = ptrp_page_id'
 						),
 						__METHOD__,
@@ -35,7 +35,7 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 				);
 			if ( $res ) {
 				$this->pageId[$res->page_id] = $res->page_id;
-				$start = $res->page_id;
+				$start = intval( $res->page_id );
 			}
 			$count++;
 		}
@@ -51,7 +51,6 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 		$tags = ArticleMetadata::getValidTags();
 
 		$validTags = array (
-					'title',
 					'linkcount',
 					'category_count',
 					'csd_status',
@@ -105,7 +104,8 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 			array(
 				'creation_date' => 'creation_date',
 				'patrol_status' => 'patrol_status',
-				'deleted' => 'deleted'
+				'deleted' => 'deleted',
+				'title' => 'title'
 			);
 
 		foreach ( $data as $pageId => $val ) {
