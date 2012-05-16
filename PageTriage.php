@@ -314,9 +314,9 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'jquery.spinner'
 	),
 	'scripts' => array(
-		'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.js',
-		'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.js',
-		'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfo.js',
+		'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.js', // abstract class first
+		'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfo.js', // then all the tool views
+		'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.js', // overall toolbar view last
 	),
 	'styles' => array(
 		'ext.pageTriage.css', // stuff that's shared across all views

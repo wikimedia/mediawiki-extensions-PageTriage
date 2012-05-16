@@ -1,1 +1,17 @@
 /* stylesheet for the main toolbar view */
+
+#mwe-pt-toolbar {
+	width: 50px;
+	position: fixed;
+	top: 150px;
+	z-index: 1;
+	right: 0px;
+}
+
+#mwe-pt-toolbar-main {
+}
+
+#mwe-pt-toolbar-close {
+	background-color: gray;
+	text-align: center;
+}

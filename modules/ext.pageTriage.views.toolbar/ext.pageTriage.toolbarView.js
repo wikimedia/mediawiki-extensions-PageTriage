@@ -6,7 +6,7 @@ $( function() {
 
 	// instantiate the collection of articles
 	var articles = new mw.pageTriage.ArticleList( { eventBus: eventBus } );
-	var tools = new Array;
+	var tools;
 	
 	// overall toolbar view
 	// currently, this is the main application view.
@@ -21,19 +21,27 @@ $( function() {
 			// add an articleInfo for testing.
 			tools.push( new mw.pageTriage.ArticleInfoView( { eventBus: eventBus } ) );
 			
-			// and a generic abstract toolView (which does nothing)
-			tools.push( new mw.pageTriage.toolView( { eventBus: eventBus } ) );
+			// and a generic abstract toolView (which does nothing, but is fine for testing)
+			tools.push( new mw.pageTriage.ToolView( { eventBus: eventBus } ) );
 			
+			// if we someday want this configurable on-wiki, this could load some js from
+			// the MediaWiki namespace that generates the tools array instead.			
 		},
 		
 		render: function() {			
 			// build the bar and insert into the page.
-			
+
+			// insert the empty toolbar into the document.
+			//console.log( 'inserting toolbar on this page' );
+			$('body').append( this.template() );
+
 			_.each( tools, function( tool ) {
-				//console.log("tool title: " + tool.title);
+				// append the individual tool template to the toolbar's big tool div part
+				//console.log("inserting tool: " + tool.title);
+				var html = tool.place();  // this is the icon and hidden div.  should be appended to the div once it's created.
 			} );
+						
 			
-			//console.log( 'would insert toolbar on this page' );
 		}
 		
 	} );

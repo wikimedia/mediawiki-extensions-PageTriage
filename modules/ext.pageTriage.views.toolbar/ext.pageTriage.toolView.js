@@ -22,8 +22,28 @@ $( function() {
 		// if not defined, runs render() and inserts the result into a flyout instead
 		// useful for the "next" button, for example
 		onClick: null,
-		
-		render: 'this is some example html'
-				
+
+		// generate the stuff that goes in this tool's flyout.
+		render: 'this is some example html',
+
+		// this is stuff you probably won't want to override
+		chromeTemplate: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'toolbarView.html' } ),
+		open: function() {
+			// is an onClick present?  do that and return.
+
+			// otherwise...
+			// show the tool div.
+			// set the contents to this.render()
+		},
+
+		close: function() {
+			// hide the div
+		},
+
+		place: function() {
+			// return the HTML for the closed up version of this tool.
+			return this.chromeTemplate();
+		}
+
 	} );
 } );
