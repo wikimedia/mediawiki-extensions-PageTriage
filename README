@@ -1,5 +1,5 @@
-ArticleCreationWorkflow is an extension for MediaWiki. It implements an interface for reviewing
-and categorizing new pages. It is designed with the New Pages Patroller in mind, and replaces
+PageTriage is an extension for MediaWiki. It implements an interface for reviewing, categorizing,
+and sometimes deleting new pages. It is designed with the New Pages Patroller in mind, and replaces
 Special:NewPages and the patrolled edits feature.
 
 It is very focused on the Wikipedia article creation workflow, though it could probably be adapted
