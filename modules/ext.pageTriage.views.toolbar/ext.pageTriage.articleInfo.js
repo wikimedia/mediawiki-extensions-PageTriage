@@ -15,9 +15,8 @@ $( function() {
 		render: function() {
 			// create the info view content here.
 			// return the HTML that gets inserted.
-			return this.template({});
+			return this.template( { 'iconPath':this.iconPath( 'active' ), 'title':this.title } );
 		}
-
 	} );	
 	
 } );
