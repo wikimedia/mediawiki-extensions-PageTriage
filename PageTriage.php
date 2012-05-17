@@ -302,6 +302,7 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'pagetriage-note-reviewed',
 		'pagetriage-note-not-reviewed',
 		'pagetriage-note-deletion',
+		'pagetriage-refresh-list',
 	)
 );
 

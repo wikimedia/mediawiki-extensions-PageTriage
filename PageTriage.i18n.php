@@ -81,6 +81,7 @@ $messages['en'] = array(
 	'pagetriage-note-reviewed' => 'This page has been reviewed.',
 	'pagetriage-note-not-reviewed' => 'This page has not yet been reviewed.',
 	'pagetriage-note-deletion' => 'This page has been nominated for deletion.',
+	'pagetriage-refresh-list' => 'Refresh list',
 );
 
 /** Message documentation (Message documentation) */
@@ -149,6 +150,7 @@ $messages['qqq'] = array(
 	'pagetriage-note-reviewed' => 'A note that appears when a user hovers over a status icon',
 	'pagetriage-note-not-reviewed' => 'A note that appears when a user hovers over a status icon',
 	'pagetriage-note-deletion' => 'A note that appears when a user hovers over a status icon',
+	'pagetriage-refresh-list' => 'A label for a button that refreshes the list of articles',
 );
 
 /** German (Deutsch)
