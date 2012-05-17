@@ -14,10 +14,10 @@ $( function() {
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'toolbarView.html' } ),
 		
 		initialize: function() {
-			// decide here which tools to put on the bar, based on namespace, status, etc.
+			// TODO: decide here which tools to put on the bar, based on namespace, status, etc.
 			// create instances of each of those tools, and build an ordered tools array.
 			tools = new Array;
-			
+
 			// add an articleInfo for testing.
 			tools.push( new mw.pageTriage.ArticleInfoView( { eventBus: eventBus } ) );
 			
@@ -32,18 +32,14 @@ $( function() {
 			// build the bar and insert into the page.
 
 			// insert the empty toolbar into the document.
-			//console.log( 'inserting toolbar on this page' );
 			$('body').append( this.template() );
 
 			_.each( tools, function( tool ) {
 				// append the individual tool template to the toolbar's big tool div part
-				//console.log("inserting tool: " + tool.title);
-				var html = tool.place();  // this is the icon and hidden div.  should be appended to the div once it's created.
+				// this is the icon and hidden div. (the actual tool content)
+				$( '#mwe-pt-toolbar-main' ).append( tool.place() );
 			} );
-						
-			
 		}
-		
 	} );
 
 	// create an instance of the toolbar view

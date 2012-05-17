@@ -1,0 +1,38 @@
+/* probably move these styles into toolView.css */
+.mwe-pt-tool {
+	background-color: #cacaca;
+}
+
+.mwe-pt-tool-icon {	
+	cursor: pointer;
+}
+
+.mwe-pt-tool-flyout {
+	position: relative;
+	right: 360px;
+	width: 300px;
+	padding: 8px;
+	background-color: #cacaca;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	visibility: hidden;
+}
+
+.mwe-pt-tool-title {
+	font-weight: bold;
+}
+
+.mwe-pt-tool-content {
+	background-color: white;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.mwe-pt-tool-close {
+	color: gray;
+	float: right;
+	font-size: 0.5em;
+	cursor: pointer;
+}

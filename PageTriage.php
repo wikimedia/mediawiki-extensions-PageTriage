@@ -321,6 +321,7 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 	'styles' => array(
 		'ext.pageTriage.css', // stuff that's shared across all views
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.css',
+		'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.css',
 	),
 	'messages' => array()
 );

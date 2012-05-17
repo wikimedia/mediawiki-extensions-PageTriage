@@ -2,10 +2,10 @@
 
 $( function() {
 	mw.pageTriage.ArticleInfoView = mw.pageTriage.ToolView.extend( {
-		icon: '', // the default icon
-		activeIcon: '', // the icon for when the item is selected
-		disabledIcon: '', // the grayed out icon
+		id: 'info',
+		icon: 'icon_info.png', // the default icon
 		title: 'Page Info',
+		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'articleInfo.html' } ),		
 		
 		badgeCount: function() {
 			// calculate the badge count.
@@ -15,7 +15,7 @@ $( function() {
 		render: function() {
 			// create the info view content here.
 			// return the HTML that gets inserted.
-			return "<i>article info html</i>";
+			return this.template({});
 		}
 
 	} );	

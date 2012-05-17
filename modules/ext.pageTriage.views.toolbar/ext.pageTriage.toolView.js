@@ -3,12 +3,11 @@
 
 $( function() {
 	mw.pageTriage.ToolView = Backbone.View.extend( {
-		// These things will probably be overrideen with static values.  You can use a function
+		// These things will probably be overridden with static values.  You can use a function
 		// if you want to, though.
-		//		
-		icon: 'icon_default.png', // icon to display in the toolbar		
-		activeIcon: 'icon_default_active.png', // the icon for when the item is selected
-		disabledIcon: 'icon_default_disabled.png', // the grayed out icon
+		//
+		id: 'abstract',
+		icon: 'icon_tag.png', // icon to display in the toolbar
 		title: 'Abstract tool view', // the title for the flyout window
 		scrollable: false, // should the output of render be in a scrollable div?
 		
@@ -21,29 +20,100 @@ $( function() {
 		// function to bind to the icon's click handler
 		// if not defined, runs render() and inserts the result into a flyout instead
 		// useful for the "next" button, for example
-		onClick: null,
-
+		click: function () {
+			if( this.visible ) {
+				this.hide();
+			} else {
+				this.show();
+			}
+		},
+		
 		// generate the stuff that goes in this tool's flyout.
-		render: 'this is some example html',
+		render: function() {
+			return 'this is some example html';
+		},
+		
+		// if you override initialize, make sure you preserve eventBus
+		initialize: function( options ) {
+			this.eventBus = options.eventBus;
+		},
+		
+		// ***********************************************************
+		// from here down is stuff you probably won't want to override
+		tagName: "div",
+		className: "mwe-pt-tool",
+		chromeTemplate: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'toolView.html' } ),
+		visible: false,
+		
+		show: function() {
+			_this = this;
+			// trigger an event here saying which tool is being opened.
+			this.eventBus.trigger( 'showTool', this );
 
-		// this is stuff you probably won't want to override
-		chromeTemplate: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'toolbarView.html' } ),
-		open: function() {
-			// is an onClick present?  do that and return.
+			// close this tool if another tool is opened.
+			this.eventBus.bind( 'showTool', function( tool ) {
+				if( tool !== this ) {
+					this.hide();
+				}
+			}, this );
 
-			// otherwise...
+			// swap the icon
+			this.setIcon( 'active' );
+			
 			// show the tool div.
-			// set the contents to this.render()
-		},
+			this.$el.find( '.mwe-pt-tool-flyout' ).css( 'visibility', 'visible' );
+			this.visible = true;
 
-		close: function() {
+			// set the contents to this.render()			
+			this.$el.find( '.mwe-pt-tool-content' ).html( this.render() );
+		},
+		
+		hide: function() {
+			// swap the icon
+			this.setIcon( 'normal' );
+			
 			// hide the div
+			this.$el.find( '.mwe-pt-tool-flyout' ).css( 'visibility', 'hidden' );
+			this.visible = false;
+			
+			// this listener is only needed when the tool is open
+			this.eventBus.unbind( 'showTool', null, this );
 		},
-
+		
 		place: function() {
+			var _this = this;
+			
 			// return the HTML for the closed up version of this tool.
-			return this.chromeTemplate();
-		}
+			this.$el.html( this.chromeTemplate( {
+				id: this.id,
+				title: this.title,
+				iconPath: this.iconPath( 'normal' ),
+			} ) );
 
+			// bind a click handler to open it.
+			this.$el.find( '.mwe-pt-tool-icon' ).click( function() {
+				_this.click();
+			} );
+			
+			// set up an event for the close button
+			this.$el.find( '.mwe-pt-tool-close' ).click( function() {
+				_this.hide();
+			} );
+			
+			return this.$el;
+		},
+		
+		iconPath: function( dir ) {
+			return mw.config.get( 'wgExtensionAssetsPath' ) +
+				'/PageTriage/modules/ext.pageTriage.views.toolbar/images/icons/' +
+				dir +
+				'/' +
+				this.icon;
+		},
+		
+		setIcon: function( dir ) {
+			this.$el.find( 'img.mwe-pt-tool-icon' ).attr('src', this.iconPath( dir ) );
+		}
+		
 	} );
 } );

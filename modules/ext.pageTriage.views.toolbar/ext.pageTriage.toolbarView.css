@@ -1,7 +1,8 @@
 /* stylesheet for the main toolbar view */
 
 #mwe-pt-toolbar {
-	width: 50px;
+	width: 39px;
+	padding: 2px;
 	position: fixed;
 	top: 150px;
 	z-index: 1;
@@ -12,6 +13,6 @@
 }
 
 #mwe-pt-toolbar-close {
-	background-color: gray;
+	background-color: #cacaca;
 	text-align: center;
 }
