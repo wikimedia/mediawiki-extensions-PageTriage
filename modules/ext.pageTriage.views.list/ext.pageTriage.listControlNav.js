@@ -12,13 +12,13 @@ $( function() {
 			var _this = this;
 
 			this.eventBus = options.eventBus; // access the eventBus
-			
+
 			if ( mw.config.get( 'wgPageTriageStickyControlNav' ) ) {
 				this.setWaypoint(); // create scrolling waypoint
-	
+
 				// reset the width when the window is resized
-				$( window ).resize( _.debounce( _this.setWidth, 100 ) );
-	
+				$( window ).resize( _.debounce( _this.setWidth, 80 ) );
+
 				// when the list view is updated, see if we need to change the
 				// float state of the navbar
 				this.eventBus.bind( 'articleListChange', function() {
@@ -120,10 +120,10 @@ $( function() {
 			} else {
 				// top nav isn't visible.  turn on the floating navbar
 				$( '#mwe-pt-list-control-nav' ).parent().addClass('stickyTop');
-				this.setWidth();
 				// pad the top of the list so it doesn't jump when the navbar changes to fixed positioning.
 				$( '#mwe-pt-list-view' ).css( 'padding-top', $( '#mwe-pt-list-control-nav' ).height() );
 			}
+			this.setWidth();
 		},
 
 		// Set the width of the floating bar when the window resizes, if it's floating
