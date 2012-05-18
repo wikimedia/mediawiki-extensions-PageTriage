@@ -174,27 +174,26 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 
 				<!-- bottom nav template -->
 				<script type="text/template" id="listStatsNavTemplate">
-					<div id="mwe-pt-stats-nav">
-						<div class="mwe-pt-top-triager">
+					<button id='mwe-pt-refresh-list'><%= gM( 'pagetriage-refresh-list' ) %></button>
+					<div class="mwe-pt-top-triager">
+						<%
+						if ( toptriager.total ) {
+						%>
+							<span class="mwe-pt-stats-label"><%= ptrTopTriagerStr %></span>
 							<%
-							if ( toptriager.total ) {
-							%>
-								<span class="mwe-pt-stats-label"><%= ptrTopTriagerStr %></span>
-								<%
-								var triagerLinks = new Array();
-								for ( var m in ptrTopTriager ) {
-									triagerLinks.push( "<a " + ptrTopTriager[m].linkCSS + " href=\"" + ptrTopTriager[m].title.getUrl() + "\">" + mw.html.escape(ptrTopTriager[m].userName ) + "</a>" );
-								}
-								var triagers = triagerLinks.join( gM( 'comma-separator' ) );
-								%>
-								<%= triagers %>
-							<%
+							var triagerLinks = new Array();
+							for ( var m in ptrTopTriager ) {
+								triagerLinks.push( "<a " + ptrTopTriager[m].linkCSS + " href=\"" + ptrTopTriager[m].title.getUrl() + "\">" + mw.html.escape(ptrTopTriager[m].userName ) + "</a>" );
 							}
+							var triagers = triagerLinks.join( gM( 'comma-separator' ) );
 							%>
-						</div>
-						<div class="mwe-pt-article-age-stats">
-							<% if ( ptrAverage ) { %> <%= gM( 'pagetriage-stats-unreviewed-age', ptrAverage, ptrOldest ) %> <% } %>
-						</div>
+							<%= triagers %>
+						<%
+						}
+						%>
+					</div>
+					<div class="mwe-pt-article-age-stats">
+						<% if ( ptrAverage ) { %> <%= gM( 'pagetriage-stats-unreviewed-age', ptrAverage, ptrOldest ) %> <% } %>
 					</div>
 				</script>
 

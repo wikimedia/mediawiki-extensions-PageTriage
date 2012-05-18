@@ -16,3 +16,7 @@
 .mwe-pt-stats-label {
 	font-weight:bold;
 }
+
+#mwe-pt-refresh-list {
+	float: right;
+}

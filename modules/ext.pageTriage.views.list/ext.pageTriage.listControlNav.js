@@ -24,6 +24,11 @@ $( function() {
 				this.eventBus.bind( 'articleListChange', function() {
 					_this.setPosition();
 				} );
+				
+				// when a request is made to refresh the list, do it
+				this.eventBus.bind( 'refreshListRequest', function() {
+					_this.refreshList();
+				} );
 			}
 
 			this.eventBus.bind( "renderStats", function( stats ) {
@@ -69,23 +74,26 @@ $( function() {
 			//$( '#mwe-pt-sort-buttons' ).buttonset();
 			$( '#mwe-pt-sort-newest' ).click( function( e ) {
 				_this.model.setParam( 'dir', 'newestfirst' );
-				_this.model.setParam( 'offset', 0 );
-				_this.model.setParam( 'pageoffset', 0 );
 				_this.model.saveFilterParams();
-				_this.model.fetch();
+				_this.refreshList();
 				e.stopPropagation();
 			} );
 			$( '#mwe-pt-sort-oldest' ).click( function( e ) {
 				_this.model.setParam( 'dir', 'oldestfirst' );
-				_this.model.setParam( 'offset', 0 );
-				_this.model.setParam( 'pageoffset', 0 );
 				_this.model.saveFilterParams();
-				_this.model.fetch();
+				_this.refreshList();
 				e.stopPropagation();
 			} );
 			
 			// make sure the menus are synced with the filter settings
 			this.menuSync();
+		},
+		
+		// Refresh the page list
+		refreshList: function() {
+			this.model.setParam( 'offset', 0 );
+			this.model.setParam( 'pageoffset', 0 );
+			this.model.fetch();
 		},
 
 		// Create a waypoint trigger that floats the navbar when the user scrolls down
@@ -214,7 +222,7 @@ $( function() {
 				apiParams['blocked_users'] = '1';
 			}
 			
-			// persist the limit parameter
+			// persist the limit and direction parameters
 			apiParams['limit'] = this.model.getParam('limit');
 			apiParams['dir'] = this.model.getParam('dir');
 						
