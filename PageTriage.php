@@ -202,6 +202,9 @@ $wgResourceModules['ext.pageTriage.util'] = $ptResourceTemplate + array(
 	'scripts' => array(
 		'ext.pageTriage.util/ext.pageTriage.viewUtil.js' // convenience functions for all views
 	),
+	'messages' => array(
+		'pagetriage-api-error'
+	)
 );
 
 $wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + array(

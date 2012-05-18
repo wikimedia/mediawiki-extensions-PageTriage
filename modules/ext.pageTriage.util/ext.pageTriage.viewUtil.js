@@ -30,6 +30,11 @@ $( function() {
 					if ( result.pagetriagetemplate !== undefined && result.pagetriagetemplate.result === 'success' ) {
 						templateText = result.pagetriagetemplate.template;
 					}
+				},
+				error: function( xhr ) {
+					$( '#mwe-pt-list-view' ).empty();
+					$( '#mwe-pt-list-errors' ).html( mw.msg( 'pagetriage-api-error' ) );
+					$( '#mwe-pt-list-errors' ).show();
 				}
 			} );
 
