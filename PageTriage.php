@@ -80,6 +80,7 @@ $wgAutoloadClasses['ArticleCompileCategoryCount'] = $dir . 'includes/ArticleMeta
 $wgAutoloadClasses['ArticleCompileSnippet'] = $dir . 'includes/ArticleMetadata.php';
 $wgAutoloadClasses['ArticleCompileUserData'] = $dir . 'includes/ArticleMetadata.php';
 $wgAutoloadClasses['ArticleCompileDeletionTag'] = $dir . 'includes/ArticleMetadata.php';
+$wgAutoloadClasses['PageTriageExternalTagsOptions'] = $dir . 'includes/PageTriageExternalTagsOptions.php';
 
 $wgAutoloadClasses['ApiPageTriageList'] = $dir . 'api/ApiPageTriageList.php';
 $wgAutoloadClasses['ApiPageTriageGetMetadata'] = $dir . 'api/ApiPageTriageGetMetadata.php';
@@ -147,6 +148,36 @@ $ptResourceTemplate = array(
 
 // where can the template API find the templates?
 $ptTemplatePath = $ptResourceTemplate['localBasePath'];
+
+// Tags options message
+$wgPageTriageTagsOptionsMessages = array (
+	'pagetriage-tags-cat-common-label',
+	'pagetriage-tags-cat-metadata-label',
+	'pagetriage-tags-cat-cleanup-label',
+	'pagetriage-tags-cat-neutrality-label',
+	'pagetriage-tags-cat-sources-label',
+	'pagetriage-tags-cat-structure-label',
+	'pagetriage-tags-cat-unwantedcontent-label',
+	'pagetriage-tags-cat-verifiability-label',
+	'pagetriage-tags-cat-writingstyle-label',
+	'pagetriage-tags-cat-moretags-label',
+	'pagetriage-tags-linkrot-label',
+	'pagetriage-tags-linkrot-desc',
+	'pagetriage-tags-copyedit-label',
+	'pagetriage-tags-copyedit-desc',
+	'pagetriage-tags-morefootnotes-label',
+	'pagetriage-tags-morefootnotes-desc',
+	'pagetriage-tags-refimprove-label',
+	'pagetriage-tags-refimprove-desc',
+	'pagetriage-tags-uncategorised-label',
+	'pagetriage-tags-uncategorised-desc',
+	'pagetriage-tags-unreferenced-label',
+	'pagetriage-tags-unreferenced-desc',
+	'pagetriage-tags-deadend-label',
+	'pagetriage-tags-deadend-desc',
+	'pagetriage-tags-externallinks-label',
+	'pagetriage-tags-externallinks-desc'
+);
 
 $wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + array(
 	'scripts' => array(
@@ -316,11 +347,13 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'ext.pageTriage.util',
 		'ext.pageTriage.badger',
 		'jquery.ui.button',
-		'jquery.spinner'
+		'jquery.spinner',
+		'ext.pageTriage.externalTagsOptions',
 	),
 	'scripts' => array(
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.js', // abstract class first
 		'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfo.js', // then all the tool views
+		'ext.pageTriage.views.toolbar/ext.pageTriage.tags.js', // then tags views
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.js', // overall toolbar view last
 	),
 	'styles' => array(
@@ -329,6 +362,15 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.css',
 	),
 	'messages' => array()
+);
+
+$wgResourceModules['ext.pageTriage.defaultTagsOptions'] = $ptResourceTemplate + array(
+	'scripts' => 'ext.pageTriage.defaultTagsOptions/ext.pageTriage.defaultTagsOptions.js',
+	'messages' => $wgPageTriageTagsOptionsMessages,
+);
+
+$wgResourceModules['ext.pageTriage.externalTagsOptions'] = $ptResourceTemplate + array(
+	'class' => 'PageTriageExternalTagsOptions',
 );
 
 $wgResourceModules['ext.pageTriage.toolbarStartup'] = $ptResourceTemplate + array(

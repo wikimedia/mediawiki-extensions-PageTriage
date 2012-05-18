@@ -1,0 +1,9 @@
+<div>
+	<%
+	for ( key in tags) {
+	%>
+		<div><a href="#"><%= mw.html.escape( tags[key].label ) %></a></div>
+	<%
+	}
+	%>
+</div>

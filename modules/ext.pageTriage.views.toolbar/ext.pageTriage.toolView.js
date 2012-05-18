@@ -7,7 +7,7 @@ $( function() {
 		// if you want to, though.
 		//
 		id: 'abstract',
-		icon: 'icon_tag.png', // icon to display in the toolbar
+		icon: 'icon_skip.png', // icon to display in the toolbar
 		title: 'Abstract tool view', // the title for the flyout window
 		scrollable: false, // should the output of render be in a scrollable div?
 		

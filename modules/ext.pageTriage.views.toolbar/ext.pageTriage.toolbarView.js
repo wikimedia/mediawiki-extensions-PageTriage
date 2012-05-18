@@ -20,7 +20,8 @@ $( function() {
 
 			// add an articleInfo for testing.
 			tools.push( new mw.pageTriage.ArticleInfoView( { eventBus: eventBus } ) );
-			
+			// add tags
+			tools.push( new mw.pageTriage.TagsView( { eventBus: eventBus } ) );
 			// and a generic abstract toolView (which does nothing, but is fine for testing)
 			tools.push( new mw.pageTriage.ToolView( { eventBus: eventBus } ) );
 			
