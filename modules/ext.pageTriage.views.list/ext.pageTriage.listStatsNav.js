@@ -4,7 +4,6 @@ $( function() {
 	mw.pageTriage.ListStatsNav = Backbone.View.extend( {
 		tagName: "div",
 		template: _.template( $( "#listStatsNavTemplate" ).html() ),
-		floatNav: false,
 
 		initialize: function( options ) {
 			var _this = this;
@@ -29,6 +28,7 @@ $( function() {
 			// insert the template into the document.  fill with the current model.
 			$( "#mwe-pt-list-stats-nav-content" ).html( this.template( this.model.toJSON() ) );
 			
+			// run setPosition since the statsNav may need to be floated immediately
 			if ( mw.config.get( 'wgPageTriageStickyStatsNav' ) ) this.setPosition();
 
 			// broadcast the stats in case any other views want to display bits of them.
@@ -43,9 +43,11 @@ $( function() {
 			var _this = this;
 			$.waypoints.settings.scrollThrottle = 30;
 			$( '#mwe-pt-list-stats-nav-anchor' ).waypoint( function( event, direction ) {
-				if( _this.floatNav ) {
-					$( '#mwe-pt-list-stats-nav' ).parent().toggleClass( 'stickyBottom', direction === "up" );
+				if ( direction === 'up' ) {
+					$( '#mwe-pt-list-stats-nav' ).parent().addClass( 'stickyBottom' );
 					_this.setWidth();
+				} else {
+					$( '#mwe-pt-list-stats-nav' ).parent().removeClass( 'stickyBottom' );
 				}
 				event.stopPropagation();
 			}, {
@@ -55,15 +57,16 @@ $( function() {
 
 		// See if the navbar needs to be floated (for non-scrolling events)
 		setPosition: function() {
-			if( $( '#mwe-pt-list-stats-nav-anchor' ).offset().top < $.waypoints( 'viewportHeight' ) ) {
+			var viewportBottom = $( window ).scrollTop() + $( window ).height();
+			// See if the nav anchor is visible in the current viewport
+			if ( viewportBottom > $( '#mwe-pt-list-stats-nav-anchor' ).offset().top ) {
 				// turn off floating nav, bring the bar back into the list.
 				$( '#mwe-pt-list-stats-nav' ).parent().removeClass( 'stickyBottom' );
-				this.floatNav = false;
 			} else {
 				// bottom nav isn't visible.  turn on the floating navbar
 				$( '#mwe-pt-list-stats-nav' ).parent().addClass( 'stickyBottom' );
-				this.floatNav = true;
 			}
+			// set the width in case the scrollbar status has changed
 			this.setWidth();
 			$.waypoints( 'refresh' );
 		},

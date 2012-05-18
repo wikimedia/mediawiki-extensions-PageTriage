@@ -74,6 +74,7 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 		// This will hold the HTML for the triage interface
 		$triageInterface = '';
 
+		$triageInterface .= "<div id='mwe-pt-list-control-nav-anchor'></div>";
 		$triageInterface .= "<div id='mwe-pt-list-control-nav' class='mwe-pt-navigation-bar mwe-pt-control-gradient'>";
 		$triageInterface .= "<div id='mwe-pt-list-control-nav-content'></div>";
 		$triageInterface .= "</div>";
