@@ -1,6 +1,9 @@
 // Handles the interface for actually marking an article as reviewed
 //
 ( function( $ ) {
+	if ( !mw.pageTriage ) {
+		mw.pageTriage = {};
+	}
 	mw.pageTriage.action = {
 		submit: function() {
 			apiRequest = {
