@@ -312,19 +312,30 @@ class PageTriageHooks {
 	/**
 	 * BeforePageDisplay hook
 	 */
-	public static function beforePageDisplay( $out ) {
+	public static function onBeforePageDisplay( $out ) {
 		// one could place some conditionals here to determine if the
 		// curation toolbar should load.  there's also an opportunity to
 		// check things from the JS side in the module that's loaded here.
 		
-		global $wgPageTriageEnableCurationToolbar;
-		
-		if( ! $wgPageTriageEnableCurationToolbar ) {
-			// the curation bar is disabled.  do nothing.
+		global $wgPageTriageEnableCurationToolbar, $wgPageTriageMarkPatrolledLinkExpiry, $wgUser;
+
+		if( !$wgPageTriageEnableCurationToolbar ) {
+			// the curation bar is disabled. do nothing.
 			return true;
 		}
-		
-		$out->addModules( 'ext.pageTriage.startup' );
+
+		$lastUse = $wgUser->getOption( 'pagetriage-lastuse' );
+		if ( $lastUse ) {
+			$lastUse = wfTimestamp( TS_UNIX, $lastUse );
+			$now = wfTimestamp( TS_UNIX, wfTimestampNow() );
+			$periodSince = $now - $lastUse;
+		}
+
+		if ( !$lastUse || $periodSince > $wgPageTriageMarkPatrolledLinkExpiry ) {
+			return true;
+		}
+
+		$out->addModules( 'ext.pageTriage.toolbarStartup' );
 		return true;
 	}
 

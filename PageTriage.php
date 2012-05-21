@@ -109,7 +109,7 @@ $wgHooks['GetPreferences'][] = 'PageTriageHooks::onGetPreferences';
 $wgHooks['ArticleViewFooter'][] = 'PageTriageHooks::onArticleViewFooter';
 $wgHooks['ArticleDeleteComplete'][] = 'PageTriageHooks::onArticleDeleteComplete';
 $wgHooks['MarkPatrolledComplete'][] = 'PageTriageHooks::onMarkPatrolledComplete';
-$wgHooks['BeforePageDisplay'][] = 'PageTriageHooks::beforePageDisplay';
+$wgHooks['BeforePageDisplay'][] = 'PageTriageHooks::onBeforePageDisplay';
 $wgHooks['BlockIpComplete'][] = 'PageTriageHooks::onBlockIpComplete';
 
 /**
@@ -331,8 +331,8 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 	'messages' => array()
 );
 
-$wgResourceModules['ext.pageTriage.startup'] = $ptResourceTemplate + array(
-	'scripts' => 'ext.pageTriage.startup/ext.pageTriage.startup.js',
+$wgResourceModules['ext.pageTriage.toolbarStartup'] = $ptResourceTemplate + array(
+	'scripts' => 'ext.pageTriage.toolbarStartup/ext.pageTriage.toolbarStartup.js',
 );
 
 $wgResourceModules['ext.pageTriage.article'] = $ptResourceTemplate + array(
