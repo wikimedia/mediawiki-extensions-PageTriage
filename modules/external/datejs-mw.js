@@ -22,7 +22,7 @@ mw.loader.using( ['mediawiki.jqueryMsg'], function() {
 		gM('wed'),
 		gM('thu'),
 		gM('fri'),
-		gM('sat')		
+		gM('sat')
 	];
 
 	Date.CultureInfo.monthNames = [
@@ -39,7 +39,7 @@ mw.loader.using( ['mediawiki.jqueryMsg'], function() {
 		gM('november'),
 		gM('december')
 	];
-	
+
 	Date.CultureInfo.abbreviatedMonthNames = [
 		gM('jan'),
 		gM('feb'),

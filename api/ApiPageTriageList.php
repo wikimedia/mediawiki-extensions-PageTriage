@@ -20,7 +20,7 @@ class ApiPageTriageList extends ApiBase {
 			$articleMetadata = new ArticleMetadata( $pages );
 			$metaData = $articleMetadata->getMetadata();
 
-			// Sort data according to page order returned by our query. Also convert it to a 
+			// Sort data according to page order returned by our query. Also convert it to a
 			// slightly different format that's more Backbone-friendly.
 			foreach ( $pages as $page ) {
 				$sortedMetaData[] = array( 'pageid' => $page ) + $metaData[$page];
@@ -45,7 +45,7 @@ class ApiPageTriageList extends ApiBase {
 
 		// Get the expected limit as defined in getAllowedParams
 		$options['LIMIT'] = $opts['limit'] + 1;
-		
+
 		if ( strtolower( $opts['dir'] ) === 'oldestfirst' ) {
 			$options['ORDER BY'] = 'ptrp_created ASC, ptrp_page_id ASC';
 			$offsetOperator = ' > ';
@@ -84,7 +84,7 @@ class ApiPageTriageList extends ApiBase {
 			// Offset the list by page ID as well (in case multiple pages have the same timestamp)
 			if ( array_key_exists( 'pageoffset', $opts ) && is_numeric( $opts['pageoffset'] ) && $opts['pageoffset'] > 0 ) {
 				$conds[] = '( ptrp_created' . $offsetOperator . $opts['offset'] . ') OR ' .
-					'( ptrp_created = ' . $opts['offset'] .' AND ' . 
+					'( ptrp_created = ' . $opts['offset'] .' AND ' .
 					'ptrp_page_id ' . $offsetOperator . $opts['pageoffset'] . ')';
 			} else {
 				$conds[] = 'ptrp_created' . $offsetOperator . $opts['offset'];
@@ -156,7 +156,7 @@ class ApiPageTriageList extends ApiBase {
 
 		return $tagConds;
 	}
-	
+
 	public function getAllowedParams() {
 		return array(
 			'showbots' => array(

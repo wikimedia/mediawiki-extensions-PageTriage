@@ -45,7 +45,7 @@ $( function() {
 						now.getUTCDate(),
 						now.getUTCHours(),
 						now.getUTCMinutes(),
-						now.getUTCSeconds() 
+						now.getUTCSeconds()
 					)
 			);
 

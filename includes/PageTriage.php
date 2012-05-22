@@ -102,7 +102,7 @@ class PageTriage {
 			if ( $rc && !$rc->getAttribute('rc_patrolled') ) {
 				$rc->reallyMarkPatrolled();
 				PatrolLog::record( $rc, false, $user );
-			}	
+			}
 		}
 
 		$dbw->update( 'pagetriage_page', $row, array( 'ptrp_page_id' => $this->mPageId ), __METHOD__ );
@@ -126,11 +126,11 @@ class PageTriage {
 		if ( !$row ) {
 			return;
 		}
-		
+
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update(
 			'pagetriage_page',
-			$row, 
+			$row,
 			array( 'ptrp_page_id' => $this->mPageId ),
 			__METHOD__
 		);
@@ -146,7 +146,7 @@ class PageTriage {
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
-		
+
 		$res = $dbr->selectRow(
 			array( 'pagetriage_page' ),
 			array( 'ptrp_reviewed', 'ptrp_created', 'ptrp_deleted', 'ptrp_tags_updated' ),
@@ -183,7 +183,7 @@ class PageTriage {
 		$row['ptrl_id'] = $dbw->nextSequenceValue( 'pagetriage_log_ptrl_id' );
 		$dbw->insert( 'pagetriage_log', $row, __METHOD__ );
 	}
-	
+
 	protected function loadArticleMetadata() {
 		if ( !$this->mArticleMetadata ) {
 			$this->mArticleMetadata = new ArticleMetadata( array( $this->mPageId ));
@@ -227,9 +227,9 @@ class PageTriage {
 
 		$now = wfTimestampNow();
 		$dbw->update(
-			'pagetriage_page', 
+			'pagetriage_page',
 			array( 'ptrp_tags_updated' => $dbw->timestamp( $now ) ),
-			array( 'ptrp_page_id' => $pageIds ), 
+			array( 'ptrp_page_id' => $pageIds ),
 			__METHOD__
 		);
 

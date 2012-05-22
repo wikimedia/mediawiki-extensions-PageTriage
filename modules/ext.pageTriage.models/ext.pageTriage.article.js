@@ -18,7 +18,7 @@ $( function() {
 		formatMetadata: function ( article ) {
 			var creation_date_parsed = Date.parseExact( article.get( 'creation_date' ), 'yyyyMMddHHmmss' );
 			article.set('creation_date_pretty', creation_date_parsed.toString( gM( 'pagetriage-creation-dateformat' ) ) );
-			
+
 			// sometimes user info isn't set, so check that first.
 			if( article.get( 'user_creation_date' ) ) {
 				var user_creation_date_parsed = Date.parseExact( article.get( 'user_creation_date' ), 'yyyyMMddHHmmss' );
@@ -90,7 +90,7 @@ $( function() {
 		initialize: function( options ) {
 			this.eventBus = options.eventBus;
 			this.eventBus.bind( "filterSet", this.setParams );
-			
+
 			// pull any saved filter settings from the user's cookies
 			var savedFilterSettings = $.cookie( 'NewPageFeedFilterOptions' );
 			if ( savedFilterSettings ) {
@@ -104,7 +104,7 @@ $( function() {
 		},
 
 		parse: function( response ) {
-			// See if the fetch returned an extra page or not. This lets us know if there are more 
+			// See if the fetch returned an extra page or not. This lets us know if there are more
 			// pages to load in a subsequent fetch.
 			if ( response.pagetriagelist.pages && response.pagetriagelist.pages.length > this.apiParams.limit ) {
 				// Remove the extra page from the list
@@ -130,12 +130,12 @@ $( function() {
 		setParam: function( paramName, paramValue ) {
 			this.apiParams[paramName] = paramValue;
 		},
-		
+
 		encodeFilterParams: function() {
 			var encodedString = '';
 			var paramArray = new Array;
 			var _this = this;
-			$.each( this.apiParams, function( key, val ) {                    
+			$.each( this.apiParams, function( key, val ) {
 				var str = '"' + key + '":';
 				if ( typeof val === 'string' ) {
 					val = '"' + val.replace(/[\"]/g, '\\"') + '"';
@@ -146,13 +146,13 @@ $( function() {
 			encodedString = '{ ' + paramArray.join( ', ' ) + ' }';
 			return encodedString;
 		},
-		
+
 		// Save the filter parameters to a cookie
 		saveFilterParams: function() {
 			var cookieString = this.encodeFilterParams();
 			$.cookie( 'NewPageFeedFilterOptions', cookieString, { expires: 1 } );
 		},
-		
+
 		getParam: function( key ) {
 			return this.apiParams[key];
 		}

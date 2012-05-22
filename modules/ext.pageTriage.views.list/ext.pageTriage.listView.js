@@ -55,7 +55,7 @@ $( function() {
 		render: function() {
 			// reset the position indicator
 			this.position = 0;
-			
+
 			var controlNav = new mw.pageTriage.ListControlNav( { eventBus: this.eventBus, model: articles } );
 			controlNav.render();
 		},
@@ -65,7 +65,7 @@ $( function() {
 			var _this = this;
 			$( '#mwe-pt-list-load-more-anchor' ).waypoint( 'destroy' );
 			$( '#mwe-pt-list-more' ).show(); // show spinner
-			
+
 			// set the offsets for the page fetch
 			var lastArticle = articles.last(1);
 			if( 0 in lastArticle ) {
@@ -75,7 +75,7 @@ $( function() {
 				articles.apiParams.offset = 0;
 				articles.apiParams.pageoffset = 0;
 			}
-			
+
 			// fetch more articles. we use a timeout to prevent double-loading.
 			setTimeout(
 				function() {
@@ -114,7 +114,7 @@ $( function() {
 			var _this = this;
 			$( '#mwe-pt-list-more-link' ).hide();
 			$( '#mwe-pt-list-more' ).append( $.createSpinner( 'more-spinner' ) );
-			
+
 			// set the offsets for the page fetch
 			var lastArticle = articles.last(1);
 			if( 0 in lastArticle ) {
@@ -201,7 +201,7 @@ $( function() {
 				$( '#mwe-pt-list-errors' ).html( mw.msg( 'pagetriage-no-pages' ) );
 				$( '#mwe-pt-list-errors' ).show();
 			}
-			
+
 			// show the stats bar at the bottom
 			$( '#mwe-pt-list-stats-nav' ).show();
 

@@ -24,7 +24,7 @@ $( function() {
 				this.eventBus.bind( 'articleListChange', function() {
 					_this.setPosition();
 				} );
-				
+
 				// when a request is made to refresh the list, do it
 				this.eventBus.bind( 'refreshListRequest', function() {
 					_this.refreshList();
@@ -42,7 +42,7 @@ $( function() {
 
 			// render and return the template. fill with the current model.
 			$( "#mwe-pt-list-control-nav-content").html( this.template() );
-			
+
 			// align the filter dropdown box with the dropdown control widget
 			var newLeft = $( '#mwe-pt-filter-dropdown-control' ).width() - 20;
 			$( "#mwe-pt-control-dropdown" ).css({left: newLeft});
@@ -68,7 +68,7 @@ $( function() {
 				_this.toggleFilterMenu();
 				e.stopPropagation();
 			} );
-			
+
 			// Initialize sort links
 			// Uncomment this when 7147 is merged
 			//$( '#mwe-pt-sort-buttons' ).buttonset();
@@ -84,11 +84,11 @@ $( function() {
 				_this.refreshList();
 				e.stopPropagation();
 			} );
-			
+
 			// make sure the menus are synced with the filter settings
 			this.menuSync();
 		},
-		
+
 		// Refresh the page list
 		refreshList: function() {
 			this.model.setParam( 'offset', 0 );
@@ -114,13 +114,13 @@ $( function() {
 				event.stopPropagation();
 			} );
 		},
-		
+
 		// See if the navbar needs to be floated (for non-scrolling events)
 		setPosition: function() {
 			// Different browsers represent the document's scroll position differently.
 			// I would expect jQuery to deal with this in some graceful fashion, but nooo...
 			var scrollTop = $('body').scrollTop() || $('html').scrollTop() || $(window).scrollTop();
-			
+
 			if ( $( '#mwe-pt-list-view' ).offset().top > scrollTop ) {
 				// turn off floating nav, bring the bar back into the list.
 				$( '#mwe-pt-list-control-nav' ).parent().removeClass( 'stickyTop' );
@@ -221,11 +221,11 @@ $( function() {
 			if( $('#mwe-pt-filter-blocked').prop('checked') ) {
 				apiParams['blocked_users'] = '1';
 			}
-			
+
 			// persist the limit and direction parameters
 			apiParams['limit'] = this.model.getParam('limit');
 			apiParams['dir'] = this.model.getParam('dir');
-						
+
 			this.model.setParams( apiParams );
 			this.model.saveFilterParams();
 			this.model.fetch();
@@ -274,12 +274,12 @@ $( function() {
 
 			this.filterStatus = this.newFilterStatus.join(' &#xb7; ');
 			$( '#mwe-pt-filter-status' ).html( this.filterStatus );
-			
+
 			if( ! $("input[name=mwe-pt-filter-radio]:checked").val() ) {
 				// none of the radio buttons are selected.  pick the default.
 				$( '#mwe-pt-filter-all' ).prop( 'checked', true );
 			}
-			
+
 			// Sync the sort toggle
 			if ( this.model.getParam( 'dir' ) === 'oldestfirst' ) {
 				$( '#mwe-pt-sort-oldest' ).prop( 'checked', true );
@@ -299,6 +299,6 @@ $( function() {
 				this.newFilterStatus.push( gM( message ) );
 			}
 		}
-		
+
 	} );
 } );

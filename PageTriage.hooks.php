@@ -99,7 +99,7 @@ class PageTriageHooks {
 	public static function onArticleSaveComplete( $article, $user, $text, $summary, $minoredit, $watchthis, $sectionanchor, $flags, $revision, $status, $baseRevId ) {
 		$acp = ArticleCompileProcessor::newFromPageId( array( $article->getId() ) );
 		if ( $acp ) {
-			// Register the article object so we can get the content and other useful information 
+			// Register the article object so we can get the content and other useful information
 			// this is primarily for replication delay from slave
 			$acp->registerArticle( $article );
 			$acp->compileMetadata();
@@ -322,7 +322,7 @@ class PageTriageHooks {
 		// one could place some conditionals here to determine if the
 		// curation toolbar should load.  there's also an opportunity to
 		// check things from the JS side in the module that's loaded here.
-		
+
 		global $wgPageTriageEnableCurationToolbar, $wgPageTriageMarkPatrolledLinkExpiry, $wgUser;
 
 		if( !$wgPageTriageEnableCurationToolbar ) {

@@ -7,15 +7,15 @@ $( function() {
 
 		initialize: function( options ) {
 			var _this = this;
-			
+
 			this.eventBus = options.eventBus; // access the eventBus
 
 			if ( mw.config.get( 'wgPageTriageStickyStatsNav' ) ) {
 				this.setWaypoint(); // create scrolling waypoint
-				
+
 				// reset the width when the window is resized
 				$( window ).resize( _.debounce( _this.setWidth, 80 ) );
-	
+
 				// when the list view is updated, see if we need to change the
 				// float state of the navbar
 				this.eventBus.bind( "articleListChange", function() {
@@ -26,13 +26,13 @@ $( function() {
 
 		render: function() {
 			_this = this;
-			
+
 			// insert the template into the document.  fill with the current model.
 			$( "#mwe-pt-list-stats-nav-content" ).html( this.template( this.model.toJSON() ) );
-			
+
 			// run setPosition since the statsNav may need to be floated immediately
 			if ( mw.config.get( 'wgPageTriageStickyStatsNav' ) ) this.setPosition();
-			
+
 			// Initialize Refresh List button
 			$( '#mwe-pt-refresh-list' ).button().click( function( e ) {
 				// list refreshing is handled by the ListControlNav since it controls the page list
@@ -43,10 +43,10 @@ $( function() {
 			// broadcast the stats in case any other views want to display bits of them.
 			// (the control view displays a summary)
 			this.eventBus.trigger( 'renderStats', this.model );
-			
+
 			return this;
 		},
-		
+
 		// Create a waypoint trigger that floats the navbar when the user scrolls up
 		setWaypoint: function() {
 			$( '#mwe-pt-list-stats-nav-anchor' ).waypoint( 'destroy' );  // remove the old, maybe inaccurate ones.

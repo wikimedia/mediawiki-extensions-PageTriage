@@ -397,8 +397,8 @@ $wgResourceModules['ext.pageTriage.badger'] = $ptResourceTemplate + array(
 
 /** Rate limit setting for PageTriage **/
 $wgRateLimits += array(
-	'pagetriage-mark-action' => array( 
+	'pagetriage-mark-action' => array(
 			'anon' => array( 1, 3 ),
-			'user' => array( 1, 3 ) 
+			'user' => array( 1, 3 )
 	)
 );

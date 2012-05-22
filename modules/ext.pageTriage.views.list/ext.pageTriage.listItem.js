@@ -1,11 +1,11 @@
 $( function() {
 	// view for a single list item
-	
+
 	mw.pageTriage.ListItem = Backbone.View.extend( {
 		tagName: "div",
 		className: "mwe-pt-list-item",
 		template: mw.pageTriage.viewUtil.template( { 'view': 'list', 'template': 'listItem.html' } ),
-		
+
 		// listen for changes to the model and re-render.
 		initialize: function() {
 			this.model.bind('change', this.render, this);

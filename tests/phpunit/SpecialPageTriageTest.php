@@ -8,7 +8,7 @@
 class SpecialPageTriageTest extends ApiTestCase {
 
 	protected $pageTriage;
-	
+
 	/**
 	 * @var User test user
 	 */
@@ -28,7 +28,7 @@ class SpecialPageTriageTest extends ApiTestCase {
 
 	public function tearDown() {
 		parent::tearDown();
-		
+
 		// Remove the made up articles
 	}
 
@@ -71,7 +71,7 @@ class SpecialPageTriageTest extends ApiTestCase {
 		return $sessionArray;
 
 	}
-	
+
 	/**
 	 * @depends testLogin
 	 */
@@ -89,14 +89,14 @@ class SpecialPageTriageTest extends ApiTestCase {
 			'text' => 'Hello World'
 		);
 
-		list( $result, , $session ) =  $this->doApiRequestWithToken( 
+		list( $result, , $session ) =  $this->doApiRequestWithToken(
 			$params,
 			$sessionArray['one'],
 			self::$users['one']->user
 		);
 
 		$this->assertEquals( "Success", $result['edit']['result'] );
-		
+
 		// If it worked, make some more articles for use as test data
 		if ( $result['edit']['result'] == "Success" ) {
 
@@ -114,8 +114,8 @@ class SpecialPageTriageTest extends ApiTestCase {
 					'createonly' => 1,
 					'text' => $text
 				);
-				
-				list( $result, , $session ) =  $this->doApiRequestWithToken( 
+
+				list( $result, , $session ) =  $this->doApiRequestWithToken(
 					$params,
 					$sessionArray['one'],
 					self::$users['one']->user

@@ -15,7 +15,7 @@ class updateUserMetadata extends Maintenance {
 	 * Max number of article to process at a time
 	 * @var int
 	 */
-	protected $batchSize = 500;	
+	protected $batchSize = 500;
 
 	/**
 	 * @var DatabaseBase
@@ -62,7 +62,7 @@ class updateUserMetadata extends Maintenance {
 				array( 'pagetriage_page' ),
 				array( 'ptrp_page_id', 'ptrp_tags_updated' ),
 				array(
-					'(ptrp_tags_updated < ' . $startTime . ') OR 
+					'(ptrp_tags_updated < ' . $startTime . ') OR
 					(ptrp_tags_updated = ' . $startTime . ' AND ptrp_page_id < ' . $startId . ')'
 				),
 				__METHOD__,

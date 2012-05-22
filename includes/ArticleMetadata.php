@@ -13,7 +13,7 @@ class ArticleMetadata {
 	 */
 	public function __construct( array $pageId, $validated = true ) {
 		if ( $validated ) {
-			$this->mPageId = $pageId;	
+			$this->mPageId = $pageId;
 		} else {
 			$this->mPageId = self::validatePageId( $pageId );
 		}
@@ -55,7 +55,7 @@ class ArticleMetadata {
 		} else {
 			$pageId = $this->mPageId;
 		}
-		
+
 		foreach ( $pageId as $val ) {
 			$data =  $wgMemc->get( $keyPrefix . '-' . $val );
 			if ( $data !== false ) {
@@ -346,7 +346,7 @@ class ArticleCompileProcessor {
 			$this->articles[$article->getId()] = $article;
 		}
 	}
-	
+
 	/**
 	 * Register a component to the processor for compiling
 	 * @param $component string
@@ -486,7 +486,7 @@ abstract class ArticleCompileInterface {
 	}
 
 	/**
-	 * Provide an edtimated count for an item, for example: if $maxNumToProcess is 
+	 * Provide an edtimated count for an item, for example: if $maxNumToProcess is
 	 * 100 and the result is greater than 100, then the result should be 100+
 	 * @param $pageId int - page id
 	 * @param $table array - table for query
@@ -589,15 +589,15 @@ class ArticleCompileLinkCount extends ArticleCompileInterface {
 
 	public function compile() {
 		foreach ( $this->mPageId as $pageId ) {
-			$this->processEstimatedCount( 
-					$pageId, 
-					array( 'page', 'pagelinks' ), 
+			$this->processEstimatedCount(
+					$pageId,
+					array( 'page', 'pagelinks' ),
 					array(
 						'page_id' => $pageId,
 						'page_namespace = pl_namespace',
 						'page_title = pl_title'
-					), 
-					$maxNumToProcess = 50, 
+					),
+					$maxNumToProcess = 50,
 					'linkcount'
 			);
 		}
@@ -618,11 +618,11 @@ class ArticleCompileCategoryCount extends ArticleCompileInterface {
 
 	public function compile() {
 		foreach ( $this->mPageId as $pageId ) {
-			$this->processEstimatedCount( 
-					$pageId, 
-					array( 'page', 'categorylinks' ), 
+			$this->processEstimatedCount(
+					$pageId,
+					array( 'page', 'categorylinks' ),
 					array( 'page_id' => $pageId, 'page_id = cl_from' ),
-					$maxNumToProcess = 50, 
+					$maxNumToProcess = 50,
 					'category_count'
 			);
 		}
@@ -648,7 +648,7 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 			if ( isset( $this->articles[$pageId] ) ) {
 				$article = $this->articles[$pageId];
 			} else {
-				$article = WikiPage::newFromID( $pageId ); 
+				$article = WikiPage::newFromID( $pageId );
 			}
 			if ( $article ) {
 				$content = $article->getText();
@@ -803,7 +803,7 @@ class ArticleCompileDeletionTag extends ArticleCompileInterface {
 		foreach ( $this->mPageId as $pageId ) {
 			foreach ( $deletionTags as $status ) {
 				if ( !isset( $this->metadata[$pageId][$status] ) ) {
-					$this->metadata[$pageId][$status] = '0';	
+					$this->metadata[$pageId][$status] = '0';
 				}
 			}
 		}

@@ -13,13 +13,13 @@ $( function() {
 			};
 
 			var templateText;
-			
+
 			if( arg.template instanceof Array ) {
 				apiRequest.template = arg.template.join('|');
 			} else {
 				apiRequest.template = arg.template;
 			}
-			
+
 			$.ajax( {
 				type: 'post',
 				url: mw.util.wikiScript( 'api' ),

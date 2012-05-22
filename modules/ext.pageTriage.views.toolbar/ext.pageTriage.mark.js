@@ -47,7 +47,7 @@ $( function() {
 			// swap the icon
 			this.setIcon( 'active' );
 
-			// set the contents of the flyout to this.render()			
+			// set the contents of the flyout to this.render()
 			this.$el.find( '.mwe-pt-tool-content' ).html( this.render() );
 
 			// initialize the buttons

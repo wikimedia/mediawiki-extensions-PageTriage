@@ -1,4 +1,4 @@
-jQuery( function( $ ) {	
+jQuery( function( $ ) {
 	if( mw.config.get( 'wgNamespaceNumber' ) !== 0 ) {
 		return true;
 	}

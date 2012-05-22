@@ -50,15 +50,15 @@ class PageTriageUtil {
 		global $wgMemc;
 
 		$key = wfMemcKey( 'pagetriage', 'unreviewed-article', 'stat' );
-	
+
 		$data = $wgMemc->get( $key );
 		if ( $data !== false ) {
 			return $data;
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
-		
-		$res = $dbr->selectRow( 
+
+		$res = $dbr->selectRow(
 			array( 'pagetriage_page' ),
 			array( 'COUNT(ptrp_page_id) AS total' ),
 			array( 'ptrp_reviewed' => 0 )
@@ -100,8 +100,8 @@ class PageTriageUtil {
 		$now = wfTimestamp( TS_UNIX );
 
 		// times to look back for top trigers and expiration time in cache
-		$timeFrame = array( 
-				'last-day' => array( 'ts' => $now - 24 * 60 * 60, 'expire' => 60 * 60 ), 
+		$timeFrame = array(
+				'last-day' => array( 'ts' => $now - 24 * 60 * 60, 'expire' => 60 * 60 ),
 				'last-week' => array( 'ts' => $now - 7 * 24 * 60 * 60, 'expire' =>  24 * 60 * 60 ),
 				//Todo: Do we really want to include big timeframe?
 				'last-month' => array( 'ts' => $now - 30 * 24 * 60 * 60, 'expire' => 7 * 24 * 60 * 60 ),
@@ -183,7 +183,7 @@ class PageTriageUtil {
 		if ( !is_int( $percentile ) || $percentile < 1 || $percentile > 100) {
 			throw new MWPageTriageUtilInvalidNumberException( 'Invalid percentage number' );
 		}
-		
+
 		if ( !is_int( $count ) || $count < 1 ) {
 			throw new MWPageTriageUtilInvalidNumberException ( 'Invalid total count' );
 		}
@@ -197,13 +197,13 @@ class PageTriageUtil {
 		}
 
 		$start = floor( ( $percentile / 100 ) * $count ) - 1;
-		
+
 		if ( $start < 0 ) {
 			$start = 0;
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
-		
+
 		$res = $dbr->selectRow(
 			array( 'pagetriage_page' ),
 			array( 'ptrp_created' ),

@@ -4,7 +4,7 @@
  * It only copies the text of the articles, not the history or editor information.
  * This script should only be used for testing purposes. For normal transwiki importing, refer to:
  * http://meta.wikimedia.org/wiki/Help:Import
- * 
+ *
  * This script can only be run from the command line.
  * The syntax is:
  * importNewPages.php <# of articles> <username> <password> <source API path> <destination API path>
