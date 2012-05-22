@@ -98,17 +98,17 @@ $( function() {
 
 		// Create a waypoint trigger that floats the navbar when the user scrolls down
 		setWaypoint: function() {
-			$( '#mw-content-text' ).waypoint('destroy');  // remove the old, maybe inaccurate ones.
+			$( '#mwe-pt-list-control-nav-anchor' ).waypoint('destroy');  // remove the old, maybe inaccurate ones.
 			var _this = this;
 			$.waypoints.settings.scrollThrottle = 30;
-			$( '#mw-content-text' ).waypoint( function( event, direction ) {
-				if( direction === 'down' ) {
-					$( '#mwe-pt-list-control-nav' ).parent().addClass('stickyTop');
+			$( '#mwe-pt-list-control-nav-anchor' ).waypoint( function( event, direction ) {
+				if ( direction === 'down' ) {
+					$( '#mwe-pt-list-control-nav' ).parent().addClass( 'stickyTop' );
 					_this.setWidth();
 					// pad the top of the list so it doesn't jump when the navbar changes to fixed positioning.
 					$( '#mwe-pt-list-view' ).css( 'padding-top', $( '#mwe-pt-list-control-nav' ).height() );
 				} else {
-					$( '#mwe-pt-list-control-nav' ).parent().removeClass('stickyTop');
+					$( '#mwe-pt-list-control-nav' ).parent().removeClass( 'stickyTop' );
 					$( '#mwe-pt-list-view' ).css( 'padding-top', 0 );
 				}
 				event.stopPropagation();
@@ -121,13 +121,13 @@ $( function() {
 			// I would expect jQuery to deal with this in some graceful fashion, but nooo...
 			var scrollTop = $('body').scrollTop() || $('html').scrollTop() || $(window).scrollTop();
 			
-			if( $( '#mwe-pt-list-view' ).offset().top > scrollTop ) {
+			if ( $( '#mwe-pt-list-view' ).offset().top > scrollTop ) {
 				// turn off floating nav, bring the bar back into the list.
-				$( '#mwe-pt-list-control-nav' ).parent().removeClass('stickyTop');
+				$( '#mwe-pt-list-control-nav' ).parent().removeClass( 'stickyTop' );
 				$( '#mwe-pt-list-view' ).css( 'padding-top', 0 );
 			} else {
 				// top nav isn't visible.  turn on the floating navbar
-				$( '#mwe-pt-list-control-nav' ).parent().addClass('stickyTop');
+				$( '#mwe-pt-list-control-nav' ).parent().addClass( 'stickyTop' );
 				// pad the top of the list so it doesn't jump when the navbar changes to fixed positioning.
 				$( '#mwe-pt-list-view' ).css( 'padding-top', $( '#mwe-pt-list-control-nav' ).height() );
 			}
@@ -143,14 +143,14 @@ $( function() {
 		// Toggle whether or not the filter drop-down interface is displayed
 		toggleFilterMenu: function( action ) {
 			var _this = this;
-			if( (action && action == 'close') || this.filterMenuVisible ) {
+			if ( ( action && action == 'close' ) || this.filterMenuVisible ) {
 				$( '#mwe-pt-dropdown-arrow' ).html( '&#x25b8;' );
 				$( '#mwe-pt-control-dropdown' ).css( 'visibility', 'hidden' );
 				$( '#mwe-pt-control-dropdown-pokey' ).css( 'visibility', 'hidden' );
 				$( 'body' ).unbind( 'click' ); // remove these events since they're not needed til next time.
 				$( '#mwe-pt-control-dropdown' ).unbind( 'click' );
 				this.filterMenuVisible = 0;
-			} else if( (action && action == 'open') || !this.filterMenuVisible ) {
+			} else if ( ( action && action == 'open') || !this.filterMenuVisible ) {
 				this.menuSync();
 				$( '#mwe-pt-control-dropdown' ).css( 'visibility', 'visible' );
 				$( '#mwe-pt-control-dropdown-pokey' ).css( 'visibility', 'visible' );
