@@ -51,14 +51,19 @@ $( function() {
 			this.$el.find( '.mwe-pt-tool-content' ).html( this.render() );
 
 			// initialize the buttons
-			$( '#mwe-pt-mark-as-reviewed-button' ).button().click( function( e ) {
-				_this.submit( 'reviewed' );
-				e.stopPropagation();
-			} );
+			$( '#mwe-pt-mark-as-reviewed-button' )
+				.button( { icons: {secondary:'ui-icon-triangle-1-e'} } )
+				.click( function( e ) {
+					_this.submit( 'reviewed' );
+					e.stopPropagation();
+				} );
+			$( '#mwe-pt-mark-as-reviewed-button' ).addClass( 'ui-button-green' );
+			/*
 			$( '#mwe-pt-mark-as-unreviewed-button' ).button().click( function( e ) {
 				_this.submit( 'unreviewed' );
 				e.stopPropagation();
 			} );
+			*/
 
 			// show the tool flyout
 			this.$el.find( '.mwe-pt-tool-flyout' ).css( 'visibility', 'visible' );
