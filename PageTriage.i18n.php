@@ -83,6 +83,8 @@ $messages['en'] = array(
 	'pagetriage-note-not-reviewed' => 'This page has not yet been reviewed.',
 	'pagetriage-note-deletion' => 'This page has been nominated for deletion.',
 	'pagetriage-refresh-list' => 'Refresh list',
+	'pagetriage-mark-as-reviewed' => 'Mark as reviewed',
+	'pagetriage-mark-as-unreviewed' => 'Mark as unreviewed',
 	 // Tags options section
 	'pagetriage-tags-cat-common-label' => 'Common',
 	'pagetriage-tags-cat-metadata-label' => 'Metadata',
@@ -180,6 +182,8 @@ $messages['qqq'] = array(
 	'pagetriage-note-not-reviewed' => 'A note that appears when a user hovers over a status icon',
 	'pagetriage-note-deletion' => 'A note that appears when a user hovers over a status icon',
 	'pagetriage-refresh-list' => 'A label for a button that refreshes the list of articles',
+	'pagetriage-mark-as-reviewed' => 'Label for a button that sets an article\'s status as reviewed',
+	'pagetriage-mark-as-unreviewed' => 'Label for a button that sets an article\'s status as unreviewed',
 	 // Tags options section
 	'pagetriage-tags-cat-common-label' => 'Label for common category',
 	'pagetriage-tags-cat-metadata-label' => 'Label for metadata category',

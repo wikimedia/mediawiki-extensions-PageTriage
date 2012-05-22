@@ -352,8 +352,9 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 	),
 	'scripts' => array(
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.js', // abstract class first
-		'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfo.js', // then all the tool views
-		'ext.pageTriage.views.toolbar/ext.pageTriage.tags.js', // then tags views
+		'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfo.js', // article metadata
+		'ext.pageTriage.views.toolbar/ext.pageTriage.tags.js', // tagging
+		'ext.pageTriage.views.toolbar/ext.pageTriage.mark.js', // mark as reviewed
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.js', // overall toolbar view last
 	),
 	'styles' => array(
@@ -361,7 +362,10 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.css',
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.css',
 	),
-	'messages' => array()
+	'messages' => array(
+		'pagetriage-mark-as-reviewed',
+		'pagetriage-mark-as-unreviewed',
+	)
 );
 
 $wgResourceModules['ext.pageTriage.defaultTagsOptions'] = $ptResourceTemplate + array(

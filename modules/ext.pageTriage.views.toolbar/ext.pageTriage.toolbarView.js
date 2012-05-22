@@ -22,8 +22,8 @@ $( function() {
 			tools.push( new mw.pageTriage.ArticleInfoView( { eventBus: eventBus } ) );
 			// add tags
 			tools.push( new mw.pageTriage.TagsView( { eventBus: eventBus } ) );
-			// and a generic abstract toolView (which does nothing, but is fine for testing)
-			tools.push( new mw.pageTriage.ToolView( { eventBus: eventBus } ) );
+			// and mark as reviewed
+			tools.push( new mw.pageTriage.MarkView( { eventBus: eventBus } ) );
 			
 			// if we someday want this configurable on-wiki, this could load some js from
 			// the MediaWiki namespace that generates the tools array instead.			
