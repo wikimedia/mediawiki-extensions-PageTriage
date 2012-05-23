@@ -9,7 +9,7 @@ class ApiPageTriageAction extends ApiBase {
 
 		$article = Article::newFromID( $params['pageid'] );
 		if ( $article ) {
-			if ( !$article->getTitle()->quickUserCan( 'patrol' ) ) {
+			if ( !$article->getTitle()->userCan( 'patrol' ) ) {
 				$this->permissionError();
 			}
 		} else {

@@ -87,6 +87,7 @@ $wgAutoloadClasses['ApiPageTriageGetMetadata'] = $dir . 'api/ApiPageTriageGetMet
 $wgAutoloadClasses['ApiPageTriageStats'] = $dir . 'api/ApiPageTriageStats.php';
 $wgAutoloadClasses['ApiPageTriageAction'] = $dir . 'api/ApiPageTriageAction.php';
 $wgAutoloadClasses['ApiPageTriageTemplate'] = $dir . 'api/ApiPageTriageTemplate.php';
+$wgAutoloadClasses['ApiPageTriageTagging'] = $dir . 'api/ApiPageTriageTagging.php';
 
 // custom exceptions
 $wgAutoloadClasses['MWPageTriageUtilInvalidNumberException'] = $dir . 'includes/PageTriageUtil.php';
@@ -98,6 +99,7 @@ $wgAPIModules['pagetriagegetmetadata'] = 'ApiPageTriageGetMetadata';
 $wgAPIModules['pagetriagestats'] = 'ApiPageTriageStats';
 $wgAPIModules['pagetriageaction'] = 'ApiPageTriageAction';
 $wgAPIModules['pagetriagetemplate'] = 'ApiPageTriageTemplate';
+$wgAPIModules['pagetriagetagging'] = 'ApiPageTriageTagging';
 
 // hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efPageTriageSchemaUpdates';
@@ -401,5 +403,10 @@ $wgRateLimits += array(
 	'pagetriage-mark-action' => array(
 			'anon' => array( 1, 3 ),
 			'user' => array( 1, 3 )
+	),
+
+	'pagetriage-tagging-action' => array(
+			'anon' => array( 1, 10 ),
+			'user' => array( 1, 10 )
 	)
 );
