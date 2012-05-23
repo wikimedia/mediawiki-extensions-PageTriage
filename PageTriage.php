@@ -347,6 +347,7 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'ext.pageTriage.util',
 		'ext.pageTriage.badger',
 		'jquery.ui.button',
+		'jquery.ui.draggable',
 		'jquery.spinner',
 		'ext.pageTriage.externalTagsOptions',
 	),

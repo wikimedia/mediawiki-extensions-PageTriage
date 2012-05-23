@@ -59,13 +59,14 @@ $( function() {
 
 			// swap the icon
 			this.setIcon( 'active' );
-
-			// show the tool div.
-			this.$el.find( '.mwe-pt-tool-flyout' ).css( 'visibility', 'visible' );
-			this.visible = true;
-
+			
 			// set the contents to this.render()
 			this.$el.find( '.mwe-pt-tool-content' ).html( this.render() );
+			
+			// show the tool flyout
+			this.$el.find( '.mwe-pt-tool-flyout' ).show();
+			this.visible = true;
+			
 		},
 
 		hide: function() {
@@ -73,7 +74,7 @@ $( function() {
 			this.setIcon( 'normal' );
 
 			// hide the div
-			this.$el.find( '.mwe-pt-tool-flyout' ).css( 'visibility', 'hidden' );
+			this.$el.find( '.mwe-pt-tool-flyout' ).hide();
 			this.visible = false;
 
 			// this listener is only needed when the tool is open

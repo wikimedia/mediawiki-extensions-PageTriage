@@ -1,5 +1,8 @@
 .mwe-pt-tool {
-	background-color: #cacaca;
+	width: 35px;
+	height: 35px;
+	margin-top: 10px;
+	position: relative;
 }
 
 .mwe-pt-tool-icon {	
@@ -7,15 +10,22 @@
 }
 
 .mwe-pt-tool-flyout {
-	position: relative;
-	right: 360px;
+	position: absolute;
+	right: 50px;
+	top: -5px;
 	width: 300px;
-	padding: 8px;
+	padding: 5px;
 	background-color: #cacaca;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
-	visibility: hidden;
+	text-align: left;
+	z-index: 2px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	border: 1px solid #9F9F9F;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .mwe-pt-tool-title {
@@ -28,6 +38,8 @@
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	font-size: 0.8em;
+	border: 1px solid #9F9F9F;
+	padding: 3px;
 }
 
 .mwe-pt-tool-close {

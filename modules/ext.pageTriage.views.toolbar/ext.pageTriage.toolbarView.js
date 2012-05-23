@@ -40,6 +40,9 @@ $( function() {
 				// this is the icon and hidden div. (the actual tool content)
 				$( '#mwe-pt-toolbar-main' ).append( tool.place() );
 			} );
+			
+			// make it draggable
+			$( '#mwe-pt-toolbar' ).draggable();
 		}
 	} );
 

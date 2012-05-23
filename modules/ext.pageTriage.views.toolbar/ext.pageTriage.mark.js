@@ -66,7 +66,7 @@ $( function() {
 			*/
 
 			// show the tool flyout
-			this.$el.find( '.mwe-pt-tool-flyout' ).css( 'visibility', 'visible' );
+			this.$el.find( '.mwe-pt-tool-flyout' ).show();
 			this.visible = true;
 		},
 

@@ -1,18 +1,32 @@
 /* stylesheet for the main toolbar view */
 
 #mwe-pt-toolbar {
-	width: 39px;
-	padding: 2px;
+	width: 35px;
+	padding: 3px;
+	padding-bottom: 5px;
 	position: fixed;
 	top: 150px;
 	z-index: 1;
 	right: 0px;
+	background-color: #cacaca;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	border: 1px solid #9F9F9F;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 #mwe-pt-toolbar-main {
 }
 
 #mwe-pt-toolbar-close {
-	background-color: #cacaca;
 	text-align: center;
+}
+
+#mwe-pt-toolbar-close-button {
+	background-image: url('images/close.png');
+	height: 12px;
+	width: 12px;
+	margin: 1px auto 0px auto;
+	cursor: pointer;
 }
