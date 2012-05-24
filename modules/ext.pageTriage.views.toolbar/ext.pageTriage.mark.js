@@ -67,6 +67,7 @@ $( function() {
 
 			// show the tool flyout
 			this.$el.find( '.mwe-pt-tool-flyout' ).show();
+			this.$el.find( '.mwe-pt-tool-pokey' ).show();
 			this.visible = true;
 		},
 

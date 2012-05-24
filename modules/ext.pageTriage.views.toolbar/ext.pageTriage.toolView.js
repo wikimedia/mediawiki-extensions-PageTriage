@@ -65,6 +65,7 @@ $( function() {
 			
 			// show the tool flyout
 			this.$el.find( '.mwe-pt-tool-flyout' ).show();
+			this.$el.find( '.mwe-pt-tool-pokey' ).show();
 			this.visible = true;
 			
 		},
@@ -75,6 +76,7 @@ $( function() {
 
 			// hide the div
 			this.$el.find( '.mwe-pt-tool-flyout' ).hide();
+			this.$el.find( '.mwe-pt-tool-pokey' ).hide();
 			this.visible = false;
 
 			// this listener is only needed when the tool is open
