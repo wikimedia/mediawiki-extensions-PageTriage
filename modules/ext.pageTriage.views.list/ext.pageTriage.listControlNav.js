@@ -91,9 +91,15 @@ $( function() {
 
 		// Refresh the page list
 		refreshList: function() {
+			$( '#mwe-pt-refresh-button-holder' ).prepend( $.createSpinner( 'refresh-spinner' ) ); // show spinner
 			this.model.setParam( 'offset', 0 );
 			this.model.setParam( 'pageoffset', 0 );
-			this.model.fetch();
+			this.model.fetch( {
+				add: false,
+				success: function() {
+					$.removeSpinner( 'refresh-spinner' ); // remove spinner
+				}
+			} );
 		},
 
 		// Create a waypoint trigger that floats the navbar when the user scrolls down

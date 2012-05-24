@@ -175,7 +175,7 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 
 				<!-- bottom nav template -->
 				<script type="text/template" id="listStatsNavTemplate">
-					<button id='mwe-pt-refresh-list'><%= gM( 'pagetriage-refresh-list' ) %></button>
+					<div id="mwe-pt-refresh-button-holder"><button id="mwe-pt-refresh-button"><%= gM( 'pagetriage-refresh-list' ) %></button></div>
 					<div class="mwe-pt-top-triager">
 						<%
 						if ( toptriager.total ) {
