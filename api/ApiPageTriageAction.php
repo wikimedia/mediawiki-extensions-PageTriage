@@ -53,7 +53,7 @@ class ApiPageTriageAction extends ApiBase {
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE => array(
 					'1',
-					//'0', Disable for now since there is no UI to handle untriaging yet
+					'0',
 				),
 			),
 			'token' => array(
