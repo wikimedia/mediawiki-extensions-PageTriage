@@ -110,7 +110,6 @@ $wgHooks['GetPreferences'][] = 'PageTriageHooks::onGetPreferences';
 $wgHooks['ArticleViewFooter'][] = 'PageTriageHooks::onArticleViewFooter';
 $wgHooks['ArticleDeleteComplete'][] = 'PageTriageHooks::onArticleDeleteComplete';
 $wgHooks['MarkPatrolledComplete'][] = 'PageTriageHooks::onMarkPatrolledComplete';
-$wgHooks['BeforePageDisplay'][] = 'PageTriageHooks::onBeforePageDisplay';
 $wgHooks['BlockIpComplete'][] = 'PageTriageHooks::onBlockIpComplete';
 
 /**

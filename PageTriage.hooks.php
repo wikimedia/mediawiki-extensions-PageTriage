@@ -253,32 +253,22 @@ class PageTriageHooks {
 			return true;
 		}
 
+		// See if the page is in the PageTriage page queue
+		// If it isn't, $status will be null
 		$status = PageTriageUtil::doesPageNeedTriage( $article );
-		if ( $status === true ) {
-			// Users without the autopatrol right can't review their own pages
+		if ( !is_null( $status ) ) {
+			// See if the user created this page
 			if ( is_callable( array( 'WikiPage', 'getOldestRevision' ) )
 				&& $wgUser->getId() == $article->getOldestRevision()->getUser()
 				&& !$wgUser->isAllowed( 'autopatrol' )
 			) {
-				$msg = wfMessage( 'pagetriage-self-review-error' )->escaped();
+				// Do nothing since users without the autopatrol right can't review their own pages
+				return true;
 			} else {
-				// show 'Mark as reviewed' link
-				$msg = wfMessage( 'pagetriage-markpatrolled' )->text();
-				$msg = Html::element( 'a', array( 'href' => '#', 'class' => 'mw-pagetriage-markpatrolled-link' ), $msg );
+				// Load the JavaScript for the curation toolbar
+				$wgOut->addModules( 'ext.pageTriage.toolbarStartup' );
 			}
-		} elseif ( $status === false ) {
-			// show 'Reviewed' text
-			$msg = wfMessage( 'pagetriage-reviewed' )->escaped();
-		} else {
-			// Do nothing as this page is not in PageTriage queue
-			return true;
 		}
-
-		$wgOut->addModules( array('ext.pageTriage.article') );
-
-		$html = Html::rawElement( 'div', array( 'class' => 'mw-pagetriage-markpatrolled' ), $msg );
-
-		$wgOut->addHTML( $html );
 
 		return true;
 	}
@@ -310,38 +300,6 @@ class PageTriageHooks {
 			}
 		}
 
-		return true;
-	}
-
-	/**
-	 * BeforePageDisplay hook
-	 * @param $out OutputPage
-	 * @return bool
-	 */
-	public static function onBeforePageDisplay( $out ) {
-		// one could place some conditionals here to determine if the
-		// curation toolbar should load.  there's also an opportunity to
-		// check things from the JS side in the module that's loaded here.
-
-		global $wgPageTriageEnableCurationToolbar, $wgPageTriageMarkPatrolledLinkExpiry, $wgUser;
-
-		if( !$wgPageTriageEnableCurationToolbar ) {
-			// the curation bar is disabled. do nothing.
-			return true;
-		}
-
-		$lastUse = $wgUser->getOption( 'pagetriage-lastuse' );
-		if ( $lastUse ) {
-			$lastUse = wfTimestamp( TS_UNIX, $lastUse );
-			$now = wfTimestamp( TS_UNIX, wfTimestampNow() );
-			$periodSince = $now - $lastUse;
-		}
-
-		if ( !$lastUse || $periodSince > $wgPageTriageMarkPatrolledLinkExpiry ) {
-			return true;
-		}
-
-		$out->addModules( 'ext.pageTriage.toolbarStartup' );
 		return true;
 	}
 
