@@ -34,7 +34,7 @@ $( function() {
 			if ( mw.config.get( 'wgPageTriageStickyStatsNav' ) ) this.setPosition();
 
 			// Initialize Refresh List button
-			$( '#mwe-pt-refresh-list' ).button().click( function( e ) {
+			$( '#mwe-pt-refresh-button' ).button().click( function( e ) {
 				// list refreshing is handled by the ListControlNav since it controls the page list
 				_this.eventBus.trigger( "refreshListRequest" );
 				e.stopPropagation();
