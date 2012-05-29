@@ -1,22 +1,91 @@
 //See http://www.mediawiki.org/wiki/Extension:PageTriage for basic documentation on configuration.
 //<nowiki>
 ( function( $ ) {
+var today = new Date();
+var month = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July',
+		'August', 'September', 'October', 'November', 'December' ];
+
+var param = {
+	'date': {
+		label: mw.msg( 'pagetriage-tags-param-date-label' ),
+		input: 'automated',
+		type: 'text',
+		value: mw.msg(
+				'pagetriage-tags-param-date-format',
+				month[today.getUTCMonth()],
+				today.getUTCFullYear()
+			)
+	},
+
+	'for': {
+		label: mw.msg( 'pagetriage-tags-param-for-label' ),
+		input: 'optional',
+		type: 'text',
+		value: ''
+	},
+
+	'blp': {
+		label: mw.msg( 'pagetriage-tags-param-blp-label' ),
+		input: 'optional',
+		type: 'text',
+		value: ''
+	},
+
+	'reason': {
+		label: mw.msg( 'pagetriage-tags-param-reason-label' ),
+		input: 'optional',
+		type: 'textarea',
+		value: ''
+	},
+
+	'details': {
+		label: mw.msg( 'pagetriage-tags-param-details-label' ),
+		input: 'optional',
+		type: 'textarea',
+		value: ''
+	},
+
+	'source': {
+		label: mw.msg( 'pagetriage-tags-param-source-label' ),
+		input: 'required',
+		type: 'text',
+		value: ''
+	},
+
+	'free': {
+		label: mw.msg( 'pagetriage-tags-param-free-label' ),
+		input: 'optional',
+		type: 'select',
+		option: {
+			'Yes': mw.msg( 'pagetriage-tags-param-free-yes-label' ),
+			'No': mw.msg( 'pagetriage-tags-param-free-no-label' )
+		},
+		value: ''
+	},
+
+	'url': {
+		label: mw.msg( 'pagetriage-tags-param-url-label' ),
+		input: 'required',
+		type: 'text',
+		value: ''
+	}
+};
+
 $.pageTriageTagsOptions = {
 
 	'common': {
 		label: mw.msg( 'pagetriage-tags-cat-common-label' ),
+		alias: true,
 		tags: {
 			'linkrot': {
 				label: mw.msg( 'pagetriage-tags-linkrot-label' ),
 				tag: 'linkrot',
 				desc: mw.msg( 'pagetriage-tags-linkrot-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				dest: 'metadata'
 			},
 
 			'copyedit': {
@@ -24,20 +93,11 @@ $.pageTriageTagsOptions = {
 				tag: 'copy edit',
 				desc: mw.msg( 'pagetriage-tags-copyedit-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'for': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-for-label' )
-					},
-					'categories': {
-						required: false,
-						label: mw.msg( 'pagetriage-tags-param-categories-label' )
-					}
+					'date': param.date,
+					'for': param['for']
 				},
-				position: 'top'
+				position: 'top',
+				dest: 'cleanup'
 			},
 
 			'morefootnotes': {
@@ -45,16 +105,11 @@ $.pageTriageTagsOptions = {
 				tag: 'more footnotes',
 				desc: mw.msg( 'pagetriage-tags-morefootnotes-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'blp': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-blp-label' )
-					}
+					'date': param.date,
+					'blp': param.blp
 				},
-				position: 'top'
+				position: 'top',
+				dest: 'verifiability'
 			},
 
 			'refimprove': {
@@ -62,16 +117,10 @@ $.pageTriageTagsOptions = {
 				tag: 'ref improve',
 				desc: mw.msg( 'pagetriage-tags-refimprove-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'talk': {
-						required: false,
-						label: mw.msg( 'pagetriage-tags-param-talk-label' )
-					}
+					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				dest: 'sources'
 			},
 
 			'uncategorised': {
@@ -79,12 +128,10 @@ $.pageTriageTagsOptions = {
 				tag: 'uncategorised',
 				desc: mw.msg( 'pagetriage-tags-uncategorised-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
-				position: 'bottom'
+				position: 'bottom',
+				dest: 'metadata'
 			},
 
 			'unreferenced': {
@@ -92,12 +139,10 @@ $.pageTriageTagsOptions = {
 				tag: 'unreferenced',
 				desc: mw.msg( 'pagetriage-tags-unreferenced-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
-				position: 'bottom'
+				position: 'bottom',
+				dest: 'sources'
 			}
 		}
 	},
@@ -110,10 +155,7 @@ $.pageTriageTagsOptions = {
 				tag: 'dead end',
 				desc: mw.msg( 'pagetriage-tags-deadend-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -123,10 +165,7 @@ $.pageTriageTagsOptions = {
 				tag: 'external links',
 				desc: mw.msg( 'pagetriage-tags-externallinks-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -136,14 +175,7 @@ $.pageTriageTagsOptions = {
 				tag: 'cat improve',
 				desc: mw.msg( 'pagetriage-tags-catimprove-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'talk': {
-						required: false,
-						label: mw.msg( 'pagetriage-tags-param-talk-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -153,14 +185,7 @@ $.pageTriageTagsOptions = {
 				tag: 'orphan',
 				desc: mw.msg( 'pagetriage-tags-orphan-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'att': {
-						required: false,
-						label: mw.msg( 'pagetriage-tags-param-att-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -170,12 +195,29 @@ $.pageTriageTagsOptions = {
 				tag: 'overlinked',
 				desc: mw.msg( 'pagetriage-tags-overlinked-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
+			},
+
+			'linkrot': {
+				label: mw.msg( 'pagetriage-tags-linkrot-label' ),
+				tag: 'linkrot',
+				desc: mw.msg( 'pagetriage-tags-linkrot-desc' ),
+				params: {
+					'date': param.date
+				},
+				position: 'top'
+			},
+
+			'uncategorised': {
+				label: mw.msg( 'pagetriage-tags-uncategorised-label' ),
+				tag: 'uncategorised',
+				desc: mw.msg( 'pagetriage-tags-uncategorised-desc' ),
+				params: {
+					'date': param.date
+				},
+				position: 'bottom'
 			}
 		}
 	},
@@ -188,18 +230,8 @@ $.pageTriageTagsOptions = {
 				tag: 'cleanup',
 				desc: mw.msg( 'pagetriage-tags-cleanup-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'reason': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-reason-label' )
-					},
-					'talksection': {
-						required: false,
-						label: mw.msg( 'pagetriage-tags-param-talksection-label' )
-					}
+					'date': param.date,
+					'reason': param.reason
 				},
 				position: 'top'
 			},
@@ -209,18 +241,8 @@ $.pageTriageTagsOptions = {
 				tag: 'copy edit',
 				desc: mw.msg( 'pagetriage-tags-copyedit-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'for': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-for-label' )
-					},
-					'categories': {
-						required: false,
-						label: mw.msg( 'pagetriage-tags-param-categories-label' )
-					}
+					'date': param.date,
+					'for': param['for']
 				},
 				position: 'top'
 			},
@@ -230,18 +252,8 @@ $.pageTriageTagsOptions = {
 				tag: 'expert-subject',
 				desc: mw.msg( 'pagetriage-tags-expertsubject-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'reason': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-reason-label' )
-					},
-					'talk': {
-						required: false,
-						label: mw.msg( 'pagetriage-tags-param-talk-label' )
-					}
+					'date': param.date,
+					'reason': param.reason
 				},
 				position: 'top'
 			},
@@ -251,10 +263,7 @@ $.pageTriageTagsOptions = {
 				tag: 'prose',
 				desc: mw.msg( 'pagetriage-tags-prose-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -272,14 +281,8 @@ $.pageTriageTagsOptions = {
 				tag: 'wikify',
 				desc: mw.msg( 'pagetriage-tags-wikify-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'reason': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-reason-label' )
-					}
+					'date': param.date,
+					'reason': param.reason
 				},
 				position: 'top'
 			}
@@ -294,10 +297,7 @@ $.pageTriageTagsOptions = {
 				tag: 'advert',
 				desc: mw.msg( 'pagetriage-tags-advert-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -307,10 +307,7 @@ $.pageTriageTagsOptions = {
 				tag: 'autobiography',
 				desc: mw.msg( 'pagetriage-tags-autobiography-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -320,10 +317,7 @@ $.pageTriageTagsOptions = {
 				tag: 'coi',
 				desc: mw.msg( 'pagetriage-tags-coi-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -333,10 +327,7 @@ $.pageTriageTagsOptions = {
 				tag: 'peacock',
 				desc: mw.msg( 'pagetriage-tags-peacock-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -346,10 +337,7 @@ $.pageTriageTagsOptions = {
 				tag: 'pov',
 				desc: mw.msg( 'pagetriage-tags-pov-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -359,10 +347,7 @@ $.pageTriageTagsOptions = {
 				tag: 'weasel',
 				desc: mw.msg( 'pagetriage-tags-weasel-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			}
@@ -377,14 +362,7 @@ $.pageTriageTagsOptions = {
 				tag: 'ref improve',
 				desc: mw.msg( 'pagetriage-tags-refimprove-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'talk': {
-						required: false,
-						label: mw.msg( 'pagetriage-tags-param-talk-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -394,10 +372,7 @@ $.pageTriageTagsOptions = {
 				tag: 'blp sources',
 				desc: mw.msg( 'pagetriage-tags-blpsources-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -407,14 +382,7 @@ $.pageTriageTagsOptions = {
 				tag: 'original research',
 				desc: mw.msg( 'pagetriage-tags-originalresearch-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'discuss': {
-						required: false,
-						label: mw.msg( 'pagetriage-tags-param-discuss-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -424,14 +392,8 @@ $.pageTriageTagsOptions = {
 				tag: 'primary sources',
 				desc: mw.msg( 'pagetriage-tags-primarysources-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'blp': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-blp-label' )
-					}
+					'date': param.date,
+					'blp': param.blp
 				},
 				position: 'top'
 			},
@@ -441,14 +403,7 @@ $.pageTriageTagsOptions = {
 				tag: 'one source',
 				desc: mw.msg( 'pagetriage-tags-onesource-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'text': {
-						required: false,
-						label: mw.msg( 'pagetriage-tags-param-text-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -458,10 +413,7 @@ $.pageTriageTagsOptions = {
 				tag: 'unreferenced',
 				desc: mw.msg( 'pagetriage-tags-unreferenced-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			}
@@ -475,12 +427,7 @@ $.pageTriageTagsOptions = {
 				label: mw.msg( 'pagetriage-tags-condense-label' ),
 				tag: 'condense',
 				desc: mw.msg( 'pagetriage-tags-condense-desc' ),
-				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
-				},
+				params: { },
 				position: 'top'
 			},
 
@@ -489,10 +436,7 @@ $.pageTriageTagsOptions = {
 				tag: 'lead missing',
 				desc: mw.msg( 'pagetriage-tags-leadmissing-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -502,14 +446,8 @@ $.pageTriageTagsOptions = {
 				tag: 'lead rewrite',
 				desc: mw.msg( 'pagetriage-tags-leadrewrite-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'reason': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-reason-label' )
-					}
+					'date': param.date,
+					'reason': param.reason
 				},
 				position: 'top'
 			},
@@ -519,10 +457,7 @@ $.pageTriageTagsOptions = {
 				tag: 'lead too long',
 				desc: mw.msg( 'pagetriage-tags-leadtoolong-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -532,10 +467,7 @@ $.pageTriageTagsOptions = {
 				tag: 'lead too short',
 				desc: mw.msg( 'pagetriage-tags-leadtooshort-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -545,10 +477,7 @@ $.pageTriageTagsOptions = {
 				tag: 'cleanup-reorganise',
 				desc: mw.msg( 'pagetriage-tags-cleanupreorganise-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -574,14 +503,7 @@ $.pageTriageTagsOptions = {
 				tag: 'very long',
 				desc: mw.msg( 'pagetriage-tags-verylong-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'small': {
-						required: false,
-						label: mw.msg( 'pagetriage-tags-param-small-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			}
@@ -596,18 +518,9 @@ $.pageTriageTagsOptions = {
 				tag: 'close paraphrasing',
 				desc: mw.msg( 'pagetriage-tags-closeparaphrasing-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'source': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-source-label' )
-					},
-					'free': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-free-label' )
-					}
+					'date': param.date,
+					'source': param.source,
+					'free': param.free
 				},
 				position: 'top'
 			},
@@ -617,14 +530,8 @@ $.pageTriageTagsOptions = {
 				tag: 'copypaste',
 				desc: mw.msg( 'pagetriage-tags-copypaste-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'url': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-url-label' )
-					}
+					'date': param.date,
+					'url': param.url
 				},
 				position: 'top'
 			},
@@ -642,10 +549,7 @@ $.pageTriageTagsOptions = {
 				tag: 'notability',
 				desc: mw.msg( 'pagetriage-tags-notability-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			}
@@ -660,10 +564,7 @@ $.pageTriageTagsOptions = {
 				tag: 'disputed',
 				desc: mw.msg( 'pagetriage-tags-disputed-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -673,10 +574,7 @@ $.pageTriageTagsOptions = {
 				tag: 'cleanup-link rot',
 				desc: mw.msg( 'pagetriage-tags-cleanuplinkrot-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -686,14 +584,8 @@ $.pageTriageTagsOptions = {
 				tag: 'citation style',
 				desc: mw.msg( 'pagetriage-tags-citationstyle-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'details': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-details-label' )
-					}
+					'date': param.date,
+					'details': param.details
 				},
 				position: 'top'
 			},
@@ -703,10 +595,18 @@ $.pageTriageTagsOptions = {
 				tag: 'hoax',
 				desc: mw.msg( 'pagetriage-tags-hoax-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
+				},
+				position: 'top'
+			},
+
+			'morefootnotes': {
+				label: mw.msg( 'pagetriage-tags-morefootnotes-label' ),
+				tag: 'more footnotes',
+				desc: mw.msg( 'pagetriage-tags-morefootnotes-desc' ),
+				params: {
+					'date': param.date,
+					'blp': param.blp
 				},
 				position: 'top'
 			},
@@ -716,14 +616,7 @@ $.pageTriageTagsOptions = {
 				tag: 'no footnotes',
 				desc: mw.msg( 'pagetriage-tags-nofootnotes-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'blp': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-blp-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			}
@@ -738,14 +631,8 @@ $.pageTriageTagsOptions = {
 				tag: 'confusing',
 				desc: mw.msg( 'pagetriage-tags-confusing-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'reason': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-reason-label' )
-					}
+					'date': param.date,
+					'reason': param.reason
 				},
 				position: 'top'
 			},
@@ -755,10 +642,7 @@ $.pageTriageTagsOptions = {
 				tag: 'essay-like',
 				desc: mw.msg( 'pagetriage-tags-essaylike-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -768,10 +652,7 @@ $.pageTriageTagsOptions = {
 				tag: 'fansite',
 				desc: mw.msg( 'pagetriage-tags-fansite-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -789,10 +670,7 @@ $.pageTriageTagsOptions = {
 				tag: 'technical',
 				desc: mw.msg( 'pagetriage-tags-technical-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -802,14 +680,7 @@ $.pageTriageTagsOptions = {
 				tag: 'tense',
 				desc: mw.msg( 'pagetriage-tags-tense-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'tense': {
-						required: false,
-						label: mw.msg( 'pagetriage-tags-param-tense-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -819,10 +690,7 @@ $.pageTriageTagsOptions = {
 				tag: 'tone',
 				desc: mw.msg( 'pagetriage-tags-tone-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			}
@@ -837,10 +705,7 @@ $.pageTriageTagsOptions = {
 				tag: 'allplot',
 				desc: mw.msg( 'pagetriage-tags-allplot-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -850,10 +715,7 @@ $.pageTriageTagsOptions = {
 				tag: 'fiction',
 				desc: mw.msg( 'pagetriage-tags-fiction-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -863,18 +725,7 @@ $.pageTriageTagsOptions = {
 				tag: 'in-universe',
 				desc: mw.msg( 'pagetriage-tags-inuniverse-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'subject': {
-						required: false,
-						label: mw.msg( 'pagetriage-tags-param-subject-label' )
-					},
-					'category': {
-						required: false,
-						label: mw.msg( 'pagetriage-tags-param-category-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -884,10 +735,7 @@ $.pageTriageTagsOptions = {
 				tag: 'out of date',
 				desc: mw.msg( 'pagetriage-tags-outofdate-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -897,10 +745,7 @@ $.pageTriageTagsOptions = {
 				tag: 'overly detailed',
 				desc: mw.msg( 'pagetriage-tags-overlydetailed-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -910,10 +755,7 @@ $.pageTriageTagsOptions = {
 				tag: 'plot',
 				desc: mw.msg( 'pagetriage-tags-plot-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -923,10 +765,7 @@ $.pageTriageTagsOptions = {
 				tag: 'recentism',
 				desc: mw.msg( 'pagetriage-tags-recentism-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -936,14 +775,7 @@ $.pageTriageTagsOptions = {
 				tag: 'too few opinions',
 				desc: mw.msg( 'pagetriage-tags-toofewopinions-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'discuss': {
-						required: false,
-						label: mw.msg( 'pagetriage-tags-param-discuss-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -953,10 +785,7 @@ $.pageTriageTagsOptions = {
 				tag: 'undue',
 				desc: mw.msg( 'pagetriage-tags-undue-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			},
@@ -966,14 +795,7 @@ $.pageTriageTagsOptions = {
 				tag: 'update',
 				desc: mw.msg( 'pagetriage-tags-update-desc' ),
 				params: {
-					'date': {
-						required: true,
-						label: mw.msg( 'pagetriage-tags-param-date-label' )
-					},
-					'type': {
-						required: false,
-						label: mw.msg( 'pagetriage-tags-param-type-label' )
-					}
+					'date': param.date
 				},
 				position: 'top'
 			}

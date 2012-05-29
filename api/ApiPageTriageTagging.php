@@ -24,36 +24,31 @@ class ApiPageTriageTagging extends ApiBase {
 			$this->dieUsageMsg( array( 'actionthrottledtext' ) );
 		}
 
-		// Check tagging text position
-		switch ( $params['position'] ) {
-			case 'bottom':
-				$action = 'appendtext';
-				$text = "\n\n" . $params['taggingtext'];
-				break;
-
-			case 'top':
-			default:
-				$action = 'prependtext';
-				$text = $params['taggingtext'] . "\n\n";
-				break;
+		$apiParams = array();
+		if ( $params['top'] ) {
+			$apiParams['prependtext'] = $params['top'] . "\n\n";
+		}
+		if ( $params['bottom'] ) {
+			$apiParams['appendtext'] = "\n\n" . $params['bottom'];
 		}
 
-		// Perform the text insertion
-		$api = new ApiMain(
-				new DerivativeRequest(
-					$wgRequest,
-					array(
-						'action' => 'edit',
-						'title'  => $title->getFullText(),
-						'token'  => $params['token'],
-						$action  => $text
+		if ( $apiParams ) {
+			// Perform the text insertion
+			$api = new ApiMain(
+					new DerivativeRequest(
+						$wgRequest,
+						$apiParams + array(
+							'action' => 'edit',
+							'title'  => $title->getFullText(),
+							'token'  => $params['token'],
+						),
+						true
 					),
 					true
-				),
-				true
-			);
-
-		$api->execute();
+				);
+	
+			$api->execute();
+		}
 
 		$result = array( 'result' => 'success' );
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
@@ -76,16 +71,8 @@ class ApiPageTriageTagging extends ApiBase {
 			'token' => array(
 				ApiBase::PARAM_REQUIRED => true,
 			),
-			'taggingtext' => array(
-				ApiBase::PARAM_REQUIRED => true,
-			),
-			'position' => array(
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE => array(
-					'top',
-					'bottom',
-				),
-			),
+			'top' => null,
+			'bottom' => null,
 		);
 	}
 
@@ -101,8 +88,8 @@ class ApiPageTriageTagging extends ApiBase {
 		return array(
 			'pageid' => 'The article for which to be tagged',
 			'token' => 'Edit token',
-			'taggingtext' => 'The tagging text to be added to the article',
-			'position' => 'The position where the tagging text is inserted to'
+			'top' => 'The tagging text to be added to the top of an article',
+			'bottom' => 'The tagging text to be added to the bottom of an article'
 		);
 	}
 

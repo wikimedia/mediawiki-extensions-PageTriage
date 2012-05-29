@@ -65,13 +65,13 @@ $( function() {
 
 			// swap the icon
 			this.setIcon( 'active' );
-			
+
 			if( this.reRender || ! this.rendered ) {
 				// render the content
 				this.render();
 				this.rendered = true;
 			}
-			
+
 			// show the tool flyout
 			this.$el.find( '.mwe-pt-tool-flyout' ).show();
 			this.$el.find( '.mwe-pt-tool-pokey' ).show();
