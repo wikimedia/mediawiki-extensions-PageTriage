@@ -224,7 +224,14 @@ class PageTriageHooks {
 	 * @return bool
 	 */
 	public static function onArticleViewFooter( $article ) {
-		global $wgUser, $wgPageTriageMarkPatrolledLinkExpiry, $wgOut, $wgRequest;
+		global $wgUser, $wgPageTriageMarkPatrolledLinkExpiry, $wgOut, 
+			$wgPageTriageEnableCurationToolbar, $wgRequest;
+
+		// Overwrite the noindex rule defined in Article::view(), this also affects main namespace
+		if ( self::shouldShowNoIndex( $article ) ) {
+			$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		}
+
 		// the presence of rcid means this is coming from Special:NewPages,
 		// and hence don't make any interference, this also applies to
 		// user with no right
@@ -232,9 +239,9 @@ class PageTriageHooks {
 			return true;
 		}
 
-		// Overwrite the noindex rule defined in Article::view(), this also affects main namespace
-		if ( self::shouldShowNoIndex( $article ) ) {
-			$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		// If the curation toolbar is disabled, no need to go further
+		if ( !$wgPageTriageEnableCurationToolbar ) {
+			return true;
 		}
 
 		// don't show anything for user with no patrol right
@@ -242,13 +249,13 @@ class PageTriageHooks {
 			return true;
 		}
 
+		// If the user hasn't visited Special:NewPagesFeed lately, don't do anything
 		$lastUse = $wgUser->getOption( 'pagetriage-lastuse' );
 		if ( $lastUse ) {
 			$lastUse = wfTimestamp( TS_UNIX, $lastUse );
 			$now = wfTimestamp( TS_UNIX, wfTimestampNow() );
 			$periodSince = $now - $lastUse;
 		}
-
 		if ( !$lastUse || $periodSince > $wgPageTriageMarkPatrolledLinkExpiry ) {
 			return true;
 		}
