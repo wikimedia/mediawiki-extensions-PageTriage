@@ -32,24 +32,10 @@ $( function() {
 			} );
 		},
 
-		show: function() {
-			_this = this;
-			// trigger an event here saying which tool is being opened.
-			this.eventBus.trigger( 'showTool', this );
-
-			// close this tool if another tool is opened.
-			this.eventBus.bind( 'showTool', function( tool ) {
-				if( tool !== this ) {
-					this.hide();
-				}
-			}, this );
-
-			// swap the icon
-			this.setIcon( 'active' );
-
-			// set the contents of the flyout to this.render()
-			this.$el.find( '.mwe-pt-tool-content' ).html( this.render() );
-
+		render: function() {
+			// create the mark as reviewed flyout content here.
+			this.$tel.html( this.template( { 'iconPath':this.iconPath( 'active' ), 'title':this.title } ) );
+			
 			// initialize the buttons
 			$( '#mwe-pt-mark-as-reviewed-button' )
 				.button( { icons: {secondary:'ui-icon-triangle-1-e'} } )
@@ -64,17 +50,6 @@ $( function() {
 				e.stopPropagation();
 			} );
 			*/
-
-			// show the tool flyout
-			this.$el.find( '.mwe-pt-tool-flyout' ).show();
-			this.$el.find( '.mwe-pt-tool-pokey' ).show();
-			this.visible = true;
-		},
-
-		render: function() {
-			// create the mark as reviewed flyout content here.
-			// return the HTML that gets inserted.
-			return this.template( { 'iconPath':this.iconPath( 'active' ), 'title':this.title } );
 		}
 
 	} );
