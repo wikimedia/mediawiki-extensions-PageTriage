@@ -4,8 +4,11 @@ $( function() {
 	// create an event aggregator
 	var eventBus = _.extend( {}, Backbone.Events );
 
-	// instantiate the collection of articles
-	var articles = new mw.pageTriage.ArticleList( { eventBus: eventBus } );
+	// the current article
+	var article = new mw.pageTriage.Article( { eventBus: eventBus, pageId: 238 } );
+	article.fetch();
+
+	// array of tool instances
 	var tools;
 
 	// overall toolbar view
@@ -19,7 +22,7 @@ $( function() {
 			tools = new Array;
 
 			// add an articleInfo for testing.
-			tools.push( new mw.pageTriage.ArticleInfoView( { eventBus: eventBus } ) );
+			tools.push( new mw.pageTriage.ArticleInfoView( { eventBus: eventBus, model: article } ) );
 			// add tags
 			tools.push( new mw.pageTriage.TagsView( { eventBus: eventBus } ) );
 			// and mark as reviewed

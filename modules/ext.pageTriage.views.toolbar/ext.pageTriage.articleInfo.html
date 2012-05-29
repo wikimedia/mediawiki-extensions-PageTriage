@@ -1,3 +1,49 @@
-<div>
-	Info
+<div>	
+	<div class="mwe-pt-author">
+	<% if( typeof( user_name ) != 'undefined' ) { %>
+		<%= gM( 'pagetriage-byline' ) %>
+		<a <%= userPageLinkClass %> href="<%= user_title_url %>"><%= mw.html.escape( user_name ) %></a>
+		<span class="mwe-pt-talk-contribs">
+			(<a <%= talkPageLinkClass %> href="<%= user_talk_title_url %>">talk</a>
+			&#xb7;
+			<a href="<%= user_contribs_title.getUrl() %>">contribs</a>)
+		</span>
+		
+		<br/>
+		
+		<!-- editcount is undefined for IP users -->
+		<% if( typeof ( user_editcount ) != 'undefined' ) { %>
+			<%= gM( 'pagetriage-editcount', user_editcount, user_creation_date_pretty ) %>
+			<% if( user_bot == "1" ) { %>
+				&#xb7;
+				<%= gM( 'pagetriage-author-bot' ) %>
+			<% } %>
+		<% } %>
+	<% } else { %>
+		<%= gM('pagetriage-no-author') %>
+	<% } %>
+	</div>
+	
+	
+	<%= gM( 'pagetriage-info-problem-header' ) %>
+	<div>
+		<% if( user_block_status == "1" ) { %>
+			<span class="mwe-pt-metadata-warning">
+			<%= gM( 'pagetriage-author-blocked' ) %>
+			</span>
+			
+			<% if( user_autoconfirmed == "0" ) { %>
+				<span class="mwe-pt-metadata-warning">
+				<%= gM( 'pagetriage-author-not-autoconfirmed' ) %>
+				</span>
+			<% } %>
+		<% } %>
+
+	</div>
+
+	<%= gM( 'pagetriage-info-history-header' ) %> &#xb7;
+	<%= gM( 'pagetriage-info-history-editcount', rev_count ) %> &#xb7;
+	<%= gM( 'pagetriage-info-history-show-full' ) %>
+	<div>
+	</div>
 </div>

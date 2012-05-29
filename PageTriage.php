@@ -498,8 +498,19 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.css',
 	),
 	'messages' => array(
+		'pagetriage-creation-dateformat',
+		'pagetriage-user-creation-dateformat',
 		'pagetriage-mark-as-reviewed',
 		'pagetriage-mark-as-unreviewed',
+		'pagetriage-info-title',
+		'pagetriage-byline',
+		'pagetriage-editcount',
+		'pagetriage-author-bot',
+		'pagetriage-no-author',
+		'pagetriage-info-problem-header',
+		'pagetriage-info-history-header',
+		'pagetriage-info-history-editcount',
+		'pagetriage-info-history-show-full',
 	)
 );
 

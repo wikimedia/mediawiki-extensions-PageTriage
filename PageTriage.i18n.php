@@ -10,6 +10,8 @@ $messages = array();
 
 /** English
  * @author Ryan Kaldari
+ * @author Benny Situ
+ * @author Ian Baker
  */
 $messages['en'] = array(
 	'pagetriage' => 'Page Triage',
@@ -244,12 +246,20 @@ $messages['en'] = array(
 	'pagetriage-tags-param-tense-label' => 'Tense:',
 	'pagetriage-tags-param-subject-label' => 'Subject:',
 	'pagetriage-tags-param-category-label' => 'Category:',
-	'pagetriage-tags-param-type-label' => 'Type:'
+	'pagetriage-tags-param-type-label' => 'Type:',
+	'pagetriage-info-title' => 'Page Info',
+	'pagetriage-info-problem-header' => 'Possible Problems',
+	'pagetriage-info-history-header' => 'History',
+	'pagetriage-info-history-editcount' => '$1 {{PLURAL:$1|edit|edits}}',
+	'pagetriage-info-history-show-full' => 'show full history',	
 );
 
 /** Message documentation (Message documentation)
  * @author Amire80
  * @author Siebrand
+ * @author Ryan Kaldari
+ * @author Benny Situ
+ * @author Ian Baker
  */
 $messages['qqq'] = array(
 	'pagetriage' => 'The name of this application (Page Triage)',
@@ -482,7 +492,8 @@ $messages['qqq'] = array(
 	'pagetriage-tags-param-tense-label' => 'Label for tense parameter',
 	'pagetriage-tags-param-subject-label' => 'Label for subject parameter',
 	'pagetriage-tags-param-category-label' => 'Label for category parameter',
-	'pagetriage-tags-param-type-label' => 'Label for type parameter'
+	'pagetriage-tags-param-type-label' => 'Label for type parameter',
+	'pagetriage-info-title' => 'The title for the page information flyout in the toolbar',
 );
 
 /** German (Deutsch)
