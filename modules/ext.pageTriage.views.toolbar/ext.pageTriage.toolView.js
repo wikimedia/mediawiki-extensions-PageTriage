@@ -30,7 +30,7 @@ $( function() {
 
 		// generate the stuff that goes in this tool's flyout.
 		render: function() {
-			return 'this is some example html';
+			this.$tel.html = 'this is some example html';
 		},
 
 		// if you override initialize, make sure you preserve eventBus
@@ -44,7 +44,7 @@ $( function() {
 		className: "mwe-pt-tool",
 		chromeTemplate: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'toolView.html' } ),
 		visible: false,
-
+		
 		show: function() {
 			_this = this;
 			// trigger an event here saying which tool is being opened.
@@ -60,8 +60,8 @@ $( function() {
 			// swap the icon
 			this.setIcon( 'active' );
 			
-			// set the contents to this.render()
-			this.$el.find( '.mwe-pt-tool-content' ).html( this.render() );
+			// render the content
+			this.render();
 			
 			// show the tool flyout
 			this.$el.find( '.mwe-pt-tool-flyout' ).show();
@@ -102,6 +102,9 @@ $( function() {
 			this.$el.find( '.mwe-pt-tool-close' ).click( function() {
 				_this.hide();
 			} );
+			
+			// $tel is the "tool element".  put stuff that goes in the tool there.
+			this.$tel = this.$el.find( '.mwe-pt-tool-content' );
 
 			return this.$el;
 		},
