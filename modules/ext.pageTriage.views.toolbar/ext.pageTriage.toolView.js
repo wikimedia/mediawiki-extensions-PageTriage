@@ -11,11 +11,16 @@ $( function() {
 		title: 'Abstract tool view', // the title for the flyout window
 		scrollable: false, // should the output of render be in a scrollable div?
 
+		// should the content be re-rendered every time the tool is opened, or just rendered the first time?
+		reRender: false,
+		
 		// These things will likely be overridden with functions.
 		//
 		// function that returns the number of items to display in an icon badge
 		// if null, badge won't be displayed.
-		badgeCount: null,
+		badgeCount: function() {
+			return null;
+		},
 
 		// function to bind to the icon's click handler
 		// if not defined, runs render() and inserts the result into a flyout instead
@@ -44,6 +49,7 @@ $( function() {
 		className: "mwe-pt-tool",
 		chromeTemplate: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'toolView.html' } ),
 		visible: false,
+		rendered: false,
 		
 		show: function() {
 			_this = this;
@@ -60,8 +66,11 @@ $( function() {
 			// swap the icon
 			this.setIcon( 'active' );
 			
-			// render the content
-			this.render();
+			if( this.reRender || ! this.rendered ) {
+				// render the content
+				this.render();
+				this.rendered = true;
+			}
 			
 			// show the tool flyout
 			this.$el.find( '.mwe-pt-tool-flyout' ).show();
