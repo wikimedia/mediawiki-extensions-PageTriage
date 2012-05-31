@@ -41,15 +41,25 @@ class PageTriageUtil {
 
 	/**
 	 * Get a list of stat for unreviewed articles
+	 * @param $namespace int
 	 * @return array
 	 *
 	 * @Todo - Limit the number of records by a timestamp filter, maybe 30 days etc,
 	 *         depends on the time the triage queue should look back for listview
 	 */
-	public static function getUnreviewedArticleStat() {
-		global $wgMemc;
+	public static function getUnreviewedArticleStat( $namespace = '' ) {
+		global $wgMemc, $wgContLang;
 
-		$key = wfMemcKey( 'pagetriage', 'unreviewed-article', 'stat' );
+		$formattedNamespaces = $wgContLang->getFormattedNamespaces();
+
+		if ( $namespace !== '' ) {
+			$namespace = intval( $namespace );
+			if ( !isset( $formattedNamespaces[$namespace] ) ) {
+				$namespace = 0;
+			}
+		}
+
+		$key = wfMemcKey( 'pagetriage', 'unreviewed-article-' . $namespace, 'stat' );
 
 		$data = $wgMemc->get( $key );
 		if ( $data !== false ) {
@@ -58,10 +68,19 @@ class PageTriageUtil {
 
 		$dbr = wfGetDB( DB_SLAVE );
 
+		$table = array( 'pagetriage_page' );
+		$conds = array( 'ptrp_reviewed' => 0 );
+
+		if ( $namespace !== '' ) {
+			$table[] = 'page';
+			$conds[] = 'page_id = ptrp_page_id';
+			$conds[] = 'page_namespace = ' . $namespace;
+		}
+
 		$res = $dbr->selectRow(
-			array( 'pagetriage_page' ),
+			$table,
 			array( 'COUNT(ptrp_page_id) AS total' ),
-			array( 'ptrp_reviewed' => 0 )
+			$conds
 		);
 
 		$percentile = array( 25, 50, 75, 90, 100 );
@@ -78,20 +97,20 @@ class PageTriageUtil {
 			// show percentile stat only if there is a certain number of unreviewed articles
 			if ( $data['count'] > 10 ) {
 				foreach ( $percentile as $val ) {
-					$data['age-' . $val . 'th-percentile'] = self::estimateArticleAgePercentile( $val, $data['count'] );
+					$data['age-' . $val . 'th-percentile'] = self::estimateArticleAgePercentile( $val, $data['count'], $namespace );
 				}
 			}
 		}
 
-		// make it expire in an hour
-		$wgMemc->set( $key, $data, 3600 );
+		// make it expire in 15 minutes
+		$wgMemc->set( $key, $data, 900 );
 		return $data;
 	}
 
 	/**
 	 * Get top page triagers in various time frame
 	 * @param $time string - time to look back for top triagers, possible values include
-	 *                       last-day, last-week, last-month, last-year
+	 *                       last-day, last-week
 	 * @return array
 	 */
 	public static function getTopTriager( $time = 'last-week' ) {
@@ -102,10 +121,7 @@ class PageTriageUtil {
 		// times to look back for top trigers and expiration time in cache
 		$timeFrame = array(
 				'last-day' => array( 'ts' => $now - 24 * 60 * 60, 'expire' => 60 * 60 ),
-				'last-week' => array( 'ts' => $now - 7 * 24 * 60 * 60, 'expire' =>  24 * 60 * 60 ),
-				//Todo: Do we really want to include big timeframe?
-				'last-month' => array( 'ts' => $now - 30 * 24 * 60 * 60, 'expire' => 7 * 24 * 60 * 60 ),
-				'last-year'=> array( 'ts' => $now - 365 * 24 * 60 * 60, 'expire' => 30 * 24 * 60 * 60 )
+				'last-week' => array( 'ts' => $now - 7 * 24 * 60 * 60, 'expire' =>  24 * 60 * 60 )
 		);
 
 		if ( !isset( $timeFrame[$time] ) ) {
@@ -138,47 +154,14 @@ class PageTriageUtil {
 	}
 
 	/**
-	 * Get the number of reviewed articles in last week
-	 * @return int
-	 */
-	public static function getReviewedArticleNum() {
-		global $wgMemc;
-
-		$dbr = wfGetDB( DB_SLAVE );
-		$key = wfMemcKey( 'pagetriage', 'reviewed-article', 'num' );
-
-		$reviewedArticleNum = $wgMemc->get( $key );
-
-		if ( $reviewedArticleNum !== false) {
-			return $reviewedArticleNum;
-		}
-
-		$res = $dbr->selectRow(
-			array( 'pagetriage_page' ),
-			array( 'COUNT(ptrp_page_id) AS num' ),
-			array( 'ptrp_reviewed = 1', 'ptrp_created > ' . $dbr->addQuotes( $dbr->timestamp( wfTimestamp( TS_UNIX ) - 7 * 24 * 60 * 60 ) ) ),
-			__METHOD__
-		);
-
-		if ( $res ) {
-			$reviewedArticleNum = $res->num;
-		} else {
-			$reviewedArticleNum = 0;
-		}
-
-		$wgMemc->set( $key, $reviewedArticleNum, 6 * 60 * 60 );
-
-		return $reviewedArticleNum;
-	}
-
-	/**
 	 * Calculate the age of unreviewed articles by percentile
 	 * @param $percentile int
 	 * @param $count int
+	 * @param $namespace int
 	 * @throws MWPageTriageUtilInvalidNumberException
 	 * @return int|bool
 	 */
-	private static function estimateArticleAgePercentile( $percentile, $count ) {
+	private static function estimateArticleAgePercentile( $percentile, $count, $namespace = '' ) {
 
 		if ( !is_int( $percentile ) || $percentile < 1 || $percentile > 100) {
 			throw new MWPageTriageUtilInvalidNumberException( 'Invalid percentage number' );
@@ -204,10 +187,19 @@ class PageTriageUtil {
 
 		$dbr = wfGetDB( DB_SLAVE );
 
+		$table = array( 'pagetriage_page' );
+		$conds = array( 'ptrp_reviewed' => 0 );
+
+		if ( $namespace !== '' ) {
+			$table[] = 'page';
+			$conds[] = 'page_id = ptrp_page_id';
+			$conds[] = 'page_namespace = ' . intval( $namespace );
+		}
+
 		$res = $dbr->selectRow(
-			array( 'pagetriage_page' ),
+			$table,
 			array( 'ptrp_created' ),
-			array( 'ptrp_reviewed' => 0 ),
+			$conds,
 			__METHOD__,
 			array( 'ORDER BY' => "ptrp_created $order", 'LIMIT' => '1', 'OFFSET' => $start )
 		);

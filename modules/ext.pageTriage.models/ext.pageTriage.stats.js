@@ -9,6 +9,10 @@ $( function() {
 			pageid: ''
 		},
 
+		apiParams: {
+			namespace: ''
+		},
+
 		initialize: function() {
 			this.bind( 'change', this.formatMetadata, this );
 		},
@@ -60,7 +64,17 @@ $( function() {
 			}
 		},
 
-		url: mw.util.wikiScript( 'api' ) + '?action=pagetriagestats&format=json',
+		setParam: function( paramName, paramValue ) {
+			this.apiParams[paramName] = paramValue;
+		},
+
+		url: function() {
+			var url = mw.util.wikiScript( 'api' ) + '?action=pagetriagestats&format=json';
+			if ( this.apiParams['namespace'] !== '' ) {
+				url += '&'  + $.param( this.apiParams );
+			}
+			return url;
+		},
 
 		parse: function( response ) {
 			for ( var title in response.pagetriagestats.stats.userpagestatus ) {
