@@ -5,7 +5,7 @@ $( function() {
 	var eventBus = _.extend( {}, Backbone.Events );
 
 	// the current article
-	var article = new mw.pageTriage.Article( { eventBus: eventBus, pageId: 238 } );
+	var article = new mw.pageTriage.Article( { eventBus: eventBus, pageId: mw.config.get( 'wgArticleId' ) } );
 	article.fetch();
 
 	// array of tool instances
