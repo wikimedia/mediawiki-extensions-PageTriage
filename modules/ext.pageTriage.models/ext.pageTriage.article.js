@@ -3,20 +3,23 @@
 //
 $( function() {
 	if ( !mw.pageTriage ) {
+		// make sure this object exists, since this might be run first.
 		mw.pageTriage = {};
 	}
-	
 	mw.pageTriage.Article = Backbone.Model.extend( {
-		defaults: {
+			defaults: {
 			title: 'Empty Article',
+			pageid: ''
 		},
-
-		// this is the page id to retrieve when pulling a single article.
-		pageId: null,
 
 		initialize: function( options ) {
 			this.bind( 'change', this.formatMetadata, this );
 			this.pageId = options.pageId;
+
+			if( this.pageId ) {
+				// if this is present, only a single article was fetched.  grab its history too.
+				this.addHistory();
+			}
 		},
 
 		formatMetadata: function ( article ) {
@@ -94,10 +97,12 @@ $( function() {
 			}
 		},
 		
+		addHistory: function() {
+			this.history = new mw.pageTriage.RevisionList( { eventBus: this.eventBus, pageId: this.pageId } );
+			this.history.fetch();
+		}
 	} );
 
-	// can't include this in the declaration above because it references the
-	// object created therein.
 	mw.pageTriage.ArticleList = Backbone.Collection.extend( {
 		moreToLoad: true,
 		model: mw.pageTriage.Article,

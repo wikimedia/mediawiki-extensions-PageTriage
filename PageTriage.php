@@ -379,6 +379,7 @@ $wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + array(
 	),
 	'scripts' => array(
 		'ext.pageTriage.models/ext.pageTriage.article.js',
+		'ext.pageTriage.models/ext.pageTriage.revision.js',
 		'ext.pageTriage.models/ext.pageTriage.stats.js'
 	)
 );
