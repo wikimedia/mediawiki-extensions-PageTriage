@@ -115,6 +115,15 @@ $( function() {
 			// $tel is the "tool element".  put stuff that goes in the tool there.
 			this.$tel = this.$el.find( '.mwe-pt-tool-content' );
 
+			if( this.model ) {
+				// If this view works with a model, wait until
+				// the model is loaded to set the badge.
+				this.model.bind('change', this.setBadge, this);
+			} else {
+				// If no model, set the badge right away
+				this.setBadge();
+			}
+
 			return this.$el;
 		},
 
@@ -128,6 +137,13 @@ $( function() {
 
 		setIcon: function( dir ) {
 			this.$el.find( 'img.mwe-pt-tool-icon' ).attr('src', this.iconPath( dir ) );
+		},
+		
+		setBadge: function() {
+			var badgeCount = this.badgeCount();
+			if( badgeCount ) {
+				this.$el.find( '.mwe-pt-tool-icon-container' ).badger( String( badgeCount ) );
+			}
 		}
 
 	} );
