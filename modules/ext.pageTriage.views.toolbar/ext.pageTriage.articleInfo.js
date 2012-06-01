@@ -4,7 +4,7 @@ $( function() {
 	mw.pageTriage.ArticleInfoView = mw.pageTriage.ToolView.extend( {
 		id: 'info',
 		icon: 'icon_info.png', // the default icon
-		title: 'Page Info',
+		title: gM( 'pagetriage-info-title'),
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'articleInfo.html' } ),
 
 		badgeCount: function() {
@@ -15,7 +15,7 @@ $( function() {
 		render: function() {
 			// create the info view content here.
 			// return the HTML that gets inserted.
-			this.$tel.html( this.template( { 'iconPath':this.iconPath( 'active' ), 'title':this.title } ) );
+			this.$tel.html( this.template( this.model.toJSON() ) );
 		}
 	} );
 

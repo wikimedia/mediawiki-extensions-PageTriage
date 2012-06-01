@@ -5,14 +5,18 @@ $( function() {
 	if ( !mw.pageTriage ) {
 		mw.pageTriage = {};
 	}
+	
 	mw.pageTriage.Article = Backbone.Model.extend( {
-			defaults: {
+		defaults: {
 			title: 'Empty Article',
-			pageid: ''
 		},
 
-		initialize: function() {
+		// this is the page id to retrieve when pulling a single article.
+		pageId: null,
+
+		initialize: function( options ) {
 			this.bind( 'change', this.formatMetadata, this );
+			this.pageId = options.pageId;
 		},
 
 		formatMetadata: function ( article ) {
@@ -56,13 +60,41 @@ $( function() {
 		},
 
 		buildLink: function ( url, param ) {
-                      if ( param ) {
-                      	      var mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
-                      	      url += mark + param;
-                      }
-                      return url;
-                }
-        } );
+			if ( param ) {
+				var mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
+				url += mark + param;
+			}
+			return url;
+		},
+
+		// url and parse are used here for retrieving a single article in the curation toolbar.
+		// articles are retrived for list view using the methods in the Articles collection.
+		url: function() {
+			var url = mw.util.wikiScript( 'api' ) + '?action=pagetriagegetmetadata&format=json&' + $.param( { page_id: this.pageId } );
+			return url;
+		},
+		
+		parse: function( response ) {
+			if( response.pagetriagegetmetadata ) {
+				// data came from the getmetadata api call
+				
+				/* this will probably need to happen, but it looks like the getmetadata api doesn't currently return userpagestatus
+				// Check if user pages exist or should be redlinks
+				for ( var title in response.pagetriagelist.userpagestatus ) {
+					mw.Title.exist.set( title );
+				}
+				*/
+
+				// extract the useful bits of json.
+				return response.pagetriagegetmetadata.page[ this.pageId ];				
+			} else {
+				// data came from the list api call
+				// already parsed by the collection's parse function.
+				return response;
+			}
+		},
+		
+	} );
 
 	// can't include this in the declaration above because it references the
 	// object created therein.
