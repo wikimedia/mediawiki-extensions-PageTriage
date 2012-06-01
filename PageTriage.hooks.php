@@ -333,4 +333,17 @@ class PageTriageHooks {
 		PageTriageUtil::updateMetadataOnBlockChange( $block );
 		return true;
 	}
+
+	/**
+	 * Send php config vars to js
+	 *
+	 * makeGlobalVariablesScript: right before OutputPage->getJSVars returns the vars
+	 * @param &$vars: variable (or multiple variables) to be added into the output of Skin::makeVariablesScript
+	 * @return bool
+	 */	
+	public static function onMakeGlobalVariablesScript( &$vars ) {
+		global $wgPageTriageToolbarInfoHelpLink;
+		$vars['wgPageTriageToolbarInfoHelpLink'] = $wgPageTriageToolbarInfoHelpLink;
+		return true;
+	}
 }

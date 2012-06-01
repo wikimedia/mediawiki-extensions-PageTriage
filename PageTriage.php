@@ -58,6 +58,7 @@ $wgPageTriageNoIndexTemplates = 'No_index_templates'; // Pages containing templa
 $wgPageTriageLearnMoreUrl = 'http://en.wikipedia.org/wiki/Wikipedia:New_Pages_Feed/Help';
 $wgPageTriageFeedbackUrl = 'http://en.wikipedia.org/wiki/Wikipedia_talk:New_Pages_Feed';
 $wgPageTriageEnableCurationToolbar = false; // enable the curation toolbar?
+$wgPageTriageToolbarInfoHelpLink = "http://en.wikipedia.org/wiki/Wikipedia:New_pages_patrol#Patroller_checklists"; // help link in toolbar article info view
 // End configuration variables
 
 $dir = dirname( __FILE__ ) . '/';
@@ -113,6 +114,7 @@ $wgHooks['ArticleViewFooter'][] = 'PageTriageHooks::onArticleViewFooter';
 $wgHooks['ArticleDeleteComplete'][] = 'PageTriageHooks::onArticleDeleteComplete';
 $wgHooks['MarkPatrolledComplete'][] = 'PageTriageHooks::onMarkPatrolledComplete';
 $wgHooks['BlockIpComplete'][] = 'PageTriageHooks::onBlockIpComplete';
+$wgHooks['MakeGlobalVariablesScript'][] = 'PageTriageHooks::onMakeGlobalVariablesScript';
 
 /**
  * @param $updater DatabaseUpdater
@@ -497,6 +499,7 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'ext.pageTriage.css', // stuff that's shared across all views
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.css',
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.css',
+		'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfo.css',
 	),
 	'messages' => array(
 		'pagetriage-creation-dateformat',
@@ -512,6 +515,18 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-info-history-header',
 		'pagetriage-info-history-editcount',
 		'pagetriage-info-history-show-full',
+		'pagetriage-info-help',
+		'pagetriage-info-no-problems',
+		'pagetriage-info-problem-non-autoconfirmed',
+		'pagetriage-info-problem-non-autoconfirmed-desc',
+		'pagetriage-info-problem-blocked',
+		'pagetriage-info-problem-blocked-desc',
+		'pagetriage-info-problem-no-categories',
+		'pagetriage-info-problem-no-categories-desc',
+		'pagetriage-info-problem-orphan',
+		'pagetriage-info-problem-orphan-desc',
+		'pagetriage-info-problem-no-references',
+		'pagetriage-info-problem-no-references-desc',
 	)
 );
 

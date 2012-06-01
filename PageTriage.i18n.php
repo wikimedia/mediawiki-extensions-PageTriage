@@ -247,11 +247,25 @@ $messages['en'] = array(
 	'pagetriage-tags-param-subject-label' => 'Subject:',
 	'pagetriage-tags-param-category-label' => 'Category:',
 	'pagetriage-tags-param-type-label' => 'Type:',
-	'pagetriage-info-title' => 'Page Info',
+	'pagetriage-info-title' => 'Examine Page Details',
 	'pagetriage-info-problem-header' => 'Possible Problems',
 	'pagetriage-info-history-header' => 'History',
 	'pagetriage-info-history-editcount' => '$1 {{PLURAL:$1|edit|edits}}',
-	'pagetriage-info-history-show-full' => 'show full history',	
+	'pagetriage-info-history-show-full' => 'show full history',
+
+	'pagetriage-info-help' => 'help',
+	'pagetriage-info-no-problems' => 'No problems detected',	
+	'pagetriage-info-problem-non-autoconfirmed' => 'New Editor',
+	'pagetriage-info-problem-non-autoconfirmed-desc' => 'This article was created by a non-autoconfirmed editor.',
+	'pagetriage-info-problem-blocked' => 'Blocked Author',
+	'pagetriage-info-problem-blocked-desc' => 'This article was created by a blocked user.',
+	'pagetriage-info-problem-no-categories' => 'No Categories',
+	'pagetriage-info-problem-no-categories-desc' => 'This article does not belong to any categories.',
+	'pagetriage-info-problem-orphan' => 'Orphan',
+	'pagetriage-info-problem-orphan-desc' => 'No other articles link to this article.',
+	'pagetriage-info-problem-no-references' => 'No References',
+	'pagetriage-info-problem-no-references-desc' => 'This article does not cite any sources.',
+	
 );
 
 /** Message documentation (Message documentation)
@@ -494,6 +508,19 @@ $messages['qqq'] = array(
 	'pagetriage-tags-param-category-label' => 'Label for category parameter',
 	'pagetriage-tags-param-type-label' => 'Label for type parameter',
 	'pagetriage-info-title' => 'The title for the page information flyout in the toolbar',
+	'pagetriage-info-help' => 'Link text for the info flyout help button',
+	'pagetriage-info-no-problems' => 'Text to show when the article has no detectable issues',
+	'pagetriage-info-problem-non-autoconfirmed' => 'Title for the error displayed when the article author isn\'t autoconfirmed',
+	'pagetriage-info-problem-non-autoconfirmed-desc' => 'Desription for the error displayed when the article author isn\'t autoconfirmed',
+	'pagetriage-info-problem-blocked' => 'Title for the error displayed when the article author is blocked',
+	'pagetriage-info-problem-blocked-desc' => 'Description for the error displayed when the article author is blocked',
+	'pagetriage-info-problem-no-categories' => 'Title for the error displayed when the article belongs to no categories',
+	'pagetriage-info-problem-no-categories-desc' => 'Description for the error displayed when the article belongs to no categories',
+	'pagetriage-info-problem-orphan' => 'Title for the error displayed when the article has no inbound links',
+	'pagetriage-info-problem-orphan-desc' => 'Description for the error displayed when the article has no inbound links',
+	'pagetriage-info-problem-no-references' => 'Title for the error displayed when the article has no citations',
+	'pagetriage-info-problem-no-references-desc' => 'Description for the error displayed when the article has no citations',
+	
 );
 
 /** German (Deutsch)

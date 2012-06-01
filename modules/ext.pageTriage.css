@@ -16,3 +16,7 @@
 	background: -webkit-gradient( linear, left top, left bottom, from( #e7f1f7 ), to( #b6bec3 ) ); /* for webkit browsers */
 	background: -moz-linear-gradient( top,  #e7f1f7,  #b6bec3 ); /* for firefox 3.6+ */
 }
+
+.mwe-pt-talk-contribs {
+	font-size: 0.8em;
+}

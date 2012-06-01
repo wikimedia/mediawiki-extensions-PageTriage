@@ -1,0 +1,40 @@
+/* override the default width */
+.mwe-pt-tool-flyout {
+	width: 400px;
+}
+
+.mwe-pt-info-header {
+	border-bottom: 1px solid black;
+	font-weight: bold;
+	width: 100%;
+}
+
+.mwe-pt-info-header-details {
+	font-weight: normal;
+	font-size: 0.8em;
+	float: right;
+}
+
+
+.mwe-pt-info-basic {
+	position: relative;
+}
+
+.mwe-pt-info-creation-date {
+	font-weight: bold;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.mwe-pt-info-problem {
+}
+
+.mwe-pt-info-problem-name {
+	color: red;
+}
+
+.mwe-pt-info-problem-desc {
+	font-size: 0.9em;
+	color: #666666;
+}
