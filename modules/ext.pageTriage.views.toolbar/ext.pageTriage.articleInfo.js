@@ -13,10 +13,10 @@ $( function() {
 		},
 
 		render: function() {
-			// create the info view content here.
-			// return the HTML that gets inserted.
 			this.enumerateProblems();
 			this.$tel.html( this.template( this.model.toJSON() ) );
+			var history = new mw.pageTriage.ArticleInfoHistoryView( { eventBus: this.eventBus, model: this.model.revisions } );
+			this.$tel.find( '.mwe-pt-info-history' ).append( history.render().$el );
 		},
 
 		formatProblem: function( problem ) {
@@ -51,6 +51,17 @@ $( function() {
 				problems += this.formatProblem( 'no-references' );
 			}
 			this.model.set( 'problems', problems );
+		}
+	} );
+	
+	mw.pageTriage.ArticleInfoHistoryView = Backbone.View.extend( {
+		id: 'mwe-pt-info-history',
+		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'articleInfoHistory.html' } ),
+
+		render: function() {
+			// create the info view content here.
+			// return the HTML that gets inserted.
+			this.$el.html( this.template( this.model.toJSON() ) );
 		}
 	} );
 

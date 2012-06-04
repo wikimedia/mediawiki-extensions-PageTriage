@@ -38,3 +38,9 @@
 	font-size: 0.9em;
 	color: #666666;
 }
+
+.mwe-pt-info-status-icon {
+	float: left;
+	padding: 3px;
+	padding-right: 5px;
+}
