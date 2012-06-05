@@ -26,7 +26,6 @@ $( function() {
 
 		url: function() {
 			var url = mw.util.wikiScript( 'api' ) + '?action=query&prop=revisions&format=json&' + $.param( this.apiParams );
-			console.log(url);
 			return url;
 		},
 

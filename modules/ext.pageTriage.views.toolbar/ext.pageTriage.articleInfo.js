@@ -11,9 +11,15 @@ $( function() {
 			this.enumerateProblems();
 			return this.problemCount;
 		},
-
+		
 		render: function() {
 			this.enumerateProblems();
+
+			// build a link for the history page
+			var url = document.location.pathname;
+			var mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
+			this.model.set('history_link', url + mark + 'action=history' );
+
 			this.$tel.html( this.template( this.model.toJSON() ) );
 			var history = new mw.pageTriage.ArticleInfoHistoryView( { eventBus: this.eventBus, model: this.model.revisions } );
 			this.$tel.find( '#mwe-pt-info-history' ).append( history.render().$el );
@@ -63,8 +69,6 @@ $( function() {
 			var _this = this;
 			var lastDate = null;
 
-			// create the info view content here.
-			// return the HTML that gets inserted.
 			this.model.each( function ( historyItem ) {
 				// I'd rather do this date parsing in the model, but the change event isn't properly
 				// passed through to nested models, and switching to backbone-relational in order to

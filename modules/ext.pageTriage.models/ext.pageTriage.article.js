@@ -19,7 +19,8 @@ $( function() {
 			if( options.includeHistory ) {
 				// fetch the history too?
 				// don't do this when fetching via collection, since it'll generate one ajax request per article.
-				this.bind( 'change', this.addHistory, this );
+				// don't execute on every model change, just when loading a different page
+				this.bind( 'change:pageid', this.addHistory, this );
 			}
 		},
 
