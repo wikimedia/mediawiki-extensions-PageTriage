@@ -16,7 +16,8 @@ $( function() {
 			this.enumerateProblems();
 			this.$tel.html( this.template( this.model.toJSON() ) );
 			var history = new mw.pageTriage.ArticleInfoHistoryView( { eventBus: this.eventBus, model: this.model.revisions } );
-			this.$tel.find( '.mwe-pt-info-history' ).append( history.render().$el );
+			this.$tel.find( '#mwe-pt-info-history' ).append( history.render().$el );
+			return this;
 		},
 
 		formatProblem: function( problem ) {
@@ -59,9 +60,35 @@ $( function() {
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'articleInfoHistory.html' } ),
 
 		render: function() {
+			var _this = this;
+			var lastDate = null;
+
 			// create the info view content here.
 			// return the HTML that gets inserted.
-			this.$el.html( this.template( this.model.toJSON() ) );
+			this.model.each( function ( historyItem ) {
+				// I'd rather do this date parsing in the model, but the change event isn't properly
+				// passed through to nested models, and switching to backbone-relational in order to
+				// move these three lines of code seems silly.
+				var timestamp_parsed = Date.parseExact( historyItem.get( 'timestamp' ), 'yyyy-MM-ddTHH:mm:ssZ' );
+				historyItem.set('timestamp_date', timestamp_parsed.toString( gM( 'pagetriage-info-timestamp-date-format' ) ) );
+				historyItem.set('timestamp_time', timestamp_parsed.toString( gM( 'pagetriage-info-timestamp-time-format' ) ) );
+				if( historyItem.get( 'timestamp_date' ) !== lastDate ) {
+					historyItem.set( 'new_date', true );
+				} else {
+					historyItem.set( 'new_date', false );
+				}
+				lastDate = historyItem.get( 'timestamp_date' );
+				
+				// get a userlink.
+				// can't set link color since no userpage status is returned by the history api
+				if( historyItem.get( 'user' ) ) {
+					var userTitle = new mw.Title( historyItem.get( 'user' ), mw.config.get('wgNamespaceIds')['user'] );
+					historyItem.set( 'user_title_url', userTitle.getUrl() );
+				}				
+				
+				_this.$el.append( _this.template( historyItem.toJSON() ) );				
+			} );
+			return this;
 		}
 	} );
 

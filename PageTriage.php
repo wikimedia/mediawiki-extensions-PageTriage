@@ -520,6 +520,8 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-info-problem-orphan-desc',
 		'pagetriage-info-problem-no-references',
 		'pagetriage-info-problem-no-references-desc',
+		'pagetriage-info-timestamp-date-format',
+		'pagetriage-info-timestamp-time-format',
 	)
 );
 

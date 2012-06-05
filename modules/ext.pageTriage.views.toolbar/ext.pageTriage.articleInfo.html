@@ -56,11 +56,9 @@
 			</a>
 		</span>
 	</div>
-	<div>
+	<div class="mwe-pt-info-content">
 		<% if ( problems ) { %>
-			<ul>
 			<%= problems %>
-			</ul>
 		<% } else { %>
 			<%= gM( 'pagetriage-info-no-problems' ) %>
 		<% } %>
@@ -75,6 +73,6 @@
 			<%= gM( 'pagetriage-info-history-show-full' ) %>
 		</span>
 	</div>
-	<div class="mwe-pt-info-history">
+	<div class="mwe-pt-info-content" id="mwe-pt-info-history">
 	</div>
 </div>

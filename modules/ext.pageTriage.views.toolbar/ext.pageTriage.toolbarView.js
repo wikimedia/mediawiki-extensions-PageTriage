@@ -5,7 +5,11 @@ $( function() {
 	var eventBus = _.extend( {}, Backbone.Events );
 
 	// the current article
-	var article = new mw.pageTriage.Article( { eventBus: eventBus, pageId: mw.config.get( 'wgArticleId' ) } );
+	var article = new mw.pageTriage.Article( {
+		eventBus: eventBus,
+		pageId: mw.config.get( 'wgArticleId' ),
+		includeHistory: true
+	} );
 	article.fetch();
 
 	// array of tool instances

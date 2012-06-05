@@ -44,3 +44,15 @@
 	padding: 3px;
 	padding-right: 5px;
 }
+
+.mwe-pt-info-content {
+}
+
+.mwe-pt-info-history-date {
+	font-weight: bold;
+}
+
+.mwe-pt-info-history-entry {
+	font-size: 0.9em;
+	margin-left: 1em;
+}

@@ -257,6 +257,8 @@ $messages['en'] = array(
 	'pagetriage-info-problem-orphan-desc' => 'No other pages link to this page.',
 	'pagetriage-info-problem-no-references' => 'No references',
 	'pagetriage-info-problem-no-references-desc' => 'This page does not cite any sources.',
+	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
+	'pagetriage-info-timestamp-time-format' => 'HH:mm',	
 );
 
 /** Message documentation (Message documentation)
@@ -504,6 +506,8 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-info-problem-orphan-desc' => 'Description for the error displayed when the article has no inbound links',
 	'pagetriage-info-problem-no-references' => 'Title for the error displayed when the article has no citations',
 	'pagetriage-info-problem-no-references-desc' => 'Description for the error displayed when the article has no citations',
+	'pagetriage-info-timestamp-date-format' =>'Format specifier for the month and date part of the revision timestamp. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers',
+	'pagetriage-info-timestamp-time-format' => 'Format specifier for the hour and minute part of the revision timestamp. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers',
 );
 
 /** Breton (Brezhoneg)

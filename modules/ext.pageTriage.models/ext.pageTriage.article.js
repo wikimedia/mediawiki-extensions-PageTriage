@@ -7,7 +7,7 @@ $( function() {
 		mw.pageTriage = {};
 	}
 	mw.pageTriage.Article = Backbone.Model.extend( {
-			defaults: {
+		defaults: {
 			title: 'Empty Article',
 			pageid: ''
 		},
@@ -16,9 +16,10 @@ $( function() {
 			this.bind( 'change', this.formatMetadata, this );
 			this.pageId = options.pageId;
 
-			if( this.pageId ) {
-				// if this is present, only a single article was fetched.  grab its history too.
-				this.addHistory();
+			if( options.includeHistory ) {
+				// fetch the history too?
+				// don't do this when fetching via collection, since it'll generate one ajax request per article.
+				this.bind( 'change', this.addHistory, this );
 			}
 		},
 
@@ -98,8 +99,8 @@ $( function() {
 		},
 		
 		addHistory: function() {
-			this.history = new mw.pageTriage.RevisionList( { eventBus: this.eventBus, pageId: this.pageId } );
-			this.history.fetch();
+			this.revisions = new mw.pageTriage.RevisionList( { eventBus: this.eventBus, pageId: this.pageId } );
+			this.revisions.fetch();
 		}
 	} );
 

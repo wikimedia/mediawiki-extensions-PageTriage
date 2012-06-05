@@ -6,7 +6,7 @@ $( function() {
 		// These things will probably be overridden with static values.  You can use a function
 		// if you want to, though.
 		//
-		id: 'abstract',
+		id: 'mwe-pt-info-abstract',
 		icon: 'icon_skip.png', // icon to display in the toolbar
 		title: 'Abstract tool view', // the title for the flyout window
 		scrollable: false, // should the output of render be in a scrollable div?
