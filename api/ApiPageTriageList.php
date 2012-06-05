@@ -10,9 +10,16 @@ class ApiPageTriageList extends ApiBase {
 	public function execute() {
 		// Get the API parameters and store them
 		$opts = $this->extractRequestParams();
+		$pages = null;
 
-		// Retrieve the list of page IDs
-		$pages = self::getPageIds( $opts );
+		if( $opts['page_id'] ) {
+			// page id was specified
+			$pages = array( $opts['page_id'] );
+		} else {
+			// Retrieve the list of page IDs
+			$pages = self::getPageIds( $opts );
+		}
+		
 		$sortedMetaData = array();
 
 		if ( $pages ) {
@@ -159,6 +166,9 @@ class ApiPageTriageList extends ApiBase {
 
 	public function getAllowedParams() {
 		return array(
+			'page_id' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+			),
 			'showbots' => array(
 				ApiBase::PARAM_TYPE => 'boolean',
 			),
@@ -209,6 +219,7 @@ class ApiPageTriageList extends ApiBase {
 
 	public function getParamDescription() {
 		return array(
+			'page_id' => 'Return data for the specified page ids, ignoring other parameters',
 			'showbots' => 'Whether to show only bot edits',
 			'showredirs' => 'Whether to include redirects or not', // default is not to show redirects
 			'showreviewed' => 'Whether to include reviewed or not', // default is not to show reviewed
