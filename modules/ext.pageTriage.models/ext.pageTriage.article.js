@@ -74,25 +74,22 @@ $( function() {
 		// url and parse are used here for retrieving a single article in the curation toolbar.
 		// articles are retrived for list view using the methods in the Articles collection.
 		url: function() {
-			var url = mw.util.wikiScript( 'api' ) + '?action=pagetriagegetmetadata&format=json&' + $.param( { page_id: this.pageId } );
+			var url = mw.util.wikiScript( 'api' ) + '?action=pagetriagelist&format=json&' + $.param( { page_id: this.pageId } );
 			return url;
 		},
 		
 		parse: function( response ) {
-			if( response.pagetriagegetmetadata ) {
-				// data came from the getmetadata api call
+			if( response.pagetriagelist ) {
+				// data came directly from the api
 				
-				/* this will probably need to happen, but it looks like the getmetadata api doesn't currently return userpagestatus
 				// Check if user pages exist or should be redlinks
 				for ( var title in response.pagetriagelist.userpagestatus ) {
 					mw.Title.exist.set( title );
 				}
-				*/
 
 				// extract the useful bits of json.
-				return response.pagetriagegetmetadata.page[ this.pageId ];				
+				return response.pagetriagelist.pages[0];				
 			} else {
-				// data came from the list api call
 				// already parsed by the collection's parse function.
 				return response;
 			}
