@@ -113,8 +113,8 @@ $( function() {
 			namespace: 0,
 			showreviewed: 1,
 			showdeleted: 1,
-			showredirs: 0
 			/*
+			showredirs: 0
 			showbots: 0,
 			no_category: 0,
 			no_inbound_links: 0,
@@ -129,7 +129,7 @@ $( function() {
 			this.eventBus.bind( "filterSet", this.setParams );
 
 			// pull any saved filter settings from the user's cookies
-			var savedFilterSettings = $.cookie( 'NewPageFeedFilterOptions' );
+			var savedFilterSettings = $.cookie( 'NewPagesFeedFilterOptions' );
 			if ( savedFilterSettings ) {
 				this.setParams( $.parseJSON( savedFilterSettings ) );
 			}
@@ -187,7 +187,7 @@ $( function() {
 		// Save the filter parameters to a cookie
 		saveFilterParams: function() {
 			var cookieString = this.encodeFilterParams();
-			$.cookie( 'NewPageFeedFilterOptions', cookieString, { expires: 1 } );
+			$.cookie( 'NewPagesFeedFilterOptions', cookieString, { expires: 1 } );
 		},
 
 		getParam: function( key ) {
