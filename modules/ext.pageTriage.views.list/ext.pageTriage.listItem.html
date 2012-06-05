@@ -21,6 +21,8 @@
 	<div class="mwe-pt-info-pane mwe-pt-info-pane-odd">
 <% } %>
 		<div class="mwe-pt-article">
+			<span class="mwe-pt-creation-date"><%= creation_date_pretty %></span>
+			<a class="mwe-pt-list-triage-button ui-button-blue" href="<%= title_url %>" target="_blank"></a>
 			<span class="mwe-pt-page-title"><a href="<%= title_url %>" target="_blank"><%= mw.html.escape( title ) %></a></span>
 			<span class="mwe-pt-histlink">
 				(<a href="<%= mw.config.get("wgScriptPath") + "/index.php?title=" + title_url_format + "&action=history" %>"><%= gM( "pagetriage-hist" ) %></a>)
@@ -40,10 +42,6 @@
 						&#xb7; <span class="mwe-pt-metadata-warning"><%= gM("pagetriage-orphan") %></span>
 					<% } %>
 			</span>
-			<span class="mwe-pt-creation-date">
-				<%= creation_date_pretty %>
-			</span>
-			<a class="mwe-pt-list-triage-button ui-button-blue" href="<%= title_url %>" target="_blank"></a>
 		</div>
 		<div class="mwe-pt-author">
 		<% if( typeof( user_name ) != 'undefined' ) { %>
