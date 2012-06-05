@@ -77,6 +77,8 @@ $( function() {
 			this.$el.find( '.mwe-pt-tool-pokey' ).show();
 			this.visible = true;
 			
+			// remove the hover action
+			this.$icon.unbind('mouseenter mouseleave');
 		},
 
 		hide: function() {
@@ -90,22 +92,55 @@ $( function() {
 
 			// this listener is only needed when the tool is open
 			this.eventBus.unbind( 'showTool', null, this );
+			
+			// re-add the hover action
+			this.$icon.hover(
+				function() {
+					_this.setIcon( 'hover' );
+				},
+				function() {
+					_this.setIcon( 'normal' );
+				}
+			);
 		},
 
 		place: function() {
-			var _this = this;
+			var _this = this, iconPath;
+
+			if( this.disabledIcon ) {
+				iconPath = this.iconPath( 'disabled' );
+			} else {
+				iconPath = this.iconPath( 'normal' );
+			}
 
 			// return the HTML for the closed up version of this tool.
 			this.$el.html( this.chromeTemplate( {
 				id: this.id,
 				title: this.title,
-				iconPath: this.iconPath( 'normal' ),
+				iconPath: iconPath
 			} ) );
 
-			// bind a click handler to open it.
-			this.$el.find( '.mwe-pt-tool-icon' ).click( function() {
-				_this.click();
-			} );
+			this.$icon = this.$el.find( '.mwe-pt-tool-icon' );
+
+			if( this.disabledIcon ) {
+				// not clickable.  turn off the pointer cursor.
+				this.$icon.css( 'cursor', 'default' );
+			} else {
+				// bind a click handler to open it.
+				this.$icon.click( function() {
+					_this.click();
+				} );
+
+				// and a hover action.
+				this.$icon.hover(
+					function() {
+						_this.setIcon( 'hover' );
+					},
+					function() {
+						_this.setIcon( 'normal' );
+					}
+				);
+			}
 
 			// set up an event for the close button
 			this.$el.find( '.mwe-pt-tool-close' ).click( function() {
@@ -127,6 +162,12 @@ $( function() {
 			return this.$el;
 		},
 
+		disable: function() {
+			this.$icon.unbind( 'mouseenter mouseleave' );
+			this.setIcon( 'disabled' );
+			this.$icon.css( 'cursor', 'default' );
+		},
+
 		iconPath: function( dir ) {
 			return mw.config.get( 'wgExtensionAssetsPath' ) +
 				'/PageTriage/modules/ext.pageTriage.views.toolbar/images/icons/' +
@@ -136,7 +177,7 @@ $( function() {
 		},
 
 		setIcon: function( dir ) {
-			this.$el.find( 'img.mwe-pt-tool-icon' ).attr('src', this.iconPath( dir ) );
+			this.$icon.attr('src', this.iconPath( dir ) );
 		},
 		
 		setBadge: function() {
