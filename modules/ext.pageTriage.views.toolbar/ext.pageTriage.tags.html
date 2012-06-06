@@ -1,17 +1,20 @@
+<!-- tag list -->
+<div id="mwe-pt-tags"></div>
 <!-- category list -->
-<div id="mwe-pt-category">
+<div id="mwe-pt-categories">
 	<%
 	for ( key in tags) {
 	%>
-		<div><a href="#" cat="<%= key %>"><%= mw.html.escape( tags[key].label ) %></a> <span id="mwe-pt-tag-count-<%= key %>"></span></div>
+		<div id="mwe-pt-category-<%= key %>" class="mwe-pt-category">
+			<a href="#" cat="<%= key %>"><%= mw.html.escape( tags[key].label ) %></a> <span class="mwe-pt-tag-count"></span>
+			<div class="mwe-pt-category-pokey"></div>
+		</div>
 	<%
 	}
 	%>
 </div>
-<!-- tag list -->
-<div id="mwe-pt-tags" style="margin-top: 8px;"></div>
-<div id="mwe-pt-tags-params-form" style="margin-top: 8px;"></div>
-<div id="mwe-pt-tag-total-count" style="color:red; margin-top: 8px"></div>
-<div id="mwe-pt-tag-submit" style="display:none;">
-	<a href="#"><%= mw.msg('pagetriage-button-add-tag') %></a>
+<div id="mwe-pt-tags-bottom">
+	<div id="mwe-pt-tag-submit">
+		<a href="#" id="mwe-pt-tag-submit-button" class="ui-button-green"><%= mw.msg('pagetriage-button-add-tag-number', 0) %></a>
+	</div>
 </div>

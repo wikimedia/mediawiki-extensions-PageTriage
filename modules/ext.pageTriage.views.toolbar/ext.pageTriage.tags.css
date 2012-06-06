@@ -1,0 +1,74 @@
+#mwe-pt-tag .mwe-pt-tool-content {
+	/* @embed */
+	background-image:url('images/tags_background.png');
+	background-repeat:repeat-y;
+}
+
+#mwe-pt-categories {
+	padding: 7px 0px 7px 7px;
+	width: 123px;
+}
+
+.mwe-pt-category {
+	padding: 5px;
+	-moz-border-radius-topleft: 3px;
+	-webkit-border-top-left-radius: 3px;
+	border-top-left-radius: 3px;
+	-moz-border-radius-bottomleft: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	position: relative;
+}
+
+.mwe-pt-category.mwe-pt-active {
+	color: white !important;
+	/* @embed */
+	background: #3365ba url('../../resources/jquery.ui/themes/vector/images/button-blue.png') repeat-x scroll 50% 100% !important;
+}
+
+.mwe-pt-category.mwe-pt-active a {
+	color: white !important;
+}
+
+#mwe-pt-tags {
+	float: right;
+	width: 360px;
+	margin: 5px;
+}
+
+.mwe-pt-category-pokey {
+	/* @embed */
+	background-image: url('images/baby_pokey.png');
+	background-repeat: no-repeat;
+	width: 6px;
+	height: 10px;
+	position: absolute;
+	z-index: 50;
+	top: 6px;
+	right: 0px;
+	display: none;
+}
+
+#mwe-pt-tags-bottom {
+	border-top: 1px solid #5d5d5d;
+	background-color: white;
+	clear: both;
+}
+
+#mwe-pt-tag-table {
+	line-height: 1.2em;
+}
+#mwe-pt-tag-table td {
+	vertical-align: top;
+	padding: 2px;
+}
+#mwe-pt-tag-table .mwe-pt-tag-checkbox {
+	margin: 0;
+}
+#mwe-pt-tag-table .mwe-pt-tag-label {
+	cursor: pointer;
+}
+#mwe-pt-tag-table .mwe-pt-tag-desc {
+	color: #333333;
+	cursor: default;
+}

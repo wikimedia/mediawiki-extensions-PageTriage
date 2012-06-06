@@ -13,7 +13,7 @@
 	position: absolute;
 	right: 46px;
 	top: -12px;
-	width: 300px;
+	width: 500px;
 	padding: 5px;
 	background-color: #cacaca;
 	border-radius: 5px;
@@ -50,7 +50,7 @@
 	-webkit-border-radius: 3px;
 	font-size: 0.8em;
 	border: 1px solid #9F9F9F;
-	padding: 3px;
+	padding: 0;
 }
 
 .mwe-pt-tool-close {
