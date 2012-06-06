@@ -1,9 +1,17 @@
-<div>
+<!-- category list -->
+<div id="mwe-pt-category">
 	<%
 	for ( key in tags) {
 	%>
-		<div><a href="#"><%= mw.html.escape( tags[key].label ) %></a></div>
+		<div><a href="#" cat="<%= key %>"><%= mw.html.escape( tags[key].label ) %></a> <span id="mwe-pt-tag-count-<%= key %>"></span></div>
 	<%
 	}
 	%>
+</div>
+<!-- tag list -->
+<div id="mwe-pt-tags" style="margin-top: 8px;"></div>
+<div id="mwe-pt-tags-params-form" style="margin-top: 8px;"></div>
+<div id="mwe-pt-tag-total-count" style="color:red; margin-top: 8px"></div>
+<div id="mwe-pt-tag-submit" style="display:none;">
+	<a href="#"><%= mw.msg('pagetriage-button-add-tag') %></a>
 </div>
