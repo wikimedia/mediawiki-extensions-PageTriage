@@ -72,7 +72,7 @@ $( function() {
 			this.model.each( function ( historyItem ) {
 				// I'd rather do this date parsing in the model, but the change event isn't properly
 				// passed through to nested models, and switching to backbone-relational in order to
-				// move these three lines of code seems silly.
+				// move these few lines of code seems silly.
 				var timestamp_parsed = Date.parseExact( historyItem.get( 'timestamp' ), 'yyyy-MM-ddTHH:mm:ssZ' );
 				historyItem.set('timestamp_date', timestamp_parsed.toString( gM( 'pagetriage-info-timestamp-date-format' ) ) );
 				historyItem.set('timestamp_time', timestamp_parsed.toString( gM( 'pagetriage-info-timestamp-time-format' ) ) );
