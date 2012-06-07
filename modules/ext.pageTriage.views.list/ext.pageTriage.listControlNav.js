@@ -19,10 +19,11 @@ $( function() {
 				// reset the width when the window is resized
 				$( window ).resize( _.debounce( _this.setWidth, 80 ) );
 
-				// when the list view is updated, see if we need to change the
-				// float state of the navbar
+				// when the list view is updated, refresh the stats and see if 
+				// we need to change the float state of the navbar
 				this.eventBus.bind( 'articleListChange', function() {
 					_this.setPosition();
+					_this.refreshStats( $('#mwe-pt-filter-namespace').val() );
 				} );
 
 				// when a request is made to refresh the list, do it
@@ -87,6 +88,12 @@ $( function() {
 
 			// make sure the menus are synced with the filter settings
 			this.menuSync();
+		},
+
+		// refresh the stats when a namespace is changed
+		refreshStats: function( ns ) {
+			this.options.stats.setParam( 'namespace', ns );
+			this.options.stats.fetch();
 		},
 
 		// Refresh the page list

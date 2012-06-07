@@ -49,14 +49,14 @@ $( function() {
 
 			// on init, make sure to load the contents of the collection.
 			articles.fetch();
+			stats.setParam( 'namespace', articles.getParam( 'namespace' ) );
 			stats.fetch();
 		},
 
 		render: function() {
 			// reset the position indicator
 			this.position = 0;
-
-			var controlNav = new mw.pageTriage.ListControlNav( { eventBus: this.eventBus, model: articles } );
+			var controlNav = new mw.pageTriage.ListControlNav( { eventBus: this.eventBus, model: articles, stats: stats } );
 			controlNav.render();
 		},
 
