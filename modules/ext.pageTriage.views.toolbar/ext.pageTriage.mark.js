@@ -33,6 +33,8 @@ $( function() {
 		},
 
 		render: function() {
+			var _this = this;
+			
 			// create the mark as reviewed flyout content here.
 			this.$tel.html( this.template( { 'iconPath':this.iconPath( 'active' ), 'title':this.title } ) );
 			
