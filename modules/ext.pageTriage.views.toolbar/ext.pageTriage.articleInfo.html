@@ -1,6 +1,22 @@
 <div>
 	<!-- basic article information -->
 	<div class="mwe-pt-info-basic">
+		<!-- status icon -->
+		<% if ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) { %>
+				<div class="mwe-pt-info-status-icon">
+					<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_marked_for_deletion.png' %>" width="21" height="21" title="<%= gM( "pagetriage-note-deletion" ) %>" />
+				</div>
+		<% } else if ( patrol_status == "1" ) { %>
+				<div class="mwe-pt-info-status-icon">
+					<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_reviewed.png' %>" width="21" height="21" title="<%= gM( "pagetriage-note-reviewed" ) %>" />
+				</div>
+		<% } else { %>
+				<div class="mwe-pt-info-status-icon">
+					<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_not_reviewed.png' %>" width="21" height="21" title="<%= gM( "pagetriage-note-not-reviewed" ) %>" />
+				</div>
+		<% } %>
+		
+		<!-- author info -->
 		<span class="mwe-pt-author">
 		<% if( typeof( user_name ) != 'undefined' ) { %>
 			<%= gM( 'pagetriage-byline' ) %>
@@ -59,7 +75,6 @@
 			<%= gM( 'pagetriage-info-history-show-full' ) %>
 		</span>
 	</div>
-	<div>
-		history goes here
+	<div class="mwe-pt-info-history">
 	</div>
 </div>
