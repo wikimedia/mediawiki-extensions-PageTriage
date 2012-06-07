@@ -1,13 +1,12 @@
 /* stylesheet for the main toolbar view */
 
 #mwe-pt-toolbar {
-	width: 35px;
-	padding: 3px;
-	padding-bottom: 5px;
 	position: fixed;
 	top: 150px;
 	z-index: 1;
 	right: 0px;
+	padding: 3px;
+	padding-bottom: 5px;
 	background-color: #cacaca;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
@@ -15,6 +14,29 @@
 	border: 1px solid #9F9F9F;
 	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
 }
+
+.mwe-pt-toolbar-big {
+	width: 35px;
+}
+
+.mwe-pt-toolbar-small {
+	width: 15px;
+}
+
+#mwe-pt-toolbar-backstage{
+	visibility: hidden;
+}
+
+#mwe-pt-toolbar-active {
+}
+
+#mwe-pt-toolbar-inactive {
+	width: 15px;
+	height: 70px;
+	cursor: pointer;
+	display: none;
+}
+
 
 #mwe-pt-toolbar-main {
 }
@@ -29,4 +51,24 @@
 	width: 12px;
 	margin: 1px auto 0px auto;
 	cursor: pointer;
+}
+
+p.mwe-pt-toolbar-vertical {
+	color:#333;
+	border:0px solid red;
+	writing-mode:tb-rl;
+	-webkit-transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
+	-o-transform: rotate(90deg);
+	/* IE rotation: 0=0, 1=90, 2=180, 3=270 */
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+	white-space:nowrap;
+	display:block;
+	bottom:0;
+	width:20px;
+	height:20px;
+	/*font-family: ‘Trebuchet MS’, Helvetica, sans-serif;*/
+	font-size:1em;
+	font-weight:normal;
+	/*text-shadow: 0px 0px 1px #333;*/
 }

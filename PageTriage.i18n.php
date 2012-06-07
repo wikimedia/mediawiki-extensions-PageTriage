@@ -244,7 +244,6 @@ $messages['en'] = array(
 	'pagetriage-info-history-header' => 'History',
 	'pagetriage-info-history-editcount' => '$1 {{PLURAL:$1|edit|edits}}',
 	'pagetriage-info-history-show-full' => 'show full history',
-
 	'pagetriage-info-help' => 'help',
 	'pagetriage-info-no-problems' => 'No problems detected',	
 	'pagetriage-info-problem-non-autoconfirmed' => 'New editor',
@@ -258,7 +257,8 @@ $messages['en'] = array(
 	'pagetriage-info-problem-no-references' => 'No references',
 	'pagetriage-info-problem-no-references-desc' => 'This page does not cite any sources.',
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
-	'pagetriage-info-timestamp-time-format' => 'HH:mm',	
+	'pagetriage-info-timestamp-time-format' => 'HH:mm',
+	'pagetriage-toolbar-collapsed' => 'Curation',
 );
 
 /** Message documentation (Message documentation)
@@ -508,6 +508,7 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-info-problem-no-references-desc' => 'Description for the error displayed when the article has no citations',
 	'pagetriage-info-timestamp-date-format' =>'Format specifier for the month and date part of the revision timestamp. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers',
 	'pagetriage-info-timestamp-time-format' => 'Format specifier for the hour and minute part of the revision timestamp. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers',
+	'pagetriage-toolbar-collapsed' => 'Label for the collapsed version of the curation bar',
 );
 
 /** Breton (Brezhoneg)

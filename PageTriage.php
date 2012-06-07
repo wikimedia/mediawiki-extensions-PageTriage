@@ -521,6 +521,7 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-info-problem-no-references-desc',
 		'pagetriage-info-timestamp-date-format',
 		'pagetriage-info-timestamp-time-format',
+		'pagetriage-toolbar-collapsed',
 	)
 );
 

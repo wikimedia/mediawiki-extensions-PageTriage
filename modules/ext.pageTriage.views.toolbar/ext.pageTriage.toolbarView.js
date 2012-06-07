@@ -46,6 +46,7 @@ $( function() {
 		},
 
 		render: function() {
+			var _this = this;
 			// build the bar and insert into the page.
 
 			// insert the empty toolbar into the document.
@@ -63,6 +64,28 @@ $( function() {
 				delay: 200,  // these options prevent unwanted drags when attempting to click buttons
 				distance: 10
 			} );
+			
+			var $activeToolbar = $( '#mwe-pt-toolbar-active' );
+			var $inactiveToolbar = $( '#mwe-pt-toolbar-inactive' );
+						
+			// make the close button do something
+			$( '#mwe-pt-toolbar-close-button').click( function() {
+				// close any open tools.
+				eventBus.trigger( 'showTool', this );				
+				$activeToolbar.css('display', 'none');
+				$inactiveToolbar.css('display', 'block');
+				
+				// this is a block element and will scale as wide as possible unless constrained
+				$( '#mwe-pt-toolbar' ).removeClass( 'mwe-pt-toolbar-big' ).addClass( 'mwe-pt-toolbar-small' );
+			} );
+
+			// set up the reopen event
+			$( '#mwe-pt-toolbar-inactive' ).click( function() {
+				$inactiveToolbar.css('display', 'none');
+				$activeToolbar.css('display', 'block');
+				$( '#mwe-pt-toolbar' ).removeClass( 'mwe-pt-toolbar-small' ).addClass( 'mwe-pt-toolbar-big' );
+			} );
+			
 		}
 	} );
 
