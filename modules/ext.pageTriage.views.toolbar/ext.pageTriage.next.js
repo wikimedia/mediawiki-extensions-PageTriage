@@ -53,7 +53,8 @@ $( function() {
 
 			if( page.title ) {
 				var url = mw.util.wikiUrlencode( page.title );
-				window.location.href = url;
+				var mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
+				window.location.href = url + mark + "redirect=no";
 			} else {
 				this.disable();
 			}
