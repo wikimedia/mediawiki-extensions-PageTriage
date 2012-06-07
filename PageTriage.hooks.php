@@ -33,7 +33,30 @@ class PageTriageHooks {
 		// New record to pagetriage queue, compile metadata
 		if ( self::addToPageTriageQueue( $pageId, $newTitle, $wgUser, false ) ) {
 			$acp = ArticleCompileProcessor::newFromPageId( array( $pageId ) );
-			$acp->compileMetadata();
+			if ( $acp ) {
+				$acp->compileMetadata();
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Add a page back to queue after the page gets restored
+	 * @param $title Title corresponding to the article restored
+	 * @param $create: Whether or not the restoration caused the page to be created
+	 *			(i.e. it didn't exist before)
+	 * @param $comment: The comment associated with the undeletion.
+	 */
+	public static function onArticleUndelete( $title, $create, $comment ) {
+		global $wgUser;
+
+		$pageId = $title->getArticleID();
+		if ( $pageId && self::addToPageTriageQueue( $pageId, $title, $wgUser, false ) ) {
+			$acp = ArticleCompileProcessor::newFromPageId( array( $pageId ) );
+			if ( $acp ) {
+				$acp->compileMetadata();
+			}
 		}
 
 		return true;
