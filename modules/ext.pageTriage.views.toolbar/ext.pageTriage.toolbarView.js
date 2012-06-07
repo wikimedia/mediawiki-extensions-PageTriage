@@ -58,7 +58,11 @@ $( function() {
 			} );
 			
 			// make it draggable
-			$( '#mwe-pt-toolbar' ).draggable();
+			$( '#mwe-pt-toolbar' ).draggable( {
+				containment: 'window',  // keep the curation bar inside the window
+				delay: 200,  // these options prevent unwanted drags when attempting to click buttons
+				distance: 10
+			} );
 		}
 	} );
 
