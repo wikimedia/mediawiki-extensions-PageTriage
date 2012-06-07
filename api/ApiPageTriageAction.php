@@ -52,8 +52,8 @@ class ApiPageTriageAction extends ApiBase {
 			'reviewed' => array(
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE => array(
-					'1',
-					'0',
+					'1', // reviewed
+					'0', // unreviewed
 				),
 			),
 			'token' => array(

@@ -8,6 +8,8 @@ class PageTriage {
 	protected $mCreated;
 	protected $mDeleted;
 	protected $mTagsUpdated;
+	protected $mReviewedUpdated;
+	protected $mLastReviewedBy;
 
 	// additional property
 	protected $mLoaded;
@@ -27,7 +29,11 @@ class PageTriage {
 
 	/**
 	 * Add page to page triage queue
-	 * @param $reviewed string '1'/'0'
+	 * @param $reviewed string The reviewed status of the page...
+	 *    '0': unreviewed
+	 *    '1': reviewed manually
+	 *    '2': patrolled from Special:NewPages
+	 *    '3': auto-patrolled
 	 * @param $user User
 	 * @param $fromRc bool
 	 * @throws MWPageTriageMissingRevisionException
@@ -60,15 +66,21 @@ class PageTriage {
 		$row = array(
 			'ptrp_page_id' => $this->mPageId,
 			'ptrp_reviewed' => $reviewed,
-			'ptrp_created' => $res->creation_date
+			'ptrp_created' => $res->creation_date,
+			'ptrp_reviewed_updated' => $dbw->timestamp( wfTimestampNow() )
 		);
+
+		$row['ptrp_last_reviewed_by'] = $user ? $user->getId() : 0;
+
+		$this->mReviewedUpdated = $row['ptrp_reviewed_updated'];
+		$this->mLastReviewedBy  = $row['ptrp_last_reviewed_by'];
 
 		$dbw->insert( 'pagetriage_page', $row, __METHOD__, array( 'IGNORE' ) );
 
 		$this->mReviewed = $reviewed;
 
-		if ( !is_null( $user ) && !$user->isAnon() ) {
-			$this->logUserTriageAction( $user );
+		if ( $this->mLastReviewedBy ) {
+			$this->logUserTriageAction();
 		}
 
 		return true;
@@ -76,13 +88,13 @@ class PageTriage {
 
 	/**
 	 * set the triage status of an article in pagetriage queue
-	 * @param $reviewed string - '1'/'0'
+	 * @param $reviewed string - see PageTriage::getValidReviewedStatus()
 	 * @param $user User
 	 * @param $fromRc bool
 	 */
 	public function setTriageStatus( $reviewed, User $user = null, $fromRc = false ) {
 
-		if ( !in_array( $reviewed, array( '1', '0') ) ) {
+		if ( !array_key_exists( $reviewed, self::getValidReviewedStatus() ) ) {
 			$reviewed = '0';
 		}
 
@@ -92,8 +104,15 @@ class PageTriage {
 
 		$dbw = wfGetDB( DB_MASTER );
 
-		$row = array( 'ptrp_reviewed' => $reviewed );
+		$row = array(
+				'ptrp_reviewed' => $reviewed,
+				'ptrp_reviewed_updated' => $dbw->timestamp( wfTimestampNow() )
+		);
+		$row['ptrp_last_reviewed_by'] = $user ? $user->getId() : 0;
+
 		$this->mReviewed = $reviewed;
+		$this->mReviewedUpdated = $row['ptrp_reviewed_updated'];
+		$this->mLastReviewedBy  = $row['ptrp_last_reviewed_by'];
 
 		$dbw->begin();
 		//@Todo - case for marking a page as untriaged and make sure this logic is correct
@@ -107,8 +126,8 @@ class PageTriage {
 
 		$dbw->update( 'pagetriage_page', $row, array( 'ptrp_page_id' => $this->mPageId ), __METHOD__ );
 		// Log it if set by user
-		if ( $dbw->affectedRows() > 0 && !is_null( $user ) && !$user->isAnon() ) {
-			$this->logUserTriageAction( $user );
+		if ( $dbw->affectedRows() > 0 && $this->mLastReviewedBy ) {
+			$this->logUserTriageAction();
 		}
 		$dbw->commit();
 		// flush the cache so triage status is updated
@@ -149,7 +168,14 @@ class PageTriage {
 
 		$res = $dbr->selectRow(
 			array( 'pagetriage_page' ),
-			array( 'ptrp_reviewed', 'ptrp_created', 'ptrp_deleted', 'ptrp_tags_updated' ),
+			array(
+				'ptrp_reviewed',
+				'ptrp_created',
+				'ptrp_deleted',
+				'ptrp_tags_updated',
+				'ptrp_reviewed_updated',
+				'ptrp_last_reviewed_by'
+			),
 			array( 'ptrp_page_id' => $this->mPageId ),
 			__METHOD__
 		);
@@ -162,22 +188,27 @@ class PageTriage {
 		$this->mCreated = $res->ptrp_created;
 		$this->mDeleted = $res->ptrp_deleted;
 		$this->mTagsUpdated = wfTimestamp( TS_UNIX, $res->ptrp_tags_updated );
+		$this->mReviewedUpdated = wfTimestamp( TS_UNIX, $res->ptrp_reviewed_updated );
+		$this->mLastReviewedBy = $res->ptrp_last_reviewed_by;
 		$this->mLoaded = true;
 		return true;
 	}
 
 	/**
 	 * Log the user triage action
-	 * @param $user User
 	 */
-	protected function logUserTriageAction( $user ) {
+	protected function logUserTriageAction() {
+		if ( !$this->mLastReviewedBy ) {
+			return;
+		}
+
 		$dbw = wfGetDB( DB_MASTER );
 
 		$row = array(
 			'ptrl_page_id' => $this->mPageId,
-			'ptrl_user_id' => $user->getID(),
+			'ptrl_user_id' => $this->mLastReviewedBy,
 			'ptrl_reviewed' => $this->mReviewed,
-			'ptrl_timestamp' => $dbw->timestamp( wfTimestampNow() )
+			'ptrl_timestamp' => $this->mReviewedUpdated
 		);
 
 		$row['ptrl_id'] = $dbw->nextSequenceValue( 'pagetriage_log_ptrl_id' );
@@ -236,6 +267,13 @@ class PageTriage {
 		return $now;
 	}
 
+	/**
+	 * Get a list of valid reviewed status
+	 * @return array
+	 */
+	public static function getValidReviewedStatus() {
+		return array( '0' => 'unreviewed', '1' => 'reviewed', '2' => 'patrolled', '3' => 'auto-patrolled' );
+	}
 }
 
 class PageTriageMissingRevisionException extends MWException {}

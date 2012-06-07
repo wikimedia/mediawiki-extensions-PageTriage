@@ -124,7 +124,8 @@ class ArticleMetadata {
 	 * @return string
 	 */
 	protected function memcKeyPrefix() {
-		return wfMemcKey( 'article', 'metadata' );
+		global $wgPageTriageCacheVersion;
+		return wfMemcKey( 'pagetriage', 'article', 'metadata', $wgPageTriageCacheVersion );
 	}
 
 	/**
@@ -181,7 +182,8 @@ class ArticleMetadata {
 			}
 
 			$articles = self::getPageWithoutMetadata( $articles, $pageData );
-			// Compile the data if it is not available
+			// Compile the data if it is not available, this is a very rare case unless
+			// the metadata gets deleted manually
 			if ( $articles ) {
 				$acp = ArticleCompileProcessor::newFromPageId( $articles );
 				if ( $acp ) {
@@ -296,6 +298,7 @@ class ArticleMetadata {
 class ArticleCompileProcessor {
 
 	protected $component;
+	protected $componentDb;
 	protected $mPageId;
 	protected $metadata;
 	protected $defaultMode;
@@ -315,6 +318,11 @@ class ArticleCompileProcessor {
 			'UserData' => 'off',
 			'DeletionTag' => 'off'
 		);
+		// default to use master database for data compilation
+		foreach ( $this->component as $key => $value ) {
+			$this->componentDb[$key] = 'master';
+		}
+
 		$this->metadata = array_fill_keys( $this->mPageId, array() );
 		$this->defaultMode = true;
 		$this->articles = array();
@@ -357,6 +365,20 @@ class ArticleCompileProcessor {
 			$this->defaultMode = false;
 		}
 	}
+	
+	/**
+	 * Config what db to use for each component
+	 * @param $config array 
+	 * 		example: array( 'BasicData' => 'slave', 'UserData' => 'master' )
+	 */
+	public function configComponentDb( $config ) {
+		$dbMode = array( 'master', 'slave' );
+		foreach ( $this->componentDb as $key => $value ) {
+			if ( isset ( $config[$key] ) && in_array( $config[$key], $dbMode ) ) {
+				$this->componentDb[$key] = $config[$key];	
+			}
+		}
+	}
 
 	/**
 	 * Wrapper function for compiling the data
@@ -395,7 +417,7 @@ class ArticleCompileProcessor {
 		foreach ( $this->component as $key => $val ) {
 			if ( $val === 'on' ) {
 				$compClass = 'ArticleCompile' . $key;
-				$comp = new $compClass( $this->mPageId, $this->articles );
+				$comp = new $compClass( $this->mPageId, $this->componentDb[$key], $this->articles );
 				if ( !$comp->compile() ) {
 					break;
 				}
@@ -467,16 +489,25 @@ abstract class ArticleCompileInterface {
 	protected $mPageId;
 	protected $metadata;
 	protected $articles;
-	protected $dbw;
+	protected $db;
+	protected $componentDb;
 
 	/**
 	 * @param $pageId array
 	 */
-	public function __construct( array $pageId, $articles = null ) {
+	public function __construct( array $pageId, $componentDb = 'master', $articles = null ) {
 		$this->mPageId = $pageId;
 		$this->metadata = array_fill_keys( $pageId, array() );
+		if ( is_null( $articles ) ) {
+			$articles = array();
+		}
 		$this->articles = $articles;
-		$this->dbw = wfGetDB( DB_MASTER );
+		if ( $componentDb === 'master' ) {
+			$this->db = wfGetDB( DB_MASTER );
+		} else {
+			$this->db = wfGetDB( DB_SLAVE );
+		}
+		$this->componentDb = $componentDb;
 	}
 
 	public abstract function compile();
@@ -495,9 +526,9 @@ abstract class ArticleCompileInterface {
 	 * @param $indexName string - the array index name to be saved
 	 */
 	protected function processEstimatedCount( $pageId, $table, $conds, $maxNumToProcess, $indexName ) {
-		$res = $this->dbw->select( $table, '1', $conds, __METHOD__, array( 'LIMIT' => $maxNumToProcess + 1 ) );
+		$res = $this->db->select( $table, '1', $conds, __METHOD__, array( 'LIMIT' => $maxNumToProcess + 1 ) );
 
-		$record = $this->dbw->numRows( $res );
+		$record = $this->db->numRows( $res );
 		if ( $record > $maxNumToProcess ) {
 			$this->metadata[$pageId][$indexName] = $maxNumToProcess . '+';
 		} else {
@@ -523,8 +554,8 @@ abstract class ArticleCompileInterface {
  */
 class ArticleCompileBasicData extends ArticleCompileInterface {
 
-	public function __construct( $pageId, $articles = null ) {
-		parent::__construct( $pageId, $articles );
+	public function __construct( $pageId, $componentDb = 'master', $articles = null ) {
+		parent::__construct( $pageId, $componentDb, $articles );
 	}
 
 	public function compile() {
@@ -534,7 +565,7 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 			$table = array ( 'revision', 'page' );
 			$conds = array ( 'rev_page' => $pageId, 'page_id = rev_page' );
 
-			$row = $this->dbw->selectRow( $table, array ( 'MIN(rev_timestamp) AS creation_date' ),
+			$row = $this->db->selectRow( $table, array ( 'MIN(rev_timestamp) AS creation_date' ),
 						$conds, __METHOD__ );
 			if ( $row ) {
 				$this->metadata[$pageId]['creation_date'] = $row->creation_date;
@@ -548,7 +579,7 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 			return false;
 		}
 
-		$res = $this->dbw->select(
+		$res = $this->db->select(
 				array ( 'page', 'pagetriage_page' ),
 				array (
 					'page_id', 'page_namespace', 'page_title', 'page_len',
@@ -583,8 +614,8 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
  */
 class ArticleCompileLinkCount extends ArticleCompileInterface {
 
-	public function __construct( $pageId, $articles = null ) {
-		parent::__construct( $pageId, $articles );
+	public function __construct( $pageId, $componentDb = 'master', $articles = null ) {
+		parent::__construct( $pageId, $componentDb, $articles );
 	}
 
 	public function compile() {
@@ -612,8 +643,8 @@ class ArticleCompileLinkCount extends ArticleCompileInterface {
  */
 class ArticleCompileCategoryCount extends ArticleCompileInterface {
 
-	public function __construct( $pageId, $articles = null ) {
-		parent::__construct( $pageId, $articles );
+	public function __construct( $pageId, $componentDb = 'master', $articles = null ) {
+		parent::__construct( $pageId, $componentDb, $articles );
 	}
 
 	public function compile() {
@@ -637,8 +668,8 @@ class ArticleCompileCategoryCount extends ArticleCompileInterface {
  */
 class ArticleCompileSnippet extends ArticleCompileInterface {
 
-	public function __construct( $pageId, $articles = null ) {
-		parent::__construct( $pageId, $articles );
+	public function __construct( $pageId, $componentDb = 'master', $articles = null ) {
+		parent::__construct( $pageId, $componentDb, $articles );
 	}
 
 	public function compile() {
@@ -648,7 +679,12 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 			if ( isset( $this->articles[$pageId] ) ) {
 				$article = $this->articles[$pageId];
 			} else {
-				$article = WikiPage::newFromID( $pageId );
+				if ( $this->componentDb === 'master' ) {
+					$from = 'fromdbmaster';	
+				} else {
+					$from = 'fromdb';
+				}
+				$article = WikiPage::newFromID( $pageId, $from );
 			}
 			if ( $article ) {
 				$content = $article->getText();
@@ -702,15 +738,15 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
  */
 class ArticleCompileUserData extends ArticleCompileInterface {
 
-	public function __construct( $pageId, $articles = null ) {
-		parent::__construct( $pageId, $articles );
+	public function __construct( $pageId, $componentDb = 'master', $articles = null ) {
+		parent::__construct( $pageId, $componentDb, $articles );
 	}
 
 	public function compile() {
 		// Process page individually because MIN() GROUP BY is slow
 		$revId = array();
 		foreach ( $this->mPageId as $pageId ) {
-			$res = $this->dbw->selectRow(
+			$res = $this->db->selectRow(
 				array( 'revision' ),
 				array( 'MIN(rev_id) AS rev_id' ),
 				array( 'rev_page' => $pageId ),
@@ -725,7 +761,7 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 			return true;
 		}
 
-		$res = $this->dbw->select(
+		$res = $this->db->select(
 				array( 'revision', 'user', 'ipblocks' ),
 				array(
 					'rev_page AS page_id', 'user_id', 'user_name',
@@ -770,8 +806,8 @@ class ArticleCompileUserData extends ArticleCompileInterface {
  */
 class ArticleCompileDeletionTag extends ArticleCompileInterface {
 
-	public function __construct( $pageId, $articles = null ) {
-		parent::__construct( $pageId, $articles );
+	public function __construct( $pageId, $componentDb = 'master', $articles = null ) {
+		parent::__construct( $pageId, $componentDb, $articles );
 		$this->metadata = array_fill_keys( $this->mPageId, array( 'deleted' => '0' ) );
 	}
 
@@ -786,7 +822,7 @@ class ArticleCompileDeletionTag extends ArticleCompileInterface {
 
 	public function compile() {
 		$deletionTags = self::getDeletionTags();
-		$res = $this->dbw->select(
+		$res = $this->db->select(
 				array( 'categorylinks' ),
 				array( 'cl_from AS page_id', 'cl_to' ),
 				array( 'cl_from' => $this->mPageId, 'cl_to' => array_keys( $deletionTags ) ),
