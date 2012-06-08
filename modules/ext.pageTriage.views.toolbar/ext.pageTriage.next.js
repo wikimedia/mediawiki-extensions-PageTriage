@@ -53,8 +53,11 @@ $( function() {
 
 			if( page.title ) {
 				var url = mw.util.wikiUrlencode( page.title );
-				var mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
-				window.location.href = url + mark + "redirect=no";
+				if( page.is_redirect == '1' ) {
+					var mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
+					url += mark + "redirect=no";
+				}
+				window.location.href = url;
 			} else {
 				this.disable();
 			}

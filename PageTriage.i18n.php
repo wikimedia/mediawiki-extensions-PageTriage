@@ -260,6 +260,7 @@ $messages['en'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'Curation',
+	'pagetriage-mark-helptext' => 'Insert some short explanatory text about what this button means',
 );
 
 /** Message documentation (Message documentation)
@@ -511,6 +512,7 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-info-timestamp-date-format' =>'Format specifier for the month and date part of the revision timestamp. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers',
 	'pagetriage-info-timestamp-time-format' => 'Format specifier for the hour and minute part of the revision timestamp. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers',
 	'pagetriage-toolbar-collapsed' => 'Label for the collapsed version of the curation bar',
+	'pagetriage-mark-helptext' => 'Descriptive text explaining the "Mark as Reviewed/Unreviewed" buttons',
 );
 
 /** Breton (Brezhoneg)

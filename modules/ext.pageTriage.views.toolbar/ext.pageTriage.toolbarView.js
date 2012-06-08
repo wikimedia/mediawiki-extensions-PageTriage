@@ -33,7 +33,7 @@ $( function() {
 			tools.push( new mw.pageTriage.ArticleInfoView( { eventBus: eventBus, model: article } ) );
 
 			// and mark as reviewed
-			tools.push( new mw.pageTriage.MarkView( { eventBus: eventBus } ) );
+			tools.push( new mw.pageTriage.MarkView( { eventBus: eventBus, model: article } ) );
 
 			// add tags
 			tools.push( new mw.pageTriage.TagsView( { eventBus: eventBus } ) );

@@ -13,6 +13,7 @@ $( function() {
 		},
 		
 		render: function() {
+			var _this = this;
 			this.enumerateProblems();
 
 			// build a link for the history page
@@ -23,6 +24,11 @@ $( function() {
 			this.$tel.html( this.template( this.model.toJSON() ) );
 			var history = new mw.pageTriage.ArticleInfoHistoryView( { eventBus: this.eventBus, model: this.model.revisions } );
 			this.$tel.find( '#mwe-pt-info-history' ).append( history.render().$el );
+			
+			// bind down here so it doesn't happen before the first render
+			this.model.unbind( 'change:patrol_status', function() { _this.render(); } );
+			this.model.bind( 'change:patrol_status', function() { _this.render(); } );
+			
 			return this;
 		},
 
