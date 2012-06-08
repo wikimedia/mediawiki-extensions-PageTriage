@@ -1,0 +1,4 @@
+/* override the default width */
+#mwe-pt-mark .mwe-pt-tool-flyout {
+	width: 350px;
+}

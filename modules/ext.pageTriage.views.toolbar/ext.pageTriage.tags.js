@@ -34,9 +34,9 @@ $( function() {
 			var _this = this;
 			this.reset();
 			this.$tel.html( this.template( { 'tags': this.tagsOptions, 'title': this.title } ) );
-
+			
 			// add click event for each category
-			$( '#mwe-pt-category' ).find( 'div' ).each( function( index, value ) {
+			$( '#mwe-pt-categories' ).find( 'div' ).each( function( index, value ) {
 				var cat = $( $( this ).html() ).attr( 'cat' );
 				$( this ).click(
 					function() {
@@ -47,11 +47,13 @@ $( function() {
 			} );
 
 			// add click event for tag submission
-			$( '#mwe-pt-tag-submit' ).click(
-				function () {
-					_this.submit();
-				}
-			).end();
+			$( '#mwe-pt-tag-submit-button' )
+				.button( { disabled: true, icons: {secondary:'ui-icon-triangle-1-e'} } )
+				.click(
+					function () {
+						_this.submit();
+					}
+				).end();
 
 			// show tags under common by default
 			this.displayTags( 'common' );
@@ -61,43 +63,67 @@ $( function() {
 		 * Display the tags for the selected category
 		 */
 		displayTags: function( cat ) {
-			var _this = this, tagSet = this.tagsOptions[cat].tags;
+			var _this = this, tagSet = this.tagsOptions[cat].tags, tagRow = '';
+			var $tagTable = $( '<table id="mwe-pt-tag-table"></table>' );
+			
+			// highlight the active category
+			$( '.mwe-pt-category' ).removeClass( 'mwe-pt-active' );
+			$( '#mwe-pt-category-' + cat ).addClass( 'mwe-pt-active' );
+			$( '.mwe-pt-category .mwe-pt-category-pokey' ).hide();
+			$( '#mwe-pt-category-' + cat + ' .mwe-pt-category-pokey' ).show();
+			
 			$( '#mwe-pt-tags' ).empty();
-			for ( key in tagSet ) {
+			$( '#mwe-pt-tags' ).append( $tagTable );
+			for ( var key in tagSet ) {
 				// build the checkbox
 				var checkbox = mw.html.element(
 							'input',
 							{
 								'type': 'checkbox',
 								'value': tagSet[key].tag,
+								'class': 'mwe-pt-tag-checkbox',
+								'id': 'mwe-pt-checkbox-tag-' + key,
 								'checked': ( _this.selectedTag[cat][key] ) ? true : false
 							}
 						);
+				tagRow = '<tr>';
+				tagRow += '<td>' + checkbox + '</td>';
+				tagRow += '<td><div id="mwe-pt-tag-' + key + '" class="mwe-pt-tag-label">' +
+					mw.html.escape( tagSet[key].label ) + '</div></td>';
+				tagRow += '<td><div class="mwe-pt-tag-desc">' +
+					mw.html.escape( tagSet[key].desc ) +
+					'</div><div id="mwe-pt-tag-params-link-' + key + '"></div>' +
+					'<div id="mwe-pt-tag-params-form-' + key + '"></div></td>';
+				tagRow += '</tr>';
+				
+				$tagTable.append( tagRow );
 
-				// build the tag description following the checkbox
-				$( '#mwe-pt-tags' ).append(
-							'<div id="mwe-pt-tag-' + key + '">' +
-							checkbox + ' ' +  mw.html.escape( tagSet[key].label ) + ' ' +
-							 mw.html.escape( tagSet[key].desc ) +
-							'</div><div id="mwe-pt-tag-params-link-' + key + '"></div>'
-							);
-
+				// TODO: check this
 				// build the edit parameter link if the checkbox has been checked
-				if ( $( '#mwe-pt-tag-' + key + ' input:checkbox' ).prop( 'checked' ) ) {
+				if ( $( '#mwe-pt-checkbox-tag-' + key ).prop( 'checked' ) ) {
 					this.showParamsLink( key, cat, 'edit' );
 				}
 
-				// add click event to the checking/unchecking tags
-				$( '#mwe-pt-tag-' + key ).click(
+				// add click events for checking/unchecking tags to both the 
+				// checkboxes and tag labels
+				$( '#mwe-pt-tag-' + key + ', #mwe-pt-checkbox-tag-' + key ).click(
 					function() {
-						$( '#mwe-pt-tags-params-form' ).empty();
-						var destCat, tagKey = $( this ).attr( 'id' ).replace( 'mwe-pt-tag-', '' );
+						var destCat;
+						
+						// Extract the tag key from the id of whatever was clicked on
+						var tagKeyMatches = $( this ).attr( 'id' ).match( /.*-tag-(.*)/ );
+						var tagKey = tagKeyMatches[1];
+						
+						_this.hideParamsForm( tagKey );
+
+						// Tags in the 'Common' group actually belong to other categories.
+						// In those cases we need to interact with the real parent
+						// category which is indicated in the 'dest' attribute.
 						if ( tagSet[tagKey].dest ) {
 							destCat	= tagSet[tagKey].dest;
 						}
-
 						if ( !_this.selectedTag[cat][tagKey] ) {
-							$( this).find( ':input' ).attr( 'checked', true );
+							$( '#mwe-pt-checkbox-tag-' + tagKey ).attr( 'checked', true );
 							_this.selectedTagCount++;
 							_this.selectedTag[cat][tagKey] = tagSet[tagKey];
 							if ( destCat ) {
@@ -112,7 +138,7 @@ $( function() {
 								}
 							}
 						} else {
-							$( this).find( ':input' ).attr( 'checked', false );
+							$( '#mwe-pt-checkbox-tag-' + tagKey ).attr( 'checked', false );
 							_this.selectedTagCount--;
 							delete _this.selectedTag[cat][tagKey];
 							if ( destCat ) {
@@ -133,19 +159,19 @@ $( function() {
 		refreshTagCountDisplay: function( key, cat ) {
 			var categoryTagCount = Object.keys( this.selectedTag[cat] ).length;
 			if ( categoryTagCount > 0 ) {
-				$( '#mwe-pt-tag-count-' + cat ).html( '(' + categoryTagCount + ')' );
+				$( '#mwe-pt-category-' + cat + ' .mwe-pt-tag-count' ).html( '(' + categoryTagCount + ')' );
 			} else {
-				$( '#mwe-pt-tag-count-' + cat ).empty();
+				$( '#mwe-pt-category-' + cat + ' .mwe-pt-tag-count' ).empty();
 			}
-
+			
+			// update the number in the submit button
+			$( '#mwe-pt-tag-submit-button .ui-button-text' ).html( mw.msg( 'pagetriage-button-add-tag-number', this.selectedTagCount ) );
+			
 			if ( this.selectedTagCount > 0 ) {
-				$( '#mwe-pt-tag-total-count' ).html(
-					mw.msg( 'pagetriage-tag-count-total', this.selectedTagCount )
-					);
-				$( '#mwe-pt-tag-submit' ).show();
+				$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
 			} else {
 				$( '#mwe-pt-tag-total-count' ).empty();
-				$( '#mwe-pt-tag-submit' ).hide();
+				$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
 			}
 		},
 
@@ -181,6 +207,7 @@ $( function() {
 						mw.msg( 'pagetriage-button-' + text + '-parameters' )
 					);
 			$( '#mwe-pt-tag-params-link-' + key ).html( link );
+			// Add click even to the link that shows the param form
 			$( '#mwe-pt-tag-params-' + key ).click( function() {
 				_this.showParamsForm( key, cat );
 			} );
@@ -192,15 +219,20 @@ $( function() {
 		hideParamsLink: function( key ) {
 			$( '#mwe-pt-tag-params-link-' + key ).empty();
 		},
+		
+		/**
+		 * Hide the parameters form
+		 */
+		hideParamsForm: function( key ) {
+			$( '#mwe-pt-tag-params-form-' + key ).hide();
+		},
 
 		/**
-		 * Show the parameters
+		 * Show the parameters form
 		 */
 		showParamsForm: function( key, cat ) {
 			var _this = this, html = '', tag = this.selectedTag[cat][key];
 
-			$( '#mwe-pt-tags-params-form' ).empty();
-			$( '#mwe-pt-tags' ).hide();
 			for ( param in tag.params ) {
 				var paramObj = tag.params[param];
 				html += this.buildHTML( param, paramObj, key );
@@ -220,8 +252,11 @@ $( function() {
 
 			html += '<div id="mwe-pt-tags-params-form-error"></div>';
 
-			$( '#mwe-pt-tags-params-form' ).html( html );
+			// Insert the form content into the flyout
+			$( '#mwe-pt-tag-params-form-' + key ).html( html );
+			$( '#mwe-pt-tag-params-form-' + key ).show();
 
+			// Add click even for the Set Parameters button
 			$( '#mwe-pt-tag-set-param-' + key ).click(
 				function() {
 					if ( _this.setParams( key, cat ) ) {
@@ -229,12 +264,12 @@ $( function() {
 							_this.setParams( key, tag.dest );
 						}
 						_this.showParamsLink( key, cat, 'edit' );
-						$( '#mwe-pt-tags-params-form' ).empty();
-						$( '#mwe-pt-tags' ).show();
+						$( '#mwe-pt-tag-params-form-' + key ).hide();
 					}
 				}
 			);
 
+			// Add click even for the Cancel button
 			$( '#mwe-pt-tag-cancel-param-' + key ).click(
 				function() {
 					var missingRequiredParam = false, destCat;
@@ -252,8 +287,7 @@ $( function() {
 						}
 					}
 
-					$( '#mwe-pt-tags-params-form' ).empty();
-					$( '#mwe-pt-tags' ).show();
+					$( '#mwe-pt-tag-params-form-' + key ).hide();
 				}
 			);
 		},

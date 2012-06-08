@@ -298,6 +298,7 @@ $wgPageTriageTagsOptionsMessages = array (
 	'pagetriage-tags-param-category-label',
 	'pagetriage-tag-count-total',
 	'pagetriage-button-add-tag',
+	'pagetriage-button-add-tag-number',
 	'pagetriage-button-add-parameters',
 	'pagetriage-button-set-parameters',
 	'pagetriage-button-edit-parameters',
@@ -493,6 +494,8 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.css',
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.css',
 		'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfo.css',
+		'ext.pageTriage.views.toolbar/ext.pageTriage.mark.css',
+		'ext.pageTriage.views.toolbar/ext.pageTriage.tags.css',
 	),
 	'messages' => array(
 		'pagetriage-creation-dateformat',
