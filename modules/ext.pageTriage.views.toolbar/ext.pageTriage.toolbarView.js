@@ -21,21 +21,28 @@ $( function() {
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'toolbarView.html' } ),
 
 		initialize: function() {
-			// TODO: decide here which tools to put on the bar, based on namespace, status, etc.
-			// create instances of each of those tools, and build an ordered tools array.
+			// An array of tool instances to put on the bar, ordered top-to-bottom
 			tools = new Array;
 
-			// add an articleInfo for testing.
+			// TODO: decide here which tools to put on the bar, based on namespace, status, etc.
+			// if we someday want this configurable on-wiki, this could load some js from
+			// the MediaWiki namespace that generates the tools array instead, or we could make
+			// some sort of config file thing
+
+			// article information
 			tools.push( new mw.pageTriage.ArticleInfoView( { eventBus: eventBus, model: article } ) );
-			// add tags
-			tools.push( new mw.pageTriage.TagsView( { eventBus: eventBus } ) );
+
 			// and mark as reviewed
 			tools.push( new mw.pageTriage.MarkView( { eventBus: eventBus } ) );
 
-			tools.push( new mw.pageTriage.NextView( { eventBus: eventBus } ) );
+			// add tags
+			tools.push( new mw.pageTriage.TagsView( { eventBus: eventBus } ) );
 
-			// if we someday want this configurable on-wiki, this could load some js from
-			// the MediaWiki namespace that generates the tools array instead.
+			// delete
+			tools.push( new mw.pageTriage.DeleteView( { eventBus: eventBus } ) );
+
+			// next article
+			tools.push( new mw.pageTriage.NextView( { eventBus: eventBus } ) );
 		},
 
 		render: function() {
