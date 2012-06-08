@@ -23,6 +23,8 @@ $( function() {
 			articles.bind( 'reset', this.addAll, this );
 			stats.bind( 'change', this.addStats, this );
 
+			this.eventBus.bind( 'articleListChange', this.updateListCookie, this );
+
 			// this event is triggered when the collection finishes loading.
 			//articles.bind( 'all', this.render, this );
 
@@ -209,7 +211,15 @@ $( function() {
 			$.waypoints( 'refresh' );
 
 			this.eventBus.trigger( 'articleListChange' );
-	    }
+	    },
+	
+		updateListCookie: function() {
+			var pageIds = [];
+			articles.each( function( article ) {
+				pageIds.push( article.get('pageid') );
+			} );
+			$.cookie( 'NewPageFeedLastSearch', JSON.stringify( pageIds ), { expires: 1 } );
+		}
 
 	} );
 

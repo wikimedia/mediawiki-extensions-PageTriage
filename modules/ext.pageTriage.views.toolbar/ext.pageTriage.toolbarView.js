@@ -32,6 +32,8 @@ $( function() {
 			// and mark as reviewed
 			tools.push( new mw.pageTriage.MarkView( { eventBus: eventBus } ) );
 
+			tools.push( new mw.pageTriage.NextView( { eventBus: eventBus } ) );
+
 			// if we someday want this configurable on-wiki, this could load some js from
 			// the MediaWiki namespace that generates the tools array instead.
 		},
