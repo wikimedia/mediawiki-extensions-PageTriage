@@ -293,7 +293,7 @@ class PageTriageHooks {
 				&& !$wgUser->isAllowed( 'autopatrol' )
 			)
 		) {
-			if ( $wgPageTriageEnableCurationToolbar ) {
+			if ( $wgPageTriageEnableCurationToolbar || $wgRequest->getVal( 'curationtoolbar' ) === 'true' ) {
 				// Load the JavaScript for the curation toolbar
 				$wgOut->addModules( 'ext.pageTriage.toolbarStartup' );
 			} else {
