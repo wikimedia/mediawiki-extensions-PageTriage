@@ -36,11 +36,11 @@ class PageTriageHooks {
 				// following components, BasicData is accessing pagetriage_page,
 				// which is not safe to use slave db
 				$config = array(
-						'LinkCount' => 'slave',
-						'CategoryCount' => 'slave',
-						'Snippet' => 'slave',
-						'UserData' => 'slave',
-						'DeletionTag' => 'slave'
+						'LinkCount' => DB_SLAVE,
+						'CategoryCount' => DB_SLAVE,
+						'Snippet' => DB_SLAVE,
+						'UserData' => DB_SLAVE,
+						'DeletionTag' => DB_SLAVE
 				);
 				$acp->configComponentDb( $config );
 				$acp->compileMetadata();
@@ -357,11 +357,11 @@ class PageTriageHooks {
 					// page just gets added to pagetriage queue and hence not safe to use slave db
 					// for BasicData since it's accessing pagetriage_page table
 					$config = array(
-						'LinkCount' => 'slave',
-						'CategoryCount' => 'slave',
-						'Snippet' => 'slave',
-						'UserData' => 'slave',
-						'DeletionTag' => 'slave'
+						'LinkCount' => DB_SLAVE,
+						'CategoryCount' => DB_SLAVE,
+						'Snippet' => DB_SLAVE,
+						'UserData' => DB_SLAVE,
+						'DeletionTag' => DB_SLAVE
 					);
 					$acp->configComponentDb( $config );
 					$acp->compileMetadata();

@@ -15,16 +15,19 @@ class ApiPageTriageList extends ApiBase {
 		if( $opts['page_id'] ) {
 			// page id was specified
 			$pages = array( $opts['page_id'] );
+			$pageIdValidated = false;
 		} else {
 			// Retrieve the list of page IDs
 			$pages = self::getPageIds( $opts );
+			$pageIdValidated = true;
 		}
-		
+		$pageIdValidateDb = DB_SLAVE;
+
 		$sortedMetaData = array();
 
 		if ( $pages ) {
 			// fetch metadata for those pages
-			$articleMetadata = new ArticleMetadata( $pages );
+			$articleMetadata = new ArticleMetadata( $pages, $pageIdValidated, $pageIdValidateDb );
 			$metaData = $articleMetadata->getMetadata();
 
 			// Sort data according to page order returned by our query. Also convert it to a

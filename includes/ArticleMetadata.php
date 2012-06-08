@@ -10,12 +10,13 @@ class ArticleMetadata {
 	/**
 	 * @param $pageId array - list of page id
 	 * @param $validated bool - whether the page ids are validated
+	 * @param $validateDb const - DB_MASTER/DB_SLAVE
 	 */
-	public function __construct( array $pageId, $validated = true ) {
+	public function __construct( array $pageId, $validated = true, $validateDb = DB_MASTER ) {
 		if ( $validated ) {
 			$this->mPageId = $pageId;
 		} else {
-			$this->mPageId = self::validatePageId( $pageId );
+			$this->mPageId = self::validatePageId( $pageId, $validateDb );
 		}
 	}
 
@@ -246,9 +247,10 @@ class ArticleMetadata {
 	 * Typecast the value in page id array to int and verify that it's
 	 * in page triage queue
 	 * @param $pageIds array
+	 * @param $validateDb const DB_MASTER/DB_SLAVE
 	 * @return array
 	 */
-	public static function validatePageId( array $pageIds ) {
+	public static function validatePageId( array $pageIds, $validateDb = DB_MASTER ) {
 		static $cache = array();
 
 		$cleanUp = array();
@@ -270,11 +272,9 @@ class ArticleMetadata {
 		}
 
 		if ( $pageIds ) {
-			// this has to read from the master, since page ids that fail to validate
-			// don't get metadata compiled
-			$dbw = wfGetDB( DB_MASTER );
+			$db = wfGetDB( $validateDb );
 
-			$res = $dbw->select(
+			$res = $db->select(
 					array( 'pagetriage_page' ),
 					array( 'ptrp_page_id' ),
 					array( 'ptrp_page_id' => $pageIds ),
@@ -320,7 +320,7 @@ class ArticleCompileProcessor {
 		);
 		// default to use master database for data compilation
 		foreach ( $this->component as $key => $value ) {
-			$this->componentDb[$key] = 'master';
+			$this->componentDb[$key] = DB_MASTER;
 		}
 
 		$this->metadata = array_fill_keys( $this->mPageId, array() );
@@ -332,11 +332,12 @@ class ArticleCompileProcessor {
 	 * Factory for creating an instance
 	 * @param $pageId array
 	 * @param $validated bool - whether page ids are validated
+	 * @param $validateDb const - DB_MASTER/DB_SLAVE
 	 * @return ArticleCompileProcessor|false
 	 */
-	public static function newFromPageId( array $pageId, $validated = true ) {
+	public static function newFromPageId( array $pageId, $validated = true, $validateDb = DB_MASTER ) {
 		if ( !$validated ) {
-			$pageId = ArticleMetadata::validatePageId( $pageId );
+			$pageId = ArticleMetadata::validatePageId( $pageId, $validateDb );
 		}
 		if ( $pageId ) {
 			return new ArticleCompileProcessor( $pageId );
@@ -369,10 +370,10 @@ class ArticleCompileProcessor {
 	/**
 	 * Config what db to use for each component
 	 * @param $config array 
-	 * 		example: array( 'BasicData' => 'slave', 'UserData' => 'master' )
+	 * 		example: array( 'BasicData' => DB_SLAVE, 'UserData' => DB_MASTER )
 	 */
 	public function configComponentDb( $config ) {
-		$dbMode = array( 'master', 'slave' );
+		$dbMode = array( DB_MASTER, DB_SLAVE );
 		foreach ( $this->componentDb as $key => $value ) {
 			if ( isset ( $config[$key] ) && in_array( $config[$key], $dbMode ) ) {
 				$this->componentDb[$key] = $config[$key];	
@@ -495,18 +496,16 @@ abstract class ArticleCompileInterface {
 	/**
 	 * @param $pageId array
 	 */
-	public function __construct( array $pageId, $componentDb = 'master', $articles = null ) {
+	public function __construct( array $pageId, $componentDb = DB_MASTER, $articles = null ) {
 		$this->mPageId = $pageId;
 		$this->metadata = array_fill_keys( $pageId, array() );
 		if ( is_null( $articles ) ) {
 			$articles = array();
 		}
 		$this->articles = $articles;
-		if ( $componentDb === 'master' ) {
-			$this->db = wfGetDB( DB_MASTER );
-		} else {
-			$this->db = wfGetDB( DB_SLAVE );
-		}
+		
+		$this->db = wfGetDB( $componentDb );
+
 		$this->componentDb = $componentDb;
 	}
 
@@ -554,7 +553,7 @@ abstract class ArticleCompileInterface {
  */
 class ArticleCompileBasicData extends ArticleCompileInterface {
 
-	public function __construct( $pageId, $componentDb = 'master', $articles = null ) {
+	public function __construct( $pageId, $componentDb = DB_MASTER, $articles = null ) {
 		parent::__construct( $pageId, $componentDb, $articles );
 	}
 
@@ -614,7 +613,7 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
  */
 class ArticleCompileLinkCount extends ArticleCompileInterface {
 
-	public function __construct( $pageId, $componentDb = 'master', $articles = null ) {
+	public function __construct( $pageId, $componentDb = DB_MASTER, $articles = null ) {
 		parent::__construct( $pageId, $componentDb, $articles );
 	}
 
@@ -643,7 +642,7 @@ class ArticleCompileLinkCount extends ArticleCompileInterface {
  */
 class ArticleCompileCategoryCount extends ArticleCompileInterface {
 
-	public function __construct( $pageId, $componentDb = 'master', $articles = null ) {
+	public function __construct( $pageId, $componentDb = DB_MASTER, $articles = null ) {
 		parent::__construct( $pageId, $componentDb, $articles );
 	}
 
@@ -668,7 +667,7 @@ class ArticleCompileCategoryCount extends ArticleCompileInterface {
  */
 class ArticleCompileSnippet extends ArticleCompileInterface {
 
-	public function __construct( $pageId, $componentDb = 'master', $articles = null ) {
+	public function __construct( $pageId, $componentDb = DB_MASTER, $articles = null ) {
 		parent::__construct( $pageId, $componentDb, $articles );
 	}
 
@@ -679,7 +678,7 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 			if ( isset( $this->articles[$pageId] ) ) {
 				$article = $this->articles[$pageId];
 			} else {
-				if ( $this->componentDb === 'master' ) {
+				if ( $this->componentDb === DB_MASTER ) {
 					$from = 'fromdbmaster';	
 				} else {
 					$from = 'fromdb';
@@ -738,7 +737,7 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
  */
 class ArticleCompileUserData extends ArticleCompileInterface {
 
-	public function __construct( $pageId, $componentDb = 'master', $articles = null ) {
+	public function __construct( $pageId, $componentDb = DB_MASTER, $articles = null ) {
 		parent::__construct( $pageId, $componentDb, $articles );
 	}
 
@@ -806,7 +805,7 @@ class ArticleCompileUserData extends ArticleCompileInterface {
  */
 class ArticleCompileDeletionTag extends ArticleCompileInterface {
 
-	public function __construct( $pageId, $componentDb = 'master', $articles = null ) {
+	public function __construct( $pageId, $componentDb = DB_MASTER, $articles = null ) {
 		parent::__construct( $pageId, $componentDb, $articles );
 		$this->metadata = array_fill_keys( $this->mPageId, array( 'deleted' => '0' ) );
 	}

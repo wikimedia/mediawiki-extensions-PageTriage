@@ -86,7 +86,7 @@ class updateUserMetadata extends Maintenance {
 				if ( $acp ) {
 					$acp->registerComponent( 'UserData' );
 					// safe to use slave db for data compilation
-					$acp->configComponentDb( array( 'UserData' => 'slave' ) );
+					$acp->configComponentDb( array( 'UserData' => DB_SLAVE ) );
 					$acp->compileMetadata();
 				}
 
