@@ -84,7 +84,6 @@ $wgAutoloadClasses['ArticleCompileDeletionTag'] = $dir . 'includes/ArticleMetada
 $wgAutoloadClasses['PageTriageExternalTagsOptions'] = $dir . 'includes/PageTriageExternalTagsOptions.php';
 
 $wgAutoloadClasses['ApiPageTriageList'] = $dir . 'api/ApiPageTriageList.php';
-$wgAutoloadClasses['ApiPageTriageGetMetadata'] = $dir . 'api/ApiPageTriageGetMetadata.php';
 $wgAutoloadClasses['ApiPageTriageStats'] = $dir . 'api/ApiPageTriageStats.php';
 $wgAutoloadClasses['ApiPageTriageAction'] = $dir . 'api/ApiPageTriageAction.php';
 $wgAutoloadClasses['ApiPageTriageTemplate'] = $dir . 'api/ApiPageTriageTemplate.php';
@@ -96,7 +95,6 @@ $wgAutoloadClasses['MWPageTriageMissingRevisionException'] = $dir . 'includes/Pa
 
 // api modules
 $wgAPIModules['pagetriagelist'] = 'ApiPageTriageList';
-$wgAPIModules['pagetriagegetmetadata'] = 'ApiPageTriageGetMetadata';
 $wgAPIModules['pagetriagestats'] = 'ApiPageTriageStats';
 $wgAPIModules['pagetriageaction'] = 'ApiPageTriageAction';
 $wgAPIModules['pagetriagetemplate'] = 'ApiPageTriageTemplate';
@@ -139,7 +137,6 @@ function efPageTriageUnitTests( &$files ) {
 	$base = dirname( __FILE__ ) . '/tests';
 	$files[] = $base . '/phpunit/SpecialPageTriageTest.php';
 	$files[] = $base . '/phpunit/ArticleMetadataTest.php';
-	$files[] = $base . '/phpunit/ApiPageTriageGetMetadataTest.php';
 	$files[] = $base . '/phpunit/ApiPageTriageActionTest.php';
 	return true;
 }
