@@ -52,7 +52,7 @@ $( function() {
 		rendered: false,
 		
 		show: function() {
-			_this = this;
+			var _this = this;
 			// trigger an event here saying which tool is being opened.
 			this.eventBus.trigger( 'showTool', this );
 
@@ -82,6 +82,8 @@ $( function() {
 		},
 
 		hide: function() {
+			var _this = this;
+			
 			// swap the icon
 			this.setIcon( 'normal' );
 
