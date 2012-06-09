@@ -10,6 +10,9 @@
 	float: right;
 }
 
+#mwe-pt-info-holder {
+	padding: 6px;
+}
 
 .mwe-pt-info-basic {
 	position: relative;

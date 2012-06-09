@@ -1,7 +1,10 @@
+#mwe-pt-tag .mwe-pt-tool-flyout {
+	width: 530px;
+	top: -117px;
+}
+
 #mwe-pt-tag .mwe-pt-tool-content {
-	/* @embed */
-	background-image:url('images/tags_background.png');
-	background-repeat:repeat-y;
+	background-color: #F3F3F3;
 }
 
 #mwe-pt-categories {
@@ -10,7 +13,8 @@
 }
 
 .mwe-pt-category {
-	padding: 5px;
+	padding: 5px 5px;
+	margin-bottom: 1px;
 	-moz-border-radius-topleft: 3px;
 	-webkit-border-top-left-radius: 3px;
 	border-top-left-radius: 3px;
@@ -22,8 +26,7 @@
 
 .mwe-pt-category.mwe-pt-active {
 	color: white !important;
-	/* @embed */
-	background: #3365ba url('../../resources/jquery.ui/themes/vector/images/button-blue.png') repeat-x scroll 50% 100% !important;
+	background: #3365ba !important;
 }
 
 .mwe-pt-category.mwe-pt-active a {
@@ -32,8 +35,12 @@
 
 #mwe-pt-tags {
 	float: right;
-	width: 360px;
-	margin: 5px;
+	width: 382px;
+	height: 265px;
+	overflow: auto;
+	padding: 8px;
+	border-left: 1px solid #9F9F9F;
+	background-color: white;
 }
 
 .mwe-pt-category-pokey {
@@ -50,28 +57,63 @@
 }
 
 #mwe-pt-tags-bottom {
-	border-top: 1px solid #5d5d5d;
-	background-color: white;
+	border-top: 1px solid #9F9F9F;
+	/* background-color: white; */
+	padding: 10px 10px 10px 138px;
 	clear: both;
 }
+#mwe-pt-checkbox-mark-reviewed-label {
+	font-size: 0.94em;
+	opacity: 0.35;
+}
+#mwe-pt-checkbox-mark-reviewed-label {
+	font-size: 0.94em;
+	opacity: 0.35;
+}
+#mwe-pt-tag-submit-button {
+	margin-top: 0.2em !important;
+}
 
-#mwe-pt-tag-table {
+.mwe-pt-tags-cat-desc {
+	padding: 4px 4px 4px 4px;
+}
+
+#mwe-pt-tag-list {
+	font-size: 0.94em;
 	line-height: 1.2em;
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 375px;
 }
-#mwe-pt-tag-table td {
+#mwe-pt-tag-list td {
 	vertical-align: top;
-	padding: 2px;
+	padding: 5px 4px;
 }
-#mwe-pt-tag-table .mwe-pt-tag-checkbox {
+#mwe-pt-tag-list td.mwe-pt-tag-checkbox-cell {
+	padding-right: 1px;
+}
+#mwe-pt-tag-list .mwe-pt-tag-checkbox {
 	margin: 0;
 }
-#mwe-pt-tag-table .mwe-pt-tag-label {
+#mwe-pt-tag-list .mwe-pt-tag-label {
 	cursor: pointer;
+	font-weight: bold;
+	/* width: 115px; */
 }
-#mwe-pt-tag-table .mwe-pt-tag-desc {
-	color: #333333;
+#mwe-pt-tag-list .mwe-pt-tag-desc {
+	color: #666666;
 	cursor: default;
+	padding: 0;
+	font-size: 0.92em;
 }
-#mwe-pt-tag-table .mwe-pt-tag-set-param-button {
+#mwe-pt-tag-list .mwe-pt-tag-params-link {
+	font-size: 0.92em;
+}
+#mwe-pt-tag-list .mwe-pt-tag-params-form {
+	display: none;
+	margin-top: 0.2em;
+}
+#mwe-pt-tag-list .mwe-pt-tag-set-param-button {
 	margin-left: 0 !important;
+	background-color: white;
 }

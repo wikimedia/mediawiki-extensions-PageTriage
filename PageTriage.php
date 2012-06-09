@@ -246,8 +246,6 @@ $wgPageTriageTagsOptionsMessages = array (
 	'pagetriage-tags-notability-desc',
 	'pagetriage-tags-disputed-label',
 	'pagetriage-tags-disputed-desc',
-	'pagetriage-tags-cleanuplinkrot-label',
-	'pagetriage-tags-cleanuplinkrot-desc',
 	'pagetriage-tags-citationstyle-label',
 	'pagetriage-tags-citationstyle-desc',
 	'pagetriage-tags-hoax-label',
@@ -490,6 +488,8 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'ext.pageTriage.views.toolbar/ext.pageTriage.next.js', // next article
 		'ext.pageTriage.views.toolbar/ext.pageTriage.delete.js', // mark for deletion
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.js', // overall toolbar view last
+		'external/jquery.effects.core.js',
+		'external/jquery.effects.squish.js',
 	),
 	'styles' => array(
 		'ext.pageTriage.css', // stuff that's shared across all views

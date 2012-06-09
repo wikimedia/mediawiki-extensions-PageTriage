@@ -41,13 +41,12 @@
 
 .mwe-pt-tool-title {
 	font-weight: bold;
+	display: inline-block;
+	padding: 2px 0 5px 0;
 }
 
 .mwe-pt-tool-content {
 	background-color: white;
-	border-radius: 3px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
 	font-size: 0.8em;
 	border: 1px solid #9F9F9F;
 	padding: 0;
@@ -56,6 +55,6 @@
 .mwe-pt-tool-close {
 	color: gray;
 	float: right;
-	font-size: 0.5em;
+	font-size: 0.6em;
 	cursor: pointer;
 }

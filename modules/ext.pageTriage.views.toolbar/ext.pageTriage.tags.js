@@ -40,6 +40,7 @@ $( function() {
 				var cat = $( $( this ).html() ).attr( 'cat' );
 				$( this ).click(
 					function() {
+						$( this ).find( 'a' ).blur();
 						_this.displayTags( cat );
 						return false;
 					}
@@ -48,7 +49,7 @@ $( function() {
 
 			// add click event for tag submission
 			$( '#mwe-pt-tag-submit-button' )
-				.button( { disabled: true, icons: {secondary:'ui-icon-triangle-1-e'} } )
+				.button( { disabled: true } )
 				.click(
 					function () {
 						_this.submit();
@@ -64,7 +65,10 @@ $( function() {
 		 */
 		displayTags: function( cat ) {
 			var _this = this, tagSet = this.tagsOptions[cat].tags, tagRow = '';
-			var $tagTable = $( '<table id="mwe-pt-tag-table"></table>' );
+			
+			$( '#mwe-pt-tags' ).empty();
+			
+			var $tagList = $( '<div id="mwe-pt-tag-list"></div>' );
 			
 			// highlight the active category
 			$( '.mwe-pt-category' ).removeClass( 'mwe-pt-active' );
@@ -72,9 +76,30 @@ $( function() {
 			$( '.mwe-pt-category .mwe-pt-category-pokey' ).hide();
 			$( '#mwe-pt-category-' + cat + ' .mwe-pt-category-pokey' ).show();
 			
-			$( '#mwe-pt-tags' ).empty();
-			$( '#mwe-pt-tags' ).append( $tagTable );
+			/*
+			$( '#mwe-pt-tags' ).append(
+				'<div class="mwe-pt-tags-cat-desc">' +
+				mw.msg( 'pagetriage-tags-cat-' + cat + '-desc' ) +
+				'</div>'
+			);
+			*/
+			$( '#mwe-pt-tags' ).append( $tagList );
+			
 			for ( var key in tagSet ) {
+				
+				var checked = false;
+				/*
+				if ( tagSet[key].dest ) {
+					var destCat	= tagSet[key].dest;
+					if ( this.selectedTag[destCat][key] ) {
+						checked = true;
+					}
+				}
+				*/
+				if ( this.selectedTag[cat][key] ) {
+					checked = true;
+				}
+				
 				// build the checkbox
 				var checkbox = mw.html.element(
 							'input',
@@ -83,25 +108,25 @@ $( function() {
 								'value': tagSet[key].tag,
 								'class': 'mwe-pt-tag-checkbox',
 								'id': 'mwe-pt-checkbox-tag-' + key,
-								'checked': ( _this.selectedTag[cat][key] ) ? true : false
+								'checked': ( checked ) ? true : false
 							}
 						);
-				tagRow = '<tr>';
-				tagRow += '<td>' + checkbox + '</td>';
+				tagRow = '<div class="mwe-pt-tag-row" id="mwe-pt-tag-row-' + key + '"><table><tr>';
+				tagRow += '<td class="mwe-pt-tag-checkbox-cell">' + checkbox + '</td>';
 				tagRow += '<td><div id="mwe-pt-tag-' + key + '" class="mwe-pt-tag-label">' +
-					mw.html.escape( tagSet[key].label ) + '</div></td>';
-				tagRow += '<td><div class="mwe-pt-tag-desc">' +
+					mw.html.escape( tagSet[key].label ) + '</div>';
+				tagRow += '<div class="mwe-pt-tag-desc">' +
 					mw.html.escape( tagSet[key].desc ) +
-					'</div><div id="mwe-pt-tag-params-link-' + key + '"></div>' +
-					'<div id="mwe-pt-tag-params-form-' + key + '"></div></td>';
-				tagRow += '</tr>';
+					'</div><div id="mwe-pt-tag-params-link-' + key + '" class="mwe-pt-tag-params-link"></div>' +
+					'<div id="mwe-pt-tag-params-form-' + key + '" class="mwe-pt-tag-params-form">' +
+					'</div></td>';
+				tagRow += '</tr></table></div>';
 				
-				$tagTable.append( tagRow );
+				$tagList.append( tagRow );
 
-				// TODO: check this
-				// build the edit parameter link if the checkbox has been checked
+				// insert the add/edit parameter link if the checkbox has been checked
 				if ( $( '#mwe-pt-checkbox-tag-' + key ).prop( 'checked' ) ) {
-					this.showParamsLink( key, cat, 'edit' );
+					this.showParamsLink( key, cat );
 				}
 
 				// add click events for checking/unchecking tags to both the 
@@ -114,7 +139,7 @@ $( function() {
 						var tagKeyMatches = $( this ).attr( 'id' ).match( /.*-tag-(.*)/ );
 						var tagKey = tagKeyMatches[1];
 						
-						_this.hideParamsForm( tagKey );
+						$( '#mwe-pt-tag-params-form-' + tagKey ).hide();
 
 						// Tags in the 'Common' group actually belong to other categories.
 						// In those cases we need to interact with the real parent
@@ -123,6 +148,7 @@ $( function() {
 							destCat	= tagSet[tagKey].dest;
 						}
 						if ( !_this.selectedTag[cat][tagKey] ) {
+							// activate checkbox
 							$( '#mwe-pt-checkbox-tag-' + tagKey ).attr( 'checked', true );
 							_this.selectedTagCount++;
 							_this.selectedTag[cat][tagKey] = tagSet[tagKey];
@@ -138,6 +164,7 @@ $( function() {
 								}
 							}
 						} else {
+							// deactivate checkbox
 							$( '#mwe-pt-checkbox-tag-' + tagKey ).attr( 'checked', false );
 							_this.selectedTagCount--;
 							delete _this.selectedTag[cat][tagKey];
@@ -145,6 +172,8 @@ $( function() {
 								delete _this.selectedTag[destCat][tagKey];
 							}
 							_this.hideParamsLink( tagKey );
+							// If the param form is visible, hide it
+							_this.hideParamsForm( tagKey );
 						}
 
 						_this.refreshTagCountDisplay( tagKey, destCat ? destCat : cat );
@@ -167,46 +196,54 @@ $( function() {
 			// update the number in the submit button
 			$( '#mwe-pt-tag-submit-button .ui-button-text' ).html( mw.msg( 'pagetriage-button-add-tag-number', this.selectedTagCount ) );
 			
+			// activate or deactivate the submit button and associated parts
 			if ( this.selectedTagCount > 0 ) {
 				$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
+				$( '#mwe-pt-checkbox-mark-reviewed' ).removeAttr( 'disabled' );
+				$( '#mwe-pt-checkbox-mark-reviewed-label' ).css( 'opacity', 1.0 );
 			} else {
 				$( '#mwe-pt-tag-total-count' ).empty();
 				$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
+				$( '#mwe-pt-checkbox-mark-reviewed' ).attr( 'disabled', true );
+				$( '#mwe-pt-checkbox-mark-reviewed-label' ).css( 'opacity', 0.35 );
 			}
 		},
 
 		/**
 		 * Show 'Add/Edit parameter' link
 		 */
-		showParamsLink: function( key, cat, text ) {
-			var automated = true, params = this.selectedTag[cat][key].params;
+		showParamsLink: function( key, cat ) {
+			var allParamsHidden = true;
+			var text = 'add';
+			var tag = this.selectedTag[cat][key];
+			
 			// no params, don't show the link
-			if ( !Object.keys( params ).length ) {
+			if ( !Object.keys( tag.params ).length ) {
 				return;
 			}
-			// check if there is non-automated param
-			for ( param in params ) {
-				if ( params[param].input !== 'automated' ) {
-					automated = false;
-					break;
+			
+			// check if there is non-hidden param
+			for ( param in tag.params ) {
+				if ( tag.params[param].type !== 'hidden' ) {
+					allParamsHidden = false;
+					// see if any of the parameters have been filled out
+					if ( tag.params[param].value ) {
+						text = 'edit';
+					}
 				}
 			}
-			// all params are automated, don't show the link
-			if ( automated === true ) {
+			// all params are hidden, don't show the link
+			if ( allParamsHidden === true ) {
 				return;
-			}
-
-			if ( !text ) {
-				text = 'add';
 			}
 
 			var _this = this;
 			var link = mw.html.element(
 						'a',
 						{ 'href': '#', 'id': 'mwe-pt-tag-params-' + key },
-						mw.msg( 'pagetriage-button-' + text + '-parameters' )
+						mw.msg( 'pagetriage-button-' + text + '-details' )
 					);
-			$( '#mwe-pt-tag-params-link-' + key ).html( link );
+			$( '#mwe-pt-tag-params-link-' + key ).html( '+&#160;' + link );
 			// Add click even to the link that shows the param form
 			$( '#mwe-pt-tag-params-' + key ).click( function() {
 				_this.showParamsForm( key, cat );
@@ -219,13 +256,6 @@ $( function() {
 		hideParamsLink: function( key ) {
 			$( '#mwe-pt-tag-params-link-' + key ).empty();
 		},
-		
-		/**
-		 * Hide the parameters form
-		 */
-		hideParamsForm: function( key ) {
-			$( '#mwe-pt-tag-params-form-' + key ).hide();
-		},
 
 		/**
 		 * Show the parameters form
@@ -233,18 +263,18 @@ $( function() {
 		showParamsForm: function( key, cat ) {
 			var _this = this, html = '', tag = this.selectedTag[cat][key];
 
+			this.hideParamsLink( key );
+			
 			for ( param in tag.params ) {
 				var paramObj = tag.params[param];
 				html += this.buildHTML( param, paramObj, key );
 			}
 
-			html += "<br/>\n";
 			html += mw.html.element(
 						'button',
 						{ 'id': 'mwe-pt-tag-set-param-' + key, 'class': 'mwe-pt-tag-set-param-button ui-button-green' },
 						mw.msg( 'pagetriage-button-add-details' )
 					);
-			html += ' ';
 			html += mw.html.element(
 						'button',
 						{ 'id': 'mwe-pt-tag-cancel-param-' + key, 'class': 'ui-button-red' },
@@ -256,6 +286,8 @@ $( function() {
 			// Insert the form content into the flyout
 			$( '#mwe-pt-tag-params-form-' + key ).html( html );
 			$( '#mwe-pt-tag-params-form-' + key ).show();
+			
+			$( '.mwe-pt-tag-row' ).not( '#mwe-pt-tag-row-' + key ).hide( 'squish', {}, 800 );
 
 			// Add click even for the Set Parameters button
 			$( '#mwe-pt-tag-set-param-' + key ).button().click(
@@ -264,8 +296,9 @@ $( function() {
 						if ( tag.dest ) {
 							_this.setParams( key, tag.dest );
 						}
-						_this.showParamsLink( key, cat, 'edit' );
-						$( '#mwe-pt-tag-params-form-' + key ).hide();
+						// Hide the form and show the link to reopen it
+						_this.hideParamsForm( key );
+						_this.showParamsLink( key, cat );
 					}
 				}
 			);
@@ -287,10 +320,22 @@ $( function() {
 							break;
 						}
 					}
-
-					$( '#mwe-pt-tag-params-form-' + key ).hide();
+					// Hide the form and show the link to reopen it
+					_this.hideParamsForm( key );
+					_this.showParamsLink( key, cat );
 				}
 			);
+		},
+
+		/**
+		 * Hide the parameters form
+		 */
+		hideParamsForm: function( key ) {
+			$( '#mwe-pt-tag-params-form-' + key ).hide();
+			// If the other tags are squished, unsquish them
+			if ( $( '.mwe-pt-tag-row' ).not( '#mwe-pt-tag-row-' + key ).first().css( 'display' ) == 'none' ) {
+				$( '.mwe-pt-tag-row' ).not( '#mwe-pt-tag-row-' + key ).show( 'squish', {}, 600 );
+			}
 		},
 
 		/**
@@ -350,13 +395,42 @@ $( function() {
 			if ( topText == '' && bottomText == '') {
 				return;
 			}
-
-			return $.ajax( {
+			
+			// If review checkbox is checked, mark as reviewed, then submit tags
+			if ( $( '#mwe-pt-checkbox-mark-reviewed' ).is( ':checked' ) ) {
+				apiRequest = {
+					'action': 'pagetriageaction',
+					'pageid': mw.config.get( 'wgArticleId' ),
+					'reviewed': '1',
+					'token': mw.user.tokens.get('editToken'),
+					'format': 'json'
+				};
+				$.ajax( {
+					type: 'post',
+					url: mw.util.wikiScript( 'api' ),
+					data: apiRequest,
+					success: function( data ) {
+						if ( data.error ) {
+							alert( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
+						} else {
+							_this.applyTags( topText, bottomText );
+						}
+					},
+					dataType: 'json'
+				} );
+			} else {
+				this.applyTags( topText, bottomText );
+			}
+		},
+		
+		applyTags: function( topText, bottomText ) {
+			var _this = this;
+			$.ajax( {
 				type: 'post',
 				url: mw.util.wikiScript( 'api' ),
 				data: {
 					'action': 'pagetriagetagging',
-					'pageid': wgArticleId,
+					'pageid': mw.config.get( 'wgArticleId' ),
 					'token': mw.user.tokens.get('editToken'),
 					'format': 'json',
 					'top': topText,
@@ -370,24 +444,36 @@ $( function() {
 				},
 				dataType: 'json'
 			} );
-
 		},
 
 		/**
 		 * Build the HTML for tag parameter
 		 */
 		buildHTML: function( name, obj, key ) {
-			var html = obj.label + ' ';
+			var html = '';
 
 			switch ( obj.type ) {
+				case 'hidden':
+					html += mw.html.element(
+							'input',
+							{
+								'type': 'hidden',
+								'value': ( obj.value ) ? obj.value : '',
+								'id': 'mwe-pt-tag-params-' + key + '-' + name
+							}
+						);
+					break;
 				case 'textarea':
+					html += obj.label + ' ';
 					html += mw.html.element(
 							'textarea',
 							{ 'id': 'mwe-pt-tag-params-' + key + '-' + name },
 							obj.value
 						);
+					html += "<br/>\n";
 					break;
 				case 'select':
+					html += obj.label + ' ';
 					for ( i in obj.option ) {
 						html += obj.option[i] + ' ' +
 							mw.html.element(
@@ -400,10 +486,12 @@ $( function() {
 								}
 						);
 					}
+					html += "<br/>\n";
 					break;
 
 				case 'text':
 				default:
+					html += obj.label + ' ';
 					html += mw.html.element(
 							'input',
 							{
@@ -412,10 +500,12 @@ $( function() {
 								'id': 'mwe-pt-tag-params-' + key + '-' + name
 							}
 						);
+					html += "<br/>\n";
 					break;
 			}
 
 			return html;
 		}
+
 	} );
 } );

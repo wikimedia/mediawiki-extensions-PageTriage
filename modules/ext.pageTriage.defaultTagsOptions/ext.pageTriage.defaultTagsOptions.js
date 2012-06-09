@@ -9,7 +9,7 @@ var param = {
 	'date': {
 		label: mw.msg( 'pagetriage-tags-param-date-label' ),
 		input: 'automated',
-		type: 'text',
+		type: 'hidden',
 		value: mw.msg(
 				'pagetriage-tags-param-date-format',
 				month[today.getUTCMonth()],
@@ -85,7 +85,7 @@ $.pageTriageTagsOptions = {
 					'date': param.date
 				},
 				position: 'top',
-				dest: 'metadata'
+				dest: 'verifiability'
 			},
 
 			'copyedit': {
@@ -194,16 +194,6 @@ $.pageTriageTagsOptions = {
 				label: mw.msg( 'pagetriage-tags-overlinked-label' ),
 				tag: 'overlinked',
 				desc: mw.msg( 'pagetriage-tags-overlinked-desc' ),
-				params: {
-					'date': param.date
-				},
-				position: 'top'
-			},
-
-			'linkrot': {
-				label: mw.msg( 'pagetriage-tags-linkrot-label' ),
-				tag: 'linkrot',
-				desc: mw.msg( 'pagetriage-tags-linkrot-desc' ),
 				params: {
 					'date': param.date
 				},
@@ -569,10 +559,10 @@ $.pageTriageTagsOptions = {
 				position: 'top'
 			},
 
-			'cleanuplinkrot': {
-				label: mw.msg( 'pagetriage-tags-cleanuplinkrot-label' ),
+			'linkrot': {
+				label: mw.msg( 'pagetriage-tags-linkrot-label' ),
 				tag: 'cleanup-link rot',
-				desc: mw.msg( 'pagetriage-tags-cleanuplinkrot-desc' ),
+				desc: mw.msg( 'pagetriage-tags-linkrot-desc' ),
 				params: {
 					'date': param.date
 				},

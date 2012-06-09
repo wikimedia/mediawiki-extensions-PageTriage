@@ -31,7 +31,7 @@ $( function() {
 
 			// article information
 			tools.push( new mw.pageTriage.ArticleInfoView( { eventBus: eventBus, model: article } ) );
-
+			
 			// and mark as reviewed
 			tools.push( new mw.pageTriage.MarkView( { eventBus: eventBus, model: article } ) );
 
@@ -62,7 +62,8 @@ $( function() {
 			$( '#mwe-pt-toolbar' ).draggable( {
 				containment: 'window',  // keep the curation bar inside the window
 				delay: 200,  // these options prevent unwanted drags when attempting to click buttons
-				distance: 10
+				distance: 10,
+				cancel: '.mwe-pt-tool-content'
 			} );
 			
 			var $activeToolbar = $( '#mwe-pt-toolbar-active' );
