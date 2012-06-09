@@ -59,6 +59,7 @@ $wgPageTriageLearnMoreUrl = 'http://en.wikipedia.org/wiki/Wikipedia:New_Pages_Fe
 $wgPageTriageFeedbackUrl = 'http://en.wikipedia.org/wiki/Wikipedia_talk:New_Pages_Feed';
 $wgPageTriageEnableCurationToolbar = false; // enable the curation toolbar?
 $wgPageTriageToolbarInfoHelpLink = "http://en.wikipedia.org/wiki/Wikipedia:New_pages_patrol#Patroller_checklists"; // help link in toolbar article info view
+$wgPageTriageCacheVersion = '1.0'; // version number to be added to cache key so that cache can be refreshed easily
 // End configuration variables
 
 $dir = dirname( __FILE__ ) . '/';
@@ -121,10 +122,14 @@ $wgHooks['ArticleUndelete'][] = 'PageTriageHooks::onArticleUndelete';
  */
 function efPageTriageSchemaUpdates( $updater = null ) {
 	$base = dirname( __FILE__ ) . "/sql";
+	// tables
 	$updater->addExtensionTable( 'pagetriage_tags', $base . '/PageTriageTags.sql' );
 	$updater->addExtensionTable( 'pagetriage_page_tags', $base . '/PageTriagePageTags.sql' );
 	$updater->addExtensionTable( 'pagetriage_page', $base . '/PageTriagePage.sql' );
 	$updater->addExtensionTable( 'pagetriage_log', $base . '/PageTriageLog.sql' );
+	// patches
+	$updater->addExtensionField( 'pagetriage_page', 'ptrp_reviewed_updated', $base . '/PageTriagePagePatch.sql' );
+	$updater->addExtensionIndex( 'pagetriage_page', 'ptrp_reviewed_updated_page', $base . '/PageTriagePagePatch.sql' );
 	return true;
 }
 

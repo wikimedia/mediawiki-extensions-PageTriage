@@ -59,7 +59,7 @@ class PageTriageUtil {
 			}
 		}
 
-		$key = wfMemcKey( 'pagetriage', 'unreviewed-article-' . $namespace, 'stat' );
+		$key = wfMemcKey( 'pagetriage', 'unreviewed-article-' . $namespace, 'stat', self::getCacheVersion() );
 
 		$data = $wgMemc->get( $key );
 		if ( $data !== false ) {
@@ -129,7 +129,7 @@ class PageTriageUtil {
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
-		$key = wfMemcKey( 'pagetriage', 'top-triager', $time );
+		$key = wfMemcKey( 'pagetriage', 'top-triager', $time, self::getCacheVersion() );
 
 		$topTriager = $wgMemc->get( $key );
 		if ( $topTriager === false ) {
@@ -224,7 +224,7 @@ class PageTriageUtil {
 
 		foreach ( $users as $user ) {
 			$user = (array) $user;
-			$key = wfMemcKey( 'pagetriage', 'user-page-status', $user['user_name']);
+			$key = wfMemcKey( 'pagetriage', 'user-page-status', $user['user_name'], self::getCacheVersion() );
 			$data = $wgMemc->get( $key );
 			if ( $data !== false ) {
 				foreach ( $data as $pageKey => $status ) {
@@ -272,7 +272,7 @@ class PageTriageUtil {
 				} else {
 					$return[$value['t']->getPrefixedDBkey()] = 1;
 				}
-				$memcKey = wfMemcKey( 'pagetriage', 'user-page-status', $value['user_name'] );
+				$memcKey = wfMemcKey( 'pagetriage', 'user-page-status', $value['user_name'], self::getCacheVersion() );
 				$wgMemc->set( $memcKey, $dataToCache[$value['user_name']], 3600 );
 			}
 		}
@@ -328,6 +328,12 @@ class PageTriageUtil {
 		$metadata = new ArticleMetadata( $pageIds );
 		$metadata->updateMetadataInCache( array( 'user_block_status' => $status ) );
 	}
+
+	private function getCacheVersion() {
+		global $wgPageTriageCacheVersion;
+		return $wgPageTriageCacheVersion;
+	}
+
 }
 
 class MWPageTriageUtilInvalidNumberException extends MWException {}

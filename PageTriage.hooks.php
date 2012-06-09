@@ -13,8 +13,6 @@ class PageTriageHooks {
 	 * @return bool
 	 */
 	public static function onSpecialMovepageAfterMove( $movePage, &$oldTitle, &$newTitle ) {
-		global $wgUser;
-
 		$pageId = $newTitle->getArticleID();
 
 		// Delete cache for record if it's in pagetriage queue
@@ -31,9 +29,20 @@ class PageTriageHooks {
 		}
 
 		// New record to pagetriage queue, compile metadata
-		if ( self::addToPageTriageQueue( $pageId, $newTitle, $wgUser, false ) ) {
+		if ( self::addToPageTriageQueue( $pageId, $newTitle ) ) {
 			$acp = ArticleCompileProcessor::newFromPageId( array( $pageId ) );
 			if ( $acp ) {
+				// safe to use slave db for data compilation for the
+				// following components, BasicData is accessing pagetriage_page,
+				// which is not safe to use slave db
+				$config = array(
+						'LinkCount' => 'slave',
+						'CategoryCount' => 'slave',
+						'Snippet' => 'slave',
+						'UserData' => 'slave',
+						'DeletionTag' => 'slave'
+				);
+				$acp->configComponentDb( $config );
 				$acp->compileMetadata();
 			}
 		}
@@ -49,12 +58,12 @@ class PageTriageHooks {
 	 * @param $comment: The comment associated with the undeletion.
 	 */
 	public static function onArticleUndelete( $title, $create, $comment ) {
-		global $wgUser;
-
 		$pageId = $title->getArticleID();
-		if ( $pageId && self::addToPageTriageQueue( $pageId, $title, $wgUser, false ) ) {
+		if ( $pageId && self::addToPageTriageQueue( $pageId, $title ) ) {
 			$acp = ArticleCompileProcessor::newFromPageId( array( $pageId ) );
 			if ( $acp ) {
+				// better to use master db since new page_id is created for
+				// undeleted article, data association may not get to slave db yet
 				$acp->compileMetadata();
 			}
 		}
@@ -82,7 +91,7 @@ class PageTriageHooks {
 	}
 
 	/**
-	 * Insert new page into PageTriage Queue
+	 * When a new article is created, insert it into the PageTriage Queue
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/ArticleInsertComplete
 	 * @param $article WikiPage created
@@ -148,31 +157,40 @@ class PageTriageHooks {
 	}
 
 	/**
-	 * Add page to page triage queue
+	 * Add page to page triage queue, check for autopatrol right if reviewed is not set
 	 * @param $pageId int
 	 * @param $title Title
 	 * @param $user User|null
-	 * @param $patrolled bool - should the page be added to the queue as reviewed or not
+	 * @param $reviewed numeric string See PageTriage::getValidReviewedStatus()
 	 * @return bool
 	 */
-	private static function addToPageTriageQueue( $pageId, $title, $user = null, $patrolled = null ) {
+	private static function addToPageTriageQueue( $pageId, $title, $user = null, $reviewed = null ) {
 		global $wgUser, $wgUseRCPatrol, $wgUseNPPatrol;
 
-		$user = is_null( $user ) ? $wgUser : $user;
-
-		if ( is_null( $patrolled ) ) {
-			$patrolled = ( $wgUseRCPatrol || $wgUseNPPatrol ) && !count(
-					$title->getUserPermissionsErrors( 'autopatrol', $user ) );
-		}
-
 		$pageTriage = new PageTriage( $pageId );
-		// We don't pass $user for logging if the system sets the review/patrol status to '0'
-		if ( $patrolled ) {
-			return $pageTriage->addToPageTriageQueue( '1', $user );
-		} else {
-			return $pageTriage->addToPageTriageQueue( '0' );
-		}
 
+		// action taken by system
+		if ( is_null( $user ) ) {
+			if ( is_null( $reviewed ) ) {
+				$reviewed = '0';
+			}
+			return $pageTriage->addToPageTriageQueue( $reviewed );
+		// action taken by a user
+		} else {
+			// set reviewed if it's not set yet
+			if ( is_null( $reviewed ) ) {
+				// check if this user has autopatrol right
+				if ( ( $wgUseRCPatrol || $wgUseNPPatrol ) &&
+					!count( $title->getUserPermissionsErrors( 'autopatrol', $user ) ) ) {
+					$reviewed = 3;
+				// if the user has no autopatrol right and doesn't really take any action,
+				// this would be set to unreviewed by system.
+				} else {
+					return $pageTriage->addToPageTriageQueue( '0' );
+				}
+			}
+			return $pageTriage->addToPageTriageQueue( $reviewed, $user );
+		}
 	}
 
 	/**
@@ -332,10 +350,20 @@ class PageTriageHooks {
 
 		if ( $rc ) {
 			$pt = new PageTriage( $rc->getAttribute( 'rc_cur_id' ) );
-			if ( $pt->addToPageTriageQueue( '1', $user, $fromRc = true ) ) {
+			if ( $pt->addToPageTriageQueue( '2', $user, $fromRc = true ) ) {
 				// Compile metadata for new page triage record
 				$acp = ArticleCompileProcessor::newFromPageId( array( $rc->getAttribute( 'rc_cur_id' ) ) );
 				if ( $acp ) {
+					// page just gets added to pagetriage queue and hence not safe to use slave db
+					// for BasicData since it's accessing pagetriage_page table
+					$config = array(
+						'LinkCount' => 'slave',
+						'CategoryCount' => 'slave',
+						'Snippet' => 'slave',
+						'UserData' => 'slave',
+						'DeletionTag' => 'slave'
+					);
+					$acp->configComponentDb( $config );
 					$acp->compileMetadata();
 				}
 			}

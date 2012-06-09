@@ -6,7 +6,7 @@
 				<div class="mwe-pt-info-status-icon">
 					<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_marked_for_deletion.png' %>" width="21" height="21" title="<%= gM( "pagetriage-note-deletion" ) %>" />
 				</div>
-		<% } else if ( patrol_status == "1" ) { %>
+		<% } else if ( patrol_status != "0" ) { %>
 				<div class="mwe-pt-info-status-icon">
 					<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_reviewed.png' %>" width="21" height="21" title="<%= gM( "pagetriage-note-reviewed" ) %>" />
 				</div>

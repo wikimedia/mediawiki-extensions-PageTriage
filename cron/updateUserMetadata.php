@@ -15,7 +15,7 @@ class updateUserMetadata extends Maintenance {
 	 * Max number of article to process at a time
 	 * @var int
 	 */
-	protected $batchSize = 500;
+	protected $batchSize = 300;
 
 	/**
 	 * @var DatabaseBase
@@ -85,6 +85,8 @@ class updateUserMetadata extends Maintenance {
 				$acp = ArticleCompileProcessor::newFromPageId( $pageId );
 				if ( $acp ) {
 					$acp->registerComponent( 'UserData' );
+					// safe to use slave db for data compilation
+					$acp->configComponentDb( array( 'UserData' => 'slave' ) );
 					$acp->compileMetadata();
 				}
 
