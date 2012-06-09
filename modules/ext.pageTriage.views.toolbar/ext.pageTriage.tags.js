@@ -238,16 +238,17 @@ $( function() {
 				html += this.buildHTML( param, paramObj, key );
 			}
 
+			html += "<br/>\n";
 			html += mw.html.element(
-						'a',
-						{ 'href':'#', 'id': 'mwe-pt-tag-set-param-' + key },
-						mw.msg( 'pagetriage-button-set-parameters' )
+						'button',
+						{ 'id': 'mwe-pt-tag-set-param-' + key, 'class': 'mwe-pt-tag-set-param-button ui-button-green' },
+						mw.msg( 'pagetriage-button-add-details' )
 					);
 			html += ' ';
 			html += mw.html.element(
-						'a',
-						{ 'href':'#', 'id': 'mwe-pt-tag-cancel-param-' + key },
-						mw.msg( 'pagetriage-button-cancel-parameters' )
+						'button',
+						{ 'id': 'mwe-pt-tag-cancel-param-' + key, 'class': 'ui-button-red' },
+						mw.msg( 'cancel' )
 					);
 
 			html += '<div id="mwe-pt-tags-params-form-error"></div>';
@@ -257,7 +258,7 @@ $( function() {
 			$( '#mwe-pt-tag-params-form-' + key ).show();
 
 			// Add click even for the Set Parameters button
-			$( '#mwe-pt-tag-set-param-' + key ).click(
+			$( '#mwe-pt-tag-set-param-' + key ).button().click(
 				function() {
 					if ( _this.setParams( key, cat ) ) {
 						if ( tag.dest ) {
@@ -270,7 +271,7 @@ $( function() {
 			);
 
 			// Add click even for the Cancel button
-			$( '#mwe-pt-tag-cancel-param-' + key ).click(
+			$( '#mwe-pt-tag-cancel-param-' + key ).button().click(
 				function() {
 					var missingRequiredParam = false, destCat;
 					for ( param in tag.params ) {

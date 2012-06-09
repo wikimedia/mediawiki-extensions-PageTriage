@@ -72,3 +72,6 @@
 	color: #333333;
 	cursor: default;
 }
+#mwe-pt-tag-table .mwe-pt-tag-set-param-button {
+	margin-left: 0 !important;
+}
