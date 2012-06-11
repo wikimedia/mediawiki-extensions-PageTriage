@@ -14,10 +14,34 @@ $specialPageAliases['en'] = array(
 	'PageTriageList' => array( 'PageTriageList' ),
 );
 
-/** Macedonian (Македонски) */
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'PageTriage' => array( 'تجربة-صفحة' ),
+	'PageTriageList' => array( 'قائمة_تجربة_صفحة' ),
+);
+
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'PageTriage' => array( 'Seitenprüfung' ),
+	'PageTriageList' => array( 'Seitenprüfungsliste' ),
+);
+
+/** Zazaki (Zazaki) */
+$specialPageAliases['diq'] = array(
+	'PageTriage' => array( 'PelaAbırnayış' ),
+	'PageTriageList' => array( 'ListeyaPelaAbırnayış' ),
+);
+
+/** Korean (한국어) */
+$specialPageAliases['ko'] = array(
+	'PageTriage' => array( '문서선별' ),
+	'PageTriageList' => array( '문서선별목록' ),
+);
+
+/** Macedonian (македонски) */
 $specialPageAliases['mk'] = array(
-	'PageTriage' => array( 'ТријажаНаСтраници' ),
-	'PageTriageList' => array( 'СписокНаСтранициПодТријажа' ),
+	'PageTriage' => array( 'ПроверкаНаСтраници' ),
+	'PageTriageList' => array( 'СписокНаСтранициВоПроверка' ),
 );
 
 /** Dutch (Nederlands) */
