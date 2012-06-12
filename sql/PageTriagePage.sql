@@ -13,4 +13,4 @@ CREATE INDEX /*i*/ptrp_reviewed_created_page_del ON /*_*/pagetriage_page (ptrp_r
 CREATE INDEX /*i*/ptrp_created_page_del ON /*_*/pagetriage_page (ptrp_created, ptrp_page_id, ptrp_deleted);
 CREATE INDEX /*i*/ptrp_del_created_page_reviewed ON /*_*/pagetriage_page (ptrp_deleted, ptrp_created, ptrp_page_id, ptrp_reviewed);
 CREATE INDEX /*i*/ptrp_updated_page_reviewed ON /*_*/pagetriage_page (ptrp_tags_updated, ptrp_page_id, ptrp_reviewed);
-CREATE INDEX /*i*/ptrp_reviewed_updated_page ON /*_*/pagetriage_page (ptrp_reviewed_updated, ptrp_page_id);
+CREATE INDEX /*i*/ptrp_reviewed_updated ON /*_*/pagetriage_page (ptrp_reviewed_updated);
