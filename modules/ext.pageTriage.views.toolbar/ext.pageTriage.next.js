@@ -52,7 +52,9 @@ $( function() {
 			} );
 
 			if( page.title ) {
-				var url = mw.util.wikiUrlencode( page.title );
+				var url = mw.config.get('wgArticlePath').replace(
+					'$1', mw.util.wikiUrlencode( page.title )
+				);
 				if( page.is_redirect == '1' ) {
 					var mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
 					url += mark + "redirect=no";
