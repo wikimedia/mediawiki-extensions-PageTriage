@@ -128,8 +128,7 @@ function efPageTriageSchemaUpdates( $updater = null ) {
 	$updater->addExtensionTable( 'pagetriage_page', $base . '/PageTriagePage.sql' );
 	$updater->addExtensionTable( 'pagetriage_log', $base . '/PageTriageLog.sql' );
 	// patches
-	$updater->addExtensionField( 'pagetriage_page', 'ptrp_reviewed_updated', $base . '/PageTriagePagePatch.sql' );
-	$updater->addExtensionIndex( 'pagetriage_page', 'ptrp_reviewed_updated_page', $base . '/PageTriagePagePatch.sql' );
+	$updater->addExtensionIndex( 'pagetriage_page', 'ptrp_reviewed_updated', $base . '/PageTriagePagePatch.sql' );
 	return true;
 }
 
