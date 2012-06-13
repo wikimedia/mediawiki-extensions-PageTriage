@@ -425,7 +425,6 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'pagetriage-showing',
 		'pagetriage-filter-list-prompt',
 		'pagetriage-article-count',
-		'pagetriage-viewing',
 		'pagetriage-sort-by',
 		'pagetriage-newest',
 		'pagetriage-oldest',
