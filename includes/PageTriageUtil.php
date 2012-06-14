@@ -138,7 +138,7 @@ class PageTriageUtil {
 				array( 'user_name', 'user_id', 'COUNT(ptrl_id) AS num' ),
 				array(
 					'user_id = ptrl_user_id',
-					"user_name != 'ClueBot NG'", // Once bug 36837 is fixed, remove this
+					'ptrl_reviewed' => 1, // only reviewed status
 					'ptrl_timestamp > ' . $dbr->addQuotes( $dbr->timestamp( $timeFrame[$time]['ts'] ) )
 				),
 				__METHOD__,
