@@ -52,8 +52,8 @@
 				&#xb7;
 				<a href="<%= user_contribs_title.getUrl() %>">contribs</a>)
 			</span>
-			<!-- editcount is undefined for IP users -->
-			<% if( typeof ( user_editcount ) != 'undefined' ) { %>
+			<!-- user_id is undefined or '0' for IP users -->
+			<% if( typeof ( user_id ) != 'undefined' && Number( user_id ) !== 0 ) { %>
 				&#xb7;
 				<%= gM( 'pagetriage-editcount', user_editcount, user_creation_date_pretty ) %>
 				<% if( user_bot == "1" ) { %>

@@ -777,6 +777,7 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 		);
 
 		foreach ( $res as $row ) {
+			// User exists
 			if ( $row->user_id ) {
 				$user = User::newFromRow( $row );
 				$this->metadata[$row->page_id]['user_id'] = $user->getId();
@@ -786,9 +787,12 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 				$this->metadata[$row->page_id]['user_autoconfirmed'] = $user->isAllowed( 'autoconfirmed' ) ? '1' : '0';
 				$this->metadata[$row->page_id]['user_bot'] = $user->isAllowed( 'bot' ) ? '1' : '0';
 				$this->metadata[$row->page_id]['user_block_status'] = $row->ipb_id ? '1' : '0';
+			// User doesn't exist, etc IP
 			} else {
 				$this->metadata[$row->page_id]['user_id'] = 0;
 				$this->metadata[$row->page_id]['user_name'] = $row->rev_user_text;
+				$this->metadata[$row->page_id]['user_editcount'] = 0;
+				$this->metadata[$row->page_id]['user_creation_date'] = '';
 				$this->metadata[$row->page_id]['user_autoconfirmed'] = '0';
 				$this->metadata[$row->page_id]['user_bot'] = '0';
 				$this->metadata[$row->page_id]['user_block_status'] = $row->ipb_id ? '1' : '0';
