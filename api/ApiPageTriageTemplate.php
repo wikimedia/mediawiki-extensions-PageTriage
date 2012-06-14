@@ -26,7 +26,7 @@ class ApiPageTriageTemplate extends ApiBase {
 
 		$templates = explode( '|', $opts['template'] );
 
-		$contents = '';
+		$contents = array();
 
 		foreach ( array_unique( $templates ) as $template ) {
 			// validate
@@ -43,7 +43,7 @@ class ApiPageTriageTemplate extends ApiBase {
 				$this->getResult()->addValue( null, $this->getModuleName(), $result );
 				return;
 			}
-			$contents .= file_get_contents( $localPath );
+			$contents[$template]= file_get_contents( $localPath );
 		}
 
 		// Output the results

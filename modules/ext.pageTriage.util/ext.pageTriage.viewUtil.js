@@ -3,22 +3,47 @@ $( function() {
 		mw.pageTriage = {};
 	}
 	mw.pageTriage.viewUtil = {
+		// define templates which should be cached in here, the key is the template view:
+		// list, toolbar etc
+		cache: { 'toolbar': {
+					'articleInfo.html': '',
+					'articleInfoHistory.html': '',
+					'delete.html': '',
+					'mark.html': '',
+					'tags.html': '',
+					'toolView.html': '',
+					'toolbarView.html': ''
+				}
+			},
 		// fetch and compile a template, then return it.
 		// args: view, template
 		template: function( arg ) {
+			var _this = this;
+
 			apiRequest = {
 				'action': 'pagetriagetemplate',
 				'view': arg.view,
-				'format': 'json'
+				'format': 'json',
+				'template': ''
 			};
 
-			var templateText;
-
-			if( arg.template instanceof Array ) {
-				apiRequest.template = arg.template.join('|');
+			if ( this.cache[arg.view] && this.cache[arg.view][arg.template] !== undefined ) {
+				if ( this.cache[arg.view][arg.template] ) {
+					return _.template( this.cache[arg.view][arg.template] );
+				} else {
+					for ( var template in this.cache[arg.view]) {
+						if ( apiRequest.template ) {
+							apiRequest.template += '|' + template;
+						} else {
+							apiRequest.template = template;
+						}
+					}
+				}
 			} else {
 				apiRequest.template = arg.template;
 			}
+
+			var templateText;
 
 			$.ajax( {
 				type: 'post',
@@ -28,7 +53,12 @@ $( function() {
 				async: false,
 				success: function( result ) {
 					if ( result.pagetriagetemplate !== undefined && result.pagetriagetemplate.result === 'success' ) {
-						templateText = result.pagetriagetemplate.template;
+						if ( _this.cache[arg.view] && _this.cache[arg.view][arg.template] !== undefined ) {
+							for ( var i in result.pagetriagetemplate.template ) {
+								_this.cache[arg.view][i] = result.pagetriagetemplate.template[i];
+							}
+						}
+						templateText = result.pagetriagetemplate.template[arg.template];
 					}
 				},
 				error: function( xhr ) {
