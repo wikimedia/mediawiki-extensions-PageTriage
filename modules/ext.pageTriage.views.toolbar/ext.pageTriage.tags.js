@@ -53,6 +53,7 @@ $( function() {
 				.click(
 					function () {
 						_this.submit();
+						return false;
 					}
 				).end();
 
@@ -65,9 +66,9 @@ $( function() {
 		 */
 		displayTags: function( cat ) {
 			var _this = this, tagSet = this.tagsOptions[cat].tags, tagRow = '';
-			
+
 			$( '#mwe-pt-tags' ).empty();
-			
+
 			var $tagList = $( '<div id="mwe-pt-tag-list"></div>' );
 			
 			// highlight the active category
@@ -86,7 +87,7 @@ $( function() {
 			$( '#mwe-pt-tags' ).append( $tagList );
 			
 			for ( var key in tagSet ) {
-				
+
 				var checked = false;
 				/*
 				if ( tagSet[key].dest ) {
@@ -99,7 +100,7 @@ $( function() {
 				if ( this.selectedTag[cat][key] ) {
 					checked = true;
 				}
-				
+
 				// build the checkbox
 				var checkbox = mw.html.element(
 							'input',
@@ -121,7 +122,7 @@ $( function() {
 					'<div id="mwe-pt-tag-params-form-' + key + '" class="mwe-pt-tag-params-form">' +
 					'</div></td>';
 				tagRow += '</tr></table></div>';
-				
+
 				$tagList.append( tagRow );
 
 				// insert the add/edit parameter link if the checkbox has been checked
@@ -216,12 +217,12 @@ $( function() {
 			var allParamsHidden = true;
 			var text = 'add';
 			var tag = this.selectedTag[cat][key];
-			
+
 			// no params, don't show the link
 			if ( !Object.keys( tag.params ).length ) {
 				return;
 			}
-			
+
 			// check if there is non-hidden param
 			for ( param in tag.params ) {
 				if ( tag.params[param].type !== 'hidden' ) {
@@ -264,7 +265,7 @@ $( function() {
 			var _this = this, html = '', tag = this.selectedTag[cat][key];
 
 			this.hideParamsLink( key );
-			
+
 			for ( param in tag.params ) {
 				var paramObj = tag.params[param];
 				html += this.buildHTML( param, paramObj, key );
@@ -286,7 +287,7 @@ $( function() {
 			// Insert the form content into the flyout
 			$( '#mwe-pt-tag-params-form-' + key ).html( html );
 			$( '#mwe-pt-tag-params-form-' + key ).show();
-			
+
 			$( '.mwe-pt-tag-row' ).not( '#mwe-pt-tag-row-' + key ).hide( 'squish', {}, 800 );
 
 			// Add click even for the Set Parameters button
@@ -395,7 +396,7 @@ $( function() {
 			if ( topText == '' && bottomText == '') {
 				return;
 			}
-			
+
 			// If review checkbox is checked, mark as reviewed, then submit tags
 			if ( $( '#mwe-pt-checkbox-mark-reviewed' ).is( ':checked' ) ) {
 				apiRequest = {
@@ -422,7 +423,7 @@ $( function() {
 				this.applyTags( topText, bottomText );
 			}
 		},
-		
+
 		applyTags: function( topText, bottomText ) {
 			var _this = this;
 			$.ajax( {
