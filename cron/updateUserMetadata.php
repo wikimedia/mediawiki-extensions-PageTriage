@@ -32,6 +32,8 @@ class updateUserMetadata extends Maintenance {
 	}
 
 	public function execute() {
+		global $wgPageTriageNamespaces;
+
 		$this->init();
 		$this->output( "Started processing... \n" );
 
@@ -53,17 +55,25 @@ class updateUserMetadata extends Maintenance {
 
 		$startId = $row->max_id + 1;
 
+		if ( count( $wgPageTriageNamespaces ) > 0 ) {
+			$namespace = $wgPageTriageNamespaces;
+		} else {
+			$namespace = NS_MAIN;
+		}
+
 		while ( $count === $this->batchSize ) {
 			$count = 0;
 			$startTime = $this->dbr->addQuotes( $this->dbr->timestamp( $startTime ) );
 			$startId = intval( $startId );
 
 			$res = $this->dbr->select(
-				array( 'pagetriage_page' ),
+				array( 'pagetriage_page', 'page' ),
 				array( 'ptrp_page_id', 'ptrp_tags_updated' ),
 				array(
 					'(ptrp_tags_updated < ' . $startTime . ') OR
-					(ptrp_tags_updated = ' . $startTime . ' AND ptrp_page_id < ' . $startId . ')'
+					(ptrp_tags_updated = ' . $startTime . ' AND ptrp_page_id < ' . $startId . ')',
+					'page_id = ptrp_page_id',
+					'page_namespace' => $namespace
 				),
 				__METHOD__,
 				array( 'LIMIT' => $this->batchSize, 'ORDER BY' => 'ptrp_tags_updated DESC, ptrp_page_id DESC' )

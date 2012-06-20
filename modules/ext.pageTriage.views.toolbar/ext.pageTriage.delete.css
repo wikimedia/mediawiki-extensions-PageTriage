@@ -1,0 +1,104 @@
+#mwe-pt-deletion-wizard .mwe-pt-tool-content {
+	background-color: #F3F3F3;
+	padding: 0;
+}
+
+#mwe-pt-deletion-wizard .mwe-pt-tool-flyout {
+	top: -190px;
+}
+
+#mwe-pt-delete-categories {
+	padding: 7px 0px 7px 7px;
+	width: 93px;
+}
+
+.mwe-pt-delete-category {
+	padding: 5px 5px;
+	margin-bottom: 1px;
+	-moz-border-radius-topleft: 3px;
+	-webkit-border-top-left-radius: 3px;
+	border-top-left-radius: 3px;
+	-moz-border-radius-bottomleft: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	position: relative;
+}
+
+.mwe-pt-delete-category.mwe-pt-active {
+	color: white !important;
+	background: #3365ba !important;
+}
+
+.mwe-pt-delete-category.mwe-pt-active a {
+	color: white !important;
+}
+
+#mwe-pt-delete-bottom {
+	border-top: 1px solid #9F9F9F;
+	/* background-color: white; */
+	padding: 10px 10px 10px 138px;
+	clear: both;
+}
+
+#mwe-pt-delete {
+	float: right;
+	width: 382px;
+	height: 265px;
+	overflow: auto;
+	padding: 8px;
+	border-left: 1px solid #9F9F9F;
+	background-color: white;
+}
+
+.mwe-pt-category-pokey {
+	/* @embed */
+	background-image: url('images/baby_pokey.png');
+	background-repeat: no-repeat;
+	width: 6px;
+	height: 10px;
+	position: absolute;
+	z-index: 50;
+	top: 6px;
+	right: 0px;
+	display: none;
+}
+
+#mwe-pt-delete-list {
+	font-size: 0.94em;
+	line-height: 1.2em;
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 375px;
+}
+#mwe-pt-delete-list td {
+	vertical-align: top;
+	padding: 5px 4px;
+}
+#mwe-pt-delete-list td.mwe-delete-checkbox-cell {
+	padding-right: 1px;
+}
+#mwe-pt-delete-list .mwe-pt-delete-checkbox {
+	margin: 0;
+}
+#mwe-pt-delete-list .mwe-pt-delete-label {
+	cursor: pointer;
+	font-weight: bold;
+	/* width: 115px; */
+}
+#mwe-pt-delete-list .mwe-pt-delete-desc {
+	color: #666666;
+	cursor: default;
+	padding: 0;
+	font-size: 0.92em;
+}
+#mwe-pt-delete-list .mwe-pt-delete-params-link {
+	font-size: 0.92em;
+}
+#mwe-pt-delete-list .mwe-pt-delete-params-form {
+	display: none;
+	margin-top: 0.2em;
+}
+#mwe-pt-delete-list .mwe-pt-delete-set-param-button {
+	margin-left: 0 !important;
+	background-color: white;
+}

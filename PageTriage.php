@@ -67,8 +67,9 @@ $wgPageTriageCurationModules = array(
 );
 $wgPageTriageToolbarInfoHelpLink = "http://en.wikipedia.org/wiki/Wikipedia:New_pages_patrol#Patroller_checklists"; // help link in toolbar article info view
 $wgPageTriageCacheVersion = '1.0'; // version number to be added to cache key so that cache can be refreshed easily
-$wgPageTriageNamespaces = array( 0, 2 );
+$wgPageTriageNamespaces = array( NS_MAIN, NS_USER  ); // only include these namespaces for pagetriage
 // End configuration variables
+
 
 $dir = dirname( __FILE__ ) . '/';
 
@@ -91,6 +92,7 @@ $wgAutoloadClasses['ArticleCompileSnippet'] = $dir . 'includes/ArticleMetadata.p
 $wgAutoloadClasses['ArticleCompileUserData'] = $dir . 'includes/ArticleMetadata.php';
 $wgAutoloadClasses['ArticleCompileDeletionTag'] = $dir . 'includes/ArticleMetadata.php';
 $wgAutoloadClasses['PageTriageExternalTagsOptions'] = $dir . 'includes/PageTriageExternalTagsOptions.php';
+$wgAutoloadClasses['PageTriageExternalDeletionTagsOptions'] = $dir . 'includes/PageTriageExternalDeletionTagsOptions.php';
 
 $wgAutoloadClasses['ApiPageTriageList'] = $dir . 'api/ApiPageTriageList.php';
 $wgAutoloadClasses['ApiPageTriageStats'] = $dir . 'api/ApiPageTriageStats.php';
@@ -316,6 +318,51 @@ $wgPageTriageTagsOptionsMessages = array (
 	'pagetriage-tags-param-date-format'
 );
 
+// Deletion Tags options message
+$wgPageTriageDeletionTagsOptionsMessages = array (
+	'pagetriage-del-tags-cat-csd-label',
+	'pagetriage-del-tags-cat-prod-label',
+	'pagetriage-del-tags-dbg3-label',
+	'pagetriage-del-tags-dbg3-desc',
+	'pagetriage-del-tags-dbg10-label',
+	'pagetriage-del-tags-dbg10-desc',
+	'pagetriage-del-tags-dbg11-label',
+	'pagetriage-del-tags-dbg11-desc',
+	'pagetriage-del-tags-dbg12-label',
+	'pagetriage-del-tags-dbg12-desc',
+	'pagetriage-del-tags-dba1-label',
+	'pagetriage-del-tags-dba1-desc',
+	'pagetriage-del-tags-dba7-label',
+	'pagetriage-del-tags-dba7-desc',
+	'pagetriage-del-tags-dbg1-label',
+	'pagetriage-del-tags-dbg1-desc',
+	'pagetriage-del-tags-dba3-label',
+	'pagetriage-del-tags-dba3-desc',
+	'pagetriage-del-tags-dbg2-label',
+	'pagetriage-del-tags-dbg2-desc',
+	'pagetriage-del-tags-dbg4-label',
+	'pagetriage-del-tags-dbg4-desc',
+	'pagetriage-del-tags-dbg5-label',
+	'pagetriage-del-tags-dbg5-desc',
+	'pagetriage-del-tags-dba10-label',
+	'pagetriage-del-tags-dba10-desc',
+	'pagetriage-del-tags-dba2-label',
+	'pagetriage-del-tags-dba2-desc',
+	'pagetriage-del-tags-dbu2-label',
+	'pagetriage-del-tags-dbu2-desc',
+	'pagetriage-del-tags-dbu3-label',
+	'pagetriage-del-tags-dbu3-desc',
+	'pagetriage-del-tags-dba9-label',
+	'pagetriage-del-tags-dba9-desc',
+	'pagetriage-del-tags-blpprod-label',
+	'pagetriage-del-tags-blpprod-desc',
+	'pagetriage-del-tags-prod-label',
+	'pagetriage-del-tags-prod-desc',
+	'pagetriage-del-tags-articlefordeletion-label',
+	'pagetriage-del-tags-redirectsfordiscussion-label',
+	'pagetriage-del-tags-miscellanyfordeletion-label'
+);
+
 $wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + array(
 	'scripts' => array(
 		'external/underscore.js',
@@ -492,6 +539,7 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'jquery.ui.draggable',
 		'jquery.spinner',
 		'ext.pageTriage.externalTagsOptions',
+		'ext.pageTriage.externalDeletionTagsOptions'
 	),
 	'scripts' => array(
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.js', // abstract class first
@@ -513,6 +561,7 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'ext.pageTriage.views.toolbar/ext.pageTriage.mark.css',
 		'ext.pageTriage.views.toolbar/ext.pageTriage.tags.css',
 		'ext.pageTriage.views.toolbar/ext.pageTriage.wikilove.css',
+		'ext.pageTriage.views.toolbar/ext.pageTriage.delete.css'
 	),
 	'messages' => array(
 		'pagetriage-creation-dateformat',
@@ -567,6 +616,15 @@ $wgResourceModules['ext.pageTriage.defaultTagsOptions'] = $ptResourceTemplate + 
 
 $wgResourceModules['ext.pageTriage.externalTagsOptions'] = $ptResourceTemplate + array(
 	'class' => 'PageTriageExternalTagsOptions',
+);
+
+$wgResourceModules['ext.pageTriage.defaultDeletionTagsOptions'] = $ptResourceTemplate + array(
+	'scripts' => 'ext.pageTriage.defaultDeletionTagsOptions/ext.pageTriage.defaultDeletionTagsOptions.js',
+	'messages' => $wgPageTriageDeletionTagsOptionsMessages,
+);
+
+$wgResourceModules['ext.pageTriage.externalDeletionTagsOptions'] = $ptResourceTemplate + array(
+	'class' => 'PageTriageExternalDeletionTagsOptions',
 );
 
 $wgResourceModules['ext.pageTriage.toolbarStartup'] = $ptResourceTemplate + array(

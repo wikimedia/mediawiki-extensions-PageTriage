@@ -25,7 +25,7 @@ $( function() {
 			tools = new Array;
 
 			var modules = mw.config.get( 'wgPageTriageCurationModules' );
-			
+
 			// article information
 			if ( $.inArray( 'ArticleInfo', modules ) !== -1 ) {
 				tools.push( new mw.pageTriage.ArticleInfoView( { eventBus: eventBus, model: article } ) );
@@ -48,7 +48,7 @@ $( function() {
 
 			// delete
 			if ( $.inArray( 'Delete', modules ) !== -1 ) {
-				tools.push( new mw.pageTriage.DeleteView( { eventBus: eventBus } ) );
+				tools.push( new mw.pageTriage.DeleteView( { eventBus: eventBus, model: article } ) );
 			}
 
 			// next article

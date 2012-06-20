@@ -93,6 +93,11 @@ class ApiPageTriageList extends ApiBase {
 		// Show by namespace
 		if ( isset( $opts['namespace'] ) ) {
 			$conds['page_namespace'] = $opts['namespace'];
+		} else {
+			global $wgPageTriageNamespaces;
+			if ( count( $wgPageTriageNamespaces ) > 0 ) {
+				$conds['page_namespace'] = $wgPageTriageNamespaces;
+			}
 		}
 
 		// Database setup

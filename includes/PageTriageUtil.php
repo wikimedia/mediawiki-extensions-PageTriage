@@ -48,14 +48,21 @@ class PageTriageUtil {
 	 *         depends on the time the triage queue should look back for listview
 	 */
 	public static function getUnreviewedArticleStat( $namespace = '' ) {
-		global $wgMemc, $wgContLang;
+		global $wgMemc, $wgContLang, $wgPageTriageNamespaces;
 
-		$formattedNamespaces = $wgContLang->getFormattedNamespaces();
-
+		$conds = array( 'ptrp_reviewed' => 0, 'page_id = ptrp_page_id' );
 		if ( $namespace !== '' ) {
 			$namespace = intval( $namespace );
-			if ( !isset( $formattedNamespaces[$namespace] ) ) {
-				$namespace = 0;
+			if ( !in_array( $namespace, $wgPageTriageNamespaces ) ) {
+				$namespace = NS_MAIN;
+			}
+			$conds['page_namespace'] = $namespace;
+		} else {
+			// safety check to prevent SQL error
+			if ( count( $wgPageTriageNamespaces ) > 0 ) {
+				$conds['page_namespace'] = $wgPageTriageNamespaces;
+			} else {
+				$conds['page_namespace'] = NS_MAIN;
 			}
 		}
 
@@ -68,14 +75,7 @@ class PageTriageUtil {
 
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$table = array( 'pagetriage_page' );
-		$conds = array( 'ptrp_reviewed' => 0 );
-
-		if ( $namespace !== '' ) {
-			$table[] = 'page';
-			$conds[] = 'page_id = ptrp_page_id';
-			$conds[] = 'page_namespace = ' . $namespace;
-		}
+		$table = array( 'pagetriage_page', 'page' );
 
 		$res = $dbr->selectRow(
 			$table,
@@ -162,6 +162,7 @@ class PageTriageUtil {
 	 * @return int|bool
 	 */
 	private static function estimateArticleAgePercentile( $percentile, $count, $namespace = '' ) {
+		global $wgPageTriageNamespaces;
 
 		if ( !is_int( $percentile ) || $percentile < 1 || $percentile > 100) {
 			throw new MWPageTriageUtilInvalidNumberException( 'Invalid percentage number' );
@@ -187,13 +188,18 @@ class PageTriageUtil {
 
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$table = array( 'pagetriage_page' );
-		$conds = array( 'ptrp_reviewed' => 0 );
+		$table = array( 'pagetriage_page', 'page' );
+		$conds = array( 'ptrp_reviewed' => 0, 'page_id = ptrp_page_id' );
 
 		if ( $namespace !== '' ) {
-			$table[] = 'page';
-			$conds[] = 'page_id = ptrp_page_id';
-			$conds[] = 'page_namespace = ' . intval( $namespace );
+			$conds['page_namespace'] = intval( $namespace );
+		} else {
+			// safety check to prevent SQL error
+			if ( count( $wgPageTriageNamespaces ) > 0 ) {
+				$conds['page_namespace'] = $wgPageTriageNamespaces;
+			} else {
+				$conds['page_namespace'] = NS_MAIN;
+			}
 		}
 
 		$res = $dbr->selectRow(

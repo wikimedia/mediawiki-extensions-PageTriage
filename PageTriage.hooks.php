@@ -66,6 +66,11 @@ class PageTriageHooks {
 	 * @return bool
 	 */
 	public static function onNewRevisionFromEditComplete( $article, $rev, $baseID, $user ) {
+		global $wgPageTriageNamespaces;
+		if ( !in_array( $article->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
+			return true;
+		}
+
 		$prev = $rev->getPrevious();
 		if ( $prev && !$article->isRedirect() && $article->isRedirect( $prev->getRawText() ) ) {
 			self::addToPageTriageQueue( $article->getId(), $article->getTitle(), $user );
@@ -89,6 +94,11 @@ class PageTriageHooks {
 	 * @return bool
 	 */
 	public static function onArticleInsertComplete( $article, $user, $text, $summary, $isMinor, $isWatch, $section, $flags, $revision ) {
+		global $wgPageTriageNamespaces;
+		if ( !in_array( $article->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
+			return true;
+		}
+
 		self::addToPageTriageQueue( $article->getId(), $article->getTitle(), $user );
 
 		return true;
@@ -112,7 +122,14 @@ class PageTriageHooks {
 	 * @return bool
 	 */
 	public static function onArticleSaveComplete( $article, $user, $text, $summary, $minoredit, $watchthis, $sectionanchor, $flags, $revision, $status, $baseRevId ) {
+		global $wgPageTriageNamespaces;
+
 		self::flushUserStatusCache( $article->getTitle() );
+
+		if ( !in_array( $article->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
+			return true;
+		}
+
 		$acp = ArticleCompileProcessor::newFromPageId( array( $article->getId() ) );
 		if ( $acp ) {
 			// Register the article object so we can get the content and other useful information
@@ -134,7 +151,14 @@ class PageTriageHooks {
 	 * @param $id int id of the article that was deleted
 	 */
 	public static function onArticleDeleteComplete( $article, $user, $reason, $id ) {
+		global $wgPageTriageNamespaces;
+
 		self::flushUserStatusCache( $article->getTitle() );
+
+		if ( !in_array( $article->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
+			return true;
+		}
+
 		// delete everything
 		$pageTriage = new PageTriage( $id );
 		$pageTriage->deleteFromPageTriage();
@@ -264,7 +288,7 @@ class PageTriageHooks {
 	 */
 	public static function onArticleViewFooter( $article ) {
 		global $wgUser, $wgPageTriageMarkPatrolledLinkExpiry, $wgOut, 
-			$wgPageTriageEnableCurationToolbar, $wgRequest;
+			$wgPageTriageEnableCurationToolbar, $wgRequest, $wgPageTriageNamespaces;
 
 		// Overwrite the noindex rule defined in Article::view(), this also affects main namespace
 		//if ( self::shouldShowNoIndex( $article ) ) {
@@ -283,9 +307,8 @@ class PageTriageHooks {
 			return true;
 		}
 
-		// Only show in article and user namespaces
-		$namespace = $article->getTitle()->getNamespace();
-		if ( $namespace !== NS_MAIN && $namespace !== NS_USER ) {
+		// Only show in defined namespaces
+		if ( !in_array( $article->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
 			return true;
 		}
 
@@ -347,6 +370,11 @@ class PageTriageHooks {
 		$rc = RecentChange::newFromId( $rcid );
 
 		if ( $rc ) {
+			global $wgPageTriageNamespaces;
+			if ( !in_array( $rc->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
+				return true;
+			}
+
 			$pt = new PageTriage( $rc->getAttribute( 'rc_cur_id' ) );
 			if ( $pt->addToPageTriageQueue( '2', $user, $fromRc = true ) ) {
 				// Compile metadata for new page triage record
@@ -388,11 +416,12 @@ class PageTriageHooks {
 	 *
 	 * @param &$vars: variables to be added to the output of the startup module
 	 * @return bool
-	 */	
+	 */
 	public static function onResourceLoaderGetConfigVars( &$vars ) {
-		global $wgPageTriageToolbarInfoHelpLink, $wgPageTriageCurationModules;
+		global $wgPageTriageToolbarInfoHelpLink, $wgPageTriageCurationModules, $wgPageTriageNamespaces;
 		$vars['wgPageTriageToolbarInfoHelpLink'] = $wgPageTriageToolbarInfoHelpLink;
 		$vars['wgPageTriageCurationModules'] = $wgPageTriageCurationModules;
+		$vars['wgPageTriageNamespaces'] = $wgPageTriageNamespaces;
 		return true;
 	}
 }

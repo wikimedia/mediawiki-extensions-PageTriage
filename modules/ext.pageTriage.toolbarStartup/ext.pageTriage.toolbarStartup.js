@@ -1,9 +1,11 @@
 jQuery( function( $ ) {
-	// If we're not in article namespace, exit
-	if ( mw.config.get( 'wgNamespaceNumber' ) !== 0 ) {
+	// only show curation toolbar for enabled namespaces
+	if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ),
+		mw.config.get( 'wgPageTriageNamespaces' ) ) === -1 )
+	{
 		return true;
 	}
-
+	
 	// Load the curation toolbar
 	mw.loader.load( 'ext.pageTriage.views.toolbar' );
 	

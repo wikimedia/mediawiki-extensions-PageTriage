@@ -128,14 +128,16 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 											<%
 												var wgFormattedNamespaces = mw.config.get( 'wgFormattedNamespaces' );
 												var wgPageTriageNamespaces = mw.config.get( 'wgPageTriageNamespaces' );
-												var nsOptions = '';
+												var nsOptions = '', namespaceNumber;
 												for ( var key in wgFormattedNamespaces ) {
-													if ( $.inArray( Number(key), wgPageTriageNamespaces ) > -1 ) {
-														if ( wgFormattedNamespaces[key] == '' ) {
-															nsOptions += String('<option value="' + String(key) + '">' + gM( 'blanknamespace' ) + '</option>');
-														} else if( key > 0 ) {
-															nsOptions += String('<option value="' + String(key) + '">' + wgFormattedNamespaces[key] + '</option>');
-														}
+													namespaceNumber = wgPageTriageNamespaces[key];
+													if ( typeof wgFormattedNamespaces[namespaceNumber] === 'undefined' ) {
+														continue;
+													}
+													if ( wgFormattedNamespaces[namespaceNumber] === '' ) {
+														nsOptions += String('<option value="' + String(namespaceNumber) + '">' + gM( 'blanknamespace' ) + '</option>');
+													} else {
+														nsOptions += String('<option value="' + String(namespaceNumber) + '">' + wgFormattedNamespaces[namespaceNumber] + '</option>');
 													}
 												}
 												print(nsOptions);
