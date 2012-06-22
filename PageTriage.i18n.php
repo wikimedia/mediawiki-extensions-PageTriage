@@ -1103,6 +1103,7 @@ $messages['es'] = array(
 );
 
 /** French (français)
+ * @author Crochet.david
  * @author DavidL
  * @author Gomoko
  * @author Sherbrooke
@@ -1181,6 +1182,8 @@ $messages['fr'] = array(
 	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|balise sélectionnée|balises sélectionnées}}',
 	'pagetriage-button-add-tag' => 'Ajouter les balises sélectionnées',
 	'pagetriage-button-add-parameters' => 'Ajouter les paramètres',
+	'pagetriage-button-add-details' => 'Ajouter des détails',
+	'pagetriage-button-edit-details' => 'Modifier les détails',
 	'pagetriage-tags-cat-common-label' => 'Commun',
 	'pagetriage-tags-cat-metadata-label' => 'Métadonnées',
 	'pagetriage-tags-cat-cleanup-label' => 'Nettoyage',
@@ -1271,8 +1274,6 @@ $messages['fr'] = array(
 	'pagetriage-tags-notability-desc' => 'Le sujet de cette page peut manquer de notoriété.',
 	'pagetriage-tags-disputed-label' => 'Problème de précision',
 	'pagetriage-tags-disputed-desc' => 'Cette page peut contenir des informations factuelles imprécises.',
-	'pagetriage-tags-cleanuplinkrot-label' => 'URL fautif',
-	'pagetriage-tags-cleanuplinkrot-desc' => "Comme références, cette page comprend des URL sommaires, qui sont sujets à l'obsolescence.",
 	'pagetriage-tags-citationstyle-label' => 'Style des citations',
 	'pagetriage-tags-citationstyle-desc' => 'Cette page comprend des citations imprécises ou incohérentes.',
 	'pagetriage-tags-hoax-label' => 'Canular',
@@ -1285,8 +1286,8 @@ $messages['fr'] = array(
 	'pagetriage-tags-essaylike-desc' => 'Cette page est écrite comme un essai et a besoin de toilettage.',
 	'pagetriage-tags-fansite-label' => 'Site de fan',
 	'pagetriage-tags-fansite-desc' => "Cette page ressemble à la page d'un site de fans.",
-	'pagetriage-tags-notenglish-label' => 'Pas en français',
-	'pagetriage-tags-notenglish-desc' => "Cete page n'est pas rédigée en français et doit être traduite.",
+	'pagetriage-tags-notenglish-label' => 'Langue incorrect',
+	'pagetriage-tags-notenglish-desc' => 'Cette page est écrite dans une langue incorrecte et a besoin de traduction.',
 	'pagetriage-tags-technical-label' => 'Technique',
 	'pagetriage-tags-technical-desc' => 'Cette page peut être trop technique pour le lecteur non initié.',
 	'pagetriage-tags-tense-label' => 'Temps de verbe',
