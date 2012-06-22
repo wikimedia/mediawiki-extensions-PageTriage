@@ -269,9 +269,9 @@ class PageTriageHooks {
 			$wgPageTriageEnableCurationToolbar, $wgRequest;
 
 		// Overwrite the noindex rule defined in Article::view(), this also affects main namespace
-		if ( self::shouldShowNoIndex( $article ) ) {
-			$wgOut->setRobotPolicy( 'noindex,nofollow' );
-		}
+		//if ( self::shouldShowNoIndex( $article ) ) {
+		//	$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		//}
 
 		// the presence of rcid means this is coming from Special:NewPages,
 		// and hence don't make any interference, this also applies to
