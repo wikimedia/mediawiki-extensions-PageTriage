@@ -530,6 +530,9 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-toolbar-collapsed',
 		'pagetriage-mark-helptext',
 		'pagetriage-markpatrolled',
+		'pagetriage-note-reviewed',
+		'pagetriage-note-not-reviewed',
+		'pagetriage-note-deletion',
 	)
 );
 
