@@ -939,15 +939,25 @@ $messages['es'] = array(
 	'pagetriage-button-add-details' => 'Añadir detalles',
 	'pagetriage-button-edit-details' => 'Editar detalles',
 	'pagetriage-tags-cat-common-label' => 'Común',
+	'pagetriage-tags-cat-common-desc' => 'Estas son las etiquetas más usadas:',
 	'pagetriage-tags-cat-metadata-label' => 'Metadatos',
+	'pagetriage-tags-cat-metadata-desc' => 'Estas son las etiquetas relacionadas con enlaces y categorías:',
 	'pagetriage-tags-cat-cleanup-label' => 'Limpieza',
+	'pagetriage-tags-cat-cleanup-desc' => 'Estas son las etiquetas relacionadas con la limpieza de páginas:',
 	'pagetriage-tags-cat-neutrality-label' => 'Neutralidad',
+	'pagetriage-tags-cat-neutrality-desc' => 'Estas son las etiquetas relacionadas con problemas de neutralidad:',
 	'pagetriage-tags-cat-sources-label' => 'Fuentes',
+	'pagetriage-tags-cat-sources-desc' => 'Estas son las etiquetas relacionadas con las fuentes y las citas de las páginas:',
 	'pagetriage-tags-cat-structure-label' => 'Estructura',
+	'pagetriage-tags-cat-structure-desc' => 'Estas son las etiquetas relacionadas con la estructura de la página:',
 	'pagetriage-tags-cat-unwantedcontent-label' => 'Contenido no deseado',
+	'pagetriage-tags-cat-unwantedcontent-desc' => 'Estas son las etiquetas para el contenido que no debería estar en este wiki:',
 	'pagetriage-tags-cat-verifiability-label' => 'Verificabilidad',
+	'pagetriage-tags-cat-verifiability-desc' => 'Estas son las etiquetas relacionadas con las fuentes o las citas de las páginas:',
 	'pagetriage-tags-cat-writingstyle-label' => 'Estilo de escritura',
+	'pagetriage-tags-cat-writingstyle-desc' => 'Estas son las etiquetas relacionadas con el estilo y la legibilidad de las páginas:',
 	'pagetriage-tags-cat-moretags-label' => 'Más etiquetas',
+	'pagetriage-tags-cat-moretags-desc' => 'Estas son diversas etiquetas adicionales:',
 	'pagetriage-tags-linkrot-label' => 'Direcciones URL sin formato',
 	'pagetriage-tags-linkrot-desc' => 'Esta página utiliza direcciones URL sin formato para las referencias, que son propensas a acabar como enlaces rotos.',
 	'pagetriage-tags-copyedit-label' => 'Corrección del estilo',
@@ -1698,7 +1708,7 @@ $messages['he'] = array(
 	'pagetriage-tags-externallinks-desc' => 'הקישורים החיצוניים בדף הזה אינם מתאימים למדיניות התוכן.',
 );
 
-/** Upper Sorbian (Hornjoserbsce)
+/** Upper Sorbian (hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
@@ -2268,6 +2278,8 @@ $messages['ja'] = array(
 	'pagetriage-filter-stat-username' => '利用者名：$1',
 	'pagetriage-button-add-tag' => '選択したタグを追加',
 	'pagetriage-button-add-parameters' => 'パラメーターを追加',
+	'pagetriage-button-add-details' => '詳細を追加',
+	'pagetriage-button-edit-details' => '詳細を編集',
 	'pagetriage-tags-cat-metadata-label' => 'メタデータ',
 	'pagetriage-tags-cat-moretags-label' => 'その他のタグ',
 	'pagetriage-tags-param-url-label' => 'URL：',
