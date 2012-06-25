@@ -158,7 +158,7 @@ $( function() {
 							}
 							_this.showParamsLink( tagKey, cat );
 							// show the param form if there is required parameter
-							for ( param in tagSet[tagKey]['params'] ) {
+							for ( var param in tagSet[tagKey]['params'] ) {
 								if ( tagSet[tagKey]['params'][param].input === 'required' ) {
 									_this.showParamsForm( tagKey, cat );
 									break;
@@ -224,7 +224,7 @@ $( function() {
 			}
 
 			// check if there is non-hidden param
-			for ( param in tag.params ) {
+			for ( var param in tag.params ) {
 				if ( tag.params[param].type !== 'hidden' ) {
 					allParamsHidden = false;
 					// see if any of the parameters have been filled out
@@ -266,7 +266,7 @@ $( function() {
 
 			this.hideParamsLink( key );
 
-			for ( param in tag.params ) {
+			for ( var param in tag.params ) {
 				var paramObj = tag.params[param];
 				html += this.buildHTML( param, paramObj, key );
 			}
@@ -308,7 +308,7 @@ $( function() {
 			$( '#mwe-pt-tag-cancel-param-' + key ).button().click(
 				function() {
 					var missingRequiredParam = false, destCat;
-					for ( param in tag.params ) {
+					for ( var param in tag.params ) {
 						if ( tag.params[param].input === 'required' && !tag.params[param].value ) {
 							if ( tag.dest ) {
 								destCat = tag.dest;
@@ -344,7 +344,7 @@ $( function() {
 		 */
 		setParams: function( key, cat ) {
 			var tag = this.selectedTag[cat][key];
-			for ( param in tag.params ) {
+			for ( var param in tag.params ) {
 				tag.params[param].value = $( '#mwe-pt-tag-params-' + key + '-' + param ).attr( 'value' );
 				if ( tag.params[param].input === 'required' && !tag.params[param].value ) {
 					$( '#mwe-pt-tags-params-form-error' ).html( mw.msg( 'pagetriage-tags-param-missing-required', param ) );
@@ -360,7 +360,7 @@ $( function() {
 		 */
 		buildParams: function( obj ) {
 			var paramVal = '';
-			for ( param in obj.params ) {
+			for ( var param in obj.params ) {
 				if ( obj.params[param].value ) {
 					paramVal += '|' + param + '=' + obj.params[param].value;
 				}
@@ -374,8 +374,8 @@ $( function() {
 		submit: function() {
 			var topText = '', bottomText = '', processed = {}, _this = this;
 
-			for ( cat in this.selectedTag ) {
-				for ( tagKey in this.selectedTag[cat] ) {
+			for ( var cat in this.selectedTag ) {
+				for ( var tagKey in this.selectedTag[cat] ) {
 					if ( processed[tagKey] ) {
 						continue;
 					}
@@ -475,7 +475,7 @@ $( function() {
 					break;
 				case 'select':
 					html += obj.label + ' ';
-					for ( i in obj.option ) {
+					for ( var i in obj.option ) {
 						html += obj.option[i] + ' ' +
 							mw.html.element(
 								'input',
