@@ -379,7 +379,7 @@ $( function() {
 					if ( processed[tagKey] ) {
 						continue;
 					}
-					tagObj = this.selectedTag[cat][tagKey];
+					var tagObj = this.selectedTag[cat][tagKey];
 					switch ( tagObj.position ) {
 						case 'bottom':
 							bottomText += '{{' + tagObj.tag + this.buildParams( tagObj ) + '}}';
