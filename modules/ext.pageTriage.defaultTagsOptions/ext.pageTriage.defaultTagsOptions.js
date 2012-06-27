@@ -94,7 +94,7 @@ $.pageTriageTagsOptions = {
 				desc: mw.msg( 'pagetriage-tags-copyedit-desc' ),
 				params: {
 					'date': param.date,
-					'for': param['for']
+					'for': $.extend( true, {}, param['for'] )
 				},
 				position: 'top',
 				dest: 'cleanup'
@@ -106,7 +106,7 @@ $.pageTriageTagsOptions = {
 				desc: mw.msg( 'pagetriage-tags-morefootnotes-desc' ),
 				params: {
 					'date': param.date,
-					'blp': param.blp
+					'blp': $.extend( true, {}, param.blp )
 				},
 				position: 'top',
 				dest: 'verifiability'
@@ -221,7 +221,7 @@ $.pageTriageTagsOptions = {
 				desc: mw.msg( 'pagetriage-tags-cleanup-desc' ),
 				params: {
 					'date': param.date,
-					'reason': param.reason
+					'reason': $.extend( true, {}, param.reason )
 				},
 				position: 'top'
 			},
@@ -232,7 +232,7 @@ $.pageTriageTagsOptions = {
 				desc: mw.msg( 'pagetriage-tags-copyedit-desc' ),
 				params: {
 					'date': param.date,
-					'for': param['for']
+					'for': $.extend( true, {}, param['for'] )
 				},
 				position: 'top'
 			},
@@ -243,7 +243,7 @@ $.pageTriageTagsOptions = {
 				desc: mw.msg( 'pagetriage-tags-expertsubject-desc' ),
 				params: {
 					'date': param.date,
-					'reason': param.reason
+					'reason': $.extend( true, {}, param.reason )
 				},
 				position: 'top'
 			},
@@ -272,7 +272,7 @@ $.pageTriageTagsOptions = {
 				desc: mw.msg( 'pagetriage-tags-wikify-desc' ),
 				params: {
 					'date': param.date,
-					'reason': param.reason
+					'reason': $.extend( true, {}, param.reason )
 				},
 				position: 'top'
 			}
@@ -383,7 +383,7 @@ $.pageTriageTagsOptions = {
 				desc: mw.msg( 'pagetriage-tags-primarysources-desc' ),
 				params: {
 					'date': param.date,
-					'blp': param.blp
+					'blp': $.extend( true, {}, param.blp )
 				},
 				position: 'top'
 			},
@@ -437,7 +437,7 @@ $.pageTriageTagsOptions = {
 				desc: mw.msg( 'pagetriage-tags-leadrewrite-desc' ),
 				params: {
 					'date': param.date,
-					'reason': param.reason
+					'reason': $.extend( true, {}, param.reason )
 				},
 				position: 'top'
 			},
@@ -509,8 +509,8 @@ $.pageTriageTagsOptions = {
 				desc: mw.msg( 'pagetriage-tags-closeparaphrasing-desc' ),
 				params: {
 					'date': param.date,
-					'source': param.source,
-					'free': param.free
+					'source': $.extend( true, {}, param.source ),
+					'free': $.extend( true, {}, param.free )
 				},
 				position: 'top'
 			},
@@ -521,7 +521,7 @@ $.pageTriageTagsOptions = {
 				desc: mw.msg( 'pagetriage-tags-copypaste-desc' ),
 				params: {
 					'date': param.date,
-					'url': param.url
+					'url': $.extend( true, {}, param.url )
 				},
 				position: 'top'
 			},
@@ -575,7 +575,7 @@ $.pageTriageTagsOptions = {
 				desc: mw.msg( 'pagetriage-tags-citationstyle-desc' ),
 				params: {
 					'date': param.date,
-					'details': param.details
+					'details': $.extend( true, {}, param.details )
 				},
 				position: 'top'
 			},
@@ -596,7 +596,7 @@ $.pageTriageTagsOptions = {
 				desc: mw.msg( 'pagetriage-tags-morefootnotes-desc' ),
 				params: {
 					'date': param.date,
-					'blp': param.blp
+					'blp': $.extend( true, {}, param.blp )
 				},
 				position: 'top'
 			},
@@ -622,7 +622,7 @@ $.pageTriageTagsOptions = {
 				desc: mw.msg( 'pagetriage-tags-confusing-desc' ),
 				params: {
 					'date': param.date,
-					'reason': param.reason
+					'reason': $.extend( true, {}, param.reason )
 				},
 				position: 'top'
 			},
