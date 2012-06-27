@@ -1902,6 +1902,7 @@ $messages['hsb'] = array(
 	'pagetriage-info-problem-no-references-desc' => 'Tuta strona žane žórła njepodawa.',
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
+	'pagetriage-toolbar-collapsed' => 'Wothladowanje',
 	'pagetriage-mark-helptext' => 'Zasuń krótki wujasnjacy tekst wo tym, štož tute tłóčatko woznamjenja',
 );
 
