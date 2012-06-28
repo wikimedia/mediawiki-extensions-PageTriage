@@ -27,8 +27,8 @@
 	
 			<br/>
 	
-			<!-- editcount is undefined or empty for IP users -->
-			<% if( typeof ( user_editcount ) != 'undefined' && user_editcount != '' ) { %>
+			<!-- user_id is 0 for IP users -->
+			<% if( typeof user_id != 'undefined' && Number( user_id ) !== 0 ) { %>
 				<%= gM( 'pagetriage-editcount', user_editcount, user_creation_date_pretty ) %>
 				<% if( user_bot == "1" ) { %>
 					&#xb7;
