@@ -38,8 +38,10 @@ $( function() {
 			// add tags
 			tools.push( new mw.pageTriage.TagsView( { eventBus: eventBus } ) );
 
-			// delete
-			tools.push( new mw.pageTriage.DeleteView( { eventBus: eventBus } ) );
+			if ( mw.config.get( 'wgPageTriageEnableDeletionWizard' ) ) {
+				// delete
+				tools.push( new mw.pageTriage.DeleteView( { eventBus: eventBus } ) );
+			}
 
 			// next article
 			tools.push( new mw.pageTriage.NextView( { eventBus: eventBus } ) );

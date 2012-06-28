@@ -58,6 +58,7 @@ $wgPageTriageNoIndexTemplates = 'No_index_templates'; // Pages containing templa
 $wgPageTriageLearnMoreUrl = 'http://en.wikipedia.org/wiki/Wikipedia:New_Pages_Feed/Help';
 $wgPageTriageFeedbackUrl = 'http://en.wikipedia.org/wiki/Wikipedia_talk:New_Pages_Feed';
 $wgPageTriageEnableCurationToolbar = false; // enable the curation toolbar?
+$wgPageTriageEnableDeletionWizard = false; // enable the deletion wizard?
 $wgPageTriageToolbarInfoHelpLink = "http://en.wikipedia.org/wiki/Wikipedia:New_pages_patrol#Patroller_checklists"; // help link in toolbar article info view
 $wgPageTriageCacheVersion = '1.0'; // version number to be added to cache key so that cache can be refreshed easily
 // End configuration variables
@@ -113,7 +114,7 @@ $wgHooks['ArticleViewFooter'][] = 'PageTriageHooks::onArticleViewFooter';
 $wgHooks['ArticleDeleteComplete'][] = 'PageTriageHooks::onArticleDeleteComplete';
 $wgHooks['MarkPatrolledComplete'][] = 'PageTriageHooks::onMarkPatrolledComplete';
 $wgHooks['BlockIpComplete'][] = 'PageTriageHooks::onBlockIpComplete';
-$wgHooks['MakeGlobalVariablesScript'][] = 'PageTriageHooks::onMakeGlobalVariablesScript';
+$wgHooks['ResourceLoaderGetConfigVars'][] = 'PageTriageHooks::onResourceLoaderGetConfigVars';
 $wgHooks['ArticleUndelete'][] = 'PageTriageHooks::onArticleUndelete';
 
 /**

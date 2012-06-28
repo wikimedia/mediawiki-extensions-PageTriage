@@ -386,15 +386,15 @@ class PageTriageHooks {
 	}
 
 	/**
-	 * Send php config vars to js
+	 * Send php config vars to js via ResourceLoader
 	 *
-	 * makeGlobalVariablesScript: right before OutputPage->getJSVars returns the vars
-	 * @param &$vars: variable (or multiple variables) to be added into the output of Skin::makeVariablesScript
+	 * @param &$vars: variables to be added to the output of the startup module
 	 * @return bool
 	 */	
-	public static function onMakeGlobalVariablesScript( &$vars ) {
-		global $wgPageTriageToolbarInfoHelpLink;
+	public static function onResourceLoaderGetConfigVars( &$vars ) {
+		global $wgPageTriageToolbarInfoHelpLink, $wgPageTriageEnableDeletionWizard;
 		$vars['wgPageTriageToolbarInfoHelpLink'] = $wgPageTriageToolbarInfoHelpLink;
+		$vars['wgPageTriageEnableDeletionWizard'] = $wgPageTriageEnableDeletionWizard;
 		return true;
 	}
 }
