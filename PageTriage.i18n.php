@@ -265,7 +265,8 @@ $messages['en'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'Curation',
-	'pagetriage-mark-helptext' => 'Insert some short explanatory text about what this button means',
+	'pagetriage-mark-helptext' => 'Remove this page from the unreviewed queue?',
+	'pagetriage-unmark-helptext' => 'Return this page to the unreviewed queue?',
 );
 
 /** Message documentation (Message documentation)
