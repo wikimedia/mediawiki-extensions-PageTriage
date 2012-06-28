@@ -89,14 +89,8 @@ $( function() {
 			for ( var key in tagSet ) {
 
 				var checked = false;
-				/*
-				if ( tagSet[key].dest ) {
-					var destCat	= tagSet[key].dest;
-					if ( this.selectedTag[destCat][key] ) {
-						checked = true;
-					}
-				}
-				*/
+				
+				// If the tag has been selected, show it as checked
 				if ( this.selectedTag[cat][key] ) {
 					checked = true;
 				}
@@ -134,20 +128,26 @@ $( function() {
 				// checkboxes and tag labels
 				$( '#mwe-pt-tag-' + key + ', #mwe-pt-checkbox-tag-' + key ).click(
 					function() {
-						var destCat;
+						var destCat, alsoCommon;
 						
 						// Extract the tag key from the id of whatever was clicked on
 						var tagKeyMatches = $( this ).attr( 'id' ).match( /.*-tag-(.*)/ );
 						var tagKey = tagKeyMatches[1];
-						
-						$( '#mwe-pt-tag-params-form-' + tagKey ).hide();
 
-						// Tags in the 'Common' group actually belong to other categories.
+						// Tags in the 'common' group actually belong to other categories.
 						// In those cases we need to interact with the real parent
 						// category which is indicated in the 'dest' attribute.
-						if ( tagSet[tagKey].dest ) {
+						if ( cat === 'common' && tagSet[tagKey].dest ) {
 							destCat	= tagSet[tagKey].dest;
 						}
+						
+						// Tags in other groups may also belong to the 'common' group.
+						// In these cases, we need to update the corresponding tag
+						// in the 'common' group as well.
+						if ( cat !== 'common' && _this.tagsOptions['common'].tags[tagKey] !== undefined ) {
+							alsoCommon = true;
+						}
+						
 						if ( !_this.selectedTag[cat][tagKey] ) {
 							// activate checkbox
 							$( '#mwe-pt-checkbox-tag-' + tagKey ).attr( 'checked', true );
@@ -155,6 +155,9 @@ $( function() {
 							_this.selectedTag[cat][tagKey] = tagSet[tagKey];
 							if ( destCat ) {
 								_this.selectedTag[destCat][tagKey] = tagSet[tagKey];
+							}
+							if ( alsoCommon ) {
+								_this.selectedTag['common'][tagKey] = tagSet[tagKey];
 							}
 							_this.showParamsLink( tagKey, cat );
 							// show the param form if there is required parameter
@@ -171,6 +174,9 @@ $( function() {
 							delete _this.selectedTag[cat][tagKey];
 							if ( destCat ) {
 								delete _this.selectedTag[destCat][tagKey];
+							}
+							if ( alsoCommon ) {
+								delete _this.selectedTag['common'][tagKey];
 							}
 							_this.hideParamsLink( tagKey );
 							// If the param form is visible, hide it

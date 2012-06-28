@@ -5,10 +5,11 @@
 
 #mwe-pt-tag .mwe-pt-tool-content {
 	background-color: #F3F3F3;
+	padding: 0;
 }
 
 #mwe-pt-categories {
-	padding: 7px 0px 7px 7px;
+	padding: 7px 0px 0px 7px;
 	width: 123px;
 }
 

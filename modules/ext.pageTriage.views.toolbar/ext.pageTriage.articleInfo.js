@@ -23,7 +23,7 @@ $( function() {
 
 			this.$tel.html( this.template( this.model.toJSON() ) );
 			var history = new mw.pageTriage.ArticleInfoHistoryView( { eventBus: this.eventBus, model: this.model.revisions } );
-			this.$tel.find( '#mwe-pt-info-history' ).append( history.render().$el );
+			this.$tel.find( '#mwe-pt-info-history-container' ).append( history.render().$el );
 			
 			// bind down here so it doesn't happen before the first render
 			this.model.unbind( 'change:patrol_status', function() { _this.render(); } );
