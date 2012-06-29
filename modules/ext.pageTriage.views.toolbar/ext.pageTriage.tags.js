@@ -77,13 +77,6 @@ $( function() {
 			$( '.mwe-pt-category .mwe-pt-category-pokey' ).hide();
 			$( '#mwe-pt-category-' + cat + ' .mwe-pt-category-pokey' ).show();
 			
-			/*
-			$( '#mwe-pt-tags' ).append(
-				'<div class="mwe-pt-tags-cat-desc">' +
-				mw.msg( 'pagetriage-tags-cat-' + cat + '-desc' ) +
-				'</div>'
-			);
-			*/
 			$( '#mwe-pt-tags' ).append( $tagList );
 			
 			for ( var key in tagSet ) {
@@ -223,6 +216,7 @@ $( function() {
 			var allParamsHidden = true;
 			var text = 'add';
 			var tag = this.selectedTag[cat][key];
+			var _this = this;
 
 			// no params, don't show the link
 			if ( !Object.keys( tag.params ).length ) {
@@ -244,16 +238,18 @@ $( function() {
 				return;
 			}
 
-			var _this = this;
+			// Construct the link that activates the params form
 			var link = mw.html.element(
 						'a',
 						{ 'href': '#', 'id': 'mwe-pt-tag-params-' + key },
 						mw.msg( 'pagetriage-button-' + text + '-details' )
 					);
 			$( '#mwe-pt-tag-params-link-' + key ).html( '+&#160;' + link );
-			// Add click even to the link that shows the param form
+			
+			// Add click event to the link that shows the param form
 			$( '#mwe-pt-tag-params-' + key ).click( function() {
 				_this.showParamsForm( key, cat );
+				return false;
 			} );
 		},
 
