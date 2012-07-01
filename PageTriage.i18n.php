@@ -517,6 +517,15 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-mark-helptext' => 'Descriptive text explaining the "Mark as Reviewed/Unreviewed" buttons',
 );
 
+/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'pagetriage' => 'Page Triage',
+	'pagetriage-new-pages-feed' => 'Стужка новых старонак',
+	'pagetriage-desc' => 'Прылады для прагляду і зацьверджаньня новых старонак',
+);
+
 /** Breton (brezhoneg)
  * @author Fulup
  */
