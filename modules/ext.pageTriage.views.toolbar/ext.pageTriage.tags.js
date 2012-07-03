@@ -314,6 +314,13 @@ $( function() {
 			$( '#mwe-pt-tag-cancel-param-' + key ).button().click(
 				function() {
 					var missingRequiredParam = false, destCat;
+					
+					// Hide the form and show the link to reopen it
+					_this.hideParamsForm( key );
+					_this.showParamsLink( key, cat );
+					
+					// If there were any unset required params, uncheck the tag
+					// and hide the form link (basically, reset it)
 					for ( var param in tag.params ) {
 						if ( tag.params[param].input === 'required' && !tag.params[param].value ) {
 							if ( tag.dest ) {
@@ -323,13 +330,11 @@ $( function() {
 							delete _this.selectedTag[cat][key];
 							_this.selectedTagCount--;
 							_this.refreshTagCountDisplay( key, destCat ? destCat : cat );
-							$( '#mwe-pt-tag-' + key + ' input:checkbox' ).attr( 'checked', false );
+							$( '#mwe-pt-checkbox-tag-' + key ).attr( 'checked', false );
+							_this.hideParamsLink( key );
 							break;
 						}
 					}
-					// Hide the form and show the link to reopen it
-					_this.hideParamsForm( key );
-					_this.showParamsLink( key, cat );
 				}
 			);
 		},
