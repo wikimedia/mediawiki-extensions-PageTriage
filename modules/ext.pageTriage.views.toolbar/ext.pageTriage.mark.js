@@ -4,7 +4,7 @@ $( function() {
 	mw.pageTriage.MarkView = mw.pageTriage.ToolView.extend( {
 		id: 'mwe-pt-mark',
 		icon: 'icon_mark_reviewed.png', // the default icon
-		title: 'Mark as Reviewed',
+		title: gM( 'pagetriage-mark-as-reviewed' ),
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'mark.html' } ),
 		
 		submit: function( action ) {
@@ -39,6 +39,15 @@ $( function() {
 
 			// create the mark as reviewed flyout content here.
 			this.$tel.html( this.template( this.model.toJSON() ) );
+			
+			// override the flyout title based on the current reviewed state of the page
+			if ( this.model.get( 'patrol_status' ) > 0 ) {
+				// page is reviewed
+				$( '#mwe-pt-mark .mwe-pt-tool-title' ).html( mw.msg( 'pagetriage-mark-as-unreviewed' ) );
+			} else {
+				// page is unreviewed
+				$( '#mwe-pt-mark .mwe-pt-tool-title' ).html( mw.msg( 'pagetriage-mark-as-reviewed' ) );
+			}
 
 			// initialize the buttons
 			$( '#mwe-pt-mark-as-reviewed-button' )

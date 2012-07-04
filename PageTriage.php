@@ -157,6 +157,7 @@ $ptTemplatePath = $ptResourceTemplate['localBasePath'];
 
 // Tags options message
 $wgPageTriageTagsOptionsMessages = array (
+	'pagetriage-tags-title',
 	'pagetriage-tags-cat-common-label',
 	'pagetriage-tags-cat-metadata-label',
 	'pagetriage-tags-cat-cleanup-label',
@@ -529,7 +530,8 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-info-timestamp-date-format',
 		'pagetriage-info-timestamp-time-format',
 		'pagetriage-toolbar-collapsed',
-		'pagetriage-mark-helptext',
+		'pagetriage-mark-as-reviewed-helptext',
+		'pagetriage-mark-as-unreviewed-helptext',
 		'pagetriage-markpatrolled',
 		'pagetriage-note-reviewed',
 		'pagetriage-note-not-reviewed',

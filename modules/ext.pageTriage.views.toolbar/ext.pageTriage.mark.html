@@ -1,10 +1,13 @@
 <div>
-	<div class="mwe-pt-mark-helptext">
-	<%= gM( 'pagetriage-mark-helptext' ) %>
-	</div>
 	<% if ( patrol_status == "0" ) { %>
+		<div class="mwe-pt-mark-helptext">
+			<%= gM( 'pagetriage-mark-as-reviewed-helptext' ) %>
+		</div>
 		<button id='mwe-pt-mark-as-reviewed-button' class="ui-button-green"><%= gM( "pagetriage-mark-as-reviewed" ) %></button>
 	<% } else { %>
+		<div class="mwe-pt-mark-helptext">
+			<%= gM( 'pagetriage-mark-as-unreviewed-helptext' ) %>
+		</div>
 		<button id='mwe-pt-mark-as-unreviewed-button' class="ui-button-green"><%= gM( "pagetriage-mark-as-unreviewed" ) %></button>
 	<% } %>
 </div>

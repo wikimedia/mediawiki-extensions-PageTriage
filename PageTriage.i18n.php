@@ -83,15 +83,15 @@ $messages['en'] = array(
 	'pagetriage-note-not-reviewed' => 'This page has not yet been reviewed.',
 	'pagetriage-note-deletion' => 'This page has been nominated for deletion.',
 	'pagetriage-refresh-list' => 'Refresh list',
-	'pagetriage-mark-as-reviewed' => 'Mark as reviewed',
-	'pagetriage-mark-as-unreviewed' => 'Mark as unreviewed',
 	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|tag|tags}} selected',
 	'pagetriage-button-add-tag' => 'Add selected tags',
 	'pagetriage-button-add-tag-number' => 'Add $1 selected tags',
 	'pagetriage-button-add-parameters' => 'Add parameters',
 	'pagetriage-button-add-details' => 'Add details',
 	'pagetriage-button-edit-details' => 'Edit details',
+	
 	 // Tags options section
+	'pagetriage-tags-title' => 'Add tags',
 	'pagetriage-tags-cat-common-label' => 'Common',
 	'pagetriage-tags-cat-common-desc' => 'These are the most commonly used tags:',
 	'pagetriage-tags-cat-metadata-label' => 'Metadata',
@@ -265,8 +265,11 @@ $messages['en'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'Curation',
-	'pagetriage-mark-helptext' => 'Remove this page from the unreviewed queue?',
-	'pagetriage-unmark-helptext' => 'Return this page to the unreviewed queue?',
+	'pagetriage-mark-title' => 'Mark as reviewed',
+	'pagetriage-mark-as-reviewed' => 'Mark as reviewed',
+	'pagetriage-mark-as-unreviewed' => 'Mark as unreviewed',
+	'pagetriage-mark-as-reviewed-helptext' => 'Remove this page from the unreviewed queue?',
+	'pagetriage-mark-as-unreviewed-helptext' => 'Return this page to the unreviewed queue?',
 );
 
 /** Message documentation (Message documentation)
@@ -355,6 +358,7 @@ $messages['qqq'] = array(
 	'pagetriage-button-add-parameters' => 'Text for the button that adds parameters',
 	'pagetriage-button-add-details' => 'Text for the bution that saves any extra information associated with the tag',
 	'pagetriage-button-edit-details' => 'Text for the button that lets the user edit information associated with the tag',
+	'pagetriage-tags-title' => 'The title for the tag wizard flyout in the toolbar',
 	'pagetriage-tags-cat-common-label' => 'Label for common category',
 	'pagetriage-tags-cat-metadata-label' => 'Label for metadata category',
 	'pagetriage-tags-cat-cleanup-label' => 'Label for cleanup category',
@@ -514,7 +518,8 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-info-timestamp-date-format' => 'Format specifier for the month and date part of the revision timestamp. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers',
 	'pagetriage-info-timestamp-time-format' => 'Format specifier for the hour and minute part of the revision timestamp. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers',
 	'pagetriage-toolbar-collapsed' => 'Label for the collapsed version of the curation bar',
-	'pagetriage-mark-helptext' => 'Descriptive text explaining the "Mark as Reviewed/Unreviewed" buttons',
+	'pagetriage-mark-as-reviewed-helptext' => 'Descriptive text explaining the "Mark as reviewed" button',
+	'pagetriage-mark-as-unreviewed-helptext' => 'Descriptive text explaining the "Mark as unreviewed" button',
 );
 
 /** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)

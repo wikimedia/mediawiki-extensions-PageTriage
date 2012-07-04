@@ -3,7 +3,7 @@ $( function() {
 	mw.pageTriage.TagsView = mw.pageTriage.ToolView.extend( {
 		id: 'mwe-pt-tag',
 		icon: 'icon_tag.png',
-		title: 'Add Tags',
+		title: gM( 'pagetriage-tags-title' ),
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'tags.html' } ),
 		tagsOptions: $.pageTriageTagsOptions,
 		selectedTag: {},
