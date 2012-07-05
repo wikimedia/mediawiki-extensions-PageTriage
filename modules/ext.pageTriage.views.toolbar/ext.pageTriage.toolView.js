@@ -112,8 +112,12 @@ $( function() {
 			if( this.disabled ) {
 				return null;
 			}
-			
-			iconPath = this.iconPath( 'normal' );
+
+			if( this.specialIcon ) {
+				iconPath = this.iconPath( 'special' );
+			} else {
+				iconPath = this.iconPath( 'normal' );
+			}
 
 			// return the HTML for the closed up version of this tool.
 			this.$el.html( this.chromeTemplate( {

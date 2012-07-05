@@ -24,22 +24,30 @@ $( function() {
 			// An array of tool instances to put on the bar, ordered top-to-bottom
 			tools = new Array;
 
-			// TODO: decide here which tools to put on the bar, based on namespace, status, etc.
-			// if we someday want this configurable on-wiki, this could load some js from
-			// the MediaWiki namespace that generates the tools array instead, or we could make
-			// some sort of config file thing
-
-			// article information
-			tools.push( new mw.pageTriage.ArticleInfoView( { eventBus: eventBus, model: article } ) );
+			var modules = mw.config.get( 'wgPageTriageCurationModules' );
 			
-			// and mark as reviewed
-			tools.push( new mw.pageTriage.MarkView( { eventBus: eventBus, model: article } ) );
+			// article information
+			if ( $.inArray( 'ArticleInfo', modules ) !== -1 ) {
+				tools.push( new mw.pageTriage.ArticleInfoView( { eventBus: eventBus, model: article } ) );
+			}
+			
+			// wikilove
+			if ( $.inArray( 'WikiLove', modules ) !== -1 ) {
+				tools.push( new mw.pageTriage.WikiLoveView( { eventBus: eventBus, model: article } ) );
+			}
+
+			// mark as reviewed
+			if ( $.inArray( 'Mark', modules ) !== -1 ) {
+				tools.push( new mw.pageTriage.MarkView( { eventBus: eventBus, model: article } ) );
+			}
 
 			// add tags
-			tools.push( new mw.pageTriage.TagsView( { eventBus: eventBus, model: article } ) );
+			if ( $.inArray( 'Tags', modules ) !== -1 ) {
+				tools.push( new mw.pageTriage.TagsView( { eventBus: eventBus, model: article } ) );
+			}
 
-			if ( mw.config.get( 'wgPageTriageEnableDeletionWizard' ) ) {
-				// delete
+			// delete
+			if ( $.inArray( 'Delete', modules ) !== -1 ) {
 				tools.push( new mw.pageTriage.DeleteView( { eventBus: eventBus } ) );
 			}
 

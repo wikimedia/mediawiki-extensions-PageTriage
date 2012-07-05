@@ -390,9 +390,9 @@ class PageTriageHooks {
 	 * @return bool
 	 */	
 	public static function onResourceLoaderGetConfigVars( &$vars ) {
-		global $wgPageTriageToolbarInfoHelpLink, $wgPageTriageEnableDeletionWizard;
+		global $wgPageTriageToolbarInfoHelpLink, $wgPageTriageCurationModules;
 		$vars['wgPageTriageToolbarInfoHelpLink'] = $wgPageTriageToolbarInfoHelpLink;
-		$vars['wgPageTriageEnableDeletionWizard'] = $wgPageTriageEnableDeletionWizard;
+		$vars['wgPageTriageCurationModules'] = $wgPageTriageCurationModules;
 		return true;
 	}
 }

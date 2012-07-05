@@ -58,7 +58,13 @@ $wgPageTriageNoIndexTemplates = 'No_index_templates'; // Pages containing templa
 $wgPageTriageLearnMoreUrl = 'http://en.wikipedia.org/wiki/Wikipedia:New_Pages_Feed/Help';
 $wgPageTriageFeedbackUrl = 'http://en.wikipedia.org/wiki/Wikipedia_talk:New_Pages_Feed';
 $wgPageTriageEnableCurationToolbar = false; // enable the curation toolbar?
-$wgPageTriageEnableDeletionWizard = false; // enable the deletion wizard?
+$wgPageTriageCurationModules = array(
+	'ArticleInfo',
+	'WikiLove', // depends on WikiLove extension
+	'Mark',
+	'Tags',
+	'Delete',
+);
 $wgPageTriageToolbarInfoHelpLink = "http://en.wikipedia.org/wiki/Wikipedia:New_pages_patrol#Patroller_checklists"; // help link in toolbar article info view
 $wgPageTriageCacheVersion = '1.0'; // version number to be added to cache key so that cache can be refreshed easily
 $wgPageTriageNamespaces = array( 0, 2 );
@@ -494,6 +500,7 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'ext.pageTriage.views.toolbar/ext.pageTriage.mark.js', // mark as reviewed
 		'ext.pageTriage.views.toolbar/ext.pageTriage.next.js', // next article
 		'ext.pageTriage.views.toolbar/ext.pageTriage.delete.js', // mark for deletion
+		'ext.pageTriage.views.toolbar/ext.pageTriage.wikilove.js', // mark for deletion
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.js', // overall toolbar view last
 		'external/jquery.effects.core.js',
 		'external/jquery.effects.squish.js',
@@ -505,6 +512,7 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfo.css',
 		'ext.pageTriage.views.toolbar/ext.pageTriage.mark.css',
 		'ext.pageTriage.views.toolbar/ext.pageTriage.tags.css',
+		'ext.pageTriage.views.toolbar/ext.pageTriage.wikilove.css',
 	),
 	'messages' => array(
 		'pagetriage-creation-dateformat',
@@ -541,8 +549,14 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-note-reviewed',
 		'pagetriage-note-not-reviewed',
 		'pagetriage-note-deletion',
+		'pagetriage-wikilove-page-creator',
+		'pagetriage-wikilove-edit-count',
+		'pagetriage-wikilove-helptext',
+		'wikilove',
+		'wikilove-button-send',
 		'talkpagelinktext',
 		'contribslink',
+		'comma-separator',
 	)
 );
 

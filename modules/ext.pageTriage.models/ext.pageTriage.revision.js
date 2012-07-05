@@ -1,4 +1,4 @@
-// Revision represents a single revision (aka history item)
+// Revision represents a single revision (aka historyItem)
 // RevisionList is a collection of revisions for a single page
 //
 $( function() {
@@ -15,7 +15,7 @@ $( function() {
 
 		apiParams: {
 			rvprop: 'timestamp|user|parsedcomment',
-			rvlimit: 5
+			rvlimit: 20
 		},
 
 		initialize: function( options ) {

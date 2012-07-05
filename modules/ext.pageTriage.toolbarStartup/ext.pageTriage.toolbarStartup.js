@@ -1,8 +1,15 @@
 jQuery( function( $ ) {
-	if( mw.config.get( 'wgNamespaceNumber' ) !== 0 ) {
+	// If we're not in article namespace, exit
+	if ( mw.config.get( 'wgNamespaceNumber' ) !== 0 ) {
 		return true;
 	}
 
-	// check to see if the curation toolbar should load here.
+	// Load the curation toolbar
 	mw.loader.load( 'ext.pageTriage.views.toolbar' );
+	
+	// If the WikiLove module is activated, load WikiLove as well
+	var modules = mw.config.get( 'wgPageTriageCurationModules' );
+	if ( $.inArray( 'WikiLove', modules ) !== -1 ) {
+		mw.loader.load( 'ext.wikiLove.init' );
+	}
 } );

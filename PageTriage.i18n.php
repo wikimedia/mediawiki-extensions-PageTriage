@@ -274,6 +274,10 @@ $messages['en'] = array(
 	'pagetriage-mark-as-unreviewed' => 'Mark as unreviewed',
 	'pagetriage-mark-as-reviewed-helptext' => 'Remove this page from the unreviewed queue?',
 	'pagetriage-mark-as-unreviewed-helptext' => 'Return this page to the unreviewed queue?',
+	'pagetriage-wikilove-helptext' => 'Select the names of editors you wish to thank.',
+	'pagetriage-wikilove-page-creator' => 'Page Creator',
+	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|edit|edits}}',
+	'pagetriage-wikilove-no-recipients' => 'No recipients are avilable for this page.',
 );
 
 /** Message documentation (Message documentation)
@@ -527,6 +531,10 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-mark-as-unreviewed' => "Label for a button that sets a page's status as unreviewed",
 	'pagetriage-mark-as-reviewed-helptext' => 'Descriptive text explaining the "Mark as reviewed" button',
 	'pagetriage-mark-as-unreviewed-helptext' => 'Descriptive text explaining the "Mark as unreviewed" button',
+	'pagetriage-wikilove-helptext' => 'Descriptive text explaining the "WikiLove" interface in the curation toolbar',
+	'pagetriage-wikilove-page-creator' => 'This is the label for the person that originally created the page.',
+	'pagetriage-wikilove-edit-count' => 'The number of edits a user has made. $1 is a number.',
+	'pagetriage-wikilove-no-recipients' => 'A warning message displayed when there are no possible WikiLove recipients for the page.',
 );
 
 /** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
