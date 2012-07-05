@@ -1368,6 +1368,7 @@ $messages['fr'] = array(
 	'pagetriage-info-problem-orphan-desc' => 'Aucune autre page ne pointe vers cette page.',
 	'pagetriage-info-problem-no-references' => 'Aucune référence',
 	'pagetriage-info-problem-no-references-desc' => 'Cette page ne cite aucune source.',
+	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 );
 
 /** Galician (galego)
@@ -1992,16 +1993,32 @@ $messages['ia'] = array(
 	'pagetriage-refresh-list' => 'Refrescar lista',
 	'pagetriage-mark-as-reviewed' => 'Marcar como revidite',
 	'pagetriage-mark-as-unreviewed' => 'Marcar como non revidite',
+	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|etiquetta|etiquettas}} seligite',
+	'pagetriage-button-add-tag' => 'Adder le etiquettas seligite',
+	'pagetriage-button-add-tag-number' => 'Adder $1 etiquettas seligite',
+	'pagetriage-button-add-parameters' => 'Adder parametros',
+	'pagetriage-button-add-details' => 'Adder detalios',
+	'pagetriage-button-edit-details' => 'Modificar detalios',
 	'pagetriage-tags-cat-common-label' => 'Commun',
+	'pagetriage-tags-cat-common-desc' => 'Ecce le etiquettas le plus commun:',
 	'pagetriage-tags-cat-metadata-label' => 'Metadatos',
+	'pagetriage-tags-cat-metadata-desc' => 'Iste etiquettas es associate a ligamines e categorias:',
 	'pagetriage-tags-cat-cleanup-label' => 'Nettation',
+	'pagetriage-tags-cat-cleanup-desc' => 'Iste etiquettas es associate al nettation de paginas:',
 	'pagetriage-tags-cat-neutrality-label' => 'Neutralitate',
+	'pagetriage-tags-cat-neutrality-desc' => 'Iste etiquetta es associate a problemas de neutralitate:',
 	'pagetriage-tags-cat-sources-label' => 'Fontes',
+	'pagetriage-tags-cat-sources-desc' => 'Iste etiquettas es associate al fontes e citationes del pagina:',
 	'pagetriage-tags-cat-structure-label' => 'Structura',
+	'pagetriage-tags-cat-structure-desc' => 'Iste etiquettas es associate al structura del pagina:',
 	'pagetriage-tags-cat-unwantedcontent-label' => 'Contento indesirate',
+	'pagetriage-tags-cat-unwantedcontent-desc' => 'Iste etiquettas es pro contento que non debe esser in iste wiki:',
 	'pagetriage-tags-cat-verifiability-label' => 'Verificabilitate',
+	'pagetriage-tags-cat-verifiability-desc' => 'Iste etiquettas es associate al verificabilitate o citationes del pagina:',
 	'pagetriage-tags-cat-writingstyle-label' => 'Stilo de redaction',
+	'pagetriage-tags-cat-writingstyle-desc' => 'Iste etiquettas es associate al stilo e legibilitate del pagina:',
 	'pagetriage-tags-cat-moretags-label' => 'Plus etiquettas',
+	'pagetriage-tags-cat-moretags-desc' => 'Ecce altere etiquettas miscellanee:',
 	'pagetriage-tags-linkrot-label' => 'Adresses URL simple',
 	'pagetriage-tags-linkrot-desc' => 'Iste pagina usa solmente adresses URL pro referentias, le quales es propense a rumper.',
 	'pagetriage-tags-copyedit-label' => 'Redaction final',
@@ -2018,10 +2035,14 @@ $messages['ia'] = array(
 	'pagetriage-tags-deadend-desc' => 'Iste pagina ha pauc o nulle ligamines a altere paginas.',
 	'pagetriage-tags-externallinks-label' => 'Ligamines externe',
 	'pagetriage-tags-externallinks-desc' => 'Le ligamines externe in iste pagina pote contravenir al politicas o directivas de contento.',
+	'pagetriage-tags-catimprove-label' => 'Plus categorias',
+	'pagetriage-tags-catimprove-desc' => 'Iste pagina require additional categorias.',
+	'pagetriage-tags-orphan-label' => 'Orphano',
 );
 
 /** Italian (italiano)
  * @author Beta16
+ * @author McDutchie
  */
 $messages['it'] = array(
 	'pagetriage' => 'Page Triage',
@@ -2092,7 +2113,7 @@ $messages['it'] = array(
 	'pagetriage-refresh-list' => 'Aggiorna elenco',
 	'pagetriage-mark-as-reviewed' => 'Contrassegna come revisionata',
 	'pagetriage-mark-as-unreviewed' => 'Contrassegna come non revisionata',
-	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|etichetta|etichette}} selezionate',
+	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|etichetta selezionata|etichette selezionate}}',
 	'pagetriage-button-add-tag' => 'Aggiungi etichette selezionate',
 	'pagetriage-button-add-tag-number' => 'Aggiungi $1 etichette selezionate',
 	'pagetriage-button-add-parameters' => 'Aggiungi parametri',
@@ -2924,6 +2945,7 @@ $messages['mk'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author SPQRobin
  * @author Saruman
  * @author Siebrand
@@ -2997,7 +3019,7 @@ $messages['nl'] = array(
 	'pagetriage-refresh-list' => 'Lijst verversen',
 	'pagetriage-mark-as-reviewed' => 'Als gecontroleerd markeren',
 	'pagetriage-mark-as-unreviewed' => 'Als ongecontroleerd markeren',
-	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|label|labels}} bewerkt',
+	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|label|labels}} geselecteerd',
 	'pagetriage-button-add-tag' => 'Geselecteerde labels toevoegen',
 	'pagetriage-button-add-tag-number' => '{{PLURAL:$1|geselecteerd label|geselecteerde labels}} toevoegen',
 	'pagetriage-button-add-parameters' => 'Parameters toevoegen',
