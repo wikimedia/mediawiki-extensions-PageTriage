@@ -114,7 +114,7 @@ $.pageTriageTagsOptions = {
 
 			'refimprove': {
 				label: mw.msg( 'pagetriage-tags-refimprove-label' ),
-				tag: 'ref improve',
+				tag: 'refimprove',
 				desc: mw.msg( 'pagetriage-tags-refimprove-desc' ),
 				params: {
 					'date': param.date
@@ -177,7 +177,7 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'bottom'
 			},
 
 			'orphan': {
@@ -239,7 +239,7 @@ $.pageTriageTagsOptions = {
 
 			'expertsubject': {
 				label: mw.msg( 'pagetriage-tags-expertsubject-label' ),
-				tag: 'expert-subject',
+				tag: 'expert',
 				desc: mw.msg( 'pagetriage-tags-expertsubject-desc' ),
 				params: {
 					'date': param.date,
@@ -349,7 +349,7 @@ $.pageTriageTagsOptions = {
 		tags: {
 			'refimprove': {
 				label: mw.msg( 'pagetriage-tags-refimprove-label' ),
-				tag: 'ref improve',
+				tag: 'refimprove',
 				desc: mw.msg( 'pagetriage-tags-refimprove-desc' ),
 				params: {
 					'date': param.date
@@ -359,7 +359,7 @@ $.pageTriageTagsOptions = {
 
 			'blpsources': {
 				label: mw.msg( 'pagetriage-tags-blpsources-label' ),
-				tag: 'blp sources',
+				tag: 'BLP sources',
 				desc: mw.msg( 'pagetriage-tags-blpsources-desc' ),
 				params: {
 					'date': param.date
@@ -561,7 +561,7 @@ $.pageTriageTagsOptions = {
 
 			'linkrot': {
 				label: mw.msg( 'pagetriage-tags-linkrot-label' ),
-				tag: 'cleanup-link rot',
+				tag: 'linkrot',
 				desc: mw.msg( 'pagetriage-tags-linkrot-desc' ),
 				params: {
 					'date': param.date
@@ -769,11 +769,11 @@ $.pageTriageTagsOptions = {
 				},
 				position: 'top'
 			},
-
-			'undue': {
-				label: mw.msg( 'pagetriage-tags-undue-label' ),
-				tag: 'undue',
-				desc: mw.msg( 'pagetriage-tags-undue-desc' ),
+			
+			'unbalanced': {
+				label: mw.msg( 'pagetriage-tags-unbalanced-label' ),
+				tag: 'unbalanced',
+				desc: mw.msg( 'pagetriage-tags-unbalanced-desc' ),
 				params: {
 					'date': param.date
 				},
