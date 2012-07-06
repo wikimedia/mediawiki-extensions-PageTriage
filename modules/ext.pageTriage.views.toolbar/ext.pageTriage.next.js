@@ -19,7 +19,7 @@ $( function() {
 			}
 			
 			if( ! this.nextId ) {
-				this.disabledIcon = true;
+				this.disabled = true;
 			}
 		},
 		

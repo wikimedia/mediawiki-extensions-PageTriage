@@ -109,11 +109,11 @@ $( function() {
 		place: function() {
 			var _this = this, iconPath;
 
-			if( this.disabledIcon ) {
-				iconPath = this.iconPath( 'disabled' );
-			} else {
-				iconPath = this.iconPath( 'normal' );
+			if( this.disabled ) {
+				return null;
 			}
+			
+			iconPath = this.iconPath( 'normal' );
 
 			// return the HTML for the closed up version of this tool.
 			this.$el.html( this.chromeTemplate( {
@@ -124,25 +124,20 @@ $( function() {
 
 			this.$icon = this.$el.find( '.mwe-pt-tool-icon' );
 
-			if( this.disabledIcon ) {
-				// not clickable.  turn off the pointer cursor.
-				this.$icon.css( 'cursor', 'default' );
-			} else {
-				// bind a click handler to open it.
-				this.$icon.click( function() {
-					_this.click();
-				} );
+			// bind a click handler to open it.
+			this.$icon.click( function() {
+				_this.click();
+			} );
 
-				// and a hover action.
-				this.$icon.hover(
-					function() {
-						_this.setIcon( 'hover' );
-					},
-					function() {
-						_this.setIcon( 'normal' );
-					}
-				);
-			}
+			// and a hover action.
+			this.$icon.hover(
+				function() {
+					_this.setIcon( 'hover' );
+				},
+				function() {
+					_this.setIcon( 'normal' );
+				}
+			);
 
 			// set up an event for the close button
 			this.$el.find( '.mwe-pt-tool-close' ).click( function() {
