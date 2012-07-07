@@ -450,14 +450,39 @@ class ArticleCompileProcessor {
 	 * Save the compiling result to database as well as cache
 	 */
 	protected function save() {
-		$dbw  = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
+		$dbr = wfGetDB( DB_SLAVE );
+
+		if ( !$this->mPageId ) {
+			return;
+		}
 
 		$tags = ArticleMetadata::getValidTags();
 
-		foreach ( $this->metadata as $pageId => $data ) {
-			//Flush cache so a new copy of cache will be generated
-			$ArticleMetadata = new ArticleMetadata( array( $pageId ) );
-			$ArticleMetadata->flushMetadataFromCache();
+		// Grab existing old metadata
+		$res = $dbr->select(
+			array( 'pagetriage_page_tags', 'pagetriage_tags' ),
+			array( 'ptrpt_page_id', 'ptrt_tag_name', 'ptrpt_value' ),
+			array( 'ptrpt_page_id' => $this->mPageId, 'ptrpt_tag_id = ptrt_tag_id' ),
+			__METHOD__
+		);
+		// data in $newData is used for update, initialize it with new metadata
+		$newData = $this->metadata;
+		// Loop through old metadata value and compare them with the new one,
+		// if they are the same, remove them from $newData
+		foreach ( $res as $row ) {
+			if ( isset ( $newData[$row->ptrpt_page_id][$row->ptrt_tag_name] )
+				&& $newData[$row->ptrpt_page_id][$row->ptrt_tag_name] == $row->ptrpt_value
+			) {
+				unset( $newData[$row->ptrpt_page_id][$row->ptrt_tag_name] );
+			}
+		}
+
+		foreach ( $newData as $pageId => $data ) {
+			//Flush cache so a new copy of cache will be generated, it's safe to
+			//refresh in case some data other than metadata gets updated
+			$articleMetadata = new ArticleMetadata( array( $pageId ) );
+			$articleMetadata->flushMetadataFromCache();
 			//Make sure either all or none metadata for a single page_id
 			$dbw->begin();
 			foreach ( $data as $key => $val) {
