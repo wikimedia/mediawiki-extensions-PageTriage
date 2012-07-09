@@ -48,9 +48,9 @@
 			<%= gM( 'pagetriage-byline' ) %>
 			<a <%= userPageLinkClass %> href="<%= user_title_url %>"><%= mw.html.escape( user_name ) %></a>
 			<span class="mwe-pt-talk-contribs">
-				(<a <%= talkPageLinkClass %> href="<%= user_talk_title_url %>">talk</a>
+				(<a <%= talkPageLinkClass %> href="<%= user_talk_title_url %>"><%= gM( 'talkpagelinktext' ) %></a>
 				&#xb7;
-				<a href="<%= user_contribs_title.getUrl() %>">contribs</a>)
+				<a href="<%= user_contribs_title.getUrl() %>"><%= gM( 'contribslink' ) %></a>)
 			</span>
 			<!-- user_id is undefined or '0' for IP users -->
 			<% if( typeof ( user_id ) != 'undefined' && Number( user_id ) !== 0 ) { %>

@@ -467,6 +467,8 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'pagetriage-note-not-reviewed',
 		'pagetriage-note-deletion',
 		'pagetriage-refresh-list',
+		'talkpagelinktext',
+		'contribslink',
 	)
 );
 
@@ -534,6 +536,8 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-note-reviewed',
 		'pagetriage-note-not-reviewed',
 		'pagetriage-note-deletion',
+		'talkpagelinktext',
+		'contribslink',
 	)
 );
 
