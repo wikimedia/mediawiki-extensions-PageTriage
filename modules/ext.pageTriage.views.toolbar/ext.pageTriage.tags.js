@@ -28,12 +28,24 @@ $( function() {
 		},
 
 		/**
+		 * Show/Hide the review button based on reviewed status
+		 */
+		showHideReviewButton: function() {
+			if ( this.model.get( 'patrol_status' ) > 0 ) {
+				$( '#mwe-pt-checkbox-mark-reviewed-wrapper' ).hide();
+			} else {
+				$( '#mwe-pt-checkbox-mark-reviewed-wrapper' ).show();
+			}
+		},
+
+		/**
 		 * Display the tag flyout, everything should be reset
 		 */
 		render: function() {
 			var _this = this;
 			this.reset();
 			this.$tel.html( this.template( { 'tags': this.tagsOptions, 'title': this.title } ) );
+			this.model.on( 'change', this.showHideReviewButton, this );
 			
 			// add click event for each category
 			$( '#mwe-pt-categories' ).find( 'div' ).each( function( index, value ) {
@@ -57,6 +69,7 @@ $( function() {
 					}
 				).end();
 
+			this.showHideReviewButton();
 			// show tags under common by default
 			this.displayTags( 'common' );
 		},
