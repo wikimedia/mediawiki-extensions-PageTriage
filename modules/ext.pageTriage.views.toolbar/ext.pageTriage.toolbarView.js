@@ -36,7 +36,7 @@ $( function() {
 			tools.push( new mw.pageTriage.MarkView( { eventBus: eventBus, model: article } ) );
 
 			// add tags
-			tools.push( new mw.pageTriage.TagsView( { eventBus: eventBus } ) );
+			tools.push( new mw.pageTriage.TagsView( { eventBus: eventBus, model: article } ) );
 
 			if ( mw.config.get( 'wgPageTriageEnableDeletionWizard' ) ) {
 				// delete
