@@ -392,7 +392,7 @@ $( function() {
 		 * Submit the selected tags
 		 */
 		submit: function() {
-			var topText = '', bottomText = '', processed = {}, _this = this;
+			var topText = '', bottomText = '', processed = {}, _this = this, multipleTags = {};
 
 			for ( var cat in this.selectedTag ) {
 				for ( var tagKey in this.selectedTag[cat] ) {
@@ -406,12 +406,29 @@ $( function() {
 							break;
 						case 'top':
 						default:
-							topText += '{{' + tagObj.tag + this.buildParams( tagObj ) + '}}';
+							if ( tagObj.multiple ) {
+								multipleTags[tagKey] = tagObj;
+							} else {
+								topText += '{{' + tagObj.tag + this.buildParams( tagObj ) + '}}';
+							}
 							break;
 					}
 					processed[tagKey] = true;
 				}
 			}
+
+			var openText = '', closeText = '', multipleTagsText = '';
+			if ( Object.keys( multipleTags ).length > 1 ) {
+				openText = '{{' + $.pageTriageTagsMultiple + '|';
+				closeText = '}}';
+			}
+
+			for ( var tagKey in multipleTags ) {
+				multipleTagsText += '{{' + multipleTags[tagKey].tag
+					+ this.buildParams( multipleTags[tagKey] ) + '}}';
+			}
+
+			topText += openText + multipleTagsText + closeText;
 
 			if ( topText == '' && bottomText == '') {
 				return;
