@@ -685,6 +685,7 @@ $messages['de'] = array(
 	'pagetriage-button-add-parameters' => 'Parameter hinzufügen',
 	'pagetriage-button-add-details' => 'Einzelheiten hinzufügen',
 	'pagetriage-button-edit-details' => 'Einzelheiten bearbeiten',
+	'pagetriage-tags-title' => 'Markierungen hinzufügen',
 	'pagetriage-tags-cat-common-label' => 'Allgemein',
 	'pagetriage-tags-cat-common-desc' => 'Dies sind die am häufigsten verwendeten Markierungen:',
 	'pagetriage-tags-cat-metadata-label' => 'Metadaten',
@@ -856,8 +857,11 @@ $messages['de'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'Kuratierung',
+	'pagetriage-mark-title' => 'Als geprüft markieren',
 	'pagetriage-mark-as-reviewed' => 'Als geprüft markieren',
 	'pagetriage-mark-as-unreviewed' => 'Als ungeprüft markieren',
+	'pagetriage-mark-as-reviewed-helptext' => 'Diese Seite aus der Liste der ungeprüften Seiten entfernen?',
+	'pagetriage-mark-as-unreviewed-helptext' => 'Diese Seite wieder der Liste der ungeprüften Seiten hinzufügen?',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -1215,6 +1219,7 @@ $messages['fr'] = array(
 	'pagetriage-button-add-parameters' => 'Ajouter les paramètres',
 	'pagetriage-button-add-details' => 'Ajouter des détails',
 	'pagetriage-button-edit-details' => 'Modifier les détails',
+	'pagetriage-tags-title' => 'Ajouter des balises',
 	'pagetriage-tags-cat-common-label' => 'Commun',
 	'pagetriage-tags-cat-common-desc' => 'Ce sont les balises plus couramment utilisées :',
 	'pagetriage-tags-cat-metadata-label' => 'Métadonnées',
@@ -1386,8 +1391,11 @@ $messages['fr'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'Conservation',
+	'pagetriage-mark-title' => 'Marquer comme relu',
 	'pagetriage-mark-as-reviewed' => 'Marquer comme révisée',
 	'pagetriage-mark-as-unreviewed' => 'Marquer comme non révisée',
+	'pagetriage-mark-as-reviewed-helptext' => 'Supprimer cette page de la file des non relues?',
+	'pagetriage-mark-as-unreviewed-helptext' => 'Remettre cette page dans la file des non relues?',
 );
 
 /** Galician (galego)
@@ -1470,6 +1478,7 @@ $messages['gl'] = array(
 	'pagetriage-button-add-parameters' => 'Engadir os parámetros',
 	'pagetriage-button-add-details' => 'Engada os detalles',
 	'pagetriage-button-edit-details' => 'Editar os detalles',
+	'pagetriage-tags-title' => 'Engadir etiquetas',
 	'pagetriage-tags-cat-common-label' => 'Común',
 	'pagetriage-tags-cat-common-desc' => 'Estas son as etiquetas máis comúns:',
 	'pagetriage-tags-cat-metadata-label' => 'Metadatos',
@@ -1641,8 +1650,11 @@ $messages['gl'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd de MMMM de yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'Conservación',
+	'pagetriage-mark-title' => 'Marcar como revisado',
 	'pagetriage-mark-as-reviewed' => 'Marcar como revisado',
 	'pagetriage-mark-as-unreviewed' => 'Marcar como non revisado',
+	'pagetriage-mark-as-reviewed-helptext' => 'Quere eliminar esta páxina da cola de páxinas non revisadas?',
+	'pagetriage-mark-as-unreviewed-helptext' => 'Quere devolver esta páxina á cola de páxinas non revisadas?',
 );
 
 /** Hebrew (עברית)
@@ -1945,8 +1957,11 @@ $messages['hsb'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'Wothladowanje',
+	'pagetriage-mark-title' => 'Jako přepruwowany markěrować',
 	'pagetriage-mark-as-reviewed' => 'Jako přepruwowany markěrować',
 	'pagetriage-mark-as-unreviewed' => 'Jako njepřepruwowany markěrować',
+	'pagetriage-mark-as-reviewed-helptext' => 'Tutu stronu z lisćiny njepřepruwowanych stronow wotstronić?',
+	'pagetriage-mark-as-unreviewed-helptext' => 'Tutu stronu zaso lisćinje njepřepruwowanych stronow přidać?',
 );
 
 /** Interlingua (interlingua)
@@ -2026,6 +2041,7 @@ $messages['ia'] = array(
 	'pagetriage-button-add-parameters' => 'Adder parametros',
 	'pagetriage-button-add-details' => 'Adder detalios',
 	'pagetriage-button-edit-details' => 'Modificar detalios',
+	'pagetriage-tags-title' => 'Adder etiquettas',
 	'pagetriage-tags-cat-common-label' => 'Commun',
 	'pagetriage-tags-cat-common-desc' => 'Ecce le etiquettas le plus commun:',
 	'pagetriage-tags-cat-metadata-label' => 'Metadatos',
@@ -2197,8 +2213,11 @@ $messages['ia'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd de MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'Curatela',
+	'pagetriage-mark-title' => 'Marcar como revidite',
 	'pagetriage-mark-as-reviewed' => 'Marcar como revidite',
 	'pagetriage-mark-as-unreviewed' => 'Marcar como non revidite',
+	'pagetriage-mark-as-reviewed-helptext' => 'Remover iste pagina del cauda de versiones non revidite?',
+	'pagetriage-mark-as-unreviewed-helptext' => 'Reinserer iste pagina in le cauda de versiones non revidite?',
 );
 
 /** Italian (italiano)
@@ -2933,6 +2952,7 @@ $messages['mk'] = array(
 	'pagetriage-button-add-parameters' => 'Додај параметри',
 	'pagetriage-button-add-details' => 'Додај подробности',
 	'pagetriage-button-edit-details' => 'Уреди подробности',
+	'pagetriage-tags-title' => 'Додај ознаки:',
 	'pagetriage-tags-cat-common-label' => 'Заедничка',
 	'pagetriage-tags-cat-common-desc' => 'Ова се најчесто употребуваните ознаки:',
 	'pagetriage-tags-cat-metadata-label' => 'Метаподатоци',
@@ -3104,8 +3124,11 @@ $messages['mk'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'Згрижување',
+	'pagetriage-mark-title' => 'Означи како проверена',
 	'pagetriage-mark-as-reviewed' => 'Означи како проверена',
 	'pagetriage-mark-as-unreviewed' => 'Означи како непроверена',
+	'pagetriage-mark-as-reviewed-helptext' => 'Да ја отстранам страницата од редицата на непроверени?',
+	'pagetriage-mark-as-unreviewed-helptext' => 'Да ја вратам страницата во редицата на непроверени?',
 );
 
 /** Dutch (Nederlands)
