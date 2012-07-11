@@ -353,8 +353,6 @@ $messages['qqq'] = array(
 	'pagetriage-note-not-reviewed' => 'A note that appears when a user hovers over a status icon',
 	'pagetriage-note-deletion' => 'A note that appears when a user hovers over a status icon',
 	'pagetriage-refresh-list' => 'A label for a button that refreshes the list of pages',
-	'pagetriage-mark-as-reviewed' => "Label for a button that sets a page's status as reviewed",
-	'pagetriage-mark-as-unreviewed' => "Label for a button that sets a page's status as unreviewed",
 	'pagetriage-tag-count-total' => 'Message that shows the number of tags being selected, $1 is the number',
 	'pagetriage-button-add-tag' => 'Text for the button that submits tags',
 	'pagetriage-button-add-tag-number' => 'Text for the button that submits tags. $1 is a number.',
@@ -519,6 +517,8 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-info-timestamp-date-format' => 'Format specifier for the month and date part of the revision timestamp. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers',
 	'pagetriage-info-timestamp-time-format' => 'Format specifier for the hour and minute part of the revision timestamp. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers',
 	'pagetriage-toolbar-collapsed' => 'Label for the collapsed version of the curation bar',
+	'pagetriage-mark-as-reviewed' => "Label for a button that sets a page's status as reviewed",
+	'pagetriage-mark-as-unreviewed' => "Label for a button that sets a page's status as unreviewed",
 	'pagetriage-mark-as-reviewed-helptext' => 'Descriptive text explaining the "Mark as reviewed" button',
 	'pagetriage-mark-as-unreviewed-helptext' => 'Descriptive text explaining the "Mark as unreviewed" button',
 );
@@ -679,8 +679,6 @@ $messages['de'] = array(
 	'pagetriage-note-not-reviewed' => 'Diese Seite wurde bislang noch nicht geprüft.',
 	'pagetriage-note-deletion' => 'Diese Seite wurde zum Löschen vorgeschlagen.',
 	'pagetriage-refresh-list' => 'Liste aktualisieren',
-	'pagetriage-mark-as-reviewed' => 'Als geprüft markieren',
-	'pagetriage-mark-as-unreviewed' => 'Als ungeprüft markieren',
 	'pagetriage-tag-count-total' => '{{PLURAL:$1|Eine Markierung|$1 Markierungen}} ausgewählt',
 	'pagetriage-button-add-tag' => 'Ausgewählte Markierungen hinzufügen',
 	'pagetriage-button-add-tag-number' => '{{PLURAL:$1|Ausgewählte Markierung|Ausgewählten Markierungen}} hinzufügen',
@@ -858,8 +856,8 @@ $messages['de'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'Kuratierung',
-	'pagetriage-mark-helptext' => 'Diese Seite aus der Liste der ungeprüften Seiten entfernen?',
-	'pagetriage-unmark-helptext' => 'Diese Seite wieder der Liste der ungeprüften Seiten hinzufügen?',
+	'pagetriage-mark-as-reviewed' => 'Als geprüft markieren',
+	'pagetriage-mark-as-unreviewed' => 'Als ungeprüft markieren',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -869,7 +867,6 @@ $messages['de-formal'] = array(
 	'pagetriage-self-review-error' => 'Sie können keine Seiten prüfen, die Sie selbst erstellt haben.',
 	'pagetriage-api-error' => 'Beim Laden der Benutzeroberfläche über die API-Schnittstelle ist ein Fehler aufgetreten. Bitte versuchen Sie die Seite erneut zu laden.',
 	'pagetriage-warning-prototype' => 'Dies ist ein Prototyp und nicht das fertige Hilfsmittel. Die Hauptfunktionen befinden sich noch in der Entwicklung. <a href="$1">Weitere Informationen</a> · <a href="$2">Hinterlassen Sie eine Rückmeldung</a>',
-	'pagetriage-mark-helptext' => 'Fügen Sie einen kurzen erläuternden Text bezüglich der Bedeutung dieser Schaltfläche hinzu',
 );
 
 /** Zazaki (Zazaki)
@@ -954,8 +951,6 @@ $messages['es'] = array(
 	'pagetriage-note-not-reviewed' => 'Esta página aún no se ha revisado.',
 	'pagetriage-note-deletion' => 'Esta página ha sido marcada para su borrado.',
 	'pagetriage-refresh-list' => 'Recargar la lista',
-	'pagetriage-mark-as-reviewed' => 'Marcar como revisado',
-	'pagetriage-mark-as-unreviewed' => 'Marcar como non revisado',
 	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|etiqueta seleccionada|etiquetas seleccionadas}}',
 	'pagetriage-button-add-tag' => 'Agregar etiquetas seleccionadas',
 	'pagetriage-button-add-tag-number' => 'Agregar $1 etiquetas seleccionadas',
@@ -1133,8 +1128,8 @@ $messages['es'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd de MMMM de yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'Conservación',
-	'pagetriage-mark-helptext' => '¿Eliminar esta página de la cola de páginas no revisadas?',
-	'pagetriage-unmark-helptext' => '¿Retornar esta página a la cola de páginas no revisadas?',
+	'pagetriage-mark-as-reviewed' => 'Marcar como revisado',
+	'pagetriage-mark-as-unreviewed' => 'Marcar como non revisado',
 );
 
 /** French (français)
@@ -1214,8 +1209,6 @@ $messages['fr'] = array(
 	'pagetriage-note-not-reviewed' => "Cette page n'a pas encore été relue.",
 	'pagetriage-note-deletion' => 'Cette page est sujette à suppression.',
 	'pagetriage-refresh-list' => 'Rafraîchir la liste',
-	'pagetriage-mark-as-reviewed' => 'Marquer comme révisée',
-	'pagetriage-mark-as-unreviewed' => 'Marquer comme non révisée',
 	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|balise sélectionnée|balises sélectionnées}}',
 	'pagetriage-button-add-tag' => 'Ajouter les balises sélectionnées',
 	'pagetriage-button-add-tag-number' => 'Ajouter  $1  balises sélectionnées',
@@ -1393,7 +1386,8 @@ $messages['fr'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'Conservation',
-	'pagetriage-mark-helptext' => 'Supprimer cette page de la file des non relues?',
+	'pagetriage-mark-as-reviewed' => 'Marquer comme révisée',
+	'pagetriage-mark-as-unreviewed' => 'Marquer comme non révisée',
 );
 
 /** Galician (galego)
@@ -1470,8 +1464,6 @@ $messages['gl'] = array(
 	'pagetriage-note-not-reviewed' => 'A páxina aínda non foi revisada.',
 	'pagetriage-note-deletion' => 'A páxina está marcada para borrar.',
 	'pagetriage-refresh-list' => 'Refrescar a lista',
-	'pagetriage-mark-as-reviewed' => 'Marcar como revisado',
-	'pagetriage-mark-as-unreviewed' => 'Marcar como non revisado',
 	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|etiqueta seleccionada|etiquetas seleccionadas}}',
 	'pagetriage-button-add-tag' => 'Engadir as etiquetas seleccionadas',
 	'pagetriage-button-add-tag-number' => 'Engadir as $1 etiquetas seleccionadas',
@@ -1649,8 +1641,8 @@ $messages['gl'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd de MMMM de yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'Conservación',
-	'pagetriage-mark-helptext' => 'Quere eliminar esta páxina da cola de páxinas non revisadas?',
-	'pagetriage-unmark-helptext' => 'Quere devolver esta páxina á cola de páxinas non revisadas?',
+	'pagetriage-mark-as-reviewed' => 'Marcar como revisado',
+	'pagetriage-mark-as-unreviewed' => 'Marcar como non revisado',
 );
 
 /** Hebrew (עברית)
@@ -1723,8 +1715,6 @@ $messages['he'] = array(
 	'pagetriage-note-not-reviewed' => 'הדף הזה עוד לא נסקר.',
 	'pagetriage-note-deletion' => 'הדף הזה מועמד למחיקה.',
 	'pagetriage-refresh-list' => 'רענון הרשימה',
-	'pagetriage-mark-as-reviewed' => 'לסמן שהדף נסקר',
-	'pagetriage-mark-as-unreviewed' => 'למסן שהדף לא נסקר',
 	'pagetriage-tags-cat-common-label' => 'כללי',
 	'pagetriage-tags-cat-metadata-label' => 'מטא־נתונים',
 	'pagetriage-tags-cat-cleanup-label' => 'תחזוקה',
@@ -1751,6 +1741,8 @@ $messages['he'] = array(
 	'pagetriage-tags-deadend-desc' => 'בדף הזה יש מעט מדי קישורים לדפים אחרים.',
 	'pagetriage-tags-externallinks-label' => 'קישורים חיצוניים',
 	'pagetriage-tags-externallinks-desc' => 'הקישורים החיצוניים בדף הזה אינם מתאימים למדיניות התוכן.',
+	'pagetriage-mark-as-reviewed' => 'לסמן שהדף נסקר',
+	'pagetriage-mark-as-unreviewed' => 'למסן שהדף לא נסקר',
 );
 
 /** Upper Sorbian (hornjoserbsce)
@@ -1824,8 +1816,6 @@ $messages['hsb'] = array(
 	'pagetriage-note-not-reviewed' => 'Tuta strona hišće njeje so přepruwowała.',
 	'pagetriage-note-deletion' => 'Tuta strona je so za zhašenje namjetowała.',
 	'pagetriage-refresh-list' => 'Lisćinu aktualizować',
-	'pagetriage-mark-as-reviewed' => 'Jako přepruwowany markěrować',
-	'pagetriage-mark-as-unreviewed' => 'Jako njepřepruwowany markěrować',
 	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|marka wubrana|marce wubranej|marki wubrane|markow wubranych}}',
 	'pagetriage-button-add-tag' => 'Wubrane marki přidać',
 	'pagetriage-button-add-tag-number' => '$1  {{PLURAL:$1|wubranu marku|wubranej marce|wubrane marki|wubranych markow}} přidać',
@@ -1955,8 +1945,8 @@ $messages['hsb'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'Wothladowanje',
-	'pagetriage-mark-helptext' => 'Tutu stronu z lisćiny njepřepruwowanych stronow wotstronić?',
-	'pagetriage-unmark-helptext' => 'Tutu stronu zaso lisćinje njepřepruwowanych stronow přidać?',
+	'pagetriage-mark-as-reviewed' => 'Jako přepruwowany markěrować',
+	'pagetriage-mark-as-unreviewed' => 'Jako njepřepruwowany markěrować',
 );
 
 /** Interlingua (interlingua)
@@ -2030,8 +2020,6 @@ $messages['ia'] = array(
 	'pagetriage-note-not-reviewed' => 'Iste pagina non ha ancora essite revidite.',
 	'pagetriage-note-deletion' => 'Iste pagina ha essite nominate pro deletion.',
 	'pagetriage-refresh-list' => 'Refrescar lista',
-	'pagetriage-mark-as-reviewed' => 'Marcar como revidite',
-	'pagetriage-mark-as-unreviewed' => 'Marcar como non revidite',
 	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|etiquetta|etiquettas}} seligite',
 	'pagetriage-button-add-tag' => 'Adder le etiquettas seligite',
 	'pagetriage-button-add-tag-number' => 'Adder $1 etiquettas seligite',
@@ -2209,8 +2197,8 @@ $messages['ia'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd de MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'Curatela',
-	'pagetriage-mark-helptext' => 'Remover iste pagina del cauda de versiones non revidite?',
-	'pagetriage-unmark-helptext' => 'Reinserer iste pagina in le cauda de versiones non revidite?',
+	'pagetriage-mark-as-reviewed' => 'Marcar como revidite',
+	'pagetriage-mark-as-unreviewed' => 'Marcar como non revidite',
 );
 
 /** Italian (italiano)
@@ -2285,8 +2273,6 @@ $messages['it'] = array(
 	'pagetriage-note-not-reviewed' => 'Questa pagina non è ancora stata revisionata.',
 	'pagetriage-note-deletion' => 'Questa pagina è stata proposta per la cancellazione.',
 	'pagetriage-refresh-list' => 'Aggiorna elenco',
-	'pagetriage-mark-as-reviewed' => 'Contrassegna come revisionata',
-	'pagetriage-mark-as-unreviewed' => 'Contrassegna come non revisionata',
 	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|etichetta selezionata|etichette selezionate}}',
 	'pagetriage-button-add-tag' => 'Aggiungi etichette selezionate',
 	'pagetriage-button-add-tag-number' => 'Aggiungi $1 etichette selezionate',
@@ -2464,8 +2450,8 @@ $messages['it'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'H:mm',
 	'pagetriage-toolbar-collapsed' => 'Curatela',
-	'pagetriage-mark-helptext' => 'Rimuovi questa pagina dalla coda di quelle non revisionate?',
-	'pagetriage-unmark-helptext' => 'Reinserisci questa pagina nella coda di quelle non revisionate?',
+	'pagetriage-mark-as-reviewed' => 'Contrassegna come revisionata',
+	'pagetriage-mark-as-unreviewed' => 'Contrassegna come non revisionata',
 );
 
 /** Japanese (日本語)
@@ -2574,8 +2560,6 @@ $messages['ko'] = array(
 	'pagetriage-note-reviewed' => '이 문서는 검토되었습니다.',
 	'pagetriage-note-not-reviewed' => '이 문서는 아직 검토되지 않았습니다.',
 	'pagetriage-refresh-list' => '목록 새로 고침',
-	'pagetriage-mark-as-reviewed' => '검토한 것으로 표시',
-	'pagetriage-mark-as-unreviewed' => '검토하지 않은 것으로 표시',
 	'pagetriage-tag-count-total' => '태그 $1개 선택됨',
 	'pagetriage-button-add-tag' => '선택한 태그 추가',
 	'pagetriage-button-add-tag-number' => '선택한 태그 $1개 추가',
@@ -2736,8 +2720,8 @@ $messages['ko'] = array(
 	'pagetriage-info-problem-no-references-desc' => '이 문서는 어떠한 출처도 인용하지 않았습니다.',
 	'pagetriage-info-timestamp-date-format' => 'yyyy년 M월 d일',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
-	'pagetriage-mark-helptext' => '검토하지 않은 대기열에서 이 문서를 제거하겠습니까?',
-	'pagetriage-unmark-helptext' => '검토하지 않은 대기열로 이 문서로 돌아가겠습니까?',
+	'pagetriage-mark-as-reviewed' => '검토한 것으로 표시',
+	'pagetriage-mark-as-unreviewed' => '검토하지 않은 것으로 표시',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -2797,7 +2781,6 @@ $messages['lb'] = array(
 	'pagetriage-note-not-reviewed' => 'Dës Säit gouf nach net nogekuckt.',
 	'pagetriage-note-deletion' => 'Dës Säit gouf virgeschlo fir geläscht ze ginn.',
 	'pagetriage-refresh-list' => 'Lëscht aktualiséieren',
-	'pagetriage-mark-as-reviewed' => 'Als nogekuckt markéieren',
 	'pagetriage-button-add-parameters' => 'Parameter derbäisetzen',
 	'pagetriage-button-add-details' => 'Detailer derbäisetzen',
 	'pagetriage-button-edit-details' => 'Detailer änneren',
@@ -2808,6 +2791,7 @@ $messages['lb'] = array(
 	'pagetriage-tags-refimprove-label' => 'Referenzen',
 	'pagetriage-tags-uncategorised-label' => 'Net kategoriséiert',
 	'pagetriage-tags-uncategorised-desc' => 'Dës Säit gehéiert zu kenger Kategorie.',
+	'pagetriage-tags-unreferenced-label' => 'Ouni Referenzen',
 	'pagetriage-tags-unreferenced-desc' => 'Dës Säit huet guer keng Referenzen.',
 	'pagetriage-tags-deadend-desc' => 'Dës Säit huet nëmmen e puer oder keng Linken op aner Säiten.',
 	'pagetriage-tags-externallinks-label' => 'Extern Linken',
@@ -2829,11 +2813,14 @@ $messages['lb'] = array(
 	'pagetriage-tags-verylong-desc' => 'Dës Säit ass ze laang.',
 	'pagetriage-tags-hoax-label' => 'Falschmeldung',
 	'pagetriage-tags-hoax-desc' => 'Dës Säit ass méiglecherweis e kompletten Hoax.',
+	'pagetriage-tags-fansite-desc' => 'Dës Säit gläicht enger Fan-Säit.',
 	'pagetriage-tags-notenglish-label' => 'Falsch Sprooch',
 	'pagetriage-tags-notenglish-desc' => 'Dës Säit ass an enger falscher Sprooch geschriwwen a muss iwwersat ginn.',
 	'pagetriage-tags-technical-label' => 'Technesch',
 	'pagetriage-tags-technical-desc' => 'Dës Säit ass ze technesch fir e Lieser deen net mam Sujet vertraut ass.',
 	'pagetriage-tags-tense-label' => 'Zäit',
+	'pagetriage-tags-tone-label' => 'Toun',
+	'pagetriage-tags-tone-desc' => 'Den Toun op dëser Säit ass net adequat.',
 	'pagetriage-tags-fiction-label' => 'Fictioun',
 	'pagetriage-tags-fiction-desc' => 'Dës Säit mécht keen Ënnerscheed tëschent Fakten a Fiktioun.',
 	'pagetriage-tags-outofdate-label' => 'Net méi aktuell',
@@ -2849,10 +2836,12 @@ $messages['lb'] = array(
 	'pagetriage-tags-param-free-yes-label' => 'Jo',
 	'pagetriage-tags-param-free-no-label' => 'Neen',
 	'pagetriage-tags-param-missing-required' => 'De Parameter $1 ass obligatoresch',
+	'pagetriage-info-title' => "D'Detailer vun der säit ënnersichen",
 	'pagetriage-info-problem-header' => 'Méiglech Problemer',
 	'pagetriage-info-history-editcount' => '{{PLURAL:$1|Eng Ännerung|$1 Ännerungen}}',
 	'pagetriage-info-help' => 'Hëllef',
 	'pagetriage-info-no-problems' => 'Keng Problemer entdeckt',
+	'pagetriage-info-problem-non-autoconfirmed' => 'Neie Benotzer',
 	'pagetriage-info-problem-blocked' => 'Gespaarte Benotzer',
 	'pagetriage-info-problem-blocked-desc' => 'Dës Säit gouf vun engem gespaarte Benotzer ugeluecht.',
 	'pagetriage-info-problem-no-categories' => 'Keng Kategorien',
@@ -2860,6 +2849,9 @@ $messages['lb'] = array(
 	'pagetriage-info-problem-orphan-desc' => 'Keng aner Säite linken op dës Säit.',
 	'pagetriage-info-problem-no-references' => 'Keng Referenzen',
 	'pagetriage-info-problem-no-references-desc' => 'Dës Säit ernimmt keng Quellen.',
+	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
+	'pagetriage-info-timestamp-time-format' => 'HH:mm',
+	'pagetriage-mark-as-reviewed' => 'Als nogekuckt markéieren',
 );
 
 /** Macedonian (македонски)
@@ -2935,8 +2927,6 @@ $messages['mk'] = array(
 	'pagetriage-note-not-reviewed' => 'Страницата сè уште не е проверена.',
 	'pagetriage-note-deletion' => 'Страницата е предложена за бришење.',
 	'pagetriage-refresh-list' => 'Превчитај го списокот',
-	'pagetriage-mark-as-reviewed' => 'Означи како проверена',
-	'pagetriage-mark-as-unreviewed' => 'Означи како непроверена',
 	'pagetriage-tag-count-total' => '{{PLURAL:$1|Одбрана е $1  ознака|Одбрани се $1 ознаки}}',
 	'pagetriage-button-add-tag' => 'Додај ги избраните ознаки',
 	'pagetriage-button-add-tag-number' => 'Додај $1 {{PLURAL:$1|избрана ознака|избрани ознаки}}',
@@ -3114,8 +3104,8 @@ $messages['mk'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'Згрижување',
-	'pagetriage-mark-helptext' => 'Да ја отстранам страницата од редицата на непроверени?',
-	'pagetriage-unmark-helptext' => 'Да ја вратам страницата во редицата на непроверени?',
+	'pagetriage-mark-as-reviewed' => 'Означи како проверена',
+	'pagetriage-mark-as-unreviewed' => 'Означи како непроверена',
 );
 
 /** Dutch (Nederlands)
@@ -3191,8 +3181,6 @@ $messages['nl'] = array(
 	'pagetriage-note-not-reviewed' => 'Deze pagina is nog niet gecontroleerd.',
 	'pagetriage-note-deletion' => 'Deze pagina is genomineerd voor verwijdering.',
 	'pagetriage-refresh-list' => 'Lijst verversen',
-	'pagetriage-mark-as-reviewed' => 'Als gecontroleerd markeren',
-	'pagetriage-mark-as-unreviewed' => 'Als ongecontroleerd markeren',
 	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|label|labels}} geselecteerd',
 	'pagetriage-button-add-tag' => 'Geselecteerde labels toevoegen',
 	'pagetriage-button-add-tag-number' => '{{PLURAL:$1|geselecteerd label|geselecteerde labels}} toevoegen',
@@ -3368,8 +3356,8 @@ $messages['nl'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'Conservering',
-	'pagetriage-mark-helptext' => 'Deze pagina verwijderen uit de wachtrij voor ongecontroleerde versies?',
-	'pagetriage-unmark-helptext' => 'Deze pagina terugplaatsen in de wachtrij voor ongecontroleerde versies?',
+	'pagetriage-mark-as-reviewed' => 'Als gecontroleerd markeren',
+	'pagetriage-mark-as-unreviewed' => 'Als ongecontroleerd markeren',
 );
 
 /** Polish (polski)
@@ -3511,8 +3499,6 @@ $messages['tl'] = array(
 	'pagetriage-note-not-reviewed' => 'Hindi pa nasusuri ang pahinang ito.',
 	'pagetriage-note-deletion' => 'Ang pahinang ito ay iniharap upang burahin.',
 	'pagetriage-refresh-list' => 'Sariwain ang tala',
-	'pagetriage-mark-as-reviewed' => 'Markahan bilang nasuri na',
-	'pagetriage-mark-as-unreviewed' => 'Markahan bilang hindi pa nasusuri',
 	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|tatak|mga tatak}} na napili',
 	'pagetriage-button-add-tag' => 'Idagdag ang napiling mga tatak',
 	'pagetriage-button-add-tag-number' => 'Idagdag ang $1 napiling {{PLURAL:$1|tatak|mga tatak}}',
@@ -3677,6 +3663,7 @@ $messages['tl'] = array(
 	'pagetriage-info-problem-no-references-desc' => 'Ang pahinang ito ay hindi nagbabanggit ng anumang mga pinagmulan.',
 	'pagetriage-info-timestamp-date-format' => 'a BBBB tttt',
 	'pagetriage-info-timestamp-time-format' => 'OO:mm',
-	'pagetriage-mark-helptext' => 'Magsingit ng ilang maiikling mapagpaliwanag na teksto patungkol sa kung ano ang kahulugan ng pindutang ito',
+	'pagetriage-mark-as-reviewed' => 'Markahan bilang nasuri na',
+	'pagetriage-mark-as-unreviewed' => 'Markahan bilang hindi pa nasusuri',
 );
 
