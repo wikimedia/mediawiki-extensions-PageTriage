@@ -1,49 +1,66 @@
 // Move to the next page
 
 $( function() {
+	// create an event aggregator
+	var eventBus = _.extend( {}, Backbone.Events );
+
+	// instantiate the collection of articles
+	var nextArticles = new mw.pageTriage.ArticleList( { eventBus: eventBus } );
+	
 	mw.pageTriage.NextView = mw.pageTriage.ToolView.extend( {
 		id: 'mwe-pt-next',
 		icon: 'icon_skip.png', // the default icon
 		title: 'Next',
-		
+
+		apiParams: nextArticles.apiParams,
+
 		initialize: function( options ) {
 			this.eventBus = options.eventBus;
-			
-			var lastSearch = JSON.parse( $.cookie( 'NewPageFeedLastSearch' ) );
-			if( lastSearch instanceof Array ) {
-				var position = lastSearch.indexOf( String( mw.config.get( 'wgArticleId' ) ) );
-				if( position > -1 && position < lastSearch.length ) {
-					// this article is in the list, and it's not at the end.
-					this.nextId = lastSearch[position + 1];
-				}
-			}
-			
-			if( ! this.nextId ) {
-				this.disabled = true;
-			}
+		},
+
+		setParams: function() {
+			// these settings are not overwritable
+			this.apiParams.limit  = 1;
+			this.apiParams.action = 'pagetriagelist';
+			this.apiParams.format = 'json';
+			this.apiParams.offset = this.model.get( 'creation_date' );
+			this.apiParams.pageoffset = this.model.get( 'pageid' );
 		},
 		
 		click: function() {
 			var page, _this = this;
-			
+
 			// find the next page.
 			this.eventBus.trigger( 'showTool', this );
-
-			apiRequest = {
-				'action': 'pagetriagelist',
-				'page_id': this.nextId,
-				'format': 'json'
-			};
 			
+			// set the parameters for retrieving the next article
+			this.setParams();
+
+			// attempt to get the next page
 			$.ajax( {
 				type: 'post',
 				url: mw.util.wikiScript( 'api' ),
-				data: apiRequest,
+				data: this.apiParams,
 				dataType: 'json',
-				async: false,
 				success: function( result ) {
-					if ( result.pagetriagelist !== undefined && result.pagetriagelist.result === 'success' ) {
+					if ( result.pagetriagelist && result.pagetriagelist.result === 'success'
+						&& result.pagetriagelist.pages[0]
+					) {
 						page = result.pagetriagelist.pages[0];
+						if( page.title ) {
+							var url = mw.config.get('wgArticlePath').replace(
+								'$1', mw.util.wikiUrlencode( page.title )
+							);
+							if( page.is_redirect == '1' ) {
+								var mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
+								url += mark + "redirect=no";
+							}
+							window.location.href = url;
+						} else {
+							_this.disable();
+						}
+					} else {
+						_this.disable();
 					}
 				},
 				error: function( xhr ) {
@@ -51,18 +68,6 @@ $( function() {
 				}
 			} );
 
-			if( page.title ) {
-				var url = mw.config.get('wgArticlePath').replace(
-					'$1', mw.util.wikiUrlencode( page.title )
-				);
-				if( page.is_redirect == '1' ) {
-					var mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
-					url += mark + "redirect=no";
-				}
-				window.location.href = url;
-			} else {
-				this.disable();
-			}
 		}
 
 	} );

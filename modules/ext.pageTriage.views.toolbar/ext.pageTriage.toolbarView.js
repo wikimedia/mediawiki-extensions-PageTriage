@@ -52,7 +52,7 @@ $( function() {
 			}
 
 			// next article
-			tools.push( new mw.pageTriage.NextView( { eventBus: eventBus } ) );
+			tools.push( new mw.pageTriage.NextView( { eventBus: eventBus, model: article } ) );
 		},
 
 		render: function() {
