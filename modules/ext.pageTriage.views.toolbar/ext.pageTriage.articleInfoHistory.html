@@ -5,6 +5,8 @@
 </span>
 <li class="mwe-pt-info-history-entry">
 	<%= timestamp_time %> &#xb7;
-	<a href="<%= user_title_url %>"><%= mw.html.escape( user ) %></a> &#xb7;
-	<%= parsedcomment %>
+	<a href="<%= user_title_url %>"><%= mw.html.escape( user ) %></a>
+	<% if ( parsedcomment ) { %>
+		&#xb7; <%= parsedcomment %>
+	<% } %>
 </li>

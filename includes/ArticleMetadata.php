@@ -780,7 +780,7 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 			// User exists
 			if ( $row->user_id ) {
 				$user = User::newFromRow( $row );
-				$this->metadata[$row->page_id]['user_id'] = $user->getId();
+				$this->metadata[$row->page_id]['user_id'] = $row->user_id;
 				$this->metadata[$row->page_id]['user_name'] = $user->getName();
 				$this->metadata[$row->page_id]['user_editcount'] = $user->getEditCount();
 				$this->metadata[$row->page_id]['user_creation_date'] = wfTimestamp( TS_MW, $user->getRegistration() );
