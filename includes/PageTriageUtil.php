@@ -212,6 +212,15 @@ class PageTriageUtil {
 	}
 
 	/**
+	 * returns the cahce key for user status
+	 * @param $userName string
+	 * @return string
+	 */
+	public static function userStatusKey( $userName ) {
+		return wfMemcKey( 'pagetriage', 'user-page-status', $userName, self::getCacheVersion() );
+	}
+
+	/**
 	 * Check the existance of user page and talk page for a list of users
 	 * @param $users array - contains user_name db keys
 	 * @return array
@@ -224,8 +233,7 @@ class PageTriageUtil {
 
 		foreach ( $users as $user ) {
 			$user = (array) $user;
-			$key = wfMemcKey( 'pagetriage', 'user-page-status', $user['user_name'], self::getCacheVersion() );
-			$data = $wgMemc->get( $key );
+			$data = $wgMemc->get( self::userStatusKey( $user['user_name'] ) );
 			if ( $data !== false ) {
 				foreach ( $data as $pageKey => $status ) {
 					if ( $status === 1 ) {
@@ -272,8 +280,7 @@ class PageTriageUtil {
 				} else {
 					$return[$value['t']->getPrefixedDBkey()] = 1;
 				}
-				$memcKey = wfMemcKey( 'pagetriage', 'user-page-status', $value['user_name'], self::getCacheVersion() );
-				$wgMemc->set( $memcKey, $dataToCache[$value['user_name']], 3600 );
+				$wgMemc->set( self::userStatusKey( $value['user_name'] ), $dataToCache[$value['user_name']], 3600 );
 			}
 		}
 

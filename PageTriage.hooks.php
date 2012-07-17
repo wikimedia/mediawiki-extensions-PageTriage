@@ -19,6 +19,10 @@ class PageTriageHooks {
 		$articleMetadata = new ArticleMetadata( array( $pageId ) );
 		$articleMetadata->flushMetadataFromCache();
 
+		// Delete user status cache
+		self::flushUserStatusCache( $oldTitle );
+		self::flushUserStatusCache( $newTitle );
+
 		$oldNamespace = $oldTitle->getNamespace();
 		$newNamespace = $newTitle->getNamespace();
 		// Do nothing further on if
@@ -58,6 +62,7 @@ class PageTriageHooks {
 	 * @param $comment: The comment associated with the undeletion.
 	 */
 	public static function onArticleUndelete( $title, $create, $comment ) {
+		self::flushUserStatusCache( $title );
 		$pageId = $title->getArticleID();
 		if ( $pageId && self::addToPageTriageQueue( $pageId, $title ) ) {
 			$acp = ArticleCompileProcessor::newFromPageId( array( $pageId ) );
@@ -129,6 +134,7 @@ class PageTriageHooks {
 	 * @return bool
 	 */
 	public static function onArticleSaveComplete( $article, $user, $text, $summary, $minoredit, $watchthis, $sectionanchor, $flags, $revision, $status, $baseRevId ) {
+		self::flushUserStatusCache( $article->getTitle() );
 		$acp = ArticleCompileProcessor::newFromPageId( array( $article->getId() ) );
 		if ( $acp ) {
 			// Register the article object so we can get the content and other useful information
@@ -150,6 +156,7 @@ class PageTriageHooks {
 	 * @param $id int id of the article that was deleted
 	 */
 	public static function onArticleDeleteComplete( $article, $user, $reason, $id ) {
+		self::flushUserStatusCache( $article->getTitle() );
 		// delete everything
 		$pageTriage = new PageTriage( $id );
 		$pageTriage->deleteFromPageTriage();
@@ -205,6 +212,19 @@ class PageTriageHooks {
 		);
 
 		return true;
+	}
+
+	/**
+	 * Flush user page/user talk page exsitance status, this function should
+	 * be called when a page gets created/deleted/moved/restored
+	 * @param $title
+	 */
+	private static function flushUserStatusCache( $title ) {
+		global $wgMemc;
+
+		if ( in_array( $title->getNamespace(), array( NS_USER, NS_USER_TALK ) ) ) {
+			$wgMemc->delete( PageTriageUtil::userStatusKey( $title->getText() ) );
+		}
 	}
 
 	/**
