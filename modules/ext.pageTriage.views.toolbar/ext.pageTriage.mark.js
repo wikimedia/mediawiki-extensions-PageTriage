@@ -6,7 +6,23 @@ $( function() {
 		icon: 'icon_mark_reviewed.png', // the default icon
 		title: gM( 'pagetriage-mark-as-reviewed' ),
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'mark.html' } ),
-		
+
+		initialize: function( options ) {
+			this.eventBus = options.eventBus;
+			this.model.on( 'change', this.setIcon, this );
+		},
+
+		// overwrite parent function
+		setIcon: function( dir ) {
+			if ( typeof( dir ) !== 'string' )  {
+				dir = 'normal';
+			}
+			if ( dir === 'normal' && this.model.get( 'patrol_status' ) > 0 ) {
+				dir = 'special';
+			}
+			this.$icon.attr('src', this.iconPath( dir ) );
+		},
+
 		submit: function( action ) {
 			var _this = this;
 			apiRequest = {
