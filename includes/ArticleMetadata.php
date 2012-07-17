@@ -221,23 +221,28 @@ class ArticleMetadata {
 	 * @return array
 	 */
 	public static function getValidTags() {
-		static $tags = array();
+		global $wgPageTriageCacheVersion, $wgMemc;
+		$key = wfMemcKey( 'pagetriage', 'valid', 'tags', $wgPageTriageCacheVersion );
 
-		if ( count( $tags ) > 0 ) {
-			return $tags;
-		}
+		$tags = $wgMemc->get( $key );
+		if ( $tags === false  ) {
+			$tags = array();
 
-		$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select(
+					array( 'pagetriage_tags' ),
+					array( 'ptrt_tag_id', 'ptrt_tag_name' ),
+					array( ),
+					__METHOD__
+			);
 
-		$res = $dbr->select(
-				array( 'pagetriage_tags' ),
-				array( 'ptrt_tag_id', 'ptrt_tag_name' ),
-				array( ),
-				__METHOD__
-		);
-
-		foreach ( $res as $row ) {
-			$tags[$row->ptrt_tag_name] = $row->ptrt_tag_id;
+			foreach ( $res as $row ) {
+				$tags[$row->ptrt_tag_name] = $row->ptrt_tag_id;
+			}
+			// only set to cache if the result from db is not empty
+			if ( $tags ) {
+				$wgMemc->set( $key, $tags, 60 * 60 * 24 * 2 );
+			}
 		}
 
 		return $tags;
