@@ -116,6 +116,7 @@ $wgHooks['MarkPatrolledComplete'][] = 'PageTriageHooks::onMarkPatrolledComplete'
 $wgHooks['BlockIpComplete'][] = 'PageTriageHooks::onBlockIpComplete';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'PageTriageHooks::onResourceLoaderGetConfigVars';
 $wgHooks['ArticleUndelete'][] = 'PageTriageHooks::onArticleUndelete';
+$wgHooks['MakeGlobalVariablesScript'][] = 'PageTriageHooks::makeGlobalVariablesScript';
 
 /**
  * @param $updater DatabaseUpdater
@@ -417,6 +418,7 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'pagetriage-byline',
 		'pagetriage-editcount',
 		'pagetriage-author-not-autoconfirmed',
+		'pagetriage-no-patrol-right',
 		'pagetriage-author-blocked',
 		'pagetriage-author-bot',
 		'pagetriage-creation-dateformat',
