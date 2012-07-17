@@ -111,6 +111,7 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 								<div class="mwe-pt-control-section">
 									<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-show-heading' ) %></b></span>
 									<div class="mwe-pt-control-options">
+										<input type="checkbox" id="mwe-pt-filter-unreviewed-edits" /> <%= gM( 'pagetriage-filter-unreviewed-edits' ) %> <br/>
 										<input type="checkbox" id="mwe-pt-filter-reviewed-edits" /> <%= gM( 'pagetriage-filter-reviewed-edits' ) %> <br/>
 										<input type="checkbox" id="mwe-pt-filter-nominated-for-deletion" /> <%= gM( 'pagetriage-filter-nominated-for-deletion' ) %> <br/>
 										<input type="checkbox" id="mwe-pt-filter-redirects" /> <%= gM( 'pagetriage-filter-redirects' ) %> <br/>

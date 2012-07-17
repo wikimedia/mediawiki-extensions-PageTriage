@@ -68,10 +68,20 @@ class ApiPageTriageList extends ApiBase {
 		$tables	  = array( 'pagetriage_page', 'page' );
 		$conds    = array( 'ptrp_page_id = page_id' );
 
-		// Include reviewed
-		if ( !$opts['showreviewed'] ) {
-			$conds['ptrp_reviewed'] = 0;
+		$reviewOpr = '';
+		if ( $opts['showreviewed'] ) {
+			$reviewOpr .= '>';
 		}
+		if ( $opts['showunreviewed'] ) {
+			$reviewOpr .= '=';
+		}
+		if ( !$reviewOpr ) {
+			return $pages;
+		}
+		if ( $reviewOpr !== '>=' ) {
+			$conds[] = 'ptrp_reviewed ' . $reviewOpr . ' 0';
+		}
+
 		// Include redirect
 		if ( !$opts['showredirs'] ) {
 			$conds['page_is_redirect'] = 0;
@@ -181,6 +191,9 @@ class ApiPageTriageList extends ApiBase {
 			'showreviewed'=> array(
 				ApiBase::PARAM_TYPE => 'boolean',
 			),
+			'showunreviewed'=> array(
+				ApiBase::PARAM_TYPE => 'boolean',
+			),
 			'showdeleted' => array(
 				ApiBase::PARAM_TYPE => 'boolean',
 			),
@@ -226,6 +239,7 @@ class ApiPageTriageList extends ApiBase {
 			'showbots' => 'Whether to show only bot edits',
 			'showredirs' => 'Whether to include redirects or not', // default is not to show redirects
 			'showreviewed' => 'Whether to include reviewed or not', // default is not to show reviewed
+			'showunreviewed' => 'Whether to include unreviewed or not', // default is not to show reviewed
 			'showdeleted' => 'Whether to include "proposed for deleted" or not', // default is not to show deleted
 			'limit' => 'The maximum number of results to return',
 			'offset' => 'Timestamp to start from',
