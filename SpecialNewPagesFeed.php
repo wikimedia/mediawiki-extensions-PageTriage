@@ -58,7 +58,8 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 		$globalVars = array(
 			'wgPageTriageInfiniteScrolling' => $wgPageTriageInfiniteScrolling,
 			'wgPageTriageStickyControlNav' => $wgPageTriageStickyControlNav,
-			'wgPageTriageStickyStatsNav' => $wgPageTriageStickyStatsNav
+			'wgPageTriageStickyStatsNav' => $wgPageTriageStickyStatsNav,
+			'wgPageTriageEnableReviewButton' => $wgUser->useNPPatrol(),
 		);
 		$out->addJsConfigVars( $globalVars );
 

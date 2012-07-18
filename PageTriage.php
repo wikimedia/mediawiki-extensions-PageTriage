@@ -116,7 +116,6 @@ $wgHooks['MarkPatrolledComplete'][] = 'PageTriageHooks::onMarkPatrolledComplete'
 $wgHooks['BlockIpComplete'][] = 'PageTriageHooks::onBlockIpComplete';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'PageTriageHooks::onResourceLoaderGetConfigVars';
 $wgHooks['ArticleUndelete'][] = 'PageTriageHooks::onArticleUndelete';
-$wgHooks['MakeGlobalVariablesScript'][] = 'PageTriageHooks::makeGlobalVariablesScript';
 
 /**
  * @param $updater DatabaseUpdater
