@@ -395,13 +395,6 @@ class PageTriageHooks {
 		global $wgPageTriageToolbarInfoHelpLink, $wgPageTriageEnableDeletionWizard;
 		$vars['wgPageTriageToolbarInfoHelpLink'] = $wgPageTriageToolbarInfoHelpLink;
 		$vars['wgPageTriageEnableDeletionWizard'] = $wgPageTriageEnableDeletionWizard;
-
-		return true;
-	}
-
-	public static function makeGlobalVariablesScript( &$vars ) {
-		global $wgUser;
-		$vars['wgPageTriageEnableReviewButton'] = $wgUser->useNPPatrol();
 		return true;
 	}
 }
