@@ -53,7 +53,7 @@ $wgPageTriagePagesPerRequest = 20; // Maximum number of articles for the API to 
 $wgPageTriageInfiniteScrolling = true; // Whether or not to use infinite scrolling in the page list
 $wgPageTriageStickyControlNav = true; // Whether or not the top nav bar should float
 $wgPageTriageStickyStatsNav = true; // Whether or not the bottom nav bar should float
-$wgPageTriageMarkPatrolledLinkExpiry = 3600 * 24; // 1 day
+$wgPageTriageMarkPatrolledLinkExpiry = 3600 * 24; // 1 day - How long after visiting Special:NewPagesFeed do we show review links on articles
 $wgPageTriageNoIndexTemplates = 'No_index_templates'; // Pages containing templates defined in this title would not be indexed.
 $wgPageTriageLearnMoreUrl = 'http://en.wikipedia.org/wiki/Wikipedia:New_Pages_Feed/Help';
 $wgPageTriageFeedbackUrl = 'http://en.wikipedia.org/wiki/Wikipedia_talk:New_Pages_Feed';
@@ -61,6 +61,7 @@ $wgPageTriageEnableCurationToolbar = false; // enable the curation toolbar?
 $wgPageTriageEnableDeletionWizard = false; // enable the deletion wizard?
 $wgPageTriageToolbarInfoHelpLink = "http://en.wikipedia.org/wiki/Wikipedia:New_pages_patrol#Patroller_checklists"; // help link in toolbar article info view
 $wgPageTriageCacheVersion = '1.0'; // version number to be added to cache key so that cache can be refreshed easily
+$wgPageTriageNamespaces = array( 0, 2 );
 // End configuration variables
 
 $dir = dirname( __FILE__ ) . '/';

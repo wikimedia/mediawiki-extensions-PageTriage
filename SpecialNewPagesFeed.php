@@ -26,7 +26,8 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 	public function execute( $sub ) {
 		global $wgRequest, $wgPageTriageInfiniteScrolling,
 		       $wgPageTriageStickyControlNav, $wgPageTriageStickyStatsNav,
-		       $wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl;
+		       $wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl,
+		       $wgPageTriageNamespaces;
 
 		$out = $this->getOutput();
 
@@ -56,6 +57,7 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 
 		// Set the config flags in JavaScript
 		$globalVars = array(
+			'wgPageTriageNamespaces' => $wgPageTriageNamespaces,
 			'wgPageTriageInfiniteScrolling' => $wgPageTriageInfiniteScrolling,
 			'wgPageTriageStickyControlNav' => $wgPageTriageStickyControlNav,
 			'wgPageTriageStickyStatsNav' => $wgPageTriageStickyStatsNav
@@ -120,15 +122,18 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 									<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-namespace-heading' ) %></b></span>
 									<div class="mwe-pt-control-options">
 										<select id="mwe-pt-filter-namespace">
-											<option value=""><%= gM( 'pagetriage-filter-ns-all' ) %></option>
+											<!--<option value=""><%= gM( 'pagetriage-filter-ns-all' ) %></option>-->
 											<%
 												var wgFormattedNamespaces = mw.config.get( 'wgFormattedNamespaces' );
+												var wgPageTriageNamespaces = mw.config.get( 'wgPageTriageNamespaces' );
 												var nsOptions = '';
 												for ( var key in wgFormattedNamespaces ) {
-													if ( wgFormattedNamespaces[key] == '' ) {
-														nsOptions += String('<option value="' + String(key) + '">' + gM( 'blanknamespace' ) + '</option>');
-													} else if( key > 0 ) {
-														nsOptions += String('<option value="' + String(key) + '">' + wgFormattedNamespaces[key] + '</option>');
+													if ( key in wgPageTriageNamespaces ) {
+														if ( wgFormattedNamespaces[key] == '' ) {
+															nsOptions += String('<option value="' + String(key) + '">' + gM( 'blanknamespace' ) + '</option>');
+														} else if( key > 0 ) {
+															nsOptions += String('<option value="' + String(key) + '">' + wgFormattedNamespaces[key] + '</option>');
+														}
 													}
 												}
 												print(nsOptions);

@@ -1,25 +1,33 @@
 <!-- individual list item template -->
 <% if ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) { %>
-	<div class="mwe-pt-article-row mwe-pt-deleted">
+	<% if ( position % 2 == 0 ) { %>
+		<div class="mwe-pt-article-row mwe-pt-article-row-even mwe-pt-deleted">
+	<% } else { %>
+		<div class="mwe-pt-article-row mwe-pt-article-row-odd mwe-pt-deleted">
+	<% } %>
 		<div class="mwe-pt-status-icon">
 			<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_marked_for_deletion.png' %>" width="21" height="21" title="<%= gM( "pagetriage-note-deletion" ) %>" />
 		</div>
 <% } else if ( patrol_status != "0" ) { %>
-	<div class="mwe-pt-article-row mwe-pt-reviewed">
+	<% if ( position % 2 == 0 ) { %>
+		<div class="mwe-pt-article-row mwe-pt-article-row-even mwe-pt-reviewed">
+	<% } else { %>
+		<div class="mwe-pt-article-row mwe-pt-article-row-odd mwe-pt-reviewed">
+	<% } %>
 		<div class="mwe-pt-status-icon">
 			<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_reviewed.png' %>" width="21" height="21" title="<%= gM( "pagetriage-note-reviewed" ) %>" />
 		</div>
 <% } else { %>
-	<div class="mwe-pt-article-row mwe-pt-new">
+	<% if ( position % 2 == 0 ) { %>
+		<div class="mwe-pt-article-row mwe-pt-article-row-even mwe-pt-new">
+	<% } else { %>
+		<div class="mwe-pt-article-row mwe-pt-article-row-odd mwe-pt-new">
+	<% } %>
 		<div class="mwe-pt-status-icon">
 			<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_not_reviewed.png' %>" width="21" height="21" title="<%= gM( "pagetriage-note-not-reviewed" ) %>" />
 		</div>
 <% } %>
-<% if ( position % 2 == 0 ) { %>
-	<div class="mwe-pt-info-pane mwe-pt-info-pane-even">
-<% } else { %>
-	<div class="mwe-pt-info-pane mwe-pt-info-pane-odd">
-<% } %>
+	<div class="mwe-pt-info-pane">
 		<div class="mwe-pt-article">
 			<span class="mwe-pt-creation-date"><%= creation_date_pretty %></span>
 			<a class="mwe-pt-list-triage-button ui-button-blue" href="<%= title_url %>" target="_blank" title='<%= reviewRightHelpText %>'></a>
