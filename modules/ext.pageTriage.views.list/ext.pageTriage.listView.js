@@ -163,7 +163,8 @@ $( function() {
 			$( "#mwe-pt-list-view" ).append( view.render().el );
 			$( ".mwe-pt-list-triage-button" ).button({
 				label: mw.msg( 'pagetriage-triage' ),
-				icons: { primary:'ui-icon-search' }
+				icons: { secondary:'ui-icon-triangle-1-e' },
+				disabled: ( mw.config.get( 'wgPageTriageEnableReviewButton' ) ? false : true )
 			});
 		},
 
