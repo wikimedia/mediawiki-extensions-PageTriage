@@ -111,6 +111,7 @@ $( function() {
 			dir: 'newestfirst',
 			namespace: 0,
 			showreviewed: 1,
+			showunreviewed: 1,
 			showdeleted: 1,
 			/*
 			showredirs: 0

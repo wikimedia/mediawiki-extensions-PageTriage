@@ -64,6 +64,13 @@ $( function() {
 				e.stopPropagation();
 			} );
 
+			$( '#mwe-pt-filter-reviewed-edits,#mwe-pt-filter-unreviewed-edits' ).click(
+				function( e ) {
+					_this.setSubmitButtonState();
+					e.stopPropagation();
+				}
+			);
+
 			// the filter dropdown menu control
 			$( '#mwe-pt-filter-dropdown-control' ).click( function( e ) {
 				_this.toggleFilterMenu();
@@ -182,6 +189,18 @@ $( function() {
 
 				this.filterMenuVisible = 1;
 			}
+
+			this.setSubmitButtonState();
+		},
+
+		setSubmitButtonState: function() {
+			if( !$('#mwe-pt-filter-reviewed-edits').prop('checked')
+				&& !$('#mwe-pt-filter-unreviewed-edits').prop('checked')
+			) {
+				$( ".mwe-pt-filter-set-button" ).button( 'disable' );
+			} else {
+				$( ".mwe-pt-filter-set-button" ).button( 'enable' );
+			}
 		},
 
 		// Sync the filters with the contents of the menu
@@ -195,6 +214,10 @@ $( function() {
 			// these are conditionals because the keys shouldn't exist if the checkbox isn't checked.
 			if( $('#mwe-pt-filter-reviewed-edits').prop('checked') ) {
 				apiParams['showreviewed'] = '1';
+			}
+
+			if( $('#mwe-pt-filter-unreviewed-edits').prop('checked') ) {
+				apiParams['showunreviewed'] = '1';
 			}
 
 			if( $('#mwe-pt-filter-nominated-for-deletion').prop('checked') ) {
@@ -265,6 +288,7 @@ $( function() {
 			}
 
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-reviewed-edits' ), 'showreviewed', 'pagetriage-filter-stat-reviewed');
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-unreviewed-edits' ), 'showunreviewed', 'pagetriage-filter-stat-unreviewed');
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-nominated-for-deletion' ), 'showdeleted', 'pagetriage-filter-stat-nominated-for-deletion');
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-bot-edits' ), 'showbots', 'pagetriage-filter-stat-bots');
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-redirects' ), 'showredirs', 'pagetriage-filter-stat-redirects');
