@@ -3,13 +3,12 @@
 }
 
 .mwe-pt-control-gradient {
-	/* e7f1f7 to 9da3a8 */
-	/* of e7f1f7 b6bec3 */
-	background: #d0d8de; /* for non-css3 browsers */
-
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e7f1f7', endColorstr='#b6bec3' ); /* for IE */
-	background: -webkit-gradient( linear, left top, left bottom, from( #e7f1f7 ), to( #b6bec3 ) ); /* for webkit browsers */
-	background: -moz-linear-gradient( top,  #e7f1f7,  #b6bec3 ); /* for firefox 3.6+ */
+	background: #C9C9C9; /* for non-css3 browsers */
+	/*
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e7f1f7', endColorstr='#b6bec3' );
+	background: -webkit-gradient( linear, left top, left bottom, from( #e7f1f7 ), to( #b6bec3 ) );
+	background: -moz-linear-gradient( top,  #e7f1f7,  #b6bec3 );
+	*/
 }
 
 #mwe-pt-list-control-nav-content {
@@ -20,6 +19,7 @@
 	position: fixed;
 	top: 0;
 	z-index: 1;
+	box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.4);
 }
 
 .mwe-pt-control-section {

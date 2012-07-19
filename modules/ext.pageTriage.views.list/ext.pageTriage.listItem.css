@@ -1,9 +1,9 @@
 .mwe-pt-article-row-even {
-	background-color: white;
+	background-color: #f1f1f1;
 }
 
 .mwe-pt-article-row-odd {
-	background-color: #f1f1f1;
+	background-color: white;
 }
 
 .mwe-pt-info-pane {
