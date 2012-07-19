@@ -37,6 +37,7 @@ $( function() {
 			}
 
 			var userName = article.get( 'user_name' );
+			// TODO: What if userName doesn't exist?
 			if( userName ) {
 				var userTitle     = new mw.Title( userName, mw.config.get('wgNamespaceIds')['user'] );
 				var userTalkTitle = new mw.Title( userName, mw.config.get('wgNamespaceIds')['user_talk'] );

@@ -24,16 +24,17 @@
 			(<a <%= talkPageLinkClass %> href="<%= user_talk_title_url %>"><%= gM( 'talkpagelinktext' ) %></a>
 			&#xb7;
 			<a href="<%= user_contribs_title.getUrl() %>"><%= gM( 'contribslink' ) %></a>)
-	
-			<br/>
-	
-			<!-- user_id is 0 for IP users -->
+			
+			<!-- if user is registered (user_id is 0 for IP users) -->
 			<% if( typeof user_id != 'undefined' && Number( user_id ) !== 0 ) { %>
+				&#xb7;
 				<%= gM( 'pagetriage-editcount', user_editcount, user_creation_date_pretty ) %>
-				<% if( user_bot == "1" ) { %>
-					&#xb7;
-					<%= gM( 'pagetriage-author-bot' ) %>
-				<% } %>
+			<% } %>
+			
+			<!-- if user is a bot -->
+			<% if( user_bot == "1" ) { %>
+				&#xb7;
+				<%= gM( 'pagetriage-author-bot' ) %>
 			<% } %>
 		</span>
 	<% } else { %>

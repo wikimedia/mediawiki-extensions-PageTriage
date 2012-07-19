@@ -1,7 +1,9 @@
 .mwe-pt-info-header {
 	border-bottom: 1px solid black;
+	margin-bottom: 0.5em;
 	font-weight: bold;
 	width: 100%;
+	clear: both;
 }
 
 .mwe-pt-info-header-details {
@@ -34,8 +36,7 @@
 }
 .mwe-pt-info-status-icon {
 	float: left;
-	padding: 3px;
-	padding-right: 5px;
+	padding: 3px 5px 7px 3px;
 }
 
 .mwe-pt-info-content {
@@ -47,5 +48,5 @@
 
 .mwe-pt-info-history-entry {
 	font-size: 0.9em;
-	margin-left: 1em;
+	margin: 0.5em 0 0.5em 1.5em;
 }

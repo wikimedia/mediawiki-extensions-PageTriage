@@ -249,7 +249,7 @@ $messages['en'] = array(
 	'pagetriage-tags-param-missing-required' => 'Parameter $1 is required',
 	'pagetriage-tags-param-date-format' => '$1 $2',
 
-	'pagetriage-info-title' => 'Examine page details',
+	'pagetriage-info-title' => 'Page info',
 	'pagetriage-info-problem-header' => 'Possible problems',
 	'pagetriage-info-history-header' => 'History',
 	'pagetriage-info-history-editcount' => '$1 {{PLURAL:$1|edit|edits}}',
