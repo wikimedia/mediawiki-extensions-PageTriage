@@ -1,8 +1,8 @@
-.mwe-pt-info-pane-even {
+.mwe-pt-article-row-even {
 	background-color: white;
 }
 
-.mwe-pt-info-pane-odd {
+.mwe-pt-article-row-odd {
 	background-color: #f1f1f1;
 }
 
@@ -24,16 +24,6 @@
 	position: relative;
 	border: 1px solid #ccc;
 	border-top: none;
-}
-
-.mwe-pt-article-row.mwe-pt-new {
-	background-color: #f2b3b3;
-}
-.mwe-pt-article-row.mwe-pt-reviewed {
-	background-color: #c3ead7;
-}
-.mwe-pt-article-row.mwe-pt-deleted {
-	background-color: #b3b3b3;
 }
 
 .mwe-pt-list-triage-button {
