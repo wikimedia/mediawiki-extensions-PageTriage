@@ -130,7 +130,7 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 												var wgPageTriageNamespaces = mw.config.get( 'wgPageTriageNamespaces' );
 												var nsOptions = '';
 												for ( var key in wgFormattedNamespaces ) {
-													if ( key in wgPageTriageNamespaces ) {
+													if ( $.inArray( Number(key), wgPageTriageNamespaces ) > -1 ) {
 														if ( wgFormattedNamespaces[key] == '' ) {
 															nsOptions += String('<option value="' + String(key) + '">' + gM( 'blanknamespace' ) + '</option>');
 														} else if( key > 0 ) {
