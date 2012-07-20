@@ -55,28 +55,6 @@ class PageTriageHooks {
 	}
 
 	/**
-	 * Add a page back to queue after the page gets restored
-	 * @param $title Title corresponding to the article restored
-	 * @param $create: Whether or not the restoration caused the page to be created
-	 *			(i.e. it didn't exist before)
-	 * @param $comment: The comment associated with the undeletion.
-	 */
-	public static function onArticleUndelete( $title, $create, $comment ) {
-		self::flushUserStatusCache( $title );
-		$pageId = $title->getArticleID();
-		if ( $pageId && self::addToPageTriageQueue( $pageId, $title ) ) {
-			$acp = ArticleCompileProcessor::newFromPageId( array( $pageId ) );
-			if ( $acp ) {
-				// better to use master db since new page_id is created for
-				// undeleted article, data association may not get to slave db yet
-				$acp->compileMetadata();
-			}
-		}
-
-		return true;
-	}
-
-	/**
 	 * Check if a page is created from a redirect page, then insert into it PageTriage Queue
 	 * Note: Page will be automatically marked as triaged for users with autopatrol right
 	 *
