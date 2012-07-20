@@ -71,6 +71,8 @@ var param = {
 	}
 };
 
+$.pageTriageTagsMultiple = 'Multiple issues';
+
 $.pageTriageTagsOptions = {
 
 	'common': {
@@ -85,7 +87,8 @@ $.pageTriageTagsOptions = {
 					'date': param.date
 				},
 				position: 'top',
-				dest: 'verifiability'
+				dest: 'verifiability',
+				multiple: true
 			},
 
 			'copyedit': {
@@ -97,7 +100,8 @@ $.pageTriageTagsOptions = {
 					'for': $.extend( true, {}, param['for'] )
 				},
 				position: 'top',
-				dest: 'cleanup'
+				dest: 'cleanup',
+				multiple: true
 			},
 
 			'morefootnotes': {
@@ -109,7 +113,8 @@ $.pageTriageTagsOptions = {
 					'blp': $.extend( true, {}, param.blp )
 				},
 				position: 'top',
-				dest: 'verifiability'
+				dest: 'verifiability',
+				multiple: true
 			},
 
 			'refimprove': {
@@ -120,7 +125,8 @@ $.pageTriageTagsOptions = {
 					'date': param.date
 				},
 				position: 'top',
-				dest: 'sources'
+				dest: 'sources',
+				multiple: true
 			},
 
 			'uncategorised': {
@@ -131,7 +137,8 @@ $.pageTriageTagsOptions = {
 					'date': param.date
 				},
 				position: 'bottom',
-				dest: 'metadata'
+				dest: 'metadata',
+				multiple: false
 			},
 
 			'unreferenced': {
@@ -142,7 +149,8 @@ $.pageTriageTagsOptions = {
 					'date': param.date
 				},
 				position: 'bottom',
-				dest: 'sources'
+				dest: 'sources',
+				multiple: false
 			}
 		}
 	},
@@ -157,7 +165,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'externallinks': {
@@ -167,7 +176,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'catimprove': {
@@ -177,7 +187,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'bottom'
+				position: 'bottom',
+				multiple: false
 			},
 
 			'orphan': {
@@ -187,7 +198,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'overlinked': {
@@ -197,7 +209,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: false
 			},
 
 			'uncategorised': {
@@ -207,7 +220,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'bottom'
+				position: 'bottom',
+				multiple: false
 			}
 		}
 	},
@@ -223,7 +237,8 @@ $.pageTriageTagsOptions = {
 					'date': param.date,
 					'reason': $.extend( true, {}, param.reason )
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'copyedit': {
@@ -234,7 +249,8 @@ $.pageTriageTagsOptions = {
 					'date': param.date,
 					'for': $.extend( true, {}, param['for'] )
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'expertsubject': {
@@ -245,7 +261,8 @@ $.pageTriageTagsOptions = {
 					'date': param.date,
 					'reason': $.extend( true, {}, param.reason )
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'prose': {
@@ -255,7 +272,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'roughtranslation': {
@@ -263,7 +281,8 @@ $.pageTriageTagsOptions = {
 				tag: 'rough translation',
 				desc: mw.msg( 'pagetriage-tags-roughtranslation-desc' ),
 				params: { },
-				position: 'top'
+				position: 'top',
+				multiple: false
 			},
 
 			'wikify': {
@@ -274,7 +293,8 @@ $.pageTriageTagsOptions = {
 					'date': param.date,
 					'reason': $.extend( true, {}, param.reason )
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			}
 		}
 	},
@@ -289,7 +309,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'autobiography': {
@@ -299,7 +320,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'coi': {
@@ -309,7 +331,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'peacock': {
@@ -319,7 +342,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'pov': {
@@ -329,7 +353,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'weasel': {
@@ -339,7 +364,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			}
 		}
 	},
@@ -354,7 +380,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'blpsources': {
@@ -364,7 +391,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'originalresearch': {
@@ -374,7 +402,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'primarysources': {
@@ -385,7 +414,8 @@ $.pageTriageTagsOptions = {
 					'date': param.date,
 					'blp': $.extend( true, {}, param.blp )
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'onesource': {
@@ -395,7 +425,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'unreferenced': {
@@ -405,7 +436,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			}
 		}
 	},
@@ -418,7 +450,8 @@ $.pageTriageTagsOptions = {
 				tag: 'condense',
 				desc: mw.msg( 'pagetriage-tags-condense-desc' ),
 				params: { },
-				position: 'top'
+				position: 'top',
+				multiple: false
 			},
 
 			'leadmissing': {
@@ -428,7 +461,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'leadrewrite': {
@@ -439,7 +473,8 @@ $.pageTriageTagsOptions = {
 					'date': param.date,
 					'reason': $.extend( true, {}, param.reason )
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'leadtoolong': {
@@ -449,7 +484,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'leadtooshort': {
@@ -459,7 +495,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'cleanupreorganise': {
@@ -469,7 +506,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'sections': {
@@ -477,7 +515,8 @@ $.pageTriageTagsOptions = {
 				tag: 'sections',
 				desc: mw.msg( 'pagetriage-tags-sections-desc' ),
 				params: { },
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'stub': {
@@ -485,7 +524,8 @@ $.pageTriageTagsOptions = {
 				tag: 'stub',
 				desc: mw.msg( 'pagetriage-tags-stub-desc' ),
 				params: { },
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'verylong': {
@@ -495,7 +535,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			}
 		}
 	},
@@ -512,7 +553,8 @@ $.pageTriageTagsOptions = {
 					'source': $.extend( true, {}, param.source ),
 					'free': $.extend( true, {}, param.free )
 				},
-				position: 'top'
+				position: 'top',
+				multiple: false
 			},
 
 			'copypaste': {
@@ -523,7 +565,8 @@ $.pageTriageTagsOptions = {
 					'date': param.date,
 					'url': $.extend( true, {}, param.url )
 				},
-				position: 'top'
+				position: 'top',
+				multiple: false
 			},
 
 			'nonfree': {
@@ -531,7 +574,8 @@ $.pageTriageTagsOptions = {
 				tag: 'non-free',
 				desc: mw.msg( 'pagetriage-tags-nonfree-desc' ),
 				params: { },
-				position: 'top'
+				position: 'top',
+				multiple: false
 			},
 
 			'notability': {
@@ -541,7 +585,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			}
 		}
 	},
@@ -556,7 +601,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'linkrot': {
@@ -566,7 +612,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'citationstyle': {
@@ -577,7 +624,8 @@ $.pageTriageTagsOptions = {
 					'date': param.date,
 					'details': $.extend( true, {}, param.details )
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'hoax': {
@@ -587,7 +635,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'morefootnotes': {
@@ -598,7 +647,8 @@ $.pageTriageTagsOptions = {
 					'date': param.date,
 					'blp': $.extend( true, {}, param.blp )
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'nofootnotes': {
@@ -608,7 +658,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			}
 		}
 	},
@@ -624,7 +675,8 @@ $.pageTriageTagsOptions = {
 					'date': param.date,
 					'reason': $.extend( true, {}, param.reason )
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'essaylike': {
@@ -634,7 +686,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'fansite': {
@@ -644,7 +697,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'notenglish': {
@@ -652,7 +706,8 @@ $.pageTriageTagsOptions = {
 				tag: 'not english',
 				desc: mw.msg( 'pagetriage-tags-notenglish-desc' ),
 				params: { },
-				position: 'top'
+				position: 'top',
+				multiple: false
 			},
 
 			'technical': {
@@ -662,7 +717,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'tense': {
@@ -672,7 +728,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: false
 			},
 
 			'tone': {
@@ -682,7 +739,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			}
 		}
 	},
@@ -697,7 +755,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: false
 			},
 
 			'fiction': {
@@ -707,7 +766,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'inuniverse': {
@@ -717,7 +777,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'outofdate': {
@@ -727,7 +788,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'overlydetailed': {
@@ -737,7 +799,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'plot': {
@@ -747,7 +810,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'recentism': {
@@ -757,7 +821,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'toofewopinions': {
@@ -767,7 +832,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: false
 			},
 			
 			'unbalanced': {
@@ -777,7 +843,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			},
 
 			'update': {
@@ -787,7 +854,8 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'top'
+				position: 'top',
+				multiple: true
 			}
 		}
 	}
