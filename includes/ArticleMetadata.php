@@ -772,15 +772,17 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 	}
 
 	public function compile() {
-		// Process page individually because MIN() GROUP BY is slow
+		// Grab the earliest revision based on rev_timestamp and rev_id
 		$revId = array();
 		foreach ( $this->mPageId as $pageId ) {
 			$res = $this->db->selectRow(
 				array( 'revision' ),
-				array( 'MIN(rev_id) AS rev_id' ),
+				array( 'rev_id' ),
 				array( 'rev_page' => $pageId ),
-				__METHOD__
+				__METHOD__,
+				array( 'LIMIT' => 1, 'ORDER BY' => 'rev_timestamp, rev_id' )
 			);
+
 			if ( $res ) {
 				$revId[] = $res->rev_id;
 			}
