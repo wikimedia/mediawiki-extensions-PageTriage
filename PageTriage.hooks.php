@@ -32,8 +32,9 @@ class PageTriageHooks {
 			return true;
 		}
 
+		global $wgUser;
 		// New record to pagetriage queue, compile metadata
-		if ( self::addToPageTriageQueue( $pageId, $newTitle ) ) {
+		if ( self::addToPageTriageQueue( $pageId, $newTitle, $wgUser ) ) {
 			$acp = ArticleCompileProcessor::newFromPageId( array( $pageId ) );
 			if ( $acp ) {
 				// safe to use slave db for data compilation for the
