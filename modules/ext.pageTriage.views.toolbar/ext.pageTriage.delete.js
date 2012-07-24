@@ -349,7 +349,7 @@ $( function() {
 						mw.msg( 'pagetriage-button-' + text + '-details' )
 					);
 			$( '#mwe-pt-delete-params-link-' + key ).html( '+&#160;' + link );
-			// Add click even to the link that shows the param form
+			// Add click event to the link that shows the param form
 			$( '#mwe-pt-delete-params-' + key ).click( function() {
 				_this.showParamsForm( key );
 			} );
@@ -403,7 +403,7 @@ $( function() {
 
 			$( '.mwe-pt-delete-row' ).not( '#mwe-pt-delete-row-' + key ).hide( 'squish', {}, 800 );
 
-			// Add click even for the Set Parameters button
+			// Add click event for the Set Parameters button
 			$( '#mwe-pt-delete-set-param-' + key ).button().click(
 				function() {
 					if ( _this.setParams( key ) ) {
@@ -518,14 +518,13 @@ $( function() {
 					tagText += '|';
 				}
 				tagText += tempTag;
-
 				paramsText += this.buildParams( this.selectedTag[key] );
 			}
 
 			if ( count == 1 ) {
 				text = '{{' + tagText + paramsText + '}}';
 			} else {
-				text = '{{' + $.pageTriageDeletionTagsMultiple + '|' + tagText + paramsText + '}}';
+				text = '{{' + $.pageTriageDeletionTagsMultiple.tag + '|' + tagText + paramsText + '}}';
 			}
 
 			$.ajax( {
@@ -540,12 +539,51 @@ $( function() {
 				},
 				success: function( data ) {
 					if ( data.pagetriagetagging.result === 'success' ) {
-						_this.reset();
-						window.location.reload( true );
+						_this.notifyUser( count, key );
 					}
 				},
 				dataType: 'json'
 			} );
+		},
+
+		/**
+		 * Notify the user on talk page
+		 */
+		notifyUser: function( count, key ) {
+			var _this = this;
+
+			if ( count == 0 || !this.selectedTag[key] ) {
+				return;
+			}
+
+			// use generic template for multiple deletion tag
+			var template = ( count > 1 ) ? $.pageTriageDeletionTagsMultiple.talkpagenotiftpl : this.selectedTag[key].talkpagenotiftpl;
+			template = '{{subst:' + template + '|' + mw.config.get( 'wgPageName' ) + '}}';
+
+			if ( this.model.get( 'user_name' ) ) {
+				var title = new mw.Title( this.model.get( 'user_name' ), mw.config.get( 'wgNamespaceIds' )['user_talk'] );
+
+				$.ajax( {
+					type: 'post',
+					url: mw.util.wikiScript( 'api' ),
+					data: {
+						'action': 'edit',
+						'title': title.getPrefixedText(),
+						'appendtext': "\n" + template,
+						'token': mw.user.tokens.get('editToken'),
+						'format': 'json'
+					},
+					success: function( data ) {
+						if ( data.edit && data.edit.result === 'Success' ) {
+							_this.reset();
+							window.location.reload( true );
+						} else {
+							alert( mw.msg( 'pagetriage-del-talk-page-notify-error' ) );
+						}
+					},
+					dataType: 'json'
+				} );
+			}
 		},
 
 		/**
@@ -570,14 +608,14 @@ $( function() {
 					if ( data && data.query && data.query.pages ) {
 						for ( var i in data.query.pages ) {
 							if ( i == '-1' ) {
-								alert( 'Log page for this date is not yet created!' );
+								alert( mw.msg( 'pagetriage-del-log-page-missing-error' ) );
 								return;
 							}
 							_this.addToLog( title, data.query.pages[i].revisions[0]['*'], tagObj );
 							break;
 						}
 					} else {
-						alert( 'Log page for this date is not yet created!' );
+						alert( mw.msg( 'pagetriage-del-log-page-missing-error' ) );
 					}
 				},
 				dataType: 'json'
@@ -599,7 +637,7 @@ $( function() {
 			specialDeletionTagging[tagObj.tag].buildLogRequest( oldText, tagObj.params['1'].value, tagObj, data );
 
 			if( data.text === oldText ) {
-				alert( 'failed to find target spot for the discussion' );
+				alert( mw.msg( 'pagetriage-del-log-page-adding-error' ) );
 				return;
 			}
 
@@ -608,7 +646,7 @@ $( function() {
 				url: mw.util.wikiScript( 'api' ),
 				data: data,
 				success: function( data ) {
-					if ( data.edit.result == 'Success' ) {
+					if ( data.edit && data.edit.result === 'Success' ) {
 						if ( tagObj.discussion ) {
 							_this.discussionPage( tagObj );
 						} else {
