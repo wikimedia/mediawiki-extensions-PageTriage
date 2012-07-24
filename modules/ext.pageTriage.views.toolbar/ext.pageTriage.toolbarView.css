@@ -57,9 +57,11 @@ p.mwe-pt-toolbar-vertical {
 	color:#333;
 	border:0px solid red;
 	writing-mode:tb-rl;
+	transform:rotate(90deg);
 	-webkit-transform:rotate(90deg);
 	-moz-transform:rotate(90deg);
 	-o-transform: rotate(90deg);
+	-ms-transform:rotate(90deg);
 	/* IE rotation: 0=0, 1=90, 2=180, 3=270 */
 	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
 	white-space:nowrap;
