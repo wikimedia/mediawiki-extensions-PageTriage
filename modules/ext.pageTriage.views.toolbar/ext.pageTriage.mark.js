@@ -5,6 +5,7 @@ $( function() {
 		id: 'mwe-pt-mark',
 		icon: 'icon_mark_reviewed.png', // the default icon
 		title: gM( 'pagetriage-mark-as-reviewed' ),
+		tooltip: 'pagetriage-mark-tooltip',
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'mark.html' } ),
 
 		initialize: function( options ) {

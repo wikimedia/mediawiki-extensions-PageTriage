@@ -115,6 +115,7 @@ $( function() {
 		id: 'mwe-pt-deletion-wizard',
 		icon: 'icon_trash.png',
 		title: 'Mark for Deletion',
+		tooltip: 'pagetriage-del-tooltip',
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'delete.html' } ),
 		deletionTagsOptions: {},
 		selectedTag: {},

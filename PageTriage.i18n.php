@@ -229,6 +229,7 @@ $messages['en'] = array(
 	'pagetriage-tags-unbalanced-desc' => 'This page may be unbalanced towards certain viewpoints.',
 	'pagetriage-tags-update-label' => 'Update',
 	'pagetriage-tags-update-desc' => 'This page needs additional up-to-date information added.',
+	'pagetriage-tags-tooltip' => 'Add tags to address problems with the page',
 	
 	// Deletion Tags options section
 	'pagetriage-del-tags-cat-csd-label' => 'Speedy deletion',
@@ -275,6 +276,8 @@ $messages['en'] = array(
 	'pagetriage-del-log-page-missing-error' => 'Log page for today has not been created yet!',
 	'pagetriage-del-log-page-adding-error' => 'Failed to find target spot for the discussion',
 	'pagetriage-del-talk-page-notify-error' => 'Failed to notify author on talk page',
+	'pagetriage-del-tooltip' => 'Nominate this page for deletion',
+	
 	// Tags parameter section
 	'pagetriage-tags-param-article-label' => 'Article:',
 	'pagetriage-tags-param-date-label' => 'Date:',
@@ -307,6 +310,7 @@ $messages['en'] = array(
 	'pagetriage-info-problem-no-references-desc' => 'This page does not cite any sources.',
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
+	'pagetriage-info-tooltip' => 'Show metadata for this page',
 	'pagetriage-toolbar-collapsed' => 'Curation',
 	'pagetriage-toolbar-linktext' => 'Curation toolbar',
 	'pagetriage-mark-title' => 'Mark as reviewed',
@@ -314,10 +318,14 @@ $messages['en'] = array(
 	'pagetriage-mark-as-unreviewed' => 'Mark as unreviewed',
 	'pagetriage-mark-as-reviewed-helptext' => 'Remove this page from the unreviewed queue?',
 	'pagetriage-mark-as-unreviewed-helptext' => 'Return this page to the unreviewed queue?',
+	'pagetriage-mark-tooltip' => 'Mark page as reviewed (or unreviewed if already reviewed)',
 	'pagetriage-wikilove-helptext' => 'Select the names of editors you wish to thank.',
 	'pagetriage-wikilove-page-creator' => 'Page Creator',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|edit|edits}}',
 	'pagetriage-wikilove-no-recipients' => 'No recipients are available for this page.',
+	'pagetriage-wikilove-no-recipients' => 'No recipients are avilable for this page.',
+	'pagetriage-wikilove-tooltip' => 'Send appreciation to the authors',
+	'pagetriage-next-tooltip' => 'Go to the next page in the queue',
 );
 
 /** Message documentation (Message documentation)
@@ -547,6 +555,7 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-tags-toofewopinions-desc' => 'Description for too few opinions tag',
 	'pagetriage-tags-update-label' => 'Label for update tag',
 	'pagetriage-tags-update-desc' => 'Description for update tag',
+	'pagetriage-tags-tooltip' => 'Help message that displays when someone hovers over the tag wizard button',
 	'pagetriage-del-tags-cat-csd-label' => 'Label for speedy deletion category',
 	'pagetriage-del-tags-cat-prod-label' => 'Label for proposed deletion category',
 	'pagetriage-del-tags-dbg3-label' => 'Label for db-g3 tag',
@@ -591,6 +600,7 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-del-log-page-missing-error' => 'Error message indicating that the log page for current date has not been created',
 	'pagetriage-del-log-page-adding-error' => 'Error message indicating a failure of adding the page to discussion',
 	'pagetriage-del-talk-page-notify-error' => 'Error message indicating a failure of notifying the author on user talk page',
+	'pagetriage-del-tooltip' => 'Help message that displays when someone hovers over the deletion wizard button',
 	'pagetriage-tags-param-article-label' => 'Label for article parameter',
 	'pagetriage-tags-param-date-label' => 'Label for date parameter',
 	'pagetriage-tags-param-issues-label' => 'Label for for/reason/details parameter',
@@ -620,16 +630,20 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 
 If your language requires some text between the day, month and year (for example in the Galician language the word '''de''' is inserted: d de MMMM de yyyy) then the text needs to be put inside quotation marks so as not to taken as code by the software. In Galician this is: d \"de\" MMMM \"de\" yyyy.",
 	'pagetriage-info-timestamp-time-format' => 'Format specifier for the hour and minute part of the revision timestamp. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers',
+	'pagetriage-info-tooltip' => 'Help message that displays when someone hovers over the page info button',
 	'pagetriage-toolbar-collapsed' => 'Label for the collapsed version of the curation bar',
 	'pagetriage-toolbar-linktext' => 'This is a menu link in the sidebar that opens the curation toolbar. It should be short enough to fit in the sidebar without wrapping.',
 	'pagetriage-mark-as-reviewed' => "Label for a button that sets a page's status as reviewed",
 	'pagetriage-mark-as-unreviewed' => "Label for a button that sets a page's status as unreviewed",
 	'pagetriage-mark-as-reviewed-helptext' => 'Descriptive text explaining the "Mark as reviewed" button',
 	'pagetriage-mark-as-unreviewed-helptext' => 'Descriptive text explaining the "Mark as unreviewed" button',
+	'pagetriage-mark-tooltip' => 'Help message that displays when someone hovers over the mark button',
 	'pagetriage-wikilove-helptext' => 'Descriptive text explaining the "WikiLove" interface in the curation toolbar',
 	'pagetriage-wikilove-page-creator' => 'This is the label for the person that originally created the page.',
 	'pagetriage-wikilove-edit-count' => 'The number of edits a user has made. $1 is a number.',
 	'pagetriage-wikilove-no-recipients' => 'A warning message displayed when there are no possible WikiLove recipients for the page.',
+	'pagetriage-wikilove-tooltip' => 'Help message that displays when someone hovers over the WikiLove button',
+	'pagetriage-next-tooltip' => 'Help message that displays when someone hovers over the Next button',
 );
 
 /** Arabic (العربية)

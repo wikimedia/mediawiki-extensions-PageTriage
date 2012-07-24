@@ -314,7 +314,8 @@ $wgPageTriageTagsOptionsMessages = array (
 	'pagetriage-tags-param-free-yes-label',
 	'pagetriage-tags-param-free-no-label',
 	'pagetriage-tags-param-missing-required',
-	'pagetriage-tags-param-date-format'
+	'pagetriage-tags-param-date-format',
+	'pagetriage-tags-tooltip',
 );
 
 // Deletion Tags options message
@@ -367,6 +368,7 @@ $wgPageTriageDeletionTagsOptionsMessages = array (
 	'pagetriage-tags-param-url-label',
 	'pagetriage-tags-param-source-label',
 	'pagetriage-del-tags-param-discussion-label',
+	'pagetriage-del-tooltip',
 );
 
 $wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + array(
@@ -599,12 +601,14 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-info-problem-no-references-desc',
 		'pagetriage-info-timestamp-date-format',
 		'pagetriage-info-timestamp-time-format',
+		'pagetriage-info-tooltip',
 		'pagetriage-toolbar-collapsed',
 		'pagetriage-toolbar-linktext',
 		'pagetriage-mark-as-reviewed-helptext',
 		'pagetriage-mark-as-unreviewed-helptext',
 		'pagetriage-mark-as-reviewed-error',
 		'pagetriage-mark-as-unreviewed-error',
+		'pagetriage-mark-tooltip',
 		'pagetriage-markpatrolled',
 		'pagetriage-note-reviewed',
 		'pagetriage-note-not-reviewed',
@@ -612,6 +616,8 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-wikilove-page-creator',
 		'pagetriage-wikilove-edit-count',
 		'pagetriage-wikilove-helptext',
+		'pagetriage-wikilove-tooltip',
+		'pagetriage-next-tooltip',
 		'wikilove',
 		'wikilove-button-send',
 		'talkpagelinktext',

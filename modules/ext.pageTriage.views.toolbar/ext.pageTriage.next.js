@@ -11,6 +11,7 @@ $( function() {
 		id: 'mwe-pt-next',
 		icon: 'icon_skip.png', // the default icon
 		title: 'Next',
+		tooltip: 'pagetriage-next-tooltip',
 
 		apiParams: nextArticles.apiParams,
 

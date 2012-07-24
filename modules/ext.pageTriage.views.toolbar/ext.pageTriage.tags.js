@@ -4,6 +4,7 @@ $( function() {
 		id: 'mwe-pt-tag',
 		icon: 'icon_tag.png',
 		title: gM( 'pagetriage-tags-title' ),
+		tooltip: 'pagetriage-tags-tooltip',
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'tags.html' } ),
 		tagsOptions: $.pageTriageTagsOptions,
 		selectedTag: {},

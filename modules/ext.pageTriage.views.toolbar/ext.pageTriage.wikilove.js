@@ -5,6 +5,7 @@ $( function() {
 		id: 'mwe-pt-wikilove',
 		icon: 'icon_wikilove.png', // the default icon
 		title: gM( 'wikilove' ),
+		tooltip: 'pagetriage-wikilove-tooltip',
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'wikilove.html' } ),
 
 		bySortedValue: function( obj, callback, context ) {

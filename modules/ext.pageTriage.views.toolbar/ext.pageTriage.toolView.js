@@ -158,6 +158,10 @@ $( function() {
 				}
 			);
 
+			if ( this.tooltip ) {
+				this.$icon.attr( 'title', mw.msg( this.tooltip ) );
+			}
+
 			// set up an event for the close button
 			this.$el.find( '.mwe-pt-tool-close' ).click( function() {
 				_this.hide();
@@ -193,7 +197,7 @@ $( function() {
 		},
 
 		setIcon: function( dir ) {
-			this.$icon.attr('src', this.iconPath( dir ) );
+			this.$icon.attr( 'src', this.iconPath( dir ) );
 		},
 
 		setBadge: function() {

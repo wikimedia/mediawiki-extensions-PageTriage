@@ -5,6 +5,7 @@ $( function() {
 		id: 'mwe-pt-info',
 		icon: 'icon_info.png', // the default icon
 		title: gM( 'pagetriage-info-title' ),
+		tooltip: 'pagetriage-info-tooltip',
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'articleInfo.html' } ),
 
 		badgeCount: function() {
