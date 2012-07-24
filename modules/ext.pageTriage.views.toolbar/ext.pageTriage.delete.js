@@ -188,6 +188,7 @@ $( function() {
 				.click(
 					function () {
 						_this.submit();
+						return false;
 					}
 				).end();
 
