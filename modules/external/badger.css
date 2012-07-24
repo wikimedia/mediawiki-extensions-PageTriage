@@ -20,11 +20,11 @@
 	bottom: -1px;
 	right: -3px;
 	z-index: 50;
+	text-align: center;
 }
 .mwe-pt-badger-badge {
 	font-size: 12px;
 	line-height: 14px;
 	color: white;
-	text-align: center;
 	vertical-align: top;
 }
