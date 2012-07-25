@@ -7,7 +7,7 @@
  *
  * This script can only be run from the command line.
  * The syntax is:
- * importNewPages.php <# of articles> <username> <password> <source API path> <destination API path>
+ * php importNewPages.php <# of articles> <username> <password> <source API path> <destination API path>
  * The API path parameters are optional.
  **/
 
@@ -247,7 +247,8 @@ if ( $argv[1] > 0 && $argv[1] <= 10000 ) {
 if ( isset( $argv[5] ) ) {
 	$destination = new WikiApi( $argv[5] );
 } else {
-	$destination = new WikiApi( 'http://ee-prototype.wmflabs.org/w/api.php' );
+	$destination = new WikiApi( 'http://en.wikipedia.beta.wmflabs.org/w/api.php' );
+	//$destination = new WikiApi( 'http://ee-prototype.wmflabs.org/w/api.php' );
 }
 $destination->login( $argv[2], $argv[3] );
 
