@@ -102,8 +102,8 @@ class PageTriageUtil {
 			}
 		}
 
-		// make it expire in 15 minutes
-		$wgMemc->set( $key, $data, 900 );
+		// make it expire in 10 minutes
+		$wgMemc->set( $key, $data, 600 );
 		return $data;
 	}
 

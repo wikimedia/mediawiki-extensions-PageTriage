@@ -63,7 +63,7 @@ $messages['en'] = array(
 	'pagetriage-filter-blocked' => 'Were created by blocked users',
 	'pagetriage-filter-all' => 'Show all',
 	'pagetriage-filter-set-button' => 'Set filters',
-	'pagetriage-stats-unreviewed-age' => '<span class="mwe-pt-stats-label">Page ages:</span> Average: $1, oldest: $2',
+	'pagetriage-stats-unreviewed-age' => '<span class="mwe-pt-stats-label">Unreviewed page ages:</span> Average: $1, oldest: $2',
 	'pagetriage-stats-less-than-a-day' => 'less than one day',
 	'pagetriage-stats-top-reviewers' => 'Top {{PLURAL:$1|reviewer|$1 reviewers}}:',
 	'pagetriage-filter-ns-all' => 'All',
