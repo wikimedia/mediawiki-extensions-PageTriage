@@ -323,7 +323,7 @@ $messages['en'] = array(
 	'pagetriage-wikilove-helptext' => 'Select the names of editors you wish to thank.',
 	'pagetriage-wikilove-page-creator' => 'Page Creator',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|edit|edits}}',
-	'pagetriage-wikilove-no-recipients' => 'No recipients are avilable for this page.',
+	'pagetriage-wikilove-no-recipients' => 'No recipients are available for this page.',
 );
 
 /** Message documentation (Message documentation)
