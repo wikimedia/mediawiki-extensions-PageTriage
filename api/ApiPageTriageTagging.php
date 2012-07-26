@@ -38,9 +38,10 @@ class ApiPageTriageTagging extends ApiBase {
 					new DerivativeRequest(
 						$wgRequest,
 						$apiParams + array(
-							'action' => 'edit',
-							'title'  => $title->getFullText(),
-							'token'  => $params['token'],
+							'action'  => 'edit',
+							'title'   => $title->getFullText(),
+							'token'   => $params['token'],
+							'summary' => wfMessage( 'pagetriage-tags-edit-summary' )->plain(),
 						),
 						true
 					),

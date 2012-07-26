@@ -294,6 +294,7 @@ $messages['en'] = array(
 	'pagetriage-tags-param-free-no-label' => 'No',
 	'pagetriage-tags-param-missing-required' => 'Parameter $1 is required',
 	'pagetriage-tags-param-date-format' => '$1 $2',
+	'pagetriage-tags-edit-summary' => 'Added tags to the page using PageTriage',
 
 	'pagetriage-info-title' => 'Page info',
 	'pagetriage-info-problem-header' => 'Possible problems',
@@ -546,6 +547,7 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-tags-toofewopinions-desc' => 'Description for too few opinions tag',
 	'pagetriage-tags-update-label' => 'Label for update tag',
 	'pagetriage-tags-update-desc' => 'Description for update tag',
+	'pagetriage-tags-edit-summary' => 'The edit summary that is posted when someone applies tags to an article with the Curation Toolbar in PageTriage',
 	'pagetriage-del-tags-cat-csd-label' => 'Label for speedy deletion category',
 	'pagetriage-del-tags-cat-prod-label' => 'Label for proposed deletion category',
 	'pagetriage-del-tags-dbg3-label' => 'Label for db-g3 tag',
