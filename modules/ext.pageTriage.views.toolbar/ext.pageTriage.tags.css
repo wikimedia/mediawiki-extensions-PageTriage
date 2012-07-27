@@ -15,7 +15,6 @@
 
 .mwe-pt-category {
 	padding: 5px 5px;
-	margin-bottom: 1px;
 	-moz-border-radius-topleft: 3px;
 	-webkit-border-top-left-radius: 3px;
 	border-top-left-radius: 3px;
@@ -37,7 +36,7 @@
 #mwe-pt-tags {
 	float: right;
 	width: 382px;
-	height: 266px;
+	height: 292px;
 	overflow: auto;
 	padding: 8px;
 	border-left: 1px solid #9F9F9F;
