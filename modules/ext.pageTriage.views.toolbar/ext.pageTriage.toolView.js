@@ -77,6 +77,21 @@ $( function() {
 			this.$el.find( '.mwe-pt-tool-pokey' ).show();
 			this.visible = true;
 			
+			// If the toolbar has been dragged to the other side of the screen
+			// make sure the flyout opens in the opposite direction.
+			var flyoutOffset = this.$el.find( '.mwe-pt-tool-flyout' ).outerWidth() + 8;
+			if ( $( '#mwe-pt-toolbar' ).offset().left < flyoutOffset ) {
+				this.$el.find( '.mwe-pt-tool-flyout' ).removeClass( 'mwe-pt-tool-flyout-not-flipped' );
+				this.$el.find( '.mwe-pt-tool-pokey' ).removeClass( 'mwe-pt-tool-pokey-not-flipped' );
+				this.$el.find( '.mwe-pt-tool-flyout' ).addClass( 'mwe-pt-tool-flyout-flipped' );
+				this.$el.find( '.mwe-pt-tool-pokey' ).addClass( 'mwe-pt-tool-pokey-flipped' );
+			} else {
+				this.$el.find( '.mwe-pt-tool-flyout' ).removeClass( 'mwe-pt-tool-flyout-flipped' );
+				this.$el.find( '.mwe-pt-tool-pokey' ).removeClass( 'mwe-pt-tool-pokey-flipped' );
+				this.$el.find( '.mwe-pt-tool-flyout' ).addClass( 'mwe-pt-tool-flyout-not-flipped' );
+				this.$el.find( '.mwe-pt-tool-pokey' ).addClass( 'mwe-pt-tool-pokey-not-flipped' );
+			}
+
 			// remove the hover action
 			this.$icon.unbind('mouseenter mouseleave');
 		},
