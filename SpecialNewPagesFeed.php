@@ -7,7 +7,7 @@
  * @ingroup Extensions
  * @author Ryan Kaldari
  */
-class SpecialNewPagesFeed extends UnlistedSpecialPage {
+class SpecialNewPagesFeed extends SpecialPage {
 
 	// Holds the various options for viewing the list
 	protected $opts;
@@ -40,7 +40,7 @@ class SpecialNewPagesFeed extends UnlistedSpecialPage {
 		}
 
 		// Output the title of the page
-		$out->setPagetitle( $this->msg( 'pagetriage-new-pages-feed' ) );
+		$out->setPagetitle( $this->msg( 'newpagesfeed' ) );
 
 		// Make sure global vars are strings rather than booleans (for passing to mw.config)
 		$wgPageTriageInfiniteScrolling = $this->booleanToString( $wgPageTriageInfiniteScrolling );

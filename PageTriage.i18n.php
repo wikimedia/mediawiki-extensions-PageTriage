@@ -15,7 +15,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'pagetriage' => 'Page Triage',
-	'pagetriage-new-pages-feed' => 'New Pages Feed',
+	'newpagesfeed' => 'New pages feed',
 	'pagetriage-desc' => 'Facilitates reviewing and approving new pages',
 	'pagetriage-please-wait' => 'Please wait...',
 	'pagetriage-api-invalidid' => 'The ID you provided ($1) is not valid.',
@@ -337,7 +337,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'pagetriage' => 'The name of this application (Page Triage)',
-	'pagetriage-new-pages-feed' => 'Title of a special page',
+	'newpagesfeed' => 'Title of a special page that lists newly created pages',
 	'pagetriage-desc' => '{{desc}}',
 	'pagetriage-please-wait' => 'Temporary message displayed while list interface is loading',
 	'pagetriage-api-invalidid' => 'Invalid title error message for pagetriage API',
