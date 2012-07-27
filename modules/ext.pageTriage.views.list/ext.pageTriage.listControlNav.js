@@ -23,12 +23,12 @@ $( function() {
 				// we need to change the float state of the navbar
 				this.eventBus.bind( 'articleListChange', function() {
 					_this.setPosition();
-					_this.refreshStats( $('#mwe-pt-filter-namespace').val() );
 				} );
 
 				// when a request is made to refresh the list, do it
 				this.eventBus.bind( 'refreshListRequest', function() {
 					_this.refreshList();
+					_this.refreshStats( $('#mwe-pt-filter-namespace').val() );
 				} );
 			}
 
@@ -60,6 +60,7 @@ $( function() {
 			} );
 			$( ".mwe-pt-filter-set-button" ).click( function( e ) {
 				_this.filterSync();
+				_this.refreshStats( $('#mwe-pt-filter-namespace').val() );
 				_this.toggleFilterMenu( 'close' );
 				e.stopPropagation();
 			} );
