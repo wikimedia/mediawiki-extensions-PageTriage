@@ -11,6 +11,7 @@ $( function() {
 					'delete.html': '',
 					'mark.html': '',
 					'tags.html': '',
+					'wikilove.html': '',
 					'toolView.html': '',
 					'toolbarView.html': ''
 				}
