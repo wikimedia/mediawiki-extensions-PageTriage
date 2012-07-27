@@ -303,8 +303,6 @@ $( function() {
 			$( '#mwe-pt-tag-params-form-' + key ).html( html );
 			$( '#mwe-pt-tag-params-form-' + key ).show();
 
-			$( '.mwe-pt-tag-row' ).not( '#mwe-pt-tag-row-' + key ).hide( 'squish', {}, 800 );
-
 			// Add click even for the Set Parameters button
 			$( '#mwe-pt-tag-set-param-' + key ).button().click(
 				function() {
@@ -353,10 +351,6 @@ $( function() {
 		 */
 		hideParamsForm: function( key ) {
 			$( '#mwe-pt-tag-params-form-' + key ).hide();
-			// If the other tags are squished, unsquish them
-			if ( $( '.mwe-pt-tag-row' ).not( '#mwe-pt-tag-row-' + key ).first().css( 'display' ) == 'none' ) {
-				$( '.mwe-pt-tag-row' ).not( '#mwe-pt-tag-row-' + key ).show( 'squish', {}, 600 );
-			}
 		},
 
 		/**
