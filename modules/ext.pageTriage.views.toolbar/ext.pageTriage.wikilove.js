@@ -56,7 +56,7 @@ $( function() {
 			if ( mw.user.name() !== creator ) {
 				// add the creator info to the top of the list
 				$( '#mwe-pt-article-contributor-list' ).append(
-					'<input type="checkbox" class="mwe-pt-recipient-checkbox" value="' + creator + '"/>' +
+					'<input type="checkbox" class="mwe-pt-recipient-checkbox" value="' + _.escape( creator ) + '"/>' +
 					link + ' <span class="mwe-pt-info-text">– ' +
 					mw.msg( 'pagetriage-wikilove-edit-count', creatorContribCount ) +
 					mw.msg( 'comma-separator' ) + mw.msg( 'pagetriage-wikilove-page-creator' ) + '</span><br/>'
@@ -72,7 +72,7 @@ $( function() {
 					linkUrl = userTitle.getUrl();
 					link = mw.html.element( 'a', { 'href': linkUrl }, name );
 					$( '#mwe-pt-article-contributor-list' ).append(
-						'<input type="checkbox" class="mwe-pt-recipient-checkbox" value="' +  name + '"/>' +
+						'<input type="checkbox" class="mwe-pt-recipient-checkbox" value="' +  _.escape( name ) + '"/>' +
 						link + ' <span class="mwe-pt-info-text">– ' +
 						mw.msg( 'pagetriage-wikilove-edit-count', count ) +
 						'</span><br/>'
