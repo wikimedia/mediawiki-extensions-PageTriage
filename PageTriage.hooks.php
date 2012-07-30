@@ -420,6 +420,17 @@ class PageTriageHooks {
 	 */
 	public static function onResourceLoaderGetConfigVars( &$vars ) {
 		global $wgPageTriageToolbarInfoHelpLink, $wgPageTriageCurationModules, $wgPageTriageNamespaces;
+
+		// check if WikiLove is enabled
+		if ( !class_exists( 'ApiWikiLove' ) ) {
+			$key = array_search( 'WikiLove', $wgPageTriageCurationModules );
+			if ( $key !== false ) {
+				unset( $wgPageTriageCurationModules[$key] );
+				// reset the numeric keys so it generates array instead of json object in javascript
+				$wgPageTriageCurationModules = array_values( $wgPageTriageCurationModules );
+			}
+		}
+
 		$vars['wgPageTriageToolbarInfoHelpLink'] = $wgPageTriageToolbarInfoHelpLink;
 		$vars['wgPageTriageCurationModules'] = $wgPageTriageCurationModules;
 		$vars['wgPageTriageNamespaces'] = $wgPageTriageNamespaces;
