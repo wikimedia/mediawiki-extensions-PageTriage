@@ -42,7 +42,7 @@ $( function() {
 		
 		enumerateProblems: function() {
 			this.problemCount = 0;
-			var problems = '<ul>';
+			var problems = '';
 			if( this.model.get('user_autoconfirmed') == 0 ) {
 				this.problemCount++;
 				problems += this.formatProblem( 'non-autoconfirmed' );
@@ -63,7 +63,9 @@ $( function() {
 				this.problemCount++;
 				problems += this.formatProblem( 'no-references' );
 			}
-			problems += '</ul>';
+			if ( problems ) {
+				problems = '<ul>' + problems + '</ul>';
+			}
 			this.model.set( 'problems', problems );
 		}
 	} );
