@@ -4,7 +4,7 @@
 <% } %>
 </span>
 <li class="mwe-pt-info-history-entry">
-	<%= timestamp_time %> &#xb7;
+	<a href="<%= revision_url %>"><%= timestamp_time %></a> &#xb7;
 	<a href="<%= user_title_url %>"><%= mw.html.escape( user ) %></a>
 	<% if ( parsedcomment ) { %>
 		&#xb7; <%= parsedcomment %>

@@ -14,8 +14,8 @@ $( function() {
 		model: mw.pageTriage.Revision,
 
 		apiParams: {
-			rvprop: 'timestamp|user|parsedcomment',
-			rvlimit: 20
+			rvprop: 'timestamp|user|parsedcomment|ids',
+			rvlimit: 5
 		},
 
 		initialize: function( options ) {
