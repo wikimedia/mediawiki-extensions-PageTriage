@@ -295,21 +295,26 @@ class PageTriageHooks {
 		//if ( self::shouldShowNoIndex( $article ) ) {
 		//	$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		//}
-
-		// the presence of rcid means this is coming from Special:NewPages,
-		// and hence don't make any interference, this also applies to
-		// user with no right
-		if ( $wgRequest->getVal( 'rcid' ) ) {
+		
+		// Only logged in users can review
+		if ( !$wgUser->isLoggedIn() ) {
 			return true;
 		}
 
-		// don't show anything for user with no patrol right
-		if ( !$article->getTitle()->quickUserCan('patrol') ) {
+		// Don't show anything for user with no patrol right
+		if ( !$article->getTitle()->quickUserCan( 'patrol' ) ) {
 			return true;
 		}
 
 		// Only show in defined namespaces
 		if ( !in_array( $article->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
+			return true;
+		}
+
+		// The presence of rcid means this is coming from Special:NewPages,
+		// and hence don't make any interference, this also applies to
+		// user with no right
+		if ( $wgRequest->getVal( 'rcid' ) ) {
 			return true;
 		}
 
