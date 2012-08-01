@@ -534,7 +534,7 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'mediawiki.jqueryMsg',
 		'ext.pageTriage.models',
 		'ext.pageTriage.util',
-		'ext.pageTriage.badger',
+		'jquery.badge',
 		'jquery.ui.button',
 		'jquery.ui.draggable',
 		'jquery.spinner',
@@ -639,11 +639,6 @@ $wgResourceModules['ext.pageTriage.article'] = $ptResourceTemplate + array(
 			'pagetriage-reviewed',
 			'pagetriage-mark-as-reviewed-error',
 	),
-);
-
-$wgResourceModules['ext.pageTriage.badger'] = $ptResourceTemplate + array(
-	'styles' => 'external/badger.css',
-	'scripts' => 'external/badger.js'
 );
 
 /** Rate limit setting for PageTriage **/
