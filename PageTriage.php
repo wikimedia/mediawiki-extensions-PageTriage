@@ -505,7 +505,6 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'blanknamespace',
 		'pagetriage-filter-ns-all',
 		'pagetriage-more',
-		'pagetriage-filter-stat-namespace',
 		'pagetriage-filter-stat-reviewed',
 		'pagetriage-filter-stat-unreviewed',
 		'pagetriage-filter-stat-bots',
@@ -526,6 +525,7 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'pagetriage-refresh-list',
 		'talkpagelinktext',
 		'contribslink',
+		'comma-separator',
 	)
 );
 

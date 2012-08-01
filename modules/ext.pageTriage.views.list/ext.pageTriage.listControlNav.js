@@ -285,7 +285,6 @@ $( function() {
 				} else {
 					nsText = mw.config.get( 'wgFormattedNamespaces' )[ns];
 				}
-				this.newFilterStatus.push( gM( 'pagetriage-filter-stat-namespace', nsText ) );
 			}
 
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-reviewed-edits' ), 'showreviewed', 'pagetriage-filter-stat-reviewed');
@@ -310,8 +309,8 @@ $( function() {
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-non-autoconfirmed' ), 'non_autoconfirmed_users', 'pagetriage-filter-stat-non-autoconfirmed');
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-blocked' ), 'blocked_users', 'pagetriage-filter-stat-blocked');
 
-			this.filterStatus = this.newFilterStatus.join(' &#xb7; ');
-			$( '#mwe-pt-filter-status' ).html( this.filterStatus );
+			this.filterStatus = this.newFilterStatus.join( mw.msg( 'comma-separator' ) );
+			$( '#mwe-pt-filter-status' ).text( this.filterStatus );
 
 			if( ! $("input[name=mwe-pt-filter-radio]:checked").val() ) {
 				// none of the radio buttons are selected.  pick the default.
