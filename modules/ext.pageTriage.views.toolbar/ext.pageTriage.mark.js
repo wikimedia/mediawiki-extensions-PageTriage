@@ -36,6 +36,7 @@ $( function() {
 				type: 'post',
 				url: mw.util.wikiScript( 'api' ),
 				data: apiRequest,
+				cache: false,
 				success: function( data ) {
 					if ( typeof data.pagetriageaction !== 'undefined' && data.pagetriageaction.result === 'success' ) {
 						// update the article model, since it's now changed.
@@ -65,7 +66,7 @@ $( function() {
 
 			// create the mark as reviewed flyout content here.
 			this.$tel.html( this.template( this.model.toJSON() ) );
-			
+
 			// override the flyout title based on the current reviewed state of the page
 			if ( this.model.get( 'patrol_status' ) > 0 ) {
 				// page is reviewed
@@ -82,14 +83,14 @@ $( function() {
 					_this.submit( 'reviewed' );
 					e.stopPropagation();
 				} );
-			
+
 			$( '#mwe-pt-mark-as-unreviewed-button' )
 				.button( { icons: { secondary:'ui-icon-triangle-1-e' } } )
 				.click( function( e ) {
 					_this.submit( 'unreviewed' );
 					e.stopPropagation();
 				} );
-			
+
 			// bind down here so it doesn't happen before the first render
 			this.model.unbind( 'change:patrol_status', function() { _this.render(); } );
 			this.model.bind( 'change:patrol_status', function() { _this.render(); } );

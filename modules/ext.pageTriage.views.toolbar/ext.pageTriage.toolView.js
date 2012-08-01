@@ -195,7 +195,7 @@ $( function() {
 		setIcon: function( dir ) {
 			this.$icon.attr('src', this.iconPath( dir ) );
 		},
-		
+
 		setBadge: function() {
 			var badgeCount = this.badgeCount();
 			if( badgeCount ) {

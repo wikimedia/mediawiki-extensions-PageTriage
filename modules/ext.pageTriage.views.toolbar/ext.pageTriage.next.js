@@ -26,7 +26,7 @@ $( function() {
 			this.apiParams.offset = this.model.get( 'creation_date' );
 			this.apiParams.pageoffset = this.model.get( 'pageid' );
 		},
-		
+
 		click: function() {
 			var page, _this = this;
 

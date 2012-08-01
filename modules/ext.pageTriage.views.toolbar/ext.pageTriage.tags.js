@@ -153,7 +153,7 @@ $( function() {
 						if ( cat !== 'common' && _this.tagsOptions['common'].tags[tagKey] !== undefined ) {
 							alsoCommon = true;
 						}
-						
+
 						if ( !_this.selectedTag[cat][tagKey] ) {
 							// activate checkbox
 							$( '#mwe-pt-checkbox-tag-' + tagKey ).attr( 'checked', true );
@@ -205,7 +205,7 @@ $( function() {
 			} else {
 				$( '#mwe-pt-category-' + cat + ' .mwe-pt-tag-count' ).empty();
 			}
-			
+
 			// update the number in the submit button
 			$( '#mwe-pt-tag-submit-button .ui-button-text' ).html( mw.msg( 'pagetriage-button-add-tag-number', this.selectedTagCount ) );
 			

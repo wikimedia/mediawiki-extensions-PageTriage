@@ -11,7 +11,7 @@ $( function() {
 			this.enumerateProblems();
 			return this.problemCount;
 		},
-		
+
 		render: function() {
 			var _this = this;
 			this.enumerateProblems();
@@ -39,7 +39,7 @@ $( function() {
 				gM('pagetriage-info-problem-' + problem + '-desc') +
 				'</span></li>';
 		},
-		
+
 		enumerateProblems: function() {
 			this.problemCount = 0;
 			var problems = '';
@@ -69,7 +69,7 @@ $( function() {
 			this.model.set( 'problems', problems );
 		}
 	} );
-	
+
 	mw.pageTriage.ArticleInfoHistoryView = Backbone.View.extend( {
 		id: 'mwe-pt-info-history',
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'articleInfoHistory.html' } ),

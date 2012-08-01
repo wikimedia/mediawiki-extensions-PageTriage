@@ -75,7 +75,7 @@ $( function() {
 				distance: 10,
 				cancel: '.mwe-pt-tool-content'
 			} );
-			
+
 			var $activeToolbar = $( '#mwe-pt-toolbar-active' );
 			var $inactiveToolbar = $( '#mwe-pt-toolbar-inactive' );
 			
@@ -90,7 +90,7 @@ $( function() {
 				// this is a block element and will scale as wide as possible unless constrained
 				$( '#mwe-pt-toolbar' ).removeClass( 'mwe-pt-toolbar-big' ).addClass( 'mwe-pt-toolbar-small' );
 			} );
-						
+
 			// make the close button do something
 			$( '.mwe-pt-toolbar-close-button').click( function() {
 				// hide everything
@@ -117,7 +117,7 @@ $( function() {
 			} );
 			
 		},
-		
+
 		insertLink: function () {
 			var $link = $( '<li id="t-curationtoolbar"><a href="#"></a></li>' );
 			$link.find( 'a' )

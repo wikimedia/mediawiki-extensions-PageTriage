@@ -76,7 +76,13 @@ $( function() {
 		// url and parse are used here for retrieving a single article in the curation toolbar.
 		// articles are retrived for list view using the methods in the Articles collection.
 		url: function() {
-			var url = mw.util.wikiScript( 'api' ) + '?action=pagetriagelist&format=json&' + $.param( { page_id: this.pageId } );
+			var d = new Date();
+			var params = $.param( {
+				action: 'pagetriagelist',
+				format: 'json',
+				timestamp: d.getTime()
+			} );
+			var url = mw.util.wikiScript( 'api' ) + '?' + params + '&' + $.param( { page_id: this.pageId } );
 			return url;
 		},
 		
@@ -90,7 +96,7 @@ $( function() {
 				}
 
 				// extract the useful bits of json.
-				return response.pagetriagelist.pages[0];				
+				return response.pagetriagelist.pages[0];
 			} else {
 				// already parsed by the collection's parse function.
 				return response;
@@ -137,7 +143,13 @@ $( function() {
 		},
 
 		url: function() {
-			var url = mw.util.wikiScript( 'api' ) + '?action=pagetriagelist&format=json&' + $.param( this.apiParams );
+			var d = new Date();
+			var params = $.param( {
+				action: 'pagetriagelist',
+				format: 'json',
+				timestamp: d.getTime()
+			} );
+			var url = mw.util.wikiScript( 'api' ) + '?' + params + '&' + $.param( this.apiParams );
 			return url;
 		},
 
