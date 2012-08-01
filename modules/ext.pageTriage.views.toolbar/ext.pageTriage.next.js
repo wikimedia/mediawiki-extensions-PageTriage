@@ -6,7 +6,7 @@ $( function() {
 
 	// instantiate the collection of articles
 	var nextArticles = new mw.pageTriage.ArticleList( { eventBus: eventBus } );
-	
+
 	mw.pageTriage.NextView = mw.pageTriage.ToolView.extend( {
 		id: 'mwe-pt-next',
 		icon: 'icon_skip.png', // the default icon
