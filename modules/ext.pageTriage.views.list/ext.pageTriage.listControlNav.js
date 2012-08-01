@@ -54,11 +54,10 @@ $( function() {
 			//
 
 			// make a submit button
-			$( ".mwe-pt-filter-set-button" ).button( {
-				label: mw.msg( 'pagetriage-filter-set-button' ),
-				icons: { secondary:'ui-icon-triangle-1-e' }
+			$( "#mwe-pt-filter-set-button" ).button( {
+				label: mw.msg( 'pagetriage-filter-set-button' )
 			} );
-			$( ".mwe-pt-filter-set-button" ).click( function( e ) {
+			$( "#mwe-pt-filter-set-button" ).click( function( e ) {
 				_this.filterSync();
 				_this.refreshStats( $('#mwe-pt-filter-namespace').val() );
 				_this.toggleFilterMenu( 'close' );
@@ -194,13 +193,14 @@ $( function() {
 			this.setSubmitButtonState();
 		},
 
+		// Make sure the user didn't uncheck both reviewed edits and unreviewed edits
 		setSubmitButtonState: function() {
 			if( !$('#mwe-pt-filter-reviewed-edits').prop('checked')
 				&& !$('#mwe-pt-filter-unreviewed-edits').prop('checked')
 			) {
-				$( ".mwe-pt-filter-set-button" ).button( 'disable' );
+				$( "#mwe-pt-filter-set-button" ).button( 'disable' );
 			} else {
-				$( ".mwe-pt-filter-set-button" ).button( 'enable' );
+				$( "#mwe-pt-filter-set-button" ).button( 'enable' );
 			}
 		},
 

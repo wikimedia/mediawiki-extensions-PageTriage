@@ -74,8 +74,8 @@
 	position: relative;
 }
 
-.mwe-pt-filter-sub-input {
-	padding-left: 0.5em;
+#mwe-pt-filter-user {
+	width: 100px;
 }
 
 #mwe-pt-sort-buttons {

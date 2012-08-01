@@ -135,7 +135,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 														continue;
 													}
 													if ( wgFormattedNamespaces[namespaceNumber] === '' ) {
-														nsOptions += String('<option value="' + String(namespaceNumber) + '">' + gM( 'blanknamespace' ) + '</option>');
+														nsOptions += String('<option value="' + String(namespaceNumber) + '">' + gM( 'pagetriage-filter-article' ) + '</option>');
 													} else {
 														nsOptions += String('<option value="' + String(namespaceNumber) + '">' + wgFormattedNamespaces[namespaceNumber] + '</option>');
 													}
@@ -156,20 +156,18 @@ class SpecialNewPagesFeed extends SpecialPage {
 								<div class="mwe-pt-control-section">
 									<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-second-show-heading' ) %></b></span>
 									<div class="mwe-pt-control-options">
-										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-all" /> <%= gM( 'pagetriage-filter-all' ) %> <br/>
 										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-no-categories" /> <%= gM( 'pagetriage-filter-no-categories' ) %> <br/>
 										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-orphan" /> <%= gM( 'pagetriage-filter-orphan' ) %> <br/>
 										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-non-autoconfirmed" /> <%= gM( 'pagetriage-filter-non-autoconfirmed' ) %> <br/>
 										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-blocked" /> <%= gM( 'pagetriage-filter-blocked' ) %> <br/>
 										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-bot-edits" /> <%= gM( 'pagetriage-filter-bot-edits' ) %> <br/>
 										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-user-selected" /> <%= gM( 'pagetriage-filter-user-heading' ) %>
-										<div class="mwe-pt-control-options">
-											<span class="mwe-pt-filter-sub-input"><input type=text id="mwe-pt-filter-user" /></span>
-										</div>
+										<input type="text" id="mwe-pt-filter-user" placeholder="<%= gM( 'pagetriage-filter-username' ) %>" /> <br/>
+										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-all" /> <%= gM( 'pagetriage-filter-all' ) %>
 									</div>
 								</div>
 								<div class="mwe-pt-control-buttons">
-									<div id="mwe-pt-filter-set-button" class="mwe-pt-filter-set-button ui-button-green"></div>
+									<div id="mwe-pt-filter-set-button" class="ui-button-green"></div>
 								</div>
 							</form>
 						</div>
