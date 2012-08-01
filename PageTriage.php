@@ -595,6 +595,8 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-toolbar-linktext',
 		'pagetriage-mark-as-reviewed-helptext',
 		'pagetriage-mark-as-unreviewed-helptext',
+		'pagetriage-mark-as-reviewed-error',
+		'pagetriage-mark-as-unreviewed-error',
 		'pagetriage-markpatrolled',
 		'pagetriage-note-reviewed',
 		'pagetriage-note-not-reviewed',

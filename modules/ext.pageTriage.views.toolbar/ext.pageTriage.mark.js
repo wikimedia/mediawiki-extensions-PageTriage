@@ -37,17 +37,27 @@ $( function() {
 				url: mw.util.wikiScript( 'api' ),
 				data: apiRequest,
 				success: function( data ) {
-					if ( data.error ) {
-						// TODO: update for both review and unreview actions
-						alert( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
-					} else {
+					if ( typeof data.pagetriageaction !== 'undefined' && data.pagetriageaction.result === 'success' ) {
 						// update the article model, since it's now changed.
 						_this.model.fetch();
 						_this.hide();
+					} else {
+						_this.showMarkError( action );
 					}
+				},
+				error: function() {
+					_this.showMarkError( action );
 				},
 				dataType: 'json'
 			} );
+		},
+		
+		showMarkError: function( action ) {
+			if ( action === 'reviewed' ) {
+				alert( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
+			} else {
+				alert( mw.msg( 'pagetriage-mark-as-unreviewed-error' ) );
+			}
 		},
 
 		render: function() {
