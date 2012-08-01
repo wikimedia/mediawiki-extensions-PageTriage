@@ -78,9 +78,9 @@ $( function() {
 			
 			var $activeToolbar = $( '#mwe-pt-toolbar-active' );
 			var $inactiveToolbar = $( '#mwe-pt-toolbar-inactive' );
-						
-			// make the close button do something
-			$( '#mwe-pt-toolbar-close-button').click( function() {
+			
+			// make the minimize button do something
+			$( '#mwe-pt-toolbar-minimize-button').click( function() {
 				// close any open tools.
 				eventBus.trigger( 'showTool', this );				
 				$activeToolbar.css('display', 'none');
@@ -89,14 +89,41 @@ $( function() {
 				// this is a block element and will scale as wide as possible unless constrained
 				$( '#mwe-pt-toolbar' ).removeClass( 'mwe-pt-toolbar-big' ).addClass( 'mwe-pt-toolbar-small' );
 			} );
+						
+			// make the close button do something
+			$( '#mwe-pt-toolbar-close-button').click( function() {
+				// hide everything
+				$( '#mwe-pt-toolbar' ).hide();
+				// reset the curation toolbar to original state
+				$inactiveToolbar.css('display', 'none');
+				$activeToolbar.css('display', 'block');
+				$( '#mwe-pt-toolbar' ).removeClass( 'mwe-pt-toolbar-small' ).addClass( 'mwe-pt-toolbar-big' );
+				// insert link to reopen into the toolbox (if it doesn't already exist)
+				if ( $( '#t-curationtoolbar' ).length === 0 ) {
+					_this.insertLink();
+				}
+			} );
 
 			// set up the reopen event
-			$( '#mwe-pt-toolbar-inactive' ).click( function() {
+			$( '#mwe-pt-toolbar-vertical' ).click( function() {
 				$inactiveToolbar.css('display', 'none');
 				$activeToolbar.css('display', 'block');
 				$( '#mwe-pt-toolbar' ).removeClass( 'mwe-pt-toolbar-small' ).addClass( 'mwe-pt-toolbar-big' );
 			} );
 			
+		},
+		
+		insertLink: function () {
+			var $link = $( '<li id="t-curationtoolbar"><a href="#"></a></li>' );
+			$link.find( 'a' )
+				.text( mw.msg( 'pagetriage-toolbar-linktext' ) )
+				.click( function ( e ) {
+					$( '#mwe-pt-toolbar' ).show();
+					this.blur();
+					return false;
+				} );
+			$( '#p-tb' ).find( 'ul' ).append( $link );
+			return true;
 		}
 	} );
 

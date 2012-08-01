@@ -32,7 +32,7 @@
 
 #mwe-pt-toolbar-inactive {
 	width: 15px;
-	height: 70px;
+	height: 90px;
 	cursor: pointer;
 	display: none;
 }
@@ -41,7 +41,7 @@
 #mwe-pt-toolbar-main {
 }
 
-#mwe-pt-toolbar-close {
+#mwe-pt-toolbar-close, #mwe-pt-toolbar-minimize {
 	text-align: center;
 }
 
@@ -53,7 +53,15 @@
 	cursor: pointer;
 }
 
-p.mwe-pt-toolbar-vertical {
+#mwe-pt-toolbar-minimize-button {
+	background-image: url('images/minimize.png');
+	height: 12px;
+	width: 12px;
+	margin: 1px auto 0px auto;
+	cursor: pointer;
+}
+
+p#mwe-pt-toolbar-vertical {
 	color:#333;
 	border:0px solid red;
 	writing-mode:tb-rl;
