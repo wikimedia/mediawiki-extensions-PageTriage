@@ -75,36 +75,34 @@ $( function() {
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'articleInfoHistory.html' } ),
 
 		render: function() {
-			var _this = this;
-			var lastDate = null;
-			var x = 0;
+			var _this = this, lastDate = null;
 
 			this.model.each( function ( historyItem ) {
-				// Display the 5 most recent revisions
-				if ( x < 5 ) {
-					// I'd rather do this date parsing in the model, but the change event isn't properly
-					// passed through to nested models, and switching to backbone-relational in order to
-					// move these few lines of code seems silly.
-					var timestamp_parsed = Date.parseExact( historyItem.get( 'timestamp' ), 'yyyy-MM-ddTHH:mm:ssZ' );
-					historyItem.set('timestamp_date', timestamp_parsed.toString( gM( 'pagetriage-info-timestamp-date-format' ) ) );
-					historyItem.set('timestamp_time', timestamp_parsed.toString( gM( 'pagetriage-info-timestamp-time-format' ) ) );
-					if( historyItem.get( 'timestamp_date' ) !== lastDate ) {
-						historyItem.set( 'new_date', true );
-					} else {
-						historyItem.set( 'new_date', false );
-					}
-					lastDate = historyItem.get( 'timestamp_date' );
-					
-					// get a userlink.
-					// can't set link color since no userpage status is returned by the history api
-					if( historyItem.get( 'user' ) ) {
-						var userTitle = new mw.Title( historyItem.get( 'user' ), mw.config.get('wgNamespaceIds')['user'] );
-						historyItem.set( 'user_title_url', userTitle.getUrl() );
-					}				
-					
-					_this.$el.append( _this.template( historyItem.toJSON() ) );
+				// I'd rather do this date parsing in the model, but the change event isn't properly
+				// passed through to nested models, and switching to backbone-relational in order to
+				// move these few lines of code seems silly.
+				var timestamp_parsed = Date.parseExact( historyItem.get( 'timestamp' ), 'yyyy-MM-ddTHH:mm:ssZ' );
+				historyItem.set('timestamp_date', timestamp_parsed.toString( gM( 'pagetriage-info-timestamp-date-format' ) ) );
+				historyItem.set('timestamp_time', timestamp_parsed.toString( gM( 'pagetriage-info-timestamp-time-format' ) ) );
+				if( historyItem.get( 'timestamp_date' ) !== lastDate ) {
+					historyItem.set( 'new_date', true );
+				} else {
+					historyItem.set( 'new_date', false );
 				}
-				x++;			
+				lastDate = historyItem.get( 'timestamp_date' );
+
+				// get a userlink.
+				// can't set link color since no userpage status is returned by the history api
+				if( historyItem.get( 'user' ) ) {
+					var userTitle = new mw.Title( historyItem.get( 'user' ), mw.config.get('wgNamespaceIds')['user'] );
+					historyItem.set( 'user_title_url', userTitle.getUrl() );
+				}
+
+				historyItem.set( 'revision_url', mw.config.get( 'wgScriptPath' ) + '/index.php?title=' +
+									mw.util.wikiUrlencode( mw.config.get( 'wgPageName' ) ) +
+									'&oldid=' + historyItem.get( 'revid' ) );
+
+				_this.$el.append( _this.template( historyItem.toJSON() ) );
 			} );
 			return this;
 		}
