@@ -199,7 +199,7 @@ $( function() {
 		setBadge: function() {
 			var badgeCount = this.badgeCount();
 			if( badgeCount ) {
-				this.$el.find( '.mwe-pt-tool-icon-container' ).badger( String( badgeCount ) );
+				this.$el.find( '.mwe-pt-tool-icon-container' ).badge( badgeCount );
 			}
 		}
 
