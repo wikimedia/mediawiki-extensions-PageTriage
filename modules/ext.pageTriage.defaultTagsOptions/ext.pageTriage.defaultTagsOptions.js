@@ -128,6 +128,16 @@ $.pageTriageTagsOptions = {
 				dest: 'sources',
 				multiple: true
 			},
+			
+			'stub': {
+				label: mw.msg( 'pagetriage-tags-stub-label' ),
+				tag: 'stub',
+				desc: mw.msg( 'pagetriage-tags-stub-desc' ),
+				params: { },
+				position: 'bottom',
+				dest: 'structure',
+				multiple: false
+			},
 
 			'uncategorised': {
 				label: mw.msg( 'pagetriage-tags-uncategorised-label' ),
@@ -524,8 +534,8 @@ $.pageTriageTagsOptions = {
 				tag: 'stub',
 				desc: mw.msg( 'pagetriage-tags-stub-desc' ),
 				params: { },
-				position: 'top',
-				multiple: true
+				position: 'bottom',
+				multiple: false
 			},
 
 			'verylong': {
