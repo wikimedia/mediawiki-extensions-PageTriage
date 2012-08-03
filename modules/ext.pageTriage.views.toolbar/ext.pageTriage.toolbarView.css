@@ -41,23 +41,29 @@
 #mwe-pt-toolbar-main {
 }
 
-#mwe-pt-toolbar-close, #mwe-pt-toolbar-minimize {
+.mwe-pt-toolbar-minimize {
+	width: 12px;
+	float: right;
+}
+.mwe-pt-toolbar-close {
+	width: 12px;
+}
+.mwe-pt-toolbar-small .mwe-pt-toolbar-close {
+	width: auto;
 	text-align: center;
 }
-
-#mwe-pt-toolbar-close-button {
+.mwe-pt-toolbar-close-button {
 	background-image: url('images/close.png');
 	height: 12px;
 	width: 12px;
-	margin: 1px auto 0px auto;
+	margin: 0 auto;
 	cursor: pointer;
 }
-
-#mwe-pt-toolbar-minimize-button {
+.mwe-pt-toolbar-minimize-button {
 	background-image: url('images/minimize.png');
 	height: 12px;
 	width: 12px;
-	margin: 1px auto 0px auto;
+	margin: 0 auto;
 	cursor: pointer;
 }
 

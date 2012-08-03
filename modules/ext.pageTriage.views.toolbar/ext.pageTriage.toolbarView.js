@@ -80,23 +80,24 @@ $( function() {
 			var $inactiveToolbar = $( '#mwe-pt-toolbar-inactive' );
 			
 			// make the minimize button do something
-			$( '#mwe-pt-toolbar-minimize-button').click( function() {
+			$( '.mwe-pt-toolbar-minimize-button').click( function() {
 				// close any open tools.
 				eventBus.trigger( 'showTool', this );				
-				$activeToolbar.css('display', 'none');
-				$inactiveToolbar.css('display', 'block');
+				$activeToolbar.css('display', 'none' );
+				$inactiveToolbar.css( 'display', 'block' );
+				$( '#mwe-pt-toolbar' ).css( 'left', 'auto' ).css( 'right', '0' );
 				
 				// this is a block element and will scale as wide as possible unless constrained
 				$( '#mwe-pt-toolbar' ).removeClass( 'mwe-pt-toolbar-big' ).addClass( 'mwe-pt-toolbar-small' );
 			} );
 						
 			// make the close button do something
-			$( '#mwe-pt-toolbar-close-button').click( function() {
+			$( '.mwe-pt-toolbar-close-button').click( function() {
 				// hide everything
 				$( '#mwe-pt-toolbar' ).hide();
 				// reset the curation toolbar to original state
-				$inactiveToolbar.css('display', 'none');
-				$activeToolbar.css('display', 'block');
+				$inactiveToolbar.css( 'display', 'none' );
+				$activeToolbar.css( 'display', 'block' );
 				$( '#mwe-pt-toolbar' ).removeClass( 'mwe-pt-toolbar-small' ).addClass( 'mwe-pt-toolbar-big' );
 				// insert link to reopen into the toolbox (if it doesn't already exist)
 				if ( $( '#t-curationtoolbar' ).length === 0 ) {
@@ -106,9 +107,13 @@ $( function() {
 
 			// set up the reopen event
 			$( '#mwe-pt-toolbar-vertical' ).click( function() {
-				$inactiveToolbar.css('display', 'none');
-				$activeToolbar.css('display', 'block');
-				$( '#mwe-pt-toolbar' ).removeClass( 'mwe-pt-toolbar-small' ).addClass( 'mwe-pt-toolbar-big' );
+				$inactiveToolbar.css( 'display', 'none' );
+				$activeToolbar.css( 'display', 'block' );
+				$( '#mwe-pt-toolbar' )
+				.css( 'left', 'auto' )
+				.css( 'right', '0' )
+				.removeClass( 'mwe-pt-toolbar-small' )
+				.addClass( 'mwe-pt-toolbar-big' );
 			} );
 			
 		},
