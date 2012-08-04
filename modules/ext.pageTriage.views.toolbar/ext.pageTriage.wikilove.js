@@ -46,7 +46,7 @@ $( function() {
 			linkUrl = userTitle.getUrl();
 			link = mw.html.element( 'a', { 'href': linkUrl }, creator );
 
-			if ( $.inArray( creator, contributorArray ) ) {
+			if ( $.inArray( creator, contributorArray ) > -1 ) {
 				creatorContribCount = contributorCounts[creator];
 			}
 

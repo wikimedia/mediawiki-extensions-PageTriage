@@ -301,7 +301,6 @@ $messages['en'] = array(
 	'pagetriage-info-title' => 'Page info',
 	'pagetriage-info-problem-header' => 'Possible problems',
 	'pagetriage-info-history-header' => 'History',
-	'pagetriage-info-history-editcount' => '$1 {{PLURAL:$1|edit|edits}}',
 	'pagetriage-info-history-show-full' => 'show full history',
 	'pagetriage-info-help' => 'help',
 	'pagetriage-info-no-problems' => 'No problems have been found for this page so far.',

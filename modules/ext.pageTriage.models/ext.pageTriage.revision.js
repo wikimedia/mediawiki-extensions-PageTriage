@@ -15,7 +15,7 @@ $( function() {
 
 		apiParams: {
 			rvprop: 'timestamp|user|parsedcomment|ids',
-			rvlimit: 5
+			rvlimit: 25 // get data for last 25 revisions
 		},
 
 		initialize: function( options ) {
