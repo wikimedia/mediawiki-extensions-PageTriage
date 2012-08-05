@@ -31,7 +31,8 @@ var tags = {
 		tag: 'blp-prod',
 		desc: mw.msg( 'pagetriage-del-tags-blpprod-desc' ),
 		params: {},
-		anchor: ''
+		anchor: '',
+		talkpagenotiftpl: 'ProdwarningBLP-NPF'
 	},
 
 	'dba1': {
@@ -39,7 +40,8 @@ var tags = {
 		tag: 'db-a1',
 		desc: mw.msg( 'pagetriage-del-tags-dba1-desc' ),
 		params: {},
-		anchor: 'nocontext'
+		anchor: 'nocontext',
+		talkpagenotiftpl: 'Empty-warn-NPF'
 	},
 
 	'dba2': {
@@ -49,7 +51,8 @@ var tags = {
 		params: {
 			'source': $.extend( true, {}, param.source )
 		},
-		anchor: 'notenglish'
+		anchor: 'notenglish',
+		talkpagenotiftpl: 'Db-foreign-notice-NPF'
 	},
 
 	'dba3': {
@@ -57,7 +60,8 @@ var tags = {
 		tag: 'db-a3',
 		desc: mw.msg( 'pagetriage-del-tags-dba3-desc' ),
 		params: {},
-		anchor: 'nocontent'
+		anchor: 'nocontent',
+		talkpagenotiftpl: 'Nocontent-warn-NPF'
 	},
 
 	'dba7': {
@@ -65,7 +69,8 @@ var tags = {
 		tag: 'db-a7',
 		desc: mw.msg( 'pagetriage-del-tags-dba7-desc' ),
 		params: {},
-		anchor: 'importance'
+		anchor: 'importance',
+		talkpagenotiftpl: 'Db-notability-notice-NPF'
 	},
 
 	'dba9': {
@@ -73,7 +78,8 @@ var tags = {
 		tag: 'db-a9',
 		desc: mw.msg( 'pagetriage-del-tags-dba9-desc' ),
 		params: {},
-		anchor: 'music'
+		anchor: 'music',
+		talkpagenotiftpl: 'Db-a9-notice-NPF'
 	},
 
 	'dba10': {
@@ -83,7 +89,8 @@ var tags = {
 		params: {
 			'article': $.extend( true, {}, param.article )
 		},
-		anchor: 'duplicate'
+		anchor: 'duplicate',
+		talkpagenotiftpl: 'Db-a10-notice-NPF'
 	},
 
 	'dbg1': {
@@ -91,7 +98,8 @@ var tags = {
 		tag: 'db-g1',
 		desc: mw.msg( 'pagetriage-del-tags-dbg1-desc' ),
 		params: {},
-		anchor: 'nonsense'
+		anchor: 'nonsense',
+		talkpagenotiftpl: 'Db-nonsense-notice-NPF'
 	},
 
 	'dbg2': {
@@ -99,7 +107,8 @@ var tags = {
 		tag: 'db-g2',
 		desc: mw.msg( 'pagetriage-del-tags-dbg2-desc' ),
 		params: {},
-		anchor: 'test'
+		anchor: 'test',
+		talkpagenotiftpl: 'Db-test-notice-NPF'
 	},
 
 	'dbg3': {
@@ -107,7 +116,8 @@ var tags = {
 		tag: 'db-g3',
 		desc: mw.msg( 'pagetriage-del-tags-dbg3-desc' ),
 		params: {},
-		anchor: 'vandalism'
+		anchor: 'vandalism',
+		talkpagenotiftpl: 'Db-vandalism-notice-NPF'
 	},
 
 	'dbg4': {
@@ -115,7 +125,8 @@ var tags = {
 		tag: 'db-g4',
 		desc: mw.msg( 'pagetriage-del-tags-dbg4-desc' ),
 		params: {},
-		anchor: 'repost'
+		anchor: 'repost',
+		talkpagenotiftpl: 'Uw-repost-NPF'
 	},
 
 	'dbg5': {
@@ -123,7 +134,8 @@ var tags = {
 		tag: 'db-g5',
 		desc: mw.msg( 'pagetriage-del-tags-dbg5-desc' ),
 		params: {},
-		anchor: 'banned'
+		anchor: 'banned',
+		talkpagenotiftpl: 'Db-banned-notice-NPF'
 	},
 
 	'dbg10': {
@@ -131,7 +143,8 @@ var tags = {
 		tag: 'db-g10',
 		desc: mw.msg( 'pagetriage-del-tags-dbg10-desc' ),
 		params: {},
-		anchor: 'attack'
+		anchor: 'attack',
+		talkpagenotiftpl: 'Db-attack-notice-NPF'
 	},
 
 	'dbg11': {
@@ -139,7 +152,8 @@ var tags = {
 		tag: 'db-g11',
 		desc: mw.msg( 'pagetriage-del-tags-dbg11-desc' ),
 		params: {},
-		anchor: 'spam'
+		anchor: 'spam',
+		talkpagenotiftpl: 'Spam-warn-NPF'
 	},
 
 	'dbg12': {
@@ -149,7 +163,8 @@ var tags = {
 		params: {
 			'url': $.extend( true, {}, param.url )
 		},
-		anchor: 'copyvio'
+		anchor: 'copyvio',
+		talkpagenotiftpl: 'Nothanks-sd-NPF'
 	},
 
 	'dbu2': {
@@ -157,7 +172,8 @@ var tags = {
 		tag: 'db-u2',
 		desc: mw.msg( 'pagetriage-del-tags-dbu2-desc' ),
 		params: {},
-		anchor: 'nouser'
+		anchor: 'nouser',
+		talkpagenotiftpl: 'Db-u2-notice-NPF'
 	},
 
 	'dbu3': {
@@ -165,7 +181,8 @@ var tags = {
 		tag: 'db-u3',
 		desc: mw.msg( 'pagetriage-del-tags-dbu3-desc' ),
 		params: {},
-		anchor: 'fairusegallery'
+		anchor: 'fairusegallery',
+		talkpagenotiftpl: 'Db-gallery-notice-NPF'
 	},
 
 	'prod': {
@@ -179,12 +196,16 @@ var tags = {
 				value: ''
 			}
 		},
-		anchor: ''
+		anchor: '',
+		talkpagenotiftpl: 'Proposed_deletion_notify-NPF'
 	}
 
 };
 
-$.pageTriageDeletionTagsMultiple = 'Db-multiple';
+$.pageTriageDeletionTagsMultiple = {
+	'tag': 'Db-multiple',
+	'talkpagenotiftpl': 'Db-notice-multiple-NPF'
+};
 
 $.pageTriageDeletionTagsOptions = {
 
@@ -235,7 +256,8 @@ $.pageTriageDeletionTagsOptions = {
 							type: 'textarea',
 							value: ''
 						}
-					}
+					},
+					talkpagenotiftpl: 'AfD-notice-NPF'
 				},
 
 				'redirectsfordiscussion': {
@@ -249,7 +271,8 @@ $.pageTriageDeletionTagsOptions = {
 							type: 'textarea',
 							value: ''
 						}
-					}
+					},
+					talkpagenotiftpl: 'RFDNote-NPF'
 				}
 			}
 		}
@@ -293,7 +316,8 @@ $.pageTriageDeletionTagsOptions = {
 							type: 'textarea',
 							value: ''
 						}
-					}
+					},
+					talkpagenotiftpl: 'MFDWarning-NPF'
 				}
 			}
 		}

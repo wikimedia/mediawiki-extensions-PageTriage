@@ -361,7 +361,10 @@ $wgPageTriageDeletionTagsOptionsMessages = array (
 	'pagetriage-del-tags-prod-desc',
 	'pagetriage-del-tags-articlefordeletion-label',
 	'pagetriage-del-tags-redirectsfordiscussion-label',
-	'pagetriage-del-tags-miscellanyfordeletion-label'
+	'pagetriage-del-tags-miscellanyfordeletion-label',
+	'pagetriage-del-log-page-missing-error',
+	'pagetriage-del-log-page-adding-error',
+	'pagetriage-del-talk-page-notify-error'
 );
 
 $wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + array(

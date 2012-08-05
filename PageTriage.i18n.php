@@ -272,7 +272,9 @@ $messages['en'] = array(
 	'pagetriage-del-tags-articlefordeletion-label' => 'Articles for deletion',
 	'pagetriage-del-tags-redirectsfordiscussion-label' => 'Redirects for discussion',
 	'pagetriage-del-tags-miscellanyfordeletion-label' => 'Miscellany for deletion',
-	
+	'pagetriage-del-log-page-missing-error' => 'Log page for today has not been created yet!',
+	'pagetriage-del-log-page-adding-error' => 'Failed to find target spot for the discussion',
+	'pagetriage-del-talk-page-notify-error' => 'Failed to notify author on talk page',
 	// Tags parameter section
 	'pagetriage-tags-param-article-label' => 'Article:',
 	'pagetriage-tags-param-date-label' => 'Date:',
@@ -589,6 +591,9 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-del-tags-articlefordeletion-label' => 'Label for articles for deletion tag',
 	'pagetriage-del-tags-redirectsfordiscussion-label' => 'Label for redirects for discussion tag',
 	'pagetriage-del-tags-miscellanyfordeletion-label' => 'Label for miscellany for deletion tag',
+	'pagetriage-del-log-page-missing-error' => 'Error message indicating that the log page for current date has not been created',
+	'pagetriage-del-log-page-adding-error' => 'Error message indicating a failure of adding the page to discussion',
+	'pagetriage-del-talk-page-notify-error' => 'Error message indicating a failure of notifying the author on user talk page',
 	'pagetriage-tags-param-article-label' => 'Label for article parameter',
 	'pagetriage-tags-param-date-label' => 'Label for date parameter',
 	'pagetriage-tags-param-for-label' => 'Label for for parameter',
