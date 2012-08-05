@@ -176,6 +176,7 @@ $wgPageTriageTagsOptionsMessages = array (
 	'pagetriage-tags-cat-verifiability-label',
 	'pagetriage-tags-cat-writingstyle-label',
 	'pagetriage-tags-cat-moretags-label',
+	'pagetriage-tags-cat-all-label',
 	'pagetriage-tags-linkrot-label',
 	'pagetriage-tags-linkrot-desc',
 	'pagetriage-tags-copyedit-label',

@@ -14,8 +14,48 @@ $( function() {
 		 */
 		initialize: function( options ) {
 			this.eventBus = options.eventBus;
+			this.buildAllCategory();
 			this.reset();
 		},
+
+		/**
+		 * Construct the 'All' category on the fly
+		 */
+		buildAllCategory: function() {
+			var list = [], len;
+			// first, loop through all tags and store them in the array list
+			for ( var cat in this.tagsOptions ) {
+				if ( this.tagsOptions[cat].alias ) {
+					continue;
+				}
+				for ( var key in this.tagsOptions[cat].tags ) {
+					var tag = $.extend( true, {}, this.tagsOptions[cat].tags[key] );
+					tag.dest = cat;
+					list.push( tag );
+				}
+			}
+			// then, sort the array in ascending order
+			list.sort( function( a, b ) {
+				if ( a.label < b.label ) {
+					return -1;
+				}
+				if ( a.label > b.label) {
+					return 1;
+				}
+				return 0;
+			} );
+			// finally, push the sorted array into the existing tag json object
+			this.tagsOptions.all = {
+				label: mw.msg( 'pagetriage-tags-cat-all-label' ),
+				alias: true,
+				tags: {}
+			};
+			len = list.length;
+			for ( var i = 0; i < len; i++ ) {
+				var tagKey = list[i].tag.replace( '-', '' ).replace( ' ', '' ).toLowerCase();
+				this.tagsOptions.all.tags[tagKey] = list[i];
+			}
+		 },
 
 		/**
 		 * Reset selected tag data
@@ -143,7 +183,7 @@ $( function() {
 						// Tags in the 'common' group actually belong to other categories.
 						// In those cases we need to interact with the real parent
 						// category which is indicated in the 'dest' attribute.
-						if ( cat === 'common' && tagSet[tagKey].dest ) {
+						if ( ( cat === 'common' || cat == 'all' ) && tagSet[tagKey].dest ) {
 							destCat	= tagSet[tagKey].dest;
 						}
 						
@@ -165,6 +205,7 @@ $( function() {
 							if ( alsoCommon ) {
 								_this.selectedTag['common'][tagKey] = tagSet[tagKey];
 							}
+							_this.selectedTag['all'][tagKey] = tagSet[tagKey];
 							_this.showParamsLink( tagKey, cat );
 							// show the param form if there is required parameter
 							for ( var param in tagSet[tagKey]['params'] ) {
@@ -184,6 +225,7 @@ $( function() {
 							if ( alsoCommon ) {
 								delete _this.selectedTag['common'][tagKey];
 							}
+							delete _this.selectedTag['all'][tagKey];
 							_this.hideParamsLink( tagKey );
 							// If the param form is visible, hide it
 							_this.hideParamsForm( tagKey );
