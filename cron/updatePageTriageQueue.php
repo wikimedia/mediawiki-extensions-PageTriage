@@ -36,7 +36,7 @@ class updatePageTriageQueue extends Maintenance {
 		$this->init();
 		$this->output( "Started processing... \n" );
 
-		// Scan for data with reviewed_updated set more than 60 days ago
+		// Scan for data with ptrp_created set more than 60 days ago
 		$startTime = wfTimestamp( TS_UNIX ) - 60* 60 * 60 * 24;
 		$count = $this->batchSize;
 
@@ -60,20 +60,20 @@ class updatePageTriageQueue extends Maintenance {
 			$startTime = $this->dbr->addQuotes( $this->dbr->timestamp( $startTime ) );
 			$startId = intval( $startId );
 
-			// Remove articles from pagetriage queue after 60 days of inactivity, if
-			// 1. the article has been reviewed
-			// 2. the article is not in main namespace
+			// Remove pages older than 60 days, if
+			// 1. the page has been reviewed, or
+			// 2. the page is not in main namespace
 			$res = $this->dbr->select(
 				array( 'pagetriage_page', 'page' ),
-				array( 'ptrp_page_id', 'ptrp_reviewed_updated', 'page_namespace', 'ptrp_reviewed' ),
+				array( 'ptrp_page_id', 'ptrp_created', 'page_namespace', 'ptrp_reviewed' ),
 				array(
-					'(ptrp_reviewed_updated < ' . $startTime . ') OR
-					(ptrp_reviewed_updated = ' . $startTime . ' AND ptrp_page_id < ' . $startId . ')',
+					'(ptrp_created < ' . $startTime . ') OR
+					(ptrp_created = ' . $startTime . ' AND ptrp_page_id < ' . $startId . ')',
 					'ptrp_page_id = page_id',
 					'page_namespace != 0 OR ptrp_reviewed > 0'
 				),
 				__METHOD__,
-				array( 'LIMIT' => $this->batchSize, 'ORDER BY' => 'ptrp_reviewed_updated DESC, ptrp_page_id DESC' )
+				array( 'LIMIT' => $this->batchSize, 'ORDER BY' => 'ptrp_created DESC, ptrp_page_id DESC' )
 			);
 
 			$pageId = array();
@@ -84,8 +84,8 @@ class updatePageTriageQueue extends Maintenance {
 
 			if ( $pageId ) {
 				// update data from last row
-				if ( $row->ptrp_reviewed_updated ) {
-					$startTime = wfTimestamp( TS_UNIX, $row->ptrp_reviewed_updated );
+				if ( $row->ptrp_created ) {
+					$startTime = wfTimestamp( TS_UNIX, $row->ptrp_created );
 				}
 				$startId = $row->ptrp_page_id;
 
