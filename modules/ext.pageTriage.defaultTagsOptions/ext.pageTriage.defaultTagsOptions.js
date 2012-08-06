@@ -27,11 +27,7 @@ var param = {
 	'blp': {
 		label: mw.msg( 'pagetriage-tags-param-blp-label' ),
 		input: 'optional',
-		type: 'select',
-		option: {
-			'Yes': mw.msg( 'pagetriage-tags-param-free-yes-label' ),
-			'No': mw.msg( 'pagetriage-tags-param-free-no-label' )
-		},
+		type: 'checkbox',
 		value: ''
 	},
 
@@ -224,7 +220,7 @@ $.pageTriageTagsOptions = {
 					'date': param.date
 				},
 				position: 'top',
-				multiple: false
+				multiple: true
 			},
 
 			'uncategorised': {
@@ -465,7 +461,7 @@ $.pageTriageTagsOptions = {
 				desc: mw.msg( 'pagetriage-tags-condense-desc' ),
 				params: { },
 				position: 'top',
-				multiple: false
+				multiple: true
 			},
 
 			'leadmissing': {
@@ -743,7 +739,7 @@ $.pageTriageTagsOptions = {
 					'date': param.date
 				},
 				position: 'top',
-				multiple: false
+				multiple: true
 			},
 
 			'tone': {
@@ -770,7 +766,7 @@ $.pageTriageTagsOptions = {
 					'date': param.date
 				},
 				position: 'top',
-				multiple: false
+				multiple: true
 			},
 
 			'fiction': {

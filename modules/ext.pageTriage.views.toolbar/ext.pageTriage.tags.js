@@ -412,7 +412,19 @@ $( function() {
 		setParams: function( key, cat ) {
 			var tag = this.selectedTag[cat][key];
 			for ( var param in tag.params ) {
-				tag.params[param].value = $( '#mwe-pt-tag-params-' + key + '-' + param ).attr( 'value' );
+				if ( tag.params[param].type === 'checkbox' ) {
+					// See if it's checked or not
+					if ( $( '#mwe-pt-tag-params-' + key + '-' + param ).is(':checked') ) {
+						tag.params[param].value = $( '#mwe-pt-tag-params-' + key + '-' + param ).val();
+					} else {
+						tag.params[param].value = '';
+					}
+				} else if ( tag.params[param].type === 'select' ) {
+					tag.params[param].value = $( 'input[name = mwe-pt-tag-params-' + key+ '-' + param + ']:checked' ).val();
+				} else {
+					tag.params[param].value = $( '#mwe-pt-tag-params-' + key + '-' + param ).val();
+				}
+				// If a parameter is required but not filled in, show an error and keep the form open
 				if ( tag.params[param].input === 'required' && !tag.params[param].value ) {
 					$( '#mwe-pt-tags-params-form-error' ).html( mw.msg( 'pagetriage-tags-param-missing-required', param ) );
 					return false;
@@ -425,11 +437,11 @@ $( function() {
 		/**
 		 * Build the parameter for request
 		 */
-		buildParams: function( obj ) {
+		buildParams: function( tagObj ) {
 			var paramVal = '';
-			for ( var param in obj.params ) {
-				if ( obj.params[param].value ) {
-					paramVal += '|' + param + '=' + obj.params[param].value;
+			for ( var param in tagObj.params ) {
+				if ( tagObj.params[param].value ) {
+					paramVal += '|' + param + '=' + tagObj.params[param].value;
 				}
 			}
 			return paramVal;
@@ -557,23 +569,36 @@ $( function() {
 						);
 					html += "<br/>\n";
 					break;
+				case 'checkbox':
+					html += mw.html.element(
+						'input',
+						{
+							'type': 'checkbox',
+							'value': 'yes',
+							'checked': ( obj.value === 'yes' ) ? true : false,
+							'name': 'mwe-pt-tag-params-' + key + '-' + name,
+							'id': 'mwe-pt-tag-params-' + key + '-' + name
+						}
+					);
+					html += obj.label;
+					html += "<br/>\n";
+					break;
 				case 'select':
 					html += obj.label + ' ';
 					for ( var i in obj.option ) {
-						html += obj.option[i] + ' ' +
-							mw.html.element(
-								'input',
-								{
-									'type': 'radio',
-									'value': i, 'id': 'mwe-pt-tag-params-' + key + '-' + name,
-									'checked': ( i === obj.value ) ? true : false,
-									'name': 'mwe-pt-tag-params-' + key + '-' + name
-								}
+						html += mw.html.element(
+							'input',
+							{
+								'type': 'radio',
+								'value': i.toLowerCase(),
+								'checked': ( i === obj.value ) ? true : false,
+								'name': 'mwe-pt-tag-params-' + key + '-' + name
+							}
 						);
+						html += obj.option[i];
 					}
 					html += "<br/>\n";
 					break;
-
 				case 'text':
 				default:
 					html += obj.label + ' ';
