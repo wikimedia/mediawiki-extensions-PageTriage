@@ -40,9 +40,14 @@ $( function() {
 				cache: false,
 				success: function( data ) {
 					if ( typeof data.pagetriageaction !== 'undefined' && data.pagetriageaction.result === 'success' ) {
-						// update the article model, since it's now changed.
-						_this.model.fetch();
-						_this.hide();
+						var note = $.trim( $( '#mwe-pt-review-note-input' ).val() );
+						if ( note.length ) {
+							_this.talkPageNote( note, action );
+						} else {
+							// update the article model, since it's now changed.
+							_this.model.fetch();
+							_this.hide();
+						}
 					} else {
 						_this.showMarkError( action );
 					}
@@ -53,7 +58,38 @@ $( function() {
 				dataType: 'json'
 			} );
 		},
-		
+
+		talkPageNote: function( note, action ) {
+			var _this = this, title = new mw.Title( this.model.get( 'user_name' ), mw.config.get( 'wgNamespaceIds' )['user_talk'] );
+
+			note = '{{' + mw.config.get( 'wgTalkPageNoteTemplate' )['Mark']
+				+ '|' + mw.config.get( 'wgPageName' )
+				+ '|' + mw.config.get( 'wgUserName' )
+				+ '|' + note + '}}';
+
+			$.ajax( {
+				type: 'post',
+				url: mw.util.wikiScript( 'api' ),
+				data: {
+					action: 'edit',
+					title: title.getPrefixedText(),
+					appendtext: "\n" + note,
+					token: mw.user.tokens.get( 'editToken' ),
+					format: 'json'
+				},
+				success: function( data ) {
+					if ( data.edit && data.edit.result === 'Success' ) {
+						// update the article model, since it's now changed.
+						_this.model.fetch();
+						_this.hide();
+					} else {
+						_this.showMarkError( action );
+					}
+				},
+				dataType: 'json'
+			} );
+		},
+
 		showMarkError: function( action ) {
 			if ( action === 'reviewed' ) {
 				alert( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
@@ -63,19 +99,27 @@ $( function() {
 		},
 
 		render: function() {
-			var _this = this;
+			var _this = this, status = this.model.get( 'patrol_status' ) == "0" ? 'reviewed' : 'unreviewed', maxLength = 250;
 
 			// create the mark as reviewed flyout content here.
-			this.$tel.html( this.template( this.model.toJSON() ) );
+			this.$tel.html( this.template( $.extend( this.model.toJSON(), { 'status': status, 'maxLength': maxLength } ) ) );
 
 			// override the flyout title based on the current reviewed state of the page
-			if ( this.model.get( 'patrol_status' ) > 0 ) {
-				// page is reviewed
-				$( '#mwe-pt-mark .mwe-pt-tool-title' ).text( mw.msg( 'pagetriage-mark-as-unreviewed' ) );
-			} else {
-				// page is unreviewed
-				$( '#mwe-pt-mark .mwe-pt-tool-title' ).text( mw.msg( 'pagetriage-mark-as-reviewed' ) );
-			}
+			$( '#mwe-pt-mark .mwe-pt-tool-title' ).text( mw.msg( 'pagetriage-mark-as-' + status ) );
+
+			$( '#mwe-pt-review-note-input' ).keyup( function() {
+				var length = $.trim( $('#mwe-pt-review-note-input').val() ).length;
+				var buttonId = 'mwe-pt-mark-as-' + status + '-button';
+				var charLeft = maxLength - length;
+
+				$( '#mwe-pt-review-note-char-count' ).text( mw.msg( 'pagetriage-characters-left', charLeft ) );
+
+				if ( charLeft <= 0 ) {
+					$( '#' + buttonId ).button( 'disable' );
+				} else {
+					$( '#' + buttonId ).button( 'enable' );
+				}
+			} ).attr( 'placeholder', gM( 'pagetriage-personal-default-note', this.model.get( 'user_name' ) ) );
 
 			// set the Learn More link URL
 			var modules = mw.config.get( 'wgPageTriageCurationModules' );

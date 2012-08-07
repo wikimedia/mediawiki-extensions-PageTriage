@@ -1,13 +1,11 @@
 <div>
-	<% if ( patrol_status == "0" ) { %>
-		<div class="mwe-pt-mark-helptext">
-			<%= gM( 'pagetriage-mark-as-reviewed-helptext' ) %>
-		</div>
-		<button id='mwe-pt-mark-as-reviewed-button' class="ui-button-green"><%= gM( "pagetriage-mark-as-reviewed" ) %></button>
-	<% } else { %>
-		<div class="mwe-pt-mark-helptext">
-			<%= gM( 'pagetriage-mark-as-unreviewed-helptext' ) %>
-		</div>
-		<button id='mwe-pt-mark-as-unreviewed-button' class="ui-button-green"><%= gM( "pagetriage-mark-as-unreviewed" ) %></button>
-	<% } %>
+	<div class="mwe-pt-mark-helptext">
+		<%= gM( 'pagetriage-mark-as-' + status + '-helptext' ) %>
+	</div>
+	<div id="mwe-pt-review-note">
+		<div id="mwe-pt-review-note-title"><%= mw.html.escape( gM( 'pagetriage-add-a-note' ) ) %></div>
+		<div id="mwe-pt-review-note-char-count"><%= mw.html.escape( gM( 'pagetriage-characters-left', maxLength ) ) %></div>
+		<textarea id="mwe-pt-review-note-input"></textarea>
+	</div>
+	<button id='mwe-pt-mark-as-<%= status %>-button' class="ui-button-green"><%= mw.html.escape( gM( "pagetriage-mark-as-" + status ) ) %></button>
 </div>

@@ -95,7 +95,10 @@ $messages['en'] = array(
 	'pagetriage-button-add-parameters' => 'Add parameters',
 	'pagetriage-button-add-details' => 'Add details',
 	'pagetriage-button-edit-details' => 'Edit details',
-	
+	'pagetriage-add-a-note' => 'Add a message for the creator: (optional)',
+	'pagetriage-characters-left' => '{{PLURAL:$1|$1 character|$1 characters}} left',
+	'pagetriage-personal-default-note' => 'Write a helpful note for {{GENDER:$1|$1}}. It will be posted on their talk page.',
+
 	 // Tags options section
 	'pagetriage-tags-title' => 'Add tags',
 	'pagetriage-tags-cat-common-label' => 'Common',
@@ -320,9 +323,9 @@ $messages['en'] = array(
 	'pagetriage-mark-title' => 'Mark as reviewed',
 	'pagetriage-mark-as-reviewed' => 'Mark as reviewed',
 	'pagetriage-mark-as-unreviewed' => 'Mark as unreviewed',
-	'pagetriage-mark-as-reviewed-helptext' => 'Remove this page from the unreviewed queue?',
-	'pagetriage-mark-as-unreviewed-helptext' => 'Return this page to the unreviewed queue?',
 	'pagetriage-mark-tooltip' => 'Mark page as reviewed (or unreviewed if already reviewed)',
+	'pagetriage-mark-as-reviewed-helptext' => 'Mark this page as reviewed if you\'re done checking it.',
+	'pagetriage-mark-as-unreviewed-helptext' => 'Mark this page as unreviewed if you think it needs to be checked further.',
 	'pagetriage-wikilove-helptext' => 'Select the names of editors you wish to thank.',
 	'pagetriage-wikilove-page-creator' => 'Page Creator',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|edit|edits}}',
@@ -427,6 +430,9 @@ If your language requires some words between the different parts of the timestam
 	'pagetriage-button-add-parameters' => 'Text for the button that adds parameters',
 	'pagetriage-button-add-details' => 'Text for the bution that saves any extra information associated with the tag',
 	'pagetriage-button-edit-details' => 'Text for the button that lets the user edit information associated with the tag',
+	'pagetriage-add-a-note' => 'Text for adding a personal note in curation toolbar',
+	'pagetriage-characters-left' => 'The text indicating the number of characters remaining for input',
+	'pagetriage-personal-default-note' => 'Default text in the text box for editors to add a "Mark as reviewed" or "Tagging" personal note, $1 is the name of the page creator',
 	'pagetriage-tags-title' => 'The title for the tag wizard flyout in the toolbar',
 	'pagetriage-tags-cat-common-label' => 'Label for common category',
 	'pagetriage-tags-cat-metadata-label' => 'Label for metadata category',

@@ -9,6 +9,7 @@ $( function() {
 		tagsOptions: $.pageTriageTagsOptions,
 		selectedTag: {},
 		selectedTagCount: 0,
+		noteMaxLength: 250,
 
 		/**
 		 * Initialize data on startup
@@ -85,12 +86,23 @@ $( function() {
 		render: function() {
 			var _this = this;
 			this.reset();
-			this.$tel.html( this.template( { 'tags': this.tagsOptions, 'title': this.title } ) );
+			this.$tel.html( this.template( { 'tags': this.tagsOptions, 'title': this.title, 'maxLength': this.noteMaxLength } ) );
 			this.model.on( 'change', this.showHideReviewButton, this );
 
 			// set the Learn More link URL
 			var modules = mw.config.get( 'wgPageTriageCurationModules' );
 			$( '#mwe-pt-tag .mwe-pt-flyout-help-link' ).attr( 'href', modules.tags );
+			$( '#mwe-pt-tag-note-input' ).keyup( function() {
+				var charLeft = _this.noteCharLeft();
+
+				$( '#mwe-pt-tag-note-char-count' ).text( mw.msg( 'pagetriage-characters-left', charLeft ) );
+
+				if ( charLeft > 0 && _this.selectedTagCount > 0 ) {
+					$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
+				} else {
+					$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
+				}
+			} ).attr( 'placeholder', gM( 'pagetriage-personal-default-note', this.model.get( 'user_name' ) ) );
 
 			// add click event for each category
 			$( '#mwe-pt-categories' ).find( 'div' ).each( function( index, value ) {
@@ -117,6 +129,10 @@ $( function() {
 			this.showHideReviewButton();
 			// show tags under common by default
 			this.displayTags( 'common' );
+		},
+
+		noteCharLeft: function() {
+			return this.noteMaxLength - $.trim( $('#mwe-pt-tag-note-input').val() ).length;
 		},
 
 		/**
@@ -254,11 +270,13 @@ $( function() {
 				$( '#mwe-pt-category-' + cat + ' .mwe-pt-tag-count' ).empty();
 			}
 
+			this.selectedTagCount > 0 ? $( '#mwe-pt-tag-note' ).show() : $( '#mwe-pt-tag-note' ).hide();
+
 			// update the number in the submit button
 			$( '#mwe-pt-tag-submit-button .ui-button-text' ).html( mw.msg( 'pagetriage-button-add-tag-number', this.selectedTagCount ) );
 			
 			// activate or deactivate the submit button and associated parts
-			if ( this.selectedTagCount > 0 ) {
+			if ( this.selectedTagCount > 0 && this.noteCharLeft() > 0 ) {
 				$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
 				$( '#mwe-pt-checkbox-mark-reviewed' ).removeAttr( 'disabled' );
 				$( '#mwe-pt-checkbox-mark-reviewed-label' ).css( 'opacity', 1.0 );
@@ -531,8 +549,47 @@ $( function() {
 				},
 				success: function( data ) {
 					if ( data.pagetriagetagging.result === 'success' ) {
+						var note = $.trim( $( '#mwe-pt-tag-note-input' ).val() );
+						if ( note.length ) {
+							_this.talkPageNote( note );
+						} else {
+							// update the article model, since it's now changed.
+							_this.reset();
+							window.location.reload( true );
+						}
+					} else {
+						alert( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
+					}
+				},
+				dataType: 'json'
+			} );
+		},
+
+		talkPageNote: function( note ) {
+			var _this = this, title = new mw.Title( this.model.get( 'user_name' ), mw.config.get( 'wgNamespaceIds' )['user_talk'] );
+
+			note = '{{' + mw.config.get( 'wgTalkPageNoteTemplate' )['Tags']
+				+ '|' + mw.config.get( 'wgPageName' )
+				+ '|' + mw.config.get( 'wgUserName' )
+				+ '|' + note + '}}';
+
+			$.ajax( {
+				type: 'post',
+				url: mw.util.wikiScript( 'api' ),
+				data: {
+					'action': 'edit',
+					'title': title.getPrefixedText(),
+					'appendtext': "\n" + note,
+					'token': mw.user.tokens.get('editToken'),
+					'format': 'json'
+				},
+				success: function( data ) {
+					if ( data.edit && data.edit.result === 'Success' ) {
+						// update the article model, since it's now changed.
 						_this.reset();
 						window.location.reload( true );
+					} else {
+						alert( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
 					}
 				},
 				dataType: 'json'

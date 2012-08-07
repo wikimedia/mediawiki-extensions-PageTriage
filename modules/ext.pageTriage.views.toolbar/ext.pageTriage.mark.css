@@ -7,3 +7,19 @@
 	font-size: 0.8em;
 }
 
+#mwe-pt-review-note {
+	margin-top: 10px;
+}
+
+#mwe-pt-review-note-title {
+	float: left;
+	font-size: 0.8em;
+}
+
+#mwe-pt-review-note-char-count {
+	float: right;
+	font-size: 0.8em;
+}
+#mwe-pt-review-note-input {
+	clear: both;
+}

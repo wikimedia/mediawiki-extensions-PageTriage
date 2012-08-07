@@ -424,7 +424,8 @@ class PageTriageHooks {
 	 * @return bool
 	 */
 	public static function onResourceLoaderGetConfigVars( &$vars ) {
-		global $wgPageTriageToolbarInfoHelpLink, $wgPageTriageCurationModules, $wgPageTriageNamespaces;
+		global $wgPageTriageToolbarInfoHelpLink, $wgPageTriageCurationModules, $wgPageTriageNamespaces,
+			$wgTalkPageNoteTemplate;
 
 		// check if WikiLove is enabled
 		if ( !class_exists( 'ApiWikiLove' ) ) {
@@ -436,6 +437,7 @@ class PageTriageHooks {
 		$vars['wgPageTriageToolbarInfoHelpLink'] = $wgPageTriageToolbarInfoHelpLink;
 		$vars['wgPageTriageCurationModules'] = $wgPageTriageCurationModules;
 		$vars['wgPageTriageNamespaces'] = $wgPageTriageNamespaces;
+		$vars['wgTalkPageNoteTemplate'] = $wgTalkPageNoteTemplate;
 		return true;
 	}
 }

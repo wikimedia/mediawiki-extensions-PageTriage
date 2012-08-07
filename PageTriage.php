@@ -68,6 +68,10 @@ $wgPageTriageCurationModules = array(
 $wgPageTriageToolbarInfoHelpLink = "http://en.wikipedia.org/wiki/Wikipedia:New_pages_patrol#Patroller_checklists"; // help link in toolbar article info view
 $wgPageTriageCacheVersion = '1.0'; // version number to be added to cache key so that cache can be refreshed easily
 $wgPageTriageNamespaces = array( NS_MAIN, NS_USER  ); // only include these namespaces for pagetriage
+$wgTalkPageNoteTemplate = array(
+	'Mark' => 'Reviewednote-NPF',
+	'Tags' => 'Taggednote-NPF'
+);
 // End configuration variables
 
 
@@ -630,6 +634,9 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'talkpagelinktext',
 		'contribslink',
 		'comma-separator',
+		'pagetriage-add-a-note',
+		'pagetriage-characters-left',
+		'pagetriage-personal-default-note'
 	)
 );
 
