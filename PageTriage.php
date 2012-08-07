@@ -322,7 +322,10 @@ $wgPageTriageTagsOptionsMessages = array (
 // Deletion Tags options message
 $wgPageTriageDeletionTagsOptionsMessages = array (
 	'pagetriage-del-tags-cat-csd-label',
+	'pagetriage-del-tags-cat-csd-desc',
 	'pagetriage-del-tags-cat-prod-label',
+	'pagetriage-del-tags-cat-prod-desc',
+	'pagetriage-del-tags-cat-discussion-desc',
 	'pagetriage-del-tags-dbg3-label',
 	'pagetriage-del-tags-dbg3-desc',
 	'pagetriage-del-tags-dbg10-label',

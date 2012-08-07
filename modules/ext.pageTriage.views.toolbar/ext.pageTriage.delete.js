@@ -236,6 +236,11 @@ $( function() {
 			var elementType = this.deletionTagsOptions[cat].multiple ? 'checkbox' : 'radio';
 			var $tagList = $( '<div id="mwe-pt-delete-list"></div>' );
 
+			if ( this.deletionTagsOptions[cat]['desc'] ) {
+				var tagDesc = '<div id="mwe-pt-delete-category-desc">' + mw.html.escape( this.deletionTagsOptions[cat]['desc'] ) + '</div>';
+				$tagList.append( tagDesc );
+			}
+
 			$( '#mwe-pt-delete' ).empty();
 			// highlight the active category
 			$( '.mwe-pt-delete-category' ).removeClass( 'mwe-pt-active' );
