@@ -1,6 +1,6 @@
 //See http://www.mediawiki.org/wiki/Extension:PageTriage for basic documentation on configuration.
 //<nowiki>
-( function( $ ) {
+( function( $, mw ) {
 
 var param = {
 	'url': {
@@ -329,5 +329,5 @@ $.pageTriageDeletionTagsOptions = {
 
 };
 
-} ) ( jQuery );
+} ) ( jQuery, mediaWiki );
 //</nowiki>

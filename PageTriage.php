@@ -369,6 +369,9 @@ $wgPageTriageDeletionTagsOptionsMessages = array (
 	'pagetriage-tags-param-source-label',
 	'pagetriage-del-tags-param-discussion-label',
 	'pagetriage-del-tooltip',
+	'pagetriage-tags-param-url-label',
+	'pagetriage-tags-param-article-label',
+	'pagetriage-tags-param-source-label',
 );
 
 $wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + array(

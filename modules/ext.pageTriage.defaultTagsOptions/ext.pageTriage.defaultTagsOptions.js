@@ -1,6 +1,6 @@
 //See http://www.mediawiki.org/wiki/Extension:PageTriage for basic documentation on configuration.
 //<nowiki>
-( function( $ ) {
+( function( $, mw ) {
 var today = new Date();
 var month = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July',
 		'August', 'September', 'October', 'November', 'December' ];
@@ -872,5 +872,5 @@ $.pageTriageTagsOptions = {
 
 };
 
-} ) ( jQuery );
+} ) ( jQuery, mediaWiki );
 //</nowiki>
