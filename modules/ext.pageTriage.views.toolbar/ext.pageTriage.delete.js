@@ -701,7 +701,7 @@ $( function() {
 					break;
 				case 'textarea':
 					if ( obj.label ) {
-						html += obj.label + ' ';
+						html += '<div class="mwe-pt-delete-params-question">' + obj.label + '<div>';
 					}
 					html += mw.html.element(
 							'textarea',
@@ -710,23 +710,6 @@ $( function() {
 						);
 					html += "<br/>\n";
 					break;
-				case 'select':
-					html += obj.label + ' ';
-					for ( var i in obj.option ) {
-						html += obj.option[i] + ' ' +
-							mw.html.element(
-								'input',
-								{
-									'type': 'radio',
-									'value': i, 'id': 'mwe-pt-delete-params-' + key + '-' + name,
-									'checked': ( i === obj.value ) ? true : false,
-									'name': 'mwe-pt-delete-params-' + key + '-' + name
-								}
-						);
-					}
-					html += "<br/>\n";
-					break;
-
 				case 'text':
 				default:
 					html += obj.label + ' ';

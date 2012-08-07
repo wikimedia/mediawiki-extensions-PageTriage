@@ -191,6 +191,7 @@ var tags = {
 		desc: mw.msg( 'pagetriage-del-tags-prod-desc' ),
 		params: {
 			'1': {
+				label: mw.msg( 'pagetriage-del-tags-param-discussion-label' ),
 				input: 'required',
 				type: 'textarea',
 				value: ''
@@ -252,6 +253,7 @@ $.pageTriageDeletionTagsOptions = {
 					discussion: true,
 					params: {
 						'1': {
+							label: mw.msg( 'pagetriage-del-tags-param-discussion-label' ),
 							input: 'required',
 							type: 'textarea',
 							value: ''
@@ -267,6 +269,7 @@ $.pageTriageDeletionTagsOptions = {
 					prefix: 'Wikipedia:Redirects for discussion',
 					params: {
 						'1': {
+							label: mw.msg( 'pagetriage-del-tags-param-discussion-label' ),
 							input: 'required',
 							type: 'textarea',
 							value: ''
@@ -312,6 +315,7 @@ $.pageTriageDeletionTagsOptions = {
 					discussion: true,
 					params: {
 						'1': {
+							label: mw.msg( 'pagetriage-del-tags-param-discussion-label' ),
 							input: 'required',
 							type: 'textarea',
 							value: ''

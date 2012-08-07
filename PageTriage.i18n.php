@@ -290,6 +290,7 @@ $messages['en'] = array(
 	'pagetriage-tags-param-missing-required' => 'Parameter $1 is required',
 	'pagetriage-tags-param-date-format' => '$1 $2',
 	'pagetriage-tags-edit-summary' => 'Added tags to the page using PageTriage',
+	'pagetriage-del-tags-param-discussion-label' => 'Why do you think this page should be deleted?',
 
 	'pagetriage-info-title' => 'Page info',
 	'pagetriage-info-problem-header' => 'Possible problems',
@@ -604,6 +605,7 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-tags-param-details-label' => 'Label for details parameter',
 	'pagetriage-tags-param-free-yes-label' => 'Label for Yes answer of free parameter',
 	'pagetriage-tags-param-free-no-label' => 'Label for No answer of free parameter',
+	'pagetriage-del-tags-param-discussion-label' => 'Prompt for explaination about why the user wants to nominate a page for deletion',
 	'pagetriage-tags-param-missing-required' => 'Error message for missing required tag parameter, $1 is the parameter name',
 	'pagetriage-tags-edit-summary' => 'The edit summary that is posted when someone applies tags to an article with the Curation Toolbar in PageTriage',
 	'pagetriage-info-title' => 'The title for the page information flyout in the toolbar',
