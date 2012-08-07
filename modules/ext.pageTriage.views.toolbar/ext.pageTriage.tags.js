@@ -241,7 +241,17 @@ $( function() {
 		 * Refresh the display of tag count
 		 */
 		refreshTagCountDisplay: function( key, cat ) {
-			var categoryTagCount = Object.keys( this.selectedTag[cat] ).length;
+			var categoryTagCount = 0;
+
+			// This doesn't work in IE 8 or lower...
+			// categoryTagCount = Object.keys( this.selectedTag[cat] ).length;
+			// So we use this instead...
+			for ( var tagKey in this.selectedTag[cat] ) {
+				if ( this.selectedTag[cat].hasOwnProperty( tagKey ) ) {
+					categoryTagCount++;
+				}
+			}
+
 			if ( categoryTagCount > 0 ) {
 				$( '#mwe-pt-category-' + cat + ' .mwe-pt-tag-count' ).html( '(' + categoryTagCount + ')' );
 			} else {
@@ -274,7 +284,7 @@ $( function() {
 			var _this = this;
 
 			// no params, don't show the link
-			if ( !Object.keys( tag.params ).length ) {
+			if ( $.isEmptyObject( tag.params ) ) {
 				return;
 			}
 
@@ -319,7 +329,7 @@ $( function() {
 		 * Show the parameters form
 		 */
 		showParamsForm: function( key, cat ) {
-			var _this = this, html = '', tag = this.selectedTag[cat][key];
+			var _this = this, html = '', buttons = '', tag = this.selectedTag[cat][key];
 
 			this.hideParamsLink( key );
 
@@ -328,16 +338,17 @@ $( function() {
 				html += this.buildHTML( param, paramObj, key );
 			}
 
-			html += mw.html.element(
+			buttons += mw.html.element(
 						'button',
 						{ 'id': 'mwe-pt-tag-set-param-' + key, 'class': 'mwe-pt-tag-set-param-button ui-button-green' },
 						mw.msg( 'pagetriage-button-add-details' )
 					);
-			html += mw.html.element(
+			buttons += mw.html.element(
 						'button',
 						{ 'id': 'mwe-pt-tag-cancel-param-' + key, 'class': 'ui-button-red' },
 						mw.msg( 'cancel' )
 					);
+			html += '<div class="mwe-pt-tag-params-form-buttons">' + buttons + '</div>';
 
 			html += '<div id="mwe-pt-tags-params-form-error"></div>';
 

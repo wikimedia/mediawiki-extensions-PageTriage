@@ -36,7 +36,7 @@
 #mwe-pt-tags {
 	float: right;
 	width: 382px;
-	height: 292px;
+	height: 293px;
 	overflow: auto;
 	padding: 8px;
 	border-left: 1px solid #9F9F9F;
@@ -111,7 +111,10 @@
 }
 #mwe-pt-tag-list .mwe-pt-tag-params-form {
 	display: none;
-	margin-top: 0.2em;
+	margin-top: 0.8em;
+}
+.mwe-pt-tag-params-form-buttons {
+	margin-top: 0.3em;
 }
 #mwe-pt-tag-list .mwe-pt-tag-set-param-button {
 	margin-left: 0 !important;
