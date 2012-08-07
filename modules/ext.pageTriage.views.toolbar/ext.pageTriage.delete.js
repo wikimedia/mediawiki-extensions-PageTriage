@@ -402,8 +402,6 @@ $( function() {
 			$( '#mwe-pt-delete-params-form-' + key ).html( html );
 			$( '#mwe-pt-delete-params-form-' + key ).show();
 
-			$( '.mwe-pt-delete-row' ).not( '#mwe-pt-delete-row-' + key ).hide( 'squish', {}, 800 );
-
 			// Add click event for the Set Parameters button
 			$( '#mwe-pt-delete-set-param-' + key ).button().click(
 				function() {
@@ -443,10 +441,6 @@ $( function() {
 		 */
 		hideParamsForm: function( key ) {
 			$( '#mwe-pt-delete-params-form-' + key ).hide();
-			// If the other tags are squished, unsquish them
-			if ( $( '.mwe-pt-delete-row' ).not( '#mwe-pt-delete-row-' + key ).first().css( 'display' ) == 'none' ) {
-				$( '.mwe-pt-delete-row' ).not( '#mwe-pt-delete-row-' + key ).show( 'squish', {}, 600 );
-			}
 		},
 
 		/**
