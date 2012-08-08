@@ -53,6 +53,10 @@ $( function() {
 			// create the WikiLove flyout content here.
 			this.$tel.html( this.template( this.model.toJSON() ) );
 
+			// set the Learn More link URL
+			var modules = mw.config.get( 'wgPageTriageCurationModules' );
+			$( '#mwe-pt-wikilove .mwe-pt-flyout-help-link' ).attr( 'href', modules.wikiLove );
+
 			if ( mw.user.name() !== creator ) {
 				// add the creator info to the top of the list
 				$( '#mwe-pt-article-contributor-list' ).append(

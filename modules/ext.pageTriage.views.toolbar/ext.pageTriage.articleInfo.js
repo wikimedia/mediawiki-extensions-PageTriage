@@ -25,6 +25,10 @@ $( function() {
 			var history = new mw.pageTriage.ArticleInfoHistoryView( { eventBus: this.eventBus, model: this.model.revisions } );
 			this.$tel.find( '#mwe-pt-info-history-container' ).append( history.render().$el );
 
+			// set the Learn More link URL
+			var modules = mw.config.get( 'wgPageTriageCurationModules' );
+			$( '#mwe-pt-info .mwe-pt-flyout-help-link' ).attr( 'href', modules.articleInfo );
+
 			// bind down here so it doesn't happen before the first render
 			this.model.unbind( 'change:patrol_status', function() { _this.render(); } );
 			this.model.bind( 'change:patrol_status', function() { _this.render(); } );

@@ -171,6 +171,10 @@ $( function() {
 			this.setupDeletionTags();
 			this.$tel.html( this.template( { 'tags': this.deletionTagsOptions } ) );
 
+			// set the Learn More link URL
+			var modules = mw.config.get( 'wgPageTriageCurationModules' );
+			$( '#mwe-pt-deletion-wizard .mwe-pt-flyout-help-link' ).attr( 'href', modules.delete );
+
 			// add click event for each category
 			$( '#mwe-pt-delete-categories' ).find( 'div' ).each( function( index, value ) {
 				var cat = $( $( this ).html() ).attr( 'cat' );

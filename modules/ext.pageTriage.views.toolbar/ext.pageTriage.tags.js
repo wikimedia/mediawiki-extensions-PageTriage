@@ -86,7 +86,11 @@ $( function() {
 			this.reset();
 			this.$tel.html( this.template( { 'tags': this.tagsOptions, 'title': this.title } ) );
 			this.model.on( 'change', this.showHideReviewButton, this );
-			
+
+			// set the Learn More link URL
+			var modules = mw.config.get( 'wgPageTriageCurationModules' );
+			$( '#mwe-pt-tag .mwe-pt-flyout-help-link' ).attr( 'href', modules.tags );
+
 			// add click event for each category
 			$( '#mwe-pt-categories' ).find( 'div' ).each( function( index, value ) {
 				var cat = $( $( this ).html() ).attr( 'cat' );

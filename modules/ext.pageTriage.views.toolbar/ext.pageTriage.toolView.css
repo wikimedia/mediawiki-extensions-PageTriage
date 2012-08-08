@@ -64,7 +64,11 @@
 	border: 1px solid #9F9F9F;
 	padding: 6px;
 }
-
+.mwe-pt-flyout-help-link {
+	display: inline-block;
+	margin-left: 0.5em;
+	font-size: 0.7em;
+}
 .mwe-pt-tool-close {
 	color: gray;
 	float: right;

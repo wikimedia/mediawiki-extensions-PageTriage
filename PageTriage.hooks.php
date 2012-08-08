@@ -428,11 +428,8 @@ class PageTriageHooks {
 
 		// check if WikiLove is enabled
 		if ( !class_exists( 'ApiWikiLove' ) ) {
-			$key = array_search( 'WikiLove', $wgPageTriageCurationModules );
-			if ( $key !== false ) {
-				unset( $wgPageTriageCurationModules[$key] );
-				// reset the numeric keys so it generates array instead of json object in javascript
-				$wgPageTriageCurationModules = array_values( $wgPageTriageCurationModules );
+			if ( array_key_exists( 'wikiLove', $wgPageTriageCurationModules ) ) {
+				unset( $wgPageTriageCurationModules['wikiLove'] );
 			}
 		}
 
