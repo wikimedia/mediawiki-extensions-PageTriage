@@ -201,6 +201,19 @@ $( function() {
 			if( badgeCount ) {
 				this.$el.find( '.mwe-pt-tool-icon-container' ).badge( badgeCount );
 			}
+		},
+
+		/**
+		 * Count the number of properties in an object
+		 */
+		objectPropCount: function( obj ) {
+			var count = 0;
+			for ( var key in obj ) {
+				if ( obj.hasOwnProperty( key ) ) {
+					count++;
+				}
+			}
+			return count;
 		}
 
 	} );
