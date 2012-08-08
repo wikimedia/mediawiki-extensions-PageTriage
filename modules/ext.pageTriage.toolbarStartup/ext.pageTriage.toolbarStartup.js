@@ -11,7 +11,7 @@ jQuery( function( $ ) {
 	
 	// If the WikiLove module is activated, load WikiLove as well
 	var modules = mw.config.get( 'wgPageTriageCurationModules' );
-	if ( $.inArray( 'WikiLove', modules ) !== -1 ) {
+	if ( typeof modules.wikiLove !== 'undefined' ) {
 		mw.loader.load( 'ext.wikiLove.init' );
 	}
 } );

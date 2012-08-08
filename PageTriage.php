@@ -59,11 +59,11 @@ $wgPageTriageLearnMoreUrl = 'http://en.wikipedia.org/wiki/Wikipedia:New_Pages_Fe
 $wgPageTriageFeedbackUrl = 'http://en.wikipedia.org/wiki/Wikipedia_talk:New_Pages_Feed';
 $wgPageTriageEnableCurationToolbar = false; // enable the curation toolbar?
 $wgPageTriageCurationModules = array(
-	'ArticleInfo',
-	'WikiLove', // depends on WikiLove extension
-	'Mark',
-	'Tags',
-	'Delete',
+	'articleInfo' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#PageInfo',
+	'wikiLove' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#WikiLove', // depends on WikiLove extension
+	'mark' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#MarkReviewed',
+	'tags' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#AddTags',
+	'delete' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#MarkDeletion',
 );
 $wgPageTriageToolbarInfoHelpLink = "http://en.wikipedia.org/wiki/Wikipedia:New_pages_patrol#Patroller_checklists"; // help link in toolbar article info view
 $wgPageTriageCacheVersion = '1.0'; // version number to be added to cache key so that cache can be refreshed easily
@@ -610,6 +610,7 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-info-tooltip',
 		'pagetriage-toolbar-collapsed',
 		'pagetriage-toolbar-linktext',
+		'pagetriage-toolbar-learn-more',
 		'pagetriage-mark-as-reviewed-helptext',
 		'pagetriage-mark-as-unreviewed-helptext',
 		'pagetriage-mark-as-reviewed-error',

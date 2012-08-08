@@ -71,11 +71,15 @@ $( function() {
 			// override the flyout title based on the current reviewed state of the page
 			if ( this.model.get( 'patrol_status' ) > 0 ) {
 				// page is reviewed
-				$( '#mwe-pt-mark .mwe-pt-tool-title' ).html( mw.msg( 'pagetriage-mark-as-unreviewed' ) );
+				$( '#mwe-pt-mark .mwe-pt-tool-title' ).text( mw.msg( 'pagetriage-mark-as-unreviewed' ) );
 			} else {
 				// page is unreviewed
-				$( '#mwe-pt-mark .mwe-pt-tool-title' ).html( mw.msg( 'pagetriage-mark-as-reviewed' ) );
+				$( '#mwe-pt-mark .mwe-pt-tool-title' ).text( mw.msg( 'pagetriage-mark-as-reviewed' ) );
 			}
+
+			// set the Learn More link URL
+			var modules = mw.config.get( 'wgPageTriageCurationModules' );
+			$( '#mwe-pt-mark .mwe-pt-flyout-help-link' ).attr( 'href', modules.mark );
 
 			// initialize the buttons
 			$( '#mwe-pt-mark-as-reviewed-button' )

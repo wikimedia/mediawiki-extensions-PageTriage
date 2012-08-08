@@ -27,27 +27,27 @@ $( function() {
 			var modules = mw.config.get( 'wgPageTriageCurationModules' );
 
 			// article information
-			if ( $.inArray( 'ArticleInfo', modules ) !== -1 ) {
+			if ( typeof modules.articleInfo !== 'undefined' ) {
 				tools.push( new mw.pageTriage.ArticleInfoView( { eventBus: eventBus, model: article } ) );
 			}
 			
 			// wikilove
-			if ( $.inArray( 'WikiLove', modules ) !== -1 ) {
+			if ( typeof modules.wikiLove !== 'undefined' ) {
 				tools.push( new mw.pageTriage.WikiLoveView( { eventBus: eventBus, model: article } ) );
 			}
 
 			// mark as reviewed
-			if ( $.inArray( 'Mark', modules ) !== -1 ) {
+			if ( typeof modules.mark !== 'undefined' ) {
 				tools.push( new mw.pageTriage.MarkView( { eventBus: eventBus, model: article } ) );
 			}
 
 			// add tags
-			if ( $.inArray( 'Tags', modules ) !== -1 ) {
+			if ( typeof modules.tags !== 'undefined' ) {
 				tools.push( new mw.pageTriage.TagsView( { eventBus: eventBus, model: article } ) );
 			}
 
 			// delete
-			if ( $.inArray( 'Delete', modules ) !== -1 ) {
+			if ( typeof modules.delete !== 'undefined' ) {
 				tools.push( new mw.pageTriage.DeleteView( { eventBus: eventBus, model: article } ) );
 			}
 
