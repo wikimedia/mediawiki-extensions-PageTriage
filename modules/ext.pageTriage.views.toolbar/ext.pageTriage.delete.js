@@ -235,6 +235,7 @@ $( function() {
 			var _this = this, tagRow = '', tagSet = this.deletionTagsOptions[cat].tags;
 			var elementType = this.deletionTagsOptions[cat].multiple ? 'checkbox' : 'radio';
 			var $tagList = $( '<div id="mwe-pt-delete-list"></div>' );
+			var tagCount = 0;
 
 			$( '#mwe-pt-delete' ).empty();
 			// highlight the active category
@@ -245,6 +246,13 @@ $( function() {
 			$( '#mwe-pt-delete' ).append( $tagList );
 
 			for ( var key in tagSet ) {
+
+				// Keep a running total of tags in the category
+				if ( tagSet.hasOwnProperty( key ) ) {
+					tagCount++;
+				}
+
+				// Add the HTML for the tag into the list
 				$tagList.append( this.buildTagHTML( key, tagSet, elementType ) );
 
 				// insert the add/edit parameter link if the checkbox has been checked
@@ -300,6 +308,11 @@ $( function() {
 						_this.refreshSubmitButton();
 					}
 				).end();
+			}
+
+			// If there is only one tag in the category, go ahead and select it.
+			if ( tagCount === 1 ) {
+				$( '#mwe-pt-delete .mwe-pt-delete-checkbox' ).click();
 			}
 		},
 
