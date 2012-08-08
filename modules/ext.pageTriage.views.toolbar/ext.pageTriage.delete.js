@@ -701,7 +701,7 @@ $( function() {
 					break;
 				case 'textarea':
 					if ( obj.label ) {
-						html += '<div class="mwe-pt-delete-params-question">' + obj.label + '<div>';
+						html += '<div class="mwe-pt-delete-params-question">' + obj.label + '</div>';
 					}
 					html += mw.html.element(
 							'textarea',
