@@ -18,28 +18,32 @@ var param = {
 	},
 
 	'for': {
-		label: mw.msg( 'pagetriage-tags-param-for-label' ),
+		label: mw.msg( 'pagetriage-tags-param-issues-label' ),
 		input: 'optional',
-		type: 'text',
+		type: 'textarea',
 		value: ''
 	},
 
 	'blp': {
 		label: mw.msg( 'pagetriage-tags-param-blp-label' ),
 		input: 'optional',
-		type: 'text',
+		type: 'select',
+		option: {
+			'Yes': mw.msg( 'pagetriage-tags-param-free-yes-label' ),
+			'No': mw.msg( 'pagetriage-tags-param-free-no-label' )
+		},
 		value: ''
 	},
 
 	'reason': {
-		label: mw.msg( 'pagetriage-tags-param-reason-label' ),
+		label: mw.msg( 'pagetriage-tags-param-issues-label' ),
 		input: 'optional',
 		type: 'textarea',
 		value: ''
 	},
 
 	'details': {
-		label: mw.msg( 'pagetriage-tags-param-details-label' ),
+		label: mw.msg( 'pagetriage-tags-param-issues-label' ),
 		input: 'optional',
 		type: 'textarea',
 		value: ''
