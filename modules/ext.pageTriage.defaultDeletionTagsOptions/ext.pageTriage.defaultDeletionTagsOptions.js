@@ -213,6 +213,7 @@ $.pageTriageDeletionTagsOptions = {
 	'Main': {
 		'speedydeletioncommon': {
 			label: mw.msg( 'pagetriage-del-tags-cat-csd-label' ),
+			desc: mw.msg( 'pagetriage-del-tags-cat-csd-desc' ),
 			multiple: true,
 			tags: {
 				'dbg3': $.extend( true, {}, tags.dbg3 ),
@@ -234,6 +235,7 @@ $.pageTriageDeletionTagsOptions = {
 
 		'proposeddeletion': {
 			label: mw.msg( 'pagetriage-del-tags-cat-prod-label' ),
+			desc: mw.msg( 'pagetriage-del-tags-cat-prod-desc' ),
 			multiple: false,
 			tags: {
 				'blpprod': $.extend( true, {}, tags.blpprod ),
@@ -243,6 +245,7 @@ $.pageTriageDeletionTagsOptions = {
 
 		'xfd': {
 			label: '',
+			desc: mw.msg( 'pagetriage-del-tags-cat-discussion-desc' ),
 			multiple: false,
 			tags: {
 				'articlefordeletion': {
@@ -284,6 +287,7 @@ $.pageTriageDeletionTagsOptions = {
 	'User': {
 		'csdcommon': {
 			label: mw.msg( 'pagetriage-del-tags-cat-csd-label' ),
+			desc: mw.msg( 'pagetriage-del-tags-cat-csd-desc' ),
 			multiple: true,
 			tags: {
 				'dbg11': $.extend( true, {}, tags.dbg11 ),
@@ -297,6 +301,7 @@ $.pageTriageDeletionTagsOptions = {
 
 		'prod': {
 			label: mw.msg( 'pagetriage-del-tags-cat-prod-label' ),
+			desc: mw.msg( 'pagetriage-del-tags-cat-prod-desc' ),
 			multiple: false,
 			tags: {
 				'prod': $.extend( true, {}, tags.prod )
@@ -305,6 +310,7 @@ $.pageTriageDeletionTagsOptions = {
 
 		'mfd': {
 			label: '',
+			desc: mw.msg( 'pagetriage-del-tags-cat-discussion-desc' ),
 			multiple: false,
 			tags: {
 				'miscellanyfordeletion': {

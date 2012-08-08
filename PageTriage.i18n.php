@@ -233,7 +233,10 @@ $messages['en'] = array(
 	
 	// Deletion Tags options section
 	'pagetriage-del-tags-cat-csd-label' => 'Speedy deletion',
+	'pagetriage-del-tags-cat-csd-desc' => 'Mark this page for speedy deletion if it fits one of the criteria below.',
 	'pagetriage-del-tags-cat-prod-label' => 'Proposed deletion',
+	'pagetriage-del-tags-cat-prod-desc' => 'Mark this page for proposed deletion if it clearly violates community standards.',
+	'pagetriage-del-tags-cat-discussion-desc' => 'Mark this page to discuss its deletion with other editors.',
 	'pagetriage-del-tags-dbg3-label' => 'Pure vandalism and blatant hoaxes',
 	'pagetriage-del-tags-dbg3-desc' => 'Pure vandalism and blatant hoaxes.',
 	'pagetriage-del-tags-dbg10-label' => 'Attack pages',
@@ -557,7 +560,10 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-tags-update-desc' => 'Description for update tag',
 	'pagetriage-tags-tooltip' => 'Help message that displays when someone hovers over the tag wizard button',
 	'pagetriage-del-tags-cat-csd-label' => 'Label for speedy deletion category',
+	'pagetriage-del-tags-cat-csd-desc' => 'Description for speedy deletion category',
 	'pagetriage-del-tags-cat-prod-label' => 'Label for proposed deletion category',
+	'pagetriage-del-tags-cat-prod-desc' => 'Description for proposed deletion category',
+	'pagetriage-del-tags-cat-discussion-desc' => 'Description for article deletion discussion category',
 	'pagetriage-del-tags-dbg3-label' => 'Label for db-g3 tag',
 	'pagetriage-del-tags-dbg3-desc' => 'Description for db-g3 tag',
 	'pagetriage-del-tags-dbg10-label' => 'Label for db-g10 tag',
