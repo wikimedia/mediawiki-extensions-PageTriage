@@ -242,16 +242,7 @@ $( function() {
 		 * Refresh the display of tag count
 		 */
 		refreshTagCountDisplay: function( key, cat ) {
-			var categoryTagCount = 0;
-
-			// This doesn't work in IE 8 or lower...
-			// categoryTagCount = Object.keys( this.selectedTag[cat] ).length;
-			// So we use this instead...
-			for ( var tagKey in this.selectedTag[cat] ) {
-				if ( this.selectedTag[cat].hasOwnProperty( tagKey ) ) {
-					categoryTagCount++;
-				}
-			}
+			var categoryTagCount = this.objectPropCount( this.selectedTag[cat] );
 
 			if ( categoryTagCount > 0 ) {
 				$( '#mwe-pt-category-' + cat + ' .mwe-pt-tag-count' ).html( '(' + categoryTagCount + ')' );
@@ -478,7 +469,7 @@ $( function() {
 			}
 
 			var openText = '', closeText = '', multipleTagsText = '';
-			if ( Object.keys( multipleTags ).length > 1 ) {
+			if ( this.objectPropCount( multipleTags ) > 1 ) {
 				openText = '{{' + $.pageTriageTagsMultiple + '|';
 				closeText = '}}';
 			}

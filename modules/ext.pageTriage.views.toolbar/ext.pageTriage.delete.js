@@ -303,7 +303,7 @@ $( function() {
 							$( '#mwe-pt-checkbox-delete-' + tagKey ).attr( 'checked', false );
 							delete _this.selectedTag[tagKey];
 
-							if ( !Object.keys( _this.selectedTag ).length ) {
+							if ( $.isEmptyObject( _this.selectedTag ) ) {
 								_this.selectedCat = '';
 							}
 
@@ -326,7 +326,7 @@ $( function() {
 		 * Refresh the submit button it has the latest number
 		 */
 		refreshSubmitButton: function() {
-			var tagCount = Object.keys( this.selectedTag ).length;
+			var tagCount = this.objectPropCount( this.selectedTag );
 			if ( tagCount ) {
 				$( '#mwe-pt-delete-submit-button' ).button( 'enable' );
 			} else {
@@ -343,7 +343,7 @@ $( function() {
 			var allParamsHidden = true, text = 'add', tag = this.selectedTag[key];
 
 			// no params, don't show the link
-			if ( !Object.keys( tag.params ).length ) {
+			if ( $.isEmptyObject( tag.params ) ) {
 				return;
 			}
 
@@ -515,7 +515,7 @@ $( function() {
 		 */
 		tagPage: function( ) {
 			var text = '', tagText = '', paramsText = '', _this = this, tempTag = '',
-			count = Object.keys( this.selectedTag ).length;
+			count = this.objectPropCount( this.selectedTag );
 
 			if ( count == 0 ) {
 				return;
