@@ -314,6 +314,7 @@ $wgPageTriageTagsOptionsMessages = array (
 	'pagetriage-button-add-parameters',
 	'pagetriage-button-add-details',
 	'pagetriage-button-edit-details',
+	'pagetriage-button-mark-for-deletion',
 	'cancel',
 	'pagetriage-tags-param-free-yes-label',
 	'pagetriage-tags-param-free-no-label',
