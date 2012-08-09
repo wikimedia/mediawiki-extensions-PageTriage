@@ -10,6 +10,7 @@ $( function() {
 		selectedTag: {},
 		selectedTagCount: 0,
 		noteMaxLength: 250,
+		noteChanged: false,
 
 		/**
 		 * Initialize data on startup
@@ -86,7 +87,7 @@ $( function() {
 		render: function() {
 			var _this = this;
 			this.reset();
-			this.$tel.html( this.template( { 'tags': this.tagsOptions, 'title': this.title, 'maxLength': this.noteMaxLength } ) );
+			this.$tel.html( this.template( { 'tags': this.tagsOptions, 'title': this.title, 'maxLength': this.noteMaxLength, 'creator': this.model.get( 'user_name' ) } ) );
 			this.model.on( 'change', this.showHideReviewButton, this );
 
 			// set the Learn More link URL
@@ -102,7 +103,12 @@ $( function() {
 				} else {
 					$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
 				}
-			} ).attr( 'placeholder', gM( 'pagetriage-personal-default-note', this.model.get( 'user_name' ) ) );
+			} ).live( 'click', function(e) {
+				$( this ).val( '' );
+				$( this ).unbind( e );
+			} ).change( function() {
+				_this.noteChanged = true;
+			} );
 
 			// add click event for each category
 			$( '#mwe-pt-categories' ).find( 'div' ).each( function( index, value ) {
@@ -550,7 +556,7 @@ $( function() {
 				success: function( data ) {
 					if ( data.pagetriagetagging.result === 'success' ) {
 						var note = $.trim( $( '#mwe-pt-tag-note-input' ).val() );
-						if ( note.length ) {
+						if ( _this.noteChanged && note.length ) {
 							_this.talkPageNote( note );
 						} else {
 							// update the article model, since it's now changed.

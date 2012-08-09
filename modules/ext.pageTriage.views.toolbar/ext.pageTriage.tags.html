@@ -17,7 +17,7 @@
 	<div id="mwe-pt-tag-note">
 		<div id="mwe-pt-tag-note-title"><%= mw.html.escape( gM( 'pagetriage-add-a-note' ) ) %></div>
 		<div id="mwe-pt-tag-note-char-count"><%= mw.html.escape( gM( 'pagetriage-characters-left', maxLength ) ) %></div>
-		<textarea id="mwe-pt-tag-note-input"></textarea>
+		<textarea id="mwe-pt-tag-note-input"><%= mw.html.escape( gM( 'pagetriage-personal-default-note', creator ) ) %></textarea>
 	</div>
 	<div id="mwe-pt-checkbox-mark-reviewed-wrapper">
 		<input id="mwe-pt-checkbox-mark-reviewed" type="checkbox" value="mark reviewed" disabled="disabled">
