@@ -330,7 +330,6 @@ $messages['en'] = array(
 	'pagetriage-wikilove-page-creator' => 'Page Creator',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|edit|edits}}',
 	'pagetriage-wikilove-no-recipients' => 'No recipients are available for this page.',
-	'pagetriage-wikilove-no-recipients' => 'No recipients are avilable for this page.',
 	'pagetriage-wikilove-tooltip' => 'Send appreciation to the authors',
 	'pagetriage-next-tooltip' => 'Go to the next page in the queue',
 );
