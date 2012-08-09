@@ -12,3 +12,8 @@ $specialPageAliases = array();
 $specialPageAliases['en'] = array(
 	'NewPagesFeed' => array( 'NewPagesFeed' ),
 );
+
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'NewPagesFeed' => array( 'تغذية_الصفحات_الجديدة' ),
+);
