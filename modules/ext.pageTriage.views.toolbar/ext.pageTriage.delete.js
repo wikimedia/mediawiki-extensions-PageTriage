@@ -241,6 +241,10 @@ $( function() {
 			var elementType = this.deletionTagsOptions[cat].multiple ? 'checkbox' : 'radio';
 			var $tagList = $( '<div id="mwe-pt-delete-list"></div>' );
 			var tagCount = 0;
+			
+			// unselect any previously selected tags and disable submit button
+			this.selectedTag = {};
+			$( '#mwe-pt-delete-submit-button' ).button( 'disable' );
 
 			if ( this.deletionTagsOptions[cat]['desc'] ) {
 				var tagDesc = '<div id="mwe-pt-delete-category-desc">' + mw.html.escape( this.deletionTagsOptions[cat]['desc'] ) + '</div>';
