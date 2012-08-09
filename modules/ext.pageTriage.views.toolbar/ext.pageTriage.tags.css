@@ -122,18 +122,22 @@
 }
 #mwe-pt-tag-note {
 	display: none;
-	margin-top: 10px;
+	margin-top: 5px;
 }
 
 #mwe-pt-tag-note-title {
 	float: left;
-	font-size: 0.8em;
+	font-size: 0.9em;
 }
 
 #mwe-pt-tag-note-char-count {
 	float: right;
-	font-size: 0.8em;
+	font-size: 0.9em;
 }
 #mwe-pt-tag-note-input {
 	clear: both;
+	font-size: 1.1em;
+	height: 50px;
+	width: 370px;
+	margin: 5px 5px 2px 2px;
 }

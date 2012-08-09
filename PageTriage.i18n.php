@@ -97,7 +97,7 @@ $messages['en'] = array(
 	'pagetriage-button-edit-details' => 'Edit details',
 	'pagetriage-button-mark-for-deletion' => 'Mark for deletion',
 	'pagetriage-add-a-note' => 'Add a message for the creator: (optional)',
-	'pagetriage-characters-left' => '{{PLURAL:$1|$1 character|$1 characters}} left',
+	'pagetriage-characters-left' => '{{PLURAL:$1|$1 char|$1 chars}} left',
 	'pagetriage-personal-default-note' => 'Write a helpful note for {{GENDER:$1|$1}}. It will be posted on their talk page.',
 
 	 // Tags options section
