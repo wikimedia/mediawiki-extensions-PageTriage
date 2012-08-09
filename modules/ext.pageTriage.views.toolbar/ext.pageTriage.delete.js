@@ -336,8 +336,6 @@ $( function() {
 			} else {
 				$( '#mwe-pt-delete-submit-button' ).button( 'disable' );
 			}
-
-			$( '#mwe-pt-delete-submit-button .ui-button-text' ).text( mw.msg( 'pagetriage-button-add-tag-number', tagCount ) );
 		},
 
 		/**
