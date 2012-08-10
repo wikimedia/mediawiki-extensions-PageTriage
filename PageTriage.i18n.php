@@ -960,6 +960,7 @@ $messages['de'] = array(
 	'pagetriage-button-add-parameters' => 'Parameter hinzufügen',
 	'pagetriage-button-add-details' => 'Einzelheiten hinzufügen',
 	'pagetriage-button-edit-details' => 'Einzelheiten bearbeiten',
+	'pagetriage-button-mark-for-deletion' => 'Zum Löschen kennzeichnen',
 	'pagetriage-add-a-note' => 'Füge eine Nachricht für den Autor hinzu: (optional)',
 	'pagetriage-characters-left' => 'noch {{PLURAL:$1|ein Zeichen|$1 Zeichen}}',
 	'pagetriage-personal-default-note' => 'Verfasse einen nützlichen Hinweis an {{GENDER:$1|$1}}. Er wird auf {{GENDER:$1|seiner|ihrer}} Diskussionsseite gespeichert.',
@@ -1144,7 +1145,7 @@ $messages['de'] = array(
 	'pagetriage-del-tooltip' => 'Diese Seite zur Löschung vorschlagen.',
 	'pagetriage-tags-param-article-label' => 'Artikel:',
 	'pagetriage-tags-param-date-label' => 'Datum:',
-	'pagetriage-tags-param-issues-label' => 'Beschreibe die betroffenen Probleme:',
+	'pagetriage-tags-param-issues-label' => 'Beschreibe die Probleme, die angegangen werden müssen:',
 	'pagetriage-tags-param-blp-label' => 'Dies ist eine Biografie einer lebenden Person',
 	'pagetriage-tags-param-source-label' => 'Was ist die Quelle?',
 	'pagetriage-tags-param-free-label' => 'Frei lizenziert?',
@@ -1202,6 +1203,8 @@ $messages['de-formal'] = array(
 	'pagetriage-personal-default-note' => 'Verfassen Sie einen nützlichen Hinweis an {{GENDER:$1|$1}}. Er wird auf {{GENDER:$1|seiner|ihrer}} Diskussionsseite gespeichert.',
 	'pagetriage-tags-tooltip' => 'Fügen Sie Markierungen hinzu, um auf Probleme mit dieser Seite hinzuweisen.',
 	'pagetriage-del-tags-cat-prod-desc' => 'Schlagen Sie diese Seite zur Löschung vor, sofern sie eindeutig gegen die Regeln der Gemeinschaft verstößt.',
+	'pagetriage-tags-param-issues-label' => 'Beschreiben Sie die Probleme, die angegangen werden müssen:',
+	'pagetriage-tags-param-url-label' => 'Bitte fügen Sie eine URL für diese Quelle hinzu.',
 	'pagetriage-del-tags-param-discussion-label' => 'Warum sollte diese Seite Ihrer Meinung nach gelöscht werden?',
 	'pagetriage-mark-as-reviewed-helptext' => 'Markieren Sie diese Seite als geprüft, sobald Sie mit der Überprüfung fertig sind.',
 	'pagetriage-mark-as-unreviewed-helptext' => 'Markieren Sie diese Seite als nicht geprüft, sofern Sie glauben, dass sie weiterer Prüfungen bedarf.',
@@ -1540,6 +1543,7 @@ $messages['fa'] = array(
 );
 
 /** French (français)
+ * @author Brunoperel
  * @author Crochet.david
  * @author DavidL
  * @author Erkethan
@@ -1628,6 +1632,10 @@ $messages['fr'] = array(
 	'pagetriage-button-add-parameters' => 'Ajouter les paramètres',
 	'pagetriage-button-add-details' => 'Ajouter des détails',
 	'pagetriage-button-edit-details' => 'Modifier les détails',
+	'pagetriage-button-mark-for-deletion' => 'Marquer pour suppression',
+	'pagetriage-add-a-note' => 'Ajouter un message pour le créateur: (facultatif)',
+	'pagetriage-characters-left' => '{{PLURAL:$1|$1 caractère restant|$1 caractères restants}}',
+	'pagetriage-personal-default-note' => 'Écrire une note pour {{GENDER:$1|$1 }}. Il sera affiché sur leur page de discussion.',
 	'pagetriage-tags-title' => 'Ajouter des balises',
 	'pagetriage-tags-cat-common-label' => 'Commun',
 	'pagetriage-tags-cat-metadata-label' => 'Métadonnées',
@@ -1760,16 +1768,20 @@ $messages['fr'] = array(
 	'pagetriage-tags-unbalanced-desc' => 'Cette page peut être déséquilibrée en faveur de certains points de vue.',
 	'pagetriage-tags-update-label' => 'Mettre à jour',
 	'pagetriage-tags-update-desc' => 'Cette page a besoin de renseignements à jour supplémentaires.',
+	'pagetriage-del-tags-cat-csd-desc' => 'Marquer cette page pour suppression rapide si elle correspond à un des critères ci-dessous.',
+	'pagetriage-del-tags-cat-prod-desc' => 'Marquer cette page comme étant proposée à la suppression si elle viole clairement les normes de la communauté.',
+	'pagetriage-del-tags-cat-discussion-desc' => "Marquer cette page pour discuter de la suppression avec d'autres éditeurs.",
 	'pagetriage-del-tags-dba3-label' => 'Aucun contenu',
 	'pagetriage-del-tags-dbu3-label' => 'Galeries non libres',
 	'pagetriage-del-tags-dbu3-desc' => "Galeries d'images dans un espace utilisateur qui contiennent des images qui ne sont pas dans le domaine public ou sous une licence suffisamment « libre ». Les politiques de la Wikipédia interdisent l'usage de telles images dans un espace utilisateur, même si elles ont été téléchargées par cet utilisateur. L'usage de contenus dans le domaine public ou publiés sous une licence compatible sont acceptées.",
 	'pagetriage-del-log-page-missing-error' => "La page de journal d'aujourd'hui n'a pas encore été créé !",
 	'pagetriage-del-log-page-adding-error' => "Impossible de trouver l'endroit exact pour la discussion",
 	'pagetriage-del-talk-page-notify-error' => "Échec de notification de l'auteur sur la page de discussion",
+	'pagetriage-del-tooltip' => 'Nominer cette page pour suppression',
 	'pagetriage-tags-param-article-label' => 'Article :',
 	'pagetriage-tags-param-date-label' => 'Date :',
 	'pagetriage-tags-param-issues-label' => 'Décrit les problèmes à résoudre :',
-	'pagetriage-tags-param-blp-label' => "Cette article concerne-t-il la biographie d'une personne vivante ?",
+	'pagetriage-tags-param-blp-label' => "Cet article concerne la biographie d'une personne vivante",
 	'pagetriage-tags-param-source-label' => 'Quelle est la source ?',
 	'pagetriage-tags-param-free-label' => 'Licence libre ?',
 	'pagetriage-tags-param-url-label' => 'Veuillez ajouter une URL pour cette source.',
@@ -1796,16 +1808,20 @@ $messages['fr'] = array(
 	'pagetriage-info-problem-no-references-desc' => 'Cette page ne cite aucune source.',
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
+	'pagetriage-info-tooltip' => 'Montrer les méta-données pour cette page',
 	'pagetriage-toolbar-collapsed' => 'Conservation',
+	'pagetriage-toolbar-learn-more' => 'En savoir plus »',
 	'pagetriage-mark-title' => 'Marquer comme relu',
 	'pagetriage-mark-as-reviewed' => 'Marquer comme révisée',
 	'pagetriage-mark-as-unreviewed' => 'Marquer comme non révisée',
-	'pagetriage-mark-as-reviewed-helptext' => 'Supprimer cette page de la file des non relues?',
-	'pagetriage-mark-as-unreviewed-helptext' => 'Remettre cette page dans la file des non relues?',
+	'pagetriage-mark-as-reviewed-helptext' => 'Marquer cette page comme relue si vous avez terminé sa vérification.',
+	'pagetriage-mark-as-unreviewed-helptext' => 'Marquer cette page comme non-relue si vous pensez que des vérifications complémentaires doivent être réalisées.',
 	'pagetriage-wikilove-helptext' => 'Sélectionnez les noms des éditeurs que vous souhaitez remercier.',
 	'pagetriage-wikilove-page-creator' => 'Créateur de la page',
 	'pagetriage-wikilove-edit-count' => '$1 modification{{PLURAL:$1||s}}',
 	'pagetriage-wikilove-no-recipients' => 'Aucun destinataires ne sont disponibles pour cette page.',
+	'pagetriage-wikilove-tooltip' => 'Envoyer des remerciements aux auteurs',
+	'pagetriage-next-tooltip' => "Aller à la page suivante de la file d'attente",
 );
 
 /** Galician (galego)
@@ -1893,6 +1909,7 @@ $messages['gl'] = array(
 	'pagetriage-button-add-parameters' => 'Engadir os parámetros',
 	'pagetriage-button-add-details' => 'Engada os detalles',
 	'pagetriage-button-edit-details' => 'Editar os detalles',
+	'pagetriage-button-mark-for-deletion' => 'Marcar para borrar',
 	'pagetriage-add-a-note' => 'Engadir unha mensaxe para o creador: (opcional)',
 	'pagetriage-characters-left' => '$1 {{PLURAL:$1|carácter restante|caracteres restantes}}',
 	'pagetriage-personal-default-note' => 'Escriba unha nota que lle sexa útil a {{GENDER:$1|$1}}. Ha publicarse na súa páxina de conversa.',
@@ -3066,6 +3083,64 @@ $messages['ja'] = array(
 	'pagetriage-info-help' => 'ヘルプ',
 );
 
+/** Georgian (ქართული)
+ * @author David1010
+ */
+$messages['ka'] = array(
+	'pagetriage-please-wait' => 'გთხოვთ მოიცადეთ...',
+	'pagetriage-bytes' => '$1 {{PLURAL:$1|ბაიტი|ბაიტი}}',
+	'pagetriage-edits' => '$1 {{PLURAL:$1|რედაქტირება|რედაქტირება}}',
+	'pagetriage-categories' => '$1 {{PLURAL:$1|კატეგორია|კატეგორია}}',
+	'pagetriage-no-categories' => 'კატეგორიები არ არის',
+	'pagetriage-author-not-autoconfirmed' => 'ახალი რედაქტორი',
+	'pagetriage-author-blocked' => 'დაბლოკილია',
+	'pagetriage-author-bot' => 'ბოტი',
+	'pagetriage-filter-list-prompt' => 'ფილტრების დაყენება',
+	'pagetriage-sort-by' => 'დალაგება:',
+	'pagetriage-newest' => 'უახლესი',
+	'pagetriage-oldest' => 'უძველესი',
+	'pagetriage-triage' => 'გადახედვა',
+	'pagetriage-filter-show-heading' => 'ჩვენება:',
+	'pagetriage-filter-redirects' => 'გადამისამართებები',
+	'pagetriage-filter-namespace-heading' => 'სახელთა სივრცეში:',
+	'pagetriage-filter-article' => 'სტატია',
+	'pagetriage-filter-username' => 'მომხმარებლის სახელი',
+	'pagetriage-filter-second-show-heading' => 'ეს:',
+	'pagetriage-filter-all' => 'ყველას ჩვენება',
+	'pagetriage-filter-set-button' => 'ფილტრების დაყენება',
+	'pagetriage-filter-ns-all' => 'ყველა',
+	'pagetriage-more' => 'მეტი',
+	'pagetriage-filter-stat-all' => 'ყველა',
+	'pagetriage-filter-stat-bots' => 'რობოტები',
+	'pagetriage-filter-stat-redirects' => 'გადამისამართებები',
+	'pagetriage-filter-stat-no-categories' => 'კატეგორიები არ არის',
+	'pagetriage-filter-stat-non-autoconfirmed' => 'ახალი რედაქტორები',
+	'pagetriage-filter-stat-blocked' => 'დაბლოკილი მომხმარებლები',
+	'pagetriage-filter-stat-username' => 'მომხმარებლის სახელი: $1',
+	'pagetriage-refresh-list' => 'სიის განახლება',
+	'pagetriage-button-add-parameters' => 'პარამეტრების დამატება',
+	'pagetriage-button-add-details' => 'დეტალების დამატება',
+	'pagetriage-button-edit-details' => 'დეტალების რედაქტირება',
+	'pagetriage-button-mark-for-deletion' => 'წასაშლელად მონიშვნა',
+	'pagetriage-tags-cat-metadata-label' => 'მეტამონაცემები',
+	'pagetriage-tags-cat-sources-label' => 'წყაროები',
+	'pagetriage-tags-cat-structure-label' => 'სტრუქტურა',
+	'pagetriage-tags-param-article-label' => 'სტატია:',
+	'pagetriage-tags-param-date-label' => 'თარიღი:',
+	'pagetriage-tags-param-free-yes-label' => 'დიახ',
+	'pagetriage-tags-param-free-no-label' => 'არა',
+	'pagetriage-info-title' => 'გვერდის ინფო',
+	'pagetriage-info-history-header' => 'ისტორია',
+	'pagetriage-info-history-show-full' => 'მთელი ისტორიის ჩვენება',
+	'pagetriage-info-help' => 'დახმარება',
+	'pagetriage-info-problem-non-autoconfirmed' => 'ახალი რედაქტორი',
+	'pagetriage-info-problem-blocked' => 'დაბლოკილი მომხმარებელი',
+	'pagetriage-info-problem-no-categories' => 'კატეგორიები არ არის',
+	'pagetriage-info-timestamp-date-format' => 'დ თთთთ წწწწ',
+	'pagetriage-info-timestamp-time-format' => 'სს:წწ',
+	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|რედაქტირება|რედაქტირება}}',
+);
+
 /** Korean (한국어)
  * @author 아라
  */
@@ -3148,6 +3223,7 @@ $messages['ko'] = array(
 	'pagetriage-button-add-parameters' => '변수 추가',
 	'pagetriage-button-add-details' => '자세한 사항 추가',
 	'pagetriage-button-edit-details' => '자세한 사항 편집',
+	'pagetriage-button-mark-for-deletion' => '삭제에 대해 표시',
 	'pagetriage-tags-title' => '태그 추가',
 	'pagetriage-tags-cat-common-label' => '공통',
 	'pagetriage-tags-cat-metadata-label' => '메타데이터',
@@ -3558,6 +3634,10 @@ $messages['mk'] = array(
 	'pagetriage-button-add-parameters' => 'Додај параметри',
 	'pagetriage-button-add-details' => 'Додај подробности',
 	'pagetriage-button-edit-details' => 'Уреди подробности',
+	'pagetriage-button-mark-for-deletion' => 'Означи за бришење',
+	'pagetriage-add-a-note' => 'Додај порака за создавачот: (незадолжително)',
+	'pagetriage-characters-left' => '{{PLURAL:$1|Преостанува $1 знак|Преостануваат $1 знаци}}',
+	'pagetriage-personal-default-note' => 'Напишете корисна белешка за корисникот {{GENDER:$1|$1}} што ќе му помогне. Истата ќе биде објавена на неговата страницата за разговор.',
 	'pagetriage-tags-title' => 'Додај ознаки:',
 	'pagetriage-tags-cat-common-label' => 'Заедничка',
 	'pagetriage-tags-cat-metadata-label' => 'Метаподатоци',
@@ -3690,8 +3770,12 @@ $messages['mk'] = array(
 	'pagetriage-tags-unbalanced-desc' => 'Страницата неврамнотежено тежнее кон извесни гледишта.',
 	'pagetriage-tags-update-label' => 'Поднова',
 	'pagetriage-tags-update-desc' => 'На страницата треба да се поднови со понови информации.',
+	'pagetriage-tags-tooltip' => 'Додајте ознаки за потреба од решавање на проблемите на страницата',
 	'pagetriage-del-tags-cat-csd-label' => 'Брзо бришење',
+	'pagetriage-del-tags-cat-csd-desc' => 'Означете ја страницава за брзо бришење ако задоволува еден од долунаведените критериуми.',
 	'pagetriage-del-tags-cat-prod-label' => 'Предложено бришење',
+	'pagetriage-del-tags-cat-prod-desc' => 'Означете ја страницава како предложена за бришење доколку јасно не се придржува до стандардите на заедницата.',
+	'pagetriage-del-tags-cat-discussion-desc' => 'Означете ја страницава ако сакате да продискутирате за нејзиното бришење со други уредници.',
 	'pagetriage-del-tags-dbg3-label' => 'Чист вандализам и очигледни измами',
 	'pagetriage-del-tags-dbg3-desc' => 'Чист вандализам и очигледни измами.',
 	'pagetriage-del-tags-dbg10-label' => 'Страници што напаѓаат',
@@ -3734,10 +3818,11 @@ $messages['mk'] = array(
 	'pagetriage-del-log-page-missing-error' => 'Дневничката страница за денес сè уште не е создадена!',
 	'pagetriage-del-log-page-adding-error' => 'Не успеав да го пронајдам целното место за дискусијата',
 	'pagetriage-del-talk-page-notify-error' => 'Не успеав да го известам авторот на страницата за разговор',
+	'pagetriage-del-tooltip' => 'Предложете ја страницава за бришење',
 	'pagetriage-tags-param-article-label' => 'Статија:',
 	'pagetriage-tags-param-date-label' => 'Датум:',
 	'pagetriage-tags-param-issues-label' => 'Опишете ги проблемите што треба да се решат:',
-	'pagetriage-tags-param-blp-label' => 'Дали статијата е биографија на жив човек?',
+	'pagetriage-tags-param-blp-label' => 'Ова е биографија на жив човек',
 	'pagetriage-tags-param-source-label' => 'Кој е изворот?',
 	'pagetriage-tags-param-free-label' => 'Дали е под слободна лиценца?',
 	'pagetriage-tags-param-url-label' => 'Наведете URL за изворот.',
@@ -3764,17 +3849,22 @@ $messages['mk'] = array(
 	'pagetriage-info-problem-no-references-desc' => 'Статијава воопшто не наведува извори.',
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
+	'pagetriage-info-tooltip' => 'Прикажи метаподатоци за страницава',
 	'pagetriage-toolbar-collapsed' => 'Згрижување',
 	'pagetriage-toolbar-linktext' => 'Алатник за згрижување',
+	'pagetriage-toolbar-learn-more' => 'Дознајте повеќе »',
 	'pagetriage-mark-title' => 'Означи како проверена',
 	'pagetriage-mark-as-reviewed' => 'Означи како проверена',
 	'pagetriage-mark-as-unreviewed' => 'Означи како непроверена',
-	'pagetriage-mark-as-reviewed-helptext' => 'Да ја отстранам страницата од редицата на непроверени?',
-	'pagetriage-mark-as-unreviewed-helptext' => 'Да ја вратам страницата во редицата на непроверени?',
+	'pagetriage-mark-tooltip' => 'Означете ја страницата како проверена (или како непроверена ако претходно била проверувана)',
+	'pagetriage-mark-as-reviewed-helptext' => 'Означете ја страницава како проверена кога ќе завршите со проверката.',
+	'pagetriage-mark-as-unreviewed-helptext' => 'Означете ја страницава како непроверена ако сметате дека треба уште да се провери.',
 	'pagetriage-wikilove-helptext' => 'Одберете ги имињата на уредниците на коишто сакате да им се заблагодарите.',
 	'pagetriage-wikilove-page-creator' => 'Создавач на статијата',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|уредување|уредувања}}',
 	'pagetriage-wikilove-no-recipients' => 'Нема примачи за оваа статија.',
+	'pagetriage-wikilove-tooltip' => 'Изразете им почит на авторите',
+	'pagetriage-next-tooltip' => 'Оди на следната страница во редицата',
 );
 
 /** Dutch (Nederlands)
@@ -4148,6 +4238,43 @@ $messages['pt'] = array(
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 );
 
+/** Romanian (română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'pagetriage-please-wait' => 'Te rugăm așteaptă...',
+	'pagetriage-filter-list-prompt' => 'Setează filtrele',
+	'pagetriage-sort-by' => 'Sortează după:',
+	'pagetriage-filter-redirects' => 'Redirijări',
+	'pagetriage-filter-username' => 'Nume de utilizator',
+	'pagetriage-tags-title' => 'Adaugă etichete',
+	'pagetriage-tags-cat-writingstyle-label' => 'Stil de scriere',
+	'pagetriage-tags-cat-moretags-label' => 'Mai multe etichete',
+	'pagetriage-tags-cat-all-label' => 'Toate etichetele',
+	'pagetriage-del-tooltip' => 'Nominalizează această pagină pentru ștergere',
+	'pagetriage-tags-param-article-label' => 'Articol:',
+	'pagetriage-tags-param-date-label' => 'Data:',
+	'pagetriage-tags-param-source-label' => 'Care este sursa?',
+	'pagetriage-tags-param-free-label' => 'Licențiat în mod liber?',
+	'pagetriage-tags-param-url-label' => 'Te rugăm adaugă o adresă web pentru acea sursă.',
+	'pagetriage-tags-param-free-yes-label' => 'Da',
+	'pagetriage-tags-param-free-no-label' => 'Nu',
+	'pagetriage-tags-param-missing-required' => 'Parametrul $1 este necesar',
+	'pagetriage-info-title' => 'Informații despre pagină',
+	'pagetriage-info-problem-header' => 'Probleme posibile',
+	'pagetriage-info-history-header' => 'Istoric',
+	'pagetriage-info-history-show-full' => 'arată istoricul complet',
+	'pagetriage-info-help' => 'ajutor',
+	'pagetriage-info-no-problems' => 'Nicio problemă n-a fost găsită pentru această pagină până acum.',
+	'pagetriage-info-problem-no-categories' => 'Nicio categorie',
+	'pagetriage-info-problem-no-references' => 'Nicio referință',
+	'pagetriage-info-problem-no-references-desc' => 'Această pagină nu citează alte surse.',
+	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
+	'pagetriage-info-timestamp-time-format' => 'HH:mm',
+	'pagetriage-info-tooltip' => 'Arată metadatele pentru această pagină',
+	'pagetriage-toolbar-learn-more' => 'Învață mai multe »',
+);
+
 /** Sinhala (සිංහල)
  * @author පසිඳු කාවින්ද
  */
@@ -4379,6 +4506,7 @@ $messages['tl'] = array(
 	'pagetriage-button-add-parameters' => 'Magdagdag ng mga parametro',
 	'pagetriage-button-add-details' => 'Magdagdag ng mga detalye',
 	'pagetriage-button-edit-details' => 'Baguhin ang mga detalye',
+	'pagetriage-button-mark-for-deletion' => 'Minarkahan para mabura',
 	'pagetriage-add-a-note' => 'Magdagdag ng isang mensahe para sa manlilikha: (maaaring wala ito)',
 	'pagetriage-characters-left' => '{{PLURAL:$1|$1 panitik|$1 mga panitik}} ang natitira pa',
 	'pagetriage-personal-default-note' => 'Magsulat ng isang makakatulong na paunawa para kay {{GENDER:$1|$1}}. Ipapaskil ito sa ibabaw ng kani-kaniyang pahina ng usapan.',
@@ -4609,5 +4737,15 @@ $messages['tl'] = array(
 	'pagetriage-wikilove-no-recipients' => 'Walang mga tagatanggap na makukuha para sa pahinang ito.',
 	'pagetriage-wikilove-tooltip' => 'Magpadala ng pagpapahalaga sa mga may-akda',
 	'pagetriage-next-tooltip' => 'Pumunta sa susunod na pahinang nasa loob ng pila',
+);
+
+/** Simplified Chinese (‪中文（简体）‬)
+ * @author Shirayuki
+ */
+$messages['zh-hans'] = array(
+	'pagetriage-filter-username' => '用户名',
+	'pagetriage-filter-stat-username' => '用户名：$1',
+	'pagetriage-tags-param-free-yes-label' => '是',
+	'pagetriage-tags-param-free-no-label' => '否',
 );
 
