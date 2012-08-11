@@ -2145,6 +2145,7 @@ $messages['gl'] = array(
 /** Hebrew (עברית)
  * @author Amire80
  * @author Inkbug
+ * @author ערן
  */
 $messages['he'] = array(
 	'pagetriage' => 'מיון דפים',
@@ -2215,6 +2216,9 @@ $messages['he'] = array(
 	'pagetriage-note-deletion' => 'הדף הזה מועמד למחיקה.',
 	'pagetriage-refresh-list' => 'רענון הרשימה',
 	'pagetriage-button-add-parameters' => 'הוספת פרמטרים',
+	'pagetriage-button-add-details' => 'הוספת פרטים',
+	'pagetriage-button-edit-details' => 'עריכת פרטים',
+	'pagetriage-button-mark-for-deletion' => 'סימון למחיקה',
 	'pagetriage-characters-left' => '{{PLURAL:$1|תו אחד נותר|$1 תווים נותרו}}',
 	'pagetriage-tags-cat-common-label' => 'כללי',
 	'pagetriage-tags-cat-metadata-label' => 'מטא־נתונים',
@@ -2244,12 +2248,41 @@ $messages['he'] = array(
 	'pagetriage-tags-externallinks-desc' => 'הקישורים החיצוניים בדף הזה אינם מתאימים למדיניות התוכן.',
 	'pagetriage-tags-advert-label' => 'פרסומת',
 	'pagetriage-tags-stub-label' => 'קצרמר',
+	'pagetriage-del-tags-dba3-label' => 'ללא תוכן',
+	'pagetriage-del-tags-dbu3-label' => 'גלריות לא-חופשית',
+	'pagetriage-tags-param-article-label' => 'ערך:',
 	'pagetriage-tags-param-date-label' => 'תאריך:',
+	'pagetriage-tags-param-blp-label' => 'זוהי ביוגרפיה של אדם חי',
+	'pagetriage-tags-param-source-label' => 'מהו המקור?',
+	'pagetriage-tags-param-free-label' => 'רישיון חופשי?',
+	'pagetriage-tags-param-url-label' => 'נא להוסיף כתובת URL עבור מקור זה.',
 	'pagetriage-tags-param-free-yes-label' => 'כן',
 	'pagetriage-tags-param-free-no-label' => 'לא',
+	'pagetriage-tags-param-missing-required' => 'הפרמטר  $1  נדרש',
+	'pagetriage-info-title' => 'מידע על הדף',
+	'pagetriage-info-problem-header' => 'בעיות אפשריות',
 	'pagetriage-info-history-header' => 'היסטוריה',
+	'pagetriage-info-history-show-full' => 'הצג את כל ההיסטוריה',
+	'pagetriage-info-help' => 'עזרה',
+	'pagetriage-info-no-problems' => 'אין בעיות שנמצאו עבור דף זה עד כה.',
+	'pagetriage-info-problem-non-autoconfirmed' => 'עורך חדש',
+	'pagetriage-info-problem-non-autoconfirmed-desc' => 'דף זה נוצר על-ידי עורך שאינו ותיק.',
+	'pagetriage-info-problem-blocked' => 'משתמש חסום',
+	'pagetriage-info-problem-blocked-desc' => 'דף זה נוצר על-ידי משתמש חסום.',
+	'pagetriage-info-problem-no-categories' => 'אין קטגוריות',
+	'pagetriage-info-problem-no-categories-desc' => 'דף זה אינו משוייך לקטגוריות.',
+	'pagetriage-info-problem-orphan' => 'יתום',
+	'pagetriage-info-problem-no-references' => 'אין הערות שוליים',
+	'pagetriage-info-problem-no-references-desc' => 'דף זה לא מצטט מקורות.',
+	'pagetriage-toolbar-learn-more' => 'פרטים נוספים»',
 	'pagetriage-mark-as-reviewed' => 'לסמן שהדף נסקר',
 	'pagetriage-mark-as-unreviewed' => 'למסן שהדף לא נסקר',
+	'pagetriage-wikilove-helptext' => 'בחירת שמות העורכים שברצונך להודות להם.',
+	'pagetriage-wikilove-page-creator' => 'יוצר הדף',
+	'pagetriage-wikilove-edit-count' => '{{PLURAL:$1|עריכה אחת|$1 עריכות}}',
+	'pagetriage-wikilove-no-recipients' => 'אין נמענים זמינים עבור דף זה.',
+	'pagetriage-wikilove-tooltip' => 'שליחת הערכה לכותבים',
+	'pagetriage-next-tooltip' => 'מעבר אל הדף הבא בתור',
 );
 
 /** Upper Sorbian (hornjoserbsce)
@@ -3064,13 +3097,14 @@ $messages['ja'] = array(
 	'pagetriage-newest' => '新しい順',
 	'pagetriage-oldest' => '古い順',
 	'pagetriage-filter-redirects' => 'リダイレクト',
+	'pagetriage-filter-username' => '利用者名',
 	'pagetriage-filter-all' => 'すべて表示',
 	'pagetriage-stats-less-than-a-day' => '1 日未満',
 	'pagetriage-filter-ns-all' => 'すべて',
 	'pagetriage-filter-stat-all' => 'すべて',
 	'pagetriage-filter-stat-bots' => 'ボット',
-	'pagetriage-filter-stat-redirects' => 'リダイレクトを含める',
-	'pagetriage-filter-stat-nominated-for-deletion' => '削除済みを含める',
+	'pagetriage-filter-stat-redirects' => 'リダイレクト',
+	'pagetriage-filter-stat-nominated-for-deletion' => '削除候補',
 	'pagetriage-filter-stat-no-categories' => 'カテゴリなし',
 	'pagetriage-filter-stat-username' => '利用者名：$1',
 	'pagetriage-button-add-tag' => '選択したタグを追加',
@@ -3084,6 +3118,8 @@ $messages['ja'] = array(
 	'pagetriage-tags-param-free-no-label' => 'いいえ',
 	'pagetriage-info-history-header' => '履歴',
 	'pagetriage-info-help' => 'ヘルプ',
+	'pagetriage-info-timestamp-date-format' => 'yyyy/MM/dd',
+	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 );
 
 /** Georgian (ქართული)
@@ -4218,6 +4254,27 @@ $messages['pl'] = array(
 	'pagetriage-tags-param-source-label' => 'Co jest źródłem?',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'pagetriage-filter-show-heading' => 'ښکاره کول:',
+	'pagetriage-filter-article' => 'ليکنه',
+	'pagetriage-filter-username' => 'کارن-نوم',
+	'pagetriage-filter-ns-all' => 'ټول',
+	'pagetriage-more' => 'نور',
+	'pagetriage-filter-stat-all' => 'ټول',
+	'pagetriage-filter-stat-username' => 'کارن-نوم: $1',
+	'pagetriage-tags-cat-structure-label' => 'جوړښت',
+	'pagetriage-tags-param-article-label' => 'ليکنه:',
+	'pagetriage-tags-param-date-label' => 'نېټه:',
+	'pagetriage-tags-param-free-yes-label' => 'هو',
+	'pagetriage-tags-param-free-no-label' => 'نه',
+	'pagetriage-info-title' => 'د مخ مالومات',
+	'pagetriage-info-history-header' => 'پېښليک',
+	'pagetriage-info-help' => 'لارښود',
+);
+
 /** Portuguese (português)
  * @author Malafaya
  * @author SandroHc
@@ -4283,17 +4340,26 @@ $messages['ro'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'pagetriage-please-wait' => 'මදක් රැදීසිටින්න...',
+	'pagetriage-byline' => 'විසින්',
+	'pagetriage-newest' => 'අලුත්ම',
+	'pagetriage-oldest' => 'පැරණිම',
+	'pagetriage-filter-show-heading' => 'පෙන්වන්න:',
 	'pagetriage-filter-article' => 'ලිපි',
 	'pagetriage-filter-username' => 'පරිශීලක නාමය',
 	'pagetriage-filter-all' => 'සියල්ලම පෙන්වන්න',
 	'pagetriage-filter-ns-all' => 'සියල්ල',
 	'pagetriage-more' => 'තවත්',
 	'pagetriage-filter-stat-all' => 'සියල්ල',
+	'pagetriage-filter-stat-username' => 'පරිශීලක නාමය: $1',
 	'pagetriage-tags-param-article-label' => 'ලිපිය:',
 	'pagetriage-tags-param-date-label' => 'දිනය:',
 	'pagetriage-tags-param-free-yes-label' => 'ඔව්',
 	'pagetriage-tags-param-free-no-label' => 'නැත',
 	'pagetriage-info-history-header' => 'ඉතිහාසය',
+	'pagetriage-info-help' => 'උදව්',
+	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
+	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 );
 
 /** Swedish (svenska)
@@ -4420,9 +4486,21 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'pagetriage-categories' => '$1 {{PLURAL:$1|వర్గం|వర్గాలు}}',
 	'pagetriage-no-categories' => 'వర్గాలు లేవు',
+	'pagetriage-filter-reviewed-edits' => 'సమీక్షించిన పేజీలు',
 	'pagetriage-filter-redirects' => 'దారిమార్పులు',
+	'pagetriage-filter-article' => 'వ్యాసం',
+	'pagetriage-filter-username' => 'వాడుకరి పేరు',
+	'pagetriage-filter-all' => 'అన్నిటినీ చూపించు',
 	'pagetriage-filter-ns-all' => 'అన్నీ',
 	'pagetriage-filter-stat-all' => 'అన్నీ',
+	'pagetriage-tags-param-article-label' => 'వ్యాసం:',
+	'pagetriage-tags-param-date-label' => 'తేదీ:',
+	'pagetriage-tags-param-free-yes-label' => 'అవును',
+	'pagetriage-tags-param-free-no-label' => 'కాదు',
+	'pagetriage-info-history-header' => 'చరిత్ర',
+	'pagetriage-info-help' => 'సహాయం',
+	'pagetriage-toolbar-learn-more' => 'మరింత తెలుసుకోండి »',
+	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|మార్పు|మార్పులు}}',
 );
 
 /** Tagalog (Tagalog)
