@@ -801,7 +801,7 @@ $messages['ar'] = array(
  */
 $messages['be-tarask'] = array(
 	'pagetriage' => 'Page Triage',
-	'pagetriage-new-pages-feed' => 'Стужка новых старонак',
+	'newpagesfeed' => 'Стужка новых старонак',
 	'pagetriage-desc' => 'Прылады для прагляду і зацьверджаньня новых старонак',
 );
 
@@ -2334,6 +2334,7 @@ $messages['hsb'] = array(
 	'pagetriage-button-add-parameters' => 'Parametry přidać',
 	'pagetriage-button-add-details' => 'Podrobnosće přidać',
 	'pagetriage-button-edit-details' => 'Podrobnosće wobdźěłać',
+	'pagetriage-button-mark-for-deletion' => 'Za zhašenje markěrować',
 	'pagetriage-add-a-note' => 'Přidaj powěsć za awtora: (opcionalne)',
 	'pagetriage-characters-left' => '{{PLURAL:$1|$1 znamješko|$1 znamješce|$1 znamješka|$1 znamješkow}} wyše',
 	'pagetriage-personal-default-note' => 'Spisaj wužitnu noticu za {{GENDER:$1|$1}}. Budźe so na {{GENDER:$1|jeho|jeje}} diskusijnej stronje pokazować.',
@@ -2453,6 +2454,7 @@ $messages['hsb'] = array(
 	'pagetriage-del-tags-miscellanyfordeletion-label' => 'Wšelake za zhašenje',
 	'pagetriage-del-log-page-missing-error' => 'Protokolowa strona za dźensa hišće njeje so wutworiła!',
 	'pagetriage-del-talk-page-notify-error' => 'Njeje móžno było, awtora na jeho diskusijnej stronje informować',
+	'pagetriage-del-tooltip' => 'Tutu stronu za zhašenje namjetować',
 	'pagetriage-tags-param-article-label' => 'Nastawk:',
 	'pagetriage-tags-param-date-label' => 'Datum:',
 	'pagetriage-tags-param-issues-label' => 'Wopisaj potrjechene problemy:',
@@ -2488,6 +2490,7 @@ $messages['hsb'] = array(
 	'pagetriage-mark-title' => 'Jako přepruwowany markěrować',
 	'pagetriage-mark-as-reviewed' => 'Jako přepruwowany markěrować',
 	'pagetriage-mark-as-unreviewed' => 'Jako njepřepruwowany markěrować',
+	'pagetriage-mark-tooltip' => 'Stronu jako přepruwowanu markěrować (abo jako njepřeprewuwanu, jeli je hižo přepruwowana)',
 	'pagetriage-mark-as-reviewed-helptext' => 'Tutu stronu jako přepruwowanu markěrować, hdyž sy ju skontrolował.',
 	'pagetriage-mark-as-unreviewed-helptext' => 'Tutu stronu jako njepřepruwowanu markěrować, jeli měniš, zo wona dyrbi so dale kontrolować.',
 	'pagetriage-wikilove-helptext' => 'Wubjer mjena wobdźěłarjow, kotrymž chceš so dźakować.',
@@ -4181,6 +4184,7 @@ $messages['pam'] = array(
 );
 
 /** Polish (polski)
+ * @author Ankry
  * @author Woytecr
  */
 $messages['pl'] = array(
@@ -4194,7 +4198,7 @@ $messages['pl'] = array(
 	'pagetriage-newest' => 'Najnowsze',
 	'pagetriage-oldest' => 'Najstarsze',
 	'pagetriage-triage' => 'Przejrzyj',
-	'pagetriage-filter-show-heading' => 'Włączając:',
+	'pagetriage-filter-show-heading' => 'Pokaż:',
 	'pagetriage-filter-reviewed-edits' => 'Przejrzane strony',
 	'pagetriage-filter-nominated-for-deletion' => 'Nominowane do usunięcia',
 	'pagetriage-filter-no-categories' => 'Nie posiadają kategorii',
@@ -4211,7 +4215,7 @@ $messages['pl'] = array(
 	'pagetriage-tags-pov-desc' => 'Ta strona nie zachowuje neutralnego punktu widzenia.',
 	'pagetriage-tags-blpsources-label' => 'Więcej źródeł',
 	'pagetriage-tags-primarysources-label' => 'Źródła pierwotne',
-	'pagetriage-tags-param-source-label' => 'Źródło:',
+	'pagetriage-tags-param-source-label' => 'Co jest źródłem?',
 );
 
 /** Portuguese (português)
@@ -4419,7 +4423,6 @@ $messages['te'] = array(
 	'pagetriage-filter-redirects' => 'దారిమార్పులు',
 	'pagetriage-filter-ns-all' => 'అన్నీ',
 	'pagetriage-filter-stat-all' => 'అన్నీ',
-	'pagetriage-filter-stat-namespace' => 'పేరుబరి: $1',
 );
 
 /** Tagalog (Tagalog)
