@@ -83,7 +83,7 @@ $messages['en'] = array(
 	'pagetriage-filter-stat-blocked' => 'blocked users',
 	'pagetriage-filter-stat-username' => 'username: $1',
 	'pagetriage-no-pages' => 'No pages match your criteria.',
-	'pagetriage-warning-prototype' => 'This is a prototype, not a final product. Key features are still in development. <a href="$1">Learn more</a> · <a href="$2">Leave feedback</a>',
+	'pagetriage-warning-prototype' => 'This is a beta version. Key features are still in development. <a href="$1">Learn more</a> · <a href="$2">Leave feedback</a>',
 	'pagetriage-warning-browser' => 'This tool may not work correctly in browsers older than Internet Explorer 8.',
 	'pagetriage-note-reviewed' => 'This page has been reviewed.',
 	'pagetriage-note-not-reviewed' => 'This page has not yet been reviewed.',
