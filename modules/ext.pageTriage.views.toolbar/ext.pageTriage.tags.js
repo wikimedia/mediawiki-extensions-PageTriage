@@ -128,6 +128,8 @@ $( function() {
 				.click(
 					function () {
 						_this.submit();
+						$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
+						$( '#mwe-pt-tag-submit' ).append( $.createSpinner( 'tag-spinner' ) ); // show spinner
 						return false;
 					}
 				).end();
@@ -528,6 +530,8 @@ $( function() {
 					data: apiRequest,
 					success: function( data ) {
 						if ( data.error ) {
+							$.removeSpinner( 'tag-spinner' );
+							$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
 							alert( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
 						} else {
 							_this.applyTags( topText, bottomText );
@@ -564,6 +568,8 @@ $( function() {
 							window.location.reload( true );
 						}
 					} else {
+						$.removeSpinner( 'tag-spinner' );
+						$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
 						alert( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
 					}
 				},
@@ -596,6 +602,8 @@ $( function() {
 						_this.reset();
 						window.location.reload( true );
 					} else {
+						$.removeSpinner( 'tag-spinner' );
+						$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
 						alert( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
 					}
 				},
