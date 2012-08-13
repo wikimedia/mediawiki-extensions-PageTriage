@@ -519,7 +519,7 @@ $( function() {
 		/**
 		 * Add deletion tag template to the page
 		 */
-		tagPage: function( ) {
+		tagPage: function() {
 			var text = '', tagText = '', paramsText = '', _this = this, tempTag = '',
 			count = this.objectPropCount( this.selectedTag );
 
@@ -533,6 +533,14 @@ $( function() {
 				tempTag = this.selectedTag[key].tag;
 				if ( count > 1 ) {
 					tempTag = tempTag.replace( /^db-/gi, '' );
+				} else {
+					// this tempalte must be substituted
+					if ( this.selectedTag[key].subst ) {
+						// check if there is 'subst:' string yet
+						if ( tempTag.match( /^subst:/i ) === null ) {
+							tempTag = 'subst:' + tempTag;
+						}
+					}
 				}
 				if ( tagText ) {
 					tagText += '|';

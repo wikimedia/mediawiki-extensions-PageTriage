@@ -32,7 +32,8 @@ var tags = {
 		desc: mw.msg( 'pagetriage-del-tags-blpprod-desc' ),
 		params: {},
 		anchor: '',
-		talkpagenotiftpl: 'ProdwarningBLP-NPF'
+		talkpagenotiftpl: 'ProdwarningBLP-NPF',
+		subst: true
 	},
 
 	'dba1': {
@@ -198,7 +199,8 @@ var tags = {
 			}
 		},
 		anchor: '',
-		talkpagenotiftpl: 'Proposed_deletion_notify-NPF'
+		talkpagenotiftpl: 'Proposed_deletion_notify-NPF',
+		subst: true
 	}
 
 };
@@ -262,7 +264,8 @@ $.pageTriageDeletionTagsOptions = {
 							value: ''
 						}
 					},
-					talkpagenotiftpl: 'AfD-notice-NPF'
+					talkpagenotiftpl: 'AfD-notice-NPF',
+					subst: true
 				},
 
 				'redirectsfordiscussion': {
@@ -278,7 +281,8 @@ $.pageTriageDeletionTagsOptions = {
 							value: ''
 						}
 					},
-					talkpagenotiftpl: 'RFDNote-NPF'
+					talkpagenotiftpl: 'RFDNote-NPF',
+					subst: true
 				}
 			}
 		}
