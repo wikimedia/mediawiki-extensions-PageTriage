@@ -24,7 +24,7 @@ class updatePageTriageQueue extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = "Remove page from pagetriage queue after 60 days of inactivity";
+		$this->mDescription = "Remove page from pagetriage queue after 30 days of article creation";
 	}
 
 	protected function init() {
@@ -36,8 +36,8 @@ class updatePageTriageQueue extends Maintenance {
 		$this->init();
 		$this->output( "Started processing... \n" );
 
-		// Scan for data with ptrp_created set more than 60 days ago
-		$startTime = wfTimestamp( TS_UNIX ) - 60* 60 * 60 * 24;
+		// Scan for data with ptrp_created set more than 30 days ago
+		$startTime = wfTimestamp( TS_UNIX ) - 30 * 60 * 60 * 24;
 		$count = $this->batchSize;
 
 		$row = $this->dbr->selectRow(
@@ -60,7 +60,7 @@ class updatePageTriageQueue extends Maintenance {
 			$startTime = $this->dbr->addQuotes( $this->dbr->timestamp( $startTime ) );
 			$startId = intval( $startId );
 
-			// Remove pages older than 60 days, if
+			// Remove pages older than 30 days, if
 			// 1. the page has been reviewed, or
 			// 2. the page is not in main namespace
 			$res = $this->dbr->select(
