@@ -17,3 +17,8 @@ $specialPageAliases['en'] = array(
 $specialPageAliases['ar'] = array(
 	'NewPagesFeed' => array( 'تغذية_الصفحات_الجديدة' ),
 );
+
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'NewPagesFeed' => array( 'OverzichtNieuwePagina\'s', 'OverzichtNieuwePaginas' ),
+);

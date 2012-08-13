@@ -683,6 +683,7 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Ciphers
+ * @author Meno25
  */
 $messages['ar'] = array(
 	'pagetriage' => 'فارز الصفحات',
@@ -711,7 +712,7 @@ $messages['ar'] = array(
 	'pagetriage-showing' => 'عرض',
 	'pagetriage-filter-list-prompt' => 'قائمة الفلاتر',
 	'pagetriage-article-count' => 'يوجد {{PLURAL:$1|حاليا $1 صفحة غير مراجعة|حاليا $1 صفحة غير مراجعة}}',
-	'pagetriage-sort-by' => 'رتب حسب :',
+	'pagetriage-sort-by' => 'الترتيب حسب:',
 	'pagetriage-newest' => 'الأحدث',
 	'pagetriage-oldest' => 'الأقدم',
 	'pagetriage-triage' => 'راجع',
@@ -895,6 +896,14 @@ $messages['br'] = array(
 	'pagetriage-info-problem-orphan' => 'Emzivad',
 	'pagetriage-info-problem-orphan-desc' => "Pajenn all ebet ne gas d'ar bajenn-mañ.",
 	'pagetriage-info-problem-no-references' => 'Daveenn ebet',
+);
+
+/** Czech (česky)
+ * @author Vks
+ */
+$messages['cs'] = array(
+	'pagetriage-tags-param-free-yes-label' => 'Ano',
+	'pagetriage-tags-param-free-no-label' => 'Ne',
 );
 
 /** German (Deutsch)
@@ -1515,6 +1524,53 @@ $messages['es'] = array(
 	'pagetriage-wikilove-page-creator' => 'Creador de la página',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|edición|ediciones}}',
 	'pagetriage-wikilove-no-recipients' => 'No hay destinatarios disponibles para esta página.',
+);
+
+/** Estonian (eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'pagetriage-please-wait' => 'Palun oota...',
+	'pagetriage-hist' => 'ajal',
+	'pagetriage-no-categories' => 'Kategooriaid ei leidnud',
+	'pagetriage-author-not-autoconfirmed' => 'Uus toimetaja',
+	'pagetriage-no-patrol-right' => 'Teil ei ole õigust seda lehte vaadata',
+	'pagetriage-author-blocked' => 'Blokeeritud',
+	'pagetriage-author-bot' => 'Robot',
+	'pagetriage-showing' => 'Näidatakse:',
+	'pagetriage-newest' => 'Uusimad',
+	'pagetriage-oldest' => 'Vanimad',
+	'pagetriage-triage' => 'Vaata üle',
+	'pagetriage-filter-show-heading' => 'Näita:',
+	'pagetriage-filter-redirects' => 'Ümbersuunamised',
+	'pagetriage-filter-namespace-heading' => 'Nimeruumis:',
+	'pagetriage-filter-article' => 'Artikkel',
+	'pagetriage-filter-username' => 'Kasutajanimi',
+	'pagetriage-stats-less-than-a-day' => 'vähem kui üks päev',
+	'pagetriage-filter-ns-all' => 'Kõik',
+	'pagetriage-more' => 'Rohkem',
+	'pagetriage-filter-stat-all' => 'Kõik',
+	'pagetriage-filter-stat-bots' => 'robotid',
+	'pagetriage-filter-stat-redirects' => 'ümbersuunamised',
+	'pagetriage-tags-cat-neutrality-label' => 'Neutraalsus',
+	'pagetriage-tags-cat-sources-label' => 'Allikad',
+	'pagetriage-tags-cat-structure-label' => 'Struktuur',
+	'pagetriage-tags-param-article-label' => 'Artikkel:',
+	'pagetriage-tags-param-date-label' => 'Kuupäev:',
+	'pagetriage-tags-param-source-label' => 'Mis on allikas?',
+	'pagetriage-tags-param-free-yes-label' => 'Jah',
+	'pagetriage-tags-param-free-no-label' => 'Ei',
+	'pagetriage-info-title' => 'Lehekülje informatsioon',
+	'pagetriage-info-problem-header' => 'Võimalikud probleemid',
+	'pagetriage-info-history-header' => 'Ajalugu',
+	'pagetriage-info-history-show-full' => 'Kuva kogu ajalugu',
+	'pagetriage-info-help' => 'abi',
+	'pagetriage-info-problem-non-autoconfirmed' => 'Uus toimetaja',
+	'pagetriage-info-problem-blocked' => 'Blokeeritud kasutaja',
+	'pagetriage-info-problem-no-categories' => 'Kategooriaid ei leidnud',
+	'pagetriage-info-timestamp-date-format' => 'p KKKK AAAA',
+	'pagetriage-info-timestamp-time-format' => 'TT:mm',
+	'pagetriage-wikilove-page-creator' => 'Lehekülje looja',
 );
 
 /** Persian (فارسی)
@@ -2319,6 +2375,14 @@ $messages['he'] = array(
 	'pagetriage-next-tooltip' => 'מעבר אל הדף הבא בתור',
 );
 
+/** Hindi (हिन्दी)
+ * @author Karthi.dr
+ */
+$messages['hi'] = array(
+	'pagetriage-tags-param-free-yes-label' => 'हाँ',
+	'pagetriage-tags-param-free-no-label' => 'नहीं',
+);
+
 /** Upper Sorbian (hornjoserbsce)
  * @author Michawiki
  */
@@ -2566,6 +2630,14 @@ $messages['hsb'] = array(
 	'pagetriage-wikilove-no-recipients' => 'Za tutu stronu žani přijimarjo njejsu.',
 	'pagetriage-wikilove-tooltip' => 'Awtoram počesćowanje pósłać',
 	'pagetriage-next-tooltip' => 'K přichodnej stronje w čakanskim rynku',
+);
+
+/** Hungarian (magyar)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['hu'] = array(
+	'pagetriage-tags-param-free-yes-label' => 'Igen',
+	'pagetriage-tags-param-free-no-label' => 'Nem',
 );
 
 /** Interlingua (interlingua)
@@ -3952,6 +4024,31 @@ $messages['mk'] = array(
 	'pagetriage-next-tooltip' => 'Оди на следната страница во редицата',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ * @author පසිඳු කාවින්ද
+ */
+$messages['mt'] = array(
+	'pagetriage-author-blocked' => 'Imblukkat',
+	'pagetriage-author-bot' => 'Bot',
+	'pagetriage-filter-article' => 'Artiklu',
+	'pagetriage-filter-user-heading' => 'Ġew maħluqa minn',
+	'pagetriage-filter-username' => 'Isem tal-utent',
+	'pagetriage-filter-tag-heading' => 'Bit-tikketta:',
+	'pagetriage-filter-second-show-heading' => 'Li:',
+	'pagetriage-filter-no-categories' => "M'għandhom l-ebda kategorija",
+	'pagetriage-filter-orphan' => 'Huma orfni',
+	'pagetriage-filter-non-autoconfirmed' => 'Ġew maħluqa minn edituri ġodda',
+	'pagetriage-filter-blocked' => 'Ġew maħluqa minn utenti mblukkati',
+	'pagetriage-filter-all' => 'Uri kollha',
+	'pagetriage-filter-set-button' => 'Agħmel il-filtri',
+	'pagetriage-stats-less-than-a-day' => 'inqas minn ġurnata',
+	'pagetriage-tags-param-free-yes-label' => 'Iva',
+	'pagetriage-tags-param-free-no-label' => 'Le',
+	'pagetriage-info-history-header' => 'Storja',
+	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author SPQRobin
@@ -4037,6 +4134,7 @@ $messages['nl'] = array(
 	'pagetriage-button-add-parameters' => 'Parameters toevoegen',
 	'pagetriage-button-add-details' => 'Gegevens toevoegen',
 	'pagetriage-button-edit-details' => 'Gegevens bewerken',
+	'pagetriage-button-mark-for-deletion' => 'Voor verwijdering markeren',
 	'pagetriage-add-a-note' => 'Bericht toevoegen voor de aanmaker (optioneel):',
 	'pagetriage-characters-left' => '$1 {{PLURAL:$1|teken|tekens}} over',
 	'pagetriage-personal-default-note' => 'Schrijf een nuttig bericht voor $1. Dat wordt geplaatst op {{GENDER:$1|zijn|haar}} overlegpagina.',
@@ -4387,9 +4485,17 @@ $messages['ro'] = array(
  */
 $messages['si'] = array(
 	'pagetriage-please-wait' => 'මදක් රැදීසිටින්න...',
+	'pagetriage-reviewed' => 'නිරීක්ෂණය කෙරූ',
+	'pagetriage-edits' => '{{PLURAL:$1|සංස්කරණ|සංස්කරණ}} $1 කි',
+	'pagetriage-categories' => '{{PLURAL:$1|ප්‍රවර්ග|ප්‍රවර්ග}} $1 කි',
+	'pagetriage-no-categories' => 'ප්‍රවර්ගයන් නොමැත',
+	'pagetriage-orphan' => 'අනාථ',
 	'pagetriage-byline' => 'විසින්',
+	'pagetriage-author-not-autoconfirmed' => 'නව සංස්කාරක',
+	'pagetriage-showing' => 'පෙන්වමින්:',
 	'pagetriage-newest' => 'අලුත්ම',
 	'pagetriage-oldest' => 'පැරණිම',
+	'pagetriage-triage' => 'නිරීක්ෂණය',
 	'pagetriage-filter-show-heading' => 'පෙන්වන්න:',
 	'pagetriage-filter-article' => 'ලිපි',
 	'pagetriage-filter-username' => 'පරිශීලක නාමය',
@@ -4397,31 +4503,64 @@ $messages['si'] = array(
 	'pagetriage-filter-ns-all' => 'සියල්ල',
 	'pagetriage-more' => 'තවත්',
 	'pagetriage-filter-stat-all' => 'සියල්ල',
+	'pagetriage-filter-stat-reviewed' => 'නිරීක්ෂණය කෙරූ',
+	'pagetriage-filter-stat-bots' => 'රොබෝවරු',
+	'pagetriage-filter-stat-redirects' => 'යළියොමු',
+	'pagetriage-filter-stat-orphan' => 'අනාථයන්',
+	'pagetriage-filter-stat-non-autoconfirmed' => 'නව සංස්කාරකවරුන්',
+	'pagetriage-filter-stat-blocked' => 'වාරණය කල පරිශීලකයන්',
 	'pagetriage-filter-stat-username' => 'පරිශීලක නාමය: $1',
+	'pagetriage-refresh-list' => 'ලැයිස්තුව ප්‍රතිපුරණය',
+	'pagetriage-button-add-parameters' => 'පරාමිතීන් එක් කරන්න',
+	'pagetriage-button-add-details' => 'විස්තර එක් කරන්න',
+	'pagetriage-button-mark-for-deletion' => 'මකා දැමීම සඳහා සලකුණු කරන්න',
+	'pagetriage-tags-cat-common-label' => 'පොදු',
+	'pagetriage-tags-cat-metadata-label' => 'පාරදත්ත',
+	'pagetriage-tags-cat-neutrality-label' => 'මධ්‍යස්ථතාව',
+	'pagetriage-tags-cat-sources-label' => 'මූලාශ්‍ර',
+	'pagetriage-tags-cat-structure-label' => 'සංස්ථානය',
+	'pagetriage-del-tags-dba3-label' => 'අන්තර්ගතයක් නොමැත',
 	'pagetriage-tags-param-article-label' => 'ලිපිය:',
 	'pagetriage-tags-param-date-label' => 'දිනය:',
 	'pagetriage-tags-param-free-yes-label' => 'ඔව්',
 	'pagetriage-tags-param-free-no-label' => 'නැත',
+	'pagetriage-info-title' => 'පිටු තොරතුරු',
 	'pagetriage-info-history-header' => 'ඉතිහාසය',
 	'pagetriage-info-help' => 'උදව්',
+	'pagetriage-info-problem-blocked' => 'වාරණය කල පරිශීලක',
+	'pagetriage-info-problem-no-categories' => 'ප්‍රවර්ගයන් නොමැත',
+	'pagetriage-info-problem-orphan' => 'අනාථ',
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
+	'pagetriage-toolbar-collapsed' => 'කාල සීමාව',
+	'pagetriage-toolbar-learn-more' => 'තවත් දැනගන්න »',
+	'pagetriage-wikilove-page-creator' => 'පිටු තනන්නා',
+	'pagetriage-wikilove-edit-count' => '{{PLURAL:$1|සංස්කරණ|සංස්කරණ}} $1 කි',
 );
 
 /** Swedish (svenska)
  * @author Ainali
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'pagetriage-please-wait' => 'Var god vänta…',
 	'pagetriage-markpatrolled' => 'Märk den här sidan som patrullerad',
 	'pagetriage-self-review-error' => 'Du kan inte patrullera sidor som du har skapat.',
 	'pagetriage-reviewed' => 'Patrullerad',
+	'pagetriage-bytes' => '$1 {{PLURAL:$1|byte|byte}}',
+	'pagetriage-edits' => '$1 {{PLURAL:$1|redigering|redigeringar}}',
+	'pagetriage-categories' => '$1 {{PLURAL:$1|kategori|kategorier}}',
 	'pagetriage-no-categories' => 'Inga kategorier',
+	'pagetriage-orphan' => 'Föräldralös',
 	'pagetriage-no-author' => 'Det finns ingen information om författaren',
+	'pagetriage-byline' => 'Av',
+	'pagetriage-editcount' => '$1 {{PLURAL:$1|redigering|redigeringar}} sedan $2',
+	'pagetriage-author-not-autoconfirmed' => 'Ny redigerare',
+	'pagetriage-no-patrol-right' => 'Du har inte rättigheterna att granska denna sida',
 	'pagetriage-author-blocked' => 'Blockerad',
 	'pagetriage-author-bot' => 'Bot',
-	'pagetriage-showing' => 'Visar',
-	'pagetriage-filter-list-prompt' => 'Filterlista',
+	'pagetriage-showing' => 'Visar:',
+	'pagetriage-filter-list-prompt' => 'Ange filter',
 	'pagetriage-article-count' => 'Det {{PLURAL:$1|finns för närvarande $1 opatrullerad artikel|finns för närvarande $1 opatrullerade artiklar}}',
 	'pagetriage-sort-by' => 'Sortera på:',
 	'pagetriage-newest' => 'Nyaste',
@@ -4440,28 +4579,35 @@ $messages['sv'] = array(
 	'pagetriage-filter-blocked' => 'Skapades av blockerade användare',
 	'pagetriage-filter-all' => 'Visa alla',
 	'pagetriage-stats-less-than-a-day' => 'mindre än en dag',
+	'pagetriage-stats-top-reviewers' => 'Topp{{PLURAL:$1|granskare|-$1 granskare}}:',
 	'pagetriage-filter-ns-all' => 'Alla',
 	'pagetriage-more' => 'Mer',
 	'pagetriage-filter-stat-all' => 'Alla',
-	'pagetriage-filter-stat-reviewed' => 'Inkludera patrullerade',
+	'pagetriage-filter-stat-reviewed' => 'granskad',
 	'pagetriage-filter-stat-bots' => 'Robotar',
 	'pagetriage-filter-stat-redirects' => 'Inkludera omdirigeringar',
 	'pagetriage-filter-stat-nominated-for-deletion' => 'Inkludera raderade',
 	'pagetriage-filter-stat-no-categories' => 'Inga kategorier',
 	'pagetriage-filter-stat-orphan' => 'Föräldralösa',
+	'pagetriage-filter-stat-non-autoconfirmed' => 'nya redigerare',
 	'pagetriage-filter-stat-blocked' => 'Blockerade användare',
 	'pagetriage-filter-stat-username' => 'Användarnamn: $1',
 	'pagetriage-no-pages' => 'Inga sidor matchar dina kriterier.',
+	'pagetriage-warning-prototype' => 'Detta är en prototyp, inte en färdig produkt. Nyckelfunktionerna är fortfarande under utveckling. <a href="$1">Läs mer</a> · <a href="$2">Ge feedback</a>',
 	'pagetriage-warning-browser' => 'Verktyget fungerar kanske inte korrekt i en webbläsare som är äldre än Internet Explorer 8.',
 	'pagetriage-note-reviewed' => 'Denna sida har patrullerats.',
 	'pagetriage-note-not-reviewed' => 'Denna sida har ännu inte granskats.',
 	'pagetriage-note-deletion' => 'Denna sida har varit nominerad för radering.',
 	'pagetriage-refresh-list' => 'Uppdatera listan',
+	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|tagg|taggar}} valda',
 	'pagetriage-button-add-tag' => 'Lägg till markerade taggar',
 	'pagetriage-button-add-tag-number' => 'Lägg till $1 valda taggar',
 	'pagetriage-button-add-parameters' => 'Lägg till parametrar',
 	'pagetriage-button-add-details' => 'Lägg till detaljer',
 	'pagetriage-button-edit-details' => 'Redigera detaljer',
+	'pagetriage-button-mark-for-deletion' => 'Markera för radering',
+	'pagetriage-add-a-note' => 'Lägg till ett meddelande till skaparen: (valfritt)',
+	'pagetriage-characters-left' => '{{PLURAL:$1|$1 tecken|$1 tecken}} kvar',
 	'pagetriage-tags-title' => 'Lägg till taggar:',
 	'pagetriage-tags-cat-metadata-label' => 'Metadata',
 	'pagetriage-tags-cat-cleanup-label' => 'Rensning',
