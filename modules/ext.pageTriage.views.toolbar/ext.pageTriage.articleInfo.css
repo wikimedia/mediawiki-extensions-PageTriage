@@ -18,13 +18,10 @@
 
 .mwe-pt-info-basic {
 	position: relative;
+	line-height: 1.2em;
 }
 
 .mwe-pt-info-creation-date {
-	font-weight: bold;
-	position: absolute;
-	right: 0;
-	top: 0;
 }
 
 .mwe-pt-info-problem {
