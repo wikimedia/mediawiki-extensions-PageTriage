@@ -15,6 +15,9 @@ $( function() {
 	// array of tool instances
 	var tools;
 
+	// token for setting user options
+	var optionsToken = '';
+
 	// overall toolbar view
 	// currently, this is the main application view.
 	mw.pageTriage.ToolbarView = Backbone.View.extend( {
@@ -76,19 +79,14 @@ $( function() {
 				cancel: '.mwe-pt-tool-content'
 			} );
 
-			var $activeToolbar = $( '#mwe-pt-toolbar-active' );
-			var $inactiveToolbar = $( '#mwe-pt-toolbar-inactive' );
-			
 			// make the minimize button do something
 			$( '.mwe-pt-toolbar-minimize-button').click( function() {
-				// close any open tools.
-				eventBus.trigger( 'showTool', this );				
-				$activeToolbar.css('display', 'none' );
-				$inactiveToolbar.css( 'display', 'block' );
-				$( '#mwe-pt-toolbar' ).css( 'left', 'auto' ).css( 'right', '0' );
-				
-				// this is a block element and will scale as wide as possible unless constrained
-				$( '#mwe-pt-toolbar' ).removeClass( 'mwe-pt-toolbar-big' ).addClass( 'mwe-pt-toolbar-small' );
+				_this.minimize();
+			} );
+
+			// make clicking on the minimized toolbar expand to normal size
+			$( '#mwe-pt-toolbar-vertical' ).click( function() {
+				_this.maximize();
 			} );
 
 			// make the close button do something
@@ -96,26 +94,94 @@ $( function() {
 				// hide everything
 				$( '#mwe-pt-toolbar' ).hide();
 				// reset the curation toolbar to original state
-				$inactiveToolbar.css( 'display', 'none' );
-				$activeToolbar.css( 'display', 'block' );
+				$( '#mwe-pt-toolbar-inactive' ).css( 'display', 'none' );
+				$( '#mwe-pt-toolbar-active' ).css( 'display', 'block' );
 				$( '#mwe-pt-toolbar' ).removeClass( 'mwe-pt-toolbar-small' ).addClass( 'mwe-pt-toolbar-big' );
+				_this.setToolbarPreference( 'maximized' );
 				// insert link to reopen into the toolbox (if it doesn't already exist)
 				if ( $( '#t-curationtoolbar' ).length === 0 ) {
 					_this.insertLink();
 				}
 			} );
 
-			// set up the reopen event
-			$( '#mwe-pt-toolbar-vertical' ).click( function() {
-				$inactiveToolbar.css( 'display', 'none' );
-				$activeToolbar.css( 'display', 'block' );
-				$( '#mwe-pt-toolbar' )
-				.css( 'left', 'auto' )
-				.css( 'right', '0' )
-				.removeClass( 'mwe-pt-toolbar-small' )
-				.addClass( 'mwe-pt-toolbar-big' );
-			} );
+			// If the user has a preference set to have the curation toolbar
+			// minimized, go ahead and minimize it.
+			if ( mw.user.options.get( 'curationtoolbar' ) === 'minimized' ) {
+				this.minimize();
+			}
 			
+		},
+
+		minimize: function () {
+			// close any open tools by triggering showTool with empty tool param
+			eventBus.trigger( 'showTool', '' );
+			// hide the regular toolbar content
+			$( '#mwe-pt-toolbar-active' ).hide();
+			// show the minimized toolbar content
+			$( '#mwe-pt-toolbar-inactive' ).show();
+			// switch to smaller size
+			$( '#mwe-pt-toolbar' ).removeClass( 'mwe-pt-toolbar-big' ).addClass( 'mwe-pt-toolbar-small' )
+				// dock to the side of the screen
+				.css( 'left', 'auto' ).css( 'right', '0' );
+			// set a pref for the user so the minimize state is remembered
+			this.setToolbarPreference( 'minimized' );
+		},
+		
+		maximize: function () {
+			// hide the minimized toolbar content
+			$( '#mwe-pt-toolbar-inactive' ).hide();
+			// show the regular toolbar content
+			$( '#mwe-pt-toolbar-active' ).show();
+			// switch to larger size
+			$( '#mwe-pt-toolbar' ).removeClass( 'mwe-pt-toolbar-small' ).addClass( 'mwe-pt-toolbar-big' )
+				// reset alignment to the side of the screen (since the toolbar is wider now)
+				.css( 'left', 'auto' ).css( 'right', '0' );
+			// set a pref for the user so the minimize state is remembered
+			this.setToolbarPreference( 'maximized' );
+		},
+		
+		setToolbarPreference: function( state ) {
+			// if we have a token, go ahead and use it
+			if ( this.optionsToken ) {
+				this.finishSetToolbarPreference( state );
+			// otherwise request an options token first
+			} else {
+				var _this = this;
+				var tokenRequest = {
+					'action': 'tokens',
+					'type' : 'options',
+					'format': 'json'
+				};
+				$.ajax( {
+					type: 'get',
+					url: mw.util.wikiScript( 'api' ),
+					data: tokenRequest,
+					dataType: 'json',
+					success: function( data ) {
+						try {
+							_this.optionsToken = data.tokens.optionstoken;
+						} catch ( e ) {
+							throw new Error( 'Could not get token (requires MediaWiki 1.20).' );
+						}
+						_this.finishSetToolbarPreference( state );
+					}
+				} );
+			}
+		},
+
+		finishSetToolbarPreference: function( state ) {
+			var prefRequest = {
+				'action': 'options',
+				'change': 'curationtoolbar=' + state,
+				'token': this.optionsToken,
+				'format': 'json'
+			};
+			$.ajax( {
+				type: 'post',
+				url: mw.util.wikiScript( 'api' ),
+				data: prefRequest,
+				dataType: 'json'
+			} );
 		},
 
 		insertLink: function () {
