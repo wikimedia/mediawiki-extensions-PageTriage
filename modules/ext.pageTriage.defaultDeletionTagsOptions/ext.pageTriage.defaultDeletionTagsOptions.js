@@ -299,7 +299,7 @@ $.pageTriageDeletionTagsOptions = {
 			}
 		},
 
-		'prod': {
+		'proposeddeletion': {
 			label: mw.msg( 'pagetriage-del-tags-cat-prod-label' ),
 			desc: mw.msg( 'pagetriage-del-tags-cat-prod-desc' ),
 			multiple: false,
