@@ -22,7 +22,14 @@ var param = {
 		input: 'required',
 		type: 'text',
 		value: ''
-	}
+	},
+
+	'pagename': {
+		label: '',
+		input: 'automated',
+		type: 'hidden',
+		value: mw.config.get('wgPageName')
+        }
 };
 
 var tags = {
@@ -261,8 +268,10 @@ $.pageTriageDeletionTagsOptions = {
 							label: mw.msg( 'pagetriage-del-tags-param-discussion-label' ),
 							input: 'required',
 							type: 'textarea',
-							value: ''
-						}
+							value: '',
+							skip: true // don't use this param in the main template
+						},
+						'2': $.extend( true, {}, param.pagename )
 					},
 					talkpagenotiftpl: 'AfD-notice-NPF',
 					subst: true

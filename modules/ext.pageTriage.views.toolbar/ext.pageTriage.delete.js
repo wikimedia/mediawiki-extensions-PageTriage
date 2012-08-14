@@ -29,9 +29,8 @@ $( function() {
 	var specialDeletionTagging = {
 		afd: {
 			buildDiscussionRequest: function( reason, data ) {
-				data.text = "{{subst:afd2|text=" + reason + " ~~~~|pg=" + mw.config.get('wgPageName') + "}}\n";
+				data.appendtext = "{{subst:afd2|text=" + reason + " ~~~~|pg=" + mw.config.get('wgPageName') + "}}\n";
 				data.summary = "Creating deletion discussion page for [[" + mw.config.get('wgPageName') + "]].";
-				data.createonly = true;
 			},
 
 			buildLogRequest: function( oldText, reason, tagObj, data) {
@@ -85,7 +84,7 @@ $( function() {
 
 		mfd: {
 			buildDiscussionRequest: function( reason, data ) {
-				data.text = "{{subst:mfd2|text=" + reason + " ~~~~|pg=" + mw.config.get('wgPageName') + "}}\n";
+				data.appendtext = "{{subst:mfd2|text=" + reason + " ~~~~|pg=" + mw.config.get('wgPageName') + "}}\n";
 				data.summary = "Creating deletion discussion page for [[" + mw.config.get('wgPageName') + "]].";
 			},
 
@@ -491,8 +490,18 @@ $( function() {
 		buildParams: function( obj ) {
 			var paramVal = '';
 			for ( var param in obj.params ) {
+				// this param should be skipped and not be added to tag
+				if ( obj.params[param].skip ) {
+					continue;       
+				}
 				if ( obj.params[param].value ) {
-					paramVal += '|' + param + '=' + obj.params[param].value;
+					// integer parameter
+					if ( !isNaN( parseInt( param ) ) ) {
+						paramVal += '|' + obj.params[param].value;
+					} else {
+						paramVal += '|' + param + '=' + obj.params[param].value;
+					}
+					
 				}
 			}
 			return paramVal;
@@ -713,14 +722,18 @@ $( function() {
 				return;
 			}
 
-			specialDeletionTagging[tagObj.tag].buildDiscussionRequest( title, tagObj.params['1'].value, data  );
+			specialDeletionTagging[tagObj.tag].buildDiscussionRequest( tagObj.params['1'].value, data  );
 
 			$.ajax( {
 				type: 'post',
 				url: mw.util.wikiScript( 'api' ),
 				data: data,
 				success: function( data ) {
-					_this.tagPage();
+					if ( data.error ) {
+						_this.handleError( 'pagetriage-del-discussion-page-adding-error' );
+					} else {
+						_this.tagPage();
+					}
 				},
 				dataType: 'json'
 			} );

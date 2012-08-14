@@ -369,9 +369,6 @@ $wgPageTriageDeletionTagsOptionsMessages = array (
 	'pagetriage-del-tags-articlefordeletion-label',
 	'pagetriage-del-tags-redirectsfordiscussion-label',
 	'pagetriage-del-tags-miscellanyfordeletion-label',
-	'pagetriage-del-log-page-missing-error',
-	'pagetriage-del-log-page-adding-error',
-	'pagetriage-del-talk-page-notify-error',
 	'pagetriage-tags-param-article-label',
 	'pagetriage-tags-param-url-label',
 	'pagetriage-tags-param-source-label',
@@ -639,7 +636,11 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-characters-left',
 		'pagetriage-personal-default-note',
 		'pagetriage-special-contributions',
-		'pagetriage-tagging-error'
+		'pagetriage-tagging-error',
+		'pagetriage-del-log-page-missing-error',
+		'pagetriage-del-log-page-adding-error',
+		'pagetriage-del-talk-page-notify-error',
+		'pagetriage-del-discussion-page-adding-error',
 	)
 );
 
