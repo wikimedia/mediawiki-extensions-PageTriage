@@ -61,10 +61,11 @@ $( function() {
 		},
 
 		talkPageNote: function( note, action ) {
-			var _this = this, title = new mw.Title( this.model.get( 'user_name' ), mw.config.get( 'wgNamespaceIds' )['user_talk'] );
+			var _this = this, title = new mw.Title( this.model.get( 'user_name' ), mw.config.get( 'wgNamespaceIds' )['user_talk'] ),
+			curPage = new mw.Title(  mw.config.get( 'wgPageName' ), mw.config.get( 'wgNamespaceNumber' ) );
 
-			note = '{{' + mw.config.get( 'wgTalkPageNoteTemplate' )['Mark']
-				+ '|' + mw.config.get( 'wgPageName' )
+			note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' )['Mark']
+				+ '|' + curPage.getPrefixedText()
 				+ '|' + mw.config.get( 'wgUserName' )
 				+ '|' + note + '}}';
 
