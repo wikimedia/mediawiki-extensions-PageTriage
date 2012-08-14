@@ -20,7 +20,10 @@ $( function() {
 			// build a link for the history page
 			var url = document.location.pathname;
 			var mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
-			this.model.set('history_link', url + mark + 'action=history' );
+			this.model.set( 'history_link', url + mark + 'action=history' );
+			if ( this.model.get( 'user_name' ) ) {
+				this.model.set( 'user_contribs_title', new mw.Title( gM( 'pagetriage-special-contributions' ) + '/' + this.model.get( 'user_name' ) ) );
+			}
 
 			this.$tel.html( this.template( this.model.toJSON() ) );
 			var history = new mw.pageTriage.ArticleInfoHistoryView( { eventBus: this.eventBus, model: this.model.revisions } );

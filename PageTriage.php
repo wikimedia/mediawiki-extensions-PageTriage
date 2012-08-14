@@ -637,7 +637,8 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'comma-separator',
 		'pagetriage-add-a-note',
 		'pagetriage-characters-left',
-		'pagetriage-personal-default-note'
+		'pagetriage-personal-default-note',
+		'pagetriage-special-contributions'
 	)
 );
 
