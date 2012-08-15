@@ -26,15 +26,16 @@
 				<%= gM( "pagetriage-bytes", page_len ) %>
 				&#xb7;
 				<%= gM( "pagetriage-edits", rev_count ) %>
-				&#xb7;
 				<% if( category_count == "0" ) { %>
-					<span class="mwe-pt-metadata-warning"><%= gM( "pagetriage-no-categories" ) %></span>
-					<% } else { %>
-						<%= gM( "pagetriage-categories", category_count ) %>
+					<% if( is_redirect == "0" ) { %>
+						&#xb7; <span class="mwe-pt-metadata-warning"><%= gM( "pagetriage-no-categories" ) %></span>
 					<% } %>
-					<% if( linkcount == "0" ) { %>
-						&#xb7; <span class="mwe-pt-metadata-warning"><%= gM("pagetriage-orphan") %></span>
-					<% } %>
+				<% } else { %>
+					&#xb7; <%= gM( "pagetriage-categories", category_count ) %>
+				<% } %>
+				<% if( linkcount == "0" && is_redirect == "0" ) { %>
+					&#xb7; <span class="mwe-pt-metadata-warning"><%= gM("pagetriage-orphan") %></span>
+				<% } %>
 			</span>
 		</div>
 		<div class="mwe-pt-author">

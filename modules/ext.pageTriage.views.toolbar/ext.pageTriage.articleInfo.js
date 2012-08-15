@@ -57,19 +57,19 @@ $( function() {
 				problems += this.formatProblem( 'non-autoconfirmed' );
 			}
 			*/
-			if( this.model.get('user_block_status') == 1 ) {
+			if ( this.model.get( 'user_block_status' ) == 1 ) {
 				this.problemCount++;
 				problems += this.formatProblem( 'blocked' );
 			}
-			if( this.model.get('category_count') < 1 ) {
+			if(  this.model.get( 'category_count' ) < 1 && this.model.get( 'is_redirect' ) == 0 ) {
 				this.problemCount++;
 				problems += this.formatProblem( 'no-categories' );
 			}
-			if( this.model.get('linkcount') < 1 ) {
+			if ( this.model.get( 'linkcount' ) < 1 && this.model.get( 'is_redirect' ) == 0 ) {
 				this.problemCount++;
 				problems += this.formatProblem( 'orphan' );
 			}
-			if( this.model.get('rev_count') < 1 ) {
+			if ( this.model.get( 'rev_count' ) < 1 ) {
 				this.problemCount++;
 				problems += this.formatProblem( 'no-references' );
 			}
