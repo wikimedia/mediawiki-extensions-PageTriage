@@ -158,12 +158,14 @@ $( function() {
 			article.set( 'position', this.position );
 			// pass in the specific article instance
 			var view = new mw.pageTriage.ListItem( { eventBus: this.eventBus, model: article } );
-			$( "#mwe-pt-list-view" ).append( view.render().el );
-			$( ".mwe-pt-list-triage-button" ).button({
-				label: mw.msg( 'pagetriage-triage' ),
-				icons: { secondary:'ui-icon-triangle-1-e' },
-				disabled: ( mw.config.get( 'wgPageTriageEnableReviewButton' ) ? false : true )
-			});
+			var pageInfo = view.render().el;
+			$( '#mwe-pt-list-view' ).append( pageInfo );
+			if ( mw.config.get( 'wgPageTriageEnableReviewButton' ) ) {
+				$( pageInfo ).find( '.mwe-pt-list-triage-button' ).show().button({
+					label: mw.msg( 'pagetriage-triage' ),
+					icons: { secondary:'ui-icon-triangle-1-e' }
+				});
+			}
 		},
 
 		// add all the items in the articles collection
