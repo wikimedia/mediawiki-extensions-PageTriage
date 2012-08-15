@@ -18,7 +18,7 @@ var param = {
 	},
 
 	'for': {
-		label: mw.msg( 'pagetriage-tags-param-issues-label' ),
+		label: mw.msg( 'pagetriage-tags-param-for-label' ),
 		input: 'optional',
 		type: 'textarea',
 		value: ''
@@ -55,11 +55,7 @@ var param = {
 	'free': {
 		label: mw.msg( 'pagetriage-tags-param-free-label' ),
 		input: 'optional',
-		type: 'select',
-		option: {
-			'Yes': mw.msg( 'pagetriage-tags-param-free-yes-label' ),
-			'No': mw.msg( 'pagetriage-tags-param-free-no-label' )
-		},
+		type: 'checkbox',
 		value: ''
 	},
 
