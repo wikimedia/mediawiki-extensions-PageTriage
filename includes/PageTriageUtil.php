@@ -239,18 +239,31 @@ class PageTriageUtil {
 
 		foreach ( $users as $user ) {
 			$user = (array) $user;
-			$data = $wgMemc->get( self::userStatusKey( $user['user_name'] ) );
-			if ( $data !== false ) {
-				foreach ( $data as $pageKey => $status ) {
-					if ( $status === 1 ) {
-						$return[$pageKey] = $status;
-					}
+			$searchKey = array( 'user_name', 'reviewer' );
+
+			foreach ( $searchKey as $val ) {
+				if ( !isset( $user[$val] ) || !$user[$val] ) {
+					continue;
 				}
-			} else {
-				$u = Title::newFromText( $user['user_name'], NS_USER );
-				if ( $u ) {
-					$t = Title::makeTitle( NS_USER_TALK, $u->getDBkey() );
-					$title[$u->getDBkey()] = array( 'user_name' => $user['user_name'], 'u' => $u, 't' => $t );
+				$data = $wgMemc->get( self::userStatusKey( $user[$val] ) );
+				// data is in memcache
+				if ( $data !== false ) {
+					foreach ( $data as $pageKey => $status ) {
+						if ( $status === 1 ) {
+							$return[$pageKey] = $status;
+						}
+					}
+				// data is not in memcache and will be checked against database
+				} else {
+					$u = Title::newFromText( $user[$val], NS_USER );
+					if ( $u ) {
+						if ( isset( $title[$u->getDBkey()] ) ) {
+							continue;
+						}
+						$t = Title::makeTitle( NS_USER_TALK, $u->getDBkey() );
+						// store the data in $title, 'u' is for user page, 't' is for talk page
+						$title[$u->getDBkey()] = array( 'user_name' => $user[$val], 'u' => $u, 't' => $t );
+					}
 				}
 			}
 		}
@@ -265,6 +278,7 @@ class PageTriageUtil {
 			);
 
 			$dataToCache = array();
+			// if there is result from the database, that means the page exists, set it to the cache array with value 1
 			foreach ( $res as $row ) {
 				$user = $title[$row->page_title];
 				if ( $row->page_namespace == NS_USER ) {
@@ -273,7 +287,8 @@ class PageTriageUtil {
 					$dataToCache[$user['user_name']][$user['t']->getPrefixedDBkey()] = 1;
 				}
 			}
-
+			// Loop through the original $title array, set the data not in db result with value 0
+			// then save the cache value to memcache for next time use
 			foreach ( $title as $key => $value ) {
 				if ( !isset( $dataToCache[$value['user_name']][$value['u']->getPrefixedDBkey()] ) ) {
 					$dataToCache[$value['user_name']][$value['u']->getPrefixedDBkey()] = 0;

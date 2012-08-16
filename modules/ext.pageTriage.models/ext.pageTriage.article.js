@@ -31,72 +31,36 @@ $( function() {
 			// sometimes user info isn't set, so check that first.
 			if( article.get( 'user_creation_date' ) ) {
 				var user_creation_date_parsed = Date.parseExact( article.get( 'user_creation_date' ), 'yyyyMMddHHmmss' );
-				article.set( 'user_creation_date_pretty', user_creation_date_parsed.toString( gM( 'pagetriage-user-creation-dateformat' ) ) );
+				article.set( 'user_creation_date_pretty', user_creation_date_parsed.toString( gM( 'pagetriage-info-timestamp-date-format' ) ) );
 			} else {
 				article.set( 'user_creation_date_pretty', '');
 			}
 
-			var userName = article.get( 'user_name' );
 			// TODO: What if userName doesn't exist?
-			if( userName ) {
-				var userTitle = new mw.Title( userName, mw.config.get('wgNamespaceIds')['user'] );
-				var userTalkTitle = new mw.Title( userName, mw.config.get('wgNamespaceIds')['user_talk'] );
-				var userContribsTitle = new mw.Title( mw.msg( 'pagetriage-special-contributions' ) + '/' + userName );
-
-				var userLinkClass = userTitle.exists() ? '' : 'new';
-				var userTalkLinkClass = userTalkTitle.exists() ? '' : 'new';
+			if( article.get( 'user_name' ) ) {
+				var info = this.userInfo( article.get( 'user_name' ) );
 
 				// decide which byline message to use depending on if the editor is new or not
-				if ( article.get( 'user_autoconfirmed' ) > 0 ) {
-					var bylineMessage = 'pagetriage-byline';
-				} else {
+				// but don't show new editor for ip users
+				if ( article.get( 'user_id' ) > '0' && article.get( 'user_autoconfirmed' ) < '1' ) {
 					var bylineMessage = 'pagetriage-byline-new-editor';
+				} else {
+					var bylineMessage = 'pagetriage-byline';
 				}
-
-				// build the user page link
-				var userPageLink = mw.html.element(
-					'a',
-					{
-						'href': this.buildRedLink( userTitle ),
-						'class': userLinkClass
-					},
-					userName
-				);
-
-				// build the user talk page link
-				var userTalkPageLink = mw.html.element(
-					'a',
-					{
-						'href': this.buildRedLink( userTalkTitle ),
-						'class': userTalkLinkClass
-					},
-					mw.msg( 'sp-contributions-talk' )
-				);
-
-				// build the user contribs link
-				var userContribsLink = mw.html.element(
-					'a',
-					{
-						'href': userContribsTitle.getUrl()
-					},
-					mw.msg( 'contribslink' )
-				);
 
 				// put it all together in the byline
 				var byline = mw.msg(
 					bylineMessage,
-					userPageLink,
-					userTalkPageLink,
+					info.userPageLink,
+					info.userTalkPageLink,
 					mw.msg( 'pipe-separator' ),
-					userContribsLink
+					info.userContribsLink
 				);
 
 				article.set( 'author_byline', byline );
-				article.set( 'user_title_url', this.buildRedLink( userTitle ) );
-				article.set( 'user_talk_title_url', this.buildRedLink( userTalkTitle ) );
-				article.set( 'user_contribs_title', new mw.Title( gM( 'pagetriage-special-contributions' ) + '/' + userName ) );
-				article.set( 'userPageLinkClass', userTitle.exists() ? '' : 'class="new"' );
-				article.set( 'talkPageLinkClass', userTalkTitle.exists() ? '' : 'class="new"' );
+				article.set( 'user_title_url', this.buildRedLink( info.userTitle ) );
+				article.set( 'user_talk_title_url', this.buildRedLink( info.userTalkTitle ) );
+				article.set( 'user_contribs_title', info.userContribsTitle );
 			}
 			article.set( 'title_url_format', mw.util.wikiUrlencode( article.get( 'title' ) ) );
 
@@ -105,6 +69,52 @@ $( function() {
 				titleUrl = this.buildLink( titleUrl, 'redirect=no' );
 			}
 			article.set( 'title_url', titleUrl );
+		},
+
+		/**
+		 * Helper function that generates useful user data, this function will be accessed in
+		 * multiple places
+		 */
+		userInfo: function ( userName ) {
+			var info = {
+				userTitle: new mw.Title( userName, mw.config.get('wgNamespaceIds')['user'] ),
+				userTalkTitle: new mw.Title( userName, mw.config.get('wgNamespaceIds')['user_talk'] ),
+				userContribsTitle: new mw.Title( mw.msg( 'pagetriage-special-contributions' ) + '/' + userName )
+			};
+
+			userLinkClass = info.userTitle.exists() ? '' : 'new';
+			userTalkLinkClass = info.userTalkTitle.exists() ? '' : 'new';
+
+			// build the user page link
+			info.userPageLink = mw.html.element(
+				'a',
+				{
+					'href': this.buildRedLink( info.userTitle ),
+					'class': userLinkClass
+				},
+				userName
+			);
+
+			// build the user talk page link
+			info.userTalkPageLink = mw.html.element(
+				'a',
+				{
+					'href': this.buildRedLink( info.userTalkTitle ),
+					'class': userTalkLinkClass
+				},
+				mw.msg( 'sp-contributions-talk' )
+			);
+
+			// build the user contribs link
+			info.userContribsLink = mw.html.element(
+				'a',
+				{
+					'href': info.userContribsTitle.getUrl()
+				},
+				mw.msg( 'contribslink' )
+			);
+
+			return info;
 		},
 
 		buildRedLink: function ( title ) {

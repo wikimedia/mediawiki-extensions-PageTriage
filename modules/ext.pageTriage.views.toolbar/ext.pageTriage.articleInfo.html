@@ -1,57 +1,42 @@
 <!-- basic article information -->
 <div class="mwe-pt-info-basic">
 	<!-- status icon -->
-	<% if ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) { %>
-			<div class="mwe-pt-info-status-icon">
-				<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_marked_for_deletion.png' %>" width="21" height="21" title="<%= gM( "pagetriage-note-deletion" ) %>" />
-			</div>
-	<% } else if ( patrol_status != "0" ) { %>
-			<div class="mwe-pt-info-status-icon">
-				<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_reviewed.png' %>" width="21" height="21" title="<%= gM( "pagetriage-note-reviewed" ) %>" />
-			</div>
-	<% } else { %>
-			<div class="mwe-pt-info-status-icon">
-				<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_not_reviewed.png' %>" width="21" height="21" title="<%= gM( "pagetriage-note-not-reviewed" ) %>" />
-			</div>
-	<% } %>
-
+	<div class="mwe-pt-info-status-icon">
+		<% if ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) { %>
+			<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_marked_for_deletion.png' %>" width="21" height="21" title="<%= gM( "pagetriage-note-deletion" ) %>" />
+		<% } else if ( patrol_status != "0" ) { %>
+			<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_reviewed.png' %>" width="21" height="21" title="<%= gM( "pagetriage-note-reviewed" ) %>" />
+		<% } else { %>
+			<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_not_reviewed.png' %>" width="21" height="21" title="<%= gM( "pagetriage-note-not-reviewed" ) %>" />
+		<% } %>
+	</div>
+	<!-- page status  -->
+	<div class="mwe-pt-info-page-status">
+		<%= pageStatus %>
+	</div>
 	<!-- author info -->
 	<span class="mwe-pt-author">
-	<% if( typeof( user_name ) != 'undefined' ) { %>
-		<%= author_byline %>
-		<span class="mwe-pt-author-info">
-			<!-- if user is registered (user_id is 0 for IP users) -->
-			<% if( typeof user_id != 'undefined' && Number( user_id ) !== 0 ) { %>
-				&#xb7;
-				<%= gM( 'pagetriage-editcount', user_editcount, user_creation_date_pretty ) %>
-			<% } %>
-			
-			<!-- if user is a bot -->
-			<% if( user_bot == "1" ) { %>
-				&#xb7;
-				<%= gM( 'pagetriage-author-bot' ) %>
-			<% } %>
-		</span>
-	<% } else { %>
-		<%= gM('pagetriage-no-author') %>
-	<% } %>
-	</span><br/>
-	<span class="mwe-pt-info-creation-date">
-		<%= creation_date_pretty %>
+		<% if( typeof( user_name ) != 'undefined' ) { %>
+			<%= articleByline %>
+			<div>
+				<!-- if user is registered (user_id is 0 for IP users) -->
+				<% if( typeof user_id != 'undefined' && Number( user_id ) !== 0 ) { %>
+					<%= gM( 'pagetriage-editcount', user_editcount, user_creation_date_pretty ) %>
+				<% } %>
+			</div>
+		<% } else { %>
+			<%= gM('pagetriage-no-author') %>
+		<% } %>
 	</span>
+	<div class="mew-pt-info-stat">
+		<%= articleStat %>
+	</div>
 </div>
 <br/>
 
 <!-- possible problems section -->
 <div class="mwe-pt-info-header">	
 	<%= gM( 'pagetriage-info-problem-header' ) %>
-	<!--
-	<span class="mwe-pt-info-header-details">
-		<a href="<%= mw.config.get( 'wgPageTriageToolbarInfoHelpLink' ) %>">
-		<%= gM( 'pagetriage-info-help' ) %>
-		</a>
-	</span>
-	-->
 </div>
 <div class="mwe-pt-info-content">
 	<% if ( problems ) { %>

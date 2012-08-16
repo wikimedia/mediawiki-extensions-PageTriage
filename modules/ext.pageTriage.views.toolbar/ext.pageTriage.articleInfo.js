@@ -16,22 +16,79 @@ $( function() {
 		render: function() {
 			var _this = this;
 			this.enumerateProblems();
+			// set the history link
+			this.model.set(
+				'history_link',
+				this.model.buildLink(
+					mw.config.get( 'wgArticlePath' ).replace( '$1', mw.config.get( 'wgPageName' ) ),
+					'action=history'
+				)
+			);
 
-			// build a link for the history page
-			var url = document.location.pathname;
-			var mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
-			this.model.set( 'history_link', url + mark + 'action=history' );
-			if ( this.model.get( 'user_name' ) ) {
-				this.model.set( 'user_contribs_title', new mw.Title( gM( 'pagetriage-special-contributions' ) + '/' + this.model.get( 'user_name' ) ) );
+			// show delete status
+			if ( this.model.get( 'afd_status' ) == "1" || this.model.get( 'blp_prod_status' ) == "1" ||
+				this.model.get( 'csd_status' ) == "1" || this.model.get( 'prod_status' ) == "1" )
+			{
+				this.model.set( 'pageStatus', mw.msg( 'pagetriage-page-status-delete' ) );
+			// show unreviewed status
+			} else if ( this.model.get( 'patrol_status' ) == "0" ) {
+				this.model.set( 'pageStatus', mw.msg( 'pagetriage-page-status-unreviewed' ) );
+			// show reviewed status
+			} else {
+				if ( this.model.get( 'ptrp_last_reviewed_by' ) != 0 && this.model.get( 'reviewer' ) ) {
+					var reviewerInfo = this.model.userInfo( this.model.get( 'reviewer' ) );
+					this.model.set(
+						'pageStatus',
+						mw.msg(
+							'pagetriage-page-status-reviewed',
+							Date.parseExact( this.model.get( 'ptrp_reviewed_updated' ), 'yyyyMMddHHmmss' ).toString( gM( 'pagetriage-info-timestamp-date-format' ) ),
+							reviewerInfo.userPageLink,
+							reviewerInfo.userTalkPageLink,
+							mw.msg( 'pipe-separator' ),
+							reviewerInfo.userContribsLink
+						)
+					);
+				} else {
+					this.model.set( 'pageStatus', mw.msg( 'pagetriage-page-status-reviewed-anonymous' ) );
+				}
 			}
+
+			// creator information
+			if (  this.model.get( 'user_name' ) ) {
+				var info = this.model.userInfo( this.model.get( 'user_name' ) );
+
+				// show new editor message only if the user is not anonymous and not autoconfirmed
+				if ( this.model.get( 'user_id' ) > '0' && this.model.get( 'user_autoconfirmed' ) == '0' ) {
+					var bylineMessage = 'pagetriage-articleinfo-byline-new-editor';
+				} else {
+					var bylineMessage = 'pagetriage-articleinfo-byline';
+				}
+
+				// put it all together in the byline
+				var articleByline = mw.msg(
+					bylineMessage,
+					Date.parseExact( this.model.get( 'creation_date' ), 'yyyyMMddHHmmss' ).toString( gM( 'pagetriage-info-timestamp-date-format' ) ),
+					info.userPageLink,
+					info.userTalkPageLink,
+					mw.msg( 'pipe-separator' ),
+					info.userContribsLink
+				);
+				this.model.set( 'articleByline', articleByline );
+			}
+
+			var stats = [
+				gM( "pagetriage-bytes", this.model.get( 'page_len' ) ),
+				gM( "pagetriage-edits", this.model.get( 'rev_count' ) ),
+				gM( "pagetriage-categories", this.model.get( 'category_count' ) )
+			];
+			this.model.set( 'articleStat', gM( 'pagetriage-articleinfo-stat', stats.join( gM( 'pagetriage-dot-separator' ) ) ) );
 
 			this.$tel.html( this.template( this.model.toJSON() ) );
 			var history = new mw.pageTriage.ArticleInfoHistoryView( { eventBus: this.eventBus, model: this.model.revisions } );
 			this.$tel.find( '#mwe-pt-info-history-container' ).append( history.render().$el );
 
 			// set the Learn More link URL
-			var modules = mw.config.get( 'wgPageTriageCurationModules' );
-			$( '#mwe-pt-info .mwe-pt-flyout-help-link' ).attr( 'href', modules.articleInfo.helplink );
+			$( '#mwe-pt-info .mwe-pt-flyout-help-link' ).attr( 'href', mw.config.get( 'wgPageTriageCurationModules' ).articleInfo );
 
 			// bind down here so it doesn't happen before the first render
 			this.model.unbind( 'change:patrol_status', function() { _this.render(); } );
@@ -51,12 +108,7 @@ $( function() {
 		enumerateProblems: function() {
 			this.problemCount = 0;
 			var problems = '';
-			/*
-			if( this.model.get('user_autoconfirmed') == 0 ) {
-				this.problemCount++;
-				problems += this.formatProblem( 'non-autoconfirmed' );
-			}
-			*/
+
 			if ( this.model.get( 'user_block_status' ) == 1 ) {
 				this.problemCount++;
 				problems += this.formatProblem( 'blocked' );

@@ -82,7 +82,7 @@ $wgPageTriageCurationModules = array(
 		'namespace' => array( NS_MAIN, NS_USER ),
 	),
 );
-$wgPageTriageCacheVersion = '1.0'; // version number to be added to cache key so that cache can be refreshed easily
+$wgPageTriageCacheVersion = '1.1'; // version number to be added to cache key so that cache can be refreshed easily
 $wgPageTriageNamespaces = array( NS_MAIN, NS_USER  ); // only include these namespaces for pagetriage
 $wgTalkPageNoteTemplate = array(
 	'Mark' => 'Reviewednote-NPF',
@@ -563,6 +563,7 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'sp-contributions-talk',
 		'contribslink',
 		'comma-separator',
+		'pagetriage-info-timestamp-date-format'
 	)
 );
 
@@ -608,6 +609,8 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-info-title',
 		'pagetriage-byline',
 		'pagetriage-byline-new-editor',
+		'pagetriage-articleinfo-byline',
+		'pagetriage-articleinfo-byline-new-editor',
 		'pipe-separator',
 		'pagetriage-edits',
 		'pagetriage-editcount',
@@ -662,6 +665,15 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-del-log-page-adding-error',
 		'pagetriage-del-talk-page-notify-error',
 		'pagetriage-del-discussion-page-adding-error',
+		'pagetriage-page-status-reviewed',
+		'pagetriage-page-status-reviewed-anonymous',
+		'pagetriage-page-status-unreviewed',
+		'pagetriage-page-status-delete',
+		'pagetriage-dot-separator',
+		'pagetriage-articleinfo-stat',
+		'pagetriage-bytes',
+		'pagetriage-edits',
+		'pagetriage-categories'
 	)
 );
 

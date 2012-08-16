@@ -146,8 +146,9 @@ class ArticleMetadata {
 					array(
 						'pagetriage_page_tags',
 						'pagetriage_tags',
+						'page',
 						'pagetriage_page',
-						'page'
+						'user'
 					),
 					array(
 						'ptrpt_page_id',
@@ -157,7 +158,10 @@ class ArticleMetadata {
 						'ptrp_created',
 						'page_title',
 						'page_namespace',
-						'page_is_redirect'
+						'page_is_redirect',
+						'ptrp_last_reviewed_by',
+						'ptrp_reviewed_updated',
+						'reviewer' => 'user_name'
 					),
 					array(
 						'ptrpt_page_id' => $articles,
@@ -165,16 +169,21 @@ class ArticleMetadata {
 						'ptrpt_page_id = ptrp_page_id',
 						'page_id = ptrp_page_id'
 					),
-					__METHOD__
+					__METHOD__,
+					array(),
+					array( 'user' => array( 'LEFT JOIN', 'user_id = ptrp_last_reviewed_by' ) )
 			);
 
 			$pageData = array();
 			foreach ( $res as $row ) {
 				$pageData[$row->ptrpt_page_id][$row->ptrt_tag_name] = $row->ptrpt_value;
 				if ( !isset( $pageData[$row->ptrpt_page_id]['creation_date'] ) ) {
-					$pageData[$row->ptrpt_page_id]['creation_date'] = $row->ptrp_created;
+					$pageData[$row->ptrpt_page_id]['creation_date'] = wfTimestamp( TS_MW, $row->ptrp_created );
 					$pageData[$row->ptrpt_page_id]['patrol_status'] = $row->ptrp_reviewed;
 					$pageData[$row->ptrpt_page_id]['is_redirect'] = $row->page_is_redirect;
+					$pageData[$row->ptrpt_page_id]['ptrp_last_reviewed_by'] = $row->ptrp_last_reviewed_by;
+					$pageData[$row->ptrpt_page_id]['ptrp_reviewed_updated'] = wfTimestamp( TS_MW, $row->ptrp_reviewed_updated );
+					$pageData[$row->ptrpt_page_id]['reviewer'] = $row->reviewer;
 					$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 					if ( $title ) {
 						$pageData[$row->ptrpt_page_id]['title'] = $title->getPrefixedText();
@@ -597,7 +606,7 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 			$row = $this->db->selectRow( $table, array ( 'MIN(rev_timestamp) AS creation_date' ),
 						$conds, __METHOD__ );
 			if ( $row ) {
-				$this->metadata[$pageId]['creation_date'] = $row->creation_date;
+				$this->metadata[$pageId]['creation_date'] = wfTimestamp( TS_MW, $row->creation_date );
 				$this->processEstimatedCount( $pageId, $table, $conds, $maxNumToProcess = 100, 'rev_count' );
 				$count++;
 			}
@@ -609,13 +618,15 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 		}
 
 		$res = $this->db->select(
-				array ( 'page', 'pagetriage_page' ),
+				array ( 'page', 'pagetriage_page', 'user' ),
 				array (
 					'page_id', 'page_namespace', 'page_title', 'page_len',
-					'ptrp_reviewed', 'page_is_redirect'
+					'ptrp_reviewed', 'page_is_redirect', 'ptrp_last_reviewed_by', 'ptrp_reviewed_updated', 'user_name AS reviewer'
 				),
 				array ( 'page_id' => $this->mPageId, 'page_id = ptrp_page_id'),
-				__METHOD__
+				__METHOD__,
+				array (),
+				array ( 'user' => array( 'LEFT JOIN', 'user_id = ptrp_last_reviewed_by' ) )
 		);
 		foreach ( $res as $row ) {
 			if ( isset( $this->articles[$row->page_id] ) ) {
@@ -628,6 +639,9 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 			// just for saving into cache later
 			$this->metadata[$row->page_id]['patrol_status'] = $row->ptrp_reviewed;
 			$this->metadata[$row->page_id]['is_redirect'] = $row->page_is_redirect;
+			$this->metadata[$row->page_id]['ptrp_last_reviewed_by'] = $row->ptrp_last_reviewed_by;
+			$this->metadata[$row->page_id]['ptrp_reviewed_updated'] = wfTimestamp( TS_MW, $row->ptrp_reviewed_updated );
+			$this->metadata[$row->page_id]['reviewer'] = $row->reviewer;
 			if ( $title ) {
 				$this->metadata[$row->page_id]['title'] = $title->getPrefixedText();
 			}

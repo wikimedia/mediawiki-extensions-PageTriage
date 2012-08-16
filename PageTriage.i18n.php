@@ -15,6 +15,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'pagetriage' => 'Page Triage',
+	'pagetriage-dot-separator' => ' &#xb7; ',
 	'newpagesfeed' => 'New pages feed',
 	'pagetriage-desc' => 'Facilitates reviewing and approving new pages',
 	'pagetriage-pagecuration' => 'Page Curation',
@@ -36,6 +37,8 @@ $messages['en'] = array(
 	'pagetriage-no-author' => 'No author information present',
 	'pagetriage-byline' => 'Created by $1 ($2$3$4)',
 	'pagetriage-byline-new-editor' => 'Created by new editor $1 ($2$3$4)',
+	'pagetriage-articleinfo-byline' => 'This page was created on $1 by $2 ($3$4$5)',
+	'pagetriage-articleinfo-byline-new-editor' => 'This page was created on $1 by new editor $2 ($3$4$5)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|edit|edits}} since $2',
 	'pagetriage-author-not-autoconfirmed' => 'New editor',
 	'pagetriage-no-patrol-right' => 'You do not have the right to review this page',
@@ -102,6 +105,11 @@ $messages['en'] = array(
 	'pagetriage-add-a-note' => 'Add a message for the creator: (optional)',
 	'pagetriage-characters-left' => '{{PLURAL:$1|$1 char|$1 chars}} left',
 	'pagetriage-personal-default-note' => 'Write a helpful note for {{GENDER:$1|$1}}. It will be posted on their talk page.',
+	'pagetriage-page-status-reviewed' => 'Marked as reviewed on $1 by $2 ($3$4$5)',
+	'pagetriage-page-status-reviewed-anonymous' => 'Marked as reviewed',
+	'pagetriage-page-status-unreviewed' => 'This page is still unreviewed',
+	'pagetriage-page-status-delete' => 'Marked for deletion',
+	'pagetriage-articleinfo-stat' => 'Stats: $1',
 
 	 // Tags options section
 	'pagetriage-tags-title' => 'Add tags',
@@ -306,7 +314,7 @@ $messages['en'] = array(
 	'pagetriage-del-edit-summary' => 'Nominated page for deletion using $1',
 	'pagetriage-del-tags-param-discussion-label' => 'Please explain why this article should be deleted, and provide links to the relevant policies wherever possible',
 	'pagetriage-info-title' => 'Page info',
-	'pagetriage-info-problem-header' => 'Possible problems',
+	'pagetriage-info-problem-header' => 'Possible issues',
 	'pagetriage-info-history-header' => 'History',
 	'pagetriage-info-history-show-full' => 'show full history',
 	'pagetriage-info-help' => 'help',
@@ -355,6 +363,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'pagetriage' => 'The name of this application (Page Triage)',
+	'pagetriage-dot-separator' => 'The dot separator',
 	'newpagesfeed' => 'Title of a special page',
 	'pagetriage-desc' => '{{desc}}',
 	'pagetriage-pagecuration' => 'Alternative title of the extension/project. Should use title case.',
@@ -380,6 +389,8 @@ $messages['qqq'] = array(
 *$3 is a separator character.
 *$4 is a link to the author's contributions.",
 	'pagetriage-byline-new-editor' => "Text indicating the page author (for when the author is a new editor). $1 is a link to the author's user page, $2 is a link to the author's talk page, $3 is a separator character, $4 is a link to the author's contributions.",
+	'pagetriage-articleinfo-byline' => 'Text indicating the page author. $1 is the article creation date, $2 is a link to the author\'s user page, $3 is a link to the author\'s talk page, $4 is a separator character. $5 is a link to the author\'s contributions.',
+	'pagetriage-articleinfo-byline-new-editor' => 'Text indicating the page author (for when the author is a new editor). $1 is the article creation date, $2 is a link to the author\'s user page, $3 is a link to the author\'s talk page, $4 is a separator character, $5 is a link to the author\'s contributions.',
 	'pagetriage-editcount' => "Display of page author's editing experience. $1 is total edit count, $2 is author's join date",
 	'pagetriage-author-not-autoconfirmed' => 'String indicating that the author was not yet autoconfirmed when the page was last edited',
 	'pagetriage-no-patrol-right' => 'String indicating that a user does not have right to review a page',
@@ -449,6 +460,11 @@ If your language requires some words between the different parts of the timestam
 	'pagetriage-add-a-note' => 'Text for adding a personal note in curation toolbar',
 	'pagetriage-characters-left' => 'The text indicating the number of characters remaining for input',
 	'pagetriage-personal-default-note' => 'Default text in the text box for editors to add a "Mark as reviewed" or "Tagging" personal note, $1 is the name of the page creator',
+	'pagetriage-page-status-reviewed' => 'Text that shows the page has been reviewed and the reviewer of the page, $1 is the review date/time, $2 is the link to reviewer user page, $3 is the link to reviewer talk page, $4 is the link separator, $5 is the link to reviewer contribs page',
+	'pagetriage-page-status-reviewed-anonymous' => 'Text that shows the page has been reviewed', // some pages may not have reviewer information, this is for backward compatibility
+	'pagetriage-page-status-unreviewed' => 'Text that shows the page has not yet been reviewed',
+	'pagetriage-page-status-delete' => 'Text that shows the page has been marked for deletion',
+	'pagetriage-articleinfo-stat' => 'Article info flyout stat, $1 is a list of stats separated by pagetriage-dot-separator',
 	'pagetriage-tags-title' => 'The title for the tag wizard flyout in the toolbar',
 	'pagetriage-tags-cat-common-label' => 'Label for common category',
 	'pagetriage-tags-cat-metadata-label' => 'Label for metadata category',
