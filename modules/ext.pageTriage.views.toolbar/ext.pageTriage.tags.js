@@ -103,8 +103,9 @@ $( function() {
 				} else {
 					$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
 				}
-			} ).live( 'click', function(e) {
+			} ).live( 'focus', function(e) {
 				$( this ).val( '' );
+				$( this ).css( 'color', 'black' );
 				$( this ).unbind( e );
 			} ).change( function() {
 				_this.noteChanged = true;
