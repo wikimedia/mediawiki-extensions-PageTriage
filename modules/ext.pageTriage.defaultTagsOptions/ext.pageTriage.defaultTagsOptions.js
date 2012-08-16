@@ -158,7 +158,7 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'bottom',
+				position: 'top',
 				dest: 'sources',
 				multiple: false
 			}
