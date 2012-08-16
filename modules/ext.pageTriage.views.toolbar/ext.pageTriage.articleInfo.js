@@ -51,10 +51,12 @@ $( function() {
 		enumerateProblems: function() {
 			this.problemCount = 0;
 			var problems = '';
+			/*
 			if( this.model.get('user_autoconfirmed') == 0 ) {
 				this.problemCount++;
 				problems += this.formatProblem( 'non-autoconfirmed' );
 			}
+			*/
 			if( this.model.get('user_block_status') == 1 ) {
 				this.problemCount++;
 				problems += this.formatProblem( 'blocked' );

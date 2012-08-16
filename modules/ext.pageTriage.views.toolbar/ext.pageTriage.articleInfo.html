@@ -14,17 +14,12 @@
 				<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_not_reviewed.png' %>" width="21" height="21" title="<%= gM( "pagetriage-note-not-reviewed" ) %>" />
 			</div>
 	<% } %>
-	
+
 	<!-- author info -->
 	<span class="mwe-pt-author">
 	<% if( typeof( user_name ) != 'undefined' ) { %>
-		<%= gM( 'pagetriage-byline' ) %>
-		<a <%= userPageLinkClass %> href="<%= user_title_url %>"><%= mw.html.escape( user_name ) %></a>
-		<span class="mwe-pt-talk-contribs">
-			(<a <%= talkPageLinkClass %> href="<%= user_talk_title_url %>"><%= gM( 'talkpagelinktext' ) %></a>
-			&#xb7;
-			<a href="<%= user_contribs_title.getUrl() %>"><%= gM( 'contribslink' ) %></a>)
-			
+		<%= author_byline %>
+		<span class="mwe-pt-author-info">
 			<!-- if user is registered (user_id is 0 for IP users) -->
 			<% if( typeof user_id != 'undefined' && Number( user_id ) !== 0 ) { %>
 				&#xb7;
