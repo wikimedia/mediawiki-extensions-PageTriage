@@ -39,9 +39,59 @@ $( function() {
 			var userName = article.get( 'user_name' );
 			// TODO: What if userName doesn't exist?
 			if( userName ) {
-				var userTitle     = new mw.Title( userName, mw.config.get('wgNamespaceIds')['user'] );
+				var userTitle = new mw.Title( userName, mw.config.get('wgNamespaceIds')['user'] );
 				var userTalkTitle = new mw.Title( userName, mw.config.get('wgNamespaceIds')['user_talk'] );
+				var userContribsTitle = new mw.Title( mw.msg( 'pagetriage-special-contributions' ) + '/' + userName )
 
+				var userLinkClass = userTitle.exists() ? '' : 'new';
+				var userTalkLinkClass = userTalkTitle.exists() ? '' : 'new';
+
+				// decide which byline message to use depending on if the editor is new or not
+				if ( article.get( 'user_autoconfirmed' ) > 0 ) {
+					var bylineMessage = 'pagetriage-byline';
+				} else {
+					var bylineMessage = 'pagetriage-byline-new-editor';
+				}
+
+				// build the user page link
+				var userPageLink = mw.html.element(
+					'a',
+					{
+						'href': this.buildRedLink( userTitle ),
+						'class': userLinkClass
+					},
+					userName
+				);
+
+				// build the user talk page link
+				var userTalkPageLink = mw.html.element(
+					'a',
+					{
+						'href': this.buildRedLink( userTalkTitle ),
+						'class': userTalkLinkClass
+					},
+					mw.msg( 'sp-contributions-talk' )
+				);
+
+				// build the user contribs link
+				var userContribsLink = mw.html.element(
+					'a',
+					{
+						'href': userContribsTitle.getUrl()
+					},
+					mw.msg( 'contribslink' )
+				);
+
+				// put it all together in the byline
+				var byline = mw.msg(
+					bylineMessage,
+					userPageLink,
+					userTalkPageLink,
+					mw.msg( 'pipe-separator' ),
+					userContribsLink
+				);
+
+				article.set( 'author_byline', byline );
 				article.set( 'user_title_url', this.buildRedLink( userTitle ) );
 				article.set( 'user_talk_title_url', this.buildRedLink( userTalkTitle ) );
 				article.set( 'user_contribs_title', new mw.Title( gM( 'pagetriage-special-contributions' ) + '/' + userName ) );
