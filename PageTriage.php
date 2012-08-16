@@ -320,6 +320,7 @@ $wgPageTriageTagsOptionsMessages = array (
 	'pagetriage-tags-param-free-no-label',
 	'pagetriage-tags-param-missing-required',
 	'pagetriage-tags-param-date-format',
+	'pagetriage-tags-param-for-label',
 	'pagetriage-tags-tooltip',
 );
 
