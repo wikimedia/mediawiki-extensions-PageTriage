@@ -5,13 +5,25 @@ $( function() {
 		id: 'mwe-pt-mark',
 		icon: 'icon_mark_reviewed.png', // the default icon
 		title: gM( 'pagetriage-mark-as-reviewed' ),
-		tooltip: 'pagetriage-mark-tooltip',
+		tooltip: '',
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'mark.html' } ),
 		noteChanged: false,
 
 		initialize: function( options ) {
 			this.eventBus = options.eventBus;
 			this.model.on( 'change', this.setIcon, this );
+			this.model.on( 'change', this.changeTooltip, this );
+		},
+
+		changeTooltip: function() {
+			if ( this.model.get( 'patrol_status' ) > 0 ) {
+				this.tooltip = 'pagetriage-markunpatrolled';
+			} else {
+				this.tooltip = 'pagetriage-markpatrolled';
+			}
+			if ( this.$icon ) {
+				this.$icon.attr( 'title', mw.msg( this.tooltip ) );
+			}
 		},
 
 		// overwrite parent function
@@ -102,7 +114,7 @@ $( function() {
 
 		render: function() {
 			var _this = this, status = this.model.get( 'patrol_status' ) == "0" ? 'reviewed' : 'unreviewed', maxLength = 250;
-
+			this.changeTooltip();
 			// create the mark as reviewed flyout content here.
 			this.$tel.html( this.template( $.extend( this.model.toJSON(), { 'status': status, 'maxLength': maxLength, 'creator': this.model.get( 'user_name' ) } ) ) );
 
