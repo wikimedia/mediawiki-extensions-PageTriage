@@ -579,7 +579,8 @@ $( function() {
 					'pageid': mw.config.get( 'wgArticleId' ),
 					'token': mw.user.tokens.get('editToken'),
 					'format': 'json',
-					'top': text
+					'top': text,
+					'deletion': 1
 				},
 				success: function( data ) {
 					if ( data.pagetriagetagging.result === 'success' ) {

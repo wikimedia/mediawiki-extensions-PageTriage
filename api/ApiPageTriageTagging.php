@@ -3,7 +3,7 @@
 class ApiPageTriageTagging extends ApiBase {
 
 	public function execute() {
-		global $wgUser, $wgRequest;
+		global $wgUser, $wgRequest, $wgPageTriageProjectLink;
 
 		$params = $this->extractRequestParams();
 
@@ -33,6 +33,12 @@ class ApiPageTriageTagging extends ApiBase {
 		}
 
 		if ( $apiParams ) {
+			$projectLink = '[[' . $wgPageTriageProjectLink . '|' . wfMessage( 'pagetriage-pagecuration' )->plain() . ']]';
+			if ( $params['deletion'] ) {
+				$editSummary = wfMessage( 'pagetriage-del-edit-summary', $projectLink )->plain();
+			} else {
+				$editSummary = wfMessage( 'pagetriage-tags-edit-summary', $projectLink )->plain();
+			}
 			// Perform the text insertion
 			$api = new ApiMain(
 					new DerivativeRequest(
@@ -41,7 +47,7 @@ class ApiPageTriageTagging extends ApiBase {
 							'action'  => 'edit',
 							'title'   => $title->getFullText(),
 							'token'   => $params['token'],
-							'summary' => wfMessage( 'pagetriage-tags-edit-summary' )->plain(),
+							'summary' => $editSummary,
 						),
 						true
 					),
@@ -74,6 +80,10 @@ class ApiPageTriageTagging extends ApiBase {
 			),
 			'top' => null,
 			'bottom' => null,
+			'deletion' => array(
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_TYPE => 'boolean'
+			)
 		);
 	}
 
@@ -90,12 +100,13 @@ class ApiPageTriageTagging extends ApiBase {
 			'pageid' => 'The article for which to be tagged',
 			'token' => 'Edit token',
 			'top' => 'The tagging text to be added to the top of an article',
-			'bottom' => 'The tagging text to be added to the bottom of an article'
+			'bottom' => 'The tagging text to be added to the bottom of an article',
+			'deletion' => 'Whether or not the tagging is for a deletion nomination'
 		);
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': version 1.0';
+		return __CLASS__ . ': version 1.1';
 	}
 
 	public function getDescription() {
