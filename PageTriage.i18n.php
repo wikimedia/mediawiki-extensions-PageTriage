@@ -1189,7 +1189,7 @@ $messages['de'] = array(
 	'pagetriage-tags-verylong-label' => 'Sehr lang',
 	'pagetriage-tags-verylong-desc' => 'Diese Seite ist zu lang.',
 	'pagetriage-tags-closeparaphrasing-label' => 'Ähnliche Umschreibung',
-	'pagetriage-tags-closeparaphrasing-desc' => 'Diese Seite enthält Umschreibungen, die Inhalten urheberrechtlich geschützter Quellen sehr ähnlich sind.',
+	'pagetriage-tags-closeparaphrasing-desc' => 'Diese Seite enthält einer urheberrechtlich geschützten Quelle sehr ähnliche Formulierungen.',
 	'pagetriage-tags-copypaste-label' => 'Kopiert und eingefügt',
 	'pagetriage-tags-copypaste-desc' => 'Diese Seite wurde wahrscheinlich aus einer anderen Quelle kopiert und hier eingefügt.',
 	'pagetriage-tags-nonfree-label' => 'Urheberrechtlich geschützter Inhalt',
@@ -1275,7 +1275,7 @@ $messages['de'] = array(
 	'pagetriage-del-tags-dbu3-label' => 'Nicht-freie Galerien',
 	'pagetriage-del-tags-dbu3-desc' => 'Galerien im Benutzernamensraum, die mit „Fair use“- oder nichtfreien Bildern zum Großteil oder ganz übereinstimmen. Die Richtlinien über nichtfreien Inhalt der Wikipedia verbieten die Verwendung von nichtfreien Inhalten im Benutzernamensraum, auch Inhalte, die der Benutzer hochgeladen hat; die Verwendung von gemeinfreien Inhalten oder Inhalten mit freier Lizenz wird akzeptiert',
 	'pagetriage-del-tags-blpprod-label' => 'Vorgeschlagene Löschung (lebende Personen)',
-	'pagetriage-del-tags-blpprod-desc' => 'Ein Artikel über eine lebende Person, die keine zuverlässigen Quellangaben enthält.',
+	'pagetriage-del-tags-blpprod-desc' => 'Ein Artikel über eine lebende Person, der keine Quellangaben enthält.',
 	'pagetriage-del-tags-prod-label' => 'Löschantrag',
 	'pagetriage-del-tags-prod-desc' => 'Unumstrittene Löschungen, die keinen Schnelllöschkriterien entsprechen',
 	'pagetriage-del-tags-articlefordeletion-label' => 'Zu löschende Artikel',
@@ -2335,7 +2335,7 @@ $messages['gl'] = array(
 	'pagetriage-author-blocked' => 'Bloqueado',
 	'pagetriage-author-bot' => 'Bot',
 	'pagetriage-creation-dateformat' => 'd &#100;&#101; MMMM &#100;&#101; yyyy á&#115; HH:mm',
-	'pagetriage-user-creation-dateformat' => 'dd-MM-yyyy',
+	'pagetriage-user-creation-dateformat' => 'd &#100;&#101; MMMM &#100;&#101; yyyy',
 	'pagetriage-showing' => 'Mostrar:',
 	'pagetriage-filter-list-prompt' => 'Establecer os filtros',
 	'pagetriage-article-count' => 'Actualmente hai $1 {{PLURAL:$1|páxina|páxinas}} sen revisar',
@@ -2628,6 +2628,7 @@ $messages['gl'] = array(
 /** Hebrew (עברית)
  * @author Amire80
  * @author Inkbug
+ * @author Neukoln
  * @author ערן
  */
 $messages['he'] = array(
@@ -2751,12 +2752,12 @@ $messages['he'] = array(
 	'pagetriage-del-tags-dba3-label' => 'ללא תוכן',
 	'pagetriage-del-tags-dba3-desc' => 'כל ערך (שאינו דף פירושונים, הפניה או הפניה רכה) שמכיל רק קישורים חיצוניים, קטגוריות ופסקאות "ראו גם", ניסוח מחדש של הכותרת, ניסיונות לדבר עם האדם או הקבוצה בכותרת שלו, שאלה שהייתה צריכה להישאל בדלפק הייעוץ, הערות כמו הצ\'אט, תבניות או תמונות.',
 	'pagetriage-del-tags-dbu3-label' => 'גלריות לא-חופשית',
-	'pagetriage-del-tags-dbu3-desc' => 'גלריות של תמונות במרחב משתמש שמכילות תמונות ש"בימוש הוגן" של תמונות לא חופשיות. בוויקיפדיה אסור להשתמש בתוכן שאינו חופשי במרחב משתמש, גם אם המשתמש העלה אותו בעצמו; אפשר להשתמש בתוכן בנחלת הכלל או ברישיון חופשי.',
+	'pagetriage-del-tags-dbu3-desc' => 'גלריות של תמונות במרחב משתמש שמכילות תמונות לא חופשיות ב"שימוש הוגן". בוויקיפדיה אסור להשתמש בתוכן שאינו חופשי במרחב משתמש, גם אם המשתמש העלה אותו בעצמו; אפשר להשתמש בתוכן בנחלת הכלל או ברישיון חופשי.',
 	'pagetriage-del-log-page-missing-error' => 'דף היומן עבור היום עוד לא נוצר!',
 	'pagetriage-del-log-page-adding-error' => 'לא נמצא יעד לדיון',
 	'pagetriage-del-talk-page-notify-error' => 'שליחת הודעה לדף שיחת משתמש של המחבר לא הצליחה',
 	'pagetriage-del-tooltip' => 'הצעת הערך למחיקה',
-	'pagetriage-tagging-error' => 'הוספת תבניות לדף נכשל',
+	'pagetriage-tagging-error' => 'הוספת תבניות לדף נכשלה',
 	'pagetriage-tags-param-article-label' => 'ערך:',
 	'pagetriage-tags-param-date-label' => 'תאריך:',
 	'pagetriage-tags-param-issues-label' => 'בעיות לטיפול:',
