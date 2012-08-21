@@ -162,6 +162,7 @@ $( function() {
 	mw.pageTriage.ArticleList = Backbone.Collection.extend( {
 		moreToLoad: true,
 		model: mw.pageTriage.Article,
+		optionsToken: '',
 
 		apiParams: {
 			limit: 20,
@@ -185,10 +186,9 @@ $( function() {
 			this.eventBus = options.eventBus;
 			this.eventBus.bind( "filterSet", this.setParams );
 
-			// pull any saved filter settings from the user's cookies
-			var savedFilterSettings = $.cookie( 'NewPagesFeedFilterOptions' );
-			if ( savedFilterSettings ) {
-				this.setParams( $.parseJSON( savedFilterSettings ) );
+			// pull any saved filter settings from the user's option
+			if ( !mw.user.isAnon() && mw.user.options.get( 'NewPagesFeedFilterOptions' ) ) {
+				this.setParams( $.parseJSON( mw.user.options.get( 'NewPagesFeedFilterOptions' ) ) );
 			}
 		},
 
@@ -247,10 +247,49 @@ $( function() {
 			return encodedString;
 		},
 
-		// Save the filter parameters to a cookie
+		// Save the filter parameters to a user's option
 		saveFilterParams: function() {
-			var cookieString = this.encodeFilterParams();
-			$.cookie( 'NewPagesFeedFilterOptions', cookieString, { expires: 1 } );
+			var _this = this;
+			if ( !mw.user.isAnon() ) {
+				if ( this.optionsToken ) {
+					this.apiSetFilterParams();
+				} else {
+					var tokenRequest = {
+						'action': 'tokens',
+						'type' : 'options',
+						'format': 'json'
+					};
+					$.ajax( {
+						type: 'get',
+						url: mw.util.wikiScript( 'api' ),
+						data: tokenRequest,
+						dataType: 'json',
+						success: function( data ) {
+							try {
+								_this.optionsToken = data.tokens.optionstoken;
+							} catch ( e ) {
+								throw new Error( 'Could not get token (requires MediaWiki 1.20).' );
+							}
+							_this.apiSetFilterParams();
+						}
+					} );
+				}
+			}
+		},
+
+		apiSetFilterParams: function() {
+			var prefRequest = {
+				'action': 'options',
+				'change': 'NewPagesFeedFilterOptions=' + this.encodeFilterParams(),
+				'token': this.optionsToken,
+				'format': 'json'
+			};
+			$.ajax( {
+				type: 'post',
+				url: mw.util.wikiScript( 'api' ),
+				data: prefRequest,
+				dataType: 'json'
+			} );
 		},
 
 		getParam: function( key ) {
