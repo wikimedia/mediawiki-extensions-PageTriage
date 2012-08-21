@@ -583,7 +583,7 @@ $( function() {
 					'deletion': 1
 				},
 				success: function( data ) {
-					if ( data.pagetriagetagging.result === 'success' ) {
+					if ( data.pagetriagetagging && data.pagetriagetagging.result === 'success' ) {
 						_this.notifyUser( count, key );
 					} else {
 						_this.handleError( 'pagetriage-tagging-error' );
