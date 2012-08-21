@@ -15,13 +15,12 @@ $( function() {
 	// array of tool instances
 	var tools;
 
-	// token for setting user options
-	var optionsToken = '';
-
 	// overall toolbar view
 	// currently, this is the main application view.
 	mw.pageTriage.ToolbarView = Backbone.View.extend( {
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'toolbarView.html' } ),
+		// token for setting user options
+		optionsToken: '',
 
 		initialize: function() {
 			// An array of tool instances to put on the bar, ordered top-to-bottom
