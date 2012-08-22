@@ -60,11 +60,27 @@ $wgPageTriageProjectLink = 'Wikipedia:Page Curation';
 $wgPageTriageFeedbackUrl = '//en.wikipedia.org/wiki/Wikipedia_talk:Page_Curation';
 $wgPageTriageEnableCurationToolbar = true; // enable the curation toolbar?
 $wgPageTriageCurationModules = array(
-	'articleInfo' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#PageInfo',
-	'wikiLove' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#WikiLove', // depends on WikiLove extension
-	'mark' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#MarkReviewed',
-	'tags' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#AddTags',
-	'delete' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#MarkDeletion',
+	'articleInfo' => array(
+		'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#PageInfo',
+		'namespace' => array( NS_MAIN, NS_USER ),
+	),
+	'wikiLove' => array(
+		'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#WikiLove', // depends on WikiLove extension
+		'namespace' => array( NS_MAIN, NS_USER ),
+	),
+	'mark' => array(
+		'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#MarkReviewed',
+		'namespace' => array( NS_MAIN, NS_USER ),
+		'note' => array( NS_MAIN ),
+	),
+	'tags' => array(
+		'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#AddTags',
+		'namespace' => array( NS_MAIN ),
+	),
+	'delete' => array(
+		'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#MarkDeletion',
+		'namespace' => array( NS_MAIN, NS_USER ),
+	),
 );
 $wgPageTriageCacheVersion = '1.0'; // version number to be added to cache key so that cache can be refreshed easily
 $wgPageTriageNamespaces = array( NS_MAIN, NS_USER  ); // only include these namespaces for pagetriage

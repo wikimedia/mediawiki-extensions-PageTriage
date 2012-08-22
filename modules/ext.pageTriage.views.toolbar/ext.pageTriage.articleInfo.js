@@ -31,7 +31,7 @@ $( function() {
 
 			// set the Learn More link URL
 			var modules = mw.config.get( 'wgPageTriageCurationModules' );
-			$( '#mwe-pt-info .mwe-pt-flyout-help-link' ).attr( 'href', modules.articleInfo );
+			$( '#mwe-pt-info .mwe-pt-flyout-help-link' ).attr( 'href', modules.articleInfo.helplink );
 
 			// bind down here so it doesn't happen before the first render
 			this.model.unbind( 'change:patrol_status', function() { _this.render(); } );

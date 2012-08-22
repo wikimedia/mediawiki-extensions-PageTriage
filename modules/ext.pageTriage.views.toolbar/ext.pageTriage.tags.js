@@ -92,7 +92,7 @@ $( function() {
 
 			// set the Learn More link URL
 			var modules = mw.config.get( 'wgPageTriageCurationModules' );
-			$( '#mwe-pt-tag .mwe-pt-flyout-help-link' ).attr( 'href', modules.tags );
+			$( '#mwe-pt-tag .mwe-pt-flyout-help-link' ).attr( 'href', modules.tags.helplink );
 			$( '#mwe-pt-tag-note-input' ).keyup( function() {
 				var charLeft = _this.noteCharLeft();
 

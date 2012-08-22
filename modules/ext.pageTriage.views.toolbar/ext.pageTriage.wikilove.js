@@ -56,7 +56,7 @@ $( function() {
 
 			// set the Learn More link URL
 			var modules = mw.config.get( 'wgPageTriageCurationModules' );
-			$( '#mwe-pt-wikilove .mwe-pt-flyout-help-link' ).attr( 'href', modules.wikiLove );
+			$( '#mwe-pt-wikilove .mwe-pt-flyout-help-link' ).attr( 'href', modules.wikiLove.helplink );
 
 			if ( mw.user.name() !== creator ) {
 				// add the creator info to the top of the list
