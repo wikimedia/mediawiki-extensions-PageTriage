@@ -3,7 +3,7 @@
 class ApiPageTriageTagging extends ApiBase {
 
 	public function execute() {
-		global $wgUser, $wgRequest, $wgPageTriageProjectLink;
+		global $wgPageTriageProjectLink, $wgContLang;
 
 		$params = $this->extractRequestParams();
 
@@ -20,7 +20,7 @@ class ApiPageTriageTagging extends ApiBase {
 			$this->dieUsage( "You don't have permission to do that", 'permission-denied' );
 		}
 
-		if ( $wgUser->pingLimiter( 'pagetriage-tagging-action' ) ) {
+		if ( $this->getUser()->pingLimiter( 'pagetriage-tagging-action' ) ) {
 			$this->dieUsageMsg( array( 'actionthrottledtext' ) );
 		}
 
@@ -42,7 +42,7 @@ class ApiPageTriageTagging extends ApiBase {
 			// Perform the text insertion
 			$api = new ApiMain(
 					new DerivativeRequest(
-						$wgRequest,
+						$this->getRequest(),
 						$apiParams + array(
 							'action'  => 'edit',
 							'title'   => $title->getFullText(),
@@ -53,8 +53,38 @@ class ApiPageTriageTagging extends ApiBase {
 					),
 					true
 				);
-	
+
 			$api->execute();
+
+			// logging
+			if ( $params['taglist'] ) {
+				if ( $params['deletion'] ) {
+					$entry = array(
+						// We want delete tag to have its own log as well as be included under page curation log
+						// Todo: Find a way to filter log by action (subtype) so the deletion log can be removed
+						'pagetriage-curation' => 'delete',
+						'pagetriage-deletion' => 'delete'
+					);
+				} else {
+					$entry = array(
+						'pagetriage-curation' => 'tag'
+					);
+				}
+
+				foreach ( $entry as $type => $action ) {
+					$logEntry = new ManualLogEntry( $type, $action );
+					$logEntry->setPerformer( $this->getUser() );
+					$logEntry->setTarget( $article->getTitle() );
+					$note = $wgContLang->truncate( $params['note'], 150 );
+					if ( $note ) {
+						$logEntry->setComment( $note );
+					}
+					$logEntry->setParameters( array(
+						'4::tags' => explode( '|', $params['taglist'] ),
+					) );
+					$logEntry->publish( $logEntry->insert() );
+				}
+			}
 		}
 
 		$result = array( 'result' => 'success' );
@@ -83,7 +113,9 @@ class ApiPageTriageTagging extends ApiBase {
 			'deletion' => array(
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_TYPE => 'boolean'
-			)
+			),
+			'note' => null,
+			'taglist' => null,
 		);
 	}
 
@@ -101,7 +133,9 @@ class ApiPageTriageTagging extends ApiBase {
 			'token' => 'Edit token',
 			'top' => 'The tagging text to be added to the top of an article',
 			'bottom' => 'The tagging text to be added to the bottom of an article',
-			'deletion' => 'Whether or not the tagging is for a deletion nomination'
+			'deletion' => 'Whether or not the tagging is for a deletion nomination',
+			'note' => 'Personal note to page creators from reviewers',
+			'taglist' => 'Pipe-separated list of tags',
 		);
 	}
 

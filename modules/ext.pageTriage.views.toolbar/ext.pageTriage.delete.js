@@ -536,7 +536,7 @@ $( function() {
 		 * Add deletion tag template to the page
 		 */
 		tagPage: function() {
-			var text = '', tagText = '', paramsText = '', _this = this, tempTag = '',
+			var text = '', tagText = '', paramsText = '', _this = this, tempTag = '', tagList = [],
 			count = this.objectPropCount( this.selectedTag );
 
 			if ( count == 0 ) {
@@ -563,6 +563,7 @@ $( function() {
 				}
 				tagText += tempTag;
 				paramsText += this.buildParams( this.selectedTag[key] );
+				tagList.push( this.selectedTag[key].tag.toLowerCase() );
 			}
 
 			if ( count == 1 ) {
@@ -580,7 +581,8 @@ $( function() {
 					'token': mw.user.tokens.get('editToken'),
 					'format': 'json',
 					'top': text,
-					'deletion': 1
+					'deletion': 1,
+					'taglist': tagList.join( '|' )
 				},
 				success: function( data ) {
 					if ( data.pagetriagetagging && data.pagetriagetagging.result === 'success' ) {

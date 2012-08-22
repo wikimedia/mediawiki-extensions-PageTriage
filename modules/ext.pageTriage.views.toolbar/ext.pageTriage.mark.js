@@ -38,13 +38,17 @@ $( function() {
 		},
 
 		submit: function( action ) {
-			var _this = this;
+			var _this = this, note = $.trim( $( '#mwe-pt-review-note-input' ).val() );
+			if ( !_this.noteChanged || !note.length ) {
+				note = '';
+			}
 			apiRequest = {
 				'action': 'pagetriageaction',
 				'pageid': mw.config.get( 'wgArticleId' ),
 				'reviewed': ( action === 'reviewed' ) ? '1' : '0',
 				'token': mw.user.tokens.get('editToken'),
-				'format': 'json'
+				'format': 'json',
+				'note': note
 			};
 			return $.ajax( {
 				type: 'post',
@@ -53,8 +57,7 @@ $( function() {
 				cache: false,
 				success: function( data ) {
 					if ( typeof data.pagetriageaction !== 'undefined' && data.pagetriageaction.result === 'success' ) {
-						var note = $.trim( $( '#mwe-pt-review-note-input' ).val() );
-						if ( _this.noteChanged && note.length ) {
+						if ( note ) {
 							_this.talkPageNote( note, action );
 						} else {
 							// update the article model, since it's now changed.

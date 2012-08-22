@@ -113,6 +113,7 @@ $wgAutoloadClasses['ArticleCompileUserData'] = $dir . 'includes/ArticleMetadata.
 $wgAutoloadClasses['ArticleCompileDeletionTag'] = $dir . 'includes/ArticleMetadata.php';
 $wgAutoloadClasses['PageTriageExternalTagsOptions'] = $dir . 'includes/PageTriageExternalTagsOptions.php';
 $wgAutoloadClasses['PageTriageExternalDeletionTagsOptions'] = $dir . 'includes/PageTriageExternalDeletionTagsOptions.php';
+$wgAutoloadClasses['PageTriageLogFormatter'] = $dir . 'includes/PageTriageLogFormatter.php';
 
 $wgAutoloadClasses['ApiPageTriageList'] = $dir . 'api/ApiPageTriageList.php';
 $wgAutoloadClasses['ApiPageTriageStats'] = $dir . 'api/ApiPageTriageStats.php';
@@ -144,6 +145,15 @@ $wgHooks['ArticleDeleteComplete'][] = 'PageTriageHooks::onArticleDeleteComplete'
 $wgHooks['MarkPatrolledComplete'][] = 'PageTriageHooks::onMarkPatrolledComplete';
 $wgHooks['BlockIpComplete'][] = 'PageTriageHooks::onBlockIpComplete';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'PageTriageHooks::onResourceLoaderGetConfigVars';
+
+// logging
+$wgLogTypes[] = 'pagetriage-curation';
+$wgLogTypes[] = 'pagetriage-deletion';
+$wgLogActionsHandlers['pagetriage-curation/reviewed'] = 'LogFormatter';
+$wgLogActionsHandlers['pagetriage-curation/unreviewed'] = 'LogFormatter';
+$wgLogActionsHandlers['pagetriage-curation/tag'] = 'PageTriageLogFormatter';
+$wgLogActionsHandlers['pagetriage-curation/delete'] = 'PageTriageLogFormatter';
+$wgLogActionsHandlers['pagetriage-deletion/delete'] = 'PageTriageLogFormatter';
 
 /**
  * @param $updater DatabaseUpdater
@@ -684,7 +694,8 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-articleinfo-stat',
 		'pagetriage-bytes',
 		'pagetriage-edits',
-		'pagetriage-categories'
+		'pagetriage-categories',
+		'pagetriage-del-discussion-page-adding-error'
 	)
 );
 
