@@ -45,9 +45,10 @@ $( function() {
 			$( "#mwe-pt-list-control-nav-content").html( this.template() );
 
 			// align the filter dropdown box with the dropdown control widget
-			var newLeft = $( '#mwe-pt-filter-dropdown-control' ).width() - 20;
-			$( "#mwe-pt-control-dropdown" ).css({left: newLeft});
-			$( "#mwe-pt-control-dropdown-pokey" ).css({left: newLeft + 5});
+			var startSide = $( "body" ).hasClass( "rtl" ) ? "right" : "left";
+			var newStart = $( '#mwe-pt-filter-dropdown-control' ).width() - 20;
+			$( "#mwe-pt-control-dropdown" ).css( startSide, newStart );
+			$( "#mwe-pt-control-dropdown-pokey" ).css( startSide, newStart + 5 );
 
 			//
 			// now that the template's been inserted, set up some events for controlling it
