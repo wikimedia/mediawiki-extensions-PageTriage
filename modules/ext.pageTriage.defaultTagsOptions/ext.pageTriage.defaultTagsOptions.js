@@ -33,7 +33,7 @@ var param = {
 
 	'reason': {
 		label: mw.msg( 'pagetriage-tags-param-issues-label' ),
-		input: 'optional',
+		input: 'required',
 		type: 'textarea',
 		value: ''
 	},

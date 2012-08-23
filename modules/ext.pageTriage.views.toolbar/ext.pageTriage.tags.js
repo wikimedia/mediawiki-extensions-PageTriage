@@ -128,9 +128,9 @@ $( function() {
 				.button( { disabled: true } )
 				.click(
 					function () {
-						_this.submit();
 						$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
 						$( '#mwe-pt-tag-submit' ).append( $.createSpinner( 'tag-spinner' ) ); // show spinner
+						_this.submit();
 						return false;
 					}
 				).end();
@@ -482,6 +482,17 @@ $( function() {
 						continue;
 					}
 					var tagObj = this.selectedTag[cat][tagKey];
+
+					// Final check on required params
+					for ( var param in tagObj.params ) {
+						if ( tagObj.params[param].input === 'required' && !tagObj.params[param].value ) {
+							$.removeSpinner( 'tag-spinner' );
+							$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
+							alert( mw.msg( 'pagetriage-tags-param-missing-required', param ) );
+							return;
+						}
+					}
+
 					switch ( tagObj.position ) {
 						case 'bottom':
 							bottomText += '{{' + tagObj.tag + this.buildParams( tagObj ) + '}}';
