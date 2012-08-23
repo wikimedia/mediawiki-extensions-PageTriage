@@ -23,6 +23,11 @@ $specialPageAliases['ko'] = array(
 	'NewPagesFeed' => array( '새문서피드' ),
 );
 
+/** Macedonian (македонски) */
+$specialPageAliases['mk'] = array(
+	'NewPagesFeed' => array( 'КаналНовиСтраници' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'NewPagesFeed' => array( 'OverzichtNieuwePagina\'s', 'OverzichtNieuwePaginas' ),
