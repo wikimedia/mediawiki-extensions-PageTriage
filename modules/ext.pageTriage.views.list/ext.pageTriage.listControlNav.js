@@ -163,8 +163,9 @@ $( function() {
 		// Toggle whether or not the filter drop-down interface is displayed
 		toggleFilterMenu: function( action ) {
 			var _this = this;
+			var arrowClosed = $( 'body' ).hasClass( 'rtl') ? '&#x25c2;' : '&#x25b8;';
 			if ( ( action && action == 'close' ) || this.filterMenuVisible ) {
-				$( '#mwe-pt-dropdown-arrow' ).html( '&#x25b8;' );
+				$( '#mwe-pt-dropdown-arrow' ).html( arrowClosed );
 				$( '#mwe-pt-control-dropdown' ).css( 'visibility', 'hidden' );
 				$( '#mwe-pt-control-dropdown-pokey' ).css( 'visibility', 'hidden' );
 				$( 'body' ).unbind( 'click' ); // remove these events since they're not needed til next time.
@@ -174,7 +175,7 @@ $( function() {
 				this.menuSync();
 				$( '#mwe-pt-control-dropdown' ).css( 'visibility', 'visible' );
 				$( '#mwe-pt-control-dropdown-pokey' ).css( 'visibility', 'visible' );
-				$( '#mwe-pt-dropdown-arrow' ).html( '&#x25be;' );
+				$( '#mwe-pt-dropdown-arrow' ).html( '&#x25be;' ); // ▾ down-pointing triangle
 
 				// close the menu when the user clicks away
 				$( 'body' ).click( 'click', function() {
