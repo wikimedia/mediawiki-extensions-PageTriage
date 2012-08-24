@@ -94,6 +94,10 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$triageInterface .= "</div>";
 		$triageInterface .= "<div id='mwe-pt-list-stats-nav-anchor'></div>";
 
+		$dropdownArrow = $this->getLanguage()->isRtl()
+			? '&#x25c2;'  // ◂ left-pointing triangle
+			: '&#x25b8;'; // ▸ right-pointing triangle
+
 		// These are the templates that backbone/underscore render on the client.
 		// It would be awesome if they lived in separate files, but we need to figure out how to make RL do that for us.
 		// Syntax documentation can be found at http://documentcloud.github.com/underscore/#template.
@@ -105,7 +109,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 					<span id="mwe-pt-filter-dropdown-control" class="mwe-pt-control-label">
 						<b>
 							<%= gM( 'pagetriage-filter-list-prompt' ) %>
-							<span id="mwe-pt-dropdown-arrow">&#x25b8;</span>
+							<span id="mwe-pt-dropdown-arrow">$dropdownArrow</span>
 							<!--<span class="mwe-pt-dropdown-open">&#x25be;</span>-->
 						</b>
 						<div id="mwe-pt-control-dropdown-pokey"></div>
