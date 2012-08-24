@@ -114,6 +114,8 @@ $( function() {
 
 		render: function() {
 			var _this = this, status = this.model.get( 'patrol_status' ) == "0" ? 'reviewed' : 'unreviewed', maxLength = 250;
+			var modules = mw.config.get( 'wgPageTriageCurationModules' );
+
 			this.changeTooltip();
 			// create the mark as reviewed flyout content here.
 			this.$tel.html( this.template( $.extend( this.model.toJSON(), { 'status': status, 'maxLength': maxLength, 'creator': this.model.get( 'user_name' ) } ) ) );
@@ -121,29 +123,32 @@ $( function() {
 			// override the flyout title based on the current reviewed state of the page
 			$( '#mwe-pt-mark .mwe-pt-tool-title' ).text( mw.msg( 'pagetriage-mark-as-' + status ) );
 
-			$( '#mwe-pt-review-note-input' ).keyup( function() {
-				var length = $.trim( $('#mwe-pt-review-note-input').val() ).length;
-				var buttonId = 'mwe-pt-mark-as-' + status + '-button';
-				var charLeft = maxLength - length;
+			// check if note is enabled for this namespace
+			if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ), modules.mark.note ) !== -1 ) {
+				$( '#mwe-pt-review-note' ).show();
+				$( '#mwe-pt-review-note-input' ).keyup( function() {
+					var length = $.trim( $('#mwe-pt-review-note-input').val() ).length;
+					var buttonId = 'mwe-pt-mark-as-' + status + '-button';
+					var charLeft = maxLength - length;
 
-				$( '#mwe-pt-review-note-char-count' ).text( mw.msg( 'pagetriage-characters-left', charLeft ) );
+					$( '#mwe-pt-review-note-char-count' ).text( mw.msg( 'pagetriage-characters-left', charLeft ) );
 
-				if ( charLeft <= 0 ) {
-					$( '#' + buttonId ).button( 'disable' );
-				} else {
-					$( '#' + buttonId ).button( 'enable' );
-				}
-			} ).live( 'focus', function(e) {
-				$( this ).val( '' );
-				$( this ).css( 'color', 'black' );
-				$( this ).unbind( e );
-			} ).change( function() {
-				_this.noteChanged = true;
-			} );
+					if ( charLeft <= 0 ) {
+						$( '#' + buttonId ).button( 'disable' );
+					} else {
+						$( '#' + buttonId ).button( 'enable' );
+					}
+				} ).live( 'focus', function(e) {
+					$( this ).val( '' );
+					$( this ).css( 'color', 'black' );
+					$( this ).unbind( e );
+				} ).change( function() {
+					_this.noteChanged = true;
+				} );
+			}
 
 			// set the Learn More link URL
-			var modules = mw.config.get( 'wgPageTriageCurationModules' );
-			$( '#mwe-pt-mark .mwe-pt-flyout-help-link' ).attr( 'href', modules.mark );
+			$( '#mwe-pt-mark .mwe-pt-flyout-help-link' ).attr( 'href', modules.mark.helplink );
 
 			// initialize the buttons
 			$( '#mwe-pt-mark-as-reviewed-button' )

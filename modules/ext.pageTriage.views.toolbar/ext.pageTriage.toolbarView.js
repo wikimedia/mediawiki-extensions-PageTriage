@@ -27,35 +27,52 @@ $( function() {
 			// An array of tool instances to put on the bar, ordered top-to-bottom
 			tools = new Array;
 
-			var modules = mw.config.get( 'wgPageTriageCurationModules' );
-
 			// article information
-			if ( typeof modules.articleInfo !== 'undefined' ) {
+			if ( this.isFlyoutEnabled( 'articleInfo' ) ) {
 				tools.push( new mw.pageTriage.ArticleInfoView( { eventBus: eventBus, model: article } ) );
 			}
-			
+
 			// wikilove
-			if ( typeof modules.wikiLove !== 'undefined' ) {
+			if ( this.isFlyoutEnabled( 'wikiLove' ) ) {
 				tools.push( new mw.pageTriage.WikiLoveView( { eventBus: eventBus, model: article } ) );
 			}
 
 			// mark as reviewed
-			if ( typeof modules.mark !== 'undefined' ) {
+			if ( this.isFlyoutEnabled( 'mark' ) ) {
 				tools.push( new mw.pageTriage.MarkView( { eventBus: eventBus, model: article } ) );
 			}
 
 			// add tags
-			if ( typeof modules.tags !== 'undefined' ) {
+			if ( this.isFlyoutEnabled( 'tags' ) ) {
 				tools.push( new mw.pageTriage.TagsView( { eventBus: eventBus, model: article } ) );
 			}
 
 			// delete
-			if ( typeof modules.delete !== 'undefined' ) {
+			if ( this.isFlyoutEnabled( 'delete' ) ) {
 				tools.push( new mw.pageTriage.DeleteView( { eventBus: eventBus, model: article } ) );
 			}
 
-			// next article
+			// next article, should be always on
 			tools.push( new mw.pageTriage.NextView( { eventBus: eventBus, model: article } ) );
+		},
+
+		/**
+		 * Check if the flyout is enabled for the current namespace
+		 */
+		isFlyoutEnabled: function( flyout ) {
+			var modules = mw.config.get( 'wgPageTriageCurationModules' );
+
+			// this flyout is disabled for curation toolbar
+			if ( typeof modules[flyout] === 'undefined' ) {
+				return false;
+			}
+
+			// this flyout is disabled for current namespace
+			if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ), modules[flyout].namespace ) === -1 ) {
+				return false;
+			} else {
+				return true;
+			}
 		},
 
 		render: function() {
