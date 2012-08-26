@@ -99,10 +99,15 @@ class ApiPageTriageActionTest extends ApiTestCase {
 
 			$wgUser = self::$users['two']->user;
 
-			list( $result, , $session ) =  $this->doApiRequestWithToken( array(
-										'action' => 'pagetriageaction',
-										'pageid' => 15,
-										'reviewed' => '1'), $sessionArray['two'], self::$users['two']->user );
+			$this->doApiRequestWithToken(
+				array(
+					'action' => 'pagetriageaction',
+					'pageid' => 15,
+					'reviewed' => '1'
+				),
+				$sessionArray['two'],
+				self::$users['two']->user
+			);
 		} catch ( UsageException $e ) {
 			$exception = true;
 			$this->assertEquals( "You don't have permission to do that",
@@ -121,10 +126,14 @@ class ApiPageTriageActionTest extends ApiTestCase {
 
 			$wgUser = self::$users['one']->user;
 
-			list( $result, , $session ) =  $this->doApiRequestWithToken( array(
-										'action' => 'pagetriageaction',
-										'pageid' => 999999999,
-										'reviewed' => '1'), $sessionArray['one'], self::$users['one']->user );
+			$this->doApiRequestWithToken(
+				array(
+					'action' => 'pagetriageaction',
+					'pageid' => 999999999,
+					'reviewed' => '1'),
+				$sessionArray['one'],
+				self::$users['one']->user
+			);
 		} catch ( UsageException $e ) {
 			$exception = true;
 			$this->assertEquals( "The page specified does not exist",

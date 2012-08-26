@@ -25,8 +25,7 @@ $( function() {
 		},
 
 		url: function() {
-			var url = mw.util.wikiScript( 'api' ) + '?action=query&prop=revisions&format=json&' + $.param( this.apiParams );
-			return url;
+			return mw.util.wikiScript( 'api' ) + '?action=query&prop=revisions&format=json&' + $.param( this.apiParams );
 		},
 
 		parse: function( response ) {

@@ -151,7 +151,7 @@ class WikiApi {
 	/**
 	 * Get the contents of a page
 	 * @param $title string The title of the wikipedia page to fetch
-	 * @return string The wikitext for the page (or false)
+	 * @return string|bool The wikitext for the page (or false)
 	 **/
 	function getPage( $title ) {
 		$params = array(
@@ -171,6 +171,7 @@ class WikiApi {
 				return false;
 			}
 		}
+		return false;
 	}
 
 	/**

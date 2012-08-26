@@ -175,7 +175,7 @@ class PageTriageHooks {
 	 * @return bool
 	 */
 	private static function addToPageTriageQueue( $pageId, $title, $user = null, $reviewed = null ) {
-		global $wgUser, $wgUseRCPatrol, $wgUseNPPatrol;
+		global $wgUseRCPatrol, $wgUseNPPatrol;
 
 		$pageTriage = new PageTriage( $pageId );
 

@@ -48,7 +48,7 @@ class PageTriageUtil {
 	 *         depends on the time the triage queue should look back for listview
 	 */
 	public static function getUnreviewedArticleStat( $namespace = '' ) {
-		global $wgMemc, $wgContLang, $wgPageTriageNamespaces;
+		global $wgMemc, $wgPageTriageNamespaces;
 
 		$conds = array( 'ptrp_reviewed' => 0, 'page_id = ptrp_page_id' );
 		if ( $namespace !== '' ) {
@@ -275,7 +275,6 @@ class PageTriageUtil {
 			}
 
 			foreach ( $title as $key => $value ) {
-				$data = array();
 				if ( !isset( $dataToCache[$value['user_name']][$value['u']->getPrefixedDBkey()] ) ) {
 					$dataToCache[$value['user_name']][$value['u']->getPrefixedDBkey()] = 0;
 				} else {

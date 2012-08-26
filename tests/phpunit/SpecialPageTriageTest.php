@@ -115,15 +115,12 @@ class SpecialPageTriageTest extends ApiTestCase {
 					'text' => $text
 				);
 
-				list( $result, , $session ) =  $this->doApiRequestWithToken(
+				$this->doApiRequestWithToken(
 					$params,
 					$sessionArray['one'],
 					self::$users['one']->user
 				);
 			}
-
 		}
-
 	}
-
 }

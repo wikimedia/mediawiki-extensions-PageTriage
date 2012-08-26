@@ -68,11 +68,7 @@ $( function() {
 			}
 
 			// this flyout is disabled for current namespace
-			if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ), modules[flyout].namespace ) === -1 ) {
-				return false;
-			} else {
-				return true;
-			}
+			return $.inArray( mw.config.get( 'wgNamespaceNumber' ), modules[flyout].namespace ) !== -1;
 		},
 
 		render: function() {
