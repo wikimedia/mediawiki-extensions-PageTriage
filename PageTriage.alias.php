@@ -32,3 +32,8 @@ $specialPageAliases['mk'] = array(
 $specialPageAliases['nl'] = array(
 	'NewPagesFeed' => array( 'OverzichtNieuwePagina\'s', 'OverzichtNieuwePaginas' ),
 );
+
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'NewPagesFeed' => array( 'YeniSayfaBeslemesi' ),
+);
