@@ -1,6 +1,6 @@
 <?php
 /**
- * Remove page with namespace other than NS_MAIN/NS_USER from pagetriage queue
+ * Remove page from pagetriage_page_tags if they are not in pagetriage_page
  *
  * @ingroup Maintenance
  */

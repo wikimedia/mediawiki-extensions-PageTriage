@@ -72,9 +72,12 @@ class PageTriageHooks {
 			return true;
 		}
 
-		$prev = $rev->getPrevious();
-		if ( $prev && !$article->isRedirect() && $article->isRedirect( $prev->getRawText() ) ) {
-			self::addToPageTriageQueue( $article->getId(), $article->getTitle(), $user );
+		// $rev could be null
+		if ( $rev ) {
+			$prev = $rev->getPrevious();
+			if ( $prev && !$article->isRedirect() && $article->isRedirect( $prev->getRawText() ) ) {
+				self::addToPageTriageQueue( $article->getId(), $article->getTitle(), $user );
+			}
 		}
 		return true;
 	}
@@ -131,8 +134,13 @@ class PageTriageHooks {
 			return true;
 		}
 
-		// if there is a previous revision, it's safe to check against slave database
-		$validateDb = $revision->getPrevious() ? DB_SLAVE : DB_MASTER;
+		// $revision could be null
+		if ( !$revision ) {
+			$validateDb = DB_MASTER;
+		} else {
+			// if there is a previous revision, it's safe to check against slave database
+			$validateDb = $revision->getPrevious() ? DB_SLAVE : DB_MASTER;
+		}
 
 		// false will enforce a validation against pagetriage_page table
 		$acp = ArticleCompileProcessor::newFromPageId( array( $article->getId() ), false, $validateDb );
