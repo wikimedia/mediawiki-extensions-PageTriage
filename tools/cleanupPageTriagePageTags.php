@@ -14,7 +14,7 @@ require_once( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
  */
 class CleanupPageTriagePageTags extends Maintenance {
 
-	protected $batchSize = 100;
+	protected $batchSize = 1000;
 
 	public function execute() {
 		$dbw = wfGetDB( DB_MASTER );
@@ -26,7 +26,7 @@ class CleanupPageTriagePageTags extends Maintenance {
 		while ( $count == $this->batchSize ) {
 			$res = $dbr->select(
 				array( 'pagetriage_page_tags', 'pagetriage_page' ),
-				array( 'DISTINCT ptrpt_page_id AS page_id' ),
+				array( 'ptrpt_page_id AS page_id' ),
 				array(
 					'ptrpt_page_id > ' . $start,
 					'ptrp_page_id IS NULL'
@@ -37,20 +37,24 @@ class CleanupPageTriagePageTags extends Maintenance {
 			);
 
 			$page = array();
+			$count = 0;
 			foreach( $res as $row ) {
-				$page[] = $row->page_id;
-				$start  = $row->page_id;
+				if ( !in_array( $row->page_id, $page ) ) {
+					$page[] = $row->page_id;
+					$start  = $row->page_id;
+				}
+				$count++;
 			};
-			$count = count( $page );
 
-			if ( $count > 0 ) {
+			$pageCount = count( $page );
+			if ( $pageCount > 0 ) {
 				$dbw->delete(
 					'pagetriage_page_tags',
 					array( 'ptrpt_page_id' => $page ),
 					__METHOD__
 				);
 
-				$this->output( "processing " . $count . "\n" );
+				$this->output( "processing " . $pageCount . "\n" );
 				wfWaitForSlaves();
 			}
 
