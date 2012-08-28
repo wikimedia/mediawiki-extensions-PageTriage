@@ -9,7 +9,7 @@ class ArticleMetadata {
 
 	/**
 	 * @param $pageId array - list of page id
-	 * @param $validated bool - whether the page ids are validated
+	 * @param $validated bool - whether the page ids have been validated
 	 * @param $validateDb const - DB_MASTER/DB_SLAVE
 	 */
 	public function __construct( array $pageId, $validated = true, $validateDb = DB_MASTER ) {
@@ -186,7 +186,7 @@ class ArticleMetadata {
 			// Compile the data if it is not available, this is a very rare case unless
 			// the metadata gets deleted manually
 			if ( $articles ) {
-				$acp = ArticleCompileProcessor::newFromPageId( $articles );
+				$acp = ArticleCompileProcessor::newFromPageId( $articles, false, DB_SLAVE );
 				if ( $acp ) {
 					$pageData += $acp->compileMetadata();
 				}
