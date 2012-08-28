@@ -605,7 +605,7 @@ $( function() {
 
 			// use generic template for multiple deletion tag
 			var template = ( count > 1 ) ? $.pageTriageDeletionTagsMultiple.talkpagenotiftpl : this.selectedTag[key].talkpagenotiftpl;
-			template = '{{subst:' + template + '|' + mw.config.get( 'wgPageName' ) + '}}';
+			template = '{{subst:' + template + '|' + new mw.Title( mw.config.get( 'wgPageName' ) ).getPrefixedText() + '}}';
 
 			if ( this.model.get( 'user_name' ) ) {
 				var title = new mw.Title( this.model.get( 'user_name' ), mw.config.get( 'wgNamespaceIds' )['user_talk'] );
