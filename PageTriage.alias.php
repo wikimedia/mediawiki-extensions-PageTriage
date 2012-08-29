@@ -18,6 +18,11 @@ $specialPageAliases['ar'] = array(
 	'NewPagesFeed' => array( 'تغذية_الصفحات_الجديدة' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'NewPagesFeed' => array( 'Seitenprüfung' ),
+);
+
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
 	'NewPagesFeed' => array( '새문서피드' ),
