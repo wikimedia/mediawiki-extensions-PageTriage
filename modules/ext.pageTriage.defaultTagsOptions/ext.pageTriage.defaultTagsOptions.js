@@ -289,18 +289,6 @@ $.pageTriageTagsOptions = {
 				params: { },
 				position: 'top',
 				multiple: false
-			},
-
-			'wikify': {
-				label: mw.msg( 'pagetriage-tags-wikify-label' ),
-				tag: 'wikify',
-				desc: mw.msg( 'pagetriage-tags-wikify-desc' ),
-				params: {
-					'date': param.date,
-					'reason': $.extend( true, {}, param.reason )
-				},
-				position: 'top',
-				multiple: true
 			}
 		}
 	},
