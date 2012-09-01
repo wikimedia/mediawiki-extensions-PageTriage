@@ -1370,7 +1370,10 @@ $messages['de-formal'] = array(
 $messages['diq'] = array(
 	'pagetriage-sort-by' => 'Raten:',
 	'pagetriage-oldest' => 'Tewr kehan',
+	'pagetriage-filter-ns-all' => 'Pêro',
+	'pagetriage-filter-stat-all' => 'Pêro',
 	'pagetriage-refresh-list' => 'Listi neweke',
+	'pagetriage-tags-cat-all-label' => 'Etiketi pêro',
 );
 
 /** Spanish (español)
