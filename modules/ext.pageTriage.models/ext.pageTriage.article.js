@@ -41,7 +41,7 @@ $( function() {
 			if( userName ) {
 				var userTitle = new mw.Title( userName, mw.config.get('wgNamespaceIds')['user'] );
 				var userTalkTitle = new mw.Title( userName, mw.config.get('wgNamespaceIds')['user_talk'] );
-				var userContribsTitle = new mw.Title( mw.msg( 'pagetriage-special-contributions' ) + '/' + userName )
+				var userContribsTitle = new mw.Title( mw.msg( 'pagetriage-special-contributions' ) + '/' + userName );
 
 				var userLinkClass = userTitle.exists() ? '' : 'new';
 				var userTalkLinkClass = userTalkTitle.exists() ? '' : 'new';
@@ -132,8 +132,7 @@ $( function() {
 				format: 'json',
 				timestamp: d.getTime()
 			} );
-			var url = mw.util.wikiScript( 'api' ) + '?' + params + '&' + $.param( { page_id: this.pageId } );
-			return url;
+			return mw.util.wikiScript( 'api' ) + '?' + params + '&' + $.param( { page_id: this.pageId } );
 		},
 		
 		parse: function( response ) {
@@ -199,8 +198,7 @@ $( function() {
 				format: 'json',
 				timestamp: d.getTime()
 			} );
-			var url = mw.util.wikiScript( 'api' ) + '?' + params + '&' + $.param( this.apiParams );
-			return url;
+			return mw.util.wikiScript( 'api' ) + '?' + params + '&' + $.param( this.apiParams );
 		},
 
 		parse: function( response ) {

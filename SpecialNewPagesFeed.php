@@ -8,7 +8,6 @@
  * @author Ryan Kaldari
  */
 class SpecialNewPagesFeed extends SpecialPage {
-
 	// Holds the various options for viewing the list
 	protected $opts;
 
@@ -24,19 +23,18 @@ class SpecialNewPagesFeed extends SpecialPage {
 	 * @param $sub string The subpage, if any
 	 */
 	public function execute( $sub ) {
-		global $wgRequest, $wgPageTriageInfiniteScrolling,
+		global $wgPageTriageInfiniteScrolling,
 		       $wgPageTriageStickyControlNav, $wgPageTriageStickyStatsNav,
 		       $wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl,
 		       $wgPageTriageNamespaces;
 
 		$out = $this->getOutput();
+		$user = $this->getUser();
 
-		global $wgUser;
-
-		if ( !$wgUser->isAnon() ) {
-			$wgUser->setOption( 'pagetriage-lastuse', wfTimestampNow() );
-			$wgUser->saveSettings();
-			$wgUser->invalidateCache();
+		if ( !$user->isAnon() ) {
+			$user->setOption( 'pagetriage-lastuse', wfTimestampNow() );
+			$user->saveSettings();
+			$user->invalidateCache();
 		}
 
 		// Output the title of the page
@@ -49,9 +47,10 @@ class SpecialNewPagesFeed extends SpecialPage {
 
 		// Allow infinite scrolling override from query string parameter
 		// We don't use getBool() here since the param is optional
-		if ( $wgRequest->getText( 'infinite' ) === 'true' ) {
+		$request = $this->getRequest();
+		if ( $request->getText( 'infinite' ) === 'true' ) {
 			$wgPageTriageInfiniteScrolling = 'true';
-		} else if ( $wgRequest->getText( 'infinite' ) === 'false' ) {
+		} elseif ( $request->getText( 'infinite' ) === 'false' ) {
 			$wgPageTriageInfiniteScrolling = 'false';
 		}
 
@@ -61,7 +60,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 			'wgPageTriageInfiniteScrolling' => $wgPageTriageInfiniteScrolling,
 			'wgPageTriageStickyControlNav' => $wgPageTriageStickyControlNav,
 			'wgPageTriageStickyStatsNav' => $wgPageTriageStickyStatsNav,
-			'wgPageTriageEnableReviewButton' => $wgUser->isLoggedIn() && $wgUser->isAllowed( 'patrol' ),
+			'wgPageTriageEnableReviewButton' => $user->isLoggedIn() && $user->isAllowed( 'patrol' ),
 		);
 		$out->addJsConfigVars( $globalVars );
 

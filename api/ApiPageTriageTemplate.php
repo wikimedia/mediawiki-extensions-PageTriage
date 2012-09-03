@@ -14,14 +14,13 @@ class ApiPageTriageTemplate extends ApiBase {
 
 		// Get the API parameters and store them
 		$opts = $this->extractRequestParams();
-		$result = array();
 
 		$view = $opts['view'];
 		// validate
 		if( preg_match( '/\W/', $view ) ) {
 			$result = array( 'result' => 'error', 'errormsg' => 'Invalid view' );
 			$this->getResult()->addValue( null, $this->getModuleName(), $result );
-			return true;
+			return;
 		}
 
 		$templates = explode( '|', $opts['template'] );
@@ -33,7 +32,7 @@ class ApiPageTriageTemplate extends ApiBase {
 			if( !preg_match( '/^\w+\.html$/', $template ) ) {
 				$result = array( 'result' => 'error', 'errormsg' => 'Invalid template: ' . $template );
 				$this->getResult()->addValue( null, $this->getModuleName(), $result );
-				return true;
+				return;
 			}
 
 			$localPath = $ptTemplatePath . '/ext.pageTriage.views.' . $view . '/ext.pageTriage.' . $template;

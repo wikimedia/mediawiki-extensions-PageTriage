@@ -12,12 +12,12 @@ $( function() {
 			var tuples = [];
 			for ( var key in obj ) {
 				tuples.push( [key, obj[key]] )
-			};
+			}
 			tuples.sort( function( a, b ) { return a[1] - b[1] } );
 			var length = tuples.length;
 			while ( length-- ) {
 				callback.call( context, tuples[length][0], tuples[length][1] )
-			};
+			}
 		},
 
 		render: function() {

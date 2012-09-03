@@ -30,7 +30,7 @@
 					mw.msg( 'pagetriage-reviewed' )
 			);
 		}
-	}
+	};
 
 	$( '.mw-pagetriage-markpatrolled-link' )
 		.click( function() {
