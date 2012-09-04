@@ -146,6 +146,15 @@ var tags = {
 		talkpagenotiftpl: 'Db-banned-notice-NPF'
 	},
 
+	'dbg7': {
+		label: mw.msg( 'pagetriage-del-tags-dbg7-label' ),
+		tag: 'db-g7',
+		desc: mw.msg( 'pagetriage-del-tags-dbg7-desc' ),
+		params: {},
+		anchor: 'blanked',
+		talkpagenotiftpl: 'Db-author-notice-NPF'
+	},
+
 	'dbg10': {
 		label: mw.msg( 'pagetriage-del-tags-dbg10-label' ),
 		tag: 'db-g10',
@@ -238,7 +247,8 @@ $.pageTriageDeletionTagsOptions = {
 				'dbg4': $.extend( true, {}, tags.dbg4 ),
 				'dbg5': $.extend( true, {}, tags.dbg5 ),
 				'dba10': $.extend( true, {}, tags.dba10 ),
-				'dba2': $.extend( true, {}, tags.dba2 )
+				'dba2': $.extend( true, {}, tags.dba2 ),
+				'dbg7': $.extend( true, {}, tags.dbg7 )
 			}
 		},
 
@@ -308,7 +318,8 @@ $.pageTriageDeletionTagsOptions = {
 				'dbu3': $.extend( true, {}, tags.dbu3 ),
 				'dbg4': $.extend( true, {}, tags.dbg4 ),
 				'dbg10': $.extend( true, {}, tags.dbg10 ),
-				'dbg12': $.extend( true, {}, tags.dbg12 )
+				'dbg12': $.extend( true, {}, tags.dbg12 ),
+				'dbg7': $.extend( true, {}, tags.dbg7 )
 			}
 		},
 
