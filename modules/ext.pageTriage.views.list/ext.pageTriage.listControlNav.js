@@ -34,7 +34,7 @@ $( function() {
 
 			this.eventBus.bind( "renderStats", function( stats ) {
 				// fill in the counter when the stats view gets loaded.
-				$( "#mwe-pt-control-stats" ).html( gM( 'pagetriage-article-count', stats.get('ptr_unreviewed_article_count') ) );
+				$( "#mwe-pt-control-stats" ).html( gM( 'pagetriage-article-count', stats.get( 'ptrUnreviewedCount' ), stats.get( 'ptrOldest' ) ) );
 			} );
 		},
 

@@ -40,6 +40,29 @@ class PageTriageUtil {
 	}
 
 	/**
+	 * Validate page namespace
+	 */
+	private static function validatePageNamespace( $namespace = '' ) {
+		global $wgPageTriageNamespaces;
+
+		$conds = array();
+		if ( $namespace !== '' ) {
+			$namespace = intval( $namespace );
+			if ( !in_array( $namespace, $wgPageTriageNamespaces ) ) {
+				$namespace = NS_MAIN;
+			}
+		} else {
+			if ( count( $wgPageTriageNamespaces ) > 0 ) {
+				$namespace = $wgPageTriageNamespaces;
+			} else {
+				$namespace = NS_MAIN;
+			}
+		}
+
+		return $namespace;
+	}
+
+	/**
 	 * Get a list of stat for unreviewed articles
 	 * @param $namespace int
 	 * @return array
@@ -48,25 +71,13 @@ class PageTriageUtil {
 	 *         depends on the time the triage queue should look back for listview
 	 */
 	public static function getUnreviewedArticleStat( $namespace = '' ) {
-		global $wgMemc, $wgPageTriageNamespaces;
+		global $wgMemc;
 
-		$conds = array( 'ptrp_reviewed' => 0, 'page_id = ptrp_page_id' );
-		if ( $namespace !== '' ) {
-			$namespace = intval( $namespace );
-			if ( !in_array( $namespace, $wgPageTriageNamespaces ) ) {
-				$namespace = NS_MAIN;
-			}
-			$conds['page_namespace'] = $namespace;
-		} else {
-			// safety check to prevent SQL error
-			if ( count( $wgPageTriageNamespaces ) > 0 ) {
-				$conds['page_namespace'] = $wgPageTriageNamespaces;
-			} else {
-				$conds['page_namespace'] = NS_MAIN;
-			}
-		}
+		$namespace = self::validatePageNamespace( $namespace );
 
-		$key = wfMemcKey( 'pagetriage', 'unreviewed-article-' . $namespace, 'stat', self::getCacheVersion() );
+		$memcKey = is_array( $namespace ) ? '' : $namespace;
+		
+		$key = wfMemcKey( 'pagetriage', 'unreviewed-article-' . $memcKey, 'stat', self::getCacheVersion() );
 
 		$data = $wgMemc->get( $key );
 		if ( $data !== false ) {
@@ -76,30 +87,23 @@ class PageTriageUtil {
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$table = array( 'pagetriage_page', 'page' );
+		$conds = array(
+			'ptrp_reviewed' => 0,
+			'page_id = ptrp_page_id',
+			'page_namespace' => $namespace
+		);
 
 		$res = $dbr->selectRow(
 			$table,
-			array( 'COUNT(ptrp_page_id) AS total' ),
+			array( 'COUNT(ptrp_page_id) AS total', 'MIN(ptrp_created) AS oldest' ),
 			$conds
 		);
 
-		$percentile = array( 25, 50, 75, 90, 100 );
-
-		$data = array( 'count' => 0 );
-
-		foreach ( $percentile as $val ) {
-			$data['age-' . $val . 'th-percentile'] = false;
-		}
+		$data = array( 'count' => 0, 'oldest' => '' );
 
 		if ( $res ) {
 			$data['count'] = intval( $res->total );
-
-			// show percentile stat only if there is a certain number of unreviewed articles
-			if ( $data['count'] > 10 ) {
-				foreach ( $percentile as $val ) {
-					$data['age-' . $val . 'th-percentile'] = self::estimateArticleAgePercentile( $val, $data['count'], $namespace );
-				}
-			}
+			$data['oldest'] = $res->oldest;
 		}
 
 		// make it expire in 10 minutes
@@ -151,70 +155,6 @@ class PageTriageUtil {
 		}
 
 		return $topTriager;
-	}
-
-	/**
-	 * Calculate the age of unreviewed articles by percentile
-	 * @param $percentile int
-	 * @param $count int
-	 * @param $namespace int
-	 * @throws MWPageTriageUtilInvalidNumberException
-	 * @return int|bool
-	 */
-	private static function estimateArticleAgePercentile( $percentile, $count, $namespace = '' ) {
-		global $wgPageTriageNamespaces;
-
-		if ( !is_int( $percentile ) || $percentile < 1 || $percentile > 100) {
-			throw new MWPageTriageUtilInvalidNumberException( 'Invalid percentage number' );
-		}
-
-		if ( !is_int( $count ) || $count < 1 ) {
-			throw new MWPageTriageUtilInvalidNumberException ( 'Invalid total count' );
-		}
-
-		// starting from oldest timestamp if percent is > 50
-		if ( $percentile > 50 ) {
-			$percentile = 100 - $percentile;
-			$order = 'ASC';
-		} else {
-			$order = 'DESC';
-		}
-
-		$start = floor( ( $percentile / 100 ) * $count ) - 1;
-
-		if ( $start < 0 ) {
-			$start = 0;
-		}
-
-		$dbr = wfGetDB( DB_SLAVE );
-
-		$table = array( 'pagetriage_page', 'page' );
-		$conds = array( 'ptrp_reviewed' => 0, 'page_id = ptrp_page_id' );
-
-		if ( $namespace !== '' ) {
-			$conds['page_namespace'] = intval( $namespace );
-		} else {
-			// safety check to prevent SQL error
-			if ( count( $wgPageTriageNamespaces ) > 0 ) {
-				$conds['page_namespace'] = $wgPageTriageNamespaces;
-			} else {
-				$conds['page_namespace'] = NS_MAIN;
-			}
-		}
-
-		$res = $dbr->selectRow(
-			$table,
-			array( 'ptrp_created' ),
-			$conds,
-			__METHOD__,
-			array( 'ORDER BY' => "ptrp_created $order", 'LIMIT' => '1', 'OFFSET' => $start )
-		);
-
-		if ( $res ) {
-			return $res->ptrp_created;
-		} else {
-			return false;
-		}
 	}
 
 	/**

@@ -18,22 +18,8 @@ $( function() {
 		},
 
 		formatMetadata: function ( stats ) {
-			stats.set( 'ptr_unreviewed_article_count', stats.get( 'unreviewedarticle' )['count'] );
-
-			var topTriager = {};
-			for ( var i in stats.get( 'toptriager' )['data'] ) {
-				var title = new mw.Title( stats.get( 'toptriager' )['data'][i]['user_name'], mw.config.get('wgNamespaceIds')['user'] );
-				topTriager[i] = {
-					title: title,
-					linkCSS: title.exists() ? '' : 'class="new"',
-					userName: stats.get( 'toptriager' )['data'][i]['user_name']
-				};
-			}
-
-			stats.set( 'ptrTopTriager',  topTriager );
-			stats.set( 'ptrTopTriagerStr', gM( 'pagetriage-stats-top-reviewers', Number( stats.get( 'toptriager' ).total ) ) );
-			stats.set( 'ptrAverage', this.formatDaysFromNow( stats.get( 'unreviewedarticle' )['age-50th-percentile'] ) );
-			stats.set( 'ptrOldest', this.formatDaysFromNow( stats.get( 'unreviewedarticle' )['age-100th-percentile'] ) );
+			stats.set( 'ptrUnreviewedCount', stats.get( 'unreviewedarticle' )['count'] );
+			stats.set( 'ptrOldest', this.formatDaysFromNow( stats.get( 'unreviewedarticle' )['oldest'] ) );
 		},
 
 		formatDaysFromNow: function ( dateStr ) {
