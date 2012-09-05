@@ -33,6 +33,11 @@ $specialPageAliases['mk'] = array(
 	'NewPagesFeed' => array( 'КаналНовиСтраници' ),
 );
 
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'NewPagesFeed' => array( 'വാർത്താതാൾഫീഡ്' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'NewPagesFeed' => array( 'OverzichtNieuwePagina\'s', 'OverzichtNieuwePaginas' ),
