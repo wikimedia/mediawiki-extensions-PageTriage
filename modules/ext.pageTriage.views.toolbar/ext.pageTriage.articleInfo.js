@@ -88,7 +88,7 @@ $( function() {
 			this.$tel.find( '#mwe-pt-info-history-container' ).append( history.render().$el );
 
 			// set the Learn More link URL
-			$( '#mwe-pt-info .mwe-pt-flyout-help-link' ).attr( 'href', mw.config.get( 'wgPageTriageCurationModules' ).articleInfo );
+			$( '#mwe-pt-info .mwe-pt-flyout-help-link' ).attr( 'href', mw.config.get( 'wgPageTriageCurationModules' ).articleInfo.helplink );
 
 			// bind down here so it doesn't happen before the first render
 			this.model.unbind( 'change:patrol_status', function() { _this.render(); } );
