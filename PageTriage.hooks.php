@@ -331,6 +331,7 @@ class PageTriageHooks {
 		}
 
 		// If the user hasn't visited Special:NewPagesFeed lately, don't do anything
+		$lastUseExpired = false;
 		$lastUse = $wgUser->getOption( 'pagetriage-lastuse' );
 		if ( $lastUse ) {
 			$lastUse = wfTimestamp( TS_UNIX, $lastUse );
@@ -338,7 +339,7 @@ class PageTriageHooks {
 			$periodSince = $now - $lastUse;
 		}
 		if ( !$lastUse || $periodSince > $wgPageTriageMarkPatrolledLinkExpiry ) {
-			return true;
+			$lastUseExpired = true;
 		}
 
 		// See if the page is in the PageTriage page queue
@@ -353,6 +354,11 @@ class PageTriageHooks {
 			if ( $wgPageTriageEnableCurationToolbar || $wgRequest->getVal( 'curationtoolbar' ) === 'true' ) {
 				// Load the JavaScript for the curation toolbar
 				$wgOut->addModules( 'ext.pageTriage.toolbarStartup' );
+				// Set the config flags in JavaScript
+				$globalVars = array(
+					'wgPageTriagelastUseExpired' => $lastUseExpired
+				);
+				$wgOut->addJsConfigVars( $globalVars );
 			} else {
 				if ( $needsReview ) {
 					// show 'Mark as reviewed' link

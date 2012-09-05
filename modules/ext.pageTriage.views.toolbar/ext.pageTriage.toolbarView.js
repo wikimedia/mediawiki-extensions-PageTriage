@@ -93,38 +93,56 @@ $( function() {
 
 			// make the minimize button do something
 			$( '.mwe-pt-toolbar-minimize-button').click( function() {
-				_this.minimize();
+				_this.minimize( true );
 			} );
 
 			// make clicking on the minimized toolbar expand to normal size
 			$( '#mwe-pt-toolbar-vertical' ).click( function() {
-				_this.maximize();
+				_this.maximize( true );
 			} );
 
 			// make the close button do something
 			$( '.mwe-pt-toolbar-close-button').click( function() {
-				// hide everything
-				$( '#mwe-pt-toolbar' ).hide();
-				// reset the curation toolbar to original state
-				$( '#mwe-pt-toolbar-inactive' ).css( 'display', 'none' );
-				$( '#mwe-pt-toolbar-active' ).css( 'display', 'block' );
-				$( '#mwe-pt-toolbar' ).removeClass( 'mwe-pt-toolbar-small' ).addClass( 'mwe-pt-toolbar-big' );
-				_this.setToolbarPreference( 'maximized' );
-				// insert link to reopen into the toolbox (if it doesn't already exist)
-				if ( $( '#t-curationtoolbar' ).length === 0 ) {
-					_this.insertLink();
-				}
+				_this.hide( true );
 			} );
 
-			// If the user has a preference set to have the curation toolbar
-			// minimized, go ahead and minimize it.
-			if ( mw.user.options.get( 'curationtoolbar' ) === 'minimized' ) {
-				this.minimize();
+			// lastUse expires, hide curation toolbar
+			if ( mw.config.get( 'wgPageTriagelastUseExpired' ) ) {
+				this.hide();
+			// show the toolbar based on user preference
+			} else {
+				switch ( mw.user.options.get( 'curationtoolbar' ) ) {
+					case 'hidden':
+						this.hide();
+						break;
+					case 'minimized':
+						this.minimize();
+						break;
+					case 'maximized':
+					default:
+						this.maximize();
+						break;
+				}	
 			}
-			
+		},
+		
+		hide: function( savePref ) {
+			// hide everything
+			$( '#mwe-pt-toolbar' ).hide();
+			// reset the curation toolbar to original state
+			$( '#mwe-pt-toolbar-inactive' ).css( 'display', 'none' );
+			$( '#mwe-pt-toolbar-active' ).css( 'display', 'block' );
+			$( '#mwe-pt-toolbar' ).removeClass( 'mwe-pt-toolbar-small' ).addClass( 'mwe-pt-toolbar-big' );
+			if ( typeof savePref !== 'undefined' && savePref === true ) {
+				this.setToolbarPreference( 'hidden' );
+			}
+			// insert link to reopen into the toolbox (if it doesn't already exist)
+			if ( $( '#t-curationtoolbar' ).length === 0 ) {
+				this.insertLink();
+			}	
 		},
 
-		minimize: function () {
+		minimize: function ( savePref ) {
 			// close any open tools by triggering showTool with empty tool param
 			eventBus.trigger( 'showTool', '' );
 			// hide the regular toolbar content
@@ -136,10 +154,12 @@ $( function() {
 				// dock to the side of the screen
 				.css( 'left', 'auto' ).css( 'right', '0' );
 			// set a pref for the user so the minimize state is remembered
-			this.setToolbarPreference( 'minimized' );
+			if ( typeof savePref !== 'undefined' && savePref === true ) {
+				this.setToolbarPreference( 'minimized' );
+			}
 		},
 		
-		maximize: function () {
+		maximize: function ( savePref ) {
 			// hide the minimized toolbar content
 			$( '#mwe-pt-toolbar-inactive' ).hide();
 			// show the regular toolbar content
@@ -149,13 +169,15 @@ $( function() {
 				// reset alignment to the side of the screen (since the toolbar is wider now)
 				.css( 'left', 'auto' ).css( 'right', '0' );
 			// set a pref for the user so the minimize state is remembered
-			this.setToolbarPreference( 'maximized' );
+			if ( typeof savePref !== 'undefined' && savePref === true ) {
+				this.setToolbarPreference( 'maximized' );
+			}
 		},
 		
-		setToolbarPreference: function( state ) {
+		setToolbarPreference: function( state, lastUse ) {
 			// if we have a token, go ahead and use it
 			if ( this.optionsToken ) {
-				this.finishSetToolbarPreference( state );
+				this.finishSetToolbarPreference( state, lastUse );
 			// otherwise request an options token first
 			} else {
 				var _this = this;
@@ -175,16 +197,20 @@ $( function() {
 						} catch ( e ) {
 							throw new Error( 'Could not get token (requires MediaWiki 1.20).' );
 						}
-						_this.finishSetToolbarPreference( state );
+						_this.finishSetToolbarPreference( state, lastUse );
 					}
 				} );
 			}
 		},
 
-		finishSetToolbarPreference: function( state ) {
+		finishSetToolbarPreference: function( state, lastUse ) {
+			var change = 'curationtoolbar=' + state;
+			if ( typeof lastUse !== 'undefined' ) {
+				change += '|pagetriage-lastuse=' + lastUse;
+			}
 			var prefRequest = {
 				'action': 'options',
-				'change': 'curationtoolbar=' + state,
+				'change': change,
 				'token': this.optionsToken,
 				'format': 'json'
 			};
@@ -197,11 +223,28 @@ $( function() {
 		},
 
 		insertLink: function () {
-			var $link = $( '<li id="t-curationtoolbar"><a href="#"></a></li>' );
+			var _this = this, $link = $( '<li id="t-curationtoolbar"><a href="#"></a></li>' );
 			$link.find( 'a' )
 				.text( mw.msg( 'pagetriage-toolbar-linktext' ) )
 				.click( function ( e ) {
-					$( '#mwe-pt-toolbar' ).show();
+					if ( $( '#mwe-pt-toolbar' ).is( ':hidden' ) ) {
+						var now = new Date();
+						now = new Date(
+							Date.UTC(
+								now.getUTCFullYear(),
+								now.getUTCMonth(),
+								now.getUTCDate(),
+								now.getUTCHours(),
+								now.getUTCMinutes(),
+								now.getUTCSeconds()
+							)
+						);
+						
+						var mwFormat = now.toString( 'yyyyMMddHHmmss' );
+						
+						$( '#mwe-pt-toolbar' ).show();
+						_this.setToolbarPreference( 'maximized', mwFormat );
+					}
 					this.blur();
 					return false;
 				} );
