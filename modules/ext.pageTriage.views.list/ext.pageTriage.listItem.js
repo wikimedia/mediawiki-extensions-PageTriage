@@ -19,8 +19,12 @@ $( function() {
 			} else {
 				data.reviewRightHelpText = gM( 'pagetriage-no-patrol-right' );
 			}
-			// insert the template into the document.  fill with the current model.
+			// insert the template into the document. fill with the current model.
 			this.$el.html( this.template( data ) );
+			
+			// initialize page status tooltip
+			this.$el.find( '.mwe-pt-status-icon' ).tipoff( this.model.get( 'page_status' ) );
+			
 			return this;
 		}
 

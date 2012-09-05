@@ -62,6 +62,36 @@ $( function() {
 				article.set( 'user_talk_title_url', this.buildRedLink( info.userTalkTitle ) );
 				article.set( 'user_contribs_title', info.userContribsTitle );
 			}
+			
+			// set the article status
+			// delete status
+			if ( article.get( 'afd_status' ) == "1" || article.get( 'blp_prod_status' ) == "1" ||
+				article.get( 'csd_status' ) == "1" || article.get( 'prod_status' ) == "1" )
+			{
+				article.set( 'page_status', mw.msg( 'pagetriage-page-status-delete' ) );
+			// unreviewed status
+			} else if ( article.get( 'patrol_status' ) == "0" ) {
+				article.set( 'page_status', mw.msg( 'pagetriage-page-status-unreviewed' ) );
+			// reviewed status
+			} else {
+				if ( article.get( 'ptrp_last_reviewed_by' ) != 0 && article.get( 'reviewer' ) ) {
+					var reviewerInfo = article.userInfo( article.get( 'reviewer' ) );
+					article.set(
+						'page_status',
+						mw.msg(
+							'pagetriage-page-status-reviewed',
+							Date.parseExact( article.get( 'ptrp_reviewed_updated' ), 'yyyyMMddHHmmss' ).toString( gM( 'pagetriage-info-timestamp-date-format' ) ),
+							reviewerInfo.userPageLink,
+							reviewerInfo.userTalkPageLink,
+							mw.msg( 'pipe-separator' ),
+							reviewerInfo.userContribsLink
+						)
+					);
+				} else {
+					article.set( 'page_status', mw.msg( 'pagetriage-page-status-reviewed-anonymous' ) );
+				}
+			}
+				
 			article.set( 'title_url_format', mw.util.wikiUrlencode( article.get( 'title' ) ) );
 
 			var titleUrl = mw.util.wikiGetlink( article.get( 'title' ) );
