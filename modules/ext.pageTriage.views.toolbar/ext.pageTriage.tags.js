@@ -591,7 +591,7 @@ $( function() {
 
 		talkPageNote: function( note ) {
 			var _this = this, title = new mw.Title( this.model.get( 'user_name' ), mw.config.get( 'wgNamespaceIds' )['user_talk'] ),
-			curPage = new mw.Title(  mw.config.get( 'wgPageName' ), mw.config.get( 'wgNamespaceNumber' ) );
+			curPage = new mw.Title(  mw.config.get( 'wgPageName' ) );
 
 			note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' )['Tags']
 				+ '|' + curPage.getPrefixedText()
