@@ -3,7 +3,7 @@
 class ApiPageTriageAction extends ApiBase {
 
 	public function execute() {
-		global $wgUser;
+		global $wgContLang;
 
 		$params = $this->extractRequestParams();
 
@@ -16,12 +16,22 @@ class ApiPageTriageAction extends ApiBase {
 			$this->pageError();
 		}
 
-		if ( $wgUser->pingLimiter( 'pagetriage-mark-action' ) ) {
+		if ( $this->getUser()->pingLimiter( 'pagetriage-mark-action' ) ) {
 			$this->dieUsageMsg( array( 'actionthrottledtext' ) );
 		}
 
 		$pageTriage = new PageTriage( $params['pageid'] );
-		$pageTriage->setTriageStatus( $params['reviewed'], $wgUser );
+		$pageTriage->setTriageStatus( $params['reviewed'], $this->getUser() );
+
+		// logging
+		$logEntry = new ManualLogEntry( 'pagetriage-curation', $params['reviewed'] ? 'reviewed' : 'unreviewed' );
+		$logEntry->setPerformer( $this->getUser() );
+		$logEntry->setTarget( $article->getTitle() );
+		$note = $wgContLang->truncate( $params['note'], 150 );
+		if ( $note ) {
+			$logEntry->setComment( $note );
+		}
+		$logEntry->publish( $logEntry->insert() );
 
 		$result = array( 'result' => 'success' );
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
@@ -58,7 +68,8 @@ class ApiPageTriageAction extends ApiBase {
 			),
 			'token' => array(
 				ApiBase::PARAM_REQUIRED => true,
-			)
+			),
+			'note' => null
 		);
 	}
 
@@ -78,7 +89,8 @@ class ApiPageTriageAction extends ApiBase {
 		return array(
 			'pageid' => 'The article for which to be marked as reviewed or unreviewed',
 			'reviewed' => 'whether the article is reviewed or not',
-			'token' => 'edit token'
+			'token' => 'edit token',
+			'note' => 'personal note to page creators from reviewers'
 		);
 	}
 

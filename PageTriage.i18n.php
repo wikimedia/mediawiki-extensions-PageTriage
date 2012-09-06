@@ -344,6 +344,17 @@ $messages['en'] = array(
 	'pagetriage-wikilove-no-recipients' => 'No recipients are available for this page.',
 	'pagetriage-wikilove-tooltip' => 'Send appreciation to the authors',
 	'pagetriage-next-tooltip' => 'Go to the next page in the queue',
+
+	// log
+	'log-name-pagetriage-curation' => 'Page curation log',
+	'log-description-pagetriage-curation' => 'This is the log of actions taken on page curation toolbar.',
+	'log-name-pagetriage-deletion' => 'Deletion tag log',
+	'log-description-pagetriage-deletion' => 'This is the log of actions taken on page curation deletion wizard.',
+	'logentry-pagetriage-curation-reviewed' => '$1 {{GENDER:$2|marked}} $3 as reviewed',
+	'logentry-pagetriage-curation-unreviewed' => '$1 {{GENDER:$2|marked}} $3 as unreviewed',
+	'logentry-pagetriage-curation-tag' => '$1 {{GENDER:$2|tagged}} $3 with $4 tag',
+	'logentry-pagetriage-curation-delete' => '$1 {{GENDER:$2|marked}} $3 for deletion with $4 tag',
+	'logentry-pagetriage-deletion-delete' => '$1 {{GENDER:$2|marked}} $3 for deletion with $4 tag',
 );
 
 /** Message documentation (Message documentation)
@@ -693,6 +704,17 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 	'pagetriage-wikilove-no-recipients' => 'A warning message displayed when there are no possible WikiLove recipients for the page.',
 	'pagetriage-wikilove-tooltip' => 'Help message that displays when someone hovers over the WikiLove button',
 	'pagetriage-next-tooltip' => 'Help message that displays when someone hovers over the Next button',
+
+	// log
+	'log-name-pagetriage-curation' => '{{doc-logpage}}',
+	'log-description-pagetriage-curation' => 'Descriptive header text for Page curation log page.',
+	'log-name-pagetriage-deletion' => '{{doc-logpage}}',
+	'log-description-pagetriage-deletion' => 'Descriptive header text for Deletion tag log page.',
+	'logentry-pagetriage-curation-reviewed'  => 'log action when someone marks a page as reviewed, {{LogEntry}}',
+	'logentry-pagetriage-curation-unreviewed'  => 'log action when someone marks a page as unreviewed, {{LogEntry}}',
+	'logentry-pagetriage-curation-tag' => 'log action when someone tags a page with maintenance tags, {{LogEntry}}, $4 is a list of comma-separated maintenance tags',
+	'logentry-pagetriage-curation-delete' => 'log action when some marks a page for deletion, {{LogEntry}}, $4 is a list of comma-separated deletion tags',
+	'logentry-pagetriage-deletion-delete' => 'log action when some marks a page for deletion, {{LogEntry}}, $4 is a list of comma-separated deletion tags',
 );
 
 /** Afrikaans (Afrikaans)

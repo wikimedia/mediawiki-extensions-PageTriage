@@ -474,7 +474,7 @@ $( function() {
 		 * Submit the selected tags
 		 */
 		submit: function() {
-			var topText = '', bottomText = '', processed = {}, _this = this, multipleTags = {};
+			var topText = '', bottomText = '', processed = {}, _this = this, multipleTags = {}, tagList = [];
 
 			for ( var cat in this.selectedTag ) {
 				for ( var tagKey in this.selectedTag[cat] ) {
@@ -507,6 +507,7 @@ $( function() {
 							break;
 					}
 					processed[tagKey] = true;
+					tagList.push( tagObj.tag.toLowerCase() );
 				}
 			}
 
@@ -546,18 +547,22 @@ $( function() {
 							$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
 							alert( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
 						} else {
-							_this.applyTags( topText, bottomText );
+							_this.applyTags( topText, bottomText, tagList );
 						}
 					},
 					dataType: 'json'
 				} );
 			} else {
-				this.applyTags( topText, bottomText );
+				this.applyTags( topText, bottomText, tagList );
 			}
 		},
 
-		applyTags: function( topText, bottomText ) {
-			var _this = this;
+		applyTags: function( topText, bottomText, tagList ) {
+			var _this = this, note = $.trim( $( '#mwe-pt-tag-note-input' ).val() );
+			if ( !this.noteChanged || !note.length ) {
+				note = '';
+			}
+
 			$.ajax( {
 				type: 'post',
 				url: mw.util.wikiScript( 'api' ),
@@ -567,12 +572,13 @@ $( function() {
 					'token': mw.user.tokens.get('editToken'),
 					'format': 'json',
 					'top': topText,
-					'bottom': bottomText
+					'bottom': bottomText,
+					'note': note,
+					'taglist': tagList.join( '|' )
 				},
 				success: function( data ) {
 					if ( data.pagetriagetagging && data.pagetriagetagging.result === 'success' ) {
-						var note = $.trim( $( '#mwe-pt-tag-note-input' ).val() );
-						if ( _this.noteChanged && note.length ) {
+						if ( note ) {
 							_this.talkPageNote( note );
 						} else {
 							// update the article model, since it's now changed.
