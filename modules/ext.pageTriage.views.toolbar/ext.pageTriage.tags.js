@@ -570,7 +570,7 @@ $( function() {
 					'bottom': bottomText
 				},
 				success: function( data ) {
-					if ( data.pagetriagetagging.result === 'success' ) {
+					if ( data.pagetriagetagging && data.pagetriagetagging.result === 'success' ) {
 						var note = $.trim( $( '#mwe-pt-tag-note-input' ).val() );
 						if ( _this.noteChanged && note.length ) {
 							_this.talkPageNote( note );
