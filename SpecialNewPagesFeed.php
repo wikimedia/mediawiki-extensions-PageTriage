@@ -186,26 +186,6 @@ class SpecialNewPagesFeed extends SpecialPage {
 				<!-- bottom nav template -->
 				<script type="text/template" id="listStatsNavTemplate">
 					<div id="mwe-pt-refresh-button-holder"><button id="mwe-pt-refresh-button"><%= gM( 'pagetriage-refresh-list' ) %></button></div>
-					<div class="mwe-pt-top-triager">
-						<%
-						if ( toptriager.total ) {
-						%>
-							<span class="mwe-pt-stats-label"><%= ptrTopTriagerStr %></span>
-							<%
-							var triagerLinks = new Array();
-							for ( var m in ptrTopTriager ) {
-								triagerLinks.push( "<a " + ptrTopTriager[m].linkCSS + " href=\"" + ptrTopTriager[m].title.getUrl() + "\">" + mw.html.escape(ptrTopTriager[m].userName ) + "</a>" );
-							}
-							var triagers = triagerLinks.join( gM( 'comma-separator' ) );
-							%>
-							<%= triagers %>
-						<%
-						}
-						%>
-					</div>
-					<div class="mwe-pt-article-age-stats">
-						<% if ( ptrAverage ) { %> <%= gM( 'pagetriage-stats-unreviewed-age', ptrAverage, ptrOldest ) %> <% } %>
-					</div>
 				</script>
 
 HTML;
