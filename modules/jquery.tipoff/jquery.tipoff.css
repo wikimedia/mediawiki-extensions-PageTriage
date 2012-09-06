@@ -6,15 +6,9 @@
 	width: 255px;
 	padding: 0.8em;
 	margin: 0;
-	color: white;
-	background-color: #252525;
+	background-color: #c9c9c9;
 	box-shadow: 0 7px 10px rgba(0, 0, 0, 0.4);
 }
-/* FIXME: Get new colors from Brandon */
-.mw-tipoff a:link {color: white;}
-.mw-tipoff a:visited {color: white;}
-.mw-tipoff a.new:link {color: white;}
-.mw-tipoff a.new:visited {color: white;}
 
 .mw-tipoff-pokey {
 	position: absolute;
@@ -22,7 +16,7 @@
 	top: -10px;
 	left: 5px;
 	/* @embed */
-	background-image: url('images/pokey.png');
+	background-image: url('images/pokey-light.png');
 	background-repeat: no-repeat;
 	height: 12px;
 	width: 11px;
