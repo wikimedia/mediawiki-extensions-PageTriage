@@ -105,7 +105,7 @@ $messages['en'] = array(
 	'pagetriage-personal-default-note' => 'Write a helpful note for {{GENDER:$1|$1}}. It will be posted on their talk page.',
 	'pagetriage-page-status-reviewed' => 'Marked as reviewed on $1 by $2 ($3$4$5)',
 	'pagetriage-page-status-reviewed-anonymous' => 'Marked as reviewed',
-	'pagetriage-page-status-unreviewed' => 'This page is still unreviewed',
+	'pagetriage-page-status-unreviewed' => 'This page is still unreviewed.',
 	'pagetriage-page-status-delete' => 'Marked for deletion',
 	'pagetriage-articleinfo-stat' => 'Stats: $1',
 
