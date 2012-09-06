@@ -464,15 +464,28 @@ $wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + array(
 		'ext.pageTriage.models/ext.pageTriage.article.js',
 		'ext.pageTriage.models/ext.pageTriage.revision.js',
 		'ext.pageTriage.models/ext.pageTriage.stats.js'
+	),
+	'messages' => array(
+		'pipe-separator',
+		'pagetriage-info-timestamp-date-format',
+		'pagetriage-page-status-unreviewed',
+		'pagetriage-page-status-reviewed',
+		'pagetriage-page-status-delete',
+		'pagetriage-page-status-reviewed-anonymous'
 	)
 );
 
+$wgResourceModules['jquery.tipoff'] = $ptResourceTemplate + array(
+	'styles' => 'jquery.tipoff/jquery.tipoff.css',
+	'scripts' => 'jquery.tipoff/jquery.tipoff.js'
+);
 
 $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 	'dependencies' => array(
 		'mediawiki.jqueryMsg',
 		'ext.pageTriage.models',
 		'ext.pageTriage.util',
+		'jquery.tipoff',
 		'jquery.ui.button',
 		'jquery.spinner'
 	),

@@ -25,34 +25,6 @@ $( function() {
 				)
 			);
 
-			// show delete status
-			if ( this.model.get( 'afd_status' ) == "1" || this.model.get( 'blp_prod_status' ) == "1" ||
-				this.model.get( 'csd_status' ) == "1" || this.model.get( 'prod_status' ) == "1" )
-			{
-				this.model.set( 'pageStatus', mw.msg( 'pagetriage-page-status-delete' ) );
-			// show unreviewed status
-			} else if ( this.model.get( 'patrol_status' ) == "0" ) {
-				this.model.set( 'pageStatus', mw.msg( 'pagetriage-page-status-unreviewed' ) );
-			// show reviewed status
-			} else {
-				if ( this.model.get( 'ptrp_last_reviewed_by' ) != 0 && this.model.get( 'reviewer' ) ) {
-					var reviewerInfo = this.model.userInfo( this.model.get( 'reviewer' ) );
-					this.model.set(
-						'pageStatus',
-						mw.msg(
-							'pagetriage-page-status-reviewed',
-							Date.parseExact( this.model.get( 'ptrp_reviewed_updated' ), 'yyyyMMddHHmmss' ).toString( gM( 'pagetriage-info-timestamp-date-format' ) ),
-							reviewerInfo.userPageLink,
-							reviewerInfo.userTalkPageLink,
-							mw.msg( 'pipe-separator' ),
-							reviewerInfo.userContribsLink
-						)
-					);
-				} else {
-					this.model.set( 'pageStatus', mw.msg( 'pagetriage-page-status-reviewed-anonymous' ) );
-				}
-			}
-
 			// creator information
 			if (  this.model.get( 'user_name' ) ) {
 				var info = this.model.userInfo( this.model.get( 'user_name' ) );
