@@ -4182,7 +4182,7 @@ $messages['ko'] = array(
 	'pagetriage-author-bot' => '봇',
 	'pagetriage-showing' => '보기:',
 	'pagetriage-filter-list-prompt' => '필터 설정',
-	'pagetriage-article-count' => '검토하지 않는 문서 $1개 있음',
+	'pagetriage-article-count' => '검토하지 않는 {{PLURAL:$1|문서}} $1개 있음 (오래됨: $2)',
 	'pagetriage-sort-by' => '정렬 기준:',
 	'pagetriage-newest' => '최신',
 	'pagetriage-oldest' => '가장 오래됨',
@@ -4441,7 +4441,7 @@ $messages['ko'] = array(
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-info-tooltip' => '이 문서에 대한 메타데이터 보기',
 	'pagetriage-toolbar-collapsed' => '큐레이션',
-	'pagetriage-toolbar-linktext' => '큐레이션 툴바',
+	'pagetriage-toolbar-linktext' => '이 문서 큐레이트',
 	'pagetriage-toolbar-learn-more' => '더 알아보기 »',
 	'pagetriage-mark-title' => '검토한 것으로 표시',
 	'pagetriage-mark-as-reviewed' => '검토한 것으로 표시',
@@ -4454,6 +4454,11 @@ $messages['ko'] = array(
 	'pagetriage-wikilove-no-recipients' => '받는이가 이 문서에 대해 사용할 수 없습니다.',
 	'pagetriage-wikilove-tooltip' => '저자에게 감사를 보내기',
 	'pagetriage-next-tooltip' => '대기열에서 다음 문서로 가기',
+	'log-name-pagetriage-curation' => '문서 큐레이트 기록',
+	'log-description-pagetriage-curation' => '문서 큐레이트 툴바에서 수행한 작업 기록입니다.',
+	'log-name-pagetriage-deletion' => '태그 삭제 기록',
+	'log-description-pagetriage-deletion' => '문서 큐레이트 삭제 마법사에서 수행한 작업 기록입니다.',
+	'logentry-pagetriage-curation-reviewed' => '$1 사용자가 $3 문서를 검토한 것으로 {{GENDER:$1|표시함}}',
 );
 
 /** Colognian (Ripoarisch)
@@ -5055,6 +5060,8 @@ $messages['nl'] = array(
 	'pagetriage-add-a-note' => 'Bericht toevoegen voor de aanmaker (optioneel):',
 	'pagetriage-characters-left' => '$1 {{PLURAL:$1|teken|tekens}} over',
 	'pagetriage-personal-default-note' => 'Schrijf een nuttig bericht voor $1. Dat wordt geplaatst op {{GENDER:$1|zijn|haar}} overlegpagina.',
+	'pagetriage-page-status-reviewed' => 'Gemarkeerd als gecontroleerd op $1 door $2 ($3$4$5)',
+	'pagetriage-page-status-reviewed-anonymous' => 'Gemarkeerd als gecontroleerd',
 	'pagetriage-page-status-delete' => 'Gemarkeerd voor verwijdering',
 	'pagetriage-tags-title' => 'Labels toevoegen',
 	'pagetriage-tags-cat-common-label' => 'Algemeen',
@@ -6084,6 +6091,20 @@ $messages['tl'] = array(
 	'logentry-pagetriage-curation-tag' => '{{GENDER:$2|Tinatakan}} ni $1 ang $3 sa pamamagitan ng tatak na $4',
 	'logentry-pagetriage-curation-delete' => '{{GENDER:$2|Minarkahan}} ni $1 ang $3 para mabura sa pamamagitan ng tatak na $4',
 	'logentry-pagetriage-deletion-delete' => '{{GENDER:$2|Minarkahan}} ni $1 ang $3 para mabura sa pamamagitan ng tatak na $4',
+);
+
+/** толышә зывон (толышә зывон)
+ * @author Гусейн
+ */
+$messages['tly'] = array(
+	'pagetriage-filter-show-heading' => 'Нишо дој:',
+	'pagetriage-more' => 'Һәнијән',
+	'pagetriage-filter-stat-all' => 'Һәммәј',
+	'pagetriage-tags-cat-metadata-label' => 'Метамәлумотон',
+	'pagetriage-tags-cat-sources-label' => 'Сәвонон',
+	'pagetriage-tags-param-free-yes-label' => 'Бәле',
+	'pagetriage-tags-param-free-no-label' => 'Не',
+	'pagetriage-info-history-header' => 'Тарых',
 );
 
 /** Urdu (اردو)
