@@ -32,12 +32,15 @@ class ApiPageTriageTagging extends ApiBase {
 			$apiParams['appendtext'] = "\n\n" . $params['bottom'];
 		}
 
+		// Parse tags into a human readable list for the edit summary
+		$tags = $wgContLang->commaList( $params['taglist'] );
+
 		if ( $apiParams ) {
 			$projectLink = '[[' . $wgPageTriageProjectLink . '|' . wfMessage( 'pagetriage-pagecuration' )->plain() . ']]';
 			if ( $params['deletion'] ) {
-				$editSummary = wfMessage( 'pagetriage-del-edit-summary', $projectLink )->plain();
+				$editSummary = wfMessage( 'pagetriage-del-edit-summary', $projectLink, $tags )->plain();
 			} else {
-				$editSummary = wfMessage( 'pagetriage-tags-edit-summary', $projectLink )->plain();
+				$editSummary = wfMessage( 'pagetriage-tags-edit-summary', $projectLink, $tags )->plain();
 			}
 			// Perform the text insertion
 			$api = new ApiMain(
@@ -80,7 +83,7 @@ class ApiPageTriageTagging extends ApiBase {
 						$logEntry->setComment( $note );
 					}
 					$logEntry->setParameters( array(
-						'4::tags' => explode( '|', $params['taglist'] ),
+						'4::tags' => $params['taglist'],
 					) );
 					$logEntry->publish( $logEntry->insert() );
 				}
@@ -106,7 +109,7 @@ class ApiPageTriageTagging extends ApiBase {
 				ApiBase::PARAM_TYPE => 'integer'
 			),
 			'token' => array(
-				ApiBase::PARAM_REQUIRED => true,
+				ApiBase::PARAM_REQUIRED => true
 			),
 			'top' => null,
 			'bottom' => null,
@@ -115,7 +118,10 @@ class ApiPageTriageTagging extends ApiBase {
 				ApiBase::PARAM_TYPE => 'boolean'
 			),
 			'note' => null,
-			'taglist' => null,
+			'taglist' => array(
+				ApiBase::PARAM_REQUIRED => true,
+				ApiBase::PARAM_ISMULTI => true
+			),
 		);
 	}
 
