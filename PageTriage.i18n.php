@@ -1415,6 +1415,7 @@ $messages['diq'] = array(
 	'pagetriage-sort-by' => 'Raten:',
 	'pagetriage-oldest' => 'Tewr kehan',
 	'pagetriage-filter-ns-all' => 'Pêro',
+	'pagetriage-more' => 'Zewbi',
 	'pagetriage-filter-stat-all' => 'Pêro',
 	'pagetriage-refresh-list' => 'Listi neweke',
 	'pagetriage-tags-cat-all-label' => 'Etiketi pêro',
@@ -2491,6 +2492,7 @@ $messages['gl'] = array(
 	'pagetriage-page-status-reviewed-anonymous' => 'Marcada como revisada',
 	'pagetriage-page-status-unreviewed' => 'Esta páxina aínda non foi revisada',
 	'pagetriage-page-status-delete' => 'Marcada para borrar',
+	'pagetriage-articleinfo-stat' => 'Estatísticas: $1',
 	'pagetriage-tags-title' => 'Engadir etiquetas',
 	'pagetriage-tags-cat-common-label' => 'Común',
 	'pagetriage-tags-cat-metadata-label' => 'Metadatos',
@@ -2720,6 +2722,15 @@ $messages['gl'] = array(
 	'pagetriage-wikilove-no-recipients' => 'Non hai destinatarios dispoñibles para a páxina.',
 	'pagetriage-wikilove-tooltip' => 'Enviar un recoñecemento aos autores',
 	'pagetriage-next-tooltip' => 'Ir á seguinte páxina da cola',
+	'log-name-pagetriage-curation' => 'Rexistro de conservación de páxinas',
+	'log-description-pagetriage-curation' => 'Este é o rexistro das accións levadas a cabo na barra de ferramentas de conservación de páxinas.',
+	'log-name-pagetriage-deletion' => 'Rexistro das etiquetas de borrado',
+	'log-description-pagetriage-deletion' => 'Este é o rexistro das accións levadas a cabo no asistente de borrado de conservación de páxinas.',
+	'logentry-pagetriage-curation-reviewed' => '$1 {{GENDER:$2|marcou}} "$3" como revisado',
+	'logentry-pagetriage-curation-unreviewed' => '$1 {{GENDER:$2|marcou}} "$3" como non revisado',
+	'logentry-pagetriage-curation-tag' => '$1 {{GENDER:$2|marcou}} "$3" coa etiqueta $4',
+	'logentry-pagetriage-curation-delete' => '$1 {{GENDER:$2|marcou}} "$3" para o seu borrado coa etiqueta $4',
+	'logentry-pagetriage-deletion-delete' => '$1 {{GENDER:$2|marcou}} "$3" para o seu borrado coa etiqueta $4',
 );
 
 /** Hebrew (עברית)
