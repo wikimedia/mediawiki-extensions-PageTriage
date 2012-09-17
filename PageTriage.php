@@ -479,6 +479,7 @@ $wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + array(
 		'pipe-separator',
 		'pagetriage-info-timestamp-date-format',
 		'pagetriage-page-status-unreviewed',
+		'pagetriage-page-status-autoreviewed',
 		'pagetriage-page-status-reviewed',
 		'pagetriage-page-status-delete',
 		'pagetriage-page-status-reviewed-anonymous'
@@ -689,6 +690,7 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-page-status-reviewed',
 		'pagetriage-page-status-reviewed-anonymous',
 		'pagetriage-page-status-unreviewed',
+		'pagetriage-page-status-autoreviewed',
 		'pagetriage-page-status-delete',
 		'pagetriage-dot-separator',
 		'pagetriage-articleinfo-stat',
