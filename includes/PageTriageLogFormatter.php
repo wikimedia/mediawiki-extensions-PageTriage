@@ -18,4 +18,3 @@ class PageTriageLogFormatter extends LogFormatter {
 
 }
 
-?>
