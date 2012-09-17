@@ -511,19 +511,43 @@ $( function() {
 		 * Submit the selected tags
 		 */
 		submit: function() {
-			// check if the selected category allow multiple selection
-			if ( !this.deletionTagsOptions[this.selectedCat].multiple ) {
-				for ( var key in this.selectedTag ) {
-					var tagObj = this.selectedTag[key];
-					// check if the selected tag has a prefix like Wikipedia:Articles for deletion
-					if ( tagObj.prefix ) {
-						this.logPage( tagObj );
-						return;
-					}
-				}
-			}
+			var _this = this;
 
-			this.tagPage();
+			// Applying deletion tags should automatically mark the page as reviewed
+			apiRequest = {
+				'action': 'pagetriageaction',
+				'pageid': mw.config.get( 'wgArticleId' ),
+				'reviewed': '1',
+				'token': mw.user.tokens.get( 'editToken' ),
+				'format': 'json'
+			};
+			$.ajax( {
+				type: 'post',
+				url: mw.util.wikiScript( 'api' ),
+				data: apiRequest,
+				success: function( data ) {
+					if ( data.error ) {
+						_this.handleError( 'pagetriage-mark-as-reviewed-error' );
+					} else {
+						// Log certain types of deletion nominations...
+						// If the selected tag category doesn't allow multiple selection
+						// and the selected tag has a prefix (like Wikipedia:Articles for
+						// deletion) update the log page for that deletion type.
+						// TODO: Make logging a JS config-based option
+						if ( !_this.deletionTagsOptions[_this.selectedCat].multiple ) {
+							for ( var key in _this.selectedTag ) {
+								var tagObj = _this.selectedTag[key];
+								if ( tagObj.prefix ) {
+									_this.logPage( tagObj );
+									return;
+								}
+							}
+						}
+						_this.tagPage();
+					}
+				},
+				dataType: 'json'
+			} );
 		},
 
 		handleError: function( msg ) {
