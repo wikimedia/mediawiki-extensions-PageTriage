@@ -20,6 +20,7 @@ $( function() {
 		formatMetadata: function ( stats ) {
 			stats.set( 'ptrUnreviewedCount', stats.get( 'unreviewedarticle' )['count'] );
 			stats.set( 'ptrOldest', this.formatDaysFromNow( stats.get( 'unreviewedarticle' )['oldest'] ) );
+			stats.set( 'ptrReviewedCount', stats.get( 'reviewedarticle' )['reviewed_count'] );
 		},
 
 		formatDaysFromNow: function ( dateStr ) {

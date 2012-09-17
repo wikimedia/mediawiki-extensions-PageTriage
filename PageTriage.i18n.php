@@ -73,6 +73,7 @@ $messages['en'] = array(
 	'pagetriage-filter-all' => 'Show all',
 	'pagetriage-filter-set-button' => 'Set filters',
 	'pagetriage-stats-less-than-a-day' => 'less than one day',
+	'pagetriage-stats-reviewed-page-count' => '$1 {{PLURAL:$1|page|pages}} reviewed this week',
 	'pagetriage-filter-ns-all' => 'All',
 	'pagetriage-more' => 'More',
 	'pagetriage-filter-stat-all' => 'All',
@@ -416,6 +417,7 @@ If your language requires some words between the different parts of the timestam
 	'pagetriage-article-count' => 'A description of the number of unreviewed pages. Parameters:
 * $1 is the count,
 * $2 is the age of oldest article, this could be from message key pagetriage-stats-less-than-a-day or days',
+	'pagetriage-stats-reviewed-page-count' => 'Text showing the number of pages reviewed in the past week, $1 is the number of reviewed pages',
 	'pagetriage-sort-by' => 'Label for the sort-order buttons (oldest/newest)',
 	'pagetriage-newest' => 'Text for a sort-order button',
 	'pagetriage-oldest' => 'Text for a sort-order button',

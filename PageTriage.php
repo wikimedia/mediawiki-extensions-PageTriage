@@ -560,6 +560,7 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'pagetriage-filter-blocked',
 		'pagetriage-filter-set-button',
 		'pagetriage-stats-less-than-a-day',
+		'pagetriage-stats-reviewed-page-count',
 		'blanknamespace',
 		'pagetriage-filter-ns-all',
 		'pagetriage-more',

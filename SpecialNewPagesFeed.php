@@ -186,6 +186,9 @@ class SpecialNewPagesFeed extends SpecialPage {
 				<!-- bottom nav template -->
 				<script type="text/template" id="listStatsNavTemplate">
 					<div id="mwe-pt-refresh-button-holder"><button id="mwe-pt-refresh-button"><%= gM( 'pagetriage-refresh-list' ) %></button></div>
+					<div id="mwe-pt-reviewed-stats">		
+					<% if ( ptrReviewedCount ) { %><%= gM( 'pagetriage-stats-reviewed-page-count', ptrReviewedCount ) %><% } %>		
+					</div>
 				</script>
 
 HTML;

@@ -45,7 +45,6 @@ class PageTriageUtil {
 	private static function validatePageNamespace( $namespace = '' ) {
 		global $wgPageTriageNamespaces;
 
-		$conds = array();
 		if ( $namespace !== '' ) {
 			$namespace = intval( $namespace );
 			if ( !in_array( $namespace, $wgPageTriageNamespaces ) ) {
@@ -104,6 +103,49 @@ class PageTriageUtil {
 		if ( $res ) {
 			$data['count'] = intval( $res->total );
 			$data['oldest'] = $res->oldest;
+		}
+
+		// make it expire in 10 minutes
+		$wgMemc->set( $key, $data, 600 );
+		return $data;
+	}
+
+	public static function getReviewedArticleStat( $namespace = '' ) {
+		global $wgMemc;
+
+		$namespace = self::validatePageNamespace( $namespace );
+
+		$memcKey = is_array( $namespace ) ? '' : $namespace;
+
+		$key = wfMemcKey( 'pagetriage', 'reviewed-article-' . $memcKey, 'stat', self::getCacheVersion() );
+
+		$data = $wgMemc->get( $key );
+		if ( $data !== false ) {
+			return $data;
+		}
+
+		$time = wfTimestamp( TS_UNIX ) - 7 * 24 * 60 * 60;
+
+		$dbr = wfGetDB( DB_SLAVE );
+
+		$table = array( 'pagetriage_page', 'page' );
+		$conds = array(
+			'ptrp_reviewed' => 1,
+			'page_id = ptrp_page_id',
+			'page_namespace' => $namespace,
+			'ptrp_reviewed_updated > ' . $dbr->addQuotes( $dbr->timestamp( $time ) )
+		);
+
+		$res = $dbr->selectRow(
+			$table,
+			array( 'COUNT(ptrp_page_id) AS reviewed_count' ),
+			$conds
+		);
+
+		$data = array( 'reviewed_count' => 0 );
+
+		if ( $res ) {
+			$data['reviewed_count'] = intval( $res->reviewed_count );
 		}
 
 		// make it expire in 10 minutes
