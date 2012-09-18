@@ -72,6 +72,9 @@ $( function() {
 			// unreviewed status
 			} else if ( article.get( 'patrol_status' ) == "0" ) {
 				article.set( 'page_status', mw.msg( 'pagetriage-page-status-unreviewed' ) );
+			// auto-reviewed status
+			} else if ( article.get( 'patrol_status' ) == "3" ) {
+				article.set( 'page_status', mw.msg( 'pagetriage-page-status-autoreviewed' ) );
 			// reviewed status
 			} else {
 				if ( article.get( 'ptrp_last_reviewed_by' ) != 0 && article.get( 'reviewer' ) ) {

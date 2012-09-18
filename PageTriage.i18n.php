@@ -108,6 +108,7 @@ $messages['en'] = array(
 	'pagetriage-page-status-reviewed' => 'Marked as reviewed on $1 by $2 ($3$4$5)',
 	'pagetriage-page-status-reviewed-anonymous' => 'Marked as reviewed',
 	'pagetriage-page-status-unreviewed' => 'This page is still unreviewed.',
+	'pagetriage-page-status-autoreviewed' => 'This page was autopatrolled.',
 	'pagetriage-page-status-delete' => 'Marked for deletion',
 	'pagetriage-articleinfo-stat' => 'Stats: $1',
 
@@ -475,6 +476,7 @@ If your language requires some words between the different parts of the timestam
 	'pagetriage-page-status-reviewed' => 'Text that shows the page has been reviewed and the reviewer of the page, $1 is the review date/time, $2 is the link to reviewer user page, $3 is the link to reviewer talk page, $4 is the link separator, $5 is the link to reviewer contribs page',
 	'pagetriage-page-status-reviewed-anonymous' => 'Text that shows the page has been reviewed',
 	'pagetriage-page-status-unreviewed' => 'Text that shows the page has not yet been reviewed',
+	'pagetriage-page-status-autoreviewed' => 'Text that shows the page was autopatrolled (https://www.mediawiki.org/wiki/MediaWiki:Right-autopatrol)',
 	'pagetriage-page-status-delete' => 'Text that shows the page has been marked for deletion',
 	'pagetriage-articleinfo-stat' => 'Article info flyout stat, $1 is a list of stats separated by pagetriage-dot-separator',
 	'pagetriage-tags-title' => 'The title for the tag wizard flyout in the toolbar',

@@ -179,6 +179,8 @@ class ArticleMetadata {
 				$pageData[$row->ptrpt_page_id][$row->ptrt_tag_name] = $row->ptrpt_value;
 				if ( !isset( $pageData[$row->ptrpt_page_id]['creation_date'] ) ) {
 					$pageData[$row->ptrpt_page_id]['creation_date'] = wfTimestamp( TS_MW, $row->ptrp_created );
+					// The patrol_status has 4 possible values:
+					// 0 = unreviewed, 1 = reviewed, 2 = patrolled, 3 = autopatrolled
 					$pageData[$row->ptrpt_page_id]['patrol_status'] = $row->ptrp_reviewed;
 					$pageData[$row->ptrpt_page_id]['is_redirect'] = $row->page_is_redirect;
 					$pageData[$row->ptrpt_page_id]['ptrp_last_reviewed_by'] = $row->ptrp_last_reviewed_by;
