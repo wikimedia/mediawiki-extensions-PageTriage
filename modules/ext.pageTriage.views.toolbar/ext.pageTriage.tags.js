@@ -71,24 +71,12 @@ $( function() {
 		},
 
 		/**
-		 * Show/Hide the review button based on reviewed status
-		 */
-		showHideReviewButton: function() {
-			if ( this.model.get( 'patrol_status' ) > 0 ) {
-				$( '#mwe-pt-checkbox-mark-reviewed-wrapper' ).hide();
-			} else {
-				$( '#mwe-pt-checkbox-mark-reviewed-wrapper' ).show();
-			}
-		},
-
-		/**
 		 * Display the tag flyout, everything should be reset
 		 */
 		render: function() {
 			var _this = this;
 			this.reset();
 			this.$tel.html( this.template( { 'tags': this.tagsOptions, 'title': this.title, 'maxLength': this.noteMaxLength, 'creator': this.model.get( 'user_name' ) } ) );
-			this.model.on( 'change', this.showHideReviewButton, this );
 
 			// set the Learn More link URL
 			var modules = mw.config.get( 'wgPageTriageCurationModules' );
@@ -135,7 +123,6 @@ $( function() {
 					}
 				).end();
 
-			this.showHideReviewButton();
 			// show tags under common by default
 			this.displayTags( 'common' );
 		},
@@ -287,13 +274,9 @@ $( function() {
 			// activate or deactivate the submit button and associated parts
 			if ( this.selectedTagCount > 0 && this.noteCharLeft() > 0 ) {
 				$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
-				$( '#mwe-pt-checkbox-mark-reviewed' ).removeAttr( 'disabled' );
-				$( '#mwe-pt-checkbox-mark-reviewed-label' ).css( 'opacity', 1.0 );
 			} else {
 				$( '#mwe-pt-tag-total-count' ).empty();
 				$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
-				$( '#mwe-pt-checkbox-mark-reviewed' ).attr( 'disabled', true );
-				$( '#mwe-pt-checkbox-mark-reviewed-label' ).css( 'opacity', 0.35 );
 			}
 		},
 
@@ -528,33 +511,29 @@ $( function() {
 				return;
 			}
 
-			// If review checkbox is checked, mark as reviewed, then submit tags
-			if ( $( '#mwe-pt-checkbox-mark-reviewed' ).is( ':checked' ) ) {
-				apiRequest = {
-					'action': 'pagetriageaction',
-					'pageid': mw.config.get( 'wgArticleId' ),
-					'reviewed': '1',
-					'token': mw.user.tokens.get('editToken'),
-					'format': 'json'
-				};
-				$.ajax( {
-					type: 'post',
-					url: mw.util.wikiScript( 'api' ),
-					data: apiRequest,
-					success: function( data ) {
-						if ( data.error ) {
-							$.removeSpinner( 'tag-spinner' );
-							$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
-							alert( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
-						} else {
-							_this.applyTags( topText, bottomText, tagList );
-						}
-					},
-					dataType: 'json'
-				} );
-			} else {
-				this.applyTags( topText, bottomText, tagList );
-			}
+			// Applying maintenance tags should automatically mark the page as reviewed
+			apiRequest = {
+				'action': 'pagetriageaction',
+				'pageid': mw.config.get( 'wgArticleId' ),
+				'reviewed': '1',
+				'token': mw.user.tokens.get('editToken'),
+				'format': 'json'
+			};
+			$.ajax( {
+				type: 'post',
+				url: mw.util.wikiScript( 'api' ),
+				data: apiRequest,
+				success: function( data ) {
+					if ( data.error ) {
+						$.removeSpinner( 'tag-spinner' );
+						$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
+						alert( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
+					} else {
+						_this.applyTags( topText, bottomText, tagList );
+					}
+				},
+				dataType: 'json'
+			} );
 		},
 
 		applyTags: function( topText, bottomText, tagList ) {
