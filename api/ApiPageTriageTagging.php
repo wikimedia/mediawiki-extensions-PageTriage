@@ -83,7 +83,7 @@ class ApiPageTriageTagging extends ApiBase {
 						$logEntry->setComment( $note );
 					}
 					$logEntry->setParameters( array(
-						'4::tags' => $params['taglist'],
+						'tags' => $params['taglist'],
 					) );
 					$logEntry->publish( $logEntry->insert() );
 				}
