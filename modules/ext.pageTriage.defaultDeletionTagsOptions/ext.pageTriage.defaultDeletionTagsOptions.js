@@ -45,7 +45,8 @@ var tags = {
 
 	'dba1': {
 		label: mw.msg( 'pagetriage-del-tags-dba1-label' ),
-		tag: 'db-a1',
+		tag: 'speedy deletion-no context', // redirect to db-a1
+		code: 'A1',
 		desc: mw.msg( 'pagetriage-del-tags-dba1-desc' ),
 		params: {},
 		anchor: 'nocontext',
@@ -54,7 +55,8 @@ var tags = {
 
 	'dba2': {
 		label: mw.msg( 'pagetriage-del-tags-dba2-label' ),
-		tag: 'db-a2',
+		tag: 'speedy deletion-foreign language', // redirect to db-a2
+		code: 'A2',
 		desc: mw.msg( 'pagetriage-del-tags-dba2-desc' ),
 		params: {
 			'source': $.extend( true, {}, param.source )
@@ -65,7 +67,8 @@ var tags = {
 
 	'dba3': {
 		label: mw.msg( 'pagetriage-del-tags-dba3-label' ),
-		tag: 'db-a3',
+		tag: 'speedy deletion-no content', // redirect to db-a3
+		code: 'A3',
 		desc: mw.msg( 'pagetriage-del-tags-dba3-desc' ),
 		params: {},
 		anchor: 'nocontent',
@@ -74,7 +77,8 @@ var tags = {
 
 	'dba7': {
 		label: mw.msg( 'pagetriage-del-tags-dba7-label' ),
-		tag: 'db-a7',
+		tag: 'speedy deletion-significance', // redirect to db-a7
+		code: 'A7',
 		desc: mw.msg( 'pagetriage-del-tags-dba7-desc' ),
 		params: {},
 		anchor: 'importance',
@@ -83,7 +87,8 @@ var tags = {
 
 	'dba9': {
 		label: mw.msg( 'pagetriage-del-tags-dba9-label' ),
-		tag: 'db-a9',
+		tag: 'speedy deletion-musical recording', // redirect to db-a9
+		code: 'A9',
 		desc: mw.msg( 'pagetriage-del-tags-dba9-desc' ),
 		params: {},
 		anchor: 'music',
@@ -92,7 +97,8 @@ var tags = {
 
 	'dba10': {
 		label: mw.msg( 'pagetriage-del-tags-dba10-label' ),
-		tag: 'db-a10',
+		tag: 'speedy deletion-duplicate article', // redirect to db-a10
+		code: 'A10',
 		desc: mw.msg( 'pagetriage-del-tags-dba10-desc' ),
 		params: {
 			'article': $.extend( true, {}, param.article )
@@ -103,7 +109,8 @@ var tags = {
 
 	'dbg1': {
 		label: mw.msg( 'pagetriage-del-tags-dbg1-label' ),
-		tag: 'db-g1',
+		tag: 'speedy deletion-nonsense', // redirect to db-g1
+		code: 'G1',
 		desc: mw.msg( 'pagetriage-del-tags-dbg1-desc' ),
 		params: {},
 		anchor: 'nonsense',
@@ -112,7 +119,8 @@ var tags = {
 
 	'dbg2': {
 		label: mw.msg( 'pagetriage-del-tags-dbg2-label' ),
-		tag: 'db-g2',
+		tag: 'speedy deletion-test page', // redirect to db-g2
+		code: 'G2',
 		desc: mw.msg( 'pagetriage-del-tags-dbg2-desc' ),
 		params: {},
 		anchor: 'test',
@@ -121,7 +129,8 @@ var tags = {
 
 	'dbg3': {
 		label: mw.msg( 'pagetriage-del-tags-dbg3-label' ),
-		tag: 'db-g3',
+		tag: 'speedy deletion-vandalism', // redirect to db-g3
+		code: 'G3',
 		desc: mw.msg( 'pagetriage-del-tags-dbg3-desc' ),
 		params: {},
 		anchor: 'vandalism',
@@ -130,7 +139,8 @@ var tags = {
 
 	'dbg4': {
 		label: mw.msg( 'pagetriage-del-tags-dbg4-label' ),
-		tag: 'db-g4',
+		tag: 'speedy deletion-previously deleted', // redirect to db-g4
+		code: 'G4',
 		desc: mw.msg( 'pagetriage-del-tags-dbg4-desc' ),
 		params: {},
 		anchor: 'repost',
@@ -139,7 +149,8 @@ var tags = {
 
 	'dbg5': {
 		label: mw.msg( 'pagetriage-del-tags-dbg5-label' ),
-		tag: 'db-g5',
+		tag: 'speedy deletion-blocked user', // redirect to db-g5
+		code: 'G5',
 		desc: mw.msg( 'pagetriage-del-tags-dbg5-desc' ),
 		params: {},
 		anchor: 'banned',
@@ -148,7 +159,8 @@ var tags = {
 
 	'dbg7': {
 		label: mw.msg( 'pagetriage-del-tags-dbg7-label' ),
-		tag: 'db-g7',
+		tag: 'speedy deletion-author request', // redirect to db-g7
+		code: 'G7',
 		desc: mw.msg( 'pagetriage-del-tags-dbg7-desc' ),
 		params: {},
 		anchor: 'blanked',
@@ -157,7 +169,8 @@ var tags = {
 
 	'dbg10': {
 		label: mw.msg( 'pagetriage-del-tags-dbg10-label' ),
-		tag: 'db-g10',
+		tag: 'speedy deletion-attack', // redirect to db-g10
+		code: 'G10',
 		desc: mw.msg( 'pagetriage-del-tags-dbg10-desc' ),
 		params: {},
 		anchor: 'attack',
@@ -166,7 +179,8 @@ var tags = {
 
 	'dbg11': {
 		label: mw.msg( 'pagetriage-del-tags-dbg11-label' ),
-		tag: 'db-g11',
+		tag: 'speedy deletion-advertising', // redirect to db-g11
+		code: 'G11',
 		desc: mw.msg( 'pagetriage-del-tags-dbg11-desc' ),
 		params: {},
 		anchor: 'spam',
@@ -175,7 +189,8 @@ var tags = {
 
 	'dbg12': {
 		label: mw.msg( 'pagetriage-del-tags-dbg12-label' ),
-		tag: 'db-g12',
+		tag: 'speedy deletion-copyright violation', // redirect to db-g12
+		code: 'G12',
 		desc: mw.msg( 'pagetriage-del-tags-dbg12-desc' ),
 		params: {
 			'url': $.extend( true, {}, param.url )
@@ -186,7 +201,8 @@ var tags = {
 
 	'dbu2': {
 		label: mw.msg( 'pagetriage-del-tags-dbu2-label' ),
-		tag: 'db-u2',
+		tag: 'speedy deletion-nonexistent user', // redirect to db-u2
+		code: 'U2',
 		desc: mw.msg( 'pagetriage-del-tags-dbu2-desc' ),
 		params: {},
 		anchor: 'nouser',
@@ -195,7 +211,8 @@ var tags = {
 
 	'dbu3': {
 		label: mw.msg( 'pagetriage-del-tags-dbu3-label' ),
-		tag: 'db-u3',
+		tag: 'speedy deletion-nonfree galleries', // redirect to db-u3
+		code: 'U3',
 		desc: mw.msg( 'pagetriage-del-tags-dbu3-desc' ),
 		params: {},
 		anchor: 'fairusegallery',
