@@ -401,13 +401,17 @@ $( function() {
 		 * Show the parameters form
 		 */
 		showParamsForm: function( key ) {
-			var _this = this, html = '', tag = this.selectedTag[key];
+			var _this = this, html = '', tag = this.selectedTag[key], firstField = '';
 
 			this.hideParamsLink( key );
 
 			for ( var param in tag.params ) {
 				var paramObj = tag.params[param];
 				html += this.buildHTML( param, paramObj, key );
+				// Remember which field is first so we can focus it later
+				if ( !firstField && paramObj.type !== 'hidden' ) {
+					firstField = 'mwe-pt-delete-params-' + key + '-' + param;
+				}
 			}
 
 			html += mw.html.element(
@@ -459,6 +463,11 @@ $( function() {
 					_this.refreshSubmitButton();
 				}
 			);
+			
+			// If there is an input field, focus the cursor on it
+			if ( firstField ) {
+				$( '#' + firstField ).focus();
+			}
 		},
 
 		/**
