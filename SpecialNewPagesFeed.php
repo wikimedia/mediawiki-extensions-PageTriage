@@ -68,9 +68,9 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$out->addModules( array( 'ext.pageTriage.external', 'ext.pageTriage.util', 'ext.pageTriage.models', 'ext.pageTriage.views.list' ) );
 
 		$warnings = '';
-		$warnings .= "<div id='mwe-pt-list-warnings' style='display: none;'>";
-		$warnings .= "<div>".$this->msg( 'pagetriage-warning-prototype', $wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl )->text()."</div>";
-		$warnings .= "</div>";
+		$warnings .= '<div id="mwe-pt-list-warnings" style="display: none;">';
+		$warnings .= '<div>' . $this->msg( 'pagetriage-welcome', $wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl )->text() . '</div>';
+		$warnings .= '</div>';
 		$out->addHtml( $warnings );
 
 		// This will hold the HTML for the triage interface
