@@ -4,7 +4,7 @@
 }
 
 #mwe-pt-deletion-wizard .mwe-pt-tool-flyout {
-	top: -220px;
+	top: -240px;
 }
 
 #mwe-pt-delete-categories {
@@ -35,7 +35,7 @@
 #mwe-pt-delete-bottom {
 	border-top: 1px solid #9F9F9F;
 	/* background-color: white; */
-	padding: 10px 10px 10px 138px;
+	padding: 10px 12px 10px 12px;
 	clear: both;
 }
 

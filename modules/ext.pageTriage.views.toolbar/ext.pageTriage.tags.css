@@ -1,6 +1,6 @@
 #mwe-pt-tag .mwe-pt-tool-flyout {
 	width: 530px;
-	top: -188px;
+	top: -210px;
 }
 
 #mwe-pt-tag .mwe-pt-tool-content {
@@ -59,7 +59,7 @@
 #mwe-pt-tags-bottom {
 	border-top: 1px solid #9F9F9F;
 	/* background-color: white; */
-	padding: 10px 10px 10px 138px;
+	padding: 10px 12px 10px 12px;
 	clear: both;
 }
 #mwe-pt-checkbox-mark-reviewed-label {
@@ -137,8 +137,8 @@
 #mwe-pt-tag-note-input {
 	clear: both;
 	font-size: 11px;
-	height: 40px;
-	width: 370px;
+	height: 30px;
+	width: 495px;
 	margin: 5px 5px 2px 2px;
 	color: #666;
 }
