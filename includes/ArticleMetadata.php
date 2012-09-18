@@ -733,6 +733,7 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 				$content = $article->getText();
 				if ( $content ) {
 					$this->metadata[$pageId]['snippet'] = self::generateArticleSnippet( $content );
+					$this->metadata[$pageId]['reference'] = self::checkReferenceTag( $content );
 				}
 			}
 		}
@@ -772,6 +773,27 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 		$text = str_replace( array('{', '}', '[edit]' ), '', $text );
 
 		return $wgLang->truncate( $text, 150 );
+	}
+
+	/**
+	 * Check if a page has reference, this just checks <ref> and </ref> tags
+	 * this is sufficient since we just want to get an estimate
+	 */
+	public static function checkReferenceTag( $text ) {
+		$closeTag = strpos( $text, '</ref>' );
+
+		if ( $closeTag !== false ) {
+			$openTag = strpos( $text, '<ref ');
+			if (  $openTag !== false && $openTag < $closeTag ) {
+				return '1';
+			}
+			$openTag = strpos( $text, '<ref>');
+			if ( $openTag !== false && $openTag < $closeTag ) {
+				return '1';
+			}
+		}
+
+		return '0';
 	}
 
 }

@@ -36,10 +36,13 @@
 				<% if( linkcount == "0" && is_redirect == "0" ) { %>
 					&#xb7; <span class="mwe-pt-metadata-warning"><%= gM("pagetriage-orphan") %></span>
 				<% } %>
+				<% if( typeof reference !== "undefined" && reference == "0" && is_redirect == "0" ) { %>
+					&#xb7; <span class="mwe-pt-metadata-warning"><%= gM( "pagetriage-no-reference" ) %></span>
+				<% } %>
 			</span>
 		</div>
 		<div class="mwe-pt-author">
-		<% if( typeof( user_name ) != 'undefined' ) { %>
+		<% if( typeof( user_name ) !== "undefined" ) { %>
 			<%= author_byline %>
 			<!-- user_id is undefined or '0' for IP users -->
 			<% if( typeof ( user_id ) != 'undefined' && Number( user_id ) !== 0 ) { %>

@@ -93,7 +93,10 @@ $( function() {
 				this.problemCount++;
 				problems += this.formatProblem( 'orphan' );
 			}
-			if ( this.model.get( 'rev_count' ) < 1 ) {
+			if ( typeof this.model.get( 'reference' ) !== 'undefined' &&
+				this.model.get( 'reference' ) == '0' &&
+				this.model.get( 'is_redirect' ) == 0 )
+			{
 				this.problemCount++;
 				problems += this.formatProblem( 'no-references' );
 			}

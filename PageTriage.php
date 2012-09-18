@@ -585,7 +585,8 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'sp-contributions-talk',
 		'contribslink',
 		'comma-separator',
-		'pagetriage-info-timestamp-date-format'
+		'pagetriage-info-timestamp-date-format',
+		'pagetriage-no-reference'
 	)
 );
 
