@@ -59,7 +59,7 @@ class ApiPageTriageTagging extends ApiBase {
 
 			$api->execute();
 
-			// logging
+			// logging to the logging table
 			if ( $params['taglist'] ) {
 				if ( $params['deletion'] ) {
 					$entry = array(
@@ -83,7 +83,7 @@ class ApiPageTriageTagging extends ApiBase {
 						$logEntry->setComment( $note );
 					}
 					$logEntry->setParameters( array(
-						'tags' => $params['taglist'],
+						'tags' => $params['taglist']
 					) );
 					$logEntry->publish( $logEntry->insert() );
 				}

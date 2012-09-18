@@ -355,9 +355,9 @@ $messages['en'] = array(
 	'log-description-pagetriage-deletion' => 'This is the log of actions taken on page curation deletion wizard.',
 	'logentry-pagetriage-curation-reviewed' => '$1 {{GENDER:$2|marked}} $3 as reviewed',
 	'logentry-pagetriage-curation-unreviewed' => '$1 {{GENDER:$2|marked}} $3 as unreviewed',
-	'logentry-pagetriage-curation-tag' => '$1 {{GENDER:$2|tagged}} $3 with $4 tag',
-	'logentry-pagetriage-curation-delete' => '$1 {{GENDER:$2|marked}} $3 for deletion with $4 tag',
-	'logentry-pagetriage-deletion-delete' => '$1 {{GENDER:$2|marked}} $3 for deletion with $4 tag',
+	'logentry-pagetriage-curation-tag' => '$1 {{GENDER:$2|tagged}} $3 with $4 {{PLURAL:$5|tag|tags}}',
+	'logentry-pagetriage-curation-delete' => '$1 {{GENDER:$2|marked}} $3 for deletion with $4 {{PLURAL:$5|tag|tags}}',
+	'logentry-pagetriage-deletion-delete' => '$1 {{GENDER:$2|marked}} $3 for deletion with $4 {{PLURAL:$5|tag|tags}}',
 );
 
 /** Message documentation (Message documentation)
@@ -716,9 +716,9 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 	'log-description-pagetriage-deletion' => 'Descriptive header text for Deletion tag log page.',
 	'logentry-pagetriage-curation-reviewed' => 'log action when someone marks a page as reviewed, {{LogEntry}}',
 	'logentry-pagetriage-curation-unreviewed' => 'log action when someone marks a page as unreviewed, {{LogEntry}}',
-	'logentry-pagetriage-curation-tag' => 'log action when someone tags a page with maintenance tags, {{LogEntry}}, $4 is a list of comma-separated maintenance tags',
-	'logentry-pagetriage-curation-delete' => 'log action when some marks a page for deletion, {{LogEntry}}, $4 is a list of comma-separated deletion tags',
-	'logentry-pagetriage-deletion-delete' => 'log action when some marks a page for deletion, {{LogEntry}}, $4 is a list of comma-separated deletion tags',
+	'logentry-pagetriage-curation-tag' => 'log action when someone tags a page with maintenance tags, {{LogEntry}}, $4 is a list of comma-separated maintenance tags, $5 is the number of tags',
+	'logentry-pagetriage-curation-delete' => 'log action when some marks a page for deletion, {{LogEntry}}, $4 is a list of comma-separated deletion tags, $5 is the number of tags',
+	'logentry-pagetriage-deletion-delete' => 'log action when some marks a page for deletion, {{LogEntry}}, $4 is a list of comma-separated deletion tags, $5 is the number of tags',
 );
 
 /** Afrikaans (Afrikaans)

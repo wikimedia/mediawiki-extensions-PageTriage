@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Formats the logs for display on Special:Log
+ */
 class PageTriageLogFormatter extends LogFormatter {
 
 	protected function getActionMessage() {
@@ -14,8 +16,10 @@ class PageTriageLogFormatter extends LogFormatter {
 		// backward compatibility
 		if ( isset( $parameters['4::tags'] ) ) {
 			$params['4::tags'] = $wgContLang->listToText( $parameters['4::tags'] );
+			$params['tagnumber'] = count( $parameters['4::tags'] );
 		} else {
 			$params['tags'] = $wgContLang->listToText( $parameters['tags'] );
+			$params['tagnumber'] = count( $parameters['tags'] );
 		}
 
 		return wfMessage( 'logentry-' . $this->entry->getType() . '-' . $this->entry->getSubtype(), $params );
