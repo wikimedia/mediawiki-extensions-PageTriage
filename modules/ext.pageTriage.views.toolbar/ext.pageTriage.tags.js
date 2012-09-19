@@ -457,6 +457,14 @@ $( function() {
 		 * Submit the selected tags
 		 */
 		submit: function() {
+			if ( this.model.get( 'page_len' ) < 1000 && this.selectedTagCount > 4 ) {
+				if ( !confirm( mw.msg( 'pagetriage-add-tag-confrimation', this.selectedTagCount ) ) ) {
+					$.removeSpinner( 'tag-spinner' );
+					$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
+					return;
+				}
+			}
+
 			var topText = '', bottomText = '', processed = {}, _this = this, multipleTags = {}, tagList = [];
 
 			for ( var cat in this.selectedTag ) {

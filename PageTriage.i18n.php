@@ -111,6 +111,7 @@ $messages['en'] = array(
 	'pagetriage-page-status-autoreviewed' => 'This page was autopatrolled.',
 	'pagetriage-page-status-delete' => 'Marked for deletion',
 	'pagetriage-articleinfo-stat' => 'Stats: $1',
+	'pagetriage-add-tag-confrimation' => 'Are you sure you want to add $1 {{PLURAL:$1|tag|tags}} to such a short article?',
 
 	 // Tags options section
 	'pagetriage-tags-title' => 'Add tags',
@@ -479,6 +480,7 @@ If your language requires some words between the different parts of the timestam
 	'pagetriage-page-status-autoreviewed' => 'Text that shows the page was autopatrolled (https://www.mediawiki.org/wiki/MediaWiki:Right-autopatrol)',
 	'pagetriage-page-status-delete' => 'Text that shows the page has been marked for deletion',
 	'pagetriage-articleinfo-stat' => 'Article info flyout stat, $1 is a list of stats separated by pagetriage-dot-separator',
+	'pagetriage-add-tag-confrimation' => 'Confirmation message upon tag submission, $1 is the number of tags',
 	'pagetriage-tags-title' => 'The title for the tag wizard flyout in the toolbar',
 	'pagetriage-tags-cat-common-label' => 'Label for common category',
 	'pagetriage-tags-cat-metadata-label' => 'Label for metadata category',
