@@ -42,6 +42,12 @@ class ApiPageTriageTagging extends ApiBase {
 			} else {
 				$editSummary = wfMessage( 'pagetriage-tags-edit-summary', $projectLink, $tags )->plain();
 			}
+
+			// tagging something for deletion should automatically watchlist it
+			if ( $params['deletion'] ) {
+				$apiParams['watchlist'] = 'watch';
+			}
+
 			// Perform the text insertion
 			$api = new ApiMain(
 					new DerivativeRequest(
