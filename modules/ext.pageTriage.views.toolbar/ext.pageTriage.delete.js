@@ -581,9 +581,13 @@ $( function() {
 			for ( var key in this.selectedTag ) {
 				tempTag = this.selectedTag[key].tag;
 				if ( count > 1 ) {
-					tempTag = tempTag.replace( /^db-/gi, '' );
+					if ( this.selectedTag[key].code !== undefined ) {
+						tempTag = this.selectedTag[key].code;
+					} else {
+						tempTag = tempTag.replace( /^db-/gi, '' );
+					}
 				} else {
-					// this tempalte must be substituted
+					// this template must be substituted
 					if ( this.selectedTag[key].subst ) {
 						// check if there is 'subst:' string yet
 						if ( tempTag.match( /^subst:/i ) === null ) {
