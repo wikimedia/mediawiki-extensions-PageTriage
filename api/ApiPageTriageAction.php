@@ -7,6 +7,10 @@ class ApiPageTriageAction extends ApiBase {
 
 		$params = $this->extractRequestParams();
 
+		if ( !ArticleMetadata::validatePageId( array( $params['pageid'] ), DB_SLAVE ) ) {
+			$this->dieUsage( 'The page specified does not exist in pagetriage queue', 'bad-pagetriage-page' );
+		}
+
 		$article = Article::newFromID( $params['pageid'] );
 		if ( $article ) {
 			if ( !$article->getTitle()->userCan( 'patrol' ) ) {
