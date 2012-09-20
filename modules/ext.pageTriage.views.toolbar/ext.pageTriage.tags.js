@@ -458,7 +458,7 @@ $( function() {
 		 */
 		submit: function() {
 			if ( this.model.get( 'page_len' ) < 1000 && this.selectedTagCount > 4 ) {
-				if ( !confirm( mw.msg( 'pagetriage-add-tag-confrimation', this.selectedTagCount ) ) ) {
+				if ( !confirm( mw.msg( 'pagetriage-add-tag-confirmation', this.selectedTagCount ) ) ) {
 					$.removeSpinner( 'tag-spinner' );
 					$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
 					return;
