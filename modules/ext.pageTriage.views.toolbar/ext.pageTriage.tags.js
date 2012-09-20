@@ -469,9 +469,7 @@ $( function() {
 					// Final check on required params
 					for ( var param in tagObj.params ) {
 						if ( tagObj.params[param].input === 'required' && !tagObj.params[param].value ) {
-							$.removeSpinner( 'tag-spinner' );
-							$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
-							alert( mw.msg( 'pagetriage-tags-param-missing-required', param ) );
+							_this.handleError( mw.msg( 'pagetriage-tags-param-missing-required', param ) );
 							return;
 						}
 					}
@@ -525,15 +523,25 @@ $( function() {
 				data: apiRequest,
 				success: function( data ) {
 					if ( data.error ) {
-						$.removeSpinner( 'tag-spinner' );
-						$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
-						alert( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
+						_this.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
 					} else {
 						_this.applyTags( topText, bottomText, tagList );
 					}
 				},
 				dataType: 'json'
 			} );
+		},
+		
+		/**
+		 * Handle an error occuring after submit
+		 * @param {String} msg The error message to display
+		 */
+		handleError: function( msg ) {
+			$.removeSpinner( 'tag-spinner' );
+			// Re-enable the submit button (in case it is disabled)
+			$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
+			// Show error message to the user
+			alert( msg );
 		},
 
 		applyTags: function( topText, bottomText, tagList ) {
@@ -565,9 +573,7 @@ $( function() {
 							window.location.reload( true );
 						}
 					} else {
-						$.removeSpinner( 'tag-spinner' );
-						$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
-						alert( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
+						_this.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
 					}
 				},
 				dataType: 'json'
@@ -599,9 +605,7 @@ $( function() {
 						_this.reset();
 						window.location.reload( true );
 					} else {
-						$.removeSpinner( 'tag-spinner' );
-						$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
-						alert( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
+						_this.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
 					}
 				},
 				dataType: 'json'

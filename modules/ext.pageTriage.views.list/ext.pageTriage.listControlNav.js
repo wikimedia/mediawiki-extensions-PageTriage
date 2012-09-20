@@ -265,6 +265,7 @@ $( function() {
 			apiParams['limit'] = this.model.getParam('limit');
 			apiParams['dir'] = this.model.getParam('dir');
 
+			// the model in this context is mw.pageTriage.ArticleList
 			this.model.setParams( apiParams );
 			this.model.saveFilterParams();
 			this.model.fetch();

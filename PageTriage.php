@@ -680,6 +680,7 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'sp-contributions-talk',
 		'contribslink',
 		'comma-separator',
+		'unknown-error',
 		'pagetriage-add-a-note',
 		'pagetriage-characters-left',
 		'pagetriage-personal-default-note',
