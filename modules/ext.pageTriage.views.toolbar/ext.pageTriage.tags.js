@@ -605,6 +605,7 @@ $( function() {
 					'title': title.getPrefixedText(),
 					'appendtext': "\n" + note,
 					'token': mw.user.tokens.get('editToken'),
+					'summary': mw.msg( 'pagetriage-tags-note-edit-summary', mw.config.get( 'wgPageName' ) ),
 					'format': 'json'
 				},
 				success: function( data ) {
