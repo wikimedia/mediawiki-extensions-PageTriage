@@ -65,11 +65,15 @@ $( function() {
 							_this.hide();
 						}
 					} else {
-						_this.showMarkError( action );
+						if ( typeof data.error.info !== 'undefined' ) {
+							_this.showMarkError( action, data.error.info );
+						} else {
+							_this.showMarkError( action, mw.msg( 'unknown-error' ) );
+						}
 					}
 				},
 				error: function() {
-					_this.showMarkError( action );
+					_this.showMarkError( action, mw.msg( 'unknown-error' ) );
 				},
 				dataType: 'json'
 			} );
@@ -100,18 +104,27 @@ $( function() {
 						_this.model.fetch();
 						_this.hide();
 					} else {
-						_this.showMarkError( action );
+						if ( typeof data.error.info !== 'undefined' ) {
+							_this.showMarkError( action, data.error.info );
+						} else {
+							_this.showMarkError( action, mw.msg( 'unknown-error' ) );
+						}
 					}
 				},
 				dataType: 'json'
 			} );
 		},
 
-		showMarkError: function( action ) {
+		/**
+		 * Handle an error occuring after submit
+		 * @param {String} action Whether the action was reviewing or unreviewing
+		 * @param {String} errorMsg The specific error that occurred
+		 */
+		showMarkError: function( action, errorMsg ) {
 			if ( action === 'reviewed' ) {
-				alert( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
+				alert( mw.msg( 'pagetriage-mark-as-reviewed-error', errorMsg ) );
 			} else {
-				alert( mw.msg( 'pagetriage-mark-as-unreviewed-error' ) );
+				alert( mw.msg( 'pagetriage-mark-as-unreviewed-error', errorMsg ) );
 			}
 		},
 

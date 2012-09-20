@@ -536,7 +536,7 @@ $( function() {
 				data: apiRequest,
 				success: function( data ) {
 					if ( data.error ) {
-						_this.handleError( 'pagetriage-mark-as-reviewed-error' );
+						_this.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
 					} else {
 						// Log certain types of deletion nominations...
 						// If the selected tag category doesn't allow multiple selection
@@ -559,10 +559,16 @@ $( function() {
 			} );
 		},
 
+		/**
+		 * Handle an error occuring after submit
+		 * @param {String} msg The error message to display
+		 */
 		handleError: function( msg ) {
 			$.removeSpinner( 'delete-spinner' );
+			// Re-enable the submit button (in case it is disabled)
 			$( '#mwe-pt-delete-submit-button' ).button( 'enable' );
-			alert( mw.msg( msg ) );
+			// Show error message to the user
+			alert( msg );
 		},
 		
 		/**
@@ -625,7 +631,7 @@ $( function() {
 					if ( data.pagetriagetagging && data.pagetriagetagging.result === 'success' ) {
 						_this.notifyUser( count, key );
 					} else {
-						_this.handleError( 'pagetriage-tagging-error' );
+						_this.handleError( mw.msg( 'pagetriage-tagging-error' ) );
 					}
 				},
 				dataType: 'json'
@@ -664,7 +670,7 @@ $( function() {
 							_this.reset();
 							window.location.reload( true );
 						} else {
-							_this.handleError( 'pagetriage-del-talk-page-notify-error' );
+							_this.handleError( mw.msg( 'pagetriage-del-talk-page-notify-error' ) );
 						}
 					},
 					dataType: 'json'
@@ -694,14 +700,14 @@ $( function() {
 					if ( data && data.query && data.query.pages ) {
 						for ( var i in data.query.pages ) {
 							if ( i == '-1' ) {
-								_this.handleError( 'pagetriage-del-log-page-missing-error' );
+								_this.handleError( mw.msg( 'pagetriage-del-log-page-missing-error' ) );
 								return;
 							}
 							_this.addToLog( title, data.query.pages[i].revisions[0]['*'], tagObj );
 							break;
 						}
 					} else {
-						_this.handleError( 'pagetriage-del-log-page-missing-error' );
+						_this.handleError( mw.msg( 'pagetriage-del-log-page-missing-error' ) );
 					}
 				},
 				dataType: 'json'
@@ -723,7 +729,7 @@ $( function() {
 			specialDeletionTagging[tagObj.tag].buildLogRequest( oldText, tagObj.params['1'].value, tagObj, data );
 
 			if( data.text === oldText ) {
-				_this.handleError( 'pagetriage-del-log-page-adding-error' );
+				_this.handleError( mw.msg( 'pagetriage-del-log-page-adding-error' ) );
 				return;
 			}
 
@@ -739,7 +745,7 @@ $( function() {
 							_this.tagPage();
 						}
 					} else {
-						_this.handleError( 'pagetriage-del-log-page-adding-error' );
+						_this.handleError( mw.msg( 'pagetriage-del-log-page-adding-error' ) );
 					}
 				},
 				dataType: 'json'
@@ -770,7 +776,7 @@ $( function() {
 				data: data,
 				success: function( data ) {
 					if ( data.error ) {
-						_this.handleError( 'pagetriage-del-discussion-page-adding-error' );
+						_this.handleError( mw.msg( 'pagetriage-del-discussion-page-adding-error' ) );
 					} else {
 						_this.tagPage();
 					}
