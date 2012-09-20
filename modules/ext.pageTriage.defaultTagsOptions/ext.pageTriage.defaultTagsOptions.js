@@ -124,7 +124,7 @@ $.pageTriageTagsOptions = {
 				dest: 'sources',
 				multiple: true
 			},
-			
+
 			'stub': {
 				label: mw.msg( 'pagetriage-tags-stub-label' ),
 				tag: 'stub',
@@ -156,7 +156,7 @@ $.pageTriageTagsOptions = {
 				},
 				position: 'top',
 				dest: 'sources',
-				multiple: false
+				multiple: true
 			}
 		}
 	},
