@@ -161,6 +161,67 @@ $.pageTriageTagsOptions = {
 		}
 	},
 
+	'cleanup': {
+		label: mw.msg( 'pagetriage-tags-cat-cleanup-label' ),
+		tags: {
+			'cleanup': {
+				label: mw.msg( 'pagetriage-tags-cleanup-label' ),
+				tag: 'cleanup',
+				desc: mw.msg( 'pagetriage-tags-cleanup-desc' ),
+				params: {
+					'date': param.date,
+					'reason': $.extend( true, {}, param.reason )
+				},
+				position: 'top',
+				multiple: true
+			},
+
+			'copyedit': {
+				label: mw.msg( 'pagetriage-tags-copyedit-label' ),
+				tag: 'copy edit',
+				desc: mw.msg( 'pagetriage-tags-copyedit-desc' ),
+				params: {
+					'date': param.date,
+					'for': $.extend( true, {}, param['for'] )
+				},
+				position: 'top',
+				multiple: true
+			},
+
+			'expertsubject': {
+				label: mw.msg( 'pagetriage-tags-expertsubject-label' ),
+				tag: 'expert',
+				desc: mw.msg( 'pagetriage-tags-expertsubject-desc' ),
+				params: {
+					'date': param.date,
+					'reason': $.extend( true, {}, param.reason )
+				},
+				position: 'top',
+				multiple: true
+			},
+
+			'prose': {
+				label: mw.msg( 'pagetriage-tags-prose-label' ),
+				tag: 'prose',
+				desc: mw.msg( 'pagetriage-tags-prose-desc' ),
+				params: {
+					'date': param.date
+				},
+				position: 'top',
+				multiple: true
+			},
+
+			'roughtranslation': {
+				label: mw.msg( 'pagetriage-tags-roughtranslation-label' ),
+				tag: 'rough translation',
+				desc: mw.msg( 'pagetriage-tags-roughtranslation-desc' ),
+				params: { },
+				position: 'top',
+				multiple: false
+			}
+		}
+	},
+
 	'metadata': {
 		label: mw.msg( 'pagetriage-tags-cat-metadata-label' ),
 		tags: {
@@ -227,67 +288,6 @@ $.pageTriageTagsOptions = {
 					'date': param.date
 				},
 				position: 'bottom',
-				multiple: false
-			}
-		}
-	},
-
-	'cleanup': {
-		label: mw.msg( 'pagetriage-tags-cat-cleanup-label' ),
-		tags: {
-			'cleanup': {
-				label: mw.msg( 'pagetriage-tags-cleanup-label' ),
-				tag: 'cleanup',
-				desc: mw.msg( 'pagetriage-tags-cleanup-desc' ),
-				params: {
-					'date': param.date,
-					'reason': $.extend( true, {}, param.reason )
-				},
-				position: 'top',
-				multiple: true
-			},
-
-			'copyedit': {
-				label: mw.msg( 'pagetriage-tags-copyedit-label' ),
-				tag: 'copy edit',
-				desc: mw.msg( 'pagetriage-tags-copyedit-desc' ),
-				params: {
-					'date': param.date,
-					'for': $.extend( true, {}, param['for'] )
-				},
-				position: 'top',
-				multiple: true
-			},
-
-			'expertsubject': {
-				label: mw.msg( 'pagetriage-tags-expertsubject-label' ),
-				tag: 'expert',
-				desc: mw.msg( 'pagetriage-tags-expertsubject-desc' ),
-				params: {
-					'date': param.date,
-					'reason': $.extend( true, {}, param.reason )
-				},
-				position: 'top',
-				multiple: true
-			},
-
-			'prose': {
-				label: mw.msg( 'pagetriage-tags-prose-label' ),
-				tag: 'prose',
-				desc: mw.msg( 'pagetriage-tags-prose-desc' ),
-				params: {
-					'date': param.date
-				},
-				position: 'top',
-				multiple: true
-			},
-
-			'roughtranslation': {
-				label: mw.msg( 'pagetriage-tags-roughtranslation-label' ),
-				tag: 'rough translation',
-				desc: mw.msg( 'pagetriage-tags-roughtranslation-desc' ),
-				params: { },
-				position: 'top',
 				multiple: false
 			}
 		}
