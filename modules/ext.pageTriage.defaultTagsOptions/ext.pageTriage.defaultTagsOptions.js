@@ -508,7 +508,9 @@ $.pageTriageTagsOptions = {
 				label: mw.msg( 'pagetriage-tags-sections-label' ),
 				tag: 'sections',
 				desc: mw.msg( 'pagetriage-tags-sections-desc' ),
-				params: { },
+				params: {
+					'date': param.date
+				},
 				position: 'top',
 				multiple: true
 			},
