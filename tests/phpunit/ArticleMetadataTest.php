@@ -66,7 +66,8 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 					'user_autoconfirmed',
 					'user_bot',
 					'user_block_status',
-					'user_id'
+					'user_id',
+					'reference'
 				);
 
 		$this->assertEmpty( array_diff( array_keys ( $tags ), $validTags ) );
@@ -104,6 +105,10 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 			array(
 				'creation_date' => 'creation_date',
 				'patrol_status' => 'patrol_status',
+				'is_redirect' => 'is_redirect',
+				'ptrp_last_reviewed_by' => 'ptrp_last_reviewed_by',
+				'ptrp_reviewed_updated' => 'ptrp_reviewed_updated',
+				'reviewer' => 'reviewer',
 				'deleted' => 'deleted',
 				'title' => 'title'
 			);
