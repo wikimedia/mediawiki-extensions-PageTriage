@@ -720,6 +720,9 @@ $wgResourceModules['ext.pageTriage.externalTagsOptions'] = $ptResourceTemplate +
 $wgResourceModules['ext.pageTriage.defaultDeletionTagsOptions'] = $ptResourceTemplate + array(
 	'scripts' => 'ext.pageTriage.defaultDeletionTagsOptions/ext.pageTriage.defaultDeletionTagsOptions.js',
 	'messages' => $wgPageTriageDeletionTagsOptionsMessages,
+	'dependencies' => array(
+		'mediawiki.Title'
+	)
 );
 
 $wgResourceModules['ext.pageTriage.externalDeletionTagsOptions'] = $ptResourceTemplate + array(

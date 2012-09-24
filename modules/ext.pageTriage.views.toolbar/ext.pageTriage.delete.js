@@ -25,17 +25,19 @@ $( function() {
 		}
 	};
 
+	var pageName = new mw.Title( mw.config.get( 'wgPageName' ) ).getPrefixedText();
+
 	// Deletion taggging
 	var specialDeletionTagging = {
 		afd: {
 			buildDiscussionRequest: function( reason, data ) {
-				data.appendtext = "{{subst:afd2|text=" + reason + " ~~~~|pg=" + mw.config.get('wgPageName') + "}}\n";
-				data.summary = "Creating deletion discussion page for [[" + mw.config.get('wgPageName') + "]].";
+				data.appendtext = "{{subst:afd2|text=" + reason + " ~~~~|pg=" + pageName + "}}\n";
+				data.summary = "Creating deletion discussion page for [[" + pageName + "]].";
 			},
 
 			buildLogRequest: function( oldText, reason, tagObj, data) {
 				oldText += "\n";
-				data.text = oldText.replace( /(<\!-- Add new entries to the TOP of the following list -->\n+)/, "$1{{subst:afd3|pg=" + mw.config.get('wgPageName') + "}}\n");
+				data.text = oldText.replace( /(<\!-- Add new entries to the TOP of the following list -->\n+)/, "$1{{subst:afd3|pg=" + pageName + "}}\n");
 			},
 
 			getLogPageTitle: function( prefix ) {
@@ -50,7 +52,7 @@ $( function() {
 			},
 
 			buildLogRequest: function( oldText, reason, tagObj, data) {
-				data.text = oldText.replace( /(<\!-- Add new entries directly below this line -->)/, "$1\n{{subst:rfd2|text=" + reason + "|redirect="+ mw.config.get('wgPageName') + "}} ~~~~\n" );
+				data.text = oldText.replace( /(<\!-- Add new entries directly below this line -->)/, "$1\n{{subst:rfd2|text=" + reason + "|redirect="+ pageName + "}} ~~~~\n" );
 			},
 
 			getLogPageTitle: function( prefix ) {
@@ -72,7 +74,7 @@ $( function() {
 				}
 
 				data.text += data.text + "\n{{subst:ffd2|Reason=" + reason + "|1=" + mw.config.get('wgTitle') + "}} ~~~~";
-				data.summary = "Adding [[" + mw.config.get('wgPageName') + "]].";
+				data.summary = "Adding [[" + pageName + "]].";
 				data.recreate = true;
 			},
 
@@ -84,15 +86,15 @@ $( function() {
 
 		mfd: {
 			buildDiscussionRequest: function( reason, data ) {
-				data.appendtext = "{{subst:mfd2|text=" + reason + " ~~~~|pg=" + mw.config.get('wgPageName') + "}}\n";
-				data.summary = "Creating deletion discussion page for [[" + mw.config.get('wgPageName') + "]].";
+				data.appendtext = "{{subst:mfd2|text=" + reason + " ~~~~|pg=" + pageName + "}}\n";
+				data.summary = "Creating deletion discussion page for [[" + pageName + "]].";
 			},
 
 			buildLogRequest: function( oldText, reason, tagObj, data) {
 				var date = new dateWrapper();
 				var dateHeader = "===" + date.getMonth() + ' ' + date.getDate() + ', ' + date.getUTCFullYear() + "===\n";
 				var dateHeaderRegex = new RegExp( "(===\\s*" + month[date.getUTCMonth()] + '\\s+' + date.getDate() + ',\\s+' + date.getUTCFullYear() + "\\s*===)" );
-				var newData = "{{subst:mfd3|pg=" + mw.config.get('wgPageName') + "}}";
+				var newData = "{{subst:mfd3|pg=" + pageName + "}}";
 
 				if( dateHeaderRegex.test( oldText ) ) { // we have a section already
 					data.text = oldText.replace( dateHeaderRegex, "$1\n" + newData );
@@ -100,7 +102,7 @@ $( function() {
 					data.text = oldText.replace("===", dateHeader + newData + "\n\n===");
 				}
 
-				data.summary = "Adding [[" + tagObj.prefix + '/' + mw.config.get('wgPageName') + "]].";
+				data.summary = "Adding [[" + tagObj.prefix + '/' + pageName + "]].";
 				data.recreate = true;
 			},
 
@@ -690,8 +692,7 @@ $( function() {
 
 			// use generic template for multiple deletion tag
 			var template = ( count > 1 ) ? $.pageTriageDeletionTagsMultiple.talkpagenotiftpl : this.selectedTag[key].talkpagenotiftpl;
-			var pageTitle = new mw.Title( mw.config.get( 'wgPageName' ) ).getPrefixedText();
-			template = '{{subst:' + template + '|' + pageTitle + '}}';
+			template = '{{subst:' + template + '|' + pageName + '}}';
 
 			if ( this.model.get( 'user_name' ) ) {
 				var title = new mw.Title( this.model.get( 'user_name' ), mw.config.get( 'wgNamespaceIds' )['user_talk'] );
@@ -798,12 +799,13 @@ $( function() {
 		 * Generate the discussion page
 		 */
 		discussionPage: function( tagObj ) {
-			var _this = this, title = tagObj.prefix + '/' + mw.config.get('wgPageName');
+			var _this = this, title = tagObj.prefix + '/' + pageName;
 			var data = {
 				'action': 'edit',
 				'title': title,
 				'token': mw.user.tokens.get('editToken'),
-				'format': 'json'
+				'format': 'json',
+				'watchlist': 'watch'
 			};
 
 			if ( !specialDeletionTagging[tagObj.tag] ) {
