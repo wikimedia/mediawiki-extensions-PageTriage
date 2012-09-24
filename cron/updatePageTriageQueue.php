@@ -62,7 +62,8 @@ class updatePageTriageQueue extends Maintenance {
 
 			// Remove pages older than 30 days, if
 			// 1. the page has been reviewed, or
-			// 2. the page is not in main namespace
+			// 2. the page is not in main namespace or
+			// 3. the page is a redirect
 			$res = $this->dbr->select(
 				array( 'pagetriage_page', 'page' ),
 				array( 'ptrp_page_id', 'ptrp_created', 'page_namespace', 'ptrp_reviewed' ),
@@ -70,7 +71,7 @@ class updatePageTriageQueue extends Maintenance {
 					'(ptrp_created < ' . $startTime . ') OR
 					(ptrp_created = ' . $startTime . ' AND ptrp_page_id < ' . $startId . ')',
 					'ptrp_page_id = page_id',
-					'page_namespace != 0 OR ptrp_reviewed > 0'
+					'page_namespace != 0 OR ptrp_reviewed > 0 OR page_is_redirect = 1'
 				),
 				__METHOD__,
 				array( 'LIMIT' => $this->batchSize, 'ORDER BY' => 'ptrp_created DESC, ptrp_page_id DESC' )
