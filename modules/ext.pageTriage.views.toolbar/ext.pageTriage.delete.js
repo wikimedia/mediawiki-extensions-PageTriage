@@ -650,7 +650,8 @@ $( function() {
 
 			// use generic template for multiple deletion tag
 			var template = ( count > 1 ) ? $.pageTriageDeletionTagsMultiple.talkpagenotiftpl : this.selectedTag[key].talkpagenotiftpl;
-			template = '{{subst:' + template + '|' + new mw.Title( mw.config.get( 'wgPageName' ) ).getPrefixedText() + '}}';
+			var pageTitle = new mw.Title( mw.config.get( 'wgPageName' ) ).getPrefixedText();
+			template = '{{subst:' + template + '|' + pageTitle + '}}';
 
 			if ( this.model.get( 'user_name' ) ) {
 				var title = new mw.Title( this.model.get( 'user_name' ), mw.config.get( 'wgNamespaceIds' )['user_talk'] );
@@ -662,6 +663,7 @@ $( function() {
 						'action': 'edit',
 						'title': title.getPrefixedText(),
 						'appendtext': "\n" + template,
+						'summary': mw.msg( 'pagetriage-del-talk-page-notify-summary', pageTitle ),
 						'token': mw.user.tokens.get('editToken'),
 						'format': 'json'
 					},

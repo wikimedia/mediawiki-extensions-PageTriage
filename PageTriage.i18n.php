@@ -296,6 +296,7 @@ $messages['en'] = array(
 	'pagetriage-del-log-page-missing-error' => 'Log page for today has not been created yet!',
 	'pagetriage-del-log-page-adding-error' => 'Failed to find target spot for the discussion',
 	'pagetriage-del-talk-page-notify-error' => 'Failed to notify author on talk page',
+	'pagetriage-del-talk-page-notify-summary' => 'Notifying author of deletion nomination for [[$1]]',
 	'pagetriage-del-tooltip' => 'Nominate this page for deletion',
 	'pagetriage-tagging-error' => 'Failed to apply tags to the page',
 
@@ -662,6 +663,7 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-del-log-page-missing-error' => 'Error message indicating that the log page for current date has not been created',
 	'pagetriage-del-log-page-adding-error' => 'Error message indicating a failure of adding the page to discussion',
 	'pagetriage-del-talk-page-notify-error' => 'Error message indicating a failure of notifying the author on user talk page',
+	'pagetriage-del-talk-page-notify-summary' => 'Edit summary for notifying an author when their page has been nominated for deletion. $1 is the title of the page being nominated.',
 	'pagetriage-del-tooltip' => 'Help message that displays when someone hovers over the deletion wizard button',
 	'pagetriage-tagging-error' => 'Error message indicating that error has occurred while applying tags to a page',
 	'pagetriage-tags-param-article-label' => 'Label for article parameter',
