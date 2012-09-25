@@ -55,7 +55,7 @@ $( function() {
 			};
 			len = list.length;
 			for ( var i = 0; i < len; i++ ) {
-				var tagKey = list[i].tag.replace( '-', '' ).replace( ' ', '' ).toLowerCase();
+				var tagKey = list[i].tag.replace( /-/g, '' ).replace( / /g, '' ).toLowerCase();
 				this.tagsOptions.all.tags[tagKey] = list[i];
 			}
 		 },
