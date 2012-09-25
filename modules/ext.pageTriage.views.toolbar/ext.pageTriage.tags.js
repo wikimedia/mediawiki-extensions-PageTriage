@@ -432,7 +432,7 @@ $( function() {
 				}
 				// If a parameter is required but not filled in, show an error and keep the form open
 				if ( tag.params[param].input === 'required' && !tag.params[param].value ) {
-					$( '#mwe-pt-tags-params-form-error' ).html( mw.msg( 'pagetriage-tags-param-missing-required', param ) );
+					$( '#mwe-pt-tags-params-form-error' ).html( mw.msg( 'pagetriage-tags-param-missing-required', tag.tag ) );
 					return false;
 				}
 			}
@@ -477,7 +477,7 @@ $( function() {
 					// Final check on required params
 					for ( var param in tagObj.params ) {
 						if ( tagObj.params[param].input === 'required' && !tagObj.params[param].value ) {
-							_this.handleError( mw.msg( 'pagetriage-tags-param-missing-required', param ) );
+							_this.handleError( mw.msg( 'pagetriage-tags-param-missing-required', tagObj.tag ) );
 							return;
 						}
 					}
