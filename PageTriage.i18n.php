@@ -973,7 +973,6 @@ $messages['br'] = array(
 	'pagetriage-tags-overlinked-label' => 'Re a liammoù',
 	'pagetriage-tags-cleanup-label' => 'Tamm kempenn',
 	'pagetriage-tags-roughtranslation-label' => 'Brastroidigezh',
-	'pagetriage-tags-wikify-label' => 'Wikiadur',
 	'pagetriage-tags-weasel-label' => 'Amjestr',
 	'pagetriage-tags-blpsources-label' => 'Mammennoù ouzhpenn',
 	'pagetriage-tags-cleanupreorganise-label' => 'Adurzhiañ',
@@ -1402,7 +1401,7 @@ $messages['de'] = array(
 	'logentry-pagetriage-deletion-delete' => '$1 {{GENDER:$2|versah}} $3 zur Löschung mit {{PLURAL:$5|der Markierung|den Markierungen}} $4',
 );
 
-/** German (formal address) (‪Deutsch (Sie-Form)‬)
+/** German (formal address) (Deutsch (Sie-Form)‎)
  * @author Kghbln
  */
 $messages['de-formal'] = array(
@@ -4568,9 +4567,10 @@ $messages['lb'] = array(
 	'pagetriage' => 'Säiten nokucken',
 	'pagetriage-please-wait' => 'W.e.g. waarden ...',
 	'pagetriage-markpatrolled' => 'Des Säit als nogekuckt markéieren',
+	'pagetriage-markunpatrolled' => 'Des Säit als net nogekuckt markéieren',
 	'pagetriage-self-review-error' => 'Säiten déi Dir ugeluecht hutt kënnt Dir net nokucken.',
 	'pagetriage-reviewed' => 'Nogekuckt',
-	'pagetriage-mark-as-reviewed-error' => 'Beim Markéieren als nogekuckt ass e Feeler geschitt',
+	'pagetriage-mark-as-reviewed-error' => 'Beim Markéieren vun der Säit als nogekuckt ass e Feeler geschitt: $1',
 	'pagetriage-hist' => 'Versiounen',
 	'pagetriage-bytes' => '$1 {{PLURAL:$1|Byte|Byten}}',
 	'pagetriage-edits' => '$1 {{PLURAL:$1|Ännerung|Ännerungen}}',
@@ -4584,6 +4584,8 @@ $messages['lb'] = array(
 	'pagetriage-no-patrol-right' => 'Dir hutt net déi néideg Rechter fir dës Säit nozekucken',
 	'pagetriage-author-blocked' => 'Gespaart',
 	'pagetriage-author-bot' => 'Bot',
+	'pagetriage-showing' => 'Weisen:',
+	'pagetriage-filter-list-prompt' => 'Filtere setzen',
 	'pagetriage-article-count' => 'Et gëtt elo {{PLURAL:$1|eng net nogekuckte Säit|$1 net nogekuckte Säiten}}',
 	'pagetriage-sort-by' => 'Zortéieren no:',
 	'pagetriage-newest' => 'Neist',
@@ -4626,6 +4628,11 @@ $messages['lb'] = array(
 	'pagetriage-button-add-details' => 'Detailer derbäisetzen',
 	'pagetriage-button-edit-details' => 'Detailer änneren',
 	'pagetriage-button-mark-for-deletion' => 'Markéiere fir ze läschen',
+	'pagetriage-page-status-reviewed' => 'Als nogekuckt markéiert den $1 vum $2 ($3$4$5)',
+	'pagetriage-page-status-reviewed-anonymous' => 'Als nogekuckt markéiert',
+	'pagetriage-page-status-unreviewed' => 'Dëse Säit ass nach net nogekuckt.',
+	'pagetriage-page-status-delete' => 'Fir ze läsche markéiert',
+	'pagetriage-articleinfo-stat' => 'Statistiken: $1',
 	'pagetriage-tags-cat-neutrality-label' => 'Neutralitéit',
 	'pagetriage-tags-cat-sources-label' => 'Quellen',
 	'pagetriage-tags-cat-structure-label' => 'Struktur',
@@ -4669,8 +4676,11 @@ $messages['lb'] = array(
 	'pagetriage-tags-overlydetailed-label' => 'Zevill detailléiert',
 	'pagetriage-tags-update-label' => 'Aktualiséieren',
 	'pagetriage-del-tags-dba3-label' => 'Keen Inhalt',
+	'pagetriage-del-tags-dbu3-label' => 'Net-fräi Galerien',
+	'pagetriage-del-tooltip' => 'Dës Säit nominéiere fir ze läschen',
 	'pagetriage-tags-param-article-label' => 'Artikel:',
 	'pagetriage-tags-param-date-label' => 'Datum:',
+	'pagetriage-tags-param-for-label' => 'Dësen Artikel muss méiglecherweis an dëse Beräicher iwwerschafft ginn:',
 	'pagetriage-tags-param-blp-label' => 'Dëst ass eng Biographie vun enger Persoun déi nach lieft:',
 	'pagetriage-tags-param-source-label' => 'Gitt w.e.g. eng URL fir déi Quell un.',
 	'pagetriage-tags-param-free-label' => 'Dësen Inhalt ass fräi lizenzéiert.',
@@ -4680,6 +4690,8 @@ $messages['lb'] = array(
 	'pagetriage-tags-param-missing-required' => 'De Parameter $1 ass obligatoresch',
 	'pagetriage-info-title' => 'Säiten-Informatioun',
 	'pagetriage-info-problem-header' => 'Méiglech Problemer',
+	'pagetriage-info-history-header' => 'Versiounen',
+	'pagetriage-info-history-show-full' => 'all Versioune weisen',
 	'pagetriage-info-help' => 'Hëllef',
 	'pagetriage-info-no-problems' => 'Bis elo goufe fir dës Säit keng Problemer fonnt.',
 	'pagetriage-info-problem-non-autoconfirmed' => 'Neie Benotzer',
@@ -4693,6 +4705,7 @@ $messages['lb'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-info-tooltip' => 'Meta-Donnéeë fir dës Säit weisen',
+	'pagetriage-toolbar-linktext' => 'Dësen Artikel iwwerschaffen',
 	'pagetriage-toolbar-learn-more' => 'Fir méi ze wëssen »',
 	'pagetriage-mark-title' => 'Als nogekuckt markéieren',
 	'pagetriage-mark-as-reviewed' => 'Als nogekuckt markéieren',
@@ -5719,7 +5732,6 @@ $messages['sv'] = array(
 	'pagetriage-filter-stat-blocked' => 'Blockerade användare',
 	'pagetriage-filter-stat-username' => 'Användarnamn: $1',
 	'pagetriage-no-pages' => 'Inga sidor matchar dina kriterier.',
-	'pagetriage-warning-prototype' => 'Detta är en prototyp, inte en färdig produkt. Nyckelfunktionerna är fortfarande under utveckling. <a href="$1">Läs mer</a> · <a href="$2">Ge feedback</a>',
 	'pagetriage-warning-browser' => 'Verktyget fungerar kanske inte korrekt i en webbläsare som är äldre än Internet Explorer 8.',
 	'pagetriage-note-reviewed' => 'Denna sida har patrullerats.',
 	'pagetriage-note-not-reviewed' => 'Denna sida har ännu inte granskats.',
@@ -6348,7 +6360,7 @@ $messages['yi'] = array(
 	'pagetriage-info-help' => 'הילף',
 );
 
-/** Simplified Chinese (‪中文（简体）‬)
+/** Simplified Chinese (中文（简体）‎)
  * @author Liangent
  * @author Shirayuki
  * @author Shizhao
