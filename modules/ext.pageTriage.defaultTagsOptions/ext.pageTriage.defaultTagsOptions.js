@@ -125,6 +125,18 @@ $.pageTriageTagsOptions = {
 				multiple: true
 			},
 
+			'unreferenced': {
+				label: mw.msg( 'pagetriage-tags-unreferenced-label' ),
+				tag: 'unreferenced',
+				desc: mw.msg( 'pagetriage-tags-unreferenced-desc' ),
+				params: {
+					'date': param.date
+				},
+				position: 'top',
+				dest: 'sources',
+				multiple: true
+			},
+
 			'stub': {
 				label: mw.msg( 'pagetriage-tags-stub-label' ),
 				tag: 'stub',
@@ -145,18 +157,6 @@ $.pageTriageTagsOptions = {
 				position: 'bottom',
 				dest: 'metadata',
 				multiple: false
-			},
-
-			'unreferenced': {
-				label: mw.msg( 'pagetriage-tags-unreferenced-label' ),
-				tag: 'unreferenced',
-				desc: mw.msg( 'pagetriage-tags-unreferenced-desc' ),
-				params: {
-					'date': param.date
-				},
-				position: 'top',
-				dest: 'sources',
-				multiple: true
 			}
 		}
 	},
@@ -367,6 +367,63 @@ $.pageTriageTagsOptions = {
 	'sources': {
 		label: mw.msg( 'pagetriage-tags-cat-sources-label' ),
 		tags: {
+			'disputed': {
+				label: mw.msg( 'pagetriage-tags-disputed-label' ),
+				tag: 'disputed',
+				desc: mw.msg( 'pagetriage-tags-disputed-desc' ),
+				params: {
+					'date': param.date
+				},
+				position: 'top',
+				multiple: true
+			},
+
+			'linkrot': {
+				label: mw.msg( 'pagetriage-tags-linkrot-label' ),
+				tag: 'linkrot',
+				desc: mw.msg( 'pagetriage-tags-linkrot-desc' ),
+				params: {
+					'date': param.date
+				},
+				position: 'top',
+				multiple: true
+			},
+
+			'citationstyle': {
+				label: mw.msg( 'pagetriage-tags-citationstyle-label' ),
+				tag: 'citation style',
+				desc: mw.msg( 'pagetriage-tags-citationstyle-desc' ),
+				params: {
+					'date': param.date,
+					'details': $.extend( true, {}, param.details )
+				},
+				position: 'top',
+				multiple: true
+			},
+
+			'hoax': {
+				label: mw.msg( 'pagetriage-tags-hoax-label' ),
+				tag: 'hoax',
+				desc: mw.msg( 'pagetriage-tags-hoax-desc' ),
+				params: {
+					'date': param.date
+				},
+				position: 'top',
+				multiple: true
+			},
+
+			'morefootnotes': {
+				label: mw.msg( 'pagetriage-tags-morefootnotes-label' ),
+				tag: 'more footnotes',
+				desc: mw.msg( 'pagetriage-tags-morefootnotes-desc' ),
+				params: {
+					'date': param.date,
+					'blp': $.extend( true, {}, param.blp )
+				},
+				position: 'top',
+				multiple: true
+			},
+
 			'refimprove': {
 				label: mw.msg( 'pagetriage-tags-refimprove-label' ),
 				tag: 'refimprove',
@@ -382,6 +439,28 @@ $.pageTriageTagsOptions = {
 				label: mw.msg( 'pagetriage-tags-blpsources-label' ),
 				tag: 'BLP sources',
 				desc: mw.msg( 'pagetriage-tags-blpsources-desc' ),
+				params: {
+					'date': param.date
+				},
+				position: 'top',
+				multiple: true
+			},
+
+			'nofootnotes': {
+				label: mw.msg( 'pagetriage-tags-nofootnotes-label' ),
+				tag: 'no footnotes',
+				desc: mw.msg( 'pagetriage-tags-nofootnotes-desc' ),
+				params: {
+					'date': param.date
+				},
+				position: 'top',
+				multiple: true
+			},
+
+			'unreferenced': {
+				label: mw.msg( 'pagetriage-tags-unreferenced-label' ),
+				tag: 'unreferenced',
+				desc: mw.msg( 'pagetriage-tags-unreferenced-desc' ),
 				params: {
 					'date': param.date
 				},
@@ -416,17 +495,6 @@ $.pageTriageTagsOptions = {
 				label: mw.msg( 'pagetriage-tags-onesource-label' ),
 				tag: 'one source',
 				desc: mw.msg( 'pagetriage-tags-onesource-desc' ),
-				params: {
-					'date': param.date
-				},
-				position: 'top',
-				multiple: true
-			},
-
-			'unreferenced': {
-				label: mw.msg( 'pagetriage-tags-unreferenced-label' ),
-				tag: 'unreferenced',
-				desc: mw.msg( 'pagetriage-tags-unreferenced-desc' ),
 				params: {
 					'date': param.date
 				},
@@ -578,79 +646,6 @@ $.pageTriageTagsOptions = {
 				label: mw.msg( 'pagetriage-tags-notability-label' ),
 				tag: 'notability',
 				desc: mw.msg( 'pagetriage-tags-notability-desc' ),
-				params: {
-					'date': param.date
-				},
-				position: 'top',
-				multiple: true
-			}
-		}
-	},
-
-	'verifiability': {
-		label: mw.msg( 'pagetriage-tags-cat-verifiability-label' ),
-		tags: {
-			'disputed': {
-				label: mw.msg( 'pagetriage-tags-disputed-label' ),
-				tag: 'disputed',
-				desc: mw.msg( 'pagetriage-tags-disputed-desc' ),
-				params: {
-					'date': param.date
-				},
-				position: 'top',
-				multiple: true
-			},
-
-			'linkrot': {
-				label: mw.msg( 'pagetriage-tags-linkrot-label' ),
-				tag: 'linkrot',
-				desc: mw.msg( 'pagetriage-tags-linkrot-desc' ),
-				params: {
-					'date': param.date
-				},
-				position: 'top',
-				multiple: true
-			},
-
-			'citationstyle': {
-				label: mw.msg( 'pagetriage-tags-citationstyle-label' ),
-				tag: 'citation style',
-				desc: mw.msg( 'pagetriage-tags-citationstyle-desc' ),
-				params: {
-					'date': param.date,
-					'details': $.extend( true, {}, param.details )
-				},
-				position: 'top',
-				multiple: true
-			},
-
-			'hoax': {
-				label: mw.msg( 'pagetriage-tags-hoax-label' ),
-				tag: 'hoax',
-				desc: mw.msg( 'pagetriage-tags-hoax-desc' ),
-				params: {
-					'date': param.date
-				},
-				position: 'top',
-				multiple: true
-			},
-
-			'morefootnotes': {
-				label: mw.msg( 'pagetriage-tags-morefootnotes-label' ),
-				tag: 'more footnotes',
-				desc: mw.msg( 'pagetriage-tags-morefootnotes-desc' ),
-				params: {
-					'date': param.date,
-					'blp': $.extend( true, {}, param.blp )
-				},
-				position: 'top',
-				multiple: true
-			},
-
-			'nofootnotes': {
-				label: mw.msg( 'pagetriage-tags-nofootnotes-label' ),
-				tag: 'no footnotes',
-				desc: mw.msg( 'pagetriage-tags-nofootnotes-desc' ),
 				params: {
 					'date': param.date
 				},
