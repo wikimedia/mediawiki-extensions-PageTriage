@@ -111,7 +111,6 @@ $messages['en'] = array(
 	'pagetriage-page-status-autoreviewed' => 'This page was autopatrolled.',
 	'pagetriage-page-status-delete' => 'Marked for deletion',
 	'pagetriage-articleinfo-stat' => 'Stats: $1',
-	'pagetriage-add-tag-confirmation' => 'Are you sure you want to add $1 {{PLURAL:$1|tag|tags}} to such a short article?',
 	'pagetriage-js-required' => 'This extension requires a JavaScript enabled browser.',
 
 	 // Tags options section
@@ -294,13 +293,7 @@ $messages['en'] = array(
 	'pagetriage-del-tags-articlefordeletion-label' => 'Articles for deletion',
 	'pagetriage-del-tags-redirectsfordiscussion-label' => 'Redirects for discussion',
 	'pagetriage-del-tags-miscellanyfordeletion-label' => 'Miscellany for deletion',
-	'pagetriage-del-log-page-missing-error' => 'Log page for today has not been created yet!',
-	'pagetriage-del-log-page-adding-error' => 'Failed to find target spot for the discussion',
-	'pagetriage-del-talk-page-notify-error' => 'Failed to notify author on talk page',
 	'pagetriage-del-talk-page-notify-summary' => 'Notifying author of deletion nomination for [[$1]]',
-	'pagetriage-del-tooltip' => 'Nominate this page for deletion',
-	'pagetriage-tagging-error' => 'Failed to apply tags to the page',
-	'pagetriage-tag-deletion-error' => 'Page already tagged with a deletion template, aborting procedure.',
 
 	// Tags parameter section
 	'pagetriage-tags-param-article-label' => 'Article:',
@@ -315,6 +308,19 @@ $messages['en'] = array(
 	'pagetriage-tags-param-free-no-label' => 'No',
 	'pagetriage-tags-param-missing-required' => 'Tag $1 is missing required parameter.',
 	'pagetriage-tags-param-date-format' => '$1 $2',
+	
+	// Logging
+	'log-name-pagetriage-curation' => 'Page curation log',
+	'log-description-pagetriage-curation' => 'This is the log of actions taken on page curation toolbar.',
+	'log-name-pagetriage-deletion' => 'Deletion tag log',
+	'log-description-pagetriage-deletion' => 'This is the log of actions taken on page curation deletion wizard.',
+	'logentry-pagetriage-curation-reviewed' => '$1 {{GENDER:$2|marked}} $3 as reviewed',
+	'logentry-pagetriage-curation-unreviewed' => '$1 {{GENDER:$2|marked}} $3 as unreviewed',
+	'logentry-pagetriage-curation-tag' => '$1 {{GENDER:$2|tagged}} $3 with $4 {{PLURAL:$5|tag|tags}}',
+	'logentry-pagetriage-curation-delete' => '$1 {{GENDER:$2|marked}} $3 for deletion with $4 {{PLURAL:$5|tag|tags}}',
+	'logentry-pagetriage-deletion-delete' => '$1 {{GENDER:$2|marked}} $3 for deletion with $4 {{PLURAL:$5|tag|tags}}',
+
+	// Misc. Curation Toolbar messages
 	'pagetriage-tags-edit-summary' => 'Added tags to the page using $1 ($2)',
 	'pagetriage-tags-note-edit-summary' => 'Added comments regarding [[$1]]',
 	'pagetriage-del-edit-summary' => 'Nominated page for deletion using $1 ($2)',
@@ -352,17 +358,15 @@ $messages['en'] = array(
 	'pagetriage-wikilove-no-recipients' => 'No recipients are available for this page.',
 	'pagetriage-wikilove-tooltip' => 'Send appreciation to the authors',
 	'pagetriage-next-tooltip' => 'Go to the next page in the queue',
-
-	// log
-	'log-name-pagetriage-curation' => 'Page curation log',
-	'log-description-pagetriage-curation' => 'This is the log of actions taken on page curation toolbar.',
-	'log-name-pagetriage-deletion' => 'Deletion tag log',
-	'log-description-pagetriage-deletion' => 'This is the log of actions taken on page curation deletion wizard.',
-	'logentry-pagetriage-curation-reviewed' => '$1 {{GENDER:$2|marked}} $3 as reviewed',
-	'logentry-pagetriage-curation-unreviewed' => '$1 {{GENDER:$2|marked}} $3 as unreviewed',
-	'logentry-pagetriage-curation-tag' => '$1 {{GENDER:$2|tagged}} $3 with $4 {{PLURAL:$5|tag|tags}}',
-	'logentry-pagetriage-curation-delete' => '$1 {{GENDER:$2|marked}} $3 for deletion with $4 {{PLURAL:$5|tag|tags}}',
-	'logentry-pagetriage-deletion-delete' => '$1 {{GENDER:$2|marked}} $3 for deletion with $4 {{PLURAL:$5|tag|tags}}',
+	'pagetriage-del-log-page-missing-error' => 'Log page for today has not been created yet!',
+	'pagetriage-del-log-page-adding-error' => 'Failed to find target spot for the discussion',
+	'pagetriage-del-talk-page-notify-error' => 'Failed to notify author on talk page',
+	'pagetriage-del-tooltip' => 'Nominate this page for deletion',
+	'pagetriage-tagging-error' => 'Failed to apply tags to the page',
+	'pagetriage-add-tag-confirmation' => 'Are you sure you want to add $1 {{PLURAL:$1|tag|tags}} to such a short article?',
+	'pagetriage-tag-deletion-error' => 'Page already tagged with a deletion template, aborting procedure.',
+	'pagetriage-toolbar-close' => 'Close',
+	'pagetriage-toolbar-minimize' => 'Minimize',
 );
 
 /** Message documentation (Message documentation)
@@ -732,6 +736,8 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 	'logentry-pagetriage-curation-tag' => 'log action when someone tags a page with maintenance tags, {{LogEntry}}, $4 is a list of comma-separated maintenance tags, $5 is the number of tags',
 	'logentry-pagetriage-curation-delete' => 'log action when some marks a page for deletion, {{LogEntry}}, $4 is a list of comma-separated deletion tags, $5 is the number of tags',
 	'logentry-pagetriage-deletion-delete' => 'log action when some marks a page for deletion, {{LogEntry}}, $4 is a list of comma-separated deletion tags, $5 is the number of tags',
+	'pagetriage-toolbar-close' => 'Tooltip for the close button in the Curation Toolbar',
+	'pagetriage-toolbar-minimize' => 'Tooltip for the minimize button in the Curation Toolbar (also docks the minimized toolbar to the side of the screen)',
 );
 
 /** Afrikaans (Afrikaans)
