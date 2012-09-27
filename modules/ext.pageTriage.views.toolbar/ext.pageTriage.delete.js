@@ -207,6 +207,18 @@ $( function() {
 			}
 		},
 
+		isPageNominatedForDeletion: function() {
+			var deletion = [ 'csd_status', 'prod_status', 'blp_prod_status', 'afd_status' ];
+
+			for ( var i = 0; i < deletion.length; i++ ) {
+				if ( this.model.get( deletion[i] ) == '1' ) {
+					return true;
+				}
+			}
+
+			return false;
+		},
+
 		/**
 		 * Build deletion tag check/raido and label
 		 */
@@ -540,6 +552,12 @@ $( function() {
 				tagCount++;
 			}
 
+			// check if page is aleady nominated for deletion
+			if ( this.isPageNominatedForDeletion() ) {
+				this.handleError( mw.msg( 'pagetriage-tag-deletion-error' ) );
+				return;
+			}
+
 			// Applying deletion tags should automatically mark the page as reviewed
 			apiRequest = {
 				'action': 'pagetriageaction',
@@ -649,7 +667,11 @@ $( function() {
 					if ( data.pagetriagetagging && data.pagetriagetagging.result === 'success' ) {
 						_this.notifyUser( count, key );
 					} else {
-						_this.handleError( mw.msg( 'pagetriage-tagging-error' ) );
+						if ( data.error && data.error.code && data.error.code == 'pagetriage-tag-deletion-error' ) {
+							_this.handleError( mw.msg( 'pagetriage-tag-deletion-error' ) );
+						} else {
+							_this.handleError( mw.msg( 'pagetriage-tagging-error' ) );
+						}
 					}
 				},
 				dataType: 'json'

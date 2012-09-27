@@ -300,6 +300,7 @@ $messages['en'] = array(
 	'pagetriage-del-talk-page-notify-summary' => 'Notifying author of deletion nomination for [[$1]]',
 	'pagetriage-del-tooltip' => 'Nominate this page for deletion',
 	'pagetriage-tagging-error' => 'Failed to apply tags to the page',
+	'pagetriage-tag-deletion-error' => 'Page already tagged with a deletion template, aborting procedure.',
 
 	// Tags parameter section
 	'pagetriage-tags-param-article-label' => 'Article:',
@@ -669,6 +670,7 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-del-talk-page-notify-summary' => 'Edit summary for notifying an author when their page has been nominated for deletion. $1 is the title of the page being nominated.',
 	'pagetriage-del-tooltip' => 'Help message that displays when someone hovers over the deletion wizard button',
 	'pagetriage-tagging-error' => 'Error message indicating that error has occurred while applying tags to a page',
+	'pagetriage-tag-deletion-error' => 'Error message indicating that a page has already been nominated for deletion',
 	'pagetriage-tags-param-article-label' => 'Label for article parameter',
 	'pagetriage-tags-param-date-label' => 'Label for date parameter',
 	'pagetriage-tags-param-issues-label' => 'Label for reason/details parameter',

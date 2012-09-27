@@ -39,6 +39,21 @@ class ApiPageTriageTagging extends ApiBase {
 		// Parse tags into a human readable list for the edit summary
 		$tags = $wgContLang->commaList( $params['taglist'] );
 
+		// Check if the page has been nominated for deletion
+		if ( $params['deletion'] ) {
+			$articleMetadata = new ArticleMetadata( array( $params['pageid'] ) );
+			$metaData = $articleMetadata->getMetadata();
+			if ( isset( $metaData[$params['pageid']] ) ) {
+				foreach ( array( 'csd_status', 'prod_status', 'blp_prod_status', 'afd_status' ) as $val ) {
+					if ( $metaData[$params['pageid']][$val] == '1' ) {
+						$this->dieUsage( 'The page has been nominated for deletion', 'pagetriage-tag-deletion-error' );
+					}
+				}
+			} else {
+				$this->dieUsage( 'The page specified does not exist in pagetriage queue', 'bad-pagetriage-page' );
+			}
+		}
+
 		if ( $apiParams ) {
 			$projectLink = '[[' . $wgPageTriageProjectLink . '|' . wfMessage( 'pagetriage-pagecuration' )->plain() . ']]';
 			if ( $params['deletion'] ) {
