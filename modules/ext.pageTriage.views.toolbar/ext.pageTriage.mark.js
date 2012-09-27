@@ -34,7 +34,7 @@ $( function() {
 			if ( dir === 'normal' && this.model.get( 'patrol_status' ) > 0 ) {
 				dir = 'special';
 			}
-			this.$icon.attr('src', this.iconPath( dir ) );
+			this.$icon.attr( 'src', this.iconPath( dir ) );
 		},
 
 		submit: function( action ) {
