@@ -758,14 +758,14 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 
 		while( $openCurPos !== false && $closeCurPos !== false && $openCurPos < $closeCurPos ) {
 			// replace all templates with empty string
-			$text = preg_replace( '/\{\{[^\{]((?!\{\{).)*?\}\}/is', '', $text );
+			$text = substr_replace( $text, '', $openCurPos, $closeCurPos - $openCurPos + 2 );
 
 			$openCurPos  = strpos($text, '{{');
 			$closeCurPos = strpos($text, '}}');
 
 			$attempt++;
-			// only try 5 nested levels at max
-			if ( $attempt > 5 ) {
+			// 10 attempts max should give us a 150 characters text with no templates
+			if ( $attempt > 10 ) {
 				break;
 			}
 		}
