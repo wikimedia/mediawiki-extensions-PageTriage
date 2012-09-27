@@ -112,6 +112,7 @@ $messages['en'] = array(
 	'pagetriage-page-status-delete' => 'Marked for deletion',
 	'pagetriage-articleinfo-stat' => 'Stats: $1',
 	'pagetriage-add-tag-confirmation' => 'Are you sure you want to add $1 {{PLURAL:$1|tag|tags}} to such a short article?',
+	'pagetriage-js-required' => 'This extension requires a JavaScript enabled browser.',
 
 	 // Tags options section
 	'pagetriage-tags-title' => 'Add tags',
@@ -484,6 +485,7 @@ If your language requires some words between the different parts of the timestam
 	'pagetriage-articleinfo-stat' => 'Article info flyout stat
 *$1 is a list of stats separated by {{msg-mw|pagetriage-dot-separator}}. Example: "{{int:Pagetriage-bytes|123}}{{int:pagetriage-dot-separator}}{{int:Pagetriage-edits|45}}{{int:pagetriage-dot-separator}}{{int:Pagetriage-categories|6}}"',
 	'pagetriage-add-tag-confirmation' => 'Confirmation message upon tag submission, $1 is the number of tags',
+	'pagetriage-js-required' => 'Error message for browsers with JavaScript disabled',
 	'pagetriage-tags-title' => 'The title for the tag wizard flyout in the toolbar',
 	'pagetriage-tags-cat-common-label' => 'Label for common category',
 	'pagetriage-tags-cat-metadata-label' => 'Label for metadata category',

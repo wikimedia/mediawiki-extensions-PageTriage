@@ -72,6 +72,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$warnings .= '<div>' . $this->msg( 'pagetriage-welcome', $wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl )->text() . '</div>';
 		$warnings .= '</div>';
 		$out->addHtml( $warnings );
+		$out->addInlineStyle( '.client-nojs #mwe-pt-list-view, .client-js #mwe-pt-list-view-no-js { display: none; }' );
 
 		// This will hold the HTML for the triage interface
 		$triageInterface = '';
@@ -83,6 +84,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 
 		// TODO: this should load with a spinner instead of "please wait"
 		$triageInterface .= "<div id='mwe-pt-list-view'>".$this->msg( 'pagetriage-please-wait' )."</div>";
+		$triageInterface .= "<div id='mwe-pt-list-view-no-js'>" . $this->msg( 'pagetriage-js-required' ) . "</div>";
 		$triageInterface .= "<div id='mwe-pt-list-errors' style='display: none;'></div>";
 		$triageInterface .= "<div id='mwe-pt-list-more' style='display: none;'>";
 		$triageInterface .= "<a href='#' id='mwe-pt-list-more-link'>".$this->msg( 'pagetriage-more' )."</a>";
