@@ -563,7 +563,6 @@ $( function() {
 						 return;
 					}
 				}
-				tagCount++;
 			}
 
 			// check if page is aleady nominated for deletion
@@ -716,7 +715,7 @@ $( function() {
 						'action': 'edit',
 						'title': title.getPrefixedText(),
 						'appendtext': "\n" + template,
-						'summary': mw.msg( 'pagetriage-del-talk-page-notify-summary', pageTitle ),
+						'summary': mw.msg( 'pagetriage-del-talk-page-notify-summary', pageName ),
 						'token': mw.user.tokens.get('editToken'),
 						'format': 'json'
 					},
