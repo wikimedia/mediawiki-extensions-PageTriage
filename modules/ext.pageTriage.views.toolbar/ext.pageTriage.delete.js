@@ -193,9 +193,9 @@ $( function() {
 			$( '#mwe-pt-delete-submit-button' ).button( { disabled: true } )
 				.click(
 					function () {
-						_this.submit();
 						$( '#mwe-pt-delete-submit-button' ).button( 'disable' );
 						$( '#mwe-pt-delete-submit' ).append( $.createSpinner( 'delete-spinner' ) ); // show spinner
+						_this.submit();
 						return false;
 					}
 				).end();
@@ -487,7 +487,7 @@ $( function() {
 			for ( var param in tag.params ) {
 				tag.params[param].value = $( '#mwe-pt-delete-params-' + key + '-' + param ).attr( 'value' );
 				if ( tag.params[param].input === 'required' && !tag.params[param].value ) {
-					$( '#mwe-pt-delete-params-form-error' ).text( mw.msg( 'pagetriage-tags-param-missing-required', param ) );
+					$( '#mwe-pt-delete-params-form-error' ).text( mw.msg( 'pagetriage-tags-param-missing-required', tag.tag ) );
 					return false;
 				}
 			}
@@ -523,6 +523,22 @@ $( function() {
 		 */
 		submit: function() {
 			var _this = this;
+
+			// no tag to submit
+			if ( this.objectPropCount( this.selectedTag ) == 0 ) {
+				return;
+			}
+
+			// check for any missing parameters
+			for ( var key in this.selectedTag ) {
+				for ( var param in this.selectedTag[key].params ) {
+					if ( this.selectedTag[key].params[param].input == 'required' && !this.selectedTag[key].params[param].value ) {
+						 this.handleError( mw.msg( 'pagetriage-tags-param-missing-required', this.selectedTag[key].tag ) );
+						 return;
+					}
+				}
+				tagCount++;
+			}
 
 			// Applying deletion tags should automatically mark the page as reviewed
 			apiRequest = {

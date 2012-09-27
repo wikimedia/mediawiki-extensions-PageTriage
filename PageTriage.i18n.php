@@ -312,7 +312,7 @@ $messages['en'] = array(
 	'pagetriage-tags-param-url-label' => 'Please add a URL for that source.',
 	'pagetriage-tags-param-free-yes-label' => 'Yes',
 	'pagetriage-tags-param-free-no-label' => 'No',
-	'pagetriage-tags-param-missing-required' => 'Parameter $1 is required',
+	'pagetriage-tags-param-missing-required' => 'Tag $1 is missing required parameter.',
 	'pagetriage-tags-param-date-format' => '$1 $2',
 	'pagetriage-tags-edit-summary' => 'Added tags to the page using $1 ($2)',
 	'pagetriage-tags-note-edit-summary' => 'Added comments regarding [[$1]]',
@@ -679,7 +679,7 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-tags-param-url-label' => 'Label for url parameter',
 	'pagetriage-tags-param-free-yes-label' => 'Label for Yes answer of free parameter',
 	'pagetriage-tags-param-free-no-label' => 'Label for No answer of free parameter',
-	'pagetriage-tags-param-missing-required' => 'Error message for missing required tag parameter, $1 is the parameter name',
+	'pagetriage-tags-param-missing-required' => 'Error message for missing required tag parameter, $1 is the tag name',
 	'pagetriage-tags-edit-summary' => 'The edit summary that is posted when someone applies tags to an article with the Curation Toolbar in PageTriage.
 *$1 is a link to the local wiki page about the Curation Toolbar with {{msg-mw|pagetriage-pagecuration}} as the link text.
 *$2 is the list of tags added to the article.',
