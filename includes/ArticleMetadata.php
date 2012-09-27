@@ -770,7 +770,7 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 			}
 		}
 
-		$text = trim( strip_tags( MessageCache::singleton()->parse( $text )->getText() ) );
+		$text = trim( strip_tags( htmlspecialchars_decode( MessageCache::singleton()->parse( $text )->getText() ) ) );
 		// strip out non-useful data for snippet
 		$text = str_replace( array('{', '}', '[edit]' ), '', $text );
 
