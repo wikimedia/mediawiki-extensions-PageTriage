@@ -333,7 +333,7 @@ $messages['en'] = array(
 	'pagetriage-info-problem-no-categories-desc' => 'This page does not belong to any categories.',
 	'pagetriage-info-problem-orphan' => 'Orphan',
 	'pagetriage-info-problem-orphan-desc' => 'No other pages link to this page.',
-	'pagetriage-info-problem-no-references' => 'No references',
+	'pagetriage-info-problem-no-references' => 'No citations',
 	'pagetriage-info-problem-no-references-desc' => 'This page does not cite any sources.',
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
@@ -699,7 +699,7 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-info-problem-no-categories-desc' => 'Description for the error displayed when the page belongs to no categories.',
 	'pagetriage-info-problem-orphan' => 'Title for the error displayed when the page has no inbound links.',
 	'pagetriage-info-problem-orphan-desc' => 'Description for the error displayed when the page has no inbound links.',
-	'pagetriage-info-problem-no-references' => 'Title for the error displayed when the page has no citations.',
+	'pagetriage-info-problem-no-references' => 'Title for the error displayed when the page has no citations to any sources.',
 	'pagetriage-info-problem-no-references-desc' => 'Description for the error displayed when the page has no citations.',
 	'pagetriage-info-timestamp-date-format' => "Format specifier for the month and date part of the revision timestamp. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers.
 
