@@ -125,6 +125,7 @@ $( function() {
 		 */
 		initialize: function( options ) {
 			this.eventBus = options.eventBus;
+			this.model.on( 'change', this.setIcon, this );
 			this.reset();
 		},
 
@@ -134,6 +135,17 @@ $( function() {
 		reset: function() {
 			this.selectedTag = {};
 			this.selectedCat = '';
+		},
+
+		// overwrite parent function
+		setIcon: function( dir ) {
+			if ( typeof( dir ) !== 'string' )  {
+				dir = 'normal';
+			}
+			if ( dir === 'normal' && this.isPageNominatedForDeletion() ) {
+				dir = 'special';
+			}
+			this.$icon.attr( 'src', this.iconPath( dir ) );
 		},
 
 		/**
