@@ -83,7 +83,7 @@ $.pageTriageTagsOptions = {
 					'date': param.date
 				},
 				position: 'top',
-				dest: 'verifiability',
+				dest: 'sources',
 				multiple: true
 			},
 
@@ -109,7 +109,7 @@ $.pageTriageTagsOptions = {
 					'blp': $.extend( true, {}, param.blp )
 				},
 				position: 'top',
-				dest: 'verifiability',
+				dest: 'sources',
 				multiple: true
 			},
 
