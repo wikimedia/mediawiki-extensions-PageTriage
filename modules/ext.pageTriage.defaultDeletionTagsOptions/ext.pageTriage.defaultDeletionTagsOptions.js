@@ -28,7 +28,7 @@ var param = {
 		label: '',
 		input: 'automated',
 		type: 'hidden',
-		value: mw.config.get('wgPageName')
+		value: new mw.Title( mw.config.get( 'wgPageName' ) ).getPrefixedText()
         }
 };
 
