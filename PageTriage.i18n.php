@@ -1433,6 +1433,8 @@ $messages['de'] = array(
 	'pagetriage-tagging-error' => 'Die Markierungen konnten nicht zur Seite hinzugefügt werden.',
 	'pagetriage-add-tag-confirmation' => 'Bist du sicher, dass du {{PLURAL:$1|eine Markierung|$1 Markierungen}} zu solch einem kurzen Artikel hinzufügen möchtest?',
 	'pagetriage-tag-deletion-error' => 'Die Seite wurde bereits mit einer Löschvorlage markiert.',
+	'pagetriage-toolbar-close' => 'Schließen',
+	'pagetriage-toolbar-minimize' => 'Minimieren',
 );
 
 /** German (formal address) (Deutsch (Sie-Form)‎)
@@ -1739,7 +1741,7 @@ $messages['es'] = array(
 	'pagetriage-tags-param-url-label' => 'Por favor añade una dirección URL para esa fuente.',
 	'pagetriage-tags-param-free-yes-label' => 'Sí',
 	'pagetriage-tags-param-free-no-label' => 'No',
-	'pagetriage-tags-param-missing-required' => 'El parámetro $1 es obligatorio',
+	'pagetriage-tags-param-missing-required' => 'La etiqueta "$1" es el parámetro necesario que falta.',
 	'log-name-pagetriage-curation' => 'Registro de conservación de páginas',
 	'log-description-pagetriage-curation' => 'Este es el registro de acciones tomadas en la barra de herramientas de conservación de páginas.',
 	'log-name-pagetriage-deletion' => 'Registro de la etiqueta de borrado',
@@ -1792,6 +1794,9 @@ $messages['es'] = array(
 	'pagetriage-del-tooltip' => 'Nominar esta página para su borrado',
 	'pagetriage-tagging-error' => 'No se han podido aplicar etiquetas a la página',
 	'pagetriage-add-tag-confirmation' => '¿Estás seguro de que deseas agregar $1 {{PLURAL:$1| etiqueta|etiquetas}} a un artículo tan corto?',
+	'pagetriage-tag-deletion-error' => 'La página ya está etiquetada con una plantilla de eliminación, abortando el procedimiento.',
+	'pagetriage-toolbar-close' => 'Cerrar',
+	'pagetriage-toolbar-minimize' => 'Minimizar',
 );
 
 /** Estonian (eesti)
@@ -1966,6 +1971,7 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Dalba
  * @author Huji
  * @author Mahan
  * @author Mjbmr
@@ -2157,6 +2163,9 @@ $messages['fa'] = array(
 	'pagetriage-del-tooltip' => 'این صفحه را نامزد حذف کنید',
 	'pagetriage-tagging-error' => 'عدم موفقیت در افزودن برچسب‌ها به صفحه',
 	'pagetriage-add-tag-confirmation' => 'آیا مطمئن هستید که می‌خواهید $1 {{PLURAL:$1|برچسب|برچسب}} به این مقالهٔ کوتاه بیفزایید؟',
+	'pagetriage-tag-deletion-error' => 'صفحه از پیش برچسب حذف خورده است، در حال لغو فرآیند.',
+	'pagetriage-toolbar-close' => 'بستن',
+	'pagetriage-toolbar-minimize' => 'کوچک‌ساختن',
 );
 
 /** Finnish (suomi)
@@ -3260,6 +3269,7 @@ $messages['hsb'] = array(
 	'pagetriage-page-status-autoreviewed' => 'Tuta strona je so awtomatisce dohladowała.',
 	'pagetriage-page-status-delete' => 'Za zhašenje markěrowany',
 	'pagetriage-articleinfo-stat' => 'Statistiki: $1',
+	'pagetriage-js-required' => 'Tute rozšěrjenje trjeba wobhladowak, kotryž JavaScript podpěruje.',
 	'pagetriage-tags-title' => 'Marki přidać',
 	'pagetriage-tags-cat-common-label' => 'Powšitkowny',
 	'pagetriage-tags-cat-metadata-label' => 'Metadaty',
@@ -3388,7 +3398,7 @@ $messages['hsb'] = array(
 	'pagetriage-tags-param-url-label' => 'Prošu přidaj URL za te žórło.',
 	'pagetriage-tags-param-free-yes-label' => 'Haj',
 	'pagetriage-tags-param-free-no-label' => 'Ně',
-	'pagetriage-tags-param-missing-required' => 'Parameter $1 je trěbny',
+	'pagetriage-tags-param-missing-required' => 'Marce $1 trěbny parmeter faluje.',
 	'logentry-pagetriage-curation-reviewed' => '$1 je $3 jako přepruwowany {{GENDER:$2|markěrował|markěrowała}}',
 	'logentry-pagetriage-curation-unreviewed' => '$1 je $3 jako njepřepruwowany {{GENDER:$2|markěrował|markěrowała}}',
 	'pagetriage-tags-note-edit-summary' => 'Je komentary nastupajo [[$1]] přidał',
@@ -3430,6 +3440,8 @@ $messages['hsb'] = array(
 	'pagetriage-del-log-page-adding-error' => 'Cilowe městno za diskusiju njeje so namakało',
 	'pagetriage-del-talk-page-notify-error' => 'Njeje móžno było, awtora na jeho diskusijnej stronje informować',
 	'pagetriage-del-tooltip' => 'Tutu stronu za zhašenje namjetować',
+	'pagetriage-toolbar-close' => 'Začinić',
+	'pagetriage-toolbar-minimize' => 'Minimować',
 );
 
 /** Hungarian (magyar)
@@ -4130,6 +4142,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Akaniji
  * @author Shirayuki
  */
 $messages['ja'] = array(
@@ -4151,7 +4164,7 @@ $messages['ja'] = array(
 	'pagetriage-edits' => '$1 {{PLURAL:$1|回編集}}',
 	'pagetriage-categories' => '$1 {{PLURAL:$1|カテゴリ}}',
 	'pagetriage-no-categories' => 'カテゴリなし',
-	'pagetriage-no-reference' => '引用なし',
+	'pagetriage-no-reference' => '典拠なし',
 	'pagetriage-orphan' => '孤立',
 	'pagetriage-byline' => '作成者: $1 ($2$3$4)',
 	'pagetriage-byline-new-editor' => '新しい利用者 $1 ($2$3$4) が作成',
@@ -4342,7 +4355,7 @@ $messages['ja'] = array(
 	'pagetriage-tags-param-url-label' => 'その資料の URL を追加してください。',
 	'pagetriage-tags-param-free-yes-label' => 'はい',
 	'pagetriage-tags-param-free-no-label' => 'いいえ',
-	'pagetriage-tags-param-missing-required' => 'パラメーター $1 は必須です',
+	'pagetriage-tags-param-missing-required' => 'タグ $1 に必須のパラメーターがありません。',
 	'log-name-pagetriage-curation' => 'ページのキュレーション記録',
 	'log-description-pagetriage-curation' => 'これは、ページ キュレーション ツールバーに対する操作の記録です。',
 	'log-name-pagetriage-deletion' => 'タグの削除記録',
@@ -4369,7 +4382,7 @@ $messages['ja'] = array(
 	'pagetriage-info-problem-no-categories-desc' => 'このページはどのカテゴリにも属していません。',
 	'pagetriage-info-problem-orphan' => '孤立',
 	'pagetriage-info-problem-orphan-desc' => 'このページは他のページからリンクされていません。',
-	'pagetriage-info-problem-no-references' => '参考文献なし',
+	'pagetriage-info-problem-no-references' => '引用なし',
 	'pagetriage-info-problem-no-references-desc' => 'このページはどの資料も引用していません。',
 	'pagetriage-info-timestamp-date-format' => 'yyyy年MM月dd日',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
@@ -4386,6 +4399,9 @@ $messages['ja'] = array(
 	'pagetriage-del-log-page-missing-error' => '今日の記録ページはまだ作成されていません。',
 	'pagetriage-tagging-error' => 'ページにタグを適用するのに失敗しました',
 	'pagetriage-add-tag-confirmation' => '短い記事に $1 {{PLURAL:$1|個のタグ}}を本当に追加しますか?',
+	'pagetriage-tag-deletion-error' => 'ページには削除テンプレートが既に貼り付けられています。処理を中止します。',
+	'pagetriage-toolbar-close' => '閉じる',
+	'pagetriage-toolbar-minimize' => '最小化',
 );
 
 /** Georgian (ქართული)
@@ -5234,7 +5250,7 @@ $messages['mk'] = array(
 	'pagetriage-tags-param-url-label' => 'Наведете URL за изворот.',
 	'pagetriage-tags-param-free-yes-label' => 'Да',
 	'pagetriage-tags-param-free-no-label' => 'Не',
-	'pagetriage-tags-param-missing-required' => 'Параметарот $1 е задолжителен',
+	'pagetriage-tags-param-missing-required' => 'На ознаката ѝ недостасува $1 задолжителен параметар.',
 	'log-name-pagetriage-curation' => 'Дневник на згрижување',
 	'log-description-pagetriage-curation' => 'Ова е дневникот на дејства извршени од алатникот за згрижување.',
 	'log-name-pagetriage-deletion' => 'Дневник на ознаки за бришење',
@@ -5287,6 +5303,9 @@ $messages['mk'] = array(
 	'pagetriage-del-tooltip' => 'Предложете ја страницава за бришење',
 	'pagetriage-tagging-error' => 'Не можев да ги ставам ознаите на страниците',
 	'pagetriage-add-tag-confirmation' => 'Дали сте сигурни дека сакате да ставите $1 {{PLURAL:$1|ознака|ознаки}} во така кратка статија?',
+	'pagetriage-tag-deletion-error' => 'Страницата веќе има шаблон за бришење. Ја откажувам постапката.',
+	'pagetriage-toolbar-close' => 'Затвори',
+	'pagetriage-toolbar-minimize' => 'Спушти',
 );
 
 /** Maltese (Malti)
