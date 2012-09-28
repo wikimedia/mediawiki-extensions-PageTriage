@@ -751,23 +751,25 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 		global $wgLang;
 
 		$text = strip_tags( $text );
+		$attempt = 0;
 
-		$attempt = 1;
-		$openCurPos  = strpos($text, '{{');
-		$closeCurPos = strpos($text, '}}');
+		// 10 attempts at most, the logic here is to find the first }} and 
+		// find the matching {{ for that }}
+		while ( $attempt < 10 ) {
+			$closeCurPos = strpos( $text, '}}' );
 
-		while( $openCurPos !== false && $closeCurPos !== false && $openCurPos < $closeCurPos ) {
-			// replace all templates with empty string
-			$text = substr_replace( $text, '', $openCurPos, $closeCurPos - $openCurPos + 2 );
-
-			$openCurPos  = strpos($text, '{{');
-			$closeCurPos = strpos($text, '}}');
-
-			$attempt++;
-			// 10 attempts max should give us a 150 characters text with no templates
-			if ( $attempt > 10 ) {
+			if ( $closeCurPos === false ) {
 				break;
 			}
+			$tempStr = substr( $text, 0, $closeCurPos + 2 );
+
+			$openCurPos = strrpos( $tempStr,  '{{' );
+			if ( $openCurPos === false ) {
+				$text = substr_replace( $text, '', $closeCurPos, 2 );
+			} else {
+				$text = substr_replace( $text, '', $openCurPos, $closeCurPos - $openCurPos + 2 );
+			}
+			$attempt++;
 		}
 
 		$text = trim( strip_tags( htmlspecialchars_decode( MessageCache::singleton()->parse( $text )->getText() ) ) );
