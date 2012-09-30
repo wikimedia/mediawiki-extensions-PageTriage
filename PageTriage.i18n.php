@@ -1976,6 +1976,7 @@ $messages['eu'] = array(
  * @author Mahan
  * @author Mjbmr
  * @author Nojan Madinehi
+ * @author Reza1615
  */
 $messages['fa'] = array(
 	'pagetriage' => 'تریاژ صفحه‌ها',
@@ -2110,7 +2111,7 @@ $messages['fa'] = array(
 	'pagetriage-tags-param-url-label' => 'لطفاً نشانی اینترنتی برای این منبع را بیفزایید.',
 	'pagetriage-tags-param-free-yes-label' => 'بله',
 	'pagetriage-tags-param-free-no-label' => 'خیر',
-	'pagetriage-tags-param-missing-required' => 'پارامتر $1 اجباری است',
+	'pagetriage-tags-param-missing-required' => 'برچسب $1 پارامتر مورد نیاز را نمایش می‌دهد.',
 	'log-name-pagetriage-curation' => 'سیاههٔ بهسازی صفحه‌ها',
 	'log-description-pagetriage-curation' => 'این صفحه حاولی سیاهه‌ای از اقداماتی است که با استفاده از ابزار بهسازی صفحه‌ها انجام شده‌اند.',
 	'log-name-pagetriage-deletion' => 'سیاههٔ برچسب حذف',
@@ -4164,7 +4165,7 @@ $messages['ja'] = array(
 	'pagetriage-edits' => '$1 {{PLURAL:$1|回編集}}',
 	'pagetriage-categories' => '$1 {{PLURAL:$1|カテゴリ}}',
 	'pagetriage-no-categories' => 'カテゴリなし',
-	'pagetriage-no-reference' => '典拠なし',
+	'pagetriage-no-reference' => '引用なし',
 	'pagetriage-orphan' => '孤立',
 	'pagetriage-byline' => '作成者: $1 ($2$3$4)',
 	'pagetriage-byline-new-editor' => '新しい利用者 $1 ($2$3$4) が作成',
@@ -5359,7 +5360,7 @@ $messages['nl'] = array(
 	'pagetriage-edits' => '$1 {{PLURAL:$1|bewerking|bewerkingen}}',
 	'pagetriage-categories' => '$1 {{PLURAL:$1|categorie|categorieën}}',
 	'pagetriage-no-categories' => 'Geen categorieën',
-	'pagetriage-no-reference' => 'Geen referenties',
+	'pagetriage-no-reference' => 'Geen citaten',
 	'pagetriage-orphan' => 'Weespagina',
 	'pagetriage-no-author' => 'Er zijn geen auteursgegevens beschikbaar',
 	'pagetriage-byline' => 'Aangemaakt door $1 ($2$3$4)',
@@ -5625,6 +5626,8 @@ $messages['nl'] = array(
 	'pagetriage-del-talk-page-notify-error' => 'Het was niet mogelijk de auteur op de overlegpagina in kennis te stellen',
 	'pagetriage-del-tooltip' => 'Deze pagina voor verwijdering nomineren',
 	'pagetriage-tagging-error' => 'Het toevoegen van de labels aan de pagina is mislukt',
+	'pagetriage-toolbar-close' => 'Sluiten',
+	'pagetriage-toolbar-minimize' => 'Minimaliseren',
 );
 
 /** Pampanga (Kapampangan)
@@ -5851,7 +5854,7 @@ $messages['ro'] = array(
 	'pagetriage-tags-param-url-label' => 'Vă rugăm să adăugați un URL pentru acea sursă.',
 	'pagetriage-tags-param-free-yes-label' => 'Da',
 	'pagetriage-tags-param-free-no-label' => 'Nu',
-	'pagetriage-tags-param-missing-required' => 'Parametrul $1 este necesar',
+	'pagetriage-tags-param-missing-required' => 'Etichetei $1 îi lipsește un parametru obligatoriu.',
 	'pagetriage-tags-edit-summary' => 'A adăugat etichete acestei pagini folosind $1 ($2)',
 	'pagetriage-del-tags-param-discussion-label' => 'Vă rugăm să explicați de ce acest articol ar trebui șters și furnizați legătura către politicile relevante atunci când este posibil',
 	'pagetriage-info-title' => 'Informații despre pagină',
