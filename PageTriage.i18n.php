@@ -373,6 +373,7 @@ $messages['en'] = array(
  * @author Amire80
  * @author Benny Situ
  * @author Ian Baker
+ * @author Kghbln
  * @author Lloffiwr
  * @author McDutchie
  * @author Nemo bis
@@ -544,7 +545,7 @@ If your language requires some words between the different parts of the timestam
 	'pagetriage-tags-pov-desc' => 'Description for pov tag',
 	'pagetriage-tags-weasel-label' => 'Label for weasel tag',
 	'pagetriage-tags-weasel-desc' => 'Description for weasel tag',
-	'pagetriage-tags-blpsources-label' => 'Label for blp sources tag',
+	'pagetriage-tags-blpsources-label' => 'Label for blp sources tag (blp = biographies of living people)',
 	'pagetriage-tags-blpsources-desc' => 'Description for blp sources tag',
 	'pagetriage-tags-originalresearch-label' => 'Label for original research tag',
 	'pagetriage-tags-originalresearch-desc' => 'Description for original research tag',
@@ -1211,7 +1212,7 @@ $messages['de'] = array(
 	'pagetriage-tags-copyedit-desc' => 'Diese Seite muss hinsichtlich Grammatik, Stil, Kontext, Tonfall und/oder Rechtschreibung redigiert werden.',
 	'pagetriage-tags-morefootnotes-label' => 'Mehr Fußnoten',
 	'pagetriage-tags-morefootnotes-desc' => 'Diese Seite enthält Referenzierungen, allerdings ein unzureichende Anzahl an Textzitaten.',
-	'pagetriage-tags-refimprove-label' => 'Quellenangaben',
+	'pagetriage-tags-refimprove-label' => 'Mehr Quellenangaben',
 	'pagetriage-tags-refimprove-desc' => 'Diese Seite benötigt zusätzliche Referenzierungen oder Quellenangaben.',
 	'pagetriage-tags-uncategorised-label' => 'Nicht kategorisiert',
 	'pagetriage-tags-uncategorised-desc' => 'Diese Seite wurde keinen Kategorien zugeordnet.',
@@ -1247,7 +1248,7 @@ $messages['de'] = array(
 	'pagetriage-tags-pov-desc' => 'Diese Seite wurde nicht von einem neutralen Standpunkt aus geschrieben.',
 	'pagetriage-tags-weasel-label' => 'Zweideutig',
 	'pagetriage-tags-weasel-desc' => 'Die Neutralität dieser Seite wird durch die Nutzung zweideutiger Wörter gefährdet.',
-	'pagetriage-tags-blpsources-label' => 'Weitere Quellenangaben',
+	'pagetriage-tags-blpsources-label' => 'Mehr Quellenangaben (Lebende Person)',
 	'pagetriage-tags-blpsources-desc' => 'Diese Seite über eine lebende Person benötigt weitere Quellenangaben zur Überprüfung.',
 	'pagetriage-tags-originalresearch-label' => 'Erste Forschungsergebnisse',
 	'pagetriage-tags-originalresearch-desc' => 'Diese Seite enthält erste Forschungsergebnisse oder ungeprüfte Aussagen.',
