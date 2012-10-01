@@ -367,6 +367,7 @@ $messages['en'] = array(
 	'pagetriage-tag-deletion-error' => 'Page already tagged with a deletion template, aborting procedure.',
 	'pagetriage-toolbar-close' => 'Close',
 	'pagetriage-toolbar-minimize' => 'Minimize',
+	'pagetriage-tag-warning-notice' => 'Note: This page is only $1 {{PLURAL:$1|minute|minutes}} old. Consider waiting to tag it, unless the issue is serious.',
 );
 
 /** Message documentation (Message documentation)
@@ -739,6 +740,7 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 	'pagetriage-tag-deletion-error' => 'Error message indicating that a page has already been nominated for deletion',
 	'pagetriage-toolbar-close' => 'Tooltip for the close button in the Curation Toolbar',
 	'pagetriage-toolbar-minimize' => 'Tooltip for the minimize button in the Curation Toolbar (also docks the minimized toolbar to the side of the screen)',
+	'pagetriage-tag-warning-notice' => 'Warning notice in maintenance and deletion tag flyout if the page was created less than some amount of time ago',
 );
 
 /** Afrikaans (Afrikaans)

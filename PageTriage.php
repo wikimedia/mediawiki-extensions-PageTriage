@@ -706,7 +706,8 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-del-talk-page-notify-summary',
 		'pagetriage-tag-deletion-error',
 		'pagetriage-toolbar-close',
-		'pagetriage-toolbar-minimize'
+		'pagetriage-toolbar-minimize',
+		'pagetriage-tag-warning-notice'
 	)
 );
 
