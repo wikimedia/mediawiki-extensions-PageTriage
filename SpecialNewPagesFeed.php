@@ -188,8 +188,11 @@ class SpecialNewPagesFeed extends SpecialPage {
 				<!-- bottom nav template -->
 				<script type="text/template" id="listStatsNavTemplate">
 					<div id="mwe-pt-refresh-button-holder"><button id="mwe-pt-refresh-button"><%= gM( 'pagetriage-refresh-list' ) %></button></div>
+					<div id="mwe-pt-unreviewed-stats">
+					<% if ( ptrUnreviewedCount ) { %><%= gM( 'pagetriage-unreviewed-article-count', ptrUnreviewedCount, ptrOldest ) %><% } %>
+					</div>
 					<div id="mwe-pt-reviewed-stats">		
-					<% if ( ptrReviewedCount ) { %><%= gM( 'pagetriage-stats-reviewed-page-count', ptrReviewedCount ) %><% } %>		
+					<% if ( ptrReviewedCount ) { %><%= gM( 'pagetriage-reviewed-article-count-past-week', ptrReviewedCount ) %><% } %>
 					</div>
 				</script>
 

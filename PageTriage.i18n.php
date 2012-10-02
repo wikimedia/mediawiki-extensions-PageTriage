@@ -50,7 +50,8 @@ $messages['en'] = array(
 	'pagetriage-special-contributions' => 'Special:Contributions', // FIXME: Can this be replaced with {{#special:Contributions}} for automatic translation?
 	'pagetriage-showing' => 'Showing:',
 	'pagetriage-filter-list-prompt' => 'Set filters',
-	'pagetriage-article-count' => '$1 unreviewed {{PLURAL:$1|page|pages}} (oldest: $2)',
+	'pagetriage-unreviewed-article-count' => '$1 total unreviewed {{PLURAL:$1|page|pages}} (oldest: $2)',
+	'pagetriage-reviewed-article-count-past-week' => '$1 {{PLURAL:$1|page|pages}} reviewed this week',
 	'pagetriage-sort-by' => 'Sort by:',
 	'pagetriage-newest' => 'Newest',
 	'pagetriage-oldest' => 'Oldest',
@@ -75,6 +76,7 @@ $messages['en'] = array(
 	'pagetriage-filter-set-button' => 'Set filters',
 	'pagetriage-stats-less-than-a-day' => 'less than one day',
 	'pagetriage-stats-reviewed-page-count' => '$1 {{PLURAL:$1|page|pages}} reviewed this week',
+	'pagetriage-stats-filter-page-count' => '$1 {{PLURAL:$1|page|pages}} in your filtered list',
 	'pagetriage-filter-ns-all' => 'All',
 	'pagetriage-more' => 'More',
 	'pagetriage-filter-stat-all' => 'All',
@@ -427,9 +429,10 @@ If your language requires some words between the different parts of the timestam
 
 [[File:PageTriage-ListView-Whole.png|thumb|200px|Screenshot]]',
 	'pagetriage-filter-list-prompt' => 'Prompt to choose filters for the list view',
-	'pagetriage-article-count' => 'A description of the number of unreviewed pages. Parameters:
+	'pagetriage-unreviewed-article-count' => 'A description of the number of unreviewed pages and the age of the oldest article. Parameters:
 * $1 is the count,
 * $2 is the age of oldest article, this could be from message key pagetriage-stats-less-than-a-day or days',
+	'pagetriage-reviewed-article-count-past-week' => 'A description of the number of reviewed pages in past week, $1 is the count of pages reviewed in past week',
 	'pagetriage-sort-by' => 'Label for the sort-order buttons (oldest/newest)',
 	'pagetriage-newest' => 'Text for a sort-order button',
 	'pagetriage-oldest' => 'Text for a sort-order button',
@@ -454,6 +457,7 @@ If your language requires some words between the different parts of the timestam
 	'pagetriage-filter-set-button' => 'Button text for the set filter button',
 	'pagetriage-stats-less-than-a-day' => 'show this message if the page age is less than one day, part of variable $1 and $2 of {{msg-pagetriage|pagetriage-stats-unreviewed-age}}',
 	'pagetriage-stats-reviewed-page-count' => 'Text showing the number of pages reviewed in the past week, $1 is the number of reviewed pages',
+	'pagetriage-stats-filter-page-count' => 'Text showing the number of pages from the primary filter, $1 is the number of pages',
 	'pagetriage-filter-ns-all' => 'For the namespace filter select list, text indicating that all namespaces will be selected',
 	'pagetriage-more' => 'Text for a link that loads more pages into list',
 	'pagetriage-filter-stat-all' => 'Status display component for all pages (no filter)',

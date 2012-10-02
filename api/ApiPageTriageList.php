@@ -92,14 +92,14 @@ class ApiPageTriageList extends ApiBase {
 		if ( !$opts['showdeleted'] ) {
 			$conds['ptrp_deleted'] = 0;
 		}
+
+		global $wgPageTriageNamespaces;
 		// Show by namespace
-		if ( isset( $opts['namespace'] ) ) {
+		if ( isset( $opts['namespace'] ) && in_array( $opts['namespace'], $wgPageTriageNamespaces ) ) {
 			$conds['page_namespace'] = $opts['namespace'];
 		} else {
-			global $wgPageTriageNamespaces;
-			if ( count( $wgPageTriageNamespaces ) > 0 ) {
-				$conds['page_namespace'] = $wgPageTriageNamespaces;
-			}
+			// default to main namespace
+			$conds['page_namespace'] = NS_MAIN;
 		}
 
 		// Database setup

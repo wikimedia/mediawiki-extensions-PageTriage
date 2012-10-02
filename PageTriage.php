@@ -82,7 +82,7 @@ $wgPageTriageCurationModules = array(
 		'namespace' => array( NS_MAIN, NS_USER ),
 	),
 );
-$wgPageTriageCacheVersion = '1.2'; // version number to be added to cache key so that cache can be refreshed easily
+$wgPageTriageCacheVersion = '1.3'; // version number to be added to cache key so that cache can be refreshed easily
 $wgPageTriageNamespaces = array( NS_MAIN, NS_USER  ); // only include these namespaces for pagetriage
 $wgTalkPageNoteTemplate = array(
 	'Mark' => 'Reviewednote-NPF',
@@ -537,7 +537,8 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'pagetriage-special-contributions',
 		'pagetriage-showing',
 		'pagetriage-filter-list-prompt',
-		'pagetriage-article-count',
+		'pagetriage-unreviewed-article-count',
+		'pagetriage-reviewed-article-count-past-week',
 		'pagetriage-sort-by',
 		'pagetriage-newest',
 		'pagetriage-oldest',
@@ -561,7 +562,6 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'pagetriage-filter-blocked',
 		'pagetriage-filter-set-button',
 		'pagetriage-stats-less-than-a-day',
-		'pagetriage-stats-reviewed-page-count',
 		'blanknamespace',
 		'pagetriage-filter-ns-all',
 		'pagetriage-more',
@@ -587,7 +587,8 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'contribslink',
 		'comma-separator',
 		'pagetriage-info-timestamp-date-format',
-		'pagetriage-no-reference'
+		'pagetriage-no-reference',
+		'pagetriage-stats-filter-page-count'
 	)
 );
 
