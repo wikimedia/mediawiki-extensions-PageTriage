@@ -939,7 +939,7 @@ $messages['ar'] = array(
 	'pagetriage-tags-edit-summary' => 'تم إضافة قوالب الصيانة إلى المقالة باستخدام مدقق المقالات',
 );
 
-/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
@@ -2243,8 +2243,8 @@ $messages['fr'] = array(
 	'pagetriage-self-review-error' => 'Vous ne pouvez pas relire les pages que vous avez créées.',
 	'pagetriage-api-error' => "Une erreur s'est produite lors du chargement de l'interface depuis l'API. Veuillez essayer de recharger la page.",
 	'pagetriage-reviewed' => 'Relue',
-	'pagetriage-mark-as-reviewed-error' => 'Erreur survenue lorsque marquée comme relue',
-	'pagetriage-mark-as-unreviewed-error' => 'Une erreur est survenue alors que la page était marquée comme non relue.',
+	'pagetriage-mark-as-reviewed-error' => 'Une erreur est survenue lorsque la page a été marquée comme relue : $1',
+	'pagetriage-mark-as-unreviewed-error' => 'Une erreur est survenue lorsque la page a été marquée comme non relue : $1',
 	'pagetriage-hist' => 'hist',
 	'pagetriage-bytes' => '$1 {{PLURAL:$1|octet|octets}}',
 	'pagetriage-edits' => '$1 {{PLURAL:$1|modification|modifications}}',
@@ -2314,6 +2314,8 @@ $messages['fr'] = array(
 	'pagetriage-add-a-note' => 'Ajouter un message pour le créateur: (facultatif)',
 	'pagetriage-characters-left' => '{{PLURAL:$1|$1 caractère restant|$1 caractères restants}}',
 	'pagetriage-personal-default-note' => 'Écrire une note pour {{GENDER:$1|$1 }}. Il sera affiché sur leur page de discussion.',
+	'pagetriage-page-status-reviewed' => 'Marqué comme relu le $1 par  $2 ($3$4$5)',
+	'pagetriage-page-status-reviewed-anonymous' => 'Marqué comme relu',
 	'pagetriage-tags-title' => 'Ajouter des balises',
 	'pagetriage-tags-cat-common-label' => 'Commun',
 	'pagetriage-tags-cat-metadata-label' => 'Métadonnées',
@@ -2463,7 +2465,7 @@ $messages['fr'] = array(
 	'pagetriage-tags-param-free-yes-label' => 'Oui',
 	'pagetriage-tags-param-free-no-label' => 'Non',
 	'pagetriage-tags-param-missing-required' => 'Le paramètre $1 est requis',
-	'pagetriage-tags-edit-summary' => 'Balises ajoutées à la page avec $1',
+	'pagetriage-tags-edit-summary' => 'Balises ajoutées à la page avec $1 ($2)',
 	'pagetriage-del-tags-param-discussion-label' => 'Pourquoi pensez-vous que cette page devrait être supprimée ?',
 	'pagetriage-info-title' => 'Informations de la page',
 	'pagetriage-info-problem-header' => 'Problèmes possibles',
@@ -2501,6 +2503,8 @@ $messages['fr'] = array(
 	'pagetriage-del-log-page-adding-error' => "Impossible de trouver l'endroit exact pour la discussion",
 	'pagetriage-del-talk-page-notify-error' => "Échec de notification de l'auteur sur la page de discussion",
 	'pagetriage-del-tooltip' => 'Nominer cette page pour suppression',
+	'pagetriage-toolbar-close' => 'Fermer',
+	'pagetriage-toolbar-minimize' => 'Réduire',
 );
 
 /** Franco-Provençal (arpetan)
@@ -3895,10 +3899,13 @@ $messages['it'] = array(
 	'pagetriage-edits' => '$1 {{PLURAL:$1|contributo|contributi}}',
 	'pagetriage-categories' => '$1 {{PLURAL:$1|categoria|categorie}}',
 	'pagetriage-no-categories' => 'Nessuna categoria',
+	'pagetriage-no-reference' => 'Nessuna nota',
 	'pagetriage-orphan' => 'Orfana',
 	'pagetriage-no-author' => "Nessuna informazione disponibile sull'autore",
 	'pagetriage-byline' => 'Creato da $1 ($2$3$4)',
 	'pagetriage-byline-new-editor' => 'Creato dal nuovo utente $1 ($2$3$4)',
+	'pagetriage-articleinfo-byline' => 'Questa pagina è stata creata il $1 da $2 ($3$4$5)',
+	'pagetriage-articleinfo-byline-new-editor' => 'Questa pagina è stata creata il $1 dal nuovo contributore $2 ($3$4$5)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|modifica|modifiche}} dal $2',
 	'pagetriage-author-not-autoconfirmed' => 'Nuovo utente',
 	'pagetriage-no-patrol-right' => 'Non si dispone dei permessi per revisionare questa pagina',
@@ -3918,6 +3925,7 @@ $messages['it'] = array(
 	'pagetriage-filter-bot-edits' => 'Sono state create da bot',
 	'pagetriage-filter-redirects' => 'Redirect',
 	'pagetriage-filter-namespace-heading' => 'Nel namespace:',
+	'pagetriage-filter-article' => 'Voce',
 	'pagetriage-filter-user-heading' => 'Sono state create da',
 	'pagetriage-filter-username' => 'Nome utente',
 	'pagetriage-filter-tag-heading' => 'Con etichetta:',
@@ -4094,6 +4102,7 @@ $messages['it'] = array(
 	'pagetriage-del-tags-cat-discussion-desc' => 'Contrassegnare questa pagina per la discussione della sua cancellazione con gli altri utenti.',
 	'pagetriage-del-tags-dba3-label' => 'Nessun contenuto',
 	'pagetriage-del-tags-dbu3-label' => 'Gallerie non libere',
+	'pagetriage-tags-param-article-label' => 'Voce:',
 	'pagetriage-tags-param-date-label' => 'Data:',
 	'pagetriage-tags-param-issues-label' => 'Descrivere i problemi da affrontare:',
 	'pagetriage-tags-param-for-label' => 'Problemi che devono essere affrontati:',
@@ -4141,6 +4150,7 @@ $messages['it'] = array(
 	'pagetriage-del-log-page-missing-error' => 'La pagina del registro di oggi non è stata ancora creata.',
 	'pagetriage-del-talk-page-notify-error' => "Impossibile notificare l'autore sulla sua pagina di discussione",
 	'pagetriage-del-tooltip' => 'Proporre questa pagina per la cancellazione',
+	'pagetriage-toolbar-close' => 'Chiudi',
 );
 
 /** Japanese (日本語)
@@ -6122,7 +6132,6 @@ $messages['ta'] = array(
 	'pagetriage-filter-stat-blocked' => 'தடைசெய்யப்பட்ட பயனர்கள்',
 	'pagetriage-filter-stat-username' => 'பயனர் பெயர்: $1',
 	'pagetriage-no-pages' => 'உங்கள் நிபந்தனையுடன் எந்தப் பக்கமும் பொருந்தவில்லை',
-	'pagetriage-warning-prototype' => 'இது ஒரு மாதிரி, இறுதிப் பொருள் இல்லை. முக்கிய அம்சங்கள் இன்னும் மேம்பாட்டில் உள்ளது. <a href="$1">மேலும் அறிய</a> · <a href="$2">பின்னுட்டம் அளிக்க</a>',
 	'pagetriage-warning-browser' => 'இன்டர்நெட் எக்ஸ்ப்ளோரர் 8 க்கு முந்தைய உலாவிகளில் இந்தக் கருவி சரியாக வேலை செய்யாமலிருக்கலாம்.',
 	'pagetriage-note-reviewed' => 'இந்தப் பக்கம் பரிசீலிக்கப்பட்டது.',
 	'pagetriage-note-not-reviewed' => 'இந்தப் பக்கம் இன்னும் பரிசீலிக்கப்படவில்லை.',
@@ -6145,8 +6154,6 @@ $messages['ta'] = array(
 	'pagetriage-tags-cat-verifiability-label' => 'சரிபார்க்கும் தன்மை',
 	'pagetriage-tags-cat-writingstyle-label' => 'எழுத்து நடை',
 	'pagetriage-del-tags-dba3-label' => 'உள்ளடக்கம் இல்லை',
-	'pagetriage-del-talk-page-notify-error' => 'ஆக்குநரின் பேச்சுப் பக்கத்தில் அறிவித்தல் தோல்வியடைந்தது',
-	'pagetriage-del-tooltip' => 'இந்தப் பக்கத்தை நீக்க பரிந்துரை',
 	'pagetriage-tags-param-article-label' => 'கட்டுரை:',
 	'pagetriage-tags-param-date-label' => 'தேதி:',
 	'pagetriage-tags-param-free-yes-label' => 'ஆம்',
@@ -6166,6 +6173,8 @@ $messages['ta'] = array(
 	'pagetriage-mark-title' => 'பரிசீலிக்கப்பட்டதாக குறி',
 	'pagetriage-mark-as-reviewed' => 'பரிசீலிக்கப்பட்டதாக குறி',
 	'pagetriage-mark-as-unreviewed' => 'பரிசீலிக்கப்படாததாக குறி',
+	'pagetriage-del-talk-page-notify-error' => 'ஆக்குநரின் பேச்சுப் பக்கத்தில் அறிவித்தல் தோல்வியடைந்தது',
+	'pagetriage-del-tooltip' => 'இந்தப் பக்கத்தை நீக்க பரிந்துரை',
 );
 
 /** Telugu (తెలుగు)
