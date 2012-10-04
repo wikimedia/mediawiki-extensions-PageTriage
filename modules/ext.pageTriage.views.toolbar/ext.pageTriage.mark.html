@@ -3,9 +3,11 @@
 		<%= gM( 'pagetriage-mark-as-' + status + '-helptext' ) %>
 	</div>
 	<div id="mwe-pt-review-note">
-		<div id="mwe-pt-review-note-title"><%= mw.html.escape( gM( 'pagetriage-add-a-note' ) ) %></div>
+		<div id="mwe-pt-review-note-title"><%= mw.html.escape( gM( noteTitle ) ) %></div>
 		<div id="mwe-pt-review-note-char-count"><%= mw.html.escape( gM( 'pagetriage-characters-left', maxLength ) ) %></div>
-		<textarea id="mwe-pt-review-note-input"><%= mw.html.escape( gM( 'pagetriage-personal-default-note', creator ) ) %></textarea>
+		<textarea id="mwe-pt-review-note-input"><%= mw.html.escape( gM( 'pagetriage-personal-default-note', noteTarget ) ) %></textarea>
 	</div>
-	<button id='mwe-pt-mark-as-<%= status %>-button' class="ui-button-green"><%= mw.html.escape( gM( "pagetriage-mark-as-" + status ) ) %></button>
+	<div id="mwe-pt-mark-as-<%= status %>">
+		<button id='mwe-pt-mark-as-<%= status %>-button' class="ui-button-green"><%= mw.html.escape( gM( "pagetriage-mark-as-" + status ) ) %></button>
+	</div>
 </div>
