@@ -94,6 +94,11 @@ $( function() {
 				e.stopPropagation();
 			} );
 
+			// Select the username option when its input gets focus
+			$( '#mwe-pt-filter-user' ).focus( function() {
+				$( '#mwe-pt-filter-user-selected' ).prop( 'checked', true );
+			} );
+
 			// make sure the menus are synced with the filter settings
 			this.menuSync();
 		},

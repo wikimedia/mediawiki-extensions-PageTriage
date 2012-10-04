@@ -119,10 +119,10 @@ class SpecialNewPagesFeed extends SpecialPage {
 								<div class="mwe-pt-control-section">
 									<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-show-heading' ) %></b></span>
 									<div class="mwe-pt-control-options">
-										<input type="checkbox" id="mwe-pt-filter-unreviewed-edits" /> <%= gM( 'pagetriage-filter-unreviewed-edits' ) %> <br/>
-										<input type="checkbox" id="mwe-pt-filter-reviewed-edits" /> <%= gM( 'pagetriage-filter-reviewed-edits' ) %> <br/>
-										<input type="checkbox" id="mwe-pt-filter-nominated-for-deletion" /> <%= gM( 'pagetriage-filter-nominated-for-deletion' ) %> <br/>
-										<input type="checkbox" id="mwe-pt-filter-redirects" /> <%= gM( 'pagetriage-filter-redirects' ) %> <br/>
+										<input type="checkbox" id="mwe-pt-filter-unreviewed-edits" /> <label for="mwe-pt-filter-unreviewed-edits"><%= gM( 'pagetriage-filter-unreviewed-edits' ) %></label> <br/>
+										<input type="checkbox" id="mwe-pt-filter-reviewed-edits" /> <label for="mwe-pt-filter-reviewed-edits"><%= gM( 'pagetriage-filter-reviewed-edits' ) %></label> <br/>
+										<input type="checkbox" id="mwe-pt-filter-nominated-for-deletion" /> <label for="mwe-pt-filter-nominated-for-deletion"><%= gM( 'pagetriage-filter-nominated-for-deletion' ) %></label> <br/>
+										<input type="checkbox" id="mwe-pt-filter-redirects" /> <label for="mwe-pt-filter-redirects"><%= gM( 'pagetriage-filter-redirects' ) %></label> <br/>
 									</div>
 								</div>
 								<div class="mwe-pt-control-section">
@@ -161,14 +161,14 @@ class SpecialNewPagesFeed extends SpecialPage {
 								<div class="mwe-pt-control-section">
 									<span class="mwe-pt-control-label"><b><%= gM( 'pagetriage-filter-second-show-heading' ) %></b></span>
 									<div class="mwe-pt-control-options">
-										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-no-categories" /> <%= gM( 'pagetriage-filter-no-categories' ) %> <br/>
-										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-orphan" /> <%= gM( 'pagetriage-filter-orphan' ) %> <br/>
-										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-non-autoconfirmed" /> <%= gM( 'pagetriage-filter-non-autoconfirmed' ) %> <br/>
-										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-blocked" /> <%= gM( 'pagetriage-filter-blocked' ) %> <br/>
-										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-bot-edits" /> <%= gM( 'pagetriage-filter-bot-edits' ) %> <br/>
-										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-user-selected" /> <%= gM( 'pagetriage-filter-user-heading' ) %>
+										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-no-categories" /> <label for="mwe-pt-filter-no-categories"><%= gM( 'pagetriage-filter-no-categories' ) %></label> <br/>
+										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-orphan" /> <label for="mwe-pt-filter-orphan"><%= gM( 'pagetriage-filter-orphan' ) %></label> <br/>
+										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-non-autoconfirmed" /> <label for="mwe-pt-filter-non-autoconfirmed"><%= gM( 'pagetriage-filter-non-autoconfirmed' ) %></label> <br/>
+										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-blocked" /> <label for="mwe-pt-filter-blocked"><%= gM( 'pagetriage-filter-blocked' ) %></label> <br/>
+										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-bot-edits" /> <label for="mwe-pt-filter-bot-edits"><%= gM( 'pagetriage-filter-bot-edits' ) %></label> <br/>
+										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-user-selected" /> <label for="mwe-pt-filter-user-selected"><%= gM( 'pagetriage-filter-user-heading' ) %></label>
 										<input type="text" id="mwe-pt-filter-user" placeholder="<%= gM( 'pagetriage-filter-username' ) %>" /> <br/>
-										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-all" /> <%= gM( 'pagetriage-filter-all' ) %>
+										<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-all" /> <label for="mwe-pt-filter-all"><%= gM( 'pagetriage-filter-all' ) %></label>
 									</div>
 								</div>
 								<div class="mwe-pt-control-buttons">
