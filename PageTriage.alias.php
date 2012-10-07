@@ -23,6 +23,11 @@ $specialPageAliases['de'] = array(
 	'NewPagesFeed' => array( 'Seitenprüfung' ),
 );
 
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'NewPagesFeed' => array( '新規ページフィード' ),
+);
+
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
 	'NewPagesFeed' => array( '새문서피드' ),
