@@ -300,6 +300,9 @@ class PageTriageUtil {
 		$maxNumToProcess = 500;
 
 		$tags = ArticleMetadata::getValidTags();
+		if ( !$tags ) {
+			return;
+		}
 
 		$dbr = wfGetDB( DB_SLAVE );
 
