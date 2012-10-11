@@ -468,6 +468,7 @@ $wgResourceModules['ext.pageTriage.util'] = $ptResourceTemplate + array(
 $wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + array(
 	'dependencies' => array(
 		'mediawiki.Title',
+		'mediawiki.user',
 		'ext.pageTriage.external'
 	),
 	'scripts' => array(
