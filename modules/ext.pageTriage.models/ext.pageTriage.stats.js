@@ -21,6 +21,7 @@ $( function() {
 			stats.set( 'ptrUnreviewedCount', stats.get( 'unreviewedarticle' )['count'] );
 			stats.set( 'ptrOldest', this.formatDaysFromNow( stats.get( 'unreviewedarticle' )['oldest'] ) );
 			stats.set( 'ptrReviewedCount', stats.get( 'reviewedarticle' )['reviewed_count'] );
+			stats.set( 'ptrFilterCount', stats.get( 'filteredarticle' ) );
 		},
 
 		formatDaysFromNow: function ( dateStr ) {
@@ -64,9 +65,6 @@ $( function() {
 		},
 
 		parse: function( response ) {
-			for ( var title in response.pagetriagestats.stats.userpagestatus ) {
-				mw.Title.exist.set( title );
-			}
 			// extract the useful bits of json.
 			return response.pagetriagestats.stats;
 		}

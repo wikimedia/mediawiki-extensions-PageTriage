@@ -28,13 +28,13 @@ $( function() {
 				// when a request is made to refresh the list, do it
 				this.eventBus.bind( 'refreshListRequest', function() {
 					_this.refreshList();
-					_this.refreshStats( $('#mwe-pt-filter-namespace').val() );
+					_this.refreshStats();
 				} );
 			}
 
 			this.eventBus.bind( "renderStats", function( stats ) {
 				// fill in the counter when the stats view gets loaded.
-				$( "#mwe-pt-control-stats" ).html( gM( 'pagetriage-article-count', stats.get( 'ptrUnreviewedCount' ), stats.get( 'ptrOldest' ) ) );
+				$( "#mwe-pt-control-stats" ).html( gM( 'pagetriage-stats-filter-page-count', stats.get( 'ptrFilterCount' ) ) );
 			} );
 		},
 
@@ -60,7 +60,7 @@ $( function() {
 			} );
 			$( "#mwe-pt-filter-set-button" ).click( function( e ) {
 				_this.filterSync();
-				_this.refreshStats( $('#mwe-pt-filter-namespace').val() );
+				_this.refreshStats();
 				_this.toggleFilterMenu( 'close' );
 				e.stopPropagation();
 			} );
@@ -104,8 +104,23 @@ $( function() {
 		},
 
 		// refresh the stats when a namespace is changed
-		refreshStats: function( ns ) {
-			this.options.stats.setParam( 'namespace', ns );
+		refreshStats: function() {
+			this.options.stats.apiParams = {};
+			this.options.stats.setParam( 'namespace', $('#mwe-pt-filter-namespace').val() );
+
+			if( $('#mwe-pt-filter-reviewed-edits').prop('checked') ) {
+				this.options.stats.setParam( 'showreviewed', '1' );
+			}
+			if( $('#mwe-pt-filter-unreviewed-edits').prop('checked') ) {
+				this.options.stats.setParam( 'showunreviewed', '1' );
+			}
+			if( $('#mwe-pt-filter-nominated-for-deletion').prop('checked') ) {
+				this.options.stats.setParam( 'showdeleted', '1' );
+			}
+			if( $('#mwe-pt-filter-redirects').prop('checked') ) {
+				this.options.stats.setParam( 'showredirs', '1' );
+			}
+
 			this.options.stats.fetch();
 		},
 

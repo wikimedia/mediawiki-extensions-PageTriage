@@ -42,20 +42,11 @@ class PageTriageUtil {
 	/**
 	 * Validate page namespace
 	 */
-	private static function validatePageNamespace( $namespace = '' ) {
+	private static function validatePageNamespace( $namespace ) {
 		global $wgPageTriageNamespaces;
 
-		if ( $namespace !== '' ) {
-			$namespace = intval( $namespace );
-			if ( !in_array( $namespace, $wgPageTriageNamespaces ) ) {
-				$namespace = NS_MAIN;
-			}
-		} else {
-			if ( count( $wgPageTriageNamespaces ) > 0 ) {
-				$namespace = $wgPageTriageNamespaces;
-			} else {
-				$namespace = NS_MAIN;
-			}
+		if ( !in_array( $namespace, $wgPageTriageNamespaces ) ) {
+			$namespace = NS_MAIN;
 		}
 
 		return $namespace;
@@ -74,9 +65,7 @@ class PageTriageUtil {
 
 		$namespace = self::validatePageNamespace( $namespace );
 
-		$memcKey = is_array( $namespace ) ? '' : $namespace;
-		
-		$key = wfMemcKey( 'pagetriage', 'unreviewed-article-' . $memcKey, 'stat', self::getCacheVersion() );
+		$key = wfMemcKey( 'pagetriage', 'unreviewed-article-' . $namespace, 'stat', self::getCacheVersion() );
 
 		$data = $wgMemc->get( $key );
 		if ( $data !== false ) {
@@ -89,6 +78,7 @@ class PageTriageUtil {
 		$conds = array(
 			'ptrp_reviewed' => 0,
 			'page_id = ptrp_page_id',
+			'page_is_redirect' => 0, // remove redirect from the unreviewd number per bug40540
 			'page_namespace' => $namespace
 		);
 
@@ -110,14 +100,73 @@ class PageTriageUtil {
 		return $data;
 	}
 
+	/**
+	 * Get the number of pages based on the selected filter, it's fine to do this since we have
+	 * a cron to remove page more than 30 days old from the queue, the queue volume is not big,
+	 * we will change this accordingly if potential blocking problems are spotted
+	 */
+	public static function getArticleFilterStat( $filter, $namespace = '' ) {
+		global $wgMemc;
+
+		if ( !isset( $filter['showreviewed'] ) && !isset( $filter['showunreviewed'] ) ) {
+			$filter['showunreviewed'] = 'showunreviewed';
+		}
+
+		$namespace = self::validatePageNamespace( $namespace );
+
+		$key = wfMemcKey( 'pagetriage', 'filter-article-' . implode( '-', $filter ) . '-' . $namespace, 'stat', self::getCacheVersion() );
+
+		$data = $wgMemc->get( $key );
+		if ( $data !== false ) {
+			return $data;
+		}
+
+		$dbr = wfGetDB( DB_SLAVE );
+		$table = array( 'pagetriage_page', 'page' );
+		$conds = array(
+			'page_id = ptrp_page_id',
+			'page_namespace' => $namespace
+		);
+
+		$ops = '';
+		if ( isset( $filter['showreviewed'] ) ) {
+			$ops .= '>';
+		}
+		if ( isset( $filter['showunreviewed'] ) ) {
+			$ops .= '=';
+		}
+
+		$conds[] = 'ptrp_reviewed ' . $ops . ' 0';
+
+		if ( !isset( $filter['showdeleted'] ) ) {
+			$conds['ptrp_deleted'] = 0;
+		}
+		if ( !isset( $filter['showredirs'] ) ) {
+			$conds['page_is_redirect'] = 0;
+		}
+
+		$res = $dbr->selectRow(
+			$table,
+			array( 'COUNT(ptrp_page_id) AS total' ),
+			$conds
+		);
+
+		$total = 0;
+		if ( $res ) {
+			$total = intval( $res->total );
+		}
+
+		// make it expire in 10 minutes
+		$wgMemc->set( $key, $total, 600 );
+		return $total;
+	}
+
 	public static function getReviewedArticleStat( $namespace = '' ) {
 		global $wgMemc;
 
 		$namespace = self::validatePageNamespace( $namespace );
 
-		$memcKey = is_array( $namespace ) ? '' : $namespace;
-
-		$key = wfMemcKey( 'pagetriage', 'reviewed-article-' . $memcKey, 'stat', self::getCacheVersion() );
+		$key = wfMemcKey( 'pagetriage', 'reviewed-article-' . $namespace, 'stat', self::getCacheVersion() );
 
 		$data = $wgMemc->get( $key );
 		if ( $data !== false ) {

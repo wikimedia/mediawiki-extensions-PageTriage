@@ -5,22 +5,18 @@ class ApiPageTriageStats extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 
-		$topTriager = PageTriageUtil::getTopTriager();
-		// Grab at most top 5 from cache
-		if ( count( $topTriager ) > 5 ) {
-			$topTriager = array_slice( PageTriageUtil::getTopTriager(), 0 , 5 );
+		$filter = array();
+		foreach ( $this->getAllowedParams() as $key => $value ) {
+			if ( $key !== 'namespace' && $params[$key] ) {
+				$filter[$key] = $key;
+			}
 		}
 
-		if ( isset( $params['namespace'] ) ) {
-			$ns = $params['namespace'];
-		} else {
-			$ns = '';
-		}
 		$data = array(
-				'unreviewedarticle' => PageTriageUtil::getUnreviewedArticleStat( $ns ),
-				'reviewedarticle' => PageTriageUtil::getReviewedArticleStat( $ns ),
-				'userpagestatus' => PageTriageUtil::pageStatusForUser( $topTriager )
-			);
+			'unreviewedarticle' => PageTriageUtil::getUnreviewedArticleStat( $params['namespace'] ),
+			'reviewedarticle' => PageTriageUtil::getReviewedArticleStat( $params['namespace'] ),
+			'filteredarticle' => PageTriageUtil::getArticleFilterStat( $filter, $params['namespace'] )
+		);
 
 		$result = array( 'result' => 'success', 'stats' => $data );
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
@@ -30,13 +26,29 @@ class ApiPageTriageStats extends ApiBase {
 		return array(
 			'namespace' => array(
 				ApiBase::PARAM_TYPE => 'integer',
-			)
+			),
+			'showredirs' => array(
+				ApiBase::PARAM_TYPE => 'boolean',
+			),
+			'showreviewed'=> array(
+				ApiBase::PARAM_TYPE => 'boolean',
+			),
+			'showunreviewed'=> array(
+				ApiBase::PARAM_TYPE => 'boolean',
+			),
+			'showdeleted' => array(
+				ApiBase::PARAM_TYPE => 'boolean',
+			),
 		);
 	}
 
 	public function getParamDescription() {
 		return array(
 			'namespace' => 'What namespace to pull stats from',
+			'showredirs' => 'Whether to include redirects or not', // default is not to show redirects
+			'showreviewed' => 'Whether to include reviewed or not', // default is not to show reviewed
+			'showunreviewed' => 'Whether to include unreviewed or not', // default is not to show unreviewed
+			'showdeleted' => 'Whether to include "proposed for deleted" or not', // default is not to show deleted
 		);
 	}
 
