@@ -1488,6 +1488,7 @@ $messages['diq'] = array(
  * @author Bernardom
  * @author Invadinado
  * @author Jewbask
+ * @author Maor X
  * @author McDutchie
  * @author Vivaelcelta
  */
@@ -5434,7 +5435,7 @@ $messages['nl'] = array(
 	'pagetriage-author-bot' => 'Bot',
 	'pagetriage-showing' => 'Weergegeven:',
 	'pagetriage-filter-list-prompt' => 'Filters instellen',
-	'pagetriage-unreviewed-article-count' => "$1 ongecontroleerde {{PLURAL:$1|pagina|pagina's}} (oudste: $2)",
+	'pagetriage-unreviewed-article-count' => "In totaal {{PLURAL:$1|is|zijn}} er {{PLURAL:$1|één ongecontroleerde pagina|$1 ongecontroleerde pagina's}} (oudste: $2)",
 	'pagetriage-sort-by' => 'Sorteren op:',
 	'pagetriage-newest' => 'Nieuwste',
 	'pagetriage-oldest' => 'Oudste',
