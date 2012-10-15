@@ -92,8 +92,8 @@ $( function() {
 
 			buildLogRequest: function( oldText, reason, tagObj, data) {
 				var date = new dateWrapper();
-				var dateHeader = "===" + date.getMonth() + ' ' + date.getDate() + ', ' + date.getUTCFullYear() + "===\n";
-				var dateHeaderRegex = new RegExp( "(===\\s*" + month[date.getUTCMonth()] + '\\s+' + date.getDate() + ',\\s+' + date.getUTCFullYear() + "\\s*===)" );
+				var dateHeader = "===" + date.getMonth() + ' ' + date.getDate() + ', ' + date.getYear() + "===\n";
+				var dateHeaderRegex = new RegExp( "(===\\s*" + date.getMonth() + '\\s+' + date.getDate() + ',\\s+' + date.getYear() + "\\s*===)" );
 				var newData = "{{subst:mfd3|pg=" + pageName + "}}";
 
 				if( dateHeaderRegex.test( oldText ) ) { // we have a section already
