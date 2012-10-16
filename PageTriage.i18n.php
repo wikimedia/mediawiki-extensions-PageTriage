@@ -2239,6 +2239,7 @@ $messages['fi'] = array(
  * @author Sherbrooke
  * @author Tititou36
  * @author Urhixidur
+ * @author Verdy p
  * @author Wyz
  */
 $messages['fr'] = array(
@@ -2284,7 +2285,7 @@ $messages['fr'] = array(
 	'pagetriage-filter-namespace-heading' => "Dans l'espace de nommage:",
 	'pagetriage-filter-article' => 'Article',
 	'pagetriage-filter-user-heading' => 'Ont été créées par',
-	'pagetriage-filter-username' => "Nom d'utilisateur",
+	'pagetriage-filter-username' => 'Nom d’utilisateur',
 	'pagetriage-filter-tag-heading' => 'Avec balise :',
 	'pagetriage-filter-second-show-heading' => 'Ceci :',
 	'pagetriage-filter-no-categories' => 'Sans catégories',
