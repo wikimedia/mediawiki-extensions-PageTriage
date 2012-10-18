@@ -702,7 +702,6 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-bytes',
 		'pagetriage-edits',
 		'pagetriage-categories',
-		'pagetriage-del-discussion-page-adding-error',
 		'pagetriage-add-tag-confirmation',
 		'pagetriage-tags-note-edit-summary',
 		'pagetriage-del-talk-page-notify-summary',
