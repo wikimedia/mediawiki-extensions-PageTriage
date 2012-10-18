@@ -86,6 +86,7 @@ $wgPageTriageCacheVersion = '1.3'; // version number to be added to cache key so
 $wgPageTriageNamespaces = array( NS_MAIN, NS_USER  ); // only include these namespaces for pagetriage
 $wgTalkPageNoteTemplate = array(
 	'Mark' => 'Reviewednote-NPF',
+	'UnMark' => array( 'note' => 'Unreviewednote-NPF', 'nonote' => 'Unreviewednonote-NPF' ),
 	'Tags' => 'Taggednote-NPF'
 );
 // End configuration variables
@@ -683,7 +684,8 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'contribslink',
 		'comma-separator',
 		'unknown-error',
-		'pagetriage-add-a-note',
+		'pagetriage-add-a-note-creator',
+		'pagetriage-add-a-note-reviewer',
 		'pagetriage-characters-left',
 		'pagetriage-personal-default-note',
 		'pagetriage-special-contributions',
