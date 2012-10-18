@@ -237,14 +237,12 @@ $( function() {
 								if ( $( '#mwe-pt-toolbar' ).is( ':hidden' ) ) {
 									var now = new Date();
 									now = new Date(
-										Date.UTC(
-											now.getUTCFullYear(),
-											now.getUTCMonth(),
-											now.getUTCDate(),
-											now.getUTCHours(),
-											now.getUTCMinutes(),
-											now.getUTCSeconds()
-										)
+										now.getUTCFullYear(),
+										now.getUTCMonth(),
+										now.getUTCDate(),
+										now.getUTCHours(),
+										now.getUTCMinutes(),
+										now.getUTCSeconds()
 									);
 
 									var mwFormat = now.toString( 'yyyyMMddHHmmss' );

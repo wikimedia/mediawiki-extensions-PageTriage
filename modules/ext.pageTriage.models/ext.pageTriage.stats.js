@@ -31,18 +31,15 @@ $( function() {
 
 			var now = new Date();
 			now = new Date(
-					Date.UTC(
-						now.getUTCFullYear(),
-						now.getUTCMonth(),
-						now.getUTCDate(),
-						now.getUTCHours(),
-						now.getUTCMinutes(),
-						now.getUTCSeconds()
-					)
+				now.getUTCFullYear(),
+				now.getUTCMonth(),
+				now.getUTCDate(),
+				now.getUTCHours(),
+				now.getUTCMinutes(),
+				now.getUTCSeconds()
 			);
 
 			var begin = Date.parseExact( dateStr, 'yyyyMMddHHmmss' );
-			begin.setTimezone( 'GMT' );
 
 			var diff = Math.round( ( now.getTime() - begin.getTime() ) / ( 1000 * 60 * 60 * 24 ) );
 			if ( diff ) {
