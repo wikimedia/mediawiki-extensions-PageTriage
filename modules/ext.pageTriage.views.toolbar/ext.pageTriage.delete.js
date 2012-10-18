@@ -183,7 +183,7 @@ $( function() {
 			var _this = this;
 
 			this.setupDeletionTags();
-			this.$tel.html( this.template( { 'tags': this.deletionTagsOptions } ) );
+			this.$tel.html( this.template( { 'tags': this.deletionTagsOptions, 'warningNotice': this.model.tagWarningNotice() } ) );
 
 			// set the Learn More link URL
 			var modules = mw.config.get( 'wgPageTriageCurationModules' );

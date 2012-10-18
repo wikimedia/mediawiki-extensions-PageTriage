@@ -150,6 +150,36 @@ $( function() {
 			return info;
 		},
 
+		tagWarningNotice: function () {
+			var dateStr = this.get( 'creation_date' );
+			if ( !dateStr ) {
+				return '';
+			}
+
+			var now = new Date();
+			now = new Date(
+				now.getUTCFullYear(),
+				now.getUTCMonth(),
+				now.getUTCDate(),
+				now.getUTCHours(),
+				now.getUTCMinutes(),
+				now.getUTCSeconds()
+			);
+
+			var begin = Date.parseExact( dateStr, 'yyyyMMddHHmmss' );
+			var diff = Math.round( ( now.getTime() - begin.getTime() ) / ( 1000 * 60 ) );
+
+			// only generate a warning if the page is less than 30 minutes old
+			if ( diff < 30 ) {
+				if ( diff < 1 ) {
+					diff = 1;
+				}
+				return gM( 'pagetriage-tag-warning-notice', diff );
+			} else {
+				return '';
+			}
+		},
+
 		buildRedLink: function ( title ) {
 			var url = title.getUrl();
 			if ( !title.exists() ) {

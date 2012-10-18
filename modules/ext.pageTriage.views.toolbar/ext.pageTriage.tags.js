@@ -76,7 +76,7 @@ $( function() {
 		render: function() {
 			var _this = this;
 			this.reset();
-			this.$tel.html( this.template( { 'tags': this.tagsOptions, 'title': this.title, 'maxLength': this.noteMaxLength, 'creator': this.model.get( 'user_name' ) } ) );
+			this.$tel.html( this.template( { 'tags': this.tagsOptions, 'warningNotice': this.model.tagWarningNotice(), 'title': this.title, 'maxLength': this.noteMaxLength, 'creator': this.model.get( 'user_name' ) } ) );
 
 			// set the Learn More link URL
 			var modules = mw.config.get( 'wgPageTriageCurationModules' );
