@@ -1197,6 +1197,7 @@ $messages['de'] = array(
 	'pagetriage-button-edit-details' => 'Einzelheiten bearbeiten',
 	'pagetriage-button-mark-for-deletion' => 'Zum Löschen markieren',
 	'pagetriage-add-a-note-creator' => 'Füge eine Nachricht für den Autor hinzu: (optional)',
+	'pagetriage-add-a-note-reviewer' => 'Füge eine Nachricht für den Prüfer hinzu: (optional)',
 	'pagetriage-characters-left' => 'noch {{PLURAL:$1|ein Zeichen|$1 Zeichen}}',
 	'pagetriage-personal-default-note' => 'Verfasse einen nützlichen Hinweis an {{GENDER:$1|$1}}. Er wird auf {{GENDER:$1|seiner|ihrer}} Diskussionsseite gespeichert.',
 	'pagetriage-page-status-reviewed' => 'Als geprüft markiert am $1 von $2 ($3$4$5)',
@@ -1442,12 +1443,14 @@ $messages['de'] = array(
 	'pagetriage-del-log-page-missing-error' => 'Die Logbuchseite für den heutigen Tag wurde bislang noch nicht erstellt.',
 	'pagetriage-del-log-page-adding-error' => 'Der Ort an dem die Diskussion abgespeichert werden soll, konnte nicht ermittelt werden.',
 	'pagetriage-del-talk-page-notify-error' => 'Der Autor konnte nicht auf seiner Diskussionsseite benachrichtigt werden.',
+	'pagetriage-del-discussion-page-adding-error' => 'Fehler beim Hinzufügen der Seite zur Löschdiskussionsseite!',
 	'pagetriage-del-tooltip' => 'Diese Seite zur Löschung vorschlagen.',
 	'pagetriage-tagging-error' => 'Die Markierungen konnten nicht zur Seite hinzugefügt werden.',
 	'pagetriage-add-tag-confirmation' => 'Bist du sicher, dass du {{PLURAL:$1|eine Markierung|$1 Markierungen}} zu solch einem kurzen Artikel hinzufügen möchtest?',
 	'pagetriage-tag-deletion-error' => 'Die Seite wurde bereits mit einer Löschvorlage markiert.',
 	'pagetriage-toolbar-close' => 'Schließen',
 	'pagetriage-toolbar-minimize' => 'Minimieren',
+	'pagetriage-tag-warning-notice' => 'Hinweis: Diese Seite ist nur {{PLURAL:$1|eine Minute|$1 Minuten}} alt. Ziehe in Erwägung mit der Markierung zu warten, außer das Problem ist ernst.',
 );
 
 /** German (formal address) (Deutsch (Sie-Form)‎)
@@ -1586,6 +1589,7 @@ $messages['es'] = array(
 	'pagetriage-button-edit-details' => 'Editar detalles',
 	'pagetriage-button-mark-for-deletion' => 'Marcar para borrar',
 	'pagetriage-add-a-note-creator' => 'Añadir un mensaje para el creador: (opcional)',
+	'pagetriage-add-a-note-reviewer' => 'Añadir un mensaje para el revisor: (opcional)',
 	'pagetriage-characters-left' => '$1 {{PLURAL:$1|carácter restante|caracteres restantes}}',
 	'pagetriage-personal-default-note' => 'Escribe una nota que sea útil para {{GENDER:$1|$1}}. Se publicará en su página de discusión.',
 	'pagetriage-page-status-reviewed' => 'Marcado como revisado el $1 por $2 ($3$4$5)',
@@ -1807,12 +1811,14 @@ $messages['es'] = array(
 	'pagetriage-del-log-page-missing-error' => '¡La página de registro para hoy no ha sido creada todavía!',
 	'pagetriage-del-log-page-adding-error' => 'No se ha podido encontrar un lugar de destino para la discusión',
 	'pagetriage-del-talk-page-notify-error' => 'No se ha podido notificar al autor en la página de discusión',
+	'pagetriage-del-discussion-page-adding-error' => '¡Hubo un fallo al añadir la página a la página de discusión de la eliminación.',
 	'pagetriage-del-tooltip' => 'Nominar esta página para su borrado',
 	'pagetriage-tagging-error' => 'No se han podido aplicar etiquetas a la página',
 	'pagetriage-add-tag-confirmation' => '¿Estás seguro de que deseas agregar $1 {{PLURAL:$1| etiqueta|etiquetas}} a un artículo tan corto?',
 	'pagetriage-tag-deletion-error' => 'La página ya está etiquetada con una plantilla de eliminación, abortando el procedimiento.',
 	'pagetriage-toolbar-close' => 'Cerrar',
 	'pagetriage-toolbar-minimize' => 'Minimizar',
+	'pagetriage-tag-warning-notice' => 'Nota: Esta página sólo existe desde hace $1 {{PLURAL:$1|minuto|minutos}}. Considera esperar para etiquetarla, a menos que el problema sea serio.',
 );
 
 /** Estonian (eesti)
@@ -2729,6 +2735,7 @@ $messages['gl'] = array(
 	'pagetriage-button-edit-details' => 'Editar os detalles',
 	'pagetriage-button-mark-for-deletion' => 'Marcar para borrar',
 	'pagetriage-add-a-note-creator' => 'Engadir unha mensaxe para o creador: (opcional)',
+	'pagetriage-add-a-note-reviewer' => 'Engadir unha mensaxe para o revisor: (opcional)',
 	'pagetriage-characters-left' => '$1 {{PLURAL:$1|carácter restante|caracteres restantes}}',
 	'pagetriage-personal-default-note' => 'Escriba unha nota que lle sexa útil a {{GENDER:$1|$1}}. Ha publicarse na súa páxina de conversa.',
 	'pagetriage-page-status-reviewed' => '$2 ($3$4$5) marcouna como revisada o $1',
@@ -2976,12 +2983,14 @@ $messages['gl'] = array(
 	'pagetriage-del-log-page-missing-error' => 'Aínda non se creou a páxina do rexistro de hoxe!',
 	'pagetriage-del-log-page-adding-error' => 'Erro ao intentar atopar o punto de destino da conversa',
 	'pagetriage-del-talk-page-notify-error' => 'Erro ao notificar o autor na súa páxina de conversa',
+	'pagetriage-del-discussion-page-adding-error' => 'Erro ao engadir a páxina ás votacións para borrar!',
 	'pagetriage-del-tooltip' => 'Engadir esta páxina ás votacións para borrar',
 	'pagetriage-tagging-error' => 'Erro ao aplicar as etiquetas á páxina',
 	'pagetriage-add-tag-confirmation' => 'Está seguro de querer engadir $1 {{PLURAL:$1|etiqueta|etiquetas}} a este breve artigo?',
 	'pagetriage-tag-deletion-error' => 'A páxina xa está etiquetada cun modelo de borrado. Cancelouse a operación.',
 	'pagetriage-toolbar-close' => 'Pechar',
 	'pagetriage-toolbar-minimize' => 'Minimizar',
+	'pagetriage-tag-warning-notice' => 'Nota: Esta páxina existe desde hai $1 {{PLURAL:$1|minuto|minutos}}. Considere agardar un anaco para etiquetala, a menos que o problema sexa serio.',
 );
 
 /** Hebrew (עברית)
@@ -4269,6 +4278,7 @@ $messages['ja'] = array(
 	'pagetriage-button-add-details' => '詳細を追加',
 	'pagetriage-button-edit-details' => '詳細を編集',
 	'pagetriage-add-a-note-creator' => '作者へのメッセージを追加: (省略可)',
+	'pagetriage-add-a-note-reviewer' => '査読者へのメッセージを追加: (省略可)',
 	'pagetriage-characters-left' => '残り {{PLURAL:$1|$1 文字}}',
 	'pagetriage-page-status-reviewed' => 'このページは、$2 ($3$4$5) が $1 に査読しました。',
 	'pagetriage-page-status-reviewed-anonymous' => '査読済',
@@ -4437,11 +4447,13 @@ $messages['ja'] = array(
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|回編集}}',
 	'pagetriage-next-tooltip' => '待ち列内の次のページに移動',
 	'pagetriage-del-log-page-missing-error' => '今日の記録ページはまだ作成されていません。',
+	'pagetriage-del-discussion-page-adding-error' => '削除議論ページへのページ追加に失敗しました!',
 	'pagetriage-tagging-error' => 'ページにタグを適用するのに失敗しました',
 	'pagetriage-add-tag-confirmation' => '短い記事に $1 {{PLURAL:$1|個のタグ}}を本当に追加しますか?',
 	'pagetriage-tag-deletion-error' => 'ページには削除テンプレートが既に貼り付けられています。処理を中止します。',
 	'pagetriage-toolbar-close' => '閉じる',
 	'pagetriage-toolbar-minimize' => '最小化',
+	'pagetriage-tag-warning-notice' => '注: このページはわずか $1 {{PLURAL:$1|分}}前のものです。問題点が深刻な場合以外は、タグ付けまで時間を置くことを検討してください。',
 );
 
 /** Georgian (ქართული)
@@ -4603,6 +4615,7 @@ $messages['ko'] = array(
 	'pagetriage-button-edit-details' => '자세한 사항 편집',
 	'pagetriage-button-mark-for-deletion' => '삭제 표시',
 	'pagetriage-add-a-note-creator' => '작성자에게 메시지 추가: (선택 사항)',
+	'pagetriage-add-a-note-reviewer' => '검토자에게 메시지 추가: (선택 사항)',
 	'pagetriage-characters-left' => '{{PLURAL:$1|글자 $1개}} 적음',
 	'pagetriage-personal-default-note' => '{{GENDER:$1|$1}} 사용자가 유용한 참고를 적었습니다. 사용자 토론 문서에 게시합니다.',
 	'pagetriage-page-status-reviewed' => '$2 ($3$4$5) 사용자에 의해 $1에 검토한 것으로 표시했습니다',
@@ -4841,6 +4854,7 @@ $messages['ko'] = array(
 	'pagetriage-del-log-page-missing-error' => '오늘 기록 문서가 아직 만들어지지 않았습니다!',
 	'pagetriage-del-log-page-adding-error' => '토론에 대한 대상 위치를 찾을 수 없습니다',
 	'pagetriage-del-talk-page-notify-error' => '토론 문서에 저자에게 알리지 못했습니다',
+	'pagetriage-del-discussion-page-adding-error' => '삭제 토론 문서에 문서를 추가하는 데 실패했습니다!',
 	'pagetriage-del-tooltip' => '이 문서를 삭제한 것을 포함',
 	'pagetriage-tagging-error' => '문서에 태그를 적용하지 못했습니다',
 	'pagetriage-add-tag-confirmation' => '이러한 짧은 문서에 $1 {{PLURAL:$1|태그}}를 추가하겠습니까?',
@@ -5123,6 +5137,7 @@ $messages['mk'] = array(
 	'pagetriage-button-edit-details' => 'Уреди подробности',
 	'pagetriage-button-mark-for-deletion' => 'Означи за бришење',
 	'pagetriage-add-a-note-creator' => 'Додај порака за создавачот: (незадолжително)',
+	'pagetriage-add-a-note-reviewer' => 'Додај порака за проверувачот: (незадолжително)',
 	'pagetriage-characters-left' => '{{PLURAL:$1|Преостанува $1 знак|Преостануваат $1 знаци}}',
 	'pagetriage-personal-default-note' => 'Напишете корисна белешка за корисникот {{GENDER:$1|$1}} што ќе му помогне. Истата ќе биде објавена на неговата страницата за разговор.',
 	'pagetriage-page-status-reviewed' => 'Означено како проверено на $1 од $2 ($3$4$5)',
@@ -5370,12 +5385,14 @@ $messages['mk'] = array(
 	'pagetriage-del-log-page-missing-error' => 'Дневничката страница за денес сè уште не е создадена!',
 	'pagetriage-del-log-page-adding-error' => 'Не успеав да го пронајдам целното место за дискусијата',
 	'pagetriage-del-talk-page-notify-error' => 'Не успеав да го известам авторот на страницата за разговор',
+	'pagetriage-del-discussion-page-adding-error' => 'Не успеав да ја ставам страницата во дискусијата за бришење страници!',
 	'pagetriage-del-tooltip' => 'Предложете ја страницава за бришење',
 	'pagetriage-tagging-error' => 'Не можев да ги ставам ознаите на страниците',
 	'pagetriage-add-tag-confirmation' => 'Дали сте сигурни дека сакате да ставите $1 {{PLURAL:$1|ознака|ознаки}} во така кратка статија?',
 	'pagetriage-tag-deletion-error' => 'Страницата веќе има шаблон за бришење. Ја откажувам постапката.',
 	'pagetriage-toolbar-close' => 'Затвори',
 	'pagetriage-toolbar-minimize' => 'Спушти',
+	'pagetriage-tag-warning-notice' => 'Напомена: Страницава е создадена пред само $1 {{PLURAL:$1|минута|минути}}. Почекајте пред да ја означите, освен ако проблемот не е сериозен.',
 );
 
 /** Maltese (Malti)
