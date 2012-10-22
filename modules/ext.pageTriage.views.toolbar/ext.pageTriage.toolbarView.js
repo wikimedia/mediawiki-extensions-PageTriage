@@ -261,6 +261,7 @@ $( function() {
 				// create an instance of the toolbar view
 				var toolbar = new mw.pageTriage.ToolbarView( { eventBus: eventBus } );
 				toolbar.render();
+				article.set( 'successfulModelLoading', 1 );
 			}
 		}
 	);
