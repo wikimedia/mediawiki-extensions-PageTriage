@@ -4226,7 +4226,6 @@ $messages['ja'] = array(
 	'pagetriage-author-bot' => 'ボット',
 	'pagetriage-creation-dateformat' => 'yyyy年MM月dd日 HH:mm',
 	'pagetriage-user-creation-dateformat' => 'yyyy年MM月dd日',
-	'pagetriage-special-contributions' => 'Special:Contributions',
 	'pagetriage-showing' => '表示中:',
 	'pagetriage-filter-list-prompt' => '適用するフィルター',
 	'pagetriage-unreviewed-article-count' => '総未査読{{PLURAL:$1|ページ数}} $1 (最古のページ: $2)',
@@ -4863,6 +4862,7 @@ $messages['ko'] = array(
 	'pagetriage-tag-deletion-error' => '문서가 이미 삭제 틀로 태그했으므로 절차를 중단합니다.',
 	'pagetriage-toolbar-close' => '닫기',
 	'pagetriage-toolbar-minimize' => '최소화',
+	'pagetriage-tag-warning-notice' => '참고: 이 문서만 $1{{PLURAL:$1|분}} 전입니다. 문제가 심각하지 않다면 해당 태그를 기다리는 것을 고려하세요.',
 );
 
 /** Colognian (Ripoarisch)
