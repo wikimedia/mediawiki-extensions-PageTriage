@@ -417,6 +417,10 @@ class PageTriageHooks {
 					$acp->compileMetadata();
 				}
 			}
+			$article = Article::newFromID( $rc->getAttribute( 'rc_cur_id' ) );
+			if ( $article ) {
+				PageTriageUtil::createNotificationEvent( $article, $user, 'pagetriage-mark-as-reviewed' );
+			}
 		}
 
 		return true;
@@ -455,6 +459,87 @@ class PageTriageHooks {
 		$vars['wgPageTriageCurationModules'] = $wgPageTriageCurationModules;
 		$vars['wgPageTriageNamespaces'] = $wgPageTriageNamespaces;
 		$vars['wgTalkPageNoteTemplate'] = $wgTalkPageNoteTemplate;
+		return true;
+	}
+
+	/**
+	 * Add extension event to $wgEchoEnabledEvents
+	 * @param $wgEchoEnabledEvents array a list of enabled echo events
+	 */
+	public static function onBeforeCreateEchoEvent( &$wgEchoEnabledEvents ) {
+		$wgEchoEnabledEvents[] = 'pagetriage-mark-as-reviewed';
+		$wgEchoEnabledEvents[] = 'pagetriage-add-maintenance-tag';
+		$wgEchoEnabledEvents[] = 'pagetriage-add-deletion-tag';
+		return true;
+	}
+
+	/**
+	 * Add extension notification formatter to $wgEchoNotificationFormatters
+	 * @param $wgEchoNotificationFormatters array a list of echo notification formatters
+	 */
+	public static function onBeforeFormatEchoNotification( &$wgEchoNotificationFormatters ) {
+		$wgEchoNotificationFormatters['pagetriage-mark-as-reviewed'] = array(
+			'class' => 'PageTriageNotificationFormatter',
+			'title-message' => 'pagetriage-notification-mark-as-reviewed',
+			'title-params' => array( 'agent', 'title' ),
+			'email-subject-message' => 'pagetriage-notification-mark-as-reviewed-email-subject',
+			'email-subject-params' => array( 'agent', 'title' ),
+			'email-body-message' => 'pagetriage-notification-mark-as-reviewed-email-body',
+			'email-body-params' => array( 'agent', 'title', 'title-link' ),
+			'icon' => 'checkmark',
+		);
+		$wgEchoNotificationFormatters['pagetriage-add-maintenance-tag'] = array(
+			'class' => 'PageTriageNotificationFormatter',
+			'title-message' => 'pagetriage-notification-add-maintenance-tag',
+			'title-params' => array( 'agent', 'title', 'tag' ),
+			'email-subject-message' => 'pagetriage-notification-add-maintenance-tag-email-subject',
+			'email-subject-params' => array( 'agent', 'title' ),
+			'email-body-message' => 'pagetriage-notification-add-maintenance-tag-email-body',
+			'email-body-params' => array( 'agent', 'title', 'title-link', 'tag' ),
+			'icon' => 'checkmark',
+		);
+		$wgEchoNotificationFormatters['pagetriage-add-deletion-tag'] = array(
+			'class' => 'PageTriageNotificationFormatter',
+			'title-message' => 'pagetriage-notification-add-deletion-tag',
+			'title-params' => array( 'agent', 'title', 'tag' ),
+			'email-subject-message' => 'pagetriage-notification-add-deletion-tag-email-subject',
+			'email-subject-params' => array( 'agent', 'title' ),
+			'email-body-message' => 'pagetriage-notification-add-deletion-tag-email-body',
+			'email-body-params' => array( 'agent', 'title', 'title-link', 'tag' ),
+			'icon' => 'trash',
+		);
+		return true;
+	}
+
+	/**
+	 * Add users to be notified on an echo event
+	 * @param $event EchoEvent
+	 * @param $users array
+	 */
+	public static function onEchoGetDefaultNotifiedUsers( $event, &$users ) {
+		switch ( $event->getType() ) {
+			// notify the page creator/starter
+			case 'pagetriage-mark-as-reviewed':
+			case 'pagetriage-add-maintenance-tag':
+			case 'pagetriage-add-deletion-tag':
+				if ( !$event->getTitle() ) {
+					break;
+				}
+
+				$pageId = $event->getTitle()->getArticleID();
+
+				$articleMetadata = new ArticleMetadata( array( $pageId ), false, DB_SLAVE );
+				$metaData = $articleMetadata->getMetadata();
+
+				if ( !$metaData ) {
+					break;
+				}
+
+				if ( $metaData[$pageId]['user_id'] ) {
+					$users[$metaData[$pageId]['user_id']] = User::newFromId( $metaData[$pageId]['user_id'] );
+				}
+			break;
+		}
 		return true;
 	}
 }

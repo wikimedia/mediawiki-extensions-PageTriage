@@ -372,6 +372,32 @@ $messages['en'] = array(
 	'pagetriage-toolbar-close' => 'Close',
 	'pagetriage-toolbar-minimize' => 'Minimize',
 	'pagetriage-tag-warning-notice' => 'Note: This page is only $1 {{PLURAL:$1|minute|minutes}} old. Consider waiting to tag it, unless the issue is serious.',
+
+	// notification - mark as reviewed
+	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|reviewed}} a page you started: [[$3|$3]]',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|reviewed}} a page you started on {{SITENAME}}: $3',
+	'pagetriage-notification-mark-as-reviewed-email-body' => 'Congratulations! {{SITENAME}} editor $1 {{GENDER:$1|reviewed}} a page you started, "$3":
+<$4>
+
+Thanks for improving {{SITENAME}}!',
+	// notification - add maintenance tag
+	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|reviewed}} a page you started: [[$3|$3]]. {{PLURAL:$5|Tag|Tags}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|reviewed}} a page you started on {{SITENAME}}: $3',
+	'pagetriage-notification-add-maintenance-tag-email-body' => '{{SITENAME}} editor $1 {{GENDER:$1|reviewed}} a page you started, "$3":
+<$4>
+
+{{PLURAL:$6|This tag was|These tags were}} added to your page: $5
+
+Please improve this page to address these issues. Thank you!',
+	// notification - add deletion tag
+	'pagetriage-notification-add-deletion-tag' => '$2 {{GENDER:$1|reviewed}} a page you started and marked it for deletion: [[$3|$3]]. Deletion {{PLURAL:$5|tag|tags}}: $4',
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 {{GENDER:$1|reviewed}} a page you started on {{SITENAME}}: $3',
+	'pagetriage-notification-add-deletion-tag-email-body' => '{{SITENAME}}  editor $1 {{GENDER:$1|reviewed}} a page you started, "$3":
+<$4>
+
+This page was marked for deletion, with {{PLURAL:$6|this tag|these tags}}: $5
+
+Please improve this page to address these issues. Thank you!',
 );
 
 /** Message documentation (Message documentation)
@@ -750,6 +776,51 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 	'pagetriage-toolbar-close' => 'Tooltip for the close button in the Curation Toolbar',
 	'pagetriage-toolbar-minimize' => 'Tooltip for the minimize button in the Curation Toolbar (also docks the minimized toolbar to the side of the screen)',
 	'pagetriage-tag-warning-notice' => 'Warning notice in maintenance and deletion tag flyout if the page was created less than some amount of time ago',
+
+	// notification - mark as reviewed
+	'pagetriage-notification-mark-as-reviewed' => 'Title for \'mark as reviewed\' notification.  Parameters:
+* $1 is the username of the person who marked the page as reviewed, plain text
+* $2 is the username of the person who marked the page as reviewed, user page link
+* $3 is the title of the page',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => 'Email subject for \'mark as reviewed\' notification.  Parameters:
+* $1 is the username of the person who marked the page as reviewed, plain text
+* $3 is the title of the page',
+	'pagetriage-notification-mark-as-reviewed-email-body' => 'Email body for \'mark as reviewed\' notification.  Parameters:
+* $1 is the user name of the pseron who marked the page as reviewed
+* $3 is the title of the page
+* $4 is the link to the page',
+	// notification - add maintenance tag
+	'pagetriage-notification-add-maintenance-tag' => 'Title for \'add maintenance tag\' notification.  Parameters:
+* $1 is the username of the person who added maintenance tag, plain text
+* $2 is the username of the person who added maintenance tag, user page link
+* $3 is the title of the page
+* $4 is the list of maintenance tags
+* $5 is the number of maintenance tags',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => 'Email subject for \'add maintenance tag\' notification.  Parameters:
+* $1 is the username of the person who added maintenance tag, plain text
+* $3 is the title of the page',
+	'pagetriage-notification-add-maintenance-tag-email-body' => 'Email body for \'add maintenance tag\' notification.  Parameters:
+* $1 is the username of the person who added maintenance tag to the page
+* $3 is the title of the page
+* $4 is the link to the page
+* $5 is the list of maintenance tags
+* $6 is the number of maintenance tags',
+	// notification - add deletion tag
+	'pagetriage-notification-add-deletion-tag' => 'Title for \'add deletion tag\' notification.  Parameters:
+* $1 is the username of the person who added deletion tag, plain text
+* $2 is the username of the person who added deletion tag, user page link
+* $3 is the title of the page
+* $4 is the list of deletion tags
+* $5 is the number of deletion tags',
+	'pagetriage-notification-add-deletion-tag-email-subject' => 'Email subject for \'add deletion tag\' notification.  Parameters:
+* $1 is the username of the person who added deletion tag, plain text
+* $3 is the title of the page',
+	'pagetriage-notification-add-deletion-tag-email-body' => 'Email body for \'add deletion tag\' notification.  Parameters:
+* $1 is the username of the person who added deletion tag to the page
+* $3 is the title of the page
+* $4 is the link to the page
+* $5 is the list of deletion tags
+* $6 is the number of deletion tags',
 );
 
 /** Afrikaans (Afrikaans)

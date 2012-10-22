@@ -395,6 +395,36 @@ class PageTriageUtil {
 		return $wgPageTriageCacheVersion;
 	}
 
+	/**
+	 * Attempt to create an Echo notification event for
+	 * 1. 'Mark as Reviewed' curation flyout
+	 * 2. 'Mark as Patrolled' from Special:NewPages
+	 * 3. 'Add maintenance tag' curation flyout
+	 * 4. 'Add deletion tag' curation flyout
+	 *
+	 * @param $article Article
+	 * @param $user User
+	 * @param $type string notification type
+	 * @param $extra array/null
+	 */
+	public static function createNotificationEvent( $article, $user, $type, $extra = null ) {
+		if ( !class_exists( 'EchoEvent' ) ) {
+			return;
+		}
+
+		$params = array(
+			'type' => $type,
+			'title' => $article->getTitle(),
+			'agent' => $user,
+		);
+
+		if ( $extra ) {
+			$params['extra'] = $extra;
+		}
+
+		EchoEvent::create( $params );
+	}
+
 }
 
 class MWPageTriageUtilInvalidNumberException extends MWException {}

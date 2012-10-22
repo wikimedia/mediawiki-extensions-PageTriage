@@ -523,7 +523,8 @@ $( function() {
 				'pageid': mw.config.get( 'wgArticleId' ),
 				'reviewed': '1',
 				'token': mw.user.tokens.get('editToken'),
-				'format': 'json'
+				'format': 'json',
+				'skipnotif': '1'
 			};
 			$.ajax( {
 				type: 'post',
