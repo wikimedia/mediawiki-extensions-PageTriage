@@ -4281,6 +4281,7 @@ $messages['ja'] = array(
 	'pagetriage-add-a-note-creator' => '作者へのメッセージを追加: (省略可)',
 	'pagetriage-add-a-note-reviewer' => '査読者へのメッセージを追加: (省略可)',
 	'pagetriage-characters-left' => '残り {{PLURAL:$1|$1 文字}}',
+	'pagetriage-personal-default-note' => '$1 に役立つ注記を記入してください。この人のトークページにこの内容が投稿されます。',
 	'pagetriage-page-status-reviewed' => 'このページは、$2 ($3$4$5) が $1 に査読しました。',
 	'pagetriage-page-status-reviewed-anonymous' => '査読済',
 	'pagetriage-page-status-unreviewed' => 'このページは未査読です',
@@ -5429,6 +5430,7 @@ $messages['mt'] = array(
  * @author SPQRobin
  * @author Saruman
  * @author Siebrand
+ * @author Wiki13
  */
 $messages['nl'] = array(
 	'pagetriage' => 'Paginacontrole',
@@ -5517,6 +5519,7 @@ $messages['nl'] = array(
 	'pagetriage-personal-default-note' => 'Schrijf een nuttig bericht voor $1. Dat wordt geplaatst op {{GENDER:$1|zijn|haar}} overlegpagina.',
 	'pagetriage-page-status-reviewed' => 'Gemarkeerd als gecontroleerd op $1 door $2 ($3$4$5)',
 	'pagetriage-page-status-reviewed-anonymous' => 'Gemarkeerd als gecontroleerd',
+	'pagetriage-page-status-autoreviewed' => 'Deze pagina is automatisch gecontroleerd.',
 	'pagetriage-page-status-delete' => 'Gemarkeerd voor verwijdering',
 	'pagetriage-tags-title' => 'Labels toevoegen',
 	'pagetriage-tags-cat-common-label' => 'Algemeen',
