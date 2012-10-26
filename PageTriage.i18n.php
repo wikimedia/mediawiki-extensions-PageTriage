@@ -4286,7 +4286,7 @@ $messages['ja'] = array(
 	'pagetriage-page-status-reviewed-anonymous' => '査読済',
 	'pagetriage-page-status-unreviewed' => 'このページは未査読です',
 	'pagetriage-page-status-autoreviewed' => 'このページは自動で巡回済みにされました。',
-	'pagetriage-articleinfo-stat' => '統計:', # Fuzzy
+	'pagetriage-articleinfo-stat' => '統計: $1',
 	'pagetriage-tags-title' => 'タグを追加',
 	'pagetriage-tags-cat-metadata-label' => 'メタデータ',
 	'pagetriage-tags-cat-cleanup-label' => 'クリーンアップ',
@@ -6635,6 +6635,7 @@ $messages['tly'] = array(
 
 /** Turkish (Türkçe)
  * @author Emperyan
+ * @author Sadrettin
  */
 $messages['tr'] = array(
 	'pagetriage' => 'Sayfa Sıralayıcı',
@@ -6691,6 +6692,7 @@ $messages['tr'] = array(
 	'pagetriage-filter-blocked' => 'Engellenmiş kullanıcılar tarafından açılanlar',
 	'pagetriage-filter-all' => 'Hepsini göster',
 	'pagetriage-filter-set-button' => 'Süzgeçleri ayarla',
+	'pagetriage-welcome' => 'Lütfen aşağıdaki yeni sayfaları gözden geçirin ve Vikipedi\'yi geliştirmemize yardımcı olun. <a href="$1">Daha fazla bilgi</a> · <a href="$2">Geri bildirim bırak</a>',
 	'pagetriage-refresh-list' => 'Listeyi yenile',
 	'pagetriage-button-add-tag' => 'Seçili etiketleri ekle',
 	'pagetriage-button-add-tag-number' => '$1 seçili etiketi ekle',
@@ -6702,7 +6704,9 @@ $messages['tr'] = array(
 	'pagetriage-page-status-reviewed' => '$2 ($3$4$5) tarafından $1 tarihinde gözden geçirildi',
 	'pagetriage-page-status-unreviewed' => 'Bu sayfa halen gözden geçirilmemiş.',
 	'pagetriage-page-status-autoreviewed' => 'Bu sayfa otomatik olarak gözden geçirildi.',
+	'pagetriage-page-status-delete' => 'Silinmek üzere işaretle',
 	'pagetriage-articleinfo-stat' => 'İstatistikler: $1',
+	'pagetriage-js-required' => 'Bu uzantı JavaScript destekli bir tarayıcı gerektirmektedir.',
 	'pagetriage-tags-title' => 'Etiket ekle',
 	'pagetriage-tags-cat-common-label' => 'Genel',
 	'pagetriage-tags-cat-metadata-label' => 'Üstveri',
@@ -6717,15 +6721,27 @@ $messages['tr'] = array(
 	'pagetriage-tags-cat-all-label' => 'Bütün etiketler',
 	'pagetriage-tags-tooltip' => 'Sayfanın sorunlarını belirtmek için etiket ekle',
 	'pagetriage-del-tags-cat-csd-desc' => 'Bu sayfayı aşağıdaki kıstaslardan birine uyuyorsa hızlı silinmesi için işaretleyin.',
+	'pagetriage-tags-param-article-label' => 'Madde:',
+	'pagetriage-tags-param-date-label' => 'Tarih:',
 	'pagetriage-tags-param-issues-label' => 'Ele alınacak sorunları açıklayın:',
+	'pagetriage-tags-param-free-yes-label' => 'Evet',
+	'pagetriage-tags-param-free-no-label' => 'Hayır',
 	'pagetriage-info-title' => 'Sayfa bilgisi',
 	'pagetriage-info-problem-header' => 'Olası sorunlar',
 	'pagetriage-info-history-header' => 'Geçmiş',
 	'pagetriage-info-history-show-full' => 'tam geçmişi göster',
+	'pagetriage-info-help' => 'yardım',
+	'pagetriage-info-no-problems' => 'Şimdiye kadar bu sayfada hiçbir sorun bulunmadı.',
+	'pagetriage-info-problem-non-autoconfirmed' => 'Yeni editör',
+	'pagetriage-info-problem-blocked' => 'Engellenmiş kullanıcı',
+	'pagetriage-info-problem-blocked-desc' => 'Bu sayfa engellenmiş kullanıcı tarafından açıldı.',
 	'pagetriage-info-problem-no-categories' => 'Kategori yok',
 	'pagetriage-info-problem-no-categories-desc' => 'Bu sayfa herhangi bir kategoriye ait değil.',
+	'pagetriage-info-problem-orphan' => 'Öksüz',
 	'pagetriage-info-problem-no-references' => 'Kaynak yok',
 	'pagetriage-info-problem-no-references-desc' => 'Bu sayfada herhangi bir kaynak kullanılmamıştır.',
+	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
+	'pagetriage-info-timestamp-time-format' => 'HH.mm',
 	'pagetriage-info-tooltip' => 'Bu sayfa için üstverileri göster',
 	'pagetriage-toolbar-collapsed' => 'İyileştirme',
 	'pagetriage-toolbar-learn-more' => 'Daha fazla bilgi »',
