@@ -2248,6 +2248,7 @@ $messages['fi'] = array(
  * @author DavidL
  * @author Erkethan
  * @author Gomoko
+ * @author Hello71
  * @author McDutchie
  * @author Sherbrooke
  * @author Tititou36
@@ -2498,7 +2499,7 @@ $messages['fr'] = array(
 	'pagetriage-tags-param-article-label' => 'Article :',
 	'pagetriage-tags-param-date-label' => 'Date :',
 	'pagetriage-tags-param-issues-label' => 'Décrit les problèmes à résoudre :',
-	'pagetriage-tags-param-for-label' => 'Cet article peut nécessiter une modification de copie pour:',
+	'pagetriage-tags-param-for-label' => 'Cet article peut nécessiter modification de copie pour:',
 	'pagetriage-tags-param-blp-label' => "Cet article concerne la biographie d'une personne vivante",
 	'pagetriage-tags-param-source-label' => "Merci d'ajouter un lien URL pour cette source.",
 	'pagetriage-tags-param-free-label' => 'Ce contenu est sous licence libre.',
