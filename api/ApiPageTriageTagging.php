@@ -93,10 +93,12 @@ class ApiPageTriageTagging extends ApiBase {
 						'pagetriage-curation' => 'delete',
 						'pagetriage-deletion' => 'delete'
 					);
+					PageTriageUtil::createNotificationEvent( $article, $this->getUser(), 'pagetriage-add-deletion-tag', $params['taglist'] );
 				} else {
 					$entry = array(
 						'pagetriage-curation' => 'tag'
 					);
+					PageTriageUtil::createNotificationEvent( $article, $this->getUser(), 'pagetriage-add-maintenance-tag', $params['taglist'] );
 				}
 
 				foreach ( $entry as $type => $action ) {

@@ -27,6 +27,11 @@ class ApiPageTriageAction extends ApiBase {
 		$pageTriage = new PageTriage( $params['pageid'] );
 		$pageTriage->setTriageStatus( $params['reviewed'], $this->getUser() );
 
+		// notification on mark as reviewed
+		if ( !$params['skipnotif'] && $params['reviewed'] ) {
+			PageTriageUtil::createNotificationEvent( $article, $this->getUser(), 'pagetriage-mark-as-reviewed' );
+		}
+
 		// logging
 		$logEntry = new ManualLogEntry( 'pagetriage-curation', $params['reviewed'] ? 'reviewed' : 'unreviewed' );
 		$logEntry->setPerformer( $this->getUser() );
@@ -73,7 +78,11 @@ class ApiPageTriageAction extends ApiBase {
 			'token' => array(
 				ApiBase::PARAM_REQUIRED => true,
 			),
-			'note' => null
+			'note' => null,
+			'skipnotif' => array(
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_TYPE => 'boolean'
+			)
 		);
 	}
 
@@ -94,7 +103,8 @@ class ApiPageTriageAction extends ApiBase {
 			'pageid' => 'The article for which to be marked as reviewed or unreviewed',
 			'reviewed' => 'whether the article is reviewed or not',
 			'token' => 'edit token',
-			'note' => 'personal note to page creators from reviewers'
+			'note' => 'personal note to page creators from reviewers',
+			'skipnotif' => 'whether to skip notification or not'
 		);
 	}
 

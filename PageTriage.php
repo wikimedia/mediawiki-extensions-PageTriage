@@ -115,6 +115,7 @@ $wgAutoloadClasses['ArticleCompileDeletionTag'] = $dir . 'includes/ArticleMetada
 $wgAutoloadClasses['PageTriageExternalTagsOptions'] = $dir . 'includes/PageTriageExternalTagsOptions.php';
 $wgAutoloadClasses['PageTriageExternalDeletionTagsOptions'] = $dir . 'includes/PageTriageExternalDeletionTagsOptions.php';
 $wgAutoloadClasses['PageTriageLogFormatter'] = $dir . 'includes/PageTriageLogFormatter.php';
+$wgAutoloadClasses['PageTriageNotificationFormatter'] = $dir . 'includes/PageTriageNotificationFormatter.php';
 
 $wgAutoloadClasses['ApiPageTriageList'] = $dir . 'api/ApiPageTriageList.php';
 $wgAutoloadClasses['ApiPageTriageStats'] = $dir . 'api/ApiPageTriageStats.php';
@@ -146,6 +147,9 @@ $wgHooks['ArticleDeleteComplete'][] = 'PageTriageHooks::onArticleDeleteComplete'
 $wgHooks['MarkPatrolledComplete'][] = 'PageTriageHooks::onMarkPatrolledComplete';
 $wgHooks['BlockIpComplete'][] = 'PageTriageHooks::onBlockIpComplete';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'PageTriageHooks::onResourceLoaderGetConfigVars';
+$wgHooks['BeforeCreateEchoEvent'][] = 'PageTriageHooks::onBeforeCreateEchoEvent';
+$wgHooks['BeforeFormatEchoNotification'][] = 'PageTriageHooks::onBeforeFormatEchoNotification';
+$wgHooks['EchoGetDefaultNotifiedUsers'][] = 'PageTriageHooks::onEchoGetDefaultNotifiedUsers';
 
 // logging
 $wgLogTypes[] = 'pagetriage-curation';
