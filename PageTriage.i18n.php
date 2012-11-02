@@ -776,51 +776,47 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 	'pagetriage-toolbar-close' => 'Tooltip for the close button in the Curation Toolbar',
 	'pagetriage-toolbar-minimize' => 'Tooltip for the minimize button in the Curation Toolbar (also docks the minimized toolbar to the side of the screen)',
 	'pagetriage-tag-warning-notice' => 'Warning notice in maintenance and deletion tag flyout if the page was created less than some amount of time ago',
-
-	// notification - mark as reviewed
-	'pagetriage-notification-mark-as-reviewed' => 'Title for \'mark as reviewed\' notification.  Parameters:
+	'pagetriage-notification-mark-as-reviewed' => "Title for 'mark as reviewed' notification.  Parameters:
 * $1 is the username of the person who marked the page as reviewed, plain text
 * $2 is the username of the person who marked the page as reviewed, user page link
-* $3 is the title of the page',
-	'pagetriage-notification-mark-as-reviewed-email-subject' => 'Email subject for \'mark as reviewed\' notification.  Parameters:
+* $3 is the title of the page",
+	'pagetriage-notification-mark-as-reviewed-email-subject' => "Email subject for 'mark as reviewed' notification.  Parameters:
 * $1 is the username of the person who marked the page as reviewed, plain text
-* $3 is the title of the page',
-	'pagetriage-notification-mark-as-reviewed-email-body' => 'Email body for \'mark as reviewed\' notification.  Parameters:
+* $3 is the title of the page",
+	'pagetriage-notification-mark-as-reviewed-email-body' => "Email body for 'mark as reviewed' notification.  Parameters:
 * $1 is the user name of the pseron who marked the page as reviewed
 * $3 is the title of the page
-* $4 is the link to the page',
-	// notification - add maintenance tag
-	'pagetriage-notification-add-maintenance-tag' => 'Title for \'add maintenance tag\' notification.  Parameters:
+* $4 is the link to the page",
+	'pagetriage-notification-add-maintenance-tag' => "Title for 'add maintenance tag' notification.  Parameters:
 * $1 is the username of the person who added maintenance tag, plain text
 * $2 is the username of the person who added maintenance tag, user page link
 * $3 is the title of the page
 * $4 is the list of maintenance tags
-* $5 is the number of maintenance tags',
-	'pagetriage-notification-add-maintenance-tag-email-subject' => 'Email subject for \'add maintenance tag\' notification.  Parameters:
+* $5 is the number of maintenance tags",
+	'pagetriage-notification-add-maintenance-tag-email-subject' => "Email subject for 'add maintenance tag' notification.  Parameters:
 * $1 is the username of the person who added maintenance tag, plain text
-* $3 is the title of the page',
-	'pagetriage-notification-add-maintenance-tag-email-body' => 'Email body for \'add maintenance tag\' notification.  Parameters:
+* $3 is the title of the page",
+	'pagetriage-notification-add-maintenance-tag-email-body' => "Email body for 'add maintenance tag' notification.  Parameters:
 * $1 is the username of the person who added maintenance tag to the page
 * $3 is the title of the page
 * $4 is the link to the page
 * $5 is the list of maintenance tags
-* $6 is the number of maintenance tags',
-	// notification - add deletion tag
-	'pagetriage-notification-add-deletion-tag' => 'Title for \'add deletion tag\' notification.  Parameters:
+* $6 is the number of maintenance tags",
+	'pagetriage-notification-add-deletion-tag' => "Title for 'add deletion tag' notification.  Parameters:
 * $1 is the username of the person who added deletion tag, plain text
 * $2 is the username of the person who added deletion tag, user page link
 * $3 is the title of the page
 * $4 is the list of deletion tags
-* $5 is the number of deletion tags',
-	'pagetriage-notification-add-deletion-tag-email-subject' => 'Email subject for \'add deletion tag\' notification.  Parameters:
+* $5 is the number of deletion tags",
+	'pagetriage-notification-add-deletion-tag-email-subject' => "Email subject for 'add deletion tag' notification.  Parameters:
 * $1 is the username of the person who added deletion tag, plain text
-* $3 is the title of the page',
-	'pagetriage-notification-add-deletion-tag-email-body' => 'Email body for \'add deletion tag\' notification.  Parameters:
+* $3 is the title of the page",
+	'pagetriage-notification-add-deletion-tag-email-body' => "Email body for 'add deletion tag' notification.  Parameters:
 * $1 is the username of the person who added deletion tag to the page
 * $3 is the title of the page
 * $4 is the link to the page
 * $5 is the list of deletion tags
-* $6 is the number of deletion tags',
+* $6 is the number of deletion tags",
 );
 
 /** Afrikaans (Afrikaans)
@@ -1523,6 +1519,28 @@ $messages['de'] = array(
 	'pagetriage-toolbar-close' => 'Schließen',
 	'pagetriage-toolbar-minimize' => 'Minimieren',
 	'pagetriage-tag-warning-notice' => 'Hinweis: Diese Seite ist nur {{PLURAL:$1|eine Minute|$1 Minuten}} alt. Ziehe in Erwägung mit der Markierung zu warten, außer das Problem ist ernst.',
+	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|überprüfte}} eine Seite, die du angelegt hast: [[$3|$3]]',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|überprüfte}} eine Seite, die du auf {{SITENAME}} angelegt hast: $3',
+	'pagetriage-notification-mark-as-reviewed-email-body' => 'Herzlichen Glückwunsch! Der {{SITENAME}}-Autor $1 {{GENDER:$1|überprüfte}} die Seite „$3“, die du angelegt hast:
+<$4>
+
+Vielen Dank für das Verbessern von {{SITENAME}}!',
+	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|überprüfte}} eine Seite, die du angelegt hast: [[$3|$3]]. {{PLURAL:$5|Markierung|Markierungen}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|überprüfte}} eine Seite, die du auf {{SITENAME}} angelegt hast: $3',
+	'pagetriage-notification-add-maintenance-tag-email-body' => 'Der {{SITENAME}}-Autor $1 {{GENDER:$1|überprüfte}} die Seite „$3“, die du angelegt hast:
+<$4>
+
+{{PLURAL:$6|Diese Markierung wurde|Diese Markierungen wurden}} deiner Seite hinzugefügt: $5
+
+Bitte hilf, die Probleme dieser Seite anzugehen. Vielen Dank!',
+	'pagetriage-notification-add-deletion-tag' => '$2 {{GENDER:$1|überprüfte}} eine Seite, die du angelegt hast und hat sie zur Löschung vorgeschlagen: [[$3|$3]]. {{PLURAL:$5|Löschmarkierung|Löschmarkierungen}}: $4',
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 {{GENDER:$1|überprüfte}} eine Seite, die du auf {{SITENAME}} angelegt hast: $3',
+	'pagetriage-notification-add-deletion-tag-email-body' => 'Der {{SITENAME}}-Autor $1 {{GENDER:$1|überprüfte}} die Seite „$3“, die du angelegt hast:
+<$4>
+
+Die Seite wurde mit {{PLURAL:$6|dieser Markierung|diesen Markierungen}} zur Löschung vorgeschlagen: $5
+
+Bitte hilf, die Probleme dieser Seite anzugehen. Vielen Dank!',
 );
 
 /** German (formal address) (Deutsch (Sie-Form)‎)
@@ -1891,6 +1909,28 @@ $messages['es'] = array(
 	'pagetriage-toolbar-close' => 'Cerrar',
 	'pagetriage-toolbar-minimize' => 'Minimizar',
 	'pagetriage-tag-warning-notice' => 'Nota: Esta página sólo existe desde hace $1 {{PLURAL:$1|minuto|minutos}}. Considera esperar para etiquetarla, a menos que el problema sea serio.',
+	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|ha revisado}} una página que empezaste: [[$3|$3]]',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|ha revisado}} una página que empezaste en {{SITENAME}}:$3',
+	'pagetriage-notification-mark-as-reviewed-email-body' => '¡ Felicitaciones! El editor de {{SITENAME}} $1 {{GENDER:$1|ha revisado}} una página que empezaste, "$3":
+<$4>
+
+¡Gracias por mejorar {{SITENAME}}!',
+	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|ha revisado}} una página que empezaste: [[$3|$3]]. {{PLURAL:$5|Etiqueta|Etiquetas}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|ha revisado}} una página que empezaste en {{SITENAME}}: $3',
+	'pagetriage-notification-add-maintenance-tag-email-body' => ' El editor de {{SITENAME}} $1 {{GENDER:$1|ha revisado}} una página que empezaste, "$3":
+<$4>
+
+{{PLURAL:$6|Esta etiqueta fue añadida|Estas etiquetas fueron añadidas}} a su página: $5 
+
+Por favor mejora esta página para abordar estos temas ¡Gracias!',
+	'pagetriage-notification-add-deletion-tag' => '$2 {{GENDER:$1|ha revisado}} una página que empezaste y la marcó para borrado: [[$3|$3]]. Borrado de {{PLURAL:$5|etiqueta|etiquetas}}: $4',
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 {{GENDER:$1|ha revisado}} una página que empezaste en {{SITENAME}}: $3',
+	'pagetriage-notification-add-deletion-tag-email-body' => ' El editor de {{SITENAME}} $1 {{GENDER:$1|ha revisado}} una página que empezaste, "$3":
+<$4>
+
+Esta página fue marcada para borrado, con {{PLURAL:$6|esta etiqueta|estas etiquetas}}: $5 
+
+Por favor mejora esta página para abordar estos temas.  ¡Gracias!',
 );
 
 /** Estonian (eesti)
@@ -3099,6 +3139,8 @@ $messages['gl'] = array(
 	'pagetriage-toolbar-close' => 'Pechar',
 	'pagetriage-toolbar-minimize' => 'Minimizar',
 	'pagetriage-tag-warning-notice' => 'Nota: Esta páxina existe desde hai $1 {{PLURAL:$1|minuto|minutos}}. Considere agardar un anaco para etiquetala, a menos que o problema sexa serio.',
+	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|revisou}} unha páxina que vostede comezou: [[$3|$3]]',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|revisou}} unha páxina que vostede comezou en {{SITENAME}}: $3',
 );
 
 /** Hebrew (עברית)
@@ -4567,10 +4609,14 @@ $messages['ja'] = array(
 	'pagetriage-mark-title' => '査読済の印を付ける',
 	'pagetriage-mark-as-reviewed' => '査読済の印を付ける',
 	'pagetriage-mark-as-unreviewed' => '未査読の印を付ける',
+	'pagetriage-mark-as-reviewed-helptext' => 'このページのチェックが完了したら、査読済の印を付けます。',
+	'pagetriage-mark-as-unreviewed-helptext' => 'このページをさらにチェックする必要があると考える場合は、未査読の印を付けます。',
+	'pagetriage-wikilove-helptext' => '感謝したい編集者の名前を選択してください。',
 	'pagetriage-wikilove-page-creator' => 'ページの作成者',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|回編集}}',
 	'pagetriage-next-tooltip' => '待ち列内の次のページに移動',
 	'pagetriage-del-log-page-missing-error' => '今日の記録ページはまだ作成されていません。',
+	'pagetriage-del-talk-page-notify-error' => '作者のトークページに通知するのに失敗しました',
 	'pagetriage-del-discussion-page-adding-error' => '削除議論ページへのページ追加に失敗しました!',
 	'pagetriage-tagging-error' => 'ページにタグを適用するのに失敗しました',
 	'pagetriage-add-tag-confirmation' => '短い記事に $1 {{PLURAL:$1|個のタグ}}を本当に追加しますか?',
@@ -4578,6 +4624,11 @@ $messages['ja'] = array(
 	'pagetriage-toolbar-close' => '閉じる',
 	'pagetriage-toolbar-minimize' => '最小化',
 	'pagetriage-tag-warning-notice' => '注: このページはわずか $1 {{PLURAL:$1|分}}前のものです。問題点が深刻な場合以外は、タグ付けまで時間を置くことを検討してください。',
+	'pagetriage-notification-mark-as-reviewed' => '$2 が、あなたが作成したページを{{GENDER:$1|査読しました}}: [[$3|$3]]',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 が、あなたが{{SITENAME}}で作成したページを{{GENDER:$1|査読しました}}: $3',
+	'pagetriage-notification-add-maintenance-tag' => '$2 が、あなたが作成したページを{{GENDER:$1|査読しました}}: [[$3|$3]]。{{PLURAL:$5|タグ}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 が、あなたが{{SITENAME}}で作成したページを{{GENDER:$1|査読しました}}: $3',
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 が、あなたが{{SITENAME}}で作成したページを{{GENDER:$1|査読しました}}: $3',
 );
 
 /** Georgian (ქართული)
@@ -5519,6 +5570,28 @@ $messages['mk'] = array(
 	'pagetriage-toolbar-close' => 'Затвори',
 	'pagetriage-toolbar-minimize' => 'Спушти',
 	'pagetriage-tag-warning-notice' => 'Напомена: Страницава е создадена пред само $1 {{PLURAL:$1|минута|минути}}. Почекајте пред да ја означите, освен ако проблемот не е сериозен.',
+	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|ја провери}} страницата што ја започнавте: [[$3|$3]]',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|провери}} страница што ја започнавте на {{SITENAME}}: $3',
+	'pagetriage-notification-mark-as-reviewed-email-body' => 'Честитаме! Уредникот $1 на {{SITENAME}} {{GENDER:$1|ја провери}} страницата што ја создадовте, „$3“:
+<$4>
+
+Ви благодариме што придонесовте кон подобрувањето на {{SITENAME}}!',
+	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|провери}} страница што ја започнавте: [[$3|$3]]. {{PLURAL:$5|Ознака|Ознаки}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|провери}} страница што ја започнавте на {{SITENAME}}: $3',
+	'pagetriage-notification-add-maintenance-tag-email-body' => 'Уредникот $1 на {{SITENAME}} {{GENDER:$1|ја провери}} страницата што ја започнавте, „$3“:
+<$4>
+
+На вашата страница {{PLURAL:$6|беше ставена оваа ознака|беа ставени овие ознаки}}: $5
+
+Подобрете ја страницата за да ги решите проблемите. Ви благодариме!',
+	'pagetriage-notification-add-deletion-tag' => '$2 {{GENDER:$1|провери}} страница што ја започнавте и ја означи за бришење: [[$3|$3]]. {{PLURAL:$5|Ознака|Ознаки}} за бришење: $4',
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 {{GENDER:$1|провери}} страница што ја започнавте на {{SITENAME}}: $3',
+	'pagetriage-notification-add-deletion-tag-email-body' => 'Уредникот $1 на {{SITENAME}} {{GENDER:$1|ја провери}} страницата што ја започнавте, „$3“:
+<$4>
+
+Страницата беше означена за бришење, со {{PLURAL:$6|ова ознака|овие ознаки}}: $5
+
+Подобрете ја страницата за да ги решите проблемите. Ви благодариме!',
 );
 
 /** Maltese (Malti)
@@ -6158,6 +6231,7 @@ $messages['si'] = array(
 $messages['sv'] = array(
 	'pagetriage-please-wait' => 'Var god vänta…',
 	'pagetriage-markpatrolled' => 'Märk den här sidan som patrullerad',
+	'pagetriage-markunpatrolled' => 'Märk den här sidan som opatrullerad',
 	'pagetriage-self-review-error' => 'Du kan inte patrullera sidor som du har skapat.',
 	'pagetriage-reviewed' => 'Patrullerad',
 	'pagetriage-bytes' => '$1 {{PLURAL:$1|byte|byte}}',
@@ -6175,16 +6249,19 @@ $messages['sv'] = array(
 	'pagetriage-author-bot' => 'Bot',
 	'pagetriage-showing' => 'Visar:',
 	'pagetriage-filter-list-prompt' => 'Ange filter',
-	'pagetriage-unreviewed-article-count' => 'Det {{PLURAL:$1|finns för närvarande $1 opatrullerad artikel|finns för närvarande $1 opatrullerade artiklar}}', # Fuzzy
+	'pagetriage-unreviewed-article-count' => '$1 totalt {{PLURAL:$1|opatrullerad sida|opatrullerade sidor}} (äldsta: $2)',
+	'pagetriage-reviewed-article-count-past-week' => '$1 {{PLURAL:$1|Sida|Sidor}} patrullerade denna vecka',
 	'pagetriage-sort-by' => 'Sortera på:',
 	'pagetriage-newest' => 'Nyaste',
 	'pagetriage-oldest' => 'Äldsta',
 	'pagetriage-triage' => 'Patrullera',
-	'pagetriage-filter-show-heading' => 'Inkludera:', # Fuzzy
+	'pagetriage-filter-show-heading' => 'Visa:',
 	'pagetriage-filter-reviewed-edits' => 'Patrullerade sidor',
+	'pagetriage-filter-unreviewed-edits' => 'Opatrullerade sidor',
 	'pagetriage-filter-nominated-for-deletion' => 'Nominerad för radering',
 	'pagetriage-filter-bot-edits' => 'Skapades av robotar',
 	'pagetriage-filter-redirects' => 'Omdirigeringar',
+	'pagetriage-filter-namespace-heading' => 'I namnrymd:',
 	'pagetriage-filter-article' => 'Artikel',
 	'pagetriage-filter-user-heading' => 'Skapades av',
 	'pagetriage-filter-username' => 'Användarnamn',
@@ -6199,9 +6276,10 @@ $messages['sv'] = array(
 	'pagetriage-more' => 'Mer',
 	'pagetriage-filter-stat-all' => 'Alla',
 	'pagetriage-filter-stat-reviewed' => 'granskad',
+	'pagetriage-filter-stat-unreviewed' => 'opatrullerad',
 	'pagetriage-filter-stat-bots' => 'Robotar',
-	'pagetriage-filter-stat-redirects' => 'Inkludera omdirigeringar', # Fuzzy
-	'pagetriage-filter-stat-nominated-for-deletion' => 'Inkludera raderade', # Fuzzy
+	'pagetriage-filter-stat-redirects' => 'omdirigeringar',
+	'pagetriage-filter-stat-nominated-for-deletion' => 'nominerad för radering',
 	'pagetriage-filter-stat-no-categories' => 'Inga kategorier',
 	'pagetriage-filter-stat-orphan' => 'Föräldralösa',
 	'pagetriage-filter-stat-non-autoconfirmed' => 'nya redigerare',
