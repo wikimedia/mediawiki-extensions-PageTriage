@@ -1017,6 +1017,13 @@ $messages['ar'] = array(
 	'pagetriage-tags-edit-summary' => 'تم إضافة قوالب الصيانة إلى المقالة باستخدام مدقق المقالات', # Fuzzy
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'pagetriage-tags-peacock-desc' => 'ܗܕܐ ܦܐܬܐ ܬܚܒܫ ܚܫܚܬ̈ܐ ܕܬܬܫܒܗܪ ܥܠ ܡܓܠܬܐ ܒܠܥܕ ܬܘܣܦܬܐ ܕܝܕ̈ܥܬܐ.',
+);
+
 /** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
  * @author Wizardist
  */
@@ -6033,6 +6040,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (português)
+ * @author Helder.wiki
  * @author Malafaya
  * @author SandroHc
  */
@@ -6041,7 +6049,7 @@ $messages['pt'] = array(
 	'pagetriage-bytes' => '$1 {{PLURAL:$1|byte|bytes}}',
 	'pagetriage-categories' => '$1 {{PLURAL:$1|categoria|categorias}}',
 	'pagetriage-orphan' => 'Órfã',
-	'pagetriage-byline' => 'Por', # Fuzzy
+	'pagetriage-byline' => 'Criado por $1 ($2$3$4)',
 	'pagetriage-author-not-autoconfirmed' => 'Novo editor',
 	'pagetriage-filter-redirects' => 'Redireccionamentos',
 	'pagetriage-filter-second-show-heading' => 'Que:',
@@ -6057,9 +6065,11 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (português do Brasil)
+ * @author Helder.wiki
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'pagetriage-pagecuration' => 'Curação de Páginas',
 	'pagetriage-author-blocked' => 'Bloqueado',
 	'pagetriage-author-bot' => 'Bot',
 	'pagetriage-showing' => 'Mostrando:',
@@ -6089,6 +6099,9 @@ $messages['pt-br'] = array(
 	'pagetriage-tags-param-date-label' => 'Data:',
 	'pagetriage-tags-param-free-yes-label' => 'Sim',
 	'pagetriage-tags-param-free-no-label' => 'Não',
+	'log-name-pagetriage-curation' => 'Registro da curadoria de páginas',
+	'pagetriage-toolbar-collapsed' => 'Curadoria',
+	'pagetriage-toolbar-linktext' => 'Curar este artigo',
 );
 
 /** Romanian (română)
@@ -6995,6 +7008,10 @@ $messages['tr'] = array(
 	'pagetriage-toolbar-close' => 'Kapat',
 	'pagetriage-toolbar-minimize' => 'Küçült',
 	'pagetriage-tag-warning-notice' => 'Not: Bu sayfa $1 {{PLURAL:$1|dakika|dakika}} önce açıldı. Ciddi bir sorun yoksa etiket eklemek için beklemeyi düşünün.',
+	'pagetriage-notification-mark-as-reviewed-email-body' => 'Tebrikler! {{SITENAME}} editörü $1, sizin açtığınız sayfayı "$3" olarak {{GENDER:$1|gözden geçirdi}}:
+<$4>
+
+{{SITENAME}}\'yi ileştirmenizden dolayı teşekkür ederiz!',
 );
 
 /** Urdu (اردو)
