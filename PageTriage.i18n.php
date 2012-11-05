@@ -2682,6 +2682,28 @@ $messages['fr'] = array(
 	'pagetriage-toolbar-close' => 'Fermer',
 	'pagetriage-toolbar-minimize' => 'Réduire',
 	'pagetriage-tag-warning-notice' => 'Remarque: Cette page ne date que de $1 {{PLURAL:$1|minute|minutes}}. Veuillez attendre pour la marquer, sauf si le problème est important.',
+	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|a relu}} une page que vous avez commencée: [[$3|$3]]',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|a relu}} une page que vous avez commencée sur {{SITENAME}}: $3',
+	'pagetriage-notification-mark-as-reviewed-email-body' => 'Félicitations! L\'éditeur $1 de {{SITENAME}} {{GENDER:$1|a relu}} une page que vous avez commencée, "$3":
+<$4>
+
+Merci d\'avoir amélioré {{SITENAME}}!',
+	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|a relu}} une page que vous avez commencée: [[$3|$3]]. {{PLURAL:$5|Balise|Balises}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|a relu}} une page que vous avez commencée sur {{SITENAME}}: $3',
+	'pagetriage-notification-add-maintenance-tag-email-body' => 'L\'éditeur $1 de {{SITENAME}} {{GENDER:$1|a relu}} une page que vous avez commencée, "$3":
+<$4>
+
+{{PLURAL:$6|Cette balise a été ajoutée|Ces balises ont été ajoutées}} à votre page: $5
+
+Veuillez améliorer cette page pour corriger ces problèmes. Merci!',
+	'pagetriage-notification-add-deletion-tag' => "$2 {{GENDER:$1|a relu}} une page que vous avez commencée et l'a marquée pour être supprimée: [[$3|$3]]. {{PLURAL:$5|Balise|Balises}} de suppression: $4",
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 {{GENDER:$1|a relu}} une page que vous avez commencée sur {{SITENAME}}: $3',
+	'pagetriage-notification-add-deletion-tag-email-body' => 'L\'éditeur $1 de {{SITENAME}} {{GENDER:$1|a relu}} une page que vous avez commencée, "$3":
+<$4>
+
+Cette page a été marquée pour être supprimée, avec {{PLURAL:$6|cette balise|ces balises}}: $5
+
+Veuillez améliorer cette page pour corriger ces problèmes. Merci!',
 );
 
 /** Franco-Provençal (arpetan)
@@ -4159,7 +4181,7 @@ $messages['it'] = array(
 	'pagetriage-button-add-details' => 'Aggiungi dettagli',
 	'pagetriage-button-edit-details' => 'Modifica dettagli',
 	'pagetriage-button-mark-for-deletion' => 'Segna per la cancellazione',
-	'pagetriage-add-a-note-creator' => 'Aggiungere un messaggio per il creatore: (facoltativo)',
+	'pagetriage-add-a-note-creator' => "Aggiungi un messaggio per l'autore: (facoltativo)",
 	'pagetriage-characters-left' => '{{PLURAL:$1|$1 carattere rimanente|$1 caratteri rimanenti}}',
 	'pagetriage-personal-default-note' => 'Scrivere una nota utile per {{GENDER:$1|$1}}. Verrà pubblicata sulla sua pagina di discussione.',
 	'pagetriage-page-status-reviewed' => 'Contrassegnata come revisionata il $1 da $2 ($3$4$5)',
