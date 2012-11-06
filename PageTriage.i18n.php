@@ -3170,6 +3170,26 @@ $messages['gl'] = array(
 	'pagetriage-tag-warning-notice' => 'Nota: Esta páxina existe desde hai $1 {{PLURAL:$1|minuto|minutos}}. Considere agardar un anaco para etiquetala, a menos que o problema sexa serio.',
 	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|revisou}} unha páxina que vostede comezou: [[$3|$3]]',
 	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|revisou}} unha páxina que vostede comezou en {{SITENAME}}: $3',
+	'pagetriage-notification-mark-as-reviewed-email-body' => 'Parabéns! {{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} revisou unha páxina que vostede comezou, "$3":
+<$4>
+
+Grazas por mellorar {{SITENAME}}!',
+	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|revisou}} unha páxina que vostede comezou: [[$3|$3]]. {{PLURAL:$5|Etiqueta|Etiquetas}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|revisou}} unha páxina que vostede comezou en {{SITENAME}}: $3',
+	'pagetriage-notification-add-maintenance-tag-email-body' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} revisou unha páxina que vostede comezou, "$3":
+<$4>
+
+Engadiu {{PLURAL:$6|a seguinte etiqueta|as seguintes etiquetas}} á súa páxina: $5
+
+Mellore a páxina para corrixir os problemas. Grazas!',
+	'pagetriage-notification-add-deletion-tag' => '$2 {{GENDER:$1|revisou}} unha páxina que vostede comezou e marcouna para borrar: [[$3|$3]]. {{PLURAL:$5|Etiqueta|Etiquetas}} de borrado: $4',
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 {{GENDER:$1|revisou}} unha páxina que vostede comezou en {{SITENAME}}: $3',
+	'pagetriage-notification-add-deletion-tag-email-body' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} revisou unha páxina que vostede comezou, "$3":
+<$4>
+
+A páxina marcouse para borrar, con {{PLURAL:$6|esta etiqueta|estas etiquetas}}: $5
+
+Mellore a páxina para corrixir os problemas. Grazas!',
 );
 
 /** Hebrew (עברית)
