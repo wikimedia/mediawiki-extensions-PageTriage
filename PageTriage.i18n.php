@@ -4114,6 +4114,7 @@ $messages['is'] = array(
  * @author Beta16
  * @author Darth Kule
  * @author F. Cosoleto
+ * @author Gianfranco
  * @author McDutchie
  */
 $messages['it'] = array(
@@ -4207,6 +4208,7 @@ $messages['it'] = array(
 	'pagetriage-page-status-reviewed' => 'Contrassegnata come revisionata il $1 da $2 ($3$4$5)',
 	'pagetriage-page-status-reviewed-anonymous' => 'Contrassegnata come revisionata',
 	'pagetriage-page-status-unreviewed' => 'Questa pagina non è stata ancora revisionata.',
+	'pagetriage-page-status-autoreviewed' => 'Questa pagina è stata autoverificata.',
 	'pagetriage-page-status-delete' => 'Contrassegnata per la cancellazione',
 	'pagetriage-articleinfo-stat' => 'Statistiche: $1',
 	'pagetriage-js-required' => 'Questa estensione richiede un browser con JavaScript abilitato.',
@@ -4400,7 +4402,9 @@ $messages['it'] = array(
 	'pagetriage-del-log-page-missing-error' => 'La pagina del registro di oggi non è stata ancora creata.',
 	'pagetriage-del-talk-page-notify-error' => "Impossibile notificare l'autore sulla sua pagina di discussione",
 	'pagetriage-del-tooltip' => 'Proporre questa pagina per la cancellazione',
+	'pagetriage-tagging-error' => 'Impossibile applicare tag alla pagina',
 	'pagetriage-toolbar-close' => 'Chiudi',
+	'pagetriage-toolbar-minimize' => 'Ridurre a icona',
 );
 
 /** Japanese (日本語)
