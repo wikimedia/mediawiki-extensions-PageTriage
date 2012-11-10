@@ -5090,6 +5090,28 @@ $messages['ko'] = array(
 	'pagetriage-toolbar-close' => '닫기',
 	'pagetriage-toolbar-minimize' => '최소화',
 	'pagetriage-tag-warning-notice' => '참고: 이 문서만 $1{{PLURAL:$1|분}} 전입니다. 문제가 심각하지 않다면 해당 태그를 기다리는 것을 고려하세요.',
+	'pagetriage-notification-mark-as-reviewed' => '$2 사용자가 당신이 작성한 문서를 {{GENDER:$1|검토했습니다}}: [[$3|$3]]',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 사용자가 {{SITENAME}}에 당신이 작성한 문서를 {{GENDER:$1|검토했습니다}}: $3',
+	'pagetriage-notification-mark-as-reviewed-email-body' => '축하합니다! {{SITENAME}} $1 편집자가 당신이 작성한 "$3" 문서를 {{GENDER:$1|검토했습니다}}:
+<$4>
+
+{{SITENAME}}에 개선해주셔서 감사합니다.',
+	'pagetriage-notification-add-maintenance-tag' => '$2 사용자가 당신이 작성한 문서를 {{GENDER:$1|검토했습니다}}: [[$3|$3]]. {{PLURAL:$5|태그}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 사용자가 {{SITENAME}}에 당신이 작성한 문서를 {{GENDER:$1|검토했습니다}}: $3',
+	'pagetriage-notification-add-maintenance-tag-email-body' => '{{SITENAME}} $1 편집자가 당신이 작성한 "$3" 문서를 {{GENDER:$1|검토했습니다}}:
+<$4>
+
+{{PLURAL:$6|이 태그}}는 당신의 문서에 추가했습니다: $5
+
+이러한 문제를 해결하기 위해 이 문서를 개선해주세요. 감사합니다!',
+	'pagetriage-notification-add-deletion-tag' => '$2 사용자가 당신이 작성한 문서를 {{GENDER:$1|검토했고}} 문서를 삭제로 표시했습니다: [[$3|$3]]. 삭제 {{PLURAL:$5|태그}}: $4',
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 사용자가 {{SITENAME}}에 당신이 작성한 문서를 {{GENDER:$1|검토했습니다}}: $3',
+	'pagetriage-notification-add-deletion-tag-email-body' => '{{SITENAME}} $1 편집자가 당신이 작성한 "$3" 문서를 {{GENDER:$1|검토했습니다}}:
+<$4>
+
+이 문서는 {{PLURAL:$6|다음 태그}}로 삭제로 표시했습니다: $5
+
+이러한 문제를 해결하기 위해 이 문서를 개선해주세요. 감사합니다!',
 );
 
 /** Colognian (Ripoarisch)
@@ -6897,6 +6919,7 @@ $messages['tly'] = array(
  * @author Emperyan
  * @author Hedda Gabler
  * @author Sadrettin
+ * @author Tarkovsky
  */
 $messages['tr'] = array(
 	'pagetriage' => 'Sayfa Sıralayıcı',
@@ -7010,6 +7033,8 @@ $messages['tr'] = array(
 	'pagetriage-tags-cat-all-label' => 'Bütün etiketler',
 	'pagetriage-tags-tooltip' => 'Sayfanın sorunlarını belirtmek için etiket ekle',
 	'pagetriage-del-tags-cat-csd-desc' => 'Bu sayfayı aşağıdaki kıstaslardan birine uyuyorsa hızlı silinmesi için işaretleyin.',
+	'pagetriage-del-tags-cat-prod-desc' => 'Topluluk standartlarını açıkça çiğniyorsa bu sayfayı silinmek üzere işaretleyin.',
+	'pagetriage-del-tags-cat-discussion-desc' => 'Bu sayfayı silmeyi diğer editörler ile tartışmak üzere işaretleyin.',
 	'pagetriage-del-tags-dba3-label' => 'İçeriksiz',
 	'pagetriage-del-tags-dbu3-label' => 'Özgür olmayan galeriler',
 	'pagetriage-tags-param-article-label' => 'Madde:',
