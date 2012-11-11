@@ -477,7 +477,10 @@ If your language requires some words between the different parts of the timestam
 	'pagetriage-filter-user-heading' => 'Prompt for the user to find pages by. Immediately followed by an input field. Prefer no colon since we want it to match with the rest of the options in the list which are all of the style "Were created by XXX".',
 	'pagetriage-filter-username' => 'Placeholder text for the input where a username is entered',
 	'pagetriage-filter-tag-heading' => 'Prompt to find pages with a given tag',
-	'pagetriage-filter-second-show-heading' => 'Prompt for the second set of checkboxes in the filter menu',
+	'pagetriage-filter-second-show-heading' => 'Prompt for the second set of checkboxes in the filter menu. Followed by these checkboxes - 
+*{{msg-mw|Pagetriage-filter-no-categories}}, 
+*{{msg-mw|Pagetriage-filter-orphan}} and 
+*{{msg-mw|Pagetriage-filter-non-autoconfirmed}}.',
 	'pagetriage-filter-no-categories' => 'Checkbox text for pages with no categories',
 	'pagetriage-filter-orphan' => 'Checkbox text for orphan pages',
 	'pagetriage-filter-non-autoconfirmed' => 'Checkbox text for pages by non-Autoconfirmed users',
@@ -3196,6 +3199,7 @@ Mellore a páxina para corrixir os problemas. Grazas!',
  * @author Amire80
  * @author Inkbug
  * @author Neukoln
+ * @author חיים
  * @author ערן
  */
 $messages['he'] = array(
@@ -3376,6 +3380,8 @@ $messages['he'] = array(
 	'pagetriage-info-problem-orphan-desc' => 'אין דפים המקשרים לדף זה.',
 	'pagetriage-info-problem-no-references' => 'אין הערות שוליים',
 	'pagetriage-info-problem-no-references-desc' => 'דף זה לא מצטט מקורות.',
+	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
+	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-info-tooltip' => 'הצגת מטא־נתונים עבור הדף הזה',
 	'pagetriage-toolbar-collapsed' => 'דפים חדשים',
 	'pagetriage-toolbar-linktext' => 'טיפול בערך הזה',
@@ -5171,6 +5177,7 @@ $messages['lb'] = array(
 	'pagetriage-filter-show-heading' => 'Weisen:',
 	'pagetriage-filter-reviewed-edits' => 'Nogekuckten Artikelen',
 	'pagetriage-filter-unreviewed-edits' => 'Net nogekuckte Säiten',
+	'pagetriage-filter-nominated-for-deletion' => 'Nominéiert fir ze läschen',
 	'pagetriage-filter-bot-edits' => 'Goufe vu Botten ugeluecht',
 	'pagetriage-filter-redirects' => 'Viruleedungen',
 	'pagetriage-filter-namespace-heading' => 'Am Nummraum:',
@@ -5697,6 +5704,7 @@ $messages['mt'] = array(
 
 /** Dutch (Nederlands)
  * @author McDutchie
+ * @author Rcdeboer
  * @author SPQRobin
  * @author Saruman
  * @author Siebrand
@@ -5727,6 +5735,7 @@ $messages['nl'] = array(
 	'pagetriage-byline' => 'Aangemaakt door $1 ($2$3$4)',
 	'pagetriage-byline-new-editor' => 'Aangemaakt door nieuwe gebruiker $1 ($2$3$4)',
 	'pagetriage-articleinfo-byline' => 'Deze pagina is aangemaakt op $1 door $2 ($3$4$5)',
+	'pagetriage-articleinfo-byline-new-editor' => 'Deze pagina is aangemaakt op $1 door nieuwe redacteur $2 ($3$4$5)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|bewerking|bewerkingen}} sinds $2',
 	'pagetriage-author-not-autoconfirmed' => 'Nieuwe gebruiker',
 	'pagetriage-no-patrol-right' => 'U hebt niet de juiste rechten om deze pagina formeel als gecontroleerd te controleren',
