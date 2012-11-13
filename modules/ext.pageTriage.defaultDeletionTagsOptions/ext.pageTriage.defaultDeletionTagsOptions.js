@@ -142,7 +142,9 @@ var tags = {
 		tag: 'speedy deletion-previously deleted', // redirect to db-g4
 		code: 'G4',
 		desc: mw.msg( 'pagetriage-del-tags-dbg4-desc' ),
-		params: {},
+		params: {
+			1: $.extend( true, {}, param.url )
+		},
 		anchor: 'repost',
 		talkpagenotiftpl: 'Uw-repost-NPF'
 	},
