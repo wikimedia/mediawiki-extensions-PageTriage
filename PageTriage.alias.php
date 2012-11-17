@@ -23,6 +23,11 @@ $specialPageAliases['de'] = array(
 	'NewPagesFeed' => array( 'Seitenprüfung' ),
 );
 
+/** Italian (italiano) */
+$specialPageAliases['it'] = array(
+	'NewPagesFeed' => array( 'FeedNuovePagine' ),
+);
+
 /** Japanese (日本語) */
 $specialPageAliases['ja'] = array(
 	'NewPagesFeed' => array( '新規ページフィード' ),

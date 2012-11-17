@@ -6953,8 +6953,8 @@ $messages['tr'] = array(
 	'pagetriage-orphan' => 'Öksüz',
 	'pagetriage-no-author' => 'Yazar hakkında mevcut bir bilgi yok',
 	'pagetriage-byline' => '$1 ($2$3$4) tarafından açıldı',
-	'pagetriage-byline-new-editor' => 'Yeni editör $1 ($2$3$4) tarafından oluşturuldu',
-	'pagetriage-articleinfo-byline' => 'Bu sayfa $1 tarihinde $2 ($3$4$5) tarafından oluşturuldu',
+	'pagetriage-byline-new-editor' => 'Yeni editör $1 ($2$3$4) tarafından açıldı',
+	'pagetriage-articleinfo-byline' => 'Bu sayfa $1 tarihinde $2 ($3$4$5) tarafından açıldı',
 	'pagetriage-articleinfo-byline-new-editor' => 'Bu sayfa $1 tarihinde yeni editör $2 ($3$4$5) tarafından açıldı',
 	'pagetriage-editcount' => '$2 tarihinden beri $1 {{PLURAL:$1|değişiklik|değişiklik}} yaptı',
 	'pagetriage-author-not-autoconfirmed' => 'Yeni editör',
@@ -7055,6 +7055,7 @@ $messages['tr'] = array(
 	'pagetriage-tags-param-url-label' => 'Lütfen şu kaynak için bir URL ekleyiniz:',
 	'pagetriage-tags-param-free-yes-label' => 'Evet',
 	'pagetriage-tags-param-free-no-label' => 'Hayır',
+	'pagetriage-tags-edit-summary' => '$1 kullanılarak bu sayfaya etiket ($2) eklendi',
 	'pagetriage-info-title' => 'Sayfa bilgisi',
 	'pagetriage-info-problem-header' => 'Olası sorunlar',
 	'pagetriage-info-history-header' => 'Geçmiş',
@@ -7062,12 +7063,13 @@ $messages['tr'] = array(
 	'pagetriage-info-help' => 'yardım',
 	'pagetriage-info-no-problems' => 'Şimdiye kadar bu sayfada hiçbir sorun bulunmadı.',
 	'pagetriage-info-problem-non-autoconfirmed' => 'Yeni editör',
+	'pagetriage-info-problem-non-autoconfirmed-desc' => 'Bu sayfa otomatik olarak onaylanmamış bir kullanıcı tarafından açıldı.',
 	'pagetriage-info-problem-blocked' => 'Engellenmiş kullanıcı',
 	'pagetriage-info-problem-blocked-desc' => 'Bu sayfa engellenmiş kullanıcı tarafından açıldı.',
 	'pagetriage-info-problem-no-categories' => 'Kategorisiz',
 	'pagetriage-info-problem-no-categories-desc' => 'Bu sayfa herhangi bir kategoriye ait değil.',
 	'pagetriage-info-problem-orphan' => 'Öksüz',
-	'pagetriage-info-problem-orphan-desc' => 'Bu sayfaya bağlantı veren diğer sayfalar.',
+	'pagetriage-info-problem-orphan-desc' => 'Bu sayfaya bağlantı veren başka bir sayfa yok',
 	'pagetriage-info-problem-no-references' => 'Kaynaksız',
 	'pagetriage-info-problem-no-references-desc' => 'Bu sayfada herhangi bir kaynak kullanılmamıştır.',
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
@@ -7085,13 +7087,15 @@ $messages['tr'] = array(
 	'pagetriage-wikilove-tooltip' => 'Yazar(lar)a teşekkür iletisi gönder',
 	'pagetriage-next-tooltip' => 'Sıradaki bir sonraki sayfaya git',
 	'pagetriage-del-tooltip' => 'Bu sayfayı silinmesi için işaretle',
+	'pagetriage-tagging-error' => 'Sayfaya etiketleri uygulamak başarısız oldu.',
+	'pagetriage-tag-deletion-error' => 'Sayfa zaten silme şablonu ile etiketlendi. İşleminiz durduruluyor.',
 	'pagetriage-toolbar-close' => 'Kapat',
 	'pagetriage-toolbar-minimize' => 'Küçült',
 	'pagetriage-tag-warning-notice' => 'Not: Bu sayfa $1 {{PLURAL:$1|dakika|dakika}} önce açıldı. Ciddi bir sorun yoksa etiket eklemek için beklemeyi düşünün.',
-	'pagetriage-notification-mark-as-reviewed-email-body' => 'Tebrikler! {{SITENAME}} editörü $1, sizin açtığınız sayfayı "$3" olarak {{GENDER:$1|gözden geçirdi}}:
+	'pagetriage-notification-mark-as-reviewed-email-body' => 'Tebrikler! {{SITENAME}} editörü $1, sizin açtığınız "$3" sayfasını {{GENDER:$1|gözden geçirdi}}:
 <$4>
 
-{{SITENAME}}\'yi ileştirmenizden dolayı teşekkür ederiz!',
+{{SITENAME}} sitesini geliştirmenizden dolayı teşekkür ederiz!',
 );
 
 /** Urdu (اردو)
