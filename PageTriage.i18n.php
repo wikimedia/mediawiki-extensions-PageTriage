@@ -92,7 +92,7 @@ $messages['en'] = array(
 	'pagetriage-filter-stat-username' => 'username: $1',
 	'pagetriage-no-pages' => 'No pages match your criteria.',
 	'pagetriage-warning-browser' => 'This tool may not work correctly in browsers older than Internet Explorer 8.',
-	'pagetriage-welcome' => 'Please review new pages below and help improve Wikipedia. <a href="$1">Learn more</a> · <a href="$2">Leave feedback</a>',
+	'pagetriage-welcome' => 'Please review new pages below and help improve {{SITENAME}}. <a href="$1">Learn more</a> · <a href="$2">Leave feedback</a>',
 	'pagetriage-note-reviewed' => 'This page has been reviewed.',
 	'pagetriage-note-not-reviewed' => 'This page has not yet been reviewed.',
 	'pagetriage-note-deletion' => 'This page has been nominated for deletion.',
