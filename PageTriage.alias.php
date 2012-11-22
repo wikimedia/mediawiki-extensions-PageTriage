@@ -53,6 +53,11 @@ $specialPageAliases['nl'] = array(
 	'NewPagesFeed' => array( 'OverzichtNieuwePagina\'s', 'OverzichtNieuwePaginas' ),
 );
 
+/** Sicilian (sicilianu) */
+$specialPageAliases['scn'] = array(
+	'NewPagesFeed' => array( 'FeedNuovePagine' ),
+);
+
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'NewPagesFeed' => array( 'YeniSayfaBeslemesi' ),
