@@ -2320,8 +2320,16 @@ $messages['fa'] = array(
 
 /** Finnish (suomi)
  * @author Beluga
+ * @author Nedergard
  */
 $messages['fi'] = array(
+	'pagetriage-please-wait' => 'Odota...',
+	'pagetriage-bytes' => '$1 {{PLURAL:$1|tavu|tavua}}',
+	'pagetriage-edits' => '$1 {{PLURAL:$1|muokkaus|muokkausta}}',
+	'pagetriage-categories' => '$1 {{PLURAL:$1|luokka|luokkaa}}',
+	'pagetriage-no-categories' => 'Ei luokkia',
+	'pagetriage-orphan' => 'Orpo',
+	'pagetriage-author-not-autoconfirmed' => 'Uusi muokkaaja',
 	'pagetriage-author-blocked' => 'Estetty',
 	'pagetriage-author-bot' => 'Botti',
 	'pagetriage-showing' => 'Näytetään:',
@@ -2334,14 +2342,28 @@ $messages['fi'] = array(
 	'pagetriage-filter-reviewed-edits' => 'Arvioidut sivut',
 	'pagetriage-filter-unreviewed-edits' => 'Arvioimattomat sivut',
 	'pagetriage-filter-redirects' => 'Ohjaukset',
+	'pagetriage-filter-namespace-heading' => 'Nimiavaruuessa:',
 	'pagetriage-filter-article' => 'Artikkeli',
 	'pagetriage-filter-username' => 'Käyttäjätunnus',
 	'pagetriage-filter-tag-heading' => 'Tunnisteella:',
+	'pagetriage-filter-second-show-heading' => 'Jotka:',
+	'pagetriage-filter-no-categories' => 'Ovat luokittelematta',
+	'pagetriage-filter-orphan' => 'Ovat orpoja',
+	'pagetriage-filter-non-autoconfirmed' => 'On luonut uusi muokkaaja',
+	'pagetriage-filter-blocked' => 'On luonut estetty käyttäjä',
 	'pagetriage-filter-all' => 'Näytä kaikki',
 	'pagetriage-filter-set-button' => 'Aseta suodattimet',
 	'pagetriage-filter-ns-all' => 'Kaikki',
 	'pagetriage-more' => 'Lisää',
 	'pagetriage-filter-stat-all' => 'Kaikki',
+	'pagetriage-filter-stat-bots' => 'botit',
+	'pagetriage-filter-stat-redirects' => 'ohjaukset',
+	'pagetriage-filter-stat-no-categories' => 'luokittelematta',
+	'pagetriage-filter-stat-orphan' => 'orvot',
+	'pagetriage-filter-stat-non-autoconfirmed' => 'uudet muokkaajat',
+	'pagetriage-filter-stat-blocked' => 'estetyt muokkaajat',
+	'pagetriage-filter-stat-username' => 'käyttäjätunnus: $1',
+	'pagetriage-no-pages' => 'Hakuehdoilla ei löytynyt sivuja.',
 	'pagetriage-tags-title' => 'Lisää tunnisteita',
 	'pagetriage-tags-cat-metadata-label' => 'Sisältökuvaukset',
 	'pagetriage-tags-cat-cleanup-label' => 'Siistiminen',
@@ -2365,6 +2387,8 @@ $messages['fi'] = array(
 	'pagetriage-info-problem-blocked' => 'Estetty käyttäjä',
 	'pagetriage-info-problem-no-categories' => 'Ei luokkia',
 	'pagetriage-toolbar-collapsed' => 'Kuratointi',
+	'pagetriage-toolbar-close' => 'Sulje',
+	'pagetriage-toolbar-minimize' => 'Pienennä',
 );
 
 /** French (français)
