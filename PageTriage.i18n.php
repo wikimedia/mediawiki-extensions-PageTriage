@@ -1029,7 +1029,7 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
-	'pagetriage-tags-peacock-desc' => 'ܗܕܐ ܦܐܬܐ ܬܚܒܫ ܚܫܚܬ̈ܐ ܕܬܬܫܒܗܪ ܥܠ ܡܓܠܬܐ ܒܠܥܕ ܬܘܣܦܬܐ ܕܝܕ̈ܥܬܐ.',
+	'pagetriage-tags-peacock-desc' => 'ܗܕܐ ܦܐܬܐ ܬܚܒܫ ܚܫܚܬ̈ܐ ܕܬܬܫܒܗܪ ܥܠ ܡܓܠܬܐ ܒܠܥܕ ܡܢ ܬܘܣܦܬܐ ܕܝܕ̈ܥܬܐ.',
 );
 
 /** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
@@ -4169,7 +4169,7 @@ $messages['it'] = array(
 	'pagetriage-mark-as-reviewed-error' => 'Si è verificato un errore durante la segnalazione della pagina come revisionata: $1',
 	'pagetriage-mark-as-unreviewed-error' => 'Si è verificato un errore durante la segnalazione della pagina come non revisionata: $1',
 	'pagetriage-hist' => 'cron',
-	'pagetriage-bytes' => '$1 {{PLURAL:$1|byte|byte}}',
+	'pagetriage-bytes' => '$1 {{PLURAL:$1|byte}}',
 	'pagetriage-edits' => '$1 {{PLURAL:$1|contributo|contributi}}',
 	'pagetriage-categories' => '$1 {{PLURAL:$1|categoria|categorie}}',
 	'pagetriage-no-categories' => 'Nessuna categoria',
