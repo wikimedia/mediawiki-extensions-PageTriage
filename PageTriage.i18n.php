@@ -509,7 +509,7 @@ If your language requires some words between the different parts of the timestam
 	'pagetriage-filter-stat-blocked' => 'Status display component for pages by blocked users. This message is included as part of a sentence-style list.',
 	'pagetriage-filter-stat-username' => 'Status display component for filter by username. $1 is the username. This message is included as part of a sentence-style list.',
 	'pagetriage-no-pages' => 'Message to display when no pages were retrieved',
-	'pagetriage-welcome' => 'A short introductory message that appears at the top of the PageTriage list view. $1 and $2 are URLs',
+	'pagetriage-welcome' => 'A short introductory message that appears at the top of the PageTriage list view. $1 and $2 are URLs', # Fuzzy
 	'pagetriage-note-reviewed' => 'A note that appears when a user hovers over a status icon',
 	'pagetriage-note-not-reviewed' => 'A note that appears when a user hovers over a status icon',
 	'pagetriage-note-deletion' => 'A note that appears when a user hovers over a status icon',
@@ -729,8 +729,12 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'log-description-pagetriage-deletion' => 'Descriptive header text for Deletion tag log page.',
 	'logentry-pagetriage-curation-reviewed' => 'log action when someone marks a page as reviewed, {{LogEntry}}',
 	'logentry-pagetriage-curation-unreviewed' => 'log action when someone marks a page as unreviewed, {{LogEntry}}',
-	'logentry-pagetriage-curation-tag' => 'log action when someone tags a page with maintenance tags, {{LogEntry}}, $4 is a list of comma-separated maintenance tags, $5 is the number of tags',
-	'logentry-pagetriage-curation-delete' => 'log action when some marks a page for deletion, {{LogEntry}}, $4 is a list of comma-separated deletion tags, $5 is the number of tags',
+	'logentry-pagetriage-curation-tag' => 'log action when someone tags a page with maintenance tags. {{Logentry}}.
+* $4 is a list of comma-separated maintenance tags
+* $5 is the number of tags',
+	'logentry-pagetriage-curation-delete' => 'Log action when some marks a page for deletion, {{Logentry}}
+* $4 is a list of comma-separated deletion tags
+* $5 is the number of tags.',
 	'logentry-pagetriage-deletion-delete' => 'log action when some marks a page for deletion, {{LogEntry}}, $4 is a list of comma-separated deletion tags, $5 is the number of tags',
 	'pagetriage-tags-edit-summary' => 'The edit summary that is posted when someone applies tags to an article with the Curation Toolbar in PageTriage.
 *$1 is a link to the local wiki page about the Curation Toolbar with {{msg-mw|pagetriage-pagecuration}} as the link text.
@@ -779,7 +783,8 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 	'pagetriage-del-discussion-page-adding-error' => 'Error message indicating a failure of adding the page to deletion discussion page!',
 	'pagetriage-del-tooltip' => 'Help message that displays when someone hovers over the deletion wizard button',
 	'pagetriage-tagging-error' => 'Error message indicating that error has occurred while applying tags to a page',
-	'pagetriage-add-tag-confirmation' => 'Confirmation message upon tag submission, $1 is the number of tags',
+	'pagetriage-add-tag-confirmation' => 'Confirmation message upon tag submission. Parameters:
+* $1 is the number of tags.',
 	'pagetriage-tag-deletion-error' => 'Error message indicating that a page has already been nominated for deletion',
 	'pagetriage-toolbar-close' => 'Tooltip for the close button in the Curation Toolbar',
 	'pagetriage-toolbar-minimize' => 'Tooltip for the minimize button in the Curation Toolbar (also docks the minimized toolbar to the side of the screen)',
@@ -2484,7 +2489,7 @@ $messages['fr'] = array(
 	'pagetriage-filter-stat-username' => 'Nom d’utilisateur: $1',
 	'pagetriage-no-pages' => 'Aucune page ne correspond à vos critères.',
 	'pagetriage-warning-browser' => 'Cet outil peut ne pas fonctionner correctement dans les navigateurs plus anciens que Internet Explorer 8.',
-	'pagetriage-welcome' => 'Veuillez relire les nouvelles pages ci-dessous et aider à améliorer Wikipédia. <a href="$1">En savoir plus</a> · <a href="$2">Laisser un avis</a>',
+	'pagetriage-welcome' => 'Veuillez relire les nouvelles pages ci-dessous et aider à améliorer {{SITENAME}}. <a href="$1">En savoir plus</a> · <a href="$2">Laisser un avis</a>',
 	'pagetriage-note-reviewed' => 'Cette page a été relue.',
 	'pagetriage-note-not-reviewed' => "Cette page n'a pas encore été relue.",
 	'pagetriage-note-deletion' => 'Cette page est sujette à suppression.',
@@ -5986,6 +5991,7 @@ $messages['nl'] = array(
 	'pagetriage-del-tags-dbu3-label' => 'Niet-vrije galerijen',
 	'pagetriage-del-tags-dbu3-desc' => 'Galerijen in de gebruikersnaamruimte die vooral of geheel bestaan uit "fair-use" of niet-vrije afbeeldingen. Het beleid aangaande niet-vrije inhoud verbiedt het gebruikt van niet-vrij inhoud in de gebruikersruimte of zelfs het uploaden daarvan. Het gebruik van inhoud in het publieke domein of met een vrije licentie is toegestaan.',
 	'pagetriage-del-tags-prod-label' => 'Verwijderingsvoorstel',
+	'pagetriage-del-talk-page-notify-summary' => 'De auteur wordt op de hoogste gesteld voor de verwijderingsnominatie van [[$1]]',
 	'pagetriage-tags-param-article-label' => 'Pagina:',
 	'pagetriage-tags-param-date-label' => 'Datum:',
 	'pagetriage-tags-param-issues-label' => 'Beschrijf de problemen die moeten worden aangepakt:',
@@ -5997,6 +6003,15 @@ $messages['nl'] = array(
 	'pagetriage-tags-param-free-yes-label' => 'Ja',
 	'pagetriage-tags-param-free-no-label' => 'No',
 	'pagetriage-tags-param-missing-required' => 'Het label $1 mist een verplichte parameter.',
+	'log-name-pagetriage-curation' => 'Logboek paginaconservering',
+	'log-description-pagetriage-curation' => 'Dit is het logboek met handelingen vanuit de werkbalk paginaconservering.',
+	'log-name-pagetriage-deletion' => 'Logboek verwijderingslabels',
+	'log-description-pagetriage-deletion' => 'Dit is het logboek met handelingen vanuit de wizard paginaconserveringverwijdering.',
+	'logentry-pagetriage-curation-reviewed' => '$1 {{GENDER:$2|heeft}} $3 als gecontroleerd gemarkeerd',
+	'logentry-pagetriage-curation-unreviewed' => '$1 {{GENDER:$2|heeft}} $3 als ongecontroleerd gemarkeerd',
+	'logentry-pagetriage-curation-tag' => '$1 {{GENDER:$2|heeft}} {{PLURAL:$5|het label|de labels}} $4 toegevoegd aan $3',
+	'logentry-pagetriage-curation-delete' => '$1 {{GENDER:$2|heeft}} $3 genomineerd voor verwijdering met {{PLURAL:$5|het label|de labels}} $4',
+	'logentry-pagetriage-deletion-delete' => '$1 {{GENDER:$2|heeft}} $3 genomineerd voor verwijdering met {{PLURAL:$5|het label|de labels}} $4',
 	'pagetriage-tags-edit-summary' => 'Labels aan de pagina toegevoegd met $1 ($2)',
 	'pagetriage-tags-note-edit-summary' => 'Opmerkingen toegevoegd over [[$1]]',
 	'pagetriage-del-edit-summary' => 'Pagina genomineerd voor verwijdering met $1 ($2)',
@@ -6037,10 +6052,22 @@ $messages['nl'] = array(
 	'pagetriage-del-log-page-missing-error' => 'De logboekpagina voor vandaag is nog niet aangemaakt.',
 	'pagetriage-del-log-page-adding-error' => 'Het was niet mogelijk de pagina aan het overleg te koppen',
 	'pagetriage-del-talk-page-notify-error' => 'Het was niet mogelijk de auteur op de overlegpagina in kennis te stellen',
+	'pagetriage-del-discussion-page-adding-error' => 'Het toevoegen van de verwijderingsnominatie is mislukt.',
 	'pagetriage-del-tooltip' => 'Deze pagina voor verwijdering nomineren',
 	'pagetriage-tagging-error' => 'Het toevoegen van de labels aan de pagina is mislukt',
+	'pagetriage-add-tag-confirmation' => "Weet u zeker dat u {{PLURAL:$1|één label|$1 labels}} wilt toevoegen een zo'n korte pagina?",
+	'pagetriage-tag-deletion-error' => 'De pagina is al genomineerd voor verwijdering. De procedure wordt afgebroken.',
 	'pagetriage-toolbar-close' => 'Sluiten',
 	'pagetriage-toolbar-minimize' => 'Minimaliseren',
+	'pagetriage-tag-warning-notice' => 'Let op: deze pagina is pas {{PLURAL:$1|één minuut|$1 minuten}} geleden aangemaakt. Overweeg nog even te wachten met labelen, tenzij de pagina een groot probleem oplevert.',
+	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|heeft}} een pagina gecontroleerd die u hebt aangemaakt: [[$3|$3]]',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|heeft}} een pagina gecontroleerd die u hebt aangemaakt op {{SITENAME}}: [[$3|$3]]', # Fuzzy
+	'pagetriage-notification-mark-as-reviewed-email-body' => 'Gefeliciteerd! De gebruiker $1 van {{SITENAME}} {{GENDER:$1|heeft}} de pagina "$3" gecontroleerd die u hebt aangemaakt:
+<$4>
+
+Dank u wel voor het verbeteren van {{SITENAME}}!',
+	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|heeft}} een pagina gecontroleerd die u hebt aangemaakt: [[$3|$3]]. {{PLURAL:$5|Label|Labels}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|heeft}} een pagina gecontroleerd die u hebt aangemaakt op {{SITENAME}}: $3',
 );
 
 /** Pampanga (Kapampangan)
