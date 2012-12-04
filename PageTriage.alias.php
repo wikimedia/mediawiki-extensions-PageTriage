@@ -23,6 +23,11 @@ $specialPageAliases['de'] = array(
 	'NewPagesFeed' => array( 'Seitenprüfung' ),
 );
 
+/** Zazaki (Zazaki) */
+$specialPageAliases['diq'] = array(
+	'NewPagesFeed' => array( 'WerdêPerandeNewan' ),
+);
+
 /** Italian (italiano) */
 $specialPageAliases['it'] = array(
 	'NewPagesFeed' => array( 'FeedNuovePagine' ),

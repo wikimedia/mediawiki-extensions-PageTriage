@@ -661,6 +661,8 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-tags-recentism-desc' => 'Description for recentism tag',
 	'pagetriage-tags-toofewopinions-label' => 'Label for too few opinions tag',
 	'pagetriage-tags-toofewopinions-desc' => 'Description for too few opinions tag',
+	'pagetriage-tags-unbalanced-label' => '{{optional}}',
+	'pagetriage-tags-unbalanced-desc' => '{{optional}}',
 	'pagetriage-tags-update-label' => 'Label for update tag',
 	'pagetriage-tags-update-desc' => 'Description for update tag',
 	'pagetriage-tags-tooltip' => 'Help message that displays when someone hovers over the tag wizard button',
