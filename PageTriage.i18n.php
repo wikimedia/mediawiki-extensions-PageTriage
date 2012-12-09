@@ -4875,7 +4875,7 @@ $messages['ko'] = array(
 	'pagetriage-filter-stat-username' => '사용자 이름: $1',
 	'pagetriage-no-pages' => '조건과 일치하는 문서가 없습니다.',
 	'pagetriage-warning-browser' => '이 도구는 Internet Explorer 8보다 오래된 브라우저에서 제대로 작동하지 않을 수 있습니다.',
-	'pagetriage-welcome' => '아래의 새 문서를 검토하고 위키백과를 개선하는 데 도움을 주세요. <a href="$1">더 알아보기</a> · <a href="$2">피드백 남기기</a>',
+	'pagetriage-welcome' => '아래의 새 문서를 검토하고 {{SITENAME}}(을)를 개선하는 데 도움을 주세요. <a href="$1">더 알아보기</a> · <a href="$2">피드백 남기기</a>',
 	'pagetriage-note-reviewed' => '이 문서는 검토되었습니다.',
 	'pagetriage-note-not-reviewed' => '이 문서는 아직 검토되지 않았습니다.',
 	'pagetriage-note-deletion' => '이 문서는 삭제한 것을 선정합니다.',
@@ -6063,7 +6063,7 @@ $messages['nl'] = array(
 	'pagetriage-toolbar-minimize' => 'Minimaliseren',
 	'pagetriage-tag-warning-notice' => 'Let op: deze pagina is pas {{PLURAL:$1|één minuut|$1 minuten}} geleden aangemaakt. Overweeg nog even te wachten met labelen, tenzij de pagina een groot probleem oplevert.',
 	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|heeft}} een pagina gecontroleerd die u hebt aangemaakt: [[$3|$3]]',
-	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|heeft}} een pagina gecontroleerd die u hebt aangemaakt op {{SITENAME}}: [[$3|$3]]', # Fuzzy
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|heeft}} een pagina gecontroleerd die u hebt aangemaakt op {{SITENAME}}: $3',
 	'pagetriage-notification-mark-as-reviewed-email-body' => 'Gefeliciteerd! De gebruiker $1 van {{SITENAME}} {{GENDER:$1|heeft}} de pagina "$3" gecontroleerd die u hebt aangemaakt:
 <$4>
 
