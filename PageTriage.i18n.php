@@ -4530,7 +4530,7 @@ $messages['ja'] = array(
 	'pagetriage-filter-stat-blocked' => 'ブロックされている利用者',
 	'pagetriage-filter-stat-username' => '利用者名: $1',
 	'pagetriage-no-pages' => '検索条件に一致するページはありません。',
-	'pagetriage-welcome' => 'Wikipedia を改善するため、以下の新しいページを査読してください。<a href="$1">詳細はこちら</a> · <a href="$2">フィードバックを送信</a>',
+	'pagetriage-welcome' => '{{SITENAME}}を改善するため、以下の新しいページを査読してください。<a href="$1">詳細はこちら</a> · <a href="$2">フィードバックを送信</a>',
 	'pagetriage-note-reviewed' => 'このページは査読済です。',
 	'pagetriage-note-not-reviewed' => 'このページはまだ査読されていません。',
 	'pagetriage-refresh-list' => '一覧を更新',
@@ -6070,6 +6070,20 @@ $messages['nl'] = array(
 Dank u wel voor het verbeteren van {{SITENAME}}!',
 	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|heeft}} een pagina gecontroleerd die u hebt aangemaakt: [[$3|$3]]. {{PLURAL:$5|Label|Labels}}: $4',
 	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|heeft}} een pagina gecontroleerd die u hebt aangemaakt op {{SITENAME}}: $3',
+	'pagetriage-notification-add-maintenance-tag-email-body' => 'Gebruiker $1 van {{SITENAME}} {{GENDER:$1|heeft}} de pagina "$3" die u bent begonnen gecontroleerd:
+<$4>
+
+{{PLURAL:$6|Dit label is|Deze labels zijn}} toegevoegd aan de pagina: $5
+
+Please improve this page to address these issues. Thank you!',
+	'pagetriage-notification-add-deletion-tag' => '$2 {{GENDER:$1|heeft}} een pagina die u bent begonnen voor verwijdering genomineerd: [[$3|$3]]. Verwijderlabel{{PLURAL:$5||s}}: $4',
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 {{GENDER:$1|heeft}} een pagina die u bent begonnen gecontroleerd op {{SITENAME}}: $3',
+	'pagetriage-notification-add-deletion-tag-email-body' => 'Gebruiker $1 van {{SITENAME}} {{GENDER:$1|heeft}} de pagina "$3" die u bent begonnen gecontroleerd:
+<$4>
+
+De pagina is genomineerd voor verwijdering met {{PLURAL:$6|dit label|deze labels}}: $5
+
+Help deze pagina te verbeteren door de aangegeven verbeterpunten aan te pakken. Bedankt!',
 );
 
 /** Pampanga (Kapampangan)
