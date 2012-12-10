@@ -70,6 +70,11 @@ class ApiPageTriageList extends ApiBase {
 		$tables	  = array( 'pagetriage_page', 'page' );
 		$conds    = array( 'ptrp_page_id = page_id' );
 
+		// Helpful hint: In the ptrp_reviewed column...
+		// 0 = unreviewed
+		// 1 = reviewed
+		// 2 = patrolled
+		// 3 = autopatrolled
 		$reviewOpr = '';
 		if ( $opts['showreviewed'] ) {
 			$reviewOpr .= '>';
