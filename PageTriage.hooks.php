@@ -465,11 +465,19 @@ class PageTriageHooks {
 	/**
 	 * Add extension event to $wgEchoEnabledEvents
 	 * @param $wgEchoEnabledEvents array a list of enabled echo events
+	 * @param $wgEchoEventDetails array details for echo events
 	 */
-	public static function onBeforeCreateEchoEvent( &$wgEchoEnabledEvents ) {
+	public static function onBeforeCreateEchoEvent( &$wgEchoEnabledEvents, &$wgEchoEventDetails ) {
 		global $wgPageTriageEnabledEchoEvents;
+
 		foreach ( $wgPageTriageEnabledEchoEvents as $enabledEchoEvent ) {
 			$wgEchoEnabledEvents[] = $enabledEchoEvent;
+			$wgEchoEventDetails += array(
+				$enabledEchoEvent => array(
+					'category' => 'page-review',
+					'priority' => 8
+				)
+			);
 		}
 		return true;
 	}
@@ -487,6 +495,8 @@ class PageTriageHooks {
 			'email-subject-params' => array( 'agent', 'title' ),
 			'email-body-message' => 'pagetriage-notification-mark-as-reviewed-email-body',
 			'email-body-params' => array( 'agent', 'title', 'title-link' ),
+			'email-body-batch-message' => 'pagetriage-notification-mark-as-reviewed-email-batch-body',
+			'email-body-batch-params' => array( 'title', 'agent' ),
 			'icon' => 'checkmark',
 		);
 		$wgEchoNotificationFormatters['pagetriage-add-maintenance-tag'] = array(
@@ -497,6 +507,8 @@ class PageTriageHooks {
 			'email-subject-params' => array( 'agent', 'title' ),
 			'email-body-message' => 'pagetriage-notification-add-maintenance-tag-email-body',
 			'email-body-params' => array( 'agent', 'title', 'title-link', 'tag' ),
+			'email-body-batch-message' => 'pagetriage-notification-mark-as-reviewed-email-batch-body',
+			'email-body-batch-params' => array( 'title', 'agent' ),
 			'icon' => 'checkmark',
 		);
 		$wgEchoNotificationFormatters['pagetriage-add-deletion-tag'] = array(
@@ -507,6 +519,8 @@ class PageTriageHooks {
 			'email-subject-params' => array( 'agent', 'title' ),
 			'email-body-message' => 'pagetriage-notification-add-deletion-tag-email-body',
 			'email-body-params' => array( 'agent', 'title', 'title-link', 'tag' ),
+			'email-body-batch-message' => 'pagetriage-notification-mark-as-reviewed-email-batch-body',
+			'email-body-batch-params' => array( 'title', 'agent' ),
 			'icon' => 'trash',
 		);
 		return true;
