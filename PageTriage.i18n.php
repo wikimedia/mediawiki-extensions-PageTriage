@@ -398,6 +398,9 @@ Please improve this page to address these issues. Thank you!',
 This page was marked for deletion, with {{PLURAL:$6|this tag|these tags}}: $5
 
 Please improve this page to address these issues. Thank you!',
+	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Reviews a page I created',
+	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Reviews a page I created and adds maintenance tags',
+	'echo-pref-email-pagetriage-add-deletion-tag' => 'Reviews a page I created and nominates it for deletion',
 );
 
 /** Message documentation (Message documentation)
@@ -832,6 +835,9 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 * $4 is the link to the page
 * $5 is the list of deletion tags
 * $6 is the number of deletion tags",
+	'echo-pref-email-pagetriage-mark-as-reviewed' => "Option for getting emails when someone reviews a page you created. This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.",
+	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Option for getting emails when someone reviews a page you created and adds maintenance tags (for example, "needs cleanup"). This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
+	'echo-pref-email-pagetriage-add-deletion-tag' => 'Option for getting emails when someone reviews a page you created and nominates it for deletion. This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
 );
 
 /** Afrikaans (Afrikaans)
