@@ -467,9 +467,10 @@ class PageTriageHooks {
 	 * @param $wgEchoEnabledEvents array a list of enabled echo events
 	 */
 	public static function onBeforeCreateEchoEvent( &$wgEchoEnabledEvents ) {
-		$wgEchoEnabledEvents[] = 'pagetriage-mark-as-reviewed';
-		$wgEchoEnabledEvents[] = 'pagetriage-add-maintenance-tag';
-		$wgEchoEnabledEvents[] = 'pagetriage-add-deletion-tag';
+		global $wgPageTriageEnabledEchoEvents;
+		foreach ( $wgPageTriageEnabledEchoEvents as $enabledEchoEvent ) {
+			$wgEchoEnabledEvents[] = $enabledEchoEvent;
+		}
 		return true;
 	}
 
