@@ -747,7 +747,9 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 *$1 is a link to the local wiki page about the Curation Toolbar with {{msg-mw|pagetriage-pagecuration}} as the link text.
 *$2 is the list of tags added to the article.',
 	'pagetriage-tags-note-edit-summary' => 'The edit summary that is used when someone leaves a note for the author of the article. $1 is the title of the article.',
-	'pagetriage-del-edit-summary' => 'The edit summary that is posted when someone nominates an article for deletion with the Curation Toolbar in PageTriage. $1 is a link to the local wiki page about the Curation Toolbar with {{msg-mw|pagetriage-pagecuration}} as the link text. $2 is the list of deletion tags added to the article.',
+	'pagetriage-del-edit-summary' => 'The edit summary that is posted when someone nominates an article for deletion with the Curation Toolbar in PageTriage.
+* $1 - a link to the local wiki page about the Curation Toolbar with {{msg-mw|pagetriage-pagecuration}} as the link text
+* $2 - the list of deletion tags added to the article',
 	'pagetriage-del-tags-param-discussion-label' => 'Prompt for explaination about why the user wants to nominate a page for deletion',
 	'pagetriage-info-title' => 'The title for the page information flyout in the toolbar',
 	'pagetriage-info-help' => 'Link text for the info flyout help button',
@@ -837,7 +839,7 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 * $4 is the link to the page
 * $5 is the list of deletion tags
 * $6 is the number of deletion tags",
-	'echo-pref-email-pagetriage-mark-as-reviewed' => "Option for getting emails when someone reviews a page you created. This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.",
+	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Option for getting emails when someone reviews a page you created. This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
 	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Option for getting emails when someone reviews a page you created and adds maintenance tags (for example, "needs cleanup"). This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
 	'echo-pref-email-pagetriage-add-deletion-tag' => 'Option for getting emails when someone reviews a page you created and nominates it for deletion. This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => "Email batch body for 'mark as reviewed', 'add maintenance tag' and 'add deletion tag'.  Parameters:
@@ -1576,6 +1578,11 @@ Bitte hilf, die Probleme dieser Seite anzugehen. Vielen Dank!',
 Die Seite wurde mit {{PLURAL:$6|dieser Markierung|diesen Markierungen}} zur Löschung vorgeschlagen: $5
 
 Bitte hilf, die Probleme dieser Seite anzugehen. Vielen Dank!',
+	'echo-pref-email-pagetriage-mark-as-reviewed' => 'eine Seite überprüft, die ich erstellt habe',
+	'echo-pref-email-pagetriage-add-maintenance-tag' => 'eine Seite überprüft, die ich erstellt habe und Wartungsmarkierungen hinzufügt',
+	'echo-pref-email-pagetriage-add-deletion-tag' => 'eine Seite überprüft, die ich erstellt habe und sie zur Löschung vorschlägt',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 wurde {{GENDER:$2|überprüft}} von $2',
+	'echo-email-batch-category-header-page-review' => '{{PLURAL:$1|Eine Seitenüberprüfung|$1 Seitenüberprüfungen}}',
 );
 
 /** German (formal address) (Deutsch (Sie-Form)‎)
@@ -4543,9 +4550,11 @@ $messages['ja'] = array(
 	'pagetriage-filter-stat-blocked' => 'ブロックされている利用者',
 	'pagetriage-filter-stat-username' => '利用者名: $1',
 	'pagetriage-no-pages' => '検索条件に一致するページはありません。',
+	'pagetriage-warning-browser' => 'このツールは Internet Explorer 8 より古いブラウザーでは正しく動作しない可能性があります。',
 	'pagetriage-welcome' => '{{SITENAME}}を改善するため、以下の新しいページを査読してください。<a href="$1">詳細はこちら</a> · <a href="$2">フィードバックを送信</a>',
 	'pagetriage-note-reviewed' => 'このページは査読済です。',
 	'pagetriage-note-not-reviewed' => 'このページはまだ査読されていません。',
+	'pagetriage-note-deletion' => 'このページの削除が提案されています。',
 	'pagetriage-refresh-list' => '一覧を更新',
 	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|個のタグ}}が選択されています',
 	'pagetriage-button-add-tag' => '選択したタグを追加',
@@ -4562,6 +4571,7 @@ $messages['ja'] = array(
 	'pagetriage-page-status-unreviewed' => 'このページは未査読です',
 	'pagetriage-page-status-autoreviewed' => 'このページは自動で巡回済みにされました。',
 	'pagetriage-articleinfo-stat' => '統計: $1',
+	'pagetriage-js-required' => 'この拡張機能を使用するには、ブラウザーの JavaScript を有効にする必要があります。',
 	'pagetriage-tags-title' => 'タグを追加',
 	'pagetriage-tags-cat-metadata-label' => 'メタデータ',
 	'pagetriage-tags-cat-cleanup-label' => 'クリーンアップ',
@@ -4694,6 +4704,7 @@ $messages['ja'] = array(
 	'logentry-pagetriage-deletion-delete' => '$1 が $3 に{{PLURAL:$5|タグ}} $4 で削除の{{GENDER:$2|印を付けました}}',
 	'pagetriage-tags-edit-summary' => '$1を使用してページにタグ ($2) が追加されました',
 	'pagetriage-tags-note-edit-summary' => '[[$1]] にコメントが追加されました',
+	'pagetriage-del-edit-summary' => '$1で削除が提案されているページ ($2)',
 	'pagetriage-del-tags-param-discussion-label' => 'この記事をなぜ削除すべきか説明してください。そして可能な限り、関連する指針へのリンクを示してください',
 	'pagetriage-info-title' => 'ページ情報',
 	'pagetriage-info-problem-header' => '可能性がある問題点',
@@ -4729,6 +4740,7 @@ $messages['ja'] = array(
 	'pagetriage-del-log-page-missing-error' => '今日の記録ページはまだ作成されていません。',
 	'pagetriage-del-talk-page-notify-error' => '作者のトークページに通知するのに失敗しました',
 	'pagetriage-del-discussion-page-adding-error' => '削除議論ページへのページ追加に失敗しました!',
+	'pagetriage-del-tooltip' => 'このページの削除を提案する',
 	'pagetriage-tagging-error' => 'ページにタグを適用するのに失敗しました',
 	'pagetriage-add-tag-confirmation' => '短い記事に $1 {{PLURAL:$1|個のタグ}}を本当に追加しますか?',
 	'pagetriage-tag-deletion-error' => 'ページには削除テンプレートが既に貼り付けられています。処理を中止します。',
@@ -4740,6 +4752,11 @@ $messages['ja'] = array(
 	'pagetriage-notification-add-maintenance-tag' => '$2 が、あなたが作成したページを{{GENDER:$1|査読しました}}: [[$3|$3]]。{{PLURAL:$5|タグ}}: $4',
 	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 が、あなたが{{SITENAME}}で作成したページを{{GENDER:$1|査読しました}}: $3',
 	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 が、あなたが{{SITENAME}}で作成したページを{{GENDER:$1|査読しました}}: $3',
+	'echo-pref-email-pagetriage-mark-as-reviewed' => '自分が作成したページを、誰かが査読したとき',
+	'echo-pref-email-pagetriage-add-maintenance-tag' => '自分が作成したページを、誰かが査読してメンテナンスタグを貼り付けたとき',
+	'echo-pref-email-pagetriage-add-deletion-tag' => '自分が作成したページを、誰かが査読してそのページの削除を提案したとき',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 は $2 によって{{GENDER:$2|査読されました}}',
+	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|件のページ査読}}',
 );
 
 /** Georgian (ქართული)
