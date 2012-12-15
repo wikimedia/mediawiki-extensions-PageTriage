@@ -1973,6 +1973,11 @@ Por favor mejora esta página para abordar estos temas ¡Gracias!',
 Esta página fue marcada para borrado, con {{PLURAL:$6|esta etiqueta|estas etiquetas}}: $5 
 
 Por favor mejora esta página para abordar estos temas.  ¡Gracias!',
+	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Revisa una página que yo he creado',
+	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Revisa una página que yo he creado y le agrega etiquetas de mantenimiento',
+	'echo-pref-email-pagetriage-add-deletion-tag' => 'Revisa una página que yo he creado y la nomina para su borrado',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 fue {{GENDER:$2|revisada}} por $2',
+	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|Revisión de página|Revisiones de página}}',
 );
 
 /** Estonian (eesti)
@@ -5746,6 +5751,11 @@ $messages['mk'] = array(
 Страницата беше означена за бришење, со {{PLURAL:$6|ова ознака|овие ознаки}}: $5
 
 Подобрете ја страницата за да ги решите проблемите. Ви благодариме!',
+	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Провери страница што сум ја создал',
+	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Провери страница што сум ја создал и ќе стави ознаки за одржување',
+	'echo-pref-email-pagetriage-add-deletion-tag' => 'Провери страница што сум ја создал и ќе ја предложи за бришење',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$2 {{GENDER:$2|ја провери}} страницата $1',
+	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|проверка на страница|проверки на страници}}',
 );
 
 /** Maltese (Malti)
