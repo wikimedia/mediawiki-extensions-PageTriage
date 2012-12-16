@@ -4741,7 +4741,7 @@ $messages['ja'] = array(
 	'pagetriage-wikilove-helptext' => '感謝したい編集者の名前を選択してください。',
 	'pagetriage-wikilove-page-creator' => 'ページの作成者',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|回編集}}',
-	'pagetriage-next-tooltip' => '待ち列内の次のページに移動',
+	'pagetriage-next-tooltip' => 'キュー内の次のページに移動',
 	'pagetriage-del-log-page-missing-error' => '今日の記録ページはまだ作成されていません。',
 	'pagetriage-del-talk-page-notify-error' => '作者のトークページに通知するのに失敗しました',
 	'pagetriage-del-discussion-page-adding-error' => '削除議論ページへのページ追加に失敗しました!',
@@ -6127,6 +6127,11 @@ Please improve this page to address these issues. Thank you!',
 De pagina is genomineerd voor verwijdering met {{PLURAL:$6|dit label|deze labels}}: $5
 
 Help deze pagina te verbeteren door de aangegeven verbeterpunten aan te pakken. Bedankt!',
+	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Een pagina controleert die ik heb aangemaakt',
+	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Een pagina controleert die ik heb aangemaakt en beheerlabels toevoegt',
+	'echo-pref-email-pagetriage-add-deletion-tag' => 'Een pagina controleert die ik heb aangemaakt en die voor verwijdering nomineert',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 is {{GENDER:$2|gecontroleerd}} door $2',
+	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|paginacontrole|paginacontroles}}',
 );
 
 /** Pampanga (Kapampangan)
