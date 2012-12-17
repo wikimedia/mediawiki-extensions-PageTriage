@@ -2771,6 +2771,11 @@ Veuillez améliorer cette page pour corriger ces problèmes. Merci!',
 Cette page a été marquée pour être supprimée, avec {{PLURAL:$6|cette balise|ces balises}}: $5
 
 Veuillez améliorer cette page pour corriger ces problèmes. Merci!',
+	'echo-pref-email-pagetriage-mark-as-reviewed' => "Relire une page que j'ai créée",
+	'echo-pref-email-pagetriage-add-maintenance-tag' => "Relire une page que j'ai créée et ajouter des balises de maintenance",
+	'echo-pref-email-pagetriage-add-deletion-tag' => "Relire une page que j'ai créée et la désigner pour être supprimée",
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 a été {{GENDER:$2|relu}} par $2',
+	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|page relue|pages relues}}',
 );
 
 /** Franco-Provençal (arpetan)
@@ -2966,7 +2971,7 @@ $messages['gl'] = array(
 	'pagetriage-filter-stat-username' => 'Nome de usuario: $1',
 	'pagetriage-no-pages' => 'Non hai ningunha páxina que coincida cos criterios.',
 	'pagetriage-warning-browser' => 'É posible que esta ferramenta non funcione correctamente en navegadores anteriores ao Internet Explorer 8.',
-	'pagetriage-welcome' => 'Revise as seguintes páxinas e axude a mellorar a Wikipedia. <a href="$1">Máis información</a> · <a href="$2">Deixe comentarios</a>',
+	'pagetriage-welcome' => 'Revise as seguintes páxinas e axude a mellorar {{SITENAME}}. <a href="$1">Máis información</a> · <a href="$2">Deixe comentarios</a>',
 	'pagetriage-note-reviewed' => 'A páxina foi revisada.',
 	'pagetriage-note-not-reviewed' => 'A páxina aínda non foi revisada.',
 	'pagetriage-note-deletion' => 'A páxina está marcada para borrar.',
@@ -3257,6 +3262,11 @@ Mellore a páxina para corrixir os problemas. Grazas!',
 A páxina marcouse para borrar, con {{PLURAL:$6|esta etiqueta|estas etiquetas}}: $5
 
 Mellore a páxina para corrixir os problemas. Grazas!',
+	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Revise unha páxina que creei',
+	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Revise unha páxina que creei e engada etiquetas de mantemento',
+	'echo-pref-email-pagetriage-add-deletion-tag' => 'Revise unha páxina que creei e propoña o seu borrado',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$2 {{GENDER:$2|revisou}} "$1"',
+	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|revisión de páxina|revisións de páxina}}',
 );
 
 /** Hebrew (עברית)
@@ -3558,7 +3568,7 @@ $messages['hsb'] = array(
 	'pagetriage-filter-stat-username' => 'Wužiwarske mjeno: $1',
 	'pagetriage-no-pages' => 'Twojim kriterijam žane strony njewotpowěduja.',
 	'pagetriage-warning-browser' => 'Tutón nastroj snano njefunguje we wobhladowakach, kotrež su starše hač Internet Explorer 8.',
-	'pagetriage-welcome' => 'Prošu přepruwuj slědowace nowe strony a pomhaj Wikipediju polěpšić. <a href="$1">Dalše informacije</a> · <a href="$2">Komentar zawostajić</a>',
+	'pagetriage-welcome' => 'Prošu přepruwuj slědowace nowe strony a pomhaj {{GRAMMAR:akuzatiw|{{SITENAME}}}} polěpšić. <a href="$1">Dalše informacije</a> · <a href="$2">Komentar zawostajić</a>',
 	'pagetriage-note-reviewed' => 'Tuta strona je so přepruwowała.',
 	'pagetriage-note-not-reviewed' => 'Tuta strona hišće njeje so přepruwowała.',
 	'pagetriage-note-deletion' => 'Tuta strona je so za zhašenje namjetowała.',
