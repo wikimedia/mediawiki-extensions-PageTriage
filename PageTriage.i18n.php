@@ -374,30 +374,39 @@ $messages['en'] = array(
 	'pagetriage-tag-warning-notice' => 'Note: This page is only $1 {{PLURAL:$1|minute|minutes}} old. Consider waiting to tag it, unless the issue is serious.',
 
 	// notification - mark as reviewed
-	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|reviewed}} a page you started: [[$3|$3]]',
-	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|reviewed}} a page you started on {{SITENAME}}: $3',
-	'pagetriage-notification-mark-as-reviewed-email-body' => 'Congratulations! {{SITENAME}} editor $1 {{GENDER:$1|reviewed}} a page you started, "$3":
-<$4>
+	'pagetriage-notification-mark-as-reviewed' => '[[$3|$3]] was {{GENDER:$1|reviewed}} by $2',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$3 was {{GENDER:$1|reviewed}} by $1',
+	'pagetriage-notification-mark-as-reviewed-email-body' => '$3 was reviewed by {{SITENAME}} user $1:
 
-Thanks for improving {{SITENAME}}!',
+View more:
+
+$4
+
+$5',
 	// notification - add maintenance tag
-	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|reviewed}} a page you started: [[$3|$3]]. {{PLURAL:$5|Tag|Tags}}: $4',
-	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|reviewed}} a page you started on {{SITENAME}}: $3',
-	'pagetriage-notification-add-maintenance-tag-email-body' => '{{SITENAME}} editor $1 {{GENDER:$1|reviewed}} a page you started, "$3":
-<$4>
+	'pagetriage-notification-add-maintenance-tag' => '[[$3|$3]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|tagged}} by $2.  {{PLURAL:$5|Tag|Tags}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$3 was {{GENDER:$1|tagged}} by $1',
+	'pagetriage-notification-add-maintenance-tag-email-body' => '$3 was {{GENDER:$1|reviewed}} and {{GENDER:$1|tagged}} by {{SITENAME}} user $1.
 
-{{PLURAL:$6|This tag was|These tags were}} added to your page: $5
+{{PLURAL:$6|Tag|Tags}}: $5
 
-Please improve this page to address these issues. Thank you!',
+View more:
+
+$4
+
+$7',
 	// notification - add deletion tag
-	'pagetriage-notification-add-deletion-tag' => '$2 {{GENDER:$1|reviewed}} a page you started and marked it for deletion: [[$3|$3]]. Deletion {{PLURAL:$5|tag|tags}}: $4',
-	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 {{GENDER:$1|reviewed}} a page you started on {{SITENAME}}: $3',
-	'pagetriage-notification-add-deletion-tag-email-body' => '{{SITENAME}}  editor $1 {{GENDER:$1|reviewed}} a page you started, "$3":
-<$4>
+	'pagetriage-notification-add-deletion-tag' => '[[$3|$3]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|marked for deletion}} by $2.  {{PLURAL:$5|Tag|Tags}}: $4',
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$3 was {{GENDER:$1|marked for deletion}} by $1',
+	'pagetriage-notification-add-deletion-tag-email-body' => '$3 was {{GENDER:$1|marked for deletion}} by {{SITENAME}} user $1.
 
-This page was marked for deletion, with {{PLURAL:$6|this tag|these tags}}: $5
+{{PLURAL:$6|Tag|Tags}}: $5
 
-Please improve this page to address these issues. Thank you!',
+View more:
+
+$4
+
+$7',
 	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Reviews a page I created',
 	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Reviews a page I created and adds maintenance tags',
 	'echo-pref-email-pagetriage-add-deletion-tag' => 'Reviews a page I created and nominates it for deletion',
@@ -808,7 +817,8 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 	'pagetriage-notification-mark-as-reviewed-email-body' => "Email body for 'mark as reviewed' notification.  Parameters:
 * $1 is the user name of the pseron who marked the page as reviewed
 * $3 is the title of the page
-* $4 is the link to the page",
+* $4 is the link to the page
+* $5 is the email footer",
 	'pagetriage-notification-add-maintenance-tag' => "Title for 'add maintenance tag' notification.  Parameters:
 * $1 is the username of the person who added maintenance tag, plain text
 * $2 is the username of the person who added maintenance tag, user page link
@@ -823,7 +833,8 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 * $3 is the title of the page
 * $4 is the link to the page
 * $5 is the list of maintenance tags
-* $6 is the number of maintenance tags",
+* $6 is the number of maintenance tags
+* $7 is the email footer",
 	'pagetriage-notification-add-deletion-tag' => "Title for 'add deletion tag' notification.  Parameters:
 * $1 is the username of the person who added deletion tag, plain text
 * $2 is the username of the person who added deletion tag, user page link
@@ -838,8 +849,9 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 * $3 is the title of the page
 * $4 is the link to the page
 * $5 is the list of deletion tags
-* $6 is the number of deletion tags",
-	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Option for getting emails when someone reviews a page you created. This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
+* $6 is the number of deletion tags
+* $7 is the email footer",
+	'echo-pref-email-pagetriage-mark-as-reviewed' => "Option for getting emails when someone reviews a page you created. This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.",
 	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Option for getting emails when someone reviews a page you created and adds maintenance tags (for example, "needs cleanup"). This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
 	'echo-pref-email-pagetriage-add-deletion-tag' => 'Option for getting emails when someone reviews a page you created and nominates it for deletion. This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => "Email batch body for 'mark as reviewed', 'add maintenance tag' and 'add deletion tag'.  Parameters:

@@ -1,6 +1,6 @@
 <?php
 
-class PageTriageNotificationFormatter extends EchoBasicFormatter {
+class PageTriageNotificationFormatter extends EchoEditFormatter {
 
 	/**
 	 * @param $event EchoEvent
@@ -20,12 +20,6 @@ class PageTriageNotificationFormatter extends EchoBasicFormatter {
 
 			$message->params( $wgContLang->listToText( $eventData ) );
 			$message->params( count( $eventData ) );
-		} elseif ( $param === 'title-link' ) {
-			if ( !$event->getTitle() ) {
-				$message->params( '' );
-			} else {
-				$message->params( $event->getTitle()->getCanonicalUrl() );
-			}
 		} else {
 			parent::processParam( $event, $param, $message, $user );
 		}
