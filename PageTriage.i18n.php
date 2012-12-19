@@ -1568,22 +1568,28 @@ $messages['de'] = array(
 	'pagetriage-toolbar-close' => 'Schließen',
 	'pagetriage-toolbar-minimize' => 'Minimieren',
 	'pagetriage-tag-warning-notice' => 'Hinweis: Diese Seite ist nur {{PLURAL:$1|eine Minute|$1 Minuten}} alt. Ziehe in Erwägung mit der Markierung zu warten, außer das Problem ist ernst.',
-	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|überprüfte}} eine Seite, die du angelegt hast: [[$3|$3]]', # Fuzzy
-	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|überprüfte}} eine Seite, die du auf {{SITENAME}} angelegt hast: $3', # Fuzzy
-	'pagetriage-notification-mark-as-reviewed-email-body' => 'Herzlichen Glückwunsch! Der {{SITENAME}}-Autor $1 {{GENDER:$1|überprüfte}} die Seite „$3“, die du angelegt hast:
-<$4>
+	'pagetriage-notification-mark-as-reviewed' => '[[$3|$3]] wurde von $2 {{GENDER:$1|überprüft}}',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$3 wurde von $1 {{GENDER:$1|überprüft}}',
+	'pagetriage-notification-mark-as-reviewed-email-body' => '$3 wurde vom {{SITENAME}}-Benutzer $1 überprüft:
 
-Vielen Dank für das Verbessern von {{SITENAME}}!', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|überprüfte}} eine Seite, die du angelegt hast: [[$3|$3]]. {{PLURAL:$5|Markierung|Markierungen}}: $4', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|überprüfte}} eine Seite, die du auf {{SITENAME}} angelegt hast: $3', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag-email-body' => 'Der {{SITENAME}}-Autor $1 {{GENDER:$1|überprüfte}} die Seite „$3“, die du angelegt hast:
-<$4>
+Mehr ansehen:
 
-{{PLURAL:$6|Diese Markierung wurde|Diese Markierungen wurden}} deiner Seite hinzugefügt: $5
+$4
 
-Bitte hilf, die Probleme dieser Seite anzugehen. Vielen Dank!', # Fuzzy
-	'pagetriage-notification-add-deletion-tag' => '$2 {{GENDER:$1|überprüfte}} eine Seite, die du angelegt hast und hat sie zur Löschung vorgeschlagen: [[$3|$3]]. {{PLURAL:$5|Löschmarkierung|Löschmarkierungen}}: $4', # Fuzzy
-	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 {{GENDER:$1|überprüfte}} eine Seite, die du auf {{SITENAME}} angelegt hast: $3', # Fuzzy
+$5',
+	'pagetriage-notification-add-maintenance-tag' => '[[$3|$3]] wurde von $2 {{GENDER:$1|überprüft}} und {{GENDER:$1|markiert}}. {{PLURAL:$5|Markierung|Markierungen}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$3 wurde von $1 {{GENDER:$1|markiert}}',
+	'pagetriage-notification-add-maintenance-tag-email-body' => '$3 wurde vom {{SITENAME}}-Benutzer $1 {{GENDER:$1|überprüft}} und {{GENDER:$1|markiert}}.
+
+{{PLURAL:$6|Markierung|Markierungen}}: $5
+
+Mehr ansehen:
+
+$4
+
+$7',
+	'pagetriage-notification-add-deletion-tag' => '[[$3|$3]] wurde von $2 {{GENDER:$1|überprüft}} und {{GENDER:$1|zur Löschung vorgeschlagen}}. {{PLURAL:$5|Markierung|Markierungen}}: $4',
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$3 wurde von $1 {{GENDER:$1|zur Löschung vorgeschlagen}}',
 	'pagetriage-notification-add-deletion-tag-email-body' => 'Der {{SITENAME}}-Autor $1 {{GENDER:$1|überprüfte}} die Seite „$3“, die du angelegt hast:
 <$4>
 
@@ -4774,11 +4780,12 @@ $messages['ja'] = array(
 	'pagetriage-toolbar-close' => '閉じる',
 	'pagetriage-toolbar-minimize' => '最小化',
 	'pagetriage-tag-warning-notice' => '注: このページはわずか $1 {{PLURAL:$1|分}}前のものです。問題点が深刻な場合以外は、タグ付けまで時間を置くことを検討してください。',
-	'pagetriage-notification-mark-as-reviewed' => '$2 が、あなたが作成したページを{{GENDER:$1|査読しました}}: [[$3|$3]]', # Fuzzy
-	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 が、あなたが{{SITENAME}}で作成したページを{{GENDER:$1|査読しました}}: $3', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag' => '$2 が、あなたが作成したページを{{GENDER:$1|査読しました}}: [[$3|$3]]。{{PLURAL:$5|タグ}}: $4', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 が、あなたが{{SITENAME}}で作成したページを{{GENDER:$1|査読しました}}: $3', # Fuzzy
-	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 が、あなたが{{SITENAME}}で作成したページを{{GENDER:$1|査読しました}}: $3', # Fuzzy
+	'pagetriage-notification-mark-as-reviewed' => '$2 が、[[$3|$3]] を{{GENDER:$1|査読しました}}',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 が、$3 を{{GENDER:$1|査読しました}}',
+	'pagetriage-notification-add-maintenance-tag' => '$2 が、[[$3|$3]] を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。{{PLURAL:$5|タグ}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 が、$3 に{{GENDER:$1|タグ付けしました}}',
+	'pagetriage-notification-add-deletion-tag' => '$2 が、[[$3|$3]] を{{GENDER:$1|査読して}}{{GENDER:$1|削除の印を付けました}}。{{PLURAL:$5|タグ}}: $4',
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 が、$3 に{{GENDER:$1|削除の印を付けました}}',
 	'echo-pref-email-pagetriage-mark-as-reviewed' => '自分が作成したページを、誰かが査読したとき',
 	'echo-pref-email-pagetriage-add-maintenance-tag' => '自分が作成したページを、誰かが査読してメンテナンスタグを貼り付けたとき',
 	'echo-pref-email-pagetriage-add-deletion-tag' => '自分が作成したページを、誰かが査読してそのページの削除を提案したとき',
@@ -4943,7 +4950,7 @@ $messages['ko'] = array(
 	'pagetriage-button-add-parameters' => '변수 추가',
 	'pagetriage-button-add-details' => '자세한 사항 추가',
 	'pagetriage-button-edit-details' => '자세한 사항 편집',
-	'pagetriage-button-mark-for-deletion' => '삭제 표시',
+	'pagetriage-button-mark-for-deletion' => '삭제로 표시',
 	'pagetriage-add-a-note-creator' => '작성자에게 메시지 추가: (선택 사항)',
 	'pagetriage-add-a-note-reviewer' => '검토자에게 메시지 추가: (선택 사항)',
 	'pagetriage-characters-left' => '{{PLURAL:$1|글자 $1개}} 적음',
@@ -4952,7 +4959,7 @@ $messages['ko'] = array(
 	'pagetriage-page-status-reviewed-anonymous' => '검토한 것으로 표시',
 	'pagetriage-page-status-unreviewed' => '이 문서는 아직 검토하지 않았습니다.',
 	'pagetriage-page-status-autoreviewed' => '이 문서는 자동으로 검토되었습니다.',
-	'pagetriage-page-status-delete' => '삭제 표시',
+	'pagetriage-page-status-delete' => '삭제로 표시함',
 	'pagetriage-articleinfo-stat' => '상태: $1',
 	'pagetriage-js-required' => '이 확장 기능은 자바스크립트가 가능한 브라우저가 필요합니다.',
 	'pagetriage-tags-title' => '태그 추가',
@@ -4973,7 +4980,7 @@ $messages['ko'] = array(
 	'pagetriage-tags-copyedit-desc' => '이 문서에는 문법, 스타일, 결합, 어조 및/또는 철자에 대한 편집 복사본이 필요합니다.',
 	'pagetriage-tags-morefootnotes-label' => '더 많은 각주',
 	'pagetriage-tags-morefootnotes-desc' => '이 문서는 몇 가지 참고가 있지만 텍스트 인용이 부족합니다.',
-	'pagetriage-tags-refimprove-label' => '출처', # Fuzzy
+	'pagetriage-tags-refimprove-label' => '더 많은 출처',
 	'pagetriage-tags-refimprove-desc' => '이 문서는 검증에 대한 추가 출처나 자료가 필요합니다.',
 	'pagetriage-tags-uncategorised-label' => '분류되지 않음',
 	'pagetriage-tags-uncategorised-desc' => '이 문서는 어떠한 분류에도 속하지 않습니다.',
@@ -5009,7 +5016,7 @@ $messages['ko'] = array(
 	'pagetriage-tags-pov-desc' => '이 문서는 중립적인 관점에서 벗어났습니다.',
 	'pagetriage-tags-weasel-label' => '모호',
 	'pagetriage-tags-weasel-desc' => '이 문서의 중립성은 모호한 표현을 사용하였으므로 크게 훼손되었습니다.',
-	'pagetriage-tags-blpsources-label' => '많은 자료', # Fuzzy
+	'pagetriage-tags-blpsources-label' => '더 많은 자료 (BLP)',
 	'pagetriage-tags-blpsources-desc' => '살아있는 사람(BLP)에 대한 이 문서는 검증에 대한 추가 자료가 필요합니다.',
 	'pagetriage-tags-originalresearch-label' => '독자 연구',
 	'pagetriage-tags-originalresearch-desc' => '이 문서는 독자 연구나 검증되지 않은 주장을 하고 있습니다.',
@@ -5092,13 +5099,13 @@ $messages['ko'] = array(
 	'pagetriage-del-tags-cat-prod-desc' => '명확하게 공동체 기준에 위반한 경우에는 제안한 삭제를 해당 문서에 표시합니다.',
 	'pagetriage-del-tags-cat-discussion-desc' => '다른 편집자와의 삭제 토론을 이 문서에 표시합니다.',
 	'pagetriage-del-tags-dbg3-label' => '순전히 훼손 행위와 뻔뻔한 속임수',
-	'pagetriage-del-tags-dbg3-desc' => '순전히 훼손 행위와 뻔뻔한 속임수입니다.', # Fuzzy
+	'pagetriage-del-tags-dbg3-desc' => '뻔뻔하고 명백하게 잘못된 정보나 속임수가 포함된 문서입니다. (G3)',
 	'pagetriage-del-tags-dbg10-label' => '공격 문서',
 	'pagetriage-del-tags-dbg11-label' => '모호하지 않은 광고 또는 홍보',
 	'pagetriage-del-tags-dbg12-label' => '모호하지 않은 저작권 침해',
 	'pagetriage-del-tags-dba1-label' => '문맥 없음',
 	'pagetriage-del-tags-dba1-desc' => '문서의 주제를 식별할 수 있는 문맥이 부족한 문서',
-	'pagetriage-del-tags-dba7-label' => '중요성 없음 (개인, 동물, 단체, 웹 콘텐츠)', # Fuzzy
+	'pagetriage-del-tags-dba7-label' => '중요성 없음',
 	'pagetriage-del-tags-dbg1-label' => '의미 없는 서술',
 	'pagetriage-del-tags-dbg1-desc' => '더 의미 있는 내용이나 역사에 일관되지 않은 텍스트나 순전히 횡설수설로 구성된 의미 없는 문서',
 	'pagetriage-del-tags-dba3-label' => '내용 없음',
@@ -5192,28 +5199,39 @@ $messages['ko'] = array(
 	'pagetriage-toolbar-close' => '닫기',
 	'pagetriage-toolbar-minimize' => '최소화',
 	'pagetriage-tag-warning-notice' => '참고: 이 문서만 $1{{PLURAL:$1|분}} 전입니다. 문제가 심각하지 않다면 해당 태그를 기다리는 것을 고려하세요.',
-	'pagetriage-notification-mark-as-reviewed' => '$2 사용자가 당신이 작성한 문서를 {{GENDER:$1|검토했습니다}}: [[$3|$3]]',
-	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 사용자가 {{SITENAME}}에 당신이 작성한 문서를 {{GENDER:$1|검토했습니다}}: $3',
-	'pagetriage-notification-mark-as-reviewed-email-body' => '축하합니다! {{SITENAME}} $1 편집자가 당신이 작성한 "$3" 문서를 {{GENDER:$1|검토했습니다}}:
-<$4>
+	'pagetriage-notification-mark-as-reviewed' => '[[$3|$3]] 문서를 $2 사용자가 {{GENDER:$1|검토했습니다}}',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$3 문서를 $1 사용자가 {{GENDER:$1|검토했습니다}}',
+	'pagetriage-notification-mark-as-reviewed-email-body' => '$3 문서를 {{SITENAME}} $1 사용자가 검토했습니다:
 
-{{SITENAME}}에 개선해주셔서 감사합니다.',
-	'pagetriage-notification-add-maintenance-tag' => '$2 사용자가 당신이 작성한 문서를 {{GENDER:$1|검토했습니다}}: [[$3|$3]]. {{PLURAL:$5|태그}}: $4',
-	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 사용자가 {{SITENAME}}에 당신이 작성한 문서를 {{GENDER:$1|검토했습니다}}: $3',
-	'pagetriage-notification-add-maintenance-tag-email-body' => '{{SITENAME}} $1 편집자가 당신이 작성한 "$3" 문서를 {{GENDER:$1|검토했습니다}}:
-<$4>
+더 보기:
 
-{{PLURAL:$6|이 태그}}는 당신의 문서에 추가했습니다: $5
+$4
 
-이러한 문제를 해결하기 위해 이 문서를 개선해주세요. 감사합니다!',
-	'pagetriage-notification-add-deletion-tag' => '$2 사용자가 당신이 작성한 문서를 {{GENDER:$1|검토했고}} 문서를 삭제로 표시했습니다: [[$3|$3]]. 삭제 {{PLURAL:$5|태그}}: $4',
-	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 사용자가 {{SITENAME}}에 당신이 작성한 문서를 {{GENDER:$1|검토했습니다}}: $3',
+$5',
+	'pagetriage-notification-add-maintenance-tag' => '[[$3|$3]] 문서를 $2 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}. {{PLURAL:$5|태그}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$3 문서를 $1 사용자가 {{GENDER:$1|태그했습니다}}',
+	'pagetriage-notification-add-maintenance-tag-email-body' => '$3 문서를 {{SITENAME}} $1 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}.
+
+{{PLURAL:$6|태그}}: $5
+
+더 보기:
+
+$4
+
+$7',
+	'pagetriage-notification-add-deletion-tag' => '[[$3|$3]] 문서를 $2 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|삭제로 표시했습니다}}. {{PLURAL:$5|태그}}: $4',
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$3 문서를 $1 사용자가 {{GENDER:$1|삭제로 표시했습니다}}',
 	'pagetriage-notification-add-deletion-tag-email-body' => '{{SITENAME}} $1 편집자가 당신이 작성한 "$3" 문서를 {{GENDER:$1|검토했습니다}}:
 <$4>
 
 이 문서는 {{PLURAL:$6|다음 태그}}로 삭제로 표시했습니다: $5
 
 이러한 문제를 해결하기 위해 이 문서를 개선해주세요. 감사합니다!',
+	'echo-pref-email-pagetriage-mark-as-reviewed' => '내가 만든 문서를 검토하기',
+	'echo-pref-email-pagetriage-add-maintenance-tag' => '내가 만들었고 유지 관리 태그를 추가한 문서를 검토하기',
+	'echo-pref-email-pagetriage-add-deletion-tag' => '내가 만들었고 삭제로 표시한 문서 검토하기',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 문서를 $2 사용자가 {{GENDER:$2|검토했습니다}}',
+	'echo-email-batch-category-header-page-review' => '{{PLURAL:$1|문서 검토}} $1회',
 );
 
 /** Colognian (Ripoarisch)
@@ -5751,22 +5769,28 @@ $messages['mk'] = array(
 	'pagetriage-toolbar-close' => 'Затвори',
 	'pagetriage-toolbar-minimize' => 'Спушти',
 	'pagetriage-tag-warning-notice' => 'Напомена: Страницава е создадена пред само $1 {{PLURAL:$1|минута|минути}}. Почекајте пред да ја означите, освен ако проблемот не е сериозен.',
-	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|ја провери}} страницата што ја започнавте: [[$3|$3]]', # Fuzzy
-	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|провери}} страница што ја започнавте на {{SITENAME}}: $3', # Fuzzy
-	'pagetriage-notification-mark-as-reviewed-email-body' => 'Честитаме! Уредникот $1 на {{SITENAME}} {{GENDER:$1|ја провери}} страницата што ја создадовте, „$3“:
-<$4>
+	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|ја провери}} страницата [[$3|$3]]',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|ја провери}} страницата $3',
+	'pagetriage-notification-mark-as-reviewed-email-body' => '$1 на {{SITENAME}} ја провери страницата $3:
 
-Ви благодариме што придонесовте кон подобрувањето на {{SITENAME}}!', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|провери}} страница што ја започнавте: [[$3|$3]]. {{PLURAL:$5|Ознака|Ознаки}}: $4', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|провери}} страница што ја започнавте на {{SITENAME}}: $3', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag-email-body' => 'Уредникот $1 на {{SITENAME}} {{GENDER:$1|ја провери}} страницата што ја започнавте, „$3“:
-<$4>
+Погледајте повеќе:
 
-На вашата страница {{PLURAL:$6|беше ставена оваа ознака|беа ставени овие ознаки}}: $5
+$4
 
-Подобрете ја страницата за да ги решите проблемите. Ви благодариме!', # Fuzzy
-	'pagetriage-notification-add-deletion-tag' => '$2 {{GENDER:$1|провери}} страница што ја започнавте и ја означи за бришење: [[$3|$3]]. {{PLURAL:$5|Ознака|Ознаки}} за бришење: $4', # Fuzzy
-	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 {{GENDER:$1|провери}} страница што ја започнавте на {{SITENAME}}: $3', # Fuzzy
+$5',
+	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|ја провери}} {{GENDER:$1|означи}} страницата [[$3|$3]]. {{PLURAL:$5|Ознака|Ознаки}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|ја провери}} страницата $3',
+	'pagetriage-notification-add-maintenance-tag-email-body' => '$1 на {{SITENAME}} {{GENDER:$1|ја провери}} страницата $3.
+
+{{PLURAL:$6|Ознака|Ознаки}}: $5
+
+Погледајте повеќе:
+
+$4
+
+$7',
+	'pagetriage-notification-add-deletion-tag' => '$2 {{GENDER:$1|ја провери}} страницата [[$3|$3]] и {{GENDER:$1|ја означи за бришење}}. {{PLURAL:$5|Ознака|Ознаки}}: $4',
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 {{GENDER:$1|ја означи за бришење}} страницата $3',
 	'pagetriage-notification-add-deletion-tag-email-body' => 'Уредникот $1 на {{SITENAME}} {{GENDER:$1|ја провери}} страницата што ја започнавте, „$3“:
 <$4>
 
@@ -6127,22 +6151,27 @@ $messages['nl'] = array(
 	'pagetriage-toolbar-close' => 'Sluiten',
 	'pagetriage-toolbar-minimize' => 'Minimaliseren',
 	'pagetriage-tag-warning-notice' => 'Let op: deze pagina is pas {{PLURAL:$1|één minuut|$1 minuten}} geleden aangemaakt. Overweeg nog even te wachten met labelen, tenzij de pagina een groot probleem oplevert.',
-	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|heeft}} een pagina gecontroleerd die u hebt aangemaakt: [[$3|$3]]', # Fuzzy
-	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|heeft}} een pagina gecontroleerd die u hebt aangemaakt op {{SITENAME}}: $3', # Fuzzy
-	'pagetriage-notification-mark-as-reviewed-email-body' => 'Gefeliciteerd! De gebruiker $1 van {{SITENAME}} {{GENDER:$1|heeft}} de pagina "$3" gecontroleerd die u hebt aangemaakt:
-<$4>
+	'pagetriage-notification-mark-as-reviewed' => '[[$3|$3]] is {{GENDER:$1|gecontroleerd}} door $2',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$3 is {{GENDER:$1|gecontroleerd}} door $1',
+	'pagetriage-notification-mark-as-reviewed-email-body' => '$3 op {{SITENAME}} is gecontroleerd door {{GENDER:$1|$1}}
 
-Dank u wel voor het verbeteren van {{SITENAME}}!', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|heeft}} een pagina gecontroleerd die u hebt aangemaakt: [[$3|$3]]. {{PLURAL:$5|Label|Labels}}: $4', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|heeft}} een pagina gecontroleerd die u hebt aangemaakt op {{SITENAME}}: $3', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag-email-body' => 'Gebruiker $1 van {{SITENAME}} {{GENDER:$1|heeft}} de pagina "$3" die u bent begonnen gecontroleerd:
-<$4>
+Meer bekijken:
 
+$4
+
+$5',
+	'pagetriage-notification-add-maintenance-tag' => '[[$3|$3]] is {{GENDER:$1|gecontroleerd}} en gelabeld door $2. {{PLURAL:$5|Label|Labels}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$3 is door $1 {{GENDER:$1|gelabeld}}',
+	'pagetriage-notification-add-maintenance-tag-email-body' => '$3 op {{SITENAME}} is {{GENDER:$1|gecontroleerd}} en gelabeld door $1.
 {{PLURAL:$6|Dit label is|Deze labels zijn}} toegevoegd aan de pagina: $5
 
-Please improve this page to address these issues. Thank you!', # Fuzzy
-	'pagetriage-notification-add-deletion-tag' => '$2 {{GENDER:$1|heeft}} een pagina die u bent begonnen voor verwijdering genomineerd: [[$3|$3]]. Verwijderlabel{{PLURAL:$5||s}}: $4', # Fuzzy
-	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 {{GENDER:$1|heeft}} een pagina die u bent begonnen gecontroleerd op {{SITENAME}}: $3', # Fuzzy
+Meer bekijken:
+
+$4
+
+$7',
+	'pagetriage-notification-add-deletion-tag' => '[[$3|$3]] is door $2 {{GENDER:$1|gecontroleerd}} en voor verwijdering gemarkeerd. Label{{PLURAL:$5||s}}: $4',
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$3 is door $1 {{GENDER:$1|gemarkeerd voor verwijdering}}',
 	'pagetriage-notification-add-deletion-tag-email-body' => 'Gebruiker $1 van {{SITENAME}} {{GENDER:$1|heeft}} de pagina "$3" die u bent begonnen gecontroleerd:
 <$4>
 
