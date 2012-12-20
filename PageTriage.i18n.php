@@ -2767,22 +2767,28 @@ $messages['fr'] = array(
 	'pagetriage-toolbar-close' => 'Fermer',
 	'pagetriage-toolbar-minimize' => 'Réduire',
 	'pagetriage-tag-warning-notice' => 'Remarque: Cette page ne date que de $1 {{PLURAL:$1|minute|minutes}}. Veuillez attendre pour la marquer, sauf si le problème est important.',
-	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|a relu}} une page que vous avez commencée: [[$3|$3]]', # Fuzzy
-	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|a relu}} une page que vous avez commencée sur {{SITENAME}}: $3', # Fuzzy
-	'pagetriage-notification-mark-as-reviewed-email-body' => 'Félicitations! L\'éditeur $1 de {{SITENAME}} {{GENDER:$1|a relu}} une page que vous avez commencée, "$3":
-<$4>
+	'pagetriage-notification-mark-as-reviewed' => '[[$3|$3]] a été {{GENDER:$1|relu}} par $2',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$3 a été {{GENDER:$1|relu}} par $1',
+	'pagetriage-notification-mark-as-reviewed-email-body' => "$3 a été relu par l'utilisateur $1 de {{SITENAME}}:
 
-Merci d\'avoir amélioré {{SITENAME}}!', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|a relu}} une page que vous avez commencée: [[$3|$3]]. {{PLURAL:$5|Balise|Balises}}: $4', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|a relu}} une page que vous avez commencée sur {{SITENAME}}: $3', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag-email-body' => 'L\'éditeur $1 de {{SITENAME}} {{GENDER:$1|a relu}} une page que vous avez commencée, "$3":
-<$4>
+En savoir plus:
 
-{{PLURAL:$6|Cette balise a été ajoutée|Ces balises ont été ajoutées}} à votre page: $5
+$4
 
-Veuillez améliorer cette page pour corriger ces problèmes. Merci!', # Fuzzy
-	'pagetriage-notification-add-deletion-tag' => "$2 {{GENDER:$1|a relu}} une page que vous avez commencée et l'a marquée pour être supprimée: [[$3|$3]]. {{PLURAL:$5|Balise|Balises}} de suppression: $4", # Fuzzy
-	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 {{GENDER:$1|a relu}} une page que vous avez commencée sur {{SITENAME}}: $3', # Fuzzy
+$5",
+	'pagetriage-notification-add-maintenance-tag' => '[[$3|$3]] a été {{GENDER:$1|relu}} et {{GENDER:$1|marqué}} par $2.  {{PLURAL:$5|Balise|Balises}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$3 a été {{GENDER:$1|marqué}} par $1',
+	'pagetriage-notification-add-maintenance-tag-email-body' => "$3 a été {{GENDER:$1|relu}} et {{GENDER:$1|marqué}} par l'utilisateur $1 de {{SITENAME}}.
+
+{{PLURAL:$6|Balise|Balises}}: $5
+
+En savoir plus:
+
+$4
+
+$7",
+	'pagetriage-notification-add-deletion-tag' => '[[$3|$3]] a été {{GENDER:$1|relu}} et {{GENDER:$1|marqué à supprimer}} par $2.  {{PLURAL:$5|Balise|Balises}}: $4',
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$3 a été {{GENDER:$1|marqué à supprimer}} par $1',
 	'pagetriage-notification-add-deletion-tag-email-body' => 'L\'éditeur $1 de {{SITENAME}} {{GENDER:$1|a relu}} une page que vous avez commencée, "$3":
 <$4>
 
@@ -3258,22 +3264,28 @@ $messages['gl'] = array(
 	'pagetriage-toolbar-close' => 'Pechar',
 	'pagetriage-toolbar-minimize' => 'Minimizar',
 	'pagetriage-tag-warning-notice' => 'Nota: Esta páxina existe desde hai $1 {{PLURAL:$1|minuto|minutos}}. Considere agardar un anaco para etiquetala, a menos que o problema sexa serio.',
-	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|revisou}} unha páxina que vostede comezou: [[$3|$3]]', # Fuzzy
-	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|revisou}} unha páxina que vostede comezou en {{SITENAME}}: $3', # Fuzzy
-	'pagetriage-notification-mark-as-reviewed-email-body' => 'Parabéns! {{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} revisou unha páxina que vostede comezou, "$3":
-<$4>
+	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|revisou}} "[[$3|$3]]"',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|revisou}} "$3"',
+	'pagetriage-notification-mark-as-reviewed-email-body' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} revisou "$3".
 
-Grazas por mellorar {{SITENAME}}!', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|revisou}} unha páxina que vostede comezou: [[$3|$3]]. {{PLURAL:$5|Etiqueta|Etiquetas}}: $4', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|revisou}} unha páxina que vostede comezou en {{SITENAME}}: $3', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag-email-body' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} revisou unha páxina que vostede comezou, "$3":
-<$4>
+Ollar máis:
 
-Engadiu {{PLURAL:$6|a seguinte etiqueta|as seguintes etiquetas}} á súa páxina: $5
+$4
 
-Mellore a páxina para corrixir os problemas. Grazas!', # Fuzzy
-	'pagetriage-notification-add-deletion-tag' => '$2 {{GENDER:$1|revisou}} unha páxina que vostede comezou e marcouna para borrar: [[$3|$3]]. {{PLURAL:$5|Etiqueta|Etiquetas}} de borrado: $4', # Fuzzy
-	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 {{GENDER:$1|revisou}} unha páxina que vostede comezou en {{SITENAME}}: $3', # Fuzzy
+$5',
+	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "[[$3|$3]]". {{PLURAL:$5|Etiqueta|Etiquetas}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|etiquetou}} "$3"',
+	'pagetriage-notification-add-maintenance-tag-email-body' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "$3".
+
+{{PLURAL:$6|Etiqueta|Etiquetas}}: $5
+
+Ollar máis:
+
+$4
+
+$7',
+	'pagetriage-notification-add-deletion-tag' => '$2 {{GENDER:$1|revisou}} e {{GENDER:$1|marcou para borrar}} "[[$3|$3]]". {{PLURAL:$5|Etiqueta|Etiquetas}}: $4',
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 {{GENDER:$1|marcou para borrar}} "$3"',
 	'pagetriage-notification-add-deletion-tag-email-body' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} revisou unha páxina que vostede comezou, "$3":
 <$4>
 
