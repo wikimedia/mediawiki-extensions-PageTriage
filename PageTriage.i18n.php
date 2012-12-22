@@ -2013,8 +2013,8 @@ $messages['et'] = array(
 	'pagetriage-self-review-error' => 'Enda loodud lehekülgi ei saa üle vaadata.',
 	'pagetriage-api-error' => 'Selle lehekülje laadimisel API kaudu ilmnes tõrge. Palun proovi lehekülge uuesti laadida.',
 	'pagetriage-reviewed' => 'Ülevaadatud',
-	'pagetriage-mark-as-reviewed-error' => 'Selle lehekülje ülevaadataks märkimisel ilmnes tõrge.', # Fuzzy
-	'pagetriage-mark-as-unreviewed-error' => 'Selle lehekülje ülevaadatuks märkimise tühistamisel ilmnes tõrge.', # Fuzzy
+	'pagetriage-mark-as-reviewed-error' => 'Selle lehekülje ülevaadataks märkimisel ilmnes tõrge: $1',
+	'pagetriage-mark-as-unreviewed-error' => 'Selle lehekülje ülevaadatuks märkimise tühistamisel ilmnes tõrge: $1',
 	'pagetriage-hist' => 'ajal',
 	'pagetriage-bytes' => '$1 {{PLURAL:$1|bait|baiti}}',
 	'pagetriage-edits' => '{{PLURAL:$1|Üks muudatus|$1 muudatust}}',
@@ -2033,7 +2033,7 @@ $messages['et'] = array(
 	'pagetriage-user-creation-dateformat' => 'dd.MM.yyyy',
 	'pagetriage-showing' => 'Näidatakse:',
 	'pagetriage-filter-list-prompt' => 'Määra filtrid',
-	'pagetriage-unreviewed-article-count' => 'Praegu on üle vaatamata {{PLURAL:$1|üks lehekülg|$1 lehekülge}}.', # Fuzzy
+	'pagetriage-unreviewed-article-count' => 'Kokku {{PLURAL:$1|üks|$1}} üle vaatamata {{PLURAL:$1|lehekülg|lehekülge}} (vanim: $2)',
 	'pagetriage-sort-by' => 'Järjestusalus:',
 	'pagetriage-newest' => 'Uusimad',
 	'pagetriage-oldest' => 'Vanimad',
@@ -2108,12 +2108,13 @@ $messages['et'] = array(
 	'pagetriage-tags-param-article-label' => 'Artikkel:',
 	'pagetriage-tags-param-date-label' => 'Kuupäev:',
 	'pagetriage-tags-param-issues-label' => 'Kirjelda probleeme, millele tähelepanu tahad juhtida:',
+	'pagetriage-tags-param-blp-label' => 'See on elava inimese biograafia',
 	'pagetriage-tags-param-source-label' => 'Palun lisa selle allika internetiaadress.',
 	'pagetriage-tags-param-free-yes-label' => 'Jah',
 	'pagetriage-tags-param-free-no-label' => 'Ei',
-	'pagetriage-tags-param-missing-required' => 'Vaja on parameetrit $1', # Fuzzy
-	'pagetriage-tags-edit-summary' => '$1: lisatud leheküljele märgised', # Fuzzy
-	'pagetriage-del-edit-summary' => '$1: esitatud kustutamiseks', # Fuzzy
+	'pagetriage-tags-param-missing-required' => 'Sildi $1 juurest puudub vajalik parameeter.',
+	'pagetriage-tags-edit-summary' => '$1: lisatud leheküljele märgised ($2)',
+	'pagetriage-del-edit-summary' => '$1: esitatud kustutamiseks ($2)',
 	'pagetriage-del-tags-param-discussion-label' => 'Palun selgita, miks see artikkel tuleks kustutada ja viita võimalusel vastavatele kokkulepetele.',
 	'pagetriage-info-title' => 'Lehekülje andmed',
 	'pagetriage-info-problem-header' => 'Võimalikud probleemid',
@@ -2133,7 +2134,7 @@ $messages['et'] = array(
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-info-tooltip' => 'Näita selle lehekülje metaandmeid',
 	'pagetriage-toolbar-collapsed' => 'Järelevalve',
-	'pagetriage-toolbar-linktext' => 'Järelevalveriba', # Fuzzy
+	'pagetriage-toolbar-linktext' => 'Kureeri seda artiklit',
 	'pagetriage-toolbar-learn-more' => 'Lisateave »',
 	'pagetriage-mark-title' => 'Ülevaadatuks märkimine',
 	'pagetriage-mark-as-reviewed' => 'Märgi ülevaadatuks',
@@ -2149,6 +2150,7 @@ $messages['et'] = array(
 	'pagetriage-del-talk-page-notify-error' => 'Autori teavitamine aruteluleheküljel ebaõnnestus.',
 	'pagetriage-del-tooltip' => 'Esita see lehekülg kustutamiseks',
 	'pagetriage-tagging-error' => 'Leheküljele märgiste lisamine ebaõnnestus.',
+	'pagetriage-toolbar-close' => 'Sulge',
 );
 
 /** Basque (euskara)
@@ -4871,6 +4873,7 @@ $messages['ka'] = array(
 	'pagetriage-toolbar-learn-more' => 'გაიგეთ მეტი »',
 	'pagetriage-wikilove-page-creator' => 'გვერდის შემქნელი',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|რედაქტირება|რედაქტირება}}',
+	'pagetriage-toolbar-close' => 'დახურვა',
 );
 
 /** Korean (한국어)
@@ -6463,20 +6466,25 @@ $messages['si'] = array(
 	'pagetriage-orphan' => 'අනාථ',
 	'pagetriage-byline' => 'විසින්', # Fuzzy
 	'pagetriage-author-not-autoconfirmed' => 'නව සංස්කාරක',
+	'pagetriage-author-blocked' => 'වාරණකෙරූ',
 	'pagetriage-showing' => 'පෙන්වමින්:',
+	'pagetriage-filter-list-prompt' => 'පෙරහන් සකසන්න',
 	'pagetriage-newest' => 'අලුත්ම',
 	'pagetriage-oldest' => 'පැරණිම',
 	'pagetriage-triage' => 'නිරීක්ෂණය',
 	'pagetriage-filter-show-heading' => 'පෙන්වන්න:',
+	'pagetriage-filter-redirects' => 'යළියොමු',
 	'pagetriage-filter-article' => 'ලිපි',
 	'pagetriage-filter-username' => 'පරිශීලක නාමය',
 	'pagetriage-filter-all' => 'සියල්ලම පෙන්වන්න',
+	'pagetriage-filter-set-button' => 'පෙරහන් සකසන්න',
 	'pagetriage-filter-ns-all' => 'සියල්ල',
 	'pagetriage-more' => 'තවත්',
 	'pagetriage-filter-stat-all' => 'සියල්ල',
 	'pagetriage-filter-stat-reviewed' => 'නිරීක්ෂණය කෙරූ',
 	'pagetriage-filter-stat-bots' => 'රොබෝවරු',
 	'pagetriage-filter-stat-redirects' => 'යළියොමු',
+	'pagetriage-filter-stat-no-categories' => 'ප්‍රවර්ගයන් නොමැත',
 	'pagetriage-filter-stat-orphan' => 'අනාථයන්',
 	'pagetriage-filter-stat-non-autoconfirmed' => 'නව සංස්කාරකවරුන්',
 	'pagetriage-filter-stat-blocked' => 'වාරණය කල පරිශීලකයන්',
@@ -6484,6 +6492,7 @@ $messages['si'] = array(
 	'pagetriage-refresh-list' => 'ලැයිස්තුව ප්‍රතිපුරණය',
 	'pagetriage-button-add-parameters' => 'පරාමිතීන් එක් කරන්න',
 	'pagetriage-button-add-details' => 'විස්තර එක් කරන්න',
+	'pagetriage-button-edit-details' => 'විස්තර සංස්කරණය කරන්න',
 	'pagetriage-button-mark-for-deletion' => 'මකා දැමීම සඳහා සලකුණු කරන්න',
 	'pagetriage-tags-cat-common-label' => 'පොදු',
 	'pagetriage-tags-cat-metadata-label' => 'පාරදත්ත',
@@ -7295,6 +7304,7 @@ $messages['tr'] = array(
 
 /** Ukrainian (українська)
  * @author Base
+ * @author Steve.rusyn
  */
 $messages['uk'] = array(
 	'pagetriage' => 'Page Triage',
@@ -7363,6 +7373,16 @@ $messages['uk'] = array(
 	'pagetriage-note-not-reviewed' => 'Цю сторінку ще не перевірено.',
 	'pagetriage-note-deletion' => 'Цю сторінку номіновано на вилучення.',
 	'pagetriage-refresh-list' => 'Оновити список',
+	'pagetriage-tags-title' => 'Додати мітки',
+	'pagetriage-tags-cat-metadata-label' => 'Метадані',
+	'pagetriage-tags-cat-sources-label' => 'Джерела',
+	'pagetriage-tags-cat-structure-label' => 'Структура',
+	'pagetriage-tags-param-article-label' => 'Стаття:',
+	'pagetriage-tags-param-date-label' => 'Дата:',
+	'pagetriage-tags-param-free-yes-label' => 'Так',
+	'pagetriage-tags-param-free-no-label' => 'Ні',
+	'pagetriage-info-history-header' => 'Історія',
+	'pagetriage-toolbar-close' => 'Закрити',
 );
 
 /** Urdu (اردو)
