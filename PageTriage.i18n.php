@@ -1066,6 +1066,21 @@ $messages['arc'] = array(
 	'pagetriage-tags-peacock-desc' => 'ܗܕܐ ܦܐܬܐ ܬܚܒܫ ܚܫܚܬ̈ܐ ܕܬܬܫܒܗܪ ܥܠ ܡܓܠܬܐ ܒܠܥܕ ܡܢ ܬܘܣܦܬܐ ܕܝܕ̈ܥܬܐ.',
 );
 
+/** Bashkir (башҡортса)
+ * @author Haqmar
+ */
+$messages['ba'] = array(
+	'pagetriage-author-not-autoconfirmed' => 'Яңы мөхәррирләүсе',
+	'pagetriage-author-blocked' => 'Блоклы',
+	'pagetriage-author-bot' => 'Бот',
+	'pagetriage-showing' => 'Күрһәтеләсәктәр:',
+	'pagetriage-filter-list-prompt' => 'Һөҙгөстәрҙе көйләү',
+	'pagetriage-sort-by' => 'Теҙеү:',
+	'pagetriage-newest' => 'Иң яңы',
+	'pagetriage-oldest' => 'Иң иҫке',
+	'pagetriage-filter-show-heading' => 'Ошоларҙы күрһәт:',
+);
+
 /** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
  * @author Wizardist
  */
@@ -1073,6 +1088,28 @@ $messages['be-tarask'] = array(
 	'pagetriage' => 'Page Triage',
 	'newpagesfeed' => 'Стужка новых старонак',
 	'pagetriage-desc' => 'Прылады для прагляду і зацьверджаньня новых старонак',
+);
+
+/** Bulgarian (български)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['bg'] = array(
+	'pagetriage-triage' => 'Преглеждане',
+	'pagetriage-filter-show-heading' => 'Покажи:',
+	'pagetriage-filter-article' => 'Статия',
+	'pagetriage-filter-username' => 'Потребителско име',
+	'pagetriage-filter-ns-all' => 'Всички',
+	'pagetriage-more' => 'Повече',
+	'pagetriage-filter-stat-all' => 'Всички',
+	'pagetriage-tags-param-article-label' => 'Статия:',
+	'pagetriage-tags-param-date-label' => 'Дата:',
+	'pagetriage-tags-param-free-yes-label' => 'Да',
+	'pagetriage-tags-param-free-no-label' => 'Не',
+	'pagetriage-info-history-header' => 'История',
+	'pagetriage-info-help' => 'помощ',
+	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
+	'pagetriage-info-timestamp-time-format' => 'HH:mm',
+	'pagetriage-toolbar-close' => 'Затваряне',
 );
 
 /** Breton (brezhoneg)
@@ -2003,6 +2040,7 @@ Por favor mejora esta página para abordar estos temas.  ¡Gracias!',
  * @author Pikne
  */
 $messages['et'] = array(
+	'pagetriage' => 'Lehekülje järelevalve',
 	'newpagesfeed' => 'Uute lehekülgede voog',
 	'pagetriage-desc' => 'Hõlbustab uute lehekülgede ülevaatamist ja heakskiitmist.',
 	'pagetriage-pagecuration' => 'Lehekülje järelevalve',
@@ -2020,10 +2058,13 @@ $messages['et'] = array(
 	'pagetriage-edits' => '{{PLURAL:$1|Üks muudatus|$1 muudatust}}',
 	'pagetriage-categories' => '{{PLURAL:$1|Üks kategooria|$1 kategooriat}}',
 	'pagetriage-no-categories' => 'Kategoriseerimata',
+	'pagetriage-no-reference' => 'Viideteta',
 	'pagetriage-orphan' => 'Orb',
 	'pagetriage-no-author' => 'Andmed autori kohta puuduvad',
 	'pagetriage-byline' => 'Loonud $1 ($2$3$4)',
 	'pagetriage-byline-new-editor' => 'Loonud uus toimetaja $1 ($2$3$4)',
+	'pagetriage-articleinfo-byline' => 'Selle lehekülje on loonud $2 ($3$4$5) kuupäeval $1.',
+	'pagetriage-articleinfo-byline-new-editor' => 'Selle lehekülje on loonud uus toimetaja $2 ($3$4$5) kuupäeval $1.',
 	'pagetriage-editcount' => '{{PLURAL:$1|Üks muudatus|$1 muudatust}} alates kuupäevast $2',
 	'pagetriage-author-not-autoconfirmed' => 'Uus toimetaja',
 	'pagetriage-no-patrol-right' => 'Teil ei ole õigust seda lehte vaadata',
@@ -2034,6 +2075,7 @@ $messages['et'] = array(
 	'pagetriage-showing' => 'Näidatakse:',
 	'pagetriage-filter-list-prompt' => 'Määra filtrid',
 	'pagetriage-unreviewed-article-count' => 'Kokku {{PLURAL:$1|üks|$1}} üle vaatamata {{PLURAL:$1|lehekülg|lehekülge}} (vanim: $2)',
+	'pagetriage-reviewed-article-count-past-week' => '{{PLURAL:$1|Üks lehekülg|$1 lehekülge}} sel nädalal üle vaadatud',
 	'pagetriage-sort-by' => 'Järjestusalus:',
 	'pagetriage-newest' => 'Uusimad',
 	'pagetriage-oldest' => 'Vanimad',
@@ -2057,6 +2099,8 @@ $messages['et'] = array(
 	'pagetriage-filter-all' => 'Näita kõiki',
 	'pagetriage-filter-set-button' => 'Määra filtrid',
 	'pagetriage-stats-less-than-a-day' => 'vähem kui üks päev',
+	'pagetriage-stats-reviewed-page-count' => '{{PLURAL:$1|Üks lehekülg|$1 lehekülge}} sel nädalal üle vaadatud',
+	'pagetriage-stats-filter-page-count' => '{{PLURAL:$1|Üks lehekülg|$1 lehekülge}} sinu filtritega loendis',
 	'pagetriage-filter-ns-all' => 'Kõik',
 	'pagetriage-more' => 'Rohkem',
 	'pagetriage-filter-stat-all' => 'Kõik',
@@ -2072,6 +2116,7 @@ $messages['et'] = array(
 	'pagetriage-filter-stat-username' => 'kasutajanimi: $1',
 	'pagetriage-no-pages' => 'Sinu kriteeriumitele ei vasta ükski lehekülg.',
 	'pagetriage-warning-browser' => 'See tööriist ei pruugi töötada võrgulehitsejates, mis on vanemad kui Internet Explorer 8.',
+	'pagetriage-welcome' => 'Palun vaata üle uusi lehekülgi ja aita võrgukohta {{SITENAME}} paremaks teha. <a href="$1">Lisateave</a> · <a href="$2">Jäta tagasisidet</a>',
 	'pagetriage-note-reviewed' => 'See lehekülg on üle vaadatud.',
 	'pagetriage-note-not-reviewed' => 'Seda lehekülge pole veel üle vaadatud.',
 	'pagetriage-note-deletion' => 'See lehekülg on esitatud kustutamiseks.',
@@ -2084,8 +2129,16 @@ $messages['et'] = array(
 	'pagetriage-button-edit-details' => 'Muuda üksikasju',
 	'pagetriage-button-mark-for-deletion' => 'Märgi kustutamiseks',
 	'pagetriage-add-a-note-creator' => 'Lisa sõnum lehekülje loojale: (valikuline)',
+	'pagetriage-add-a-note-reviewer' => 'Jäta ülevaatajale sõnum: (valikuline)',
 	'pagetriage-characters-left' => 'Veel {{PLURAL:$1|$1 märk|$1 märki}}',
 	'pagetriage-personal-default-note' => 'Kirjuta kasutajale $1 abistav märkus. See postitatakse tema aruteluleheküljele.',
+	'pagetriage-page-status-reviewed' => 'Märkinud ülevaadatuks $2 ($3$4$5) kuupäeval $1',
+	'pagetriage-page-status-reviewed-anonymous' => 'Märgitud ülevaadatuks',
+	'pagetriage-page-status-unreviewed' => 'See lehekülg on ikka veel üle vaatamata.',
+	'pagetriage-page-status-autoreviewed' => 'See lehekülg kontrolliti automaatselt.',
+	'pagetriage-page-status-delete' => 'Märgitud kustutamiseks',
+	'pagetriage-articleinfo-stat' => 'Arvandmed: $1',
+	'pagetriage-js-required' => 'Selle lisa jaoks on vaja JavaScripti toega võrgulehitsejat.',
 	'pagetriage-tags-title' => 'Märgiste lisamine',
 	'pagetriage-tags-cat-common-label' => 'Üldine',
 	'pagetriage-tags-cat-metadata-label' => 'Metaandmed',
@@ -2113,6 +2166,15 @@ $messages['et'] = array(
 	'pagetriage-tags-param-free-yes-label' => 'Jah',
 	'pagetriage-tags-param-free-no-label' => 'Ei',
 	'pagetriage-tags-param-missing-required' => 'Sildi $1 juurest puudub vajalik parameeter.',
+	'log-name-pagetriage-curation' => 'Lehekülje järelevalve logi',
+	'log-description-pagetriage-curation' => 'Selles logis on lehekülje järelevalve ribal tehtud toimingud.',
+	'log-name-pagetriage-deletion' => 'Kustutusmärgiste logi',
+	'log-description-pagetriage-deletion' => 'Selles logis on lehekülje järelevalve kustutusviisardiga tehtud toimingud.',
+	'logentry-pagetriage-curation-reviewed' => '$1 {{GENDER:$2|märkis}} lehekülje $3 ülevaadatuks',
+	'logentry-pagetriage-curation-unreviewed' => '$1 {{GENDER:$2|märkis}} lehekülje $3 ülevaatamata leheküljeks',
+	'logentry-pagetriage-curation-tag' => '$1 {{GENDER:$2|märgistas}} lehekülje $3 {{PLURAL:$5|järgmise märgisega|järgmiste märgistega}}: $4',
+	'logentry-pagetriage-curation-delete' => '$1 {{GENDER:$2|märkis}} lehekülje $3 kustutamiseks {{PLURAL:$5|järgmise märgisega|järgmiste märgistega}}: $4',
+	'logentry-pagetriage-deletion-delete' => '$1 {{GENDER:$2|märkis}} lehekülje $3 kustutamiseks {{PLURAL:$5|järgmise märgisega|järgmiste märgistega}}: $4',
 	'pagetriage-tags-edit-summary' => '$1: lisatud leheküljele märgised ($2)',
 	'pagetriage-del-edit-summary' => '$1: esitatud kustutamiseks ($2)',
 	'pagetriage-del-tags-param-discussion-label' => 'Palun selgita, miks see artikkel tuleks kustutada ja viita võimalusel vastavatele kokkulepetele.',
@@ -2130,6 +2192,8 @@ $messages['et'] = array(
 	'pagetriage-info-problem-no-categories-desc' => 'See lehekülg ei kuulu ühtegi kategooriasse.',
 	'pagetriage-info-problem-orphan' => 'Orb',
 	'pagetriage-info-problem-orphan-desc' => 'Ükski teine lehekülg ei viita sellele leheküljele.',
+	'pagetriage-info-problem-no-references' => 'Viideteta',
+	'pagetriage-info-problem-no-references-desc' => 'Sellel leheküljel ei viidata ühelegi allikale.',
 	'pagetriage-info-timestamp-date-format' => 'd. MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-info-tooltip' => 'Näita selle lehekülje metaandmeid',
@@ -2150,7 +2214,47 @@ $messages['et'] = array(
 	'pagetriage-del-talk-page-notify-error' => 'Autori teavitamine aruteluleheküljel ebaõnnestus.',
 	'pagetriage-del-tooltip' => 'Esita see lehekülg kustutamiseks',
 	'pagetriage-tagging-error' => 'Leheküljele märgiste lisamine ebaõnnestus.',
+	'pagetriage-add-tag-confirmation' => 'Kas oled kindel, et soovid nii lühikese artikli juurde {{PLURAL:$1|ühe märgise|$1 märgist}} lisada?',
+	'pagetriage-tag-deletion-error' => 'Leheküljel on juba kustutusmärgis, toiming katkestatakse.',
 	'pagetriage-toolbar-close' => 'Sulge',
+	'pagetriage-toolbar-minimize' => 'Ikooni',
+	'pagetriage-tag-warning-notice' => 'Märkus: See lehekülg on vaid {{PLURAL:$1|ühe|$1}} minuti vanune. Kui probleem pole väga tõsine, siis leiad ehk olevat võimaliku märgistamisega pisut oodata.',
+	'pagetriage-notification-mark-as-reviewed' => '$2 on lehekülje [[$3|$3]] {{GENDER:$1|üle vaadanud}}',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 on lehekülje $3 {{GENDER:$1|üle vaadanud}}',
+	'pagetriage-notification-mark-as-reviewed-email-body' => '{{GRAMMAR:genitive|{{SITENAME}}}} kasutaja $1 on lehekülje $3 üle vaadanud:
+
+Vaata veel:
+
+$4
+
+$5',
+	'pagetriage-notification-add-maintenance-tag' => '$2 on lehekülje [[$3|$3]] {{GENDER:$1|üle vaadanud}} ja märgistanud. {{PLURAL:$5|Märgis|Märgised}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 on lehekülje $3 märgistanud',
+	'pagetriage-notification-add-maintenance-tag-email-body' => '{{GRAMMAR:genitive|{{SITENAME}}}} kasutaja $1 on lehekülje $3 {{GENDER:$1|üle vaadanud}} ja märgistanud. 
+
+{{PLURAL:$6|Märgis|Märgised}}: $5
+
+Vaata veel:
+
+$4
+
+$7',
+	'pagetriage-notification-add-deletion-tag' => '$2 on lehekülje [[$3|$3]] {{GENDER:$1|üle vaadanud}} ja kustutamiseks märkinud. {{PLURAL:$5|Märgis|Märgised}}: $4',
+	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 on lehekülje $3 kustutamiseks märkinud',
+	'pagetriage-notification-add-deletion-tag-email-body' => '{{GRAMMAR:genitive|{{SITENAME}}}} kasutaja $1 on lehekülje $3 kustutamiseks märkinud.
+
+{{PLURAL:$6|Märgis|Märgised}}: $5
+
+Vaata veel:
+
+$4
+
+$7',
+	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Vaatab minu loodud lehekülje üle',
+	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Vaatab minu loodud lehekülje üle ja lisab hooldusmärgise',
+	'echo-pref-email-pagetriage-add-deletion-tag' => 'Vaatab minu loodud lehekülje üle ja esitab selle kustutamiseks',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$2 on lehekülje $1 üle vaadanud',
+	'echo-email-batch-category-header-page-review' => '{{PLURAL:$1|Ühe|$1}} lehekülje ülevaatamine',
 );
 
 /** Basque (euskara)
@@ -4075,6 +4179,23 @@ $messages['ia'] = array(
 	'pagetriage-mark-as-unreviewed' => 'Marcar como non revidite',
 	'pagetriage-mark-as-reviewed-helptext' => 'Remover iste pagina del cauda de versiones non revidite?', # Fuzzy
 	'pagetriage-mark-as-unreviewed-helptext' => 'Reinserer iste pagina in le cauda de versiones non revidite?', # Fuzzy
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['id'] = array(
+	'pagetriage-filter-show-heading' => 'Tampilkan:',
+	'pagetriage-filter-article' => 'Artikel',
+	'pagetriage-filter-ns-all' => 'Semua',
+	'pagetriage-filter-stat-all' => 'Semua',
+	'pagetriage-tags-param-article-label' => 'Artikel:',
+	'pagetriage-tags-param-date-label' => 'Tanggal:',
+	'pagetriage-tags-param-free-yes-label' => 'Ya',
+	'pagetriage-tags-param-free-no-label' => 'Tidak',
+	'pagetriage-info-history-header' => 'Sejarah',
+	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
+	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 );
 
 /** Icelandic (íslenska)
@@ -6455,6 +6576,7 @@ $messages['ro'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author Singhalawap
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
@@ -6469,21 +6591,26 @@ $messages['si'] = array(
 	'pagetriage-author-blocked' => 'වාරණකෙරූ',
 	'pagetriage-showing' => 'පෙන්වමින්:',
 	'pagetriage-filter-list-prompt' => 'පෙරහන් සකසන්න',
+	'pagetriage-sort-by' => 'මෙසේ පෙළගස්වන්න:',
 	'pagetriage-newest' => 'අලුත්ම',
 	'pagetriage-oldest' => 'පැරණිම',
 	'pagetriage-triage' => 'නිරීක්ෂණය',
 	'pagetriage-filter-show-heading' => 'පෙන්වන්න:',
 	'pagetriage-filter-redirects' => 'යළියොමු',
+	'pagetriage-filter-namespace-heading' => 'නාමාඅවකාශයෙහි:',
 	'pagetriage-filter-article' => 'ලිපි',
 	'pagetriage-filter-username' => 'පරිශීලක නාමය',
+	'pagetriage-filter-no-categories' => 'ප්‍රවර්ග නැත',
 	'pagetriage-filter-all' => 'සියල්ලම පෙන්වන්න',
 	'pagetriage-filter-set-button' => 'පෙරහන් සකසන්න',
 	'pagetriage-filter-ns-all' => 'සියල්ල',
 	'pagetriage-more' => 'තවත්',
 	'pagetriage-filter-stat-all' => 'සියල්ල',
 	'pagetriage-filter-stat-reviewed' => 'නිරීක්ෂණය කෙරූ',
+	'pagetriage-filter-stat-unreviewed' => 'නිරීක්ෂණය නොකෙරූ',
 	'pagetriage-filter-stat-bots' => 'රොබෝවරු',
 	'pagetriage-filter-stat-redirects' => 'යළියොමු',
+	'pagetriage-filter-stat-nominated-for-deletion' => 'මකාදැමුමට යෝජිත',
 	'pagetriage-filter-stat-no-categories' => 'ප්‍රවර්ගයන් නොමැත',
 	'pagetriage-filter-stat-orphan' => 'අනාථයන්',
 	'pagetriage-filter-stat-non-autoconfirmed' => 'නව සංස්කාරකවරුන්',
@@ -6499,6 +6626,9 @@ $messages['si'] = array(
 	'pagetriage-tags-cat-neutrality-label' => 'මධ්‍යස්ථතාව',
 	'pagetriage-tags-cat-sources-label' => 'මූලාශ්‍ර',
 	'pagetriage-tags-cat-structure-label' => 'සංස්ථානය',
+	'pagetriage-tags-cat-verifiability-label' => 'සත්‍යාපනය කලහැකිබව',
+	'pagetriage-tags-cat-writingstyle-label' => 'ලිවීමේ ශෛලිය',
+	'pagetriage-tags-cat-all-label' => 'සියළු ටැග',
 	'pagetriage-del-tags-dba3-label' => 'අන්තර්ගතයක් නොමැත',
 	'pagetriage-tags-param-article-label' => 'ලිපිය:',
 	'pagetriage-tags-param-date-label' => 'දිනය:',
@@ -6516,6 +6646,8 @@ $messages['si'] = array(
 	'pagetriage-toolbar-learn-more' => 'තවත් දැනගන්න »',
 	'pagetriage-wikilove-page-creator' => 'පිටු තනන්නා',
 	'pagetriage-wikilove-edit-count' => '{{PLURAL:$1|සංස්කරණ|සංස්කරණ}} $1 කි',
+	'pagetriage-toolbar-close' => 'වසන්න',
+	'pagetriage-toolbar-minimize' => 'අවමකරන්න',
 );
 
 /** Swedish (svenska)
@@ -7373,8 +7505,12 @@ $messages['uk'] = array(
 	'pagetriage-note-not-reviewed' => 'Цю сторінку ще не перевірено.',
 	'pagetriage-note-deletion' => 'Цю сторінку номіновано на вилучення.',
 	'pagetriage-refresh-list' => 'Оновити список',
+	'pagetriage-button-add-parameters' => 'Додати параметри',
+	'pagetriage-button-add-details' => 'Додати подробиці',
+	'pagetriage-button-edit-details' => 'Змінити подробиці',
 	'pagetriage-tags-title' => 'Додати мітки',
 	'pagetriage-tags-cat-metadata-label' => 'Метадані',
+	'pagetriage-tags-cat-neutrality-label' => 'Нейтральність',
 	'pagetriage-tags-cat-sources-label' => 'Джерела',
 	'pagetriage-tags-cat-structure-label' => 'Структура',
 	'pagetriage-tags-param-article-label' => 'Стаття:',
@@ -7382,6 +7518,12 @@ $messages['uk'] = array(
 	'pagetriage-tags-param-free-yes-label' => 'Так',
 	'pagetriage-tags-param-free-no-label' => 'Ні',
 	'pagetriage-info-history-header' => 'Історія',
+	'pagetriage-info-problem-blocked' => 'Заблокований користувач',
+	'pagetriage-info-problem-blocked-desc' => 'Ця сторінка була створена заблокованим користувачем.',
+	'pagetriage-info-problem-no-categories' => 'Немає категорій',
+	'pagetriage-info-problem-orphan' => 'Сирота',
+	'pagetriage-info-problem-orphan-desc' => 'На цю сторінку не посилається жодна інша сторінка.',
+	'pagetriage-toolbar-learn-more' => 'Дізнатися більше »',
 	'pagetriage-toolbar-close' => 'Закрити',
 );
 
