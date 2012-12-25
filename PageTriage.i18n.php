@@ -523,7 +523,8 @@ If your language requires some words between the different parts of the timestam
 	'pagetriage-filter-stat-blocked' => 'Status display component for pages by blocked users. This message is included as part of a sentence-style list.',
 	'pagetriage-filter-stat-username' => 'Status display component for filter by username. $1 is the username. This message is included as part of a sentence-style list.',
 	'pagetriage-no-pages' => 'Message to display when no pages were retrieved',
-	'pagetriage-welcome' => 'A short introductory message that appears at the top of the PageTriage list view. $1 and $2 are URLs', # Fuzzy
+	'pagetriage-welcome' => 'A short introductory message that appears at the top of the PageTriage list view. Parameters:
+* $1 and $2 are URLs.',
 	'pagetriage-note-reviewed' => 'A note that appears when a user hovers over a status icon',
 	'pagetriage-note-not-reviewed' => 'A note that appears when a user hovers over a status icon',
 	'pagetriage-note-deletion' => 'A note that appears when a user hovers over a status icon',
@@ -1677,6 +1678,59 @@ $messages['diq'] = array(
 	'pagetriage-refresh-list' => 'Listi neweke',
 	'pagetriage-tags-cat-all-label' => 'Etiketi pêro',
 	'pagetriage-tags-param-article-label' => 'Wesiqe:',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'pagetriage-bytes' => '$1 {{PLURAL:$1|bitoko|bitokoj}}',
+	'pagetriage-edits' => '$1 {{PLURAL:$1|redaktanto|redaktantoj}}',
+	'pagetriage-categories' => '$1 {{PLURAL:$1|kategorio|kategorioj}}:',
+	'pagetriage-no-categories' => 'Neniuj kategorioj',
+	'pagetriage-no-reference' => 'Neniuj citoj',
+	'pagetriage-orphan' => 'Orfaĵo',
+	'pagetriage-editcount' => '$1 {{PLURAL:$1|redakto|redaktoj}} ekde $2',
+	'pagetriage-author-not-autoconfirmed' => 'Nova redaktanto',
+	'pagetriage-no-patrol-right' => 'Vi  ne rajtas kontroli ĉi tiun paĝon',
+	'pagetriage-author-blocked' => 'Forbarita',
+	'pagetriage-author-bot' => 'Roboto',
+	'pagetriage-showing' => 'Montras:',
+	'pagetriage-filter-list-prompt' => 'Agordi filtrilojn',
+	'pagetriage-sort-by' => 'Ordigi laŭ:',
+	'pagetriage-newest' => 'Plej nova',
+	'pagetriage-oldest' => 'Plej malnova',
+	'pagetriage-triage' => 'Kontroli',
+	'pagetriage-filter-show-heading' => 'Montri:',
+	'pagetriage-filter-reviewed-edits' => 'Kontrolitaj paĝoj',
+	'pagetriage-filter-namespace-heading' => 'En nomspaco:',
+	'pagetriage-filter-article' => 'Artikolo',
+	'pagetriage-filter-username' => 'Salutnomo',
+	'pagetriage-filter-set-button' => 'Agordi filtrilojn',
+	'pagetriage-stats-less-than-a-day' => 'malpli ol unu tago',
+	'pagetriage-filter-ns-all' => 'Ĉiuj',
+	'pagetriage-more' => 'Pli',
+	'pagetriage-filter-stat-all' => 'Ĉiuj',
+	'pagetriage-filter-stat-reviewed' => 'kontrolita',
+	'pagetriage-filter-stat-unreviewed' => 'nekontrolita',
+	'pagetriage-filter-stat-bots' => 'robotoj',
+	'pagetriage-filter-stat-redirects' => 'alidirektiloj',
+	'pagetriage-filter-stat-no-categories' => 'neniuj kategorioj',
+	'pagetriage-filter-stat-orphan' => 'orfaĵoj',
+	'pagetriage-filter-stat-non-autoconfirmed' => 'novaj redaktantoj',
+	'pagetriage-filter-stat-blocked' => 'forbaritaj uzantoj',
+	'pagetriage-filter-stat-username' => 'salutnomo: $1',
+	'pagetriage-tags-param-article-label' => 'Artikolo:',
+	'pagetriage-tags-param-date-label' => 'Dato:',
+	'pagetriage-tags-param-free-yes-label' => 'Jes',
+	'pagetriage-tags-param-free-no-label' => 'Ne',
+	'pagetriage-info-history-header' => 'Historio',
+	'pagetriage-info-problem-blocked' => 'Forbarita uzanto',
+	'pagetriage-info-problem-no-categories' => 'Neniuj kategorioj',
+	'pagetriage-info-problem-orphan' => 'Orfaĵo',
+	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
+	'pagetriage-info-timestamp-time-format' => 'HH:mm',
+	'pagetriage-toolbar-close' => 'Fermi',
 );
 
 /** Spanish (español)
@@ -6351,6 +6405,7 @@ $messages['pam'] = array(
 /** Polish (polski)
  * @author Ankry
  * @author BeginaFelicysym
+ * @author Matma Rex
  * @author Woytecr
  */
 $messages['pl'] = array(
@@ -6412,6 +6467,9 @@ $messages['pl'] = array(
 	'pagetriage-info-problem-no-references' => 'Brak odwołań',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-wikilove-page-creator' => 'Twórca strony',
+	'echo-pref-email-pagetriage-mark-as-reviewed' => 'oceni utworzoną przeze mnie stronę',
+	'echo-pref-email-pagetriage-add-maintenance-tag' => 'oceni utworzoną przeze mnie stronę i doda tagi informujące o problemach',
+	'echo-pref-email-pagetriage-add-deletion-tag' => 'oceni utworzoną przeze mnie stronę i zgłosi ją do usunięcia',
 );
 
 /** Pashto (پښتو)
@@ -6883,6 +6941,8 @@ $messages['ta'] = array(
 	'pagetriage-mark-as-unreviewed' => 'பரிசீலிக்கப்படாததாக குறி',
 	'pagetriage-del-talk-page-notify-error' => 'ஆக்குநரின் பேச்சுப் பக்கத்தில் அறிவித்தல் தோல்வியடைந்தது',
 	'pagetriage-del-tooltip' => 'இந்தப் பக்கத்தை நீக்க பரிந்துரை',
+	'pagetriage-toolbar-close' => 'மூடுக',
+	'pagetriage-toolbar-minimize' => 'சிறிதாக்கவும்',
 );
 
 /** Telugu (తెలుగు)
@@ -7457,6 +7517,9 @@ $messages['uk'] = array(
 	'pagetriage-categories' => '$1 {{PLURAL:$1|категорія|категорії|категорій}}',
 	'pagetriage-no-categories' => 'Немає категорій',
 	'pagetriage-orphan' => 'Сирота',
+	'pagetriage-no-author' => 'Немає інформації про автора',
+	'pagetriage-byline' => 'Створено $1 ($2$3$4)',
+	'pagetriage-byline-new-editor' => 'Створено новачком $1 ($2$3$4)',
 	'pagetriage-author-not-autoconfirmed' => 'Новачок',
 	'pagetriage-author-blocked' => 'Заблокований',
 	'pagetriage-author-bot' => 'Бот',
