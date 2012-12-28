@@ -376,7 +376,7 @@ $messages['en'] = array(
 	// notification - mark as reviewed
 	'pagetriage-notification-mark-as-reviewed' => '[[$3|$3]] was {{GENDER:$1|reviewed}} by $2',
 	'pagetriage-notification-mark-as-reviewed-email-subject' => '$3 was {{GENDER:$1|reviewed}} by $1',
-	'pagetriage-notification-mark-as-reviewed-email-body' => '$3 was reviewed by {{SITENAME}} user $1:
+	'pagetriage-notification-mark-as-reviewed-email-body' => '$3 was {{GENDER:$1|reviewed}} by {{SITENAME}} user $1:
 
 View more:
 
