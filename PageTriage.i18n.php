@@ -42,7 +42,7 @@ $messages['en'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'This page was created on $1 by new editor $2 ($3$4$5)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|edit|edits}} since $2',
 	'pagetriage-author-not-autoconfirmed' => 'New editor',
-	'pagetriage-no-patrol-right' => 'You do not have the right to review this page',
+	'pagetriage-no-patrol-right' => 'You do not have the rights to mark this page as reviewed',
 	'pagetriage-author-blocked' => 'Blocked',
 	'pagetriage-author-bot' => 'Bot',
 	'pagetriage-creation-dateformat' => 'HH:mm, d MMMM yyyy',
@@ -466,7 +466,7 @@ $messages['qqq'] = array(
 * $5 is a link to the author's contributions.",
 	'pagetriage-editcount' => "Display of page author's editing experience. $1 is total edit count, $2 is author's join date",
 	'pagetriage-author-not-autoconfirmed' => 'String indicating that the author was not yet autoconfirmed when the page was last edited',
-	'pagetriage-no-patrol-right' => 'String indicating that a user does not have right to review a page',
+	'pagetriage-no-patrol-right' => 'String indicating that a user does not have rights to mark a page as reviewed',
 	'pagetriage-author-blocked' => 'String indicating that the author was blocked when the page was last edited',
 	'pagetriage-author-bot' => 'String indicating that the author is a bot',
 	'pagetriage-creation-dateformat' => "Format specifier for the page creation date. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers
