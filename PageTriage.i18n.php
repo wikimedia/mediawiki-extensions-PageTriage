@@ -1069,11 +1069,12 @@ $messages['arc'] = array(
 
 /** Bashkir (башҡортса)
  * @author Haqmar
+ * @author Sagan
  */
 $messages['ba'] = array(
 	'pagetriage-author-not-autoconfirmed' => 'Яңы мөхәррирләүсе',
 	'pagetriage-author-blocked' => 'Блоклы',
-	'pagetriage-author-bot' => 'Бот',
+	'pagetriage-author-bot' => 'Робот',
 	'pagetriage-showing' => 'Күрһәтеләсәктәр:',
 	'pagetriage-filter-list-prompt' => 'Һөҙгөстәрҙе көйләү',
 	'pagetriage-sort-by' => 'Теҙеү:',
@@ -1608,7 +1609,7 @@ $messages['de'] = array(
 	'pagetriage-tag-warning-notice' => 'Hinweis: Diese Seite ist nur {{PLURAL:$1|eine Minute|$1 Minuten}} alt. Ziehe in Erwägung mit der Markierung zu warten, außer das Problem ist ernst.',
 	'pagetriage-notification-mark-as-reviewed' => '[[$3|$3]] wurde von $2 {{GENDER:$1|überprüft}}',
 	'pagetriage-notification-mark-as-reviewed-email-subject' => '$3 wurde von $1 {{GENDER:$1|überprüft}}',
-	'pagetriage-notification-mark-as-reviewed-email-body' => '$3 wurde vom {{SITENAME}}-Benutzer $1 überprüft:
+	'pagetriage-notification-mark-as-reviewed-email-body' => '$3 wurde vom {{SITENAME}}-Benutzer $1 {{GENDER:$1|überprüft}}:
 
 Mehr ansehen:
 
@@ -1678,6 +1679,50 @@ $messages['diq'] = array(
 	'pagetriage-refresh-list' => 'Listi neweke',
 	'pagetriage-tags-cat-all-label' => 'Etiketi pêro',
 	'pagetriage-tags-param-article-label' => 'Wesiqe:',
+);
+
+/** Greek (Ελληνικά)
+ * @author ZaDiak
+ */
+$messages['el'] = array(
+	'pagetriage-please-wait' => 'Παρακαλώ περιμένετε...',
+	'pagetriage-bytes' => '$1 {{PLURAL:$1|byte|bytes}}',
+	'pagetriage-edits' => '$1 {{PLURAL:$1|επεξεργασία|επεξεργασίες}}',
+	'pagetriage-categories' => '$1 {{PLURAL:$1|κατηγορία|κατηγορίες}}',
+	'pagetriage-no-categories' => 'Καμία κατηγορία',
+	'pagetriage-no-reference' => 'Καμία παραπομπή',
+	'pagetriage-author-blocked' => 'Φραγμένος',
+	'pagetriage-author-bot' => 'Μποτ',
+	'pagetriage-showing' => 'Εμφανίζονται:',
+	'pagetriage-sort-by' => 'Ταξινόμηση κατά:',
+	'pagetriage-newest' => 'Νεότερες',
+	'pagetriage-oldest' => 'Παλαιότερες',
+	'pagetriage-triage' => 'Επιθεώρηση',
+	'pagetriage-filter-show-heading' => 'Εμφάνιση:',
+	'pagetriage-filter-redirects' => 'Ανακατευθύνσεις',
+	'pagetriage-filter-article' => 'Άρθρο',
+	'pagetriage-filter-all' => 'Εμφάνιση όλων',
+	'pagetriage-stats-less-than-a-day' => 'λιγότερο από μία ημέρα',
+	'pagetriage-filter-ns-all' => 'Όλα',
+	'pagetriage-more' => 'Περισσότερα',
+	'pagetriage-filter-stat-all' => 'Όλα',
+	'pagetriage-filter-stat-bots' => 'bots',
+	'pagetriage-filter-stat-redirects' => 'ανακατευθύνσεις',
+	'pagetriage-filter-stat-no-categories' => 'καμία κατηγορία',
+	'pagetriage-refresh-list' => 'Ανανέωση λίστας',
+	'pagetriage-button-add-parameters' => 'Προσθήκη παραμέτρων',
+	'pagetriage-button-add-details' => 'Προσθήκη λεπτομερειών',
+	'pagetriage-button-edit-details' => 'Επεξεργασία λεπτομερειών',
+	'pagetriage-button-mark-for-deletion' => 'Σήμανση για διαγραφή',
+	'pagetriage-tags-cat-neutrality-label' => 'Ουδετερότητα',
+	'pagetriage-del-tags-dba3-label' => 'Καθόλου περιεχόμενο',
+	'pagetriage-tags-param-article-label' => 'Άρθρο:',
+	'pagetriage-tags-param-date-label' => 'Ημερομηνία:',
+	'pagetriage-tags-param-free-yes-label' => 'Ναι',
+	'pagetriage-tags-param-free-no-label' => 'Όχι',
+	'pagetriage-info-history-header' => 'Ιστορικό',
+	'pagetriage-info-history-show-full' => 'εμφάνιση πλήρους ιστορικού',
+	'pagetriage-info-help' => 'βοήθεια',
 );
 
 /** Esperanto (Esperanto)
@@ -2281,7 +2326,7 @@ Vaata veel:
 
 $4
 
-$5',
+$5', # Fuzzy
 	'pagetriage-notification-add-maintenance-tag' => '$2 on lehekülje [[$3|$3]] {{GENDER:$1|üle vaadanud}} ja märgistanud. {{PLURAL:$5|Märgis|Märgised}}: $4',
 	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 on lehekülje $3 märgistanud',
 	'pagetriage-notification-add-maintenance-tag-email-body' => '{{GRAMMAR:genitive|{{SITENAME}}}} kasutaja $1 on lehekülje $3 {{GENDER:$1|üle vaadanud}} ja märgistanud. 
@@ -4403,11 +4448,14 @@ $messages['is'] = array(
  * @author F. Cosoleto
  * @author Gianfranco
  * @author McDutchie
+ * @author Raoli
  */
 $messages['it'] = array(
-	'pagetriage' => 'Page Triage',
+	'pagetriage' => 'Triage pagina',
+	'pagetriage-dot-separator' => ' &#xb7;',
 	'newpagesfeed' => 'Feed delle nuove pagine',
 	'pagetriage-desc' => "Facilita la revisione e l'approvazione delle nuove pagine",
+	'pagetriage-pagecuration' => 'Monitoraggio pagine',
 	'pagetriage-please-wait' => 'Attendere prego...',
 	'pagetriage-api-invalidid' => "L'ID che hai fornito ($1) non è valido.",
 	'pagetriage-markpatrolled' => 'Contrassegna questa pagina come revisionata',
@@ -4419,10 +4467,10 @@ $messages['it'] = array(
 	'pagetriage-mark-as-unreviewed-error' => 'Si è verificato un errore durante la segnalazione della pagina come non revisionata: $1',
 	'pagetriage-hist' => 'cron',
 	'pagetriage-bytes' => '$1 {{PLURAL:$1|byte}}',
-	'pagetriage-edits' => '$1 {{PLURAL:$1|contributo|contributi}}',
+	'pagetriage-edits' => '$1 {{PLURAL:$1|modifica|modifiche}}',
 	'pagetriage-categories' => '$1 {{PLURAL:$1|categoria|categorie}}',
 	'pagetriage-no-categories' => 'Nessuna categoria',
-	'pagetriage-no-reference' => 'Nessuna nota',
+	'pagetriage-no-reference' => 'No citazioni',
 	'pagetriage-orphan' => 'Orfana',
 	'pagetriage-no-author' => "Nessuna informazione disponibile sull'autore",
 	'pagetriage-byline' => 'Creato da $1 ($2$3$4)',
@@ -4434,13 +4482,14 @@ $messages['it'] = array(
 	'pagetriage-no-patrol-right' => 'Non si dispone dei permessi per revisionare questa pagina',
 	'pagetriage-author-blocked' => 'Bloccato',
 	'pagetriage-author-bot' => 'Bot',
+	'pagetriage-user-creation-dateformat' => 'yyyy-MM-dd',
 	'pagetriage-showing' => 'Sto mostrando:',
 	'pagetriage-filter-list-prompt' => 'Imposta filtri',
-	'pagetriage-unreviewed-article-count' => '$1 {{PLURAL:$1|pagina non revisionata|pagine non revisionate}} totali (più vecchia: $2)',
+	'pagetriage-unreviewed-article-count' => '$1 {{PLURAL:$1|pagina non revisionata|pagine non revisionate}} in totale (più vecchia: $2)',
 	'pagetriage-reviewed-article-count-past-week' => '$1 {{PLURAL:$1|pagina|pagine}} revisionate questa settimana',
 	'pagetriage-sort-by' => 'Ordina per:',
-	'pagetriage-newest' => 'più recente',
-	'pagetriage-oldest' => 'più vecchia',
+	'pagetriage-newest' => 'la più recente',
+	'pagetriage-oldest' => 'la più vecchia',
 	'pagetriage-triage' => 'Revisiona',
 	'pagetriage-filter-show-heading' => 'Mostra:',
 	'pagetriage-filter-reviewed-edits' => 'Pagine revisionate',
@@ -4460,7 +4509,7 @@ $messages['it'] = array(
 	'pagetriage-filter-blocked' => 'Sono state create da utenti bloccati',
 	'pagetriage-filter-all' => 'Mostra tutte',
 	'pagetriage-filter-set-button' => 'Imposta filtri',
-	'pagetriage-stats-less-than-a-day' => 'meno di un giorno',
+	'pagetriage-stats-less-than-a-day' => 'meno di un giorno fa',
 	'pagetriage-stats-reviewed-page-count' => '$1 {{PLURAL:$1|pagina|pagine}} revisionate questa settimana',
 	'pagetriage-stats-filter-page-count' => '$1 {{PLURAL:$1|pagina|pagine}} nel tuo elenco filtrato',
 	'pagetriage-filter-ns-all' => 'Tutti',
@@ -4478,20 +4527,22 @@ $messages['it'] = array(
 	'pagetriage-filter-stat-username' => 'Nome utente: $1',
 	'pagetriage-no-pages' => 'Nessuna pagina corrisponde ai tuoi criteri.',
 	'pagetriage-warning-browser' => 'Questo strumento potrebbe non funzionare correttamente nei browser più vecchi di Internet Explorer 8.',
+	'pagetriage-welcome' => 'Rivedi le nuove pagine qui sotto e aiutaci a migliorare {{SITENAME}}. <a href="<span class=" notranslate"="">$1 "&gt; Per saperne di più</a> · <a href="<span class=" notranslate"="">$2 "&gt; Lascia un commento</a>',
 	'pagetriage-note-reviewed' => 'Questa pagina è stata revisionata.',
 	'pagetriage-note-not-reviewed' => 'Questa pagina non è ancora stata revisionata.',
 	'pagetriage-note-deletion' => 'Questa pagina è stata proposta per la cancellazione.',
 	'pagetriage-refresh-list' => 'Aggiorna elenco',
 	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|etichetta selezionata|etichette selezionate}}',
 	'pagetriage-button-add-tag' => 'Aggiungi etichette selezionate',
-	'pagetriage-button-add-tag-number' => 'Aggiungi $1 etichette selezionate',
+	'pagetriage-button-add-tag-number' => 'Aggiungi $1 {{PLURAL:$1|etichetta selezionata|etichette selezionate}}',
 	'pagetriage-button-add-parameters' => 'Aggiungi parametri',
 	'pagetriage-button-add-details' => 'Aggiungi dettagli',
 	'pagetriage-button-edit-details' => 'Modifica dettagli',
 	'pagetriage-button-mark-for-deletion' => 'Segna per la cancellazione',
 	'pagetriage-add-a-note-creator' => "Aggiungi un messaggio per l'autore: (facoltativo)",
+	'pagetriage-add-a-note-reviewer' => 'Aggiungi un messaggio per il revisore: (facoltativo)',
 	'pagetriage-characters-left' => '{{PLURAL:$1|$1 carattere rimanente|$1 caratteri rimanenti}}',
-	'pagetriage-personal-default-note' => 'Scrivere una nota utile per {{GENDER:$1|$1}}. Verrà pubblicata sulla sua pagina di discussione.',
+	'pagetriage-personal-default-note' => 'Scrivi una nota utile per {{GENDER:$1|$1}}. Verrà pubblicata sulla {{GENDER:$1|sua|loro}} pagina di discussione.',
 	'pagetriage-page-status-reviewed' => 'Contrassegnata come revisionata il $1 da $2 ($3$4$5)',
 	'pagetriage-page-status-reviewed-anonymous' => 'Contrassegnata come revisionata',
 	'pagetriage-page-status-unreviewed' => 'Questa pagina non è stata ancora revisionata.',
@@ -4499,7 +4550,7 @@ $messages['it'] = array(
 	'pagetriage-page-status-delete' => 'Contrassegnata per la cancellazione',
 	'pagetriage-articleinfo-stat' => 'Statistiche: $1',
 	'pagetriage-js-required' => 'Questa estensione richiede un browser con JavaScript abilitato.',
-	'pagetriage-tags-title' => 'Aggiungi tag',
+	'pagetriage-tags-title' => 'Aggiungi etichette',
 	'pagetriage-tags-cat-common-label' => 'Comuni',
 	'pagetriage-tags-cat-metadata-label' => 'Metadati',
 	'pagetriage-tags-cat-cleanup-label' => 'Pulizia',
@@ -4510,19 +4561,19 @@ $messages['it'] = array(
 	'pagetriage-tags-cat-verifiability-label' => 'Verificabilità',
 	'pagetriage-tags-cat-writingstyle-label' => 'Stile di scrittura',
 	'pagetriage-tags-cat-moretags-label' => 'Altre etichette',
-	'pagetriage-tags-cat-all-label' => 'Tutti i tag',
+	'pagetriage-tags-cat-all-label' => 'Tutte le etichette',
 	'pagetriage-tags-linkrot-label' => 'URL puri',
-	'pagetriage-tags-linkrot-desc' => 'Questa pagina utilizza URL puri (senza descrizione) per le note, che possono diventare facilmente collegamenti interrotti o non funzionanti.',
+	'pagetriage-tags-linkrot-desc' => 'Questa pagina utilizza URL puri (senza descrizione) per i riferimenti, che possono facilmente diventare collegamenti interrotti o non funzionanti.',
 	'pagetriage-tags-copyedit-label' => 'Correzione',
-	'pagetriage-tags-copyedit-desc' => "Questa pagina ha bisogno di correzioni per la grammatica, lo stile, la coesione, il tono, e/o l'ortografia.",
+	'pagetriage-tags-copyedit-desc' => 'Questa pagina ha bisogno di correzioni di grammatica, stile, coesione, tono, e/o ortografia.',
 	'pagetriage-tags-morefootnotes-label' => 'Ulteriori note',
-	'pagetriage-tags-morefootnotes-desc' => 'Questa pagina ha alcune note, ma insufficienti citazioni nel testo.',
-	'pagetriage-tags-refimprove-label' => 'Più note',
-	'pagetriage-tags-refimprove-desc' => 'Questa pagina ha bisogno di ulteriori note o fonti per la verifica.',
+	'pagetriage-tags-morefootnotes-desc' => 'Questa pagina ha alcuni riferimenti, ma insufficienti citazioni nel testo.',
+	'pagetriage-tags-refimprove-label' => 'Più riferimenti',
+	'pagetriage-tags-refimprove-desc' => 'Questa pagina ha bisogno di ulteriori riferimenti o fonti per la verifica.',
 	'pagetriage-tags-uncategorised-label' => 'Non categorizzata',
 	'pagetriage-tags-uncategorised-desc' => 'Questa pagina non appartiene a nessuna categoria.',
-	'pagetriage-tags-unreferenced-label' => 'Senza note',
-	'pagetriage-tags-unreferenced-desc' => 'Questa pagina non ha alcuna nota.',
+	'pagetriage-tags-unreferenced-label' => 'No riferimenti',
+	'pagetriage-tags-unreferenced-desc' => 'Questa pagina non ha alcun riferimento.',
 	'pagetriage-tags-deadend-label' => 'Senza uscita',
 	'pagetriage-tags-deadend-desc' => 'Questa pagina ha pochi o nessun collegamento ad altre pagine.',
 	'pagetriage-tags-externallinks-label' => 'Collegamenti esterni',
@@ -4546,7 +4597,7 @@ $messages['it'] = array(
 	'pagetriage-tags-autobiography-label' => 'Autobiografia',
 	'pagetriage-tags-autobiography-desc' => "Questa pagina è un'autobiografia e non è scritta in toni neutrali.",
 	'pagetriage-tags-coi-label' => 'Conflitto di interessi',
-	'pagetriage-tags-coi-desc' => 'Il creatore o il maggior contributore a questa pagina potrebbe avere un conflitto di interessi.',
+	'pagetriage-tags-coi-desc' => 'Il creatore o il maggior contributore di questa pagina potrebbe avere un conflitto di interessi.',
 	'pagetriage-tags-peacock-label' => 'Esaltazione',
 	'pagetriage-tags-peacock-desc' => "Questa pagina contiene termini esaltanti che promuovono il soggetto, senza l'aggiunta di informazioni.",
 	'pagetriage-tags-pov-label' => 'POV',
@@ -4554,7 +4605,7 @@ $messages['it'] = array(
 	'pagetriage-tags-weasel-label' => 'Ambigua',
 	'pagetriage-tags-weasel-desc' => "La neutralità della pagina è compromessa dall'utilizzo di parole ambigue.",
 	'pagetriage-tags-blpsources-label' => 'Più fonti (biografie di persone viventi)',
-	'pagetriage-tags-blpsources-desc' => 'Questa pagina su una persona vivente ha bisogno di ulteriori fonti per la verifica.',
+	'pagetriage-tags-blpsources-desc' => 'Questa pagina su una persona vivente ha bisogno di ulteriori citazioni delle fonte per la verifica.',
 	'pagetriage-tags-originalresearch-label' => 'Ricerca originale',
 	'pagetriage-tags-originalresearch-desc' => 'Questa pagina contiene ricerche originali o affermazioni non verificate.',
 	'pagetriage-tags-primarysources-label' => 'Fonti primarie',
@@ -4582,11 +4633,11 @@ $messages['it'] = array(
 	'pagetriage-tags-closeparaphrasing-label' => 'Riformulazione insufficiente',
 	'pagetriage-tags-closeparaphrasing-desc' => 'Questa pagina contiene una parafrasi di chiusura di una sorgente protetta da copyright non libero.', # Fuzzy
 	'pagetriage-tags-copypaste-label' => 'Copia e incolla',
-	'pagetriage-tags-copypaste-desc' => 'Questa pagina sembra avere stata copiata ed incollata da una fonte.',
+	'pagetriage-tags-copypaste-desc' => 'Questa pagina sembra essere stata copiata ed incollata da una fonte.',
 	'pagetriage-tags-nonfree-label' => 'Contenuti protetti da copyright',
 	'pagetriage-tags-nonfree-desc' => 'Questa pagina fa un uso eccessivo o improprio di materiali protetti da copyright.',
-	'pagetriage-tags-notability-label' => 'Notabilità',
-	'pagetriage-tags-notability-desc' => "L'oggetto di questa pagina non soddisfa le linee guida sulla notabilità.",
+	'pagetriage-tags-notability-label' => 'Rilevanza',
+	'pagetriage-tags-notability-desc' => "L'oggetto di questa pagina non soddisfa le linee guida sulla rilevanza.",
 	'pagetriage-tags-disputed-label' => 'Problemi di precisione',
 	'pagetriage-tags-disputed-desc' => 'Questa pagina ha una accuratezza discutibile.',
 	'pagetriage-tags-citationstyle-label' => 'Stile di citazione',
@@ -4594,7 +4645,7 @@ $messages['it'] = array(
 	'pagetriage-tags-hoax-label' => 'Bufala',
 	'pagetriage-tags-hoax-desc' => 'Questa pagina potrebbe essere un falso completo.',
 	'pagetriage-tags-nofootnotes-label' => 'Nessuna nota',
-	'pagetriage-tags-nofootnotes-desc' => 'Questa pagina ha delle note, ma nessuna citazione nel testo.',
+	'pagetriage-tags-nofootnotes-desc' => 'Questa pagina ha dei riferimenti, ma nessuna citazione nel testo.',
 	'pagetriage-tags-confusing-label' => 'Confusa',
 	'pagetriage-tags-confusing-desc' => 'Questa pagina è confusa o poco chiara.',
 	'pagetriage-tags-essaylike-label' => 'Saggio',
@@ -4604,9 +4655,9 @@ $messages['it'] = array(
 	'pagetriage-tags-notenglish-label' => 'Lingua non corretta',
 	'pagetriage-tags-notenglish-desc' => 'Questa pagina è scritta in una lingua diversa non corretta ed ha bisogno di traduzione.',
 	'pagetriage-tags-technical-label' => 'Tecnica',
-	'pagetriage-tags-technical-desc' => 'Questa pagina è troppo tecnica per un lettore profano.',
+	'pagetriage-tags-technical-desc' => 'Questa pagina è troppo tecnica per un lettore non esperto.',
 	'pagetriage-tags-tense-label' => 'Tempo',
-	'pagetriage-tags-tense-desc' => 'Questa pagina è scritta in un tempo non corretto.',
+	'pagetriage-tags-tense-desc' => 'Questa pagina è scritta in un tempo verbale non corretto.',
 	'pagetriage-tags-tone-label' => 'Tono',
 	'pagetriage-tags-tone-desc' => 'Il tono di questa pagina non è appropriato.',
 	'pagetriage-tags-allplot-label' => 'Tutta trama',
@@ -4616,7 +4667,7 @@ $messages['it'] = array(
 	'pagetriage-tags-inuniverse-label' => 'Prospettiva immaginaria',
 	'pagetriage-tags-inuniverse-desc' => 'Il tema di questa pagina è immaginario e deve essere riscritto da una prospettiva non fittizia.',
 	'pagetriage-tags-outofdate-label' => 'Obsoleta',
-	'pagetriage-tags-outofdate-desc' => 'Questa pagina ha bisogno che informazioni superate siano rimosse o aggiornate.',
+	'pagetriage-tags-outofdate-desc' => 'Questa pagina ha bisogno che le informazioni superate siano rimosse o aggiornate.',
 	'pagetriage-tags-overlydetailed-label' => 'Eccessivamente dettagliata',
 	'pagetriage-tags-overlydetailed-desc' => 'Questa pagina contiene una quantità eccessiva di dettagli intricati.',
 	'pagetriage-tags-plot-label' => 'Trama',
@@ -4630,29 +4681,40 @@ $messages['it'] = array(
 	'pagetriage-tags-update-label' => 'Aggiornamento',
 	'pagetriage-tags-update-desc' => 'Questa pagina ha bisogno che siano aggiunte ulteriori informazioni aggiornate.',
 	'pagetriage-tags-tooltip' => 'Aggiungere tag per risolvere i problemi con la pagina',
-	'pagetriage-del-tags-cat-csd-desc' => 'Contrassegnare questa pagina per la cancellazione rapida se si inserisce uno dei criteri qui di seguito.',
-	'pagetriage-del-tags-cat-prod-desc' => 'Contrassegnare questa pagina per la cancellazione proposta se viola chiaramente le norme della comunità.',
-	'pagetriage-del-tags-cat-discussion-desc' => 'Contrassegnare questa pagina per la discussione della sua cancellazione con gli altri utenti.',
+	'pagetriage-del-tags-cat-csd-desc' => 'Segna questa pagina come cancellazione rapida se rientra in uno dei seguenti criteri.',
+	'pagetriage-del-tags-cat-prod-desc' => 'Segna questa pagina come proposta di cancellazione se viola chiaramente le norme della comunità.',
+	'pagetriage-del-tags-cat-discussion-desc' => 'Segna questa pagina per discutere la sua cancellazione con altri utenti.',
 	'pagetriage-del-tags-dba3-label' => 'Nessun contenuto',
+	'pagetriage-del-tags-dba3-desc' => 'Qualsiasi articolo (diverso da pagine di disambiguazione, redirect o soft redirect) contiene solo i link esterni, le categorie e le sezioni "Voci correlate", una riformulazione del titolo che tenta di corrispondere con la persona o il gruppo denominato dal suo titolo, una domanda che dovrebbe essere stato chiesta allo sportello delle informazioni o dei commenti, template o immagini. (A3)',
+	'pagetriage-del-tags-dbg7-label' => "L'autore richiede la cancellazione",
+	'pagetriage-del-tags-dbg7-desc' => "Pagine dove l'autore ha richiesto la cancellazione, esplicitamente o svuotando la pagina. (G7)",
 	'pagetriage-del-tags-dbu3-label' => 'Gallerie non libere',
+	'pagetriage-del-tags-dbu3-desc' => "Gallerie d'immagini nel namespace utente che contengono delle immagini in \"fair use\" o non-libere. Le politiche di {{SITENAME}} vietano l'uso di contenuto non libero nel namespace utente anche se caricato dall'utente; è accettato l'uso di contenuti in pubblico dominio o sotto licenza libera. (U3)",
+	'pagetriage-del-talk-page-notify-summary' => "Sto notificando all'autore la proposta di cancellazione di [[$1]]",
 	'pagetriage-tags-param-article-label' => 'Voce:',
 	'pagetriage-tags-param-date-label' => 'Data:',
 	'pagetriage-tags-param-issues-label' => 'Descrivere i problemi da affrontare:',
-	'pagetriage-tags-param-for-label' => 'Problemi che devono essere affrontati:', # Fuzzy
+	'pagetriage-tags-param-for-label' => 'Questo articolo può richiedere correzioni stilistiche per:',
 	'pagetriage-tags-param-blp-label' => 'Questa è la biografia di una persona vivente',
 	'pagetriage-tags-param-source-label' => 'Aggiungere un URL per quella fonte.',
 	'pagetriage-tags-param-free-label' => 'Questo materiale è liberamente distribuito.',
 	'pagetriage-tags-param-url-label' => 'Si prega di aggiungere un URL per quella fonte.',
 	'pagetriage-tags-param-free-yes-label' => 'Sì',
 	'pagetriage-tags-param-free-no-label' => 'No',
-	'pagetriage-tags-param-missing-required' => 'Parametro $1 è obbligatorio', # Fuzzy
+	'pagetriage-tags-param-missing-required' => "Manca un parametro richiesto all'etichetta $1",
+	'log-name-pagetriage-curation' => 'Cura della pagina',
+	'log-description-pagetriage-curation' => 'Questo è il registro delle azioni intraprese nella barra degli strumenti della pagina di cura.',
+	'log-name-pagetriage-deletion' => 'Registro di cancellazione etichette',
+	'log-description-pagetriage-deletion' => 'Questo è il registro delle azioni intraprese nelle pagine di cura della cancellazione guidata',
 	'logentry-pagetriage-curation-reviewed' => '$1 ha {{GENDER:$2|contrassegnato}} $3 come revisionata',
 	'logentry-pagetriage-curation-unreviewed' => '$1 ha {{GENDER:$2|contrassegnato}} $3 come non revisionata',
 	'logentry-pagetriage-curation-tag' => '$1 ha {{GENDER:$2|etichettato}} $3 con $4 {{PLURAL:$5|tag|tags}}',
 	'logentry-pagetriage-curation-delete' => '$1 ha {{GENDER:$2|contrassegnato}} $3 per la cancellazione con $4 {{PLURAL:$5|tag|tags}}',
 	'logentry-pagetriage-deletion-delete' => '$1 ha {{GENDER:$2|contrassegnato}} $3 per la cancellazione con $4 {{PLURAL:$5|tag|tags}}',
 	'pagetriage-tags-edit-summary' => 'Aggiunti tag alla pagina utilizzando $1 ($2)',
-	'pagetriage-del-tags-param-discussion-label' => 'Spiegare perché questa pagina dovrebbe essere cancellata e fornire, se possibile, un collegamento alle linee guida opportune',
+	'pagetriage-tags-note-edit-summary' => 'Aggiunti commenti riguardo [[$1]]',
+	'pagetriage-del-edit-summary' => 'Pagina proposta per la cancellazione utilizzando il $1 ($2)',
+	'pagetriage-del-tags-param-discussion-label' => 'Spiega perché questo articolo dovrebbe essere cancellato e fornisci, se possibile, un collegamento alle linee guida opportune',
 	'pagetriage-info-title' => 'Informazioni sulla pagina',
 	'pagetriage-info-problem-header' => 'Possibili problemi',
 	'pagetriage-info-history-header' => 'Cronologia',
@@ -4667,11 +4729,11 @@ $messages['it'] = array(
 	'pagetriage-info-problem-no-categories-desc' => 'Questa pagina non appartiene a nessuna categorie.',
 	'pagetriage-info-problem-orphan' => 'Orfana',
 	'pagetriage-info-problem-orphan-desc' => 'Nessuna pagina linka a questa pagina.',
-	'pagetriage-info-problem-no-references' => 'Nessuna nota',
+	'pagetriage-info-problem-no-references' => 'No citazioni',
 	'pagetriage-info-problem-no-references-desc' => 'Questa pagina non cita alcuna fonte.',
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'H:mm',
-	'pagetriage-info-tooltip' => 'Visualizza i metadati per questa pagina',
+	'pagetriage-info-tooltip' => 'Visualizza i metadati di questa pagina',
 	'pagetriage-toolbar-collapsed' => 'Curatela',
 	'pagetriage-toolbar-linktext' => 'Cura questa voce',
 	'pagetriage-toolbar-learn-more' => 'Per saperne di più »',
@@ -4680,18 +4742,59 @@ $messages['it'] = array(
 	'pagetriage-mark-as-unreviewed' => 'Contrassegna come non revisionata',
 	'pagetriage-mark-as-reviewed-helptext' => 'Contrassegnare questa pagina come revisionata se si è finito di controllarla.',
 	'pagetriage-mark-as-unreviewed-helptext' => 'Contrassegnare questa pagina come non revisionata se si ritiene che debba essere controllata ulteriormente.',
-	'pagetriage-wikilove-helptext' => 'Selezionare i nomi degli utenti che si desidera ringraziare.',
+	'pagetriage-wikilove-helptext' => 'Selezionare i nomi degli utenti che desideri ringraziare.',
 	'pagetriage-wikilove-page-creator' => 'Creatore della pagina',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|contributo|contributi}}',
 	'pagetriage-wikilove-no-recipients' => 'Nessun destinatario disponibile per questa pagina.',
 	'pagetriage-wikilove-tooltip' => 'Invia apprezzamento agli autori',
 	'pagetriage-next-tooltip' => 'Vai alla pagina successiva nella coda',
 	'pagetriage-del-log-page-missing-error' => 'La pagina del registro di oggi non è stata ancora creata.',
+	'pagetriage-del-log-page-adding-error' => 'Impossibile trovare la destinazione della discussione',
 	'pagetriage-del-talk-page-notify-error' => "Impossibile notificare l'autore sulla sua pagina di discussione",
-	'pagetriage-del-tooltip' => 'Proporre questa pagina per la cancellazione',
+	'pagetriage-del-discussion-page-adding-error' => 'Impossibile aggiungere la pagina alla pagina di discussione della cancellazione!',
+	'pagetriage-del-tooltip' => 'Proponi questa pagina per la cancellazione',
 	'pagetriage-tagging-error' => 'Impossibile applicare tag alla pagina',
+	'pagetriage-add-tag-confirmation' => 'Sei sicuro di aggiungere $1 {{PLURAL:$1|etichetta|etichette}} per un articolo così corto?',
+	'pagetriage-tag-deletion-error' => 'Pagina già contrassegnata con un template di cancellazione, procedura annullata.',
 	'pagetriage-toolbar-close' => 'Chiudi',
-	'pagetriage-toolbar-minimize' => 'Ridurre a icona',
+	'pagetriage-toolbar-minimize' => 'Minimizza',
+	'pagetriage-tag-warning-notice' => "Nota: questa pagina è solo di $1 {{PLURAL:$1|minuto|minuti}} fa. Aspetta un po' prima di contrassegnarla a meno che il problema non sia serio.",
+	'pagetriage-notification-mark-as-reviewed' => '[[$3|$3]] è stato {{GENDER:$1|revisionato}} da $2',
+	'pagetriage-notification-mark-as-reviewed-email-subject' => '$3 è stato {{GENDER:$1|revisionato}} da $1',
+	'pagetriage-notification-mark-as-reviewed-email-body' => "$3 è stato revisionato dall'utente $1 di {{SITENAME}}:
+
+Per saperne di più:
+
+$4
+
+$5", # Fuzzy
+	'pagetriage-notification-add-maintenance-tag' => '[[$3|$3]] è stato {{GENDER:$1|revisionato}} e {{GENDER:$1|contrassegnato}} da $2. {{PLURAL:$5|Etichetta|Etichette}}: $4',
+	'pagetriage-notification-add-maintenance-tag-email-subject' => '$3 è stato {{GENDER:$1|contrassegnato}} da $1',
+	'pagetriage-notification-add-maintenance-tag-email-body' => "$3 è stato {{GENDER:$1|revisionato}} e {{GENDER:$1|contrassegnato}} dall'utente $1 di {{SITENAME}}.
+
+{{PLURAL:$6|Tag}}: $5
+
+Per saperne di più:
+
+$4
+
+$7",
+	'pagetriage-notification-add-deletion-tag' => '[[$3|$3]] è stato {{GENDER:$1|revisionato}} e {{GENDER:$1|contrassegnato per la cancellazione}} da $2. {{PLURAL:$5|Etichetta|Etichette}}: $4',
+	'pagetriage-notification-add-deletion-tag-email-subject' => "$3 è stato {{GENDER:$1|contrassegnato per l'eliminazione}} da $1",
+	'pagetriage-notification-add-deletion-tag-email-body' => "$3 è stato {{GENDER:$1|contrassegnato per la cancellazione}} dall'utente $1 di {{SITENAME}}.
+
+{{PLURAL:$6|Tag}}: $5
+
+Per saperne di più:
+
+$4
+
+$7",
+	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Revisiona una pagina che ho creato',
+	'echo-pref-email-pagetriage-add-maintenance-tag' => "Revisiona una pagina che ho creato e aggiunge un'etichetta di manutenzione",
+	'echo-pref-email-pagetriage-add-deletion-tag' => 'Revisiona una pagina che ho creato e la propone per la cancellazione',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 è stato {{GENDER:$2|revisionato}} da $2',
+	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|revisione della pagina|revisioni della pagina}}',
 );
 
 /** Japanese (日本語)
@@ -5961,7 +6064,7 @@ $messages['mk'] = array(
 	'pagetriage-tag-warning-notice' => 'Напомена: Страницава е создадена пред само $1 {{PLURAL:$1|минута|минути}}. Почекајте пред да ја означите, освен ако проблемот не е сериозен.',
 	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|ја провери}} страницата [[$3|$3]]',
 	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|ја провери}} страницата $3',
-	'pagetriage-notification-mark-as-reviewed-email-body' => '$1 на {{SITENAME}} ја провери страницата $3:
+	'pagetriage-notification-mark-as-reviewed-email-body' => '$1 на {{SITENAME}} {{GENDER:$1|ја провери}} страницата $3:
 
 Погледајте повеќе:
 
@@ -6349,7 +6452,7 @@ Meer bekijken:
 
 $4
 
-$5',
+$5', # Fuzzy
 	'pagetriage-notification-add-maintenance-tag' => '[[$3|$3]] is {{GENDER:$1|gecontroleerd}} en gelabeld door $2. {{PLURAL:$5|Label|Labels}}: $4',
 	'pagetriage-notification-add-maintenance-tag-email-subject' => '$3 is door $1 {{GENDER:$1|gelabeld}}',
 	'pagetriage-notification-add-maintenance-tag-email-body' => '$3 op {{SITENAME}} is {{GENDER:$1|gecontroleerd}} en gelabeld door $1.
@@ -6673,7 +6776,7 @@ Varda ëd pi:
 
 $4
 
-$5",
+$5", # Fuzzy
 	'pagetriage-notification-add-maintenance-tag' => "[[$3|$3]] a l'era {{GENDER:$1|revisionà}} e {{GENDER:$1|tichëttà}} da $2.  {{PLURAL:$5|Tichëtta|Tichëtte}}: $4",
 	'pagetriage-notification-add-maintenance-tag-email-subject' => "$3 a l'era {{GENDER:$1|tichëttà}} da $1",
 	'pagetriage-notification-add-maintenance-tag-email-body' => "$3 a l'era {{GENDER:$1|revisionà}} e {{GENDER:$1|tichëttà}} da {{SITENAME}} utent $1.
@@ -6967,12 +7070,16 @@ $messages['ru'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'pagetriage' => 'පිටු සමේෂණිය',
+	'newpagesfeed' => 'නව පිටු පෝෂකය',
+	'pagetriage-pagecuration' => 'පිටු ප්‍රතිකාරය',
 	'pagetriage-please-wait' => 'මදක් රැදීසිටින්න...',
 	'pagetriage-reviewed' => 'නිරීක්ෂණය කෙරූ',
 	'pagetriage-hist' => 'ඉතිහාසය',
 	'pagetriage-edits' => '{{PLURAL:$1|සංස්කරණ|සංස්කරණ}} $1 කි',
 	'pagetriage-categories' => '{{PLURAL:$1|ප්‍රවර්ග|ප්‍රවර්ග}} $1 කි',
 	'pagetriage-no-categories' => 'ප්‍රවර්ගයන් නොමැත',
+	'pagetriage-no-reference' => 'උපුටා දැක්වීම් නොමැත',
 	'pagetriage-orphan' => 'අනාථ',
 	'pagetriage-byline' => 'විසින්', # Fuzzy
 	'pagetriage-author-not-autoconfirmed' => 'නව සංස්කාරක',
@@ -6985,13 +7092,19 @@ $messages['si'] = array(
 	'pagetriage-oldest' => 'පැරණිම',
 	'pagetriage-triage' => 'නිරීක්ෂණය',
 	'pagetriage-filter-show-heading' => 'පෙන්වන්න:',
+	'pagetriage-filter-reviewed-edits' => 'නිරීක්ෂණය කෙරූ පිටු',
+	'pagetriage-filter-unreviewed-edits' => 'නිරීක්ෂණය නොකළ පිටු',
+	'pagetriage-filter-nominated-for-deletion' => 'මකාදැමුමට යෝජිත',
 	'pagetriage-filter-redirects' => 'යළියොමු',
 	'pagetriage-filter-namespace-heading' => 'නාමාඅවකාශයෙහි:',
 	'pagetriage-filter-article' => 'ලිපි',
 	'pagetriage-filter-username' => 'පරිශීලක නාමය',
+	'pagetriage-filter-tag-heading' => 'ටැගය සමඟ:',
+	'pagetriage-filter-second-show-heading' => 'එය:',
 	'pagetriage-filter-no-categories' => 'ප්‍රවර්ග නැත',
 	'pagetriage-filter-all' => 'සියල්ලම පෙන්වන්න',
 	'pagetriage-filter-set-button' => 'පෙරහන් සකසන්න',
+	'pagetriage-stats-less-than-a-day' => 'දවසකටත් වඩා අඩුවෙන්',
 	'pagetriage-filter-ns-all' => 'සියල්ල',
 	'pagetriage-more' => 'තවත්',
 	'pagetriage-filter-stat-all' => 'සියල්ල',
@@ -7005,30 +7118,44 @@ $messages['si'] = array(
 	'pagetriage-filter-stat-non-autoconfirmed' => 'නව සංස්කාරකවරුන්',
 	'pagetriage-filter-stat-blocked' => 'වාරණය කල පරිශීලකයන්',
 	'pagetriage-filter-stat-username' => 'පරිශීලක නාමය: $1',
+	'pagetriage-note-reviewed' => 'මෙම පිටුව නිරීක්ෂණය කර ඇත.',
 	'pagetriage-refresh-list' => 'ලැයිස්තුව ප්‍රතිපුරණය',
+	'pagetriage-button-add-tag' => 'තෝරාගත් ටැග එක් කරන්න',
 	'pagetriage-button-add-parameters' => 'පරාමිතීන් එක් කරන්න',
 	'pagetriage-button-add-details' => 'විස්තර එක් කරන්න',
 	'pagetriage-button-edit-details' => 'විස්තර සංස්කරණය කරන්න',
 	'pagetriage-button-mark-for-deletion' => 'මකා දැමීම සඳහා සලකුණු කරන්න',
+	'pagetriage-page-status-reviewed-anonymous' => 'නිරීක්ෂණය කෙරූ ලෙස සලකුණු කෙරිණි',
+	'pagetriage-tags-title' => 'ටැගයන් එක් කරන්න',
 	'pagetriage-tags-cat-common-label' => 'පොදු',
 	'pagetriage-tags-cat-metadata-label' => 'පාරදත්ත',
+	'pagetriage-tags-cat-cleanup-label' => 'පිරිසිදු කිරීම',
 	'pagetriage-tags-cat-neutrality-label' => 'මධ්‍යස්ථතාව',
 	'pagetriage-tags-cat-sources-label' => 'මූලාශ්‍ර',
 	'pagetriage-tags-cat-structure-label' => 'සංස්ථානය',
+	'pagetriage-tags-cat-unwantedcontent-label' => 'අනවශ්‍ය අන්තර්ගතය',
 	'pagetriage-tags-cat-verifiability-label' => 'සත්‍යාපනය කලහැකිබව',
 	'pagetriage-tags-cat-writingstyle-label' => 'ලිවීමේ ශෛලිය',
+	'pagetriage-tags-cat-moretags-label' => 'තවත් ටැග',
 	'pagetriage-tags-cat-all-label' => 'සියළු ටැග',
 	'pagetriage-del-tags-dba3-label' => 'අන්තර්ගතයක් නොමැත',
+	'pagetriage-del-tags-dbg7-label' => 'කතෘ විසින් මකා දැමීමට ඉල්ලා සිටී',
+	'pagetriage-del-tags-dbu3-label' => 'නිදහස්-නොවන ගැලරියන්',
 	'pagetriage-tags-param-article-label' => 'ලිපිය:',
 	'pagetriage-tags-param-date-label' => 'දිනය:',
 	'pagetriage-tags-param-free-yes-label' => 'ඔව්',
 	'pagetriage-tags-param-free-no-label' => 'නැත',
+	'log-name-pagetriage-curation' => 'පිටු ප්‍රතිකාර ලොගය',
 	'pagetriage-info-title' => 'පිටු තොරතුරු',
+	'pagetriage-info-problem-header' => 'වියහැකි වාදපද',
 	'pagetriage-info-history-header' => 'ඉතිහාසය',
+	'pagetriage-info-history-show-full' => 'සම්පූර්ණ ඉතිහාසය පෙන්වන්න',
 	'pagetriage-info-help' => 'උදව්',
+	'pagetriage-info-problem-non-autoconfirmed' => 'නව සංස්කාරක',
 	'pagetriage-info-problem-blocked' => 'වාරණය කල පරිශීලක',
 	'pagetriage-info-problem-no-categories' => 'ප්‍රවර්ගයන් නොමැත',
 	'pagetriage-info-problem-orphan' => 'අනාථ',
+	'pagetriage-info-problem-no-references' => 'උපුටා දැක්වීම් නොමැත',
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-toolbar-collapsed' => 'කාල සීමාව',
@@ -7041,6 +7168,7 @@ $messages['si'] = array(
 
 /** Swedish (svenska)
  * @author Ainali
+ * @author Rotsee
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
@@ -7213,7 +7341,7 @@ $messages['sv'] = array(
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-info-tooltip' => 'Visa metadata för denna sida',
 	'pagetriage-toolbar-collapsed' => 'Kuration',
-	'pagetriage-toolbar-linktext' => 'Kurera denna artikel',
+	'pagetriage-toolbar-linktext' => 'Granska eller märk denna artikel',
 	'pagetriage-toolbar-learn-more' => 'Läs mer »',
 	'pagetriage-mark-title' => 'Markera som granskad',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|redigering|redigeringar}}',
@@ -8006,6 +8134,7 @@ $messages['uk'] = array(
 	'pagetriage-info-history-show-full' => 'показати повну історію',
 	'pagetriage-info-help' => 'допомога',
 	'pagetriage-info-no-problems' => 'У цієї сторінки поки не знайдено жодних проблем.',
+	'pagetriage-info-problem-non-autoconfirmed' => 'Новачок',
 	'pagetriage-info-problem-non-autoconfirmed-desc' => 'Ця сторінка була створена неавтопідтвердженим користувачем.',
 	'pagetriage-info-problem-blocked' => 'Заблокований користувач',
 	'pagetriage-info-problem-blocked-desc' => 'Ця сторінка була створена заблокованим користувачем.',
