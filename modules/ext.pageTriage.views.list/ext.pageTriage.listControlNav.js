@@ -65,6 +65,14 @@ $( function() {
 				e.stopPropagation();
 			} );
 
+			$( '#mwe-pt-filter-user' ).keypress( function ( e ) {
+				if ( e.which == 13 ) {
+					$( '#mwe-pt-filter-set-button' ).click();
+					e.preventDefault();
+					return false;
+				}
+			} );
+
 			$( '#mwe-pt-filter-reviewed-edits,#mwe-pt-filter-unreviewed-edits' ).click(
 				function( e ) {
 					_this.setSubmitButtonState();
