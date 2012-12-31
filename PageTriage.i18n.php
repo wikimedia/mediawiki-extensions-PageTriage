@@ -1293,7 +1293,7 @@ $messages['de'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'Diese Seite wurde am $1 vom neuen Benutzer $2 ($3$4$5) erstellt.',
 	'pagetriage-editcount' => '{{PLURAL:$1|$1 Bearbeitung|$1 Bearbeitungen}} seit dem $2',
 	'pagetriage-author-not-autoconfirmed' => 'Neuer Benutzer',
-	'pagetriage-no-patrol-right' => 'Du hast nicht die Berechtigung, diese Seite zu prüfen.', # Fuzzy
+	'pagetriage-no-patrol-right' => 'Du hast nicht die Rechte, diese Seite als geprüft zu markieren.',
 	'pagetriage-author-blocked' => 'Gesperrt',
 	'pagetriage-author-bot' => 'Bot',
 	'pagetriage-showing' => 'Angezeigt wird:',
@@ -2166,7 +2166,7 @@ $messages['et'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'Selle lehekülje on loonud uus toimetaja $2 ($3$4$5) kuupäeval $1.',
 	'pagetriage-editcount' => '{{PLURAL:$1|Üks muudatus|$1 muudatust}} alates kuupäevast $2',
 	'pagetriage-author-not-autoconfirmed' => 'Uus toimetaja',
-	'pagetriage-no-patrol-right' => 'Teil ei ole õigust seda lehte vaadata', # Fuzzy
+	'pagetriage-no-patrol-right' => 'Sul pole õigust seda lehekülge ülevaadatuks märkida.',
 	'pagetriage-author-blocked' => 'Blokeeritud',
 	'pagetriage-author-bot' => 'Robot',
 	'pagetriage-creation-dateformat' => 'HH:mm, d. MMMM yyyy',
@@ -2692,7 +2692,7 @@ $messages['fr'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'Cette page a été créée le $1 par le nouvel éditeur $2 ($3$4$5)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|modification|modifications}} depuis $2',
 	'pagetriage-author-not-autoconfirmed' => 'Nouvel éditeur',
-	'pagetriage-no-patrol-right' => "Vous n'avez pas les droits pour relire cette page.",
+	'pagetriage-no-patrol-right' => "Vous n'avez pas les droits pour marquer cette page comme relue.",
 	'pagetriage-author-blocked' => 'Bloqué',
 	'pagetriage-author-bot' => 'Robot',
 	'pagetriage-showing' => 'Afficher:',
@@ -2974,7 +2974,7 @@ $messages['fr'] = array(
 	'pagetriage-tag-warning-notice' => 'Remarque: Cette page ne date que de $1 {{PLURAL:$1|minute|minutes}}. Veuillez attendre pour la marquer, sauf si le problème est important.',
 	'pagetriage-notification-mark-as-reviewed' => '[[$3|$3]] a été {{GENDER:$1|relu}} par $2',
 	'pagetriage-notification-mark-as-reviewed-email-subject' => '$3 a été {{GENDER:$1|relu}} par $1',
-	'pagetriage-notification-mark-as-reviewed-email-body' => "$3 a été relu par l'utilisateur $1 de {{SITENAME}}:
+	'pagetriage-notification-mark-as-reviewed-email-body' => "$3 a été {{GENDER:$1|relu}} par l'utilisateur $1 de {{SITENAME}}:
 
 En savoir plus:
 
@@ -5744,7 +5744,7 @@ $messages['mk'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'Оваа страница е создадена на $1 од новиот уредник $2 ($3$4$5)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|уредување|уредувања}} од $2',
 	'pagetriage-author-not-autoconfirmed' => 'Нов уредник',
-	'pagetriage-no-patrol-right' => 'Немате право да ја проверувате страницава', # Fuzzy
+	'pagetriage-no-patrol-right' => 'Немате право да ја означите страницава како проверена',
 	'pagetriage-author-blocked' => 'Блокиран',
 	'pagetriage-author-bot' => 'Бот',
 	'pagetriage-creation-dateformat' => 'HH:mm, d MMMM yyyy г.',
@@ -6159,7 +6159,7 @@ $messages['nl'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'Deze pagina is aangemaakt door nieuwe redacteur $2 ($3$4$5) op $1',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|bewerking|bewerkingen}} sinds $2',
 	'pagetriage-author-not-autoconfirmed' => 'Nieuwe gebruiker',
-	'pagetriage-no-patrol-right' => 'U hebt niet de juiste rechten om deze pagina formeel als gecontroleerd te controleren', # Fuzzy
+	'pagetriage-no-patrol-right' => 'U hebt niet de juiste rechten om deze pagina als gecontroleerd aan te merken',
 	'pagetriage-author-blocked' => 'Geblokkeerd',
 	'pagetriage-author-bot' => 'Bot',
 	'pagetriage-showing' => 'Weergegeven:',
@@ -6254,15 +6254,15 @@ $messages['nl'] = array(
 	'pagetriage-tags-unreferenced-label' => 'Zonder referenties',
 	'pagetriage-tags-unreferenced-desc' => 'Deze pagina heeft helemaal geen referenties.',
 	'pagetriage-tags-deadend-label' => 'Doodlopende weg',
-	'pagetriage-tags-deadend-desc' => "Deze pagina heeft weinig of geen verwijzingen naar andere pagina's.",
-	'pagetriage-tags-externallinks-label' => 'Externe verwijzingen',
-	'pagetriage-tags-externallinks-desc' => 'De externe verwijzingen op deze pagina zijn mogelijk strijdig met het beleid of richtlijnen.',
+	'pagetriage-tags-deadend-desc' => "Deze pagina heeft weinig of geen koppelingen naar andere pagina's.",
+	'pagetriage-tags-externallinks-label' => 'Externe koppelingen',
+	'pagetriage-tags-externallinks-desc' => 'De externe koppelingen op deze pagina zijn mogelijk strijdig met het beleid of richtlijnen.',
 	'pagetriage-tags-catimprove-label' => 'Meer categorieën',
 	'pagetriage-tags-catimprove-desc' => 'Deze pagina moet in meer categorieën geplaatst worden.',
 	'pagetriage-tags-orphan-label' => 'Weespagina',
-	'pagetriage-tags-orphan-desc' => 'Deze pagina heeft weining of geen inkomende verwijzingen.',
-	'pagetriage-tags-overlinked-label' => 'Te veel verwijzingen',
-	'pagetriage-tags-overlinked-desc' => 'Deze pagina heeft te veel dubbele of irrelevante verwijzingen.',
+	'pagetriage-tags-orphan-desc' => 'Deze pagina heeft weining of geen inkomende koppelingen.',
+	'pagetriage-tags-overlinked-label' => 'Te veel koppelingen',
+	'pagetriage-tags-overlinked-desc' => 'Deze pagina heeft te veel dubbele of irrelevante koppelingen.',
 	'pagetriage-tags-cleanup-label' => 'Opschonen',
 	'pagetriage-tags-cleanup-desc' => 'Deze pagina moet opgeschoond worden.',
 	'pagetriage-tags-expertsubject-label' => 'Deskundige nodig',
@@ -6367,7 +6367,7 @@ $messages['nl'] = array(
 	'pagetriage-del-tags-cat-discussion-desc' => 'Start een verwijderoverleg met andere gebruikers voor deze pagina.',
 	'pagetriage-del-tags-dba1-label' => 'Geen context',
 	'pagetriage-del-tags-dba3-label' => 'Geen inhoud',
-	'pagetriage-del-tags-dba3-desc' => 'Een pagina (behalve doorverwijspagina\'s) die alleen bestaat uit externe verwijzingen, categorieën en "Zie ook"-kopjes, een herformulering van de paginanaam, pogingen om de communiceren met de persoon of groep van de paginanaam, een vraag die ook gesteld kan worden bij de helpdesk, overleg, sjablonen, en/of afbeeldingen.',
+	'pagetriage-del-tags-dba3-desc' => 'Een pagina (behalve doorverwijspagina\'s) die alleen bestaat uit externe koppelingen, categorieën en "Zie ook"-kopjes, een herformulering van de paginanaam, pogingen om de communiceren met de persoon of groep van de paginanaam, een vraag die ook gesteld kan worden bij de helpdesk, overleg, sjablonen, en/of afbeeldingen.',
 	'pagetriage-del-tags-dbg2-label' => "Testpagina's",
 	'pagetriage-del-tags-dbg7-label' => 'Auteur verzoekt verwijdering',
 	'pagetriage-del-tags-dbg7-desc' => "Pagina's waar de auteur verwijdering heeft aangevraagd (expliciet of door de pagina leeg te maken). (G7)",
@@ -6399,7 +6399,7 @@ $messages['nl'] = array(
 	'pagetriage-tags-edit-summary' => 'Labels aan de pagina toegevoegd met $1 ($2)',
 	'pagetriage-tags-note-edit-summary' => 'Opmerkingen toegevoegd over [[$1]]',
 	'pagetriage-del-edit-summary' => 'Pagina genomineerd voor verwijdering met $1 ($2)',
-	'pagetriage-del-tags-param-discussion-label' => 'Leg uit waarom u denkt dat deze pagina verwijderd moet worden en voorzie uw tekst van verwijzingen naar het relevante beleid waar mogelijk.',
+	'pagetriage-del-tags-param-discussion-label' => 'Leg uit waarom u denkt dat deze pagina verwijderd moet worden en voorzie uw tekst van koppelingen naar het relevante beleid waar mogelijk.',
 	'pagetriage-info-title' => 'Paginagegevens',
 	'pagetriage-info-problem-header' => 'Mogelijke problemen',
 	'pagetriage-info-history-header' => 'Geschiedenis',
@@ -6414,7 +6414,7 @@ $messages['nl'] = array(
 	'pagetriage-info-problem-no-categories-desc' => 'Deze pagina is niet in één of meer categorieën geplaatst.',
 	'pagetriage-info-problem-orphan' => 'Weespagina',
 	'pagetriage-info-problem-orphan-desc' => "Er zijn geen pagina's die naar deze pagina verwijzen.",
-	'pagetriage-info-problem-no-references' => 'Geen verwijzingen',
+	'pagetriage-info-problem-no-references' => 'Geen koppelingen',
 	'pagetriage-info-problem-no-references-desc' => 'Deze pagina heeft geen bronnen.',
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
@@ -6452,7 +6452,7 @@ Meer bekijken:
 
 $4
 
-$5', # Fuzzy
+$5',
 	'pagetriage-notification-add-maintenance-tag' => '[[$3|$3]] is {{GENDER:$1|gecontroleerd}} en gelabeld door $2. {{PLURAL:$5|Label|Labels}}: $4',
 	'pagetriage-notification-add-maintenance-tag-email-subject' => '$3 is door $1 {{GENDER:$1|gelabeld}}',
 	'pagetriage-notification-add-maintenance-tag-email-body' => '$3 op {{SITENAME}} is {{GENDER:$1|gecontroleerd}} en gelabeld door $1.
@@ -6607,7 +6607,7 @@ $messages['pms'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => "Sta pagina a l'é stàita creà ël $1 da l'editor neuv  $2 ($3$4$5)",
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|modìfica|modifiche}} da $2',
 	'pagetriage-author-not-autoconfirmed' => 'Editor neuv',
-	'pagetriage-no-patrol-right' => "It l'has pa ij drit ëd revisioné sta pagina", # Fuzzy
+	'pagetriage-no-patrol-right' => "It l'has pa ij drit ëd marché sta pagina com revisionà",
 	'pagetriage-author-blocked' => 'Blocà',
 	'pagetriage-author-bot' => 'Trigomiro',
 	'pagetriage-showing' => 'Smon-e:',
@@ -6770,13 +6770,13 @@ $messages['pms'] = array(
 	'pagetriage-tag-warning-notice' => "Nòta: Sta pagina a l'é mach veja $1 {{PLURAL:$1|minuta|minute}}. Considra dë speté a tichëttela, a men che ël problem a sia seri.",
 	'pagetriage-notification-mark-as-reviewed' => "[[$3|$3]] a l'era {{GENDER:$1|revisionà}} da $2",
 	'pagetriage-notification-mark-as-reviewed-email-subject' => "$3 a l'era {{GENDER:$1|revisionà}} da $1",
-	'pagetriage-notification-mark-as-reviewed-email-body' => "$3 a l'era revisionà da {{SITENAME}} utent $1:
+	'pagetriage-notification-mark-as-reviewed-email-body' => "$3 a l'era {{GENDER:$1|revisionà}} da {{SITENAME}} utent $1:
 
 Varda ëd pi:
 
 $4
 
-$5", # Fuzzy
+$5",
 	'pagetriage-notification-add-maintenance-tag' => "[[$3|$3]] a l'era {{GENDER:$1|revisionà}} e {{GENDER:$1|tichëttà}} da $2.  {{PLURAL:$5|Tichëtta|Tichëtte}}: $4",
 	'pagetriage-notification-add-maintenance-tag-email-subject' => "$3 a l'era {{GENDER:$1|tichëttà}} da $1",
 	'pagetriage-notification-add-maintenance-tag-email-body' => "$3 a l'era {{GENDER:$1|revisionà}} e {{GENDER:$1|tichëttà}} da {{SITENAME}} utent $1.
@@ -6926,6 +6926,7 @@ $messages['ro'] = array(
 	'pagetriage-characters-left' => '{{PLURAL:$1|$1 caracter rămas|$1 caractere rămase|$1 de caractere rămase}}',
 	'pagetriage-tags-title' => 'Adăugare etichete',
 	'pagetriage-tags-cat-metadata-label' => 'Metadate',
+	'pagetriage-tags-cat-cleanup-label' => 'Curățenie',
 	'pagetriage-tags-cat-neutrality-label' => 'Neutralitate',
 	'pagetriage-tags-cat-sources-label' => 'Surse',
 	'pagetriage-tags-cat-structure-label' => 'Structură',
@@ -6965,6 +6966,8 @@ $messages['ro'] = array(
 	'pagetriage-toolbar-learn-more' => 'Aflați mai multe »',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|modificare|modificări|de modificări}}',
 	'pagetriage-del-tooltip' => 'Nominalizează această pagină pentru ștergere',
+	'pagetriage-toolbar-close' => 'Închidere',
+	'pagetriage-toolbar-minimize' => 'Minimizare',
 );
 
 /** tarandíne (tarandíne)
@@ -7086,6 +7089,7 @@ $messages['si'] = array(
 	'newpagesfeed' => 'නව පිටු පෝෂකය',
 	'pagetriage-pagecuration' => 'පිටු ප්‍රතිකාරය',
 	'pagetriage-please-wait' => 'මදක් රැදීසිටින්න...',
+	'pagetriage-api-invalidid' => 'ඔබ ඉදිරිපත් කෙරූ හැඳුනුම ($1) වලංගු නොවේ.',
 	'pagetriage-markpatrolled' => 'මෙම පිටුව නිරීක්ෂණය කෙරූ ලෙස සලකුණු කරන්න',
 	'pagetriage-markunpatrolled' => 'මෙම පිටුව නිරීක්ෂණය නොකෙරූ ලෙස සලකුණු කරන්න',
 	'pagetriage-self-review-error' => 'ඔබට ඔබ විසින්ම තනන ලද පිටු නිරීක්ෂණය කල නොහැක.',
@@ -7099,6 +7103,7 @@ $messages['si'] = array(
 	'pagetriage-orphan' => 'අනාථ',
 	'pagetriage-no-author' => 'කතෘ තොරතුරු ඉදිරිපත් නොවේ',
 	'pagetriage-byline' => 'විසින්', # Fuzzy
+	'pagetriage-byline-new-editor' => 'නව සංස්කාරක $1 විසින් තනන ලදී ($2$3$4)',
 	'pagetriage-editcount' => '$2 පසු {{PLURAL:$1|සංස්කරණ}} $1',
 	'pagetriage-author-not-autoconfirmed' => 'නව සංස්කාරක',
 	'pagetriage-author-blocked' => 'වාරණකෙරූ',
@@ -7172,8 +7177,12 @@ $messages['si'] = array(
 	'pagetriage-del-tags-dbu3-label' => 'නිදහස්-නොවන ගැලරියන්',
 	'pagetriage-tags-param-article-label' => 'ලිපිය:',
 	'pagetriage-tags-param-date-label' => 'දිනය:',
+	'pagetriage-tags-param-blp-label' => 'මෙය ජිවත්වන පුද්ගලයෙකුගේ චරිතාපදානයකි',
+	'pagetriage-tags-param-free-label' => 'මෙම අන්තර්ගතය නිදහසේ බලපත්‍රීකරණය කර ඇත.',
+	'pagetriage-tags-param-url-label' => 'කරුණාකර එම මූලාශ්‍රය සඳහා URL එක් කරන්න.',
 	'pagetriage-tags-param-free-yes-label' => 'ඔව්',
 	'pagetriage-tags-param-free-no-label' => 'නැත',
+	'pagetriage-tags-param-missing-required' => '$1 ටැගයේ අවශ්‍ය පරාමිතිය මඟ හැරී ඇත.',
 	'log-name-pagetriage-curation' => 'පිටු ප්‍රතිකාර ලොගය',
 	'log-name-pagetriage-deletion' => 'ටැග මකාදැමුම් ලොගය',
 	'pagetriage-info-title' => 'පිටු තොරතුරු',
@@ -7201,10 +7210,12 @@ $messages['si'] = array(
 	'pagetriage-mark-as-unreviewed' => 'නිරීක්ෂණය නොකෙරූ ලෙස සලකුණු කරන්න',
 	'pagetriage-wikilove-page-creator' => 'පිටු තනන්නා',
 	'pagetriage-wikilove-edit-count' => '{{PLURAL:$1|සංස්කරණ|සංස්කරණ}} $1 කි',
+	'pagetriage-next-tooltip' => 'පෝලිමේ මීළඟ පිටුව වෙත යන්න',
 	'pagetriage-del-tooltip' => 'මෙම පිටුව මකා දැමීම සඳහා යෝජනා කරන්න',
 	'pagetriage-tagging-error' => 'මෙම පිටුව වෙත ටැගයන් යෙදීමට අපොහොසත් වුණි',
 	'pagetriage-toolbar-close' => 'වසන්න',
 	'pagetriage-toolbar-minimize' => 'අවමකරන්න',
+	'echo-pref-email-pagetriage-mark-as-reviewed' => 'පිටුවක් නිරීක්ෂණය කරයි | තනන ලද',
 );
 
 /** Swedish (svenska)
