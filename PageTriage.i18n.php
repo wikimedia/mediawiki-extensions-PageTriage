@@ -4307,8 +4307,9 @@ $messages['is'] = array(
 	'pagetriage-markunpatrolled' => 'Merkja þessa síðu sem óyfirfarna',
 	'pagetriage-self-review-error' => 'Þú getur ekki yfirfarið síður sem þú hefur stofnað.',
 	'pagetriage-reviewed' => 'Yfirfarin',
-	'pagetriage-mark-as-reviewed-error' => 'Mistókst að merkja síðuna sem yfirfarna.', # Fuzzy
-	'pagetriage-mark-as-unreviewed-error' => 'Mistókst að merkja síðuna sem óyfirfarna.', # Fuzzy
+	'pagetriage-mark-as-reviewed-error' => 'Mistókst að merkja síðu sem yfirfarna: $1',
+	'pagetriage-mark-as-unreviewed-error' => 'Mistókst að merkja síðuna sem óyfirfarna: $1',
+	'pagetriage-hist' => 'skrá',
 	'pagetriage-bytes' => '$1 {{PLURAL:$1|bæt|bæti}}',
 	'pagetriage-edits' => '$1 {{PLURAL:$1|breyting|breytingar}}',
 	'pagetriage-categories' => '$1 {{PLURAL:$1|flokkur|flokkar}}',
@@ -4322,12 +4323,13 @@ $messages['is'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'Þessi síða var stofnuð $1 af nýja notandanum $2 ($3$4$5)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|breyting|breytingar}} síðan $2',
 	'pagetriage-author-not-autoconfirmed' => 'Nýr notandi',
-	'pagetriage-no-patrol-right' => 'Þú hefur ekki réttindi til að yfirfara þessa síðu',
+	'pagetriage-no-patrol-right' => 'Þú hefur ekki réttindi til að merkja þessa síðu sem yfirfarna',
 	'pagetriage-author-blocked' => 'Bannaður',
 	'pagetriage-author-bot' => 'Vélmenni',
 	'pagetriage-showing' => 'Sýni:',
 	'pagetriage-filter-list-prompt' => 'Setja síur',
-	'pagetriage-unreviewed-article-count' => 'Í augnablikinu {{PLURAL:$1|er $1 óyfirfarin síða|eru $1 óyfirfarnar síður}} (elst: $2)', # Fuzzy
+	'pagetriage-unreviewed-article-count' => 'Í augnablikinu {{PLURAL:$1|er alls $1 óyfirfarin síða|eru alls $1 óyfirfarnar síður}} (elst: $2)',
+	'pagetriage-reviewed-article-count-past-week' => '$1 {{PLURAL:$1|síða yfirfarin|síður yfirfarnar}} í þessari viku',
 	'pagetriage-sort-by' => 'Raða eftir:',
 	'pagetriage-newest' => 'Nýjast',
 	'pagetriage-oldest' => 'Elst',
@@ -4351,6 +4353,7 @@ $messages['is'] = array(
 	'pagetriage-filter-set-button' => 'Setja síur',
 	'pagetriage-stats-less-than-a-day' => 'minna en einn dagur',
 	'pagetriage-stats-reviewed-page-count' => '$1 {{PLURAL:$1|síða yfirfarin|síður yfirfarnar}} í þessari viku',
+	'pagetriage-stats-filter-page-count' => '$1 {{PLURAL:$1|síða|síður}} í síaða listanum þínum',
 	'pagetriage-filter-ns-all' => 'Öll',
 	'pagetriage-more' => 'Meira',
 	'pagetriage-filter-stat-all' => 'Allar',
@@ -4398,7 +4401,7 @@ $messages['is'] = array(
 	'pagetriage-tags-param-blp-label' => 'Þetta er æfiágrip lifandi manneskju',
 	'pagetriage-tags-param-source-label' => 'Vinsamlegast bættu við vefslóð fyrir þeirri heimild.',
 	'pagetriage-tags-param-url-label' => 'Vinsamlegast bættu við vefslóð fyrir þeirri heimild.',
-	'pagetriage-tags-param-missing-required' => 'Tilgreina þarf gildi $1', # Fuzzy
+	'pagetriage-tags-param-missing-required' => 'Gildi $1 vantar stika.',
 	'logentry-pagetriage-curation-reviewed' => '$1 {{GENDER:$2|merkti}} $3 sem yfirfarna',
 	'logentry-pagetriage-curation-unreviewed' => '$1 {{GENDER:$2|merkti}} $3 sem óyfirfarna',
 	'logentry-pagetriage-curation-tag' => '$1 {{GENDER:$2|merkti}} $3 með $4 {{PLURAL:$5|sniði|sniðum}}',
@@ -4440,11 +4443,14 @@ $messages['is'] = array(
 	'pagetriage-del-tooltip' => 'Tilnefna síðuna til eyðingar',
 	'pagetriage-tagging-error' => 'Mistókst að bæta við sniðum á síðuna',
 	'pagetriage-add-tag-confirmation' => 'Ertu viss um að þú viljir bæta $1 {{PLURAL:$1|sniði|sniðum}} við þessa stuttu grein?',
+	'pagetriage-toolbar-close' => 'Loka',
+	'pagetriage-tag-warning-notice' => 'Athugið: Þessi síða er eingöngu $1 {{PLURAL:$1|mínúta|mínútu}} gömul. Íhugaðu að bíða með að merkja hana, nema málið sé alvarlegt.',
 );
 
 /** Italian (italiano)
  * @author Beta16
  * @author Darth Kule
+ * @author Doc.mari
  * @author F. Cosoleto
  * @author Gianfranco
  * @author McDutchie
@@ -4685,7 +4691,7 @@ $messages['it'] = array(
 	'pagetriage-del-tags-cat-prod-desc' => 'Segna questa pagina come proposta di cancellazione se viola chiaramente le norme della comunità.',
 	'pagetriage-del-tags-cat-discussion-desc' => 'Segna questa pagina per discutere la sua cancellazione con altri utenti.',
 	'pagetriage-del-tags-dba3-label' => 'Nessun contenuto',
-	'pagetriage-del-tags-dba3-desc' => 'Qualsiasi articolo (diverso da pagine di disambiguazione, redirect o soft redirect) contiene solo i link esterni, le categorie e le sezioni "Voci correlate", una riformulazione del titolo che tenta di corrispondere con la persona o il gruppo denominato dal suo titolo, una domanda che dovrebbe essere stato chiesta allo sportello delle informazioni o dei commenti, template o immagini. (A3)',
+	'pagetriage-del-tags-dba3-desc' => 'Qualsiasi voce (diversa da pagine di disambiguazione, redirect o soft redirect) che sia composta solo di collegamenti esterni, categorie e sezioni "Voci correlate", parafrasi del titolo, tentativi di contattare la persona o il gruppo nominati nel titolo, una domanda che dovrebbe essere posta allo sportello informazioni o nelle pagine di aiuto, commenti in stile chat, template o immagini. (A3)',
 	'pagetriage-del-tags-dbg7-label' => "L'autore richiede la cancellazione",
 	'pagetriage-del-tags-dbg7-desc' => "Pagine dove l'autore ha richiesto la cancellazione, esplicitamente o svuotando la pagina. (G7)",
 	'pagetriage-del-tags-dbu3-label' => 'Gallerie non libere',
