@@ -484,7 +484,8 @@ If your language requires some words between the different parts of the timestam
 	'pagetriage-sort-by' => 'Label for the sort-order buttons (oldest/newest)',
 	'pagetriage-newest' => 'Text for a sort-order button',
 	'pagetriage-oldest' => 'Text for a sort-order button',
-	'pagetriage-triage' => 'Button label.',
+	'pagetriage-triage' => 'Button label.
+{{Identical|Review}}',
 	'pagetriage-filter-show-heading' => 'Prompt for the first set of checkboxes in the filter menu',
 	'pagetriage-filter-reviewed-edits' => 'Checkbox text for reviewed pages',
 	'pagetriage-filter-unreviewed-edits' => 'Checkbox text for unreviewed pages',
