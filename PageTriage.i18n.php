@@ -4486,7 +4486,7 @@ $messages['it'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'Questa pagina è stata creata il $1 dal nuovo contributore $2 ($3$4$5)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|modifica|modifiche}} dal $2',
 	'pagetriage-author-not-autoconfirmed' => 'Nuovo utente',
-	'pagetriage-no-patrol-right' => 'Non si dispone dei permessi per revisionare questa pagina', # Fuzzy
+	'pagetriage-no-patrol-right' => 'Non si dispone dei permessi necessari per contrassegnare questa pagina come revisionata',
 	'pagetriage-author-blocked' => 'Bloccato',
 	'pagetriage-author-bot' => 'Bot',
 	'pagetriage-user-creation-dateformat' => 'yyyy-MM-dd',
@@ -4768,13 +4768,13 @@ $messages['it'] = array(
 	'pagetriage-tag-warning-notice' => "Nota: questa pagina è solo di $1 {{PLURAL:$1|minuto|minuti}} fa. Aspetta un po' prima di contrassegnarla a meno che il problema non sia serio.",
 	'pagetriage-notification-mark-as-reviewed' => '[[$3|$3]] è stato {{GENDER:$1|revisionato}} da $2',
 	'pagetriage-notification-mark-as-reviewed-email-subject' => '$3 è stato {{GENDER:$1|revisionato}} da $1',
-	'pagetriage-notification-mark-as-reviewed-email-body' => "$3 è stato revisionato dall'utente $1 di {{SITENAME}}:
+	'pagetriage-notification-mark-as-reviewed-email-body' => "$3 è stata {{GENDER:$1|revisionata}} dall'utente $1 di {{SITENAME}}:
 
 Per saperne di più:
 
 $4
 
-$5", # Fuzzy
+$5",
 	'pagetriage-notification-add-maintenance-tag' => '[[$3|$3]] è stato {{GENDER:$1|revisionato}} e {{GENDER:$1|contrassegnato}} da $2. {{PLURAL:$5|Etichetta|Etichette}}: $4',
 	'pagetriage-notification-add-maintenance-tag-email-subject' => '$3 è stato {{GENDER:$1|contrassegnato}} da $1',
 	'pagetriage-notification-add-maintenance-tag-email-body' => "$3 è stato {{GENDER:$1|revisionato}} e {{GENDER:$1|contrassegnato}} dall'utente $1 di {{SITENAME}}.
