@@ -1260,6 +1260,9 @@ $messages['cs'] = array(
 	'pagetriage-info-problem-orphan-desc' => 'Na tuto stránku neodkazují žádné další stránky.',
 	'pagetriage-info-problem-no-references' => 'Bez zdrojů',
 	'pagetriage-info-problem-no-references-desc' => 'Tato stránka necituje žádné zdroje.',
+	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Zkontroluje stránku, kterou jsem založil',
+	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Zkontroluje stránku, kterou jsem založil, a přidá údržbové šablony',
+	'echo-pref-email-pagetriage-add-deletion-tag' => 'Zkontroluje stránku, kterou jsem založil, a navrhne ji na smazání',
 );
 
 /** German (Deutsch)
@@ -8274,17 +8277,46 @@ $messages['vi'] = array(
 );
 
 /** Yiddish (ייִדיש)
+ * @author פוילישער
  * @author පසිඳු කාවින්ද
  */
 $messages['yi'] = array(
+	'pagetriage-oldest' => 'עלטסט',
+	'pagetriage-triage' => 'רעצענזירן',
 	'pagetriage-filter-show-heading' => 'ווײַזן:',
+	'pagetriage-filter-username' => 'באַניצער נאָמען',
+	'pagetriage-filter-second-show-heading' => 'וואָס:',
+	'pagetriage-filter-no-categories' => 'האט נישט קיין קאטעגאריעס',
+	'pagetriage-stats-less-than-a-day' => 'ווינציקער ווי איין טאג',
+	'pagetriage-stats-filter-page-count' => '$1 {{PLURAL:$1|בלאט|בלעטער}} אין אייער געפילטערטער ליסטע',
 	'pagetriage-filter-ns-all' => 'אַלע',
 	'pagetriage-more' => 'מער',
 	'pagetriage-filter-stat-all' => 'אַלע',
+	'pagetriage-filter-stat-orphan' => 'יתומים',
+	'pagetriage-filter-stat-non-autoconfirmed' => 'נייע רעדאקטירער',
+	'pagetriage-filter-stat-blocked' => 'בלאקירטע באַניצער',
+	'pagetriage-filter-stat-username' => 'באַניצער נאָמען: $1',
+	'pagetriage-no-pages' => 'קיין בלעטער זענען נישט צוגעפאסט צו אייערע קריטעריע.',
+	'pagetriage-button-add-details' => 'צולייגן דעטאַלן',
+	'pagetriage-button-edit-details' => 'רעדאַקטירן דעטאַלן',
+	'pagetriage-button-mark-for-deletion' => 'מארקירן אויסצומעקן',
+	'pagetriage-add-a-note-creator' => 'צולייגן א מעלדונג פארן שרייבער: (אפציאנאל)',
+	'pagetriage-tags-cat-metadata-label' => 'מעטאַ־דאַטן',
+	'pagetriage-tags-cat-sources-label' => 'מקורות',
+	'pagetriage-tags-cat-structure-label' => 'סטרוקטור',
+	'pagetriage-tags-cat-writingstyle-label' => 'שרייבן סטיל',
+	'pagetriage-tags-cat-moretags-label' => 'נאך טאגן',
+	'pagetriage-tags-cat-all-label' => 'אַלע טאַגן',
+	'pagetriage-del-tags-dba3-label' => 'קיין אינהאלט',
+	'pagetriage-tags-param-article-label' => 'אַרטיקל',
 	'pagetriage-tags-param-date-label' => 'דאַטע:',
 	'pagetriage-tags-param-free-yes-label' => 'יא',
 	'pagetriage-tags-param-free-no-label' => 'ניין',
+	'pagetriage-tags-param-missing-required' => 'טאַג $1 פעלט א נייטיגן פאראמעטער.',
+	'pagetriage-info-title' => 'בלאט אינפארמאציע',
+	'pagetriage-info-problem-header' => 'מעגלעכע פראבלעמען',
 	'pagetriage-info-history-header' => 'היסטאריע',
+	'pagetriage-info-history-show-full' => 'ווייזן די גאנצע היסטאריע',
 	'pagetriage-info-help' => 'הילף',
 );
 
