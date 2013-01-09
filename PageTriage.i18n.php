@@ -766,6 +766,7 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 * $2 - the list of deletion tags added to the article',
 	'pagetriage-del-tags-param-discussion-label' => 'Prompt for explaination about why the user wants to nominate a page for deletion',
 	'pagetriage-info-title' => 'The title for the page information flyout in the toolbar',
+	'pagetriage-info-history-header' => '{{Identical|History}}',
 	'pagetriage-info-help' => 'Link text for the info flyout help button',
 	'pagetriage-info-no-problems' => 'Text to show when the page has no problems.',
 	'pagetriage-info-problem-non-autoconfirmed' => "Title for the error displayed when the page author isn't autoconfirmed.",
@@ -814,64 +815,121 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 	'pagetriage-tag-warning-notice' => 'Warning notice in maintenance and deletion tag flyout if the page was created less than some amount of time ago',
 	'pagetriage-notification-mark-as-reviewed2' => "Title for 'mark as reviewed' notification.  Parameters:
 * $1 is the username of the person who marked the page as reviewed, plain text
-* $2 is the title of the page",
+* $2 is the title of the page
+See also:
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-flyout}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-batch-body}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-body2}}",
 	'pagetriage-notification-mark-as-reviewed-flyout' => "Flyout-specific title for 'mark as reviewed' notification.  Parameters:
 * $1 is the username of the person who marked the page as reviewed, plain text
-* $2 is the title of the page",
+* $2 is the title of the page
+See also:
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed2}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-batch-body}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-body2}}",
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => "Email subject for 'mark as reviewed' notification.  Parameters:
 * $1 is the username of the person who marked the page as reviewed, plain text
-* $2 is the title of the page",
+* $2 is the title of the page
+See also:
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed2}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-flyout}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-batch-body}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-body2}}",
 	'pagetriage-notification-mark-as-reviewed-email-body2' => "Email body for 'mark as reviewed' notification.  Parameters:
 * $1 is the user name of the pseron who marked the page as reviewed
 * $2 is the title of the page
 * $3 is the link to the page
-* $4 is the email footer",
+* $4 is the email footer
+See also:
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed2}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-flyout}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-batch-body}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}",
 	'pagetriage-notification-add-maintenance-tag2' => "Title for 'add maintenance tag' notification.  Parameters:
 * $1 is the username of the person who added maintenance tag, plain text
 * $2 is the title of the page
 * $3 is the list of maintenance tags
-* $4 is the number of maintenance tags",
+* $4 is the number of maintenance tags
+See also:
+* {{msg-mw|Pagetriage-notification-add-maintenance-tag-flyout}}
+* {{msg-mw|Pagetriage-notification-add-maintenance-tag-email-subject2}}
+* {{msg-mw|Pagetriage-notification-add-maintenance-tag-email-body2}}",
 	'pagetriage-notification-add-maintenance-tag-flyout' => "Flyout-specific title for 'add maintenance tag' notification.  Parameters:
 * $1 is the username of the person who added maintenance tag, plain text
 * $2 is the title of the page
 * $3 is the list of maintenance tags
-* $4 is the number of maintenance tags",
+* $4 is the number of maintenance tags
+See also:
+* {{msg-mw|Pagetriage-notification-add-maintenance-tag2}}
+* {{msg-mw|Pagetriage-notification-add-maintenance-tag-email-subject2}}
+* {{msg-mw|Pagetriage-notification-add-maintenance-tag-email-body2}}",
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => "Email subject for 'add maintenance tag' notification.  Parameters:
 * $1 is the username of the person who added maintenance tag, plain text
-* $2 is the title of the page",
+* $2 is the title of the page
+See also:
+* {{msg-mw|Pagetriage-notification-add-maintenance-tag2}}
+* {{msg-mw|Pagetriage-notification-add-maintenance-tag-flyout}}
+* {{msg-mw|Pagetriage-notification-add-maintenance-tag-email-body2}}",
 	'pagetriage-notification-add-maintenance-tag-email-body2' => "Email body for 'add maintenance tag' notification.  Parameters:
 * $1 is the username of the person who added maintenance tag to the page
 * $2 is the title of the page
 * $3 is the link to the page
 * $4 is the list of maintenance tags
 * $5 is the number of maintenance tags
-* $6 is the email footer",
+* $6 is the email footer
+See also:
+* {{msg-mw|Pagetriage-notification-add-maintenance-tag2}}
+* {{msg-mw|Pagetriage-notification-add-maintenance-tag-flyout}}
+* {{msg-mw|Pagetriage-notification-add-maintenance-tag-email-subject2}}",
 	'pagetriage-notification-add-deletion-tag2' => "Title for 'add deletion tag' notification.  Parameters:
 * $1 is the username of the person who added deletion tag, plain text
 * $2 is the title of the page
 * $3 is the list of deletion tags
-* $4 is the number of deletion tags",
+* $4 is the number of deletion tags
+See also:
+* {{msg-mw|Pagetriage-notification-add-deletion-tag-flyout}}
+* {{msg-mw|Pagetriage-notification-add-deletion-tag-email-subject2}}
+* {{msg-mw|Pagetriage-notification-add-deletion-tag-email-body2}}",
 	'pagetriage-notification-add-deletion-tag-flyout' => "Flyout-specific title for 'add deletion tag' notification.  Parameters:
 * $1 is the username of the person who added deletion tag, plain text
 * $2 is the title of the page
 * $3 is the list of deletion tags
-* $4 is the number of deletion tags",
+* $4 is the number of deletion tags
+See also:
+* {{msg-mw|Pagetriage-notification-add-deletion-tag2}}
+* {{msg-mw|Pagetriage-notification-add-deletion-tag-email-subject2}}
+* {{msg-mw|Pagetriage-notification-add-deletion-tag-email-body2}}",
 	'pagetriage-notification-add-deletion-tag-email-subject2' => "Email subject for 'add deletion tag' notification.  Parameters:
 * $1 is the username of the person who added deletion tag, plain text
-* $2 is the title of the page",
+* $2 is the title of the page
+See also:
+* {{msg-mw|Pagetriage-notification-add-deletion-tag2}}
+* {{msg-mw|Pagetriage-notification-add-deletion-tag-flyout}}
+* {{msg-mw|Pagetriage-notification-add-deletion-tag-email-body2}}",
 	'pagetriage-notification-add-deletion-tag-email-body2' => "Email body for 'add deletion tag' notification.  Parameters:
 * $1 is the username of the person who added deletion tag to the page
 * $2 is the title of the page
 * $3 is the link to the page
 * $4 is the list of deletion tags
 * $5 is the number of deletion tags
-* $6 is the email footer",
+* $6 is the email footer
+See also:
+* {{msg-mw|Pagetriage-notification-add-deletion-tag2}}
+* {{msg-mw|Pagetriage-notification-add-deletion-tag-flyout}}
+* {{msg-mw|Pagetriage-notification-add-deletion-tag-email-subject2}}",
 	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Option for getting emails when someone reviews a page you created. This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
 	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Option for getting emails when someone reviews a page you created and adds maintenance tags (for example, "needs cleanup"). This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
 	'echo-pref-email-pagetriage-add-deletion-tag' => 'Option for getting emails when someone reviews a page you created and nominates it for deletion. This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => "Email batch body for 'mark as reviewed', 'add maintenance tag' and 'add deletion tag'.  Parameters:
 * $1 is the title of the page
-* $2 is the username of the person who reviewed the page",
+* $2 is the username of the person who reviewed the page
+See also:
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed2}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-flyout}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-body2}}",
 	'echo-email-batch-category-header-page-review' => 'E-mail batch section title for page review.  Parameters:
 * $1 is the numeric count',
 );
@@ -1624,34 +1682,40 @@ $messages['de'] = array(
 	'pagetriage-toolbar-close' => 'Schließen',
 	'pagetriage-toolbar-minimize' => 'Minimieren',
 	'pagetriage-tag-warning-notice' => 'Hinweis: Diese Seite ist nur {{PLURAL:$1|eine Minute|$1 Minuten}} alt. Ziehe in Erwägung mit der Markierung zu warten, außer das Problem ist ernst.',
-	'pagetriage-notification-mark-as-reviewed' => '[[$3|$3]] wurde von $2 {{GENDER:$1|überprüft}}',
-	'pagetriage-notification-mark-as-reviewed-email-subject' => '$3 wurde von $1 {{GENDER:$1|überprüft}}',
-	'pagetriage-notification-mark-as-reviewed-email-body' => '$3 wurde vom {{SITENAME}}-Benutzer $1 {{GENDER:$1|überprüft}}:
+	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] wurde von [[User:$1|$1]] {{GENDER:$1|überprüft}}',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] wurde von $1 {{GENDER:$1|überprüft}}',
+	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 wurde von $1 {{GENDER:$1|überprüft}}',
+	'pagetriage-notification-mark-as-reviewed-email-body2' => 'Die Seite $2 wurde {{GENDER:$1|vom {{SITENAME}}-Benutzer|von der {{SITENAME}}-Benutzerin}} $1 überprüft.
 
-Mehr ansehen:
+Mehr:
 
-$4
+$3
 
-$5',
-	'pagetriage-notification-add-maintenance-tag' => '[[$3|$3]] wurde von $2 {{GENDER:$1|überprüft}} und {{GENDER:$1|markiert}}. {{PLURAL:$5|Markierung|Markierungen}}: $4',
-	'pagetriage-notification-add-maintenance-tag-email-subject' => '$3 wurde von $1 {{GENDER:$1|markiert}}',
-	'pagetriage-notification-add-maintenance-tag-email-body' => '$3 wurde vom {{SITENAME}}-Benutzer $1 {{GENDER:$1|überprüft}} und {{GENDER:$1|markiert}}.
+$4',
+	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] wurde {{GENDER:$1|vom Benutzer|von der Benutzerin}} [[User:$1|$1]] überprüft und markiert. {{PLURAL:$4|Markierung|Markierungen}}: $3',
+	'pagetriage-notification-add-maintenance-tag-flyout' => 'Die Seite [[$2]] wurde von $1 {{GENDER:$1|überprüft}} und {{GENDER:$1|markiert}}. {{PLURAL:$4|Markierung|Markierungen}}: $3',
+	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 wurde von $1 {{GENDER:$1|markiert}}',
+	'pagetriage-notification-add-maintenance-tag-email-body2' => 'Die Seite $2 wurde {{GENDER:$1|vom {{SITENAME}}-Benutzer|von der {{SITENAME}}-Benutzerin}} $1 überprüft und markiert.
 
-{{PLURAL:$6|Markierung|Markierungen}}: $5
+{{PLURAL:$5|Markierung|Markierungen}}: $4
 
-Mehr ansehen:
+Mehr:
 
-$4
+$3
 
-$7',
-	'pagetriage-notification-add-deletion-tag' => '[[$3|$3]] wurde von $2 {{GENDER:$1|überprüft}} und {{GENDER:$1|zur Löschung vorgeschlagen}}. {{PLURAL:$5|Markierung|Markierungen}}: $4',
-	'pagetriage-notification-add-deletion-tag-email-subject' => '$3 wurde von $1 {{GENDER:$1|zur Löschung vorgeschlagen}}',
-	'pagetriage-notification-add-deletion-tag-email-body' => 'Der {{SITENAME}}-Autor $1 {{GENDER:$1|überprüfte}} die Seite „$3“, die du angelegt hast:
-<$4>
+$6',
+	'pagetriage-notification-add-deletion-tag2' => '[[$2]] wurde von [[User:$1|$1]] {{GENDER:$1|überprüft}} und {{GENDER:$1|zur Löschung vorgeschlagen}}. {{PLURAL:$4|Markierung|Markierungen}}: $3',
+	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] wurde von $1 {{GENDER:$1|überprüft}} und {{GENDER:$1|zur Löschung vorgeschlagen}}. {{PLURAL:$4|Markierung|Markierungen}}: $3',
+	'pagetriage-notification-add-deletion-tag-email-subject2' => '$2 wurde von $1 {{GENDER:$1|zur Löschung vorgeschlagen}}',
+	'pagetriage-notification-add-deletion-tag-email-body2' => 'Die Seite $2 wurde {{GENDER:$1|vom {{SITENAME}}-Benutzer|von der {{SITENAME}}-Benutzerin}} $1 zur Löschung vorgeschlagen.
 
-Die Seite wurde mit {{PLURAL:$6|dieser Markierung|diesen Markierungen}} zur Löschung vorgeschlagen: $5
+{{PLURAL:$5|Markierung|Markierungen}}: $4
 
-Bitte hilf, die Probleme dieser Seite anzugehen. Vielen Dank!',
+Mehr:
+
+$3
+
+$6',
 	'echo-pref-email-pagetriage-mark-as-reviewed' => 'eine Seite überprüft, die ich erstellt habe',
 	'echo-pref-email-pagetriage-add-maintenance-tag' => 'eine Seite überprüft, die ich erstellt habe und Wartungsmarkierungen hinzufügt',
 	'echo-pref-email-pagetriage-add-deletion-tag' => 'eine Seite überprüft, die ich erstellt habe und sie zur Löschung vorschlägt',
@@ -3168,7 +3232,7 @@ $messages['gl'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'O novo editor $2 ($3$4$5) creou esta páxina o $1',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|edición|edicións}} desde o $2',
 	'pagetriage-author-not-autoconfirmed' => 'Novo editor',
-	'pagetriage-no-patrol-right' => 'Non ten os dereitos necesarios para revisar esta páxina',
+	'pagetriage-no-patrol-right' => 'Non ten os dereitos necesarios para marcar esta páxina como revisada',
 	'pagetriage-author-blocked' => 'Bloqueado',
 	'pagetriage-author-bot' => 'Bot',
 	'pagetriage-creation-dateformat' => 'd &#100;&#101; MMMM &#100;&#101; yyyy á&#115; HH:mm',
@@ -3486,34 +3550,40 @@ $messages['gl'] = array(
 	'pagetriage-toolbar-close' => 'Pechar',
 	'pagetriage-toolbar-minimize' => 'Minimizar',
 	'pagetriage-tag-warning-notice' => 'Nota: Esta páxina existe desde hai $1 {{PLURAL:$1|minuto|minutos}}. Considere agardar un anaco para etiquetala, a menos que o problema sexa serio.',
-	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|revisou}} "[[$3|$3]]"',
-	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|revisou}} "$3"',
-	'pagetriage-notification-mark-as-reviewed-email-body' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} revisou "$3".
+	'pagetriage-notification-mark-as-reviewed2' => '[[User:$1|$1]] {{GENDER:$1|revisou}} "[[$2]]"',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '$1 {{GENDER:$1|revisou}} "[[$2]]"',
+	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$1 {{GENDER:$1|revisou}} "$2"',
+	'pagetriage-notification-mark-as-reviewed-email-body2' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} revisou "$2":
 
 Ollar máis:
 
-$4
+$3
 
-$5',
-	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "[[$3|$3]]". {{PLURAL:$5|Etiqueta|Etiquetas}}: $4',
-	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|etiquetou}} "$3"',
-	'pagetriage-notification-add-maintenance-tag-email-body' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "$3".
+$4',
+	'pagetriage-notification-add-maintenance-tag2' => '[[User:$1|$1]] {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
+	'pagetriage-notification-add-maintenance-tag-flyout' => '$1 {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
+	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$1 {{GENDER:$1|etiquetou}} "$2"',
+	'pagetriage-notification-add-maintenance-tag-email-body2' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "$2".
 
-{{PLURAL:$6|Etiqueta|Etiquetas}}: $5
+{{PLURAL:$5|Etiqueta|Etiquetas}}: $4
 
 Ollar máis:
 
-$4
+$3
 
-$7',
-	'pagetriage-notification-add-deletion-tag' => '$2 {{GENDER:$1|revisou}} e {{GENDER:$1|marcou para borrar}} "[[$3|$3]]". {{PLURAL:$5|Etiqueta|Etiquetas}}: $4',
-	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 {{GENDER:$1|marcou para borrar}} "$3"',
-	'pagetriage-notification-add-deletion-tag-email-body' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} revisou unha páxina que vostede comezou, "$3":
-<$4>
+$6',
+	'pagetriage-notification-add-deletion-tag2' => '[[User:$1|$1]] {{GENDER:$1|revisou}} e {{GENDER:$1|marcou para borrar}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
+	'pagetriage-notification-add-deletion-tag-flyout' => '$1 {{GENDER:$1|revisou}} e {{GENDER:$1|marcou para borrar}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
+	'pagetriage-notification-add-deletion-tag-email-subject2' => '$1 {{GENDER:$1|marcou para borrar}} "$2"',
+	'pagetriage-notification-add-deletion-tag-email-body2' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} {{GENDER:$1|marcou para borrar}} "$2".
 
-A páxina marcouse para borrar, con {{PLURAL:$6|esta etiqueta|estas etiquetas}}: $5
+{{PLURAL:$5|Etiqueta|Etiquetas}}: $4
 
-Mellore a páxina para corrixir os problemas. Grazas!',
+Ollar máis:
+
+$3
+
+$6',
 	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Revise unha páxina que creei',
 	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Revise unha páxina que creei e engada etiquetas de mantemento',
 	'echo-pref-email-pagetriage-add-deletion-tag' => 'Revise unha páxina que creei e propoña o seu borrado',
@@ -4782,37 +4852,6 @@ $messages['it'] = array(
 	'pagetriage-toolbar-close' => 'Chiudi',
 	'pagetriage-toolbar-minimize' => 'Minimizza',
 	'pagetriage-tag-warning-notice' => "Nota: questa pagina è solo di $1 {{PLURAL:$1|minuto|minuti}} fa. Aspetta un po' prima di contrassegnarla a meno che il problema non sia serio.",
-	'pagetriage-notification-mark-as-reviewed' => '[[$3|$3]] è stato {{GENDER:$1|revisionato}} da $2',
-	'pagetriage-notification-mark-as-reviewed-email-subject' => '$3 è stato {{GENDER:$1|revisionato}} da $1',
-	'pagetriage-notification-mark-as-reviewed-email-body' => "$3 è stata {{GENDER:$1|revisionata}} dall'utente $1 di {{SITENAME}}:
-
-Per saperne di più:
-
-$4
-
-$5",
-	'pagetriage-notification-add-maintenance-tag' => '[[$3|$3]] è stato {{GENDER:$1|revisionato}} e {{GENDER:$1|contrassegnato}} da $2. {{PLURAL:$5|Etichetta|Etichette}}: $4',
-	'pagetriage-notification-add-maintenance-tag-email-subject' => '$3 è stato {{GENDER:$1|contrassegnato}} da $1',
-	'pagetriage-notification-add-maintenance-tag-email-body' => "$3 è stato {{GENDER:$1|revisionato}} e {{GENDER:$1|contrassegnato}} dall'utente $1 di {{SITENAME}}.
-
-{{PLURAL:$6|Tag}}: $5
-
-Per saperne di più:
-
-$4
-
-$7",
-	'pagetriage-notification-add-deletion-tag' => '[[$3|$3]] è stato {{GENDER:$1|revisionato}} e {{GENDER:$1|contrassegnato per la cancellazione}} da $2. {{PLURAL:$5|Etichetta|Etichette}}: $4',
-	'pagetriage-notification-add-deletion-tag-email-subject' => "$3 è stato {{GENDER:$1|contrassegnato per l'eliminazione}} da $1",
-	'pagetriage-notification-add-deletion-tag-email-body' => "$3 è stato {{GENDER:$1|contrassegnato per la cancellazione}} dall'utente $1 di {{SITENAME}}.
-
-{{PLURAL:$6|Tag}}: $5
-
-Per saperne di più:
-
-$4
-
-$7",
 	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Revisiona una pagina che ho creato',
 	'echo-pref-email-pagetriage-add-maintenance-tag' => "Revisiona una pagina che ho creato e aggiunge un'etichetta di manutenzione",
 	'echo-pref-email-pagetriage-add-deletion-tag' => 'Revisiona una pagina che ho creato e la propone per la cancellazione',
@@ -5095,16 +5134,44 @@ $messages['ja'] = array(
 	'pagetriage-toolbar-close' => '閉じる',
 	'pagetriage-toolbar-minimize' => '最小化',
 	'pagetriage-tag-warning-notice' => '注: このページはわずか $1 {{PLURAL:$1|分}}前のものです。問題点が深刻な場合以外は、タグ付けまで時間を置くことを検討してください。',
-	'pagetriage-notification-mark-as-reviewed' => '$2 が、[[$3|$3]] を{{GENDER:$1|査読しました}}',
-	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 が、$3 を{{GENDER:$1|査読しました}}',
-	'pagetriage-notification-add-maintenance-tag' => '$2 が、[[$3|$3]] を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。{{PLURAL:$5|タグ}}: $4',
-	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 が、$3 に{{GENDER:$1|タグ付けしました}}',
-	'pagetriage-notification-add-deletion-tag' => '$2 が、[[$3|$3]] を{{GENDER:$1|査読して}}{{GENDER:$1|削除の印を付けました}}。{{PLURAL:$5|タグ}}: $4',
-	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 が、$3 に{{GENDER:$1|削除の印を付けました}}',
+	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] が [[User:$1|$1]] によって{{GENDER:$1|査読されました}}',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] が $1 によって{{GENDER:$1|査読されました}}',
+	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 が $1 によって{{GENDER:$2|査読されました}}',
+	'pagetriage-notification-mark-as-reviewed-email-body2' => '$2 が{{SITENAME}}の利用者 $1 によって{{GENDER:$1|査読されました}}:
+
+詳細はこちら:
+
+$3
+
+$4',
+	'pagetriage-notification-add-maintenance-tag2' => '[[User:$1|$1]] が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。{{PLURAL:$4|タグ}}: $3',
+	'pagetriage-notification-add-maintenance-tag-flyout' => '$1 が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。{{PLURAL:$4|タグ}}: $3',
+	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 が $1 によって{{GENDER:$2|タグ付けされました}}',
+	'pagetriage-notification-add-maintenance-tag-email-body2' => '{{SITENAME}}の利用者 $1 が、$2 を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。
+
+{{PLURAL:$5|タグ}}: $4
+
+詳細はこちら:
+
+$3
+
+$6',
+	'pagetriage-notification-add-deletion-tag2' => '[[User:$1|$1]] が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|削除の印を付けました}}。{{PLURAL:$4|タグ}}: $3',
+	'pagetriage-notification-add-deletion-tag-flyout' => '$1 が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|削除の印を付けました}}。{{PLURAL:$4|タグ}}: $3',
+	'pagetriage-notification-add-deletion-tag-email-subject2' => '$1 が、$2 に{{GENDER:$1|削除の印を付けました}}',
+	'pagetriage-notification-add-deletion-tag-email-body2' => '{{SITENAME}}の利用者 $1 が、$2 に{{GENDER:$1|削除の印を付けました}}。
+
+{{PLURAL:$5|タグ}}: $4
+
+詳細はこちら:
+
+$3
+
+$6',
 	'echo-pref-email-pagetriage-mark-as-reviewed' => '自分が作成したページを、誰かが査読したとき',
 	'echo-pref-email-pagetriage-add-maintenance-tag' => '自分が作成したページを、誰かが査読してメンテナンスタグを貼り付けたとき',
 	'echo-pref-email-pagetriage-add-deletion-tag' => '自分が作成したページを、誰かが査読してそのページの削除を提案したとき',
-	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 は $2 によって{{GENDER:$2|査読されました}}',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 が $2 によって{{GENDER:$2|査読されました}}',
 	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|件のページ査読}}',
 );
 
@@ -5208,7 +5275,7 @@ $messages['ko'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => '이 문서는 새 편집자 $2 ($3$4$5) 사용자에 의해 $1에 만들었습니다',
 	'pagetriage-editcount' => '$2로부터 편집 $1회',
 	'pagetriage-author-not-autoconfirmed' => '새 편집자',
-	'pagetriage-no-patrol-right' => '이 문서를 검토할 수 있는 권한이 없습니다',
+	'pagetriage-no-patrol-right' => '이 문서를 검토함으로 표시할 수 있는 권한이 없습니다',
 	'pagetriage-author-blocked' => '차단됨',
 	'pagetriage-author-bot' => '봇',
 	'pagetriage-showing' => '보기:',
@@ -5515,34 +5582,6 @@ $messages['ko'] = array(
 	'pagetriage-toolbar-close' => '닫기',
 	'pagetriage-toolbar-minimize' => '최소화',
 	'pagetriage-tag-warning-notice' => '참고: 이 문서만 $1{{PLURAL:$1|분}} 전입니다. 문제가 심각하지 않다면 해당 태그를 기다리는 것을 고려하세요.',
-	'pagetriage-notification-mark-as-reviewed' => '[[$3|$3]] 문서를 $2 사용자가 {{GENDER:$1|검토했습니다}}',
-	'pagetriage-notification-mark-as-reviewed-email-subject' => '$3 문서를 $1 사용자가 {{GENDER:$1|검토했습니다}}',
-	'pagetriage-notification-mark-as-reviewed-email-body' => '$3 문서를 {{SITENAME}} $1 사용자가 검토했습니다:
-
-더 보기:
-
-$4
-
-$5',
-	'pagetriage-notification-add-maintenance-tag' => '[[$3|$3]] 문서를 $2 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}. {{PLURAL:$5|태그}}: $4',
-	'pagetriage-notification-add-maintenance-tag-email-subject' => '$3 문서를 $1 사용자가 {{GENDER:$1|태그했습니다}}',
-	'pagetriage-notification-add-maintenance-tag-email-body' => '$3 문서를 {{SITENAME}} $1 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}.
-
-{{PLURAL:$6|태그}}: $5
-
-더 보기:
-
-$4
-
-$7',
-	'pagetriage-notification-add-deletion-tag' => '[[$3|$3]] 문서를 $2 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|삭제로 표시했습니다}}. {{PLURAL:$5|태그}}: $4',
-	'pagetriage-notification-add-deletion-tag-email-subject' => '$3 문서를 $1 사용자가 {{GENDER:$1|삭제로 표시했습니다}}',
-	'pagetriage-notification-add-deletion-tag-email-body' => '{{SITENAME}} $1 편집자가 당신이 작성한 "$3" 문서를 {{GENDER:$1|검토했습니다}}:
-<$4>
-
-이 문서는 {{PLURAL:$6|다음 태그}}로 삭제로 표시했습니다: $5
-
-이러한 문제를 해결하기 위해 이 문서를 개선해주세요. 감사합니다!',
 	'echo-pref-email-pagetriage-mark-as-reviewed' => '내가 만든 문서를 검토하기',
 	'echo-pref-email-pagetriage-add-maintenance-tag' => '내가 만들었고 유지 관리 태그를 추가한 문서를 검토하기',
 	'echo-pref-email-pagetriage-add-deletion-tag' => '내가 만들었고 삭제로 표시한 문서 검토하기',
@@ -6467,33 +6506,6 @@ $messages['nl'] = array(
 	'pagetriage-toolbar-close' => 'Sluiten',
 	'pagetriage-toolbar-minimize' => 'Minimaliseren',
 	'pagetriage-tag-warning-notice' => 'Let op: deze pagina is pas {{PLURAL:$1|één minuut|$1 minuten}} geleden aangemaakt. Overweeg nog even te wachten met labelen, tenzij de pagina een groot probleem oplevert.',
-	'pagetriage-notification-mark-as-reviewed' => '[[$3|$3]] is {{GENDER:$1|gecontroleerd}} door $2',
-	'pagetriage-notification-mark-as-reviewed-email-subject' => '$3 is {{GENDER:$1|gecontroleerd}} door $1',
-	'pagetriage-notification-mark-as-reviewed-email-body' => '$3 op {{SITENAME}} is gecontroleerd door {{GENDER:$1|$1}}
-
-Meer bekijken:
-
-$4
-
-$5',
-	'pagetriage-notification-add-maintenance-tag' => '[[$3|$3]] is {{GENDER:$1|gecontroleerd}} en gelabeld door $2. {{PLURAL:$5|Label|Labels}}: $4',
-	'pagetriage-notification-add-maintenance-tag-email-subject' => '$3 is door $1 {{GENDER:$1|gelabeld}}',
-	'pagetriage-notification-add-maintenance-tag-email-body' => '$3 op {{SITENAME}} is {{GENDER:$1|gecontroleerd}} en gelabeld door $1.
-{{PLURAL:$6|Dit label is|Deze labels zijn}} toegevoegd aan de pagina: $5
-
-Meer bekijken:
-
-$4
-
-$7',
-	'pagetriage-notification-add-deletion-tag' => '[[$3|$3]] is door $2 {{GENDER:$1|gecontroleerd}} en voor verwijdering gemarkeerd. Label{{PLURAL:$5||s}}: $4',
-	'pagetriage-notification-add-deletion-tag-email-subject' => '$3 is door $1 {{GENDER:$1|gemarkeerd voor verwijdering}}',
-	'pagetriage-notification-add-deletion-tag-email-body' => 'Gebruiker $1 van {{SITENAME}} {{GENDER:$1|heeft}} de pagina "$3" die u bent begonnen gecontroleerd:
-<$4>
-
-De pagina is genomineerd voor verwijdering met {{PLURAL:$6|dit label|deze labels}}: $5
-
-Help deze pagina te verbeteren door de aangegeven verbeterpunten aan te pakken. Bedankt!',
 	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Een pagina controleert die ik heb aangemaakt',
 	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Een pagina controleert die ik heb aangemaakt en beheerlabels toevoegt',
 	'echo-pref-email-pagetriage-add-deletion-tag' => 'Een pagina controleert die ik heb aangemaakt en die voor verwijdering nomineert',
