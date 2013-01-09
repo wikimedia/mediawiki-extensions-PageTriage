@@ -131,7 +131,7 @@ class ArticleMetadata {
 
 	/**
 	 * Get the metadata for a single or list of articles
-	 * @return array
+	 * @return array $metadata: key (page Ids) => value (metadata) pairs
 	 */
 	public function getMetadata() {
 		$articles = $this->mPageId;
