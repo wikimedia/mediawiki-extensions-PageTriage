@@ -452,7 +452,8 @@ $messages['qqq'] = array(
 	'pagetriage-categories' => 'The number of categories in the page.',
 	'pagetriage-no-categories' => 'Label indicating a page with no categories',
 	'pagetriage-no-reference' => 'Label indicating a page with no reference citations',
-	'pagetriage-orphan' => 'Label indicating a page has no external links (orphan)',
+	'pagetriage-orphan' => 'Label indicating a page has no external links (orphan).
+{{Identical|Orphan}}',
 	'pagetriage-no-author' => 'Error message for missing page author information',
 	'pagetriage-byline' => "Text indicating the page author.
 *$1 is a link to the author's user page.
@@ -505,7 +506,8 @@ If your language requires some words between the different parts of the timestam
 *{{msg-mw|Pagetriage-filter-orphan}} and 
 *{{msg-mw|Pagetriage-filter-non-autoconfirmed}}.',
 	'pagetriage-filter-no-categories' => 'Checkbox text for pages with no categories',
-	'pagetriage-filter-orphan' => 'Checkbox text for orphan pages',
+	'pagetriage-filter-orphan' => 'Checkbox text for orphan pages.
+{{Identical|Orphan}}',
 	'pagetriage-filter-non-autoconfirmed' => 'Checkbox text for pages by non-Autoconfirmed users',
 	'pagetriage-filter-blocked' => 'Checkbox text for pages by blocked users',
 	'pagetriage-filter-all' => 'Radio button text for all items radio button',
@@ -522,7 +524,8 @@ If your language requires some words between the different parts of the timestam
 	'pagetriage-filter-stat-redirects' => 'Status display component for redirects. This message is included as part of a sentence-style list.',
 	'pagetriage-filter-stat-nominated-for-deletion' => 'Status dispay component for pages nominated for deletion. This message is included as part of a sentence-style list.',
 	'pagetriage-filter-stat-no-categories' => 'Status display component for pages with no categories. This message is included as part of a sentence-style list.',
-	'pagetriage-filter-stat-orphan' => 'Status display component for orphan pages. This message is included as part of a sentence-style list.',
+	'pagetriage-filter-stat-orphan' => 'Status display component for orphan pages. This message is included as part of a sentence-style list.
+{{Identical|Orphan}}',
 	'pagetriage-filter-stat-non-autoconfirmed' => 'Status display component for pages by non-autoconfirmed editors. This message is included as part of a sentence-style list.',
 	'pagetriage-filter-stat-blocked' => 'Status display component for pages by blocked users. This message is included as part of a sentence-style list.',
 	'pagetriage-filter-stat-username' => 'Status display component for filter by username. $1 is the username. This message is included as part of a sentence-style list.',
@@ -582,7 +585,8 @@ If your language requires some words between the different parts of the timestam
 	'pagetriage-tags-externallinks-desc' => 'Description for external links tag',
 	'pagetriage-tags-catimprove-label' => 'Label for cat improve tag',
 	'pagetriage-tags-catimprove-desc' => 'Description for cat improve tag',
-	'pagetriage-tags-orphan-label' => 'Label for orphan tag',
+	'pagetriage-tags-orphan-label' => 'Label for orphan tag.
+{{Identical|Orphan}}',
 	'pagetriage-tags-orphan-desc' => 'Description for orphan tag',
 	'pagetriage-tags-overlinked-label' => 'Label for overlinked tag',
 	'pagetriage-tags-overlinked-desc' => 'Description for overlinked tag',
@@ -775,7 +779,8 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-info-problem-blocked-desc' => 'Description for the error displayed when the page author is blocked.',
 	'pagetriage-info-problem-no-categories' => 'Title for the error displayed when the page belongs to no categories.',
 	'pagetriage-info-problem-no-categories-desc' => 'Description for the error displayed when the page belongs to no categories.',
-	'pagetriage-info-problem-orphan' => 'Title for the error displayed when the page has no inbound links.',
+	'pagetriage-info-problem-orphan' => 'Title for the error displayed when the page has no inbound links.
+{{Identical|Orphan}}',
 	'pagetriage-info-problem-orphan-desc' => 'Description for the error displayed when the page has no inbound links.',
 	'pagetriage-info-problem-no-references' => 'Title for the error displayed when the page has no citations to any sources.',
 	'pagetriage-info-problem-no-references-desc' => 'Description for the error displayed when the page has no citations.',
@@ -6849,37 +6854,40 @@ $messages['pms'] = array(
 	'pagetriage-toolbar-close' => 'Sara',
 	'pagetriage-toolbar-minimize' => 'Minimisa',
 	'pagetriage-tag-warning-notice' => "Nòta: Sta pagina a l'é mach veja $1 {{PLURAL:$1|minuta|minute}}. Considra dë speté a tichëttela, a men che ël problem a sia seri.",
-	'pagetriage-notification-mark-as-reviewed' => "[[$3|$3]] a l'era {{GENDER:$1|revisionà}} da $2",
-	'pagetriage-notification-mark-as-reviewed-email-subject' => "$3 a l'era {{GENDER:$1|revisionà}} da $1",
-	'pagetriage-notification-mark-as-reviewed-email-body' => "$3 a l'era {{GENDER:$1|revisionà}} da {{SITENAME}} utent $1:
+	'pagetriage-notification-mark-as-reviewed2' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} da [[User:$1|$1]]",
+	'pagetriage-notification-mark-as-reviewed-flyout' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} da $1",
+	'pagetriage-notification-mark-as-reviewed-email-subject2' => "$2 a l'é stàit {{GENDER:$1|revisionà}} da $1",
+	'pagetriage-notification-mark-as-reviewed-email-body2' => "$2 a l'era {{GENDER:$1|revisionà}} da {{SITENAME}} utent $1:
 
 Varda ëd pi:
 
-$4
+$3
 
-$5",
-	'pagetriage-notification-add-maintenance-tag' => "[[$3|$3]] a l'era {{GENDER:$1|revisionà}} e {{GENDER:$1|tichëttà}} da $2.  {{PLURAL:$5|Tichëtta|Tichëtte}}: $4",
-	'pagetriage-notification-add-maintenance-tag-email-subject' => "$3 a l'era {{GENDER:$1|tichëttà}} da $1",
-	'pagetriage-notification-add-maintenance-tag-email-body' => "$3 a l'era {{GENDER:$1|revisionà}} e {{GENDER:$1|tichëttà}} da {{SITENAME}} utent $1.
+$4",
+	'pagetriage-notification-add-maintenance-tag2' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|tichëttà}} da [[User:$1|$1]].  {{PLURAL:$4|Tichëtta|Tichëtte}}: $3",
+	'pagetriage-notification-add-maintenance-tag-flyout' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|tichëttà}} da $1.  {{PLURAL:$4|Tichëtta|Tichëtte}}: $3",
+	'pagetriage-notification-add-maintenance-tag-email-subject2' => "$2 a l'é stàit {{GENDER:$1|tichëttà}} da $1",
+	'pagetriage-notification-add-maintenance-tag-email-body2' => "$2 a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|tichëttà}} da {{SITENAME}} utent $1.
 
-{{PLURAL:$6|Tichëtta|Tichëtte}}: $5
-
-Varda ëd pi:
-
-$4
-
-$7",
-	'pagetriage-notification-add-deletion-tag' => "[[$3|$3]] a l'era {{GENDER:$1|revisionà}} e {{GENDER:$1|marcà për scanselament}} da $2.  {{PLURAL:$5|Tichëtta|Tichëtte}}: $4",
-	'pagetriage-notification-add-deletion-tag-email-subject' => "$3 a l'era {{GENDER:$1|marcà për scanselament}} da $1",
-	'pagetriage-notification-add-deletion-tag-email-body' => "$3 a l'era {{GENDER:$1|marcà për scanselament}} da {{SITENAME}} utent $1.
-
-{{PLURAL:$6|Tichëtta|Tichëtte}}: $5
+{{PLURAL:$5|Tichëtta|Tichëtte}}: $4
 
 Varda ëd pi:
 
-$4
+$3
 
-$7",
+$6",
+	'pagetriage-notification-add-deletion-tag2' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|marcà për scanselament}} da [[User:$1|$1]].  {{PLURAL:$4|Tichëtta|Tichëtte}}: $3",
+	'pagetriage-notification-add-deletion-tag-flyout' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|marcà për scanselament}} da $1.  {{PLURAL:$4|Tichëtta|Tichëtte}}: $3",
+	'pagetriage-notification-add-deletion-tag-email-subject2' => "$2 a l'é stàit {{GENDER:$1|marcà për scanselament}} da $1",
+	'pagetriage-notification-add-deletion-tag-email-body2' => "$2 a l'é stàit {{GENDER:$1|marcà për scanselament}} da {{SITENAME}} utent $1.
+
+{{PLURAL:$5|Tichëtta|Tichëtte}}: $4
+
+Varda ëd pi:
+
+$3
+
+$6",
 	'echo-pref-email-pagetriage-mark-as-reviewed' => "A revision-a na pagina che mi i l'heu creà",
 	'echo-pref-email-pagetriage-add-maintenance-tag' => "A revision-a na pagina che mi i l'heu creà e a gionta tichëtte ëd manutension",
 	'echo-pref-email-pagetriage-add-deletion-tag' => "A revision-a na pagina che mi i l'heu creà e a la nòmina për scanselament",
