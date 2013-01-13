@@ -516,7 +516,8 @@ If your language requires some words between the different parts of the timestam
 	'pagetriage-stats-reviewed-page-count' => 'Text showing the number of pages reviewed in the past week, $1 is the number of reviewed pages',
 	'pagetriage-stats-filter-page-count' => 'Text showing the number of pages from the primary filter, $1 is the number of pages',
 	'pagetriage-filter-ns-all' => 'For the namespace filter select list, text indicating that all namespaces will be selected',
-	'pagetriage-more' => 'Text for a link that loads more pages into list',
+	'pagetriage-more' => 'Text for a link that loads more pages into list.
+{{Identical|More}}',
 	'pagetriage-filter-stat-all' => 'Status display component for all pages (no filter)',
 	'pagetriage-filter-stat-reviewed' => 'Status display component for reviewed pages. This message is included as part of a sentence-style list.',
 	'pagetriage-filter-stat-unreviewed' => 'Status display component for unreviewed pages. This message is included as part of a sentence-style list.',
@@ -557,7 +558,8 @@ If your language requires some words between the different parts of the timestam
 	'pagetriage-js-required' => 'Error message for browsers with JavaScript disabled',
 	'pagetriage-tags-title' => 'The title for the tag wizard flyout in the toolbar',
 	'pagetriage-tags-cat-common-label' => 'Label for common category',
-	'pagetriage-tags-cat-metadata-label' => 'Label for metadata category',
+	'pagetriage-tags-cat-metadata-label' => 'Label for metadata category.
+{{Identical|Metadata}}',
 	'pagetriage-tags-cat-cleanup-label' => 'Label for cleanup category',
 	'pagetriage-tags-cat-neutrality-label' => 'Label for neutrality category',
 	'pagetriage-tags-cat-sources-label' => 'Label for sources category',
