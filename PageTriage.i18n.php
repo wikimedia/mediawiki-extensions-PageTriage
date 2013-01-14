@@ -433,7 +433,8 @@ $6',
  */
 $messages['qqq'] = array(
 	'pagetriage' => 'The name of this application (Page Triage)',
-	'pagetriage-dot-separator' => 'The dot separator',
+	'pagetriage-dot-separator' => '{{Optional}}
+The dot separator',
 	'newpagesfeed' => 'Title of a special page',
 	'pagetriage-desc' => '{{desc}}',
 	'pagetriage-pagecuration' => 'Alternative title of the extension/project. Should use title case.',
@@ -473,10 +474,12 @@ $messages['qqq'] = array(
 	'pagetriage-no-patrol-right' => 'String indicating that a user does not have rights to mark a page as reviewed',
 	'pagetriage-author-blocked' => 'String indicating that the author was blocked when the page was last edited',
 	'pagetriage-author-bot' => 'String indicating that the author is a bot',
-	'pagetriage-creation-dateformat' => "Format specifier for the page creation date. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers
+	'pagetriage-creation-dateformat' => "{{Optional}}
+Format specifier for the page creation date. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers
 
 If your language requires some words between the different parts of the timestamp (for example in the Galician language the words '''de''' and '''ás''' are inserted: d de MMMM de yyyy ás HH:mm) then the text needs to be put inside quotation marks so as not to taken as code by the software. In Galician this is: [http://translatewiki.net/wiki/MediaWiki:Pagetriage-creation-dateformat/gl d \"de\" MMMM \"de\" yyyy \"ás\" HH:mm].",
-	'pagetriage-user-creation-dateformat' => "Format specifier for the author's account creation date. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers",
+	'pagetriage-user-creation-dateformat' => "{{Optional}}
+Format specifier for the author's account creation date. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers",
 	'pagetriage-showing' => 'The heading of a list of types of edits that are currently shown. An adjective that describes edits.
 
 [[File:PageTriage-ListView-Whole.png|thumb|200px|Screenshot]]',
@@ -569,27 +572,47 @@ If your language requires some words between the different parts of the timestam
 	'pagetriage-tags-cat-writingstyle-label' => 'Label for writing Style category',
 	'pagetriage-tags-cat-moretags-label' => 'Label for more tags category',
 	'pagetriage-tags-cat-all-label' => 'Label for all tags category',
-	'pagetriage-tags-linkrot-label' => 'Label for linkrot tag. A bare URL is a URL cited as a reference for some information in a page without any accompanying information on the linked page[http://en.wikipedia.org/wiki/Wikipedia:Bare_URLs].',
-	'pagetriage-tags-linkrot-desc' => 'Description for linkrot tag. A bare URL is a URL cited as a reference for some information in a page without any accompanying information on the linked page[http://en.wikipedia.org/wiki/Wikipedia:Bare_URLs].',
-	'pagetriage-tags-copyedit-label' => 'Label for copy edit tag',
-	'pagetriage-tags-copyedit-desc' => 'Description for copy edit tag',
-	'pagetriage-tags-morefootnotes-label' => 'Label for more footnotes tag',
-	'pagetriage-tags-morefootnotes-desc' => 'Description for more footnotes tag',
-	'pagetriage-tags-refimprove-label' => 'Label for ref improve tag',
-	'pagetriage-tags-refimprove-desc' => 'Description for ref improve tag',
-	'pagetriage-tags-uncategorised-label' => 'Label for uncategorised tag',
-	'pagetriage-tags-uncategorised-desc' => 'Description for uncategorised tag',
-	'pagetriage-tags-unreferenced-label' => 'Label for unreferenced tag',
-	'pagetriage-tags-unreferenced-desc' => 'Description for unreferenced tag',
-	'pagetriage-tags-deadend-label' => 'Label for dead end tag',
-	'pagetriage-tags-deadend-desc' => 'Description for dead end tag',
-	'pagetriage-tags-externallinks-label' => 'Label for external links tag',
-	'pagetriage-tags-externallinks-desc' => 'Description for external links tag',
-	'pagetriage-tags-catimprove-label' => 'Label for cat improve tag',
-	'pagetriage-tags-catimprove-desc' => 'Description for cat improve tag',
-	'pagetriage-tags-orphan-label' => 'Label for orphan tag.
+	'pagetriage-tags-linkrot-label' => '{{Optional}}
+Label for linkrot tag. A bare URL is a URL cited as a reference for some information in a page without any accompanying information on the linked page[http://en.wikipedia.org/wiki/Wikipedia:Bare_URLs].',
+	'pagetriage-tags-linkrot-desc' => '{{Optional}}
+Description for linkrot tag. A bare URL is a URL cited as a reference for some information in a page without any accompanying information on the linked page[http://en.wikipedia.org/wiki/Wikipedia:Bare_URLs].',
+	'pagetriage-tags-copyedit-label' => '{{Optional}}
+Label for copy edit tag',
+	'pagetriage-tags-copyedit-desc' => '{{Optional}}
+Description for copy edit tag',
+	'pagetriage-tags-morefootnotes-label' => '{{Optional}}
+Label for more footnotes tag',
+	'pagetriage-tags-morefootnotes-desc' => '{{Optional}}
+Description for more footnotes tag',
+	'pagetriage-tags-refimprove-label' => '{{Optional}}
+Label for ref improve tag',
+	'pagetriage-tags-refimprove-desc' => '{{Optional}}
+Description for ref improve tag',
+	'pagetriage-tags-uncategorised-label' => '{{Optional}}
+Label for uncategorised tag',
+	'pagetriage-tags-uncategorised-desc' => '{{Optional}}
+Description for uncategorised tag',
+	'pagetriage-tags-unreferenced-label' => '{{Optional}}
+Label for unreferenced tag',
+	'pagetriage-tags-unreferenced-desc' => '{{Optional}}
+Description for unreferenced tag',
+	'pagetriage-tags-deadend-label' => '{{Optional}}
+Label for dead end tag',
+	'pagetriage-tags-deadend-desc' => '{{Optional}}
+Description for dead end tag',
+	'pagetriage-tags-externallinks-label' => '{{Optional}}
+Label for external links tag',
+	'pagetriage-tags-externallinks-desc' => '{{Optional}}
+Description for external links tag',
+	'pagetriage-tags-catimprove-label' => '{{Optional}}
+Label for cat improve tag',
+	'pagetriage-tags-catimprove-desc' => '{{Optional}}
+Description for cat improve tag',
+	'pagetriage-tags-orphan-label' => '{{Optional}}
+Label for orphan tag.
 {{Identical|Orphan}}',
-	'pagetriage-tags-orphan-desc' => 'Description for orphan tag',
+	'pagetriage-tags-orphan-desc' => '{{Optional}}
+Description for orphan tag',
 	'pagetriage-tags-overlinked-label' => 'Label for overlinked tag',
 	'pagetriage-tags-overlinked-desc' => 'Description for overlinked tag',
 	'pagetriage-tags-cleanup-label' => 'Label for cleanup tag',
