@@ -486,6 +486,9 @@ $( function() {
 						case 'bottom':
 							bottomText += '{{' + tagObj.tag + this.buildParams( tagObj ) + '}}';
 							break;
+						case 'categories':
+							bottomText = '{{' + tagObj.tag + this.buildParams( tagObj ) + '}}' + bottomText;
+							break;
 						case 'top':
 						default:
 							if ( tagObj.multiple ) {

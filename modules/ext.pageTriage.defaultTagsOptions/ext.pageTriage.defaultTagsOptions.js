@@ -154,7 +154,7 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'bottom',
+				position: 'categories',
 				dest: 'metadata',
 				multiple: false
 			}
@@ -287,7 +287,7 @@ $.pageTriageTagsOptions = {
 				params: {
 					'date': param.date
 				},
-				position: 'bottom',
+				position: 'categories',
 				multiple: false
 			}
 		}
