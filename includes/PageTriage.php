@@ -23,7 +23,7 @@ class PageTriage {
 	 * @param $pageId int
 	 */
 	public function __construct( $pageId ) {
-		$this->mPageId = intval( $pageId );
+		$this->mPageId = ( int )$pageId;
 		$this->mLoaded = false;
 	}
 
