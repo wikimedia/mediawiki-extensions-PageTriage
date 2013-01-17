@@ -247,7 +247,7 @@ $messages['en'] = array(
 	'pagetriage-tags-unbalanced-desc' => 'This page may be unbalanced towards certain viewpoints.',
 	'pagetriage-tags-update-label' => 'Update',
 	'pagetriage-tags-update-desc' => 'This page needs additional up-to-date information added.',
-	'pagetriage-tags-tooltip' => 'Add tags to indicate problems with the page',
+	'pagetriage-tags-tooltip' => 'Add tags to indicate areas of improvement for this page',
 	
 	// Deletion Tags options section
 	'pagetriage-del-tags-cat-csd-label' => 'Speedy deletion',
