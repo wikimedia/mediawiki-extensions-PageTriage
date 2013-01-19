@@ -115,7 +115,7 @@ $( function() {
 	mw.pageTriage.DeleteView = mw.pageTriage.ToolView.extend( {
 		id: 'mwe-pt-deletion-wizard',
 		icon: 'icon_trash.png',
-		title: 'Mark for Deletion',
+		title: mw.msg( 'pagetriage-del-title' ),
 		tooltip: 'pagetriage-del-tooltip',
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'delete.html' } ),
 		deletionTagsOptions: {},

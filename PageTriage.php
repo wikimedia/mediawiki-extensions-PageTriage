@@ -415,6 +415,7 @@ $wgPageTriageDeletionTagsOptionsMessages = array (
 	'pagetriage-tags-param-url-label',
 	'pagetriage-tags-param-source-label',
 	'pagetriage-del-tags-param-discussion-label',
+	'pagetriage-del-title',
 	'pagetriage-del-tooltip',
 	'pagetriage-tags-param-url-label',
 	'pagetriage-tags-param-article-label',
