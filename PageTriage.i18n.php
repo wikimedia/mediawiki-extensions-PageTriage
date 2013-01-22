@@ -7477,7 +7477,7 @@ $messages['sv'] = array(
 	'pagetriage-tags-originalresearch-label' => 'Egen forskning',
 	'pagetriage-tags-originalresearch-desc' => 'Denna sida innehåller egen forskning eller overifierade påståenden.',
 	'pagetriage-tags-primarysources-label' => 'Primära källor',
-	'pagetriage-tags-primarysources-desc' => 'Denna sida är alltför starkt beroende av direkta källor, och behöver utomstående källor.',
+	'pagetriage-tags-primarysources-desc' => 'Denna sida är alltför starkt beroende av direkta källor, och behöver utomstående källor.', # Fuzzy
 	'pagetriage-tags-onesource-label' => 'Enda källa',
 	'pagetriage-tags-onesource-desc' => 'Denna sida bygger helt eller delvis på en enda källa.',
 	'pagetriage-tags-leadmissing-label' => 'Inledning saknas',
@@ -7520,13 +7520,12 @@ $messages['sv'] = array(
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-info-tooltip' => 'Visa metadata för denna sida',
-	'pagetriage-toolbar-collapsed' => 'Kuration',
+	'pagetriage-toolbar-collapsed' => 'Kurering',
 	'pagetriage-toolbar-linktext' => 'Granska eller märk denna artikel',
 	'pagetriage-toolbar-learn-more' => 'Läs mer »',
 	'pagetriage-mark-title' => 'Markera som granskad',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|redigering|redigeringar}}',
 	'pagetriage-toolbar-close' => 'Stäng',
-	'pagetriage-notification-add-deletion-tag-email-subject' => '$3 {{GENDER:$1|markerades för radering}} av $1',
 );
 
 /** Tamil (தமிழ்)
