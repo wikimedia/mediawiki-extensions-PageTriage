@@ -4,7 +4,7 @@ $( function() {
 	mw.pageTriage.ArticleInfoView = mw.pageTriage.ToolView.extend( {
 		id: 'mwe-pt-info',
 		icon: 'icon_info.png', // the default icon
-		title: gM( 'pagetriage-info-title' ),
+		title: mw.msg( 'pagetriage-info-title' ),
 		tooltip: 'pagetriage-info-tooltip',
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'articleInfo.html' } ),
 
@@ -39,7 +39,7 @@ $( function() {
 				// put it all together in the byline
 				var articleByline = mw.msg(
 					bylineMessage,
-					Date.parseExact( this.model.get( 'creation_date' ), 'yyyyMMddHHmmss' ).toString( gM( 'pagetriage-info-timestamp-date-format' ) ),
+					Date.parseExact( this.model.get( 'creation_date' ), 'yyyyMMddHHmmss' ).toString( mw.msg( 'pagetriage-info-timestamp-date-format' ) ),
 					info.userPageLink,
 					info.userTalkPageLink,
 					mw.msg( 'pipe-separator' ),
@@ -49,11 +49,11 @@ $( function() {
 			}
 
 			var stats = [
-				gM( "pagetriage-bytes", this.model.get( 'page_len' ) ),
-				gM( "pagetriage-edits", this.model.get( 'rev_count' ) ),
-				gM( "pagetriage-categories", this.model.get( 'category_count' ) )
+				mw.msg( "pagetriage-bytes", this.model.get( 'page_len' ) ),
+				mw.msg( "pagetriage-edits", this.model.get( 'rev_count' ) ),
+				mw.msg( "pagetriage-categories", this.model.get( 'category_count' ) )
 			];
-			this.model.set( 'articleStat', gM( 'pagetriage-articleinfo-stat', stats.join( gM( 'pagetriage-dot-separator' ) ) ) );
+			this.model.set( 'articleStat', mw.msg( 'pagetriage-articleinfo-stat', stats.join( mw.msg( 'pagetriage-dot-separator' ) ) ) );
 
 			this.$tel.html( this.template( this.model.toJSON() ) );
 			var history = new mw.pageTriage.ArticleInfoHistoryView( { eventBus: this.eventBus, model: this.model.revisions } );
@@ -71,9 +71,9 @@ $( function() {
 
 		formatProblem: function( problem ) {
 			return '<li class="mwe-pt-info-problem"><span class="mwe-pt-info-problem-name">' +
-				gM( 'pagetriage-info-problem-' + problem ) +
+				mw.msg( 'pagetriage-info-problem-' + problem ) +
 				'</span> - <span class="mwe-pt-info-problem-desc">' +
-				gM('pagetriage-info-problem-' + problem + '-desc') +
+				mw.msg('pagetriage-info-problem-' + problem + '-desc') +
 				'</span></li>';
 		},
 
@@ -123,8 +123,8 @@ $( function() {
 					// passed through to nested models, and switching to backbone-relational in order to
 					// move these few lines of code seems silly.
 					var timestamp_parsed = Date.parseExact( historyItem.get( 'timestamp' ), 'yyyy-MM-ddTHH:mm:ssZ' );
-					historyItem.set('timestamp_date', timestamp_parsed.toString( gM( 'pagetriage-info-timestamp-date-format' ) ) );
-					historyItem.set('timestamp_time', timestamp_parsed.toString( gM( 'pagetriage-info-timestamp-time-format' ) ) );
+					historyItem.set('timestamp_date', timestamp_parsed.toString( mw.msg( 'pagetriage-info-timestamp-date-format' ) ) );
+					historyItem.set('timestamp_time', timestamp_parsed.toString( mw.msg( 'pagetriage-info-timestamp-time-format' ) ) );
 					if( historyItem.get( 'timestamp_date' ) !== lastDate ) {
 						historyItem.set( 'new_date', true );
 					} else {

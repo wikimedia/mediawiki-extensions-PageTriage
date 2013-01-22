@@ -17,7 +17,7 @@ $( function() {
 			if ( mw.config.get( 'wgPageTriageEnableReviewButton' ) ) {
 				data.reviewRightHelpText = '';
 			} else {
-				data.reviewRightHelpText = gM( 'pagetriage-no-patrol-right' );
+				data.reviewRightHelpText = mw.msg( 'pagetriage-no-patrol-right' );
 			}
 			// insert the template into the document. fill with the current model.
 			this.$el.html( this.template( data ) );

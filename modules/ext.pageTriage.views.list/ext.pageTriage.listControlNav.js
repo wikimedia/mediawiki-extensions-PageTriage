@@ -5,7 +5,7 @@ $( function() {
 		tagName: "div",
 		template: _.template( $( "#listControlNavTemplate" ).html() ),
 		filterMenuVisible: 0,
-		filterStatus: gM( 'pagetriage-filter-stat-all'),
+		filterStatus: mw.msg( 'pagetriage-filter-stat-all'),
 		newFilterStatus: [],
 
 		initialize: function( options ) {
@@ -34,7 +34,7 @@ $( function() {
 
 			this.eventBus.bind( "renderStats", function( stats ) {
 				// fill in the counter when the stats view gets loaded.
-				$( "#mwe-pt-control-stats" ).html( gM( 'pagetriage-stats-filter-page-count', stats.get( 'ptrFilterCount' ) ) );
+				$( "#mwe-pt-control-stats" ).html( mw.msg( 'pagetriage-stats-filter-page-count', stats.get( 'ptrFilterCount' ) ) );
 			} );
 		},
 
@@ -304,7 +304,7 @@ $( function() {
 				var ns = this.model.getParam( 'namespace' );
 				var nsText;
 				if( Number(ns) === 0 ) {
-					nsText = gM( 'blanknamespace' );
+					nsText = mw.msg( 'blanknamespace' );
 				} else {
 					nsText = mw.config.get( 'wgFormattedNamespaces' )[ns];
 				}
@@ -318,7 +318,7 @@ $( function() {
 
 			var username = this.model.getParam( 'username' );
 			if( username ) {
-				this.newFilterStatus.push( gM( 'pagetriage-filter-stat-username', username ) );
+				this.newFilterStatus.push( mw.msg( 'pagetriage-filter-stat-username', username ) );
 				$( '#mwe-pt-filter-user-selected' ).prop( 'checked', true );
 			}
 			$( '#mwe-pt-filter-user' ).val( username );
@@ -356,7 +356,7 @@ $( function() {
 		menuCheckboxUpdate: function( $checkbox, param, message ) {
 			$checkbox.prop( 'checked', this.model.getParam( param )=="1"?true:false );
 			if( this.model.getParam( param ) ) {
-				this.newFilterStatus.push( gM( message ) );
+				this.newFilterStatus.push( mw.msg( message ) );
 			}
 		}
 

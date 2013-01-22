@@ -4,7 +4,7 @@ $( function() {
 	mw.pageTriage.WikiLoveView = mw.pageTriage.ToolView.extend( {
 		id: 'mwe-pt-wikilove',
 		icon: 'icon_wikilove.png', // the default icon
-		title: gM( 'wikilove' ),
+		title: mw.msg( 'wikilove' ),
 		tooltip: 'pagetriage-wikilove-tooltip',
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'wikilove.html' } ),
 

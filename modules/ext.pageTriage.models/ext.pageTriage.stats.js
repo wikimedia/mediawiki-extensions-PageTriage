@@ -43,9 +43,9 @@ $( function() {
 
 			var diff = Math.round( ( now.getTime() - begin.getTime() ) / ( 1000 * 60 * 60 * 24 ) );
 			if ( diff ) {
-				return gM( 'days', diff );
+				return mw.msg( 'days', diff );
 			} else {
-				return gM( 'pagetriage-stats-less-than-a-day', diff );
+				return mw.msg( 'pagetriage-stats-less-than-a-day', diff );
 			}
 		},
 

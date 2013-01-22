@@ -26,12 +26,12 @@ $( function() {
 
 		formatMetadata: function ( article ) {
 			var creation_date_parsed = Date.parseExact( article.get( 'creation_date' ), 'yyyyMMddHHmmss' );
-			article.set('creation_date_pretty', creation_date_parsed.toString( gM( 'pagetriage-creation-dateformat' ) ) );
+			article.set('creation_date_pretty', creation_date_parsed.toString( mw.msg( 'pagetriage-creation-dateformat' ) ) );
 
 			// sometimes user info isn't set, so check that first.
 			if( article.get( 'user_creation_date' ) ) {
 				var user_creation_date_parsed = Date.parseExact( article.get( 'user_creation_date' ), 'yyyyMMddHHmmss' );
-				article.set( 'user_creation_date_pretty', user_creation_date_parsed.toString( gM( 'pagetriage-info-timestamp-date-format' ) ) );
+				article.set( 'user_creation_date_pretty', user_creation_date_parsed.toString( mw.msg( 'pagetriage-info-timestamp-date-format' ) ) );
 			} else {
 				article.set( 'user_creation_date_pretty', '');
 			}
@@ -83,7 +83,7 @@ $( function() {
 						'page_status',
 						mw.msg(
 							'pagetriage-page-status-reviewed',
-							Date.parseExact( article.get( 'ptrp_reviewed_updated' ), 'yyyyMMddHHmmss' ).toString( gM( 'pagetriage-info-timestamp-date-format' ) ),
+							Date.parseExact( article.get( 'ptrp_reviewed_updated' ), 'yyyyMMddHHmmss' ).toString( mw.msg( 'pagetriage-info-timestamp-date-format' ) ),
 							reviewerInfo.userPageLink,
 							reviewerInfo.userTalkPageLink,
 							mw.msg( 'pipe-separator' ),
@@ -174,7 +174,7 @@ $( function() {
 				if ( diff < 1 ) {
 					diff = 1;
 				}
-				return gM( 'pagetriage-tag-warning-notice', diff );
+				return mw.msg( 'pagetriage-tag-warning-notice', diff );
 			} else {
 				return '';
 			}
