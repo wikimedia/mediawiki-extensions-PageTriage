@@ -15,6 +15,8 @@ $( function() {
 			'success' : function() {
 				// array of tool instances
 				var tools;
+				// array of flyouts  disabled for the page creator
+				var disabledForCreators = [ 'tags', 'mark', 'delete' ];
 
 				// overall toolbar view
 				// currently, this is the main application view.
@@ -57,7 +59,7 @@ $( function() {
 					},
 
 					/**
-					 * Check if the flyout is enabled for the current namespace
+					 * Check if the flyout is enabled
 					 */
 					isFlyoutEnabled: function( flyout ) {
 						var modules = mw.config.get( 'wgPageTriageCurationModules' );
@@ -68,7 +70,16 @@ $( function() {
 						}
 
 						// this flyout is disabled for current namespace
-						return $.inArray( mw.config.get( 'wgNamespaceNumber' ), modules[flyout].namespace ) !== -1;
+						if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ), modules[flyout].namespace ) === -1 ) {
+							return false;
+						}
+
+						// this flyout is disabled for this user as he is the creator of the article
+						if ( $.inArray( flyout, disabledForCreators ) !== -1 && article.get( 'user_name' ) === mw.user.getName() ) {
+							return false;
+						}
+
+						return true;
 					},
 
 					render: function() {
