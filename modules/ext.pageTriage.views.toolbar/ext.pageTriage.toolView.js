@@ -183,7 +183,7 @@ $( function() {
 		},
 
 		disable: function() {
-			this.$icon.unbind( 'mouseenter mouseleave' );
+			this.$icon.unbind( 'mouseenter mouseleave click' );
 			this.setIcon( 'disabled' );
 			this.$icon.css( 'cursor', 'default' );
 		},
