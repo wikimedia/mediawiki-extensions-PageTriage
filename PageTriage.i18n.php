@@ -365,6 +365,7 @@ $messages['en'] = array(
 	'pagetriage-del-log-page-adding-error' => 'Failed to find target spot for the discussion',
 	'pagetriage-del-talk-page-notify-error' => 'Failed to notify author on talk page',
 	'pagetriage-del-discussion-page-adding-error' => 'Failed to add the page to deletion discussion page!',
+	'pagetriage-del-title' => 'Mark for deletion',
 	'pagetriage-del-tooltip' => 'Nominate this page for deletion',
 	'pagetriage-tagging-error' => 'Failed to apply tags to the page',
 	'pagetriage-add-tag-confirmation' => 'Are you sure you want to add $1 {{PLURAL:$1|tag|tags}} to such a short article?',
@@ -835,6 +836,7 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 	'pagetriage-del-log-page-adding-error' => 'Error message indicating a failure of adding the page to discussion',
 	'pagetriage-del-talk-page-notify-error' => 'Error message indicating a failure of notifying the author on user talk page',
 	'pagetriage-del-discussion-page-adding-error' => 'Error message indicating a failure of adding the page to deletion discussion page!',
+	'pagetriage-del-title' => 'The title for the delete wizard flyout in the toolbar',
 	'pagetriage-del-tooltip' => 'Help message that displays when someone hovers over the deletion wizard button',
 	'pagetriage-tagging-error' => 'Error message indicating that error has occurred while applying tags to a page',
 	'pagetriage-add-tag-confirmation' => 'Confirmation message upon tag submission. Parameters:
