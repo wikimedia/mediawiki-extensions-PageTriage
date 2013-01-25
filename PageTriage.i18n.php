@@ -8055,7 +8055,7 @@ $messages['tr'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'Bu sayfa $1 tarihinde yeni editör $2 ($3$4$5) tarafından açıldı',
 	'pagetriage-editcount' => '$2 tarihinden beri $1 {{PLURAL:$1|değişiklik|değişiklik}} yaptı',
 	'pagetriage-author-not-autoconfirmed' => 'Yeni editör',
-	'pagetriage-no-patrol-right' => 'Bu sayfayı gözden geçirme hakkına sahip değilsiniz',
+	'pagetriage-no-patrol-right' => 'Bu sayfayı gözden geçirme hakkına sahip değilsiniz', # Fuzzy
 	'pagetriage-author-blocked' => 'Engellendi',
 	'pagetriage-author-bot' => 'Bot',
 	'pagetriage-showing' => 'Gösteriliyor:',
@@ -8102,7 +8102,7 @@ $messages['tr'] = array(
 	'pagetriage-filter-stat-username' => 'kullanıcı adı: $1',
 	'pagetriage-no-pages' => 'Kriterlerinize uygun sayfa mevcut değil.',
 	'pagetriage-warning-browser' => "Bu araç Internet Explorer 8'den daha eski tarayıcılarda düzgün çalışmayabilir.",
-	'pagetriage-welcome' => 'Lütfen aşağıdaki yeni sayfaları gözden geçirin ve Vikipedi\'yi geliştirmemize yardımcı olun. <a href="$1">Daha fazla bilgi</a> · <a href="$2">Geri bildirim bırak</a>',
+	'pagetriage-welcome' => 'Lütfen aşağıdaki yeni sayfaları gözden geçirin ve Vikipedi\'yi geliştirmemize yardımcı olun. <a href="$1">Daha fazla bilgi</a> · <a href="$2">Geri bildirim bırak</a>', # Fuzzy
 	'pagetriage-note-reviewed' => 'Bu sayfa gözden geçirilmiştir.',
 	'pagetriage-note-not-reviewed' => 'Bu sayfa henüz gözden geçirilmemiştir.',
 	'pagetriage-note-deletion' => 'Bu sayfa, silinmeye adaydır.',
@@ -8137,11 +8137,12 @@ $messages['tr'] = array(
 	'pagetriage-tags-cat-writingstyle-label' => 'Yazım şekli',
 	'pagetriage-tags-cat-moretags-label' => 'Diğer etiketler',
 	'pagetriage-tags-cat-all-label' => 'Bütün etiketler',
-	'pagetriage-tags-tooltip' => 'Sayfanın sorunlarını belirtmek için etiket ekle',
+	'pagetriage-tags-tooltip' => 'Sayfanın sorunlarını belirtmek için etiket ekle', # Fuzzy
 	'pagetriage-del-tags-cat-csd-desc' => 'Bu sayfayı aşağıdaki kıstaslardan birine uyuyorsa hızlı silinmesi için işaretleyin.',
 	'pagetriage-del-tags-cat-prod-desc' => 'Topluluk standartlarını açıkça çiğniyorsa bu sayfayı silinmek üzere işaretleyin.',
 	'pagetriage-del-tags-cat-discussion-desc' => 'Bu sayfayı silmeyi diğer editörler ile tartışmak üzere işaretleyin.',
 	'pagetriage-del-tags-dba3-label' => 'İçeriksiz',
+	'pagetriage-del-tags-dbg7-label' => 'Sayfayı açan kullanıcının isteği',
 	'pagetriage-del-tags-dbu3-label' => 'Özgür olmayan galeriler',
 	'pagetriage-tags-param-article-label' => 'Madde:',
 	'pagetriage-tags-param-date-label' => 'Tarih:',
@@ -8189,10 +8190,6 @@ $messages['tr'] = array(
 	'pagetriage-toolbar-close' => 'Kapat',
 	'pagetriage-toolbar-minimize' => 'Küçült',
 	'pagetriage-tag-warning-notice' => 'Not: Bu sayfa $1 {{PLURAL:$1|dakika|dakika}} önce açıldı. Ciddi bir sorun yoksa etiket eklemek için beklemeyi düşünün.',
-	'pagetriage-notification-mark-as-reviewed-email-body' => 'Tebrikler! {{SITENAME}} editörü $1, sizin açtığınız "$3" sayfasını {{GENDER:$1|gözden geçirdi}}:
-<$4>
-
-{{SITENAME}} sitesini geliştirmenizden dolayı teşekkür ederiz!',
 );
 
 /** Ukrainian (українська)
