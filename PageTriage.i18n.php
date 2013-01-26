@@ -1371,6 +1371,7 @@ $messages['cs'] = array(
 /** German (Deutsch)
  * @author Kghbln
  * @author Metalhead64
+ * @author Wnme
  */
 $messages['de'] = array(
 	'pagetriage' => 'Seitenprüfungshilfe',
@@ -1707,6 +1708,7 @@ $messages['de'] = array(
 	'pagetriage-del-log-page-adding-error' => 'Der Ort an dem die Diskussion abgespeichert werden soll, konnte nicht ermittelt werden.',
 	'pagetriage-del-talk-page-notify-error' => 'Der Autor konnte nicht auf seiner Diskussionsseite benachrichtigt werden.',
 	'pagetriage-del-discussion-page-adding-error' => 'Fehler beim Hinzufügen der Seite zur Löschdiskussionsseite!',
+	'pagetriage-del-title' => 'Löschantrag stellen',
 	'pagetriage-del-tooltip' => 'Diese Seite zur Löschung vorschlagen.',
 	'pagetriage-tagging-error' => 'Die Markierungen konnten nicht zur Seite hinzugefügt werden.',
 	'pagetriage-add-tag-confirmation' => 'Bist du sicher, dass du {{PLURAL:$1|eine Markierung|$1 Markierungen}} zu solch einem kurzen Artikel hinzufügen möchtest?',
@@ -3581,6 +3583,7 @@ $messages['gl'] = array(
 	'pagetriage-del-log-page-adding-error' => 'Erro ao intentar atopar o punto de destino da conversa',
 	'pagetriage-del-talk-page-notify-error' => 'Erro ao notificar o autor na súa páxina de conversa',
 	'pagetriage-del-discussion-page-adding-error' => 'Erro ao engadir a páxina ás votacións para borrar!',
+	'pagetriage-del-title' => 'Marcar para borrar',
 	'pagetriage-del-tooltip' => 'Engadir esta páxina ás votacións para borrar',
 	'pagetriage-tagging-error' => 'Erro ao aplicar as etiquetas á páxina',
 	'pagetriage-add-tag-confirmation' => 'Está seguro de querer engadir $1 {{PLURAL:$1|etiqueta|etiquetas}} a este breve artigo?',
@@ -5166,6 +5169,7 @@ $messages['ja'] = array(
 	'pagetriage-del-log-page-missing-error' => '今日の記録ページはまだ作成されていません。',
 	'pagetriage-del-talk-page-notify-error' => '作者のトークページに通知するのに失敗しました',
 	'pagetriage-del-discussion-page-adding-error' => '削除議論ページへのページ追加に失敗しました!',
+	'pagetriage-del-title' => '削除の印を付ける',
 	'pagetriage-del-tooltip' => 'このページの削除を提案する',
 	'pagetriage-tagging-error' => 'ページにタグを適用するのに失敗しました',
 	'pagetriage-add-tag-confirmation' => '短い記事に $1 {{PLURAL:$1|個のタグ}}を本当に追加しますか?',
@@ -6200,6 +6204,7 @@ $messages['mk'] = array(
 	'pagetriage-del-log-page-adding-error' => 'Не успеав да го пронајдам целното место за дискусијата',
 	'pagetriage-del-talk-page-notify-error' => 'Не успеав да го известам авторот на страницата за разговор',
 	'pagetriage-del-discussion-page-adding-error' => 'Не успеав да ја ставам страницата во дискусијата за бришење страници!',
+	'pagetriage-del-title' => 'Означи за бришење',
 	'pagetriage-del-tooltip' => 'Предложете ја страницава за бришење',
 	'pagetriage-tagging-error' => 'Не можев да ги ставам ознаите на страниците',
 	'pagetriage-add-tag-confirmation' => 'Дали сте сигурни дека сакате да ставите $1 {{PLURAL:$1|ознака|ознаки}} во така кратка статија?',
