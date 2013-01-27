@@ -1034,7 +1034,7 @@ $messages['ar'] = array(
 	'pagetriage-byline-new-editor' => 'أنشأت من قبل محرر جديد $1 ($2$3$4)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|تعديل|تعديلات}} منذ $2',
 	'pagetriage-author-not-autoconfirmed' => 'محرر جديد',
-	'pagetriage-no-patrol-right' => 'ليس لديك الحق في مراجعة هذه الصفحة',
+	'pagetriage-no-patrol-right' => 'ليس لديك الحق في مراجعة هذه الصفحة', # Fuzzy
 	'pagetriage-author-blocked' => 'ممنوع',
 	'pagetriage-author-bot' => 'بوت',
 	'pagetriage-showing' => 'عرض:',
@@ -1145,7 +1145,7 @@ $messages['ar'] = array(
 	'pagetriage-tags-pov-label' => 'حيادية',
 	'pagetriage-tags-pov-desc' => 'إن هذه الصفحة لا تلتزم بوجهة النظر الحيادية.',
 	'pagetriage-tags-weasel-label' => 'تباهي',
-	'pagetriage-tags-tooltip' => 'أضف تعليقات للإشارة إلى المشاكل المتعلقة بالصفحة',
+	'pagetriage-tags-tooltip' => 'أضف تعليقات للإشارة إلى المشاكل المتعلقة بالصفحة', # Fuzzy
 	'pagetriage-del-tags-cat-csd-desc' => 'علم هذه الصفحة للحذف السريع إن كانت تحقق أحد الشروط المذكورة أدناه.',
 	'pagetriage-del-tags-cat-prod-desc' => 'علم على هذه الصفحة للحذف إن كانت تخرق بشكل واضح معايير المجتمع.',
 	'pagetriage-del-tags-cat-discussion-desc' => 'على على هذه الصفحة لنقاش الحذف مع المحررين الآخرين.',
@@ -1763,11 +1763,11 @@ $6',
 $messages['de-formal'] = array(
 	'pagetriage-self-review-error' => 'Sie können keine Seiten prüfen, die Sie selbst erstellt haben.',
 	'pagetriage-api-error' => 'Beim Laden der Benutzeroberfläche über die API-Schnittstelle ist ein Fehler aufgetreten. Bitte versuchen Sie die Seite erneut zu laden.',
-	'pagetriage-no-patrol-right' => 'Sie haben nicht die Berechtigung, diese Seite zu prüfen.',
-	'pagetriage-welcome' => 'Bitte überprüfen Sie die unten angezeigten neuen Seiten und helfen Sie die Wikipedia zu verbessern. <a href="$1">Erfahren Sie mehr hierzu</a> · <a href="$2">Hinterlassen Sie eine Rückmeldung</a>',
+	'pagetriage-no-patrol-right' => 'Sie haben nicht die Berechtigung, diese Seite zu prüfen.', # Fuzzy
+	'pagetriage-welcome' => 'Bitte überprüfen Sie die unten angezeigten neuen Seiten und helfen Sie die Wikipedia zu verbessern. <a href="$1">Erfahren Sie mehr hierzu</a> · <a href="$2">Hinterlassen Sie eine Rückmeldung</a>', # Fuzzy
 	'pagetriage-add-a-note-creator' => 'Fügen Sie eine Nachricht für den Autor hinzu: (optional)',
 	'pagetriage-personal-default-note' => 'Verfassen Sie einen nützlichen Hinweis an {{GENDER:$1|$1}}. Er wird auf {{GENDER:$1|seiner|ihrer}} Diskussionsseite gespeichert.',
-	'pagetriage-tags-tooltip' => 'Fügen Sie Markierungen hinzu, um auf Probleme mit dieser Seite hinzuweisen.',
+	'pagetriage-tags-tooltip' => 'Fügen Sie Markierungen hinzu, um auf Probleme mit dieser Seite hinzuweisen.', # Fuzzy
 	'pagetriage-del-tags-cat-prod-desc' => 'Schlagen Sie diese Seite zur Löschung vor, sofern sie eindeutig gegen die Regeln der Gemeinschaft verstößt.',
 	'pagetriage-tags-param-issues-label' => 'Beschreiben Sie die Probleme, die angegangen werden müssen:',
 	'pagetriage-tags-param-source-label' => 'Bitte geben Sie eine URL zu dieser Quelle an.',
@@ -1930,7 +1930,7 @@ $messages['es'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'Esta página fue creada el $1 por el nuevo editor  $2 ($3$4$5)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|edición|ediciones}} desde $2',
 	'pagetriage-author-not-autoconfirmed' => 'Nuevo editor',
-	'pagetriage-no-patrol-right' => 'No tienes derechos para revisar esta página',
+	'pagetriage-no-patrol-right' => 'No tienes derechos para revisar esta página', # Fuzzy
 	'pagetriage-author-blocked' => 'Bloqueado',
 	'pagetriage-author-bot' => 'Bot',
 	'pagetriage-showing' => 'Mostrando:',
@@ -2059,7 +2059,7 @@ $messages['es'] = array(
 	'pagetriage-tags-originalresearch-label' => 'Investigación original',
 	'pagetriage-tags-originalresearch-desc' => 'Esta página tiene investigaciones originales o afirmaciones no verificadas.',
 	'pagetriage-tags-primarysources-label' => 'Fuentes primarias',
-	'pagetriage-tags-primarysources-desc' => 'Esta página se basa en exceso en fuentes primarias y necesita fuentes de terceros.',
+	'pagetriage-tags-primarysources-desc' => 'Esta página se basa en exceso en fuentes primarias y necesita fuentes de terceros.', # Fuzzy
 	'pagetriage-tags-onesource-label' => 'Fuente única',
 	'pagetriage-tags-onesource-desc' => 'Esta página se basa en gran parte o por completo en una sola fuente.',
 	'pagetriage-tags-condense-label' => 'Condensar',
@@ -2130,7 +2130,7 @@ $messages['es'] = array(
 	'pagetriage-tags-unbalanced-desc' => 'Esta página puede estar desequilibrada en favor de ciertos puntos de vista.',
 	'pagetriage-tags-update-label' => 'Actualizar',
 	'pagetriage-tags-update-desc' => 'Esta página necesita que se añada información más actualizada.',
-	'pagetriage-tags-tooltip' => 'Añade etiquetas para señalar los problemas de la página',
+	'pagetriage-tags-tooltip' => 'Añade etiquetas para señalar los problemas de la página', # Fuzzy
 	'pagetriage-del-tags-cat-csd-label' => 'Borrado rápido',
 	'pagetriage-del-tags-cat-csd-desc' => 'Marcar esta página para borrado rápido si cumple alguno de los siguientes criterios.',
 	'pagetriage-del-tags-cat-prod-label' => 'Propuesta de borrado',
@@ -2220,28 +2220,6 @@ $messages['es'] = array(
 	'pagetriage-toolbar-close' => 'Cerrar',
 	'pagetriage-toolbar-minimize' => 'Minimizar',
 	'pagetriage-tag-warning-notice' => 'Nota: Esta página sólo existe desde hace $1 {{PLURAL:$1|minuto|minutos}}. Considera esperar para etiquetarla, a menos que el problema sea serio.',
-	'pagetriage-notification-mark-as-reviewed' => '$2 {{GENDER:$1|ha revisado}} una página que empezaste: [[$3|$3]]', # Fuzzy
-	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 {{GENDER:$1|ha revisado}} una página que empezaste en {{SITENAME}}:$3', # Fuzzy
-	'pagetriage-notification-mark-as-reviewed-email-body' => '¡ Felicitaciones! El editor de {{SITENAME}} $1 {{GENDER:$1|ha revisado}} una página que empezaste, "$3":
-<$4>
-
-¡Gracias por mejorar {{SITENAME}}!', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag' => '$2 {{GENDER:$1|ha revisado}} una página que empezaste: [[$3|$3]]. {{PLURAL:$5|Etiqueta|Etiquetas}}: $4', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 {{GENDER:$1|ha revisado}} una página que empezaste en {{SITENAME}}: $3', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag-email-body' => ' El editor de {{SITENAME}} $1 {{GENDER:$1|ha revisado}} una página que empezaste, "$3":
-<$4>
-
-{{PLURAL:$6|Esta etiqueta fue añadida|Estas etiquetas fueron añadidas}} a su página: $5 
-
-Por favor mejora esta página para abordar estos temas ¡Gracias!', # Fuzzy
-	'pagetriage-notification-add-deletion-tag' => '$2 {{GENDER:$1|ha revisado}} una página que empezaste y la marcó para borrado: [[$3|$3]]. Borrado de {{PLURAL:$5|etiqueta|etiquetas}}: $4', # Fuzzy
-	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 {{GENDER:$1|ha revisado}} una página que empezaste en {{SITENAME}}: $3', # Fuzzy
-	'pagetriage-notification-add-deletion-tag-email-body' => ' El editor de {{SITENAME}} $1 {{GENDER:$1|ha revisado}} una página que empezaste, "$3":
-<$4>
-
-Esta página fue marcada para borrado, con {{PLURAL:$6|esta etiqueta|estas etiquetas}}: $5 
-
-Por favor mejora esta página para abordar estos temas.  ¡Gracias!',
 	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Revisa una página que yo he creado',
 	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Revisa una página que yo he creado y le agrega etiquetas de mantenimiento',
 	'echo-pref-email-pagetriage-add-deletion-tag' => 'Revisa una página que yo he creado y la nomina para su borrado',
@@ -2365,7 +2343,7 @@ $messages['et'] = array(
 	'pagetriage-tags-cat-writingstyle-label' => 'Keelekasutus',
 	'pagetriage-tags-cat-moretags-label' => 'Veel märgiseid',
 	'pagetriage-tags-cat-all-label' => 'Kõik märgised',
-	'pagetriage-tags-tooltip' => 'Lisa märgiseid, et viidata leheküljega seotud probleemidele',
+	'pagetriage-tags-tooltip' => 'Lisa märgiseid, et viidata leheküljega seotud probleemidele', # Fuzzy
 	'pagetriage-del-tags-cat-csd-label' => 'Kiirkustutus',
 	'pagetriage-del-tags-cat-csd-desc' => 'Märgi see lehekülg kiirkustutamiseks, kui see vastab ühele järgnevatest kriteeriumitest.',
 	'pagetriage-del-tags-cat-prod-label' => 'Kustutuspalve',
@@ -2433,37 +2411,6 @@ $messages['et'] = array(
 	'pagetriage-toolbar-close' => 'Sulge',
 	'pagetriage-toolbar-minimize' => 'Ikooni',
 	'pagetriage-tag-warning-notice' => 'Märkus: See lehekülg on vaid {{PLURAL:$1|ühe|$1}} minuti vanune. Kui probleem pole väga tõsine, siis leiad ehk olevat võimaliku märgistamisega pisut oodata.',
-	'pagetriage-notification-mark-as-reviewed' => '$2 on lehekülje [[$3|$3]] {{GENDER:$1|üle vaadanud}}',
-	'pagetriage-notification-mark-as-reviewed-email-subject' => '$1 on lehekülje $3 {{GENDER:$1|üle vaadanud}}',
-	'pagetriage-notification-mark-as-reviewed-email-body' => '{{GRAMMAR:genitive|{{SITENAME}}}} kasutaja $1 on lehekülje $3 üle vaadanud:
-
-Vaata veel:
-
-$4
-
-$5', # Fuzzy
-	'pagetriage-notification-add-maintenance-tag' => '$2 on lehekülje [[$3|$3]] {{GENDER:$1|üle vaadanud}} ja märgistanud. {{PLURAL:$5|Märgis|Märgised}}: $4',
-	'pagetriage-notification-add-maintenance-tag-email-subject' => '$1 on lehekülje $3 märgistanud',
-	'pagetriage-notification-add-maintenance-tag-email-body' => '{{GRAMMAR:genitive|{{SITENAME}}}} kasutaja $1 on lehekülje $3 {{GENDER:$1|üle vaadanud}} ja märgistanud. 
-
-{{PLURAL:$6|Märgis|Märgised}}: $5
-
-Vaata veel:
-
-$4
-
-$7',
-	'pagetriage-notification-add-deletion-tag' => '$2 on lehekülje [[$3|$3]] {{GENDER:$1|üle vaadanud}} ja kustutamiseks märkinud. {{PLURAL:$5|Märgis|Märgised}}: $4',
-	'pagetriage-notification-add-deletion-tag-email-subject' => '$1 on lehekülje $3 kustutamiseks märkinud',
-	'pagetriage-notification-add-deletion-tag-email-body' => '{{GRAMMAR:genitive|{{SITENAME}}}} kasutaja $1 on lehekülje $3 kustutamiseks märkinud.
-
-{{PLURAL:$6|Märgis|Märgised}}: $5
-
-Vaata veel:
-
-$4
-
-$7',
 	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Vaatab minu loodud lehekülje üle',
 	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Vaatab minu loodud lehekülje üle ja lisab hooldusmärgise',
 	'echo-pref-email-pagetriage-add-deletion-tag' => 'Vaatab minu loodud lehekülje üle ja esitab selle kustutamiseks',
@@ -2525,7 +2472,7 @@ $messages['fa'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'این صفحه در $1 توسط $2، ویرایشگر جدید، ایجاد شده است ($3$4$5)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|ویرایش|ویرایش}} از $2',
 	'pagetriage-author-not-autoconfirmed' => 'ویرایشگر جدید',
-	'pagetriage-no-patrol-right' => 'شما حق بررسی این صفحه را ندارید',
+	'pagetriage-no-patrol-right' => 'شما حق بررسی این صفحه را ندارید', # Fuzzy
 	'pagetriage-author-blocked' => 'مسدود شده',
 	'pagetriage-author-bot' => 'ربات',
 	'pagetriage-showing' => 'نمایش:',
@@ -2570,7 +2517,7 @@ $messages['fa'] = array(
 	'pagetriage-filter-stat-username' => 'نام کاربری: $1',
 	'pagetriage-no-pages' => 'هیچ صفحه‌ای منطبق با معیار شما پیدا نشد.',
 	'pagetriage-warning-browser' => 'این ابزار در مرورگرهای قدیمی‌تر از اینترنت اکسپلورر ۸ ممکن است به درستی کار نکند.',
-	'pagetriage-welcome' => 'لطفاً صفحه‌های تازه را در زیر بررسی کنید و به بهبود ویکی‌پدیا کمک کنید. <a href="$1">اطلاعات بیشتر</a>. <a href="$2">بازخورد</a>.',
+	'pagetriage-welcome' => 'لطفاً صفحه‌های تازه را در زیر بررسی کنید و به بهبود ویکی‌پدیا کمک کنید. <a href="$1">اطلاعات بیشتر</a>. <a href="$2">بازخورد</a>.', # Fuzzy
 	'pagetriage-note-reviewed' => 'این صفحه بررسی شده است.',
 	'pagetriage-note-not-reviewed' => 'این صفحه هنوز بررسی نشده است.',
 	'pagetriage-note-deletion' => 'این صفحه برای حذف نامزد شده است.',
@@ -2609,7 +2556,7 @@ $messages['fa'] = array(
 	'pagetriage-tags-stub-label' => 'خرد',
 	'pagetriage-tags-verylong-label' => 'بسیار طولانی',
 	'pagetriage-tags-update-label' => 'به روز رسانی',
-	'pagetriage-tags-tooltip' => 'افزودن برچسب‌هایی برای نمایش مشکلات صفحه',
+	'pagetriage-tags-tooltip' => 'افزودن برچسب‌هایی برای نمایش مشکلات صفحه', # Fuzzy
 	'pagetriage-del-tags-cat-csd-desc' => 'به این صفحه در صورت برخورداری از یکی از معیارهای زیر برچسب حذف سریع بزنید.',
 	'pagetriage-del-tags-cat-prod-desc' => 'به این صفحه اگر به روشنی از استانداردهای لازم برخوردار نیست برچسب حذف زمان‌دار بزنید.',
 	'pagetriage-del-tags-cat-discussion-desc' => 'این صفحه را نامزد حذف از طریق نظرخواهی کنید.',
@@ -3667,7 +3614,7 @@ $messages['he'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'הדף הזה נוצר ב־$1 על־ידי העורך החדש $2&rlm; ($3$4$5)',
 	'pagetriage-editcount' => '{{PLURAL:$1|עריכה אחת|$1 עריכות}} מאז $2',
 	'pagetriage-author-not-autoconfirmed' => 'עורך חדש',
-	'pagetriage-no-patrol-right' => 'אין לך הרשאה לסקור את הדף הזה',
+	'pagetriage-no-patrol-right' => 'אין לך הרשאה לסקור את הדף הזה', # Fuzzy
 	'pagetriage-author-blocked' => 'נחסם',
 	'pagetriage-author-bot' => 'בוט',
 	'pagetriage-showing' => 'מוצגות:',
@@ -3714,7 +3661,7 @@ $messages['he'] = array(
 	'pagetriage-filter-stat-username' => 'שם משתמש: $1',
 	'pagetriage-no-pages' => 'אין דפים שתואמים למה שהגדרת.',
 	'pagetriage-warning-browser' => 'ייתכן שהכלי הזה לא יעבוד נכון בדפדפנים ישנים יותר מאינטרנט אקספלורר 8.',
-	'pagetriage-welcome' => 'אנו מבקשים ממך לסקור את הדפים להלן לעזור לשפר את ויקיפדיה. <a href="$1">מידע נוסףa> · <a href="$2">שליחת משוב</a>',
+	'pagetriage-welcome' => 'אנו מבקשים ממך לסקור את הדפים להלן לעזור לשפר את ויקיפדיה. <a href="$1">מידע נוסףa> · <a href="$2">שליחת משוב</a>', # Fuzzy
 	'pagetriage-note-reviewed' => 'הדף הזה נסקר.',
 	'pagetriage-note-not-reviewed' => 'הדף הזה עוד לא נסקר.',
 	'pagetriage-note-deletion' => 'הדף הזה מועמד למחיקה.',
@@ -3766,7 +3713,7 @@ $messages['he'] = array(
 	'pagetriage-tags-externallinks-desc' => 'הקישורים החיצוניים בדף הזה אינם מתאימים למדיניות התוכן.',
 	'pagetriage-tags-advert-label' => 'פרסומת',
 	'pagetriage-tags-stub-label' => 'קצרמר',
-	'pagetriage-tags-tooltip' => 'הוספת תגים לציון בעיות בערך',
+	'pagetriage-tags-tooltip' => 'הוספת תגים לציון בעיות בערך', # Fuzzy
 	'pagetriage-del-tags-cat-csd-desc' => 'סימון הערך למחיקה מהירה בהתאם לאחת הסיבות להלן.',
 	'pagetriage-del-tags-cat-prod-desc' => 'סימון הערך למחיקה בהנחה שאינו עומד בסטנדרטים.',
 	'pagetriage-del-tags-cat-discussion-desc' => 'לסמן את הדף הזה כדי לדון במחיקתו עם עורכים אחרים.',
@@ -4159,7 +4106,7 @@ $messages['ia'] = array(
 	'pagetriage-byline' => 'Per', # Fuzzy
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|modification|modificationes}} depost $2',
 	'pagetriage-author-not-autoconfirmed' => 'Nove contributor',
-	'pagetriage-no-patrol-right' => 'Tu non ha le derecto de revider iste pagina',
+	'pagetriage-no-patrol-right' => 'Tu non ha le derecto de revider iste pagina', # Fuzzy
 	'pagetriage-author-blocked' => 'Blocate',
 	'pagetriage-author-bot' => 'Robot',
 	'pagetriage-showing' => 'Es monstrate:',
@@ -4269,7 +4216,7 @@ $messages['ia'] = array(
 	'pagetriage-tags-originalresearch-label' => 'Recerca original',
 	'pagetriage-tags-originalresearch-desc' => 'Iste pagina contine recerca non corroborate per fontes independente o assertiones non verificate.',
 	'pagetriage-tags-primarysources-label' => 'Fontes primari',
-	'pagetriage-tags-primarysources-desc' => 'Iste pagina depende troppo de fontes primari e ha besonio de corroboration per fontes independente.',
+	'pagetriage-tags-primarysources-desc' => 'Iste pagina depende troppo de fontes primari e ha besonio de corroboration per fontes independente.', # Fuzzy
 	'pagetriage-tags-onesource-label' => 'Fonte unic',
 	'pagetriage-tags-onesource-desc' => 'Iste pagina depende generalmente o totalmente de un sol fonte.',
 	'pagetriage-tags-condense-label' => 'Condensar',
@@ -4523,7 +4470,7 @@ $messages['is'] = array(
 	'pagetriage-tags-cat-neutrality-label' => 'Hlutleysi',
 	'pagetriage-tags-cat-unwantedcontent-label' => 'Óæskilegt efni',
 	'pagetriage-tags-cat-all-label' => 'Öll snið',
-	'pagetriage-tags-tooltip' => 'Bæta við sniðum til að merkja vandamál við síðuna',
+	'pagetriage-tags-tooltip' => 'Bæta við sniðum til að merkja vandamál við síðuna', # Fuzzy
 	'pagetriage-tags-param-article-label' => 'Grein:',
 	'pagetriage-tags-param-date-label' => 'Dagsetning:',
 	'pagetriage-tags-param-blp-label' => 'Þetta er æfiágrip lifandi manneskju',
@@ -4743,7 +4690,7 @@ $messages['it'] = array(
 	'pagetriage-tags-originalresearch-label' => 'Ricerca originale',
 	'pagetriage-tags-originalresearch-desc' => 'Questa pagina contiene ricerche originali o affermazioni non verificate.',
 	'pagetriage-tags-primarysources-label' => 'Fonti primarie',
-	'pagetriage-tags-primarysources-desc' => 'Questa pagina si affida troppo pesantemente alle fonti di prima mano e ha bisogno di fonti di terze parti.',
+	'pagetriage-tags-primarysources-desc' => 'Questa pagina si affida troppo pesantemente alle fonti di prima mano e ha bisogno di fonti di terze parti.', # Fuzzy
 	'pagetriage-tags-onesource-label' => 'Unica fonte',
 	'pagetriage-tags-onesource-desc' => "Questa pagina si basa in gran parte o interamente su di un'unica fonte.",
 	'pagetriage-tags-condense-label' => 'Condensare',
@@ -4814,7 +4761,7 @@ $messages['it'] = array(
 	'pagetriage-tags-unbalanced-desc' => 'Questa pagina può essere sbilanciata verso certi punti di vista.',
 	'pagetriage-tags-update-label' => 'Aggiornamento',
 	'pagetriage-tags-update-desc' => 'Questa pagina ha bisogno che siano aggiunte ulteriori informazioni aggiornate.',
-	'pagetriage-tags-tooltip' => 'Aggiungere tag per risolvere i problemi con la pagina',
+	'pagetriage-tags-tooltip' => 'Aggiungere tag per risolvere i problemi con la pagina', # Fuzzy
 	'pagetriage-del-tags-cat-csd-desc' => 'Segna questa pagina come cancellazione rapida se rientra in uno dei seguenti criteri.',
 	'pagetriage-del-tags-cat-prod-desc' => 'Segna questa pagina come proposta di cancellazione se viola chiaramente le norme della comunità.',
 	'pagetriage-del-tags-cat-discussion-desc' => 'Segna questa pagina per discutere la sua cancellazione con altri utenti.',
@@ -5720,7 +5667,7 @@ $messages['lb'] = array(
 	'pagetriage-byline' => 'Vum $1 ($2$3$4) ugeluecht',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|Ännerung|Ännerungen}} zënter dem $2',
 	'pagetriage-author-not-autoconfirmed' => 'Neie Benotzer',
-	'pagetriage-no-patrol-right' => 'Dir hutt net déi néideg Rechter fir dës Säit nozekucken',
+	'pagetriage-no-patrol-right' => 'Dir hutt net déi néideg Rechter fir dës Säit nozekucken', # Fuzzy
 	'pagetriage-author-blocked' => 'Gespaart',
 	'pagetriage-author-bot' => 'Bot',
 	'pagetriage-showing' => 'Weisen:',
@@ -7708,7 +7655,7 @@ $messages['tl'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'Ang pahinang ito ay nalikha noong $1 ng bagong patnugot na si $2 ($3$4$5)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|pagbabago|mga pagbabago}} magmula pa noong $2',
 	'pagetriage-author-not-autoconfirmed' => 'Bagong patnugot',
-	'pagetriage-no-patrol-right' => 'Wala kang karapatan na suriing muli ang pahinang ito',
+	'pagetriage-no-patrol-right' => 'Wala kang karapatan na suriing muli ang pahinang ito', # Fuzzy
 	'pagetriage-author-blocked' => 'Hinarang',
 	'pagetriage-author-bot' => 'Bot',
 	'pagetriage-creation-dateformat' => 'OO:mm, a BBBB tttt',
@@ -7832,7 +7779,7 @@ $messages['tl'] = array(
 	'pagetriage-tags-originalresearch-label' => 'Sariling pananaliksik',
 	'pagetriage-tags-originalresearch-desc' => 'Ang pahinang ito ay mayroong sariling pananaliksik o hindi natitiyak na mga pahayag.',
 	'pagetriage-tags-primarysources-label' => 'Mga pangunahing pinagmulan',
-	'pagetriage-tags-primarysources-desc' => 'Ang pahinang ito ay labis na umaasa sa mga pinagmulang pangunahin, at nangangailangan ng mga pinagmulang gawa ng pangatlong partido.',
+	'pagetriage-tags-primarysources-desc' => 'Ang pahinang ito ay labis na umaasa sa mga pinagmulang pangunahin, at nangangailangan ng mga pinagmulang gawa ng pangatlong partido.', # Fuzzy
 	'pagetriage-tags-onesource-label' => 'Nag-iisa ang pinagmulan',
 	'pagetriage-tags-onesource-desc' => 'Ang pahinang ito ay umaasa nang malakihan o buo mula sa nag-iisang pinagmulan.',
 	'pagetriage-tags-condense-label' => 'Paikliin',
@@ -7903,7 +7850,7 @@ $messages['tl'] = array(
 	'pagetriage-tags-unbalanced-desc' => 'Ang pahinang ito ay maaarring kulang ang paninimbang hinggil sa partikular na mga pananaw.',
 	'pagetriage-tags-update-label' => 'Isapanahon',
 	'pagetriage-tags-update-desc' => 'Ang pahinang ito ay nangangailangan ng pagdaragdag ng karagdagan pang mga kabatirang napapanahon.',
-	'pagetriage-tags-tooltip' => 'Magdagdag ng mga tatak upang maasikaso ang mga suliranin sa pahina',
+	'pagetriage-tags-tooltip' => 'Magdagdag ng mga tatak upang maasikaso ang mga suliranin sa pahina', # Fuzzy
 	'pagetriage-del-tags-cat-csd-label' => 'Mabilisang pagbura',
 	'pagetriage-del-tags-cat-csd-desc' => 'Markahan ang pahinang ito para sa mabilisang pagbura kung naaangkop ito sa isa sa mga saligang nasa ibaba.',
 	'pagetriage-del-tags-cat-prod-label' => 'Iminungkahing pagbura',
@@ -8485,7 +8432,7 @@ $messages['zh-hans'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => '该页由新手$2 ($3$4$5)创建于$1',
 	'pagetriage-editcount' => '自$2以来$1次编辑',
 	'pagetriage-author-not-autoconfirmed' => '新手',
-	'pagetriage-no-patrol-right' => '您没有复查此页面的权限',
+	'pagetriage-no-patrol-right' => '您没有复查此页面的权限', # Fuzzy
 	'pagetriage-author-blocked' => '已封禁',
 	'pagetriage-author-bot' => '机器人',
 	'pagetriage-showing' => '显示：',
@@ -8530,7 +8477,7 @@ $messages['zh-hans'] = array(
 	'pagetriage-filter-stat-username' => '用户名：$1',
 	'pagetriage-no-pages' => '没有满足您的条件的页面。',
 	'pagetriage-warning-browser' => '此工具可能不能在比Internet Explorer 8更旧的浏览器中工作。',
-	'pagetriage-welcome' => '请复查下列新页面，帮助改善维基百科。<a href="$1">了解详情</a> · <a href="$2">提出意见</a>',
+	'pagetriage-welcome' => '请复查下列新页面，帮助改善维基百科。<a href="$1">了解详情</a> · <a href="$2">提出意见</a>', # Fuzzy
 	'pagetriage-note-reviewed' => '本页面已被复查。',
 	'pagetriage-note-not-reviewed' => '此页面还没有被复查。',
 	'pagetriage-note-deletion' => '此页面已被提交删除。',
@@ -8563,7 +8510,7 @@ $messages['zh-hans'] = array(
 	'pagetriage-tags-cat-writingstyle-label' => '写作风格',
 	'pagetriage-tags-cat-moretags-label' => '更多标签',
 	'pagetriage-tags-cat-all-label' => '全部标签',
-	'pagetriage-tags-tooltip' => '添加标记以指出此页存在的问题',
+	'pagetriage-tags-tooltip' => '添加标记以指出此页存在的问题', # Fuzzy
 	'pagetriage-del-tags-cat-csd-desc' => '如果它满足以下条件之一，标记这个页面快速删除。',
 	'pagetriage-del-tags-cat-prod-desc' => '如果它明显违反社群标准，标记这个页面为提议删除',
 	'pagetriage-del-tags-cat-discussion-desc' => '标记这个页面以和其他编者讨论是否删除。',
@@ -8668,7 +8615,7 @@ $messages['zh-hant'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => '該頁由新手$2 ($3$4$5)創建於$1',
 	'pagetriage-editcount' => '自$2以來$1次編輯',
 	'pagetriage-author-not-autoconfirmed' => '新手',
-	'pagetriage-no-patrol-right' => '您沒有複查此頁面的權限',
+	'pagetriage-no-patrol-right' => '您沒有複查此頁面的權限', # Fuzzy
 	'pagetriage-author-blocked' => '已封禁',
 	'pagetriage-author-bot' => '機器人',
 	'pagetriage-showing' => '顯示：',
@@ -8713,7 +8660,7 @@ $messages['zh-hant'] = array(
 	'pagetriage-filter-stat-username' => '用戶名：$1',
 	'pagetriage-no-pages' => '沒有滿足您的條件的頁面。',
 	'pagetriage-warning-browser' => '此工具可能不能在比Internet Explorer 8更舊的瀏覽器中工作。',
-	'pagetriage-welcome' => '請複查下列新頁面，幫助改善維基百科。<a href="$1">了解詳情</a> · <a href="$2">提出意見</a>',
+	'pagetriage-welcome' => '請複查下列新頁面，幫助改善維基百科。<a href="$1">了解詳情</a> · <a href="$2">提出意見</a>', # Fuzzy
 	'pagetriage-note-reviewed' => '本頁面已被複查。',
 	'pagetriage-note-not-reviewed' => '此頁面還沒有被複查。',
 	'pagetriage-note-deletion' => '此頁面已被提交刪除。',
@@ -8746,7 +8693,7 @@ $messages['zh-hant'] = array(
 	'pagetriage-tags-cat-writingstyle-label' => '寫作風格',
 	'pagetriage-tags-cat-moretags-label' => '更多標籤',
 	'pagetriage-tags-cat-all-label' => '全部標籤',
-	'pagetriage-tags-tooltip' => '添加標記以指出此頁存在的問題',
+	'pagetriage-tags-tooltip' => '添加標記以指出此頁存在的問題', # Fuzzy
 	'pagetriage-del-tags-cat-csd-desc' => '如果它滿足以下條件之一，標記這個頁面快速刪除。',
 	'pagetriage-del-tags-cat-prod-desc' => '如果它明顯違反社群標準，標記這個頁面為提議刪除',
 	'pagetriage-del-tags-cat-discussion-desc' => '標記這個頁面以和其他編者討論是否刪除。',
