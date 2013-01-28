@@ -5169,6 +5169,7 @@ $6',
  * @author David1010
  */
 $messages['ka'] = array(
+	'pagetriage-dot-separator' => ' &#xb7;',
 	'pagetriage-please-wait' => 'გთხოვთ მოიცადეთ...',
 	'pagetriage-bytes' => '$1 {{PLURAL:$1|ბაიტი|ბაიტი}}',
 	'pagetriage-edits' => '$1 {{PLURAL:$1|რედაქტირება|რედაქტირება}}',
@@ -6540,6 +6541,7 @@ $messages['nl'] = array(
 	'pagetriage-del-log-page-adding-error' => 'Het was niet mogelijk de pagina aan het overleg te koppen',
 	'pagetriage-del-talk-page-notify-error' => 'Het was niet mogelijk de auteur op de overlegpagina in kennis te stellen',
 	'pagetriage-del-discussion-page-adding-error' => 'Het toevoegen van de verwijderingsnominatie is mislukt.',
+	'pagetriage-del-title' => 'Voor verwijdering markeren',
 	'pagetriage-del-tooltip' => 'Deze pagina voor verwijdering nomineren',
 	'pagetriage-tagging-error' => 'Het toevoegen van de labels aan de pagina is mislukt',
 	'pagetriage-add-tag-confirmation' => "Weet u zeker dat u {{PLURAL:$1|één label|$1 labels}} wilt toevoegen een zo'n korte pagina?",
@@ -6547,6 +6549,40 @@ $messages['nl'] = array(
 	'pagetriage-toolbar-close' => 'Sluiten',
 	'pagetriage-toolbar-minimize' => 'Minimaliseren',
 	'pagetriage-tag-warning-notice' => 'Let op: deze pagina is pas {{PLURAL:$1|één minuut|$1 minuten}} geleden aangemaakt. Overweeg nog even te wachten met labelen, tenzij de pagina een groot probleem oplevert.',
+	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] is {{GENDER:$1|gecontroleerd}} door [[User:$1|$1]]',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} door $1',
+	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 is {{GENDER:$1|gecontroleerd}} door $1',
+	'pagetriage-notification-mark-as-reviewed-email-body2' => '$2 is {{GENDER:$1|gecontroleerd}} door gebruiker $1 van {{SITENAME}}:
+
+Meer bekijken:
+
+$3
+
+$4',
+	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en gelabeld door [[User:$1|$1]]. Label{{PLURAL:$4||s}}: $3',
+	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en gelabeld door $1. Label{{PLURAL:$4||s}}: $3',
+	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 is {{GENDER:$1|gelabeld}} door $1',
+	'pagetriage-notification-add-maintenance-tag-email-body2' => '$2 is {{GENDER:$1|gecontroleerd}} en gelabeld door gebruiker $1 van {{SITENAME}}.
+
+Label{{PLURAL:$5||s}}: $4
+
+Meer bekijken:
+
+$3
+
+$6',
+	'pagetriage-notification-add-deletion-tag2' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en genomineerd voor verwijdering door [[User:$1|$1]]. Label{{PLURAL:$4||s}}: $3',
+	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en genomineerd voor verwijdering door $1. Label{{PLURAL:$4||s}}: $3',
+	'pagetriage-notification-add-deletion-tag-email-subject2' => '$2 is {{GENDER:$1|genomineerd voor verwijdering}} door $1',
+	'pagetriage-notification-add-deletion-tag-email-body2' => '$2 is {{GENDER:$1|genomineerd voor verwijdering}} door gebruiker $1 van {{SITENAME}}.
+
+Label{{PLURAL:$5||s}}: $4
+
+Meer bekijken:
+
+$3
+
+$6',
 	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Een pagina controleert die ik heb aangemaakt',
 	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Een pagina controleert die ik heb aangemaakt en beheerlabels toevoegt',
 	'echo-pref-email-pagetriage-add-deletion-tag' => 'Een pagina controleert die ik heb aangemaakt en die voor verwijdering nomineert',
