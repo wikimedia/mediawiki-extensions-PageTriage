@@ -3027,6 +3027,7 @@ $messages['fr'] = array(
 	'pagetriage-del-log-page-adding-error' => "Impossible de trouver l'endroit exact pour la discussion",
 	'pagetriage-del-talk-page-notify-error' => "Échec de notification de l'auteur sur la page de discussion",
 	'pagetriage-del-discussion-page-adding-error' => "Échec d'ajout de la page à la page de discussion des suppressions!",
+	'pagetriage-del-title' => 'Marquer pour suppression',
 	'pagetriage-del-tooltip' => 'Nominer cette page pour suppression',
 	'pagetriage-tagging-error' => "Échec à l'application des balises à la page",
 	'pagetriage-add-tag-confirmation' => 'Êtes-vous sûr de vouloir ajouter $1 {{PLURAL:$1|balise|balises}} à un article si court?',
