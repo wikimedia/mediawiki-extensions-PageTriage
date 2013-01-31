@@ -5577,6 +5577,7 @@ $messages['ko'] = array(
 	'pagetriage-del-log-page-adding-error' => '토론에 대한 대상 위치를 찾을 수 없습니다',
 	'pagetriage-del-talk-page-notify-error' => '토론 문서에 저자에게 알리지 못했습니다',
 	'pagetriage-del-discussion-page-adding-error' => '삭제 토론 문서에 문서를 추가하는 데 실패했습니다!',
+	'pagetriage-del-title' => '삭제로 표시',
 	'pagetriage-del-tooltip' => '이 문서를 삭제한 것을 포함',
 	'pagetriage-tagging-error' => '문서에 태그를 적용하지 못했습니다',
 	'pagetriage-add-tag-confirmation' => '이러한 짧은 문서에 $1 {{PLURAL:$1|태그}}를 추가하겠습니까?',
