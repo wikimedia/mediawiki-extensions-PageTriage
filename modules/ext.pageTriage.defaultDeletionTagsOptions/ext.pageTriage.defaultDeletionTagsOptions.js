@@ -368,6 +368,7 @@ $.pageTriageDeletionTagsOptions = {
 							input: 'required',
 							type: 'textarea',
 							value: ''
+							skip: true // don't use this param in the main template
 						}
 					},
 					talkpagenotiftpl: 'MFDWarning-NPF'
