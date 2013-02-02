@@ -118,7 +118,7 @@ $( function() {
 							this.hide();
 						// show the toolbar based on user preference
 						} else {
-							switch ( mw.user.options.get( 'curationtoolbar' ) ) {
+							switch ( mw.user.options.get( 'userjs-curationtoolbar' ) ) {
 								case 'hidden':
 									this.hide();
 									break;
@@ -211,7 +211,7 @@ $( function() {
 					},
 
 					finishSetToolbarPreference: function( state, lastUse ) {
-						var change = 'curationtoolbar=' + state;
+						var change = 'userjs-curationtoolbar=' + state;
 						if ( typeof lastUse !== 'undefined' ) {
 							change += '|pagetriage-lastuse=' + lastUse;
 						}
