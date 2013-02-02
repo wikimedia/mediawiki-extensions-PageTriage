@@ -259,8 +259,8 @@ $( function() {
 			this.eventBus.bind( "filterSet", this.setParams );
 
 			// pull any saved filter settings from the user's option
-			if ( !mw.user.isAnon() && mw.user.options.get( 'NewPagesFeedFilterOptions' ) ) {
-				this.setParams( $.parseJSON( mw.user.options.get( 'NewPagesFeedFilterOptions' ) ) );
+			if ( !mw.user.isAnon() && mw.user.options.get( 'userjs-NewPagesFeedFilterOptions' ) ) {
+				this.setParams( $.parseJSON( mw.user.options.get( 'userjs-NewPagesFeedFilterOptions' ) ) );
 			}
 		},
 
@@ -351,7 +351,7 @@ $( function() {
 		apiSetFilterParams: function() {
 			var prefRequest = {
 				'action': 'options',
-				'change': 'NewPagesFeedFilterOptions=' + this.encodeFilterParams(),
+				'change': 'userjs-NewPagesFeedFilterOptions=' + this.encodeFilterParams(),
 				'token': this.optionsToken,
 				'format': 'json'
 			};
