@@ -1172,6 +1172,7 @@ $messages['arc'] = array(
 );
 
 /** Bashkir (башҡортса)
+ * @author Assele
  * @author Haqmar
  * @author Sagan
  */
@@ -1181,7 +1182,7 @@ $messages['ba'] = array(
 	'pagetriage-author-bot' => 'Робот',
 	'pagetriage-showing' => 'Күрһәтеләсәктәр:',
 	'pagetriage-filter-list-prompt' => 'Һөҙгөстәрҙе көйләү',
-	'pagetriage-sort-by' => 'Теҙеү:',
+	'pagetriage-sort-by' => 'Тәртипләштереү:',
 	'pagetriage-newest' => 'Иң яңы',
 	'pagetriage-oldest' => 'Иң иҫке',
 	'pagetriage-filter-show-heading' => 'Ошоларҙы күрһәт:',
@@ -5670,12 +5671,13 @@ $messages['lb'] = array(
 	'pagetriage-byline' => 'Vum $1 ($2$3$4) ugeluecht',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|Ännerung|Ännerungen}} zënter dem $2',
 	'pagetriage-author-not-autoconfirmed' => 'Neie Benotzer',
-	'pagetriage-no-patrol-right' => 'Dir hutt net déi néideg Rechter fir dës Säit nozekucken', # Fuzzy
+	'pagetriage-no-patrol-right' => 'Dir hutt net déi néideg Rechter fir dës Säit als nogekuckt ze markéieren',
 	'pagetriage-author-blocked' => 'Gespaart',
 	'pagetriage-author-bot' => 'Bot',
 	'pagetriage-showing' => 'Weisen:',
 	'pagetriage-filter-list-prompt' => 'Filtere setzen',
 	'pagetriage-unreviewed-article-count' => '{{PLURAL:$1|Eng net nogekuckte Säit|$1 net nogekuckte Säiten}} (eelst: $2)',
+	'pagetriage-reviewed-article-count-past-week' => '{{PLURAL:$1|Eng Säit|$1 Säiten}} dës Woch nogekuckt',
 	'pagetriage-sort-by' => 'Zortéieren no:',
 	'pagetriage-newest' => 'Neist',
 	'pagetriage-oldest' => 'Eelzt',
@@ -5697,6 +5699,7 @@ $messages['lb'] = array(
 	'pagetriage-filter-all' => 'Alles weisen',
 	'pagetriage-filter-set-button' => 'Filtere setzen',
 	'pagetriage-stats-less-than-a-day' => 'manner wéi een Dag',
+	'pagetriage-stats-reviewed-page-count' => '{{PLURAL:$1|Eng Säit|$1 Säiten}} dës Woch nogekuckt',
 	'pagetriage-filter-ns-all' => 'All',
 	'pagetriage-more' => 'Méi',
 	'pagetriage-filter-stat-all' => 'All',
@@ -8443,6 +8446,7 @@ $messages['yi'] = array(
  * @author Liangent
  * @author Shirayuki
  * @author Shizhao
+ * @author 乌拉跨氪
  */
 $messages['zh-hans'] = array(
 	'pagetriage' => '页面分检器',
@@ -8550,7 +8554,8 @@ $messages['zh-hans'] = array(
 	'pagetriage-tags-cat-writingstyle-label' => '写作风格',
 	'pagetriage-tags-cat-moretags-label' => '更多标签',
 	'pagetriage-tags-cat-all-label' => '全部标签',
-	'pagetriage-tags-tooltip' => '添加标记以指出此页存在的问题', # Fuzzy
+	'pagetriage-tags-primarysources-desc' => '该页面过于依赖第一手来源，其需要更多的第二手来源。',
+	'pagetriage-tags-tooltip' => '添加标记以指出此页需要改进的地方',
 	'pagetriage-del-tags-cat-csd-desc' => '如果它满足以下条件之一，标记这个页面快速删除。',
 	'pagetriage-del-tags-cat-prod-desc' => '如果它明显违反社群标准，标记这个页面为提议删除',
 	'pagetriage-del-tags-cat-discussion-desc' => '标记这个页面以和其他编者讨论是否删除。',
@@ -8623,6 +8628,36 @@ $messages['zh-hans'] = array(
 	'pagetriage-del-tooltip' => '将此页面提交删除',
 	'pagetriage-tagging-error' => '将标签添加到页面时失败',
 	'pagetriage-add-tag-confirmation' => '您真的要添加$1个标签到小作品中吗？',
+	'pagetriage-notification-mark-as-reviewed2' => '[[$2]]已由[[User:$1|$1]]回退',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '$2已由$1回退', # Fuzzy
+	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2已由$1巡查',
+	'pagetriage-notification-mark-as-reviewed-email-body2' => '{{SITENAME}}用户$1回退了$2
+
+查看更多：
+
+$3
+
+$4',
+	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2已由$1标记',
+	'pagetriage-notification-add-maintenance-tag-email-body2' => '{{SITENAME}}用户$1回退及标记了$2
+
+标签：$4
+
+查看更多：
+
+$3
+
+$6', # Fuzzy
+	'pagetriage-notification-add-deletion-tag-email-subject2' => '$2已由$1标记删除',
+	'pagetriage-notification-add-deletion-tag-email-body2' => '{{SITENAME}}用户$1标记删除了$2
+
+标签：$4
+
+查看更多：
+
+$3
+
+$6', # Fuzzy
 );
 
 /** Traditional Chinese (中文（繁體）‎)
