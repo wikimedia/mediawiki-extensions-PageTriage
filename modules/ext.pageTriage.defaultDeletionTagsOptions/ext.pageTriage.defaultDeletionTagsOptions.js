@@ -367,7 +367,7 @@ $.pageTriageDeletionTagsOptions = {
 							label: mw.msg( 'pagetriage-del-tags-param-discussion-label' ),
 							input: 'required',
 							type: 'textarea',
-							value: ''
+							value: '',
 							skip: true // don't use this param in the main template
 						}
 					},
