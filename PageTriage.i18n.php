@@ -15,7 +15,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'pagetriage' => 'Page Triage',
-	'pagetriage-dot-separator' => ' &#xb7; ',
+	'pagetriage-dot-separator' => ' · ',
 	'newpagesfeed' => 'New pages feed',
 	'pagetriage-desc' => 'Facilitates reviewing and approving new pages',
 	'pagetriage-pagecuration' => 'Page Curation',
@@ -435,7 +435,7 @@ $6',
 $messages['qqq'] = array(
 	'pagetriage' => 'The name of this application (Page Triage)',
 	'pagetriage-dot-separator' => '{{Optional}}
-The dot separator',
+A character that separates different statistics about the page, for example: 9 bytes · 1 edit · 0 categories',
 	'newpagesfeed' => 'Title of a special page',
 	'pagetriage-desc' => '{{desc}}',
 	'pagetriage-pagecuration' => 'Alternative title of the extension/project. Should use title case.',
@@ -4535,7 +4535,6 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'pagetriage' => 'Triage pagina',
-	'pagetriage-dot-separator' => ' &#xb7;',
 	'newpagesfeed' => 'Feed delle nuove pagine',
 	'pagetriage-desc' => "Facilita la revisione e l'approvazione delle nuove pagine",
 	'pagetriage-pagecuration' => 'Monitoraggio pagine',
@@ -4854,7 +4853,6 @@ $messages['it'] = array(
  * @author Shirayuki
  */
 $messages['ja'] = array(
-	'pagetriage-dot-separator' => ' &#xb7;&#32;',
 	'newpagesfeed' => '新しいページのフィード',
 	'pagetriage-desc' => '新しいページを査読および承認するのを支援する',
 	'pagetriage-pagecuration' => 'ページのキュレーション',
@@ -5171,7 +5169,6 @@ $6',
  * @author David1010
  */
 $messages['ka'] = array(
-	'pagetriage-dot-separator' => ' &#xb7;',
 	'pagetriage-please-wait' => 'გთხოვთ მოიცადეთ...',
 	'pagetriage-bytes' => '$1 {{PLURAL:$1|ბაიტი|ბაიტი}}',
 	'pagetriage-edits' => '$1 {{PLURAL:$1|რედაქტირება|რედაქტირება}}',
