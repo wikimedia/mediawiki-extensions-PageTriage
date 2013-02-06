@@ -5648,6 +5648,7 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -5708,7 +5709,7 @@ $messages['lb'] = array(
 	'pagetriage-filter-stat-no-categories' => 'Keng Kategorien',
 	'pagetriage-filter-stat-orphan' => 'Weesen',
 	'pagetriage-filter-stat-non-autoconfirmed' => 'Nei Benotzer',
-	'pagetriage-filter-stat-blocked' => 'Gespaarte Benotzer',
+	'pagetriage-filter-stat-blocked' => 'Gespaart Benotzer',
 	'pagetriage-filter-stat-username' => 'Benotzernumm: $1',
 	'pagetriage-no-pages' => 'Keng Säiten entspriechen Äre Critèren.',
 	'pagetriage-warning-browser' => 'Dësen Tool fonctionnéiert mat Browser, déi méi al wéi den Internet Explorer 8 sinn, ënner Ëmstänn net korrekt.',
