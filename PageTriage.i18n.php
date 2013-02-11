@@ -431,6 +431,7 @@ $6',
  * @author Ryan Kaldari
  * @author Shirayuki
  * @author Siebrand
+ * @author 아라
  */
 $messages['qqq'] = array(
 	'pagetriage' => 'The name of this application (Page Triage)',
@@ -503,7 +504,8 @@ Format specifier for the author's account creation date. Month and weekday names
 	'pagetriage-filter-namespace-heading' => 'Prompt for the namespace to display',
 	'pagetriage-filter-article' => 'Select list option for the main namespace',
 	'pagetriage-filter-user-heading' => 'Prompt for the user to find pages by. Immediately followed by an input field. Prefer no colon since we want it to match with the rest of the options in the list which are all of the style "Were created by XXX".',
-	'pagetriage-filter-username' => 'Placeholder text for the input where a username is entered',
+	'pagetriage-filter-username' => 'Placeholder text for the input where a username is entered.
+{{Identical|Username}}',
 	'pagetriage-filter-tag-heading' => 'Prompt to find pages with a given tag',
 	'pagetriage-filter-second-show-heading' => 'Prompt for the second set of checkboxes in the filter menu. Followed by these checkboxes - 
 *{{msg-mw|Pagetriage-filter-no-categories}}, 
@@ -564,7 +566,8 @@ Format specifier for the author's account creation date. Month and weekday names
 	'pagetriage-tags-cat-common-label' => 'Label for common category',
 	'pagetriage-tags-cat-metadata-label' => 'Label for metadata category.
 {{Identical|Metadata}}',
-	'pagetriage-tags-cat-cleanup-label' => 'Label for cleanup category',
+	'pagetriage-tags-cat-cleanup-label' => 'Label for cleanup category
+{{Identical|Cleanup}}',
 	'pagetriage-tags-cat-neutrality-label' => 'Label for neutrality category',
 	'pagetriage-tags-cat-sources-label' => 'Label for sources category',
 	'pagetriage-tags-cat-structure-label' => 'Label for structure category',
@@ -616,7 +619,8 @@ Label for orphan tag.
 Description for orphan tag',
 	'pagetriage-tags-overlinked-label' => 'Label for overlinked tag',
 	'pagetriage-tags-overlinked-desc' => 'Description for overlinked tag',
-	'pagetriage-tags-cleanup-label' => 'Label for cleanup tag',
+	'pagetriage-tags-cleanup-label' => 'Label for cleanup tag
+{{Identical|Cleanup}}',
 	'pagetriage-tags-cleanup-desc' => 'Description for cleanup tag',
 	'pagetriage-tags-expertsubject-label' => 'Label for expert-subject tag',
 	'pagetriage-tags-expertsubject-desc' => 'Description for expert-subject tag',
@@ -5232,6 +5236,9 @@ $messages['ka'] = array(
 	'pagetriage-wikilove-page-creator' => 'გვერდის შემქნელი',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|რედაქტირება|რედაქტირება}}',
 	'pagetriage-toolbar-close' => 'დახურვა',
+	'echo-pref-email-pagetriage-mark-as-reviewed' => 'ჩემი შექმნილი გვერდის გადახედვები',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 {{GENDER:$2|გადახედა}} მომხმარებელმა $2',
+	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|გვერდის გადახედვა|გვერდის გადახედვა}}',
 );
 
 /** Korean (한국어)
@@ -5240,7 +5247,7 @@ $messages['ka'] = array(
 $messages['ko'] = array(
 	'pagetriage' => '문서 선별',
 	'newpagesfeed' => '새 문서 피드',
-	'pagetriage-desc' => '새 문서를 검토하고 승인을 쉽게함',
+	'pagetriage-desc' => '새 문서를 검토하고 승인을 쉽게 합니다',
 	'pagetriage-pagecuration' => '문서 큐레이션',
 	'pagetriage-please-wait' => '기다려 주세요...',
 	'pagetriage-api-invalidid' => '제공한 ID($1)가 올바르지 않습니다.',
@@ -5288,8 +5295,8 @@ $messages['ko'] = array(
 	'pagetriage-filter-user-heading' => '만든 사용자는',
 	'pagetriage-filter-username' => '사용자 이름',
 	'pagetriage-filter-tag-heading' => '태그 포함:',
-	'pagetriage-filter-second-show-heading' => '그것:',
-	'pagetriage-filter-no-categories' => '분류를 가지지 않음',
+	'pagetriage-filter-second-show-heading' => '조건:',
+	'pagetriage-filter-no-categories' => '분류가 없음',
 	'pagetriage-filter-orphan' => '외톨이됨',
 	'pagetriage-filter-non-autoconfirmed' => '새 편집자에 의해 만들어짐',
 	'pagetriage-filter-blocked' => '차단된 사용자에 의해 만들어짐',
@@ -5339,8 +5346,8 @@ $messages['ko'] = array(
 	'pagetriage-tags-title' => '태그 추가',
 	'pagetriage-tags-cat-common-label' => '공통',
 	'pagetriage-tags-cat-metadata-label' => '메타데이터',
-	'pagetriage-tags-cat-cleanup-label' => '정리 필요',
-	'pagetriage-tags-cat-neutrality-label' => '중립 필요',
+	'pagetriage-tags-cat-cleanup-label' => '정리',
+	'pagetriage-tags-cat-neutrality-label' => '중립성',
 	'pagetriage-tags-cat-sources-label' => '출처',
 	'pagetriage-tags-cat-structure-label' => '구조',
 	'pagetriage-tags-cat-unwantedcontent-label' => '불필요한 내용',
@@ -5350,8 +5357,8 @@ $messages['ko'] = array(
 	'pagetriage-tags-cat-all-label' => '모든 태그',
 	'pagetriage-tags-linkrot-label' => '노출된 URL',
 	'pagetriage-tags-linkrot-desc' => '이 문서는 약해지는 링크가 자주 발생하는 참고에 대한 노출된 URL을 사용합니다.',
-	'pagetriage-tags-copyedit-label' => '복사본 편집',
-	'pagetriage-tags-copyedit-desc' => '이 문서에는 문법, 스타일, 결합, 어조 및/또는 철자에 대한 편집 복사본이 필요합니다.',
+	'pagetriage-tags-copyedit-label' => '교정',
+	'pagetriage-tags-copyedit-desc' => '이 문서에는 문법, 스타일, 결합, 어조 및/또는 맞춤법에 대한 교정이 필요합니다.',
 	'pagetriage-tags-morefootnotes-label' => '더 많은 각주',
 	'pagetriage-tags-morefootnotes-desc' => '이 문서는 몇 가지 참고가 있지만 텍스트 인용이 부족합니다.',
 	'pagetriage-tags-refimprove-label' => '더 많은 출처',
@@ -5370,7 +5377,7 @@ $messages['ko'] = array(
 	'pagetriage-tags-orphan-desc' => '이 문서는 다른 문서에서 가리키는 링크가 적거나 없습니다.',
 	'pagetriage-tags-overlinked-label' => '너무 많이 링크됨',
 	'pagetriage-tags-overlinked-desc' => '이 문서에는 너무 많은 중복과/이나 관련이 없는 링크가 있습니다.',
-	'pagetriage-tags-cleanup-label' => '정리 필요',
+	'pagetriage-tags-cleanup-label' => '정리',
 	'pagetriage-tags-cleanup-desc' => '이 문서는 정리가 필요합니다.',
 	'pagetriage-tags-expertsubject-label' => '전문가 필요',
 	'pagetriage-tags-expertsubject-desc' => '이 문서에는 주제에 대한 전문가의 관심이 필요합니다.',
@@ -6918,11 +6925,11 @@ Varda ëd pi:
 $3
 
 $6",
-	'echo-pref-email-pagetriage-mark-as-reviewed' => "A revision-a na pagina che mi i l'heu creà",
-	'echo-pref-email-pagetriage-add-maintenance-tag' => "A revision-a na pagina che mi i l'heu creà e a gionta tichëtte ëd manutension",
-	'echo-pref-email-pagetriage-add-deletion-tag' => "A revision-a na pagina che mi i l'heu creà e a la nòmina për scanselament",
+	'echo-pref-email-pagetriage-mark-as-reviewed' => "A revision-a na pàgina che mi i l'heu creà",
+	'echo-pref-email-pagetriage-add-maintenance-tag' => "A revision-a na pàgina che mi i l'heu creà e a gionta dle tichëtte ëd manutension",
+	'echo-pref-email-pagetriage-add-deletion-tag' => "A revision-a na pàgina che mi i l'heu creà e a la propon për esse scancelà",
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => "$1 a l'era {{GENDER:$2|revisionà}} da $2",
-	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|Pagina revisionà|Pagine revisionà}}',
+	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|pàgina revisionà|pàgine revisionà}}',
 );
 
 /** Pashto (پښتو)
