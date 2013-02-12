@@ -440,7 +440,8 @@ A character that separates different statistics about the page, for example: 9 b
 	'newpagesfeed' => 'Title of a special page',
 	'pagetriage-desc' => '{{desc}}',
 	'pagetriage-pagecuration' => 'Alternative title of the extension/project. Should use title case.',
-	'pagetriage-please-wait' => 'Temporary message displayed while list interface is loading',
+	'pagetriage-please-wait' => 'Temporary message displayed while list interface is loading.
+{{Identical|Please wait}}',
 	'pagetriage-api-invalidid' => 'Invalid title error message for pagetriage API',
 	'pagetriage-markpatrolled' => 'Button text for the mark-as-patrolled button or text for mark as review tooltip',
 	'pagetriage-markunpatrolled' => 'Text for mark as unreview tooltip',
@@ -7135,6 +7136,18 @@ $messages['roa-tara'] = array(
 	'pagetriage-info-problem-orphan' => 'Orfane',
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
+	'pagetriage-toolbar-close' => 'Achiude',
+	'pagetriage-toolbar-minimize' => 'Minimizze',
+	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] ha state {{GENDER:$1|reviste}} da [[User:$1|$1]]',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] ha state {{GENDER:$1|reviste}} da $1',
+	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 ha state {{GENDER:$1|reviste}} da $1',
+	'pagetriage-notification-mark-as-reviewed-email-body2' => "$2 ha state {{GENDER:$1|reviste}} da l'utende de {{SITENAME}} $1:
+
+'Ndruche de cchiù:
+
+$3
+
+$4",
 );
 
 /** Russian (русский)
