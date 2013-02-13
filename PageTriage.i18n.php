@@ -802,7 +802,8 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-del-tags-param-discussion-label' => 'Prompt for explaination about why the user wants to nominate a page for deletion',
 	'pagetriage-info-title' => 'The title for the page information flyout in the toolbar',
 	'pagetriage-info-history-header' => '{{Identical|History}}',
-	'pagetriage-info-help' => 'Link text for the info flyout help button',
+	'pagetriage-info-help' => 'Link text for the info flyout help button.
+{{Identical|Help}}',
 	'pagetriage-info-no-problems' => 'Text to show when the page has no problems.',
 	'pagetriage-info-problem-non-autoconfirmed' => "Title for the error displayed when the page author isn't autoconfirmed.",
 	'pagetriage-info-problem-non-autoconfirmed-desc' => "Desription for the error displayed when the page author isn't autoconfirmed.",
