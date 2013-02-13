@@ -98,6 +98,7 @@ $wgPageTriageEnabledEchoEvents = array(
 );
 foreach ( $wgPageTriageEnabledEchoEvents as $enabledEchoEvent ) {
 	$wgDefaultUserOptions['echo-email-notifications' . $enabledEchoEvent] = true;
+	$wgDefaultUserOptions['echo-web-notifications' .  $enabledEchoEvent] = true;
 }
 // End configuration variables
 
