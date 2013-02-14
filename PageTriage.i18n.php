@@ -606,7 +606,8 @@ Label for dead end tag',
 	'pagetriage-tags-deadend-desc' => '{{Optional}}
 Description for dead end tag',
 	'pagetriage-tags-externallinks-label' => '{{Optional}}
-Label for external links tag',
+Label for external links tag.
+{{Identical|External link}}',
 	'pagetriage-tags-externallinks-desc' => '{{Optional}}
 Description for external links tag',
 	'pagetriage-tags-catimprove-label' => '{{Optional}}
@@ -5238,7 +5239,7 @@ $messages['ka'] = array(
 	'pagetriage-wikilove-page-creator' => 'გვერდის შემქნელი',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|რედაქტირება|რედაქტირება}}',
 	'pagetriage-toolbar-close' => 'დახურვა',
-	'echo-pref-email-pagetriage-mark-as-reviewed' => 'ჩემი შექმნილი გვერდის გადახედვები',
+	'echo-pref-subscription-pagetriage-mark-as-reviewed' => 'ჩემი შექმნილი გვერდის გადახედვები',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 {{GENDER:$2|გადახედა}} მომხმარებელმა $2',
 	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|გვერდის გადახედვა|გვერდის გადახედვა}}',
 );
@@ -5626,9 +5627,9 @@ $6',
 $3
 
 $6',
-	'echo-pref-email-pagetriage-mark-as-reviewed' => '내가 만든 문서를 검토하기',
-	'echo-pref-email-pagetriage-add-maintenance-tag' => '내가 만들었고 유지 관리 태그를 추가한 문서를 검토하기',
-	'echo-pref-email-pagetriage-add-deletion-tag' => '내가 만들었고 삭제로 표시한 문서 검토하기',
+	'echo-pref-subscription-pagetriage-mark-as-reviewed' => '내가 만든 문서를 검토하기',
+	'echo-pref-subscription-pagetriage-add-maintenance-tag' => '내가 만들었고 유지 관리 태그를 추가한 문서를 검토하기',
+	'echo-pref-subscription-pagetriage-add-deletion-tag' => '내가 만들었고 삭제로 표시한 문서 검토하기',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 문서를 $2 사용자가 {{GENDER:$2|검토했습니다}}',
 	'echo-email-batch-category-header-page-review' => '{{PLURAL:$1|문서 검토}} $1회',
 );
@@ -6927,9 +6928,9 @@ Varda ëd pi:
 $3
 
 $6",
-	'echo-pref-email-pagetriage-mark-as-reviewed' => "A revision-a na pàgina che mi i l'heu creà",
-	'echo-pref-email-pagetriage-add-maintenance-tag' => "A revision-a na pàgina che mi i l'heu creà e a gionta dle tichëtte ëd manutension",
-	'echo-pref-email-pagetriage-add-deletion-tag' => "A revision-a na pàgina che mi i l'heu creà e a la propon për esse scancelà",
+	'echo-pref-subscription-pagetriage-mark-as-reviewed' => "A revision-a na pàgina che mi i l'heu creà",
+	'echo-pref-subscription-pagetriage-add-maintenance-tag' => "A revision-a na pàgina che mi i l'heu creà e a gionta dle tichëtte ëd manutension",
+	'echo-pref-subscription-pagetriage-add-deletion-tag' => "A revision-a na pàgina che mi i l'heu creà e a la propon për esse scancelà",
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => "$1 a l'era {{GENDER:$2|revisionà}} da $2",
 	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|pàgina revisionà|pàgine revisionà}}',
 );
@@ -7398,7 +7399,7 @@ $messages['sv'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'Denna sida skapades den $1 av den nya redigeraren $2 ($3$4$5)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|redigering|redigeringar}} sedan $2',
 	'pagetriage-author-not-autoconfirmed' => 'Ny redigerare',
-	'pagetriage-no-patrol-right' => 'Du har inte rättigheterna att granska denna sida', # Fuzzy
+	'pagetriage-no-patrol-right' => 'Du har inte rättigheter att granska denna sida',
 	'pagetriage-author-blocked' => 'Blockerad',
 	'pagetriage-author-bot' => 'Bot',
 	'pagetriage-showing' => 'Visar:',
