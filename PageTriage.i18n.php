@@ -411,9 +411,9 @@ View more:
 $3
 
 $6',
-	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Reviews a page I created',
-	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Reviews a page I created and adds maintenance tags',
-	'echo-pref-email-pagetriage-add-deletion-tag' => 'Reviews a page I created and nominates it for deletion',
+	'echo-pref-subscription-pagetriage-mark-as-reviewed' => 'Reviews a page I created',
+	'echo-pref-subscription-pagetriage-add-maintenance-tag' => 'Reviews a page I created and adds maintenance tags',
+	'echo-pref-subscription-pagetriage-add-deletion-tag' => 'Reviews a page I created and nominates it for deletion',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 was {{GENDER:$2|reviewed}} by $2',
 	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|Page review|Page reviews}}',
 );
@@ -957,9 +957,9 @@ See also:
 * {{msg-mw|Pagetriage-notification-add-deletion-tag2}}
 * {{msg-mw|Pagetriage-notification-add-deletion-tag-flyout}}
 * {{msg-mw|Pagetriage-notification-add-deletion-tag-email-subject2}}",
-	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Option for getting emails when someone reviews a page you created. This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
-	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Option for getting emails when someone reviews a page you created and adds maintenance tags (for example, "needs cleanup"). This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
-	'echo-pref-email-pagetriage-add-deletion-tag' => 'Option for getting emails when someone reviews a page you created and nominates it for deletion. This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
+	'echo-pref-subscription-pagetriage-mark-as-reviewed' => 'Option for getting emails when someone reviews a page you created. This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
+	'echo-pref-subscription-pagetriage-add-maintenance-tag' => 'Option for getting emails when someone reviews a page you created and adds maintenance tags (for example, "needs cleanup"). This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
+	'echo-pref-subscription-pagetriage-add-deletion-tag' => 'Option for getting emails when someone reviews a page you created and nominates it for deletion. This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => "Email batch body for 'mark as reviewed', 'add maintenance tag' and 'add deletion tag'.  Parameters:
 * $1 is the title of the page
 * $2 is the username of the person who reviewed the page
