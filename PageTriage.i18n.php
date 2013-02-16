@@ -7235,6 +7235,13 @@ $messages['ru'] = array(
 	'pagetriage-note-not-reviewed' => 'Эта страница ещё не была проверена.',
 );
 
+/** Sicilian (sicilianu)
+ * @author Markos90
+ */
+$messages['scn'] = array(
+	'pagetriage-info-title' => 'Nfurmazzioni ncapu la pàggina',
+);
+
 /** Sinhala (සිංහල)
  * @author Singhalawap
  * @author පසිඳු කාවින්ද
@@ -7458,10 +7465,13 @@ $messages['sv'] = array(
 	'pagetriage-button-mark-for-deletion' => 'Markera för radering',
 	'pagetriage-add-a-note-creator' => 'Lägg till ett meddelande till skaparen: (valfritt)',
 	'pagetriage-characters-left' => '{{PLURAL:$1|$1 tecken|$1 tecken}} kvar',
+	'pagetriage-page-status-reviewed-anonymous' => 'Markera som granskad',
 	'pagetriage-page-status-delete' => 'Markerad för radering',
+	'pagetriage-articleinfo-stat' => 'Statistik: $1',
 	'pagetriage-tags-title' => 'Lägg till taggar:',
 	'pagetriage-tags-cat-metadata-label' => 'Metadata',
 	'pagetriage-tags-cat-cleanup-label' => 'Rensning',
+	'pagetriage-tags-cat-neutrality-label' => 'Neutralitet',
 	'pagetriage-tags-cat-sources-label' => 'Källor',
 	'pagetriage-tags-cat-structure-label' => 'Struktur',
 	'pagetriage-tags-cat-unwantedcontent-label' => 'Oönskat innehåll',
@@ -7551,8 +7561,13 @@ $messages['sv'] = array(
 	'pagetriage-toolbar-linktext' => 'Granska eller märk denna artikel',
 	'pagetriage-toolbar-learn-more' => 'Läs mer »',
 	'pagetriage-mark-title' => 'Markera som granskad',
+	'pagetriage-mark-as-reviewed' => 'Markera som granskad',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|redigering|redigeringar}}',
+	'pagetriage-wikilove-tooltip' => 'Skicka uppskattning till författarna',
+	'pagetriage-next-tooltip' => 'Gå till nästa sida i kön',
+	'pagetriage-del-tooltip' => 'Nominera denna sida för radering',
 	'pagetriage-toolbar-close' => 'Stäng',
+	'pagetriage-toolbar-minimize' => 'Minimera',
 );
 
 /** Tamil (தமிழ்)
