@@ -491,7 +491,8 @@ Format specifier for the author's account creation date. Month and weekday names
 * $1 is the count,
 * $2 is the age of oldest article, this could be from message key pagetriage-stats-less-than-a-day or days',
 	'pagetriage-reviewed-article-count-past-week' => 'A description of the number of reviewed pages in past week, $1 is the count of pages reviewed in past week',
-	'pagetriage-sort-by' => 'Label for the sort-order buttons (oldest/newest)',
+	'pagetriage-sort-by' => 'Label for the sort-order buttons (oldest/newest).
+{{Identical|Sort by}}',
 	'pagetriage-newest' => 'Text for a sort-order button',
 	'pagetriage-oldest' => 'Text for a sort-order button',
 	'pagetriage-triage' => 'Button label.
@@ -769,7 +770,8 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-del-tags-miscellanyfordeletion-label' => 'Label for miscellany for deletion tag',
 	'pagetriage-del-talk-page-notify-summary' => 'Edit summary for notifying an author when their page has been nominated for deletion. $1 is the title of the page being nominated.',
 	'pagetriage-tags-param-article-label' => 'Label for article parameter',
-	'pagetriage-tags-param-date-label' => 'Label for date parameter',
+	'pagetriage-tags-param-date-label' => 'Label for date parameter.
+{{Identical|Date}}',
 	'pagetriage-tags-param-issues-label' => 'Label for reason/details parameter',
 	'pagetriage-tags-param-for-label' => 'Label for the for parameter',
 	'pagetriage-tags-param-blp-label' => 'Label for blp parameter checkbox',
