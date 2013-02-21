@@ -571,7 +571,8 @@ Format specifier for the author's account creation date. Month and weekday names
 	'pagetriage-tags-cat-cleanup-label' => 'Label for cleanup category
 {{Identical|Cleanup}}',
 	'pagetriage-tags-cat-neutrality-label' => 'Label for neutrality category',
-	'pagetriage-tags-cat-sources-label' => 'Label for sources category',
+	'pagetriage-tags-cat-sources-label' => 'Label for sources category.
+{{Identical|Source}}',
 	'pagetriage-tags-cat-structure-label' => 'Label for structure category',
 	'pagetriage-tags-cat-unwantedcontent-label' => 'Label for unwanted content category',
 	'pagetriage-tags-cat-verifiability-label' => 'Label for verifiability category',
@@ -5657,6 +5658,17 @@ $messages['ksh'] = array(
 	'pagetriage-button-add-parameters' => 'Parrammeetere derbei donn',
 	'pagetriage-button-add-details' => 'Einzelheite derbei donn',
 	'pagetriage-button-edit-details' => 'Einzelheite ändere',
+);
+
+/** Kurdish (Latin script) (Kurdî (latînî)‎)
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'pagetriage-filter-username' => 'Navê bikarhêner',
+	'pagetriage-filter-stat-all' => 'Heemû',
+	'pagetriage-button-add-parameters' => 'Parametreyan lê zêde bike',
+	'pagetriage-tags-param-free-yes-label' => 'Erê',
+	'pagetriage-tags-param-free-no-label' => 'Na',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
