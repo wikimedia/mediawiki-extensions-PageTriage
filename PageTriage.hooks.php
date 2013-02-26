@@ -467,68 +467,70 @@ class PageTriageHooks {
 	 * @param $wgEchoEnabledEvents array a list of enabled echo events
 	 * @param $wgEchoEventDetails array details for echo events
 	 */
-	public static function onBeforeCreateEchoEvent( &$wgEchoEnabledEvents, &$wgEchoEventDetails ) {
+	public static function onBeforeCreateEchoEvent( &$wgEchoNotifications, &$wgEchoNotificationCategories ) {
 		global $wgPageTriageEnabledEchoEvents;
 
-		foreach ( $wgPageTriageEnabledEchoEvents as $enabledEchoEvent ) {
-			$wgEchoEnabledEvents[] = $enabledEchoEvent;
-			$wgEchoEventDetails += array(
-				$enabledEchoEvent => array(
-					'category' => 'page-review',
-					'priority' => 8
-				)
+		if ( $wgPageTriageEnabledEchoEvents ) {
+			$wgEchoNotificationCategories['page-review'] = array(
+				'priority' => 8,
 			);
 		}
-		return true;
-	}
 
-	/**
-	 * Add extension notification formatter to $wgEchoNotificationFormatters
-	 * @param $wgEchoNotificationFormatters array a list of echo notification formatters
-	 */
-	public static function onBeforeFormatEchoNotification( &$wgEchoNotificationFormatters ) {
-		$wgEchoNotificationFormatters['pagetriage-mark-as-reviewed'] = array(
-			'class' => 'PageTriageNotificationFormatter',
-			'title-message' => 'pagetriage-notification-mark-as-reviewed2',
-			'title-params' => array( 'agent', 'title' ),
-			'flyout-message' => 'pagetriage-notification-mark-as-reviewed-flyout',
-			'flyout-params' => array( 'agent', 'title' ),
-			'email-subject-message' => 'pagetriage-notification-mark-as-reviewed-email-subject2',
-			'email-subject-params' => array( 'agent', 'title' ),
-			'email-body-message' => 'pagetriage-notification-mark-as-reviewed-email-body2',
-			'email-body-params' => array( 'agent', 'title', 'titlelink', 'email-footer' ),
-			'email-body-batch-message' => 'pagetriage-notification-mark-as-reviewed-email-batch-body',
-			'email-body-batch-params' => array( 'title', 'agent' ),
-			'icon' => 'checkmark',
-		);
-		$wgEchoNotificationFormatters['pagetriage-add-maintenance-tag'] = array(
-			'class' => 'PageTriageNotificationFormatter',
-			'title-message' => 'pagetriage-notification-add-maintenance-tag2',
-			'title-params' => array( 'agent', 'title', 'tag' ),
-			'flyout-message' => 'pagetriage-notification-add-maintenance-tag-flyout',
-			'flyout-params' => array( 'agent', 'title', 'tag' ),
-			'email-subject-message' => 'pagetriage-notification-add-maintenance-tag-email-subject2',
-			'email-subject-params' => array( 'agent', 'title' ),
-			'email-body-message' => 'pagetriage-notification-add-maintenance-tag-email-body2',
-			'email-body-params' => array( 'agent', 'title', 'titlelink', 'tag', 'email-footer' ),
-			'email-body-batch-message' => 'pagetriage-notification-mark-as-reviewed-email-batch-body',
-			'email-body-batch-params' => array( 'title', 'agent' ),
-			'icon' => 'checkmark',
-		);
-		$wgEchoNotificationFormatters['pagetriage-add-deletion-tag'] = array(
-			'class' => 'PageTriageNotificationFormatter',
-			'title-message' => 'pagetriage-notification-add-deletion-tag2',
-			'title-params' => array( 'agent', 'title', 'tag' ),
-			'flyout-message' => 'pagetriage-notification-add-deletion-tag-flyout',
-			'flyout-params' => array( 'agent', 'title', 'tag' ),
-			'email-subject-message' => 'pagetriage-notification-add-deletion-tag-email-subject2',
-			'email-subject-params' => array( 'agent', 'title' ),
-			'email-body-message' => 'pagetriage-notification-add-deletion-tag-email-body2',
-			'email-body-params' => array( 'agent', 'title', 'titlelink', 'tag', 'email-footer' ),
-			'email-body-batch-message' => 'pagetriage-notification-mark-as-reviewed-email-batch-body',
-			'email-body-batch-params' => array( 'title', 'agent' ),
-			'icon' => 'trash',
-		);
+		if ( in_array( 'pagetriage-mark-as-reviewed', $wgPageTriageEnabledEchoEvents ) ) {
+			$wgEchoNotifications['pagetriage-mark-as-reviewed'] = array(
+				'category' => 'page-review',
+				'group' => 'neutral',
+				'formatter-class' => 'PageTriageNotificationFormatter',
+				'title-message' => 'pagetriage-notification-mark-as-reviewed2',
+				'title-params' => array( 'agent', 'title' ),
+				'flyout-message' => 'pagetriage-notification-mark-as-reviewed-flyout',
+				'flyout-params' => array( 'agent', 'title' ),
+				'email-subject-message' => 'pagetriage-notification-mark-as-reviewed-email-subject2',
+				'email-subject-params' => array( 'agent', 'title' ),
+				'email-body-message' => 'pagetriage-notification-mark-as-reviewed-email-body2',
+				'email-body-params' => array( 'agent', 'title', 'titlelink', 'email-footer' ),
+				'email-body-batch-message' => 'pagetriage-notification-mark-as-reviewed-email-batch-body',
+				'email-body-batch-params' => array( 'title', 'agent' ),
+				'icon' => 'checkmark',
+			);
+		}
+		if ( in_array( 'pagetriage-add-maintenance-tag', $wgPageTriageEnabledEchoEvents ) ) {
+			$wgEchoNotifications['pagetriage-add-maintenance-tag'] = array(
+				'category' => 'page-review',
+				'group' => 'neutral',
+				'formatter-class' => 'PageTriageNotificationFormatter',
+				'title-message' => 'pagetriage-notification-add-maintenance-tag2',
+				'title-params' => array( 'agent', 'title', 'tag' ),
+				'flyout-message' => 'pagetriage-notification-add-maintenance-tag-flyout',
+				'flyout-params' => array( 'agent', 'title', 'tag' ),
+				'email-subject-message' => 'pagetriage-notification-add-maintenance-tag-email-subject2',
+				'email-subject-params' => array( 'agent', 'title' ),
+				'email-body-message' => 'pagetriage-notification-add-maintenance-tag-email-body2',
+				'email-body-params' => array( 'agent', 'title', 'titlelink', 'tag', 'email-footer' ),
+				'email-body-batch-message' => 'pagetriage-notification-mark-as-reviewed-email-batch-body',
+				'email-body-batch-params' => array( 'title', 'agent' ),
+				'icon' => 'checkmark',
+			);
+		}
+		if ( in_array( 'pagetriage-add-deletion-tag', $wgPageTriageEnabledEchoEvents ) ) {
+			$wgEchoNotifications['pagetriage-add-deletion-tag'] = array(
+				'category' => 'page-review',
+				'group' => 'neutral',
+				'formatter-class' => 'PageTriageNotificationFormatter',
+				'title-message' => 'pagetriage-notification-add-deletion-tag2',
+				'title-params' => array( 'agent', 'title', 'tag' ),
+				'flyout-message' => 'pagetriage-notification-add-deletion-tag-flyout',
+				'flyout-params' => array( 'agent', 'title', 'tag' ),
+				'email-subject-message' => 'pagetriage-notification-add-deletion-tag-email-subject2',
+				'email-subject-params' => array( 'agent', 'title' ),
+				'email-body-message' => 'pagetriage-notification-add-deletion-tag-email-body2',
+				'email-body-params' => array( 'agent', 'title', 'titlelink', 'tag', 'email-footer' ),
+				'email-body-batch-message' => 'pagetriage-notification-mark-as-reviewed-email-batch-body',
+				'email-body-batch-params' => array( 'title', 'agent' ),
+				'icon' => 'trash',
+			);
+		}
+
 		return true;
 	}
 

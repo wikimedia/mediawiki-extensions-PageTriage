@@ -89,17 +89,15 @@ $wgTalkPageNoteTemplate = array(
 	'UnMark' => array( 'note' => 'Unreviewednote-NPF', 'nonote' => 'Unreviewednonote-NPF' ),
 	'Tags' => 'Taggednote-NPF'
 );
-// Set which PageTriage Echo events (defined in PageTriageHooks::onBeforeFormatEchoNotification)
+// Set which PageTriage Echo events (defined in PageTriageHooks::onBeforeCreateEchoEvent)
 // will be enabled as notifications
 $wgPageTriageEnabledEchoEvents = array(
 	'pagetriage-mark-as-reviewed',
 	'pagetriage-add-maintenance-tag',
 	'pagetriage-add-deletion-tag'
 );
-foreach ( $wgPageTriageEnabledEchoEvents as $enabledEchoEvent ) {
-	$wgDefaultUserOptions['echo-email-notifications' . $enabledEchoEvent] = true;
-	$wgDefaultUserOptions['echo-web-notifications' .  $enabledEchoEvent] = true;
-}
+$wgDefaultUserOptions['echo-subscriptions-web-page-review'] = true;
+$wgDefaultUserOptions['echo-subscriptions-email-page-review'] = true;
 // End configuration variables
 
 
@@ -159,7 +157,6 @@ $wgHooks['MarkPatrolledComplete'][] = 'PageTriageHooks::onMarkPatrolledComplete'
 $wgHooks['BlockIpComplete'][] = 'PageTriageHooks::onBlockIpComplete';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'PageTriageHooks::onResourceLoaderGetConfigVars';
 $wgHooks['BeforeCreateEchoEvent'][] = 'PageTriageHooks::onBeforeCreateEchoEvent';
-$wgHooks['BeforeFormatEchoNotification'][] = 'PageTriageHooks::onBeforeFormatEchoNotification';
 $wgHooks['EchoGetDefaultNotifiedUsers'][] = 'PageTriageHooks::onEchoGetDefaultNotifiedUsers';
 
 // logging

@@ -385,6 +385,7 @@ View more:
 $3
 
 $4',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 was {{GENDER:$2|reviewed}} by $2',
 	// notification - add maintenance tag
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|tagged}} by [[User:$1|$1]]. {{PLURAL:$4|Tag|Tags}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|tagged}} by $1. {{PLURAL:$4|Tag|Tags}}: $3',
@@ -411,11 +412,8 @@ View more:
 $3
 
 $6',
-	'echo-pref-subscription-pagetriage-mark-as-reviewed' => 'Reviews a page I created',
-	'echo-pref-subscription-pagetriage-add-maintenance-tag' => 'Reviews a page I created and adds maintenance tags',
-	'echo-pref-subscription-pagetriage-add-deletion-tag' => 'Reviews a page I created and nominates it for deletion',
-	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 was {{GENDER:$2|reviewed}} by $2',
-	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|page review|page reviews}}',
+	'echo-pref-subscription-page-review' => 'Reviews a page I created',
+	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|Page review|Page reviews}}',
 );
 
 /** Message documentation (Message documentation)
@@ -974,7 +972,10 @@ See also:
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed-flyout}}
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-body2}}",
-	'echo-email-batch-category-header-page-review' => 'Email batch section title for page review.  Parameters:
+	'echo-pref-subscription-page-review' => 'Option for getting notifications when someone reviews a page created by the user.
+
+This is the conclusion of the sentence begun by the header: {{msg-mw|Prefs-echosubscriptions}}.',
+'echo-email-batch-category-header-page-review' => 'Email batch section title for page review.  Parameters:
 * $1 is the numeric count',
 );
 
