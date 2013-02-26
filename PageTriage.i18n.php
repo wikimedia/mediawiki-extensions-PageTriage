@@ -523,10 +523,12 @@ Format specifier for the author's account creation date. Month and weekday names
 	'pagetriage-stats-less-than-a-day' => 'show this message if the page age is less than one day, part of variable $1 and $2 of {{msg-pagetriage|pagetriage-stats-unreviewed-age}}',
 	'pagetriage-stats-reviewed-page-count' => 'Text showing the number of pages reviewed in the past week, $1 is the number of reviewed pages',
 	'pagetriage-stats-filter-page-count' => 'Text showing the number of pages from the primary filter, $1 is the number of pages',
-	'pagetriage-filter-ns-all' => 'For the namespace filter select list, text indicating that all namespaces will be selected',
+	'pagetriage-filter-ns-all' => 'For the namespace filter select list, text indicating that all namespaces will be selected.
+{{Identical|All}}',
 	'pagetriage-more' => 'Text for a link that loads more pages into list.
 {{Identical|More}}',
-	'pagetriage-filter-stat-all' => 'Status display component for all pages (no filter)',
+	'pagetriage-filter-stat-all' => 'Status display component for all pages (no filter).
+{{Identical|All}}',
 	'pagetriage-filter-stat-reviewed' => 'Status display component for reviewed pages. This message is included as part of a sentence-style list.',
 	'pagetriage-filter-stat-unreviewed' => 'Status display component for unreviewed pages. This message is included as part of a sentence-style list.',
 	'pagetriage-filter-stat-bots' => 'Status display component for bot-created pages. This message is included as part of a sentence-style list.',
@@ -4081,6 +4083,7 @@ $messages['hsb'] = array(
 	'pagetriage-del-log-page-missing-error' => 'Protokolowa strona za dźensa hišće njeje so wutworiła!',
 	'pagetriage-del-log-page-adding-error' => 'Cilowe městno za diskusiju njeje so namakało',
 	'pagetriage-del-talk-page-notify-error' => 'Njeje móžno było, awtora na jeho diskusijnej stronje informować',
+	'pagetriage-del-title' => 'Za zhašenje markěrować',
 	'pagetriage-del-tooltip' => 'Tutu stronu za zhašenje namjetować',
 	'pagetriage-toolbar-close' => 'Začinić',
 	'pagetriage-toolbar-minimize' => 'Minimować',
