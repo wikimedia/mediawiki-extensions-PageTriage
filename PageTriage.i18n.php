@@ -415,7 +415,7 @@ $6',
 	'echo-pref-subscription-pagetriage-add-maintenance-tag' => 'Reviews a page I created and adds maintenance tags',
 	'echo-pref-subscription-pagetriage-add-deletion-tag' => 'Reviews a page I created and nominates it for deletion',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 was {{GENDER:$2|reviewed}} by $2',
-	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|Page review|Page reviews}}',
+	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|page review|page reviews}}',
 );
 
 /** Message documentation (Message documentation)
