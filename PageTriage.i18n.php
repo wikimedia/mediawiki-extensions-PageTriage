@@ -974,7 +974,7 @@ See also:
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed-flyout}}
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-body2}}",
-	'echo-email-batch-category-header-page-review' => 'E-mail batch section title for page review.  Parameters:
+	'echo-email-batch-category-header-page-review' => 'Email batch section title for page review.  Parameters:
 * $1 is the numeric count',
 );
 
