@@ -3586,9 +3586,9 @@ Ollar máis:
 $3
 
 $6',
-	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Revise unha páxina que creei',
-	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Revise unha páxina que creei e engada etiquetas de mantemento',
-	'echo-pref-email-pagetriage-add-deletion-tag' => 'Revise unha páxina que creei e propoña o seu borrado',
+	'echo-pref-subscription-pagetriage-mark-as-reviewed' => 'Revise unha páxina que creei',
+	'echo-pref-subscription-pagetriage-add-maintenance-tag' => 'Revise unha páxina que creei e engada etiquetas de mantemento',
+	'echo-pref-subscription-pagetriage-add-deletion-tag' => 'Revise unha páxina que creei e propoña o seu borrado',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$2 {{GENDER:$2|revisou}} "$1"',
 	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|revisión de páxina|revisións de páxina}}',
 );
