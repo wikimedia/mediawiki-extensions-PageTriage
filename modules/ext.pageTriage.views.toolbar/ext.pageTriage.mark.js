@@ -4,7 +4,7 @@ $( function() {
 	mw.pageTriage.MarkView = mw.pageTriage.ToolView.extend( {
 		id: 'mwe-pt-mark',
 		icon: 'icon_mark_reviewed.png', // the default icon
-		title: gM( 'pagetriage-mark-as-reviewed' ),
+		title: mw.msg( 'pagetriage-mark-as-reviewed' ),
 		tooltip: '',
 		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'mark.html' } ),
 		noteChanged: false,

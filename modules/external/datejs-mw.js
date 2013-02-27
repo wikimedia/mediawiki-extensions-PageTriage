@@ -6,52 +6,52 @@ mw.loader.using( ['mediawiki.jqueryMsg'], function() {
 	// since Mediawiki doesn't currently use those.
 
 	Date.CultureInfo.dayNames = [
-		gM('sunday'),
-		gM('monday'),
-		gM('tuesday'),
-		gM('wednesday'),
-		gM('thursday'),
-		gM('friday'),
-		gM('saturday')
+		mw.msg('sunday'),
+		mw.msg('monday'),
+		mw.msg('tuesday'),
+		mw.msg('wednesday'),
+		mw.msg('thursday'),
+		mw.msg('friday'),
+		mw.msg('saturday')
 	];
 
 	Date.CultureInfo.abbreviatedDayNames = [
-		gM('sun'),
-		gM('mon'),
-		gM('tue'),
-		gM('wed'),
-		gM('thu'),
-		gM('fri'),
-		gM('sat')
+		mw.msg('sun'),
+		mw.msg('mon'),
+		mw.msg('tue'),
+		mw.msg('wed'),
+		mw.msg('thu'),
+		mw.msg('fri'),
+		mw.msg('sat')
 	];
 
 	Date.CultureInfo.monthNames = [
-		gM('january'),
-		gM('february'),
-		gM('march'),
-		gM('april'),
-		gM('may_long'),
-		gM('june'),
-		gM('july'),
-		gM('august'),
-		gM('september'),
-		gM('october'),
-		gM('november'),
-		gM('december')
+		mw.msg('january'),
+		mw.msg('february'),
+		mw.msg('march'),
+		mw.msg('april'),
+		mw.msg('may_long'),
+		mw.msg('june'),
+		mw.msg('july'),
+		mw.msg('august'),
+		mw.msg('september'),
+		mw.msg('october'),
+		mw.msg('november'),
+		mw.msg('december')
 	];
 
 	Date.CultureInfo.abbreviatedMonthNames = [
-		gM('jan'),
-		gM('feb'),
-		gM('mar'),
-		gM('apr'),
-		gM('may'),
-		gM('jun'),
-		gM('jul'),
-		gM('aug'),
-		gM('sep'),
-		gM('oct'),
-		gM('nov'),
-		gM('dec')
+		mw.msg('jan'),
+		mw.msg('feb'),
+		mw.msg('mar'),
+		mw.msg('apr'),
+		mw.msg('may'),
+		mw.msg('jun'),
+		mw.msg('jul'),
+		mw.msg('aug'),
+		mw.msg('sep'),
+		mw.msg('oct'),
+		mw.msg('nov'),
+		mw.msg('dec')
 	];
 } );
