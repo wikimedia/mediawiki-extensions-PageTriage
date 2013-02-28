@@ -438,7 +438,7 @@ $messages['qqq'] = array(
 	'pagetriage-dot-separator' => '{{Optional}}
 A character that separates different statistics about the page, for example: 9 bytes · 1 edit · 0 categories',
 	'newpagesfeed' => 'Title of a special page',
-	'pagetriage-desc' => '{{desc}}',
+	'pagetriage-desc' => '{{desc|name=Page Triage|url=http://www.mediawiki.org/wiki/Extension:PageTriage}}',
 	'pagetriage-pagecuration' => 'Alternative title of the extension/project. Should use title case.',
 	'pagetriage-please-wait' => 'Temporary message displayed while list interface is loading.
 {{Identical|Please wait}}',
