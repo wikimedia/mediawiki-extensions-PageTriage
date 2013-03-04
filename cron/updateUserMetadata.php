@@ -64,7 +64,7 @@ class updateUserMetadata extends Maintenance {
 		while ( $count === $this->batchSize ) {
 			$count = 0;
 			$startTime = $this->dbr->addQuotes( $this->dbr->timestamp( $startTime ) );
-			$startId = intval( $startId );
+			$startId = ( int )$startId;
 
 			$res = $this->dbr->select(
 				array( 'pagetriage_page', 'page' ),

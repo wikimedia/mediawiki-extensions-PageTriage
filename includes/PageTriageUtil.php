@@ -91,7 +91,7 @@ class PageTriageUtil {
 		$data = array( 'count' => 0, 'oldest' => '' );
 
 		if ( $res ) {
-			$data['count'] = intval( $res->total );
+			$data['count'] = ( int )$res->total;
 			$data['oldest'] = $res->oldest;
 		}
 
@@ -153,7 +153,7 @@ class PageTriageUtil {
 
 		$total = 0;
 		if ( $res ) {
-			$total = intval( $res->total );
+			$total = ( int )$res->total;
 		}
 
 		// make it expire in 10 minutes
@@ -194,7 +194,7 @@ class PageTriageUtil {
 		$data = array( 'reviewed_count' => 0 );
 
 		if ( $res ) {
-			$data['reviewed_count'] = intval( $res->reviewed_count );
+			$data['reviewed_count'] = ( int )$res->reviewed_count;
 		}
 
 		// make it expire in 10 minutes

@@ -271,7 +271,7 @@ class ArticleMetadata {
 
 		$cleanUp = array();
 		foreach ( $pageIds as $key => $val ) {
-			$casted = intval( $val );
+			$casted = ( int )$val;
 			if ( $casted ) {
 				if ( isset( $cache[$casted] ) ) {
 					if ( $cache[$casted] ) {

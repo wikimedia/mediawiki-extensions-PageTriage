@@ -58,7 +58,7 @@ class updatePageTriageQueue extends Maintenance {
 		while ( $count === $this->batchSize ) {
 			$count = 0;
 			$startTime = $this->dbr->addQuotes( $this->dbr->timestamp( $startTime ) );
-			$startId = intval( $startId );
+			$startId = ( int )$startId;
 
 			// Remove pages older than 30 days, if
 			// 1. the page has been reviewed, or
