@@ -1853,6 +1853,13 @@ $messages['el'] = array(
 	'pagetriage-info-help' => 'βοήθεια',
 );
 
+/** British English (British English)
+ * @author Shirayuki
+ */
+$messages['en-gb'] = array(
+	'pagetriage-toolbar-minimize' => 'Minimise',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
