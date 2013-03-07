@@ -889,6 +889,14 @@ See also:
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed-flyout}}
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-batch-body}}
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}",
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => "Email batch body for 'mark as reviewed', 'add maintenance tag' and 'add deletion tag'.  Parameters:
+* $1 is the title of the page
+* $2 is the username of the person who reviewed the page
+See also:
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed2}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-flyout}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-body2}}",
 	'pagetriage-notification-add-maintenance-tag2' => "Title for 'add maintenance tag' notification.  Parameters:
 * $1 is the username of the person who added maintenance tag, plain text
 * $2 is the title of the page
@@ -961,21 +969,10 @@ See also:
 * {{msg-mw|Pagetriage-notification-add-deletion-tag2}}
 * {{msg-mw|Pagetriage-notification-add-deletion-tag-flyout}}
 * {{msg-mw|Pagetriage-notification-add-deletion-tag-email-subject2}}",
-	'echo-pref-subscription-pagetriage-mark-as-reviewed' => 'Option for getting emails when someone reviews a page you created. This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
-	'echo-pref-subscription-pagetriage-add-maintenance-tag' => 'Option for getting emails when someone reviews a page you created and adds maintenance tags (for example, "needs cleanup"). This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
-	'echo-pref-subscription-pagetriage-add-deletion-tag' => 'Option for getting emails when someone reviews a page you created and nominates it for deletion. This is the conclusion of the sentence begun by the header: {{msg-mw|prefs-emailsubscriptions}}.',
-	'pagetriage-notification-mark-as-reviewed-email-batch-body' => "Email batch body for 'mark as reviewed', 'add maintenance tag' and 'add deletion tag'.  Parameters:
-* $1 is the title of the page
-* $2 is the username of the person who reviewed the page
-See also:
-* {{msg-mw|Pagetriage-notification-mark-as-reviewed2}}
-* {{msg-mw|Pagetriage-notification-mark-as-reviewed-flyout}}
-* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}
-* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-body2}}",
 	'echo-pref-subscription-page-review' => 'Option for getting notifications when someone reviews a page created by the user.
 
 This is the conclusion of the sentence begun by the header: {{msg-mw|Prefs-echosubscriptions}}.',
-'echo-email-batch-category-header-page-review' => 'Email batch section title for page review.  Parameters:
+	'echo-email-batch-category-header-page-review' => 'Email batch section title for page review.  Parameters:
 * $1 is the numeric count',
 );
 
@@ -1796,6 +1793,7 @@ $messages['de-formal'] = array(
 
 /** Zazaki (Zazaki)
  * @author Erdemaslancan
+ * @author Mirzali
  */
 $messages['diq'] = array(
 	'pagetriage-sort-by' => 'Raten:',
@@ -1808,6 +1806,7 @@ $messages['diq'] = array(
 	'pagetriage-refresh-list' => 'Listi neweke',
 	'pagetriage-tags-cat-all-label' => 'Etiketi pêro',
 	'pagetriage-tags-param-article-label' => 'Wesiqe:',
+	'log-name-pagetriage-deletion' => 'Rocnameyê etiketê esterıtışi',
 );
 
 /** Greek (Ελληνικά)
@@ -6208,6 +6207,7 @@ $messages['mk'] = array(
 $3
 
 $4',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$2 {{GENDER:$2|ја провери}} страницата $1',
 	'pagetriage-notification-add-maintenance-tag2' => '[[User:$1|$1]] {{GENDER:$1|ја провери}} {{GENDER:$1|и означи}} страницата [[$2]]. {{PLURAL:$4|Ознака|Ознаки}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => '$1 {{GENDER:$1|ја провери}} {{GENDER:$1|и означи}} „[[$2]]“. {{PLURAL:$4|Ознака|Ознаки}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$1 {{GENDER:$1|ја означи}} страницата $2',
@@ -6232,11 +6232,8 @@ $6',
 $3
 
 $6',
-	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Провери страница што сум ја создал',
-	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Провери страница што сум ја создал и ќе стави ознаки за одржување',
-	'echo-pref-email-pagetriage-add-deletion-tag' => 'Провери страница што сум ја создал и ќе ја предложи за бришење',
-	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$2 {{GENDER:$2|ја провери}} страницата $1',
-	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|проверка на страница|проверки на страници}}',
+	'echo-pref-subscription-page-review' => 'Провери страница што сум ја создал',
+	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|Посета на страница|Посети на страници}}',
 );
 
 /** Maltese (Malti)
