@@ -1230,12 +1230,15 @@ $messages['bg'] = array(
 );
 
 /** Breton (brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
+	'pagetriage-please-wait' => 'Gortozit mar plij...',
 	'pagetriage-reviewed' => 'Adwelet',
 	'pagetriage-hist' => 'ist',
 	'pagetriage-no-categories' => 'Rummad ebet',
+	'pagetriage-orphan' => 'Emzivad',
 	'pagetriage-byline' => 'Gant', # Fuzzy
 	'pagetriage-author-not-autoconfirmed' => 'Aozer nevez',
 	'pagetriage-author-blocked' => 'Stanket',
@@ -1245,19 +1248,26 @@ $messages['br'] = array(
 	'pagetriage-newest' => 'Ar re nevesañ',
 	'pagetriage-oldest' => 'Ar re goshañ',
 	'pagetriage-triage' => 'Adwelet',
+	'pagetriage-filter-show-heading' => 'Diskouez :',
 	'pagetriage-filter-redirects' => 'Adkasoù',
+	'pagetriage-filter-article' => 'Pennad',
+	'pagetriage-filter-username' => 'Anv implijer',
 	'pagetriage-filter-all' => 'Diskouez pep tra',
 	'pagetriage-filter-ns-all' => 'An holl',
 	'pagetriage-more' => "Muioc'h",
 	'pagetriage-filter-stat-all' => 'An holl',
 	'pagetriage-filter-stat-bots' => 'Robotoù',
 	'pagetriage-filter-stat-no-categories' => 'Rummad ebet',
+	'pagetriage-filter-stat-orphan' => 'emzivaded',
+	'pagetriage-filter-stat-blocked' => 'implijerien stanket',
 	'pagetriage-filter-stat-username' => 'Anv implijer : $1',
+	'pagetriage-refresh-list' => 'Freskaat ar roll',
 	'pagetriage-button-add-parameters' => 'Ouzhpennañ arventennoù',
 	'pagetriage-button-add-details' => 'Ouzhpennañ munudoù',
 	'pagetriage-button-edit-details' => 'Aozañ ar munudoù',
 	'pagetriage-tags-cat-common-label' => 'Boutin',
 	'pagetriage-tags-cat-metadata-label' => 'Metaroadennoù',
+	'pagetriage-tags-cat-neutrality-label' => 'Neptuegezh',
 	'pagetriage-tags-cat-sources-label' => 'Mammennoù',
 	'pagetriage-tags-cat-structure-label' => 'Framm',
 	'pagetriage-tags-cat-moretags-label' => "Muioc'h a dikedennoù",
@@ -1283,6 +1293,7 @@ $messages['br'] = array(
 	'pagetriage-tags-fiction-label' => 'Faltazi',
 	'pagetriage-tags-outofdate-label' => 'Dispredet',
 	'pagetriage-tags-update-label' => 'Hizivaat',
+	'pagetriage-tags-param-article-label' => 'Pennad :',
 	'pagetriage-tags-param-date-label' => 'Deiziad :',
 	'pagetriage-tags-param-for-label' => 'Evit :', # Fuzzy
 	'pagetriage-tags-param-source-label' => 'Mammenn :', # Fuzzy
@@ -1290,15 +1301,21 @@ $messages['br'] = array(
 	'pagetriage-tags-param-url-label' => 'URL:', # Fuzzy
 	'pagetriage-tags-param-free-yes-label' => 'Ya',
 	'pagetriage-tags-param-free-no-label' => 'Ket',
+	'pagetriage-info-title' => 'Titouroù diwar-benn ar bajenn',
 	'pagetriage-info-problem-header' => "Kudennoù a c'hall bezañ",
 	'pagetriage-info-history-header' => 'Istor',
 	'pagetriage-info-history-show-full' => 'diskouez an istor klok',
 	'pagetriage-info-help' => 'skoazell',
 	'pagetriage-info-problem-non-autoconfirmed' => 'Aozer nevez',
+	'pagetriage-info-problem-blocked' => 'Implijer stanket',
 	'pagetriage-info-problem-no-categories' => 'Rummad ebet',
 	'pagetriage-info-problem-orphan' => 'Emzivad',
 	'pagetriage-info-problem-orphan-desc' => "Pajenn all ebet ne gas d'ar bajenn-mañ.",
 	'pagetriage-info-problem-no-references' => 'Daveenn ebet',
+	'pagetriage-info-timestamp-time-format' => 'EE:mm',
+	'pagetriage-toolbar-learn-more' => "Gouzout hiroc'h »",
+	'pagetriage-wikilove-page-creator' => 'Krouer ar bajenn',
+	'pagetriage-toolbar-close' => 'Serriñ',
 );
 
 /** Czech (česky)
@@ -3065,6 +3082,7 @@ En voir davantage:
 $3
 
 $4",
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 a été {{GENDER:$2|relu}} par $2',
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] a été {{GENDER:$1|relue}} et {{GENDER:$1|marquée}} par [[User:$1|$1]].  {{PLURAL:$4|Balise|Balises}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] a été {{GENDER:$1|relue}} et {{GENDER:$1|marquée}} par $1.  {{PLURAL:$4|Balise|Balises}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 a été {{GENDER:$1|marquée}} par $1',
@@ -3089,11 +3107,8 @@ En voir plus:
 $3
 
 $6",
-	'echo-pref-email-pagetriage-mark-as-reviewed' => "Relire une page que j'ai créée",
-	'echo-pref-email-pagetriage-add-maintenance-tag' => "Relire une page que j'ai créée et ajouter des balises de maintenance",
-	'echo-pref-email-pagetriage-add-deletion-tag' => "Relire une page que j'ai créée et la désigner pour être supprimée",
-	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 a été {{GENDER:$2|relu}} par $2',
-	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|page relue|pages relues}}',
+	'echo-pref-subscription-page-review' => "Relire une page que j'ai créée",
+	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|Page relue|Pages relues}}',
 );
 
 /** Franco-Provençal (arpetan)
