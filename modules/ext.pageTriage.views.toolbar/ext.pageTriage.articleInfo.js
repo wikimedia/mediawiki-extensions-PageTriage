@@ -70,6 +70,13 @@ $( function() {
 		},
 
 		formatProblem: function( problem ) {
+			// Give grep a chance to find the usages:
+			// pagetriage-info-problem-non-autoconfirmed, pagetriage-info-problem-blocked,
+			// pagetriage-info-problem-no-categories, pagetriage-info-problem-orphan,
+			// pagetriage-info-problem-no-references,
+			// pagetriage-info-problem-non-autoconfirmed-desc, pagetriage-info-problem-blocked-desc,
+			// pagetriage-info-problem-no-categories-desc, pagetriage-info-problem-orphan-desc,
+			// pagetriage-info-problem-no-references-desc
 			return '<li class="mwe-pt-info-problem"><span class="mwe-pt-info-problem-name">' +
 				mw.msg( 'pagetriage-info-problem-' + problem ) +
 				'</span> - <span class="mwe-pt-info-problem-desc">' +
@@ -81,6 +88,9 @@ $( function() {
 			this.problemCount = 0;
 			var problems = '';
 
+			// Give grep a chance to find the usages:
+			// pagetriage-info-problem-blocked, pagetriage-info-problem-no-categories,
+			// pagetriage-info-problem-orphan, pagetriage-info-problem-no-references
 			if ( this.model.get( 'user_block_status' ) == 1 ) {
 				this.problemCount++;
 				problems += this.formatProblem( 'blocked' );

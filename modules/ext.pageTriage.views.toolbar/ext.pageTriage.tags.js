@@ -310,6 +310,8 @@ $( function() {
 			}
 
 			// Construct the link that activates the params form
+			// Give grep a chance to find the usages:
+			// pagetriage-button-add-details, pagetriage-button-edit-details
 			var link = mw.html.element(
 						'a',
 						{ 'href': '#', 'id': 'mwe-pt-tag-params-' + key },

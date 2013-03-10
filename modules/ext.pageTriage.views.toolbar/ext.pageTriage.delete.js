@@ -396,6 +396,8 @@ $( function() {
 				return;
 			}
 
+			// Give grep a chance to find the usages:
+			// pagetriage-button-add-details, pagetriage-button-edit-details
 			var _this = this;
 			var link = mw.html.element(
 						'a',
