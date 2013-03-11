@@ -390,7 +390,7 @@ class PageTriageUtil {
 		$metadata->updateMetadataInCache( array( 'user_block_status' => $status ) );
 	}
 
-	private function getCacheVersion() {
+	private static function getCacheVersion() {
 		global $wgPageTriageCacheVersion;
 		return $wgPageTriageCacheVersion;
 	}
