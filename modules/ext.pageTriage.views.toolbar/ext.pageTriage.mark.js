@@ -159,6 +159,8 @@ $( function() {
 		 * @param {String} errorMsg The specific error that occurred
 		 */
 		showMarkError: function( action, errorMsg ) {
+			// Give grep a chance to find the usages:
+			// pagetriage-mark-as-reviewed-error, pagetriage-mark-as-unreviewed-error
 			alert( mw.msg( 'pagetriage-mark-as-' + action + '-error', errorMsg ) );
 			$.removeSpinner( 'mark-spinner' );
 			$( '#mwe-pt-mark-as-' + action + '-button' ).button( 'enable' );
@@ -197,6 +199,8 @@ $( function() {
 							) ) );
 
 			// override the flyout title based on the current reviewed state of the page
+			// Give grep a chance to find the usages:
+			// pagetriage-mark-as-reviewed-error, pagetriage-mark-as-unreviewed-error
 			$( '#mwe-pt-mark .mwe-pt-tool-title' ).text( mw.msg( 'pagetriage-mark-as-' + status ) );
 
 			// check if note is enabled for this namespace and if the note section should be shown
