@@ -445,7 +445,8 @@ A character that separates different statistics about the page, for example: 9 b
 	'pagetriage-markunpatrolled' => 'Text for mark as unreview tooltip',
 	'pagetriage-self-review-error' => 'An error message to display when someone tries to review a page they created themselves',
 	'pagetriage-api-error' => 'An error message to display when the interface fails to load',
-	'pagetriage-reviewed' => 'Text to indicate a page has been reviewed',
+	'pagetriage-reviewed' => 'Text to indicate a page has been reviewed.
+{{Identical|Reviewed}}',
 	'pagetriage-mark-as-reviewed-error' => 'Generic error message for marking page as reviewed. $1 is the error text returned by the API.',
 	'pagetriage-mark-as-unreviewed-error' => 'Generic error message for marking page as unreviewed. $1 is the error text returned by the API.',
 	'pagetriage-hist' => 'A link to the revision history of a page. Appears in parentheses after the page name.',
@@ -527,8 +528,10 @@ Format specifier for the author's account creation date. Month and weekday names
 {{Identical|More}}',
 	'pagetriage-filter-stat-all' => 'Status display component for all pages (no filter).
 {{Identical|All}}',
-	'pagetriage-filter-stat-reviewed' => 'Status display component for reviewed pages. This message is included as part of a sentence-style list.',
-	'pagetriage-filter-stat-unreviewed' => 'Status display component for unreviewed pages. This message is included as part of a sentence-style list.',
+	'pagetriage-filter-stat-reviewed' => 'Status display component for reviewed pages. This message is included as part of a sentence-style list.
+{{Identical|Reviewed}}',
+	'pagetriage-filter-stat-unreviewed' => 'Status display component for unreviewed pages. This message is included as part of a sentence-style list.
+{{Identical|Unreviewed}}',
 	'pagetriage-filter-stat-bots' => 'Status display component for bot-created pages. This message is included as part of a sentence-style list.',
 	'pagetriage-filter-stat-redirects' => 'Status display component for redirects. This message is included as part of a sentence-style list.',
 	'pagetriage-filter-stat-nominated-for-deletion' => 'Status dispay component for pages nominated for deletion. This message is included as part of a sentence-style list.',
