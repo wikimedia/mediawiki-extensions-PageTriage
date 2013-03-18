@@ -6616,6 +6616,7 @@ Meer bekijken:
 $3
 
 $4',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 is {{GENDER:$2|gecontroleerd}} door $2',
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en gelabeld door [[User:$1|$1]]. Label{{PLURAL:$4||s}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en gelabeld door $1. Label{{PLURAL:$4||s}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 is {{GENDER:$1|gelabeld}} door $1',
@@ -6640,10 +6641,7 @@ Meer bekijken:
 $3
 
 $6',
-	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Een pagina controleert die ik heb aangemaakt',
-	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Een pagina controleert die ik heb aangemaakt en beheerlabels toevoegt',
-	'echo-pref-email-pagetriage-add-deletion-tag' => 'Een pagina controleert die ik heb aangemaakt en die voor verwijdering nomineert',
-	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 is {{GENDER:$2|gecontroleerd}} door $2',
+	'echo-pref-subscription-page-review' => 'Een pagina controleert die u hebt aangemaakt',
 	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|paginacontrole|paginacontroles}}',
 );
 
