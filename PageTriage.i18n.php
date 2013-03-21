@@ -975,7 +975,6 @@ See also:
 	'echo-pref-subscription-page-review' => 'Option for getting notifications when someone reviews a page created by the user.
 
 This is the conclusion of the sentence begun by the header: {{msg-mw|Prefs-echosubscriptions}}.',
-
 	'echo-category-title-page-review' => 'This is a short title for notification category. Used as <code>$1</code> in {{msg-mw|Echo-dismiss-message}} and <code>$2</code> in {{msg-mw|Echo-email-batch-category-header}}.',
 );
 
@@ -6642,7 +6641,6 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => 'Een pagina controleert die u hebt aangemaakt',
-	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|paginacontrole|paginacontroles}}',
 );
 
 /** Pampanga (Kapampangan)
