@@ -946,10 +946,10 @@ See also:
 * {{msg-mw|Pagetriage-notification-add-deletion-tag-email-subject2}}
 * {{msg-mw|Pagetriage-notification-add-deletion-tag-email-body2}}",
 	'pagetriage-notification-add-deletion-tag-flyout' => "Flyout-specific title for 'add deletion tag' notification.  Parameters:
-* $1 is the username of the person who added deletion tag, plain text
-* $2 is the title of the page
-* $3 is the list of deletion tags
-* $4 is the number of deletion tags
+* $1 - the username of the person who added deletion tag, plain text
+* $2 - the title of the page
+* $3 - the list of deletion tags
+* $4 - the number of deletion tags
 See also:
 * {{msg-mw|Pagetriage-notification-add-deletion-tag2}}
 * {{msg-mw|Pagetriage-notification-add-deletion-tag-email-subject2}}
@@ -975,7 +975,9 @@ See also:
 	'echo-pref-subscription-page-review' => 'Option for getting notifications when someone reviews a page created by the user.
 
 This is the conclusion of the sentence begun by the header: {{msg-mw|Prefs-echosubscriptions}}.',
-	'echo-category-title-page-review' => 'This is a short title for notification category. Used as <code>$1</code> in {{msg-mw|Echo-dismiss-message}} and <code>$2</code> in {{msg-mw|Echo-email-batch-category-header}}.',
+	'echo-category-title-page-review' => 'This is a short title for notification category.
+
+Used as <code>$1</code> in {{msg-mw|Echo-dismiss-message}} and <code>$2</code> in {{msg-mw|Echo-email-batch-category-header}}.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -1760,6 +1762,7 @@ Mehr:
 $3
 
 $4',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 wurde {{GENDER:$2|überprüft}} von $2',
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] wurde {{GENDER:$1|vom Benutzer|von der Benutzerin}} [[User:$1|$1]] überprüft und markiert. {{PLURAL:$4|Markierung|Markierungen}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => 'Die Seite [[$2]] wurde von $1 {{GENDER:$1|überprüft}} und {{GENDER:$1|markiert}}. {{PLURAL:$4|Markierung|Markierungen}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 wurde von $1 {{GENDER:$1|markiert}}',
@@ -1784,11 +1787,8 @@ Mehr:
 $3
 
 $6',
-	'echo-pref-email-pagetriage-mark-as-reviewed' => 'eine Seite überprüft, die ich erstellt habe',
-	'echo-pref-email-pagetriage-add-maintenance-tag' => 'eine Seite überprüft, die ich erstellt habe und Wartungsmarkierungen hinzufügt',
-	'echo-pref-email-pagetriage-add-deletion-tag' => 'eine Seite überprüft, die ich erstellt habe und sie zur Löschung vorschlägt',
-	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 wurde {{GENDER:$2|überprüft}} von $2',
-	'echo-email-batch-category-header-page-review' => '{{PLURAL:$1|Eine Seitenüberprüfung|$1 Seitenüberprüfungen}}',
+	'echo-pref-subscription-page-review' => 'eine Seite überprüft, die ich erstellt habe',
+	'echo-category-title-page-review' => 'Seitenüberprüfung',
 );
 
 /** German (formal address) (Deutsch (Sie-Form)‎)
@@ -3114,7 +3114,7 @@ $3
 
 $6",
 	'echo-pref-subscription-page-review' => "Relire une page que j'ai créée",
-	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|Page relue|Pages relues}}',
+	'echo-category-title-page-review' => 'Relecture de la page',
 );
 
 /** Franco-Provençal (arpetan)
@@ -3590,6 +3590,7 @@ Ollar máis:
 $3
 
 $4',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$2 {{GENDER:$2|revisou}} "$1"',
 	'pagetriage-notification-add-maintenance-tag2' => '[[User:$1|$1]] {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => '$1 {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$1 {{GENDER:$1|etiquetou}} "$2"',
@@ -3614,11 +3615,8 @@ Ollar máis:
 $3
 
 $6',
-	'echo-pref-subscription-pagetriage-mark-as-reviewed' => 'Revise unha páxina que creei',
-	'echo-pref-subscription-pagetriage-add-maintenance-tag' => 'Revise unha páxina que creei e engada etiquetas de mantemento',
-	'echo-pref-subscription-pagetriage-add-deletion-tag' => 'Revise unha páxina que creei e propoña o seu borrado',
-	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$2 {{GENDER:$2|revisou}} "$1"',
-	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|revisión de páxina|revisións de páxina}}',
+	'echo-pref-subscription-page-review' => 'Revise unha páxina que creei',
+	'echo-category-title-page-review' => 'Revisión da páxina',
 );
 
 /** Hebrew (עברית)
@@ -5175,6 +5173,7 @@ $messages['ja'] = array(
 $3
 
 $4',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 が $2 によって{{GENDER:$2|査読されました}}',
 	'pagetriage-notification-add-maintenance-tag2' => '[[User:$1|$1]] が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。{{PLURAL:$4|タグ}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => '$1 が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。{{PLURAL:$4|タグ}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 が $1 によって{{GENDER:$2|タグ付けされました}}',
@@ -5199,11 +5198,8 @@ $6',
 $3
 
 $6',
-	'echo-pref-email-pagetriage-mark-as-reviewed' => '自分が作成したページを、誰かが査読したとき',
-	'echo-pref-email-pagetriage-add-maintenance-tag' => '自分が作成したページを、誰かが査読してメンテナンスタグを貼り付けたとき',
-	'echo-pref-email-pagetriage-add-deletion-tag' => '自分が作成したページを、誰かが査読してそのページの削除を提案したとき',
-	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 が $2 によって{{GENDER:$2|査読されました}}',
-	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|件のページ査読}}',
+	'echo-pref-subscription-page-review' => '自分が作成したページを、誰かが査読したとき',
+	'echo-category-title-page-review' => 'ページの査読',
 );
 
 /** Georgian (ქართული)
@@ -5637,6 +5633,7 @@ $messages['ko'] = array(
 $3
 
 $4',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 문서를 $2 사용자가 {{GENDER:$2|검토했습니다}}',
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] 문서를 [[User:$1|$1]] 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}.  {{PLURAL:$4|태그}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] 문서를 $1 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}.  {{PLURAL:$4|태그}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 문서를 $1 사용자가 {{GENDER:$1|태그했습니다}}',
@@ -5661,11 +5658,8 @@ $6',
 $3
 
 $6',
-	'echo-pref-subscription-pagetriage-mark-as-reviewed' => '내가 만든 문서를 검토하기',
-	'echo-pref-subscription-pagetriage-add-maintenance-tag' => '내가 만들었고 유지 관리 태그를 추가한 문서를 검토하기',
-	'echo-pref-subscription-pagetriage-add-deletion-tag' => '내가 만들었고 삭제로 표시한 문서 검토하기',
-	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 문서를 $2 사용자가 {{GENDER:$2|검토했습니다}}',
-	'echo-email-batch-category-header-page-review' => '{{PLURAL:$1|문서 검토}} $1회',
+	'echo-pref-subscription-page-review' => '내가 만든 문서를 검토하기',
+	'echo-category-title-page-review' => '문서 검토',
 );
 
 /** Colognian (Ripoarisch)
@@ -6254,7 +6248,7 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => 'Провери страница што сум ја создал',
-	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|Посета на страница|Посети на страници}}',
+	'echo-category-title-page-review' => 'Преглед на страници',
 );
 
 /** Maltese (Malti)
