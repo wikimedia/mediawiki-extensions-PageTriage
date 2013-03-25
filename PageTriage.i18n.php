@@ -492,8 +492,10 @@ Format specifier for the author's account creation date. Month and weekday names
 	'pagetriage-reviewed-article-count-past-week' => 'A description of the number of reviewed pages in past week, $1 is the count of pages reviewed in past week',
 	'pagetriage-sort-by' => 'Label for the sort-order buttons (oldest/newest).
 {{Identical|Sort by}}',
-	'pagetriage-newest' => 'Text for a sort-order button',
-	'pagetriage-oldest' => 'Text for a sort-order button',
+	'pagetriage-newest' => 'Text for a sort-order button.
+{{Identical|Newest}}',
+	'pagetriage-oldest' => 'Text for a sort-order button.
+{{Identical|Oldest}}',
 	'pagetriage-triage' => 'Button label.
 {{Identical|Review}}',
 	'pagetriage-filter-show-heading' => 'Prompt for the first set of checkboxes in the filter menu',
@@ -2681,6 +2683,7 @@ $messages['fa'] = array(
 /** Finnish (suomi)
  * @author Beluga
  * @author Nedergard
+ * @author Silvonen
  */
 $messages['fi'] = array(
 	'pagetriage-please-wait' => 'Odota...',
@@ -2724,6 +2727,8 @@ $messages['fi'] = array(
 	'pagetriage-filter-stat-blocked' => 'estetyt muokkaajat',
 	'pagetriage-filter-stat-username' => 'käyttäjätunnus: $1',
 	'pagetriage-no-pages' => 'Hakuehdoilla ei löytynyt sivuja.',
+	'pagetriage-button-mark-for-deletion' => 'Merkitse poistettavaksi',
+	'pagetriage-page-status-delete' => 'Merkitty poistettavaksi',
 	'pagetriage-tags-title' => 'Lisää tunnisteita',
 	'pagetriage-tags-cat-metadata-label' => 'Sisältökuvaukset',
 	'pagetriage-tags-cat-cleanup-label' => 'Siistiminen',
@@ -2735,6 +2740,7 @@ $messages['fi'] = array(
 	'pagetriage-tags-cat-writingstyle-label' => 'Kirjoitustyyli',
 	'pagetriage-tags-cat-moretags-label' => 'Lisää tunnisteita',
 	'pagetriage-tags-cat-all-label' => 'Kaikki tunnisteet',
+	'pagetriage-del-tags-dba3-label' => 'Ei sisältöä',
 	'pagetriage-tags-param-article-label' => 'Artikkeli:',
 	'pagetriage-tags-param-date-label' => 'Päiväys:',
 	'pagetriage-tags-param-free-yes-label' => 'Kyllä',
@@ -2750,6 +2756,7 @@ $messages['fi'] = array(
 	'pagetriage-info-problem-no-categories-desc' => 'Tätä sivua ei ole luokiteltu.',
 	'pagetriage-info-problem-orphan' => 'Orpo',
 	'pagetriage-toolbar-collapsed' => 'Kuratointi',
+	'pagetriage-del-title' => 'Merkitse poistettavaksi',
 	'pagetriage-toolbar-close' => 'Sulje',
 	'pagetriage-toolbar-minimize' => 'Pienennä',
 );
@@ -6278,6 +6285,7 @@ $messages['mt'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author Konovalov
  * @author McDutchie
  * @author Rcdeboer
  * @author SPQRobin
@@ -6635,6 +6643,7 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => 'Een pagina controleert die u hebt aangemaakt',
+	'echo-category-title-page-review' => 'Pagina herziening',
 );
 
 /** Pampanga (Kapampangan)
@@ -8516,6 +8525,7 @@ $messages['yi'] = array(
  * @author Liangent
  * @author Shirayuki
  * @author Shizhao
+ * @author Yfdyh000
  * @author 乌拉跨氪
  */
 $messages['zh-hans'] = array(
@@ -8728,6 +8738,7 @@ $6', # Fuzzy
 $3
 
 $6', # Fuzzy
+	'echo-category-title-page-review' => '页面评论',
 );
 
 /** Traditional Chinese (中文（繁體）‎)
