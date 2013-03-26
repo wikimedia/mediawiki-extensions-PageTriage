@@ -544,6 +544,9 @@ Format specifier for the author's account creation date. Month and weekday names
 	'pagetriage-filter-stat-blocked' => 'Status display component for pages by blocked users. This message is included as part of a sentence-style list.',
 	'pagetriage-filter-stat-username' => 'Status display component for filter by username. $1 is the username. This message is included as part of a sentence-style list.',
 	'pagetriage-no-pages' => 'Message to display when no pages were retrieved',
+	'pagetriage-warning-browser' => 'Used as warning for browsers older than IE8.
+
+The tool works correctly in IE8.',
 	'pagetriage-welcome' => 'A short introductory message that appears at the top of the PageTriage list view. Parameters:
 * $1 and $2 are URLs.',
 	'pagetriage-note-reviewed' => 'A note that appears when a user hovers over a status icon',
@@ -810,7 +813,11 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 * $2 - the list of deletion tags added to the article',
 	'pagetriage-del-tags-param-discussion-label' => 'Prompt for explaination about why the user wants to nominate a page for deletion',
 	'pagetriage-info-title' => 'The title for the page information flyout in the toolbar',
+	'pagetriage-info-problem-header' => 'Used as section header.',
 	'pagetriage-info-history-header' => '{{Identical|History}}',
+	'pagetriage-info-history-show-full' => 'Used as link text.
+
+The link points to History page (action=history).',
 	'pagetriage-info-help' => 'Link text for the info flyout help button.
 {{Identical|Help}}',
 	'pagetriage-info-no-problems' => 'Text to show when the page has no problems.',
@@ -837,6 +844,7 @@ d &#100;&#101; MMMM &#100;&#101; yyyy
 Label for the collapsed version of the curation bar. Written vertically. See screenshot.',
 	'pagetriage-toolbar-linktext' => 'This is a menu link in the sidebar that opens the curation toolbar. It should be short enough to fit in the sidebar without wrapping.',
 	'pagetriage-toolbar-learn-more' => 'Text that links to a page with more information about the curation toolbar',
+	'pagetriage-mark-title' => 'The title for the flyout in the toolbar',
 	'pagetriage-mark-as-reviewed' => "Label for a button that sets a page's status as reviewed",
 	'pagetriage-mark-as-unreviewed' => "Label for a button that sets a page's status as unreviewed",
 	'pagetriage-mark-as-reviewed-helptext' => 'Descriptive text explaining the "Mark as reviewed" button',
