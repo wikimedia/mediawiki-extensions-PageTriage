@@ -435,7 +435,7 @@ $messages['qqq'] = array(
 	'pagetriage' => 'The name of this application (Page Triage)',
 	'pagetriage-dot-separator' => '{{Optional}}
 A character that separates different statistics about the page, for example: 9 bytes · 1 edit · 0 categories',
-	'newpagesfeed' => 'Title of a special page',
+	'newpagesfeed' => '{{doc-special|NewPagesFeed}}',
 	'pagetriage-desc' => '{{desc|name=Page Triage|url=http://www.mediawiki.org/wiki/Extension:PageTriage}}',
 	'pagetriage-pagecuration' => 'Alternative title of the extension/project. Should use title case.',
 	'pagetriage-please-wait' => 'Temporary message displayed while list interface is loading.
@@ -1833,6 +1833,7 @@ $messages['diq'] = array(
 	'pagetriage-oldest' => 'Tewr kehan',
 	'pagetriage-filter-article' => 'Wesiqe
 <div style="margin:0; border:0px solid #aaa; background-color:pink;">',
+	'pagetriage-filter-username' => 'Nameyê karberi',
 	'pagetriage-filter-ns-all' => 'Pêro',
 	'pagetriage-more' => 'Zewbi',
 	'pagetriage-filter-stat-all' => 'Pêro',
@@ -6651,7 +6652,7 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => 'Een pagina controleert die u hebt aangemaakt',
-	'echo-category-title-page-review' => 'Pagina herziening',
+	'echo-category-title-page-review' => 'Paginacontrole',
 );
 
 /** Pampanga (Kapampangan)
