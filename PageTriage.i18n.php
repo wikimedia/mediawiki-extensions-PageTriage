@@ -1336,6 +1336,13 @@ $messages['br'] = array(
 	'pagetriage-toolbar-close' => 'Serriñ',
 );
 
+/** буряад (буряад)
+ * @author Amire80
+ */
+$messages['bxr'] = array(
+	'pagetriage-filter-article' => 'Үгүүлэл',
+);
+
 /** Czech (česky)
  * @author Jkjk
  * @author Mormegil
