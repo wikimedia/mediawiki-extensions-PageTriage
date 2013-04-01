@@ -5770,6 +5770,7 @@ $messages['lb'] = array(
 	'pagetriage-filter-set-button' => 'Filtere setzen',
 	'pagetriage-stats-less-than-a-day' => 'manner wéi een Dag',
 	'pagetriage-stats-reviewed-page-count' => '{{PLURAL:$1|Eng Säit|$1 Säiten}} dës Woch nogekuckt',
+	'pagetriage-stats-filter-page-count' => '{{PLURAL:$1|Eng Säit|$1 Säiten}} an Ärer gefilterter Lëscht',
 	'pagetriage-filter-ns-all' => 'All',
 	'pagetriage-more' => 'Méi',
 	'pagetriage-filter-stat-all' => 'All',
@@ -5798,6 +5799,7 @@ $messages['lb'] = array(
 	'pagetriage-page-status-unreviewed' => 'Dëse Säit ass nach net nogekuckt.',
 	'pagetriage-page-status-delete' => 'Fir ze läsche markéiert',
 	'pagetriage-articleinfo-stat' => 'Statistiken: $1',
+	'pagetriage-tags-cat-cleanup-label' => 'Botz',
 	'pagetriage-tags-cat-neutrality-label' => 'Neutralitéit',
 	'pagetriage-tags-cat-sources-label' => 'Quellen',
 	'pagetriage-tags-cat-structure-label' => 'Struktur',
@@ -5877,12 +5879,18 @@ $messages['lb'] = array(
 	'pagetriage-mark-title' => 'Als nogekuckt markéieren',
 	'pagetriage-mark-as-reviewed' => 'Als nogekuckt markéieren',
 	'pagetriage-mark-as-unreviewed' => 'Als net nogekuckt markéieren',
+	'pagetriage-mark-as-reviewed-helptext' => 'Dës Säit als nogekuckt markéieren wann Dir fäerdeg sidd mat kontrolléieren.',
+	'pagetriage-wikilove-helptext' => "Sicht d'Nimm vun den Editeuren eraus deenen Dir merci soe wëllt.",
 	'pagetriage-wikilove-page-creator' => '1. Auteur vun der Säit',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|Ännerung|Ännerungen}}',
 	'pagetriage-wikilove-tooltip' => "Luef un d'Auteure schécken",
+	'pagetriage-del-title' => 'Markéiere fir ze läschen',
 	'pagetriage-del-tooltip' => 'Dës Säit nominéiere fir ze läschen',
 	'pagetriage-toolbar-close' => 'Zoumaachen',
 	'pagetriage-toolbar-minimize' => 'Minimiséieren',
+	'pagetriage-notification-mark-as-reviewed2' => '[[$2}} gouf vum [[User:$1|$1]] {{GENDER:$1|nogekuckt}}', # Fuzzy
+	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 gouf vum $1 {{GENDER:$1|nogekuckt}}',
+	'echo-category-title-page-review' => 'Iwwerliese vun der Säit',
 );
 
 /** Macedonian (македонски)
