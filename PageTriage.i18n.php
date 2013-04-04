@@ -4626,7 +4626,7 @@ $messages['it'] = array(
 	'pagetriage-no-patrol-right' => 'Non si dispone dei permessi necessari per contrassegnare questa pagina come revisionata',
 	'pagetriage-author-blocked' => 'Bloccato',
 	'pagetriage-author-bot' => 'Bot',
-	'pagetriage-user-creation-dateformat' => 'yyyy-MM-dd',
+	'pagetriage-user-creation-dateformat' => 'dd/MM/yyyy',
 	'pagetriage-showing' => 'Sto mostrando:',
 	'pagetriage-filter-list-prompt' => 'Imposta filtri',
 	'pagetriage-unreviewed-article-count' => '$1 {{PLURAL:$1|pagina non revisionata|pagine non revisionate}} in totale (più vecchia: $2)',
@@ -4903,11 +4903,8 @@ $messages['it'] = array(
 	'pagetriage-toolbar-close' => 'Chiudi',
 	'pagetriage-toolbar-minimize' => 'Minimizza',
 	'pagetriage-tag-warning-notice' => "Nota: questa pagina è solo di $1 {{PLURAL:$1|minuto|minuti}} fa. Aspetta un po' prima di contrassegnarla a meno che il problema non sia serio.",
-	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Revisiona una pagina che ho creato',
-	'echo-pref-email-pagetriage-add-maintenance-tag' => "Revisiona una pagina che ho creato e aggiunge un'etichetta di manutenzione",
-	'echo-pref-email-pagetriage-add-deletion-tag' => 'Revisiona una pagina che ho creato e la propone per la cancellazione',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 è stato {{GENDER:$2|revisionato}} da $2',
-	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|revisione della pagina|revisioni della pagina}}',
+	'echo-pref-subscription-page-review' => 'Revisiona una pagina che ho creato',
 );
 
 /** Japanese (日本語)
