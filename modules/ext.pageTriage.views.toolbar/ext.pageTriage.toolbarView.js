@@ -29,6 +29,8 @@ $( function() {
 						// An array of tool instances to put on the bar, ordered top-to-bottom
 						tools = new Array;
 
+						tools.push( new mw.pageTriage.MinimizeView( { eventBus: eventBus, model: article, toolbar: this } ) );
+
 						// article information
 						if ( this.isFlyoutEnabled( 'articleInfo' ) ) {
 							tools.push( new mw.pageTriage.ArticleInfoView( { eventBus: eventBus, model: article } ) );
@@ -101,11 +103,6 @@ $( function() {
 							delay: 200,  // these options prevent unwanted drags when attempting to click buttons
 							distance: 10,
 							cancel: '.mwe-pt-tool-content'
-						} );
-
-						// make the minimize button do something
-						$( '.mwe-pt-toolbar-minimize-button').click( function() {
-							_this.minimize( true );
 						} );
 
 						// make clicking on the minimized toolbar expand to normal size

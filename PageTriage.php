@@ -622,6 +622,7 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 	'scripts' => array(
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.js', // abstract class first
 		'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfo.js', // article metadata
+		'ext.pageTriage.views.toolbar/ext.pageTriage.minimize.js', // minimize
 		'ext.pageTriage.views.toolbar/ext.pageTriage.tags.js', // tagging
 		'ext.pageTriage.views.toolbar/ext.pageTriage.mark.js', // mark as reviewed
 		'ext.pageTriage.views.toolbar/ext.pageTriage.next.js', // next article
