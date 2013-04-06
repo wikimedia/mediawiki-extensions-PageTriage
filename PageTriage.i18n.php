@@ -416,7 +416,10 @@ $6',
 	'echo-category-title-page-review' => 'Page review',
 );
 
-/** Message documentation (Message documentation)
+/** Message documentation (This is the name of the message documentation language code (qqq). Follow the rules of your languages and use small first letter if it doesn't capitalize language names always.
+
+It might be easier to translate it as "translation guidelines" or "translation help".
+{{Identical|Message documentation}})
  * @author Amire80
  * @author Benny Situ
  * @author Ian Baker
@@ -578,7 +581,8 @@ The tool works correctly in IE8.',
 {{Identical|Metadata}}',
 	'pagetriage-tags-cat-cleanup-label' => 'Label for cleanup category
 {{Identical|Cleanup}}',
-	'pagetriage-tags-cat-neutrality-label' => 'Label for neutrality category',
+	'pagetriage-tags-cat-neutrality-label' => 'Label for neutrality category.
+{{Identical|Neutrality}}',
 	'pagetriage-tags-cat-sources-label' => 'Label for sources category.
 {{Identical|Source}}',
 	'pagetriage-tags-cat-structure-label' => 'Label for structure category',
