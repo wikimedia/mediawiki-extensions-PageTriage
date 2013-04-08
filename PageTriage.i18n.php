@@ -5724,6 +5724,7 @@ $messages['ku-latn'] = array(
 $messages['lb'] = array(
 	'pagetriage' => 'Säiten nokucken',
 	'pagetriage-please-wait' => 'W.e.g. waarden ...',
+	'pagetriage-api-invalidid' => "D'ID déi Dir uginn hutt ($1) ass net valabel.",
 	'pagetriage-markpatrolled' => 'Des Säit als nogekuckt markéieren',
 	'pagetriage-markunpatrolled' => 'Des Säit als net nogekuckt markéieren',
 	'pagetriage-self-review-error' => 'Säiten déi Dir ugeluecht hutt kënnt Dir net nokucken.',
@@ -5802,6 +5803,7 @@ $messages['lb'] = array(
 	'pagetriage-tags-cat-sources-label' => 'Quellen',
 	'pagetriage-tags-cat-structure-label' => 'Struktur',
 	'pagetriage-tags-cat-unwantedcontent-label' => 'Net gewënschten Inhalt',
+	'pagetriage-tags-cat-writingstyle-label' => 'Schreifstil',
 	'pagetriage-tags-refimprove-label' => 'Referenzen', # Fuzzy
 	'pagetriage-tags-uncategorised-label' => 'Net kategoriséiert',
 	'pagetriage-tags-uncategorised-desc' => 'Dës Säit gehéiert zu kenger Kategorie.',
@@ -5882,12 +5884,15 @@ $messages['lb'] = array(
 	'pagetriage-wikilove-page-creator' => '1. Auteur vun der Säit',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|Ännerung|Ännerungen}}',
 	'pagetriage-wikilove-tooltip' => "Luef un d'Auteure schécken",
+	'pagetriage-next-tooltip' => 'Op déi nächst Säit an der Queue goen',
 	'pagetriage-del-title' => 'Markéiere fir ze läschen',
 	'pagetriage-del-tooltip' => 'Dës Säit nominéiere fir ze läschen',
 	'pagetriage-toolbar-close' => 'Zoumaachen',
 	'pagetriage-toolbar-minimize' => 'Minimiséieren',
-	'pagetriage-notification-mark-as-reviewed2' => '[[$2}} gouf vum [[User:$1|$1]] {{GENDER:$1|nogekuckt}}', # Fuzzy
+	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] gouf vum [[User:$1|$1]] {{GENDER:$1|nogekuckt}}',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] gouf vum $1 {{GENDER:$1|nogekuckt}}',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 gouf vum $1 {{GENDER:$1|nogekuckt}}',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 gouf vum $2 {{GENDER:$2|nogekuckt}}',
 	'echo-category-title-page-review' => 'Iwwerliese vun der Säit',
 );
 
@@ -6340,7 +6345,7 @@ $messages['nl'] = array(
 	'newpagesfeed' => "Feed met nieuwe pagina's",
 	'pagetriage-desc' => "Vergemakkelijkt het controleren en goedkeuren van nieuwe pagina's",
 	'pagetriage-pagecuration' => 'Paginaconservatie',
-	'pagetriage-please-wait' => 'Even geduld alstublieft...',
+	'pagetriage-please-wait' => 'Een ogenblik geduld...',
 	'pagetriage-api-invalidid' => 'Het ID ($1) dat u hebt opgegeven is onjuist.',
 	'pagetriage-markpatrolled' => 'Pagina als gecontroleerd markeren',
 	'pagetriage-markunpatrolled' => 'Pagina als ongecontroleerd markeren',
@@ -6609,7 +6614,7 @@ $messages['nl'] = array(
 	'pagetriage-info-history-header' => 'Geschiedenis',
 	'pagetriage-info-history-show-full' => 'volledige geschiedenis weergeven',
 	'pagetriage-info-help' => 'hulp',
-	'pagetriage-info-no-problems' => 'Er zijn geen verbeterpunten aangegeven voor deze pagina.',
+	'pagetriage-info-no-problems' => 'Er zijn geen verbeterpunten opgegeven voor deze pagina.',
 	'pagetriage-info-problem-non-autoconfirmed' => 'Nieuwe gebruiker',
 	'pagetriage-info-problem-non-autoconfirmed-desc' => 'Deze pagina is aangemaakt door een nieuwe gebruiker.',
 	'pagetriage-info-problem-blocked' => 'Geblokkeerde gebruiker',
@@ -8564,6 +8569,7 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (中文（简体）‎)
+ * @author Kuailong
  * @author Liangent
  * @author Shirayuki
  * @author Shizhao
@@ -8750,6 +8756,8 @@ $messages['zh-hans'] = array(
 	'pagetriage-del-tooltip' => '将此页面提交删除',
 	'pagetriage-tagging-error' => '将标签添加到页面时失败',
 	'pagetriage-add-tag-confirmation' => '您真的要添加$1个标签到小作品中吗？',
+	'pagetriage-toolbar-close' => '关闭',
+	'pagetriage-toolbar-minimize' => '最小化',
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]]已由[[User:$1|$1]]回退',
 	'pagetriage-notification-mark-as-reviewed-flyout' => '$2已由$1回退', # Fuzzy
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2已由$1巡查',
