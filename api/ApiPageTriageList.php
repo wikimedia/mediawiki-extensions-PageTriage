@@ -34,6 +34,7 @@ class ApiPageTriageList extends ApiBase {
 			// slightly different format that's more Backbone-friendly.
 			foreach ( $pages as $page ) {
 				if ( isset( $metaData[$page] ) ) {
+					$metaData[$page]['creation_date'] = $this->getContext()->getLanguage()->userAdjust( $metaData[$page]['creation_date'] );
 					$sortedMetaData[] = array( 'pageid' => $page ) + $metaData[$page];
 				}
 			}
