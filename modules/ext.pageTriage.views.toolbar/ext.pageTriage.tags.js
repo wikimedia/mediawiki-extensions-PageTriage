@@ -601,7 +601,8 @@ $( function() {
 			note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' )['Tags']
 				+ '|' + pageName
 				+ '|' + mw.config.get( 'wgUserName' )
-				+ '|' + note + '}}';
+				+ '|' + note + '}}'
+				+ ' ~~~~'; // Appending signature
 
 			$.ajax( {
 				type: 'post',
