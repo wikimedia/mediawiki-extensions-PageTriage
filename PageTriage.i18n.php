@@ -413,7 +413,7 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => 'Reviews a page I created',
-	'echo-category-title-page-review' => 'Page review',
+	'echo-category-title-page-review' => 'Page {{PLURAL:$1|review|reviews}}',
 );
 
 /** Message documentation (Message documentation)
@@ -988,7 +988,8 @@ See also:
 This is the conclusion of the sentence begun by the header: {{msg-mw|Prefs-echosubscriptions}}.',
 	'echo-category-title-page-review' => 'This is a short title for notification category.
 
-Used as <code>$1</code> in {{msg-mw|Echo-dismiss-message}} and <code>$2</code> in {{msg-mw|Echo-email-batch-category-header}}.',
+Used as <code>$1</code> in {{msg-mw|Echo-dismiss-message}} and <code>$2</code> in {{msg-mw|Echo-email-batch-category-header}}. Parameters:
+* $1 is the number used for plural support',
 );
 
 /** Afrikaans (Afrikaans)
