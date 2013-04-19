@@ -1807,7 +1807,7 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => 'eine Seite überprüft, die ich erstellt habe',
-	'echo-category-title-page-review' => 'Seitenüberprüfung',
+	'echo-category-title-page-review' => '{{PLURAL:$1|Seitenüberprüfung|Seitenüberprüfungen}}',
 );
 
 /** German (formal address) (Deutsch (Sie-Form)‎)
@@ -3644,7 +3644,7 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => 'Revise unha páxina que creei',
-	'echo-category-title-page-review' => 'Revisión da páxina',
+	'echo-category-title-page-review' => '{{PLURAL:$1|Revisión|Revisións}} de páxina',
 );
 
 /** Hebrew (עברית)
@@ -5224,7 +5224,7 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => '自分が作成したページを、誰かが査読したとき',
-	'echo-category-title-page-review' => 'ページの査読',
+	'echo-category-title-page-review' => 'ページの{{PLURAL:$1|査読}}',
 );
 
 /** Georgian (ქართული)
@@ -6286,7 +6286,7 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => 'Провери страница што сум ја создал',
-	'echo-category-title-page-review' => 'Преглед на страници',
+	'echo-category-title-page-review' => '{{PLURAL:$1|Преглед|Прегледи}}',
 );
 
 /** Maltese (Malti)
