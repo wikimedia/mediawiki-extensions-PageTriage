@@ -3858,6 +3858,7 @@ $messages['he'] = array(
 	'pagetriage-tag-deletion-error' => 'בדף הזה כבר יש תבנית מחיקה, הפעולה מתבטלת.',
 	'pagetriage-toolbar-close' => 'סגירה',
 	'pagetriage-toolbar-minimize' => 'מזעור',
+	'echo-category-title-page-review' => '{{PLURAL:$1|סקירת|סקירות}} דף',
 );
 
 /** Hindi (हिन्दी)
