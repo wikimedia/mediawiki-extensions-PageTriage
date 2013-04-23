@@ -453,7 +453,8 @@ A character that separates different statistics about the page, for example: 9 b
 	'pagetriage-bytes' => 'The number of bytes in the page.',
 	'pagetriage-edits' => 'The number of times the page has been edited.',
 	'pagetriage-categories' => 'The number of categories in the page.',
-	'pagetriage-no-categories' => 'Label indicating a page with no categories',
+	'pagetriage-no-categories' => 'Label indicating a page with no categories.
+{{Identical|No category}}',
 	'pagetriage-no-reference' => 'Label indicating a page with no reference citations',
 	'pagetriage-orphan' => 'Label indicating a page has no external links (orphan).
 {{Identical|Orphan}}',
@@ -537,7 +538,8 @@ Format specifier for the author's account creation date. Month and weekday names
 	'pagetriage-filter-stat-bots' => 'Status display component for bot-created pages. This message is included as part of a sentence-style list.',
 	'pagetriage-filter-stat-redirects' => 'Status display component for redirects. This message is included as part of a sentence-style list.',
 	'pagetriage-filter-stat-nominated-for-deletion' => 'Status dispay component for pages nominated for deletion. This message is included as part of a sentence-style list.',
-	'pagetriage-filter-stat-no-categories' => 'Status display component for pages with no categories. This message is included as part of a sentence-style list.',
+	'pagetriage-filter-stat-no-categories' => 'Status display component for pages with no categories. This message is included as part of a sentence-style list.
+{{Identical|No category}}',
 	'pagetriage-filter-stat-orphan' => 'Status display component for orphan pages. This message is included as part of a sentence-style list.
 {{Identical|Orphan}}',
 	'pagetriage-filter-stat-non-autoconfirmed' => 'Status display component for pages by non-autoconfirmed editors. This message is included as part of a sentence-style list.',
@@ -826,7 +828,8 @@ The link points to History page (action=history).',
 	'pagetriage-info-problem-non-autoconfirmed-desc' => "Desription for the error displayed when the page author isn't autoconfirmed.",
 	'pagetriage-info-problem-blocked' => 'Title for the error displayed when the page author is blocked.',
 	'pagetriage-info-problem-blocked-desc' => 'Description for the error displayed when the page author is blocked.',
-	'pagetriage-info-problem-no-categories' => 'Title for the error displayed when the page belongs to no categories.',
+	'pagetriage-info-problem-no-categories' => 'Title for the error displayed when the page belongs to no categories.
+{{Identical|No category}}',
 	'pagetriage-info-problem-no-categories-desc' => 'Description for the error displayed when the page belongs to no categories.',
 	'pagetriage-info-problem-orphan' => 'Title for the error displayed when the page has no inbound links.
 {{Identical|Orphan}}',
@@ -3142,7 +3145,7 @@ $3
 
 $6",
 	'echo-pref-subscription-page-review' => "Relire une page que j'ai créée",
-	'echo-category-title-page-review' => 'Relecture de la page',
+	'echo-category-title-page-review' => '{{PLURAL:$1|Relecture|Relectures}} de page',
 );
 
 /** Franco-Provençal (arpetan)
@@ -6695,7 +6698,7 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => 'Een pagina controleert die u hebt aangemaakt',
-	'echo-category-title-page-review' => 'Paginacontrole',
+	'echo-category-title-page-review' => 'Paginacontrole{{PLURAL:$1||s}}',
 );
 
 /** Pampanga (Kapampangan)
