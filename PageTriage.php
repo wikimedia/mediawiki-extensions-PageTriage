@@ -97,7 +97,7 @@ $wgPageTriageEnabledEchoEvents = array(
 	'pagetriage-add-deletion-tag'
 );
 $wgDefaultUserOptions['echo-subscriptions-web-page-review'] = true;
-$wgDefaultUserOptions['echo-subscriptions-email-page-review'] = true;
+$wgDefaultUserOptions['echo-subscriptions-email-page-review'] = false;
 // End configuration variables
 
 
