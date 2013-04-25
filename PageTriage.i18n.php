@@ -376,7 +376,7 @@ $messages['en'] = array(
 
 	// notification - mark as reviewed
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] was {{GENDER:$1|reviewed}} by [[User:$1|$1]]',
-	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] was {{GENDER:$1|reviewed}} by $1',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] was {{GENDER:$1|reviewed}} by <b>$1</b>',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 was {{GENDER:$1|reviewed}} by $1',
 	'pagetriage-notification-mark-as-reviewed-email-body2' => '$2 was {{GENDER:$1|reviewed}} by {{SITENAME}} user $1:
 
@@ -388,7 +388,7 @@ $4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 was {{GENDER:$2|reviewed}} by $2',
 	// notification - add maintenance tag
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|tagged}} by [[User:$1|$1]]. {{PLURAL:$4|Tag|Tags}}: $3',
-	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|tagged}} by $1. {{PLURAL:$4|Tag|Tags}}: $3',
+	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|tagged}} by <b>$1</b>. {{PLURAL:$4|Tag|Tags}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 was {{GENDER:$1|tagged}} by $1',
 	'pagetriage-notification-add-maintenance-tag-email-body2' => '$2 was {{GENDER:$1|reviewed}} and {{GENDER:$1|tagged}} by {{SITENAME}} user $1.
 
@@ -401,7 +401,7 @@ $3
 $6',
 	// notification - add deletion tag
 	'pagetriage-notification-add-deletion-tag2' => '[[$2]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|marked for deletion}} by [[User:$1|$1]]. {{PLURAL:$4|Tag|Tags}}: $3',
-	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|marked for deletion}} by $1. {{PLURAL:$4|Tag|Tags}}: $3',
+	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|marked for deletion}} by <b>$1</b>. {{PLURAL:$4|Tag|Tags}}: $3',
 	'pagetriage-notification-add-deletion-tag-email-subject2' => '$2 was {{GENDER:$1|marked for deletion}} by $1',
 	'pagetriage-notification-add-deletion-tag-email-body2' => '$2 was {{GENDER:$1|marked for deletion}} by {{SITENAME}} user $1.
 
