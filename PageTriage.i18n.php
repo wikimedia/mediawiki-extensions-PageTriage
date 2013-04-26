@@ -1775,7 +1775,7 @@ $messages['de'] = array(
 	'pagetriage-toolbar-minimize' => 'Minimieren',
 	'pagetriage-tag-warning-notice' => 'Hinweis: Diese Seite ist nur {{PLURAL:$1|eine Minute|$1 Minuten}} alt. Ziehe in Erwägung mit der Markierung zu warten, außer das Problem ist ernst.',
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] wurde von [[User:$1|$1]] {{GENDER:$1|überprüft}}',
-	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] wurde von $1 {{GENDER:$1|überprüft}}',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] wurde von <b>$1</b> {{GENDER:$1|überprüft}}',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 wurde von $1 {{GENDER:$1|überprüft}}',
 	'pagetriage-notification-mark-as-reviewed-email-body2' => 'Die Seite $2 wurde {{GENDER:$1|vom {{SITENAME}}-Benutzer|von der {{SITENAME}}-Benutzerin}} $1 überprüft.
 
@@ -1786,7 +1786,7 @@ $3
 $4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 wurde {{GENDER:$2|überprüft}} von $2',
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] wurde {{GENDER:$1|vom Benutzer|von der Benutzerin}} [[User:$1|$1]] überprüft und markiert. {{PLURAL:$4|Markierung|Markierungen}}: $3',
-	'pagetriage-notification-add-maintenance-tag-flyout' => 'Die Seite [[$2]] wurde von $1 {{GENDER:$1|überprüft}} und {{GENDER:$1|markiert}}. {{PLURAL:$4|Markierung|Markierungen}}: $3',
+	'pagetriage-notification-add-maintenance-tag-flyout' => 'Die Seite [[$2]] wurde von <b>$1</b> {{GENDER:$1|überprüft}} und {{GENDER:$1|markiert}}. {{PLURAL:$4|Markierung|Markierungen}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 wurde von $1 {{GENDER:$1|markiert}}',
 	'pagetriage-notification-add-maintenance-tag-email-body2' => 'Die Seite $2 wurde {{GENDER:$1|vom {{SITENAME}}-Benutzer|von der {{SITENAME}}-Benutzerin}} $1 überprüft und markiert.
 
@@ -1798,7 +1798,7 @@ $3
 
 $6',
 	'pagetriage-notification-add-deletion-tag2' => '[[$2]] wurde von [[User:$1|$1]] {{GENDER:$1|überprüft}} und {{GENDER:$1|zur Löschung vorgeschlagen}}. {{PLURAL:$4|Markierung|Markierungen}}: $3',
-	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] wurde von $1 {{GENDER:$1|überprüft}} und {{GENDER:$1|zur Löschung vorgeschlagen}}. {{PLURAL:$4|Markierung|Markierungen}}: $3',
+	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] wurde von <b>$1</b> {{GENDER:$1|überprüft}} und {{GENDER:$1|zur Löschung vorgeschlagen}}. {{PLURAL:$4|Markierung|Markierungen}}: $3',
 	'pagetriage-notification-add-deletion-tag-email-subject2' => '$2 wurde von $1 {{GENDER:$1|zur Löschung vorgeschlagen}}',
 	'pagetriage-notification-add-deletion-tag-email-body2' => 'Die Seite $2 wurde {{GENDER:$1|vom {{SITENAME}}-Benutzer|von der {{SITENAME}}-Benutzerin}} $1 zur Löschung vorgeschlagen.
 
@@ -3110,7 +3110,7 @@ $messages['fr'] = array(
 	'pagetriage-toolbar-minimize' => 'Réduire',
 	'pagetriage-tag-warning-notice' => 'Remarque: Cette page ne date que de $1 {{PLURAL:$1|minute|minutes}}. Veuillez attendre pour la marquer, sauf si le problème est important.',
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] a été {{GENDER:$1|relue}} par [[User:$1|$1]]',
-	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] a été {{GENDER:$1|relue}} par $1',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] a été {{GENDER:$1|relue}} par <b>$1</b>',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 a été {{GENDER:$1|relue}} par $1',
 	'pagetriage-notification-mark-as-reviewed-email-body2' => "$2 a été {{GENDER:$1|relue}} par l'utilisateur $1 de {{SITENAME}}:
 
@@ -3121,7 +3121,7 @@ $3
 $4",
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 a été {{GENDER:$2|relu}} par $2',
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] a été {{GENDER:$1|relue}} et {{GENDER:$1|marquée}} par [[User:$1|$1]].  {{PLURAL:$4|Balise|Balises}}: $3',
-	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] a été {{GENDER:$1|relue}} et {{GENDER:$1|marquée}} par $1.  {{PLURAL:$4|Balise|Balises}}: $3',
+	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] a été {{GENDER:$1|relue}} et {{GENDER:$1|marquée}} par <b>$1</b>.  {{PLURAL:$4|Balise|Balises}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 a été {{GENDER:$1|marquée}} par $1',
 	'pagetriage-notification-add-maintenance-tag-email-body2' => "$2 a été {{GENDER:$1|relue}} et {{GENDER:$1|marquée}} par l'utilisateur $1 de {{SITENAME}}.
 
@@ -3133,7 +3133,7 @@ $3
 
 $6",
 	'pagetriage-notification-add-deletion-tag2' => '[[$2]] a été {{GENDER:$1|relu}} et {{GENDER:$1|marquée pour suppression}} par [[User:$1|$1]].  {{PLURAL:$4|Balise|Balises}}: $3',
-	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] a été {{GENDER:$1|relue}} et {{GENDER:$1|marquée pour suppression}} par $1.  {{PLURAL:$4|Balise|Balises}}: $3',
+	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] a été {{GENDER:$1|relue}} et {{GENDER:$1|marquée pour suppression}} par <b>$1</b>. {{PLURAL:$4|Balise|Balises}}: $3',
 	'pagetriage-notification-add-deletion-tag-email-subject2' => '$2 a été {{GENDER:$1|marquée pour suppression}} par $1',
 	'pagetriage-notification-add-deletion-tag-email-body2' => "$2 a été {{GENDER:$1|marquée pour suppression}} par l'utilisateur $1 de {{SITENAME}}.
 
@@ -3612,7 +3612,7 @@ $messages['gl'] = array(
 	'pagetriage-toolbar-minimize' => 'Minimizar',
 	'pagetriage-tag-warning-notice' => 'Nota: Esta páxina existe desde hai $1 {{PLURAL:$1|minuto|minutos}}. Considere agardar un anaco para etiquetala, a menos que o problema sexa serio.',
 	'pagetriage-notification-mark-as-reviewed2' => '[[User:$1|$1]] {{GENDER:$1|revisou}} "[[$2]]"',
-	'pagetriage-notification-mark-as-reviewed-flyout' => '$1 {{GENDER:$1|revisou}} "[[$2]]"',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '$1 {{GENDER:$1|revisou}} "[[$2]]"', # Fuzzy
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$1 {{GENDER:$1|revisou}} "$2"',
 	'pagetriage-notification-mark-as-reviewed-email-body2' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} revisou "$2":
 
@@ -3623,7 +3623,7 @@ $3
 $4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$2 {{GENDER:$2|revisou}} "$1"',
 	'pagetriage-notification-add-maintenance-tag2' => '[[User:$1|$1]] {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
-	'pagetriage-notification-add-maintenance-tag-flyout' => '$1 {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
+	'pagetriage-notification-add-maintenance-tag-flyout' => '$1 {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3', # Fuzzy
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$1 {{GENDER:$1|etiquetou}} "$2"',
 	'pagetriage-notification-add-maintenance-tag-email-body2' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "$2".
 
@@ -3635,7 +3635,7 @@ $3
 
 $6',
 	'pagetriage-notification-add-deletion-tag2' => '[[User:$1|$1]] {{GENDER:$1|revisou}} e {{GENDER:$1|marcou para borrar}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
-	'pagetriage-notification-add-deletion-tag-flyout' => '$1 {{GENDER:$1|revisou}} e {{GENDER:$1|marcou para borrar}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
+	'pagetriage-notification-add-deletion-tag-flyout' => '$1 {{GENDER:$1|revisou}} e {{GENDER:$1|marcou para borrar}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3', # Fuzzy
 	'pagetriage-notification-add-deletion-tag-email-subject2' => '$1 {{GENDER:$1|marcou para borrar}} "$2"',
 	'pagetriage-notification-add-deletion-tag-email-body2' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} {{GENDER:$1|marcou para borrar}} "$2".
 
@@ -5193,7 +5193,7 @@ $messages['ja'] = array(
 	'pagetriage-toolbar-minimize' => '最小化',
 	'pagetriage-tag-warning-notice' => '注: このページはわずか $1 {{PLURAL:$1|分}}前のものです。問題点が深刻な場合以外は、タグ付けまで時間を置くことを検討してください。',
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] が [[User:$1|$1]] によって{{GENDER:$1|査読されました}}',
-	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] が $1 によって{{GENDER:$1|査読されました}}',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] が <b>$1</b> によって{{GENDER:$1|査読されました}}',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 が $1 によって{{GENDER:$2|査読されました}}',
 	'pagetriage-notification-mark-as-reviewed-email-body2' => '$2 が{{SITENAME}}の利用者 $1 によって{{GENDER:$1|査読されました}}:
 
@@ -5204,7 +5204,7 @@ $3
 $4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 が $2 によって{{GENDER:$2|査読されました}}',
 	'pagetriage-notification-add-maintenance-tag2' => '[[User:$1|$1]] が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。{{PLURAL:$4|タグ}}: $3',
-	'pagetriage-notification-add-maintenance-tag-flyout' => '$1 が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。{{PLURAL:$4|タグ}}: $3',
+	'pagetriage-notification-add-maintenance-tag-flyout' => '<b>$1</b> が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。{{PLURAL:$4|タグ}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 が $1 によって{{GENDER:$2|タグ付けされました}}',
 	'pagetriage-notification-add-maintenance-tag-email-body2' => '{{SITENAME}}の利用者 $1 が、$2 を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。
 
@@ -5216,7 +5216,7 @@ $3
 
 $6',
 	'pagetriage-notification-add-deletion-tag2' => '[[User:$1|$1]] が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|削除の印を付けました}}。{{PLURAL:$4|タグ}}: $3',
-	'pagetriage-notification-add-deletion-tag-flyout' => '$1 が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|削除の印を付けました}}。{{PLURAL:$4|タグ}}: $3',
+	'pagetriage-notification-add-deletion-tag-flyout' => '<b>$1</b> が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|削除の印を付けました}}。{{PLURAL:$4|タグ}}: $3',
 	'pagetriage-notification-add-deletion-tag-email-subject2' => '$1 が、$2 に{{GENDER:$1|削除の印を付けました}}',
 	'pagetriage-notification-add-deletion-tag-email-body2' => '{{SITENAME}}の利用者 $1 が、$2 に{{GENDER:$1|削除の印を付けました}}。
 
@@ -6255,7 +6255,7 @@ $messages['mk'] = array(
 	'pagetriage-toolbar-minimize' => 'Спушти',
 	'pagetriage-tag-warning-notice' => 'Напомена: Страницава е создадена пред само $1 {{PLURAL:$1|минута|минути}}. Почекајте пред да ја означите, освен ако проблемот не е сериозен.',
 	'pagetriage-notification-mark-as-reviewed2' => '[[User:$1|$1]] {{GENDER:$1|ја провери}} страницата [[$2]]',
-	'pagetriage-notification-mark-as-reviewed-flyout' => '$1 ја {{GENDER:$1|провери}} страницата [[$2]]',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '$1 ја {{GENDER:$1|провери}} страницата [[$2]]', # Fuzzy
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$1 {{GENDER:$1|ја провери}} страницата $2',
 	'pagetriage-notification-mark-as-reviewed-email-body2' => 'Корисникот $1 на {{SITENAME}} {{GENDER:$1|ја провери}} страницата $2:
 
@@ -6266,7 +6266,7 @@ $3
 $4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$2 {{GENDER:$2|ја провери}} страницата $1',
 	'pagetriage-notification-add-maintenance-tag2' => '[[User:$1|$1]] {{GENDER:$1|ја провери}} {{GENDER:$1|и означи}} страницата [[$2]]. {{PLURAL:$4|Ознака|Ознаки}}: $3',
-	'pagetriage-notification-add-maintenance-tag-flyout' => '$1 {{GENDER:$1|ја провери}} {{GENDER:$1|и означи}} „[[$2]]“. {{PLURAL:$4|Ознака|Ознаки}}: $3',
+	'pagetriage-notification-add-maintenance-tag-flyout' => '$1 {{GENDER:$1|ја провери}} {{GENDER:$1|и означи}} „[[$2]]“. {{PLURAL:$4|Ознака|Ознаки}}: $3', # Fuzzy
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$1 {{GENDER:$1|ја означи}} страницата $2',
 	'pagetriage-notification-add-maintenance-tag-email-body2' => '$1 на {{SITENAME}} {{GENDER:$1|ја провери}} {{GENDER:$1|и означи}} страницата $2.
 
@@ -6278,7 +6278,7 @@ $3
 
 $6',
 	'pagetriage-notification-add-deletion-tag2' => '[[User:$1|$1]] {{GENDER:$1|ја провери}} страницата [[$2]] {{GENDER:$1|и ја означи}} за бришење. {{PLURAL:$4|Ознака|Ознаки}}: $3',
-	'pagetriage-notification-add-deletion-tag-flyout' => '$1 {{GENDER:$1|ја провери}} страницата [[$2]] и {{GENDER:$1|ја означи за бришење}}. {{PLURAL:$4|Ознака|Ознаки}}: $3',
+	'pagetriage-notification-add-deletion-tag-flyout' => '$1 {{GENDER:$1|ја провери}} страницата [[$2]] и {{GENDER:$1|ја означи за бришење}}. {{PLURAL:$4|Ознака|Ознаки}}: $3', # Fuzzy
 	'pagetriage-notification-add-deletion-tag-email-subject2' => '$1 {{GENDER:$1|ја означи за бришење}} страницата $2',
 	'pagetriage-notification-add-deletion-tag-email-body2' => '$1 на {{SITENAME}} {{GENDER:$1|ја означи за бришење}} страницата $2.
 
@@ -6663,7 +6663,7 @@ $messages['nl'] = array(
 	'pagetriage-toolbar-minimize' => 'Minimaliseren',
 	'pagetriage-tag-warning-notice' => 'Let op: deze pagina is pas {{PLURAL:$1|één minuut|$1 minuten}} geleden aangemaakt. Overweeg nog even te wachten met labelen, tenzij de pagina een groot probleem oplevert.',
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] is {{GENDER:$1|gecontroleerd}} door [[User:$1|$1]]',
-	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} door $1',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} door $1', # Fuzzy
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 is {{GENDER:$1|gecontroleerd}} door $1',
 	'pagetriage-notification-mark-as-reviewed-email-body2' => '$2 is {{GENDER:$1|gecontroleerd}} door gebruiker $1 van {{SITENAME}}:
 
@@ -6674,7 +6674,7 @@ $3
 $4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 is {{GENDER:$2|gecontroleerd}} door $2',
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en gelabeld door [[User:$1|$1]]. Label{{PLURAL:$4||s}}: $3',
-	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en gelabeld door $1. Label{{PLURAL:$4||s}}: $3',
+	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en gelabeld door $1. Label{{PLURAL:$4||s}}: $3', # Fuzzy
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 is {{GENDER:$1|gelabeld}} door $1',
 	'pagetriage-notification-add-maintenance-tag-email-body2' => '$2 is {{GENDER:$1|gecontroleerd}} en gelabeld door gebruiker $1 van {{SITENAME}}.
 
@@ -6686,7 +6686,7 @@ $3
 
 $6',
 	'pagetriage-notification-add-deletion-tag2' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en genomineerd voor verwijdering door [[User:$1|$1]]. Label{{PLURAL:$4||s}}: $3',
-	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en genomineerd voor verwijdering door $1. Label{{PLURAL:$4||s}}: $3',
+	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en genomineerd voor verwijdering door $1. Label{{PLURAL:$4||s}}: $3', # Fuzzy
 	'pagetriage-notification-add-deletion-tag-email-subject2' => '$2 is {{GENDER:$1|genomineerd voor verwijdering}} door $1',
 	'pagetriage-notification-add-deletion-tag-email-body2' => '$2 is {{GENDER:$1|genomineerd voor verwijdering}} door gebruiker $1 van {{SITENAME}}.
 
