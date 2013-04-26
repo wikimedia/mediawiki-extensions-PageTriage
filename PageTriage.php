@@ -96,7 +96,9 @@ $wgPageTriageEnabledEchoEvents = array(
 	'pagetriage-add-maintenance-tag',
 	'pagetriage-add-deletion-tag'
 );
+// Set default user options
 $wgDefaultUserOptions['echo-subscriptions-web-page-review'] = true;
+// This is overriden for new users in PageTriageHooks::onAccountCreated
 $wgDefaultUserOptions['echo-subscriptions-email-page-review'] = false;
 // End configuration variables
 
@@ -158,6 +160,7 @@ $wgHooks['BlockIpComplete'][] = 'PageTriageHooks::onBlockIpComplete';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'PageTriageHooks::onResourceLoaderGetConfigVars';
 $wgHooks['BeforeCreateEchoEvent'][] = 'PageTriageHooks::onBeforeCreateEchoEvent';
 $wgHooks['EchoGetDefaultNotifiedUsers'][] = 'PageTriageHooks::onEchoGetDefaultNotifiedUsers';
+$wgHooks['AddNewAccount'][] = 'PageTriageHooks::onAccountCreated';
 
 // logging
 $wgLogTypes[] = 'pagetriage-curation';

@@ -565,4 +565,19 @@ class PageTriageHooks {
 		}
 		return true;
 	}
+
+	/**
+	 * Handler for AddNewAccount hook
+	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/AddNewAccount
+	 * @param $user User object that was created.
+	 * @param $byEmail bool True when account was created "by email".
+	 * @return bool
+	 */
+	public static function onAccountCreated( $user, $byEmail ) {
+		// New users get echo preferences set that are not the default settings for existing users.
+		// Specifically, new users are opted into email notifications for page reviews.
+		$user->setOption( 'echo-subscriptions-email-page-review', true );
+		$user->saveSettings();
+		return true;
+	}
 }
