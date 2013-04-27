@@ -6255,7 +6255,7 @@ $messages['mk'] = array(
 	'pagetriage-toolbar-minimize' => 'Спушти',
 	'pagetriage-tag-warning-notice' => 'Напомена: Страницава е создадена пред само $1 {{PLURAL:$1|минута|минути}}. Почекајте пред да ја означите, освен ако проблемот не е сериозен.',
 	'pagetriage-notification-mark-as-reviewed2' => '[[User:$1|$1]] {{GENDER:$1|ја провери}} страницата [[$2]]',
-	'pagetriage-notification-mark-as-reviewed-flyout' => '$1 ја {{GENDER:$1|провери}} страницата [[$2]]', # Fuzzy
+	'pagetriage-notification-mark-as-reviewed-flyout' => '<b>$1</b> ја {{GENDER:$1|провери}} страницата [[$2]]',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$1 {{GENDER:$1|ја провери}} страницата $2',
 	'pagetriage-notification-mark-as-reviewed-email-body2' => 'Корисникот $1 на {{SITENAME}} {{GENDER:$1|ја провери}} страницата $2:
 
@@ -6266,7 +6266,7 @@ $3
 $4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$2 {{GENDER:$2|ја провери}} страницата $1',
 	'pagetriage-notification-add-maintenance-tag2' => '[[User:$1|$1]] {{GENDER:$1|ја провери}} {{GENDER:$1|и означи}} страницата [[$2]]. {{PLURAL:$4|Ознака|Ознаки}}: $3',
-	'pagetriage-notification-add-maintenance-tag-flyout' => '$1 {{GENDER:$1|ја провери}} {{GENDER:$1|и означи}} „[[$2]]“. {{PLURAL:$4|Ознака|Ознаки}}: $3', # Fuzzy
+	'pagetriage-notification-add-maintenance-tag-flyout' => '<b>$1</b> {{GENDER:$1|ја провери}} {{GENDER:$1|и означи}} „[[$2]]“. {{PLURAL:$4|Ознака|Ознаки}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$1 {{GENDER:$1|ја означи}} страницата $2',
 	'pagetriage-notification-add-maintenance-tag-email-body2' => '$1 на {{SITENAME}} {{GENDER:$1|ја провери}} {{GENDER:$1|и означи}} страницата $2.
 
@@ -6278,7 +6278,7 @@ $3
 
 $6',
 	'pagetriage-notification-add-deletion-tag2' => '[[User:$1|$1]] {{GENDER:$1|ја провери}} страницата [[$2]] {{GENDER:$1|и ја означи}} за бришење. {{PLURAL:$4|Ознака|Ознаки}}: $3',
-	'pagetriage-notification-add-deletion-tag-flyout' => '$1 {{GENDER:$1|ја провери}} страницата [[$2]] и {{GENDER:$1|ја означи за бришење}}. {{PLURAL:$4|Ознака|Ознаки}}: $3', # Fuzzy
+	'pagetriage-notification-add-deletion-tag-flyout' => '<b>$1</b> {{GENDER:$1|ја провери}} страницата [[$2]] и {{GENDER:$1|ја означи за бришење}}. {{PLURAL:$4|Ознака|Ознаки}}: $3',
 	'pagetriage-notification-add-deletion-tag-email-subject2' => '$1 {{GENDER:$1|ја означи за бришење}} страницата $2',
 	'pagetriage-notification-add-deletion-tag-email-body2' => '$1 на {{SITENAME}} {{GENDER:$1|ја означи за бришење}} страницата $2.
 
@@ -8465,9 +8465,11 @@ $messages['uk'] = array(
 	'pagetriage-toolbar-learn-more' => 'Дізнатися більше »',
 	'pagetriage-toolbar-close' => 'Закрити',
 	'pagetriage-toolbar-minimize' => 'Мінімізувати',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] було {{GENDER:$1|перевірив|перевірила}} <b>$1</b>',
 );
 
 /** Urdu (اردو)
+ * @author Noor2020
  * @author පසිඳු කාවින්ද
  */
 $messages['ur'] = array(
@@ -8515,6 +8517,9 @@ $messages['ur'] = array(
 	'pagetriage-info-problem-no-references' => 'کوئی حوالہ جات',
 	'pagetriage-toolbar-learn-more' => 'مزید معلومات حاصل کریں»',
 	'pagetriage-wikilove-page-creator' => 'صفحہ خالق',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[ $2 ]]نے کیا {{GENDER:$1| کا جائزہ }} <b>$1</b>کی طرف سے', # Fuzzy
+	'pagetriage-notification-add-maintenance-tag-flyout' => '[[ $2 ]] کیا{{GENDER:$1| کا جائزہ }} اور  {{GENDER:$1| نامزدکیا گیا}}  <b> $1 </b>کی طرف سے ۔ {{PLURAL:$4|نامزدگی|نامزدگیا}}:$3', # Fuzzy
+	'pagetriage-notification-add-deletion-tag-flyout' => '[[ $2 ]] کا ہوا {{GENDER:$1| جائزہ }} اور  {{GENDER:$1| نشان زد برائے حذف}}  <b> $1 </b>کی طرف سے  ۔ {{PLURAL:$4|نشان زدہ|نشان زدگیاں}}:$3', # Fuzzy
 );
 
 /** Vietnamese (Tiếng Việt)
