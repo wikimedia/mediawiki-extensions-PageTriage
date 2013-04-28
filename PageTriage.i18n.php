@@ -6663,7 +6663,7 @@ $messages['nl'] = array(
 	'pagetriage-toolbar-minimize' => 'Minimaliseren',
 	'pagetriage-tag-warning-notice' => 'Let op: deze pagina is pas {{PLURAL:$1|één minuut|$1 minuten}} geleden aangemaakt. Overweeg nog even te wachten met labelen, tenzij de pagina een groot probleem oplevert.',
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] is {{GENDER:$1|gecontroleerd}} door [[User:$1|$1]]',
-	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} door $1', # Fuzzy
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} door <b>$1</b>',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 is {{GENDER:$1|gecontroleerd}} door $1',
 	'pagetriage-notification-mark-as-reviewed-email-body2' => '$2 is {{GENDER:$1|gecontroleerd}} door gebruiker $1 van {{SITENAME}}:
 
@@ -6674,7 +6674,7 @@ $3
 $4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 is {{GENDER:$2|gecontroleerd}} door $2',
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en gelabeld door [[User:$1|$1]]. Label{{PLURAL:$4||s}}: $3',
-	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en gelabeld door $1. Label{{PLURAL:$4||s}}: $3', # Fuzzy
+	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en gelabeld door <b>$1</b>. Label{{PLURAL:$4||s}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 is {{GENDER:$1|gelabeld}} door $1',
 	'pagetriage-notification-add-maintenance-tag-email-body2' => '$2 is {{GENDER:$1|gecontroleerd}} en gelabeld door gebruiker $1 van {{SITENAME}}.
 
@@ -6686,7 +6686,7 @@ $3
 
 $6',
 	'pagetriage-notification-add-deletion-tag2' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en genomineerd voor verwijdering door [[User:$1|$1]]. Label{{PLURAL:$4||s}}: $3',
-	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en genomineerd voor verwijdering door $1. Label{{PLURAL:$4||s}}: $3', # Fuzzy
+	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en genomineerd voor verwijdering door <b>$1</b>. Label{{PLURAL:$4||s}}: $3',
 	'pagetriage-notification-add-deletion-tag-email-subject2' => '$2 is {{GENDER:$1|genomineerd voor verwijdering}} door $1',
 	'pagetriage-notification-add-deletion-tag-email-body2' => '$2 is {{GENDER:$1|genomineerd voor verwijdering}} door gebruiker $1 van {{SITENAME}}.
 
