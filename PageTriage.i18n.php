@@ -3612,7 +3612,7 @@ $messages['gl'] = array(
 	'pagetriage-toolbar-minimize' => 'Minimizar',
 	'pagetriage-tag-warning-notice' => 'Nota: Esta páxina existe desde hai $1 {{PLURAL:$1|minuto|minutos}}. Considere agardar un anaco para etiquetala, a menos que o problema sexa serio.',
 	'pagetriage-notification-mark-as-reviewed2' => '[[User:$1|$1]] {{GENDER:$1|revisou}} "[[$2]]"',
-	'pagetriage-notification-mark-as-reviewed-flyout' => '$1 {{GENDER:$1|revisou}} "[[$2]]"', # Fuzzy
+	'pagetriage-notification-mark-as-reviewed-flyout' => '<b>$1</b> {{GENDER:$1|revisou}} "[[$2]]"',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$1 {{GENDER:$1|revisou}} "$2"',
 	'pagetriage-notification-mark-as-reviewed-email-body2' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} revisou "$2":
 
@@ -3623,7 +3623,7 @@ $3
 $4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$2 {{GENDER:$2|revisou}} "$1"',
 	'pagetriage-notification-add-maintenance-tag2' => '[[User:$1|$1]] {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
-	'pagetriage-notification-add-maintenance-tag-flyout' => '$1 {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3', # Fuzzy
+	'pagetriage-notification-add-maintenance-tag-flyout' => '<b>$1</b> {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$1 {{GENDER:$1|etiquetou}} "$2"',
 	'pagetriage-notification-add-maintenance-tag-email-body2' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "$2".
 
@@ -3635,7 +3635,7 @@ $3
 
 $6',
 	'pagetriage-notification-add-deletion-tag2' => '[[User:$1|$1]] {{GENDER:$1|revisou}} e {{GENDER:$1|marcou para borrar}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
-	'pagetriage-notification-add-deletion-tag-flyout' => '$1 {{GENDER:$1|revisou}} e {{GENDER:$1|marcou para borrar}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3', # Fuzzy
+	'pagetriage-notification-add-deletion-tag-flyout' => '<b>$1</b> {{GENDER:$1|revisou}} e {{GENDER:$1|marcou para borrar}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
 	'pagetriage-notification-add-deletion-tag-email-subject2' => '$1 {{GENDER:$1|marcou para borrar}} "$2"',
 	'pagetriage-notification-add-deletion-tag-email-body2' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} {{GENDER:$1|marcou para borrar}} "$2".
 
