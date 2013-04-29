@@ -463,21 +463,23 @@ class PageTriageHooks {
 	}
 
 	/**
-	 * Add extension event to $wgEchoEnabledEvents
-	 * @param $wgEchoEnabledEvents array a list of enabled echo events
-	 * @param $wgEchoEventDetails array details for echo events
+	 * Add PageTriage events to Echo
+	 *
+	 * @param $notifications array a list of enabled echo events
+	 * @param $notificationCategories array details for echo events
+	 * @param $icons array of icon details
 	 */
-	public static function onBeforeCreateEchoEvent( &$wgEchoNotifications, &$wgEchoNotificationCategories ) {
+	public static function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories, &$icons ) {
 		global $wgPageTriageEnabledEchoEvents;
 
 		if ( $wgPageTriageEnabledEchoEvents ) {
-			$wgEchoNotificationCategories['page-review'] = array(
+			$notificationCategories['page-review'] = array(
 				'priority' => 8,
 			);
 		}
 
 		if ( in_array( 'pagetriage-mark-as-reviewed', $wgPageTriageEnabledEchoEvents ) ) {
-			$wgEchoNotifications['pagetriage-mark-as-reviewed'] = array(
+			$notifications['pagetriage-mark-as-reviewed'] = array(
 				'category' => 'page-review',
 				'group' => 'neutral',
 				'formatter-class' => 'PageTriageNotificationFormatter',
@@ -495,7 +497,7 @@ class PageTriageHooks {
 			);
 		}
 		if ( in_array( 'pagetriage-add-maintenance-tag', $wgPageTriageEnabledEchoEvents ) ) {
-			$wgEchoNotifications['pagetriage-add-maintenance-tag'] = array(
+			$notifications['pagetriage-add-maintenance-tag'] = array(
 				'category' => 'page-review',
 				'group' => 'neutral',
 				'formatter-class' => 'PageTriageNotificationFormatter',
@@ -513,7 +515,7 @@ class PageTriageHooks {
 			);
 		}
 		if ( in_array( 'pagetriage-add-deletion-tag', $wgPageTriageEnabledEchoEvents ) ) {
-			$wgEchoNotifications['pagetriage-add-deletion-tag'] = array(
+			$notifications['pagetriage-add-deletion-tag'] = array(
 				'category' => 'page-review',
 				'group' => 'neutral',
 				'formatter-class' => 'PageTriageNotificationFormatter',
