@@ -223,7 +223,7 @@ class PageTriageHooks {
 	 */
 	public static function onGetPreferences( $user, &$preferences ) {
 		$preferences['pagetriage-lastuse'] = array(
-			'type' => 'hidden',
+			'type' => 'api',
 		);
 
 		return true;
