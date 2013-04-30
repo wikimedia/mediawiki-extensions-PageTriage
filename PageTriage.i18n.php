@@ -7239,7 +7239,7 @@ $messages['roa-tara'] = array(
 	'pagetriage-toolbar-close' => 'Achiude',
 	'pagetriage-toolbar-minimize' => 'Minimizze',
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] ha state {{GENDER:$1|reviste}} da [[User:$1|$1]]',
-	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] ha state {{GENDER:$1|reviste}} da $1',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] ha state {{GENDER:$1|reviste}} da <b>$1</b>',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 ha state {{GENDER:$1|reviste}} da $1',
 	'pagetriage-notification-mark-as-reviewed-email-body2' => "$2 ha state {{GENDER:$1|reviste}} da l'utende de {{SITENAME}} $1:
 
