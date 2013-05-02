@@ -517,7 +517,7 @@ class PageTriageHooks {
 		if ( in_array( 'pagetriage-add-deletion-tag', $wgPageTriageEnabledEchoEvents ) ) {
 			$notifications['pagetriage-add-deletion-tag'] = array(
 				'category' => 'page-review',
-				'group' => 'neutral',
+				'group' => 'negative',
 				'formatter-class' => 'PageTriageNotificationFormatter',
 				'title-message' => 'pagetriage-notification-add-deletion-tag2',
 				'title-params' => array( 'agent', 'title', 'tag' ),
