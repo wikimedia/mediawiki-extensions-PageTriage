@@ -847,7 +847,8 @@ d &#100;&#101; MMMM &#100;&#101; yyyy
 	'pagetriage-toolbar-collapsed' => '[[File:Curation-bar.png|300px|thumb]]
 Label for the collapsed version of the curation bar. Written vertically. See screenshot.',
 	'pagetriage-toolbar-linktext' => 'This is a menu link in the sidebar that opens the curation toolbar. It should be short enough to fit in the sidebar without wrapping.',
-	'pagetriage-toolbar-learn-more' => 'Text that links to a page with more information about the curation toolbar',
+	'pagetriage-toolbar-learn-more' => 'Text that links to a page with more information about the curation toolbar.
+{{Identical|Learn more}}',
 	'pagetriage-mark-title' => 'The title for the flyout in the toolbar',
 	'pagetriage-mark-as-reviewed' => "Label for a button that sets a page's status as reviewed",
 	'pagetriage-mark-as-unreviewed' => "Label for a button that sets a page's status as unreviewed",
