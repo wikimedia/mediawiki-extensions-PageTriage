@@ -1351,6 +1351,7 @@ $messages['bxr'] = array(
 
 /** Czech (česky)
  * @author Jkjk
+ * @author Littledogboy
  * @author Mormegil
  * @author Vks
  */
@@ -1368,7 +1369,7 @@ $messages['cs'] = array(
 	'pagetriage-no-categories' => 'Nekategorizovaná',
 	'pagetriage-orphan' => 'Sirotčí stránka',
 	'pagetriage-no-author' => 'Chybějící informace o autorovi',
-	'pagetriage-byline' => 'Vytvořil', # Fuzzy
+	'pagetriage-byline' => 'Vytvořil $1 ($2$3$4)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|editace|editace|editací}} od $2',
 	'pagetriage-author-not-autoconfirmed' => 'Nový uživatel',
 	'pagetriage-author-blocked' => 'Zablokován',
@@ -1422,9 +1423,7 @@ $messages['cs'] = array(
 	'pagetriage-info-problem-orphan-desc' => 'Na tuto stránku neodkazují žádné další stránky.',
 	'pagetriage-info-problem-no-references' => 'Bez zdrojů',
 	'pagetriage-info-problem-no-references-desc' => 'Tato stránka necituje žádné zdroje.',
-	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Zkontroluje stránku, kterou jsem založil',
-	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Zkontroluje stránku, kterou jsem založil, a přidá údržbové šablony',
-	'echo-pref-email-pagetriage-add-deletion-tag' => 'Zkontroluje stránku, kterou jsem založil, a navrhne ji na smazání',
+	'echo-pref-subscription-page-review' => 'Zkontroluje stránku, kterou jsem založil',
 );
 
 /** German (Deutsch)
