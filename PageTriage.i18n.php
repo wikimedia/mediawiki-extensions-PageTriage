@@ -1424,6 +1424,7 @@ $messages['cs'] = array(
 	'pagetriage-info-problem-no-references' => 'Bez zdrojů',
 	'pagetriage-info-problem-no-references-desc' => 'Tato stránka necituje žádné zdroje.',
 	'echo-pref-subscription-page-review' => 'Zkontroluje stránku, kterou jsem založil',
+	'echo-category-title-page-review' => '{{PLURAL:$1|posouzení stránky}}',
 );
 
 /** German (Deutsch)
