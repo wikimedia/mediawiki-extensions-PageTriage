@@ -6994,44 +6994,42 @@ $messages['pms'] = array(
 	'pagetriage-toolbar-minimize' => 'Minimisa',
 	'pagetriage-tag-warning-notice' => "Nòta: Sta pàgina a l'ha mach $1 {{PLURAL:$1|minuta|minute}}. Ch'a consìdera dë speté a marchela, gavà che ël problema a sia serios.",
 	'pagetriage-notification-mark-as-reviewed2' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} da [[User:$1|$1]]",
-	'pagetriage-notification-mark-as-reviewed-flyout' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} da $1",
+	'pagetriage-notification-mark-as-reviewed-flyout' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} da $1", # Fuzzy
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => "$2 a l'é stàit {{GENDER:$1|revisionà}} da $1",
-	'pagetriage-notification-mark-as-reviewed-email-body2' => "$2 a l'era {{GENDER:$1|revisionà}} da {{SITENAME}} utent $1:
+	'pagetriage-notification-mark-as-reviewed-email-body2' => "$2 a l'é stàit {{GENDER:$1|revisionà}} da l'utent ëd {{SITENAME}} $1:
 
-Varda ëd pi:
+Vëdde ëd pi:
 
 $3
 
 $4",
-	'pagetriage-notification-add-maintenance-tag2' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|tichëttà}} da [[User:$1|$1]].  {{PLURAL:$4|Tichëtta|Tichëtte}}: $3",
-	'pagetriage-notification-add-maintenance-tag-flyout' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|tichëttà}} da $1.  {{PLURAL:$4|Tichëtta|Tichëtte}}: $3",
-	'pagetriage-notification-add-maintenance-tag-email-subject2' => "$2 a l'é stàit {{GENDER:$1|tichëttà}} da $1",
-	'pagetriage-notification-add-maintenance-tag-email-body2' => "$2 a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|tichëttà}} da {{SITENAME}} utent $1.
-
-{{PLURAL:$5|Tichëtta|Tichëtte}}: $4
-
-Varda ëd pi:
-
-$3
-
-$6",
-	'pagetriage-notification-add-deletion-tag2' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|marcà për scanselament}} da [[User:$1|$1]].  {{PLURAL:$4|Tichëtta|Tichëtte}}: $3",
-	'pagetriage-notification-add-deletion-tag-flyout' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|marcà për scanselament}} da $1.  {{PLURAL:$4|Tichëtta|Tichëtte}}: $3",
-	'pagetriage-notification-add-deletion-tag-email-subject2' => "$2 a l'é stàit {{GENDER:$1|marcà për scanselament}} da $1",
-	'pagetriage-notification-add-deletion-tag-email-body2' => "$2 a l'é stàit {{GENDER:$1|marcà për scanselament}} da {{SITENAME}} utent $1.
-
-{{PLURAL:$5|Tichëtta|Tichëtte}}: $4
-
-Varda ëd pi:
-
-$3
-
-$6",
-	'echo-pref-subscription-pagetriage-mark-as-reviewed' => "A revision-a na pàgina che mi i l'heu creà",
-	'echo-pref-subscription-pagetriage-add-maintenance-tag' => "A revision-a na pàgina che mi i l'heu creà e a gionta dle tichëtte ëd manutension",
-	'echo-pref-subscription-pagetriage-add-deletion-tag' => "A revision-a na pàgina che mi i l'heu creà e a la propon për esse scancelà",
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => "$1 a l'era {{GENDER:$2|revisionà}} da $2",
-	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|pàgina revisionà|pàgine revisionà}}',
+	'pagetriage-notification-add-maintenance-tag2' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|tichëttà}} da [[User:$1|$1]].  {{PLURAL:$4|Tichëtta|Tichëtte}}: $3",
+	'pagetriage-notification-add-maintenance-tag-flyout' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|tichëttà}} da $1.  {{PLURAL:$4|Tichëtta|Tichëtte}}: $3", # Fuzzy
+	'pagetriage-notification-add-maintenance-tag-email-subject2' => "$2 a l'é stàit {{GENDER:$1|tichëttà}} da $1",
+	'pagetriage-notification-add-maintenance-tag-email-body2' => "$2 a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|marcà}} da l'utent ëd {{SITENAME}} $1.
+
+{{PLURAL:$5|Tichëtta|Tichëtte}}: $4
+
+Vëdde ëd pi:
+
+$3
+
+$6",
+	'pagetriage-notification-add-deletion-tag2' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|marcà për la sganfura}} da [[User:$1|$1]].  {{PLURAL:$4|Tichëtta|Tichëtte}}: $3",
+	'pagetriage-notification-add-deletion-tag-flyout' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|marcà për lë scancelament}} da <b>$1</b>.
+{{PLURAL:$4|Tichëtta|Tichëtte}}: $3",
+	'pagetriage-notification-add-deletion-tag-email-subject2' => "$2 a l'é stàit {{GENDER:$1|marcà për lë scancelament}} da $1",
+	'pagetriage-notification-add-deletion-tag-email-body2' => "$2 a l'é stàit {{GENDER:$1|marcà për lë scancelament}} da l'utent ëd {{SITENAME}} $1.
+
+{{PLURAL:$5|Tichëtta|Tichëtte}}: $4
+
+Vëdde ëd pi:
+
+$3
+
+$6",
+	'echo-pref-subscription-page-review' => "A revision-a na pàgina che mi i l'heu creà",
 );
 
 /** Pashto (پښتو)
