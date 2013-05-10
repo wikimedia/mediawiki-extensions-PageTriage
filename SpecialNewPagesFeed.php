@@ -107,6 +107,12 @@ class SpecialNewPagesFeed extends SpecialPage {
 				<script type="text/template" id="listControlNavTemplate">
 					<span class="mwe-pt-control-label"><b><%= mw.msg( 'pagetriage-showing' ) %></b> <span id="mwe-pt-filter-status"></span></span>
 					<span class="mwe-pt-control-label-right" id="mwe-pt-control-stats"></span><br/>
+					<span class="mwe-pt-control-label-right"><b><%= mw.msg( 'pagetriage-sort-by' ) %></b>
+						<span id="mwe-pt-sort-buttons">
+							<input type="radio" id="mwe-pt-sort-newest" name="sort" /><label for="mwe-pt-sort-newest"><%= mw.msg( 'pagetriage-newest' ) %></label>
+							<input type="radio" id="mwe-pt-sort-oldest" name="sort" /><label for="mwe-pt-sort-oldest"><%= mw.msg( 'pagetriage-oldest' ) %></label>
+						</span>
+					</span>
 					<span id="mwe-pt-filter-dropdown-control" class="mwe-pt-control-label">
 						<b>
 							<%= mw.msg( 'pagetriage-filter-list-prompt' ) %>
@@ -176,12 +182,6 @@ class SpecialNewPagesFeed extends SpecialPage {
 								</div>
 							</form>
 						</div>
-					</span>
-					<span class="mwe-pt-control-label-right"><b><%= mw.msg( 'pagetriage-sort-by' ) %></b>
-						<span id="mwe-pt-sort-buttons">
-							<input type="radio" id="mwe-pt-sort-newest" name="sort" /><label for="mwe-pt-sort-newest"><%= mw.msg( 'pagetriage-newest' ) %></label>
-							<input type="radio" id="mwe-pt-sort-oldest" name="sort" /><label for="mwe-pt-sort-oldest"><%= mw.msg( 'pagetriage-oldest' ) %></label>
-						</span>
 					</span>
 				</script>
 
