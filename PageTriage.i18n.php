@@ -849,8 +849,10 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 	'pagetriage-toolbar-linktext' => 'This is a menu link in the sidebar that opens the curation toolbar. It should be short enough to fit in the sidebar without wrapping.',
 	'pagetriage-toolbar-learn-more' => 'Text that links to a page with more information about the curation toolbar.
 {{Identical|Learn more}}',
-	'pagetriage-mark-title' => 'The title for the flyout in the toolbar',
-	'pagetriage-mark-as-reviewed' => "Label for a button that sets a page's status as reviewed",
+	'pagetriage-mark-title' => 'The title for the flyout in the toolbar.
+{{Identical|Mark as reviewed}}',
+	'pagetriage-mark-as-reviewed' => "Label for a button that sets a page's status as reviewed.
+{{Identical|Mark as reviewed}}",
 	'pagetriage-mark-as-unreviewed' => "Label for a button that sets a page's status as unreviewed",
 	'pagetriage-mark-as-reviewed-helptext' => 'Descriptive text explaining the "Mark as reviewed" button',
 	'pagetriage-mark-as-unreviewed-helptext' => 'Descriptive text explaining the "Mark as unreviewed" button',
