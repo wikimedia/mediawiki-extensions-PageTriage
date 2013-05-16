@@ -4836,7 +4836,7 @@ $messages['it'] = array(
 	'pagetriage-tags-unbalanced-desc' => 'Questa pagina può essere sbilanciata verso certi punti di vista.',
 	'pagetriage-tags-update-label' => 'Aggiornamento',
 	'pagetriage-tags-update-desc' => 'Questa pagina ha bisogno che siano aggiunte ulteriori informazioni aggiornate.',
-	'pagetriage-tags-tooltip' => 'Aggiungere tag per risolvere i problemi con la pagina', # Fuzzy
+	'pagetriage-tags-tooltip' => 'Aggiungere i tag per indicare le aree di miglioramento per questa pagina',
 	'pagetriage-del-tags-cat-csd-desc' => 'Segna questa pagina come cancellazione rapida se rientra in uno dei seguenti criteri.',
 	'pagetriage-del-tags-cat-prod-desc' => 'Segna questa pagina come proposta di cancellazione se viola chiaramente le norme della comunità.',
 	'pagetriage-del-tags-cat-discussion-desc' => 'Segna questa pagina per discutere la sua cancellazione con altri utenti.',
@@ -6735,6 +6735,7 @@ $messages['pam'] = array(
  * @author Ankry
  * @author BeginaFelicysym
  * @author Matma Rex
+ * @author WTM
  * @author Woytecr
  */
 $messages['pl'] = array(
@@ -6796,9 +6797,8 @@ $messages['pl'] = array(
 	'pagetriage-info-problem-no-references' => 'Brak odwołań',
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-wikilove-page-creator' => 'Twórca strony',
-	'echo-pref-email-pagetriage-mark-as-reviewed' => 'oceni utworzoną przeze mnie stronę',
-	'echo-pref-email-pagetriage-add-maintenance-tag' => 'oceni utworzoną przeze mnie stronę i doda tagi informujące o problemach',
-	'echo-pref-email-pagetriage-add-deletion-tag' => 'oceni utworzoną przeze mnie stronę i zgłosi ją do usunięcia',
+	'echo-pref-subscription-page-review' => 'oceni utworzoną przeze mnie stronę',
+	'echo-category-title-page-review' => '{{PLURAL:$1|Strona przejrzana|Strony przejrzane}}',
 );
 
 /** Piedmontese (Piemontèis)
