@@ -294,12 +294,14 @@ class PageTriageHooks {
 	}
 
 	/**
-	 * Adds "mark as patrolled" link to articles
+	 * Handler for hook ArticleViewFooter, this will determine whether to load
+	 * curation toolbar or 'mark as reviewed'/'reviewed' text
 	 *
 	 * @param &$article Article object to show link for.
+	 * @param $patrolFooterShown bool whether the patrol footer is shown
 	 * @return bool
 	 */
-	public static function onArticleViewFooter( $article ) {
+	public static function onArticleViewFooter( $article, $patrolFooterShown ) {
 		global $wgUser, $wgPageTriageMarkPatrolledLinkExpiry, $wgOut, 
 			$wgPageTriageEnableCurationToolbar, $wgRequest, $wgPageTriageNamespaces;
 
@@ -323,10 +325,8 @@ class PageTriageHooks {
 			return true;
 		}
 
-		// The presence of rcid means this is coming from Special:NewPages,
-		// and hence don't make any interference, this also applies to
-		// user with no right
-		if ( $wgRequest->getVal( 'rcid' ) ) {
+		// Don't do anything if [Mark this page as patrolled] is shown
+		if ( $patrolFooterShown ) {
 			return true;
 		}
 
