@@ -7082,10 +7082,13 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (português do Brasil)
  * @author Helder.wiki
+ * @author Luckas
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'pagetriage-pagecuration' => 'Curação de Páginas',
+	'pagetriage-edits' => '$1 {{PLURAL:$1|edição|edições}}',
+	'pagetriage-author-not-autoconfirmed' => 'Novo editor',
 	'pagetriage-author-blocked' => 'Bloqueado',
 	'pagetriage-author-bot' => 'Bot',
 	'pagetriage-showing' => 'Mostrando:',
@@ -7108,6 +7111,7 @@ $messages['pt-br'] = array(
 	'pagetriage-filter-non-autoconfirmed' => 'Foram criados por novos editores',
 	'pagetriage-filter-blocked' => 'Foram criados por usuários bloqueados',
 	'pagetriage-more' => 'Mais',
+	'pagetriage-filter-stat-non-autoconfirmed' => 'novos editores',
 	'pagetriage-button-add-parameters' => 'Adicionar parâmetros',
 	'pagetriage-button-add-details' => 'Adicionar detalhes',
 	'pagetriage-button-edit-details' => 'Editar detalhes',
@@ -7116,8 +7120,10 @@ $messages['pt-br'] = array(
 	'pagetriage-tags-param-free-yes-label' => 'Sim',
 	'pagetriage-tags-param-free-no-label' => 'Não',
 	'log-name-pagetriage-curation' => 'Registro da curadoria de páginas',
+	'pagetriage-info-problem-non-autoconfirmed' => 'Novo editor',
 	'pagetriage-toolbar-collapsed' => 'Curadoria',
 	'pagetriage-toolbar-linktext' => 'Curar este artigo',
+	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|edição|edições}}',
 );
 
 /** Romanian (română)
