@@ -325,8 +325,8 @@ class PageTriageHooks {
 			return true;
 		}
 
-		// Don't do anything if [Mark this page as patrolled] is shown
-		if ( $patrolFooterShown ) {
+		// Don't do anything if it's coming from Special:NewPages
+		if ( $wgRequest->getVal( 'patrolpage' ) ) {
 			return true;
 		}
 
