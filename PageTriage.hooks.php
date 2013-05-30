@@ -475,6 +475,7 @@ class PageTriageHooks {
 		if ( $wgPageTriageEnabledEchoEvents ) {
 			$notificationCategories['page-review'] = array(
 				'priority' => 8,
+				'tooltip' => 'echo-pref-tooltip-page-review',
 			);
 		}
 

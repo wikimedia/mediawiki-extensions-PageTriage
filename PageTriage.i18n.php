@@ -413,6 +413,7 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => 'Reviews a page I created',
+	'echo-pref-tooltip-page-review' => 'Notify me when someone reviews a page I created.',
 	'echo-category-title-page-review' => 'Page {{PLURAL:$1|review|reviews}}',
 );
 
@@ -992,6 +993,7 @@ See also:
 	'echo-pref-subscription-page-review' => 'Option for getting notifications when someone reviews a page created by the user.
 
 This is the conclusion of the sentence begun by the header: {{msg-mw|Prefs-echosubscriptions}}.',
+	'echo-pref-tooltip-page-review' => 'This is a short description of the page-review notification category.',
 	'echo-category-title-page-review' => 'This is a short title for notification category.
 
 Used as <code>$1</code> in {{msg-mw|Echo-dismiss-message}} and <code>$2</code> in {{msg-mw|Echo-email-batch-category-header}}. Parameters:
