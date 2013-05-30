@@ -298,10 +298,9 @@ class PageTriageHooks {
 	 * curation toolbar or 'mark as reviewed'/'reviewed' text
 	 *
 	 * @param &$article Article object to show link for.
-	 * @param $patrolFooterShown bool whether the patrol footer is shown
 	 * @return bool
 	 */
-	public static function onArticleViewFooter( $article, $patrolFooterShown ) {
+	public static function onArticleViewFooter( $article ) {
 		global $wgUser, $wgPageTriageMarkPatrolledLinkExpiry, $wgOut, 
 			$wgPageTriageEnableCurationToolbar, $wgRequest, $wgPageTriageNamespaces;
 
