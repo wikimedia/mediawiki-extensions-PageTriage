@@ -294,12 +294,14 @@ class PageTriageHooks {
 	}
 
 	/**
-	 * Adds "mark as patrolled" link to articles
+	 * Handler for hook ArticleViewFooter, this will determine whether to load
+	 * curation toolbar or 'mark as reviewed'/'reviewed' text
 	 *
 	 * @param &$article Article object to show link for.
+	 * @param $patrolFooterShown bool whether the patrol footer is shown
 	 * @return bool
 	 */
-	public static function onArticleViewFooter( $article ) {
+	public static function onArticleViewFooter( $article, $patrolFooterShown ) {
 		global $wgUser, $wgPageTriageMarkPatrolledLinkExpiry, $wgOut, 
 			$wgPageTriageEnableCurationToolbar, $wgRequest, $wgPageTriageNamespaces;
 
@@ -324,7 +326,7 @@ class PageTriageHooks {
 		}
 
 		// Don't do anything if it's coming from Special:NewPages
-		if ( $wgRequest->getVal( 'rcid' ) ) {
+		if ( $wgRequest->getVal( 'patrolpage' ) ) {
 			return true;
 		}
 
