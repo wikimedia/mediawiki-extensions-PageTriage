@@ -5233,6 +5233,7 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => '自分が作成したページを、誰かが査読したとき',
+	'echo-pref-tooltip-page-review' => '自分が作成したページを誰かが査読したら通知を受け取る。',
 	'echo-category-title-page-review' => 'ページの{{PLURAL:$1|査読}}',
 );
 
@@ -6703,6 +6704,7 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => 'Een pagina controleert die u hebt aangemaakt',
+	'echo-pref-tooltip-page-review' => 'U een melding zenden als iemand een pagina die u hebt gemaakt heeft gecontroleerd.',
 	'echo-category-title-page-review' => 'Paginacontrole{{PLURAL:$1||s}}',
 );
 
@@ -7089,7 +7091,13 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'pagetriage-pagecuration' => 'Curação de Páginas',
+	'pagetriage-hist' => 'hist',
+	'pagetriage-bytes' => '$1 {{PLURAL:$1|byte|bytes}}',
 	'pagetriage-edits' => '$1 {{PLURAL:$1|edição|edições}}',
+	'pagetriage-categories' => '$1 {{PLURAL:$1|categoria|categorias}}',
+	'pagetriage-no-categories' => 'Sem categorias',
+	'pagetriage-no-reference' => 'Sem citações',
+	'pagetriage-editcount' => '$1 {{PLURAL:$1|edição|edições}} desde $2',
 	'pagetriage-author-not-autoconfirmed' => 'Novo editor',
 	'pagetriage-author-blocked' => 'Bloqueado',
 	'pagetriage-author-bot' => 'Bot',
