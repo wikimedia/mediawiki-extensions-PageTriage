@@ -1815,6 +1815,7 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => 'eine Seite überprüft, die ich erstellt habe',
+	'echo-pref-tooltip-page-review' => 'Benachrichtige mich, wenn jemand eine Seite überprüft, die ich erstellt habe.',
 	'echo-category-title-page-review' => '{{PLURAL:$1|Seitenüberprüfung|Seitenüberprüfungen}}',
 );
 
@@ -2291,11 +2292,8 @@ $messages['es'] = array(
 	'pagetriage-toolbar-close' => 'Cerrar',
 	'pagetriage-toolbar-minimize' => 'Minimizar',
 	'pagetriage-tag-warning-notice' => 'Nota: Esta página sólo existe desde hace $1 {{PLURAL:$1|minuto|minutos}}. Considera esperar para etiquetarla, a menos que el problema sea serio.',
-	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Revisa una página que yo he creado',
-	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Revisa una página que yo he creado y le agrega etiquetas de mantenimiento',
-	'echo-pref-email-pagetriage-add-deletion-tag' => 'Revisa una página que yo he creado y la nomina para su borrado',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 fue {{GENDER:$2|revisada}} por $2',
-	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|Revisión de página|Revisiones de página}}',
+	'echo-pref-subscription-page-review' => 'Revisa una página que yo he creado',
 );
 
 /** Estonian (eesti)
@@ -2482,11 +2480,8 @@ $messages['et'] = array(
 	'pagetriage-toolbar-close' => 'Sulge',
 	'pagetriage-toolbar-minimize' => 'Ikooni',
 	'pagetriage-tag-warning-notice' => 'Märkus: See lehekülg on vaid {{PLURAL:$1|ühe|$1}} minuti vanune. Kui probleem pole väga tõsine, siis leiad ehk olevat võimaliku märgistamisega pisut oodata.',
-	'echo-pref-email-pagetriage-mark-as-reviewed' => 'Vaatab minu loodud lehekülje üle',
-	'echo-pref-email-pagetriage-add-maintenance-tag' => 'Vaatab minu loodud lehekülje üle ja lisab hooldusmärgise',
-	'echo-pref-email-pagetriage-add-deletion-tag' => 'Vaatab minu loodud lehekülje üle ja esitab selle kustutamiseks',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$2 on lehekülje $1 üle vaadanud',
-	'echo-email-batch-category-header-page-review' => '{{PLURAL:$1|Ühe|$1}} lehekülje ülevaatamine',
+	'echo-pref-subscription-page-review' => 'Vaatab minu loodud lehekülje üle',
 );
 
 /** Basque (euskara)
@@ -3652,6 +3647,7 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => 'Revise unha páxina que creei',
+	'echo-pref-tooltip-page-review' => 'Notificádeme cando alguén revise unha páxina creada por min.',
 	'echo-category-title-page-review' => '{{PLURAL:$1|Revisión|Revisións}} de páxina',
 );
 
@@ -5304,9 +5300,8 @@ $messages['ka'] = array(
 	'pagetriage-wikilove-page-creator' => 'გვერდის შემქნელი',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|რედაქტირება|რედაქტირება}}',
 	'pagetriage-toolbar-close' => 'დახურვა',
-	'echo-pref-subscription-pagetriage-mark-as-reviewed' => 'ჩემი შექმნილი გვერდის გადახედვები',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 {{GENDER:$2|გადახედა}} მომხმარებელმა $2',
-	'echo-email-batch-category-header-page-review' => '$1 {{PLURAL:$1|გვერდის გადახედვა|გვერდის გადახედვა}}',
+	'echo-pref-subscription-page-review' => 'ჩემი შექმნილი გვერდის გადახედვები',
 );
 
 /** Korean (한국어)
@@ -5659,7 +5654,7 @@ $messages['ko'] = array(
 	'pagetriage-toolbar-minimize' => '최소화',
 	'pagetriage-tag-warning-notice' => '참고: 이 문서만 $1{{PLURAL:$1|분}} 전입니다. 문제가 심각하지 않다면 해당 태그를 기다리는 것을 고려하세요.',
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] 문서를 [[User:$1|$1]] 사용자가 {{GENDER:$1|검토했습니다}}',
-	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] 문서를 $1 사용자가 {{GENDER:$1|검토했습니다}}',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] 문서를 $1 사용자가 {{GENDER:$1|검토했습니다}}', # Fuzzy
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 문서를 $1 사용자가 {{GENDER:$1|검토했습니다}}',
 	'pagetriage-notification-mark-as-reviewed-email-body2' => '$2 문서를 {{SITENAME}} $1 사용자가 {{GENDER:$1|검토했습니다}}:
 
@@ -5670,7 +5665,7 @@ $3
 $4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 문서를 $2 사용자가 {{GENDER:$2|검토했습니다}}',
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] 문서를 [[User:$1|$1]] 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}.  {{PLURAL:$4|태그}}: $3',
-	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] 문서를 $1 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}.  {{PLURAL:$4|태그}}: $3',
+	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] 문서를 $1 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}.  {{PLURAL:$4|태그}}: $3', # Fuzzy
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 문서를 $1 사용자가 {{GENDER:$1|태그했습니다}}',
 	'pagetriage-notification-add-maintenance-tag-email-body2' => '$2 문서를 {{SITENAME}} $1 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}.
 
@@ -5682,7 +5677,7 @@ $3
 
 $6',
 	'pagetriage-notification-add-deletion-tag2' => '[[$2]] 문서를 [[User:$1|$1]] 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|삭제로 표시했습니다}}.  {{PLURAL:$4|태그}}: $3',
-	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] 문서를 $1 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|삭제로 표시했습니다}}.  {{PLURAL:$4|태그}}: $3',
+	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] 문서를 $1 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|삭제로 표시했습니다}}.  {{PLURAL:$4|태그}}: $3', # Fuzzy
 	'pagetriage-notification-add-deletion-tag-email-subject2' => '$2 문서를 $1 사용자가 {{GENDER:$1|삭제로 표시했습니다}}',
 	'pagetriage-notification-add-deletion-tag-email-body2' => '$2 문서를 {{SITENAME}} $1 사용자가 {{GENDER:$1|삭제로 표시했습니다}}.
 
@@ -5694,7 +5689,7 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => '내가 만든 문서를 검토하기',
-	'echo-category-title-page-review' => '문서 검토',
+	'echo-category-title-page-review' => '문서 검토', # Fuzzy
 );
 
 /** Colognian (Ripoarisch)
@@ -5904,10 +5899,10 @@ $messages['lb'] = array(
 	'pagetriage-toolbar-close' => 'Zoumaachen',
 	'pagetriage-toolbar-minimize' => 'Minimiséieren',
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] gouf vum [[User:$1|$1]] {{GENDER:$1|nogekuckt}}',
-	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] gouf vum $1 {{GENDER:$1|nogekuckt}}',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] gouf vum $1 {{GENDER:$1|nogekuckt}}', # Fuzzy
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 gouf vum $1 {{GENDER:$1|nogekuckt}}',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 gouf vum $2 {{GENDER:$2|nogekuckt}}',
-	'echo-category-title-page-review' => 'Iwwerliese vun der Säit',
+	'echo-category-title-page-review' => 'Iwwerliese vun der Säit', # Fuzzy
 );
 
 /** Macedonian (македонски)
@@ -7492,7 +7487,7 @@ $messages['si'] = array(
 	'pagetriage-tagging-error' => 'මෙම පිටුව වෙත ටැගයන් යෙදීමට අපොහොසත් වුණි',
 	'pagetriage-toolbar-close' => 'වසන්න',
 	'pagetriage-toolbar-minimize' => 'අවමකරන්න',
-	'echo-pref-email-pagetriage-mark-as-reviewed' => 'පිටුවක් නිරීක්ෂණය කරයි | තනන ලද',
+	'echo-pref-subscription-page-review' => 'පිටුවක් නිරීක්ෂණය කරයි | තනන ලද',
 );
 
 /** Swedish (svenska)
@@ -8818,7 +8813,7 @@ $6', # Fuzzy
 $3
 
 $6', # Fuzzy
-	'echo-category-title-page-review' => '页面评论',
+	'echo-category-title-page-review' => '页面评论', # Fuzzy
 );
 
 /** Traditional Chinese (中文（繁體）‎)
