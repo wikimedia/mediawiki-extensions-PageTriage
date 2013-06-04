@@ -3145,6 +3145,7 @@ $3
 
 $6",
 	'echo-pref-subscription-page-review' => "Relire une page que j'ai créée",
+	'echo-pref-tooltip-page-review' => 'Me prévenir quand quelqu’un relit une page que j’ai créée.',
 	'echo-category-title-page-review' => '{{PLURAL:$1|Relecture|Relectures}} de page',
 );
 
@@ -6291,6 +6292,7 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => 'Провери страница што сум ја создал',
+	'echo-pref-tooltip-page-review' => 'Извести ме кога некој ќе провери/оцени страница што ја имам создадено.',
 	'echo-category-title-page-review' => '{{PLURAL:$1|Преглед|Прегледи}}',
 );
 
@@ -8817,6 +8819,7 @@ $6', # Fuzzy
 );
 
 /** Traditional Chinese (中文（繁體）‎)
+ * @author Simon Shek
  */
 $messages['zh-hant'] = array(
 	'pagetriage' => '頁面分檢器',
@@ -8997,4 +9000,5 @@ $messages['zh-hant'] = array(
 	'pagetriage-del-tooltip' => '將此頁面提交刪除',
 	'pagetriage-tagging-error' => '將標籤添加到頁面時失敗',
 	'pagetriage-add-tag-confirmation' => '您真的要添加$1個標籤到小作品中嗎？',
+	'echo-pref-tooltip-page-review' => '當有人複查我創建的頁面時，通知我。',
 );
