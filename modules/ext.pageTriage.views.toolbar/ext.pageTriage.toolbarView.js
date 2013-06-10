@@ -132,10 +132,12 @@ $( function() {
 									break;
 								case 'minimized':
 									this.minimize();
+									$( '#mw-content-text .patrollink' ).hide();
 									break;
 								case 'maximized':
 								default:
 									this.maximize();
+									$( '#mw-content-text .patrollink' ).hide();
 									break;
 							}
 						}
@@ -155,6 +157,8 @@ $( function() {
 						if ( $( '#t-curationtoolbar' ).length === 0 ) {
 							this.insertLink();
 						}
+						// Show hidden patrol link in case they want to use that instead
+						$( '#mw-content-text .patrollink' ).show();
 					},
 
 					minimize: function ( savePref ) {
@@ -256,6 +260,7 @@ $( function() {
 									var mwFormat = now.toString( 'yyyyMMddHHmmss' );
 
 									$( '#mwe-pt-toolbar' ).show();
+									$( '#mw-content-text .patrollink' ).hide();
 									_this.setToolbarPreference( 'maximized', mwFormat );
 								}
 								this.blur();
