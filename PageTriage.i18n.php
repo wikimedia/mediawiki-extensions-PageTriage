@@ -4916,6 +4916,7 @@ $messages['it'] = array(
 	'pagetriage-tag-warning-notice' => "Nota: questa pagina è solo di $1 {{PLURAL:$1|minuto|minuti}} fa. Aspetta un po' prima di contrassegnarla a meno che il problema non sia serio.",
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 è stato {{GENDER:$2|revisionato}} da $2',
 	'echo-pref-subscription-page-review' => 'Revisiona una pagina che ho creato',
+	'echo-pref-tooltip-page-review' => 'Avvisami quando qualcuno revisiona una pagina che ho creato.',
 );
 
 /** Japanese (日本語)
@@ -5900,7 +5901,7 @@ $messages['lb'] = array(
 	'pagetriage-toolbar-close' => 'Zoumaachen',
 	'pagetriage-toolbar-minimize' => 'Minimiséieren',
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] gouf vum [[User:$1|$1]] {{GENDER:$1|nogekuckt}}',
-	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] gouf vum $1 {{GENDER:$1|nogekuckt}}', # Fuzzy
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] gouf vum <b>$1</b> {{GENDER:$1|nogekuckt}}',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 gouf vum $1 {{GENDER:$1|nogekuckt}}',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 gouf vum $2 {{GENDER:$2|nogekuckt}}',
 	'echo-category-title-page-review' => 'Iwwerliese vun der Säit', # Fuzzy
@@ -7085,22 +7086,45 @@ $messages['pt'] = array(
  * @author Helder.wiki
  * @author Luckas
  * @author Luckas Blade
+ * @author OTAVIO1981
  */
 $messages['pt-br'] = array(
+	'pagetriage' => 'Triagem de Páginas',
+	'pagetriage-desc' => 'Facilidades revisando e aprovando páginas novas',
 	'pagetriage-pagecuration' => 'Curação de Páginas',
+	'pagetriage-please-wait' => 'Por favor, aguarde...',
+	'pagetriage-api-invalidid' => 'O ID que forneceu ($1) não é válido.',
+	'pagetriage-markpatrolled' => 'Marque esta página como revisada',
+	'pagetriage-markunpatrolled' => 'Marque esta página como não-revisada',
+	'pagetriage-self-review-error' => 'Você não pode revisar páginas que criou.',
+	'pagetriage-api-error' => 'Ocorreu um erro enquanto carregado a interface a partir do API. Por favor, tente recarregar a página.',
+	'pagetriage-reviewed' => 'Revisada',
+	'pagetriage-mark-as-reviewed-error' => 'Ocorreu um erro enquanto marcado a página como revisada:$1',
+	'pagetriage-mark-as-unreviewed-error' => 'Ocorreu um erro enquanto marcando a página como não-revisada:$1',
 	'pagetriage-hist' => 'hist',
 	'pagetriage-bytes' => '$1 {{PLURAL:$1|byte|bytes}}',
 	'pagetriage-edits' => '$1 {{PLURAL:$1|edição|edições}}',
 	'pagetriage-categories' => '$1 {{PLURAL:$1|categoria|categorias}}',
 	'pagetriage-no-categories' => 'Sem categorias',
 	'pagetriage-no-reference' => 'Sem citações',
+	'pagetriage-orphan' => 'Orfã',
+	'pagetriage-no-author' => 'Nenhuma informação do autor está presente',
+	'pagetriage-byline' => 'Criada por $1 ($2$3$4)',
+	'pagetriage-byline-new-editor' => 'Criada pelo novato $1 ($2$3$4)',
+	'pagetriage-articleinfo-byline' => 'Esta página foi criada em $1 por $2 ($3$4$5)',
+	'pagetriage-articleinfo-byline-new-editor' => 'Esta página foi criada em $1 pelo novato $2 ($3$4$5)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|edição|edições}} desde $2',
 	'pagetriage-author-not-autoconfirmed' => 'Novo editor',
+	'pagetriage-no-patrol-right' => 'Você não tem permissão para marcar esta página como revisada',
 	'pagetriage-author-blocked' => 'Bloqueado',
 	'pagetriage-author-bot' => 'Bot',
 	'pagetriage-showing' => 'Mostrando:',
 	'pagetriage-filter-list-prompt' => 'Definir filtros',
+	'pagetriage-unreviewed-article-count' => '$1 {{PLURAL:$1|página|páginas}} não revisadas (mais antiga: $2)',
+	'pagetriage-reviewed-article-count-past-week' => '$1 {{PLURAL:$1|página|páginas}} revisadas esta semana',
 	'pagetriage-sort-by' => 'Ordenar por:',
+	'pagetriage-newest' => 'Mais recente',
+	'pagetriage-oldest' => 'Mais antiga',
 	'pagetriage-triage' => 'Revisar',
 	'pagetriage-filter-show-heading' => 'Exibir:',
 	'pagetriage-filter-reviewed-edits' => 'Páginas analisadas',
@@ -7114,9 +7138,15 @@ $messages['pt-br'] = array(
 	'pagetriage-filter-username' => 'Nome de usuário',
 	'pagetriage-filter-tag-heading' => 'Com a etiqueta:',
 	'pagetriage-filter-second-show-heading' => 'Que:',
+	'pagetriage-filter-no-categories' => 'Não têm categorias',
 	'pagetriage-filter-orphan' => 'Estão órfãos',
 	'pagetriage-filter-non-autoconfirmed' => 'Foram criados por novos editores',
 	'pagetriage-filter-blocked' => 'Foram criados por usuários bloqueados',
+	'pagetriage-filter-all' => 'Mostrar todos',
+	'pagetriage-filter-set-button' => 'Definir filtros',
+	'pagetriage-stats-less-than-a-day' => 'menos de um dia',
+	'pagetriage-stats-reviewed-page-count' => '$1 {{PLURAL:$1|página|páginas}} revisadas esta semana',
+	'pagetriage-stats-filter-page-count' => '$1 {{PLURAL:$1|página|páginas}} na sua lista filtrada',
 	'pagetriage-more' => 'Mais',
 	'pagetriage-filter-stat-non-autoconfirmed' => 'novos editores',
 	'pagetriage-button-add-parameters' => 'Adicionar parâmetros',
