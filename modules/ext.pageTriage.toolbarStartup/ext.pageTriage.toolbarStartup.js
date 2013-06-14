@@ -6,9 +6,6 @@ jQuery( function( $ ) {
 		return true;
 	}
 
-	// Remove patrol link
-	$( '#mw-content-text .patrollink' ).remove();
-
 	// Load the curation toolbar
 	mw.loader.load( 'ext.pageTriage.views.toolbar' );
 	
