@@ -559,7 +559,8 @@ The tool works correctly in IE8.',
 	'pagetriage-tag-count-total' => 'Message that shows the number of tags being selected, $1 is the number',
 	'pagetriage-button-add-tag' => 'Text for the button that submits tags',
 	'pagetriage-button-add-tag-number' => 'Text for the button that submits tags. $1 is a number.',
-	'pagetriage-button-add-parameters' => 'Text for the button that adds parameters',
+	'pagetriage-button-add-parameters' => 'Text for the button that adds parameters.
+{{Identical|Add parameter}}',
 	'pagetriage-button-add-details' => 'Text for the button that saves any extra information associated with the tag',
 	'pagetriage-button-edit-details' => 'Text for the button that lets the user edit information associated with the tag',
 	'pagetriage-button-mark-for-deletion' => 'Text for the button that lets the user mark an article for deletion',
@@ -3424,7 +3425,7 @@ $messages['gl'] = array(
 	'pagetriage-tags-originalresearch-label' => 'Traballo inédito',
 	'pagetriage-tags-originalresearch-desc' => 'Esta páxina contén información inédita ou declaracións sen verificar.',
 	'pagetriage-tags-primarysources-label' => 'Fontes primarias',
-	'pagetriage-tags-primarysources-desc' => 'Esta páxina apóiase demasiado en fontes de primeira man; necesita fontes de terceiros.', # Fuzzy
+	'pagetriage-tags-primarysources-desc' => 'Esta páxina apóiase demasiado en fontes primarias; necesita fontes secundarias.',
 	'pagetriage-tags-onesource-label' => 'Fonte única',
 	'pagetriage-tags-onesource-desc' => 'Esta páxina apóiase en gran medida ou totalmente nunha única fonte.',
 	'pagetriage-tags-condense-label' => 'Condensar',
@@ -5746,6 +5747,7 @@ $messages['lb'] = array(
 	'pagetriage-edits' => '$1 {{PLURAL:$1|Ännerung|Ännerungen}}',
 	'pagetriage-categories' => '$1 {{PLURAL:$1|Kategorie|Kategorien}}',
 	'pagetriage-no-categories' => 'Keng Kategorien',
+	'pagetriage-no-reference' => 'Keng Zitatiounen',
 	'pagetriage-orphan' => 'Weesen',
 	'pagetriage-no-author' => 'Et gëtt keng Informatioun iwwer den Auteur',
 	'pagetriage-byline' => 'Vum $1 ($2$3$4) ugeluecht',
@@ -5904,7 +5906,7 @@ $messages['lb'] = array(
 	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] gouf vum <b>$1</b> {{GENDER:$1|nogekuckt}}',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 gouf vum $1 {{GENDER:$1|nogekuckt}}',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 gouf vum $2 {{GENDER:$2|nogekuckt}}',
-	'echo-category-title-page-review' => 'Iwwerliese vun der Säit', # Fuzzy
+	'echo-category-title-page-review' => 'mol Säit {{PLURAL:$1|nogekuckt}}',
 );
 
 /** Macedonian (македонски)
