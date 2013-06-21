@@ -476,7 +476,8 @@ A character that separates different statistics about the page, for example: 9 b
 	'pagetriage-editcount' => "Display of page author's editing experience. $1 is total edit count, $2 is author's join date",
 	'pagetriage-author-not-autoconfirmed' => 'String indicating that the author was not yet autoconfirmed when the page was last edited',
 	'pagetriage-no-patrol-right' => 'String indicating that a user does not have rights to mark a page as reviewed',
-	'pagetriage-author-blocked' => 'String indicating that the author was blocked when the page was last edited',
+	'pagetriage-author-blocked' => 'String indicating that the author was blocked when the page was last edited.
+{{Identical|Blocked}}',
 	'pagetriage-author-bot' => 'String indicating that the author is a bot',
 	'pagetriage-creation-dateformat' => "{{Optional}}
 Format specifier for the page creation date. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers
@@ -793,7 +794,8 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-tags-param-free-label' => 'Label for free parameter',
 	'pagetriage-tags-param-url-label' => 'Label for url parameter',
 	'pagetriage-tags-param-free-yes-label' => 'Label for Yes answer of free parameter',
-	'pagetriage-tags-param-free-no-label' => 'Label for No answer of free parameter',
+	'pagetriage-tags-param-free-no-label' => 'Label for No answer of free parameter.
+{{Identical|No}}',
 	'pagetriage-tags-param-missing-required' => 'Error message for missing required tag parameter, $1 is the tag name',
 	'pagetriage-tags-param-date-format' => 'The date format for the date parameter of tags, $1 is the month, $2 is the year',
 	'log-name-pagetriage-curation' => '{{doc-logpage}}',
@@ -1429,6 +1431,7 @@ $messages['cs'] = array(
 	'pagetriage-info-problem-no-references' => 'Bez zdrojů',
 	'pagetriage-info-problem-no-references-desc' => 'Tato stránka necituje žádné zdroje.',
 	'echo-pref-subscription-page-review' => 'Zkontroluje stránku, kterou jsem založil',
+	'echo-pref-tooltip-page-review' => 'Upozorněte mě, když někdo posoudí stránku, kterou jsem založil.',
 	'echo-category-title-page-review' => '{{PLURAL:$1|posouzení stránky}}',
 );
 
