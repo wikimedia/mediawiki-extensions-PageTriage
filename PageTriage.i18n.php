@@ -876,7 +876,8 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 	'pagetriage-add-tag-confirmation' => 'Confirmation message upon tag submission. Parameters:
 * $1 is the number of tags.',
 	'pagetriage-tag-deletion-error' => 'Error message indicating that a page has already been nominated for deletion',
-	'pagetriage-toolbar-close' => 'Tooltip for the close button in the Curation Toolbar',
+	'pagetriage-toolbar-close' => 'Tooltip for the close button in the Curation Toolbar.
+{{Identical|Close}}',
 	'pagetriage-toolbar-minimize' => 'Tooltip for the minimize button in the Curation Toolbar (also docks the minimized toolbar to the side of the screen)',
 	'pagetriage-tag-warning-notice' => 'Warning notice in maintenance and deletion tag flyout if the page was created less than some amount of time ago',
 	'pagetriage-notification-mark-as-reviewed2' => "Title for 'mark as reviewed' notification.  Parameters:
