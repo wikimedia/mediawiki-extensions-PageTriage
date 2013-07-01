@@ -610,7 +610,8 @@ Label for ref improve tag',
 	'pagetriage-tags-refimprove-desc' => '{{Optional}}
 Description for ref improve tag',
 	'pagetriage-tags-uncategorised-label' => '{{Optional}}
-Label for uncategorised tag',
+Label for uncategorised tag
+{{Identical|Uncategorized}}',
 	'pagetriage-tags-uncategorised-desc' => '{{Optional}}
 Description for uncategorised tag',
 	'pagetriage-tags-unreferenced-label' => '{{Optional}}
@@ -678,7 +679,8 @@ Description for orphan tag',
 	'pagetriage-tags-leadtooshort-desc' => 'Description for lead too short tag',
 	'pagetriage-tags-cleanupreorganise-label' => 'Label for cleanup-reorganise tag',
 	'pagetriage-tags-cleanupreorganise-desc' => 'Description for cleanup-reorganise tag',
-	'pagetriage-tags-sections-label' => 'Label for sections tag',
+	'pagetriage-tags-sections-label' => 'Label for sections tag.
+{{Identical|Section}}',
 	'pagetriage-tags-sections-desc' => 'Description for sections tag',
 	'pagetriage-tags-stub-label' => 'Label for stub tag',
 	'pagetriage-tags-stub-desc' => 'Description for stub tag',
@@ -734,7 +736,8 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-tags-toofewopinions-desc' => 'Description for too few opinions tag',
 	'pagetriage-tags-unbalanced-label' => '{{optional}}',
 	'pagetriage-tags-unbalanced-desc' => '{{optional}}',
-	'pagetriage-tags-update-label' => 'Label for update tag',
+	'pagetriage-tags-update-label' => 'Label for update tag.
+{{Identical|Update}}',
 	'pagetriage-tags-update-desc' => 'Description for update tag',
 	'pagetriage-tags-tooltip' => 'Help message that displays when someone hovers over the tag wizard button',
 	'pagetriage-del-tags-cat-csd-label' => 'Label for speedy deletion category',
@@ -793,7 +796,8 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-tags-param-source-label' => 'Label for source parameter (a text input field)',
 	'pagetriage-tags-param-free-label' => 'Label for free parameter',
 	'pagetriage-tags-param-url-label' => 'Label for url parameter',
-	'pagetriage-tags-param-free-yes-label' => 'Label for Yes answer of free parameter',
+	'pagetriage-tags-param-free-yes-label' => 'Label for Yes answer of free parameter.
+{{Identical|Yes}}',
 	'pagetriage-tags-param-free-no-label' => 'Label for No answer of free parameter.
 {{Identical|No}}',
 	'pagetriage-tags-param-missing-required' => 'Error message for missing required tag parameter, $1 is the tag name',
@@ -1914,6 +1918,8 @@ $messages['el'] = array(
  * @author Shirayuki
  */
 $messages['en-gb'] = array(
+	'pagetriage-tags-uncategorised-label' => 'Uncategorised',
+	'pagetriage-tags-cleanupreorganise-label' => 'Reorganise',
 	'pagetriage-toolbar-minimize' => 'Minimise',
 );
 

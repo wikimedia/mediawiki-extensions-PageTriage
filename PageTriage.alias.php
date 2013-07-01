@@ -25,7 +25,7 @@ $specialPageAliases['de'] = array(
 
 /** Zazaki (Zazaki) */
 $specialPageAliases['diq'] = array(
-	'NewPagesFeed' => array( 'WerdêPerandeNewan' ),
+	'NewPagesFeed' => array( 'WerdéPerandéNewan' ),
 );
 
 /** Italian (italiano) */
