@@ -481,6 +481,7 @@ class PageTriageHooks {
 
 		if ( in_array( 'pagetriage-mark-as-reviewed', $wgPageTriageEnabledEchoEvents ) ) {
 			$notifications['pagetriage-mark-as-reviewed'] = array(
+				'primary-link' => array( 'message' => 'notification-link-text-view-page', 'destination' => 'title' ),
 				'category' => 'page-review',
 				'group' => 'neutral',
 				'formatter-class' => 'PageTriageNotificationFormatter',
@@ -499,6 +500,7 @@ class PageTriageHooks {
 		}
 		if ( in_array( 'pagetriage-add-maintenance-tag', $wgPageTriageEnabledEchoEvents ) ) {
 			$notifications['pagetriage-add-maintenance-tag'] = array(
+				'primary-link' => array( 'message' => 'notification-link-text-view-page', 'destination' => 'title' ),
 				'category' => 'page-review',
 				'group' => 'neutral',
 				'formatter-class' => 'PageTriageNotificationFormatter',
@@ -517,6 +519,7 @@ class PageTriageHooks {
 		}
 		if ( in_array( 'pagetriage-add-deletion-tag', $wgPageTriageEnabledEchoEvents ) ) {
 			$notifications['pagetriage-add-deletion-tag'] = array(
+				'primary-link' => array( 'message' => 'notification-link-text-view-page', 'destination' => 'title' ),
 				'category' => 'page-review',
 				'group' => 'negative',
 				'formatter-class' => 'PageTriageNotificationFormatter',
