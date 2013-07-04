@@ -6813,6 +6813,7 @@ $messages['pl'] = array(
 	'pagetriage-info-timestamp-time-format' => 'HH:mm',
 	'pagetriage-wikilove-page-creator' => 'Twórca strony',
 	'echo-pref-subscription-page-review' => 'oceni utworzoną przeze mnie stronę',
+	'echo-pref-tooltip-page-review' => 'Powiadom mnie, kiedy ktoś przejrzy stronę przeze mnie utworzoną.',
 	'echo-category-title-page-review' => '{{PLURAL:$1|Strona przejrzana|Strony przejrzane}}',
 );
 
