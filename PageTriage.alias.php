@@ -28,6 +28,11 @@ $specialPageAliases['diq'] = array(
 	'NewPagesFeed' => array( 'WerdéPerandéNewan' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'NewPagesFeed' => array( 'خوراک_صفحه‌های_جدید' ),
+);
+
 /** Italian (italiano) */
 $specialPageAliases['it'] = array(
 	'NewPagesFeed' => array( 'FeedNuovePagine' ),
