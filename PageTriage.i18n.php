@@ -1361,6 +1361,14 @@ $messages['bxr'] = array(
 	'pagetriage-filter-article' => 'Үгүүлэл',
 );
 
+/** Chechen (нохчийн)
+ * @author Умар
+ */
+$messages['ce'] = array(
+	'pagetriage-filter-username' => 'Декъашхон цӀе',
+	'pagetriage-filter-stat-username' => 'декъашхон цӀе: $1',
+);
+
 /** Czech (česky)
  * @author Jkjk
  * @author Littledogboy
