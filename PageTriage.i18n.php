@@ -1448,6 +1448,14 @@ $messages['cs'] = array(
 	'echo-category-title-page-review' => '{{PLURAL:$1|posouzení stránky}}',
 );
 
+/** Church Slavic (словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'pagetriage-info-history-header' => 'їсторїꙗ',
+	'pagetriage-info-help' => 'помощь',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Metalhead64
@@ -2078,7 +2086,7 @@ $messages['es'] = array(
 	'pagetriage-button-add-tag-number' => 'Agregar $1 etiquetas seleccionadas',
 	'pagetriage-button-add-parameters' => 'Añadir parámetros',
 	'pagetriage-button-add-details' => 'Añadir detalles',
-	'pagetriage-button-edit-details' => 'Editar detalles',
+	'pagetriage-button-edit-details' => 'Editar los detalles',
 	'pagetriage-button-mark-for-deletion' => 'Marcar para borrar',
 	'pagetriage-add-a-note-creator' => 'Añadir un mensaje para el creador: (opcional)',
 	'pagetriage-add-a-note-reviewer' => 'Añadir un mensaje para el revisor: (opcional)',
