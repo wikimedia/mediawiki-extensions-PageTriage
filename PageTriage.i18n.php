@@ -1452,6 +1452,8 @@ $messages['cs'] = array(
  * @author ОйЛ
  */
 $messages['cu'] = array(
+	'pagetriage-tags-param-free-yes-label' => 'да',
+	'pagetriage-tags-param-free-no-label' => 'нѣтъ',
 	'pagetriage-info-history-header' => 'їсторїꙗ',
 	'pagetriage-info-help' => 'помощь',
 );
@@ -5683,7 +5685,7 @@ $messages['ko'] = array(
 	'pagetriage-toolbar-minimize' => '최소화',
 	'pagetriage-tag-warning-notice' => '참고: 이 문서만 $1{{PLURAL:$1|분}} 전입니다. 문제가 심각하지 않다면 해당 태그를 기다리는 것을 고려하세요.',
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] 문서를 [[User:$1|$1]] 사용자가 {{GENDER:$1|검토했습니다}}',
-	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] 문서를 $1 사용자가 {{GENDER:$1|검토했습니다}}', # Fuzzy
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] 문서를 <b>$1</b> 사용자가 {{GENDER:$1|검토했습니다}}',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 문서를 $1 사용자가 {{GENDER:$1|검토했습니다}}',
 	'pagetriage-notification-mark-as-reviewed-email-body2' => '$2 문서를 {{SITENAME}} $1 사용자가 {{GENDER:$1|검토했습니다}}:
 
@@ -5694,7 +5696,7 @@ $3
 $4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 문서를 $2 사용자가 {{GENDER:$2|검토했습니다}}',
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] 문서를 [[User:$1|$1]] 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}.  {{PLURAL:$4|태그}}: $3',
-	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] 문서를 $1 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}.  {{PLURAL:$4|태그}}: $3', # Fuzzy
+	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] 문서를 <b>$1</b> 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}. {{PLURAL:$4|태그}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 문서를 $1 사용자가 {{GENDER:$1|태그했습니다}}',
 	'pagetriage-notification-add-maintenance-tag-email-body2' => '$2 문서를 {{SITENAME}} $1 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}.
 
@@ -5706,7 +5708,7 @@ $3
 
 $6',
 	'pagetriage-notification-add-deletion-tag2' => '[[$2]] 문서를 [[User:$1|$1]] 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|삭제로 표시했습니다}}.  {{PLURAL:$4|태그}}: $3',
-	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] 문서를 $1 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|삭제로 표시했습니다}}.  {{PLURAL:$4|태그}}: $3', # Fuzzy
+	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] 문서를 <b>$1</b> 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|삭제로 표시했습니다}}. {{PLURAL:$4|태그}}: $3',
 	'pagetriage-notification-add-deletion-tag-email-subject2' => '$2 문서를 $1 사용자가 {{GENDER:$1|삭제로 표시했습니다}}',
 	'pagetriage-notification-add-deletion-tag-email-body2' => '$2 문서를 {{SITENAME}} $1 사용자가 {{GENDER:$1|삭제로 표시했습니다}}.
 
@@ -5718,7 +5720,8 @@ $3
 
 $6',
 	'echo-pref-subscription-page-review' => '내가 만든 문서를 검토하기',
-	'echo-category-title-page-review' => '문서 검토', # Fuzzy
+	'echo-pref-tooltip-page-review' => '내가 만든 문서를 누군가가 검토할 때 내게 알립니다.',
+	'echo-category-title-page-review' => '문서 {{PLURAL:$1|검토}}',
 );
 
 /** Colognian (Ripoarisch)
