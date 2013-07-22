@@ -1365,8 +1365,10 @@ $messages['bxr'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
-	'pagetriage-filter-username' => 'Декъашхон цӀе',
-	'pagetriage-filter-stat-username' => 'декъашхон цӀе: $1',
+	'pagetriage-triage' => 'Хьажа',
+	'pagetriage-filter-username' => 'Декъашхочун цӀе',
+	'pagetriage-filter-stat-blocked' => 'блоктоьхна декъашхой',
+	'pagetriage-filter-stat-username' => 'декъашхочун цӀе: $1',
 );
 
 /** Czech (česky)
