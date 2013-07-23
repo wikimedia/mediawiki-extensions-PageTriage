@@ -1458,6 +1458,7 @@ $messages['cu'] = array(
 	'pagetriage-tags-param-free-no-label' => 'нѣтъ',
 	'pagetriage-info-history-header' => 'їсторїꙗ',
 	'pagetriage-info-help' => 'помощь',
+	'pagetriage-toolbar-close' => 'ꙁакрꙑи',
 );
 
 /** German (Deutsch)
@@ -7094,6 +7095,7 @@ $messages['ps'] = array(
 
 /** Portuguese (português)
  * @author Helder.wiki
+ * @author Luckas
  * @author Malafaya
  * @author SandroHc
  */
@@ -7104,7 +7106,7 @@ $messages['pt'] = array(
 	'pagetriage-orphan' => 'Órfã',
 	'pagetriage-byline' => 'Criado por $1 ($2$3$4)',
 	'pagetriage-author-not-autoconfirmed' => 'Novo editor',
-	'pagetriage-filter-redirects' => 'Redireccionamentos',
+	'pagetriage-filter-redirects' => 'Redirecionamentos',
 	'pagetriage-filter-second-show-heading' => 'Que:',
 	'pagetriage-filter-no-categories' => 'Não têm categorias',
 	'pagetriage-filter-ns-all' => 'Todos',
