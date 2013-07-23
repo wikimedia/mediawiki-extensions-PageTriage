@@ -378,41 +378,16 @@ $messages['en'] = array(
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] was {{GENDER:$1|reviewed}} by [[User:$1|$1]]',
 	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] was {{GENDER:$1|reviewed}} by <b>$1</b>',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => 'Your page was {{GENDER:$1|reviewed}} on {{SITENAME}}',
-	'pagetriage-notification-mark-as-reviewed-email-body2' => '$2 was {{GENDER:$1|reviewed}} by {{SITENAME}} user $1:
-
-View more:
-
-$3
-
-$4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 was {{GENDER:$2|reviewed}} by $2.',
 	// notification - add maintenance tag
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|tagged}} by [[User:$1|$1]]. {{PLURAL:$4|Tag|Tags}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|tagged}} by <b>$1</b>. {{PLURAL:$4|Tag|Tags}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => 'Your page was {{GENDER:$1|tagged}} on {{SITENAME}}',
-	'pagetriage-notification-add-maintenance-tag-email-body2' => '$2 was {{GENDER:$1|reviewed}} and {{GENDER:$1|tagged}} by {{SITENAME}} user $1.
-
-{{PLURAL:$5|Tag|Tags}}: $4
-
-View more:
-
-$3
-
-$6',
 	'pagetriage-notification-add-maintenance-tag-email-batch-body' => '$1 was {{GENDER:$2|reviewed}} and {{GENDER:$2|tagged}} by $2.',
 	// notification - add deletion tag
 	'pagetriage-notification-add-deletion-tag2' => '[[$2]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|marked for deletion}} by [[User:$1|$1]]. {{PLURAL:$4|Tag|Tags}}: $3',
 	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|marked for deletion}} by <b>$1</b>. {{PLURAL:$4|Tag|Tags}}: $3',
 	'pagetriage-notification-add-deletion-tag-email-subject2' => 'Your page was {{GENDER:$1|marked for deletion}} on {{SITENAME}}',
-	'pagetriage-notification-add-deletion-tag-email-body2' => '$2 was {{GENDER:$1|marked for deletion}} by {{SITENAME}} user $1.
-
-{{PLURAL:$5|Tag|Tags}}: $4
-
-View more:
-
-$3
-
-$6',
 	'pagetriage-notification-add-deletion-tag-email-batch-body' => '$1 was {{GENDER:$2|marked for deletion}} by $2.',
 	'echo-pref-subscription-page-review' => 'Reviews a page I created',
 	'echo-pref-tooltip-page-review' => 'Notify me when someone reviews a page I created.',
@@ -897,42 +872,28 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 See also:
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed-flyout}}
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-batch-body}}
-* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}
-* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-body2}}",
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}",
 	'pagetriage-notification-mark-as-reviewed-flyout' => "Flyout-specific title for 'mark as reviewed' notification.  Parameters:
 * $1 is the username of the person who marked the page as reviewed, plain text
 * $2 is the title of the page
 See also:
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed2}}
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-batch-body}}
-* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}
-* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-body2}}",
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}",
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => "Email subject for 'mark as reviewed' notification.  Parameters:
 * $1 is the username of the person who marked the page as reviewed, plain text
 * $2 is the title of the page
 See also:
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed2}}
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed-flyout}}
-* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-batch-body}}
-* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-body2}}",
-	'pagetriage-notification-mark-as-reviewed-email-body2' => "Email body for 'mark as reviewed' notification.  Parameters:
-* $1 is the user name of the pseron who marked the page as reviewed
-* $2 is the title of the page
-* $3 is the link to the page
-* $4 is the email footer
-See also:
-* {{msg-mw|Pagetriage-notification-mark-as-reviewed2}}
-* {{msg-mw|Pagetriage-notification-mark-as-reviewed-flyout}}
-* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-batch-body}}
-* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}",
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-batch-body}}",
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => "Email batch body for 'mark as reviewed' notification.  Parameters:
 * $1 is the title of the page
 * $2 is the username of the person who reviewed the page
 See also:
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed2}}
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed-flyout}}
-* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}
-* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-body2}}",
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}",
 	'pagetriage-notification-add-maintenance-tag2' => "Title for 'add maintenance tag' notification.  Parameters:
 * $1 is the username of the person who added maintenance tag, plain text
 * $2 is the title of the page
@@ -940,8 +901,7 @@ See also:
 * $4 is the number of maintenance tags
 See also:
 * {{msg-mw|Pagetriage-notification-add-maintenance-tag-flyout}}
-* {{msg-mw|Pagetriage-notification-add-maintenance-tag-email-subject2}}
-* {{msg-mw|Pagetriage-notification-add-maintenance-tag-email-body2}}",
+* {{msg-mw|Pagetriage-notification-add-maintenance-tag-email-subject2}}",
 	'pagetriage-notification-add-maintenance-tag-flyout' => "Flyout-specific title for 'add maintenance tag' notification.  Parameters:
 * $1 is the username of the person who added maintenance tag, plain text
 * $2 is the title of the page
@@ -949,26 +909,13 @@ See also:
 * $4 is the number of maintenance tags
 See also:
 * {{msg-mw|Pagetriage-notification-add-maintenance-tag2}}
-* {{msg-mw|Pagetriage-notification-add-maintenance-tag-email-subject2}}
-* {{msg-mw|Pagetriage-notification-add-maintenance-tag-email-body2}}",
+* {{msg-mw|Pagetriage-notification-add-maintenance-tag-email-subject2}}",
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => "Email subject for 'add maintenance tag' notification.  Parameters:
 * $1 is the username of the person who added maintenance tag, plain text
 * $2 is the title of the page
 See also:
 * {{msg-mw|Pagetriage-notification-add-maintenance-tag2}}
-* {{msg-mw|Pagetriage-notification-add-maintenance-tag-flyout}}
-* {{msg-mw|Pagetriage-notification-add-maintenance-tag-email-body2}}",
-	'pagetriage-notification-add-maintenance-tag-email-body2' => "Email body for 'add maintenance tag' notification.  Parameters:
-* $1 is the username of the person who added maintenance tag to the page
-* $2 is the title of the page
-* $3 is the link to the page
-* $4 is the list of maintenance tags
-* $5 is the number of maintenance tags
-* $6 is the email footer
-See also:
-* {{msg-mw|Pagetriage-notification-add-maintenance-tag2}}
-* {{msg-mw|Pagetriage-notification-add-maintenance-tag-flyout}}
-* {{msg-mw|Pagetriage-notification-add-maintenance-tag-email-subject2}}",
+* {{msg-mw|Pagetriage-notification-add-maintenance-tag-flyout}}",
 	'pagetriage-notification-add-maintenance-tag-email-batch-body' => "Email batch body for 'add maintenance tag' notification. Parameters:
 * $1 is the title of the page
 * $2 is the username of the person who added maintenance tag to the page",
@@ -979,8 +926,7 @@ See also:
 * $4 is the number of deletion tags
 See also:
 * {{msg-mw|Pagetriage-notification-add-deletion-tag-flyout}}
-* {{msg-mw|Pagetriage-notification-add-deletion-tag-email-subject2}}
-* {{msg-mw|Pagetriage-notification-add-deletion-tag-email-body2}}",
+* {{msg-mw|Pagetriage-notification-add-deletion-tag-email-subject2}}",
 	'pagetriage-notification-add-deletion-tag-flyout' => "Flyout-specific title for 'add deletion tag' notification.  Parameters:
 * $1 - the username of the person who added deletion tag, plain text
 * $2 - the title of the page
@@ -988,26 +934,13 @@ See also:
 * $4 - the number of deletion tags
 See also:
 * {{msg-mw|Pagetriage-notification-add-deletion-tag2}}
-* {{msg-mw|Pagetriage-notification-add-deletion-tag-email-subject2}}
-* {{msg-mw|Pagetriage-notification-add-deletion-tag-email-body2}}",
+* {{msg-mw|Pagetriage-notification-add-deletion-tag-email-subject2}}",
 	'pagetriage-notification-add-deletion-tag-email-subject2' => "Email subject for 'add deletion tag' notification.  Parameters:
 * $1 is the username of the person who added deletion tag, plain text
 * $2 is the title of the page
 See also:
 * {{msg-mw|Pagetriage-notification-add-deletion-tag2}}
-* {{msg-mw|Pagetriage-notification-add-deletion-tag-flyout}}
-* {{msg-mw|Pagetriage-notification-add-deletion-tag-email-body2}}",
-	'pagetriage-notification-add-deletion-tag-email-body2' => "Email body for 'add deletion tag' notification.  Parameters:
-* $1 is the username of the person who added deletion tag to the page
-* $2 is the title of the page
-* $3 is the link to the page
-* $4 is the list of deletion tags
-* $5 is the number of deletion tags
-* $6 is the email footer
-See also:
-* {{msg-mw|Pagetriage-notification-add-deletion-tag2}}
-* {{msg-mw|Pagetriage-notification-add-deletion-tag-flyout}}
-* {{msg-mw|Pagetriage-notification-add-deletion-tag-email-subject2}}",
+* {{msg-mw|Pagetriage-notification-add-deletion-tag-flyout}}",
 	'pagetriage-notification-add-deletion-tag-email-batch-body' => "Email batch body for 'add deletion tag' notification. Parameters:
 * $1 is the title of the page
 * $2 is the username of the person who added maintenance tag to the page",
