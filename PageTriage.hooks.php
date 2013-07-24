@@ -512,7 +512,7 @@ class PageTriageHooks {
 				'email-subject-params' => array( 'agent', 'title' ),
 				'email-body-message' => 'pagetriage-notification-add-maintenance-tag-email-body2',
 				'email-body-params' => array( 'agent', 'title', 'titlelink', 'tag', 'email-footer' ),
-				'email-body-batch-message' => 'pagetriage-notification-mark-as-reviewed-email-batch-body',
+				'email-body-batch-message' => 'pagetriage-notification-add-maintenance-tag-email-batch-body',
 				'email-body-batch-params' => array( 'title', 'agent' ),
 				'icon' => 'checkmark',
 			);
@@ -531,7 +531,7 @@ class PageTriageHooks {
 				'email-subject-params' => array( 'agent', 'title' ),
 				'email-body-message' => 'pagetriage-notification-add-deletion-tag-email-body2',
 				'email-body-params' => array( 'agent', 'title', 'titlelink', 'tag', 'email-footer' ),
-				'email-body-batch-message' => 'pagetriage-notification-mark-as-reviewed-email-batch-body',
+				'email-body-batch-message' => 'pagetriage-notification-add-deletion-tag-email-batch-body',
 				'email-body-batch-params' => array( 'title', 'agent' ),
 				'icon' => 'trash',
 			);
