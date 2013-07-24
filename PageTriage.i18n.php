@@ -5697,7 +5697,7 @@ $messages['ko'] = array(
 	'pagetriage-tag-warning-notice' => '참고: 이 문서만 $1{{PLURAL:$1|분}} 전입니다. 문제가 심각하지 않다면 해당 태그를 기다리는 것을 고려하세요.',
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] 문서를 [[User:$1|$1]] 사용자가 {{GENDER:$1|검토했습니다}}',
 	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] 문서를 <b>$1</b> 사용자가 {{GENDER:$1|검토했습니다}}',
-	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 문서를 $1 사용자가 {{GENDER:$1|검토했습니다}}',
+	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 문서를 $1 사용자가 {{GENDER:$1|검토했습니다}}', # Fuzzy
 	'pagetriage-notification-mark-as-reviewed-email-body2' => '$2 문서를 {{SITENAME}} $1 사용자가 {{GENDER:$1|검토했습니다}}:
 
 더 보기:
@@ -5708,7 +5708,7 @@ $4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 문서를 $2 사용자가 {{GENDER:$2|검토했습니다}}',
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] 문서를 [[User:$1|$1]] 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}.  {{PLURAL:$4|태그}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] 문서를 <b>$1</b> 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}. {{PLURAL:$4|태그}}: $3',
-	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 문서를 $1 사용자가 {{GENDER:$1|태그했습니다}}',
+	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2 문서를 $1 사용자가 {{GENDER:$1|태그했습니다}}', # Fuzzy
 	'pagetriage-notification-add-maintenance-tag-email-body2' => '$2 문서를 {{SITENAME}} $1 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}.
 
 {{PLURAL:$5|태그}}: $4
@@ -5720,7 +5720,7 @@ $3
 $6',
 	'pagetriage-notification-add-deletion-tag2' => '[[$2]] 문서를 [[User:$1|$1]] 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|삭제로 표시했습니다}}.  {{PLURAL:$4|태그}}: $3',
 	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] 문서를 <b>$1</b> 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|삭제로 표시했습니다}}. {{PLURAL:$4|태그}}: $3',
-	'pagetriage-notification-add-deletion-tag-email-subject2' => '$2 문서를 $1 사용자가 {{GENDER:$1|삭제로 표시했습니다}}',
+	'pagetriage-notification-add-deletion-tag-email-subject2' => '$2 문서를 $1 사용자가 {{GENDER:$1|삭제로 표시했습니다}}', # Fuzzy
 	'pagetriage-notification-add-deletion-tag-email-body2' => '$2 문서를 {{SITENAME}} $1 사용자가 {{GENDER:$1|삭제로 표시했습니다}}.
 
 {{PLURAL:$5|태그}}: $4
@@ -7640,6 +7640,7 @@ $messages['si'] = array(
 
 /** Swedish (svenska)
  * @author Ainali
+ * @author Jopparn
  * @author Rotsee
  * @author WikiPhoenix
  */
@@ -7809,6 +7810,7 @@ $messages['sv'] = array(
 	'pagetriage-info-problem-blocked-desc' => 'Denna sida skapades av en blockerad användare.',
 	'pagetriage-info-problem-no-categories' => 'Inga kategorier',
 	'pagetriage-info-problem-no-categories-desc' => 'Denna sida tillhör inga kategorier.',
+	'pagetriage-info-problem-orphan' => 'Föräldralös',
 	'pagetriage-info-problem-orphan-desc' => 'Inga andra sidor länkar till denna sida.',
 	'pagetriage-info-problem-no-references' => 'Inga referenser',
 	'pagetriage-info-problem-no-references-desc' => 'Denna sida har inga källor.',
@@ -7820,12 +7822,18 @@ $messages['sv'] = array(
 	'pagetriage-toolbar-learn-more' => 'Läs mer »',
 	'pagetriage-mark-title' => 'Markera som granskad',
 	'pagetriage-mark-as-reviewed' => 'Markera som granskad',
+	'pagetriage-mark-as-unreviewed' => 'Markera som ogranskad',
+	'pagetriage-mark-as-reviewed-helptext' => 'Markera den här sidan som granskad om du är färdig med att kontrollera den.',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|redigering|redigeringar}}',
 	'pagetriage-wikilove-tooltip' => 'Skicka uppskattning till författarna',
 	'pagetriage-next-tooltip' => 'Gå till nästa sida i kön',
+	'pagetriage-del-title' => 'Markera för radering',
 	'pagetriage-del-tooltip' => 'Nominera denna sida för radering',
 	'pagetriage-toolbar-close' => 'Stäng',
 	'pagetriage-toolbar-minimize' => 'Minimera',
+	'echo-pref-subscription-page-review' => 'Granska en sida jag skapat',
+	'echo-pref-tooltip-page-review' => 'Meddela mig när någon granskat en sida jag skapat.',
+	'echo-category-title-page-review' => '$1 {{PLURAL:$1|granskning|granskningar}}',
 );
 
 /** Tamil (தமிழ்)
