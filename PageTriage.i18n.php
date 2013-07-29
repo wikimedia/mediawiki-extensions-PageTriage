@@ -570,7 +570,11 @@ The tool works correctly in IE8.',
 	'pagetriage-add-a-note-creator' => 'Text for adding a personal note in curation toolbar for creator',
 	'pagetriage-add-a-note-reviewer' => 'Text for adding a personal note in curation toolbar for reviewer',
 	'pagetriage-characters-left' => 'The text indicating the number of characters remaining for input',
-	'pagetriage-personal-default-note' => 'Default text in the text box for editors to add a "Mark as reviewed" or "Tagging" personal note, $1 is the name of the page creator',
+	'pagetriage-personal-default-note' => '{{doc-singularthey}}
+Default text in the text box for editors to add a "Mark as reviewed" or "Tagging" personal note.
+
+Parameters:
+* $1 - the name of the page creator',
 	'pagetriage-page-status-reviewed' => 'Text that shows the page has been reviewed and the reviewer of the page, $1 is the review date/time, $2 is the link to reviewer user page, $3 is the link to reviewer talk page, $4 is the link separator, $5 is the link to reviewer contribs page',
 	'pagetriage-page-status-reviewed-anonymous' => 'Text that shows the page has been reviewed',
 	'pagetriage-page-status-unreviewed' => 'Text that shows the page has not yet been reviewed',
@@ -5369,7 +5373,7 @@ $messages['ko'] = array(
 	'pagetriage-markunpatrolled' => '이 문서를 검토하지 않은 것으로 표시',
 	'pagetriage-self-review-error' => '당신이 만든 문서를 검토할 수 없습니다.',
 	'pagetriage-api-error' => 'API로부터 인터페이스를 불러오는 동안 오류가 발생했습니다. 문서를 다시 불러오세요.',
-	'pagetriage-reviewed' => '검토함',
+	'pagetriage-reviewed' => '검토됨',
 	'pagetriage-mark-as-reviewed-error' => '검토함으로 문서를 표시하는 도중 오류가 발생했습니다: $1',
 	'pagetriage-mark-as-unreviewed-error' => '검토하지 않음으로 문서를 표시하는 도중 오류가 발생했습니다: $1',
 	'pagetriage-hist' => '역사',
@@ -5422,7 +5426,7 @@ $messages['ko'] = array(
 	'pagetriage-filter-ns-all' => '모두',
 	'pagetriage-more' => '더 보기',
 	'pagetriage-filter-stat-all' => '모두',
-	'pagetriage-filter-stat-reviewed' => '검토함',
+	'pagetriage-filter-stat-reviewed' => '검토됨',
 	'pagetriage-filter-stat-unreviewed' => '검토하지 않음',
 	'pagetriage-filter-stat-bots' => '봇',
 	'pagetriage-filter-stat-redirects' => '넘겨주기',
