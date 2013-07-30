@@ -385,7 +385,7 @@ View more:
 $3
 
 $4',
-	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 was {{GENDER:$2|reviewed}} by $2',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 was {{GENDER:$2|reviewed}} by $2.',
 	// notification - add maintenance tag
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|tagged}} by [[User:$1|$1]]. {{PLURAL:$4|Tag|Tags}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|tagged}} by <b>$1</b>. {{PLURAL:$4|Tag|Tags}}: $3',
@@ -399,7 +399,7 @@ View more:
 $3
 
 $6',
-	'pagetriage-notification-add-maintenance-tag-email-batch-body' => '$1 was {{GENDER:$2|reviewed}} and {{GENDER:$2|tagged}} by $2',
+	'pagetriage-notification-add-maintenance-tag-email-batch-body' => '$1 was {{GENDER:$2|reviewed}} and {{GENDER:$2|tagged}} by $2.',
 	// notification - add deletion tag
 	'pagetriage-notification-add-deletion-tag2' => '[[$2]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|marked for deletion}} by [[User:$1|$1]]. {{PLURAL:$4|Tag|Tags}}: $3',
 	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] was {{GENDER:$1|reviewed}} and {{GENDER:$1|marked for deletion}} by <b>$1</b>. {{PLURAL:$4|Tag|Tags}}: $3',
@@ -413,7 +413,7 @@ View more:
 $3
 
 $6',
-	'pagetriage-notification-add-deletion-tag-email-batch-body' => '$1 was {{GENDER:$2|marked for deletion}} by $2',
+	'pagetriage-notification-add-deletion-tag-email-batch-body' => '$1 was {{GENDER:$2|marked for deletion}} by $2.',
 	'echo-pref-subscription-page-review' => 'Reviews a page I created',
 	'echo-pref-tooltip-page-review' => 'Notify me when someone reviews a page I created.',
 	'echo-category-title-page-review' => 'Page {{PLURAL:$1|review|reviews}}',
