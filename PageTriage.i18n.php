@@ -524,7 +524,8 @@ Format specifier for the author's account creation date. Month and weekday names
 {{Identical|Orphan}}',
 	'pagetriage-filter-non-autoconfirmed' => 'Checkbox text for pages by non-Autoconfirmed users',
 	'pagetriage-filter-blocked' => 'Checkbox text for pages by blocked users',
-	'pagetriage-filter-all' => 'Radio button text for all items radio button',
+	'pagetriage-filter-all' => 'Radio button text for all items radio button.
+{{Identical|Show all}}',
 	'pagetriage-filter-set-button' => 'Button text for the set filter button',
 	'pagetriage-stats-less-than-a-day' => 'show this message if the page age is less than one day, part of variable $1 and $2 of {{msg-pagetriage|pagetriage-stats-unreviewed-age}}',
 	'pagetriage-stats-reviewed-page-count' => 'Text showing the number of pages reviewed in the past week, $1 is the number of reviewed pages',
