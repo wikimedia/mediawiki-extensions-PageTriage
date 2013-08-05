@@ -3598,39 +3598,14 @@ $messages['gl'] = array(
 	'pagetriage-notification-mark-as-reviewed2' => '[[User:$1|$1]] {{GENDER:$1|revisou}} "[[$2]]"',
 	'pagetriage-notification-mark-as-reviewed-flyout' => '<b>$1</b> {{GENDER:$1|revisou}} "[[$2]]"',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => 'A súa páxina foi {{GENDER:$1|revisada}} en {{SITENAME}}',
-	'pagetriage-notification-mark-as-reviewed-email-body2' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} revisou "$2":
-
-Ollar máis:
-
-$3
-
-$4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$2 {{GENDER:$2|revisou}} "$1"',
 	'pagetriage-notification-add-maintenance-tag2' => '[[User:$1|$1]] {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => '<b>$1</b> {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => 'A súa páxina foi {{GENDER:$1|etiquetada}} en {{SITENAME}}',
-	'pagetriage-notification-add-maintenance-tag-email-body2' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} {{GENDER:$1|revisou}} e {{GENDER:$1|etiquetou}} "$2".
-
-{{PLURAL:$5|Etiqueta|Etiquetas}}: $4
-
-Ollar máis:
-
-$3
-
-$6',
 	'pagetriage-notification-add-maintenance-tag-email-batch-body' => '$2 {{GENDER:$2|revisou}} e {{GENDER:$2|etiquetou}} "$1"',
 	'pagetriage-notification-add-deletion-tag2' => '[[User:$1|$1]] {{GENDER:$1|revisou}} e {{GENDER:$1|marcou para borrar}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
 	'pagetriage-notification-add-deletion-tag-flyout' => '<b>$1</b> {{GENDER:$1|revisou}} e {{GENDER:$1|marcou para borrar}} "[[$2]]". {{PLURAL:$4|Etiqueta|Etiquetas}}: $3',
 	'pagetriage-notification-add-deletion-tag-email-subject2' => 'A súa páxina foi {{GENDER:$1|marcada para borrar}} en {{SITENAME}}',
-	'pagetriage-notification-add-deletion-tag-email-body2' => '{{GENDER:$1|O editor|A editora}} $1 de {{SITENAME}} {{GENDER:$1|marcou para borrar}} "$2".
-
-{{PLURAL:$5|Etiqueta|Etiquetas}}: $4
-
-Ollar máis:
-
-$3
-
-$6',
 	'pagetriage-notification-add-deletion-tag-email-batch-body' => '$2 {{GENDER:$2|marcou para borrar}} "$1"',
 	'echo-pref-subscription-page-review' => 'Revise unha páxina que creei',
 	'echo-pref-tooltip-page-review' => 'Notificádeme cando alguén revise unha páxina creada por min.',
@@ -4155,7 +4130,7 @@ $messages['ia'] = array(
 	'pagetriage-self-review-error' => 'Tu non pote revider paginas que tu ha create.',
 	'pagetriage-api-error' => 'Un error occurreva durante le cargamento del interfacie ab le API. Per favor tenta recargar le pagina.',
 	'pagetriage-reviewed' => 'Revidite',
-	'pagetriage-mark-as-reviewed-error' => 'Error occurrite durante le marcation como revidite', # Fuzzy
+	'pagetriage-mark-as-reviewed-error' => 'Un error occurreva durante le marcation del pagina como revidite: $1',
 	'pagetriage-hist' => 'hist',
 	'pagetriage-bytes' => '$1 {{PLURAL:$1|byte|bytes}}',
 	'pagetriage-edits' => '$1 {{PLURAL:$1|modification|modificationes}}',
@@ -4163,27 +4138,27 @@ $messages['ia'] = array(
 	'pagetriage-no-categories' => 'Sin categorias',
 	'pagetriage-orphan' => 'Orphano',
 	'pagetriage-no-author' => 'Nulle information de autor presente',
-	'pagetriage-byline' => 'Per', # Fuzzy
+	'pagetriage-byline' => 'Create per $1 ($2$3$4)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|modification|modificationes}} depost $2',
 	'pagetriage-author-not-autoconfirmed' => 'Nove contributor',
-	'pagetriage-no-patrol-right' => 'Tu non ha le derecto de revider iste pagina', # Fuzzy
+	'pagetriage-no-patrol-right' => 'Tu non ha le derectos necessari pro marcar iste pagina como revidite',
 	'pagetriage-author-blocked' => 'Blocate',
 	'pagetriage-author-bot' => 'Robot',
 	'pagetriage-showing' => 'Es monstrate:',
-	'pagetriage-filter-list-prompt' => 'Filtrar lista', # Fuzzy
-	'pagetriage-unreviewed-article-count' => 'Il ha actualmente $1 {{PLURAL:$1|pagina|paginas}} non revidite', # Fuzzy
+	'pagetriage-filter-list-prompt' => 'Definir filtros',
+	'pagetriage-unreviewed-article-count' => '$1 {{PLURAL:$1|pagina|paginas}} non revidite in total (le plus ancian: $2)',
 	'pagetriage-sort-by' => 'Ordinar per:',
 	'pagetriage-newest' => 'Le plus nove',
 	'pagetriage-oldest' => 'Le plus ancian',
 	'pagetriage-triage' => 'Revider',
-	'pagetriage-filter-show-heading' => 'Includer:', # Fuzzy
+	'pagetriage-filter-show-heading' => 'Monstrar:',
 	'pagetriage-filter-reviewed-edits' => 'Paginas revidite',
 	'pagetriage-filter-unreviewed-edits' => 'Paginas non revidite',
 	'pagetriage-filter-nominated-for-deletion' => 'Nominate pro deletion',
 	'pagetriage-filter-bot-edits' => 'Ha essite create per robots',
 	'pagetriage-filter-redirects' => 'Redirectiones',
 	'pagetriage-filter-namespace-heading' => 'In spatio de nomines:',
-	'pagetriage-filter-user-heading' => 'Ha essite create per usator:', # Fuzzy
+	'pagetriage-filter-user-heading' => 'Ha essite create per',
 	'pagetriage-filter-tag-heading' => 'Con etiquetta:',
 	'pagetriage-filter-second-show-heading' => 'Que:',
 	'pagetriage-filter-no-categories' => 'Non ha categorias',
@@ -4381,20 +4356,20 @@ $messages['ia'] = array(
 	'pagetriage-del-tags-dbu2-desc' => 'Paginas de usator de usatores que non existe (verifica Special:Listusers), excepte paginas de usator pro usatores anonyme que ha contribuite, redirectiones ab titulos mal orthographate del pagina de usator de un usator establite, e pro le previe nomine de un usator recentemente renominate (le qual debe normalmente esser lassate como redirection al nove nomine durante un tempore rationabile)',
 	'pagetriage-del-tags-dbu3-label' => 'Galerias non libere',
 	'pagetriage-tags-param-date-label' => 'Data:',
-	'pagetriage-tags-param-for-label' => 'Problemas que debe esser resolvite:', # Fuzzy
-	'pagetriage-tags-param-blp-label' => 'Biographia de un persona vivente:', # Fuzzy
-	'pagetriage-tags-param-source-label' => 'Fonte:', # Fuzzy
-	'pagetriage-tags-param-free-label' => 'Libere:', # Fuzzy
-	'pagetriage-tags-param-url-label' => 'URL:', # Fuzzy
+	'pagetriage-tags-param-for-label' => 'Iste articulo pote requirer le correction de:',
+	'pagetriage-tags-param-blp-label' => 'Isto es un biographia de un persona vivente',
+	'pagetriage-tags-param-source-label' => 'Per favor adde un URL pro iste fonte:',
+	'pagetriage-tags-param-free-label' => 'Iste contento es sub licentia libere.',
+	'pagetriage-tags-param-url-label' => 'Per favor adde un URL pro iste fonte.',
 	'pagetriage-tags-param-free-yes-label' => 'Si',
 	'pagetriage-tags-param-free-no-label' => 'No',
-	'pagetriage-tags-param-missing-required' => 'Le parametro $1 es obligatori', # Fuzzy
-	'pagetriage-info-title' => 'Examinar detalios del pagina', # Fuzzy
+	'pagetriage-tags-param-missing-required' => 'Un parametro obligatori manca al etiquetta $1.',
+	'pagetriage-info-title' => 'Info de pagina',
 	'pagetriage-info-problem-header' => 'Possibile problemas',
 	'pagetriage-info-history-header' => 'Historia',
 	'pagetriage-info-history-show-full' => 'monstrar le historia complete',
 	'pagetriage-info-help' => 'adjuta',
-	'pagetriage-info-no-problems' => 'Nulle problema detegite', # Fuzzy
+	'pagetriage-info-no-problems' => 'Nulle problema ha essite trovate pro iste pagina usque a nunc.',
 	'pagetriage-info-problem-non-autoconfirmed' => 'Nove contributor',
 	'pagetriage-info-problem-non-autoconfirmed-desc' => 'Iste pagina ha essite create per un contributor non autoconfirmate.',
 	'pagetriage-info-problem-blocked' => 'Usator blocate',
@@ -4411,8 +4386,8 @@ $messages['ia'] = array(
 	'pagetriage-mark-title' => 'Marcar como revidite',
 	'pagetriage-mark-as-reviewed' => 'Marcar como revidite',
 	'pagetriage-mark-as-unreviewed' => 'Marcar como non revidite',
-	'pagetriage-mark-as-reviewed-helptext' => 'Remover iste pagina del cauda de versiones non revidite?', # Fuzzy
-	'pagetriage-mark-as-unreviewed-helptext' => 'Reinserer iste pagina in le cauda de versiones non revidite?', # Fuzzy
+	'pagetriage-mark-as-reviewed-helptext' => 'Marca iste pagina como revidite si tu ha finite verificar lo.',
+	'pagetriage-mark-as-unreviewed-helptext' => 'Marca iste pagina como non revidite si tu pensa que illo require verification ulterior.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -5183,39 +5158,14 @@ $messages['ja'] = array(
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] が [[User:$1|$1]] によって{{GENDER:$1|査読されました}}',
 	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] が <b>$1</b> によって{{GENDER:$1|査読されました}}',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '{{SITENAME}}であなたのページが{{GENDER:$1|査読されました}}',
-	'pagetriage-notification-mark-as-reviewed-email-body2' => '$2 が{{SITENAME}}の利用者 $1 によって{{GENDER:$1|査読されました}}:
-
-詳細はこちら:
-
-$3
-
-$4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 が $2 によって{{GENDER:$2|査読されました}}。',
 	'pagetriage-notification-add-maintenance-tag2' => '[[User:$1|$1]] が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。{{PLURAL:$4|タグ}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => '<b>$1</b> が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。{{PLURAL:$4|タグ}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '{{SITENAME}}であなたのページが{{GENDER:$1|タグ付けされました}}',
-	'pagetriage-notification-add-maintenance-tag-email-body2' => '{{SITENAME}}の利用者 $1 が、$2 を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。
-
-{{PLURAL:$5|タグ}}: $4
-
-詳細はこちら:
-
-$3
-
-$6',
 	'pagetriage-notification-add-maintenance-tag-email-batch-body' => '$2 が $1 を{{GENDER:$2|査読してタグ付けしました}}。',
 	'pagetriage-notification-add-deletion-tag2' => '[[User:$1|$1]] が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|削除の印を付けました}}。{{PLURAL:$4|タグ}}: $3',
 	'pagetriage-notification-add-deletion-tag-flyout' => '<b>$1</b> が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|削除の印を付けました}}。{{PLURAL:$4|タグ}}: $3',
 	'pagetriage-notification-add-deletion-tag-email-subject2' => '{{SITENAME}}で $1 があなたのページに{{GENDER:$1|削除の印を付けました}}',
-	'pagetriage-notification-add-deletion-tag-email-body2' => '{{SITENAME}}の利用者 $1 が、$2 に{{GENDER:$1|削除の印を付けました}}。
-
-{{PLURAL:$5|タグ}}: $4
-
-詳細はこちら:
-
-$3
-
-$6',
 	'pagetriage-notification-add-deletion-tag-email-batch-body' => '$2 が $1 に{{GENDER:$2|削除の印を付けました}}。',
 	'echo-pref-subscription-page-review' => '自分が作成したページを、誰かが査読したとき',
 	'echo-pref-tooltip-page-review' => '自分が作成したページを誰かが査読したら通知を受け取る。',
@@ -5645,39 +5595,14 @@ $messages['ko'] = array(
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] 문서를 [[User:$1|$1]] 사용자가 {{GENDER:$1|검토했습니다}}',
 	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] 문서를 <b>$1</b> 사용자가 {{GENDER:$1|검토했습니다}}',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => '{{SITENAME}}에 내 문서를 {{GENDER:$1|검토했습니다}}',
-	'pagetriage-notification-mark-as-reviewed-email-body2' => '$2 문서를 {{SITENAME}} $1 사용자가 {{GENDER:$1|검토했습니다}}:
-
-더 보기:
-
-$3
-
-$4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 문서를 $2 사용자가 {{GENDER:$2|검토했습니다}}',
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] 문서를 [[User:$1|$1]] 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}.  {{PLURAL:$4|태그}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] 문서를 <b>$1</b> 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}. {{PLURAL:$4|태그}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => '{{SITENAME}}에 내 문서를 {{GENDER:$1|태그했습니다}}',
-	'pagetriage-notification-add-maintenance-tag-email-body2' => '$2 문서를 {{SITENAME}} $1 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|태그했습니다}}.
-
-{{PLURAL:$5|태그}}: $4
-
-더 보기:
-
-$3
-
-$6',
 	'pagetriage-notification-add-maintenance-tag-email-batch-body' => '$1 문서를 $2 사용자가 {{GENDER:$2|검토하고}} {{GENDER:$2|태그했습니다}}.',
 	'pagetriage-notification-add-deletion-tag2' => '[[$2]] 문서를 [[User:$1|$1]] 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|삭제로 표시했습니다}}.  {{PLURAL:$4|태그}}: $3',
 	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] 문서를 <b>$1</b> 사용자가 {{GENDER:$1|검토했고}} {{GENDER:$1|삭제로 표시했습니다}}. {{PLURAL:$4|태그}}: $3',
 	'pagetriage-notification-add-deletion-tag-email-subject2' => '{{SITENAME}}에 내 문서가 {{GENDER:$1|삭제로 표시되었습니다}}',
-	'pagetriage-notification-add-deletion-tag-email-body2' => '$2 문서를 {{SITENAME}} $1 사용자가 {{GENDER:$1|삭제로 표시했습니다}}.
-
-{{PLURAL:$5|태그}}: $4
-
-더 보기:
-
-$3
-
-$6',
 	'pagetriage-notification-add-deletion-tag-email-batch-body' => '$1 문서를 $2 사용자가 {{GENDER:$2|삭제로 표시했습니다}}.',
 	'echo-pref-subscription-page-review' => '내가 만든 문서를 검토하기',
 	'echo-pref-tooltip-page-review' => '내가 만든 문서를 누군가가 검토할 때 내게 알립니다.',
@@ -6663,39 +6588,14 @@ $messages['nl'] = array(
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] is {{GENDER:$1|gecontroleerd}} door [[User:$1|$1]]',
 	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} door <b>$1</b>',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => 'Uw pagina is {{GENDER:$1|gecontroleerd}} op {{SITENAME}}',
-	'pagetriage-notification-mark-as-reviewed-email-body2' => '$2 is {{GENDER:$1|gecontroleerd}} door gebruiker $1 van {{SITENAME}}:
-
-Meer bekijken:
-
-$3
-
-$4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 is {{GENDER:$2|gecontroleerd}} door $2',
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en gelabeld door [[User:$1|$1]]. Label{{PLURAL:$4||s}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en gelabeld door <b>$1</b>. Label{{PLURAL:$4||s}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => 'Uw pagina is {{GENDER:$1|gelabeld}} op {{SITENAME}}',
-	'pagetriage-notification-add-maintenance-tag-email-body2' => '$2 is {{GENDER:$1|gecontroleerd}} en gelabeld door gebruiker $1 van {{SITENAME}}.
-
-Label{{PLURAL:$5||s}}: $4
-
-Meer bekijken:
-
-$3
-
-$6',
 	'pagetriage-notification-add-maintenance-tag-email-batch-body' => '$1 is {{GENDER:$2|gecontroleerd}} en {{GENDER:$2|gemarkeerd}} door $2',
 	'pagetriage-notification-add-deletion-tag2' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en genomineerd voor verwijdering door [[User:$1|$1]]. Label{{PLURAL:$4||s}}: $3',
 	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] is {{GENDER:$1|gecontroleerd}} en genomineerd voor verwijdering door <b>$1</b>. Label{{PLURAL:$4||s}}: $3',
 	'pagetriage-notification-add-deletion-tag-email-subject2' => 'Uw pagina is {{GENDER:$1|genomineerd voor verwijdering}} op {{SITENAME}}',
-	'pagetriage-notification-add-deletion-tag-email-body2' => '$2 is {{GENDER:$1|genomineerd voor verwijdering}} door gebruiker $1 van {{SITENAME}}.
-
-Label{{PLURAL:$5||s}}: $4
-
-Meer bekijken:
-
-$3
-
-$6',
 	'pagetriage-notification-add-deletion-tag-email-batch-body' => '$1 is {{GENDER:$2|gemarkeerd voor verwijdering}} door $2',
 	'echo-pref-subscription-page-review' => 'Een pagina controleert die u hebt aangemaakt',
 	'echo-pref-tooltip-page-review' => 'U een melding zenden als iemand een pagina die u hebt gemaakt heeft gecontroleerd.',
@@ -8706,6 +8606,7 @@ $messages['yi'] = array(
 /** Simplified Chinese (中文（简体）‎)
  * @author Kuailong
  * @author Liangent
+ * @author Qiyue2001
  * @author Shirayuki
  * @author Shizhao
  * @author Yfdyh000
@@ -8838,7 +8739,7 @@ $messages['zh-hans'] = array(
 	'pagetriage-tags-param-url-label' => '请添加一个指向来源的URL。',
 	'pagetriage-tags-param-free-yes-label' => '是',
 	'pagetriage-tags-param-free-no-label' => '否',
-	'pagetriage-tags-param-missing-required' => '参数$1是必需的', # Fuzzy
+	'pagetriage-tags-param-missing-required' => '标签$1缺少必要的参数。',
 	'log-name-pagetriage-curation' => '页面管理器日志',
 	'log-description-pagetriage-curation' => '这是页面管理工具栏的操作日志。',
 	'log-name-pagetriage-deletion' => '删除标签日志',
@@ -8894,35 +8795,10 @@ $messages['zh-hans'] = array(
 	'pagetriage-toolbar-close' => '关闭',
 	'pagetriage-toolbar-minimize' => '最小化',
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]]已由[[User:$1|$1]]回退',
-	'pagetriage-notification-mark-as-reviewed-flyout' => '$2已由$1回退', # Fuzzy
-	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2已由$1巡查',
-	'pagetriage-notification-mark-as-reviewed-email-body2' => '{{SITENAME}}用户$1回退了$2
-
-查看更多：
-
-$3
-
-$4',
-	'pagetriage-notification-add-maintenance-tag-email-subject2' => '$2已由$1标记',
-	'pagetriage-notification-add-maintenance-tag-email-body2' => '{{SITENAME}}用户$1回退及标记了$2
-
-标签：$4
-
-查看更多：
-
-$3
-
-$6', # Fuzzy
-	'pagetriage-notification-add-deletion-tag-email-subject2' => '$2已由$1标记删除',
-	'pagetriage-notification-add-deletion-tag-email-body2' => '{{SITENAME}}用户$1标记删除了$2
-
-标签：$4
-
-查看更多：
-
-$3
-
-$6', # Fuzzy
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]]已由<b>$1</b>{{GENDER:$1|巡查}}',
+	'pagetriage-notification-mark-as-reviewed-email-subject2' => '您在{{SITENAME}}上的页面已由$1{{GENDER:$1|巡查}}',
+	'pagetriage-notification-add-maintenance-tag-email-subject2' => '您在{{SITENAME}}上的页面已{{GENDER:$1|标记}}',
+	'pagetriage-notification-add-deletion-tag-email-subject2' => '$2已由$1标记删除', # Fuzzy
 	'echo-category-title-page-review' => '页面评论', # Fuzzy
 );
 
