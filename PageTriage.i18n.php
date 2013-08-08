@@ -6216,6 +6216,15 @@ $6',
 	'echo-category-title-page-review' => '{{PLURAL:$1|Преглед|Прегледи}}',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'pagetriage-notification-mark-as-reviewed-email-subject2' => '{{SITENAME}} या संकेतस्थळावर, आपण निर्मिलेल्या पानास {{GENDER:$1| द्वारे पुनरावलोकित}} करण्यात आले.',
+	'pagetriage-notification-add-maintenance-tag-email-subject2' => '{{SITENAME}} या संकेतस्थळावर, आपण निर्मिलेल्या पानास {{GENDER:$1| द्वारे खूणपताका}} लावण्यात आली.',
+	'pagetriage-notification-add-deletion-tag-email-subject2' => "{{SITENAME}} या संकेतस्थळावर, आपण निर्मिलेल्या पानास  {{GENDER:$1| द्वारे 'वगळा' खूण}} लावण्यात आली.",
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  * @author පසිඳු කාවින්ද
