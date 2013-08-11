@@ -5818,8 +5818,9 @@ $messages['lb'] = array(
 	'pagetriage-toolbar-minimize' => 'Minimiséieren',
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] gouf vum [[User:$1|$1]] {{GENDER:$1|nogekuckt}}',
 	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] gouf vum <b>$1</b> {{GENDER:$1|nogekuckt}}',
-	'pagetriage-notification-mark-as-reviewed-email-subject2' => '$2 gouf vum $1 {{GENDER:$1|nogekuckt}}',
+	'pagetriage-notification-mark-as-reviewed-email-subject2' => 'Är Säit gouf vum $1 op {{SITENAME}} {{GENDER:$1|nogekuckt}}',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 gouf vum $2 {{GENDER:$2|nogekuckt}}',
+	'echo-pref-subscription-page-review' => 'Eng Säit iwwerliesen déi ech ugeluecht hunn',
 	'echo-pref-tooltip-page-review' => 'Mech informéieren wann een eng Säit nokuckt déi ech ugeluecht hunn.',
 	'echo-category-title-page-review' => 'mol Säit {{PLURAL:$1|nogekuckt}}',
 );
