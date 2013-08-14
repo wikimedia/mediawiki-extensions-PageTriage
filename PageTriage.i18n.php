@@ -5820,6 +5820,7 @@ $messages['lb'] = array(
 	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] gouf vum <b>$1</b> {{GENDER:$1|nogekuckt}}',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => 'Är Säit gouf vum $1 op {{SITENAME}} {{GENDER:$1|nogekuckt}}',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 gouf vum $2 {{GENDER:$2|nogekuckt}}',
+	'pagetriage-notification-add-deletion-tag-email-batch-body' => "$1 gouf vum $2 fir {{GENDER:$2|d'Läsche markéiert}}.",
 	'echo-pref-subscription-page-review' => 'Eng Säit iwwerliesen déi ech ugeluecht hunn',
 	'echo-pref-tooltip-page-review' => 'Mech informéieren wann een eng Säit nokuckt déi ech ugeluecht hunn.',
 	'echo-category-title-page-review' => 'mol Säit {{PLURAL:$1|nogekuckt}}',
