@@ -8355,8 +8355,10 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (українська)
+ * @author Andriykopanytsia
  * @author Base
  * @author Steve.rusyn
+ * @author SteveR
  * @author Ата
  */
 $messages['uk'] = array(
@@ -8387,7 +8389,7 @@ $messages['uk'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'Цю сторінку створив $1 новий дописувач $2 ($3$4$5)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|редагування|редагувань}}, починаючи з $2',
 	'pagetriage-author-not-autoconfirmed' => 'Новачок',
-	'pagetriage-no-patrol-right' => 'У Вас немає права на перегляд цієї сторінки', # Fuzzy
+	'pagetriage-no-patrol-right' => 'У Вас немає права на позначення цієї сторінки як перевіреної',
 	'pagetriage-author-blocked' => 'Заблокований',
 	'pagetriage-author-bot' => 'Бот',
 	'pagetriage-showing' => 'Показуються:',
@@ -8450,6 +8452,9 @@ $messages['uk'] = array(
 	'pagetriage-add-a-note-reviewer' => "Додати повідомлення рецензенту: (необов'язково)",
 	'pagetriage-characters-left' => 'Залишилось {{PLURAL:$1|$1 символ|$1 символи|$1 символів}}',
 	'pagetriage-personal-default-note' => 'Напишіть якийсь корисний коментар для {{GENDER:$1|$1}}. Він буде доданий на {{GENDER:$1|його|її|їхню}} сторінку обговорення.',
+	'pagetriage-page-status-reviewed' => 'Позначити як перевірену $2 на $1 ($3$4$5)',
+	'pagetriage-page-status-reviewed-anonymous' => 'Позначено як перевірена',
+	'pagetriage-page-status-unreviewed' => 'Ця сторінка все ще неперевірена.',
 	'pagetriage-page-status-autoreviewed' => 'Цю сторінку було автопатрульовано.',
 	'pagetriage-page-status-delete' => 'Позначено на видалення',
 	'pagetriage-articleinfo-stat' => 'Статистика: $1',
@@ -8466,12 +8471,17 @@ $messages['uk'] = array(
 	'pagetriage-tags-cat-writingstyle-label' => 'Стиль',
 	'pagetriage-tags-cat-moretags-label' => 'Більше тегів',
 	'pagetriage-tags-cat-all-label' => 'Усі теги',
-	'pagetriage-tags-tooltip' => 'Додати теги, що вказують на проблеми сторінки', # Fuzzy
+	'pagetriage-tags-tooltip' => 'Додайте теги, щоб вказати напрямки покращення для цієї сторінки',
+	'pagetriage-del-tags-cat-csd-desc' => 'Позначити цю сторінку для швидкого вилучення, якщо вона нижче підходить одному із критеріїв.',
+	'pagetriage-del-tags-cat-prod-desc' => 'Позначити сторінку для пропонованого вилучення, якщо вона явно порушує стандарти спільноти.',
+	'pagetriage-del-tags-cat-discussion-desc' => 'Позначити цю сторінку для обговорення її вилучення з іншими редакторами.',
 	'pagetriage-del-tags-dba3-label' => 'Без вмісту',
 	'pagetriage-del-tags-dbg7-label' => 'Видалення за запитом автора',
 	'pagetriage-del-tags-dbu3-label' => 'Невільні галереї',
 	'pagetriage-tags-param-article-label' => 'Стаття:',
 	'pagetriage-tags-param-date-label' => 'Дата:',
+	'pagetriage-tags-param-issues-label' => 'Опишіть проблеми, які необхідно вирішити:',
+	'pagetriage-tags-param-for-label' => 'Ця стаття може вимагати копію для редагування:',
 	'pagetriage-tags-param-blp-label' => 'Це біографія живої людини',
 	'pagetriage-tags-param-source-label' => 'Будь ласка, додайте URL-адресу для цього джерела:',
 	'pagetriage-tags-param-free-label' => 'Цей вміст вільно ліцензований.',
@@ -8479,8 +8489,20 @@ $messages['uk'] = array(
 	'pagetriage-tags-param-free-yes-label' => 'Так',
 	'pagetriage-tags-param-free-no-label' => 'Ні',
 	'pagetriage-tags-param-missing-required' => "У тегові $1 відсутній обов'язковий параметр.",
+	'log-name-pagetriage-curation' => 'Сторінка журналу куратора',
+	'log-description-pagetriage-curation' => 'Це журналу дій, прийнятих на сторінці інструментів курирування.',
+	'log-name-pagetriage-deletion' => 'Видалення тегу журналу',
+	'logentry-pagetriage-curation-reviewed' => '$1 {{GENDER:$2|позначив|позначила}} $3 як перевірену',
+	'logentry-pagetriage-curation-unreviewed' => '$1 {{GENDER:$2|позначив|позначила}} $3 як неперевірену',
+	'logentry-pagetriage-curation-tag' => '$1 {{GENDER:$2|поставив|поставила}} $4 {{PLURAL:$5|тег|теги|тегів}} на $3',
+	'logentry-pagetriage-curation-delete' => '$1 {{GENDER:$2|позначив|позначила}} $3 для вилучення з $4 {{PLURAL:$5|тегом|тегами}}',
+	'logentry-pagetriage-deletion-delete' => '$1 {{GENDER:$2|позначив|позначила}} $3 для вилучення з $4 {{PLURAL:$5|тегом|тегами}}',
+	'pagetriage-tags-edit-summary' => 'Додано теги до сторінки за допомогою  $1  ($2)',
 	'pagetriage-tags-note-edit-summary' => 'Додано коментарі щодо [[$1]]',
+	'pagetriage-del-edit-summary' => 'Висунута на вилучення сторінка з допомогою $1 ($2)',
+	'pagetriage-del-tags-param-discussion-label' => 'Поясніть, будь ласка, чому ця стаття повинна бути вилучена і розмістіть посилання на відповідну політику скрізь, де це можливо',
 	'pagetriage-info-title' => 'Інформація про сторінку',
+	'pagetriage-info-problem-header' => 'Можливі проблеми',
 	'pagetriage-info-history-header' => 'Історія',
 	'pagetriage-info-history-show-full' => 'показати повну історію',
 	'pagetriage-info-help' => 'допомога',
@@ -8495,10 +8517,34 @@ $messages['uk'] = array(
 	'pagetriage-info-problem-orphan-desc' => 'На цю сторінку не посилається жодна інша сторінка.',
 	'pagetriage-info-problem-no-references' => 'Без посилань',
 	'pagetriage-info-problem-no-references-desc' => 'Для цієї сторінки не наведено жодних джерел',
+	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
+	'pagetriage-info-timestamp-time-format' => 'HH:mm',
+	'pagetriage-info-tooltip' => 'Показати метадані для цієї сторінки',
+	'pagetriage-toolbar-collapsed' => 'Курирування',
+	'pagetriage-toolbar-linktext' => 'Куратор цієї статті',
 	'pagetriage-toolbar-learn-more' => 'Дізнатися більше »',
+	'pagetriage-mark-title' => 'Позначити як перевірене',
+	'pagetriage-mark-as-reviewed' => 'Позначити як перевірене',
+	'pagetriage-mark-as-unreviewed' => 'Позначити як неперевірене',
+	'pagetriage-mark-as-reviewed-helptext' => 'Позначає цю сторінку як перевірену, якщо ви вже закінчили перевіряти її.',
+	'pagetriage-mark-as-unreviewed-helptext' => 'Позначає цю сторінку як неперевірену, якщо ви вважаєте, що потрібно її перевіряти далі.',
+	'pagetriage-wikilove-helptext' => 'Виберіть імена редакторів, яким ви б хотіли подякувати.',
+	'pagetriage-wikilove-page-creator' => 'Творець сторінки',
+	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|редагування|редагування|редагувань}}',
+	'pagetriage-wikilove-no-recipients' => 'Жодний із одержувачів не доступний для цієї сторінки.',
+	'pagetriage-wikilove-tooltip' => 'Відправити подяку авторам',
+	'pagetriage-next-tooltip' => 'Перейти до наступної сторінки в черзі',
+	'pagetriage-del-log-page-missing-error' => 'Сторінка журналу на сьогодні ще не створена!',
+	'pagetriage-del-log-page-adding-error' => 'Не вдалося знайти цільове місце для обговорення',
+	'pagetriage-del-talk-page-notify-error' => 'Не вдалося повідомити автора на сторінках обговорення',
+	'pagetriage-del-title' => 'Позначити на видалення',
+	'pagetriage-del-tooltip' => 'Висунути цю сторінку на видалення',
+	'pagetriage-tagging-error' => 'Не вдалося застосувати теги до сторінки',
+	'pagetriage-add-tag-confirmation' => 'Ви справді хочете додати $1 {{PLURAL:$1|теґ|теґи|теґів}} для такої короткої статті?',
 	'pagetriage-toolbar-close' => 'Закрити',
 	'pagetriage-toolbar-minimize' => 'Мінімізувати',
 	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] було {{GENDER:$1|перевірив|перевірила}} <b>$1</b>',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => 'Сторінка $1 {{GENDER:$2|перевірена}} $2.',
 );
 
 /** Urdu (اردو)
