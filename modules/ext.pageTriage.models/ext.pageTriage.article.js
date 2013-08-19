@@ -151,7 +151,7 @@ $( function() {
 		},
 
 		tagWarningNotice: function () {
-			var dateStr = this.get( 'creation_date' );
+			var dateStr = this.get( 'creation_date_utc' );
 			if ( !dateStr ) {
 				return '';
 			}
