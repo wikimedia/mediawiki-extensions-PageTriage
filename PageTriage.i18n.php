@@ -2463,6 +2463,8 @@ $messages['et'] = array(
 	'pagetriage-tag-warning-notice' => 'Märkus: See lehekülg on vaid {{PLURAL:$1|ühe|$1}} minuti vanune. Kui probleem pole väga tõsine, siis leiad ehk olevat võimaliku märgistamisega pisut oodata.',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$2 on lehekülje $1 üle vaadanud',
 	'echo-pref-subscription-page-review' => 'Vaatab minu loodud lehekülje üle',
+	'echo-pref-tooltip-page-review' => 'Teavita mind, kui keegi vaatab minu alustatud lehekülje üle.',
+	'echo-category-title-page-review' => 'Lehekülje {{PLURAL:$1|ülevaatus|ülevaatused}}',
 );
 
 /** Basque (euskara)
