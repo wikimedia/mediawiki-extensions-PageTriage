@@ -418,7 +418,10 @@ A character that separates different statistics about the page, for example: 9 b
 	'pagetriage-pagecuration' => 'Alternative title of the extension/project. Should use title case.',
 	'pagetriage-please-wait' => 'Temporary message displayed while list interface is loading.
 {{Identical|Please wait}}',
-	'pagetriage-api-invalidid' => 'Invalid title error message for pagetriage API',
+	'pagetriage-api-invalidid' => 'Unused at this time.
+
+Invalid title error message for pagetriage API. Parameters:
+* $1 - ID',
 	'pagetriage-markpatrolled' => 'Button text for the mark-as-patrolled button or text for mark as review tooltip',
 	'pagetriage-markunpatrolled' => 'Text for mark as unreview tooltip',
 	'pagetriage-self-review-error' => 'An error message to display when someone tries to review a page they created themselves',
@@ -428,9 +431,12 @@ A character that separates different statistics about the page, for example: 9 b
 	'pagetriage-mark-as-reviewed-error' => 'Generic error message for marking page as reviewed. $1 is the error text returned by the API.',
 	'pagetriage-mark-as-unreviewed-error' => 'Generic error message for marking page as unreviewed. $1 is the error text returned by the API.',
 	'pagetriage-hist' => 'A link to the revision history of a page. Appears in parentheses after the page name.',
-	'pagetriage-bytes' => 'The number of bytes in the page.',
-	'pagetriage-edits' => 'The number of times the page has been edited.',
-	'pagetriage-categories' => 'The number of categories in the page.',
+	'pagetriage-bytes' => 'The number of bytes in the page. Parameters:
+* $1 - number of bytes',
+	'pagetriage-edits' => 'The number of times the page has been edited. Parameters:
+* $1 - number of edits',
+	'pagetriage-categories' => 'The number of categories in the page. Parameters:
+* $1 - number of categories',
 	'pagetriage-no-categories' => 'Label indicating a page with no categories.
 {{Identical|No category}}',
 	'pagetriage-no-reference' => 'Label indicating a page with no reference citations',
@@ -545,7 +551,12 @@ The tool works correctly in IE8.',
 	'pagetriage-button-mark-for-deletion' => 'Text for the button that lets the user mark an article for deletion',
 	'pagetriage-add-a-note-creator' => 'Text for adding a personal note in curation toolbar for creator',
 	'pagetriage-add-a-note-reviewer' => 'Text for adding a personal note in curation toolbar for reviewer',
-	'pagetriage-characters-left' => 'The text indicating the number of characters remaining for input',
+	'pagetriage-characters-left' => 'The text indicating the number of characters remaining for input.
+
+"char(s)" stands for "character(s)".
+
+Parameters:
+* $1 - number of characters',
 	'pagetriage-personal-default-note' => '{{doc-singularthey}}
 Default text in the text box for editors to add a "Mark as reviewed" or "Tagging" personal note.
 
@@ -865,7 +876,10 @@ Label for the collapsed version of the curation bar. Written vertically. See scr
 	'pagetriage-toolbar-close' => 'Tooltip for the close button in the Curation Toolbar.
 {{Identical|Close}}',
 	'pagetriage-toolbar-minimize' => 'Tooltip for the minimize button in the Curation Toolbar (also docks the minimized toolbar to the side of the screen)',
-	'pagetriage-tag-warning-notice' => 'Warning notice in maintenance and deletion tag flyout if the page was created less than some amount of time ago',
+	'pagetriage-tag-warning-notice' => 'Warning notice in maintenance and deletion tag flyout if the page was created less than some amount of time ago.
+
+Parameters:
+* $1 - number of minutes',
 	'pagetriage-notification-mark-as-reviewed2' => "Title for 'mark as reviewed' notification.  Parameters:
 * $1 is the username of the person who marked the page as reviewed, plain text
 * $2 is the title of the page
@@ -7139,10 +7153,14 @@ $messages['pt-br'] = array(
 	'logentry-pagetriage-curation-tag' => '$1 {{GENDER:$2|etiquetou}} $3 com $4 {{PLURAL:$5|etiqueta|etiquetas}}',
 	'logentry-pagetriage-curation-delete' => '$1 {{GENDER:$2|marcou}} $3 para eliminação com $4 {{PLURAL:$5|etiqueta|etiquetas}}',
 	'logentry-pagetriage-deletion-delete' => '$1 {{GENDER:$2|marcou}} $3 para eliminação com $4 {{PLURAL:$5|etiqueta|etiquetas}}',
+	'pagetriage-info-history-header' => 'Histórico',
+	'pagetriage-info-help' => 'ajuda',
 	'pagetriage-info-problem-non-autoconfirmed' => 'Novo editor',
 	'pagetriage-toolbar-collapsed' => 'Curadoria',
 	'pagetriage-toolbar-linktext' => 'Curar este artigo',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|edição|edições}}',
+	'pagetriage-toolbar-close' => 'Fechar',
+	'pagetriage-toolbar-minimize' => 'Minimizar',
 );
 
 /** Romanian (română)
