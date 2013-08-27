@@ -72,3 +72,8 @@ $specialPageAliases['scn'] = array(
 $specialPageAliases['tr'] = array(
 	'NewPagesFeed' => array( 'YeniSayfaBeslemesi' ),
 );
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'NewPagesFeed' => array( 'Nguồn_tin_trang_mới' ),
+);

@@ -508,7 +508,7 @@ Format specifier for the author's account creation date. Month and weekday names
 	'pagetriage-filter-all' => 'Radio button text for all items radio button.
 {{Identical|Show all}}',
 	'pagetriage-filter-set-button' => 'Button text for the set filter button',
-	'pagetriage-stats-less-than-a-day' => 'show this message if the page age is less than one day, part of variable $1 and $2 of {{msg-pagetriage|pagetriage-stats-unreviewed-age}}',
+	'pagetriage-stats-less-than-a-day' => 'Used if the page age is less than one day.',
 	'pagetriage-stats-reviewed-page-count' => 'Text showing the number of pages reviewed in the past week, $1 is the number of reviewed pages',
 	'pagetriage-stats-filter-page-count' => 'Text showing the number of pages from the primary filter, $1 is the number of pages',
 	'pagetriage-filter-ns-all' => 'For the namespace filter select list, text indicating that all namespaces will be selected.
@@ -1425,6 +1425,7 @@ $messages['cu'] = array(
 /** German (Deutsch)
  * @author Kghbln
  * @author Metalhead64
+ * @author Shirayuki
  * @author Wnme
  */
 $messages['de'] = array(
@@ -1442,7 +1443,7 @@ $messages['de'] = array(
 	'pagetriage-mark-as-reviewed-error' => 'Beim Markieren als geprüft ist ein Fehler aufgetreten: $1',
 	'pagetriage-mark-as-unreviewed-error' => 'Beim Markieren der Seite als ungeprüft ist ein Fehler aufgetreten: $1',
 	'pagetriage-hist' => 'Versionsgeschichte',
-	'pagetriage-bytes' => '$1 {{PLURAL:$1|Byte|Byte}}',
+	'pagetriage-bytes' => '$1 {{PLURAL:$1|Byte}}',
 	'pagetriage-edits' => '$1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}}',
 	'pagetriage-categories' => '$1 {{PLURAL:$1|Kategorie|Kategorien}}',
 	'pagetriage-no-categories' => 'Keine Kategorien',
@@ -1773,39 +1774,14 @@ $messages['de'] = array(
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] wurde von [[User:$1|$1]] {{GENDER:$1|überprüft}}',
 	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] wurde von <b>$1</b> {{GENDER:$1|überprüft}}',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => 'Deine Seite wurde auf {{SITENAME}} {{GENDER:$1|überprüft}}',
-	'pagetriage-notification-mark-as-reviewed-email-body2' => 'Die Seite $2 wurde {{GENDER:$1|vom {{SITENAME}}-Benutzer|von der {{SITENAME}}-Benutzerin}} $1 überprüft.
-
-Mehr:
-
-$3
-
-$4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 wurde {{GENDER:$2|überprüft}} von $2',
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] wurde {{GENDER:$1|vom Benutzer|von der Benutzerin}} [[User:$1|$1]] überprüft und markiert. {{PLURAL:$4|Markierung|Markierungen}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => 'Die Seite [[$2]] wurde von <b>$1</b> {{GENDER:$1|überprüft}} und {{GENDER:$1|markiert}}. {{PLURAL:$4|Markierung|Markierungen}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => 'Deine Seite wurde auf {{SITENAME}} {{GENDER:$1|markiert}}',
-	'pagetriage-notification-add-maintenance-tag-email-body2' => 'Die Seite $2 wurde {{GENDER:$1|vom {{SITENAME}}-Benutzer|von der {{SITENAME}}-Benutzerin}} $1 überprüft und markiert.
-
-{{PLURAL:$5|Markierung|Markierungen}}: $4
-
-Mehr:
-
-$3
-
-$6',
 	'pagetriage-notification-add-maintenance-tag-email-batch-body' => '$1 wurde von $2 {{GENDER:$2|überprüft}} und {{GENDER:$2|markiert}}',
 	'pagetriage-notification-add-deletion-tag2' => '[[$2]] wurde von [[User:$1|$1]] {{GENDER:$1|überprüft}} und {{GENDER:$1|zur Löschung vorgeschlagen}}. {{PLURAL:$4|Markierung|Markierungen}}: $3',
 	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] wurde von <b>$1</b> {{GENDER:$1|überprüft}} und {{GENDER:$1|zur Löschung vorgeschlagen}}. {{PLURAL:$4|Markierung|Markierungen}}: $3',
 	'pagetriage-notification-add-deletion-tag-email-subject2' => 'Deine Seite wurde auf {{SITENAME}} {{GENDER:$1|zur Löschung vorgeschlagen}}',
-	'pagetriage-notification-add-deletion-tag-email-body2' => 'Die Seite $2 wurde {{GENDER:$1|vom {{SITENAME}}-Benutzer|von der {{SITENAME}}-Benutzerin}} $1 zur Löschung vorgeschlagen.
-
-{{PLURAL:$5|Markierung|Markierungen}}: $4
-
-Mehr:
-
-$3
-
-$6',
 	'pagetriage-notification-add-deletion-tag-email-batch-body' => '$1 wurde von $2 {{GENDER:$2|zur Löschung vorgeschlagen}}',
 	'echo-pref-subscription-page-review' => 'eine Seite überprüft, die ich erstellt habe',
 	'echo-pref-tooltip-page-review' => 'Benachrichtige mich, wenn jemand eine Seite überprüft, die ich erstellt habe.',
