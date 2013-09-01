@@ -788,7 +788,7 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-tags-param-blp-label' => 'Label for blp parameter checkbox',
 	'pagetriage-tags-param-source-label' => 'Label for source parameter (a text input field)',
 	'pagetriage-tags-param-free-label' => 'Label for free parameter',
-	'pagetriage-tags-param-url-label' => 'Label for url parameter',
+	'pagetriage-tags-param-url-label' => 'Label for URL parameter.',
 	'pagetriage-tags-param-free-yes-label' => 'Label for Yes answer of free parameter.
 {{Identical|Yes}}',
 	'pagetriage-tags-param-free-no-label' => 'Label for No answer of free parameter.
