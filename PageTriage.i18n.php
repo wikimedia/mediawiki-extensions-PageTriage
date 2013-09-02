@@ -7272,6 +7272,7 @@ $4",
 );
 
 /** Russian (русский)
+ * @author Kaganer
  * @author Ole Yves
  */
 $messages['ru'] = array(
@@ -7352,6 +7353,7 @@ $messages['ru'] = array(
 	'pagetriage-welcome' => 'Пожалуйста, проверьте новые страницы ниже и помогите улучшить {{SITENAME}}. <a href="$1">Подробнее</a> · <a href="$2">Оставить отзыв</a>',
 	'pagetriage-note-reviewed' => 'Эта страница была проверена.',
 	'pagetriage-note-not-reviewed' => 'Эта страница ещё не была проверена.',
+	'echo-pref-tooltip-page-review' => 'Сообщать мне, когда кто-то помечает созданную мной страницу как проверенную.',
 );
 
 /** Sicilian (sicilianu)
