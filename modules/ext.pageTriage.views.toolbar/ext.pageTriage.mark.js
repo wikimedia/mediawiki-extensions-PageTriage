@@ -77,7 +77,7 @@ $( function() {
 
 		talkPageNote: function( note, action ) {
 			var _this = this, talkPageTitle,
-				pageTitle = new mw.Title( mw.config.get( 'wgPageName' ) ).getPrefixedText();
+				pageTitle = mw.config.get( 'wgPageTriagePagePrefixedText' );
 
 			// mark as unreviewed
 			if ( action !== 'reviewed' ) {
@@ -85,10 +85,8 @@ $( function() {
 				if ( this.model.get( 'ptrp_last_reviewed_by' ) > 0
 					&& mw.config.get( 'wgUserName' ) !== this.model.get( 'reviewer' )
 				) {
-					talkPageTitle = new mw.Title(
-								this.model.get( 'reviewer' ),
-								mw.config.get( 'wgNamespaceIds' )['user_talk']
-							);
+					talkPageTitle = this.model.get( 'reviewer_user_talk_page' );
+
 					if ( note ) {
 						note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' )['UnMark']['note']
 							+ '|' + pageTitle
@@ -111,10 +109,8 @@ $( function() {
 					_this.hideFlyout( action );
 					return;
 				}
-				talkPageTitle = new mw.Title(
-							this.model.get( 'user_name' ),
-							mw.config.get( 'wgNamespaceIds' )['user_talk']
-						);
+				talkPageTitle = this.model.get( 'creator_user_talk_page' );
+
 				note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' )['Mark']
 					+ '|' + pageTitle
 					+ '|' + mw.config.get( 'wgUserName' )
@@ -126,7 +122,7 @@ $( function() {
 				url: mw.util.wikiScript( 'api' ),
 				data: {
 					action: 'edit',
-					title: talkPageTitle.getPrefixedText(),
+					title: talkPageTitle,
 					appendtext: "\n" + note,
 					token: mw.user.tokens.get( 'editToken' ),
 					format: 'json'

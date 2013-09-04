@@ -43,9 +43,7 @@ $( function() {
 			}
 
 			// construct the info for the article creator
-			userTitle = new mw.Title( creator, mw.config.get('wgNamespaceIds')['user'] );
-			linkUrl = userTitle.getUrl();
-			link = mw.html.element( 'a', { 'href': linkUrl }, creator );
+			link = mw.html.element( 'a', { 'href': this.model.get( 'creator_user_page_url' ) }, creator );
 
 			if ( $.inArray( creator, contributorArray ) > -1 ) {
 				creatorContribCount = contributorCounts[creator];
@@ -73,9 +71,14 @@ $( function() {
 			this.bySortedValue( contributorCounts, function( name, count ) {
 				// include up to 9 additional editors (this corresponds to the limit in WikiLove)
 				if ( name !== creator && name !== mw.user.name() && x < 9 ) {
-					userTitle = new mw.Title( name, mw.config.get('wgNamespaceIds')['user'] );
-					linkUrl = userTitle.getUrl();
-					link = mw.html.element( 'a', { 'href': linkUrl }, name );
+					try {
+						userTitle = new mw.Title( name, mw.config.get('wgNamespaceIds')['user'] );
+						linkUrl = userTitle.getUrl();
+						link = mw.html.element( 'a', { 'href': linkUrl }, name );
+					} catch ( e ) {
+						link = _.escape( name );
+					}
+
 					$( '#mwe-pt-article-contributor-list' ).append(
 						'<input type="checkbox" class="mwe-pt-recipient-checkbox" value="' +  _.escape( name ) + '"/>' +
 						link + ' <span class="mwe-pt-info-text">– ' +
