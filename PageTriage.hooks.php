@@ -356,7 +356,8 @@ class PageTriageHooks {
 				$wgOut->addModules( 'ext.pageTriage.toolbarStartup' );
 				// Set the config flags in JavaScript
 				$globalVars = array(
-					'wgPageTriagelastUseExpired' => $lastUseExpired
+					'wgPageTriagelastUseExpired' => $lastUseExpired,
+					'wgPageTriagePagePrefixedText' => $article->getTitle()->getPrefixedText()
 				);
 				$wgOut->addJsConfigVars( $globalVars );
 			} else {

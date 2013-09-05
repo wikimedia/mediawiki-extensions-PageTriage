@@ -30,20 +30,63 @@ class ApiPageTriageList extends ApiBase {
 			$articleMetadata = new ArticleMetadata( $pages, $pageIdValidated, $pageIdValidateDb );
 			$metaData = $articleMetadata->getMetadata();
 
+			$userPageStatus = PageTriageUtil::pageStatusForUser( $metaData );
+
 			// Sort data according to page order returned by our query. Also convert it to a
 			// slightly different format that's more Backbone-friendly.
 			foreach ( $pages as $page ) {
 				if ( isset( $metaData[$page] ) ) {
 					$metaData[$page]['creation_date_utc'] = $metaData[$page]['creation_date'];
 					$metaData[$page]['creation_date'] = $this->getContext()->getLanguage()->userAdjust( $metaData[$page]['creation_date'] );
+
+					// Page creator
+					$metaData[$page] += $this->createUserInfo(
+						$metaData[$page]['user_name'],
+						$userPageStatus,
+						'creator'
+					);
+
+					// Page reviewer
+					if ( $metaData[$page]['reviewer'] ) {
+						$metaData[$page] += $this->createUserInfo(
+							$metaData[$page]['reviewer'],
+							$userPageStatus,
+							'reviewer'
+						);
+					}
+
 					$sortedMetaData[] = array( 'pageid' => $page ) + $metaData[$page];
 				}
 			}
 		}
 
 		// Output the results
-		$result = array( 'result' => 'success', 'pages' => $sortedMetaData, 'userpagestatus' => PageTriageUtil::pageStatusForUser( $sortedMetaData ) );
+		$result = array( 'result' => 'success', 'pages' => $sortedMetaData );
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+	}
+
+	/**
+	 * Create user info like user page, user talk page, user contribution page
+	 * @param $userName string a valid username
+	 * @param $userPageStatus array an array of user page, user talk page existing status
+	 * @param $prefix string array key prefix
+	 * @return array
+	 */
+	private function createUserInfo( $userName, $userPageStatus, $prefix ) {
+		$userPage = Title::makeTitle( NS_USER, $userName );
+		$userTalkPage = Title::makeTitle( NS_USER_TALK, $userName );
+		$userContribsPage = SpecialPage::getTitleFor( 'Contributions', $userName );
+
+		return array (
+			$prefix . '_user_page' => $userPage->getPrefixedText(),
+			$prefix . '_user_page_url' => $userPage->getFullURL(),
+			$prefix . '_user_page_exist' => isset( $userPageStatus[$userPage->getPrefixedDBkey()] ),
+			$prefix . '_user_talk_page' => $userTalkPage->getPrefixedText(),
+			$prefix . '_user_talk_page_url' => $userTalkPage->getFullURL(),
+			$prefix . '_user_talk_page_exist' => isset( $userPageStatus[$userTalkPage->getPrefixedDBkey()] ),
+			$prefix . '_contribution_page' => $userContribsPage->getPrefixedText(),
+			$prefix . '_contribution_page_url' => $userContribsPage->getFullURL()
+		);
 	}
 
 	/**

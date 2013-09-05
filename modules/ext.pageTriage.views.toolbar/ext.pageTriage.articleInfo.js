@@ -27,8 +27,6 @@ $( function() {
 
 			// creator information
 			if (  this.model.get( 'user_name' ) ) {
-				var info = this.model.userInfo( this.model.get( 'user_name' ) );
-
 				// show new editor message only if the user is not anonymous and not autoconfirmed
 				if ( this.model.get( 'user_id' ) > '0' && this.model.get( 'user_autoconfirmed' ) == '0' ) {
 					var bylineMessage = 'pagetriage-articleinfo-byline-new-editor';
@@ -39,11 +37,28 @@ $( function() {
 				// put it all together in the byline
 				var articleByline = mw.msg(
 					bylineMessage,
-					Date.parseExact( this.model.get( 'creation_date' ), 'yyyyMMddHHmmss' ).toString( mw.msg( 'pagetriage-info-timestamp-date-format' ) ),
-					info.userPageLink,
-					info.userTalkPageLink,
+					Date.parseExact(
+						this.model.get( 'creation_date' ),
+						'yyyyMMddHHmmss'
+					).toString(
+						mw.msg( 'pagetriage-info-timestamp-date-format' )
+					),
+					this.model.buildLinkTag(
+						this.model.get( 'creator_user_page_url' ),
+						this.model.get( 'user_name' ),
+						this.model.get( 'creator_user_page_exist' )
+					),
+					this.model.buildLinkTag(
+						this.model.get( 'creator_user_talk_page_url' ),
+						mw.msg( 'sp-contributions-talk' ),
+						this.model.get( 'creator_user_talk_page_exist' )
+					),
 					mw.msg( 'pipe-separator' ),
-					info.userContribsLink
+					this.model.buildLinkTag(
+						this.model.get( 'creator_contribution_page_url' ),
+						mw.msg( 'contribslink' ),
+						true
+					)
 				);
 				this.model.set( 'articleByline', articleByline );
 			}
@@ -145,8 +160,12 @@ $( function() {
 					// get a userlink.
 					// can't set link color since no userpage status is returned by the history api
 					if( historyItem.get( 'user' ) ) {
-						var userTitle = new mw.Title( historyItem.get( 'user' ), mw.config.get('wgNamespaceIds')['user'] );
-						historyItem.set( 'user_title_url', userTitle.getUrl() );
+						try {
+							var userTitle = new mw.Title( historyItem.get( 'user' ), mw.config.get('wgNamespaceIds')['user'] );
+							historyItem.set( 'user_title_url', userTitle.getUrl() );
+						} catch ( e ) {
+							historyItem.set( 'user_title_url', '' );
+						}
 					}
 
 					historyItem.set( 'revision_url', mw.config.get( 'wgScriptPath' ) + '/index.php?title=' +

@@ -595,8 +595,7 @@ $( function() {
 		},
 
 		talkPageNote: function( note ) {
-			var _this = this, title = new mw.Title( this.model.get( 'user_name' ), mw.config.get( 'wgNamespaceIds' )['user_talk'] ),
-			pageName = new mw.Title(  mw.config.get( 'wgPageName' ) ).getPrefixedText();
+			var _this = this, pageName = mw.config.get( 'wgPageTriagePagePrefixedText' );
 
 			note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' )['Tags']
 				+ '|' + pageName
@@ -609,7 +608,7 @@ $( function() {
 				url: mw.util.wikiScript( 'api' ),
 				data: {
 					'action': 'edit',
-					'title': title.getPrefixedText(),
+					'title': this.model.get( 'creator_user_talk_page' ),
 					'appendtext': "\n" + note,
 					'token': mw.user.tokens.get('editToken'),
 					'summary': mw.msg( 'pagetriage-tags-note-edit-summary', pageName ),

@@ -38,8 +38,6 @@ $( function() {
 
 			// TODO: What if userName doesn't exist?
 			if( article.get( 'user_name' ) ) {
-				var info = this.userInfo( article.get( 'user_name' ) );
-
 				// decide which byline message to use depending on if the editor is new or not
 				// but don't show new editor for ip users
 				if ( article.get( 'user_id' ) > '0' && article.get( 'user_autoconfirmed' ) < '1' ) {
@@ -51,16 +49,40 @@ $( function() {
 				// put it all together in the byline
 				var byline = mw.msg(
 					bylineMessage,
-					info.userPageLink,
-					info.userTalkPageLink,
+					this.buildLinkTag(
+						article.get( 'creator_user_page_url' ),
+						article.get( 'user_name' ),
+						article.get( 'creator_user_page_exist' )
+					),
+					this.buildLinkTag(
+						article.get( 'creator_user_talk_page_url' ),
+						mw.msg( 'sp-contributions-talk' ),
+						article.get( 'creator_user_talk_page_exist' )
+					),
 					mw.msg( 'pipe-separator' ),
-					info.userContribsLink
+					this.buildLinkTag(
+						article.get( 'creator_contribution_page_url' ),
+						mw.msg( 'contribslink' ),
+						true
+					)
 				);
 
 				article.set( 'author_byline', byline );
-				article.set( 'user_title_url', this.buildRedLink( info.userTitle ) );
-				article.set( 'user_talk_title_url', this.buildRedLink( info.userTalkTitle ) );
-				article.set( 'user_contribs_title', info.userContribsTitle );
+				article.set(
+					'user_title_url',
+					this.buildRedLink(
+						article.get( 'creator_user_page_url' ),
+						article.get( 'creator_user_page_exist' )
+					)
+				);
+				article.set(
+					'user_talk_title_url',
+					this.buildRedLink(
+						article.get( 'creator_user_talk_page_url' ),
+						article.get( 'creator_user_talk_page_exist' )
+					)
+				);
+				article.set( 'user_contribs_title', article.get( 'creator_contribution_page' ) );
 			}
 			
 			// set the article status
@@ -78,16 +100,32 @@ $( function() {
 			// reviewed status
 			} else {
 				if ( article.get( 'ptrp_last_reviewed_by' ) != 0 && article.get( 'reviewer' ) ) {
-					var reviewerInfo = article.userInfo( article.get( 'reviewer' ) );
 					article.set(
 						'page_status',
 						mw.msg(
 							'pagetriage-page-status-reviewed',
-							Date.parseExact( article.get( 'ptrp_reviewed_updated' ), 'yyyyMMddHHmmss' ).toString( mw.msg( 'pagetriage-info-timestamp-date-format' ) ),
-							reviewerInfo.userPageLink,
-							reviewerInfo.userTalkPageLink,
+							Date.parseExact(
+								article.get( 'ptrp_reviewed_updated' ),
+								'yyyyMMddHHmmss'
+							).toString(
+								mw.msg( 'pagetriage-info-timestamp-date-format' )
+							),
+							this.buildLinkTag(
+								article.get( 'reviewer_user_page_url' ),
+								article.get( 'reviewer' ),
+								article.get( 'reviewer_user_page_exist' )
+							),
+							this.buildLinkTag(
+								article.get( 'reviewer_user_talk_page_url' ),
+								mw.msg( 'sp-contributions-talk' ),
+								article.get( 'reviewer_user_talk_page_exist' )
+							),
 							mw.msg( 'pipe-separator' ),
-							reviewerInfo.userContribsLink
+							this.buildLinkTag(
+								article.get( 'reviewer_contribution_page_url' ),
+								mw.msg( 'contribslink' ),
+								true
+							)
 						)
 					);
 				} else {
@@ -102,52 +140,6 @@ $( function() {
 				titleUrl = this.buildLink( titleUrl, 'redirect=no' );
 			}
 			article.set( 'title_url', titleUrl );
-		},
-
-		/**
-		 * Helper function that generates useful user data, this function will be accessed in
-		 * multiple places
-		 */
-		userInfo: function ( userName ) {
-			var info = {
-				userTitle: new mw.Title( userName, mw.config.get('wgNamespaceIds')['user'] ),
-				userTalkTitle: new mw.Title( userName, mw.config.get('wgNamespaceIds')['user_talk'] ),
-				userContribsTitle: new mw.Title( mw.msg( 'pagetriage-special-contributions' ) + '/' + userName )
-			};
-
-			userLinkClass = info.userTitle.exists() ? '' : 'new';
-			userTalkLinkClass = info.userTalkTitle.exists() ? '' : 'new';
-
-			// build the user page link
-			info.userPageLink = mw.html.element(
-				'a',
-				{
-					'href': this.buildRedLink( info.userTitle ),
-					'class': userLinkClass
-				},
-				userName
-			);
-
-			// build the user talk page link
-			info.userTalkPageLink = mw.html.element(
-				'a',
-				{
-					'href': this.buildRedLink( info.userTalkTitle ),
-					'class': userTalkLinkClass
-				},
-				mw.msg( 'sp-contributions-talk' )
-			);
-
-			// build the user contribs link
-			info.userContribsLink = mw.html.element(
-				'a',
-				{
-					'href': info.userContribsTitle.getUrl()
-				},
-				mw.msg( 'contribslink' )
-			);
-
-			return info;
 		},
 
 		tagWarningNotice: function () {
@@ -180,9 +172,24 @@ $( function() {
 			}
 		},
 
-		buildRedLink: function ( title ) {
-			var url = title.getUrl();
-			if ( !title.exists() ) {
+		buildLinkTag: function ( url, text, exists ) {
+			var style = '';
+			if ( !exists ) {
+				url = this.buildRedLink( url, exists );
+				style = 'new';
+			}
+			return mw.html.element(
+				'a',
+				{
+					'href': url,
+					'class': style
+				},
+				text
+			);
+		},
+
+		buildRedLink: function ( url, exists ) {
+			if ( !exists ) {
 				url = this.buildLink( url, 'action=edit&redlink=1' );
 			}
 			return url;
@@ -209,14 +216,8 @@ $( function() {
 		},
 		
 		parse: function( response ) {
-			if( response.pagetriagelist ) {
+			if ( response.pagetriagelist !== undefined && response.pagetriagelist.pages !== undefined ) {
 				// data came directly from the api
-				
-				// Check if user pages exist or should be redlinks
-				for ( var title in response.pagetriagelist.userpagestatus ) {
-					mw.Title.exist.set( title );
-				}
-
 				// extract the useful bits of json.
 				return response.pagetriagelist.pages[0];
 			} else {
@@ -284,11 +285,6 @@ $( function() {
 			} else {
 				// We have no more pages to load.
 				this.moreToLoad = false;
-			}
-
-			// Check if user pages exist or should be redlinks
-			for ( var title in response.pagetriagelist.userpagestatus ) {
-				mw.Title.exist.set( title );
 			}
 			// extract the useful bits of json.
 			return response.pagetriagelist.pages;
