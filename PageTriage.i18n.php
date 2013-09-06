@@ -472,9 +472,11 @@ Format specifier for the author's account creation date. Month and weekday names
 
 [[File:PageTriage-ListView-Whole.png|thumb|200px|Screenshot]]',
 	'pagetriage-filter-list-prompt' => 'Prompt to choose filters for the list view',
-	'pagetriage-unreviewed-article-count' => 'A description of the number of unreviewed pages and the age of the oldest article. Parameters:
-* $1 is the count,
-* $2 is the age of oldest article, this could be from message key pagetriage-stats-less-than-a-day or days',
+	'pagetriage-unreviewed-article-count' => 'A description of the number of unreviewed pages and the age of the oldest article.
+
+Parameters:
+* $1 - the number of unreviewed pages
+* $2 - the age of oldest article, this uses messages {{msg-mw|Pagetriage-stats-less-than-a-day}} or {{msg-mw|Days}}',
 	'pagetriage-reviewed-article-count-past-week' => 'A description of the number of reviewed pages in past week, $1 is the count of pages reviewed in past week',
 	'pagetriage-sort-by' => 'Label for the sort-order buttons (oldest/newest).
 {{Identical|Sort by}}',
@@ -508,7 +510,9 @@ Format specifier for the author's account creation date. Month and weekday names
 	'pagetriage-filter-all' => 'Radio button text for all items radio button.
 {{Identical|Show all}}',
 	'pagetriage-filter-set-button' => 'Button text for the set filter button',
-	'pagetriage-stats-less-than-a-day' => 'Used if the page age is less than one day.',
+	'pagetriage-stats-less-than-a-day' => 'Used if the page age is less than one day.
+
+Used as <code>$2</code> in {{msg-mw|Pagetriage-unreviewed-article-count}}.',
 	'pagetriage-stats-reviewed-page-count' => 'Text showing the number of pages reviewed in the past week, $1 is the number of reviewed pages',
 	'pagetriage-stats-filter-page-count' => 'Text showing the number of pages from the primary filter, $1 is the number of pages',
 	'pagetriage-filter-ns-all' => 'For the namespace filter select list, text indicating that all namespaces will be selected.
@@ -894,13 +898,13 @@ See also:
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed2}}
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-batch-body}}
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}",
-	'pagetriage-notification-mark-as-reviewed-email-subject2' => "Email subject for 'mark as reviewed' notification.  Parameters:
-* $1 is the username of the person who marked the page as reviewed, plain text
-* $2 is the title of the page
+	'pagetriage-notification-mark-as-reviewed-email-subject2' => 'Email subject for "mark as reviewed" notification.  Parameters:
+* $1 - the username of the person who marked the page as reviewed, for PLURAL support
+* $2 - (Unused) the title of the page
 See also:
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed2}}
 * {{msg-mw|Pagetriage-notification-mark-as-reviewed-flyout}}
-* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-batch-body}}",
+* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-batch-body}}',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => "Email batch body for 'mark as reviewed' notification.  Parameters:
 * $1 is the title of the page
 * $2 is the username of the person who reviewed the page
@@ -924,12 +928,12 @@ See also:
 See also:
 * {{msg-mw|Pagetriage-notification-add-maintenance-tag2}}
 * {{msg-mw|Pagetriage-notification-add-maintenance-tag-email-subject2}}",
-	'pagetriage-notification-add-maintenance-tag-email-subject2' => "Email subject for 'add maintenance tag' notification.  Parameters:
-* $1 is the username of the person who added maintenance tag, plain text
-* $2 is the title of the page
+	'pagetriage-notification-add-maintenance-tag-email-subject2' => 'Email subject for "add maintenance tag" notification.  Parameters:
+* $1 - the username of the person who added maintenance tag, for PLURAL support
+* $2 - (Unused) the title of the page
 See also:
 * {{msg-mw|Pagetriage-notification-add-maintenance-tag2}}
-* {{msg-mw|Pagetriage-notification-add-maintenance-tag-flyout}}",
+* {{msg-mw|Pagetriage-notification-add-maintenance-tag-flyout}}',
 	'pagetriage-notification-add-maintenance-tag-email-batch-body' => "Email batch body for 'add maintenance tag' notification. Parameters:
 * $1 is the title of the page
 * $2 is the username of the person who added maintenance tag to the page",
@@ -949,12 +953,12 @@ See also:
 See also:
 * {{msg-mw|Pagetriage-notification-add-deletion-tag2}}
 * {{msg-mw|Pagetriage-notification-add-deletion-tag-email-subject2}}",
-	'pagetriage-notification-add-deletion-tag-email-subject2' => "Email subject for 'add deletion tag' notification.  Parameters:
-* $1 is the username of the person who added deletion tag, plain text
-* $2 is the title of the page
+	'pagetriage-notification-add-deletion-tag-email-subject2' => 'Email subject for "add deletion tag" notification.  Parameters:
+* $1 - the username of the person who added deletion tag, for PLURAL support
+* $2 - (Unused) the title of the page
 See also:
 * {{msg-mw|Pagetriage-notification-add-deletion-tag2}}
-* {{msg-mw|Pagetriage-notification-add-deletion-tag-flyout}}",
+* {{msg-mw|Pagetriage-notification-add-deletion-tag-flyout}}',
 	'pagetriage-notification-add-deletion-tag-email-batch-body' => "Email batch body for 'add deletion tag' notification. Parameters:
 * $1 is the title of the page
 * $2 is the username of the person who added maintenance tag to the page",
