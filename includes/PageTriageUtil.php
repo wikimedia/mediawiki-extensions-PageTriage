@@ -249,12 +249,12 @@ class PageTriageUtil {
 	}
 
 	/**
-	 * returns the cahce key for user status
+	 * returns the cache key for user status
 	 * @param $userName string
 	 * @return string
 	 */
 	public static function userStatusKey( $userName ) {
-		return wfMemcKey( 'pagetriage', 'user-page-status', $userName, self::getCacheVersion() );
+		return wfMemcKey( 'pagetriage', 'user-page-status', sha1( $userName ), self::getCacheVersion() );
 	}
 
 	/**

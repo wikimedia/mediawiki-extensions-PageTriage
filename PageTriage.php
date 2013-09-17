@@ -82,7 +82,7 @@ $wgPageTriageCurationModules = array(
 		'namespace' => array( NS_MAIN, NS_USER ),
 	),
 );
-$wgPageTriageCacheVersion = '1.3'; // version number to be added to cache key so that cache can be refreshed easily
+$wgPageTriageCacheVersion = '1.4'; // version number to be added to cache key so that cache can be refreshed easily
 $wgPageTriageNamespaces = array( NS_MAIN, NS_USER  ); // only include these namespaces for pagetriage
 $wgTalkPageNoteTemplate = array(
 	'Mark' => 'Reviewednote-NPF',
