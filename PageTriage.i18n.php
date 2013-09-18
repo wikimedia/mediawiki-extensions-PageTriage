@@ -7559,6 +7559,13 @@ $messages['si'] = array(
 	'echo-pref-subscription-page-review' => 'පිටුවක් නිරීක්ෂණය කරයි | තනන ලද',
 );
 
+/** Serbian (Cyrillic script) (српски (ћирилица)‎)
+ * @author Milicevic01
+ */
+$messages['sr-ec'] = array(
+	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
+);
+
 /** Swedish (svenska)
  * @author Ainali
  * @author Jopparn
