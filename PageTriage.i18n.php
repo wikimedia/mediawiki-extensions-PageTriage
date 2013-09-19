@@ -7331,6 +7331,7 @@ $4",
 
 /** Russian (русский)
  * @author Kaganer
+ * @author Okras
  * @author Ole Yves
  */
 $messages['ru'] = array(
@@ -7361,7 +7362,7 @@ $messages['ru'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'Эта страница была создана в $1 новым редактором $2 ($3$4$5)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|правка|правки|правок}} начиная с $2',
 	'pagetriage-author-not-autoconfirmed' => 'Новый редактор',
-	'pagetriage-no-patrol-right' => 'Вы не имеете прав для проверки данной страницы', # Fuzzy
+	'pagetriage-no-patrol-right' => 'У вас нет прав для пометки данной страницы как проверенной',
 	'pagetriage-author-blocked' => 'Заблокирован',
 	'pagetriage-author-bot' => 'Бот',
 	'pagetriage-showing' => 'Показаны:',
