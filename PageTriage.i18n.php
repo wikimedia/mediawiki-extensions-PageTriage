@@ -3610,6 +3610,7 @@ $messages['gl'] = array(
 
 /** Hebrew (עברית)
  * @author Amire80
+ * @author Guycn1
  * @author Inkbug
  * @author Neukoln
  * @author חיים
@@ -3643,7 +3644,7 @@ $messages['he'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'הדף הזה נוצר ב־$1 על־ידי העורך החדש $2&rlm; ($3$4$5)',
 	'pagetriage-editcount' => '{{PLURAL:$1|עריכה אחת|$1 עריכות}} מאז $2',
 	'pagetriage-author-not-autoconfirmed' => 'עורך חדש',
-	'pagetriage-no-patrol-right' => 'אין לך הרשאה לסקור את הדף הזה', # Fuzzy
+	'pagetriage-no-patrol-right' => 'אין לך הרשאה לסקור דף זה',
 	'pagetriage-author-blocked' => 'נחסם',
 	'pagetriage-author-bot' => 'בוט',
 	'pagetriage-showing' => 'מוצגות:',
@@ -3711,7 +3712,7 @@ $messages['he'] = array(
 	'pagetriage-page-status-autoreviewed' => 'הדף הזה נוטר באופן אוטומטי.',
 	'pagetriage-page-status-delete' => 'סומן למחיקה',
 	'pagetriage-articleinfo-stat' => 'סטטיסטיקה: $1',
-	'pagetriage-js-required' => 'ההרחבה הזאת דורשת דפדפן עם JavaScript.',
+	'pagetriage-js-required' => 'הרחבה זו דורשת דפדפן עם JavaScript.',
 	'pagetriage-tags-title' => 'הוספת תגים',
 	'pagetriage-tags-cat-common-label' => 'כללי',
 	'pagetriage-tags-cat-metadata-label' => 'מטא־נתונים',
@@ -7412,6 +7413,30 @@ $messages['ru'] = array(
 	'pagetriage-welcome' => 'Пожалуйста, проверьте новые страницы ниже и помогите улучшить {{SITENAME}}. <a href="$1">Подробнее</a> · <a href="$2">Оставить отзыв</a>',
 	'pagetriage-note-reviewed' => 'Эта страница была проверена.',
 	'pagetriage-note-not-reviewed' => 'Эта страница ещё не была проверена.',
+	'pagetriage-note-deletion' => 'Эта страница была номинирована на удаление.',
+	'pagetriage-refresh-list' => 'Обновить список',
+	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|тег выбран|тега  выбрано|тегов выбрано}}',
+	'pagetriage-button-add-tag' => 'Добавить выбранные теги',
+	'pagetriage-articleinfo-stat' => 'Статистика: $1',
+	'pagetriage-js-required' => 'Это расширение требует браузер с поддержкой JavaScript.',
+	'pagetriage-tags-cat-neutrality-label' => 'Нейтральность',
+	'pagetriage-tags-cat-sources-label' => 'Источники',
+	'pagetriage-tags-cat-structure-label' => 'Структура',
+	'pagetriage-tags-cat-unwantedcontent-label' => 'Нежелательное содержание',
+	'pagetriage-tags-cat-all-label' => 'Все теги',
+	'pagetriage-del-tags-dbu3-label' => 'Несвободные галереи',
+	'pagetriage-tags-param-article-label' => 'Статья:',
+	'pagetriage-tags-param-date-label' => 'Дата:',
+	'pagetriage-tags-param-free-yes-label' => 'Да',
+	'pagetriage-tags-param-free-no-label' => 'Нет',
+	'pagetriage-info-title' => 'Информация о странице',
+	'pagetriage-info-history-header' => 'История',
+	'pagetriage-info-problem-blocked' => 'Заблокированный участник',
+	'pagetriage-info-problem-blocked-desc' => 'Эта страница была создана заблокированным участником.',
+	'pagetriage-info-timestamp-time-format' => 'ЧЧ:мм',
+	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|правка|правки|правок}}',
+	'pagetriage-toolbar-close' => 'Закрыть',
+	'pagetriage-toolbar-minimize' => 'Свернуть',
 	'echo-pref-tooltip-page-review' => 'Сообщать мне, когда кто-то помечает созданную мной страницу как проверенную.',
 );
 
@@ -8945,6 +8970,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (中文（繁體）‎)
+ * @author Ch.Andrew
  * @author Simon Shek
  */
 $messages['zh-hant'] = array(
@@ -8980,7 +9006,7 @@ $messages['zh-hant'] = array(
 	'pagetriage-author-bot' => '機器人',
 	'pagetriage-showing' => '顯示：',
 	'pagetriage-filter-list-prompt' => '設置篩選器',
-	'pagetriage-unreviewed-article-count' => '$1個未複查頁面（最早的頁面在$2天前）', # Fuzzy
+	'pagetriage-unreviewed-article-count' => '$1 個未檢閱的{{PLURAL:$1|頁面}}（最早： $2 天前）',
 	'pagetriage-sort-by' => '排序方式：',
 	'pagetriage-newest' => '最新',
 	'pagetriage-oldest' => '最舊',
@@ -9020,7 +9046,7 @@ $messages['zh-hant'] = array(
 	'pagetriage-filter-stat-username' => '用戶名：$1',
 	'pagetriage-no-pages' => '沒有滿足您的條件的頁面。',
 	'pagetriage-warning-browser' => '此工具可能不能在比Internet Explorer 8更舊的瀏覽器中工作。',
-	'pagetriage-welcome' => '請複查下列新頁面，幫助改善維基百科。<a href="$1">了解詳情</a> · <a href="$2">提出意見</a>', # Fuzzy
+	'pagetriage-welcome' => '請檢閱下列的新頁面，幫助改善{{SITENAME}}。<a href="$1">了解更多資訊</a> · <a href="$2">留下意見反饋</a>',
 	'pagetriage-note-reviewed' => '本頁面已被複查。',
 	'pagetriage-note-not-reviewed' => '此頁面還沒有被複查。',
 	'pagetriage-note-deletion' => '此頁面已被提交刪除。',
@@ -9053,7 +9079,7 @@ $messages['zh-hant'] = array(
 	'pagetriage-tags-cat-writingstyle-label' => '寫作風格',
 	'pagetriage-tags-cat-moretags-label' => '更多標籤',
 	'pagetriage-tags-cat-all-label' => '全部標籤',
-	'pagetriage-tags-tooltip' => '添加標記以指出此頁存在的問題', # Fuzzy
+	'pagetriage-tags-tooltip' => '對此頁面加入標記到需改善的指示區域',
 	'pagetriage-del-tags-cat-csd-desc' => '如果它滿足以下條件之一，標記這個頁面快速刪除。',
 	'pagetriage-del-tags-cat-prod-desc' => '如果它明顯違反社群標準，標記這個頁面為提議刪除',
 	'pagetriage-del-tags-cat-discussion-desc' => '標記這個頁面以和其他編者討論是否刪除。',
@@ -9073,7 +9099,7 @@ $messages['zh-hant'] = array(
 	'pagetriage-tags-param-url-label' => '請添加一個指向來源的URL。',
 	'pagetriage-tags-param-free-yes-label' => '是',
 	'pagetriage-tags-param-free-no-label' => '否',
-	'pagetriage-tags-param-missing-required' => '參數$1是必需的', # Fuzzy
+	'pagetriage-tags-param-missing-required' => '標籤$1是遺失的必要參數。',
 	'log-name-pagetriage-curation' => '頁面管理器日誌',
 	'log-description-pagetriage-curation' => '這是頁面管理工具欄的操作日誌。',
 	'log-name-pagetriage-deletion' => '刪除標籤日誌',
