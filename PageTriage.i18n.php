@@ -2681,6 +2681,7 @@ $messages['fa'] = array(
 /** Finnish (suomi)
  * @author Beluga
  * @author Nedergard
+ * @author Pxos
  * @author Silvonen
  */
 $messages['fi'] = array(
@@ -2698,15 +2699,15 @@ $messages['fi'] = array(
 	'pagetriage-sort-by' => 'Lajitteluperuste:',
 	'pagetriage-newest' => 'Uusin',
 	'pagetriage-oldest' => 'Vanhin',
-	'pagetriage-triage' => 'Tarkasta',
+	'pagetriage-triage' => 'Aseta arvio',
 	'pagetriage-filter-show-heading' => 'Näytä:',
 	'pagetriage-filter-reviewed-edits' => 'Arvioidut sivut',
 	'pagetriage-filter-unreviewed-edits' => 'Arvioimattomat sivut',
 	'pagetriage-filter-redirects' => 'Ohjaukset',
-	'pagetriage-filter-namespace-heading' => 'Nimiavaruuessa:',
+	'pagetriage-filter-namespace-heading' => 'Nimiavaruudessa:',
 	'pagetriage-filter-article' => 'Artikkeli',
 	'pagetriage-filter-username' => 'Käyttäjätunnus',
-	'pagetriage-filter-tag-heading' => 'Tunnisteella:',
+	'pagetriage-filter-tag-heading' => 'Merkinnällä:',
 	'pagetriage-filter-second-show-heading' => 'Jotka:',
 	'pagetriage-filter-no-categories' => 'Ovat luokittelematta',
 	'pagetriage-filter-orphan' => 'Ovat orpoja',
@@ -2728,7 +2729,7 @@ $messages['fi'] = array(
 	'pagetriage-button-mark-for-deletion' => 'Merkitse poistettavaksi',
 	'pagetriage-page-status-delete' => 'Merkitty poistettavaksi',
 	'pagetriage-articleinfo-stat' => 'Tilastot: $1',
-	'pagetriage-tags-title' => 'Lisää tunnisteita',
+	'pagetriage-tags-title' => 'Lisää tageja',
 	'pagetriage-tags-cat-metadata-label' => 'Sisältökuvaukset',
 	'pagetriage-tags-cat-cleanup-label' => 'Siistiminen',
 	'pagetriage-tags-cat-neutrality-label' => 'Neutraalius',
@@ -5647,6 +5648,7 @@ $messages['ku-latn'] = array(
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby
+ * @author Soued031
  */
 $messages['lb'] = array(
 	'pagetriage' => 'Säiten nokucken',
@@ -5712,7 +5714,7 @@ $messages['lb'] = array(
 	'pagetriage-filter-stat-blocked' => 'Gespaart Benotzer',
 	'pagetriage-filter-stat-username' => 'Benotzernumm: $1',
 	'pagetriage-no-pages' => 'Keng Säiten entspriechen Äre Critèren.',
-	'pagetriage-warning-browser' => 'Dësen Tool fonctionnéiert mat Browser, déi méi al wéi den Internet Explorer 8 sinn, ënner Ëmstänn net korrekt.',
+	'pagetriage-warning-browser' => 'Dëst Geschir funktionéiert mat Browser, déi méi al wéi den Internet Explorer 8 sinn, ënner Ëmstänn net korrekt.',
 	'pagetriage-note-reviewed' => 'Dës Säit gouf net nogekuckt.',
 	'pagetriage-note-not-reviewed' => 'Dës Säit gouf nach net nogekuckt.',
 	'pagetriage-note-deletion' => 'Dës Säit gouf virgeschlo fir geläscht ze ginn.',
