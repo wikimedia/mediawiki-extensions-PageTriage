@@ -8973,6 +8973,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (中文（繁體）‎)
  * @author Ch.Andrew
+ * @author Cwlin0416
  * @author Simon Shek
  */
 $messages['zh-hant'] = array(
@@ -8992,7 +8993,7 @@ $messages['zh-hant'] = array(
 	'pagetriage-hist' => '歷史',
 	'pagetriage-bytes' => '$1字節',
 	'pagetriage-edits' => '$1次編輯',
-	'pagetriage-categories' => '$1個分類',
+	'pagetriage-categories' => '$1 個分類',
 	'pagetriage-no-categories' => '無分類',
 	'pagetriage-no-reference' => '無引用',
 	'pagetriage-orphan' => '孤立',
