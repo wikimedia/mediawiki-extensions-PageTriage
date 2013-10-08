@@ -3091,39 +3091,14 @@ $messages['fr'] = array(
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] a été {{GENDER:$1|relue}} par [[User:$1|$1]]',
 	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] a été {{GENDER:$1|relue}} par <b>$1</b>',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => 'Votre page a été {{GENDER:$1|relue}} sur {{SITENAME}}',
-	'pagetriage-notification-mark-as-reviewed-email-body2' => "$2 a été {{GENDER:$1|relue}} par l'utilisateur $1 de {{SITENAME}}:
-
-En voir davantage:
-
-$3
-
-$4",
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 a été {{GENDER:$2|relu}} par $2',
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] a été {{GENDER:$1|relue}} et {{GENDER:$1|marquée}} par [[User:$1|$1]].  {{PLURAL:$4|Balise|Balises}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] a été {{GENDER:$1|relue}} et {{GENDER:$1|marquée}} par <b>$1</b>.  {{PLURAL:$4|Balise|Balises}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => 'Votre page a été {{GENDER:$1|marquée}} sur {{SITENAME}}',
-	'pagetriage-notification-add-maintenance-tag-email-body2' => "$2 a été {{GENDER:$1|relue}} et {{GENDER:$1|marquée}} par l'utilisateur $1 de {{SITENAME}}.
-
-{{PLURAL:$5|Balise|Balises}}: $4
-
-En voir plus:
-
-$3
-
-$6",
 	'pagetriage-notification-add-maintenance-tag-email-batch-body' => '$1 a été {{GENDER:$2|relue}} et {{GENDER:$2|marquée}} par $2',
 	'pagetriage-notification-add-deletion-tag2' => '[[$2]] a été {{GENDER:$1|relu}} et {{GENDER:$1|marquée pour suppression}} par [[User:$1|$1]].  {{PLURAL:$4|Balise|Balises}}: $3',
 	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] a été {{GENDER:$1|relue}} et {{GENDER:$1|marquée pour suppression}} par <b>$1</b>. {{PLURAL:$4|Balise|Balises}}: $3',
 	'pagetriage-notification-add-deletion-tag-email-subject2' => 'Votre page a été {{GENDER:$1|marquée pour suppression}} sur {{SITENAME}}',
-	'pagetriage-notification-add-deletion-tag-email-body2' => "$2 a été {{GENDER:$1|marquée pour suppression}} par l'utilisateur $1 de {{SITENAME}}.
-
-{{PLURAL:$5|Balise|Balises}}: $4
-
-En voir plus:
-
-$3
-
-$6",
 	'pagetriage-notification-add-deletion-tag-email-batch-body' => '$1 a été {{GENDER:$2|marquée pour suppression}} par $2',
 	'echo-pref-subscription-page-review' => "Relire une page que j'ai créée",
 	'echo-pref-tooltip-page-review' => 'Me prévenir quand quelqu’un relit une page que j’ai créée.',
@@ -6293,39 +6268,14 @@ $messages['mk'] = array(
 	'pagetriage-notification-mark-as-reviewed2' => '[[User:$1|$1]] {{GENDER:$1|ја провери}} страницата [[$2]]',
 	'pagetriage-notification-mark-as-reviewed-flyout' => '<b>$1</b> ја {{GENDER:$1|провери}} страницата [[$2]]',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => 'Вашата страница на {{SITENAME}} {{GENDER:$1|е проверена}}',
-	'pagetriage-notification-mark-as-reviewed-email-body2' => 'Корисникот $1 на {{SITENAME}} {{GENDER:$1|ја провери}} страницата $2:
-
-Погледајте повеќе:
-
-$3
-
-$4',
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$2 {{GENDER:$2|ја провери}} страницата $1',
 	'pagetriage-notification-add-maintenance-tag2' => '[[User:$1|$1]] {{GENDER:$1|ја провери}} {{GENDER:$1|и означи}} страницата [[$2]]. {{PLURAL:$4|Ознака|Ознаки}}: $3',
 	'pagetriage-notification-add-maintenance-tag-flyout' => '<b>$1</b> {{GENDER:$1|ја провери}} {{GENDER:$1|и означи}} „[[$2]]“. {{PLURAL:$4|Ознака|Ознаки}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => 'Вашата страница на {{SITENAME}} {{GENDER:$1|е означена}}',
-	'pagetriage-notification-add-maintenance-tag-email-body2' => '$1 на {{SITENAME}} {{GENDER:$1|ја провери}} {{GENDER:$1|и означи}} страницата $2.
-
-{{PLURAL:$5|Ознака|Ознаки}}: $4
-
-Погледајте повеќе:
-
-$3
-
-$6',
 	'pagetriage-notification-add-maintenance-tag-email-batch-body' => '$2 {{GENDER:$2|ја провери}} и {{GENDER:$2|означи}} $1',
 	'pagetriage-notification-add-deletion-tag2' => '[[User:$1|$1]] {{GENDER:$1|ја провери}} страницата [[$2]] {{GENDER:$1|и ја означи}} за бришење. {{PLURAL:$4|Ознака|Ознаки}}: $3',
 	'pagetriage-notification-add-deletion-tag-flyout' => '<b>$1</b> {{GENDER:$1|ја провери}} страницата [[$2]] и {{GENDER:$1|ја означи за бришење}}. {{PLURAL:$4|Ознака|Ознаки}}: $3',
 	'pagetriage-notification-add-deletion-tag-email-subject2' => 'Вашата страница на {{SITENAME}} {{GENDER:$1|е означена за бришење}}',
-	'pagetriage-notification-add-deletion-tag-email-body2' => '$1 на {{SITENAME}} {{GENDER:$1|ја означи за бришење}} страницата $2.
-
-{{PLURAL:$5|Ознака|Ознаки}}: $4
-
-Погледајте повеќе:
-
-$3
-
-$6',
 	'pagetriage-notification-add-deletion-tag-email-batch-body' => '$2 ја {{GENDER:$2|ја означи за бришење}} $1',
 	'echo-pref-subscription-page-review' => 'Провери страница што сум ја создал',
 	'echo-pref-tooltip-page-review' => 'Извести ме кога некој ќе провери/оцени страница што ја имам создадено.',
@@ -7045,40 +6995,15 @@ $messages['pms'] = array(
 	'pagetriage-tag-warning-notice' => "Nòta: Sta pàgina a l'ha mach $1 {{PLURAL:$1|minuta|minute}}. Ch'a consìdera dë speté a marchela, gavà che ël problema a sia serios.",
 	'pagetriage-notification-mark-as-reviewed2' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} da [[User:$1|$1]]",
 	'pagetriage-notification-mark-as-reviewed-flyout' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} da $1", # Fuzzy
-	'pagetriage-notification-mark-as-reviewed-email-subject2' => "$2 a l'é stàit {{GENDER:$1|revisionà}} da $1",
-	'pagetriage-notification-mark-as-reviewed-email-body2' => "$2 a l'é stàit {{GENDER:$1|revisionà}} da l'utent ëd {{SITENAME}} $1:
-
-Vëdde ëd pi:
-
-$3
-
-$4",
+	'pagetriage-notification-mark-as-reviewed-email-subject2' => "$2 a l'é stàit {{GENDER:$1|revisionà}} da $1", # Fuzzy
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => "$1 a l'era {{GENDER:$2|revisionà}} da $2",
 	'pagetriage-notification-add-maintenance-tag2' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|tichëttà}} da [[User:$1|$1]].  {{PLURAL:$4|Tichëtta|Tichëtte}}: $3",
 	'pagetriage-notification-add-maintenance-tag-flyout' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|tichëttà}} da $1.  {{PLURAL:$4|Tichëtta|Tichëtte}}: $3", # Fuzzy
-	'pagetriage-notification-add-maintenance-tag-email-subject2' => "$2 a l'é stàit {{GENDER:$1|tichëttà}} da $1",
-	'pagetriage-notification-add-maintenance-tag-email-body2' => "$2 a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|marcà}} da l'utent ëd {{SITENAME}} $1.
-
-{{PLURAL:$5|Tichëtta|Tichëtte}}: $4
-
-Vëdde ëd pi:
-
-$3
-
-$6",
+	'pagetriage-notification-add-maintenance-tag-email-subject2' => "$2 a l'é stàit {{GENDER:$1|tichëttà}} da $1", # Fuzzy
 	'pagetriage-notification-add-deletion-tag2' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|marcà për la sganfura}} da [[User:$1|$1]].  {{PLURAL:$4|Tichëtta|Tichëtte}}: $3",
 	'pagetriage-notification-add-deletion-tag-flyout' => "[[$2]] a l'é stàit {{GENDER:$1|revisionà}} e {{GENDER:$1|marcà për lë scancelament}} da <b>$1</b>.
 {{PLURAL:$4|Tichëtta|Tichëtte}}: $3",
-	'pagetriage-notification-add-deletion-tag-email-subject2' => "$2 a l'é stàit {{GENDER:$1|marcà për lë scancelament}} da $1",
-	'pagetriage-notification-add-deletion-tag-email-body2' => "$2 a l'é stàit {{GENDER:$1|marcà për lë scancelament}} da l'utent ëd {{SITENAME}} $1.
-
-{{PLURAL:$5|Tichëtta|Tichëtte}}: $4
-
-Vëdde ëd pi:
-
-$3
-
-$6",
+	'pagetriage-notification-add-deletion-tag-email-subject2' => "$2 a l'é stàit {{GENDER:$1|marcà për lë scancelament}} da $1", # Fuzzy
 	'echo-pref-subscription-page-review' => "A revision-a na pàgina che mi i l'heu creà",
 );
 
@@ -7433,13 +7358,6 @@ $messages['roa-tara'] = array(
 	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] ha state {{GENDER:$1|reviste}} da [[User:$1|$1]]',
 	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] ha state {{GENDER:$1|reviste}} da <b>$1</b>',
 	'pagetriage-notification-mark-as-reviewed-email-subject2' => "'A pàgena toje {{GENDER:$1|ha state reviste}} sus a {{SITENAME}}",
-	'pagetriage-notification-mark-as-reviewed-email-body2' => "$2 ha state {{GENDER:$1|reviste}} da l'utende de {{SITENAME}} $1:
-
-'Ndruche de cchiù:
-
-$3
-
-$4",
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 ha state {{GENDER:$2|reviste}} da $2',
 );
 
