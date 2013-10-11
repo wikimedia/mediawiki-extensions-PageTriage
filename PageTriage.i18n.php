@@ -1330,6 +1330,7 @@ $messages['bxr'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
+	'pagetriage-bytes' => '$1 {{PLURAL:$1|байт|байташ}}',
 	'pagetriage-no-reference' => 'Билгалдаккхар яц',
 	'pagetriage-triage' => 'Хьажа',
 	'pagetriage-filter-username' => 'Декъашхочун цӀе',
@@ -8911,7 +8912,7 @@ $messages['zh-hans'] = array(
 	'pagetriage-desc' => '用于复查和审核新页面的便利工具',
 	'pagetriage-pagecuration' => '页面处理',
 	'pagetriage-please-wait' => '请稍候...',
-	'pagetriage-api-invalidid' => '你提供的ID（$1）无效。',
+	'pagetriage-api-invalidid' => '您提供的ID（$1）无效。',
 	'pagetriage-markpatrolled' => '标记该页面为已复核',
 	'pagetriage-markunpatrolled' => '标记该页面为未复核',
 	'pagetriage-self-review-error' => '你不能复核你自己创建的页面。',
@@ -8933,7 +8934,7 @@ $messages['zh-hans'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => '该页由新手$2 ($3$4$5)创建于$1',
 	'pagetriage-editcount' => '自$2以来$1次编辑',
 	'pagetriage-author-not-autoconfirmed' => '新手',
-	'pagetriage-no-patrol-right' => '你没有权限标记该页面为已复核',
+	'pagetriage-no-patrol-right' => '您没有权限标记该页面为已复核',
 	'pagetriage-author-blocked' => '已封禁',
 	'pagetriage-author-bot' => '机器人',
 	'pagetriage-showing' => '显示：',
