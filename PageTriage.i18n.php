@@ -1334,6 +1334,8 @@ $messages['ce'] = array(
 	'pagetriage-no-reference' => 'Билгалдаккхар яц',
 	'pagetriage-triage' => 'Хьажа',
 	'pagetriage-filter-username' => 'Декъашхочун цӀе',
+	'pagetriage-filter-ns-all' => 'Массо',
+	'pagetriage-filter-stat-all' => 'Массо',
 	'pagetriage-filter-stat-blocked' => 'блоктоьхна декъашхой',
 	'pagetriage-filter-stat-username' => 'декъашхочун цӀе: $1',
 );
@@ -8899,6 +8901,7 @@ $messages['yi'] = array(
 /** Simplified Chinese (中文（简体）‎)
  * @author Kuailong
  * @author Liangent
+ * @author Liuxinyu970226
  * @author Qiyue2001
  * @author Shirayuki
  * @author Shizhao
@@ -8940,6 +8943,7 @@ $messages['zh-hans'] = array(
 	'pagetriage-showing' => '显示：',
 	'pagetriage-filter-list-prompt' => '设置筛选器',
 	'pagetriage-unreviewed-article-count' => '共计$1个未复核页面（最早：$2）',
+	'pagetriage-reviewed-article-count-past-week' => '本周$1个页面已被复查',
 	'pagetriage-sort-by' => '排序方式：',
 	'pagetriage-newest' => '最新',
 	'pagetriage-oldest' => '最旧',
