@@ -2485,6 +2485,7 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Dalba
+ * @author Ebraminio
  * @author Huji
  * @author Mahan
  * @author Mjbmr
@@ -2580,7 +2581,7 @@ $messages['fa'] = array(
 	'pagetriage-characters-left' => '{{PLURAL:$1|$1 نویسه|$1 نویسه}} باقی مانده',
 	'pagetriage-personal-default-note' => 'پیغامی سودمند برای {{GENDER:$1|$1}} بنویسید. این پیغام در صفحهٔ بحث کاربری وی نمایش می‌یابد.',
 	'pagetriage-page-status-reviewed' => 'بررسی شده در $1 توسط $2 ($3$4$5)',
-	'pagetriage-page-status-reviewed-anonymous' => 'علامت‌گذاری‌شده به عنوان بررسی‌شده',
+	'pagetriage-page-status-reviewed-anonymous' => 'علامت‌گذاری‌شده به‌عنوان بررسی‌شده',
 	'pagetriage-page-status-unreviewed' => 'این صفحه هنوز بررسی نشده است.',
 	'pagetriage-page-status-autoreviewed' => 'این صفحه به صورت خودکار برچسب گشت خورده است.',
 	'pagetriage-page-status-delete' => 'علامت‌گذاری‌شده برای حذف',
@@ -2660,9 +2661,9 @@ $messages['fa'] = array(
 	'pagetriage-toolbar-collapsed' => 'بهسازی',
 	'pagetriage-toolbar-linktext' => 'بهسازی این مقاله',
 	'pagetriage-toolbar-learn-more' => 'بیشتر بدانید »',
-	'pagetriage-mark-title' => 'علامت‌گذاری به عنوان بررسی‌شده',
-	'pagetriage-mark-as-reviewed' => 'علامت‌گذاری به عنوان بررسی‌شده',
-	'pagetriage-mark-as-unreviewed' => 'علامت‌گذاری به عنوان بررسی‌نشده',
+	'pagetriage-mark-title' => 'علامت‌گذاری به‌عنوان بررسی‌شده',
+	'pagetriage-mark-as-reviewed' => 'علامت‌گذاری به‌عنوان بررسی‌شده',
+	'pagetriage-mark-as-unreviewed' => 'علامت‌گذاری به‌عنوان بررسی‌نشده',
 	'pagetriage-mark-as-reviewed-helptext' => 'اگر بررسیتان به پایان رسیده است، این صفحه را به عنوان بررسی‌شده علامت‌گذاری کنید.',
 	'pagetriage-mark-as-unreviewed-helptext' => 'اگر گمان می‌کنید نیاز به بررسی بیشتر دارد، صفحه را به عنوان بررسی‌نشده علامت‌گذاری کنید.',
 	'pagetriage-wikilove-helptext' => 'نام کاربرانی را که مایل به سپاسگزاری از آن‌ها هستید، انتخاب کنید.',
