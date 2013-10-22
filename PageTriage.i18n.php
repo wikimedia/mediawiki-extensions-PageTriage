@@ -1205,9 +1205,15 @@ $messages['be-tarask'] = array(
 );
 
 /** Bulgarian (български)
+ * @author DCLXVI
  * @author පසිඳු කාවින්ද
  */
 $messages['bg'] = array(
+	'pagetriage-bytes' => '$1 {{PLURAL:$1|байт|байта}}',
+	'pagetriage-edits' => '$1 {{PLURAL:$1|редакция|редакции}}',
+	'pagetriage-categories' => '$1 {{PLURAL:$1|категория|категории}}',
+	'pagetriage-no-categories' => 'Без категории',
+	'pagetriage-orphan' => 'Сираци',
 	'pagetriage-triage' => 'Преглеждане',
 	'pagetriage-filter-show-heading' => 'Покажи:',
 	'pagetriage-filter-article' => 'Статия',
