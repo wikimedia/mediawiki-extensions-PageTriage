@@ -1344,6 +1344,7 @@ $messages['ce'] = array(
 	'pagetriage-filter-stat-all' => 'Массо',
 	'pagetriage-filter-stat-blocked' => 'блоктоьхна декъашхой',
 	'pagetriage-filter-stat-username' => 'декъашхочун цӀе: $1',
+	'pagetriage-welcome' => 'Дехар до, лахарчу керла агӀонашка хьажар а уьш таян а {{SITENAME}}. <a href="$1">Мадарра</a> · <a href="$2">Язде хьайна хетарг</a>',
 );
 
 /** Czech (česky)
