@@ -2502,7 +2502,7 @@ $messages['eu'] = array(
 $messages['fa'] = array(
 	'pagetriage' => 'تریاژ صفحه‌ها',
 	'newpagesfeed' => 'خوراک صفحه‌های تازه',
-	'pagetriage-desc' => 'بررسی و تایید صفحه‌های تازه را تسهیل می‌کند',
+	'pagetriage-desc' => 'بررسی و تأیید صفحه‌های تازه را تسهیل می‌کند',
 	'pagetriage-pagecuration' => 'بهسازی صفحه',
 	'pagetriage-please-wait' => 'لطفاً صبر کنید...',
 	'pagetriage-api-invalidid' => 'شناسه‌ای که وارد کردید ($1) معتبر نیست',
@@ -2538,8 +2538,8 @@ $messages['fa'] = array(
 	'pagetriage-oldest' => 'قدیمی ترین',
 	'pagetriage-triage' => 'بررسی',
 	'pagetriage-filter-show-heading' => 'نمایش:',
-	'pagetriage-filter-reviewed-edits' => 'صفحه‌های بررسی شده',
-	'pagetriage-filter-unreviewed-edits' => 'صفحه‌های بررسی نشده',
+	'pagetriage-filter-reviewed-edits' => 'صفحه‌های بررسی‌شده',
+	'pagetriage-filter-unreviewed-edits' => 'صفحه‌های بررسی‌نشده',
 	'pagetriage-filter-nominated-for-deletion' => 'نامزد شده برای حذف',
 	'pagetriage-filter-bot-edits' => 'ساخته شده توسط ربات‌ها',
 	'pagetriage-filter-redirects' => 'تغییرمسیرها',
@@ -2573,9 +2573,9 @@ $messages['fa'] = array(
 	'pagetriage-no-pages' => 'هیچ صفحه‌ای منطبق با معیار شما پیدا نشد.',
 	'pagetriage-warning-browser' => 'این ابزار در مرورگرهای قدیمی‌تر از اینترنت اکسپلورر ۸ ممکن است به درستی کار نکند.',
 	'pagetriage-welcome' => 'لطفاً صفحه‌های تازه را در زیر بررسی کنید و به بهبود ویکی‌پدیا کمک کنید. <a href="$1">اطلاعات بیشتر</a>. <a href="$2">بازخورد</a>.', # Fuzzy
-	'pagetriage-note-reviewed' => 'این صفحه بررسی شده است.',
+	'pagetriage-note-reviewed' => 'این صفحه بررسی شده‌است.',
 	'pagetriage-note-not-reviewed' => 'این صفحه هنوز بررسی نشده‌است.',
-	'pagetriage-note-deletion' => 'این صفحه برای حذف نامزد شده است.',
+	'pagetriage-note-deletion' => 'این صفحه برای حذف نامزد شده‌است.',
 	'pagetriage-refresh-list' => 'تازه‌کردن فهرست',
 	'pagetriage-tag-count-total' => '$1 {{PLURAL:$1|برچسب|برچسب}} انتخاب شد',
 	'pagetriage-button-add-tag' => 'افزودن برچسب‌های انتخاب شده',
@@ -2587,7 +2587,7 @@ $messages['fa'] = array(
 	'pagetriage-add-a-note-creator' => 'پیغامی برای سازنده بگذارید: (اختیاری)',
 	'pagetriage-characters-left' => '{{PLURAL:$1|$1 نویسه|$1 نویسه}} باقی مانده',
 	'pagetriage-personal-default-note' => 'پیغامی سودمند برای {{GENDER:$1|$1}} بنویسید. این پیغام در صفحهٔ بحث کاربری وی نمایش می‌یابد.',
-	'pagetriage-page-status-reviewed' => 'بررسی شده در $1 توسط $2 ($3$4$5)',
+	'pagetriage-page-status-reviewed' => 'بررسی‌شده در $1 توسط $2 ($3$4$5)',
 	'pagetriage-page-status-reviewed-anonymous' => 'علامت‌گذاری‌شده به‌عنوان بررسی‌شده',
 	'pagetriage-page-status-unreviewed' => 'این صفحه هنوز بررسی نشده‌است.',
 	'pagetriage-page-status-autoreviewed' => 'این صفحه به صورت خودکار برچسب گشت خورده است.',
@@ -2655,7 +2655,7 @@ $messages['fa'] = array(
 	'pagetriage-info-problem-non-autoconfirmed' => 'ویرایشگر جدید',
 	'pagetriage-info-problem-non-autoconfirmed-desc' => 'این صفحه توسط کاربری تأییدنشده ساخته شده‌است.',
 	'pagetriage-info-problem-blocked' => 'کاربر قطع دسترسی شده',
-	'pagetriage-info-problem-blocked-desc' => 'صفحه توسط کاربر قطع دسترسی شده ایجاد شده است.',
+	'pagetriage-info-problem-blocked-desc' => 'صفحه توسط کاربر قطع دسترسی‌شده ایجاد شده‌است.',
 	'pagetriage-info-problem-no-categories' => 'بدون رده',
 	'pagetriage-info-problem-no-categories-desc' => 'این صفحه در هیچ رده‌ای قرار ندارد.',
 	'pagetriage-info-problem-orphan' => 'یتیم',
@@ -2688,6 +2688,7 @@ $messages['fa'] = array(
 	'pagetriage-tag-deletion-error' => 'صفحه از پیش برچسب حذف خورده است، در حال لغو فرآیند.',
 	'pagetriage-toolbar-close' => 'بستن',
 	'pagetriage-toolbar-minimize' => 'کوچک‌ساختن',
+	'echo-category-title-page-review' => '{{PLURAL:$1|بازبینی|بازبینی‌های}} صفحه',
 );
 
 /** Finnish (suomi)
@@ -7734,7 +7735,17 @@ $messages['si'] = array(
  * @author Milicevic01
  */
 $messages['sr-ec'] = array(
+	'pagetriage-tags-param-free-yes-label' => 'Да',
+	'pagetriage-tags-param-free-no-label' => 'Не',
 	'pagetriage-info-timestamp-date-format' => 'd MMMM yyyy',
+);
+
+/** Serbian (Latin script) (srpski (latinica)‎)
+ * @author Milicevic01
+ */
+$messages['sr-el'] = array(
+	'pagetriage-tags-param-free-yes-label' => 'Da',
+	'pagetriage-tags-param-free-no-label' => 'Ne',
 );
 
 /** Swedish (svenska)
