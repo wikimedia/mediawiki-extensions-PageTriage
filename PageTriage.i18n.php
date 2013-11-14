@@ -1342,9 +1342,11 @@ $messages['ce'] = array(
 	'pagetriage-filter-username' => 'Декъашхочун цӀе',
 	'pagetriage-filter-ns-all' => 'Массо',
 	'pagetriage-filter-stat-all' => 'Массо',
+	'pagetriage-filter-stat-nominated-for-deletion' => 'дӀаяха кховдинарш',
 	'pagetriage-filter-stat-blocked' => 'блоктоьхна декъашхой',
 	'pagetriage-filter-stat-username' => 'декъашхочун цӀе: $1',
 	'pagetriage-welcome' => 'Дехар до, лахарчу керла агӀонашка хьажар а уьш таян а {{SITENAME}}. <a href="$1">Мадарра</a> · <a href="$2">Язде хьайна хетарг</a>',
+	'pagetriage-del-tags-dbg7-label' => 'Авторо доьху дӀаяккхар',
 );
 
 /** Czech (česky)
