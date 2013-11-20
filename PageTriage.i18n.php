@@ -2700,6 +2700,7 @@ $messages['fa'] = array(
  * @author Silvonen
  */
 $messages['fi'] = array(
+	'pagetriage-desc' => 'Tarjoaa menetelmän arvioida ja hyväksyä uusia sivuja',
 	'pagetriage-please-wait' => 'Odota...',
 	'pagetriage-bytes' => '$1 {{PLURAL:$1|tavu|tavua}}',
 	'pagetriage-edits' => '$1 {{PLURAL:$1|muokkaus|muokkausta}}',
