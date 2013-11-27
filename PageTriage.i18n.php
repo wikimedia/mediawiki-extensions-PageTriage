@@ -1348,6 +1348,7 @@ $messages['ce'] = array(
 	'pagetriage-welcome' => 'Дехар до, лахарчу керла агӀонашка хьажар а уьш таян а {{SITENAME}}. <a href="$1">Мадарра</a> · <a href="$2">Язде хьайна хетарг</a>',
 	'pagetriage-del-tags-dbg7-label' => 'Авторо доьху дӀаяккхар',
 	'pagetriage-tags-param-free-yes-label' => 'ХӀаъ',
+	'pagetriage-info-title' => 'АгӀонах лаьцна хаам',
 );
 
 /** Czech (česky)
@@ -7474,6 +7475,7 @@ $messages['roa-tara'] = array(
  * @author Kaganer
  * @author Okras
  * @author Ole Yves
+ * @author Yurik
  */
 $messages['ru'] = array(
 	'pagetriage' => 'Сортировка страниц',
@@ -7578,9 +7580,17 @@ $messages['ru'] = array(
 	'pagetriage-tags-param-free-no-label' => 'Нет',
 	'pagetriage-info-title' => 'Информация о странице',
 	'pagetriage-info-history-header' => 'История',
+	'pagetriage-info-history-show-full' => 'посмотреть полную историю',
+	'pagetriage-info-help' => 'справка',
 	'pagetriage-info-problem-non-autoconfirmed' => 'Новый редактор',
 	'pagetriage-info-problem-blocked' => 'Заблокированный участник',
 	'pagetriage-info-problem-blocked-desc' => 'Эта страница была создана заблокированным участником.',
+	'pagetriage-info-problem-no-categories' => 'Нет категорий',
+	'pagetriage-info-problem-no-categories-desc' => 'Эта страница не относится ни к одной категории.',
+	'pagetriage-info-problem-orphan' => 'Страница-сирота',
+	'pagetriage-info-problem-orphan-desc' => 'Нет страниц ссылающихся на эту страницу.',
+	'pagetriage-info-problem-no-references' => 'Нет примечаний',
+	'pagetriage-info-problem-no-references-desc' => 'Эта странице не ссылается на какие-либо источники.',
 	'pagetriage-info-timestamp-time-format' => 'ЧЧ:мм',
 	'pagetriage-toolbar-learn-more' => 'Узнать больше',
 	'pagetriage-wikilove-page-creator' => 'Создатель страницы',
