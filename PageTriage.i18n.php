@@ -493,7 +493,8 @@ Parameters:
 	'pagetriage-filter-bot-edits' => 'Checkbox text for pages by bots',
 	'pagetriage-filter-redirects' => 'Checkbox text for redirect pages',
 	'pagetriage-filter-namespace-heading' => 'Prompt for the namespace to display',
-	'pagetriage-filter-article' => 'Select list option for the main namespace',
+	'pagetriage-filter-article' => 'Select list option for the main namespace.
+{{Identical|Article}}',
 	'pagetriage-filter-user-heading' => 'Prompt for the user to find pages by. Immediately followed by an input field. Prefer no colon since we want it to match with the rest of the options in the list which are all of the style "Were created by XXX".',
 	'pagetriage-filter-username' => 'Placeholder text for the input where a username is entered.
 {{Identical|Username}}',
@@ -785,7 +786,8 @@ This message is not generic enough and may be changed. See [[:bugzilla:37196|Bug
 	'pagetriage-del-tags-redirectsfordiscussion-label' => 'Label for redirects for discussion tag',
 	'pagetriage-del-tags-miscellanyfordeletion-label' => 'Label for miscellany for deletion tag',
 	'pagetriage-del-talk-page-notify-summary' => 'Edit summary for notifying an author when their page has been nominated for deletion. $1 is the title of the page being nominated.',
-	'pagetriage-tags-param-article-label' => 'Label for article parameter',
+	'pagetriage-tags-param-article-label' => 'Label for article parameter.
+{{Identical|Article}}',
 	'pagetriage-tags-param-date-label' => 'Label for date parameter.
 {{Identical|Date}}',
 	'pagetriage-tags-param-issues-label' => 'Label for reason/details parameter',
@@ -3605,6 +3607,7 @@ $messages['gl'] = array(
 /** Hebrew (עברית)
  * @author Amire80
  * @author Guycn1
+ * @author Guycn2
  * @author Inkbug
  * @author Neukoln
  * @author חיים
@@ -3814,6 +3817,7 @@ $messages['he'] = array(
 	'pagetriage-tag-deletion-error' => 'בדף הזה כבר יש תבנית מחיקה, הפעולה מתבטלת.',
 	'pagetriage-toolbar-close' => 'סגירה',
 	'pagetriage-toolbar-minimize' => 'מזעור',
+	'echo-pref-tooltip-page-review' => 'להודיע לי כשמישהו סוקר דף שיצרתי.',
 	'echo-category-title-page-review' => '{{PLURAL:$1|סקירת|סקירות}} דף',
 );
 
@@ -5570,7 +5574,7 @@ $messages['ko'] = array(
 	'pagetriage-tags-deadend-label' => '막다른 문서',
 	'pagetriage-tags-deadend-desc' => '이 문서는 다른 문서로 링크한 것이 적거나 없습니다.',
 	'pagetriage-tags-externallinks-label' => '바깥 링크',
-	'pagetriage-tags-externallinks-desc' => '이 문서의 외부 링크는 콘텐츠 정책이나 지침을 따르지 않습니다.',
+	'pagetriage-tags-externallinks-desc' => '이 문서의 바깥 링크는 내용 정책이나 지침을 따르지 않습니다.',
 	'pagetriage-tags-catimprove-label' => '더 많은 분류',
 	'pagetriage-tags-catimprove-desc' => '이 문서에는 추가적인 분류가 필요합니다.',
 	'pagetriage-tags-orphan-label' => '외톨이',
