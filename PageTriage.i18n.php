@@ -3819,6 +3819,7 @@ $messages['he'] = array(
 	'pagetriage-tag-deletion-error' => 'בדף הזה כבר יש תבנית מחיקה, הפעולה מתבטלת.',
 	'pagetriage-toolbar-close' => 'סגירה',
 	'pagetriage-toolbar-minimize' => 'מזעור',
+	'echo-pref-subscription-page-review' => 'סוקר דף שיצרתי',
 	'echo-pref-tooltip-page-review' => 'להודיע לי כשמישהו סוקר דף שיצרתי.',
 	'echo-category-title-page-review' => '{{PLURAL:$1|סקירת|סקירות}} דף',
 );
