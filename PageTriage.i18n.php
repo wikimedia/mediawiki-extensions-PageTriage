@@ -1353,7 +1353,7 @@ $messages['ce'] = array(
 	'pagetriage-info-title' => 'АгӀонах лаьцна хаам',
 );
 
-/** Czech (česky)
+/** Czech (čeština)
  * @author Jkjk
  * @author Littledogboy
  * @author Mormegil
@@ -1432,7 +1432,7 @@ $messages['cs'] = array(
 	'echo-category-title-page-review' => '{{PLURAL:$1|posouzení stránky}}',
 );
 
-/** Church Slavic (словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+/** Church Slavic (словѣньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
 $messages['cu'] = array(
@@ -6718,7 +6718,7 @@ $messages['nl'] = array(
 	'pagetriage-tags-param-url-label' => 'Voeg een URL toe naar de bron.',
 	'pagetriage-tags-param-free-yes-label' => 'Ja',
 	'pagetriage-tags-param-free-no-label' => 'No',
-	'pagetriage-tags-param-missing-required' => 'Het label $1 mist een verplichte parameter.',
+	'pagetriage-tags-param-missing-required' => 'Voor het label $1 ontbreekt een verplichte parameter.',
 	'log-name-pagetriage-curation' => 'Logboek paginaconservering',
 	'log-description-pagetriage-curation' => 'Dit is het logboek met handelingen vanuit de werkbalk paginaconservering.',
 	'log-name-pagetriage-deletion' => 'Logboek verwijderingslabels',
