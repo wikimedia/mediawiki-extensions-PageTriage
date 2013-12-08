@@ -1340,6 +1340,7 @@ $messages['bxr'] = array(
 $messages['ce'] = array(
 	'pagetriage-bytes' => '$1 {{PLURAL:$1|байт|байташ}}',
 	'pagetriage-no-reference' => 'Билгалдаккхар яц',
+	'pagetriage-author-blocked' => 'Блоктоьхна',
 	'pagetriage-triage' => 'Хьажа',
 	'pagetriage-filter-username' => 'Декъашхочун цӀе',
 	'pagetriage-filter-ns-all' => 'Массо',
@@ -1962,6 +1963,7 @@ $messages['eo'] = array(
 /** Spanish (español)
  * @author Armando-Martin
  * @author Bernardom
+ * @author Fitoschido
  * @author Invadinado
  * @author Jewbask
  * @author Maor X
@@ -1973,7 +1975,7 @@ $messages['es'] = array(
 	'newpagesfeed' => 'Canal de páginas nuevas',
 	'pagetriage-desc' => 'Facilita la revisión y aprobación de las páginas nuevas',
 	'pagetriage-pagecuration' => 'Conservación de páginas',
-	'pagetriage-please-wait' => 'Por favor espera...',
+	'pagetriage-please-wait' => 'Espera un momento…',
 	'pagetriage-api-invalidid' => 'El identificador ($1) que ha suministrado no es válido.',
 	'pagetriage-markpatrolled' => 'Marcar esta página como revisada',
 	'pagetriage-markunpatrolled' => 'Marcar esta página como no revisada',
