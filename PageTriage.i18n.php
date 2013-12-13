@@ -2507,6 +2507,7 @@ $messages['eu'] = array(
  * @author Mahan
  * @author Mjbmr
  * @author Nojan Madinehi
+ * @author Omidh
  * @author Reza1615
  */
 $messages['fa'] = array(
@@ -2537,12 +2538,13 @@ $messages['fa'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => 'این صفحه در $1 توسط $2، ویرایشگر جدید، ایجاد شده است ($3$4$5)',
 	'pagetriage-editcount' => '$1 {{PLURAL:$1|ویرایش|ویرایش}} از $2',
 	'pagetriage-author-not-autoconfirmed' => 'ویرایشگر جدید',
-	'pagetriage-no-patrol-right' => 'شما حق بررسی این صفحه را ندارید', # Fuzzy
+	'pagetriage-no-patrol-right' => 'شما حق علامت‌گزاری این صفحه‌ٔ‌را به عنوان بررسی‌شده ندارید.',
 	'pagetriage-author-blocked' => 'مسدود شده',
 	'pagetriage-author-bot' => 'ربات',
 	'pagetriage-showing' => 'نمایش:',
 	'pagetriage-filter-list-prompt' => 'تنظیم پالایه‌ها',
-	'pagetriage-unreviewed-article-count' => '$1  {{PLURAL:$1| صفحه|صفحه}} بررسی نشده (قدیمی ترین:  $2)', # Fuzzy
+	'pagetriage-unreviewed-article-count' => '$1  {{PLURAL:$1| صفحه|صفحه}} بررسی نشده (قدیمی ترین:  $2)',
+	'pagetriage-reviewed-article-count-past-week' => '$1 صفحه در این هفته بررسی {{PLURAL:$1|شد|شدند}}',
 	'pagetriage-sort-by' => 'مرتب‌سازی بر پایه:',
 	'pagetriage-newest' => 'جدیدترین',
 	'pagetriage-oldest' => 'قدیمی ترین',
@@ -2567,6 +2569,7 @@ $messages['fa'] = array(
 	'pagetriage-filter-set-button' => 'تنظیم پالایه‌ها',
 	'pagetriage-stats-less-than-a-day' => 'کمتر از یک روز',
 	'pagetriage-stats-reviewed-page-count' => '$1 صفحه در این هفته بررسی {{PLURAL:$1|شد|شدند}}',
+	'pagetriage-stats-filter-page-count' => '$1 {{PLURAL:$1|صفحهٔ|صفحهٔ}} در لیست فیلتر‌ شده شما',
 	'pagetriage-filter-ns-all' => 'همه',
 	'pagetriage-more' => 'بیشتر',
 	'pagetriage-filter-stat-all' => 'همه',
@@ -2582,7 +2585,7 @@ $messages['fa'] = array(
 	'pagetriage-filter-stat-username' => 'نام کاربری: $1',
 	'pagetriage-no-pages' => 'هیچ صفحه‌ای منطبق با معیار شما پیدا نشد.',
 	'pagetriage-warning-browser' => 'این ابزار در مرورگرهای قدیمی‌تر از اینترنت اکسپلورر ۸ ممکن است به درستی کار نکند.',
-	'pagetriage-welcome' => 'لطفاً صفحه‌های تازه را در زیر بررسی کنید و به بهبود ویکی‌پدیا کمک کنید. <a href="$1">اطلاعات بیشتر</a>. <a href="$2">بازخورد</a>.', # Fuzzy
+	'pagetriage-welcome' => 'لطفاً صفحه‌های تازه را در زیر بررسی کنید و به بهبود {{SITENAME}} کمک کنید. <a href="$1">اطلاعات بیشتر</a>. <a href="$2">بازخورد</a>.',
 	'pagetriage-note-reviewed' => 'این صفحه بررسی شده‌است.',
 	'pagetriage-note-not-reviewed' => 'این صفحه هنوز بررسی نشده‌است.',
 	'pagetriage-note-deletion' => 'این صفحه برای حذف نامزد شده‌است.',
@@ -2595,6 +2598,7 @@ $messages['fa'] = array(
 	'pagetriage-button-edit-details' => 'ویرایش جزئیات',
 	'pagetriage-button-mark-for-deletion' => 'علامت‌گذاری برای حذف',
 	'pagetriage-add-a-note-creator' => 'پیغامی برای سازنده بگذارید: (اختیاری)',
+	'pagetriage-add-a-note-reviewer' => 'پیغامی برای بازبین بگذارید: (اختیاری)',
 	'pagetriage-characters-left' => '{{PLURAL:$1|$1 نویسه|$1 نویسه}} باقی مانده',
 	'pagetriage-personal-default-note' => 'پیغامی سودمند برای {{GENDER:$1|$1}} بنویسید. این پیغام در صفحهٔ بحث کاربری وی نمایش می‌یابد.',
 	'pagetriage-page-status-reviewed' => 'بررسی‌شده در $1 توسط $2 ($3$4$5)',
@@ -2621,7 +2625,7 @@ $messages['fa'] = array(
 	'pagetriage-tags-stub-label' => 'خرد',
 	'pagetriage-tags-verylong-label' => 'بسیار طولانی',
 	'pagetriage-tags-update-label' => 'به روز رسانی',
-	'pagetriage-tags-tooltip' => 'افزودن برچسب‌هایی برای نمایش مشکلات صفحه', # Fuzzy
+	'pagetriage-tags-tooltip' => 'برچسب‌ها‌ را به منظور نشان دادن قسمت‌های که نیاز به بهترشدن دارند اضافه کنید',
 	'pagetriage-del-tags-cat-csd-desc' => 'به این صفحه در صورت برخورداری از یکی از معیارهای زیر برچسب حذف سریع بزنید.',
 	'pagetriage-del-tags-cat-prod-desc' => 'به این صفحه اگر به روشنی از استانداردهای لازم برخوردار نیست برچسب حذف زمان‌دار بزنید.',
 	'pagetriage-del-tags-cat-discussion-desc' => 'این صفحه را نامزد حذف از طریق نظرخواهی کنید.',
@@ -2692,12 +2696,24 @@ $messages['fa'] = array(
 	'pagetriage-del-log-page-missing-error' => 'صفحهٔ سیاههٔ امروز هنوز ساخته نشده‌است!',
 	'pagetriage-del-log-page-adding-error' => 'عدم موفقیت در یافتن نقطه هدف برای بحث',
 	'pagetriage-del-talk-page-notify-error' => 'عدم موفقیت در اطلاع‌رسانی به نویسنده در صفحه بحث',
+	'pagetriage-del-title' => 'علامت‌گذاری برای حذف',
 	'pagetriage-del-tooltip' => 'این صفحه را نامزد حذف کنید',
 	'pagetriage-tagging-error' => 'عدم موفقیت در افزودن برچسب‌ها به صفحه',
 	'pagetriage-add-tag-confirmation' => 'آیا مطمئن هستید که می‌خواهید $1 {{PLURAL:$1|برچسب|برچسب}} به این مقالهٔ کوتاه بیفزایید؟',
 	'pagetriage-tag-deletion-error' => 'صفحه از پیش برچسب حذف خورده است، در حال لغو فرآیند.',
 	'pagetriage-toolbar-close' => 'بستن',
 	'pagetriage-toolbar-minimize' => 'کوچک‌ساختن',
+	'pagetriage-tag-warning-notice' => 'توجه: این صفحه فقط $1 {{PLURAL:$1|دقیقه|دقیقه}}  است که ساخته‌شده است. منتظر شوید تا برچسب‌زده شود، مگر اینکه مسئله جدی باشد.',
+	'pagetriage-notification-mark-as-reviewed2' => '[[$2]] {{GENDER:$1|بازبینی شد}}توسط [[User:$1|$1]]',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]] توسط <b>$1</b> {{GENDER:$1|بازبینی شد}}',
+	'pagetriage-notification-mark-as-reviewed-email-subject2' => 'صفحه شما در {{SITENAME}} {{GENDER:$1|بازبینی شد}}',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 توسط $2 {{GENDER:$2|بازبینی شد.}}',
+	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] توسط [[User:$1|$1]] {{GENDER:$1|بازبینی}} و {{GENDER:$1|برچسب}}  زده شد.
+{{PLURAL:$4|برچسب|برچسب‌ها}}: $3',
+	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] توسط [[User:$1|$1]] {{GENDER:$1|بازبینی}} و {{GENDER:$1|برچسب}}  زده شد.
+{{PLURAL:$4|برچسب|برچسب‌ها}}: $3', # Fuzzy
+	'pagetriage-notification-add-maintenance-tag-email-subject2' => 'صفحهٔ شما در {{SITENAME}} {{GENDER:$1|برچسب زده‌شد}}',
+	'echo-pref-tooltip-page-review' => 'زمانی که کسی صفحهٔ‌ای که من ایجاد کرده‌ام را بررسی کرد من را مطلع کن.',
 	'echo-category-title-page-review' => '{{PLURAL:$1|بازبینی|بازبینی‌های}} صفحه',
 );
 
