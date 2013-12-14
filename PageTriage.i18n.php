@@ -1338,7 +1338,7 @@ $messages['bxr'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
-	'pagetriage-bytes' => '$1 {{PLURAL:$1|байт|байташ}}',
+	'pagetriage-bytes' => '$1 {{PLURAL:$1|байт}}',
 	'pagetriage-no-reference' => 'Билгалдаккхар яц',
 	'pagetriage-author-blocked' => 'Блоктоьхна',
 	'pagetriage-triage' => 'Хьажа',
@@ -5940,8 +5940,8 @@ $messages['lb'] = array(
 	'pagetriage-note-not-reviewed' => 'Dës Säit gouf nach net nogekuckt.',
 	'pagetriage-note-deletion' => 'Dës Säit gouf virgeschlo fir geläscht ze ginn.',
 	'pagetriage-refresh-list' => 'Lëscht aktualiséieren',
-	'pagetriage-button-add-parameters' => 'Parameter derbäisetzen',
-	'pagetriage-button-add-details' => 'Detailer derbäisetzen',
+	'pagetriage-button-add-parameters' => 'Parameter dobäisetzen',
+	'pagetriage-button-add-details' => 'Detailer dobäisetzen',
 	'pagetriage-button-edit-details' => 'Detailer änneren',
 	'pagetriage-button-mark-for-deletion' => 'Markéiere fir ze läschen',
 	'pagetriage-page-status-reviewed' => 'Als nogekuckt markéiert den $1 vum $2 ($3$4$5)',
