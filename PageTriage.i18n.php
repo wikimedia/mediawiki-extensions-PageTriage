@@ -15,7 +15,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'pagetriage' => 'Page Triage',
-	'pagetriage-dot-separator' => ' · ',
+	'pagetriage-dot-separator' => '&#32;·&#32;',
 	'newpagesfeed' => 'New pages feed',
 	'pagetriage-desc' => 'Facilitates reviewing and approving new pages',
 	'pagetriage-pagecuration' => 'Page Curation',
