@@ -1338,6 +1338,7 @@ $messages['bxr'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
+	'pagetriage-hist' => 'истори',
 	'pagetriage-bytes' => '$1 {{PLURAL:$1|байт}}',
 	'pagetriage-no-reference' => 'Билгалдаккхар яц',
 	'pagetriage-author-blocked' => 'Блоктоьхна',
@@ -1352,6 +1353,7 @@ $messages['ce'] = array(
 	'pagetriage-del-tags-dbg7-label' => 'Авторо доьху дӀаяккхар',
 	'pagetriage-tags-param-free-yes-label' => 'ХӀаъ',
 	'pagetriage-info-title' => 'АгӀонах лаьцна хаам',
+	'pagetriage-info-history-header' => 'Истори',
 );
 
 /** Czech (čeština)
@@ -2696,6 +2698,7 @@ $messages['fa'] = array(
 	'pagetriage-del-log-page-missing-error' => 'صفحهٔ سیاههٔ امروز هنوز ساخته نشده‌است!',
 	'pagetriage-del-log-page-adding-error' => 'عدم موفقیت در یافتن نقطه هدف برای بحث',
 	'pagetriage-del-talk-page-notify-error' => 'عدم موفقیت در اطلاع‌رسانی به نویسنده در صفحه بحث',
+	'pagetriage-del-discussion-page-adding-error' => 'افزودن صفحه به نظرخواهی برای حذف با خطا مواجه شد!',
 	'pagetriage-del-title' => 'علامت‌گذاری برای حذف',
 	'pagetriage-del-tooltip' => 'این صفحه را نامزد حذف کنید',
 	'pagetriage-tagging-error' => 'عدم موفقیت در افزودن برچسب‌ها به صفحه',
@@ -2710,9 +2713,14 @@ $messages['fa'] = array(
 	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1 توسط $2 {{GENDER:$2|بازبینی شد.}}',
 	'pagetriage-notification-add-maintenance-tag2' => '[[$2]] توسط [[User:$1|$1]] {{GENDER:$1|بازبینی}} و {{GENDER:$1|برچسب}}  زده شد.
 {{PLURAL:$4|برچسب|برچسب‌ها}}: $3',
-	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] توسط [[User:$1|$1]] {{GENDER:$1|بازبینی}} و {{GENDER:$1|برچسب}}  زده شد.
-{{PLURAL:$4|برچسب|برچسب‌ها}}: $3', # Fuzzy
+	'pagetriage-notification-add-maintenance-tag-flyout' => '[[$2]] {{GENDER:$1|بازبینی}} شد و {{GENDER:$1|برچسب زده‌شد}} توسط <b>$1</b>. {{PLURAL:$4|برچسب|برچسب‌ها}}: $3',
 	'pagetriage-notification-add-maintenance-tag-email-subject2' => 'صفحهٔ شما در {{SITENAME}} {{GENDER:$1|برچسب زده‌شد}}',
+	'pagetriage-notification-add-maintenance-tag-email-batch-body' => '$1 {{GENDER:$2|بازبینی شد}} و {{GENDER:$2|برچسب‌زده‌شد}} توسط $2.',
+	'pagetriage-notification-add-deletion-tag2' => '[[$2]] {{GENDER:$1|بازبینی‌شد}} و {{GENDER:$1|برچسب حذف زده شد}} توسط [[User:$1|$1]]. {{PLURAL:$4|برچسب|برچسب‌ها}}: $3',
+	'pagetriage-notification-add-deletion-tag-flyout' => '[[$2]] {{GENDER:$1|بازبین‌شد}}  و {{GENDER:$1|برچسب حذف زده شد}} توسط <b>$1</b>. {{PLURAL:$4|برچسب|برچسب‌ها}}: $3',
+	'pagetriage-notification-add-deletion-tag-email-subject2' => 'صفحهٔ شما در {{SITENAME}} {{GENDER:$1|برچسب حذف زده‌شده‌است}}',
+	'pagetriage-notification-add-deletion-tag-email-batch-body' => '$1 {{GENDER:$2|برچسب حذف زده شد}}  توسط $2.',
+	'echo-pref-subscription-page-review' => 'بازبینی صفحهٔ ساخته شده توسط من',
 	'echo-pref-tooltip-page-review' => 'زمانی که کسی صفحهٔ‌ای که من ایجاد کرده‌ام را بررسی کرد من را مطلع کن.',
 	'echo-category-title-page-review' => '{{PLURAL:$1|بازبینی|بازبینی‌های}} صفحه',
 );
