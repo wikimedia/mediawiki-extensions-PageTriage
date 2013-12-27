@@ -1350,10 +1350,13 @@ $messages['ce'] = array(
 	'pagetriage-filter-stat-blocked' => 'блоктоьхна декъашхой',
 	'pagetriage-filter-stat-username' => 'декъашхочун цӀе: $1',
 	'pagetriage-welcome' => 'Дехар до, лахарчу керла агӀонашка хьажар а уьш таян а {{SITENAME}}. <a href="$1">Мадарра</a> · <a href="$2">Язде хьайна хетарг</a>',
+	'pagetriage-note-reviewed' => 'ХӀокху агӀоне хьаьжина.',
+	'pagetriage-note-not-reviewed' => 'ХӀара агӀо хӀинца а хьажанца ю.',
 	'pagetriage-del-tags-dbg7-label' => 'Авторо доьху дӀаяккхар',
 	'pagetriage-tags-param-free-yes-label' => 'ХӀаъ',
 	'pagetriage-info-title' => 'АгӀонах лаьцна хаам',
 	'pagetriage-info-history-header' => 'Истори',
+	'pagetriage-info-problem-no-categories-desc' => 'ХӀокху агӀона цхьаа категори яц.',
 );
 
 /** Czech (čeština)
