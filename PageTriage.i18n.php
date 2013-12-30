@@ -2626,6 +2626,7 @@ $messages['fa'] = array(
 	'pagetriage-tags-cat-moretags-label' => 'برچسب‌های بیشتر',
 	'pagetriage-tags-cat-all-label' => 'همهٔ برچسب‌ها',
 	'pagetriage-tags-uncategorised-label' => 'رده بندی نشده',
+	'pagetriage-tags-cleanup-label' => 'پاکسازی',
 	'pagetriage-tags-sections-label' => 'بخش‌ها',
 	'pagetriage-tags-stub-label' => 'خرد',
 	'pagetriage-tags-verylong-label' => 'بسیار طولانی',
