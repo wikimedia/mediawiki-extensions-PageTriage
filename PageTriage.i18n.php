@@ -1356,6 +1356,7 @@ $messages['ce'] = array(
 	'pagetriage-tags-param-free-yes-label' => 'ХӀаъ',
 	'pagetriage-info-title' => 'АгӀонах лаьцна хаам',
 	'pagetriage-info-history-header' => 'Истори',
+	'pagetriage-info-help' => 'гӀо',
 	'pagetriage-info-problem-no-categories-desc' => 'ХӀокху агӀона цхьаа категори яц.',
 );
 
