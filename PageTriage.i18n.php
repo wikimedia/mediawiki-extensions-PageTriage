@@ -968,11 +968,15 @@ See also:
 	'echo-pref-subscription-page-review' => 'Option for getting notifications when someone reviews a page created by the user.
 
 This is the conclusion of the sentence begun by the header: {{msg-mw|Prefs-echosubscriptions}}.',
-	'echo-pref-tooltip-page-review' => 'This is a short description of the page-review notification category.',
+	'echo-pref-tooltip-page-review' => 'This is a short description of the page-review notification category.
+{{Related|Echo-pref-tooltip}}',
 	'echo-category-title-page-review' => 'This is a short title for notification category.
 
-Used as <code>$1</code> in {{msg-mw|Echo-dismiss-message}} and <code>$2</code> in {{msg-mw|Echo-email-batch-category-header}}. Parameters:
-* $1 is the number used for plural support',
+Used as <code>$1</code> in {{msg-mw|Echo-dismiss-message}} and <code>$2</code> in {{msg-mw|Echo-email-batch-category-header}}.
+
+Parameters:
+* $1 - the number used for plural support
+{{Related|Echo-category-title}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -5420,7 +5424,7 @@ $messages['ja'] = array(
 	'pagetriage-notification-add-deletion-tag-email-subject2' => '{{SITENAME}}で $1 があなたのページに{{GENDER:$1|削除の印を付けました}}',
 	'pagetriage-notification-add-deletion-tag-email-batch-body' => '$2 が $1 に{{GENDER:$2|削除の印を付けました}}。',
 	'echo-pref-subscription-page-review' => '自分が作成したページを、誰かが査読したとき',
-	'echo-pref-tooltip-page-review' => '自分が作成したページを誰かが査読したら通知を受け取る。',
+	'echo-pref-tooltip-page-review' => '自分が作成したページを誰かが査読したときに通知する。',
 	'echo-category-title-page-review' => 'ページの{{PLURAL:$1|査読}}',
 );
 
