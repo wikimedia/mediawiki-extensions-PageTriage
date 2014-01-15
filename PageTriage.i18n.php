@@ -5500,6 +5500,7 @@ $messages['ka'] = array(
 );
 
 /** Korean (한국어)
+ * @author Priviet
  * @author 아라
  */
 $messages['ko'] = array(
