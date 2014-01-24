@@ -1364,6 +1364,13 @@ $messages['ce'] = array(
 	'pagetriage-info-problem-no-categories-desc' => 'ХӀокху агӀона цхьаа категори яц.',
 );
 
+/** Corsican (corsu)
+ * @author Paulu
+ */
+$messages['co'] = array(
+	'pagetriage-info-title' => 'Informazione annantu à a pagina',
+);
+
 /** Czech (čeština)
  * @author Jkjk
  * @author Littledogboy
