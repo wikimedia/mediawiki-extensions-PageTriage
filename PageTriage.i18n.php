@@ -1347,6 +1347,7 @@ $messages['ce'] = array(
 	'pagetriage-no-reference' => 'Билгалдаккхар яц',
 	'pagetriage-author-blocked' => 'Блоктоьхна',
 	'pagetriage-triage' => 'Хьажа',
+	'pagetriage-filter-unreviewed-edits' => 'Хьажанза агӀонаш',
 	'pagetriage-filter-username' => 'Декъашхочун цӀе',
 	'pagetriage-filter-ns-all' => 'Массо',
 	'pagetriage-filter-stat-all' => 'Массо',
