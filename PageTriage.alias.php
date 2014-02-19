@@ -19,6 +19,11 @@ $specialPageAliases['ar'] = array(
 	'NewPagesFeed' => array( 'تغذية_الصفحات_الجديدة' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'NewPagesFeed' => array( 'تغذيه_الصفحات_الجديده' ),
+);
+
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
 	'NewPagesFeed' => array( 'Seitenprüfung' ),
@@ -77,4 +82,9 @@ $specialPageAliases['tr'] = array(
 /** Vietnamese (Tiếng Việt) */
 $specialPageAliases['vi'] = array(
 	'NewPagesFeed' => array( 'Nguồn_tin_trang_mới' ),
+);
+
+/** Simplified Chinese (中文（简体）‎) */
+$specialPageAliases['zh-hans'] = array(
+	'NewPagesFeed' => array( '新页面供给' ),
 );
