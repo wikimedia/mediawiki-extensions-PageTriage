@@ -7565,6 +7565,7 @@ $messages['roa-tara'] = array(
  * @author Kaganer
  * @author Okras
  * @author Ole Yves
+ * @author Tucvbif
  * @author Yurik
  */
 $messages['ru'] = array(
@@ -7654,6 +7655,7 @@ $messages['ru'] = array(
 	'pagetriage-button-edit-details' => 'Изменить подробности',
 	'pagetriage-button-mark-for-deletion' => 'Пометить для удаления',
 	'pagetriage-characters-left' => '$1 {{PLURAL:$1|символ остался|$1 символов осталось|$1 символа осталось}}',
+	'pagetriage-page-status-delete' => 'Помечено для удаления',
 	'pagetriage-articleinfo-stat' => 'Статистика: $1',
 	'pagetriage-js-required' => 'Это расширение требует браузер с поддержкой JavaScript.',
 	'pagetriage-tags-cat-neutrality-label' => 'Нейтральность',
@@ -7683,7 +7685,7 @@ $messages['ru'] = array(
 	'pagetriage-info-problem-no-references' => 'Нет примечаний',
 	'pagetriage-info-problem-no-references-desc' => 'Эта странице не ссылается на какие-либо источники.',
 	'pagetriage-info-timestamp-time-format' => 'ЧЧ:мм',
-	'pagetriage-toolbar-learn-more' => 'Узнать больше',
+	'pagetriage-toolbar-learn-more' => 'Подробнее',
 	'pagetriage-wikilove-page-creator' => 'Создатель страницы',
 	'pagetriage-wikilove-edit-count' => '$1 {{PLURAL:$1|правка|правок|правки}}',
 	'pagetriage-del-title' => 'Пометить для удаления',
