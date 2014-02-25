@@ -57,10 +57,11 @@ class ArticleMetadata {
 			$pageId = $this->mPageId;
 		}
 
+		// @TODO: use merge() to make this atomic
 		foreach ( $pageId as $val ) {
-			$data =  $wgMemc->get( $keyPrefix . '-' . $val );
+			$data = $wgMemc->get( $keyPrefix . '-' . $val );
 			if ( $data !== false ) {
-				$wgMemc->replace( $keyPrefix . '-' . $val, array_merge( $data, $update ), 86400 );
+				$wgMemc->set( $keyPrefix . '-' . $val, array_merge( $data, $update ), 86400 );
 			}
 		}
 	}
@@ -382,17 +383,17 @@ class ArticleCompileProcessor {
 			$this->defaultMode = false;
 		}
 	}
-	
+
 	/**
 	 * Config what db to use for each component
-	 * @param $config array 
+	 * @param $config array
 	 * 		example: array( 'BasicData' => DB_SLAVE, 'UserData' => DB_MASTER )
 	 */
 	public function configComponentDb( $config ) {
 		$dbMode = array( DB_MASTER, DB_SLAVE );
 		foreach ( $this->componentDb as $key => $value ) {
 			if ( isset ( $config[$key] ) && in_array( $config[$key], $dbMode ) ) {
-				$this->componentDb[$key] = $config[$key];	
+				$this->componentDb[$key] = $config[$key];
 			}
 		}
 	}
@@ -544,7 +545,7 @@ abstract class ArticleCompileInterface {
 			$articles = array();
 		}
 		$this->articles = $articles;
-		
+
 		$this->db = wfGetDB( $componentDb );
 
 		$this->componentDb = $componentDb;
@@ -725,7 +726,7 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 				$article = $this->articles[$pageId];
 			} else {
 				if ( $this->componentDb === DB_MASTER ) {
-					$from = 'fromdbmaster';	
+					$from = 'fromdbmaster';
 				} else {
 					$from = 'fromdb';
 				}
@@ -753,7 +754,7 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 		$text = strip_tags( $text );
 		$attempt = 0;
 
-		// 10 attempts at most, the logic here is to find the first }} and 
+		// 10 attempts at most, the logic here is to find the first }} and
 		// find the matching {{ for that }}
 		while ( $attempt < 10 ) {
 			$closeCurPos = strpos( $text, '}}' );
