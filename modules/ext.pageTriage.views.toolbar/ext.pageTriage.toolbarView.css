@@ -3,7 +3,7 @@
 #mwe-pt-toolbar {
 	position: fixed;
 	top: 140px;
-	z-index: 3;
+	z-index: 50;
 	right: 0px;
 	padding: 3px;
 	padding-bottom: 5px;
