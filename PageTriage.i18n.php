@@ -1346,6 +1346,7 @@ $messages['ce'] = array(
 	'pagetriage-bytes' => '$1 {{PLURAL:$1|байт}}', # Fuzzy
 	'pagetriage-no-reference' => 'Билгалдаккхар яц',
 	'pagetriage-author-blocked' => 'Блоктоьхна',
+	'pagetriage-author-bot' => 'Бот',
 	'pagetriage-triage' => 'Хьажа',
 	'pagetriage-filter-unreviewed-edits' => 'Хьажанза агӀонаш',
 	'pagetriage-filter-username' => 'Декъашхочун цӀе',
