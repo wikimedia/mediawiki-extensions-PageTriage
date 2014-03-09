@@ -88,3 +88,8 @@ $specialPageAliases['vi'] = array(
 $specialPageAliases['zh-hans'] = array(
 	'NewPagesFeed' => array( '新页面供给' ),
 );
+
+/** Traditional Chinese (中文（繁體）‎) */
+$specialPageAliases['zh-hant'] = array(
+	'NewPagesFeed' => array( '新頁面供稿' ),
+);
