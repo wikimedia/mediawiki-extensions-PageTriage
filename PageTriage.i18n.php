@@ -1358,6 +1358,7 @@ $messages['ce'] = array(
 	'pagetriage-welcome' => 'Дехар до, лахарчу керла агӀонашка хьажар а уьш таян а {{SITENAME}}. <a href="$1">Мадарра</a> · <a href="$2">Язде хьайна хетарг</a>',
 	'pagetriage-note-reviewed' => 'ХӀокху агӀоне хьаьжина.',
 	'pagetriage-note-not-reviewed' => 'ХӀара агӀо хӀинца а хьажанца ю.',
+	'pagetriage-characters-left' => '$1 {{PLURAL:$1|символ йисина|$1 символаш йисина}}',
 	'pagetriage-del-tags-dbg7-label' => 'Авторо доьху дӀаяккхар',
 	'pagetriage-tags-param-free-yes-label' => 'ХӀаъ',
 	'pagetriage-info-title' => 'АгӀонах лаьцна хаам',
@@ -3751,7 +3752,7 @@ $messages['he'] = array(
 	'pagetriage-filter-stat-username' => 'שם משתמש: $1',
 	'pagetriage-no-pages' => 'אין דפים שתואמים למה שהגדרת.',
 	'pagetriage-warning-browser' => 'ייתכן שהכלי הזה לא יעבוד נכון בדפדפנים ישנים יותר מאינטרנט אקספלורר 8.',
-	'pagetriage-welcome' => 'אנו מבקשים ממך לסקור את הדפים להלן לעזור לשפר את ויקיפדיה. <a href="$1">מידע נוסףa> · <a href="$2">שליחת משוב</a>', # Fuzzy
+	'pagetriage-welcome' => 'אנו מבקשים ממך לסקור את הדפים להלן לעזור לשפר את {{SITENAME}}. <a href="$1">מידע נוסףa> · <a href="$2">שליחת משוב</a>',
 	'pagetriage-note-reviewed' => 'הדף הזה נסקר.',
 	'pagetriage-note-not-reviewed' => 'הדף הזה עוד לא נסקר.',
 	'pagetriage-note-deletion' => 'הדף הזה מועמד למחיקה.',
@@ -3812,7 +3813,7 @@ $messages['he'] = array(
 	'pagetriage-tags-verylong-label' => 'ארוך מאוד',
 	'pagetriage-tags-verylong-desc' => 'הדף הזה ארוך מדי.',
 	'pagetriage-tags-copypaste-label' => 'העתקה והדבקה',
-	'pagetriage-tags-tooltip' => 'הוספת תגים לציון בעיות בערך', # Fuzzy
+	'pagetriage-tags-tooltip' => 'הוספת תגים לציון מקומות לשיפור בדף זה',
 	'pagetriage-del-tags-cat-csd-label' => 'מחיקה מהירה',
 	'pagetriage-del-tags-cat-csd-desc' => 'סימון הערך למחיקה מהירה בהתאם לאחת הסיבות להלן.',
 	'pagetriage-del-tags-cat-prod-label' => 'הצעת מחיקה',
