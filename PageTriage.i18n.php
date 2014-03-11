@@ -9267,6 +9267,7 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (中文（繁體）‎)
  * @author Ch.Andrew
  * @author Cwlin0416
+ * @author Liuxinyu970226
  * @author Simon Shek
  */
 $messages['zh-hant'] = array(
@@ -9297,12 +9298,13 @@ $messages['zh-hant'] = array(
 	'pagetriage-articleinfo-byline-new-editor' => '該頁由新手$2 ($3$4$5)創建於$1',
 	'pagetriage-editcount' => '自$2以來$1次編輯',
 	'pagetriage-author-not-autoconfirmed' => '新手',
-	'pagetriage-no-patrol-right' => '您沒有複查此頁面的權限', # Fuzzy
+	'pagetriage-no-patrol-right' => '您並無權限標記此頁面已複查',
 	'pagetriage-author-blocked' => '已封禁',
 	'pagetriage-author-bot' => '機器人',
 	'pagetriage-showing' => '顯示：',
 	'pagetriage-filter-list-prompt' => '設置篩選器',
 	'pagetriage-unreviewed-article-count' => '$1 個未檢閱的{{PLURAL:$1|頁面}}（最早： $2 天前）',
+	'pagetriage-reviewed-article-count-past-week' => '本週已複查$1個頁面',
 	'pagetriage-sort-by' => '排序方式：',
 	'pagetriage-newest' => '最新',
 	'pagetriage-oldest' => '最舊',
@@ -9445,8 +9447,18 @@ $messages['zh-hant'] = array(
 	'pagetriage-del-log-page-missing-error' => '今天的日誌頁面還沒有創建！',
 	'pagetriage-del-log-page-adding-error' => '無法找到討論的目標位置',
 	'pagetriage-del-talk-page-notify-error' => '無法在對話頁上通知作者',
+	'pagetriage-del-title' => '標記刪除',
 	'pagetriage-del-tooltip' => '將此頁面提交刪除',
 	'pagetriage-tagging-error' => '將標籤添加到頁面時失敗',
 	'pagetriage-add-tag-confirmation' => '您真的要添加$1個標籤到小作品中嗎？',
+	'pagetriage-toolbar-close' => '關閉',
+	'pagetriage-toolbar-minimize' => '最小化',
+	'pagetriage-notification-mark-as-reviewed2' => '[[$2]]已由[[User:$1|$1]]複查',
+	'pagetriage-notification-mark-as-reviewed-flyout' => '[[$2]]已由<b>$1</b>複查',
+	'pagetriage-notification-mark-as-reviewed-email-subject2' => '您於{{SITENAME}}之頁面{{GENDER:$1|已複查}}',
+	'pagetriage-notification-mark-as-reviewed-email-batch-body' => '$1已由$2複查。',
+	'pagetriage-notification-add-maintenance-tag-email-subject2' => '您於{{SITENAME}}之頁面{{GENDER:$1|已標記}}',
+	'echo-pref-subscription-page-review' => '複查本人創建頁面',
 	'echo-pref-tooltip-page-review' => '當有人複查我創建的頁面時，通知我。',
+	'echo-category-title-page-review' => '頁面{{PLURAL:$1|複查}}',
 );
