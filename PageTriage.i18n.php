@@ -8121,7 +8121,7 @@ $messages['sv'] = array(
 	'pagetriage-toolbar-minimize' => 'Minimera',
 	'echo-pref-subscription-page-review' => 'Granska en sida jag skapat',
 	'echo-pref-tooltip-page-review' => 'Meddela mig när någon granskat en sida jag skapat.',
-	'echo-category-title-page-review' => '{{PLURAL:$1|Granskning|Granskningar}}',
+	'echo-category-title-page-review' => '{{PLURAL:$1|Sidgranskning|Sidgranskningar}}',
 );
 
 /** Tamil (தமிழ்)
