@@ -1,0 +1,31 @@
+{
+    "@metadata": {
+        "authors": [
+            "Умар"
+        ]
+    },
+    "pagetriage-hist": "истори",
+    "pagetriage-bytes": "$1 {{PLURAL:$1|байт}}",
+    "pagetriage-no-reference": "Билгалдаккхар яц",
+    "pagetriage-author-blocked": "Блоктоьхна",
+    "pagetriage-author-bot": "Бот",
+    "pagetriage-triage": "Хьажа",
+    "pagetriage-filter-unreviewed-edits": "Хьажанза агӀонаш",
+    "pagetriage-filter-username": "Декъашхочун цӀе",
+    "pagetriage-filter-ns-all": "Массо",
+    "pagetriage-filter-stat-all": "Массо",
+    "pagetriage-filter-stat-nominated-for-deletion": "дӀаяха кховдинарш",
+    "pagetriage-filter-stat-blocked": "блоктоьхна декъашхой",
+    "pagetriage-filter-stat-username": "декъашхочун цӀе: $1",
+    "pagetriage-welcome": "Дехар до, лахарчу керла агӀонашка хьажар а уьш таян а {{SITENAME}}. <a href=\"$1\">Мадарра</a> · <a href=\"$2\">Язде хьайна хетарг</a>",
+    "pagetriage-note-reviewed": "ХӀокху агӀоне хьаьжина.",
+    "pagetriage-note-not-reviewed": "ХӀара агӀо хӀинца а хьажанца ю.",
+    "pagetriage-button-edit-details": "Хийца мадарра дерш",
+    "pagetriage-characters-left": "$1 {{PLURAL:$1|символ йисина|$1 символаш йисина}}",
+    "pagetriage-del-tags-dbg7-label": "Авторо доьху дӀаяккхар",
+    "pagetriage-tags-param-free-yes-label": "ХӀаъ",
+    "pagetriage-info-title": "АгӀонах лаьцна хаам",
+    "pagetriage-info-history-header": "Истори",
+    "pagetriage-info-help": "гӀо",
+    "pagetriage-info-problem-no-categories-desc": "ХӀокху агӀона цхьаа категори яц."
+}

@@ -1,0 +1,18 @@
+{
+    "@metadata": {
+        "authors": [
+            "Assele",
+            "Haqmar",
+            "Sagan"
+        ]
+    },
+    "pagetriage-author-not-autoconfirmed": "Яңы мөхәррирләүсе",
+    "pagetriage-author-blocked": "Блоклы",
+    "pagetriage-author-bot": "Робот",
+    "pagetriage-showing": "Күрһәтеләсәктәр:",
+    "pagetriage-filter-list-prompt": "Һөҙгөстәрҙе көйләү",
+    "pagetriage-sort-by": "Тәртипләштереү:",
+    "pagetriage-newest": "Иң яңы",
+    "pagetriage-oldest": "Иң иҫке",
+    "pagetriage-filter-show-heading": "Ошоларҙы күрһәт:"
+}

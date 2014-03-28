@@ -1,0 +1,24 @@
+{
+    "@metadata": {
+        "authors": [
+            "Purodha"
+        ]
+    },
+    "pagetriage-desc": "Määd_et müjjelesch, neu Sigge nohzeloore un aanzenämme.",
+    "pagetriage-please-wait": "Ene Momang&nbsp;…",
+    "pagetriage-api-invalidid": "De aanjejovve Kännong ($1) es onjöltesch.",
+    "pagetriage-markpatrolled": "Heh di Sigg es nohjeluert, dun dat fasshallde",
+    "pagetriage-markunpatrolled": "Heh di Sigg es nit nohjeluert, dun dat fasshallde",
+    "pagetriage-self-review-error": "Do kann selfs-jeschrevve Sigge nit nohloere.",
+    "pagetriage-reviewed": "Nohjeluert",
+    "pagetriage-creation-dateformat": "\"Aam\" d. MMMM yyyy \"öm\" HH:mm",
+    "pagetriage-filter-redirects": "Ömleidonge",
+    "pagetriage-filter-ns-all": "All",
+    "pagetriage-more": "Mieh",
+    "pagetriage-filter-stat-all": "All",
+    "pagetriage-filter-stat-reviewed": "Nohjeluert",
+    "pagetriage-filter-stat-redirects": "Ömleidonge",
+    "pagetriage-button-add-parameters": "Parrammeetere derbei donn",
+    "pagetriage-button-add-details": "Einzelheite derbei donn",
+    "pagetriage-button-edit-details": "Einzelheite ändere"
+}

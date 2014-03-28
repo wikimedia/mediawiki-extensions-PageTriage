@@ -1,0 +1,10 @@
+{
+    "@metadata": {
+        "authors": [
+            "Milicevic01"
+        ]
+    },
+    "pagetriage-tags-param-free-yes-label": "Да",
+    "pagetriage-tags-param-free-no-label": "Не",
+    "pagetriage-info-timestamp-date-format": "d MMMM yyyy"
+}

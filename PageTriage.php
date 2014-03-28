@@ -37,7 +37,7 @@ EOT;
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'PageTriage',
-	'version' => '0.1',
+	'version' => '0.2.0',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:PageTriage',
 	'author' => array(
 		'Ryan Kaldari',
@@ -103,8 +103,9 @@ $wgDefaultUserOptions['echo-subscriptions-email-page-review'] = false;
 // End configuration variables
 
 
-$dir = dirname( __FILE__ ) . '/';
+$dir = __DIR__ . '/';
 
+$wgMessagesDirs['PageTriage'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['PageTriage'] = $dir . 'PageTriage.i18n.php';
 $wgExtensionMessagesFiles['PageTriageAlias'] = $dir . 'PageTriage.alias.php';
 

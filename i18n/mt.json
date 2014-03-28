@@ -1,0 +1,27 @@
+{
+    "@metadata": {
+        "authors": [
+            "Chrisportelli",
+            "පසිඳු කාවින්ද"
+        ]
+    },
+    "pagetriage-author-blocked": "Imblukkat",
+    "pagetriage-author-bot": "Bot",
+    "pagetriage-filter-article": "Artiklu",
+    "pagetriage-filter-user-heading": "Ġew maħluqa minn",
+    "pagetriage-filter-username": "Isem tal-utent",
+    "pagetriage-filter-tag-heading": "Bit-tikketta:",
+    "pagetriage-filter-second-show-heading": "Li:",
+    "pagetriage-filter-no-categories": "M'għandhom l-ebda kategorija",
+    "pagetriage-filter-orphan": "Huma orfni",
+    "pagetriage-filter-non-autoconfirmed": "Ġew maħluqa minn edituri ġodda",
+    "pagetriage-filter-blocked": "Ġew maħluqa minn utenti mblukkati",
+    "pagetriage-filter-all": "Uri kollha",
+    "pagetriage-filter-set-button": "Agħmel il-filtri",
+    "pagetriage-stats-less-than-a-day": "inqas minn ġurnata",
+    "pagetriage-tags-param-free-yes-label": "Iva",
+    "pagetriage-tags-param-free-no-label": "Le",
+    "pagetriage-info-history-header": "Storja",
+    "pagetriage-info-timestamp-date-format": "d MMMM yyyy",
+    "pagetriage-info-timestamp-time-format": "HH:mm"
+}

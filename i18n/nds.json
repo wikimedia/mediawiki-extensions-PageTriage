@@ -1,0 +1,21 @@
+{
+    "@metadata": {
+        "authors": [
+            "Joachim Mos"
+        ]
+    },
+    "pagetriage-no-categories": "Kene Kategorien",
+    "pagetriage-no-reference": "Kene Zitaten",
+    "pagetriage-author-bot": "Bot",
+    "pagetriage-filter-ns-all": "All",
+    "pagetriage-more": "Mehr",
+    "pagetriage-filter-stat-all": "All",
+    "pagetriage-filter-stat-bots": "Bots",
+    "pagetriage-filter-stat-no-categories": "Kene Kategorien",
+    "pagetriage-tags-param-free-yes-label": "Jo",
+    "pagetriage-tags-param-free-no-label": "Nee",
+    "logentry-pagetriage-curation-tag": "$1 {{GENDER:$2|tagged}} $3 mit $4 {{PLURAL:$5|tag|tags}}",
+    "pagetriage-info-help": "Hülp",
+    "pagetriage-info-problem-no-categories": "Kene Kategorien",
+    "pagetriage-info-problem-no-references": "Kene Zitaten"
+}

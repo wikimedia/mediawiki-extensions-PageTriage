@@ -1,0 +1,40 @@
+{
+    "@metadata": {
+        "authors": [
+            "Naudefj"
+        ]
+    },
+    "pagetriage-bytes": "$1 {{PLURAL:$1|greep|grepe}}",
+    "pagetriage-edits": "$1 {{PLURAL:$1|wysiging|wysigings}}",
+    "pagetriage-categories": "$1 {{PLURAL:$1|kategorie|kategorieë}}",
+    "pagetriage-no-categories": "Geen kategorieë",
+    "pagetriage-byline": "Geskep deur",
+    "pagetriage-sort-by": "Sorteer volgens:",
+    "pagetriage-newest": "Nuutste",
+    "pagetriage-oldest": "Oudste",
+    "pagetriage-triage": "Kontroleer",
+    "pagetriage-filter-show-heading": "Wys:",
+    "pagetriage-filter-redirects": "Aansture",
+    "pagetriage-filter-namespace-heading": "In naamruimte:",
+    "pagetriage-filter-article": "Bladsy",
+    "pagetriage-filter-user-heading": "Geskep deur",
+    "pagetriage-filter-username": "Gebruikersnaam",
+    "pagetriage-filter-no-categories": "Het geen kategorieë",
+    "pagetriage-filter-orphan": "Weesbladsye",
+    "pagetriage-filter-ns-all": "Alle",
+    "pagetriage-more": "Meer",
+    "pagetriage-filter-stat-all": "Alle",
+    "pagetriage-tags-param-article-label": "Bladsy:",
+    "pagetriage-tags-param-date-label": "Datum:",
+    "pagetriage-tags-param-free-yes-label": "Ja",
+    "pagetriage-tags-param-free-no-label": "Nee",
+    "pagetriage-info-history-header": "Geskiedenis",
+    "pagetriage-info-help": "hulp",
+    "pagetriage-info-problem-no-categories": "Geen kategorieë",
+    "pagetriage-info-problem-orphan": "Weesbladsy",
+    "pagetriage-info-problem-no-references": "Geen verwysings",
+    "pagetriage-info-timestamp-date-format": "d MMMM yyyy",
+    "pagetriage-info-timestamp-time-format": "HH:mm",
+    "pagetriage-toolbar-learn-more": "Leer meer »",
+    "pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|wysiging|wysigings}}"
+}
