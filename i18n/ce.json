@@ -17,7 +17,7 @@
     "pagetriage-filter-stat-nominated-for-deletion": "дӀаяха кховдинарш",
     "pagetriage-filter-stat-blocked": "блоктоьхна декъашхой",
     "pagetriage-filter-stat-username": "декъашхочун цӀе: $1",
-    "pagetriage-welcome": "Дехар до, лахарчу керла агӀонашка хьажар а уьш таян а {{SITENAME}}. <a href=\"$1\">Мадарра</a> · <a href=\"$2\">Язде хьайна хетарг</a>",
+    "pagetriage-welcome": "Дехар до, лахарчу керла агӀонашка хьажар а уьш таян а {{SITENAME}}. \u003Ca href=\"$1\"\u003EМадарра\u003C/a\u003E · \u003Ca href=\"$2\"\u003EЯзде хьайна хетарг\u003C/a\u003E",
     "pagetriage-note-reviewed": "ХӀокху агӀоне хьаьжина.",
     "pagetriage-note-not-reviewed": "ХӀара агӀо хӀинца а хьажанца ю.",
     "pagetriage-button-edit-details": "Хийца мадарра дерш",

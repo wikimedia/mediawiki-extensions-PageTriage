@@ -81,7 +81,7 @@
     "pagetriage-filter-stat-username": "kasutajanimi: $1",
     "pagetriage-no-pages": "Sinu kriteeriumitele ei vasta ükski lehekülg.",
     "pagetriage-warning-browser": "See tööriist ei pruugi töötada võrgulehitsejates, mis on vanemad kui Internet Explorer 8.",
-    "pagetriage-welcome": "Palun vaata üle uusi lehekülgi ja aita võrgukohta {{SITENAME}} paremaks teha. <a href=\"$1\">Lisateave</a> · <a href=\"$2\">Jäta tagasisidet</a>",
+    "pagetriage-welcome": "Palun vaata üle uusi lehekülgi ja aita võrgukohta {{SITENAME}} paremaks teha. \u003Ca href=\"$1\"\u003ELisateave\u003C/a\u003E · \u003Ca href=\"$2\"\u003EJäta tagasisidet\u003C/a\u003E",
     "pagetriage-note-reviewed": "See lehekülg on üle vaadatud.",
     "pagetriage-note-not-reviewed": "Seda lehekülge pole veel üle vaadatud.",
     "pagetriage-note-deletion": "See lehekülg on esitatud kustutamiseks.",

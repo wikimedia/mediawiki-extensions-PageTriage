@@ -75,7 +75,7 @@
     "pagetriage-filter-blocked": "Checkbox text for pages by blocked users",
     "pagetriage-filter-all": "Radio button text for all items radio button.\n{{Identical|Show all}}",
     "pagetriage-filter-set-button": "Button text for the set filter button",
-    "pagetriage-stats-less-than-a-day": "Used if the page age is less than one day.\n\nUsed as <code>$2</code> in {{msg-mw|Pagetriage-unreviewed-article-count}}.",
+    "pagetriage-stats-less-than-a-day": "Used if the page age is less than one day.\n\nUsed as \u003Ccode\u003E$2\u003C/code\u003E in {{msg-mw|Pagetriage-unreviewed-article-count}}.",
     "pagetriage-stats-reviewed-page-count": "Text showing the number of pages reviewed in the past week, $1 is the number of reviewed pages",
     "pagetriage-stats-filter-page-count": "Text showing the number of pages from the primary filter, $1 is the number of pages",
     "pagetriage-filter-ns-all": "For the namespace filter select list, text indicating that all namespaces will be selected.\n{{Identical|All}}",
@@ -335,7 +335,7 @@
     "pagetriage-info-problem-orphan-desc": "Description for the error displayed when the page has no inbound links.",
     "pagetriage-info-problem-no-references": "Title for the error displayed when the page has no citations to any sources.",
     "pagetriage-info-problem-no-references-desc": "Description for the error displayed when the page has no citations.",
-    "pagetriage-info-timestamp-date-format": "Format specifier for the month and date part of the revision timestamp. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers.\n\nIf your language requires some text between the day, month and year (for example in the Galician language the word '''de''' is inserted: d de MMMM de yyyy) and the text includes characters which are format specifiers as listed in the above page, then they need to be inserted with HTML codes, see for instance the list at <http://www.ascii.cl/htmlcodes.htm>. In Galician this is: \n<source lang=html4strict>\nd &#100;&#101; MMMM &#100;&#101; yyyy\n</source>",
+    "pagetriage-info-timestamp-date-format": "Format specifier for the month and date part of the revision timestamp. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers.\n\nIf your language requires some text between the day, month and year (for example in the Galician language the word '''de''' is inserted: d de MMMM de yyyy) and the text includes characters which are format specifiers as listed in the above page, then they need to be inserted with HTML codes, see for instance the list at \u003Chttp://www.ascii.cl/htmlcodes.htm\u003E. In Galician this is: \n\u003Csource lang=html4strict\u003E\nd \u0026#100;\u0026#101; MMMM \u0026#100;\u0026#101; yyyy\n\u003C/source\u003E",
     "pagetriage-info-timestamp-time-format": "Format specifier for the hour and minute part of the revision timestamp. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers",
     "pagetriage-info-tooltip": "Help message that displays when someone hovers over the page info button",
     "pagetriage-toolbar-collapsed": "[[File:Curation-bar.png|300px|thumb]]\nLabel for the collapsed version of the curation bar. Written vertically. See screenshot.",
@@ -378,5 +378,5 @@
     "pagetriage-notification-add-deletion-tag-email-batch-body": "Email batch body for 'add deletion tag' notification. Parameters:\n* $1 is the title of the page\n* $2 is the username of the person who added maintenance tag to the page",
     "echo-pref-subscription-page-review": "Option for getting notifications when someone reviews a page created by the user.\n\nThis is the conclusion of the sentence begun by the header: {{msg-mw|Prefs-echosubscriptions}}.",
     "echo-pref-tooltip-page-review": "This is a short description of the page-review notification category.\n{{Related|Echo-pref-tooltip}}",
-    "echo-category-title-page-review": "This is a short title for notification category.\n\nUsed as <code>$1</code> in {{msg-mw|Echo-dismiss-message}} and <code>$2</code> in {{msg-mw|Echo-email-batch-category-header}}.\n\nParameters:\n* $1 - the number used for plural support\n{{Related|Echo-category-title}}"
+    "echo-category-title-page-review": "This is a short title for notification category.\n\nUsed as \u003Ccode\u003E$1\u003C/code\u003E in {{msg-mw|Echo-dismiss-message}} and \u003Ccode\u003E$2\u003C/code\u003E in {{msg-mw|Echo-email-batch-category-header}}.\n\nParameters:\n* $1 - the number used for plural support\n{{Related|Echo-category-title}}"
 }
