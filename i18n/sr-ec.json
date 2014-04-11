@@ -6,5 +6,6 @@
     },
     "pagetriage-tags-param-free-yes-label": "Да",
     "pagetriage-tags-param-free-no-label": "Не",
-    "pagetriage-info-timestamp-date-format": "d MMMM yyyy"
+    "pagetriage-info-timestamp-date-format": "d MMMM yyyy",
+    "echo-pref-tooltip-page-review": "Обавештава вас када неко прегледа страницу чији сте ви аутор."
 }
