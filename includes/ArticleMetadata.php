@@ -57,18 +57,12 @@ class ArticleMetadata {
 			$pageId = $this->mPageId;
 		}
 
+		// @TODO: use merge() to make this atomic
 		foreach ( $pageId as $val ) {
-			$wgMemc->merge(
-				$keyPrefix . '-' . $val,
-				function( BagOStuff $cache, $key, $data ) use( $update ) {
-					if ( $data !== false ) {
-						return array_merge( $data, $update );
-					} else {
-						return $update;
-					}
-				},
-				86400
-			);
+			$data = $wgMemc->get( $keyPrefix . '-' . $val );
+			if ( $data !== false ) {
+				$wgMemc->set( $keyPrefix . '-' . $val, array_merge( $data, $update ), 86400 );
+			}
 		}
 	}
 
