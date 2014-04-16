@@ -1,24 +1,24 @@
 {
-    "@metadata": {
-        "authors": [
-            "Veeven"
-        ]
-    },
-    "pagetriage-categories": "$1 {{PLURAL:$1|వర్గం|వర్గాలు}}",
-    "pagetriage-no-categories": "వర్గాలు లేవు",
-    "pagetriage-filter-reviewed-edits": "సమీక్షించిన పేజీలు",
-    "pagetriage-filter-redirects": "దారిమార్పులు",
-    "pagetriage-filter-article": "వ్యాసం",
-    "pagetriage-filter-username": "వాడుకరి పేరు",
-    "pagetriage-filter-all": "అన్నిటినీ చూపించు",
-    "pagetriage-filter-ns-all": "అన్నీ",
-    "pagetriage-filter-stat-all": "అన్నీ",
-    "pagetriage-tags-param-article-label": "వ్యాసం:",
-    "pagetriage-tags-param-date-label": "తేదీ:",
-    "pagetriage-tags-param-free-yes-label": "అవును",
-    "pagetriage-tags-param-free-no-label": "కాదు",
-    "pagetriage-info-history-header": "చరిత్ర",
-    "pagetriage-info-help": "సహాయం",
-    "pagetriage-toolbar-learn-more": "మరింత తెలుసుకోండి »",
-    "pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|మార్పు|మార్పులు}}"
+	"@metadata": {
+		"authors": [
+			"Veeven"
+		]
+	},
+	"pagetriage-categories": "$1 {{PLURAL:$1|వర్గం|వర్గాలు}}",
+	"pagetriage-no-categories": "వర్గాలు లేవు",
+	"pagetriage-filter-reviewed-edits": "సమీక్షించిన పేజీలు",
+	"pagetriage-filter-redirects": "దారిమార్పులు",
+	"pagetriage-filter-article": "వ్యాసం",
+	"pagetriage-filter-username": "వాడుకరి పేరు",
+	"pagetriage-filter-all": "అన్నిటినీ చూపించు",
+	"pagetriage-filter-ns-all": "అన్నీ",
+	"pagetriage-filter-stat-all": "అన్నీ",
+	"pagetriage-tags-param-article-label": "వ్యాసం:",
+	"pagetriage-tags-param-date-label": "తేదీ:",
+	"pagetriage-tags-param-free-yes-label": "అవును",
+	"pagetriage-tags-param-free-no-label": "కాదు",
+	"pagetriage-info-history-header": "చరిత్ర",
+	"pagetriage-info-help": "సహాయం",
+	"pagetriage-toolbar-learn-more": "మరింత తెలుసుకోండి »",
+	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|మార్పు|మార్పులు}}"
 }

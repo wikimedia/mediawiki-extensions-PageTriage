@@ -1,27 +1,27 @@
 {
-    "@metadata": {
-        "authors": [
-            "Helder.wiki",
-            "Luckas",
-            "Malafaya",
-            "SandroHc"
-        ]
-    },
-    "pagetriage-hist": "hist",
-    "pagetriage-bytes": "$1 {{PLURAL:$1|byte|bytes}}",
-    "pagetriage-categories": "$1 {{PLURAL:$1|categoria|categorias}}",
-    "pagetriage-orphan": "Órfã",
-    "pagetriage-byline": "Criado por $1 ($2$3$4)",
-    "pagetriage-author-not-autoconfirmed": "Novo editor",
-    "pagetriage-filter-redirects": "Redirecionamentos",
-    "pagetriage-filter-second-show-heading": "Que:",
-    "pagetriage-filter-no-categories": "Não têm categorias",
-    "pagetriage-filter-ns-all": "Todos",
-    "pagetriage-more": "Mais",
-    "pagetriage-filter-stat-all": "Todas",
-    "pagetriage-filter-stat-orphan": "Órfãs",
-    "pagetriage-filter-stat-non-autoconfirmed": "Novos editores",
-    "pagetriage-warning-browser": "Esta ferramenta pode não funcionar corretamente em navegadores mais antigos do que o Internet Explorer 8.",
-    "pagetriage-info-timestamp-date-format": "d \"de\" MMMM \"de\" yyyy",
-    "pagetriage-info-timestamp-time-format": "HH:mm"
+	"@metadata": {
+		"authors": [
+			"Helder.wiki",
+			"Luckas",
+			"Malafaya",
+			"SandroHc"
+		]
+	},
+	"pagetriage-hist": "hist",
+	"pagetriage-bytes": "$1 {{PLURAL:$1|byte|bytes}}",
+	"pagetriage-categories": "$1 {{PLURAL:$1|categoria|categorias}}",
+	"pagetriage-orphan": "Órfã",
+	"pagetriage-byline": "Criado por $1 ($2$3$4)",
+	"pagetriage-author-not-autoconfirmed": "Novo editor",
+	"pagetriage-filter-redirects": "Redirecionamentos",
+	"pagetriage-filter-second-show-heading": "Que:",
+	"pagetriage-filter-no-categories": "Não têm categorias",
+	"pagetriage-filter-ns-all": "Todos",
+	"pagetriage-more": "Mais",
+	"pagetriage-filter-stat-all": "Todas",
+	"pagetriage-filter-stat-orphan": "Órfãs",
+	"pagetriage-filter-stat-non-autoconfirmed": "Novos editores",
+	"pagetriage-warning-browser": "Esta ferramenta pode não funcionar corretamente em navegadores mais antigos do que o Internet Explorer 8.",
+	"pagetriage-info-timestamp-date-format": "d \"de\" MMMM \"de\" yyyy",
+	"pagetriage-info-timestamp-time-format": "HH:mm"
 }

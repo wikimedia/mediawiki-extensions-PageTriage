@@ -1,15 +1,15 @@
 {
-    "@metadata": {
-        "authors": [
-            "Гусейн"
-        ]
-    },
-    "pagetriage-filter-show-heading": "Нишо дој:",
-    "pagetriage-more": "Һәнијән",
-    "pagetriage-filter-stat-all": "Һәммәј",
-    "pagetriage-tags-cat-metadata-label": "Метамәлумотон",
-    "pagetriage-tags-cat-sources-label": "Сәвонон",
-    "pagetriage-tags-param-free-yes-label": "Бәле",
-    "pagetriage-tags-param-free-no-label": "Не",
-    "pagetriage-info-history-header": "Тарых"
+	"@metadata": {
+		"authors": [
+			"Гусейн"
+		]
+	},
+	"pagetriage-filter-show-heading": "Нишо дој:",
+	"pagetriage-more": "Һәнијән",
+	"pagetriage-filter-stat-all": "Һәммәј",
+	"pagetriage-tags-cat-metadata-label": "Метамәлумотон",
+	"pagetriage-tags-cat-sources-label": "Сәвонон",
+	"pagetriage-tags-param-free-yes-label": "Бәле",
+	"pagetriage-tags-param-free-no-label": "Не",
+	"pagetriage-info-history-header": "Тарых"
 }

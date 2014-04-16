@@ -1,16 +1,16 @@
 {
-    "@metadata": {
-        "authors": [
-            "පසිඳු කාවින්ද"
-        ]
-    },
-    "pagetriage-filter-username": "Tên người dùng",
-    "pagetriage-filter-ns-all": "Tất cả",
-    "pagetriage-more": "Thêm",
-    "pagetriage-filter-stat-all": "Tất cả",
-    "pagetriage-tags-cat-structure-label": "Cấu trúc",
-    "pagetriage-tags-param-free-yes-label": "Có",
-    "pagetriage-tags-param-free-no-label": "Không",
-    "pagetriage-info-history-header": "Lịch sử",
-    "pagetriage-info-help": "Trợ giúp"
+	"@metadata": {
+		"authors": [
+			"පසිඳු කාවින්ද"
+		]
+	},
+	"pagetriage-filter-username": "Tên người dùng",
+	"pagetriage-filter-ns-all": "Tất cả",
+	"pagetriage-more": "Thêm",
+	"pagetriage-filter-stat-all": "Tất cả",
+	"pagetriage-tags-cat-structure-label": "Cấu trúc",
+	"pagetriage-tags-param-free-yes-label": "Có",
+	"pagetriage-tags-param-free-no-label": "Không",
+	"pagetriage-info-history-header": "Lịch sử",
+	"pagetriage-info-help": "Trợ giúp"
 }

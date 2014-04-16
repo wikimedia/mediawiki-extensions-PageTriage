@@ -1,9 +1,9 @@
 {
-    "@metadata": {
-        "authors": [
-            "පසිඳු කාවින්ද"
-        ]
-    },
-    "pagetriage-tags-param-free-yes-label": "Igen",
-    "pagetriage-tags-param-free-no-label": "Nem"
+	"@metadata": {
+		"authors": [
+			"පසිඳු කාවින්ද"
+		]
+	},
+	"pagetriage-tags-param-free-yes-label": "Igen",
+	"pagetriage-tags-param-free-no-label": "Nem"
 }

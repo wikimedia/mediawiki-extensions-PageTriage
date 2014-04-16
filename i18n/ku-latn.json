@@ -1,12 +1,12 @@
 {
-    "@metadata": {
-        "authors": [
-            "George Animal"
-        ]
-    },
-    "pagetriage-filter-username": "Navê bikarhêner",
-    "pagetriage-filter-stat-all": "Heemû",
-    "pagetriage-button-add-parameters": "Parametreyan lê zêde bike",
-    "pagetriage-tags-param-free-yes-label": "Erê",
-    "pagetriage-tags-param-free-no-label": "Na"
+	"@metadata": {
+		"authors": [
+			"George Animal"
+		]
+	},
+	"pagetriage-filter-username": "Navê bikarhêner",
+	"pagetriage-filter-stat-all": "Heemû",
+	"pagetriage-button-add-parameters": "Parametreyan lê zêde bike",
+	"pagetriage-tags-param-free-yes-label": "Erê",
+	"pagetriage-tags-param-free-no-label": "Na"
 }

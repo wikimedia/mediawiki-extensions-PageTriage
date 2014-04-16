@@ -1,9 +1,9 @@
 {
-    "@metadata": {
-        "authors": [
-            "Milicevic01"
-        ]
-    },
-    "pagetriage-tags-param-free-yes-label": "Da",
-    "pagetriage-tags-param-free-no-label": "Ne"
+	"@metadata": {
+		"authors": [
+			"Milicevic01"
+		]
+	},
+	"pagetriage-tags-param-free-yes-label": "Da",
+	"pagetriage-tags-param-free-no-label": "Ne"
 }

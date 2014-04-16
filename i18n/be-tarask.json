@@ -1,10 +1,10 @@
 {
-    "@metadata": {
-        "authors": [
-            "Wizardist"
-        ]
-    },
-    "pagetriage": "Page Triage",
-    "newpagesfeed": "Стужка новых старонак",
-    "pagetriage-desc": "Прылады для прагляду і зацьверджаньня новых старонак"
+	"@metadata": {
+		"authors": [
+			"Wizardist"
+		]
+	},
+	"pagetriage": "Page Triage",
+	"newpagesfeed": "Стужка новых старонак",
+	"pagetriage-desc": "Прылады для прагляду і зацьверджаньня новых старонак"
 }

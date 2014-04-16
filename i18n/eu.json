@@ -1,19 +1,19 @@
 {
-    "@metadata": {
-        "authors": [
-            "පසිඳු කාවින්ද"
-        ]
-    },
-    "pagetriage-filter-show-heading": "Erakutsi:",
-    "pagetriage-filter-article": "Artikulu",
-    "pagetriage-filter-ns-all": "Guztiak",
-    "pagetriage-more": "Gehiago",
-    "pagetriage-filter-stat-all": "Guztiak",
-    "pagetriage-tags-cat-sources-label": "Jatorriak",
-    "pagetriage-tags-param-article-label": "Artikulu:",
-    "pagetriage-tags-param-date-label": "Data:",
-    "pagetriage-tags-param-free-yes-label": "Bai",
-    "pagetriage-tags-param-free-no-label": "Ez",
-    "pagetriage-info-history-header": "Historia",
-    "pagetriage-info-help": "Laguntza"
+	"@metadata": {
+		"authors": [
+			"පසිඳු කාවින්ද"
+		]
+	},
+	"pagetriage-filter-show-heading": "Erakutsi:",
+	"pagetriage-filter-article": "Artikulu",
+	"pagetriage-filter-ns-all": "Guztiak",
+	"pagetriage-more": "Gehiago",
+	"pagetriage-filter-stat-all": "Guztiak",
+	"pagetriage-tags-cat-sources-label": "Jatorriak",
+	"pagetriage-tags-param-article-label": "Artikulu:",
+	"pagetriage-tags-param-date-label": "Data:",
+	"pagetriage-tags-param-free-yes-label": "Bai",
+	"pagetriage-tags-param-free-no-label": "Ez",
+	"pagetriage-info-history-header": "Historia",
+	"pagetriage-info-help": "Laguntza"
 }

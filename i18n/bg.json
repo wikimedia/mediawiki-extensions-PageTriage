@@ -1,29 +1,29 @@
 {
-    "@metadata": {
-        "authors": [
-            "DCLXVI",
-            "පසිඳු කාවින්ද"
-        ]
-    },
-    "pagetriage-bytes": "$1 {{PLURAL:$1|байт|байта}}",
-    "pagetriage-edits": "$1 {{PLURAL:$1|редакция|редакции}}",
-    "pagetriage-categories": "$1 {{PLURAL:$1|категория|категории}}",
-    "pagetriage-no-categories": "Без категории",
-    "pagetriage-orphan": "Сираци",
-    "pagetriage-triage": "Преглеждане",
-    "pagetriage-filter-show-heading": "Покажи:",
-    "pagetriage-filter-article": "Статия",
-    "pagetriage-filter-username": "Потребителско име",
-    "pagetriage-filter-ns-all": "Всички",
-    "pagetriage-more": "Повече",
-    "pagetriage-filter-stat-all": "Всички",
-    "pagetriage-tags-param-article-label": "Статия:",
-    "pagetriage-tags-param-date-label": "Дата:",
-    "pagetriage-tags-param-free-yes-label": "Да",
-    "pagetriage-tags-param-free-no-label": "Не",
-    "pagetriage-info-history-header": "История",
-    "pagetriage-info-help": "помощ",
-    "pagetriage-info-timestamp-date-format": "d MMMM yyyy",
-    "pagetriage-info-timestamp-time-format": "HH:mm",
-    "pagetriage-toolbar-close": "Затваряне"
+	"@metadata": {
+		"authors": [
+			"DCLXVI",
+			"පසිඳු කාවින්ද"
+		]
+	},
+	"pagetriage-bytes": "$1 {{PLURAL:$1|байт|байта}}",
+	"pagetriage-edits": "$1 {{PLURAL:$1|редакция|редакции}}",
+	"pagetriage-categories": "$1 {{PLURAL:$1|категория|категории}}",
+	"pagetriage-no-categories": "Без категории",
+	"pagetriage-orphan": "Сираци",
+	"pagetriage-triage": "Преглеждане",
+	"pagetriage-filter-show-heading": "Покажи:",
+	"pagetriage-filter-article": "Статия",
+	"pagetriage-filter-username": "Потребителско име",
+	"pagetriage-filter-ns-all": "Всички",
+	"pagetriage-more": "Повече",
+	"pagetriage-filter-stat-all": "Всички",
+	"pagetriage-tags-param-article-label": "Статия:",
+	"pagetriage-tags-param-date-label": "Дата:",
+	"pagetriage-tags-param-free-yes-label": "Да",
+	"pagetriage-tags-param-free-no-label": "Не",
+	"pagetriage-info-history-header": "История",
+	"pagetriage-info-help": "помощ",
+	"pagetriage-info-timestamp-date-format": "d MMMM yyyy",
+	"pagetriage-info-timestamp-time-format": "HH:mm",
+	"pagetriage-toolbar-close": "Затваряне"
 }

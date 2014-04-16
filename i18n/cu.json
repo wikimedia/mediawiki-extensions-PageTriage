@@ -1,12 +1,12 @@
 {
-    "@metadata": {
-        "authors": [
-            "ОйЛ"
-        ]
-    },
-    "pagetriage-tags-param-free-yes-label": "да",
-    "pagetriage-tags-param-free-no-label": "нѣтъ",
-    "pagetriage-info-history-header": "їсторїꙗ",
-    "pagetriage-info-help": "помощь",
-    "pagetriage-toolbar-close": "ꙁакрꙑи"
+	"@metadata": {
+		"authors": [
+			"ОйЛ"
+		]
+	},
+	"pagetriage-tags-param-free-yes-label": "да",
+	"pagetriage-tags-param-free-no-label": "нѣтъ",
+	"pagetriage-info-history-header": "їсторїꙗ",
+	"pagetriage-info-help": "помощь",
+	"pagetriage-toolbar-close": "ꙁакрꙑи"
 }

@@ -1,22 +1,22 @@
 {
-    "@metadata": {
-        "authors": [
-            "Ahmed-Najib-Biabani-Ibrahimkhel"
-        ]
-    },
-    "pagetriage-filter-show-heading": "ښکاره کول:",
-    "pagetriage-filter-article": "ليکنه",
-    "pagetriage-filter-username": "کارن-نوم",
-    "pagetriage-filter-ns-all": "ټول",
-    "pagetriage-more": "نور",
-    "pagetriage-filter-stat-all": "ټول",
-    "pagetriage-filter-stat-username": "کارن-نوم: $1",
-    "pagetriage-tags-cat-structure-label": "جوړښت",
-    "pagetriage-tags-param-article-label": "ليکنه:",
-    "pagetriage-tags-param-date-label": "نېټه:",
-    "pagetriage-tags-param-free-yes-label": "هو",
-    "pagetriage-tags-param-free-no-label": "نه",
-    "pagetriage-info-title": "د مخ مالومات",
-    "pagetriage-info-history-header": "پېښليک",
-    "pagetriage-info-help": "لارښود"
+	"@metadata": {
+		"authors": [
+			"Ahmed-Najib-Biabani-Ibrahimkhel"
+		]
+	},
+	"pagetriage-filter-show-heading": "ښکاره کول:",
+	"pagetriage-filter-article": "ليکنه",
+	"pagetriage-filter-username": "کارن-نوم",
+	"pagetriage-filter-ns-all": "ټول",
+	"pagetriage-more": "نور",
+	"pagetriage-filter-stat-all": "ټول",
+	"pagetriage-filter-stat-username": "کارن-نوم: $1",
+	"pagetriage-tags-cat-structure-label": "جوړښت",
+	"pagetriage-tags-param-article-label": "ليکنه:",
+	"pagetriage-tags-param-date-label": "نېټه:",
+	"pagetriage-tags-param-free-yes-label": "هو",
+	"pagetriage-tags-param-free-no-label": "نه",
+	"pagetriage-info-title": "د مخ مالومات",
+	"pagetriage-info-history-header": "پېښليک",
+	"pagetriage-info-help": "لارښود"
 }
