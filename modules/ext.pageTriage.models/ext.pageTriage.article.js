@@ -135,7 +135,7 @@ $( function() {
 				
 			article.set( 'title_url_format', mw.util.wikiUrlencode( article.get( 'title' ) ) );
 
-			var titleUrl = mw.util.wikiGetlink( article.get( 'title' ) );
+			var titleUrl = mw.util.getUrl( article.get( 'title' ) );
 			if ( Number( article.get( 'is_redirect' ) ) === 1 ) {
 				titleUrl = this.buildLink( titleUrl, 'redirect=no' );
 			}
