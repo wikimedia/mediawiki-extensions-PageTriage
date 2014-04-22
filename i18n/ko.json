@@ -293,7 +293,7 @@
 	"pagetriage-tags-param-free-no-label": "아니오",
 	"pagetriage-tags-param-missing-required": "$1 태그에 필수 변수가 없습니다.",
 	"log-name-pagetriage-curation": "문서 큐레이트 기록",
-	"log-description-pagetriage-curation": "문서 큐레이트 툴바에서 수행한 작업 기록입니다.",
+	"log-description-pagetriage-curation": "문서 큐레이트 도구 모음에서 수행한 작업 기록입니다.",
 	"log-name-pagetriage-deletion": "태그 삭제 기록",
 	"log-description-pagetriage-deletion": "문서 큐레이트 삭제 마법사에서 수행한 작업 기록입니다.",
 	"logentry-pagetriage-curation-reviewed": "$1 사용자가 $3 문서를 검토한 것으로 {{GENDER:$2|표시했습니다}}",
