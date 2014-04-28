@@ -177,7 +177,7 @@
 	"pagetriage-mark-as-reviewed-helptext": "Merk denne siden som vurdert hvis du er ferdig med din gjennomgang.",
 	"pagetriage-mark-as-unreviewed-helptext": "Merk denne siden som uvurdert hvis du mener den trenger ytterligere gjennomgang.",
 	"pagetriage-wikilove-helptext": "Velg navnene på skribenter som du ønsker å takke.",
-	"pagetriage-wikilove-page-creator": "Sidekuratering",
+	"pagetriage-wikilove-page-creator": "Sideoppretter",
 	"pagetriage-wikilove-edit-count": "{{PLURAL:$1|Én redigering|$1 redigeringer}}",
 	"pagetriage-wikilove-no-recipients": "Ingen mottakere er tilgjengelig for denne siden.",
 	"pagetriage-wikilove-tooltip": "Send anerkjennelse til skribentene",
