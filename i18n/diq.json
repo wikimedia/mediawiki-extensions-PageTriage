@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Erdemaslancan",
-			"Mirzali"
+			"Mirzali",
+			"Marmase"
 		]
 	},
+	"pagetriage-no-categories": "Bêkategori",
 	"pagetriage-sort-by": "Raten:",
 	"pagetriage-oldest": "Tewr kehan",
 	"pagetriage-filter-article": "Wesiqe\n<div style=\"margin:0; border:0px solid #aaa; background-color:pink;\">",
@@ -12,8 +14,10 @@
 	"pagetriage-filter-ns-all": "Pêro",
 	"pagetriage-more": "Zewbi",
 	"pagetriage-filter-stat-all": "Pêro",
+	"pagetriage-filter-stat-no-categories": "Bêkategoriya",
 	"pagetriage-refresh-list": "Listi neweke",
 	"pagetriage-tags-cat-all-label": "Etiketi pêro",
 	"pagetriage-tags-param-article-label": "Wesiqe:",
-	"log-name-pagetriage-deletion": "Rocnameyê etiketê esterıtışi"
+	"log-name-pagetriage-deletion": "Rocnameyê etiketê esterıtışi",
+	"pagetriage-info-problem-no-categories": "Bêkategori"
 }
