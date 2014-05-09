@@ -116,7 +116,7 @@
 	"pagetriage-page-status-delete": "Text that shows the page has been marked for deletion",
 	"pagetriage-articleinfo-stat": "Article info flyout stat\n*$1 is a list of stats separated by {{msg-mw|pagetriage-dot-separator}}. Example: \"{{int:Pagetriage-bytes|123}}{{int:pagetriage-dot-separator}}{{int:Pagetriage-edits|45}}{{int:pagetriage-dot-separator}}{{int:Pagetriage-categories|6}}\"",
 	"pagetriage-js-required": "Error message for browsers with JavaScript disabled",
-	"pagetriage-tags-title": "The title for the tag wizard flyout in the toolbar",
+	"pagetriage-tags-title": "The title for the tag wizard flyout in the toolbar.\n{{Identical|Add tag}}",
 	"pagetriage-tags-cat-common-label": "Label for common category.\n{{Identical|Common}}",
 	"pagetriage-tags-cat-metadata-label": "Label for metadata category.\n{{Identical|Metadata}}",
 	"pagetriage-tags-cat-cleanup-label": "Label for cleanup category\n{{Identical|Cleanup}}",
