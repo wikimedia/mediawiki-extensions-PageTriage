@@ -362,7 +362,7 @@
 	"pagetriage-add-tag-confirmation": "Confirmation message upon tag submission. Parameters:\n* $1 is the number of tags.",
 	"pagetriage-tag-deletion-error": "Error message indicating that a page has already been nominated for deletion",
 	"pagetriage-toolbar-close": "Tooltip for the close button in the Curation Toolbar.\n{{Identical|Close}}",
-	"pagetriage-toolbar-minimize": "Tooltip for the minimize button in the Curation Toolbar (also docks the minimized toolbar to the side of the screen)",
+	"pagetriage-toolbar-minimize": "Tooltip for the minimize button in the Curation Toolbar (also docks the minimized toolbar to the side of the screen).\n{{Identical|Minimize}}",
 	"pagetriage-tag-warning-notice": "Warning notice in maintenance and deletion tag flyout if the page was created less than some amount of time ago.\n\nParameters:\n* $1 - number of minutes",
 	"pagetriage-notification-mark-as-reviewed2": "Title for 'mark as reviewed' notification.  Parameters:\n* $1 is the username of the person who marked the page as reviewed, plain text\n* $2 is the title of the page\nSee also:\n* {{msg-mw|Pagetriage-notification-mark-as-reviewed-flyout}}\n* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-batch-body}}\n* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}",
 	"pagetriage-notification-mark-as-reviewed-flyout": "Flyout-specific title for 'mark as reviewed' notification.  Parameters:\n* $1 is the username of the person who marked the page as reviewed, plain text\n* $2 is the title of the page\nSee also:\n* {{msg-mw|Pagetriage-notification-mark-as-reviewed2}}\n* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-batch-body}}\n* {{msg-mw|Pagetriage-notification-mark-as-reviewed-email-subject2}}",
