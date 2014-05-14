@@ -278,4 +278,10 @@ $( function() {
 			}
 		}
 	);
+	mw.hook( 've.activate' ).add( function () {
+		$( '#mwe-pt-toolbar' ).hide();
+	} );
+	mw.hook( 've.deactivate' ).add( function () {
+		$( '#mwe-pt-toolbar' ).show();
+	} );
 } );
