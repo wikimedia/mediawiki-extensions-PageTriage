@@ -13,7 +13,8 @@
 			"Tititou36",
 			"Urhixidur",
 			"Verdy p",
-			"Wyz"
+			"Wyz",
+			"Jean-Frédéric"
 		]
 	},
 	"pagetriage": "Tri des pages",
@@ -249,7 +250,7 @@
 	"pagetriage-del-tags-cat-csd-desc": "Marquer cette page pour suppression rapide si elle correspond à un des critères ci-dessous.",
 	"pagetriage-del-tags-cat-prod-label": "Suppression proposée",
 	"pagetriage-del-tags-cat-prod-desc": "Marquer cette page comme étant proposée à la suppression si elle viole clairement les normes de la communauté.",
-	"pagetriage-del-tags-cat-discussion-desc": "Marquer cette page pour discuter de la suppression avec d'autres éditeurs.",
+	"pagetriage-del-tags-cat-discussion-desc": "Marquer cette page pour discuter de la suppression avec d’autres contributeurs.",
 	"pagetriage-del-tags-dbg3-label": "Pur vandalisme et canulars flagrants",
 	"pagetriage-del-tags-dbg3-desc": "Pages qui incluent de la désinformation ou des canulars flagrants et évidents. (G3)",
 	"pagetriage-del-tags-dbg10-label": "Pages d’attaques",
