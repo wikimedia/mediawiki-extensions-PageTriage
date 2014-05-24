@@ -5,7 +5,8 @@
 			"Emperyan",
 			"Hedda Gabler",
 			"Sadrettin",
-			"Tarkovsky"
+			"Tarkovsky",
+			"Meelo"
 		]
 	},
 	"pagetriage": "Sayfa Sıralayıcı",
@@ -35,7 +36,7 @@
 	"pagetriage-articleinfo-byline-new-editor": "Bu sayfa $1 tarihinde yeni editör $2 ($3$4$5) tarafından açıldı",
 	"pagetriage-editcount": "$2 tarihinden beri $1 {{PLURAL:$1|değişiklik|değişiklik}} yaptı",
 	"pagetriage-author-not-autoconfirmed": "Yeni editör",
-	"pagetriage-no-patrol-right": "Bu sayfayı gözden geçirme hakkına sahip değilsiniz",
+	"pagetriage-no-patrol-right": "Bu sayfayı gözden geçirildi olarak işaretleme haklarına sahip değilsiniz",
 	"pagetriage-author-blocked": "Engellendi",
 	"pagetriage-author-bot": "Bot",
 	"pagetriage-showing": "Gösteriliyor:",
@@ -82,7 +83,7 @@
 	"pagetriage-filter-stat-username": "kullanıcı adı: $1",
 	"pagetriage-no-pages": "Kriterlerinize uygun sayfa mevcut değil.",
 	"pagetriage-warning-browser": "Bu araç Internet Explorer 8'den daha eski tarayıcılarda düzgün çalışmayabilir.",
-	"pagetriage-welcome": "Lütfen aşağıdaki yeni sayfaları gözden geçirin ve Vikipedi'yi geliştirmemize yardımcı olun. <a href=\"$1\">Daha fazla bilgi</a> · <a href=\"$2\">Geri bildirim bırak</a>",
+	"pagetriage-welcome": "Lütfen aşağıdaki yeni sayfaları gözden geçirin ve {{SITENAME}}'yi geliştirmemize yardımcı olun. <a href=\"$1\">Daha fazla bilgi</a> · <a href=\"$2\">Geri bildirim bırak</a>",
 	"pagetriage-note-reviewed": "Bu sayfa gözden geçirilmiştir.",
 	"pagetriage-note-not-reviewed": "Bu sayfa henüz gözden geçirilmemiştir.",
 	"pagetriage-note-deletion": "Bu sayfa, silinmeye adaydır.",
@@ -117,7 +118,7 @@
 	"pagetriage-tags-cat-writingstyle-label": "Yazım şekli",
 	"pagetriage-tags-cat-moretags-label": "Diğer etiketler",
 	"pagetriage-tags-cat-all-label": "Bütün etiketler",
-	"pagetriage-tags-tooltip": "Sayfanın sorunlarını belirtmek için etiket ekle",
+	"pagetriage-tags-tooltip": "Bu sayfanın iyileştirme alanlarını belirtmek için etiket ekleyin",
 	"pagetriage-del-tags-cat-csd-desc": "Bu sayfayı aşağıdaki kıstaslardan birine uyuyorsa hızlı silinmesi için işaretleyin.",
 	"pagetriage-del-tags-cat-prod-desc": "Topluluk standartlarını açıkça çiğniyorsa bu sayfayı silinmek üzere işaretleyin.",
 	"pagetriage-del-tags-cat-discussion-desc": "Bu sayfayı silmeyi diğer editörler ile tartışmak üzere işaretleyin.",
@@ -164,10 +165,15 @@
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|değişiklik|değişiklik}}",
 	"pagetriage-wikilove-tooltip": "Yazar(lar)a teşekkür iletisi gönder",
 	"pagetriage-next-tooltip": "Sıradaki bir sonraki sayfaya git",
+	"pagetriage-del-title": "Silinmek üzere işaretle",
 	"pagetriage-del-tooltip": "Bu sayfayı silinmesi için işaretle",
 	"pagetriage-tagging-error": "Sayfaya etiketleri uygulamak başarısız oldu.",
 	"pagetriage-tag-deletion-error": "Sayfa zaten silme şablonu ile etiketlendi. İşleminiz durduruluyor.",
 	"pagetriage-toolbar-close": "Kapat",
 	"pagetriage-toolbar-minimize": "Küçült",
-	"pagetriage-tag-warning-notice": "Not: Bu sayfa $1 {{PLURAL:$1|dakika|dakika}} önce açıldı. Ciddi bir sorun yoksa etiket eklemek için beklemeyi düşünün."
+	"pagetriage-tag-warning-notice": "Not: Bu sayfa $1 {{PLURAL:$1|dakika|dakika}} önce açıldı. Ciddi bir sorun yoksa etiket eklemek için beklemeyi düşünün.",
+	"pagetriage-notification-add-maintenance-tag-email-subject2": "Sayfanız {{SITENAME}} üzerinde {{GENDER:$1|etiketlendi}}",
+	"pagetriage-notification-add-maintenance-tag-email-batch-body": "$1 sayfası $2 tarafından {{GENDER:$2|incelendi}} ve {{GENDER:$2|etiketlendi}}.",
+	"pagetriage-notification-add-deletion-tag-email-subject2": "Sayfanız {{SITENAME}} üzerinde {{GENDER:$1|silinmek üzere işaretlendi}}",
+	"pagetriage-notification-add-deletion-tag-email-batch-body": "$1 sayfası $2 tarafından {{GENDER:$2|silinmek üzere işaretlendi}}."
 }
