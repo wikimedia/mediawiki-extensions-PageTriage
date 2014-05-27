@@ -17,6 +17,9 @@
 .skin-monobook #mwe-pt-toolbar {
 	font-size: 1.5em;
 }
+.ve-activated #mwe-pt-toolbar {
+	display: none;
+}
 
 .mwe-pt-toolbar-big {
 	width: 35px;
