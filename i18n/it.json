@@ -7,12 +7,13 @@
 			"F. Cosoleto",
 			"Gianfranco",
 			"McDutchie",
-			"Raoli"
+			"Raoli",
+			"Nemo bis"
 		]
 	},
 	"pagetriage": "Triage pagina",
 	"newpagesfeed": "Feed delle nuove pagine",
-	"pagetriage-desc": "Facilita la revisione e l'approvazione delle nuove pagine",
+	"pagetriage-desc": "Facilita la verifica e l'approvazione delle nuove pagine",
 	"pagetriage-pagecuration": "Monitoraggio pagine",
 	"pagetriage-please-wait": "Attendere prego...",
 	"pagetriage-api-invalidid": "L'ID che hai fornito ($1) non è valido.",
@@ -318,8 +319,8 @@
 	"pagetriage-toolbar-close": "Chiudi",
 	"pagetriage-toolbar-minimize": "Minimizza",
 	"pagetriage-tag-warning-notice": "Nota: questa pagina è solo di $1 {{PLURAL:$1|minuto|minuti}} fa. Aspetta un po' prima di contrassegnarla a meno che il problema non sia serio.",
-	"pagetriage-notification-mark-as-reviewed2": "[[$2]] ha passato una revisione {{GENDER:$1|}} da parte di [[User:$1|$1]]",
-	"pagetriage-notification-mark-as-reviewed-flyout": "[[$2]] ha passato una revisione {{GENDER:$1|}} effettuata da <b>$1</b>",
+	"pagetriage-notification-mark-as-reviewed2": "[[$2]] è stata revisionata da parte di [[User:$1|$1]]",
+	"pagetriage-notification-mark-as-reviewed-flyout": "[[$2]] è stata revisionata {{GENDER:$1|}} effettuata da <b>$1</b>",
 	"pagetriage-notification-mark-as-reviewed-email-subject2": "La tua pagina è stata {{GENDER:$1|revisionata}} su {{SITENAME}}",
 	"pagetriage-notification-mark-as-reviewed-email-batch-body": "$1 è stato {{GENDER:$2|revisionato}} da $2",
 	"pagetriage-notification-add-maintenance-tag2": "[[$2]] è stata {{GENDER:$1|revisionata}} ed {{GENDER:$1|etichettata}} da [[User:$1|$1]]. {{PLURAL:$4|Etichetta|Etichette}}: $3",
