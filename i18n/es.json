@@ -321,6 +321,7 @@
 	"pagetriage-del-log-page-adding-error": "No se ha podido encontrar un lugar de destino para la discusión",
 	"pagetriage-del-talk-page-notify-error": "No se ha podido notificar al autor en la página de discusión",
 	"pagetriage-del-discussion-page-adding-error": "¡Hubo un fallo al añadir la página a la página de discusión de la eliminación.",
+	"pagetriage-del-title": "Marcar para borrado",
 	"pagetriage-del-tooltip": "Nominar esta página para su borrado",
 	"pagetriage-tagging-error": "No se han podido aplicar etiquetas a la página",
 	"pagetriage-add-tag-confirmation": "¿Estás seguro de que deseas agregar $1 {{PLURAL:$1| etiqueta|etiquetas}} a un artículo tan corto?",
