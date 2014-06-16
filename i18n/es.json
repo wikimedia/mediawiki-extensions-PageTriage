@@ -8,7 +8,8 @@
 			"Jewbask",
 			"Maor X",
 			"McDutchie",
-			"Vivaelcelta"
+			"Vivaelcelta",
+			"Macofe"
 		]
 	},
 	"pagetriage": "Página de triaje",
@@ -38,7 +39,7 @@
 	"pagetriage-articleinfo-byline-new-editor": "Esta página fue creada el $1 por el nuevo editor  $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|edición|ediciones}} desde $2",
 	"pagetriage-author-not-autoconfirmed": "Nuevo editor",
-	"pagetriage-no-patrol-right": "No tienes derechos para revisar esta página",
+	"pagetriage-no-patrol-right": "No tienes los derechos para marcar esta página como revisada",
 	"pagetriage-author-blocked": "Bloqueado",
 	"pagetriage-author-bot": "Bot",
 	"pagetriage-showing": "Mostrando:",
@@ -238,7 +239,7 @@
 	"pagetriage-tags-unbalanced-desc": "Esta página puede estar desequilibrada en favor de ciertos puntos de vista.",
 	"pagetriage-tags-update-label": "Actualizar",
 	"pagetriage-tags-update-desc": "Esta página necesita que se añada información más actualizada.",
-	"pagetriage-tags-tooltip": "Añade etiquetas para señalar los problemas de la página",
+	"pagetriage-tags-tooltip": "Añade etiquetas para señalar áreas a mejorar para esta página",
 	"pagetriage-del-tags-cat-csd-label": "Borrado rápido",
 	"pagetriage-del-tags-cat-csd-desc": "Marcar esta página para borrado rápido si cumple alguno de los siguientes criterios.",
 	"pagetriage-del-tags-cat-prod-label": "Propuesta de borrado",
