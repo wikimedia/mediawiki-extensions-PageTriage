@@ -517,7 +517,8 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'ext.pageTriage.util',
 		'jquery.tipoff',
 		'jquery.ui.button',
-		'jquery.spinner'
+		'jquery.spinner',
+		'jquery.client'
 	),
 	'scripts' => array(
 		'ext.pageTriage.views.list/ext.pageTriage.listItem.js',
@@ -620,6 +621,7 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'jquery.ui.button',
 		'jquery.ui.draggable',
 		'jquery.spinner',
+		'jquery.client',
 		'ext.pageTriage.externalTagsOptions',
 		'ext.pageTriage.externalDeletionTagsOptions'
 	),

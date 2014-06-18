@@ -112,7 +112,7 @@ $( function() {
 
 						// since transform only works in IE 9 and higher, use writing-mode
 						// to rotate the minimized toolbar content in older versions
-						if ( $.browser.msie && $.browser.version < 9.0 ) {
+						if ( $.client.test( { 'msie': ['<', 9] }, null, true ) ) {
 							$( '#mwe-pt-toolbar-vertical' ).css( 'writing-mode', 'tb-rl' );
 						}
 

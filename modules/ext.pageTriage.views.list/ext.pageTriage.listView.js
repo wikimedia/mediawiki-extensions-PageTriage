@@ -15,6 +15,9 @@ $( function() {
 	mw.pageTriage.ListView = Backbone.View.extend( {
 
 		initialize: function( options ) {
+			// List view doesn't work well in older versions of Explorer
+			var blacklist = { 'msie': ['<', 8] };
+
 			this.eventBus = options.eventBus; // access the eventBus
 			this.position = 0;
 
@@ -40,8 +43,8 @@ $( function() {
 				} );
 			}
 
-			// Add a warning if we're using an old version version of Explorer
-			if ( $.browser.msie && parseInt( $.browser.version ) < 8 ) {
+			// Add a warning if we're using an unsupported browser
+			if ( $.client.test( blacklist, null, true ) ) {
 				$( '#mwe-pt-list-warnings' ).append( '<div>'+mw.msg( 'pagetriage-warning-browser' )+'</div>' );
 			}
 			// Display whatever warnings we have
