@@ -14,6 +14,7 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 
 	protected function setUp() {
 		parent::setUp();
+		$this->pageId = array();
 		$this->dbr = wfGetDB( DB_SLAVE );
 
 		// Set up some page_id to test

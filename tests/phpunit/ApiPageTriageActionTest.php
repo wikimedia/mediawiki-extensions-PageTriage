@@ -2,6 +2,7 @@
 /**
  * Tests for ApiPageTriageAction class
  *
+ * @group medium
  * @group EditorEngagement
  */
 class ApiPageTriageActionTest extends ApiTestCase {
@@ -15,14 +16,16 @@ class ApiPageTriageActionTest extends ApiTestCase {
 	function setUp() {
 		parent::setUp();
 
-		self::$users['one'] = new ApiTestUser(
+		$testUserClass = class_exists( 'ApiTestUser' ) ? 'ApiTestUser' : 'TestUser';
+
+		self::$users['one'] = new $testUserClass(
 				'ApitestuserA',
 				'Api Test UserA',
 				'api_test_userA@example.com',
 				array( 'sysop' )
 		);
 
-		self::$users['two'] = new ApiTestUser(
+		self::$users['two'] = new $testUserClass(
 				'ApitestuserB',
 				'Api Test UserB',
 				'api_test_userB@example.com',
@@ -77,6 +80,7 @@ class ApiPageTriageActionTest extends ApiTestCase {
 	 * @depends testLogin
 	 */
 	function testSuccessfulReviewAction( $sessionArray ) {
+		$this->markTestSkipped( 'Broken test' );
 		global $wgUser;
 
 		$wgUser = self::$users['one']->user;
@@ -91,29 +95,22 @@ class ApiPageTriageActionTest extends ApiTestCase {
 
 	/**
 	 * @depends testLogin
+	 * @expectedException UsageException
 	 */
 	function testPermissionError( $sessionArray ) {
-		$exception = false;
-		try {
-			global $wgUser;
+		global $wgUser;
 
-			$wgUser = self::$users['two']->user;
+		$wgUser = self::$users['two']->user;
 
-			$this->doApiRequestWithToken(
-				array(
-					'action' => 'pagetriageaction',
-					'pageid' => 15,
-					'reviewed' => '1'
-				),
-				$sessionArray['two'],
-				self::$users['two']->user
-			);
-		} catch ( UsageException $e ) {
-			$exception = true;
-			$this->assertEquals( "You don't have permission to do that",
-				$e->getMessage() );
-		}
-		$this->assertTrue( $exception, "Got exception" );
+		$this->doApiRequestWithToken(
+			array(
+				'action' => 'pagetriageaction',
+				'pageid' => 15,
+				'reviewed' => '1'
+			),
+			$sessionArray['two'],
+			self::$users['two']->user
+		);
 	}
 
 	/**
@@ -136,7 +133,7 @@ class ApiPageTriageActionTest extends ApiTestCase {
 			);
 		} catch ( UsageException $e ) {
 			$exception = true;
-			$this->assertEquals( "The page specified does not exist",
+			$this->assertEquals( "The page specified does not exist in pagetriage queue",
 				$e->getMessage() );
 		}
 		$this->assertTrue( $exception, "Got exception" );

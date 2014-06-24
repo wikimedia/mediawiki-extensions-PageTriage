@@ -1,11 +1,12 @@
 <?php
 /**
- * Tests for SpecialPageTriage class (PageTriage list view)
+ * Tests for SpecialNewPagesFeedTest class (PageTriage list view)
  *
+ * @group medium
  * @group EditorEngagement
  * @author Ryan Kaldari
  */
-class SpecialPageTriageTest extends ApiTestCase {
+class SpecialNewPagesFeedTest extends ApiTestCase {
 
 	protected $pageTriage;
 
@@ -15,7 +16,8 @@ class SpecialPageTriageTest extends ApiTestCase {
 	public static $users;
 
 	public function setUp() {
-		self::$users['one'] = new ApiTestUser(
+		$testUserClass = class_exists( 'ApiTestUser' ) ? 'ApiTestUser' : 'TestUser';
+		self::$users['one'] = new $testUserClass(
 				'PageTriageUser1',
 				'PageTriage Test User 1',
 				'pagetriage_test_user_1@example.com',
@@ -23,7 +25,7 @@ class SpecialPageTriageTest extends ApiTestCase {
 		);
 
 		parent::setUp();
-		$this->pageTriage = new SpecialPageTriage;
+		$this->pageTriage = new SpecialNewPagesFeed;
 	}
 
 	public function tearDown() {
@@ -89,37 +91,47 @@ class SpecialPageTriageTest extends ApiTestCase {
 			'text' => 'Hello World'
 		);
 
-		list( $result, , $session ) =  $this->doApiRequestWithToken(
-			$params,
-			$sessionArray['one'],
-			self::$users['one']->user
+		$alreadyCreated = false;
+		try {
+			list( $result, , $session ) =  $this->doApiRequestWithToken(
+				$params,
+				$sessionArray['one'],
+				self::$users['one']->user
+			);
+		} catch ( UsageException $e ) {
+			$this->assertEquals( "The article you tried to create has been created already",
+				$e->getMessage() );
+			$alreadyCreated = true;
+		}
+
+		if (!$alreadyCreated) {
+			$this->assertEquals( "Success", $result['edit']['result'] );
+		}
+
+		$newArticles = array(
+			'My Lame Garage Band' => 'We rock!',
+			'The Chronicals of Grok' => 'OK, I get it.',
+			'Very thin wafers' => 'Eat it!'
 		);
 
-		$this->assertEquals( "Success", $result['edit']['result'] );
-
-		// If it worked, make some more articles for use as test data
-		if ( $result['edit']['result'] == "Success" ) {
-
-			$newArticles = array(
-				'My Lame Garage Band' => 'We rock!',
-				'The Chronicals of Grok' => 'OK, I get it.',
-				'Very thin wafers' => 'Eat it!'
+		foreach ( $newArticles as $title => $text ) {
+			$params = array(
+				'action' => 'edit',
+				'title' => $title,
+				'summary' => 'Creating test article',
+				'createonly' => 1,
+				'text' => $text
 			);
 
-			foreach ( $newArticles as $title => $text ) {
-				$params = array(
-					'action' => 'edit',
-					'title' => $title,
-					'summary' => 'Creating test article',
-					'createonly' => 1,
-					'text' => $text
-				);
-
+			try {
 				$this->doApiRequestWithToken(
 					$params,
 					$sessionArray['one'],
 					self::$users['one']->user
 				);
+			} catch ( UsageException $e ) {
+				$this->assertEquals( "The article you tried to create has been created already",
+					$e->getMessage() );
 			}
 		}
 	}
