@@ -79,9 +79,11 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 	 *
 	 */
 	public function testValidatePageId() {
-		$pageId = array_merge( $this->pageId, array ( 'cs', '99999999', 'abcde', '5ab', '200' ) );
+		$origPageId = array_merge( $this->pageId, array ( 'cs', '99999999', 'abcde', '5ab', '200' ) );
 
-		$pageId = ArticleMetadata::validatePageId( $pageId );
+		$pageId = ArticleMetadata::validatePageId( $origPageId );
+
+		$this->assertEquals( count( $origPageId ), count( $pageId ), 'Article count doesn\'t match after ArticleMetadata::validatePageId()' );
 
 		foreach ( $pageId as $val ) {
 			$this->assertEquals( (string)$val, (string)(int)$val );
