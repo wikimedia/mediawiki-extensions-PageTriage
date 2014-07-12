@@ -39,6 +39,11 @@ $specialPageAliases['fa'] = array(
 	'NewPagesFeed' => array( 'خوراک_صفحه‌های_جدید' ),
 );
 
+/** Hebrew (עברית) */
+$specialPageAliases['he'] = array(
+	'NewPagesFeed' => array( 'הזנת_דפים_חדשים' ),
+);
+
 /** Italian (italiano) */
 $specialPageAliases['it'] = array(
 	'NewPagesFeed' => array( 'FeedNuovePagine' ),
