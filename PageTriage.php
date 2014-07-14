@@ -162,6 +162,7 @@ $wgHooks['ResourceLoaderGetConfigVars'][] = 'PageTriageHooks::onResourceLoaderGe
 $wgHooks['BeforeCreateEchoEvent'][] = 'PageTriageHooks::onBeforeCreateEchoEvent';
 $wgHooks['EchoGetDefaultNotifiedUsers'][] = 'PageTriageHooks::onEchoGetDefaultNotifiedUsers';
 $wgHooks['AddNewAccount'][] = 'PageTriageHooks::onAccountCreated';
+$wgHooks['UserMergeAccountFields'][] = 'PageTriageHooks::onUserMergeAccountFields';
 
 // logging
 $wgLogTypes[] = 'pagetriage-curation';

@@ -581,4 +581,11 @@ class PageTriageHooks {
 		$user->saveSettings();
 		return true;
 	}
+
+	public static function onUserMergeAccountFields( array &$updateFields ) {
+		$updateFields[] = array( 'pagetriage_log', 'ptrl_user_id' );
+		$updateFields[] = array( 'pagetriage_page', 'ptrp_last_reviewed_by' );
+
+		return true;
+	}
 }
