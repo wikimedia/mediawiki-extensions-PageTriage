@@ -3,6 +3,7 @@
  * Tests for ArticleMetadata class
  *
  * @group EditorEngagement
+ * @group Broken
  * @author Ian Baker
  */
 class ArticleMetadataTest extends MediaWikiTestCase {
