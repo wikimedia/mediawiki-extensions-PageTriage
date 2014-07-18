@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Chrisportelli",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Leli Forte"
 		]
 	},
 	"pagetriage-author-blocked": "Imblukkat",
@@ -19,6 +20,7 @@
 	"pagetriage-filter-all": "Uri kollha",
 	"pagetriage-filter-set-button": "Agħmel il-filtri",
 	"pagetriage-stats-less-than-a-day": "inqas minn ġurnata",
+	"pagetriage-more": "Aktar",
 	"pagetriage-tags-update-label": "Aġġornament",
 	"pagetriage-tags-param-free-yes-label": "Iva",
 	"pagetriage-tags-param-free-no-label": "Le",
