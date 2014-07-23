@@ -4,7 +4,8 @@
 			"Ch.Andrew",
 			"Cwlin0416",
 			"Liuxinyu970226",
-			"Simon Shek"
+			"Simon Shek",
+			"LNDDYL"
 		]
 	},
 	"pagetriage": "頁面分檢器",
@@ -146,7 +147,7 @@
 	"pagetriage-tags-edit-summary": "使用$1 ($2)向頁面添加標籤",
 	"pagetriage-tags-note-edit-summary": "添加關於[[$1]]的評論",
 	"pagetriage-del-edit-summary": "通過$1($2)將頁面提交刪除",
-	"pagetriage-del-tags-param-discussion-label": "請說明此條目為什麼需要被刪除，並在可能時提供指向相關方針的鏈接",
+	"pagetriage-del-tags-param-discussion-label": "請說明此條目為什麼需要被刪除，並在可能時提供指向相關方針的連結",
 	"pagetriage-info-title": "頁面信息",
 	"pagetriage-info-problem-header": "可能的問題",
 	"pagetriage-info-history-header": "歷史",
@@ -160,7 +161,7 @@
 	"pagetriage-info-problem-no-categories": "無分類",
 	"pagetriage-info-problem-no-categories-desc": "這個頁面沒有任何分類。",
 	"pagetriage-info-problem-orphan": "孤立",
-	"pagetriage-info-problem-orphan-desc": "沒有其他頁面鏈接到該頁。",
+	"pagetriage-info-problem-orphan-desc": "沒有其他頁面連結到該頁。",
 	"pagetriage-info-problem-no-references": "無參考文獻",
 	"pagetriage-info-problem-no-references-desc": "這個頁面沒有引用任何來源。",
 	"pagetriage-info-timestamp-date-format": "yyyy年M月d日",
