@@ -130,6 +130,8 @@
 	"pagetriage-del-tags-dba3-desc": "任何条目（除消歧义页、重定向或软式重定向外）只含有外部链接、分类标签和“参见”章节、对标题的重新书写、试图向标题指明的人物或集体回应、应该在询问处提出的问题、类似聊天的评论、模板标签和/或图像构成。（A3）",
 	"pagetriage-del-tags-dbg7-label": "作者请求删除",
 	"pagetriage-del-tags-dbg7-desc": "页面作者请求删除，非常明确或页面已清空。(G7)",
+	"pagetriage-del-tags-dbu2-label": "不存在用户",
+	"pagetriage-del-tags-dbu2-desc": "不存在用户的用户页（通过Special:Listusers检查），除了拥有编辑的匿名用户的用户页、出于修复拼写错误连入存在用户的用户页的重定向，以及刚刚被重命名的用户的前用户名（它应该被重定向至新用户名）。（U2）",
 	"pagetriage-del-tags-dbu3-label": "非自由图库",
 	"pagetriage-del-tags-dbu3-desc": "位于用户空间的画册，大部分或全部图像是“合理使用”或非自由版权的。维基百科的非自由内容方针禁止在用户空间使用非自由内容，即使这些内容是此用户上传的。使用位于公有领域或自由协议下的内容是可接受的。（U3）",
 	"pagetriage-del-talk-page-notify-summary": "通知作者[[$1]]的删除提名",
