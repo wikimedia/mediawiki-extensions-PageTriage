@@ -6,5 +6,8 @@
 	},
 	"pagetriage-tags-param-free-yes-label": "Da",
 	"pagetriage-tags-param-free-no-label": "Ne",
+	"pagetriage-notification-mark-as-reviewed2": "Stranica [[$2]] je pregledana od strane {{GENDER:$1|korisnika|korisnice}} [[User:$1|$1]]",
+	"pagetriage-notification-mark-as-reviewed-flyout": "Stranica [[$2]] je pregledana od strane {{GENDER:$1|korisnika|korisnice}} <b>$1</b>",
+	"pagetriage-notification-mark-as-reviewed-email-batch-body": "Stranica $1 je pregledana od strane {{GENDER:$2|korisnika|korisnice}} $2.",
 	"echo-pref-tooltip-page-review": "Obaveštava vas kada neko pregleda stranicu čiji ste vi autor."
 }
