@@ -13,7 +13,8 @@
 			"Ryan Kaldari",
 			"Shirayuki",
 			"Siebrand",
-			"아라"
+			"아라",
+			"Liuxinyu970226"
 		]
 	},
 	"pagetriage": "The name of this application (Page Triage)",
@@ -32,8 +33,8 @@
 	"pagetriage-mark-as-unreviewed-error": "Generic error message for marking page as unreviewed. $1 is the error text returned by the API.",
 	"pagetriage-hist": "A link to the revision history of a page. Appears in parentheses after the page name.",
 	"pagetriage-bytes": "The number of bytes in the page. Parameters:\n* $1 - number of bytes",
-	"pagetriage-edits": "The number of times the page has been edited. Parameters:\n* $1 - number of edits",
-	"pagetriage-categories": "The number of categories in the page. Parameters:\n* $1 - number of categories",
+	"pagetriage-edits": "The number of times the page has been edited. Parameters:\n* $1 - number of edits\n{{Identical|Edit}}",
+	"pagetriage-categories": "The number of categories in the page. Parameters:\n* $1 - number of categories\n{{Identical|Category}}",
 	"pagetriage-no-categories": "Label indicating a page with no categories.\n{{Identical|No category}}",
 	"pagetriage-no-reference": "Label indicating a page with no reference citations",
 	"pagetriage-orphan": "Label indicating a page has no external links (orphan).\n{{Identical|Orphan}}",
