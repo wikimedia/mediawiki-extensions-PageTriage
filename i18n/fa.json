@@ -121,6 +121,7 @@
 	"pagetriage-tags-cat-moretags-label": "برچسب‌های بیشتر",
 	"pagetriage-tags-cat-all-label": "همهٔ برچسب‌ها",
 	"pagetriage-tags-uncategorised-label": "رده بندی نشده",
+	"pagetriage-tags-orphan-desc": "هیچ صفحه‌ای به این صفحه پیوند ندارد.",
 	"pagetriage-tags-cleanup-label": "پاکسازی",
 	"pagetriage-tags-sections-label": "بخش‌ها",
 	"pagetriage-tags-stub-label": "خرد",
