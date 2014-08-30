@@ -8,7 +8,8 @@
 			"Mjbmr",
 			"Nojan Madinehi",
 			"Omidh",
-			"Reza1615"
+			"Reza1615",
+			"Alirezaaa"
 		]
 	},
 	"pagetriage": "تریاژ صفحه‌ها",
@@ -37,7 +38,7 @@
 	"pagetriage-articleinfo-byline": "این صفحه در $1 توسط $2 ایجاد شده است ($3$4$5)",
 	"pagetriage-articleinfo-byline-new-editor": "این صفحه در $1 توسط $2، ویرایشگر جدید، ایجاد شده است ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|ویرایش|ویرایش}} از $2",
-	"pagetriage-author-not-autoconfirmed": "ویرایشگر جدید",
+	"pagetriage-author-not-autoconfirmed": "ویرایشگر تازه",
 	"pagetriage-no-patrol-right": "شما حق علامت‌گزاری این صفحه‌ٔ‌را به عنوان بررسی‌شده ندارید.",
 	"pagetriage-author-blocked": "مسدود شده",
 	"pagetriage-author-bot": "ربات",
@@ -168,7 +169,7 @@
 	"pagetriage-info-history-show-full": "نمایش تاریخچهٔ کامل",
 	"pagetriage-info-help": "راهنما",
 	"pagetriage-info-no-problems": "تا الآن مشکلی برای این صفحه پیدا نشده‌است.",
-	"pagetriage-info-problem-non-autoconfirmed": "ویرایشگر جدید",
+	"pagetriage-info-problem-non-autoconfirmed": "ویرایشگر تازه",
 	"pagetriage-info-problem-non-autoconfirmed-desc": "این صفحه توسط کاربری تأییدنشده ساخته شده‌است.",
 	"pagetriage-info-problem-blocked": "کاربر قطع دسترسی شده",
 	"pagetriage-info-problem-blocked-desc": "صفحه توسط کاربر قطع دسترسی‌شده ایجاد شده‌است.",
