@@ -127,7 +127,7 @@
 	"pagetriage-tags-uncategorised-desc": "Статијава не припаѓа на ниедна категорија.",
 	"pagetriage-tags-unreferenced-label": "Без наводи",
 	"pagetriage-tags-unreferenced-desc": "Страницава нема ниеден навод.",
-	"pagetriage-tags-deadend-label": "Ќорсокак",
+	"pagetriage-tags-deadend-label": "Слепа",
 	"pagetriage-tags-deadend-desc": "Страницата нема врски до други страници.",
 	"pagetriage-tags-externallinks-label": "Надворешни врски",
 	"pagetriage-tags-externallinks-desc": "Надворешните врски на страницава може да не се во согласност со правилата и начелата за содржината.",
