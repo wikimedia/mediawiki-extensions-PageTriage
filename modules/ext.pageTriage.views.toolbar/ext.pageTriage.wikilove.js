@@ -56,7 +56,7 @@ $( function() {
 			var modules = mw.config.get( 'wgPageTriageCurationModules' );
 			$( '#mwe-pt-wikilove .mwe-pt-flyout-help-link' ).attr( 'href', modules.wikiLove.helplink );
 
-			if ( mw.user.name() !== creator ) {
+			if ( mw.user.getName() !== creator ) {
 				// add the creator info to the top of the list
 				$( '#mwe-pt-article-contributor-list' ).append(
 					'<input type="checkbox" class="mwe-pt-recipient-checkbox" value="' + _.escape( creator ) + '"/>' +
@@ -70,7 +70,7 @@ $( function() {
 			// sort contributors by their number of edits
 			this.bySortedValue( contributorCounts, function( name, count ) {
 				// include up to 9 additional editors (this corresponds to the limit in WikiLove)
-				if ( name !== creator && name !== mw.user.name() && x < 9 ) {
+				if ( name !== creator && name !== mw.user.getName() && x < 9 ) {
 					try {
 						userTitle = new mw.Title( name, mw.config.get('wgNamespaceIds')['user'] );
 						linkUrl = userTitle.getUrl();
