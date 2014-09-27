@@ -8,7 +8,8 @@
 			"Saruman",
 			"Siebrand",
 			"Wiki13",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Mar(c)"
 		]
 	},
 	"pagetriage": "Paginacontrole",
@@ -337,6 +338,6 @@
 	"pagetriage-notification-add-deletion-tag-email-subject2": "Uw pagina is {{GENDER:$1|genomineerd voor verwijdering}} op {{SITENAME}}",
 	"pagetriage-notification-add-deletion-tag-email-batch-body": "$1 is {{GENDER:$2|gemarkeerd voor verwijdering}} door $2",
 	"echo-pref-subscription-page-review": "Een pagina controleert die u hebt aangemaakt",
-	"echo-pref-tooltip-page-review": "U een melding zenden als iemand een pagina die u hebt gemaakt heeft gecontroleerd.",
+	"echo-pref-tooltip-page-review": "Informeer mij wanneer iemand een pagina die ik heb gemaakt heeft gecontroleerd.",
 	"echo-category-title-page-review": "Paginacontrole{{PLURAL:$1||s}}"
 }
