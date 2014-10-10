@@ -182,7 +182,7 @@
 	"pagetriage-wikilove-no-recipients": "這個頁面沒有接收者可選。",
 	"pagetriage-wikilove-tooltip": "感謝該作者",
 	"pagetriage-next-tooltip": "轉到隊列中的下一個頁面",
-	"pagetriage-del-log-page-missing-error": "今天的日誌頁面還沒有創建！",
+	"pagetriage-del-log-page-missing-error": "今天的日誌頁面還沒有建立！",
 	"pagetriage-del-log-page-adding-error": "無法找到討論的目標位置",
 	"pagetriage-del-talk-page-notify-error": "無法在對話頁上通知作者",
 	"pagetriage-del-title": "標記刪除",
