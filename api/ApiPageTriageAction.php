@@ -94,10 +94,9 @@ class ApiPageTriageAction extends ApiBase {
 		return true;
 	}
 
-	public function getVersion() {
-		return __CLASS__ . ': $Id$';
-	}
-
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getParamDescription() {
 		return array(
 			'pageid' => 'The article for which to be marked as reviewed or unreviewed',
@@ -108,6 +107,9 @@ class ApiPageTriageAction extends ApiBase {
 		);
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getDescription() {
 		return 'Mark an article as reviewed or unreviewed';
 	}

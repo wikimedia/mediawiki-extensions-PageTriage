@@ -290,6 +290,9 @@ class ApiPageTriageList extends ApiBase {
 		);
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getParamDescription() {
 		return array(
 			'page_id' => 'Return data for the specified page ids, ignoring other parameters',
@@ -311,17 +314,29 @@ class ApiPageTriageList extends ApiBase {
 		);
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getDescription() {
 		return 'Get a list of page IDs for building a PageTriage queue.';
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getExamples() {
 		return array(
 			'api.php?action=pagetriagelist&limit=1000&namespace=0',
 		);
 	}
 
-	public function getVersion() {
-		return __CLASS__ . ': $Id$';
+	/**
+	 * @see ApiBase::getExamplesMessages()
+	 */
+	protected function getExamplesMessages() {
+		return array(
+			'action=pagetriagelist&limit=1000&namespace=0'
+				=> 'apihelp-pagetriagelist-example-1',
+		);
 	}
 }

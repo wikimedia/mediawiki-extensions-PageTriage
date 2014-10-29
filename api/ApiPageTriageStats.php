@@ -42,6 +42,9 @@ class ApiPageTriageStats extends ApiBase {
 		);
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getParamDescription() {
 		return array(
 			'namespace' => 'What namespace to pull stats from',
@@ -52,10 +55,9 @@ class ApiPageTriageStats extends ApiBase {
 		);
 	}
 
-	public function getVersion() {
-		return __CLASS__ . ': $Id$';
-	}
-
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getDescription() {
 		return 'Get the stats for page triage';
 	}

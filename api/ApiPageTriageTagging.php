@@ -160,6 +160,9 @@ class ApiPageTriageTagging extends ApiBase {
 		return true;
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getParamDescription() {
 		return array(
 			'pageid' => 'The article for which to be tagged',
@@ -172,10 +175,9 @@ class ApiPageTriageTagging extends ApiBase {
 		);
 	}
 
-	public function getVersion() {
-		return __CLASS__ . ': version 1.1';
-	}
-
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getDescription() {
 		return 'Add tags to an article';
 	}
