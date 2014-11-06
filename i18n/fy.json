@@ -4,7 +4,9 @@
 			"Robin0van0der0vliet"
 		]
 	},
+	"pagetriage-categories": "$1 {{PLURAL:$1|kategory|kategoryen}}",
 	"pagetriage-filter-username": "Brûkersnamme",
+	"pagetriage-more": "Mear",
 	"pagetriage-tags-param-free-yes-label": "Ja",
 	"pagetriage-tags-param-free-no-label": "Nee",
 	"pagetriage-info-history-header": "Skiednis",
