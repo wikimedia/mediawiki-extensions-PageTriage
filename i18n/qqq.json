@@ -69,7 +69,7 @@
 	"pagetriage-filter-user-heading": "Prompt for the user to find pages by. Immediately followed by an input field. Prefer no colon since we want it to match with the rest of the options in the list which are all of the style \"Were created by XXX\".",
 	"pagetriage-filter-username": "Placeholder text for the input where a username is entered.\n{{Identical|Username}}",
 	"pagetriage-filter-tag-heading": "Prompt to find pages with a given tag",
-	"pagetriage-filter-second-show-heading": "Prompt for the second set of checkboxes in the filter menu. Followed by these checkboxes - \n*{{msg-mw|Pagetriage-filter-no-categories}}, \n*{{msg-mw|Pagetriage-filter-orphan}} and \n*{{msg-mw|Pagetriage-filter-non-autoconfirmed}}.",
+	"pagetriage-filter-second-show-heading": "Prompt for the second set of checkboxes in the filter menu. Followed by these checkboxes - \n*{{msg-mw|Pagetriage-filter-no-categories}}, \n*{{msg-mw|Pagetriage-filter-orphan}} and \n*{{msg-mw|Pagetriage-filter-non-autoconfirmed}}.\n{{Identical|That}}",
 	"pagetriage-filter-no-categories": "Checkbox text for pages with no categories",
 	"pagetriage-filter-orphan": "Checkbox text for orphan pages.\n{{Identical|Orphan}}",
 	"pagetriage-filter-non-autoconfirmed": "Checkbox text for pages by non-Autoconfirmed users",
