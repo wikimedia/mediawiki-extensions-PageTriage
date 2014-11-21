@@ -5,7 +5,8 @@
 			"Base",
 			"Steve.rusyn",
 			"SteveR",
-			"Ата"
+			"Ата",
+			"Ypryima"
 		]
 	},
 	"pagetriage": "Page Triage",
@@ -211,5 +212,8 @@
 	"pagetriage-notification-add-deletion-tag-email-batch-body": "$2 {{GENDER:$2|позначив на вилучення|позначила на вилучення}} сторінку $1.",
 	"echo-pref-subscription-page-review": "Перевіряють сторінку, створену вами",
 	"echo-pref-tooltip-page-review": "Повідомляти мене, коли хтось перевіряє сторінку, створену мною.",
-	"echo-category-title-page-review": "{{PLURAL:$1|перевірка|перевірки|перевірок}} сторінки"
+	"echo-category-title-page-review": "{{PLURAL:$1|перевірка|перевірки|перевірок}} сторінки",
+	"apihelp-pagetriageaction-param-skipnotif": "Слід пропустити нагадування.",
+	"apihelp-pagetriagelist-param-showunreviewed": "Слід включати неперевірене.",
+	"apihelp-pagetriagetagging-description": "Додати теги до статті"
 }

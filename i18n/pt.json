@@ -6,7 +6,8 @@
 			"Malafaya",
 			"SandroHc",
 			"Fúlvio",
-			"He7d3r"
+			"He7d3r",
+			"Vitorvicentevalente"
 		]
 	},
 	"pagetriage": "Page Triage",
@@ -212,5 +213,6 @@
 	"pagetriage-notification-add-deletion-tag-email-batch-body": "$1 foi {{GENDER:$2|marcada para eliminação}} por $2",
 	"echo-pref-subscription-page-review": "Revisões de uma página criada por mim",
 	"echo-pref-tooltip-page-review": "Notificar-me quando alguém revisar uma página criada por mim.",
-	"echo-category-title-page-review": "{{PLURAL:$1|Página revisada|Páginas revisadas}}"
+	"echo-category-title-page-review": "{{PLURAL:$1|Página revisada|Páginas revisadas}}",
+	"apihelp-pagetriagelist-param-username": "Mostra apenas as páginas criadas pelo utilizador."
 }
