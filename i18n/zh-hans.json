@@ -219,5 +219,6 @@
 	"pagetriage-notification-add-deletion-tag-email-batch-body": "$1被$2{{GENDER:$2|标记待删除}}。",
 	"echo-pref-subscription-page-review": "复核我创建的页面",
 	"echo-pref-tooltip-page-review": "当有人复核我创建的页面时通知我。",
-	"echo-category-title-page-review": "页面{{PLURAL:$1|复核}}"
+	"echo-category-title-page-review": "页面{{PLURAL:$1|复核}}",
+	"apihelp-pagetriagelist-example-1": "列出0名字空间的1000个页面"
 }
