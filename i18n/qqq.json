@@ -58,7 +58,7 @@
 	"pagetriage-newest": "Text for a sort-order button.\n{{Identical|Newest}}",
 	"pagetriage-oldest": "Text for a sort-order button.\n{{Identical|Oldest}}",
 	"pagetriage-triage": "Button label.\n{{Identical|Review}}",
-	"pagetriage-filter-show-heading": "Prompt for the first set of checkboxes in the filter menu",
+	"pagetriage-filter-show-heading": "Prompt for the first set of checkboxes in the filter menu\n{{Identical|Show}}",
 	"pagetriage-filter-reviewed-edits": "Checkbox text for reviewed pages",
 	"pagetriage-filter-unreviewed-edits": "Checkbox text for unreviewed pages",
 	"pagetriage-filter-nominated-for-deletion": "Checkbox text for pages nominated for deletion",
