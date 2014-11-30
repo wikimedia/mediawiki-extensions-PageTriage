@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aftab1995"
+		]
+	},
+	"pagetriage-please-wait": "অনুগ্রহ করে অপেক্ষা করুন...",
+	"pagetriage-reviewed": "পর্যালোচিত",
+	"pagetriage-bytes": "$1 {{PLURAL:$1|বাইট}}",
+	"pagetriage-edits": "$1টি {{PLURAL:$1|সম্পাদনা}}",
+	"pagetriage-categories": "$1টি {{PLURAL:$1|বিষয়শ্রেণী}}",
+	"pagetriage-no-categories": "কোন বিষয়শ্রেণী নেই",
+	"pagetriage-author-bot": "বট",
+	"pagetriage-filter-username": "ব্যবহারকারী নাম",
+	"pagetriage-filter-ns-all": "সব",
+	"pagetriage-more": "আরও",
+	"pagetriage-filter-stat-all": "সব",
+	"pagetriage-filter-stat-reviewed": "পর্যালোচিত",
+	"pagetriage-filter-stat-unreviewed": "অপর্যালোচিত",
+	"pagetriage-filter-stat-bots": "বটসমূহ",
+	"pagetriage-filter-stat-redirects": "পুনঃনির্দেশ",
+	"pagetriage-tags-param-article-label": "নিবন্ধ:",
+	"pagetriage-tags-param-date-label": "তারিখ:",
+	"pagetriage-tags-param-free-yes-label": "হ্যাঁ",
+	"pagetriage-tags-param-free-no-label": "না",
+	"pagetriage-info-history-header": "ইতিহাস",
+	"pagetriage-info-help": "সাহায্য",
+	"pagetriage-info-timestamp-time-format": "HH:mm",
+	"pagetriage-mark-title": "পর্যালোচিত হিসেবে চিহ্নিত করুন",
+	"pagetriage-mark-as-reviewed": "পর্যালোচিত হিসেবে চিহ্নিত করুন",
+	"pagetriage-mark-as-unreviewed": "অপর্যালোচিত হিসেবে চিহ্নিত করুন",
+	"pagetriage-wikilove-edit-count": "$1টি {{PLURAL:$1|সম্পাদনা}}",
+	"pagetriage-toolbar-close": "বন্ধ"
+}
