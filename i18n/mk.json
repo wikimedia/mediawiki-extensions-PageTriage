@@ -401,7 +401,7 @@
 	"apihelp-pagetriagetagging-param-deletion": "Дали означувањето се однесува на предложено бришење.",
 	"apihelp-pagetriagetagging-param-note": "Лична белешка за создавачите на страницата од проверувачите.",
 	"apihelp-pagetriagetagging-param-taglist": "Список на ознаки, одделени со исправена црта.",
-	"apihelp-pagetriagetemplate-description": "Дај шаблони што се користат во прилогот „Проверка на страници“.",
+	"apihelp-pagetriagetemplate-description": "Дај шаблони што се користат во извршникот „Проверка на страници“.",
 	"apihelp-pagetriagetemplate-param-view": "За кој преглед на „Проверка на страници“ ви требаат шаблоните.",
 	"apihelp-pagetriagetemplate-param-template": "Шаблонот што треба да се даде. Ако се повеќе, одделувајте ги со исправена црта (знакот „|“).",
 	"apihelp-pagetriagetemplate-example-1": "Список на ставки со шаблонот „listItem.html“"
