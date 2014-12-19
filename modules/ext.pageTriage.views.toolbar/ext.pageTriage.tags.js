@@ -74,6 +74,12 @@ $( function() {
 		 * Display the tag flyout, everything should be reset
 		 */
 		render: function() {
+			function handleFocus() {
+				$( this ).val( '' );
+				$( this ).css( 'color', 'black' );
+				$( this ).off( 'focus', handleFocus );
+			}
+
 			var _this = this;
 			this.reset();
 			this.$tel.html( this.template( { 'tags': this.tagsOptions, 'warningNotice': this.model.tagWarningNotice(), 'title': this.title, 'maxLength': this.noteMaxLength, 'creator': this.model.get( 'user_name' ) } ) );
@@ -91,11 +97,7 @@ $( function() {
 				} else {
 					$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
 				}
-			} ).live( 'focus', function(e) {
-				$( this ).val( '' );
-				$( this ).css( 'color', 'black' );
-				$( this ).unbind( e );
-			} ).change( function() {
+			} ).on( 'focus', handleFocus ).change( function() {
 				_this.noteChanged = true;
 			} );
 

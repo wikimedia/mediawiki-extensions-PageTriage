@@ -167,6 +167,12 @@ $( function() {
 				maxLength = 250, modules = mw.config.get( 'wgPageTriageCurationModules' ),
 				showNoteSection = true, noteTarget = '', noteTitle;
 
+			function handleFocus() {
+				$( this ).val( '' );
+				$( this ).css( 'color', 'black' );
+				$( this ).off( 'focus', handleFocus );
+			}
+
 			if ( status === 'unreviewed' ) {
 				noteTitle = 'pagetriage-add-a-note-reviewer';
 				// there is no reviewer recorded or the reviewer is reverting their previous reviewed status
@@ -214,11 +220,7 @@ $( function() {
 					} else {
 						$( '#' + buttonId ).button( 'enable' );
 					}
-				} ).live( 'focus', function(e) {
-					$( this ).val( '' );
-					$( this ).css( 'color', 'black' );
-					$( this ).unbind( e );
-				} ).change( function() {
+				} ).on( 'focus', handleFocus ).change( function() {
 					_this.noteChanged = true;
 				} );
 			}
