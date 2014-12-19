@@ -290,4 +290,4 @@ class PageTriage {
 	}
 }
 
-class PageTriageMissingRevisionException extends MWException {}
+class MWPageTriageMissingRevisionException extends MWException {}
