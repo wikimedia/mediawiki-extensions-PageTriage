@@ -224,5 +224,6 @@
 	"apihelp-pagetriagelist-param-offset": "开始的时间戳。",
 	"apihelp-pagetriagelist-example-1": "列出0名字空间的1000个页面",
 	"apihelp-pagetriagetagging-description": "将标签加入至一个条目。",
+	"apihelp-pagetriagetagging-param-taglist": "逗号分隔的标签列表。",
 	"apihelp-pagetriagetemplate-example-1": "列出带模板“listItem.html”的项目"
 }
