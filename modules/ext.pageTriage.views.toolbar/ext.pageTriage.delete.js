@@ -157,7 +157,7 @@ $( function() {
 		 */
 		setupDeletionTags: function() {
 			// user namespace
-			if ( wgCanonicalNamespace === 'User' ) {
+			if ( mw.config.get( 'wgCanonicalNamespace' ) === 'User' ) {
 				this.deletionTagsOptions = $.pageTriageDeletionTagsOptions['User'];
 				this.deletionTagsOptions.mfd.label = this.deletionTagsOptions.mfd.tags.miscellanyfordeletion.label;
 			// default to main namespace
@@ -513,7 +513,7 @@ $( function() {
 		setParams: function( key ) {
 			var tag = this.selectedTag[key];
 			for ( var param in tag.params ) {
-				tag.params[param].value = $( '#mwe-pt-delete-params-' + key + '-' + param ).attr( 'value' );
+				tag.params[param].value = $( '#mwe-pt-delete-params-' + key + '-' + param ).val();
 				if ( tag.params[param].input === 'required' && !tag.params[param].value ) {
 					$( '#mwe-pt-delete-params-form-error' ).text( mw.msg( 'pagetriage-tags-param-missing-required', tag.tag ) );
 					return false;
