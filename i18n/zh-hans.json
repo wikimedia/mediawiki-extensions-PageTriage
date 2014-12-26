@@ -221,6 +221,7 @@
 	"echo-pref-tooltip-page-review": "当有人复核我创建的页面时通知我。",
 	"echo-category-title-page-review": "页面{{PLURAL:$1|复核}}",
 	"apihelp-pagetriageaction-param-skipnotif": "是否跳过通知。",
+	"apihelp-pagetriagelist-param-showbots": "是否只显示机器人编辑。",
 	"apihelp-pagetriagelist-param-offset": "开始的时间戳。",
 	"apihelp-pagetriagelist-example-1": "列出0名字空间的1000个页面",
 	"apihelp-pagetriagetagging-description": "将标签加入至一个条目。",
