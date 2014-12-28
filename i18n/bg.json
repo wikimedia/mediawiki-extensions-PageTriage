@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"DCLXVI",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Borislav"
 		]
 	},
 	"pagetriage-bytes": "$1 {{PLURAL:$1|байт|байта}}",
@@ -25,5 +26,6 @@
 	"pagetriage-info-help": "помощ",
 	"pagetriage-info-timestamp-date-format": "d MMMM yyyy",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
-	"pagetriage-toolbar-close": "Затваряне"
+	"pagetriage-toolbar-close": "Затваряне",
+	"echo-pref-tooltip-page-review": "Известяване, когато някой прегледа страница, която съм създал."
 }
