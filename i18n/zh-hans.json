@@ -220,6 +220,7 @@
 	"echo-pref-subscription-page-review": "复核我创建的页面",
 	"echo-pref-tooltip-page-review": "当有人复核我创建的页面时通知我。",
 	"echo-category-title-page-review": "页面{{PLURAL:$1|复核}}",
+	"apihelp-pagetriageaction-param-reviewed": "条目是否复核。",
 	"apihelp-pagetriageaction-param-skipnotif": "是否跳过通知。",
 	"apihelp-pagetriagelist-param-showbots": "是否只显示机器人编辑。",
 	"apihelp-pagetriagelist-param-offset": "开始的时间戳。",
