@@ -14,7 +14,8 @@
 			"Urhixidur",
 			"Verdy p",
 			"Wyz",
-			"Jean-Frédéric"
+			"Jean-Frédéric",
+			"0x010C"
 		]
 	},
 	"pagetriage": "Tri des pages",
@@ -356,5 +357,7 @@
 	"pagetriage-notification-add-deletion-tag-email-batch-body": "$1 a été {{GENDER:$2|marquée pour suppression}} par $2",
 	"echo-pref-subscription-page-review": "Relire une page que j'ai créée",
 	"echo-pref-tooltip-page-review": "Me prévenir quand quelqu’un relit une page que j’ai créée.",
-	"echo-category-title-page-review": "{{PLURAL:$1|Relecture|Relectures}} de page"
+	"echo-category-title-page-review": "{{PLURAL:$1|Relecture|Relectures}} de page",
+	"apihelp-pagetriagelist-param-limit": "Le nombre maximal de résultats à renvoyer.",
+	"apihelp-pagetriagelist-param-offset": "Horodatage auquel démarrer."
 }
