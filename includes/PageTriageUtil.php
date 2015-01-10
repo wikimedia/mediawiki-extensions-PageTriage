@@ -10,7 +10,7 @@ class PageTriageUtil {
 	 *
 	 * @param $article WikiPage object
 	 *
-	 * @throws MWException
+	 * @throws Exception
 	 * @return Mixed null if the page is not in the triage system,
 	 * otherwise whether or not the page is unreviewed.
 	 * Return convention is this way so that null and false are equivalent
@@ -18,7 +18,7 @@ class PageTriageUtil {
 	 */
 	public static function doesPageNeedTriage( $article ) {
 		if ( ! $article ) {
-			throw new MWException( "Invalid argument to " . __METHOD__ );
+			throw new Exception( "Invalid argument to " . __METHOD__ );
 		}
 
 		if ( ! $article->getId() ) {
@@ -427,4 +427,4 @@ class PageTriageUtil {
 
 }
 
-class MWPageTriageUtilInvalidNumberException extends MWException {}
+class MWPageTriageUtilInvalidNumberException extends Exception {}
