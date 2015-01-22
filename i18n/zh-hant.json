@@ -36,7 +36,7 @@
 	"pagetriage-editcount": "自$2以來$1次編輯",
 	"pagetriage-author-not-autoconfirmed": "新手",
 	"pagetriage-no-patrol-right": "您並無權限標記此頁面已複查",
-	"pagetriage-author-blocked": "已封禁",
+	"pagetriage-author-blocked": "已封鎖",
 	"pagetriage-author-bot": "機器人",
 	"pagetriage-showing": "顯示：",
 	"pagetriage-filter-list-prompt": "設定篩選器",
