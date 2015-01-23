@@ -69,6 +69,11 @@ $specialPageAliases['ml'] = array(
 	'NewPagesFeed' => array( 'വാർത്താതാൾഫീഡ്' ),
 );
 
+/** Malay (Bahasa Melayu) */
+$specialPageAliases['ms'] = array(
+	'NewPagesFeed' => array( 'Suapan_laman_baru' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'NewPagesFeed' => array( 'OverzichtNieuwePagina\'s', 'OverzichtNieuwePaginas' ),
