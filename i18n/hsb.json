@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Michawiki"
+			"Michawiki",
+			"J budissin"
 		]
 	},
 	"pagetriage": "Page Triage",
@@ -230,7 +231,7 @@
 	"pagetriage-tags-param-free-no-label": "Ně",
 	"pagetriage-tags-param-missing-required": "Marce $1 trěbny parmeter faluje.",
 	"logentry-pagetriage-curation-reviewed": "$1 je $3 jako přepruwowany {{GENDER:$2|markěrował|markěrowała}}",
-	"logentry-pagetriage-curation-unreviewed": "$1 je $3 jako njepřepruwowany {{GENDER:$2|markěrował|markěrowała}}",
+	"logentry-pagetriage-curation-unreviewed": "$1 je $3 jako njepřepruwowane {{GENDER:$2|markěrował|markěrowała}}",
 	"pagetriage-tags-note-edit-summary": "Je komentary nastupajo [[$1]] přidał",
 	"pagetriage-del-edit-summary": "Strona je so za zhašenje wužiwajo $1 namjetowała ($2)",
 	"pagetriage-del-tags-param-discussion-label": "Prošu wujasń, čehodla ma so tutón nastawk zhašeć, a podaj wotkazy  k relewantym prawidłam, hdźežkuli móžno.",
@@ -257,7 +258,7 @@
 	"pagetriage-toolbar-learn-more": "Dalše informacije »",
 	"pagetriage-mark-title": "Jako přepruwowany markěrować",
 	"pagetriage-mark-as-reviewed": "Jako přepruwowany markěrować",
-	"pagetriage-mark-as-unreviewed": "Jako njepřepruwowany markěrować",
+	"pagetriage-mark-as-unreviewed": "Jako njepřepruwowane markěrować",
 	"pagetriage-mark-as-reviewed-helptext": "Tutu stronu jako přepruwowanu markěrować, hdyž sy ju skontrolował.",
 	"pagetriage-mark-as-unreviewed-helptext": "Tutu stronu jako njepřepruwowanu markěrować, jeli měniš, zo wona dyrbi so dale kontrolować.",
 	"pagetriage-wikilove-helptext": "Wubjer mjena wobdźěłarjow, kotrymž chceš so dźakować.",
