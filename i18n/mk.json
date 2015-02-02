@@ -94,7 +94,7 @@
 	"pagetriage-button-mark-for-deletion": "Означи за бришење",
 	"pagetriage-add-a-note-creator": "Додај порака за создавачот: (незадолжително)",
 	"pagetriage-add-a-note-reviewer": "Додај порака за проверувачот: (незадолжително)",
-	"pagetriage-characters-left": "{{PLURAL:$1|Преостанува $1 знак|Преостануваат $1 знаци}}",
+	"pagetriage-characters-left": "{{PLURAL:$1|Преостанува уште еден знак|Преостануваат уште $1 знаци}}",
 	"pagetriage-personal-default-note": "Напишете корисна белешка за корисникот {{GENDER:$1|$1}} што ќе му помогне. Истата ќе биде објавена на неговата страницата за разговор.",
 	"pagetriage-page-status-reviewed": "Означено како проверено на $1 од $2 ($3$4$5)",
 	"pagetriage-page-status-reviewed-anonymous": "Означи како проверена",
