@@ -215,7 +215,7 @@ $( function() {
 
 						if ( !_this.selectedTag[cat][tagKey] ) {
 							// activate checkbox
-							$( '#mwe-pt-checkbox-tag-' + tagKey ).attr( 'checked', true );
+							$( '#mwe-pt-checkbox-tag-' + tagKey ).prop( 'checked', true );
 							_this.selectedTagCount++;
 							_this.selectedTag[cat][tagKey] = tagSet[tagKey];
 							if ( destCat ) {
@@ -235,7 +235,7 @@ $( function() {
 							}
 						} else {
 							// deactivate checkbox
-							$( '#mwe-pt-checkbox-tag-' + tagKey ).attr( 'checked', false );
+							$( '#mwe-pt-checkbox-tag-' + tagKey ).prop( 'checked', false );
 							_this.selectedTagCount--;
 							delete _this.selectedTag[cat][tagKey];
 							if ( destCat ) {
@@ -400,7 +400,7 @@ $( function() {
 							delete _this.selectedTag[cat][key];
 							_this.selectedTagCount--;
 							_this.refreshTagCountDisplay( key, destCat ? destCat : cat );
-							$( '#mwe-pt-checkbox-tag-' + key ).attr( 'checked', false );
+							$( '#mwe-pt-checkbox-tag-' + key ).prop( 'checked', false );
 							_this.hideParamsLink( key );
 							break;
 						}

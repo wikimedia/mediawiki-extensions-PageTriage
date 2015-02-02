@@ -313,7 +313,7 @@ $( function() {
 
 						$( '#mwe-pt-delete-params-form-' + tagKey ).hide();
 						if ( !_this.selectedTag[tagKey] ) {
-							$( '#mwe-pt-checkbox-delete-' + tagKey ).attr( 'checked', true );
+							$( '#mwe-pt-checkbox-delete-' + tagKey ).prop( 'checked', true );
 
 							// different category from the selected one, refresh data
 							if ( _this.selectedCat != cat ) {
@@ -337,7 +337,7 @@ $( function() {
 							}
 						} else {
 							// deactivate checkbox
-							$( '#mwe-pt-checkbox-delete-' + tagKey ).attr( 'checked', false );
+							$( '#mwe-pt-checkbox-delete-' + tagKey ).prop( 'checked', false );
 							delete _this.selectedTag[tagKey];
 
 							if ( $.isEmptyObject( _this.selectedTag ) ) {
