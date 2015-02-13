@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jason924tw"
+			"Jason924tw",
+			"RalfX"
 		]
 	},
 	"pagetriage-reviewed": "已校",
 	"pagetriage-hist": "誌",
 	"pagetriage-edits": "$1纂",
-	"pagetriage-categories": "$1門",
+	"pagetriage-categories": "$1類",
 	"pagetriage-no-categories": "無類",
 	"pagetriage-author-bot": "僕",
 	"pagetriage-showing": "示：",
