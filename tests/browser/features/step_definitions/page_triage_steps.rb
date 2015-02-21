@@ -18,8 +18,9 @@ When(/^I click Set filters$/) do
 end
 
 Then(/^I should see a Learn more link$/) do
-  on(PageTriagePage).learn_more_element.when_present.should exist
+  expect(on(PageTriagePage).learn_more_element.when_present).to exist
 end
+
 Then(/^I should be able to set many checkboxes for filtering new pages$/) do
   on(PageTriagePage) do |page|
     page.select_blocked
@@ -34,18 +35,23 @@ Then(/^I should be able to set many checkboxes for filtering new pages$/) do
     page.select_user_selected
   end
 end
+
 Then(/^I should see a Leave feedback link$/) do
-  on(PageTriagePage).leave_feedback_element.when_present.should exist
+  expect(on(PageTriagePage).leave_feedback_element.when_present).to exist
 end
+
 Then(/^I should see a status icon for a new article$/) do
-  on(PageTriagePage).status_element.when_present.should exist
+  expect(on(PageTriagePage).status_element.when_present).to exist
 end
+
 Then(/^I should not see a Review button$/) do
-  on(PageTriagePage).review_element.should_not exist
+  expect(on(PageTriagePage).review_element).not_to exist
 end
+
 Then(/^I should see namespace selectbox$/) do
-  on(PageTriagePage).namespace_element.should exist
+  expect(on(PageTriagePage).namespace_element).to exist
 end
+
 Then(/^I should see Username text field$/) do
-  on(PageTriagePage).username_element.should exist
+  expect(on(PageTriagePage).username_element).to exist
 end
