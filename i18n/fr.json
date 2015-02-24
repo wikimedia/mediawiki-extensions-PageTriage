@@ -15,7 +15,8 @@
 			"Verdy p",
 			"Wyz",
 			"Jean-Frédéric",
-			"0x010C"
+			"0x010C",
+			"Weft"
 		]
 	},
 	"pagetriage": "Tri des pages",
@@ -74,7 +75,7 @@
 	"pagetriage-filter-non-autoconfirmed": "Ont été faits par de nouveaux éditeurs",
 	"pagetriage-filter-blocked": "Ont été faits par des utilisateurs bloqués",
 	"pagetriage-filter-all": "Tout afficher",
-	"pagetriage-filter-set-button": "Positionner les filtres",
+	"pagetriage-filter-set-button": "Appliquer les filtres",
 	"pagetriage-stats-less-than-a-day": "moins d'un jour",
 	"pagetriage-stats-reviewed-page-count": "$1 {{PLURAL:$1|page relue|pages relues}} cette semaine",
 	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|page|pages}} dans votre liste filtrée",
