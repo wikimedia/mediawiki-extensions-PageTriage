@@ -363,5 +363,7 @@
 	"pagetriage-notification-add-deletion-tag-email-batch-body": "$1 wurde von $2 {{GENDER:$2|zur Löschung vorgeschlagen}}",
 	"echo-pref-subscription-page-review": "eine Seite überprüft, die ich erstellt habe",
 	"echo-pref-tooltip-page-review": "Benachrichtige mich, wenn jemand eine Seite überprüft, die ich erstellt habe.",
-	"echo-category-title-page-review": "{{PLURAL:$1|Seitenüberprüfung|Seitenüberprüfungen}}"
+	"echo-category-title-page-review": "{{PLURAL:$1|Seitenüberprüfung|Seitenüberprüfungen}}",
+	"apihelp-pagetriageaction-param-skipnotif": "Ob die Benachrichtigung übersprungen werden soll.",
+	"apihelp-pagetriagelist-param-offset": "Zeitstempel, von dem gestartet werden soll."
 }
