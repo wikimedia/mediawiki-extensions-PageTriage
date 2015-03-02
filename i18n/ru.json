@@ -5,7 +5,8 @@
 			"Okras",
 			"Ole Yves",
 			"Tucvbif",
-			"Yurik"
+			"Yurik",
+			"Sealle"
 		]
 	},
 	"pagetriage": "Сортировка страниц",
@@ -139,7 +140,7 @@
 	"pagetriage-tags-param-free-yes-label": "Да",
 	"pagetriage-tags-param-free-no-label": "Нет",
 	"pagetriage-tags-param-missing-required": "Отсутствует обязательный параметр для тега $1.",
-	"log-name-pagetriage-curation": "Журнал проверки странц",
+	"log-name-pagetriage-curation": "Журнал проверки страниц",
 	"log-description-pagetriage-curation": "Это журнал действий, совершённых с помощью панели проверки.",
 	"log-name-pagetriage-deletion": "Журнал удаления тегов",
 	"log-description-pagetriage-deletion": "Это журнал действий, совершённых с помощью мастера удаления на странице проверки.",
