@@ -127,6 +127,7 @@
 	"pagetriage-del-tags-cat-csd-desc": "如果它满足以下条件之一，标记这个页面快速删除。",
 	"pagetriage-del-tags-cat-prod-desc": "如果它明显违反社群标准，标记这个页面为提议删除",
 	"pagetriage-del-tags-cat-discussion-desc": "标记这个页面以和其他编者讨论是否删除。",
+	"pagetriage-del-tags-dbg12-desc": "包含不可靠的公有领域、合理使用或其他可兼容的自由许可协议的受版权保护材料的文本页面，且没有值得保留的非侵权内容。（G12）",
 	"pagetriage-del-tags-dba3-label": "无内容",
 	"pagetriage-del-tags-dba3-desc": "任何条目（除消歧义页、重定向或软式重定向外）只含有外部链接、分类标签和“参见”章节、对标题的重新书写、试图向标题指明的人物或集体回应、应该在询问处提出的问题、类似聊天的评论、模板标签和/或图像构成。（A3）",
 	"pagetriage-del-tags-dbg7-label": "作者请求删除",
@@ -257,6 +258,7 @@
 	"apihelp-pagetriagetagging-param-note": "复核者给页面创建者的说明。",
 	"apihelp-pagetriagetagging-param-taglist": "逗号分隔的标签列表。",
 	"apihelp-pagetriagetemplate-description": "获取被PageTriage应用程序使用的模板。",
+	"apihelp-pagetriagetemplate-param-view": "当您需要模板时的PageTriage查看。",
 	"apihelp-pagetriagetemplate-param-template": "要获取的模板。多个用 | 符号分隔。",
 	"apihelp-pagetriagetemplate-example-1": "列出带模板“listItem.html”的项目"
 }
