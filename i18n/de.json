@@ -4,7 +4,8 @@
 			"Kghbln",
 			"Metalhead64",
 			"Shirayuki",
-			"Wnme"
+			"Wnme",
+			"Inkowik"
 		]
 	},
 	"pagetriage": "Seitenprüfungshilfe",
@@ -364,8 +365,8 @@
 	"echo-pref-subscription-page-review": "eine Seite überprüft, die ich erstellt habe",
 	"echo-pref-tooltip-page-review": "Benachrichtige mich, wenn jemand eine Seite überprüft, die ich erstellt habe.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Seitenüberprüfung|Seitenüberprüfungen}}",
-	"apihelp-pagetriageaction-param-skipnotif": "Ob die Benachrichtigung übersprungen werden soll.",
+	"apihelp-pagetriageaction-param-skipnotif": "Die Benachrichtigung überspringen oder nicht.",
 	"apihelp-pagetriagelist-param-offset": "Zeitstempel, von dem gestartet werden soll.",
-	"apihelp-pagetriagetagging-description": "Fügt Markierungen einem Artikel hinzu.",
+	"apihelp-pagetriagetagging-description": "Fügt einem Artikel Markierungen hinzu.",
 	"apihelp-pagetriagetagging-param-taglist": "Pipe-getrennte Liste mit Markierungen."
 }
