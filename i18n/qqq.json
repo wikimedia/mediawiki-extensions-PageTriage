@@ -14,13 +14,14 @@
 			"Shirayuki",
 			"Siebrand",
 			"아라",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Umherirrender"
 		]
 	},
 	"pagetriage": "The name of this application (Page Triage)",
 	"pagetriage-dot-separator": "{{Optional}}\nA character that separates different statistics about the page, for example: 9 bytes · 1 edit · 0 categories",
 	"newpagesfeed": "{{doc-special|NewPagesFeed}}",
-	"pagetriage-desc": "{{desc|name=Page Triage|url=http://www.mediawiki.org/wiki/Extension:PageTriage}}",
+	"pagetriage-desc": "{{desc|name=Page Triage|url=https://www.mediawiki.org/wiki/Extension:PageTriage}}",
 	"pagetriage-pagecuration": "Alternative title of the extension/project. Should use title case.",
 	"pagetriage-please-wait": "Temporary message displayed while list interface is loading.\n{{Identical|Please wait}}",
 	"pagetriage-api-invalidid": "Unused at this time.\n\nInvalid title error message for pagetriage API. Parameters:\n* $1 - ID",
