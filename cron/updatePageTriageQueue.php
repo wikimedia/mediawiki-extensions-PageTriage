@@ -15,7 +15,7 @@ class updatePageTriageQueue extends Maintenance {
 	 * Max number of article to process at a time
 	 * @var int
 	 */
-	protected $batchSize = 300;
+	protected $batchSize = 100;
 
 	/**
 	 * @var DatabaseBase
