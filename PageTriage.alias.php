@@ -24,6 +24,11 @@ $specialPageAliases['arz'] = array(
 	'NewPagesFeed' => array( 'تغذيه_الصفحات_الجديده' ),
 );
 
+/** Western Balochi (بلوچی رخشانی) */
+$specialPageAliases['bgn'] = array(
+	'NewPagesFeed' => array( 'نوکین_وّرق_ئانی_وّرگ' ),
+);
+
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
 	'NewPagesFeed' => array( 'Seitenprüfung' ),
