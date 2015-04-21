@@ -3,7 +3,8 @@
 		"authors": [
 			"McDutchie",
 			"Nemo bis",
-			"Toliño"
+			"Toliño",
+			"Banjo"
 		]
 	},
 	"pagetriage": "Clasificación de páxinas",
@@ -366,5 +367,6 @@
 	"pagetriage-notification-add-deletion-tag-email-batch-body": "$2 {{GENDER:$2|marcou para borrar}} \"$1\"",
 	"echo-pref-subscription-page-review": "Revise unha páxina que creei",
 	"echo-pref-tooltip-page-review": "Notificádeme cando alguén revise unha páxina creada por min.",
-	"echo-category-title-page-review": "{{PLURAL:$1|Revisión|Revisións}} de páxina"
+	"echo-category-title-page-review": "{{PLURAL:$1|Revisión|Revisións}} de páxina",
+	"apihelp-pagetriagetagging-description": "Engadir etiquetas a un artigo."
 }
