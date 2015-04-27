@@ -38,7 +38,7 @@ EOT;
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'PageTriage',
-	'version' => '0.2.0',
+	'version' => '0.2.1',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:PageTriage',
 	'author' => array(
 		'Ryan Kaldari',

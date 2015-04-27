@@ -15,9 +15,10 @@ class PageTriageExternalTagsOptions extends ResourceLoaderWikiModule {
 	}
 
 	/**
+	 * @param $context ResourceLoaderContext
 	 * @return array
 	 */
-	public function getDependencies() {
+	public function getDependencies( ResourceLoaderContext $context = null ) {
 		return array( 'ext.pageTriage.defaultTagsOptions' );
 	}
 
