@@ -4,7 +4,8 @@
 			"McDutchie",
 			"Nemo bis",
 			"Toliño",
-			"Banjo"
+			"Banjo",
+			"Elisardojm"
 		]
 	},
 	"pagetriage": "Clasificación de páxinas",
@@ -368,5 +369,24 @@
 	"echo-pref-subscription-page-review": "Revise unha páxina que creei",
 	"echo-pref-tooltip-page-review": "Notificádeme cando alguén revise unha páxina creada por min.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Revisión|Revisións}} de páxina",
-	"apihelp-pagetriagetagging-description": "Engadir etiquetas a un artigo."
+	"apihelp-pagetriageaction-description": "Marcar un artigo como revisado ou sen revisar.",
+	"apihelp-pagetriageaction-param-pageid": "Artigo que debe ser marcado como revisado ou sen revisar.",
+	"apihelp-pagetriageaction-param-note": "Nota persoal dos revisores ós creadores da páxina.",
+	"apihelp-pagetriagelist-description": "Obter unha lista de identificadores de páxina para crear unha cola PageTriage.",
+	"apihelp-pagetriagelist-param-page_id": "Devolver datos para os indicadores de páxina indicados, ignorando outros parámetros.",
+	"apihelp-pagetriagelist-param-limit": "Número máximo de resultados a devolver.",
+	"apihelp-pagetriagelist-param-offset": "Selo de tempo dende o que comezar.",
+	"apihelp-pagetriagelist-param-pageoffset": "Identificador de páxina desde o que comezar (precisa o parámetro $1offset para ser pasado tamén).",
+	"apihelp-pagetriagelist-param-dir": "A dirección da lista debe estar ordenada en - primeiro o máis vello ou primeiro o máis novo.",
+	"apihelp-pagetriagelist-param-username": "Mostrar só páxinas creadas por nome de usuario.",
+	"apihelp-pagetriagelist-example-1": "Listar 1000 páxinas no espazo de nomes 0",
+	"apihelp-pagetriagetagging-description": "Engadir etiquetas a un artigo.",
+	"apihelp-pagetriagetagging-param-top": "Texto etiquetado a engadir ó comezo dun artigo.",
+	"apihelp-pagetriagetagging-param-bottom": "Texto etiquetado a engadir ó final dun artigo.",
+	"apihelp-pagetriagetagging-param-note": "Nota persoal dos revisores ós creadores da páxina.",
+	"apihelp-pagetriagetagging-param-taglist": "Lista de etiquetas separadas por barras verticais.",
+	"apihelp-pagetriagetemplate-description": "Buscar modelos que son usados pola aplicación PageTriage.",
+	"apihelp-pagetriagetemplate-param-view": "Vista da PageTriage para a que necesita os modelos.",
+	"apihelp-pagetriagetemplate-param-template": "Modelo a buscar. Se quere buscar varios, sepáreos coa barra vertical (|).",
+	"apihelp-pagetriagetemplate-example-1": "Lista os obxectos co modelo \"listItem.html\""
 }
