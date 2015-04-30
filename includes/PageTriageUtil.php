@@ -387,7 +387,7 @@ class PageTriageUtil {
 		$dbw->commit();
 
 		$metadata = new ArticleMetadata( $pageIds );
-		$metadata->updateMetadataInCache( array( 'user_block_status' => $status ) );
+		$metadata->flushMetadataFromCache();
 	}
 
 	private static function getCacheVersion() {

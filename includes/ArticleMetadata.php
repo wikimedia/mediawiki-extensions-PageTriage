@@ -42,54 +42,20 @@ class ArticleMetadata {
 	}
 
 	/**
-	 * Update the metadata in cache
-	 * @param $update array - key => value pair for update
-	 * @param $pageId int
-	 */
-	public function updateMetadataInCache( $update, $pageId = null ) {
-		global $wgMemc;
-
-		$keyPrefix = $this->memcKeyPrefix();
-
-		if ( $pageId ) {
-			$pageId = array( $pageId );
-		} else {
-			$pageId = $this->mPageId;
-		}
-
-		foreach ( $pageId as $val ) {
-			$wgMemc->merge(
-				$keyPrefix . '-' . $val,
-				function( BagOStuff $cache, $key, $data ) use( $update ) {
-					// data exists in cache, update the data
-					if ( $data !== false ) {
-						return array_merge( $data, $update );
-					// data doesn't exist in cache, don't do anything
-					// with the partial update
-					} else {
-						return false;
-					}
-				},
-				86400
-			);
-		}
-	}
-
-	/**
 	 * Flush the metadata in cache
 	 * @param $pageId - page id to be flushed, if null is provided, all
 	 *                  page id in $this->mPageId will be flushed
 	 */
 	public function flushMetadataFromCache( $pageId = null ) {
-		global $wgMemc;
+		$cache = ObjectCache::getMainWANInstance();
 
 		$keyPrefix = $this->memcKeyPrefix();
 		if ( is_null( $pageId ) ) {
 			foreach ( $this->mPageId as $pageId ) {
-				$wgMemc->delete(  $keyPrefix . '-' . $pageId );
+				$cache->delete(  $keyPrefix . '-' . $pageId );
 			}
 		} else {
-			$wgMemc->delete(  $keyPrefix . '-' . $pageId );
+			$cache->delete(  $keyPrefix . '-' . $pageId );
 		}
 	}
 
@@ -99,10 +65,9 @@ class ArticleMetadata {
 	 * @param $singleData mixed - data to be saved
 	 */
 	public function setMetadataToCache( $pageId, $singleData ) {
-		global $wgMemc;
-
+		$cache = ObjectCache::getMainWANInstance();
 		$this->flushMetadataFromCache( $pageId );
-		$wgMemc->set(  $this->memcKeyPrefix() . '-' . $pageId, $singleData, 86400 ); // 24 hours
+		$cache->set(  $this->memcKeyPrefix() . '-' . $pageId, $singleData, 86400 ); // 24 hours
 	}
 
 	/**
@@ -112,21 +77,21 @@ class ArticleMetadata {
 	 * @return array
 	 */
 	public function getMetadataFromCache( $pageId = null ) {
-		global $wgMemc;
+		$cache = ObjectCache::getMainWANInstance();
 
 		$keyPrefix = $this->memcKeyPrefix();
 
 		if ( is_null( $pageId ) ) {
 			$metaData = array();
 			foreach ( $this->mPageId as $pageId ) {
-				$metaDataCache = $wgMemc->get( $keyPrefix . '-' . $pageId );
+				$metaDataCache = $cache->get( $keyPrefix . '-' . $pageId );
 				if ( $metaDataCache !== false ) {
 					$metaData[$pageId] = $metaDataCache;
 				}
 			}
 			return $metaData;
 		} else {
-			return $wgMemc->get( $keyPrefix . '-' . $pageId );
+			return $cache->get( $keyPrefix . '-' . $pageId );
 		}
 	}
 
@@ -243,8 +208,8 @@ class ArticleMetadata {
 	 */
 	public static function getValidTags() {
 		global $wgPageTriageCacheVersion, $wgMemc;
-		$key = wfMemcKey( 'pagetriage', 'valid', 'tags', $wgPageTriageCacheVersion );
 
+		$key = wfMemcKey( 'pagetriage', 'valid', 'tags', $wgPageTriageCacheVersion );
 		$tags = $wgMemc->get( $key );
 		if ( $tags === false  ) {
 			$tags = array();
