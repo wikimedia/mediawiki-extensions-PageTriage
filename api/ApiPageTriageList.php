@@ -85,7 +85,8 @@ class ApiPageTriageList extends ApiBase {
 			$prefix . '_user_talk_page_url' => $userTalkPage->getFullURL(),
 			$prefix . '_user_talk_page_exist' => isset( $userPageStatus[$userTalkPage->getPrefixedDBkey()] ),
 			$prefix . '_contribution_page' => $userContribsPage->getPrefixedText(),
-			$prefix . '_contribution_page_url' => $userContribsPage->getFullURL()
+			$prefix . '_contribution_page_url' => $userContribsPage->getFullURL(),
+			ApiResult::META_BC_BOOLS => array( $prefix . '_user_page_exist', $prefix . '_user_talk_page_exist' ),
 		);
 	}
 
