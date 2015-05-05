@@ -46,6 +46,7 @@ $wgExtensionCredits['specialpage'][] = array(
 		'Andrew Garrett',
 	),
 	'descriptionmsg' => 'pagetriage-desc',
+	'license-name' => 'MIT',
 );
 
 // Begin configuration variables
