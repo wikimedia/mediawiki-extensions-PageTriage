@@ -131,21 +131,11 @@ class PageTriage {
 		}
 		$dbw->commit();
 
-		// update the cache
-		$changedCacheFields = array(
-			'reviewer' => $user ? $user->getName() : '',
-			'patrol_status' => $this->mReviewed,
-			'ptrp_reviewed_updated' => wfTimestamp( TS_MW, $this->mReviewedUpdated ),
-			'ptrp_last_reviewed_by' => $this->mLastReviewedBy
-		);
-
 		$articleMetadata = new ArticleMetadata( array( $this->mPageId ) );
 		$metadataArray = $articleMetadata->getMetadata();
 
 		if( array_key_exists( $this->mPageId, $metadataArray ) ) {
-			// array_merge will overwrite the previous array
-			$newMetadata = array_merge( $metadataArray[$this->mPageId], $changedCacheFields );
-			$articleMetadata->setMetadataToCache( $this->mPageId, $newMetadata );
+			$articleMetadata->flushMetadataFromCache( $this->mPageId );
 		}
 	}
 
