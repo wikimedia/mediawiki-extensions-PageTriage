@@ -19,7 +19,7 @@ $specialPageAliases['ar'] = array(
 	'NewPagesFeed' => array( 'تغذية_الصفحات_الجديدة' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Arabic (مصرى) */
 $specialPageAliases['arz'] = array(
 	'NewPagesFeed' => array( 'تغذيه_الصفحات_الجديده' ),
 );
