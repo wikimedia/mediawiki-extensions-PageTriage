@@ -217,4 +217,7 @@ HTML;
 		}
 	}
 
+	protected function getGroupName() {
+		return 'changes';
+	}
 }
