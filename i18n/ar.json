@@ -3,7 +3,8 @@
 		"authors": [
 			"Ciphers",
 			"Meno25",
-			"زكريا"
+			"زكريا",
+			"محمد أحمد عبد الفتاح"
 		]
 	},
 	"pagetriage": "فارز الصفحات",
@@ -23,6 +24,7 @@
 	"pagetriage-edits": "$1 {{PLURAL:$1|تعديل|تعديلات}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|تصنيف|تصنيفات}}",
 	"pagetriage-no-categories": "بدون تصنيفات",
+	"pagetriage-no-reference": "لا استشهادات",
 	"pagetriage-orphan": "يتيمة",
 	"pagetriage-no-author": "لا يوجد معلومات عن المؤلف",
 	"pagetriage-byline": "أنشأت من قبل $1 ($2$3$4)",
@@ -156,5 +158,11 @@
 	"pagetriage-tags-param-free-yes-label": "نعم",
 	"pagetriage-tags-param-free-no-label": "لا",
 	"pagetriage-tags-param-missing-required": "يجب إضافة المتغير $1",
-	"pagetriage-tags-edit-summary": "تم إضافة قوالب الصيانة إلى المقالة باستخدام مدقق المقالات"
+	"pagetriage-tags-edit-summary": "تم إضافة قوالب الصيانة إلى المقالة باستخدام مدقق المقالات",
+	"pagetriage-info-problem-orphan": "يتيمة",
+	"pagetriage-info-problem-no-references": "لا استشهادات",
+	"pagetriage-info-tooltip": "يظهر البيانات الوصفية لهذه الصفحة",
+	"pagetriage-wikilove-page-creator": "منشئ الصفحة",
+	"pagetriage-toolbar-close": "أغلق",
+	"pagetriage-toolbar-minimize": "صغر"
 }
