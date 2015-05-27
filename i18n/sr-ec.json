@@ -29,6 +29,7 @@
 	"pagetriage-tags-param-date-label": "Датум:",
 	"pagetriage-tags-param-free-yes-label": "Да",
 	"pagetriage-tags-param-free-no-label": "Не",
+	"log-name-pagetriage-deletion": "Дневник означавања за брисање",
 	"logentry-pagetriage-curation-reviewed": "$1 је {{GENDER:$2|означио|означила}} страницу $3 као прегледану",
 	"logentry-pagetriage-curation-tag": "$1 је {{GENDER:$2|означио|означила}} страницу $3 са {{PLURAL:$5|следећом ознаком|следећим ознакама}}: $4",
 	"logentry-pagetriage-curation-delete": "$1 је {{GENDER:$2|означио|означила}} страницу $3 за брисање са {{PLURAL:$5|следећом ознаком|следећим ознакама}}: $4",
