@@ -40,7 +40,7 @@
 	"pagetriage-editcount": "$1 {{PLURAL:$1|ویرایش|ویرایش}} از $2",
 	"pagetriage-author-not-autoconfirmed": "ویرایشگر تازه",
 	"pagetriage-no-patrol-right": "شما حق علامت‌گزاری این صفحه‌ٔ‌را به عنوان بررسی‌شده ندارید.",
-	"pagetriage-author-blocked": "مسدود شده",
+	"pagetriage-author-blocked": "بسته شد",
 	"pagetriage-author-bot": "ربات",
 	"pagetriage-showing": "نمایش:",
 	"pagetriage-filter-list-prompt": "تنظیم پالایه‌ها",
