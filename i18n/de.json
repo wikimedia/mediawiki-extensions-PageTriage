@@ -368,6 +368,8 @@
 	"apihelp-pagetriageaction-param-skipnotif": "Die Benachrichtigung überspringen oder nicht.",
 	"apihelp-pagetriagelist-param-showredirs": "Ob Weiterleitungen eingeschlossen werden sollen.",
 	"apihelp-pagetriagelist-param-offset": "Zeitstempel, von dem gestartet werden soll.",
+	"apihelp-pagetriagelist-param-namespace": "Namensraum, von dem Seiten gezogen werden sollen.",
+	"apihelp-pagetriagestats-param-showredirs": "Ob Weiterleitungen einbezogen werden sollen.",
 	"apihelp-pagetriagetagging-description": "Fügt einem Artikel Markierungen hinzu.",
 	"apihelp-pagetriagetagging-param-taglist": "Pipe-getrennte Liste mit Markierungen."
 }
