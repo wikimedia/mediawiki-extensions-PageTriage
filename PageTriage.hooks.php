@@ -60,25 +60,30 @@ class PageTriageHooks {
 	 * Note: Page will be automatically marked as triaged for users with autopatrol right
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/NewRevisionFromEditComplete
-	 * @param $article WikiPage the WikiPage edited
-	 * @param $rev Revision the new revision
+	 * @param $page WikiPage the WikiPage edited
+	 * @param $rev Revision|null the new revision
 	 * @param $baseID int the revision ID this was based on, if any
 	 * @param $user User the editing user
 	 * @return bool
 	 */
-	public static function onNewRevisionFromEditComplete( $article, $rev, $baseID, $user ) {
+	public static function onNewRevisionFromEditComplete( $page, $rev, $baseID, $user ) {
 		global $wgPageTriageNamespaces;
-		if ( !in_array( $article->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
+
+		if ( !in_array( $page->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
 			return true;
 		}
 
-		// $rev could be null
-		if ( $rev ) {
-			$prev = $rev->getPrevious();
-			if ( $prev && !$article->isRedirect() && $article->isRedirect( $prev->getRawText() ) ) {
-				self::addToPageTriageQueue( $article->getId(), $article->getTitle(), $user );
-			}
+		if ( $rev && $rev->getParentId() ) {
+			// Make sure $prev->getContent() is done post-send if possible
+			DeferredUpdates::addCallableUpdate( function() use ( $rev, $page, $user ) {
+				$prev = $rev->getPrevious();
+				if ( $prev && !$page->isRedirect() && $prev->getContent()->isRedirect() ) {
+					PageTriageHooks::addToPageTriageQueue(
+						$page->getId(), $page->getTitle(), $user );
+				}
+			} );
 		}
+
 		return true;
 	}
 
@@ -176,13 +181,16 @@ class PageTriageHooks {
 
 	/**
 	 * Add page to page triage queue, check for autopatrol right if reviewed is not set
+	 *
+	 * This method should only be called from this class and its closures
+	 *
 	 * @param $pageId int
 	 * @param $title Title
 	 * @param $user User|null
 	 * @param $reviewed numeric string See PageTriage::getValidReviewedStatus()
 	 * @return bool
 	 */
-	private static function addToPageTriageQueue( $pageId, $title, $user = null, $reviewed = null ) {
+	public static function addToPageTriageQueue( $pageId, $title, $user = null, $reviewed = null ) {
 		global $wgUseRCPatrol, $wgUseNPPatrol;
 
 		$pageTriage = new PageTriage( $pageId );
