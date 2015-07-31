@@ -134,22 +134,18 @@ class PageTriageHooks {
 			return true;
 		}
 
-		// $revision could be null
-		if ( !$revision ) {
-			$validateDb = DB_MASTER;
-		} else {
-			// if there is a previous revision, it's safe to check against slave database
-			$validateDb = $revision->getPrevious() ? DB_SLAVE : DB_MASTER;
-		}
+		DeferredUpdates::addCallableUpdate( function() use ( $article ) {
+			// false will enforce a validation against pagetriage_page table
+			$acp = ArticleCompileProcessor::newFromPageId(
+				array( $article->getId() ), false, DB_MASTER );
 
-		// false will enforce a validation against pagetriage_page table
-		$acp = ArticleCompileProcessor::newFromPageId( array( $article->getId() ), false, $validateDb );
-		if ( $acp ) {
-			// Register the article object so we can get the content and other useful information
-			// this is primarily for replication delay from slave
-			$acp->registerArticle( $article );
-			$acp->compileMetadata();
-		}
+			if ( $acp ) {
+				// Register the article object so we can get the content and other useful information
+				// this is primarily for replication delay from slave
+				$acp->registerArticle( $article );
+				$acp->compileMetadata();
+			}
+		} );
 
 		return true;
 	}
