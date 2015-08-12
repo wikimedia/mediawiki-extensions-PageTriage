@@ -8,7 +8,7 @@
 }
 
 #mwe-pt-delete-categories {
-	padding: 7px 0px 7px 7px;
+	padding: 7px 0 7px 7px;
 	width: 93px;
 }
 
@@ -58,7 +58,7 @@
 	position: absolute;
 	z-index: 50;
 	top: 6px;
-	right: 0px;
+	right: 0;
 	display: none;
 }
 

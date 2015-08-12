@@ -1,33 +1,34 @@
-$( function() {
+$( function () {
 	// view for the floating toolbar
 
 	// create an event aggregator
-	var eventBus = _.extend( {}, Backbone.Events );
+	var eventBus = _.extend( {}, Backbone.Events ),
+		// the current article
+		article = new mw.pageTriage.Article( {
+			eventBus: eventBus,
+			pageId: mw.config.get( 'wgArticleId' ),
+			includeHistory: true
+		} );
 
-	// the current article
-	var article = new mw.pageTriage.Article( {
-		eventBus: eventBus,
-		pageId: mw.config.get( 'wgArticleId' ),
-		includeHistory: true
-	} );
 	article.fetch(
 		{
-			'success' : function() {
-				// array of tool instances
-				var tools;
-				// array of flyouts  disabled for the page creator
-				var disabledForCreators = [ 'tags', 'mark', 'delete' ];
+			success: function () {
+				var toolbar,
+					// array of tool instances
+					tools,
+					// array of flyouts  disabled for the page creator
+					disabledForCreators = [ 'tags', 'mark', 'delete' ];
 
 				// overall toolbar view
 				// currently, this is the main application view.
 				mw.pageTriage.ToolbarView = Backbone.View.extend( {
-					template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'toolbarView.html' } ),
+					template: mw.pageTriage.viewUtil.template( { view: 'toolbar', template: 'toolbarView.html' } ),
 					// token for setting user options
 					optionsToken: '',
 
-					initialize: function() {
+					initialize: function () {
 						// An array of tool instances to put on the bar, ordered top-to-bottom
-						tools = new Array;
+						tools = [];
 
 						tools.push( new mw.pageTriage.MinimizeView( { eventBus: eventBus, model: article, toolbar: this } ) );
 
@@ -63,16 +64,16 @@ $( function() {
 					/**
 					 * Check if the flyout is enabled
 					 */
-					isFlyoutEnabled: function( flyout ) {
+					isFlyoutEnabled: function ( flyout ) {
 						var modules = mw.config.get( 'wgPageTriageCurationModules' );
 
 						// this flyout is disabled for curation toolbar
-						if ( typeof modules[flyout] === 'undefined' ) {
+						if ( typeof modules[ flyout ] === 'undefined' ) {
 							return false;
 						}
 
 						// this flyout is disabled for current namespace
-						if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ), modules[flyout].namespace ) === -1 ) {
+						if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ), modules[ flyout ].namespace ) === -1 ) {
 							return false;
 						}
 
@@ -84,14 +85,14 @@ $( function() {
 						return true;
 					},
 
-					render: function() {
-						var _this = this;
+					render: function () {
+						var that = this;
 						// build the bar and insert into the page.
 
 						// insert the empty toolbar into the document.
-						$('body').append( this.template() );
+						$( 'body' ).append( this.template() );
 
-						_.each( tools, function( tool ) {
+						_.each( tools, function ( tool ) {
 							// append the individual tool template to the toolbar's big tool div part
 							// this is the icon and hidden div. (the actual tool content)
 							$( '#mwe-pt-toolbar-main' ).append( tool.place() );
@@ -106,19 +107,19 @@ $( function() {
 						} );
 
 						// make clicking on the minimized toolbar expand to normal size
-						$( '#mwe-pt-toolbar-vertical' ).click( function() {
-							_this.maximize( true );
+						$( '#mwe-pt-toolbar-vertical' ).click( function () {
+							that.maximize( true );
 						} );
 
 						// since transform only works in IE 9 and higher, use writing-mode
 						// to rotate the minimized toolbar content in older versions
-						if ( $.client.test( { 'msie': ['<', 9] }, null, true ) ) {
+						if ( $.client.test( { msie: [ '<', 9 ] }, null, true ) ) {
 							$( '#mwe-pt-toolbar-vertical' ).css( 'writing-mode', 'tb-rl' );
 						}
 
 						// make the close button do something
-						$( '.mwe-pt-toolbar-close-button').click( function() {
-							_this.hide( true );
+						$( '.mwe-pt-toolbar-close-button' ).click( function () {
+							that.hide( true );
 						} );
 
 						// lastUse expires, hide curation toolbar
@@ -135,6 +136,7 @@ $( function() {
 									$( '#mw-content-text .patrollink' ).hide();
 									break;
 								case 'maximized':
+									/* falls through */
 								default:
 									this.maximize();
 									$( '#mw-content-text .patrollink' ).hide();
@@ -143,7 +145,7 @@ $( function() {
 						}
 					},
 
-					hide: function( savePref ) {
+					hide: function ( savePref ) {
 						// hide everything
 						$( '#mwe-pt-toolbar' ).hide();
 						// reset the curation toolbar to original state
@@ -193,45 +195,49 @@ $( function() {
 						}
 					},
 
-					setToolbarPreference: function( state, lastUse ) {
+					setToolbarPreference: function ( state, lastUse ) {
+						var that, tokenRequest;
+
 						// if we have a token, go ahead and use it
 						if ( this.optionsToken ) {
 							this.finishSetToolbarPreference( state, lastUse );
 						// otherwise request an options token first
 						} else {
-							var _this = this;
-							var tokenRequest = {
-								'action': 'tokens',
-								'type' : 'options',
-								'format': 'json'
+							that = this;
+							tokenRequest = {
+								action: 'tokens',
+								type: 'options',
+								format: 'json'
 							};
 							$.ajax( {
 								type: 'get',
 								url: mw.util.wikiScript( 'api' ),
 								data: tokenRequest,
 								dataType: 'json',
-								success: function( data ) {
+								success: function ( data ) {
 									try {
-										_this.optionsToken = data.tokens.optionstoken;
+										that.optionsToken = data.tokens.optionstoken;
 									} catch ( e ) {
 										throw new Error( 'Could not get token (requires MediaWiki 1.20).' );
 									}
-									_this.finishSetToolbarPreference( state, lastUse );
+									that.finishSetToolbarPreference( state, lastUse );
 								}
 							} );
 						}
 					},
 
-					finishSetToolbarPreference: function( state, lastUse ) {
-						var change = 'userjs-curationtoolbar=' + state;
+					finishSetToolbarPreference: function ( state, lastUse ) {
+						var change, prefRequest;
+
+						change = 'userjs-curationtoolbar=' + state;
 						if ( typeof lastUse !== 'undefined' ) {
 							change += '|pagetriage-lastuse=' + lastUse;
 						}
-						var prefRequest = {
-							'action': 'options',
-							'change': change,
-							'token': this.optionsToken,
-							'format': 'json'
+						prefRequest = {
+							action: 'options',
+							change: change,
+							token: this.optionsToken,
+							format: 'json'
 						};
 						$.ajax( {
 							type: 'post',
@@ -242,12 +248,15 @@ $( function() {
 					},
 
 					insertLink: function () {
-						var _this = this, $link = $( '<li id="t-curationtoolbar"><a href="#"></a></li>' );
+						var now, mwFormat,
+							that = this,
+							$link = $( '<li id="t-curationtoolbar"><a href="#"></a></li>' );
+
 						$link.find( 'a' )
 							.text( mw.msg( 'pagetriage-toolbar-linktext' ) )
-							.click( function ( e ) {
+							.click( function () {
 								if ( $( '#mwe-pt-toolbar' ).is( ':hidden' ) ) {
-									var now = new Date();
+									now = new Date();
 									now = new Date(
 										now.getUTCFullYear(),
 										now.getUTCMonth(),
@@ -257,11 +266,11 @@ $( function() {
 										now.getUTCSeconds()
 									);
 
-									var mwFormat = now.toString( 'yyyyMMddHHmmss' );
+									mwFormat = now.toString( 'yyyyMMddHHmmss' );
 
 									$( '#mwe-pt-toolbar' ).show();
 									$( '#mw-content-text .patrollink' ).hide();
-									_this.setToolbarPreference( 'maximized', mwFormat );
+									that.setToolbarPreference( 'maximized', mwFormat );
 								}
 								this.blur();
 								return false;
@@ -272,7 +281,7 @@ $( function() {
 				} );
 
 				// create an instance of the toolbar view
-				var toolbar = new mw.pageTriage.ToolbarView( { eventBus: eventBus } );
+				toolbar = new mw.pageTriage.ToolbarView( { eventBus: eventBus } );
 				toolbar.render();
 				article.set( 'successfulModelLoading', 1 );
 			}

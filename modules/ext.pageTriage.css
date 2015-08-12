@@ -5,6 +5,7 @@
 .shadow {
 	-moz-box-shadow: 0 0 30px 5px #aaa;
 	-webkit-box-shadow: 0 0 30px 5px #aaa;
+	box-shadow: 0 0 30px 5px #aaa;
 }
 
 .mwe-pt-author-info {

@@ -1,35 +1,37 @@
 // view for sending WikiLove to the article contributors
 
-$( function() {
+$( function () {
 	mw.pageTriage.WikiLoveView = mw.pageTriage.ToolView.extend( {
 		id: 'mwe-pt-wikilove',
 		icon: 'icon_wikilove.png', // the default icon
 		title: mw.msg( 'wikilove' ),
 		tooltip: 'pagetriage-wikilove-tooltip',
-		template: mw.pageTriage.viewUtil.template( { 'view': 'toolbar', 'template': 'wikilove.html' } ),
+		template: mw.pageTriage.viewUtil.template( { view: 'toolbar', template: 'wikilove.html' } ),
 
-		bySortedValue: function( obj, callback, context ) {
-			var tuples = [];
-			for ( var key in obj ) {
-				tuples.push( [key, obj[key]] )
+		bySortedValue: function ( obj, callback, context ) {
+			var key, length,
+				tuples = [];
+			for ( key in obj ) {
+				tuples.push( [ key, obj[ key ] ] );
 			}
-			tuples.sort( function( a, b ) { return a[1] - b[1] } );
-			var length = tuples.length;
+			tuples.sort( function ( a, b ) { return a[ 1 ] - b[ 1 ]; } );
+
+			length = tuples.length;
 			while ( length-- ) {
-				callback.call( context, tuples[length][0], tuples[length][1] )
+				callback.call( context, tuples[ length ][ 0 ], tuples[ length ][ 1 ] );
 			}
 		},
 
-		render: function() {
-			var _this = this;
-			var contributorArray = [];
-			var contributorCounts = {};
-			var creatorContribCount = 1;
-			var userTitle, linkUrl, link;
-			var recipients = [];
+		render: function () {
+			var userTitle, linkUrl, link, creator, i, contributor, modules, x,
+				that = this,
+				contributorArray = [],
+				contributorCounts = {},
+				creatorContribCount = 1,
+				recipients = [];
 
 			// get the article's creator
-			var creator = this.model.get( 'user_name' );
+			creator = this.model.get( 'user_name' );
 
 			// get the last 20 editors of the article
 			this.model.revisions.each( function ( revision ) {
@@ -37,23 +39,23 @@ $( function() {
 			} );
 
 			// count how many times each editor edited the article
-			for( var i = 0; i < contributorArray.length; i++ ) {
-				var contributor = contributorArray[i];
-				contributorCounts[contributor] = contributorCounts[contributor] ? contributorCounts[contributor] + 1 : 1;
+			for ( i = 0; i < contributorArray.length; i++ ) {
+				contributor = contributorArray[ i ];
+				contributorCounts[ contributor ] = ( contributorCounts[ contributor ] || 0 ) + 1;
 			}
 
 			// construct the info for the article creator
-			link = mw.html.element( 'a', { 'href': this.model.get( 'creator_user_page_url' ) }, creator );
+			link = mw.html.element( 'a', { href: this.model.get( 'creator_user_page_url' ) }, creator );
 
 			if ( $.inArray( creator, contributorArray ) > -1 ) {
-				creatorContribCount = contributorCounts[creator];
+				creatorContribCount = contributorCounts[ creator ];
 			}
 
 			// create the WikiLove flyout content here.
 			this.$tel.html( this.template( this.model.toJSON() ) );
 
 			// set the Learn More link URL
-			var modules = mw.config.get( 'wgPageTriageCurationModules' );
+			modules = mw.config.get( 'wgPageTriageCurationModules' );
 			$( '#mwe-pt-wikilove .mwe-pt-flyout-help-link' ).attr( 'href', modules.wikiLove.helplink );
 
 			if ( mw.user.getName() !== creator ) {
@@ -66,15 +68,15 @@ $( function() {
 				);
 			}
 
-			var x = 0;
+			x = 0;
 			// sort contributors by their number of edits
-			this.bySortedValue( contributorCounts, function( name, count ) {
+			this.bySortedValue( contributorCounts, function ( name, count ) {
 				// include up to 9 additional editors (this corresponds to the limit in WikiLove)
 				if ( name !== creator && name !== mw.user.getName() && x < 9 ) {
 					try {
-						userTitle = new mw.Title( name, mw.config.get('wgNamespaceIds')['user'] );
+						userTitle = new mw.Title( name, mw.config.get( 'wgNamespaceIds' ).user );
 						linkUrl = userTitle.getUrl();
-						link = mw.html.element( 'a', { 'href': linkUrl }, name );
+						link = mw.html.element( 'a', { href: linkUrl }, name );
 					} catch ( e ) {
 						link = _.escape( name );
 					}
@@ -97,14 +99,14 @@ $( function() {
 
 			// initialize the button
 			$( '#mwe-pt-wikilove-button' )
-				.button( { icons: { secondary:'ui-icon-triangle-1-e' } } )
-				.click( function( e ) {
+				.button( { icons: { secondary: 'ui-icon-triangle-1-e' } } )
+				.click( function ( e ) {
 					e.preventDefault();
 					recipients = $( 'input:checkbox:checked.mwe-pt-recipient-checkbox' ).map( function () {
 						return this.value;
 					} ).get();
 					$.wikiLove.openDialog( recipients );
-					_this.hide();
+					that.hide();
 				} );
 
 		}

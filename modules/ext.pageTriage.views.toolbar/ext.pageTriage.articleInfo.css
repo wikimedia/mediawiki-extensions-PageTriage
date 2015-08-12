@@ -21,12 +21,6 @@
 	line-height: 1.2em;
 }
 
-.mwe-pt-info-creation-date {
-}
-
-.mwe-pt-info-problem {
-}
-
 .mwe-pt-info-problem-name {
 	color: red;
 }
@@ -38,9 +32,6 @@
 .mwe-pt-info-status-icon {
 	float: left;
 	padding: 3px 5px 7px 3px;
-}
-
-.mwe-pt-info-content {
 }
 
 .mwe-pt-info-history-date {

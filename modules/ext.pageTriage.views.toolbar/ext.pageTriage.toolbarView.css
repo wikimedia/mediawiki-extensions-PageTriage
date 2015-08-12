@@ -4,7 +4,7 @@
 	position: fixed;
 	top: 140px;
 	z-index: 50;
-	right: 0px;
+	right: 0;
 	padding: 3px;
 	padding-bottom: 5px;
 	background-color: #cacaca;
@@ -12,7 +12,7 @@
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	border: 1px solid #9F9F9F;
-	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 .skin-monobook #mwe-pt-toolbar {
 	font-size: 1.5em;
@@ -33,18 +33,11 @@
 	visibility: hidden;
 }
 
-#mwe-pt-toolbar-active {
-}
-
 #mwe-pt-toolbar-inactive {
 	width: 15px;
 	height: 90px;
 	cursor: pointer;
 	display: none;
-}
-
-
-#mwe-pt-toolbar-main {
 }
 
 .mwe-pt-toolbar-close {
@@ -64,7 +57,7 @@
 
 p#mwe-pt-toolbar-vertical {
 	color: #333;
-	border: 0px solid red;
+	border: 0 solid red;
 	-webkit-transform: rotate(90deg);
 	-moz-transform: rotate(90deg);
 	-o-transform: rotate(90deg);

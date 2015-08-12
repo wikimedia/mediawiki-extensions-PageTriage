@@ -1,6 +1,6 @@
 // Minimize the toolbar
 
-$( function() {
+$( function () {
 
 	mw.pageTriage.MinimizeView = mw.pageTriage.ToolView.extend( {
 		id: 'mwe-pt-minimize',
@@ -8,11 +8,11 @@ $( function() {
 		title: '',
 		tooltip: 'pagetriage-toolbar-minimize',
 
-		initialize: function( options ) {
+		initialize: function ( options ) {
 			this.eventBus = options.eventBus;
 			this.toolbar = options.toolbar;
 		},
-		click: function() {
+		click: function () {
 
 			// minimize the toolbar.
 			this.toolbar.minimize();

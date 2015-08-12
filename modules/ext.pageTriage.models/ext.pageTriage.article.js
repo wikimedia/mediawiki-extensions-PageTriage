@@ -1,7 +1,7 @@
 // Article represents the metadata for a single article.
 // ArticleList is a collection of articles for use in the list view
 //
-$( function() {
+$( function () {
 	if ( !mw.pageTriage ) {
 		// make sure this object exists, since this might be run first.
 		mw.pageTriage = {};
@@ -12,11 +12,11 @@ $( function() {
 			pageid: ''
 		},
 
-		initialize: function( options ) {
+		initialize: function ( options ) {
 			this.bind( 'change', this.formatMetadata, this );
 			this.pageId = options.pageId;
 
-			if( options.includeHistory ) {
+			if ( options.includeHistory ) {
 				// fetch the history too?
 				// don't do this when fetching via collection, since it'll generate one ajax request per article.
 				// don't execute on every model change, just when loading a different page
@@ -25,29 +25,39 @@ $( function() {
 		},
 
 		formatMetadata: function ( article ) {
-			var creation_date_parsed = Date.parseExact( article.get( 'creation_date' ), 'yyyyMMddHHmmss' );
-			article.set('creation_date_pretty', creation_date_parsed.toString( mw.msg( 'pagetriage-creation-dateformat' ) ) );
+			// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
+			var bylineMessage, user_creation_date_parsed, byline, titleUrl,
+				creation_date_parsed = Date.parseExact( article.get( 'creation_date' ), 'yyyyMMddHHmmss' );
+
+			article.set(
+				'creation_date_pretty',
+				creation_date_parsed.toString( mw.msg( 'pagetriage-creation-dateformat' ) )
+			);
 
 			// sometimes user info isn't set, so check that first.
-			if( article.get( 'user_creation_date' ) ) {
-				var user_creation_date_parsed = Date.parseExact( article.get( 'user_creation_date' ), 'yyyyMMddHHmmss' );
-				article.set( 'user_creation_date_pretty', user_creation_date_parsed.toString( mw.msg( 'pagetriage-info-timestamp-date-format' ) ) );
+			if ( article.get( 'user_creation_date' ) ) {
+				user_creation_date_parsed = Date.parseExact(
+					article.get( 'user_creation_date' ),
+					'yyyyMMddHHmmss'
+				);
+				article.set(
+					'user_creation_date_pretty', user_creation_date_parsed.toString( mw.msg( 'pagetriage-info-timestamp-date-format' ) ) );
 			} else {
-				article.set( 'user_creation_date_pretty', '');
+				article.set( 'user_creation_date_pretty', '' );
 			}
 
 			// TODO: What if userName doesn't exist?
-			if( article.get( 'user_name' ) ) {
+			if ( article.get( 'user_name' ) ) {
 				// decide which byline message to use depending on if the editor is new or not
 				// but don't show new editor for ip users
 				if ( article.get( 'user_id' ) > '0' && article.get( 'user_autoconfirmed' ) < '1' ) {
-					var bylineMessage = 'pagetriage-byline-new-editor';
+					bylineMessage = 'pagetriage-byline-new-editor';
 				} else {
-					var bylineMessage = 'pagetriage-byline';
+					bylineMessage = 'pagetriage-byline';
 				}
 
 				// put it all together in the byline
-				var byline = mw.msg(
+				byline = mw.msg(
 					bylineMessage,
 					this.buildLinkTag(
 						article.get( 'creator_user_page_url' ),
@@ -84,22 +94,21 @@ $( function() {
 				);
 				article.set( 'user_contribs_title', article.get( 'creator_contribution_page' ) );
 			}
-			
+
 			// set the article status
 			// delete status
-			if ( article.get( 'afd_status' ) == "1" || article.get( 'blp_prod_status' ) == "1" ||
-				article.get( 'csd_status' ) == "1" || article.get( 'prod_status' ) == "1" )
-			{
+			if ( article.get( 'afd_status' ) === '1' || article.get( 'blp_prod_status' ) === '1' ||
+				article.get( 'csd_status' ) === '1' || article.get( 'prod_status' ) === '1' ) {
 				article.set( 'page_status', mw.msg( 'pagetriage-page-status-delete' ) );
 			// unreviewed status
-			} else if ( article.get( 'patrol_status' ) == "0" ) {
+			} else if ( article.get( 'patrol_status' ) === '0' ) {
 				article.set( 'page_status', mw.msg( 'pagetriage-page-status-unreviewed' ) );
 			// auto-reviewed status
-			} else if ( article.get( 'patrol_status' ) == "3" ) {
+			} else if ( article.get( 'patrol_status' ) === '3' ) {
 				article.set( 'page_status', mw.msg( 'pagetriage-page-status-autoreviewed' ) );
 			// reviewed status
 			} else {
-				if ( article.get( 'ptrp_last_reviewed_by' ) != 0 && article.get( 'reviewer' ) ) {
+				if ( article.get( 'ptrp_last_reviewed_by' ) !== 0 && article.get( 'reviewer' ) ) {
 					article.set(
 						'page_status',
 						mw.msg(
@@ -132,23 +141,25 @@ $( function() {
 					article.set( 'page_status', mw.msg( 'pagetriage-page-status-reviewed-anonymous' ) );
 				}
 			}
-				
+
 			article.set( 'title_url_format', mw.util.wikiUrlencode( article.get( 'title' ) ) );
 
-			var titleUrl = mw.util.getUrl( article.get( 'title' ) );
+			titleUrl = mw.util.getUrl( article.get( 'title' ) );
 			if ( Number( article.get( 'is_redirect' ) ) === 1 ) {
 				titleUrl = this.buildLink( titleUrl, 'redirect=no' );
 			}
 			article.set( 'title_url', titleUrl );
+			// jscs: enable requireCamelCaseOrUpperCaseIdentifiers
 		},
 
 		tagWarningNotice: function () {
-			var dateStr = this.get( 'creation_date_utc' );
+			var now, begin, diff,
+				dateStr = this.get( 'creation_date_utc' );
 			if ( !dateStr ) {
 				return '';
 			}
 
-			var now = new Date();
+			now = new Date();
 			now = new Date(
 				now.getUTCFullYear(),
 				now.getUTCMonth(),
@@ -158,8 +169,8 @@ $( function() {
 				now.getUTCSeconds()
 			);
 
-			var begin = Date.parseExact( dateStr, 'yyyyMMddHHmmss' );
-			var diff = Math.round( ( now.getTime() - begin.getTime() ) / ( 1000 * 60 ) );
+			begin = Date.parseExact( dateStr, 'yyyyMMddHHmmss' );
+			diff = Math.round( ( now.getTime() - begin.getTime() ) / ( 1000 * 60 ) );
 
 			// only generate a warning if the page is less than 30 minutes old
 			if ( diff < 30 ) {
@@ -181,8 +192,8 @@ $( function() {
 			return mw.html.element(
 				'a',
 				{
-					'href': url,
-					'class': style
+					href: url,
+					class: style
 				},
 				text
 			);
@@ -196,8 +207,9 @@ $( function() {
 		},
 
 		buildLink: function ( url, param ) {
+			var mark;
 			if ( param ) {
-				var mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
+				mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
 				url += mark + param;
 			}
 			return url;
@@ -205,28 +217,30 @@ $( function() {
 
 		// url and parse are used here for retrieving a single article in the curation toolbar.
 		// articles are retrived for list view using the methods in the Articles collection.
-		url: function() {
-			var d = new Date();
-			var params = $.param( {
-				action: 'pagetriagelist',
-				format: 'json',
-				timestamp: d.getTime()
-			} );
+		url: function () {
+			var d = new Date(),
+				params = $.param( {
+					action: 'pagetriagelist',
+					format: 'json',
+					timestamp: d.getTime()
+				} );
+			// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
 			return mw.util.wikiScript( 'api' ) + '?' + params + '&' + $.param( { page_id: this.pageId } );
+			// jscs: enable requireCamelCaseOrUpperCaseIdentifiers
 		},
-		
-		parse: function( response ) {
+
+		parse: function ( response ) {
 			if ( response.pagetriagelist !== undefined && response.pagetriagelist.pages !== undefined ) {
 				// data came directly from the api
 				// extract the useful bits of json.
-				return response.pagetriagelist.pages[0];
+				return response.pagetriagelist.pages[ 0 ];
 			} else {
 				// already parsed by the collection's parse function.
 				return response;
 			}
 		},
-		
-		addHistory: function() {
+
+		addHistory: function () {
 			this.revisions = new mw.pageTriage.RevisionList( { eventBus: this.eventBus, pageId: this.pageId } );
 			this.revisions.fetch();
 		}
@@ -255,9 +269,9 @@ $( function() {
 			*/
 		},
 
-		initialize: function( options ) {
+		initialize: function ( options ) {
 			this.eventBus = options.eventBus;
-			this.eventBus.bind( "filterSet", this.setParams );
+			this.eventBus.bind( 'filterSet', this.setParams );
 
 			// pull any saved filter settings from the user's option
 			if ( !mw.user.isAnon() && mw.user.options.get( 'userjs-NewPagesFeedFilterOptions' ) ) {
@@ -265,17 +279,17 @@ $( function() {
 			}
 		},
 
-		url: function() {
-			var d = new Date();
-			var params = $.param( {
-				action: 'pagetriagelist',
-				format: 'json',
-				timestamp: d.getTime()
-			} );
+		url: function () {
+			var d = new Date(),
+				params = $.param( {
+					action: 'pagetriagelist',
+					format: 'json',
+					timestamp: d.getTime()
+				} );
 			return mw.util.wikiScript( 'api' ) + '?' + params + '&' + $.param( this.apiParams );
 		},
 
-		parse: function( response ) {
+		parse: function ( response ) {
 			// See if the fetch returned an extra page or not. This lets us know if there are more
 			// pages to load in a subsequent fetch.
 			if ( response.pagetriagelist.pages && response.pagetriagelist.pages.length > this.apiParams.limit ) {
@@ -290,22 +304,23 @@ $( function() {
 			return response.pagetriagelist.pages;
 		},
 
-		setParams: function( apiParams ) {
+		setParams: function ( apiParams ) {
 			this.apiParams = apiParams;
 		},
 
-		setParam: function( paramName, paramValue ) {
-			this.apiParams[paramName] = paramValue;
+		setParam: function ( paramName, paramValue ) {
+			this.apiParams[ paramName ] = paramValue;
 		},
 
-		encodeFilterParams: function() {
-			var encodedString = '';
-			var paramArray = new Array;
-			var _this = this;
-			$.each( this.apiParams, function( key, val ) {
-				var str = '"' + key + '":';
+		encodeFilterParams: function () {
+			var str,
+				encodedString = '',
+				paramArray = [];
+
+			$.each( this.apiParams, function ( key, val ) {
+				str = '"' + key + '":';
 				if ( typeof val === 'string' ) {
-					val = '"' + val.replace(/[\"]/g, '\\"') + '"';
+					val = '"' + val.replace( /[\"]/g, '\\"' ) + '"';
 				}
 				str += val;
 				paramArray.push( str );
@@ -315,41 +330,42 @@ $( function() {
 		},
 
 		// Save the filter parameters to a user's option
-		saveFilterParams: function() {
-			var _this = this;
+		saveFilterParams: function () {
+			var tokenRequest,
+				that = this;
 			if ( !mw.user.isAnon() ) {
 				if ( this.optionsToken ) {
 					this.apiSetFilterParams();
 				} else {
-					var tokenRequest = {
-						'action': 'tokens',
-						'type' : 'options',
-						'format': 'json'
+					tokenRequest = {
+						action: 'tokens',
+						type: 'options',
+						format: 'json'
 					};
 					$.ajax( {
 						type: 'get',
 						url: mw.util.wikiScript( 'api' ),
 						data: tokenRequest,
 						dataType: 'json',
-						success: function( data ) {
+						success: function ( data ) {
 							try {
-								_this.optionsToken = data.tokens.optionstoken;
+								that.optionsToken = data.tokens.optionstoken;
 							} catch ( e ) {
 								throw new Error( 'Could not get token (requires MediaWiki 1.20).' );
 							}
-							_this.apiSetFilterParams();
+							that.apiSetFilterParams();
 						}
 					} );
 				}
 			}
 		},
 
-		apiSetFilterParams: function() {
+		apiSetFilterParams: function () {
 			var prefRequest = {
-				'action': 'options',
-				'change': 'userjs-NewPagesFeedFilterOptions=' + this.encodeFilterParams(),
-				'token': this.optionsToken,
-				'format': 'json'
+				action: 'options',
+				change: 'userjs-NewPagesFeedFilterOptions=' + this.encodeFilterParams(),
+				token: this.optionsToken,
+				format: 'json'
 			};
 			$.ajax( {
 				type: 'post',
@@ -359,8 +375,8 @@ $( function() {
 			} );
 		},
 
-		getParam: function( key ) {
-			return this.apiParams[key];
+		getParam: function ( key ) {
+			return this.apiParams[ key ];
 		}
 
 	} );

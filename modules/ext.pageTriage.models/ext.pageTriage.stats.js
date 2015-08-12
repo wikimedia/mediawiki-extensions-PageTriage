@@ -1,5 +1,5 @@
 // Stats represents the dashboard data for pagetriage
-$( function() {
+$( function () {
 	if ( !mw.pageTriage ) {
 		mw.pageTriage = {};
 	}
@@ -13,23 +13,27 @@ $( function() {
 			namespace: ''
 		},
 
-		initialize: function() {
+		initialize: function () {
 			this.bind( 'change', this.formatMetadata, this );
 		},
 
 		formatMetadata: function ( stats ) {
-			stats.set( 'ptrUnreviewedCount', stats.get( 'unreviewedarticle' )['count'] );
-			stats.set( 'ptrOldest', this.formatDaysFromNow( stats.get( 'unreviewedarticle' )['oldest'] ) );
-			stats.set( 'ptrReviewedCount', stats.get( 'reviewedarticle' )['reviewed_count'] );
+			stats.set( 'ptrUnreviewedCount', stats.get( 'unreviewedarticle' ).count );
+			stats.set( 'ptrOldest', this.formatDaysFromNow( stats.get( 'unreviewedarticle' ).oldest ) );
+			// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
+			stats.set( 'ptrReviewedCount', stats.get( 'reviewedarticle' ).reviewed_count );
+			// jscs: enable requireCamelCaseOrUpperCaseIdentifiers
 			stats.set( 'ptrFilterCount', stats.get( 'filteredarticle' ) );
 		},
 
 		formatDaysFromNow: function ( dateStr ) {
+			var now, begin, diff;
+
 			if ( !dateStr ) {
 				return '';
 			}
 
-			var now = new Date();
+			now = new Date();
 			now = new Date(
 				now.getUTCFullYear(),
 				now.getUTCMonth(),
@@ -39,9 +43,9 @@ $( function() {
 				now.getUTCSeconds()
 			);
 
-			var begin = Date.parseExact( dateStr, 'yyyyMMddHHmmss' );
+			begin = Date.parseExact( dateStr, 'yyyyMMddHHmmss' );
 
-			var diff = Math.round( ( now.getTime() - begin.getTime() ) / ( 1000 * 60 * 60 * 24 ) );
+			diff = Math.round( ( now.getTime() - begin.getTime() ) / ( 1000 * 60 * 60 * 24 ) );
 			if ( diff ) {
 				return mw.msg( 'days', diff );
 			} else {
@@ -49,19 +53,19 @@ $( function() {
 			}
 		},
 
-		setParam: function( paramName, paramValue ) {
-			this.apiParams[paramName] = paramValue;
+		setParam: function ( paramName, paramValue ) {
+			this.apiParams[ paramName ] = paramValue;
 		},
 
-		url: function() {
+		url: function () {
 			var url = mw.util.wikiScript( 'api' ) + '?action=pagetriagestats&format=json';
-			if ( this.apiParams['namespace'] !== '' ) {
+			if ( this.apiParams.namespace !== '' ) {
 				url += '&'  + $.param( this.apiParams );
 			}
 			return url;
 		},
 
-		parse: function( response ) {
+		parse: function ( response ) {
 			// extract the useful bits of json.
 			return response.pagetriagestats.stats;
 		}

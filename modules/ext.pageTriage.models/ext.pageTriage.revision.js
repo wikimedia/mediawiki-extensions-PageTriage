@@ -1,7 +1,7 @@
 // Revision represents a single revision (aka historyItem)
 // RevisionList is a collection of revisions for a single page
 //
-$( function() {
+$( function () {
 	if ( !mw.pageTriage ) {
 		// make sure this object exists, since this might be run first.
 		mw.pageTriage = {};
@@ -18,30 +18,30 @@ $( function() {
 			rvlimit: 25 // get data for last 25 revisions
 		},
 
-		initialize: function( options ) {
+		initialize: function ( options ) {
 			this.eventBus = options.eventBus;
 			this.pageId = options.pageId;
 			this.setParam( 'pageids', options.pageId ); // pass this to the api
 		},
 
-		url: function() {
+		url: function () {
 			return mw.util.wikiScript( 'api' ) + '?action=query&prop=revisions&format=json&' + $.param( this.apiParams );
 		},
 
-		parse: function( response ) {
+		parse: function ( response ) {
 			// extract the useful bits of json.
 			return response.query.pages[this.pageId].revisions;
 		},
 
-		setParams: function( apiParams ) {
+		setParams: function ( apiParams ) {
 			this.apiParams = apiParams;
 		},
 
-		setParam: function( paramName, paramValue ) {
+		setParam: function ( paramName, paramValue ) {
 			this.apiParams[paramName] = paramValue;
 		},
 
-		getParam: function( key ) {
+		getParam: function ( key ) {
 			return this.apiParams[key];
 		}
 

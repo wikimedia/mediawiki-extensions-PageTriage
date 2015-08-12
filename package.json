@@ -1,0 +1,20 @@
+{
+  "name": "PageTriage",
+  "version": "0.2.1",
+  "private": true,
+  "description": "Build tools for PageTriage.",
+  "scripts": {
+    "test": "grunt test",
+    "doc": "jsduck"
+  },
+  "devDependencies": {
+    "grunt": "0.4.5",
+    "grunt-cli": "0.1.13",
+    "grunt-contrib-csslint": "0.4.0",
+    "grunt-contrib-jshint": "0.11.2",
+    "grunt-contrib-watch": "0.6.1",
+    "grunt-banana-checker": "0.2.2",
+    "grunt-jscs": "1.8.0",
+    "grunt-jsonlint": "1.0.4"
+  }
+}

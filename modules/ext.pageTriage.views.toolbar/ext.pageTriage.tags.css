@@ -9,7 +9,7 @@
 }
 
 #mwe-pt-categories {
-	padding: 7px 0px 0px 7px;
+	padding: 7px 0 0 7px;
 	width: 123px;
 }
 
@@ -52,7 +52,7 @@
 	position: absolute;
 	z-index: 50;
 	top: 6px;
-	right: 0px;
+	right: 0;
 	display: none;
 }
 

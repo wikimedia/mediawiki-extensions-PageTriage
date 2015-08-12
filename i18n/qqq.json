@@ -50,6 +50,7 @@
 	"pagetriage-author-blocked": "String indicating that the author was blocked when the page was last edited.\n{{Identical|Blocked}}",
 	"pagetriage-author-bot": "String indicating that the author is a bot.\n{{Identical|Bot}}",
 	"pagetriage-creation-dateformat": "{{Optional}}\n{{DataFormatSpecifiers/en|the page creation date.}}",
+	"pagetriage-special-contributions": "{{Optional}}\nThe name of the user contributions special page in this language.",
 	"pagetriage-user-creation-dateformat": "{{Optional}}\n{{DataFormatSpecifiers/en|the author's account creation date}}",
 	"pagetriage-showing": "The heading of a list of types of edits that are currently shown. An adjective that describes edits.\n\n[[File:PageTriage-ListView-Whole.png|thumb|200px|Screenshot]]\n{{Identical|Showing}}",
 	"pagetriage-filter-list-prompt": "Prompt to choose filters for the list view",
