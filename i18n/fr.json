@@ -16,7 +16,8 @@
 			"Wyz",
 			"Jean-Frédéric",
 			"0x010C",
-			"Weft"
+			"Weft",
+			"Wladek92"
 		]
 	},
 	"pagetriage": "Tri des pages",
@@ -359,6 +360,11 @@
 	"echo-pref-subscription-page-review": "Relire une page que j'ai créée",
 	"echo-pref-tooltip-page-review": "Me prévenir quand quelqu’un relit une page que j’ai créée.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Relecture|Relectures}} de page",
+	"apihelp-pagetriageaction-description": "Marquer un article comme relu ou non relu.",
+	"apihelp-pagetriageaction-param-pageid": "L'article qui doit être marqué comme relu ou non relu.",
+	"apihelp-pagetriageaction-param-reviewed": "Si l'article a été relu.",
+	"apihelp-pagetriageaction-param-note": "Note personnelle des relecteurs et concernant les créateurs de pages.",
+	"apihelp-pagetriageaction-param-skipnotif": "S'il faut ignorer la notification.",
 	"apihelp-pagetriagelist-param-limit": "Le nombre maximal de résultats à renvoyer.",
 	"apihelp-pagetriagelist-param-offset": "Horodatage auquel démarrer."
 }
