@@ -365,6 +365,8 @@
 	"apihelp-pagetriageaction-param-reviewed": "Si l'article a été relu.",
 	"apihelp-pagetriageaction-param-note": "Note personnelle des relecteurs et concernant les créateurs de pages.",
 	"apihelp-pagetriageaction-param-skipnotif": "S'il faut ignorer la notification.",
+	"apihelp-pagetriagelist-param-showredirs": "S'il faut inclure les redirections.",
+	"apihelp-pagetriagelist-param-showunreviewed": "S'il faut inclure les éléments nos revus.",
 	"apihelp-pagetriagelist-param-limit": "Le nombre maximal de résultats à renvoyer.",
 	"apihelp-pagetriagelist-param-offset": "Horodatage auquel démarrer."
 }
