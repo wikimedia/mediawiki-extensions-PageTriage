@@ -174,7 +174,7 @@
 	"pagetriage-wikilove-page-creator": "Sayfayı Açan",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|değişiklik|değişiklik}}",
 	"pagetriage-wikilove-tooltip": "Yazar(lar)a teşekkür iletisi gönder",
-	"pagetriage-next-tooltip": "Sıradaki bir sonraki sayfaya git",
+	"pagetriage-next-tooltip": "Kuyruk listesindeki bir sonraki sayfaya git",
 	"pagetriage-del-title": "Silinmek üzere işaretle",
 	"pagetriage-del-tooltip": "Bu sayfayı silinmesi için işaretle",
 	"pagetriage-tagging-error": "Sayfaya etiketleri uygulamak başarısız oldu.",
