@@ -20,7 +20,7 @@ $( function() {
 			this.model.set(
 				'history_link',
 				this.model.buildLink(
-					mw.config.get( 'wgArticlePath' ).replace( '$1', mw.config.get( 'wgPageName' ) ),
+					mw.util.getUrl( mw.config.get( 'wgPageName' ) ),
 					'action=history'
 				)
 			);
