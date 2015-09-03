@@ -7,10 +7,10 @@
 
 	<div id="mwe-pt-toolbar-inactive">
 		<div class="mwe-pt-toolbar-close">
-			<div class="mwe-pt-toolbar-close-button" title="<%= mw.msg( 'pagetriage-toolbar-close' ) %>"></div>
+			<div class="mwe-pt-toolbar-close-button" title="<%- mw.msg( 'pagetriage-toolbar-close' ) %>"></div>
 		</div>
 		<p id="mwe-pt-toolbar-vertical">
-			<%= mw.msg( 'pagetriage-toolbar-collapsed' ) %>
+			<%- mw.msg( 'pagetriage-toolbar-collapsed' ) %>
 		</p>
 	</div>
 </div>

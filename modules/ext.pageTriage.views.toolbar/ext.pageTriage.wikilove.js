@@ -63,8 +63,8 @@ $( function () {
 				$( '#mwe-pt-article-contributor-list' ).append(
 					'<input type="checkbox" class="mwe-pt-recipient-checkbox" value="' + _.escape( creator ) + '"/>' +
 					link + ' <span class="mwe-pt-info-text">– ' +
-					mw.msg( 'pagetriage-wikilove-edit-count', creatorContribCount ) +
-					mw.msg( 'comma-separator' ) + mw.msg( 'pagetriage-wikilove-page-creator' ) + '</span><br/>'
+					mw.message( 'pagetriage-wikilove-edit-count', creatorContribCount ).escaped() +
+					mw.message( 'comma-separator' ).escaped() + mw.message( 'pagetriage-wikilove-page-creator' ).escaped() + '</span><br/>'
 				);
 			}
 
@@ -84,7 +84,7 @@ $( function () {
 					$( '#mwe-pt-article-contributor-list' ).append(
 						'<input type="checkbox" class="mwe-pt-recipient-checkbox" value="' + _.escape( name ) + '"/>' +
 						link + ' <span class="mwe-pt-info-text">– ' +
-						mw.msg( 'pagetriage-wikilove-edit-count', count ) +
+						mw.message( 'pagetriage-wikilove-edit-count', count ).escaped() +
 						'</span><br/>'
 					);
 					x++;
@@ -94,7 +94,7 @@ $( function () {
 			// If there are no possible recipients, display an error message
 			if ( $( '#mwe-pt-article-contributor-list' ).text() === '' ) {
 				$( '#mwe-pt-article-contributor-list' ).css( 'font-style', 'italic' );
-				$( '#mwe-pt-article-contributor-list' ).append( mw.msg( 'pagetriage-wikilove-no-recipients' ) );
+				$( '#mwe-pt-article-contributor-list' ).append( mw.message( 'pagetriage-wikilove-no-recipients' ).escaped() );
 			}
 
 			// initialize the button

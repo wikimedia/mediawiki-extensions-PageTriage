@@ -96,9 +96,9 @@ $( function () {
 			// pagetriage-info-problem-no-categories-desc, pagetriage-info-problem-orphan-desc,
 			// pagetriage-info-problem-no-references-desc
 			return '<li class="mwe-pt-info-problem"><span class="mwe-pt-info-problem-name">' +
-				mw.msg( 'pagetriage-info-problem-' + problem ) +
+				mw.message( 'pagetriage-info-problem-' + problem ).escaped() +
 				'</span> - <span class="mwe-pt-info-problem-desc">' +
-				mw.msg( 'pagetriage-info-problem-' + problem + '-desc' ) +
+				mw.message( 'pagetriage-info-problem-' + problem + '-desc' ).escaped() +
 				'</span></li>';
 		},
 

@@ -1,11 +1,11 @@
 <span class="mwe-pt-info-history-date">
 <% if ( new_date ) { %>
-	<%= timestamp_date %>
+	<%- timestamp_date %>
 <% } %>
 </span>
 <li class="mwe-pt-info-history-entry">
-	<a href="<%= revision_url %>"><%= timestamp_time %></a> &#xb7;
-	<a href="<%= user_title_url %>"><%= mw.html.escape( user ) %></a>
+	<a href="<%- revision_url %>"><%- timestamp_time %></a> &#xb7;
+	<a href="<%- user_title_url %>"><%- user %></a>
 	<% if ( parsedcomment ) { %>
 		&#xb7; <%= parsedcomment %>
 	<% } %>

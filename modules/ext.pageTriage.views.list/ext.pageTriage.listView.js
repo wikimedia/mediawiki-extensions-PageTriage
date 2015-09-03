@@ -48,7 +48,7 @@ $( function () {
 
 			// Add a warning if we're using an unsupported browser
 			if ( $.client.test( blacklist, null, true ) ) {
-				$( '#mwe-pt-list-warnings' ).append( '<div>' + mw.msg( 'pagetriage-warning-browser' ) + '</div>' );
+				$( '#mwe-pt-list-warnings' ).append( $( '<div>' ).text( mw.msg( 'pagetriage-warning-browser' ) ) );
 			}
 			// Display whatever warnings we have
 			$( '#mwe-pt-list-warnings' ).show();
@@ -226,7 +226,7 @@ $( function () {
 				}
 			} else {
 				// show an error message
-				$( '#mwe-pt-list-errors' ).html( mw.msg( 'pagetriage-no-pages' ) );
+				$( '#mwe-pt-list-errors' ).text( mw.msg( 'pagetriage-no-pages' ) );
 				$( '#mwe-pt-list-errors' ).show();
 			}
 

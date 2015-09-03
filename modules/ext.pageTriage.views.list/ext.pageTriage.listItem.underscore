@@ -6,46 +6,46 @@
 <% } %>
 	<div class="mwe-pt-status-icon">
 		<% if ( is_draft ) { %>
-			<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_not_reviewed.png' %>" width="21" height="21" />
+			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_not_reviewed.png' %>" width="21" height="21" />
 		<% } else if ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) { %>
-			<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_marked_for_deletion.png' %>" width="21" height="21" />
+			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_marked_for_deletion.png' %>" width="21" height="21" />
 		<% } else if ( patrol_status != "0" ) { %>
-			<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_reviewed.png' %>" width="21" height="21" />
+			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_reviewed.png' %>" width="21" height="21" />
 		<% } else { %>
-			<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_not_reviewed.png' %>" width="21" height="21" />
+			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_not_reviewed.png' %>" width="21" height="21" />
 		<% } %>
 	</div>
 	<div class="mwe-pt-info-pane">
 		<div class="mwe-pt-info-row">
 			<div class="mwe-pt-article">
-				<span class="mwe-pt-page-title"><a href="<%- title_url %>" target="_blank"><%= mw.html.escape( title ) %></a></span>
+				<span class="mwe-pt-page-title"><a href="<%- title_url %>" target="_blank"><%- title %></a></span>
 				<span class="mwe-pt-histlink">
-					(<a href="<%= mw.config.get('wgScriptPath') + '/index.php?title=' + title_url_format + '&action=history' %>"><%= mw.msg( "pagetriage-hist" ) %></a>)
+					(<a href="<%- mw.config.get('wgScriptPath') + '/index.php?title=' + title_url_format + '&action=history' %>"><%- mw.msg( "pagetriage-hist" ) %></a>)
 				</span>
 				<span class="mwe-pt-metadata">
 					&#xb7;
-					<%= mw.msg( "pagetriage-bytes", page_len ) %>
+					<%- mw.msg( "pagetriage-bytes", page_len ) %>
 					&#xb7;
-					<%= mw.msg( "pagetriage-edits", rev_count ) %>
+					<%- mw.msg( "pagetriage-edits", rev_count ) %>
 					<% if ( typeof is_draft !== "undefined" && is_draft === false ) { %>
 						<% if ( category_count == "0" ) { %>
 							<% if ( is_redirect == "0" ) { %>
-								&#xb7; <span class="mwe-pt-metadata-warning"><%= mw.msg( "pagetriage-no-categories" ) %></span>
+								&#xb7; <span class="mwe-pt-metadata-warning"><%- mw.msg( "pagetriage-no-categories" ) %></span>
 							<% } %>
 						<% } else { %>
-							&#xb7; <%= mw.msg( "pagetriage-categories", category_count ) %>
+							&#xb7; <%- mw.msg( "pagetriage-categories", category_count ) %>
 						<% } %>
 						<% if ( linkcount == "0" && is_redirect == "0" ) { %>
-							&#xb7; <span class="mwe-pt-metadata-warning"><%= mw.msg("pagetriage-orphan") %></span>
+							&#xb7; <span class="mwe-pt-metadata-warning"><%- mw.msg("pagetriage-orphan") %></span>
 						<% } %>
 					<% } %>
 					<% if ( typeof reference !== "undefined" && reference == "0" && is_redirect == "0" ) { %>
-						&#xb7; <span class="mwe-pt-metadata-warning"><%= mw.msg( "pagetriage-no-reference" ) %></span>
+						&#xb7; <span class="mwe-pt-metadata-warning"><%- mw.msg( "pagetriage-no-reference" ) %></span>
 					<% } %>
 				</span>
 			</div>
 			<span class="mwe-pt-creation-date">
-				<%= creation_date_pretty %>
+				<%- creation_date_pretty %>
 			</span>
 		</div>
 		<div class="mwe-pt-info-row">
@@ -55,57 +55,57 @@
 				<!-- user_id is undefined or '0' for IP users -->
 				<% if ( typeof ( user_id ) != 'undefined' && Number( user_id ) !== 0 ) { %>
 					&#xb7;
-					<%= mw.msg( 'pagetriage-editcount', user_editcount, user_creation_date_pretty ) %>
+					<%- mw.msg( 'pagetriage-editcount', user_editcount, user_creation_date_pretty ) %>
 					<% if ( user_bot == "1" ) { %>
 						&#xb7;
-						<%= mw.msg( 'pagetriage-author-bot' ) %>
+						<%- mw.msg( 'pagetriage-author-bot' ) %>
 					<% } %>
 				<% } %>
 				<% if ( user_block_status == "1" ) { %>
 					&#xb7;
 					<span class="mwe-pt-metadata-warning">
-					<%= mw.msg( 'pagetriage-author-blocked' ) %>
+					<%- mw.msg( 'pagetriage-author-blocked' ) %>
 					</span>
 				<% } %>
 			<% } else { %>
-				<%= mw.msg('pagetriage-no-author') %>
+				<%- mw.msg('pagetriage-no-author') %>
 			<% } %>
 			</div>
 			<div class="mwe-pt-updated-date">
 				<% if ( last_afc_action_date_label ) { %>
-				<span><%= last_afc_action_date_label %></span>
-				<span><%= reviewed_updated_pretty %></span>
+				<span><%- last_afc_action_date_label %></span>
+				<span><%- reviewed_updated_pretty %></span>
 				<% } %>
 			</div>
 		</div>
 		<div class="mwe-pt-info-row">
 			<div class="mwe-pt-snippet">
-				<%= mw.html.escape( snippet ) %>
+				<%- snippet %>
 			</div>
 			<div class="mwe-pt-review">
-				<a class="mwe-pt-list-triage-button ui-button-blue" style="display:none;" href="<%- title_url %>" target="_blank" title='<%= reviewRightHelpText %>'></a>
+				<a class="mwe-pt-list-triage-button ui-button-blue" style="display:none;" href="<%- title_url %>" target="_blank" title='<%- reviewRightHelpText %>'></a>
 			</div>
 		</div>
 		<% if ( mw.config.get( 'wgShowOresFilters' ) ) { %>
 		<div class="mwe-pt-info-row">
 			<div class="mwe-pt-predicted-class">
 				<span class="mwe-pt-article-ores-predicted-class-label">
-					<%= mw.msg( 'pagetriage-filter-predicted-class-heading' ) %>
+					<%- mw.msg( 'pagetriage-filter-predicted-class-heading' ) %>
 				</span>
 				<span class="mwe-pt-article-ores-predicted-class-value">
-					<%= ores_articlequality %>
+					<%- ores_articlequality %>
 				</span>
 			</div>
 			<div class="mwe-pt-potential-issues">
-				<span><%= mw.msg( 'pagetriage-filter-predicted-issues-heading' ) %></span>
+				<span><%- mw.msg( 'pagetriage-filter-predicted-issues-heading' ) %></span>
 				<% if ( !ores_draftquality && !( copyvio && mw.config.get( 'wgShowCopyvio' ) ) ) { %>
 				<span>
-					<%= mw.msg( 'pagetriage-filter-stat-predicted-issues-none' ) %>
+					<%- mw.msg( 'pagetriage-filter-stat-predicted-issues-none' ) %>
 				</span>
 				<% } %>
 				<% if ( ores_draftquality ) { %>
 				<span class="mwe-pt-issue">
-					<%= ores_draftquality %>
+					<%- ores_draftquality %>
 				</span>
 				<% } %>
 				<% if ( copyvio && mw.config.get( 'wgShowCopyvio' ) ) { %>
@@ -114,7 +114,7 @@
 				<% } %>
 				<span class="mw-parser-output mwe-pt-issue">
 					<a href="<%- copyvio_link_url %>" target="_blank" class="external">
-						<%= mw.msg( 'pagetriage-filter-stat-predicted-issues-copyvio' ) %>
+						<%- mw.msg( 'pagetriage-filter-stat-predicted-issues-copyvio' ) %>
 					</a>
 				</span>
 				<% } %>

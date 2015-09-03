@@ -5,8 +5,8 @@
 	<%
 	for ( key in tags) {
 	%>
-		<div id="mwe-pt-category-<%= key %>" class="mwe-pt-delete-category">
-			<a href="#" cat="<%= key %>"><%= mw.html.escape( tags[key].label ) %></a>
+		<div id="mwe-pt-category-<%- key %>" class="mwe-pt-delete-category">
+			<a href="#" cat="<%- key %>"><%- tags[key].label %></a>
 			<div class="mwe-pt-category-pokey"></div>
 		</div>
 	<%
@@ -14,8 +14,8 @@
 	%>
 </div>
 <div id="mwe-pt-delete-bottom">
-	<div class="mwe-pt-tool-warning-notice"><%= warningNotice %></div>
+	<div class="mwe-pt-tool-warning-notice"><%- warningNotice %></div>
 	<div id="mwe-pt-delete-submit">
-		<a href="#" id="mwe-pt-delete-submit-button" class="ui-button-green"><%= mw.msg( 'pagetriage-button-mark-for-deletion' ) %></a>
+		<a href="#" id="mwe-pt-delete-submit-button" class="ui-button-green"><%- mw.msg( 'pagetriage-button-mark-for-deletion' ) %></a>
 	</div>
 </div>

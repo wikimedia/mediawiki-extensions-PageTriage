@@ -3,11 +3,11 @@
 	<!-- status icon -->
 	<div class="mwe-pt-info-status-icon">
 		<% if ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) { %>
-			<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_marked_for_deletion.png' %>" width="21" height="21" title="<%= mw.msg( "pagetriage-note-deletion" ) %>" />
+			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_marked_for_deletion.png' %>" width="21" height="21" title="<%- mw.msg( "pagetriage-note-deletion" ) %>" />
 		<% } else if ( patrol_status != "0" ) { %>
-			<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_reviewed.png' %>" width="21" height="21" title="<%= mw.msg( "pagetriage-note-reviewed" ) %>" />
+			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_reviewed.png' %>" width="21" height="21" title="<%- mw.msg( "pagetriage-note-reviewed" ) %>" />
 		<% } else { %>
-			<img src="<%= mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_not_reviewed.png' %>" width="21" height="21" title="<%= mw.msg( "pagetriage-note-not-reviewed" ) %>" />
+			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_not_reviewed.png' %>" width="21" height="21" title="<%- mw.msg( "pagetriage-note-not-reviewed" ) %>" />
 		<% } %>
 	</div>
 	<!-- page status  -->
@@ -21,15 +21,15 @@
 			<div>
 				<!-- if user is registered (user_id is 0 for IP users) -->
 				<% if( typeof user_id != 'undefined' && Number( user_id ) !== 0 ) { %>
-					<%= mw.msg( 'pagetriage-editcount', user_editcount, user_creation_date_pretty ) %>
+					<%- mw.msg( 'pagetriage-editcount', user_editcount, user_creation_date_pretty ) %>
 				<% } %>
 			</div>
 		<% } else { %>
-			<%= mw.msg('pagetriage-no-author') %>
+			<%- mw.msg('pagetriage-no-author') %>
 		<% } %>
 	</span>
 	<div class="mew-pt-info-stat">
-		<%= articleStat %>
+		<%- articleStat %>
 	</div>
 </div>
 <br/>
@@ -37,20 +37,20 @@
 <!-- possible problems section -->
 <% if ( problems ) { %>
 	<div class="mwe-pt-info-header">
-		<%= mw.msg( 'pagetriage-info-problem-header' ) %>
+		<%- mw.msg( 'pagetriage-info-problem-header' ) %>
 	</div>
 	<div class="mwe-pt-info-content">
-		<%= problems %>
+		<%- problems %>
 	</div>
 	<br/>
 <% } %>
 
 <!-- history section -->
 <div class="mwe-pt-info-header">
-	<%= mw.msg( 'pagetriage-info-history-header' ) %>
+	<%- mw.msg( 'pagetriage-info-history-header' ) %>
 	<span class="mwe-pt-info-header-details">
-		<%= mw.msg( 'pagetriage-edits', rev_count ) %> &#xb7;
-		<a href="<%= mw.html.escape( history_link ) %>"><%= mw.message( 'pagetriage-info-history-show-full' ).escaped() %></a>
+		<%- mw.msg( 'pagetriage-edits', rev_count ) %> &#xb7;
+		<a href="<%- history_link %>"><%- mw.msg( 'pagetriage-info-history-show-full' ) %></a>
 	</span>
 </div>
 <div class="mwe-pt-info-content" id="mwe-pt-info-history-container"></div>
