@@ -102,7 +102,9 @@ class PageTriageHooks {
 	 * @param $revision Revision New Revision of the article
 	 * @return bool
 	 */
-	public static function onArticleInsertComplete( $article, $user, $text, $summary, $isMinor, $isWatch, $section, $flags, $revision ) {
+	public static function onArticleInsertComplete(
+		$article, $user, $text, $summary, $isMinor, $isWatch, $section, $flags, $revision
+	) {
 		global $wgPageTriageNamespaces;
 		if ( !in_array( $article->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
 			return true;
@@ -130,7 +132,10 @@ class PageTriageHooks {
 	 * @param $baseRevId
 	 * @return bool
 	 */
-	public static function onArticleSaveComplete( $article, $user, $text, $summary, $minoredit, $watchthis, $sectionanchor, $flags, $revision, $status, $baseRevId ) {
+	public static function onArticleSaveComplete(
+		$article, $user, $text, $summary, $minoredit, $watchthis, $sectionanchor, $flags, $revision,
+		$status, $baseRevId
+	) {
 		global $wgPageTriageNamespaces;
 
 		self::flushUserStatusCache( $article->getTitle() );
@@ -256,7 +261,7 @@ class PageTriageHooks {
 	private static function shouldShowNoIndex( $article ) {
 		global $wgPageTriageNoIndexTemplates;
 
-		if ( $wgPageTriageNoIndexTemplates && $article->mParserOutput instanceof ParserOutput) {
+		if ( $wgPageTriageNoIndexTemplates && $article->mParserOutput instanceof ParserOutput ) {
 			$noIndexTitle = Title::newFromText( $wgPageTriageNoIndexTemplates, NS_MEDIAWIKI );
 			if ( $noIndexTitle ) {
 				$noIndexArticle = WikiPage::newFromID( $noIndexTitle->getArticleID() );
@@ -266,7 +271,10 @@ class PageTriageHooks {
 						// Collect all the noindex template names into an array
 						$noIndexTemplates = explode( '|', $noIndexTemplateText );
 						// Properly format the template names to match what getTemplates() returns
-						$noIndexTemplates = array_map( array( 'PageTriageHooks', 'formatTemplateName' ), $noIndexTemplates );
+						$noIndexTemplates = array_map(
+							array( 'PageTriageHooks', 'formatTemplateName' ),
+							$noIndexTemplates
+						);
 						foreach ( $article->mParserOutput->getTemplates() as $templates ) {
 							foreach ( $templates as $template => $pageId ) {
 								if ( in_array( $template, $noIndexTemplates ) ) {
@@ -306,14 +314,14 @@ class PageTriageHooks {
 	 * @return bool
 	 */
 	public static function onArticleViewFooter( $article, $patrolFooterShown ) {
-		global $wgUser, $wgPageTriageMarkPatrolledLinkExpiry, $wgOut, 
+		global $wgUser, $wgPageTriageMarkPatrolledLinkExpiry, $wgOut,
 			$wgPageTriageEnableCurationToolbar, $wgRequest, $wgPageTriageNamespaces;
 
 		// Overwrite the noindex rule defined in Article::view(), this also affects main namespace
 		//if ( self::shouldShowNoIndex( $article ) ) {
 		//	$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		//}
-		
+
 		// Only logged in users can review
 		if ( !$wgUser->isLoggedIn() ) {
 			return true;
@@ -368,7 +376,11 @@ class PageTriageHooks {
 				if ( $needsReview ) {
 					// show 'Mark as reviewed' link
 					$msg = wfMessage( 'pagetriage-markpatrolled' )->text();
-					$msg = Html::element( 'a', array( 'href' => '#', 'class' => 'mw-pagetriage-markpatrolled-link' ), $msg );
+					$msg = Html::element(
+						'a',
+						array( 'href' => '#', 'class' => 'mw-pagetriage-markpatrolled-link' ),
+						$msg
+					);
 				} else {
 					// show 'Reviewed' text
 					$msg = wfMessage( 'pagetriage-reviewed' )->escaped();
@@ -475,7 +487,9 @@ class PageTriageHooks {
 	 * @param $icons array of icon details
 	 * @return bool
 	 */
-	public static function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories, &$icons ) {
+	public static function onBeforeCreateEchoEvent(
+		&$notifications, &$notificationCategories, &$icons
+	) {
 		global $wgPageTriageEnabledEchoEvents;
 
 		if ( $wgPageTriageEnabledEchoEvents ) {
@@ -488,7 +502,10 @@ class PageTriageHooks {
 		if ( in_array( 'pagetriage-mark-as-reviewed', $wgPageTriageEnabledEchoEvents ) ) {
 			$notifications['pagetriage-mark-as-reviewed'] = array(
 				'presentation-model' => 'PageTriageMarkAsReviewedPresentationModel',
-				'primary-link' => array( 'message' => 'notification-link-text-view-page', 'destination' => 'title' ),
+				'primary-link' => array(
+					'message' => 'notification-link-text-view-page',
+					'destination' => 'title'
+				),
 				'category' => 'page-review',
 				'group' => 'neutral',
 				'formatter-class' => 'PageTriageNotificationFormatter',
@@ -504,7 +521,10 @@ class PageTriageHooks {
 		if ( in_array( 'pagetriage-add-maintenance-tag', $wgPageTriageEnabledEchoEvents ) ) {
 			$notifications['pagetriage-add-maintenance-tag'] = array(
 				'presentation-model' => 'PageTriageAddMaintenanceTagPresentationModel',
-				'primary-link' => array( 'message' => 'notification-link-text-view-page', 'destination' => 'title' ),
+				'primary-link' => array(
+					'message' => 'notification-link-text-view-page',
+					'destination' => 'title'
+				),
 				'category' => 'page-review',
 				'group' => 'neutral',
 				'formatter-class' => 'PageTriageNotificationFormatter',
@@ -520,7 +540,10 @@ class PageTriageHooks {
 		if ( in_array( 'pagetriage-add-deletion-tag', $wgPageTriageEnabledEchoEvents ) ) {
 			$notifications['pagetriage-add-deletion-tag'] = array(
 				'presentation-model' => 'PageTriageAddDeletionTagPresentationModel',
-				'primary-link' => array( 'message' => 'notification-link-text-view-page', 'destination' => 'title' ),
+				'primary-link' => array(
+					'message' => 'notification-link-text-view-page',
+					'destination' => 'title'
+				),
 				'category' => 'page-review',
 				'group' => 'negative',
 				'formatter-class' => 'PageTriageNotificationFormatter',

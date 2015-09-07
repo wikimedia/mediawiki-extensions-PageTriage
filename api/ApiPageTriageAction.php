@@ -8,7 +8,10 @@ class ApiPageTriageAction extends ApiBase {
 		$params = $this->extractRequestParams();
 
 		if ( !ArticleMetadata::validatePageId( array( $params['pageid'] ), DB_SLAVE ) ) {
-			$this->dieUsage( 'The page specified does not exist in pagetriage queue', 'bad-pagetriage-page' );
+			$this->dieUsage(
+				'The page specified does not exist in pagetriage queue',
+				'bad-pagetriage-page'
+			);
 		}
 
 		$article = Article::newFromID( $params['pageid'] );
@@ -29,11 +32,18 @@ class ApiPageTriageAction extends ApiBase {
 
 		// notification on mark as reviewed
 		if ( !$params['skipnotif'] && $params['reviewed'] ) {
-			PageTriageUtil::createNotificationEvent( $article, $this->getUser(), 'pagetriage-mark-as-reviewed' );
+			PageTriageUtil::createNotificationEvent(
+				$article,
+				$this->getUser(),
+				'pagetriage-mark-as-reviewed'
+			);
 		}
 
 		// logging
-		$logEntry = new ManualLogEntry( 'pagetriage-curation', $params['reviewed'] ? 'reviewed' : 'unreviewed' );
+		$logEntry = new ManualLogEntry(
+			'pagetriage-curation',
+			$params['reviewed'] ? 'reviewed' : 'unreviewed'
+		);
 		$logEntry->setPerformer( $this->getUser() );
 		$logEntry->setTarget( $article->getTitle() );
 		$note = $wgContLang->truncate( $params['note'], 150 );

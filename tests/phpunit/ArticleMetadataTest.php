@@ -52,7 +52,7 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 	public function testGetValidTags() {
 		$tags = ArticleMetadata::getValidTags();
 
-		$validTags = array (
+		$validTags = array(
 					'linkcount',
 					'category_count',
 					'csd_status',
@@ -72,7 +72,7 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 					'reference'
 				);
 
-		$this->assertEmpty( array_diff( array_keys ( $tags ), $validTags ) );
+		$this->assertEmpty( array_diff( array_keys( $tags ), $validTags ) );
 	}
 
 	/**
@@ -80,20 +80,24 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 	 *
 	 */
 	public function testValidatePageId() {
-		$origPageId = array_merge( $this->pageId, array ( 'cs', '99999999', 'abcde', '5ab', '200' ) );
+		$origPageId = array_merge( $this->pageId, array( 'cs', '99999999', 'abcde', '5ab', '200' ) );
 
 		$pageId = ArticleMetadata::validatePageId( $origPageId );
 
-		$this->assertEquals( count( $origPageId ), count( $pageId ), 'Article count doesn\'t match after ArticleMetadata::validatePageId()' );
+		$this->assertEquals(
+			count( $origPageId ),
+			count( $pageId ),
+			'Article count doesn\'t match after ArticleMetadata::validatePageId()'
+		);
 
 		foreach ( $pageId as $val ) {
 			$this->assertEquals( (string)$val, (string)(int)$val );
 		}
 
 		$res = $this->dbr->select(
-			array ( 'pagetriage_page' ),
-			array ( 'ptrp_page_id' ),
-			array ( 'ptrp_page_id' => $pageId )
+			array( 'pagetriage_page' ),
+			array( 'ptrp_page_id' ),
+			array( 'ptrp_page_id' => $pageId )
 		);
 		$this->assertEquals( count( $pageId ), $this->dbr->numRows( $res ) );
 	}
@@ -127,12 +131,12 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 	/**
 	 * @depends testGetMetadata
 	 */
-	public function testDeleteMetadata( ) {
+	public function testDeleteMetadata() {
 		$this->articleMetadata->deleteMetadata();
 		$res = $this->dbr->select(
-			array ( 'pagetriage_page_tags' ),
-			array ( 'ptrpt_page_id' ),
-			array ( 'ptrpt_page_id' => $this->pageId )
+			array( 'pagetriage_page_tags' ),
+			array( 'ptrpt_page_id' ),
+			array( 'ptrpt_page_id' => $this->pageId )
 		);
 		$this->assertEquals( 0, $this->dbr->numRows( $res ) );
 	}

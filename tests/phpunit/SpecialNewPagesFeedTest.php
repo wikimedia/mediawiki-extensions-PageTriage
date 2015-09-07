@@ -104,7 +104,7 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 			$alreadyCreated = true;
 		}
 
-		if (!$alreadyCreated) {
+		if ( !$alreadyCreated ) {
 			$this->assertEquals( "Success", $result['edit']['result'] );
 		}
 

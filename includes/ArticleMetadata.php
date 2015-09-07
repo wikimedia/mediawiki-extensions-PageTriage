@@ -27,7 +27,7 @@ class ArticleMetadata {
 	 */
 	public function deleteMetadata() {
 		if ( $this->mPageId ) {
-			$dbw  = wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			$dbw->delete(
 				'pagetriage_page_tags',
 				array( 'ptrpt_page_id' => $this->mPageId ),
@@ -52,10 +52,10 @@ class ArticleMetadata {
 		$keyPrefix = $this->memcKeyPrefix();
 		if ( is_null( $pageId ) ) {
 			foreach ( $this->mPageId as $pageId ) {
-				$cache->delete(  $keyPrefix . '-' . $pageId );
+				$cache->delete( $keyPrefix . '-' . $pageId );
 			}
 		} else {
-			$cache->delete(  $keyPrefix . '-' . $pageId );
+			$cache->delete( $keyPrefix . '-' . $pageId );
 		}
 	}
 
@@ -67,7 +67,7 @@ class ArticleMetadata {
 	public function setMetadataToCache( $pageId, $singleData ) {
 		$cache = ObjectCache::getMainWANInstance();
 		$this->flushMetadataFromCache( $pageId );
-		$cache->set(  $this->memcKeyPrefix() . '-' . $pageId, $singleData, 86400 ); // 24 hours
+		$cache->set( $this->memcKeyPrefix() . '-' . $pageId, $singleData, 86400 ); // 24 hours
 	}
 
 	/**
@@ -159,7 +159,10 @@ class ArticleMetadata {
 					$pageData[$row->ptrpt_page_id]['patrol_status'] = $row->ptrp_reviewed;
 					$pageData[$row->ptrpt_page_id]['is_redirect'] = $row->page_is_redirect;
 					$pageData[$row->ptrpt_page_id]['ptrp_last_reviewed_by'] = $row->ptrp_last_reviewed_by;
-					$pageData[$row->ptrpt_page_id]['ptrp_reviewed_updated'] = wfTimestamp( TS_MW, $row->ptrp_reviewed_updated );
+					$pageData[$row->ptrpt_page_id]['ptrp_reviewed_updated'] = wfTimestamp(
+						TS_MW,
+						$row->ptrp_reviewed_updated
+					);
 					$pageData[$row->ptrpt_page_id]['reviewer'] = $row->reviewer;
 					$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 					if ( $title ) {
@@ -211,14 +214,14 @@ class ArticleMetadata {
 
 		$key = wfMemcKey( 'pagetriage', 'valid', 'tags', $wgPageTriageCacheVersion );
 		$tags = $wgMemc->get( $key );
-		if ( $tags === false  ) {
+		if ( $tags === false ) {
 			$tags = array();
 
 			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->select(
 					array( 'pagetriage_tags' ),
 					array( 'ptrt_tag_id', 'ptrt_tag_name' ),
-					array( ),
+					array(),
 					__METHOD__
 			);
 
@@ -246,7 +249,7 @@ class ArticleMetadata {
 
 		$cleanUp = array();
 		foreach ( $pageIds as $key => $val ) {
-			$casted = ( int )$val;
+			$casted = (int)$val;
 			if ( $casted ) {
 				if ( isset( $cache[$casted] ) ) {
 					if ( $cache[$casted] ) {
@@ -424,7 +427,7 @@ class ArticleCompileProcessor {
 		if ( in_array( 'CategoryCount', $completed ) ) {
 			$deletionTags = ArticleCompileDeletionTag::getDeletionTags();
 			foreach ( $this->metadata as $pageId => $row ) {
-				foreach( $deletionTags as $val ) {
+				foreach ( $deletionTags as $val ) {
 					if ( $this->metadata[$pageId][$val] ) {
 						$this->metadata[$pageId]['category_count'] -= 1;
 					}
@@ -476,14 +479,19 @@ class ArticleCompileProcessor {
 			$articleMetadata->flushMetadataFromCache();
 			//Make sure either all or none metadata for a single page_id
 			$dbw->startAtomic( __METHOD__ );
-			foreach ( $data as $key => $val) {
+			foreach ( $data as $key => $val ) {
 				if ( isset( $tags[$key] ) ) {
-					$row = array (
+					$row = array(
 						'ptrpt_page_id' => $pageId,
 						'ptrpt_tag_id' => $tags[$key],
 						'ptrpt_value' => $val
 					);
-					$dbw->replace( 'pagetriage_page_tags', array( 'ptrpt_page_id', 'ptrpt_tag_id' ), $row, __METHOD__ );
+					$dbw->replace(
+						'pagetriage_page_tags',
+						array( 'ptrpt_page_id', 'ptrpt_tag_id' ),
+						$row,
+						__METHOD__
+					);
 				}
 			}
 			$pt = new PageTriage( $pageId );
@@ -525,7 +533,7 @@ abstract class ArticleCompileInterface {
 		$this->componentDb = $componentDb;
 	}
 
-	public abstract function compile();
+	abstract public function compile();
 
 	public function getMetadata() {
 		return $this->metadata;
@@ -541,7 +549,13 @@ abstract class ArticleCompileInterface {
 	 * @param $indexName string - the array index name to be saved
 	 */
 	protected function processEstimatedCount( $pageId, $table, $conds, $maxNumToProcess, $indexName ) {
-		$res = $this->db->select( $table, '1', $conds, __METHOD__, array( 'LIMIT' => $maxNumToProcess + 1 ) );
+		$res = $this->db->select(
+			$table,
+			'1',
+			$conds,
+			__METHOD__,
+			array( 'LIMIT' => $maxNumToProcess + 1 )
+		);
 
 		$record = $this->db->numRows( $res );
 		if ( $record > $maxNumToProcess ) {
@@ -577,10 +591,10 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 		$count = 0;
 		//Process page individually because MIN() GROUP BY is slow
 		foreach ( $this->mPageId as $pageId ) {
-			$table = array ( 'revision', 'page' );
-			$conds = array ( 'rev_page' => $pageId, 'page_id = rev_page' );
+			$table = array( 'revision', 'page' );
+			$conds = array( 'rev_page' => $pageId, 'page_id = rev_page' );
 
-			$row = $this->db->selectRow( $table, array ( 'MIN(rev_timestamp) AS creation_date' ),
+			$row = $this->db->selectRow( $table, array( 'MIN(rev_timestamp) AS creation_date' ),
 						$conds, __METHOD__ );
 			if ( $row ) {
 				$this->metadata[$pageId]['creation_date'] = wfTimestamp( TS_MW, $row->creation_date );
@@ -595,15 +609,16 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 		}
 
 		$res = $this->db->select(
-				array ( 'page', 'pagetriage_page', 'user' ),
-				array (
+				array( 'page', 'pagetriage_page', 'user' ),
+				array(
 					'page_id', 'page_namespace', 'page_title', 'page_len',
-					'ptrp_reviewed', 'page_is_redirect', 'ptrp_last_reviewed_by', 'ptrp_reviewed_updated', 'user_name AS reviewer'
+					'ptrp_reviewed', 'page_is_redirect', 'ptrp_last_reviewed_by',
+					'ptrp_reviewed_updated', 'user_name AS reviewer'
 				),
-				array ( 'page_id' => $this->mPageId, 'page_id = ptrp_page_id'),
+				array( 'page_id' => $this->mPageId, 'page_id = ptrp_page_id' ),
 				__METHOD__,
-				array (),
-				array ( 'user' => array( 'LEFT JOIN', 'user_id = ptrp_last_reviewed_by' ) )
+				array(),
+				array( 'user' => array( 'LEFT JOIN', 'user_id = ptrp_last_reviewed_by' ) )
 		);
 		foreach ( $res as $row ) {
 			if ( isset( $this->articles[$row->page_id] ) ) {
@@ -617,7 +632,10 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 			$this->metadata[$row->page_id]['patrol_status'] = $row->ptrp_reviewed;
 			$this->metadata[$row->page_id]['is_redirect'] = $row->page_is_redirect;
 			$this->metadata[$row->page_id]['ptrp_last_reviewed_by'] = $row->ptrp_last_reviewed_by;
-			$this->metadata[$row->page_id]['ptrp_reviewed_updated'] = wfTimestamp( TS_MW, $row->ptrp_reviewed_updated );
+			$this->metadata[$row->page_id]['ptrp_reviewed_updated'] = wfTimestamp(
+				TS_MW,
+				$row->ptrp_reviewed_updated
+			);
 			$this->metadata[$row->page_id]['reviewer'] = $row->reviewer;
 			if ( $title ) {
 				$this->metadata[$row->page_id]['title'] = $title->getPrefixedText();
@@ -747,9 +765,11 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 			$attempt++;
 		}
 
-		$text = trim( strip_tags( htmlspecialchars_decode( MessageCache::singleton()->parse( $text )->getText() ) ) );
+		$text = trim( strip_tags( htmlspecialchars_decode(
+			MessageCache::singleton()->parse( $text )->getText()
+		) ) );
 		// strip out non-useful data for snippet
-		$text = str_replace( array('{', '}', '[edit]' ), '', $text );
+		$text = str_replace( array( '{', '}', '[edit]' ), '', $text );
 
 		return $wgLang->truncate( $text, 150 );
 	}
@@ -762,11 +782,11 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 		$closeTag = strpos( $text, '</ref>' );
 
 		if ( $closeTag !== false ) {
-			$openTag = strpos( $text, '<ref ');
-			if (  $openTag !== false && $openTag < $closeTag ) {
+			$openTag = strpos( $text, '<ref ' );
+			if ( $openTag !== false && $openTag < $closeTag ) {
 				return '1';
 			}
-			$openTag = strpos( $text, '<ref>');
+			$openTag = strpos( $text, '<ref>' );
 			if ( $openTag !== false && $openTag < $closeTag ) {
 				return '1';
 			}
@@ -830,8 +850,12 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 				$this->metadata[$row->page_id]['user_id'] = $row->user_id;
 				$this->metadata[$row->page_id]['user_name'] = $user->getName();
 				$this->metadata[$row->page_id]['user_editcount'] = $user->getEditCount();
-				$this->metadata[$row->page_id]['user_creation_date'] = wfTimestamp( TS_MW, $user->getRegistration() );
-				$this->metadata[$row->page_id]['user_autoconfirmed'] = $user->isAllowed( 'autoconfirmed' ) ? '1' : '0';
+				$this->metadata[$row->page_id]['user_creation_date'] = wfTimestamp(
+					TS_MW,
+					$user->getRegistration()
+				);
+				$this->metadata[$row->page_id]['user_autoconfirmed'] =
+					$user->isAllowed( 'autoconfirmed' ) ? '1' : '0';
 				$this->metadata[$row->page_id]['user_bot'] = $user->isAllowed( 'bot' ) ? '1' : '0';
 				$this->metadata[$row->page_id]['user_block_status'] = $row->ipb_id ? '1' : '0';
 			// User doesn't exist, etc IP
@@ -862,7 +886,7 @@ class ArticleCompileDeletionTag extends ArticleCompileInterface {
 	}
 
 	public static function getDeletionTags() {
-		return array (
+		return array(
 			'All_articles_proposed_for_deletion' => 'prod_status',
 			'BLP_articles_proposed_for_deletion' => 'blp_prod_status',
 			'Candidates_for_speedy_deletion' => 'csd_status',

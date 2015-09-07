@@ -5,10 +5,11 @@
  * @ingroup Maintenance
  */
 
-require_once( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
+require_once ( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
 
 /**
- * Maintenance script that removes data from pagetriage_page_tags with page_id not in pagetriage_page
+ * Maintenance script that removes data from pagetriage_page_tags with page_id
+ * not in pagetriage_page
  *
  * @ingroup Maintenance
  */
@@ -38,7 +39,7 @@ class CleanupPageTriagePageTags extends Maintenance {
 
 			$page = array();
 			$count = 0;
-			foreach( $res as $row ) {
+			foreach ( $res as $row ) {
 				if ( !in_array( $row->page_id, $page ) ) {
 					$page[] = $row->page_id;
 					$start  = $row->page_id;
@@ -63,4 +64,4 @@ class CleanupPageTriagePageTags extends Maintenance {
 }
 
 $maintClass = 'CleanupPageTriagePageTags'; // Tells it to run the class
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once ( RUN_MAINTENANCE_IF_MAIN );

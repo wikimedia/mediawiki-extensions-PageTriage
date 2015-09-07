@@ -25,7 +25,8 @@
  * @license MIT License
  */
 
-# Alert the user that this is not a valid entry point to MediaWiki if they try to access the special pages file directly.
+// Alert the user that this is not a valid entry point to MediaWiki if they try to access the
+// special pages file directly.
 if ( !defined( 'MEDIAWIKI' ) ) {
 	echo <<<EOT
 To install this extension, put the following line in LocalSettings.php:
@@ -51,23 +52,31 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 // Begin configuration variables
-$wgPageTriagePagesPerRequest = 20; // Maximum number of articles for the API to retrieve at once
-$wgPageTriageInfiniteScrolling = true; // Whether or not to use infinite scrolling in the page list
-$wgPageTriageStickyControlNav = true; // Whether or not the top nav bar should float
-$wgPageTriageStickyStatsNav = true; // Whether or not the bottom nav bar should float
-$wgPageTriageMarkPatrolledLinkExpiry = 3600 * 24; // 1 day - How long after visiting Special:NewPagesFeed do we show review links on articles
-$wgPageTriageNoIndexTemplates = 'No_index_templates'; // Pages containing templates defined in this title would not be indexed.
+// Maximum number of articles for the API to retrieve at once
+$wgPageTriagePagesPerRequest = 20;
+// Whether or not to use infinite scrolling in the page list
+$wgPageTriageInfiniteScrolling = true;
+// Whether or not the top nav bar should float
+$wgPageTriageStickyControlNav = true;
+// Whether or not the bottom nav bar should float
+$wgPageTriageStickyStatsNav = true;
+// 1 day - How long after visiting Special:NewPagesFeed do we show review links on articles
+$wgPageTriageMarkPatrolledLinkExpiry = 3600 * 24;
+// Pages containing templates defined in this title would not be indexed.
+$wgPageTriageNoIndexTemplates = 'No_index_templates';
 $wgPageTriageLearnMoreUrl = '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help';
 $wgPageTriageProjectLink = 'Wikipedia:Page Curation';
 $wgPageTriageFeedbackUrl = '//en.wikipedia.org/wiki/Wikipedia_talk:Page_Curation';
-$wgPageTriageEnableCurationToolbar = true; // enable the curation toolbar?
+// enable the curation toolbar?
+$wgPageTriageEnableCurationToolbar = true;
 $wgPageTriageCurationModules = array(
 	'articleInfo' => array(
 		'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#PageInfo',
 		'namespace' => array( NS_MAIN, NS_USER ),
 	),
 	'wikiLove' => array(
-		'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#WikiLove', // depends on WikiLove extension
+		// depends on WikiLove extension
+		'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#WikiLove',
 		'namespace' => array( NS_MAIN, NS_USER ),
 	),
 	'mark' => array(
@@ -84,8 +93,10 @@ $wgPageTriageCurationModules = array(
 		'namespace' => array( NS_MAIN, NS_USER ),
 	),
 );
-$wgPageTriageCacheVersion = '1.4'; // version number to be added to cache key so that cache can be refreshed easily
-$wgPageTriageNamespaces = array( NS_MAIN, NS_USER  ); // only include these namespaces for pagetriage
+// version number to be added to cache key so that cache can be refreshed easily
+$wgPageTriageCacheVersion = '1.4';
+// only include these namespaces for pagetriage
+$wgPageTriageNamespaces = array( NS_MAIN, NS_USER );
 $wgTalkPageNoteTemplate = array(
 	'Mark' => 'Reviewednote-NPF',
 	'UnMark' => array( 'note' => 'Unreviewednote-NPF', 'nonote' => 'Unreviewednonote-NPF' ),
@@ -107,7 +118,7 @@ $wgDefaultUserOptions['echo-subscriptions-email-page-review'] = false;
 
 $dir = __DIR__ . '/';
 
-$wgMessagesDirs['PageTriage'] = __DIR__ . '/i18n';
+$wgMessagesDirs['PageTriage'] = $dir . 'i18n';
 $wgExtensionMessagesFiles['PageTriage'] = $dir . 'PageTriage.i18n.php';
 $wgExtensionMessagesFiles['PageTriageAlias'] = $dir . 'PageTriage.alias.php';
 
@@ -125,13 +136,21 @@ $wgAutoloadClasses['ArticleCompileCategoryCount'] = $dir . 'includes/ArticleMeta
 $wgAutoloadClasses['ArticleCompileSnippet'] = $dir . 'includes/ArticleMetadata.php';
 $wgAutoloadClasses['ArticleCompileUserData'] = $dir . 'includes/ArticleMetadata.php';
 $wgAutoloadClasses['ArticleCompileDeletionTag'] = $dir . 'includes/ArticleMetadata.php';
-$wgAutoloadClasses['PageTriageExternalTagsOptions'] = $dir . 'includes/PageTriageExternalTagsOptions.php';
-$wgAutoloadClasses['PageTriageExternalDeletionTagsOptions'] = $dir . 'includes/PageTriageExternalDeletionTagsOptions.php';
-$wgAutoloadClasses['PageTriageLogFormatter'] = $dir . 'includes/PageTriageLogFormatter.php';
-$wgAutoloadClasses['PageTriageNotificationFormatter'] = $dir . 'includes/Notifications/PageTriageNotificationFormatter.php';
-$wgAutoloadClasses['PageTriageMarkAsReviewedPresentationModel'] = $dir . 'includes/Notifications/PageTriageMarkAsReviewedPresentationModel.php';
-$wgAutoloadClasses['PageTriageAddMaintenanceTagPresentationModel'] = $dir . 'includes/Notifications/PageTriageAddMaintenanceTagPresentationModel.php';
-$wgAutoloadClasses['PageTriageAddDeletionTagPresentationModel'] = $dir . 'includes/Notifications/PageTriageAddDeletionTagPresentationModel.php';
+$wgAutoloadClasses['PageTriageExternalTagsOptions'] = $dir
+	. 'includes/PageTriageExternalTagsOptions.php';
+$wgAutoloadClasses['PageTriageExternalDeletionTagsOptions'] = $dir
+	. 'includes/PageTriageExternalDeletionTagsOptions.php';
+$wgAutoloadClasses['PageTriageLogFormatter'] = $dir
+	. 'includes/PageTriageLogFormatter.php';
+$wgAutoloadClasses['PageTriageNotificationFormatter'] = $dir
+	. 'includes/Notifications/PageTriageNotificationFormatter.php';
+$wgAutoloadClasses['PageTriageMarkAsReviewedPresentationModel'] = $dir
+	. 'includes/Notifications/PageTriageMarkAsReviewedPresentationModel.php';
+$wgAutoloadClasses['PageTriageAddMaintenanceTagPresentationModel'] = $dir
+	. 'includes/Notifications/PageTriageAddMaintenanceTagPresentationModel.php';
+$wgAutoloadClasses['PageTriageAddDeletionTagPresentationModel'] = $dir
+	. 'includes/Notifications/PageTriageAddDeletionTagPresentationModel.php';
+
 
 $wgAutoloadClasses['ApiPageTriageList'] = $dir . 'api/ApiPageTriageList.php';
 $wgAutoloadClasses['ApiPageTriageStats'] = $dir . 'api/ApiPageTriageStats.php';
@@ -189,7 +208,11 @@ function efPageTriageSchemaUpdates( $updater = null ) {
 	$updater->addExtensionTable( 'pagetriage_page', $base . '/PageTriagePage.sql' );
 	$updater->addExtensionTable( 'pagetriage_log', $base . '/PageTriageLog.sql' );
 	// patches
-	$updater->addExtensionIndex( 'pagetriage_page', 'ptrp_reviewed_updated', $base . '/PageTriagePagePatch.sql' );
+	$updater->addExtensionIndex(
+		'pagetriage_page',
+		'ptrp_reviewed_updated',
+		$base . '/PageTriagePagePatch.sql'
+	);
 	return true;
 }
 
@@ -213,10 +236,10 @@ $ptResourceTemplate = array(
 );
 
 // where can the template API find the templates?
-$ptTemplatePath = $ptResourceTemplate['localBasePath'];
+$wgPtTemplatePath = $ptResourceTemplate['localBasePath'];
 
 // Tags options message
-$wgPageTriageTagsOptionsMessages = array (
+$wgPageTriageTagsOptionsMessages = array(
 	'pagetriage-tags-title',
 	'pagetriage-tags-cat-common-label',
 	'pagetriage-tags-cat-metadata-label',
@@ -371,7 +394,7 @@ $wgPageTriageTagsOptionsMessages = array (
 );
 
 // Deletion Tags options message
-$wgPageTriageDeletionTagsOptionsMessages = array (
+$wgPageTriageDeletionTagsOptionsMessages = array(
 	'pagetriage-del-tags-cat-csd-label',
 	'pagetriage-del-tags-cat-csd-desc',
 	'pagetriage-del-tags-cat-prod-label',
@@ -749,7 +772,8 @@ $wgResourceModules['ext.pageTriage.externalTagsOptions'] = $ptResourceTemplate +
 );
 
 $wgResourceModules['ext.pageTriage.defaultDeletionTagsOptions'] = $ptResourceTemplate + array(
-	'scripts' => 'ext.pageTriage.defaultDeletionTagsOptions/ext.pageTriage.defaultDeletionTagsOptions.js',
+	'scripts' => 'ext.pageTriage.defaultDeletionTagsOptions/'
+		. 'ext.pageTriage.defaultDeletionTagsOptions.js',
 	'messages' => $wgPageTriageDeletionTagsOptionsMessages,
 	'dependencies' => array(
 		'mediawiki.Title'
@@ -767,7 +791,7 @@ $wgResourceModules['ext.pageTriage.toolbarStartup'] = $ptResourceTemplate + arra
 $wgResourceModules['ext.pageTriage.article'] = $ptResourceTemplate + array(
 	'styles' => 'ext.pageTriage.article/ext.pageTriage.article.css',
 	'scripts' => 'ext.pageTriage.article/ext.pageTriage.article.js',
-	'messages' => array (
+	'messages' => array(
 			'pagetriage-reviewed',
 			'pagetriage-mark-as-reviewed-error',
 	),

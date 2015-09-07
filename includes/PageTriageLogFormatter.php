@@ -22,8 +22,9 @@ class PageTriageLogFormatter extends LogFormatter {
 			$params['tagnumber'] = count( $parameters['tags'] );
 		}
 
-		return wfMessage( 'logentry-' . $this->entry->getType() . '-' . $this->entry->getSubtype(), $params );
+		return wfMessage(
+			'logentry-' . $this->entry->getType() . '-' . $this->entry->getSubtype(), $params
+		);
 	}
 
 }
-

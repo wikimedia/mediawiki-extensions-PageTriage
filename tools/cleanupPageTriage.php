@@ -5,10 +5,11 @@
  * @ingroup Maintenance
  */
 
-require_once( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
+require_once ( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
 
 /**
- * Maintenance script that removes page with namespace other than NS_MAIN/NS_USER from pagetriage queue
+ * Maintenance script that removes page with namespace other than NS_MAIN/NS_USER
+ * from pagetriage queue
  *
  * @ingroup Maintenance
  */
@@ -37,7 +38,7 @@ class CleanupPageTriage extends Maintenance {
 			);
 
 			$page = array();
-			foreach( $res as $row ) {
+			foreach ( $res as $row ) {
 				$page[] = $row->page_id;
 				$start  = $row->page_id;
 			};
@@ -75,4 +76,4 @@ class CleanupPageTriage extends Maintenance {
 }
 
 $maintClass = 'CleanupPageTriage'; // Tells it to run the class
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once ( RUN_MAINTENANCE_IF_MAIN );

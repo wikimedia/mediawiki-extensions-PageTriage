@@ -4,12 +4,12 @@ $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = dirname( __FILE__ ) . '/../../..';
 }
-require_once( "$IP/maintenance/Maintenance.php" );
+require_once ( "$IP/maintenance/Maintenance.php" );
 
 /**
  * A maintenance script that updates expired user metadata
  */
-class updateUserMetadata extends Maintenance {
+class UpdateUserMetadata extends Maintenance {
 
 	/**
 	 * Max number of article to process at a time
@@ -64,7 +64,7 @@ class updateUserMetadata extends Maintenance {
 		while ( $count === $this->batchSize ) {
 			$count = 0;
 			$startTime = $this->dbr->addQuotes( $this->dbr->timestamp( $startTime ) );
-			$startId = ( int )$startId;
+			$startId = (int)$startId;
 
 			$res = $this->dbr->select(
 				array( 'pagetriage_page', 'page' ),
@@ -109,5 +109,5 @@ class updateUserMetadata extends Maintenance {
 	}
 }
 
-$maintClass = "updateUserMetadata";
-require_once( DO_MAINTENANCE );
+$maintClass = "UpdateUserMetadata";
+require_once ( DO_MAINTENANCE );

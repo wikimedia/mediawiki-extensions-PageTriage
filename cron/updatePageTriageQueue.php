@@ -4,12 +4,12 @@ $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = dirname( __FILE__ ) . '/../../..';
 }
-require_once( "$IP/maintenance/Maintenance.php" );
+require_once ( "$IP/maintenance/Maintenance.php" );
 
 /**
  * A maintenance script that updates expired user metadata
  */
-class updatePageTriageQueue extends Maintenance {
+class UpdatePageTriageQueue extends Maintenance {
 
 	/**
 	 * Max number of article to process at a time
@@ -58,7 +58,7 @@ class updatePageTriageQueue extends Maintenance {
 		while ( $count === $this->batchSize ) {
 			$count = 0;
 			$startTime = $this->dbr->addQuotes( $this->dbr->timestamp( $startTime ) );
-			$startId = ( int )$startId;
+			$startId = (int)$startId;
 
 			// Remove pages older than 30 days, if
 			// 1. the page has been reviewed, or
@@ -118,5 +118,5 @@ class updatePageTriageQueue extends Maintenance {
 	}
 }
 
-$maintClass = "updatePageTriageQueue";
-require_once( DO_MAINTENANCE );
+$maintClass = "UpdatePageTriageQueue";
+require_once ( DO_MAINTENANCE );

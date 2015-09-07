@@ -23,7 +23,7 @@ class PageTriage {
 	 * @param $pageId int
 	 */
 	public function __construct( $pageId ) {
-		$this->mPageId = ( int )$pageId;
+		$this->mPageId = (int)$pageId;
 		$this->mLoaded = false;
 	}
 
@@ -118,7 +118,7 @@ class PageTriage {
 		//@Todo - case for marking a page as untriaged and make sure this logic is correct
 		if ( !$fromRc && $this->mReviewed && !is_null( $user ) ) {
 			$rc = RecentChange::newFromConds( array( 'rc_cur_id' => $this->mPageId, 'rc_new' => '1' ) );
-			if ( $rc && !$rc->getAttribute('rc_patrolled') ) {
+			if ( $rc && !$rc->getAttribute( 'rc_patrolled' ) ) {
 				$rc->reallyMarkPatrolled();
 				PatrolLog::record( $rc, false, $user );
 			}
@@ -134,7 +134,7 @@ class PageTriage {
 		$articleMetadata = new ArticleMetadata( array( $this->mPageId ) );
 		$metadataArray = $articleMetadata->getMetadata();
 
-		if( array_key_exists( $this->mPageId, $metadataArray ) ) {
+		if ( array_key_exists( $this->mPageId, $metadataArray ) ) {
 			$articleMetadata->flushMetadataFromCache( $this->mPageId );
 		}
 	}
@@ -144,7 +144,7 @@ class PageTriage {
 	 * @param $row array key => value pair to be updated
 	 * Todo: ptrpt_reviewed should not updated from this function, add exception to catch this
 	 *       or find a better solution
- 	 */
+		 */
 	public function update( $row ) {
 		if ( !$row ) {
 			return;
@@ -221,7 +221,7 @@ class PageTriage {
 
 	protected function loadArticleMetadata() {
 		if ( !$this->mArticleMetadata ) {
-			$this->mArticleMetadata = new ArticleMetadata( array( $this->mPageId ));
+			$this->mArticleMetadata = new ArticleMetadata( array( $this->mPageId ) );
 		}
 	}
 
@@ -276,8 +276,14 @@ class PageTriage {
 	 * @return array
 	 */
 	public static function getValidReviewedStatus() {
-		return array( '0' => 'unreviewed', '1' => 'reviewed', '2' => 'patrolled', '3' => 'auto-patrolled' );
+		return array(
+			'0' => 'unreviewed',
+			'1' => 'reviewed',
+			'2' => 'patrolled',
+			'3' => 'auto-patrolled'
+		);
 	}
 }
 
-class MWPageTriageMissingRevisionException extends Exception {}
+class MWPageTriageMissingRevisionException extends Exception {
+}

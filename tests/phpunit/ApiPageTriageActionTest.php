@@ -85,10 +85,10 @@ class ApiPageTriageActionTest extends ApiTestCase {
 
 		$wgUser = self::$users['one']->user;
 
-		list( $result, , $session ) =  $this->doApiRequestWithToken( array(
+		list( $result, , $session ) = $this->doApiRequestWithToken( array(
 										'action' => 'pagetriageaction',
 										'pageid' => 15,
-										'reviewed' => '1'), $sessionArray['one'], self::$users['one']->user );
+										'reviewed' => '1' ), $sessionArray['one'], self::$users['one']->user );
 
 		$this->assertEquals( "success", $result['pagetriageaction']['result'] );
 	}
@@ -127,7 +127,7 @@ class ApiPageTriageActionTest extends ApiTestCase {
 				array(
 					'action' => 'pagetriageaction',
 					'pageid' => 999999999,
-					'reviewed' => '1'),
+					'reviewed' => '1' ),
 				$sessionArray['one'],
 				self::$users['one']->user
 			);

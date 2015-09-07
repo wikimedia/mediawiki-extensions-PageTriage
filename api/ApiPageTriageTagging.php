@@ -8,7 +8,10 @@ class ApiPageTriageTagging extends ApiBase {
 		$params = $this->extractRequestParams();
 
 		if ( !ArticleMetadata::validatePageId( array( $params['pageid'] ), DB_SLAVE ) ) {
-			$this->dieUsage( 'The page specified does not exist in pagetriage queue', 'bad-pagetriage-page' );
+			$this->dieUsage(
+				'The page specified does not exist in pagetriage queue',
+				'bad-pagetriage-page'
+			);
 		}
 
 		$article = Article::newFromID( $params['pageid'] );
@@ -46,16 +49,25 @@ class ApiPageTriageTagging extends ApiBase {
 			if ( isset( $metaData[$params['pageid']] ) ) {
 				foreach ( array( 'csd_status', 'prod_status', 'blp_prod_status', 'afd_status' ) as $val ) {
 					if ( $metaData[$params['pageid']][$val] == '1' ) {
-						$this->dieUsage( 'The page has been nominated for deletion', 'pagetriage-tag-deletion-error' );
+						$this->dieUsage(
+							'The page has been nominated for deletion',
+							'pagetriage-tag-deletion-error'
+						);
 					}
 				}
 			} else {
-				$this->dieUsage( 'The page specified does not exist in pagetriage queue', 'bad-pagetriage-page' );
+				$this->dieUsage(
+					'The page specified does not exist in pagetriage queue',
+					'bad-pagetriage-page'
+				);
 			}
 		}
 
 		if ( $apiParams ) {
-			$projectLink = '[[' . $wgPageTriageProjectLink . '|' . wfMessage( 'pagetriage-pagecuration' )->plain() . ']]';
+			$projectLink = '[['
+				. $wgPageTriageProjectLink . '|'
+				. wfMessage( 'pagetriage-pagecuration' )->plain()
+				. ']]';
 			if ( $params['deletion'] ) {
 				$editSummary = wfMessage( 'pagetriage-del-edit-summary', $projectLink, $tags )->plain();
 			} else {
@@ -72,10 +84,10 @@ class ApiPageTriageTagging extends ApiBase {
 					new DerivativeRequest(
 						$this->getRequest(),
 						$apiParams + array(
-							'action'  => 'edit',
-							'title'   => $title->getFullText(),
-							'token'   => $params['token'],
-							'summary' => $editSummary,
+							'action'	=> 'edit',
+							'title'		=> $title->getFullText(),
+							'token'		=> $params['token'],
+							'summary'	=> $editSummary,
 						),
 						true
 					),
@@ -93,12 +105,22 @@ class ApiPageTriageTagging extends ApiBase {
 						'pagetriage-curation' => 'delete',
 						'pagetriage-deletion' => 'delete'
 					);
-					PageTriageUtil::createNotificationEvent( $article, $this->getUser(), 'pagetriage-add-deletion-tag', $params['taglist'] );
+					PageTriageUtil::createNotificationEvent(
+						$article,
+						$this->getUser(),
+						'pagetriage-add-deletion-tag',
+						$params['taglist']
+					);
 				} else {
 					$entry = array(
 						'pagetriage-curation' => 'tag'
 					);
-					PageTriageUtil::createNotificationEvent( $article, $this->getUser(), 'pagetriage-add-maintenance-tag', $params['taglist'] );
+					PageTriageUtil::createNotificationEvent(
+						$article,
+						$this->getUser(),
+						'pagetriage-add-maintenance-tag',
+						$params['taglist']
+					);
 				}
 
 				foreach ( $entry as $type => $action ) {

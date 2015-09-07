@@ -7,7 +7,9 @@
  *
  * This script can only be run from the command line.
  * The syntax is:
- * php importNewPages.php <# of articles> <username> <password> <source API path> <destination API path>
+ *   php importNewPages.php <# of articles> \
+ *     <username> <password> \
+ *     <source API path> <destination API path>
  * The API path parameters are optional.
  **/
 
@@ -66,7 +68,9 @@ class PageTriageHttp {
 
 	function __destruct() {
 		curl_close( $this->curlHandle );
-		@unlink('/tmp/cookies'.$this->id.'.dat');
+		MediaWiki\suppressWarnings();
+		unlink( '/tmp/cookies'.$this->id.'.dat' );
+		MediaWiki\restoreWarnings();
 	}
 
 }
@@ -133,7 +137,7 @@ class WikiApi {
 	 * Get an edit token for the user
 	 * @return string The token
 	 **/
-	function getToken () {
+	function getToken() {
 		$params = array(
 			'action' => 'query',
 			'format' => 'php',
@@ -163,7 +167,7 @@ class WikiApi {
 			'rvprop' => 'content'
 		);
 		$params = http_build_query( $params );
-		$result = $this->get('?'.$params );
+		$result = $this->get( '?'.$params );
 		foreach ( $result['query']['pages'] as $page ) {
 			if ( isset( $page['revisions'][0]['*'] ) ) {
 				return $page['revisions'][0]['*'];
@@ -206,7 +210,7 @@ class WikiApi {
 	 * @param $text string The text of the new page
 	 * @return string The result from the API
 	 **/
-	function createPage ( $title, $text ) {
+	function createPage( $title, $text ) {
 		if ( !$this->token ) {
 			$this->token = $this->getToken();
 		}
@@ -217,17 +221,20 @@ class WikiApi {
 			'summary' => 'Importing article from another wiki for testing purposes',
 			'createonly' => '1'
 		);
-		return $this->post('?action=edit&format=php', $params);
+		return $this->post( '?action=edit&format=php', $params );
 	}
 }
 
 if ( isset( $_SERVER ) && isset( $_SERVER['REQUEST_METHOD'] ) ) {
-	print( 'This script must be run from the command line.' );
+	print ( 'This script must be run from the command line.' );
 	die();
 }
 
 if ( !isset( $argv[1] ) || !isset( $argv[2] ) || !isset( $argv[3] ) ) {
-	print( "The correct syntax is:\nimportNewPages.php <# of articles> <username> <password> <source API path> <destination API path>\n" );
+	print (
+		"The correct syntax is:\nimportNewPages.php <# of articles> <username> <password>".
+		"<source API path> <destination API path>\n"
+	);
 	die();
 }
 

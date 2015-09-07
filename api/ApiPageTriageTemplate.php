@@ -10,14 +10,14 @@
 class ApiPageTriageTemplate extends ApiBase {
 
 	public function execute() {
-		global $ptTemplatePath;
+		global $wgPtTemplatePath;
 
 		// Get the API parameters and store them
 		$opts = $this->extractRequestParams();
 
 		$view = $opts['view'];
 		// validate
-		if( preg_match( '/\W/', $view ) ) {
+		if ( preg_match( '/\W/', $view ) ) {
 			$result = array( 'result' => 'error', 'errormsg' => 'Invalid view' );
 			$this->getResult()->addValue( null, $this->getModuleName(), $result );
 			return;
@@ -29,20 +29,23 @@ class ApiPageTriageTemplate extends ApiBase {
 
 		foreach ( array_unique( $templates ) as $template ) {
 			// validate
-			if( !preg_match( '/^\w+\.html$/', $template ) ) {
+			if ( !preg_match( '/^\w+\.html$/', $template ) ) {
 				$result = array( 'result' => 'error', 'errormsg' => 'Invalid template: ' . $template );
 				$this->getResult()->addValue( null, $this->getModuleName(), $result );
 				return;
 			}
 
-			$localPath = $ptTemplatePath . '/ext.pageTriage.views.' . $view . '/ext.pageTriage.' . $template;
+			$localPath =
+				$wgPtTemplatePath
+				. '/ext.pageTriage.views.' . $view
+				. '/ext.pageTriage.' . $template;
 			if ( !file_exists( $localPath ) ) {
 				$error = "template file not found: \"$localPath\"";
 				$result = array( 'result' => 'error', 'errormsg' => $error );
 				$this->getResult()->addValue( null, $this->getModuleName(), $result );
 				return;
 			}
-			$contents[$template]= file_get_contents( $localPath );
+			$contents[$template] = file_get_contents( $localPath );
 		}
 
 		// Output the results
@@ -69,7 +72,7 @@ class ApiPageTriageTemplate extends ApiBase {
 	public function getParamDescription() {
 		return array(
 			'view' => 'The PageTriage view for which you need the templates.',
-			'template' => 'The template to fetch.  Separate multiple with the | character',
+			'template' => 'The template to fetch. Separate multiple with the | character',
 		);
 	}
 

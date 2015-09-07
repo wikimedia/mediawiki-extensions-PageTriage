@@ -48,10 +48,14 @@ class ApiPageTriageStats extends ApiBase {
 	public function getParamDescription() {
 		return array(
 			'namespace' => 'What namespace to pull stats from',
-			'showredirs' => 'Whether to include redirects or not', // default is not to show redirects
-			'showreviewed' => 'Whether to include reviewed or not', // default is not to show reviewed
-			'showunreviewed' => 'Whether to include unreviewed or not', // default is not to show unreviewed
-			'showdeleted' => 'Whether to include "proposed for deleted" or not', // default is not to show deleted
+			// default is not to show redirects
+			'showredirs' => 'Whether to include redirects or not',
+			// default is not to show reviewed
+			'showreviewed' => 'Whether to include reviewed or not',
+			// default is not to show unreviewed
+			'showunreviewed' => 'Whether to include unreviewed or not',
+			// default is not to show deleted
+			'showdeleted' => 'Whether to include "proposed for deleted" or not',
 		);
 	}
 

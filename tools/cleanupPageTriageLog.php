@@ -6,11 +6,11 @@
  * @ingroup Maintenance
  */
 
-require_once( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
+require_once ( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
 
 /**
- * Maintenance script that updates parameter name from '4::tags' to 'tags' in pagetriage-curation
- * and pagetriage-deletion log
+ * Maintenance script that updates parameter name from '4::tags' to 'tags' in
+ * pagetriage-curation and pagetriage-deletion log
  *
  * @ingroup Maintenance
  */
@@ -47,7 +47,7 @@ class CleanupPageTriageLog extends Maintenance {
 				);
 
 				$count = 0;
-				foreach( $res as $row ) {
+				foreach ( $res as $row ) {
 					$newLogParams = str_replace( 's:7:"4::tags";', 's:4:"tags";', $row->log_params );
 
 					$dbw->update(
@@ -68,4 +68,4 @@ class CleanupPageTriageLog extends Maintenance {
 }
 
 $maintClass = 'CleanupPageTriageLog'; // Tells it to run the class
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once ( RUN_MAINTENANCE_IF_MAIN );

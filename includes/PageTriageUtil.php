@@ -65,7 +65,11 @@ class PageTriageUtil {
 
 		$namespace = self::validatePageNamespace( $namespace );
 
-		$key = wfMemcKey( 'pagetriage', 'unreviewed-article-' . $namespace, 'stat', self::getCacheVersion() );
+		$key = wfMemcKey(
+			'pagetriage',
+			'unreviewed-article-' . $namespace,
+			'stat', self::getCacheVersion()
+		);
 
 		$data = $wgMemc->get( $key );
 		if ( $data !== false ) {
@@ -91,7 +95,7 @@ class PageTriageUtil {
 		$data = array( 'count' => 0, 'oldest' => '' );
 
 		if ( $res ) {
-			$data['count'] = ( int )$res->total;
+			$data['count'] = (int)$res->total;
 			$data['oldest'] = $res->oldest;
 		}
 
@@ -114,7 +118,11 @@ class PageTriageUtil {
 
 		$namespace = self::validatePageNamespace( $namespace );
 
-		$key = wfMemcKey( 'pagetriage', 'filter-article-' . implode( '-', $filter ) . '-' . $namespace, 'stat', self::getCacheVersion() );
+		$key = wfMemcKey(
+			'pagetriage',
+			'filter-article-' . implode( '-', $filter ) . '-' . $namespace,
+			'stat', self::getCacheVersion()
+		);
 
 		$data = $wgMemc->get( $key );
 		if ( $data !== false ) {
@@ -153,7 +161,7 @@ class PageTriageUtil {
 
 		$total = 0;
 		if ( $res ) {
-			$total = ( int )$res->total;
+			$total = (int)$res->total;
 		}
 
 		// make it expire in 10 minutes
@@ -166,7 +174,12 @@ class PageTriageUtil {
 
 		$namespace = self::validatePageNamespace( $namespace );
 
-		$key = wfMemcKey( 'pagetriage', 'reviewed-article-' . $namespace, 'stat', self::getCacheVersion() );
+		$key = wfMemcKey(
+			'pagetriage',
+			'reviewed-article-' . $namespace,
+			'stat',
+			self::getCacheVersion()
+		);
 
 		$data = $wgMemc->get( $key );
 		if ( $data !== false ) {
@@ -194,7 +207,7 @@ class PageTriageUtil {
 		$data = array( 'reviewed_count' => 0 );
 
 		if ( $res ) {
-			$data['reviewed_count'] = ( int )$res->reviewed_count;
+			$data['reviewed_count'] = (int)$res->reviewed_count;
 		}
 
 		// make it expire in 10 minutes
@@ -304,12 +317,16 @@ class PageTriageUtil {
 			$res = $dbr->select(
 				array( 'page' ),
 				array( 'page_namespace', 'page_title' ),
-				array( 'page_title' => array_keys( $title ), 'page_namespace' => array( NS_USER, NS_USER_TALK ) ),
+				array(
+					'page_title' => array_keys( $title ),
+					'page_namespace' => array( NS_USER, NS_USER_TALK )
+				),
 				__METHOD__
 			);
 
 			$dataToCache = array();
-			// if there is result from the database, that means the page exists, set it to the cache array with value 1
+			// if there is result from the database, that means the page exists, set it to the
+			// cache array with value 1
 			foreach ( $res as $row ) {
 				$user = $title[$row->page_title];
 				if ( $row->page_namespace == NS_USER ) {
@@ -331,7 +348,11 @@ class PageTriageUtil {
 				} else {
 					$return[$value['t']->getPrefixedDBkey()] = 1;
 				}
-				$wgMemc->set( self::userStatusKey( $value['user_name'] ), $dataToCache[$value['user_name']], 3600 );
+				$wgMemc->set(
+					self::userStatusKey( $value['user_name'] ),
+					$dataToCache[$value['user_name']],
+					3600
+				);
 			}
 		}
 
@@ -427,4 +448,5 @@ class PageTriageUtil {
 
 }
 
-class MWPageTriageUtilInvalidNumberException extends Exception {}
+class MWPageTriageUtilInvalidNumberException extends Exception {
+}
