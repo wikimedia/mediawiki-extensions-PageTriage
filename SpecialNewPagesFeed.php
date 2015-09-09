@@ -32,9 +32,11 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$user = $this->getUser();
 
 		if ( !$user->isAnon() ) {
-			$user->setOption( 'pagetriage-lastuse', wfTimestampNow() );
-			$user->saveSettings();
-			$user->invalidateCache();
+			$now = wfTimestampNow();
+			DeferredUpdates::addCallableUpdate( function() use ( $user, $now ) {
+				$user->setOption( 'pagetriage-lastuse', $now );
+				$user->saveSettings();
+			} );
 		}
 
 		// Output the title of the page
