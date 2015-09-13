@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Умар"
+			"Умар",
+			"Исмаил Садуев"
 		]
 	},
 	"pagetriage-hist": "истори",
@@ -18,9 +19,9 @@
 	"pagetriage-filter-stat-nominated-for-deletion": "дӀаяха кховдинарш",
 	"pagetriage-filter-stat-blocked": "блоктоьхна декъашхой",
 	"pagetriage-filter-stat-username": "декъашхочун цӀе: $1",
-	"pagetriage-welcome": "Дехар до, лахарчу керла агӀонашка хьажар а уьш таян а {{SITENAME}}. [$1 Мадарра] · [$2 Язде хьайна хетарг]",
+	"pagetriage-welcome": "Дехар до, лахарчу керла агӀонашка хьажар а уьш таян а {{SITENAME}}. <a href=\"$1\">Мадарра</a> · <a href=\"$2\">Язде хьайна хетарг</a>",
 	"pagetriage-note-reviewed": "ХӀокху агӀоне хьаьжина.",
-	"pagetriage-note-not-reviewed": "ХӀара агӀо хӀинца а хьажанца ю.",
+	"pagetriage-note-not-reviewed": "ХӀара агӀо хӀинца а хьажаза ю.",
 	"pagetriage-button-edit-details": "Хийца мадарра дерш",
 	"pagetriage-characters-left": "$1 {{PLURAL:$1|символ йисина|$1 символаш йисина}}",
 	"pagetriage-tags-cat-common-label": "Викигулам",
