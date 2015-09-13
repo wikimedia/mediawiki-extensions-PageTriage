@@ -84,7 +84,7 @@
 	"pagetriage-filter-stat-username": "nome de utilizador(a): $1",
 	"pagetriage-no-pages": "Nenhuma página corresponde aos seus critérios.",
 	"pagetriage-warning-browser": "Esta ferramenta pode não funcionar corretamente em navegadores mais antigos do que o Internet Explorer 8.",
-	"pagetriage-welcome": "Por favor, revise as páginas novas mostradas a seguir e ajude a melhorar {{SITENAME}}.  <a href=\"$1\">Saiba mais</a> · <a href=\"$2\">Deixe um comentário</a>",
+	"pagetriage-welcome": "Por favor, revise as páginas novas mostradas a seguir e ajude a melhorar {{SITENAME}}.  [$1 Saiba mais] · [$2 Deixe um comentário]",
 	"pagetriage-note-reviewed": "Esta página foi revisada",
 	"pagetriage-note-not-reviewed": "Esta página ainda não foi revisada.",
 	"pagetriage-note-deletion": "Esta página foi marcada para eliminação.",

@@ -79,7 +79,7 @@
 	"pagetriage-filter-stat-username": "Wužiwarske mjeno: $1",
 	"pagetriage-no-pages": "Twojim kriterijam žane strony njewotpowěduja.",
 	"pagetriage-warning-browser": "Tutón nastroj snano njefunguje we wobhladowakach, kotrež su starše hač Internet Explorer 8.",
-	"pagetriage-welcome": "Prošu přepruwuj slědowace nowe strony a pomhaj {{GRAMMAR:akuzatiw|{{SITENAME}}}} polěpšić. <a href=\"$1\">Dalše informacije</a> · <a href=\"$2\">Komentar zawostajić</a>",
+	"pagetriage-welcome": "Prošu přepruwuj slědowace nowe strony a pomhaj {{GRAMMAR:akuzatiw|{{SITENAME}}}} polěpšić. [$1 Dalše informacije] · [$2 Komentar zawostajić]",
 	"pagetriage-note-reviewed": "Tuta strona je so přepruwowała.",
 	"pagetriage-note-not-reviewed": "Tuta strona hišće njeje so přepruwowała.",
 	"pagetriage-note-deletion": "Tuta strona je so za zhašenje namjetowała.",

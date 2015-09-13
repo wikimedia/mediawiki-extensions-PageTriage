@@ -78,7 +78,7 @@
 	"pagetriage-filter-stat-username": "利用者名: $1",
 	"pagetriage-no-pages": "検索条件に一致するページはありません。",
 	"pagetriage-warning-browser": "このツールは Internet Explorer 8 より古いブラウザーでは正しく動作しない可能性があります。",
-	"pagetriage-welcome": "{{SITENAME}}を改善するため、以下の新しいページを査読してください。<a href=\"$1\">詳細はこちら</a> · <a href=\"$2\">フィードバックを送信</a>",
+	"pagetriage-welcome": "{{SITENAME}}を改善するため、以下の新しいページを査読してください。[$1 詳細はこちら] · [$2 フィードバックを送信]",
 	"pagetriage-note-reviewed": "このページは査読済です。",
 	"pagetriage-note-not-reviewed": "このページはまだ査読されていません。",
 	"pagetriage-note-deletion": "このページの削除が提案されています。",

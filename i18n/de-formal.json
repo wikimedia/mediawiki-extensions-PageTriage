@@ -7,7 +7,7 @@
 	"pagetriage-self-review-error": "Sie können keine Seiten prüfen, die Sie selbst erstellt haben.",
 	"pagetriage-api-error": "Beim Laden der Benutzeroberfläche über die API-Schnittstelle ist ein Fehler aufgetreten. Bitte versuchen Sie die Seite erneut zu laden.",
 	"pagetriage-no-patrol-right": "Sie haben nicht die Berechtigung, diese Seite zu prüfen.",
-	"pagetriage-welcome": "Bitte überprüfen Sie die unten angezeigten neuen Seiten und helfen Sie die Wikipedia zu verbessern. <a href=\"$1\">Erfahren Sie mehr hierzu</a> · <a href=\"$2\">Hinterlassen Sie eine Rückmeldung</a>",
+	"pagetriage-welcome": "Bitte überprüfen Sie die unten angezeigten neuen Seiten und helfen Sie die Wikipedia zu verbessern. [$1 Erfahren Sie mehr hierzu] · [$2 Hinterlassen Sie eine Rückmeldung]",
 	"pagetriage-add-a-note-creator": "Fügen Sie eine Nachricht für den Autor hinzu: (optional)",
 	"pagetriage-personal-default-note": "Verfassen Sie einen nützlichen Hinweis an {{GENDER:$1|$1}}. Er wird auf {{GENDER:$1|seiner|ihrer}} Diskussionsseite gespeichert.",
 	"pagetriage-tags-tooltip": "Fügen Sie Markierungen hinzu, um auf Probleme mit dieser Seite hinzuweisen.",

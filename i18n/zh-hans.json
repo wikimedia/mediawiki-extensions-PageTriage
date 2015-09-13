@@ -86,7 +86,7 @@
 	"pagetriage-filter-stat-username": "用户名：$1",
 	"pagetriage-no-pages": "没有满足您的条件的页面。",
 	"pagetriage-warning-browser": "此工具可能不能在比Internet Explorer 8更旧的浏览器中工作。",
-	"pagetriage-welcome": "请复查下列新页面，帮助改善{{SITENAME}}。<a href=\"$1\">了解详情</a> · <a href=\"$2\">提出意见</a>",
+	"pagetriage-welcome": "请复查下列新页面，帮助改善{{SITENAME}}。[$1 了解详情] · [$2 提出意见]",
 	"pagetriage-note-reviewed": "本页面已经被复核。",
 	"pagetriage-note-not-reviewed": "该页面还没有被复核。",
 	"pagetriage-note-deletion": "此页面已被提交删除。",

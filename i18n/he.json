@@ -84,7 +84,7 @@
 	"pagetriage-filter-stat-username": "שם משתמש: $1",
 	"pagetriage-no-pages": "אין דפים שתואמים למה שהגדרת.",
 	"pagetriage-warning-browser": "ייתכן שהכלי הזה לא יעבוד נכון בדפדפנים ישנים יותר מאינטרנט אקספלורר 8.",
-	"pagetriage-welcome": "אנו מבקשים ממך לסקור את הדפים להלן לעזור לשפר את {{SITENAME}}. <a href=\"$1\">מידע נוסףa> · <a href=\"$2\">שליחת משוב</a>",
+	"pagetriage-welcome": "אנו מבקשים ממך לסקור את הדפים להלן לעזור לשפר את {{SITENAME}}. [$1 מידע נוסף] · [$2 שליחת משוב]",
 	"pagetriage-note-reviewed": "הדף הזה נסקר.",
 	"pagetriage-note-not-reviewed": "הדף הזה עוד לא נסקר.",
 	"pagetriage-note-deletion": "הדף הזה מועמד למחיקה.",

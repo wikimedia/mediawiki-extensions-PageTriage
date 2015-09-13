@@ -82,7 +82,7 @@
 	"pagetriage-filter-stat-username": "Användarnamn: $1",
 	"pagetriage-no-pages": "Inga sidor matchar dina kriterier.",
 	"pagetriage-warning-browser": "Verktyget fungerar kanske inte korrekt i en webbläsare som är äldre än Internet Explorer 8.",
-	"pagetriage-welcome": "Patrullera nya sidor nedan och hjälp till att förbättra {{SITENAME}}. <a href=\"$1\">Läs mer</a> · <a href=\"$2\">Lämna feedback</a>",
+	"pagetriage-welcome": "Patrullera nya sidor nedan och hjälp till att förbättra {{SITENAME}}. [$1 Läs mer] · [$2 Lämna feedback]",
 	"pagetriage-note-reviewed": "Denna sida har patrullerats.",
 	"pagetriage-note-not-reviewed": "Denna sida har ännu inte granskats.",
 	"pagetriage-note-deletion": "Denna sida har varit nominerad för radering.",

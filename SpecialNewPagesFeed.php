@@ -71,7 +71,8 @@ class SpecialNewPagesFeed extends SpecialPage {
 
 		$warnings = '';
 		$warnings .= '<div id="mwe-pt-list-warnings" style="display: none;">';
-		$warnings .= '<div>' . $this->msg( 'pagetriage-welcome', $wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl )->text() . '</div>';
+		$parsedWelcomeMessage = $this->msg( 'pagetriage-welcome', $wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl )->parse();
+		$warnings .= Html::rawElement( 'div', array( 'class' => 'plainlinks' ), $parsedWelcomeMessage );
 		$warnings .= '</div>';
 		$out->addHtml( $warnings );
 		$out->addInlineStyle( '.client-nojs #mwe-pt-list-view, .client-js #mwe-pt-list-view-no-js { display: none; }' );

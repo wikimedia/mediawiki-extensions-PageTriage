@@ -79,7 +79,7 @@
 	"pagetriage-filter-stat-username": "brukernavn: $1",
 	"pagetriage-no-pages": "Ingen sider svarer til dine kriterier.",
 	"pagetriage-warning-browser": "Dette verktøyet vil kanskje ikke virke pålitelig i nettlesere eldre enn Internett Explorer 8.",
-	"pagetriage-welcome": "Vennligst vurder nye sider nedenfor og hjelp til å forbedre {{SITENAME}}. <a href=\"$1\">Lær mer</a> · <a href=\"$2\">Gi tilbakemelding</a>",
+	"pagetriage-welcome": "Vennligst vurder nye sider nedenfor og hjelp til å forbedre {{SITENAME}}. [$1 Lær mer] · [$2 Gi tilbakemelding]",
 	"pagetriage-note-reviewed": "Denne siden har blitt vurdert.",
 	"pagetriage-note-not-reviewed": "Denne siden har ikke blitt vurdert ennå.",
 	"pagetriage-note-deletion": "Denne siden har blitt nominert for sletting.",

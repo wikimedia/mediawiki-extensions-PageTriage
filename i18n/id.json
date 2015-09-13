@@ -79,7 +79,7 @@
 	"pagetriage-filter-stat-username": "nama pengguna: $1",
 	"pagetriage-no-pages": "Tidak ada halaman yang sesuai dengan kriteria Anda.",
 	"pagetriage-warning-browser": "Alat ini mungkin tidak bekerja dengan benar di peramban yang lebih tua dari Internet Explorer 8.",
-	"pagetriage-welcome": "Tolong tinjaulah halaman baru berikut ini dan bantulah meningkatkan kualitas {{SITENAME}}. <a href=\"$1\">Pelajari selengkapnya</a> · <a href=\"$2\">Tinggalkan umpan balik</a>",
+	"pagetriage-welcome": "Tolong tinjaulah halaman baru berikut ini dan bantulah meningkatkan kualitas {{SITENAME}}. [$1 Pelajari selengkapnya] · [$2 Tinggalkan umpan balik]",
 	"pagetriage-note-reviewed": "Halaman ini telah ditinjau.",
 	"pagetriage-note-not-reviewed": "Halaman ini belum ditinjau.",
 	"pagetriage-note-deletion": "Halaman ini telah dinominasikan untuk penghapusan.",

@@ -80,7 +80,7 @@
 	"pagetriage-filter-stat-username": "stranòm: $1",
 	"pagetriage-no-pages": "Gnun-e pàgine a corispondo ai sò criteri.",
 	"pagetriage-warning-browser": "St'utiss a podrìa travajé pa bin ant ij navigador pi vej che Internet Explorer 8.",
-	"pagetriage-welcome": "Për piasì, ch'a revision-a le neuve pàgine sì-sota e ch'a giuta a amelioré {{SITENAME}}. <a href=\"$1\">Për savèjne ëd pi</a> · <a href=\"$2\">Lassé un coment</a>",
+	"pagetriage-welcome": "Për piasì, ch'a revision-a le neuve pàgine sì-sota e ch'a giuta a amelioré {{SITENAME}}. [$1 Për savèjne ëd pi] · [$2 Lassé un coment]",
 	"pagetriage-note-reviewed": "Sta pàgina-sì a l'é stàita revisionà.",
 	"pagetriage-note-not-reviewed": "Costa pàgina a l'é pa anco' stàita revisionà.",
 	"pagetriage-note-deletion": "Costa pàgina a l'é stàita nominà për la scanselassion.",

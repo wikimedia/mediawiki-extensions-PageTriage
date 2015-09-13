@@ -81,7 +81,7 @@
 	"pagetriage-filter-stat-username": "使用者名稱：$1",
 	"pagetriage-no-pages": "沒有滿足您的條件的頁面。",
 	"pagetriage-warning-browser": "此工具可能不能在比Internet Explorer 8更舊的瀏覽器中工作。",
-	"pagetriage-welcome": "請檢閱下列的新頁面，幫助改善{{SITENAME}}。<a href=\"$1\">了解更多資訊</a> · <a href=\"$2\">留下意見反饋</a>",
+	"pagetriage-welcome": "請檢閱下列的新頁面，幫助改善{{SITENAME}}。[$1 了解更多資訊] · [$2 留下意見反饋]",
 	"pagetriage-note-reviewed": "本頁面已被複查。",
 	"pagetriage-note-not-reviewed": "此頁面還沒有被複查。",
 	"pagetriage-note-deletion": "此頁面已被提交刪除。",

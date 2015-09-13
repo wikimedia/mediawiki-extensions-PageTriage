@@ -95,7 +95,7 @@
 	"pagetriage-filter-stat-username": "Nom d’utilisateur: $1",
 	"pagetriage-no-pages": "Aucune page ne correspond à vos critères.",
 	"pagetriage-warning-browser": "Cet outil peut ne pas fonctionner correctement dans les navigateurs plus anciens que Internet Explorer 8.",
-	"pagetriage-welcome": "Veuillez relire les nouvelles pages ci-dessous et aider à améliorer {{SITENAME}}. <a href=\"$1\">En savoir plus</a> · <a href=\"$2\">Laisser un avis</a>",
+	"pagetriage-welcome": "Veuillez relire les nouvelles pages ci-dessous et aider à améliorer {{SITENAME}}. [$1 En savoir plus] · [$2 Laisser un avis]",
 	"pagetriage-note-reviewed": "Cette page a été relue.",
 	"pagetriage-note-not-reviewed": "Cette page n'a pas encore été relue.",
 	"pagetriage-note-deletion": "Cette page est sujette à suppression.",

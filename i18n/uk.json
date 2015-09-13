@@ -83,7 +83,7 @@
 	"pagetriage-filter-stat-username": "ім'я користувача: $1",
 	"pagetriage-no-pages": "Немає сторінок, що підпадають під Ваші критерії.",
 	"pagetriage-warning-browser": "Цей інструмент може працювати неправильно в браузерах, що старіші, ніж Internet Explorer 8.",
-	"pagetriage-welcome": "Будь ласка, перевірте нові сторінки нижче і допоможіть покращити {{SITENAME}}. <a href=\"$1\">Дізнатися більше</a> · <a href=\"$2\">Залишити відгук</a>",
+	"pagetriage-welcome": "Будь ласка, перевірте нові сторінки нижче і допоможіть покращити {{SITENAME}}. [$1 Дізнатися більше] · [$2 Залишити відгук]",
 	"pagetriage-note-reviewed": "Цю сторінку перевірено.",
 	"pagetriage-note-not-reviewed": "Цю сторінку ще не перевірено.",
 	"pagetriage-note-deletion": "Цю сторінку номіновано на вилучення.",

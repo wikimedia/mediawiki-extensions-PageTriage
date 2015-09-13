@@ -86,7 +86,7 @@
 	"pagetriage-filter-stat-username": "نام کاربری: $1",
 	"pagetriage-no-pages": "هیچ صفحه‌ای منطبق با معیار شما پیدا نشد.",
 	"pagetriage-warning-browser": "این ابزار در مرورگرهای قدیمی‌تر از اینترنت اکسپلورر ۸ ممکن است به درستی کار نکند.",
-	"pagetriage-welcome": "لطفاً صفحه‌های تازه را در زیر بررسی کنید و به بهبود {{SITENAME}} کمک کنید. <a href=\"$1\">اطلاعات بیشتر</a>. <a href=\"$2\">بازخورد</a>.",
+	"pagetriage-welcome": "لطفاً صفحه‌های تازه را در زیر بررسی کنید و به بهبود {{SITENAME}} کمک کنید. [$1 اطلاعات بیشتر]. [$2 بازخورد].",
 	"pagetriage-note-reviewed": "این صفحه بررسی شده‌است.",
 	"pagetriage-note-not-reviewed": "این صفحه هنوز بررسی نشده است.",
 	"pagetriage-note-deletion": "این صفحه برای حذف نامزد شده‌است.",

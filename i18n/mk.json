@@ -80,7 +80,7 @@
 	"pagetriage-filter-stat-username": "Корисничко име: $1",
 	"pagetriage-no-pages": "Нема страници што одговараат на критериумите.",
 	"pagetriage-warning-browser": "Оваа алатка може да не работи како што треба на прелистувачи постари од Internet Explorer 8",
-	"pagetriage-welcome": "Помогнете ни да ја подобриме {{SITENAME}}. Проверете ги страниците подолу. <a href=\"$1\">Дознајте повеќе</a> · <a href=\"$2\">Ваше мислење</a>",
+	"pagetriage-welcome": "Помогнете ни да ја подобриме {{SITENAME}}. Проверете ги страниците подолу. [$1 Дознајте повеќе] · [$2 Ваше мислење]",
 	"pagetriage-note-reviewed": "Страницата е проверена.",
 	"pagetriage-note-not-reviewed": "Страницата сè уште не е проверена.",
 	"pagetriage-note-deletion": "Страницата е предложена за бришење.",
