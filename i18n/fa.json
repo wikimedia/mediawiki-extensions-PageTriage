@@ -122,6 +122,7 @@
 	"pagetriage-tags-cat-moretags-label": "برچسب‌های بیشتر",
 	"pagetriage-tags-cat-all-label": "همهٔ برچسب‌ها",
 	"pagetriage-tags-uncategorised-label": "رده بندی نشده",
+	"pagetriage-tags-orphan-label": "یتیم",
 	"pagetriage-tags-orphan-desc": "هیچ صفحه‌ای به این صفحه پیوند ندارد.",
 	"pagetriage-tags-cleanup-label": "پاکسازی",
 	"pagetriage-tags-sections-label": "بخش‌ها",
@@ -222,5 +223,6 @@
 	"pagetriage-notification-add-deletion-tag-email-batch-body": "$1 {{GENDER:$2|برچسب حذف زده شد}}  توسط $2.",
 	"echo-pref-subscription-page-review": "بازبینی صفحهٔ ساخته شده توسط من",
 	"echo-pref-tooltip-page-review": "زمانی که کسی صفحهٔ‌ای که من ایجاد کرده‌ام را بررسی کرد من را مطلع کن.",
-	"echo-category-title-page-review": "{{PLURAL:$1|بازبینی|بازبینی‌های}} صفحه"
+	"echo-category-title-page-review": "{{PLURAL:$1|بازبینی|بازبینی‌های}} صفحه",
+	"apihelp-pagetriagelist-param-limit": "حداکثر تعداد نتایج برای بازگشت."
 }

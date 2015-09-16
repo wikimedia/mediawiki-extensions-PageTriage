@@ -221,7 +221,7 @@
 	"pagetriage-tags-essaylike-desc": "Description for essay-like tag",
 	"pagetriage-tags-fansite-label": "Label for fansite tag",
 	"pagetriage-tags-fansite-desc": "Description for fansite tag",
-	"pagetriage-tags-notenglish-label": "Label for not english tag.\n\nThis message is not generic enough and may be changed. See [[:bugzilla:37196|Bug 37196 - \"wrong language\" doesn't necessarily mean \"not English\"]].",
+	"pagetriage-tags-notenglish-label": "Label for not english tag.\n\nThis message is not generic enough and may be changed. See [[phab:T39196|Task T39196 - \"wrong language\" doesn't necessarily mean \"not English\"]].",
 	"pagetriage-tags-notenglish-desc": "Description for not english tag",
 	"pagetriage-tags-technical-label": "Label for technical tag",
 	"pagetriage-tags-technical-desc": "Description for technical tag",
