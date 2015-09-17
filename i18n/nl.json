@@ -378,7 +378,7 @@
 	"apihelp-pagetriagetagging-param-note": "Persoonlijke opmerking naar pagina makers van recensenten.",
 	"apihelp-pagetriagetagging-param-taglist": "Pijp-gescheiden lijst van tags.",
 	"apihelp-pagetriagetemplate-description": "Ophalen sjablonen die worden gebruikt binnen de PageTriage toepassing.",
-	"apihelp-pagetriagetemplate-param-view": "De PageTriage bekijk je de sjablonen.",
+	"apihelp-pagetriagetemplate-param-view": "De PageTriage-weergave waar u de sjablonen voor nodig hebt.",
 	"apihelp-pagetriagetemplate-param-template": "De sjabloon op te halen. Scheid meerdere met het teken|.",
 	"apihelp-pagetriagetemplate-example-1": "Items in de lijst met sjablonen \"listItem.html\""
 }
