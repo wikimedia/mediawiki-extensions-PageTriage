@@ -197,7 +197,7 @@
 	"pagetriage-tag-deletion-error": "Страница уже помечена с помощью шаблона удаления, процедура прервана.",
 	"pagetriage-toolbar-close": "Закрыть",
 	"pagetriage-toolbar-minimize": "Свернуть",
-	"pagetriage-tag-warning-notice": "Примечание: Эта страница создана всего $1 минут{{PLURAL:$1|у|ы|}} назад. Подумайте, может стоит подождать перед тем, как пометить его, если только проблема не является серьезной.",
+	"pagetriage-tag-warning-notice": "Примечание: эта страница создана всего $1 минут{{PLURAL:$1|у|ы|}} назад. Подумайте, так ли серьёзна причина для проставления шаблона и не стоит ли немного подождать?",
 	"pagetriage-notification-mark-as-reviewed2": "Страница [[$2]] была {{GENDER:$1|проверена}} участником [[User:$1|$1]]",
 	"pagetriage-notification-mark-as-reviewed-flyout": "Страница [[$2]] была {{GENDER:$1|проверена}} участником <b>$1</b>",
 	"pagetriage-notification-mark-as-reviewed-email-subject2": "Ваша страница была {{GENDER:$1|проверена}} на сайте {{SITENAME}}",
