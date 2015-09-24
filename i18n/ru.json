@@ -14,7 +14,7 @@
 	"pagetriage-desc": "Облегчает проверку и одобрение новых страниц",
 	"pagetriage-pagecuration": "Курирование страниц",
 	"pagetriage-please-wait": "Пожалуйста, подождите...",
-	"pagetriage-api-invalidid": "ID, предоставленный вами ($1), является недействительным.",
+	"pagetriage-api-invalidid": "Предоставлен некорректный ID ($1).",
 	"pagetriage-markpatrolled": "Отметить данную страницу как проверенную",
 	"pagetriage-markunpatrolled": "Отметить данную страницу как непроверенную",
 	"pagetriage-self-review-error": "Вы не можете проверять страницы, созданные самим собой.",
