@@ -20,5 +20,6 @@
 	"pagetriage-filter-stat-redirects": "Ömleidonge",
 	"pagetriage-button-add-parameters": "Parrammeetere derbei donn",
 	"pagetriage-button-add-details": "Einzelheite derbei donn",
-	"pagetriage-button-edit-details": "Einzelheite ändere"
+	"pagetriage-button-edit-details": "Einzelheite ändere",
+	"apihelp-pagetriagetemplate-param-template": "Di Schablohn för ze holle. Mih wi ein schablohn sin müjjejesch met | derzwesche,"
 }
