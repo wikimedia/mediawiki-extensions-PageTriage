@@ -41,8 +41,9 @@
 	"pagetriage-info-timestamp-time-format": "HH:mm",
 	"pagetriage-toolbar-close": "Achiude",
 	"pagetriage-toolbar-minimize": "Minimizze",
-	"pagetriage-notification-mark-as-reviewed2": "[[$2]] ha state {{GENDER:$1|reviste}} da [[User:$1|$1]]",
-	"pagetriage-notification-mark-as-reviewed-flyout": "[[$2]] ha state {{GENDER:$1|reviste}} da <b>$1</b>",
+	"pagetriage-notification-mark-as-reviewed2": "'A vôsce [[$2]] ha state {{GENDER:$1|reviste}} da [[User:$1|$1]]",
+	"pagetriage-notification-mark-as-reviewed-flyout": "'A vôsce [[$2]] ha state {{GENDER:$1|reviste}} da <b>$1</b>",
 	"pagetriage-notification-mark-as-reviewed-email-subject2": "'A pàgena toje {{GENDER:$1|ha state reviste}} sus a {{SITENAME}}",
-	"pagetriage-notification-mark-as-reviewed-email-batch-body": "$1 ha state {{GENDER:$2|reviste}} da $2"
+	"pagetriage-notification-mark-as-reviewed-email-batch-body": "'A vôsce $1 ha state {{GENDER:$2|reviste}} da $2",
+	"pagetriage-notification-add-deletion-tag-flyout": "'A vôsce [[$2]] ha state {{GENDER:$1|reviste}} e {{GENDER:$1|marcate da scangellà}} da <b>$1</b>.\n{{PLURAL:$4|Tag}}: $3"
 }

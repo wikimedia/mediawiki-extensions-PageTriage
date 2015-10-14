@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Akaniji",
-			"Shirayuki"
+			"Shirayuki",
+			"Sujiniku"
 		]
 	},
 	"newpagesfeed": "新しいページのフィード",
@@ -276,18 +277,18 @@
 	"pagetriage-toolbar-close": "閉じる",
 	"pagetriage-toolbar-minimize": "最小化",
 	"pagetriage-tag-warning-notice": "注: このページはわずか $1 {{PLURAL:$1|分}}前のものです。問題点が深刻な場合以外は、タグ付けまで時間を置くことを検討してください。",
-	"pagetriage-notification-mark-as-reviewed2": "[[$2]] が [[User:$1|$1]] によって{{GENDER:$1|査読されました}}",
-	"pagetriage-notification-mark-as-reviewed-flyout": "[[$2]] が <b>$1</b> によって{{GENDER:$1|査読されました}}",
+	"pagetriage-notification-mark-as-reviewed2": "ページ [[$2]] が [[User:$1|$1]] によって{{GENDER:$1|査読されました}}",
+	"pagetriage-notification-mark-as-reviewed-flyout": "ページ [[$2]] が <b>$1</b> によって{{GENDER:$1|査読されました}}",
 	"pagetriage-notification-mark-as-reviewed-email-subject2": "{{SITENAME}}であなたのページが{{GENDER:$1|査読されました}}",
-	"pagetriage-notification-mark-as-reviewed-email-batch-body": "$1 が $2 によって{{GENDER:$2|査読されました}}。",
-	"pagetriage-notification-add-maintenance-tag2": "[[User:$1|$1]] が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。{{PLURAL:$4|タグ}}: $3",
-	"pagetriage-notification-add-maintenance-tag-flyout": "<b>$1</b> が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。{{PLURAL:$4|タグ}}: $3",
+	"pagetriage-notification-mark-as-reviewed-email-batch-body": "ページ $1 が $2 によって{{GENDER:$2|査読されました}}。",
+	"pagetriage-notification-add-maintenance-tag2": "[[User:$1|$1]] が、ページ[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。{{PLURAL:$4|タグ}}: $3",
+	"pagetriage-notification-add-maintenance-tag-flyout": "<b>$1</b> が、ページ[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|タグ付けしました}}。{{PLURAL:$4|タグ}}: $3",
 	"pagetriage-notification-add-maintenance-tag-email-subject2": "{{SITENAME}}であなたのページが{{GENDER:$1|タグ付けされました}}",
-	"pagetriage-notification-add-maintenance-tag-email-batch-body": "$2 が $1 を{{GENDER:$2|査読してタグ付けしました}}。",
-	"pagetriage-notification-add-deletion-tag2": "[[User:$1|$1]] が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|削除の印を付けました}}。{{PLURAL:$4|タグ}}: $3",
-	"pagetriage-notification-add-deletion-tag-flyout": "<b>$1</b> が、[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|削除の印を付けました}}。{{PLURAL:$4|タグ}}: $3",
+	"pagetriage-notification-add-maintenance-tag-email-batch-body": "$2 がページ $1 を{{GENDER:$2|査読してタグ付けしました}}。",
+	"pagetriage-notification-add-deletion-tag2": "[[User:$1|$1]] が、ページ[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|削除の印を付けました}}。{{PLURAL:$4|タグ}}: $3",
+	"pagetriage-notification-add-deletion-tag-flyout": "<b>$1</b> が、ページ[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|削除の印を付けました}}。{{PLURAL:$4|タグ}}: $3",
 	"pagetriage-notification-add-deletion-tag-email-subject2": "{{SITENAME}}で $1 があなたのページに{{GENDER:$1|削除の印を付けました}}",
-	"pagetriage-notification-add-deletion-tag-email-batch-body": "$2 が $1 に{{GENDER:$2|削除の印を付けました}}。",
+	"pagetriage-notification-add-deletion-tag-email-batch-body": "$2 がページ $1 に{{GENDER:$2|削除の印を付けました}}。",
 	"echo-pref-subscription-page-review": "自分が作成したページを、誰かが査読したとき",
 	"echo-pref-tooltip-page-review": "自分が作成したページを誰かが査読したときに通知する。",
 	"echo-category-title-page-review": "ページの{{PLURAL:$1|査読}}"
