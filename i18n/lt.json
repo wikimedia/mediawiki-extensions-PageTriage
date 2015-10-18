@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hugo.arg"
+			"Hugo.arg",
+			"Zygimantus"
 		]
 	},
-	"pagetriage-filter-nominated-for-deletion": "Pasiūlyti ištrinimui"
+	"pagetriage-filter-nominated-for-deletion": "Pasiūlyti ištrinimui",
+	"pagetriage-notification-mark-as-reviewed-email-batch-body": "Puslapį $1 {{GENDER:$2|apžvelgė}} $2.",
+	"pagetriage-notification-add-deletion-tag2": "Puslapis [[$2]] buvo {{GENDER:$1|peržiūrėtas}} ir [[User:$1|Naudotojoː$1]] {{GENDER:$1|pažymėtas trynimui}}. {{PLURAL:$4|Žymė|Žymės}}: $3"
 }
