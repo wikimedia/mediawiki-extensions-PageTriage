@@ -365,6 +365,7 @@
 	"echo-pref-subscription-page-review": "eine Seite überprüft, die ich erstellt habe",
 	"echo-pref-tooltip-page-review": "Benachrichtige mich, wenn jemand eine Seite überprüft, die ich erstellt habe.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Seitenüberprüfung|Seitenüberprüfungen}}",
+	"apihelp-pagetriageaction-param-reviewed": "Ob der Artikel überprüft ist.",
 	"apihelp-pagetriageaction-param-skipnotif": "Die Benachrichtigung überspringen oder nicht.",
 	"apihelp-pagetriagelist-param-showbots": "Ob nur Bearbeitungen von Bots angezeigt werden sollen.",
 	"apihelp-pagetriagelist-param-showredirs": "Ob Weiterleitungen eingeschlossen werden sollen.",
@@ -379,7 +380,9 @@
 	"apihelp-pagetriagestats-param-showredirs": "Ob Weiterleitungen einbezogen werden sollen.",
 	"apihelp-pagetriagestats-param-showreviewed": "Ob geprüfte eingeschlossen werden sollen.",
 	"apihelp-pagetriagestats-param-showunreviewed": "Ob ungeprüfte eingeschlossen werden sollen.",
+	"apihelp-pagetriagestats-param-showdeleted": "Ob „zur Löschung vorgeschlagen“ einbezogen werden soll.",
 	"apihelp-pagetriagetagging-description": "Fügt einem Artikel Markierungen hinzu.",
 	"apihelp-pagetriagetagging-param-pageid": "Der Artikel, der markiert werden soll.",
-	"apihelp-pagetriagetagging-param-taglist": "Pipe-getrennte Liste mit Markierungen."
+	"apihelp-pagetriagetagging-param-taglist": "Pipe-getrennte Liste mit Markierungen.",
+	"apihelp-pagetriagetemplate-example-1": "Listet Objekte mit der Vorlage „listItem.html“ auf"
 }
