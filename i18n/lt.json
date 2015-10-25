@@ -6,6 +6,11 @@
 		]
 	},
 	"pagetriage-filter-nominated-for-deletion": "Pasiūlyti ištrinimui",
+	"pagetriage-notification-mark-as-reviewed2": "Puslapį [[$2]] {{GENDER:$1|apžvelgė}} [[User:$1|$1]]",
+	"pagetriage-notification-mark-as-reviewed-flyout": "Puslapį [[$2]] {{GENDER:$1|apžvelgė}} <b>$1</b>",
 	"pagetriage-notification-mark-as-reviewed-email-batch-body": "Puslapį $1 {{GENDER:$2|apžvelgė}} $2.",
-	"pagetriage-notification-add-deletion-tag2": "Puslapis [[$2]] buvo {{GENDER:$1|peržiūrėtas}} ir [[User:$1|Naudotojoː$1]] {{GENDER:$1|pažymėtas trynimui}}. {{PLURAL:$4|Žymė|Žymės}}: $3"
+	"pagetriage-notification-add-maintenance-tag2": "Puslapį [[$2]] {{GENDER:$1|apžvelgė}} ir {{GENDER:$1|pažymėjo}} naudotojas [[User:$1|$1]]. {{PLURAL:$4|Etiketė|Etiketės}}: $3",
+	"pagetriage-notification-add-maintenance-tag-email-batch-body": "Puslapį $1 {{GENDER:$2|apžvelgė}} ir {{GENDER:$2|peržiūrėjo}} $2.",
+	"pagetriage-notification-add-deletion-tag2": "Puslapis [[$2]] buvo {{GENDER:$1|peržiūrėtas}} ir [[User:$1|Naudotojoː$1]] {{GENDER:$1|pažymėtas trynimui}}. {{PLURAL:$4|Žymė|Žymės}}: $3",
+	"pagetriage-notification-add-deletion-tag-email-batch-body": "Puslapį $1 {{GENDER:$2|pažymėjo trynimui}} $2."
 }
