@@ -377,14 +377,14 @@ class PageTriageUtil {
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
-		$dbw->begin();
+		$dbw->startAtomic( __METHOD__ );
 		$dbw->update(
 			'pagetriage_page_tags',
 			array( 'ptrpt_value' => $status ),
 			array( 'ptrpt_page_id' => $pageIds, 'ptrpt_tag_id' => $tags['user_block_status'] )
 		);
 		PageTriage::bulkSetTagsUpdated( $pageIds );
-		$dbw->commit();
+		$dbw->endAtomic( __METHOD__ );
 
 		$metadata = new ArticleMetadata( $pageIds );
 		$metadata->flushMetadataFromCache();

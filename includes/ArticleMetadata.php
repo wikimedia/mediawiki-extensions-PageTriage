@@ -475,7 +475,7 @@ class ArticleCompileProcessor {
 			$articleMetadata = new ArticleMetadata( array( $pageId ) );
 			$articleMetadata->flushMetadataFromCache();
 			//Make sure either all or none metadata for a single page_id
-			$dbw->begin();
+			$dbw->startAtomic( __METHOD__ );
 			foreach ( $data as $key => $val) {
 				if ( isset( $tags[$key] ) ) {
 					$row = array (
@@ -492,7 +492,7 @@ class ArticleCompileProcessor {
 				$row['ptrp_deleted'] = $data['deleted'] ? '1' : '0';
 			}
 			$pt->update( $row );
-			$dbw->commit();
+			$dbw->endAtomic( __METHOD__ );
 		}
 	}
 

@@ -114,7 +114,7 @@ class PageTriage {
 		$this->mReviewedUpdated = $row['ptrp_reviewed_updated'];
 		$this->mLastReviewedBy  = $row['ptrp_last_reviewed_by'];
 
-		$dbw->begin();
+		$dbw->startAtomic( __METHOD__ );
 		//@Todo - case for marking a page as untriaged and make sure this logic is correct
 		if ( !$fromRc && $this->mReviewed && !is_null( $user ) ) {
 			$rc = RecentChange::newFromConds( array( 'rc_cur_id' => $this->mPageId, 'rc_new' => '1' ) );
@@ -129,7 +129,7 @@ class PageTriage {
 		if ( $dbw->affectedRows() > 0 && $this->mLastReviewedBy ) {
 			$this->logUserTriageAction();
 		}
-		$dbw->commit();
+		$dbw->endAtomic( __METHOD__ );
 
 		$articleMetadata = new ArticleMetadata( array( $this->mPageId ) );
 		$metadataArray = $articleMetadata->getMetadata();
@@ -233,7 +233,7 @@ class PageTriage {
 
 		$this->loadArticleMetadata();
 
-		$dbw->begin();
+		$dbw->startAtomic( __METHOD__ );
 
 		$dbw->delete(
 				'pagetriage_page',
@@ -249,7 +249,7 @@ class PageTriage {
 		);
 		$this->mArticleMetadata->deleteMetadata();
 
-		$dbw->commit();
+		$dbw->endAtomic( __METHOD__ );
 	}
 
 	/**
