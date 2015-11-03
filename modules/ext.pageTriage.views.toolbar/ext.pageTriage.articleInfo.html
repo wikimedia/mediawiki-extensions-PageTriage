@@ -52,7 +52,7 @@
 	<%= mw.msg( 'pagetriage-info-history-header' ) %>
 	<span class="mwe-pt-info-header-details">
 		<%= mw.msg( 'pagetriage-edits', rev_count ) %> &#xb7;
-		<a href="<%= history_link %>"><%= mw.msg( 'pagetriage-info-history-show-full' ) %></a>
+		<a href="<%= mw.html.escape( history_link ) %>"><%= mw.message( 'pagetriage-info-history-show-full' ).escaped() %></a>
 	</span>
 </div>
 <div class="mwe-pt-info-content" id="mwe-pt-info-history-container"></div>
