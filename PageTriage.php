@@ -128,7 +128,10 @@ $wgAutoloadClasses['ArticleCompileDeletionTag'] = $dir . 'includes/ArticleMetada
 $wgAutoloadClasses['PageTriageExternalTagsOptions'] = $dir . 'includes/PageTriageExternalTagsOptions.php';
 $wgAutoloadClasses['PageTriageExternalDeletionTagsOptions'] = $dir . 'includes/PageTriageExternalDeletionTagsOptions.php';
 $wgAutoloadClasses['PageTriageLogFormatter'] = $dir . 'includes/PageTriageLogFormatter.php';
-$wgAutoloadClasses['PageTriageNotificationFormatter'] = $dir . 'includes/PageTriageNotificationFormatter.php';
+$wgAutoloadClasses['PageTriageNotificationFormatter'] = $dir . 'includes/Notifications/PageTriageNotificationFormatter.php';
+$wgAutoloadClasses['PageTriageMarkAsReviewedPresentationModel'] = $dir . 'includes/Notifications/PageTriageMarkAsReviewedPresentationModel.php';
+$wgAutoloadClasses['PageTriageAddMaintenanceTagPresentationModel'] = $dir . 'includes/Notifications/PageTriageAddMaintenanceTagPresentationModel.php';
+$wgAutoloadClasses['PageTriageAddDeletionTagPresentationModel'] = $dir . 'includes/Notifications/PageTriageAddDeletionTagPresentationModel.php';
 
 $wgAutoloadClasses['ApiPageTriageList'] = $dir . 'api/ApiPageTriageList.php';
 $wgAutoloadClasses['ApiPageTriageStats'] = $dir . 'api/ApiPageTriageStats.php';
