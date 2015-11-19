@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"notification-header-pagetriage-mark-as-reviewed": "<b>$1</b> {{GENDER:$2|revisó}} la páxina $3",
+	"notification-header-pagetriage-add-maintenance-tag": "<b>$1</b> {{GENDER:$2|revisó}} y {{GENDER:$2|etiquetó}} la páxina $3. {{PLURAL:$5|Etiqueta|Etiquetes}}: $4",
+	"notification-header-pagetriage-add-deletion-tag": "<b>$1</b> {{GENDER:$2|revisó}} y {{GENDER:$2|marcó pa desaniciu}} la páxina $3. {{PLURAL:$5|Etiqueta|Etiquetes}}: $4"
+}
