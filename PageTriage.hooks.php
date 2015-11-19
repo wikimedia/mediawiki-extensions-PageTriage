@@ -473,6 +473,7 @@ class PageTriageHooks {
 	 * @param $notifications array a list of enabled echo events
 	 * @param $notificationCategories array details for echo events
 	 * @param $icons array of icon details
+	 * @return bool
 	 */
 	public static function onBeforeCreateEchoEvent( &$notifications, &$notificationCategories, &$icons ) {
 		global $wgPageTriageEnabledEchoEvents;
@@ -486,14 +487,13 @@ class PageTriageHooks {
 
 		if ( in_array( 'pagetriage-mark-as-reviewed', $wgPageTriageEnabledEchoEvents ) ) {
 			$notifications['pagetriage-mark-as-reviewed'] = array(
+				'presentation-model' => 'PageTriageMarkAsReviewedPresentationModel',
 				'primary-link' => array( 'message' => 'notification-link-text-view-page', 'destination' => 'title' ),
 				'category' => 'page-review',
 				'group' => 'neutral',
 				'formatter-class' => 'PageTriageNotificationFormatter',
 				'title-message' => 'pagetriage-notification-mark-as-reviewed2',
 				'title-params' => array( 'agent', 'title' ),
-				'flyout-message' => 'pagetriage-notification-mark-as-reviewed-flyout',
-				'flyout-params' => array( 'agent', 'title' ),
 				'email-subject-message' => 'pagetriage-notification-mark-as-reviewed-email-subject2',
 				'email-subject-params' => array( 'agent', 'title' ),
 				'email-body-batch-message' => 'pagetriage-notification-mark-as-reviewed-email-batch-body',
@@ -503,14 +503,13 @@ class PageTriageHooks {
 		}
 		if ( in_array( 'pagetriage-add-maintenance-tag', $wgPageTriageEnabledEchoEvents ) ) {
 			$notifications['pagetriage-add-maintenance-tag'] = array(
+				'presentation-model' => 'PageTriageAddMaintenanceTagPresentationModel',
 				'primary-link' => array( 'message' => 'notification-link-text-view-page', 'destination' => 'title' ),
 				'category' => 'page-review',
 				'group' => 'neutral',
 				'formatter-class' => 'PageTriageNotificationFormatter',
 				'title-message' => 'pagetriage-notification-add-maintenance-tag2',
 				'title-params' => array( 'agent', 'title', 'tag' ),
-				'flyout-message' => 'pagetriage-notification-add-maintenance-tag-flyout',
-				'flyout-params' => array( 'agent', 'title', 'tag' ),
 				'email-subject-message' => 'pagetriage-notification-add-maintenance-tag-email-subject2',
 				'email-subject-params' => array( 'agent', 'title' ),
 				'email-body-batch-message' => 'pagetriage-notification-add-maintenance-tag-email-batch-body',
@@ -520,14 +519,13 @@ class PageTriageHooks {
 		}
 		if ( in_array( 'pagetriage-add-deletion-tag', $wgPageTriageEnabledEchoEvents ) ) {
 			$notifications['pagetriage-add-deletion-tag'] = array(
+				'presentation-model' => 'PageTriageAddDeletionTagPresentationModel',
 				'primary-link' => array( 'message' => 'notification-link-text-view-page', 'destination' => 'title' ),
 				'category' => 'page-review',
 				'group' => 'negative',
 				'formatter-class' => 'PageTriageNotificationFormatter',
 				'title-message' => 'pagetriage-notification-add-deletion-tag2',
 				'title-params' => array( 'agent', 'title', 'tag' ),
-				'flyout-message' => 'pagetriage-notification-add-deletion-tag-flyout',
-				'flyout-params' => array( 'agent', 'title', 'tag' ),
 				'email-subject-message' => 'pagetriage-notification-add-deletion-tag-email-subject2',
 				'email-subject-params' => array( 'agent', 'title' ),
 				'email-body-batch-message' => 'pagetriage-notification-add-deletion-tag-email-batch-body',
@@ -543,6 +541,7 @@ class PageTriageHooks {
 	 * Add users to be notified on an echo event
 	 * @param $event EchoEvent
 	 * @param $users array
+	 * @return bool
 	 */
 	public static function onEchoGetDefaultNotifiedUsers( $event, &$users ) {
 		switch ( $event->getType() ) {
