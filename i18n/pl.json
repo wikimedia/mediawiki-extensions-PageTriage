@@ -96,6 +96,8 @@
 	"pagetriage-wikilove-page-creator": "Twórca strony",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|edycja|edycje|edycji}}",
 	"pagetriage-toolbar-close": "Zamknij",
+	"notification-header-pagetriage-mark-as-reviewed": "Strona $3 została {{GENDER:$2|przejrzana}} przez <b>$1</b>",
+	"notification-header-pagetriage-add-deletion-tag": "Strona $3 została {{GENDER:$2|przejrzana}} i {{GENDER:$2|oznaczona do usunięcie}} przez <b>$1</b>. {{PLURAL:$5|Znacznik|Znaczniki}}: $4",
 	"echo-pref-subscription-page-review": "oceni utworzoną przeze mnie stronę",
 	"echo-pref-tooltip-page-review": "Powiadom mnie, kiedy ktoś przejrzy stronę przeze mnie utworzoną.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Strona przejrzana|Strony przejrzane}}",

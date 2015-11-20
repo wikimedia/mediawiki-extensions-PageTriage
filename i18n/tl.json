@@ -3,7 +3,8 @@
 		"authors": [
 			"AnakngAraw",
 			"Sky Harbor",
-			"TheSleepyhollow02"
+			"TheSleepyhollow02",
+			"Leeheonjin"
 		]
 	},
 	"pagetriage": "Pag-uuri ng Pahina",
@@ -334,5 +335,6 @@
 	"pagetriage-del-log-page-adding-error": "Nabigong matagpuan ang puntiryang dako para sa talakayan",
 	"pagetriage-del-talk-page-notify-error": "Nabigong pabatiran ang may-akda sa ibabaw ng pahina ng usapan",
 	"pagetriage-del-tooltip": "Iharap ang pahinang ito para sa pagbura",
-	"pagetriage-tagging-error": "Nabigo sa paglalapat ng mga tatak sa pahina"
+	"pagetriage-tagging-error": "Nabigo sa paglalapat ng mga tatak sa pahina",
+	"notification-header-pagetriage-mark-as-reviewed": "{{GENDER:$2|Sinuri}} ang pahinang $3 ni <b>$1</b>"
 }
