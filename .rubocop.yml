@@ -15,9 +15,8 @@ Style/Alias:
 Style/SignalException:
   Enabled: false
 
-# uncomment when the offense is fixed
-# Style/StringLiterals:
-#   EnforcedStyle: single_quotes
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
 
 Style/TrivialAccessors:
   ExactNameMatch: true

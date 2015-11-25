@@ -12,9 +12,3 @@
 Style/RegexpLiteral:
   Exclude:
     - 'tests/browser/features/support/pages/page_triage_page.rb'
-
-# Offense count: 31
-# Cop supports --auto-correct.
-# Configuration parameters: SupportedStyles.
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
