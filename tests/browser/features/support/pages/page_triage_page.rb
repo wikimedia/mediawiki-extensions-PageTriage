@@ -17,7 +17,7 @@ class PageTriagePage
   radio_button(:blocked, id: 'mwe-pt-filter-blocked')
   radio_button(:bots, id: 'mwe-pt-filter-bot-edits')
   checkbox(:deletion, id: 'mwe-pt-filter-nominated-for-deletion')
-  a(:learn_more, href: /Wikipedia:Page_Curation\/Help/, text: 'Learn more')
+  a(:learn_more, href: %r{Wikipedia:Page_Curation/Help}, text: 'Learn more')
   a(:leave_feedback, href: /Wikipedia_talk:Page_Curation/, text: 'Leave feedback')
   select(:namespace, id: 'mwe-pt-filter-namespace')
   radio_button(:new_editors, id: 'mwe-pt-filter-non-autoconfirmed')
