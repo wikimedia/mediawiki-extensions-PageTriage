@@ -12,8 +12,7 @@
 class PageTriagePage
   include PageObject
 
-  include URL
-  page_url URL.url("Special:NewPagesFeed")
+  page_url "Special:NewPagesFeed"
 
   radio_button(:blocked, id: "mwe-pt-filter-blocked")
   radio_button(:bots, id: "mwe-pt-filter-bot-edits")
