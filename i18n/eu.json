@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"පසිඳු කාවින්ද",
-			"Subi"
+			"Subi",
+			"Sator"
 		]
 	},
+	"pagetriage-please-wait": "Itxaron mesedez...",
 	"pagetriage-newest": "Berrienak",
 	"pagetriage-oldest": "Zaharrenak",
 	"pagetriage-filter-show-heading": "Erakutsi:",
