@@ -8,7 +8,8 @@
 			"Tarkovsky",
 			"Meelo",
 			"McAang",
-			"KorkmazO"
+			"KorkmazO",
+			"Sayginer"
 		]
 	},
 	"pagetriage": "Sayfa Sıralayıcı",
@@ -185,17 +186,15 @@
 	"pagetriage-toolbar-minimize": "Küçült",
 	"pagetriage-tag-warning-notice": "Not: Bu sayfa $1 {{PLURAL:$1|dakika|dakika}} önce açıldı. Ciddi bir sorun yoksa etiket eklemek için beklemeyi düşünün.",
 	"pagetriage-notification-mark-as-reviewed2": "[[$2]] sayfası [[User:$1|$1]] tarafından {{GENDER:$1|incelendi}}",
-	"pagetriage-notification-mark-as-reviewed-flyout": "[[$2]] sayfası <b>$1</b> tarafından {{GENDER:$1|incelendi}}",
 	"pagetriage-notification-mark-as-reviewed-email-subject2": "Sayfanız, {{SITENAME}} üzerinde {{GENDER:$1|incelendi}}",
 	"pagetriage-notification-mark-as-reviewed-email-batch-body": "$1 sayfası $2 tarafından {{GENDER:$2|incelendi}}.",
 	"pagetriage-notification-add-maintenance-tag2": "[[$2]] sayfası [[User:$1|$1]] tarafından  {{GENDER:$1|incelendi}} ve {{GENDER:$1|etiketlendi}}. {{PLURAL:$4|Etiket|Etiketler}}: $3",
-	"pagetriage-notification-add-maintenance-tag-flyout": "[[$2]] sayfası <b>$1</b> tarafından  {{GENDER:$1|incelendi}} ve {{GENDER:$1|etiketlendi}}. {{PLURAL:$4|Etiket|Etiketler}}: $3",
 	"pagetriage-notification-add-maintenance-tag-email-subject2": "Sayfanız {{SITENAME}} üzerinde {{GENDER:$1|etiketlendi}}",
 	"pagetriage-notification-add-maintenance-tag-email-batch-body": "$1 sayfası $2 tarafından {{GENDER:$2|incelendi}} ve {{GENDER:$2|etiketlendi}}.",
 	"pagetriage-notification-add-deletion-tag2": "[[$2]] sayfası [[User:$1|$1]] tarafından  {{GENDER:$1|incelendi}} ve {{GENDER:$1|silinmek üzere işaretlendi}}. {{PLURAL:$4|Etiket|Etiketler}}: $3",
-	"pagetriage-notification-add-deletion-tag-flyout": "[[$2]] sayfası <b>$1</b> tarafından  {{GENDER:$1|incelendi}} ve {{GENDER:$1|silinmek üzere işaretlendi}}. {{PLURAL:$4|Etiket|Etiketler}}: $3",
 	"pagetriage-notification-add-deletion-tag-email-subject2": "Sayfanız {{SITENAME}} üzerinde {{GENDER:$1|silinmek üzere işaretlendi}}",
 	"pagetriage-notification-add-deletion-tag-email-batch-body": "$1 sayfası $2 tarafından {{GENDER:$2|silinmek üzere işaretlendi}}.",
+	"notification-header-pagetriage-mark-as-reviewed": "$3 sayfası <b>$1</b> tarafından {{GENDER:$2|incelendi}}",
 	"echo-pref-subscription-page-review": "Açmış olduğum sayfa incelemeleri",
 	"echo-pref-tooltip-page-review": "Birisi açmış olduğum bir sayfayı incelendiğinde beni bilgilendir."
 }
