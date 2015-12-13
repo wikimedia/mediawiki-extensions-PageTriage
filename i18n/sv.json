@@ -259,8 +259,8 @@
 	"pagetriage-notification-add-deletion-tag2": "Sidan [[$2]] {{GENDER:$1|patrullerades}} och {{GENDER:$1|märktes för radering}} av [[User:$1|$1]]. {{PLURAL:$4|Tagg|Taggar}}: $3",
 	"pagetriage-notification-add-deletion-tag-email-subject2": "Din sida {{GENDER:$1|märktes för radering}} på {{SITENAME}}",
 	"pagetriage-notification-add-deletion-tag-email-batch-body": "Sidan $1 {{GENDER:$1|märktes för radering}} av $2.",
-	"notification-header-pagetriage-mark-as-reviewed": "Sidan $3 {{GENDER:$2|granskade}} av <b>$1</b>",
-	"notification-header-pagetriage-add-maintenance-tag": "Sidan $3 {{GENDER:$2|granskades}} och {{GENDER:$2|märktes}} av <b>$1</b>. {{PLURAL:$5|Märke|Märken}}: $4",
+	"notification-header-pagetriage-mark-as-reviewed": "Sidan $3 {{GENDER:$2|granskades}} av <b>$1</b>",
+	"notification-header-pagetriage-add-maintenance-tag": "Sidan $3 {{GENDER:$2|granskades}} och {{GENDER:$2|taggades}} av <b>$1</b>. {{PLURAL:$5|Tagg|Taggar}}: $4",
 	"echo-pref-subscription-page-review": "Granska en sida jag skapat",
 	"echo-pref-tooltip-page-review": "Meddela mig när någon granskat en sida jag skapat.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Sidgranskning|Sidgranskningar}}"
