@@ -20,8 +20,8 @@ class PageTriageMarkAsReviewedPresentationModel extends EchoEventPresentationMod
      */
     public function getPrimaryLink() {
         return array(
-            $this->event->getTitle()->getFullURL(),
-            $this->msg( 'notification-link-text-view-page' )->text()
+            'url' => $this->event->getTitle()->getFullURL(),
+            'label' => $this->msg( 'notification-link-text-view-page' )->text(),
         );
     }
 
