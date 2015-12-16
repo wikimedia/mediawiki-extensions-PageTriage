@@ -45,14 +45,12 @@ class PageTriageAddMaintenanceTagPresentationModel extends EchoEventPresentation
      * @return array [(string) tag list, (int) amount of tags]
      */
     protected function getTagsForOutput() {
-        global $wgContLang;
-
         $eventData = $this->event->getExtra();
 
         if ( !is_array( $eventData ) ) {
             return array( '', 0 );
         }
 
-        return array( $wgContLang->listToText( $eventData ), count( $eventData ) );
+        return array( $this->language->listToText( $eventData ), count( $eventData ) );
     }
 }
