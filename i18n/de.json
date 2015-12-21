@@ -392,5 +392,6 @@
 	"apihelp-pagetriagetagging-param-pageid": "Der Artikel, der markiert werden soll.",
 	"apihelp-pagetriagetagging-param-note": "Persönliche Nachricht an die Seitenersteller von den Prüfern.",
 	"apihelp-pagetriagetagging-param-taglist": "Pipe-getrennte Liste mit Markierungen.",
+	"apihelp-pagetriagetemplate-description": "Ruft Vorlagen ab, die innerhalb der Seitenüberprüfungs-Anwendung verwendet werden.",
 	"apihelp-pagetriagetemplate-example-1": "Listet Objekte mit der Vorlage „listItem.html“ auf"
 }
