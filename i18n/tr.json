@@ -9,7 +9,8 @@
 			"Meelo",
 			"McAang",
 			"KorkmazO",
-			"Sayginer"
+			"Sayginer",
+			"Rapsar"
 		]
 	},
 	"pagetriage": "Sayfa Sıralayıcı",
@@ -175,7 +176,7 @@
 	"pagetriage-wikilove-helptext": "Teşekkür etmek istediğiniz editörlerin adlarını seçiniz.",
 	"pagetriage-wikilove-page-creator": "Sayfayı Açan",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|değişiklik|değişiklik}}",
-	"pagetriage-wikilove-tooltip": "Yazar(lar)a teşekkür iletisi gönder",
+	"pagetriage-wikilove-tooltip": "Yazar(lar)a teşekkür et",
 	"pagetriage-next-tooltip": "Kuyruk listesindeki bir sonraki sayfaya git",
 	"pagetriage-del-title": "Silinmek üzere işaretle",
 	"pagetriage-del-tooltip": "Bu sayfayı silinmesi için işaretle",
