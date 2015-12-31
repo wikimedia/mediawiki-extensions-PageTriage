@@ -45,7 +45,7 @@ class CleanupPageTriage extends Maintenance {
 			$count = count( $page );
 
 			if ( $count > 0 ) {
-				$dbw->begin();
+				$this->beginTransaction( $dbw, __METHOD__ );
 
 				$dbw->delete(
 					'pagetriage_page',
@@ -65,7 +65,7 @@ class CleanupPageTriage extends Maintenance {
 					__METHOD__
 				);
 
-				$dbw->commit();
+				$this->commitTransaction( $dbw, __METHOD__ );
 
 				$this->output( "processing " . $count . "\n" );
 				wfWaitForSlaves();
