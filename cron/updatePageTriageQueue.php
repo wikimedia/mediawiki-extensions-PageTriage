@@ -90,7 +90,7 @@ class UpdatePageTriageQueue extends Maintenance {
 				}
 				$startId = $row->ptrp_page_id;
 
-				$this->dbw->begin();
+				$this->beginTransaction( $this->dbw, __METHOD__ );
 
 				$this->dbw->delete(
 						'pagetriage_page',
@@ -107,7 +107,7 @@ class UpdatePageTriageQueue extends Maintenance {
 				$articleMetadata = new ArticleMetadata( $pageId );
 				$articleMetadata->deleteMetadata();
 
-				$this->dbw->commit();
+				$this->commitTransaction( $this->dbw, __METHOD__ );
 			}
 
 			$this->output( "processed $count \n" );
