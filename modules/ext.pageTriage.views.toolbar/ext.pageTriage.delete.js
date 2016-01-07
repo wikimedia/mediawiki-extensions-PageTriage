@@ -660,7 +660,7 @@ $( function () {
 		/**
 		 * Handle an error occuring after submit
 		 *
-		 * @param {String} msg The error message to display
+		 * @param {string} msg The error message to display
 		 */
 		handleError: function ( msg ) {
 			$.removeSpinner( 'delete-spinner' );

@@ -30,7 +30,7 @@ $( function () {
 
 		parse: function ( response ) {
 			// extract the useful bits of json.
-			return response.query.pages[this.pageId].revisions;
+			return response.query.pages[ this.pageId ].revisions;
 		},
 
 		setParams: function ( apiParams ) {
@@ -38,11 +38,11 @@ $( function () {
 		},
 
 		setParam: function ( paramName, paramValue ) {
-			this.apiParams[paramName] = paramValue;
+			this.apiParams[ paramName ] = paramValue;
 		},
 
 		getParam: function ( key ) {
-			return this.apiParams[key];
+			return this.apiParams[ key ];
 		}
 
 	} );

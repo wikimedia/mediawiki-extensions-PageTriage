@@ -158,8 +158,8 @@ $( function () {
 		/**
 		 * Handle an error occuring after submit
 		 *
-		 * @param {String} action Whether the action was reviewing or unreviewing
-		 * @param {String} errorMsg The specific error that occurred
+		 * @param {string} action Whether the action was reviewing or unreviewing
+		 * @param {string} errorMsg The specific error that occurred
 		 */
 		showMarkError: function ( action, errorMsg ) {
 			// Give grep a chance to find the usages:
