@@ -31,5 +31,8 @@
 	"pagetriage-info-history-header": "Истори",
 	"pagetriage-info-help": "гӀо",
 	"pagetriage-info-problem-no-categories-desc": "ХӀокху агӀона цхьаа категори яц.",
-	"pagetriage-del-tooltip": "Кховдае хӀара агӀо дӀаяккхаре"
+	"pagetriage-del-tooltip": "Кховдае хӀара агӀо дӀаяккхаре",
+	"pagetriage-notification-mark-as-reviewed2": "[[$2]] агӀо {{GENDER:$1|декъашхочо}} [[User:$1|$1]] теллина",
+	"pagetriage-notification-mark-as-reviewed-email-subject2": "Хьан агӀо  {{SITENAME}} сайтан тӀехь {{GENDER:$1|теллина}}",
+	"pagetriage-notification-mark-as-reviewed-email-batch-body": "$1 агӀо {{GENDER:$2|декъашхочо}} теллина ($2)."
 }
