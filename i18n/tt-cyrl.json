@@ -4,5 +4,6 @@
 			"Ильнар"
 		]
 	},
-	"pagetriage-filter-article": "Мәкалә"
+	"pagetriage-filter-article": "Мәкалә",
+	"echo-category-title-page-review": "Битне {{PLURAL:$1|тикшерү}}"
 }
