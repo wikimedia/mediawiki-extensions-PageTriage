@@ -12,7 +12,7 @@ class PageTriageMarkAsReviewedPresentationModel extends EchoEventPresentationMod
 	 * {@inheritdoc}
 	 */
 	public function getIconType() {
-		return 'checkmark';
+		return 'reviewed';
 	}
 
 	/**

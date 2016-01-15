@@ -515,7 +515,7 @@ class PageTriageHooks {
 				'email-subject-params' => array( 'agent', 'title' ),
 				'email-body-batch-message' => 'pagetriage-notification-mark-as-reviewed-email-batch-body',
 				'email-body-batch-params' => array( 'title', 'agent' ),
-				'icon' => 'checkmark',
+				'icon' => 'reviewed',
 			);
 		}
 		if ( in_array( 'pagetriage-add-maintenance-tag', $wgPageTriageEnabledEchoEvents ) ) {
@@ -534,7 +534,7 @@ class PageTriageHooks {
 				'email-subject-params' => array( 'agent', 'title' ),
 				'email-body-batch-message' => 'pagetriage-notification-add-maintenance-tag-email-batch-body',
 				'email-body-batch-params' => array( 'title', 'agent' ),
-				'icon' => 'checkmark',
+				'icon' => 'reviewed',
 			);
 		}
 		if ( in_array( 'pagetriage-add-deletion-tag', $wgPageTriageEnabledEchoEvents ) ) {
