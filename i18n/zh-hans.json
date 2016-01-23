@@ -122,6 +122,7 @@
 	"pagetriage-tags-cat-moretags-label": "更多标签",
 	"pagetriage-tags-cat-all-label": "全部标签",
 	"pagetriage-tags-primarysources-desc": "该页面过于依赖第一手来源，其需要更多的第二手来源。",
+	"pagetriage-tags-sections-label": "章节",
 	"pagetriage-tags-update-label": "更新",
 	"pagetriage-tags-tooltip": "添加标记以指出此页需要改进的地方",
 	"pagetriage-del-tags-cat-csd-desc": "如果它满足以下条件之一，标记这个页面快速删除。",
