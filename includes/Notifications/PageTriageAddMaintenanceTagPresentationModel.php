@@ -40,7 +40,7 @@ class PageTriageAddMaintenanceTagPresentationModel extends EchoEventPresentation
 
 		// parent adds agent & gender, this adds title as 3rd param, tag list as
 		// 4th & amount of tags as 5th (for PLURAL)
-		$msg->params( $this->event->getTitle() );
+		$msg->params( $this->getTruncatedTitleText( $this->event->getTitle(), true ) );
 		$msg->params( $this->getTagsForOutput() );
 
 		return $msg;

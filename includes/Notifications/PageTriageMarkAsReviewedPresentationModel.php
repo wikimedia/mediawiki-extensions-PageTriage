@@ -39,7 +39,7 @@ class PageTriageMarkAsReviewedPresentationModel extends EchoEventPresentationMod
 		$msg = parent::getHeaderMessage();
 
 		// parent adds agent & gender, this adds title as 3rd param
-		$msg->params( $this->event->getTitle() );
+		$msg->params( $this->getTruncatedTitleText( $this->event->getTitle(), true ) );
 
 		return $msg;
 	}
