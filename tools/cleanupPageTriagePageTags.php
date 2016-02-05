@@ -5,7 +5,7 @@
  * @ingroup Maintenance
  */
 
-require_once ( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
+require_once dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php';
 
 /**
  * Maintenance script that removes data from pagetriage_page_tags with page_id
@@ -64,4 +64,4 @@ class CleanupPageTriagePageTags extends Maintenance {
 }
 
 $maintClass = 'CleanupPageTriagePageTags'; // Tells it to run the class
-require_once ( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

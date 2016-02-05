@@ -4,7 +4,7 @@ $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = dirname( __FILE__ ) . '/../../..';
 }
-require_once ( "$IP/maintenance/Maintenance.php" );
+require_once "$IP/maintenance/Maintenance.php";
 
 /**
  * A maintenance script that updates expired user metadata
@@ -110,4 +110,4 @@ class UpdateUserMetadata extends Maintenance {
 }
 
 $maintClass = "UpdateUserMetadata";
-require_once ( DO_MAINTENANCE );
+require_once DO_MAINTENANCE;

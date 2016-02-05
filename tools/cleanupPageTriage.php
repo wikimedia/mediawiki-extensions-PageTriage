@@ -5,7 +5,7 @@
  * @ingroup Maintenance
  */
 
-require_once ( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
+require_once dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php';
 
 /**
  * Maintenance script that removes page with namespace other than NS_MAIN/NS_USER
@@ -76,4 +76,4 @@ class CleanupPageTriage extends Maintenance {
 }
 
 $maintClass = 'CleanupPageTriage'; // Tells it to run the class
-require_once ( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

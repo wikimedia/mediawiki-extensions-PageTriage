@@ -6,7 +6,7 @@
  * @ingroup Maintenance
  */
 
-require_once ( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
+require_once dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php';
 
 /**
  * Maintenance script that updates parameter name from '4::tags' to 'tags' in
@@ -68,4 +68,4 @@ class CleanupPageTriageLog extends Maintenance {
 }
 
 $maintClass = 'CleanupPageTriageLog'; // Tells it to run the class
-require_once ( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;
