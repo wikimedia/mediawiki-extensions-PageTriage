@@ -35,7 +35,10 @@ class ApiPageTriageAction extends ApiBase {
 			PageTriageUtil::createNotificationEvent(
 				$article,
 				$this->getUser(),
-				'pagetriage-mark-as-reviewed'
+				'pagetriage-mark-as-reviewed',
+				array(
+					'note' => $params['note'],
+				)
 			);
 		}
 

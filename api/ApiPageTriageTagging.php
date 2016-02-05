@@ -96,6 +96,8 @@ class ApiPageTriageTagging extends ApiBase {
 
 			$api->execute();
 
+			$note = $wgContLang->truncate( $params['note'], 150 );
+
 			// logging to the logging table
 			if ( $params['taglist'] ) {
 				if ( $params['deletion'] ) {
@@ -109,7 +111,10 @@ class ApiPageTriageTagging extends ApiBase {
 						$article,
 						$this->getUser(),
 						'pagetriage-add-deletion-tag',
-						$params['taglist']
+						array(
+							'tags' => $params['taglist'],
+							'note' => $note,
+						)
 					);
 				} else {
 					$entry = array(
@@ -119,7 +124,11 @@ class ApiPageTriageTagging extends ApiBase {
 						$article,
 						$this->getUser(),
 						'pagetriage-add-maintenance-tag',
-						$params['taglist']
+						array(
+							'tags' => $params['taglist'],
+							'note' => $note,
+							'revId' => $api->getResult()->getResultData( array( 'edit', 'newrevid' ) ),
+						)
 					);
 				}
 
@@ -127,7 +136,6 @@ class ApiPageTriageTagging extends ApiBase {
 					$logEntry = new ManualLogEntry( $type, $action );
 					$logEntry->setPerformer( $this->getUser() );
 					$logEntry->setTarget( $article->getTitle() );
-					$note = $wgContLang->truncate( $params['note'], 150 );
 					if ( $note ) {
 						$logEntry->setComment( $note );
 					}

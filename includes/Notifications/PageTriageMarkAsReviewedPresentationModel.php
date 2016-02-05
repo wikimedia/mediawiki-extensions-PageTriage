@@ -1,28 +1,12 @@
 <?php
 
-class PageTriageMarkAsReviewedPresentationModel extends EchoEventPresentationModel {
-	/**
-	 * {@inheritdoc}
-	 */
-	public function canRender() {
-		return $this->event->getTitle() instanceof Title;
-	}
+class PageTriageMarkAsReviewedPresentationModel extends PageTriagePresentationModel {
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public function getIconType() {
 		return 'reviewed';
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getPrimaryLink() {
-		return array(
-			'url' => $this->event->getTitle()->getFullURL(),
-			'label' => $this->msg( 'notification-link-text-view-page' )->text(),
-		);
 	}
 
 	/**

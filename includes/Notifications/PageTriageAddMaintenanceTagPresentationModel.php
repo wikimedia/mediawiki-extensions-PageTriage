@@ -1,13 +1,6 @@
 <?php
 
-class PageTriageAddMaintenanceTagPresentationModel extends EchoEventPresentationModel {
-	/**
-	 * {@inheritdoc}
-	 */
-	public function canRender() {
-		return $this->event->getTitle() instanceof Title;
-	}
-
+class PageTriageAddMaintenanceTagPresentationModel extends PageTriagePresentationModel {
 	/**
 	 * {@inheritdoc}
 	 */
@@ -18,18 +11,13 @@ class PageTriageAddMaintenanceTagPresentationModel extends EchoEventPresentation
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getPrimaryLink() {
-		return array(
-			'url' => $this->event->getTitle()->getFullURL(),
-			'label' => $this->msg( 'notification-link-text-view-page' )->text(),
-		);
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
 	public function getSecondaryLinks() {
-		return array( $this->getAgentLink() );
+		$links = array( $this->getAgentLink() );
+		$thankLink = $this->getThankLink();
+		if ( $thankLink ) {
+			$links[] = $thankLink;
+		}
+		return $links;
 	}
 
 	/**
@@ -46,18 +34,28 @@ class PageTriageAddMaintenanceTagPresentationModel extends EchoEventPresentation
 		return $msg;
 	}
 
-	/**
-	 * Returns an array of [tag list, amount of tags], to be used as msg params.
-	 *
-	 * @return array [(string) tag list, (int) amount of tags]
-	 */
-	protected function getTagsForOutput() {
-		$eventData = $this->event->getExtra();
-
-		if ( !is_array( $eventData ) ) {
-			return array( '', 0 );
+	private function getThankLink() {
+		if ( !class_exists( 'ThanksHooks' ) ) {
+			return false;
 		}
 
-		return array( $this->language->listToText( $eventData ), count( $eventData ) );
+		$revId = $this->event->getExtraParam( 'revId' );
+		if ( !$revId ) {
+			return false;
+		}
+
+		$thankingUser = $this->getViewingUserForGender();
+		list( , $thankedUser ) = $this->getAgentForOutput();
+		$labelMsg = $this->msg( 'pagetriage-thank-link' );
+		$labelMsg->params( $thankingUser, $thankedUser );
+		$descMsg = $this->msg( 'pagetriage-thank-link-title' );
+		$descMsg->params( $thankingUser, $thankedUser );
+		return array(
+			'label' => $labelMsg->text(),
+			'url' => SpecialPage::getTitleFor( 'Thanks', $revId )->getFullURL(),
+			'icon' => 'thanks',
+			'description' => $descMsg->text(),
+			'prioritized' => true,
+		);
 	}
 }

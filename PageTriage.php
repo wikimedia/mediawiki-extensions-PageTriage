@@ -144,6 +144,8 @@ $wgAutoloadClasses['PageTriageLogFormatter'] = $dir
 	. 'includes/PageTriageLogFormatter.php';
 $wgAutoloadClasses['PageTriageNotificationFormatter'] = $dir
 	. 'includes/Notifications/PageTriageNotificationFormatter.php';
+$wgAutoloadClasses['PageTriagePresentationModel'] = $dir
+	. 'includes/Notifications/PageTriagePresentationModel.php';
 $wgAutoloadClasses['PageTriageMarkAsReviewedPresentationModel'] = $dir
 	. 'includes/Notifications/PageTriageMarkAsReviewedPresentationModel.php';
 $wgAutoloadClasses['PageTriageAddMaintenanceTagPresentationModel'] = $dir

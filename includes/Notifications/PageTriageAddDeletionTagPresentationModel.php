@@ -1,13 +1,6 @@
 <?php
 
-class PageTriageAddDeletionTagPresentationModel extends EchoEventPresentationModel {
-	/**
-	 * {@inheritdoc}
-	 */
-	public function canRender() {
-		return $this->event->getTitle() instanceof Title;
-	}
-
+class PageTriageAddDeletionTagPresentationModel extends PageTriagePresentationModel {
 	/**
 	 * {@inheritdoc}
 	 */
@@ -18,18 +11,13 @@ class PageTriageAddDeletionTagPresentationModel extends EchoEventPresentationMod
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getPrimaryLink() {
-		return array(
-			'url' => $this->event->getTitle()->getFullURL(),
-			'label' => $this->msg( 'notification-link-text-view-page' )->text(),
-		);
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
 	public function getSecondaryLinks() {
-		return array( $this->getAgentLink() );
+		$links = array( $this->getAgentLink() );
+		$discussionLink = $this->getDiscussionLink();
+		if ( $discussionLink ) {
+			$links[] = $discussionLink;
+		}
+		return $links;
 	}
 
 	/**
@@ -46,18 +34,22 @@ class PageTriageAddDeletionTagPresentationModel extends EchoEventPresentationMod
 		return $msg;
 	}
 
-	/**
-	 * Returns an array of [tag list, amount of tags], to be used as msg params.
-	 *
-	 * @return array [(string) tag list, (int) amount of tags]
-	 */
-	protected function getTagsForOutput() {
-		$eventData = $this->event->getExtra();
-
-		if ( !is_array( $eventData ) ) {
-			return array( '', 0 );
+	private function getDiscussionLink() {
+		if ( !in_array( 'afd', $this->getTags() ) ) {
+			return false;
 		}
 
-		return array( $this->language->listToText( $eventData ), count( $eventData ) );
+		$pageName = $this->event->getTitle()->getText();
+		$discussionPage = Title::newFromText( "Wikipedia:Articles for deletion/$pageName" );
+		$user = $this->getViewingUserForGender();
+		$labelMsg = $this->msg( 'pagetriage-discuss-link' )->params( $user );
+		$descMsg = $this->msg( 'pagetriage-discuss-link-title' )->params( $user );
+		return array(
+			'label' => $labelMsg->text(),
+			'url' => $discussionPage->getFullURL(),
+			'icon' => 'speechBubbles',
+			'description' => $descMsg->text(),
+			'prioritized' => true,
+		);
 	}
 }
