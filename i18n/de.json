@@ -370,6 +370,7 @@
 	"apihelp-pagetriageaction-param-reviewed": "Ob der Artikel überprüft ist.",
 	"apihelp-pagetriageaction-param-note": "Persönliche Nachricht an die Seitenersteller von den Prüfern.",
 	"apihelp-pagetriageaction-param-skipnotif": "Die Benachrichtigung überspringen oder nicht.",
+	"apihelp-pagetriagelist-param-page_id": "Gibt Daten für die angegebenen Seitenkennungen zurück, andere Parameter werden ignoriert.",
 	"apihelp-pagetriagelist-param-showbots": "Ob nur Bearbeitungen von Bots angezeigt werden sollen.",
 	"apihelp-pagetriagelist-param-showredirs": "Ob Weiterleitungen eingeschlossen werden sollen.",
 	"apihelp-pagetriagelist-param-showreviewed": "Ob überprüfte einbezogen werden sollen.",
