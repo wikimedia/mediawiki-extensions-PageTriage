@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Mercé}}}}",
+	"pagetriage-discuss-link": "{{GENDER:$1|Discutir}}",
+	"pagetriage-discuss-link-title": "{{GENDER:$1|Discutir}}"
+}

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ай-Куо"
+		]
+	},
+	"notification-header-pagetriage-mark-as-reviewed": "Сирэй'' ' $3' ' '  {{GENDER:$2|| дьүүллэммитэ } } .",
+	"notification-header-pagetriage-add-deletion-tag": "Сирэй '' ' $3' ' '  {{ УУС: $2 | сотторорго бэлиэтэммит } } . { { PLURAL : $5 | Бэлиэ | Бэлиэлэр } } : $4 .",
+	"pagetriage-discuss-link": "{ { УУС: $1 | дьүүллээ }}"
+}
