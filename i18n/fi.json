@@ -4,7 +4,8 @@
 			"Beluga",
 			"Nedergard",
 			"Pxos",
-			"Silvonen"
+			"Silvonen",
+			"Nike"
 		]
 	},
 	"newpagesfeed": "Uusien sivujen liukuhihna",
@@ -193,6 +194,7 @@
 	"pagetriage-notification-mark-as-reviewed2": "Sivun [[$2]] {{GENDER:$1|on katsastanut}} käyttäjä [[User:$1|$1]]",
 	"pagetriage-notification-mark-as-reviewed-email-subject2": "Sivusi on katsastettu {{SITENAME}}ssa.",
 	"pagetriage-notification-mark-as-reviewed-email-batch-body": "Sivun $1 katsasti käyttäjä $2",
+	"pagetriage-discuss-link-title": "{{GENDER:$1|Keskustelu}}",
 	"echo-pref-subscription-page-review": "Katsastanut sivun, jonka olen luonut",
 	"echo-pref-tooltip-page-review": "Ilmoita minulle kun joku katsastaa sivun, jonka olen luonut.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Sivu katsastettu|Sivuja katsastettu}}"

@@ -287,6 +287,8 @@
 	"pagetriage-notification-add-deletion-tag2": "[[User:$1|$1]] が、ページ[[$2]] を{{GENDER:$1|査読して}}{{GENDER:$1|削除の印を付けました}}。{{PLURAL:$4|タグ}}: $3",
 	"pagetriage-notification-add-deletion-tag-email-subject2": "{{SITENAME}}で $1 があなたのページに{{GENDER:$1|削除の印を付けました}}",
 	"pagetriage-notification-add-deletion-tag-email-batch-body": "$2 がページ $1 に{{GENDER:$2|削除の印を付けました}}。",
+	"notification-header-pagetriage-mark-as-reviewed": "ページ'''$3'''が{{GENDER:$2|査読されました}}。",
+	"notification-header-pagetriage-add-deletion-tag": "ページ'''$3'''が{{GENDER:$2|削除保留のページとして印付されました}}。{{PLURAL:$5|タグ}}: $4",
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|感謝}}}}",
 	"echo-pref-subscription-page-review": "自分が作成したページを、誰かが査読したとき",
 	"echo-pref-tooltip-page-review": "自分が作成したページを誰かが査読したときに通知する。",
