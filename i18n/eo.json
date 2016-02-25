@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Yekrats"
+			"Yekrats",
+			"Robin van der Vliet"
 		]
 	},
 	"pagetriage-bytes": "$1 {{PLURAL:$1|bitoko|bitokoj}}",
@@ -50,5 +51,8 @@
 	"pagetriage-info-problem-orphan": "Orfaĵo",
 	"pagetriage-info-timestamp-date-format": "d MMMM yyyy",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
-	"pagetriage-toolbar-close": "Fermi"
+	"pagetriage-toolbar-close": "Fermi",
+	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Danki}}}}",
+	"pagetriage-discuss-link": "{{GENDER:$1|Diskuto}}",
+	"pagetriage-discuss-link-title": "{{GENDER:$1|Diskuto}}"
 }
