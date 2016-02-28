@@ -5,7 +5,7 @@
 	position: relative;
 }
 
-.mwe-pt-tool-icon {	
+.mwe-pt-tool-icon {
 	cursor: pointer;
 }
 
@@ -17,8 +17,6 @@
 	background-color: #cacaca;
 	text-align: left;
 	z-index: 2;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	border: 1px solid #9F9F9F;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
