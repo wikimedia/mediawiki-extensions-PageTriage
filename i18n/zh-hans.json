@@ -9,7 +9,8 @@
 			"Shizhao",
 			"Xiaomingyan",
 			"Yfdyh000",
-			"乌拉跨氪"
+			"乌拉跨氪",
+			"飞舞回堂前"
 		]
 	},
 	"pagetriage": "页面鉴别",
@@ -101,7 +102,7 @@
 	"pagetriage-add-a-note-creator": "给创建者发送一个消息：（可选）",
 	"pagetriage-add-a-note-reviewer": "附给审核者一条消息（可选）：",
 	"pagetriage-characters-left": "还可以输入$1个字符",
-	"pagetriage-personal-default-note": "给{{GENDER:$1|$1}}写一个有用的提示。这将发布在{{GENDER:$1|他|她|他们}}的讨论页上。",
+	"pagetriage-personal-default-note": "给{{GENDER:$1|$1}}写一个有帮助的提示。这将发布在{{GENDER:$1|他|她|他}}的讨论页上。",
 	"pagetriage-page-status-reviewed": "被$2（$3$4$5）于$1标记为已复核",
 	"pagetriage-page-status-reviewed-anonymous": "标记为已复核",
 	"pagetriage-page-status-unreviewed": "该页面仍未复核。",
