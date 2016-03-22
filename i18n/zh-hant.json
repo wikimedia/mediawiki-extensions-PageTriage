@@ -93,7 +93,7 @@
 	"pagetriage-button-add-details": "添加詳情",
 	"pagetriage-button-edit-details": "編輯詳細資料",
 	"pagetriage-button-mark-for-deletion": "標記為刪除",
-	"pagetriage-add-a-note-creator": "給建立者傳送一個訊息：（可選）",
+	"pagetriage-add-a-note-creator": "向建立者傳送一則訊息: (可選)",
 	"pagetriage-characters-left": "還可以輸入$1個字元",
 	"pagetriage-personal-default-note": "給{{GENDER:$1|$1}}寫一個有用的提示。這會被發佈於此使用者的討論頁上。",
 	"pagetriage-page-status-reviewed": "由 $2 ($3$4$5) 於 $1 標記為已檢閱",
