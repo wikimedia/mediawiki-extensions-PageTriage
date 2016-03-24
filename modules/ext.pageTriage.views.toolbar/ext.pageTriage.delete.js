@@ -752,6 +752,7 @@ $( function () {
 		 */
 		notifyUser: function ( count, key ) {
 			var template,
+				paramsText = '',
 				that = this;
 
 			if ( count === 0 || !this.selectedTag[ key ] ) {
@@ -759,8 +760,13 @@ $( function () {
 			}
 
 			// use generic template for multiple deletion tag
-			template = ( count > 1 ) ? $.pageTriageDeletionTagsMultiple.talkpagenotiftpl : this.selectedTag[ key ].talkpagenotiftpl;
-			template = '{{subst:' + template + '|' + pageName + '}}';
+			if ( count > 1 ) {
+				template = $.pageTriageDeletionTagsMultiple.talkpagenotiftpl;
+			} else {
+				template = this.selectedTag[ key ].talkpagenotiftpl;
+				paramsText = this.buildParams( this.selectedTag[ key ] );
+			}
+			template = '{{subst:' + template + '|' + pageName + paramsText + '}}';
 			// Appending signature
 			template += ' ~~~~';
 
