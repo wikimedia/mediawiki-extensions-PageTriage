@@ -4,7 +4,7 @@
 			"Xuacu"
 		]
 	},
-	"notification-header-pagetriage-mark-as-reviewed": "<b>$1</b> {{GENDER:$2|revisó}} la páxina $3",
-	"notification-header-pagetriage-add-maintenance-tag": "<b>$1</b> {{GENDER:$2|revisó}} y {{GENDER:$2|etiquetó}} la páxina $3. {{PLURAL:$5|Etiqueta|Etiquetes}}: $4",
-	"notification-header-pagetriage-add-deletion-tag": "<b>$1</b> {{GENDER:$2|revisó}} y {{GENDER:$2|marcó pa desaniciu}} la páxina $3. {{PLURAL:$5|Etiqueta|Etiquetes}}: $4"
+	"notification-header-pagetriage-mark-as-reviewed": "{{GENDER:$2|Revisóse}} la páxina '''$3'''.",
+	"notification-header-pagetriage-add-maintenance-tag": "Un revisor {{GENDER:$2|suxirió}} ameyoramientos na páxina '''$3'''. {{PLURAL:$5|Etiqueta|Etiquetes}}: $4",
+	"notification-header-pagetriage-add-deletion-tag": "La páxina '''$3''' {{GENDER:$2|marcóse pa desaniciar}}. {{PLURAL:$5|Etiqueta|Etiquetes}}: $4."
 }
