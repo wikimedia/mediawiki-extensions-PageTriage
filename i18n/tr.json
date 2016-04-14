@@ -195,7 +195,7 @@
 	"pagetriage-notification-add-deletion-tag2": "[[$2]] sayfası [[User:$1|$1]] tarafından  {{GENDER:$1|incelendi}} ve {{GENDER:$1|silinmek üzere işaretlendi}}. {{PLURAL:$4|Etiket|Etiketler}}: $3",
 	"pagetriage-notification-add-deletion-tag-email-subject2": "Sayfanız {{SITENAME}} üzerinde {{GENDER:$1|silinmek üzere işaretlendi}}",
 	"pagetriage-notification-add-deletion-tag-email-batch-body": "$1 sayfası $2 tarafından {{GENDER:$2|silinmek üzere işaretlendi}}.",
-	"notification-header-pagetriage-mark-as-reviewed": "$3 sayfası <b>$1</b> tarafından {{GENDER:$2|incelendi}}",
+	"notification-header-pagetriage-mark-as-reviewed": "'''$3''', {{GENDER:$2|incelenmiştir}}.",
 	"echo-pref-subscription-page-review": "Açmış olduğum sayfa incelemeleri",
 	"echo-pref-tooltip-page-review": "Birisi açmış olduğum bir sayfayı incelendiğinde beni bilgilendir."
 }
