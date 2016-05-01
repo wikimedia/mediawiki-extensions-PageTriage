@@ -10,7 +10,7 @@
 	"pagetriage-sort-by": "Raten:",
 	"pagetriage-oldest": "Tewr kehan",
 	"pagetriage-triage": "Çımraraviyarnayış",
-	"pagetriage-filter-article": "Wesiqe\n<div style=\"margin:0; border:0px solid #aaa; background-color:pink;\">",
+	"pagetriage-filter-article": "Wesiqe",
 	"pagetriage-filter-username": "Nameyê karberi",
 	"pagetriage-filter-ns-all": "Pêro",
 	"pagetriage-more": "Zewbi",
@@ -22,6 +22,6 @@
 	"pagetriage-tags-param-article-label": "Wesiqe:",
 	"pagetriage-tags-param-free-yes-label": "Eya",
 	"pagetriage-tags-param-free-no-label": "Nê",
-	"log-name-pagetriage-deletion": "Qeydé besterina etiketi",
+	"log-name-pagetriage-deletion": "Qeydê esterıtışê etiketi",
 	"pagetriage-info-problem-no-categories": "Kategoriy çıniyê"
 }

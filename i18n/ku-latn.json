@@ -4,6 +4,7 @@
 			"George Animal"
 		]
 	},
+	"pagetriage-categories": "$1 {{PLURAL:$1|kategorî}}",
 	"pagetriage-filter-username": "Navê bikarhêner",
 	"pagetriage-filter-stat-all": "Heemû",
 	"pagetriage-button-add-parameters": "Parametreyan lê zêde bike",
