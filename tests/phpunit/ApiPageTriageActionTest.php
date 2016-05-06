@@ -8,7 +8,7 @@
 class ApiPageTriageActionTest extends ApiTestCase {
 
 	/**
-	 * @var Array of test users
+	 * @var TestUser[] of test users
 	 */
 	public static $users;
 
@@ -45,8 +45,8 @@ class ApiPageTriageActionTest extends ApiTestCase {
 
 			$params = array(
 				'action' => 'login',
-				'lgname' => $user->username,
-				'lgpassword' => $user->password
+				'lgname' => $user->getUser()->getName(),
+				'lgpassword' => $user->getPassword()
 			);
 			list( $result, , $session ) = $this->doApiRequest( $params );
 			$this->assertArrayHasKey( "login", $result );
@@ -57,8 +57,8 @@ class ApiPageTriageActionTest extends ApiTestCase {
 			$params = array(
 				'action' => 'login',
 				'lgtoken' => $token,
-				'lgname' => $user->username,
-				'lgpassword' => $user->password
+				'lgname' => $user->getUser()->getName(),
+				'lgpassword' => $user->getPassword()
 			);
 			list( $result, , $session ) = $this->doApiRequest( $params, $session );
 			$this->assertArrayHasKey( "login", $result );
@@ -83,12 +83,17 @@ class ApiPageTriageActionTest extends ApiTestCase {
 		$this->markTestSkipped( 'Broken test' );
 		global $wgUser;
 
-		$wgUser = self::$users['one']->user;
+		$wgUser = self::$users['one']->getUser();
 
-		list( $result, , $session ) = $this->doApiRequestWithToken( array(
-										'action' => 'pagetriageaction',
-										'pageid' => 15,
-										'reviewed' => '1' ), $sessionArray['one'], self::$users['one']->user );
+		list( $result, , $session ) = $this->doApiRequestWithToken(
+			array(
+				'action' => 'pagetriageaction',
+				'pageid' => 15,
+				'reviewed' => '1'
+			),
+			$sessionArray['one'],
+			self::$users['one']->getUser()
+		);
 
 		$this->assertEquals( "success", $result['pagetriageaction']['result'] );
 	}
@@ -100,7 +105,7 @@ class ApiPageTriageActionTest extends ApiTestCase {
 	function testPermissionError( $sessionArray ) {
 		global $wgUser;
 
-		$wgUser = self::$users['two']->user;
+		$wgUser = self::$users['two']->getUser();
 
 		$this->doApiRequestWithToken(
 			array(
@@ -109,7 +114,7 @@ class ApiPageTriageActionTest extends ApiTestCase {
 				'reviewed' => '1'
 			),
 			$sessionArray['two'],
-			self::$users['two']->user
+			self::$users['two']->getUser()
 		);
 	}
 
@@ -121,7 +126,7 @@ class ApiPageTriageActionTest extends ApiTestCase {
 		try {
 			global $wgUser;
 
-			$wgUser = self::$users['one']->user;
+			$wgUser = self::$users['one']->getUser();
 
 			$this->doApiRequestWithToken(
 				array(
@@ -129,7 +134,7 @@ class ApiPageTriageActionTest extends ApiTestCase {
 					'pageid' => 999999999,
 					'reviewed' => '1' ),
 				$sessionArray['one'],
-				self::$users['one']->user
+				self::$users['one']->getUser()
 			);
 		} catch ( UsageException $e ) {
 			$exception = true;
