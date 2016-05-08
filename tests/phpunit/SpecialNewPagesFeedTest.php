@@ -11,7 +11,7 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 	protected $pageTriage;
 
 	/**
-	 * @var User test user
+	 * @var TestUser[] test user
 	 */
 	public static $users;
 
@@ -43,8 +43,8 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 
 			$params = array(
 				'action' => 'login',
-				'lgname' => $user->username,
-				'lgpassword' => $user->password
+				'lgname' => $user->getUser()->getName(),
+				'lgpassword' => $user->getPassword()
 			);
 			list( $result, , $session ) = $this->doApiRequest( $params );
 			$this->assertArrayHasKey( "login", $result );
@@ -55,8 +55,8 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 			$params = array(
 				'action' => 'login',
 				'lgtoken' => $token,
-				'lgname' => $user->username,
-				'lgpassword' => $user->password
+				'lgname' => $user->getUser()->getName(),
+				'lgpassword' => $user->getPassword()
 			);
 			list( $result, , $session ) = $this->doApiRequest( $params, $session );
 			$this->assertArrayHasKey( "login", $result );
@@ -81,7 +81,7 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 
 		global $wgUser;
 
-		$wgUser = self::$users['one']->user;
+		$wgUser = self::$users['one']->getUser();
 
 		$params = array(
 			'action' => 'edit',
@@ -96,7 +96,7 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 			list( $result, , $session ) =  $this->doApiRequestWithToken(
 				$params,
 				$sessionArray['one'],
-				self::$users['one']->user
+				self::$users['one']->getUser()
 			);
 		} catch ( UsageException $e ) {
 			$this->assertEquals( "The article you tried to create has been created already",
@@ -127,7 +127,7 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 				$this->doApiRequestWithToken(
 					$params,
 					$sessionArray['one'],
-					self::$users['one']->user
+					self::$users['one']->getUser()
 				);
 			} catch ( UsageException $e ) {
 				$this->assertEquals( "The article you tried to create has been created already",
