@@ -6,7 +6,7 @@
  * @ingroup Maintenance
  */
 
-require_once dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php';
+require_once __DIR__ . '/../../../maintenance/Maintenance.php';
 
 /**
  * Maintenance script that updates parameter name from '4::tags' to 'tags' in
@@ -23,11 +23,11 @@ class CleanupPageTriageLog extends Maintenance {
 		$dbr = wfGetDB( DB_SLAVE );
 
 		// clean up the following type and action
-		$logTypes = array(
-			array( 'type' => 'pagetriage-curation', 'action' => 'tag' ),
-			array( 'type' => 'pagetriage-curation', 'action' => 'delete' ),
-			array( 'type' => 'pagetriage-deletion', 'action' => 'delete' )
-		);
+		$logTypes = [
+			[ 'type' => 'pagetriage-curation', 'action' => 'tag' ],
+			[ 'type' => 'pagetriage-curation', 'action' => 'delete' ],
+			[ 'type' => 'pagetriage-deletion', 'action' => 'delete' ]
+		];
 
 		foreach ( $logTypes as $type ) {
 			$count = $this->batchSize;
@@ -35,15 +35,15 @@ class CleanupPageTriageLog extends Maintenance {
 
 			while ( $count == $this->batchSize ) {
 				$res = $dbr->select(
-					array( 'logging' ),
-					array( 'log_id', 'log_timestamp', 'log_params' ),
-					array(
+					[ 'logging' ],
+					[ 'log_id', 'log_timestamp', 'log_params' ],
+					[
 						'log_type' => $type['type'],
 						'log_action' => $type['action'],
 						'log_timestamp > ' . $dbr->addQuotes( $dbr->timestamp( $startTime ) )
-					),
+					],
 					__METHOD__,
-					array( 'LIMIT' => $this->batchSize, 'ORDER BY' => 'log_timestamp' )
+					[ 'LIMIT' => $this->batchSize, 'ORDER BY' => 'log_timestamp' ]
 				);
 
 				$count = 0;
@@ -52,8 +52,8 @@ class CleanupPageTriageLog extends Maintenance {
 
 					$dbw->update(
 						'logging',
-						array( 'log_params' => $newLogParams ),
-						array( 'log_id' => $row->log_id )
+						[ 'log_params' => $newLogParams ],
+						[ 'log_id' => $row->log_id ]
 					);
 
 					$startTime = wfTimestamp( TS_UNIX, $row->log_timestamp );

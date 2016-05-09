@@ -5,7 +5,7 @@
  * @ingroup Maintenance
  */
 
-require_once dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php';
+require_once __DIR__ . '/../../../maintenance/Maintenance.php';
 
 /**
  * Maintenance script that removes data from pagetriage_page_tags with page_id
@@ -26,18 +26,18 @@ class CleanupPageTriagePageTags extends Maintenance {
 
 		while ( $count == $this->batchSize ) {
 			$res = $dbr->select(
-				array( 'pagetriage_page_tags', 'pagetriage_page' ),
-				array( 'ptrpt_page_id AS page_id' ),
-				array(
+				[ 'pagetriage_page_tags', 'pagetriage_page' ],
+				[ 'ptrpt_page_id AS page_id' ],
+				[
 					'ptrpt_page_id > ' . $start,
 					'ptrp_page_id IS NULL'
-				),
+				],
 				__METHOD__,
-				array( 'LIMIT' => $this->batchSize, 'ORDER BY' => 'ptrpt_page_id' ),
-				array( 'pagetriage_page' => array( 'LEFT JOIN', 'ptrp_page_id = ptrpt_page_id' ) )
+				[ 'LIMIT' => $this->batchSize, 'ORDER BY' => 'ptrpt_page_id' ],
+				[ 'pagetriage_page' => [ 'LEFT JOIN', 'ptrp_page_id = ptrpt_page_id' ] ]
 			);
 
-			$page = array();
+			$page = [];
 			$count = 0;
 			foreach ( $res as $row ) {
 				if ( !in_array( $row->page_id, $page ) ) {
@@ -51,7 +51,7 @@ class CleanupPageTriagePageTags extends Maintenance {
 			if ( $pageCount > 0 ) {
 				$dbw->delete(
 					'pagetriage_page_tags',
-					array( 'ptrpt_page_id' => $page ),
+					[ 'ptrpt_page_id' => $page ],
 					__METHOD__
 				);
 

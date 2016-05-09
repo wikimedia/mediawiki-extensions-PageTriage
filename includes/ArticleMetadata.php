@@ -30,9 +30,9 @@ class ArticleMetadata {
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->delete(
 				'pagetriage_page_tags',
-				array( 'ptrpt_page_id' => $this->mPageId ),
+				[ 'ptrpt_page_id' => $this->mPageId ],
 				__METHOD__,
-				array()
+				[]
 			);
 			// also remove it from the cache
 			$this->flushMetadataFromCache();
@@ -82,7 +82,7 @@ class ArticleMetadata {
 		$keyPrefix = $this->memcKeyPrefix();
 
 		if ( is_null( $pageId ) ) {
-			$metaData = array();
+			$metaData = [];
 			foreach ( $this->mPageId as $pageId ) {
 				$metaDataCache = $cache->get( $keyPrefix . '-' . $pageId );
 				if ( $metaDataCache !== false ) {
@@ -118,14 +118,14 @@ class ArticleMetadata {
 			$dbr = wfGetDB( DB_SLAVE );
 
 			$res = $dbr->select(
-					array(
+					[
 						'pagetriage_page_tags',
 						'pagetriage_tags',
 						'page',
 						'pagetriage_page',
 						'user'
-					),
-					array(
+					],
+					[
 						'ptrpt_page_id',
 						'ptrt_tag_name',
 						'ptrpt_value',
@@ -137,19 +137,19 @@ class ArticleMetadata {
 						'ptrp_last_reviewed_by',
 						'ptrp_reviewed_updated',
 						'reviewer' => 'user_name'
-					),
-					array(
+					],
+					[
 						'ptrpt_page_id' => $articles,
 						'ptrpt_tag_id = ptrt_tag_id',
 						'ptrpt_page_id = ptrp_page_id',
 						'page_id = ptrp_page_id'
-					),
+					],
 					__METHOD__,
-					array(),
-					array( 'user' => array( 'LEFT JOIN', 'user_id = ptrp_last_reviewed_by' ) )
+					[],
+					[ 'user' => [ 'LEFT JOIN', 'user_id = ptrp_last_reviewed_by' ] ]
 			);
 
-			$pageData = array();
+			$pageData = [];
 			foreach ( $res as $row ) {
 				$pageData[$row->ptrpt_page_id][$row->ptrt_tag_name] = $row->ptrpt_value;
 				if ( !isset( $pageData[$row->ptrpt_page_id]['creation_date'] ) ) {
@@ -215,13 +215,13 @@ class ArticleMetadata {
 		$key = wfMemcKey( 'pagetriage', 'valid', 'tags', $wgPageTriageCacheVersion );
 		$tags = $wgMemc->get( $key );
 		if ( $tags === false ) {
-			$tags = array();
+			$tags = [];
 
 			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->select(
-					array( 'pagetriage_tags' ),
-					array( 'ptrt_tag_id', 'ptrt_tag_name' ),
-					array(),
+					[ 'pagetriage_tags' ],
+					[ 'ptrt_tag_id', 'ptrt_tag_name' ],
+					[],
 					__METHOD__
 			);
 
@@ -245,9 +245,9 @@ class ArticleMetadata {
 	 * @return array
 	 */
 	public static function validatePageId( array $pageIds, $validateDb = DB_MASTER ) {
-		static $cache = array();
+		static $cache = [];
 
-		$cleanUp = array();
+		$cleanUp = [];
 		foreach ( $pageIds as $key => $val ) {
 			$casted = (int)$val;
 			if ( $casted ) {
@@ -269,9 +269,9 @@ class ArticleMetadata {
 			$db = wfGetDB( $validateDb );
 
 			$res = $db->select(
-					array( 'pagetriage_page' ),
-					array( 'ptrp_page_id' ),
-					array( 'ptrp_page_id' => $pageIds ),
+					[ 'pagetriage_page' ],
+					[ 'ptrp_page_id' ],
+					[ 'ptrp_page_id' => $pageIds ],
 					__METHOD__
 			);
 
@@ -304,22 +304,22 @@ class ArticleCompileProcessor {
 	private function __construct( $pageId ) {
 		$this->mPageId = $pageId;
 
-		$this->component = array(
+		$this->component = [
 			'BasicData' => 'off',
 			'LinkCount' => 'off',
 			'CategoryCount' => 'off',
 			'Snippet' => 'off',
 			'UserData' => 'off',
 			'DeletionTag' => 'off'
-		);
+		];
 		// default to use master database for data compilation
 		foreach ( $this->component as $key => $value ) {
 			$this->componentDb[$key] = DB_MASTER;
 		}
 
-		$this->metadata = array_fill_keys( $this->mPageId, array() );
+		$this->metadata = array_fill_keys( $this->mPageId, [] );
 		$this->defaultMode = true;
-		$this->articles = array();
+		$this->articles = [];
 	}
 
 	/**
@@ -367,7 +367,7 @@ class ArticleCompileProcessor {
 	 * 		example: array( 'BasicData' => DB_SLAVE, 'UserData' => DB_MASTER )
 	 */
 	public function configComponentDb( $config ) {
-		$dbMode = array( DB_MASTER, DB_SLAVE );
+		$dbMode = [ DB_MASTER, DB_SLAVE ];
 		foreach ( $this->componentDb as $key => $value ) {
 			if ( isset ( $config[$key] ) && in_array( $config[$key], $dbMode ) ) {
 				$this->componentDb[$key] = $config[$key];
@@ -407,7 +407,7 @@ class ArticleCompileProcessor {
 	 * Compile all of the registered components in order
 	 */
 	protected function process() {
-		$completed = array();
+		$completed = [];
 
 		foreach ( $this->component as $key => $val ) {
 			if ( $val === 'on' ) {
@@ -455,9 +455,9 @@ class ArticleCompileProcessor {
 
 		// Grab existing old metadata
 		$res = $dbr->select(
-			array( 'pagetriage_page_tags', 'pagetriage_tags' ),
-			array( 'ptrpt_page_id', 'ptrt_tag_name', 'ptrpt_value' ),
-			array( 'ptrpt_page_id' => $this->mPageId, 'ptrpt_tag_id = ptrt_tag_id' ),
+			[ 'pagetriage_page_tags', 'pagetriage_tags' ],
+			[ 'ptrpt_page_id', 'ptrt_tag_name', 'ptrpt_value' ],
+			[ 'ptrpt_page_id' => $this->mPageId, 'ptrpt_tag_id = ptrt_tag_id' ],
 			__METHOD__
 		);
 		// data in $newData is used for update, initialize it with new metadata
@@ -473,29 +473,29 @@ class ArticleCompileProcessor {
 		}
 
 		foreach ( $newData as $pageId => $data ) {
-			//Flush cache so a new copy of cache will be generated, it's safe to
-			//refresh in case some data other than metadata gets updated
-			$articleMetadata = new ArticleMetadata( array( $pageId ) );
+			// Flush cache so a new copy of cache will be generated, it's safe to
+			// refresh in case some data other than metadata gets updated
+			$articleMetadata = new ArticleMetadata( [ $pageId ] );
 			$articleMetadata->flushMetadataFromCache();
-			//Make sure either all or none metadata for a single page_id
+			// Make sure either all or none metadata for a single page_id
 			$dbw->startAtomic( __METHOD__ );
 			foreach ( $data as $key => $val ) {
 				if ( isset( $tags[$key] ) ) {
-					$row = array(
+					$row = [
 						'ptrpt_page_id' => $pageId,
 						'ptrpt_tag_id' => $tags[$key],
 						'ptrpt_value' => $val
-					);
+					];
 					$dbw->replace(
 						'pagetriage_page_tags',
-						array( 'ptrpt_page_id', 'ptrpt_tag_id' ),
+						[ 'ptrpt_page_id', 'ptrpt_tag_id' ],
 						$row,
 						__METHOD__
 					);
 				}
 			}
 			$pt = new PageTriage( $pageId );
-			$row = array( 'ptrp_tags_updated' => $dbw->timestamp( wfTimestampNow() ) );
+			$row = [ 'ptrp_tags_updated' => $dbw->timestamp( wfTimestampNow() ) ];
 			if ( isset( $data['deleted'] ) ) {
 				$row['ptrp_deleted'] = $data['deleted'] ? '1' : '0';
 			}
@@ -522,9 +522,9 @@ abstract class ArticleCompileInterface {
 	 */
 	public function __construct( array $pageId, $componentDb = DB_MASTER, $articles = null ) {
 		$this->mPageId = $pageId;
-		$this->metadata = array_fill_keys( $pageId, array() );
+		$this->metadata = array_fill_keys( $pageId, [] );
 		if ( is_null( $articles ) ) {
-			$articles = array();
+			$articles = [];
 		}
 		$this->articles = $articles;
 
@@ -554,7 +554,7 @@ abstract class ArticleCompileInterface {
 			'1',
 			$conds,
 			__METHOD__,
-			array( 'LIMIT' => $maxNumToProcess + 1 )
+			[ 'LIMIT' => $maxNumToProcess + 1 ]
 		);
 
 		$record = $this->db->numRows( $res );
@@ -589,12 +589,12 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 
 	public function compile() {
 		$count = 0;
-		//Process page individually because MIN() GROUP BY is slow
+		// Process page individually because MIN() GROUP BY is slow
 		foreach ( $this->mPageId as $pageId ) {
-			$table = array( 'revision', 'page' );
-			$conds = array( 'rev_page' => $pageId, 'page_id = rev_page' );
+			$table = [ 'revision', 'page' ];
+			$conds = [ 'rev_page' => $pageId, 'page_id = rev_page' ];
 
-			$row = $this->db->selectRow( $table, array( 'MIN(rev_timestamp) AS creation_date' ),
+			$row = $this->db->selectRow( $table, [ 'MIN(rev_timestamp) AS creation_date' ],
 						$conds, __METHOD__ );
 			if ( $row ) {
 				$this->metadata[$pageId]['creation_date'] = wfTimestamp( TS_MW, $row->creation_date );
@@ -609,16 +609,16 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 		}
 
 		$res = $this->db->select(
-				array( 'page', 'pagetriage_page', 'user' ),
-				array(
+				[ 'page', 'pagetriage_page', 'user' ],
+				[
 					'page_id', 'page_namespace', 'page_title', 'page_len',
 					'ptrp_reviewed', 'page_is_redirect', 'ptrp_last_reviewed_by',
 					'ptrp_reviewed_updated', 'user_name AS reviewer'
-				),
-				array( 'page_id' => $this->mPageId, 'page_id = ptrp_page_id' ),
+				],
+				[ 'page_id' => $this->mPageId, 'page_id = ptrp_page_id' ],
 				__METHOD__,
-				array(),
-				array( 'user' => array( 'LEFT JOIN', 'user_id = ptrp_last_reviewed_by' ) )
+				[],
+				[ 'user' => [ 'LEFT JOIN', 'user_id = ptrp_last_reviewed_by' ] ]
 		);
 		foreach ( $res as $row ) {
 			if ( isset( $this->articles[$row->page_id] ) ) {
@@ -660,12 +660,12 @@ class ArticleCompileLinkCount extends ArticleCompileInterface {
 		foreach ( $this->mPageId as $pageId ) {
 			$this->processEstimatedCount(
 					$pageId,
-					array( 'page', 'pagelinks' ),
-					array(
+					[ 'page', 'pagelinks' ],
+					[
 						'page_id' => $pageId,
 						'page_namespace = pl_namespace',
 						'page_title = pl_title'
-					),
+					],
 					$maxNumToProcess = 50,
 					'linkcount'
 			);
@@ -689,8 +689,8 @@ class ArticleCompileCategoryCount extends ArticleCompileInterface {
 		foreach ( $this->mPageId as $pageId ) {
 			$this->processEstimatedCount(
 					$pageId,
-					array( 'page', 'categorylinks' ),
-					array( 'page_id' => $pageId, 'page_id = cl_from' ),
+					[ 'page', 'categorylinks' ],
+					[ 'page_id' => $pageId, 'page_id = cl_from' ],
 					$maxNumToProcess = 50,
 					'category_count'
 			);
@@ -769,7 +769,7 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 			MessageCache::singleton()->parse( $text )->getText()
 		) ) );
 		// strip out non-useful data for snippet
-		$text = str_replace( array( '{', '}', '[edit]' ), '', $text );
+		$text = str_replace( [ '{', '}', '[edit]' ], '', $text );
 
 		return $wgLang->truncate( $text, 150 );
 	}
@@ -808,14 +808,14 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 
 	public function compile() {
 		// Grab the earliest revision based on rev_timestamp and rev_id
-		$revId = array();
+		$revId = [];
 		foreach ( $this->mPageId as $pageId ) {
 			$res = $this->db->selectRow(
-				array( 'revision' ),
-				array( 'rev_id' ),
-				array( 'rev_page' => $pageId ),
+				[ 'revision' ],
+				[ 'rev_id' ],
+				[ 'rev_page' => $pageId ],
 				__METHOD__,
-				array( 'LIMIT' => 1, 'ORDER BY' => 'rev_timestamp, rev_id' )
+				[ 'LIMIT' => 1, 'ORDER BY' => 'rev_timestamp, rev_id' ]
 			);
 
 			if ( $res ) {
@@ -828,19 +828,19 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 		}
 
 		$res = $this->db->select(
-				array( 'revision', 'user', 'ipblocks' ),
-				array(
+				[ 'revision', 'user', 'ipblocks' ],
+				[
 					'rev_page AS page_id', 'user_id', 'user_name',
 					'user_real_name', 'user_registration', 'user_editcount',
 					'ipb_id', 'rev_user_text'
-				),
-				array( 'rev_id' => $revId ),
+				],
+				[ 'rev_id' => $revId ],
 				__METHOD__,
-				array(),
-				array(
-					'user' => array( 'LEFT JOIN', 'rev_user = user_id' ),
-					'ipblocks' => array( 'LEFT JOIN', 'rev_user = ipb_user AND rev_user_text = ipb_address' )
-				)
+				[],
+				[
+					'user' => [ 'LEFT JOIN', 'rev_user = user_id' ],
+					'ipblocks' => [ 'LEFT JOIN', 'rev_user = ipb_user AND rev_user_text = ipb_address' ]
+				]
 		);
 
 		foreach ( $res as $row ) {
@@ -882,24 +882,24 @@ class ArticleCompileDeletionTag extends ArticleCompileInterface {
 
 	public function __construct( $pageId, $componentDb = DB_MASTER, $articles = null ) {
 		parent::__construct( $pageId, $componentDb, $articles );
-		$this->metadata = array_fill_keys( $this->mPageId, array( 'deleted' => '0' ) );
+		$this->metadata = array_fill_keys( $this->mPageId, [ 'deleted' => '0' ] );
 	}
 
 	public static function getDeletionTags() {
-		return array(
+		return [
 			'All_articles_proposed_for_deletion' => 'prod_status',
 			'BLP_articles_proposed_for_deletion' => 'blp_prod_status',
 			'Candidates_for_speedy_deletion' => 'csd_status',
 			'Articles_for_deletion' => 'afd_status'
-		);
+		];
 	}
 
 	public function compile() {
 		$deletionTags = self::getDeletionTags();
 		$res = $this->db->select(
-				array( 'categorylinks' ),
-				array( 'cl_from AS page_id', 'cl_to' ),
-				array( 'cl_from' => $this->mPageId, 'cl_to' => array_keys( $deletionTags ) ),
+				[ 'categorylinks' ],
+				[ 'cl_from AS page_id', 'cl_to' ],
+				[ 'cl_from' => $this->mPageId, 'cl_to' => array_keys( $deletionTags ) ],
 				__METHOD__
 		);
 

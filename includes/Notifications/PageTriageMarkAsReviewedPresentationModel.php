@@ -13,7 +13,7 @@ class PageTriageMarkAsReviewedPresentationModel extends PageTriagePresentationMo
 	 * {@inheritdoc}
 	 */
 	public function getSecondaryLinks() {
-		return array( $this->getAgentLink() );
+		return [ $this->getAgentLink() ];
 	}
 
 	/**

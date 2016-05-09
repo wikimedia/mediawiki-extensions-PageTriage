@@ -22,14 +22,14 @@ class ApiPageTriageActionTest extends ApiTestCase {
 				'ApitestuserA',
 				'Api Test UserA',
 				'api_test_userA@example.com',
-				array( 'sysop' )
+				[ 'sysop' ]
 		);
 
 		self::$users['two'] = new $testUserClass(
 				'ApitestuserB',
 				'Api Test UserB',
 				'api_test_userB@example.com',
-				array()
+				[]
 		);
 	}
 
@@ -39,27 +39,27 @@ class ApiPageTriageActionTest extends ApiTestCase {
 
 	function testLogin() {
 
-		$sessionArray = array();
+		$sessionArray = [];
 
 		foreach ( self::$users as $key => $user ) {
 
-			$params = array(
+			$params = [
 				'action' => 'login',
 				'lgname' => $user->getUser()->getName(),
 				'lgpassword' => $user->getPassword()
-			);
+			];
 			list( $result, , $session ) = $this->doApiRequest( $params );
 			$this->assertArrayHasKey( "login", $result );
 			$this->assertArrayHasKey( "result", $result['login'] );
 			$this->assertEquals( "NeedToken", $result['login']['result'] );
 			$token = $result['login']['token'];
 
-			$params = array(
+			$params = [
 				'action' => 'login',
 				'lgtoken' => $token,
 				'lgname' => $user->getUser()->getName(),
 				'lgpassword' => $user->getPassword()
-			);
+			];
 			list( $result, , $session ) = $this->doApiRequest( $params, $session );
 			$this->assertArrayHasKey( "login", $result );
 			$this->assertArrayHasKey( "result", $result['login'] );
@@ -86,11 +86,11 @@ class ApiPageTriageActionTest extends ApiTestCase {
 		$wgUser = self::$users['one']->getUser();
 
 		list( $result, , $session ) = $this->doApiRequestWithToken(
-			array(
+			[
 				'action' => 'pagetriageaction',
 				'pageid' => 15,
 				'reviewed' => '1'
-			),
+			],
 			$sessionArray['one'],
 			self::$users['one']->getUser()
 		);
@@ -108,11 +108,11 @@ class ApiPageTriageActionTest extends ApiTestCase {
 		$wgUser = self::$users['two']->getUser();
 
 		$this->doApiRequestWithToken(
-			array(
+			[
 				'action' => 'pagetriageaction',
 				'pageid' => 15,
 				'reviewed' => '1'
-			),
+			],
 			$sessionArray['two'],
 			self::$users['two']->getUser()
 		);
@@ -129,10 +129,10 @@ class ApiPageTriageActionTest extends ApiTestCase {
 			$wgUser = self::$users['one']->getUser();
 
 			$this->doApiRequestWithToken(
-				array(
+				[
 					'action' => 'pagetriageaction',
 					'pageid' => 999999999,
-					'reviewed' => '1' ),
+					'reviewed' => '1' ],
 				$sessionArray['one'],
 				self::$users['one']->getUser()
 			);

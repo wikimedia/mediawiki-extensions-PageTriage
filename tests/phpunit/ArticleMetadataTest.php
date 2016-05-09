@@ -15,25 +15,25 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 
 	protected function setUp() {
 		parent::setUp();
-		$this->pageId = array();
+		$this->pageId = [];
 		$this->dbr = wfGetDB( DB_SLAVE );
 
 		// Set up some page_id to test
 		$count = $start = 0;
 		while ( $count < 6 ) {
 			$res =  $this->dbr->selectRow(
-						array( 'page', 'pagetriage_page' ),
-						array( 'page_id' ),
-						array(
+						[ 'page', 'pagetriage_page' ],
+						[ 'page_id' ],
+						[
 							'page_is_redirect' => 0,
 							'page_id > ' . $start,
 							'page_id = ptrp_page_id'
-						),
+						],
 						__METHOD__,
-						array(
+						[
 							'ORDER BY' => 'page_id',
 							'LIMIT' => 1,
-						)
+						]
 				);
 			if ( $res ) {
 				$this->pageId[$res->page_id] = $res->page_id;
@@ -52,7 +52,7 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 	public function testGetValidTags() {
 		$tags = ArticleMetadata::getValidTags();
 
-		$validTags = array(
+		$validTags = [
 					'linkcount',
 					'category_count',
 					'csd_status',
@@ -70,7 +70,7 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 					'user_block_status',
 					'user_id',
 					'reference'
-				);
+				];
 
 		$this->assertEmpty( array_diff( array_keys( $tags ), $validTags ) );
 	}
@@ -80,7 +80,7 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 	 *
 	 */
 	public function testValidatePageId() {
-		$origPageId = array_merge( $this->pageId, array( 'cs', '99999999', 'abcde', '5ab', '200' ) );
+		$origPageId = array_merge( $this->pageId, [ 'cs', '99999999', 'abcde', '5ab', '200' ] );
 
 		$pageId = ArticleMetadata::validatePageId( $origPageId );
 
@@ -95,9 +95,9 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 		}
 
 		$res = $this->dbr->select(
-			array( 'pagetriage_page' ),
-			array( 'ptrp_page_id' ),
-			array( 'ptrp_page_id' => $pageId )
+			[ 'pagetriage_page' ],
+			[ 'ptrp_page_id' ],
+			[ 'ptrp_page_id' => $pageId ]
 		);
 		$this->assertEquals( count( $pageId ), $this->dbr->numRows( $res ) );
 	}
@@ -110,7 +110,7 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 		$data = $this->articleMetadata->getMetadata();
 		$this->assertGreaterThan( 0, count( $data ) );
 		$tags = ArticleMetadata::getValidTags() +
-			array(
+			[
 				'creation_date' => 'creation_date',
 				'patrol_status' => 'patrol_status',
 				'is_redirect' => 'is_redirect',
@@ -119,7 +119,7 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 				'reviewer' => 'reviewer',
 				'deleted' => 'deleted',
 				'title' => 'title'
-			);
+			];
 
 		foreach ( $data as $pageId => $val ) {
 			foreach ( $val as $tagName => $tagValue ) {
@@ -134,9 +134,9 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 	public function testDeleteMetadata() {
 		$this->articleMetadata->deleteMetadata();
 		$res = $this->dbr->select(
-			array( 'pagetriage_page_tags' ),
-			array( 'ptrpt_page_id' ),
-			array( 'ptrpt_page_id' => $this->pageId )
+			[ 'pagetriage_page_tags' ],
+			[ 'ptrpt_page_id' ],
+			[ 'ptrpt_page_id' => $this->pageId ]
 		);
 		$this->assertEquals( 0, $this->dbr->numRows( $res ) );
 	}

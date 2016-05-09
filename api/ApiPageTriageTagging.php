@@ -7,7 +7,7 @@ class ApiPageTriageTagging extends ApiBase {
 
 		$params = $this->extractRequestParams();
 
-		if ( !ArticleMetadata::validatePageId( array( $params['pageid'] ), DB_SLAVE ) ) {
+		if ( !ArticleMetadata::validatePageId( [ $params['pageid'] ], DB_SLAVE ) ) {
 			$this->dieUsage(
 				'The page specified does not exist in pagetriage queue',
 				'bad-pagetriage-page'
@@ -28,10 +28,10 @@ class ApiPageTriageTagging extends ApiBase {
 		}
 
 		if ( $this->getUser()->pingLimiter( 'pagetriage-tagging-action' ) ) {
-			$this->dieUsageMsg( array( 'actionthrottledtext' ) );
+			$this->dieUsageMsg( [ 'actionthrottledtext' ] );
 		}
 
-		$apiParams = array();
+		$apiParams = [];
 		if ( $params['top'] ) {
 			$apiParams['prependtext'] = $params['top'] . "\n\n";
 		}
@@ -44,10 +44,10 @@ class ApiPageTriageTagging extends ApiBase {
 
 		// Check if the page has been nominated for deletion
 		if ( $params['deletion'] ) {
-			$articleMetadata = new ArticleMetadata( array( $params['pageid'] ) );
+			$articleMetadata = new ArticleMetadata( [ $params['pageid'] ] );
 			$metaData = $articleMetadata->getMetadata();
 			if ( isset( $metaData[$params['pageid']] ) ) {
-				foreach ( array( 'csd_status', 'prod_status', 'blp_prod_status', 'afd_status' ) as $val ) {
+				foreach ( [ 'csd_status', 'prod_status', 'blp_prod_status', 'afd_status' ] as $val ) {
 					if ( $metaData[$params['pageid']][$val] == '1' ) {
 						$this->dieUsage(
 							'The page has been nominated for deletion',
@@ -83,12 +83,12 @@ class ApiPageTriageTagging extends ApiBase {
 			$api = new ApiMain(
 					new DerivativeRequest(
 						$this->getRequest(),
-						$apiParams + array(
+						$apiParams + [
 							'action'	=> 'edit',
 							'title'		=> $title->getFullText(),
 							'token'		=> $params['token'],
 							'summary'	=> $editSummary,
-						),
+						],
 						true
 					),
 					true
@@ -101,34 +101,34 @@ class ApiPageTriageTagging extends ApiBase {
 			// logging to the logging table
 			if ( $params['taglist'] ) {
 				if ( $params['deletion'] ) {
-					$entry = array(
+					$entry = [
 						// We want delete tag to have its own log as well as be included under page curation log
 						// Todo: Find a way to filter log by action (subtype) so the deletion log can be removed
 						'pagetriage-curation' => 'delete',
 						'pagetriage-deletion' => 'delete'
-					);
+					];
 					PageTriageUtil::createNotificationEvent(
 						$article,
 						$this->getUser(),
 						'pagetriage-add-deletion-tag',
-						array(
+						[
 							'tags' => $params['taglist'],
 							'note' => $note,
-						)
+						]
 					);
 				} else {
-					$entry = array(
+					$entry = [
 						'pagetriage-curation' => 'tag'
-					);
+					];
 					PageTriageUtil::createNotificationEvent(
 						$article,
 						$this->getUser(),
 						'pagetriage-add-maintenance-tag',
-						array(
+						[
 							'tags' => $params['taglist'],
 							'note' => $note,
-							'revId' => $api->getResult()->getResultData( array( 'edit', 'newrevid' ) ),
-						)
+							'revId' => $api->getResult()->getResultData( [ 'edit', 'newrevid' ] ),
+						]
 					);
 				}
 
@@ -139,15 +139,15 @@ class ApiPageTriageTagging extends ApiBase {
 					if ( $note ) {
 						$logEntry->setComment( $note );
 					}
-					$logEntry->setParameters( array(
+					$logEntry->setParameters( [
 						'tags' => $params['taglist']
-					) );
+					] );
 					$logEntry->publish( $logEntry->insert() );
 				}
 			}
 		}
 
-		$result = array( 'result' => 'success' );
+		$result = [ 'result' => 'success' ];
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
@@ -160,26 +160,26 @@ class ApiPageTriageTagging extends ApiBase {
 	}
 
 	public function getAllowedParams() {
-		return array(
-			'pageid' => array(
+		return [
+			'pageid' => [
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE => 'integer'
-			),
-			'token' => array(
+			],
+			'token' => [
 				ApiBase::PARAM_REQUIRED => true
-			),
+			],
 			'top' => null,
 			'bottom' => null,
-			'deletion' => array(
+			'deletion' => [
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_TYPE => 'boolean'
-			),
+			],
 			'note' => null,
-			'taglist' => array(
+			'taglist' => [
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI => true
-			),
-		);
+			],
+		];
 	}
 
 	public function mustBePosted() {
@@ -194,7 +194,7 @@ class ApiPageTriageTagging extends ApiBase {
 	 * @deprecated since MediaWiki core 1.25
 	 */
 	public function getParamDescription() {
-		return array(
+		return [
 			'pageid' => 'The article for which to be tagged',
 			'token' => 'Edit token',
 			'top' => 'The tagging text to be added to the top of an article',
@@ -202,7 +202,7 @@ class ApiPageTriageTagging extends ApiBase {
 			'deletion' => 'Whether or not the tagging is for a deletion nomination',
 			'note' => 'Personal note to page creators from reviewers',
 			'taglist' => 'Pipe-separated list of tags',
-		);
+		];
 	}
 
 	/**

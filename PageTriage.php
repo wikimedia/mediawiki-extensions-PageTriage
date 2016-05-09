@@ -36,20 +36,20 @@ EOT;
 }
 
 // Extension credits that will show up on Special:Version
-$wgExtensionCredits['specialpage'][] = array(
+$wgExtensionCredits['specialpage'][] = [
 	'path' => __FILE__,
 	'name' => 'PageTriage',
 	'version' => '0.2.1',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:PageTriage',
-	'author' => array(
+	'author' => [
 		'Ryan Kaldari',
 		'Benny Situ',
 		'Ian Baker',
 		'Andrew Garrett',
-	),
+	],
 	'descriptionmsg' => 'pagetriage-desc',
 	'license-name' => 'MIT',
-);
+];
 
 // Begin configuration variables
 // Maximum number of articles for the API to retrieve at once
@@ -69,46 +69,46 @@ $wgPageTriageProjectLink = 'Wikipedia:Page Curation';
 $wgPageTriageFeedbackUrl = '//en.wikipedia.org/wiki/Wikipedia_talk:Page_Curation';
 // enable the curation toolbar?
 $wgPageTriageEnableCurationToolbar = true;
-$wgPageTriageCurationModules = array(
-	'articleInfo' => array(
+$wgPageTriageCurationModules = [
+	'articleInfo' => [
 		'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#PageInfo',
-		'namespace' => array( NS_MAIN, NS_USER ),
-	),
-	'wikiLove' => array(
+		'namespace' => [ NS_MAIN, NS_USER ],
+	],
+	'wikiLove' => [
 		// depends on WikiLove extension
 		'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#WikiLove',
-		'namespace' => array( NS_MAIN, NS_USER ),
-	),
-	'mark' => array(
+		'namespace' => [ NS_MAIN, NS_USER ],
+	],
+	'mark' => [
 		'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#MarkReviewed',
-		'namespace' => array( NS_MAIN, NS_USER ),
-		'note' => array( NS_MAIN ),
-	),
-	'tags' => array(
+		'namespace' => [ NS_MAIN, NS_USER ],
+		'note' => [ NS_MAIN ],
+	],
+	'tags' => [
 		'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#AddTags',
-		'namespace' => array( NS_MAIN ),
-	),
-	'delete' => array(
+		'namespace' => [ NS_MAIN ],
+	],
+	'delete' => [
 		'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#MarkDeletion',
-		'namespace' => array( NS_MAIN, NS_USER ),
-	),
-);
+		'namespace' => [ NS_MAIN, NS_USER ],
+	],
+];
 // version number to be added to cache key so that cache can be refreshed easily
 $wgPageTriageCacheVersion = '1.4';
 // only include these namespaces for pagetriage
-$wgPageTriageNamespaces = array( NS_MAIN, NS_USER );
-$wgTalkPageNoteTemplate = array(
+$wgPageTriageNamespaces = [ NS_MAIN, NS_USER ];
+$wgTalkPageNoteTemplate = [
 	'Mark' => 'Reviewednote-NPF',
-	'UnMark' => array( 'note' => 'Unreviewednote-NPF', 'nonote' => 'Unreviewednonote-NPF' ),
+	'UnMark' => [ 'note' => 'Unreviewednote-NPF', 'nonote' => 'Unreviewednonote-NPF' ],
 	'Tags' => 'Taggednote-NPF'
-);
+];
 // Set which PageTriage Echo events (defined in PageTriageHooks::onBeforeCreateEchoEvent)
 // will be enabled as notifications
-$wgPageTriageEnabledEchoEvents = array(
+$wgPageTriageEnabledEchoEvents = [
 	'pagetriage-mark-as-reviewed',
 	'pagetriage-add-maintenance-tag',
 	'pagetriage-add-deletion-tag'
-);
+];
 // Set default user options
 $wgDefaultUserOptions['echo-subscriptions-web-page-review'] = true;
 // This is overriden for new users in PageTriageHooks::onAccountCreated
@@ -152,7 +152,6 @@ $wgAutoloadClasses['PageTriageAddMaintenanceTagPresentationModel'] = $dir
 	. 'includes/Notifications/PageTriageAddMaintenanceTagPresentationModel.php';
 $wgAutoloadClasses['PageTriageAddDeletionTagPresentationModel'] = $dir
 	. 'includes/Notifications/PageTriageAddDeletionTagPresentationModel.php';
-
 
 $wgAutoloadClasses['ApiPageTriageList'] = $dir . 'api/ApiPageTriageList.php';
 $wgAutoloadClasses['ApiPageTriageStats'] = $dir . 'api/ApiPageTriageStats.php';
@@ -203,7 +202,7 @@ $wgLogActionsHandlers['pagetriage-deletion/delete'] = 'PageTriageLogFormatter';
  * @return bool
  */
 function efPageTriageSchemaUpdates( $updater = null ) {
-	$base = dirname( __FILE__ ) . "/sql";
+	$base = __DIR__ . "/sql";
 	// tables
 	$updater->addExtensionTable( 'pagetriage_tags', $base . '/PageTriageTags.sql' );
 	$updater->addExtensionTable( 'pagetriage_page_tags', $base . '/PageTriagePageTags.sql' );
@@ -224,7 +223,7 @@ function efPageTriageSchemaUpdates( $updater = null ) {
  * @return bool
  */
 function efPageTriageUnitTests( &$files ) {
-	$base = dirname( __FILE__ ) . '/tests';
+	$base = __DIR__ . '/tests';
 	$files[] = $base . '/phpunit/SpecialNewPagesFeedTest.php';
 	$files[] = $base . '/phpunit/ArticleMetadataTest.php';
 	$files[] = $base . '/phpunit/ApiPageTriageActionTest.php';
@@ -232,16 +231,16 @@ function efPageTriageUnitTests( &$files ) {
 }
 
 // Register ResourceLoader modules
-$ptResourceTemplate = array(
-	'localBasePath' => dirname( __FILE__ ). '/modules',
+$ptResourceTemplate = [
+	'localBasePath' => __DIR__. '/modules',
 	'remoteExtPath' => 'PageTriage/modules'
-);
+];
 
 // where can the template API find the templates?
 $wgPtTemplatePath = $ptResourceTemplate['localBasePath'];
 
 // Tags options message
-$wgPageTriageTagsOptionsMessages = array(
+$wgPageTriageTagsOptionsMessages = [
 	'pagetriage-tags-title',
 	'pagetriage-tags-cat-common-label',
 	'pagetriage-tags-cat-metadata-label',
@@ -392,10 +391,10 @@ $wgPageTriageTagsOptionsMessages = array(
 	'pagetriage-tags-param-date-format',
 	'pagetriage-tags-param-for-label',
 	'pagetriage-tags-tooltip',
-);
+];
 
 // Deletion Tags options message
-$wgPageTriageDeletionTagsOptionsMessages = array(
+$wgPageTriageDeletionTagsOptionsMessages = [
 	'pagetriage-del-tags-cat-csd-label',
 	'pagetriage-del-tags-cat-csd-desc',
 	'pagetriage-del-tags-cat-prod-label',
@@ -451,17 +450,17 @@ $wgPageTriageDeletionTagsOptionsMessages = array(
 	'pagetriage-tags-param-url-label',
 	'pagetriage-tags-param-article-label',
 	'pagetriage-tags-param-source-label',
-);
+];
 
-$wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + array(
-	'scripts' => array(
+$wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + [
+	'scripts' => [
 		'external/underscore.js',
 		'external/backbone.js', // required for underscore
 		'external/date.js',
 		'external/datejs-mw.js',
 		'external/jquery.waypoints.js'
-	),
-	'messages' => array(
+	],
+	'messages' => [
 		'sunday',
 		'monday',
 		'tuesday',
@@ -500,30 +499,30 @@ $wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + array(
 		'oct',
 		'nov',
 		'dec'
-	)
-);
+	]
+];
 
-$wgResourceModules['ext.pageTriage.util'] = $ptResourceTemplate + array(
-	'scripts' => array(
+$wgResourceModules['ext.pageTriage.util'] = $ptResourceTemplate + [
+	'scripts' => [
 		'ext.pageTriage.util/ext.pageTriage.viewUtil.js' // convenience functions for all views
-	),
-	'messages' => array(
+	],
+	'messages' => [
 		'pagetriage-api-error'
-	)
-);
+	]
+];
 
-$wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + array(
-	'dependencies' => array(
+$wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + [
+	'dependencies' => [
 		'mediawiki.Title',
 		'mediawiki.user',
 		'ext.pageTriage.external'
-	),
-	'scripts' => array(
+	],
+	'scripts' => [
 		'ext.pageTriage.models/ext.pageTriage.article.js',
 		'ext.pageTriage.models/ext.pageTriage.revision.js',
 		'ext.pageTriage.models/ext.pageTriage.stats.js'
-	),
-	'messages' => array(
+	],
+	'messages' => [
 		'pipe-separator',
 		'pagetriage-info-timestamp-date-format',
 		'pagetriage-page-status-unreviewed',
@@ -531,16 +530,16 @@ $wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + array(
 		'pagetriage-page-status-reviewed',
 		'pagetriage-page-status-delete',
 		'pagetriage-page-status-reviewed-anonymous'
-	)
-);
+	]
+];
 
-$wgResourceModules['jquery.tipoff'] = $ptResourceTemplate + array(
+$wgResourceModules['jquery.tipoff'] = $ptResourceTemplate + [
 	'styles' => 'jquery.tipoff/jquery.tipoff.css',
 	'scripts' => 'jquery.tipoff/jquery.tipoff.js'
-);
+];
 
-$wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
-	'dependencies' => array(
+$wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + [
+	'dependencies' => [
 		'mediawiki.jqueryMsg',
 		'ext.pageTriage.models',
 		'ext.pageTriage.util',
@@ -548,21 +547,21 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'jquery.ui.button',
 		'jquery.spinner',
 		'jquery.client'
-	),
-	'scripts' => array(
+	],
+	'scripts' => [
 		'ext.pageTriage.views.list/ext.pageTriage.listItem.js',
 		'ext.pageTriage.views.list/ext.pageTriage.listControlNav.js',
 		'ext.pageTriage.views.list/ext.pageTriage.listStatsNav.js',
 		'ext.pageTriage.views.list/ext.pageTriage.listView.js'
-	),
-	'styles' => array(
+	],
+	'styles' => [
 		'ext.pageTriage.css', // stuff that's shared across all views
 		'ext.pageTriage.views.list/ext.pageTriage.listItem.css',
 		'ext.pageTriage.views.list/ext.pageTriage.listControlNav.css',
 		'ext.pageTriage.views.list/ext.pageTriage.listStatsNav.css',
 		'ext.pageTriage.views.list/ext.pageTriage.listView.css'
-	),
-	'messages' => array(
+	],
+	'messages' => [
 		'comma-separator',
 		'days',
 		'pagetriage-hist',
@@ -636,11 +635,11 @@ $wgResourceModules['ext.pageTriage.views.list'] = $ptResourceTemplate + array(
 		'pagetriage-info-timestamp-date-format',
 		'pagetriage-no-reference',
 		'pagetriage-stats-filter-page-count'
-	)
-);
+	]
+];
 
-$wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array(
-	'dependencies' => array(
+$wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + [
+	'dependencies' => [
 		'mediawiki.jqueryMsg',
 		'ext.pageTriage.models',
 		'ext.pageTriage.util',
@@ -651,8 +650,8 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'jquery.client',
 		'ext.pageTriage.externalTagsOptions',
 		'ext.pageTriage.externalDeletionTagsOptions'
-	),
-	'scripts' => array(
+	],
+	'scripts' => [
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.js', // abstract class first
 		'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfo.js', // article metadata
 		'ext.pageTriage.views.toolbar/ext.pageTriage.minimize.js', // minimize
@@ -664,8 +663,8 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.js', // overall toolbar view last
 		'external/jquery.effects.core.js',
 		'external/jquery.effects.squish.js',
-	),
-	'styles' => array(
+	],
+	'styles' => [
 		'ext.pageTriage.css', // stuff that's shared across all views
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.css',
 		'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.css',
@@ -674,8 +673,8 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'ext.pageTriage.views.toolbar/ext.pageTriage.tags.css',
 		'ext.pageTriage.views.toolbar/ext.pageTriage.wikilove.css',
 		'ext.pageTriage.views.toolbar/ext.pageTriage.delete.css'
-	),
-	'messages' => array(
+	],
+	'messages' => [
 		'pagetriage-creation-dateformat',
 		'pagetriage-user-creation-dateformat',
 		'pagetriage-mark-as-reviewed',
@@ -758,53 +757,53 @@ $wgResourceModules['ext.pageTriage.views.toolbar'] = $ptResourceTemplate + array
 		'pagetriage-toolbar-close',
 		'pagetriage-toolbar-minimize',
 		'pagetriage-tag-warning-notice'
-	)
-);
+	]
+];
 
-$wgResourceModules['ext.pageTriage.defaultTagsOptions'] = $ptResourceTemplate + array(
+$wgResourceModules['ext.pageTriage.defaultTagsOptions'] = $ptResourceTemplate + [
 	'scripts' => 'ext.pageTriage.defaultTagsOptions/ext.pageTriage.defaultTagsOptions.js',
 	'messages' => $wgPageTriageTagsOptionsMessages,
-);
+];
 
-$wgResourceModules['ext.pageTriage.externalTagsOptions'] = $ptResourceTemplate + array(
+$wgResourceModules['ext.pageTriage.externalTagsOptions'] = $ptResourceTemplate + [
 	'class' => 'PageTriageExternalTagsOptions',
-);
+];
 
-$wgResourceModules['ext.pageTriage.defaultDeletionTagsOptions'] = $ptResourceTemplate + array(
+$wgResourceModules['ext.pageTriage.defaultDeletionTagsOptions'] = $ptResourceTemplate + [
 	'scripts' => 'ext.pageTriage.defaultDeletionTagsOptions/'
 		. 'ext.pageTriage.defaultDeletionTagsOptions.js',
 	'messages' => $wgPageTriageDeletionTagsOptionsMessages,
-	'dependencies' => array(
+	'dependencies' => [
 		'mediawiki.Title'
-	)
-);
+	]
+];
 
-$wgResourceModules['ext.pageTriage.externalDeletionTagsOptions'] = $ptResourceTemplate + array(
+$wgResourceModules['ext.pageTriage.externalDeletionTagsOptions'] = $ptResourceTemplate + [
 	'class' => 'PageTriageExternalDeletionTagsOptions',
-);
+];
 
-$wgResourceModules['ext.pageTriage.toolbarStartup'] = $ptResourceTemplate + array(
+$wgResourceModules['ext.pageTriage.toolbarStartup'] = $ptResourceTemplate + [
 	'scripts' => 'ext.pageTriage.toolbarStartup/ext.pageTriage.toolbarStartup.js',
-);
+];
 
-$wgResourceModules['ext.pageTriage.article'] = $ptResourceTemplate + array(
+$wgResourceModules['ext.pageTriage.article'] = $ptResourceTemplate + [
 	'styles' => 'ext.pageTriage.article/ext.pageTriage.article.css',
 	'scripts' => 'ext.pageTriage.article/ext.pageTriage.article.js',
-	'messages' => array(
+	'messages' => [
 			'pagetriage-reviewed',
 			'pagetriage-mark-as-reviewed-error',
-	),
-);
+	],
+];
 
 /** Rate limit setting for PageTriage **/
-$wgRateLimits += array(
-	'pagetriage-mark-action' => array(
-			'anon' => array( 1, 3 ),
-			'user' => array( 1, 3 )
-	),
+$wgRateLimits += [
+	'pagetriage-mark-action' => [
+			'anon' => [ 1, 3 ],
+			'user' => [ 1, 3 ]
+	],
 
-	'pagetriage-tagging-action' => array(
-			'anon' => array( 1, 10 ),
-			'user' => array( 1, 10 )
-	)
-);
+	'pagetriage-tagging-action' => [
+			'anon' => [ 1, 10 ],
+			'user' => [ 1, 10 ]
+	]
+];

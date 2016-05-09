@@ -29,7 +29,7 @@ class PageTriageUtil {
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$row = $dbr->selectRow( 'pagetriage_page', 'ptrp_reviewed',
-			array( 'ptrp_page_id' => $article->getID() )
+			[ 'ptrp_page_id' => $article->getID() ]
 		);
 
 		if ( ! $row ) {
@@ -78,21 +78,21 @@ class PageTriageUtil {
 
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$table = array( 'pagetriage_page', 'page' );
-		$conds = array(
+		$table = [ 'pagetriage_page', 'page' ];
+		$conds = [
 			'ptrp_reviewed' => 0,
 			'page_id = ptrp_page_id',
 			'page_is_redirect' => 0, // remove redirect from the unreviewd number per bug40540
 			'page_namespace' => $namespace
-		);
+		];
 
 		$res = $dbr->selectRow(
 			$table,
-			array( 'COUNT(ptrp_page_id) AS total', 'MIN(ptrp_created) AS oldest' ),
+			[ 'COUNT(ptrp_page_id) AS total', 'MIN(ptrp_created) AS oldest' ],
 			$conds
 		);
 
-		$data = array( 'count' => 0, 'oldest' => '' );
+		$data = [ 'count' => 0, 'oldest' => '' ];
 
 		if ( $res ) {
 			$data['count'] = (int)$res->total;
@@ -130,11 +130,11 @@ class PageTriageUtil {
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
-		$table = array( 'pagetriage_page', 'page' );
-		$conds = array(
+		$table = [ 'pagetriage_page', 'page' ];
+		$conds = [
 			'page_id = ptrp_page_id',
 			'page_namespace' => $namespace
-		);
+		];
 
 		$ops = '';
 		if ( isset( $filter['showreviewed'] ) ) {
@@ -155,7 +155,7 @@ class PageTriageUtil {
 
 		$res = $dbr->selectRow(
 			$table,
-			array( 'COUNT(ptrp_page_id) AS total' ),
+			[ 'COUNT(ptrp_page_id) AS total' ],
 			$conds
 		);
 
@@ -190,21 +190,21 @@ class PageTriageUtil {
 
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$table = array( 'pagetriage_page', 'page' );
-		$conds = array(
+		$table = [ 'pagetriage_page', 'page' ];
+		$conds = [
 			'ptrp_reviewed' => 1,
 			'page_id = ptrp_page_id',
 			'page_namespace' => $namespace,
 			'ptrp_reviewed_updated > ' . $dbr->addQuotes( $dbr->timestamp( $time ) )
-		);
+		];
 
 		$res = $dbr->selectRow(
 			$table,
-			array( 'COUNT(ptrp_page_id) AS reviewed_count' ),
+			[ 'COUNT(ptrp_page_id) AS reviewed_count' ],
 			$conds
 		);
 
-		$data = array( 'reviewed_count' => 0 );
+		$data = [ 'reviewed_count' => 0 ];
 
 		if ( $res ) {
 			$data['reviewed_count'] = (int)$res->reviewed_count;
@@ -227,10 +227,10 @@ class PageTriageUtil {
 		$now = wfTimestamp( TS_UNIX );
 
 		// times to look back for top trigers and expiration time in cache
-		$timeFrame = array(
-				'last-day' => array( 'ts' => $now - 24 * 60 * 60, 'expire' => 60 * 60 ),
-				'last-week' => array( 'ts' => $now - 7 * 24 * 60 * 60, 'expire' =>  24 * 60 * 60 )
-		);
+		$timeFrame = [
+				'last-day' => [ 'ts' => $now - 24 * 60 * 60, 'expire' => 60 * 60 ],
+				'last-week' => [ 'ts' => $now - 7 * 24 * 60 * 60, 'expire' =>  24 * 60 * 60 ]
+		];
 
 		if ( !isset( $timeFrame[$time] ) ) {
 			$time = 'last-day';
@@ -242,15 +242,15 @@ class PageTriageUtil {
 		$topTriager = $wgMemc->get( $key );
 		if ( $topTriager === false ) {
 			$res = $dbr->select(
-				array( 'pagetriage_log', 'user' ),
-				array( 'user_name', 'user_id', 'COUNT(ptrl_id) AS num' ),
-				array(
+				[ 'pagetriage_log', 'user' ],
+				[ 'user_name', 'user_id', 'COUNT(ptrl_id) AS num' ],
+				[
 					'user_id = ptrl_user_id',
 					'ptrl_reviewed' => 1, // only reviewed status
 					'ptrl_timestamp > ' . $dbr->addQuotes( $dbr->timestamp( $timeFrame[$time]['ts'] ) )
-				),
+				],
 				__METHOD__,
-				array( 'GROUP BY' => 'user_id', 'ORDER BY' => 'num DESC', 'LIMIT' => 50 )
+				[ 'GROUP BY' => 'user_id', 'ORDER BY' => 'num DESC', 'LIMIT' => 50 ]
 			);
 
 			$topTriager = iterator_to_array( $res );
@@ -278,12 +278,12 @@ class PageTriageUtil {
 	public static function pageStatusForUser( $users ) {
 		global $wgMemc;
 
-		$return = array();
-		$title  = array();
+		$return = [];
+		$title  = [];
 
 		foreach ( $users as $user ) {
 			$user = (array) $user;
-			$searchKey = array( 'user_name', 'reviewer' );
+			$searchKey = [ 'user_name', 'reviewer' ];
 
 			foreach ( $searchKey as $val ) {
 				if ( !isset( $user[$val] ) || !$user[$val] ) {
@@ -306,7 +306,7 @@ class PageTriageUtil {
 						}
 						$t = Title::makeTitle( NS_USER_TALK, $u->getDBkey() );
 						// store the data in $title, 'u' is for user page, 't' is for talk page
-						$title[$u->getDBkey()] = array( 'user_name' => $user[$val], 'u' => $u, 't' => $t );
+						$title[$u->getDBkey()] = [ 'user_name' => $user[$val], 'u' => $u, 't' => $t ];
 					}
 				}
 			}
@@ -315,16 +315,16 @@ class PageTriageUtil {
 		if ( $title ) {
 			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->select(
-				array( 'page' ),
-				array( 'page_namespace', 'page_title' ),
-				array(
+				[ 'page' ],
+				[ 'page_namespace', 'page_title' ],
+				[
 					'page_title' => array_keys( $title ),
-					'page_namespace' => array( NS_USER, NS_USER_TALK )
-				),
+					'page_namespace' => [ NS_USER, NS_USER_TALK ]
+				],
 				__METHOD__
 			);
 
-			$dataToCache = array();
+			$dataToCache = [];
 			// if there is result from the database, that means the page exists, set it to the
 			// cache array with value 1
 			foreach ( $res as $row ) {
@@ -377,18 +377,18 @@ class PageTriageUtil {
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$res = $dbr->select(
-			array( 'pagetriage_page_tags' ),
-			array( 'ptrpt_page_id' ),
-			array( 'ptrpt_tag_id' => $tags['user_name'], 'ptrpt_value' => (string)$block->getTarget() ),
+			[ 'pagetriage_page_tags' ],
+			[ 'ptrpt_page_id' ],
+			[ 'ptrpt_tag_id' => $tags['user_name'], 'ptrpt_value' => (string)$block->getTarget() ],
 			__METHOD__,
-			array( 'LIMIT' => $maxNumToProcess + 1 )
+			[ 'LIMIT' => $maxNumToProcess + 1 ]
 		);
 
 		if ( $dbr->numRows( $res ) > $maxNumToProcess ) {
 			return;
 		}
 
-		$pageIds = array();
+		$pageIds = [];
 		foreach ( $res as $row ) {
 			$pageIds[] = $row->ptrpt_page_id;
 		}
@@ -401,8 +401,8 @@ class PageTriageUtil {
 		$dbw->startAtomic( __METHOD__ );
 		$dbw->update(
 			'pagetriage_page_tags',
-			array( 'ptrpt_value' => $status ),
-			array( 'ptrpt_page_id' => $pageIds, 'ptrpt_tag_id' => $tags['user_block_status'] )
+			[ 'ptrpt_value' => $status ],
+			[ 'ptrpt_page_id' => $pageIds, 'ptrpt_tag_id' => $tags['user_block_status'] ]
 		);
 		PageTriage::bulkSetTagsUpdated( $pageIds );
 		$dbw->endAtomic( __METHOD__ );
@@ -433,11 +433,11 @@ class PageTriageUtil {
 			return;
 		}
 
-		$params = array(
+		$params = [
 			'type' => $type,
 			'title' => $article->getTitle(),
 			'agent' => $user,
-		);
+		];
 
 		if ( $extra ) {
 			$params['extra'] = $extra;

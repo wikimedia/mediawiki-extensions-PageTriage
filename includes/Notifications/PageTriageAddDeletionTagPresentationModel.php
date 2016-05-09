@@ -12,7 +12,7 @@ class PageTriageAddDeletionTagPresentationModel extends PageTriagePresentationMo
 	 * {@inheritdoc}
 	 */
 	public function getSecondaryLinks() {
-		$links = array( $this->getAgentLink() );
+		$links = [ $this->getAgentLink() ];
 		$discussionLink = $this->getDiscussionLink();
 		if ( $discussionLink ) {
 			$links[] = $discussionLink;
@@ -44,12 +44,12 @@ class PageTriageAddDeletionTagPresentationModel extends PageTriagePresentationMo
 		$user = $this->getViewingUserForGender();
 		$labelMsg = $this->msg( 'pagetriage-discuss-link' )->params( $user );
 		$descMsg = $this->msg( 'pagetriage-discuss-link-title' )->params( $user );
-		return array(
+		return [
 			'label' => $labelMsg->text(),
 			'url' => $discussionPage->getFullURL(),
 			'icon' => 'speechBubbles',
 			'description' => $descMsg->text(),
 			'prioritized' => true,
-		);
+		];
 	}
 }

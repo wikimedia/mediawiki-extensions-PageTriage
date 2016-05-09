@@ -8,11 +8,11 @@ class PageTriageLogFormatter extends LogFormatter {
 		global $wgContLang;
 		$parameters = $this->entry->getParameters();
 
-		$params = array(
+		$params = [
 			Message::rawParam( $this->getPerformerElement() ),
 			$this->entry->getPerformer()->getName(),
 			Message::rawParam( $this->makePageLink( $this->entry->getTarget() ) )
-		);
+		];
 		// backward compatibility
 		if ( isset( $parameters['4::tags'] ) ) {
 			$params['4::tags'] = $wgContLang->listToText( $parameters['4::tags'] );

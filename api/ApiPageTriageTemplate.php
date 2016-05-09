@@ -18,19 +18,19 @@ class ApiPageTriageTemplate extends ApiBase {
 		$view = $opts['view'];
 		// validate
 		if ( preg_match( '/\W/', $view ) ) {
-			$result = array( 'result' => 'error', 'errormsg' => 'Invalid view' );
+			$result = [ 'result' => 'error', 'errormsg' => 'Invalid view' ];
 			$this->getResult()->addValue( null, $this->getModuleName(), $result );
 			return;
 		}
 
 		$templates = explode( '|', $opts['template'] );
 
-		$contents = array();
+		$contents = [];
 
 		foreach ( array_unique( $templates ) as $template ) {
 			// validate
 			if ( !preg_match( '/^\w+\.html$/', $template ) ) {
-				$result = array( 'result' => 'error', 'errormsg' => 'Invalid template: ' . $template );
+				$result = [ 'result' => 'error', 'errormsg' => 'Invalid template: ' . $template ];
 				$this->getResult()->addValue( null, $this->getModuleName(), $result );
 				return;
 			}
@@ -41,7 +41,7 @@ class ApiPageTriageTemplate extends ApiBase {
 				. '/ext.pageTriage.' . $template;
 			if ( !file_exists( $localPath ) ) {
 				$error = "template file not found: \"$localPath\"";
-				$result = array( 'result' => 'error', 'errormsg' => $error );
+				$result = [ 'result' => 'error', 'errormsg' => $error ];
 				$this->getResult()->addValue( null, $this->getModuleName(), $result );
 				return;
 			}
@@ -49,31 +49,31 @@ class ApiPageTriageTemplate extends ApiBase {
 		}
 
 		// Output the results
-		$result = array( 'result' => 'success', 'template' => $contents );
+		$result = [ 'result' => 'success', 'template' => $contents ];
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
 	public function getAllowedParams() {
-		return array(
-			'view' => array(
+		return [
+			'view' => [
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => true,
-			),
-			'template' => array(
+			],
+			'template' => [
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => true,
-			)
-		);
+			]
+		];
 	}
 
 	/**
 	 * @deprecated since MediaWiki core 1.25
 	 */
 	public function getParamDescription() {
-		return array(
+		return [
 			'view' => 'The PageTriage view for which you need the templates.',
 			'template' => 'The template to fetch. Separate multiple with the | character',
-		);
+		];
 	}
 
 	/**
@@ -87,18 +87,18 @@ class ApiPageTriageTemplate extends ApiBase {
 	 * @deprecated since MediaWiki core 1.25
 	 */
 	public function getExamples() {
-		return array(
+		return [
 			'api.php?action=pagetriagetemplate&view=list&template=listItem.html',
-		);
+		];
 	}
 
 	/**
 	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
-		return array(
+		return [
 			'action=pagetriagetemplate&view=list&template=listItem.html'
 				=> 'apihelp-pagetriagetemplate-example-1',
-		);
+		];
 	}
 }

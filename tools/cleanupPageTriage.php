@@ -5,7 +5,7 @@
  * @ingroup Maintenance
  */
 
-require_once dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php';
+require_once __DIR__ . '/../../../maintenance/Maintenance.php';
 
 /**
  * Maintenance script that removes page with namespace other than NS_MAIN/NS_USER
@@ -26,18 +26,18 @@ class CleanupPageTriage extends Maintenance {
 
 		while ( $count == $this->batchSize ) {
 			$res = $dbr->select(
-				array( 'pagetriage_page', 'page' ),
-				array( 'page_id' ),
-				array(
+				[ 'pagetriage_page', 'page' ],
+				[ 'page_id' ],
+				[
 					'page_id = ptrp_page_id',
 					'page_namespace != "' . NS_MAIN . '" AND page_namespace != "' . NS_USER . '"',
 					'ptrp_page_id > ' . $start
-				),
+				],
 				__METHOD__,
-				array( 'LIMIT' => $this->batchSize, 'ORDER BY' => 'ptrp_page_id' )
+				[ 'LIMIT' => $this->batchSize, 'ORDER BY' => 'ptrp_page_id' ]
 			);
 
-			$page = array();
+			$page = [];
 			foreach ( $res as $row ) {
 				$page[] = $row->page_id;
 				$start  = $row->page_id;
@@ -49,19 +49,19 @@ class CleanupPageTriage extends Maintenance {
 
 				$dbw->delete(
 					'pagetriage_page',
-					array( 'ptrp_page_id' => $page ),
+					[ 'ptrp_page_id' => $page ],
 					__METHOD__
 				);
 
 				$dbw->delete(
 					'pagetriage_log',
-					array( 'ptrl_page_id' => $page ),
+					[ 'ptrl_page_id' => $page ],
 					__METHOD__
 				);
 
 				$dbw->delete(
 					'pagetriage_page_tags',
-					array( 'ptrpt_page_id' => $page ),
+					[ 'ptrpt_page_id' => $page ],
 					__METHOD__
 				);
 

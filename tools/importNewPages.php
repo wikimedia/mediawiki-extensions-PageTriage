@@ -58,7 +58,7 @@ class PageTriageHttp {
 		curl_setopt( $this->curlHandle, CURLOPT_RETURNTRANSFER, 1 );
 		curl_setopt( $this->curlHandle, CURLOPT_TIMEOUT, 60 );
 		curl_setopt( $this->curlHandle, CURLOPT_CONNECTTIMEOUT, 10 );
-		curl_setopt( $this->curlHandle, CURLOPT_HTTPHEADER, array( 'Expect:' ) );
+		curl_setopt( $this->curlHandle, CURLOPT_HTTPHEADER, [ 'Expect:' ] );
 		curl_setopt( $this->curlHandle, CURLOPT_ENCODING, 'UTF-8' );
 		curl_setopt( $this->curlHandle, CURLOPT_FOLLOWLOCATION, 0 );
 		curl_setopt( $this->curlHandle, CURLOPT_MAXREDIRS, 5 );
@@ -118,7 +118,7 @@ class WikiApi {
 	 * @return string The result from the API
 	 **/
 	function login( $username, $password ) {
-		$postVars = array( 'lgname' => $username, 'lgpassword' => $password );
+		$postVars = [ 'lgname' => $username, 'lgpassword' => $password ];
 		$result = $this->post( '?action=login&format=php', $postVars );
 		if ( $result['login']['result'] === 'NeedToken' ) {
 			// Do it again with the token
@@ -138,13 +138,13 @@ class WikiApi {
 	 * @return string The token
 	 **/
 	function getToken() {
-		$params = array(
+		$params = [
 			'action' => 'query',
 			'format' => 'php',
 			'prop' => 'info',
 			'intoken' => 'edit',
 			'titles' => 'Main Page'
-		);
+		];
 		$params = http_build_query( $params );
 		$result = $this->get( '?'.$params );
 		foreach ( $result['query']['pages'] as $page ) {
@@ -158,14 +158,14 @@ class WikiApi {
 	 * @return string|bool The wikitext for the page (or false)
 	 **/
 	function getPage( $title ) {
-		$params = array(
+		$params = [
 			'action' => 'query',
 			'format' => 'php',
 			'prop' => 'revisions',
 			'titles' => $title,
 			'rvlimit' => 1,
 			'rvprop' => 'content'
-		);
+		];
 		$params = http_build_query( $params );
 		$result = $this->get( '?'.$params );
 		foreach ( $result['query']['pages'] as $page ) {
@@ -185,7 +185,7 @@ class WikiApi {
 	 * @return array of titles
 	 **/
 	function getNewPages( $namespace = 0, $limit = 10 ) {
-		$params = array(
+		$params = [
 			'action' => 'query',
 			'list' => 'recentchanges',
 			'format' => 'php',
@@ -193,11 +193,11 @@ class WikiApi {
 			'rcprop' => 'title',
 			'rcnamespace' => $namespace,
 			'rclimit' => $limit
-		);
+		];
 		$params = http_build_query( $params );
 		$result = $this->get( '?'.$params );
 		$pages = $result['query']['recentchanges'];
-		$pageTitles = array();
+		$pageTitles = [];
 		foreach ( $pages as $page ) {
 			$pageTitles[] = $page['title'];
 		}
@@ -214,13 +214,13 @@ class WikiApi {
 		if ( !$this->token ) {
 			$this->token = $this->getToken();
 		}
-		$params = array(
+		$params = [
 			'title' => $title,
 			'text' => $text,
 			'token' => $this->token,
 			'summary' => 'Importing article from another wiki for testing purposes',
 			'createonly' => '1'
-		);
+		];
 		return $this->post( '?action=edit&format=php', $params );
 	}
 }
@@ -244,7 +244,7 @@ if ( isset( $argv[4] ) ) {
 	$source = new WikiApi( 'http://en.wikipedia.org/w/api.php' );
 }
 
-$pages = array();
+$pages = [];
 
 if ( $argv[1] > 0 && $argv[1] <= 10000 ) {
 	$pages = $source->getNewPages( 0, $argv[1] );
@@ -256,7 +256,7 @@ if ( isset( $argv[5] ) ) {
 	$destination = new WikiApi( $argv[5] );
 } else {
 	$destination = new WikiApi( 'http://en.wikipedia.beta.wmflabs.org/w/api.php' );
-	//$destination = new WikiApi( 'http://ee-prototype.wmflabs.org/w/api.php' );
+	// $destination = new WikiApi( 'http://ee-prototype.wmflabs.org/w/api.php' );
 }
 $destination->login( $argv[2], $argv[3] );
 

@@ -12,10 +12,10 @@ abstract class PageTriagePresentationModel extends EchoEventPresentationModel {
 	 * {@inheritdoc}
 	 */
 	public function getPrimaryLink() {
-		return array(
+		return [
 			'url' => $this->event->getTitle()->getFullURL(),
 			'label' => $this->msg( 'notification-link-text-view-page' )->text(),
-		);
+		];
 	}
 
 	protected function getTags() {
@@ -32,10 +32,10 @@ abstract class PageTriagePresentationModel extends EchoEventPresentationModel {
 		$tags = $this->getTags();
 
 		if ( !is_array( $tags ) ) {
-			return array( '', 0 );
+			return [ '', 0 ];
 		}
 
-		return array( $this->language->commaList( $tags ), count( $tags ) );
+		return [ $this->language->commaList( $tags ), count( $tags ) ];
 	}
 
 	function getBodyMessage() {

@@ -9,9 +9,9 @@ class PageTriageExternalTagsOptions extends ResourceLoaderWikiModule {
 	 * @return array
 	 */
 	protected function getPages( ResourceLoaderContext $context ) {
-		return array(
-			'MediaWiki:PageTriageExternalTagsOptions.js' => array( 'type' => 'script' ),
-		);
+		return [
+			'MediaWiki:PageTriageExternalTagsOptions.js' => [ 'type' => 'script' ],
+		];
 	}
 
 	/**
@@ -19,7 +19,7 @@ class PageTriageExternalTagsOptions extends ResourceLoaderWikiModule {
 	 * @return array
 	 */
 	public function getDependencies( ResourceLoaderContext $context = null ) {
-		return array( 'ext.pageTriage.defaultTagsOptions' );
+		return [ 'ext.pageTriage.defaultTagsOptions' ];
 	}
 
 	/**

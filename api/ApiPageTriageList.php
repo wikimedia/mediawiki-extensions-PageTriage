@@ -14,7 +14,7 @@ class ApiPageTriageList extends ApiBase {
 
 		if ( $opts['page_id'] ) {
 			// page id was specified
-			$pages = array( $opts['page_id'] );
+			$pages = [ $opts['page_id'] ];
 			$pageIdValidated = false;
 		} else {
 			// Retrieve the list of page IDs
@@ -23,7 +23,7 @@ class ApiPageTriageList extends ApiBase {
 		}
 		$pageIdValidateDb = DB_SLAVE;
 
-		$sortedMetaData = array();
+		$sortedMetaData = [];
 
 		if ( $pages ) {
 			// fetch metadata for those pages
@@ -57,18 +57,18 @@ class ApiPageTriageList extends ApiBase {
 						);
 					}
 
-					$metaData[$page][ApiResult::META_BC_BOOLS] = array(
+					$metaData[$page][ApiResult::META_BC_BOOLS] = [
 						'creator_user_page_exist', 'creator_user_talk_page_exist',
 						'reviewer_user_page_exist', 'reviewer_user_talk_page_exist',
-					);
+					];
 
-					$sortedMetaData[] = array( 'pageid' => $page ) + $metaData[$page];
+					$sortedMetaData[] = [ 'pageid' => $page ] + $metaData[$page];
 				}
 			}
 		}
 
 		// Output the results
-		$result = array( 'result' => 'success', 'pages' => $sortedMetaData );
+		$result = [ 'result' => 'success', 'pages' => $sortedMetaData ];
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
@@ -84,7 +84,7 @@ class ApiPageTriageList extends ApiBase {
 		$userTalkPage = Title::makeTitle( NS_USER_TALK, $userName );
 		$userContribsPage = SpecialPage::getTitleFor( 'Contributions', $userName );
 
-		return array(
+		return [
 			$prefix . '_user_page' => $userPage->getPrefixedText(),
 			$prefix . '_user_page_url' => $userPage->getFullURL(),
 			$prefix . '_user_page_exist' => isset( $userPageStatus[$userPage->getPrefixedDBkey()] ),
@@ -93,7 +93,7 @@ class ApiPageTriageList extends ApiBase {
 			$prefix . '_user_talk_page_exist' => isset( $userPageStatus[$userTalkPage->getPrefixedDBkey()] ),
 			$prefix . '_contribution_page' => $userContribsPage->getPrefixedText(),
 			$prefix . '_contribution_page_url' => $userContribsPage->getFullURL(),
-		);
+		];
 	}
 
 	/**
@@ -103,9 +103,9 @@ class ApiPageTriageList extends ApiBase {
 	 *
 	 * @Todo - enforce a range of timestamp to reduce tag record scan
 	 */
-	public static function getPageIds( $opts = array() ) {
+	public static function getPageIds( $opts = [] ) {
 		// Initialize required variables
-		$pages = $options = array();
+		$pages = $options = [];
 
 		// Get the expected limit as defined in getAllowedParams
 		$options['LIMIT'] = $opts['limit'] + 1;
@@ -119,8 +119,8 @@ class ApiPageTriageList extends ApiBase {
 		}
 
 		// Start building the massive filter which includes meta data
-		$tables	= array( 'pagetriage_page', 'page' );
-		$conds	= array( 'ptrp_page_id = page_id' );
+		$tables	= [ 'pagetriage_page', 'page' ];
+		$conds	= [ 'ptrp_page_id = page_id' ];
 
 		// Helpful hint: In the ptrp_reviewed column...
 		// 0 = unreviewed
@@ -214,21 +214,21 @@ class ApiPageTriageList extends ApiBase {
 		$dbr = wfGetDB( DB_SLAVE );
 		$tagConds = '';
 
-		$searchableTags = array(
+		$searchableTags = [
 			// no categories assigned
-			'no_category' => array( 'name' => 'category_count', 'op' => '=', 'val' => '0' ),
+			'no_category' => [ 'name' => 'category_count', 'op' => '=', 'val' => '0' ],
 			// no inbound links
-			'no_inbound_links' => array( 'name' => 'linkcount', 'op' => '=', 'val' => '0' ),
+			'no_inbound_links' => [ 'name' => 'linkcount', 'op' => '=', 'val' => '0' ],
 			// non auto confirmed users
-			'non_autoconfirmed_users' => array( 'name' => 'user_autoconfirmed', 'op' => '=', 'val' => '0' ),
+			'non_autoconfirmed_users' => [ 'name' => 'user_autoconfirmed', 'op' => '=', 'val' => '0' ],
 			// blocked users
-			'blocked_users' => array( 'name' => 'user_block_status', 'op' => '=', 'val' => '1' ),
+			'blocked_users' => [ 'name' => 'user_block_status', 'op' => '=', 'val' => '1' ],
 			// bots
-			'showbots' => array( 'name' => 'user_bot', 'op' => '=', 'val' => '1' ),
+			'showbots' => [ 'name' => 'user_bot', 'op' => '=', 'val' => '1' ],
 			// user name
 			// false means use the actual value
-			'username' => array( 'name' => 'user_name', 'op' => '=', 'val' => false )
-		);
+			'username' => [ 'name' => 'user_name', 'op' => '=', 'val' => false ]
+		];
 
 		$tags = ArticleMetadata::getValidTags();
 
@@ -253,66 +253,66 @@ class ApiPageTriageList extends ApiBase {
 	}
 
 	public function getAllowedParams() {
-		return array(
-			'page_id' => array(
+		return [
+			'page_id' => [
 				ApiBase::PARAM_TYPE => 'integer',
-			),
-			'showbots' => array(
+			],
+			'showbots' => [
 				ApiBase::PARAM_TYPE => 'boolean',
-			),
-			'showredirs' => array(
+			],
+			'showredirs' => [
 				ApiBase::PARAM_TYPE => 'boolean',
-			),
-			'showreviewed'=> array(
+			],
+			'showreviewed'=> [
 				ApiBase::PARAM_TYPE => 'boolean',
-			),
-			'showunreviewed'=> array(
+			],
+			'showunreviewed'=> [
 				ApiBase::PARAM_TYPE => 'boolean',
-			),
-			'showdeleted' => array(
+			],
+			'showdeleted' => [
 				ApiBase::PARAM_TYPE => 'boolean',
-			),
-			'limit' => array(
+			],
+			'limit' => [
 				ApiBase::PARAM_MAX => '200',
 				ApiBase::PARAM_DFLT => '20',
 				ApiBase::PARAM_MIN => '1',
 				ApiBase::PARAM_TYPE => 'integer',
-			),
-			'offset' => array(
+			],
+			'offset' => [
 				ApiBase::PARAM_TYPE => 'integer',
-			),
-			'pageoffset' => array(
+			],
+			'pageoffset' => [
 				ApiBase::PARAM_TYPE => 'integer',
-			),
-			'dir' => array(
+			],
+			'dir' => [
 				ApiBase::PARAM_TYPE => 'string',
-			),
-			'namespace' => array(
+			],
+			'namespace' => [
 				ApiBase::PARAM_TYPE => 'integer',
-			),
-			'no_category' => array(
+			],
+			'no_category' => [
 				ApiBase::PARAM_TYPE => 'boolean',
-			),
-			'no_inbound_links' => array(
+			],
+			'no_inbound_links' => [
 				ApiBase::PARAM_TYPE => 'boolean',
-			),
-			'non_autoconfirmed_users' => array(
+			],
+			'non_autoconfirmed_users' => [
 				ApiBase::PARAM_TYPE => 'boolean',
-			),
-			'blocked_users' => array(
+			],
+			'blocked_users' => [
 				ApiBase::PARAM_TYPE => 'boolean',
-			),
-			'username' => array(
+			],
+			'username' => [
 				ApiBase::PARAM_TYPE => 'user',
-			),
-		);
+			],
+		];
 	}
 
 	/**
 	 * @deprecated since MediaWiki core 1.25
 	 */
 	public function getParamDescription() {
-		return array(
+		return [
 			'page_id' => 'Return data for the specified page ids, ignoring other parameters',
 			'showbots' => 'Whether to show only bot edits',
 			// default is not to show redirects
@@ -333,7 +333,7 @@ class ApiPageTriageList extends ApiBase {
 			'non_autoconfirmed_users' => 'Whether to show only pages created by non auto confirmed users',
 			'blocked_users' => 'Whether to show only pages created by blocked users',
 			'username' => 'Show only pages created by username',
-		);
+		];
 	}
 
 	/**
@@ -347,18 +347,18 @@ class ApiPageTriageList extends ApiBase {
 	 * @deprecated since MediaWiki core 1.25
 	 */
 	public function getExamples() {
-		return array(
+		return [
 			'api.php?action=pagetriagelist&limit=1000&namespace=0',
-		);
+		];
 	}
 
 	/**
 	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
-		return array(
+		return [
 			'action=pagetriagelist&limit=1000&namespace=0'
 				=> 'apihelp-pagetriagelist-example-1',
-		);
+		];
 	}
 }

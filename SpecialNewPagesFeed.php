@@ -57,22 +57,22 @@ class SpecialNewPagesFeed extends SpecialPage {
 		}
 
 		// Set the config flags in JavaScript
-		$globalVars = array(
+		$globalVars = [
 			'wgPageTriageNamespaces' => $wgPageTriageNamespaces,
 			'wgPageTriageInfiniteScrolling' => $wgPageTriageInfiniteScrolling,
 			'wgPageTriageStickyControlNav' => $wgPageTriageStickyControlNav,
 			'wgPageTriageStickyStatsNav' => $wgPageTriageStickyStatsNav,
 			'wgPageTriageEnableReviewButton' => $user->isLoggedIn() && $user->isAllowed( 'patrol' ),
-		);
+		];
 		$out->addJsConfigVars( $globalVars );
 
 		// Load the JS
-		$out->addModules( array(
+		$out->addModules( [
 			'ext.pageTriage.external',
 			'ext.pageTriage.util',
 			'ext.pageTriage.models',
 			'ext.pageTriage.views.list'
-		) );
+		] );
 
 		$warnings = '';
 		$warnings .= '<div id="mwe-pt-list-warnings" style="display: none;">';
@@ -81,7 +81,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 			$wgPageTriageLearnMoreUrl,
 			$wgPageTriageFeedbackUrl
 		)->parse();
-		$warnings .= Html::rawElement( 'div', array( 'class' => 'plainlinks' ), $parsedWelcomeMessage );
+		$warnings .= Html::rawElement( 'div', [ 'class' => 'plainlinks' ], $parsedWelcomeMessage );
 		$warnings .= '</div>';
 		$out->addHtml( $warnings );
 		$out->addInlineStyle(

@@ -9,9 +9,9 @@ class PageTriageExternalDeletionTagsOptions extends ResourceLoaderWikiModule {
 	 * @return array
 	 */
 	protected function getPages( ResourceLoaderContext $context ) {
-		return array(
-			'MediaWiki:PageTriageExternalDeletionTagsOptions.js' => array( 'type' => 'script' ),
-		);
+		return [
+			'MediaWiki:PageTriageExternalDeletionTagsOptions.js' => [ 'type' => 'script' ],
+		];
 	}
 
 	/**
@@ -19,7 +19,7 @@ class PageTriageExternalDeletionTagsOptions extends ResourceLoaderWikiModule {
 	 * @return array
 	 */
 	public function getDependencies( ResourceLoaderContext $context = null ) {
-		return array( 'ext.pageTriage.defaultDeletionTagsOptions' );
+		return [ 'ext.pageTriage.defaultDeletionTagsOptions' ];
 	}
 
 	/**

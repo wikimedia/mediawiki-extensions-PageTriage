@@ -5,48 +5,48 @@ class ApiPageTriageStats extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 
-		$filter = array();
+		$filter = [];
 		foreach ( $this->getAllowedParams() as $key => $value ) {
 			if ( $key !== 'namespace' && $params[$key] ) {
 				$filter[$key] = $key;
 			}
 		}
 
-		$data = array(
+		$data = [
 			'unreviewedarticle' => PageTriageUtil::getUnreviewedArticleStat( $params['namespace'] ),
 			'reviewedarticle' => PageTriageUtil::getReviewedArticleStat( $params['namespace'] ),
 			'filteredarticle' => PageTriageUtil::getArticleFilterStat( $filter, $params['namespace'] )
-		);
+		];
 
-		$result = array( 'result' => 'success', 'stats' => $data );
+		$result = [ 'result' => 'success', 'stats' => $data ];
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
 	public function getAllowedParams() {
-		return array(
-			'namespace' => array(
+		return [
+			'namespace' => [
 				ApiBase::PARAM_TYPE => 'integer',
-			),
-			'showredirs' => array(
+			],
+			'showredirs' => [
 				ApiBase::PARAM_TYPE => 'boolean',
-			),
-			'showreviewed'=> array(
+			],
+			'showreviewed'=> [
 				ApiBase::PARAM_TYPE => 'boolean',
-			),
-			'showunreviewed'=> array(
+			],
+			'showunreviewed'=> [
 				ApiBase::PARAM_TYPE => 'boolean',
-			),
-			'showdeleted' => array(
+			],
+			'showdeleted' => [
 				ApiBase::PARAM_TYPE => 'boolean',
-			),
-		);
+			],
+		];
 	}
 
 	/**
 	 * @deprecated since MediaWiki core 1.25
 	 */
 	public function getParamDescription() {
-		return array(
+		return [
 			'namespace' => 'What namespace to pull stats from',
 			// default is not to show redirects
 			'showredirs' => 'Whether to include redirects or not',
@@ -56,7 +56,7 @@ class ApiPageTriageStats extends ApiBase {
 			'showunreviewed' => 'Whether to include unreviewed or not',
 			// default is not to show deleted
 			'showdeleted' => 'Whether to include "proposed for deleted" or not',
-		);
+		];
 	}
 
 	/**

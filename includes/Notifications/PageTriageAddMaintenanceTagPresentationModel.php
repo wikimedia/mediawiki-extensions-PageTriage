@@ -12,7 +12,7 @@ class PageTriageAddMaintenanceTagPresentationModel extends PageTriagePresentatio
 	 * {@inheritdoc}
 	 */
 	public function getSecondaryLinks() {
-		$links = array( $this->getAgentLink() );
+		$links = [ $this->getAgentLink() ];
 		$thankLink = $this->getThankLink();
 		if ( $thankLink ) {
 			$links[] = $thankLink;
@@ -50,12 +50,12 @@ class PageTriageAddMaintenanceTagPresentationModel extends PageTriagePresentatio
 		$labelMsg->params( $thankingUser, $thankedUser );
 		$descMsg = $this->msg( 'pagetriage-thank-link-title' );
 		$descMsg->params( $thankingUser, $thankedUser );
-		return array(
+		return [
 			'label' => $labelMsg->text(),
 			'url' => SpecialPage::getTitleFor( 'Thanks', $revId )->getFullURL(),
 			'icon' => 'thanks',
 			'description' => $descMsg->text(),
 			'prioritized' => true,
-		);
+		];
 	}
 }

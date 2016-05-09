@@ -7,7 +7,7 @@ class ApiPageTriageAction extends ApiBase {
 
 		$params = $this->extractRequestParams();
 
-		if ( !ArticleMetadata::validatePageId( array( $params['pageid'] ), DB_SLAVE ) ) {
+		if ( !ArticleMetadata::validatePageId( [ $params['pageid'] ], DB_SLAVE ) ) {
 			$this->dieUsage(
 				'The page specified does not exist in pagetriage queue',
 				'bad-pagetriage-page'
@@ -24,7 +24,7 @@ class ApiPageTriageAction extends ApiBase {
 		}
 
 		if ( $this->getUser()->pingLimiter( 'pagetriage-mark-action' ) ) {
-			$this->dieUsageMsg( array( 'actionthrottledtext' ) );
+			$this->dieUsageMsg( [ 'actionthrottledtext' ] );
 		}
 
 		$pageTriage = new PageTriage( $params['pageid'] );
@@ -36,9 +36,9 @@ class ApiPageTriageAction extends ApiBase {
 				$article,
 				$this->getUser(),
 				'pagetriage-mark-as-reviewed',
-				array(
+				[
 					'note' => $params['note'],
-				)
+				]
 			);
 		}
 
@@ -55,7 +55,7 @@ class ApiPageTriageAction extends ApiBase {
 		}
 		$logEntry->publish( $logEntry->insert() );
 
-		$result = array( 'result' => 'success' );
+		$result = [ 'result' => 'success' ];
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
@@ -76,27 +76,27 @@ class ApiPageTriageAction extends ApiBase {
 	}
 
 	public function getAllowedParams() {
-		return array(
-			'pageid' => array(
+		return [
+			'pageid' => [
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE => 'integer'
-			),
-			'reviewed' => array(
+			],
+			'reviewed' => [
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE => array(
+				ApiBase::PARAM_TYPE => [
 					'1', // reviewed
 					'0', // unreviewed
-				),
-			),
-			'token' => array(
+				],
+			],
+			'token' => [
 				ApiBase::PARAM_REQUIRED => true,
-			),
+			],
 			'note' => null,
-			'skipnotif' => array(
+			'skipnotif' => [
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_TYPE => 'boolean'
-			)
-		);
+			]
+		];
 	}
 
 	public function mustBePosted() {
@@ -111,13 +111,13 @@ class ApiPageTriageAction extends ApiBase {
 	 * @deprecated since MediaWiki core 1.25
 	 */
 	public function getParamDescription() {
-		return array(
+		return [
 			'pageid' => 'The article for which to be marked as reviewed or unreviewed',
 			'reviewed' => 'whether the article is reviewed or not',
 			'token' => 'edit token',
 			'note' => 'personal note to page creators from reviewers',
 			'skipnotif' => 'whether to skip notification or not'
-		);
+		];
 	}
 
 	/**

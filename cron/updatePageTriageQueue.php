@@ -2,7 +2,7 @@
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
-	$IP = dirname( __FILE__ ) . '/../../..';
+	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
 
@@ -41,9 +41,9 @@ class UpdatePageTriageQueue extends Maintenance {
 		$count = $this->batchSize;
 
 		$row = $this->dbr->selectRow(
-			array( 'pagetriage_page' ),
-			array( 'MAX(ptrp_page_id) AS max_id' ),
-			array(),
+			[ 'pagetriage_page' ],
+			[ 'MAX(ptrp_page_id) AS max_id' ],
+			[],
 			__METHOD__
 		);
 
@@ -65,19 +65,19 @@ class UpdatePageTriageQueue extends Maintenance {
 			// 2. the page is not in main namespace or
 			// 3. the page is a redirect
 			$res = $this->dbr->select(
-				array( 'pagetriage_page', 'page' ),
-				array( 'ptrp_page_id', 'ptrp_created', 'page_namespace', 'ptrp_reviewed' ),
-				array(
+				[ 'pagetriage_page', 'page' ],
+				[ 'ptrp_page_id', 'ptrp_created', 'page_namespace', 'ptrp_reviewed' ],
+				[
 					'(ptrp_created < ' . $startTime . ') OR
 					(ptrp_created = ' . $startTime . ' AND ptrp_page_id < ' . $startId . ')',
 					'ptrp_page_id = page_id',
 					'page_namespace != 0 OR ptrp_reviewed > 0 OR page_is_redirect = 1'
-				),
+				],
 				__METHOD__,
-				array( 'LIMIT' => $this->batchSize, 'ORDER BY' => 'ptrp_created DESC, ptrp_page_id DESC' )
+				[ 'LIMIT' => $this->batchSize, 'ORDER BY' => 'ptrp_created DESC, ptrp_page_id DESC' ]
 			);
 
-			$pageId = array();
+			$pageId = [];
 			foreach ( $res as $row ) {
 				$pageId[] = $row->ptrp_page_id;
 				$count++;
@@ -94,15 +94,15 @@ class UpdatePageTriageQueue extends Maintenance {
 
 				$this->dbw->delete(
 						'pagetriage_page',
-						array( 'ptrp_page_id' => $pageId ),
+						[ 'ptrp_page_id' => $pageId ],
 						__METHOD__,
-						array()
+						[]
 				);
 				$this->dbw->delete(
 						'pagetriage_log',
-						array( 'ptrl_page_id' => $pageId ),
+						[ 'ptrl_page_id' => $pageId ],
 						__METHOD__,
-						array()
+						[]
 				);
 				$articleMetadata = new ArticleMetadata( $pageId );
 				$articleMetadata->deleteMetadata();

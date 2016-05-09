@@ -55,7 +55,7 @@ class PageTriage {
 		$res = $dbw->selectRow(
 			'revision',
 			'MIN(rev_timestamp) AS creation_date',
-			array( 'rev_page' => $this->mPageId ),
+			[ 'rev_page' => $this->mPageId ],
 			__METHOD__
 		);
 
@@ -63,19 +63,19 @@ class PageTriage {
 			throw new MWPageTriageMissingRevisionException( 'Page missing revision!' );
 		}
 
-		$row = array(
+		$row = [
 			'ptrp_page_id' => $this->mPageId,
 			'ptrp_reviewed' => $reviewed,
 			'ptrp_created' => $res->creation_date,
 			'ptrp_reviewed_updated' => $dbw->timestamp( wfTimestampNow() )
-		);
+		];
 
 		$row['ptrp_last_reviewed_by'] = $user ? $user->getId() : 0;
 
 		$this->mReviewedUpdated = $row['ptrp_reviewed_updated'];
 		$this->mLastReviewedBy  = $row['ptrp_last_reviewed_by'];
 
-		$dbw->insert( 'pagetriage_page', $row, __METHOD__, array( 'IGNORE' ) );
+		$dbw->insert( 'pagetriage_page', $row, __METHOD__, [ 'IGNORE' ] );
 
 		$this->mReviewed = $reviewed;
 
@@ -104,10 +104,10 @@ class PageTriage {
 
 		$dbw = wfGetDB( DB_MASTER );
 
-		$row = array(
+		$row = [
 				'ptrp_reviewed' => $reviewed,
 				'ptrp_reviewed_updated' => $dbw->timestamp( wfTimestampNow() )
-		);
+		];
 		$row['ptrp_last_reviewed_by'] = $user ? $user->getId() : 0;
 
 		$this->mReviewed = $reviewed;
@@ -115,23 +115,23 @@ class PageTriage {
 		$this->mLastReviewedBy  = $row['ptrp_last_reviewed_by'];
 
 		$dbw->startAtomic( __METHOD__ );
-		//@Todo - case for marking a page as untriaged and make sure this logic is correct
+		// @Todo - case for marking a page as untriaged and make sure this logic is correct
 		if ( !$fromRc && $this->mReviewed && !is_null( $user ) ) {
-			$rc = RecentChange::newFromConds( array( 'rc_cur_id' => $this->mPageId, 'rc_new' => '1' ) );
+			$rc = RecentChange::newFromConds( [ 'rc_cur_id' => $this->mPageId, 'rc_new' => '1' ] );
 			if ( $rc && !$rc->getAttribute( 'rc_patrolled' ) ) {
 				$rc->reallyMarkPatrolled();
 				PatrolLog::record( $rc, false, $user );
 			}
 		}
 
-		$dbw->update( 'pagetriage_page', $row, array( 'ptrp_page_id' => $this->mPageId ), __METHOD__ );
+		$dbw->update( 'pagetriage_page', $row, [ 'ptrp_page_id' => $this->mPageId ], __METHOD__ );
 		// Log it if set by user
 		if ( $dbw->affectedRows() > 0 && $this->mLastReviewedBy ) {
 			$this->logUserTriageAction();
 		}
 		$dbw->endAtomic( __METHOD__ );
 
-		$articleMetadata = new ArticleMetadata( array( $this->mPageId ) );
+		$articleMetadata = new ArticleMetadata( [ $this->mPageId ] );
 		$metadataArray = $articleMetadata->getMetadata();
 
 		if ( array_key_exists( $this->mPageId, $metadataArray ) ) {
@@ -154,7 +154,7 @@ class PageTriage {
 		$dbw->update(
 			'pagetriage_page',
 			$row,
-			array( 'ptrp_page_id' => $this->mPageId ),
+			[ 'ptrp_page_id' => $this->mPageId ],
 			__METHOD__
 		);
 	}
@@ -171,16 +171,16 @@ class PageTriage {
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$res = $dbr->selectRow(
-			array( 'pagetriage_page' ),
-			array(
+			[ 'pagetriage_page' ],
+			[
 				'ptrp_reviewed',
 				'ptrp_created',
 				'ptrp_deleted',
 				'ptrp_tags_updated',
 				'ptrp_reviewed_updated',
 				'ptrp_last_reviewed_by'
-			),
-			array( 'ptrp_page_id' => $this->mPageId ),
+			],
+			[ 'ptrp_page_id' => $this->mPageId ],
 			__METHOD__
 		);
 
@@ -208,12 +208,12 @@ class PageTriage {
 
 		$dbw = wfGetDB( DB_MASTER );
 
-		$row = array(
+		$row = [
 			'ptrl_page_id' => $this->mPageId,
 			'ptrl_user_id' => $this->mLastReviewedBy,
 			'ptrl_reviewed' => $this->mReviewed,
 			'ptrl_timestamp' => $this->mReviewedUpdated
-		);
+		];
 
 		$row['ptrl_id'] = $dbw->nextSequenceValue( 'pagetriage_log_ptrl_id' );
 		$dbw->insert( 'pagetriage_log', $row, __METHOD__ );
@@ -221,7 +221,7 @@ class PageTriage {
 
 	protected function loadArticleMetadata() {
 		if ( !$this->mArticleMetadata ) {
-			$this->mArticleMetadata = new ArticleMetadata( array( $this->mPageId ) );
+			$this->mArticleMetadata = new ArticleMetadata( [ $this->mPageId ] );
 		}
 	}
 
@@ -237,15 +237,15 @@ class PageTriage {
 
 		$dbw->delete(
 				'pagetriage_page',
-				array( 'ptrp_page_id' => $this->mPageId ),
+				[ 'ptrp_page_id' => $this->mPageId ],
 				__METHOD__,
-				array()
+				[]
 		);
 		$dbw->delete(
 				'pagetriage_log',
-				array( 'ptrl_page_id' => $this->mPageId ),
+				[ 'ptrl_page_id' => $this->mPageId ],
 				__METHOD__,
-				array()
+				[]
 		);
 		$this->mArticleMetadata->deleteMetadata();
 
@@ -263,8 +263,8 @@ class PageTriage {
 		$now = wfTimestampNow();
 		$dbw->update(
 			'pagetriage_page',
-			array( 'ptrp_tags_updated' => $dbw->timestamp( $now ) ),
-			array( 'ptrp_page_id' => $pageIds ),
+			[ 'ptrp_tags_updated' => $dbw->timestamp( $now ) ],
+			[ 'ptrp_page_id' => $pageIds ],
 			__METHOD__
 		);
 
@@ -276,12 +276,12 @@ class PageTriage {
 	 * @return array
 	 */
 	public static function getValidReviewedStatus() {
-		return array(
+		return [
 			'0' => 'unreviewed',
 			'1' => 'reviewed',
 			'2' => 'patrolled',
 			'3' => 'auto-patrolled'
-		);
+		];
 	}
 }
 

@@ -16,7 +16,7 @@ class PageTriageHooks {
 		$pageId = $newTitle->getArticleID();
 
 		// Delete cache for record if it's in pagetriage queue
-		$articleMetadata = new ArticleMetadata( array( $pageId ) );
+		$articleMetadata = new ArticleMetadata( [ $pageId ] );
 		$articleMetadata->flushMetadataFromCache();
 
 		// Delete user status cache
@@ -35,18 +35,18 @@ class PageTriageHooks {
 		global $wgUser;
 		// New record to pagetriage queue, compile metadata
 		if ( self::addToPageTriageQueue( $pageId, $newTitle, $wgUser ) ) {
-			$acp = ArticleCompileProcessor::newFromPageId( array( $pageId ) );
+			$acp = ArticleCompileProcessor::newFromPageId( [ $pageId ] );
 			if ( $acp ) {
 				// safe to use slave db for data compilation for the
 				// following components, BasicData is accessing pagetriage_page,
 				// which is not safe to use slave db
-				$config = array(
+				$config = [
 						'LinkCount' => DB_SLAVE,
 						'CategoryCount' => DB_SLAVE,
 						'Snippet' => DB_SLAVE,
 						'UserData' => DB_SLAVE,
 						'DeletionTag' => DB_SLAVE
-				);
+				];
 				$acp->configComponentDb( $config );
 				$acp->compileMetadata();
 			}
@@ -147,7 +147,7 @@ class PageTriageHooks {
 		DeferredUpdates::addCallableUpdate( function() use ( $article ) {
 			// false will enforce a validation against pagetriage_page table
 			$acp = ArticleCompileProcessor::newFromPageId(
-				array( $article->getId() ), false, DB_MASTER );
+				[ $article->getId() ], false, DB_MASTER );
 
 			if ( $acp ) {
 				// Register the article object so we can get the content and other useful information
@@ -231,9 +231,9 @@ class PageTriageHooks {
 	 * @return bool
 	 */
 	public static function onGetPreferences( $user, &$preferences ) {
-		$preferences['pagetriage-lastuse'] = array(
+		$preferences['pagetriage-lastuse'] = [
 			'type' => 'api',
-		);
+		];
 
 		return true;
 	}
@@ -246,7 +246,7 @@ class PageTriageHooks {
 	private static function flushUserStatusCache( $title ) {
 		global $wgMemc;
 
-		if ( in_array( $title->getNamespace(), array( NS_USER, NS_USER_TALK ) ) ) {
+		if ( in_array( $title->getNamespace(), [ NS_USER, NS_USER_TALK ] ) ) {
 			$wgMemc->delete( PageTriageUtil::userStatusKey( $title->getText() ) );
 		}
 	}
@@ -272,7 +272,7 @@ class PageTriageHooks {
 						$noIndexTemplates = explode( '|', $noIndexTemplateText );
 						// Properly format the template names to match what getTemplates() returns
 						$noIndexTemplates = array_map(
-							array( 'PageTriageHooks', 'formatTemplateName' ),
+							[ 'PageTriageHooks', 'formatTemplateName' ],
 							$noIndexTemplates
 						);
 						foreach ( $article->mParserOutput->getTemplates() as $templates ) {
@@ -318,9 +318,9 @@ class PageTriageHooks {
 			$wgPageTriageEnableCurationToolbar, $wgRequest, $wgPageTriageNamespaces;
 
 		// Overwrite the noindex rule defined in Article::view(), this also affects main namespace
-		//if ( self::shouldShowNoIndex( $article ) ) {
-		//	$wgOut->setRobotPolicy( 'noindex,nofollow' );
-		//}
+		// if ( self::shouldShowNoIndex( $article ) ) {
+		// $wgOut->setRobotPolicy( 'noindex,nofollow' );
+		// }
 
 		// Only logged in users can review
 		if ( !$wgUser->isLoggedIn() ) {
@@ -367,10 +367,10 @@ class PageTriageHooks {
 				// Load the JavaScript for the curation toolbar
 				$wgOut->addModules( 'ext.pageTriage.toolbarStartup' );
 				// Set the config flags in JavaScript
-				$globalVars = array(
+				$globalVars = [
 					'wgPageTriagelastUseExpired' => $lastUseExpired,
 					'wgPageTriagePagePrefixedText' => $article->getTitle()->getPrefixedText()
-				);
+				];
 				$wgOut->addJsConfigVars( $globalVars );
 			} else {
 				if ( $needsReview ) {
@@ -378,15 +378,15 @@ class PageTriageHooks {
 					$msg = wfMessage( 'pagetriage-markpatrolled' )->text();
 					$msg = Html::element(
 						'a',
-						array( 'href' => '#', 'class' => 'mw-pagetriage-markpatrolled-link' ),
+						[ 'href' => '#', 'class' => 'mw-pagetriage-markpatrolled-link' ],
 						$msg
 					);
 				} else {
 					// show 'Reviewed' text
 					$msg = wfMessage( 'pagetriage-reviewed' )->escaped();
 				}
-				$wgOut->addModules( array( 'ext.pageTriage.article' ) );
-				$html = Html::rawElement( 'div', array( 'class' => 'mw-pagetriage-markpatrolled' ), $msg );
+				$wgOut->addModules( [ 'ext.pageTriage.article' ] );
+				$html = Html::rawElement( 'div', [ 'class' => 'mw-pagetriage-markpatrolled' ], $msg );
 				$wgOut->addHTML( $html );
 			}
 		}
@@ -419,17 +419,17 @@ class PageTriageHooks {
 			$pt = new PageTriage( $rc->getAttribute( 'rc_cur_id' ) );
 			if ( $pt->addToPageTriageQueue( '2', $user, true /* fromRc */ ) ) {
 				// Compile metadata for new page triage record
-				$acp = ArticleCompileProcessor::newFromPageId( array( $rc->getAttribute( 'rc_cur_id' ) ) );
+				$acp = ArticleCompileProcessor::newFromPageId( [ $rc->getAttribute( 'rc_cur_id' ) ] );
 				if ( $acp ) {
 					// page just gets added to pagetriage queue and hence not safe to use slave db
 					// for BasicData since it's accessing pagetriage_page table
-					$config = array(
+					$config = [
 						'LinkCount' => DB_SLAVE,
 						'CategoryCount' => DB_SLAVE,
 						'Snippet' => DB_SLAVE,
 						'UserData' => DB_SLAVE,
 						'DeletionTag' => DB_SLAVE
-					);
+					];
 					$acp->configComponentDb( $config );
 					$acp->compileMetadata();
 				}
@@ -493,68 +493,68 @@ class PageTriageHooks {
 		global $wgPageTriageEnabledEchoEvents;
 
 		if ( $wgPageTriageEnabledEchoEvents ) {
-			$notificationCategories['page-review'] = array(
+			$notificationCategories['page-review'] = [
 				'priority' => 8,
 				'tooltip' => 'echo-pref-tooltip-page-review',
-			);
+			];
 		}
 
 		if ( in_array( 'pagetriage-mark-as-reviewed', $wgPageTriageEnabledEchoEvents ) ) {
-			$notifications['pagetriage-mark-as-reviewed'] = array(
+			$notifications['pagetriage-mark-as-reviewed'] = [
 				'presentation-model' => 'PageTriageMarkAsReviewedPresentationModel',
-				'primary-link' => array(
+				'primary-link' => [
 					'message' => 'notification-link-text-view-page',
 					'destination' => 'title'
-				),
+				],
 				'category' => 'page-review',
 				'group' => 'neutral',
 				'formatter-class' => 'PageTriageNotificationFormatter',
 				'title-message' => 'pagetriage-notification-mark-as-reviewed2',
-				'title-params' => array( 'agent', 'title' ),
+				'title-params' => [ 'agent', 'title' ],
 				'email-subject-message' => 'pagetriage-notification-mark-as-reviewed-email-subject2',
-				'email-subject-params' => array( 'agent', 'title' ),
+				'email-subject-params' => [ 'agent', 'title' ],
 				'email-body-batch-message' => 'pagetriage-notification-mark-as-reviewed-email-batch-body',
-				'email-body-batch-params' => array( 'title', 'agent' ),
+				'email-body-batch-params' => [ 'title', 'agent' ],
 				'icon' => 'reviewed',
-			);
+			];
 		}
 		if ( in_array( 'pagetriage-add-maintenance-tag', $wgPageTriageEnabledEchoEvents ) ) {
-			$notifications['pagetriage-add-maintenance-tag'] = array(
+			$notifications['pagetriage-add-maintenance-tag'] = [
 				'presentation-model' => 'PageTriageAddMaintenanceTagPresentationModel',
-				'primary-link' => array(
+				'primary-link' => [
 					'message' => 'notification-link-text-view-page',
 					'destination' => 'title'
-				),
+				],
 				'category' => 'page-review',
 				'group' => 'neutral',
 				'formatter-class' => 'PageTriageNotificationFormatter',
 				'title-message' => 'pagetriage-notification-add-maintenance-tag2',
-				'title-params' => array( 'agent', 'title', 'tag' ),
+				'title-params' => [ 'agent', 'title', 'tag' ],
 				'email-subject-message' => 'pagetriage-notification-add-maintenance-tag-email-subject2',
-				'email-subject-params' => array( 'agent', 'title' ),
+				'email-subject-params' => [ 'agent', 'title' ],
 				'email-body-batch-message' => 'pagetriage-notification-add-maintenance-tag-email-batch-body',
-				'email-body-batch-params' => array( 'title', 'agent' ),
+				'email-body-batch-params' => [ 'title', 'agent' ],
 				'icon' => 'reviewed',
-			);
+			];
 		}
 		if ( in_array( 'pagetriage-add-deletion-tag', $wgPageTriageEnabledEchoEvents ) ) {
-			$notifications['pagetriage-add-deletion-tag'] = array(
+			$notifications['pagetriage-add-deletion-tag'] = [
 				'presentation-model' => 'PageTriageAddDeletionTagPresentationModel',
-				'primary-link' => array(
+				'primary-link' => [
 					'message' => 'notification-link-text-view-page',
 					'destination' => 'title'
-				),
+				],
 				'category' => 'page-review',
 				'group' => 'negative',
 				'formatter-class' => 'PageTriageNotificationFormatter',
 				'title-message' => 'pagetriage-notification-add-deletion-tag2',
-				'title-params' => array( 'agent', 'title', 'tag' ),
+				'title-params' => [ 'agent', 'title', 'tag' ],
 				'email-subject-message' => 'pagetriage-notification-add-deletion-tag-email-subject2',
-				'email-subject-params' => array( 'agent', 'title' ),
+				'email-subject-params' => [ 'agent', 'title' ],
 				'email-body-batch-message' => 'pagetriage-notification-add-deletion-tag-email-batch-body',
-				'email-body-batch-params' => array( 'title', 'agent' ),
+				'email-body-batch-params' => [ 'title', 'agent' ],
 				'icon' => 'trash',
-			);
+			];
 		}
 
 		return true;
@@ -578,7 +578,7 @@ class PageTriageHooks {
 
 				$pageId = $event->getTitle()->getArticleID();
 
-				$articleMetadata = new ArticleMetadata( array( $pageId ), false, DB_SLAVE );
+				$articleMetadata = new ArticleMetadata( [ $pageId ], false, DB_SLAVE );
 				$metaData = $articleMetadata->getMetadata();
 
 				if ( !$metaData ) {
@@ -609,8 +609,8 @@ class PageTriageHooks {
 	}
 
 	public static function onUserMergeAccountFields( array &$updateFields ) {
-		$updateFields[] = array( 'pagetriage_log', 'ptrl_user_id' );
-		$updateFields[] = array( 'pagetriage_page', 'ptrp_last_reviewed_by' );
+		$updateFields[] = [ 'pagetriage_log', 'ptrl_user_id' ];
+		$updateFields[] = [ 'pagetriage_page', 'ptrp_last_reviewed_by' ];
 
 		return true;
 	}
