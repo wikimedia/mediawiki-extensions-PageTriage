@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"ZaDiak"
+			"ZaDiak",
+			"Geraki"
 		]
 	},
 	"pagetriage-please-wait": "Παρακαλώ περιμένετε...",
@@ -13,6 +14,7 @@
 	"pagetriage-author-blocked": "Φραγμένος",
 	"pagetriage-author-bot": "Μποτ",
 	"pagetriage-showing": "Εμφανίζονται:",
+	"pagetriage-filter-list-prompt": "Ορισμός φίλτρων",
 	"pagetriage-sort-by": "Ταξινόμηση κατά:",
 	"pagetriage-newest": "Νεότερες",
 	"pagetriage-oldest": "Παλαιότερες",
