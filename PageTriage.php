@@ -111,7 +111,7 @@ $wgPageTriageEnabledEchoEvents = [
 ];
 // Set default user options
 $wgDefaultUserOptions['echo-subscriptions-web-page-review'] = true;
-// This is overriden for new users in PageTriageHooks::onAccountCreated
+// This is overriden for new users in PageTriageHooks::onLocalUserCreated
 $wgDefaultUserOptions['echo-subscriptions-email-page-review'] = false;
 // End configuration variables
 
@@ -185,7 +185,7 @@ $wgHooks['BlockIpComplete'][] = 'PageTriageHooks::onBlockIpComplete';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'PageTriageHooks::onResourceLoaderGetConfigVars';
 $wgHooks['BeforeCreateEchoEvent'][] = 'PageTriageHooks::onBeforeCreateEchoEvent';
 $wgHooks['EchoGetDefaultNotifiedUsers'][] = 'PageTriageHooks::onEchoGetDefaultNotifiedUsers';
-$wgHooks['AddNewAccount'][] = 'PageTriageHooks::onAccountCreated';
+$wgHooks['LocalUserCreated'][] = 'PageTriageHooks::onLocalUserCreated';
 $wgHooks['UserMergeAccountFields'][] = 'PageTriageHooks::onUserMergeAccountFields';
 
 // logging
