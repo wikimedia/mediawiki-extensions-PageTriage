@@ -24,7 +24,7 @@
 	"pagetriage-mark-as-reviewed-error": "אירעה שגיאה בעת סימון שהדף נסקר: $1",
 	"pagetriage-mark-as-unreviewed-error": "אירעה שגיאה בעת סימון דף כדף שלא נסקר: $1",
 	"pagetriage-hist": "היסטוריה",
-	"pagetriage-bytes": "{{PLURAL:$1|בית אחד|$1 בתים}}",
+	"pagetriage-bytes": "{{PLURAL:$1|בייט אחד|$1 בייטים}}",
 	"pagetriage-edits": "{{PLURAL:$1|עריכה אחת|$1 עריכות}}",
 	"pagetriage-categories": "{{PLURAL:$1|קטגוריה אחת|$1 קטגוריות}}",
 	"pagetriage-no-categories": "ללא קטגוריות",
