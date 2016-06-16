@@ -39,6 +39,7 @@
 	"pagetriage-info-help": "помоћ",
 	"pagetriage-info-timestamp-date-format": "d MMMM yyyy",
 	"pagetriage-mark-title": "Означи као прегледано",
+	"pagetriage-mark-as-reviewed": "Означи као прегледано",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|измена|измене|измена}}",
 	"pagetriage-toolbar-close": "Затвори",
 	"pagetriage-notification-mark-as-reviewed2": "Страница [[$2]] је прегледана од стране {{GENDER:$1|корисника|кориснице}} [[User:$1|$1]]",
