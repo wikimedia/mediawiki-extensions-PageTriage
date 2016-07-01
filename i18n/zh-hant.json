@@ -5,7 +5,8 @@
 			"Cwlin0416",
 			"Liuxinyu970226",
 			"Simon Shek",
-			"LNDDYL"
+			"LNDDYL",
+			"아라"
 		]
 	},
 	"pagetriage": "頁面分檢器",
@@ -38,6 +39,7 @@
 	"pagetriage-no-patrol-right": "您並無權限標記此頁面已檢閱",
 	"pagetriage-author-blocked": "已封鎖",
 	"pagetriage-author-bot": "機器人",
+	"pagetriage-creation-dateformat": "yyyy年MM月d日 HH:mm",
 	"pagetriage-showing": "顯示：",
 	"pagetriage-filter-list-prompt": "設定篩選器",
 	"pagetriage-unreviewed-article-count": "$1 個未檢閱的{{PLURAL:$1|頁面}}（最早： $2 天前）",

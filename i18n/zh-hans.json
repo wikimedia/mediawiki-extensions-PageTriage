@@ -10,7 +10,8 @@
 			"Xiaomingyan",
 			"Yfdyh000",
 			"乌拉跨氪",
-			"飞舞回堂前"
+			"飞舞回堂前",
+			"아라"
 		]
 	},
 	"pagetriage": "页面分配器",
@@ -43,6 +44,7 @@
 	"pagetriage-no-patrol-right": "您没有权限标记该页面为已巡查",
 	"pagetriage-author-blocked": "已封禁",
 	"pagetriage-author-bot": "机器人",
+	"pagetriage-creation-dateformat": "yyyy年MM月d日 HH:mm",
 	"pagetriage-showing": "显示：",
 	"pagetriage-filter-list-prompt": "设置过滤器",
 	"pagetriage-unreviewed-article-count": "共计$1个未巡查页面（最早：$2）",

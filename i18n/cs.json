@@ -5,7 +5,8 @@
 			"Littledogboy",
 			"Mormegil",
 			"Vks",
-			"Matěj Suchánek"
+			"Matěj Suchánek",
+			"Dvorapa"
 		]
 	},
 	"newpagesfeed": "Kanál nových stránek",
@@ -25,7 +26,7 @@
 	"pagetriage-editcount": "$1 {{PLURAL:$1|editace|editace|editací}} od $2",
 	"pagetriage-author-not-autoconfirmed": "Nový uživatel",
 	"pagetriage-author-blocked": "Zablokován",
-	"pagetriage-author-bot": "Bot",
+	"pagetriage-author-bot": "Robot",
 	"pagetriage-showing": "Zobrazení:",
 	"pagetriage-filter-list-prompt": "Nastavit filtry",
 	"pagetriage-sort-by": "Seřadit podle:",
@@ -33,7 +34,7 @@
 	"pagetriage-oldest": "Nejstarší",
 	"pagetriage-filter-show-heading": "Ukázat:",
 	"pagetriage-filter-nominated-for-deletion": "Nominována na smazání",
-	"pagetriage-filter-bot-edits": "vytvořeny boty",
+	"pagetriage-filter-bot-edits": "vytvořeny roboty",
 	"pagetriage-filter-redirects": "Přesměrování",
 	"pagetriage-filter-namespace-heading": "Ve jmenném prostoru:",
 	"pagetriage-filter-article": "Článek",
@@ -49,7 +50,7 @@
 	"pagetriage-filter-ns-all": "Všechny",
 	"pagetriage-more": "Více",
 	"pagetriage-filter-stat-all": "Všechny",
-	"pagetriage-filter-stat-bots": "boti",
+	"pagetriage-filter-stat-bots": "roboti",
 	"pagetriage-filter-stat-redirects": "přesměrování",
 	"pagetriage-filter-stat-nominated-for-deletion": "nominována na smazání",
 	"pagetriage-filter-stat-no-categories": "nekategorizovaná",
