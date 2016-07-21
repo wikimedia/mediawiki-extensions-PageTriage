@@ -502,61 +502,25 @@ class PageTriageHooks {
 		if ( in_array( 'pagetriage-mark-as-reviewed', $wgPageTriageEnabledEchoEvents ) ) {
 			$notifications['pagetriage-mark-as-reviewed'] = [
 				'presentation-model' => 'PageTriageMarkAsReviewedPresentationModel',
-				'primary-link' => [
-					'message' => 'notification-link-text-view-page',
-					'destination' => 'title'
-				],
 				'category' => 'page-review',
 				'group' => 'neutral',
 				'section' => 'message',
-				'formatter-class' => 'PageTriageNotificationFormatter',
-				'title-message' => 'pagetriage-notification-mark-as-reviewed2',
-				'title-params' => [ 'agent', 'title' ],
-				'email-subject-message' => 'pagetriage-notification-mark-as-reviewed-email-subject2',
-				'email-subject-params' => [ 'agent', 'title' ],
-				'email-body-batch-message' => 'pagetriage-notification-mark-as-reviewed-email-batch-body',
-				'email-body-batch-params' => [ 'title', 'agent' ],
-				'icon' => 'reviewed',
 			];
 		}
 		if ( in_array( 'pagetriage-add-maintenance-tag', $wgPageTriageEnabledEchoEvents ) ) {
 			$notifications['pagetriage-add-maintenance-tag'] = [
 				'presentation-model' => 'PageTriageAddMaintenanceTagPresentationModel',
-				'primary-link' => [
-					'message' => 'notification-link-text-view-page',
-					'destination' => 'title'
-				],
 				'category' => 'page-review',
 				'group' => 'neutral',
 				'section' => 'alert',
-				'formatter-class' => 'PageTriageNotificationFormatter',
-				'title-message' => 'pagetriage-notification-add-maintenance-tag2',
-				'title-params' => [ 'agent', 'title', 'tag' ],
-				'email-subject-message' => 'pagetriage-notification-add-maintenance-tag-email-subject2',
-				'email-subject-params' => [ 'agent', 'title' ],
-				'email-body-batch-message' => 'pagetriage-notification-add-maintenance-tag-email-batch-body',
-				'email-body-batch-params' => [ 'title', 'agent' ],
-				'icon' => 'reviewed',
 			];
 		}
 		if ( in_array( 'pagetriage-add-deletion-tag', $wgPageTriageEnabledEchoEvents ) ) {
 			$notifications['pagetriage-add-deletion-tag'] = [
 				'presentation-model' => 'PageTriageAddDeletionTagPresentationModel',
-				'primary-link' => [
-					'message' => 'notification-link-text-view-page',
-					'destination' => 'title'
-				],
 				'category' => 'page-review',
 				'group' => 'negative',
 				'section' => 'alert',
-				'formatter-class' => 'PageTriageNotificationFormatter',
-				'title-message' => 'pagetriage-notification-add-deletion-tag2',
-				'title-params' => [ 'agent', 'title', 'tag' ],
-				'email-subject-message' => 'pagetriage-notification-add-deletion-tag-email-subject2',
-				'email-subject-params' => [ 'agent', 'title' ],
-				'email-body-batch-message' => 'pagetriage-notification-add-deletion-tag-email-batch-body',
-				'email-body-batch-params' => [ 'title', 'agent' ],
-				'icon' => 'trash',
 			];
 		}
 
