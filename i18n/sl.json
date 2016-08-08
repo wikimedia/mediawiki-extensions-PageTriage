@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"pagetriage-articleinfo-byline": "Stran je $1 ustvaril(-a) $2 ($3$4$5).",
+	"pagetriage-tags-uncategorised-desc": "Stran še ni uvrščena v nobeno kategorijo.",
+	"pagetriage-tags-orphan-desc": "Na to stran se ne povezuje nobena druga stran.",
+	"pagetriage-tags-cleanup-desc": "To stran je treba očistiti.",
+	"pagetriage-tags-advert-desc": "Članek je napisan kot oglas.",
+	"pagetriage-tags-hoax-desc": "Predmet te strani je morda v celoti potegavščina.",
+	"pagetriage-tags-confusing-desc": "Stran je nejasna.",
+	"pagetriage-tags-tone-desc": "Stran ima neprimeren ton.",
+	"pagetriage-tags-recentism-desc": "Stran pretirano poudarja nedavne dogodke.",
+	"pagetriage-info-problem-non-autoconfirmed": "Nov urejevalec",
+	"pagetriage-info-problem-no-references-desc": "Članek ne navaja nobenega vira.",
+	"pagetriage-wikilove-page-creator": "Ustvaritelj strani",
+	"pagetriage-wikilove-no-recipients": "Za to stran ni na voljo noben prejemnik.",
+	"apihelp-pagetriagestats-description": "Pridobite statistiko za triažo strani."
+}
