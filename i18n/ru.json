@@ -6,7 +6,8 @@
 			"Ole Yves",
 			"Tucvbif",
 			"Yurik",
-			"Sealle"
+			"Sealle",
+			"Jack who built the house"
 		]
 	},
 	"pagetriage": "Сортировка страниц",
@@ -23,7 +24,7 @@
 	"pagetriage-mark-as-reviewed-error": "Произошла ошибка при отметке данной страницы как проверенной: $1",
 	"pagetriage-mark-as-unreviewed-error": "Произошла ошибка при отметке данной страницы как непроверенной: $1",
 	"pagetriage-hist": "история",
-	"pagetriage-bytes": "$1 {{PLURAL:$1|байт|байта|байтов}}",
+	"pagetriage-bytes": "$1 {{PLURAL:$1|байт|байта|байт}}",
 	"pagetriage-edits": "$1 {{PLURAL:$1|правка|правки|правок}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|категория|категории|категорий}}",
 	"pagetriage-no-categories": "Нет категорий",
@@ -198,15 +199,6 @@
 	"pagetriage-toolbar-close": "Закрыть",
 	"pagetriage-toolbar-minimize": "Свернуть",
 	"pagetriage-tag-warning-notice": "Примечание: эта страница создана всего $1 минут{{PLURAL:$1|у|ы|}} назад. Подумайте, так ли серьёзна причина для проставления шаблона и не стоит ли немного подождать?",
-	"pagetriage-notification-mark-as-reviewed2": "Страница [[$2]] была проверена {{GENDER:$1|участником|участницей}} [[User:$1|$1]]",
-	"pagetriage-notification-mark-as-reviewed-email-subject2": "Ваша страница была {{GENDER:$1|проверена}} на сайте {{SITENAME}}",
-	"pagetriage-notification-mark-as-reviewed-email-batch-body": "Страница $1 была проверена {{GENDER:$2|участником|участницей}} $2.",
-	"pagetriage-notification-add-maintenance-tag2": "Страница [[$2]] была проверена и помечена тегами {{GENDER:$1|участником|участницей}} [[User:$1|$1]]. Тег{{PLURAL:$4||и}}: $3",
-	"pagetriage-notification-add-maintenance-tag-email-subject2": "Ваша страница была {{GENDER:$1|помечена тегами}} на сайте {{SITENAME}}",
-	"pagetriage-notification-add-maintenance-tag-email-batch-body": "Страница $1 была проверена и помечена тегами {{GENDER:$2|участником|участницей}} $2.",
-	"pagetriage-notification-add-deletion-tag2": "Страница [[$2]] была проверена и помечена на удаление {{GENDER:$1|участником|участницей}} [[User:$1|$1]]. Тег{{PLURAL:$4||и}}: $3",
-	"pagetriage-notification-add-deletion-tag-email-subject2": "Ваша страница была {{GENDER:$1|помечена к удалению}} на сайте {{SITENAME}}",
-	"pagetriage-notification-add-deletion-tag-email-batch-body": "Страница $1 была помечена для удаления {{GENDER:$2|участником|участницей}} $2.",
 	"echo-pref-subscription-page-review": "Проверки созданных мною страниц",
 	"echo-pref-tooltip-page-review": "Сообщать мне, когда кто-то помечает созданную мной страницу как проверенную.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Проверка|Проверки}} страницы"
