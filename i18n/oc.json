@@ -4,6 +4,9 @@
 			"Cedric31"
 		]
 	},
+	"pagetriage-tags-verylong-desc": "Aquesta pagina es tròp longa.",
+	"pagetriage-tags-confusing-desc": "Aquesta pagina pòt èsser confusa o incertana.",
+	"pagetriage-tags-fansite-desc": "Aquesta pagina se sembla a la pagina d'un site d'afogats.",
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Mercé}}}}",
 	"pagetriage-discuss-link": "{{GENDER:$1|Discutir}}",
 	"pagetriage-discuss-link-title": "{{GENDER:$1|Discutir}}",
