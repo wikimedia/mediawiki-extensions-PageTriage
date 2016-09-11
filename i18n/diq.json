@@ -4,9 +4,11 @@
 			"Erdemaslancan",
 			"Mirzali",
 			"Marmase",
-			"Kumkumuk"
+			"Kumkumuk",
+			"Asmen"
 		]
 	},
+	"pagetriage-reviewed": "Vêniya",
 	"pagetriage-bytes": "$1 {{PLURAL:$1|bayt|bayti}}",
 	"pagetriage-no-categories": "Kategoriy çıniyê",
 	"pagetriage-sort-by": "Raten:",
@@ -18,6 +20,7 @@
 	"pagetriage-filter-ns-all": "Pêro",
 	"pagetriage-more": "Zewbi",
 	"pagetriage-filter-stat-all": "Pêro",
+	"pagetriage-filter-stat-reviewed": "vêniya",
 	"pagetriage-filter-stat-unreviewed": "Nêbarıyaye",
 	"pagetriage-filter-stat-bots": "boti",
 	"pagetriage-filter-stat-no-categories": "kategoriy çıniyê",
