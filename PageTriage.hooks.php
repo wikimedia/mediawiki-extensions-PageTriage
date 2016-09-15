@@ -251,6 +251,7 @@ class PageTriageHooks {
 		}
 	}
 
+	// This method is currently unused.
 	/**
 	 * Determines whether to show no-index for the article specified, show no-index if
 	 * 1. the page contains a template listed in $wgPageTriageNoIndexTemplates page
@@ -266,7 +267,8 @@ class PageTriageHooks {
 			if ( $noIndexTitle ) {
 				$noIndexArticle = WikiPage::newFromID( $noIndexTitle->getArticleID() );
 				if ( $noIndexArticle ) {
-					$noIndexTemplateText = $noIndexArticle->getText();
+					$noIndexTemplateContent = $noIndexArticle->getContent();
+					$noIndexTemplateText = ContentHandler::getContentText( $noIndexTemplateContent );
 					if ( $noIndexTemplateText ) {
 						// Collect all the noindex template names into an array
 						$noIndexTemplates = explode( '|', $noIndexTemplateText );
@@ -275,11 +277,18 @@ class PageTriageHooks {
 							[ 'PageTriageHooks', 'formatTemplateName' ],
 							$noIndexTemplates
 						);
-						foreach ( $article->mParserOutput->getTemplates() as $templates ) {
-							foreach ( $templates as $template => $pageId ) {
-								if ( in_array( $template, $noIndexTemplates ) ) {
-									return true;
-								}
+
+						// getTemplates returns all transclusions, not just NS_TEMPLATE
+						// But the MW page does not include the namespace.
+						$allTransclusions = $article->mParserOutput->getTemplates();
+
+						$templates = isset( $allTransclusions[NS_TEMPLATE] ) ?
+							$allTransclusions[NS_TEMPLATE] :
+							[];
+
+						foreach ( $templates as $template => $pageId ) {
+							if ( in_array( $template, $noIndexTemplates ) ) {
+								return true;
 							}
 						}
 					}

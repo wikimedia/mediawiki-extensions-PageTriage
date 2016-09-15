@@ -725,10 +725,11 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 				$article = WikiPage::newFromID( $pageId, $from );
 			}
 			if ( $article ) {
-				$content = $article->getText();
-				if ( $content ) {
-					$this->metadata[$pageId]['snippet'] = self::generateArticleSnippet( $content );
-					$this->metadata[$pageId]['reference'] = self::checkReferenceTag( $content );
+				$content = $article->getContent();
+				$text = ContentHandler::getContentText( $content );
+				if ( $text ) {
+					$this->metadata[$pageId]['snippet'] = self::generateArticleSnippet( $text );
+					$this->metadata[$pageId]['reference'] = self::checkReferenceTag( $text );
 				}
 			}
 		}
