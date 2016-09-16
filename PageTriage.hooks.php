@@ -728,4 +728,24 @@ class PageTriageHooks {
 
 		return true;
 	}
+
+	/**
+	 * @param $updater DatabaseUpdater
+	 * @return bool
+	 */
+	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
+		$base = __DIR__ . "/sql";
+		// tables
+		$updater->addExtensionTable( 'pagetriage_tags', $base . '/PageTriageTags.sql' );
+		$updater->addExtensionTable( 'pagetriage_page_tags', $base . '/PageTriagePageTags.sql' );
+		$updater->addExtensionTable( 'pagetriage_page', $base . '/PageTriagePage.sql' );
+		$updater->addExtensionTable( 'pagetriage_log', $base . '/PageTriageLog.sql' );
+		// patches
+		$updater->addExtensionIndex(
+			'pagetriage_page',
+			'ptrp_reviewed_updated',
+			$base . '/PageTriagePagePatch.sql'
+		);
+		return true;
+	}
 }

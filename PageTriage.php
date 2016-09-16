@@ -164,7 +164,7 @@ $wgAPIModules['pagetriagetemplate'] = 'ApiPageTriageTemplate';
 $wgAPIModules['pagetriagetagging'] = 'ApiPageTriageTagging';
 
 // hooks
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'efPageTriageSchemaUpdates';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'PageTriageHooks::onLoadExtensionSchemaUpdates';
 $wgHooks['SpecialMovepageAfterMove'][] = 'PageTriageHooks::onSpecialMovepageAfterMove';
 $wgHooks['NewRevisionFromEditComplete'][] = 'PageTriageHooks::onNewRevisionFromEditComplete';
 $wgHooks['ArticleInsertComplete'][] = 'PageTriageHooks::onArticleInsertComplete';
@@ -190,26 +190,6 @@ $wgLogActionsHandlers['pagetriage-curation/unreviewed'] = 'LogFormatter';
 $wgLogActionsHandlers['pagetriage-curation/tag'] = 'PageTriageLogFormatter';
 $wgLogActionsHandlers['pagetriage-curation/delete'] = 'PageTriageLogFormatter';
 $wgLogActionsHandlers['pagetriage-deletion/delete'] = 'PageTriageLogFormatter';
-
-/**
- * @param $updater DatabaseUpdater
- * @return bool
- */
-function efPageTriageSchemaUpdates( $updater = null ) {
-	$base = __DIR__ . "/sql";
-	// tables
-	$updater->addExtensionTable( 'pagetriage_tags', $base . '/PageTriageTags.sql' );
-	$updater->addExtensionTable( 'pagetriage_page_tags', $base . '/PageTriagePageTags.sql' );
-	$updater->addExtensionTable( 'pagetriage_page', $base . '/PageTriagePage.sql' );
-	$updater->addExtensionTable( 'pagetriage_log', $base . '/PageTriageLog.sql' );
-	// patches
-	$updater->addExtensionIndex(
-		'pagetriage_page',
-		'ptrp_reviewed_updated',
-		$base . '/PageTriagePagePatch.sql'
-	);
-	return true;
-}
 
 /**
  * UnitTestsList hook handler - adds unit test files to the unit tester
