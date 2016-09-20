@@ -3,9 +3,6 @@
 /* global wgArticleId */
 
 ( function ( $ ) {
-	if ( !mw.pageTriage ) {
-		mw.pageTriage = {};
-	}
 	mw.pageTriage.action = {
 		submit: function () {
 			var apiRequest = {

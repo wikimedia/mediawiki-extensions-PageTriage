@@ -545,10 +545,26 @@ class PageTriageHooks {
 	 * @return bool true
 	 */
 	public static function onResourceLoaderRegisterModules( &$resourceLoader ) {
+		global $wgPageTriageDeletionTagsOptionsContentLanguageMessages;
+
 		$template = [
 			'localBasePath' => __DIR__. '/modules',
 			'remoteExtPath' => 'PageTriage/modules'
 		];
+
+		$messagesModule = [
+			'class' => 'PageTriageMessagesModule',
+			'contentLanguageMessages' => array_merge(
+				[
+					'pagetriage-mark-mark-talk-page-notify-topic-title',
+					'pagetriage-mark-unmark-talk-page-notify-topic-title',
+					'pagetriage-tags-talk-page-notify-topic-title',
+				],
+				$wgPageTriageDeletionTagsOptionsContentLanguageMessages
+			),
+		];
+
+		$resourceLoader->register( 'ext.pageTriage.messages', $messagesModule );
 
 		$toolBaseClass = [
 			'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.js', // abstract class first
@@ -570,9 +586,11 @@ class PageTriageHooks {
 			'external/jquery.effects.squish.js',
 		];
 
-		$module = $template + [
+		$viewsToolbarModule = $template + [
 			'dependencies' => [
 				'mediawiki.jqueryMsg',
+				'mediawiki.messagePoster',
+				'mediawiki.Title',
 				'ext.pageTriage.models',
 				'ext.pageTriage.util',
 				'jquery.badge',
@@ -581,7 +599,8 @@ class PageTriageHooks {
 				'jquery.spinner',
 				'jquery.client',
 				'ext.pageTriage.externalTagsOptions',
-				'ext.pageTriage.externalDeletionTagsOptions'
+				'ext.pageTriage.externalDeletionTagsOptions',
+				'ext.pageTriage.messages',
 			],
 			'styles' => [
 				'ext.pageTriage.css', // stuff that's shared across all views
@@ -663,19 +682,17 @@ class PageTriageHooks {
 				'pagetriage-edits',
 				'pagetriage-categories',
 				'pagetriage-add-tag-confirmation',
-				'pagetriage-tags-note-edit-summary',
-				'pagetriage-del-talk-page-notify-summary',
 				'pagetriage-tag-deletion-error',
 				'pagetriage-toolbar-close',
 				'pagetriage-toolbar-minimize',
 				'pagetriage-tag-warning-notice'
-			]
+			],
 		];
 
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'WikiLove' ) ) {
 			$tools[] = 'ext.pageTriage.views.toolbar/ext.pageTriage.wikilove.js';
-			$module['styles'][] = 'ext.pageTriage.views.toolbar/ext.pageTriage.wikilove.css';
-			$module['messages'] = array_merge( $module['messages'], [
+			$viewsToolbarModule['styles'][] = 'ext.pageTriage.views.toolbar/ext.pageTriage.wikilove.css';
+			$viewsToolbarModule['messages'] = array_merge( $viewsToolbarModule['messages'], [
 				'pagetriage-wikilove-page-creator',
 				'pagetriage-wikilove-edit-count',
 				'pagetriage-wikilove-helptext',
@@ -686,13 +703,13 @@ class PageTriageHooks {
 			] );
 		}
 
-		$module['scripts'] = array_merge(
+		$viewsToolbarModule['scripts'] = array_merge(
 			$toolBaseClass,
 			$tools,
 			$afterTools
 		);
 
-		$resourceLoader->register( 'ext.pageTriage.views.toolbar', $module );
+		$resourceLoader->register( 'ext.pageTriage.views.toolbar', $viewsToolbarModule );
 	}
 
 	/**

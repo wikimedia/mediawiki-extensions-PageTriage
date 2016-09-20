@@ -2,11 +2,6 @@
 // RevisionList is a collection of revisions for a single page
 //
 $( function () {
-	if ( !mw.pageTriage ) {
-		// make sure this object exists, since this might be run first.
-		mw.pageTriage = {};
-	}
-
 	// sparse model because events don't work well when nesting these.
 	mw.pageTriage.Revision = Backbone.Model.extend( {} );
 

@@ -1,8 +1,5 @@
 // Stats represents the dashboard data for pagetriage
 $( function () {
-	if ( !mw.pageTriage ) {
-		mw.pageTriage = {};
-	}
 	mw.pageTriage.Stats = Backbone.Model.extend( {
 		defaults: {
 			title: 'PageTriage Dashboard Data',

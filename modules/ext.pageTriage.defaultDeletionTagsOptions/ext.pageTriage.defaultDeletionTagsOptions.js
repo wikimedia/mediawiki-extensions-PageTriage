@@ -37,6 +37,7 @@
 				desc: mw.msg( 'pagetriage-del-tags-blpprod-desc' ),
 				params: {},
 				anchor: '',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-prod-notify-topic-title',
 				talkpagenotiftpl: 'ProdwarningBLP-NPF',
 				subst: true
 			},
@@ -48,6 +49,7 @@
 				desc: mw.msg( 'pagetriage-del-tags-dba1-desc' ),
 				params: {},
 				anchor: 'nocontext',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Empty-warn-NPF'
 			},
 
@@ -60,6 +62,7 @@
 					source: $.extend( true, {}, param.source )
 				},
 				anchor: 'notenglish',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Db-foreign-notice-NPF'
 			},
 
@@ -70,6 +73,7 @@
 				desc: mw.msg( 'pagetriage-del-tags-dba3-desc' ),
 				params: {},
 				anchor: 'nocontent',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Nocontent-warn-NPF'
 			},
 
@@ -80,6 +84,7 @@
 				desc: mw.msg( 'pagetriage-del-tags-dba7-desc' ),
 				params: {},
 				anchor: 'importance',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Db-notability-notice-NPF'
 			},
 
@@ -90,6 +95,7 @@
 				desc: mw.msg( 'pagetriage-del-tags-dba9-desc' ),
 				params: {},
 				anchor: 'music',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Db-a9-notice-NPF'
 			},
 
@@ -102,6 +108,7 @@
 					article: $.extend( true, {}, param.article )
 				},
 				anchor: 'duplicate',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Db-a10-notice-NPF'
 			},
 
@@ -112,6 +119,7 @@
 				desc: mw.msg( 'pagetriage-del-tags-dbg1-desc' ),
 				params: {},
 				anchor: 'nonsense',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Db-nonsense-notice-NPF'
 			},
 
@@ -122,6 +130,7 @@
 				desc: mw.msg( 'pagetriage-del-tags-dbg2-desc' ),
 				params: {},
 				anchor: 'test',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Db-test-notice-NPF'
 			},
 
@@ -132,6 +141,7 @@
 				desc: mw.msg( 'pagetriage-del-tags-dbg3-desc' ),
 				params: {},
 				anchor: 'vandalism',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Db-vandalism-notice-NPF'
 			},
 
@@ -144,6 +154,7 @@
 					1: $.extend( true, {}, param.url )
 				},
 				anchor: 'repost',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Uw-repost-NPF'
 			},
 
@@ -154,6 +165,7 @@
 				desc: mw.msg( 'pagetriage-del-tags-dbg5-desc' ),
 				params: {},
 				anchor: 'banned',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Db-banned-notice-NPF'
 			},
 
@@ -164,6 +176,7 @@
 				desc: mw.msg( 'pagetriage-del-tags-dbg7-desc' ),
 				params: {},
 				anchor: 'blanked',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Db-author-notice-NPF'
 			},
 
@@ -174,6 +187,7 @@
 				desc: mw.msg( 'pagetriage-del-tags-dbg10-desc' ),
 				params: {},
 				anchor: 'attack',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Db-attack-notice-NPF'
 			},
 
@@ -184,6 +198,7 @@
 				desc: mw.msg( 'pagetriage-del-tags-dbg11-desc' ),
 				params: {},
 				anchor: 'spam',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Spam-warn-NPF'
 			},
 
@@ -196,6 +211,7 @@
 					url: $.extend( true, {}, param.url )
 				},
 				anchor: 'copyvio',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Nothanks-sd-NPF'
 			},
 
@@ -206,6 +222,7 @@
 				desc: mw.msg( 'pagetriage-del-tags-dbu2-desc' ),
 				params: {},
 				anchor: 'nouser',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Db-u2-notice-NPF'
 			},
 
@@ -216,6 +233,7 @@
 				desc: mw.msg( 'pagetriage-del-tags-dbu3-desc' ),
 				params: {},
 				anchor: 'fairusegallery',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Db-gallery-notice-NPF'
 			},
 
@@ -232,6 +250,7 @@
 					}
 				},
 				anchor: '',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-prod-notify-topic-title',
 				talkpagenotiftpl: 'Proposed_deletion_notify-NPF',
 				subst: true
 			}
@@ -239,6 +258,7 @@
 
 	$.pageTriageDeletionTagsMultiple = {
 		tag: 'Db-multiple',
+		talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 		talkpagenotiftpl: 'Db-notice-multiple-NPF'
 	};
 
@@ -299,6 +319,7 @@
 							},
 							2: $.extend( true, {}, param.pagename )
 						},
+						talkpagenotiftopictitle: 'pagetriage-del-tags-xfd-notify-topic-title',
 						talkpagenotiftpl: 'AfD-notice-NPF',
 						subst: true
 					},
@@ -316,6 +337,7 @@
 								value: ''
 							}
 						},
+						talkpagenotiftopictitle: 'pagetriage-del-tags-xfd-notify-topic-title',
 						talkpagenotiftpl: 'RFDNote-NPF',
 						subst: true
 					}
@@ -368,6 +390,7 @@
 								skip: true // don't use this param in the main template
 							}
 						},
+						talkpagenotiftopictitle: 'pagetriage-del-tags-xfd-notify-topic-title',
 						talkpagenotiftpl: 'MFDWarning-NPF'
 					}
 				}

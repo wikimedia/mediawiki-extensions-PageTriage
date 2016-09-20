@@ -635,36 +635,35 @@ $( function () {
 		},
 
 		talkPageNote: function ( note ) {
-			var that = this,
+			var topicTitle, messagePosterPromise,
+				that = this,
 				pageName = mw.config.get( 'wgPageTriagePagePrefixedText' );
+
+			messagePosterPromise = mw.messagePoster.factory.create(
+				new mw.Title( this.model.get( 'creator_user_talk_page' ) )
+			);
+
+			topicTitle = mw.pageTriage.contentLanguageMessage(
+				'pagetriage-tags-talk-page-notify-topic-title',
+				pageName
+			).text();
 
 			note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' ).Tags +
 				'|' + pageName +
 				'|' + mw.config.get( 'wgUserName' ) +
-				'|' + note + '}}' +
-				' ~~~~'; // Appending signature
+				'|' + note + '}}';
 
-			$.ajax( {
-				type: 'post',
-				url: mw.util.wikiScript( 'api' ),
-				data: {
-					action: 'edit',
-					title: this.model.get( 'creator_user_talk_page' ),
-					appendtext: '\n' + note,
-					token: mw.user.tokens.get( 'editToken' ),
-					summary: mw.msg( 'pagetriage-tags-note-edit-summary', pageName ),
-					format: 'json'
-				},
-				success: function ( data ) {
-					if ( data.edit && data.edit.result === 'Success' ) {
-						// update the article model, since it's now changed.
-						that.reset();
-						window.location.reload( true );
-					} else {
-						that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
-					}
-				},
-				dataType: 'json'
+			messagePosterPromise.then( function ( messagePoster ) {
+				return messagePoster.post(
+					topicTitle,
+					note
+				);
+			} ).then( function () {
+				// update the article model, since it's now changed.
+				that.reset();
+				window.location.reload( true );
+			}, function () {
+				that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
 			} );
 		},
 

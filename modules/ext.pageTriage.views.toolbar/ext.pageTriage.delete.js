@@ -751,7 +751,8 @@ $( function () {
 		 * Notify the user on talk page
 		 */
 		notifyUser: function ( count, key ) {
-			var template,
+			var selected, topicTitleKey, templateName, template, messagePosterPromise,
+				topicTitle,
 				paramsText = '',
 				that = this;
 
@@ -761,36 +762,36 @@ $( function () {
 
 			// use generic template for multiple deletion tag
 			if ( count > 1 ) {
-				template = $.pageTriageDeletionTagsMultiple.talkpagenotiftpl;
+				selected = $.pageTriageDeletionTagsMultiple;
 			} else {
-				template = this.selectedTag[ key ].talkpagenotiftpl;
+				selected = this.selectedTag[ key ];
 				paramsText = this.buildParams( this.selectedTag[ key ] );
 			}
-			template = '{{subst:' + template + '|' + pageName + paramsText + '}}';
-			// Appending signature
-			template += ' ~~~~';
+
+			topicTitleKey = selected.talkpagenotiftopictitle;
+			topicTitle = mw.pageTriage.contentLanguageMessage( topicTitleKey, pageName ).text();
+
+			templateName = selected.talkpagenotiftpl;
+
+			template = '{{subst:' + templateName + '|' + pageName + paramsText + '}}';
 
 			if ( this.model.get( 'user_name' ) ) {
-				$.ajax( {
-					type: 'post',
-					url: mw.util.wikiScript( 'api' ),
-					data: {
-						action: 'edit',
-						title: this.model.get( 'creator_user_talk_page' ),
-						appendtext: '\n' + template,
-						summary: mw.msg( 'pagetriage-del-talk-page-notify-summary', pageName ),
-						token: mw.user.tokens.get( 'editToken' ),
-						format: 'json'
-					},
-					success: function ( data ) {
-						if ( data.edit && data.edit.result === 'Success' ) {
-							that.reset();
-							window.location.reload( true );
-						} else {
-							that.handleError( mw.msg( 'pagetriage-del-talk-page-notify-error' ) );
-						}
-					},
-					dataType: 'json'
+				messagePosterPromise = mw.messagePoster.factory.create(
+					new mw.Title(
+						this.model.get( 'creator_user_talk_page' )
+					)
+				);
+
+				messagePosterPromise.then( function ( messagePoster ) {
+					return messagePoster.post(
+						topicTitle,
+						template
+					);
+				} ).then( function () {
+					that.reset();
+					window.location.reload( true );
+				}, function () {
+					that.handleError( mw.msg( 'pagetriage-del-talk-page-notify-error' ) );
 				} );
 			}
 		},

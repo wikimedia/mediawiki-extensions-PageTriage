@@ -2,10 +2,6 @@
 // ArticleList is a collection of articles for use in the list view
 //
 $( function () {
-	if ( !mw.pageTriage ) {
-		// make sure this object exists, since this might be run first.
-		mw.pageTriage = {};
-	}
 	mw.pageTriage.Article = Backbone.Model.extend( {
 		defaults: {
 			title: 'Empty Article',
