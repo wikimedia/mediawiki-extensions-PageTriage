@@ -727,7 +727,7 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 			if ( $article ) {
 				$content = $article->getContent();
 				$text = ContentHandler::getContentText( $content );
-				if ( $text ) {
+				if ( $text !== null ) {
 					$this->metadata[$pageId]['snippet'] = self::generateArticleSnippet( $text );
 					$this->metadata[$pageId]['reference'] = self::checkReferenceTag( $text );
 				}
