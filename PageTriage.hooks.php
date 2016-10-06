@@ -93,7 +93,7 @@ class PageTriageHooks {
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/ArticleInsertComplete
 	 * @param $article WikiPage created
 	 * @param $user User creating the article
-	 * @param $text string New content
+	 * @param $content Content New content
 	 * @param $summary string Edit summary/comment
 	 * @param $isMinor bool Whether or not the edit was marked as minor
 	 * @param $isWatch bool (No longer used)
@@ -102,8 +102,8 @@ class PageTriageHooks {
 	 * @param $revision Revision New Revision of the article
 	 * @return bool
 	 */
-	public static function onArticleInsertComplete(
-		$article, $user, $text, $summary, $isMinor, $isWatch, $section, $flags, $revision
+	public static function onPageContentInsertComplete(
+		$article, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision
 	) {
 		global $wgPageTriageNamespaces;
 		if ( !in_array( $article->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
