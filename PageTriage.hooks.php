@@ -251,17 +251,23 @@ class PageTriageHooks {
 		}
 	}
 
-	// This method is currently unused.
 	/**
-	 * Determines whether to show no-index for the article specified, show no-index if
-	 * 1. the page contains a template listed in $wgPageTriageNoIndexTemplates page
-	 * 2. the page is in triage queue and has not been triaged
+	 * Determines whether to set noindex for the article specified
+	 *
+	 * Returns true if the page includes a template that triggers noindexing or
+	 * all of the following are true:
+	 * 1. $wgPageTriageNoIndexUnreviewedNewArticles is true
+	 * 2. The page is in triage queue and has not been triaged
+	 * 3. The page is younger than the maximum age for "new pages"
+	 *
 	 * @param $article Article
 	 * @return bool
 	 */
 	private static function shouldShowNoIndex( $article ) {
-		global $wgPageTriageNoIndexTemplates;
+		global $wgPageTriageNoIndexUnreviewedNewArticles, $wgRCMaxAge,
+			$wgPageTriageNoIndexTemplates;
 
+		// See if article includes any templates that should trigger noindexing
 		if ( $wgPageTriageNoIndexTemplates && $article->mParserOutput instanceof ParserOutput ) {
 			$noIndexTitle = Title::newFromText( $wgPageTriageNoIndexTemplates, NS_MEDIAWIKI );
 			if ( $noIndexTitle ) {
@@ -279,7 +285,7 @@ class PageTriageHooks {
 						);
 
 						// getTemplates returns all transclusions, not just NS_TEMPLATE
-						// But the MW page does not include the namespace.
+						// But the MediaWiki page does not include the namespace.
 						$allTransclusions = $article->mParserOutput->getTemplates();
 
 						$templates = isset( $allTransclusions[NS_TEMPLATE] ) ?
@@ -296,8 +302,34 @@ class PageTriageHooks {
 			}
 		}
 
-		if ( PageTriageUtil::doesPageNeedTriage( $article ) ) {
-			return true;
+		if ( $wgPageTriageNoIndexUnreviewedNewArticles &&
+			PageTriageUtil::doesPageNeedTriage( $article )
+		) {
+
+			$pageId = $article->getId();
+
+			// Get timestamp for article creation (typically from cache)
+			$metaDataObject = new ArticleMetadata( [ $pageId ] );
+			$metaData = $metaDataObject->getMetadata();
+			$pageCreationDateTime = $metaData[ $pageId ][ 'creation_date' ];
+
+			if ( $pageCreationDateTime ) {
+
+				// Get the age of the article in days
+				$timestamp = MWTimestamp::getInstance( $pageCreationDateTime );
+				$dateInterval = $timestamp->diff( MWTimestamp::getInstance() );
+				$articleDaysOld = $dateInterval->format( '%a' );
+
+				// If it's younger than the maximum age, return true.
+				// We use $wgRCMaxAge here since this determines which articles are
+				// considered "new", i.e. shown at Special:NewPages, and which articles
+				// are eligible to be patrolled.
+				if ( $articleDaysOld < ( $wgRCMaxAge / 86400 ) ) {
+					return true;
+				}
+
+			}
+
 		}
 
 		return false;
@@ -327,9 +359,9 @@ class PageTriageHooks {
 			$wgPageTriageEnableCurationToolbar, $wgRequest, $wgPageTriageNamespaces;
 
 		// Overwrite the noindex rule defined in Article::view(), this also affects main namespace
-		// if ( self::shouldShowNoIndex( $article ) ) {
-		// $wgOut->setRobotPolicy( 'noindex,nofollow' );
-		// }
+		if ( self::shouldShowNoIndex( $article ) ) {
+			$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		}
 
 		// Only logged in users can review
 		if ( !$wgUser->isLoggedIn() ) {

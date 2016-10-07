@@ -62,8 +62,12 @@ $wgPageTriageStickyControlNav = true;
 $wgPageTriageStickyStatsNav = true;
 // 1 day - How long after visiting Special:NewPagesFeed do we show review links on articles
 $wgPageTriageMarkPatrolledLinkExpiry = 3600 * 24;
-// Pages containing templates defined in this title would not be indexed.
-$wgPageTriageNoIndexTemplates = 'No_index_templates';
+// Title of page in MediaWiki namespace containing a list of templates that will
+// trigger noindexing of pages, e.g. speedy deletion templates
+$wgPageTriageNoIndexTemplates = 'Noindex templates';
+// Set this to true if new, unreviewed articles should be set to noindex. In other
+// words, if they should not be indexed by search engines until they are reviewed.
+$wgPageTriageNoIndexUnreviewedNewArticles = false;
 $wgPageTriageLearnMoreUrl = '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help';
 $wgPageTriageProjectLink = 'Wikipedia:Page Curation';
 $wgPageTriageFeedbackUrl = '//en.wikipedia.org/wiki/Wikipedia_talk:Page_Curation';

@@ -111,7 +111,7 @@ class ArticleMetadata {
 	public function getMetadata() {
 		$articles = $this->mPageId;
 		$metaData = $this->getMetadataFromCache();
-		$articles = self::getPageWithoutMetadata( $articles, $metaData );
+		$articles = self::getPagesWithoutMetadata( $articles, $metaData );
 
 		// Grab metadata from database after cache attempt
 		if ( $articles ) {
@@ -171,7 +171,7 @@ class ArticleMetadata {
 				}
 			}
 
-			$articles = self::getPageWithoutMetadata( $articles, $pageData );
+			$articles = self::getPagesWithoutMetadata( $articles, $pageData );
 			// Compile the data if it is not available, this is a very rare case unless
 			// the metadata gets deleted manually
 			if ( $articles ) {
@@ -196,7 +196,7 @@ class ArticleMetadata {
 	/**
 	 * Get the pages without metadata yet
 	 */
-	private static function getPageWithoutMetadata( $articles, $data ) {
+	private static function getPagesWithoutMetadata( $articles, $data ) {
 		foreach ( $articles as $key => $pageId ) {
 			if ( isset( $data[$pageId] ) ) {
 				unset( $articles[$key] );
