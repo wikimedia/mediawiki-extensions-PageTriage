@@ -80,7 +80,7 @@
 	"pagetriage-filter-stat-blocked": "blokeeritud kasutajad",
 	"pagetriage-filter-stat-username": "kasutajanimi: $1",
 	"pagetriage-no-pages": "Sinu kriteeriumitele ei vasta ükski lehekülg.",
-	"pagetriage-warning-browser": "See tööriist ei pruugi töötada veebilehitsejates, mis on vanemad kui Internet Explorer 8.",
+	"pagetriage-warning-browser": "See tööriist ei pruugi töötada veebilehitsejates, mis on vanemad kui Internet Explorer 9.",
 	"pagetriage-welcome": "Palun vaata üle uusi lehekülgi ja aita võrgukohta {{SITENAME}} paremaks teha. [$1 Lisateave] · [$2 Jäta tagasisidet]",
 	"pagetriage-note-reviewed": "See lehekülg on üle vaadatud.",
 	"pagetriage-note-not-reviewed": "Seda lehekülge pole veel üle vaadatud.",
@@ -184,7 +184,6 @@
 	"pagetriage-toolbar-close": "Sulge",
 	"pagetriage-toolbar-minimize": "Ikooni",
 	"pagetriage-tag-warning-notice": "Märkus: See lehekülg on vaid {{PLURAL:$1|ühe|$1}} minuti vanune. Kui probleem pole väga tõsine, siis leiad ehk olevat võimaliku märgistamisega pisut oodata.",
-	"pagetriage-notification-mark-as-reviewed-email-batch-body": "$2 on lehekülje \"$1\" üle vaadanud.",
 	"echo-pref-subscription-page-review": "Vaatab minu loodud lehekülje üle",
 	"echo-pref-tooltip-page-review": "Teavita mind, kui keegi vaatab minu alustatud lehekülje üle.",
 	"echo-category-title-page-review": "Lehekülje {{PLURAL:$1|ülevaatus|ülevaatused}}"
