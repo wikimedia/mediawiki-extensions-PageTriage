@@ -118,10 +118,10 @@ class PageTriageHooks {
 	/**
 	 * Compile the metadata on successful save, this is only for page in PageTriage Queue already
 	 *
-	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/ArticleSaveComplete
+	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/PageContentSaveComplete
 	 * @param $article WikiPage
 	 * @param $user
-	 * @param $text
+	 * @param $content Content
 	 * @param $summary
 	 * @param $minoredit
 	 * @param $watchthis
@@ -132,8 +132,8 @@ class PageTriageHooks {
 	 * @param $baseRevId
 	 * @return bool
 	 */
-	public static function onArticleSaveComplete(
-		$article, $user, $text, $summary, $minoredit, $watchthis, $sectionanchor, $flags, $revision,
+	public static function onPageContentSaveComplete(
+		$article, $user, $content, $summary, $minoredit, $watchthis, $sectionanchor, $flags, $revision,
 		$status, $baseRevId
 	) {
 		global $wgPageTriageNamespaces;
