@@ -4,7 +4,7 @@
  * Handles article metadata retrieval and saving to cache
  */
 class ArticleMetadata {
-
+	/** @var int[] List of page IDs */
 	protected $mPageId;
 
 	/**
@@ -290,13 +290,14 @@ class ArticleMetadata {
  * Compiling metadata for articles
  */
 class ArticleCompileProcessor {
-
 	protected $component;
 	protected $componentDb;
+	/** @var int[] List of page IDs */
 	protected $mPageId;
 	protected $metadata;
 	protected $defaultMode;
 	protected $articles;
+	protected $linksUpdates;
 
 	/**
 	 * @param $pageId array - list of page id
@@ -347,6 +348,13 @@ class ArticleCompileProcessor {
 	public function registerArticle( WikiPage $article ) {
 		if ( in_array( $article->getId(), $this->mPageId ) ) {
 			$this->articles[$article->getId()] = $article;
+		}
+	}
+
+	public function registerLinksUpdate( LinksUpdate $linksUpdate ) {
+		$id = $linksUpdate->getTitle()->getArticleId();
+		if ( in_array( $id, $this->mPageId ) ) {
+			$this->linksUpdates[$id] = $linksUpdate;
 		}
 	}
 
@@ -514,19 +522,23 @@ abstract class ArticleCompileInterface {
 	protected $mPageId;
 	protected $metadata;
 	protected $articles;
+	protected $linksUpdates;
 	protected $db;
 	protected $componentDb;
 
 	/**
 	 * @param $pageId array
 	 */
-	public function __construct( array $pageId, $componentDb = DB_MASTER, $articles = null ) {
+	public function __construct(
+		array $pageId, $componentDb = DB_MASTER, $articles = null, $linksUpdates = null
+	) {
 		$this->mPageId = $pageId;
 		$this->metadata = array_fill_keys( $pageId, [] );
 		if ( is_null( $articles ) ) {
 			$articles = [];
 		}
 		$this->articles = $articles;
+		$this->linksUpdates = $linksUpdates;
 
 		$this->db = wfGetDB( $componentDb );
 
@@ -575,6 +587,55 @@ abstract class ArticleCompileInterface {
 				$this->metadata[$pageId][$indexName] = '0';
 			}
 		}
+	}
+
+	protected function getArticleByPageId( $pageId ) {
+		// Try if there is an up-to-date wikipage object from article save
+		// else try to create a new one, this is important for replication deley
+		if ( isset( $this->articles[$pageId] ) ) {
+			$article = $this->articles[$pageId];
+		} else {
+			if ( $this->componentDb === DB_MASTER ) {
+				$from = 'fromdbmaster';
+			} else {
+				$from = 'fromdb';
+			}
+			$article = WikiPage::newFromID( $pageId, $from );
+		}
+		return $article;
+	}
+
+	protected function getContentByPageId( $pageId ) {
+		// Prefer a preregistered Article, then a preregistered LinksUpdate
+		if ( isset( $this->articles[$pageId] ) ) {
+			return $this->articles[$pageId]->getContent();
+		}
+		if ( isset( $this->linksUpdates[$pageId] ) ) {
+			$revision = $this->linksUpdates[$pageId]->getRevision();
+			if ( $revision ) {
+				return $revision->getContent();
+			}
+		}
+		// Fall back on creating a new Article object and fetching from the DB
+		$article = $this->getArticleByPageId( $pageId );
+		return $article ? $article->getContent() : null;
+	}
+
+	protected function getParserOutputByPageId( $pageId ) {
+		// Prefer a preregistered LinksUpdate
+		if ( isset ( $this->linksUpdates[$pageId] ) ) {
+			return $this->linksUpdates[$pageId]->getParserOutput();
+		}
+		// Fall back on Article
+		$article = $this->getArticleByPageId( $pageId );
+		if ( !$article ) {
+			return null;
+		}
+		$content = $article->getContent();
+		if ( !$content ) {
+			return null;
+		}
+		return $content->getParserOutput( $article->getTitle() );
 	}
 }
 
@@ -687,13 +748,10 @@ class ArticleCompileCategoryCount extends ArticleCompileInterface {
 
 	public function compile() {
 		foreach ( $this->mPageId as $pageId ) {
-			$this->processEstimatedCount(
-					$pageId,
-					[ 'page', 'categorylinks' ],
-					[ 'page_id' => $pageId, 'page_id = cl_from' ],
-					$maxNumToProcess = 50,
-					'category_count'
-			);
+			$parserOutput = $this->getParserOutputByPageId( $pageId );
+			if ( $parserOutput ) {
+				$this->metadata[$pageId]['category_count'] = count( $parserOutput->getCategories() );
+			}
 		}
 		$this->fillInZeroCount( 'category_count' );
 		return true;
@@ -712,20 +770,8 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 
 	public function compile() {
 		foreach ( $this->mPageId as $pageId ) {
-			// Article snippet, try if there is an up-to-date wikipage object from article save
-			// else try to create a new one, this is important for replication deley
-			if ( isset( $this->articles[$pageId] ) ) {
-				$article = $this->articles[$pageId];
-			} else {
-				if ( $this->componentDb === DB_MASTER ) {
-					$from = 'fromdbmaster';
-				} else {
-					$from = 'fromdb';
-				}
-				$article = WikiPage::newFromID( $pageId, $from );
-			}
-			if ( $article ) {
-				$content = $article->getContent();
+			$content = $this->getContentByPageId( $pageId );
+			if ( $content ) {
 				$text = ContentHandler::getContentText( $content );
 				if ( $text ) {
 					$this->metadata[$pageId]['snippet'] = self::generateArticleSnippet( $text );
@@ -883,7 +929,6 @@ class ArticleCompileDeletionTag extends ArticleCompileInterface {
 
 	public function __construct( $pageId, $componentDb = DB_MASTER, $articles = null ) {
 		parent::__construct( $pageId, $componentDb, $articles );
-		$this->metadata = array_fill_keys( $this->mPageId, [ 'deleted' => '0' ] );
 	}
 
 	public static function getDeletionTags() {
@@ -897,28 +942,15 @@ class ArticleCompileDeletionTag extends ArticleCompileInterface {
 
 	public function compile() {
 		$deletionTags = self::getDeletionTags();
-		$res = $this->db->select(
-				[ 'categorylinks' ],
-				[ 'cl_from AS page_id', 'cl_to' ],
-				[ 'cl_from' => $this->mPageId, 'cl_to' => array_keys( $deletionTags ) ],
-				__METHOD__
-		);
-
-		foreach ( $res as $row ) {
-			$this->metadata[$row->page_id][$deletionTags[$row->cl_to]] = '1';
-			// This won't be saved to metadata, only for later reference
-			$this->metadata[$row->page_id]['deleted'] = '1';
-		}
-
-		// Fill in 0 for page not tagged with any of these status
 		foreach ( $this->mPageId as $pageId ) {
-			foreach ( $deletionTags as $status ) {
-				if ( !isset( $this->metadata[$pageId][$status] ) ) {
-					$this->metadata[$pageId][$status] = '0';
+			$parserOutput = $this->getParserOutputByPageId( $pageId );
+			if ( $parserOutput ) {
+				$categories = $parserOutput->getCategories();
+				foreach ( $deletionTags as $category => $tag ) {
+					$this->metadata[$pageId][$tag] = isset( $categories[$category] ) ? '1' : '0';
 				}
 			}
 		}
-
 		return true;
 	}
 
