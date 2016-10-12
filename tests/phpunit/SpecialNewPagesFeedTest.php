@@ -62,7 +62,6 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 			$this->assertArrayHasKey( "login", $result );
 			$this->assertArrayHasKey( "result", $result['login'] );
 			$this->assertEquals( "Success", $result['login']['result'] );
-			$this->assertArrayHasKey( 'lgtoken', $result['login'] );
 
 			$this->assertNotEmpty( $session, 'API Login must return a session' );
 
