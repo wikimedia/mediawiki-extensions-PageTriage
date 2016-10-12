@@ -316,8 +316,8 @@ class PageTriageHooks {
 			if ( $pageCreationDateTime ) {
 
 				// Get the age of the article in days
-				$timestamp = MWTimestamp::getInstance( $pageCreationDateTime );
-				$dateInterval = $timestamp->diff( MWTimestamp::getInstance() );
+				$timestamp = new MWTimestamp( $pageCreationDateTime );
+				$dateInterval = $timestamp->diff( new MWTimestamp() );
 				$articleDaysOld = $dateInterval->format( '%a' );
 
 				// If it's younger than the maximum age, return true.

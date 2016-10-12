@@ -63,7 +63,8 @@ $wgPageTriageStickyStatsNav = true;
 // 1 day - How long after visiting Special:NewPagesFeed do we show review links on articles
 $wgPageTriageMarkPatrolledLinkExpiry = 3600 * 24;
 // Title of page in MediaWiki namespace containing a list of templates that will
-// trigger noindexing of pages, e.g. speedy deletion templates
+// trigger noindexing of pages, e.g. speedy deletion templates. Set this to false
+// to disable this feature.
 $wgPageTriageNoIndexTemplates = 'Noindex templates';
 // Set this to true if new, unreviewed articles should be set to noindex. In other
 // words, if they should not be indexed by search engines until they are reviewed.
