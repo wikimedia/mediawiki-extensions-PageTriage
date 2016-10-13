@@ -89,7 +89,7 @@
 	"pagetriage-note-reviewed": "Esta página foi revisada",
 	"pagetriage-note-not-reviewed": "Esta página ainda não foi revisada.",
 	"pagetriage-note-deletion": "Esta página foi marcada para eliminação.",
-	"pagetriage-refresh-list": "Atualizar a lista",
+	"pagetriage-refresh-list": "Atualizar lista",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|tag|tags}} seleccionadas",
 	"pagetriage-button-add-tag": "Adicionar tags seleccionadas",
 	"pagetriage-button-add-tag-number": "Adicionar $1 tags seleccionadas",
