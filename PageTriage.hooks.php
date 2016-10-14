@@ -269,35 +269,22 @@ class PageTriageHooks {
 
 		// See if article includes any templates that should trigger noindexing
 		if ( $wgPageTriageNoIndexTemplates && $article->mParserOutput instanceof ParserOutput ) {
-			$noIndexTitle = Title::newFromText( $wgPageTriageNoIndexTemplates, NS_MEDIAWIKI );
-			if ( $noIndexTitle ) {
-				$noIndexArticle = WikiPage::newFromID( $noIndexTitle->getArticleID() );
-				if ( $noIndexArticle ) {
-					$noIndexTemplateContent = $noIndexArticle->getContent();
-					$noIndexTemplateText = ContentHandler::getContentText( $noIndexTemplateContent );
-					if ( $noIndexTemplateText ) {
-						// Collect all the noindex template names into an array
-						$noIndexTemplates = explode( '|', $noIndexTemplateText );
-						// Properly format the template names to match what getTemplates() returns
-						$noIndexTemplates = array_map(
-							[ 'PageTriageHooks', 'formatTemplateName' ],
-							$noIndexTemplates
-						);
+			// Properly format the template names to match what getTemplates() returns
+			$noIndexTemplates = array_map(
+				[ 'PageTriageHooks', 'formatTemplateName' ],
+				$wgPageTriageNoIndexTemplates
+			);
 
-						// getTemplates returns all transclusions, not just NS_TEMPLATE
-						// But the MediaWiki page does not include the namespace.
-						$allTransclusions = $article->mParserOutput->getTemplates();
+			// getTemplates returns all transclusions, not just NS_TEMPLATE
+			$allTransclusions = $article->mParserOutput->getTemplates();
 
-						$templates = isset( $allTransclusions[NS_TEMPLATE] ) ?
-							$allTransclusions[NS_TEMPLATE] :
-							[];
+			$templates = isset( $allTransclusions[NS_TEMPLATE] ) ?
+				$allTransclusions[NS_TEMPLATE] :
+				[];
 
-						foreach ( $templates as $template => $pageId ) {
-							if ( in_array( $template, $noIndexTemplates ) ) {
-								return true;
-							}
-						}
-					}
+			foreach ( $templates as $template => $pageId ) {
+				if ( in_array( $template, $noIndexTemplates ) ) {
+					return true;
 				}
 			}
 		}
