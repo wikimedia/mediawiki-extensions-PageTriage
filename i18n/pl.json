@@ -91,6 +91,7 @@
 	"pagetriage-info-problem-orphan": "Sierota",
 	"pagetriage-info-problem-orphan-desc": "Żadne inne strony nie mają linków do tej strony.",
 	"pagetriage-info-problem-no-references": "Brak odwołań",
+	"pagetriage-info-timestamp-date-format": "d MMMM rrrr",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
 	"pagetriage-toolbar-learn-more": "Dowiedz się więcej »",
 	"pagetriage-wikilove-page-creator": "Twórca strony",
