@@ -7,7 +7,7 @@ if ( $IP === false ) {
 require_once "$IP/maintenance/Maintenance.php";
 
 /**
- * A maintenance script that updates expired user metadata
+ * A maintenance script that updates expired page metadata
  */
 class UpdatePageTriageQueue extends Maintenance {
 
@@ -24,7 +24,8 @@ class UpdatePageTriageQueue extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = "Remove page from pagetriage queue after 30 days of article creation";
+		$this->mDescription = "Remove reviewed pages from pagetriage queue if they"
+			. " are older then 30 days";
 	}
 
 	protected function init() {
