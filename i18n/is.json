@@ -71,7 +71,7 @@
 	"pagetriage-filter-stat-blocked": "bannaðir notendur",
 	"pagetriage-filter-stat-username": "notandanafn: $1",
 	"pagetriage-no-pages": "Engar síður passa við fyrirspurnina.",
-	"pagetriage-warning-browser": "Þetta tól virkar líklega ekki í vöfrum eldri en Internet Explorer 8.",
+	"pagetriage-warning-browser": "Þetta tól virkar líklega ekki í vöfrum eldri en Internet Explorer 9.",
 	"pagetriage-note-reviewed": "Þessi síða er yfirfarin.",
 	"pagetriage-note-not-reviewed": "Þessi síða er óyfirfarin.",
 	"pagetriage-note-deletion": "Þessi síða hefur verið tilnefnd til eyðingar.",
