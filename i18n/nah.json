@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Akapochtli"
+		]
+	},
+	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Tictlazohcamatiz}}}}"
+}
