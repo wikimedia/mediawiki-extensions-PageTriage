@@ -254,20 +254,26 @@ class PageTriageHooks {
 	/**
 	 * Determines whether to set noindex for the article specified
 	 *
-	 * Returns true if the page includes a template that triggers noindexing or
-	 * all of the following are true:
-	 * 1. $wgPageTriageNoIndexUnreviewedNewArticles is true
-	 * 2. The page is in triage queue and has not been triaged
-	 * 3. The page is younger than the maximum age for "new pages"
+	 * Returns true if all of the following are true:
+	 *   1. The page includes a template that triggers noindexing
+	 *   2. The page was at some point in the triage queue
+	 *   3. The page is younger than the maximum age for "new pages"
+	 * or all of the following are true:
+	 *   1. $wgPageTriageNoIndexUnreviewedNewArticles is true
+	 *   2. The page is in the triage queue and has not been triaged
+	 *   3. The page is younger than the maximum age for "new pages"
+	 * Note that we always check the age of the page last since that is
+	 * potentially the most expensive check (if the data isn't cached).
 	 *
 	 * @param $article Article
 	 * @return bool
 	 */
 	private static function shouldShowNoIndex( $article ) {
-		global $wgPageTriageNoIndexUnreviewedNewArticles, $wgRCMaxAge,
-			$wgPageTriageNoIndexTemplates;
+		global $wgPageTriageNoIndexUnreviewedNewArticles, $wgPageTriageNoIndexTemplates;
 
 		// See if article includes any templates that should trigger noindexing
+		// TODO: This system is a bit hacky and unintuitive. At some point we
+		// may want to switch to a system based on the __NOINDEX__ magic word.
 		if ( $wgPageTriageNoIndexTemplates && $article->mParserOutput instanceof ParserOutput ) {
 			// Properly format the template names to match what getTemplates() returns
 			$noIndexTemplates = array_map(
@@ -282,41 +288,59 @@ class PageTriageHooks {
 				$allTransclusions[NS_TEMPLATE] :
 				[];
 
-			foreach ( $templates as $template => $pageId ) {
-				if ( in_array( $template, $noIndexTemplates ) ) {
-					return true;
+			foreach ( $noIndexTemplates as $noIndexTemplate ) {
+				if ( isset( $templates[ $noIndexTemplate ] ) ) {
+					// The noindex template feature is restricted to new articles
+					// to minimize the potential for abuse.
+					if ( self::isArticleNew( $article ) ) {
+						return true;
+					} else {
+						// Short circuit since we know it will fail the next set
+						// of tests as well.
+						return false;
+					}
 				}
 			}
 		}
 
 		if ( $wgPageTriageNoIndexUnreviewedNewArticles &&
-			PageTriageUtil::doesPageNeedTriage( $article )
+			PageTriageUtil::doesPageNeedTriage( $article ) &&
+			self::isArticleNew( $article )
 		) {
+			return true;
+		}
 
-			$pageId = $article->getId();
+		return false;
+	}
 
-			// Get timestamp for article creation (typically from cache)
-			$metaDataObject = new ArticleMetadata( [ $pageId ] );
-			$metaData = $metaDataObject->getMetadata();
+	/**
+	 * Checks to see if an article is new, i.e. less than $wgRCMaxAge
+	 * @param Article $article Article to check
+	 * @return bool
+	 */
+	private static function isArticleNew( $article ) {
+		global $wgRCMaxAge;
+
+		$pageId = $article->getId();
+
+		// Get timestamp for article creation (typically from cache)
+		$metaDataObject = new ArticleMetadata( [ $pageId ] );
+		$metaData = $metaDataObject->getMetadata();
+		if ( $metaData && isset( $metaData[ $pageId ][ 'creation_date' ] ) ) {
 			$pageCreationDateTime = $metaData[ $pageId ][ 'creation_date' ];
 
-			if ( $pageCreationDateTime ) {
+			// Get the age of the article in days
+			$timestamp = new MWTimestamp( $pageCreationDateTime );
+			$dateInterval = $timestamp->diff( new MWTimestamp() );
+			$articleDaysOld = $dateInterval->format( '%a' );
 
-				// Get the age of the article in days
-				$timestamp = new MWTimestamp( $pageCreationDateTime );
-				$dateInterval = $timestamp->diff( new MWTimestamp() );
-				$articleDaysOld = $dateInterval->format( '%a' );
-
-				// If it's younger than the maximum age, return true.
-				// We use $wgRCMaxAge here since this determines which articles are
-				// considered "new", i.e. shown at Special:NewPages, and which articles
-				// are eligible to be patrolled.
-				if ( $articleDaysOld < ( $wgRCMaxAge / 86400 ) ) {
-					return true;
-				}
-
+			// If it's younger than the maximum age, return true.
+			// We use $wgRCMaxAge here since this determines which articles are
+			// considered "new", i.e. shown at Special:NewPages, and which articles
+			// are eligible to be patrolled.
+			if ( $articleDaysOld < ( $wgRCMaxAge / 86400 ) ) {
+				return true;
 			}
-
 		}
 
 		return false;
