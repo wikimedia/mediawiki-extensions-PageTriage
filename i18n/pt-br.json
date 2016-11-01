@@ -6,7 +6,8 @@
 			"Luckas",
 			"Luckas Blade",
 			"OTAVIO1981",
-			"He7d3r"
+			"He7d3r",
+			"Hamilton Abreu"
 		]
 	},
 	"pagetriage": "Triagem de Páginas",
@@ -170,6 +171,7 @@
 	"pagetriage-mark-title": "Marcar como revisada",
 	"pagetriage-mark-as-reviewed": "Marcar como revisada",
 	"pagetriage-mark-as-unreviewed": "Marcar como não revisada",
+	"pagetriage-mark-as-reviewed-helptext": "Marcar esta página como revisada se você já a supervisionou.",
 	"pagetriage-wikilove-helptext": "Selecione os nomes dos editores que deseja agradecer.",
 	"pagetriage-wikilove-page-creator": "Criador da página",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|edição|edições}}",
