@@ -309,50 +309,6 @@ class ApiPageTriageList extends ApiBase {
 	}
 
 	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getParamDescription() {
-		return [
-			'page_id' => 'Return data for the specified page ids, ignoring other parameters',
-			'showbots' => 'Whether to show only bot edits',
-			// default is not to show redirects
-			'showredirs' => 'Whether to include redirects or not',
-			// default is not to show reviewed
-			'showreviewed' => 'Whether to include reviewed or not',
-			// default is not to show unreviewed
-			'showunreviewed' => 'Whether to include unreviewed or not',
-			// default is not to show deleted
-			'showdeleted' => 'Whether to include "proposed for deleted" or not',
-			'limit' => 'The maximum number of results to return',
-			'offset' => 'Timestamp to start from',
-			'pageoffset' => 'Page ID to start from (requires offset param to be passed as well)',
-			'dir' => 'The direction the list should be sorted in - oldestfirst or newestfirst',
-			'namespace' => 'What namespace to pull pages from',
-			'no_category' => 'Whether to show only pages with no category',
-			'no_inbound_links' => 'Whether to show only pages with no inbound links',
-			'non_autoconfirmed_users' => 'Whether to show only pages created by non auto confirmed users',
-			'blocked_users' => 'Whether to show only pages created by blocked users',
-			'username' => 'Show only pages created by username',
-		];
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getDescription() {
-		return 'Get a list of page IDs for building a PageTriage queue.';
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getExamples() {
-		return [
-			'api.php?action=pagetriagelist&limit=1000&namespace=0',
-		];
-	}
-
-	/**
 	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {

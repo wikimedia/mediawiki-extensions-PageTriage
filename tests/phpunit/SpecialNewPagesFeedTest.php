@@ -97,9 +97,8 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 				$sessionArray['one'],
 				self::$users['one']->getUser()
 			);
-		} catch ( UsageException $e ) {
-			$this->assertEquals( "The article you tried to create has been created already",
-				$e->getMessage() );
+		} catch ( ApiUsageException $e ) {
+			$this->assertEquals( $e->getStatusValue()->hasMessage( 'apierror-articleexists' ) );
 			$alreadyCreated = true;
 		}
 
@@ -128,9 +127,8 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 					$sessionArray['one'],
 					self::$users['one']->getUser()
 				);
-			} catch ( UsageException $e ) {
-				$this->assertEquals( "The article you tried to create has been created already",
-					$e->getMessage() );
+			} catch ( ApiUsageException $e ) {
+				$this->assertEquals( $e->getStatusValue()->hasMessage( 'apierror-articleexists' ) );
 			}
 		}
 	}

@@ -42,28 +42,4 @@ class ApiPageTriageStats extends ApiBase {
 		];
 	}
 
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getParamDescription() {
-		return [
-			'namespace' => 'What namespace to pull stats from',
-			// default is not to show redirects
-			'showredirs' => 'Whether to include redirects or not',
-			// default is not to show reviewed
-			'showreviewed' => 'Whether to include reviewed or not',
-			// default is not to show unreviewed
-			'showunreviewed' => 'Whether to include unreviewed or not',
-			// default is not to show deleted
-			'showdeleted' => 'Whether to include "proposed for deleted" or not',
-		];
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getDescription() {
-		return 'Get the stats for page triage';
-	}
-
 }

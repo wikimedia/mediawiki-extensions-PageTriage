@@ -99,7 +99,7 @@ class ApiPageTriageActionTest extends ApiTestCase {
 
 	/**
 	 * @depends testLogin
-	 * @expectedException UsageException
+	 * @expectedException ApiUsageException
 	 */
 	function testPermissionError( $sessionArray ) {
 		global $wgUser;
@@ -135,10 +135,9 @@ class ApiPageTriageActionTest extends ApiTestCase {
 				$sessionArray['one'],
 				self::$users['one']->getUser()
 			);
-		} catch ( UsageException $e ) {
+		} catch ( ApiUsageException $e ) {
 			$exception = true;
-			$this->assertEquals( "The page specified does not exist in pagetriage queue",
-				$e->getMessage() );
+			$this->assertTrue( $e->getStatusValue()->hasMessage( 'apierror-bad-pagetriage-page' ) );
 		}
 		$this->assertTrue( $exception, "Got exception" );
 	}

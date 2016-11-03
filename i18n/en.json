@@ -405,5 +405,6 @@
 	"apihelp-pagetriagetemplate-description": "Fetch templates that are used within the PageTriage application.",
 	"apihelp-pagetriagetemplate-param-view": "The PageTriage view for which you need the templates.",
 	"apihelp-pagetriagetemplate-param-template": "The template to fetch. Separate multiple with the | character.",
-	"apihelp-pagetriagetemplate-example-1": "List items with template \"listItem.html\""
+	"apihelp-pagetriagetemplate-example-1": "List items with template \"listItem.html\"",
+	"apierror-bad-pagetriage-page": "The page specified does not exist in pagetriage queue"
 }
