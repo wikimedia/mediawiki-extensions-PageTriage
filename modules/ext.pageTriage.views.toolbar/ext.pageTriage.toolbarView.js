@@ -164,6 +164,18 @@ $( function () {
 					},
 
 					minimize: function ( savePref ) {
+						var dir = $( 'body' ).css( 'direction' ),
+							toolbarPosCss = dir === 'ltr' ?
+								{
+									left: 'auto',
+									right: 0
+								} :
+								// For RTL, flip
+								{
+									left: 0,
+									right: 'auto'
+								};
+
 						// close any open tools by triggering showTool with empty tool param
 						eventBus.trigger( 'showTool', '' );
 						// hide the regular toolbar content
@@ -173,7 +185,7 @@ $( function () {
 						// switch to smaller size
 						$( '#mwe-pt-toolbar' ).removeClass( 'mwe-pt-toolbar-big' ).addClass( 'mwe-pt-toolbar-small' )
 							// dock to the side of the screen
-							.css( 'left', 'auto' ).css( 'right', '0' );
+							.css( toolbarPosCss );
 						// set a pref for the user so the minimize state is remembered
 						if ( typeof savePref !== 'undefined' && savePref === true ) {
 							this.setToolbarPreference( 'minimized' );
@@ -181,6 +193,18 @@ $( function () {
 					},
 
 					maximize: function ( savePref ) {
+						var dir = $( 'body' ).css( 'direction' ),
+							toolbarPosCss = dir === 'ltr' ?
+								{
+									left: 'auto',
+									right: 0
+								} :
+								// For RTL, flip
+								{
+									left: 0,
+									right: 'auto'
+								};
+
 						// hide the minimized toolbar content
 						$( '#mwe-pt-toolbar-inactive' ).hide();
 						// show the regular toolbar content
@@ -188,7 +212,7 @@ $( function () {
 						// switch to larger size
 						$( '#mwe-pt-toolbar' ).removeClass( 'mwe-pt-toolbar-small' ).addClass( 'mwe-pt-toolbar-big' )
 							// reset alignment to the side of the screen (since the toolbar is wider now)
-							.css( 'left', 'auto' ).css( 'right', '0' );
+							.css( toolbarPosCss );
 						// set a pref for the user so the minimize state is remembered
 						if ( typeof savePref !== 'undefined' && savePref === true ) {
 							this.setToolbarPreference( 'maximized' );

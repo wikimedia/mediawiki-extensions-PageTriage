@@ -81,7 +81,18 @@ $( function () {
 			// If the toolbar has been dragged to the other side of the screen
 			// make sure the flyout opens in the opposite direction.
 			flyoutOffset = this.$el.find( '.mwe-pt-tool-flyout' ).outerWidth() + 8;
-			if ( $( '#mwe-pt-toolbar' ).offset().left < flyoutOffset ) {
+			if (
+				(
+					// For LTR, calculate the value from the left
+					$( 'body' ).css( 'direction' ) === 'ltr' &&
+					$( '#mwe-pt-toolbar' ).offset().left < flyoutOffset
+				) ||
+				(
+					// For RTL, calculate the value from the right (body width - left offset)
+					$( 'body' ).css( 'direction' ) === 'rtl' &&
+					( $( 'body' ).outerWidth() - $( '#mwe-pt-toolbar' ).offset().left ) < flyoutOffset
+				)
+			) {
 				this.$el.find( '.mwe-pt-tool-flyout' ).removeClass( 'mwe-pt-tool-flyout-not-flipped' );
 				this.$el.find( '.mwe-pt-tool-pokey' ).removeClass( 'mwe-pt-tool-pokey-not-flipped' );
 				this.$el.find( '.mwe-pt-tool-flyout' ).addClass( 'mwe-pt-tool-flyout-flipped' );
