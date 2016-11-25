@@ -185,7 +185,7 @@
 	"pagetriage-wikilove-helptext": "Selecione os nomes dos editores a quem deseja agradecer.",
 	"pagetriage-wikilove-page-creator": "Criador da página",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|edição|edições}}",
-	"pagetriage-wikilove-no-recipients": "Nenhum destinatário está disponível para esta página.",
+	"pagetriage-wikilove-no-recipients": "Não há nenhum destinatário disponível para esta página.",
 	"pagetriage-wikilove-tooltip": "Enviar seu apreço aos autores",
 	"pagetriage-next-tooltip": "Ir à página seguinte na fila",
 	"pagetriage-del-log-page-missing-error": "A página de registo para hoje ainda não foi criada!",

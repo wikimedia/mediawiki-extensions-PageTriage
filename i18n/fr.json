@@ -18,7 +18,8 @@
 			"0x010C",
 			"Weft",
 			"Wladek92",
-			"Mattho69"
+			"Mattho69",
+			"Derugon"
 		]
 	},
 	"pagetriage": "Tri des pages",
@@ -144,13 +145,13 @@
 	"pagetriage-tags-unreferenced-label": "Référence manquante.",
 	"pagetriage-tags-unreferenced-desc": "Cette page ne contient aucune référence.",
 	"pagetriage-tags-deadend-label": "Aucun ou trop peu de liens",
-	"pagetriage-tags-deadend-desc": "Cette page comprend aucun ou trop peu de liens vers les autres pages.",
+	"pagetriage-tags-deadend-desc": "Cette page ne comprend aucun lien vers les autres pages.",
 	"pagetriage-tags-externallinks-label": "Liens externes",
 	"pagetriage-tags-externallinks-desc": "Les liens externes de cette page pourraient ne pas respecter les politiques ou les recommandations.",
 	"pagetriage-tags-catimprove-label": "Plus de catégories.",
 	"pagetriage-tags-catimprove-desc": "Cette page pourrait être plus catégorisée.",
 	"pagetriage-tags-orphan-label": "Orpheline",
-	"pagetriage-tags-orphan-desc": "Cette page est liée depuis aucune ou trop peu de pages.",
+	"pagetriage-tags-orphan-desc": "Aucune autre page n'est liée vers celle-ci.",
 	"pagetriage-tags-overlinked-label": "Trop de liens",
 	"pagetriage-tags-overlinked-desc": "Cette page peut contenir trop de liens redondants ou hors sujet",
 	"pagetriage-tags-cleanup-label": "Toilettage",

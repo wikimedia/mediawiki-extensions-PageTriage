@@ -18,7 +18,8 @@
 	"pagetriage-info-problem-no-references-desc": "Članek ne navaja nobenega vira.",
 	"pagetriage-wikilove-page-creator": "Ustvaritelj strani",
 	"pagetriage-wikilove-no-recipients": "Za to stran ni na voljo noben prejemnik.",
+	"echo-pref-subscription-page-review": "Preveritev strani, ki sem jo ustvaril",
 	"echo-pref-tooltip-page-review": "Obvesti me, ko nekdo pregleda stran, ki sem jo ustvaril.",
-	"echo-category-title-page-review": "Označi {{PLURAL:$1|pregled|pregledov}}",
+	"echo-category-title-page-review": "Označi {{PLURAL:$1|pregled|pregleda|preglede|pregledov}}",
 	"apihelp-pagetriagestats-description": "Pridobite statistiko za triažo strani."
 }
