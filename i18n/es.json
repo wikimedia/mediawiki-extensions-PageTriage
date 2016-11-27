@@ -10,7 +10,8 @@
 			"McDutchie",
 			"Vivaelcelta",
 			"Macofe",
-			"Ryo567"
+			"Ryo567",
+			"Matiia"
 		]
 	},
 	"pagetriage": "Página de triaje",
@@ -86,7 +87,7 @@
 	"pagetriage-filter-stat-blocked": "usuarios bloqueados",
 	"pagetriage-filter-stat-username": "nombre de usuario: $1",
 	"pagetriage-no-pages": "Ninguna página coincide con tus criterios.",
-	"pagetriage-warning-browser": "Esta herramienta podría no funcionar correctamente en navegadores anteriores a Internet Explorer 8.",
+	"pagetriage-warning-browser": "Esta herramienta podría no funcionar correctamente en navegadores anteriores a Internet Explorer 9.",
 	"pagetriage-welcome": "Revisa las nuevas páginas mostradas a continuación y ayuda a mejorar {{SITENAME}}. [$1 Más información] · [$2 Dejar comentarios]",
 	"pagetriage-note-reviewed": "Esta página ha sido revisada.",
 	"pagetriage-note-not-reviewed": "Esta página aún no se ha revisado.",
