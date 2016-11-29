@@ -174,6 +174,7 @@ $wgHooks['SpecialMovepageAfterMove'][] = 'PageTriageHooks::onSpecialMovepageAfte
 $wgHooks['NewRevisionFromEditComplete'][] = 'PageTriageHooks::onNewRevisionFromEditComplete';
 $wgHooks['PageContentInsertComplete'][] = 'PageTriageHooks::onPageContentInsertComplete';
 $wgHooks['PageContentSaveComplete'][] = 'PageTriageHooks::onPageContentSaveComplete';
+$wgHooks['LinksUpdateComplete'][] = 'PageTriageHooks::onLinksUpdateComplete';
 $wgHooks['UnitTestsList'][] = 'efPageTriageUnitTests'; // unit tests
 $wgHooks['GetPreferences'][] = 'PageTriageHooks::onGetPreferences';
 $wgHooks['ArticleViewFooter'][] = 'PageTriageHooks::onArticleViewFooter';

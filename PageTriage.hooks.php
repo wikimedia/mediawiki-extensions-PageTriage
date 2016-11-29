@@ -116,7 +116,7 @@ class PageTriageHooks {
 	}
 
 	/**
-	 * Compile the metadata on successful save, this is only for page in PageTriage Queue already
+	 * Flush user status cache on a successful save.
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/PageContentSaveComplete
 	 * @param $article WikiPage
@@ -136,27 +136,32 @@ class PageTriageHooks {
 		$article, $user, $content, $summary, $minoredit, $watchthis, $sectionanchor, $flags, $revision,
 		$status, $baseRevId
 	) {
-		global $wgPageTriageNamespaces;
-
 		self::flushUserStatusCache( $article->getTitle() );
+		return true;
+	}
 
-		if ( !in_array( $article->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
+	/**
+	 * Update metadata when link information is updated. This is also run after every page save.
+	 * @param LinksUpdate $linksUpdate
+	 * @return bool
+	 */
+
+	public static function onLinksUpdateComplete( LinksUpdate $linksUpdate ) {
+		global $wgPageTriageNamespaces;
+		if ( !in_array( $linksUpdate->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
 			return true;
 		}
 
-		DeferredUpdates::addCallableUpdate( function() use ( $article ) {
+		DeferredUpdates::addCallableUpdate( function () use ( $linksUpdate ) {
 			// false will enforce a validation against pagetriage_page table
 			$acp = ArticleCompileProcessor::newFromPageId(
-				[ $article->getId() ], false, DB_MASTER );
+				[ $linksUpdate->getTitle()->getArticleId() ], false, DB_MASTER );
 
 			if ( $acp ) {
-				// Register the article object so we can get the content and other useful information
-				// this is primarily for replication delay from slave
-				$acp->registerArticle( $article );
+				$acp->registerLinksUpdate( $linksUpdate );
 				$acp->compileMetadata();
 			}
 		} );
-
 		return true;
 	}
 
