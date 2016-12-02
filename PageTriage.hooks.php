@@ -550,6 +550,26 @@ class PageTriageHooks {
 			'remoteExtPath' => 'PageTriage/modules'
 		];
 
+		$toolBaseClass = [
+			'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.js', // abstract class first
+		];
+
+		// Individual tools on toolbar
+		$tools = [
+			'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfo.js', // article metadata
+			'ext.pageTriage.views.toolbar/ext.pageTriage.minimize.js', // minimize
+			'ext.pageTriage.views.toolbar/ext.pageTriage.tags.js', // tagging
+			'ext.pageTriage.views.toolbar/ext.pageTriage.mark.js', // mark as reviewed
+			'ext.pageTriage.views.toolbar/ext.pageTriage.next.js', // next article
+			'ext.pageTriage.views.toolbar/ext.pageTriage.delete.js', // mark for deletion
+		];
+
+		$afterTools = [
+			'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.js', // overall toolbar view last
+			'external/jquery.effects.core.js',
+			'external/jquery.effects.squish.js',
+		];
+
 		$module = $template + [
 			'dependencies' => [
 				'mediawiki.jqueryMsg',
@@ -562,18 +582,6 @@ class PageTriageHooks {
 				'jquery.client',
 				'ext.pageTriage.externalTagsOptions',
 				'ext.pageTriage.externalDeletionTagsOptions'
-			],
-			'scripts' => [
-				'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.js', // abstract class first
-				'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfo.js', // article metadata
-				'ext.pageTriage.views.toolbar/ext.pageTriage.minimize.js', // minimize
-				'ext.pageTriage.views.toolbar/ext.pageTriage.tags.js', // tagging
-				'ext.pageTriage.views.toolbar/ext.pageTriage.mark.js', // mark as reviewed
-				'ext.pageTriage.views.toolbar/ext.pageTriage.next.js', // next article
-				'ext.pageTriage.views.toolbar/ext.pageTriage.delete.js', // mark for deletion
-				'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.js', // overall toolbar view last
-				'external/jquery.effects.core.js',
-				'external/jquery.effects.squish.js',
 			],
 			'styles' => [
 				'ext.pageTriage.css', // stuff that's shared across all views
@@ -665,7 +673,7 @@ class PageTriageHooks {
 		];
 
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'WikiLove' ) ) {
-			$module['scripts'][] = 'ext.pageTriage.views.toolbar/ext.pageTriage.wikilove.js';
+			$tools[] = 'ext.pageTriage.views.toolbar/ext.pageTriage.wikilove.js';
 			$module['styles'][] = 'ext.pageTriage.views.toolbar/ext.pageTriage.wikilove.css';
 			$module['messages'] = array_merge( $module['messages'], [
 				'pagetriage-wikilove-page-creator',
@@ -677,6 +685,12 @@ class PageTriageHooks {
 				'wikilove-button-send',
 			] );
 		}
+
+		$module['scripts'] = array_merge(
+			$toolBaseClass,
+			$tools,
+			$afterTools
+		);
 
 		$resourceLoader->register( 'ext.pageTriage.views.toolbar', $module );
 	}
