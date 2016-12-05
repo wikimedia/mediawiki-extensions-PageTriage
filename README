@@ -5,6 +5,11 @@ Special:NewPages and the patrolled edits feature.
 It is very focused on the Wikipedia article creation workflow, though it could probably be adapted
 for use on other wikis.
 
+The PageTriage software is licensed under the MIT license (see COPYING file).
+
+The reference template implementation is at NewPagesFeed_Templates.xml.  This was imported from
+English Wikipedia and is licensed under CC-BY-SA 3.0 (CC-BY-SA-3.0.txt).
+
 PageTriage by:
 @author Ryan Kaldari <rkaldari@wikimedia.org>
 @author Benny Situ <bsitu@wikimedia.org>
