@@ -67,32 +67,6 @@ class ApiPageTriageTemplate extends ApiBase {
 	}
 
 	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getParamDescription() {
-		return [
-			'view' => 'The PageTriage view for which you need the templates.',
-			'template' => 'The template to fetch. Separate multiple with the | character',
-		];
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getDescription() {
-		return 'Fetch templates that are used within the PageTriage application.';
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getExamples() {
-		return [
-			'api.php?action=pagetriagetemplate&view=list&template=listItem.html',
-		];
-	}
-
-	/**
 	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {

@@ -418,5 +418,6 @@
 	"apihelp-pagetriagetemplate-description": "{{doc-apihelp-description|pagetriagetemplate}}",
 	"apihelp-pagetriagetemplate-param-view": "{{doc-apihelp-param|pagetriagetemplate|view}}",
 	"apihelp-pagetriagetemplate-param-template": "{{doc-apihelp-param|pagetriagetemplate|template}}",
-	"apihelp-pagetriagetemplate-example-1": "{{doc-apihelp-example|pagetriagetemplate}}"
+	"apihelp-pagetriagetemplate-example-1": "{{doc-apihelp-example|pagetriagetemplate}}",
+	"apierror-bad-pagetriage-page": "{{doc-apierror}}"
 }
