@@ -79,7 +79,7 @@
 	"pagetriage-filter-stat-blocked": "Блокирани корисници",
 	"pagetriage-filter-stat-username": "Корисничко име: $1",
 	"pagetriage-no-pages": "Нема страници што одговараат на критериумите.",
-	"pagetriage-warning-browser": "Оваа алатка може да не работи како што треба на прелистувачи постари од Internet Explorer 8",
+	"pagetriage-warning-browser": "Оваа алатка може да не работи како што треба на прелистувачи постари од Internet Explorer 9",
 	"pagetriage-welcome": "Помогнете ни да ја подобриме {{SITENAME}}. Проверете ги страниците подолу. [$1 Дознајте повеќе] · [$2 Ваше мислење]",
 	"pagetriage-note-reviewed": "Страницата е проверена.",
 	"pagetriage-note-not-reviewed": "Страницата сè уште не е проверена.",
@@ -350,15 +350,6 @@
 	"pagetriage-toolbar-close": "Затвори",
 	"pagetriage-toolbar-minimize": "Спушти",
 	"pagetriage-tag-warning-notice": "Напомена: Страницава е создадена пред само {{PLURAL:$1|една минута|$1 минути}}. Почекајте пред да ја означите, освен ако проблемот не е сериозен.",
-	"pagetriage-notification-mark-as-reviewed2": "[[User:$1|$1]] {{GENDER:$1|ја провери}} страницата [[$2]].",
-	"pagetriage-notification-mark-as-reviewed-email-subject2": "Вашата страница на {{SITENAME}} {{GENDER:$1|е проверена}}",
-	"pagetriage-notification-mark-as-reviewed-email-batch-body": "$2 {{GENDER:$2|ја провери}} страницата $1.",
-	"pagetriage-notification-add-maintenance-tag2": "[[User:$1|$1]] {{GENDER:$1|ја провери}} {{GENDER:$1|и означи}} страницата [[$2]]. {{PLURAL:$4|Ознака|Ознаки}}: $3",
-	"pagetriage-notification-add-maintenance-tag-email-subject2": "Вашата страница на {{SITENAME}} {{GENDER:$1|е означена}}",
-	"pagetriage-notification-add-maintenance-tag-email-batch-body": "$2 {{GENDER:$2|ја провери}} и {{GENDER:$2|означи}} страницата $1.",
-	"pagetriage-notification-add-deletion-tag2": "[[User:$1|$1]] {{GENDER:$1|ја провери}} страницата [[$2]] {{GENDER:$1|и ја означи}} за бришење. {{PLURAL:$4|Ознака|Ознаки}}: $3",
-	"pagetriage-notification-add-deletion-tag-email-subject2": "Вашата страница на {{SITENAME}} {{GENDER:$1|е означена за бришење}}",
-	"pagetriage-notification-add-deletion-tag-email-batch-body": "$2 ја {{GENDER:$2|ја означи за бришење}} $1.",
 	"notification-header-pagetriage-mark-as-reviewed": "Страницата '''$3''' е {{GENDER:$2|проверена}}.",
 	"notification-header-pagetriage-add-maintenance-tag": "Проверувач {{GENDER:$2|предложи}} подобрувања на страницата '''$3'''. {{PLURAL:$5|Ознака|Ознаки}}: $4.",
 	"notification-header-pagetriage-add-deletion-tag": "Страницата '''$3''' е {{GENDER:$2|обележана за бришење}}. {{PLURAL:$5|Ознака|Ознаки}}: $4.",
@@ -408,5 +399,6 @@
 	"apihelp-pagetriagetemplate-description": "Дај шаблони што се користат во извршникот „Проверка на страници“.",
 	"apihelp-pagetriagetemplate-param-view": "За кој преглед на „Проверка на страници“ ви требаат шаблоните.",
 	"apihelp-pagetriagetemplate-param-template": "Шаблонот што треба да се даде. Ако се повеќе, одделувајте ги со исправена црта (знакот „|“).",
-	"apihelp-pagetriagetemplate-example-1": "Список на ставки со шаблонот „listItem.html“"
+	"apihelp-pagetriagetemplate-example-1": "Список на ставки со шаблонот „listItem.html“",
+	"apierror-bad-pagetriage-page": "Укажаната страница не постои во редицата."
 }
