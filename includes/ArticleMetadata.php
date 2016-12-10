@@ -177,7 +177,7 @@ class ArticleMetadata {
 			if ( $articles ) {
 				$acp = ArticleCompileProcessor::newFromPageId( $articles, false, DB_SLAVE );
 				if ( $acp ) {
-					$pageData += $acp->compileMetadata();
+					$pageData += $acp->compileMetadata( $acp::SAVE_DEFERRED );
 				}
 			}
 
@@ -299,6 +299,9 @@ class ArticleCompileProcessor {
 	protected $articles;
 	protected $linksUpdates;
 
+	const SAVE_IMMEDIATE = 0;
+	const SAVE_DEFERRED = 1;
+
 	/**
 	 * @param $pageId array - list of page id
 	 */
@@ -385,12 +388,21 @@ class ArticleCompileProcessor {
 
 	/**
 	 * Wrapper function for compiling the data
+	 * @param integer $mode Class SAVE_* constant
 	 * @return array
 	 */
-	public function compileMetadata() {
+	public function compileMetadata( $mode = self::SAVE_IMMEDIATE ) {
 		$this->prepare();
 		$this->process();
-		$this->save();
+
+		if ( $mode === self::SAVE_DEFERRED ) {
+			DeferredUpdates::addCallableUpdate( function () {
+				$this->save(); // T152847
+			} );
+		} else {
+			$this->save();
+		}
+
 		return $this->metadata;
 	}
 
