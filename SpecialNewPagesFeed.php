@@ -28,6 +28,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 				$wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl,
 				$wgPageTriageNamespaces;
 
+		$this->setHeaders();
 		$out = $this->getOutput();
 		$user = $this->getUser();
 
