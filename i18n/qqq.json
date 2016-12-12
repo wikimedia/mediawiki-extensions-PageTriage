@@ -196,7 +196,7 @@
 	"pagetriage-tags-cleanupreorganise-desc": "Description for cleanup-reorganise tag",
 	"pagetriage-tags-sections-label": "Label for sections tag.\n{{Identical|Section}}",
 	"pagetriage-tags-sections-desc": "Description for sections tag",
-	"pagetriage-tags-stub-label": "Label for stub tag",
+	"pagetriage-tags-stub-label": "Label for stub tag\n{{Identical|Stub}}",
 	"pagetriage-tags-stub-desc": "Description for stub tag",
 	"pagetriage-tags-verylong-label": "Label for very long tag",
 	"pagetriage-tags-verylong-desc": "Description for very long tag",

@@ -248,5 +248,6 @@
 	"apihelp-pagetriagetemplate-description": "Вибірка шаблонів, що використовуються в межах програми PageTriage.",
 	"apihelp-pagetriagetemplate-param-view": "Вигляд PageTriage, для якого Вам потрібні ці шаблони.",
 	"apihelp-pagetriagetemplate-param-template": "Шаблон, вибірку якого треба зробити. Якщо їх більше ніж один, відокремлюйте їх символом |.",
-	"apihelp-pagetriagetemplate-example-1": "Перелічити елементи з шаблоном \"listItem.html\""
+	"apihelp-pagetriagetemplate-example-1": "Перелічити елементи з шаблоном \"listItem.html\"",
+	"apierror-bad-pagetriage-page": "Вказаної сторінки немає в черзі сортування сторінок"
 }
