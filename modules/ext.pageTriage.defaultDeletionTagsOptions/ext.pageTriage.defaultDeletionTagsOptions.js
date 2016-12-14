@@ -151,7 +151,7 @@
 				code: 'G4',
 				desc: mw.msg( 'pagetriage-del-tags-dbg4-desc' ),
 				params: {
-					1: $.extend( true, {}, param.url )
+					1: $.extend( true, {}, param.article )
 				},
 				anchor: 'repost',
 				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
