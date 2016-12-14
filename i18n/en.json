@@ -3,7 +3,8 @@
 		"authors": [
 			"Ryan Kaldari",
 			"Benny Situ",
-			"Ian Baker"
+			"Ian Baker",
+			"Matthew Flaschen"
 		]
 	},
 	"pagetriage": "Page Triage",
@@ -238,6 +239,7 @@
 	"pagetriage-tags-update-label": "Update",
 	"pagetriage-tags-update-desc": "This page needs additional up-to-date information added.",
 	"pagetriage-tags-tooltip": "Add tags to indicate areas of improvement for this page",
+	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "Speedy deletion nomination of $1",
 	"pagetriage-del-tags-cat-csd-label": "Speedy deletion",
 	"pagetriage-del-tags-cat-csd-desc": "Mark this page for speedy deletion if it fits one of the criteria below.",
 	"pagetriage-del-tags-cat-prod-label": "Proposed deletion",
@@ -281,10 +283,13 @@
 	"pagetriage-del-tags-blpprod-desc": "An article about a living person that has no sources",
 	"pagetriage-del-tags-prod-label": "Proposed Deletion",
 	"pagetriage-del-tags-prod-desc": "Uncontroversial deletions that do not meet any speedy deletion criteria",
+	"pagetriage-del-tags-prod-notify-topic-title": "[[Wikipedia:Proposed deletion|Proposed deletion]] of [[$1]]",
+	"pagetriage-del-tags-xfd-notify-topic-title": "Deletion discussion about [[$1]]",
 	"pagetriage-del-tags-articlefordeletion-label": "Articles for deletion",
 	"pagetriage-del-tags-redirectsfordiscussion-label": "Redirects for discussion",
 	"pagetriage-del-tags-miscellanyfordeletion-label": "Miscellany for deletion",
-	"pagetriage-del-talk-page-notify-summary": "Notifying author of deletion nomination for [[$1]]",
+	"pagetriage-mark-mark-talk-page-notify-topic-title": "A page {{GENDER:|you}} started ($1) has been reviewed!",
+	"pagetriage-mark-unmark-talk-page-notify-topic-title": "I have unreviewed a page {{GENDER:|you}} curated",
 	"pagetriage-tags-param-article-label": "Article:",
 	"pagetriage-tags-param-date-label": "Date:",
 	"pagetriage-tags-param-issues-label": "Describe issues to be addressed:",
@@ -297,6 +302,7 @@
 	"pagetriage-tags-param-free-no-label": "No",
 	"pagetriage-tags-param-missing-required": "Tag $1 is missing required parameter.",
 	"pagetriage-tags-param-date-format": "$1 $2",
+	"pagetriage-tags-talk-page-notify-topic-title": "Ways to improve $1",
 	"log-name-pagetriage-curation": "Page curation log",
 	"log-description-pagetriage-curation": "This is the log of actions taken on page curation toolbar.",
 	"log-name-pagetriage-deletion": "Deletion tag log",
@@ -307,7 +313,6 @@
 	"logentry-pagetriage-curation-delete": "$1 {{GENDER:$2|marked}} $3 for deletion with $4 {{PLURAL:$5|tag|tags}}",
 	"logentry-pagetriage-deletion-delete": "$1 {{GENDER:$2|marked}} $3 for deletion with $4 {{PLURAL:$5|tag|tags}}",
 	"pagetriage-tags-edit-summary": "Added tags to the page using $1 ($2)",
-	"pagetriage-tags-note-edit-summary": "Added comments regarding [[$1]]",
 	"pagetriage-del-edit-summary": "Nominated page for deletion using $1 ($2)",
 	"pagetriage-del-tags-param-discussion-label": "Please explain why this article should be deleted, and provide links to the relevant policies wherever possible",
 	"pagetriage-info-title": "Page info",

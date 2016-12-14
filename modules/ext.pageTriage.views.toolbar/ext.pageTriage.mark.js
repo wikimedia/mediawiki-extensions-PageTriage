@@ -81,6 +81,8 @@ $( function () {
 
 		talkPageNote: function ( note, action ) {
 			var talkPageTitle,
+				messagePosterPromise,
+				topicTitle,
 				that = this,
 				pageTitle = mw.config.get( 'wgPageTriagePagePrefixedText' );
 
@@ -92,6 +94,13 @@ $( function () {
 					mw.config.get( 'wgUserName' ) !== this.model.get( 'reviewer' )
 				) {
 					talkPageTitle = this.model.get( 'reviewer_user_talk_page' );
+					messagePosterPromise = mw.messagePoster.factory.create(
+						new mw.Title( talkPageTitle )
+					);
+
+					topicTitle = mw.pageTriage.contentLanguageMessage(
+						'pagetriage-mark-unmark-talk-page-notify-topic-title'
+					).text();
 
 					if ( note ) {
 						note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' ).UnMark.note +
@@ -116,6 +125,14 @@ $( function () {
 					return;
 				}
 				talkPageTitle = this.model.get( 'creator_user_talk_page' );
+				messagePosterPromise = mw.messagePoster.factory.create(
+					new mw.Title( talkPageTitle )
+				);
+
+				topicTitle = mw.pageTriage.contentLanguageMessage(
+					'pagetriage-mark-mark-talk-page-notify-topic-title',
+					pageTitle
+				).text();
 
 				note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' ).Mark +
 					'|' + pageTitle +
@@ -123,28 +140,19 @@ $( function () {
 					'|' + note + '}}';
 			}
 
-			$.ajax( {
-				type: 'post',
-				url: mw.util.wikiScript( 'api' ),
-				data: {
-					action: 'edit',
-					title: talkPageTitle,
-					appendtext: '\n' + note,
-					token: mw.user.tokens.get( 'editToken' ),
-					format: 'json'
-				},
-				success: function ( data ) {
-					if ( data.edit && data.edit.result === 'Success' ) {
-						that.hideFlyout( action );
-					} else {
-						if ( typeof data.error.info !== 'undefined' ) {
-							that.showMarkError( action, data.error.info );
-						} else {
-							that.showMarkError( action, mw.msg( 'unknown-error' ) );
-						}
-					}
-				},
-				dataType: 'json'
+			messagePosterPromise.then( function ( messagePoster ) {
+				return messagePoster.post(
+					topicTitle,
+					note
+				);
+			} ).then( function () {
+				that.hideFlyout( action );
+			}, function ( errorCode, error ) {
+				if ( error !== undefined ) {
+					that.showMarkError( action, error );
+				} else {
+					that.showMarkError( action, mw.msg( 'unknown-error' ) );
+				}
 			} );
 		},
 

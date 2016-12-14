@@ -1,7 +1,4 @@
 $( function () {
-	if ( !mw.pageTriage ) {
-		mw.pageTriage = {};
-	}
 	mw.pageTriage.viewUtil = {
 		// define templates which should be cached in here, the key is the template view:
 		// list, toolbar etc

@@ -140,6 +140,9 @@ $wgAutoloadClasses['PageTriageExternalTagsOptions'] = $dir
 	. 'includes/PageTriageExternalTagsOptions.php';
 $wgAutoloadClasses['PageTriageExternalDeletionTagsOptions'] = $dir
 	. 'includes/PageTriageExternalDeletionTagsOptions.php';
+$wgAutoloadClasses['PageTriageMessagesModule'] = $dir
+	. 'includes/PageTriageMessagesModule.php';
+
 $wgAutoloadClasses['PageTriageLogFormatter'] = $dir
 	. 'includes/PageTriageLogFormatter.php';
 $wgAutoloadClasses['PageTriagePresentationModel'] = $dir
@@ -219,7 +222,9 @@ $ptResourceTemplate = [
 // where can the template API find the templates?
 $wgPtTemplatePath = $ptResourceTemplate['localBasePath'];
 
-// Tags options message
+// Tag option messages, in the UI language
+// Must be overriden in LocalSettings.php equivalent (as needed) if
+// MediaWiki:PageTriageExternalTagsOptions.js is.
 $wgPageTriageTagsOptionsMessages = [
 	'pagetriage-tags-title',
 	'pagetriage-tags-cat-common-label',
@@ -373,7 +378,9 @@ $wgPageTriageTagsOptionsMessages = [
 	'pagetriage-tags-tooltip',
 ];
 
-// Deletion Tags options message
+// Deletion tag option messages, in the UI language
+// Must be overriden in LocalSettings.php equivalent (as needed) if
+// MediaWiki:PageTriageExternalDeletionTagsOptions.js is.
 $wgPageTriageDeletionTagsOptionsMessages = [
 	'pagetriage-del-tags-cat-csd-label',
 	'pagetriage-del-tags-cat-csd-desc',
@@ -432,6 +439,15 @@ $wgPageTriageDeletionTagsOptionsMessages = [
 	'pagetriage-tags-param-source-label',
 ];
 
+// Deletion tag option messages, in the wiki's content language
+// Must be overriden in LocalSettings.php equivalent (as needed) if
+// MediaWiki:PageTriageExternalDeletionTagsOptions.js is.
+$wgPageTriageDeletionTagsOptionsContentLanguageMessages = [
+	'pagetriage-del-tags-prod-notify-topic-title',
+	'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
+	'pagetriage-del-tags-xfd-notify-topic-title',
+];
+
 $wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + [
 	'scripts' => [
 		'external/underscore.js',
@@ -482,20 +498,36 @@ $wgResourceModules['ext.pageTriage.external'] = $ptResourceTemplate + [
 	]
 ];
 
+$wgResourceModules['ext.pageTriage.init'] = $ptResourceTemplate + [
+	'scripts' => [
+		'ext.pageTriage.init/ext.pageTriage.init.js',
+	],
+	'dependencies' => [
+		'ext.pageTriage.external',
+	],
+];
+
 $wgResourceModules['ext.pageTriage.util'] = $ptResourceTemplate + [
 	'scripts' => [
-		'ext.pageTriage.util/ext.pageTriage.viewUtil.js' // convenience functions for all views
+		// convenience functions for all views
+		'ext.pageTriage.util/ext.pageTriage.viewUtil.js',
+
+		// Message infrastructure (e.g. for content language messages)
+		'ext.pageTriage.util/ext.pageTriage.messageUtil.js',
 	],
 	'messages' => [
 		'pagetriage-api-error'
-	]
+	],
+	'dependencies' => [
+		'ext.pageTriage.init',
+	],
 ];
 
 $wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + [
 	'dependencies' => [
 		'mediawiki.Title',
 		'mediawiki.user',
-		'ext.pageTriage.external'
+		'ext.pageTriage.init',
 	],
 	'scripts' => [
 		'ext.pageTriage.models/ext.pageTriage.article.js',
@@ -510,7 +542,7 @@ $wgResourceModules['ext.pageTriage.models'] = $ptResourceTemplate + [
 		'pagetriage-page-status-reviewed',
 		'pagetriage-page-status-delete',
 		'pagetriage-page-status-reviewed-anonymous'
-	]
+	],
 ];
 
 $wgResourceModules['jquery.tipoff'] = $ptResourceTemplate + [
@@ -632,7 +664,8 @@ $wgResourceModules['ext.pageTriage.defaultDeletionTagsOptions'] = $ptResourceTem
 		. 'ext.pageTriage.defaultDeletionTagsOptions.js',
 	'messages' => $wgPageTriageDeletionTagsOptionsMessages,
 	'dependencies' => [
-		'mediawiki.Title'
+		'mediawiki.Title',
+		'ext.pageTriage.messages',
 	]
 ];
 
@@ -650,6 +683,9 @@ $wgResourceModules['ext.pageTriage.article'] = $ptResourceTemplate + [
 	'messages' => [
 			'pagetriage-reviewed',
 			'pagetriage-mark-as-reviewed-error',
+	],
+	'dependencies' => [
+		'ext.pageTriage.init',
 	],
 ];
 

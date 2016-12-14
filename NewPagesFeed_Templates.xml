@@ -46,21 +46,19 @@
   <page>
     <title>Template:Db-notice-multiple-NPF</title>
     <ns>10</ns>
-    <id>36543481</id>
+    <id>2157</id>
     <revision>
-      <id>554949989</id>
-      <parentid>553198785</parentid>
-      <timestamp>2013-05-13T21:01:37Z</timestamp>
+      <id>5386</id>
+      <parentid>5159</parentid>
+      <timestamp>2016-09-17T00:56:17Z</timestamp>
       <contributor>
-        <username>Kaldari</username>
-        <id>59944</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>making consistent with other Db-notice templates</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="20186">== Speedy deletion nomination of {{{1}}} ==
-
-Hello {{{{{|safesubst:}}}BASEPAGENAME}},
+      <text xml:space="preserve" bytes="20141">Hello {{{{{|safesubst:}}}BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[:{{{1}}}]] for deletion, because it seems to be inappropriate for {{{{{|safesubst:}}}#if: {{{{{|safesubst:}}}csdcheck | {{{2|}}} | {{{3|}}} | {{{4|}}} | {{{5|}}} | {{{6|}}} | {{{7|}}} | {{{8|}}} | {{{9|}}} | {{{10|}}} | {{{11|}}} | set = notice }}
 | the following reasons:
@@ -212,28 +210,25 @@ You can leave a note on [[User talk:&lt;includeonly&gt;{{{{{|safesubst:}}}REVISI
 
 {{Documentation}}
 &lt;/noinclude&gt;</text>
-      <sha1>iv1xgvmgzsh21hwjnfzfzgfikkv7jy4</sha1>
+      <sha1>jmc4grz548nwyozlxga9c3defcyhtq1</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Db-nonsense-notice-NPF</title>
     <ns>10</ns>
-    <id>36543657</id>
+    <id>2158</id>
     <revision>
-      <id>569575109</id>
-      <parentid>554950077</parentid>
-      <timestamp>2013-08-21T14:00:49Z</timestamp>
+      <id>5409</id>
+      <parentid>5161</parentid>
+      <timestamp>2016-09-19T21:25:25Z</timestamp>
       <contributor>
-        <username>SamX</username>
-        <id>18577160</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <minor/>
-      <comment>adding a colon for files and categories</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="899">== Speedy deletion nomination of {{{1}}} ==
-
-Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
+      <text xml:space="preserve" bytes="854">Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[:{{{1}}}]] for deletion, because it doesn't seem to have any encyclopedic content. 
 
@@ -241,28 +236,25 @@ If you feel that the article shouldn't be deleted and want more time to work on 
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>t3to721nrihoumkarbnla713c536epi</sha1>
+      <sha1>df8mzxmvv1o3owd28amy6u4ydqnifjz</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Db-test-notice-NPF</title>
     <ns>10</ns>
-    <id>36543710</id>
+    <id>2159</id>
     <revision>
-      <id>653508986</id>
-      <parentid>653506543</parentid>
-      <timestamp>2015-03-25T20:33:37Z</timestamp>
+      <id>5410</id>
+      <parentid>5163</parentid>
+      <timestamp>2016-09-19T21:26:32Z</timestamp>
       <contributor>
-        <username>MadGuy7023</username>
-        <id>16589187</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <minor/>
-      <comment>Reverted edits by [[Special:Contribs/SD0001|SD0001]] ([[User talk:SD0001|talk]]) to last version by YborCityJohn</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="971">== Speedy deletion nomination of {{{1}}} ==
-
-Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
+      <text xml:space="preserve" bytes="926">Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[:{{{1}}}]] for deletion, because it seems to be a test. Did you know that the [[Wikipedia:Sandbox|Wikipedia Sandbox]] is available for testing out edits?  
 
@@ -270,28 +262,25 @@ If you feel that the article shouldn't be deleted and want more time to work on 
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>rdi6kcm9xqxnghnf602qr34l6v1ezz6</sha1>
+      <sha1>ilejvzbpyahdvdicrff7jv72hdq5e0h</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Db-vandalism-notice-NPF</title>
     <ns>10</ns>
-    <id>36543864</id>
+    <id>2160</id>
     <revision>
-      <id>569575213</id>
-      <parentid>554949516</parentid>
-      <timestamp>2013-08-21T14:01:43Z</timestamp>
+      <id>5411</id>
+      <parentid>5165</parentid>
+      <timestamp>2016-09-19T21:27:29Z</timestamp>
       <contributor>
-        <username>SamX</username>
-        <id>18577160</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <minor/>
-      <comment>adding a colon for files and categories</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="885">== Speedy deletion nomination of {{{1}}} ==
-
-Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
+      <text xml:space="preserve" bytes="840">Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[:{{{1}}}]] for deletion, because it seems to be vandalism or a hoax. 
 
@@ -299,26 +288,25 @@ If you feel that the article shouldn't be deleted and want more time to work on 
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>gqz5wgdqcizs7t0ndgzp5k5ccm13cfs</sha1>
+      <sha1>h8uj5cryj4hs9n1t4mnylhcs1f63tli</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Uw-repost-NPF</title>
     <ns>10</ns>
-    <id>36543938</id>
+    <id>2161</id>
     <revision>
-      <id>680079911</id>
-      <parentid>680079782</parentid>
-      <timestamp>2015-09-08T15:55:16Z</timestamp>
+      <id>5412</id>
+      <parentid>5167</parentid>
+      <timestamp>2016-09-19T21:41:54Z</timestamp>
       <contributor>
-        <ip>84.92.129.87</ip>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>m ...fix tname</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="991">== Speedy deletion nomination of {{{1}}} ==
-
-Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
+      <text xml:space="preserve" bytes="946">Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it seems to be an article that was previously deleted by a [[Wikipedia:Deletion process|consensus decision]].  
 
@@ -326,25 +314,25 @@ If you feel that the article shouldn't be deleted and want more time to work on 
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions. &lt;!-- Template:Uw-repost-NPF --&gt;&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>pklica4zzgm5tcugzyo22tf5eo5kuc2</sha1>
+      <sha1>57idoldat5ocgfs6zpex117zz0ppbe2</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Db-author-notice-NPF</title>
     <ns>10</ns>
-    <id>36544049</id>
+    <id>2162</id>
     <revision>
-      <id>735663038</id>
-      <parentid>554950255</parentid>
-      <timestamp>2016-08-22T07:43:50Z</timestamp>
+      <id>5414</id>
+      <parentid>5169</parentid>
+      <timestamp>2016-09-19T21:47:17Z</timestamp>
       <contributor>
-        <username>Denis Denci Pekic</username>
-        <id>23496583</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>/* Speedy deletion nomination of {{{1}}} */</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="881">== Speedy deletion nomination of {{{1}}} =={{Db-autor}}
+      <text xml:space="preserve" bytes="838">{{Db-autor}}
 
 Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
@@ -354,49 +342,45 @@ If you didn't intend to make such a request and don't want the article to be del
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>cqhpsmgnnvuyb4h80ffqo26sywwkk3p</sha1>
+      <sha1>jvsat73xudvtxl1v06pasrmdatmb93m</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Db-attack-notice-NPF</title>
     <ns>10</ns>
-    <id>36544071</id>
+    <id>2163</id>
     <revision>
-      <id>569575063</id>
-      <parentid>554950304</parentid>
-      <timestamp>2013-08-21T14:00:23Z</timestamp>
+      <id>5415</id>
+      <parentid>5171</parentid>
+      <timestamp>2016-09-19T21:49:51Z</timestamp>
       <contributor>
-        <username>SamX</username>
-        <id>18577160</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <minor/>
-      <comment>adding a colon for files and categories</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="529">== Speedy deletion nomination of [[:{{{1}}}]] ==
-[[Image:Stop hand nuvola.svg|30px|left|alt=|link=]] Please do not create pages that [[Wikipedia:Attack_page|attack, threaten, or disparage]] their subject. Attack pages and files '''are not tolerated''' by Wikipedia and are [[Wikipedia:Criteria for speedy deletion|speedily deleted]]. Users who create or add such material may be [[Wikipedia:Blocking policy|blocked]] from editing Wikipedia. Thank you.&lt;noinclude&gt;{{Documentation}}
+      <text xml:space="preserve" bytes="480">[[Image:Stop hand nuvola.svg|30px|left|alt=|link=]] Please do not create pages that [[Wikipedia:Attack_page|attack, threaten, or disparage]] their subject. Attack pages and files '''are not tolerated''' by Wikipedia and are [[Wikipedia:Criteria for speedy deletion|speedily deleted]]. Users who create or add such material may be [[Wikipedia:Blocking policy|blocked]] from editing Wikipedia. Thank you.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>kuy3j9vgi2624pek3g562tvoyl6rxc0</sha1>
+      <sha1>eu5sw2x9wzrtxabxjo30u34keomdxbm</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Spam-warn-NPF</title>
     <ns>10</ns>
-    <id>36544091</id>
+    <id>2156</id>
     <revision>
-      <id>554951181</id>
-      <parentid>553199126</parentid>
-      <timestamp>2013-05-13T21:09:39Z</timestamp>
+      <id>5416</id>
+      <parentid>5173</parentid>
+      <timestamp>2016-09-19T22:03:17Z</timestamp>
       <contributor>
-        <username>Kaldari</username>
-        <id>59944</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>fixing sig problem</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="936">== Speedy deletion nomination of {{{1}}} ==
-
-Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
+      <text xml:space="preserve" bytes="891">Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it seems to be [[Wikipedia:Promotion|promotional]], rather than an encyclopedia article.
 
@@ -404,27 +388,25 @@ If you feel that the article shouldn't be deleted and want more time to work on 
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>kinuyb9wm4qk83wc2rr0w0m0sfgty5q</sha1>
+      <sha1>ogr1tcyenh83z1nb6fl73903g3rh2wx</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Nothanks-sd-NPF</title>
     <ns>10</ns>
-    <id>36544108</id>
+    <id>2164</id>
     <revision>
-      <id>572132539</id>
-      <parentid>570886161</parentid>
-      <timestamp>2013-09-09T01:39:27Z</timestamp>
+      <id>5417</id>
+      <parentid>5175</parentid>
+      <timestamp>2016-09-19T22:04:04Z</timestamp>
       <contributor>
-        <username>Plastikspork</username>
-        <id>5075409</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>Closed</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="945">== Speedy deletion nomination of {{{1}}} ==
-
-Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
+      <text xml:space="preserve" bytes="900">Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it seems to be [[Wikipedia:Copyright violations|copied from another source]]. 
 
@@ -433,27 +415,25 @@ If you feel that the article shouldn't be deleted and want more time to rewrite 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]
 &lt;/noinclude&gt;</text>
-      <sha1>2312axsgb0vr18d7tg8f4jb45cou3ms</sha1>
+      <sha1>kuie2qh9s5472eg5qfsma9eyiqo62nx</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Empty-warn-NPF</title>
     <ns>10</ns>
-    <id>36544122</id>
+    <id>2165</id>
     <revision>
-      <id>554950573</id>
-      <parentid>553198879</parentid>
-      <timestamp>2013-05-13T21:05:26Z</timestamp>
+      <id>5403</id>
+      <parentid>5177</parentid>
+      <timestamp>2016-09-19T20:54:56Z</timestamp>
       <contributor>
-        <username>Kaldari</username>
-        <id>59944</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>fixing sig problem</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="902">== Speedy deletion nomination of {{{1}}} ==
-
-Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
+      <text xml:space="preserve" bytes="857">Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it's too short to identify the subject of the article.
 
@@ -461,27 +441,25 @@ If you feel that the article shouldn't be deleted and want more time to work on 
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>e95mhd3cqu69xn79v8144hzrooir1pd</sha1>
+      <sha1>bjfhzukcrpfsp61j4swf8v3s8i5oiht</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Db-foreign-notice-NPF</title>
     <ns>10</ns>
-    <id>36544157</id>
+    <id>2166</id>
     <revision>
-      <id>554950153</id>
-      <parentid>553198668</parentid>
-      <timestamp>2013-05-13T21:02:50Z</timestamp>
+      <id>5404</id>
+      <parentid>5179</parentid>
+      <timestamp>2016-09-19T21:19:45Z</timestamp>
       <contributor>
-        <username>Kaldari</username>
-        <id>59944</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>fixing sig problem</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="1089">== Speedy deletion nomination of {{{1}}} ==
-
-Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
+      <text xml:space="preserve" bytes="1044">Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it's not written in English. To request a translation, please visit the [[Wikipedia:Translation|translation]] page. If you'd like to contribute to another Wikipedia, take a look at our [[meta:List_of_Wikipedias#All_Wikipedias_ordered_by_number_of_articles|full list of language projects]]. 
 
@@ -489,27 +467,25 @@ If you feel that I made a mistake, you can &lt;span class=&quot;plainlinks&quot;
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>8tik7okbe4f6zq10kbp0tjhyfpnqvb1</sha1>
+      <sha1>8norxjapy1xrj8ffj7wzb6aepkv5l3w</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Nocontent-warn-NPF</title>
     <ns>10</ns>
-    <id>36544170</id>
+    <id>2167</id>
     <revision>
-      <id>554950683</id>
-      <parentid>553198903</parentid>
-      <timestamp>2013-05-13T21:06:16Z</timestamp>
+      <id>5405</id>
+      <parentid>5181</parentid>
+      <timestamp>2016-09-19T21:21:23Z</timestamp>
       <contributor>
-        <username>Kaldari</username>
-        <id>59944</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>fixing sig problem</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="1060">== Speedy deletion nomination of {{{1}}} ==
-
-Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
+      <text xml:space="preserve" bytes="1015">Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it doesn't appear to contain any encyclopedic content. Take a look at our [[Wikipedia:Stub#Essential information about stubs|suggestions for essential content]] in short articles to learn what should be included.
 
@@ -517,7 +493,7 @@ If you feel that the article shouldn't be deleted and want more time to work on 
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>p2w4exlcbms79cyxysrdx4906cofpwx</sha1>
+      <sha1>agw0482icy7d5vynwkzq2yke39df3m1</sha1>
     </revision>
   </page>
   <page>
@@ -551,21 +527,19 @@ You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt
   <page>
     <title>Template:Db-notability-notice-NPF</title>
     <ns>10</ns>
-    <id>36544223</id>
+    <id>2169</id>
     <revision>
-      <id>554944775</id>
-      <parentid>553198703</parentid>
-      <timestamp>2013-05-13T20:26:42Z</timestamp>
+      <id>5406</id>
+      <parentid>5185</parentid>
+      <timestamp>2016-09-19T21:22:14Z</timestamp>
       <contributor>
-        <username>Kaldari</username>
-        <id>59944</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>fixing sig problem</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="950">== Speedy deletion nomination of {{{1}}} ==
-
-Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
+      <text xml:space="preserve" bytes="905">Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because the article doesn't clearly say why the subject is important enough to be included in an encyclopedia.
 
@@ -573,27 +547,25 @@ If you feel that the article shouldn't be deleted and want more time to work on 
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>26l767alswhhq54c0rtr7lgbbmb7r1f</sha1>
+      <sha1>fcudybyazc6xe5dozjz24koaqelvigw</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Db-a9-notice-NPF</title>
     <ns>10</ns>
-    <id>36544240</id>
+    <id>2170</id>
     <revision>
-      <id>554949249</id>
-      <parentid>553198593</parentid>
-      <timestamp>2013-05-13T20:56:44Z</timestamp>
+      <id>5407</id>
+      <parentid>5187</parentid>
+      <timestamp>2016-09-19T21:23:40Z</timestamp>
       <contributor>
-        <username>Kaldari</username>
-        <id>59944</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>fixing sig problem</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="992">== Speedy deletion nomination of {{{1}}} ==
-
-Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
+      <text xml:space="preserve" bytes="947">Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because the article doesn't clearly say why the subject is significant enough to be included in an encyclopedia, and the artist doesn't have an article.
 
@@ -601,27 +573,25 @@ If you feel that the article shouldn't be deleted and want more time to work on 
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>mhygwd4i3eydwamnpyejyhi9ofobidl</sha1>
+      <sha1>68z4ia34hckc5cffohwytxkm0l1l2jq</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Db-a10-notice-NPF</title>
     <ns>10</ns>
-    <id>36544270</id>
+    <id>2171</id>
     <revision>
-      <id>577676677</id>
-      <parentid>554949305</parentid>
-      <timestamp>2013-10-18T06:41:49Z</timestamp>
+      <id>5408</id>
+      <parentid>5189</parentid>
+      <timestamp>2016-09-19T21:24:22Z</timestamp>
       <contributor>
-        <username>Ironholds</username>
-        <id>6804626</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>fix?</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="888">== Speedy deletion nomination of {{{1}}} ==
-
-Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
+      <text xml:space="preserve" bytes="843">Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it appears to duplicate an existing Wikipedia article, [[{{{article}}}]].
 
@@ -629,7 +599,7 @@ If you feel that the article shouldn't be deleted, you can &lt;span class=&quot;
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>c3t527slsnjg2grzwib481pzojhuvu7</sha1>
+      <sha1>kkce52hu3auavgd8mr8efn3etw0jfyh</sha1>
     </revision>
   </page>
   <page>
@@ -691,21 +661,19 @@ You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt
   <page>
     <title>Template:Db-u2-notice-NPF</title>
     <ns>10</ns>
-    <id>36544351</id>
+    <id>2174</id>
     <revision>
-      <id>554949621</id>
-      <parentid>553198833</parentid>
-      <timestamp>2013-05-13T20:59:09Z</timestamp>
+      <id>5418</id>
+      <parentid>5195</parentid>
+      <timestamp>2016-09-19T22:05:04Z</timestamp>
       <contributor>
-        <username>Kaldari</username>
-        <id>59944</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>fixing sig problem</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="858">== Speedy deletion nomination of {{{1}}} ==
-
-Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
+      <text xml:space="preserve" bytes="813">Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it seems to be a page for an account that does not exist.
 
@@ -713,27 +681,25 @@ If don't want {{{1}}} to be deleted, you can &lt;span class=&quot;plainlinks&quo
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>fgo8nakrn45lhx7ycv6g02w16xtq0r7</sha1>
+      <sha1>758x0a4hgilf5hinj52ygm246opfzmq</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Db-gallery-notice-NPF</title>
     <ns>10</ns>
-    <id>36544364</id>
+    <id>2175</id>
     <revision>
-      <id>554950107</id>
-      <parentid>553198675</parentid>
-      <timestamp>2013-05-13T21:02:31Z</timestamp>
+      <id>5419</id>
+      <parentid>5197</parentid>
+      <timestamp>2016-09-19T22:05:48Z</timestamp>
       <contributor>
-        <username>Kaldari</username>
-        <id>59944</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>fixing sig problem</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="885">== Speedy deletion nomination of {{{1}}} ==
-
-Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
+      <text xml:space="preserve" bytes="840">Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because we are not allowed to place copyrighted images within user pages for any reason.
 
@@ -741,26 +707,25 @@ If you don't want {{{1}}} to be deleted, you can &lt;span class=&quot;plainlinks
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>0enilnwdk65vpprw6n8dhgb1lt1tyjt</sha1>
+      <sha1>0t4sr699rykb71y69cszdh0awuunv3y</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Proposed deletion notify-NPF</title>
     <ns>10</ns>
-    <id>36544418</id>
+    <id>2176</id>
     <revision>
-      <id>554950971</id>
-      <parentid>554950863</parentid>
-      <timestamp>2013-05-13T21:08:03Z</timestamp>
+      <id>5420</id>
+      <parentid>5199</parentid>
+      <timestamp>2016-09-19T22:07:20Z</timestamp>
       <contributor>
-        <username>Kaldari</username>
-        <id>59944</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>making consistent with other pagetriage delete templates</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="1027">== [[Wikipedia:Proposed deletion|Proposed deletion]] of [[{{{1}}}]] ==
-&lt;!--&lt;includeonly&gt;}}&lt;/includeonly&gt;--&gt;
+      <text xml:space="preserve" bytes="956">&lt;!--&lt;includeonly&gt;}}&lt;/includeonly&gt;--&gt;
 Hello, {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}}. I wanted to let you know that I’m proposing an article that you started, [[{{{1}}}]], for deletion because I don't think it meets our criteria for inclusion. If you don't want the article deleted:
 
 # [http://en.wikipedia.org/w/index.php?title={{urlencode:{{{1}}}}}&amp;action=edit edit the page]
@@ -771,26 +736,25 @@ Also, ''be sure to explain why'' you think the article should be kept in your ed
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>7mrdszyhu0tqq7x9hvvyl5gi573pgl3</sha1>
+      <sha1>9mime4n74zxk3ghfpsmznp4eag6hg3g</sha1>
     </revision>
   </page>
   <page>
     <title>Template:ProdwarningBLP-NPF</title>
     <ns>10</ns>
-    <id>36544454</id>
+    <id>2177</id>
     <revision>
-      <id>554950781</id>
-      <parentid>553198929</parentid>
-      <timestamp>2013-05-13T21:06:54Z</timestamp>
+      <id>5395</id>
+      <parentid>5201</parentid>
+      <timestamp>2016-09-17T01:20:45Z</timestamp>
       <contributor>
-        <username>Kaldari</username>
-        <id>59944</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>fixing sig problem</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="775">== [[Wikipedia:Proposed deletion|Proposed deletion]] of [[{{{1}}}]] ==
-&lt;!--&lt;includeonly&gt;}}&lt;/includeonly&gt;--&gt;
+      <text xml:space="preserve" bytes="704">&lt;!--&lt;includeonly&gt;}}&lt;/includeonly&gt;--&gt;
 
 Hello, {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}}. I wanted to let you know that I’m proposing an article that you started, [[{{{1}}}]], for deletion because it's a [[Wikipedia:Biographies of living persons|biography of a living person]] that lacks references. If you don't want {{{1}}}  to be deleted, please [[Wikipedia:Citing sources|add a reference]] to the article. 
 
@@ -798,26 +762,25 @@ If you don't understand this message, you can leave a note on [[User_talk:&lt;in
 
 Thanks,&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>fd8vx0avugtqy6p1mvf63u24g2pvxr5</sha1>
+      <sha1>4uyt1hqzv25x9dkr231hqj9aqcy01xv</sha1>
     </revision>
   </page>
   <page>
     <title>Template:AfD-notice-NPF</title>
     <ns>10</ns>
-    <id>36544498</id>
+    <id>2178</id>
     <revision>
-      <id>554950393</id>
-      <parentid>553198560</parentid>
-      <timestamp>2013-05-13T21:04:26Z</timestamp>
+      <id>5421</id>
+      <parentid>5203</parentid>
+      <timestamp>2016-09-19T22:13:11Z</timestamp>
       <contributor>
-        <username>Kaldari</username>
-        <id>59944</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>fixing sig problem</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="740">== Deletion discussion about [[{{{1}}}]] ==
-Hello, {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}}, 
+      <text xml:space="preserve" bytes="696">Hello, {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}}, 
 
 I wanted to let you know that there's a discussion about whether {{{1}}} should be deleted. Your comments are welcome at  [[Wikipedia:Articles for deletion/{{{1}}} {{{order|}}}]]. 
 
@@ -825,84 +788,77 @@ If you're new to the process, [[WP:AFD|articles for deletion]] is a group discus
 
 Thanks,&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>aunxedrz1uun76vrp0ssgjdvf2oaf50</sha1>
+      <sha1>h4c0mzjd7n1gh4hrmwf8rve2pb64y6v</sha1>
     </revision>
   </page>
   <page>
     <title>Template:RFDNote-NPF</title>
     <ns>10</ns>
-    <id>36544533</id>
+    <id>2179</id>
     <revision>
-      <id>554951132</id>
-      <parentid>553199075</parentid>
-      <timestamp>2013-05-13T21:09:19Z</timestamp>
+      <id>5422</id>
+      <parentid>5205</parentid>
+      <timestamp>2016-09-19T23:08:37Z</timestamp>
       <contributor>
-        <username>Kaldari</username>
-        <id>59944</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>fixing sig problem</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="498">== Deletion discussion about {{{1}}}  ==
-
-Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
+      <text xml:space="preserve" bytes="456">Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I've asked for a deletion discussion about the redirect [[{{{1}}}]]. If you're interested in participating in this discussion, please leave your comments [[Wikipedia:Redirects for discussion/Log/{{&lt;includeonly&gt;subst:&lt;/includeonly&gt;#time:Y F j|-{{{days|0}}} days}}#{{{2|{{{1}}}}}}|here]].&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>swzcxbj3bsv4p4c38taz6sm7bujss9r</sha1>
+      <sha1>shixqwghtb2ux2qfvt0ldhn5aa6meje</sha1>
     </revision>
   </page>
   <page>
     <title>Template:MFDWarning-NPF</title>
     <ns>10</ns>
-    <id>36544559</id>
+    <id>2180</id>
     <revision>
-      <id>554950629</id>
-      <parentid>553198885</parentid>
-      <timestamp>2013-05-13T21:05:53Z</timestamp>
+      <id>5423</id>
+      <parentid>5207</parentid>
+      <timestamp>2016-09-19T23:15:00Z</timestamp>
       <contributor>
-        <username>Kaldari</username>
-        <id>59944</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>fixing sig problem</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="642">== Deletion discussion about {{{1}}} ==
-
-Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
+      <text xml:space="preserve" bytes="601">Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just nominated [[{{{1}}}]] for [[WP:MfD|deletion]], because I don't feel that it's appropriate for Wikipedia. You can participate in this deletion discussion at [[Wikipedia:Miscellany for deletion/{{{1}}}]].  If you would like to edit {{{1}}}  according to the feedback in the discussion, you're welcome to do so (but please don't remove the deletion tag from the top of the page).&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]
 [[Category:Miscellany for deletion templates]]
 &lt;/noinclude&gt;</text>
-      <sha1>1rkrc8936ox9yle7aepoufd7uito2qe</sha1>
+      <sha1>slsm6uriauu89gkfyv4sw0rrfy4nzox</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Taggednote-NPF</title>
     <ns>10</ns>
-    <id>36651065</id>
+    <id>2181</id>
     <revision>
-      <id>552354029</id>
-      <parentid>513723909</parentid>
-      <timestamp>2013-04-27T00:58:50Z</timestamp>
+      <id>5450</id>
+      <parentid>5209</parentid>
+      <timestamp>2016-09-20T01:08:07Z</timestamp>
       <contributor>
-        <username>Kaldari</username>
-        <id>59944</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>removing extra whitespace</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="607">
-== Ways to improve {{{1}}} ==
-
-Hi, I'm {{{2}}}. {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}}, thanks for creating [[{{{1}}}]]!
+      <text xml:space="preserve" bytes="575">Hi, I'm {{{2}}}. {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}}, thanks for creating [[{{{1}}}]]!
 
 I've just tagged the page, using our [[Wikipedia:Page Curation/Help|page curation]] tools, as having some issues to fix. {{{3}}}
 
 The tags can be removed by you or another editor once the issues they mention are addressed. If you have questions, you can leave a comment on [[User talk:{{{2}}}|my talk page]]. Or, for more editing help, talk to the volunteers at [[WP:TEAHOUSE|the Teahouse]].&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>owezfv7eiyw52tlff6jqvm27g0f5c5a</sha1>
+      <sha1>53uzh72t71wgrwnn0o0v1lurwvu1k1a</sha1>
     </revision>
   </page>
   <page>
@@ -952,21 +908,19 @@ Hi, I'm {{{1}}}. I wanted to let you know that I saw the new page you started, [
   <page>
     <title>Template:Reviewednote-NPF</title>
     <ns>10</ns>
-    <id>36651027</id>
+    <id>2184</id>
     <revision>
-      <id>560183934</id>
-      <parentid>552354752</parentid>
-      <timestamp>2013-06-16T18:13:17Z</timestamp>
+      <id>5451</id>
+      <parentid>5215</parentid>
+      <timestamp>2016-09-20T01:09:45Z</timestamp>
       <contributor>
-        <username>MZMcBride</username>
-        <id>212624</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>include page title in section header to avoid identical headers on the same talk page (cf. [[bugzilla:49644]])</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="508">== A page you started ({{{1}}}) has been reviewed! ==
-
-Thanks for creating [[{{{1}}}]], {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}}! 
+      <text xml:space="preserve" bytes="453">Thanks for creating [[{{{1}}}]], {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}}!
 
 Wikipedia editor [[User:{{{2}}}|{{{2}}}]] just reviewed your page, and wrote this note for you:
 
@@ -976,49 +930,45 @@ To reply, leave a comment on {{{2}}}'s  [[User talk:{{{2}}}|talk page]].
 
 &lt;small&gt;Learn more about [[Wikipedia:New Pages Feed/Help|page curation]].&lt;/small&gt;&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>g5u1op2ngve1myyvw0yx2ukjjam7rhs</sha1>
+      <sha1>8hs82wy02ol9fnl27mu44yftw37x0sj</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Unreviewednonote-NPF</title>
     <ns>10</ns>
-    <id>37357245</id>
+    <id>2185</id>
     <revision>
-      <id>554951934</id>
-      <parentid>538459015</parentid>
-      <timestamp>2013-05-13T21:15:11Z</timestamp>
+      <id>5455</id>
+      <parentid>5449</parentid>
+      <timestamp>2016-09-20T01:23:37Z</timestamp>
       <contributor>
-        <username>Kaldari</username>
-        <id>59944</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>removing extra whitespace</comment>
+      <comment>remove signature; this template is used for NPF which has its own signature-handling based on MessagePoster</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="362">== I have unreviewed a page you curated ==
-
-Hi, I'm {{{1}}}. I wanted to let you know that I saw the page you reviewed, [[{{{2}}}]], and have un-reviewed it again. If you have any questions, please ask them on [[User_talk:{{{1}}}|my talk page]]. Thank you. ~~&lt;noinclude&gt;&lt;/noinclude&gt;~~&lt;noinclude&gt;{{Documentation}}
+      <text xml:space="preserve" bytes="291">Hi, I'm {{{1}}}. I wanted to let you know that I saw the page you reviewed, [[{{{2}}}]], and have un-reviewed it again. If you have any questions, please ask them on [[User_talk:{{{1}}}|my talk page]]. Thank you. &lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>dq9prrhgdfluzkcuaxuczj7q82lvdid</sha1>
+      <sha1>in5690law5gxlm9yn6ik9m82nmt0e9m</sha1>
     </revision>
   </page>
   <page>
     <title>Template:Unreviewednote-NPF</title>
     <ns>10</ns>
-    <id>37357250</id>
+    <id>2186</id>
     <revision>
-      <id>554951442</id>
-      <parentid>518326898</parentid>
-      <timestamp>2013-05-13T21:11:29Z</timestamp>
+      <id>5448</id>
+      <parentid>5219</parentid>
+      <timestamp>2016-09-20T01:06:21Z</timestamp>
       <contributor>
-        <username>Kaldari</username>
-        <id>59944</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>fixing sig problem</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="427">== I have unreviewed a page you curated ==
-
-Thanks for reviewing [[{{{1}}}]], {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}}. 
+      <text xml:space="preserve" bytes="383">Thanks for reviewing [[{{{1}}}]], {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}}.
 
 Unfortunately [[User:{{{2}}}|{{{2}}}]] has just gone over this page again and unreviewed it. Their note is:
 
@@ -1026,7 +976,7 @@ Unfortunately [[User:{{{2}}}|{{{2}}}]] has just gone over this page again and un
 
 To reply, leave a comment on {{{2}}}'s [[User talk:{{{2}}}|talk page]].&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
-      <sha1>37ywssfpb33hjlk38wquwgfaghc1tif</sha1>
+      <sha1>ivu5oz5xb6fcs0izxh8pp93or4emu7j</sha1>
     </revision>
   </page>
   <page>
@@ -1205,21 +1155,19 @@ You can leave a note on [[User talk:&lt;includeonly&gt;{{{{{|safesubst:}}}REVISI
   <page>
     <title>Template:Db-banned-notice-NPF</title>
     <ns>10</ns>
-    <id>40405094</id>
+    <id>2188</id>
     <revision>
-      <id>572132512</id>
-      <parentid>571051519</parentid>
-      <timestamp>2013-09-09T01:39:14Z</timestamp>
+      <id>5413</id>
+      <parentid>5223</parentid>
+      <timestamp>2016-09-19T21:43:31Z</timestamp>
       <contributor>
-        <username>Plastikspork</username>
-        <id>5075409</id>
+        <username>Admin</username>
+        <id>1</id>
       </contributor>
-      <comment>Closed</comment>
+      <comment>remove topic title; moved to content language message</comment>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="979">== Speedy deletion nomination of {{{1}}} ==
-
-Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
+      <text xml:space="preserve" bytes="934">Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it seems to be an article that was created [[Wikipedia:Sock puppetry|in violation of a block or ban]]. Content created by banned users will be deleted immediately.
 
@@ -1228,7 +1176,7 @@ If you feel that the article shouldn't be deleted, you can &lt;span class=&quot;
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]
 &lt;/noinclude&gt;</text>
-      <sha1>prszaxot5ond88lzibmoivk5vinwjso</sha1>
+      <sha1>s8qs4wzq20lb966ydvucjk5i7wzilek</sha1>
     </revision>
   </page>
   <page>

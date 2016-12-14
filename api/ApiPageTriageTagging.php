@@ -53,12 +53,20 @@ class ApiPageTriageTagging extends ApiBase {
 		if ( $apiParams ) {
 			$projectLink = '[['
 				. $wgPageTriageProjectLink . '|'
-				. wfMessage( 'pagetriage-pagecuration' )->plain()
+				. wfMessage( 'pagetriage-pagecuration' )->inContentLanguage()->plain()
 				. ']]';
 			if ( $params['deletion'] ) {
-				$editSummary = wfMessage( 'pagetriage-del-edit-summary', $projectLink, $tags )->plain();
+				$editSummary = wfMessage(
+					'pagetriage-del-edit-summary',
+					$projectLink,
+					$tags
+				)->inContentLanguage()->plain();
 			} else {
-				$editSummary = wfMessage( 'pagetriage-tags-edit-summary', $projectLink, $tags )->plain();
+				$editSummary = wfMessage(
+					'pagetriage-tags-edit-summary',
+					$projectLink,
+					$tags
+				)->inContentLanguage()->plain();
 			}
 
 			// tagging something for deletion should automatically watchlist it
