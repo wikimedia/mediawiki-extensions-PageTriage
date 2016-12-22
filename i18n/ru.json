@@ -7,7 +7,8 @@
 			"Tucvbif",
 			"Yurik",
 			"Sealle",
-			"Jack who built the house"
+			"Jack who built the house",
+			"Kareyac"
 		]
 	},
 	"pagetriage": "Сортировка страниц",
@@ -120,6 +121,7 @@
 	"pagetriage-tags-cat-moretags-label": "Ещё теги",
 	"pagetriage-tags-cat-all-label": "Все теги",
 	"pagetriage-tags-tooltip": "Добавьте теги, чтобы обозначить области страницы, которые нуждаются в улучшении",
+	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "Номинация на быстрое удаление $1",
 	"pagetriage-del-tags-cat-csd-desc": "Отметьте эту страницу для быстрого удаления, если она соответствует одному из перечисленных ниже критериев.",
 	"pagetriage-del-tags-cat-prod-desc": "Отметьте эту страницу для предлагаемого удаления, если она явно нарушает стандарты сообщества.",
 	"pagetriage-del-tags-cat-discussion-desc": "Отметьте эту страницу для обсуждения её удаления с другими участниками.",
@@ -129,7 +131,6 @@
 	"pagetriage-del-tags-dbg7-desc": "Страницы, где автор запросил удаление, либо явно, либо путём очистки страницы (G7)",
 	"pagetriage-del-tags-dbu3-label": "Несвободные галереи",
 	"pagetriage-del-tags-dbu3-desc": "Галереи в пользовательском пространстве, которые состоят в основном или полностью из изображений, удовлетворяющих критериям «добросовестного использования» или несвободных изображений. Правила Википедии относительно несвободного содержимого запрещают его использование в пользовательском пространстве. Это касается даже того материала, который был загружен самим участником. Использование материалов, находящихся в общественном достоянии или распространяемых под свободной лицензией, разрешено. (U3)",
-	"pagetriage-del-talk-page-notify-summary": "Уведомить автора о выставлении на удаление статьи [[$1]]",
 	"pagetriage-tags-param-article-label": "Статья:",
 	"pagetriage-tags-param-date-label": "Дата:",
 	"pagetriage-tags-param-issues-label": "Опишите проблемы, которые необходимо решить:",
@@ -151,7 +152,6 @@
 	"logentry-pagetriage-curation-delete": "$1 пометил{{GENDER:$2||а}} $3 для удаления с $4 тег{{PLURAL:$5|ом|ами}}",
 	"logentry-pagetriage-deletion-delete": "$1 пометил{{GENDER:$2||а}} $3 для удаления с $4 тег{{PLURAL:$5|ом|ами}}",
 	"pagetriage-tags-edit-summary": "Добавлены теги на страницу с помощью $1 ($2)",
-	"pagetriage-tags-note-edit-summary": "Добавлены комментарии относительно [[$1]]",
 	"pagetriage-del-edit-summary": "Номинация страницы на удаление с помощью $1 ($2)",
 	"pagetriage-del-tags-param-discussion-label": "Пожалуйста, объясните, почему эта статья должна быть удалена, и, если это возможно, приведите ссылки на соответствующие пункты правил.",
 	"pagetriage-info-title": "Информация о странице",

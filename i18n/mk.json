@@ -376,7 +376,7 @@
 	"apihelp-pagetriagelist-param-showreviewed": "Дали да се прикажуваат и проверени.",
 	"apihelp-pagetriagelist-param-showunreviewed": "Дали да се прикажуваат и непроверени.",
 	"apihelp-pagetriagelist-param-showdeleted": "Дали да се прикажуваат и предложени за бришење.",
-	"apihelp-pagetriagelist-param-limit": "Максималниот број на резултати за прикажување.",
+	"apihelp-pagetriagelist-param-limit": "Највеќе ставки во исходот за прикажување.",
 	"apihelp-pagetriagelist-param-offset": "Од кој датум и време да се почне.",
 	"apihelp-pagetriagelist-param-pageoffset": "Назнака на страницата од која ќе се почне (бара да се даде и параметарот $1offset).",
 	"apihelp-pagetriagelist-param-dir": "Во која насока да се подредува списокот — дали да се почнува од најстарите или најновите.",
