@@ -5,7 +5,8 @@
 			"Jopparn",
 			"Rotsee",
 			"WikiPhoenix",
-			"Lokal Profil"
+			"Lokal Profil",
+			"Jkl"
 		]
 	},
 	"pagetriage": "Sidtriage",
@@ -171,6 +172,7 @@
 	"pagetriage-tags-stub-desc": "Denna sida är väldigt kort.",
 	"pagetriage-tags-verylong-label": "Mycket lång",
 	"pagetriage-tags-tooltip": "Lägga till taggar för att ange förbättringsområden för denna sida",
+	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "Snabbraderingsnominering av $1",
 	"pagetriage-del-tags-cat-csd-desc": "Markera denna sida för snabbradering om den passar ett av kriterierna nedan.",
 	"pagetriage-del-tags-cat-prod-desc": "Markera denna sida för radering om den uppenbart bryter mot gemenskapens normer.",
 	"pagetriage-del-tags-cat-discussion-desc": "Markera denna sida för att diskutera dess radering med andra redigerare.",
