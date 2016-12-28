@@ -41,7 +41,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 		}
 
 		// Output the title of the page
-		$out->setPagetitle( $this->msg( 'newpagesfeed' ) );
+		$out->setPageTitle( $this->msg( 'newpagesfeed' ) );
 
 		// Make sure global vars are strings rather than booleans (for passing to mw.config)
 		$wgPageTriageInfiniteScrolling = $this->booleanToString( $wgPageTriageInfiniteScrolling );
