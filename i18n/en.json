@@ -393,7 +393,7 @@
 	"apihelp-pagetriagelist-param-non_autoconfirmed_users": "Whether to show only pages created by non auto confirmed users.",
 	"apihelp-pagetriagelist-param-blocked_users": "Whether to show only pages created by blocked users.",
 	"apihelp-pagetriagelist-param-username": "Show only pages created by username.",
-	"apihelp-pagetriagelist-example-1": "List 1000 pages in namespace 0",
+	"apihelp-pagetriagelist-example-1": "List 100 unreviewed pages in namespace 0",
 	"apihelp-pagetriagestats-description": "Get the stats for page triage.",
 	"apihelp-pagetriagestats-param-namespace": "What namespace to pull stats from.",
 	"apihelp-pagetriagestats-param-showredirs": "Whether to include redirects.",

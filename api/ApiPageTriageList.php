@@ -313,7 +313,7 @@ class ApiPageTriageList extends ApiBase {
 	 */
 	protected function getExamplesMessages() {
 		return [
-			'action=pagetriagelist&limit=1000&namespace=0'
+			'action=pagetriagelist&limit=100&namespace=0&showunreviewed=1'
 				=> 'apihelp-pagetriagelist-example-1',
 		];
 	}
