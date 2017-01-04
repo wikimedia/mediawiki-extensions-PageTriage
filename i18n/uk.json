@@ -235,7 +235,7 @@
 	"apihelp-pagetriagelist-param-non_autoconfirmed_users": "Чи показувати лише ті сторінки, що були створені неавтопідтвердженими користувачами.",
 	"apihelp-pagetriagelist-param-blocked_users": "Чи показувати лише ті сторінки, що були створені заблокованими користувачами.",
 	"apihelp-pagetriagelist-param-username": "Показувати лише сторінки, створені користувачем (ім'я користувача).",
-	"apihelp-pagetriagelist-example-1": "Список із 1000 сторінок в просторі назв 0.",
+	"apihelp-pagetriagelist-example-1": "Список із 100 сторінок в просторі назв 0.",
 	"apihelp-pagetriagestats-description": "Отримати статистику сортування сторінок.",
 	"apihelp-pagetriagestats-param-namespace": "З якого простору назв витягувати статистику.",
 	"apihelp-pagetriagestats-param-showredirs": "Чи включати перенаправлення.",

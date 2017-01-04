@@ -383,7 +383,7 @@
 	"apihelp-pagetriagelist-param-no_category": "Ob nur Seiten ohne Kategorie angezeigt werden sollen.",
 	"apihelp-pagetriagelist-param-blocked_users": "Ob nur Seiten angezeigt werden sollen, die von gesperrten Benutzern erstellt wurden.",
 	"apihelp-pagetriagelist-param-username": "Zeigt nur Seiten an, die von Benutzernamen erstellt wurden.",
-	"apihelp-pagetriagelist-example-1": "Listet 1000 Seiten im Namensraum 0 auf",
+	"apihelp-pagetriagelist-example-1": "Listet 100 ungeprüfte Seiten im Namensraum 0 auf",
 	"apihelp-pagetriagestats-description": "Ruft die Statistiken zur Seitenprüfung ab.",
 	"apihelp-pagetriagestats-param-namespace": "Namensraum, von dem Statistiken abgerufen werden sollen.",
 	"apihelp-pagetriagestats-param-showredirs": "Ob Weiterleitungen einbezogen werden sollen.",

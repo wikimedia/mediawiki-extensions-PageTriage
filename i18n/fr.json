@@ -384,7 +384,7 @@
 	"apihelp-pagetriagelist-param-non_autoconfirmed_users": "S'il faut afficher seulement les pages créées par les utilisateurs non auto-confirmés.",
 	"apihelp-pagetriagelist-param-blocked_users": "S'il faut afficher également les pages créées par les utilisateurs bloqués.",
 	"apihelp-pagetriagelist-param-username": "Afficher uniquement les pages créées par nom d'utilisateur.",
-	"apihelp-pagetriagelist-example-1": "Liste de 1000 pages dans l'espace de noms 0",
+	"apihelp-pagetriagelist-example-1": "Liste de 100 pages dans l'espace de noms 0",
 	"apihelp-pagetriagestats-description": "Obtenir les statistiques sur le tri des pages.",
 	"apihelp-pagetriagestats-param-namespace": "De quel espace de noms il faut extraire les statistiques.",
 	"apihelp-pagetriagestats-param-showredirs": "S'il faut inclure les redirections.",

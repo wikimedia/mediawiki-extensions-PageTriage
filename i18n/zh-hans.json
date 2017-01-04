@@ -257,7 +257,7 @@
 	"apihelp-pagetriagelist-param-non_autoconfirmed_users": "是否只显示非自动确认用户创建的页面。",
 	"apihelp-pagetriagelist-param-blocked_users": "是否只显示已封禁用户创建的页面。",
 	"apihelp-pagetriagelist-param-username": "只显示指定用户名创建的页面。",
-	"apihelp-pagetriagelist-example-1": "列出0名字空间的1000个页面",
+	"apihelp-pagetriagelist-example-1": "列出0名字空间的100个页面",
 	"apihelp-pagetriagestats-description": "获取页面分配器的统计信息。",
 	"apihelp-pagetriagestats-param-namespace": "从哪个名字空间拉取统计。",
 	"apihelp-pagetriagestats-param-showredirs": "是否包括重定向。",

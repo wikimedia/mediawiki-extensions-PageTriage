@@ -386,7 +386,7 @@
 	"apihelp-pagetriagelist-param-non_autoconfirmed_users": "Дали да се прикажуваат само страници создадени од неавтопотврдени корисници.",
 	"apihelp-pagetriagelist-param-blocked_users": "Дали да се прикажуваат само страници создадени од блокирани корисници.",
 	"apihelp-pagetriagelist-param-username": "Дали да се прикажуваат само страници создадени од корисничко име.",
-	"apihelp-pagetriagelist-example-1": "Испиши 1000 страници во именскиот простор 0",
+	"apihelp-pagetriagelist-example-1": "Испиши 100 страници во именскиот простор 0",
 	"apihelp-pagetriagestats-description": "Дај статистики за проверката на страници.",
 	"apihelp-pagetriagestats-param-namespace": "Од кој именски простор да се земат статистиките.",
 	"apihelp-pagetriagestats-param-showredirs": "Дали да се прикажуваат и пренасочувања.",
