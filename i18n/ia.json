@@ -65,7 +65,7 @@
 	"pagetriage-filter-stat-blocked": "Usatores blocate",
 	"pagetriage-filter-stat-username": "Nomine de usator: $1",
 	"pagetriage-no-pages": "Nulle pagina corresponde a tu criterios.",
-	"pagetriage-warning-browser": "Iste instrumento pote non functionar correctemente in navigatores plus ancian que Internet Explorer 8.",
+	"pagetriage-warning-browser": "Iste instrumento pote non functionar correctemente in navigatores plus ancian que Internet Explorer 9.",
 	"pagetriage-note-reviewed": "Iste pagina ha essite revidite.",
 	"pagetriage-note-not-reviewed": "Iste pagina non ha ancora essite revidite.",
 	"pagetriage-note-deletion": "Iste pagina ha essite nominate pro deletion.",
