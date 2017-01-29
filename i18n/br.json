@@ -80,6 +80,7 @@
 	"pagetriage-tags-fiction-label": "Faltazi",
 	"pagetriage-tags-outofdate-label": "Dispredet",
 	"pagetriage-tags-update-label": "Hizivaat",
+	"pagetriage-del-tags-dba3-desc": "Forzh pe bennad (estreget ar pajennoù diforc'hañ, an adkasoù, pe an adkasoù skañv) a ya d'he ober hepken liammoù diavaez, tikedennoù rummata, rannoù \"Gwelet ivez\", un adfrazennadur eus an titl, taolioù-esae evit klotañ gant an den pe ar strollad anvet dre an titl-se, ur goulenn a zleje bezañ bet savet ouzh ar strolladoù skoazellañ pe dave, evezhiadennoù e stumm divizoù, tikedennoù patromoù, ha/pe skeudennoù. (A3)",
 	"pagetriage-tags-param-article-label": "Pennad :",
 	"pagetriage-tags-param-date-label": "Deiziad :",
 	"pagetriage-tags-param-for-label": "Evit :",
@@ -105,7 +106,5 @@
 	"pagetriage-toolbar-learn-more": "Gouzout hiroc'h »",
 	"pagetriage-wikilove-page-creator": "Krouer ar bajenn",
 	"pagetriage-toolbar-close": "Serriñ",
-	"pagetriage-toolbar-minimize": "Digreskiñ",
-	"pagetriage-notification-mark-as-reviewed-flyout": "[[$2]] zo bet {{GENDER:$1|adwelet}} gant <b>$1</b>",
-	"pagetriage-notification-mark-as-reviewed-email-batch-body": "$1 zo bet {{GENDER:$2|adwelet}} gant $2."
+	"pagetriage-toolbar-minimize": "Digreskiñ"
 }
