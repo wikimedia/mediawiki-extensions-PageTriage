@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"David1010",
-			"BRUTE"
+			"BRUTE",
+			"Otogi"
 		]
 	},
 	"pagetriage-please-wait": "გთხოვთ მოიცადეთ...",
@@ -68,6 +69,6 @@
 	"pagetriage-wikilove-page-creator": "გვერდის შემქნელი",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|რედაქტირება|რედაქტირება}}",
 	"pagetriage-toolbar-close": "დახურვა",
-	"pagetriage-notification-mark-as-reviewed-email-batch-body": "$1 {{GENDER:$2|შეამოწმა}} მომხმარებელმა $2",
-	"echo-pref-subscription-page-review": "ჩემი შექმნილი გვერდის გადახედვები"
+	"echo-pref-subscription-page-review": "ჩემი შექმნილი გვერდის გადახედვები",
+	"echo-category-title-page-review": "გვერდის {{PLURAL:$1|ცვლილება|ცვლილებები}}"
 }
