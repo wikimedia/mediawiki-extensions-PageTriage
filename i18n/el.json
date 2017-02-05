@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"ZaDiak",
-			"Geraki"
+			"Geraki",
+			"Protnet"
 		]
 	},
 	"pagetriage": "Διαλογή σελίδων",
@@ -27,7 +28,7 @@
 	"pagetriage-author-not-autoconfirmed": "Νέος συντάκτης",
 	"pagetriage-no-patrol-right": "Δεν έχετε τα δικαιώματα για να επισημάνετε αυτή τη σελίδα ως επιθεωρημένη",
 	"pagetriage-author-blocked": "Φραγμένος",
-	"pagetriage-author-bot": "Μποτ",
+	"pagetriage-author-bot": "Ρομπότ",
 	"pagetriage-showing": "Εμφανίζονται:",
 	"pagetriage-filter-list-prompt": "Ορισμός φίλτρων",
 	"pagetriage-unreviewed-article-count": "$1 συνολικά {{PLURAL:$1|μη επιθεωρημένη σελίδα|μη επιθεωρημένες σελίδες}} (παλαιότερη: $2)",

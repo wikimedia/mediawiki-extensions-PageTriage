@@ -10,7 +10,8 @@
 			"Wiki13",
 			"Sjoerddebruin",
 			"Mar(c)",
-			"Esketti"
+			"Esketti",
+			"Mainframe98"
 		]
 	},
 	"pagetriage": "Paginacontrole",
@@ -86,7 +87,7 @@
 	"pagetriage-filter-stat-blocked": "geblokkeerde gebruikers",
 	"pagetriage-filter-stat-username": "Gebruikersnaam: $1",
 	"pagetriage-no-pages": "Er zijn geen pagina's die aan uw criteria voldoen.",
-	"pagetriage-warning-browser": "Dit hulpmiddel werkt mogelijk niet correct in browsers ouder dan Internet Explorer 8.",
+	"pagetriage-warning-browser": "Dit hulpmiddel werkt mogelijk niet correct in browsers ouder dan Internet Explorer 9.",
 	"pagetriage-welcome": "Help {{SITENAME}} te verbeteren door de onderstaande pagina's te controleren. [$1 Meer informatie] · [$2 Terugkoppeling geven]",
 	"pagetriage-note-reviewed": "Deze pagina is gecontroleerd.",
 	"pagetriage-note-not-reviewed": "Deze pagina is nog niet gecontroleerd.",
@@ -241,6 +242,7 @@
 	"pagetriage-tags-update-label": "Bijwerken",
 	"pagetriage-tags-update-desc": "Aan deze pagina moeten recente ontwikkelingen toegevoegd worden.",
 	"pagetriage-tags-tooltip": "Voeg labels toe om verbeterpunten voor de pagina aan te geven",
+	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "Nominatie voor snelle verwijdering van $1",
 	"pagetriage-del-tags-cat-csd-label": "Snelle verwijdering",
 	"pagetriage-del-tags-cat-csd-desc": "Markeer deze pagina voor snelle verwijdering als één van de onderstaande criteria van toepassing is.",
 	"pagetriage-del-tags-cat-prod-label": "Verwijderingsvoorstel",
@@ -256,6 +258,8 @@
 	"pagetriage-del-tags-dbu3-label": "Niet-vrije galerijen",
 	"pagetriage-del-tags-dbu3-desc": "Galerijen in de gebruikersnaamruimte die vooral of geheel bestaan uit \"fair-use\" of niet-vrije afbeeldingen. Het beleid aangaande niet-vrije inhoud verbiedt het gebruikt van niet-vrij inhoud in de gebruikersruimte of zelfs het uploaden daarvan. Het gebruik van inhoud in het publieke domein of met een vrije licentie is toegestaan.",
 	"pagetriage-del-tags-prod-label": "Verwijderingsvoorstel",
+	"pagetriage-del-tags-prod-notify-topic-title": "[[Wikipedia:Proposed deletion|Voorgestelde verwijdering]] van [[$1]]",
+	"pagetriage-del-tags-xfd-notify-topic-title": "Verwijderingsdiscussie over [[$1]]",
 	"pagetriage-tags-param-article-label": "Pagina:",
 	"pagetriage-tags-param-date-label": "Datum:",
 	"pagetriage-tags-param-issues-label": "Beschrijf de problemen die moeten worden aangepakt:",
