@@ -828,12 +828,19 @@ class PageTriageHooks {
 		$updater->addExtensionTable( 'pagetriage_page_tags', $base . '/PageTriagePageTags.sql' );
 		$updater->addExtensionTable( 'pagetriage_page', $base . '/PageTriagePage.sql' );
 		$updater->addExtensionTable( 'pagetriage_log', $base . '/PageTriageLog.sql' );
+
 		// patches
 		$updater->addExtensionIndex(
 			'pagetriage_page',
 			'ptrp_reviewed_updated',
 			$base . '/PageTriagePagePatch.sql'
 		);
+		$updater->dropExtensionField(
+			'pagetriage_log',
+			'ptrl_comment',
+			$base . '/PageTriageLogPatch_Drop_ptrl_comment.sql'
+		);
+
 		return true;
 	}
 }
