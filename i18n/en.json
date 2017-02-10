@@ -99,7 +99,6 @@
 	"pagetriage-button-mark-for-deletion": "Mark for deletion",
 	"pagetriage-add-a-note-creator": "Add a message for the creator: (optional)",
 	"pagetriage-add-a-note-reviewer": "Add a message for the reviewer: (optional)",
-	"pagetriage-characters-left": "{{PLURAL:$1|$1 char|$1 chars}} left",
 	"pagetriage-personal-default-note": "Write a helpful note for {{GENDER:$1|$1}}. It will be posted on {{GENDER:$1|his|her|their}} talk page.",
 	"pagetriage-page-status-reviewed": "Marked as reviewed on $1 by $2 ($3$4$5)",
 	"pagetriage-page-status-reviewed-anonymous": "Marked as reviewed",

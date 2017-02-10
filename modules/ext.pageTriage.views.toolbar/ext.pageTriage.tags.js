@@ -9,7 +9,6 @@ $( function () {
 		tagsOptions: $.pageTriageTagsOptions,
 		selectedTag: {},
 		selectedTagCount: 0,
-		noteMaxLength: 250,
 		noteChanged: false,
 
 		/**
@@ -91,7 +90,6 @@ $( function () {
 					tags: this.tagsOptions,
 					warningNotice: this.model.tagWarningNotice(),
 					title: this.title,
-					maxLength: this.noteMaxLength,
 					creator: this.model.get( 'user_name' )
 				} ) );
 
@@ -99,11 +97,7 @@ $( function () {
 			modules = mw.config.get( 'wgPageTriageCurationModules' );
 			$( '#mwe-pt-tag .mwe-pt-flyout-help-link' ).attr( 'href', modules.tags.helplink );
 			$( '#mwe-pt-tag-note-input' ).keyup( function () {
-				var charLeft = that.noteCharLeft();
-
-				$( '#mwe-pt-tag-note-char-count' ).text( mw.msg( 'pagetriage-characters-left', charLeft ) );
-
-				if ( charLeft > 0 && that.selectedTagCount > 0 ) {
+				if ( that.selectedTagCount > 0 ) {
 					$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
 				} else {
 					$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
@@ -138,10 +132,6 @@ $( function () {
 
 			// show tags under common by default
 			this.displayTags( 'common' );
-		},
-
-		noteCharLeft: function () {
-			return this.noteMaxLength - $.trim( $( '#mwe-pt-tag-note-input' ).val() ).length;
 		},
 
 		/**
@@ -294,7 +284,7 @@ $( function () {
 			$( '#mwe-pt-tag-submit-button .ui-button-text' ).html( mw.msg( 'pagetriage-button-add-tag-number', this.selectedTagCount ) );
 
 			// activate or deactivate the submit button and associated parts
-			if ( this.selectedTagCount > 0 && this.noteCharLeft() > 0 ) {
+			if ( this.selectedTagCount > 0 ) {
 				$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
 			} else {
 				$( '#mwe-pt-tag-total-count' ).empty();

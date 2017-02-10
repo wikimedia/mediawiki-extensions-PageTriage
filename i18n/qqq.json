@@ -112,7 +112,6 @@
 	"pagetriage-button-mark-for-deletion": "Text for the button that lets the user mark an article for deletion",
 	"pagetriage-add-a-note-creator": "Text for adding a personal note in curation toolbar for creator",
 	"pagetriage-add-a-note-reviewer": "Text for adding a personal note in curation toolbar for reviewer",
-	"pagetriage-characters-left": "The text indicating the number of characters remaining for input.\n\n\"char(s)\" stands for \"character(s)\".\n\nParameters:\n* $1 - number of characters",
 	"pagetriage-personal-default-note": "{{doc-singularthey}}\nDefault text in the text box for editors to add a \"Mark as reviewed\" or \"Tagging\" personal note.\n\nParameters:\n* $1 - the name of the page creator",
 	"pagetriage-page-status-reviewed": "Text that shows the page has been reviewed and the reviewer of the page, $1 is the review date/time, $2 is the link to reviewer user page, $3 is the link to reviewer talk page, $4 is the link separator, $5 is the link to reviewer contribs page",
 	"pagetriage-page-status-reviewed-anonymous": "Text that shows the page has been reviewed",

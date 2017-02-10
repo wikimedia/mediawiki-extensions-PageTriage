@@ -663,7 +663,6 @@ class PageTriageHooks {
 				'unknown-error',
 				'pagetriage-add-a-note-creator',
 				'pagetriage-add-a-note-reviewer',
-				'pagetriage-characters-left',
 				'pagetriage-personal-default-note',
 				'pagetriage-special-contributions',
 				'pagetriage-tagging-error',

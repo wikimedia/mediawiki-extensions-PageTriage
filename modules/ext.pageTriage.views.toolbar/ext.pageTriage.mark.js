@@ -180,7 +180,6 @@ $( function () {
 		render: function () {
 			var that = this,
 				status = this.model.get( 'patrol_status' ) === '0' ? 'reviewed' : 'unreviewed',
-				maxLength = 250,
 				modules = mw.config.get( 'wgPageTriageCurationModules' ),
 				showNoteSection = true,
 				noteTarget = '',
@@ -214,7 +213,6 @@ $( function () {
 				this.model.toJSON(),
 				{
 					status: status,
-					maxLength: maxLength,
 					noteTarget: noteTarget,
 					noteTitle: noteTitle
 				}
@@ -228,19 +226,7 @@ $( function () {
 			// check if note is enabled for this namespace and if the note section should be shown
 			if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ), modules.mark.note ) !== -1 && showNoteSection ) {
 				$( '#mwe-pt-review-note' ).show();
-				$( '#mwe-pt-review-note-input' ).keyup( function () {
-					var length = $.trim( $( '#mwe-pt-review-note-input' ).val() ).length,
-						buttonId = 'mwe-pt-mark-as-' + status + '-button',
-						charLeft = maxLength - length;
-
-					$( '#mwe-pt-review-note-char-count' ).text( mw.msg( 'pagetriage-characters-left', charLeft ) );
-
-					if ( charLeft <= 0 ) {
-						$( '#' + buttonId ).button( 'disable' );
-					} else {
-						$( '#' + buttonId ).button( 'enable' );
-					}
-				} ).on( 'focus', handleFocus ).change( function () {
+				$( '#mwe-pt-review-note-input' ).on( 'focus', handleFocus ).change( function () {
 					that.noteChanged = true;
 				} );
 			}
