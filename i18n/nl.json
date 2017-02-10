@@ -102,7 +102,6 @@
 	"pagetriage-button-mark-for-deletion": "Voor verwijdering markeren",
 	"pagetriage-add-a-note-creator": "Bericht toevoegen voor de aanmaker (optioneel):",
 	"pagetriage-add-a-note-reviewer": "Bericht achterlaten voor de controleur (optioneel):",
-	"pagetriage-characters-left": "$1 {{PLURAL:$1|teken|tekens}} over",
 	"pagetriage-personal-default-note": "Schrijf een nuttig bericht voor $1. Dat wordt geplaatst op {{GENDER:$1|zijn|haar}} overlegpagina.",
 	"pagetriage-page-status-reviewed": "Gemarkeerd als gecontroleerd op $1 door $2 ($3$4$5)",
 	"pagetriage-page-status-reviewed-anonymous": "Gemarkeerd als gecontroleerd",
