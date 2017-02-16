@@ -57,7 +57,7 @@
 	"pagetriage-button-add-parameters": "Dodaj parametry",
 	"pagetriage-button-add-details": "Dodaj szczegóły",
 	"pagetriage-button-edit-details": "Edytuj szczegóły",
-	"pagetriage-characters-left": "{{PLURAL:$1|Pozostał $1 znak|Pozostały $1 znaki|Pozostało $1 znaków}}",
+	"pagetriage-button-mark-for-deletion": "Zaznacz do usunięcia",
 	"pagetriage-tags-title": "Dodaj znaczniki",
 	"pagetriage-tags-cat-metadata-label": "Metadane",
 	"pagetriage-tags-cat-neutrality-label": "Neutralność",

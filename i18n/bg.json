@@ -3,7 +3,8 @@
 		"authors": [
 			"DCLXVI",
 			"පසිඳු කාවින්ද",
-			"Borislav"
+			"Borislav",
+			"StanProg"
 		]
 	},
 	"pagetriage-bytes": "$1 {{PLURAL:$1|байт|байта}}",
@@ -18,6 +19,8 @@
 	"pagetriage-filter-ns-all": "Всички",
 	"pagetriage-more": "Повече",
 	"pagetriage-filter-stat-all": "Всички",
+	"pagetriage-tags-notenglish-label": "Грешен език",
+	"pagetriage-tags-update-label": "Обновяване",
 	"pagetriage-tags-param-article-label": "Статия:",
 	"pagetriage-tags-param-date-label": "Дата:",
 	"pagetriage-tags-param-free-yes-label": "Да",
@@ -26,6 +29,7 @@
 	"pagetriage-info-help": "помощ",
 	"pagetriage-info-timestamp-date-format": "d MMMM yyyy",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
+	"pagetriage-del-tooltip": "Предлагане на страницата за изтриване",
 	"pagetriage-toolbar-close": "Затваряне",
 	"echo-pref-tooltip-page-review": "Известяване, когато някой прегледа страница, която съм създал."
 }
