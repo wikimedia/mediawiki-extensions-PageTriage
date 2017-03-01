@@ -32,9 +32,8 @@ class PageTriageHooks {
 			return true;
 		}
 
-		global $wgUser;
 		// New record to pagetriage queue, compile metadata
-		if ( self::addToPageTriageQueue( $pageId, $newTitle, $wgUser ) ) {
+		if ( self::addToPageTriageQueue( $pageId, $newTitle, $movePage->getUser() ) ) {
 			$acp = ArticleCompileProcessor::newFromPageId( [ $pageId ] );
 			if ( $acp ) {
 				// safe to use slave db for data compilation for the
@@ -371,16 +370,21 @@ class PageTriageHooks {
 	 * @return bool
 	 */
 	public static function onArticleViewFooter( $article, $patrolFooterShown ) {
-		global $wgUser, $wgPageTriageMarkPatrolledLinkExpiry, $wgOut,
-			$wgPageTriageEnableCurationToolbar, $wgRequest, $wgPageTriageNamespaces;
+		global $wgPageTriageMarkPatrolledLinkExpiry,
+			$wgPageTriageEnableCurationToolbar, $wgPageTriageNamespaces;
+
+		$context = $article->getContext();
+		$user = $context->getUser();
+		$outputPage = $context->getOutput();
+		$request = $context->getRequest();
 
 		// Overwrite the noindex rule defined in Article::view(), this also affects main namespace
 		if ( self::shouldShowNoIndex( $article ) ) {
-			$wgOut->setRobotPolicy( 'noindex,nofollow' );
+			$outputPage->setRobotPolicy( 'noindex,nofollow' );
 		}
 
 		// Only logged in users can review
-		if ( !$wgUser->isLoggedIn() ) {
+		if ( !$user->isLoggedIn() ) {
 			return true;
 		}
 
@@ -395,13 +399,13 @@ class PageTriageHooks {
 		}
 
 		// Don't do anything if it's coming from Special:NewPages
-		if ( $wgRequest->getVal( 'patrolpage' ) ) {
+		if ( $request->getVal( 'patrolpage' ) ) {
 			return true;
 		}
 
 		// If the user hasn't visited Special:NewPagesFeed lately, don't do anything
 		$lastUseExpired = false;
-		$lastUse = $wgUser->getOption( 'pagetriage-lastuse' );
+		$lastUse = $user->getOption( 'pagetriage-lastuse' );
 		if ( $lastUse ) {
 			$lastUse = wfTimestamp( TS_UNIX, $lastUse );
 			$now = wfTimestamp( TS_UNIX, wfTimestampNow() );
@@ -416,19 +420,19 @@ class PageTriageHooks {
 		// Also, users without the autopatrol right can't review their own pages
 		$needsReview = PageTriageUtil::doesPageNeedTriage( $article );
 		if ( !is_null( $needsReview )
-			&& !( $wgUser->getId() == $article->getOldestRevision()->getUser()
-				&& !$wgUser->isAllowed( 'autopatrol' )
+			&& !( $user->getId() == $article->getOldestRevision()->getUser()
+				&& !$user->isAllowed( 'autopatrol' )
 			)
 		) {
-			if ( $wgPageTriageEnableCurationToolbar || $wgRequest->getVal( 'curationtoolbar' ) === 'true' ) {
+			if ( $wgPageTriageEnableCurationToolbar || $request->getVal( 'curationtoolbar' ) === 'true' ) {
 				// Load the JavaScript for the curation toolbar
-				$wgOut->addModules( 'ext.pageTriage.toolbarStartup' );
+				$outputPage->addModules( 'ext.pageTriage.toolbarStartup' );
 				// Set the config flags in JavaScript
 				$globalVars = [
 					'wgPageTriagelastUseExpired' => $lastUseExpired,
 					'wgPageTriagePagePrefixedText' => $article->getTitle()->getPrefixedText()
 				];
-				$wgOut->addJsConfigVars( $globalVars );
+				$outputPage->addJsConfigVars( $globalVars );
 			} else {
 				if ( $needsReview ) {
 					// show 'Mark as reviewed' link
@@ -442,9 +446,9 @@ class PageTriageHooks {
 					// show 'Reviewed' text
 					$msg = wfMessage( 'pagetriage-reviewed' )->escaped();
 				}
-				$wgOut->addModules( [ 'ext.pageTriage.article' ] );
+				$outputPage->addModules( [ 'ext.pageTriage.article' ] );
 				$html = Html::rawElement( 'div', [ 'class' => 'mw-pagetriage-markpatrolled' ], $msg );
-				$wgOut->addHTML( $html );
+				$outputPage->addHTML( $html );
 			}
 		}
 
