@@ -6,17 +6,21 @@ class PageTriageHooks {
 	 * Mark a page as unreviewed after moving the page from non-main(article) namespace to
 	 * main(article) namespace
 	 *
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/SpecialMovepageAfterMove
-	 * @param MovePageForm $movePage MovePageForm object
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/TitleMoveComplete
 	 * @param Title &$oldTitle old title object
 	 * @param Title &$newTitle new title object
+	 * @param User $user User doing the move
+	 * @param int $oldid Page id of moved page
+	 * @param int $newid Page id of created redirect, or 0 if suppressed
+	 * @param string $reason Reason for the move
+	 * @param Revision $revision Null revision created by the move
 	 * @return bool
 	 */
-	public static function onSpecialMovepageAfterMove( $movePage, &$oldTitle, &$newTitle ) {
-		$pageId = $newTitle->getArticleID();
-
+	public static function onTitleMoveComplete(
+		Title &$oldTitle, Title &$newTitle, User $user, $oldid, $newid, $reason, Revision $revision
+	) {
 		// Delete cache for record if it's in pagetriage queue
-		$articleMetadata = new ArticleMetadata( [ $pageId ] );
+		$articleMetadata = new ArticleMetadata( [ $oldid ] );
 		$articleMetadata->flushMetadataFromCache();
 
 		// Delete user status cache
@@ -33,8 +37,8 @@ class PageTriageHooks {
 		}
 
 		// New record to pagetriage queue, compile metadata
-		if ( self::addToPageTriageQueue( $pageId, $newTitle, $movePage->getUser() ) ) {
-			$acp = ArticleCompileProcessor::newFromPageId( [ $pageId ] );
+		if ( self::addToPageTriageQueue( $oldid, $newTitle, $user ) ) {
+			$acp = ArticleCompileProcessor::newFromPageId( [ $oldid ] );
 			if ( $acp ) {
 				// safe to use slave db for data compilation for the
 				// following components, BasicData is accessing pagetriage_page,

@@ -545,7 +545,7 @@
 	},
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "PageTriageHooks::onLoadExtensionSchemaUpdates",
-		"SpecialMovepageAfterMove": "PageTriageHooks::onSpecialMovepageAfterMove",
+		"TitleMoveComplete": "PageTriageHooks::onTitleMoveComplete",
 		"NewRevisionFromEditComplete": "PageTriageHooks::onNewRevisionFromEditComplete",
 		"PageContentInsertComplete": "PageTriageHooks::onPageContentInsertComplete",
 		"PageContentSaveComplete": "PageTriageHooks::onPageContentSaveComplete",
