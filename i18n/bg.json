@@ -12,6 +12,7 @@
 	"pagetriage-categories": "$1 {{PLURAL:$1|категория|категории}}",
 	"pagetriage-no-categories": "Без категории",
 	"pagetriage-orphan": "Сираци",
+	"pagetriage-no-patrol-right": "Не разполагате с нужните права за отбелязване на страницата като проверена",
 	"pagetriage-triage": "Преглеждане",
 	"pagetriage-filter-show-heading": "Покажи:",
 	"pagetriage-filter-article": "Статия",
@@ -19,6 +20,7 @@
 	"pagetriage-filter-ns-all": "Всички",
 	"pagetriage-more": "Повече",
 	"pagetriage-filter-stat-all": "Всички",
+	"pagetriage-page-status-reviewed-anonymous": "Отбелязана като проверена",
 	"pagetriage-tags-notenglish-label": "Грешен език",
 	"pagetriage-tags-update-label": "Обновяване",
 	"pagetriage-tags-param-article-label": "Статия:",
@@ -29,7 +31,13 @@
 	"pagetriage-info-help": "помощ",
 	"pagetriage-info-timestamp-date-format": "d MMMM yyyy",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
+	"pagetriage-mark-title": "Отбелязване като проверена",
+	"pagetriage-mark-as-reviewed": "Отбелязване като проверена",
+	"pagetriage-mark-as-unreviewed": "Отбелязване като непроверено",
+	"pagetriage-mark-as-reviewed-helptext": "Отбележете страницата като проверена, ако сте приключили с проверката.",
+	"pagetriage-mark-as-unreviewed-helptext": "Отбележете страницата като непроверена, ако смятате, че трябва да бъде проверена по-задълбочено.",
 	"pagetriage-del-tooltip": "Предлагане на страницата за изтриване",
 	"pagetriage-toolbar-close": "Затваряне",
-	"echo-pref-tooltip-page-review": "Известяване, когато някой прегледа страница, която съм създал."
+	"echo-pref-tooltip-page-review": "Известяване, когато някой прегледа страница, която съм създал.",
+	"apihelp-pagetriageaction-description": "Отбелязване на статия като проверена или непроверена."
 }
