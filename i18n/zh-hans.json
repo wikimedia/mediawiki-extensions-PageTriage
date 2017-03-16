@@ -103,7 +103,6 @@
 	"pagetriage-button-mark-for-deletion": "标记为删除",
 	"pagetriage-add-a-note-creator": "给创建者发送一个消息：（可选）",
 	"pagetriage-add-a-note-reviewer": "给巡查者发送一条消息（可选）：",
-	"pagetriage-characters-left": "还可以输入$1个字符",
 	"pagetriage-personal-default-note": "给{{GENDER:$1|$1}}写一个有帮助的提示。这将发布在{{GENDER:$1|他|她|他}}的讨论页上。",
 	"pagetriage-page-status-reviewed": "被$2（$3$4$5）于$1标记为已巡查",
 	"pagetriage-page-status-reviewed-anonymous": "标记为已巡查",
