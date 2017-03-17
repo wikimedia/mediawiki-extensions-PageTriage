@@ -5,5 +5,7 @@
 		]
 	},
 	"pagetriage-filter-article": "Ka atisokatek",
+	"pagetriage-filter-username": "Icinikasowin",
+	"pagetriage-filter-stat-username": "icinikasowin: $1",
 	"pagetriage-tags-param-article-label": "Ka atisokatek:"
 }
