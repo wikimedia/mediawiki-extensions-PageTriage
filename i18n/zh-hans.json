@@ -39,7 +39,7 @@
 	"pagetriage-byline-new-editor": "由新手$1（$2$3$4）创建",
 	"pagetriage-articleinfo-byline": "该页由$2 ($3$4$5)创建于$1",
 	"pagetriage-articleinfo-byline-new-editor": "该页由新手$2 ($3$4$5)创建于$1",
-	"pagetriage-editcount": "自$2以来$1次编辑",
+	"pagetriage-editcount": "自$2以来$1次{{PLURAL:$1|编辑}}",
 	"pagetriage-author-not-autoconfirmed": "新手",
 	"pagetriage-no-patrol-right": "您没有权限标记该页面为已巡查",
 	"pagetriage-author-blocked": "已封禁",
