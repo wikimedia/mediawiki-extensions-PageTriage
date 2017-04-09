@@ -10,7 +10,8 @@
 			"McAang",
 			"KorkmazO",
 			"Sayginer",
-			"Rapsar"
+			"Rapsar",
+			"Vito Genovese"
 		]
 	},
 	"pagetriage": "Sayfa Sıralayıcı",
@@ -28,7 +29,7 @@
 	"pagetriage-mark-as-unreviewed-error": "Sayfayı \"incelenmedi\" olarak işaretlerken bir hata meydana geldi: $1",
 	"pagetriage-hist": "geçmiş",
 	"pagetriage-bytes": "$1 {{PLURAL:$1|bayt|bayt}}",
-	"pagetriage-edits": "$1 {{PLURAL:$1|değişiklik|değişiklik}}",
+	"pagetriage-edits": "$1 {{PLURAL:$1|düzenleme|düzenleme}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|kategori|kategori}}",
 	"pagetriage-no-categories": "Kategorisiz",
 	"pagetriage-no-reference": "Kaynaksız",
@@ -101,7 +102,6 @@
 	"pagetriage-button-mark-for-deletion": "Silinmek üzere işaretli",
 	"pagetriage-add-a-note-creator": "Sayfayı açan için bir ileti ekleyin: (isteğe bağlı)",
 	"pagetriage-add-a-note-reviewer": "Sayfayı inceleyen için bir ileti ekleyin: (isteğe bağlı)",
-	"pagetriage-characters-left": "{{PLURAL:$1|$1 karakter|$1 karakter}} kaldı",
 	"pagetriage-personal-default-note": "{{GENDER:$1|$1}} için yararlı bir not yazın. Not, {{GENDER:$1|onun|onun|onun}} mesaj sayfasına bırakılacaktır.",
 	"pagetriage-page-status-reviewed": "$2 ($3$4$5) tarafından $1 tarihinde incelendi",
 	"pagetriage-page-status-reviewed-anonymous": "\"İncelendi\" olarak işaretle",
@@ -146,7 +146,6 @@
 	"logentry-pagetriage-curation-delete": "$1, $3 sayfasını silmek için $4 {{PLURAL:$5|etiket|etiket}} ile {{GENDER:$2|işaretledi}}",
 	"logentry-pagetriage-deletion-delete": "$1, $3 sayfasını silmek için $4 {{PLURAL:$5|etiket|etiket}} ile {{GENDER:$2|işaretledi}}",
 	"pagetriage-tags-edit-summary": "$1 kullanılarak bu sayfaya etiket ($2) eklendi",
-	"pagetriage-tags-note-edit-summary": "[[$1]] sayfasına ilişkin yorumlar eklendi",
 	"pagetriage-info-title": "Sayfa bilgisi",
 	"pagetriage-info-problem-header": "Olası sorunlar",
 	"pagetriage-info-history-header": "Geçmiş",
@@ -175,7 +174,7 @@
 	"pagetriage-mark-as-unreviewed-helptext": "Daha fazla kontrol edilmesi gerektiğini düşünüyorsanız bu sayfayı incelenmedi olarak işaretleyin.",
 	"pagetriage-wikilove-helptext": "Teşekkür etmek istediğiniz editörlerin adlarını seçiniz.",
 	"pagetriage-wikilove-page-creator": "Sayfayı Açan",
-	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|değişiklik|değişiklik}}",
+	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|düzenleme|düzenleme}}",
 	"pagetriage-wikilove-tooltip": "Yazar(lar)a teşekkür et",
 	"pagetriage-next-tooltip": "Kuyruk listesindeki bir sonraki sayfaya git",
 	"pagetriage-del-title": "Silinmek üzere işaretle",
