@@ -84,7 +84,7 @@
 	"pagetriage-filter-stat-blocked": "blocked users",
 	"pagetriage-filter-stat-username": "username: $1",
 	"pagetriage-no-pages": "No pages match your criteria.",
-	"pagetriage-warning-browser": "This tool may not work correctly in browsers older than Internet Explorer 9.",
+	"pagetriage-warning-browser": "This tool may not work correctly in browsers older than Internet Explorer 10.",
 	"pagetriage-welcome": "Please review new pages below and help improve {{SITENAME}}. [$1 Learn more] · [$2 Leave feedback]",
 	"pagetriage-note-reviewed": "This page has been reviewed.",
 	"pagetriage-note-not-reviewed": "This page has not yet been reviewed.",
