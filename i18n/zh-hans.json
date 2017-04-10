@@ -88,7 +88,7 @@
 	"pagetriage-filter-stat-blocked": "已封禁用户",
 	"pagetriage-filter-stat-username": "用户名：$1",
 	"pagetriage-no-pages": "没有满足您的条件的页面。",
-	"pagetriage-warning-browser": "此工具可能不能在比Internet Explorer 9更旧的浏览器中工作。",
+	"pagetriage-warning-browser": "此工具可能不能在比Internet Explorer 10更旧的浏览器中工作。",
 	"pagetriage-welcome": "请巡查以下新页面以帮助改善{{SITENAME}}。[$1 了解更多] · [$2 提供反馈]",
 	"pagetriage-note-reviewed": "本页面已被巡查。",
 	"pagetriage-note-not-reviewed": "该页面还没有被巡查。",

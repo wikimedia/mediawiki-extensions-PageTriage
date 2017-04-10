@@ -83,7 +83,7 @@
 	"pagetriage-filter-stat-blocked": "Usuarios bloqueados",
 	"pagetriage-filter-stat-username": "Nome de usuario: $1",
 	"pagetriage-no-pages": "Non hai ningunha páxina que coincida cos criterios.",
-	"pagetriage-warning-browser": "É posible que esta ferramenta non funcione correctamente en navegadores anteriores ao Internet Explorer 9.",
+	"pagetriage-warning-browser": "É posible que esta ferramenta non funcione correctamente en navegadores anteriores ao Internet Explorer 10.",
 	"pagetriage-welcome": "Revise as seguintes páxinas e axude a mellorar {{SITENAME}}. [$1 Máis información] · [$2 Deixe comentarios]",
 	"pagetriage-note-reviewed": "A páxina foi revisada.",
 	"pagetriage-note-not-reviewed": "A páxina aínda non foi revisada.",
