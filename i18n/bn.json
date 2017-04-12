@@ -35,6 +35,7 @@
 	"pagetriage-filter-stat-redirects": "পুনঃনির্দেশ",
 	"pagetriage-filter-stat-nominated-for-deletion": "অপসারণের জন্য মনোনীত",
 	"pagetriage-filter-stat-no-categories": "কোন বিষয়শ্রেণী নেই",
+	"pagetriage-warning-browser": "এই সরঞ্জামটি ইন্টারনেট এক্সপ্লোরার ১০-এর আগের ব্রাউজারে সঠিকভাবে কাজ নাও করতে পারে।",
 	"pagetriage-articleinfo-stat": "পরিসংখ্যান: $1",
 	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "$1-এর দ্রুত অপসারণের মনোনয়ন",
 	"pagetriage-del-tags-xfd-notify-topic-title": "[[$1]] সম্পর্কিত অপসারণ আলোচনা",
