@@ -271,7 +271,7 @@ $( function () {
 
 			// pull any saved filter settings from the user's option
 			if ( !mw.user.isAnon() && mw.user.options.get( 'userjs-NewPagesFeedFilterOptions' ) ) {
-				this.setParams( $.parseJSON( mw.user.options.get( 'userjs-NewPagesFeedFilterOptions' ) ) );
+				this.setParams( JSON.parse( mw.user.options.get( 'userjs-NewPagesFeedFilterOptions' ) ) );
 			}
 		},
 
