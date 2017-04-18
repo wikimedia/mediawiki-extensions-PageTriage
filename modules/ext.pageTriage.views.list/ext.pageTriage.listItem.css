@@ -3,7 +3,7 @@
 }
 
 .mwe-pt-article-row-odd {
-	background-color: white;
+	background-color: #fff;
 }
 
 .mwe-pt-info-pane {
@@ -23,7 +23,7 @@
 .mwe-pt-article-row {
 	position: relative;
 	border: 1px solid #ccc;
-	border-top: none;
+	border-top: 0;
 }
 
 .mwe-pt-list-triage-button {

@@ -3,7 +3,7 @@
 }
 
 .mwe-pt-control-gradient {
-	background: #C9C9C9; /* for non-css3 browsers */
+	background: #c9c9c9; /* for non-css3 browsers */
 	/*
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e7f1f7', endColorstr='#b6bec3' );
 	background: -webkit-gradient( linear, left top, left bottom, from( #e7f1f7 ), to( #b6bec3 ) );
@@ -19,7 +19,7 @@
 	position: fixed;
 	top: 0;
 	z-index: 1;
-	box-shadow: 0 7px 10px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 7px 10px rgba( 0, 0, 0, 0.4 );
 }
 
 .mwe-pt-control-section {
@@ -49,14 +49,14 @@
 	visibility: hidden;
 	border: 1px solid #aaa;
 	padding: 0.5em 1em 0.2em 1em;
-	color: #000000;
+	color: #000;
 	cursor: default;
-	box-shadow: 0 7px 10px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 7px 10px rgba( 0, 0, 0, 0.4 );
 }
 
 #mwe-pt-control-dropdown-pokey {
 	/* @embed */
-	background-image: url('images/dialog_pokey_north.png');
+	background-image: url( images/dialog_pokey_north.png );
 	background-repeat: no-repeat;
 	width: 21px;
 	height: 11px;
@@ -69,7 +69,7 @@
 }
 
 #mwe-pt-filter-dropdown-control {
-	color: #0645AD;
+	color: #0645ad;
 	cursor: pointer;
 	position: relative;
 }
@@ -91,12 +91,12 @@
 
 #mwe-pt-sort-buttons .ui-button {
 	/* @embed */
-	background: #7e8183 url('images/sort_button_off.png') repeat-x scroll 50% 100%;
-	color: #0645AD;
+	background: #7e8183 url( images/sort_button_off.png ) repeat-x scroll 50% 100%;
+	color: #0645ad;
 }
 #mwe-pt-sort-buttons .ui-button.ui-state-active {
 	/* @embed */
-	background: #d9e3e8 url('images/sort_button_on.png') repeat-x scroll 50% 100%;
-	color: white;
+	background: #d9e3e8 url( images/sort_button_on.png ) repeat-x scroll 50% 100%;
+	color: #fff;
 	border-color: #6e7273;
 }

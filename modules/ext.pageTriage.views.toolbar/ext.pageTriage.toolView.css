@@ -18,8 +18,8 @@
 	text-align: left;
 	z-index: 2;
 	border-radius: 4px;
-	border: 1px solid #9F9F9F;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+	border: 1px solid #9f9f9f;
+	box-shadow: 0 4px 8px rgba( 0, 0, 0, 0.4 );
 }
 .mwe-pt-tool-flyout-not-flipped {
 	right: 46px;
@@ -38,12 +38,12 @@
 }
 .mwe-pt-tool-pokey-not-flipped {
 	/* @embed */
-	background-image: url('images/flyout_pokey.png');
+	background-image: url( images/flyout_pokey.png );
 	right: 38px;
 }
 .mwe-pt-tool-pokey-flipped {
 	/* @embed */
-	background-image: url('images/flyout_pokey_flipped.png');
+	background-image: url( images/flyout_pokey_flipped.png );
 	left: 38px;
 }
 
@@ -54,9 +54,9 @@
 }
 
 .mwe-pt-tool-content {
-	background-color: white;
+	background-color: #fff;
 	font-size: 0.8em;
-	border: 1px solid #9F9F9F;
+	border: 1px solid #9f9f9f;
 	padding: 6px;
 }
 .mwe-pt-flyout-help-link {
@@ -65,13 +65,13 @@
 	font-size: 0.7em;
 }
 .mwe-pt-tool-close {
-	color: gray;
+	color: #808080;
 	float: right;
 	font-size: 0.6em;
 	cursor: pointer;
 }
 
 .mwe-pt-tool-warning-notice {
-	color: gray;
+	color: #808080;
 	font-size: 0.8em;
 }

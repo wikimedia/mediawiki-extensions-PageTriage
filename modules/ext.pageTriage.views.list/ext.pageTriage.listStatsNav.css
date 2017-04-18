@@ -1,5 +1,5 @@
 #mwe-pt-list-stats-nav {
-	border-top: none;
+	border-top: 0;
 	min-height: 50px;
 }
 
@@ -12,11 +12,11 @@
 	position: fixed;
 	bottom: 0;
 	z-index: 1;
-	box-shadow: 0 -7px 10px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 -7px 10px rgba( 0, 0, 0, 0.4 );
 }
 
 .mwe-pt-stats-label {
-	font-weight:bold;
+	font-weight: bold;
 }
 
 #mwe-pt-refresh-button-holder {

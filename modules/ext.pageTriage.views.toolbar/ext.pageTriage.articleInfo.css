@@ -3,7 +3,7 @@
 }
 
 .mwe-pt-info-header {
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #000;
 	margin-bottom: 0.5em;
 	font-weight: bold;
 	width: 100%;
@@ -22,12 +22,12 @@
 }
 
 .mwe-pt-info-problem-name {
-	color: red;
+	color: #f00;
 }
 
 .mwe-pt-info-problem-desc {
 	font-size: 0.9em;
-	color: #666666;
+	color: #666;
 }
 .mwe-pt-info-status-icon {
 	float: left;

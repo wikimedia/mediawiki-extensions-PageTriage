@@ -7,11 +7,11 @@
 	text-align: center;
 	font-size: 17px;
 	line-height: 20px;
-	background-color: #E8F2F8;
+	background-color: #e8f2f8;
 	margin: 0;
 	padding: 0.4em;
-	border: 1px solid #CCC;
-	border-top: none;
+	border: 1px solid #ccc;
+	border-top: 0;
 	min-height: 21px;
 }
 
@@ -20,13 +20,13 @@
 }
 
 #mwe-pt-list-errors {
-	color: #C00;
+	color: #c00;
 	font-size: 1.2em;
 	line-height: 1.3em;
 	margin: 0;
 	padding: 0.4em;
-	border: 1px solid #CCC;
-	border-top: none;
+	border: 1px solid #ccc;
+	border-top: 0;
 }
 
 #mwe-pt-list-warnings {
