@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Milicevic01"
+			"Milicevic01",
+			"Obsuser"
 		]
 	},
 	"pagetriage-markpatrolled": "Означи страницу као прегледану",
@@ -18,6 +19,7 @@
 	"pagetriage-filter-ns-all": "Све",
 	"pagetriage-more": "Више",
 	"pagetriage-filter-stat-all": "Све",
+	"pagetriage-warning-browser": "Ова алатка можда неће радити правилно у прегледачима старијима од Интернет експлорера 10.",
 	"pagetriage-note-reviewed": "Ова страница је прегледана.",
 	"pagetriage-note-not-reviewed": "Ова страница још увек није прегледана.",
 	"pagetriage-page-status-autoreviewed": "Ова страница је аутоматски патролирана.",
@@ -42,10 +44,6 @@
 	"pagetriage-mark-as-reviewed": "Означи као прегледано",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|измена|измене|измена}}",
 	"pagetriage-toolbar-close": "Затвори",
-	"pagetriage-notification-mark-as-reviewed2": "Страница [[$2]] је прегледана од стране {{GENDER:$1|корисника|кориснице}} [[User:$1|$1]]",
-	"pagetriage-notification-mark-as-reviewed-email-subject2": "Ваша страница је {{GENDER:$1|прегледана}} на сајту {{SITENAME}}",
-	"pagetriage-notification-mark-as-reviewed-email-batch-body": "Страница $1 је прегледана од стране {{GENDER:$2|корисника|кориснице}} $2.",
-	"pagetriage-notification-add-maintenance-tag2": "Страница [[$2]] је прегледана и означена од стране {{GENDER:$1|корисника|кориснице}} [[User:$1|$1]]. {{PLURAL:$4|Ознака|Ознаке}}: $3",
 	"notification-header-pagetriage-mark-as-reviewed": "Страница $3 је прегледана од стране {{GENDER:$2|корисника|кориснице}} <b>$1</b>",
 	"notification-header-pagetriage-add-maintenance-tag": "Страница $3 је прегледана и означена од стране {{GENDER:$2|корисника|кориснице}} <b>$1</b>. {{PLURAL:$5|Ознака|Ознаке}}: $4",
 	"echo-pref-tooltip-page-review": "Обавештава вас када неко прегледа страницу чији сте ви аутор.",
