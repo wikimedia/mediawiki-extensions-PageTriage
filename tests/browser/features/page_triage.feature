@@ -1,14 +1,3 @@
-#
-# This file is subject to the license terms in the LICENSE file found in the
-# qa-browsertests top-level directory and at
-# https://phabricator.wikimedia.org/diffusion/MSEL/browse/master/LICENSE. No part of
-# qa-browsertests, including this file, may be copied, modified, propagated, or
-# distributed except according to the terms contained in the LICENSE file.
-#
-# Copyright 2012-2014 by the Mediawiki developers. See the CREDITS file in the
-# qa-browsertests top-level directory and at
-# https://phabricator.wikimedia.org/diffusion/MSEL/browse/master/CREDITS
-#
 @chrome @en.wikipedia.beta.wmflabs.org @firefox @internet_explorer_8 @internet_explorer_9 @internet_explorer_10 @phantomjs @test2.wikipedia.org
 Feature: PageTriage
 
