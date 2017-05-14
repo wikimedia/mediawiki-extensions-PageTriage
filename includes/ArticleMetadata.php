@@ -392,6 +392,12 @@ class ArticleCompileProcessor {
 	 * @return array
 	 */
 	public function compileMetadata( $mode = self::SAVE_IMMEDIATE ) {
+		if ( $mode === self::SAVE_DEFERRED ) {
+			foreach ( $this->component as $key => $value ) {
+				$this->componentDb[$key] = DB_SLAVE;
+			}
+		}
+
 		$this->prepare();
 		$this->process();
 
