@@ -119,22 +119,7 @@ $( function () {
 
 		// refresh the stats when a namespace is changed
 		refreshStats: function () {
-			this.options.stats.apiParams = {};
-			this.options.stats.setParam( 'namespace', $( '#mwe-pt-filter-namespace' ).val() );
-
-			if ( $( '#mwe-pt-filter-reviewed-edits' ).prop( 'checked' ) ) {
-				this.options.stats.setParam( 'showreviewed', '1' );
-			}
-			if ( $( '#mwe-pt-filter-unreviewed-edits' ).prop( 'checked' ) ) {
-				this.options.stats.setParam( 'showunreviewed', '1' );
-			}
-			if ( $( '#mwe-pt-filter-nominated-for-deletion' ).prop( 'checked' ) ) {
-				this.options.stats.setParam( 'showdeleted', '1' );
-			}
-			if ( $( '#mwe-pt-filter-redirects' ).prop( 'checked' ) ) {
-				this.options.stats.setParam( 'showredirs', '1' );
-			}
-
+			this.options.stats.apiParams = this.getApiParams();
 			this.options.stats.fetch();
 		},
 
@@ -241,8 +226,7 @@ $( function () {
 			}
 		},
 
-		// Sync the filters with the contents of the menu
-		filterSync: function () {
+		getApiParams: function () {
 			// fetch the values from the menu
 			var apiParams = {};
 			if ( $( '#mwe-pt-filter-namespace' ).val() ) {
@@ -303,6 +287,14 @@ $( function () {
 				apiParams.blocked_users = '1';
 				// jscs: enable requireCamelCaseOrUpperCaseIdentifiers
 			}
+
+			return apiParams;
+		},
+
+		// Sync the filters with the contents of the menu
+		filterSync: function () {
+			// fetch the values from the menu
+			var apiParams = this.getApiParams();
 
 			// persist the limit and direction parameters
 			apiParams.limit = this.model.getParam( 'limit' );
@@ -386,7 +378,7 @@ $( function () {
 		 * @param {string} message The message name for the filter.
 		 */
 		menuCheckboxUpdate: function ( $checkbox, param, message ) {
-			$checkbox.prop( 'checked', parseInt( this.model.getParam( param ) ) === 1 );
+			$checkbox.prop( 'checked', parseInt( this.model.getParam( param ), 10 ) === 1 );
 			if ( this.model.getParam( param ) ) {
 				this.newFilterStatus.push( mw.msg( message ) );
 			}

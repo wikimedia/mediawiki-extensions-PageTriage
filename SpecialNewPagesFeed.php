@@ -229,33 +229,40 @@ class SpecialNewPagesFeed extends SpecialPage {
 									<b><%= mw.msg( 'pagetriage-filter-second-show-heading' ) %></b>
 								</span>
 								<div class="mwe-pt-control-options">
-									<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-no-categories" />
+									<input type="radio" name="mwe-pt-filter-radio"
+										id="mwe-pt-filter-no-categories" value="no_category" />
 									<label for="mwe-pt-filter-no-categories">
 										<%= mw.msg( 'pagetriage-filter-no-categories' ) %>
 									</label> <br/>
-									<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-orphan" />
+									<input type="radio" name="mwe-pt-filter-radio"
+										id="mwe-pt-filter-orphan" value="no_inbound_links" />
 									<label for="mwe-pt-filter-orphan">
 										<%= mw.msg( 'pagetriage-filter-orphan' ) %>
 									</label> <br/>
-									<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-non-autoconfirmed" />
+									<input type="radio" name="mwe-pt-filter-radio"
+										id="mwe-pt-filter-non-autoconfirmed" value="non_autoconfirmed_users" />
 									<label for="mwe-pt-filter-non-autoconfirmed">
 										<%= mw.msg( 'pagetriage-filter-non-autoconfirmed' ) %>
 									</label> <br/>
-									<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-blocked" />
+									<input type="radio" name="mwe-pt-filter-radio"
+										id="mwe-pt-filter-blocked" value="blocked_users" />
 									<label for="mwe-pt-filter-blocked">
 										<%= mw.msg( 'pagetriage-filter-blocked' ) %>
 									</label> <br/>
-									<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-bot-edits" />
+									<input type="radio" name="mwe-pt-filter-radio"
+										id="mwe-pt-filter-bot-edits" value="showbots" />
 									<label for="mwe-pt-filter-bot-edits">
 										<%= mw.msg( 'pagetriage-filter-bot-edits' ) %>
 									</label> <br/>
-									<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-user-selected" />
+									<input type="radio" name="mwe-pt-filter-radio"
+										id="mwe-pt-filter-user-selected" value="username" />
 									<label for="mwe-pt-filter-user-selected">
 										<%= mw.msg( 'pagetriage-filter-user-heading' ) %>
 									</label>
 									<input type="text" id="mwe-pt-filter-user"
 										placeholder="<%= mw.msg( 'pagetriage-filter-username' ) %>" /> <br/>
-									<input type="radio" name="mwe-pt-filter-radio" id="mwe-pt-filter-all" />
+									<input type="radio" name="mwe-pt-filter-radio"
+										id="mwe-pt-filter-all" value="all" />
 									<label for="mwe-pt-filter-all">
 										<%= mw.msg( 'pagetriage-filter-all' ) %>
 									</label>

@@ -105,68 +105,18 @@ class PageTriageUtil {
 	}
 
 	/**
-	 * Get the number of pages based on the selected filter, it's fine to do this since we have
-	 * a cron to remove page more than 30 days old from the queue, the queue volume is not big,
-	 * we will change this accordingly if potential blocking problems are spotted
+	 * Get the number of pages based on the selected filters.
+	 * @param array $filters Associative array of filter names/values.
+	 *                       See ApiPageTriageStats->getAllowedParams() for possible values,
+	 *                       which are the same that the ApiPageTriageList endpoint accepts.
+	 * @return integer Number of pages based on the selected filters
 	 */
-	public static function getArticleFilterStat( $filter, $namespace = '' ) {
-		global $wgMemc;
-
-		if ( !isset( $filter['showreviewed'] ) && !isset( $filter['showunreviewed'] ) ) {
-			$filter['showunreviewed'] = 'showunreviewed';
+	public static function getArticleFilterStat( $filters ) {
+		if ( !isset( $filters['showreviewed'] ) && !isset( $filters['showunreviewed'] ) ) {
+			$filters['showunreviewed'] = 'showunreviewed';
 		}
 
-		$namespace = self::validatePageNamespace( $namespace );
-
-		$key = wfMemcKey(
-			'pagetriage',
-			'filter-article-' . implode( '-', $filter ) . '-' . $namespace,
-			'stat', self::getCacheVersion()
-		);
-
-		$data = $wgMemc->get( $key );
-		if ( $data !== false ) {
-			return $data;
-		}
-
-		$dbr = wfGetDB( DB_SLAVE );
-		$table = [ 'pagetriage_page', 'page' ];
-		$conds = [
-			'page_id = ptrp_page_id',
-			'page_namespace' => $namespace
-		];
-
-		$ops = '';
-		if ( isset( $filter['showreviewed'] ) ) {
-			$ops .= '>';
-		}
-		if ( isset( $filter['showunreviewed'] ) ) {
-			$ops .= '=';
-		}
-
-		$conds[] = 'ptrp_reviewed ' . $ops . ' 0';
-
-		if ( !isset( $filter['showdeleted'] ) ) {
-			$conds['ptrp_deleted'] = 0;
-		}
-		if ( !isset( $filter['showredirs'] ) ) {
-			$conds['page_is_redirect'] = 0;
-		}
-
-		$res = $dbr->selectRow(
-			$table,
-			[ 'COUNT(ptrp_page_id) AS total' ],
-			$conds
-		);
-
-		$total = 0;
-		if ( $res ) {
-			$total = (int)$res->total;
-		}
-
-		// make it expire in 10 minutes
-		$wgMemc->set( $key, $total, 600 );
-		return $total;
+		return ApiPageTriageList::getPageIds( $filters, true );
 	}
 
 	public static function getReviewedArticleStat( $namespace = '' ) {

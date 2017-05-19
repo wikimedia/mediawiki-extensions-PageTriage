@@ -1,27 +1,28 @@
 <?php
 
 class ApiPageTriageStats extends ApiBase {
-
 	public function execute() {
-		$params = $this->extractRequestParams();
+		// Remove empty params. This unforunately means you can't query for User:0 :(
+		$params = array_filter( $this->extractRequestParams() );
 
-		$filter = [];
-		foreach ( $this->getAllowedParams() as $key => $value ) {
-			if ( $key !== 'namespace' && $params[$key] ) {
-				$filter[$key] = $key;
-			}
+		// set default namespace
+		if ( empty( $params['namespace'] ) ) {
+			$params['namespace'] = 0;
 		}
 
 		$data = [
 			'unreviewedarticle' => PageTriageUtil::getUnreviewedArticleStat( $params['namespace'] ),
 			'reviewedarticle' => PageTriageUtil::getReviewedArticleStat( $params['namespace'] ),
-			'filteredarticle' => PageTriageUtil::getArticleFilterStat( $filter, $params['namespace'] )
+			'filteredarticle' => PageTriageUtil::getArticleFilterStat( $params ),
 		];
 
 		$result = [ 'result' => 'success', 'stats' => $data ];
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	public function getAllowedParams() {
 		return [
 			'namespace' => [
@@ -39,7 +40,24 @@ class ApiPageTriageStats extends ApiBase {
 			'showdeleted' => [
 				ApiBase::PARAM_TYPE => 'boolean',
 			],
+			'showbots' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
+			'no_category' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
+			'no_inbound_links' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
+			'non_autoconfirmed_users' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
+			'blocked_users' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
+			'username' => [
+				ApiBase::PARAM_TYPE => 'user',
+			],
 		];
 	}
-
 }

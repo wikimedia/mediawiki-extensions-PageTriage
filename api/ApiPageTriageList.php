@@ -98,24 +98,27 @@ class ApiPageTriageList extends ApiBase {
 
 	/**
 	 * Return all the page ids in PageTraige matching the specified filters
-	 * @param $opts array of filtering options
-	 * @return array an array of ids
+	 * @param $opts array Array of filtering options
+	 * @param $count boolean Set to true to return a count instead
+	 * @return array|int an array of ids or total number of pages
 	 *
-	 * @Todo - enforce a range of timestamp to reduce tag record scan
+	 * @todo - enforce a range of timestamp to reduce tag record scan
 	 */
-	public static function getPageIds( $opts = [] ) {
+	public static function getPageIds( $opts = [], $count = false ) {
 		// Initialize required variables
 		$pages = $options = [];
 
-		// Get the expected limit as defined in getAllowedParams
-		$options['LIMIT'] = $opts['limit'] + 1;
+		if ( !$count ) {
+			// Get the expected limit as defined in getAllowedParams
+			$options['LIMIT'] = $opts['limit'] + 1;
 
-		if ( strtolower( $opts['dir'] ) === 'oldestfirst' ) {
-			$options['ORDER BY'] = 'ptrp_created ASC, ptrp_page_id ASC';
-			$offsetOperator = ' > ';
-		} else {
-			$options['ORDER BY'] = 'ptrp_created DESC, ptrp_page_id DESC';
-			$offsetOperator = ' < ';
+			if ( strtolower( $opts['dir'] ) === 'oldestfirst' ) {
+				$options['ORDER BY'] = 'ptrp_created ASC, ptrp_page_id ASC';
+				$offsetOperator = ' > ';
+			} else {
+				$options['ORDER BY'] = 'ptrp_created DESC, ptrp_page_id DESC';
+				$offsetOperator = ' < ';
+			}
 		}
 
 		// Start building the massive filter which includes meta data
@@ -166,7 +169,8 @@ class ApiPageTriageList extends ApiBase {
 		if (
 			array_key_exists( 'offset', $opts ) &&
 			is_numeric( $opts['offset'] ) &&
-			$opts['offset'] > 0
+			$opts['offset'] > 0 &&
+			!$count
 		) {
 			$opts['offset'] = $dbr->addQuotes( $dbr->timestamp( $opts['offset'] ) );
 			// Offset the list by page ID as well (in case multiple pages have the same timestamp)
@@ -189,21 +193,30 @@ class ApiPageTriageList extends ApiBase {
 			$tables[] = 'pagetriage_page_tags';
 		}
 
-		// Pull page IDs from database
-		$res = $dbr->select(
-			$tables,
-			'ptrp_page_id',
-			$conds,
-			__METHOD__,
-			$options
-		);
+		if ( $count ) {
+			$res = $dbr->selectRow(
+				$tables,
+				[ 'COUNT(ptrp_page_id) AS total' ],
+				$conds
+			);
+			return (int) $res->total;
+		} else {
+			// Pull page IDs from database
+			$res = $dbr->select(
+				$tables,
+				'ptrp_page_id',
+				$conds,
+				__METHOD__,
+				$options
+			);
 
-		// Loop through result set and return ids
-		foreach ( $res as $row ) {
-			$pages[] = $row->ptrp_page_id;
+			// Loop through result set and return ids
+			foreach ( $res as $row ) {
+				$pages[] = $row->ptrp_page_id;
+			}
+
+			return $pages;
 		}
-
-		return $pages;
 	}
 
 	/**
