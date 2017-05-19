@@ -378,9 +378,15 @@ $( function () {
 			}
 		},
 
-		// Update a checkbox in the menu with data from the model
+		/**
+		 * Update a checkbox in the filter menu with data from the model.
+		 *
+		 * @param {jQuery} $checkbox The JQuery object of the input element.
+		 * @param {string} param The value (i.e. 1 or 0, checked or not).
+		 * @param {string} message The message name for the filter.
+		 */
 		menuCheckboxUpdate: function ( $checkbox, param, message ) {
-			$checkbox.prop( 'checked', this.model.getParam( param ) === '1' ? true : false );
+			$checkbox.prop( 'checked', parseInt( this.model.getParam( param ) ) === 1 );
 			if ( this.model.getParam( param ) ) {
 				this.newFilterStatus.push( mw.msg( message ) );
 			}
