@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"AlimanRuna"
+			"AlimanRuna",
+			"Samwilson"
 		]
 	},
 	"pagetriage-note-reviewed": "Kay p'anqaqa qhawakipasqañam.",
 	"pagetriage-tags-param-date-label": "P'unchaw:",
-	"pagetriage-info-timestamp-date-format": "d ñiqin MMMM killapi yyyy watapi"
+	"pagetriage-info-timestamp-date-format": "d &#241;&#105;&#113;&#105;&#110; MMMM &#107;&#105;&#108;&#108;&#97;&#112;&#105; yyyy &#119;&#97;t&#97;&#112;&#105;"
 }

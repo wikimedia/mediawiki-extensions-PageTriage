@@ -11,7 +11,8 @@
 			"Vivaelcelta",
 			"Macofe",
 			"Ryo567",
-			"Matiia"
+			"Matiia",
+			"Samwilson"
 		]
 	},
 	"pagetriage": "Página de triaje",
@@ -300,7 +301,7 @@
 	"pagetriage-info-problem-orphan-desc": "Ninguna otra página enlaza a esta página.",
 	"pagetriage-info-problem-no-references": "Sin citas",
 	"pagetriage-info-problem-no-references-desc": "Esta página no cita ninguna fuente.",
-	"pagetriage-info-timestamp-date-format": "d de MMMM de yyyy",
+	"pagetriage-info-timestamp-date-format": "d &#100;&#101; MMMM &#100;&#101; yyyy",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
 	"pagetriage-info-tooltip": "Mostrar metadatos para esta página",
 	"pagetriage-toolbar-collapsed": "Conservación",

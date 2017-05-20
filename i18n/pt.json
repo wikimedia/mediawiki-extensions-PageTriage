@@ -8,7 +8,8 @@
 			"Fúlvio",
 			"He7d3r",
 			"Vitorvicentevalente",
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"Samwilson"
 		]
 	},
 	"pagetriage": "Page Triage",
@@ -168,7 +169,7 @@
 	"pagetriage-info-problem-orphan-desc": "Nenhuma outra página possui ligações para esta página.",
 	"pagetriage-info-problem-no-references": "Sem referências",
 	"pagetriage-info-problem-no-references-desc": "Esta página não cita nenhuma fonte.",
-	"pagetriage-info-timestamp-date-format": "d \"de\" MMMM \"de\" yyyy",
+	"pagetriage-info-timestamp-date-format": "d &#100;&#101; MMMM &#100;&#101; yyyy",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
 	"pagetriage-info-tooltip": "Mostrar metadados para esta página",
 	"pagetriage-toolbar-collapsed": "Conservação",
