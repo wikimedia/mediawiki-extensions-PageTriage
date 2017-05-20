@@ -418,6 +418,7 @@
 	"apihelp-pagetriagestats-param-non_autoconfirmed_users": "{{doc-apihelp-param|pagetriagestats|non_autoconfirmed_users}}",
 	"apihelp-pagetriagestats-param-blocked_users": "{{doc-apihelp-param|pagetriagestats|blocked_users}}",
 	"apihelp-pagetriagestats-param-username": "{{doc-apihelp-param|pagetriagestats|username}}",
+	"apihelp-pagetriagestats-param-topreviewers": "{{doc-apihelp-param|pagetriagestats|topreviewers}}",
 	"apihelp-pagetriagetagging-description": "{{doc-apihelp-description|pagetriagetagging}}",
 	"apihelp-pagetriagetagging-param-pageid": "{{doc-apihelp-param|pagetriagetagging|pageid}}",
 	"apihelp-pagetriagetagging-param-top": "{{doc-apihelp-param|pagetriagetagging|top}}",
