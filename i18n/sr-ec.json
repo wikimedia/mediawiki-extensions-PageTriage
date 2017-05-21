@@ -48,5 +48,11 @@
 	"notification-header-pagetriage-mark-as-reviewed": "Страница $3 је прегледана од стране {{GENDER:$2|корисника|кориснице}} <b>$1</b>",
 	"notification-header-pagetriage-add-maintenance-tag": "Страница $3 је прегледана и означена од стране {{GENDER:$2|корисника|кориснице}} <b>$1</b>. {{PLURAL:$5|Ознака|Ознаке}}: $4",
 	"echo-pref-tooltip-page-review": "Обавештава вас када неко прегледа страницу чији сте ви аутор.",
-	"echo-category-title-page-review": "{{PLURAL:$1|Провера страница}}"
+	"echo-category-title-page-review": "{{PLURAL:$1|Провера страница}}",
+	"apihelp-pagetriagestats-param-showbots": "Укључивање само страница које направе ботови.",
+	"apihelp-pagetriagestats-param-no_category": "Укључивање само страница без категорије.",
+	"apihelp-pagetriagestats-param-no_inbound_links": "Укључивање само страница без улазних веза.",
+	"apihelp-pagetriagestats-param-non_autoconfirmed_users": "Укључивање само страница које направе не-аутоматски потврђени корисници.",
+	"apihelp-pagetriagestats-param-blocked_users": "Укључивање само страница које су направили блокирани корисници.",
+	"apihelp-pagetriagestats-param-username": "Укључи само странице направљене корисничким именом."
 }

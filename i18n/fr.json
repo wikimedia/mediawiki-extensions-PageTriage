@@ -390,6 +390,7 @@
 	"apihelp-pagetriagestats-param-showreviewed": "S'il faut inclure les éléments revus.",
 	"apihelp-pagetriagestats-param-showunreviewed": "S'il faut inclure les éléments non revus.",
 	"apihelp-pagetriagestats-param-showdeleted": "S'il faut inclure les éléments \"proposé pour supression\".",
+	"apihelp-pagetriagestats-param-blocked_users": "S'il faut inclure seulement les pages créées par les utilisateurs bloqués.",
 	"apihelp-pagetriagetagging-description": "Ajouter des balises à un article.",
 	"apihelp-pagetriagetagging-param-pageid": "L'article à baliser.",
 	"apihelp-pagetriagetagging-param-top": "Le texte de balisage qui sera ajouté en haut d'un article.",
