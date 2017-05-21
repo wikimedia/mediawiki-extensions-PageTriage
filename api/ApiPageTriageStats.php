@@ -16,6 +16,10 @@ class ApiPageTriageStats extends ApiBase {
 			'filteredarticle' => PageTriageUtil::getArticleFilterStat( $params ),
 		];
 
+		if ( isset( $params['topreviewers'] ) ) {
+			$data['topreviewers'] = PageTriageUtil::getTopTriagers( $params['topreviewers'] );
+		}
+
 		$result = [ 'result' => 'success', 'stats' => $data ];
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
@@ -57,6 +61,9 @@ class ApiPageTriageStats extends ApiBase {
 			],
 			'username' => [
 				ApiBase::PARAM_TYPE => 'user',
+			],
+			'topreviewers' => [
+				ApiBase::PARAM_TYPE => 'string',
 			],
 		];
 	}

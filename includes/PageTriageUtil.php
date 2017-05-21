@@ -119,6 +119,11 @@ class PageTriageUtil {
 		return ApiPageTriageList::getPageIds( $filters, true );
 	}
 
+	/**
+	 * Get number of reviewed articles in the past week
+	 * @param  string|int $namespace Namespace number
+	 * @return array                 Stats to be returned
+	 */
 	public static function getReviewedArticleStat( $namespace = '' ) {
 		global $wgMemc;
 
@@ -162,16 +167,17 @@ class PageTriageUtil {
 
 		// make it expire in 10 minutes
 		$wgMemc->set( $key, $data, 600 );
+
 		return $data;
 	}
 
 	/**
 	 * Get top page triagers in various time frame
 	 * @param $time string - time to look back for top triagers, possible values include
-	 *                       last-day, last-week
+	 *                       last-day, last-week, last-month
 	 * @return array
 	 */
-	public static function getTopTriager( $time = 'last-week' ) {
+	public static function getTopTriagers( $time = 'last-week' ) {
 		global $wgMemc;
 
 		$now = wfTimestamp( TS_UNIX );
@@ -179,7 +185,8 @@ class PageTriageUtil {
 		// times to look back for top trigers and expiration time in cache
 		$timeFrame = [
 				'last-day' => [ 'ts' => $now - 24 * 60 * 60, 'expire' => 60 * 60 ],
-				'last-week' => [ 'ts' => $now - 7 * 24 * 60 * 60, 'expire' =>  24 * 60 * 60 ]
+				'last-week' => [ 'ts' => $now - 7 * 24 * 60 * 60, 'expire' =>  24 * 60 * 60 ],
+				'last-month' => [ 'ts' => $now - 30 * 24 * 60 * 60, 'expire' =>  24 * 60 * 60 ],
 		];
 
 		if ( !isset( $timeFrame[$time] ) ) {
