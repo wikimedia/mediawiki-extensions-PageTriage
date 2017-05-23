@@ -398,6 +398,7 @@
 	"apihelp-pagetriagestats-param-non_autoconfirmed_users": "Дали да се опфатени само страници создадени од неавтопотврдени корисници.",
 	"apihelp-pagetriagestats-param-blocked_users": "Дали да се опфатени само страници создадени од блокирани корисници.",
 	"apihelp-pagetriagestats-param-username": "Дали да се опфатени само страници создадени од корисничко име.",
+	"apihelp-pagetriagestats-param-topreviewers": "Опфати ги 10-те најактивни проверувачи во дадената временска рамка. Важечки вредности се последниот ден, последната недела (по основно) или последниот месец.",
 	"apihelp-pagetriagetagging-description": "Додај ознаки во статија.",
 	"apihelp-pagetriagetagging-param-pageid": "Статијата што треба да се означи.",
 	"apihelp-pagetriagetagging-param-top": "Текстот на означувањето што се додава најгоре во статијата.",

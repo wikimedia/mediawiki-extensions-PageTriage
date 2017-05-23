@@ -331,6 +331,7 @@
 	"echo-category-title-page-review": "{{PLURAL:$1|Pagina revisionata|Pagine revisionate}}",
 	"apihelp-pagetriageaction-param-note": "Nota personale ai creatori della pagina dai revisori.",
 	"apihelp-pagetriagelist-example-1": "Elenca 100 pagine nel namespace 0",
+	"apihelp-pagetriagestats-param-username": "Includi solo le pagine create dal nome utente.",
 	"apihelp-pagetriagetagging-description": "Aggiunge etichette a una voce.",
 	"apihelp-pagetriagetagging-param-pageid": "La voce da etichettare.",
 	"apihelp-pagetriagetagging-param-note": "Nota personale ai creatori della pagina dai revisori."
