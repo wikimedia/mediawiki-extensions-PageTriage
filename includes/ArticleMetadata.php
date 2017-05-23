@@ -892,6 +892,8 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 			return true;
 		}
 
+		$now = $this->db->addQuotes( $this->db->timestamp() );
+
 		$res = $this->db->select(
 				[ 'revision', 'user', 'ipblocks' ],
 				[
@@ -904,7 +906,10 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 				[],
 				[
 					'user' => [ 'LEFT JOIN', 'rev_user = user_id' ],
-					'ipblocks' => [ 'LEFT JOIN', 'rev_user = ipb_user AND rev_user_text = ipb_address' ]
+					'ipblocks' => [
+						'LEFT JOIN',
+						'rev_user = ipb_user AND rev_user_text = ipb_address AND ipb_expiry > ' . $now
+					]
 				]
 		);
 
