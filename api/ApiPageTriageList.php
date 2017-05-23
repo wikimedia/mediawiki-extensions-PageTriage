@@ -131,25 +131,29 @@ class ApiPageTriageList extends ApiBase {
 		// 2 = patrolled
 		// 3 = autopatrolled
 		$reviewOpr = '';
-		if ( $opts['showreviewed'] ) {
+		if ( isset( $opts['showreviewed'] ) && $opts['showreviewed'] ) {
 			$reviewOpr .= '>';
 		}
-		if ( $opts['showunreviewed'] ) {
+		if ( isset( $opts['showunreviewed'] ) && $opts['showunreviewed'] ) {
 			$reviewOpr .= '=';
 		}
 		if ( !$reviewOpr ) {
-			return $pages;
+			if ( $count ) {
+				return 0;
+			} else {
+				return $pages;
+			}
 		}
 		if ( $reviewOpr !== '>=' ) {
 			$conds[] = 'ptrp_reviewed ' . $reviewOpr . ' 0';
 		}
 
-		// Include redirect
-		if ( !$opts['showredirs'] ) {
+		// Exclude redirects unless they are explicitly requested
+		if ( !isset( $opts['showredirs'] ) || !$opts['showredirs'] ) {
 			$conds['page_is_redirect'] = 0;
 		}
-		// Include marked for deletion
-		if ( !$opts['showdeleted'] ) {
+		// Exclude pages marked for deletion unless they are explicitly requested
+		if ( !isset( $opts['showdeleted'] ) || !$opts['showdeleted'] ) {
 			$conds['ptrp_deleted'] = 0;
 		}
 
@@ -247,7 +251,7 @@ class ApiPageTriageList extends ApiBase {
 
 		// only single tag search is allowed
 		foreach ( $searchableTags as $key => $val ) {
-			if ( $opts[$key] ) {
+			if ( isset( $opts[$key] ) && $opts[$key] ) {
 				if ( $val['val'] === false ) {
 					// if val is false, use the value that was supplied via the api call
 					$tagConds = " ptrpt_page_id = ptrp_page_id AND ptrpt_tag_id = '"
