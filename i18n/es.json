@@ -12,7 +12,8 @@
 			"Macofe",
 			"Ryo567",
 			"Matiia",
-			"Samwilson"
+			"Samwilson",
+			"Dgstranz"
 		]
 	},
 	"pagetriage": "Página de triaje",
@@ -362,6 +363,7 @@
 	"apihelp-pagetriagestats-param-showreviewed": "Si se deben incluir las revisadas.",
 	"apihelp-pagetriagestats-param-showunreviewed": "Si se deben incluir las no revisadas.",
 	"apihelp-pagetriagestats-param-showdeleted": "Si se deben incluir las \"propuestas para eliminación\".",
+	"apihelp-pagetriagestats-param-no_inbound_links": "Incluir o no solo páginas sin enlaces entrantes.",
 	"apihelp-pagetriagetagging-description": "Añadir etiquetas a un artículo.",
 	"apihelp-pagetriagetagging-param-deletion": "Si el etiquetamiento es para un nominación de borrado.",
 	"apihelp-pagetriagetagging-param-note": "Nota personal de los revisores a los creadores de páginas.",
