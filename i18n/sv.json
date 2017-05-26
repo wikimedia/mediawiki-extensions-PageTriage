@@ -260,5 +260,9 @@
 	"pagetriage-discuss-link-title": "{{GENDER:$1|Diskutera}}",
 	"echo-pref-subscription-page-review": "Granska en sida jag skapat",
 	"echo-pref-tooltip-page-review": "Meddela mig när någon granskat en sida jag skapat.",
-	"echo-category-title-page-review": "{{PLURAL:$1|Sidgranskning|Sidgranskningar}}"
+	"echo-category-title-page-review": "{{PLURAL:$1|Sidgranskning|Sidgranskningar}}",
+	"apihelp-pagetriagestats-param-showbots": "Om endast sidor skapade av botar ska inkluderas.",
+	"apihelp-pagetriagestats-param-no_category": "Om endast sidor utan kategorier ska inkluderas.",
+	"apihelp-pagetriagestats-param-blocked_users": "Om endast sidor skapade av blockerade användare ska inkluderas.",
+	"apihelp-pagetriagestats-param-username": "Inkludera endast skapade sidor efter användarnamn."
 }
