@@ -272,7 +272,7 @@
 	"pagetriage-del-tags-dbg7-desc": "Pages dont l'auteur a demandé la suppression,  soit explicitement, soit en vidant la page. (G7)",
 	"pagetriage-del-tags-dbu2-label": "Utilisateur inexistant",
 	"pagetriage-del-tags-dbu3-label": "Galeries non libres",
-	"pagetriage-del-tags-dbu3-desc": "Galeries d'images dans un espace utilisateur qui contiennent des images qui ne sont pas dans le domaine public ou sous une licence suffisamment « libre ». Les politiques de la Wikipédia interdisent l'usage de telles images dans un espace utilisateur, même si elles ont été téléchargées par cet utilisateur. L'usage de contenus dans le domaine public ou publiés sous une licence compatible sont acceptées.",
+	"pagetriage-del-tags-dbu3-desc": "Galeries d’images dans un espace utilisateur qui contiennent des images qui ne sont pas dans le domaine public ou sous une licence suffisamment « libre ». Les politiques de la Wikipédia interdisent l’usage de telles images dans un espace utilisateur, même si elles ont été téléversées par cet utilisateur. L’usage de contenus dans le domaine public ou publiés sous une licence compatible est accepté.",
 	"pagetriage-del-tags-blpprod-label": "Suppression proposée (personne vivante)",
 	"pagetriage-del-tags-prod-label": "Suppression proposée",
 	"pagetriage-del-tags-prod-notify-topic-title": "[[Wikipedia:Proposed deletion|Supression proposée]] de [[$1]]",
