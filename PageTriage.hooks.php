@@ -318,12 +318,12 @@ class PageTriageHooks {
 	}
 
 	/**
-	 * Checks to see if an article is new, i.e. less than $wgRCMaxAge
+	 * Checks to see if an article is new, i.e. less than $wgPageTriageMaxAge
 	 * @param Article $article Article to check
 	 * @return bool
 	 */
 	private static function isArticleNew( $article ) {
-		global $wgRCMaxAge;
+		global $wgPageTriageMaxAge;
 
 		$pageId = $article->getId();
 
@@ -339,10 +339,7 @@ class PageTriageHooks {
 			$articleDaysOld = $dateInterval->format( '%a' );
 
 			// If it's younger than the maximum age, return true.
-			// We use $wgRCMaxAge here since this determines which articles are
-			// considered "new", i.e. shown at Special:NewPages, and which articles
-			// are eligible to be patrolled.
-			if ( $articleDaysOld < ( $wgRCMaxAge / 86400 ) ) {
+			if ( $articleDaysOld < $wgPageTriageMaxAge ) {
 				return true;
 			}
 		}

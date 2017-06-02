@@ -554,6 +554,9 @@
 		"ResourceLoaderRegisterModules": "PageTriageHooks::onResourceLoaderRegisterModules"
 	},
 	"config": {
+		"PageTriageMaxAge": {
+			"value": 90
+		},
 		"PageTriagePagesPerRequest": {
 			"value": 20
 		},
