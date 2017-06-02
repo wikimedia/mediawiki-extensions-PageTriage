@@ -13,7 +13,8 @@
 			"Ryo567",
 			"Matiia",
 			"Samwilson",
-			"Dgstranz"
+			"Dgstranz",
+			"Javiersanp"
 		]
 	},
 	"pagetriage": "Página de triaje",
@@ -363,7 +364,11 @@
 	"apihelp-pagetriagestats-param-showreviewed": "Si se deben incluir las revisadas.",
 	"apihelp-pagetriagestats-param-showunreviewed": "Si se deben incluir las no revisadas.",
 	"apihelp-pagetriagestats-param-showdeleted": "Si se deben incluir las \"propuestas para eliminación\".",
+	"apihelp-pagetriagestats-param-no_category": "Si se deben mostrar solo las páginas sin ninguna categoría.",
 	"apihelp-pagetriagestats-param-no_inbound_links": "Incluir o no solo páginas sin enlaces entrantes.",
+	"apihelp-pagetriagestats-param-non_autoconfirmed_users": "Si se deben incluir solo las páginas creadas por usuarios no autoconfirmados.",
+	"apihelp-pagetriagestats-param-username": "Incluye solo las páginas creadas por nombre de usuario.",
+	"apihelp-pagetriagestats-param-topreviewers": "Incluir los 10 revisores principales en el periodo de tiempo dado. Los valores válidos incluyen el último día, la última semana (valor por defecto) y el último mes.",
 	"apihelp-pagetriagetagging-description": "Añadir etiquetas a un artículo.",
 	"apihelp-pagetriagetagging-param-deletion": "Si el etiquetamiento es para un nominación de borrado.",
 	"apihelp-pagetriagetagging-param-note": "Nota personal de los revisores a los creadores de páginas.",
