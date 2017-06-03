@@ -4,6 +4,8 @@
 			"Bugoslav"
 		]
 	},
+	"log-name-pagetriage-curation": "Evidencija označivanja za pomnju",
+	"log-name-pagetriage-deletion": "Evidencija označivanja za brisanje",
 	"pagetriage-mark-title": "Označeno provjerenim",
 	"pagetriage-mark-as-reviewed": "Označi provjerenim"
 }
