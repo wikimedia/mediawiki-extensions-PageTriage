@@ -395,7 +395,7 @@
 	"apihelp-pagetriagestats-param-non_autoconfirmed_users": "Ob nur Seiten mit einbezogen werden sollen, die von nicht automatisch bestätigten Benutzern erstellt wurden.",
 	"apihelp-pagetriagestats-param-blocked_users": "Ob nur Seiten mit einbezogen werden sollen, die von gesperrten Benutzern erstellt wurden.",
 	"apihelp-pagetriagestats-param-username": "Schließt nur Seiten erstellt nach Benutzername ein.",
-	"apihelp-pagetriagestats-param-topreviewers": "Schließt die 10 besten Überprüfer über die angegebene Zeitspanne ein. Gültige Werte sind last-day, last-week (Standard) oder last-month.",
+	"apihelp-pagetriagestats-param-topreviewers": "Schließt die 50 besten Überprüfer über die angegebene Zeitspanne ein. Gültige Werte sind last-day, last-week (Standard) oder last-month.",
 	"apihelp-pagetriagetagging-description": "Fügt einem Artikel Markierungen hinzu.",
 	"apihelp-pagetriagetagging-param-pageid": "Der Artikel, der markiert werden soll.",
 	"apihelp-pagetriagetagging-param-top": "Der am Artikelanfang hinzuzufügende Markierungstext.",
