@@ -405,7 +405,7 @@
 	"apihelp-pagetriagestats-param-non_autoconfirmed_users": "Whether to include only pages created by non-autoconfirmed users.",
 	"apihelp-pagetriagestats-param-blocked_users": "Whether to include only pages created by blocked users.",
 	"apihelp-pagetriagestats-param-username": "Include only pages created by username.",
-	"apihelp-pagetriagestats-param-topreviewers": "Include the top 10 reviewers over the given timeframe. Valid values include last-day, last-week (default), or last-month.",
+	"apihelp-pagetriagestats-param-topreviewers": "Include the top 50 reviewers over the given timeframe. Valid values include last-day, last-week (default), or last-month.",
 	"apihelp-pagetriagetagging-description": "Add tags to an article.",
 	"apihelp-pagetriagetagging-param-pageid": "The article for which to be tagged.",
 	"apihelp-pagetriagetagging-param-top": "The tagging text to be added to the top of an article.",
