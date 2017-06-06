@@ -396,7 +396,7 @@
 	"apihelp-pagetriagestats-param-non_autoconfirmed_users": "S’il faut inclure uniquement les pages créées par des utilisateurs non auto-confirmés.",
 	"apihelp-pagetriagestats-param-blocked_users": "S'il faut inclure seulement les pages créées par les utilisateurs bloqués.",
 	"apihelp-pagetriagestats-param-username": "Inclure uniquement les pages créées par un nom d’utilisateur.",
-	"apihelp-pagetriagestats-param-topreviewers": "Inclure les 10 meilleurs relecteurs pendant la période fournie. Les valeurs valides incluent le dernier jour, la dernière semaine (par défaut) ou le dernier mois.",
+	"apihelp-pagetriagestats-param-topreviewers": "Inclure les 50 meilleurs relecteurs pendant la période fournie. Les valeurs valides incluent le dernier jour, la dernière semaine (par défaut) ou le dernier mois.",
 	"apihelp-pagetriagetagging-description": "Ajouter des balises à un article.",
 	"apihelp-pagetriagetagging-param-pageid": "L'article à baliser.",
 	"apihelp-pagetriagetagging-param-top": "Le texte de balisage qui sera ajouté en haut d'un article.",

@@ -400,7 +400,7 @@
 	"apihelp-pagetriagestats-param-non_autoconfirmed_users": "Se se deben incluír só páxinas creadas por usuarios non autoconfirmados.",
 	"apihelp-pagetriagestats-param-blocked_users": "Se se deben incluír só páxinas creadas por usuarios bloqueados.",
 	"apihelp-pagetriagestats-param-username": "Incluír só as páxinas creadas por un nome de usuario.",
-	"apihelp-pagetriagestats-param-topreviewers": "Incluir os 10 revisores principais no período de tempo dado. Os valores válidos inclúen o último día, a última semana (valor por defecto) e o último mes.",
+	"apihelp-pagetriagestats-param-topreviewers": "Incluir os 50 revisores principais no período de tempo dado. Os valores válidos inclúen o último día, a última semana (valor por defecto) e o último mes.",
 	"apihelp-pagetriagetagging-description": "Engadir etiquetas a un artigo.",
 	"apihelp-pagetriagetagging-param-pageid": "O artigo para o que será etiquetado.",
 	"apihelp-pagetriagetagging-param-top": "Texto etiquetado a engadir ó comezo dun artigo.",
