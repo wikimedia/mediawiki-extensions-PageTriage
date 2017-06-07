@@ -269,7 +269,7 @@
 	"apihelp-pagetriagestats-param-non_autoconfirmed_users": "是否只包括非自动确认用户创建的页面。",
 	"apihelp-pagetriagestats-param-blocked_users": "是否只包括已封禁用户创建的页面。",
 	"apihelp-pagetriagestats-param-username": "只包括指定用户名创建的页面。",
-	"apihelp-pagetriagestats-param-topreviewers": "包含在指定时间表上前10位复核者。有效值包含昨天、上周（默认）或上个月。",
+	"apihelp-pagetriagestats-param-topreviewers": "包含在指定时间表上前50位复核者。有效值包含昨天、上周（默认）或上个月。",
 	"apihelp-pagetriagetagging-description": "添加标签到一个条目。",
 	"apihelp-pagetriagetagging-param-pageid": "要添加标签的条目。",
 	"apihelp-pagetriagetagging-param-top": "要被添加到条目顶部的标签文本。",
