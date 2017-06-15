@@ -35,17 +35,15 @@
 <br/>
 
 <!-- possible problems section -->
-<div class="mwe-pt-info-header">	
-	<%= mw.msg( 'pagetriage-info-problem-header' ) %>
-</div>
-<div class="mwe-pt-info-content">
-	<% if ( problems ) { %>
+<% if ( problems ) { %>
+	<div class="mwe-pt-info-header">
+		<%= mw.msg( 'pagetriage-info-problem-header' ) %>
+	</div>
+	<div class="mwe-pt-info-content">
 		<%= problems %>
-	<% } else { %>
-		<%= mw.msg( 'pagetriage-info-no-problems' ) %>
-	<% } %>
-</div>
-<br/>
+	</div>
+	<br/>
+<% } %>
 
 <!-- history section -->
 <div class="mwe-pt-info-header">

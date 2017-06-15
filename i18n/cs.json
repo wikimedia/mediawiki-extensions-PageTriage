@@ -65,7 +65,6 @@
 	"pagetriage-js-required": "Toto rozšíření vyžaduje prohlížeč se zapnutým JavaScriptem.",
 	"pagetriage-tags-param-free-yes-label": "Ano",
 	"pagetriage-tags-param-free-no-label": "Ne",
-	"pagetriage-info-no-problems": "U této stránky zatím nebyly nalezeny žádné problémy.",
 	"pagetriage-info-problem-non-autoconfirmed": "Nový uživatel",
 	"pagetriage-info-problem-non-autoconfirmed-desc": "Tuto stránku založil uživatel, který dosud nebyl automaticky schválen.",
 	"pagetriage-info-problem-blocked": "Zablokovaný uživatel",

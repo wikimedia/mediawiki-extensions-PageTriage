@@ -631,7 +631,6 @@ class PageTriageHooks {
 				'pagetriage-info-history-header',
 				'pagetriage-info-history-show-full',
 				'pagetriage-info-help',
-				'pagetriage-info-no-problems',
 				'pagetriage-info-problem-non-autoconfirmed',
 				'pagetriage-info-problem-non-autoconfirmed-desc',
 				'pagetriage-info-problem-blocked',

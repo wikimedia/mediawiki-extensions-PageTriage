@@ -332,7 +332,6 @@
 	"pagetriage-info-history-header": "{{Identical|History}}",
 	"pagetriage-info-history-show-full": "Used as link text.\n\nThe link points to History page (action=history).",
 	"pagetriage-info-help": "Link text for the info flyout help button.\n{{Identical|Help}}",
-	"pagetriage-info-no-problems": "Text to show when the page has no problems.",
 	"pagetriage-info-problem-non-autoconfirmed": "Title for the error displayed when the page author isn't autoconfirmed.",
 	"pagetriage-info-problem-non-autoconfirmed-desc": "Desription for the error displayed when the page author isn't autoconfirmed.",
 	"pagetriage-info-problem-blocked": "Title for the error displayed when the page author is blocked.",
