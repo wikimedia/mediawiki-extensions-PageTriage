@@ -361,5 +361,6 @@
 	"apihelp-pagetriagestats-param-no_inbound_links": "들어오는 링크가 없는 문서만 포함할지의 여부입니다.",
 	"apihelp-pagetriagestats-param-non_autoconfirmed_users": "자동 인증되지 않은 사용자가 만든 문서만 포함할지의 여부입니다.",
 	"apihelp-pagetriagestats-param-blocked_users": "차단된 사용자가 만든 문서만 포함할지의 여부입니다.",
-	"apihelp-pagetriagestats-param-username": "사용자 이름으로 만들어진 문서만 포함합니다."
+	"apihelp-pagetriagestats-param-username": "사용자 이름으로 만들어진 문서만 포함합니다.",
+	"apihelp-pagetriagetagging-summary": "문서에 태그를 추가합니다."
 }

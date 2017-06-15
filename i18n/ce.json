@@ -23,7 +23,6 @@
 	"pagetriage-note-reviewed": "ХӀокху агӀоне хьаьжина.",
 	"pagetriage-note-not-reviewed": "ХӀара агӀо хӀинца а хьажаза ю.",
 	"pagetriage-button-edit-details": "Хийца мадарра дерш",
-	"pagetriage-characters-left": "$1 {{PLURAL:$1|символ йисина|$1 символаш йисина}}",
 	"pagetriage-tags-cat-common-label": "Викигулам",
 	"pagetriage-del-tags-dbg7-label": "Авторо доьху дӀаяккхар",
 	"pagetriage-tags-param-free-yes-label": "ХӀаъ",
@@ -31,8 +30,6 @@
 	"pagetriage-info-history-header": "Истори",
 	"pagetriage-info-help": "гӀо",
 	"pagetriage-info-problem-no-categories-desc": "ХӀокху агӀона цхьаа категори яц.",
-	"pagetriage-del-tooltip": "Кховдае хӀара агӀо дӀаяккхаре",
-	"pagetriage-notification-mark-as-reviewed2": "[[$2]] агӀо {{GENDER:$1|декъашхочо}} [[User:$1|$1]] теллина",
-	"pagetriage-notification-mark-as-reviewed-email-subject2": "Хьан агӀо  {{SITENAME}} сайтан тӀехь {{GENDER:$1|теллина}}",
-	"pagetriage-notification-mark-as-reviewed-email-batch-body": "$1 агӀо {{GENDER:$2|декъашхочо}} теллина ($2)."
+	"pagetriage-toolbar-learn-more": "Цул совнаха хаа »",
+	"pagetriage-del-tooltip": "Кховдае хӀара агӀо дӀаяккхаре"
 }
