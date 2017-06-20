@@ -4,6 +4,7 @@
 			"Ninjastrikers"
 		]
 	},
+	"pagetriage-bytes": "$1 {{PLURAL:$1|ဘိုက်|ဘိုက်}}",
 	"pagetriage-filter-stat-all": "အားလုံး",
 	"pagetriage-filter-stat-blocked": "ပိတ်ပင်ထားသော အသုံးပြုသူများ",
 	"pagetriage-info-help": "အကူအညီ"
