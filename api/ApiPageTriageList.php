@@ -203,7 +203,7 @@ class ApiPageTriageList extends ApiBase {
 				[ 'COUNT(ptrp_page_id) AS total' ],
 				$conds
 			);
-			return (int) $res->total;
+			return (int)$res->total;
 		} else {
 			// Pull page IDs from database
 			$res = $dbr->select(

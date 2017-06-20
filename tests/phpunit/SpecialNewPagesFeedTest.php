@@ -18,10 +18,10 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 	public function setUp() {
 		$testUserClass = class_exists( 'ApiTestUser' ) ? 'ApiTestUser' : 'TestUser';
 		self::$users['one'] = new $testUserClass(
-				'PageTriageUser1',
-				'PageTriage Test User 1',
-				'pagetriage_test_user_1@example.com',
-				[]
+			'PageTriageUser1',
+			'PageTriage Test User 1',
+			'pagetriage_test_user_1@example.com',
+			[]
 		);
 
 		parent::setUp();
@@ -36,11 +36,9 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 
 	// Create a fake logged in user
 	function testLogin() {
-
 		$sessionArray = [];
 
 		foreach ( self::$users as $key => $user ) {
-
 			$params = [
 				'action' => 'login',
 				'lgname' => $user->getUser()->getName(),
@@ -66,18 +64,15 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 			$this->assertNotEmpty( $session, 'API Login must return a session' );
 
 			$sessionArray[$key] = $session;
-
 		}
 
 		return $sessionArray;
-
 	}
 
 	/**
 	 * @depends testLogin
 	 */
 	function testAddArticles( $sessionArray ) {
-
 		global $wgUser;
 
 		$wgUser = self::$users['one']->getUser();

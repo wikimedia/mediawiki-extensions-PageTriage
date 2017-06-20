@@ -239,7 +239,7 @@ class PageTriageUtil {
 		$title  = [];
 
 		foreach ( $users as $user ) {
-			$user = (array) $user;
+			$user = (array)$user;
 			$searchKey = [ 'user_name', 'reviewer' ];
 
 			foreach ( $searchKey as $val ) {

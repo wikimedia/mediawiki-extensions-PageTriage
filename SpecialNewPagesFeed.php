@@ -34,7 +34,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 
 		if ( !$user->isAnon() ) {
 			$now = wfTimestampNow();
-			DeferredUpdates::addCallableUpdate( function() use ( $user, $now ) {
+			DeferredUpdates::addCallableUpdate( function () use ( $user, $now ) {
 				$user->setOption( 'pagetriage-lastuse', $now );
 				$user->saveSettings();
 			} );
@@ -296,7 +296,6 @@ HTML;
 
 		// Output the HTML for the triage interface
 		$out->addHtml( $triageInterface );
-
 	}
 
 	/**

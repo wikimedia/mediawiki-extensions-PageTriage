@@ -25,7 +25,7 @@ class PageTriageMessagesModule extends ResourceLoaderModule {
 		$options = []
 	) {
 		$contentLanguageMessageKeys = array_values(
-			array_unique( (array) $options['contentLanguageMessages'] )
+			array_unique( (array)$options['contentLanguageMessages'] )
 		);
 		sort( $contentLanguageMessageKeys );
 		$this->contentLanguageMessageKeys = $contentLanguageMessageKeys;

@@ -74,7 +74,7 @@ class PageTriageHooks {
 
 		if ( $rev && $rev->getParentId() ) {
 			// Make sure $prev->getContent() is done post-send if possible
-			DeferredUpdates::addCallableUpdate( function() use ( $rev, $page, $user ) {
+			DeferredUpdates::addCallableUpdate( function () use ( $rev, $page, $user ) {
 				$prev = $rev->getPrevious();
 				if ( $prev && !$page->isRedirect() && $prev->getContent()->isRedirect() ) {
 					PageTriageHooks::addToPageTriageQueue(

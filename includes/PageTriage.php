@@ -93,7 +93,6 @@ class PageTriage {
 	 * @param $fromRc bool
 	 */
 	public function setTriageStatus( $reviewed, User $user = null, $fromRc = false ) {
-
 		if ( !array_key_exists( $reviewed, self::getValidReviewedStatus() ) ) {
 			$reviewed = '0';
 		}

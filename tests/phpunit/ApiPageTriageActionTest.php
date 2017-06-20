@@ -38,11 +38,9 @@ class ApiPageTriageActionTest extends ApiTestCase {
 	}
 
 	function testLogin() {
-
 		$sessionArray = [];
 
 		foreach ( self::$users as $key => $user ) {
-
 			$params = [
 				'action' => 'login',
 				'lgname' => $user->getUser()->getName(),
@@ -72,7 +70,6 @@ class ApiPageTriageActionTest extends ApiTestCase {
 		}
 
 		return $sessionArray;
-
 	}
 
 	/**
