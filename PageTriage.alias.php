@@ -5,106 +5,105 @@
  * @file
  * @ingroup Extensions
  */
-// @codingStandardsIgnoreFile
 
-$specialPageAliases = array();
+$specialPageAliases = [];
 
 /** English (English) */
-$specialPageAliases['en'] = array(
-	'NewPagesFeed' => array( 'NewPagesFeed' ),
-);
+$specialPageAliases['en'] = [
+	'NewPagesFeed' => [ 'NewPagesFeed' ],
+];
 
 /** Arabic (العربية) */
-$specialPageAliases['ar'] = array(
-	'NewPagesFeed' => array( 'تغذية_الصفحات_الجديدة' ),
-);
+$specialPageAliases['ar'] = [
+	'NewPagesFeed' => [ 'تغذية_الصفحات_الجديدة' ],
+];
 
 /** Egyptian Arabic (مصرى) */
-$specialPageAliases['arz'] = array(
-	'NewPagesFeed' => array( 'تغذيه_الصفحات_الجديده' ),
-);
+$specialPageAliases['arz'] = [
+	'NewPagesFeed' => [ 'تغذيه_الصفحات_الجديده' ],
+];
 
 /** Western Balochi (بلوچی رخشانی) */
-$specialPageAliases['bgn'] = array(
-	'NewPagesFeed' => array( 'نوکین_وّرق_ئانی_وّرگ' ),
-);
+$specialPageAliases['bgn'] = [
+	'NewPagesFeed' => [ 'نوکین_وّرق_ئانی_وّرگ' ],
+];
 
 /** German (Deutsch) */
-$specialPageAliases['de'] = array(
-	'NewPagesFeed' => array( 'Seitenprüfung' ),
-);
+$specialPageAliases['de'] = [
+	'NewPagesFeed' => [ 'Seitenprüfung' ],
+];
 
 /** Zazaki (Zazaki) */
-$specialPageAliases['diq'] = array(
-	'NewPagesFeed' => array( 'WerdéPerandéNewan' ),
-);
+$specialPageAliases['diq'] = [
+	'NewPagesFeed' => [ 'WerdéPerandéNewan' ],
+];
 
 /** Persian (فارسی) */
-$specialPageAliases['fa'] = array(
-	'NewPagesFeed' => array( 'خوراک_صفحه‌های_جدید' ),
-);
+$specialPageAliases['fa'] = [
+	'NewPagesFeed' => [ 'خوراک_صفحه‌های_جدید' ],
+];
 
 /** Hebrew (עברית) */
-$specialPageAliases['he'] = array(
-	'NewPagesFeed' => array( 'הזנת_דפים_חדשים' ),
-);
+$specialPageAliases['he'] = [
+	'NewPagesFeed' => [ 'הזנת_דפים_חדשים' ],
+];
 
 /** Italian (italiano) */
-$specialPageAliases['it'] = array(
-	'NewPagesFeed' => array( 'FeedNuovePagine' ),
-);
+$specialPageAliases['it'] = [
+	'NewPagesFeed' => [ 'FeedNuovePagine' ],
+];
 
 /** Japanese (日本語) */
-$specialPageAliases['ja'] = array(
-	'NewPagesFeed' => array( '新規ページフィード' ),
-);
+$specialPageAliases['ja'] = [
+	'NewPagesFeed' => [ '新規ページフィード' ],
+];
 
 /** Korean (한국어) */
-$specialPageAliases['ko'] = array(
-	'NewPagesFeed' => array( '새문서피드' ),
-);
+$specialPageAliases['ko'] = [
+	'NewPagesFeed' => [ '새문서피드' ],
+];
 
 /** Macedonian (македонски) */
-$specialPageAliases['mk'] = array(
-	'NewPagesFeed' => array( 'КаналНовиСтраници' ),
-);
+$specialPageAliases['mk'] = [
+	'NewPagesFeed' => [ 'КаналНовиСтраници' ],
+];
 
 /** Malayalam (മലയാളം) */
-$specialPageAliases['ml'] = array(
-	'NewPagesFeed' => array( 'വാർത്താതാൾഫീഡ്' ),
-);
+$specialPageAliases['ml'] = [
+	'NewPagesFeed' => [ 'വാർത്താതാൾഫീഡ്' ],
+];
 
 /** Malay (Bahasa Melayu) */
-$specialPageAliases['ms'] = array(
-	'NewPagesFeed' => array( 'Suapan_laman_baru' ),
-);
+$specialPageAliases['ms'] = [
+	'NewPagesFeed' => [ 'Suapan_laman_baru' ],
+];
 
 /** Dutch (Nederlands) */
-$specialPageAliases['nl'] = array(
-	'NewPagesFeed' => array( 'OverzichtNieuwePagina\'s', 'OverzichtNieuwePaginas' ),
-);
+$specialPageAliases['nl'] = [
+	'NewPagesFeed' => [ 'OverzichtNieuwePagina\'s', 'OverzichtNieuwePaginas' ],
+];
 
 /** Sicilian (sicilianu) */
-$specialPageAliases['scn'] = array(
-	'NewPagesFeed' => array( 'FeedNuovePagine' ),
-);
+$specialPageAliases['scn'] = [
+	'NewPagesFeed' => [ 'FeedNuovePagine' ],
+];
 
 /** Turkish (Türkçe) */
-$specialPageAliases['tr'] = array(
-	'NewPagesFeed' => array( 'YeniSayfaBeslemesi' ),
-);
+$specialPageAliases['tr'] = [
+	'NewPagesFeed' => [ 'YeniSayfaBeslemesi' ],
+];
 
 /** Vietnamese (Tiếng Việt) */
-$specialPageAliases['vi'] = array(
-	'NewPagesFeed' => array( 'Nguồn_tin_trang_mới' ),
-);
+$specialPageAliases['vi'] = [
+	'NewPagesFeed' => [ 'Nguồn_tin_trang_mới' ],
+];
 
 /** Simplified Chinese (中文（简体）‎) */
-$specialPageAliases['zh-hans'] = array(
-	'NewPagesFeed' => array( '新页面供给' ),
-);
+$specialPageAliases['zh-hans'] = [
+	'NewPagesFeed' => [ '新页面供给' ],
+];
 
 /** Traditional Chinese (中文（繁體）‎) */
-$specialPageAliases['zh-hant'] = array(
-	'NewPagesFeed' => array( '新頁面供稿' ),
-);
+$specialPageAliases['zh-hant'] = [
+	'NewPagesFeed' => [ '新頁面供稿' ],
+];
