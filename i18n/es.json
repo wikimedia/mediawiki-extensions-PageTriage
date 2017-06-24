@@ -14,7 +14,8 @@
 			"Matiia",
 			"Samwilson",
 			"Dgstranz",
-			"Javiersanp"
+			"Javiersanp",
+			"Josecurioso"
 		]
 	},
 	"pagetriage": "Página de triaje",
@@ -367,7 +368,7 @@
 	"apihelp-pagetriagestats-param-no_inbound_links": "Incluir o no solo páginas sin enlaces entrantes.",
 	"apihelp-pagetriagestats-param-non_autoconfirmed_users": "Si se deben incluir solo las páginas creadas por usuarios no autoconfirmados.",
 	"apihelp-pagetriagestats-param-username": "Incluye solo las páginas creadas por nombre de usuario.",
-	"apihelp-pagetriagestats-param-topreviewers": "Incluir los 10 revisores principales en el periodo de tiempo dado. Los valores válidos incluyen el último día, la última semana (valor por defecto) y el último mes.",
+	"apihelp-pagetriagestats-param-topreviewers": "Incluir los 50 revisores principales en un período de tiempo dado. Los valores aceptados incluyen último-día, última-semana (por defecto), o último-mes.",
 	"apihelp-pagetriagetagging-description": "Añadir etiquetas a un artículo.",
 	"apihelp-pagetriagetagging-param-deletion": "Si el etiquetamiento es para un nominación de borrado.",
 	"apihelp-pagetriagetagging-param-note": "Nota personal de los revisores a los creadores de páginas.",
