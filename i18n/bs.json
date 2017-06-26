@@ -5,5 +5,7 @@
 		]
 	},
 	"pagetriage-filter-show-heading": "Prikaži:",
-	"notification-header-pagetriage-mark-as-reviewed": "Stranica '''$3''' je {{GENDER:$2|pregledana}}."
+	"notification-header-pagetriage-mark-as-reviewed": "Stranica '''$3''' je {{GENDER:$2|pregledana}}.",
+	"echo-pref-tooltip-page-review": "Obavijesti me kad neko pregleda stranicu koju sam napravio/-la.",
+	"echo-category-title-page-review": "{{PLURAL:$1|Pregled|Pregledi}} stranica"
 }
