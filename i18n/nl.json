@@ -270,6 +270,7 @@
 	"pagetriage-tags-param-free-yes-label": "Ja",
 	"pagetriage-tags-param-free-no-label": "No",
 	"pagetriage-tags-param-missing-required": "Voor het label $1 ontbreekt een verplichte parameter.",
+	"pagetriage-tags-talk-page-notify-topic-title": "Manieren om $1  te verbeteren",
 	"log-name-pagetriage-curation": "Logboek paginaconservering",
 	"log-description-pagetriage-curation": "Dit is het logboek met handelingen vanuit de werkbalk paginaconservering.",
 	"log-name-pagetriage-deletion": "Logboek verwijderingslabels",
