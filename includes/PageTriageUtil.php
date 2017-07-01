@@ -36,7 +36,7 @@ class PageTriageUtil {
 			return null;
 		}
 
-		return !(boolean)$row->ptrp_reviewed;
+		return !(bool)$row->ptrp_reviewed;
 	}
 
 	/**
