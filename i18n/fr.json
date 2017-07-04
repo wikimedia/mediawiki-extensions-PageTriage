@@ -361,6 +361,7 @@
 	"echo-pref-tooltip-page-review": "Me prévenir quand quelqu’un relit une page que j’ai créée.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Relecture|Relectures}} de page",
 	"apihelp-pagetriageaction-description": "Marquer un article comme relu ou non relu.",
+	"apihelp-pagetriageaction-summary": "Marquer un article comme relu ou non relu.",
 	"apihelp-pagetriageaction-param-pageid": "L'article qui doit être marqué comme relu ou non relu.",
 	"apihelp-pagetriageaction-param-reviewed": "Si l'article a été relu.",
 	"apihelp-pagetriageaction-param-note": "Note personnelle des relecteurs et concernant les créateurs de pages.",
