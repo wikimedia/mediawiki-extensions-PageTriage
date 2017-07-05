@@ -11,7 +11,8 @@
 			"Sjoerddebruin",
 			"Mar(c)",
 			"Esketti",
-			"Mainframe98"
+			"Mainframe98",
+			"Effeietsanders"
 		]
 	},
 	"pagetriage": "Paginacontrole",
@@ -328,7 +329,7 @@
 	"pagetriage-toolbar-minimize": "Minimaliseren",
 	"pagetriage-tag-warning-notice": "Let op: deze pagina is pas {{PLURAL:$1|één minuut|$1 minuten}} geleden aangemaakt. Overweeg nog even te wachten met labelen, tenzij de pagina een groot probleem oplevert.",
 	"echo-pref-subscription-page-review": "Een pagina controleert die u hebt aangemaakt",
-	"echo-pref-tooltip-page-review": "Informeer mij wanneer iemand een pagina die ik heb gemaakt heeft gecontroleerd.",
+	"echo-pref-tooltip-page-review": "Informeer mij wanneer iemand een pagina die ik heb gemaakt, heeft gecontroleerd.",
 	"echo-category-title-page-review": "Paginacontrole{{PLURAL:$1||s}}",
 	"apihelp-pagetriageaction-description": "Een pagina markeren als gecontroleerd of niet-gecontroleerd.",
 	"apihelp-pagetriageaction-param-pageid": "De pagina waarvoor gemarkeerd wordt als gecontroleerd of niet-gecontroleerd.",
