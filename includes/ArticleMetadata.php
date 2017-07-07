@@ -830,9 +830,9 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 			$attempt++;
 		}
 
-		$text = trim( strip_tags( htmlspecialchars_decode(
+		$text = trim( Sanitizer::stripAllTags(
 			MessageCache::singleton()->parse( $text )->getText()
-		) ) );
+		) );
 		// strip out non-useful data for snippet
 		$text = str_replace( [ '{', '}', '[edit]' ], '', $text );
 
