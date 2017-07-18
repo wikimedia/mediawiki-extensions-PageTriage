@@ -104,13 +104,13 @@ $( function () {
 
 					if ( note ) {
 						note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' ).UnMark.note +
-							'|' + pageTitle +
-							'|' + mw.config.get( 'wgUserName' ) +
-							'|' + note + '}}';
+							'|1=' + pageTitle +
+							'|2=' + mw.config.get( 'wgUserName' ) +
+							'|3=' + note + '}}';
 					} else {
 						note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' ).UnMark.nonote +
-							'|' + mw.config.get( 'wgUserName' ) +
-							'|' + pageTitle +
+							'|1=' + mw.config.get( 'wgUserName' ) +
+							'|2=' + pageTitle +
 							'}}';
 					}
 				} else {
@@ -135,9 +135,9 @@ $( function () {
 				).text();
 
 				note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' ).Mark +
-					'|' + pageTitle +
-					'|' + mw.config.get( 'wgUserName' ) +
-					'|' + note + '}}';
+					'|1=' + pageTitle +
+					'|2=' + mw.config.get( 'wgUserName' ) +
+					'|3=' + note + '}}';
 			}
 
 			messagePosterPromise.then( function ( messagePoster ) {

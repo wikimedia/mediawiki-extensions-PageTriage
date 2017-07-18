@@ -639,9 +639,9 @@ $( function () {
 			).text();
 
 			note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' ).Tags +
-				'|' + pageName +
-				'|' + mw.config.get( 'wgUserName' ) +
-				'|' + note + '}}';
+				'|1=' + pageName +
+				'|2=' + mw.config.get( 'wgUserName' ) +
+				'|3=' + note + '}}';
 
 			messagePosterPromise.then( function ( messagePoster ) {
 				return messagePoster.post(
