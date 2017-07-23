@@ -109,7 +109,7 @@ class PageTriageUtil {
 	 * @param array $filters Associative array of filter names/values.
 	 *                       See ApiPageTriageStats->getAllowedParams() for possible values,
 	 *                       which are the same that the ApiPageTriageList endpoint accepts.
-	 * @return integer Number of pages based on the selected filters
+	 * @return int Number of pages based on the selected filters
 	 */
 	public static function getArticleFilterStat( $filters ) {
 		if ( !isset( $filters['showreviewed'] ) && !isset( $filters['showunreviewed'] ) ) {
