@@ -5,7 +5,8 @@
 			"Nedergard",
 			"Pxos",
 			"Silvonen",
-			"Nike"
+			"Nike",
+			"Alluk."
 		]
 	},
 	"newpagesfeed": "Uusien sivujen liukuhihna",
@@ -20,7 +21,7 @@
 	"pagetriage-mark-as-reviewed-error": "Virhe ilmeni, kun tätä sivua merkittiin katsastetuksi: $1",
 	"pagetriage-mark-as-unreviewed-error": "Virhe ilmeni, kun tätä sivua merkittiin katsastamattomaksi: $1",
 	"pagetriage-hist": "historia",
-	"pagetriage-bytes": "$1 {{PLURAL:$1|tavu|tavua}}",
+	"pagetriage-bytes": "$1 {{PLURAL:$1|merkki|merkkiä}}",
 	"pagetriage-edits": "$1 {{PLURAL:$1|muokkaus|muokkausta}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|luokka|luokkaa}}",
 	"pagetriage-no-categories": "Ei luokkia",
