@@ -175,7 +175,7 @@ Support:
 			}
 		}, this));
 
-		$w.load($.proxy(function() {
+		$w.on( "load", $.proxy(function() {
 			/*
 			Fire a scroll check, should the page be loaded at a non-zero scroll value,
 			as with a fragment id link or a page refresh.
@@ -659,7 +659,7 @@ Support:
 		scrollThrottle: 100
 	};
 
-	$w.load(function() {
+	$w.on( "load", function() {
 		// Calculate everything once on load.
 		$[wps]('refresh');
 	});
