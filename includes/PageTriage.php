@@ -20,7 +20,7 @@ class PageTriage {
 	protected $mArticleMetadata;
 
 	/**
-	 * @param $pageId int
+	 * @param int $pageId
 	 */
 	public function __construct( $pageId ) {
 		$this->mPageId = (int)$pageId;
@@ -29,13 +29,13 @@ class PageTriage {
 
 	/**
 	 * Add page to page triage queue
-	 * @param $reviewed string The reviewed status of the page...
+	 * @param string $reviewed The reviewed status of the page...
 	 *    '0': unreviewed
 	 *    '1': reviewed manually
 	 *    '2': patrolled from Special:NewPages
 	 *    '3': auto-patrolled
-	 * @param $user User
-	 * @param $fromRc bool
+	 * @param User $user
+	 * @param bool $fromRc
 	 * @throws MWPageTriageMissingRevisionException
 	 * @return bool - true: add new record, false: update existing record
 	 */
@@ -88,9 +88,9 @@ class PageTriage {
 
 	/**
 	 * set the triage status of an article in pagetriage queue
-	 * @param $reviewed string - see PageTriage::getValidReviewedStatus()
-	 * @param $user User
-	 * @param $fromRc bool
+	 * @param string $reviewed see PageTriage::getValidReviewedStatus()
+	 * @param User $user
+	 * @param bool $fromRc
 	 */
 	public function setTriageStatus( $reviewed, User $user = null, $fromRc = false ) {
 		if ( !array_key_exists( $reviewed, self::getValidReviewedStatus() ) ) {
@@ -140,10 +140,10 @@ class PageTriage {
 
 	/**
 	 * Update the database record
-	 * @param $row array key => value pair to be updated
+	 * @param array $row key => value pair to be updated
 	 * Todo: ptrpt_reviewed should not updated from this function, add exception to catch this
 	 *       or find a better solution
-		 */
+	 */
 	public function update( $row ) {
 		if ( !$row ) {
 			return;
@@ -253,7 +253,7 @@ class PageTriage {
 
 	/**
 	 * Set the tags updated timestamp
-	 * @param $pageIds array
+	 * @param array $pageIds
 	 * @return string
 	 */
 	public static function bulkSetTagsUpdated( $pageIds ) {

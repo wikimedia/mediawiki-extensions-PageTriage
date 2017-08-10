@@ -2,14 +2,14 @@
 
 class PageTriageAddDeletionTagPresentationModel extends PageTriagePresentationModel {
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getIconType() {
 		return 'trash';
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getSecondaryLinks() {
 		$links = [ $this->getAgentLink() ];
@@ -21,7 +21,7 @@ class PageTriageAddDeletionTagPresentationModel extends PageTriagePresentationMo
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getHeaderMessage() {
 		$msg = parent::getHeaderMessage();

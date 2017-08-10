@@ -30,7 +30,8 @@ class PageTriageHttp {
 	}
 
 	/**
-	 * @param $url string
+	 * @param string $url
+	 * @return mixed
 	 */
 	function get( $url ) {
 		curl_setopt( $this->curlHandle, CURLOPT_URL, $url );
@@ -47,8 +48,8 @@ class PageTriageHttp {
 	}
 
 	/**
-	 * @param $url string
-	 * @param $postVars
+	 * @param string $url
+	 * @param array $postVars
 	 * @return mixed
 	 */
 	function post( $url, $postVars ) {
@@ -83,7 +84,7 @@ class WikiApi {
 
 	/**
 	 * Construct the class instance
-	 * @param $url string The URL used to access the API
+	 * @param string $url The URL used to access the API
 	 **/
 	function __construct( $url ) {
 		$this->http = new PageTriageHttp;
@@ -92,7 +93,7 @@ class WikiApi {
 
 	/**
 	 * Send a get query to the API
-	 * @param $query string y The query string
+	 * @param string $query The query string
 	 * @return string The result from the API
 	 **/
 	function get( $query ) {
@@ -102,8 +103,8 @@ class WikiApi {
 
 	/**
 	 * Send a post query to the API
-	 * @param $query string The query string
-	 * @param $postVars
+	 * @param string $query The query string
+	 * @param array $postVars
 	 * @return string The result from the API
 	 */
 	function post( $query, $postVars ) {
@@ -113,8 +114,8 @@ class WikiApi {
 
 	/**
 	 * Log into the wiki via the API
-	 * @param $username string The user's username
-	 * @param $password string The user's password
+	 * @param string $username The user's username
+	 * @param string $password The user's password
 	 * @return string The result from the API
 	 **/
 	function login( $username, $password ) {
@@ -154,7 +155,7 @@ class WikiApi {
 
 	/**
 	 * Get the contents of a page
-	 * @param $title string The title of the wikipedia page to fetch
+	 * @param string $title The title of the wikipedia page to fetch
 	 * @return string|bool The wikitext for the page (or false)
 	 **/
 	function getPage( $title ) {
@@ -180,8 +181,8 @@ class WikiApi {
 
 	/**
 	 * Get the newest pages from the wiki
-	 * @param $namespace int The namespace to limit the search to
-	 * @param $limit int The maximum number of pages to return
+	 * @param int $namespace The namespace to limit the search to
+	 * @param int $limit The maximum number of pages to return
 	 * @return array of titles
 	 **/
 	function getNewPages( $namespace = 0, $limit = 10 ) {
@@ -206,8 +207,8 @@ class WikiApi {
 
 	/**
 	 * Create a new page on the wiki
-	 * @param $title string The title of the new page
-	 * @param $text string The text of the new page
+	 * @param string $title The title of the new page
+	 * @param string $text The text of the new page
 	 * @return string The result from the API
 	 **/
 	function createPage( $title, $text ) {

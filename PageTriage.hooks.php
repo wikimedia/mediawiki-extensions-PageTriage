@@ -7,9 +7,9 @@ class PageTriageHooks {
 	 * main(article) namespace
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/SpecialMovepageAfterMove
-	 * @param $movePage MovePageForm object
-	 * @param $oldTitle Title old title object
-	 * @param $newTitle Title new title object
+	 * @param MovePageForm $movePage MovePageForm object
+	 * @param Title &$oldTitle old title object
+	 * @param Title &$newTitle new title object
 	 * @return bool
 	 */
 	public static function onSpecialMovepageAfterMove( $movePage, &$oldTitle, &$newTitle ) {
@@ -59,10 +59,10 @@ class PageTriageHooks {
 	 * Note: Page will be automatically marked as triaged for users with autopatrol right
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/NewRevisionFromEditComplete
-	 * @param $page WikiPage the WikiPage edited
-	 * @param $rev Revision|null the new revision
-	 * @param $baseID int the revision ID this was based on, if any
-	 * @param $user User the editing user
+	 * @param WikiPage $page the WikiPage edited
+	 * @param Revision|null $rev the new revision
+	 * @param int $baseID the revision ID this was based on, if any
+	 * @param User $user the editing user
 	 * @return bool
 	 */
 	public static function onNewRevisionFromEditComplete( $page, $rev, $baseID, $user ) {
@@ -90,15 +90,15 @@ class PageTriageHooks {
 	 * When a new article is created, insert it into the PageTriage Queue
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/ArticleInsertComplete
-	 * @param $article WikiPage created
-	 * @param $user User creating the article
-	 * @param $content Content New content
-	 * @param $summary string Edit summary/comment
-	 * @param $isMinor bool Whether or not the edit was marked as minor
-	 * @param $isWatch bool (No longer used)
-	 * @param $section bool (No longer used)
-	 * @param $flags: Flags passed to Article::doEdit()
-	 * @param $revision Revision New Revision of the article
+	 * @param WikiPage $article WikiPage created
+	 * @param User $user User creating the article
+	 * @param Content $content New content
+	 * @param string $summary Edit summary/comment
+	 * @param bool $isMinor Whether or not the edit was marked as minor
+	 * @param bool $isWatch (No longer used)
+	 * @param bool $section (No longer used)
+	 * @param int $flags Flags passed to Article::doEdit()
+	 * @param Revision $revision New Revision of the article
 	 * @return bool
 	 */
 	public static function onPageContentInsertComplete(
@@ -118,17 +118,17 @@ class PageTriageHooks {
 	 * Flush user status cache on a successful save.
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/PageContentSaveComplete
-	 * @param $article WikiPage
-	 * @param $user
-	 * @param $content Content
-	 * @param $summary
-	 * @param $minoredit
-	 * @param $watchthis
-	 * @param $sectionanchor
-	 * @param $flags
-	 * @param $revision
-	 * @param $status
-	 * @param $baseRevId
+	 * @param WikiPage $article
+	 * @param User $user
+	 * @param Content $content
+	 * @param string $summary
+	 * @param bool $minoredit
+	 * @param bool $watchthis
+	 * @param string $sectionanchor
+	 * @param int $flags
+	 * @param Revision $revision
+	 * @param Status $status
+	 * @param int $baseRevId
 	 * @return bool
 	 */
 	public static function onPageContentSaveComplete(
@@ -144,7 +144,6 @@ class PageTriageHooks {
 	 * @param LinksUpdate $linksUpdate
 	 * @return bool
 	 */
-
 	public static function onLinksUpdateComplete( LinksUpdate $linksUpdate ) {
 		global $wgPageTriageNamespaces;
 		if ( !in_array( $linksUpdate->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
@@ -168,10 +167,11 @@ class PageTriageHooks {
 	 * Remove the metadata we added when the article is deleted.
 	 *
 	 * 'ArticleDeleteComplete': after an article is deleted
-	 * @param $article WikiPage the WikiPage that was deleted
-	 * @param $user User the user that deleted the article
-	 * @param $reason string the reason the article was deleted
-	 * @param $id int id of the article that was deleted
+	 * @param WikiPage $article the WikiPage that was deleted
+	 * @param User $user the user that deleted the article
+	 * @param string $reason the reason the article was deleted
+	 * @param int $id id of the article that was deleted
+	 * @return true
 	 */
 	public static function onArticleDeleteComplete( $article, $user, $reason, $id ) {
 		global $wgPageTriageNamespaces;
@@ -193,10 +193,10 @@ class PageTriageHooks {
 	 *
 	 * This method should only be called from this class and its closures
 	 *
-	 * @param $pageId int
-	 * @param $title Title
-	 * @param $user User|null
-	 * @param $reviewed numeric string See PageTriage::getValidReviewedStatus()
+	 * @param int $pageId
+	 * @param Title $title
+	 * @param User|null $user
+	 * @param string $reviewed numeric string See PageTriage::getValidReviewedStatus()
 	 * @return bool
 	 */
 	public static function addToPageTriageQueue( $pageId, $title, $user = null, $reviewed = null ) {
@@ -230,8 +230,8 @@ class PageTriageHooks {
 
 	/**
 	 * Add last time user visited the triage page to preferences.
-	 * @param $user User object
-	 * @param &$preferences array Preferences object
+	 * @param User $user User object
+	 * @param array &$preferences array Preferences object
 	 * @return bool
 	 */
 	public static function onGetPreferences( $user, &$preferences ) {
@@ -245,7 +245,7 @@ class PageTriageHooks {
 	/**
 	 * Flush user page/user talk page exsitance status, this function should
 	 * be called when a page gets created/deleted/moved/restored
-	 * @param $title
+	 * @param Title $title
 	 */
 	private static function flushUserStatusCache( $title ) {
 		global $wgMemc;
@@ -269,7 +269,7 @@ class PageTriageHooks {
 	 * Note that we always check the age of the page last since that is
 	 * potentially the most expensive check (if the data isn't cached).
 	 *
-	 * @param $article Article
+	 * @param Article $article
 	 * @return bool
 	 */
 	private static function shouldShowNoIndex( $article ) {
@@ -349,7 +349,7 @@ class PageTriageHooks {
 
 	/**
 	 * Formats a template name to match the format returned by getTemplates()
-	 * @param $template string
+	 * @param string $template
 	 * @return string
 	 */
 	private static function formatTemplateName( $template ) {
@@ -362,8 +362,8 @@ class PageTriageHooks {
 	 * Handler for hook ArticleViewFooter, this will determine whether to load
 	 * curation toolbar or 'mark as reviewed'/'reviewed' text
 	 *
-	 * @param &$article Article object to show link for.
-	 * @param $patrolFooterShown bool whether the patrol footer is shown
+	 * @param Article $article Article object to show link for.
+	 * @param bool $patrolFooterShown whether the patrol footer is shown
 	 * @return bool
 	 */
 	public static function onArticleViewFooter( $article, $patrolFooterShown ) {
@@ -460,9 +460,9 @@ class PageTriageHooks {
 	 * $user: user (object) who marked the edit patrolled
 	 * $wcOnlySysopsCanPatrol: config setting indicating whether the user
 	 * must be a sysop to patrol the edit
-	 * @param $rcid int
-	 * @param $user User
-	 * @param $wcOnlySysopsCanPatrol
+	 * @param int $rcid
+	 * @param User &$user
+	 * @param bool $wcOnlySysopsCanPatrol
 	 * @return bool
 	 */
 	public static function onMarkPatrolledComplete( $rcid, &$user, $wcOnlySysopsCanPatrol ) {
@@ -505,8 +505,8 @@ class PageTriageHooks {
 	 * Update Article metadata when a user gets blocked
 	 *
 	 * 'BlockIpComplete': after an IP address or user is blocked
-	 * @param $block Block the Block object that was saved
-	 * @param $performer User the user who did the block (not the one being blocked)
+	 * @param Block $block the Block object that was saved
+	 * @param User $performer the user who did the block (not the one being blocked)
 	 * @return bool
 	 */
 	public static function onBlockIpComplete( $block, $performer ) {
@@ -517,7 +517,7 @@ class PageTriageHooks {
 	/**
 	 * Send php config vars to js via ResourceLoader
 	 *
-	 * @param &$vars: variables to be added to the output of the startup module
+	 * @param array &$vars variables to be added to the output of the startup module
 	 * @return bool
 	 */
 	public static function onResourceLoaderGetConfigVars( &$vars ) {
@@ -714,9 +714,9 @@ class PageTriageHooks {
 	/**
 	 * Add PageTriage events to Echo
 	 *
-	 * @param $notifications array a list of enabled echo events
-	 * @param $notificationCategories array details for echo events
-	 * @param $icons array of icon details
+	 * @param array &$notifications array a list of enabled echo events
+	 * @param array &$notificationCategories array details for echo events
+	 * @param array &$icons array of icon details
 	 * @return bool
 	 */
 	public static function onBeforeCreateEchoEvent(
@@ -761,8 +761,8 @@ class PageTriageHooks {
 
 	/**
 	 * Add users to be notified on an echo event
-	 * @param $event EchoEvent
-	 * @param $users array
+	 * @param EchoEvent $event
+	 * @param array &$users
 	 * @return bool
 	 */
 	public static function onEchoGetDefaultNotifiedUsers( $event, &$users ) {
@@ -795,8 +795,8 @@ class PageTriageHooks {
 	/**
 	 * Handler for LocalUserCreated hook
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/LocalUserCreated
-	 * @param $user User object that was created.
-	 * @param $autocreated bool True when account was auto-created
+	 * @param User $user User object that was created.
+	 * @param bool $autocreated True when account was auto-created
 	 * @return bool
 	 */
 	public static function onLocalUserCreated( $user, $autocreated ) {
@@ -817,7 +817,7 @@ class PageTriageHooks {
 	}
 
 	/**
-	 * @param $updater DatabaseUpdater
+	 * @param DatabaseUpdater $updater
 	 * @return bool
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {

@@ -2,14 +2,14 @@
 
 abstract class PageTriagePresentationModel extends EchoEventPresentationModel {
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function canRender() {
 		return $this->event->getTitle() instanceof Title;
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getPrimaryLink() {
 		return [

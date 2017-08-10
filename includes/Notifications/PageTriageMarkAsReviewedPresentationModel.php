@@ -3,21 +3,21 @@
 class PageTriageMarkAsReviewedPresentationModel extends PageTriagePresentationModel {
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getIconType() {
 		return 'reviewed';
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getSecondaryLinks() {
 		return [ $this->getAgentLink() ];
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getHeaderMessage() {
 		$msg = parent::getHeaderMessage();

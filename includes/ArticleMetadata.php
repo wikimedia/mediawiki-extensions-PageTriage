@@ -8,9 +8,9 @@ class ArticleMetadata {
 	protected $mPageId;
 
 	/**
-	 * @param $pageId array - list of page id
-	 * @param $validated bool - whether the page ids have been validated
-	 * @param $validateDb const - DB_MASTER/DB_SLAVE
+	 * @param array $pageId list of page id
+	 * @param bool $validated whether the page ids have been validated
+	 * @param int $validateDb const DB_MASTER/DB_SLAVE
 	 */
 	public function __construct( array $pageId, $validated = true, $validateDb = DB_MASTER ) {
 		if ( $validated ) {
@@ -23,7 +23,7 @@ class ArticleMetadata {
 	/**
 	 * Delete all the metadata for an article
 	 *
-	 * @param $pageId - the page id to be deleted
+	 * @return bool
 	 */
 	public function deleteMetadata() {
 		if ( $this->mPageId ) {
@@ -43,8 +43,8 @@ class ArticleMetadata {
 
 	/**
 	 * Flush the metadata in cache
-	 * @param $pageId - page id to be flushed, if null is provided, all
-	 *                  page id in $this->mPageId will be flushed
+	 * @param int $pageId page id to be flushed, if null is provided, all
+	 *                    page id in $this->mPageId will be flushed
 	 */
 	public function flushMetadataFromCache( $pageId = null ) {
 		$cache = ObjectCache::getMainWANInstance();
@@ -61,8 +61,8 @@ class ArticleMetadata {
 
 	/**
 	 * Set the metadata to cache
-	 * @param $pageId int - page id
-	 * @param $singleData mixed - data to be saved
+	 * @param int $pageId page id
+	 * @param mixed $singleData data to be saved
 	 */
 	public function setMetadataToCache( $pageId, $singleData ) {
 		$cache = ObjectCache::getMainWANInstance();
@@ -72,8 +72,8 @@ class ArticleMetadata {
 
 	/**
 	 * Get the metadata from cache
-	 * @param $pageId - the page id to get the cache data for, if null is provided
-	 *                  all page id in $this->mPageId will be obtained
+	 * @param int $pageId the page id to get the cache data for, if null is provided
+	 *                    all page id in $this->mPageId will be obtained
 	 * @return array
 	 */
 	public function getMetadataFromCache( $pageId = null ) {
@@ -240,8 +240,8 @@ class ArticleMetadata {
 	/**
 	 * Typecast the value in page id array to int and verify that it's
 	 * in page triage queue
-	 * @param $pageIds array
-	 * @param $validateDb const DB_MASTER/DB_SLAVE
+	 * @param array $pageIds
+	 * @param int $validateDb const DB_MASTER/DB_SLAVE
 	 * @return array
 	 */
 	public static function validatePageId( array $pageIds, $validateDb = DB_MASTER ) {
@@ -303,7 +303,7 @@ class ArticleCompileProcessor {
 	const SAVE_DEFERRED = 1;
 
 	/**
-	 * @param $pageId array - list of page id
+	 * @param array $pageId list of page id
 	 */
 	private function __construct( $pageId ) {
 		$this->mPageId = $pageId;
@@ -328,9 +328,9 @@ class ArticleCompileProcessor {
 
 	/**
 	 * Factory for creating an instance
-	 * @param $pageId array
-	 * @param $validated bool - whether page ids are validated
-	 * @param $validateDb const - DB_MASTER/DB_SLAVE
+	 * @param array $pageId
+	 * @param bool $validated whether page ids are validated
+	 * @param int $validateDb const DB_MASTER/DB_SLAVE
 	 * @return ArticleCompileProcessor|false
 	 */
 	public static function newFromPageId( array $pageId, $validated = true, $validateDb = DB_MASTER ) {
@@ -346,7 +346,7 @@ class ArticleCompileProcessor {
 
 	/**
 	 * Cache an up-to-date WikiPage object for later use
-	 * @param $article - Article
+	 * @param WikiPage $article
 	 */
 	public function registerArticle( WikiPage $article ) {
 		if ( in_array( $article->getId(), $this->mPageId ) ) {
@@ -363,7 +363,7 @@ class ArticleCompileProcessor {
 
 	/**
 	 * Register a component to the processor for compiling
-	 * @param $component string
+	 * @param string $component
 	 */
 	public function registerComponent( $component ) {
 		if ( isset( $this->component[$component] ) ) {
@@ -374,7 +374,7 @@ class ArticleCompileProcessor {
 
 	/**
 	 * Config what db to use for each component
-	 * @param $config array
+	 * @param array $config
 	 * 		example: array( 'BasicData' => DB_SLAVE, 'UserData' => DB_MASTER )
 	 */
 	public function configComponentDb( $config ) {
@@ -388,7 +388,7 @@ class ArticleCompileProcessor {
 
 	/**
 	 * Wrapper function for compiling the data
-	 * @param integer $mode Class SAVE_* constant
+	 * @param int $mode Class SAVE_* constant
 	 * @return array
 	 */
 	public function compileMetadata( $mode = self::SAVE_IMMEDIATE ) {
@@ -545,7 +545,10 @@ abstract class ArticleCompileInterface {
 	protected $componentDb;
 
 	/**
-	 * @param $pageId array
+	 * @param array $pageId
+	 * @param int $componentDb
+	 * @param array $articles
+	 * @param array $linksUpdates
 	 */
 	public function __construct(
 		array $pageId, $componentDb = DB_MASTER, $articles = null, $linksUpdates = null
@@ -572,11 +575,11 @@ abstract class ArticleCompileInterface {
 	/**
 	 * Provide an edtimated count for an item, for example: if $maxNumToProcess is
 	 * 100 and the result is greater than 100, then the result should be 100+
-	 * @param $pageId int - page id
-	 * @param $table array - table for query
-	 * @param $conds array - conditions for query
-	 * @param $maxNumProcess int - max number to process/display
-	 * @param $indexName string - the array index name to be saved
+	 * @param int $pageId page id
+	 * @param array $table table for query
+	 * @param array $conds conditions for query
+	 * @param int $maxNumToProcess max number to process/display
+	 * @param string $indexName the array index name to be saved
 	 */
 	protected function processEstimatedCount( $pageId, $table, $conds, $maxNumToProcess, $indexName ) {
 		$res = $this->db->select(
@@ -597,7 +600,7 @@ abstract class ArticleCompileInterface {
 
 	/**
 	 * Fill in zero for page with no estimated count
-	 * @param $indexName string - the array index name for the count
+	 * @param string $indexName the array index name for the count
 	 */
 	protected function fillInZeroCount( $indexName ) {
 		foreach ( $this->mPageId as $pageId ) {
@@ -802,7 +805,7 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 
 	/**
 	 * Generate article snippet for listview from article text
-	 * @param $text string - page text
+	 * @param string $text page text
 	 * @return string
 	 */
 	public static function generateArticleSnippet( $text ) {
@@ -842,6 +845,8 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 	/**
 	 * Check if a page has reference, this just checks <ref> and </ref> tags
 	 * this is sufficient since we just want to get an estimate
+	 * @param string $text
+	 * @return string
 	 */
 	public static function checkReferenceTag( $text ) {
 		$closeTag = strpos( $text, '</ref>' );

@@ -5,7 +5,7 @@
 class PageTriageExternalTagsOptions extends ResourceLoaderWikiModule {
 
 	/**
-	 * @param $context ResourceLoaderContext
+	 * @param ResourceLoaderContext $context
 	 * @return array
 	 */
 	protected function getPages( ResourceLoaderContext $context ) {
@@ -15,7 +15,7 @@ class PageTriageExternalTagsOptions extends ResourceLoaderWikiModule {
 	}
 
 	/**
-	 * @param $context ResourceLoaderContext
+	 * @param ResourceLoaderContext $context
 	 * @return array
 	 */
 	public function getDependencies( ResourceLoaderContext $context = null ) {

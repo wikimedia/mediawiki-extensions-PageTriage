@@ -8,7 +8,7 @@ class PageTriageUtil {
 	/**
 	 * Get whether or not a page needs triaging
 	 *
-	 * @param $article WikiPage object
+	 * @param WikiPage $article WikiPage object
 	 *
 	 * @throws Exception
 	 * @return Mixed null if the page is not in the triage system,
@@ -54,7 +54,7 @@ class PageTriageUtil {
 
 	/**
 	 * Get a list of stat for unreviewed articles
-	 * @param $namespace int
+	 * @param int $namespace
 	 * @return array
 	 *
 	 * @Todo - Limit the number of records by a timestamp filter, maybe 30 days etc,
@@ -173,8 +173,8 @@ class PageTriageUtil {
 
 	/**
 	 * Get top page triagers in various time frame
-	 * @param $time string - time to look back for top triagers, possible values include
-	 *                       last-day, last-week, last-month
+	 * @param string $time time to look back for top triagers, possible values include
+	 *                     last-day, last-week, last-month
 	 * @return array
 	 */
 	public static function getTopTriagers( $time = 'last-week' ) {
@@ -220,7 +220,7 @@ class PageTriageUtil {
 
 	/**
 	 * returns the cache key for user status
-	 * @param $userName string
+	 * @param string $userName
 	 * @return string
 	 */
 	public static function userStatusKey( $userName ) {
@@ -229,7 +229,7 @@ class PageTriageUtil {
 
 	/**
 	 * Check the existance of user page and talk page for a list of users
-	 * @param $users array - contains user_name db keys
+	 * @param array $users contains user_name db keys
 	 * @return array
 	 */
 	public static function pageStatusForUser( $users ) {
@@ -318,8 +318,8 @@ class PageTriageUtil {
 
 	/**
 	 * Update user metadata when a user's block status is updated
-	 * @param $block Block - Block object
-	 * @param $status int 1/0
+	 * @param Block $block Block object
+	 * @param int $status 1/0
 	 */
 	public static function updateMetadataOnBlockChange( $block, $status = 1 ) {
 		// do instant update if the number of page to be updated is less or equal to
@@ -380,10 +380,10 @@ class PageTriageUtil {
 	 * 3. 'Add maintenance tag' curation flyout
 	 * 4. 'Add deletion tag' curation flyout
 	 *
-	 * @param $article Article
-	 * @param $user User
-	 * @param $type string notification type
-	 * @param $extra array/null
+	 * @param Article $article
+	 * @param User $user
+	 * @param string $type notification type
+	 * @param array|null $extra
 	 */
 	public static function createNotificationEvent( $article, $user, $type, $extra = null ) {
 		if ( !class_exists( 'EchoEvent' ) ) {

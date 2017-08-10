@@ -74,9 +74,9 @@ class ApiPageTriageList extends ApiBase {
 
 	/**
 	 * Create user info like user page, user talk page, user contribution page
-	 * @param $userName string a valid username
-	 * @param $userPageStatus array an array of user page, user talk page existing status
-	 * @param $prefix string array key prefix
+	 * @param string $userName a valid username
+	 * @param array $userPageStatus an array of user page, user talk page existing status
+	 * @param string $prefix array key prefix
 	 * @return array
 	 */
 	private function createUserInfo( $userName, $userPageStatus, $prefix ) {
@@ -98,8 +98,8 @@ class ApiPageTriageList extends ApiBase {
 
 	/**
 	 * Return all the page ids in PageTraige matching the specified filters
-	 * @param $opts array Array of filtering options
-	 * @param $count boolean Set to true to return a count instead
+	 * @param array $opts Array of filtering options
+	 * @param bool $count Set to true to return a count instead
 	 * @return array|int an array of ids or total number of pages
 	 *
 	 * @todo - enforce a range of timestamp to reduce tag record scan
@@ -224,7 +224,7 @@ class ApiPageTriageList extends ApiBase {
 	}
 
 	/**
-	 * @param $opts array
+	 * @param array $opts
 	 * @return string
 	 */
 	private static function buildTagQuery( $opts ) {
@@ -327,6 +327,7 @@ class ApiPageTriageList extends ApiBase {
 
 	/**
 	 * @see ApiBase::getExamplesMessages()
+	 * @return array
 	 */
 	protected function getExamplesMessages() {
 		return [

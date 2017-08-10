@@ -2,14 +2,14 @@
 
 class PageTriageAddMaintenanceTagPresentationModel extends PageTriagePresentationModel {
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getIconType() {
 		return 'reviewed';
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getSecondaryLinks() {
 		$links = [ $this->getAgentLink() ];
@@ -21,7 +21,7 @@ class PageTriageAddMaintenanceTagPresentationModel extends PageTriagePresentatio
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @inheritDoc
 	 */
 	public function getHeaderMessage() {
 		$msg = parent::getHeaderMessage();

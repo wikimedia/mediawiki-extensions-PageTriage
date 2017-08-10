@@ -20,7 +20,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 
 	/**
 	 * Define what happens when the special page is loaded by the user.
-	 * @param $sub string The subpage, if any
+	 * @param string $sub The subpage, if any
 	 */
 	public function execute( $sub ) {
 		global	$wgPageTriageInfiniteScrolling,
@@ -300,7 +300,7 @@ HTML;
 
 	/**
 	 * Helper function to convert booleans to strings (for passing to mw.config)
-	 * @param boolean $value The value to convert into a string
+	 * @param bool $value The value to convert into a string
 	 * @return bool|string
 	 */
 	private function booleanToString( $value ) {
