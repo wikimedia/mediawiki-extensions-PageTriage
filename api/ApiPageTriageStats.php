@@ -35,10 +35,10 @@ class ApiPageTriageStats extends ApiBase {
 			'showredirs' => [
 				ApiBase::PARAM_TYPE => 'boolean',
 			],
-			'showreviewed'=> [
+			'showreviewed' => [
 				ApiBase::PARAM_TYPE => 'boolean',
 			],
-			'showunreviewed'=> [
+			'showunreviewed' => [
 				ApiBase::PARAM_TYPE => 'boolean',
 			],
 			'showdeleted' => [

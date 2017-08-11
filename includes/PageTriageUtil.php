@@ -185,8 +185,8 @@ class PageTriageUtil {
 		// times to look back for top trigers and expiration time in cache
 		$timeFrame = [
 				'last-day' => [ 'ts' => $now - 24 * 60 * 60, 'expire' => 60 * 60 ],
-				'last-week' => [ 'ts' => $now - 7 * 24 * 60 * 60, 'expire' =>  24 * 60 * 60 ],
-				'last-month' => [ 'ts' => $now - 30 * 24 * 60 * 60, 'expire' =>  24 * 60 * 60 ],
+				'last-week' => [ 'ts' => $now - 7 * 24 * 60 * 60, 'expire' => 24 * 60 * 60 ],
+				'last-month' => [ 'ts' => $now - 30 * 24 * 60 * 60, 'expire' => 24 * 60 * 60 ],
 		];
 
 		if ( !isset( $timeFrame[$time] ) ) {

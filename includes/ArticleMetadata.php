@@ -380,7 +380,7 @@ class ArticleCompileProcessor {
 	public function configComponentDb( $config ) {
 		$dbMode = [ DB_MASTER, DB_SLAVE ];
 		foreach ( $this->componentDb as $key => $value ) {
-			if ( isset ( $config[$key] ) && in_array( $config[$key], $dbMode ) ) {
+			if ( isset( $config[$key] ) && in_array( $config[$key], $dbMode ) ) {
 				$this->componentDb[$key] = $config[$key];
 			}
 		}
@@ -491,7 +491,7 @@ class ArticleCompileProcessor {
 		// Loop through old metadata value and compare them with the new one,
 		// if they are the same, remove them from $newData
 		foreach ( $res as $row ) {
-			if ( isset ( $newData[$row->ptrpt_page_id][$row->ptrt_tag_name] )
+			if ( isset( $newData[$row->ptrpt_page_id][$row->ptrt_tag_name] )
 				&& $newData[$row->ptrpt_page_id][$row->ptrt_tag_name] == $row->ptrpt_value
 			) {
 				unset( $newData[$row->ptrpt_page_id][$row->ptrt_tag_name] );
@@ -644,7 +644,7 @@ abstract class ArticleCompileInterface {
 
 	protected function getParserOutputByPageId( $pageId ) {
 		// Prefer a preregistered LinksUpdate
-		if ( isset ( $this->linksUpdates[$pageId] ) ) {
+		if ( isset( $this->linksUpdates[$pageId] ) ) {
 			return $this->linksUpdates[$pageId]->getParserOutput();
 		}
 		// Fall back on Article

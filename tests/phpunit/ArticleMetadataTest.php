@@ -21,7 +21,7 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 		// Set up some page_id to test
 		$count = $start = 0;
 		while ( $count < 6 ) {
-			$res =  $this->dbr->selectRow(
+			$res = $this->dbr->selectRow(
 						[ 'page', 'pagetriage_page' ],
 						[ 'page_id' ],
 						[
