@@ -121,8 +121,8 @@ class PageTriageUtil {
 
 	/**
 	 * Get number of reviewed articles in the past week
-	 * @param  string|int $namespace Namespace number
-	 * @return array                 Stats to be returned
+	 * @param string|int $namespace Namespace number
+	 * @return array Stats to be returned
 	 */
 	public static function getReviewedArticleStat( $namespace = '' ) {
 		global $wgMemc;
