@@ -214,7 +214,6 @@ class PageTriage {
 			'ptrl_timestamp' => $this->mReviewedUpdated
 		];
 
-		$row['ptrl_id'] = $dbw->nextSequenceValue( 'pagetriage_log_ptrl_id' );
 		$dbw->insert( 'pagetriage_log', $row, __METHOD__ );
 	}
 
