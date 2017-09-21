@@ -99,12 +99,6 @@ class UpdatePageTriageQueue extends Maintenance {
 						__METHOD__,
 						[]
 				);
-				$this->dbw->delete(
-						'pagetriage_log',
-						[ 'ptrl_page_id' => $pageId ],
-						__METHOD__,
-						[]
-				);
 				$articleMetadata = new ArticleMetadata( $pageId );
 				$articleMetadata->deleteMetadata();
 
@@ -114,6 +108,16 @@ class UpdatePageTriageQueue extends Maintenance {
 			$this->output( "processed $count \n" );
 			wfWaitForSlaves();
 		}
+
+		// Also clean-up old logging data while we're at it.
+		$yearago = wfTimestamp( TS_UNIX ) - 365 * 60 * 60 * 24;
+		$yearago = $this->dbr->addQuotes( $this->dbr->timestamp( $yearago ) );
+		$this->dbw->delete(
+			'pagetriage_log',
+			[ 'ptrl_timestamp < ' . $yearago ],
+			__METHOD__,
+			[]
+		);
 
 		$this->output( "Completed \n" );
 	}

@@ -224,7 +224,7 @@ class PageTriage {
 	}
 
 	/**
-	 * Delete the page from page triage queue and log
+	 * Delete the page from page triage queue
 	 */
 	public function deleteFromPageTriage() {
 		$dbw = wfGetDB( DB_MASTER );
@@ -236,12 +236,6 @@ class PageTriage {
 		$dbw->delete(
 				'pagetriage_page',
 				[ 'ptrp_page_id' => $this->mPageId ],
-				__METHOD__,
-				[]
-		);
-		$dbw->delete(
-				'pagetriage_log',
-				[ 'ptrl_page_id' => $this->mPageId ],
 				__METHOD__,
 				[]
 		);
