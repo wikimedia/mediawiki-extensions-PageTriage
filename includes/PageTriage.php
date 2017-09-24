@@ -167,7 +167,7 @@ class PageTriage {
 			return true;
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$res = $dbr->selectRow(
 			[ 'pagetriage_page' ],

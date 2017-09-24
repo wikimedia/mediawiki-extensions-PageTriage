@@ -21,7 +21,7 @@ class ApiPageTriageList extends ApiBase {
 			$pages = self::getPageIds( $opts );
 			$pageIdValidated = true;
 		}
-		$pageIdValidateDb = DB_SLAVE;
+		$pageIdValidateDb = DB_REPLICA;
 
 		$sortedMetaData = [];
 
@@ -167,7 +167,7 @@ class ApiPageTriageList extends ApiBase {
 		}
 
 		// Database setup
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		// Offset the list by timestamp
 		if (
@@ -228,7 +228,7 @@ class ApiPageTriageList extends ApiBase {
 	 * @return string
 	 */
 	private static function buildTagQuery( $opts ) {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$tagConds = '';
 
 		$searchableTags = [

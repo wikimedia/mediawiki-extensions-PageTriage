@@ -20,7 +20,7 @@ class CleanupPageTriageLog extends Maintenance {
 
 	public function execute() {
 		$dbw = wfGetDB( DB_MASTER );
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		// clean up the following type and action
 		$logTypes = [

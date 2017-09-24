@@ -28,7 +28,7 @@ class UpdateUserMetadata extends Maintenance {
 	}
 
 	protected function init() {
-		$this->dbr = wfGetDB( DB_SLAVE );
+		$this->dbr = wfGetDB( DB_REPLICA );
 	}
 
 	public function execute() {
@@ -96,7 +96,7 @@ class UpdateUserMetadata extends Maintenance {
 				if ( $acp ) {
 					$acp->registerComponent( 'UserData' );
 					// safe to use slave db for data compilation
-					$acp->configComponentDb( [ 'UserData' => DB_SLAVE ] );
+					$acp->configComponentDb( [ 'UserData' => DB_REPLICA ] );
 					$acp->compileMetadata();
 				}
 

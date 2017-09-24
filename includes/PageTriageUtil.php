@@ -26,7 +26,7 @@ class PageTriageUtil {
 			return null;
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$row = $dbr->selectRow( 'pagetriage_page', 'ptrp_reviewed',
 			[ 'ptrp_page_id' => $article->getID() ]
@@ -76,7 +76,7 @@ class PageTriageUtil {
 			return $data;
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$table = [ 'pagetriage_page', 'page' ];
 		$conds = [
@@ -143,7 +143,7 @@ class PageTriageUtil {
 
 		$time = wfTimestamp( TS_UNIX ) - 7 * 24 * 60 * 60;
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$table = [ 'pagetriage_page', 'page' ];
 		$conds = [
@@ -193,7 +193,7 @@ class PageTriageUtil {
 			$time = 'last-day';
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$key = wfMemcKey( 'pagetriage', 'top-triager', $time, self::getCacheVersion() );
 
 		$topTriager = $wgMemc->get( $key );
@@ -270,7 +270,7 @@ class PageTriageUtil {
 		}
 
 		if ( $title ) {
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$res = $dbr->select(
 				[ 'page' ],
 				[ 'page_namespace', 'page_title' ],
@@ -331,7 +331,7 @@ class PageTriageUtil {
 			return;
 		}
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$res = $dbr->select(
 			[ 'pagetriage_page_tags' ],

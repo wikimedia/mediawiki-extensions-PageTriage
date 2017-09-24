@@ -29,7 +29,7 @@ class UpdatePageTriageQueue extends Maintenance {
 	}
 
 	protected function init() {
-		$this->dbr = wfGetDB( DB_SLAVE );
+		$this->dbr = wfGetDB( DB_REPLICA );
 		$this->dbw = wfGetDB( DB_MASTER );
 	}
 

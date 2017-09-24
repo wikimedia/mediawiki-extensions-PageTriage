@@ -115,7 +115,7 @@ class ArticleMetadata {
 
 		// Grab metadata from database after cache attempt
 		if ( $articles ) {
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 
 			$res = $dbr->select(
 					[
@@ -175,7 +175,7 @@ class ArticleMetadata {
 			// Compile the data if it is not available, this is a very rare case unless
 			// the metadata gets deleted manually
 			if ( $articles ) {
-				$acp = ArticleCompileProcessor::newFromPageId( $articles, false, DB_SLAVE );
+				$acp = ArticleCompileProcessor::newFromPageId( $articles, false, DB_REPLICA );
 				if ( $acp ) {
 					$pageData += $acp->compileMetadata( $acp::SAVE_DEFERRED );
 				}
@@ -217,7 +217,7 @@ class ArticleMetadata {
 		if ( $tags === false ) {
 			$tags = [];
 
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$res = $dbr->select(
 					[ 'pagetriage_tags' ],
 					[ 'ptrt_tag_id', 'ptrt_tag_name' ],
@@ -378,7 +378,7 @@ class ArticleCompileProcessor {
 	 * 		example: array( 'BasicData' => DB_SLAVE, 'UserData' => DB_MASTER )
 	 */
 	public function configComponentDb( $config ) {
-		$dbMode = [ DB_MASTER, DB_SLAVE ];
+		$dbMode = [ DB_MASTER, DB_REPLICA ];
 		foreach ( $this->componentDb as $key => $value ) {
 			if ( isset( $config[$key] ) && in_array( $config[$key], $dbMode ) ) {
 				$this->componentDb[$key] = $config[$key];
@@ -394,7 +394,7 @@ class ArticleCompileProcessor {
 	public function compileMetadata( $mode = self::SAVE_IMMEDIATE ) {
 		if ( $mode === self::SAVE_DEFERRED ) {
 			foreach ( $this->component as $key => $value ) {
-				$this->componentDb[$key] = DB_SLAVE;
+				$this->componentDb[$key] = DB_REPLICA;
 			}
 		}
 
@@ -471,7 +471,7 @@ class ArticleCompileProcessor {
 	 */
 	protected function save() {
 		$dbw = wfGetDB( DB_MASTER );
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		if ( !$this->mPageId ) {
 			return;
