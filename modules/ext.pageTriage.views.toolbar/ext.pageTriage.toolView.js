@@ -162,14 +162,14 @@ $( function () {
 			} );
 
 			// and a hover action.
-			this.$icon.hover(
-				function () {
+			this.$icon.on( {
+				mouseenter: function () {
 					that.setIcon( 'hover' );
 				},
-				function () {
+				mouseleaver: function () {
 					that.setIcon( 'normal' );
 				}
-			);
+			} );
 
 			if ( this.tooltip ) {
 				this.$icon.attr( 'title', mw.msg( this.tooltip ) );
