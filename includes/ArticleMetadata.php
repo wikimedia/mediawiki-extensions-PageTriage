@@ -10,7 +10,7 @@ class ArticleMetadata {
 	/**
 	 * @param array $pageId list of page id
 	 * @param bool $validated whether the page ids have been validated
-	 * @param int $validateDb const DB_MASTER/DB_SLAVE
+	 * @param int $validateDb const DB_MASTER/DB_REPLICA
 	 */
 	public function __construct( array $pageId, $validated = true, $validateDb = DB_MASTER ) {
 		if ( $validated ) {
@@ -241,7 +241,7 @@ class ArticleMetadata {
 	 * Typecast the value in page id array to int and verify that it's
 	 * in page triage queue
 	 * @param array $pageIds
-	 * @param int $validateDb const DB_MASTER/DB_SLAVE
+	 * @param int $validateDb const DB_MASTER/DB_REPLICA
 	 * @return array
 	 */
 	public static function validatePageId( array $pageIds, $validateDb = DB_MASTER ) {
@@ -330,7 +330,7 @@ class ArticleCompileProcessor {
 	 * Factory for creating an instance
 	 * @param array $pageId
 	 * @param bool $validated whether page ids are validated
-	 * @param int $validateDb const DB_MASTER/DB_SLAVE
+	 * @param int $validateDb const DB_MASTER/DB_REPLICA
 	 * @return ArticleCompileProcessor|false
 	 */
 	public static function newFromPageId( array $pageId, $validated = true, $validateDb = DB_MASTER ) {
@@ -375,7 +375,7 @@ class ArticleCompileProcessor {
 	/**
 	 * Config what db to use for each component
 	 * @param array $config
-	 * 		example: array( 'BasicData' => DB_SLAVE, 'UserData' => DB_MASTER )
+	 * 		example: array( 'BasicData' => DB_REPLICA, 'UserData' => DB_MASTER )
 	 */
 	public function configComponentDb( $config ) {
 		$dbMode = [ DB_MASTER, DB_REPLICA ];
