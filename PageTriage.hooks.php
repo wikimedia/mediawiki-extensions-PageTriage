@@ -594,7 +594,7 @@ class PageTriageHooks {
 				'mediawiki.Title',
 				'ext.pageTriage.models',
 				'ext.pageTriage.util',
-				'jquery.badge',
+				'jquery.badge.external',
 				'jquery.ui.button',
 				'jquery.ui.draggable',
 				'jquery.spinner',
