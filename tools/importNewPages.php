@@ -85,7 +85,7 @@ class WikiApi {
 	/**
 	 * Construct the class instance
 	 * @param string $url The URL used to access the API
-	 **/
+	 */
 	function __construct( $url ) {
 		$this->http = new PageTriageHttp;
 		$this->url = $url;
@@ -95,7 +95,7 @@ class WikiApi {
 	 * Send a get query to the API
 	 * @param string $query The query string
 	 * @return string The result from the API
-	 **/
+	 */
 	function get( $query ) {
 		$result = $this->http->get( $this->url.$query );
 		return unserialize( $result );
@@ -117,7 +117,7 @@ class WikiApi {
 	 * @param string $username The user's username
 	 * @param string $password The user's password
 	 * @return string The result from the API
-	 **/
+	 */
 	function login( $username, $password ) {
 		$postVars = [ 'lgname' => $username, 'lgpassword' => $password ];
 		$result = $this->post( '?action=login&format=php', $postVars );
@@ -137,7 +137,7 @@ class WikiApi {
 	/**
 	 * Get an edit token for the user
 	 * @return string The token
-	 **/
+	 */
 	function getToken() {
 		$params = [
 			'action' => 'query',
@@ -157,7 +157,7 @@ class WikiApi {
 	 * Get the contents of a page
 	 * @param string $title The title of the wikipedia page to fetch
 	 * @return string|bool The wikitext for the page (or false)
-	 **/
+	 */
 	function getPage( $title ) {
 		$params = [
 			'action' => 'query',
@@ -184,7 +184,7 @@ class WikiApi {
 	 * @param int $namespace The namespace to limit the search to
 	 * @param int $limit The maximum number of pages to return
 	 * @return array of titles
-	 **/
+	 */
 	function getNewPages( $namespace = 0, $limit = 10 ) {
 		$params = [
 			'action' => 'query',
@@ -210,7 +210,7 @@ class WikiApi {
 	 * @param string $title The title of the new page
 	 * @param string $text The text of the new page
 	 * @return string The result from the API
-	 **/
+	 */
 	function createPage( $title, $text ) {
 		if ( !$this->token ) {
 			$this->token = $this->getToken();
