@@ -6,5 +6,6 @@
 	},
 	"pagetriage-filter-show-heading": "Amostrar:",
 	"pagetriage-tags-cat-sources-label": "Fuontes",
-	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|eidiçon|eidiçones}}"
+	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|eidiçon|eidiçones}}",
+	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Agradecer}}}}"
 }
