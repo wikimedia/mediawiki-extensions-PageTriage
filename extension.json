@@ -146,6 +146,10 @@
 				"dec"
 			]
 		},
+		"jquery.badge.external": {
+			"scripts": "external/jquery.badge.js",
+			"styles": "external/jquery.badge.css"
+		},
 		"ext.pageTriage.init": {
 			"scripts": [
 				"ext.pageTriage.init/ext.pageTriage.init.js"

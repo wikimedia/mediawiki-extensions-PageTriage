@@ -1,0 +1,36 @@
+.notification-badge {
+	min-width: 7px;
+	border-radius: 2px;
+	padding: 1px 4px;
+	text-align: center;
+	font-size: 12px;
+	line-height: 12px;
+	background-color: #72777d;
+	cursor: pointer;
+}
+
+.notification-badge-content {
+	font-weight: bold;
+	color: #fff;
+	vertical-align: baseline;
+}
+
+.notification-badge-inline {
+	margin-left: 3px;
+	display: inline-block;
+	vertical-align: text-top;
+}
+.notification-badge-top {
+	position: absolute;
+	top: -2px;
+	right: -3px;
+}
+.notification-badge-bottom {
+	position: absolute;
+	bottom: -2px;
+	right: -3px;
+}
+
+.notification-badge-important {
+	background-color: #d33;
+}
