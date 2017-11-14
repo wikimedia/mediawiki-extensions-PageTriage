@@ -56,6 +56,9 @@ class ApiPageTriageStats extends ApiBase {
 			'non_autoconfirmed_users' => [
 				ApiBase::PARAM_TYPE => 'boolean',
 			],
+			'learners' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
 			'blocked_users' => [
 				ApiBase::PARAM_TYPE => 'boolean',
 			],

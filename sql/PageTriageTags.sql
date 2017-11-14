@@ -34,6 +34,8 @@ VALUES ('user_creation_date', 'User registration date');
 INSERT INTO /*_*/pagetriage_tags (ptrt_tag_name, ptrt_tag_desc)
 VALUES ('user_autoconfirmed', 'Check if user is autoconfirmed' );
 INSERT INTO /*_*/pagetriage_tags (ptrt_tag_name, ptrt_tag_desc)
+VALUES ('user_experience', 'Experience level: newcomer, learner, experienced or anonymous' );
+INSERT INTO /*_*/pagetriage_tags (ptrt_tag_name, ptrt_tag_desc)
 VALUES ('user_bot', 'Check if user is in bot group');
 INSERT INTO /*_*/pagetriage_tags (ptrt_tag_name, ptrt_tag_desc)
 VALUES ('user_block_status', 'User block status');
