@@ -839,12 +839,10 @@ class PageTriageHooks {
 			'ptrl_comment',
 			$base . '/PageTriageLogPatch_Drop_ptrl_comment.sql'
 		);
-		$updater->addExtensionUpdate( [
-			'modifyTable',
+		$updater->modifyExtensionTable(
 			'pagetriage_tags',
-			$base . '/PageTriageTagsPatch.sql',
-			true
-		] );
+			$base . '/PageTriageTagsPatch.sql'
+		);
 
 		return true;
 	}
