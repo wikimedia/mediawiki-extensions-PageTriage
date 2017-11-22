@@ -931,6 +931,7 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 				);
 				$this->metadata[$row->page_id]['user_autoconfirmed'] =
 					$user->isAllowed( 'autoconfirmed' ) ? '1' : '0';
+				$this->metadata[$row->page_id]['user_experience'] = $user->getExperienceLevel();
 				$this->metadata[$row->page_id]['user_bot'] = $user->isAllowed( 'bot' ) ? '1' : '0';
 				$this->metadata[$row->page_id]['user_block_status'] = $row->ipb_id ? '1' : '0';
 			// User doesn't exist, etc IP
@@ -940,6 +941,7 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 				$this->metadata[$row->page_id]['user_editcount'] = 0;
 				$this->metadata[$row->page_id]['user_creation_date'] = '';
 				$this->metadata[$row->page_id]['user_autoconfirmed'] = '0';
+				$this->metadata[$row->page_id]['user_experience'] = 'anonymous';
 				$this->metadata[$row->page_id]['user_bot'] = '0';
 				$this->metadata[$row->page_id]['user_block_status'] = $row->ipb_id ? '1' : '0';
 			}

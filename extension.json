@@ -262,6 +262,7 @@
 				"pagetriage-filter-no-categories",
 				"pagetriage-filter-orphan",
 				"pagetriage-filter-non-autoconfirmed",
+				"pagetriage-filter-learners",
 				"pagetriage-filter-blocked",
 				"pagetriage-filter-set-button",
 				"pagetriage-stats-less-than-a-day",
@@ -277,6 +278,7 @@
 				"pagetriage-filter-stat-no-categories",
 				"pagetriage-filter-stat-orphan",
 				"pagetriage-filter-stat-non-autoconfirmed",
+				"pagetriage-filter-stat-learners",
 				"pagetriage-filter-stat-blocked",
 				"pagetriage-filter-stat-username",
 				"pagetriage-filter-all",
@@ -629,7 +631,7 @@
 			}
 		},
 		"PageTriageCacheVersion": {
-			"value": "1.4"
+			"value": "1.5"
 		},
 		"PageTriageNamespaces": {
 			"value": [

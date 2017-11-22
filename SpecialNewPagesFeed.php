@@ -245,6 +245,11 @@ class SpecialNewPagesFeed extends SpecialPage {
 										<%= mw.msg( 'pagetriage-filter-non-autoconfirmed' ) %>
 									</label> <br/>
 									<input type="radio" name="mwe-pt-filter-radio"
+										id="mwe-pt-filter-learners" value="learners" />
+									<label for="mwe-pt-filter-learners">
+										<%= mw.msg( 'pagetriage-filter-learners' ) %>
+									</label><br />
+									<input type="radio" name="mwe-pt-filter-radio"
 										id="mwe-pt-filter-blocked" value="blocked_users" />
 									<label for="mwe-pt-filter-blocked">
 										<%= mw.msg( 'pagetriage-filter-blocked' ) %>

@@ -238,6 +238,8 @@ class ApiPageTriageList extends ApiBase {
 			'no_inbound_links' => [ 'name' => 'linkcount', 'op' => '=', 'val' => '0' ],
 			// non auto confirmed users
 			'non_autoconfirmed_users' => [ 'name' => 'user_autoconfirmed', 'op' => '=', 'val' => '0' ],
+			// learning users (newly autoconfirmed)
+			'learners' => [ 'name' => 'user_experience', 'op' => '=', 'val' => 'learner' ],
 			// blocked users
 			'blocked_users' => [ 'name' => 'user_block_status', 'op' => '=', 'val' => '1' ],
 			// bots
@@ -314,6 +316,9 @@ class ApiPageTriageList extends ApiBase {
 				ApiBase::PARAM_TYPE => 'boolean',
 			],
 			'non_autoconfirmed_users' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
+			'learners' => [
 				ApiBase::PARAM_TYPE => 'boolean',
 			],
 			'blocked_users' => [

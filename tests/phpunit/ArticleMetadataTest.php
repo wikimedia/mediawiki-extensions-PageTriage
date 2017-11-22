@@ -66,6 +66,7 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 					'user_editcount',
 					'user_creation_date',
 					'user_autoconfirmed',
+					'user_experience',
 					'user_bot',
 					'user_block_status',
 					'user_id',

@@ -282,6 +282,10 @@ $( function () {
 				// jscs: enable requireCamelCaseOrUpperCaseIdentifiers
 			}
 
+			if ( $( '#mwe-pt-filter-learners' ).prop( 'checked' ) ) {
+				apiParams.learners = '1';
+			}
+
 			if ( $( '#mwe-pt-filter-blocked' ).prop( 'checked' ) ) {
 				// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
 				apiParams.blocked_users = '1';
@@ -346,6 +350,7 @@ $( function () {
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-no-categories' ), 'no_category', 'pagetriage-filter-stat-no-categories' );
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-orphan' ), 'no_inbound_links', 'pagetriage-filter-stat-orphan' );
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-non-autoconfirmed' ), 'non_autoconfirmed_users', 'pagetriage-filter-stat-non-autoconfirmed' );
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-learners' ), 'learners', 'pagetriage-filter-stat-learners' );
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-blocked' ), 'blocked_users', 'pagetriage-filter-stat-blocked' );
 
 			this.filterStatus = this.newFilterStatus.join( mw.msg( 'comma-separator' ) );
