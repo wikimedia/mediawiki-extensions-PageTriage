@@ -46,7 +46,8 @@
 	"pagetriage-filter-second-show-heading": "Que:",
 	"pagetriage-filter-no-categories": "Non ha categorias",
 	"pagetriage-filter-orphan": "Es orphanos",
-	"pagetriage-filter-non-autoconfirmed": "Ha essite create per nove contributores",
+	"pagetriage-filter-non-autoconfirmed": "Ha essite create per novicios (usatores non autoconfirmate)",
+	"pagetriage-filter-learners": "Ha essite create per apprentisses (usatores novemente autoconfirmate)",
 	"pagetriage-filter-blocked": "Ha essite create per usatores blocate",
 	"pagetriage-filter-all": "Monstrar toto",
 	"pagetriage-filter-set-button": "Definir filtros",
@@ -61,7 +62,8 @@
 	"pagetriage-filter-stat-nominated-for-deletion": "nominate pro deletion",
 	"pagetriage-filter-stat-no-categories": "Sin categorias",
 	"pagetriage-filter-stat-orphan": "Orphanos",
-	"pagetriage-filter-stat-non-autoconfirmed": "Nove contributores",
+	"pagetriage-filter-stat-non-autoconfirmed": "novicios",
+	"pagetriage-filter-stat-learners": "apprentisses",
 	"pagetriage-filter-stat-blocked": "Usatores blocate",
 	"pagetriage-filter-stat-username": "Nomine de usator: $1",
 	"pagetriage-no-pages": "Nulle pagina corresponde a tu criterios.",
@@ -269,5 +271,7 @@
 	"pagetriage-mark-as-reviewed": "Marcar como revidite",
 	"pagetriage-mark-as-unreviewed": "Marcar como non revidite",
 	"pagetriage-mark-as-reviewed-helptext": "Marca iste pagina como revidite si tu ha finite verificar lo.",
-	"pagetriage-mark-as-unreviewed-helptext": "Marca iste pagina como non revidite si tu pensa que illo require verification ulterior."
+	"pagetriage-mark-as-unreviewed-helptext": "Marca iste pagina como non revidite si tu pensa que illo require verification ulterior.",
+	"apihelp-pagetriagelist-param-learners": "Si se debe monstrar unicamente paginas create per usatores novemente autoconfirmate.",
+	"apihelp-pagetriagestats-param-learners": "Si se debe includer unicamente paginas create per usatores novemente autoconfirmate."
 }
