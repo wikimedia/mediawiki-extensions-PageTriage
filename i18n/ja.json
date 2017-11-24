@@ -5,7 +5,8 @@
 			"Shirayuki",
 			"Sujiniku",
 			"Otokoume",
-			"아라"
+			"아라",
+			"Omotecho"
 		]
 	},
 	"newpagesfeed": "新しいページのフィード",
@@ -59,7 +60,7 @@
 	"pagetriage-filter-second-show-heading": "条件:",
 	"pagetriage-filter-no-categories": "カテゴリなし",
 	"pagetriage-filter-orphan": "孤立している",
-	"pagetriage-filter-non-autoconfirmed": "新しい利用者が作成",
+	"pagetriage-filter-non-autoconfirmed": "初心者が作成（自動承認を受ける前）",
 	"pagetriage-filter-blocked": "ブロックされている利用者が作成",
 	"pagetriage-filter-all": "すべて表示",
 	"pagetriage-filter-set-button": "フィルターを適用",
@@ -76,7 +77,7 @@
 	"pagetriage-filter-stat-nominated-for-deletion": "削除候補",
 	"pagetriage-filter-stat-no-categories": "カテゴリなし",
 	"pagetriage-filter-stat-orphan": "孤立",
-	"pagetriage-filter-stat-non-autoconfirmed": "新しい編集者",
+	"pagetriage-filter-stat-non-autoconfirmed": "初心者",
 	"pagetriage-filter-stat-blocked": "ブロックされている利用者",
 	"pagetriage-filter-stat-username": "利用者名: $1",
 	"pagetriage-no-pages": "検索条件に一致するページはありません。",
