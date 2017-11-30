@@ -3,7 +3,8 @@
 		"authors": [
 			"ZaDiak",
 			"Geraki",
-			"Protnet"
+			"Protnet",
+			"KATRINE1992"
 		]
 	},
 	"pagetriage": "Διαλογή σελίδων",
@@ -50,6 +51,7 @@
 	"pagetriage-filter-no-categories": "Δεν έχουν καμία κατηγορία",
 	"pagetriage-filter-orphan": "Είναι ορφανά",
 	"pagetriage-filter-non-autoconfirmed": "Δημιουργήθηκαν από νέους συντάκτες",
+	"pagetriage-filter-learners": "Δημιουργήθηκαν από μαθητές (νέους συντάκτες)",
 	"pagetriage-filter-blocked": "Δημιουργήθηκαν από αποκλεισμένους χρήστες",
 	"pagetriage-filter-all": "Εμφάνιση όλων",
 	"pagetriage-filter-set-button": "Ορισμός φίλτρων",
@@ -65,6 +67,7 @@
 	"pagetriage-filter-stat-no-categories": "καμία κατηγορία",
 	"pagetriage-filter-stat-orphan": "ορφανά",
 	"pagetriage-filter-stat-non-autoconfirmed": "νέοι συντάκτες",
+	"pagetriage-filter-stat-learners": "μαθητές",
 	"pagetriage-filter-stat-username": "όνομα χρήστη: $1",
 	"pagetriage-refresh-list": "Ανανέωση λίστας",
 	"pagetriage-button-add-parameters": "Προσθήκη παραμέτρων",
@@ -89,5 +92,7 @@
 	"pagetriage-tags-param-free-no-label": "Όχι",
 	"pagetriage-info-history-header": "Ιστορικό",
 	"pagetriage-info-history-show-full": "εμφάνιση πλήρους ιστορικού",
-	"pagetriage-info-help": "βοήθεια"
+	"pagetriage-info-help": "βοήθεια",
+	"apihelp-pagetriagelist-param-learners": "Το εάν θα προβληθούν μόνο σελίδες που δημιουργήθηκαν από νέους συντάκτες.",
+	"apihelp-pagetriagestats-param-learners": "Το αν θα περιλαμβάνει μόνο σελίδες που δημιουργήθηκαν από νέους συντάκτες ως χρήστες."
 }
