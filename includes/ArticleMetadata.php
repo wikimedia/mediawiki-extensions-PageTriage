@@ -834,7 +834,9 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 		}
 
 		$text = trim( Sanitizer::stripAllTags(
-			MessageCache::singleton()->parse( $text )->getText()
+			MessageCache::singleton()->parse( $text )->getText( [
+				'enableSectionEditLinks' => false,
+			] )
 		) );
 		// strip out non-useful data for snippet
 		$text = str_replace( [ '{', '}', '[edit]' ], '', $text );
