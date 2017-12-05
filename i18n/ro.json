@@ -31,7 +31,6 @@
 	"pagetriage-no-pages": "Nicio pagină nu corespunde criteriilor dumneavoastră.",
 	"pagetriage-refresh-list": "Reîmprospătează lista",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|etichetă selectată|etichete selectate|de etichete selectate}}",
-	"pagetriage-characters-left": "{{PLURAL:$1|$1 caracter rămas|$1 caractere rămase|$1 de caractere rămase}}",
 	"pagetriage-tags-title": "Adăugare etichete",
 	"pagetriage-tags-cat-metadata-label": "Metadate",
 	"pagetriage-tags-cat-cleanup-label": "Curățenie",

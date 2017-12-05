@@ -4,9 +4,5 @@
 			"V.narsikar"
 		]
 	},
-	"pagetriage-notification-mark-as-reviewed2": "[[$2]] हे पान [[User:$1|$1]]ने {{GENDER:$1|पुनरावलोकित}}केले",
-	"pagetriage-notification-mark-as-reviewed-email-subject2": "{{SITENAME}} या संकेतस्थळावर, आपण निर्मिलेल्या पानास {{GENDER:$1| द्वारे पुनरावलोकित}} करण्यात आले.",
-	"pagetriage-notification-add-maintenance-tag-email-subject2": "{{SITENAME}} या संकेतस्थळावर, आपण निर्मिलेल्या पानास {{GENDER:$1| द्वारे खूणपताका}} लावण्यात आली.",
-	"pagetriage-notification-add-deletion-tag-email-subject2": "{{SITENAME}} या संकेतस्थळावर, आपण निर्मिलेल्या पानास  {{GENDER:$1| द्वारे 'वगळा' खूण}} लावण्यात आली.",
 	"notification-header-pagetriage-mark-as-reviewed": "पान $3 हे <b>$1</b> द्वारे {{GENDER:$2|पुनर्विलोकित केल्या गेले}}"
 }
