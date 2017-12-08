@@ -59,26 +59,29 @@ class PageTriageHooks {
 	 * Note: Page will be automatically marked as triaged for users with autopatrol right
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/NewRevisionFromEditComplete
-	 * @param WikiPage $page the WikiPage edited
+	 *
+	 * @param WikiPage $wikiPage the WikiPage edited
 	 * @param Revision|null $rev the new revision
 	 * @param int $baseID the revision ID this was based on, if any
 	 * @param User $user the editing user
+	 *
 	 * @return bool
 	 */
-	public static function onNewRevisionFromEditComplete( $page, $rev, $baseID, $user ) {
+	public static function onNewRevisionFromEditComplete( WikiPage $wikiPage, $rev, $baseID, $user ) {
 		global $wgPageTriageNamespaces;
 
-		if ( !in_array( $page->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
+		if ( !in_array( $wikiPage->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
 			return true;
 		}
 
 		if ( $rev && $rev->getParentId() ) {
 			// Make sure $prev->getContent() is done post-send if possible
-			DeferredUpdates::addCallableUpdate( function () use ( $rev, $page, $user ) {
+			DeferredUpdates::addCallableUpdate( function () use ( $rev, $wikiPage, $user ) {
 				$prev = $rev->getPrevious();
-				if ( $prev && !$page->isRedirect() && $prev->getContent()->isRedirect() ) {
+				if ( $prev && !$wikiPage->isRedirect() && $prev->getContent()->isRedirect() ) {
 					PageTriageHooks::addToPageTriageQueue(
-						$page->getId(), $page->getTitle(), $user );
+						$wikiPage->getId(),
+						$wikiPage->getTitle(), $user );
 				}
 			} );
 		}
