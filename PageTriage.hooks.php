@@ -118,7 +118,8 @@ class PageTriageHooks {
 	 * Flush user status cache on a successful save.
 	 *
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/PageContentSaveComplete
-	 * @param WikiPage $article
+	 *
+	 * @param WikiPage $wikiPage
 	 * @param User $user
 	 * @param Content $content
 	 * @param string $summary
@@ -129,13 +130,15 @@ class PageTriageHooks {
 	 * @param Revision $revision
 	 * @param Status $status
 	 * @param int $baseRevId
+	 *
 	 * @return bool
 	 */
 	public static function onPageContentSaveComplete(
-		$article, $user, $content, $summary, $minoredit, $watchthis, $sectionanchor, $flags, $revision,
+		WikiPage $wikiPage, $user, $content, $summary,
+		$minoredit, $watchthis, $sectionanchor, $flags, $revision,
 		$status, $baseRevId
 	) {
-		self::flushUserStatusCache( $article->getTitle() );
+		self::flushUserStatusCache( $wikiPage->getTitle() );
 		return true;
 	}
 
