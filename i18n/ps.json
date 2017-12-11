@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ahmed-Najib-Biabani-Ibrahimkhel"
+			"Ahmed-Najib-Biabani-Ibrahimkhel",
+			"Baloch Khan"
 		]
 	},
+	"pagetriage-edits": "$1 {{PLURAL:$1|edit|سمونې}}",
 	"pagetriage-filter-show-heading": "ښکاره کول:",
 	"pagetriage-filter-unreviewed-edits": "نامخکتلي مخونه",
 	"pagetriage-filter-article": "ليکنه",
@@ -22,5 +24,6 @@
 	"pagetriage-info-history-header": "پېښليک",
 	"pagetriage-info-help": "لارښود",
 	"pagetriage-toolbar-learn-more": "نور څه زده کول »",
-	"pagetriage-mark-as-unreviewed": "نامخکتلی په نښه کول"
+	"pagetriage-mark-as-unreviewed": "نامخکتلی په نښه کول",
+	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|edit|سمونې}}"
 }

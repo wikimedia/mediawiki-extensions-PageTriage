@@ -336,7 +336,7 @@
 	"apihelp-pagetriageaction-param-reviewed": "Of de pagina is beoordeeld.",
 	"apihelp-pagetriageaction-param-note": "Persoonlijke opmerking naar pagina makers van recensenten.",
 	"apihelp-pagetriageaction-param-skipnotif": "Of overslaan kennisgeving.",
-	"apihelp-pagetriagelist-description": "Voor een lijst van pagina-Id ' s voor het bouwen van een PageTriage wachtrij.",
+	"apihelp-pagetriagelist-description": "Een lijst van pagina-ID's opvragen voor het maken van een PageTriage-wachtrij.",
 	"apihelp-pagetriagelist-param-page_id": "Het ophalen van gegevens voor de opgegeven pagina-Id ' s, het negeren van andere parameters.",
 	"apihelp-pagetriagelist-param-showbots": "Of alleen bot-bewerkingen.",
 	"apihelp-pagetriagelist-param-showredirs": "Of omleidingen.",
