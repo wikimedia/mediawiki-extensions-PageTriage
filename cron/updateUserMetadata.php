@@ -18,7 +18,7 @@ class UpdateUserMetadata extends Maintenance {
 	protected $batchSize = 300;
 
 	/**
-	 * @var DatabaseBase
+	 * @var \Wikimedia\Rdbms\IDatabase
 	 */
 	protected $dbr, $dbw;
 

@@ -18,7 +18,7 @@ class UpdatePageTriageQueue extends Maintenance {
 	protected $batchSize = 100;
 
 	/**
-	 * @var DatabaseBase
+	 * @var \Wikimedia\Rdbms\IDatabase
 	 */
 	protected $dbr, $dbw;
 
