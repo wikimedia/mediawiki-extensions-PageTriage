@@ -128,7 +128,7 @@
 	"pagetriage-del-tags-cat-prod-desc": "Marcar esta página como proposta para eliminação se ela violar claramente alguma norma da comunidade.",
 	"pagetriage-del-tags-cat-discussion-desc": "Marca esta página para discutir a sua eliminação com outros editores.",
 	"pagetriage-del-tags-dba3-label": "Sem conteúdo",
-	"pagetriage-del-tags-dba3-desc": "Qualquer artigo (exceto páginas de desambiguação, redirecionamentos ou redirecionamentos suaves) que contenha apenas links externos, etiquetas de categoria e secções \"ver também\", uma reformulação do título, tentativas de corresponder à pessoa ou grupo mencionados no título, uma pergunta que deveria ter sido colocada nas áreas de ajuda ou de referência, comentários típicos de salas de conversação, etiquetas de predefinições e imagens. (A3)",
+	"pagetriage-del-tags-dba3-desc": "Qualquer artigo (exceto páginas de desambiguação, redirecionamentos ou redirecionamentos suaves) que contenha apenas hiperligações externas, etiquetas de categoria e secções \"ver também\", uma reformulação do título, tentativas de corresponder à pessoa ou grupo mencionados no título, uma pergunta que deveria ter sido colocada nas áreas de ajuda ou de referência, comentários típicos de salas de conversação, etiquetas de predefinições e imagens. (A3)",
 	"pagetriage-del-tags-dbg7-label": "O autor solicita a eliminação",
 	"pagetriage-del-tags-dbg7-desc": "Páginas cujo autor solicitou a eliminação, quer explicitamente quer apagando o seu conteúdo.(G7)",
 	"pagetriage-del-tags-dbu3-label": "Galerias não-livres",
