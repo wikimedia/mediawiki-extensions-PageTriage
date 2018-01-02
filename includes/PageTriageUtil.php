@@ -397,10 +397,25 @@ class PageTriageUtil {
 		];
 
 		if ( $extra ) {
+			$extra['note'] = self::truncateLongText( $extra['note'] );
 			$params['extra'] = $extra;
 		}
 
 		EchoEvent::create( $params );
+	}
+
+	/**
+	 * @param string $text The text to truncate.
+	 * @param int $length Maximum number of characters.
+	 * @param string $ellipsis String to append to the end of truncated text.
+	 * @return string
+	 */
+	public static function truncateLongText( $text, $length = 150, $ellipsis = '...' ) {
+		if ( !is_string( $text ) ) {
+			return $text;
+		}
+
+		return RequestContext::getMain()->getLanguage()->truncateForVisual( $text, $length, $ellipsis );
 	}
 
 }
