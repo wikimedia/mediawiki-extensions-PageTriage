@@ -4,8 +4,10 @@
 			"Mehtab ahmed"
 		]
 	},
+	"pagetriage-edits": "$1 {{PLURAL:$1|ترميم|ترميمون}}",
 	"pagetriage-author-bot": "بوٽ",
 	"pagetriage-filter-ns-all": "سڀ",
 	"pagetriage-filter-stat-all": "سڀ",
+	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|ترميم|ترميمون}}",
 	"pagetriage-toolbar-close": "بند ڪريو"
 }
