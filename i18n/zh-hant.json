@@ -6,7 +6,8 @@
 			"Liuxinyu970226",
 			"Simon Shek",
 			"LNDDYL",
-			"아라"
+			"아라",
+			"Kly"
 		]
 	},
 	"pagetriage": "頁面分檢器",
@@ -105,7 +106,7 @@
 	"pagetriage-articleinfo-stat": "統計：$1",
 	"pagetriage-tags-title": "添加標籤",
 	"pagetriage-tags-cat-common-label": "常規",
-	"pagetriage-tags-cat-metadata-label": "後設資料",
+	"pagetriage-tags-cat-metadata-label": "詮釋資料",
 	"pagetriage-tags-cat-cleanup-label": "清理",
 	"pagetriage-tags-cat-neutrality-label": "中立性",
 	"pagetriage-tags-cat-sources-label": "來源",
@@ -167,7 +168,7 @@
 	"pagetriage-info-problem-no-references-desc": "這個頁面沒有引用任何來源。",
 	"pagetriage-info-timestamp-date-format": "yyyy年M月d日",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
-	"pagetriage-info-tooltip": "顯示這個頁面的元資料",
+	"pagetriage-info-tooltip": "顯示這個頁面的詮釋資料",
 	"pagetriage-toolbar-collapsed": "管理器",
 	"pagetriage-toolbar-linktext": "管理該條目",
 	"pagetriage-toolbar-learn-more": "瞭解詳情 »",
