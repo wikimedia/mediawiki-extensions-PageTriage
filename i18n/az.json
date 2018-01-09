@@ -6,5 +6,6 @@
 	},
 	"pagetriage-bytes": "$1 bayt",
 	"pagetriage-edits": "$1 {{PLURAL:$1|redaktə|redaktə}}",
+	"pagetriage-info-help": "kömək",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|redaktə|redaktə}}"
 }
