@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Snævar"
+			"Snævar",
+			"Sveinn í Felli"
 		]
 	},
 	"pagetriage-please-wait": "Vinsamlegast bíddu ...",
@@ -67,11 +68,11 @@
 	"pagetriage-filter-stat-nominated-for-deletion": "tilnefnd til eyðingar",
 	"pagetriage-filter-stat-no-categories": "engir flokkar",
 	"pagetriage-filter-stat-orphan": "munaðarleysingar",
-	"pagetriage-filter-stat-non-autoconfirmed": "nýjir notendur",
+	"pagetriage-filter-stat-non-autoconfirmed": "nýir notendur",
 	"pagetriage-filter-stat-blocked": "bannaðir notendur",
 	"pagetriage-filter-stat-username": "notandanafn: $1",
 	"pagetriage-no-pages": "Engar síður passa við fyrirspurnina.",
-	"pagetriage-warning-browser": "Þetta tól virkar líklega ekki í vöfrum eldri en Internet Explorer 10.",
+	"pagetriage-warning-browser": "Þetta verkfæri virkar líklega ekki í vöfrum eldri en Internet Explorer 10.",
 	"pagetriage-note-reviewed": "Þessi síða er yfirfarin.",
 	"pagetriage-note-not-reviewed": "Þessi síða er óyfirfarin.",
 	"pagetriage-note-deletion": "Þessi síða hefur verið tilnefnd til eyðingar.",
