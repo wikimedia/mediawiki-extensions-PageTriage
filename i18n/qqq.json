@@ -17,7 +17,8 @@
 			"Liuxinyu970226",
 			"Umherirrender",
 			"Hamilton Abreu",
-			"Matthew Flaschen"
+			"Matthew Flaschen",
+			"Mar(c)"
 		]
 	},
 	"pagetriage": "The name of this application (Page Triage)",
@@ -382,8 +383,8 @@
 	"pagetriage-discuss-link": "Text of the link to go to the Articles for Deletion discussion page. \n\nParameters:\n* $1 - The user receiving the notification, for gender\n{{Identical|Discuss}}",
 	"pagetriage-discuss-link-title": "Tooltip text of the link to go to the Articles for Deletion discussion page. \n\nParameters:\n* $1 - The user receiving the notification, for gender\n{{Identical|Discuss}}",
 	"echo-pref-subscription-page-review": "Option for getting notifications when someone reviews a page created by the user.\n\nThis is the conclusion of the sentence begun by the header: {{msg-mw|Prefs-echosubscriptions}}.",
-	"echo-pref-tooltip-page-review": "This is a short description of the page-review notification category.\n{{Related|Echo-pref-tooltip}}",
-	"echo-category-title-page-review": "This is a short title for notification category.\n\nUsed as <code>$1</code> in {{msg-mw|Echo-dismiss-message}} and <code>$2</code> in {{msg-mw|Echo-email-batch-category-header}}.\n\nParameters:\n* $1 - the number used for plural support\n{{Related|Echo-category-title}}",
+	"echo-pref-tooltip-page-review": "{{doc-echo-pref-tooltip|title=Echo-category-title-page-review}}",
+	"echo-category-title-page-review": "{{doc-echo-category-title|tooltip=Echo-pref-tooltip-page-review}}",
 	"apihelp-pagetriageaction-description": "{{doc-apihelp-description|pagetriageaction}}",
 	"apihelp-pagetriageaction-summary": "{{doc-apihelp-summary|pagetriageaction}}",
 	"apihelp-pagetriageaction-param-pageid": "{{doc-apihelp-param|pagetriageaction|pageid}}",
