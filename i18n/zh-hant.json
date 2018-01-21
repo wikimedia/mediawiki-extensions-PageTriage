@@ -193,6 +193,8 @@
 	"pagetriage-toolbar-close": "關閉",
 	"pagetriage-toolbar-minimize": "最小化",
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|感謝}}}}",
+	"pagetriage-discuss-link": "{{GENDER:$1|討論}}",
+	"pagetriage-discuss-link-title": "{{GENDER:$1|討論}}",
 	"echo-pref-subscription-page-review": "檢閱本人建立的頁面",
 	"echo-pref-tooltip-page-review": "當有人檢閱我建立的頁面時，通知我。",
 	"echo-category-title-page-review": "頁面{{PLURAL:$1|檢閱}}"
