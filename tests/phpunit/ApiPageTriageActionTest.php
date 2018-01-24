@@ -17,16 +17,14 @@ class ApiPageTriageActionTest extends ApiTestCase {
 	function setUp() {
 		parent::setUp();
 
-		$testUserClass = class_exists( 'ApiTestUser' ) ? 'ApiTestUser' : 'TestUser';
-
-		self::$users['one'] = new $testUserClass(
+		self::$users['one'] = new TestUser(
 				'ApitestuserA',
 				'Api Test UserA',
 				'api_test_userA@example.com',
 				[ 'sysop' ]
 		);
 
-		self::$users['two'] = new $testUserClass(
+		self::$users['two'] = new TestUser(
 				'ApitestuserB',
 				'Api Test UserB',
 				'api_test_userB@example.com',

@@ -17,8 +17,7 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 	public static $users;
 
 	public function setUp() {
-		$testUserClass = class_exists( 'ApiTestUser' ) ? 'ApiTestUser' : 'TestUser';
-		self::$users['one'] = new $testUserClass(
+		self::$users['one'] = new TestUser(
 			'PageTriageUser1',
 			'PageTriage Test User 1',
 			'pagetriage_test_user_1@example.com',
