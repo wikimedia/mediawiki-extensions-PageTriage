@@ -1,10 +1,11 @@
 <?php
 /**
- * Tests for SpecialNewPagesFeedTest class (PageTriage list view)
+ * Tests for SpecialNewPagesFeed class (PageTriage list view)
  *
  * @group medium
  * @group EditorEngagement
  * @author Ryan Kaldari
+ * @covers SpecialNewPagesFeed
  */
 class SpecialNewPagesFeedTest extends ApiTestCase {
 

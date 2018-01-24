@@ -5,6 +5,7 @@
  * @group EditorEngagement
  * @group Broken
  * @author Ian Baker
+ * @covers ArticleMetadata
  */
 class ArticleMetadataTest extends MediaWikiTestCase {
 

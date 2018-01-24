@@ -4,6 +4,7 @@
  *
  * @group medium
  * @group EditorEngagement
+ * @covers ApiPageTriageAction
  */
 class ApiPageTriageActionTest extends ApiTestCase {
 
