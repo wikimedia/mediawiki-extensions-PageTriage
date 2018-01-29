@@ -17,6 +17,11 @@ class CleanupPageTriagePageTags extends Maintenance {
 
 	protected $batchSize = 1000;
 
+	public function __construct() {
+		parent::__construct();
+		$this->requireExtension( 'PageTriage' );
+	}
+
 	public function execute() {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbr = wfGetDB( DB_REPLICA );

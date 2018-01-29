@@ -26,6 +26,7 @@ class UpdatePageTriageQueue extends Maintenance {
 		parent::__construct();
 		$this->mDescription = "Remove reviewed pages from pagetriage queue if they"
 			. " are older then 30 days";
+		$this->requireExtension( 'PageTriage' );
 	}
 
 	protected function init() {
