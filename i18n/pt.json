@@ -9,7 +9,8 @@
 			"He7d3r",
 			"Vitorvicentevalente",
 			"Hamilton Abreu",
-			"Samwilson"
+			"Samwilson",
+			"Athena in Wonderland"
 		]
 	},
 	"pagetriage": "Triagem de Páginas",
@@ -173,7 +174,7 @@
 	"pagetriage-info-problem-no-categories": "Sem categorias",
 	"pagetriage-info-problem-no-categories-desc": "Esta página não pertence a nenhuma categoria.",
 	"pagetriage-info-problem-orphan": "Órfã",
-	"pagetriage-info-problem-orphan-desc": "Nenhuma outra página contém links para esta página.",
+	"pagetriage-info-problem-orphan-desc": "Nenhuma outra página contém hiperligações para esta página.",
 	"pagetriage-info-problem-no-references": "Sem citações",
 	"pagetriage-info-problem-no-references-desc": "Esta página não cita nenhuma fonte.",
 	"pagetriage-info-timestamp-date-format": "d &#100;&#101; MMMM &#100;&#101; yyyy",
