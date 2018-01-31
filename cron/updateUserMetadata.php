@@ -25,6 +25,7 @@ class UpdateUserMetadata extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Update the user metadata in pagetriage_page_tags table";
+		$this->requireExtension( 'PageTriage' );
 	}
 
 	protected function init() {
