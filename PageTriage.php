@@ -11,5 +11,5 @@ if ( function_exists( 'wfLoadExtension' ) ) {
 	);*/
 	return;
 } else {
-	die( 'This version of the PageTriage extension requires MediaWiki 1.28+' );
+	die( 'This version of the PageTriage extension requires MediaWiki 1.29+' );
 }
