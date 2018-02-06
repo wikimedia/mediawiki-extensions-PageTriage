@@ -11,6 +11,7 @@
 	},
 	"pagetriage-reviewed": "Vêniya",
 	"pagetriage-bytes": "$1 {{PLURAL:$1|bayt|bayti}}",
+	"pagetriage-categories": "$1 {{PLURAL:$1|kategoriye|kategoriyi}}",
 	"pagetriage-no-categories": "Kategoriy çıniyê",
 	"pagetriage-sort-by": "Raten:",
 	"pagetriage-oldest": "Tewr kehan",
