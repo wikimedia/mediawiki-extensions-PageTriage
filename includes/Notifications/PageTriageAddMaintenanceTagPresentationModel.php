@@ -35,7 +35,7 @@ class PageTriageAddMaintenanceTagPresentationModel extends PageTriagePresentatio
 	}
 
 	private function getThankLink() {
-		if ( !class_exists( 'ThanksHooks' ) ) {
+		if ( !ExtensionRegistry::getInstance()->isLoaded( 'Thanks' ) ) {
 			return false;
 		}
 
