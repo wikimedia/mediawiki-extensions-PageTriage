@@ -69,9 +69,9 @@ class PageTriageHttp {
 
 	function __destruct() {
 		curl_close( $this->curlHandle );
-		MediaWiki\suppressWarnings();
+		Wikimedia\suppressWarnings();
 		unlink( '/tmp/cookies'.$this->id.'.dat' );
-		MediaWiki\restoreWarnings();
+		Wikimedia\restoreWarnings();
 	}
 
 }
