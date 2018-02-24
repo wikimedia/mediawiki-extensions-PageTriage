@@ -386,7 +386,7 @@ class PageTriageUtil {
 	 * @param array|null $extra
 	 */
 	public static function createNotificationEvent( $article, $user, $type, $extra = null ) {
-		if ( !class_exists( 'EchoEvent' ) ) {
+		if ( !ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) ) {
 			return;
 		}
 
