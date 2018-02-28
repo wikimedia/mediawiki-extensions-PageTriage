@@ -5,7 +5,8 @@
 			"Meno25",
 			"زكريا",
 			"محمد أحمد عبد الفتاح",
-			"ديفيد"
+			"ديفيد",
+			"Mr. Ibrahem"
 		]
 	},
 	"pagetriage": "فارز الصفحات",
@@ -164,5 +165,7 @@
 	"pagetriage-info-tooltip": "يظهر البيانات الوصفية لهذه الصفحة",
 	"pagetriage-wikilove-page-creator": "منشئ الصفحة",
 	"pagetriage-toolbar-close": "أغلق",
-	"pagetriage-toolbar-minimize": "صغر"
+	"pagetriage-toolbar-minimize": "صغر",
+	"pagetriage-discuss-link": "{{GENDER:$1|ناقش}}",
+	"pagetriage-discuss-link-title": "{{GENDER:$1|ناقش}}"
 }
