@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pahles"
+			"Pahles",
+			"Ooswesthoesbes"
 		]
 	},
-	"pagetriage-filter-show-heading": "Tuin:"
+	"pagetriage-filter-show-heading": "Tuin:",
+	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Bedank}}}}"
 }
