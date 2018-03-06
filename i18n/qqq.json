@@ -100,7 +100,7 @@
 	"pagetriage-filter-stat-blocked": "Status display component for pages by blocked users. This message is included as part of a sentence-style list.",
 	"pagetriage-filter-stat-username": "Status display component for filter by username. $1 is the username. This message is included as part of a sentence-style list.\n{{Identical|Username}}",
 	"pagetriage-no-pages": "Message to display when no pages were retrieved",
-	"pagetriage-warning-browser": "Used as warning for browsers older than IE10.\n\nThe tool works correctly in IE10.",
+	"pagetriage-warning-browser": "Used as a warning for old unsupported versions of Internet Explorer.",
 	"pagetriage-welcome": "A short introductory message that appears at the top of the PageTriage list view. Parameters:\n* $1 and $2 are URLs.",
 	"pagetriage-note-reviewed": "A note that appears when a user hovers over a status icon",
 	"pagetriage-note-not-reviewed": "A note that appears when a user hovers over a status icon",
