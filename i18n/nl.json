@@ -12,7 +12,8 @@
 			"Mar(c)",
 			"Esketti",
 			"Mainframe98",
-			"Effeietsanders"
+			"Effeietsanders",
+			"Southparkfan"
 		]
 	},
 	"pagetriage": "Paginacontrole",
@@ -88,7 +89,7 @@
 	"pagetriage-filter-stat-blocked": "geblokkeerde gebruikers",
 	"pagetriage-filter-stat-username": "Gebruikersnaam: $1",
 	"pagetriage-no-pages": "Er zijn geen pagina's die aan uw criteria voldoen.",
-	"pagetriage-warning-browser": "Dit hulpmiddel werkt mogelijk niet correct in browsers ouder dan Internet Explorer 10.",
+	"pagetriage-warning-browser": "Dit hulpmiddel werkt mogelijk niet correct in browsers ouder dan Internet Explorer 11.",
 	"pagetriage-welcome": "Help {{SITENAME}} te verbeteren door de onderstaande pagina's te controleren. [$1 Meer informatie] · [$2 Terugkoppeling geven]",
 	"pagetriage-note-reviewed": "Deze pagina is gecontroleerd.",
 	"pagetriage-note-not-reviewed": "Deze pagina is nog niet gecontroleerd.",
