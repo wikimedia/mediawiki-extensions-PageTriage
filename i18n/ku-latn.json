@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"George Animal"
+			"George Animal",
+			"Ghybu"
 		]
 	},
 	"pagetriage-edits": "$1 {{PLURAL:$1|guherandin}}",
@@ -13,6 +14,7 @@
 	"pagetriage-filter-ns-all": "Hemû",
 	"pagetriage-more": "Bêhtir",
 	"pagetriage-filter-stat-all": "Heemû",
+	"pagetriage-filter-stat-redirects": "beralîkirin",
 	"pagetriage-button-add-parameters": "Parametreyan lê zêde bike",
 	"pagetriage-tags-param-free-yes-label": "Erê",
 	"pagetriage-tags-param-free-no-label": "Na",
