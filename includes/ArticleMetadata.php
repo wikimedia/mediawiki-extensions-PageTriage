@@ -901,23 +901,27 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 
 		$now = $this->db->addQuotes( $this->db->timestamp() );
 
+		$actorQuery = ActorMigration::newMigration()->getJoin( 'rev_user' );
 		$res = $this->db->select(
-				[ 'revision', 'user', 'ipblocks' ],
+				[ 'revision', 'user', 'ipblocks' ] + $actorQuery['tables'],
 				[
 					'rev_page AS page_id', 'user_id', 'user_name',
 					'user_real_name', 'user_registration', 'user_editcount',
-					'ipb_id', 'rev_user_text'
+					'ipb_id', 'rev_user_text' => $actorQuery['fields']['rev_user_text']
 				],
 				[ 'rev_id' => $revId ],
 				__METHOD__,
 				[],
 				[
-					'user' => [ 'LEFT JOIN', 'rev_user = user_id' ],
+					'user' => [ 'LEFT JOIN', $actorQuery['fields']['rev_user'] . ' = user_id' ],
 					'ipblocks' => [
-						'LEFT JOIN',
-						'rev_user = ipb_user AND rev_user_text = ipb_address AND ipb_expiry > ' . $now
+						'LEFT JOIN', [
+							$actorQuery['fields']['rev_user'] . ' = ipb_user',
+							$actorQuery['fields']['rev_user_text'] . ' = ipb_address',
+						   'ipb_expiry > ' . $now
+					   ]
 					]
-				]
+				] + $actorQuery['joins']
 		);
 
 		foreach ( $res as $row ) {
