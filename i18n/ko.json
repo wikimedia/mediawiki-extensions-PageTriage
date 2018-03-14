@@ -6,7 +6,8 @@
 			"Hwangjy9",
 			"Yearning",
 			"Ykhwong",
-			"Jerrykim306"
+			"Jerrykim306",
+			"Garam"
 		]
 	},
 	"pagetriage": "문서 선별",
@@ -354,7 +355,7 @@
 	"pagetriage-toolbar-close": "닫기",
 	"pagetriage-toolbar-minimize": "최소화",
 	"pagetriage-tag-warning-notice": "참고: 이 문서만 $1{{PLURAL:$1|분}} 전입니다. 문제가 심각하지 않다면 해당 태그를 기다리는 것을 고려하세요.",
-	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|감사}}}}",
+	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|감사 표현}}}}",
 	"echo-pref-subscription-page-review": "내가 만든 문서를 검토하기",
 	"echo-pref-tooltip-page-review": "내가 만든 문서를 누군가가 검토할 때 내게 알립니다.",
 	"echo-category-title-page-review": "문서 {{PLURAL:$1|검토}}",
