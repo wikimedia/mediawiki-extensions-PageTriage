@@ -6,7 +6,8 @@
 			"Mormegil",
 			"Vks",
 			"Matěj Suchánek",
-			"Dvorapa"
+			"Dvorapa",
+			"Ilimanaq29"
 		]
 	},
 	"newpagesfeed": "Kanál nových stránek",
@@ -59,7 +60,7 @@
 	"pagetriage-filter-stat-blocked": "zablokovaní uživatelé",
 	"pagetriage-filter-stat-username": "uživatelské jméno: $1",
 	"pagetriage-no-pages": "Žádné stránky neodpovídají kritériím.",
-	"pagetriage-warning-browser": "Tento nástroj nemusí fungovat správně v prohlížečích starších než Internet Explorer 10.",
+	"pagetriage-warning-browser": "Tento nástroj nemusí fungovat správně v prohlížečích starších než Internet Explorer 11.",
 	"pagetriage-note-deletion": "Tato stránka byla nominována na smazání.",
 	"pagetriage-refresh-list": "Aktualizovat seznam",
 	"pagetriage-js-required": "Toto rozšíření vyžaduje prohlížeč se zapnutým JavaScriptem.",
