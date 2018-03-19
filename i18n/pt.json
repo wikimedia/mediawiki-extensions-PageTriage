@@ -10,7 +10,8 @@
 			"Vitorvicentevalente",
 			"Hamilton Abreu",
 			"Samwilson",
-			"Athena in Wonderland"
+			"Athena in Wonderland",
+			"Fitoschido"
 		]
 	},
 	"pagetriage": "Triagem de Páginas",
@@ -88,7 +89,7 @@
 	"pagetriage-filter-stat-blocked": "utilizadores bloqueados",
 	"pagetriage-filter-stat-username": "nome de utilizador: $1",
 	"pagetriage-no-pages": "Nenhuma página corresponde aos seus critérios.",
-	"pagetriage-warning-browser": "Esta ferramenta pode não funcionar corretamente em navegadores mais antigos do que o Internet Explorer 10.",
+	"pagetriage-warning-browser": "Esta ferramenta pode não funcionar corretamente em navegadores mais antigos do que o Internet Explorer 11.",
 	"pagetriage-welcome": "Reveja as páginas novas mostradas a seguir e ajude a melhorar a wiki {{SITENAME}}, por favor. [$1 Saiba mais] · [$2 Deixe um comentário]",
 	"pagetriage-note-reviewed": "Esta página foi revista.",
 	"pagetriage-note-not-reviewed": "Esta página ainda não foi revista.",

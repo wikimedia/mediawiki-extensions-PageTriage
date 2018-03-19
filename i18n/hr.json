@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bugoslav"
+			"Bugoslav",
+			"Fitoschido"
 		]
 	},
 	"pagetriage": "Razvrstavanje stranica",
@@ -72,7 +73,7 @@
 	"pagetriage-filter-stat-blocked": "blokirani suradnici",
 	"pagetriage-filter-stat-username": "suradničko ime: $1",
 	"pagetriage-no-pages": "Nema stranica koje odgovaraju Vašim uvjetima.",
-	"pagetriage-warning-browser": "Ovo oruđe možda ne će raditi ispravno s preglednicima starijim nego Internet Explorer 10.",
+	"pagetriage-warning-browser": "Ovo oruđe možda ne će raditi ispravno s preglednicima starijim nego Internet Explorer 11.",
 	"log-name-pagetriage-curation": "Evidencija označivanja za pomnju",
 	"log-name-pagetriage-deletion": "Evidencija označivanja za brisanje",
 	"pagetriage-mark-title": "Označeno provjerenim",

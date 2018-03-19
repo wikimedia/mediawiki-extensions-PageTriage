@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Michawiki",
-			"J budissin"
+			"J budissin",
+			"Fitoschido"
 		]
 	},
 	"pagetriage": "Page Triage",
@@ -78,7 +79,7 @@
 	"pagetriage-filter-stat-blocked": "Zablokowani wužiwarjo",
 	"pagetriage-filter-stat-username": "Wužiwarske mjeno: $1",
 	"pagetriage-no-pages": "Twojim kriterijam žane strony njewotpowěduja.",
-	"pagetriage-warning-browser": "Tutón nastroj snano njefunguje we wobhladowakach, kotrež su starše hač Internet Explorer 10.",
+	"pagetriage-warning-browser": "Tutón nastroj snano njefunguje we wobhladowakach, kotrež su starše hač Internet Explorer 11.",
 	"pagetriage-welcome": "Prošu přepruwuj slědowace nowe strony a pomhaj {{GRAMMAR:akuzatiw|{{SITENAME}}}} polěpšić. [$1 Dalše informacije] · [$2 Komentar zawostajić]",
 	"pagetriage-note-reviewed": "Tuta strona je so přepruwowała.",
 	"pagetriage-note-not-reviewed": "Tuta strona hišće njeje so přepruwowała.",

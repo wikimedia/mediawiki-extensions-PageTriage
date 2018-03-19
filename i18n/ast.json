@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Xuacu"
+			"Xuacu",
+			"Fitoschido"
 		]
 	},
 	"pagetriage": "Clasificación de páxines",
@@ -79,7 +80,7 @@
 	"pagetriage-filter-stat-blocked": "usuarios bloquiaos",
 	"pagetriage-filter-stat-username": "nome d'usuariu: $1",
 	"pagetriage-no-pages": "Nenguna páxina casa colos criterios.",
-	"pagetriage-warning-browser": "Esta ferramienta podría nun funcionar correutamente en restoladores anteriores a Internet Explorer 10.",
+	"pagetriage-warning-browser": "Esta ferramienta podría nun funcionar correutamente en restoladores anteriores a Internet Explorer 11.",
 	"pagetriage-welcome": "Revisa les páxines nueves qu'apaecen más abaxo y ayuda a ameyorar {{SITENAME}}. [$1 Más información] · [$2 Dexar comentarios]",
 	"pagetriage-note-reviewed": "Esta páxina ta revisada.",
 	"pagetriage-note-not-reviewed": "Esta páxina entá nun se revisó.",

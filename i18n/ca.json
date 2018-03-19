@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vriullop"
+			"Vriullop",
+			"Fitoschido"
 		]
 	},
-	"pagetriage-categories": "$1 {{PLURAL:$1|categoria|categories}}"
+	"pagetriage-categories": "$1 {{PLURAL:$1|categoria|categories}}",
+	"pagetriage-warning-browser": "Potser aquesta eina no funcioni correctament en navegadors anteriors a l’Internet Explorer 11."
 }

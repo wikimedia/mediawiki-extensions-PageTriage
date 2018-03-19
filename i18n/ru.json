@@ -8,7 +8,8 @@
 			"Yurik",
 			"Sealle",
 			"Jack who built the house",
-			"Kareyac"
+			"Kareyac",
+			"Patrick Star"
 		]
 	},
 	"pagetriage": "Сортировка страниц",
@@ -84,7 +85,7 @@
 	"pagetriage-filter-stat-blocked": "заблокированные участники",
 	"pagetriage-filter-stat-username": "имя участника: $1",
 	"pagetriage-no-pages": "Нет страниц, соответствующих вашим критериям.",
-	"pagetriage-warning-browser": "Этот инструмент может работать некорректно в браузерах старее, чем Internet Explorer 10.",
+	"pagetriage-warning-browser": "Этот инструмент может работать некорректно в браузерах старее, чем Internet Explorer 11.",
 	"pagetriage-welcome": "Пожалуйста, проверьте новые страницы ниже и помогите улучшить {{SITENAME}}. [$1 Подробнее] · [$2 Оставить отзыв]",
 	"pagetriage-note-reviewed": "Эта страница была проверена.",
 	"pagetriage-note-not-reviewed": "Эта страница ещё не была проверена.",

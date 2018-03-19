@@ -6,7 +6,8 @@
 			"Sujiniku",
 			"Otokoume",
 			"아라",
-			"Omotecho"
+			"Omotecho",
+			"Fitoschido"
 		]
 	},
 	"newpagesfeed": "新しいページのフィード",
@@ -83,7 +84,7 @@
 	"pagetriage-filter-stat-blocked": "ブロックされている利用者",
 	"pagetriage-filter-stat-username": "利用者名: $1",
 	"pagetriage-no-pages": "検索条件に一致するページはありません。",
-	"pagetriage-warning-browser": "このツールは Internet Explorer 10 より古いブラウザーでは正しく動作しない可能性があります。",
+	"pagetriage-warning-browser": "このツールは Internet Explorer 11 より古いブラウザーでは正しく動作しない可能性があります。",
 	"pagetriage-welcome": "{{SITENAME}}を改善するため、以下の新しいページを査読してください。[$1 詳細はこちら] · [$2 フィードバックを送信]",
 	"pagetriage-note-reviewed": "このページは査読済です。",
 	"pagetriage-note-not-reviewed": "このページはまだ査読されていません。",

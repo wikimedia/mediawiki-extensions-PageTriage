@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Karthi.dr",
-			"Shanmugamp7"
+			"Shanmugamp7",
+			"Fitoschido"
 		]
 	},
 	"pagetriage-please-wait": "தயவுசெய்து காத்திருங்கள்...",
@@ -52,7 +53,7 @@
 	"pagetriage-filter-stat-blocked": "தடைசெய்யப்பட்ட பயனர்கள்",
 	"pagetriage-filter-stat-username": "பயனர் பெயர்: $1",
 	"pagetriage-no-pages": "உங்கள் நிபந்தனையுடன் எந்தப் பக்கமும் பொருந்தவில்லை",
-	"pagetriage-warning-browser": "இன்டர்நெட் எக்ஸ்ப்ளோரர் 10 க்கு முந்தைய உலாவிகளில் இந்தக் கருவி சரியாக வேலை செய்யாமலிருக்கலாம்.",
+	"pagetriage-warning-browser": "இன்டர்நெட் எக்ஸ்ப்ளோரர் 11 க்கு முந்தைய உலாவிகளில் இந்தக் கருவி சரியாக வேலை செய்யாமலிருக்கலாம்.",
 	"pagetriage-note-reviewed": "இந்தப் பக்கம் பரிசீலிக்கப்பட்டது.",
 	"pagetriage-note-not-reviewed": "இந்தப் பக்கம் இன்னும் பரிசீலிக்கப்படவில்லை.",
 	"pagetriage-note-deletion": "இப்பக்கம் நீக்கலுக்கு பரிந்துரைக்கப்பட்டுள்ளது.",

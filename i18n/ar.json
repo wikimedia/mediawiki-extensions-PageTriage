@@ -6,7 +6,8 @@
 			"زكريا",
 			"محمد أحمد عبد الفتاح",
 			"ديفيد",
-			"Mr. Ibrahem"
+			"Mr. Ibrahem",
+			"Fitoschido"
 		]
 	},
 	"pagetriage": "فارز الصفحات",
@@ -76,7 +77,7 @@
 	"pagetriage-filter-stat-blocked": "مستخدمون ممنوعون",
 	"pagetriage-filter-stat-username": "اسم المستخدم : $1",
 	"pagetriage-no-pages": "لا صفحات تتطابق معاييرك.",
-	"pagetriage-warning-browser": "قد لا تعمل هذه الأداة بشكل صحيح في المتصفحات الأقدم من إنترنت إكسبلورر 10.",
+	"pagetriage-warning-browser": "قد لا تعمل هذه الأداة بشكل صحيح في المتصفحات الأقدم من إنترنت إكسبلورر 11.",
 	"pagetriage-note-reviewed": "لقد تمت مراجعة هذه الصفحة.",
 	"pagetriage-note-not-reviewed": "لم يتم مراجعة هذه الصفحة بعد.",
 	"pagetriage-note-deletion": "رشحت هذه الصفحة للحذف.",

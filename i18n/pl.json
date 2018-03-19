@@ -6,7 +6,8 @@
 			"Chrumps",
 			"Matma Rex",
 			"WTM",
-			"Woytecr"
+			"Woytecr",
+			"Fitoschido"
 		]
 	},
 	"pagetriage-desc": "Ułatwia przeglądanie i zatwierdzanie nowych stron",
@@ -49,7 +50,7 @@
 	"pagetriage-filter-stat-blocked": "zablokowani użytkownicy",
 	"pagetriage-filter-stat-username": "nazwa użytkownika: $1",
 	"pagetriage-no-pages": "Brak stron spełniających kryteria.",
-	"pagetriage-warning-browser": "To narzędzie może nie działać poprawnie w przeglądarkach starszych niż Internet Explorer 10.",
+	"pagetriage-warning-browser": "To narzędzie może nie działać poprawnie w przeglądarkach starszych niż Internet Explorer 11.",
 	"pagetriage-refresh-list": "Odśwież listę",
 	"pagetriage-tag-count-total": "Wybrano $1 {{PLURAL:$1|znacznik|znaczniki|znaczników}}",
 	"pagetriage-button-add-tag": "Dodaj wybrane znaczniki",

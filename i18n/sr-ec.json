@@ -3,7 +3,8 @@
 		"authors": [
 			"Milicevic01",
 			"Obsuser",
-			"Сербијана"
+			"Сербијана",
+			"Fitoschido"
 		]
 	},
 	"pagetriage-markpatrolled": "Означи страницу као прегледану",
@@ -21,7 +22,7 @@
 	"pagetriage-filter-ns-all": "Све",
 	"pagetriage-more": "Више",
 	"pagetriage-filter-stat-all": "Све",
-	"pagetriage-warning-browser": "Ова алатка можда неће радити правилно у прегледачима старијима од Интернет експлорера 10.",
+	"pagetriage-warning-browser": "Ова алатка можда неће радити правилно у прегледачима старијима од Интернет експлорера 11.",
 	"pagetriage-note-reviewed": "Ова страница је прегледана.",
 	"pagetriage-note-not-reviewed": "Ова страница још увек није прегледана.",
 	"pagetriage-page-status-autoreviewed": "Ова страница је аутоматски патролирана.",

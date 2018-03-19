@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"SatyamMishra"
+			"SatyamMishra",
+			"Fitoschido"
 		]
 	},
 	"newpagesfeed": "नया पन्ना फीड",
@@ -75,7 +76,7 @@
 	"pagetriage-filter-stat-blocked": "ब्लाक कइल सदस्य सभ",
 	"pagetriage-filter-stat-username": "सदस्यनाँव: $1",
 	"pagetriage-no-pages": "आपकी दिहल पैमाना पर कौनों पन्ना नइखे मिलत।",
-	"pagetriage-warning-browser": "इंटरनेट एक्सप्लोरर 10 से पुरान वर्जन में हो सकेला कि ई औजार ठीक से ना काम करे।",
+	"pagetriage-warning-browser": "इंटरनेट एक्सप्लोरर 11 से पुरान वर्जन में हो सकेला कि ई औजार ठीक से ना काम करे।",
 	"pagetriage-welcome": "नीचे दिहल नया पन्ना सभ से समीक्षा कइ के {{SITENAME}} के बेहतर बनावे में आपन योगदान करीं। [$1 अउरी जानीं] · [$2 फीडबैक देईं]",
 	"pagetriage-note-reviewed": "ई पन्ना के समीक्षा हो चुकल बाटे।",
 	"pagetriage-note-not-reviewed": "एह पन्ना के समीक्षा अबहिन ले नइखे भइल।",

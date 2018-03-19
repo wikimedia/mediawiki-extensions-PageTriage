@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Snævar",
-			"Sveinn í Felli"
+			"Sveinn í Felli",
+			"Fitoschido"
 		]
 	},
 	"pagetriage-please-wait": "Vinsamlegast bíddu ...",
@@ -72,7 +73,7 @@
 	"pagetriage-filter-stat-blocked": "bannaðir notendur",
 	"pagetriage-filter-stat-username": "notandanafn: $1",
 	"pagetriage-no-pages": "Engar síður passa við fyrirspurnina.",
-	"pagetriage-warning-browser": "Þetta verkfæri virkar líklega ekki í vöfrum eldri en Internet Explorer 10.",
+	"pagetriage-warning-browser": "Þetta verkfæri virkar líklega ekki í vöfrum eldri en Internet Explorer 11.",
 	"pagetriage-note-reviewed": "Þessi síða er yfirfarin.",
 	"pagetriage-note-not-reviewed": "Þessi síða er óyfirfarin.",
 	"pagetriage-note-deletion": "Þessi síða hefur verið tilnefnd til eyðingar.",

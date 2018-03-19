@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"William Surya Permana",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Fitoschido"
 		]
 	},
 	"pagetriage": "Triase Halaman",
@@ -78,7 +79,7 @@
 	"pagetriage-filter-stat-blocked": "pengguna yang diblokir",
 	"pagetriage-filter-stat-username": "nama pengguna: $1",
 	"pagetriage-no-pages": "Tidak ada halaman yang sesuai dengan kriteria Anda.",
-	"pagetriage-warning-browser": "Alat ini mungkin tidak bekerja dengan benar di peramban yang lebih tua dari Internet Explorer 10.",
+	"pagetriage-warning-browser": "Alat ini mungkin tidak bekerja dengan benar di peramban yang lebih tua dari Internet Explorer 11.",
 	"pagetriage-welcome": "Tolong tinjaulah halaman baru berikut ini dan bantulah meningkatkan kualitas {{SITENAME}}. [$1 Pelajari selengkapnya] · [$2 Tinggalkan umpan balik]",
 	"pagetriage-note-reviewed": "Halaman ini telah ditinjau.",
 	"pagetriage-note-not-reviewed": "Halaman ini belum ditinjau.",

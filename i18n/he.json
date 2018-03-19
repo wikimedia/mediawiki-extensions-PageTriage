@@ -8,7 +8,8 @@
 			"Neukoln",
 			"חיים",
 			"ערן",
-			"המקיסט"
+			"המקיסט",
+			"Fitoschido"
 		]
 	},
 	"pagetriage": "מיון דפים חדשים",
@@ -84,7 +85,7 @@
 	"pagetriage-filter-stat-blocked": "משתמשים חסומים",
 	"pagetriage-filter-stat-username": "שם משתמש: $1",
 	"pagetriage-no-pages": "אין דפים שתואמים למה שהגדרת.",
-	"pagetriage-warning-browser": "ייתכן שהכלי הזה לא יעבוד נכון בדפדפנים ישנים יותר מאינטרנט אקספלורר 10.",
+	"pagetriage-warning-browser": "ייתכן שהכלי הזה לא יעבוד נכון בדפדפנים ישנים יותר מאינטרנט אקספלורר 11.",
 	"pagetriage-welcome": "אנו מבקשים ממך לסקור את הדפים להלן לעזור לשפר את {{SITENAME}}. [$1 מידע נוסף] · [$2 שליחת משוב]",
 	"pagetriage-note-reviewed": "הדף הזה נסקר.",
 	"pagetriage-note-not-reviewed": "הדף הזה עוד לא נסקר.",

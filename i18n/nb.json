@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Jeblad",
-			"Danmichaelo"
+			"Danmichaelo",
+			"Fitoschido"
 		]
 	},
 	"pagetriage": "Page Triage",
@@ -78,7 +79,7 @@
 	"pagetriage-filter-stat-blocked": "blokkerte brukere",
 	"pagetriage-filter-stat-username": "brukernavn: $1",
 	"pagetriage-no-pages": "Ingen sider svarer til dine kriterier.",
-	"pagetriage-warning-browser": "Dette verktøyet vil kanskje ikke virke pålitelig i nettlesere eldre enn Internett Explorer 10.",
+	"pagetriage-warning-browser": "Dette verktøyet vil kanskje ikke virke pålitelig i nettlesere eldre enn Internett Explorer 11.",
 	"pagetriage-welcome": "Du kan vurdere nye sider nedenfor og hjelpe til med å forbedre {{SITENAME}}. [$1 Lær mer] · [$2 Gi tilbakemelding]",
 	"pagetriage-note-reviewed": "Denne siden har blitt vurdert.",
 	"pagetriage-note-not-reviewed": "Denne siden har ikke blitt vurdert ennå.",

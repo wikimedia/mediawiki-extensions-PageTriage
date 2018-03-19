@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bjankuloski06"
+			"Bjankuloski06",
+			"Fitoschido"
 		]
 	},
 	"pagetriage": "Проверка на страници",
@@ -81,7 +82,7 @@
 	"pagetriage-filter-stat-blocked": "Блокирани корисници",
 	"pagetriage-filter-stat-username": "Корисничко име: $1",
 	"pagetriage-no-pages": "Нема страници што одговараат на критериумите.",
-	"pagetriage-warning-browser": "Оваа алатка може да не работи како што треба на прелистувачи постари од Internet Explorer 10.",
+	"pagetriage-warning-browser": "Оваа алатка може да не работи како што треба на прелистувачи постари од Internet Explorer 11.",
 	"pagetriage-welcome": "Помогнете ни да ја подобриме {{SITENAME}}. Проверете ги страниците подолу. [$1 Дознајте повеќе] · [$2 Ваше мислење]",
 	"pagetriage-note-reviewed": "Страницата е проверена.",
 	"pagetriage-note-not-reviewed": "Страницата сè уште не е проверена.",

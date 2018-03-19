@@ -7,7 +7,8 @@
 			"SteveR",
 			"Ата",
 			"Ypryima",
-			"Piramidion"
+			"Piramidion",
+			"Fitoschido"
 		]
 	},
 	"pagetriage": "Сортування сторінок",
@@ -83,7 +84,7 @@
 	"pagetriage-filter-stat-blocked": "заблокованими користувачами",
 	"pagetriage-filter-stat-username": "ім'я користувача: $1",
 	"pagetriage-no-pages": "Немає сторінок, що підпадають під Ваші критерії.",
-	"pagetriage-warning-browser": "Цей інструмент може працювати неправильно в браузерах, що старіші, ніж Internet Explorer 10.",
+	"pagetriage-warning-browser": "Цей інструмент може працювати неправильно в браузерах, що старіші, ніж Internet Explorer 11.",
 	"pagetriage-welcome": "Будь ласка, перевірте нові сторінки нижче і допоможіть покращити {{SITENAME}}. [$1 Дізнатися більше] · [$2 Залишити відгук]",
 	"pagetriage-note-reviewed": "Цю сторінку перевірено.",
 	"pagetriage-note-not-reviewed": "Цю сторінку ще не перевірено.",

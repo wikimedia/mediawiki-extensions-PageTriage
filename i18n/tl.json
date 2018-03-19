@@ -4,7 +4,8 @@
 			"AnakngAraw",
 			"Sky Harbor",
 			"TheSleepyhollow02",
-			"Leeheonjin"
+			"Leeheonjin",
+			"Fitoschido"
 		]
 	},
 	"pagetriage": "Pag-uuri ng Pahina",
@@ -78,7 +79,7 @@
 	"pagetriage-filter-stat-blocked": "Hinarang na mga tagagamit",
 	"pagetriage-filter-stat-username": "Pangalan ng tagagamit: $1",
 	"pagetriage-no-pages": "Walang mga pahinang tumutugma sa kategorya mo:",
-	"pagetriage-warning-browser": "Ang kasangkapang ito ay maaaring hindi umandar ng tama sa mga pantingin-tingin na mas luma pa kaysa sa Internet Explorer 10.",
+	"pagetriage-warning-browser": "Ang kasangkapang ito ay maaaring hindi umandar ng tama sa mga pantingin-tingin na mas luma pa kaysa sa Internet Explorer 11.",
 	"pagetriage-note-reviewed": "Nasuri na ang pahinang ito.",
 	"pagetriage-note-not-reviewed": "Hindi pa nasusuri ang pahinang ito.",
 	"pagetriage-note-deletion": "Ang pahinang ito ay iniharap upang burahin.",
