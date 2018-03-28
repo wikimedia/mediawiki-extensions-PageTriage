@@ -90,7 +90,7 @@
 	"pagetriage-welcome": "아래의 새 문서를 검토하고 {{SITENAME}}을(를) 개선하는 데 도움을 주세요. [$1 더 알아보기] · [$2 피드백 남기기]",
 	"pagetriage-note-reviewed": "이 문서는 검토되었습니다.",
 	"pagetriage-note-not-reviewed": "이 문서는 아직 검토되지 않았습니다.",
-	"pagetriage-note-deletion": "이 문서는 삭제한 것을 선정합니다.",
+	"pagetriage-note-deletion": "이 문서는 삭제가 신청되었습니다.",
 	"pagetriage-refresh-list": "목록 새로 고침",
 	"pagetriage-tag-count-total": "태그 $1개 선택됨",
 	"pagetriage-button-add-tag": "선택한 태그 추가",
