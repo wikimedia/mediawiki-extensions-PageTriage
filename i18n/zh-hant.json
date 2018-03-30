@@ -117,6 +117,7 @@
 	"pagetriage-tags-cat-moretags-label": "更多標籤",
 	"pagetriage-tags-cat-all-label": "全部標籤",
 	"pagetriage-tags-externallinks-label": "外部連結",
+	"pagetriage-tags-sections-label": "段落",
 	"pagetriage-tags-update-label": "更新",
 	"pagetriage-tags-tooltip": "對此頁面加入標記到需改善的指示區域",
 	"pagetriage-del-tags-cat-csd-desc": "如果它滿足以下條件之一，標記這個頁面快速刪除。",
