@@ -133,7 +133,7 @@ I wanted to let you know that I just tagged [[:{{{1}}}]] for deletion, because i
  -- A10 notice --
 
 --&gt;&lt;/noinclude&gt;{{{{{|safesubst:}}}#if: {{{{{|safesubst:}}}csdcheck | {{{2|}}} | {{{3|}}} | {{{4|}}} | {{{5|}}} | {{{6|}}} | {{{7|}}} | {{{8|}}} | {{{9|}}} | {{{10|}}} | {{{11|}}} | crit1 = A10 }} |
-*It covers a topic on which we already have {{{{{|safesubst:}}}#if: {{{article|}}} | an article - '''[[:{{{article}}}]]''' | an article }}. (See [[WP:CSD#A10|section A10 of the criteria for speedy deletion]].) Please note that this is not a comment on you personally and we hope you will continue helping to improve Wikipedia. If the topic of the article you created is one that interests you, then perhaps you would like to help out at {{{{{|safesubst:}}}#if: {{{article|}}} | [[:{{{article}}}]] | the existing article }}, or to discuss new information at {{{{{|safesubst:}}}#if: {{{article|}}} | [[Talk:{{{article}}}|the article's talk page]] | the article's [[Help:Using talk pages|talk page]] }}. }}&lt;noinclude&gt;&lt;!--
+*It covers a topic on which we already have {{{{{|safesubst:}}}#if: {{{article|}}} | an article - '''[[:{{{article}}}]]''' | an article }}. (See [[WP:CSD#A10|section A10 of the criteria for speedy deletion]].) Please note that this is not a comment on you personally and we hope you will continue helping to improve Wikipedia. If the topic of the article you created is one that interests you, then perhaps you would like to help out at {{{{{|safesubst:}}}#if: {{{article|}}} | [[:{{{article}}}]] | the existing article }}, or to discuss new information at {{{{{|safesubst:}}}#if: {{{article|}}} | [[{{TALKPAGE:{{{article}}}}}|the article's talk page]] | the article's [[Help:Using talk pages|talk page]] }}. }}&lt;noinclude&gt;&lt;!--
 
  -- F1 notice --
 
@@ -232,7 +232,7 @@ You can leave a note on [[User talk:&lt;includeonly&gt;{{{{{|safesubst:}}}REVISI
 
 I wanted to let you know that I just tagged [[:{{{1}}}]] for deletion, because it doesn't seem to have any encyclopedic content. 
 
-If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -258,7 +258,7 @@ You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt
 
 I wanted to let you know that I just tagged [[:{{{1}}}]] for deletion, because it seems to be a test. Did you know that the [[Wikipedia:Sandbox|Wikipedia Sandbox]] is available for testing out edits?  
 
-If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -284,7 +284,7 @@ You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt
 
 I wanted to let you know that I just tagged [[:{{{1}}}]] for deletion, because it seems to be vandalism or a hoax. 
 
-If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -310,7 +310,7 @@ You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it seems to be an article that was previously deleted by a [[Wikipedia:Deletion process|consensus decision]].  
 
-If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions. &lt;!-- Template:Uw-repost-NPF --&gt;&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -338,7 +338,7 @@ Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion in response to your request.
 
-If you didn't intend to make such a request and don't want the article to be deleted, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you didn't intend to make such a request and don't want the article to be deleted, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -384,7 +384,7 @@ You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it seems to be [[Wikipedia:Promotion|promotional]], rather than an encyclopedia article.
 
-If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -410,7 +410,7 @@ You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it seems to be [[Wikipedia:Copyright violations|copied from another source]]. 
 
-If you feel that the article shouldn't be deleted and want more time to rewrite it in your own words, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you feel that the article shouldn't be deleted and want more time to rewrite it in your own words, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]
@@ -437,7 +437,7 @@ You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it's too short to identify the subject of the article.
 
-If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -463,7 +463,7 @@ You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it's not written in English. To request a translation, please visit the [[Wikipedia:Translation|translation]] page. If you'd like to contribute to another Wikipedia, take a look at our [[meta:List_of_Wikipedias#All_Wikipedias_ordered_by_number_of_articles|full list of language projects]]. 
 
-If you feel that I made a mistake, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you feel that I made a mistake, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -489,7 +489,7 @@ You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it doesn't appear to contain any encyclopedic content. Take a look at our [[Wikipedia:Stub#Essential information about stubs|suggestions for essential content]] in short articles to learn what should be included.
 
-If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -517,7 +517,7 @@ Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it looks like the content has been moved to another wiki where it is more suitable.
 
-If you feel that the article shouldn't be deleted, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you feel that the article shouldn't be deleted, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -543,7 +543,7 @@ You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because the article doesn't clearly say why the subject is important enough to be included in an encyclopedia.
 
-If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -569,7 +569,7 @@ You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because the article doesn't clearly say why the subject is significant enough to be included in an encyclopedia, and the artist doesn't have an article.
 
-If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you feel that the article shouldn't be deleted and want more time to work on it, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -595,7 +595,7 @@ You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it appears to duplicate an existing Wikipedia article, [[{{{article}}}]].
 
-If you feel that the article shouldn't be deleted, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you feel that the article shouldn't be deleted, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -623,7 +623,7 @@ Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it's a redirect from an article title to a [[Wikipedia:Namespace|namespace]] that's not for articles.
 
-If you don't want {{{1}}} to be deleted, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you don't want {{{1}}} to be deleted, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -651,7 +651,7 @@ Hello {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}},
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it's a redirect that seems implausible or is a simple typo.
 
-If you don't want {{{1}}} to be deleted, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you don't want {{{1}}} to be deleted, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -677,7 +677,7 @@ You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it seems to be a page for an account that does not exist.
 
-If don't want {{{1}}} to be deleted, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If don't want {{{1}}} to be deleted, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -703,7 +703,7 @@ You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because we are not allowed to place copyrighted images within user pages for any reason.
 
-If you don't want {{{1}}} to be deleted, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you don't want {{{1}}} to be deleted, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -732,7 +732,7 @@ Hello, {{&lt;includeonly&gt;safesubst:&lt;/includeonly&gt;BASEPAGENAME}}. I want
 # remove the text that looks like this: &lt;tt&gt;&lt;nowiki&gt;{{proposed deletion/dated...}}&lt;/nowiki&gt;&lt;/tt&gt; 
 # save the page
 
-Also, ''be sure to explain why'' you think the article should be kept in your edit summary or on [[Talk:{{{1}}}|the article's talk page]].  If you don't do so, it may be deleted later anyway. 
+Also, ''be sure to explain why'' you think the article should be kept in your edit summary or on [[{{TALKPAGE:{{{1}}}}}|the article's talk page]].  If you don't do so, it may be deleted later anyway. 
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]&lt;/noinclude&gt;</text>
@@ -1072,7 +1072,7 @@ I wanted to let you know that I just tagged [[:{{{1}}}]] for deletion, because i
  -- A10 notice --
 
 --&gt;&lt;/noinclude&gt;{{{{{|safesubst:}}}#if: {{{{{|safesubst:}}}csdcheck | {{{2|}}} | {{{3|}}} | {{{4|}}} | {{{5|}}} | {{{6|}}} | {{{7|}}} | {{{8|}}} | {{{9|}}} | {{{10|}}} | {{{11|}}} | crit1 = A10 }} |
-*It covers a topic on which we already have {{{{{|safesubst:}}}#if: {{{article|}}} | an article - '''[[:{{{article}}}]]''' | an article }}. (See [[WP:CSD#A10|section A10 of the criteria for speedy deletion]].) Please note that this is not a comment on you personally and we hope you will continue helping to improve Wikipedia. If the topic of the article you created is one that interests you, then perhaps you would like to help out at {{{{{|safesubst:}}}#if: {{{article|}}} | [[:{{{article}}}]] | the existing article }}, or to discuss new information at {{{{{|safesubst:}}}#if: {{{article|}}} | [[Talk:{{{article}}}|the article's talk page]] | the article's [[Help:Using talk pages|talk page]] }}. }}&lt;noinclude&gt;&lt;!--
+*It covers a topic on which we already have {{{{{|safesubst:}}}#if: {{{article|}}} | an article - '''[[:{{{article}}}]]''' | an article }}. (See [[WP:CSD#A10|section A10 of the criteria for speedy deletion]].) Please note that this is not a comment on you personally and we hope you will continue helping to improve Wikipedia. If the topic of the article you created is one that interests you, then perhaps you would like to help out at {{{{{|safesubst:}}}#if: {{{article|}}} | [[:{{{article}}}]] | the existing article }}, or to discuss new information at {{{{{|safesubst:}}}#if: {{{article|}}} | [[{{TALKPAGE:{{{article}}}}}|the article's talk page]] | the article's [[Help:Using talk pages|talk page]] }}. }}&lt;noinclude&gt;&lt;!--
 
  -- F1 notice --
 
@@ -1171,7 +1171,7 @@ You can leave a note on [[User talk:&lt;includeonly&gt;{{{{{|safesubst:}}}REVISI
 
 I wanted to let you know that I just tagged [[{{{1}}}]] for deletion, because it seems to be an article that was created [[Wikipedia:Sock puppetry|in violation of a block or ban]]. Content created by banned users will be deleted immediately.
 
-If you feel that the article shouldn't be deleted, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:Talk:{{{1}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
+If you feel that the article shouldn't be deleted, you can &lt;span class=&quot;plainlinks&quot;&gt;'''[http://en.wikipedia.org/w/index.php?title={{urlencode:{{TALKPAGE:{{{1}}}}}}}&amp;action=edit&amp;section=new&amp;preload=Template:Hangon_preload&amp;preloadtitle=This+page+should+not+be+speedy+deleted+because...+ contest this deletion]'''&lt;/span&gt;, but please don't remove the speedy deletion tag from the top.
 
 You can leave a note on [[User_talk:&lt;includeonly&gt;{{sub&lt;noinclude&gt;&lt;/noinclude&gt;st:REVISIONUSER}}&lt;/includeonly&gt;&lt;noinclude&gt;Example&lt;/noinclude&gt;|my talk page]] if you have questions.&lt;noinclude&gt;{{Documentation}}
 [[Category:New Pages Feed templates]]
