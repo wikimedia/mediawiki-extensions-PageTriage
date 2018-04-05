@@ -4,29 +4,22 @@
  * @package PageTriage
  */
 
-/*jshint node:true */
+/* eslint-env node */
 module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
-	grunt.loadNpmTasks( 'grunt-stylelint' );
-	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
-	grunt.loadNpmTasks( 'grunt-jscs' );
+	grunt.loadNpmTasks( 'grunt-eslint' );
 	grunt.loadNpmTasks( 'grunt-jsonlint' );
+	grunt.loadNpmTasks( 'grunt-stylelint' );
 
 	grunt.initConfig( {
-		jshint: {
-			options: {
-				jshintrc: true
-			},
+		eslint: {
 			all: [
 				'**/*.js',
 				'!node_modules/**',
 				'!modules/external/*.js',
 				'!vendor/**'
 			]
-		},
-		jscs: {
-			src: '<%= jshint.all %>'
 		},
 		stylelint: {
 			all: [
@@ -41,7 +34,8 @@ module.exports = function ( grunt ) {
 		watch: {
 			files: [
 				'.{jscsrc,jshintignore,jshintrc}',
-				'<%= jshint.all %>',
+				'<%= eslint.all %>',
+				'<%= stylelint.all %>',
 				'<%= jsonlint.all %>'
 			],
 			tasks: 'test'
@@ -55,7 +49,7 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'lint', [ 'jshint', 'jscs', 'stylelint', 'jsonlint', 'banana' ] );
+	grunt.registerTask( 'lint', [ 'eslint', 'stylelint', 'jsonlint', 'banana' ] );
 	grunt.registerTask( 'test', 'lint' );
 	grunt.registerTask( 'default', 'test' );
 };

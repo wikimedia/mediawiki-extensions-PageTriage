@@ -20,7 +20,7 @@ $( function () {
 
 		setParams: function () {
 			// these settings are not overwritable
-			this.apiParams.limit  = 1;
+			this.apiParams.limit = 1;
 			this.apiParams.action = 'pagetriagelist';
 			this.apiParams.format = 'json';
 			this.apiParams.offset = this.model.get( 'creation_date_utc' );

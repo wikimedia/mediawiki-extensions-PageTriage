@@ -57,7 +57,7 @@ $( function () {
 		url: function () {
 			var url = mw.util.wikiScript( 'api' ) + '?action=pagetriagestats&format=json';
 			if ( this.apiParams.namespace !== '' ) {
-				url += '&'  + $.param( this.apiParams );
+				url += '&' + $.param( this.apiParams );
 			}
 			return url;
 		},

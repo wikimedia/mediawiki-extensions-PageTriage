@@ -139,7 +139,7 @@ $( function () {
 		// Create a waypoint trigger that floats the navbar when the user scrolls down
 		setWaypoint: function () {
 			var that = this;
-			$( '#mwe-pt-list-control-nav-anchor' ).waypoint( 'destroy' );  // remove the old, maybe inaccurate ones.
+			$( '#mwe-pt-list-control-nav-anchor' ).waypoint( 'destroy' ); // remove the old, maybe inaccurate ones.
 			$.waypoints.settings.scrollThrottle = 30;
 			$( '#mwe-pt-list-control-nav-anchor' ).waypoint( function ( event, direction ) {
 				if ( direction === 'down' ) {
@@ -265,21 +265,18 @@ $( function () {
 			*/
 
 			if ( $( '#mwe-pt-filter-no-categories' ).prop( 'checked' ) ) {
-				// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
+				// eslint-disable-next-line camelcase
 				apiParams.no_category = '1';
-				// jscs: enable requireCamelCaseOrUpperCaseIdentifiers
 			}
 
 			if ( $( '#mwe-pt-filter-orphan' ).prop( 'checked' ) ) {
-				// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
+				// eslint-disable-next-line camelcase
 				apiParams.no_inbound_links = '1';
-				// jscs: enable requireCamelCaseOrUpperCaseIdentifiers
 			}
 
 			if ( $( '#mwe-pt-filter-non-autoconfirmed' ).prop( 'checked' ) ) {
-				// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
+				// eslint-disable-next-line camelcase
 				apiParams.non_autoconfirmed_users = '1';
-				// jscs: enable requireCamelCaseOrUpperCaseIdentifiers
 			}
 
 			if ( $( '#mwe-pt-filter-learners' ).prop( 'checked' ) ) {
@@ -287,9 +284,8 @@ $( function () {
 			}
 
 			if ( $( '#mwe-pt-filter-blocked' ).prop( 'checked' ) ) {
-				// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
+				// eslint-disable-next-line camelcase
 				apiParams.blocked_users = '1';
-				// jscs: enable requireCamelCaseOrUpperCaseIdentifiers
 			}
 
 			return apiParams;
@@ -314,21 +310,11 @@ $( function () {
 
 		// Sync the menu and other UI elements with the contents of the filters
 		menuSync: function () {
-			var ns, nsText, username;
+			var username;
 
 			this.newFilterStatus = [];
 
 			$( '#mwe-pt-filter-namespace' ).val( this.model.getParam( 'namespace' ) );
-
-			// update the status display
-			if ( this.model.getParam( 'namespace' ) > -1 ) { // still true for ns 0
-				ns = this.model.getParam( 'namespace' );
-				if ( Number( ns ) === 0 ) {
-					nsText = mw.msg( 'blanknamespace' );
-				} else {
-					nsText = mw.config.get( 'wgFormattedNamespaces' )[ ns ];
-				}
-			}
 
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-reviewed-edits' ), 'showreviewed', 'pagetriage-filter-stat-reviewed' );
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-unreviewed-edits' ), 'showunreviewed', 'pagetriage-filter-stat-unreviewed' );

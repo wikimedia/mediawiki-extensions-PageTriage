@@ -37,7 +37,7 @@ $( function () {
 			buildLogRequest: function ( oldText, reason, tagObj, data ) {
 				oldText += '\n';
 				data.text = oldText.replace(
-					/(<\!-- Add new entries to the TOP of the following list -->\n+)/,
+					/(<!-- Add new entries to the TOP of the following list -->\n+)/,
 					'$1{{subst:afd3|pg=' + pageName + '}}\n'
 				);
 			},
@@ -55,7 +55,7 @@ $( function () {
 
 			buildLogRequest: function ( oldText, reason, tagObj, data ) {
 				data.text = oldText.replace(
-					/(<\!-- Add new entries directly below this line -->)/,
+					/(<!-- Add new entries directly below this line -->)/,
 					'$1\n{{subst:rfd2|text=' + reason + '|redirect=' + pageName + '}} ~~~~\n'
 				);
 			},
@@ -129,6 +129,8 @@ $( function () {
 
 		/**
 		 * Initialize data on startup
+		 *
+		 * @param {Object} options
 		 */
 		initialize: function ( options ) {
 			this.eventBus = options.eventBus;
@@ -146,7 +148,7 @@ $( function () {
 
 		// overwrite parent function
 		setIcon: function ( dir ) {
-			if ( typeof ( dir ) !== 'string' )  {
+			if ( typeof ( dir ) !== 'string' ) {
 				dir = 'normal';
 			}
 			if ( dir === 'normal' && this.isPageNominatedForDeletion() ) {
@@ -248,6 +250,11 @@ $( function () {
 
 		/**
 		 * Build deletion tag check/raido and label
+		 *
+		 * @param {string} key
+		 * @param {Object} tagSet
+		 * @param {string} elementType
+		 * @return {string}
 		 */
 		buildTagHTML: function ( key, tagSet, elementType ) {
 			// build the checkbox or radio
@@ -257,9 +264,9 @@ $( function () {
 					name: 'mwe-pt-delete',
 					type: elementType,
 					value: tagSet[ key ].tag,
-					class: 'mwe-pt-delete-checkbox',
+					'class': 'mwe-pt-delete-checkbox',
 					id: 'mwe-pt-checkbox-delete-' + key,
-					checked: this.selectedTag[ key ] ? true : false
+					checked: !!this.selectedTag[ key ]
 				}
 			);
 			return '<div class="mwe-pt-delete-row" id="mwe-pt-delete-row-' + key + '">' +
@@ -277,6 +284,8 @@ $( function () {
 
 		/**
 		 * Display deletion tags for selected category
+		 *
+		 * @param {string} cat
 		 */
 		displayTags: function ( cat ) {
 			var tagDesc, key, param,
@@ -303,7 +312,6 @@ $( function () {
 			$( '#mwe-pt-category-' + cat + ' .mwe-pt-category-pokey' ).show();
 			$( '#mwe-pt-delete' ).append( $tagList );
 
-			/*jshint loopfunc: true */
 			for ( key in tagSet ) {
 
 				// Keep a running total of tags in the category
@@ -322,6 +330,7 @@ $( function () {
 				// add click events for checking/unchecking tags to both the
 				// checkboxes and tag labels
 				$( '#mwe-pt-delete-' + key + ', #mwe-pt-checkbox-delete-' + key ).click(
+					// eslint-disable-next-line no-loop-func
 					function () {
 						// Extract the tag key from the id of whatever was clicked on
 						var tagKeyMatches = $( this ).attr( 'id' ).match( /.*-delete-(.*)/ ),
@@ -368,7 +377,6 @@ $( function () {
 					}
 				).end();
 			}
-			/*jshint loopfunc: false */
 
 			// If there is only one tag in the category, go ahead and select it.
 			if ( tagCount === 1 ) {
@@ -389,6 +397,8 @@ $( function () {
 
 		/**
 		 * Show 'Add/Edit parameter' link
+		 *
+		 * @param {string} key
 		 */
 		showParamsLink: function ( key ) {
 			var param, link,
@@ -420,13 +430,13 @@ $( function () {
 			// Give grep a chance to find the usages:
 			// pagetriage-button-add-details, pagetriage-button-edit-details
 			link = mw.html.element(
-						'a',
-						{
-							href: '#',
-							id: 'mwe-pt-delete-params-' + key
-						},
-						mw.msg( 'pagetriage-button-' + text + '-details' )
-					);
+				'a',
+				{
+					href: '#',
+					id: 'mwe-pt-delete-params-' + key
+				},
+				mw.msg( 'pagetriage-button-' + text + '-details' )
+			);
 			$( '#mwe-pt-delete-params-link-' + key ).html( '+&#160;' + link );
 			// Add click event to the link that shows the param form
 			$( '#mwe-pt-delete-params-' + key ).click( function () {
@@ -436,6 +446,8 @@ $( function () {
 
 		/**
 		 * Hide 'Add/Edit parameter' link
+		 *
+		 * @param {string} key
 		 */
 		hideParamsLink: function ( key ) {
 			$( '#mwe-pt-delete-params-link-' + key ).empty();
@@ -443,6 +455,8 @@ $( function () {
 
 		/**
 		 * Hide 'Add/Edit parameter' link for multiple deletion tags
+		 *
+		 * @param {Object} obj
 		 */
 		multiHideParamsLink: function ( obj ) {
 			var key;
@@ -453,6 +467,8 @@ $( function () {
 
 		/**
 		 * Show the parameters form
+		 *
+		 * @param {string} key
 		 */
 		showParamsForm: function ( key ) {
 			var param, paramObj,
@@ -473,21 +489,21 @@ $( function () {
 			}
 
 			html += mw.html.element(
-						'button',
-						{
-							id: 'mwe-pt-delete-set-param-' + key,
-							class: 'mwe-pt-delete-set-param-button ui-button-green'
-						},
-						mw.msg( 'pagetriage-button-add-details' )
-					);
+				'button',
+				{
+					id: 'mwe-pt-delete-set-param-' + key,
+					'class': 'mwe-pt-delete-set-param-button ui-button-green'
+				},
+				mw.msg( 'pagetriage-button-add-details' )
+			);
 			html += mw.html.element(
-						'button',
-						{
-							id: 'mwe-pt-delete-cancel-param-' + key,
-							class: 'ui-button-red'
-						},
-						mw.msg( 'cancel' )
-					);
+				'button',
+				{
+					id: 'mwe-pt-delete-cancel-param-' + key,
+					'class': 'ui-button-red'
+				},
+				mw.msg( 'cancel' )
+			);
 
 			html += '<div id="mwe-pt-delete-params-form-error"></div>';
 
@@ -536,6 +552,8 @@ $( function () {
 
 		/**
 		 * Hide the parameters form
+		 *
+		 * @param {string} key
 		 */
 		hideParamsForm: function ( key ) {
 			$( '#mwe-pt-delete-params-form-' + key ).hide();
@@ -543,6 +561,9 @@ $( function () {
 
 		/**
 		 * Set the parameter values
+		 *
+		 * @param {string} key
+		 * @return {boolean}
 		 */
 		setParams: function ( key ) {
 			var param,
@@ -560,6 +581,9 @@ $( function () {
 
 		/**
 		 * Build the parameter for request
+		 *
+		 * @param {Object} obj
+		 * @return {string}
 		 */
 		buildParams: function ( obj ) {
 			var param,
@@ -667,7 +691,8 @@ $( function () {
 			// Re-enable the submit button (in case it is disabled)
 			$( '#mwe-pt-delete-submit-button' ).button( 'enable' );
 			// Show error message to the user
-			window.alert( msg );
+			// eslint-disable-next-line no-alert
+			alert( msg );
 		},
 
 		/**
@@ -749,6 +774,9 @@ $( function () {
 
 		/**
 		 * Notify the user on talk page
+		 *
+		 * @param {number} count
+		 * @param {string} key
 		 */
 		notifyUser: function ( count, key ) {
 			var selected, topicTitleKey, templateName, template, messagePosterPromise,
@@ -799,6 +827,8 @@ $( function () {
 		/**
 		 * Get the content of the current log page, then attempt to add this page
 		 * to the log in another request
+		 *
+		 * @param {Object} tagObj
 		 */
 		logPage: function ( tagObj ) {
 			var that = this,
@@ -810,7 +840,7 @@ $( function () {
 				data: {
 					action: 'query',
 					prop: 'info|revisions',
-					intoken: 'edit',  // fetch an edit token
+					intoken: 'edit', // fetch an edit token
 					titles: title,
 					format: 'json',
 					rvprop: 'content'
@@ -836,6 +866,10 @@ $( function () {
 
 		/**
 		 * Add a page to the log
+		 *
+		 * @param {string} title
+		 * @param {string} oldText
+		 * @param {Object} tagObj
 		 */
 		addToLog: function ( title, oldText, tagObj ) {
 			var that = this,
@@ -879,6 +913,8 @@ $( function () {
 
 		/**
 		 * Generate the discussion page
+		 *
+		 * @param {Object} tagObj
 		 */
 		discussionPage: function ( tagObj ) {
 			var that = this,
@@ -895,7 +931,7 @@ $( function () {
 				return;
 			}
 
-			specialDeletionTagging[ tagObj.tag ].buildDiscussionRequest( tagObj.params[ '1' ].value, data  );
+			specialDeletionTagging[ tagObj.tag ].buildDiscussionRequest( tagObj.params[ '1' ].value, data );
 
 			$.ajax( {
 				type: 'post',
@@ -914,6 +950,11 @@ $( function () {
 
 		/**
 		 * Build the HTML for tag parameter
+		 *
+		 * @param {string} name
+		 * @param {Object} obj
+		 * @param {string} key
+		 * @return {string}
 		 */
 		buildHTML: function ( name, obj, key ) {
 			var html = '';
@@ -921,23 +962,23 @@ $( function () {
 			switch ( obj.type ) {
 				case 'hidden':
 					html += mw.html.element(
-							'input',
-							{
-								type: 'hidden',
-								value: ( obj.value ) ? obj.value : '',
-								id: 'mwe-pt-delete-params-' + key + '-' + name
-							}
-						);
+						'input',
+						{
+							type: 'hidden',
+							value: ( obj.value ) ? obj.value : '',
+							id: 'mwe-pt-delete-params-' + key + '-' + name
+						}
+					);
 					break;
 				case 'textarea':
 					if ( obj.label ) {
 						html += '<div class="mwe-pt-delete-params-question">' + obj.label + '</div>';
 					}
 					html += mw.html.element(
-							'textarea',
-							{ id: 'mwe-pt-delete-params-' + key + '-' + name },
-							obj.value
-						);
+						'textarea',
+						{ id: 'mwe-pt-delete-params-' + key + '-' + name },
+						obj.value
+					);
 					html += '<br/>\n';
 					break;
 				case 'text':
@@ -945,13 +986,13 @@ $( function () {
 				default:
 					html += obj.label + ' ';
 					html += mw.html.element(
-							'input',
-							{
-								type: 'text',
-								value: ( obj.value ) ? obj.value : '',
-								id: 'mwe-pt-delete-params-' + key + '-' + name
-							}
-						);
+						'input',
+						{
+							type: 'text',
+							value: ( obj.value ) ? obj.value : '',
+							id: 'mwe-pt-delete-params-' + key + '-' + name
+						}
+					);
 					html += '<br/>\n';
 					break;
 			}

@@ -82,7 +82,7 @@ $( function () {
 					}
 
 					$( '#mwe-pt-article-contributor-list' ).append(
-						'<input type="checkbox" class="mwe-pt-recipient-checkbox" value="' +  _.escape( name ) + '"/>' +
+						'<input type="checkbox" class="mwe-pt-recipient-checkbox" value="' + _.escape( name ) + '"/>' +
 						link + ' <span class="mwe-pt-info-text">– ' +
 						mw.msg( 'pagetriage-wikilove-edit-count', count ) +
 						'</span><br/>'

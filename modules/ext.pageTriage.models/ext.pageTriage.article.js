@@ -1,6 +1,6 @@
 // Article represents the metadata for a single article.
 // ArticleList is a collection of articles for use in the list view
-//
+
 $( function () {
 	mw.pageTriage.Article = Backbone.Model.extend( {
 		defaults: {
@@ -22,22 +22,22 @@ $( function () {
 
 		formatMetadata: function ( article ) {
 			// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
-			var bylineMessage, user_creation_date_parsed, byline, titleUrl,
-				creation_date_parsed = Date.parseExact( article.get( 'creation_date' ), 'yyyyMMddHHmmss' );
+			var bylineMessage, userCreationDateParsed, byline, titleUrl,
+				creationDateParsed = Date.parseExact( article.get( 'creation_date' ), 'yyyyMMddHHmmss' );
 
 			article.set(
 				'creation_date_pretty',
-				creation_date_parsed.toString( mw.msg( 'pagetriage-creation-dateformat' ) )
+				creationDateParsed.toString( mw.msg( 'pagetriage-creation-dateformat' ) )
 			);
 
 			// sometimes user info isn't set, so check that first.
 			if ( article.get( 'user_creation_date' ) ) {
-				user_creation_date_parsed = Date.parseExact(
+				userCreationDateParsed = Date.parseExact(
 					article.get( 'user_creation_date' ),
 					'yyyyMMddHHmmss'
 				);
 				article.set(
-					'user_creation_date_pretty', user_creation_date_parsed.toString( mw.msg( 'pagetriage-info-timestamp-date-format' ) ) );
+					'user_creation_date_pretty', userCreationDateParsed.toString( mw.msg( 'pagetriage-info-timestamp-date-format' ) ) );
 			} else {
 				article.set( 'user_creation_date_pretty', '' );
 			}
@@ -189,7 +189,7 @@ $( function () {
 				'a',
 				{
 					href: url,
-					class: style
+					'class': style
 				},
 				text
 			);
@@ -220,9 +220,8 @@ $( function () {
 					format: 'json',
 					timestamp: d.getTime()
 				} );
-			// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
+			// eslint-disable-next-line camelcase
 			return mw.util.wikiScript( 'api' ) + '?' + params + '&' + $.param( { page_id: this.pageId } );
-			// jscs: enable requireCamelCaseOrUpperCaseIdentifiers
 		},
 
 		parse: function ( response ) {
@@ -316,7 +315,7 @@ $( function () {
 			$.each( this.apiParams, function ( key, val ) {
 				str = '"' + key + '":';
 				if ( typeof val === 'string' ) {
-					val = '"' + val.replace( /[\"]/g, '\\"' ) + '"';
+					val = '"' + val.replace( /["]/g, '\\"' ) + '"';
 				}
 				str += val;
 				paramArray.push( str );

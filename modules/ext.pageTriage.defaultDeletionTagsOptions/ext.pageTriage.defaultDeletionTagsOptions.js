@@ -1,5 +1,5 @@
 // See http://www.mediawiki.org/wiki/Extension:PageTriage for basic documentation on configuration.
-// <nowiki>
+
 ( function ( $, mw ) {
 	var param = {
 			url: {
@@ -399,5 +399,4 @@
 
 	};
 
-} )( jQuery, mediaWiki );
-// </nowiki>
+}( jQuery, mediaWiki ) );

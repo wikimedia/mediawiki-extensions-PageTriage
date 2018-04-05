@@ -13,6 +13,8 @@ $( function () {
 
 		/**
 		 * Initialize data on startup
+		 *
+		 * @param {Object} options
 		 */
 		initialize: function ( options ) {
 			this.eventBus = options.eventBus;
@@ -136,6 +138,8 @@ $( function () {
 
 		/**
 		 * Display the tags for the selected category
+		 *
+		 * @param {string} cat
 		 */
 		displayTags: function ( cat ) {
 			var $tagList, key, checked, checkbox,
@@ -155,7 +159,6 @@ $( function () {
 
 			$( '#mwe-pt-tags' ).append( $tagList );
 
-			/*jshint loopfunc: true */
 			for ( key in tagSet ) {
 
 				checked = false;
@@ -167,15 +170,15 @@ $( function () {
 
 				// build the checkbox
 				checkbox = mw.html.element(
-							'input',
-							{
-								type: 'checkbox',
-								value: tagSet[ key ].tag,
-								class: 'mwe-pt-tag-checkbox',
-								id: 'mwe-pt-checkbox-tag-' + key,
-								checked: ( checked ) ? true : false
-							}
-						);
+					'input',
+					{
+						type: 'checkbox',
+						value: tagSet[ key ].tag,
+						'class': 'mwe-pt-tag-checkbox',
+						id: 'mwe-pt-checkbox-tag-' + key,
+						checked: checked
+					}
+				);
 				tagRow = '<div class="mwe-pt-tag-row" id="mwe-pt-tag-row-' + key + '"><table><tr>';
 				tagRow += '<td class="mwe-pt-tag-checkbox-cell">' + checkbox + '</td>';
 				tagRow += '<td><div id="mwe-pt-tag-' + key + '" class="mwe-pt-tag-label">' +
@@ -254,16 +257,17 @@ $( function () {
 							that.hideParamsForm( tagKey );
 						}
 
-						that.refreshTagCountDisplay( tagKey, destCat ? destCat : cat );
+						that.refreshTagCountDisplay( tagKey, destCat || cat );
 					}
 				).end();
 			}
-			/*jshint loopfunc: false */
-
 		},
 
 		/**
 		 * Refresh the display of tag count
+		 *
+		 * @param {string} key
+		 * @param {string} cat
 		 */
 		refreshTagCountDisplay: function ( key, cat ) {
 			var categoryTagCount = this.objectPropCount( this.selectedTag[ cat ] );
@@ -294,6 +298,9 @@ $( function () {
 
 		/**
 		 * Show 'Add/Edit parameter' link
+		 *
+		 * @param {string} key
+		 * @param {string} cat
 		 */
 		showParamsLink: function ( key, cat ) {
 			var param, link,
@@ -326,10 +333,10 @@ $( function () {
 			// Give grep a chance to find the usages:
 			// pagetriage-button-add-details, pagetriage-button-edit-details
 			link = mw.html.element(
-					'a',
-					{ href: '#', id: 'mwe-pt-tag-params-' + key },
-					mw.msg( 'pagetriage-button-' + text + '-details' )
-				);
+				'a',
+				{ href: '#', id: 'mwe-pt-tag-params-' + key },
+				mw.msg( 'pagetriage-button-' + text + '-details' )
+			);
 			$( '#mwe-pt-tag-params-link-' + key ).html( '+&#160;' + link );
 
 			// Add click event to the link that shows the param form
@@ -341,6 +348,8 @@ $( function () {
 
 		/**
 		 * Hide 'Add/Edit parameter' link
+		 *
+		 * @param {string} key
 		 */
 		hideParamsLink: function ( key ) {
 			$( '#mwe-pt-tag-params-link-' + key ).empty();
@@ -348,6 +357,9 @@ $( function () {
 
 		/**
 		 * Show the parameters form
+		 *
+		 * @param {string} key
+		 * @param {string} cat
 		 */
 		showParamsForm: function ( key, cat ) {
 			var param, paramObj,
@@ -364,15 +376,15 @@ $( function () {
 			}
 
 			buttons += mw.html.element(
-						'button',
-						{ id: 'mwe-pt-tag-set-param-' + key, class: 'mwe-pt-tag-set-param-button ui-button-green' },
-						mw.msg( 'pagetriage-button-add-details' )
-					);
+				'button',
+				{ id: 'mwe-pt-tag-set-param-' + key, 'class': 'mwe-pt-tag-set-param-button ui-button-green' },
+				mw.msg( 'pagetriage-button-add-details' )
+			);
 			buttons += mw.html.element(
-						'button',
-						{ id: 'mwe-pt-tag-cancel-param-' + key, class: 'ui-button-red' },
-						mw.msg( 'cancel' )
-					);
+				'button',
+				{ id: 'mwe-pt-tag-cancel-param-' + key, 'class': 'ui-button-red' },
+				mw.msg( 'cancel' )
+			);
 			html += '<div class="mwe-pt-tag-params-form-buttons">' + buttons + '</div>';
 
 			html += '<div id="mwe-pt-tags-params-form-error"></div>';
@@ -414,7 +426,7 @@ $( function () {
 							}
 							delete that.selectedTag[ cat ][ key ];
 							that.selectedTagCount--;
-							that.refreshTagCountDisplay( key, destCat ? destCat : cat );
+							that.refreshTagCountDisplay( key, destCat || cat );
 							$( '#mwe-pt-checkbox-tag-' + key ).prop( 'checked', false );
 							that.hideParamsLink( key );
 							break;
@@ -426,6 +438,8 @@ $( function () {
 
 		/**
 		 * Hide the parameters form
+		 *
+		 * @param {string} key
 		 */
 		hideParamsForm: function ( key ) {
 			$( '#mwe-pt-tag-params-form-' + key ).hide();
@@ -433,6 +447,10 @@ $( function () {
 
 		/**
 		 * Set the parameter values
+		 *
+		 * @param {string} key
+		 * @param {string} cat
+		 * @return {boolean}
 		 */
 		setParams: function ( key, cat ) {
 			var param,
@@ -462,6 +480,9 @@ $( function () {
 
 		/**
 		 * Build the parameter for request
+		 *
+		 * @param {Object} tagObj
+		 * @return {string}
 		 */
 		buildParams: function ( tagObj ) {
 			var param,
@@ -490,7 +511,8 @@ $( function () {
 				multipleTagsText = '';
 
 			if ( this.model.get( 'page_len' ) < 1000 && this.selectedTagCount > 4 ) {
-				if ( !window.confirm( mw.msg( 'pagetriage-add-tag-confirmation', this.selectedTagCount ) ) ) {
+				// eslint-disable-next-line no-alert
+				if ( !confirm( mw.msg( 'pagetriage-add-tag-confirmation', this.selectedTagCount ) ) ) {
 					$.removeSpinner( 'tag-spinner' );
 					$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
 					return;
@@ -584,7 +606,8 @@ $( function () {
 			// Re-enable the submit button (in case it is disabled)
 			$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
 			// Show error message to the user
-			window.alert( msg );
+			// eslint-disable-next-line no-alert
+			alert( msg );
 		},
 
 		applyTags: function ( topText, bottomText, tagList ) {
@@ -659,6 +682,11 @@ $( function () {
 
 		/**
 		 * Build the HTML for tag parameter
+		 *
+		 * @param {string} name
+		 * @param {Object} obj
+		 * @param {string} key
+		 * @return {string}
 		 */
 		buildHTML: function ( name, obj, key ) {
 			var i,
@@ -667,21 +695,21 @@ $( function () {
 			switch ( obj.type ) {
 				case 'hidden':
 					html += mw.html.element(
-							'input',
-							{
-								type: 'hidden',
-								value: ( obj.value ) ? obj.value : '',
-								id: 'mwe-pt-tag-params-' + key + '-' + name
-							}
-						);
+						'input',
+						{
+							type: 'hidden',
+							value: ( obj.value ) ? obj.value : '',
+							id: 'mwe-pt-tag-params-' + key + '-' + name
+						}
+					);
 					break;
 				case 'textarea':
 					html += obj.label + ' ';
 					html += mw.html.element(
-							'textarea',
-							{ id: 'mwe-pt-tag-params-' + key + '-' + name },
-							obj.value
-						);
+						'textarea',
+						{ id: 'mwe-pt-tag-params-' + key + '-' + name },
+						obj.value
+					);
 					html += '<br/>\n';
 					break;
 				case 'checkbox':
@@ -690,7 +718,7 @@ $( function () {
 						{
 							type: 'checkbox',
 							value: 'yes',
-							checked: ( obj.value === 'yes' ) ? true : false,
+							checked: obj.value === 'yes',
 							name: 'mwe-pt-tag-params-' + key + '-' + name,
 							id: 'mwe-pt-tag-params-' + key + '-' + name
 						}
@@ -706,7 +734,7 @@ $( function () {
 							{
 								type: 'radio',
 								value: i.toLowerCase(),
-								checked: ( i === obj.value ) ? true : false,
+								checked: i === obj.value,
 								name: 'mwe-pt-tag-params-' + key + '-' + name
 							}
 						);
@@ -719,13 +747,13 @@ $( function () {
 				default:
 					html += obj.label + ' ';
 					html += mw.html.element(
-							'input',
-							{
-								type: 'text',
-								value: ( obj.value ) ? obj.value : '',
-								id: 'mwe-pt-tag-params-' + key + '-' + name
-							}
-						);
+						'input',
+						{
+							type: 'text',
+							value: obj.value || '',
+							id: 'mwe-pt-tag-params-' + key + '-' + name
+						}
+					);
 					html += '<br/>\n';
 					break;
 			}

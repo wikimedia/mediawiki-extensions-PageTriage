@@ -11,13 +11,13 @@
 				input: 'automated',
 				type: 'hidden',
 				value: mw.msg(
-						'pagetriage-tags-param-date-format',
-						month[ today.getUTCMonth() ],
-						today.getUTCFullYear()
-					)
+					'pagetriage-tags-param-date-format',
+					month[ today.getUTCMonth() ],
+					today.getUTCFullYear()
+				)
 			},
 
-			for: {
+			'for': {
 				label: mw.msg( 'pagetriage-tags-param-for-label' ),
 				input: 'optional',
 				type: 'textarea',
@@ -93,7 +93,7 @@
 					desc: mw.msg( 'pagetriage-tags-copyedit-desc' ),
 					params: {
 						date: param.date,
-						for: $.extend( true, {}, param.for )
+						'for': $.extend( true, {}, param.for )
 					},
 					position: 'top',
 					dest: 'cleanup',
@@ -182,7 +182,7 @@
 					desc: mw.msg( 'pagetriage-tags-copyedit-desc' ),
 					params: {
 						date: param.date,
-						for: $.extend( true, {}, param.for )
+						'for': $.extend( true, {}, param.for )
 					},
 					position: 'top',
 					multiple: true
@@ -853,5 +853,5 @@
 
 	};
 
-} )( jQuery, mediaWiki );
+}( jQuery, mediaWiki ) );
 // </nowiki>

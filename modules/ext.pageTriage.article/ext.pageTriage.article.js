@@ -1,13 +1,12 @@
 // Handles the interface for actually marking an article as reviewed
 //
-/* global wgArticleId */
 
 ( function ( $ ) {
 	mw.pageTriage.action = {
 		submit: function () {
 			var apiRequest = {
 				action: 'pagetriageaction',
-				pageid: wgArticleId,
+				pageid: mw.config.get( 'wgArticleId' ),
 				reviewed: '1',
 				token: mw.user.tokens.get( 'editToken' ),
 				format: 'json'
@@ -32,9 +31,9 @@
 	};
 
 	$( '.mw-pagetriage-markpatrolled-link' )
-		.click( function () {
-				mw.pageTriage.action.submit();
-				return false;
-			} )
+		.on( 'click', function () {
+			mw.pageTriage.action.submit();
+			return false;
+		} )
 		.end();
-} )( jQuery );
+}( jQuery ) );

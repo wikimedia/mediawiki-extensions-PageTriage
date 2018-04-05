@@ -222,6 +222,9 @@ $( function () {
 
 		/**
 		 * Count the number of properties in an object
+		 *
+		 * @param {Object} obj
+		 * @return {number}
 		 */
 		objectPropCount: function ( obj ) {
 			var key,

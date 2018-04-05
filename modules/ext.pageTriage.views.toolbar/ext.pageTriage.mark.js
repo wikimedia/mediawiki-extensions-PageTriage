@@ -28,7 +28,7 @@ $( function () {
 
 		// overwrite parent function
 		setIcon: function ( dir ) {
-			if ( typeof ( dir ) !== 'string' )  {
+			if ( typeof ( dir ) !== 'string' ) {
 				dir = 'normal';
 			}
 			if ( dir === 'normal' && this.model.get( 'patrol_status' ) > 0 ) {
@@ -172,7 +172,8 @@ $( function () {
 		showMarkError: function ( action, errorMsg ) {
 			// Give grep a chance to find the usages:
 			// pagetriage-mark-as-reviewed-error, pagetriage-mark-as-unreviewed-error
-			window.alert( mw.msg( 'pagetriage-mark-as-' + action + '-error', errorMsg ) );
+			// eslint-disable-next-line no-alert
+			alert( mw.msg( 'pagetriage-mark-as-' + action + '-error', errorMsg ) );
 			$.removeSpinner( 'mark-spinner' );
 			$( '#mwe-pt-mark-as-' + action + '-button' ).button( 'enable' );
 		},

@@ -63,6 +63,9 @@ $( function () {
 
 					/**
 					 * Check if the flyout is enabled
+					 *
+					 * @param {string} flyout
+					 * @return {boolean}
 					 */
 					isFlyoutEnabled: function ( flyout ) {
 						var modules = mw.config.get( 'wgPageTriageCurationModules' );
@@ -100,8 +103,8 @@ $( function () {
 
 						// make it draggable
 						$( '#mwe-pt-toolbar' ).draggable( {
-							containment: 'window',  // keep the curation bar inside the window
-							delay: 200,  // these options prevent unwanted drags when attempting to click buttons
+							containment: 'window', // keep the curation bar inside the window
+							delay: 200, // these options prevent unwanted drags when attempting to click buttons
 							distance: 10,
 							cancel: '.mwe-pt-tool-content'
 						} );

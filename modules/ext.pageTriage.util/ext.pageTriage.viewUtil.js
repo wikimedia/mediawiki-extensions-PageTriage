@@ -3,16 +3,15 @@ $( function () {
 		// define templates which should be cached in here, the key is the template view:
 		// list, toolbar etc
 		cache: { toolbar: {
-					'articleInfo.html': '',
-					'articleInfoHistory.html': '',
-					'delete.html': '',
-					'mark.html': '',
-					'tags.html': '',
-					'wikilove.html': '',
-					'toolView.html': '',
-					'toolbarView.html': ''
-				}
-			},
+			'articleInfo.html': '',
+			'articleInfoHistory.html': '',
+			'delete.html': '',
+			'mark.html': '',
+			'tags.html': '',
+			'wikilove.html': '',
+			'toolView.html': '',
+			'toolbarView.html': ''
+		} },
 		// fetch and compile a template, then return it.
 		// args: view, template
 		template: function ( arg ) {

@@ -52,7 +52,7 @@ $( function () {
 		// Create a waypoint trigger that floats the navbar when the user scrolls up
 		setWaypoint: function () {
 			var that = this;
-			$( '#mwe-pt-list-stats-nav-anchor' ).waypoint( 'destroy' );  // remove the old, maybe inaccurate ones.
+			$( '#mwe-pt-list-stats-nav-anchor' ).waypoint( 'destroy' ); // remove the old, maybe inaccurate ones.
 			$.waypoints.settings.scrollThrottle = 30;
 			$( '#mwe-pt-list-stats-nav-anchor' ).waypoint( function ( event, direction ) {
 				if ( direction === 'up' ) {

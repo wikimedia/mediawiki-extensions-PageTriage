@@ -112,7 +112,7 @@ $( function () {
 				this.problemCount++;
 				problems += this.formatProblem( 'blocked' );
 			}
-			if (  this.model.get( 'category_count' ) < 1 && this.model.get( 'is_redirect' ) === 0 ) {
+			if ( this.model.get( 'category_count' ) < 1 && this.model.get( 'is_redirect' ) === 0 ) {
 				this.problemCount++;
 				problems += this.formatProblem( 'no-categories' );
 			}
