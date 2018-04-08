@@ -1,10 +1,10 @@
 PageTriage Extension, v.0.1
 
-* download the latest available version and extract it to your wiki extension directory. 
-* add the following line to LocalSettings.php 
+* download the latest available version and extract it to your wiki extension directory.
+* add the following line to LocalSettings.php:
 
-	require_once( "$IP/extensions/PageTriage/PageTriage.php" );
+	wfLoadExtension( 'PageTriage' );
 
-* check out the Special:Version page to verify the installation 
+* check out the Special:Version page to verify the installation
 
-See http://www.mediawiki.org/wiki/Extension:PageTriage for further details.
+See https://www.mediawiki.org/wiki/Extension:PageTriage for further details.

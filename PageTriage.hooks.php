@@ -6,7 +6,7 @@ class PageTriageHooks {
 	 * Mark a page as unreviewed after moving the page from non-main(article) namespace to
 	 * main(article) namespace
 	 *
-	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/SpecialMovepageAfterMove
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/SpecialMovepageAfterMove
 	 * @param MovePageForm $movePage MovePageForm object
 	 * @param Title &$oldTitle old title object
 	 * @param Title &$newTitle new title object
@@ -58,7 +58,7 @@ class PageTriageHooks {
 	 * Check if a page is created from a redirect page, then insert into it PageTriage Queue
 	 * Note: Page will be automatically marked as triaged for users with autopatrol right
 	 *
-	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/NewRevisionFromEditComplete
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/NewRevisionFromEditComplete
 	 *
 	 * @param WikiPage $wikiPage the WikiPage edited
 	 * @param Revision|null $rev the new revision
@@ -92,7 +92,7 @@ class PageTriageHooks {
 	/**
 	 * When a new article is created, insert it into the PageTriage Queue
 	 *
-	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/ArticleInsertComplete
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ArticleInsertComplete
 	 * @param WikiPage $article WikiPage created
 	 * @param User $user User creating the article
 	 * @param Content $content New content
@@ -120,7 +120,7 @@ class PageTriageHooks {
 	/**
 	 * Flush user status cache on a successful save.
 	 *
-	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/PageContentSaveComplete
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageContentSaveComplete
 	 *
 	 * @param WikiPage $wikiPage
 	 * @param User $user
@@ -803,7 +803,7 @@ class PageTriageHooks {
 
 	/**
 	 * Handler for LocalUserCreated hook
-	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/LocalUserCreated
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LocalUserCreated
 	 * @param User $user User object that was created.
 	 * @param bool $autocreated True when account was auto-created
 	 * @return bool
