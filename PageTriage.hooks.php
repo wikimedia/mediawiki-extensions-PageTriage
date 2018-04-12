@@ -760,6 +760,9 @@ class PageTriageHooks {
 				'group' => 'negative',
 				'section' => 'alert',
 			];
+			$icons['trash'] = [
+				'path' => 'PageTriage/echo-icons/trash.svg'
+			];
 		}
 
 		return true;
