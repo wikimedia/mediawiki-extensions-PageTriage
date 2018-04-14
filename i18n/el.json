@@ -4,7 +4,8 @@
 			"ZaDiak",
 			"Geraki",
 			"Protnet",
-			"KATRINE1992"
+			"KATRINE1992",
+			"Nikosgranturismogt"
 		]
 	},
 	"pagetriage": "Διαλογή σελίδων",
@@ -66,7 +67,7 @@
 	"pagetriage-filter-stat-redirects": "ανακατευθύνσεις",
 	"pagetriage-filter-stat-no-categories": "καμία κατηγορία",
 	"pagetriage-filter-stat-orphan": "ορφανά",
-	"pagetriage-filter-stat-non-autoconfirmed": "νέοι συντάκτες",
+	"pagetriage-filter-stat-non-autoconfirmed": "νεοεισερχόμενοι",
 	"pagetriage-filter-stat-learners": "μαθητές",
 	"pagetriage-filter-stat-username": "όνομα χρήστη: $1",
 	"pagetriage-refresh-list": "Ανανέωση λίστας",
