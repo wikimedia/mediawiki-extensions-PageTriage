@@ -5,5 +5,10 @@
 		]
 	},
 	"pagetriage-filter-username": "Імя ўдзельніка",
-	"pagetriage-filter-stat-username": "імя ўдзельніка: $1"
+	"pagetriage-filter-stat-username": "імя ўдзельніка: $1",
+	"pagetriage-tags-param-date-label": "Дата:",
+	"pagetriage-info-help": "даведка",
+	"pagetriage-toolbar-close": "Закрыць",
+	"pagetriage-discuss-link": "{{GENDER:$1|Абмеркаваць}}",
+	"pagetriage-discuss-link-title": "{{GENDER:$1|Абмеркаваць}}"
 }
