@@ -26,7 +26,6 @@ class PageTriageHttp {
 		curl_setopt( $this->curlHandle, CURLOPT_COOKIEJAR, '/tmp/cookies'.$this->id.'.dat' );
 		curl_setopt( $this->curlHandle, CURLOPT_COOKIEFILE, '/tmp/cookies'.$this->id.'.dat' );
 		curl_setopt( $this->curlHandle, CURLOPT_MAXCONNECTS, 10 );
-		curl_setopt( $this->curlHandle, CURLOPT_CLOSEPOLICY, CURLCLOSEPOLICY_LEAST_RECENTLY_USED );
 	}
 
 	/**
