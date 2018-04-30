@@ -14,8 +14,6 @@ class PageTriageMessagesModule extends ResourceLoaderModule {
 
 	/* Protected Members */
 
-	protected $origin = self::ORIGIN_USER_SITEWIDE;
-
 	/**
 	 * @var array $contentLanguageMessageKeys
 	 */
