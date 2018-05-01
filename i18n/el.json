@@ -76,6 +76,7 @@
 	"pagetriage-button-edit-details": "Επεξεργασία λεπτομερειών",
 	"pagetriage-button-mark-for-deletion": "Σήμανση για διαγραφή",
 	"pagetriage-tags-title": "Προσθήκη ετικετών",
+	"pagetriage-tags-cat-common-label": "Κοινόχρηστο",
 	"pagetriage-tags-cat-metadata-label": "Μεταδεδομένα",
 	"pagetriage-tags-cat-cleanup-label": "Εκκαθάριση",
 	"pagetriage-tags-cat-neutrality-label": "Ουδετερότητα",
@@ -94,6 +95,10 @@
 	"pagetriage-info-history-header": "Ιστορικό",
 	"pagetriage-info-history-show-full": "εμφάνιση πλήρους ιστορικού",
 	"pagetriage-info-help": "βοήθεια",
+	"pagetriage-info-problem-non-autoconfirmed": "Νέος συντάκτης",
+	"pagetriage-info-problem-no-categories": "Καμία κατηγορία",
+	"pagetriage-info-problem-orphan": "Ορφανό",
+	"pagetriage-toolbar-close": "Κλείσιμο",
 	"apihelp-pagetriagelist-param-learners": "Το εάν θα προβληθούν μόνο σελίδες που δημιουργήθηκαν από νέους συντάκτες.",
 	"apihelp-pagetriagestats-param-learners": "Το αν θα περιλαμβάνει μόνο σελίδες που δημιουργήθηκαν από νέους συντάκτες ως χρήστες."
 }
