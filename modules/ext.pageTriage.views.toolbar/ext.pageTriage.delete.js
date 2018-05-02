@@ -56,7 +56,7 @@ $( function () {
 			buildLogRequest: function ( oldText, reason, tagObj, data ) {
 				data.text = oldText.replace(
 					// FIXME: This is pretty fragile (and English Wikipedia specific).
-					/(<!-- Add new entries directly below this line. -->)/,
+					/(<!-- Add new entries directly below this line\.? -->)/,
 					'$1\n{{subst:rfd2|text=' + reason + '|redirect=' + pageName + '}} ~~~~\n'
 				);
 			},
