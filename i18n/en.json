@@ -315,7 +315,7 @@
 	"logentry-pagetriage-deletion-delete": "$1 {{GENDER:$2|marked}} $3 for deletion with $4 {{PLURAL:$5|tag|tags}}",
 	"pagetriage-tags-edit-summary": "Added tags to the page using $1 ($2)",
 	"pagetriage-del-edit-summary": "Nominated page for deletion using $1 ($2)",
-	"pagetriage-del-tags-param-discussion-label": "Please explain why this article should be deleted, and provide links to the relevant policies wherever possible",
+	"pagetriage-del-tags-param-discussion-label": "Please explain why this page should be deleted, and provide links to the relevant policies wherever possible",
 	"pagetriage-info-title": "Page info",
 	"pagetriage-info-problem-header": "Possible issues",
 	"pagetriage-info-history-header": "History",
