@@ -310,7 +310,7 @@
 	"logentry-pagetriage-deletion-delete": "$1님이 $3을(를) $4 {{PLURAL:$5|태그}}로 삭제 {{GENDER:$2|표시했습니다}}",
 	"pagetriage-tags-edit-summary": "$1($2)을 사용해 문서에 태그를 추가함",
 	"pagetriage-del-edit-summary": "$1($2)을 사용하여 삭제 문서로 선정함",
-	"pagetriage-del-tags-param-discussion-label": "이 문서를 삭제해야 하는 이유를 설명하고, 가능하다면 관련 정책에 대한 링크를 제공하세요",
+	"pagetriage-del-tags-param-discussion-label": "이 문서를 삭제해야 하는 이유를 설명해 주시고, 가능하다면 관련 정책에 대한 링크를 제공하세요",
 	"pagetriage-info-title": "문서 정보",
 	"pagetriage-info-problem-header": "가능한 문제",
 	"pagetriage-info-history-header": "역사",

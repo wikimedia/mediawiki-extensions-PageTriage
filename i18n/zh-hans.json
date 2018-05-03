@@ -180,7 +180,7 @@
 	"logentry-pagetriage-deletion-delete": "$1用$4{{PLURAL:$5|标签}}{{GENDER:$2|标记}}$3待删除",
 	"pagetriage-tags-edit-summary": "使用$1（$2）给页面添加标签",
 	"pagetriage-del-edit-summary": "使用$1（$2）将页面提名删除",
-	"pagetriage-del-tags-param-discussion-label": "请解释为什么要删除该条目，并在可能时提供相关方针的链接",
+	"pagetriage-del-tags-param-discussion-label": "请解释为什么要删除该页面，并在可能时提供相关方针的链接",
 	"pagetriage-info-title": "页面信息",
 	"pagetriage-info-problem-header": "可能的问题",
 	"pagetriage-info-history-header": "历史",

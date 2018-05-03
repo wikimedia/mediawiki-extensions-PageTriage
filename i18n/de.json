@@ -309,7 +309,7 @@
 	"logentry-pagetriage-deletion-delete": "$1 {{GENDER:$2|versah}} $3 zur Löschung mit {{PLURAL:$5|der Markierung|den Markierungen}} $4",
 	"pagetriage-tags-edit-summary": "Markierungen mit $1 zur Seite hinzugefügt ($2)",
 	"pagetriage-del-edit-summary": "Seite mit $1 zur Löschung vorgeschlagen ($2)",
-	"pagetriage-del-tags-param-discussion-label": "Bitte erkläre, warum dieser Artikel gelöscht werden sollte, und gib, sofern möglich, Links zu den zutreffenden Richtlinien an.",
+	"pagetriage-del-tags-param-discussion-label": "Bitte erkläre, warum diese Seite gelöscht werden sollte und gib, sofern möglich, Links zu den zutreffenden Richtlinien an.",
 	"pagetriage-info-title": "Seiteninformationen",
 	"pagetriage-info-problem-header": "Mögliche Probleme",
 	"pagetriage-info-history-header": "Versionsgeschichte",

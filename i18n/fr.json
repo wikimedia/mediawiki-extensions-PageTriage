@@ -307,7 +307,7 @@
 	"logentry-pagetriage-deletion-delete": "$1 {{GENDER:$2|a marqué}} $3 pour suppression avec {{PLURAL:$5|la balise|les balises}} $4",
 	"pagetriage-tags-edit-summary": "Balises ajoutées à la page avec $1 ($2)",
 	"pagetriage-del-edit-summary": "Page proposée à la suppression en utilisant $1 ($2)",
-	"pagetriage-del-tags-param-discussion-label": "Veuillez expliquer pourquoi cet article devrait être supprimé, et fournissez des liens vers les politiques s'y appliquant, quand c'est possible",
+	"pagetriage-del-tags-param-discussion-label": "Veuillez expliquer pourquoi cette page doit être supprimée, et fournir si possible, les liens vers les politiques s'y appliquant",
 	"pagetriage-info-title": "Informations de la page",
 	"pagetriage-info-problem-header": "Problèmes possibles",
 	"pagetriage-info-history-header": "Historique",

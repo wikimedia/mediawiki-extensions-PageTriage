@@ -7,7 +7,8 @@
 			"Matma Rex",
 			"WTM",
 			"Woytecr",
-			"Fitoschido"
+			"Fitoschido",
+			"Stojex"
 		]
 	},
 	"pagetriage-desc": "Ułatwia przeglądanie i zatwierdzanie nowych stron",
@@ -82,6 +83,7 @@
 	"pagetriage-tags-param-free-yes-label": "Tak",
 	"pagetriage-tags-param-free-no-label": "Nie",
 	"pagetriage-tags-param-missing-required": "W znaczniku $1 brakuje wymaganego parametru.",
+	"pagetriage-del-tags-param-discussion-label": "Wyjaśnij, dlaczego ta strona powinna zostać usunięta i podaj linki do odpowiednich zasad, jeśli to możliwe",
 	"pagetriage-info-title": "Informacje o stronie",
 	"pagetriage-info-history-header": "Historia",
 	"pagetriage-info-history-show-full": "pokaż pełną historię",

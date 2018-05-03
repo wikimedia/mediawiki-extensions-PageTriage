@@ -48,7 +48,7 @@
 	"pagetriage-author-not-autoconfirmed": "Nuevo editor",
 	"pagetriage-no-patrol-right": "No tienes los derechos para marcar esta página como revisada",
 	"pagetriage-author-blocked": "Bloqueado",
-	"pagetriage-author-bot": "Bot",
+	"pagetriage-author-bot": "Robot",
 	"pagetriage-showing": "Mostrando:",
 	"pagetriage-filter-list-prompt": "Definir filtros",
 	"pagetriage-unreviewed-article-count": "{{PLURAL:$1|$1 página sin revisar|$1 páginas sin revisar}} en total (la más antigua: $2)",
