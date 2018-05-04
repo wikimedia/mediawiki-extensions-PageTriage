@@ -148,6 +148,7 @@
 	"logentry-pagetriage-curation-tag": "$1 {{GENDER:$2|etiquetou}} $3 com $4 {{PLURAL:$5|etiqueta|etiquetas}}",
 	"logentry-pagetriage-curation-delete": "$1 {{GENDER:$2|marcou}} $3 para eliminação com $4 {{PLURAL:$5|etiqueta|etiquetas}}",
 	"logentry-pagetriage-deletion-delete": "$1 {{GENDER:$2|marcou}} $3 para eliminação com $4 {{PLURAL:$5|etiqueta|etiquetas}}",
+	"pagetriage-del-tags-param-discussion-label": "Explique por que essa página deve ser excluída e forneça links para as políticas relevantes sempre que possível",
 	"pagetriage-info-problem-header": "Possíveis problemas",
 	"pagetriage-info-history-header": "Histórico",
 	"pagetriage-info-history-show-full": "mostrar histórico completo",
