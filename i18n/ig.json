@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ukabia"
+		]
+	},
+	"pagetriage-edits": "{{PLURAL:$1|ḿmezi}} $1",
+	"pagetriage-categories": "{{PLURAL:$1|ụdàkọ}} $1",
+	"pagetriage-filter-username": "Ahàǹjìème",
+	"pagetriage-filter-stat-username": "ahàǹjìème: $!",
+	"pagetriage-wikilove-edit-count": "{{PLURAL:$1|ḿmezi}} $1"
+}
