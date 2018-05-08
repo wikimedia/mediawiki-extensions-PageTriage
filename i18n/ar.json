@@ -199,7 +199,7 @@
 	"logentry-pagetriage-deletion-delete": "$1 {{GENDER:$2|وسم|وسمت}} $3 للحذف بـ$4 {{PLURAL:$5|وسم}}",
 	"pagetriage-tags-edit-summary": "تمت إضافة علامات إلى الصفحة باستخدام $1 ($2)",
 	"pagetriage-del-edit-summary": "رشح صفحة للحذف باستخدام $1 ($2)",
-	"pagetriage-del-tags-param-discussion-label": "يُرجَى توضيح سبب حذف هذه المقالة، وتوفير روابط للسياسات ذات الصلة كلما أمكن ذلك",
+	"pagetriage-del-tags-param-discussion-label": "يُرجَى توضيح سبب حذف هذه الصفحة، وتوفير روابط للسياسات ذات الصلة كلما أمكن ذلك",
 	"pagetriage-info-title": "معلومات الصفحة",
 	"pagetriage-info-problem-header": "المشاكل المحتملة",
 	"pagetriage-info-history-header": "التاريخ",
