@@ -162,7 +162,7 @@
 	"logentry-pagetriage-deletion-delete": "$1 {{GENDER:$2|marcou}} $3 para eliminação com {{PLURAL:$5|a etiqueta|as etiquetas}} $4",
 	"pagetriage-tags-edit-summary": "Adicionou etiquetas à página utilizando $1 ($2)",
 	"pagetriage-del-edit-summary": "Nomeou a página para eliminação utilizando $1 ($2)",
-	"pagetriage-del-tags-param-discussion-label": "Explique porque é que este artigo deve ser eliminado e forneça ligações para as normas relevantes se possível, por favor",
+	"pagetriage-del-tags-param-discussion-label": "Explique porque é que esta página deve ser eliminada e forneça ligações para as normas relevantes se possível, por favor",
 	"pagetriage-info-title": "Informação da página",
 	"pagetriage-info-problem-header": "Possíveis problemas",
 	"pagetriage-info-history-header": "Histórico",
