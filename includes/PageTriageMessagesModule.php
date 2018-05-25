@@ -7,7 +7,7 @@
  * @file
  * @ingroup Extensions
  * @copyright 2011-2016 PageTriage Team and others; see AUTHORS.txt
- * @license The MIT License (MIT); see COPYING
+ * @license MIT
  */
 
 class PageTriageMessagesModule extends ResourceLoaderModule {
