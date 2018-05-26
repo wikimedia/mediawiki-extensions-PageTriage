@@ -43,7 +43,7 @@ class ArticleMetadata {
 
 	/**
 	 * Flush the metadata in cache
-	 * @param int $pageId page id to be flushed, if null is provided, all
+	 * @param int|null $pageId page id to be flushed, if null is provided, all
 	 *                    page id in $this->mPageId will be flushed
 	 */
 	public function flushMetadataFromCache( $pageId = null ) {
@@ -72,7 +72,7 @@ class ArticleMetadata {
 
 	/**
 	 * Get the metadata from cache
-	 * @param int $pageId the page id to get the cache data for, if null is provided
+	 * @param int|null $pageId the page id to get the cache data for, if null is provided
 	 *                    all page id in $this->mPageId will be obtained
 	 * @return array
 	 */
@@ -547,8 +547,8 @@ abstract class ArticleCompileInterface {
 	/**
 	 * @param array $pageId
 	 * @param int $componentDb
-	 * @param array $articles
-	 * @param array $linksUpdates
+	 * @param array|null $articles
+	 * @param array|null $linksUpdates
 	 */
 	public function __construct(
 		array $pageId, $componentDb = DB_MASTER, $articles = null, $linksUpdates = null

@@ -202,7 +202,7 @@ class PageTriageHooks {
 	 * @param int $pageId
 	 * @param Title $title
 	 * @param User|null $user
-	 * @param string $reviewed numeric string See PageTriage::getValidReviewedStatus()
+	 * @param string|null $reviewed numeric string See PageTriage::getValidReviewedStatus()
 	 * @return bool
 	 */
 	public static function addToPageTriageQueue( $pageId, $title, $user = null, $reviewed = null ) {
@@ -826,7 +826,7 @@ class PageTriageHooks {
 	}
 
 	/**
-	 * @param DatabaseUpdater $updater
+	 * @param DatabaseUpdater|null $updater
 	 * @return bool
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {

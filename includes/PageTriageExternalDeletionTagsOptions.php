@@ -15,7 +15,7 @@ class PageTriageExternalDeletionTagsOptions extends ResourceLoaderWikiModule {
 	}
 
 	/**
-	 * @param ResourceLoaderContext $context
+	 * @param ResourceLoaderContext|null $context
 	 * @return array
 	 */
 	public function getDependencies( ResourceLoaderContext $context = null ) {

@@ -34,7 +34,7 @@ class PageTriage {
 	 *    '1': reviewed manually
 	 *    '2': patrolled from Special:NewPages
 	 *    '3': auto-patrolled
-	 * @param User $user
+	 * @param User|null $user
 	 * @param bool $fromRc
 	 * @throws MWPageTriageMissingRevisionException
 	 * @return bool - true: add new record, false: update existing record
@@ -89,7 +89,7 @@ class PageTriage {
 	/**
 	 * set the triage status of an article in pagetriage queue
 	 * @param string $reviewed see PageTriage::getValidReviewedStatus()
-	 * @param User $user
+	 * @param User|null $user
 	 * @param bool $fromRc
 	 */
 	public function setTriageStatus( $reviewed, User $user = null, $fromRc = false ) {
