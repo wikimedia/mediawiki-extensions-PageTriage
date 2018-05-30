@@ -10,7 +10,8 @@
 			"Jack who built the house",
 			"Kareyac",
 			"Patrick Star",
-			"AttemptToCallNil"
+			"AttemptToCallNil",
+			"Movses"
 		]
 	},
 	"pagetriage": "Сортировка страниц",
@@ -65,7 +66,7 @@
 	"pagetriage-filter-second-show-heading": "Которые:",
 	"pagetriage-filter-no-categories": "Не имеют категорий",
 	"pagetriage-filter-orphan": "Являются сиротами",
-	"pagetriage-filter-non-autoconfirmed": "Были созданы новыми участниками (не автоподтверждёнными)",
+	"pagetriage-filter-non-autoconfirmed": "Созданы новыми участниками (не автоподтверждёнными)",
 	"pagetriage-filter-blocked": "Были созданы заблокированными участниками",
 	"pagetriage-filter-all": "Показать всё",
 	"pagetriage-filter-set-button": "Установить фильтры",
