@@ -1,10 +1,17 @@
 <?php
+
+namespace MediaWiki\Extension\PageTriage\Test;
+
+use ApiTestCase;
+use ApiUsageException;
+use TestUser;
+
 /**
  * Tests for ApiPageTriageAction class
  *
  * @group medium
  * @group EditorEngagement
- * @covers ApiPageTriageAction
+ * @covers MediaWiki\Extension\PageTriage\Api\ApiPageTriageAction
  */
 class ApiPageTriageActionTest extends ApiTestCase {
 

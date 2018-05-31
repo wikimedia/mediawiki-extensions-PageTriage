@@ -1,5 +1,7 @@
 <?php
 
+namespace MediaWiki\Extension\PageTriage\Notifications;
+
 class PageTriageMarkAsReviewedPresentationModel extends PageTriagePresentationModel {
 
 	/**

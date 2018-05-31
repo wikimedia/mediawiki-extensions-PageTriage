@@ -6,6 +6,8 @@ if ( $IP === false ) {
 }
 require_once "$IP/maintenance/Maintenance.php";
 
+use MediaWiki\Extension\PageTriage\ArticleMetadata;
+
 /**
  * A maintenance script that updates expired page metadata
  */

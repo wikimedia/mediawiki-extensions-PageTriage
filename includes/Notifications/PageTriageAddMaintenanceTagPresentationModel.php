@@ -1,5 +1,10 @@
 <?php
 
+namespace MediaWiki\Extension\PageTriage\Notifications;
+
+use ExtensionRegistry;
+use SpecialPage;
+
 class PageTriageAddMaintenanceTagPresentationModel extends PageTriagePresentationModel {
 	/**
 	 * @inheritDoc

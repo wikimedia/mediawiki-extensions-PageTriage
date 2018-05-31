@@ -1,5 +1,9 @@
 <?php
 
+namespace MediaWiki\Extension\PageTriage\Notifications;
+
+use Title;
+
 class PageTriageAddDeletionTagPresentationModel extends PageTriagePresentationModel {
 	/**
 	 * @inheritDoc

@@ -1,6 +1,28 @@
 <?php
 
-class PageTriageHooks {
+namespace MediaWiki\Extension\PageTriage;
+
+use Block;
+use Content;
+use DatabaseUpdater;
+use EchoEvent;
+use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
+use Article;
+use DeferredUpdates;
+use ExtensionRegistry;
+use Html;
+use LinksUpdate;
+use MWTimestamp;
+use ParserOutput;
+use RecentChange;
+use ResourceLoader;
+use Revision;
+use Status;
+use Title;
+use User;
+use WikiPage;
+
+class Hooks {
 
 	/**
 	 * Mark a page as unreviewed after moving the page from non-main(article) namespace to
@@ -83,7 +105,7 @@ class PageTriageHooks {
 			DeferredUpdates::addCallableUpdate( function () use ( $rev, $wikiPage, $user ) {
 				$prev = $rev->getPrevious();
 				if ( $prev && !$wikiPage->isRedirect() && $prev->getContent()->isRedirect() ) {
-					PageTriageHooks::addToPageTriageQueue(
+					self::addToPageTriageQueue(
 						$wikiPage->getId(),
 						$wikiPage->getTitle(), $user );
 				}
@@ -291,7 +313,7 @@ class PageTriageHooks {
 		if ( $wgPageTriageNoIndexTemplates && $article->mParserOutput instanceof ParserOutput ) {
 			// Properly format the template names to match what getTemplates() returns
 			$noIndexTemplates = array_map(
-				[ 'PageTriageHooks', 'formatTemplateName' ],
+				[ static::class, 'formatTemplateName' ],
 				$wgPageTriageNoIndexTemplates
 			);
 
@@ -559,12 +581,12 @@ class PageTriageHooks {
 		global $wgPageTriageDeletionTagsOptionsContentLanguageMessages;
 
 		$template = [
-			'localBasePath' => __DIR__. '/modules',
+			'localBasePath' => __DIR__.'/../modules',
 			'remoteExtPath' => 'PageTriage/modules'
 		];
 
 		$messagesModule = [
-			'class' => 'PageTriageMessagesModule',
+			'class' => 'MediaWiki\Extension\PageTriage\PageTriageMessagesModule',
 			'contentLanguageMessages' => array_merge(
 				[
 					'pagetriage-mark-mark-talk-page-notify-topic-title',
@@ -834,7 +856,7 @@ class PageTriageHooks {
 	 * @return bool
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
-		$base = __DIR__ . "/sql";
+		$base = __DIR__ . "/../sql";
 		// tables
 		$updater->addExtensionTable( 'pagetriage_tags', $base . '/PageTriageTags.sql' );
 		$updater->addExtensionTable( 'pagetriage_page_tags', $base . '/PageTriagePageTags.sql' );
