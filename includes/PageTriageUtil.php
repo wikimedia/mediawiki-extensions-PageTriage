@@ -8,6 +8,7 @@ use MediaWiki\Extension\PageTriage\Api\ApiPageTriageList;
 use EchoEvent;
 use Exception;
 use ExtensionRegistry;
+use MediaWiki\MediaWikiServices;
 use RequestContext;
 use Title;
 use User;
@@ -53,16 +54,34 @@ class PageTriageUtil {
 	}
 
 	/**
-	 * Validate page namespace
+	 * Get the IDs of applicable PageTriage namespaces.
+	 * @return int[]
 	 */
-	private static function validatePageNamespace( $namespace ) {
-		global $wgPageTriageNamespaces;
+	public static function getNamespaces() {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$pageTriageDraftNamespaceId = $config->get( 'PageTriageDraftNamespaceId' );
+		$pageTriageNamespaces = $config->get( 'PageTriageNamespaces' );
+		// Add the Draft namespace if configured.
+		if ( $pageTriageDraftNamespaceId
+			&& !in_array( $pageTriageDraftNamespaceId, $pageTriageNamespaces )
+		) {
+			$pageTriageNamespaces[] = $pageTriageDraftNamespaceId;
+		}
+		return $pageTriageNamespaces;
+	}
 
-		if ( !in_array( $namespace, $wgPageTriageNamespaces ) ) {
+	/**
+	 * Validate a page namespace ID.
+	 * @param int $namespace The namespace ID to validate.
+	 * @return int The provided namespace if valid, otherwise 0 (main namespace).
+	 */
+	public static function validatePageNamespace( $namespace ) {
+		$pageTriageNamespaces = static::getNamespaces();
+		if ( !in_array( $namespace, $pageTriageNamespaces ) ) {
 			$namespace = NS_MAIN;
 		}
 
-		return $namespace;
+		return (int)$namespace;
 	}
 
 	/**

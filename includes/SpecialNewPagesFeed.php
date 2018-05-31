@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\PageTriage;
 
 use DeferredUpdates;
 use Html;
+use MediaWiki\MediaWikiServices;
 use SpecialPage;
 
 /**
@@ -32,8 +33,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 	public function execute( $sub ) {
 		global	$wgPageTriageInfiniteScrolling,
 				$wgPageTriageStickyControlNav, $wgPageTriageStickyStatsNav,
-				$wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl,
-				$wgPageTriageNamespaces;
+				$wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl;
 
 		$this->setHeaders();
 		$out = $this->getOutput();
@@ -66,7 +66,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 
 		// Set the config flags in JavaScript
 		$globalVars = [
-			'wgPageTriageNamespaces' => $wgPageTriageNamespaces,
+			'pageTriageNamespaces' => PageTriageUtil::getNamespaces(),
 			'wgPageTriageInfiniteScrolling' => $wgPageTriageInfiniteScrolling,
 			'wgPageTriageStickyControlNav' => $wgPageTriageStickyControlNav,
 			'wgPageTriageStickyStatsNav' => $wgPageTriageStickyStatsNav,
@@ -132,13 +132,29 @@ class SpecialNewPagesFeed extends SpecialPage {
 			? '&#x25c2;'	// ◂ left-pointing triangle
 			: '&#x25b8;';	// ▸ right-pointing triangle
 
+		// Only show the AFC mode if the Draft NS exists.
+		// Also check for the temporary feature flag for the AFC mode. @TODO remove this.
+		$modeSwitchRadios = '';
+		if ( MediaWikiServices::getInstance()->getMainConfig()->get( 'PageTriageDraftNamespaceId' ) ) {
+			$modeSwitchRadios .= Html::rawElement( 'p', [ 'class' => 'mwe-pt-control-queuemode' ],
+				Html::radio( 'queuemode', false,
+					[ 'value' => 'npp', 'id' => 'mwe-pt-radio-npp', 'class' => 'mwe-pt-queuemode-radio' ] )
+				. Html::label( $this->msg( 'pagetriage-new-page-patrol' ), 'mwe-pt-radio-npp' )
+				. ' '
+				. Html::radio( 'queuemode', false,
+					[ 'value' => 'afc', 'id' => 'mwe-pt-radio-afc', 'class' => 'mwe-pt-queuemode-radio' ] )
+				. Html::label( $this->msg( 'pagetriage-articles-for-creation' ), 'mwe-pt-radio-afc' )
+			);
+		}
+
 		// These are the templates that backbone/underscore render on the client.
 		// It would be awesome if they lived in separate files, but we need to figure out how to
 		// make RL do that for us.
-		// Syntax documentation can be found at http://documentcloud.github.com/underscore/#template.
+		// Syntax documentation can be found at http://underscorejs.org/#template
 		$triageInterface .= <<<HTML
 			<!-- top nav template -->
 			<script type="text/template" id="listControlNavTemplate">
+				$modeSwitchRadios
 				<span class="mwe-pt-control-label">
 					<b><%= mw.msg( 'pagetriage-showing' ) %></b>
 					<span id="mwe-pt-filter-status"></span>
@@ -195,11 +211,13 @@ class SpecialNewPagesFeed extends SpecialPage {
 										</option>-->
 										<%
 											var wgFormattedNamespaces = mw.config.get( 'wgFormattedNamespaces' );
-											var wgPageTriageNamespaces = mw.config.get( 'wgPageTriageNamespaces' );
+											var pageTriageNamespaces = mw.config.get( 'pageTriageNamespaces' );
 											var nsOptions = '', namespaceNumber;
 											for ( var key in wgFormattedNamespaces ) {
-												namespaceNumber = wgPageTriageNamespaces[key];
-												if ( typeof wgFormattedNamespaces[namespaceNumber] === 'undefined' ) {
+												namespaceNumber = pageTriageNamespaces[key];
+												if ( typeof wgFormattedNamespaces[namespaceNumber] === 'undefined'
+													|| namespaceNumber === mw.config.get( 'wgPageTriageDraftNamespaceId' )
+												) {
 													continue;
 												}
 												if ( wgFormattedNamespaces[namespaceNumber] === '' ) {

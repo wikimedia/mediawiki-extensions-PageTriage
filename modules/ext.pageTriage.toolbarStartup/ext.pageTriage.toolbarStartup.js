@@ -2,7 +2,7 @@ jQuery( function ( $ ) {
 	var modules;
 	// only show curation toolbar for enabled namespaces
 	if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ),
-		mw.config.get( 'wgPageTriageNamespaces' ) ) === -1 ) {
+		mw.config.get( 'pageTriageNamespaces' ) ) === -1 ) {
 		return true;
 	}
 

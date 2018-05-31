@@ -12,6 +12,8 @@
 	"newpagesfeed": "New pages feed",
 	"pagetriage-desc": "Facilitates reviewing and approving new pages",
 	"pagetriage-pagecuration": "Page Curation",
+	"pagetriage-new-page-patrol": "New Page Patrol",
+	"pagetriage-articles-for-creation": "Articles for Creation",
 	"pagetriage-please-wait": "Please wait...",
 	"pagetriage-api-invalidid": "The ID you provided ($1) is not valid.",
 	"pagetriage-markpatrolled": "Mark this page as reviewed",

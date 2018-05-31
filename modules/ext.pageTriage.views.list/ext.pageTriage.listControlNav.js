@@ -60,6 +60,14 @@ $( function () {
 			// now that the template's been inserted, set up some events for controlling it
 			//
 
+			// Queue-mode radio buttons.
+			$( '.mwe-pt-queuemode-radio' ).on( 'change', function ( e ) {
+				that.model.setMode( $( this ).val() );
+				that.refreshList();
+				that.model.saveFilterParams();
+				e.stopPropagation();
+			} );
+
 			// make a submit button
 			$( '#mwe-pt-filter-set-button' ).button( {
 				label: mw.msg( 'pagetriage-filter-set-button' )
@@ -313,6 +321,13 @@ $( function () {
 			var username;
 
 			this.newFilterStatus = [];
+
+			// Select current mode's radio button.
+			if ( this.model.getMode() === 'afc' ) {
+				$( '#mwe-pt-radio-afc' ).prop( 'checked', true );
+			} else {
+				$( '#mwe-pt-radio-npp' ).prop( 'checked', true );
+			}
 
 			$( '#mwe-pt-filter-namespace' ).val( this.model.getParam( 'namespace' ) );
 

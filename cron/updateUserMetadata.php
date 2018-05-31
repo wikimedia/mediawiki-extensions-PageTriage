@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Extension\PageTriage\PageTriageUtil;
+
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
@@ -33,8 +35,6 @@ class UpdateUserMetadata extends Maintenance {
 	}
 
 	public function execute() {
-		global $wgPageTriageNamespaces;
-
 		$this->init();
 		$this->output( "Started processing... \n" );
 
@@ -56,8 +56,9 @@ class UpdateUserMetadata extends Maintenance {
 
 		$startId = $row->max_id + 1;
 
-		if ( count( $wgPageTriageNamespaces ) > 0 ) {
-			$namespace = $wgPageTriageNamespaces;
+		$pageTriageNamespaces = PageTriageUtil::getNamespaces();
+		if ( count( $pageTriageNamespaces ) > 0 ) {
+			$namespace = $pageTriageNamespaces;
 		} else {
 			$namespace = NS_MAIN;
 		}
