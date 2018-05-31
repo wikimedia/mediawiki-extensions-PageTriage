@@ -142,7 +142,7 @@
 	"logentry-pagetriage-deletion-delete": "$1 {{GENDER:$2|märkis}} lehekülje $3 kustutamiseks {{PLURAL:$5|järgmise märgisega|järgmiste märgistega}}: $4",
 	"pagetriage-tags-edit-summary": "$1: lisatud leheküljele märgised ($2)",
 	"pagetriage-del-edit-summary": "$1: esitatud kustutamiseks ($2)",
-	"pagetriage-del-tags-param-discussion-label": "Palun selgita, miks see artikkel tuleks kustutada ja viita võimalusel vastavatele kokkulepetele.",
+	"pagetriage-del-tags-param-discussion-label": "Palun selgita, miks see lehekülg tuleks kustutada ja viita võimalusel vastavatele kokkulepetele.",
 	"pagetriage-info-title": "Lehekülje andmed",
 	"pagetriage-info-problem-header": "Võimalikud probleemid",
 	"pagetriage-info-history-header": "Ajalugu",
