@@ -327,7 +327,7 @@
 					redirectsfordiscussion: {
 						label: mw.msg( 'pagetriage-del-tags-redirectsfordiscussion-label' ),
 						desc: '',
-						tag: 'rfd',
+						tag: 'rfd-NPF',
 						prefix: 'Wikipedia:Redirects for discussion',
 						params: {
 							1: {
