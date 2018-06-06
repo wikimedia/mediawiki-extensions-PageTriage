@@ -14,7 +14,7 @@ class ApiPageTriageActionTest extends ApiTestCase {
 	public static $users;
 
 	// Prepare test environment
-	function setUp() {
+	public function setUp() {
 		parent::setUp();
 
 		self::$users['one'] = new TestUser(
@@ -36,7 +36,7 @@ class ApiPageTriageActionTest extends ApiTestCase {
 		parent::tearDown();
 	}
 
-	function testLogin() {
+	public function testLogin() {
 		$sessionArray = [];
 
 		foreach ( self::$users as $key => $user ) {
@@ -74,7 +74,7 @@ class ApiPageTriageActionTest extends ApiTestCase {
 	/**
 	 * @depends testLogin
 	 */
-	function testSuccessfulReviewAction( $sessionArray ) {
+	public function testSuccessfulReviewAction( $sessionArray ) {
 		$this->markTestSkipped( 'Broken test' );
 		global $wgUser;
 
@@ -97,7 +97,7 @@ class ApiPageTriageActionTest extends ApiTestCase {
 	 * @depends testLogin
 	 * @expectedException ApiUsageException
 	 */
-	function testPermissionError( $sessionArray ) {
+	public function testPermissionError( $sessionArray ) {
 		global $wgUser;
 
 		$wgUser = self::$users['two']->getUser();
@@ -116,7 +116,7 @@ class ApiPageTriageActionTest extends ApiTestCase {
 	/**
 	 * @depends testLogin
 	 */
-	function testPageError( $sessionArray ) {
+	public function testPageError( $sessionArray ) {
 		$exception = false;
 		try {
 			global $wgUser;

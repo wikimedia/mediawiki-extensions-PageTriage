@@ -35,7 +35,7 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 	}
 
 	// Create a fake logged in user
-	function testLogin() {
+	public function testLogin() {
 		$sessionArray = [];
 
 		foreach ( self::$users as $key => $user ) {
@@ -72,7 +72,7 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 	/**
 	 * @depends testLogin
 	 */
-	function testAddArticles( $sessionArray ) {
+	public function testAddArticles( $sessionArray ) {
 		global $wgUser;
 
 		$wgUser = self::$users['one']->getUser();

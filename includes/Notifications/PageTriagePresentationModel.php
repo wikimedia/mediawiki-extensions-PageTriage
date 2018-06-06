@@ -38,7 +38,7 @@ abstract class PageTriagePresentationModel extends EchoEventPresentationModel {
 		return [ $this->language->commaList( $tags ), count( $tags ) ];
 	}
 
-	function getBodyMessage() {
+	public function getBodyMessage() {
 		$note = $this->event->getExtraParam( 'note' );
 		return $note ? $this->msg( 'notification-body-page-triage-note' )->params( $note ) : false;
 	}

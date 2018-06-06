@@ -20,7 +20,7 @@ class PageTriageHttp {
 	private $curlHandle;
 	private $id;
 
-	function __construct() {
+	public function __construct() {
 		$this->id = rand( 0, 1000000 );
 		$this->curlHandle = curl_init();
 		curl_setopt( $this->curlHandle, CURLOPT_COOKIEJAR, '/tmp/cookies'.$this->id.'.dat' );
@@ -32,7 +32,7 @@ class PageTriageHttp {
 	 * @param string $url
 	 * @return mixed
 	 */
-	function get( $url ) {
+	public function get( $url ) {
 		curl_setopt( $this->curlHandle, CURLOPT_URL, $url );
 		curl_setopt( $this->curlHandle, CURLOPT_USERAGENT, 'php PageTriageBot' );
 		curl_setopt( $this->curlHandle, CURLOPT_HTTPGET, 1 );
@@ -51,7 +51,7 @@ class PageTriageHttp {
 	 * @param array $postVars
 	 * @return mixed
 	 */
-	function post( $url, $postVars ) {
+	public function post( $url, $postVars ) {
 		curl_setopt( $this->curlHandle, CURLOPT_URL, $url );
 		curl_setopt( $this->curlHandle, CURLOPT_USERAGENT, 'php PageTriageBot' );
 		curl_setopt( $this->curlHandle, CURLOPT_POST, 1 );
@@ -66,7 +66,7 @@ class PageTriageHttp {
 		return curl_exec( $this->curlHandle );
 	}
 
-	function __destruct() {
+	public function __destruct() {
 		curl_close( $this->curlHandle );
 		Wikimedia\suppressWarnings();
 		unlink( '/tmp/cookies'.$this->id.'.dat' );
@@ -85,7 +85,7 @@ class WikiApi {
 	 * Construct the class instance
 	 * @param string $url The URL used to access the API
 	 */
-	function __construct( $url ) {
+	public function __construct( $url ) {
 		$this->http = new PageTriageHttp;
 		$this->url = $url;
 	}
@@ -95,7 +95,7 @@ class WikiApi {
 	 * @param string $query The query string
 	 * @return string The result from the API
 	 */
-	function get( $query ) {
+	public function get( $query ) {
 		$result = $this->http->get( $this->url.$query );
 		return unserialize( $result );
 	}
@@ -106,7 +106,7 @@ class WikiApi {
 	 * @param array $postVars
 	 * @return string The result from the API
 	 */
-	function post( $query, $postVars ) {
+	public function post( $query, $postVars ) {
 		$result = $this->http->post( $this->url.$query, $postVars );
 		return unserialize( $result );
 	}
@@ -117,7 +117,7 @@ class WikiApi {
 	 * @param string $password The user's password
 	 * @return string The result from the API
 	 */
-	function login( $username, $password ) {
+	public function login( $username, $password ) {
 		$postVars = [ 'lgname' => $username, 'lgpassword' => $password ];
 		$result = $this->post( '?action=login&format=php', $postVars );
 		if ( $result['login']['result'] === 'NeedToken' ) {
@@ -137,7 +137,7 @@ class WikiApi {
 	 * Get an edit token for the user
 	 * @return string The token
 	 */
-	function getToken() {
+	public function getToken() {
 		$params = [
 			'action' => 'query',
 			'format' => 'php',
@@ -157,7 +157,7 @@ class WikiApi {
 	 * @param string $title The title of the wikipedia page to fetch
 	 * @return string|bool The wikitext for the page (or false)
 	 */
-	function getPage( $title ) {
+	public function getPage( $title ) {
 		$params = [
 			'action' => 'query',
 			'format' => 'php',
@@ -184,7 +184,7 @@ class WikiApi {
 	 * @param int $limit The maximum number of pages to return
 	 * @return array of titles
 	 */
-	function getNewPages( $namespace = 0, $limit = 10 ) {
+	public function getNewPages( $namespace = 0, $limit = 10 ) {
 		$params = [
 			'action' => 'query',
 			'list' => 'recentchanges',
@@ -210,7 +210,7 @@ class WikiApi {
 	 * @param string $text The text of the new page
 	 * @return string The result from the API
 	 */
-	function createPage( $title, $text ) {
+	public function createPage( $title, $text ) {
 		if ( !$this->token ) {
 			$this->token = $this->getToken();
 		}
