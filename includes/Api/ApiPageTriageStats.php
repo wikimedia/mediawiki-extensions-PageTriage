@@ -1,5 +1,10 @@
 <?php
 
+namespace MediaWiki\Extension\PageTriage\Api;
+
+use MediaWiki\Extension\PageTriage\PageTriageUtil;
+use ApiBase;
+
 class ApiPageTriageStats extends ApiBase {
 	public function execute() {
 		// Remove empty params. This unforunately means you can't query for User:0 :(

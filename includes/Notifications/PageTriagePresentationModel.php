@@ -1,5 +1,10 @@
 <?php
 
+namespace MediaWiki\Extension\PageTriage\Notifications;
+
+use EchoEventPresentationModel;
+use Title;
+
 abstract class PageTriagePresentationModel extends EchoEventPresentationModel {
 	/**
 	 * @inheritDoc

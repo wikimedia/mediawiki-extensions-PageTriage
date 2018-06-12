@@ -1,4 +1,10 @@
 <?php
+
+namespace MediaWiki\Extension\PageTriage;
+
+use LogFormatter;
+use Message;
+
 /**
  * Formats the logs for display on Special:Log
  */

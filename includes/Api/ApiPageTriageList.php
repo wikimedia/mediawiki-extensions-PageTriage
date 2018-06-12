@@ -1,4 +1,14 @@
 <?php
+
+namespace MediaWiki\Extension\PageTriage\Api;
+
+use MediaWiki\Extension\PageTriage\ArticleMetadata;
+use MediaWiki\Extension\PageTriage\PageTriageUtil;
+use ApiBase;
+use ApiResult;
+use SpecialPage;
+use Title;
+
 /**
  * API module to generate a list of pages to triage
  *

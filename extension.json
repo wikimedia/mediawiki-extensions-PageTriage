@@ -15,11 +15,11 @@
 		"MediaWiki": ">= 1.31.0"
 	},
 	"APIModules": {
-		"pagetriagelist": "ApiPageTriageList",
-		"pagetriagestats": "ApiPageTriageStats",
-		"pagetriageaction": "ApiPageTriageAction",
-		"pagetriagetemplate": "ApiPageTriageTemplate",
-		"pagetriagetagging": "ApiPageTriageTagging"
+		"pagetriagelist": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageList",
+		"pagetriagestats": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageStats",
+		"pagetriageaction": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageAction",
+		"pagetriagetemplate": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageTemplate",
+		"pagetriagetagging": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageTagging"
 	},
 	"DefaultUserOptions": {
 		"echo-subscriptions-web-page-review": true,
@@ -28,9 +28,9 @@
 	"LogActionsHandlers": {
 		"pagetriage-curation/reviewed": "LogFormatter",
 		"pagetriage-curation/unreviewed": "LogFormatter",
-		"pagetriage-curation/tag": "PageTriageLogFormatter",
-		"pagetriage-curation/delete": "PageTriageLogFormatter",
-		"pagetriage-deletion/delete": "PageTriageLogFormatter"
+		"pagetriage-curation/tag": "MediaWiki\\Extension\\PageTriage\\PageTriageLogFormatter",
+		"pagetriage-curation/delete": "MediaWiki\\Extension\\PageTriage\\PageTriageLogFormatter",
+		"pagetriage-deletion/delete": "MediaWiki\\Extension\\PageTriage\\PageTriageLogFormatter"
 	},
 	"LogTypes": [
 		"pagetriage-curation",
@@ -59,7 +59,7 @@
 		}
 	},
 	"SpecialPages": {
-		"NewPagesFeed": "SpecialNewPagesFeed"
+		"NewPagesFeed": "MediaWiki\\Extension\\PageTriage\\SpecialNewPagesFeed"
 	},
 	"MessagesDirs": {
 		"PageTriage": [
@@ -69,35 +69,8 @@
 	"ExtensionMessagesFiles": {
 		"PageTriageAlias": "PageTriage.alias.php"
 	},
-	"AutoloadClasses": {
-		"SpecialNewPagesFeed": "SpecialNewPagesFeed.php",
-		"ArticleMetadata": "includes/ArticleMetadata.php",
-		"PageTriage": "includes/PageTriage.php",
-		"PageTriageUtil": "includes/PageTriageUtil.php",
-		"PageTriageHooks": "PageTriage.hooks.php",
-		"ArticleCompileProcessor": "includes/ArticleMetadata.php",
-		"ArticleCompileInterface": "includes/ArticleMetadata.php",
-		"ArticleCompileBasicData": "includes/ArticleMetadata.php",
-		"ArticleCompileLinkCount": "includes/ArticleMetadata.php",
-		"ArticleCompileCategoryCount": "includes/ArticleMetadata.php",
-		"ArticleCompileSnippet": "includes/ArticleMetadata.php",
-		"ArticleCompileUserData": "includes/ArticleMetadata.php",
-		"ArticleCompileDeletionTag": "includes/ArticleMetadata.php",
-		"PageTriageExternalTagsOptions": "includes/PageTriageExternalTagsOptions.php",
-		"PageTriageExternalDeletionTagsOptions": "includes/PageTriageExternalDeletionTagsOptions.php",
-		"PageTriageMessagesModule": "includes/PageTriageMessagesModule.php",
-		"PageTriageLogFormatter": "includes/PageTriageLogFormatter.php",
-		"PageTriagePresentationModel": "includes/Notifications/PageTriagePresentationModel.php",
-		"PageTriageMarkAsReviewedPresentationModel": "includes/Notifications/PageTriageMarkAsReviewedPresentationModel.php",
-		"PageTriageAddMaintenanceTagPresentationModel": "includes/Notifications/PageTriageAddMaintenanceTagPresentationModel.php",
-		"PageTriageAddDeletionTagPresentationModel": "includes/Notifications/PageTriageAddDeletionTagPresentationModel.php",
-		"ApiPageTriageList": "api/ApiPageTriageList.php",
-		"ApiPageTriageStats": "api/ApiPageTriageStats.php",
-		"ApiPageTriageAction": "api/ApiPageTriageAction.php",
-		"ApiPageTriageTemplate": "api/ApiPageTriageTemplate.php",
-		"ApiPageTriageTagging": "api/ApiPageTriageTagging.php",
-		"MWPageTriageUtilInvalidNumberException": "includes/PageTriageUtil.php",
-		"MWPageTriageMissingRevisionException": "includes/PageTriage.php"
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\PageTriage\\": "includes/"
 	},
 	"ResourceModules": {
 		"ext.pageTriage.external": {
@@ -455,7 +428,7 @@
 			]
 		},
 		"ext.pageTriage.externalTagsOptions": {
-			"class": "PageTriageExternalTagsOptions"
+			"class": "MediaWiki\\Extension\\PageTriage\\PageTriageExternalTagsOptions"
 		},
 		"ext.pageTriage.defaultDeletionTagsOptions": {
 			"scripts": "ext.pageTriage.defaultDeletionTagsOptions/ext.pageTriage.defaultDeletionTagsOptions.js",
@@ -522,7 +495,7 @@
 			]
 		},
 		"ext.pageTriage.externalDeletionTagsOptions": {
-			"class": "PageTriageExternalDeletionTagsOptions"
+			"class": "MediaWiki\\Extension\\PageTriage\\PageTriageExternalDeletionTagsOptions"
 		},
 		"ext.pageTriage.toolbarStartup": {
 			"scripts": "ext.pageTriage.toolbarStartup/ext.pageTriage.toolbarStartup.js"
@@ -544,23 +517,23 @@
 		"remoteExtPath": "PageTriage/modules"
 	},
 	"Hooks": {
-		"LoadExtensionSchemaUpdates": "PageTriageHooks::onLoadExtensionSchemaUpdates",
-		"TitleMoveComplete": "PageTriageHooks::onTitleMoveComplete",
-		"NewRevisionFromEditComplete": "PageTriageHooks::onNewRevisionFromEditComplete",
-		"PageContentInsertComplete": "PageTriageHooks::onPageContentInsertComplete",
-		"PageContentSaveComplete": "PageTriageHooks::onPageContentSaveComplete",
-		"LinksUpdateComplete": "PageTriageHooks::onLinksUpdateComplete",
-		"GetPreferences": "PageTriageHooks::onGetPreferences",
-		"ArticleViewFooter": "PageTriageHooks::onArticleViewFooter",
-		"ArticleDeleteComplete": "PageTriageHooks::onArticleDeleteComplete",
-		"MarkPatrolledComplete": "PageTriageHooks::onMarkPatrolledComplete",
-		"BlockIpComplete": "PageTriageHooks::onBlockIpComplete",
-		"ResourceLoaderGetConfigVars": "PageTriageHooks::onResourceLoaderGetConfigVars",
-		"BeforeCreateEchoEvent": "PageTriageHooks::onBeforeCreateEchoEvent",
-		"EchoGetDefaultNotifiedUsers": "PageTriageHooks::onEchoGetDefaultNotifiedUsers",
-		"LocalUserCreated": "PageTriageHooks::onLocalUserCreated",
-		"UserMergeAccountFields": "PageTriageHooks::onUserMergeAccountFields",
-		"ResourceLoaderRegisterModules": "PageTriageHooks::onResourceLoaderRegisterModules"
+		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\PageTriage\\Hooks::onLoadExtensionSchemaUpdates",
+		"TitleMoveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onTitleMoveComplete",
+		"NewRevisionFromEditComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onNewRevisionFromEditComplete",
+		"PageContentInsertComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageContentInsertComplete",
+		"PageContentSaveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageContentSaveComplete",
+		"LinksUpdateComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onLinksUpdateComplete",
+		"GetPreferences": "MediaWiki\\Extension\\PageTriage\\Hooks::onGetPreferences",
+		"ArticleViewFooter": "MediaWiki\\Extension\\PageTriage\\Hooks::onArticleViewFooter",
+		"ArticleDeleteComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onArticleDeleteComplete",
+		"MarkPatrolledComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onMarkPatrolledComplete",
+		"BlockIpComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onBlockIpComplete",
+		"ResourceLoaderGetConfigVars": "MediaWiki\\Extension\\PageTriage\\Hooks::onResourceLoaderGetConfigVars",
+		"BeforeCreateEchoEvent": "\\MediaWiki\\Extension\\PageTriage\\Hooks::onBeforeCreateEchoEvent",
+		"EchoGetDefaultNotifiedUsers": "MediaWiki\\Extension\\PageTriage\\Hooks::onEchoGetDefaultNotifiedUsers",
+		"LocalUserCreated": "MediaWiki\\Extension\\PageTriage\\Hooks::onLocalUserCreated",
+		"UserMergeAccountFields": "MediaWiki\\Extension\\PageTriage\\Hooks::onUserMergeAccountFields",
+		"ResourceLoaderRegisterModules": "MediaWiki\\Extension\\PageTriage\\Hooks::onResourceLoaderRegisterModules"
 	},
 	"config": {
 		"PageTriageMaxAge": {

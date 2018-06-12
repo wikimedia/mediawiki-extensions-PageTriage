@@ -1,5 +1,15 @@
 <?php
 
+namespace MediaWiki\Extension\PageTriage\Api;
+
+use ApiMain;
+use Article;
+use DerivativeRequest;
+use MediaWiki\Extension\PageTriage\ArticleMetadata;
+use MediaWiki\Extension\PageTriage\PageTriageUtil;
+use ApiBase;
+use ManualLogEntry;
+
 class ApiPageTriageTagging extends ApiBase {
 
 	public function execute() {

@@ -1,11 +1,17 @@
 <?php
+
+namespace MediaWiki\Extension\PageTriage\Test;
+
+use MediaWiki\Extension\PageTriage\ArticleMetadata;
+use MediaWikiTestCase;
+
 /**
  * Tests for ArticleMetadata class
  *
  * @group EditorEngagement
  * @group Broken
  * @author Ian Baker
- * @covers ArticleMetadata
+ * @covers MediaWiki\Extension\PageTriage\ArticleMetadata
  */
 class ArticleMetadataTest extends MediaWikiTestCase {
 

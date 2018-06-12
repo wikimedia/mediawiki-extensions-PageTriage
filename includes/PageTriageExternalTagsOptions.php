@@ -1,4 +1,10 @@
 <?php
+
+namespace MediaWiki\Extension\PageTriage;
+
+use ResourceLoaderContext;
+use ResourceLoaderWikiModule;
+
 /**
  * Custom ResourceLoader module that loads a custom PageTriageTagsOptions.js per-wiki.
  */

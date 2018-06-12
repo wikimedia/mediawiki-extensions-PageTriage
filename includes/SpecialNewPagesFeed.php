@@ -1,4 +1,11 @@
 <?php
+
+namespace MediaWiki\Extension\PageTriage;
+
+use DeferredUpdates;
+use Html;
+use SpecialPage;
+
 /**
  * This file defines the SpecialNewPagesFeed class which handles the functionality for the
  * New Pages Feed (Special:NewPagesFeed).
@@ -84,7 +91,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 		)->parse();
 		$warnings .= Html::rawElement( 'div', [ 'class' => 'plainlinks' ], $parsedWelcomeMessage );
 		$warnings .= '</div>';
-		$out->addHtml( $warnings );
+		$out->addHTML( $warnings );
 		$out->addInlineStyle(
 			'.client-nojs #mwe-pt-list-view, .client-js #mwe-pt-list-view-no-js { display: none; }'
 		);
@@ -121,7 +128,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$triageInterface .= "</div>";
 		$triageInterface .= "<div id='mwe-pt-list-stats-nav-anchor'></div>";
 
-		$dropdownArrow = $this->getLanguage()->isRtl()
+		$dropdownArrow = $this->getLanguage()->isRTL()
 			? '&#x25c2;'	// ◂ left-pointing triangle
 			: '&#x25b8;';	// ▸ right-pointing triangle
 
@@ -300,7 +307,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 HTML;
 
 		// Output the HTML for the triage interface
-		$out->addHtml( $triageInterface );
+		$out->addHTML( $triageInterface );
 	}
 
 	/**

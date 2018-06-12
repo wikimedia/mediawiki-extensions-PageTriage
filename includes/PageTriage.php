@@ -1,5 +1,11 @@
 <?php
 
+namespace MediaWiki\Extension\PageTriage;
+
+use PatrolLog;
+use RecentChange;
+use User;
+
 class PageTriage {
 
 	// database property
@@ -236,8 +242,7 @@ class PageTriage {
 		$dbw->delete(
 				'pagetriage_page',
 				[ 'ptrp_page_id' => $this->mPageId ],
-				__METHOD__,
-				[]
+				__METHOD__
 		);
 		$this->mArticleMetadata->deleteMetadata();
 
@@ -275,7 +280,4 @@ class PageTriage {
 			'3' => 'auto-patrolled'
 		];
 	}
-}
-
-class MWPageTriageMissingRevisionException extends Exception {
 }

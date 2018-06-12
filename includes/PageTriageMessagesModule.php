@@ -1,4 +1,12 @@
 <?php
+
+namespace MediaWiki\Extension\PageTriage;
+
+use FormatJson;
+use ResourceLoader;
+use ResourceLoaderContext;
+use ResourceLoaderModule;
+
 /**
  * Resource loader module providing customized messages from the server to PageTriage.
  * The current use case is to provide messages in content language (rather than interface

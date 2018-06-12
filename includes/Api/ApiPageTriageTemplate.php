@@ -1,4 +1,9 @@
 <?php
+
+namespace MediaWiki\Extension\PageTriage\Api;
+
+use ApiBase;
+
 /**
  * API module to fetch an arbitrary group of PageTriage backbone templates
  * for use in the JS application

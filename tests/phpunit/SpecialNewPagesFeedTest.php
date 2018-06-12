@@ -1,11 +1,19 @@
 <?php
+
+namespace MediaWiki\Extension\PageTriage\Test;
+
+use MediaWiki\Extension\PageTriage\SpecialNewPagesFeed;
+use ApiTestCase;
+use ApiUsageException;
+use TestUser;
+
 /**
  * Tests for SpecialNewPagesFeed class (PageTriage list view)
  *
  * @group medium
  * @group EditorEngagement
  * @author Ryan Kaldari
- * @covers SpecialNewPagesFeed
+ * @covers MediaWiki\Extension\PageTriage\SpecialNewPagesFeed
  */
 class SpecialNewPagesFeedTest extends ApiTestCase {
 

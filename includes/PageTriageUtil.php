@@ -1,5 +1,18 @@
 <?php
 
+namespace MediaWiki\Extension\PageTriage;
+
+use Article;
+use Block;
+use MediaWiki\Extension\PageTriage\Api\ApiPageTriageList;
+use EchoEvent;
+use Exception;
+use ExtensionRegistry;
+use RequestContext;
+use Title;
+use User;
+use WikiPage;
+
 /**
  * Utility class for PageTriage
  */
@@ -8,7 +21,7 @@ class PageTriageUtil {
 	/**
 	 * Get whether or not a page needs triaging
 	 *
-	 * @param WikiPage $article WikiPage object
+	 * @param WikiPage|Article $article WikiPage object
 	 *
 	 * @throws Exception
 	 * @return Mixed null if the page is not in the triage system,
@@ -29,7 +42,7 @@ class PageTriageUtil {
 		$dbr = wfGetDB( DB_REPLICA );
 
 		$row = $dbr->selectRow( 'pagetriage_page', 'ptrp_reviewed',
-			[ 'ptrp_page_id' => $article->getID() ]
+			[ 'ptrp_page_id' => $article->getId() ]
 		);
 
 		if ( ! $row ) {
@@ -418,7 +431,4 @@ class PageTriageUtil {
 		return RequestContext::getMain()->getLanguage()->truncateForVisual( $text, $length, $ellipsis );
 	}
 
-}
-
-class MWPageTriageUtilInvalidNumberException extends Exception {
 }
