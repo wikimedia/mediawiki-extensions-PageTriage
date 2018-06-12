@@ -26,15 +26,17 @@
 				<%= mw.msg( "pagetriage-bytes", page_len ) %>
 				&#xb7;
 				<%= mw.msg( "pagetriage-edits", rev_count ) %>
-				<% if( category_count == "0" ) { %>
-					<% if( is_redirect == "0" ) { %>
-						&#xb7; <span class="mwe-pt-metadata-warning"><%= mw.msg( "pagetriage-no-categories" ) %></span>
+				<% if( is_draft === false ) { %>
+					<% if( category_count == "0" ) { %>
+						<% if( is_redirect == "0" ) { %>
+							&#xb7; <span class="mwe-pt-metadata-warning"><%= mw.msg( "pagetriage-no-categories" ) %></span>
+						<% } %>
+					<% } else { %>
+						&#xb7; <%= mw.msg( "pagetriage-categories", category_count ) %>
 					<% } %>
-				<% } else { %>
-					&#xb7; <%= mw.msg( "pagetriage-categories", category_count ) %>
-				<% } %>
-				<% if( linkcount == "0" && is_redirect == "0" ) { %>
-					&#xb7; <span class="mwe-pt-metadata-warning"><%= mw.msg("pagetriage-orphan") %></span>
+					<% if( linkcount == "0" && is_redirect == "0" ) { %>
+						&#xb7; <span class="mwe-pt-metadata-warning"><%= mw.msg("pagetriage-orphan") %></span>
+					<% } %>
 				<% } %>
 				<% if( typeof reference !== "undefined" && reference == "0" && is_redirect == "0" ) { %>
 					&#xb7; <span class="mwe-pt-metadata-warning"><%= mw.msg( "pagetriage-no-reference" ) %></span>

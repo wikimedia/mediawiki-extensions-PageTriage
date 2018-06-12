@@ -63,8 +63,10 @@ $( function () {
 			// Queue-mode radio buttons.
 			$( '.mwe-pt-queuemode-radio' ).on( 'change', function ( e ) {
 				that.model.setMode( $( this ).val() );
-				that.refreshList();
-				that.model.saveFilterParams();
+				that.filterSync();
+				that.refreshStats();
+				$( '.mwe-pt-control-section__afc' ).toggle( $( this ).val() === 'afc' );
+				$( '.mwe-pt-control-section__npp' ).toggle( $( this ).val() !== 'afc' );
 				e.stopPropagation();
 			} );
 
@@ -125,7 +127,9 @@ $( function () {
 			this.menuSync();
 		},
 
-		// refresh the stats when a namespace is changed
+		/**
+		 * Refresh the stats when filtering options are changed.
+		 */
 		refreshStats: function () {
 			this.options.stats.apiParams = this.getApiParams();
 			this.options.stats.fetch();
@@ -133,15 +137,11 @@ $( function () {
 
 		// Refresh the page list
 		refreshList: function () {
-			$( '#mwe-pt-refresh-button-holder' ).prepend( $.createSpinner( 'refresh-spinner' ) ); // show spinner
 			this.model.setParam( 'offset', 0 );
 			this.model.setParam( 'pageoffset', 0 );
-			this.model.fetch( {
-				add: false,
-				success: function () {
-					$.removeSpinner( 'refresh-spinner' ); // remove spinner
-				}
-			} );
+
+			// Show spinner and refresh the list.
+			this.modelFetch( { add: false } );
 		},
 
 		// Create a waypoint trigger that floats the navbar when the user scrolls down
@@ -225,6 +225,7 @@ $( function () {
 		// Make sure the user didn't uncheck both reviewed edits and unreviewed edits
 		setSubmitButtonState: function () {
 			if (
+				this.model.getMode() === 'npp' &&
 				!$( '#mwe-pt-filter-reviewed-edits' ).prop( 'checked' ) &&
 				!$( '#mwe-pt-filter-unreviewed-edits' ).prop( 'checked' )
 			) {
@@ -234,14 +235,40 @@ $( function () {
 			}
 		},
 
+		/**
+		 * Fetch values from the form, used when building the API query.
+		 * @return {Object}
+		 */
 		getApiParams: function () {
-			// fetch the values from the menu
 			var apiParams = {};
-			if ( $( '#mwe-pt-filter-namespace' ).val() ) {
+
+			if ( this.model.getMode() === 'npp' ) {
+				apiParams = this.getApiParamsNpp();
 				apiParams.namespace = $( '#mwe-pt-filter-namespace' ).val();
+			} else { // AfC
+				apiParams.namespace = mw.config.get( 'wgNamespaceIds' ).draft;
+				// eslint-disable-next-line camelcase
+				apiParams.afc_state = $( '[name=mwe-pt-filter-afc-radio]:checked' ).val();
+				apiParams.showunreviewed = '1';
 			}
 
-			// these are conditionals because the keys shouldn't exist if the checkbox isn't checked.
+			return apiParams;
+		},
+
+		/**
+		 * Get API parameters from the form for the NPP queue.
+		 * @return {Object}
+		 */
+		getApiParamsNpp: function () {
+			// Start with showing unreviewed pages by default. Sometimes when switching to
+			// NPP mode from AfC the filters lose their stickiness and nothing is shown.
+			var apiParams = {};
+
+			// || 0 is a safeguard. Old code suggested for some reason
+			// the namespace filter may at times not exist.
+			apiParams.namespace = $( '#mwe-pt-filter-namespace' ).val() || 0;
+
+			// These are conditionals because the keys shouldn't exist if the checkbox isn't checked.
 			if ( $( '#mwe-pt-filter-reviewed-edits' ).prop( 'checked' ) ) {
 				apiParams.showreviewed = '1';
 			}
@@ -265,12 +292,6 @@ $( function () {
 			if ( $( '#mwe-pt-filter-user-selected' ).prop( 'checked' ) && $( '#mwe-pt-filter-user' ).val() ) {
 				apiParams.username = $( '#mwe-pt-filter-user' ).val();
 			}
-
-			/* api doesn't support this yet
-			if( $('#mwe-pt-filter-tag').val() ) {
-				apiParams[''] = $('#mwe-pt-filter-tag').val();
-			}
-			*/
 
 			if ( $( '#mwe-pt-filter-no-categories' ).prop( 'checked' ) ) {
 				// eslint-disable-next-line camelcase
@@ -299,6 +320,24 @@ $( function () {
 			return apiParams;
 		},
 
+		/**
+		 * Reload data from the model, showing a spinner while waiting for a response.
+		 * @param {Object} options
+		 */
+		modelFetch: function ( options ) {
+			// Show spinner.
+			$( '#mwe-pt-refresh-button-holder' ).prepend( $.createSpinner( 'refresh-spinner' ) );
+
+			this.model.fetch( $.extend( {
+				success: function () {
+					$.removeSpinner( 'refresh-spinner' );
+				},
+				error: function () {
+					$.removeSpinner( 'refresh-spinner' );
+				}
+			}, options ) );
+		},
+
 		// Sync the filters with the contents of the menu
 		filterSync: function () {
 			// fetch the values from the menu
@@ -311,23 +350,50 @@ $( function () {
 			// the model in this context is mw.pageTriage.ArticleList
 			this.model.setParams( apiParams );
 			this.model.saveFilterParams();
-			this.model.fetch();
+
+			this.modelFetch();
 
 			this.menuSync(); // make sure the menu is now up-to-date.
 		},
 
 		// Sync the menu and other UI elements with the contents of the filters
 		menuSync: function () {
-			var username;
-
 			this.newFilterStatus = [];
 
-			// Select current mode's radio button.
-			if ( this.model.getMode() === 'afc' ) {
-				$( '#mwe-pt-radio-afc' ).prop( 'checked', true );
-			} else {
-				$( '#mwe-pt-radio-npp' ).prop( 'checked', true );
+			if ( this.model.getMode() === 'npp' ) {
+				this.menuSyncNpp();
+			} else { // AfC
+				this.menuSyncAfc();
 			}
+
+			// Set the "Showing: ..." filter status.
+			this.filterStatus = this.newFilterStatus.join( mw.msg( 'comma-separator' ) );
+			$( '#mwe-pt-filter-status' ).text( this.filterStatus );
+
+			// Sync the sort toggle
+			if ( this.model.getParam( 'dir' ) === 'oldestfirst' ) {
+				$( '#mwe-pt-sort-oldest' ).prop( 'checked', true );
+				// FIXME: Why is this commented out?
+				// $( 'label[for="mwe-pt-sort-oldest"]' ).addClass( 'ui-state-active' );
+				// $( 'label[for="mwe-pt-sort-newest"]' ).removeClass( 'ui-state-active' );
+			} else {
+				$( '#mwe-pt-sort-newest' ).prop( 'checked', true );
+				// FIXME: Why is this commented out?
+				// $( 'label[for="mwe-pt-sort-newest"]' ).addClass( 'ui-state-active' );
+				// $( 'label[for="mwe-pt-sort-oldest"]' ).removeClass( 'ui-state-active' );
+			}
+		},
+
+		/**
+		 * Sync the menu and other UI elements with the filters, for the NPP queue.
+		 */
+		menuSyncNpp: function () {
+			var username;
+
+			// Make sure the radio button for the feed is correct, and the corresponding filter menu is shown.
+			$( '#mwe-pt-radio-npp' ).prop( 'checked', true );
+			$( '.mwe-pt-control-section__afc' ).hide();
+			$( '.mwe-pt-control-section__npp' ).show();
 
 			$( '#mwe-pt-filter-namespace' ).val( this.model.getParam( 'namespace' ) );
 
@@ -344,36 +410,38 @@ $( function () {
 			}
 			$( '#mwe-pt-filter-user' ).val( username );
 
-			/* api doesn't support this
-			$( '#mwe-pt-filter-tag' ).val( this.model.getParam('') );
-			*/
-
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-no-categories' ), 'no_category', 'pagetriage-filter-stat-no-categories' );
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-orphan' ), 'no_inbound_links', 'pagetriage-filter-stat-orphan' );
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-non-autoconfirmed' ), 'non_autoconfirmed_users', 'pagetriage-filter-stat-non-autoconfirmed' );
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-learners' ), 'learners', 'pagetriage-filter-stat-learners' );
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-blocked' ), 'blocked_users', 'pagetriage-filter-stat-blocked' );
 
-			this.filterStatus = this.newFilterStatus.join( mw.msg( 'comma-separator' ) );
-			$( '#mwe-pt-filter-status' ).text( this.filterStatus );
-
 			if ( !$( 'input[name=mwe-pt-filter-radio]:checked' ).val() ) {
-				// none of the radio buttons are selected.  pick the default.
+				// None of the radio buttons are selected. Pick the default.
 				$( '#mwe-pt-filter-all' ).prop( 'checked', true );
 			}
+		},
 
-			// Sync the sort toggle
-			if ( this.model.getParam( 'dir' ) === 'oldestfirst' ) {
-				$( '#mwe-pt-sort-oldest' ).prop( 'checked', true );
-				// FIXME: Why is this commented out?
-				// $( 'label[for="mwe-pt-sort-oldest"]' ).addClass( 'ui-state-active' );
-				// $( 'label[for="mwe-pt-sort-newest"]' ).removeClass( 'ui-state-active' );
-			} else {
-				$( '#mwe-pt-sort-newest' ).prop( 'checked', true );
-				// FIXME: Why is this commented out?
-				// $( 'label[for="mwe-pt-sort-newest"]' ).addClass( 'ui-state-active' );
-				// $( 'label[for="mwe-pt-sort-oldest"]' ).removeClass( 'ui-state-active' );
+		/**
+		 * Sync the menu and other UI elements with the filters, for the AfC queue.
+		 */
+		menuSyncAfc: function () {
+			var afcStateName;
+			$( '#mwe-pt-radio-afc' ).prop( 'checked', true );
+			$( '.mwe-pt-control-section__afc' ).show();
+			$( '.mwe-pt-control-section__npp' ).hide();
+
+			$( 'input[name=mwe-pt-filter-afc-radio][value=' + this.model.getParam( 'afc_state' ) + ']' )
+				.prop( 'checked', true );
+
+			if ( !$( 'input[name=mwe-pt-filter-afc-radio]:checked' ).val() ) {
+				// None of the radio buttons are selected. Pick the default.
+				$( '#mwe-pt-filter-afc-all' ).prop( 'checked', true );
 			}
+
+			// Set the "Showing: ..." filter status.
+			afcStateName = $( 'input[name=mwe-pt-filter-afc-radio]:checked' ).data( 'afc-state-name' );
+			this.newFilterStatus.push( mw.msg( 'pagetriage-afc-state-' + afcStateName ) );
 		},
 
 		/**

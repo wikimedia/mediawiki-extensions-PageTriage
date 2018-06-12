@@ -23,7 +23,11 @@ $( function () {
 		formatMetadata: function ( article ) {
 			// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
 			var bylineMessage, userCreationDateParsed, byline, titleUrl,
-				creationDateParsed = Date.parseExact( article.get( 'creation_date' ), 'yyyyMMddHHmmss' );
+				creationDateParsed = Date.parseExact( article.get( 'creation_date' ), 'yyyyMMddHHmmss' ),
+				nsId = new mw.Title( article.get( 'title' ) ).getNamespaceId();
+
+			// Set whether it's a draft, which we'll reference in ext.pageTriage.listItem.html
+			article.set( 'is_draft', nsId === mw.config.get( 'wgPageTriageDraftNamespaceId' ) );
 
 			article.set(
 				'creation_date_pretty',
