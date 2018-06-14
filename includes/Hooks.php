@@ -12,6 +12,9 @@ use DeferredUpdates;
 use ExtensionRegistry;
 use Html;
 use LinksUpdate;
+use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddDeletionTagPresentationModel;
+use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddMaintenanceTagPresentationModel;
+use MediaWiki\Extension\PageTriage\Notifications\PageTriageMarkAsReviewedPresentationModel;
 use MWTimestamp;
 use ParserOutput;
 use RecentChange;
@@ -765,7 +768,7 @@ class Hooks {
 
 		if ( in_array( 'pagetriage-mark-as-reviewed', $wgPageTriageEnabledEchoEvents ) ) {
 			$notifications['pagetriage-mark-as-reviewed'] = [
-				'presentation-model' => 'PageTriageMarkAsReviewedPresentationModel',
+				'presentation-model' => PageTriageMarkAsReviewedPresentationModel::class,
 				'category' => 'page-review',
 				'group' => 'neutral',
 				'section' => 'message',
@@ -773,7 +776,7 @@ class Hooks {
 		}
 		if ( in_array( 'pagetriage-add-maintenance-tag', $wgPageTriageEnabledEchoEvents ) ) {
 			$notifications['pagetriage-add-maintenance-tag'] = [
-				'presentation-model' => 'PageTriageAddMaintenanceTagPresentationModel',
+				'presentation-model' => PageTriageAddMaintenanceTagPresentationModel::class,
 				'category' => 'page-review',
 				'group' => 'neutral',
 				'section' => 'alert',
@@ -781,7 +784,7 @@ class Hooks {
 		}
 		if ( in_array( 'pagetriage-add-deletion-tag', $wgPageTriageEnabledEchoEvents ) ) {
 			$notifications['pagetriage-add-deletion-tag'] = [
-				'presentation-model' => 'PageTriageAddDeletionTagPresentationModel',
+				'presentation-model' => PageTriageAddDeletionTagPresentationModel::class,
 				'category' => 'page-review',
 				'group' => 'negative',
 				'section' => 'alert',
