@@ -53,7 +53,7 @@ class ApiPageTriageAction extends ApiBase {
 		);
 		$logEntry->setPerformer( $this->getUser() );
 		$logEntry->setTarget( $article->getTitle() );
-		$note = $wgContLang->truncate( $params['note'], 150 );
+		$note = $wgContLang->truncateForDatabase( $params['note'], 150 );
 		if ( $note ) {
 			$logEntry->setComment( $note );
 		}

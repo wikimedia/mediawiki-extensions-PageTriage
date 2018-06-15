@@ -101,7 +101,7 @@ class ApiPageTriageTagging extends ApiBase {
 
 			$api->execute();
 
-			$note = $wgContLang->truncate( $params['note'], 150 );
+			$note = $wgContLang->truncateForDatabase( $params['note'], 150 );
 
 			// logging to the logging table
 			if ( $params['taglist'] ) {
