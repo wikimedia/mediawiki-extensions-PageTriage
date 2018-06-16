@@ -199,9 +199,12 @@
 	"pagetriage-del-title": "Marcar para eliminação",
 	"pagetriage-del-tooltip": "Indicar esta página para eliminação",
 	"pagetriage-tagging-error": "Não foi possível aplicar as etiquetas à página",
+	"pagetriage-add-tag-confirmation": "Tem a certeza de que deseja adicionar $1 {{PLURAL:$1|etiqueta|etiquetas}} a um artigo tão curto?",
 	"pagetriage-tag-deletion-error": "A página já está marcada com uma predefinição de eliminação, abortando procedimento.",
 	"pagetriage-toolbar-close": "Fechar",
 	"pagetriage-toolbar-minimize": "Minimizar",
+	"pagetriage-tag-warning-notice": "Nota: Esta página existe há apenas $1 {{PLURAL:$1|minuto|minutos}}. Considere esperar para etiquetá-la, a menos que o problema seja sério.",
+	"notification-header-pagetriage-mark-as-reviewed": "A página '''$3''' foi {{GENDER:$2|revista}}.",
 	"echo-pref-tooltip-page-review": "Notificar-me quando alguém revisar uma página que criei.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Revisão|Revisões}} da página",
 	"apihelp-pagetriagelist-param-limit": "O número máximo de resultados a serem devolvidos."
