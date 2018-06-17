@@ -3,7 +3,8 @@
 		"authors": [
 			"පසිඳු කාවින්ද",
 			"Subi",
-			"Sator"
+			"Sator",
+			"Fitoschido"
 		]
 	},
 	"pagetriage-please-wait": "Itxaron mesedez...",
@@ -33,7 +34,7 @@
 	"pagetriage-tags-param-free-yes-label": "Bai",
 	"pagetriage-tags-param-free-no-label": "Ez",
 	"pagetriage-info-history-header": "Historia",
-	"pagetriage-info-help": "Laguntza",
+	"pagetriage-info-help": "laguntza",
 	"pagetriage-info-problem-no-categories": "Kategoriarik gabe",
 	"pagetriage-toolbar-close": "Itxi"
 }
