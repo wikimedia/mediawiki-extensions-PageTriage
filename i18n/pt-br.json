@@ -8,7 +8,8 @@
 			"OTAVIO1981",
 			"He7d3r",
 			"Hamilton Abreu",
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Pedrofariasm"
 		]
 	},
 	"pagetriage": "Triagem de Páginas",
@@ -205,7 +206,11 @@
 	"pagetriage-toolbar-minimize": "Minimizar",
 	"pagetriage-tag-warning-notice": "Nota: Esta página existe há apenas $1 {{PLURAL:$1|minuto|minutos}}. Considere esperar para etiquetá-la, a menos que o problema seja sério.",
 	"notification-header-pagetriage-mark-as-reviewed": "A página '''$3''' foi {{GENDER:$2|revista}}.",
+	"echo-pref-subscription-page-review": "Reveja uma página que eu criei",
 	"echo-pref-tooltip-page-review": "Notificar-me quando alguém revisar uma página que criei.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Revisão|Revisões}} da página",
+	"apihelp-pagetriageaction-description": "Marque um artigo como revisado ou não revisado",
+	"apihelp-pagetriageaction-summary": "Marcar um artigo como revisado ou não revisado.",
+	"apihelp-pagetriageaction-param-pageid": "O artigo o qual está para ser marcado como revisado ou não revisado.",
 	"apihelp-pagetriagelist-param-limit": "O número máximo de resultados a serem devolvidos."
 }

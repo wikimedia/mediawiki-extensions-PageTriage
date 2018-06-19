@@ -2,10 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Eleassar",
-			"Janezdrilc"
+			"Janezdrilc",
+			"Upwinxp"
 		]
 	},
 	"pagetriage-articleinfo-byline": "Stran je $1 ustvaril(-a) $2 ($3$4$5).",
+	"pagetriage-filter-nominated-for-deletion": "Predlagano za izbris",
+	"pagetriage-filter-stat-nominated-for-deletion": "predlagano za izbris",
+	"pagetriage-note-deletion": "Ta stran je bila predlagana za izbris.",
 	"pagetriage-tags-uncategorised-desc": "Stran še ni uvrščena v nobeno kategorijo.",
 	"pagetriage-tags-orphan-desc": "Na to stran se ne povezuje nobena druga stran.",
 	"pagetriage-tags-cleanup-desc": "To stran je treba očistiti.",
@@ -18,6 +22,7 @@
 	"pagetriage-info-problem-no-references-desc": "Članek ne navaja nobenega vira.",
 	"pagetriage-wikilove-page-creator": "Ustvaritelj strani",
 	"pagetriage-wikilove-no-recipients": "Za to stran ni na voljo noben prejemnik.",
+	"pagetriage-del-tooltip": "Predlagaj to stran za izbris",
 	"echo-pref-subscription-page-review": "Preveritev strani, ki sem jo ustvaril",
 	"echo-pref-tooltip-page-review": "Obvesti me, ko nekdo pregleda stran, ki sem jo ustvaril.",
 	"echo-category-title-page-review": "Označi {{PLURAL:$1|pregled|pregleda|preglede|pregledov}}",
