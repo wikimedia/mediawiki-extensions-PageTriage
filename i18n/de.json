@@ -84,7 +84,7 @@
 	"pagetriage-filter-stat-username": "Benutzername: $1",
 	"pagetriage-no-pages": "Keine Seiten entsprechen deinen Kriterien.",
 	"pagetriage-warning-browser": "Dieses Hilfsmittel funktioniert möglicherweise nicht mit Browsern, die älter sind als der Internet Explorer 11.",
-	"pagetriage-welcome": "Bitte überprüfe die unten angezeigten neuen Seiten und hilf, {{SITENAME}} zu verbessern. <a href=\"$1\">Erfahre mehr hierzu</a> · <a href=\"$2\">Hinterlasse eine Rückmeldung</a>",
+	"pagetriage-welcome": "Bitte überprüfe die unten angezeigten neuen Seiten und hilf, {{SITENAME}} zu verbessern. [$1 Erfahre mehr hierzu] · [$2 Hinterlasse eine Rückmeldung]",
 	"pagetriage-note-reviewed": "Diese Seite wurde geprüft.",
 	"pagetriage-note-not-reviewed": "Diese Seite wurde bislang noch nicht geprüft.",
 	"pagetriage-note-deletion": "Diese Seite wurde zum Löschen vorgeschlagen.",

@@ -88,7 +88,7 @@
 	"pagetriage-filter-stat-username": "kullanıcı adı: $1",
 	"pagetriage-no-pages": "Kriterlerinize uygun sayfa mevcut değil.",
 	"pagetriage-warning-browser": "Bu araç Internet Explorer 10'dan daha eski tarayıcılarda düzgün çalışmayabilir.",
-	"pagetriage-welcome": "Lütfen aşağıdaki yeni sayfaları inceleyin ve {{SITENAME}}'yi geliştirmemize yardımcı olun. <a href=\"$1\">Daha fazla bilgi</a> · <a href=\"$2\">Geri bildirim bırak</a>",
+	"pagetriage-welcome": "Lütfen aşağıdaki yeni sayfaları inceleyin ve {{SITENAME}}'yi geliştirmemize yardımcı olun. [$1 Daha fazla bilgi] · [$2 Geri bildirim bırak]",
 	"pagetriage-note-reviewed": "Bu sayfa incelenmiştir.",
 	"pagetriage-note-not-reviewed": "Bu sayfa henüz incelenmemiştir.",
 	"pagetriage-note-deletion": "Bu sayfa, silinmeye adaydır.",
