@@ -16,6 +16,8 @@
 	"newpagesfeed": "הזנת דפים חדשים",
 	"pagetriage-desc": "הקלה על סקירה ואישור של דפים חדשים",
 	"pagetriage-pagecuration": "טיפול בדפים",
+	"pagetriage-new-page-patrol": "בדיקת דפים חדשים",
+	"pagetriage-articles-for-creation": "ערכים ליצירה",
 	"pagetriage-please-wait": "נא להמתין...",
 	"pagetriage-api-invalidid": "המזהה שנתת ($1) אינו נכון",
 	"pagetriage-markpatrolled": "סימון שהדף הזה נסקר",

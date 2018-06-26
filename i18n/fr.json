@@ -27,6 +27,8 @@
 	"newpagesfeed": "Fil des nouvelles pages",
 	"pagetriage-desc": "Facilite la relecture et l'approbation des nouvelles pages",
 	"pagetriage-pagecuration": "Conservation de la page",
+	"pagetriage-new-page-patrol": "Nouvelle patrouille de page",
+	"pagetriage-articles-for-creation": "Articles à créer",
 	"pagetriage-please-wait": "Veuillez patienter...",
 	"pagetriage-api-invalidid": "L'ID ($1) que vous avez fourni n'est pas valide.",
 	"pagetriage-markpatrolled": "Marquer cette page comme relue",

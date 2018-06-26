@@ -5,7 +5,7 @@
 			"Baloch Khan"
 		]
 	},
-	"pagetriage-edits": "$1 {{PLURAL:$1|edit|سمونې}}",
+	"pagetriage-edits": "$1 {{PLURAL:$1|سمونه|سمونې}}",
 	"pagetriage-filter-show-heading": "ښکاره کول:",
 	"pagetriage-filter-unreviewed-edits": "نامخکتلي مخونه",
 	"pagetriage-filter-article": "ليکنه",

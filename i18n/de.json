@@ -12,6 +12,8 @@
 	"newpagesfeed": "Feed zu neuen Seiten",
 	"pagetriage-desc": "Ermöglicht das Prüfen und Akzeptieren neuer Seiten",
 	"pagetriage-pagecuration": "Seitenkuratierung",
+	"pagetriage-new-page-patrol": "Neue Seitenüberprüfung",
+	"pagetriage-articles-for-creation": "Artikel zur Erstellung",
 	"pagetriage-please-wait": "Bitte warten …",
 	"pagetriage-api-invalidid": "Die angegebene Kennung ($1) ist ungültig.",
 	"pagetriage-markpatrolled": "Seite als geprüft markieren",
