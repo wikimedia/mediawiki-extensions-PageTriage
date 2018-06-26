@@ -8,6 +8,8 @@ if ( $IP === false ) {
 }
 require_once "$IP/maintenance/Maintenance.php";
 
+use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
+
 /**
  * A maintenance script that updates expired user metadata
  */
