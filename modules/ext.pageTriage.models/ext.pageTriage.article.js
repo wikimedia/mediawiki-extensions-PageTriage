@@ -246,6 +246,9 @@ $( function () {
 		model: mw.pageTriage.Article,
 		optionsToken: '',
 
+		/** Current queue mode: 'npp' or 'afc'. */
+		mode: 'npp',
+
 		apiParams: {
 			limit: 20,
 			dir: 'newestfirst',
@@ -265,13 +268,46 @@ $( function () {
 		},
 
 		initialize: function ( options ) {
+			var filterOptionsJson, filterOptions;
 			this.eventBus = options.eventBus;
 			this.eventBus.bind( 'filterSet', this.setParams );
 
-			// pull any saved filter settings from the user's option
-			if ( !mw.user.isAnon() && mw.user.options.get( 'userjs-NewPagesFeedFilterOptions' ) ) {
-				this.setParams( JSON.parse( mw.user.options.get( 'userjs-NewPagesFeedFilterOptions' ) ) );
+			// Pull any saved filter settings from the user's option.
+			filterOptionsJson = mw.user.options.get( 'userjs-NewPagesFeedFilterOptions' );
+			if ( !mw.user.isAnon() && filterOptionsJson ) {
+				try {
+					filterOptions = JSON.parse( filterOptionsJson );
+				} catch ( e ) {
+					// If we can't parse the options, give up.
+					mw.log.warn( 'Unable to parse stored filters: ' + filterOptionsJson );
+					return;
+				}
+				this.setMode( filterOptions.mode );
+				// Mode is the only one that's not an API parameter.
+				delete filterOptions.mode;
+				this.setParams( filterOptions );
 			}
+		},
+
+		/**
+		 * Set the ArticleList mode.
+		 * @TODO This also sets the namespace that will be queried, which means that it'll be saved as the current
+		 * filter namespace and so when NPP is selected the NS dropdown will not remember the previous state. Bad?
+		 * @param {string} newMode Either 'npp' or 'afc'.
+		 */
+		setMode: function ( newMode ) {
+			var nsId;
+			this.mode = newMode === 'afc' ? newMode : 'npp';
+			nsId = ( this.mode === 'afc' ) ? mw.config.get( 'wgPageTriageDraftNamespaceId' ) : 0;
+			this.setParam( 'namespace', nsId );
+		},
+
+		/**
+		 * Get the current ArticleList mode.
+		 * @return {string} Either 'npp' or 'afc'.
+		 */
+		getMode: function () {
+			return this.mode;
 		},
 
 		url: function () {
@@ -307,10 +343,15 @@ $( function () {
 			this.apiParams[ paramName ] = paramValue;
 		},
 
+		/**
+		 * Get the JSON string that will be saved as a user preference value to store the current filter state.
+		 * @TODO Why aren't we using JSON.stringify() here?
+		 * @return {string}
+		 */
 		encodeFilterParams: function () {
 			var str,
 				encodedString = '',
-				paramArray = [];
+				paramArray = [ '"mode": "' + this.getMode() + '"' ];
 
 			$.each( this.apiParams, function ( key, val ) {
 				str = '"' + key + '":';

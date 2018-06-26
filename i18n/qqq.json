@@ -26,6 +26,8 @@
 	"newpagesfeed": "{{doc-special|NewPagesFeed}}",
 	"pagetriage-desc": "{{desc|name=Page Triage|url=https://www.mediawiki.org/wiki/Extension:PageTriage}}",
 	"pagetriage-pagecuration": "Alternative title of the extension/project. Should use title case.",
+	"pagetriage-new-page-patrol": "Label for the radio button that switches to NPP mode.",
+	"pagetriage-articles-for-creation": "Label for the radio button that switches to AfC mode.",
 	"pagetriage-please-wait": "Temporary message displayed while list interface is loading.\n{{Identical|Please wait}}",
 	"pagetriage-api-invalidid": "Unused at this time.\n\nInvalid title error message for pagetriage API. Parameters:\n* $1 - ID",
 	"pagetriage-markpatrolled": "Button text for the mark-as-patrolled button or text for mark as review tooltip",

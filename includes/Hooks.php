@@ -15,6 +15,7 @@ use LinksUpdate;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddDeletionTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddMaintenanceTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageMarkAsReviewedPresentationModel;
+use MediaWiki\MediaWikiServices;
 use MWTimestamp;
 use ParserOutput;
 use RecentChange;
@@ -56,8 +57,14 @@ class Hooks {
 		$newNamespace = $newTitle->getNamespace();
 		// Do nothing further on if
 		// 1. the page move is within the same namespace or
-		// 2. the new page is not in article (main) namespace
-		if ( $oldNamespace === $newNamespace || $newNamespace !== NS_MAIN ) {
+		// 2. the new page is not in either the main or draft namespaces
+		$draftNsId = MediaWikiServices::getInstance()
+			->getMainConfig()
+			->get( 'PageTriageDraftNamespaceId' );
+		if (
+			$oldNamespace === $newNamespace
+			|| !in_array( $newNamespace, [ NS_MAIN, $draftNsId ], true )
+		) {
 			return true;
 		}
 
@@ -97,9 +104,7 @@ class Hooks {
 	 * @return bool
 	 */
 	public static function onNewRevisionFromEditComplete( WikiPage $wikiPage, $rev, $baseID, $user ) {
-		global $wgPageTriageNamespaces;
-
-		if ( !in_array( $wikiPage->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
+		if ( !in_array( $wikiPage->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			return true;
 		}
 
@@ -136,8 +141,8 @@ class Hooks {
 	public static function onPageContentInsertComplete(
 		$article, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision
 	) {
-		global $wgPageTriageNamespaces;
-		if ( !in_array( $article->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
+		// Don't add to queue if not in a namespace of interest.
+		if ( !in_array( $article->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			return true;
 		}
 
@@ -180,8 +185,7 @@ class Hooks {
 	 * @return bool
 	 */
 	public static function onLinksUpdateComplete( LinksUpdate $linksUpdate ) {
-		global $wgPageTriageNamespaces;
-		if ( !in_array( $linksUpdate->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
+		if ( !in_array( $linksUpdate->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			return true;
 		}
 
@@ -209,11 +213,9 @@ class Hooks {
 	 * @return true
 	 */
 	public static function onArticleDeleteComplete( $article, $user, $reason, $id ) {
-		global $wgPageTriageNamespaces;
-
 		self::flushUserStatusCache( $article->getTitle() );
 
-		if ( !in_array( $article->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
+		if ( !in_array( $article->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			return true;
 		}
 
@@ -249,13 +251,19 @@ class Hooks {
 		} else {
 			// set reviewed if it's not set yet
 			if ( is_null( $reviewed ) ) {
-				// check if this user has autopatrol right
-				if ( ( $wgUseRCPatrol || $wgUseNPPatrol ) &&
-					!count( $title->getUserPermissionsErrors( 'autopatrol', $user ) ) ) {
+				$draftNsId = MediaWikiServices::getInstance()
+					->getMainConfig()
+					->get( 'PageTriageDraftNamespaceId' );
+				if ( ( $wgUseRCPatrol || $wgUseNPPatrol )
+					&& !count( $title->getUserPermissionsErrors( 'autopatrol', $user ) )
+					&& ( $draftNsId && !$title->inNamespace( $draftNsId ) )
+				) {
+					// Set as reviewed if the user has the autopatrol right
+					// and they're not creating a Draft.
 					$reviewed = 3;
-				// if the user has no autopatrol right and doesn't really take any action,
-				// this would be set to unreviewed by system.
 				} else {
+					// If they have no autopatrol right and are not making an explicit review,
+					// set to unreviewed (as the system would, in this situation).
 					return $pageTriage->addToPageTriageQueue( '0' );
 				}
 			}
@@ -402,8 +410,7 @@ class Hooks {
 	 * @return bool
 	 */
 	public static function onArticleViewFooter( $article, $patrolFooterShown ) {
-		global $wgPageTriageMarkPatrolledLinkExpiry,
-			$wgPageTriageEnableCurationToolbar, $wgPageTriageNamespaces;
+		global $wgPageTriageMarkPatrolledLinkExpiry, $wgPageTriageEnableCurationToolbar;
 
 		$context = $article->getContext();
 		$user = $context->getUser();
@@ -426,7 +433,7 @@ class Hooks {
 		}
 
 		// Only show in defined namespaces
-		if ( !in_array( $article->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
+		if ( !in_array( $article->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			return true;
 		}
 
@@ -504,8 +511,7 @@ class Hooks {
 		$rc = RecentChange::newFromId( $rcid );
 
 		if ( $rc ) {
-			global $wgPageTriageNamespaces;
-			if ( !in_array( $rc->getTitle()->getNamespace(), $wgPageTriageNamespaces ) ) {
+			if ( !in_array( $rc->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 				return true;
 			}
 
@@ -556,21 +562,24 @@ class Hooks {
 	 * @return bool
 	 */
 	public static function onResourceLoaderGetConfigVars( &$vars ) {
-		global $wgPageTriageCurationModules, $wgPageTriageNamespaces,
-			$wgTalkPageNoteTemplate;
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$pageTriageCurationModules = $config->get( 'PageTriageCurationModules' );
+		$talkPageNoteTemplate = $config->get( 'TalkPageNoteTemplate' );
+		$pageTriageDraftNamespaceId = $config->get( 'PageTriageDraftNamespaceId' );
 
 		// check if WikiLove is enabled
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'WikiLove' ) ) {
-			$wgPageTriageCurationModules['wikiLove'] = [
+			$pageTriageCurationModules['wikiLove'] = [
 				// depends on WikiLove extension
 				'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#WikiLove',
 				'namespace' => [ NS_MAIN, NS_USER ],
 			];
 		}
 
-		$vars['wgPageTriageCurationModules'] = $wgPageTriageCurationModules;
-		$vars['wgPageTriageNamespaces'] = $wgPageTriageNamespaces;
-		$vars['wgTalkPageNoteTemplate'] = $wgTalkPageNoteTemplate;
+		$vars['wgPageTriageCurationModules'] = $pageTriageCurationModules;
+		$vars['pageTriageNamespaces'] = PageTriageUtil::getNamespaces();
+		$vars['wgPageTriageDraftNamespaceId'] = $pageTriageDraftNamespaceId;
+		$vars['wgTalkPageNoteTemplate'] = $talkPageNoteTemplate;
 		return true;
 	}
 

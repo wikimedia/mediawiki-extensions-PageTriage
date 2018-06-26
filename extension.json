@@ -855,6 +855,10 @@
 				"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title",
 				"pagetriage-del-tags-xfd-notify-topic-title"
 			]
+		},
+		"PageTriageDraftNamespaceId": {
+			"description": "The ID of the Draft namespace, as defined in $wgExtraNamespaces. If false, all AfC features are disabled.",
+			"value": false
 		}
 	},
 	"manifest_version": 2

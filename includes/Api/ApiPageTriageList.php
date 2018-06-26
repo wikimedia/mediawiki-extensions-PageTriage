@@ -167,14 +167,9 @@ class ApiPageTriageList extends ApiBase {
 			$conds['ptrp_deleted'] = 0;
 		}
 
-		global $wgPageTriageNamespaces;
-		// Show by namespace
-		if ( isset( $opts['namespace'] ) && in_array( $opts['namespace'], $wgPageTriageNamespaces ) ) {
-			$conds['page_namespace'] = $opts['namespace'];
-		} else {
-			// default to main namespace
-			$conds['page_namespace'] = NS_MAIN;
-		}
+		// Show by namespace. Defaults to main namespace.
+		$nsId = ( isset( $opts['namespace'] ) && $opts['namespace'] ) ? $opts['namespace'] : NS_MAIN;
+		$conds['page_namespace'] = PageTriageUtil::validatePageNamespace( $nsId );
 
 		// Database setup
 		$dbr = wfGetDB( DB_REPLICA );
