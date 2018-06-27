@@ -16,6 +16,8 @@
 	"newpagesfeed": "Feed de páginas novas",
 	"pagetriage-desc": "Facilita a revisão e aprovação de páginas novas",
 	"pagetriage-pagecuration": "Curadoria de Páginas",
+	"pagetriage-new-page-patrol": "Patrulhamento de páginas novas",
+	"pagetriage-articles-for-creation": "Artigos para serem criados",
 	"pagetriage-please-wait": "Por favor, aguarde...",
 	"pagetriage-api-invalidid": "O ID que forneceu ($1) não é válido.",
 	"pagetriage-markpatrolled": "Marcar esta página como revisada",
