@@ -36,7 +36,8 @@ class ArticleCompileProcessor {
 			'CategoryCount' => 'off',
 			'Snippet' => 'off',
 			'UserData' => 'off',
-			'DeletionTag' => 'off'
+			'DeletionTag' => 'off',
+			'AfcTag' => 'off',
 		];
 		// default to use master database for data compilation
 		foreach ( $this->component as $key => $value ) {

@@ -80,7 +80,8 @@ class Hooks {
 						'CategoryCount' => DB_REPLICA,
 						'Snippet' => DB_REPLICA,
 						'UserData' => DB_REPLICA,
-						'DeletionTag' => DB_REPLICA
+						'DeletionTag' => DB_REPLICA,
+						'AfcTag' => DB_REPLICA,
 				];
 				$acp->configComponentDb( $config );
 				$acp->compileMetadata();
@@ -889,6 +890,10 @@ class Hooks {
 		$updater->modifyExtensionTable(
 			'pagetriage_tags',
 			$base . '/PageTriageTagsPatch.sql'
+		);
+		$updater->modifyExtensionTable(
+			'pagetriage_tags',
+			$base . '/PageTriageTagsPatch-AfC.sql'
 		);
 
 		return true;

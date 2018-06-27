@@ -72,6 +72,9 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\PageTriage\\": "includes/"
 	},
+	"AutoloadClasses": {
+		"PageTriageTestCase": "tests/phpunit/PageTriageTestCase.php"
+	},
 	"ResourceModules": {
 		"ext.pageTriage.external": {
 			"scripts": [
@@ -197,6 +200,11 @@
 			"messages": [
 				"comma-separator",
 				"days",
+				"pagetriage-afc-state-all",
+				"pagetriage-afc-state-declined",
+				"pagetriage-afc-state-pending",
+				"pagetriage-afc-state-reviewing",
+				"pagetriage-afc-state-unsubmitted",
 				"pagetriage-hist",
 				"pagetriage-bytes",
 				"pagetriage-edits",

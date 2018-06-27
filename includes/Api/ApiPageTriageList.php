@@ -239,6 +239,8 @@ class ApiPageTriageList extends ApiBase {
 		$searchableTags = [
 			// no categories assigned
 			'no_category' => [ 'name' => 'category_count', 'op' => '=', 'val' => '0' ],
+			// AfC status
+			'afc_state' => [ 'name' => 'afc_state', 'op' => '=', 'val' => false ],
 			// no inbound links
 			'no_inbound_links' => [ 'name' => 'linkcount', 'op' => '=', 'val' => '0' ],
 			// non auto confirmed users
@@ -312,6 +314,9 @@ class ApiPageTriageList extends ApiBase {
 				ApiBase::PARAM_TYPE => 'string',
 			],
 			'namespace' => [
+				ApiBase::PARAM_TYPE => 'integer',
+			],
+			'afc_state' => [
 				ApiBase::PARAM_TYPE => 'integer',
 			],
 			'no_category' => [

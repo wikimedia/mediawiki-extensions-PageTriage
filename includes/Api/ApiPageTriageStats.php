@@ -52,6 +52,9 @@ class ApiPageTriageStats extends ApiBase {
 			'showbots' => [
 				ApiBase::PARAM_TYPE => 'boolean',
 			],
+			'afc_state' => [
+				ApiBase::PARAM_TYPE => 'integer',
+			],
 			'no_category' => [
 				ApiBase::PARAM_TYPE => 'boolean',
 			],

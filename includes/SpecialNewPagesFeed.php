@@ -128,6 +128,20 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$triageInterface .= "</div>";
 		$triageInterface .= "<div id='mwe-pt-list-stats-nav-anchor'></div>";
 
+		$triageInterface .= $this->getTriageTemplatesHTML();
+
+		// Output the HTML for the triage interface
+		$out->addHTML( $triageInterface );
+	}
+
+	/**
+	 * These are the templates that backbone/underscore render on the client.
+	 * It would be awesome if they lived in separate files, but we need to figure out how to
+	 * make RL do that for us.
+	 * Syntax documentation can be found at http://underscorejs.org/#template
+	 * @return string HTML
+	 */
+	private function getTriageTemplatesHTML() {
 		$dropdownArrow = $this->getLanguage()->isRTL()
 			? '&#x25c2;'	// ◂ left-pointing triangle
 			: '&#x25b8;';	// ▸ right-pointing triangle
@@ -147,11 +161,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 			);
 		}
 
-		// These are the templates that backbone/underscore render on the client.
-		// It would be awesome if they lived in separate files, but we need to figure out how to
-		// make RL do that for us.
-		// Syntax documentation can be found at http://underscorejs.org/#template
-		$triageInterface .= <<<HTML
+		return <<<HTML
 			<!-- top nav template -->
 			<script type="text/template" id="listControlNavTemplate">
 				$modeSwitchRadios
@@ -177,125 +187,166 @@ class SpecialNewPagesFeed extends SpecialPage {
 					<div id="mwe-pt-control-dropdown-pokey"></div>
 					<div id="mwe-pt-control-dropdown" class="mwe-pt-control-gradient shadow">
 						<form>
-							<div class="mwe-pt-control-section">
-								<span class="mwe-pt-control-label">
-									<b><%= mw.msg( 'pagetriage-filter-show-heading' ) %></b>
-								</span>
-								<div class="mwe-pt-control-options">
-									<input type="checkbox" id="mwe-pt-filter-unreviewed-edits" />
-									<label for="mwe-pt-filter-unreviewed-edits">
-										<%= mw.msg( 'pagetriage-filter-unreviewed-edits' ) %>
-									</label> <br/>
-									<input type="checkbox" id="mwe-pt-filter-reviewed-edits" />
-									<label for="mwe-pt-filter-reviewed-edits">
-										<%= mw.msg( 'pagetriage-filter-reviewed-edits' ) %>
-									</label> <br/>
-									<input type="checkbox" id="mwe-pt-filter-nominated-for-deletion" />
-									<label for="mwe-pt-filter-nominated-for-deletion">
-										<%= mw.msg( 'pagetriage-filter-nominated-for-deletion' ) %>
-									</label> <br/>
-									<input type="checkbox" id="mwe-pt-filter-redirects" />
-									<label for="mwe-pt-filter-redirects">
-										<%= mw.msg( 'pagetriage-filter-redirects' ) %>
-									</label> <br/>
+							<div class="mwe-pt-control-section__npp">
+								<div class="mwe-pt-control-section">
+									<span class="mwe-pt-control-label">
+										<b><%= mw.msg( 'pagetriage-filter-show-heading' ) %></b>
+									</span>
+									<div class="mwe-pt-control-options">
+										<input type="checkbox" id="mwe-pt-filter-unreviewed-edits" />
+										<label for="mwe-pt-filter-unreviewed-edits">
+											<%= mw.msg( 'pagetriage-filter-unreviewed-edits' ) %>
+										</label> <br/>
+										<input type="checkbox" id="mwe-pt-filter-reviewed-edits" />
+										<label for="mwe-pt-filter-reviewed-edits">
+											<%= mw.msg( 'pagetriage-filter-reviewed-edits' ) %>
+										</label> <br/>
+										<input type="checkbox" id="mwe-pt-filter-nominated-for-deletion" />
+										<label for="mwe-pt-filter-nominated-for-deletion">
+											<%= mw.msg( 'pagetriage-filter-nominated-for-deletion' ) %>
+										</label> <br/>
+										<input type="checkbox" id="mwe-pt-filter-redirects" />
+										<label for="mwe-pt-filter-redirects">
+											<%= mw.msg( 'pagetriage-filter-redirects' ) %>
+										</label> <br/>
+									</div>
 								</div>
-							</div>
-							<div class="mwe-pt-control-section">
-								<span class="mwe-pt-control-label">
-									<b><%= mw.msg( 'pagetriage-filter-namespace-heading' ) %></b>
-								</span>
-								<div class="mwe-pt-control-options">
-									<select id="mwe-pt-filter-namespace">
-										<!--<option value="">
-											<%= mw.msg( 'pagetriage-filter-ns-all' ) %>
-										</option>-->
-										<%
-											var wgFormattedNamespaces = mw.config.get( 'wgFormattedNamespaces' );
-											var pageTriageNamespaces = mw.config.get( 'pageTriageNamespaces' );
-											var nsOptions = '', namespaceNumber;
-											for ( var key in wgFormattedNamespaces ) {
-												namespaceNumber = pageTriageNamespaces[key];
-												if ( typeof wgFormattedNamespaces[namespaceNumber] === 'undefined'
-													|| namespaceNumber === mw.config.get( 'wgPageTriageDraftNamespaceId' )
-												) {
-													continue;
+								<div class="mwe-pt-control-section">
+									<span class="mwe-pt-control-label">
+										<b><%= mw.msg( 'pagetriage-filter-namespace-heading' ) %></b>
+									</span>
+									<div class="mwe-pt-control-options">
+										<select id="mwe-pt-filter-namespace">
+											<!--<option value="">
+												<%= mw.msg( 'pagetriage-filter-ns-all' ) %>
+											</option>-->
+											<%
+												var wgFormattedNamespaces = mw.config.get( 'wgFormattedNamespaces' );
+												var pageTriageNamespaces = mw.config.get( 'pageTriageNamespaces' );
+												var nsOptions = '', namespaceNumber;
+												for ( var key in wgFormattedNamespaces ) {
+													namespaceNumber = pageTriageNamespaces[key];
+													if ( typeof wgFormattedNamespaces[namespaceNumber] === 'undefined'
+														|| namespaceNumber === mw.config.get( 'wgPageTriageDraftNamespaceId' )
+													) {
+														continue;
+													}
+													if ( wgFormattedNamespaces[namespaceNumber] === '' ) {
+														nsOptions += String(
+															'<option value="' + String(namespaceNumber) + '">'
+															+ mw.msg( 'pagetriage-filter-article' )
+															+ '</option>'
+														);
+													} else {
+														nsOptions += String(
+															'<option value="' + String(namespaceNumber) + '">'
+															+ wgFormattedNamespaces[namespaceNumber]
+															+ '</option>'
+														);
+													}
 												}
-												if ( wgFormattedNamespaces[namespaceNumber] === '' ) {
-													nsOptions += String(
-														'<option value="' + String(namespaceNumber) + '">'
-														+ mw.msg( 'pagetriage-filter-article' )
-														+ '</option>'
-													);
-												} else {
-													nsOptions += String(
-														'<option value="' + String(namespaceNumber) + '">'
-														+ wgFormattedNamespaces[namespaceNumber]
-														+ '</option>'
-													);
-												}
-											}
-											print(nsOptions);
-										%>
-									</select>
+												print( nsOptions );
+											%>
+										</select>
+									</div>
+									<!-- abusefilter tags come later.
+									<div class="mwe-pt-control-section">
+										<span class="mwe-pt-control-label">
+											<b><%= mw.msg( 'pagetriage-filter-tag-heading' ) %></b>
+										</span>
+										<div class="mwe-pt-control-options">
+											<input type=text id="mwe-pt-filter-tag" />
+										</div>
+									</div>
+									-->
+									<div class="mwe-pt-control-section">
+										<span class="mwe-pt-control-label">
+											<b><%= mw.msg( 'pagetriage-filter-second-show-heading' ) %></b>
+										</span>
+										<div class="mwe-pt-control-options">
+											<input type="radio" name="mwe-pt-filter-radio"
+												id="mwe-pt-filter-no-categories" value="no_category" />
+											<label for="mwe-pt-filter-no-categories">
+												<%= mw.msg( 'pagetriage-filter-no-categories' ) %>
+											</label> <br/>
+											<input type="radio" name="mwe-pt-filter-radio"
+												id="mwe-pt-filter-orphan" value="no_inbound_links" />
+											<label for="mwe-pt-filter-orphan">
+												<%= mw.msg( 'pagetriage-filter-orphan' ) %>
+											</label> <br/>
+											<input type="radio" name="mwe-pt-filter-radio"
+												id="mwe-pt-filter-non-autoconfirmed" value="non_autoconfirmed_users" />
+											<label for="mwe-pt-filter-non-autoconfirmed">
+												<%= mw.msg( 'pagetriage-filter-non-autoconfirmed' ) %>
+											</label> <br/>
+											<input type="radio" name="mwe-pt-filter-radio"
+												id="mwe-pt-filter-learners" value="learners" />
+											<label for="mwe-pt-filter-learners">
+												<%= mw.msg( 'pagetriage-filter-learners' ) %>
+											</label><br />
+											<input type="radio" name="mwe-pt-filter-radio"
+												id="mwe-pt-filter-blocked" value="blocked_users" />
+											<label for="mwe-pt-filter-blocked">
+												<%= mw.msg( 'pagetriage-filter-blocked' ) %>
+											</label> <br/>
+											<input type="radio" name="mwe-pt-filter-radio"
+												id="mwe-pt-filter-bot-edits" value="showbots" />
+											<label for="mwe-pt-filter-bot-edits">
+												<%= mw.msg( 'pagetriage-filter-bot-edits' ) %>
+											</label> <br/>
+											<input type="radio" name="mwe-pt-filter-radio"
+												id="mwe-pt-filter-user-selected" value="username" />
+											<label for="mwe-pt-filter-user-selected">
+												<%= mw.msg( 'pagetriage-filter-user-heading' ) %>
+											</label>
+											<input type="text" id="mwe-pt-filter-user"
+												placeholder="<%= mw.msg( 'pagetriage-filter-username' ) %>" /> <br/>
+											<input type="radio" name="mwe-pt-filter-radio"
+												id="mwe-pt-filter-all" value="all" />
+											<label for="mwe-pt-filter-all">
+												<%= mw.msg( 'pagetriage-filter-all' ) %>
+											</label>
+										</div>
+									</div>
 								</div>
 							</div>
-							<!-- abusefilter tags come later.
-							<div class="mwe-pt-control-section">
-								<span class="mwe-pt-control-label">
-									<b><%= mw.msg( 'pagetriage-filter-tag-heading' ) %></b>
-								</span>
-								<div class="mwe-pt-control-options">
-									<input type=text id="mwe-pt-filter-tag" />
-								</div>
-							</div>
-							-->
-							<div class="mwe-pt-control-section">
-								<span class="mwe-pt-control-label">
-									<b><%= mw.msg( 'pagetriage-filter-second-show-heading' ) %></b>
-								</span>
-								<div class="mwe-pt-control-options">
-									<input type="radio" name="mwe-pt-filter-radio"
-										id="mwe-pt-filter-no-categories" value="no_category" />
-									<label for="mwe-pt-filter-no-categories">
-										<%= mw.msg( 'pagetriage-filter-no-categories' ) %>
-									</label> <br/>
-									<input type="radio" name="mwe-pt-filter-radio"
-										id="mwe-pt-filter-orphan" value="no_inbound_links" />
-									<label for="mwe-pt-filter-orphan">
-										<%= mw.msg( 'pagetriage-filter-orphan' ) %>
-									</label> <br/>
-									<input type="radio" name="mwe-pt-filter-radio"
-										id="mwe-pt-filter-non-autoconfirmed" value="non_autoconfirmed_users" />
-									<label for="mwe-pt-filter-non-autoconfirmed">
-										<%= mw.msg( 'pagetriage-filter-non-autoconfirmed' ) %>
-									</label> <br/>
-									<input type="radio" name="mwe-pt-filter-radio"
-										id="mwe-pt-filter-learners" value="learners" />
-									<label for="mwe-pt-filter-learners">
-										<%= mw.msg( 'pagetriage-filter-learners' ) %>
-									</label><br />
-									<input type="radio" name="mwe-pt-filter-radio"
-										id="mwe-pt-filter-blocked" value="blocked_users" />
-									<label for="mwe-pt-filter-blocked">
-										<%= mw.msg( 'pagetriage-filter-blocked' ) %>
-									</label> <br/>
-									<input type="radio" name="mwe-pt-filter-radio"
-										id="mwe-pt-filter-bot-edits" value="showbots" />
-									<label for="mwe-pt-filter-bot-edits">
-										<%= mw.msg( 'pagetriage-filter-bot-edits' ) %>
-									</label> <br/>
-									<input type="radio" name="mwe-pt-filter-radio"
-										id="mwe-pt-filter-user-selected" value="username" />
-									<label for="mwe-pt-filter-user-selected">
-										<%= mw.msg( 'pagetriage-filter-user-heading' ) %>
-									</label>
-									<input type="text" id="mwe-pt-filter-user"
-										placeholder="<%= mw.msg( 'pagetriage-filter-username' ) %>" /> <br/>
-									<input type="radio" name="mwe-pt-filter-radio"
-										id="mwe-pt-filter-all" value="all" />
-									<label for="mwe-pt-filter-all">
-										<%= mw.msg( 'pagetriage-filter-all' ) %>
-									</label>
+							<div class="mwe-pt-control-section__afc">
+								<div class="mwe-pt-control-section">
+									<span class="mwe-pt-control-label">
+										<b><%= mw.msg( 'pagetriage-filter-second-show-heading' ) %></b>
+									</span>
+									<div class="mwe-pt-control-options">
+										<input type="radio" name="mwe-pt-filter-afc-radio"
+											id="mwe-pt-filter-afc-unsubmitted" value="1"
+											data-afc-state-name="unsubmitted" />
+										<label for="mwe-pt-filter-afc-unsubmitted">
+											<%= mw.msg( 'pagetriage-afc-state-unsubmitted' ) %>
+										</label> <br/>
+										<input type="radio" name="mwe-pt-filter-afc-radio"
+											id="mwe-pt-filter-afc-pending" value="2"
+											data-afc-state-name="pending" />
+										<label for="mwe-pt-filter-afc-pending">
+											<%= mw.msg( 'pagetriage-afc-state-pending' ) %>
+										</label> <br/>
+										<input type="radio" name="mwe-pt-filter-afc-radio"
+											id="mwe-pt-filter-afc-reviewing" value="3"
+											data-afc-state-name="reviewing" />
+										<label for="mwe-pt-filter-afc-reviewing">
+											<%= mw.msg( 'pagetriage-afc-state-reviewing' ) %>
+										</label> <br/>
+										<input type="radio" name="mwe-pt-filter-afc-radio"
+											id="mwe-pt-filter-afc-declined" value="4"
+											data-afc-state-name="declined" />
+										<label for="mwe-pt-filter-afc-declined">
+											<%= mw.msg( 'pagetriage-afc-state-declined' ) %>
+										</label> <br/>
+										<input type="radio" name="mwe-pt-filter-afc-radio"
+											id="mwe-pt-filter-afc-all" value="all"
+											data-afc-state-name="all" />
+										<label for="mwe-pt-filter-afc-all">
+											<%= mw.msg( 'pagetriage-afc-state-all' ) %>
+										</label> <br/>
+									</div>
 								</div>
 							</div>
 							<div class="mwe-pt-control-buttons">
@@ -323,9 +374,6 @@ class SpecialNewPagesFeed extends SpecialPage {
 				</div>
 			</script>
 HTML;
-
-		// Output the HTML for the triage interface
-		$out->addHTML( $triageInterface );
 	}
 
 	/**
