@@ -123,6 +123,11 @@
 	"pagetriage-wikilove-page-creator": "Δημιουργός σελίδας",
 	"pagetriage-toolbar-close": "Κλείσιμο",
 	"pagetriage-toolbar-minimize": "Ελαχιστοποίηση",
+	"pagetriage-afc-state-all": "Όλα",
+	"pagetriage-afc-state-declined": "Απόρριψη",
+	"pagetriage-afc-state-pending": "Περιμένει θεώρηση",
+	"pagetriage-afc-state-reviewing": "Υπό αναθεώρηση",
+	"pagetriage-afc-state-unsubmitted": "Μη υποβλημένο",
 	"apihelp-pagetriagelist-param-learners": "Το εάν θα προβληθούν μόνο σελίδες που δημιουργήθηκαν από νέους συντάκτες.",
 	"apihelp-pagetriagestats-param-learners": "Το αν θα περιλαμβάνει μόνο σελίδες που δημιουργήθηκαν από νέους συντάκτες ως χρήστες."
 }
