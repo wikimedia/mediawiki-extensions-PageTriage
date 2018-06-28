@@ -16,12 +16,6 @@ use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 class UpdateUserMetadata extends Maintenance {
 
 	/**
-	 * Max number of article to process at a time
-	 * @var int
-	 */
-	protected $batchSize = 300;
-
-	/**
 	 * @var \Wikimedia\Rdbms\IDatabase
 	 */
 	protected $dbr, $dbw;
@@ -30,6 +24,7 @@ class UpdateUserMetadata extends Maintenance {
 		parent::__construct();
 		$this->mDescription = "Update the user metadata in pagetriage_page_tags table";
 		$this->requireExtension( 'PageTriage' );
+		$this->setBatchSize( 300 );
 	}
 
 	protected function init() {
@@ -42,7 +37,7 @@ class UpdateUserMetadata extends Maintenance {
 
 		// Scan for data updated more than a day ago
 		$startTime = wfTimestamp( TS_UNIX ) - 60 * 60 * 24;
-		$count = $this->batchSize;
+		$count = $this->getBatchSize();
 
 		$row = $this->dbr->selectRow(
 			[ 'pagetriage_page' ],
@@ -65,7 +60,7 @@ class UpdateUserMetadata extends Maintenance {
 			$namespace = NS_MAIN;
 		}
 
-		while ( $count === $this->batchSize ) {
+		while ( $count === $this->getBatchSize() ) {
 			$count = 0;
 			$startTime = $this->dbr->addQuotes( $this->dbr->timestamp( $startTime ) );
 			$startId = (int)$startId;
@@ -80,7 +75,7 @@ class UpdateUserMetadata extends Maintenance {
 					'page_namespace' => $namespace
 				],
 				__METHOD__,
-				[ 'LIMIT' => $this->batchSize, 'ORDER BY' => 'ptrp_tags_updated DESC, ptrp_page_id DESC' ]
+				[ 'LIMIT' => $this->getBatchSize(), 'ORDER BY' => 'ptrp_tags_updated DESC, ptrp_page_id DESC' ]
 			);
 
 			$pageId = [];

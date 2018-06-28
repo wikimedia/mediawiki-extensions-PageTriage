@@ -14,12 +14,6 @@ use MediaWiki\Extension\PageTriage\ArticleMetadata;
 class UpdatePageTriageQueue extends Maintenance {
 
 	/**
-	 * Max number of article to process at a time
-	 * @var int
-	 */
-	protected $batchSize = 100;
-
-	/**
 	 * @var \Wikimedia\Rdbms\IDatabase
 	 */
 	protected $dbr, $dbw;
@@ -29,6 +23,7 @@ class UpdatePageTriageQueue extends Maintenance {
 		$this->mDescription = "Remove reviewed pages from pagetriage queue if they"
 			. " are older then 30 days";
 		$this->requireExtension( 'PageTriage' );
+		$this->setBatchSize( 100 );
 	}
 
 	protected function init() {
@@ -42,7 +37,7 @@ class UpdatePageTriageQueue extends Maintenance {
 
 		// Scan for data with ptrp_created set more than 30 days ago
 		$startTime = wfTimestamp( TS_UNIX ) - 30 * 60 * 60 * 24;
-		$count = $this->batchSize;
+		$count = $this->getBatchSize();
 
 		$row = $this->dbr->selectRow(
 			[ 'pagetriage_page' ],
@@ -59,7 +54,7 @@ class UpdatePageTriageQueue extends Maintenance {
 
 		$startId = $row->max_id + 1;
 
-		while ( $count === $this->batchSize ) {
+		while ( $count === $this->getBatchSize() ) {
 			$count = 0;
 			$startTime = $this->dbr->addQuotes( $this->dbr->timestamp( $startTime ) );
 			$startId = (int)$startId;
@@ -78,7 +73,7 @@ class UpdatePageTriageQueue extends Maintenance {
 					'page_namespace != 0 OR ptrp_reviewed > 0 OR page_is_redirect = 1'
 				],
 				__METHOD__,
-				[ 'LIMIT' => $this->batchSize, 'ORDER BY' => 'ptrp_created DESC, ptrp_page_id DESC' ]
+				[ 'LIMIT' => $this->getBatchSize(), 'ORDER BY' => 'ptrp_created DESC, ptrp_page_id DESC' ]
 			);
 
 			$pageId = [];
