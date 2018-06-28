@@ -15,6 +15,9 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	/** @var int */
 	protected $draftNsId = 150;
 
+	/**
+	 * Setup draft namespace.
+	 */
 	public function setUp() {
 		global $wgContLang;
 		parent::setUp();
@@ -50,11 +53,11 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		// If we don't ask for it, a draft page shouldn't be returned.
 		$this->insertPage( Title::newFromText( 'Draft:Test page 1' ) );
 		$list1 = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'showunreviewed' => '1' ] );
-		$this->assertCount( $originalPagesCount, $list1[0]['pagetriagelist']['pages'] );
+		static::assertCount( $originalPagesCount, $list1[0]['pagetriagelist']['pages'] );
 
 		// Request the Draft namespace.
 		$list2 = $this->getPageTriageList();
-		$this->assertArraySubset(
+		static::assertArraySubset(
 			[ 'title' => 'Draft:Test page 1' ],
 			$list2[0]
 		);
@@ -70,7 +73,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 		// Initially there should be no declined drafts.
 		$list1 = $this->getPageTriageList( $apiParams );
-		$this->assertCount( 0, $list1 );
+		static::assertCount( 0, $list1 );
 
 		// Add category.
 		$this->insertPage( 'AfC test page', '[[Category:Declined AfC submissions]]',
@@ -83,12 +86,12 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			[ 'ptrpt_page_id' => $page['id'] ],
 			__METHOD__
 		);
-		$this->assertEquals( 2, $pageTags->numRows() );
-		$this->assertEquals( ArticleCompileAfcTag::DECLINED, $pageTags->current()->ptrpt_value );
+		static::assertEquals( 2, $pageTags->numRows() );
+		static::assertEquals( ArticleCompileAfcTag::DECLINED, $pageTags->current()->ptrpt_value );
 
 		// Request the declined drafts.
 		$list2 = $this->getPageTriageList( $apiParams );
-		$this->assertArraySubset(
+		static::assertArraySubset(
 			[ 'title' => 'Draft:AfC test page' ],
 			$list2[0]
 		);
@@ -96,7 +99,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		// Move the page out of the declined category, and it disappears from the list.
 		$this->insertPage( 'AfC test page', '[[category:nop]]', $this->draftNsId );
 		$list3 = $this->getPageTriageList( $apiParams );
-		$this->assertCount( 0, $list3 );
+		static::assertCount( 0, $list3 );
 	}
 
 	/**
@@ -112,7 +115,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$this->insertPage( 'Test page 2', '', $this->draftNsId );
 
 		// There should be one more unsubmitted draft.
-		$this->assertCount(
+		static::assertCount(
 			$originalUnsubmittedCount + 1,
 			$this->getPageTriageList( $apiParams )
 		);
@@ -123,14 +126,14 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		);
 
 		// Should now be back to the original count.
-		$this->assertCount(
+		static::assertCount(
 			$originalUnsubmittedCount,
 			$this->getPageTriageList( $apiParams )
 		);
 
 		// Remove the category and the page should once again be 'unsubmitted'.
 		$this->insertPage( 'Test page 2', '[[Category:Nop]]', $this->draftNsId );
-		$this->assertCount(
+		static::assertCount(
 			$originalUnsubmittedCount + 1,
 			$this->getPageTriageList( $apiParams )
 		);
@@ -149,12 +152,12 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$to = Title::newFromText( 'Draft:Test page 3' );
 		$this->insertPage( $from );
 		$movePage = new MovePage( $from, $to );
-		$movePage->move( $this->getTestUser()->getUser(), '', false );
+		$movePage->move( static::getTestUser()->getUser(), '', false );
 
 		// Check that the moved page is in the queue of unreviewed pages.
 		$list = $this->getPageTriageList();
-		$this->assertCount( $originalPagesCount + 1, $list );
-		$this->assertArraySubset(
+		static::assertCount( $originalPagesCount + 1, $list );
+		static::assertArraySubset(
 			[ 'title' => 'Draft:Test page 3' ],
 			$list[0]
 		);
@@ -175,10 +178,10 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 		// Move the page to mainspace.
 		$movePage = new MovePage( $from, $to );
-		$movePage->move( $this->getTestUser()->getUser(), '', false );
+		$movePage->move( static::getTestUser()->getUser(), '', false );
 
 		// Check that the queue has decremented by one.
-		$this->assertEquals(
+		static::assertEquals(
 			$originalPagesCount - 1,
 			count( $this->getPageTriageList() )
 		);
@@ -188,7 +191,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	 * Make sure mainspace pages by autopatrolled users are marked as reviewed and vice versa.
 	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList
 	 * @covers \MediaWiki\Extension\PageTriage\Hooks::addToPageTriageQueue()
-	 * @throws MWException
 	 */
 	public function testAutopatrolledCreation() {
 		$apiParams = [ 'namespace' => 0 ];
@@ -199,24 +201,61 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$list = $this->getPageTriageList( $apiParams );
 
 		// First check count($list) in case this test is ran standalone.
-		$this->assertTrue(
-			count( $list ) === 0 || $list[0]['title'] !== 'Mainspace test page 1'
-		);
+		static::assertTrue( count( $list ) === 0 || $list[0]['title'] !== 'Mainspace test page 1' );
 
 		// Create another page using a non-autopatrolled user.
-		// This code was adapted from MediaWikiTestCase::insertPage(), which seems to only
-		// edit as a sysop, so here we do the same steps with a non-sysop.
-		$user = $this->getTestUser()->getUser();
-		$title = Title::newFromText( 'Mainspace test page 2', 0 );
-		$comment = __METHOD__ . ': Sample page for unit test.';
-		$page = WikiPage::factory( $title );
-		$page->doEditContent( ContentHandler::makeContent( '', $title ), $comment, 0, false, $user );
+		$user = static::getTestUser()->getUser();
+		$this->insertPage( 'Mainspace test page 2', '', 0, $user );
 
 		// Test page 2 *should* be in the queue (and at the top since it's the most recent).
 		$list = $this->getPageTriageList( $apiParams );
-		$this->assertEquals(
-			'Mainspace test page 2',
-			$list[0]['title']
+		static::assertEquals( 'Mainspace test page 2', $list[0]['title'] );
+	}
+
+	/**
+	 * Sorting drafts by submission date or date of decline.
+	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList
+	 */
+	public function testSubmissionSorting() {
+		$apiParams = [
+			'dir' => 'oldestreview',
+		];
+
+		$originalTopPage = $this->getPageTriageList( $apiParams )[0];
+
+		// New draft in a relevant category.
+		$page = $this->insertPage( 'Test page 5', '[[Category:Declined AfC submissions]]',
+			$this->draftNsId
+		);
+
+		// Original top page should still be the top (or the new one, if none existed beforehand).
+		$list = $this->getPageTriageList( $apiParams );
+		if ( $originalTopPage ) {
+			static::assertEquals( $originalTopPage, $list[0] );
+		} else {
+			static::assertArraySubset(
+				[ 'title' => 'Draft:Test page 5' ],
+				$list[0]
+			);
+		}
+
+		// Manually set the reviewed at attribute to something really old.
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->update( 'pagetriage_page',
+			[ 'ptrp_reviewed_updated' => '20010115000000' ],
+			[ 'ptrp_page_id' => $page['id'] ],
+			__METHOD__
+		);
+
+		// Insert another draft in a relevant category.
+		$this->insertPage( 'Draft:Test page 6', '[[Category:Pending AfC submissions]]',
+			$this->draftNsId
+		);
+
+		// 'Test page 5' should be the oldest.
+		static::assertArraySubset(
+			[ 'title' => 'Draft:Test page 5' ],
+			$this->getPageTriageList( $apiParams )[0]
 		);
 	}
 

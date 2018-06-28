@@ -228,6 +228,16 @@ class ArticleCompileProcessor {
 			$articleMetadata->flushMetadataFromCache();
 			// Make sure either all or none metadata for a single page_id
 			$dbw->startAtomic( __METHOD__ );
+
+			$updateReviewedTimestamp = false;
+
+			// Check for the update_reviewed_timestamp flag, which means we should update the
+			// ptrp_reviewed_updated field after processing (e.g. submission date of AfC drafts).
+			if ( in_array( 'update_reviewed_timestamp', array_keys( $data ) ) ) {
+				unset( $data['update_reviewed_timestamp'] );
+				$updateReviewedTimestamp = true;
+			}
+
 			foreach ( $data as $key => $val ) {
 				if ( isset( $tags[$key] ) ) {
 					$row = [
@@ -245,6 +255,11 @@ class ArticleCompileProcessor {
 			}
 			$pt = new PageTriage( $pageId );
 			$row = [ 'ptrp_tags_updated' => $dbw->timestamp( wfTimestampNow() ) ];
+
+			if ( $updateReviewedTimestamp ) {
+				$row['ptrp_reviewed_updated'] = $dbw->timestamp( wfTimestampNow() );
+			}
+
 			if ( isset( $data['deleted'] ) ) {
 				$row['ptrp_deleted'] = $data['deleted'] ? '1' : '0';
 			}

@@ -170,13 +170,34 @@ class SpecialNewPagesFeed extends SpecialPage {
 					<span id="mwe-pt-filter-status"></span>
 				</span>
 				<span class="mwe-pt-control-label-right" id="mwe-pt-control-stats"></span><br/>
-				<span class="mwe-pt-control-label-right"><b><%= mw.msg( 'pagetriage-sort-by' ) %></b>
+				<span class="mwe-pt-control-label-right mwe-pt-npp"><b><%= mw.msg( 'pagetriage-sort-by' ) %></b>
 					<span id="mwe-pt-sort-buttons">
-						<input type="radio" id="mwe-pt-sort-newest" name="sort" />
+						<input type="radio" id="mwe-pt-sort-newest" name="sort" value="newestfirst" />
 						<label for="mwe-pt-sort-newest"><%= mw.msg( 'pagetriage-newest' ) %></label>
-						<input type="radio" id="mwe-pt-sort-oldest" name="sort" />
+						<input type="radio" id="mwe-pt-sort-oldest" name="sort" value="oldestfirst" />
 						<label for="mwe-pt-sort-oldest"><%= mw.msg( 'pagetriage-oldest' ) %></label>
 					</span>
+				</span>
+				<span class="mwe-pt-control-label-right mwe-pt-afc">
+					<label for="mwe-pt-sort-afc">
+						<b><%= mw.msg( 'pagetriage-sort-by' ) %></b>
+					</label>
+					<select id="mwe-pt-sort-afc">
+						<option value="newestfirst"><%= mw.msg( 'pagetriage-afc-newest' ) %></option>
+						<option value="oldestfirst"><%= mw.msg( 'pagetriage-afc-oldest' ) %></option>
+						<option value="newestreview" class="mwe-pt-afc-sort-submitted">
+							<%= mw.msg( 'pagetriage-afc-newest-submitted' ) %>
+						</option>
+						<option value="oldestreview" class="mwe-pt-afc-sort-submitted">
+							<%= mw.msg( 'pagetriage-afc-oldest-submitted' ) %>
+						</option>
+						<option value="newestreview" class="mwe-pt-afc-sort-declined">
+							<%= mw.msg( 'pagetriage-afc-newest-declined' ) %>
+						</option>
+						<option value="oldestreview" class="mwe-pt-afc-sort-declined">
+							<%= mw.msg( 'pagetriage-afc-oldest-declined' ) %>
+						</option>
+					</select>
 				</span>
 				<span id="mwe-pt-filter-dropdown-control" class="mwe-pt-control-label">
 					<b>
@@ -187,7 +208,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 					<div id="mwe-pt-control-dropdown-pokey"></div>
 					<div id="mwe-pt-control-dropdown" class="mwe-pt-control-gradient shadow">
 						<form>
-							<div class="mwe-pt-control-section__npp">
+							<div class="mwe-pt-control-section__npp mwe-pt-npp">
 								<div class="mwe-pt-control-section">
 									<span class="mwe-pt-control-label">
 										<b><%= mw.msg( 'pagetriage-filter-show-heading' ) %></b>
@@ -310,7 +331,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 									</div>
 								</div>
 							</div>
-							<div class="mwe-pt-control-section__afc">
+							<div class="mwe-pt-control-section__afc mwe-pt-afc">
 								<div class="mwe-pt-control-section">
 									<span class="mwe-pt-control-label">
 										<b><%= mw.msg( 'pagetriage-filter-second-show-heading' ) %></b>
@@ -362,15 +383,17 @@ class SpecialNewPagesFeed extends SpecialPage {
 				<div id="mwe-pt-refresh-button-holder">
 					<button id="mwe-pt-refresh-button"><%= mw.msg( 'pagetriage-refresh-list' ) %></button>
 				</div>
-				<div id="mwe-pt-unreviewed-stats">
-				<% if ( ptrUnreviewedCount ) { %>
-					<%= mw.msg( 'pagetriage-unreviewed-article-count', ptrUnreviewedCount, ptrOldest ) %>
-				<% } %>
-				</div>
-				<div id="mwe-pt-reviewed-stats">
-				<% if ( ptrReviewedCount ) { %>
-					<%= mw.msg( 'pagetriage-reviewed-article-count-past-week', ptrReviewedCount ) %>
-				<% } %>
+				<div class="mwe-pt-bottom-nav-stats">
+					<div id="mwe-pt-unreviewed-stats">
+					<% if ( ptrUnreviewedCount ) { %>
+						<%= mw.msg( 'pagetriage-unreviewed-article-count', ptrUnreviewedCount, ptrOldest ) %>
+					<% } %>
+					</div>
+					<div id="mwe-pt-reviewed-stats">
+					<% if ( ptrReviewedCount ) { %>
+						<%= mw.msg( 'pagetriage-reviewed-article-count-past-week', ptrReviewedCount ) %>
+					<% } %>
+					</div>
 				</div>
 			</script>
 HTML;

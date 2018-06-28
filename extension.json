@@ -12,7 +12,7 @@
 	"license-name": "MIT",
 	"type": "specialpage",
 	"requires": {
-		"MediaWiki": ">= 1.31.0"
+		"MediaWiki": ">= 1.32.0"
 	},
 	"APIModules": {
 		"pagetriagelist": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageList",
@@ -230,6 +230,12 @@
 				"pagetriage-sort-by",
 				"pagetriage-newest",
 				"pagetriage-oldest",
+				"pagetriage-afc-newest",
+				"pagetriage-afc-oldest",
+				"pagetriage-afc-newest-submitted",
+				"pagetriage-afc-oldest-submitted",
+				"pagetriage-afc-newest-declined",
+				"pagetriage-afc-oldest-declined",
 				"pagetriage-triage",
 				"pagetriage-filter-show-heading",
 				"pagetriage-filter-reviewed-edits",

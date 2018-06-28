@@ -24,6 +24,7 @@ $( function () {
 			// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
 			var bylineMessage, userCreationDateParsed, byline, titleUrl,
 				creationDateParsed = Date.parseExact( article.get( 'creation_date' ), 'yyyyMMddHHmmss' ),
+				reviewedUpdatedParsed = Date.parseExact( article.get( 'ptrp_reviewed_updated' ), 'yyyyMMddHHmmss' ),
 				nsId = new mw.Title( article.get( 'title' ) ).getNamespaceId();
 
 			// Set whether it's a draft, which we'll reference in ext.pageTriage.listItem.html
@@ -32,6 +33,11 @@ $( function () {
 			article.set(
 				'creation_date_pretty',
 				creationDateParsed.toString( mw.msg( 'pagetriage-creation-dateformat' ) )
+			);
+
+			article.set(
+				'reviewed_updated_pretty',
+				reviewedUpdatedParsed.toString( mw.msg( 'pagetriage-creation-dateformat' ) )
 			);
 
 			// sometimes user info isn't set, so check that first.

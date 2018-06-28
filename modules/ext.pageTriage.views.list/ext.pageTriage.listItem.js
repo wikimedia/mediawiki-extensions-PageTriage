@@ -14,11 +14,17 @@ $( function () {
 
 		render: function () {
 			var data = this.model.toJSON();
+
 			if ( mw.config.get( 'wgPageTriageEnableReviewButton' ) ) {
 				data.reviewRightHelpText = '';
 			} else {
 				data.reviewRightHelpText = mw.msg( 'pagetriage-no-patrol-right' );
 			}
+
+			// Show reviewed timestamps if in draft queue and sorting by submission/declined date.
+			data.isReviewedSorting = data.is_draft &&
+				[ 'newestreview', 'oldestreview' ].indexOf( $( '#mwe-pt-sort-afc' ).val() ) !== -1;
+
 			// insert the template into the document. fill with the current model.
 			this.$el.html( this.template( data ) );
 

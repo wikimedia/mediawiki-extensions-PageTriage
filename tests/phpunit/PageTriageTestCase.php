@@ -45,6 +45,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	 * Helper method to query the PageTriageList API. Defaults to unreviewed draft pages.
 	 * @param array $params
 	 * @return array
+	 * @throws ApiUsageException
 	 */
 	protected function getPageTriageList( array $params = [] ) {
 		$list = $this->doApiRequest( array_merge( [
