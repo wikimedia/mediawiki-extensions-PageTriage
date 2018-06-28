@@ -317,6 +317,12 @@ $( function () {
 				apiParams.blocked_users = '1';
 			}
 
+			// Sanity-check the values to make sure we don't send invalid options in
+			if ( !apiParams.showreviewed && !apiParams.showunreviewed ) {
+				// One of these must be set; default to unreviewed
+				apiParams.showunreviewed = '1';
+			}
+
 			return apiParams;
 		},
 
