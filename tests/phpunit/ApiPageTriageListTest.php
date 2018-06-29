@@ -184,4 +184,40 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		);
 	}
 
+	/**
+	 * Make sure mainspace pages by autopatrolled users are marked as reviewed and vice versa.
+	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::addToPageTriageQueue()
+	 * @throws MWException
+	 */
+	public function testAutopatrolledCreation() {
+		$apiParams = [ 'namespace' => 0 ];
+
+		$this->insertPage( 'Mainspace test page 1', '' );
+
+		// Should not be in unreviewed list (test user is a sysop and hence autopatrolled).
+		$list = $this->getPageTriageList( $apiParams );
+
+		// First check count($list) in case this test is ran standalone.
+		$this->assertTrue(
+			count( $list ) === 0 || $list[0]['title'] !== 'Mainspace test page 1'
+		);
+
+		// Create another page using a non-autopatrolled user.
+		// This code was adapted from MediaWikiTestCase::insertPage(), which seems to only
+		// edit as a sysop, so here we do the same steps with a non-sysop.
+		$user = $this->getTestUser()->getUser();
+		$title = Title::newFromText( 'Mainspace test page 2', 0 );
+		$comment = __METHOD__ . ': Sample page for unit test.';
+		$page = WikiPage::factory( $title );
+		$page->doEditContent( ContentHandler::makeContent( '', $title ), $comment, 0, false, $user );
+
+		// Test page 2 *should* be in the queue (and at the top since it's the most recent).
+		$list = $this->getPageTriageList( $apiParams );
+		$this->assertEquals(
+			'Mainspace test page 2',
+			$list[0]['title']
+		);
+	}
+
 }
