@@ -300,10 +300,14 @@ $( function () {
 		 * @param {string} newMode Either 'npp' or 'afc'.
 		 */
 		setMode: function ( newMode ) {
-			var nsId;
-			this.mode = newMode === 'afc' ? newMode : 'npp';
-			nsId = ( this.mode === 'afc' ) ? mw.config.get( 'wgPageTriageDraftNamespaceId' ) : 0;
-			this.setParam( 'namespace', nsId );
+			var draftNsId = mw.config.get( 'wgPageTriageDraftNamespaceId' );
+			if ( draftNsId && newMode === 'afc' ) {
+				this.mode = 'afc';
+				this.setParam( 'namespace', draftNsId );
+			} else {
+				this.mode = 'npp';
+				this.setParam( 'namespace', 0 );
+			}
 		},
 
 		/**
