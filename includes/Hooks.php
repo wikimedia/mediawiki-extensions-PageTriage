@@ -255,10 +255,10 @@ class Hooks {
 				$draftNsId = MediaWikiServices::getInstance()
 					->getMainConfig()
 					->get( 'PageTriageDraftNamespaceId' );
-				if ( ( $wgUseRCPatrol || $wgUseNPPatrol )
-					&& !count( $title->getUserPermissionsErrors( 'autopatrol', $user ) )
-					&& ( $draftNsId && !$title->inNamespace( $draftNsId ) )
-				) {
+				$isDraft = false !== $draftNsId && $title->inNamespace( $draftNsId );
+				$isAutopatrolled = ( $wgUseRCPatrol || $wgUseNPPatrol ) &&
+					!count( $title->getUserPermissionsErrors( 'autopatrol', $user ) );
+				if ( $isAutopatrolled && !$isDraft ) {
 					// Set as reviewed if the user has the autopatrol right
 					// and they're not creating a Draft.
 					$reviewed = 3;
