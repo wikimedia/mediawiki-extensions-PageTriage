@@ -229,8 +229,15 @@
 	"pagetriage-tag-deletion-error": "בדף הזה כבר יש תבנית מחיקה, הפעולה מתבטלת.",
 	"pagetriage-toolbar-close": "סגירה",
 	"pagetriage-toolbar-minimize": "מזעור",
+	"pagetriage-afc-state-all": "הכול",
+	"pagetriage-afc-state-declined": "נדחה",
+	"pagetriage-afc-state-pending": "ממתין לסקירה",
+	"pagetriage-afc-state-reviewing": "בסקירה",
+	"pagetriage-afc-state-unsubmitted": "לא נשלח",
 	"echo-pref-subscription-page-review": "סוקר דף שיצרתי",
 	"echo-pref-tooltip-page-review": "להודיע לי כשמישהו סוקר דף שיצרתי.",
 	"echo-category-title-page-review": "{{PLURAL:$1|סקירת|סקירות}} דף",
+	"apihelp-pagetriagelist-param-afc_state": "איזה מצב של ערכים ליצירה להציג.",
+	"apihelp-pagetriagestats-param-afc_state": "עבור איזה מצב של ערכים ליצירה לקבל סטטיסטיקות.",
 	"apihelp-pagetriagetagging-summary": "הוסף תגיות למאמרים"
 }
