@@ -207,6 +207,11 @@
 	"pagetriage-toolbar-close": "Fechar",
 	"pagetriage-toolbar-minimize": "Minimizar",
 	"pagetriage-tag-warning-notice": "Nota: Esta página existe há apenas $1 {{PLURAL:$1|minuto|minutos}}. Considere esperar para etiquetá-la, a menos que o problema seja sério.",
+	"pagetriage-afc-state-all": "Todas",
+	"pagetriage-afc-state-declined": "Discordo",
+	"pagetriage-afc-state-pending": "aguardando revisão",
+	"pagetriage-afc-state-reviewing": "Em revisão",
+	"pagetriage-afc-state-unsubmitted": "Não carregados",
 	"notification-header-pagetriage-mark-as-reviewed": "A página '''$3''' foi {{GENDER:$2|revista}}.",
 	"echo-pref-subscription-page-review": "Reveja uma página que eu criei",
 	"echo-pref-tooltip-page-review": "Notificar-me quando alguém revisar uma página que criei.",
@@ -214,5 +219,7 @@
 	"apihelp-pagetriageaction-description": "Marque um artigo como revisado ou não revisado",
 	"apihelp-pagetriageaction-summary": "Marcar um artigo como revisado ou não revisado.",
 	"apihelp-pagetriageaction-param-pageid": "O artigo o qual está para ser marcado como revisado ou não revisado.",
-	"apihelp-pagetriagelist-param-limit": "O número máximo de resultados a serem devolvidos."
+	"apihelp-pagetriagelist-param-afc_state": "Que estado de Artigos-para-serem-criados mostrar.",
+	"apihelp-pagetriagelist-param-limit": "O número máximo de resultados a serem devolvidos.",
+	"apihelp-pagetriagestats-param-afc_state": "Para que estado de Artigos-para-serem-criados obter estatísticas."
 }

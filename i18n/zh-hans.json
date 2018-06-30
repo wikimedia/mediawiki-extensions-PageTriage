@@ -11,7 +11,8 @@
 			"Yfdyh000",
 			"乌拉跨氪",
 			"飞舞回堂前",
-			"아라"
+			"아라",
+			"Endermoon"
 		]
 	},
 	"pagetriage": "页面分配器",
@@ -225,6 +226,7 @@
 	"pagetriage-toolbar-close": "关闭",
 	"pagetriage-toolbar-minimize": "最小化",
 	"pagetriage-tag-warning-notice": "注意：本页面刚产生于$1{{PLURAL:$1|分钟}}前。除非问题严重，请考虑稍后再标记它。",
+	"pagetriage-afc-state-all": "全部",
 	"notification-header-pagetriage-mark-as-reviewed": "页面'''$3'''已被{{GENDER:$2|巡查}}。",
 	"notification-header-pagetriage-add-maintenance-tag": "一位巡查员已提出对页面'''$3'''的改进{{GENDER:$2|建议}}。{{PLURAL:$5|标签}}：$4。",
 	"notification-header-pagetriage-add-deletion-tag": "页面'''$3'''被{{GENDER:$2|标记待删除}}。{{PLURAL:$5|标签}}：$4。",
