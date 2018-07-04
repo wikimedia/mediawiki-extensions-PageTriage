@@ -6,6 +6,7 @@ use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use ApiBase;
 use ApiResult;
+use ORES\ORESServices;
 use SpecialPage;
 use Title;
 
@@ -107,7 +108,7 @@ class ApiPageTriageList extends ApiBase {
 	}
 
 	/**
-	 * Return all the page ids in PageTraige matching the specified filters
+	 * Return all the page ids in PageTriage matching the specified filters
 	 * @param array $opts Array of filtering options
 	 * @param bool $count Set to true to return a count instead
 	 * @return array|int an array of ids or total number of pages
@@ -116,7 +117,9 @@ class ApiPageTriageList extends ApiBase {
 	 */
 	public static function getPageIds( $opts = [], $count = false ) {
 		// Initialize required variables
-		$pages = $options = [];
+		$pages = [];
+		$options = [];
+		$join_conds = [];
 
 		if ( !$count ) {
 			// Get the expected limit as defined in getAllowedParams
@@ -143,7 +146,10 @@ class ApiPageTriageList extends ApiBase {
 
 		// Start building the massive filter which includes meta data
 		$tables	= [ 'pagetriage_page', 'page' ];
-		$conds	= [ 'ptrp_page_id = page_id' ];
+		$join_conds['page'] = [
+			'INNER JOIN',
+			'ptrp_page_id = page_id',
+		];
 
 		// Helpful hint: In the ptrp_reviewed column...
 		// 0 = unreviewed
@@ -210,13 +216,39 @@ class ApiPageTriageList extends ApiBase {
 		if ( $tagConds ) {
 			$conds[] = $tagConds;
 			$tables[] = 'pagetriage_page_tags';
+			$join_conds['pagetriage_page_tags'] = [
+				'INNER JOIN',
+				'ptrpt_page_id = ptrp_page_id',
+			];
+		}
+
+		// ORES wp10 filter
+		if ( PageTriageUtil::isOresWp10Query( $opts ) ) {
+			self::joinWithOres( 'wp10', $tables, $conds, $join_conds );
+			$conds[] = ORESServices::getDatabaseQueryBuilder()->buildQuery(
+				'wp10',
+				PageTriageUtil::mapOresParamsToClassNames( 'wp10', $opts )
+			);
+		}
+
+		// ORES draftquality filter
+		if ( PageTriageUtil::isOresDraftQualityQuery( $opts ) ) {
+			self::joinWithOres( 'draftquality', $tables, $conds, $join_conds );
+			$conds[] = ORESServices::getDatabaseQueryBuilder()->buildQuery(
+				'draftquality',
+				PageTriageUtil::mapOresParamsToClassNames( 'draftquality', $opts ),
+				true
+			);
 		}
 
 		if ( $count ) {
 			$res = $dbr->selectRow(
 				$tables,
 				[ 'COUNT(ptrp_page_id) AS total' ],
-				$conds
+				$conds,
+				__METHOD__,
+				$options,
+				$join_conds
 			);
 			return (int)$res->total;
 		} else {
@@ -226,7 +258,8 @@ class ApiPageTriageList extends ApiBase {
 				'ptrp_page_id',
 				$conds,
 				__METHOD__,
-				$options
+				$options,
+				$join_conds
 			);
 
 			// Loop through result set and return ids
@@ -236,6 +269,23 @@ class ApiPageTriageList extends ApiBase {
 
 			return $pages;
 		}
+	}
+
+	/**
+	 * @param string $model Name of the model this join is for
+	 * @param array $tables
+	 * @param array $conds
+	 * @param array $join_conds
+	 */
+	private static function joinWithOres( $model, &$tables, &$conds, &$join_conds ) {
+		$modelId = ORESServices::getModelLookup()->getModelId( $model );
+		$tableAlias = "ores_{$model}_cls";
+		$tables[ $tableAlias ] = 'ores_classification';
+		$join_conds[ $tableAlias ] = [
+			'INNER JOIN',
+			"$tableAlias.oresc_rev = page_latest",
+		];
+		$conds[ "$tableAlias.oresc_model" ] = $modelId;
 	}
 
 	/**
@@ -273,13 +323,11 @@ class ApiPageTriageList extends ApiBase {
 			if ( isset( $opts[$key] ) && $opts[$key] ) {
 				if ( $val['val'] === false ) {
 					// if val is false, use the value that was supplied via the api call
-					$tagConds = " ptrpt_page_id = ptrp_page_id AND ptrpt_tag_id = '"
-						. $tags[$val['name']] . "' AND ptrpt_value "
-						. $val['op'] . " " . $dbr->addQuotes( $opts[$key] );
+					$tagConds = " ptrpt_tag_id = '" . $tags[$val['name']] . "' AND " .
+						"ptrpt_value " . $val['op'] . " " . $dbr->addQuotes( $opts[$key] );
 				} else {
-					$tagConds = " ptrpt_page_id = ptrp_page_id AND ptrpt_tag_id = '"
-						. $tags[$val['name']] . "' AND ptrpt_value "
-						. $val['op'] . " " . $dbr->addQuotes( $val['val'] );
+					$tagConds = " ptrpt_tag_id = '" . $tags[$val['name']] . "' AND " .
+						"ptrpt_value " . $val['op'] . " " . $dbr->addQuotes( $val['val'] );
 				}
 				break;
 			}
@@ -289,70 +337,35 @@ class ApiPageTriageList extends ApiBase {
 	}
 
 	public function getAllowedParams() {
-		return [
-			'page_id' => [
-				ApiBase::PARAM_TYPE => 'integer',
-			],
-			'showbots' => [
-				ApiBase::PARAM_TYPE => 'boolean',
-			],
-			'showredirs' => [
-				ApiBase::PARAM_TYPE => 'boolean',
-			],
-			'showreviewed' => [
-				ApiBase::PARAM_TYPE => 'boolean',
-			],
-			'showunreviewed' => [
-				ApiBase::PARAM_TYPE => 'boolean',
-			],
-			'showdeleted' => [
-				ApiBase::PARAM_TYPE => 'boolean',
-			],
-			'limit' => [
-				ApiBase::PARAM_MAX => 200,
-				ApiBase::PARAM_DFLT => 20,
-				ApiBase::PARAM_MIN => 1,
-				ApiBase::PARAM_TYPE => 'integer',
-			],
-			'offset' => [
-				ApiBase::PARAM_TYPE => 'integer',
-			],
-			'pageoffset' => [
-				ApiBase::PARAM_TYPE => 'integer',
-			],
-			'dir' => [
-				ApiBase::PARAM_TYPE => [
-					'newestfirst',
-					'oldestfirst',
-					'oldestreview',
-					'newestreview',
+		return array_merge(
+			PageTriageUtil::getOresApiParams(),
+			PageTriageUtil::getCommonApiParams(),
+			[
+				'page_id' => [
+					ApiBase::PARAM_TYPE => 'integer',
 				],
-			],
-			'namespace' => [
-				ApiBase::PARAM_TYPE => 'integer',
-			],
-			'afc_state' => [
-				ApiBase::PARAM_TYPE => 'integer',
-			],
-			'no_category' => [
-				ApiBase::PARAM_TYPE => 'boolean',
-			],
-			'no_inbound_links' => [
-				ApiBase::PARAM_TYPE => 'boolean',
-			],
-			'non_autoconfirmed_users' => [
-				ApiBase::PARAM_TYPE => 'boolean',
-			],
-			'learners' => [
-				ApiBase::PARAM_TYPE => 'boolean',
-			],
-			'blocked_users' => [
-				ApiBase::PARAM_TYPE => 'boolean',
-			],
-			'username' => [
-				ApiBase::PARAM_TYPE => 'user',
-			],
-		];
+				'limit' => [
+					ApiBase::PARAM_MAX => 200,
+					ApiBase::PARAM_DFLT => 20,
+					ApiBase::PARAM_MIN => 1,
+					ApiBase::PARAM_TYPE => 'integer',
+				],
+				'offset' => [
+					ApiBase::PARAM_TYPE => 'integer',
+				],
+				'pageoffset' => [
+					ApiBase::PARAM_TYPE => 'integer',
+				],
+				'dir' => [
+					ApiBase::PARAM_TYPE => [
+						'newestfirst',
+						'oldestfirst',
+						'oldestreview',
+						'newestreview',
+					],
+				]
+			]
+		);
 	}
 
 	/**

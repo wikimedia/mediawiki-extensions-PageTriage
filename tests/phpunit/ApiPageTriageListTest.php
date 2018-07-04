@@ -37,6 +37,14 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		} else {
 			$this->draftNsId = $draftNsId;
 		}
+
+		$this->tablesUsed[] = 'page';
+		$this->tablesUsed[] = 'revision';
+		$this->tablesUsed[] = 'pagetriage_page';
+		$this->tablesUsed[] = 'pagetriage_tags';
+		$this->tablesUsed[] = 'pagetriage_log';
+		$this->tablesUsed[] = 'ores_model';
+		$this->tablesUsed[] = 'ores_classification';
 	}
 
 	/**
@@ -213,8 +221,31 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	}
 
 	/**
+	 * Verify that endpoint-specific API params are defined properly.
+	 *
+	 * @throws ApiUsageException
+	 * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil::getCommonApiParams()
+	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getAllowedParams()
+	 */
+	public function testApiParamsByEndpoint() {
+		// Test invalid params to PageTriageList.
+		$response = $this->doApiRequest( [
+			'action' => 'pagetriagelist',
+			'topreviewers' => '1',
+		] );
+		static::assertEquals( 'Unrecognized parameter: topreviewers.',
+			$response[0]['warnings']['main']['warnings'] );
+		// Test valid param to PageTriageList.
+		$response = $this->doApiRequest( [
+			'action' => 'pagetriagelist',
+			'offset' => '56789',
+		] );
+		static::assertArrayNotHasKey( 'warnings', $response[0] );
+	}
+
+	/**
 	 * Sorting drafts by submission date or date of decline.
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList
+	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getPageIds()
 	 */
 	public function testSubmissionSorting() {
 		$apiParams = [
@@ -257,6 +288,58 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			[ 'title' => 'Draft:Test page 5' ],
 			$this->getPageTriageList( $apiParams )[0]
 		);
+	}
+
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getPageIds()
+	 */
+	public function testQueryOres() {
+		$user = static::getTestUser()->getUser();
+		$this->insertPage( 'Test page ores 1', 'some content', $this->draftNsId, $user );
+		$page = WikiPage::factory( Title::newFromText( 'Test page ores 1', $this->draftNsId ) );
+		$rev1 = $page->getLatest();
+
+		$this->insertPage( 'Test page ores 2', 'some content', $this->draftNsId, $user );
+		$page = WikiPage::factory( Title::newFromText( 'Test page ores 2', $this->draftNsId ) );
+		$rev2 = $page->getLatest();
+
+		$dbw = wfGetDB( DB_MASTER );
+
+		$dbw->insert( 'ores_classification', [
+			'oresc_model' => self::ensureOresModel( 'wp10' ),
+			'oresc_probability' => 0.4,
+			'oresc_rev' => $rev1
+		] );
+
+		$dbw->insert( 'ores_classification', [
+			'oresc_model' => self::ensureOresModel( 'draftquality' ),
+			'oresc_class' => 2,
+			'oresc_probability' => 0.56,
+			'oresc_is_predicted' => 1,
+			'oresc_rev' => $rev2
+		] );
+
+		$list = $this->getPageTriageList();
+		$this->assertGreaterThan( 1, count( $list ) );
+
+		$list = $this->getPageTriageList( [ 'show_predicted_class_c' => true ] );
+		$this->assertCount( 1, $list );
+		$this->assertEquals( 'Draft:Test page ores 1', $list[0]['title'] );
+
+		$list = $this->getPageTriageList( [ 'show_predicted_issues_spam' => true ] );
+		$this->assertCount( 1, $list );
+		$this->assertEquals( 'Draft:Test page ores 2', $list[0]['title'] );
+	}
+
+	private static function ensureOresModel( $name ) {
+		$dbw = wfGetDB( DB_MASTER );
+		$ModelInfo = [
+			'oresm_name' => $name,
+			'oresm_version' => '0.0.1',
+			'oresm_is_current' => 1
+		];
+		$dbw->upsert( 'ores_model', $ModelInfo, [ 'oresm_id' ], $ModelInfo );
+		return $dbw->selectField( 'ores_model', 'oresm_id', $ModelInfo );
 	}
 
 }

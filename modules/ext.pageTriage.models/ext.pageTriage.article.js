@@ -266,15 +266,6 @@ $( function () {
 			showreviewed: 1,
 			showunreviewed: 1,
 			showdeleted: 1
-			/*
-			showredirs: 0
-			showbots: 0,
-			no_category: 0,
-			no_inbound_links: 0,
-			non_autoconfirmed_users: 0,
-			blocked_users: 0,
-			username: null
-			*/
 		},
 
 		initialize: function ( options ) {
@@ -358,25 +349,16 @@ $( function () {
 		},
 
 		/**
-		 * Get the JSON string that will be saved as a user preference value to store the current filter state.
-		 * @TODO Why aren't we using JSON.stringify() here?
+		 * Get the JSON string that will be saved as a user preference value to store the current
+		 * filter state.
+		 *
 		 * @return {string}
 		 */
 		encodeFilterParams: function () {
-			var str,
-				encodedString = '',
-				paramArray = [ '"mode": "' + this.getMode() + '"' ];
-
-			$.each( this.apiParams, function ( key, val ) {
-				str = '"' + key + '":';
-				if ( typeof val === 'string' ) {
-					val = '"' + val.replace( /["]/g, '\\"' ) + '"';
-				}
-				str += val;
-				paramArray.push( str );
-			} );
-			encodedString = '{ ' + paramArray.join( ', ' ) + ' }';
-			return encodedString;
+			var params;
+			params = this.apiParams;
+			params.mode = this.getMode();
+			return JSON.stringify( params );
 		},
 
 		// Save the filter parameters to a user's option

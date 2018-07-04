@@ -3,7 +3,7 @@ $( function () {
 
 	mw.pageTriage.ListControlNav = Backbone.View.extend( {
 		tagName: 'div',
-		template: _.template( $( '#listControlNavTemplate' ).html() ),
+		template: mw.pageTriage.viewUtil.template( { view: 'list', template: 'listControlNav.html' } ),
 		filterMenuVisible: 0,
 		filterStatus: mw.msg( 'pagetriage-filter-stat-all' ),
 		newFilterStatus: [],
@@ -41,20 +41,55 @@ $( function () {
 			} );
 		},
 
+		/**
+		 * Get namespace options to present to the user in the NPP controls.
+		 *
+		 * These are the Article and Draft namespaces.
+		 *
+		 * @return {jQuery[]}
+		 */
+		getNamespaceOptions: function () {
+			var wgFormattedNamespaces = mw.config.get( 'wgFormattedNamespaces' ),
+				nsOptions = [],
+				draftNamespaceId = mw.config.get( 'wgPageTriageDraftNamespaceId' );
+			// Add Article namespace.
+			nsOptions.push(
+				$( '<option>' )
+					.attr( 'value', 0 )
+					.text( mw.msg( 'pagetriage-filter-article' ) )
+			);
+			// Add the Draft namespace.
+			if ( draftNamespaceId && wgFormattedNamespaces[ draftNamespaceId ] ) {
+				nsOptions.push(
+					$( '<option>' )
+						.attr( 'value', draftNamespaceId )
+						.text( wgFormattedNamespaces[ draftNamespaceId ] )
+				);
+
+			}
+			return nsOptions;
+		},
+
 		render: function () {
 			var that = this;
 
 			// render and return the template. fill with the current model.
-			$( '#mwe-pt-list-control-nav-content' ).html( this.template() );
+			$( '#mwe-pt-list-control-nav-content' ).html( this.template( this.model.toJSON() ) );
 
 			// align the filter dropdown box with the dropdown control widget
 			// yield to other JS first per bug 46367
 			setTimeout( function () {
 				var startSide = $( 'body' ).hasClass( 'rtl' ) ? 'right' : 'left',
-					newStart = $( '#mwe-pt-filter-dropdown-control' ).width() - 20;
+					newStart = $( '#mwe-pt-filter-dropdown-control' ).width() - 20,
+					arrowClosed = $( 'body' ).hasClass( 'rtl' ) ? '&#x25c2;' : '&#x25b8;';
 				$( '#mwe-pt-control-dropdown' ).css( startSide, newStart );
 				$( '#mwe-pt-control-dropdown-pokey' ).css( startSide, newStart + 5 );
+				// Set drop down arrow.
+				$( '#mwe-pt-dropdown-arrow' ).html( arrowClosed );
 			} );
+
+			// Set namespace options.
+			$( '#mwe-pt-filter-namespace' ).empty().append( this.getNamespaceOptions() );
 
 			//
 			// now that the template's been inserted, set up some events for controlling it
@@ -116,6 +151,8 @@ $( function () {
 
 			// make sure the menus are synced with the filter settings
 			this.menuSync();
+
+			return this;
 		},
 
 		/**
@@ -230,26 +267,61 @@ $( function () {
 		},
 
 		/**
-		 * Fetch values from the form, used when building the API query.
-		 * @param {boolean} [noFeed] Set to true if you're not getting params for the feed,
-		 *   which includes dir and limit.
+		 * Set ORES related API parameters based on the NPP or AFC context.
+		 *
+		 * @param {string} context
 		 * @return {Object}
 		 */
-		getApiParams: function ( noFeed ) {
+		getApiParamsOres: function ( context ) {
+			var apiParams = {},
+				mapParamsToSelectors = {
+					'predicted-class-stub': 'show_predicted_class_stub',
+					'predicted-class-start': 'show_predicted_class_start',
+					'predicted-class-c': 'show_predicted_class_c',
+					'predicted-class-b': 'show_predicted_class_b',
+					'predicted-class-good': 'show_predicted_class_good',
+					'predicted-class-featured': 'show_predicted_class_featured',
+					'predicted-issues-attack': 'show_predicted_issues_attack',
+					'predicted-issues-none': 'show_predicted_issues_none',
+					'predicted-issues-spam': 'show_predicted_issues_spam',
+					'predicted-issues-vandalism': 'show_predicted_issues_vandalism'
+				};
+			Object.keys( mapParamsToSelectors ).forEach( function ( selector ) {
+				if ( $( '#mwe-pt-filter-%context-%selector'.replace( '%context', context )
+					.replace( '%selector', selector ) )
+					.prop( 'checked' ) ) {
+					apiParams[ mapParamsToSelectors[ selector ] ] = '1';
+				}
+			} );
+			return apiParams;
+		},
+
+		/**
+		 * Fetch values from the form, used when building the API query.
+		 * @param {boolean} [isListView] If true, will include params relevant to list view (dir
+		 * and limit). If false (i.e. we are getting statistics), list view specific params are
+		 * excluded.
+		 * @return {Object}
+		 */
+		getApiParams: function ( isListView ) {
 			var apiParams = {};
 
 			if ( this.model.getMode() === 'npp' ) {
 				apiParams = this.getApiParamsNpp();
 				apiParams.namespace = $( '#mwe-pt-filter-namespace' ).val();
-			} else { // AfC
+			} else {
+				// AfC
 				apiParams.namespace = mw.config.get( 'wgNamespaceIds' ).draft;
 				// eslint-disable-next-line camelcase
 				apiParams.afc_state = $( '[name=mwe-pt-filter-afc-radio]:checked' ).val();
 				apiParams.showunreviewed = '1';
 			}
+			// Merge in ORES params.
+			apiParams = Object.assign( this.getApiParamsOres( this.model.getMode() ), apiParams );
 
-			// Only set if fetching API params for the feed (since the stats endpoint doesn't recognize dir and limit).
-			if ( !noFeed ) {
+			// Only set if fetching API params for the feed (since the stats endpoint doesn't
+			// recognize dir and limit).
+			if ( isListView ) {
 				apiParams.dir = this.model.getParam( 'dir' );
 				apiParams.limit = this.model.getParam( 'limit' );
 			}
@@ -347,11 +419,13 @@ $( function () {
 		},
 
 		/**
-		 * Sync the filters with the contents of the menu. This is called when the filters or queue mode has changed.
+		 * Sync the filters with the contents of the menu.
+		 *
+		 * This is called when the filters or queue mode has changed.
 		 */
 		filterSync: function () {
 			// fetch the values from the menu
-			var apiParams = this.getApiParams();
+			var apiParams = this.getApiParams( true );
 
 			// Filters are synced when the filters are set or the queue mode has changed.
 			// Default sorting to oldest creation date, to ensure a valid option is selected.
@@ -394,6 +468,35 @@ $( function () {
 		},
 
 		/**
+		 * Process menu checkbox updates based on the NPP or AFC context.
+		 *
+		 * @param {string} context
+		 */
+		menuCheckboxUpdateOres: function ( context ) {
+			var selectors = [
+					'predicted-class-stub',
+					'predicted-class-start',
+					'predicted-class-c',
+					'predicted-class-b',
+					'predicted-class-good',
+					'predicted-class-featured',
+					'predicted-issues-vandalism',
+					'predicted-issues-spam',
+					'predicted-issues-attack',
+					'predicted-issues-none'
+				],
+				key;
+			for ( key in selectors ) {
+				this.menuCheckboxUpdate(
+					$( '#mwe-pt-filter-' + context + '-' + selectors[ key ] ),
+					// Convert the selector to the format used as an API parameter.
+					'show_' + selectors[ key ].replace( /-/g, '_' ),
+					'pagetriage-filter-stat-' + selectors[ key ]
+				);
+			}
+		},
+
+		/**
 		 * Sync the menu and other UI elements with the filters, for the NPP queue.
 		 */
 		menuSyncNpp: function () {
@@ -409,6 +512,8 @@ $( function () {
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-nominated-for-deletion' ), 'showdeleted', 'pagetriage-filter-stat-nominated-for-deletion' );
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-bot-edits' ), 'showbots', 'pagetriage-filter-stat-bots' );
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-redirects' ), 'showredirs', 'pagetriage-filter-stat-redirects' );
+
+			this.menuCheckboxUpdateOres( 'npp' );
 
 			username = this.model.getParam( 'username' );
 			if ( username ) {
@@ -435,6 +540,8 @@ $( function () {
 		menuSyncAfc: function () {
 			var afcStateName,
 				afcStateValue = parseInt( this.model.getParam( 'afc_state' ), 10 );
+
+			this.menuCheckboxUpdateOres( 'afc' );
 
 			$( '#mwe-pt-radio-afc' ).prop( 'checked', true );
 

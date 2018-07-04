@@ -3,7 +3,7 @@ $( function () {
 
 	mw.pageTriage.ListStatsNav = Backbone.View.extend( {
 		tagName: 'div',
-		template: _.template( $( '#listStatsNavTemplate' ).html() ),
+		template: mw.pageTriage.viewUtil.template( { view: 'list', template: 'listStatsNav.html' } ),
 
 		initialize: function ( options ) {
 			var that = this;
@@ -29,6 +29,14 @@ $( function () {
 
 			// insert the template into the document.  fill with the current model.
 			$( '#mwe-pt-list-stats-nav-content' ).html( this.template( this.model.toJSON() ) );
+
+			// Add the stats.
+			if ( this.model.attributes.ptrUnreviewedCount && this.model.attributes.ptrOldest ) {
+				$( '#mwe-pt-unreviewed-stats' ).text( mw.msg( 'pagetriage-unreviewed-article-count', this.model.attributes.ptrUnreviewedCount, this.model.attributes.ptrOldest ) );
+			}
+			if ( this.model.attributes.ptrReviewedCount ) {
+				$( '#mwe-pt-reviewed-stats' ).text( mw.msg( 'pagetriage-reviewed-article-count-past-week', this.model.attributes.ptrReviewedCount ) );
+			}
 
 			// run setPosition since the statsNav may need to be floated immediately
 			if ( mw.config.get( 'wgPageTriageStickyStatsNav' ) ) {
