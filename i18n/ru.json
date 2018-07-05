@@ -12,13 +12,16 @@
 			"Patrick Star",
 			"AttemptToCallNil",
 			"Movses",
-			"Stjn"
+			"Stjn",
+			"Vlad5250"
 		]
 	},
 	"pagetriage": "Сортировка страниц",
 	"newpagesfeed": "Лента новых страниц",
 	"pagetriage-desc": "Облегчает проверку и одобрение новых страниц",
 	"pagetriage-pagecuration": "Курирование страниц",
+	"pagetriage-new-page-patrol": "Патрулирование новой страницы",
+	"pagetriage-articles-for-creation": "К созданию",
 	"pagetriage-please-wait": "Пожалуйста, подождите...",
 	"pagetriage-api-invalidid": "Предоставлен некорректный ID ($1).",
 	"pagetriage-markpatrolled": "Отметить данную страницу как проверенную",
@@ -202,6 +205,9 @@
 	"pagetriage-toolbar-close": "Закрыть",
 	"pagetriage-toolbar-minimize": "Свернуть",
 	"pagetriage-tag-warning-notice": "Примечание: эта страница создана всего $1 минут{{PLURAL:$1|у|ы|}} назад. Подумайте, так ли серьёзна причина для проставления шаблона и не стоит ли немного подождать?",
+	"pagetriage-afc-state-all": "Все",
+	"pagetriage-afc-state-declined": "Отклонено",
+	"pagetriage-afc-state-reviewing": "(проверяется)",
 	"echo-pref-subscription-page-review": "Проверки созданных мною страниц",
 	"echo-pref-tooltip-page-review": "Сообщать мне, когда кто-то помечает созданную мной страницу как проверенную.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Проверка|Проверки}} страницы"
