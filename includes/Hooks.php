@@ -240,6 +240,17 @@ class Hooks {
 	public static function addToPageTriageQueue( $pageId, $title, $user = null, $reviewed = null ) {
 		global $wgUseRCPatrol, $wgUseNPPatrol;
 
+		// Get draft information.
+		$draftNsId = MediaWikiServices::getInstance()
+			->getMainConfig()
+			->get( 'PageTriageDraftNamespaceId' );
+		$isDraft = false !== $draftNsId && $title->inNamespace( $draftNsId );
+
+		// Draft redirects are not patrolled or reviewed.
+		if ( $isDraft && $title->isRedirect() ) {
+			return false;
+		}
+
 		$pageTriage = new PageTriage( $pageId );
 
 		// action taken by system
@@ -252,10 +263,6 @@ class Hooks {
 		} else {
 			// set reviewed if it's not set yet
 			if ( is_null( $reviewed ) ) {
-				$draftNsId = MediaWikiServices::getInstance()
-					->getMainConfig()
-					->get( 'PageTriageDraftNamespaceId' );
-				$isDraft = false !== $draftNsId && $title->inNamespace( $draftNsId );
 				$isAutopatrolled = ( $wgUseRCPatrol || $wgUseNPPatrol ) &&
 					!count( $title->getUserPermissionsErrors( 'autopatrol', $user ) );
 				if ( $isAutopatrolled && !$isDraft ) {
