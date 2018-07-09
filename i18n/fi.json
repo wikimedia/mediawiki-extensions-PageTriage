@@ -191,6 +191,8 @@
 	"pagetriage-toolbar-close": "Sulje",
 	"pagetriage-toolbar-minimize": "Pienennä",
 	"pagetriage-tag-warning-notice": "Huomaa: Tämä sivu on ainoastaan $1 {{PLURAL:$1|minuutin|minuuttia}} vanha. Älä merkkaa sitä vielä, jollei asia ole vakava.",
+	"pagetriage-afc-state-declined": "Hylätty",
+	"pagetriage-afc-state-pending": "Odottaa arviota",
 	"pagetriage-discuss-link-title": "{{GENDER:$1|Keskustelu}}",
 	"echo-pref-subscription-page-review": "Katsastanut sivun, jonka olen luonut",
 	"echo-pref-tooltip-page-review": "Ilmoita minulle kun joku katsastaa sivun, jonka olen luonut.",
