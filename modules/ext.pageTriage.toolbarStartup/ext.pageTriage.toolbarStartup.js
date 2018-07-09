@@ -1,8 +1,11 @@
-jQuery( function ( $ ) {
-	var modules;
-	// only show curation toolbar for enabled namespaces
-	if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ),
-		mw.config.get( 'pageTriageNamespaces' ) ) === -1 ) {
+jQuery( function () {
+	var modules,
+		ns = mw.config.get( 'wgNamespaceNumber' );
+
+	// Only show curation toolbar for enabled namespaces, minus the draftspace.
+	if ( mw.config.get( 'pageTriageNamespaces' ).indexOf( ns ) === -1 ||
+		ns === mw.config.get( 'wgPageTriageDraftNamespaceId' )
+	) {
 		return true;
 	}
 
