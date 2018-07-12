@@ -11,3 +11,20 @@
 .mwe-pt-author-info {
 	font-size: 0.8em;
 }
+
+/** CSS for AfC mode controls, hidden by default and shown by adding .mwe-pt-mode-afc to .mw-content-text */
+.mwe-pt-afc {
+	display: none;
+}
+
+.mwe-pt-mode-afc .mwe-pt-afc {
+	display: block;
+}
+
+.mwe-pt-mode-afc .mwe-pt-npp {
+	display: none;
+}
+
+.mwe-pt-mode-afc .mwe-pt-bottom-nav-stats {
+	display: none;
+}

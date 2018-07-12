@@ -65,8 +65,7 @@ $( function () {
 				that.model.setMode( $( this ).val() );
 				that.filterSync();
 				that.refreshStats();
-				$( '.mwe-pt-control-section__afc' ).toggle( $( this ).val() === 'afc' );
-				$( '.mwe-pt-control-section__npp' ).toggle( $( this ).val() !== 'afc' );
+				$( '#mw-content-text' ).toggleClass( 'mwe-pt-mode-afc', $( this ).val() === 'afc' );
 				e.stopPropagation();
 			} );
 
@@ -103,16 +102,8 @@ $( function () {
 			} );
 
 			// Initialize sort links
-			// Uncomment this when 7147 is merged
-			// $( '#mwe-pt-sort-buttons' ).buttonset();
-			$( '#mwe-pt-sort-newest' ).click( function ( e ) {
-				that.model.setParam( 'dir', 'newestfirst' );
-				that.model.saveFilterParams();
-				that.refreshList();
-				e.stopPropagation();
-			} );
-			$( '#mwe-pt-sort-oldest' ).click( function ( e ) {
-				that.model.setParam( 'dir', 'oldestfirst' );
+			$( 'input[name=sort], #mwe-pt-sort-afc' ).on( 'change', function ( e ) {
+				that.model.setParam( 'dir', e.target.value );
 				that.model.saveFilterParams();
 				that.refreshList();
 				e.stopPropagation();
@@ -131,7 +122,7 @@ $( function () {
 		 * Refresh the stats when filtering options are changed.
 		 */
 		refreshStats: function () {
-			this.options.stats.apiParams = this.getApiParams();
+			this.options.stats.apiParams = this.getApiParams( false );
 			this.options.stats.fetch();
 		},
 
@@ -191,18 +182,21 @@ $( function () {
 		// Toggle whether or not the filter drop-down interface is displayed
 		toggleFilterMenu: function ( action ) {
 			var that = this,
-				arrowClosed = $( 'body' ).hasClass( 'rtl' ) ? '&#x25c2;' : '&#x25b8;';
+				arrowClosed = $( 'body' ).hasClass( 'rtl' ) ? '&#x25c2;' : '&#x25b8;',
+				$controlDropdown = $( '#mwe-pt-control-dropdown' ),
+				$controlDropdownPokey = $( '#mwe-pt-control-dropdown-pokey' );
+
 			if ( ( action && action === 'close' ) || this.filterMenuVisible ) {
 				$( '#mwe-pt-dropdown-arrow' ).html( arrowClosed );
-				$( '#mwe-pt-control-dropdown' ).css( 'visibility', 'hidden' );
-				$( '#mwe-pt-control-dropdown-pokey' ).css( 'visibility', 'hidden' );
+				$controlDropdown.css( 'visibility', 'hidden' );
+				$controlDropdownPokey.css( 'visibility', 'hidden' );
 				$( 'body' ).unbind( 'click' ); // remove these events since they're not needed til next time.
-				$( '#mwe-pt-control-dropdown' ).unbind( 'click' );
+				$controlDropdown.unbind( 'click' );
 				this.filterMenuVisible = 0;
 			} else if ( ( action && action === 'open' ) || !this.filterMenuVisible ) {
 				this.menuSync();
-				$( '#mwe-pt-control-dropdown' ).css( 'visibility', 'visible' );
-				$( '#mwe-pt-control-dropdown-pokey' ).css( 'visibility', 'visible' );
+				$controlDropdown.css( 'visibility', 'visible' );
+				$controlDropdownPokey.css( 'visibility', 'visible' );
 				$( '#mwe-pt-dropdown-arrow' ).html( '&#x25be;' ); // ▾ down-pointing triangle
 
 				// close the menu when the user clicks away
@@ -212,7 +206,7 @@ $( function () {
 
 				// this event "covers up" the body event, which keeps the menu from closing when
 				// the user clicks inside.
-				$( '#mwe-pt-control-dropdown' ).click( function ( e ) {
+				$controlDropdown.click( function ( e ) {
 					e.stopPropagation();
 				} );
 
@@ -237,9 +231,11 @@ $( function () {
 
 		/**
 		 * Fetch values from the form, used when building the API query.
+		 * @param {boolean} [noFeed] Set to true if you're not getting params for the feed,
+		 *   which includes dir and limit.
 		 * @return {Object}
 		 */
-		getApiParams: function () {
+		getApiParams: function ( noFeed ) {
 			var apiParams = {};
 
 			if ( this.model.getMode() === 'npp' ) {
@@ -250,6 +246,12 @@ $( function () {
 				// eslint-disable-next-line camelcase
 				apiParams.afc_state = $( '[name=mwe-pt-filter-afc-radio]:checked' ).val();
 				apiParams.showunreviewed = '1';
+			}
+
+			// Only set if fetching API params for the feed (since the stats endpoint doesn't recognize dir and limit).
+			if ( !noFeed ) {
+				apiParams.dir = this.model.getParam( 'dir' );
+				apiParams.limit = this.model.getParam( 'limit' );
 			}
 
 			return apiParams;
@@ -328,7 +330,7 @@ $( function () {
 
 		/**
 		 * Reload data from the model, showing a spinner while waiting for a response.
-		 * @param {Object} options
+		 * @param {Object} [options]
 		 */
 		modelFetch: function ( options ) {
 			// Show spinner.
@@ -344,14 +346,17 @@ $( function () {
 			}, options ) );
 		},
 
-		// Sync the filters with the contents of the menu
+		/**
+		 * Sync the filters with the contents of the menu. This is called when the filters or queue mode has changed.
+		 */
 		filterSync: function () {
 			// fetch the values from the menu
 			var apiParams = this.getApiParams();
 
-			// persist the limit and direction parameters
-			apiParams.limit = this.model.getParam( 'limit' );
-			apiParams.dir = this.model.getParam( 'dir' );
+			// Filters are synced when the filters are set or the queue mode has changed.
+			// Default sorting to oldest creation date, to ensure a valid option is selected.
+			$( '#mwe-pt-sort-afc' ).val( 'newestfirst' );
+			apiParams.dir = 'newestfirst';
 
 			// the model in this context is mw.pageTriage.ArticleList
 			this.model.setParams( apiParams );
@@ -366,6 +371,10 @@ $( function () {
 		menuSync: function () {
 			this.newFilterStatus = [];
 
+			// Show/hide controls based on what feed mode we're in.
+			$( '#mw-content-text' ).toggleClass( 'mwe-pt-mode-afc', this.model.getMode() === 'afc' );
+
+			// Sync menu content.
 			if ( this.model.getMode() === 'npp' ) {
 				this.menuSyncNpp();
 			} else { // AfC
@@ -379,14 +388,8 @@ $( function () {
 			// Sync the sort toggle
 			if ( this.model.getParam( 'dir' ) === 'oldestfirst' ) {
 				$( '#mwe-pt-sort-oldest' ).prop( 'checked', true );
-				// FIXME: Why is this commented out?
-				// $( 'label[for="mwe-pt-sort-oldest"]' ).addClass( 'ui-state-active' );
-				// $( 'label[for="mwe-pt-sort-newest"]' ).removeClass( 'ui-state-active' );
 			} else {
 				$( '#mwe-pt-sort-newest' ).prop( 'checked', true );
-				// FIXME: Why is this commented out?
-				// $( 'label[for="mwe-pt-sort-newest"]' ).addClass( 'ui-state-active' );
-				// $( 'label[for="mwe-pt-sort-oldest"]' ).removeClass( 'ui-state-active' );
 			}
 		},
 
@@ -398,8 +401,6 @@ $( function () {
 
 			// Make sure the radio button for the feed is correct, and the corresponding filter menu is shown.
 			$( '#mwe-pt-radio-npp' ).prop( 'checked', true );
-			$( '.mwe-pt-control-section__afc' ).hide();
-			$( '.mwe-pt-control-section__npp' ).show();
 
 			$( '#mwe-pt-filter-namespace' ).val( this.model.getParam( 'namespace' ) );
 
@@ -432,17 +433,29 @@ $( function () {
 		 * Sync the menu and other UI elements with the filters, for the AfC queue.
 		 */
 		menuSyncAfc: function () {
-			var afcStateName;
-			$( '#mwe-pt-radio-afc' ).prop( 'checked', true );
-			$( '.mwe-pt-control-section__afc' ).show();
-			$( '.mwe-pt-control-section__npp' ).hide();
+			var afcStateName,
+				afcStateValue = parseInt( this.model.getParam( 'afc_state' ), 10 );
 
-			$( 'input[name=mwe-pt-filter-afc-radio][value=' + this.model.getParam( 'afc_state' ) + ']' )
+			$( '#mwe-pt-radio-afc' ).prop( 'checked', true );
+
+			$( 'input[name=mwe-pt-filter-afc-radio][value=' + afcStateValue + ']' )
 				.prop( 'checked', true );
 
 			if ( !$( 'input[name=mwe-pt-filter-afc-radio]:checked' ).val() ) {
 				// None of the radio buttons are selected. Pick the default.
 				$( '#mwe-pt-filter-afc-all' ).prop( 'checked', true );
+			}
+
+			// Show/hide sorting options based on filter state.
+			if ( afcStateValue === 4 ) { // Declined
+				$( '.mwe-pt-afc-sort-declined' ).show();
+				$( '.mwe-pt-afc-sort-submitted' ).hide();
+			} else if ( afcStateValue === 1 ) { // Unsubmitted
+				$( '.mwe-pt-afc-sort-declined' ).hide();
+				$( '.mwe-pt-afc-sort-submitted' ).hide();
+			} else {
+				$( '.mwe-pt-afc-sort-declined' ).hide();
+				$( '.mwe-pt-afc-sort-submitted' ).show();
 			}
 
 			// Set the "Showing: ..." filter status.

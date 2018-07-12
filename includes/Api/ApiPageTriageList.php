@@ -122,12 +122,22 @@ class ApiPageTriageList extends ApiBase {
 			// Get the expected limit as defined in getAllowedParams
 			$options['LIMIT'] = $opts['limit'] + 1;
 
-			if ( strtolower( $opts['dir'] ) === 'oldestfirst' ) {
-				$options['ORDER BY'] = 'ptrp_created ASC, ptrp_page_id ASC';
-				$offsetOperator = ' > ';
-			} else {
-				$options['ORDER BY'] = 'ptrp_created DESC, ptrp_page_id DESC';
-				$offsetOperator = ' < ';
+			switch ( strtolower( $opts['dir'] ) ) {
+				case 'oldestfirst':
+					$options['ORDER BY'] = 'ptrp_created ASC, ptrp_page_id ASC';
+					$offsetOperator = ' > ';
+					break;
+				case 'oldestreview':
+					$options['ORDER BY'] = 'ptrp_reviewed_updated ASC, ptrp_page_id ASC';
+					$offsetOperator = ' > ';
+					break;
+				case 'newestreview':
+					$options['ORDER BY'] = 'ptrp_reviewed_updated DESC, ptrp_page_id DESC';
+					$offsetOperator = ' < ';
+					break;
+				default:
+					$options['ORDER BY'] = 'ptrp_created DESC, ptrp_page_id DESC';
+					$offsetOperator = ' < ';
 			}
 		}
 
@@ -311,7 +321,12 @@ class ApiPageTriageList extends ApiBase {
 				ApiBase::PARAM_TYPE => 'integer',
 			],
 			'dir' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_TYPE => [
+					'newestfirst',
+					'oldestfirst',
+					'oldestreview',
+					'newestreview',
+				],
 			],
 			'namespace' => [
 				ApiBase::PARAM_TYPE => 'integer',

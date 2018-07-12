@@ -48,11 +48,19 @@ class ArticleCompileAfcTag extends ArticleCompileInterface {
 				$afcStateValue = array_search( $category, $this->getAfcCategories() );
 				if ( $afcStateValue ) {
 					$this->metadata[$pageId]['afc_state'] = $afcStateValue;
+
+					// Drafts re-use the ptrp_reviewed_updated to serve as the time of the last
+					// submission or last decline. See T195547
+					if ( in_array( $afcStateValue, [ self::PENDING, self::DECLINED ] ) ) {
+						$this->metadata[$pageId]['update_reviewed_timestamp'] = true;
+					}
+
 					// Only set the first found category (highest priority one).
 					break;
 				}
 			}
 		}
+
 		return true;
 	}
 
