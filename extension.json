@@ -200,6 +200,7 @@
 			"messages": [
 				"comma-separator",
 				"days",
+				"pagetriage-afc-state",
 				"pagetriage-afc-state-all",
 				"pagetriage-afc-state-declined",
 				"pagetriage-afc-state-pending",
