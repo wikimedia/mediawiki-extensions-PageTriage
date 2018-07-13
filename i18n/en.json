@@ -368,6 +368,7 @@
 	"pagetriage-toolbar-close": "Close",
 	"pagetriage-toolbar-minimize": "Minimize",
 	"pagetriage-tag-warning-notice": "Note: This page is only $1 {{PLURAL:$1|minute|minutes}} old. Consider waiting to tag it, unless the issue is serious.",
+	"pagetriage-afc-state": "State",
 	"pagetriage-afc-state-all": "All",
 	"pagetriage-afc-state-declined": "Declined",
 	"pagetriage-afc-state-pending": "Awaiting review",

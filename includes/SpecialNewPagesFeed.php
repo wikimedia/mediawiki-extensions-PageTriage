@@ -334,8 +334,9 @@ class SpecialNewPagesFeed extends SpecialPage {
 							<div class="mwe-pt-control-section__afc mwe-pt-afc">
 								<div class="mwe-pt-control-section">
 									<span class="mwe-pt-control-label">
-										<b><%= mw.msg( 'pagetriage-filter-second-show-heading' ) %></b>
+										<b><%= mw.msg( 'pagetriage-filter-show-heading' ) %></b>
 									</span>
+									<p><%= mw.msg( 'pagetriage-afc-state' ) %></p>
 									<div class="mwe-pt-control-options">
 										<input type="radio" name="mwe-pt-filter-afc-radio"
 											id="mwe-pt-filter-afc-unsubmitted" value="1"

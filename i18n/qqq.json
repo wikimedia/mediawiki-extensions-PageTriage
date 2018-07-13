@@ -382,6 +382,7 @@
 	"pagetriage-toolbar-close": "Tooltip for the close button in the Curation Toolbar.\n{{Identical|Close}}",
 	"pagetriage-toolbar-minimize": "Tooltip for the minimize button in the Curation Toolbar (also docks the minimized toolbar to the side of the screen).\n{{Identical|Minimize}}",
 	"pagetriage-tag-warning-notice": "Warning notice in maintenance and deletion tag flyout if the page was created less than some amount of time ago.\n\nParameters:\n* $1 - number of minutes",
+	"pagetriage-afc-state": "Label above the AfC state radio buttons that indicates what they represent.",
 	"pagetriage-afc-state-all": "Label for AfC filter radio button that selects all draft pages.\n{{Identical|All}}",
 	"pagetriage-afc-state-declined": "Label for AfC filter radio button that selects only declined drafts.",
 	"pagetriage-afc-state-pending": "Label for AfC filter radio button that selects only pending drafts.",
