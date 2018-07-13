@@ -51,6 +51,12 @@
 	"pagetriage-sort-by": "מיון לפי:",
 	"pagetriage-newest": "החדשים ביותר",
 	"pagetriage-oldest": "הישנים ביותר",
+	"pagetriage-afc-newest": "תאריך היצירה (מהחדש ביותר)",
+	"pagetriage-afc-oldest": "תאריך היצירה (מהישן ביותר)",
+	"pagetriage-afc-newest-submitted": "תאריך השליחה (מהחדש ביותר)",
+	"pagetriage-afc-oldest-submitted": "תאריך השליחה (מהישן ביותר)",
+	"pagetriage-afc-newest-declined": "תאריך הדחייה (מהחדש ביותר)",
+	"pagetriage-afc-oldest-declined": "תאריך הדחייה (מהישן ביותר)",
 	"pagetriage-triage": "לסקור",
 	"pagetriage-filter-show-heading": "לכלול:",
 	"pagetriage-filter-reviewed-edits": "דפים שנסקרו",
@@ -229,6 +235,7 @@
 	"pagetriage-tag-deletion-error": "בדף הזה כבר יש תבנית מחיקה, הפעולה מתבטלת.",
 	"pagetriage-toolbar-close": "סגירה",
 	"pagetriage-toolbar-minimize": "מזעור",
+	"pagetriage-afc-state": "מצב",
 	"pagetriage-afc-state-all": "הכול",
 	"pagetriage-afc-state-declined": "נדחה",
 	"pagetriage-afc-state-pending": "ממתין לסקירה",
@@ -238,6 +245,7 @@
 	"echo-pref-tooltip-page-review": "להודיע לי כשמישהו סוקר דף שיצרתי.",
 	"echo-category-title-page-review": "{{PLURAL:$1|סקירת|סקירות}} דף",
 	"apihelp-pagetriagelist-param-afc_state": "איזה מצב של ערכים ליצירה להציג.",
+	"apihelp-pagetriagelist-param-dir": "באיזה כיוון הרשימה תמוין: מהישן ביותר, מהחדש ביותר, מהסקירה הישנה ביותר או מהסקירה החדשה ביותר.",
 	"apihelp-pagetriagestats-param-afc_state": "עבור איזה מצב של ערכים ליצירה לקבל סטטיסטיקות.",
 	"apihelp-pagetriagetagging-summary": "הוסף תגיות למאמרים"
 }

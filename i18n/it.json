@@ -320,6 +320,7 @@
 	"pagetriage-toolbar-close": "Chiudi",
 	"pagetriage-toolbar-minimize": "Minimizza",
 	"pagetriage-tag-warning-notice": "Nota: questa pagina è solo di $1 {{PLURAL:$1|minuto|minuti}} fa. Aspetta un po' prima di contrassegnarla a meno che il problema non sia serio.",
+	"pagetriage-afc-state": "Stato",
 	"pagetriage-afc-state-all": "Tutti",
 	"notification-header-pagetriage-mark-as-reviewed": "La pagina '''$3''' è stata {{GENDER:$2|revisionata}}.",
 	"notification-header-pagetriage-add-maintenance-tag": "{{GENDER:$2|Un revisore|Una revisora}} ha suggerito miglioramenti alla pagina '''$3'''. {{PLURAL:$5|Etichetta|Etichette}}: $4",

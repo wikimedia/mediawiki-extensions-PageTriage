@@ -51,6 +51,12 @@
 	"pagetriage-sort-by": "Ordenar por:",
 	"pagetriage-newest": "Mais recente",
 	"pagetriage-oldest": "Mais antiga",
+	"pagetriage-afc-newest": "Data de criação (mais recente)",
+	"pagetriage-afc-oldest": "Data de criação (mais antiga)",
+	"pagetriage-afc-newest-submitted": "Data de envio (mais recente)",
+	"pagetriage-afc-oldest-submitted": "Data de envio (mais antiga)",
+	"pagetriage-afc-newest-declined": "Data recusada (mais recente)",
+	"pagetriage-afc-oldest-declined": "Data recusada (mais antiga)",
 	"pagetriage-triage": "Revisar",
 	"pagetriage-filter-show-heading": "Exibir:",
 	"pagetriage-filter-reviewed-edits": "Páginas revisadas",
@@ -207,6 +213,7 @@
 	"pagetriage-toolbar-close": "Fechar",
 	"pagetriage-toolbar-minimize": "Minimizar",
 	"pagetriage-tag-warning-notice": "Nota: Esta página existe há apenas $1 {{PLURAL:$1|minuto|minutos}}. Considere esperar para etiquetá-la, a menos que o problema seja sério.",
+	"pagetriage-afc-state": "Estado",
 	"pagetriage-afc-state-all": "Todas",
 	"pagetriage-afc-state-declined": "Discordo",
 	"pagetriage-afc-state-pending": "aguardando revisão",
@@ -237,5 +244,6 @@
 	"apihelp-pagetriagelist-param-showreviewed": "Incluir páginas revistas, ou não.",
 	"apihelp-pagetriagelist-param-showunreviewed": "Incluir páginas não revistas, ou não.",
 	"apihelp-pagetriagelist-param-limit": "O número máximo de resultados a serem devolvidos.",
+	"apihelp-pagetriagelist-param-dir": "A direção em que a lista deve ser classificada - mais antiga, mais recente, antiga ou nova.",
 	"apihelp-pagetriagestats-param-afc_state": "Para que estado de Artigos-para-serem-criados obter estatísticas."
 }
