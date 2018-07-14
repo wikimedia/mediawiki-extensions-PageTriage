@@ -34,6 +34,12 @@
 	"pagetriage-sort-by": "Ordinar per:",
 	"pagetriage-newest": "Le plus nove",
 	"pagetriage-oldest": "Le plus ancian",
+	"pagetriage-afc-newest": "Data de creation (le plus recente)",
+	"pagetriage-afc-oldest": "Data de creation (le plus ancian)",
+	"pagetriage-afc-newest-submitted": "Data de submission (le plus recente)",
+	"pagetriage-afc-oldest-submitted": "Data de submission (le plus ancian)",
+	"pagetriage-afc-newest-declined": "Data de refusa (le plus recente)",
+	"pagetriage-afc-oldest-declined": "Data de refusa (le plus ancian)",
 	"pagetriage-triage": "Revider",
 	"pagetriage-filter-show-heading": "Monstrar:",
 	"pagetriage-filter-reviewed-edits": "Paginas revidite",
@@ -273,6 +279,8 @@
 	"pagetriage-mark-as-unreviewed": "Marcar como non revidite",
 	"pagetriage-mark-as-reviewed-helptext": "Marca iste pagina como revidite si tu ha finite verificar lo.",
 	"pagetriage-mark-as-unreviewed-helptext": "Marca iste pagina como non revidite si tu pensa que illo require verification ulterior.",
+	"pagetriage-afc-state": "Stato",
+	"apihelp-pagetriagelist-param-dir": "Le ordine del lista: oldestfirst (le plus ancian primo), newestfirst (le plus recente primo), oldestreview (revision le plus ancian) or newestreview (revision le plus recente).",
 	"apihelp-pagetriagelist-param-learners": "Si se debe monstrar unicamente paginas create per usatores novemente autoconfirmate.",
 	"apihelp-pagetriagestats-param-learners": "Si se debe includer unicamente paginas create per usatores novemente autoconfirmate."
 }

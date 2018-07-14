@@ -103,6 +103,7 @@
 	"pagetriage-wikilove-page-creator": "Twórca strony",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|edycja|edycje|edycji}}",
 	"pagetriage-toolbar-close": "Zamknij",
+	"pagetriage-afc-state-declined": "Odrzucone",
 	"notification-header-pagetriage-mark-as-reviewed": "Strona '''$3''' została {{GENDER:$2|przejrzana}}.",
 	"notification-header-pagetriage-add-deletion-tag": "Strona '''$3''' została {{GENDER:$2|przejrzana}} i {{GENDER:$2|oznaczona do usunięcie}}. {{PLURAL:$5|Znacznik|Znaczniki}}: $4.",
 	"echo-pref-subscription-page-review": "oceni utworzoną przeze mnie stronę",

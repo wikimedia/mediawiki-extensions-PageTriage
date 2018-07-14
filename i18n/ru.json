@@ -214,6 +214,7 @@
 	"pagetriage-afc-state": "Статус",
 	"pagetriage-afc-state-all": "Все",
 	"pagetriage-afc-state-declined": "Отклонено",
+	"pagetriage-afc-state-pending": "Ожидает проверки",
 	"pagetriage-afc-state-reviewing": "(проверяется)",
 	"echo-pref-subscription-page-review": "Проверки созданных мною страниц",
 	"echo-pref-tooltip-page-review": "Сообщать мне, когда кто-то помечает созданную мной страницу как проверенную.",

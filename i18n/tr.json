@@ -51,6 +51,8 @@
 	"pagetriage-sort-by": "Sıralama ölçütü:",
 	"pagetriage-newest": "En yeni",
 	"pagetriage-oldest": "En eski",
+	"pagetriage-afc-newest": "Oluşturma tarihi (en yeni)",
+	"pagetriage-afc-oldest-declined": "Reddedilme tarihi (en eski)",
 	"pagetriage-triage": "İncele",
 	"pagetriage-filter-show-heading": "Şunları göster:",
 	"pagetriage-filter-reviewed-edits": "İncelenmiş sayfalar",

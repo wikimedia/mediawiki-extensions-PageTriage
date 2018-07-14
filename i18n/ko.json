@@ -355,6 +355,7 @@
 	"pagetriage-toolbar-close": "닫기",
 	"pagetriage-toolbar-minimize": "최소화",
 	"pagetriage-tag-warning-notice": "참고: 이 문서만 $1{{PLURAL:$1|분}} 전입니다. 문제가 심각하지 않다면 해당 태그를 기다리는 것을 고려하세요.",
+	"pagetriage-afc-state": "상태",
 	"pagetriage-afc-state-all": "모두",
 	"pagetriage-afc-state-declined": "거부됨",
 	"notification-header-pagetriage-mark-as-reviewed": "'''$3''' 문서가 {{GENDER:$2|검토되었습니다}}.",
