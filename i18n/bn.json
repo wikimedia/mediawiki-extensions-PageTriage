@@ -85,6 +85,7 @@
 	"pagetriage-mark-as-unreviewed": "অপর্যালোচিত হিসেবে চিহ্নিত করুন",
 	"pagetriage-wikilove-edit-count": "$1টি {{PLURAL:$1|সম্পাদনা}}",
 	"pagetriage-toolbar-close": "বন্ধ",
+	"pagetriage-afc-state": "অবস্থা",
 	"pagetriage-afc-state-all": "সব",
 	"notification-header-pagetriage-mark-as-reviewed": "'''$3''' পাতাটি {{GENDER:$2|পর্যালোচনা}} করা হয়েছে।",
 	"echo-category-title-page-review": "পাতা {{PLURAL:$1|পর্যালোচনা}}"

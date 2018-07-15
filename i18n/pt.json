@@ -57,6 +57,8 @@
 	"pagetriage-afc-oldest": "Data de criação (mais antiga)",
 	"pagetriage-afc-newest-submitted": "Data de submissão (mais recente)",
 	"pagetriage-afc-oldest-submitted": "Data de submissão (mais antiga)",
+	"pagetriage-afc-newest-declined": "Data de rejeição (mais recente)",
+	"pagetriage-afc-oldest-declined": "Data de rejeição (mais antiga)",
 	"pagetriage-triage": "Rever",
 	"pagetriage-filter-show-heading": "Mostrar:",
 	"pagetriage-filter-reviewed-edits": "Páginas revistas",
