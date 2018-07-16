@@ -335,6 +335,8 @@
 	"pagetriage-toolbar-close": "Cerrar",
 	"pagetriage-toolbar-minimize": "Minimizar",
 	"pagetriage-tag-warning-notice": "Nota: Esta página sólo existe desde hace $1 {{PLURAL:$1|minuto|minutos}}. Considera esperar para etiquetarla, a menos que el problema sea serio.",
+	"pagetriage-afc-state": "Estado",
+	"pagetriage-afc-state-declined": "Rechazado",
 	"notification-header-pagetriage-mark-as-reviewed": "La página '''$3''' ha sido {{GENDER:$2|revisada}}.",
 	"notification-header-pagetriage-add-maintenance-tag": "{{GENDER:$2|Un revisor|Una revisora}} sugirió mejoras para la página '''$3'''.{{PLURAL:$5|Etiqueta|Etiquetas}}: $4.",
 	"notification-header-pagetriage-add-deletion-tag": "La página '''$3''' se {{GENDER:$2|marcó para su eliminación}}. {{PLURAL:$5|Etiqueta|Etiquetas}}: $4.",

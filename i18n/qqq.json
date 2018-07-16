@@ -417,7 +417,7 @@
 	"apihelp-pagetriagelist-param-limit": "{{doc-apihelp-param|pagetriagelist|limit}}",
 	"apihelp-pagetriagelist-param-offset": "{{doc-apihelp-param|pagetriagelist|offset}}",
 	"apihelp-pagetriagelist-param-pageoffset": "{{doc-apihelp-param|pagetriagelist|pageoffset}}",
-	"apihelp-pagetriagelist-param-dir": "{{doc-apihelp-param|pagetriagelist|dir}}",
+	"apihelp-pagetriagelist-param-dir": "Note: It's currently unclear whether \"oldestfirst, newestfirst, oldestreview or newestreview\" should be translated or not.\n{{doc-apihelp-param|pagetriagelist|dir}}",
 	"apihelp-pagetriagelist-param-namespace": "{{doc-apihelp-param|pagetriagelist|namespace}}",
 	"apihelp-pagetriagelist-param-no_category": "{{doc-apihelp-param|pagetriagelist|no_category}}",
 	"apihelp-pagetriagelist-param-no_inbound_links": "{{doc-apihelp-param|pagetriagelist|no_inbound_links}}",
