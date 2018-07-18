@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
+use ApiBase;
 use Article;
 use Block;
 use MediaWiki\Extension\PageTriage\Api\ApiPageTriageList;
@@ -448,6 +449,186 @@ class PageTriageUtil {
 		}
 
 		return RequestContext::getMain()->getLanguage()->truncateForVisual( $text, $length, $ellipsis );
+	}
+
+	/**
+	 * Get an array of ORES wp10 API parameters.
+	 *
+	 * @return array
+	 */
+	private static function getOresWp10ApiParams() {
+		return [
+			'show_predicted_class_stub' => [
+				ApiBase::PARAM_TYPE => 'boolean'
+			],
+			'show_predicted_class_start' => [
+				ApiBase::PARAM_TYPE => 'boolean'
+			],
+			'show_predicted_class_c' => [
+				ApiBase::PARAM_TYPE => 'boolean'
+			],
+			'show_predicted_class_b' => [
+				ApiBase::PARAM_TYPE => 'boolean'
+			],
+			'show_predicted_class_good' => [
+				ApiBase::PARAM_TYPE => 'boolean'
+			],
+			'show_predicted_class_featured' => [
+				ApiBase::PARAM_TYPE => 'boolean'
+			],
+		];
+	}
+
+	/**
+	 * Get an array of ORES wp10 API parameters.
+	 *
+	 * @return array
+	 */
+	private static function getOresDraftQualityApiParams() {
+		return [
+			'show_predicted_issues_vandalism' => [
+				ApiBase::PARAM_TYPE => 'boolean'
+			],
+			'show_predicted_issues_spam' => [
+				ApiBase::PARAM_TYPE => 'boolean'
+			],
+			'show_predicted_issues_attack' => [
+				ApiBase::PARAM_TYPE => 'boolean'
+			],
+			'show_predicted_issues_none' => [
+				ApiBase::PARAM_TYPE => 'boolean'
+			],
+		];
+	}
+
+	/**
+	 * Get an array of ORES API parameters.
+	 *
+	 * These are used in both NPP and AFC contexts.
+	 *
+	 * @return array
+	 */
+	public static function getOresApiParams() {
+		return self::getOresWp10ApiParams() + self::getOresDraftQualityApiParams();
+	}
+
+	/**
+	 * Get array of common API parameters, for use with getAllowedParams().
+	 *
+	 * @return array
+	 */
+	public static function getCommonApiParams() {
+		return [
+			'showbots' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
+			'showredirs' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
+			'showreviewed' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
+			'showunreviewed' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
+			'showdeleted' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
+			'namespace' => [
+				ApiBase::PARAM_TYPE => 'integer',
+			],
+			'afc_state' => [
+				ApiBase::PARAM_TYPE => 'integer',
+			],
+			'no_category' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
+			'no_inbound_links' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
+			'non_autoconfirmed_users' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
+			'learners' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
+			'blocked_users' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
+			'username' => [
+				ApiBase::PARAM_TYPE => 'user',
+			],
+		];
+	}
+
+	/**
+	 * Helper method to check if the API call includes ORES wp10 parameters.
+	 *
+	 * @param array $opts
+	 * @return bool
+	 */
+	public static function isOresWp10Query( $opts ) {
+		return self::queryContains( $opts, self::getOresWp10ApiParams() );
+	}
+
+	/**
+	 * Helper method to check if the API call includes ORES draftquality parameters.
+	 *
+	 * @param array $opts
+	 * @return bool
+	 */
+	public static function isOresDraftQualityQuery( $opts ) {
+		return self::queryContains( $opts, self::getOresDraftQualityApiParams() );
+	}
+
+	/**
+	 * Helper method to check if $opts contains some of the parameters in $params.
+	 *
+	 * @param array $opts Selected parameters from API request
+	 * @param array $params
+	 * @return bool
+	 */
+	private static function queryContains( $opts, $params ) {
+		$params = array_keys( $params );
+		foreach ( $params as $key ) {
+			if ( isset( $opts[ $key ] ) && $opts[ $key ] ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Convert ORES param names to class names.
+	 *
+	 * @param string $model Which model to convert names for ('wp10' or 'draftquality')
+	 * @param array $opts Selected parameters
+	 * @return array Corresponding ORES class names
+	 */
+	public static function mapOresParamsToClassNames( $model, $opts ) {
+		$paramsToClassesMap = [
+			'wp10' => [
+				'show_predicted_class_stub' => 'Stub',
+				'show_predicted_class_start' => 'Start',
+				'show_predicted_class_c' => 'C',
+				'show_predicted_class_b' => 'B',
+				'show_predicted_class_good' => 'GA',
+				'show_predicted_class_featured' => 'FA',
+			],
+			'draftquality' => [
+				'show_predicted_issues_vandalism' => 'vandalism',
+				'show_predicted_issues_spam' => 'spam',
+				'show_predicted_issues_attack' => 'attack',
+				'show_predicted_issues_none' => 'OK',
+			],
+		];
+		$result = [];
+		foreach ( $paramsToClassesMap[ $model ] as $param => $className ) {
+			if ( isset( $opts[ $param ] ) && $opts[ $param ] ) {
+				$result[] = $className;
+			}
+		}
+		return $result;
 	}
 
 }

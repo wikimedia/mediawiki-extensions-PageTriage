@@ -1,6 +1,6 @@
 {
 	"name": "PageTriage",
-	"version": "0.2.2",
+	"version": "0.3.0",
 	"author": [
 		"Ryan Kaldari",
 		"Benny Situ",
@@ -12,7 +12,10 @@
 	"license-name": "MIT",
 	"type": "specialpage",
 	"requires": {
-		"MediaWiki": ">= 1.32.0"
+		"MediaWiki": ">= 1.32.0",
+		"extensions": {
+			"ORES": "*"
+		}
 	},
 	"APIModules": {
 		"pagetriagelist": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageList",
@@ -201,6 +204,12 @@
 				"comma-separator",
 				"days",
 				"pagetriage-afc-state",
+				"pagetriage-afc-newest",
+				"pagetriage-afc-oldest",
+				"pagetriage-afc-newest-submitted",
+				"pagetriage-afc-oldest-submitted",
+				"pagetriage-afc-newest-declined",
+				"pagetriage-afc-oldest-declined",
 				"pagetriage-afc-state-all",
 				"pagetriage-afc-state-declined",
 				"pagetriage-afc-state-pending",
@@ -272,6 +281,30 @@
 				"pagetriage-filter-stat-learners",
 				"pagetriage-filter-stat-blocked",
 				"pagetriage-filter-stat-username",
+				"pagetriage-filter-stat-predicted-class-stub",
+				"pagetriage-filter-stat-predicted-class-start",
+				"pagetriage-filter-stat-predicted-class-c",
+				"pagetriage-filter-stat-predicted-class-b",
+				"pagetriage-filter-stat-predicted-class-good",
+				"pagetriage-filter-stat-predicted-class-featured",
+				"pagetriage-filter-stat-predicted-issues-vandalism",
+				"pagetriage-filter-stat-predicted-issues-spam",
+				"pagetriage-filter-stat-predicted-issues-attack",
+				"pagetriage-filter-stat-predicted-issues-none",
+				"pagetriage-filter-predicted-class-heading",
+				"pagetriage-filter-predicted-class-stub",
+				"pagetriage-filter-predicted-class-start",
+				"pagetriage-filter-predicted-class-c",
+				"pagetriage-filter-predicted-class-b",
+				"pagetriage-filter-predicted-class-good",
+				"pagetriage-filter-predicted-class-featured",
+				"pagetriage-filter-predicted-issues-heading",
+				"pagetriage-filter-predicted-issues-vandalism",
+				"pagetriage-filter-predicted-issues-spam",
+				"pagetriage-filter-predicted-issues-attack",
+				"pagetriage-filter-predicted-issues-none",
+				"pagetriage-new-page-patrol",
+				"pagetriage-articles-for-creation",
 				"pagetriage-filter-all",
 				"pagetriage-no-pages",
 				"pagetriage-warning-browser",
@@ -551,6 +584,9 @@
 		"ResourceLoaderRegisterModules": "MediaWiki\\Extension\\PageTriage\\Hooks::onResourceLoaderRegisterModules"
 	},
 	"config": {
+		"PageTriageEnableOresFilters": {
+			"value": false
+		},
 		"PageTriageMaxAge": {
 			"value": 90
 		},

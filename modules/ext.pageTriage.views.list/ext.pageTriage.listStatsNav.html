@@ -1,0 +1,15 @@
+<div id="mwe-pt-refresh-button-holder">
+	<button id="mwe-pt-refresh-button"><%= mw.msg( 'pagetriage-refresh-list' ) %></button>
+</div>
+<div class="mwe-pt-bottom-nav-stats">
+	<div id="mwe-pt-unreviewed-stats">
+		<% if ( ptrUnreviewedCount ) { %>
+		<%= mw.msg( 'pagetriage-unreviewed-article-count', ptrUnreviewedCount, ptrOldest ) %>
+		<% } %>
+	</div>
+	<div id="mwe-pt-reviewed-stats">
+		<% if ( ptrReviewedCount ) { %>
+		<%= mw.msg( 'pagetriage-reviewed-article-count-past-week', ptrReviewedCount ) %>
+		<% } %>
+	</div>
+</div>

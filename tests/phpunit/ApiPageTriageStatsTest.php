@@ -35,4 +35,27 @@ class ApiPageTriageStatsTest extends PageTriageTestCase {
 			$list2[0]['pagetriagestats']['stats']['unreviewedarticle']['count']
 		);
 	}
+
+	/**
+	 * Verify that endpoint-specific API params are defined properly.
+	 *
+	 * @throws ApiUsageException
+	 * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil::getCommonApiParams()
+	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageStats::getAllowedParams()
+	 */
+	public function testApiParamsByEndpoint() {
+		// Test valid param to PageTriageStats.
+		$response = $this->doApiRequest( [
+			'action' => 'pagetriagestats',
+			'topreviewers' => '1'
+		] );
+		static::assertArrayNotHasKey( 'warnings', $response[0] );
+		// Test invalid param to PageTriageStats.
+		$response = $this->doApiRequest( [
+			'action' => 'pagetriagestats',
+			'offset' => '56789',
+		] );
+		static::assertEquals( 'Unrecognized parameter: offset.',
+			$response[0]['warnings']['main']['warnings'] );
+	}
 }
