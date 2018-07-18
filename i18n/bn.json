@@ -21,6 +21,8 @@
 	"pagetriage-editcount": "$2 থেকে $1টি {{PLURAL:$1|সম্পাদনা}}",
 	"pagetriage-author-not-autoconfirmed": "নতুন সম্পাদক",
 	"pagetriage-author-bot": "বট",
+	"pagetriage-filter-predicted-issues-vandalism": "ধ্বংসপ্রবণতা",
+	"pagetriage-filter-predicted-issues-spam": "স্প্যাম",
 	"pagetriage-sort-by": "সাজান:",
 	"pagetriage-newest": "নতুন",
 	"pagetriage-oldest": "পুরাতন",
