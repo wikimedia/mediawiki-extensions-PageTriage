@@ -164,7 +164,7 @@
 	"pagetriage-del-tags-dbg7-label": "O autor solicita a eliminação",
 	"pagetriage-del-tags-dbg7-desc": "Páginas cujo autor solicitou a eliminação, quer explicitamente quer apagando o seu conteúdo.(G7)",
 	"pagetriage-del-tags-dbu3-label": "Galerias não-livres",
-	"pagetriage-del-tags-dbu3-desc": "Galerias no espaço de utilizador que consistem principalmente ou na totalidade de imagens com licenças \"fair use\" ou não-livres. A política de conteúdo não-livre da Wikipédia proíbe a utilização de conteúdo não-livre no espaço de utilizador, mesmo conteúdos que o utilizador tenha carregado; é permitida a utilização de conteúdo que esteja no domínio público ou tenha uma licença livre.",
+	"pagetriage-del-tags-dbu3-desc": "Galerias no espaço de utilizador que consistem principalmente ou na totalidade em imagens com licenças \"fair use\" ou não livres. A política de conteúdo não livre da Wikipédia proíbe a utilização de conteúdo que não é livre no espaço de utilizador, mesmo conteúdos que o utilizador tenha carregado; é permitida a utilização de conteúdo que esteja no domínio público ou tenha uma licença livre.",
 	"pagetriage-del-tags-prod-notify-topic-title": "[[Wikipedia:Proposed deletion|Eliminação proposta]] de [[$1]]",
 	"pagetriage-del-tags-xfd-notify-topic-title": "Discussão da eliminação de [[$1]]",
 	"pagetriage-mark-mark-talk-page-notify-topic-title": "Uma página iniciada por {{GENDER:|si}} ($1) foi revista!",

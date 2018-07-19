@@ -4,7 +4,10 @@
 			"Saraiki"
 		]
 	},
+	"pagetriage-filter-predicted-class-start": "شروع",
+	"pagetriage-filter-predicted-issues-none": "کوئی وی کائنی",
 	"pagetriage-filter-stat-non-autoconfirmed": "نویں آوݨ آلے",
 	"pagetriage-filter-stat-learners": "سِکھݨ آلے",
+	"pagetriage-filter-stat-predicted-issues-spam": "ردی",
 	"pagetriage-afc-state-all": "یکے"
 }
