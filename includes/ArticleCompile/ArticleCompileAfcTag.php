@@ -12,6 +12,12 @@ class ArticleCompileAfcTag extends ArticleCompileInterface {
 	const UNDER_REVIEW = 3;
 	const DECLINED = 4;
 
+	/**
+	 * ArticleCompileAfcTag constructor.
+	 * @param array $pageId
+	 * @param int $componentDb
+	 * @param array|null $articles
+	 */
 	public function __construct( $pageId, $componentDb = DB_MASTER, $articles = null ) {
 		parent::__construct( $pageId, $componentDb, $articles );
 	}
@@ -24,8 +30,8 @@ class ArticleCompileAfcTag extends ArticleCompileInterface {
 	 */
 	public static function getAfcCategories() {
 		return [
-			self::PENDING => 'Pending_AfC_submissions',
 			self::UNDER_REVIEW => 'Pending_AfC_submissions_being_reviewed_now',
+			self::PENDING => 'Pending_AfC_submissions',
 			self::DECLINED => 'Declined_AfC_submissions',
 		];
 	}
@@ -45,7 +51,7 @@ class ArticleCompileAfcTag extends ArticleCompileInterface {
 			}
 			$categories = array_keys( $parserOutput->getCategories() );
 			foreach ( $categories as $category ) {
-				$afcStateValue = array_search( $category, $this->getAfcCategories() );
+				$afcStateValue = array_search( $category, static::getAfcCategories() );
 				if ( $afcStateValue ) {
 					$this->metadata[$pageId]['afc_state'] = $afcStateValue;
 
