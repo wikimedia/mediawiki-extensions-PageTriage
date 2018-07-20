@@ -49,10 +49,10 @@ class ArticleCompileAfcTag extends ArticleCompileInterface {
 			if ( !$parserOutput ) {
 				continue;
 			}
+
 			$categories = array_keys( $parserOutput->getCategories() );
-			foreach ( $categories as $category ) {
-				$afcStateValue = array_search( $category, static::getAfcCategories() );
-				if ( $afcStateValue ) {
+			foreach ( self::getAfcCategories() as $afcStateValue => $afcCategory ) {
+				if ( in_array( $afcCategory, $categories ) ) {
 					$this->metadata[$pageId]['afc_state'] = $afcStateValue;
 
 					// Drafts re-use the ptrp_reviewed_updated to serve as the time of the last

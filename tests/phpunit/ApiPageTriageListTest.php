@@ -111,6 +111,40 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	}
 
 	/**
+	 * When there are multiple AfC categories on the page.
+	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList
+	 */
+	public function testMultiAfcCategories() {
+		// Insert pending and under review categories
+		$this->insertPage(
+			'AfC test page',
+			'[[Category:Pending AfC submissions]][[Category:Pending AfC submissions being reviewed now]]',
+			$this->draftNsId
+		);
+
+		// Should be in the Pending feed.
+		$list = $this->getPageTriageList( [ 'afc_state' => ArticleCompileAfcTag::UNDER_REVIEW ] );
+		static::assertArraySubset(
+			[ 'title' => 'Draft:AfC test page' ],
+			$list[0]
+		);
+
+		// Should still be in Pending feed if categories are in the opposite order.
+		// Also Declined category should be ignored, since Pending has higher priority.
+		$this->insertPage(
+			'AfC test page',
+			'[[Category:Declined AfC submissions]][[Category:Pending AfC submissions being reviewed now]]'
+				.'[[Category:Pending AfC submissions]]',
+			$this->draftNsId
+		);
+		$list = $this->getPageTriageList( [ 'afc_state' => ArticleCompileAfcTag::UNDER_REVIEW ] );
+		static::assertArraySubset(
+			[ 'title' => 'Draft:AfC test page' ],
+			$list[0]
+		);
+	}
+
+	/**
 	 * Getting unsubmitted drafts (not in related category).
 	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList
 	 */
