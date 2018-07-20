@@ -42,7 +42,7 @@ class ArticleCompileAfcTag extends ArticleCompileInterface {
 	 */
 	public function compile() {
 		foreach ( $this->mPageId as $pageId ) {
-			// Default to unsubmitted state; will be overriden if relevant category is present.
+			// Default to unsubmitted state; will be overridden if relevant category is present.
 			$this->metadata[$pageId]['afc_state'] = self::UNSUBMITTED;
 
 			$parserOutput = $this->getParserOutputByPageId( $pageId );

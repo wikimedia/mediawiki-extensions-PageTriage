@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\PageTriage\Api;
 
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
+use MediaWiki\Extension\PageTriage\OresMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use ApiBase;
 use ApiResult;
@@ -43,38 +44,48 @@ class ApiPageTriageList extends ApiBase {
 
 			$userPageStatus = PageTriageUtil::pageStatusForUser( $metaData );
 
+			if ( PageTriageUtil::oresIsAvailable() ) {
+				$oresMetadata = OresMetadata::newFromGlobalState( $this->getContext(), $pages );
+			}
+
 			// Sort data according to page order returned by our query. Also convert it to a
 			// slightly different format that's more Backbone-friendly.
 			foreach ( $pages as $page ) {
-				if ( isset( $metaData[$page] ) ) {
-					$metaData[$page]['creation_date_utc'] = $metaData[$page]['creation_date'];
-					$metaData[$page]['creation_date'] = $this->getContext()->getLanguage()->userAdjust(
-						$metaData[$page]['creation_date']
-					);
-
-					// Page creator
-					$metaData[$page] += $this->createUserInfo(
-						$metaData[$page]['user_name'],
-						$userPageStatus,
-						'creator'
-					);
-
-					// Page reviewer
-					if ( $metaData[$page]['reviewer'] ) {
-						$metaData[$page] += $this->createUserInfo(
-							$metaData[$page]['reviewer'],
-							$userPageStatus,
-							'reviewer'
-						);
-					}
-
-					$metaData[$page][ApiResult::META_BC_BOOLS] = [
-						'creator_user_page_exist', 'creator_user_talk_page_exist',
-						'reviewer_user_page_exist', 'reviewer_user_talk_page_exist',
-					];
-
-					$sortedMetaData[] = [ 'pageid' => $page ] + $metaData[$page];
+				if ( !isset( $metaData[$page] ) ) {
+					continue;
 				}
+				$metaData[$page]['creation_date_utc'] = $metaData[$page]['creation_date'];
+				$metaData[$page]['creation_date'] = $this->getContext()->getLanguage()->userAdjust(
+					$metaData[$page]['creation_date']
+				);
+
+				// Page creator
+				$metaData[$page] += $this->createUserInfo(
+					$metaData[$page]['user_name'],
+					$userPageStatus,
+					'creator'
+				);
+
+				// Page reviewer
+				if ( $metaData[$page]['reviewer'] ) {
+					$metaData[$page] += $this->createUserInfo(
+						$metaData[$page]['reviewer'],
+						$userPageStatus,
+						'reviewer'
+					);
+				}
+
+				// Add ORES data
+				if ( PageTriageUtil::oresIsAvailable() ) {
+					$metaData[$page] = $metaData[$page] + $oresMetadata->getMetadata( $page );
+				}
+
+				$metaData[$page][ApiResult::META_BC_BOOLS] = [
+					'creator_user_page_exist', 'creator_user_talk_page_exist',
+					'reviewer_user_page_exist', 'reviewer_user_talk_page_exist',
+				];
+
+				$sortedMetaData[] = [ 'pageid' => $page ] + $metaData[$page];
 			}
 		}
 
@@ -380,4 +391,5 @@ class ApiPageTriageList extends ApiBase {
 				=> 'apihelp-pagetriagelist-example-1',
 		];
 	}
+
 }

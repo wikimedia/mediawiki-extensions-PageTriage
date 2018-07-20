@@ -554,12 +554,12 @@ $( function () {
 			if ( afcStateValue === 4 ) { // Declined
 				$( '.mwe-pt-afc-sort-declined' ).show();
 				$( '.mwe-pt-afc-sort-submitted' ).hide();
-			} else if ( afcStateValue === 1 ) { // Unsubmitted
-				$( '.mwe-pt-afc-sort-declined' ).hide();
-				$( '.mwe-pt-afc-sort-submitted' ).hide();
-			} else {
+			} else if ( afcStateValue === 2 || afcStateValue === 3 ) { // Awaiting or Under review
 				$( '.mwe-pt-afc-sort-declined' ).hide();
 				$( '.mwe-pt-afc-sort-submitted' ).show();
+			} else {
+				$( '.mwe-pt-afc-sort-declined' ).hide();
+				$( '.mwe-pt-afc-sort-submitted' ).hide();
 			}
 
 			// Set the "Showing: ..." filter status.
