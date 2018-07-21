@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Aslmad mohamed belarhzali"
+			"Aslmad mohamed belarhzali",
+			"Mdb897"
 		]
 	},
 	"pagetriage-afc-oldest": "ⴰⵙⴰⴽⵓⴷ ⵏ ⵓⵙⵏⵓⵍⴼⵓ (ⴰⵣⴰⵢⴽⵓ ⴰⴽⴽ)",
-	"pagetriage-afc-state": "ⴰⴷⴷⴰⴷ"
+	"pagetriage-afc-state": "ⴰⴷⴷⴰⴷ",
+	"apihelp-pagetriagelist-param-show_predicted_class_stub": "ⵉⵖ ⵉⵅⵚⵚⴰ ⴰⴷ ⵉⵜⵡⴰⵙⴽⵛⵎ ⵜⵎⴷⵍⵜ ⵏ ⵜⵎⵖⵔⵉⵜ ⵉⵜⵡⴰⵙⵓⵜⴳⵏ"
 }

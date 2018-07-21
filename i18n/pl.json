@@ -53,6 +53,7 @@
 	"pagetriage-filter-stat-non-autoconfirmed": "nowi edytorzy",
 	"pagetriage-filter-stat-blocked": "zablokowani użytkownicy",
 	"pagetriage-filter-stat-username": "nazwa użytkownika: $1",
+	"pagetriage-filter-stat-predicted-class-stub": "zalążek",
 	"pagetriage-filter-stat-predicted-issues-vandalism": "wandalizm",
 	"pagetriage-filter-stat-predicted-issues-spam": "spam",
 	"pagetriage-no-pages": "Brak stron spełniających kryteria.",
