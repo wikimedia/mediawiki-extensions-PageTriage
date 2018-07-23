@@ -95,6 +95,7 @@
 	"pagetriage-filter-stat-non-autoconfirmed": "recién llegados",
 	"pagetriage-filter-stat-blocked": "usuarios bloqueados",
 	"pagetriage-filter-stat-username": "nombre de usuario: $1",
+	"pagetriage-filter-stat-predicted-issues-vandalism": "vandalismo",
 	"pagetriage-filter-stat-predicted-issues-attack": "ataque",
 	"pagetriage-no-pages": "Ninguna página coincide con tus criterios.",
 	"pagetriage-warning-browser": "Esta herramienta podría no funcionar correctamente en navegadores anteriores a Internet Explorer 11.",

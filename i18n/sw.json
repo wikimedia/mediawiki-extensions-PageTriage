@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rance"
+		]
+	},
+	"pagetriage-filter-predicted-class-heading": "Daraja au darasa lililotabiriwa",
+	"pagetriage-filter-predicted-class-start": "Anza",
+	"pagetriage-filter-predicted-class-c": "daraja-C",
+	"pagetriage-filter-predicted-class-good": "Vizuri au Nzuri",
+	"pagetriage-filter-predicted-issues-heading": "Matatizo au Masuala yaliyotabiriwa",
+	"pagetriage-filter-predicted-issues-vandalism": "Uharibifu wa mali za uma au binafsi",
+	"pagetriage-filter-predicted-issues-spam": "Ujumbe usiofaa",
+	"pagetriage-filter-predicted-issues-attack": "Shambulia",
+	"pagetriage-filter-predicted-issues-none": "Hakuna",
+	"pagetriage-filter-stat-predicted-class-start": "Anza",
+	"pagetriage-filter-stat-predicted-class-c": "daraja-c",
+	"pagetriage-filter-stat-predicted-class-b": "daraja-b",
+	"pagetriage-filter-stat-predicted-class-good": "Vizuri au Nzuri",
+	"pagetriage-filter-stat-predicted-class-featured": "shirikishwa",
+	"pagetriage-filter-stat-predicted-issues-spam": "ujumbe usio muhimu",
+	"pagetriage-filter-stat-predicted-issues-attack": "shambulia",
+	"pagetriage-filter-stat-predicted-issues-none": "Hakuna matatizo",
+	"apihelp-pagetriagelist-param-show_predicted_class_c": "Ikiwa itahitaji kuhusisha daraja C lililotabiriwa",
+	"apihelp-pagetriagelist-param-show_predicted_class_good": "Ikiwa itahitaji kuhusisha daraja lililotabiriwa zuri",
+	"apihelp-pagetriagelist-param-show_predicted_class_featured": "Ikiwa itahitaji kuhusisha daraja husika lililotabiriwa",
+	"apihelp-pagetriagelist-param-show_predicted_issues_vandalism": "ikiwa itahitaji kuhusisha masuala yaliyotabiriwa ya uharibifu",
+	"apihelp-pagetriagelist-param-show_predicted_issues_spam": "Ikiwa itahitaji kuhusisha matatizo yaliyotabiriwa yatokanayo na ujumbe hatari au usio muhimu",
+	"apihelp-pagetriagelist-param-show_predicted_issues_attack": "kama itahitaji kuhusisha shambulio la maswala yaliyotabiriwa",
+	"apihelp-pagetriagelist-param-show_predicted_issues_none": "Ikiwa itahitaji kuhusisha matatizo yasiyotabiriwa",
+	"apihelp-pagetriagestats-param-show_predicted_class_stub": "Ikiwa itahitaji kuhusisha daraja lililotabiriwa na kutunzwa",
+	"apihelp-pagetriagestats-param-show_predicted_class_start": "Ikiwa itahitaji kuhusisha daraja lililotabiriwa kuanza",
+	"apihelp-pagetriagestats-param-show_predicted_class_c": "Ikiwa itahitaji kuhusisha daraja C lililotabiriwa",
+	"apihelp-pagetriagestats-param-show_predicted_class_good": "Ikiwa itahitaji kuhusisha daraja lililotabiriwa zuri",
+	"apihelp-pagetriagestats-param-show_predicted_class_featured": "Ikiwa itahitaji kuhusisha daraja lililotabiriwa kuhusishwa",
+	"apihelp-pagetriagestats-param-show_predicted_issues_spam": "Ikiwa itahitaji kuhusisha matatizo yaliyotabiriwa yatokanayo na ujumbe hatarishi au usio muhimu",
+	"apihelp-pagetriagestats-param-show_predicted_issues_attack": "Ikiwa itahitaji kuhusisha matatizo yaliyotabiriwa yatokanayo na shambulio",
+	"apihelp-pagetriagestats-param-show_predicted_issues_none": "Ikiwa itahitaji kuhusisha matatizo yasiyotabiriwa"
+}
