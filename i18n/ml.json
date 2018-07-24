@@ -1,9 +1,39 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jinoytommanjaly"
+			"Jinoytommanjaly",
+			"Praveenp"
 		]
 	},
+	"pagetriage": "താൾ പരിശോധന",
+	"newpagesfeed": "പുതിയ താളുകൾ ഫീഡ്",
+	"pagetriage-desc": "പുതിയ താളുകൾ സംശോധനം ചെയ്യുന്നതിനും അംഗീകരിക്കുന്നതിനുമുള്ള സൗകര്യം ഒരുക്കുന്നു",
+	"pagetriage-pagecuration": "താൾ പരിപാലനം",
+	"pagetriage-new-page-patrol": "പുതിയ താൾ റോന്തുചുറ്റൽ",
+	"pagetriage-articles-for-creation": "സൃഷ്ടിക്കാനുള്ള ലേഖനങ്ങൾ",
+	"pagetriage-please-wait": "ദയവായി കാത്തിരിക്കുക…",
+	"pagetriage-api-invalidid": "താങ്കൾ നൽകിയ ഐ.ഡി. ($1) സാധുതയുള്ളതല്ല.",
+	"pagetriage-markpatrolled": "ഈ താൾ സംശോധനം ചെയ്തതായി അടയാളപ്പെടുത്തുക",
+	"pagetriage-markunpatrolled": "ഈ താൾ സംശോധനം ചെയ്തത് നീക്കിയെന്ന് അടയാളപ്പെടുത്തുക",
+	"pagetriage-self-review-error": "താങ്കൾ സൃഷ്ടിച്ച താളുകൾ താങ്കൾക്ക് സംശോധനം ചെയ്യാനാവില്ല.",
+	"pagetriage-api-error": "എ.പി.ഐ.യിൽ നിന്നും സമ്പർക്കമുഖം എടുത്തുകൊണ്ടിരിക്കെ ഒരു പിഴവുണ്ടായി. ദയവായി താൾ വീണ്ടും എടുത്ത് ശ്രമിക്കുക.",
+	"pagetriage-reviewed": "സംശോധനം ചെയ്തവ",
+	"pagetriage-mark-as-reviewed-error": "താൾ സംശോധനം ചെയ്തുവെന്ന് അടയാളപ്പെടുത്തിക്കൊണ്ടിരിക്കെ ഒരു പിഴവുണ്ടായി: $1",
+	"pagetriage-mark-as-unreviewed-error": "താൾ സംശോധനം ചെയ്തത് ഒഴിവാക്കിയെന്ന് അടയാളപ്പെടുത്തിക്കൊണ്ടിരിക്കെ ഒരു പിഴവുണ്ടായി: $1",
+	"pagetriage-hist": "നാൾവഴി",
+	"pagetriage-bytes": "{{PLURAL:$1|ഒരു ബൈറ്റ്|$1 ബൈറ്റുകൾ}}",
+	"pagetriage-edits": "{{PLURAL:$1|ഒരു തിരുത്ത്|$1 തിരുത്തുകൾ}}",
+	"pagetriage-categories": "{{PLURAL:$1|ഒരു വർഗ്ഗം|$1 വർഗ്ഗങ്ങൾ}}",
+	"pagetriage-no-categories": "വർഗ്ഗങ്ങൾ ഇല്ല",
+	"pagetriage-no-reference": "അവലംബങ്ങൾ ഇല്ല",
+	"pagetriage-orphan": "അനാഥം",
+	"pagetriage-no-author": "എഴുതിയയാളുടെ വിവരങ്ങൾ ഇപ്പോൾ ഇല്ല",
+	"pagetriage-byline": "സൃഷ്ടിച്ചത് $1 ആണ് ($2$3$4)",
+	"pagetriage-byline-new-editor": "സൃഷ്ടിച്ചത് പുതിയ ഉപയോക്താവ് $1 ആണ് ($2$3$4)",
+	"pagetriage-articleinfo-byline": "ഈ താൾ സൃഷ്ടിച്ചത് $1-ന് $2 ആണ് ($3$4$5)",
+	"pagetriage-articleinfo-byline-new-editor": "ഈ താൾ സൃഷ്ടിച്ചത് $1-ന് പുതിയ ഉപയോക്താവായ $2 ആണ് ($3$4$5)",
+	"pagetriage-editcount": "$2 മുതൽ {{PLURAL:$1|ഒരു തിരുത്തൽ|$1 തിരുത്തലുകൾ}}",
+	"pagetriage-author-not-autoconfirmed": "പുതിയ ലേഖിക/ലേഖകൻ",
 	"pagetriage-filter-stat-predicted-issues-attack": "ആക്രമണം",
 	"apihelp-pagetriagestats-param-show_predicted_issues_vandalism": "നശീകരണപ്രവർത്തനങ്ങളെ മുൻകൂട്ടി ഉൾപെടുത്തിയാലോ എന്ന്"
 }

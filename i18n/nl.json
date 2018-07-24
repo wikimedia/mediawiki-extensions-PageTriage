@@ -13,7 +13,8 @@
 			"Esketti",
 			"Mainframe98",
 			"Effeietsanders",
-			"Southparkfan"
+			"Southparkfan",
+			"Optilete"
 		]
 	},
 	"pagetriage": "Paginacontrole",
@@ -349,7 +350,7 @@
 	"apihelp-pagetriagelist-param-limit": "Het maximale aantal resultaten terug te keren.",
 	"apihelp-pagetriagelist-param-offset": "Tijdstempel te starten.",
 	"apihelp-pagetriagelist-param-pageoffset": "Pagina ID van start van (vereist $1offset-parameter worden doorgegeven als het goed is).",
-	"apihelp-pagetriagelist-param-dir": "De richting van de lijst moet worden gesorteerd in - oldestfirst, newestfirst, oldestreview of newestreview.",
+	"apihelp-pagetriagelist-param-dir": "De volgorde van de lijst moet worden gesorteerd in - oldestfirst, newestfirst, oldestreview of newestreview.",
 	"apihelp-pagetriagelist-param-namespace": "Uit welke naamruimte pagina's moeten worden opgehaald.",
 	"apihelp-pagetriagelist-param-no_category": "Of alleen pagina ' s met geen categorie.",
 	"apihelp-pagetriagelist-param-no_inbound_links": "Of alleen pagina ' s met geen inkomende links.",
