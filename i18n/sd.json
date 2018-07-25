@@ -1,14 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mehtab ahmed"
+			"Mehtab ahmed",
+			"Tweety"
 		]
 	},
 	"pagetriage-edits": "$1 {{PLURAL:$1|ترميم|ترميمون}}",
 	"pagetriage-author-bot": "بوٽ",
+	"pagetriage-filter-username": "واپرائيندڙ-نانءُ",
 	"pagetriage-filter-ns-all": "سڀ",
 	"pagetriage-filter-stat-all": "سڀ",
 	"pagetriage-filter-stat-unreviewed": "اڻ-جائزو-ورتل",
+	"pagetriage-filter-stat-username": "واپرائيندڙ-نانءُ: $1",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|ترميم|ترميمون}}",
 	"pagetriage-toolbar-close": "بند ڪريو"
 }
