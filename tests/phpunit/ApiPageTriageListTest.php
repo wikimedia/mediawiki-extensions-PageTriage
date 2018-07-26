@@ -328,6 +328,10 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getPageIds()
 	 */
 	public function testQueryOres() {
+		$this->setMwGlobals( 'wgOresModels', [
+			'draftquality' => [ 'enabled' => true ],
+			'wp10' => [ 'enabled' => true ],
+		] );
 		$user = static::getTestUser()->getUser();
 		$this->insertPage( 'Test page ores 1', 'some content', $this->draftNsId, $user );
 		$page = WikiPage::factory( Title::newFromText( 'Test page ores 1', $this->draftNsId ) );

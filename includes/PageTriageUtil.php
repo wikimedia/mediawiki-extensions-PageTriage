@@ -10,6 +10,7 @@ use EchoEvent;
 use Exception;
 use ExtensionRegistry;
 use MediaWiki\MediaWikiServices;
+use ORES\Hooks\Helpers;
 use RequestContext;
 use Title;
 use User;
@@ -629,6 +630,18 @@ class PageTriageUtil {
 			}
 		}
 		return $result;
+	}
+
+	/**
+	 * Check if the ORES extension is present and configured
+	 * correctly for PageTriage to integrate with it.
+	 *
+	 * @return bool
+	 */
+	public static function oresIsAvailable() {
+		return ExtensionRegistry::getInstance()->isLoaded( 'ORES' ) &&
+			Helpers::isModelEnabled( 'wp10' ) &&
+			Helpers::isModelEnabled( 'draftquality' );
 	}
 
 }
