@@ -90,7 +90,7 @@ class PageTriageUtil {
 	 * @param int $namespace
 	 * @return array
 	 *
-	 * @Todo - Limit the number of records by a timestamp filter, maybe 30 days etc,
+	 * @todo - Limit the number of records by a timestamp filter, maybe 30 days etc,
 	 *         depends on the time the triage queue should look back for listview
 	 */
 	public static function getUnreviewedArticleStat( $namespace = '' ) {
