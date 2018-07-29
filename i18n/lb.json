@@ -35,6 +35,7 @@
 	"pagetriage-filter-predicted-class-c": "C-Klass",
 	"pagetriage-filter-predicted-class-b": "B-Klass",
 	"pagetriage-filter-predicted-class-good": "Gutt",
+	"pagetriage-filter-predicted-class-featured": "Bemierkenswäert",
 	"pagetriage-filter-predicted-issues-vandalism": "Vandalismus",
 	"pagetriage-filter-predicted-issues-spam": "Spam",
 	"pagetriage-filter-predicted-issues-attack": "Attack",
