@@ -233,7 +233,7 @@ class ArticleCompileProcessor {
 
 			// Check for the update_reviewed_timestamp flag, which means we should update the
 			// ptrp_reviewed_updated field after processing (e.g. submission date of AfC drafts).
-			if ( in_array( 'update_reviewed_timestamp', array_keys( $data ) ) ) {
+			if ( array_key_exists( 'update_reviewed_timestamp', $data ) ) {
 				unset( $data['update_reviewed_timestamp'] );
 				$updateReviewedTimestamp = true;
 			}
