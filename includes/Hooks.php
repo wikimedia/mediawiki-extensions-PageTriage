@@ -905,4 +905,26 @@ class Hooks {
 
 		return true;
 	}
+
+	/**
+	 * @param RecentChange $rc
+	 * @param array &$models Models names to score
+	 */
+	public static function onORESCheckModels( RecentChange $rc, &$models ) {
+		if ( !PageTriageUtil::doesPageNeedTriage( $rc->getTitle()->getArticleID() ) ) {
+			return;
+		}
+
+		if ( !in_array( $rc->getAttribute( 'rc_type' ), [ RC_NEW, RC_EDIT ] ) ) {
+			return;
+		}
+
+		// Ensure all pages in the PageTriage queue
+		// are scored for both models regardless of namespace.
+		foreach ( [ 'wp10', 'draftquality' ] as $model ) {
+			if ( !in_array( $model, $models ) ) {
+				$models[] = $model;
+			}
+		}
+	}
 }

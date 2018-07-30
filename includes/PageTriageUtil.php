@@ -24,7 +24,7 @@ class PageTriageUtil {
 	/**
 	 * Get whether or not a page needs triaging
 	 *
-	 * @param WikiPage|Article $article WikiPage object
+	 * @param WikiPage|Article|int $article
 	 *
 	 * @throws Exception
 	 * @return Mixed null if the page is not in the triage system,
@@ -37,15 +37,18 @@ class PageTriageUtil {
 			throw new Exception( "Invalid argument to " . __METHOD__ );
 		}
 
-		if ( ! $article->getId() ) {
-			// article doesn't exist.  this happens a lot.
+		if ( $article instanceof WikiPage || $article instanceof Article ) {
+			$pageId = $article->getId();
+		} elseif ( is_numeric( $article ) ) {
+			$pageId = $article;
+		} else {
 			return null;
 		}
 
 		$dbr = wfGetDB( DB_REPLICA );
 
 		$row = $dbr->selectRow( 'pagetriage_page', 'ptrp_reviewed',
-			[ 'ptrp_page_id' => $article->getId() ]
+			[ 'ptrp_page_id' => $pageId ]
 		);
 
 		if ( ! $row ) {
