@@ -22,7 +22,7 @@ $( function () {
 				// overall toolbar view
 				// currently, this is the main application view.
 				mw.pageTriage.ToolbarView = Backbone.View.extend( {
-					template: mw.pageTriage.viewUtil.template( { view: 'toolbar', template: 'toolbarView.html' } ),
+					template: mw.template.get( 'ext.pageTriage.views.toolbar', 'toolbarView.underscore' ),
 					// token for setting user options
 					optionsToken: '',
 

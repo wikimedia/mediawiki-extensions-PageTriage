@@ -501,10 +501,5 @@
 	"apihelp-pagetriagetagging-param-deletion": "{{doc-apihelp-param|pagetriagetagging|deletion}}",
 	"apihelp-pagetriagetagging-param-note": "{{doc-apihelp-param|pagetriagetagging|note}}",
 	"apihelp-pagetriagetagging-param-taglist": "{{doc-apihelp-param|pagetriagetagging|taglist}}",
-	"apihelp-pagetriagetemplate-description": "{{doc-apihelp-description|pagetriagetemplate}}",
-	"apihelp-pagetriagetemplate-summary": "{{doc-apihelp-summary|pagetriagetemplate}}",
-	"apihelp-pagetriagetemplate-param-view": "{{doc-apihelp-param|pagetriagetemplate|view}}",
-	"apihelp-pagetriagetemplate-param-template": "{{doc-apihelp-param|pagetriagetemplate|template}}",
-	"apihelp-pagetriagetemplate-example-1": "{{doc-apihelp-example|pagetriagetemplate}}",
 	"apierror-bad-pagetriage-page": "{{doc-apierror}}"
 }

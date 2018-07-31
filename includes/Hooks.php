@@ -760,6 +760,25 @@ class Hooks {
 			$afterTools
 		);
 
+		$viewsToolbarModule['templates'] = [
+			'articleInfo.underscore' =>
+				'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfo.underscore',
+			'articleInfoHistory.underscore' =>
+				'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfoHistory.underscore',
+			'delete.underscore' =>
+				'ext.pageTriage.views.toolbar/ext.pageTriage.delete.underscore',
+			'mark.underscore' =>
+				'ext.pageTriage.views.toolbar/ext.pageTriage.mark.underscore',
+			'tags.underscore' =>
+				'ext.pageTriage.views.toolbar/ext.pageTriage.tags.underscore',
+			'toolbarView.underscore' =>
+				'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.underscore',
+			'toolView.underscore' =>
+				'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.underscore',
+			'wikilove.underscore' =>
+				'ext.pageTriage.views.toolbar/ext.pageTriage.wikilove.underscore',
+		];
+
 		$resourceLoader->register( 'ext.pageTriage.views.toolbar', $viewsToolbarModule );
 	}
 

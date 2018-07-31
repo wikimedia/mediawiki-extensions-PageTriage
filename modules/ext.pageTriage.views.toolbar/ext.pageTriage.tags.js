@@ -5,7 +5,7 @@ $( function () {
 		icon: 'icon_tag.png',
 		title: mw.msg( 'pagetriage-tags-title' ),
 		tooltip: 'pagetriage-tags-tooltip',
-		template: mw.pageTriage.viewUtil.template( { view: 'toolbar', template: 'tags.html' } ),
+		template: mw.template.get( 'ext.pageTriage.views.toolbar', 'tags.underscore' ),
 		tagsOptions: $.pageTriageTagsOptions,
 		selectedTag: {},
 		selectedTagCount: 0,

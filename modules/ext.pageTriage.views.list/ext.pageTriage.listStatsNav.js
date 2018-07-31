@@ -3,7 +3,7 @@ $( function () {
 
 	mw.pageTriage.ListStatsNav = Backbone.View.extend( {
 		tagName: 'div',
-		template: mw.pageTriage.viewUtil.template( { view: 'list', template: 'listStatsNav.html' } ),
+		template: mw.template.get( 'ext.pageTriage.views.list', 'listStatsNav.underscore' ),
 
 		initialize: function ( options ) {
 			var that = this;

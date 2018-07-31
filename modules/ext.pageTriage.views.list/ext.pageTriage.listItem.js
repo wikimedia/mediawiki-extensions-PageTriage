@@ -4,7 +4,7 @@ $( function () {
 	mw.pageTriage.ListItem = Backbone.View.extend( {
 		tagName: 'div',
 		className: 'mwe-pt-list-item',
-		template: mw.pageTriage.viewUtil.template( { view: 'list', template: 'listItem.html' } ),
+		template: mw.template.get( 'ext.pageTriage.views.list', 'listItem.underscore' ),
 
 		// listen for changes to the model and re-render.
 		initialize: function () {

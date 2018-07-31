@@ -123,7 +123,7 @@ $( function () {
 		icon: 'icon_trash.png',
 		title: mw.msg( 'pagetriage-del-title' ),
 		tooltip: 'pagetriage-del-tooltip',
-		template: mw.pageTriage.viewUtil.template( { view: 'toolbar', template: 'delete.html' } ),
+		template: mw.template.get( 'ext.pageTriage.views.toolbar', 'delete.underscore' ),
 		deletionTagsOptions: {},
 		selectedTag: {},
 		selectedCat: '',

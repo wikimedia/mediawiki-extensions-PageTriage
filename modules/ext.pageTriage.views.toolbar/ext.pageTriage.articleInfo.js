@@ -6,7 +6,7 @@ $( function () {
 		icon: 'icon_info.png', // the default icon
 		title: mw.msg( 'pagetriage-info-title' ),
 		tooltip: 'pagetriage-info-tooltip',
-		template: mw.pageTriage.viewUtil.template( { view: 'toolbar', template: 'articleInfo.html' } ),
+		template: mw.template.get( 'ext.pageTriage.views.toolbar', 'articleInfo.underscore' ),
 
 		badgeCount: function () {
 			this.enumerateProblems();
@@ -135,7 +135,7 @@ $( function () {
 
 	mw.pageTriage.ArticleInfoHistoryView = Backbone.View.extend( {
 		id: 'mwe-pt-info-history',
-		template: mw.pageTriage.viewUtil.template( { view: 'toolbar', template: 'articleInfoHistory.html' } ),
+		template: mw.template.get( 'ext.pageTriage.views.toolbar', 'articleInfoHistory.underscore' ),
 
 		render: function () {
 			var parsedTimestamp, userTitle,

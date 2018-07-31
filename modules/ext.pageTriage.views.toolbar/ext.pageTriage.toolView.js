@@ -47,7 +47,7 @@ $( function () {
 		// from here down is stuff you probably won't want to override
 		tagName: 'div',
 		className: 'mwe-pt-tool',
-		chromeTemplate: mw.pageTriage.viewUtil.template( { view: 'toolbar', template: 'toolView.html' } ),
+		chromeTemplate: mw.template.get( 'ext.pageTriage.views.toolbar', 'toolView.underscore' ),
 		visible: false,
 		rendered: false,
 

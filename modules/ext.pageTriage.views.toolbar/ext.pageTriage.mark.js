@@ -6,7 +6,7 @@ $( function () {
 		icon: 'icon_mark_reviewed.png', // the default icon
 		title: mw.msg( 'pagetriage-mark-as-reviewed' ),
 		tooltip: '',
-		template: mw.pageTriage.viewUtil.template( { view: 'toolbar', template: 'mark.html' } ),
+		template: mw.template.get( 'ext.pageTriage.views.toolbar', 'mark.underscore' ),
 		noteChanged: false,
 
 		initialize: function ( options ) {

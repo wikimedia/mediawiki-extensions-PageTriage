@@ -3,7 +3,7 @@ $( function () {
 
 	mw.pageTriage.ListControlNav = Backbone.View.extend( {
 		tagName: 'div',
-		template: mw.pageTriage.viewUtil.template( { view: 'list', template: 'listControlNav.html' } ),
+		template: mw.template.get( 'ext.pageTriage.views.list', 'listControlNav.underscore' ),
 		filterMenuVisible: 0,
 		filterStatus: mw.msg( 'pagetriage-filter-stat-all' ),
 		newFilterStatus: {},

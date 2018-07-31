@@ -36,7 +36,7 @@ $( function () {
 				reviewedUpdatedParsed = Date.parseExact( article.get( 'ptrp_reviewed_updated' ), 'yyyyMMddHHmmss' ),
 				nsId = new mw.Title( article.get( 'title' ) ).getNamespaceId();
 
-			// Set whether it's a draft, which we'll reference in ext.pageTriage.listItem.html
+			// Set whether it's a draft, which we'll reference in ext.pageTriage.listItem.underscore
 			article.set( 'is_draft', nsId === mw.config.get( 'wgPageTriageDraftNamespaceId' ) );
 
 			article.set(
