@@ -44,30 +44,27 @@ $( function () {
 		/**
 		 * Get namespace options to present to the user in the NPP controls.
 		 *
-		 * These are the Article and Draft namespaces.
+		 * Based on wgPageTriageNamespaces
 		 *
 		 * @return {jQuery[]}
 		 */
 		getNamespaceOptions: function () {
 			var wgFormattedNamespaces = mw.config.get( 'wgFormattedNamespaces' ),
-				nsOptions = [],
-				draftNamespaceId = mw.config.get( 'wgPageTriageDraftNamespaceId' );
-			// Add Article namespace.
-			nsOptions.push(
-				$( '<option>' )
-					.attr( 'value', 0 )
-					.text( mw.msg( 'pagetriage-filter-article' ) )
-			);
-			// Add the Draft namespace.
-			if ( draftNamespaceId && wgFormattedNamespaces[ draftNamespaceId ] ) {
-				nsOptions.push(
-					$( '<option>' )
-						.attr( 'value', draftNamespaceId )
-						.text( wgFormattedNamespaces[ draftNamespaceId ] )
-				);
+				pageTriageNamespaces = mw.config.get( 'pageTriageNamespaces' ),
+				draftNamespaceId = mw.config.get( 'wgPageTriageDraftNamespaceId' ),
+				draftIndex = pageTriageNamespaces.indexOf( draftNamespaceId );
 
+			// Remove draft from namespaces shown in NPP controls
+			if ( draftIndex !== -1 ) {
+				pageTriageNamespaces.splice( draftIndex, 1 );
 			}
-			return nsOptions;
+
+			return pageTriageNamespaces.map( function ( ns ) {
+				var text = ns === 0 ?
+					mw.msg( 'pagetriage-filter-article' ) :
+					wgFormattedNamespaces[ ns ];
+				return $( '<option>' ).attr( 'value', ns ).text( text );
+			} );
 		},
 
 		render: function () {
