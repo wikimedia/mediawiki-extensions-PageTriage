@@ -38,6 +38,9 @@ class SpecialNewPagesFeed extends SpecialPage {
 				$wgPageTriageStickyControlNav, $wgPageTriageStickyStatsNav,
 				$wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl, $wgPageTriageEnableOresFilters;
 
+		$request = $this->getRequest();
+		$showOresFilters = PageTriageUtil::oresIsAvailable() &&
+			( $wgPageTriageEnableOresFilters || $request->getBool( 'ores' ) );
 		$this->setHeaders();
 		$out = $this->getOutput();
 		$user = $this->getUser();
@@ -57,25 +60,14 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$wgPageTriageInfiniteScrolling = $this->booleanToString( $wgPageTriageInfiniteScrolling );
 		$wgPageTriageStickyControlNav = $this->booleanToString( $wgPageTriageStickyControlNav );
 		$wgPageTriageStickyStatsNav = $this->booleanToString( $wgPageTriageStickyStatsNav );
-		$wgPageTriageEnableOresFilters = $this->booleanToString( $wgPageTriageEnableOresFilters );
+		$showOresFilters = $this->booleanToString( $showOresFilters );
 
 		// Allow infinite scrolling override from query string parameter
 		// We don't use getBool() here since the param is optional
-		$request = $this->getRequest();
 		if ( $request->getText( 'infinite' ) === 'true' ) {
 			$wgPageTriageInfiniteScrolling = 'true';
 		} elseif ( $request->getText( 'infinite' ) === 'false' ) {
 			$wgPageTriageInfiniteScrolling = 'false';
-		}
-
-		// Allow enabling ORES filters from query string parameter.
-		// @todo Remove this once the feature is out of beta.
-		// Using getText() as above since the param is optional.
-		if ( $request->getText( 'ores' ) === 'true' ) {
-			$wgPageTriageEnableOresFilters = 'true';
-		}
-		if ( $request->getText( 'ores' ) === 'false' ) {
-			$wgPageTriageEnableOresFilters = 'false';
 		}
 
 		// Set the config flags in JavaScript
@@ -85,7 +77,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 			'wgPageTriageStickyControlNav' => $wgPageTriageStickyControlNav,
 			'wgPageTriageStickyStatsNav' => $wgPageTriageStickyStatsNav,
 			'wgPageTriageEnableReviewButton' => $user->isLoggedIn() && $user->isAllowed( 'patrol' ),
-			'wgPageTriageEnableOresFilters' => $wgPageTriageEnableOresFilters
+			'wgShowOresFilters' => $showOresFilters,
 		];
 		$out->addJsConfigVars( $globalVars );
 
