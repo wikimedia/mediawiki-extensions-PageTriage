@@ -1,11 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ninjastrikers"
+			"Ninjastrikers",
+			"Dr Lotus Black"
 		]
 	},
 	"pagetriage-bytes": "$1 {{PLURAL:$1|ဘိုက်|ဘိုက်}}",
+	"pagetriage-filter-predicted-class-stub": "ဆောင်းပါးတို",
+	"pagetriage-filter-predicted-class-start": "စတင်",
+	"pagetriage-filter-predicted-issues-vandalism": "ဖျက်လိုဖျက်ဆီးလုပ်ဆောင်မှု",
+	"pagetriage-filter-predicted-issues-attack": "တိုက်ခိုက်",
+	"pagetriage-filter-predicted-issues-none": "ဘာမှမရှိ",
 	"pagetriage-filter-stat-all": "အားလုံး",
 	"pagetriage-filter-stat-blocked": "ပိတ်ပင်ထားသော အသုံးပြုသူများ",
+	"pagetriage-filter-stat-predicted-class-stub": "ဆောင်းပါးတို",
 	"pagetriage-info-help": "အကူအညီ"
 }
