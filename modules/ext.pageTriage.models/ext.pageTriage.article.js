@@ -20,6 +20,15 @@ $( function () {
 			}
 		},
 
+		afcStateIdToLabel: function () {
+			return {
+				1: 'pagetriage-afc-state-unsubmitted',
+				2: 'pagetriage-afc-state-pending',
+				3: 'pagetriage-afc-state-reviewing',
+				4: 'pagetriage-afc-state-declined'
+			};
+		},
+
 		formatMetadata: function ( article ) {
 			// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
 			var bylineMessage, userCreationDateParsed, byline, titleUrl,
@@ -99,6 +108,20 @@ $( function () {
 					)
 				);
 				article.set( 'user_contribs_title', article.get( 'creator_contribution_page' ) );
+			}
+
+			// Set the afc_state_value based on the ID.
+			article.set( 'afc_state_value', '' );
+			if ( parseInt( article.get( 'afc_state' ) ) > 0 ) {
+				article.set( 'afc_state_value', mw.msg( this.afcStateIdToLabel()[ article.get( 'afc_state' ) ] ) );
+			}
+
+			// set last AfC action date label
+			article.set( 'last_afc_action_date_label', '' );
+			if ( article.get( 'afc_state' ) === '2' || article.get( 'afc_state' ) === '3' ) {
+				article.set( 'last_afc_action_date_label', mw.msg( 'pagetriage-afc-date-label-submission' ) );
+			} else if ( article.get( 'afc_state' ) === '4' ) {
+				article.set( 'last_afc_action_date_label', mw.msg( 'pagetriage-afc-date-label-declined' ) );
 			}
 
 			// set the article status

@@ -16,7 +16,7 @@
 	<div class="mwe-pt-info-pane">
 		<div class="mwe-pt-article">
 			<span class="mwe-pt-creation-date">
-				<% if ( typeof is_draft !== "undefined" && is_draft && isReviewedSorting ) { %>
+				<% if ( is_draft && isReviewedSorting ) { %>
 					<%= reviewed_updated_pretty %>
 				<% } else { %>
 					<%= creation_date_pretty %>
@@ -73,6 +73,48 @@
 		</div>
 		<div class="mwe-pt-snippet">
 			<%= mw.html.escape( snippet ) %>
+		</div>
+		<div class="mwe-pt-draft-state-ores-classifications">
+			<% if ( mw.config.get( 'wgShowOresFilters' ) === 'true' ) { %>
+			<div class="mwe-pt-draft-state-ores-classification-item">
+				<span class="mwe-pt-article-ores-predicted-class-label">
+					<%= mw.msg( 'pagetriage-filter-predicted-class-heading' ) %>
+				</span>
+				<span class="mwe-pt-article-ores-predicted-class-value">
+					<%= ores_wp10 %>
+				</span>
+			</div>
+			<div class="mwe-pt-draft-state-ores-classification-item">
+				<span class="mwe-pt-article-ores-predicted-issues-label">
+					<%= mw.msg( 'pagetriage-filter-predicted-issues-heading' ) %>
+				</span>
+				<span class="mwe-pt-article-ores-predicted-issues-value">
+					<%= ores_draftquality %>
+				</span>
+			</div>
+			<% } %>
+			<% if ( is_draft ) { %>
+			<% if ( afc_state_value ) { %>
+			<div class="mwe-pt-draft-state-ores-classification-item">
+				<span class="mwe-pt-article-state-label">
+					<%= mw.msg( 'pagetriage-filter-show-heading' ) %>
+				</span>
+				<span class="mwe-pt-afc-state-value">
+					<%= afc_state_value %>
+				</span>
+			</div>
+			<% } %>
+			<% if ( last_afc_action_date_label ) { %>
+			<div class="mwe-pt-draft-state-ores-classification-item">
+				<span class="mwe-pt-article-date-label">
+					<%= last_afc_action_date_label %>
+				</span>
+				<span class="mwe-pt-afc-date-value">
+					<%= reviewed_updated_pretty %>
+				</span>
+			</div>
+			<% } %>
+			<% } %>
 		</div>
 	</div>
 </div>

@@ -212,6 +212,8 @@
 				"pagetriage-afc-state-pending",
 				"pagetriage-afc-state-reviewing",
 				"pagetriage-afc-state-unsubmitted",
+				"pagetriage-afc-date-label-submission",
+				"pagetriage-afc-date-label-declined",
 				"pagetriage-hist",
 				"pagetriage-bytes",
 				"pagetriage-edits",
