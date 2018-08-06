@@ -7,7 +7,8 @@
 			"Silvonen",
 			"Nike",
 			"Alluk.",
-			"Fitoschido"
+			"Fitoschido",
+			"Surjection"
 		]
 	},
 	"newpagesfeed": "Uusien sivujen liukuhihna",
@@ -46,7 +47,7 @@
 	"pagetriage-newest": "Uusin",
 	"pagetriage-oldest": "Vanhin",
 	"pagetriage-triage": "Katsasta",
-	"pagetriage-filter-show-heading": "Näytä:",
+	"pagetriage-filter-show-heading": "Tila:",
 	"pagetriage-filter-reviewed-edits": "Katsastetut sivut",
 	"pagetriage-filter-unreviewed-edits": "Katsastamatta olevat sivut",
 	"pagetriage-filter-nominated-for-deletion": "Ehdotettu poistettavaksi",

@@ -188,5 +188,8 @@
 	"echo-pref-subscription-page-review": "ഞാൻ സൃഷ്ടിച്ച താളിലെ സംശോധനം",
 	"echo-pref-tooltip-page-review": "ഞാൻ സൃഷ്ടിച്ച ഒരു താൾ ആരെങ്കിലും സംശോധനം ചെയ്താൽ എന്നെ അറിയിക്കുക.",
 	"echo-category-title-page-review": "താൾ {{PLURAL:$1|സംശോധനം|സംശോധനങ്ങൾ}}",
-	"apihelp-pagetriagestats-param-show_predicted_issues_vandalism": "നശീകരണപ്രവർത്തനങ്ങളെ മുൻകൂട്ടി ഉൾപെടുത്തിയാലോ എന്ന്"
+	"apihelp-pagetriagestats-param-show_predicted_issues_vandalism": "നശീകരണപ്രവർത്തനങ്ങളെ മുൻകൂട്ടി ഉൾപെടുത്തിയാലോ എന്ന്",
+	"apihelp-pagetriagetagging-description": "ഒരു ലേഖനത്തിൽ റ്റാഗുകൾ ചേർക്കുക.",
+	"apihelp-pagetriagetagging-summary": "ഒരു ലേഖനത്തിൽ റ്റാഗുകൾ ചേർക്കുക.",
+	"apihelp-pagetriagetagging-param-pageid": "റ്റാഗ് ചേർക്കേണ്ട ലേഖനം."
 }

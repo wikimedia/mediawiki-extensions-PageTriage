@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sarrus"
+			"Sarrus",
+			"Saederup92"
 		]
 	},
+	"pagetriage-filter-predicted-issues-vandalism": "Hærværk",
 	"pagetriage-filter-show-heading": "Vis:"
 }
