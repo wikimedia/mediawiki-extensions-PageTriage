@@ -312,6 +312,7 @@ $( function () {
 				// eslint-disable-next-line camelcase
 				apiParams.afc_state = $( '[name=mwe-pt-filter-afc-radio]:checked' ).val();
 				apiParams.showunreviewed = '1';
+				apiParams.showreviewed = '1';
 			}
 			// Merge in ORES params.
 			apiParams = Object.assign( this.getApiParamsOres( this.model.getMode() ), apiParams );

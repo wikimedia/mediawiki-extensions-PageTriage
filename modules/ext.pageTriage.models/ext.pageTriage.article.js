@@ -324,6 +324,8 @@ $( function () {
 			if ( draftNsId && newMode === 'afc' ) {
 				this.mode = 'afc';
 				this.setParam( 'namespace', draftNsId );
+				this.setParam( 'showreviewed', '1' );
+				this.setParam( 'showunreviewed', '1' );
 			} else {
 				this.mode = 'npp';
 				this.setParam( 'namespace', 0 );
