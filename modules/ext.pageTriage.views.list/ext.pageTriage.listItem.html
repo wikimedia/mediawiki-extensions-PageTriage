@@ -16,11 +16,7 @@
 	<div class="mwe-pt-info-pane">
 		<div class="mwe-pt-article">
 			<span class="mwe-pt-creation-date">
-				<% if ( is_draft && isReviewedSorting ) { %>
-					<%= reviewed_updated_pretty %>
-				<% } else { %>
-					<%= creation_date_pretty %>
-				<% } %>
+				<%= creation_date_pretty %>
 			</span>
 			<a class="mwe-pt-list-triage-button ui-button-blue" style="display:none;" href="<%= title_url %>" target="_blank" title='<%= reviewRightHelpText %>'></a>
 			<span class="mwe-pt-page-title"><a href="<%= title_url %>" target="_blank"><%= mw.html.escape( title ) %></a></span>
