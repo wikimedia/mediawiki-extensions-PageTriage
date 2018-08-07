@@ -74,6 +74,7 @@
 	"pagetriage-stats-less-than-a-day": "λιγότερο από μία ημέρα",
 	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|σελίδα|σελίδες}} στη φιλτραρισμένη λίστα σας",
 	"pagetriage-filter-ns-all": "Όλα",
+	"pagetriage-filter-pending-ores-score": "N/A",
 	"pagetriage-more": "Περισσότερα",
 	"pagetriage-filter-stat-all": "Όλα",
 	"pagetriage-filter-stat-reviewed": "επιθεωρημένα",
@@ -149,6 +150,8 @@
 	"pagetriage-afc-state-pending": "Περιμένει θεώρηση",
 	"pagetriage-afc-state-reviewing": "Υπό αναθεώρηση",
 	"pagetriage-afc-state-unsubmitted": "Μη υποβλημένο",
+	"pagetriage-afc-date-label-submission": "Ημερομηνία υποβολής:",
+	"pagetriage-afc-date-label-declined": "Ημερομηνία απόρριψης:",
 	"apihelp-pagetriagelist-param-learners": "Το εάν θα προβληθούν μόνο σελίδες που δημιουργήθηκαν από νέους συντάκτες.",
 	"apihelp-pagetriagestats-param-learners": "Το αν θα περιλαμβάνει μόνο σελίδες που δημιουργήθηκαν από νέους συντάκτες ως χρήστες.",
 	"apihelp-pagetriagestats-param-show_predicted_issues_attack": "Που να συμπεριληφθούν προβλεμένα ζητήματα επίθεσης"
