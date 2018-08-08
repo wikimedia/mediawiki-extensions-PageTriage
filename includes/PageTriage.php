@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\PageTriage;
 
 use PatrolLog;
 use RecentChange;
+use Title;
 use User;
 
 class PageTriage {
@@ -46,6 +47,8 @@ class PageTriage {
 	 * @return bool - true: add new record, false: update existing record
 	 */
 	public function addToPageTriageQueue( $reviewed = '0', User $user = null, $fromRc = false ) {
+		$reviewed = $this->normalizeReviewed( $reviewed, $this->mPageId );
+
 		if ( $this->retrieve() ) {
 			if ( $this->mReviewed != $reviewed ) {
 				$this->setTriageStatus( $reviewed, $user, $fromRc );
@@ -103,6 +106,8 @@ class PageTriage {
 			$reviewed = '0';
 		}
 
+		$reviewed = $this->normalizeReviewed( $reviewed, $this->mPageId );
+
 		if ( !$this->retrieve() || $this->mReviewed == $reviewed ) {
 			return;
 		}
@@ -142,6 +147,22 @@ class PageTriage {
 		if ( array_key_exists( $this->mPageId, $metadataArray ) ) {
 			$articleMetadata->flushMetadataFromCache( $this->mPageId );
 		}
+	}
+
+	/**
+	 * Prevent changing ptrp_reviewed for drafts
+	 *
+	 * @param string $reviewed Proposed review state
+	 * @param int $pageId
+	 * @return string Normalized review state
+	 */
+	private function normalizeReviewed( $reviewed, $pageId ) {
+		global $wgPageTriageDraftNamespaceId;
+		if ( $wgPageTriageDraftNamespaceId === Title::newFromID( $pageId )->getNamespace() ) {
+			// ptrp_reviewed should always be '0' for drafts
+			return '0';
+		}
+		return $reviewed;
 	}
 
 	/**
