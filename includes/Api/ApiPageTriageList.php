@@ -236,12 +236,12 @@ class ApiPageTriageList extends ApiBase {
 		// ORES wp10 filter
 		if ( PageTriageUtil::oresIsAvailable() &&
 			PageTriageUtil::isOresWp10Query( $opts ) ) {
-			self::joinWithOres( 'wp10', $tables, $conds, $join_conds );
 			$oresCond = ORESServices::getDatabaseQueryBuilder()->buildQuery(
 				'wp10',
 				PageTriageUtil::mapOresParamsToClassNames( 'wp10', $opts )
 			);
 			if ( $oresCond ) {
+				self::joinWithOres( 'wp10', $tables, $conds, $join_conds );
 				$conds[] = $oresCond;
 			}
 		}
@@ -249,13 +249,13 @@ class ApiPageTriageList extends ApiBase {
 		// ORES draftquality filter
 		if ( PageTriageUtil::oresIsAvailable() &&
 			PageTriageUtil::isOresDraftQualityQuery( $opts ) ) {
-			self::joinWithOres( 'draftquality', $tables, $conds, $join_conds );
 			$oresCond = ORESServices::getDatabaseQueryBuilder()->buildQuery(
 				'draftquality',
 				PageTriageUtil::mapOresParamsToClassNames( 'draftquality', $opts ),
 				true
 			);
 			if ( $oresCond ) {
+				self::joinWithOres( 'draftquality', $tables, $conds, $join_conds );
 				$conds[] = $oresCond;
 			}
 		}
