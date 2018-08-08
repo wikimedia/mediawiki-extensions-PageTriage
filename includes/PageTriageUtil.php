@@ -647,4 +647,14 @@ class PageTriageUtil {
 			Helpers::isModelEnabled( 'draftquality' );
 	}
 
+	/**
+	 * Check if the Copyvio extension is present for PageTriage
+	 * to integrate with it.
+	 *
+	 * @return bool
+	 */
+	public static function copyvioIsAvailable() {
+		return ExtensionRegistry::getInstance()->isLoaded( 'Copyvio' );
+	}
+
 }
