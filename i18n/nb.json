@@ -3,7 +3,8 @@
 		"authors": [
 			"Jeblad",
 			"Danmichaelo",
-			"Fitoschido"
+			"Fitoschido",
+			"Jon Harald Søby"
 		]
 	},
 	"pagetriage": "Page Triage",
@@ -66,6 +67,7 @@
 	"pagetriage-stats-reviewed-page-count": "{{PLURAL:$1|én side|$1 sider}} vurdert denne uka",
 	"pagetriage-stats-filter-page-count": "{{PLURAL:$1|én side|$1 sider}} i din filtrerte liste",
 	"pagetriage-filter-ns-all": "Alle",
+	"pagetriage-filter-pending-ores-score": "I/T",
 	"pagetriage-more": "Mer",
 	"pagetriage-filter-stat-all": "Alle",
 	"pagetriage-filter-stat-reviewed": "vurdert",
