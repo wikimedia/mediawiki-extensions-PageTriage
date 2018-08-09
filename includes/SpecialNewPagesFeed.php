@@ -36,11 +36,14 @@ class SpecialNewPagesFeed extends SpecialPage {
 	public function execute( $sub ) {
 		global	$wgPageTriageInfiniteScrolling,
 				$wgPageTriageStickyControlNav, $wgPageTriageStickyStatsNav,
-				$wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl, $wgPageTriageEnableOresFilters;
+				$wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl,
+				$wgPageTriageEnableOresFilters, $wgPageTriageShowCopyvio;
 
 		$request = $this->getRequest();
 		$showOresFilters = PageTriageUtil::oresIsAvailable() &&
 			( $wgPageTriageEnableOresFilters || $request->getBool( 'ores' ) );
+		$showCopyvio = PageTriageUtil::copyvioIsAvailable() &&
+			( $wgPageTriageShowCopyvio || $request->getBool( 'copyvio' ) );
 		$this->setHeaders();
 		$out = $this->getOutput();
 		$user = $this->getUser();
@@ -60,7 +63,6 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$wgPageTriageInfiniteScrolling = $this->booleanToString( $wgPageTriageInfiniteScrolling );
 		$wgPageTriageStickyControlNav = $this->booleanToString( $wgPageTriageStickyControlNav );
 		$wgPageTriageStickyStatsNav = $this->booleanToString( $wgPageTriageStickyStatsNav );
-		$showOresFilters = $this->booleanToString( $showOresFilters );
 
 		// Allow infinite scrolling override from query string parameter
 		// We don't use getBool() here since the param is optional
@@ -78,6 +80,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 			'wgPageTriageStickyStatsNav' => $wgPageTriageStickyStatsNav,
 			'wgPageTriageEnableReviewButton' => $user->isLoggedIn() && $user->isAllowed( 'patrol' ),
 			'wgShowOresFilters' => $showOresFilters,
+			'wgShowCopyvio' => $showCopyvio,
 		];
 		$out->addJsConfigVars( $globalVars );
 

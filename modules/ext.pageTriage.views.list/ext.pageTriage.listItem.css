@@ -63,11 +63,11 @@
 }
 
 /* ORES and draft state data */
-.mwe-pt-draft-state-ores-classifications {
+.mwe-pt-extra-info {
 	margin-left: 25px;
 }
 
-.mwe-pt-draft-state-ores-classification-item {
+.mwe-pt-extra-info-item {
 	display: inline;
 	margin-right: 25px;
 }

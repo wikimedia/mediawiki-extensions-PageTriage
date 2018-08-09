@@ -70,9 +70,9 @@
 		<div class="mwe-pt-snippet">
 			<%= mw.html.escape( snippet ) %>
 		</div>
-		<div class="mwe-pt-draft-state-ores-classifications">
-			<% if ( mw.config.get( 'wgShowOresFilters' ) === 'true' ) { %>
-			<div class="mwe-pt-draft-state-ores-classification-item">
+		<div class="mwe-pt-extra-info">
+			<% if ( mw.config.get( 'wgShowOresFilters' ) ) { %>
+			<div class="mwe-pt-extra-info-item">
 				<span class="mwe-pt-article-ores-predicted-class-label">
 					<%= mw.msg( 'pagetriage-filter-predicted-class-heading' ) %>
 				</span>
@@ -80,7 +80,7 @@
 					<%= ores_wp10 %>
 				</span>
 			</div>
-			<div class="mwe-pt-draft-state-ores-classification-item">
+			<div class="mwe-pt-extra-info-item">
 				<span class="mwe-pt-article-ores-predicted-issues-label">
 					<%= mw.msg( 'pagetriage-filter-predicted-issues-heading' ) %>
 				</span>
@@ -89,9 +89,21 @@
 				</span>
 			</div>
 			<% } %>
+			<% if ( mw.config.get( 'wgShowCopyvio' ) && copyvio_probability !== null ) { %>
+			<div class="mwe-pt-extra-info-item">
+				<span class="mwe-pt-article-copyvio-label">
+					<%= mw.msg( 'pagetriage-copyvio-link-label' ) %>
+				</span>
+				<span class="mwe-pt-afc-copyvio-value">
+					<a href="<%= copyvio_report_url %>" target="_blank" rel="nofollow">
+						<%= copyvio_probability %>
+					</a>
+				</span>
+			</div>
+			<% } %>
 			<% if ( is_draft ) { %>
 			<% if ( afc_state_value ) { %>
-			<div class="mwe-pt-draft-state-ores-classification-item">
+			<div class="mwe-pt-extra-info-item">
 				<span class="mwe-pt-article-state-label">
 					<%= mw.msg( 'pagetriage-filter-show-heading' ) %>
 				</span>
@@ -101,7 +113,7 @@
 			</div>
 			<% } %>
 			<% if ( last_afc_action_date_label ) { %>
-			<div class="mwe-pt-draft-state-ores-classification-item">
+			<div class="mwe-pt-extra-info-item">
 				<span class="mwe-pt-article-date-label">
 					<%= last_afc_action_date_label %>
 				</span>
