@@ -128,6 +128,7 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "pourriel",
 	"pagetriage-filter-stat-predicted-issues-attack": "attaque",
 	"pagetriage-filter-stat-predicted-issues-none": "aucun problème",
+	"pagetriage-copyvio-link-label": "Copyvio :",
 	"pagetriage-no-pages": "Aucune page ne correspond à vos critères.",
 	"pagetriage-warning-browser": "Cet outil peut ne pas fonctionner correctement dans les navigateurs plus anciens que Internet Explorer 11.",
 	"pagetriage-welcome": "Veuillez relire les nouvelles pages ci-dessous et aider à améliorer {{SITENAME}}. [$1 En savoir plus] · [$2 Laisser un avis]",

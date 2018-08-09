@@ -112,6 +112,7 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "спам",
 	"pagetriage-filter-stat-predicted-issues-attack": "напад",
 	"pagetriage-filter-stat-predicted-issues-none": "нема проблеми",
+	"pagetriage-copyvio-link-label": "Авторскоправно нарушување:",
 	"pagetriage-no-pages": "Нема страници што одговараат на критериумите.",
 	"pagetriage-warning-browser": "Оваа алатка може да не работи како што треба на прелистувачи постари од Internet Explorer 11.",
 	"pagetriage-welcome": "Помогнете ни да ја подобриме {{SITENAME}}. Проверете ги страниците подолу. [$1 Дознајте повеќе] · [$2 Ваше мислење]",

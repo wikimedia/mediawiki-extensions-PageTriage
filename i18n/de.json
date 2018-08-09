@@ -113,6 +113,7 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "Werbung",
 	"pagetriage-filter-stat-predicted-issues-attack": "Angriff",
 	"pagetriage-filter-stat-predicted-issues-none": "keine Probleme",
+	"pagetriage-copyvio-link-label": "Urheberrechtsverletzung:",
 	"pagetriage-no-pages": "Keine Seiten entsprechen deinen Kriterien.",
 	"pagetriage-warning-browser": "Dieses Hilfsmittel funktioniert möglicherweise nicht mit Browsern, die älter sind als der Internet Explorer 11.",
 	"pagetriage-welcome": "Bitte überprüfe die unten angezeigten neuen Seiten und hilf, {{SITENAME}} zu verbessern. [$1 Erfahre mehr hierzu] · [$2 Hinterlasse eine Rückmeldung]",

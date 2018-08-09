@@ -116,6 +116,7 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "垃圾內容",
 	"pagetriage-filter-stat-predicted-issues-attack": "攻擊",
 	"pagetriage-filter-stat-predicted-issues-none": "沒有問題",
+	"pagetriage-copyvio-link-label": "Copyvio：",
 	"pagetriage-no-pages": "沒有滿足您的條件的頁面。",
 	"pagetriage-warning-browser": "此工具可能無法在比 Internet Explorer 11 更舊的瀏覽器中運作。",
 	"pagetriage-welcome": "請檢閱下列的新頁面，幫助改善{{SITENAME}}。[$1 了解更多資訊] · [$2 留下意見反饋]",

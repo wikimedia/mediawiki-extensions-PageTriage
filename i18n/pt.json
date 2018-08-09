@@ -119,6 +119,7 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "spam",
 	"pagetriage-filter-stat-predicted-issues-attack": "ataque",
 	"pagetriage-filter-stat-predicted-issues-none": "sem problemas",
+	"pagetriage-copyvio-link-label": "Infringência de direitos de autor:",
 	"pagetriage-no-pages": "Nenhuma página corresponde aos seus critérios.",
 	"pagetriage-warning-browser": "Esta ferramenta pode não funcionar corretamente em navegadores mais antigos do que o Internet Explorer 11.",
 	"pagetriage-welcome": "Reveja as páginas novas mostradas a seguir e ajude a melhorar a wiki {{SITENAME}}, por favor. [$1 Saiba mais] · [$2 Deixe um comentário]",
