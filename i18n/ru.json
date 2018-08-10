@@ -13,7 +13,8 @@
 			"AttemptToCallNil",
 			"Movses",
 			"Stjn",
-			"Vlad5250"
+			"Vlad5250",
+			"Shaleych"
 		]
 	},
 	"pagetriage": "Сортировка страниц",
@@ -96,6 +97,7 @@
 	"pagetriage-stats-reviewed-page-count": "$1 {{PLURAL:$1|страница|страницы|страниц}} проверен{{PLURAL:$1|а|ы|о}} на этой неделе",
 	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|страница|страницы|страниц}} в вашем отфильтрованном списке",
 	"pagetriage-filter-ns-all": "Все",
+	"pagetriage-filter-pending-ores-score": "Н/Д",
 	"pagetriage-more": "Больше",
 	"pagetriage-filter-stat-all": "Все",
 	"pagetriage-filter-stat-reviewed": "проверены",
