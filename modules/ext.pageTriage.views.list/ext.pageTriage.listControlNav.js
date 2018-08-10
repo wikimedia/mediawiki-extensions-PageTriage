@@ -6,7 +6,7 @@ $( function () {
 		template: mw.pageTriage.viewUtil.template( { view: 'list', template: 'listControlNav.html' } ),
 		filterMenuVisible: 0,
 		filterStatus: mw.msg( 'pagetriage-filter-stat-all' ),
-		newFilterStatus: [],
+		newFilterStatus: {},
 
 		initialize: function ( options ) {
 			var that = this;
@@ -441,7 +441,14 @@ $( function () {
 
 		// Sync the menu and other UI elements with the contents of the filters
 		menuSync: function () {
-			this.newFilterStatus = [];
+			var that = this;
+			this.newFilterStatus = {
+				namespace: [],
+				state: [],
+				'predicted-class': [],
+				'predicted-issues': [],
+				top: []
+			};
 
 			// Show/hide controls based on what feed mode we're in.
 			$( '#mw-content-text' ).toggleClass( 'mwe-pt-mode-afc', this.model.getMode() === 'afc' );
@@ -454,7 +461,23 @@ $( function () {
 			}
 
 			// Set the "Showing: ..." filter status.
-			this.filterStatus = this.newFilterStatus.join( mw.msg( 'comma-separator' ) );
+			this.filterStatus = Object.keys( this.newFilterStatus )
+				.map( function ( group ) {
+					var filters = that.newFilterStatus[ group ];
+					if ( filters.length === 0 ) {
+						return '';
+					}
+					if ( group === 'top' || ( that.model.getMode() === 'afc' && group === 'state' ) ) {
+						// For the top-level filter, don't put it in parentheses and don't prefix it with a group label (T199277)
+						return filters[ 0 ];
+					}
+					return mw.msg( 'pagetriage-filter-stat-' + group ) + ' ' +
+						mw.msg( 'parentheses', filters.join( mw.msg( 'comma-separator' ) ) );
+				} )
+				.filter( function ( x ) {
+					return x !== '';
+				} )
+				.join( mw.msg( 'comma-separator' ) );
 			$( '#mwe-pt-filter-status' ).text( this.filterStatus );
 
 			// Sync the sort toggle
@@ -489,7 +512,8 @@ $( function () {
 					$( '#mwe-pt-filter-' + context + '-' + selectors[ key ] ),
 					// Convert the selector to the format used as an API parameter.
 					'show_' + selectors[ key ].replace( /-/g, '_' ),
-					'pagetriage-filter-stat-' + selectors[ key ]
+					'pagetriage-filter-stat-' + selectors[ key ],
+					selectors[ key ].match( /^predicted-class-/ ) ? 'predicted-class' : 'predicted-issues'
 				);
 			}
 		},
@@ -498,33 +522,35 @@ $( function () {
 		 * Sync the menu and other UI elements with the filters, for the NPP queue.
 		 */
 		menuSyncNpp: function () {
-			var username;
+			var namespace, username;
 
 			// Make sure the radio button for the feed is correct, and the corresponding filter menu is shown.
 			$( '#mwe-pt-radio-npp' ).prop( 'checked', true );
 
-			$( '#mwe-pt-filter-namespace' ).val( this.model.getParam( 'namespace' ) );
+			namespace = this.model.getParam( 'namespace' );
+			$( '#mwe-pt-filter-namespace' ).val( namespace );
+			this.newFilterStatus.namespace.push( $( '#mwe-pt-filter-namespace' ).find( ':selected' ).text() );
 
-			this.menuCheckboxUpdate( $( '#mwe-pt-filter-reviewed-edits' ), 'showreviewed', 'pagetriage-filter-stat-reviewed' );
-			this.menuCheckboxUpdate( $( '#mwe-pt-filter-unreviewed-edits' ), 'showunreviewed', 'pagetriage-filter-stat-unreviewed' );
-			this.menuCheckboxUpdate( $( '#mwe-pt-filter-nominated-for-deletion' ), 'showdeleted', 'pagetriage-filter-stat-nominated-for-deletion' );
-			this.menuCheckboxUpdate( $( '#mwe-pt-filter-bot-edits' ), 'showbots', 'pagetriage-filter-stat-bots' );
-			this.menuCheckboxUpdate( $( '#mwe-pt-filter-redirects' ), 'showredirs', 'pagetriage-filter-stat-redirects' );
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-reviewed-edits' ), 'showreviewed', 'pagetriage-filter-stat-reviewed', 'state' );
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-unreviewed-edits' ), 'showunreviewed', 'pagetriage-filter-stat-unreviewed', 'state' );
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-nominated-for-deletion' ), 'showdeleted', 'pagetriage-filter-stat-nominated-for-deletion', 'state' );
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-bot-edits' ), 'showbots', 'pagetriage-filter-stat-bots', 'state' );
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-redirects' ), 'showredirs', 'pagetriage-filter-stat-redirects', 'state' );
 
 			this.menuCheckboxUpdateOres( 'npp' );
 
 			username = this.model.getParam( 'username' );
 			if ( username ) {
-				this.newFilterStatus.push( mw.msg( 'pagetriage-filter-stat-username', username ) );
+				this.newFilterStatus.top.push( mw.msg( 'pagetriage-filter-stat-username', username ) );
 				$( '#mwe-pt-filter-user-selected' ).prop( 'checked', true );
 			}
 			$( '#mwe-pt-filter-user' ).val( username );
 
-			this.menuCheckboxUpdate( $( '#mwe-pt-filter-no-categories' ), 'no_category', 'pagetriage-filter-stat-no-categories' );
-			this.menuCheckboxUpdate( $( '#mwe-pt-filter-orphan' ), 'no_inbound_links', 'pagetriage-filter-stat-orphan' );
-			this.menuCheckboxUpdate( $( '#mwe-pt-filter-non-autoconfirmed' ), 'non_autoconfirmed_users', 'pagetriage-filter-stat-non-autoconfirmed' );
-			this.menuCheckboxUpdate( $( '#mwe-pt-filter-learners' ), 'learners', 'pagetriage-filter-stat-learners' );
-			this.menuCheckboxUpdate( $( '#mwe-pt-filter-blocked' ), 'blocked_users', 'pagetriage-filter-stat-blocked' );
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-no-categories' ), 'no_category', 'pagetriage-filter-stat-no-categories', 'top' );
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-orphan' ), 'no_inbound_links', 'pagetriage-filter-stat-orphan', 'top' );
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-non-autoconfirmed' ), 'non_autoconfirmed_users', 'pagetriage-filter-stat-non-autoconfirmed', 'top' );
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-learners' ), 'learners', 'pagetriage-filter-stat-learners', 'top' );
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-blocked' ), 'blocked_users', 'pagetriage-filter-stat-blocked', 'top' );
 
 			if ( !$( 'input[name=mwe-pt-filter-radio]:checked' ).val() ) {
 				// None of the radio buttons are selected. Pick the default.
@@ -565,7 +591,7 @@ $( function () {
 
 			// Set the "Showing: ..." filter status.
 			afcStateName = $( 'input[name=mwe-pt-filter-afc-radio]:checked' ).data( 'afc-state-name' );
-			this.newFilterStatus.push( mw.msg( 'pagetriage-afc-state-' + afcStateName ) );
+			this.newFilterStatus.state.push( mw.msg( 'pagetriage-afc-state-' + afcStateName ) );
 		},
 
 		/**
@@ -574,11 +600,12 @@ $( function () {
 		 * @param {jQuery} $checkbox The JQuery object of the input element.
 		 * @param {string} param The value (i.e. 1 or 0, checked or not).
 		 * @param {string} message The message name for the filter.
+		 * @param {string} filterGroup Group the filter is in ('state', 'top', 'predicted-class' or 'predicted-issue')
 		 */
-		menuCheckboxUpdate: function ( $checkbox, param, message ) {
+		menuCheckboxUpdate: function ( $checkbox, param, message, filterGroup ) {
 			$checkbox.prop( 'checked', parseInt( this.model.getParam( param ), 10 ) === 1 );
 			if ( this.model.getParam( param ) ) {
-				this.newFilterStatus.push( mw.msg( message ) );
+				this.newFilterStatus[ filterGroup ].push( mw.msg( message ) );
 			}
 		}
 
