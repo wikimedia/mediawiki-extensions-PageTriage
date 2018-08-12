@@ -3,34 +3,26 @@
 namespace MediaWiki\Extension\PageTriage;
 
 use LogFormatter;
-use Message;
 
 /**
  * Formats the logs for display on Special:Log
  */
 class PageTriageLogFormatter extends LogFormatter {
 
-	protected function getActionMessage() {
-		global $wgContLang;
+	protected function getMessageParameters() {
+		$lang = $this->context->getLanguage();
+		$params = parent::getMessageParameters();
 		$parameters = $this->entry->getParameters();
 
-		$params = [
-			Message::rawParam( $this->getPerformerElement() ),
-			$this->entry->getPerformer()->getName(),
-			Message::rawParam( $this->makePageLink( $this->entry->getTarget() ) )
-		];
 		// backward compatibility
 		if ( isset( $parameters['4::tags'] ) ) {
-			$params['4::tags'] = $wgContLang->listToText( $parameters['4::tags'] );
-			$params['tagnumber'] = count( $parameters['4::tags'] );
+			$params[3] = $lang->listToText( $parameters['4::tags'] );
+			$params[4] = count( $parameters['4::tags'] );
 		} else {
-			$params['tags'] = $wgContLang->listToText( $parameters['tags'] );
-			$params['tagnumber'] = count( $parameters['tags'] );
+			$params[3] = $lang->listToText( $parameters['tags'] );
+			$params[4] = count( $parameters['tags'] );
 		}
 
-		return wfMessage(
-			'logentry-' . $this->entry->getType() . '-' . $this->entry->getSubtype(), $params
-		);
+		return $params;
 	}
-
 }
