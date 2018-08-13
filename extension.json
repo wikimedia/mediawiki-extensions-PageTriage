@@ -590,7 +590,7 @@
 			"value": false
 		},
 		"PageTriageShowCopyvio": {
-		  "value": false
+			"value": false
 		},
 		"PageTriageMaxAge": {
 			"value": 90
