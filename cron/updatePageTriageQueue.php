@@ -32,6 +32,15 @@ class UpdatePageTriageQueue extends Maintenance {
 	}
 
 	public function execute() {
+		global $wgPageTriageNamespaces;
+		// This list doesn't include Article or Draft
+		// because they have special handling.
+		$secondaryNamespaces = array_filter(
+			$wgPageTriageNamespaces,
+			function ( $ns ) {
+				return $ns !== 0;
+			}
+		);
 		$this->init();
 		$this->output( "Started processing... \n" );
 
@@ -60,8 +69,8 @@ class UpdatePageTriageQueue extends Maintenance {
 			$startId = (int)$startId;
 
 			// Remove pages older than 30 days, if
-			// 1. the page has been reviewed, or
-			// 2. the page is not in main namespace or
+			// 1. the page is in the article namespace and has been reviewed, or
+			// 2. the page is not in main or draft namespaces or
 			// 3. the page is a redirect
 			$res = $this->dbr->select(
 				[ 'pagetriage_page', 'page' ],
@@ -69,11 +78,18 @@ class UpdatePageTriageQueue extends Maintenance {
 				[
 					'(ptrp_created < ' . $startTime . ') OR
 					(ptrp_created = ' . $startTime . ' AND ptrp_page_id < ' . $startId . ')',
-					'ptrp_page_id = page_id',
-					'page_namespace != 0 OR ptrp_reviewed > 0 OR page_is_redirect = 1'
+					$this->dbr->makeList( [
+						$this->dbr->makeList( [
+							'page_namespace' => 0,
+							'ptrp_reviewed > 0'
+						], LIST_AND ),
+						'page_namespace' => $secondaryNamespaces,
+						'page_is_redirect' => 1,
+					], LIST_OR ),
 				],
 				__METHOD__,
-				[ 'LIMIT' => $this->getBatchSize(), 'ORDER BY' => 'ptrp_created DESC, ptrp_page_id DESC' ]
+				[ 'LIMIT' => $this->getBatchSize(), 'ORDER BY' => 'ptrp_created DESC, ptrp_page_id DESC' ],
+				[ 'page' => [ 'INNER JOIN', 'ptrp_page_id = page_id' ] ]
 			);
 
 			$pageId = [];
