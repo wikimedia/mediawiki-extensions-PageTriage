@@ -102,6 +102,7 @@
 	"pagetriage-filter-stat-learners": "ученици",
 	"pagetriage-filter-stat-blocked": "Блокирани корисници",
 	"pagetriage-filter-stat-username": "Корисничко име: $1",
+	"pagetriage-filter-stat-namespace": "Именски простор: $1",
 	"pagetriage-filter-stat-predicted-class-stub": "никулец",
 	"pagetriage-filter-stat-predicted-class-start": "почни",
 	"pagetriage-filter-stat-predicted-class-c": "класа c",

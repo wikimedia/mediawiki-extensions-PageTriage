@@ -98,6 +98,7 @@
 	"pagetriage-filter-stat-non-autoconfirmed": "nykomlingar",
 	"pagetriage-filter-stat-blocked": "Blockerade användare",
 	"pagetriage-filter-stat-username": "Användarnamn: $1",
+	"pagetriage-filter-stat-namespace": "Namnrymd: $1",
 	"pagetriage-filter-stat-predicted-class-stub": "stubb",
 	"pagetriage-filter-stat-predicted-class-c": "c-klass",
 	"pagetriage-filter-stat-predicted-class-b": "b-klass",

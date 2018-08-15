@@ -83,6 +83,7 @@
 	"pagetriage-filter-stat-learners": "初学者",
 	"pagetriage-filter-stat-blocked": "ブロックされている利用者",
 	"pagetriage-filter-stat-username": "利用者名: $1",
+	"pagetriage-filter-stat-namespace": "名前空間：$1",
 	"pagetriage-no-pages": "検索条件に一致するページはありません。",
 	"pagetriage-warning-browser": "このツールは Internet Explorer 11 より古いブラウザーでは正しく動作しない可能性があります。",
 	"pagetriage-welcome": "{{SITENAME}}を改善するため、以下の新しいページを査読してください。[$1 詳細はこちら] · [$2 フィードバックを送信]",

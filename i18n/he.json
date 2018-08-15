@@ -92,6 +92,7 @@
 	"pagetriage-filter-stat-non-autoconfirmed": "עורכים חדשים",
 	"pagetriage-filter-stat-blocked": "משתמשים חסומים",
 	"pagetriage-filter-stat-username": "שם משתמש: $1",
+	"pagetriage-filter-stat-namespace": "מרחב שם: $1",
 	"pagetriage-no-pages": "אין דפים שתואמים למה שהגדרת.",
 	"pagetriage-warning-browser": "ייתכן שהכלי הזה לא יעבוד נכון בדפדפנים ישנים יותר מאינטרנט אקספלורר 11.",
 	"pagetriage-welcome": "אנו מבקשים ממך לסקור את הדפים להלן לעזור לשפר את {{SITENAME}}. [$1 מידע נוסף] · [$2 שליחת משוב]",

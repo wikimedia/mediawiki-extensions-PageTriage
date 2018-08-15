@@ -79,6 +79,7 @@
 	"pagetriage-filter-stat-learners": "Léierbouwen/Léiermeedercher",
 	"pagetriage-filter-stat-blocked": "Gespaart Benotzer",
 	"pagetriage-filter-stat-username": "Benotzernumm: $1",
+	"pagetriage-filter-stat-namespace": "Nummraum: $1",
 	"pagetriage-filter-stat-predicted-class-stub": "Skizz",
 	"pagetriage-filter-stat-predicted-class-start": "ufänken",
 	"pagetriage-filter-stat-predicted-class-c": "C-Klass",

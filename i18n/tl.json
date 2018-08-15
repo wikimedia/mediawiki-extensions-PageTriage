@@ -78,6 +78,7 @@
 	"pagetriage-filter-stat-non-autoconfirmed": "Bagong mga patnugot",
 	"pagetriage-filter-stat-blocked": "Hinarang na mga tagagamit",
 	"pagetriage-filter-stat-username": "Pangalan ng tagagamit: $1",
+	"pagetriage-filter-stat-namespace": "Puwang ng pangalan: $1",
 	"pagetriage-no-pages": "Walang mga pahinang tumutugma sa kategorya mo:",
 	"pagetriage-warning-browser": "Ang kasangkapang ito ay maaaring hindi umandar ng tama sa mga pantingin-tingin na mas luma pa kaysa sa Internet Explorer 11.",
 	"pagetriage-note-reviewed": "Nasuri na ang pahinang ito.",

@@ -105,6 +105,7 @@
 	"pagetriage-filter-stat-learners": "المتعلمون",
 	"pagetriage-filter-stat-blocked": "مستخدمون ممنوعون",
 	"pagetriage-filter-stat-username": "اسم المستخدم : $1",
+	"pagetriage-filter-stat-namespace": "نطاق : $1",
 	"pagetriage-filter-stat-predicted-class-stub": "بذرة",
 	"pagetriage-filter-stat-predicted-class-start": "بداية",
 	"pagetriage-filter-stat-predicted-class-c": "الفئة ج",

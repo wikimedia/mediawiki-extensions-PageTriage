@@ -13,6 +13,7 @@
 	"pagetriage-filter-all": "అన్నిటినీ చూపించు",
 	"pagetriage-filter-ns-all": "అన్నీ",
 	"pagetriage-filter-stat-all": "అన్నీ",
+	"pagetriage-filter-stat-namespace": "పేరుబరి: $1",
 	"pagetriage-tags-param-article-label": "వ్యాసం:",
 	"pagetriage-tags-param-date-label": "తేదీ:",
 	"pagetriage-tags-param-free-yes-label": "అవును",

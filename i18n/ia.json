@@ -73,6 +73,7 @@
 	"pagetriage-filter-stat-learners": "apprentisses",
 	"pagetriage-filter-stat-blocked": "Usatores blocate",
 	"pagetriage-filter-stat-username": "Nomine de usator: $1",
+	"pagetriage-filter-stat-namespace": "Spatio de nomines: $1",
 	"pagetriage-no-pages": "Nulle pagina corresponde a tu criterios.",
 	"pagetriage-warning-browser": "Iste instrumento pote non functionar correctemente in navigatores plus ancian que Internet Explorer 11.",
 	"pagetriage-note-reviewed": "Iste pagina ha essite revidite.",

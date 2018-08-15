@@ -78,6 +78,7 @@
 	"pagetriage-filter-stat-non-autoconfirmed": "Nowi wobdźěłarjo",
 	"pagetriage-filter-stat-blocked": "Zablokowani wužiwarjo",
 	"pagetriage-filter-stat-username": "Wužiwarske mjeno: $1",
+	"pagetriage-filter-stat-namespace": "Mjenowy rum: $1",
 	"pagetriage-no-pages": "Twojim kriterijam žane strony njewotpowěduja.",
 	"pagetriage-warning-browser": "Tutón nastroj snano njefunguje we wobhladowakach, kotrež su starše hač Internet Explorer 11.",
 	"pagetriage-welcome": "Prošu přepruwuj slědowace nowe strony a pomhaj {{GRAMMAR:akuzatiw|{{SITENAME}}}} polěpšić. [$1 Dalše informacije] · [$2 Komentar zawostajić]",
