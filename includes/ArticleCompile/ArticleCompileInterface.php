@@ -44,7 +44,7 @@ abstract class ArticleCompileInterface {
 	}
 
 	/**
-	 * Provide an edtimated count for an item, for example: if $maxNumToProcess is
+	 * Provide an estimated count for an item, for example: if $maxNumToProcess is
 	 * 100 and the result is greater than 100, then the result should be 100+
 	 * @param int $pageId page id
 	 * @param array $table table for query
@@ -83,7 +83,7 @@ abstract class ArticleCompileInterface {
 
 	protected function getArticleByPageId( $pageId ) {
 		// Try if there is an up-to-date wikipage object from article save
-		// else try to create a new one, this is important for replication deley
+		// else try to create a new one, this is important for replication delay
 		if ( isset( $this->articles[$pageId] ) ) {
 			$article = $this->articles[$pageId];
 		} else {
