@@ -38,7 +38,7 @@
 		<option value="newestfirst"><%= mw.msg( 'pagetriage-afc-newest' ) %></option>
 		<option value="oldestfirst"><%= mw.msg( 'pagetriage-afc-oldest' ) %></option>
 		<option class="mwe-pt-afc-sort-submitted" value="newestreview"><%= mw.msg( 'pagetriage-afc-newest-submitted' ) %></option>
-		<option class="mwe-pt-afc-sort-submitted" value="oldestreview"><%= mw.msg( 'pagetriage-afc-oldest-submitted' ) %></option>
+		<option class="mwe-pt-afc-sort-submitted" selected="selected" value="oldestreview"><%= mw.msg( 'pagetriage-afc-oldest-submitted' ) %></option>
 		<option class="mwe-pt-afc-sort-declined" value="newestreview"><%= mw.msg( 'pagetriage-afc-newest-declined' ) %></option>
 		<option class="mwe-pt-afc-sort-declined" value="oldestreview"><%= mw.msg( 'pagetriage-afc-oldest-declined' ) %></option>
 	</select>
@@ -232,7 +232,7 @@
 								</label> <br/>
 								<input type="radio" name="mwe-pt-filter-afc-radio"
 									   id="mwe-pt-filter-afc-pending" value="2"
-									   data-afc-state-name="pending"/>
+									   data-afc-state-name="pending" checked="checked"/>
 								<label for="mwe-pt-filter-afc-pending">
 									<%= mw.msg( 'pagetriage-afc-state-pending' ) %>
 								</label> <br/>

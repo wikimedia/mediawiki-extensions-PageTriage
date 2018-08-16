@@ -425,11 +425,6 @@ $( function () {
 			// fetch the values from the menu
 			var apiParams = this.getApiParams( true );
 
-			// Filters are synced when the filters are set or the queue mode has changed.
-			// Default sorting to oldest creation date, to ensure a valid option is selected.
-			$( '#mwe-pt-sort-afc' ).val( 'newestfirst' );
-			apiParams.dir = 'newestfirst';
-
 			// the model in this context is mw.pageTriage.ArticleList
 			this.model.setParams( apiParams );
 			this.model.saveFilterParams();
@@ -571,11 +566,6 @@ $( function () {
 
 			$( 'input[name=mwe-pt-filter-afc-radio][value=' + afcStateValue + ']' )
 				.prop( 'checked', true );
-
-			if ( !$( 'input[name=mwe-pt-filter-afc-radio]:checked' ).val() ) {
-				// None of the radio buttons are selected. Pick the default.
-				$( '#mwe-pt-filter-afc-all' ).prop( 'checked', true );
-			}
 
 			// Show/hide sorting options based on filter state.
 			if ( afcStateValue === 4 ) { // Declined
