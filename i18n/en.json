@@ -120,7 +120,6 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "Spam",
 	"pagetriage-filter-stat-predicted-issues-attack": "Attack",
 	"pagetriage-filter-stat-predicted-issues-none": "None",
-	"pagetriage-copyvio-link-label": "Copyvio:",
 	"pagetriage-no-pages": "No pages match your criteria.",
 	"pagetriage-warning-browser": "This tool may not work correctly in browsers older than Internet Explorer 11.",
 	"pagetriage-welcome": "Please review new pages below and help improve {{SITENAME}}. [$1 Learn more] · [$2 Leave feedback]",

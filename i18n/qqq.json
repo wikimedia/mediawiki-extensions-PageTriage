@@ -135,7 +135,6 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "Status display component for predicted issues of spam. This message is included as part of a comma-separated list.",
 	"pagetriage-filter-stat-predicted-issues-attack": "Status display component for predicted issues of attack. This message is included as part of a comma-separated list.",
 	"pagetriage-filter-stat-predicted-issues-none": "Status display component for no predicted issues. This message is included as part of a comma-separated list.",
-	"pagetriage-copyvio-link-label": "Label for the copyvio score that links to the report.",
 	"pagetriage-no-pages": "Message to display when no pages were retrieved",
 	"pagetriage-warning-browser": "Used as a warning for old unsupported versions of Internet Explorer.",
 	"pagetriage-welcome": "A short introductory message that appears at the top of the PageTriage list view. Parameters:\n* $1 and $2 are URLs.",

@@ -321,7 +321,6 @@
 				"pagetriage-filter-predicted-issues-spam",
 				"pagetriage-filter-predicted-issues-attack",
 				"pagetriage-filter-predicted-issues-none",
-				"pagetriage-copyvio-link-label",
 				"pagetriage-new-page-patrol",
 				"pagetriage-articles-for-creation",
 				"pagetriage-filter-all",
@@ -598,14 +597,10 @@
 		"LocalUserCreated": "MediaWiki\\Extension\\PageTriage\\Hooks::onLocalUserCreated",
 		"UserMergeAccountFields": "MediaWiki\\Extension\\PageTriage\\Hooks::onUserMergeAccountFields",
 		"ResourceLoaderRegisterModules": "MediaWiki\\Extension\\PageTriage\\Hooks::onResourceLoaderRegisterModules",
-		"ORESCheckModels": "MediaWiki\\Extension\\PageTriage\\Hooks::onORESCheckModels",
-		"CopyvioCheck": "MediaWiki\\Extension\\PageTriage\\Hooks::onCopyvioCheck"
+		"ORESCheckModels": "MediaWiki\\Extension\\PageTriage\\Hooks::onORESCheckModels"
 	},
 	"config": {
 		"PageTriageEnableOresFilters": {
-			"value": false
-		},
-		"PageTriageShowCopyvio": {
 			"value": false
 		},
 		"PageTriageMaxAge": {

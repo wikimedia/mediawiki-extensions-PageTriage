@@ -947,19 +947,4 @@ class Hooks {
 		}
 	}
 
-	/**
-	 * @param RecentChange $rc
-	 * @param bool &$shouldCheck Whether this revision should be checked for copyright violation
-	 */
-	public static function onCopyvioCheck( RecentChange $rc, &$shouldCheck ) {
-		if ( !in_array( $rc->getAttribute( 'rc_type' ), [ RC_NEW, RC_EDIT ] ) ) {
-			return;
-		}
-
-		if ( !PageTriageUtil::doesPageNeedTriage( $rc->getTitle()->getArticleID() ) ) {
-			return;
-		}
-
-		$shouldCheck = true;
-	}
 }

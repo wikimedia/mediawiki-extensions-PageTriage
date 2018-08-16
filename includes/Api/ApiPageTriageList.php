@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\PageTriage\Api;
 
-use Copyvio\Storage\ScoreStorage;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\OresMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
@@ -49,10 +48,6 @@ class ApiPageTriageList extends ApiBase {
 				$oresMetadata = OresMetadata::newFromGlobalState( $this->getContext(), $pages );
 			}
 
-			if ( PageTriageUtil::copyvioIsAvailable() ) {
-				$copyvioScores = ScoreStorage::findByPageIds( $pages );
-			}
-
 			// Sort data according to page order returned by our query. Also convert it to a
 			// slightly different format that's more Backbone-friendly.
 			foreach ( $pages as $page ) {
@@ -84,19 +79,6 @@ class ApiPageTriageList extends ApiBase {
 				if ( PageTriageUtil::oresIsAvailable() ) {
 					$metaData[$page] = $metaData[$page] + $oresMetadata->getMetadata( $page );
 				}
-
-				// Add Copyvio data
-				$copyvioMetadata = [
-					'copyvio_probability' => null,
-					'copyvio_report_url' => null,
-				];
-				if ( PageTriageUtil::copyvioIsAvailable() && isset( $copyvioScores[ $page ] ) ) {
-					$copyvioMetadata = [
-						'copyvio_probability' => $copyvioScores[ $page ][ 'probability' ],
-						'copyvio_report_url' => $copyvioScores[ $page ][ 'reportUrl' ],
-					];
-				}
-				$metaData[$page] = $metaData[$page] + $copyvioMetadata;
 
 				$metaData[$page][ApiResult::META_BC_BOOLS] = [
 					'creator_user_page_exist', 'creator_user_talk_page_exist',
