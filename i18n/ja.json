@@ -7,7 +7,8 @@
 			"Otokoume",
 			"아라",
 			"Omotecho",
-			"Fitoschido"
+			"Fitoschido",
+			"Suyama"
 		]
 	},
 	"newpagesfeed": "新しいページのフィード",
@@ -83,7 +84,10 @@
 	"pagetriage-filter-stat-learners": "初学者",
 	"pagetriage-filter-stat-blocked": "ブロックされている利用者",
 	"pagetriage-filter-stat-username": "利用者名: $1",
-	"pagetriage-filter-stat-namespace": "名前空間：$1",
+	"pagetriage-filter-stat-namespace": "名前空間",
+	"pagetriage-filter-stat-predicted-class-stub": "スタブ",
+	"pagetriage-filter-stat-predicted-issues-vandalism": "荒らし",
+	"pagetriage-filter-stat-predicted-issues-spam": "スパム",
 	"pagetriage-no-pages": "検索条件に一致するページはありません。",
 	"pagetriage-warning-browser": "このツールは Internet Explorer 11 より古いブラウザーでは正しく動作しない可能性があります。",
 	"pagetriage-welcome": "{{SITENAME}}を改善するため、以下の新しいページを査読してください。[$1 詳細はこちら] · [$2 フィードバックを送信]",

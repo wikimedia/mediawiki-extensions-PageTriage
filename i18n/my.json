@@ -11,8 +11,15 @@
 	"pagetriage-filter-predicted-issues-vandalism": "ဖျက်လိုဖျက်ဆီးလုပ်ဆောင်မှု",
 	"pagetriage-filter-predicted-issues-attack": "တိုက်ခိုက်",
 	"pagetriage-filter-predicted-issues-none": "ဘာမှမရှိ",
+	"pagetriage-filter-stat-state": "အခြေနေ",
 	"pagetriage-filter-stat-all": "အားလုံး",
+	"pagetriage-filter-stat-reviewed": "ပြန်လည်ဆန်းစစ်ပြီး",
+	"pagetriage-filter-stat-bots": "ဘော့များ",
+	"pagetriage-filter-stat-redirects": "ပြန်ညွှန်းများ",
+	"pagetriage-filter-stat-no-categories": "ကဏ္ဍများ မရှိပါ",
 	"pagetriage-filter-stat-blocked": "ပိတ်ပင်ထားသော အသုံးပြုသူများ",
+	"pagetriage-filter-stat-namespace": "အမည်ညွှန်း",
 	"pagetriage-filter-stat-predicted-class-stub": "ဆောင်းပါးတို",
+	"pagetriage-filter-stat-predicted-issues-vandalism": "ဖျက်လိုဖျက်ဆီးလုပ်ဆောင်မှု",
 	"pagetriage-info-help": "အကူအညီ"
 }

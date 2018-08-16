@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"R Ashwani Banjan Murmu"
+		]
+	},
+	"pagetriage-filter-stat-reviewed": "ᱧᱮᱞ ᱨᱩᱣᱟᱹᱲᱦᱟᱠᱟᱱ",
+	"pagetriage-filter-stat-unreviewed": "ᱵᱟᱝ ᱧᱮᱞᱟᱹᱨᱩ-ᱟᱜ",
+	"pagetriage-filter-stat-bots": "ᱵᱳᱴᱥ",
+	"pagetriage-filter-stat-orphan": "ᱴᱩᱣᱟᱹᱨᱤᱡ",
+	"pagetriage-filter-stat-non-autoconfirmed": "ᱱᱟᱣᱱᱠᱚᱜ ᱦᱚᱛᱮᱛᱮ",
+	"pagetriage-filter-stat-namespace": "ᱨᱟᱠᱷᱟ ᱧᱩᱛᱩᱢ",
+	"pagetriage-filter-stat-predicted-issues-spam": "ᱥᱯᱟᱢ",
+	"pagetriage-filter-stat-predicted-issues-none": "ᱚᱠᱟᱦᱚᱸ ᱵᱟᱝ"
+}

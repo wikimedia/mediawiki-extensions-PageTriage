@@ -110,6 +110,7 @@
 	"pagetriage-filter-stat-non-autoconfirmed": "новички",
 	"pagetriage-filter-stat-blocked": "заблокированные участники",
 	"pagetriage-filter-stat-username": "имя участника: $1",
+	"pagetriage-filter-stat-namespace": "Пространство имён",
 	"pagetriage-filter-stat-predicted-class-stub": "заготовка",
 	"pagetriage-filter-stat-predicted-class-start": "начало",
 	"pagetriage-filter-stat-predicted-class-c": "класс c",
