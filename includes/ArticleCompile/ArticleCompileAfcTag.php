@@ -13,6 +13,11 @@ class ArticleCompileAfcTag extends ArticleCompileInterface {
 	const DECLINED = 4;
 
 	/**
+	 * @var array Associative array of page id to afc state. e.g. [ '123' => 2, '124' => 4 ]
+	 */
+	private $previousAfcStates;
+
+	/**
 	 * ArticleCompileAfcTag constructor.
 	 * @param array $pageId
 	 * @param int $componentDb
@@ -20,6 +25,7 @@ class ArticleCompileAfcTag extends ArticleCompileInterface {
 	 */
 	public function __construct( $pageId, $componentDb = DB_MASTER, $articles = null ) {
 		parent::__construct( $pageId, $componentDb, $articles );
+		$this->previousAfcStates = $this->loadPreviousAfcStates( $pageId );
 	}
 
 	/**
@@ -50,6 +56,11 @@ class ArticleCompileAfcTag extends ArticleCompileInterface {
 				continue;
 			}
 
+			$previousState = $this->previousAfcStates[ $pageId ] ?? self::UNSUBMITTED;
+
+			// Try to identify the current afc_state of the page
+			// and request updating of 'update_reviewed_timestamp'
+			// if the state has changed.
 			$categories = array_keys( $parserOutput->getCategories() );
 			foreach ( self::getAfcCategories() as $afcStateValue => $afcCategory ) {
 				if ( in_array( $afcCategory, $categories ) ) {
@@ -57,7 +68,10 @@ class ArticleCompileAfcTag extends ArticleCompileInterface {
 
 					// Drafts re-use the ptrp_reviewed_updated to serve as the time of the last
 					// submission or last decline. See T195547
-					if ( in_array( $afcStateValue, [ self::PENDING, self::DECLINED ] ) ) {
+					if (
+						in_array( $afcStateValue, [ self::PENDING, self::DECLINED ] ) &&
+						$afcStateValue !== $previousState
+					) {
 						$this->metadata[$pageId]['update_reviewed_timestamp'] = true;
 					}
 
@@ -68,6 +82,24 @@ class ArticleCompileAfcTag extends ArticleCompileInterface {
 		}
 
 		return true;
+	}
+
+	private function loadPreviousAfcStates( $pageIds ) {
+		$states = [];
+		$afcStateTagId = $this->db->selectField(
+			'pagetriage_tags', 'ptrt_tag_id', [ 'ptrt_tag_name' => 'afc_state' ]
+		);
+		if ( $afcStateTagId ) {
+			$result = $this->db->select(
+				'pagetriage_page_tags',
+				[ 'pageId' => 'ptrpt_page_id', 'afcState' => 'ptrpt_value' ],
+				[ 'ptrpt_page_id' => $pageIds, 'ptrpt_tag_id' => $afcStateTagId ]
+			);
+			foreach ( $result as $row ) {
+				$states[$row->pageId] = intval( $row->afcState );
+			}
+		}
+		return $states;
 	}
 
 }
