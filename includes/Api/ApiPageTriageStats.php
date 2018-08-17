@@ -35,6 +35,7 @@ class ApiPageTriageStats extends ApiBase {
 	public function getAllowedParams() {
 		return array_merge(
 			PageTriageUtil::getOresApiParams(),
+			PageTriageUtil::getCopyvioApiParam(),
 			PageTriageUtil::getCommonApiParams(),
 			[
 				'topreviewers' => [

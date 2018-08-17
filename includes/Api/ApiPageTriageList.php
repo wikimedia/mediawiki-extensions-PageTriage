@@ -19,6 +19,43 @@ use Title;
  */
 class ApiPageTriageList extends ApiBase {
 
+	private static function joinWithTagCopyvio( &$tables, &$join_conds ) {
+		$tags = ArticleMetadata::getValidTags();
+		$tagId = $tags[ 'copyvio' ];
+
+		$tables[ 'pagetriage_page_tags_copyvio' ] = 'pagetriage_page_tags';
+		$join_conds[ 'pagetriage_page_tags_copyvio' ] = [
+			'LEFT JOIN',
+			[
+				'pagetriage_page_tags_copyvio.ptrpt_page_id = ptrp_page_id',
+				'pagetriage_page_tags_copyvio.ptrpt_tag_id' => $tagId,
+			]
+		];
+	}
+
+	private static function joinWithTags( &$tables, &$join_conds ) {
+		$tables[ 'pagetriage_pt' ] = 'pagetriage_page_tags';
+		$join_conds[ 'pagetriage_pt' ] = [
+			'INNER JOIN',
+			"pagetriage_pt.ptrpt_page_id = ptrp_page_id",
+		];
+	}
+
+	private static function buildCopyvioCond( $opts ) {
+		if (
+			!isset( $opts[ 'show_predicted_issues_copyvio' ] ) ||
+			!$opts[ 'show_predicted_issues_copyvio' ]
+		) {
+			return false;
+		}
+		$tags = ArticleMetadata::getValidTags();
+		if ( !isset( $tags[ 'copyvio' ] ) ) {
+			return false;
+		}
+
+		return "pagetriage_page_tags_copyvio.ptrpt_value IS NOT NULL";
+	}
+
 	public function execute() {
 		// Get the API parameters and store them
 		$opts = $this->extractRequestParams();
@@ -226,11 +263,7 @@ class ApiPageTriageList extends ApiBase {
 		$tagConds = self::buildTagQuery( $opts );
 		if ( $tagConds ) {
 			$conds[] = $tagConds;
-			$tables[] = 'pagetriage_page_tags';
-			$join_conds['pagetriage_page_tags'] = [
-				'INNER JOIN',
-				'ptrpt_page_id = ptrp_page_id',
-			];
+			self::joinWithTags( $tables, $join_conds );
 		}
 
 		// ORES wp10 filter
@@ -241,22 +274,53 @@ class ApiPageTriageList extends ApiBase {
 				PageTriageUtil::mapOresParamsToClassNames( 'wp10', $opts )
 			);
 			if ( $oresCond ) {
-				self::joinWithOres( 'wp10', $tables, $conds, $join_conds );
+				self::joinWithOres( 'wp10', $tables, $join_conds );
 				$conds[] = $oresCond;
 			}
 		}
 
-		// ORES draftquality filter
+		// ORES draftquality and copyvio filters
 		if ( PageTriageUtil::oresIsAvailable() &&
-			PageTriageUtil::isOresDraftQualityQuery( $opts ) ) {
+			( PageTriageUtil::isOresDraftQualityQuery( $opts ) ||
+			PageTriageUtil::isCopyvioQuery( $opts ) )
+		) {
+			$draftqualityCopyvioConds = [];
+
+			// "Issues: none" used to be map straight to DraftQuality class OK
+			// It now means: no known ORES DraftQuality issues or Copyvio
+			// It has to be removed from the $opts ORES will used to build a query
+			// and handled separately.
+			$showOK = $opts[ 'show_predicted_issues_none' ] ?? false;
+			if ( $showOK ) {
+				unset( $opts[ 'show_predicted_issues_none' ] );
+				$draftqualityCopyvioConds[] = $dbr->makeList( [
+					'ores_draftquality_cls.oresc_class=1',
+					'pagetriage_page_tags_copyvio.ptrpt_value IS NULL',
+				], LIST_AND );
+			}
+
 			$oresCond = ORESServices::getDatabaseQueryBuilder()->buildQuery(
 				'draftquality',
 				PageTriageUtil::mapOresParamsToClassNames( 'draftquality', $opts ),
 				true
 			);
 			if ( $oresCond ) {
-				self::joinWithOres( 'draftquality', $tables, $conds, $join_conds );
-				$conds[] = $oresCond;
+				$draftqualityCopyvioConds[] = $oresCond;
+			}
+
+			$copyvioCond = self::buildCopyvioCond( $opts );
+			if ( $copyvioCond ) {
+				$draftqualityCopyvioConds[] = $copyvioCond;
+			}
+
+			$conds[] = $dbr->makeList( $draftqualityCopyvioConds, LIST_OR );
+
+			if ( $showOK || $oresCond ) {
+				self::joinWithOres( 'draftquality', $tables, $join_conds );
+			}
+
+			if ( $showOK || $copyvioCond ) {
+				self::joinWithTagCopyvio( $tables, $join_conds );
 			}
 		}
 
@@ -293,18 +357,20 @@ class ApiPageTriageList extends ApiBase {
 	/**
 	 * @param string $model Name of the model this join is for
 	 * @param array $tables
-	 * @param array $conds
 	 * @param array $join_conds
 	 */
-	private static function joinWithOres( $model, &$tables, &$conds, &$join_conds ) {
+	private static function joinWithOres( $model, &$tables, &$join_conds ) {
 		$modelId = ORESServices::getModelLookup()->getModelId( $model );
 		$tableAlias = "ores_{$model}_cls";
 		$tables[ $tableAlias ] = 'ores_classification';
-		$join_conds[ $tableAlias ] = [
-			'INNER JOIN',
+		$innerJoinConds = [
 			"$tableAlias.oresc_rev = page_latest",
+			"$tableAlias.oresc_model" => $modelId,
 		];
-		$conds[ "$tableAlias.oresc_model" ] = $modelId;
+		if ( $model === 'draftquality' ) {
+			$innerJoinConds[] = "$tableAlias.oresc_is_predicted = 1";
+		}
+		$join_conds[ $tableAlias ] = [ 'INNER JOIN', $innerJoinConds ];
 	}
 
 	/**
@@ -336,17 +402,18 @@ class ApiPageTriageList extends ApiBase {
 		];
 
 		$tags = ArticleMetadata::getValidTags();
+		$table = 'pagetriage_pt';
 
 		// only single tag search is allowed
 		foreach ( $searchableTags as $key => $val ) {
 			if ( isset( $opts[$key] ) && $opts[$key] ) {
 				if ( $val['val'] === false ) {
 					// if val is false, use the value that was supplied via the api call
-					$tagConds = " ptrpt_tag_id = '" . $tags[$val['name']] . "' AND " .
-						"ptrpt_value " . $val['op'] . " " . $dbr->addQuotes( $opts[$key] );
+					$tagConds = " $table.ptrpt_tag_id = '" . $tags[$val['name']] . "' AND " .
+						"$table.ptrpt_value " . $val['op'] . " " . $dbr->addQuotes( $opts[$key] );
 				} else {
-					$tagConds = " ptrpt_tag_id = '" . $tags[$val['name']] . "' AND " .
-						"ptrpt_value " . $val['op'] . " " . $dbr->addQuotes( $val['val'] );
+					$tagConds = " $table.ptrpt_tag_id = '" . $tags[$val['name']] . "' AND " .
+						"$table.ptrpt_value " . $val['op'] . " " . $dbr->addQuotes( $val['val'] );
 				}
 				break;
 			}
@@ -358,6 +425,7 @@ class ApiPageTriageList extends ApiBase {
 	public function getAllowedParams() {
 		return array_merge(
 			PageTriageUtil::getOresApiParams(),
+			PageTriageUtil::getCopyvioApiParam(),
 			PageTriageUtil::getCommonApiParams(),
 			[
 				'page_id' => [

@@ -264,7 +264,7 @@ $( function () {
 		},
 
 		/**
-		 * Set ORES related API parameters based on the NPP or AFC context.
+		 * Set ORES, Copyvio related API parameters based on the NPP or AFC context.
 		 *
 		 * @param {string} context
 		 * @return {Object}
@@ -279,6 +279,7 @@ $( function () {
 					'predicted-class-good': 'show_predicted_class_good',
 					'predicted-class-featured': 'show_predicted_class_featured',
 					'predicted-issues-attack': 'show_predicted_issues_attack',
+					'predicted-issues-copyvio': 'show_predicted_issues_copyvio',
 					'predicted-issues-none': 'show_predicted_issues_none',
 					'predicted-issues-spam': 'show_predicted_issues_spam',
 					'predicted-issues-vandalism': 'show_predicted_issues_vandalism'
@@ -502,6 +503,7 @@ $( function () {
 					'predicted-issues-vandalism',
 					'predicted-issues-spam',
 					'predicted-issues-attack',
+					'predicted-issues-copyvio',
 					'predicted-issues-none'
 				],
 				key;

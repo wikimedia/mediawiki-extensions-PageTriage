@@ -116,6 +116,22 @@ $( function () {
 				article.set( 'afc_state_value', mw.msg( this.afcStateIdToLabel( article.get( 'afc_state' ) ) ) );
 			}
 
+			// Set copyvio info
+			if ( article.get( 'copyvio' ) ) {
+				article.set(
+					'copyvio_link_url',
+					'https://tools.wmflabs.org/copypatrol/en?' + $.param( {
+						filter: 'all',
+						searchCriteria: 'page_exact',
+						searchText: article.get( 'title' ),
+						drafts: article.get( 'is_draft' ) ? 1 : 0
+					} )
+				);
+			} else {
+				// Make sure 'copyvio' is defined so it doesn't break in the template
+				article.set( 'copyvio', false );
+			}
+
 			// set last AfC action date label
 			article.set( 'last_afc_action_date_label', '' );
 			if ( article.get( 'afc_state' ) === '2' || article.get( 'afc_state' ) === '3' ) {

@@ -647,4 +647,25 @@ class PageTriageUtil {
 			Helpers::isModelEnabled( 'draftquality' );
 	}
 
+	/**
+	 * @return array The copyvio filter parameter
+	 */
+	public static function getCopyvioApiParam() {
+		return [
+			'show_predicted_issues_copyvio' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
+		];
+	}
+
+	/**
+	 * Check if $opts contain the copyvio filter parameter
+	 *
+	 * @param array $opts
+	 * @return bool
+	 */
+	public static function isCopyvioQuery( $opts ) {
+		return $opts[ 'show_predicted_issues_copyvio' ] ?? false;
+	}
+
 }
