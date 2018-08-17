@@ -611,7 +611,7 @@ $( function () {
 		 * Submit the selected tags
 		 */
 		submit: function () {
-			var key, param, apiRequest,
+			var key, param,
 				that = this;
 
 			// no tag to submit
@@ -643,43 +643,33 @@ $( function () {
 			}
 
 			// Applying deletion tags should automatically mark the page as reviewed
-			apiRequest = {
+			new mw.Api().postWithToken( 'csrf', {
 				action: 'pagetriageaction',
 				pageid: mw.config.get( 'wgArticleId' ),
 				reviewed: '1',
-				token: mw.user.tokens.get( 'editToken' ),
-				format: 'json',
 				skipnotif: '1'
-			};
-			$.ajax( {
-				type: 'post',
-				url: mw.util.wikiScript( 'api' ),
-				data: apiRequest,
-				success: function ( data ) {
+			} )
+				.done( function () {
 					var key, tagObj;
-
-					if ( data.error ) {
-						that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
-					} else {
-						// Log certain types of deletion nominations...
-						// If the selected tag category doesn't allow multiple selection
-						// and the selected tag has a prefix (like Wikipedia:Articles for
-						// deletion) update the log page for that deletion type.
-						// TODO: Make logging a JS config-based option
-						if ( !that.deletionTagsOptions[ that.selectedCat ].multiple ) {
-							for ( key in that.selectedTag ) {
-								tagObj = that.selectedTag[ key ];
-								if ( tagObj.prefix ) {
-									that.logPage( tagObj );
-									return;
-								}
+					// Log certain types of deletion nominations...
+					// If the selected tag category doesn't allow multiple selection
+					// and the selected tag has a prefix (like Wikipedia:Articles for
+					// deletion) update the log page for that deletion type.
+					// TODO: Make logging a JS config-based option
+					if ( !that.deletionTagsOptions[ that.selectedCat ].multiple ) {
+						for ( key in that.selectedTag ) {
+							tagObj = that.selectedTag[ key ];
+							if ( tagObj.prefix ) {
+								that.logPage( tagObj );
+								return;
 							}
 						}
-						that.tagPage();
 					}
-				},
-				dataType: 'json'
-			} );
+					that.tagPage();
+				} )
+				.fail( function ( errorCode, data ) {
+					that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
+				} );
 		},
 
 		/**
@@ -746,31 +736,23 @@ $( function () {
 				text = '{{' + $.pageTriageDeletionTagsMultiple.tag + '|' + tagText + paramsText + '}}';
 			}
 
-			$.ajax( {
-				type: 'post',
-				url: mw.util.wikiScript( 'api' ),
-				data: {
-					action: 'pagetriagetagging',
-					pageid: mw.config.get( 'wgArticleId' ),
-					token: mw.user.tokens.get( 'editToken' ),
-					format: 'json',
-					top: text,
-					deletion: 1,
-					taglist: tagList.join( '|' )
-				},
-				success: function ( data ) {
-					if ( data.pagetriagetagging && data.pagetriagetagging.result === 'success' ) {
-						that.notifyUser( count, key );
+			new mw.Api().postWithToken( 'csrf', {
+				action: 'pagetriagetagging',
+				pageid: mw.config.get( 'wgArticleId' ),
+				top: text,
+				deletion: 1,
+				taglist: tagList.join( '|' )
+			} )
+				.done( function () {
+					that.notifyUser( count, key );
+				} )
+				.fail( function ( errorCode ) {
+					if ( errorCode === 'pagetriage-tag-deletion-error' ) {
+						that.handleError( mw.msg( 'pagetriage-tag-deletion-error' ) );
 					} else {
-						if ( data.error && data.error.code && data.error.code === 'pagetriage-tag-deletion-error' ) {
-							that.handleError( mw.msg( 'pagetriage-tag-deletion-error' ) );
-						} else {
-							that.handleError( mw.msg( 'pagetriage-tagging-error' ) );
-						}
+						that.handleError( mw.msg( 'pagetriage-tagging-error' ) );
 					}
-				},
-				dataType: 'json'
-			} );
+				} );
 		},
 
 		/**
@@ -835,18 +817,13 @@ $( function () {
 			var that = this,
 				title = specialDeletionTagging[ tagObj.tag ].getLogPageTitle( tagObj.prefix );
 
-			$.ajax( {
-				type: 'post',
-				url: mw.util.wikiScript( 'api' ),
-				data: {
-					action: 'query',
-					prop: 'info|revisions',
-					intoken: 'edit', // fetch an edit token
-					titles: title,
-					format: 'json',
-					rvprop: 'content'
-				},
-				success: function ( data ) {
+			new mw.Api().get( {
+				action: 'query',
+				prop: 'revisions',
+				titles: title,
+				rvprop: 'content'
+			} )
+				.done( function ( data ) {
 					var i;
 					if ( data && data.query && data.query.pages ) {
 						for ( i in data.query.pages ) {
@@ -860,9 +837,10 @@ $( function () {
 					} else {
 						that.handleError( mw.msg( 'pagetriage-del-log-page-missing-error' ) );
 					}
-				},
-				dataType: 'json'
-			} );
+				} )
+				.fail( function () {
+					that.handleError( mw.msg( 'pagetriage-del-log-page-missing-error' ) );
+				} );
 		},
 
 		/**
@@ -874,30 +852,25 @@ $( function () {
 		 */
 		addToLog: function ( title, oldText, tagObj ) {
 			var that = this,
-				data = {
+				request = {
 					action: 'edit',
-					title: title,
-					token: mw.user.tokens.get( 'editToken' ),
-					format: 'json'
+					title: title
 				};
 
 			specialDeletionTagging[ tagObj.tag ].buildLogRequest(
 				oldText,
 				tagObj.params[ '1' ].value,
 				tagObj,
-				data
+				request
 			);
 
-			if ( data.text === oldText ) {
+			if ( request.text === oldText ) {
 				that.handleError( mw.msg( 'pagetriage-del-log-page-adding-error' ) );
 				return;
 			}
 
-			$.ajax( {
-				type: 'post',
-				url: mw.util.wikiScript( 'api' ),
-				data: data,
-				success: function ( data ) {
+			new mw.Api().postWithToken( 'csrf', request )
+				.done( function ( data ) {
 					if ( data.edit && data.edit.result === 'Success' ) {
 						if ( tagObj.discussion ) {
 							that.discussionPage( tagObj );
@@ -907,9 +880,10 @@ $( function () {
 					} else {
 						that.handleError( mw.msg( 'pagetriage-del-log-page-adding-error' ) );
 					}
-				},
-				dataType: 'json'
-			} );
+				} )
+				.fail( function () {
+					that.handleError( mw.msg( 'pagetriage-del-log-page-adding-error' ) );
+				} );
 		},
 
 		/**
@@ -920,11 +894,9 @@ $( function () {
 		discussionPage: function ( tagObj ) {
 			var that = this,
 				title = tagObj.prefix + '/' + pageName,
-				data = {
+				request = {
 					action: 'edit',
 					title: title,
-					token: mw.user.tokens.get( 'editToken' ),
-					format: 'json',
 					watchlist: 'watch'
 				};
 
@@ -932,21 +904,15 @@ $( function () {
 				return;
 			}
 
-			specialDeletionTagging[ tagObj.tag ].buildDiscussionRequest( tagObj.params[ '1' ].value, data );
+			specialDeletionTagging[ tagObj.tag ].buildDiscussionRequest( tagObj.params[ '1' ].value, request );
 
-			$.ajax( {
-				type: 'post',
-				url: mw.util.wikiScript( 'api' ),
-				data: data,
-				success: function ( data ) {
-					if ( data.error ) {
-						that.handleError( mw.msg( 'pagetriage-del-discussion-page-adding-error' ) );
-					} else {
-						that.tagPage();
-					}
-				},
-				dataType: 'json'
-			} );
+			new mw.Api().postWithToken( 'csrf', request )
+				.done( function () {
+					that.tagPage();
+				} )
+				.fail( function () {
+					that.handleError( mw.msg( 'pagetriage-del-discussion-page-adding-error' ) );
+				} );
 		},
 
 		/**

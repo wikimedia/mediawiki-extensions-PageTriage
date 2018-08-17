@@ -627,6 +627,7 @@ class Hooks {
 
 		$viewsToolbarModule = $template + [
 			'dependencies' => [
+				'mediawiki.api',
 				'mediawiki.jqueryMsg',
 				'mediawiki.messagePoster',
 				'mediawiki.Title',

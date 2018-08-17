@@ -38,45 +38,25 @@ $( function () {
 		},
 
 		submit: function ( action ) {
-			var apiRequest,
-				that = this,
+			var that = this,
 				note = $.trim( $( '#mwe-pt-review-note-input' ).val() );
 
 			if ( !that.noteChanged || !note.length ) {
 				note = '';
 			}
-			apiRequest = {
+
+			new mw.Api().postWithToken( 'csrf', {
 				action: 'pagetriageaction',
 				pageid: mw.config.get( 'wgArticleId' ),
 				reviewed: ( action === 'reviewed' ) ? '1' : '0',
-				token: mw.user.tokens.get( 'editToken' ),
-				format: 'json',
 				note: note
-			};
-			return $.ajax( {
-				type: 'post',
-				url: mw.util.wikiScript( 'api' ),
-				data: apiRequest,
-				cache: false,
-				success: function ( data ) {
-					if (
-						typeof data.pagetriageaction !== 'undefined' &&
-						data.pagetriageaction.result === 'success'
-					) {
-						that.talkPageNote( note, action );
-					} else {
-						if ( typeof data.error.info !== 'undefined' ) {
-							that.showMarkError( action, data.error.info );
-						} else {
-							that.showMarkError( action, mw.msg( 'unknown-error' ) );
-						}
-					}
-				},
-				error: function () {
-					that.showMarkError( action, mw.msg( 'unknown-error' ) );
-				},
-				dataType: 'json'
-			} );
+			} )
+				.done( function () {
+					that.talkPageNote( note, action );
+				} )
+				.fail( function ( errorCode, data ) {
+					that.showMarkError( action, data.error.info || mw.msg( 'unknown-error' ) );
+				} );
 		},
 
 		talkPageNote: function ( note, action ) {

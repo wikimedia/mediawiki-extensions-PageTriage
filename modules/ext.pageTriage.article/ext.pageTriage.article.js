@@ -4,36 +4,25 @@
 ( function ( $ ) {
 	mw.pageTriage.action = {
 		submit: function () {
-			var apiRequest = {
+			new mw.Api().postWithToken( 'csrf', {
 				action: 'pagetriageaction',
 				pageid: mw.config.get( 'wgArticleId' ),
-				reviewed: '1',
-				token: mw.user.tokens.get( 'editToken' ),
-				format: 'json'
-			};
-
-			return $.ajax( {
-				type: 'post',
-				url: mw.util.wikiScript( 'api' ),
-				data: apiRequest,
-				success: this.callback,
-				dataType: 'json'
-			} );
-		},
-
-		callback: function ( data ) {
-			$( '.mw-pagetriage-markpatrolled' ).html(
-				data.error ?
-					mw.msg( 'pagetriage-mark-as-reviewed-error' ) :
-					mw.msg( 'pagetriage-reviewed' )
-			);
+				reviewed: '1'
+			} )
+				.done( function () {
+					$( '.mw-pagetriage-markpatrolled' ).text( mw.msg( 'pagetriage-reviewed' ) );
+				} )
+				.fail( function ( errorCode, data ) {
+					$( '.mw-pagetriage-markpatrolled' ).text( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
+				} );
 		}
 	};
 
-	$( '.mw-pagetriage-markpatrolled-link' )
-		.on( 'click', function () {
-			mw.pageTriage.action.submit();
-			return false;
-		} )
-		.end();
+	$( function () {
+		$( '.mw-pagetriage-markpatrolled-link' )
+			.on( 'click', function () {
+				mw.pageTriage.action.submit();
+				return false;
+			} );
+	} );
 }( jQuery ) );

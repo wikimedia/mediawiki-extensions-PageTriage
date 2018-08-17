@@ -164,6 +164,7 @@
 		"ext.pageTriage.models": {
 			"dependencies": [
 				"mediawiki.Title",
+				"mediawiki.api",
 				"mediawiki.user",
 				"ext.pageTriage.init"
 			],
@@ -576,7 +577,8 @@
 				"pagetriage-mark-as-reviewed-error"
 			],
 			"dependencies": [
-				"ext.pageTriage.init"
+				"ext.pageTriage.init",
+				"mediawiki.api"
 			]
 		}
 	},

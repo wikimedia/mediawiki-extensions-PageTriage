@@ -499,7 +499,7 @@ $( function () {
 		 * Submit the selected tags
 		 */
 		submit: function () {
-			var cat, tagKey, tagObj, param, apiRequest,
+			var cat, tagKey, tagObj, param,
 				topText = '',
 				bottomText = '',
 				processed = {},
@@ -573,27 +573,18 @@ $( function () {
 			}
 
 			// Applying maintenance tags should automatically mark the page as reviewed
-			apiRequest = {
+			new mw.Api().postWithToken( 'csrf', {
 				action: 'pagetriageaction',
 				pageid: mw.config.get( 'wgArticleId' ),
 				reviewed: '1',
-				token: mw.user.tokens.get( 'editToken' ),
-				format: 'json',
 				skipnotif: '1'
-			};
-			$.ajax( {
-				type: 'post',
-				url: mw.util.wikiScript( 'api' ),
-				data: apiRequest,
-				success: function ( data ) {
-					if ( data.error ) {
-						that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
-					} else {
-						that.applyTags( topText, bottomText, tagList );
-					}
-				},
-				dataType: 'json'
-			} );
+			} )
+				.done( function () {
+					that.applyTags( topText, bottomText, tagList );
+				} )
+				.fail( function ( errorCode, data ) {
+					that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
+				} );
 		},
 
 		/**
@@ -617,34 +608,26 @@ $( function () {
 				note = '';
 			}
 
-			$.ajax( {
-				type: 'post',
-				url: mw.util.wikiScript( 'api' ),
-				data: {
-					action: 'pagetriagetagging',
-					pageid: mw.config.get( 'wgArticleId' ),
-					token: mw.user.tokens.get( 'editToken' ),
-					format: 'json',
-					top: topText,
-					bottom: bottomText,
-					note: note,
-					taglist: tagList.join( '|' )
-				},
-				success: function ( data ) {
-					if ( data.pagetriagetagging && data.pagetriagetagging.result === 'success' ) {
-						if ( note ) {
-							that.talkPageNote( note );
-						} else {
-							// update the article model, since it's now changed.
-							that.reset();
-							window.location.reload( true );
-						}
+			new mw.Api().postWithToken( 'csrf', {
+				action: 'pagetriagetagging',
+				pageid: mw.config.get( 'wgArticleId' ),
+				top: topText,
+				bottom: bottomText,
+				note: note,
+				taglist: tagList.join( '|' )
+			} )
+				.done( function () {
+					if ( note ) {
+						that.talkPageNote( note );
 					} else {
-						that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
+						// update the article model, since it's now changed.
+						that.reset();
+						window.location.reload( true );
 					}
-				},
-				dataType: 'json'
-			} );
+				} )
+				.fail( function ( errorCode, data ) {
+					that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
+				} );
 		},
 
 		talkPageNote: function ( note ) {

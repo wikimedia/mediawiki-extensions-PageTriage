@@ -22,7 +22,6 @@ $( function () {
 			// these settings are not overwritable
 			this.apiParams.limit = 1;
 			this.apiParams.action = 'pagetriagelist';
-			this.apiParams.format = 'json';
 			this.apiParams.offset = this.model.get( 'creation_date_utc' );
 			this.apiParams.pageoffset = this.model.get( 'pageid' );
 		},
@@ -37,12 +36,8 @@ $( function () {
 			this.setParams();
 
 			// attempt to get the next page
-			$.ajax( {
-				type: 'post',
-				url: mw.util.wikiScript( 'api' ),
-				data: this.apiParams,
-				dataType: 'json',
-				success: function ( result ) {
+			new mw.Api().get( this.apiParams )
+				.done( function ( result ) {
 					var url, mark;
 					if (
 						result.pagetriagelist && result.pagetriagelist.result === 'success' && result.pagetriagelist.pages[ 0 ]
@@ -65,12 +60,10 @@ $( function () {
 					} else {
 						that.disable();
 					}
-				},
-				error: function () {
+				} )
+				.fail( function () {
 					that.disable();
-				}
-			} );
-
+				} );
 		}
 
 	} );
