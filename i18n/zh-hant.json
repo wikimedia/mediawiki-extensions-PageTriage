@@ -120,7 +120,6 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "垃圾內容",
 	"pagetriage-filter-stat-predicted-issues-attack": "攻擊",
 	"pagetriage-filter-stat-predicted-issues-none": "無",
-	"pagetriage-copyvio-link-label": "Copyvio：",
 	"pagetriage-no-pages": "沒有滿足您的條件的頁面。",
 	"pagetriage-warning-browser": "此工具可能無法在比 Internet Explorer 11 更舊的瀏覽器中運作。",
 	"pagetriage-welcome": "請檢閱下列的新頁面，幫助改善{{SITENAME}}。[$1 了解更多資訊] · [$2 留下意見反饋]",
@@ -332,10 +331,5 @@
 	"apihelp-pagetriagetagging-param-deletion": "標記是否用於刪除提名。",
 	"apihelp-pagetriagetagging-param-note": "檢閱員對頁面創建者的個人提醒。",
 	"apihelp-pagetriagetagging-param-taglist": "豎號分隔的標籤清單。",
-	"apihelp-pagetriagetemplate-description": "索取由頁面分檢器應用程式使用的模板。",
-	"apihelp-pagetriagetemplate-summary": "索取由頁面分檢器應用程式使用的模板。",
-	"apihelp-pagetriagetemplate-param-view": "您所需模板的頁面分檢器檢視。",
-	"apihelp-pagetriagetemplate-param-template": "要索取的模板。以多個豎線字元 | 來分隔。",
-	"apihelp-pagetriagetemplate-example-1": "列出帶有模板「listItem.html」的項目",
 	"apierror-bad-pagetriage-page": "指定的頁面不存在於頁面分檢器佇列"
 }

@@ -132,7 +132,6 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "Pourriel",
 	"pagetriage-filter-stat-predicted-issues-attack": "Attaque",
 	"pagetriage-filter-stat-predicted-issues-none": "Aucun",
-	"pagetriage-copyvio-link-label": "Copyvio :",
 	"pagetriage-no-pages": "Aucune page ne correspond à vos critères.",
 	"pagetriage-warning-browser": "Cet outil peut ne pas fonctionner correctement dans les navigateurs plus anciens que Internet Explorer 11.",
 	"pagetriage-welcome": "Veuillez relire les nouvelles pages ci-dessous et aider à améliorer {{SITENAME}}. [$1 En savoir plus] · [$2 Laisser un avis]",
@@ -477,10 +476,5 @@
 	"apihelp-pagetriagetagging-param-deletion": "Si le marquage concerne une proposition de suppression.",
 	"apihelp-pagetriagetagging-param-note": "Note personnelle des relecteurs concernant les créateurs de pages.",
 	"apihelp-pagetriagetagging-param-taglist": "Liste d’étiquettes séparée par des barres verticales.",
-	"apihelp-pagetriagetemplate-description": "Rechercher des modèles qui sont utilisés dans l'application PageTriage.",
-	"apihelp-pagetriagetemplate-summary": "Récupérer les modèles qui sont utilisés avec l’application PageTriage.",
-	"apihelp-pagetriagetemplate-param-view": "La vue PageTriage pour laquelle vous avez besoin des modèles.",
-	"apihelp-pagetriagetemplate-param-template": "Le modèle à rechercher. Séparez les valeurs multiples avec le caractère|.",
-	"apihelp-pagetriagetemplate-example-1": "Liste des articles ayant comme modèle \"listItem.html\"",
 	"apierror-bad-pagetriage-page": "La page spécifiée n’existe pas dans la file pagetriage"
 }

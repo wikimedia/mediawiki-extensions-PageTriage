@@ -114,7 +114,6 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "Puxarra",
 	"pagetriage-filter-stat-predicted-issues-attack": "Ataque",
 	"pagetriage-filter-stat-predicted-issues-none": "Nengunu",
-	"pagetriage-copyvio-link-label": "Copyvio:",
 	"pagetriage-no-pages": "Nenguna páxina casa colos criterios.",
 	"pagetriage-warning-browser": "Esta ferramienta podría nun funcionar correutamente en restoladores anteriores a Internet Explorer 11.",
 	"pagetriage-welcome": "Revisa les páxines nueves qu'apaecen más abaxo y ayuda a ameyorar {{SITENAME}}. [$1 Más información] · [$2 Dexar comentarios]",
@@ -301,10 +300,5 @@
 	"apihelp-pagetriagetagging-param-deletion": "Si l'etiquetáu ye o nun ye pa una candidatura a desaniciu",
 	"apihelp-pagetriagetagging-param-note": "Nota personal de los revisores a los criadores de páxines.",
 	"apihelp-pagetriagetagging-param-taglist": "Llista d'etiquetes separaes por barres verticales.",
-	"apihelp-pagetriagetemplate-description": "Llograr les plantíes que s'usen pola aplicación PageTriage.",
-	"apihelp-pagetriagetemplate-summary": "Llograr les plantíes que s'usen pola aplicación PageTriage.",
-	"apihelp-pagetriagetemplate-param-view": "La vista de PageTriage de la que necesites les plantíes.",
-	"apihelp-pagetriagetemplate-param-template": "La plantía que llograr. Si son delles, dixébrales col caráuter |.",
-	"apihelp-pagetriagetemplate-example-1": "Llista de los elementos cola plantía \"listItem.html\"",
 	"apierror-bad-pagetriage-page": "La páxina indicada nun esiste na cola de pagetriage"
 }

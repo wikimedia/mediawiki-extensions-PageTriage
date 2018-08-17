@@ -101,7 +101,6 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "Σπαμ",
 	"pagetriage-filter-stat-predicted-issues-attack": "Επίθεση",
 	"pagetriage-filter-stat-predicted-issues-none": "Κανένα",
-	"pagetriage-copyvio-link-label": "Παραβίαση πνευματικών δικαιωμάτων:",
 	"pagetriage-refresh-list": "Ανανέωση λίστας",
 	"pagetriage-button-add-tag": "Προσθήκη επιλεγμένων ετικετών",
 	"pagetriage-button-add-tag-number": "Προσθήκη $1 επιλεγμένων ετικετών",

@@ -121,7 +121,6 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "спам",
 	"pagetriage-filter-stat-predicted-issues-attack": "атака",
 	"pagetriage-filter-stat-predicted-issues-none": "нет проблем",
-	"pagetriage-copyvio-link-label": "Копивио:",
 	"pagetriage-no-pages": "Нет страниц, соответствующих вашим критериям.",
 	"pagetriage-warning-browser": "Этот инструмент может работать некорректно в браузерах старее, чем Internet Explorer 11.",
 	"pagetriage-welcome": "Пожалуйста, проверьте новые страницы ниже и помогите улучшить {{SITENAME}}. [$1 Подробнее] · [$2 Оставить отзыв]",

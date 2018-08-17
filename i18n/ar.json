@@ -116,7 +116,6 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "سخام",
 	"pagetriage-filter-stat-predicted-issues-attack": "هجوم",
 	"pagetriage-filter-stat-predicted-issues-none": "لا توجد مشاكل",
-	"pagetriage-copyvio-link-label": "انتهاك حقوق الطبع والنشر:",
 	"pagetriage-no-pages": "لا صفحات تتطابق معاييرك.",
 	"pagetriage-warning-browser": "قد لا تعمل هذه الأداة بشكل صحيح في المتصفحات الأقدم من إنترنت إكسبلورر 11.",
 	"pagetriage-welcome": "تُرجَى مراجعة الصفحات الجديدة أدناه والمساعدة في تحسين {{SITENAME}}، [$1 كعرفة المزيد] ، [$2 اترك تغذية مراجعة]",
@@ -366,10 +365,5 @@
 	"apihelp-pagetriagetagging-param-deletion": "تحديد ما إذا كان الوسم لترشيح حذف أم لا.",
 	"apihelp-pagetriagetagging-param-note": "ملاحظة شخصية لمنشئي الصفحة من المراجعين.",
 	"apihelp-pagetriagetagging-param-taglist": "قائمة مفصولة بفواصل بالعلامات",
-	"apihelp-pagetriagetemplate-description": "جلب القوالب التي يتم استخدامها داخل تطبيق PageTriage.",
-	"apihelp-pagetriagetemplate-summary": "جلب القوالب التي يتم استخدامها داخل تطبيق PageTriage.",
-	"apihelp-pagetriagetemplate-param-view": "طريقة عرض PageTriage التي تحتاج إليها في القوالب.",
-	"apihelp-pagetriagetemplate-param-template": "القالب لجلبه، فصل المتعددة بحرف |.",
-	"apihelp-pagetriagetemplate-example-1": "إدراج العناصر ذات القالب \"listItem.html\"",
 	"apierror-bad-pagetriage-page": "الصفحة المحددة غير موجودة في قائمة انتظار فرز الصفحات"
 }

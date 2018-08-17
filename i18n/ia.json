@@ -74,6 +74,8 @@
 	"pagetriage-filter-stat-blocked": "Per usatores blocate",
 	"pagetriage-filter-stat-username": "Per le usator: $1",
 	"pagetriage-filter-stat-namespace": "Spatio de nomines",
+	"pagetriage-filter-stat-predicted-issues-spam": "Spam",
+	"pagetriage-filter-stat-predicted-issues-none": "Necun",
 	"pagetriage-no-pages": "Nulle pagina corresponde a tu criterios.",
 	"pagetriage-warning-browser": "Iste instrumento pote non functionar correctemente in navigatores plus ancian que Internet Explorer 11.",
 	"pagetriage-note-reviewed": "Iste pagina ha essite revidite.",

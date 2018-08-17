@@ -110,7 +110,6 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "പാഴെഴുത്ത്",
 	"pagetriage-filter-stat-predicted-issues-attack": "ആക്രമണം",
 	"pagetriage-filter-stat-predicted-issues-none": "പ്രശ്നങ്ങൾ ഇല്ല",
-	"pagetriage-copyvio-link-label": "പകർപ്പവകാശലംഘനം:",
 	"pagetriage-no-pages": "താങ്കളുടെ മാനദണ്ഡങ്ങൾക്ക് ഒരു താളും ചേരുന്നില്ല.",
 	"pagetriage-warning-browser": "ഇന്റർനെറ്റ് എക്സ്പ്ലോറർ 11-ലും പഴയ ബ്രൗസറുകളിൽ ഈ ഉപകരണം ശരിയായി പ്രവർത്തിക്കണമെന്നില്ല.",
 	"pagetriage-welcome": "{{SITENAME}} മെച്ചപ്പെടുത്തുന്നതിനായി താഴെ കൊടുത്തിരിക്കുന്ന പുതിയ താളുകൾ സംശോധനം ചെയ്യുക. [$1 കൂടുതൽ അറിയുക] · [$2 പ്രതികരണം ഇടുക]",

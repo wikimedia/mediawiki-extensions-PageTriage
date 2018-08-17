@@ -413,10 +413,5 @@
 	"apihelp-pagetriagetagging-param-bottom": "Texto etiquetado a engadir ó final dun artigo.",
 	"apihelp-pagetriagetagging-param-deletion": "Se o etiquetado é para unha nominación de borrado ou non.",
 	"apihelp-pagetriagetagging-param-note": "Nota persoal dos revisores ós creadores da páxina.",
-	"apihelp-pagetriagetagging-param-taglist": "Lista de etiquetas separadas por barras verticais.",
-	"apihelp-pagetriagetemplate-description": "Buscar modelos que son usados pola aplicación PageTriage.",
-	"apihelp-pagetriagetemplate-summary": "Buscar modelos que son usados pola aplicación PageTriage.",
-	"apihelp-pagetriagetemplate-param-view": "Vista da PageTriage para a que necesita os modelos.",
-	"apihelp-pagetriagetemplate-param-template": "Modelo a buscar. Se quere buscar varios, sepáreos coa barra vertical (|).",
-	"apihelp-pagetriagetemplate-example-1": "Lista os obxectos co modelo \"listItem.html\""
+	"apihelp-pagetriagetagging-param-taglist": "Lista de etiquetas separadas por barras verticais."
 }

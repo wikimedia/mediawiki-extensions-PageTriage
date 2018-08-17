@@ -121,7 +121,6 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "Spam",
 	"pagetriage-filter-stat-predicted-issues-attack": "Ataque",
 	"pagetriage-filter-stat-predicted-issues-none": "Nenhum",
-	"pagetriage-copyvio-link-label": "Infringência de direitos de autor:",
 	"pagetriage-no-pages": "Nenhuma página atende seu critério.",
 	"pagetriage-warning-browser": "Essa ferramenta pode não funcionar corretamente em navegadores anteriores ao Internet Explorer 11.",
 	"pagetriage-welcome": "Por favor, revise as páginas novas abaixo e ajuda a melhorar a {{SITENAME}}.[$1 Saiba mais] · [$2 Deixar comentário]",
@@ -343,10 +342,5 @@
 	"apihelp-pagetriagetagging-param-deletion": "Se a etiquetagem é para uma nomeação para eliminação, ou não.",
 	"apihelp-pagetriagetagging-param-note": "Nota pessoal dos revisores para os criadores de páginas.",
 	"apihelp-pagetriagetagging-param-taglist": "Lista de etiquetas separadas por barras verticais.",
-	"apihelp-pagetriagetemplate-description": "Obter as predefinições usadas na aplicação de triagem de páginas.",
-	"apihelp-pagetriagetemplate-summary": "Obter as predefinições usadas na aplicação de triagem de páginas.",
-	"apihelp-pagetriagetemplate-param-view": "A vista da triagem de páginas para a qual necessita das predefinições.",
-	"apihelp-pagetriagetemplate-param-template": "A predefinição a ser obtida. Separe os valores com uma barra vertical |.",
-	"apihelp-pagetriagetemplate-example-1": "Listar elementos com a predefinição \"listItem.html\"",
 	"apierror-bad-pagetriage-page": "A página especificada não existe na fila de triagem de páginas"
 }

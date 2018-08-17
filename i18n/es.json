@@ -392,7 +392,5 @@
 	"apihelp-pagetriagetagging-summary": "Añadir etiquetas a un artículo.",
 	"apihelp-pagetriagetagging-param-deletion": "Si el etiquetamiento es para un nominación de borrado.",
 	"apihelp-pagetriagetagging-param-note": "Nota personal de los revisores a los creadores de páginas.",
-	"apihelp-pagetriagetagging-param-taglist": "Lista de etiquetas separadas por barras verticales.",
-	"apihelp-pagetriagetemplate-param-template": "La plantilla que obtener. Si son varias, sepáralas con el carácter |.",
-	"apihelp-pagetriagetemplate-example-1": "Listar elementos con la plantilla \"listItem.html\""
+	"apihelp-pagetriagetagging-param-taglist": "Lista de etiquetas separadas por barras verticales."
 }

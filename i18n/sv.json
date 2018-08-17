@@ -108,7 +108,6 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "spam",
 	"pagetriage-filter-stat-predicted-issues-attack": "attack",
 	"pagetriage-filter-stat-predicted-issues-none": "inga ärenden",
-	"pagetriage-copyvio-link-label": "Upphovsbrott:",
 	"pagetriage-no-pages": "Inga sidor matchar dina kriterier.",
 	"pagetriage-warning-browser": "Verktyget fungerar kanske inte korrekt i en webbläsare som är äldre än Internet Explorer 11.",
 	"pagetriage-welcome": "Patrullera nya sidor nedan och hjälp till att förbättra {{SITENAME}}. [$1 Läs mer] · [$2 Lämna feedback]",

@@ -117,7 +117,6 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "Werbung",
 	"pagetriage-filter-stat-predicted-issues-attack": "Angriff",
 	"pagetriage-filter-stat-predicted-issues-none": "Keine",
-	"pagetriage-copyvio-link-label": "Urheberrechtsverletzung:",
 	"pagetriage-no-pages": "Keine Seiten entsprechen deinen Kriterien.",
 	"pagetriage-warning-browser": "Dieses Hilfsmittel funktioniert möglicherweise nicht mit Browsern, die älter sind als der Internet Explorer 11.",
 	"pagetriage-welcome": "Bitte überprüfe die unten angezeigten neuen Seiten und hilf, {{SITENAME}} zu verbessern. [$1 Erfahre mehr hierzu] · [$2 Hinterlasse eine Rückmeldung]",
@@ -451,9 +450,5 @@
 	"apihelp-pagetriagetagging-param-deletion": "Ob die Markierung für einen Löschvorschlag ist oder nicht.",
 	"apihelp-pagetriagetagging-param-note": "Persönliche Nachricht an die Seitenersteller von den Prüfern.",
 	"apihelp-pagetriagetagging-param-taglist": "Pipe-getrennte Liste mit Markierungen.",
-	"apihelp-pagetriagetemplate-description": "Ruft Vorlagen ab, die innerhalb der Seitenüberprüfungs-Anwendung verwendet werden.",
-	"apihelp-pagetriagetemplate-param-view": "Die PageTriage-Ansicht, für die du die Vorlagen benötigst.",
-	"apihelp-pagetriagetemplate-param-template": "Die abzurufende Vorlage. Mehrere Vorlagen mit dem Zeichen | trennen.",
-	"apihelp-pagetriagetemplate-example-1": "Listet Objekte mit der Vorlage „listItem.html“ auf",
 	"apierror-bad-pagetriage-page": "Die angegebene Seite ist in der Seitenprüfungs-Warteschlange nicht vorhanden"
 }
