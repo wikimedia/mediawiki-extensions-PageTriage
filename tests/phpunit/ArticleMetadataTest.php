@@ -79,6 +79,7 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 					'user_id',
 					'reference',
 					'afc_state',
+					'copyvio'
 				];
 
 		$this->assertEmpty( array_diff( array_keys( $tags ), $validTags ) );

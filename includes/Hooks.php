@@ -921,6 +921,10 @@ class Hooks {
 			'pagetriage_tags',
 			$base . '/PageTriageTagsPatch-AfC.sql'
 		);
+		$updater->modifyExtensionTable(
+			'pagetriage_tags',
+			$base . '/PageTriageTagsPatch-copyvio.sql'
+		);
 
 		return true;
 	}
