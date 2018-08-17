@@ -91,18 +91,6 @@
 				</span>
 			</div>
 			<% } %>
-			<% if ( mw.config.get( 'wgShowCopyvio' ) && copyvio_probability !== null ) { %>
-			<div class="mwe-pt-extra-info-item">
-				<span class="mwe-pt-article-copyvio-label">
-					<%= mw.msg( 'pagetriage-copyvio-link-label' ) %>
-				</span>
-				<span class="mwe-pt-afc-copyvio-value">
-					<a href="<%= copyvio_report_url %>" target="_blank" rel="nofollow">
-						<%= copyvio_probability %>
-					</a>
-				</span>
-			</div>
-			<% } %>
 			<% if ( is_draft ) { %>
 			<% if ( afc_state_value ) { %>
 			<div class="mwe-pt-extra-info-item">
