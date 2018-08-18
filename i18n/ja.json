@@ -72,6 +72,7 @@
 	"pagetriage-stats-filter-page-count": "フィルター リストに $1 {{PLURAL:$1|件のページ}}が入っています",
 	"pagetriage-filter-ns-all": "すべて",
 	"pagetriage-more": "続き",
+	"pagetriage-filter-stat-state": "都道府県・州",
 	"pagetriage-filter-stat-all": "すべて",
 	"pagetriage-filter-stat-reviewed": "査読済",
 	"pagetriage-filter-stat-unreviewed": "未査読",
