@@ -14,6 +14,7 @@
 	"pagetriage-filter-stat-state": "အခြေနေ",
 	"pagetriage-filter-stat-all": "အားလုံး",
 	"pagetriage-filter-stat-reviewed": "ပြန်လည်ဆန်းစစ်ပြီး",
+	"pagetriage-filter-stat-unreviewed": "ပြန်လည်မဆန်းစစ်ရသော",
 	"pagetriage-filter-stat-bots": "ဘော့များ",
 	"pagetriage-filter-stat-redirects": "ပြန်ညွှန်းများ",
 	"pagetriage-filter-stat-no-categories": "ကဏ္ဍများ မရှိပါ",

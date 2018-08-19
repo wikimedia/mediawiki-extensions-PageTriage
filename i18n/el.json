@@ -87,6 +87,7 @@
 	"pagetriage-filter-stat-orphan": "Ορφανό",
 	"pagetriage-filter-stat-non-autoconfirmed": "Από νεοεισερχόμενους",
 	"pagetriage-filter-stat-learners": "Από εκπαιδευόμενους",
+	"pagetriage-filter-stat-blocked": "Από φραγμένους χρήστες",
 	"pagetriage-filter-stat-username": "Ανά χρήστη: $1",
 	"pagetriage-filter-stat-namespace": "Ονοματοχώρος",
 	"pagetriage-filter-stat-predicted-class": "Προβλεπόμενη τάξη",
