@@ -245,16 +245,16 @@ $( function () {
 		},
 
 		// url and parse are used here for retrieving a single article in the curation toolbar.
-		// articles are retrived for list view using the methods in the Articles collection.
+		// articles are retrieved for list view using the methods in the Articles collection.
 		url: function () {
-			var d = new Date(),
-				params = $.param( {
+			return mw.util.wikiScript( 'api' ) + '?' + $.param(
+				{
 					action: 'pagetriagelist',
 					format: 'json',
-					timestamp: d.getTime()
-				} );
-			// eslint-disable-next-line camelcase
-			return mw.util.wikiScript( 'api' ) + '?' + params + '&' + $.param( { page_id: this.pageId } );
+					// eslint-disable-next-line camelcase
+					page_id: this.pageId
+				}
+			);
 		},
 
 		parse: function ( response ) {
@@ -341,13 +341,13 @@ $( function () {
 		},
 
 		url: function () {
-			var d = new Date(),
-				params = $.param( {
-					action: 'pagetriagelist',
-					format: 'json',
-					timestamp: d.getTime()
-				} );
-			return mw.util.wikiScript( 'api' ) + '?' + params + '&' + $.param( this.apiParams );
+			var params = $.extend( {
+				action: 'pagetriagelist',
+				format: 'json'
+			}, this.apiParams );
+			// mode is defined in the model but is not an API parameter, so remove it.
+			delete params.mode;
+			return mw.util.wikiScript( 'api' ) + '?' + $.param( params );
 		},
 
 		parse: function ( response ) {
