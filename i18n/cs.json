@@ -7,7 +7,8 @@
 			"Vks",
 			"Matěj Suchánek",
 			"Dvorapa",
-			"Ilimanaq29"
+			"Ilimanaq29",
+			"Korytaacheck"
 		]
 	},
 	"newpagesfeed": "Kanál nových stránek",
@@ -54,11 +55,17 @@
 	"pagetriage-filter-stat-bots": "roboti",
 	"pagetriage-filter-stat-redirects": "přesměrování",
 	"pagetriage-filter-stat-nominated-for-deletion": "nominována na smazání",
-	"pagetriage-filter-stat-no-categories": "nekategorizovaná",
+	"pagetriage-filter-stat-no-categories": "Žádné kategorie",
 	"pagetriage-filter-stat-orphan": "sirotčí",
 	"pagetriage-filter-stat-non-autoconfirmed": "noví uživatelé",
 	"pagetriage-filter-stat-blocked": "zablokovaní uživatelé",
 	"pagetriage-filter-stat-username": "uživatelské jméno: $1",
+	"pagetriage-filter-stat-predicted-class-stub": "Pahýl",
+	"pagetriage-filter-stat-predicted-class-start": "Začít",
+	"pagetriage-filter-stat-predicted-class-good": "Dobrý",
+	"pagetriage-filter-stat-predicted-issues-vandalism": "Vandalismus",
+	"pagetriage-filter-stat-predicted-issues-spam": "Spam",
+	"pagetriage-filter-stat-predicted-issues-attack": "Útok",
 	"pagetriage-no-pages": "Žádné stránky neodpovídají kritériím.",
 	"pagetriage-warning-browser": "Tento nástroj nemusí fungovat správně v prohlížečích starších než Internet Explorer 11.",
 	"pagetriage-note-deletion": "Tato stránka byla nominována na smazání.",

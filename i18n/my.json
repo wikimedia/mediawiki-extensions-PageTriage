@@ -17,10 +17,12 @@
 	"pagetriage-filter-stat-unreviewed": "ပြန်လည်မဆန်းစစ်ရသော",
 	"pagetriage-filter-stat-bots": "ဘော့များ",
 	"pagetriage-filter-stat-redirects": "ပြန်ညွှန်းများ",
+	"pagetriage-filter-stat-nominated-for-deletion": "ဖျက်ပစ်ရန် အဆိုပြုထားသည်",
 	"pagetriage-filter-stat-no-categories": "ကဏ္ဍများ မရှိပါ",
 	"pagetriage-filter-stat-blocked": "ပိတ်ပင်ထားသော အသုံးပြုသူများ",
 	"pagetriage-filter-stat-namespace": "အမည်ညွှန်း",
 	"pagetriage-filter-stat-predicted-class-stub": "ဆောင်းပါးတို",
 	"pagetriage-filter-stat-predicted-issues-vandalism": "ဖျက်လိုဖျက်ဆီးလုပ်ဆောင်မှု",
+	"pagetriage-filter-stat-predicted-issues-none": "ဘာမှမရှိ",
 	"pagetriage-info-help": "အကူအညီ"
 }

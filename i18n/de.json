@@ -407,6 +407,8 @@
 	"echo-pref-subscription-page-review": "eine Seite überprüft, die ich erstellt habe",
 	"echo-pref-tooltip-page-review": "Benachrichtige mich, wenn jemand eine Seite überprüft, die ich erstellt habe.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Seitenüberprüfung|Seitenüberprüfungen}}",
+	"right-pagetriage-copyvio": "Mithilfe der pagetriage-tagcopyvio-API Seiten in Spezial:NewPagesFeed als vermutliche Urheberrechtsverletzungen markieren",
+	"action-pagetriage-copyvio": "Seiten als vermutliche Urheberrechtsverletzungen zu markieren",
 	"apihelp-pagetriageaction-description": "Markiert einen Artikel als überprüft oder nicht überprüft.",
 	"apihelp-pagetriageaction-summary": "Markiert einen Artikel als überprüft oder nicht überprüft.",
 	"apihelp-pagetriageaction-param-pageid": "Der Artikel, der als überprüft oder nicht überprüft markiert werden soll.",
@@ -414,6 +416,8 @@
 	"apihelp-pagetriageaction-param-note": "Persönliche Nachricht an die Seitenersteller von den Prüfern.",
 	"apihelp-pagetriageaction-param-skipnotif": "Die Benachrichtigung überspringen oder nicht.",
 	"apihelp-pagetriagelist-description": "Ruft eine Liste von Seitenkennungen zum Erstellen einer PageTriage-Warteschlange ab.",
+	"apihelp-pagetriagelastuse-description": "Speichert den Zeitstempel in den Sitzungsdaten, wann der Benutzer PageTriage zuletzt verwendet hat.",
+	"apihelp-pagetriagelastuse-summary": "Speichert den Zeitstempel in den Sitzungsdaten, wann der Benutzer zuletzt PageTriage verwendet hat.",
 	"apihelp-pagetriagelist-param-afc_state": "Welcher Artikel-zur-Erstellung-Status angezeigt werden soll.",
 	"apihelp-pagetriagelist-param-page_id": "Gibt Daten für die angegebenen Seitenkennungen zurück, andere Parameter werden ignoriert.",
 	"apihelp-pagetriagelist-param-showbots": "Ob nur Bearbeitungen von Bots angezeigt werden sollen.",
@@ -443,6 +447,9 @@
 	"apihelp-pagetriagestats-param-blocked_users": "Ob nur Seiten mit einbezogen werden sollen, die von gesperrten Benutzern erstellt wurden.",
 	"apihelp-pagetriagestats-param-username": "Schließt nur Seiten erstellt nach Benutzername ein.",
 	"apihelp-pagetriagestats-param-topreviewers": "Schließt die 50 besten Überprüfer über die angegebene Zeitspanne ein. Gültige Werte sind last-day, last-week (Standard) oder last-month.",
+	"apihelp-pagetriagetagcopyvio-description": "Markiert eine Version als vermutliche Urheberrechtsverletzung in Spezial:NewPagesFeed. Erfordert die Berechtigung pagetriage-copyvio.",
+	"apihelp-pagetriagetagcopyvio-summary": "Markiert eine Version als vermutliche Urheberrechtsverletzung.",
+	"apihelp-pagetriagetagcopyvio-param-revid": "Kennung der Version, die als vermutliche Urheberrechtsverletzung markiert werden soll.",
 	"apihelp-pagetriagetagging-description": "Fügt einem Artikel Markierungen hinzu.",
 	"apihelp-pagetriagetagging-summary": "Ergänzt Markierungen für einen Artikel.",
 	"apihelp-pagetriagetagging-param-pageid": "Der Artikel, der markiert werden soll.",
@@ -450,5 +457,6 @@
 	"apihelp-pagetriagetagging-param-deletion": "Ob die Markierung für einen Löschvorschlag ist oder nicht.",
 	"apihelp-pagetriagetagging-param-note": "Persönliche Nachricht an die Seitenersteller von den Prüfern.",
 	"apihelp-pagetriagetagging-param-taglist": "Pipe-getrennte Liste mit Markierungen.",
-	"apierror-bad-pagetriage-page": "Die angegebene Seite ist in der Seitenprüfungs-Warteschlange nicht vorhanden"
+	"apierror-bad-pagetriage-page": "Die angegebene Seite ist in der Seitenprüfungs-Warteschlange nicht vorhanden",
+	"apierror-pagetriage-missingtag": "Es konnte keine Kennung für die URV-Markierung gefunden werden. Versuche, update.php auszuführen."
 }
