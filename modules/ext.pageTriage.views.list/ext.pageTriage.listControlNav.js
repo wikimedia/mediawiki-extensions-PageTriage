@@ -405,13 +405,16 @@ $( function () {
 		modelFetch: function ( options ) {
 			// Show spinner.
 			$( '#mwe-pt-refresh-button-holder' ).prepend( $.createSpinner( 'refresh-spinner' ) );
+			$( '#mwe-pt-refresh-button' ).button( 'disable' );
 
 			this.model.fetch( $.extend( {
 				success: function () {
 					$.removeSpinner( 'refresh-spinner' );
+					$( '#mwe-pt-refresh-button' ).button( 'enable' );
 				},
 				error: function () {
 					$.removeSpinner( 'refresh-spinner' );
+					$( '#mwe-pt-refresh-button' ).button( 'enable' );
 				}
 			}, options ) );
 		},
