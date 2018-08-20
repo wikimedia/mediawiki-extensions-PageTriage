@@ -18,8 +18,12 @@
 		"pagetriagelist": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageList",
 		"pagetriagestats": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageStats",
 		"pagetriageaction": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageAction",
+		"pagetriagetagcopyvio": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageTagCopyvio",
 		"pagetriagetagging": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageTagging"
 	},
+	"AvailableRights": [
+		"pagetriage-copyvio"
+	],
 	"DefaultUserOptions": {
 		"echo-subscriptions-web-page-review": true,
 		"echo-subscriptions-email-page-review": false
@@ -674,7 +678,7 @@
 			}
 		},
 		"PageTriageCacheVersion": {
-			"value": "1.5"
+			"value": "1.6"
 		},
 		"PageTriageNamespaces": {
 			"value": [

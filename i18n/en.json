@@ -414,6 +414,8 @@
 	"echo-pref-subscription-page-review": "Reviews a page I created",
 	"echo-pref-tooltip-page-review": "Notify me when someone reviews a page I created.",
 	"echo-category-title-page-review": "Page {{PLURAL:$1|review|reviews}}",
+	"right-pagetriage-copyvio": "Tag pages in the Special:NewPagesFeed as likely copyright violations, through the pagetriage-tagcopyvio API",
+	"action-pagetriage-copyvio": "tag pages as likely copyright violations",
 	"apihelp-pagetriageaction-description": "Mark an article as reviewed or unreviewed.",
 	"apihelp-pagetriageaction-summary": "Mark an article as reviewed or unreviewed.",
 	"apihelp-pagetriageaction-param-pageid": "The article for which to be marked as reviewed or unreviewed.",
@@ -477,6 +479,9 @@
 	"apihelp-pagetriagestats-param-show_predicted_issues_spam": "Whether to include predicted issues of spam",
 	"apihelp-pagetriagestats-param-show_predicted_issues_attack": "Whether to include predicted issues of attack",
 	"apihelp-pagetriagestats-param-show_predicted_issues_none": "Whether to include no predicted issues",
+	"apihelp-pagetriagetagcopyvio-description": "Tag a revision as a likely copyright violation in Special:NewPagesFeed. Requires the pagetriage-copyvio right.",
+	"apihelp-pagetriagetagcopyvio-summary": "Tag a revision as a likely copyright violation.",
+	"apihelp-pagetriagetagcopyvio-param-revid": "Revision ID to tag as a likely copyright violation",
 	"apihelp-pagetriagetagging-description": "Add tags to an article.",
 	"apihelp-pagetriagetagging-summary": "Add tags to an article.",
 	"apihelp-pagetriagetagging-param-pageid": "The article for which to be tagged.",
@@ -485,5 +490,6 @@
 	"apihelp-pagetriagetagging-param-deletion": "Whether or not the tagging is for a deletion nomination.",
 	"apihelp-pagetriagetagging-param-note": "Personal note to page creators from reviewers.",
 	"apihelp-pagetriagetagging-param-taglist": "Pipe-separated list of tags.",
-	"apierror-bad-pagetriage-page": "The page specified does not exist in pagetriage queue"
+	"apierror-bad-pagetriage-page": "The page specified does not exist in pagetriage queue",
+	"apierror-pagetriage-missingtag": "Could not find a tag ID for the copyvio tag. Try running update.php."
 }
