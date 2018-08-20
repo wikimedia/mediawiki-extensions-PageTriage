@@ -110,8 +110,7 @@ class UpdatePageTriageQueue extends Maintenance {
 				$this->dbw->delete(
 						'pagetriage_page',
 						[ 'ptrp_page_id' => $pageId ],
-						__METHOD__,
-						[]
+						__METHOD__
 				);
 				$articleMetadata = new ArticleMetadata( $pageId );
 				$articleMetadata->deleteMetadata();
@@ -129,8 +128,7 @@ class UpdatePageTriageQueue extends Maintenance {
 		$this->dbw->delete(
 			'pagetriage_log',
 			[ 'ptrl_timestamp < ' . $yearago ],
-			__METHOD__,
-			[]
+			__METHOD__
 		);
 
 		$this->output( "Completed \n" );

@@ -52,6 +52,11 @@ class OresMetadata {
 	private $requestContext;
 
 	/**
+	 * @var array
+	 */
+	private $scores;
+
+	/**
 	 * Map of ORES class names from thresholds lookup mapped to translatable strings.
 	 */
 	private static $oresClassToMsgKey = [
