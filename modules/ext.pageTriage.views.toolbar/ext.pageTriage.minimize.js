@@ -15,7 +15,7 @@ $( function () {
 		click: function () {
 
 			// minimize the toolbar.
-			this.toolbar.minimize();
+			this.toolbar.minimize( true );
 		}
 
 	} );

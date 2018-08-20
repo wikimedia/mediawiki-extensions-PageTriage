@@ -19,7 +19,8 @@
 		"pagetriagestats": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageStats",
 		"pagetriageaction": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageAction",
 		"pagetriagetagcopyvio": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageTagCopyvio",
-		"pagetriagetagging": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageTagging"
+		"pagetriagetagging": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageTagging",
+		"pagetriagelastuse": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageLastUse"
 	},
 	"AvailableRights": [
 		"pagetriage-copyvio"
@@ -590,7 +591,6 @@
 		"PageContentInsertComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageContentInsertComplete",
 		"PageContentSaveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageContentSaveComplete",
 		"LinksUpdateComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onLinksUpdateComplete",
-		"GetPreferences": "MediaWiki\\Extension\\PageTriage\\Hooks::onGetPreferences",
 		"ArticleViewFooter": "MediaWiki\\Extension\\PageTriage\\Hooks::onArticleViewFooter",
 		"ArticleDeleteComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onArticleDeleteComplete",
 		"MarkPatrolledComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onMarkPatrolledComplete",

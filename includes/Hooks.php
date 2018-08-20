@@ -280,21 +280,7 @@ class Hooks {
 	}
 
 	/**
-	 * Add last time user visited the triage page to preferences.
-	 * @param User $user User object
-	 * @param array &$preferences array Preferences object
-	 * @return bool
-	 */
-	public static function onGetPreferences( $user, &$preferences ) {
-		$preferences['pagetriage-lastuse'] = [
-			'type' => 'api',
-		];
-
-		return true;
-	}
-
-	/**
-	 * Flush user page/user talk page exsitance status, this function should
+	 * Flush user page/user talk page existance status, this function should
 	 * be called when a page gets created/deleted/moved/restored
 	 * @param Title $title
 	 */
@@ -452,7 +438,7 @@ class Hooks {
 
 		// If the user hasn't visited Special:NewPagesFeed lately, don't do anything
 		$lastUseExpired = false;
-		$lastUse = $user->getOption( 'pagetriage-lastuse' );
+		$lastUse = $user->getRequest()->getSessionData( 'pagetriage-lastuse' );
 		if ( $lastUse ) {
 			$lastUse = wfTimestamp( TS_UNIX, $lastUse );
 			$now = wfTimestamp( TS_UNIX, wfTimestampNow() );

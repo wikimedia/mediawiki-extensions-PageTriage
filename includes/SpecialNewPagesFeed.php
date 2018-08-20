@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
-use DeferredUpdates;
 use Html;
 use SpecialPage;
 use TemplateParser;
@@ -45,12 +44,9 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$out = $this->getOutput();
 		$user = $this->getUser();
 
+		// Set the last use timestamp.
 		if ( !$user->isAnon() ) {
-			$now = wfTimestampNow();
-			DeferredUpdates::addCallableUpdate( function () use ( $user, $now ) {
-				$user->setOption( 'pagetriage-lastuse', $now );
-				$user->saveSettings();
-			} );
+			$this->getRequest()->getSession()->set( 'pagetriage-lastuse', wfTimestampNow() );
 		}
 
 		// Output the title of the page

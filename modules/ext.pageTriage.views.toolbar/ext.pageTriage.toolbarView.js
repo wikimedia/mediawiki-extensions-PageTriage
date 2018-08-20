@@ -91,7 +91,6 @@ $( function () {
 					render: function () {
 						var that = this;
 						// build the bar and insert into the page.
-
 						// insert the empty toolbar into the document.
 						$( 'body' ).append( this.template() );
 
@@ -125,26 +124,26 @@ $( function () {
 							that.hide( true );
 						} );
 
-						// lastUse expires, hide curation toolbar
+						// lastUse expires, hide curation toolbar and return.
 						if ( mw.config.get( 'wgPageTriagelastUseExpired' ) ) {
 							this.hide();
-						// show the toolbar based on user preference
-						} else {
-							switch ( mw.user.options.get( 'userjs-curationtoolbar' ) ) {
-								case 'hidden':
-									this.hide();
-									break;
-								case 'minimized':
-									this.minimize();
-									$( '#mw-content-text .patrollink' ).hide();
-									break;
-								case 'maximized':
-									/* falls through */
-								default:
-									this.maximize();
-									$( '#mw-content-text .patrollink' ).hide();
-									break;
-							}
+							return;
+						}
+						// Show the toolbar.
+						switch ( mw.user.options.get( 'userjs-curationtoolbar' ) ) {
+							case 'hidden':
+								this.hide();
+								break;
+							case 'minimized':
+								this.minimize();
+								$( '#mw-content-text .patrollink' ).hide();
+								break;
+							case 'maximized':
+							/* falls through */
+							default:
+								this.maximize();
+								$( '#mw-content-text .patrollink' ).hide();
+								break;
 						}
 					},
 
@@ -221,83 +220,26 @@ $( function () {
 							this.setToolbarPreference( 'maximized' );
 						}
 					},
-
-					setToolbarPreference: function ( state, lastUse ) {
-						var that, tokenRequest;
-
-						// if we have a token, go ahead and use it
-						if ( this.optionsToken ) {
-							this.finishSetToolbarPreference( state, lastUse );
-						// otherwise request an options token first
-						} else {
-							that = this;
-							tokenRequest = {
-								action: 'tokens',
-								type: 'options',
-								format: 'json'
-							};
-							$.ajax( {
-								type: 'get',
-								url: mw.util.wikiScript( 'api' ),
-								data: tokenRequest,
-								dataType: 'json',
-								success: function ( data ) {
-									try {
-										that.optionsToken = data.tokens.optionstoken;
-									} catch ( e ) {
-										throw new Error( 'Could not get token (requires MediaWiki 1.20).' );
-									}
-									that.finishSetToolbarPreference( state, lastUse );
-								}
-							} );
-						}
+					setToolbarPreference: function ( state ) {
+						return new mw.Api().saveOption( 'userjs-curationtoolbar', state );
 					},
-
-					finishSetToolbarPreference: function ( state, lastUse ) {
-						var change, prefRequest;
-
-						change = 'userjs-curationtoolbar=' + state;
-						if ( typeof lastUse !== 'undefined' ) {
-							change += '|pagetriage-lastuse=' + lastUse;
-						}
-						prefRequest = {
-							action: 'options',
-							change: change,
-							token: this.optionsToken,
-							format: 'json'
-						};
-						$.ajax( {
-							type: 'post',
-							url: mw.util.wikiScript( 'api' ),
-							data: prefRequest,
-							dataType: 'json'
+					setLastUse: function () {
+						return new mw.Api().postWithToken( 'csrf', {
+							action: 'pagetriagelastuse'
 						} );
 					},
-
 					insertLink: function () {
-						var now, mwFormat,
-							that = this,
+						var that = this,
 							$link = $( '<li id="t-curationtoolbar"><a href="#"></a></li>' );
 
 						$link.find( 'a' )
 							.text( mw.msg( 'pagetriage-toolbar-linktext' ) )
 							.click( function () {
 								if ( $( '#mwe-pt-toolbar' ).is( ':hidden' ) ) {
-									now = new Date();
-									now = new Date(
-										now.getUTCFullYear(),
-										now.getUTCMonth(),
-										now.getUTCDate(),
-										now.getUTCHours(),
-										now.getUTCMinutes(),
-										now.getUTCSeconds()
-									);
-
-									mwFormat = now.toString( 'yyyyMMddHHmmss' );
-
 									$( '#mwe-pt-toolbar' ).show();
 									$( '#mw-content-text .patrollink' ).hide();
-									that.setToolbarPreference( 'maximized', mwFormat );
+									that.setToolbarPreference( 'maximized' );
+									that.setLastUse();
 								}
 								this.blur();
 								return false;

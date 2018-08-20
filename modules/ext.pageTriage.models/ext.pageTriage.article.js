@@ -388,48 +388,9 @@ $( function () {
 
 		// Save the filter parameters to a user's option
 		saveFilterParams: function () {
-			var tokenRequest,
-				that = this;
 			if ( !mw.user.isAnon() ) {
-				if ( this.optionsToken ) {
-					this.apiSetFilterParams();
-				} else {
-					tokenRequest = {
-						action: 'tokens',
-						type: 'options',
-						format: 'json'
-					};
-					$.ajax( {
-						type: 'get',
-						url: mw.util.wikiScript( 'api' ),
-						data: tokenRequest,
-						dataType: 'json',
-						success: function ( data ) {
-							try {
-								that.optionsToken = data.tokens.optionstoken;
-							} catch ( e ) {
-								throw new Error( 'Could not get token (requires MediaWiki 1.20).' );
-							}
-							that.apiSetFilterParams();
-						}
-					} );
-				}
+				return new mw.Api().saveOption( 'userjs-NewPagesFeedFilterOptions', this.encodeFilterParams() );
 			}
-		},
-
-		apiSetFilterParams: function () {
-			var prefRequest = {
-				action: 'options',
-				change: 'userjs-NewPagesFeedFilterOptions=' + this.encodeFilterParams(),
-				token: this.optionsToken,
-				format: 'json'
-			};
-			$.ajax( {
-				type: 'post',
-				url: mw.util.wikiScript( 'api' ),
-				data: prefRequest,
-				dataType: 'json'
-			} );
 		},
 
 		getParam: function ( key ) {

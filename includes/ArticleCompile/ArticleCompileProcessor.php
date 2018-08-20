@@ -126,7 +126,8 @@ class ArticleCompileProcessor {
 
 		if ( $mode === self::SAVE_DEFERRED ) {
 			DeferredUpdates::addCallableUpdate( function () {
-				$this->save(); // T152847
+				// T152847
+				$this->save();
 			} );
 		} else {
 			$this->save();
