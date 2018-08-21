@@ -405,6 +405,8 @@
 	"echo-pref-subscription-page-review": "Relire une page que j'ai créée",
 	"echo-pref-tooltip-page-review": "Me prévenir quand quelqu’un relit une page que j’ai créée.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Relecture|Relectures}} de page",
+	"right-pagetriage-copyvio": "Marquer les pages dans Special:NewPagesFeed comme violations probables de droit d’auteur, via l’API pagetriage-tagcopyvio",
+	"action-pagetriage-copyvio": "marquer les pages comme violations probables de droit d’auteur",
 	"apihelp-pagetriageaction-description": "Marquer un article comme relu ou non relu.",
 	"apihelp-pagetriageaction-summary": "Marquer un article comme relu ou non relu.",
 	"apihelp-pagetriageaction-param-pageid": "L'article qui doit être marqué comme relu ou non relu.",
@@ -413,6 +415,8 @@
 	"apihelp-pagetriageaction-param-skipnotif": "S'il faut ignorer la notification.",
 	"apihelp-pagetriagelist-description": "Obtenir une liste d’IDs de page pour construire une file pour PageTriage.",
 	"apihelp-pagetriagelist-summary": "Obtenir une liste des IDs de page pour construire une file de PageTriage.",
+	"apihelp-pagetriagelastuse-description": "Enregistrer l’horodatage dans ses données de session du moment où l’utilisateur a utilisé PageTriage pour la dernière fois",
+	"apihelp-pagetriagelastuse-summary": "Enregistrer l’horodatage dans ses données de session du moment où l’utilisateur a utilisé PageTriage pour la dernière fois",
 	"apihelp-pagetriagelist-param-afc_state": "Quel état Article-à-créer afficher.",
 	"apihelp-pagetriagelist-param-page_id": "Renvoyer les données concernant l'identificateur de page spécifié, en ignorant les autres paramètres.",
 	"apihelp-pagetriagelist-param-showbots": "S'il faut afficher uniquement les éditions des robots.",
@@ -468,6 +472,9 @@
 	"apihelp-pagetriagestats-param-show_predicted_issues_spam": "S’il faut inclure les problèmes prédits de pourriel",
 	"apihelp-pagetriagestats-param-show_predicted_issues_attack": "S’il faut inclure les problèmes prédits d’attaque",
 	"apihelp-pagetriagestats-param-show_predicted_issues_none": "S’il faut inclure les problèmes non prédits",
+	"apihelp-pagetriagetagcopyvio-description": "Marquer une révision comme une violation probable de droit d’auteur dans Special:NewPagesFeed. Nécessite le droit pagetriage-copyvio.",
+	"apihelp-pagetriagetagcopyvio-summary": "Marquer une révision comme une violation probable de droit d’auteur.",
+	"apihelp-pagetriagetagcopyvio-param-revid": "ID de la révision à marquer comme une violation probable de droit d’auteur.",
 	"apihelp-pagetriagetagging-description": "Ajouter des balises à un article.",
 	"apihelp-pagetriagetagging-summary": "Ajouter des balises à un article.",
 	"apihelp-pagetriagetagging-param-pageid": "L'article à baliser.",
@@ -476,5 +483,6 @@
 	"apihelp-pagetriagetagging-param-deletion": "Si le marquage concerne une proposition de suppression.",
 	"apihelp-pagetriagetagging-param-note": "Note personnelle des relecteurs concernant les créateurs de pages.",
 	"apihelp-pagetriagetagging-param-taglist": "Liste d’étiquettes séparée par des barres verticales.",
-	"apierror-bad-pagetriage-page": "La page spécifiée n’existe pas dans la file pagetriage"
+	"apierror-bad-pagetriage-page": "La page spécifiée n’existe pas dans la file pagetriage",
+	"apierror-pagetriage-missingtag": "Impossible de trouver un ID de balise pour la balise copyvio. Essayez de lancer update.php."
 }

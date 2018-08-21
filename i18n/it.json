@@ -89,6 +89,7 @@
 	"pagetriage-filter-stat-blocked": "Da utenti bloccati",
 	"pagetriage-filter-stat-username": "Dall'utente: $1",
 	"pagetriage-filter-stat-namespace": "Namespace",
+	"pagetriage-filter-stat-predicted-issues-vandalism": "Vandalismo",
 	"pagetriage-no-pages": "Nessuna pagina corrisponde ai tuoi criteri.",
 	"pagetriage-warning-browser": "Questo strumento potrebbe non funzionare correttamente nei browser precedenti a Internet Explorer 11.",
 	"pagetriage-welcome": "Rivedi le nuove pagine qui sotto e aiutaci a migliorare {{SITENAME}}. [$1 Per saperne di più] · [$2 Lascia un commento]",

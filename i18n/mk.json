@@ -408,6 +408,8 @@
 	"echo-pref-subscription-page-review": "Провери страница што сум ја создал",
 	"echo-pref-tooltip-page-review": "Извести ме кога некој ќе провери страница што ја имам создадено.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Преглед|Прегледи}}",
+	"right-pagetriage-copyvio": "Означување на страници во „Специјална:НовиСтраници“ како веројатни авторскоправни нарушувања преку прилогот за таа намена",
+	"action-pagetriage-copyvio": "означување на страници како веројатни авторскоправни нарушувања",
 	"apihelp-pagetriageaction-description": "Означи статија како проверена или непроверена.",
 	"apihelp-pagetriageaction-summary": "Означи статија како проверена или непроверена.",
 	"apihelp-pagetriageaction-param-pageid": "Која статија да се означи како проверена или непроверена.",
@@ -416,6 +418,8 @@
 	"apihelp-pagetriageaction-param-skipnotif": "Дали да се прескокне известувањето.",
 	"apihelp-pagetriagelist-description": "Дај список на назнаки на страници за составување на редицата за проверка на страници.",
 	"apihelp-pagetriagelist-summary": "Дај список на назнаки на страници за составување на редицата за проверка на страници.",
+	"apihelp-pagetriagelastuse-description": "Зачувај го датумот и времето на последната употреба на „Проверка на страници“ во седничките податоци на даден корисник",
+	"apihelp-pagetriagelastuse-summary": "Зачувај го датумот и времето на последната употреба на „Проверка на страници“ во седничките податоци на даден корисник",
 	"apihelp-pagetriagelist-param-afc_state": "Која состојба на статиите за создавање да се прикаже.",
 	"apihelp-pagetriagelist-param-page_id": "Дај податоци за укажаните назнаки на страници, занемарувајќи ги другите параметри.",
 	"apihelp-pagetriagelist-param-showbots": "Дали да се прикажуваат само уредувања од ботови.",
@@ -471,6 +475,9 @@
 	"apihelp-pagetriagestats-param-show_predicted_issues_spam": "Дали да се вклучат предвидените проблеми со спам",
 	"apihelp-pagetriagestats-param-show_predicted_issues_attack": "Дали да се вклучат предвидените проблеми со напади",
 	"apihelp-pagetriagestats-param-show_predicted_issues_none": "Дали да се вклучи отсуство на предвидени проблеми",
+	"apihelp-pagetriagetagcopyvio-description": "Означи преработка како веројатно авторскоправно нарушување во „Специјална:НовиСтраници“. Бара да се има правото pagetriage-copyvio.",
+	"apihelp-pagetriagetagcopyvio-summary": "Означи преработка како веројатно авторскоправно нарушување.",
+	"apihelp-pagetriagetagcopyvio-param-revid": "Назнака на преработката што се означува како веројатно авторскоправно нарушување",
 	"apihelp-pagetriagetagging-description": "Додај ознаки во статија.",
 	"apihelp-pagetriagetagging-summary": "Додај ознаки во статија.",
 	"apihelp-pagetriagetagging-param-pageid": "Статијата што треба да се означи.",
@@ -479,5 +486,6 @@
 	"apihelp-pagetriagetagging-param-deletion": "Дали означувањето се однесува на предложено бришење.",
 	"apihelp-pagetriagetagging-param-note": "Лична белешка за создавачите на страницата од проверувачите.",
 	"apihelp-pagetriagetagging-param-taglist": "Список на ознаки, одделени со исправена црта.",
-	"apierror-bad-pagetriage-page": "Укажаната страница не постои во редицата."
+	"apierror-bad-pagetriage-page": "Укажаната страница не постои во редицата.",
+	"apierror-pagetriage-missingtag": "Не можев да ја најдам назнаката на ознаката за авторскоправни нарушувања. Обидете се со пуштање на update.php."
 }

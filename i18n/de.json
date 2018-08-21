@@ -417,7 +417,7 @@
 	"apihelp-pagetriageaction-param-skipnotif": "Die Benachrichtigung überspringen oder nicht.",
 	"apihelp-pagetriagelist-description": "Ruft eine Liste von Seitenkennungen zum Erstellen einer PageTriage-Warteschlange ab.",
 	"apihelp-pagetriagelastuse-description": "Speichert den Zeitstempel in den Sitzungsdaten, wann der Benutzer PageTriage zuletzt verwendet hat.",
-	"apihelp-pagetriagelastuse-summary": "Speichert den Zeitstempel in den Sitzungsdaten, wann der Benutzer zuletzt PageTriage verwendet hat.",
+	"apihelp-pagetriagelastuse-summary": "Speichert den Zeitstempel in den Sitzungsdaten, wann der Benutzer PageTriage zuletzt verwendet hat.",
 	"apihelp-pagetriagelist-param-afc_state": "Welcher Artikel-zur-Erstellung-Status angezeigt werden soll.",
 	"apihelp-pagetriagelist-param-page_id": "Gibt Daten für die angegebenen Seitenkennungen zurück, andere Parameter werden ignoriert.",
 	"apihelp-pagetriagelist-param-showbots": "Ob nur Bearbeitungen von Bots angezeigt werden sollen.",

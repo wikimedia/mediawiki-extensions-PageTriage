@@ -334,6 +334,8 @@
 	"apihelp-pagetriagestats-param-show_predicted_issues_spam": "Incluir, ou não, problemas previstos de spam",
 	"apihelp-pagetriagestats-param-show_predicted_issues_attack": "Incluir, ou não, problemas previstos de ataque",
 	"apihelp-pagetriagestats-param-show_predicted_issues_none": "Incluir, ou não, inexistência de problemas previstos",
+	"apihelp-pagetriagetagcopyvio-summary": "Marque uma revisão como uma violação de direitos autorais provável.",
+	"apihelp-pagetriagetagcopyvio-param-revid": "ID de revisão para marcar como uma provável violação de direitos autorais",
 	"apihelp-pagetriagetagging-description": "Acrescentar etiquetas a um artigo.",
 	"apihelp-pagetriagetagging-summary": "Acrescentar etiquetas a um artigo.",
 	"apihelp-pagetriagetagging-param-pageid": "O artigo para ser etiquetado.",

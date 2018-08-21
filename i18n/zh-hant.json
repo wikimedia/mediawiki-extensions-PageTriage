@@ -260,6 +260,8 @@
 	"echo-pref-subscription-page-review": "檢閱本人建立的頁面",
 	"echo-pref-tooltip-page-review": "當有人檢閱我建立的頁面時，通知我。",
 	"echo-category-title-page-review": "頁面{{PLURAL:$1|檢閱}}",
+	"right-pagetriage-copyvio": "透過 pagetriage-tagcopyvio API 標記在 Special:NewPagesFeed 的頁面為可能侵犯版權。",
+	"action-pagetriage-copyvio": "標記頁面為可能侵犯版權。",
 	"apihelp-pagetriageaction-description": "標記條目為已檢閱或未檢閱。",
 	"apihelp-pagetriageaction-summary": "標記條目為已巡查或未巡查。",
 	"apihelp-pagetriageaction-param-pageid": "要標記為已檢閱或未檢閱的頁面。",
@@ -268,6 +270,8 @@
 	"apihelp-pagetriageaction-param-skipnotif": "是否要略過通知。",
 	"apihelp-pagetriagelist-description": "取得建立頁面分檢器佇列的頁面 ID 清單。",
 	"apihelp-pagetriagelist-summary": "取得建立頁面分檢器佇列的頁面 ID 清單。",
+	"apihelp-pagetriagelastuse-description": "儲存在使用者的 session 資料裡，最後一次使用到 PageTriage 的時間戳",
+	"apihelp-pagetriagelastuse-summary": "儲存在使用者的 session 資料裡，最後一次使用到 PageTriage 的時間戳",
 	"apihelp-pagetriagelist-param-afc_state": "要顯示的條目建立狀態。",
 	"apihelp-pagetriagelist-param-page_id": "回傳指定頁面 ID 的資料，忽略其它參數。",
 	"apihelp-pagetriagelist-param-showbots": "是否僅顯示機器人的編輯。",
@@ -323,6 +327,9 @@
 	"apihelp-pagetriagestats-param-show_predicted_issues_spam": "是否包含預測的垃圾內容問題",
 	"apihelp-pagetriagestats-param-show_predicted_issues_attack": "是否包含預測的攻擊問題",
 	"apihelp-pagetriagestats-param-show_predicted_issues_none": "是否包含沒有預測的問題",
+	"apihelp-pagetriagetagcopyvio-description": "標記在 Special:NewPagesFeed 的修訂為可能侵犯版權。此需要 pagetriage-copyvio 權限。",
+	"apihelp-pagetriagetagcopyvio-summary": "標記修訂為可能侵犯版權。",
+	"apihelp-pagetriagetagcopyvio-param-revid": "被標記為可能侵犯版權的修訂 ID",
 	"apihelp-pagetriagetagging-description": "添加標籤至條目裡。",
 	"apihelp-pagetriagetagging-summary": "添加標籤至條目裡。",
 	"apihelp-pagetriagetagging-param-pageid": "要標記的條目。",
@@ -331,5 +338,6 @@
 	"apihelp-pagetriagetagging-param-deletion": "標記是否用於刪除提名。",
 	"apihelp-pagetriagetagging-param-note": "檢閱員對頁面創建者的個人提醒。",
 	"apihelp-pagetriagetagging-param-taglist": "豎號分隔的標籤清單。",
-	"apierror-bad-pagetriage-page": "指定的頁面不存在於頁面分檢器佇列"
+	"apierror-bad-pagetriage-page": "指定的頁面不存在於頁面分檢器佇列",
+	"apierror-pagetriage-missingtag": "無法從 copyvio 標籤裡找出標籤 ID。請嘗試更新 update.php。"
 }
