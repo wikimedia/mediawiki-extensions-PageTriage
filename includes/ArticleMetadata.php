@@ -181,26 +181,25 @@ class ArticleMetadata {
 			$articles = self::getPagesWithoutMetadata( $articles, $pageData );
 			// Compile the metadata if it is still not available, and if in context of a POST
 			// request.
-			if ( $articles && RequestContext::getMain()->getRequest()->wasPosted() ) {
-				$acp = ArticleCompileProcessor::newFromPageId( $articles, false );
-				if ( $acp ) {
+			if ( $articles ) {
+				$acp = ArticleCompileProcessor::newFromPageId( $articles, false, DB_REPLICA );
+				if ( $acp && RequestContext::getMain()->getRequest()->wasPosted() ) {
 					$pageData += $acp->compileMetadata();
 				}
-			}
-
-			// If not a POST request, add a log statement so we can fix the caller.
-			// @todo eventually remove this once we've fixed any cases where PageTriage attempts
-			// to compile metadata in the context of a GET request.
-			if ( $articles && !RequestContext::getMain()->getRequest()->wasPosted() ) {
-				LoggerFactory::getInstance( 'PageTriage' )->warning(
-					'Article metadata compilation prevented from running in a GET request.',
-					[
-						'trace' => ( new \RuntimeException() )->getTraceAsString(),
-						'articles_without_metadata' => json_encode( $articles, JSON_PRETTY_PRINT ),
-						'raw_query_string' => RequestContext::getMain()->getRequest()
-							->getRawQueryString(),
-					]
-				);
+				// If not a POST request, add a log statement so we can track down the caller.
+				// @todo eventually remove this once we've fixed any cases where PageTriage
+				// attempts to compile metadata in the context of a GET request.
+				if ( $acp && !RequestContext::getMain()->getRequest()->wasPosted() ) {
+					LoggerFactory::getInstance( 'PageTriage' )->warning(
+						'Article metadata compilation prevented from running in a GET request.',
+						[
+							'trace' => ( new \RuntimeException() )->getTraceAsString(),
+							'articles_without_metadata' => json_encode( $articles, JSON_PRETTY_PRINT ),
+							'raw_query_string' => RequestContext::getMain()->getRequest()
+								->getRawQueryString(),
+						]
+					);
+				}
 			}
 
 			$defaultVal = array_fill_keys( array_keys( self::getValidTags() ), '' );
