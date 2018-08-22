@@ -152,6 +152,11 @@
 									<%= mw.msg( 'pagetriage-filter-predicted-issues-attack' ) %>
 								</label> <br/>
 								<input type="checkbox"
+									   id="mwe-pt-filter-npp-predicted-issues-copyvio"/>
+								<label for="mwe-pt-filter-npp-predicted-issues-copyvio">
+									<%= mw.msg( 'pagetriage-filter-predicted-issues-copyvio' ) %>
+								</label> <br/>
+								<input type="checkbox"
 									   id="mwe-pt-filter-npp-predicted-issues-none"/>
 								<label for="mwe-pt-filter-npp-predicted-issues-none">
 									<%= mw.msg( 'pagetriage-filter-predicted-issues-none' ) %>
@@ -317,6 +322,11 @@
 									   id="mwe-pt-filter-afc-predicted-issues-attack"/>
 								<label for="mwe-pt-filter-afc-predicted-issues-attack">
 									<%= mw.msg( 'pagetriage-filter-predicted-issues-attack' ) %>
+								</label> <br/>
+								<input type="checkbox"
+									   id="mwe-pt-filter-afc-predicted-issues-copyvio"/>
+								<label for="mwe-pt-filter-afc-predicted-issues-copyvio">
+									<%= mw.msg( 'pagetriage-filter-predicted-issues-copyvio' ) %>
 								</label> <br/>
 								<input type="checkbox"
 									   id="mwe-pt-filter-afc-predicted-issues-none"/>

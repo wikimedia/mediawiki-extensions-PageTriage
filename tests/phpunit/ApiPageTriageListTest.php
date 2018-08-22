@@ -42,6 +42,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$this->tablesUsed[] = 'revision';
 		$this->tablesUsed[] = 'pagetriage_page';
 		$this->tablesUsed[] = 'pagetriage_tags';
+		$this->tablesUsed[] = 'pagetriage_page_tags';
 		$this->tablesUsed[] = 'pagetriage_log';
 		$this->tablesUsed[] = 'ores_model';
 		$this->tablesUsed[] = 'ores_classification';
@@ -349,13 +350,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			'oresc_rev' => $rev1
 		] );
 
-		$dbw->insert( 'ores_classification', [
-			'oresc_model' => self::ensureOresModel( 'draftquality' ),
-			'oresc_class' => 2,
-			'oresc_probability' => 0.56,
-			'oresc_is_predicted' => 1,
-			'oresc_rev' => $rev2
-		] );
+		self::setDraftQuality( $rev2, 2 );
 
 		$list = $this->getPageTriageList();
 		$this->assertGreaterThan( 1, count( $list ) );
@@ -367,6 +362,108 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$list = $this->getPageTriageList( [ 'show_predicted_issues_spam' => true ] );
 		$this->assertCount( 1, $list );
 		$this->assertEquals( 'Draft:Test page ores 2', $list[0]['title'] );
+	}
+
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getPageIds()
+	 */
+	public function testQueryOresCopyvio() {
+		$dbw = wfGetDB( DB_MASTER );
+		foreach ( [ 'pagetriage_page', 'page' ] as $table ) {
+			$dbw->delete( $table, '*' );
+		}
+		$this->setMwGlobals( 'wgOresModels', [
+			'draftquality' => [ 'enabled' => true ],
+			'wp10' => [ 'enabled' => true ],
+		] );
+		self::ensureOresModel( 'draftquality' );
+		self::ensureOresModel( 'wp10' );
+		self::ensureCopyvioTag();
+
+		$this->makePage( 'Page001' ); // DraftQuality: N/A
+		$this->makePage( 'Page002', 1 ); // DraftQuality: OK
+		$this->makePage( 'Page003', 2 ); // DraftQuality: SPAM
+		$this->makePage( 'Page004', false, true ); // DraftQuality: N/A, Copyvio
+		$this->makePage( 'Page005', 1, true ); // DraftQuality: OK, Copyvio
+		$this->makePage( 'Page006', 2, true ); // DraftQuality: SPAM, Copyvio
+
+		$list = $this->getPageTriageList();
+		$this->assertPages( [
+			'Page001', 'Page002', 'Page003', 'Page004', 'Page005', 'Page006'
+		], $list );
+
+		$list = $this->getPageTriageList( [ 'show_predicted_issues_spam' => true ] );
+		$this->assertPages( [ 'Page003', 'Page006' ], $list );
+
+		$list = $this->getPageTriageList( [ 'show_predicted_issues_copyvio' => true ] );
+		$this->assertPages( [ 'Page004', 'Page005', 'Page006' ], $list );
+
+		$list = $this->getPageTriageList( [ 'show_predicted_issues_none' => true ] );
+		$this->assertPages( [ 'Page002' ], $list );
+	}
+
+	private function assertPages( $expectedPages, $response ) {
+		$pagesFromResponse = array_map( function ( $item ) {
+			return explode( ':', $item[ 'title' ] )[1];
+		}, $response );
+
+		$this->assertArrayEquals( $expectedPages, $pagesFromResponse );
+	}
+
+	private function makePage( $title, $draftQualityClass = false, $copyvio = false ) {
+		$user = static::getTestUser()->getUser();
+		$pageAndTitle = $this->insertPage( $title, 'some content', $this->draftNsId, $user );
+		$page = WikiPage::factory( $pageAndTitle[ 'title' ] );
+		$revId = $page->getLatest();
+		if ( $draftQualityClass ) {
+			self::setDraftQuality( $revId, $draftQualityClass );
+		}
+		if ( $copyvio ) {
+			self::setCopyvio( $pageAndTitle[ 'id' ], $revId );
+		}
+		return $pageAndTitle[ 'id' ];
+	}
+
+	private static function setDraftQuality( $revId, $classId ) {
+		$dbw = wfGetDB( DB_MASTER );
+		foreach ( [ 0, 1, 2, 3 ] as $id ) {
+			$predicted = $classId === $id;
+			$dbw->insert( 'ores_classification', [
+				'oresc_model' => self::ensureOresModel( 'draftquality' ),
+				'oresc_class' => $id,
+				'oresc_probability' => $predicted ? 0.7 : 0.1,
+				'oresc_is_predicted' => $predicted ? 1 : 0,
+				'oresc_rev' => $revId,
+			] );
+		}
+	}
+
+	private static function ensureCopyvioTag() {
+		$dbw = wfGetDB( DB_MASTER );
+
+		$dbw->upsert(
+			'pagetriage_tags',
+			[ 'ptrt_tag_name' => 'copyvio' ],
+			[ 'ptrt_tag_id' ],
+			[ 'ptrt_tag_name' => 'copyvio', 'ptrt_tag_desc' => 'copyvio' ]
+		);
+	}
+
+	private static function setCopyvio( $pageId, $revId ) {
+		$dbw = wfGetDB( DB_MASTER );
+
+		$tagId = $dbw->selectField(
+			'pagetriage_tags', 'ptrt_tag_id', [ 'ptrt_tag_name' => 'copyvio' ]
+		);
+
+		$dbw->insert(
+			'pagetriage_page_tags',
+			[
+				'ptrpt_page_id' => $pageId,
+				'ptrpt_tag_id' => $tagId,
+				'ptrpt_value' => $revId,
+			]
+		);
 	}
 
 	private static function ensureOresModel( $name ) {

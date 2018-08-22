@@ -69,7 +69,7 @@ class OresMetadata {
 		'vandalism' => 'pagetriage-filter-stat-predicted-issues-vandalism',
 		'attack' => 'pagetriage-filter-stat-predicted-issues-attack',
 		'spam' => 'pagetriage-filter-stat-predicted-issues-spam',
-		'OK' => 'pagetriage-filter-stat-predicted-issues-none',
+		'OK' => false,
 	];
 
 	/**
@@ -155,7 +155,7 @@ class OresMetadata {
 	 */
 	private function classToMessage( $className ) {
 		$key = self::$oresClassToMsgKey[ $className ];
-		return $this->requestContext->msg( $key )->text();
+		return $key ? $this->requestContext->msg( $key )->text() : '';
 	}
 
 	/**
@@ -172,7 +172,7 @@ class OresMetadata {
 		foreach ( $pageIds as $pageId ) {
 			$scores[ $pageId ] = [
 				'ores_wp10' => $pendingScore,
-				'ores_draftquality' => $pendingScore,
+				'ores_draftquality' => '',
 			];
 		}
 

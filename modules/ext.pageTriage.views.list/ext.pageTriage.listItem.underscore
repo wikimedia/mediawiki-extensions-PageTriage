@@ -86,9 +86,26 @@
 				<span class="mwe-pt-article-ores-predicted-issues-label">
 					<%= mw.msg( 'pagetriage-filter-predicted-issues-heading' ) %>
 				</span>
+				<% if ( !ores_draftquality && !copyvio ) { %>
+				<span class="mwe-pt-article-ores-predicted-issues-value">
+					<%= mw.msg( 'pagetriage-filter-stat-predicted-issues-none' ) %>
+				</span>
+				<% } %>
+				<% if ( ores_draftquality ) { %>
 				<span class="mwe-pt-article-ores-predicted-issues-value">
 					<%= ores_draftquality %>
 				</span>
+				<% } %>
+				<% if ( copyvio ) { %>
+				<% if ( ores_draftquality ) { %>
+				&#xb7;
+				<% } %>
+				<span class="mwe-pt-article-copyvio-hint mw-parser-output">
+					<a href="<%- copyvio_link_url %>" target="_blank" class="external">
+						<%= mw.msg( 'pagetriage-filter-stat-predicted-issues-copyvio' ) %>
+					</a>
+				</span>
+				<% } %>
 			</div>
 			<% } %>
 			<% if ( is_draft ) { %>
