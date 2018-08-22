@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Minisarm",
-			"Stelistcristi"
+			"Stelistcristi",
+			"Kyouko"
 		]
 	},
 	"pagetriage-please-wait": "Vă rugăm să așteptați...",
@@ -25,9 +26,12 @@
 	"pagetriage-filter-ns-all": "Toate",
 	"pagetriage-more": "Mai multe",
 	"pagetriage-filter-stat-all": "Toate",
-	"pagetriage-filter-stat-bots": "roboți",
-	"pagetriage-filter-stat-redirects": "redirecționări",
-	"pagetriage-filter-stat-username": "nume de utilizator: $1",
+	"pagetriage-filter-stat-bots": "Roboți",
+	"pagetriage-filter-stat-redirects": "Redirecționări",
+	"pagetriage-filter-stat-username": "După utilizator: $1",
+	"pagetriage-filter-stat-predicted-class-stub": "Ciot",
+	"pagetriage-filter-stat-predicted-issues-vandalism": "Vandalism",
+	"pagetriage-filter-stat-predicted-issues-none": "Niciuna",
 	"pagetriage-no-pages": "Nicio pagină nu corespunde criteriilor dumneavoastră.",
 	"pagetriage-refresh-list": "Reîmprospătează lista",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|etichetă selectată|etichete selectate|de etichete selectate}}",

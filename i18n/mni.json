@@ -4,5 +4,15 @@
 			"Awangba Mangang"
 		]
 	},
+	"pagetriage-filter-stat-unreviewed": "ꯑꯃꯨꯛꯍꯟꯅ ꯌꯦꯡꯁꯤꯟꯗꯔꯦ",
+	"pagetriage-filter-stat-non-autoconfirmed": "ꯑꯅꯧꯕꯂꯥꯛꯄꯁꯤꯡ ꯅꯥ",
+	"pagetriage-filter-stat-learners": "ꯄꯥꯕꯤꯔꯤꯕꯁꯤꯡ ꯅꯥ",
+	"pagetriage-filter-stat-username": "ꯁꯤꯖꯤꯟꯅꯔꯤ:$1 ꯅꯥ",
+	"pagetriage-filter-stat-predicted-class-stub": "ꯑꯇꯦꯟꯕ",
+	"pagetriage-filter-stat-predicted-class-start": "ꯍꯧꯕ",
+	"pagetriage-filter-stat-predicted-class-good": "ꯑꯐꯕ",
+	"pagetriage-filter-stat-predicted-issues": "ꯍꯥꯟꯅꯗꯒꯤ ꯈꯪꯂꯕ ꯋꯥꯍꯩꯁꯤꯡ",
+	"pagetriage-filter-stat-predicted-issues-attack": "ꯂꯥꯟ ꯇꯥꯕꯥ",
+	"pagetriage-filter-stat-predicted-issues-none": "ꯌꯥꯎꯗꯦ",
 	"pagetriage-afc-state-all": "ꯄꯨꯂꯞ"
 }

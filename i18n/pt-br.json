@@ -271,6 +271,8 @@
 	"echo-pref-subscription-page-review": "Reveja uma página que eu criei",
 	"echo-pref-tooltip-page-review": "Notificar-me quando alguém revisar uma página que criei.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Revisão|Revisões}} da página",
+	"right-pagetriage-copyvio": "Etiquetar as páginas de Special:NewPagesFeed como prováveis infringências de direitos de autor, usando a API pagetriage-tagcopyvio",
+	"action-pagetriage-copyvio": "etiquetar páginas como prováveis infringências de direitos de autor",
 	"apihelp-pagetriageaction-description": "Marque um artigo como revisado ou não revisado",
 	"apihelp-pagetriageaction-summary": "Marcar um artigo como revisado ou não revisado.",
 	"apihelp-pagetriageaction-param-pageid": "O artigo o qual está para ser marcado como revisado ou não revisado.",
@@ -279,6 +281,8 @@
 	"apihelp-pagetriageaction-param-skipnotif": "Saltar a notificação, ou não.",
 	"apihelp-pagetriagelist-description": "Obter uma lista de identificadores de página para criar uma fila de triagem de páginas.",
 	"apihelp-pagetriagelist-summary": "Obter uma lista de identificadores de página para criar uma fila de triagem de páginas.",
+	"apihelp-pagetriagelastuse-description": "Salvar nos dados da respetiva sessão a data e a hora da última vez em que o usuário usou a triagem de páginas",
+	"apihelp-pagetriagelastuse-summary": "Salvar nos dados da respetiva sessão a data e a hora da última vez em que o utilizador usou a triagem de páginas",
 	"apihelp-pagetriagelist-param-afc_state": "Que estado de Artigos-para-serem-criados mostrar.",
 	"apihelp-pagetriagelist-param-page_id": "Devolver dados para os identificadores de página especificados, ignorando outros parâmetros.",
 	"apihelp-pagetriagelist-param-showbots": "Mostrar só as edições de robôs, ou não.",
@@ -334,6 +338,7 @@
 	"apihelp-pagetriagestats-param-show_predicted_issues_spam": "Incluir, ou não, problemas previstos de spam",
 	"apihelp-pagetriagestats-param-show_predicted_issues_attack": "Incluir, ou não, problemas previstos de ataque",
 	"apihelp-pagetriagestats-param-show_predicted_issues_none": "Incluir, ou não, inexistência de problemas previstos",
+	"apihelp-pagetriagetagcopyvio-description": "Etiquetar uma revisão como provável infringência de direitos de autor em Special:NewPagesFeed. Requer o privilégio pagetriage-copyvio.",
 	"apihelp-pagetriagetagcopyvio-summary": "Marque uma revisão como uma violação de direitos autorais provável.",
 	"apihelp-pagetriagetagcopyvio-param-revid": "ID de revisão para marcar como uma provável violação de direitos autorais",
 	"apihelp-pagetriagetagging-description": "Acrescentar etiquetas a um artigo.",
@@ -344,5 +349,6 @@
 	"apihelp-pagetriagetagging-param-deletion": "Se a etiquetagem é para uma nomeação para eliminação, ou não.",
 	"apihelp-pagetriagetagging-param-note": "Nota pessoal dos revisores para os criadores de páginas.",
 	"apihelp-pagetriagetagging-param-taglist": "Lista de etiquetas separadas por barras verticais.",
-	"apierror-bad-pagetriage-page": "A página especificada não existe na fila de triagem de páginas"
+	"apierror-bad-pagetriage-page": "A página especificada não existe na fila de triagem de páginas",
+	"apierror-pagetriage-missingtag": "Não foi encontrado um identificador de etiqueta para a etiqueta de infringência dos direitos de autor. Tente executar o update.php."
 }
