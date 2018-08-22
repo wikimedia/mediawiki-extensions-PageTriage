@@ -26,8 +26,13 @@ class ArticleCompileDeletionTag extends ArticleCompileInterface {
 			$parserOutput = $this->getParserOutputByPageId( $pageId );
 			if ( $parserOutput ) {
 				$categories = $parserOutput->getCategories();
+				$deleted = false;
 				foreach ( $deletionTags as $category => $tag ) {
 					$this->metadata[$pageId][$tag] = isset( $categories[$category] ) ? '1' : '0';
+					$deleted |= isset( $categories[$category] );
+				}
+				if ( $deleted ) {
+					$this->metadata[$pageId]['deleted'] = true;
 				}
 			}
 		}
