@@ -46,6 +46,7 @@
 	"pagetriage-user-creation-dateformat": "dd/MM/yyyy",
 	"pagetriage-showing": "Sto mostrando:",
 	"pagetriage-filter-list-prompt": "Imposta filtri",
+	"pagetriage-filter-predicted-issues-heading": "Problemi potenziali:",
 	"pagetriage-unreviewed-article-count": "$1 {{PLURAL:$1|pagina non revisionata|pagine non revisionate}} in totale (più vecchia: $2)",
 	"pagetriage-reviewed-article-count-past-week": "$1 {{PLURAL:$1|pagina|pagine}} revisionate questa settimana",
 	"pagetriage-sort-by": "Ordina per:",

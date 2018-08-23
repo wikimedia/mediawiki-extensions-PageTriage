@@ -46,6 +46,7 @@
 	"pagetriage-filter-predicted-issues-vandalism": "Βανδαλισμός",
 	"pagetriage-filter-predicted-issues-spam": "Σπαμ",
 	"pagetriage-filter-predicted-issues-attack": "Επίθεση",
+	"pagetriage-filter-predicted-issues-copyvio": "Παραβίαση πνευματικών δικαιωμάτων",
 	"pagetriage-filter-predicted-issues-none": "Κανένα",
 	"pagetriage-unreviewed-article-count": "$1 συνολικά {{PLURAL:$1|μη επιθεωρημένη σελίδα|μη επιθεωρημένες σελίδες}} (παλαιότερη: $2)",
 	"pagetriage-sort-by": "Ταξινόμηση κατά:",
@@ -101,6 +102,7 @@
 	"pagetriage-filter-stat-predicted-issues-vandalism": "Βανδαλισμός",
 	"pagetriage-filter-stat-predicted-issues-spam": "Σπαμ",
 	"pagetriage-filter-stat-predicted-issues-attack": "Επίθεση",
+	"pagetriage-filter-stat-predicted-issues-copyvio": "Παραβίαση πνευματικών δικαιωμάτων",
 	"pagetriage-filter-stat-predicted-issues-none": "Κανένα",
 	"pagetriage-refresh-list": "Ανανέωση λίστας",
 	"pagetriage-button-add-tag": "Προσθήκη επιλεγμένων ετικετών",
@@ -160,5 +162,5 @@
 	"pagetriage-afc-date-label-declined": "Ημερομηνία απόρριψης:",
 	"apihelp-pagetriagelist-param-learners": "Το εάν θα προβληθούν μόνο σελίδες που δημιουργήθηκαν από νέους συντάκτες.",
 	"apihelp-pagetriagestats-param-learners": "Το αν θα περιλαμβάνει μόνο σελίδες που δημιουργήθηκαν από νέους συντάκτες ως χρήστες.",
-	"apihelp-pagetriagestats-param-show_predicted_issues_attack": "Που να συμπεριληφθούν προβλεμένα ζητήματα επίθεσης"
+	"apihelp-pagetriagestats-param-show_predicted_issues_attack": "Που να συμπεριληφθούν πιθανά ζητήματα επίθεσης"
 }

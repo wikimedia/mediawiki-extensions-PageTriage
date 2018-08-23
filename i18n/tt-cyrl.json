@@ -6,5 +6,6 @@
 	},
 	"pagetriage-filter-show-heading": "Күрсәт:",
 	"pagetriage-filter-article": "Мәкалә",
+	"pagetriage-refresh-list": "Исемлекне яңарту",
 	"echo-category-title-page-review": "Битне {{PLURAL:$1|тикшерү}}"
 }
