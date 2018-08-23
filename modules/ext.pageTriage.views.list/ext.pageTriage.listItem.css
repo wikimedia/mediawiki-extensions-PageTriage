@@ -7,9 +7,16 @@
 }
 
 .mwe-pt-info-pane {
-	margin-left: 31px;
-	padding: 0.5em 0.6em 0.6em 0.5em;
+	padding: 0.5em 0.6em 0.6em 2.7em;
 	min-height: 4.8em;
+	display: table;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.mwe-pt-info-row {
+	display: table-row;
+	vertical-align: top;
 }
 
 .mwe-pt-status-icon {
@@ -26,15 +33,17 @@
 	border-top: 0;
 }
 
-.mwe-pt-list-triage-button {
-	float: right;
-	clear: right;
+/* cell containing the big blue "Review" button */
+.mwe-pt-review {
+	text-align: right;
+	display: table-cell;
 }
 
 /* info about the article */
 .mwe-pt-article {
 	font-size: 1.1em;
 	line-height: 1.6em;
+	display: table-cell;
 }
 
 .mwe-pt-page-title {
@@ -45,36 +54,45 @@
 	font-size: 1em;
 }
 
-.mwe-pt-metadata-warning {
+.mwe-pt-metadata-warning,
+.mwe-pt-issue {
 	color: #c00;
 	font-weight: bold;
 }
 
 .mwe-pt-creation-date {
-	float: right;
 	font-weight: bold;
 	font-size: 1em;
 	margin-left: 1em;
+	display: table-cell;
+	text-align: right;
+	white-space: nowrap;
 }
 
 /* info about the article's author */
 .mwe-pt-author {
-	margin-left: 25px;
+	display: table-cell;
 }
 
-/* ORES and draft state data */
-.mwe-pt-extra-info {
-	margin-left: 25px;
-}
-
-.mwe-pt-extra-info-item {
-	display: inline;
-	margin-right: 25px;
+.mwe-pt-updated-date {
+	display: table-cell;
+	text-align: right;
+	white-space: nowrap;
 }
 
 /* the article snippet */
 .mwe-pt-snippet {
 	color: #808080;
-	margin-left: 25px;
-	margin-right: 8em;
+	padding-right: 1em;
+	display: table-cell;
+	vertical-align: top;
+}
+
+.mwe-pt-predicted-class {
+	display: table-cell;
+}
+
+.mwe-pt-potential-issues {
+	display: table-cell;
+	text-align: right;
 }
