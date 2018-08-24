@@ -300,6 +300,8 @@ $( function () {
 
 		apiParams: {
 			limit: 20,
+			nppDir: 'newestfirst',
+			afcDir: 'oldestreview',
 			dir: 'newestfirst',
 			namespace: 0,
 			showreviewed: 1,
@@ -346,6 +348,7 @@ $( function () {
 				this.mode = 'npp';
 				this.setParam( 'namespace', 0 );
 			}
+			this.setParam( 'dir', this.getParam( this.mode + 'Dir' ) );
 		},
 
 		/**
@@ -361,6 +364,10 @@ $( function () {
 				action: 'pagetriagelist',
 				format: 'json'
 			}, this.apiParams );
+			// sorting (dir) is stored as 'nppDir' and 'afcDir' so they remain
+			// independent but only one is sent as 'dir' based on the mode
+			delete params.nppDir;
+			delete params.afcDir;
 			// mode is defined in the model but is not an API parameter, so remove it.
 			delete params.mode;
 			return mw.util.wikiScript( 'api' ) + '?' + $.param( params );
