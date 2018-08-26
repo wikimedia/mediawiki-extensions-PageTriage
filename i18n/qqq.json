@@ -71,7 +71,7 @@
 	"pagetriage-filter-predicted-issues-vandalism": "Checkbox for ORES predicted issue of Vandalism",
 	"pagetriage-filter-predicted-issues-spam": "Checkbox for ORES predicted issue of Spam",
 	"pagetriage-filter-predicted-issues-attack": "Checkbox for ORES predicted issue of Attack",
-	"pagetriage-filter-predicted-issues-copyvio": "Checkbox for predicted issue of copyvio",
+	"pagetriage-filter-predicted-issues-copyvio": "Checkbox for predicted issue of copyvio\n{{Identical|Copyvio}}",
 	"pagetriage-filter-predicted-issues-none": "Checkbox for no ORES or copyright violation issues",
 	"pagetriage-unreviewed-article-count": "A description of the number of unreviewed pages and the age of the oldest article.\n\nParameters:\n* $1 - the number of unreviewed pages\n* $2 - the age of oldest article, this uses messages {{msg-mw|Pagetriage-stats-less-than-a-day}} or {{msg-mw|Days}}",
 	"pagetriage-reviewed-article-count-past-week": "A description of the number of reviewed pages in past week, $1 is the count of pages reviewed in past week",

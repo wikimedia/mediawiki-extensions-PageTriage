@@ -66,6 +66,7 @@
 	"pagetriage-filter-stat-predicted-class-c": "Klasa C",
 	"pagetriage-filter-stat-predicted-class-b": "Klasa B",
 	"pagetriage-filter-stat-predicted-class-featured": "Wyróżnione",
+	"pagetriage-filter-stat-predicted-issues": "Potencjalne problemy",
 	"pagetriage-filter-stat-predicted-issues-vandalism": "Wandalizm",
 	"pagetriage-filter-stat-predicted-issues-spam": "Spam",
 	"pagetriage-filter-stat-predicted-issues-attack": "Atak",
