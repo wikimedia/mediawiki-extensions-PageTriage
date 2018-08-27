@@ -2261,7 +2261,7 @@ cfg.parameters = {
 -- The following settings are used with the cfg.category2 parameter. Setting
 -- cfg.category2 to cfg.category2Yes skips the blacklist, and if cfg.category2
 -- is present but equal to anything other than cfg.category2Yes or
--- cfg.category2Negative then it supresses cateogrisation.
+-- cfg.category2Negative then it suppresses categorisation.
 cfg.category2Yes = 'yes'
 cfg.category2Negative = '¬'
 
