@@ -134,8 +134,10 @@ $( function () {
 
 			// set last AfC action date label
 			article.set( 'last_afc_action_date_label', '' );
-			if ( article.get( 'afc_state' ) === '2' || article.get( 'afc_state' ) === '3' ) {
+			if ( article.get( 'afc_state' ) === '2' ) {
 				article.set( 'last_afc_action_date_label', mw.msg( 'pagetriage-afc-date-label-submission' ) );
+			} else if ( article.get( 'afc_state' ) === '3' ) {
+				article.set( 'last_afc_action_date_label', mw.msg( 'pagetriage-afc-date-label-review' ) );
 			} else if ( article.get( 'afc_state' ) === '4' ) {
 				article.set( 'last_afc_action_date_label', mw.msg( 'pagetriage-afc-date-label-declined' ) );
 			}
