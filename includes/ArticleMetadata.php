@@ -183,8 +183,11 @@ class ArticleMetadata {
 			// request.
 			if ( $articles ) {
 				$acp = ArticleCompileProcessor::newFromPageId( $articles, false, DB_REPLICA );
-				if ( $acp && RequestContext::getMain()->getRequest()->wasPosted() ) {
-					$pageData += $acp->compileMetadata();
+				// Temporarily allow deferred write on GET request until we resolve
+				// the root cause of T202815.
+				// @todo Remove this once T202815 is solved.
+				if ( $acp ) {
+					$pageData += $acp->compileMetadata( ArticleCompileProcessor::SAVE_DEFERRED );
 				}
 				// If not a POST request, add a log statement so we can track down the caller.
 				// @todo eventually remove this once we've fixed any cases where PageTriage
