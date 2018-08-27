@@ -133,9 +133,12 @@ $( function () {
 				e.stopPropagation();
 			} );
 
-			// Initialize sort links
+			// NPP sort radio controls, AfC sort select/options
 			$( 'input[name=sort], #mwe-pt-sort-afc' ).on( 'change', function ( e ) {
+				// for querying
 				that.model.setParam( 'dir', e.target.value );
+				// for storage
+				that.model.setParam( that.model.getMode() + 'Dir', e.target.value );
 				that.model.saveFilterParams();
 				that.refreshList();
 				e.stopPropagation();
@@ -307,6 +310,8 @@ $( function () {
 			if ( this.model.getMode() === 'npp' ) {
 				apiParams = this.getApiParamsNpp();
 				apiParams.namespace = $( '#mwe-pt-filter-namespace' ).val();
+				apiParams.nppDir = $( '#mwe-pt-sort-oldest' ).prop( 'checked' ) ?
+					'oldestfirst' : 'newestfirst';
 			} else {
 				// AfC
 				apiParams.namespace = mw.config.get( 'wgNamespaceIds' ).draft;
@@ -314,6 +319,7 @@ $( function () {
 				apiParams.afc_state = $( '[name=mwe-pt-filter-afc-radio]:checked' ).val();
 				apiParams.showunreviewed = '1';
 				apiParams.showreviewed = '1';
+				apiParams.afcDir = $( '#mwe-pt-sort-afc' ).val();
 			}
 			// Merge in ORES params.
 			apiParams = Object.assign( this.getApiParamsOres( this.model.getMode() ), apiParams );
@@ -321,7 +327,7 @@ $( function () {
 			// Only set if fetching API params for the feed (since the stats endpoint doesn't
 			// recognize dir and limit).
 			if ( isListView ) {
-				apiParams.dir = this.model.getParam( 'dir' );
+				apiParams.dir = apiParams[ this.model.getMode() + 'Dir' ];
 				apiParams.limit = this.model.getParam( 'limit' );
 			}
 
@@ -478,13 +484,6 @@ $( function () {
 				} )
 				.join( mw.msg( 'comma-separator' ) );
 			$( '#mwe-pt-filter-status' ).text( this.filterStatus );
-
-			// Sync the sort toggle
-			if ( this.model.getParam( 'dir' ) === 'oldestfirst' ) {
-				$( '#mwe-pt-sort-oldest' ).prop( 'checked', true );
-			} else {
-				$( '#mwe-pt-sort-newest' ).prop( 'checked', true );
-			}
 		},
 
 		/**
@@ -555,6 +554,13 @@ $( function () {
 			if ( !$( 'input[name=mwe-pt-filter-radio]:checked' ).val() ) {
 				// None of the radio buttons are selected. Pick the default.
 				$( '#mwe-pt-filter-all' ).prop( 'checked', true );
+			}
+
+			// Sync the sort toggle
+			if ( this.model.getParam( 'nppDir' ) === 'oldestfirst' ) {
+				$( '#mwe-pt-sort-oldest' ).prop( 'checked', true );
+			} else {
+				$( '#mwe-pt-sort-newest' ).prop( 'checked', true );
 			}
 		},
 
