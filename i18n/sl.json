@@ -3,12 +3,13 @@
 		"authors": [
 			"Eleassar",
 			"Janezdrilc",
-			"Upwinxp"
+			"Upwinxp",
+			"Dbc334"
 		]
 	},
 	"pagetriage-articleinfo-byline": "Stran je $1 ustvaril(-a) $2 ($3$4$5).",
 	"pagetriage-filter-nominated-for-deletion": "Predlagano za izbris",
-	"pagetriage-filter-stat-nominated-for-deletion": "predlagano za izbris",
+	"pagetriage-filter-stat-nominated-for-deletion": "Predlagano za izbris",
 	"pagetriage-note-deletion": "Ta stran je bila predlagana za izbris.",
 	"pagetriage-tags-uncategorised-desc": "Stran še ni uvrščena v nobeno kategorijo.",
 	"pagetriage-tags-orphan-desc": "Na to stran se ne povezuje nobena druga stran.",

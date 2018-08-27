@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rberchie"
+			"Rberchie",
+			"Kwaaku berko"
 		]
 	},
 	"pagetriage-filter-stat-unreviewed": "Yen hwehwεεmu",
@@ -13,5 +14,6 @@
 	"pagetriage-filter-stat-predicted-class-start": "Hyε  aseε",
 	"pagetriage-filter-stat-predicted-class-good": "Papa",
 	"pagetriage-filter-stat-predicted-issues-vandalism": "Nsεmmone",
-	"pagetriage-filter-stat-predicted-issues-attack": "Ntɔkwa"
+	"pagetriage-filter-stat-predicted-issues-attack": "Ntɔkwa",
+	"pagetriage-filter-stat-predicted-issues-none": "hwee"
 }

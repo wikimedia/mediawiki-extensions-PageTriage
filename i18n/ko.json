@@ -165,7 +165,7 @@
 	"pagetriage-tags-deadend-label": "막다른 문서",
 	"pagetriage-tags-deadend-desc": "이 문서는 다른 문서로 링크한 것이 적거나 없습니다.",
 	"pagetriage-tags-externallinks-label": "외부 링크",
-	"pagetriage-tags-externallinks-desc": "이 문서의 바깥 링크는 내용 정책이나 지침을 따르지 않습니다.",
+	"pagetriage-tags-externallinks-desc": "이 문서의 외부 링크는 내용 정책이나 지침을 따르지 않습니다.",
 	"pagetriage-tags-catimprove-label": "더 많은 분류",
 	"pagetriage-tags-catimprove-desc": "이 문서에는 추가적인 분류가 필요합니다.",
 	"pagetriage-tags-orphan-label": "외톨이",
