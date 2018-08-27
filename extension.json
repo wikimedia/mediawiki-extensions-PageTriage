@@ -29,6 +29,11 @@
 		"echo-subscriptions-web-page-review": true,
 		"echo-subscriptions-email-page-review": false
 	},
+	"GroupPermissions": {
+		"copyviobot": {
+			"pagetriage-copyvio": true
+		}
+	},
 	"LogActionsHandlers": {
 		"pagetriage-curation/reviewed": "LogFormatter",
 		"pagetriage-curation/unreviewed": "LogFormatter",

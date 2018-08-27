@@ -434,6 +434,8 @@
 	"echo-category-title-page-review": "{{doc-echo-category-title|tooltip=Echo-pref-tooltip-page-review}}",
 	"right-pagetriage-copyvio": "{{doc-right|pagetriage-copyvio}}",
 	"action-pagetriage-copyvio": "{{doc-action|pagetriage-copyvio}}",
+	"group-copyviobot": "{{doc-group|copyviobot}}",
+	"group-copyviobot-member": "{{doc-group|copyviobot|member}}",
 	"apihelp-pagetriageaction-description": "{{doc-apihelp-description|pagetriageaction}}",
 	"apihelp-pagetriageaction-summary": "{{doc-apihelp-summary|pagetriageaction}}",
 	"apihelp-pagetriageaction-param-pageid": "{{doc-apihelp-param|pagetriageaction|pageid}}",

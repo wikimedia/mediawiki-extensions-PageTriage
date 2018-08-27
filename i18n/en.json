@@ -419,6 +419,8 @@
 	"echo-category-title-page-review": "Page {{PLURAL:$1|review|reviews}}",
 	"right-pagetriage-copyvio": "Tag pages in the Special:NewPagesFeed as likely copyright violations, through the pagetriage-tagcopyvio API",
 	"action-pagetriage-copyvio": "tag pages as likely copyright violations",
+	"group-copyviobot": "Copyright violation bots",
+	"group-copyviobot-member": "{{GENDER:$1|copyright violation bot}}",
 	"apihelp-pagetriageaction-description": "Mark an article as reviewed or unreviewed.",
 	"apihelp-pagetriageaction-summary": "Mark an article as reviewed or unreviewed.",
 	"apihelp-pagetriageaction-param-pageid": "The article for which to be marked as reviewed or unreviewed.",
