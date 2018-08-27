@@ -7,6 +7,7 @@ use MediaWiki\Extension\PageTriage\OresMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use ApiBase;
 use ApiResult;
+use MediaWiki\Logger\LoggerFactory;
 use ORES\ORESServices;
 use SpecialPage;
 use Title;
@@ -74,6 +75,11 @@ class ApiPageTriageList extends ApiBase {
 
 		$sortedMetaData = [];
 
+		$result = [
+			'result' => 'success',
+			'pages_missing_metadata' => [],
+		];
+
 		if ( $pages ) {
 			// fetch metadata for those pages
 			$articleMetadata = new ArticleMetadata( $pages, $pageIdValidated, $pageIdValidateDb );
@@ -89,6 +95,9 @@ class ApiPageTriageList extends ApiBase {
 			// slightly different format that's more Backbone-friendly.
 			foreach ( $pages as $page ) {
 				if ( !isset( $metaData[$page] ) ) {
+					// If metadata is missing for a page, add this to the API output.
+					$result['pages_missing_metadata'][] = $page;
+					$result['result'] = 'warning';
 					continue;
 				}
 				$metaData[$page]['creation_date_utc'] = $metaData[$page]['creation_date'];
@@ -126,8 +135,18 @@ class ApiPageTriageList extends ApiBase {
 			}
 		}
 
+		// Log missing metadata.
+		if ( count( $result['pages_missing_metadata'] ) ) {
+			LoggerFactory::getInstance( 'PageTriage' )->warning( 'Metadata is missing for some pages.',
+				[
+					'pages_missing_metadata' => implode( ',', $result['pages_missing_metadata'] ),
+					'opts' => json_encode( $opts, JSON_PRETTY_PRINT ),
+				]
+			);
+		}
+
 		// Output the results
-		$result = [ 'result' => 'success', 'pages' => $sortedMetaData ];
+		$result['pages'] = $sortedMetaData;
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 

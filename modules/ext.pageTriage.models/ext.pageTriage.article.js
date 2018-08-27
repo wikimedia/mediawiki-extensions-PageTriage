@@ -376,16 +376,21 @@ $( function () {
 		},
 
 		parse: function ( response ) {
-			// See if the fetch returned an extra page or not. This lets us know if there are more
-			// pages to load in a subsequent fetch.
+			// See if the fetch returned an extra page. This lets us know if there are more pages
+			// to load in a subsequent fetch. We also check to see if the response contains
+			// information about pages missing metadata; if that property is set then we assume that
+			// there may be more articles to load (T202815).
+			this.moreToLoad = false;
 			if ( response.pagetriagelist.pages && response.pagetriagelist.pages.length > this.apiParams.limit ) {
 				// Remove the extra page from the list
 				response.pagetriagelist.pages.pop();
 				this.moreToLoad = true;
-			} else {
-				// We have no more pages to load.
-				this.moreToLoad = false;
 			}
+			if ( response.pagetriagelist && response.pagetriagelist.pages_missing_metadata ) {
+				mw.log.warn( 'Metadata is missing for some pages.', JSON.stringify( response.pagetriagelist.pages_missing_metadata ) );
+				this.moreToLoad = true;
+			}
+
 			// extract the useful bits of json.
 			return response.pagetriagelist.pages;
 		},

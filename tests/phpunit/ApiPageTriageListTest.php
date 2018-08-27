@@ -122,7 +122,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			'[[Category:Pending AfC submissions]][[Category:Pending AfC submissions being reviewed now]]',
 			$this->draftNsId
 		);
-
 		// Should be in the Pending feed.
 		$list = $this->getPageTriageList( [ 'afc_state' => ArticleCompileAfcTag::UNDER_REVIEW ] );
 		static::assertArraySubset(

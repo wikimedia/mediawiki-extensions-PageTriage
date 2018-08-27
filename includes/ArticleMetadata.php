@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\PageTriage;
 
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
-use MediaWiki\Logger\LoggerFactory;
 use ObjectCache;
 use RequestContext;
 use Title;
@@ -112,7 +111,79 @@ class ArticleMetadata {
 	}
 
 	/**
-	 * Get the metadata for a single or list of articles
+	 * Get metadata from the replica for an array of article IDs.
+	 *
+	 * @param array $articles
+	 * @return array
+	 *   An array of metadata keyed on article ID, or an empty array if no results are found.
+	 */
+	public static function getMetadataForArticles( array $articles ) {
+		$dbr = wfGetDB( DB_REPLICA );
+
+		$res = $dbr->select(
+			[
+				'pagetriage_page_tags',
+				'pagetriage_tags',
+				'page',
+				'pagetriage_page',
+				'user'
+			],
+			[
+				'ptrpt_page_id',
+				'ptrt_tag_name',
+				'ptrpt_value',
+				'ptrp_reviewed',
+				'ptrp_created',
+				'page_title',
+				'page_namespace',
+				'page_is_redirect',
+				'ptrp_last_reviewed_by',
+				'ptrp_reviewed_updated',
+				'reviewer' => 'user_name'
+			],
+			[
+				'ptrpt_page_id' => $articles,
+				'ptrpt_tag_id = ptrt_tag_id',
+				'ptrpt_page_id = ptrp_page_id',
+				'page_id = ptrp_page_id'
+			],
+			__METHOD__,
+			[],
+			[ 'user' => [ 'LEFT JOIN', 'user_id = ptrp_last_reviewed_by' ] ]
+		);
+
+		$pageData = [];
+		foreach ( $res as $row ) {
+			$pageData[$row->ptrpt_page_id][$row->ptrt_tag_name] = $row->ptrpt_value;
+			if ( !isset( $pageData[$row->ptrpt_page_id]['creation_date'] ) ) {
+				$pageData[$row->ptrpt_page_id]['creation_date'] = wfTimestamp( TS_MW, $row->ptrp_created );
+				// The patrol_status has 4 possible values:
+				// 0 = unreviewed, 1 = reviewed, 2 = patrolled, 3 = autopatrolled
+				$pageData[$row->ptrpt_page_id]['patrol_status'] = $row->ptrp_reviewed;
+				$pageData[$row->ptrpt_page_id]['is_redirect'] = $row->page_is_redirect;
+				$pageData[$row->ptrpt_page_id]['ptrp_last_reviewed_by'] = $row->ptrp_last_reviewed_by;
+				$pageData[$row->ptrpt_page_id]['ptrp_reviewed_updated'] = wfTimestamp(
+					TS_MW,
+					$row->ptrp_reviewed_updated
+				);
+				$pageData[$row->ptrpt_page_id]['reviewer'] = $row->reviewer;
+				$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+				if ( $title ) {
+					$pageData[$row->ptrpt_page_id]['title'] = $title->getPrefixedText();
+				}
+			}
+		}
+		return $pageData;
+	}
+
+	/**
+	 * Get the metadata for a single or list of articles.
+	 *
+	 * First attempt to load metadata from the cache (memcached backend). If not found, then
+	 * attempt to load compiled metadata from the replica. If that fails, recompile the metadata
+	 * and either save to DB at end of request (if in a POST context) or add a job to the queue
+	 * to save to the DB at a later point in time.
+	 *
 	 * @return array $metadata: key (page Ids) => value (metadata) pairs
 	 */
 	public function getMetadata() {
@@ -122,86 +193,17 @@ class ArticleMetadata {
 
 		// Grab metadata from database after cache attempt
 		if ( $articles ) {
-			$dbr = wfGetDB( DB_REPLICA );
-
-			$res = $dbr->select(
-					[
-						'pagetriage_page_tags',
-						'pagetriage_tags',
-						'page',
-						'pagetriage_page',
-						'user'
-					],
-					[
-						'ptrpt_page_id',
-						'ptrt_tag_name',
-						'ptrpt_value',
-						'ptrp_reviewed',
-						'ptrp_created',
-						'page_title',
-						'page_namespace',
-						'page_is_redirect',
-						'ptrp_last_reviewed_by',
-						'ptrp_reviewed_updated',
-						'reviewer' => 'user_name'
-					],
-					[
-						'ptrpt_page_id' => $articles,
-						'ptrpt_tag_id = ptrt_tag_id',
-						'ptrpt_page_id = ptrp_page_id',
-						'page_id = ptrp_page_id'
-					],
-					__METHOD__,
-					[],
-					[ 'user' => [ 'LEFT JOIN', 'user_id = ptrp_last_reviewed_by' ] ]
-			);
-
-			$pageData = [];
-			foreach ( $res as $row ) {
-				$pageData[$row->ptrpt_page_id][$row->ptrt_tag_name] = $row->ptrpt_value;
-				if ( !isset( $pageData[$row->ptrpt_page_id]['creation_date'] ) ) {
-					$pageData[$row->ptrpt_page_id]['creation_date'] = wfTimestamp( TS_MW, $row->ptrp_created );
-					// The patrol_status has 4 possible values:
-					// 0 = unreviewed, 1 = reviewed, 2 = patrolled, 3 = autopatrolled
-					$pageData[$row->ptrpt_page_id]['patrol_status'] = $row->ptrp_reviewed;
-					$pageData[$row->ptrpt_page_id]['is_redirect'] = $row->page_is_redirect;
-					$pageData[$row->ptrpt_page_id]['ptrp_last_reviewed_by'] = $row->ptrp_last_reviewed_by;
-					$pageData[$row->ptrpt_page_id]['ptrp_reviewed_updated'] = wfTimestamp(
-						TS_MW,
-						$row->ptrp_reviewed_updated
-					);
-					$pageData[$row->ptrpt_page_id]['reviewer'] = $row->reviewer;
-					$title = Title::makeTitle( $row->page_namespace, $row->page_title );
-					if ( $title ) {
-						$pageData[$row->ptrpt_page_id]['title'] = $title->getPrefixedText();
-					}
-				}
-			}
-
+			$pageData = self::getMetadataForArticles( $articles );
 			$articles = self::getPagesWithoutMetadata( $articles, $pageData );
-			// Compile the metadata if it is still not available, and if in context of a POST
-			// request.
+			// Compile and save the metadata if it is still not available.
+			// If in a POST request, use a deferred update to save to the DB, otherwise add
+			// a job to the job queue for later processing.
 			if ( $articles ) {
 				$acp = ArticleCompileProcessor::newFromPageId( $articles, false, DB_REPLICA );
-				// Temporarily allow deferred write on GET request until we resolve
-				// the root cause of T202815.
-				// @todo Remove this once T202815 is solved.
+				$mode = RequestContext::getMain()->getRequest()->wasPosted() ?
+					ArticleCompileProcessor::SAVE_DEFERRED : ArticleCompileProcessor::SAVE_JOB;
 				if ( $acp ) {
-					$pageData += $acp->compileMetadata( ArticleCompileProcessor::SAVE_DEFERRED );
-				}
-				// If not a POST request, add a log statement so we can track down the caller.
-				// @todo eventually remove this once we've fixed any cases where PageTriage
-				// attempts to compile metadata in the context of a GET request.
-				if ( $acp && !RequestContext::getMain()->getRequest()->wasPosted() ) {
-					LoggerFactory::getInstance( 'PageTriage' )->warning(
-						'Article metadata compilation prevented from running in a GET request.',
-						[
-							'trace' => ( new \RuntimeException() )->getTraceAsString(),
-							'articles_without_metadata' => json_encode( $articles, JSON_PRETTY_PRINT ),
-							'raw_query_string' => RequestContext::getMain()->getRequest()
-								->getRawQueryString(),
-						]
-					);
+					$pageData += $acp->compileMetadata( $mode );
 				}
 			}
 
