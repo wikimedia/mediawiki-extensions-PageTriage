@@ -390,6 +390,7 @@
 	"pagetriage-afc-state-reviewing": "검토 중",
 	"pagetriage-afc-state-unsubmitted": "미제출",
 	"pagetriage-afc-date-label-submission": "제출일:",
+	"pagetriage-afc-date-label-review": "검토 중, 제출일:",
 	"pagetriage-afc-date-label-declined": "거절일:",
 	"notification-header-pagetriage-mark-as-reviewed": "'''$3''' 문서가 {{GENDER:$2|검토되었습니다}}.",
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|감사 표현}}}}",

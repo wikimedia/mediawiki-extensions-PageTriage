@@ -24,5 +24,7 @@
 	"pagetriage-filter-stat-predicted-class-stub": "ဆောင်းပါးတို",
 	"pagetriage-filter-stat-predicted-issues-vandalism": "ဖျက်လိုဖျက်ဆီးလုပ်ဆောင်မှု",
 	"pagetriage-filter-stat-predicted-issues-none": "ဘာမှမရှိ",
+	"pagetriage-tags-cat-sources-label": "ရင်းမြစ်များ",
+	"pagetriage-tags-param-free-no-label": "မလုပ်ပါ",
 	"pagetriage-info-help": "အကူအညီ"
 }
