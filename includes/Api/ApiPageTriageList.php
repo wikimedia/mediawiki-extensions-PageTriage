@@ -294,7 +294,10 @@ class ApiPageTriageList extends ApiBase {
 			if ( $showOK ) {
 				unset( $opts[ 'show_predicted_issues_none' ] );
 				$draftqualityCopyvioConds[] = $dbr->makeList( [
-					'ores_draftquality_cls.oresc_class=1',
+					$dbr->makeList( [
+						'ores_draftquality_cls.oresc_class=1',
+						'ores_draftquality_cls.oresc_class IS NULL'
+					], LIST_OR ),
 					'pagetriage_page_tags_copyvio.ptrpt_value IS NULL',
 				], LIST_AND );
 			}
@@ -370,7 +373,7 @@ class ApiPageTriageList extends ApiBase {
 		if ( $model === 'draftquality' ) {
 			$innerJoinConds[] = "$tableAlias.oresc_is_predicted = 1";
 		}
-		$join_conds[ $tableAlias ] = [ 'INNER JOIN', $innerJoinConds ];
+		$join_conds[ $tableAlias ] = [ 'LEFT JOIN', $innerJoinConds ];
 	}
 
 	/**

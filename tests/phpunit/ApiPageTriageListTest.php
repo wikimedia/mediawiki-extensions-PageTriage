@@ -399,7 +399,15 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$this->assertPages( [ 'Page004', 'Page005', 'Page006' ], $list );
 
 		$list = $this->getPageTriageList( [ 'show_predicted_issues_none' => true ] );
-		$this->assertPages( [ 'Page002' ], $list );
+		$this->assertPages( [ 'Page001', 'Page002' ], $list );
+
+		$list = $this->getPageTriageList(
+			[ 'show_predicted_issues_none' => true, 'show_predicted_issues_copyvio' => true ] );
+		$this->assertPages( [ 'Page001', 'Page002', 'Page004', 'Page005', 'Page006' ], $list );
+
+		$list = $this->getPageTriageList(
+			[ 'show_predicted_issues_spam' => true, 'show_predicted_issues_copyvio' => true ] );
+		$this->assertPages( [ 'Page003', 'Page004', 'Page005', 'Page006' ], $list );
 	}
 
 	private function assertPages( $expectedPages, $response ) {
