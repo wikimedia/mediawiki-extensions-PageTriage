@@ -316,7 +316,9 @@ class ApiPageTriageList extends ApiBase {
 				$draftqualityCopyvioConds[] = $copyvioCond;
 			}
 
-			$conds[] = $dbr->makeList( $draftqualityCopyvioConds, LIST_OR );
+			if ( $draftqualityCopyvioConds ) {
+				$conds[] = $dbr->makeList( $draftqualityCopyvioConds, LIST_OR );
+			}
 
 			if ( $showOK || $oresCond ) {
 				self::joinWithOres( 'draftquality', $tables, $join_conds );
