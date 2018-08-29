@@ -397,6 +397,8 @@
 	"echo-pref-subscription-page-review": "내가 만든 문서를 검토하기",
 	"echo-pref-tooltip-page-review": "내가 만든 문서를 누군가가 검토할 때 내게 알립니다.",
 	"echo-category-title-page-review": "문서 {{PLURAL:$1|검토}}",
+	"group-copyviobot": "저작권 위반 봇",
+	"group-copyviobot-member": "{{GENDER:$1|저작권 위반 봇}}",
 	"apihelp-pagetriagelist-param-learners": "자동 인증된 신규 사용자가 만든 문서만 표시할지의 여부입니다.",
 	"apihelp-pagetriagelist-param-show_predicted_class_stub": "예측된 토막글 등급을 포함할지의 여부",
 	"apihelp-pagetriagelist-param-show_predicted_class_start": "예측된 시작 등급을 포함할지의 여부",

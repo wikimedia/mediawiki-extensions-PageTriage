@@ -265,6 +265,8 @@
 	"echo-category-title-page-review": "頁面{{PLURAL:$1|檢閱}}",
 	"right-pagetriage-copyvio": "透過 pagetriage-tagcopyvio API 標記在 Special:NewPagesFeed 的頁面為可能侵犯版權。",
 	"action-pagetriage-copyvio": "標記頁面為可能侵犯版權。",
+	"group-copyviobot": "侵權機器人",
+	"group-copyviobot-member": "{{GENDER:$1|侵權機器人}}",
 	"apihelp-pagetriageaction-description": "標記條目為已檢閱或未檢閱。",
 	"apihelp-pagetriageaction-summary": "標記條目為已巡查或未巡查。",
 	"apihelp-pagetriageaction-param-pageid": "要標記為已檢閱或未檢閱的頁面。",

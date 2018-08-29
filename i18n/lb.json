@@ -202,6 +202,7 @@
 	"pagetriage-toolbar-minimize": "Minimiséieren",
 	"pagetriage-afc-state": "Status",
 	"pagetriage-afc-state-all": "All",
+	"pagetriage-afc-date-label-declined": "Refuséiert:",
 	"pagetriage-discuss-link": "{{GENDER:$1|Diskutéieren}}",
 	"pagetriage-discuss-link-title": "{{GENDER:$1|Diskutéieren}}",
 	"echo-pref-subscription-page-review": "Eng Säit iwwerliesen déi ech ugeluecht hunn",
