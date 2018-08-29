@@ -112,7 +112,7 @@
 				<% if ( ores_draftquality ) { %>
 				&#xb7;
 				<% } %>
-				<span class="mw-parser-output">
+				<span class="mw-parser-output mwe-pt-issue">
 					<a href="<%- copyvio_link_url %>" target="_blank" class="external">
 						<%= mw.msg( 'pagetriage-filter-stat-predicted-issues-copyvio' ) %>
 					</a>
