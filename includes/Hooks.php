@@ -925,7 +925,9 @@ class Hooks {
 			return;
 		}
 
-		if ( !PageTriageUtil::doesPageNeedTriage( $rc->getTitle()->getArticleID() ) ) {
+		if ( !ArticleMetadata::validatePageId(
+			[ $rc->getTitle()->getArticleID() ], DB_REPLICA
+		) ) {
 			return;
 		}
 
