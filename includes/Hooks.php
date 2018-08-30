@@ -948,7 +948,7 @@ class Hooks {
 
 		// Ensure all pages in the PageTriage queue
 		// are scored for both models regardless of namespace.
-		foreach ( [ 'wp10', 'draftquality' ] as $model ) {
+		foreach ( [ 'articlequality', 'draftquality' ] as $model ) {
 			if ( !in_array( $model, $models ) ) {
 				$models[] = $model;
 			}

@@ -5,13 +5,13 @@ use MediaWiki\Extension\PageTriage\PageTriageUtil;
 class PageTriageUtilTest extends MediaWikiTestCase {
 
 	/**
-	 * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil::isOresWp10Query()
+	 * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil::isOresArticleQualityQuery()
 	 */
-	public function testIsOresWp10Query() {
-		self::assertEquals( false, PageTriageUtil::isOresWp10Query( [ 'page_id' => '123' ] ) );
+	public function testIsOresArticlequalityQuery() {
+		self::assertEquals( false, PageTriageUtil::isOresArticleQualityQuery( [ 'page_id' => '123' ] ) );
 		self::assertEquals(
 			true,
-			PageTriageUtil::isOresWp10Query( [ 'show_predicted_class_stub' => true ] )
+			PageTriageUtil::isOresArticleQualityQuery( [ 'show_predicted_class_stub' => true ] )
 		);
 	}
 

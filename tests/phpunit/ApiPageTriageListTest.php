@@ -336,7 +336,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	public function testQueryOres() {
 		$this->setMwGlobals( 'wgOresModels', [
 			'draftquality' => [ 'enabled' => true ],
-			'wp10' => [ 'enabled' => true ],
+			'articlequality' => [ 'enabled' => true ],
 		] );
 		$user = static::getTestUser()->getUser();
 		$this->insertPage( 'Test page ores 1', 'some content', $this->draftNsId, $user );
@@ -350,7 +350,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$dbw = wfGetDB( DB_MASTER );
 
 		$dbw->insert( 'ores_classification', [
-			'oresc_model' => self::ensureOresModel( 'wp10' ),
+			'oresc_model' => self::ensureOresModel( 'articlequality' ),
 			'oresc_probability' => 0.4,
 			'oresc_rev' => $rev1,
 			'oresc_class' => 1,
@@ -381,10 +381,10 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		}
 		$this->setMwGlobals( 'wgOresModels', [
 			'draftquality' => [ 'enabled' => true ],
-			'wp10' => [ 'enabled' => true ],
+			'articlequality' => [ 'enabled' => true ],
 		] );
 		self::ensureOresModel( 'draftquality' );
-		self::ensureOresModel( 'wp10' );
+		self::ensureOresModel( 'articlequality' );
 		self::ensureCopyvioTag();
 
 		$this->makePage( 'Page001' ); // DraftQuality: N/A

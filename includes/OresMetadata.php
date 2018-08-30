@@ -116,7 +116,7 @@ class OresMetadata {
 	}
 
 	/**
-	 * Get ORES metadata (wp10, draftquality) from the database for an article.
+	 * Get ORES metadata (articlequality, draftquality) from the database for an article.
 	 *
 	 * @param int $pageId
 	 * @return array
@@ -130,8 +130,8 @@ class OresMetadata {
 	 * @param float $probability
 	 * @return string Name of the class corresponding to the given probability
 	 */
-	private function getWp10Class( $probability ) {
-		$thresholds = $this->thresholdLookup->getThresholds( 'wp10' );
+	private function getArticleQualityClass( $probability ) {
+		$thresholds = $this->thresholdLookup->getThresholds( 'articlequality' );
 		foreach ( $thresholds as $className => $threshold ) {
 			if ( $probability >= $threshold[ 'min' ] &&
 				$probability <= $threshold[ 'max' ] ) {
@@ -159,7 +159,7 @@ class OresMetadata {
 	}
 
 	/**
-	 * Fetch the 'wp10' and 'draftquality' scores for the given page ids
+	 * Fetch the 'articlequality' and 'draftquality' scores for the given page ids
 	 *
 	 * @param int[] $pageIds
 	 * @return array
@@ -171,15 +171,15 @@ class OresMetadata {
 		$scores = [];
 		foreach ( $pageIds as $pageId ) {
 			$scores[ $pageId ] = [
-				'ores_wp10' => $pendingScore,
+				'ores_articlequality' => $pendingScore,
 				'ores_draftquality' => '',
 			];
 		}
 
-		$result = $this->getORESScores( 'wp10', $pageIds );
+		$result = $this->getORESScores( 'articlequality', $pageIds );
 		foreach ( $result as $row ) {
-			$scores[$row->ptrp_page_id]['ores_wp10'] = $this->classToMessage(
-				$this->getWp10Class( $row->oresc_probability ) );
+			$scores[$row->ptrp_page_id]['ores_articlequality'] = $this->classToMessage(
+				$this->getArticleQualityClass( $row->oresc_probability ) );
 		}
 
 		$result = $this->getORESScores( 'draftquality', $pageIds, [ 'oresc_is_predicted' => 1 ] );
@@ -209,7 +209,7 @@ class OresMetadata {
 			],
 			[
 				'ptrp_page_id',
-				'oresc_probability', // used for wp10
+				'oresc_probability', // used for articlequality
 				'oresc_class', // used for draftquality
 			],
 			[

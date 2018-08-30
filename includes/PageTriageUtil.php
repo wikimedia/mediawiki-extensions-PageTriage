@@ -456,11 +456,11 @@ class PageTriageUtil {
 	}
 
 	/**
-	 * Get an array of ORES wp10 API parameters.
+	 * Get an array of ORES articlequality API parameters.
 	 *
 	 * @return array
 	 */
-	private static function getOresWp10ApiParams() {
+	private static function getOresArticleQualityApiParams() {
 		return [
 			'show_predicted_class_stub' => [
 				ApiBase::PARAM_TYPE => 'boolean'
@@ -484,7 +484,7 @@ class PageTriageUtil {
 	}
 
 	/**
-	 * Get an array of ORES wp10 API parameters.
+	 * Get an array of ORES draftquality API parameters.
 	 *
 	 * @return array
 	 */
@@ -513,7 +513,7 @@ class PageTriageUtil {
 	 * @return array
 	 */
 	public static function getOresApiParams() {
-		return self::getOresWp10ApiParams() + self::getOresDraftQualityApiParams();
+		return self::getOresArticleQualityApiParams() + self::getOresDraftQualityApiParams();
 	}
 
 	/**
@@ -566,13 +566,13 @@ class PageTriageUtil {
 	}
 
 	/**
-	 * Helper method to check if the API call includes ORES wp10 parameters.
+	 * Helper method to check if the API call includes ORES articlequality parameters.
 	 *
 	 * @param array $opts
 	 * @return bool
 	 */
-	public static function isOresWp10Query( $opts ) {
-		return self::queryContains( $opts, self::getOresWp10ApiParams() );
+	public static function isOresArticleQualityQuery( $opts ) {
+		return self::queryContains( $opts, self::getOresArticleQualityApiParams() );
 	}
 
 	/**
@@ -605,13 +605,13 @@ class PageTriageUtil {
 	/**
 	 * Convert ORES param names to class names.
 	 *
-	 * @param string $model Which model to convert names for ('wp10' or 'draftquality')
+	 * @param string $model Which model to convert names for ('articlequality' or 'draftquality')
 	 * @param array $opts Selected parameters
 	 * @return array Corresponding ORES class names
 	 */
 	public static function mapOresParamsToClassNames( $model, $opts ) {
 		$paramsToClassesMap = [
-			'wp10' => [
+			'articlequality' => [
 				'show_predicted_class_stub' => 'Stub',
 				'show_predicted_class_start' => 'Start',
 				'show_predicted_class_c' => 'C',
@@ -643,7 +643,7 @@ class PageTriageUtil {
 	 */
 	public static function oresIsAvailable() {
 		return ExtensionRegistry::getInstance()->isLoaded( 'ORES' ) &&
-			Helpers::isModelEnabled( 'wp10' ) &&
+			Helpers::isModelEnabled( 'articlequality' ) &&
 			Helpers::isModelEnabled( 'draftquality' );
 	}
 

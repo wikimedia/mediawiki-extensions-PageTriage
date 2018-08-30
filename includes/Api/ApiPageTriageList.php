@@ -285,15 +285,15 @@ class ApiPageTriageList extends ApiBase {
 			self::joinWithTags( $tables, $join_conds );
 		}
 
-		// ORES wp10 filter
+		// ORES articlequality filter
 		if ( PageTriageUtil::oresIsAvailable() &&
-			PageTriageUtil::isOresWp10Query( $opts ) ) {
+			PageTriageUtil::isOresArticleQualityQuery( $opts ) ) {
 			$oresCond = ORESServices::getDatabaseQueryBuilder()->buildQuery(
-				'wp10',
-				PageTriageUtil::mapOresParamsToClassNames( 'wp10', $opts )
+				'articlequality',
+				PageTriageUtil::mapOresParamsToClassNames( 'articlequality', $opts )
 			);
 			if ( $oresCond ) {
-				self::joinWithOres( 'wp10', $tables, $join_conds );
+				self::joinWithOres( 'articlequality', $tables, $join_conds );
 				$conds[] = $oresCond;
 			}
 		}
