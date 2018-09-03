@@ -253,7 +253,7 @@ class ApiPageTriageList extends ApiBase {
 				$opts['pageoffset'] > 0
 			) {
 				$conds[] = '( ptrp_created' . $offsetOperator . $opts['offset'] . ') OR ' .
-					'( ptrp_created = ' . $opts['offset'] .' AND ' .
+					'( ptrp_created = ' . $opts['offset'] . ' AND ' .
 					'ptrp_page_id ' . $offsetOperator . $opts['pageoffset'] . ')';
 			} else {
 				$conds[] = 'ptrp_created' . $offsetOperator . $opts['offset'];

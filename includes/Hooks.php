@@ -587,7 +587,7 @@ class Hooks {
 		global $wgPageTriageDeletionTagsOptionsContentLanguageMessages;
 
 		$template = [
-			'localBasePath' => __DIR__.'/../modules',
+			'localBasePath' => __DIR__ . '/../modules',
 			'remoteExtPath' => 'PageTriage/modules'
 		];
 

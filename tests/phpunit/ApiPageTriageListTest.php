@@ -135,7 +135,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$this->insertPage(
 			'AfC test page',
 			'[[Category:Declined AfC submissions]][[Category:Pending AfC submissions being reviewed now]]'
-				.'[[Category:Pending AfC submissions]]',
+				. '[[Category:Pending AfC submissions]]',
 			$this->draftNsId
 		);
 		$list = $this->getPageTriageList( [ 'afc_state' => ArticleCompileAfcTag::UNDER_REVIEW ] );
