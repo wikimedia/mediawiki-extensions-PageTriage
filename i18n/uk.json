@@ -8,7 +8,8 @@
 			"Ата",
 			"Ypryima",
 			"Piramidion",
-			"Fitoschido"
+			"Fitoschido",
+			"Vlad5250"
 		]
 	},
 	"pagetriage": "Сортування сторінок",
@@ -202,6 +203,9 @@
 	"pagetriage-toolbar-close": "Закрити",
 	"pagetriage-toolbar-minimize": "Мінімізувати",
 	"pagetriage-tag-warning-notice": "Примітка: ця сторінка створена лише $1 {{PLURAL:$1|хвилину|хвилини|хвилин}} тому. Почекайте на її відмітку, якщо питання не є серйозним.",
+	"pagetriage-afc-date-label-submission": "Подано:",
+	"pagetriage-afc-date-label-review": "У стані перевірки, подано:",
+	"pagetriage-afc-date-label-declined": "Відхилено:",
 	"notification-header-pagetriage-mark-as-reviewed": "Сторінку '''$3''' було {{GENDER:$2|перевірено}}.",
 	"notification-header-pagetriage-add-maintenance-tag": "Рецензент {{GENDER:$2|запропонував|запропонувала}} покращення для сторінки '''$3'''. {{PLURAL:$5|Тег|Теги}}: $4.",
 	"notification-header-pagetriage-add-deletion-tag": "Сторінку '''$3''' було {{GENDER:$2|позначено на вилучення}}. {{PLURAL:$5|Тег|Теги}}: $4.",

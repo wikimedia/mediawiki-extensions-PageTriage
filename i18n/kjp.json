@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rul1902"
+		]
+	},
+	"pagetriage-filter-predicted-issues-heading": "လေဝ်ထုင် ဆ်ုခါင်အှ်",
+	"pagetriage-filter-predicted-issues-copyvio": "မာဏေဝ်မာဍံင် ဗီအိုင်အို",
+	"pagetriage-filter-stat-predicted-issues-copyvio": "မ​ဏေဝ်မာဍံင် ဗီအိုင်အို",
+	"apihelp-pagetriagelist-param-show_predicted_issues_copyvio": "လေဝ်ထာ့ဝယ် ဗီအုင်အို ဆ်ုၜးဍံင် ဆ်ုခၠါင်အကျံင်",
+	"apihelp-pagetriagestats-param-show_predicted_issues_copyvio": "လေဝ်ထာ့ဝယ် ဗီအုင်အို ဆ်ုၜးဍံင် ဆ်ုခၠါင်အကျံင်"
+}
