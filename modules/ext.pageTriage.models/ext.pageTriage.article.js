@@ -34,7 +34,8 @@ $( function () {
 			var bylineMessage, userCreationDateParsed, byline, titleUrl,
 				creationDateParsed = Date.parseExact( article.get( 'creation_date' ), 'yyyyMMddHHmmss' ),
 				reviewedUpdatedParsed = Date.parseExact( article.get( 'ptrp_reviewed_updated' ), 'yyyyMMddHHmmss' ),
-				nsId = new mw.Title( article.get( 'title' ) ).getNamespaceId();
+				titleObj = new mw.Title( article.get( 'title' ) ),
+				nsId = titleObj.getNamespaceId();
 
 			// Set whether it's a draft, which we'll reference in ext.pageTriage.listItem.underscore
 			article.set( 'is_draft', nsId === mw.config.get( 'wgPageTriageDraftNamespaceId' ) );
@@ -123,7 +124,7 @@ $( function () {
 					'https://tools.wmflabs.org/copypatrol/en?' + $.param( {
 						filter: 'all',
 						searchCriteria: 'page_exact',
-						searchText: article.get( 'title' ),
+						searchText: titleObj.getMainText(),
 						drafts: article.get( 'is_draft' ) ? 1 : 0
 					} )
 				);
