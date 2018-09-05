@@ -18,6 +18,11 @@ $specialPageAliases['ar'] = [
 	'NewPagesFeed' => [ 'تغذية_الصفحات_الجديدة' ],
 ];
 
+/** Bosnian (bosanski) */
+$specialPageAliases['bs'] = [
+	'NewPagesFeed' => [ 'FidNovihStranica' ],
+];
+
 /** Egyptian Arabic (مصرى) */
 $specialPageAliases['arz'] = [
 	'NewPagesFeed' => [ 'تغذيه_الصفحات_الجديده' ],
@@ -86,6 +91,16 @@ $specialPageAliases['nl'] = [
 /** Sicilian (sicilianu) */
 $specialPageAliases['scn'] = [
 	'NewPagesFeed' => [ 'FeedNuovePagine' ],
+];
+
+/** Serbian Cyrillic (српски (ћирилица)) */
+$specialPageAliases['sr-ec'] = [
+	'NewPagesFeed' => [ 'ФидНовихСтраница' ],
+];
+
+/** Serbian Latin (srpski (latinica)) */
+$specialPageAliases['sr-el'] = [
+	'NewPagesFeed' => [ 'FidNovihStranica' ],
 ];
 
 /** Turkish (Türkçe) */
