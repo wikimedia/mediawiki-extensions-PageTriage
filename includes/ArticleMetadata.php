@@ -16,6 +16,11 @@ class ArticleMetadata {
 	protected $mPageId;
 
 	/**
+	 * @var array Page IDs that are known to exist in the queue
+	 */
+	private static $cache = [];
+
+	/**
 	 * @param array $pageId list of page id
 	 * @param bool $validated whether the page ids have been validated
 	 * @param int $validateDb const DB_MASTER/DB_REPLICA
@@ -262,6 +267,13 @@ class ArticleMetadata {
 	}
 
 	/**
+	 * Used to clear the cache between tests.
+	 */
+	public static function clearStaticCache() {
+		self::$cache = [];
+	}
+
+	/**
 	 * Typecast the value in page id array to int and verify that it's
 	 * in page triage queue
 	 * @param array $pageIds
@@ -269,20 +281,18 @@ class ArticleMetadata {
 	 * @return array
 	 */
 	public static function validatePageId( array $pageIds, $validateDb = DB_MASTER ) {
-		static $cache = [];
-
 		$cleanUp = [];
 		foreach ( $pageIds as $key => $val ) {
 			$casted = (int)$val;
 			if ( $casted ) {
-				if ( isset( $cache[$casted] ) ) {
-					if ( $cache[$casted] ) {
+				if ( isset( self::$cache[$casted] ) ) {
+					if ( self::$cache[$casted] ) {
 						$cleanUp[] = $casted;
 					}
 					unset( $pageIds[$key] );
 				} else {
 					$pageIds[$key] = $casted;
-					$cache[$casted] = false;
+					self::$cache[$casted] = false;
 				}
 			} else {
 				unset( $pageIds[$key] );
@@ -301,7 +311,7 @@ class ArticleMetadata {
 
 			foreach ( $res as $row ) {
 				$cleanUp[] = $row->ptrp_page_id;
-				$cache[$row->ptrp_page_id] = true;
+				self::$cache[$row->ptrp_page_id] = true;
 			}
 		}
 

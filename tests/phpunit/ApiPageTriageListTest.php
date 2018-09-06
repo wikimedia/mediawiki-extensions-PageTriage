@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
 
@@ -19,7 +20,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	 * Setup draft namespace.
 	 */
 	public function setUp() {
-		global $wgContLang;
+		global $wgContLang, $wgHooks;
 		parent::setUp();
 
 		// Define a Draft NS unless there already is one.
@@ -46,6 +47,9 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$this->tablesUsed[] = 'pagetriage_log';
 		$this->tablesUsed[] = 'ores_model';
 		$this->tablesUsed[] = 'ores_classification';
+
+		ArticleMetadata::clearStaticCache();
+		unset( $wgHooks[ 'ORESCheckModels' ] );
 	}
 
 	/**
