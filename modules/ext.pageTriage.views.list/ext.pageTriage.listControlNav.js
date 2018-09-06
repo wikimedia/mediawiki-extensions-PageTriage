@@ -564,11 +564,36 @@ $( function () {
 			}
 		},
 
+		getInvalidSortOptions: function ( afcState ) {
+			switch ( afcState ) {
+				case 4:
+					return [
+						'mwe-pt-sort-afc-newestsubmitted',
+						'mwe-pt-sort-afc-oldestsubmitted'
+					];
+				case 2:
+				case 3:
+					return [
+						'mwe-pt-sort-afc-newestdeclined',
+						'mwe-pt-sort-afc-oldestdeclined'
+					];
+				default:
+					return [
+						'mwe-pt-sort-afc-newestsubmitted',
+						'mwe-pt-sort-afc-oldestsubmitted',
+						'mwe-pt-sort-afc-newestdeclined',
+						'mwe-pt-sort-afc-oldestdeclined'
+					];
+			}
+		},
+
 		/**
 		 * Sync the menu and other UI elements with the filters, for the AfC queue.
 		 */
 		menuSyncAfc: function () {
-			var afcStateName,
+			var currentSort,
+				invalidSortOptions,
+				afcStateName,
 				afcStateValue = parseInt( this.model.getParam( 'afc_state' ), 10 );
 
 			this.menuCheckboxUpdateOres( 'afc' );
@@ -577,6 +602,9 @@ $( function () {
 
 			$( 'input[name=mwe-pt-filter-afc-radio][value=' + afcStateValue + ']' )
 				.prop( 'checked', true );
+
+			currentSort = $( '#mwe-pt-sort-afc > option[selected]' ).attr( 'id' );
+			invalidSortOptions = this.getInvalidSortOptions( afcStateValue );
 
 			// Show/hide sorting options based on filter state.
 			if ( afcStateValue === 4 ) { // Declined
@@ -588,6 +616,12 @@ $( function () {
 			} else {
 				$( '.mwe-pt-afc-sort-declined' ).hide();
 				$( '.mwe-pt-afc-sort-submitted' ).hide();
+			}
+
+			// Make sure a valid sort option is selected.
+			// The previously selected option may not be available anymore.
+			if ( invalidSortOptions.indexOf( currentSort ) >= 0 ) {
+				$( '#mwe-pt-sort-afc' ).val( 'newestfirst' );
 			}
 
 			// Set the "Showing: ..." filter status.
