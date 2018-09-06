@@ -35,12 +35,12 @@
 	</label>
 	<!-- Per T195547, newestreview and oldestreview are intentionally repeated here. -->
 	<select id="mwe-pt-sort-afc">
-		<option value="newestfirst"><%= mw.msg( 'pagetriage-afc-newest' ) %></option>
-		<option value="oldestfirst"><%= mw.msg( 'pagetriage-afc-oldest' ) %></option>
-		<option class="mwe-pt-afc-sort-submitted" value="newestreview"><%= mw.msg( 'pagetriage-afc-newest-submitted' ) %></option>
-		<option class="mwe-pt-afc-sort-submitted" selected="selected" value="oldestreview"><%= mw.msg( 'pagetriage-afc-oldest-submitted' ) %></option>
-		<option class="mwe-pt-afc-sort-declined" value="newestreview"><%= mw.msg( 'pagetriage-afc-newest-declined' ) %></option>
-		<option class="mwe-pt-afc-sort-declined" value="oldestreview"><%= mw.msg( 'pagetriage-afc-oldest-declined' ) %></option>
+		<option id="mwe-pt-sort-afc-newestfirst" value="newestfirst"><%= mw.msg( 'pagetriage-afc-newest' ) %></option>
+		<option id="mwe-pt-sort-afc-oldestfirst" value="oldestfirst"><%= mw.msg( 'pagetriage-afc-oldest' ) %></option>
+		<option id="mwe-pt-sort-afc-newestsubmitted" class="mwe-pt-afc-sort-submitted" value="newestreview"><%= mw.msg( 'pagetriage-afc-newest-submitted' ) %></option>
+		<option id="mwe-pt-sort-afc-oldestsubmitted" class="mwe-pt-afc-sort-submitted" selected="selected" value="oldestreview"><%= mw.msg( 'pagetriage-afc-oldest-submitted' ) %></option>
+		<option id="mwe-pt-sort-afc-newestdeclined" class="mwe-pt-afc-sort-declined" value="newestreview"><%= mw.msg( 'pagetriage-afc-newest-declined' ) %></option>
+		<option id="mwe-pt-sort-afc-oldestdeclined" class="mwe-pt-afc-sort-declined" value="oldestreview"><%= mw.msg( 'pagetriage-afc-oldest-declined' ) %></option>
 	</select>
 </span>
 <span id="mwe-pt-filter-dropdown-control" class="mwe-pt-control-label">
