@@ -95,4 +95,5 @@
 .mwe-pt-potential-issues {
 	display: table-cell;
 	text-align: right;
+	white-space: nowrap;
 }
