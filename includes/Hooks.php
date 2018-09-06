@@ -456,18 +456,6 @@ class Hooks {
 			return true;
 		}
 
-		// If the user hasn't visited Special:NewPagesFeed lately, don't do anything
-		$lastUseExpired = false;
-		$lastUse = $user->getRequest()->getSessionData( 'pagetriage-lastuse' );
-		if ( $lastUse ) {
-			$lastUse = wfTimestamp( TS_UNIX, $lastUse );
-			$now = wfTimestamp( TS_UNIX, wfTimestampNow() );
-			$periodSince = $now - $lastUse;
-		}
-		if ( !$lastUse || $periodSince > $wgPageTriageMarkPatrolledLinkExpiry ) {
-			$lastUseExpired = true;
-		}
-
 		// See if the page is in the PageTriage page queue
 		// If it isn't, $needsReview will be null
 		// Also, users without the autopatrol right can't review their own pages
@@ -482,7 +470,8 @@ class Hooks {
 				$outputPage->addModules( 'ext.pageTriage.toolbarStartup' );
 				// Set the config flags in JavaScript
 				$globalVars = [
-					'wgPageTriagelastUseExpired' => $lastUseExpired,
+					// Convert to miliseconds.
+					'wgPageTriageMarkPatrolledLinkExpiry' => $wgPageTriageMarkPatrolledLinkExpiry * 1000,
 					'wgPageTriagePagePrefixedText' => $article->getTitle()->getPrefixedText()
 				];
 				$outputPage->addJsConfigVars( $globalVars );

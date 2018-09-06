@@ -192,11 +192,14 @@ $( function () {
 
 			article.set( 'title_url_format', mw.util.wikiUrlencode( article.get( 'title' ) ) );
 
-			titleUrl = mw.util.getUrl( article.get( 'title' ) );
+			titleUrl = new mw.Uri( mw.util.getUrl( article.get( 'title' ) ) );
 			if ( Number( article.get( 'is_redirect' ) ) === 1 ) {
-				titleUrl = this.buildLink( titleUrl, 'redirect=no' );
+				titleUrl.query.redirect = 'no';
 			}
-			article.set( 'title_url', titleUrl );
+			// Query parameter to assist in showing the curation toolbar on an article after
+			// clicking over from the list view interface.
+			titleUrl.query.showcurationtoolbar = 1;
+			article.set( 'title_url', titleUrl.toString() );
 			// jscs: enable requireCamelCaseOrUpperCaseIdentifiers
 		},
 
@@ -248,19 +251,12 @@ $( function () {
 		},
 
 		buildRedLink: function ( url, exists ) {
+			url = new mw.Uri( url );
 			if ( !exists ) {
-				url = this.buildLink( url, 'action=edit&redlink=1' );
+				url.query.action = 'edit';
+				url.query.redlink = 1;
 			}
-			return url;
-		},
-
-		buildLink: function ( url, param ) {
-			var mark;
-			if ( param ) {
-				mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
-				url += mark + param;
-			}
-			return url;
+			return url.toString();
 		},
 
 		// url and parse are used here for retrieving a single article in the curation toolbar.

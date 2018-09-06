@@ -38,22 +38,20 @@ $( function () {
 			// attempt to get the next page
 			new mw.Api().get( this.apiParams )
 				.done( function ( result ) {
-					var url, mark;
+					var url;
 					if (
 						result.pagetriagelist && result.pagetriagelist.result === 'success' && result.pagetriagelist.pages[ 0 ]
 					) {
 						page = result.pagetriagelist.pages[ 0 ];
 						if ( page.title ) {
-							url = mw.config.get( 'wgArticlePath' ).replace(
+							url = new mw.Uri( mw.config.get( 'wgArticlePath' ).replace(
 								'$1', mw.util.wikiUrlencode( page.title )
-							);
-							// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
+							) );
 							if ( page.is_redirect === '1' ) {
-								mark = ( url.indexOf( '?' ) === -1 ) ? '?' : '&';
-								url += mark + 'redirect=no';
+								url.query.redirect = 'no';
 							}
-							// jscs: enable requireCamelCaseOrUpperCaseIdentifiers
-							window.location.href = url;
+							url.query.showcurationtoolbar = 1;
+							window.location.href = url.toString();
 						} else {
 							that.disable();
 						}
@@ -65,7 +63,6 @@ $( function () {
 					that.disable();
 				} );
 		}
-
 	} );
 
 } );

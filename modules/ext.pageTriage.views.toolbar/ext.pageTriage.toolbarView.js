@@ -89,7 +89,9 @@ $( function () {
 					},
 
 					render: function () {
-						var that = this;
+						var that = this,
+							lastUse = mw.storage.session.get( 'pagetriage-lastuse' ),
+							nowMinusLastUse = parseInt( mw.now() ) - parseInt( lastUse );
 						// build the bar and insert into the page.
 						// insert the empty toolbar into the document.
 						$( 'body' ).append( this.template() );
@@ -124,10 +126,20 @@ $( function () {
 							that.hide( true );
 						} );
 
-						// lastUse expires, hide curation toolbar and return.
-						if ( mw.config.get( 'wgPageTriagelastUseExpired' ) ) {
-							this.hide();
-							return;
+						// If the query param for showcurationtoolbar is set, then don't bother
+						// checking for lastUse or calculating link expiry, just show the toolbar.
+						if ( !mw.util.getParamValue( 'showcurationtoolbar' ) ) {
+							// No history of last use, hide toolbar.
+							if ( !lastUse ) {
+								this.hide();
+								return;
+							}
+
+							// Hide the toolbar if it's been more than 24 hours since last use.
+							if ( nowMinusLastUse > mw.config.get( 'wgPageTriageMarkPatrolledLinkExpiry' ) ) {
+								this.hide();
+								return;
+							}
 						}
 						// Show the toolbar.
 						switch ( mw.user.options.get( 'userjs-curationtoolbar' ) ) {
@@ -223,11 +235,6 @@ $( function () {
 					setToolbarPreference: function ( state ) {
 						return new mw.Api().saveOption( 'userjs-curationtoolbar', state );
 					},
-					setLastUse: function () {
-						return new mw.Api().postWithToken( 'csrf', {
-							action: 'pagetriagelastuse'
-						} );
-					},
 					insertLink: function () {
 						var that = this,
 							$link = $( '<li id="t-curationtoolbar"><a href="#"></a></li>' );
@@ -239,7 +246,7 @@ $( function () {
 									$( '#mwe-pt-toolbar' ).show();
 									$( '#mw-content-text .patrollink' ).hide();
 									that.setToolbarPreference( 'maximized' );
-									that.setLastUse();
+									mw.storage.session.set( 'pagetriage-lastuse', mw.now() );
 								}
 								this.blur();
 								return false;

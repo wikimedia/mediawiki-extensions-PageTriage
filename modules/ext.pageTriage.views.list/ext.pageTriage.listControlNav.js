@@ -39,6 +39,9 @@ $( function () {
 					stats.get( 'ptrFilterCount' )
 				) );
 			} );
+
+			// Store last use.
+			mw.storage.session.set( 'pagetriage-lastuse', mw.now() );
 		},
 
 		/**
