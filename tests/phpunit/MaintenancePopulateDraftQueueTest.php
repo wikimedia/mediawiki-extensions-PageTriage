@@ -9,12 +9,13 @@ use PageTriageTestCase;
 /**
  * Tests for the populateDraftQueueTest.php maintenance script.
  * @group medium
+ * @group Database
  */
 class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 
 	public function setUp() {
 		parent::setUp();
-		$this->tablesUsed = [ 'pagetriage_page', 'pagetriage_page_tags', 'pagetriage_tags' ];
+		$this->tablesUsed = [ 'page', 'pagetriage_page', 'pagetriage_page_tags', 'pagetriage_tags' ];
 		// Start with the Draft mode turned off
 		// (also use a different ID and NS name, just in case we're assuming these).
 		$this->draftNsId = 210;

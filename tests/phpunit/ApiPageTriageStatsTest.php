@@ -6,6 +6,7 @@
  * @group PageTriage
  * @group extensions
  * @group medium
+ * @group Database
  */
 class ApiPageTriageStatsTest extends PageTriageTestCase {
 

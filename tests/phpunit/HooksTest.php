@@ -9,6 +9,7 @@ use PageTriageTestCase;
  * @group PageTriage
  * @group extensions
  * @group medium
+ * @group Database
  */
 class HooksTest extends PageTriageTestCase {
 
