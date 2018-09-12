@@ -81,6 +81,9 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\PageTriage\\": "includes/"
 	},
+	"JobClasses": {
+		"compileArticleMetadata": "\\MediaWiki\\Extension\\PageTriage\\CompileArticleMetadataJob"
+	},
 	"AutoloadClasses": {
 		"PageTriageTestCase": "tests/phpunit/PageTriageTestCase.php"
 	},

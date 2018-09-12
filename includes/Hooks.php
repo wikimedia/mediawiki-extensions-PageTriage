@@ -15,6 +15,7 @@ use LinksUpdate;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddDeletionTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddMaintenanceTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageMarkAsReviewedPresentationModel;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MWTimestamp;
 use ParserOutput;
@@ -68,24 +69,19 @@ class Hooks {
 			return true;
 		}
 
-		// New record to pagetriage queue, compile metadata
-		if ( self::addToPageTriageQueue( $oldid, $newTitle, $user ) ) {
-			$acp = ArticleCompileProcessor::newFromPageId( [ $oldid ] );
-			if ( $acp ) {
-				// safe to use slave db for data compilation for the
-				// following components, BasicData is accessing pagetriage_page,
-				// which is not safe to use slave db
-				$config = [
-						'LinkCount' => DB_REPLICA,
-						'CategoryCount' => DB_REPLICA,
-						'Snippet' => DB_REPLICA,
-						'UserData' => DB_REPLICA,
-						'DeletionTag' => DB_REPLICA,
-						'AfcTag' => DB_REPLICA,
-				];
-				$acp->configComponentDb( $config );
-				$acp->compileMetadata();
-			}
+		// If not a new record to pagetriage queue, do nothing.
+		if ( !self::addToPageTriageQueue( $oldid, $newTitle, $user ) ) {
+			return true;
+		}
+		// Item was newly added to PageTriage queue in master DB, compile metadata.
+		$acp = ArticleCompileProcessor::newFromPageId( [ $oldid ] );
+		if ( $acp ) {
+			// Since this is a title move, the only component requiring DB_MASTER will be
+			// BasicData.
+			$acp->configComponentDb(
+				ArticleCompileProcessor::getSafeComponentDbConfigForCompilation()
+			);
+			$acp->compileMetadata();
 		}
 
 		return true;
@@ -114,9 +110,8 @@ class Hooks {
 			DeferredUpdates::addCallableUpdate( function () use ( $rev, $wikiPage, $user ) {
 				$prev = $rev->getPrevious();
 				if ( $prev && !$wikiPage->isRedirect() && $prev->getContent()->isRedirect() ) {
-					self::addToPageTriageQueue(
-						$wikiPage->getId(),
-						$wikiPage->getTitle(), $user );
+					// Add item to queue, if it's not already there.
+					self::addToPageTriageQueue( $wikiPage->getId(), $wikiPage->getTitle(), $user );
 				}
 			} );
 		}
@@ -125,9 +120,9 @@ class Hooks {
 	}
 
 	/**
-	 * When a new article is created, insert it into the PageTriage Queue
+	 * New article is created, insert it into PageTriage Queue and compile metadata.
 	 *
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ArticleInsertComplete
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageContentInsertComplete
 	 * @param WikiPage $article WikiPage created
 	 * @param User $user User creating the article
 	 * @param Content $content New content
@@ -146,9 +141,8 @@ class Hooks {
 		if ( !in_array( $article->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			return true;
 		}
-
+		// Add item to queue. Metadata compilation will get triggered in the LinksUpdate hook.
 		self::addToPageTriageQueue( $article->getId(), $article->getTitle(), $user );
-
 		return true;
 	}
 
@@ -181,7 +175,13 @@ class Hooks {
 	}
 
 	/**
-	 * Update metadata when link information is updated. This is also run after every page save.
+	 * Update metadata when link information is updated.
+	 *
+	 * This is also run after every page save.
+	 *
+	 * Note that this hook can be triggered by a GET request (rollback action, until T88044 is
+	 * sorted out), in which case master DB connections and writes on GET request can occur.
+	 *
 	 * @param LinksUpdate $linksUpdate
 	 * @return bool
 	 */
@@ -191,14 +191,17 @@ class Hooks {
 		}
 
 		DeferredUpdates::addCallableUpdate( function () use ( $linksUpdate ) {
-			// false will enforce a validation against pagetriage_page table
+			// Validate the page ID from DB_MASTER, compile metadata from DB_MASTER and return.
 			$acp = ArticleCompileProcessor::newFromPageId(
-				[ $linksUpdate->getTitle()->getArticleId() ], false, DB_MASTER );
-
+				[ $linksUpdate->getTitle()->getArticleId() ],
+				false,
+				DB_MASTER
+			);
 			if ( $acp ) {
 				$acp->registerLinksUpdate( $linksUpdate );
 				$acp->compileMetadata();
 			}
+			return true;
 		} );
 		return true;
 	}
@@ -356,29 +359,46 @@ class Hooks {
 
 	/**
 	 * Checks to see if an article is new, i.e. less than $wgPageTriageMaxAge
+	 *
+	 * Look in cache for the creation date, if not found, query the replica for the value
+	 * of ptrp_created.
+	 *
 	 * @param Article $article Article to check
 	 * @return bool
 	 */
 	private static function isArticleNew( $article ) {
 		global $wgPageTriageMaxAge;
-
 		$pageId = $article->getId();
-
-		// Get timestamp for article creation (typically from cache)
+		// Check cache for creation date.
 		$metaDataObject = new ArticleMetadata( [ $pageId ] );
-		$metaData = $metaDataObject->getMetadata();
-		if ( $metaData && isset( $metaData[ $pageId ][ 'creation_date' ] ) ) {
-			$pageCreationDateTime = $metaData[ $pageId ][ 'creation_date' ];
-
-			// Get the age of the article in days
-			$timestamp = new MWTimestamp( $pageCreationDateTime );
-			$dateInterval = $timestamp->diff( new MWTimestamp() );
-			$articleDaysOld = $dateInterval->format( '%a' );
-
+		$cacheData = $metaDataObject->getMetadataFromCache( $pageId );
+		$pageCreationDateTime = $cacheData[ 'creation_date' ] ?? null;
+		// If not found in cache, get from replica. The ptrp_created field is equivalent to
+		// creation_date property set during article metadata compilation.
+		if ( !$pageCreationDateTime ) {
+			$dbr = wfGetDB( DB_REPLICA );
+			$pageCreationDateTime = $dbr->selectField(
+				'pagetriage_page',
+				'ptrp_created',
+				[ 'ptrp_page_id' => $pageId ]
+			);
+			$pageCreationDateTime = wfTimestamp( TS_MW, $pageCreationDateTime );
+		}
+		// If still not found, return false.
+		if ( !$pageCreationDateTime ) {
+			LoggerFactory::getInstance( 'PageTriage' )->warning(
+				'Could not get creation date for article ID {id}',
+				[ 'id' => $pageId ]
+			);
+			return false;
+		}
+		// Get the age of the article in days
+		$timestamp = new MWTimestamp( $pageCreationDateTime );
+		$dateInterval = $timestamp->diff( new MWTimestamp() );
+		$articleDaysOld = $dateInterval->format( '%a' );
+		if ( $articleDaysOld < $wgPageTriageMaxAge ) {
 			// If it's younger than the maximum age, return true.
-			if ( $articleDaysOld < $wgPageTriageMaxAge ) {
-				return true;
-			}
+			return true;
 		}
 
 		return false;
@@ -510,20 +530,15 @@ class Hooks {
 			}
 
 			$pt = new PageTriage( $rc->getAttribute( 'rc_cur_id' ) );
-			if ( $pt->addToPageTriageQueue( '2', $user, true /* fromRc */ ) ) {
-				// Compile metadata for new page triage record
+			if ( $pt->addToPageTriageQueue( '2', $user, true ) ) {
+				// Compile metadata for new page triage record.
 				$acp = ArticleCompileProcessor::newFromPageId( [ $rc->getAttribute( 'rc_cur_id' ) ] );
 				if ( $acp ) {
-					// page just gets added to pagetriage queue and hence not safe to use slave db
-					// for BasicData since it's accessing pagetriage_page table
-					$config = [
-						'LinkCount' => DB_REPLICA,
-						'CategoryCount' => DB_REPLICA,
-						'Snippet' => DB_REPLICA,
-						'UserData' => DB_REPLICA,
-						'DeletionTag' => DB_REPLICA
-					];
-					$acp->configComponentDb( $config );
+					// Page was just inserted into PageTriage queue, so we need to compile BasicData
+					// from DB_MASTER, since that component accesses the pagetriage_page table.
+					$acp->configComponentDb(
+						ArticleCompileProcessor::getSafeComponentDbConfigForCompilation()
+					);
 					$acp->compileMetadata();
 				}
 			}
