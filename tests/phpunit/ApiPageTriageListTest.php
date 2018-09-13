@@ -350,7 +350,9 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$dbw->insert( 'ores_classification', [
 			'oresc_model' => self::ensureOresModel( 'wp10' ),
 			'oresc_probability' => 0.4,
-			'oresc_rev' => $rev1
+			'oresc_rev' => $rev1,
+			'oresc_class' => 1,
+			'oresc_is_predicted' => 1,
 		] );
 
 		self::setDraftQuality( $rev2, 2 );
@@ -454,9 +456,9 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 		$dbw->upsert(
 			'pagetriage_tags',
-			[ 'ptrt_tag_name' => 'copyvio' ],
-			[ 'ptrt_tag_id' ],
-			[ 'ptrt_tag_name' => 'copyvio', 'ptrt_tag_desc' => 'copyvio' ]
+			[ 'ptrt_tag_name' => 'copyvio', 'ptrt_tag_desc' => 'copyvio' ],
+			[ 'ptrt_tag_name' ],
+			[ 'ptrt_tag_desc' => 'copyvio' ]
 		);
 	}
 
