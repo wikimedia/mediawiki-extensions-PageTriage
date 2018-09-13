@@ -18,7 +18,8 @@
 			"Josecurioso",
 			"MarcoAurelio",
 			"Astroemi",
-			"Yllelder"
+			"Yllelder",
+			"Jelou"
 		]
 	},
 	"pagetriage": "Página de triaje",
@@ -328,7 +329,7 @@
 	"pagetriage-mark-as-unreviewed": "Marcar como no revisada",
 	"pagetriage-mark-as-reviewed-helptext": "Marca esta página como revisada si ya la has supervisado.",
 	"pagetriage-mark-as-unreviewed-helptext": "Marca esta página como no revisada si piensas que debe ser más controlada.",
-	"pagetriage-wikilove-helptext": "Selecciona los nombres de los editores a los que deseas agradecer.",
+	"pagetriage-wikilove-helptext": "Selecciona los nombres de los editores a los que deseas enviar agradecimientos.",
 	"pagetriage-wikilove-page-creator": "Creador de la página",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|edición|ediciones}}",
 	"pagetriage-wikilove-no-recipients": "No hay destinatarios disponibles para esta página.",
@@ -353,7 +354,7 @@
 	"notification-header-pagetriage-add-maintenance-tag": "{{GENDER:$2|Un revisor|Una revisora}} sugirió mejoras para la página '''$3'''.{{PLURAL:$5|Etiqueta|Etiquetas}}: $4.",
 	"notification-header-pagetriage-add-deletion-tag": "La página '''$3''' se {{GENDER:$2|marcó para su eliminación}}. {{PLURAL:$5|Etiqueta|Etiquetas}}: $4.",
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Agradecer}}}}",
-	"pagetriage-thank-link-title": "{{GENDER:$1|Agradece}} públicamente {{GENDER:$2|al revisor|a la revisora}}",
+	"pagetriage-thank-link-title": "{{GENDER:$1|Agradecer}} públicamente {{GENDER:$2|al revisor|a la revisora}}",
 	"pagetriage-discuss-link": "{{GENDER:$1|Discutir}}",
 	"pagetriage-discuss-link-title": "{{GENDER:$1|Discute}}",
 	"echo-pref-subscription-page-review": "Revisiones de una página que he creado",
