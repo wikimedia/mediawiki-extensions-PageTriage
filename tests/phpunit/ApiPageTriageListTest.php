@@ -10,6 +10,7 @@ use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
  * @group PageTriage
  * @group extensions
  * @group medium
+ * @group Database
  */
 class ApiPageTriageListTest extends PageTriageTestCase {
 
@@ -290,7 +291,8 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			'dir' => 'oldestreview',
 		];
 
-		$originalTopPage = $this->getPageTriageList( $apiParams )[0];
+		$originalTopPageList = $this->getPageTriageList( $apiParams );
+		$originalTopPage = $originalTopPageList !== [] ? $originalTopPageList[0] : null;
 
 		// New draft in a relevant category.
 		$page = $this->insertPage( 'Test page 5', '[[Category:Declined AfC submissions]]',
