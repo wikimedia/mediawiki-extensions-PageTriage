@@ -53,6 +53,11 @@ $specialPageAliases['he'] = [
 	'NewPagesFeed' => [ 'הזנת_דפים_חדשים' ],
 ];
 
+/** Croatian (hrvatski) */
+$specialPageAliases['hr'] = [
+	'NewPagesFeed' => [ 'FidNovihStranica' ],
+];
+
 /** Italian (italiano) */
 $specialPageAliases['it'] = [
 	'NewPagesFeed' => [ 'FeedNuovePagine' ],
