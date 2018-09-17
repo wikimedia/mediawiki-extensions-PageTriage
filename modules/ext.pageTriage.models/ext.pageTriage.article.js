@@ -387,7 +387,9 @@ $( function () {
 				response.pagetriagelist.pages.pop();
 				this.moreToLoad = true;
 			}
-			if ( response.pagetriagelist && response.pagetriagelist.pages_missing_metadata ) {
+			if ( response.pagetriagelist &&
+				response.pagetriagelist.pages_missing_metadata &&
+				response.pagetriagelist.pages_missing_metadata.length ) {
 				mw.log.warn( 'Metadata is missing for some pages.', JSON.stringify( response.pagetriagelist.pages_missing_metadata ) );
 				this.moreToLoad = true;
 			}
