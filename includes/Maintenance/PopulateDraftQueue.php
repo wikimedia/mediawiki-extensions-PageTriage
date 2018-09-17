@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\PageTriage\Maintenance;
 
 use Maintenance;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
+use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriage;
 
 /**
@@ -31,6 +32,8 @@ class PopulateDraftQueue extends Maintenance {
 			return false;
 		}
 
+		$afcStateTagId = ArticleMetadata::getValidTags()['afc_state'];
+
 		// Set up.
 		$this->output( "Processing drafts in NS $pageTriageDraftNamespaceId...\n" );
 		$db = $this->getDB( DB_MASTER );
@@ -46,16 +49,22 @@ class PopulateDraftQueue extends Maintenance {
 
 			// Find all Draft NS pages that don't have records in the PageTriage table.
 			$drafts = $db->select(
-				[ 'page', 'pagetriage_page' ],
+				[ 'page', 'pagetriage_page', 'pagetriage_page_tags' ],
 				[ 'page_id' ],
 				[
-					'ptrp_page_id' => null,
+					'ptrp_page_id IS NULL OR ptrpt_page_id IS NULL',
 					'page_namespace' => $pageTriageDraftNamespaceId,
 					'page_is_redirect' => '0',
 				],
 				__METHOD__,
 				[ 'LIMIT' => $this->getBatchSize() ],
-				[ 'pagetriage_page' => [ 'LEFT JOIN', [ 'page_id = ptrp_page_id' ] ] ]
+				[
+					'pagetriage_page' => [ 'LEFT JOIN', [ 'page_id = ptrp_page_id' ] ],
+					'pagetriage_page_tags' => [ 'LEFT JOIN', [
+						'page_id = ptrpt_page_id',
+						'ptrpt_tag_id' => $afcStateTagId,
+					] ],
+				]
 			);
 
 			// The loop will exit if this is the last batch.
