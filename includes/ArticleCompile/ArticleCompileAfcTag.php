@@ -18,17 +18,6 @@ class ArticleCompileAfcTag extends ArticleCompileInterface {
 	private $previousAfcStates;
 
 	/**
-	 * ArticleCompileAfcTag constructor.
-	 * @param array $pageId
-	 * @param int $componentDb
-	 * @param array|null $articles
-	 */
-	public function __construct( $pageId, $componentDb = DB_MASTER, $articles = null ) {
-		parent::__construct( $pageId, $componentDb, $articles );
-		$this->previousAfcStates = $this->loadPreviousAfcStates( $pageId );
-	}
-
-	/**
 	 * AFC categories in priority order (i.e. the first found will be used if a page is in more
 	 * than one of these categories). UNSUBMITTED is not actually a category, rather the absence
 	 * of the other categories.
@@ -47,6 +36,7 @@ class ArticleCompileAfcTag extends ArticleCompileInterface {
 	 * @return bool
 	 */
 	public function compile() {
+		$this->previousAfcStates = $this->loadPreviousAfcStates( $this->mPageId );
 		foreach ( $this->mPageId as $pageId ) {
 			// Default to unsubmitted state; will be overridden if relevant category is present.
 			$this->metadata[$pageId]['afc_state'] = self::UNSUBMITTED;
