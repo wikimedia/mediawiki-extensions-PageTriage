@@ -249,6 +249,7 @@
 	"echo-pref-subscription-page-review": "Проверки созданных мною страниц",
 	"echo-pref-tooltip-page-review": "Сообщать мне, когда кто-то помечает созданную мной страницу как проверенную.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Проверка|Проверки}} страницы",
+	"right-pagetriage-copyvio": "отметка страниц в «Служебная:Новые страницы» как вероятные нарушения авторских прав через приложение для этой цели",
 	"action-pagetriage-copyvio": "отметка страниц как вероятные нарушения авторских прав",
 	"apihelp-pagetriagelist-param-show_predicted_class_stub": "Включить ли предсказываемый класс «заготовка»",
 	"apihelp-pagetriagelist-param-show_predicted_class_start": "Включить ли предсказываемый класс «начальная»",
