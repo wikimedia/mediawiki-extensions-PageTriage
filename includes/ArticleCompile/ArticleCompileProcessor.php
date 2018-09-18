@@ -23,7 +23,9 @@ class ArticleCompileProcessor {
 	protected $mPageId;
 	protected $metadata;
 	protected $defaultMode;
+	/** @var WikiPage[] */
 	protected $articles;
+	/** @var LinksUpdate[] */
 	protected $linksUpdates;
 
 	const SAVE_IMMEDIATE = 0;
@@ -132,6 +134,28 @@ class ArticleCompileProcessor {
 				$this->componentDb[$key] = $config[$key];
 			}
 		}
+	}
+
+	/**
+	 * Get the timestamp of the last edit to a page
+	 * @param int $pageId Page ID
+	 * @return string Timestamp of last update, or current timestamp if not found
+	 */
+	protected function getLastEditTimestamp( $pageId ) {
+		if ( isset( $this->linksUpdates[$pageId] ) ) {
+			return $this->linksUpdates[$pageId]->getRevision()->getTimestamp();
+		}
+		if ( isset( $this->articles[$pageId] ) ) {
+			return $this->articles[$pageId]->getTimestamp();
+		}
+		// TODO deduplicate with ArticleCompileInterface::getArticleByPageId(), maybe move to this class
+		$fromdb = $this->componentDb === DB_MASTER ? 'fromdbmaster' : 'fromdb';
+		$page = WikiPage::newFromID( $pageId, $fromdb );
+		if ( $page ) {
+			return $page->getTimestamp();
+		}
+		// Give up and return the current time
+		return wfTimestampNow();
 	}
 
 	/**
@@ -327,7 +351,7 @@ class ArticleCompileProcessor {
 			$row = [ 'ptrp_tags_updated' => $dbw->timestamp( wfTimestampNow() ) ];
 
 			if ( $updateReviewedTimestamp ) {
-				$row['ptrp_reviewed_updated'] = $dbw->timestamp( wfTimestampNow() );
+				$row['ptrp_reviewed_updated'] = $dbw->timestamp( $this->getLastEditTimestamp( $pageId ) );
 			}
 
 			if ( isset( $data['deleted'] ) ) {
