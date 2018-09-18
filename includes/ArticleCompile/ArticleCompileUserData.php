@@ -39,7 +39,7 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 
 		$actorQuery = ActorMigration::newMigration()->getJoin( 'rev_user' );
 		$res = $this->db->select(
-				[ 'revision', 'user', 'ipblocks' ] + $actorQuery['tables'],
+				array_merge( [ 'revision' ], $actorQuery['tables'],  [ 'user', 'ipblocks' ] ),
 				[
 					'rev_page AS page_id', 'user_id', 'user_name',
 					'user_real_name', 'user_registration', 'user_editcount',
@@ -48,7 +48,7 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 				[ 'rev_id' => $revId ],
 				__METHOD__,
 				[],
-				[
+				$actorQuery['joins'] + [
 					'user' => [ 'LEFT JOIN', $actorQuery['fields']['rev_user'] . ' = user_id' ],
 					'ipblocks' => [
 						'LEFT JOIN', [
@@ -57,7 +57,7 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 						   'ipb_expiry > ' . $now
 					   ]
 					]
-				] + $actorQuery['joins']
+				]
 		);
 
 		foreach ( $res as $row ) {
