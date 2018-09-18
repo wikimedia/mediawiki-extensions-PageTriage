@@ -56,21 +56,11 @@ $( function () {
 			// on init, make sure to load the contents of the collection.
 			articles.fetch();
 
-			stats.apiParams = {};
-			stats.setParam( 'namespace', articles.getParam( 'namespace' ) );
-
-			if ( articles.getParam( 'showreviewed' ) === '1' ) {
-				stats.setParam( 'showreviewed', '1' );
-			}
-			if ( articles.getParam( 'showunreviewed' ) === '1' ) {
-				stats.setParam( 'showunreviewed', '1' );
-			}
-			if ( articles.getParam( 'showdeleted' ) === '1' ) {
-				stats.setParam( 'showdeleted', '1' );
-			}
-			if ( articles.getParam( 'showredirs' ) === '1' ) {
-				stats.setParam( 'showredirs', '1' );
-			}
+			// Start with the api params used by 'pagetriagelist' api
+			// but remove those invalid for the 'pagetriagestats' api
+			stats.apiParams = articles.getApiParams();
+			delete stats.apiParams.dir;
+			delete stats.apiParams.limit;
 			stats.fetch();
 		},
 
