@@ -123,10 +123,6 @@ abstract class ArticleCompileInterface {
 		if ( !$article ) {
 			return null;
 		}
-		$content = $article->getContent();
-		if ( !$content ) {
-			return null;
-		}
-		return $content->getParserOutput( $article->getTitle() );
+		return $article->getParserOutput( $article->makeParserOptions( 'canonical' ) );
 	}
 }
