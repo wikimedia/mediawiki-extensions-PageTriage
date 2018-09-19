@@ -594,7 +594,7 @@ $( function () {
 			var currentSort,
 				invalidSortOptions,
 				afcStateName,
-				afcStateValue = parseInt( this.model.getParam( 'afc_state' ), 10 );
+				afcStateValue = this.model.getParam( 'afc_state' );
 
 			this.menuCheckboxUpdateOres( 'afc' );
 
@@ -607,10 +607,10 @@ $( function () {
 			invalidSortOptions = this.getInvalidSortOptions( afcStateValue );
 
 			// Show/hide sorting options based on filter state.
-			if ( afcStateValue === 4 ) { // Declined
+			if ( afcStateValue === '4' ) { // Declined
 				$( '.mwe-pt-afc-sort-declined' ).show();
 				$( '.mwe-pt-afc-sort-submitted' ).hide();
-			} else if ( afcStateValue === 2 || afcStateValue === 3 ) { // Awaiting or Under review
+			} else if ( afcStateValue === '2' || afcStateValue === '3' ) { // Awaiting or Under review
 				$( '.mwe-pt-afc-sort-declined' ).hide();
 				$( '.mwe-pt-afc-sort-submitted' ).show();
 			} else {
