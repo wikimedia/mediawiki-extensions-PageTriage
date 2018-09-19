@@ -328,8 +328,6 @@ $( function () {
 					return;
 				}
 				this.setMode( filterOptions.mode );
-				// Mode is the only one that's not an API parameter.
-				delete filterOptions.mode;
 				this.setParams( filterOptions );
 			}
 		},
@@ -366,14 +364,20 @@ $( function () {
 			var params = $.extend( {
 				action: 'pagetriagelist',
 				format: 'json'
-			}, this.apiParams );
+			}, this.getApiParams() );
+
+			return mw.util.wikiScript( 'api' ) + '?' + $.param( params );
+		},
+
+		getApiParams: function () {
+			var params = $.extend( {}, this.apiParams );
 			// sorting (dir) is stored as 'nppDir' and 'afcDir' so they remain
 			// independent but only one is sent as 'dir' based on the mode
 			delete params.nppDir;
 			delete params.afcDir;
 			// mode is defined in the model but is not an API parameter, so remove it.
 			delete params.mode;
-			return mw.util.wikiScript( 'api' ) + '?' + $.param( params );
+			return params;
 		},
 
 		parse: function ( response ) {
