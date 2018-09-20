@@ -35,6 +35,11 @@ class ApiPageTriageStatsTest extends PageTriageTestCase {
 			$initialCount + 2,
 			$list2[0]['pagetriagestats']['stats']['unreviewedarticle']['count']
 		);
+		// Check that namespace ID appears in results.
+		$this->assertEquals(
+			$this->draftNsId,
+			$list2[0]['pagetriagestats']['stats']['namespace']
+		);
 	}
 
 	/**

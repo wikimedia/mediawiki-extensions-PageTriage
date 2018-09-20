@@ -15,6 +15,7 @@ $( function () {
 		},
 
 		formatMetadata: function ( stats ) {
+			stats.set( 'afcMode', stats.get( 'namespace' ) === mw.config.get( 'wgPageTriageDraftNamespaceId' ) );
 			stats.set( 'ptrUnreviewedCount', stats.get( 'unreviewedarticle' ).count );
 			stats.set( 'ptrOldest', this.formatDaysFromNow( stats.get( 'unreviewedarticle' ).oldest ) );
 			// jscs: disable requireCamelCaseOrUpperCaseIdentifiers

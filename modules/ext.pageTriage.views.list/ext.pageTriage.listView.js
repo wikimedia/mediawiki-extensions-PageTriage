@@ -161,8 +161,14 @@ $( function () {
 
 		// add stats data to the navigation
 		addStats: function ( stats ) {
-			var statsNav = new mw.pageTriage.ListStatsNav( { eventBus: this.eventBus, model: stats } );
-			statsNav.render();
+			var statsNav = new mw.pageTriage.ListStatsNav(
+				{ eventBus: this.eventBus, model: stats }
+			);
+			// Only render if there's an update; check to see if expected filteredarticle
+			// property is present in changed object.
+			if ( Object.prototype.hasOwnProperty.call( stats.changed, 'filteredarticle' ) ) {
+				statsNav.render();
+			}
 		},
 
 		// add a single article to the list

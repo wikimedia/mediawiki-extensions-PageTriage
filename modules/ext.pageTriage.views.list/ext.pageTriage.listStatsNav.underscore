@@ -1,6 +1,7 @@
 <div id="mwe-pt-refresh-button-holder">
 	<button id="mwe-pt-refresh-button"><%= mw.msg( 'pagetriage-refresh-list' ) %></button>
 </div>
+<% if ( !afcMode ) { %>
 <div class="mwe-pt-bottom-nav-stats">
 	<div id="mwe-pt-unreviewed-stats">
 		<% if ( ptrUnreviewedCount ) { %>
@@ -13,3 +14,4 @@
 		<% } %>
 	</div>
 </div>
+<% } %>

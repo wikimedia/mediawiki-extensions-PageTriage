@@ -19,6 +19,7 @@ class ApiPageTriageStats extends ApiBase {
 			'unreviewedarticle' => PageTriageUtil::getUnreviewedArticleStat( $params['namespace'] ),
 			'reviewedarticle' => PageTriageUtil::getReviewedArticleStat( $params['namespace'] ),
 			'filteredarticle' => PageTriageUtil::getArticleFilterStat( $params ),
+			'namespace' => $params['namespace']
 		];
 
 		if ( isset( $params['topreviewers'] ) ) {
