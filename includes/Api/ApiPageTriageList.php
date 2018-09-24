@@ -188,6 +188,9 @@ class ApiPageTriageList extends ApiBase {
 		$options = [];
 		$join_conds = [];
 
+		// Database setup
+		$dbr = wfGetDB( DB_REPLICA );
+
 		if ( !$count ) {
 			// Get the expected limit as defined in getAllowedParams
 			$options['LIMIT'] = $opts['limit'] + 1;
@@ -241,21 +244,25 @@ class ApiPageTriageList extends ApiBase {
 			$conds[] = 'ptrp_reviewed ' . $reviewOpr . ' 0';
 		}
 
-		// Exclude redirects unless they are explicitly requested
-		if ( !isset( $opts['showredirs'] ) || !$opts['showredirs'] ) {
-			$conds['page_is_redirect'] = 0;
+		// Filter on types
+		$redirects = $opts['showredirs'] ?? false;
+		$deleted = $opts['showdeleted'] ?? false;
+		$others = $opts['showothers'] ?? false;
+		$typeConds = [];
+
+		if ( $redirects !== $others ) {
+			$typeConds['page_is_redirect'] = $redirects ? 1 : 0;
 		}
-		// Exclude pages marked for deletion unless they are explicitly requested
-		if ( !isset( $opts['showdeleted'] ) || !$opts['showdeleted'] ) {
-			$conds['ptrp_deleted'] = 0;
+		if ( $deleted !== $others ) {
+			$typeConds['ptrp_deleted'] = $deleted ? 1 : 0;
+		}
+		if ( $typeConds ) {
+			$conds[] = $dbr->makeList( $typeConds, $others ? LIST_AND : LIST_OR );
 		}
 
 		// Show by namespace. Defaults to main namespace.
 		$nsId = ( isset( $opts['namespace'] ) && $opts['namespace'] ) ? $opts['namespace'] : NS_MAIN;
 		$conds['page_namespace'] = PageTriageUtil::validatePageNamespace( $nsId );
-
-		// Database setup
-		$dbr = wfGetDB( DB_REPLICA );
 
 		// Offset the list by timestamp
 		if (

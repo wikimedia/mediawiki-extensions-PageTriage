@@ -388,4 +388,74 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$this->assertPages( [ 'Page003', 'Page004', 'Page005', 'Page006' ], $list );
 	}
 
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getPageIds()
+	 */
+	public function testFilterType() {
+		$user = self::getTestUser()->getUser();
+		$this->insertPage( 'PageOther', 'some content', 0, $user );
+		$this->insertPage( 'PageDel', '[[Category:Articles_for_deletion]]', 0, $user );
+		$this->insertPage( 'PageRedir', '#REDIRECT [[Foo]]', 0, $user );
+
+		$list = $this->getPageTriageList( [
+			'namespace' => 0,
+		] );
+		$this->assertPages( [ 'PageOther', 'PageDel', 'PageRedir' ], $list,
+			'All pages (no type filter)' );
+
+		$list = $this->getPageTriageList( [
+			'namespace' => 0,
+			'showothers' => 1,
+		] );
+		$this->assertPages( [ 'PageOther' ], $list,
+			'Others only' );
+
+		$list = $this->getPageTriageList( [
+			'namespace' => 0,
+			'showdeleted' => 1,
+		] );
+		$this->assertPages( [ 'PageDel' ], $list,
+			'Nominated for deletion only' );
+
+		$list = $this->getPageTriageList( [
+			'namespace' => 0,
+			'showdeleted' => 1,
+			'showothers' => 1,
+		] );
+		$this->assertPages( [ 'PageOther', 'PageDel' ], $list,
+			'Nominated for deletion and all others' );
+
+		$list = $this->getPageTriageList( [
+			'namespace' => 0,
+			'showredirs' => 1,
+		] );
+		$this->assertPages( [ 'PageRedir' ], $list,
+			'Redirects only' );
+
+		$list = $this->getPageTriageList( [
+			'namespace' => 0,
+			'showredirs' => 1,
+			'showothers' => 1,
+		] );
+		$this->assertPages( [ 'PageOther', 'PageRedir' ], $list,
+			'Redirects and all others' );
+
+		$list = $this->getPageTriageList( [
+			'namespace' => 0,
+			'showdeleted' => 1,
+			'showredirs' => 1,
+		] );
+		$this->assertPages( [ 'PageDel', 'PageRedir' ], $list,
+			'Nominated for deletion and Redirects' );
+
+		$list = $this->getPageTriageList( [
+			'namespace' => 0,
+			'showdeleted' => 1,
+			'showredirs' => 1,
+			'showothers' => 1,
+		] );
+		$this->assertPages( [ 'PageOther', 'PageDel', 'PageRedir' ], $list,
+			'Nominated for deletion, Redirects and all others => no filtering' );
+	}
+
 }

@@ -305,7 +305,8 @@ $( function () {
 			namespace: 0,
 			showreviewed: 1,
 			showunreviewed: 1,
-			showdeleted: 1
+			showdeleted: 1,
+			showothers: 1
 		},
 
 		initialize: function ( options ) {
@@ -318,6 +319,7 @@ $( function () {
 			if ( !mw.user.isAnon() && filterOptionsJson ) {
 				try {
 					filterOptions = JSON.parse( filterOptionsJson );
+					filterOptions = this.migrateFilterOptions( filterOptions );
 				} catch ( e ) {
 					// If we can't parse the options, give up.
 					mw.log.warn( 'Unable to parse stored filters: ' + filterOptionsJson );
@@ -326,6 +328,25 @@ $( function () {
 				this.setMode( filterOptions.mode );
 				this.setParams( filterOptions );
 			}
+		},
+
+		/**
+		 * Migrate saved filter options.
+		 *
+		 * From version 'undefined' to version 2:
+		 * - "other pages" were implicitly shown, now they are controlled by 'showothers'
+		 *
+		 * @param {object} filterOptions
+		 * @return {object}
+		 */
+		migrateFilterOptions: function ( filterOptions ) {
+			if ( filterOptions.version === 2 ) {
+				delete filterOptions.version;
+				return filterOptions;
+			}
+
+			filterOptions.showothers = '1';
+			return filterOptions;
 		},
 
 		/**
@@ -416,6 +437,7 @@ $( function () {
 			var params;
 			params = this.apiParams;
 			params.mode = this.getMode();
+			params.version = 2;
 			return JSON.stringify( params );
 		},
 
