@@ -1,5 +1,9 @@
 <?php
 
+use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
+use MediaWiki\Extension\PageTriage\ArticleMetadata;
+use MediaWiki\Extension\PageTriage\PageTriage;
+
 /**
  * @group PageTriage
  * @group extensions
@@ -41,6 +45,19 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		);
 	}
 
+	protected function setUpForOresCopyvioTests( array &$wgHooks ) {
+		$this->tablesUsed[] = 'page';
+		$this->tablesUsed[] = 'revision';
+		$this->tablesUsed[] = 'pagetriage_page';
+		$this->tablesUsed[] = 'pagetriage_tags';
+		$this->tablesUsed[] = 'pagetriage_page_tags';
+		$this->tablesUsed[] = 'pagetriage_log';
+		$this->tablesUsed[] = 'ores_model';
+		$this->tablesUsed[] = 'ores_classification';
+		ArticleMetadata::clearStaticCache();
+		unset( $wgHooks[ 'ORESCheckModels' ] );
+	}
+
 	/**
 	 * Helper method to query the PageTriageList API. Defaults to unreviewed draft pages.
 	 * @param array $params
@@ -55,6 +72,94 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		], $params ) );
 
 		return $list[0]['pagetriagelist']['pages'];
+	}
+
+	/**
+	 * @param string $title
+	 * @param bool $draftQualityClass
+	 * @param bool $copyvio
+	 * @return mixed
+	 * @throws MWException
+	 */
+	protected function makePage( $title, $draftQualityClass = false, $copyvio = false ) {
+		$user = static::getTestUser()->getUser();
+		$pageAndTitle = $this->insertPage( $title, 'some content', $this->draftNsId, $user );
+		$page = WikiPage::factory( $pageAndTitle[ 'title' ] );
+		$revId = $page->getLatest();
+		if ( $draftQualityClass ) {
+			self::setDraftQuality( $revId, $draftQualityClass );
+		}
+		if ( $copyvio ) {
+			self::setCopyvio( $pageAndTitle[ 'id' ], $revId );
+		}
+		$acp = ArticleCompileProcessor::newFromPageId( [
+			$page->getId()
+		] );
+		$acp->compileMetadata();
+		$pageTriage = new PageTriage( $page->getId() );
+		$pageTriage->addToPageTriageQueue();
+		return $pageAndTitle[ 'id' ];
+	}
+
+	protected function assertPages( $expectedPages, $response ) {
+		$pagesFromResponse = array_map( function ( $item ) {
+			return explode( ':', $item[ 'title' ] )[1];
+		}, $response );
+
+		$this->assertArrayEquals( $expectedPages, $pagesFromResponse );
+	}
+
+	public static function setDraftQuality( $revId, $classId ) {
+		$dbw = wfGetDB( DB_MASTER );
+		foreach ( [ 0, 1, 2, 3 ] as $id ) {
+			$predicted = $classId === $id;
+			$dbw->insert( 'ores_classification', [
+				'oresc_model' => self::ensureOresModel( 'draftquality' ),
+				'oresc_class' => $id,
+				'oresc_probability' => $predicted ? 0.7 : 0.1,
+				'oresc_is_predicted' => $predicted ? 1 : 0,
+				'oresc_rev' => $revId,
+			] );
+		}
+	}
+
+	public static function ensureCopyvioTag() {
+		$dbw = wfGetDB( DB_MASTER );
+
+		$dbw->upsert(
+			'pagetriage_tags',
+			[ 'ptrt_tag_name' => 'copyvio', 'ptrt_tag_desc' => 'copyvio' ],
+			[ 'ptrt_tag_name' ],
+			[ 'ptrt_tag_desc' => 'copyvio' ]
+		);
+	}
+
+	public static function setCopyvio( $pageId, $revId ) {
+		$dbw = wfGetDB( DB_MASTER );
+
+		$tagId = $dbw->selectField(
+			'pagetriage_tags', 'ptrt_tag_id', [ 'ptrt_tag_name' => 'copyvio' ]
+		);
+
+		$dbw->insert(
+			'pagetriage_page_tags',
+			[
+				'ptrpt_page_id' => $pageId,
+				'ptrpt_tag_id' => $tagId,
+				'ptrpt_value' => $revId,
+			]
+		);
+	}
+
+	public static function ensureOresModel( $name ) {
+		$dbw = wfGetDB( DB_MASTER );
+		$ModelInfo = [
+			'oresm_name' => $name,
+			'oresm_version' => '0.0.1',
+			'oresm_is_current' => 1
+		];
+		$dbw->upsert( 'ores_model', $ModelInfo, [ 'oresm_id' ], $ModelInfo );
+		return $dbw->selectField( 'ores_model', 'oresm_id', $ModelInfo );
 	}
 
 }

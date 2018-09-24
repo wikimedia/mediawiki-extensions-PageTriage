@@ -3,8 +3,11 @@
 namespace MediaWiki\Extension\PageTriage\Api;
 
 use ApiBase;
+use ManualLogEntry;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Storage\RevisionRecord;
+use Title;
 
 class ApiPageTriageTagCopyvio extends ApiBase {
 
@@ -33,8 +36,28 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 		$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_MASTER );
 		$dbw->replace( 'pagetriage_page_tags', [ 'ptrpt_page_id', 'ptrpt_tag_id' ], $row );
 
+		// Log activity.
+		$this->logActivity( $revision );
+
 		$result = [ 'result' => 'success' ];
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+	}
+
+	/**
+	 * Log insertion activity for this API endpoint.
+	 *
+	 * @param RevisionRecord $revision
+	 * @throws \MWException
+	 */
+	protected function logActivity( RevisionRecord $revision ) {
+		$logEntry = new ManualLogEntry( 'pagetriage-copyvio', 'insert' );
+		$logEntry->setPerformer( $this->getUser() );
+		$logEntry->setTarget( Title::newFromId( $revision->getPageId() ) );
+		$logEntry->setParameters( [
+			'4::revId' => $revision->getId(),
+		] );
+		$logId = $logEntry->insert();
+		$logEntry->publish( $logId );
 	}
 
 	public function needsToken() {
