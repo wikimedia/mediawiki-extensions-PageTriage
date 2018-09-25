@@ -432,8 +432,6 @@
 	"apihelp-pagetriageaction-param-skipnotif": "Whether to skip notification.",
 	"apihelp-pagetriagelist-description": "Get a list of page IDs for building a PageTriage queue.",
 	"apihelp-pagetriagelist-summary": "Get a list of page IDs for building a PageTriage queue.",
-	"apihelp-pagetriagelastuse-description": "Save the timestamp of when the user last used PageTriage in their session data",
-	"apihelp-pagetriagelastuse-summary": "Save the timestamp of when the user last used PageTriage in their session data",
 	"apihelp-pagetriagelist-param-afc_state": "Which Articles-for-Creation state to show.",
 	"apihelp-pagetriagelist-param-page_id": "Return data for the specified page IDs, ignoring other parameters.",
 	"apihelp-pagetriagelist-param-showbots": "Whether to show only bot edits.",

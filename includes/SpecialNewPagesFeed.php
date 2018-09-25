@@ -44,11 +44,6 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$out = $this->getOutput();
 		$user = $this->getUser();
 
-		// Set the last use timestamp.
-		if ( !$user->isAnon() ) {
-			$this->getRequest()->getSession()->set( 'pagetriage-lastuse', wfTimestampNow() );
-		}
-
 		// Output the title of the page
 		$out->setPageTitle( $this->msg( 'newpagesfeed' ) );
 
