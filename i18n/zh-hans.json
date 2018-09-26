@@ -294,8 +294,6 @@
 	"apihelp-pagetriageaction-param-skipnotif": "是否跳过通知。",
 	"apihelp-pagetriagelist-description": "建立一个页面分配器队列获得一个页面ID列表。",
 	"apihelp-pagetriagelist-summary": "建立一个页面分配器队列获得一个页面ID列表。",
-	"apihelp-pagetriagelastuse-description": "保存用户在其会话数据期间，上次使用PageTriage的时间戳",
-	"apihelp-pagetriagelastuse-summary": "保存用户在其会话数据期间，上次使用PageTriage的时间戳",
 	"apihelp-pagetriagelist-param-afc_state": "要显示的条目创建请求状态。",
 	"apihelp-pagetriagelist-param-page_id": "返回指定页面ID的数据，忽略其他参数。",
 	"apihelp-pagetriagelist-param-showbots": "是否只显示机器人编辑。",

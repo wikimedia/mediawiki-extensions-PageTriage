@@ -420,8 +420,6 @@
 	"apihelp-pagetriageaction-param-skipnotif": "S'il faut ignorer la notification.",
 	"apihelp-pagetriagelist-description": "Obtenir une liste d’IDs de page pour construire une file pour PageTriage.",
 	"apihelp-pagetriagelist-summary": "Obtenir une liste des IDs de page pour construire une file de PageTriage.",
-	"apihelp-pagetriagelastuse-description": "Enregistrer l’horodatage dans ses données de session du moment où l’utilisateur a utilisé PageTriage pour la dernière fois",
-	"apihelp-pagetriagelastuse-summary": "Enregistrer l’horodatage dans ses données de session du moment où l’utilisateur a utilisé PageTriage pour la dernière fois",
 	"apihelp-pagetriagelist-param-afc_state": "Quel état Article-à-créer afficher.",
 	"apihelp-pagetriagelist-param-page_id": "Renvoyer les données concernant l'identificateur de page spécifié, en ignorant les autres paramètres.",
 	"apihelp-pagetriagelist-param-showbots": "S'il faut afficher uniquement les éditions des robots.",

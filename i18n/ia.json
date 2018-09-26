@@ -288,8 +288,6 @@
 	"pagetriage-afc-state": "Stato",
 	"right-pagetriage-copyvio": "Marcar paginas in Special:NewPagesFeed como probabile infringimentos del derecto de autor, per medio del API pagetriage-tagcopyvio",
 	"action-pagetriage-copyvio": "marcar paginas como probabile infringimentos del derecto de autor",
-	"apihelp-pagetriagelastuse-description": "Registrar in le datos de session del usator le data e hora de su uso le plus recente de PageTriage",
-	"apihelp-pagetriagelastuse-summary": "Registrar in le datos de session del usator le data e hora de su uso le plus recente de PageTriage",
 	"apihelp-pagetriagelist-param-dir": "Le ordine del lista: oldestfirst (le plus ancian primo), newestfirst (le plus recente primo), oldestreview (revision le plus ancian) or newestreview (revision le plus recente).",
 	"apihelp-pagetriagelist-param-learners": "Si se debe monstrar unicamente paginas create per usatores novemente autoconfirmate.",
 	"apihelp-pagetriagelist-param-show_predicted_issues_copyvio": "Indica si includer le problemas possibile de infringimento del derectos de autor",
