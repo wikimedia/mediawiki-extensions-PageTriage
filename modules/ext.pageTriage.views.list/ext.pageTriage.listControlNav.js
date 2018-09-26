@@ -325,7 +325,7 @@ $( function () {
 				apiParams.afcDir = $( '#mwe-pt-sort-afc' ).val();
 			}
 			// Merge in ORES params.
-			apiParams = Object.assign( this.getApiParamsOres( this.model.getMode() ), apiParams );
+			apiParams = $.extend( this.getApiParamsOres( this.model.getMode() ), apiParams );
 
 			// Only set if fetching API params for the feed (since the stats endpoint doesn't
 			// recognize dir and limit).
