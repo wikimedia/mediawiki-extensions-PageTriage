@@ -60,7 +60,7 @@ class PageTriage {
 		// hasn't propagated to the slaves yet.
 		$res = $dbw->selectRow(
 			'revision',
-			'MIN(rev_timestamp) AS creation_date',
+			[ 'MIN(rev_timestamp) AS creation_date', 'MAX(rev_timestamp) AS last_edit_date' ],
 			[ 'rev_page' => $this->mPageId ],
 			__METHOD__
 		);
@@ -73,7 +73,7 @@ class PageTriage {
 			'ptrp_page_id' => $this->mPageId,
 			'ptrp_reviewed' => $reviewed,
 			'ptrp_created' => $res->creation_date,
-			'ptrp_reviewed_updated' => $dbw->timestamp( wfTimestampNow() )
+			'ptrp_reviewed_updated' => $res->last_edit_date
 		];
 
 		$row['ptrp_last_reviewed_by'] = $user ? $user->getId() : 0;
