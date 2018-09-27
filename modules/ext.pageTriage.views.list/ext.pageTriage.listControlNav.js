@@ -584,35 +584,35 @@ $( function () {
 			}
 		},
 
-		getInvalidSortOptions: function ( afcState ) {
-			switch ( afcState ) {
-				case 4:
-					return [
-						'mwe-pt-sort-afc-newestsubmitted',
-						'mwe-pt-sort-afc-oldestsubmitted'
-					];
-				case 2:
-				case 3:
-					return [
-						'mwe-pt-sort-afc-newestdeclined',
-						'mwe-pt-sort-afc-oldestdeclined'
-					];
-				default:
-					return [
-						'mwe-pt-sort-afc-newestsubmitted',
-						'mwe-pt-sort-afc-oldestsubmitted',
-						'mwe-pt-sort-afc-newestdeclined',
-						'mwe-pt-sort-afc-oldestdeclined'
-					];
+		getValidAfcSortOptionId: function ( afcState, afcDir ) {
+			if ( afcDir === 'newestfirst' ) {
+				return 'mwe-pt-sort-afc-newestfirst';
 			}
+			if ( afcDir === 'oldestfirst' ) {
+				return 'mwe-pt-sort-afc-oldestfirst';
+			}
+
+			if ( afcState === '2' || afcState === '3' ) {
+				return afcDir === 'newestreview' ?
+					'mwe-pt-sort-afc-newestsubmitted' :
+					'mwe-pt-sort-afc-oldestsubmitted';
+			}
+
+			if ( afcState === '4' ) {
+				return afcDir === 'newestreview' ?
+					'mwe-pt-sort-afc-newestdeclined' :
+					'mwe-pt-sort-afc-oldestdeclined';
+			}
+
+			// default to something always valid
+			return 'mwe-pt-sort-afc-newestfirst';
 		},
 
 		/**
 		 * Sync the menu and other UI elements with the filters, for the AfC queue.
 		 */
 		menuSyncAfc: function () {
-			var currentSort,
-				invalidSortOptions,
+			var sortOptionId,
 				afcStateName,
 				afcStateValue = this.model.getParam( 'afc_state' );
 
@@ -622,9 +622,6 @@ $( function () {
 
 			$( 'input[name=mwe-pt-filter-afc-radio][value=' + afcStateValue + ']' )
 				.prop( 'checked', true );
-
-			currentSort = $( '#mwe-pt-sort-afc > option[selected]' ).attr( 'id' );
-			invalidSortOptions = this.getInvalidSortOptions( afcStateValue );
 
 			// Show/hide sorting options based on filter state.
 			if ( afcStateValue === '4' ) { // Declined
@@ -638,11 +635,11 @@ $( function () {
 				$( '.mwe-pt-afc-sort-submitted' ).hide();
 			}
 
-			// Make sure a valid sort option is selected.
-			// The previously selected option may not be available anymore.
-			if ( invalidSortOptions.indexOf( currentSort ) >= 0 ) {
-				$( '#mwe-pt-sort-afc' ).val( 'newestfirst' );
-			}
+			sortOptionId = this.getValidAfcSortOptionId(
+				this.model.getParam( 'afc_state' ),
+				this.model.getParam( 'afcDir' )
+			);
+			$( '#' + sortOptionId ).prop( 'selected', true );
 
 			// Set the "Showing: ..." filter status.
 			afcStateName = $( 'input[name=mwe-pt-filter-afc-radio]:checked' ).data( 'afc-state-name' );
