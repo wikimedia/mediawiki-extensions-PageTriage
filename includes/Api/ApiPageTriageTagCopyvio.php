@@ -34,10 +34,12 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 			'ptrpt_value' => $revision->getId()
 		];
 		$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_MASTER );
-		$dbw->replace( 'pagetriage_page_tags', [ 'ptrpt_page_id', 'ptrpt_tag_id' ], $row );
-
-		// Log activity.
-		$this->logActivity( $revision );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		// If the revision ID hasn't been tagged with copyvio yet, then insert and log.
+		if ( $dbr->selectField( 'pagetriage_page_tags', 'ptrpt_page_id', $row ) === false ) {
+			$dbw->replace( 'pagetriage_page_tags', [ 'ptrpt_page_id', 'ptrpt_tag_id' ], $row );
+			$this->logActivity( $revision );
+		}
 
 		$result = [ 'result' => 'success' ];
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
