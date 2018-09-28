@@ -123,7 +123,11 @@ $( function () {
 				}
 			} );
 
-			$( '#mwe-pt-filter-reviewed-edits,#mwe-pt-filter-unreviewed-edits' ).click(
+			$(
+				'#mwe-pt-filter-reviewed-edits,#mwe-pt-filter-unreviewed-edits,' +
+				'#mwe-pt-filter-nominated-for-deletion,#mwe-pt-filter-redirects,' +
+				'#mwe-pt-filter-others'
+			).click(
 				function ( e ) {
 					that.setSubmitButtonState();
 					e.stopPropagation();
@@ -256,17 +260,23 @@ $( function () {
 			this.setSubmitButtonState();
 		},
 
-		// Make sure the user didn't uncheck both reviewed edits and unreviewed edits
+		// To be able to submit the form, at least one 'state' and one 'type' have to be checked
 		setSubmitButtonState: function () {
-			if (
-				this.model.getMode() === 'npp' &&
-				!$( '#mwe-pt-filter-reviewed-edits' ).prop( 'checked' ) &&
-				!$( '#mwe-pt-filter-unreviewed-edits' ).prop( 'checked' )
-			) {
-				$( '#mwe-pt-filter-set-button' ).button( 'disable' );
-			} else {
-				$( '#mwe-pt-filter-set-button' ).button( 'enable' );
+			var anyState, anyType;
+			if ( this.model.getMode() !== 'npp' ) {
+				return;
 			}
+
+			anyState = $( '#mwe-pt-filter-reviewed-edits' ).prop( 'checked' ) ||
+				$( '#mwe-pt-filter-unreviewed-edits' ).prop( 'checked' );
+
+			anyType = $( '#mwe-pt-filter-nominated-for-deletion' ).prop( 'checked' ) ||
+				$( '#mwe-pt-filter-redirects' ).prop( 'checked' ) ||
+				$( '#mwe-pt-filter-others' ).prop( 'checked' );
+
+			$( '#mwe-pt-filter-set-button' ).button(
+				anyState && anyType ? 'enable' : 'disable'
+			);
 		},
 
 		/**
@@ -371,6 +381,10 @@ $( function () {
 				apiParams.showredirs = '1';
 			}
 
+			if ( $( '#mwe-pt-filter-others' ).prop( 'checked' ) ) {
+				apiParams.showothers = '1';
+			}
+
 			if ( $( '#mwe-pt-filter-user-selected' ).prop( 'checked' ) && $( '#mwe-pt-filter-user' ).val() ) {
 				apiParams.username = $( '#mwe-pt-filter-user' ).val();
 			}
@@ -453,6 +467,7 @@ $( function () {
 			this.newFilterStatus = {
 				namespace: [],
 				state: [],
+				type: [],
 				'predicted-class': [],
 				'predicted-issues': [],
 				top: []
@@ -535,8 +550,10 @@ $( function () {
 
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-reviewed-edits' ), 'showreviewed', 'pagetriage-filter-stat-reviewed', 'state' );
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-unreviewed-edits' ), 'showunreviewed', 'pagetriage-filter-stat-unreviewed', 'state' );
-			this.menuCheckboxUpdate( $( '#mwe-pt-filter-nominated-for-deletion' ), 'showdeleted', 'pagetriage-filter-stat-nominated-for-deletion', 'state' );
-			this.menuCheckboxUpdate( $( '#mwe-pt-filter-redirects' ), 'showredirs', 'pagetriage-filter-stat-redirects', 'state' );
+
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-nominated-for-deletion' ), 'showdeleted', 'pagetriage-filter-stat-nominated-for-deletion', 'type' );
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-redirects' ), 'showredirs', 'pagetriage-filter-stat-redirects', 'type' );
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-others' ), 'showothers', 'pagetriage-filter-stat-others', 'type' );
 
 			this.menuCheckboxUpdateOres( 'npp' );
 

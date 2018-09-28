@@ -65,9 +65,9 @@
 							</div>
 						</div>
 						<div class="mwe-pt-control-section">
-					<span class="mwe-pt-control-label">
-						<b><%= mw.msg( 'pagetriage-filter-show-heading' ) %></b>
-					</span>
+							<span class="mwe-pt-control-label">
+								<b><%= mw.msg( 'pagetriage-filter-show-heading' ) %></b>
+							</span>
 							<div class="mwe-pt-control-options">
 								<input type="checkbox" id="mwe-pt-filter-unreviewed-edits"/>
 								<label for="mwe-pt-filter-unreviewed-edits">
@@ -77,6 +77,13 @@
 								<label for="mwe-pt-filter-reviewed-edits">
 									<%= mw.msg( 'pagetriage-filter-reviewed-edits' ) %>
 								</label> <br/>
+							</div>
+						</div>
+						<div class="mwe-pt-control-section">
+							<span class="mwe-pt-control-label">
+								<b><%= mw.msg( 'pagetriage-filter-type-show-heading' ) %></b>
+							</span>
+							<div class="mwe-pt-control-options">
 								<input type="checkbox"
 									   id="mwe-pt-filter-nominated-for-deletion"/>
 								<label for="mwe-pt-filter-nominated-for-deletion">
@@ -85,6 +92,10 @@
 								<input type="checkbox" id="mwe-pt-filter-redirects"/>
 								<label for="mwe-pt-filter-redirects">
 									<%= mw.msg( 'pagetriage-filter-redirects' ) %>
+								</label> <br/>
+								<input type="checkbox" id="mwe-pt-filter-others"/>
+								<label for="mwe-pt-filter-others">
+									<%= mw.msg( 'pagetriage-filter-others' ) %>
 								</label> <br/>
 							</div>
 						</div>

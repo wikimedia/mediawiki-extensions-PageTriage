@@ -101,12 +101,15 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		return $pageAndTitle[ 'id' ];
 	}
 
-	protected function assertPages( $expectedPages, $response ) {
+	protected function assertPages( $expectedPages, $response, $msg = '' ) {
 		$pagesFromResponse = array_map( function ( $item ) {
-			return explode( ':', $item[ 'title' ] )[1];
+			$title = $item[ 'title' ];
+			return strpos( $title, ':' ) !== false ?
+				explode( ':', $title )[1] :
+				$title;
 		}, $response );
 
-		$this->assertArrayEquals( $expectedPages, $pagesFromResponse );
+		$this->assertArrayEquals( $expectedPages, $pagesFromResponse, false, false, $msg );
 	}
 
 	public static function setDraftQuality( $revId, $classId ) {

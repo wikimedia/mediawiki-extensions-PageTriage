@@ -529,6 +529,9 @@ class PageTriageUtil {
 			'showredirs' => [
 				ApiBase::PARAM_TYPE => 'boolean',
 			],
+			'showothers' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
 			'showreviewed' => [
 				ApiBase::PARAM_TYPE => 'boolean',
 			],
