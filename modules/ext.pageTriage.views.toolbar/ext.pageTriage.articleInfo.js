@@ -15,16 +15,15 @@ $( function () {
 
 		render: function () {
 			var bylineMessage, articleByline, stats, history,
+				url = new mw.Uri( mw.util.getUrl( mw.config.get( 'wgPageName' ) ) ),
 				that = this;
 
 			this.enumerateProblems();
 			// set the history link
+			url.query.action = 'history';
 			this.model.set(
 				'history_link',
-				this.model.buildLink(
-					mw.util.getUrl( mw.config.get( 'wgPageName' ) ),
-					'action=history'
-				)
+				url.toString()
 			);
 
 			// creator information
