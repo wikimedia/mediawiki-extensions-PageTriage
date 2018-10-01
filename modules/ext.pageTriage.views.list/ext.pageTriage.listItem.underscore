@@ -98,7 +98,7 @@
 			</div>
 			<div class="mwe-pt-potential-issues">
 				<span><%= mw.msg( 'pagetriage-filter-predicted-issues-heading' ) %></span>
-				<% if ( !ores_draftquality && !copyvio ) { %>
+				<% if ( !ores_draftquality && !( copyvio && mw.config.get( 'wgShowCopyvio' ) ) ) { %>
 				<span>
 					<%= mw.msg( 'pagetriage-filter-stat-predicted-issues-none' ) %>
 				</span>
@@ -108,7 +108,7 @@
 					<%= ores_draftquality %>
 				</span>
 				<% } %>
-				<% if ( copyvio ) { %>
+				<% if ( copyvio && mw.config.get( 'wgShowCopyvio' ) ) { %>
 				<% if ( ores_draftquality ) { %>
 				&#xb7;
 				<% } %>

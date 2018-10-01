@@ -162,6 +162,7 @@
 								<label for="mwe-pt-filter-npp-predicted-issues-attack">
 									<%= mw.msg( 'pagetriage-filter-predicted-issues-attack' ) %>
 								</label> <br/>
+								<% if ( mw.config.get( 'wgShowCopyvio' ) ) { %>
 								<input type="checkbox"
 									   id="mwe-pt-filter-npp-predicted-issues-copyvio"/>
 								<label for="mwe-pt-filter-npp-predicted-issues-copyvio">
@@ -172,6 +173,7 @@
 								<label for="mwe-pt-filter-npp-predicted-issues-none">
 									<%= mw.msg( 'pagetriage-filter-predicted-issues-none' ) %>
 								</label> <br/>
+								<% } %>
 							</div>
 						</div>
 					</div>
