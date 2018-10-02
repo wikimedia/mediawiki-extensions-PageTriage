@@ -354,7 +354,7 @@
 	"logentry-pagetriage-curation-tag": "$1 {{GENDER:$2|tagged}} $3 with $4 {{PLURAL:$5|tag|tags}}",
 	"logentry-pagetriage-curation-delete": "$1 {{GENDER:$2|marked}} $3 for deletion with $4 {{PLURAL:$5|tag|tags}}",
 	"logentry-pagetriage-deletion-delete": "$1 {{GENDER:$2|marked}} $3 for deletion with $4 {{PLURAL:$5|tag|tags}}",
-	"log-name-pagetriage-copyvio": "Copyvio event log",
+	"log-name-pagetriage-copyvio": "Potential copyright violation log",
 	"log-description-pagetriage-copyvio": "This is the log of events received via the PageTriage Copyvio API",
 	"logentry-pagetriage-copyvio-insert": "$1 {{GENDER:$2|marked}} revision $4 on $3 as a possible copyright violation",
 	"pagetriage-tags-edit-summary": "Added tags to the page using $1 ($2)",
