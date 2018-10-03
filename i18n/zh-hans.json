@@ -12,7 +12,9 @@
 			"乌拉跨氪",
 			"飞舞回堂前",
 			"아라",
-			"Endermoon"
+			"Endermoon",
+			"A Chinese Wikipedian",
+			"Phenolla"
 		]
 	},
 	"pagetriage": "页面分配器",
@@ -104,8 +106,9 @@
 	"pagetriage-filter-stat-all": "全部",
 	"pagetriage-filter-stat-reviewed": "已复核",
 	"pagetriage-filter-stat-unreviewed": "未复核",
-	"pagetriage-filter-stat-bots": "机器人",
+	"pagetriage-filter-stat-bots": "由机器人作出",
 	"pagetriage-filter-stat-redirects": "重定向",
+	"pagetriage-filter-stat-others": "所有其他的",
 	"pagetriage-filter-stat-nominated-for-deletion": "已提交删除",
 	"pagetriage-filter-stat-no-categories": "无分类",
 	"pagetriage-filter-stat-orphan": "孤立",
@@ -216,6 +219,7 @@
 	"logentry-pagetriage-curation-tag": "$1用$4{{PLURAL:$5|标签}}{{GENDER:$2|标记}}$3",
 	"logentry-pagetriage-curation-delete": "$1用$4{{PLURAL:$5|标签}}{{GENDER:$2|标记}}$3待删除",
 	"logentry-pagetriage-deletion-delete": "$1用$4{{PLURAL:$5|标签}}{{GENDER:$2|标记}}$3待删除",
+	"log-name-pagetriage-copyvio": "侵权活动日志",
 	"pagetriage-tags-edit-summary": "使用$1（$2）给页面添加标签",
 	"pagetriage-del-edit-summary": "使用$1（$2）将页面提名删除",
 	"pagetriage-del-tags-param-discussion-label": "请解释为什么要删除该页面，并在可能时提供相关方针的链接",

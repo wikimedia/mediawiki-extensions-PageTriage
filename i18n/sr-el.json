@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Milicevic01"
+			"Milicevic01",
+			"Zoranzoki21"
 		]
 	},
 	"pagetriage-markpatrolled": "Označi stranicu kao pregledanu",
@@ -35,6 +36,7 @@
 	"logentry-pagetriage-curation-tag": "$1 je {{GENDER:$2|označio|označila}} stranicu $3 sa {{PLURAL:$5|sledećom oznakom|sledećim oznakama}}: $4",
 	"logentry-pagetriage-curation-delete": "$1 je {{GENDER:$2|označio|označila}} stranicu $3 za brisanje sa {{PLURAL:$5|sledećom oznakom|sledećim oznakama}}: $4",
 	"logentry-pagetriage-deletion-delete": "$1 je {{GENDER:$2|označio|označila}} stranicu $3 za brisanje sa {{PLURAL:$5|sledećom oznakom|sledećim oznakama}}: $4",
+	"log-name-pagetriage-copyvio": "Dnevnik potencionalnog kršenja autorskih prava",
 	"pagetriage-info-history-header": "Istorija",
 	"pagetriage-info-help": "pomoć",
 	"pagetriage-mark-title": "Označi kao pregledano",

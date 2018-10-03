@@ -145,6 +145,7 @@
 	"logentry-pagetriage-curation-tag": "$1 {{GENDER:$2|merkkasi}} sivun $3 {{PLURAL:$5|merkkauksella|merkkauksilla}} $4",
 	"logentry-pagetriage-curation-delete": "$1 {{GENDER:$2|merkitsi}} sivun $3 poistettavaksi {{PLURAL:$5|merkkauksella|merkkauksilla}} $4",
 	"logentry-pagetriage-deletion-delete": "$1 {{GENDER:$2|merkitsi}} sivun $3 poistettavaksi {{PLURAL:$5|merkkauksella|merkkauksilla}} $4",
+	"log-name-pagetriage-copyvio": "Loki mahdollisista tekijänoikeusrikkomuksista",
 	"pagetriage-tags-edit-summary": "Lisäsi merkkauksia sivulle käyttäen toimintoa $1 ($2)",
 	"pagetriage-del-edit-summary": "Ehdotti sivua poistettavaksi käyttäen toimintoa $1 ($2)",
 	"pagetriage-del-tags-param-discussion-label": "Kerro, miksi tämä artikkeli pitäisi poistaa, ja lisää linkit poistokäytäntöön",

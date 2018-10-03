@@ -8,7 +8,8 @@
 			"WTM",
 			"Woytecr",
 			"Fitoschido",
-			"Stojex"
+			"Stojex",
+			"Railfail536"
 		]
 	},
 	"pagetriage-desc": "Ułatwia przeglądanie i zatwierdzanie nowych stron",
@@ -37,6 +38,7 @@
 	"pagetriage-oldest": "Najstarsze",
 	"pagetriage-triage": "Przejrzyj",
 	"pagetriage-filter-show-heading": "Stan:",
+	"pagetriage-filter-type-show-heading": "Typ:",
 	"pagetriage-filter-reviewed-edits": "Przejrzane strony",
 	"pagetriage-filter-nominated-for-deletion": "Zgłoszone do usunięcia",
 	"pagetriage-filter-redirects": "Przekierowania",
@@ -49,6 +51,7 @@
 	"pagetriage-filter-ns-all": "Wszystkie",
 	"pagetriage-more": "Więcej",
 	"pagetriage-filter-stat-state": "Stan",
+	"pagetriage-filter-stat-type": "Typ",
 	"pagetriage-filter-stat-all": "Wszystkie",
 	"pagetriage-filter-stat-reviewed": "Przejrzane",
 	"pagetriage-filter-stat-unreviewed": "Nieprzejrzane",
@@ -105,6 +108,7 @@
 	"pagetriage-tags-param-free-yes-label": "Tak",
 	"pagetriage-tags-param-free-no-label": "Nie",
 	"pagetriage-tags-param-missing-required": "W znaczniku $1 brakuje wymaganego parametru.",
+	"log-name-pagetriage-copyvio": "Rejestr potencjalnych naruszeń praw autorskich",
 	"pagetriage-del-tags-param-discussion-label": "Wyjaśnij, dlaczego ta strona powinna zostać usunięta i podaj linki do odpowiednich zasad, jeśli to możliwe",
 	"pagetriage-info-title": "Informacje o stronie",
 	"pagetriage-info-history-header": "Historia",

@@ -6,5 +6,10 @@
 		]
 	},
 	"pagetriage-filter-predicted-issues-vandalism": "Hærværk",
-	"pagetriage-filter-show-heading": "Vis:"
+	"pagetriage-filter-show-heading": "Vis:",
+	"pagetriage-filter-type-show-heading": "Type:",
+	"pagetriage-filter-others": "Alle andre",
+	"pagetriage-filter-stat-type": "Type",
+	"pagetriage-filter-stat-others": "Alle andre",
+	"log-name-pagetriage-copyvio": "Log over mulig brud på ophavsret"
 }

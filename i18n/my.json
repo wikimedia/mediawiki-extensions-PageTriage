@@ -6,6 +6,7 @@
 		]
 	},
 	"pagetriage-bytes": "$1 {{PLURAL:$1|ဘိုက်|ဘိုက်}}",
+	"pagetriage-categories": "$1 {{PLURAL:$1|ကဏ္ဍ|ကဏ္ဍများ}}",
 	"pagetriage-filter-predicted-class-stub": "ဆောင်းပါးတို",
 	"pagetriage-filter-predicted-class-start": "စတင်",
 	"pagetriage-filter-predicted-issues-vandalism": "ဖျက်လိုဖျက်ဆီးလုပ်ဆောင်မှု",

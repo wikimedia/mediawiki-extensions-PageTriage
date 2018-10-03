@@ -14,7 +14,8 @@
 			"Mainframe98",
 			"Effeietsanders",
 			"Southparkfan",
-			"Optilete"
+			"Optilete",
+			"Jeroen N"
 		]
 	},
 	"pagetriage": "Paginacontrole",
@@ -286,6 +287,7 @@
 	"logentry-pagetriage-curation-tag": "$1 {{GENDER:$2|heeft}} {{PLURAL:$5|het label|de labels}} $4 toegevoegd aan $3",
 	"logentry-pagetriage-curation-delete": "$1 {{GENDER:$2|heeft}} $3 genomineerd voor verwijdering met {{PLURAL:$5|het label|de labels}} $4",
 	"logentry-pagetriage-deletion-delete": "$1 {{GENDER:$2|heeft}} $3 genomineerd voor verwijdering met {{PLURAL:$5|het label|de labels}} $4",
+	"log-name-pagetriage-copyvio": "Logboek mogelijke auteursrechtschendingen",
 	"pagetriage-tags-edit-summary": "Labels aan de pagina toegevoegd met $1 ($2)",
 	"pagetriage-del-edit-summary": "Pagina genomineerd voor verwijdering met $1 ($2)",
 	"pagetriage-del-tags-param-discussion-label": "Leg uit waarom u denkt dat deze pagina verwijderd moet worden en voorzie uw tekst van koppelingen naar het relevante beleid waar mogelijk.",
