@@ -2,18 +2,20 @@
 
 namespace MediaWiki\Extension\PageTriage\Test;
 
-use ApiTestCase;
 use ApiUsageException;
+use PageTriageTestCase;
 use TestUser;
+use User;
 
 /**
  * Tests for ApiPageTriageAction class
  *
  * @group medium
+ * @group Database
  * @group EditorEngagement
  * @covers MediaWiki\Extension\PageTriage\Api\ApiPageTriageAction
  */
-class ApiPageTriageActionTest extends ApiTestCase {
+class ApiPageTriageActionTest extends PageTriageTestCase {
 
 	/**
 	 * @var TestUser[] of test users
@@ -22,7 +24,9 @@ class ApiPageTriageActionTest extends ApiTestCase {
 
 	// Prepare test environment
 	public function setUp() {
+		global $wgHooks;
 		parent::setUp();
+		$this->setUpForOresCopyvioTests( $wgHooks );
 
 		self::$users['one'] = new TestUser(
 				'ApitestuserA',
@@ -37,10 +41,6 @@ class ApiPageTriageActionTest extends ApiTestCase {
 				'api_test_userB@example.com',
 				[]
 		);
-	}
-
-	public function tearDown() {
-		parent::tearDown();
 	}
 
 	public function testLogin() {
@@ -82,16 +82,17 @@ class ApiPageTriageActionTest extends ApiTestCase {
 	 * @depends testLogin
 	 */
 	public function testSuccessfulReviewAction( $sessionArray ) {
-		$this->markTestSkipped( 'Broken test' );
 		global $wgUser;
 
 		$wgUser = self::$users['one']->getUser();
+		$pageId = $this->makePage( 'Test ' );
 
 		list( $result, , $session ) = $this->doApiRequestWithToken(
 			[
 				'action' => 'pagetriageaction',
-				'pageid' => 15,
-				'reviewed' => '1'
+				'pageid' => $pageId,
+				'reviewed' => '1',
+				'skipnotif' => '1'
 			],
 			$sessionArray['one'],
 			self::$users['one']->getUser()
@@ -103,20 +104,36 @@ class ApiPageTriageActionTest extends ApiTestCase {
 	/**
 	 * @depends testLogin
 	 * @expectedException ApiUsageException
+	 * @expectedExceptionMessageRegExp /The action you have requested is limited to users/
 	 */
 	public function testPermissionError( $sessionArray ) {
 		global $wgUser;
 
 		$wgUser = self::$users['two']->getUser();
 
+		$pageId = $this->makePage( 'Test ' );
+		$this->doApiRequestWithToken( [
+			'action' => 'pagetriageaction',
+			'pageid' => $pageId,
+			'skipnotif' => 1,
+			'reviewed' => '1'
+		], $sessionArray['two'], self::$users['two']->getUser() );
+	}
+
+	/**
+	 * @expectedException ApiUsageException
+	 * @expectedExceptionMessageRegExp  /The action you have requested is limited to users/
+	 */
+	public function testPermissionErrorAnon() {
+		$pageId = $this->makePage( 'Test' );
 		$this->doApiRequestWithToken(
 			[
 				'action' => 'pagetriageaction',
-				'pageid' => 15,
-				'reviewed' => '1'
+				'pageid' => $pageId,
+				'reviewed' => '0',
 			],
-			$sessionArray['two'],
-			self::$users['two']->getUser()
+			null,
+			User::newFromId( 0 )
 		);
 	}
 
