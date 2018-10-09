@@ -419,6 +419,11 @@ $( function () {
 				apiParams.showunreviewed = '1';
 			}
 
+			if ( !apiParams.showdeleted && !apiParams.showredirs && !apiParams.showothers ) {
+				apiParams.showdeleted = '1';
+				apiParams.showothers = '1';
+			}
+
 			return apiParams;
 		},
 
