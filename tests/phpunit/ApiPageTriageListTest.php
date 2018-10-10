@@ -458,4 +458,43 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			'Nominated for deletion, Redirects and all others => no filtering' );
 	}
 
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getPageIds()
+	 */
+	public function testUndelete() {
+		$user = self::getTestUser()->getUser();
+		$this->insertPage( 'PageNormal', 'some content', 0, $user );
+		$this->insertPage( 'PageDelUndel', '[[Category:Articles_for_deletion]]', 0, $user );
+
+		$list = $this->getPageTriageList( [
+			'namespace' => 0,
+		] );
+		$this->assertPages( [ 'PageNormal', 'PageDelUndel' ], $list,
+			'All pages' );
+
+		$list = $this->getPageTriageList( [
+			'namespace' => 0,
+			'showdeleted' => 1,
+		] );
+		$this->assertPages( [ 'PageDelUndel' ], $list,
+			'Nominated for deletion only' );
+
+		// This edit is removing the 'nominated for deletion' category
+		$this->editPage( 'PageDelUndel', 'Ok, it can stay' );
+
+		$list = $this->getPageTriageList( [
+			'namespace' => 0,
+			'showdeleted' => 1,
+		] );
+		$this->assertPages( [], $list,
+			'Nothing is Nominated for deletion' );
+
+		$list = $this->getPageTriageList( [
+			'namespace' => 0,
+			'showothers' => 1,
+		] );
+		$this->assertPages( [ 'PageNormal', 'PageDelUndel' ], $list,
+			'All pages are normal now' );
+	}
+
 }
