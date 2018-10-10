@@ -6,7 +6,7 @@ use ApiBase;
 use ManualLogEntry;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Storage\RevisionRecord;
+use MediaWiki\Revision\RevisionRecord;
 use Title;
 
 class ApiPageTriageTagCopyvio extends ApiBase {
