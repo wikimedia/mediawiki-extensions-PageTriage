@@ -495,6 +495,16 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		] );
 		$this->assertPages( [ 'PageNormal', 'PageDelUndel' ], $list,
 			'All pages are normal now' );
+
+		// This edit nominates it for deletion again
+		$this->editPage( 'PageDelUndel', '[[Category:Articles_for_deletion]]' );
+
+		$list = $this->getPageTriageList( [
+			'namespace' => 0,
+			'showdeleted' => 1,
+		] );
+		$this->assertPages( [ 'PageDelUndel' ], $list,
+			'Nominated for deletion only' );
 	}
 
 }
