@@ -20,15 +20,6 @@ $( function () {
 			}
 		},
 
-		afcStateIdToLabel: function ( stateId ) {
-			return ( {
-				1: 'pagetriage-afc-state-unsubmitted',
-				2: 'pagetriage-afc-state-pending',
-				3: 'pagetriage-afc-state-reviewing',
-				4: 'pagetriage-afc-state-declined'
-			} )[ stateId ];
-		},
-
 		formatMetadata: function ( article ) {
 			// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
 			var bylineMessage, userCreationDateParsed, byline, titleUrl,
@@ -109,12 +100,6 @@ $( function () {
 					)
 				);
 				article.set( 'user_contribs_title', article.get( 'creator_contribution_page' ) );
-			}
-
-			// Set the afc_state_value based on the ID.
-			article.set( 'afc_state_value', '' );
-			if ( parseInt( article.get( 'afc_state' ) ) > 0 ) {
-				article.set( 'afc_state_value', mw.msg( this.afcStateIdToLabel( article.get( 'afc_state' ) ) ) );
 			}
 
 			// Set copyvio info
