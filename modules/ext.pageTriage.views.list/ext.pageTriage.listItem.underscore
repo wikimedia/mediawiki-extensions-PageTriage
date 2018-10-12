@@ -51,7 +51,7 @@
 		<div class="mwe-pt-info-row">
 			<div class="mwe-pt-author">
 			<% if ( typeof( user_name ) !== "undefined" ) { %>
-				<%= author_byline %>
+				<%= author_byline_html %>
 				<!-- user_id is undefined or '0' for IP users -->
 				<% if ( typeof ( user_id ) != 'undefined' && Number( user_id ) !== 0 ) { %>
 					&#xb7;
