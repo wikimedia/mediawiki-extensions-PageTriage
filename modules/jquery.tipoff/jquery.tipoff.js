@@ -22,9 +22,6 @@
 			}, 100 );
 		}
 
-		// FIXME: need a better solution for sanitizing output
-		html = html.replace( /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script\s*>/ig, '' );
-
 		// Create the tiptool
 		$tooltip = $( '<div>' )
 			.addClass( 'mw-tipoff' )
