@@ -1,12 +1,12 @@
 <div>
 	<div class="mwe-pt-mark-helptext">
-		<%= mw.msg( 'pagetriage-mark-as-' + status + '-helptext' ) %>
+		<%- mw.msg( 'pagetriage-mark-as-' + status + '-helptext' ) %>
 	</div>
 	<div id="mwe-pt-review-note">
-		<div id="mwe-pt-review-note-title"><%= mw.html.escape( mw.msg( noteTitle ) ) %></div>
-		<textarea id="mwe-pt-review-note-input"><%= mw.html.escape( mw.msg( 'pagetriage-personal-default-note', noteTarget ) ) %></textarea>
+		<div id="mwe-pt-review-note-title"><%- mw.msg( noteTitle ) %></div>
+		<textarea id="mwe-pt-review-note-input"><%- mw.msg( 'pagetriage-personal-default-note', noteTarget ) %></textarea>
 	</div>
-	<div id="mwe-pt-mark-as-<%= status %>">
-		<button id='mwe-pt-mark-as-<%= status %>-button' class="ui-button-green"><%= mw.html.escape( mw.msg( "pagetriage-mark-as-" + status ) ) %></button>
+	<div id="mwe-pt-mark-as-<%- status %>">
+		<button id='mwe-pt-mark-as-<%- status %>-button' class="ui-button-green"><%- mw.msg( "pagetriage-mark-as-" + status ) %></button>
 	</div>
 </div>

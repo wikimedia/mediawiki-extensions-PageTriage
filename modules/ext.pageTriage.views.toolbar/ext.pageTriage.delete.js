@@ -939,7 +939,11 @@ $( function () {
 					break;
 				case 'textarea':
 					if ( obj.label ) {
-						html += '<div class="mwe-pt-delete-params-question">' + obj.label + '</div>';
+						html += mw.html.element(
+							'div',
+							{ 'class': 'mwe-pt-delete-params-question' },
+							obj.label
+						);
 					}
 					html += mw.html.element(
 						'textarea',
@@ -951,7 +955,7 @@ $( function () {
 				case 'text':
 					/* falls through */
 				default:
-					html += obj.label + ' ';
+					html += mw.html.escape( obj.label ) + ' ';
 					html += mw.html.element(
 						'input',
 						{

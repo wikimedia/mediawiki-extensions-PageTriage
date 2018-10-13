@@ -34,7 +34,7 @@ $( function () {
 
 			this.eventBus.bind( 'renderStats', function ( stats ) {
 				// fill in the counter when the stats view gets loaded.
-				$( '#mwe-pt-control-stats' ).html( mw.msg(
+				$( '#mwe-pt-control-stats' ).text( mw.msg(
 					'pagetriage-stats-filter-page-count',
 					stats.get( 'ptrFilterCount' )
 				) );

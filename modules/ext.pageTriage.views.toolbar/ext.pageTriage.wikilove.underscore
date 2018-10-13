@@ -1,7 +1,7 @@
 <div>
 		<div>
-			<%= mw.msg( "pagetriage-wikilove-helptext" ) %>
+			<%- mw.msg( "pagetriage-wikilove-helptext" ) %>
 		</div>
 		<div id="mwe-pt-article-contributor-list"></div>
-		<button id='mwe-pt-wikilove-button' class="ui-button-green mw-wikilove-launcher"><%= mw.msg( "wikilove-button-send" ) %></button>
+		<button id='mwe-pt-wikilove-button' class="ui-button-green mw-wikilove-launcher"><%- mw.msg( "wikilove-button-send" ) %></button>
 </div>

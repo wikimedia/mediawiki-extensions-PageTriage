@@ -285,7 +285,7 @@ $( function () {
 			}
 
 			// update the number in the submit button
-			$( '#mwe-pt-tag-submit-button .ui-button-text' ).html( mw.msg( 'pagetriage-button-add-tag-number', this.selectedTagCount ) );
+			$( '#mwe-pt-tag-submit-button .ui-button-text' ).text( mw.msg( 'pagetriage-button-add-tag-number', this.selectedTagCount ) );
 
 			// activate or deactivate the submit button and associated parts
 			if ( this.selectedTagCount > 0 ) {
@@ -470,7 +470,7 @@ $( function () {
 				}
 				// If a parameter is required but not filled in, show an error and keep the form open
 				if ( tag.params[ param ].input === 'required' && !tag.params[ param ].value ) {
-					$( '#mwe-pt-tags-params-form-error' ).html( mw.msg( 'pagetriage-tags-param-missing-required', tag.tag ) );
+					$( '#mwe-pt-tags-params-form-error' ).text( mw.msg( 'pagetriage-tags-param-missing-required', tag.tag ) );
 					return false;
 				}
 			}
@@ -687,7 +687,7 @@ $( function () {
 					);
 					break;
 				case 'textarea':
-					html += obj.label + ' ';
+					html += mw.html.escape( obj.label ) + ' ';
 					html += mw.html.element(
 						'textarea',
 						{ id: 'mwe-pt-tag-params-' + key + '-' + name },
@@ -706,11 +706,11 @@ $( function () {
 							id: 'mwe-pt-tag-params-' + key + '-' + name
 						}
 					);
-					html += obj.label;
+					html += mw.html.escape( obj.label );
 					html += '<br/>\n';
 					break;
 				case 'select':
-					html += obj.label + ' ';
+					html += mw.html.escape( obj.label ) + ' ';
 					for ( i in obj.option ) {
 						html += mw.html.element(
 							'input',
@@ -728,7 +728,7 @@ $( function () {
 				case 'text':
 					/* falls through */
 				default:
-					html += obj.label + ' ';
+					html += mw.html.escape( obj.label ) + ' ';
 					html += mw.html.element(
 						'input',
 						{
