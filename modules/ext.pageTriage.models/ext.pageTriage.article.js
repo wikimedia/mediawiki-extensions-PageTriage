@@ -73,7 +73,8 @@ $( function () {
 				}
 
 				// put it all together in the byline
-				byline = mw.msg(
+				byline = mw.message(
+					// HTML message!
 					bylineMessage,
 					this.buildLinkTag(
 						article.get( 'creator_user_page_url' ),
@@ -91,9 +92,10 @@ $( function () {
 						mw.msg( 'contribslink' ),
 						true
 					)
-				);
+				// TODO this should ideally use .parse(), but it can't without raw parameter support
+				).text();
 
-				article.set( 'author_byline', byline );
+				article.set( 'author_byline_html', byline );
 				article.set(
 					'user_title_url',
 					this.buildRedLink(
@@ -147,19 +149,20 @@ $( function () {
 			// delete status
 			if ( article.get( 'afd_status' ) === '1' || article.get( 'blp_prod_status' ) === '1' ||
 				article.get( 'csd_status' ) === '1' || article.get( 'prod_status' ) === '1' ) {
-				article.set( 'page_status', mw.msg( 'pagetriage-page-status-delete' ) );
+				article.set( 'page_status_html', mw.message( 'pagetriage-page-status-delete' ).escaped() );
 			// unreviewed status
 			} else if ( article.get( 'patrol_status' ) === '0' ) {
-				article.set( 'page_status', mw.msg( 'pagetriage-page-status-unreviewed' ) );
+				article.set( 'page_status_html', mw.message( 'pagetriage-page-status-unreviewed' ).escaped() );
 			// auto-reviewed status
 			} else if ( article.get( 'patrol_status' ) === '3' ) {
-				article.set( 'page_status', mw.msg( 'pagetriage-page-status-autoreviewed' ) );
+				article.set( 'page_status_html', mw.message( 'pagetriage-page-status-autoreviewed' ).escaped() );
 			// reviewed status
 			} else {
 				if ( article.get( 'ptrp_last_reviewed_by' ) !== 0 && article.get( 'reviewer' ) ) {
 					article.set(
-						'page_status',
-						mw.msg(
+						'page_status_html',
+						mw.message(
+							// HTML message!
 							'pagetriage-page-status-reviewed',
 							Date.parseExact(
 								article.get( 'ptrp_reviewed_updated' ),
@@ -183,10 +186,11 @@ $( function () {
 								mw.msg( 'contribslink' ),
 								true
 							)
-						)
+						// TODO this should ideally use .parse(), but it can't without raw parameter support
+						).text()
 					);
 				} else {
-					article.set( 'page_status', mw.msg( 'pagetriage-page-status-reviewed-anonymous' ) );
+					article.set( 'page_status_html', mw.msg( 'pagetriage-page-status-reviewed-anonymous' ).escaped() );
 				}
 			}
 

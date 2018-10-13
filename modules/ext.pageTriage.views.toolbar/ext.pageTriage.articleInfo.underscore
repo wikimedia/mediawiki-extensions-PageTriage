@@ -12,12 +12,12 @@
 	</div>
 	<!-- page status  -->
 	<div class="mwe-pt-info-page-status">
-		<%= page_status %>
+		<%= page_status_html %>
 	</div>
 	<!-- author info -->
 	<span class="mwe-pt-author">
 		<% if( typeof( user_name ) != 'undefined' ) { %>
-			<%= articleByline %>
+			<%= articleByline_html %>
 			<div>
 				<!-- if user is registered (user_id is 0 for IP users) -->
 				<% if( typeof user_id != 'undefined' && Number( user_id ) !== 0 ) { %>

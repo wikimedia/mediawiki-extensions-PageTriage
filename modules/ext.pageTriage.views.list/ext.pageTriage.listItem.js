@@ -25,7 +25,7 @@ $( function () {
 			this.$el.html( this.template( data ) );
 
 			// initialize page status tooltip
-			this.$el.find( '.mwe-pt-status-icon' ).tipoff( this.model.get( 'page_status' ) );
+			this.$el.find( '.mwe-pt-status-icon' ).tipoff( this.model.get( 'page_status_html' ) );
 
 			return this;
 		}
