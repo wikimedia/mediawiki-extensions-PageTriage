@@ -19,7 +19,8 @@
 			"Hamilton Abreu",
 			"Matthew Flaschen",
 			"Mar(c)",
-			"Robby"
+			"Robby",
+			"Matěj Suchánek"
 		]
 	},
 	"pagetriage": "The name of this application (Page Triage)",
@@ -371,7 +372,7 @@
 	"logentry-pagetriage-deletion-delete": "log action when some marks a page for deletion, {{LogEntry}}, $4 is a list of comma-separated deletion tags, $5 is the number of tags",
 	"log-name-pagetriage-copyvio": "{{doc-logpage}}",
 	"log-description-pagetriage-copyvio": "Descriptive header text for PageTriage copyvio log page",
-	"logentry-pagetriage-copyvio-insert": "Log action when someone inserts copyvio data for a revision on a page. {{LogEntry}}.\n* $4 is the revision ID containing potential copyright violation.",
+	"logentry-pagetriage-copyvio-insert": "Log action when someone inserts copyvio data for a revision on a page.\n{{Logentry}}.\n* $4 is the revision ID containing potential copyright violation.",
 	"pagetriage-tags-edit-summary": "The edit summary that is posted when someone applies tags to an article with the Curation Toolbar in PageTriage.\n*$1 is a link to the local wiki page about the Curation Toolbar with {{msg-mw|pagetriage-pagecuration}} as the link text.\n*$2 is the list of tags added to the article.",
 	"pagetriage-del-edit-summary": "The edit summary that is posted when someone nominates an article for deletion with the Curation Toolbar in PageTriage.\n* $1 - a link to the local wiki page about the Curation Toolbar with {{msg-mw|pagetriage-pagecuration}} as the link text\n* $2 - the list of deletion tags added to the article",
 	"pagetriage-del-tags-param-discussion-label": "Prompt for explaination about why the user wants to nominate a page for deletion",
