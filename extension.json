@@ -16,6 +16,7 @@
 	},
 	"APIModules": {
 		"pagetriagelist": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageList",
+		"pagetriagelastuse": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageLastUse",
 		"pagetriagestats": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageStats",
 		"pagetriageaction": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageAction",
 		"pagetriagetagcopyvio": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageTagCopyvio",
@@ -173,6 +174,7 @@
 		"ext.pageTriage.models": {
 			"dependencies": [
 				"mediawiki.Title",
+				"mediawiki.Uri",
 				"mediawiki.api",
 				"mediawiki.user",
 				"ext.pageTriage.init"
@@ -595,7 +597,8 @@
 			"dependencies": [
 				"ext.pageTriage.init",
 				"mediawiki.api",
-				"mediawiki.jqueryMsg"
+				"mediawiki.jqueryMsg",
+				"mediawiki.Uri"
 			]
 		}
 	},

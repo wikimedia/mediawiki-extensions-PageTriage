@@ -671,4 +671,29 @@ class PageTriageUtil {
 		return $opts[ 'show_predicted_issues_copyvio' ] ?? false;
 	}
 
+	/**
+	 * @param User $user
+	 * @return bool
+	 */
+	public static function setPageTriageLastUseForUser( User $user ) {
+		global $wgPageTriageMarkPatrolledLinkExpiry;
+		$cache = MediaWikiServices::getInstance()->getMainObjectStash();
+		$key = $cache->makeKey( 'pagetriage-lastuse', $user->getId() );
+		return $cache->set(
+			$key,
+			wfTimestamp(),
+			$wgPageTriageMarkPatrolledLinkExpiry ?? $cache::TTL_DAY
+		);
+	}
+
+	/**
+	 * @param User $user
+	 * @return bool
+	 */
+	public static function getPageTriageLastUseForUser( User $user ) {
+		$cache = MediaWikiServices::getInstance()->getMainObjectStash();
+		$key = $cache->makeKey( 'pagetriage-lastuse', $user->getId() );
+		return (bool)$cache->get( $key );
+	}
+
 }
