@@ -514,6 +514,8 @@
 	"apihelp-pagetriagetagcopyvio-description": "{{doc-apihelp-description|pagetriagetagcopyvio}}",
 	"apihelp-pagetriagetagcopyvio-summary": "{{doc-apihelp-summary|pagetriagetagcopyvio}}",
 	"apihelp-pagetriagetagcopyvio-param-revid": "{{doc-apihelp-param|pagetriagetagcopyvio|revid}}",
+	"apihelp-pagetriagelastuse-description": "{{doc-apihelp-summary|pagetriagelastuse}}",
+	"apihelp-pagetriagelastuse-summary": "{{doc-apihelp-summary|pagetriagelastuse}}",
 	"apihelp-pagetriagetagging-description": "{{doc-apihelp-description|pagetriagetagging}}",
 	"apihelp-pagetriagetagging-summary": "{{doc-apihelp-summary|pagetriagetagging}}",
 	"apihelp-pagetriagetagging-param-pageid": "{{doc-apihelp-param|pagetriagetagging|pageid}}",

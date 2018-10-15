@@ -90,8 +90,7 @@ $( function () {
 
 					render: function () {
 						var that = this,
-							lastUse = mw.storage.session.get( 'pagetriage-lastuse' ),
-							nowMinusLastUse = parseInt( mw.now() ) - parseInt( lastUse );
+							lastUse = mw.config.get( 'wgPageTriageLastUse' );
 						// build the bar and insert into the page.
 						// insert the empty toolbar into the document.
 						$( 'body' ).append( this.template() );
@@ -127,21 +126,19 @@ $( function () {
 						} );
 
 						// If the query param for showcurationtoolbar is set, then don't bother
-						// checking for lastUse or calculating link expiry, just show the toolbar.
-						if ( !mw.util.getParamValue( 'showcurationtoolbar' ) ) {
-							// No history of last use, hide toolbar.
-							if ( !lastUse ) {
-								this.hide();
-								return;
-							}
-
-							// Hide the toolbar if it's been more than 24 hours since last use.
-							if ( nowMinusLastUse > mw.config.get( 'wgPageTriageMarkPatrolledLinkExpiry' ) ) {
-								this.hide();
-								return;
-							}
+						// checking for lastUse or calculating link expiry, just show the toolbar
+						// maximized.
+						if ( mw.util.getParamValue( 'showcurationtoolbar' ) ) {
+							this.maximize();
+							return;
 						}
-						// Show the toolbar.
+						// No history of last use, hide toolbar.
+						if ( !lastUse ) {
+							this.hide();
+							return;
+						}
+
+						// Show the toolbar based on saved prefs.
 						switch ( mw.user.options.get( 'userjs-curationtoolbar' ) ) {
 							case 'hidden':
 								this.hide();
@@ -237,6 +234,7 @@ $( function () {
 					},
 					insertLink: function () {
 						var that = this,
+							url = new mw.Uri(),
 							$link = $( '<li id="t-curationtoolbar"><a href="#"></a></li>' );
 
 						$link.find( 'a' )
@@ -246,7 +244,19 @@ $( function () {
 									$( '#mwe-pt-toolbar' ).show();
 									$( '#mw-content-text .patrollink' ).hide();
 									that.setToolbarPreference( 'maximized' );
-									mw.storage.session.set( 'pagetriage-lastuse', mw.now() );
+									new mw.Api().postWithToken( 'csrf',
+										{ action: 'pagetriagelastuse' }
+									);
+									// If the user clicks "Curate this article" the toolbar shows
+									// and we update last use on the cache layer. But if they then
+									// reload the page, there's a possibility that the request
+									// won't reach the PHP layer, in which case the cache value
+									// won't be read back. As a workaround, set the query parameter
+									// to force showing the curation toolbar.
+									if ( history.pushState ) {
+										url.query.showcurationtoolbar = 1;
+										window.history.pushState( { path: url.toString() }, '', url.toString() );
+									}
 								}
 								this.blur();
 								return false;
