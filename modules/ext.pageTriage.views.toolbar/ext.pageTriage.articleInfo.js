@@ -37,7 +37,6 @@ $( function () {
 
 				// put it all together in the byline
 				articleByline = mw.message(
-					// HTML message!
 					bylineMessage,
 					Date.parseExact(
 						this.model.get( 'creation_date' ),
@@ -61,8 +60,7 @@ $( function () {
 						mw.msg( 'contribslink' ),
 						true
 					)
-				// TODO this should ideally use .parse(), but it can't without raw parameter support
-				).text();
+				).parse();
 				this.model.set( 'articleByline_html', articleByline );
 			}
 
