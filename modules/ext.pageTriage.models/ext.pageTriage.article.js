@@ -65,7 +65,6 @@ $( function () {
 
 				// put it all together in the byline
 				byline = mw.message(
-					// HTML message!
 					bylineMessage,
 					this.buildLinkTag(
 						article.get( 'creator_user_page_url' ),
@@ -83,8 +82,7 @@ $( function () {
 						mw.msg( 'contribslink' ),
 						true
 					)
-				// TODO this should ideally use .parse(), but it can't without raw parameter support
-				).text();
+				).parse();
 
 				article.set( 'author_byline_html', byline );
 				article.set(
@@ -147,7 +145,6 @@ $( function () {
 					article.set(
 						'page_status_html',
 						mw.message(
-							// HTML message!
 							'pagetriage-page-status-reviewed',
 							Date.parseExact(
 								article.get( 'ptrp_reviewed_updated' ),
@@ -171,8 +168,7 @@ $( function () {
 								mw.msg( 'contribslink' ),
 								true
 							)
-						// TODO this should ideally use .parse(), but it can't without raw parameter support
-						).text()
+						).parse()
 					);
 				} else {
 					article.set( 'page_status_html', mw.msg( 'pagetriage-page-status-reviewed-anonymous' ).escaped() );
@@ -229,14 +225,12 @@ $( function () {
 				url = this.buildRedLink( url, exists );
 				style = 'new';
 			}
-			return mw.html.element(
-				'a',
-				{
+			return $( '<a>' )
+				.attr( {
 					href: url,
 					'class': style
-				},
-				text
-			);
+				} )
+				.text( text );
 		},
 
 		buildRedLink: function ( url, exists ) {

@@ -594,7 +594,8 @@
 			],
 			"dependencies": [
 				"ext.pageTriage.init",
-				"mediawiki.api"
+				"mediawiki.api",
+				"mediawiki.jqueryMsg"
 			]
 		}
 	},
