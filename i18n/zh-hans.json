@@ -369,6 +369,8 @@
 	"apihelp-pagetriagetagging-param-deletion": "是否也要标记已被提议删除的。",
 	"apihelp-pagetriagetagging-param-note": "巡查员给页面创建者的说明。",
 	"apihelp-pagetriagetagging-param-taglist": "逗号分隔的标签列表。",
+	"apihelp-pagetriagelastuse-description": "保存用户在其会话数据期间，上次使用PageTriage的时间戳",
+	"apihelp-pagetriagelastuse-summary": "保存用户在其会话数据期间，上次使用PageTriage的时间戳",
 	"apierror-bad-pagetriage-page": "指定的页面在pagetriage队列中不存在",
 	"apierror-pagetriage-missingtag": "找不到用于侵权标记的标记ID。尝试运行update.php。"
 }

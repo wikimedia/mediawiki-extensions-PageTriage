@@ -389,6 +389,8 @@
 	"apihelp-pagetriagetagging-param-deletion": "تحديد ما إذا كان الوسم لترشيح حذف أم لا.",
 	"apihelp-pagetriagetagging-param-note": "ملاحظة شخصية لمنشئي الصفحة من المراجعين.",
 	"apihelp-pagetriagetagging-param-taglist": "قائمة مفصولة بفواصل بالعلامات",
+	"apihelp-pagetriagelastuse-description": "حفظ الطابع الزمني للوقت الذي استخدم فيه المستخدم آخر PageTriage في بيانات جلسته",
+	"apihelp-pagetriagelastuse-summary": "حفظ الطابع الزمني للوقت الذي استخدم فيه المستخدم آخر PageTriage في بيانات جلسته",
 	"apierror-bad-pagetriage-page": "الصفحة المحددة غير موجودة في قائمة انتظار فرز الصفحات",
 	"apierror-pagetriage-missingtag": "لا يمكن العثور على معرف وسم لوسم انتهاك حقوق الطبع والنشر; حاول تشغيل update.php."
 }

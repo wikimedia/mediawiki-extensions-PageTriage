@@ -514,8 +514,6 @@
 	"apihelp-pagetriagetagcopyvio-description": "{{doc-apihelp-description|pagetriagetagcopyvio}}",
 	"apihelp-pagetriagetagcopyvio-summary": "{{doc-apihelp-summary|pagetriagetagcopyvio}}",
 	"apihelp-pagetriagetagcopyvio-param-revid": "{{doc-apihelp-param|pagetriagetagcopyvio|revid}}",
-	"apihelp-pagetriagelastuse-description": "{{doc-apihelp-summary|pagetriagelastuse}}",
-	"apihelp-pagetriagelastuse-summary": "{{doc-apihelp-summary|pagetriagelastuse}}",
 	"apihelp-pagetriagetagging-description": "{{doc-apihelp-description|pagetriagetagging}}",
 	"apihelp-pagetriagetagging-summary": "{{doc-apihelp-summary|pagetriagetagging}}",
 	"apihelp-pagetriagetagging-param-pageid": "{{doc-apihelp-param|pagetriagetagging|pageid}}",
@@ -524,6 +522,8 @@
 	"apihelp-pagetriagetagging-param-deletion": "{{doc-apihelp-param|pagetriagetagging|deletion}}",
 	"apihelp-pagetriagetagging-param-note": "{{doc-apihelp-param|pagetriagetagging|note}}",
 	"apihelp-pagetriagetagging-param-taglist": "{{doc-apihelp-param|pagetriagetagging|taglist}}",
+	"apihelp-pagetriagelastuse-description": "{{doc-apihelp-summary|pagetriagelastuse}}",
+	"apihelp-pagetriagelastuse-summary": "{{doc-apihelp-summary|pagetriagelastuse}}",
 	"apierror-bad-pagetriage-page": "{{doc-apierror}}",
 	"apierror-pagetriage-missingtag": "{{doc-apierror}}"
 }
