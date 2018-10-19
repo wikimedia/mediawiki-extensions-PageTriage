@@ -498,8 +498,8 @@
 	"apihelp-pagetriagetagging-param-deletion": "Si le marquage concerne une proposition de suppression.",
 	"apihelp-pagetriagetagging-param-note": "Note personnelle des relecteurs concernant les créateurs de pages.",
 	"apihelp-pagetriagetagging-param-taglist": "Liste d’étiquettes séparée par des barres verticales.",
-	"apihelp-pagetriagelastuse-description": "Enregistrer l’horodatage dans ses données de session du moment où l’utilisateur a utilisé PageTriage pour la dernière fois",
-	"apihelp-pagetriagelastuse-summary": "Enregistrer l’horodatage dans ses données de session du moment où l’utilisateur a utilisé PageTriage pour la dernière fois",
+	"apihelp-pagetriagelastuse-description": "utilisé pour stocker un horodatage du moment où l’utilisateur a accédé pour la dernière fois à la vue de liste principale de PageTriage.",
+	"apihelp-pagetriagelastuse-summary": "Utilisé pour stocker un horodatage de la dernière fois où un utilisateur a accédé à la vue principale de liste de PageTriage.",
 	"apierror-bad-pagetriage-page": "La page spécifiée n’existe pas dans la file pagetriage",
 	"apierror-pagetriage-missingtag": "Impossible de trouver un ID de balise pour la balise copyvio. Essayez de lancer update.php."
 }

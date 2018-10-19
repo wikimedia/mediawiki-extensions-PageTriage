@@ -275,5 +275,7 @@
 	"apihelp-pagetriagestats-param-show_predicted_issues_none": "Включить ли отсутствие предсказываемых проблем",
 	"apihelp-pagetriagetagcopyvio-description": "Отметить версию как вероятно нарушающую авторские права в «Служебная:Новые страницы». Требуется право pagetriage-copyvio.",
 	"apihelp-pagetriagetagcopyvio-summary": "Отметить версию как вероятно нарушающую авторские права.",
+	"apihelp-pagetriagelastuse-description": "Используется для хранения даты и времени, когда пользователь в последний раз посетил главный список «Проверки страниц».",
+	"apihelp-pagetriagelastuse-summary": "Используется для хранения даты и времени, когда пользователь в последний раз посетил главный список «Проверки страниц».",
 	"apierror-pagetriage-missingtag": "Не удалось найти ID отметки о нарушении авторских прав. Попробуйте запустить update.php."
 }

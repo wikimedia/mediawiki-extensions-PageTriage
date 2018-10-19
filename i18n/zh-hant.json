@@ -201,9 +201,9 @@
 	"logentry-pagetriage-curation-tag": "$1已將$3{{GENDER:$2|標記上}}$4{{PLURAL:$5|標籤}}",
 	"logentry-pagetriage-curation-delete": "$1已使用$4{{PLURAL:$5|標籤}}將$3{{GENDER:$2|標記以刪除}}",
 	"logentry-pagetriage-deletion-delete": "$1已使用$4{{PLURAL:$5|標籤}}將$3{{GENDER:$2|標記以刪除}}",
-	"log-name-pagetriage-copyvio": "侵犯版權事件日誌",
+	"log-name-pagetriage-copyvio": "潛在侵犯版權事件日誌",
 	"log-description-pagetriage-copyvio": "此為透過 PageTriage Copyvio API 所收的事件日誌",
-	"logentry-pagetriage-copyvio-insert": "$1{{GENDER:$2|已標記}}在$3的修訂 $4 可能有侵犯版權",
+	"logentry-pagetriage-copyvio-insert": "$1{{GENDER:$2|已標記}}在$3的修訂 $4 為潛在侵犯版權",
 	"pagetriage-tags-edit-summary": "使用$1 ($2)向頁面添加標籤",
 	"pagetriage-del-edit-summary": "通過$1($2)將頁面提交刪除",
 	"pagetriage-del-tags-param-discussion-label": "請說明此頁面為什麼需要被刪除，並在可能時提供指向相關方針的連結",
@@ -352,8 +352,8 @@
 	"apihelp-pagetriagetagging-param-deletion": "標記是否用於刪除提名。",
 	"apihelp-pagetriagetagging-param-note": "檢閱員對頁面創建者的個人提醒。",
 	"apihelp-pagetriagetagging-param-taglist": "豎號分隔的標籤清單。",
-	"apihelp-pagetriagelastuse-description": "儲存在使用者的 session 資料裡，最後一次使用到 PageTriage 的時間戳",
-	"apihelp-pagetriagelastuse-summary": "儲存在使用者的 session 資料裡，最後一次使用到 PageTriage 的時間戳",
+	"apihelp-pagetriagelastuse-description": "使用來保存當使用者最後一次存取主要 PageTriage 清單視圖的時間戳。",
+	"apihelp-pagetriagelastuse-summary": "使用來保存當使用者最後一次存取主要 PageTriage 清單視圖的時間戳。",
 	"apierror-bad-pagetriage-page": "指定的頁面不存在於頁面分檢器佇列",
 	"apierror-pagetriage-missingtag": "無法從侵犯版權標籤裡找出標籤 ID。請嘗試更新 update.php。"
 }
