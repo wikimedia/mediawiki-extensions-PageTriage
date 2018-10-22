@@ -345,6 +345,42 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	/**
 	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getPageIds()
 	 */
+	public function testQueryOresBoundaries() {
+		$this->setMwGlobals( 'wgOresModels', [
+			'draftquality' => [ 'enabled' => true ],
+			'articlequality' => [ 'enabled' => true ],
+		] );
+		$user = static::getTestUser()->getUser();
+		$this->insertPage( 'Test page ores 3', 'some content', $this->draftNsId, $user );
+		$page = WikiPage::factory( Title::newFromText( 'Test page ores 3', $this->draftNsId ) );
+		$rev1 = $page->getLatest();
+
+		$dbw = wfGetDB( DB_MASTER );
+
+		$dbw->insert( 'ores_classification', [
+			'oresc_model' => self::ensureOresModel( 'articlequality' ),
+			'oresc_probability' => 0.5,
+			'oresc_rev' => $rev1,
+			'oresc_class' => 1,
+			'oresc_is_predicted' => 1,
+		] );
+		self::ensureOresModel( 'draftquality' );
+
+		$list = $this->getPageTriageList();
+		$this->assertEquals( 1, count( $list ), 'no filters' );
+
+		$list = $this->getPageTriageList( [ 'show_predicted_class_b' => true ] );
+		$this->assertCount( 1, $list, 'show class B' );
+		$this->assertEquals( 'Draft:Test page ores 3', $list[0]['title'] );
+		$this->assertEquals( 'B-class', $list[0]['ores_articlequality'] );
+
+		$list = $this->getPageTriageList( [ 'show_predicted_class_c' => true ] );
+		$this->assertCount( 0, $list, 'show class C ' );
+	}
+
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getPageIds()
+	 */
 	public function testQueryOresCopyvio() {
 		$dbw = wfGetDB( DB_MASTER );
 		foreach ( [ 'pagetriage_page', 'page' ] as $table ) {
