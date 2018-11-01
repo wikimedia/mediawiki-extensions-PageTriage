@@ -28,3 +28,8 @@
 .mwe-pt-mode-afc .mwe-pt-bottom-nav-stats {
 	display: none;
 }
+
+/** Ensure the filter panel is entirely visible even when there is no results */
+.mw-special-NewPagesFeed .mw-body-content {
+	min-height: 550px;
+}
