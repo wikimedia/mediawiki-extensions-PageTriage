@@ -110,7 +110,8 @@ $( function () {
 						filter: 'all',
 						searchCriteria: 'page_exact',
 						searchText: titleObj.getMainText(),
-						drafts: article.get( 'is_draft' ) ? 1 : 0
+						drafts: article.get( 'is_draft' ) ? 1 : 0,
+						revision: article.get( 'copyvio' )
 					} )
 				);
 			} else {
