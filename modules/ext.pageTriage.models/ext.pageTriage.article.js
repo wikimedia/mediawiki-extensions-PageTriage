@@ -181,9 +181,6 @@ $( function () {
 			if ( Number( article.get( 'is_redirect' ) ) === 1 ) {
 				titleUrl.query.redirect = 'no';
 			}
-			// Query parameter to assist in showing the curation toolbar on an article after
-			// clicking over from the list view interface.
-			titleUrl.query.showcurationtoolbar = 1;
 			article.set( 'title_url', titleUrl.toString() );
 			// jscs: enable requireCamelCaseOrUpperCaseIdentifiers
 		},

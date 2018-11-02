@@ -379,7 +379,7 @@
 	"pagetriage-info-timestamp-time-format": "HH:mm",
 	"pagetriage-info-tooltip": "Show metadata for this page",
 	"pagetriage-toolbar-collapsed": "Curation",
-	"pagetriage-toolbar-linktext": "Curate this article",
+	"pagetriage-toolbar-linktext": "Open Page Curation",
 	"pagetriage-toolbar-learn-more": "Learn more »",
 	"pagetriage-mark-title": "Mark as reviewed",
 	"pagetriage-mark-as-reviewed": "Mark as reviewed",
@@ -506,8 +506,6 @@
 	"apihelp-pagetriagetagging-param-deletion": "Whether or not the tagging is for a deletion nomination.",
 	"apihelp-pagetriagetagging-param-note": "Personal note to page creators from reviewers.",
 	"apihelp-pagetriagetagging-param-taglist": "Pipe-separated list of tags.",
-	"apihelp-pagetriagelastuse-description": "Used to store a timestamp of when a user last accessed the main PageTriage list view.",
-	"apihelp-pagetriagelastuse-summary": "Used to store a timestamp of when a user last accessed the main PageTriage list view.",
 	"apierror-bad-pagetriage-page": "The page specified does not exist in pagetriage queue",
 	"apierror-pagetriage-missingtag": "Could not find a tag ID for the copyvio tag. Try running update.php."
 }

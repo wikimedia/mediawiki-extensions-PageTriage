@@ -50,7 +50,6 @@ $( function () {
 							if ( page.is_redirect === '1' ) {
 								url.query.redirect = 'no';
 							}
-							url.query.showcurationtoolbar = 1;
 							window.location.href = url.toString();
 						} else {
 							that.disable();

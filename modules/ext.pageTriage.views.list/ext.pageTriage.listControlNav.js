@@ -32,11 +32,6 @@ $( function () {
 				} );
 			}
 
-			// For reviewers, update the last use timestamp.
-			if ( mw.config.get( 'wgPageTriageEnableReviewButton' ) ) {
-				new mw.Api().postWithToken( 'csrf', { action: 'pagetriagelastuse' } );
-			}
-
 			this.eventBus.bind( 'renderStats', function ( stats ) {
 				// fill in the counter when the stats view gets loaded.
 				$( '#mwe-pt-control-stats' ).text( mw.msg(

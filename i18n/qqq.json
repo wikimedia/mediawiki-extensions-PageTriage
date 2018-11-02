@@ -522,8 +522,6 @@
 	"apihelp-pagetriagetagging-param-deletion": "{{doc-apihelp-param|pagetriagetagging|deletion}}",
 	"apihelp-pagetriagetagging-param-note": "{{doc-apihelp-param|pagetriagetagging|note}}",
 	"apihelp-pagetriagetagging-param-taglist": "{{doc-apihelp-param|pagetriagetagging|taglist}}",
-	"apihelp-pagetriagelastuse-description": "{{doc-apihelp-description|pagetriagelastuse}}",
-	"apihelp-pagetriagelastuse-summary": "{{doc-apihelp-summary|pagetriagelastuse}}",
 	"apierror-bad-pagetriage-page": "{{doc-apierror}}",
 	"apierror-pagetriage-missingtag": "{{doc-apierror}}"
 }

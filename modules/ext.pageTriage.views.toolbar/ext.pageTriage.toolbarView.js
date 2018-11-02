@@ -89,8 +89,7 @@ $( function () {
 					},
 
 					render: function () {
-						var that = this,
-							lastUse = mw.config.get( 'wgPageTriageLastUse' );
+						var that = this;
 						// build the bar and insert into the page.
 						// insert the empty toolbar into the document.
 						$( 'body' ).append( this.template() );
@@ -124,19 +123,6 @@ $( function () {
 						$( '.mwe-pt-toolbar-close-button' ).click( function () {
 							that.hide( true );
 						} );
-
-						// If the query param for showcurationtoolbar is set, then don't bother
-						// checking for lastUse or calculating link expiry, just show the toolbar
-						// maximized.
-						if ( mw.util.getParamValue( 'showcurationtoolbar' ) ) {
-							this.maximize();
-							return;
-						}
-						// No history of last use, hide toolbar.
-						if ( !lastUse ) {
-							this.hide();
-							return;
-						}
 
 						// Show the toolbar based on saved prefs.
 						switch ( mw.user.options.get( 'userjs-curationtoolbar' ) ) {
@@ -234,7 +220,6 @@ $( function () {
 					},
 					insertLink: function () {
 						var that = this,
-							url = new mw.Uri(),
 							$link = $( '<li id="t-curationtoolbar"><a href="#"></a></li>' );
 
 						$link.find( 'a' )
@@ -244,19 +229,6 @@ $( function () {
 									$( '#mwe-pt-toolbar' ).show();
 									$( '#mw-content-text .patrollink' ).hide();
 									that.setToolbarPreference( 'maximized' );
-									new mw.Api().postWithToken( 'csrf',
-										{ action: 'pagetriagelastuse' }
-									);
-									// If the user clicks "Curate this article" the toolbar shows
-									// and we update last use on the cache layer. But if they then
-									// reload the page, there's a possibility that the request
-									// won't reach the PHP layer, in which case the cache value
-									// won't be read back. As a workaround, set the query parameter
-									// to force showing the curation toolbar.
-									if ( history.pushState ) {
-										url.query.showcurationtoolbar = 1;
-										window.history.pushState( { path: url.toString() }, '', url.toString() );
-									}
 								}
 								this.blur();
 								return false;

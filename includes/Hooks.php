@@ -470,7 +470,6 @@ class Hooks {
 				$outputPage->addModules( 'ext.pageTriage.toolbarStartup' );
 				// Set the config flags in JavaScript
 				$globalVars = [
-					'wgPageTriageLastUse' => PageTriageUtil::getPageTriageLastUseForUser( $user ),
 					'wgPageTriagePagePrefixedText' => $article->getTitle()->getPrefixedText()
 				];
 				$outputPage->addJsConfigVars( $globalVars );
