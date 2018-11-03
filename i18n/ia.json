@@ -296,7 +296,5 @@
 	"apihelp-pagetriagetagcopyvio-description": "Marcar un version como un probabile infringimento del derecto de autor in Special:NewPagesFeed. Require le privilegio pagetriage-copyvio.",
 	"apihelp-pagetriagetagcopyvio-summary": "Marcar un version como un probabile infringimento del derecto de autor.",
 	"apihelp-pagetriagetagcopyvio-param-revid": "ID del version a marcar como probabile infringimento del derecto de autor",
-	"apihelp-pagetriagelastuse-description": "Registrar in le datos de session del usator le data e hora de su uso le plus recente de PageTriage",
-	"apihelp-pagetriagelastuse-summary": "Registrar in le datos de session del usator le data e hora de su uso le plus recente de PageTriage",
 	"apierror-pagetriage-missingtag": "Non poteva trovar un ID pro le etiquetta copyvio. Essaya executar update.php."
 }

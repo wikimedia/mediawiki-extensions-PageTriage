@@ -363,8 +363,6 @@
 	"apihelp-pagetriagetagging-param-deletion": "Se a etiquetagem é para uma nomeação para eliminação, ou não.",
 	"apihelp-pagetriagetagging-param-note": "Nota pessoal dos revisores para os criadores de páginas.",
 	"apihelp-pagetriagetagging-param-taglist": "Lista de etiquetas separadas por barras verticais.",
-	"apihelp-pagetriagelastuse-description": "Usado para armazenar um registro de data e hora de quando um usuário acessou pela última vez a visualização de lista principal de triagem de página.",
-	"apihelp-pagetriagelastuse-summary": "Usado para armazenar um registro de data e hora de quando um usuário acessou pela última vez a visualização de lista principal de triagem de página.",
 	"apierror-bad-pagetriage-page": "A página especificada não existe na fila de triagem de páginas",
 	"apierror-pagetriage-missingtag": "Não foi encontrado um identificador de etiqueta para a etiqueta de infringência dos direitos de autor. Tente executar o update.php."
 }

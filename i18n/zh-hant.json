@@ -352,8 +352,6 @@
 	"apihelp-pagetriagetagging-param-deletion": "標記是否用於刪除提名。",
 	"apihelp-pagetriagetagging-param-note": "檢閱員對頁面創建者的個人提醒。",
 	"apihelp-pagetriagetagging-param-taglist": "豎號分隔的標籤清單。",
-	"apihelp-pagetriagelastuse-description": "使用來保存當使用者最後一次存取主要 PageTriage 清單視圖的時間戳。",
-	"apihelp-pagetriagelastuse-summary": "使用來保存當使用者最後一次存取主要 PageTriage 清單視圖的時間戳。",
 	"apierror-bad-pagetriage-page": "指定的頁面不存在於頁面分檢器佇列",
 	"apierror-pagetriage-missingtag": "無法從侵犯版權標籤裡找出標籤 ID。請嘗試更新 update.php。"
 }

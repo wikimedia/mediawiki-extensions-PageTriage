@@ -373,7 +373,7 @@
 	"pagetriage-info-timestamp-time-format": "HH:mm",
 	"pagetriage-info-tooltip": "Sich die Metadaten für diese Seite anzeigen lassen.",
 	"pagetriage-toolbar-collapsed": "Kuratierung",
-	"pagetriage-toolbar-linktext": "Kuratiere diesen Artikel",
+	"pagetriage-toolbar-linktext": "Seitenkuratierung öffnen",
 	"pagetriage-toolbar-learn-more": "Mehr erfahren »",
 	"pagetriage-mark-title": "Als geprüft markieren",
 	"pagetriage-mark-as-reviewed": "Als geprüft markieren",
@@ -471,8 +471,6 @@
 	"apihelp-pagetriagetagging-param-deletion": "Ob die Markierung für einen Löschvorschlag ist oder nicht.",
 	"apihelp-pagetriagetagging-param-note": "Persönliche Nachricht an die Seitenersteller von den Prüfern.",
 	"apihelp-pagetriagetagging-param-taglist": "Pipe-getrennte Liste mit Markierungen.",
-	"apihelp-pagetriagelastuse-description": "Wird verwendet, um einen Zeitstempel zu speichern, wann ein Benutzer zuletzt auf die Haupt-Listenansicht von PageTriage zugegriffen hat.",
-	"apihelp-pagetriagelastuse-summary": "Wird verwendet, um einen Zeitstempel zu speichern, wann ein Benutzer zuletzt auf die Haupt-Listenansicht von PageTriage zugegriffen hat.",
 	"apierror-bad-pagetriage-page": "Die angegebene Seite ist in der Seitenprüfungs-Warteschlange nicht vorhanden",
 	"apierror-pagetriage-missingtag": "Es konnte keine Kennung für die URV-Markierung gefunden werden. Versuche, update.php auszuführen."
 }
