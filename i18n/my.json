@@ -5,6 +5,7 @@
 			"Dr Lotus Black"
 		]
 	},
+	"pagetriage-reviewed": "ပြန်လည်ဆန်းစစ်ပြီး",
 	"pagetriage-bytes": "$1 {{PLURAL:$1|ဘိုက်|ဘိုက်}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|ကဏ္ဍ|ကဏ္ဍများ}}",
 	"pagetriage-filter-predicted-class-stub": "ဆောင်းပါးတို",
