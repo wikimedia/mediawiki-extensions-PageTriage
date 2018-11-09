@@ -30,6 +30,6 @@
 }
 
 /** Ensure the filter panel is entirely visible even when there is no results */
-.mw-special-NewPagesFeed #bodyContent {
+.mw-special-NewPagesFeed #mwe-pt-list {
 	min-height: 550px;
 }
