@@ -1,6 +1,6 @@
 // See https://www.mediawiki.org/wiki/Extension:PageTriage for basic documentation on configuration.
 
-( function ( $, mw ) {
+( function () {
 	var param = {
 			url: {
 				label: mw.msg( 'pagetriage-tags-param-url-label' ),
@@ -399,4 +399,4 @@
 
 	};
 
-}( jQuery, mediaWiki ) );
+}() );

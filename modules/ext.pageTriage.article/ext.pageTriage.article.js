@@ -1,7 +1,7 @@
 // Handles the interface for actually marking an article as reviewed
 //
 
-( function ( $ ) {
+( function () {
 	mw.pageTriage.action = {
 		submit: function () {
 			new mw.Api().postWithToken( 'csrf', {
@@ -25,4 +25,4 @@
 				return false;
 			} );
 	} );
-}( jQuery ) );
+}() );

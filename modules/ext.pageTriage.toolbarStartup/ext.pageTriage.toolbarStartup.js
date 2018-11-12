@@ -1,4 +1,4 @@
-jQuery( function () {
+$( function () {
 	var modules,
 		ns = mw.config.get( 'wgNamespaceNumber' );
 

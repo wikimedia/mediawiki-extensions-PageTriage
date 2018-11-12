@@ -1,4 +1,4 @@
-( function ( mw ) {
+( function () {
 	mw.pageTriage.contentLanguageMessages = new mw.Map();
 
 	/**
@@ -17,4 +17,4 @@
 		var parameters = Array.prototype.slice.call( arguments, 1 );
 		return new mw.Message( mw.pageTriage.contentLanguageMessages, key, parameters );
 	};
-}( mediaWiki ) );
+}() );

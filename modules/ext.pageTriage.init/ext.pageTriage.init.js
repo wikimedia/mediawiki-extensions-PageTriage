@@ -1,3 +1,3 @@
-( function ( mw ) {
+( function () {
 	mw.pageTriage = {};
-}( mediaWiki ) );
+}() );

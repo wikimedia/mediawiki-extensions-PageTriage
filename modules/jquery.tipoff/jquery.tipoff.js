@@ -2,7 +2,7 @@
  * Script for tooltips you can interact with
  */
 
-( function ( $ ) {
+( function () {
 
 	$.fn.tipoff = function ( html ) {
 		var $tooltip, hideTimer, showTimer,
@@ -49,4 +49,4 @@
 
 	};
 
-}( jQuery ) );
+}() );
