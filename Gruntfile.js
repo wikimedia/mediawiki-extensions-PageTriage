@@ -33,7 +33,6 @@ module.exports = function ( grunt ) {
 		},
 		watch: {
 			files: [
-				'.{jscsrc,jshintignore,jshintrc}',
 				'<%= eslint.all %>',
 				'<%= stylelint.all %>',
 				'<%= jsonlint.all %>'

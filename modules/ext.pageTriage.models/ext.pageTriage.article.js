@@ -21,7 +21,6 @@ $( function () {
 		},
 
 		formatMetadata: function ( article ) {
-			// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
 			var bylineMessage, userCreationDateParsed, byline, titleUrl,
 				creationDateParsed = Date.parseExact( article.get( 'creation_date' ), 'yyyyMMddHHmmss' ),
 				reviewedUpdatedParsed = Date.parseExact( article.get( 'ptrp_reviewed_updated' ), 'yyyyMMddHHmmss' ),
@@ -183,7 +182,6 @@ $( function () {
 				titleUrl.query.redirect = 'no';
 			}
 			article.set( 'title_url', titleUrl.toString() );
-			// jscs: enable requireCamelCaseOrUpperCaseIdentifiers
 		},
 
 		tagWarningNotice: function () {

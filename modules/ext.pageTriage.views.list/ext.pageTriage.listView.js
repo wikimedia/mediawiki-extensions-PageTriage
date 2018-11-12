@@ -82,9 +82,7 @@ $( function () {
 			// set the offsets for the page fetch
 			lastArticle = articles.last( 1 );
 			if ( 0 in lastArticle ) {
-				// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
 				articles.apiParams.offset = lastArticle[ 0 ].attributes.creation_date_utc;
-				// jscs: enable requireCamelCaseOrUpperCaseIdentifiers
 				articles.apiParams.pageoffset = lastArticle[ 0 ].attributes.pageid;
 			} else {
 				articles.apiParams.offset = 0;
@@ -134,9 +132,7 @@ $( function () {
 			// set the offsets for the page fetch
 			lastArticle = articles.last( 1 );
 			if ( 0 in lastArticle ) {
-				// jscs: disable requireCamelCaseOrUpperCaseIdentifiers
 				articles.apiParams.offset = lastArticle[ 0 ].attributes.creation_date_utc;
-				// jscs: enable requireCamelCaseOrUpperCaseIdentifiers
 				articles.apiParams.pageoffset = lastArticle[ 0 ].attributes.pageid;
 			} else {
 				articles.apiParams.offset = 0;
