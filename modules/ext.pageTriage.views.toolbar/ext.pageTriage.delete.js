@@ -48,7 +48,7 @@ $( function () {
 			}
 		},
 
-		rfd: {
+		'rfd-NPF': {
 			buildDiscussionRequest: function () {
 				// No-op
 			},
