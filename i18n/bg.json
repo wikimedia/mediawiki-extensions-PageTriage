@@ -7,6 +7,7 @@
 			"StanProg"
 		]
 	},
+	"pagetriage-reviewed": "Проверена",
 	"pagetriage-bytes": "$1 {{PLURAL:$1|байт|байта}}",
 	"pagetriage-edits": "$1 {{PLURAL:$1|редакция|редакции}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|категория|категории}}",
@@ -22,6 +23,7 @@
 	"pagetriage-filter-ns-all": "Всички",
 	"pagetriage-more": "Повече",
 	"pagetriage-filter-stat-all": "Всички",
+	"pagetriage-filter-stat-reviewed": "Проверена",
 	"pagetriage-page-status-reviewed-anonymous": "Отбелязана като проверена",
 	"pagetriage-tags-notenglish-label": "Грешен език",
 	"pagetriage-tags-update-label": "Обновяване",

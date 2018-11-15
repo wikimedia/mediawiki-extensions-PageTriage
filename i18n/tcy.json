@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vishwanatha Badikana"
+			"Vishwanatha Badikana",
+			"Ravi Mundkur"
 		]
 	},
-	"pagetriage-filter-stat-bots": "ಬಾಟ್‍ಲೆ ಮೂಲಕೊ"
+	"pagetriage-filter-stat-bots": "ಬಾಟ್‍ಲೆ ಮೂಲಕೊ",
+	"pagetriage-toolbar-linktext": "ತೆರೆಯಿನ ಪುಟೊತ ಪಾಲನೆ"
 }
