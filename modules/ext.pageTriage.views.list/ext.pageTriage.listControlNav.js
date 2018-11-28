@@ -74,6 +74,10 @@ $( function () {
 			// render and return the template. fill with the current model.
 			$( '#mwe-pt-list-control-nav-content' ).html( this.template( this.model.toJSON() ) );
 
+			// Capture afc state-specific sort options for later
+			this.$afcDeclinedSortOptions = $( '.mwe-pt-afc-sort-declined' ).detach();
+			this.$afcSubmittedSortOptions = $( '.mwe-pt-afc-sort-submitted' ).detach();
+
 			// align the filter dropdown box with the dropdown control widget
 			// yield to other JS first per bug 46367
 			setTimeout( function () {
@@ -626,16 +630,16 @@ $( function () {
 			$( 'input[name=mwe-pt-filter-afc-radio][value=' + afcStateValue + ']' )
 				.prop( 'checked', true );
 
-			// Show/hide sorting options based on filter state.
+			// Add/remove sorting options based on filter state.
 			if ( afcStateValue === '4' ) { // Declined
-				$( '.mwe-pt-afc-sort-declined' ).show();
-				$( '.mwe-pt-afc-sort-submitted' ).hide();
+				this.$afcSubmittedSortOptions.detach();
+				this.$afcDeclinedSortOptions.appendTo( $( 'select#mwe-pt-sort-afc' ) );
 			} else if ( afcStateValue === '2' || afcStateValue === '3' ) { // Awaiting or Under review
-				$( '.mwe-pt-afc-sort-declined' ).hide();
-				$( '.mwe-pt-afc-sort-submitted' ).show();
+				this.$afcDeclinedSortOptions.detach();
+				this.$afcSubmittedSortOptions.appendTo( $( 'select#mwe-pt-sort-afc' ) );
 			} else {
-				$( '.mwe-pt-afc-sort-declined' ).hide();
-				$( '.mwe-pt-afc-sort-submitted' ).hide();
+				this.$afcSubmittedSortOptions.detach();
+				this.$afcDeclinedSortOptions.detach();
 			}
 
 			sortOptionId = this.getValidAfcSortOptionId(
