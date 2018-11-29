@@ -8,7 +8,8 @@
 			"Nike",
 			"Alluk.",
 			"Fitoschido",
-			"Surjection"
+			"Surjection",
+			"Valtlait"
 		]
 	},
 	"newpagesfeed": "Uusien sivujen liukuhihna",
@@ -71,12 +72,12 @@
 	"pagetriage-filter-ns-all": "Kaikki",
 	"pagetriage-more": "Lisää",
 	"pagetriage-filter-stat-all": "Kaikki",
-	"pagetriage-filter-stat-reviewed": "katsastettu",
-	"pagetriage-filter-stat-unreviewed": "katsastamatta",
+	"pagetriage-filter-stat-reviewed": "Katsastettu",
+	"pagetriage-filter-stat-unreviewed": "Katsastamatta",
 	"pagetriage-filter-stat-bots": "botit",
-	"pagetriage-filter-stat-redirects": "ohjaukset",
-	"pagetriage-filter-stat-nominated-for-deletion": "ehdotettu poistettavaksi",
-	"pagetriage-filter-stat-no-categories": "ilman luokkia",
+	"pagetriage-filter-stat-redirects": "Ohjaukset",
+	"pagetriage-filter-stat-nominated-for-deletion": "Ehdotettu poistettavaksi",
+	"pagetriage-filter-stat-no-categories": "Ilman luokkia",
 	"pagetriage-filter-stat-orphan": "orvot",
 	"pagetriage-filter-stat-non-autoconfirmed": "uudet käyttäjät",
 	"pagetriage-filter-stat-blocked": "estetyt käyttäjät",
