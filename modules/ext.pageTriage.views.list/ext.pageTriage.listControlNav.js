@@ -82,7 +82,7 @@ $( function () {
 			// yield to other JS first per bug 46367
 			setTimeout( function () {
 				var startSide = $( 'body' ).hasClass( 'rtl' ) ? 'right' : 'left',
-					newStart = $( '#mwe-pt-filter-dropdown-control' ).width() - 20,
+					newStart = $( '#mwe-pt-filter-dropdown-control' ).width() - 8,
 					arrowClosed = $( 'body' ).hasClass( 'rtl' ) ? '&#x25c2;' : '&#x25b8;';
 				$( '#mwe-pt-control-dropdown' ).css( startSide, newStart );
 				$( '#mwe-pt-control-dropdown-pokey' ).css( startSide, newStart + 5 );
