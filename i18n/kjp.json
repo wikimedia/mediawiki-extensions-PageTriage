@@ -9,6 +9,7 @@
 	"pagetriage-filter-type-show-heading": "အ်ုမိင်အ်ုကုဂ်လ်ုဖး:",
 	"pagetriage-filter-stat-type": "အ်ုမိင်အ်ုကုဂ်လ်ုဖး:",
 	"pagetriage-filter-stat-predicted-issues-copyvio": "မ​ဏေဝ်မာဍံင် ဗီအိုင်အို",
+	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|ဆ်ုဂုဏ်}}}}",
 	"apihelp-pagetriagelist-param-show_predicted_issues_copyvio": "လေဝ်ထာ့ဝယ် ဗီအုင်အို ဆ်ုၜးဍံင် ဆ်ုခၠါင်အကျံင်",
 	"apihelp-pagetriagestats-param-show_predicted_issues_copyvio": "လေဝ်ထာ့ဝယ် ဗီအုင်အို ဆ်ုၜးဍံင် ဆ်ုခၠါင်အကျံင်"
 }
