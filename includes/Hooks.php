@@ -15,7 +15,6 @@ use LinksUpdate;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddDeletionTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddMaintenanceTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageMarkAsReviewedPresentationModel;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MWTimestamp;
 use ParserOutput;
@@ -382,14 +381,9 @@ class Hooks {
 				'ptrp_created',
 				[ 'ptrp_page_id' => $pageId ]
 			);
-			$pageCreationDateTime = wfTimestamp( TS_MW, $pageCreationDateTime );
 		}
 		// If still not found, return false.
 		if ( !$pageCreationDateTime ) {
-			LoggerFactory::getInstance( 'PageTriage' )->warning(
-				'Could not get creation date for article ID {id}',
-				[ 'id' => $pageId ]
-			);
 			return false;
 		}
 		// Get the age of the article in days
