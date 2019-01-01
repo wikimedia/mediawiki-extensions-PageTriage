@@ -1,10 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Wizardist"
+			"Wizardist",
+			"Renessaince"
 		]
 	},
 	"pagetriage": "Page Triage",
 	"newpagesfeed": "Стужка новых старонак",
-	"pagetriage-desc": "Прылады для прагляду і зацьверджаньня новых старонак"
+	"pagetriage-desc": "Прылады для прагляду і зацьверджаньня новых старонак",
+	"pagetriage-reviewed": "Праверана",
+	"pagetriage-filter-stat-reviewed": "Правераныя",
+	"pagetriage-mark-as-reviewed": "Пазначыць як праверанае"
 }
