@@ -92,6 +92,7 @@
 	"pagetriage-wikilove-page-creator": "صفحہ خالق",
 	"pagetriage-toolbar-close": "منسوخ",
 	"pagetriage-toolbar-minimize": "منی مائز",
+	"notification-header-pagetriage-mark-as-reviewed": "'''$3''' کے صفحے پر {{GENDER:$2|نظر ثانی}} ہو چکی ہے۔",
 	"echo-pref-tooltip-page-review": "میرے تخلیق کردہ صفحہ کی مراجعت کی اطلاع مجھے دیں۔",
 	"echo-category-title-page-review": "صفحہ {{PLURAL:$1|مراجعت|مراجعت}}"
 }
