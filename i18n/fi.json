@@ -195,6 +195,7 @@
 	"pagetriage-toolbar-close": "Sulje",
 	"pagetriage-toolbar-minimize": "Pienennä",
 	"pagetriage-tag-warning-notice": "Huomaa: Tämä sivu on ainoastaan $1 {{PLURAL:$1|minuutin|minuuttia}} vanha. Älä merkkaa sitä vielä, jollei asia ole vakava.",
+	"pagetriage-afc-state-all": "Kaikki",
 	"pagetriage-afc-state-declined": "Hylätty",
 	"pagetriage-afc-state-pending": "Odottaa arviota",
 	"pagetriage-discuss-link-title": "{{GENDER:$1|Keskustelu}}",
