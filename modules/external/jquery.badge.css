@@ -20,11 +20,13 @@
 	display: inline-block;
 	vertical-align: text-top;
 }
+
 .notification-badge-top {
 	position: absolute;
 	top: -2px;
 	right: -3px;
 }
+
 .notification-badge-bottom {
 	position: absolute;
 	bottom: -2px;

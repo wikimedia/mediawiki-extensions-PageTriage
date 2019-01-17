@@ -12,9 +12,11 @@
 	border: 1px solid #9f9f9f;
 	box-shadow: 0 4px 8px rgba( 0, 0, 0, 0.4 );
 }
+
 .skin-monobook #mwe-pt-toolbar {
 	font-size: 1.5em;
 }
+
 .ve-activated #mwe-pt-toolbar {
 	display: none;
 }
@@ -27,7 +29,7 @@
 	width: 15px;
 }
 
-#mwe-pt-toolbar-backstage{
+#mwe-pt-toolbar-backstage {
 	visibility: hidden;
 }
 
@@ -41,10 +43,12 @@
 .mwe-pt-toolbar-close {
 	width: 12px;
 }
+
 .mwe-pt-toolbar-small .mwe-pt-toolbar-close {
 	width: auto;
 	text-align: center;
 }
+
 .mwe-pt-toolbar-close-button {
 	background-image: url( images/close.png );
 	height: 12px;

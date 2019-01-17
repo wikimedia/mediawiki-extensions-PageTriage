@@ -21,9 +21,11 @@
 	border: 1px solid #9f9f9f;
 	box-shadow: 0 4px 8px rgba( 0, 0, 0, 0.4 );
 }
+
 .mwe-pt-tool-flyout-not-flipped {
 	right: 46px;
 }
+
 .mwe-pt-tool-flyout-flipped {
 	left: 46px;
 }
@@ -36,11 +38,13 @@
 	width: 11px;
 	height: 22px;
 }
+
 .mwe-pt-tool-pokey-not-flipped {
 	/* @embed */
 	background-image: url( images/flyout_pokey.png );
 	right: 38px;
 }
+
 .mwe-pt-tool-pokey-flipped {
 	/* @embed */
 	background-image: url( images/flyout_pokey_flipped.png );
@@ -59,11 +63,13 @@
 	border: 1px solid #9f9f9f;
 	padding: 6px;
 }
+
 .mwe-pt-flyout-help-link {
 	display: inline-block;
 	margin-left: 0.5em;
 	font-size: 0.7em;
 }
+
 .mwe-pt-tool-close {
 	color: #808080;
 	float: right;

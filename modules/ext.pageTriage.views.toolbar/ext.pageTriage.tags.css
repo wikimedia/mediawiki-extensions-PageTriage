@@ -58,14 +58,17 @@
 	padding: 10px 12px 10px 12px;
 	clear: both;
 }
+
 #mwe-pt-checkbox-mark-reviewed-label {
 	font-size: 0.94em;
 	opacity: 0.35;
 }
+
 #mwe-pt-checkbox-mark-reviewed-label {
 	font-size: 0.94em;
 	opacity: 0.35;
 }
+
 #mwe-pt-tag-submit-button {
 	margin-top: 0.2em !important;
 }
@@ -81,41 +84,51 @@
 	border-spacing: 0;
 	width: 375px;
 }
+
 #mwe-pt-tag-list td {
 	vertical-align: top;
 	padding: 5px 4px;
 }
+
 #mwe-pt-tag-list td.mwe-pt-tag-checkbox-cell {
 	padding-right: 1px;
 }
+
 #mwe-pt-tag-list .mwe-pt-tag-checkbox {
 	margin: 0;
 }
+
 #mwe-pt-tag-list .mwe-pt-tag-label {
 	cursor: pointer;
 	font-weight: bold;
 	/* width: 115px; */
 }
+
 #mwe-pt-tag-list .mwe-pt-tag-desc {
 	color: #666;
 	cursor: default;
 	padding: 0;
 	font-size: 0.92em;
 }
+
 #mwe-pt-tag-list .mwe-pt-tag-params-link {
 	font-size: 0.92em;
 }
+
 #mwe-pt-tag-list .mwe-pt-tag-params-form {
 	display: none;
 	margin-top: 0.8em;
 }
+
 .mwe-pt-tag-params-form-buttons {
 	margin-top: 0.3em;
 }
+
 #mwe-pt-tag-list .mwe-pt-tag-set-param-button {
 	margin-left: 0 !important;
 	background-color: #fff;
 }
+
 #mwe-pt-tag-note {
 	display: none;
 	margin-top: 5px;
@@ -130,6 +143,7 @@
 	float: right;
 	font-size: 0.9em;
 }
+
 #mwe-pt-tag-note-input {
 	clear: both;
 	font-size: 11px;
