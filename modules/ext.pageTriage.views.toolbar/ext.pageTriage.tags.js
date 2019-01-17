@@ -98,22 +98,25 @@ $( function () {
 			// set the Learn More link URL
 			modules = mw.config.get( 'wgPageTriageCurationModules' );
 			$( '#mwe-pt-tag .mwe-pt-flyout-help-link' ).attr( 'href', modules.tags.helplink );
-			$( '#mwe-pt-tag-note-input' ).keyup( function () {
-				if ( that.selectedTagCount > 0 ) {
-					$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
-				} else {
-					$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
-				}
-			} ).on( 'focus', handleFocus ).change( function () {
-				that.noteChanged = true;
-			} );
+			$( '#mwe-pt-tag-note-input' )
+				.on( 'keyup', function () {
+					if ( that.selectedTagCount > 0 ) {
+						$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
+					} else {
+						$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
+					}
+				} )
+				.on( 'focus', handleFocus )
+				.on( 'change', function () {
+					that.noteChanged = true;
+				} );
 
 			// add click event for each category
 			$( '#mwe-pt-categories' ).find( 'div' ).each( function () {
 				var cat = $( $( this ).html() ).attr( 'cat' );
-				$( this ).click(
+				$( this ).on( 'click',
 					function () {
-						$( this ).find( 'a' ).blur();
+						$( this ).find( 'a' ).trigger( 'blur' );
 						that.displayTags( cat );
 						return false;
 					}
@@ -123,14 +126,13 @@ $( function () {
 			// add click event for tag submission
 			$( '#mwe-pt-tag-submit-button' )
 				.button( { disabled: true } )
-				.click(
-					function () {
-						$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
-						$( '#mwe-pt-tag-submit' ).append( $.createSpinner( 'tag-spinner' ) ); // show spinner
-						that.submit();
-						return false;
-					}
-				).end();
+				.on( 'click', function () {
+					$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
+					$( '#mwe-pt-tag-submit' ).append( $.createSpinner( 'tag-spinner' ) ); // show spinner
+					that.submit();
+					return false;
+				} )
+				.end();
 
 			// show tags under common by default
 			this.displayTags( 'common' );
@@ -149,7 +151,7 @@ $( function () {
 
 			$( '#mwe-pt-tags' ).empty();
 
-			$tagList = $( '<div id="mwe-pt-tag-list"></div>' );
+			$tagList = $( '<div>' ).attr( 'id', 'mwe-pt-tag-list' );
 
 			// highlight the active category
 			$( '.mwe-pt-category' ).removeClass( 'mwe-pt-active' );
@@ -174,7 +176,7 @@ $( function () {
 					{
 						type: 'checkbox',
 						value: tagSet[ key ].tag,
-						'class': 'mwe-pt-tag-checkbox',
+						class: 'mwe-pt-tag-checkbox',
 						id: 'mwe-pt-checkbox-tag-' + key,
 						checked: checked
 					}
@@ -199,67 +201,65 @@ $( function () {
 
 				// add click events for checking/unchecking tags to both the
 				// checkboxes and tag labels
-				$( '#mwe-pt-tag-' + key + ', #mwe-pt-checkbox-tag-' + key ).click(
-					function () {
-						var destCat, alsoCommon, param,
-							// Extract the tag key from the id of whatever was clicked on
-							tagKeyMatches = $( this ).attr( 'id' ).match( /.*-tag-(.*)/ ),
-							tagKey = tagKeyMatches[ 1 ];
+				$( '#mwe-pt-tag-' + key + ', #mwe-pt-checkbox-tag-' + key ).on( 'click', function () {
+					var destCat, alsoCommon, param,
+						// Extract the tag key from the id of whatever was clicked on
+						tagKeyMatches = $( this ).attr( 'id' ).match( /.*-tag-(.*)/ ),
+						tagKey = tagKeyMatches[ 1 ];
 
-						// Tags in the 'common' group actually belong to other categories.
-						// In those cases we need to interact with the real parent
-						// category which is indicated in the 'dest' attribute.
-						if ( ( cat === 'common' || cat === 'all' ) && tagSet[ tagKey ].dest ) {
-							destCat	= tagSet[ tagKey ].dest;
-						}
-
-						// Tags in other groups may also belong to the 'common' group.
-						// In these cases, we need to update the corresponding tag
-						// in the 'common' group as well.
-						if ( cat !== 'common' && that.tagsOptions.common.tags[ tagKey ] !== undefined ) {
-							alsoCommon = true;
-						}
-
-						if ( !that.selectedTag[ cat ][ tagKey ] ) {
-							// activate checkbox
-							$( '#mwe-pt-checkbox-tag-' + tagKey ).prop( 'checked', true );
-							that.selectedTagCount++;
-							that.selectedTag[ cat ][ tagKey ] = tagSet[ tagKey ];
-							if ( destCat ) {
-								that.selectedTag[ destCat ][ tagKey ] = tagSet[ tagKey ];
-							}
-							if ( alsoCommon ) {
-								that.selectedTag.common[ tagKey ] = tagSet[ tagKey ];
-							}
-							that.selectedTag.all[ tagKey ] = tagSet[ tagKey ];
-							that.showParamsLink( tagKey, cat );
-							// show the param form if there is required parameter
-							for ( param in tagSet[ tagKey ].params ) {
-								if ( tagSet[ tagKey ].params[ param ].input === 'required' ) {
-									that.showParamsForm( tagKey, cat );
-									break;
-								}
-							}
-						} else {
-							// deactivate checkbox
-							$( '#mwe-pt-checkbox-tag-' + tagKey ).prop( 'checked', false );
-							that.selectedTagCount--;
-							delete that.selectedTag[ cat ][ tagKey ];
-							if ( destCat ) {
-								delete that.selectedTag[ destCat ][ tagKey ];
-							}
-							if ( alsoCommon ) {
-								delete that.selectedTag.common[ tagKey ];
-							}
-							delete that.selectedTag.all[ tagKey ];
-							that.hideParamsLink( tagKey );
-							// If the param form is visible, hide it
-							that.hideParamsForm( tagKey );
-						}
-
-						that.refreshTagCountDisplay( tagKey, destCat || cat );
+					// Tags in the 'common' group actually belong to other categories.
+					// In those cases we need to interact with the real parent
+					// category which is indicated in the 'dest' attribute.
+					if ( ( cat === 'common' || cat === 'all' ) && tagSet[ tagKey ].dest ) {
+						destCat = tagSet[ tagKey ].dest;
 					}
-				).end();
+
+					// Tags in other groups may also belong to the 'common' group.
+					// In these cases, we need to update the corresponding tag
+					// in the 'common' group as well.
+					if ( cat !== 'common' && that.tagsOptions.common.tags[ tagKey ] !== undefined ) {
+						alsoCommon = true;
+					}
+
+					if ( !that.selectedTag[ cat ][ tagKey ] ) {
+						// activate checkbox
+						$( '#mwe-pt-checkbox-tag-' + tagKey ).prop( 'checked', true );
+						that.selectedTagCount++;
+						that.selectedTag[ cat ][ tagKey ] = tagSet[ tagKey ];
+						if ( destCat ) {
+							that.selectedTag[ destCat ][ tagKey ] = tagSet[ tagKey ];
+						}
+						if ( alsoCommon ) {
+							that.selectedTag.common[ tagKey ] = tagSet[ tagKey ];
+						}
+						that.selectedTag.all[ tagKey ] = tagSet[ tagKey ];
+						that.showParamsLink( tagKey, cat );
+						// show the param form if there is required parameter
+						for ( param in tagSet[ tagKey ].params ) {
+							if ( tagSet[ tagKey ].params[ param ].input === 'required' ) {
+								that.showParamsForm( tagKey, cat );
+								break;
+							}
+						}
+					} else {
+						// deactivate checkbox
+						$( '#mwe-pt-checkbox-tag-' + tagKey ).prop( 'checked', false );
+						that.selectedTagCount--;
+						delete that.selectedTag[ cat ][ tagKey ];
+						if ( destCat ) {
+							delete that.selectedTag[ destCat ][ tagKey ];
+						}
+						if ( alsoCommon ) {
+							delete that.selectedTag.common[ tagKey ];
+						}
+						delete that.selectedTag.all[ tagKey ];
+						that.hideParamsLink( tagKey );
+						// If the param form is visible, hide it
+						that.hideParamsForm( tagKey );
+					}
+
+					that.refreshTagCountDisplay( tagKey, destCat || cat );
+				} ).end();
 			}
 		},
 
@@ -340,7 +340,7 @@ $( function () {
 			$( '#mwe-pt-tag-params-link-' + key ).html( '+&#160;' + link );
 
 			// Add click event to the link that shows the param form
-			$( '#mwe-pt-tag-params-' + key ).click( function () {
+			$( '#mwe-pt-tag-params-' + key ).on( 'click', function () {
 				that.showParamsForm( key, cat );
 				return false;
 			} );
@@ -377,12 +377,12 @@ $( function () {
 
 			buttons += mw.html.element(
 				'button',
-				{ id: 'mwe-pt-tag-set-param-' + key, 'class': 'mwe-pt-tag-set-param-button ui-button-green' },
+				{ id: 'mwe-pt-tag-set-param-' + key, class: 'mwe-pt-tag-set-param-button ui-button-green' },
 				mw.msg( 'pagetriage-button-add-details' )
 			);
 			buttons += mw.html.element(
 				'button',
-				{ id: 'mwe-pt-tag-cancel-param-' + key, 'class': 'ui-button-red' },
+				{ id: 'mwe-pt-tag-cancel-param-' + key, class: 'ui-button-red' },
 				mw.msg( 'cancel' )
 			);
 			html += '<div class="mwe-pt-tag-params-form-buttons">' + buttons + '</div>';
@@ -394,46 +394,42 @@ $( function () {
 			$( '#mwe-pt-tag-params-form-' + key ).show();
 
 			// Add click even for the Set Parameters button
-			$( '#mwe-pt-tag-set-param-' + key ).button().click(
-				function () {
-					if ( that.setParams( key, cat ) ) {
-						if ( tag.dest ) {
-							that.setParams( key, tag.dest );
-						}
-						// Hide the form and show the link to reopen it
-						that.hideParamsForm( key );
-						that.showParamsLink( key, cat );
+			$( '#mwe-pt-tag-set-param-' + key ).button().on( 'click', function () {
+				if ( that.setParams( key, cat ) ) {
+					if ( tag.dest ) {
+						that.setParams( key, tag.dest );
 					}
-				}
-			);
-
-			// Add click even for the Cancel button
-			$( '#mwe-pt-tag-cancel-param-' + key ).button().click(
-				function () {
-					var destCat, param;
-
 					// Hide the form and show the link to reopen it
 					that.hideParamsForm( key );
 					that.showParamsLink( key, cat );
+				}
+			} );
 
-					// If there were any unset required params, uncheck the tag
-					// and hide the form link (basically, reset it)
-					for ( param in tag.params ) {
-						if ( tag.params[ param ].input === 'required' && !tag.params[ param ].value ) {
-							if ( tag.dest ) {
-								destCat = tag.dest;
-								delete that.selectedTag[ destCat ][ key ];
-							}
-							delete that.selectedTag[ cat ][ key ];
-							that.selectedTagCount--;
-							that.refreshTagCountDisplay( key, destCat || cat );
-							$( '#mwe-pt-checkbox-tag-' + key ).prop( 'checked', false );
-							that.hideParamsLink( key );
-							break;
+			// Add click even for the Cancel button
+			$( '#mwe-pt-tag-cancel-param-' + key ).button().on( 'click', function () {
+				var destCat, param;
+
+				// Hide the form and show the link to reopen it
+				that.hideParamsForm( key );
+				that.showParamsLink( key, cat );
+
+				// If there were any unset required params, uncheck the tag
+				// and hide the form link (basically, reset it)
+				for ( param in tag.params ) {
+					if ( tag.params[ param ].input === 'required' && !tag.params[ param ].value ) {
+						if ( tag.dest ) {
+							destCat = tag.dest;
+							delete that.selectedTag[ destCat ][ key ];
 						}
+						delete that.selectedTag[ cat ][ key ];
+						that.selectedTagCount--;
+						that.refreshTagCountDisplay( key, destCat || cat );
+						$( '#mwe-pt-checkbox-tag-' + key ).prop( 'checked', false );
+						that.hideParamsLink( key );
+						break;
 					}
 				}
-			);
+			} );
 		},
 
 		/**
@@ -562,7 +558,7 @@ $( function () {
 			}
 
 			for ( tagKey in multipleTags ) {
-				multipleTagsText += '{{' + multipleTags[ tagKey ].tag	+
+				multipleTagsText += '{{' + multipleTags[ tagKey ].tag +
 					this.buildParams( multipleTags[ tagKey ] ) + '}}';
 			}
 
@@ -603,7 +599,7 @@ $( function () {
 
 		applyTags: function ( topText, bottomText, tagList ) {
 			var that = this,
-				note = $.trim( $( '#mwe-pt-tag-note-input' ).val() );
+				note = $( '#mwe-pt-tag-note-input' ).val().trim();
 			if ( !this.noteChanged || !note.length ) {
 				note = '';
 			}

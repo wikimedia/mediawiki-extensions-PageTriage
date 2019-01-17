@@ -14,7 +14,7 @@ $( function () {
 				this.setWaypoint(); // create scrolling waypoint
 
 				// reset the width when the window is resized
-				$( window ).resize( _.debounce( that.setWidth, 80 ) );
+				$( window ).on( 'resize', _.debounce( that.setWidth, 80 ) );
 
 				// when the list view is updated, see if we need to change the
 				// float state of the navbar
@@ -44,7 +44,7 @@ $( function () {
 			}
 
 			// Initialize Refresh List button
-			$( '#mwe-pt-refresh-button' ).button().click( function ( e ) {
+			$( '#mwe-pt-refresh-button' ).button().on( 'click', function ( e ) {
 				// list refreshing is handled by the ListControlNav since it controls the page list
 				that.eventBus.trigger( 'refreshListRequest' );
 				e.stopPropagation();

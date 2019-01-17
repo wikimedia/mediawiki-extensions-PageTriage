@@ -76,12 +76,12 @@ $( function () {
 						}
 
 						// this flyout is disabled for current namespace
-						if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ), modules[ flyout ].namespace ) === -1 ) {
+						if ( modules[ flyout ].namespace.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) === -1 ) {
 							return false;
 						}
 
 						// this flyout is disabled for this user as he is the creator of the article
-						if ( $.inArray( flyout, disabledForCreators ) !== -1 && article.get( 'user_name' ) === mw.user.getName() ) {
+						if ( disabledForCreators.indexOf( flyout ) !== -1 && article.get( 'user_name' ) === mw.user.getName() ) {
 							return false;
 						}
 
@@ -109,7 +109,7 @@ $( function () {
 						} );
 
 						// make clicking on the minimized toolbar expand to normal size
-						$( '#mwe-pt-toolbar-vertical' ).click( function () {
+						$( '#mwe-pt-toolbar-vertical' ).on( 'click', function () {
 							that.maximize( true );
 						} );
 
@@ -120,7 +120,7 @@ $( function () {
 						}
 
 						// make the close button do something
-						$( '.mwe-pt-toolbar-close-button' ).click( function () {
+						$( '.mwe-pt-toolbar-close-button' ).on( 'click', function () {
 							that.hide( true );
 						} );
 
@@ -220,11 +220,13 @@ $( function () {
 					},
 					insertLink: function () {
 						var that = this,
-							$link = $( '<li id="t-curationtoolbar"><a href="#"></a></li>' );
+							$link = $( '<li>' ).attr( 'id', 't-curationtoolbar' ).append(
+								$( '<a>' ).attr( 'href', '#' )
+							);
 
 						$link.find( 'a' )
 							.text( mw.msg( 'pagetriage-toolbar-linktext' ) )
-							.click( function () {
+							.on( 'click', function () {
 								if ( $( '#mwe-pt-toolbar' ).is( ':hidden' ) ) {
 									$( '#mwe-pt-toolbar' ).show();
 									$( '#mw-content-text .patrollink' ).hide();

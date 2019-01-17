@@ -17,7 +17,7 @@ $( function () {
 				this.setWaypoint(); // create scrolling waypoint
 
 				// reset the width when the window is resized
-				$( window ).resize( _.debounce( that.setWidth, 80 ) );
+				$( window ).on( 'resize', _.debounce( that.setWidth, 80 ) );
 
 				// when the list view is updated, refresh the stats and see if
 				// we need to change the float state of the navbar
@@ -110,16 +110,16 @@ $( function () {
 			$( '#mwe-pt-filter-set-button' ).button( {
 				label: mw.msg( 'pagetriage-filter-set-button' )
 			} );
-			$( '#mwe-pt-filter-set-button' ).click( function ( e ) {
+			$( '#mwe-pt-filter-set-button' ).on( 'click', function ( e ) {
 				that.filterSync();
 				that.refreshStats();
 				that.toggleFilterMenu( 'close' );
 				e.stopPropagation();
 			} );
 
-			$( '#mwe-pt-filter-user' ).keypress( function ( e ) {
+			$( '#mwe-pt-filter-user' ).on( 'keypress', function ( e ) {
 				if ( e.which === 13 ) {
-					$( '#mwe-pt-filter-set-button' ).click();
+					$( '#mwe-pt-filter-set-button' ).trigger( 'click' );
 					e.preventDefault();
 					return false;
 				}
@@ -129,7 +129,7 @@ $( function () {
 				'#mwe-pt-filter-reviewed-edits,#mwe-pt-filter-unreviewed-edits,' +
 				'#mwe-pt-filter-nominated-for-deletion,#mwe-pt-filter-redirects,' +
 				'#mwe-pt-filter-others'
-			).click(
+			).on( 'click',
 				function ( e ) {
 					that.setSubmitButtonState();
 					e.stopPropagation();
@@ -137,7 +137,7 @@ $( function () {
 			);
 
 			// the filter dropdown menu control
-			$( '#mwe-pt-filter-dropdown-control' ).click( function ( e ) {
+			$( '#mwe-pt-filter-dropdown-control' ).on( 'click', function ( e ) {
 				that.toggleFilterMenu();
 				e.stopPropagation();
 			} );
@@ -154,7 +154,7 @@ $( function () {
 			} );
 
 			// Select the username option when its input gets focus
-			$( '#mwe-pt-filter-user' ).focus( function () {
+			$( '#mwe-pt-filter-user' ).on( 'focus', function () {
 				$( '#mwe-pt-filter-user-selected' ).prop( 'checked', true );
 			} );
 
@@ -236,8 +236,8 @@ $( function () {
 				$( '#mwe-pt-dropdown-arrow' ).html( arrowClosed );
 				$controlDropdown.css( 'visibility', 'hidden' );
 				$controlDropdownPokey.css( 'visibility', 'hidden' );
-				$( 'body' ).unbind( 'click' ); // remove these events since they're not needed til next time.
-				$controlDropdown.unbind( 'click' );
+				$( 'body' ).off( 'click' ); // remove these events since they're not needed til next time.
+				$controlDropdown.off( 'click' );
 				this.filterMenuVisible = 0;
 			} else if ( ( action && action === 'open' ) || !this.filterMenuVisible ) {
 				this.menuSync();
@@ -246,13 +246,13 @@ $( function () {
 				$( '#mwe-pt-dropdown-arrow' ).html( '&#x25be;' ); // ▾ down-pointing triangle
 
 				// close the menu when the user clicks away
-				$( 'body' ).click( 'click', function () {
+				$( 'body' ).on( 'click', function () {
 					that.toggleFilterMenu( 'close' );
 				} );
 
 				// this event "covers up" the body event, which keeps the menu from closing when
 				// the user clicks inside.
-				$controlDropdown.click( function ( e ) {
+				$controlDropdown.on( 'click', function ( e ) {
 					e.stopPropagation();
 				} );
 

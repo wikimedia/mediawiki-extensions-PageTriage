@@ -157,7 +157,7 @@ $( function () {
 			this.$icon = this.$el.find( '.mwe-pt-tool-icon' );
 
 			// bind a click handler to open it.
-			this.$icon.click( function () {
+			this.$icon.on( 'click', function () {
 				that.click();
 			} );
 
@@ -176,7 +176,7 @@ $( function () {
 			}
 
 			// set up an event for the close button
-			this.$el.find( '.mwe-pt-tool-close' ).click( function () {
+			this.$el.find( '.mwe-pt-tool-close' ).on( 'click', function () {
 				that.hide();
 			} );
 
@@ -230,7 +230,7 @@ $( function () {
 			var key,
 				count = 0;
 			for ( key in obj ) {
-				if ( obj.hasOwnProperty( key ) ) {
+				if ( Object.prototype.hasOwnProperty.call( obj, key ) ) {
 					count++;
 				}
 			}

@@ -17,7 +17,7 @@
 				)
 			},
 
-			'for': {
+			for: {
 				label: mw.msg( 'pagetriage-tags-param-for-label' ),
 				input: 'optional',
 				type: 'textarea',
@@ -93,7 +93,7 @@
 					desc: mw.msg( 'pagetriage-tags-copyedit-desc' ),
 					params: {
 						date: param.date,
-						'for': $.extend( true, {}, param.for )
+						for: $.extend( true, {}, param.for )
 					},
 					position: 'top',
 					dest: 'cleanup',
@@ -182,7 +182,7 @@
 					desc: mw.msg( 'pagetriage-tags-copyedit-desc' ),
 					params: {
 						date: param.date,
-						'for': $.extend( true, {}, param.for )
+						for: $.extend( true, {}, param.for )
 					},
 					position: 'top',
 					multiple: true

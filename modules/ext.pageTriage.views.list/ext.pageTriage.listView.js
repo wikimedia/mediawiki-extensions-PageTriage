@@ -40,7 +40,7 @@ $( function () {
 			} else {
 				// bind manualLoadMore function to 'More' link
 				that = this;
-				$( '#mwe-pt-list-more-link' ).click( function () {
+				$( '#mwe-pt-list-more-link' ).on( 'click', function () {
 					that.manualLoadMore();
 					return false;
 				} );

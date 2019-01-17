@@ -224,7 +224,7 @@ $( function () {
 			return $( '<a>' )
 				.attr( {
 					href: url,
-					'class': style
+					class: style
 				} )
 				.text( text );
 		},
@@ -315,8 +315,8 @@ $( function () {
 		 * From version 'undefined' to version 2:
 		 * - "other pages" were implicitly shown, now they are controlled by 'showothers'
 		 *
-		 * @param {object} filterOptions
-		 * @return {object}
+		 * @param {Object} filterOptions
+		 * @return {Object}
 		 */
 		migrateFilterOptions: function ( filterOptions ) {
 			if ( filterOptions.version === 2 ) {

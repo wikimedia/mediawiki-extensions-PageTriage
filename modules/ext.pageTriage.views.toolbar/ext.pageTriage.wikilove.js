@@ -14,7 +14,9 @@ $( function () {
 			for ( key in obj ) {
 				tuples.push( [ key, obj[ key ] ] );
 			}
-			tuples.sort( function ( a, b ) { return a[ 1 ] - b[ 1 ]; } );
+			tuples.sort( function ( a, b ) {
+				return a[ 1 ] - b[ 1 ];
+			} );
 
 			length = tuples.length;
 			while ( length-- ) {
@@ -47,7 +49,7 @@ $( function () {
 			// construct the info for the article creator
 			link = mw.html.element( 'a', { href: this.model.get( 'creator_user_page_url' ) }, creator );
 
-			if ( $.inArray( creator, contributorArray ) > -1 ) {
+			if ( contributorArray.indexOf( creator ) !== -1 ) {
 				creatorContribCount = contributorCounts[ creator ];
 			}
 
@@ -100,7 +102,7 @@ $( function () {
 			// initialize the button
 			$( '#mwe-pt-wikilove-button' )
 				.button( { icons: { secondary: 'ui-icon-triangle-1-e' } } )
-				.click( function ( e ) {
+				.on( 'click', function ( e ) {
 					e.preventDefault();
 					recipients = $( 'input:checkbox:checked.mwe-pt-recipient-checkbox' ).map( function () {
 						return this.value;

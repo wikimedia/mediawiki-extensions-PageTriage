@@ -79,8 +79,12 @@ $( function () {
 			$( '#mwe-pt-info .mwe-pt-flyout-help-link' ).attr( 'href', mw.config.get( 'wgPageTriageCurationModules' ).articleInfo.helplink );
 
 			// bind down here so it doesn't happen before the first render
-			this.model.unbind( 'change:patrol_status', function () { that.render(); } );
-			this.model.bind( 'change:patrol_status', function () { that.render(); } );
+			this.model.unbind( 'change:patrol_status', function () {
+				that.render();
+			} );
+			this.model.bind( 'change:patrol_status', function () {
+				that.render();
+			} );
 
 			return this;
 		},

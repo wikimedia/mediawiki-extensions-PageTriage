@@ -39,7 +39,7 @@ $( function () {
 
 		submit: function ( action ) {
 			var that = this,
-				note = $.trim( $( '#mwe-pt-review-note-input' ).val() );
+				note = $( '#mwe-pt-review-note-input' ).val().trim();
 
 			if ( !that.noteChanged || !note.length ) {
 				note = '';
@@ -205,9 +205,9 @@ $( function () {
 			$( '#mwe-pt-mark .mwe-pt-tool-title' ).text( mw.msg( 'pagetriage-mark-as-' + status ) );
 
 			// check if note is enabled for this namespace and if the note section should be shown
-			if ( $.inArray( mw.config.get( 'wgNamespaceNumber' ), modules.mark.note ) !== -1 && showNoteSection ) {
+			if ( modules.mark.note.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) !== -1 && showNoteSection ) {
 				$( '#mwe-pt-review-note' ).show();
-				$( '#mwe-pt-review-note-input' ).on( 'focus', handleFocus ).change( function () {
+				$( '#mwe-pt-review-note-input' ).on( 'focus', handleFocus ).on( 'change', function () {
 					that.noteChanged = true;
 				} );
 			}
@@ -218,7 +218,7 @@ $( function () {
 			// initialize the buttons
 			$( '#mwe-pt-mark-as-' + status + '-button' )
 				.button( { icons: { secondary: 'ui-icon-triangle-1-e' } } )
-				.click( function ( e ) {
+				.on( 'click', function ( e ) {
 					$( '#mwe-pt-mark-as-' + status + '-button' ).button( 'disable' );
 					$( '#mwe-pt-mark-as-' + status ).append( $.createSpinner( 'mark-spinner' ) ); // show spinner
 					that.submit( status );
@@ -226,8 +226,12 @@ $( function () {
 				} );
 
 			// bind down here so it doesn't happen before the first render
-			this.model.unbind( 'change:patrol_status', function () { that.render(); } );
-			this.model.bind( 'change:patrol_status', function () { that.render(); } );
+			this.model.unbind( 'change:patrol_status', function () {
+				that.render();
+			} );
+			this.model.bind( 'change:patrol_status', function () {
+				that.render();
+			} );
 		}
 
 	} );

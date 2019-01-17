@@ -209,25 +209,21 @@ $( function () {
 			// add click event for each category
 			$( '#mwe-pt-delete-categories' ).find( 'div' ).each( function () {
 				var cat = $( $( this ).html() ).attr( 'cat' );
-				$( this ).click(
-					function () {
-						$( this ).find( 'a' ).blur();
-						that.displayTags( cat );
-						return false;
-					}
-				).end();
+				$( this ).on( 'click', function () {
+					$( this ).find( 'a' ).trigger( 'blur' );
+					that.displayTags( cat );
+					return false;
+				} ).end();
 			} );
 
 			// add click event for tag submission
 			$( '#mwe-pt-delete-submit-button' ).button( { disabled: true } )
-				.click(
-					function () {
-						$( '#mwe-pt-delete-submit-button' ).button( 'disable' );
-						$( '#mwe-pt-delete-submit' ).append( $.createSpinner( 'delete-spinner' ) ); // show spinner
-						that.submit();
-						return false;
-					}
-				).end();
+				.on( 'click', function () {
+					$( '#mwe-pt-delete-submit-button' ).button( 'disable' );
+					$( '#mwe-pt-delete-submit' ).append( $.createSpinner( 'delete-spinner' ) ); // show spinner
+					that.submit();
+					return false;
+				} ).end();
 
 			// show the first category as default
 			for ( key in this.deletionTagsOptions ) {
@@ -265,7 +261,7 @@ $( function () {
 					name: 'mwe-pt-delete',
 					type: elementType,
 					value: tagSet[ key ].tag,
-					'class': 'mwe-pt-delete-checkbox',
+					class: 'mwe-pt-delete-checkbox',
 					id: 'mwe-pt-checkbox-delete-' + key,
 					checked: !!this.selectedTag[ key ]
 				}
@@ -293,7 +289,7 @@ $( function () {
 				that = this,
 				tagSet = this.deletionTagsOptions[ cat ].tags,
 				elementType = this.deletionTagsOptions[ cat ].multiple ? 'checkbox' : 'radio',
-				$tagList = $( '<div id="mwe-pt-delete-list"></div>' ),
+				$tagList = $( '<div>' ).attr( 'id', 'mwe-pt-delete-list' ),
 				tagCount = 0;
 
 			// unselect any previously selected tags and disable submit button
@@ -316,7 +312,7 @@ $( function () {
 			for ( key in tagSet ) {
 
 				// Keep a running total of tags in the category
-				if ( tagSet.hasOwnProperty( key ) ) {
+				if ( Object.prototype.hasOwnProperty.call( tagSet, key ) ) {
 					tagCount++;
 				}
 
@@ -330,58 +326,56 @@ $( function () {
 
 				// add click events for checking/unchecking tags to both the
 				// checkboxes and tag labels
-				$( '#mwe-pt-delete-' + key + ', #mwe-pt-checkbox-delete-' + key ).click(
-					// eslint-disable-next-line no-loop-func
-					function () {
-						// Extract the tag key from the id of whatever was clicked on
-						var tagKeyMatches = $( this ).attr( 'id' ).match( /.*-delete-(.*)/ ),
-							tagKey = tagKeyMatches[ 1 ];
+				// eslint-disable-next-line no-loop-func
+				$( '#mwe-pt-delete-' + key + ', #mwe-pt-checkbox-delete-' + key ).on( 'click', function () {
+					// Extract the tag key from the id of whatever was clicked on
+					var tagKeyMatches = $( this ).attr( 'id' ).match( /.*-delete-(.*)/ ),
+						tagKey = tagKeyMatches[ 1 ];
 
-						$( '#mwe-pt-delete-params-form-' + tagKey ).hide();
-						if ( !that.selectedTag[ tagKey ] ) {
-							$( '#mwe-pt-checkbox-delete-' + tagKey ).prop( 'checked', true );
+					$( '#mwe-pt-delete-params-form-' + tagKey ).hide();
+					if ( !that.selectedTag[ tagKey ] ) {
+						$( '#mwe-pt-checkbox-delete-' + tagKey ).prop( 'checked', true );
 
-							// different category from the selected one, refresh data
-							if ( that.selectedCat !== cat ) {
-								that.multiHideParamsLink( that.selectedTag );
-								that.selectedTag = {};
-								that.selectedCat = cat;
-							// this category doesn't allow multiple selection
-							} else if ( !that.deletionTagsOptions[ cat ].multiple ) {
-								that.multiHideParamsLink( that.selectedTag );
-								that.selectedTag = {};
-							}
-
-							that.selectedTag[ tagKey ] = tagSet[ tagKey ];
-							that.showParamsLink( tagKey );
-							// show the param form if there is required parameter
-							for ( param in tagSet[ tagKey ].params ) {
-								if ( tagSet[ tagKey ].params[ param ].input === 'required' ) {
-									that.showParamsForm( tagKey );
-									break;
-								}
-							}
-						} else {
-							// deactivate checkbox
-							$( '#mwe-pt-checkbox-delete-' + tagKey ).prop( 'checked', false );
-							delete that.selectedTag[ tagKey ];
-
-							if ( $.isEmptyObject( that.selectedTag ) ) {
-								that.selectedCat = '';
-							}
-
-							that.hideParamsLink( tagKey );
-							// If the param form is visible, hide it
-							that.hideParamsForm( tagKey );
+						// different category from the selected one, refresh data
+						if ( that.selectedCat !== cat ) {
+							that.multiHideParamsLink( that.selectedTag );
+							that.selectedTag = {};
+							that.selectedCat = cat;
+						// this category doesn't allow multiple selection
+						} else if ( !that.deletionTagsOptions[ cat ].multiple ) {
+							that.multiHideParamsLink( that.selectedTag );
+							that.selectedTag = {};
 						}
-						that.refreshSubmitButton();
+
+						that.selectedTag[ tagKey ] = tagSet[ tagKey ];
+						that.showParamsLink( tagKey );
+						// show the param form if there is required parameter
+						for ( param in tagSet[ tagKey ].params ) {
+							if ( tagSet[ tagKey ].params[ param ].input === 'required' ) {
+								that.showParamsForm( tagKey );
+								break;
+							}
+						}
+					} else {
+						// deactivate checkbox
+						$( '#mwe-pt-checkbox-delete-' + tagKey ).prop( 'checked', false );
+						delete that.selectedTag[ tagKey ];
+
+						if ( $.isEmptyObject( that.selectedTag ) ) {
+							that.selectedCat = '';
+						}
+
+						that.hideParamsLink( tagKey );
+						// If the param form is visible, hide it
+						that.hideParamsForm( tagKey );
 					}
-				).end();
+					that.refreshSubmitButton();
+				} ).end();
 			}
 
 			// If there is only one tag in the category, go ahead and select it.
 			if ( tagCount === 1 ) {
-				$( '#mwe-pt-delete .mwe-pt-delete-checkbox' ).click();
+				$( '#mwe-pt-delete .mwe-pt-delete-checkbox' ).trigger( 'click' );
 			}
 		},
 
@@ -440,7 +434,7 @@ $( function () {
 			);
 			$( '#mwe-pt-delete-params-link-' + key ).html( '+&#160;' + link );
 			// Add click event to the link that shows the param form
-			$( '#mwe-pt-delete-params-' + key ).click( function () {
+			$( '#mwe-pt-delete-params-' + key ).on( 'click', function () {
 				that.showParamsForm( key );
 			} );
 		},
@@ -493,7 +487,7 @@ $( function () {
 				'button',
 				{
 					id: 'mwe-pt-delete-set-param-' + key,
-					'class': 'mwe-pt-delete-set-param-button ui-button-green'
+					class: 'mwe-pt-delete-set-param-button ui-button-green'
 				},
 				mw.msg( 'pagetriage-button-add-details' )
 			);
@@ -501,7 +495,7 @@ $( function () {
 				'button',
 				{
 					id: 'mwe-pt-delete-cancel-param-' + key,
-					'class': 'ui-button-red'
+					class: 'ui-button-red'
 				},
 				mw.msg( 'cancel' )
 			);
@@ -513,41 +507,37 @@ $( function () {
 			$( '#mwe-pt-delete-params-form-' + key ).show();
 
 			// Add click event for the Set Parameters button
-			$( '#mwe-pt-delete-set-param-' + key ).button().click(
-				function () {
-					if ( that.setParams( key ) ) {
-						// Hide the form and show the link to reopen it
-						that.hideParamsForm( key );
-						that.showParamsLink( key );
-					}
-				}
-			);
-
-			// Add click event for the Cancel button
-			$( '#mwe-pt-delete-cancel-param-' + key ).button().click(
-				function () {
-					var param;
-					for ( param in tag.params ) {
-						if ( tag.params[ param ].input === 'required' && !tag.params[ param ].value ) {
-							delete that.selectedTag[ key ];
-							$( '#mwe-pt-checkbox-delete-' + key ).prop( 'checked', false );
-							break;
-						}
-					}
-
+			$( '#mwe-pt-delete-set-param-' + key ).button().on( 'click', function () {
+				if ( that.setParams( key ) ) {
 					// Hide the form and show the link to reopen it
 					that.hideParamsForm( key );
-					// Show the link if this tag is still selected
-					if ( that.selectedTag[ key ] ) {
-						that.showParamsLink( key );
-					}
-					that.refreshSubmitButton();
+					that.showParamsLink( key );
 				}
-			);
+			} );
+
+			// Add click event for the Cancel button
+			$( '#mwe-pt-delete-cancel-param-' + key ).button().on( 'click', function () {
+				var param;
+				for ( param in tag.params ) {
+					if ( tag.params[ param ].input === 'required' && !tag.params[ param ].value ) {
+						delete that.selectedTag[ key ];
+						$( '#mwe-pt-checkbox-delete-' + key ).prop( 'checked', false );
+						break;
+					}
+				}
+
+				// Hide the form and show the link to reopen it
+				that.hideParamsForm( key );
+				// Show the link if this tag is still selected
+				if ( that.selectedTag[ key ] ) {
+					that.showParamsLink( key );
+				}
+				that.refreshSubmitButton();
+			} );
 
 			// If there is an input field, focus the cursor on it
 			if ( firstField ) {
-				$( '#' + firstField ).focus();
+				$( '#' + firstField ).trigger( 'focus' );
 			}
 		},
 
@@ -941,7 +931,7 @@ $( function () {
 					if ( obj.label ) {
 						html += mw.html.element(
 							'div',
-							{ 'class': 'mwe-pt-delete-params-question' },
+							{ class: 'mwe-pt-delete-params-question' },
 							obj.label
 						);
 					}
