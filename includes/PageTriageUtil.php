@@ -33,7 +33,7 @@ class PageTriageUtil {
 	 * with a straight boolean test.
 	 */
 	public static function doesPageNeedTriage( $article ) {
-		if ( ! $article ) {
+		if ( !$article ) {
 			throw new Exception( "Invalid argument to " . __METHOD__ );
 		}
 
@@ -51,7 +51,7 @@ class PageTriageUtil {
 			[ 'ptrp_page_id' => $pageId ]
 		);
 
-		if ( ! $row ) {
+		if ( !$row ) {
 			return null;
 		}
 
