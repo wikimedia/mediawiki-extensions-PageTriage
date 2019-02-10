@@ -12,6 +12,7 @@
 	"pagetriage-please-wait": "Kerem kerên, bıpawên...",
 	"pagetriage-reviewed": "Vêniya",
 	"pagetriage-bytes": "$1 {{PLURAL:$1|bayt|bayti}}",
+	"pagetriage-edits": "$1 {{PLURAL:$1|vurnayış|vurnayışi}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|kategoriye|kategoriyi}}",
 	"pagetriage-no-categories": "Kategoriy çıniyê",
 	"pagetriage-sort-by": "Raten:",
@@ -37,5 +38,6 @@
 	"log-name-pagetriage-deletion": "Qeydê esterıtışê etiketi",
 	"pagetriage-info-help": "peşti",
 	"pagetriage-info-problem-no-categories": "Kategoriy çıniyê",
-	"pagetriage-toolbar-learn-more": "Tayêna bımuse »"
+	"pagetriage-toolbar-learn-more": "Tayêna bımuse »",
+	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|vurnayış|vurnayışi}}"
 }
