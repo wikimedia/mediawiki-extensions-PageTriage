@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Bjankuloski06",
-			"Fitoschido"
+			"Fitoschido",
+			"Vlad5250"
 		]
 	},
 	"pagetriage": "Проверка на страници",
@@ -74,7 +75,7 @@
 	"pagetriage-filter-bot-edits": "Создадени од ботови",
 	"pagetriage-filter-redirects": "Пренасочувања",
 	"pagetriage-filter-others": "Сите други",
-	"pagetriage-filter-namespace-heading": "Во именскиот простор:",
+	"pagetriage-filter-namespace-heading": "Во именски простор:",
 	"pagetriage-filter-article": "Статија",
 	"pagetriage-filter-user-heading": "создадени од:",
 	"pagetriage-filter-username": "Корисничко име",

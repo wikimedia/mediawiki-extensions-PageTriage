@@ -5,7 +5,8 @@
 			"පසිඳු කාවින්ද",
 			"Borislav",
 			"StanProg",
-			"Vlad5250"
+			"Vlad5250",
+			"Vodnokon4e"
 		]
 	},
 	"pagetriage": "Проверка на страници",
@@ -65,7 +66,7 @@
 	"pagetriage-filter-bot-edits": "Създадени от ботове",
 	"pagetriage-filter-redirects": "Пренасочвания",
 	"pagetriage-filter-others": "Всички други",
-	"pagetriage-filter-namespace-heading": "В именното пространство:",
+	"pagetriage-filter-namespace-heading": "В именно пространство:",
 	"pagetriage-filter-article": "Статия",
 	"pagetriage-filter-user-heading": "създадени от:",
 	"pagetriage-filter-username": "Потребителско име",
@@ -74,7 +75,7 @@
 	"pagetriage-filter-no-categories": "Нямат категории",
 	"pagetriage-filter-all": "Показване на всички",
 	"pagetriage-filter-set-button": "Задаване на филтри",
-	"pagetriage-stats-less-than-a-day": "помалку от един ден",
+	"pagetriage-stats-less-than-a-day": "по-малко от един ден",
 	"pagetriage-filter-ns-all": "Всички",
 	"pagetriage-filter-pending-ores-score": "Н/Д",
 	"pagetriage-more": "Повече",
@@ -104,7 +105,7 @@
 	"pagetriage-filter-stat-predicted-issues-none": "Няма",
 	"pagetriage-note-reviewed": "Страницата е проверена.",
 	"pagetriage-note-not-reviewed": "Страницата все още не е проверена.",
-	"pagetriage-refresh-list": "Обнови списъка",
+	"pagetriage-refresh-list": "Обновяване на списъка",
 	"pagetriage-button-add-tag": "Добавяне на избраните етикети",
 	"pagetriage-button-add-details": "Добавяне на подробности",
 	"pagetriage-button-edit-details": "Редактиране на подробности",
