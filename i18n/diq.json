@@ -6,7 +6,8 @@
 			"Marmase",
 			"Kumkumuk",
 			"Asmen",
-			"1917 Ekim Devrimi"
+			"1917 Ekim Devrimi",
+			"Orbot707"
 		]
 	},
 	"pagetriage-please-wait": "Kerem kerên, bıpawên...",
@@ -15,6 +16,7 @@
 	"pagetriage-edits": "$1 {{PLURAL:$1|vurnayış|vurnayışi}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|kategoriye|kategoriyi}}",
 	"pagetriage-no-categories": "Kategoriy çıniyê",
+	"pagetriage-author-bot": "Bot",
 	"pagetriage-sort-by": "Raten:",
 	"pagetriage-oldest": "Tewr kehan",
 	"pagetriage-triage": "Çım berze cı",
@@ -26,7 +28,7 @@
 	"pagetriage-filter-stat-all": "Pêro",
 	"pagetriage-filter-stat-reviewed": "vêniya",
 	"pagetriage-filter-stat-unreviewed": "Nêbarıyaye",
-	"pagetriage-filter-stat-bots": "boti",
+	"pagetriage-filter-stat-bots": "Botan ra",
 	"pagetriage-filter-stat-no-categories": "kategoriy çıniyê",
 	"pagetriage-filter-stat-namespace": "Nameycay: $1",
 	"pagetriage-refresh-list": "Listi neweke",

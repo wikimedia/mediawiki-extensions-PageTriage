@@ -15,7 +15,8 @@
 			"Effeietsanders",
 			"Southparkfan",
 			"Optilete",
-			"Jeroen N"
+			"Jeroen N",
+			"Xbaked potatox"
 		]
 	},
 	"pagetriage": "Paginacontrole",
@@ -84,10 +85,10 @@
 	"pagetriage-filter-stat-all": "Alle",
 	"pagetriage-filter-stat-reviewed": "beoordeeld",
 	"pagetriage-filter-stat-unreviewed": "niet-beoordeeld",
-	"pagetriage-filter-stat-bots": "Bots",
-	"pagetriage-filter-stat-redirects": "doorverwijzingen",
+	"pagetriage-filter-stat-bots": "Door bots",
+	"pagetriage-filter-stat-redirects": "Doorverwijzingen",
 	"pagetriage-filter-stat-nominated-for-deletion": "genomineerd voor verwijdering",
-	"pagetriage-filter-stat-no-categories": "Zonder categorie",
+	"pagetriage-filter-stat-no-categories": "Geen categorieën",
 	"pagetriage-filter-stat-orphan": "Weespagina's",
 	"pagetriage-filter-stat-non-autoconfirmed": "Nieuwe gebruikers",
 	"pagetriage-filter-stat-blocked": "geblokkeerde gebruikers",
