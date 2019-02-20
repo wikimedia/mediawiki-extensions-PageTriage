@@ -166,7 +166,7 @@ $( function () {
 				mouseenter: function () {
 					that.setIcon( 'hover' );
 				},
-				mouseleaver: function () {
+				mouseleave: function () {
 					that.setIcon( 'normal' );
 				}
 			} );
