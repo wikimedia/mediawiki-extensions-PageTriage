@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mirzali"
+		]
+	},
+	"pagetriage-filter-username": "Namê karberi",
+	"pagetriage-filter-stat-username": "Karber: $1 ra",
+	"pagetriage-tags-param-free-yes-label": "Heya",
+	"pagetriage-tags-param-free-no-label": "Nê"
+}

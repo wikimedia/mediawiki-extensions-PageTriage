@@ -43,5 +43,6 @@
 	"pagetriage-info-help": "peşti",
 	"pagetriage-info-problem-no-categories": "Kategoriy çıniyê",
 	"pagetriage-toolbar-learn-more": "Tayêna bımuse »",
-	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|vurnayış|vurnayışi}}"
+	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|vurnayış|vurnayışi}}",
+	"pagetriage-toolbar-close": "Kip ke"
 }
