@@ -111,28 +111,29 @@ $( function () {
 			// Give grep a chance to find the usages:
 			// pagetriage-info-problem-blocked, pagetriage-info-problem-no-categories,
 			// pagetriage-info-problem-orphan, pagetriage-info-problem-no-references
-			if ( this.model.get( 'user_block_status' ) === 1 ) {
+			if ( parseInt( this.model.get( 'user_block_status' ) ) === 1 ) {
 				this.problemCount++;
 				problems += this.formatProblem( 'blocked' );
 			}
-			if ( this.model.get( 'category_count' ) < 1 && this.model.get( 'is_redirect' ) === 0 ) {
-				this.problemCount++;
-				problems += this.formatProblem( 'no-categories' );
-			}
-			if ( this.model.get( 'linkcount' ) < 1 && this.model.get( 'is_redirect' ) === 0 ) {
-				this.problemCount++;
-				problems += this.formatProblem( 'orphan' );
-			}
-			if ( typeof this.model.get( 'reference' ) !== 'undefined' &&
-				this.model.get( 'reference' ) === '0' &&
-				this.model.get( 'is_redirect' ) === 0 ) {
-				this.problemCount++;
-				problems += this.formatProblem( 'no-references' );
+			if ( parseInt( this.model.get( 'is_redirect' ) ) === 0 ) {
+				if ( parseInt( this.model.get( 'category_count' ) ) < 1 ) {
+					this.problemCount++;
+					problems += this.formatProblem( 'no-categories' );
+				}
+				if ( parseInt( this.model.get( 'linkcount' ) ) < 1 ) {
+					this.problemCount++;
+					problems += this.formatProblem( 'orphan' );
+				}
+				if ( typeof this.model.get( 'reference' ) !== 'undefined' &&
+					parseInt( this.model.get( 'reference' ) ) === 0 ) {
+					this.problemCount++;
+					problems += this.formatProblem( 'no-references' );
+				}
 			}
 			if ( problems ) {
 				problems = '<ul>' + problems + '</ul>';
 			}
-			this.model.set( 'problems', problems );
+			this.model.set( 'problems_html', problems );
 		}
 	} );
 
