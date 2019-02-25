@@ -16,6 +16,7 @@
 	"pagetriage-edits": "$1 {{PLURAL:$1|vurnayış|vurnayışi}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|kategoriye|kategoriyi}}",
 	"pagetriage-no-categories": "Kategoriy çıniyê",
+	"pagetriage-author-blocked": "Kılit biyo",
 	"pagetriage-author-bot": "Bot",
 	"pagetriage-sort-by": "Raten:",
 	"pagetriage-oldest": "Tewr kehan",
