@@ -94,8 +94,9 @@ class ApiPageTriageList extends ApiBase {
 			// Sort data according to page order returned by our query. Also convert it to a
 			// slightly different format that's more Backbone-friendly.
 			foreach ( $pages as $page ) {
-				if ( !isset( $metaData[$page] ) ) {
-					// If metadata is missing for a page, add this to the API output.
+				if ( !isset( $metaData[$page] ) || !ArticleMetadata::isValidMetadata( $metaData[$page] ) ) {
+					// If metadata is missing for a page, add warning to API output and exclude
+					// from feed.
 					$result['pages_missing_metadata'][] = $page;
 					$result['result'] = 'warning';
 					continue;
