@@ -88,6 +88,6 @@
 	"echo-pref-subscription-page-review": "Zkontroluje stránku, kterou jsem založil",
 	"echo-pref-tooltip-page-review": "Upozorněte mě, když někdo posoudí stránku, kterou jsem {{GENDER:|založil|založila}}.",
 	"echo-category-title-page-review": "{{PLURAL:$1|posouzení stránky}}",
-	"group-copyviobot": "Boti zabývající se porušením autorských práv",
-	"group-copyviobot-member": "{{GENDER:$1|bot zabývající se porušením autorských práv}}"
+	"group-copyviobot": "Roboti zabývající se porušením autorských práv",
+	"group-copyviobot-member": "{{GENDER:$1|robot zabývající se porušením autorských práv}}"
 }

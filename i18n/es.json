@@ -97,7 +97,7 @@
 	"pagetriage-filter-stat-orphan": "Huérfana",
 	"pagetriage-filter-stat-non-autoconfirmed": "Por recién llegados",
 	"pagetriage-filter-stat-blocked": "Por usuarios bloqueados",
-	"pagetriage-filter-stat-username": "nombre de usuario: $1",
+	"pagetriage-filter-stat-username": "Por usuario: $1",
 	"pagetriage-filter-stat-namespace": "Espacio de nombres",
 	"pagetriage-filter-stat-predicted-class-featured": "Destacado",
 	"pagetriage-filter-stat-predicted-issues-vandalism": "Vandalismo",
