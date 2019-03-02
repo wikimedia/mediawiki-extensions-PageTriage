@@ -172,7 +172,7 @@
 	"pagetriage-del-tags-dbg7-desc": "Странице на којима је аутор затражио брисање, било експлицитно или пражњењем странице. (G7)",
 	"pagetriage-del-tags-dbu3-label": "Неслободне галерије",
 	"pagetriage-del-tags-dbu3-desc": "Галерије у корисничком простору које се углавном или у потпуности састоје од „поштене употребе” или неслободних слика. Правила Википедије о неслободном садржају забрањују коришћење неслободног садржаја у корисничком простору, чак и садржај који је корисник отпремио. Коришћење садржаја у јавном власништву или под слободном лиценцом је прихватљиво. (U3)",
-	"pagetriage-del-tags-prod-notify-topic-title": "[[:en:Wikipedia:Proposed deletion|Предложено брисање]] странице [[$1]]",
+	"pagetriage-del-tags-prod-notify-topic-title": "[[Wikipedia:Proposed deletion|Предложено брисање]] странице [[$1]]",
 	"pagetriage-del-tags-xfd-notify-topic-title": "Дискусија о брисању странице [[$1]]",
 	"pagetriage-mark-mark-talk-page-notify-topic-title": "Страница коју {{GENDER:|сте}} направили ($1) је прегледана.",
 	"pagetriage-mark-unmark-talk-page-notify-topic-title": "Означио сам као непрегледану страницу коју {{GENDER:|сте}} збринули",
