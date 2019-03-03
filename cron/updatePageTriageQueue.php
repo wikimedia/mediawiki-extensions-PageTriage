@@ -135,5 +135,5 @@ class UpdatePageTriageQueue extends Maintenance {
 	}
 }
 
-$maintClass = "UpdatePageTriageQueue";
+$maintClass = UpdatePageTriageQueue::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

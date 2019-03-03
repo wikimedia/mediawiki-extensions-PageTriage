@@ -72,5 +72,5 @@ class CleanupPageTriageLog extends Maintenance {
 	}
 }
 
-$maintClass = 'CleanupPageTriageLog'; // Tells it to run the class
+$maintClass = CleanupPageTriageLog::class; // Tells it to run the class
 require_once RUN_MAINTENANCE_IF_MAIN;
