@@ -35,12 +35,12 @@
 <br/>
 
 <!-- possible problems section -->
-<% if ( problems ) { %>
+<% if ( problems_html ) { %>
 	<div class="mwe-pt-info-header">
 		<%- mw.msg( 'pagetriage-info-problem-header' ) %>
 	</div>
 	<div class="mwe-pt-info-content">
-		<%- problems %>
+		<%= problems_html %>
 	</div>
 	<br/>
 <% } %>
