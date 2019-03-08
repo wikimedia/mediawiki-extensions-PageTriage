@@ -442,6 +442,7 @@
 	"apihelp-pagetriagelist-param-pageoffset": "Seitenkennung, ab der begonnen werden soll (der Parameter $1offset muss ebenfalls übergeben werden).",
 	"apihelp-pagetriagelist-param-namespace": "Namensraum, von dem Seiten gezogen werden sollen.",
 	"apihelp-pagetriagelist-param-no_category": "Ob nur Seiten ohne Kategorie angezeigt werden sollen.",
+	"apihelp-pagetriagelist-param-no_inbound_links": "Ob nur Seiten ohne eingehende Links angezeigt werden sollen.",
 	"apihelp-pagetriagelist-param-non_autoconfirmed_users": "Ob nur Seiten angezeigt werden sollen, die nicht von automatisch bestätigten Benutzern erstellt wurden.",
 	"apihelp-pagetriagelist-param-learners": "Ob nur Seiten angezeigt werden sollen, die von neuen automatisch bestätigten Benutzern erstellt wurden.",
 	"apihelp-pagetriagelist-param-blocked_users": "Ob nur Seiten angezeigt werden sollen, die von gesperrten Benutzern erstellt wurden.",
