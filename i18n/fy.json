@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Robin0van0der0vliet",
-			"Robin van der Vliet"
+			"Robin van der Vliet",
+			"PiefPafPier"
 		]
 	},
 	"pagetriage-categories": "$1 {{PLURAL:$1|kategory|kategoryen}}",
 	"pagetriage-no-categories": "Gjin kategoryen",
-	"pagetriage-filter-username": "Brûkersnamme",
+	"pagetriage-filter-username": "Meidochnamme",
 	"pagetriage-more": "Mear",
 	"pagetriage-filter-stat-no-categories": "gjin kategoryen",
 	"pagetriage-tags-param-free-yes-label": "Ja",
