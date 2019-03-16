@@ -327,9 +327,7 @@ class Hooks {
 			// getTemplates returns all transclusions, not just NS_TEMPLATE
 			$allTransclusions = $article->mParserOutput->getTemplates();
 
-			$templates = isset( $allTransclusions[NS_TEMPLATE] ) ?
-				$allTransclusions[NS_TEMPLATE] :
-				[];
+			$templates = $allTransclusions[NS_TEMPLATE] ?? [];
 
 			foreach ( $noIndexTemplates as $noIndexTemplate ) {
 				if ( isset( $templates[ $noIndexTemplate ] ) ) {
@@ -577,7 +575,6 @@ class Hooks {
 	 * Register modules that depend on other state
 	 *
 	 * @param ResourceLoader &$resourceLoader
-	 * @return bool true
 	 */
 	public static function onResourceLoaderRegisterModules( &$resourceLoader ) {
 		global $wgPageTriageDeletionTagsOptionsContentLanguageMessages;

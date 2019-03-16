@@ -187,6 +187,7 @@ class ApiPageTriageList extends ApiBase {
 		// Initialize required variables
 		$pages = [];
 		$options = [];
+		$conds = [];
 		$join_conds = [];
 
 		// Database setup
