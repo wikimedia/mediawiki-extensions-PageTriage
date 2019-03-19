@@ -149,7 +149,7 @@ class ArticleCompileProcessor {
 			return $this->articles[$pageId]->getTimestamp();
 		}
 		// TODO deduplicate with ArticleCompileInterface::getArticleByPageId(), maybe move to this class
-		$fromdb = $this->componentDb === DB_MASTER ? 'fromdbmaster' : 'fromdb';
+		$fromdb = $this->componentDb['BasicData'] === DB_MASTER ? 'fromdbmaster' : 'fromdb';
 		$page = WikiPage::newFromID( $pageId, $fromdb );
 		if ( $page ) {
 			return $page->getTimestamp();
