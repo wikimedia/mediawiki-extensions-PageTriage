@@ -10,10 +10,6 @@ use User;
  */
 class ArticleCompileUserData extends ArticleCompileInterface {
 
-	public function __construct( $pageId, $componentDb = DB_MASTER, $articles = null ) {
-		parent::__construct( $pageId, $componentDb, $articles );
-	}
-
 	public function compile() {
 		// Grab the earliest revision based on rev_timestamp and rev_id
 		$revId = [];

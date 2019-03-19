@@ -7,10 +7,6 @@ namespace MediaWiki\Extension\PageTriage\ArticleCompile;
  */
 class ArticleCompileDeletionTag extends ArticleCompileInterface {
 
-	public function __construct( $pageId, $componentDb = DB_MASTER, $articles = null ) {
-		parent::__construct( $pageId, $componentDb, $articles );
-	}
-
 	public static function getDeletionTags() {
 		return [
 			'All_articles_proposed_for_deletion' => 'prod_status',

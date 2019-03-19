@@ -9,10 +9,6 @@ use Title;
  */
 class ArticleCompileBasicData extends ArticleCompileInterface {
 
-	public function __construct( $pageId, $componentDb = DB_MASTER, $articles = null ) {
-		parent::__construct( $pageId, $componentDb, $articles );
-	}
-
 	public function compile() {
 		$count = 0;
 		// Process page individually because MIN() GROUP BY is slow

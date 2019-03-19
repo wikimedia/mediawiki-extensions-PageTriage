@@ -255,7 +255,9 @@ class ArticleCompileProcessor {
 		foreach ( $this->component as $key => $val ) {
 			if ( $val === 'on' ) {
 				$compClass = 'MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompile' . $key;
-				$comp = new $compClass( $this->mPageId, $this->componentDb[$key], $this->articles );
+				$comp = new $compClass( $this->mPageId, $this->componentDb[$key], $this->articles,
+					$this->linksUpdates
+				);
 				if ( !$comp->compile() ) {
 					break;
 				}
