@@ -15,7 +15,8 @@
 			"Stjn",
 			"Vlad5250",
 			"Shaleych",
-			"Lega4"
+			"Lega4",
+			"Diralik"
 		]
 	},
 	"pagetriage": "Сортировка страниц",
@@ -229,7 +230,7 @@
 	"pagetriage-wikilove-no-recipients": "Нет доступных получателей для этой страницы.",
 	"pagetriage-wikilove-tooltip": "Отправить сообщение о признательности авторам",
 	"pagetriage-next-tooltip": "Перейти к следующей странице в очереди",
-	"pagetriage-del-log-page-missing-error": "Страница журнала за сегодня еще не создана!",
+	"pagetriage-del-log-page-missing-error": "Страница журнала за сегодня ещё не создана!",
 	"pagetriage-del-log-page-adding-error": "Не удалось найти контрольную точку для обсуждения",
 	"pagetriage-del-talk-page-notify-error": "Не удалось уведомить автора на странице обсуждения",
 	"pagetriage-del-discussion-page-adding-error": "Не удалось добавить страницу на страницу обсуждения удалений!",
