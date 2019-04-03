@@ -105,6 +105,7 @@ $( function () {
 			}
 
 			// remove the hover action
+			// eslint-disable-next-line no-jquery/no-unbind
 			this.$icon.unbind( 'mouseenter mouseleave' );
 		},
 
@@ -123,6 +124,7 @@ $( function () {
 			this.eventBus.unbind( 'showTool', null, this );
 
 			// re-add the hover action
+			// eslint-disable-next-line no-jquery/no-event-shorthand
 			this.$icon.hover(
 				function () {
 					that.setIcon( 'hover' );
@@ -196,6 +198,7 @@ $( function () {
 		},
 
 		disable: function () {
+			// eslint-disable-next-line no-jquery/no-unbind
 			this.$icon.unbind( 'mouseenter mouseleave click' );
 			this.setIcon( 'disabled' );
 			this.$icon.css( 'cursor', 'default' );
