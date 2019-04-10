@@ -18,9 +18,9 @@
 namespace MediaWiki\Extension\PageTriage;
 
 use IContextSource;
-use ORES\ORESServices;
+use ORES\Services\ORESServices;
 use ORES\Storage\ModelLookup;
-use ORES\ThresholdLookup;
+use ORES\Storage\ThresholdLookup;
 use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\Rdbms\ResultWrapper;
 
