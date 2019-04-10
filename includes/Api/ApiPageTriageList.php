@@ -8,7 +8,7 @@ use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use ApiBase;
 use ApiResult;
 use MediaWiki\Logger\LoggerFactory;
-use ORES\ORESServices;
+use ORES\Services\ORESServices;
 use SpecialPage;
 use Title;
 
