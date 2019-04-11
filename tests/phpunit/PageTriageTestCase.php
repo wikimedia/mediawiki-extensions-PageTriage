@@ -3,6 +3,7 @@
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriage;
+use MediaWiki\MediaWikiServices;
 
 /**
  * @group PageTriage
@@ -14,19 +15,17 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	protected $draftNsId = 150;
 
 	protected function setUp() {
-		global $wgContLang;
 		parent::setUp();
 
 		// Define a Draft NS unless there already is one.
-		$draftNsId = MWNamespace::getCanonicalIndex( 'draft' );
+		$draftNsId = MediaWikiServices::getInstance()->getNamespaceInfo()->
+			getCanonicalIndex( 'draft' );
 		if ( $draftNsId === null ) {
 			$this->setMwGlobals( [
 				'wgExtraNamespaces' => [ $this->draftNsId => 'Draft' ],
 				'wgPageTriageDraftNamespaceId' => $this->draftNsId
 			] );
-			// Clear NS caches.
-			MWNamespace::clearCaches();
-			$wgContLang->resetNamespaces();
+			$this->overrideMwServices();
 		} else {
 			$this->draftNsId = $draftNsId;
 		}
