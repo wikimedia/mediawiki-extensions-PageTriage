@@ -577,26 +577,10 @@ class Hooks {
 	 * @param ResourceLoader &$resourceLoader
 	 */
 	public static function onResourceLoaderRegisterModules( &$resourceLoader ) {
-		global $wgPageTriageDeletionTagsOptionsContentLanguageMessages;
-
 		$template = [
 			'localBasePath' => __DIR__ . '/../modules',
 			'remoteExtPath' => 'PageTriage/modules'
 		];
-
-		$messagesModule = [
-			'class' => 'MediaWiki\Extension\PageTriage\PageTriageMessagesModule',
-			'contentLanguageMessages' => array_merge(
-				[
-					'pagetriage-mark-mark-talk-page-notify-topic-title',
-					'pagetriage-mark-unmark-talk-page-notify-topic-title',
-					'pagetriage-tags-talk-page-notify-topic-title',
-				],
-				$wgPageTriageDeletionTagsOptionsContentLanguageMessages
-			),
-		];
-
-		$resourceLoader->register( 'ext.pageTriage.messages', $messagesModule );
 
 		$toolBaseClass = [
 			'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.js', // abstract class first
@@ -619,6 +603,7 @@ class Hooks {
 		];
 
 		$viewsToolbarModule = $template + [
+			'class' => PageTriageMessagesModule::class,
 			'dependencies' => [
 				'mediawiki.api',
 				'mediawiki.jqueryMsg',
@@ -633,7 +618,6 @@ class Hooks {
 				'jquery.client',
 				'ext.pageTriage.externalTagsOptions',
 				'ext.pageTriage.externalDeletionTagsOptions',
-				'ext.pageTriage.messages',
 			],
 			'styles' => [
 				'ext.pageTriage.css', // stuff that's shared across all views

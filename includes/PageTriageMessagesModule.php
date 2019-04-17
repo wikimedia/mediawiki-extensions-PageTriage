@@ -5,12 +5,13 @@ namespace MediaWiki\Extension\PageTriage;
 use FormatJson;
 use ResourceLoader;
 use ResourceLoaderContext;
-use ResourceLoaderModule;
+use ResourceLoaderFileModule;
 
 /**
- * Resource loader module providing customized messages from the server to PageTriage.
- * The current use case is to provide messages in content language (rather than interface
- * language).
+ * File module with extra generated script for PageTriage.
+ *
+ * This is used for custom interface messages that need to be exported in
+ * the site's content language (rather than the user language).
  *
  * @file
  * @ingroup Extensions
@@ -18,31 +19,29 @@ use ResourceLoaderModule;
  * @license MIT
  */
 
-class PageTriageMessagesModule extends ResourceLoaderModule {
-
-	/* Protected Members */
-
-	/**
-	 * @var array $contentLanguageMessageKeys
-	 */
-	protected $contentLanguageMessageKeys;
-
-	public function __construct(
-		$options = []
-	) {
-		$contentLanguageMessageKeys = array_values(
-			array_unique( (array)$options['contentLanguageMessages'] )
-		);
-		sort( $contentLanguageMessageKeys );
-		$this->contentLanguageMessageKeys = $contentLanguageMessageKeys;
-	}
+class PageTriageMessagesModule extends ResourceLoaderFileModule {
 
 	/* Methods */
 
 	public function getScript( ResourceLoaderContext $context ) {
-		$contentLanguageMessages = [];
+		$generatedScript = $this->getGeneratedScript( $context );
+		$fileScript = parent::getScript( $context );
+		return $generatedScript . $fileScript;
+	}
 
-		foreach ( $this->contentLanguageMessageKeys as $msgKey ) {
+	private function getGeneratedScript( ResourceLoaderContext $context ) {
+		$config = $this->getConfig();
+		$contentLanguageMessageKeys = array_merge(
+			[
+				'pagetriage-mark-mark-talk-page-notify-topic-title',
+				'pagetriage-mark-unmark-talk-page-notify-topic-title',
+				'pagetriage-tags-talk-page-notify-topic-title',
+			],
+			$config->get( 'PageTriageDeletionTagsOptionsContentLanguageMessages' )
+		);
+
+		$contentLanguageMessages = [];
+		foreach ( $contentLanguageMessageKeys as $msgKey ) {
 			$contentLanguageMessages[ $msgKey ] = $context->msg( $msgKey )->inContentLanguage()->plain();
 		}
 
@@ -52,13 +51,23 @@ class PageTriageMessagesModule extends ResourceLoaderModule {
 		) . ');';
 	}
 
-	public function enableModuleContentVersion() {
-		return true;
+	/**
+	 * Helper for computing the module version hash.
+	 *
+	 * @param ResourceLoaderContext $context
+	 * @return array
+	 */
+	public function getDefinitionSummary( ResourceLoaderContext $context ) {
+		$summary = parent::getDefinitionSummary( $context );
+		$summary[] = [
+			'generatedScript' => $this->getGeneratedScript( $context ),
+		];
+		return $summary;
 	}
 
 	public function getDependencies( ResourceLoaderContext $context = null ) {
-		return [
-			'ext.pageTriage.util',
-		];
+		$deps = parent::getDependencies( $context );
+		$deps[] = 'ext.pageTriage.util';
+		return $deps;
 	}
 }
