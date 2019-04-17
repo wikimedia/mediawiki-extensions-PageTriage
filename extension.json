@@ -576,8 +576,7 @@
 				"pagetriage-tags-param-source-label"
 			],
 			"dependencies": [
-				"mediawiki.Title",
-				"ext.pageTriage.messages"
+				"mediawiki.Title"
 			]
 		},
 		"ext.pageTriage.externalDeletionTagsOptions": {

@@ -27,7 +27,6 @@ class PageTriageExternalDeletionTagsOptions extends ResourceLoaderWikiModule {
 	public function getDependencies( ResourceLoaderContext $context = null ) {
 		return [
 			'ext.pageTriage.defaultDeletionTagsOptions',
-			'ext.pageTriage.messages',
 		];
 	}
 
