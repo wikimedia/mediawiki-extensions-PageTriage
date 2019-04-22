@@ -14,7 +14,8 @@
 			"아라",
 			"Endermoon",
 			"A Chinese Wikipedian",
-			"Phenolla"
+			"Phenolla",
+			"94rain"
 		]
 	},
 	"pagetriage": "页面分配器",
@@ -222,7 +223,8 @@
 	"logentry-pagetriage-curation-tag": "$1用$4{{PLURAL:$5|标签}}{{GENDER:$2|标记}}$3",
 	"logentry-pagetriage-curation-delete": "$1用$4{{PLURAL:$5|标签}}{{GENDER:$2|标记}}$3待删除",
 	"logentry-pagetriage-deletion-delete": "$1用$4{{PLURAL:$5|标签}}{{GENDER:$2|标记}}$3待删除",
-	"log-name-pagetriage-copyvio": "侵权活动日志",
+	"log-name-pagetriage-copyvio": "潜在的侵犯版权日志",
+	"log-description-pagetriage-copyvio": "这是通过PageTriage Copyvio API收到的事件日志",
 	"pagetriage-tags-edit-summary": "使用$1（$2）给页面添加标签",
 	"pagetriage-del-edit-summary": "使用$1（$2）将页面提名删除",
 	"pagetriage-del-tags-param-discussion-label": "请解释为什么要删除该页面，并在可能时提供相关方针的链接",
@@ -245,7 +247,7 @@
 	"pagetriage-info-timestamp-time-format": "HH:mm",
 	"pagetriage-info-tooltip": "显示该页面的元数据",
 	"pagetriage-toolbar-collapsed": "处理",
-	"pagetriage-toolbar-linktext": "处理该条目",
+	"pagetriage-toolbar-linktext": "打开页面处理",
 	"pagetriage-toolbar-learn-more": "了解更多 »",
 	"pagetriage-mark-title": "标记为已巡查",
 	"pagetriage-mark-as-reviewed": "标记为已巡查",
@@ -305,6 +307,7 @@
 	"apihelp-pagetriagelist-param-page_id": "返回指定页面ID的数据，忽略其他参数。",
 	"apihelp-pagetriagelist-param-showbots": "是否只显示机器人编辑。",
 	"apihelp-pagetriagelist-param-showredirs": "是否包括重定向。",
+	"apihelp-pagetriagelist-param-showothers": "是否包含不是重定向的页面或已经被提删的页面。",
 	"apihelp-pagetriagelist-param-showreviewed": "是否包括已巡查。",
 	"apihelp-pagetriagelist-param-showunreviewed": "是否包括未巡查。",
 	"apihelp-pagetriagelist-param-showdeleted": "是否包括“proposed for deleted”。",
