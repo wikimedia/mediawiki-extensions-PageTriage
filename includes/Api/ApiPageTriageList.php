@@ -417,6 +417,8 @@ class ApiPageTriageList extends ApiBase {
 		$searchableTags = [
 			// no categories assigned
 			'no_category' => [ 'name' => 'category_count', 'op' => '=', 'val' => '0' ],
+			// No citations
+			'unreferenced' => [ 'name' => 'reference', 'op' => '=', 'val' => '0' ],
 			// AfC status
 			'afc_state' => [ 'name' => 'afc_state', 'op' => '=', 'val' => false ],
 			// no inbound links

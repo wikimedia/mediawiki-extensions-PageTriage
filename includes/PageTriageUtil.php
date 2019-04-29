@@ -550,6 +550,9 @@ class PageTriageUtil {
 			'no_category' => [
 				ApiBase::PARAM_TYPE => 'boolean',
 			],
+			'unreferenced' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
 			'no_inbound_links' => [
 				ApiBase::PARAM_TYPE => 'boolean',
 			],

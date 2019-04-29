@@ -191,6 +191,12 @@
 							<%- mw.msg( 'pagetriage-filter-no-categories' ) %>
 						</label> <br/>
 						<input type="radio" name="mwe-pt-filter-radio"
+							   id="mwe-pt-filter-unreferenced"
+							   value="unreferenced"/>
+						<label for="mwe-pt-filter-unreferenced">
+							<%- mw.msg( 'pagetriage-filter-unreferenced' ) %>
+						</label> <br/>
+						<input type="radio" name="mwe-pt-filter-radio"
 							   id="mwe-pt-filter-orphan"
 							   value="no_inbound_links"/>
 						<label for="mwe-pt-filter-orphan">

@@ -396,6 +396,10 @@ $( function () {
 				apiParams.no_category = '1';
 			}
 
+			if ( $( '#mwe-pt-filter-unreferenced' ).prop( 'checked' ) ) {
+				apiParams.unreferenced = '1';
+			}
+
 			if ( $( '#mwe-pt-filter-orphan' ).prop( 'checked' ) ) {
 				// eslint-disable-next-line camelcase
 				apiParams.no_inbound_links = '1';
@@ -572,6 +576,7 @@ $( function () {
 			$( '#mwe-pt-filter-user' ).val( username );
 
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-no-categories' ), 'no_category', 'pagetriage-filter-stat-no-categories', 'top' );
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-unreferenced' ), 'unreferenced', 'pagetriage-filter-stat-unreferenced', 'top' );
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-orphan' ), 'no_inbound_links', 'pagetriage-filter-stat-orphan', 'top' );
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-non-autoconfirmed' ), 'non_autoconfirmed_users', 'pagetriage-filter-stat-non-autoconfirmed', 'top' );
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-learners' ), 'learners', 'pagetriage-filter-stat-learners', 'top' );
