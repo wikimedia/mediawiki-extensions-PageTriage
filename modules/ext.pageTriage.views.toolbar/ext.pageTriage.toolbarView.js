@@ -16,7 +16,7 @@ $( function () {
 				var toolbar,
 					// array of tool instances
 					tools,
-					// array of flyouts  disabled for the page creator
+					// array of flyouts disabled for the page creator
 					disabledForCreators = [ 'tags', 'mark', 'delete' ];
 
 				// overall toolbar view
@@ -123,6 +123,22 @@ $( function () {
 						$( '.mwe-pt-toolbar-close-button' ).on( 'click', function () {
 							that.hide( true );
 						} );
+
+						// Auto-resize all textareas as they type.
+						$( '#mwe-pt-toolbar' ).off( 'input.mwe-pt-tool-flyout' )
+							.on( 'input.mwe-pt-tool-flyout', 'textarea', function () {
+								var newHeight = this.scrollHeight + 2, // +2 to account for line-height.
+									maxHeight = 152; // Arbitrary, roughly 12 lines of text.
+
+								if ( newHeight > maxHeight ) {
+									this.style.height = maxHeight;
+									this.style.overflowY = 'scroll';
+								} else {
+									this.style.height = 'auto';
+									this.style.height = newHeight + 'px';
+									this.style.overflowY = 'hidden';
+								}
+							} );
 
 						// Show the toolbar based on saved prefs.
 						switch ( mw.user.options.get( 'userjs-curationtoolbar' ) ) {

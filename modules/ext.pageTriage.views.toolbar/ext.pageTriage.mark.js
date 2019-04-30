@@ -144,7 +144,7 @@ $( function () {
 		},
 
 		/**
-		 * Handle an error occuring after submit
+		 * Handle an error occurring after submit
 		 *
 		 * @param {string} action Whether the action was reviewing or unreviewing
 		 * @param {string} errorMsg The specific error that occurred
