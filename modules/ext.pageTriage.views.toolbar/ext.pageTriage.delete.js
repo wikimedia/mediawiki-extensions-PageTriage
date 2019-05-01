@@ -26,7 +26,7 @@ $( function () {
 
 	pageName = mw.config.get( 'wgPageTriagePagePrefixedText' );
 
-	// Deletion taggging
+	// Deletion tagging
 	specialDeletionTagging = {
 		afd: {
 			buildDiscussionRequest: function ( reason, data ) {
@@ -626,17 +626,17 @@ $( function () {
 				}
 			}
 
-			// check if page is aleady nominated for deletion
+			// check if page is already nominated for deletion
 			if ( this.isPageNominatedForDeletion() ) {
 				this.handleError( mw.msg( 'pagetriage-tag-deletion-error' ) );
 				return;
 			}
 
-			// Applying deletion tags should automatically mark the page as reviewed
+			// Applying deletion tags should not mark the page as reviewed
 			new mw.Api().postWithToken( 'csrf', {
 				action: 'pagetriageaction',
 				pageid: mw.config.get( 'wgArticleId' ),
-				reviewed: '1',
+				reviewed: '0',
 				skipnotif: '1'
 			} )
 				.done( function () {
@@ -663,7 +663,7 @@ $( function () {
 		},
 
 		/**
-		 * Handle an error occuring after submit
+		 * Handle an error occurring after submit
 		 *
 		 * @param {string} msg The error message to display
 		 */
