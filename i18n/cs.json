@@ -9,7 +9,8 @@
 			"Dvorapa",
 			"Ilimanaq29",
 			"Korytaacheck",
-			"Patriccck"
+			"Patriccck",
+			"Ján Kepler"
 		]
 	},
 	"newpagesfeed": "Kanál nových stránek",
@@ -44,6 +45,7 @@
 	"pagetriage-filter-username": "Uživatelské jméno",
 	"pagetriage-filter-tag-heading": "Se štítkem:",
 	"pagetriage-filter-no-categories": "Nekategorizované",
+	"pagetriage-filter-unreferenced": "Žádné citace",
 	"pagetriage-filter-orphan": "Jsou sirotčí",
 	"pagetriage-filter-non-autoconfirmed": "Vytvořené novými uživateli",
 	"pagetriage-filter-blocked": "Vytvořené zablokovanými uživateli",
@@ -57,6 +59,7 @@
 	"pagetriage-filter-stat-redirects": "přesměrování",
 	"pagetriage-filter-stat-nominated-for-deletion": "nominována na smazání",
 	"pagetriage-filter-stat-no-categories": "Žádné kategorie",
+	"pagetriage-filter-stat-unreferenced": "Bez zdrojů",
 	"pagetriage-filter-stat-orphan": "sirotčí",
 	"pagetriage-filter-stat-non-autoconfirmed": "noví uživatelé",
 	"pagetriage-filter-stat-blocked": "zablokovaní uživatelé",
