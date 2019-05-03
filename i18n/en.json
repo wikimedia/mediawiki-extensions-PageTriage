@@ -76,7 +76,7 @@
 	"pagetriage-filter-unreviewed-edits": "Unreviewed pages",
 	"pagetriage-filter-nominated-for-deletion": "Nominated for deletion",
 	"pagetriage-filter-bot-edits": "Were created by bots",
-	"pagetriage-filter-redirects": "Redirects",
+	"pagetriage-filter-redirects": "Redirects (not RfD)",
 	"pagetriage-filter-others": "All others",
 	"pagetriage-filter-namespace-heading": "In namespace:",
 	"pagetriage-filter-article": "Article",
