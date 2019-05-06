@@ -40,7 +40,6 @@ class Hooks {
 	 * @param int $newid Page id of created redirect, or 0 if suppressed
 	 * @param string $reason Reason for the move
 	 * @param Revision $revision Null revision created by the move
-	 * @return bool
 	 */
 	public static function onTitleMoveComplete(
 		Title &$oldTitle, Title &$newTitle, User $user, $oldid, $newid, $reason, Revision $revision
@@ -65,12 +64,12 @@ class Hooks {
 			$oldNamespace === $newNamespace
 			|| !in_array( $newNamespace, [ NS_MAIN, $draftNsId ], true )
 		) {
-			return true;
+			return;
 		}
 
 		// If not a new record to pagetriage queue, do nothing.
 		if ( !self::addToPageTriageQueue( $oldid, $newTitle, $user ) ) {
-			return true;
+			return;
 		}
 		// Item was newly added to PageTriage queue in master DB, compile metadata.
 		$acp = ArticleCompileProcessor::newFromPageId( [ $oldid ] );
@@ -82,8 +81,6 @@ class Hooks {
 			);
 			$acp->compileMetadata();
 		}
-
-		return true;
 	}
 
 	/**
@@ -96,12 +93,10 @@ class Hooks {
 	 * @param Revision|null $rev the new revision
 	 * @param int $baseID the revision ID this was based on, if any
 	 * @param User $user the editing user
-	 *
-	 * @return bool
 	 */
 	public static function onNewRevisionFromEditComplete( WikiPage $wikiPage, $rev, $baseID, $user ) {
 		if ( !in_array( $wikiPage->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
-			return true;
+			return;
 		}
 
 		if ( $rev && $rev->getParentId() ) {
@@ -114,8 +109,6 @@ class Hooks {
 				}
 			} );
 		}
-
-		return true;
 	}
 
 	/**
@@ -131,18 +124,17 @@ class Hooks {
 	 * @param bool $section (No longer used)
 	 * @param int $flags Flags passed to Article::doEdit()
 	 * @param Revision $revision New Revision of the article
-	 * @return bool
 	 */
 	public static function onPageContentInsertComplete(
 		$article, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision
 	) {
 		// Don't add to queue if not in a namespace of interest.
 		if ( !in_array( $article->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
-			return true;
+			return;
 		}
+
 		// Add item to queue. Metadata compilation will get triggered in the LinksUpdate hook.
 		self::addToPageTriageQueue( $article->getId(), $article->getTitle(), $user );
-		return true;
 	}
 
 	/**
@@ -161,8 +153,6 @@ class Hooks {
 	 * @param Revision $revision
 	 * @param Status $status
 	 * @param int $baseRevId
-	 *
-	 * @return bool
 	 */
 	public static function onPageContentSaveComplete(
 		WikiPage $wikiPage, $user, $content, $summary,
@@ -170,7 +160,6 @@ class Hooks {
 		$status, $baseRevId
 	) {
 		self::flushUserStatusCache( $wikiPage->getTitle() );
-		return true;
 	}
 
 	/**
@@ -182,11 +171,10 @@ class Hooks {
 	 * sorted out), in which case master DB connections and writes on GET request can occur.
 	 *
 	 * @param LinksUpdate $linksUpdate
-	 * @return bool
 	 */
 	public static function onLinksUpdateComplete( LinksUpdate $linksUpdate ) {
 		if ( !in_array( $linksUpdate->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
-			return true;
+			return;
 		}
 
 		DeferredUpdates::addCallableUpdate( function () use ( $linksUpdate ) {
@@ -200,9 +188,7 @@ class Hooks {
 				$acp->registerLinksUpdate( $linksUpdate );
 				$acp->compileMetadata();
 			}
-			return true;
 		} );
-		return true;
 	}
 
 	/**
@@ -213,19 +199,17 @@ class Hooks {
 	 * @param User $user the user that deleted the article
 	 * @param string $reason the reason the article was deleted
 	 * @param int $id id of the article that was deleted
-	 * @return true
 	 */
 	public static function onArticleDeleteComplete( $article, $user, $reason, $id ) {
 		self::flushUserStatusCache( $article->getTitle() );
 
 		if ( !in_array( $article->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
-			return true;
+			return;
 		}
 
-		// delete everything
+		// Delete everything
 		$pageTriage = new PageTriage( $id );
 		$pageTriage->deleteFromPageTriage();
-		return true;
 	}
 
 	/**
@@ -413,7 +397,6 @@ class Hooks {
 	 *
 	 * @param Article $article Article object to show link for.
 	 * @param bool $patrolFooterShown whether the patrol footer is shown
-	 * @return bool
 	 */
 	public static function onArticleViewFooter( $article, $patrolFooterShown ) {
 		global $wgPageTriageEnableCurationToolbar;
@@ -430,22 +413,22 @@ class Hooks {
 
 		// Only logged in users can review
 		if ( !$user->isLoggedIn() ) {
-			return true;
+			return;
 		}
 
 		// Don't show anything for user with no patrol right
 		if ( !$article->getTitle()->quickUserCan( 'patrol' ) ) {
-			return true;
+			return;
 		}
 
 		// Only show in defined namespaces
 		if ( !in_array( $article->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
-			return true;
+			return;
 		}
 
 		// Don't do anything if it's coming from Special:NewPages
 		if ( $request->getVal( 'patrolpage' ) ) {
-			return true;
+			return;
 		}
 
 		// See if the page is in the PageTriage page queue
@@ -483,8 +466,6 @@ class Hooks {
 				$outputPage->addHTML( $html );
 			}
 		}
-
-		return true;
 	}
 
 	/**
@@ -498,14 +479,13 @@ class Hooks {
 	 * @param int $rcid
 	 * @param User &$user
 	 * @param bool $wcOnlySysopsCanPatrol
-	 * @return bool
 	 */
 	public static function onMarkPatrolledComplete( $rcid, &$user, $wcOnlySysopsCanPatrol ) {
 		$rc = RecentChange::newFromId( $rcid );
 
 		if ( $rc ) {
 			if ( !in_array( $rc->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
-				return true;
+				return;
 			}
 
 			$pt = new PageTriage( $rc->getAttribute( 'rc_cur_id' ) );
@@ -526,28 +506,23 @@ class Hooks {
 				PageTriageUtil::createNotificationEvent( $article, $user, 'pagetriage-mark-as-reviewed' );
 			}
 		}
-
-		return true;
 	}
 
 	/**
-	 * Update Article metadata when a user gets blocked
+	 * Update Article metadata when a user gets blocked.
 	 *
 	 * 'BlockIpComplete': after an IP address or user is blocked
 	 * @param Block $block the Block object that was saved
 	 * @param User $performer the user who did the block (not the one being blocked)
-	 * @return bool
 	 */
 	public static function onBlockIpComplete( $block, $performer ) {
 		PageTriageUtil::updateMetadataOnBlockChange( $block );
-		return true;
 	}
 
 	/**
 	 * Send php config vars to js via ResourceLoader
 	 *
 	 * @param array &$vars variables to be added to the output of the startup module
-	 * @return bool
 	 */
 	public static function onResourceLoaderGetConfigVars( &$vars ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
@@ -568,7 +543,6 @@ class Hooks {
 		$vars['pageTriageNamespaces'] = PageTriageUtil::getNamespaces();
 		$vars['wgPageTriageDraftNamespaceId'] = $pageTriageDraftNamespaceId;
 		$vars['wgTalkPageNoteTemplate'] = $talkPageNoteTemplate;
-		return true;
 	}
 
 	/**
@@ -850,13 +824,10 @@ class Hooks {
 	public static function onUserMergeAccountFields( array &$updateFields ) {
 		$updateFields[] = [ 'pagetriage_log', 'ptrl_user_id' ];
 		$updateFields[] = [ 'pagetriage_page', 'ptrp_last_reviewed_by' ];
-
-		return true;
 	}
 
 	/**
 	 * @param DatabaseUpdater|null $updater
-	 * @return bool
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
 		$base = __DIR__ . "/../sql";
@@ -889,8 +860,6 @@ class Hooks {
 			'pagetriage_tags',
 			$base . '/PageTriageTagsPatch-copyvio.sql'
 		);
-
-		return true;
 	}
 
 	/**
