@@ -6,7 +6,7 @@ $( function () {
 	if ( mw.config.get( 'pageTriageNamespaces' ).indexOf( ns ) === -1 ||
 		ns === mw.config.get( 'wgPageTriageDraftNamespaceId' )
 	) {
-		return true;
+		return;
 	}
 
 	// Load the curation toolbar
