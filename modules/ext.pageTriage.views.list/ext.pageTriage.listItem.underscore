@@ -38,6 +38,9 @@
 						<% if ( linkcount == "0" && is_redirect == "0" ) { %>
 							&#xb7; <span class="mwe-pt-metadata-warning"><%- mw.msg("pagetriage-orphan") %></span>
 						<% } %>
+						<% if ( recreated == "1" ) { %>
+							&#xb7; <span class="mwe-pt-metadata-warning"><%- mw.msg("pagetriage-recreated") %></span>
+						<% } %>
 					<% } %>
 					<% if ( typeof reference !== "undefined" && reference == "0" && is_redirect == "0" ) { %>
 						&#xb7; <span class="mwe-pt-metadata-warning"><%- mw.msg( "pagetriage-no-reference" ) %></span>

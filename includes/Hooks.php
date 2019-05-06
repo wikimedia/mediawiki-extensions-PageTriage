@@ -629,6 +629,8 @@ class Hooks {
 				'pagetriage-info-problem-no-categories-desc',
 				'pagetriage-info-problem-orphan',
 				'pagetriage-info-problem-orphan-desc',
+				'pagetriage-info-problem-recreated',
+				'pagetriage-info-problem-recreated-desc',
 				'pagetriage-info-problem-no-references',
 				'pagetriage-info-problem-no-references-desc',
 				'pagetriage-info-timestamp-date-format',
@@ -859,6 +861,10 @@ class Hooks {
 		$updater->modifyExtensionTable(
 			'pagetriage_tags',
 			$base . '/PageTriageTagsPatch-copyvio.sql'
+		);
+		$updater->modifyExtensionTable(
+			'pagetriage_tags',
+			$base . '/PageTriageTagsPatch-recreated.sql'
 		);
 	}
 

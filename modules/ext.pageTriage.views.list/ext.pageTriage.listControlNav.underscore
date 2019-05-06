@@ -203,6 +203,12 @@
 							<%- mw.msg( 'pagetriage-filter-orphan' ) %>
 						</label> <br/>
 						<input type="radio" name="mwe-pt-filter-radio"
+							   id="mwe-pt-filter-recreated"
+							   value="recreated"/>
+						<label for="mwe-pt-filter-recreated">
+							<%- mw.msg( 'pagetriage-filter-recreated' ) %>
+						</label> <br/>
+						<input type="radio" name="mwe-pt-filter-radio"
 							   id="mwe-pt-filter-non-autoconfirmed"
 							   value="non_autoconfirmed_users"/>
 						<label for="mwe-pt-filter-non-autoconfirmed">

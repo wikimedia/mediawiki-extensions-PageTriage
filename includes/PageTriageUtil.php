@@ -556,6 +556,9 @@ class PageTriageUtil {
 			'no_inbound_links' => [
 				ApiBase::PARAM_TYPE => 'boolean',
 			],
+			'recreated' => [
+				ApiBase::PARAM_TYPE => 'boolean',
+			],
 			'non_autoconfirmed_users' => [
 				ApiBase::PARAM_TYPE => 'boolean',
 			],

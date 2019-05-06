@@ -38,6 +38,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 			[
 				[ 'ptrt_tag_name' => 'afc_state' ],
 				[ 'ptrt_tag_name' => 'user_name' ],
+				[ 'ptrt_tag_name' => 'recreated' ]
 			],
 			__METHOD__,
 			[ 'IGNORE' ]
