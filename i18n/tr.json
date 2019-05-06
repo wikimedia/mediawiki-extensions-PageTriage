@@ -11,7 +11,8 @@
 			"KorkmazO",
 			"Sayginer",
 			"Rapsar",
-			"Vito Genovese"
+			"Vito Genovese",
+			"Mirzali"
 		]
 	},
 	"pagetriage": "Sayfa Sıralayıcı",
@@ -67,6 +68,7 @@
 	"pagetriage-filter-tag-heading": "Etiket:",
 	"pagetriage-filter-second-show-heading": "Şu özelliklerde:",
 	"pagetriage-filter-no-categories": "Kategorisi yok",
+	"pagetriage-filter-unreferenced": "Alıntı yok",
 	"pagetriage-filter-orphan": "Öksüz olanlar",
 	"pagetriage-filter-non-autoconfirmed": "Yeni editörler tarafından açılanlar",
 	"pagetriage-filter-blocked": "Engellenmiş kullanıcılar tarafından açılanlar",
@@ -84,6 +86,7 @@
 	"pagetriage-filter-stat-redirects": "yönlendirmeler",
 	"pagetriage-filter-stat-nominated-for-deletion": "silinmeye aday",
 	"pagetriage-filter-stat-no-categories": "kategorisiz",
+	"pagetriage-filter-stat-unreferenced": "Kaynaksız",
 	"pagetriage-filter-stat-orphan": "öksüz",
 	"pagetriage-filter-stat-non-autoconfirmed": "yeni editörler",
 	"pagetriage-filter-stat-blocked": "engellenmiş kullanıcılar",
@@ -188,5 +191,7 @@
 	"pagetriage-tag-warning-notice": "Not: Bu sayfa $1 {{PLURAL:$1|dakika|dakika}} önce açıldı. Ciddi bir sorun yoksa etiket eklemek için beklemeyi düşünün.",
 	"notification-header-pagetriage-mark-as-reviewed": "'''$3''', {{GENDER:$2|incelenmiştir}}.",
 	"echo-pref-subscription-page-review": "Açmış olduğum sayfa incelemeleri",
-	"echo-pref-tooltip-page-review": "Birisi açmış olduğum bir sayfayı incelendiğinde beni bilgilendir."
+	"echo-pref-tooltip-page-review": "Birisi açmış olduğum bir sayfayı incelendiğinde beni bilgilendir.",
+	"apihelp-pagetriagelist-param-unreferenced": "Referans olmadan sadece sayfa gösterilip gösterilmeyeceği.",
+	"apihelp-pagetriagestats-param-unreferenced": "Referanssız sayfaların dahil edilip edilmeyeceği."
 }

@@ -16,7 +16,8 @@
 			"Southparkfan",
 			"Optilete",
 			"Jeroen N",
-			"Xbaked potatox"
+			"Xbaked potatox",
+			"Rots61"
 		]
 	},
 	"pagetriage": "Paginacontrole",
@@ -90,6 +91,7 @@
 	"pagetriage-filter-stat-redirects": "Doorverwijzingen",
 	"pagetriage-filter-stat-nominated-for-deletion": "genomineerd voor verwijdering",
 	"pagetriage-filter-stat-no-categories": "Geen categorieën",
+	"pagetriage-filter-stat-unreferenced": "Geen citaten",
 	"pagetriage-filter-stat-orphan": "Weespagina's",
 	"pagetriage-filter-stat-non-autoconfirmed": "Nieuwe gebruikers",
 	"pagetriage-filter-stat-blocked": "geblokkeerde gebruikers",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"George Animal",
-			"Ghybu"
+			"Ghybu",
+			"Mirzali"
 		]
 	},
 	"pagetriage-edits": "$1 {{PLURAL:$1|guherandin}}",
@@ -11,10 +12,12 @@
 	"pagetriage-filter-redirects": "Beralîkirin",
 	"pagetriage-filter-article": "Gotar",
 	"pagetriage-filter-username": "Navê bikarhêner",
+	"pagetriage-filter-unreferenced": "Nîşan tune",
 	"pagetriage-filter-ns-all": "Hemû",
 	"pagetriage-more": "Bêhtir",
 	"pagetriage-filter-stat-all": "Heemû",
 	"pagetriage-filter-stat-redirects": "beralîkirin",
+	"pagetriage-filter-stat-unreferenced": "Nîşan tune",
 	"pagetriage-button-add-parameters": "Parametreyan lê zêde bike",
 	"pagetriage-tags-param-free-yes-label": "Erê",
 	"pagetriage-tags-param-free-no-label": "Na",
