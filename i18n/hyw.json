@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kareyac"
+		]
+	},
+	"pagetriage-filter-predicted-issues-none": "Ոչ մէկ",
+	"pagetriage-newest": "Նորագոյն",
+	"pagetriage-oldest": "Հնագոյն",
+	"pagetriage-filter-type-show-heading": "Տեսակ․",
+	"pagetriage-filter-article": "Յօդուած",
+	"pagetriage-filter-ns-all": "Բոլոր",
+	"pagetriage-filter-stat-all": "Բոլոր",
+	"pagetriage-filter-stat-namespace": "Անւանատարածք",
+	"pagetriage-filter-stat-predicted-class-good": "Լաւ",
+	"pagetriage-filter-stat-predicted-issues-none": "Ոչ մէկ",
+	"pagetriage-info-history-header": "Պատմութիւն",
+	"pagetriage-info-help": "օգնութիւն",
+	"pagetriage-toolbar-learn-more": "Աւելի գիտնալ »",
+	"pagetriage-toolbar-close": "Գոցել",
+	"pagetriage-afc-state-all": "Բոլոր"
+}
