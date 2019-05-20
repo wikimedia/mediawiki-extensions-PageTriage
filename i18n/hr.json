@@ -76,6 +76,7 @@
 	"pagetriage-warning-browser": "Ovo oruđe možda ne će raditi ispravno s preglednicima starijim nego Internet Explorer 11.",
 	"log-name-pagetriage-curation": "Evidencija označivanja za pomnju",
 	"log-name-pagetriage-deletion": "Evidencija označivanja za brisanje",
+	"logentry-pagetriage-curation-reviewed": "$1 {{GENDER:$2|označio|označila}} je stranicu $3 provjerenom",
 	"pagetriage-mark-title": "Označeno provjerenim",
 	"pagetriage-mark-as-reviewed": "Označi provjerenim",
 	"echo-category-title-page-review": "{{PLURAL:$1|Ocjenjivanje|Ocjenjivanja}} stranice"

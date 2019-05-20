@@ -9,7 +9,8 @@
 			"חיים",
 			"ערן",
 			"המקיסט",
-			"Fitoschido"
+			"Fitoschido",
+			"Erelon"
 		]
 	},
 	"pagetriage": "מיון דפים חדשים",
@@ -90,8 +91,8 @@
 	"pagetriage-filter-stat-no-categories": "ללא קטגוריות",
 	"pagetriage-filter-stat-orphan": "יתומים",
 	"pagetriage-filter-stat-non-autoconfirmed": "עורכים חדשים",
-	"pagetriage-filter-stat-blocked": "משתמשים חסומים",
-	"pagetriage-filter-stat-username": "שם משתמש: $1",
+	"pagetriage-filter-stat-blocked": "לפי משתמשים חסומים",
+	"pagetriage-filter-stat-username": "לפי שם משתמש: $1",
 	"pagetriage-filter-stat-namespace": "מרחב שם: $1",
 	"pagetriage-no-pages": "אין דפים שתואמים למה שהגדרת.",
 	"pagetriage-warning-browser": "ייתכן שהכלי הזה לא יעבוד נכון בדפדפנים ישנים יותר מאינטרנט אקספלורר 11.",
