@@ -47,3 +47,5 @@ INSERT INTO /*_*/pagetriage_tags (ptrt_tag_name, ptrt_tag_desc)
 VALUES ('afc_state', 'The submission state of drafts');
 INSERT INTO /*_*/pagetriage_tags (ptrt_tag_name, ptrt_tag_desc)
 VALUES ('copyvio', 'Latest revision ID that has been tagged as a likely copyright violation, if any');
+INSERT INTO /*_*/pagetriage_tags (ptrt_tag_name, ptrt_tag_desc)
+VALUES ('recreated', 'Check if the page has been previously deleted.');

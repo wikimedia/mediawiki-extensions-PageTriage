@@ -423,6 +423,8 @@ class ApiPageTriageList extends ApiBase {
 			'afc_state' => [ 'name' => 'afc_state', 'op' => '=', 'val' => false ],
 			// no inbound links
 			'no_inbound_links' => [ 'name' => 'linkcount', 'op' => '=', 'val' => '0' ],
+			// previously deleted
+			'recreated' => [ 'name' => 'recreated', 'op' => '=', 'val' => '1' ],
 			// non auto confirmed users
 			'non_autoconfirmed_users' => [ 'name' => 'user_autoconfirmed', 'op' => '=', 'val' => '0' ],
 			// learning users (newly autoconfirmed)

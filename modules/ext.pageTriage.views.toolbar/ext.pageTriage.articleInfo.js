@@ -93,10 +93,10 @@ $( function () {
 			// Give grep a chance to find the usages:
 			// pagetriage-info-problem-non-autoconfirmed, pagetriage-info-problem-blocked,
 			// pagetriage-info-problem-no-categories, pagetriage-info-problem-orphan,
-			// pagetriage-info-problem-no-references,
+			// pagetriage-info-problem-recreated, pagetriage-info-problem-no-references,
 			// pagetriage-info-problem-non-autoconfirmed-desc, pagetriage-info-problem-blocked-desc,
 			// pagetriage-info-problem-no-categories-desc, pagetriage-info-problem-orphan-desc,
-			// pagetriage-info-problem-no-references-desc
+			// pagetriage-info-problem-recreated-desc, pagetriage-info-problem-no-references-desc
 			return '<li class="mwe-pt-info-problem"><span class="mwe-pt-info-problem-name">' +
 				mw.message( 'pagetriage-info-problem-' + problem ).escaped() +
 				'</span> - <span class="mwe-pt-info-problem-desc">' +
@@ -110,7 +110,8 @@ $( function () {
 
 			// Give grep a chance to find the usages:
 			// pagetriage-info-problem-blocked, pagetriage-info-problem-no-categories,
-			// pagetriage-info-problem-orphan, pagetriage-info-problem-no-references
+			// pagetriage-info-problem-orphan, pagetriage-info-problem-recreated,
+			// pagetriage-info-problem-no-references
 			if ( parseInt( this.model.get( 'user_block_status' ) ) === 1 ) {
 				this.problemCount++;
 				problems += this.formatProblem( 'blocked' );
@@ -129,6 +130,10 @@ $( function () {
 					this.problemCount++;
 					problems += this.formatProblem( 'no-references' );
 				}
+			}
+			if ( parseInt( this.model.get( 'recreated' ) ) === 1 ) {
+				this.problemCount++;
+				problems += this.formatProblem( 'recreated' );
 			}
 			if ( problems ) {
 				problems = '<ul>' + problems + '</ul>';
