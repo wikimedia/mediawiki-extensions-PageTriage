@@ -4,6 +4,7 @@
 			"Saraiki"
 		]
 	},
+	"pagetriage-recreated": "پہلے مٹائے ہوئے",
 	"pagetriage-filter-predicted-class-start": "شروع",
 	"pagetriage-filter-predicted-class-featured": "خاص خوبیاں آلے",
 	"pagetriage-filter-predicted-issues-none": "کوئی وی کائنی",
@@ -21,5 +22,6 @@
 	"pagetriage-filter-stat-predicted-class-good": "چنگا",
 	"pagetriage-filter-stat-predicted-issues-spam": "ردی",
 	"pagetriage-filter-stat-predicted-issues-none": "کوئی وی کائنی",
+	"pagetriage-info-problem-recreated-desc": "ایہ ورقہ پہلے مٹایا ہویا ہے۔",
 	"pagetriage-afc-state-all": "یکے"
 }

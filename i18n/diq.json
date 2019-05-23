@@ -16,6 +16,7 @@
 	"pagetriage-edits": "$1 {{PLURAL:$1|vurnayış|vurnayışi}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|kategoriye|kategoriyi}}",
 	"pagetriage-no-categories": "Kategoriy çıniyê",
+	"pagetriage-recreated": "Ver ra esteriyayo",
 	"pagetriage-author-blocked": "Kılit biyo",
 	"pagetriage-author-bot": "Bot",
 	"pagetriage-sort-by": "Raten:",
@@ -25,6 +26,7 @@
 	"pagetriage-filter-article": "Meqale",
 	"pagetriage-filter-username": "Nameyê karberi",
 	"pagetriage-filter-unreferenced": "Vateyên cı çıniyê",
+	"pagetriage-filter-recreated": "Ver ra esteriyay bi",
 	"pagetriage-filter-all": "Pêrune bımocne",
 	"pagetriage-filter-ns-all": "Pêro",
 	"pagetriage-more": "Zewbi",
@@ -34,6 +36,7 @@
 	"pagetriage-filter-stat-bots": "Botan ra",
 	"pagetriage-filter-stat-no-categories": "kategoriy çıniyê",
 	"pagetriage-filter-stat-unreferenced": "Vateyi çıniyê",
+	"pagetriage-filter-stat-recreated": "Ver ra esteriyayo",
 	"pagetriage-filter-stat-namespace": "Nameycay: $1",
 	"pagetriage-refresh-list": "Listi neweke",
 	"pagetriage-tags-cat-sources-label": "Çımeyi",
@@ -46,7 +49,11 @@
 	"log-name-pagetriage-deletion": "Qeydê esterıtışê etiketi",
 	"pagetriage-info-help": "peşti",
 	"pagetriage-info-problem-no-categories": "Kategoriy çıniyê",
+	"pagetriage-info-problem-recreated": "Ver ra esteriyayo",
+	"pagetriage-info-problem-recreated-desc": "Ena pele ver ra esteriyay bi",
 	"pagetriage-toolbar-learn-more": "Tayêna bımuse »",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|vurnayış|vurnayışi}}",
-	"pagetriage-toolbar-close": "Kip ke"
+	"pagetriage-toolbar-close": "Kip ke",
+	"apihelp-pagetriagelist-param-recreated": "Tenya pelanê ke esteriyayê, benê cı ya zi nêbenê cı, inan mocneno.",
+	"apihelp-pagetriagestats-param-recreated": "Tenya pelanê ke esteriyayê, benê cı ya zi nêbenê cı, inan mocneno."
 }

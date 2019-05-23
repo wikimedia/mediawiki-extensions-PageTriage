@@ -6,6 +6,7 @@
 		]
 	},
 	"pagetriage-categories": "$1 {{PLURAL:$1|kategori|kategorier}}",
+	"pagetriage-recreated": "Tidligere slettet",
 	"pagetriage-filter-predicted-issues-vandalism": "Hærværk",
 	"pagetriage-filter-show-heading": "Vis:",
 	"pagetriage-filter-type-show-heading": "Type:",
@@ -17,5 +18,6 @@
 	"pagetriage-tags-param-article-label": "Artikel:",
 	"log-name-pagetriage-copyvio": "Log over mulig brud på ophavsret",
 	"pagetriage-info-history-header": "Historik",
-	"pagetriage-info-history-show-full": "vis fuld historik"
+	"pagetriage-info-history-show-full": "vis fuld historik",
+	"pagetriage-info-problem-recreated-desc": "Denne side har tidligere været slettet."
 }

@@ -4,7 +4,8 @@
 			"Minisarm",
 			"Stelistcristi",
 			"Kyouko",
-			"Andrei Stroe"
+			"Andrei Stroe",
+			"Strainu"
 		]
 	},
 	"pagetriage-please-wait": "Vă rugăm să așteptați...",
@@ -78,5 +79,6 @@
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|modificare|modificări|de modificări}}",
 	"pagetriage-del-tooltip": "Nominalizează această pagină pentru ștergere",
 	"pagetriage-toolbar-close": "Închidere",
-	"pagetriage-toolbar-minimize": "Minimizare"
+	"pagetriage-toolbar-minimize": "Minimizare",
+	"apihelp-pagetriagestats-param-recreated": "Dacă să includă doar pagini care au fost șterse în trecut."
 }

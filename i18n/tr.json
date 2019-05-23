@@ -35,6 +35,7 @@
 	"pagetriage-no-categories": "Kategorisiz",
 	"pagetriage-no-reference": "Kaynaksız",
 	"pagetriage-orphan": "Öksüz",
+	"pagetriage-recreated": "Önceden silinmiş",
 	"pagetriage-no-author": "Yazar hakkında mevcut bir bilgi yok",
 	"pagetriage-byline": "$1 ($2$3$4) tarafından açıldı",
 	"pagetriage-byline-new-editor": "Yeni editör $1 ($2$3$4) tarafından açıldı",
@@ -70,6 +71,7 @@
 	"pagetriage-filter-no-categories": "Kategorisi yok",
 	"pagetriage-filter-unreferenced": "Alıntı yok",
 	"pagetriage-filter-orphan": "Öksüz olanlar",
+	"pagetriage-filter-recreated": "Daha önce silindi",
 	"pagetriage-filter-non-autoconfirmed": "Yeni editörler tarafından açılanlar",
 	"pagetriage-filter-blocked": "Engellenmiş kullanıcılar tarafından açılanlar",
 	"pagetriage-filter-all": "Hepsini göster",
@@ -88,6 +90,7 @@
 	"pagetriage-filter-stat-no-categories": "kategorisiz",
 	"pagetriage-filter-stat-unreferenced": "Kaynaksız",
 	"pagetriage-filter-stat-orphan": "öksüz",
+	"pagetriage-filter-stat-recreated": "Önceden silinmiş",
 	"pagetriage-filter-stat-non-autoconfirmed": "yeni editörler",
 	"pagetriage-filter-stat-blocked": "engellenmiş kullanıcılar",
 	"pagetriage-filter-stat-username": "kullanıcı adı: $1",
@@ -164,6 +167,8 @@
 	"pagetriage-info-problem-no-categories-desc": "Bu sayfa herhangi bir kategoriye ait değil.",
 	"pagetriage-info-problem-orphan": "Öksüz",
 	"pagetriage-info-problem-orphan-desc": "Bu sayfaya bağlantı veren başka bir sayfa yok",
+	"pagetriage-info-problem-recreated": "Önceden silinmiş",
+	"pagetriage-info-problem-recreated-desc": "Bu sayfa daha önce silinmişti.",
 	"pagetriage-info-problem-no-references": "Kaynaksız",
 	"pagetriage-info-problem-no-references-desc": "Bu sayfada herhangi bir kaynak kullanılmamıştır.",
 	"pagetriage-info-timestamp-date-format": "d MMMM yyyy",
@@ -193,5 +198,7 @@
 	"echo-pref-subscription-page-review": "Açmış olduğum sayfa incelemeleri",
 	"echo-pref-tooltip-page-review": "Birisi açmış olduğum bir sayfayı incelendiğinde beni bilgilendir.",
 	"apihelp-pagetriagelist-param-unreferenced": "Referans olmadan sadece sayfa gösterilip gösterilmeyeceği.",
-	"apihelp-pagetriagestats-param-unreferenced": "Referanssız sayfaların dahil edilip edilmeyeceği."
+	"apihelp-pagetriagelist-param-recreated": "Yalnızca önceden silinmiş sayfaların eklenip eklenmeyeceğini belirtir.",
+	"apihelp-pagetriagestats-param-unreferenced": "Referanssız sayfaların dahil edilip edilmeyeceği.",
+	"apihelp-pagetriagestats-param-recreated": "Yalnızca önceden silinmiş sayfaların eklenip eklenmeyeceğini belirtir."
 }
