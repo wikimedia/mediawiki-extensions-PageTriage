@@ -10,7 +10,8 @@
 			"ערן",
 			"המקיסט",
 			"Fitoschido",
-			"Erelon"
+			"Erelon",
+			"Steeve815"
 		]
 	},
 	"pagetriage": "מיון דפים חדשים",
@@ -73,6 +74,7 @@
 	"pagetriage-filter-second-show-heading": "אשר:",
 	"pagetriage-filter-no-categories": "אין להם קטגוריות",
 	"pagetriage-filter-orphan": "אין אליהם קישורים (\"יתומים\")",
+	"pagetriage-filter-recreated": "נמחקו לאחרונה",
 	"pagetriage-filter-non-autoconfirmed": "נוצרו על־ידי משתמשים חדשים",
 	"pagetriage-filter-blocked": "נוצרו על־ידי משתמשים חסומים",
 	"pagetriage-filter-all": "להציג הכול",
@@ -207,6 +209,7 @@
 	"pagetriage-info-problem-no-categories-desc": "דף זה אינו משויך לקטגוריות.",
 	"pagetriage-info-problem-orphan": "יתום",
 	"pagetriage-info-problem-orphan-desc": "אין דפים המקשרים לדף זה.",
+	"pagetriage-info-problem-recreated-desc": "הדף נמחק לאחרונה.",
 	"pagetriage-info-problem-no-references": "אין הערות שוליים",
 	"pagetriage-info-problem-no-references-desc": "דף זה לא מצטט מקורות.",
 	"pagetriage-info-timestamp-date-format": "d MMMM yyyy",
