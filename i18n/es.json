@@ -20,7 +20,8 @@
 			"Astroemi",
 			"Yllelder",
 			"Jelou",
-			"Carlosmg.dg"
+			"Carlosmg.dg",
+			"Harvest"
 		]
 	},
 	"pagetriage": "Triaje de páginas",
@@ -43,6 +44,7 @@
 	"pagetriage-no-categories": "Sin categorías",
 	"pagetriage-no-reference": "Sin citas",
 	"pagetriage-orphan": "Huérfana",
+	"pagetriage-recreated": "Anteriormente borrado",
 	"pagetriage-no-author": "No presenta información de autor",
 	"pagetriage-byline": "Creada por $1 ($2$3$4)",
 	"pagetriage-byline-new-editor": "Creada por el nuevo editor $1 ($2$3$4)",
@@ -83,6 +85,7 @@
 	"pagetriage-filter-second-show-heading": "Que:",
 	"pagetriage-filter-no-categories": "No tienen categorías",
 	"pagetriage-filter-orphan": "Están huérfanas",
+	"pagetriage-filter-recreated": "Fue previamente borrada",
 	"pagetriage-filter-non-autoconfirmed": "Creaciones de recién llegados (usuarios no autoconfirmados)",
 	"pagetriage-filter-blocked": "Fueron creadas por usuarios bloqueados",
 	"pagetriage-filter-all": "Mostrar todo",
@@ -326,6 +329,8 @@
 	"pagetriage-info-problem-no-categories-desc": "Esta página no pertenece a ninguna categoría.",
 	"pagetriage-info-problem-orphan": "Huérfana",
 	"pagetriage-info-problem-orphan-desc": "Ninguna otra página enlaza a esta página.",
+	"pagetriage-info-problem-recreated": "Anteriormente borrada",
+	"pagetriage-info-problem-recreated-desc": "Esta página fue anteriormente borrada",
 	"pagetriage-info-problem-no-references": "Sin citas",
 	"pagetriage-info-problem-no-references-desc": "Esta página no cita ninguna fuente.",
 	"pagetriage-info-timestamp-date-format": "d &#100;&#101; MMMM &#100;&#101; yyyy",
