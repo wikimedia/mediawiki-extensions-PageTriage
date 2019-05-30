@@ -2,12 +2,12 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
-use Block;
 use Content;
 use DatabaseUpdater;
 use EchoEvent;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use Article;
+use MediaWiki\Block\DatabaseBlock;
 use DeferredUpdates;
 use ExtensionRegistry;
 use Html;
@@ -512,7 +512,7 @@ class Hooks {
 	 * Update Article metadata when a user gets blocked.
 	 *
 	 * 'BlockIpComplete': after an IP address or user is blocked
-	 * @param Block $block the Block object that was saved
+	 * @param DatabaseBlock $block the block object that was saved
 	 * @param User $performer the user who did the block (not the one being blocked)
 	 */
 	public static function onBlockIpComplete( $block, $performer ) {

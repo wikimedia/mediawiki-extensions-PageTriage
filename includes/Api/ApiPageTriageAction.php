@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\PageTriage\Api;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriage;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
+use MediaWiki\MediaWikiServices;
 use Article;
 use ApiBase;
 use ManualLogEntry;
@@ -12,7 +13,7 @@ use ManualLogEntry;
 class ApiPageTriageAction extends ApiBase {
 
 	public function execute() {
-		global $wgContLang;
+		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
 
 		$params = $this->extractRequestParams();
 
@@ -53,7 +54,7 @@ class ApiPageTriageAction extends ApiBase {
 		);
 		$logEntry->setPerformer( $this->getUser() );
 		$logEntry->setTarget( $article->getTitle() );
-		$note = $wgContLang->truncateForDatabase( $params['note'], 150 );
+		$note = $contLang->truncateForDatabase( $params['note'], 150 );
 		if ( $note ) {
 			$logEntry->setComment( $note );
 		}

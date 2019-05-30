@@ -7,13 +7,16 @@ use Article;
 use DerivativeRequest;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
+use MediaWiki\MediaWikiServices;
 use ApiBase;
 use ManualLogEntry;
 
 class ApiPageTriageTagging extends ApiBase {
 
 	public function execute() {
-		global $wgPageTriageProjectLink, $wgContLang;
+		global $wgPageTriageProjectLink;
+
+		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
 
 		$params = $this->extractRequestParams();
 
@@ -43,7 +46,7 @@ class ApiPageTriageTagging extends ApiBase {
 		}
 
 		// Parse tags into a human readable list for the edit summary
-		$tags = $wgContLang->commaList( $params['taglist'] );
+		$tags = $contLang->commaList( $params['taglist'] );
 
 		// Check if the page has been nominated for deletion
 		if ( $params['deletion'] ) {
@@ -101,7 +104,7 @@ class ApiPageTriageTagging extends ApiBase {
 
 			$api->execute();
 
-			$note = $wgContLang->truncateForDatabase( $params['note'], 150 );
+			$note = $contLang->truncateForDatabase( $params['note'], 150 );
 
 			// logging to the logging table
 			if ( $params['taglist'] ) {

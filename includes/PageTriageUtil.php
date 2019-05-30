@@ -4,8 +4,8 @@ namespace MediaWiki\Extension\PageTriage;
 
 use ApiBase;
 use Article;
-use Block;
 use MediaWiki\Extension\PageTriage\Api\ApiPageTriageList;
+use MediaWiki\Block\DatabaseBlock;
 use EchoEvent;
 use Exception;
 use ExtensionRegistry;
@@ -355,7 +355,7 @@ class PageTriageUtil {
 
 	/**
 	 * Update user metadata when a user's block status is updated
-	 * @param Block $block Block object
+	 * @param DatabaseBlock $block block object
 	 * @param int $status 1/0
 	 */
 	public static function updateMetadataOnBlockChange( $block, $status = 1 ) {
