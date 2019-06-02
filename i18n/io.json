@@ -9,5 +9,6 @@
 	"pagetriage-filter-show-heading": "Montrez:",
 	"pagetriage-filter-ns-all": "Omna",
 	"pagetriage-filter-stat-all": "Omna",
-	"pagetriage-filter-stat-username": "nomo dil uzero: $1"
+	"pagetriage-filter-stat-username": "nomo dil uzero: $1",
+	"log-description-pagetriage-copyvio": "This is the log of events received via the PageTriage Copyvio API."
 }

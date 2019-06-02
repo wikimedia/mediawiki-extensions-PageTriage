@@ -3,7 +3,8 @@
 		"authors": [
 			"George Animal",
 			"Ghybu",
-			"Mirzali"
+			"Mirzali",
+			"Bikarhêner"
 		]
 	},
 	"pagetriage-edits": "$1 {{PLURAL:$1|guherandin}}",
@@ -23,7 +24,7 @@
 	"pagetriage-tags-param-free-no-label": "Na",
 	"pagetriage-info-help": "alîkarî",
 	"pagetriage-info-problem-no-categories": "Kategorî tune",
-	"pagetriage-info-problem-recreated-desc": "Ev rûpel berê hat jêbirin.",
+	"pagetriage-info-problem-recreated-desc": "Ev rûpel berê hatiye jêbirin.",
 	"pagetriage-toolbar-close": "Bigre",
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Spas}}}}"
 }
