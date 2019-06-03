@@ -231,6 +231,29 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	}
 
 	/**
+	 * Make sure articles created from redirects are added to the queue.
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::onNewRevisionFromEditComplete()
+	 */
+	public function testArticlesFromRedirects() {
+		$apiParams = [ 'namespace' => 0 ];
+		$pageTitle = 'Redirect test';
+
+		$this->insertPage( $pageTitle, '#REDIRECT [[Foo]]' );
+
+		// Should not be in unreviewed list (test user is a sysop and hence autopatrolled).
+		$list = $this->getPageTriageList( $apiParams );
+		static::assertTrue( count( $list ) === 0 || $list[0]['title'] !== $pageTitle );
+
+		// Turn the redirect into an article using a non-autopatrolled user.
+		$user = static::getTestUser()->getUser();
+		$this->editPage( $pageTitle, 'My new article', '', 0, $user );
+
+		// [[Redirect test]] should now be in the queue (and at the top since it's the most recent).
+		$list = $this->getPageTriageList( $apiParams );
+		static::assertEquals( $pageTitle, $list[0]['title'] );
+	}
+
+	/**
 	 * Verify that endpoint-specific API params are defined properly.
 	 *
 	 * @throws ApiUsageException

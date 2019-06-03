@@ -102,7 +102,7 @@ class Hooks {
 		if ( $rev && $rev->getParentId() ) {
 			// Make sure $prev->getContent() is done post-send if possible
 			DeferredUpdates::addCallableUpdate( function () use ( $rev, $wikiPage, $user ) {
-				$prev = $rev->getPrevious();
+				$prev = Revision::newFromId( $rev->getParentId() );
 				if ( $prev && !$wikiPage->isRedirect() && $prev->getContent()->isRedirect() ) {
 					// Add item to queue, if it's not already there.
 					self::addToPageTriageQueue( $wikiPage->getId(), $wikiPage->getTitle(), $user );
