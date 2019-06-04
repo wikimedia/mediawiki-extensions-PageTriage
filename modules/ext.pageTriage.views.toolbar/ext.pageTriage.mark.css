@@ -1,6 +1,12 @@
 /* override the default width */
 #mwe-pt-mark .mwe-pt-tool-flyout {
-	width: 350px;
+	/**
+	 * 400px for the textarea,
+	 * + 7px margin on textarea,
+	 * + 2px padding on .mwe-pt-tool-content
+	 * + 10px padding on .mwe-pt-tool-flyout
+	 */
+	width: 419px;
 }
 
 .mwe-pt-mark-helptext {
@@ -20,8 +26,7 @@
 #mwe-pt-review-note-input {
 	clear: both;
 	font-size: 11px;
-	height: 50px;
-	width: 325px;
+	width: 400px;
 	margin: 5px 5px 2px 2px;
 	color: #666;
 }
