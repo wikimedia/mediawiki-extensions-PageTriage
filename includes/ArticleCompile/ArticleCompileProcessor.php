@@ -208,7 +208,7 @@ class ArticleCompileProcessor {
 					);
 					JobQueueGroup::singleton()->push( $job );
 				}
-				LoggerFactory::getInstance( 'PageTriage' )->warning(
+				LoggerFactory::getInstance( 'PageTriage' )->debug(
 					'Article metadata not found in DB, will attempt to save to DB via the job queue.',
 					[
 						'trace' => ( new \RuntimeException() )->getTraceAsString(),

@@ -138,7 +138,7 @@ class ApiPageTriageList extends ApiBase {
 
 		// Log missing metadata.
 		if ( count( $result['pages_missing_metadata'] ) ) {
-			LoggerFactory::getInstance( 'PageTriage' )->warning( 'Metadata is missing for some pages.',
+			LoggerFactory::getInstance( 'PageTriage' )->debug( 'Metadata is missing for some pages.',
 				[
 					'pages_missing_metadata' => implode( ',', $result['pages_missing_metadata'] ),
 					'opts' => json_encode( $opts, JSON_PRETTY_PRINT ),

@@ -333,7 +333,7 @@ class ArticleMetadata {
 		$required_populated_fields = [ 'user_name', 'title' ];
 		foreach ( $required_populated_fields as $field ) {
 			if ( !isset( $metadata[$field] ) || $metadata[$field] === '' ) {
-				LoggerFactory::getInstance( 'PageTriage' )->warning( 'Incomplete metadata for page.',
+				LoggerFactory::getInstance( 'PageTriage' )->debug( 'Incomplete metadata for page.',
 					[ 'metadata' => json_encode( $metadata ) ] );
 				return false;
 			}
