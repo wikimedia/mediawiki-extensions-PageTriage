@@ -432,11 +432,12 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$otherPage = $this->insertPage( 'PageOther', 'some content', 0, $user );
 		$this->insertPage( 'PageDel', '[[Category:Articles_for_deletion]]', 0, $user );
 		$this->insertPage( 'PageRedir', '#REDIRECT [[Foo]]', 0, $user );
+		$this->insertPage( 'PageRfD', '[[Category:All_redirects_for_discussion]]', 0, $user );
 
 		$list = $this->getPageTriageList( [
 			'namespace' => 0,
 		] );
-		$this->assertPages( [ 'PageOther', 'PageDel', 'PageRedir' ], $list,
+		$this->assertPages( [ 'PageOther', 'PageDel', 'PageRedir', 'PageRfD' ], $list,
 			'All pages (no type filter)' );
 
 		$list = $this->getPageTriageList( [
@@ -450,7 +451,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			'namespace' => 0,
 			'showdeleted' => 1,
 		] );
-		$this->assertPages( [ 'PageDel' ], $list,
+		$this->assertPages( [ 'PageDel', 'PageRfD' ], $list,
 			'Nominated for deletion only' );
 
 		$list = $this->getPageTriageList( [
@@ -458,7 +459,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			'showdeleted' => 1,
 			'showothers' => 1,
 		] );
-		$this->assertPages( [ 'PageOther', 'PageDel' ], $list,
+		$this->assertPages( [ 'PageOther', 'PageDel', 'PageRfD' ], $list,
 			'Nominated for deletion and all others' );
 
 		$list = $this->getPageTriageList( [
@@ -481,7 +482,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			'showdeleted' => 1,
 			'showredirs' => 1,
 		] );
-		$this->assertPages( [ 'PageDel', 'PageRedir' ], $list,
+		$this->assertPages( [ 'PageDel', 'PageRedir', 'PageRfD' ], $list,
 			'Nominated for deletion and Redirects' );
 
 		$list = $this->getPageTriageList( [
@@ -490,7 +491,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			'showredirs' => 1,
 			'showothers' => 1,
 		] );
-		$this->assertPages( [ 'PageOther', 'PageDel', 'PageRedir' ], $list,
+		$this->assertPages( [ 'PageOther', 'PageDel', 'PageRedir', 'PageRfD' ], $list,
 			'Nominated for deletion, Redirects and all others => no filtering' );
 
 		// Delete PageOther, then recreate it.

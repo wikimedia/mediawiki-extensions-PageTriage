@@ -93,7 +93,7 @@
 	"pagetriage-filter-unreviewed-edits": "Checkbox text for unreviewed pages",
 	"pagetriage-filter-nominated-for-deletion": "Checkbox text for pages nominated for deletion",
 	"pagetriage-filter-bot-edits": "Checkbox text for pages by bots",
-	"pagetriage-filter-redirects": "Checkbox text for redirect pages.\n{{Identical|Redirect}}",
+	"pagetriage-filter-redirects": "Checkbox text for redirect pages.",
 	"pagetriage-filter-others": "Checkbox text for all other pages",
 	"pagetriage-filter-namespace-heading": "Prompt for the namespace to display",
 	"pagetriage-filter-article": "Select list option for the main namespace.\n{{Identical|Article}}",

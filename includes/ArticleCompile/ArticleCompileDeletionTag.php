@@ -12,7 +12,10 @@ class ArticleCompileDeletionTag extends ArticleCompileInterface {
 			'All_articles_proposed_for_deletion' => 'prod_status',
 			'BLP_articles_proposed_for_deletion' => 'blp_prod_status',
 			'Candidates_for_speedy_deletion' => 'csd_status',
-			'Articles_for_deletion' => 'afd_status'
+			// The next two are both treated as deletion nominations,
+			// because RfD pages are not actual redirects. See T157046.
+			'Articles_for_deletion' => 'afd_status',
+			'All_redirects_for_discussion' => 'afd_status',
 		];
 	}
 
