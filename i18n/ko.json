@@ -69,7 +69,7 @@
 	"pagetriage-filter-unreviewed-edits": "검토되지 않은 문서",
 	"pagetriage-filter-nominated-for-deletion": "삭제 선정함",
 	"pagetriage-filter-bot-edits": "봇에 의해 만들어짐",
-	"pagetriage-filter-redirects": "넘겨주기",
+	"pagetriage-filter-redirects": "넘겨주기 (RfD 아님)",
 	"pagetriage-filter-namespace-heading": "이름공간:",
 	"pagetriage-filter-article": "문서",
 	"pagetriage-filter-user-heading": "만든 사용자는",

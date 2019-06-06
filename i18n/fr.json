@@ -91,7 +91,7 @@
 	"pagetriage-filter-unreviewed-edits": "Pages non relues",
 	"pagetriage-filter-nominated-for-deletion": "Nommé pour être supprimé",
 	"pagetriage-filter-bot-edits": "Ont été faits par les robots",
-	"pagetriage-filter-redirects": "Redirections",
+	"pagetriage-filter-redirects": "Redirections (non RfD)",
 	"pagetriage-filter-others": "Tous les autres",
 	"pagetriage-filter-namespace-heading": "Dans l'espace de noms :",
 	"pagetriage-filter-article": "Article",

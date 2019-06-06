@@ -59,7 +59,7 @@
 	"pagetriage-filter-unreviewed-edits": "Pagine non revisionate",
 	"pagetriage-filter-nominated-for-deletion": "Proposte per la cancellazione",
 	"pagetriage-filter-bot-edits": "Sono state create da bot",
-	"pagetriage-filter-redirects": "Redirect",
+	"pagetriage-filter-redirects": "Redirect (non RdC)",
 	"pagetriage-filter-namespace-heading": "Nel namespace:",
 	"pagetriage-filter-article": "Voce",
 	"pagetriage-filter-user-heading": "Sono state create da",
