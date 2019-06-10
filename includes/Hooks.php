@@ -583,7 +583,6 @@ class Hooks {
 				'mediawiki.jqueryMsg',
 				'mediawiki.messagePoster',
 				'mediawiki.Title',
-				'ext.pageTriage.models',
 				'ext.pageTriage.util',
 				'jquery.badge.external',
 				'jquery.ui.button',
