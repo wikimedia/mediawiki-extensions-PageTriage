@@ -48,7 +48,7 @@
 	"pagetriage-filter-unreviewed-edits": "Paginas non revidite",
 	"pagetriage-filter-nominated-for-deletion": "Nominate pro deletion",
 	"pagetriage-filter-bot-edits": "Ha essite create per robots",
-	"pagetriage-filter-redirects": "Redirectiones",
+	"pagetriage-filter-redirects": "Redirectiones (non marcate como problematic)",
 	"pagetriage-filter-namespace-heading": "In spatio de nomines:",
 	"pagetriage-filter-user-heading": "Ha essite create per",
 	"pagetriage-filter-tag-heading": "Con etiquetta:",

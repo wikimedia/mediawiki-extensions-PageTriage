@@ -11,6 +11,7 @@
 	"pagetriage-edits": "တည်းဖြတ်မှု $1 {{PLURAL:$1|ခု|ခု}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|ကဏ္ဍ|ကဏ္ဍများ}}",
 	"pagetriage-orphan": "မိဘမဲ့",
+	"pagetriage-recreated": "ယခင် ဖျက်ထားသော",
 	"pagetriage-author-not-autoconfirmed": "တည်းဖြတ်သူ အသစ်",
 	"pagetriage-filter-predicted-class-stub": "ဆောင်းပါးတို",
 	"pagetriage-filter-predicted-class-start": "စတင်",
@@ -37,6 +38,7 @@
 	"pagetriage-filter-stat-redirects": "ပြန်ညွှန်းများ",
 	"pagetriage-filter-stat-nominated-for-deletion": "ဖျက်ပစ်ရန် အဆိုပြုထားသည်",
 	"pagetriage-filter-stat-no-categories": "ကဏ္ဍများ မရှိပါ",
+	"pagetriage-filter-stat-recreated": "ယခင် ဖျက်ထားသော",
 	"pagetriage-filter-stat-blocked": "ပိတ်ပင်ထားသော အသုံးပြုသူများ",
 	"pagetriage-filter-stat-namespace": "အမည်ညွှန်း",
 	"pagetriage-filter-stat-predicted-class-stub": "ဆောင်းပါးတို",
@@ -45,6 +47,8 @@
 	"pagetriage-tags-cat-sources-label": "ရင်းမြစ်များ",
 	"pagetriage-tags-param-free-no-label": "မလုပ်ပါ",
 	"pagetriage-info-help": "အကူအညီ",
+	"pagetriage-info-problem-recreated": "ယခင် ဖျက်ထားသော",
+	"pagetriage-info-problem-recreated-desc": "ဤစာမျက်နှာကို ယခင်က ဖျက်ထားသည်။",
 	"pagetriage-discuss-link": "{{GENDER:$1|ဆွေးနွေး}}",
 	"pagetriage-discuss-link-title": "{{GENDER:$1|ဆွေးနွေး}}"
 }

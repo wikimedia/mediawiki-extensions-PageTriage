@@ -165,6 +165,7 @@
 	"pagetriage-tags-cat-all-label": "Sve oznake",
 	"pagetriage-tags-linkrot-label": "Goli URL-ovi",
 	"pagetriage-tags-copyedit-label": "Lektura (redaktura)",
+	"pagetriage-tags-orphan-label": "Siroče",
 	"pagetriage-tags-tooltip": "Dodaj oznake za ukazivanje na polja u kojima je potrebno poboljšanje ove stranice",
 	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "Prijedlog za brzo brisanje stranice »$1«",
 	"pagetriage-del-tags-cat-csd-desc": "Označi ovu stranicu za brzo brisanje ako odgovara jednom od niže navedenih uvjeta.",
