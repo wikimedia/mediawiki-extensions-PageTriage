@@ -1,7 +1,6 @@
 // view for display deletion wizard
 $( function () {
 	var DateWrapper, pageName, specialDeletionTagging;
-
 	// date wrapper that generates a new Date() object
 	DateWrapper = function DateWrapper() {
 		this.date = new Date();
@@ -636,7 +635,7 @@ $( function () {
 			new mw.Api().postWithToken( 'csrf', {
 				action: 'pagetriageaction',
 				pageid: mw.config.get( 'wgArticleId' ),
-				reviewed: '0',
+				reviewed: that.deletionTagsOptions[ that.selectedCat ].reviewed || '0', // .reviewed value must be either '0' or '1'
 				skipnotif: '1'
 			} )
 				.done( function () {
