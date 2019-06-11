@@ -460,7 +460,7 @@
 	"apihelp-pagetriagelist-param-unreferenced": "Whether to show only pages without any references.",
 	"apihelp-pagetriagelist-param-no_inbound_links": "Whether to show only pages with no inbound links.",
 	"apihelp-pagetriagelist-param-recreated": "Whether to show only pages that were previously deleted.",
-	"apihelp-pagetriagelist-param-non_autoconfirmed_users": "Whether to show only pages created by non auto confirmed users.",
+	"apihelp-pagetriagelist-param-non_autoconfirmed_users": "Whether to show only pages created by non autoconfirmed users.",
 	"apihelp-pagetriagelist-param-learners": "Whether to show only pages created by newly autoconfirmed users.",
 	"apihelp-pagetriagelist-param-blocked_users": "Whether to show only pages created by blocked users.",
 	"apihelp-pagetriagelist-param-username": "Show only pages created by username.",
