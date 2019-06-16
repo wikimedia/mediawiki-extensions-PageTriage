@@ -53,7 +53,7 @@
 	"pagetriage-filter-unreviewed-edits": "未査読ページ",
 	"pagetriage-filter-nominated-for-deletion": "削除候補",
 	"pagetriage-filter-bot-edits": "ボットが作成した",
-	"pagetriage-filter-redirects": "リダイレクト",
+	"pagetriage-filter-redirects": "リダイレクト（削除に関するRfDではありません）",
 	"pagetriage-filter-namespace-heading": "対象名前空間:",
 	"pagetriage-filter-article": "記事",
 	"pagetriage-filter-user-heading": "作成者",
