@@ -269,7 +269,8 @@
 				label: mw.msg( 'pagetriage-del-tags-cat-csd-label' ),
 				desc: mw.msg( 'pagetriage-del-tags-cat-csd-desc' ),
 				multiple: true,
-				reviewed: '0', // do NOT mark page as reviewed when this deletion tag option is selected.
+				// do NOT mark page as reviewed when this deletion tag option is selected.
+				reviewed: '0',
 				tags: {
 					dbg3: $.extend( true, {}, tags.dbg3 ),
 					dbg10: $.extend( true, {}, tags.dbg10 ),
@@ -293,7 +294,8 @@
 				label: mw.msg( 'pagetriage-del-tags-cat-prod-label' ),
 				desc: mw.msg( 'pagetriage-del-tags-cat-prod-desc' ),
 				multiple: false,
-				reviewed: '0', // do NOT mark page as reviewed when this deletion tag option is selected.
+				// do NOT mark page as reviewed when this deletion tag option is selected
+				reviewed: '0',
 				tags: {
 					blpprod: $.extend( true, {}, tags.blpprod ),
 					prod: $.extend( true, {}, tags.prod )
@@ -304,7 +306,8 @@
 				label: '',
 				desc: mw.msg( 'pagetriage-del-tags-cat-discussion-desc' ),
 				multiple: false,
-				reviewed: '1', // mark page as reviewed when this deletion tag option is selected.
+				// mark page as reviewed when this deletion tag option is selected
+				reviewed: '1',
 				tags: {
 					articlefordeletion: {
 						label: mw.msg( 'pagetriage-del-tags-articlefordeletion-label' ),
@@ -353,7 +356,8 @@
 				label: mw.msg( 'pagetriage-del-tags-cat-csd-label' ),
 				desc: mw.msg( 'pagetriage-del-tags-cat-csd-desc' ),
 				multiple: true,
-				reviewed: '0', // mark page as reviewed when this deletion tag option is selected.
+				// do NOT mark page as reviewed when this deletion tag option is selected
+				reviewed: '0',
 				tags: {
 					dbg11: $.extend( true, {}, tags.dbg11 ),
 					dbu2: $.extend( true, {}, tags.dbu2 ),
@@ -369,7 +373,8 @@
 				label: mw.msg( 'pagetriage-del-tags-cat-prod-label' ),
 				desc: mw.msg( 'pagetriage-del-tags-cat-prod-desc' ),
 				multiple: false,
-				reviewed: '0', // mark page as reviewed when this deletion tag option is selected.
+				// do NOT mark page as reviewed when this deletion tag option is selected
+				reviewed: '0',
 				tags: {
 					prod: $.extend( true, {}, tags.prod )
 				}
@@ -379,7 +384,8 @@
 				label: '',
 				desc: mw.msg( 'pagetriage-del-tags-cat-discussion-desc' ),
 				multiple: false,
-				reviewed: '1', // mark page as reviewed when this deletion tag option is selected.
+				// mark page as reviewed when this deletion tag option is selected
+				reviewed: '1',
 				tags: {
 					miscellanyfordeletion: {
 						label: mw.msg( 'pagetriage-del-tags-miscellanyfordeletion-label' ),

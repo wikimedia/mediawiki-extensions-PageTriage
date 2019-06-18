@@ -631,11 +631,13 @@ $( function () {
 				return;
 			}
 
-			// Applying deletion tags should not mark the page as reviewed
+			// Applying deletion tags should mark the page as reviewed depending on the selected tag's
+			// reviewed option. If it is not set then the page will be marked as not reviewed.
 			new mw.Api().postWithToken( 'csrf', {
 				action: 'pagetriageaction',
 				pageid: mw.config.get( 'wgArticleId' ),
-				reviewed: that.deletionTagsOptions[ that.selectedCat ].reviewed || '0', // .reviewed value must be either '0' or '1'
+				// reviewed value must be either '0' or '1'
+				reviewed: that.deletionTagsOptions[ that.selectedCat ].reviewed || '0',
 				skipnotif: '1'
 			} )
 				.done( function () {
