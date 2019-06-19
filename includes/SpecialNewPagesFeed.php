@@ -33,10 +33,11 @@ class SpecialNewPagesFeed extends SpecialPage {
 	 * @throws \ConfigException
 	 */
 	public function execute( $sub ) {
-		global	$wgPageTriageInfiniteScrolling,
+		global $wgPageTriageInfiniteScrolling,
 				$wgPageTriageStickyControlNav, $wgPageTriageStickyStatsNav,
 				$wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl, $wgPageTriageEnableOresFilters,
 				$wgPageTriageEnableCopyvio;
+		$this->addHelpLink( 'Help:New_pages_feed' );
 
 		$request = $this->getRequest();
 		$showOresFilters = PageTriageUtil::oresIsAvailable() &&
