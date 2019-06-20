@@ -131,7 +131,7 @@ $( function () {
 									maxHeight = 152; // Arbitrary, roughly 12 lines of text.
 
 								if ( newHeight > maxHeight ) {
-									this.style.height = maxHeight;
+									this.style.height = maxHeight + 'px';
 									this.style.overflowY = 'scroll';
 								} else {
 									this.style.height = 'auto';
