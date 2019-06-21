@@ -282,7 +282,7 @@ class Hooks {
 	 * Determines whether to set noindex for the article specified
 	 *
 	 * Returns true if all of the following are true:
-	 *   1. The page includes a template that triggers noindexing
+	 *   1. The page includes __NOINDEX__
 	 *   2. The page was at some point in the triage queue
 	 *   3. The page is younger than the maximum age for "new pages"
 	 * or all of the following are true:
@@ -296,46 +296,21 @@ class Hooks {
 	 * @return bool
 	 */
 	private static function shouldShowNoIndex( $article ) {
-		global $wgPageTriageNoIndexUnreviewedNewArticles, $wgPageTriageNoIndexTemplates;
+		global $wgPageTriageNoIndexUnreviewedNewArticles;
 
-		// See if article includes any templates that should trigger noindexing
-		// TODO: This system is a bit hacky and unintuitive. At some point we
-		// may want to switch to a system based on the __NOINDEX__ magic word.
-		if ( $wgPageTriageNoIndexTemplates && $article->mParserOutput instanceof ParserOutput ) {
-			// Properly format the template names to match what getTemplates() returns
-			$noIndexTemplates = array_map(
-				[ static::class, 'formatTemplateName' ],
-				$wgPageTriageNoIndexTemplates
-			);
-
-			// getTemplates returns all transclusions, not just NS_TEMPLATE
-			$allTransclusions = $article->mParserOutput->getTemplates();
-
-			$templates = $allTransclusions[NS_TEMPLATE] ?? [];
-
-			foreach ( $noIndexTemplates as $noIndexTemplate ) {
-				if ( isset( $templates[ $noIndexTemplate ] ) ) {
-					// The noindex template feature is restricted to new articles
-					// to minimize the potential for abuse.
-					if ( self::isArticleNew( $article ) ) {
-						return true;
-					} else {
-						// Short circuit since we know it will fail the next set
-						// of tests as well.
-						return false;
-					}
-				}
-			}
-		}
-
-		if ( $wgPageTriageNoIndexUnreviewedNewArticles &&
-			PageTriageUtil::doesPageNeedTriage( $article ) &&
-			self::isArticleNew( $article )
+		// If the __NOINDEX__ magic word is on a new article, then allow
+		// it to work, regardless of namespace robot policies.
+		if ( $article->mParserOutput instanceof ParserOutput
+			&& $article->mParserOutput->getProperty( 'noindex' ) !== false
 		) {
-			return true;
+			// Short circuit since we know it will fail the next set
+			// of tests as well.
+			return self::isArticleNew( $article );
 		}
 
-		return false;
+		return $wgPageTriageNoIndexUnreviewedNewArticles
+			&& PageTriageUtil::doesPageNeedTriage( $article )
+			&& self::isArticleNew( $article );
 	}
 
 	/**
