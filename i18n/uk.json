@@ -205,7 +205,7 @@
 	"logentry-pagetriage-curation-delete": "$1 {{GENDER:$2|позначив|позначила}} $3 для вилучення з $4 {{PLURAL:$5|1=тегом|тегами}}",
 	"logentry-pagetriage-deletion-delete": "$1 {{GENDER:$2|позначив|позначила}} $3 для вилучення з $4 {{PLURAL:$5|1=тегом|тегами}}",
 	"log-name-pagetriage-copyvio": "Журнал потенційних порушень авторських прав",
-	"log-description-pagetriage-copyvio": "Це — журнал подій, отриманий через PageTriage Copyvio API",
+	"log-description-pagetriage-copyvio": "Це — журнал подій, отриманий через PageTriage Copyvio API.",
 	"logentry-pagetriage-copyvio-insert": "$1 {{GENDER:$2|позначив|позначила}} версію $4 сторінки $3 як потенційне порушення авторських прав",
 	"pagetriage-tags-edit-summary": "Додано теги до сторінки за допомогою  $1  ($2)",
 	"pagetriage-del-edit-summary": "Висунута на вилучення сторінка з допомогою $1 ($2)",
