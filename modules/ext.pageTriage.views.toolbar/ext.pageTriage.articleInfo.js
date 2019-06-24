@@ -96,11 +96,21 @@ $( function () {
 			// pagetriage-info-problem-recreated, pagetriage-info-problem-no-references,
 			// pagetriage-info-problem-non-autoconfirmed-desc, pagetriage-info-problem-blocked-desc,
 			// pagetriage-info-problem-no-categories-desc, pagetriage-info-problem-orphan-desc,
-			// pagetriage-info-problem-recreated-desc, pagetriage-info-problem-no-references-desc
+			// pagetriage-info-problem-recreated-desc, pagetriage-info-problem-no-references-desc,
+			// pagetriage-info-problem-copyvio
 			return '<li class="mwe-pt-info-problem"><span class="mwe-pt-info-problem-name">' +
 				mw.message( 'pagetriage-info-problem-' + problem ).escaped() +
 				'</span> - <span class="mwe-pt-info-problem-desc">' +
 				mw.message( 'pagetriage-info-problem-' + problem + '-desc' ).escaped() +
+				'</span></li>';
+		},
+
+		formatCopyvioProblem: function () {
+			return '<li class="mwe-pt-info-problem">' +
+				'<a href="' + this.model.get( 'copyvio_link_url' ) + '" target="_blank" class="external">' +
+				mw.message( 'pagetriage-info-problem-copyvio' ).escaped() +
+				'</a> - <span class="mwe-pt-info-problem-desc">' +
+				mw.message( 'pagetriage-info-problem-copyvio-desc' ).escaped() +
 				'</span></li>';
 		},
 
@@ -111,7 +121,7 @@ $( function () {
 			// Give grep a chance to find the usages:
 			// pagetriage-info-problem-blocked, pagetriage-info-problem-no-categories,
 			// pagetriage-info-problem-orphan, pagetriage-info-problem-recreated,
-			// pagetriage-info-problem-no-references
+			// pagetriage-info-problem-no-references, pagetriage-info-problem-copyvio
 			if ( parseInt( this.model.get( 'user_block_status' ) ) === 1 ) {
 				this.problemCount++;
 				problems += this.formatProblem( 'blocked' );
@@ -134,6 +144,10 @@ $( function () {
 			if ( parseInt( this.model.get( 'recreated' ) ) === 1 ) {
 				this.problemCount++;
 				problems += this.formatProblem( 'recreated' );
+			}
+			if ( mw.config.get( 'wgPageTriageEnableCopyvio' ) && parseInt( this.model.get( 'copyvio' ) ) ) {
+				this.problemCount++;
+				problems += this.formatCopyvioProblem();
 			}
 			if ( problems ) {
 				problems = '<ul>' + problems + '</ul>';

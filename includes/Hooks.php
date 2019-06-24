@@ -529,6 +529,7 @@ class Hooks {
 		$pageTriageCurationModules = $config->get( 'PageTriageCurationModules' );
 		$talkPageNoteTemplate = $config->get( 'TalkPageNoteTemplate' );
 		$pageTriageDraftNamespaceId = $config->get( 'PageTriageDraftNamespaceId' );
+		$pageTriageEnableCopyvio = $config->get( 'PageTriageEnableCopyvio' );
 
 		// check if WikiLove is enabled
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'WikiLove' ) ) {
@@ -543,6 +544,7 @@ class Hooks {
 		$vars['pageTriageNamespaces'] = PageTriageUtil::getNamespaces();
 		$vars['wgPageTriageDraftNamespaceId'] = $pageTriageDraftNamespaceId;
 		$vars['wgTalkPageNoteTemplate'] = $talkPageNoteTemplate;
+		$vars['wgPageTriageEnableCopyvio'] = $pageTriageEnableCopyvio;
 	}
 
 	/**
@@ -633,6 +635,8 @@ class Hooks {
 				'pagetriage-info-problem-recreated-desc',
 				'pagetriage-info-problem-no-references',
 				'pagetriage-info-problem-no-references-desc',
+				'pagetriage-info-problem-copyvio',
+				'pagetriage-info-problem-copyvio-desc',
 				'pagetriage-info-timestamp-date-format',
 				'pagetriage-info-timestamp-time-format',
 				'pagetriage-info-tooltip',
