@@ -654,6 +654,8 @@ class Hooks {
 				'comma-separator',
 				'unknown-error',
 				'pagetriage-add-a-note-creator',
+				'pagetriage-add-a-note-creator-required',
+				'pagetriage-button-add-a-note-to-creator',
 				'pagetriage-add-a-note-reviewer',
 				'pagetriage-personal-default-note',
 				'pagetriage-special-contributions',
