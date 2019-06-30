@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Bugoslav",
-			"Fitoschido"
+			"Fitoschido",
+			"Anarhistička Maca"
 		]
 	},
 	"pagetriage": "Razvrstavanje stranica",
@@ -293,7 +294,7 @@
 	"apihelp-pagetriagestats-param-showreviewed": "Uvrstiti ili ne uvrstiti provjerene.",
 	"apihelp-pagetriagestats-param-showunreviewed": "Uvrstiti ili ne uvrstiti neprovjerene.",
 	"apihelp-pagetriagestats-param-topreviewers": "Obuhvati prvih 50 provjeravača/provjeravačica u danom razdoblju. Valjane vrijednosti uključuju zadnji dan, zadnji tjedan (predodređeno), odnosno zadnji mjesec.",
-	"apihelp-pagetriagetagging-description": "Dodavanje oznaka stranici.",
+	"apihelp-pagetriagetagging-description": "Dodaj oznake stranici.",
 	"apihelp-pagetriagetagging-summary": "Dodaj oznake stranici.",
 	"apihelp-pagetriagetagging-param-pageid": "Stranica koju treba označiti.",
 	"apihelp-pagetriagetagging-param-note": "Osobna bilješka provjeravača stvaraocima stranice.",

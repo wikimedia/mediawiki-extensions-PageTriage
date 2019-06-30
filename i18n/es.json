@@ -21,7 +21,8 @@
 			"Yllelder",
 			"Jelou",
 			"Carlosmg.dg",
-			"Harvest"
+			"Harvest",
+			"Anarhistička Maca"
 		]
 	},
 	"pagetriage": "Triaje de páginas",
@@ -75,7 +76,7 @@
 	"pagetriage-filter-unreviewed-edits": "Páginas no revisadas",
 	"pagetriage-filter-nominated-for-deletion": "Marcada para borrado",
 	"pagetriage-filter-bot-edits": "Fueron creadas por bots",
-	"pagetriage-filter-redirects": "Redirecciones",
+	"pagetriage-filter-redirects": "Redirecciones (no RfD)",
 	"pagetriage-filter-others": "El resto",
 	"pagetriage-filter-namespace-heading": "En el espacio de nombres:",
 	"pagetriage-filter-article": "Artículo",
