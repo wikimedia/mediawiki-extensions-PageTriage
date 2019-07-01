@@ -96,6 +96,7 @@ class ApiPageTriageTagging extends ApiBase {
 							'title'		=> $title->getFullText(),
 							'token'		=> $params['token'],
 							'summary'	=> $editSummary,
+							'tags'      => 'pagetriage',
 						],
 						true
 					),
@@ -150,6 +151,7 @@ class ApiPageTriageTagging extends ApiBase {
 					$logEntry->setParameters( [
 						'tags' => $params['taglist']
 					] );
+					$logEntry->addTags( 'pagetriage' );
 					$logEntry->publish( $logEntry->insert() );
 				}
 			}

@@ -892,4 +892,13 @@ class Hooks {
 		}
 	}
 
+	/**
+	 * ListDefinedTags, ChangeTagsListActive and ChangeTagsAllowedAdd hook handler.
+	 * Registers this extension's tags.
+	 *
+	 * @param string[] &$tags
+	 */
+	public static function onDefinedTags( &$tags ) {
+		$tags[] = 'pagetriage';
+	}
 }

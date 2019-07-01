@@ -451,6 +451,8 @@
 	"action-pagetriage-copyvio": "{{doc-action|pagetriage-copyvio}}",
 	"group-copyviobot": "{{doc-group|copyviobot}}",
 	"group-copyviobot-member": "{{doc-group|copyviobot|member}}",
+	"tag-pagetrieage": "Human-readable name for <code>pagetriage</code> change tag",
+	"tag-pagetriage-description": "Description for <code>pagetriage</code> change tag",
 	"apihelp-pagetriageaction-description": "{{doc-apihelp-description|pagetriageaction}}",
 	"apihelp-pagetriageaction-summary": "{{doc-apihelp-summary|pagetriageaction}}",
 	"apihelp-pagetriageaction-param-pageid": "{{doc-apihelp-param|pagetriageaction|pageid}}",

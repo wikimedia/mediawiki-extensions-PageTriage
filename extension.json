@@ -626,7 +626,10 @@
 		"LocalUserCreated": "MediaWiki\\Extension\\PageTriage\\Hooks::onLocalUserCreated",
 		"UserMergeAccountFields": "MediaWiki\\Extension\\PageTriage\\Hooks::onUserMergeAccountFields",
 		"ResourceLoaderRegisterModules": "MediaWiki\\Extension\\PageTriage\\Hooks::onResourceLoaderRegisterModules",
-		"ORESCheckModels": "MediaWiki\\Extension\\PageTriage\\Hooks::onORESCheckModels"
+		"ORESCheckModels": "MediaWiki\\Extension\\PageTriage\\Hooks::onORESCheckModels",
+		"ListDefinedTags": "MediaWiki\\Extension\\PageTriage\\Hooks::onDefinedTags",
+		"ChangeTagsListActive": "MediaWiki\\Extension\\PageTriage\\Hooks::onDefinedTags",
+		"ChangeTagsAllowedAdd": "MediaWiki\\Extension\\PageTriage\\Hooks::onDefinedTags"
 	},
 	"config": {
 		"PageTriageEnableOresFilters": {

@@ -845,7 +845,8 @@ $( function () {
 			var that = this,
 				request = {
 					action: 'edit',
-					title: title
+					title: title,
+					tags: 'pagetriage'
 				};
 
 			specialDeletionTagging[ tagObj.tag ].buildLogRequest(
@@ -888,7 +889,8 @@ $( function () {
 				request = {
 					action: 'edit',
 					title: title,
-					watchlist: 'watch'
+					watchlist: 'watch',
+					tags: 'pagetriage'
 				};
 
 			if ( !specialDeletionTagging[ tagObj.tag ] ) {
