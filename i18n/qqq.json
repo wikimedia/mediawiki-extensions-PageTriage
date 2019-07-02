@@ -398,6 +398,8 @@
 	"pagetriage-info-problem-recreated-desc": "Description for the error displayed when the page was previously deleted.",
 	"pagetriage-info-problem-no-references": "Title for the error displayed when the page has no citations to any sources.",
 	"pagetriage-info-problem-no-references-desc": "Description for the error displayed when the page has no citations.",
+	"pagetriage-info-problem-copyvio": "Title for the error displayed when the page contains possible copyright violations.",
+	"pagetriage-info-problem-copyvio-desc": "Description for the error displayed when the page contains possible copyright violations.",
 	"pagetriage-info-timestamp-date-format": "Format specifier for the month and date part of the revision timestamp. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers.\n\nIf your language requires some text between the day, month and year (for example in the Galician language the word '''de''' is inserted: d de MMMM de yyyy) and the text includes characters which are format specifiers as listed in the above page, then they need to be inserted with HTML codes, see for instance the list at <http://www.ascii.cl/htmlcodes.htm>. In Galician this is: \n<source lang=html4strict>\nd &#100;&#101; MMMM &#100;&#101; yyyy\n</source>\n{{DataFormatSpecifiers/en}}",
 	"pagetriage-info-timestamp-time-format": "Format specifier for the hour and minute part of the revision timestamp. Month and weekday names will be localized. For formats, see: http://code.google.com/p/datejs/wiki/FormatSpecifiers",
 	"pagetriage-info-tooltip": "Help message that displays when someone hovers over the page info button",
