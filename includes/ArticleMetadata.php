@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\PageTriage;
 
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Logger\LoggerFactory;
-use ObjectCache;
+use MediaWiki\MediaWikiServices;
 use RequestContext;
 use Title;
 
@@ -59,7 +59,7 @@ class ArticleMetadata {
 	 *                    page id in $this->mPageId will be flushed
 	 */
 	public function flushMetadataFromCache( $pageId = null ) {
-		$cache = ObjectCache::getMainWANInstance();
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 
 		$keyPrefix = $this->memcKeyPrefix();
 		if ( is_null( $pageId ) ) {
@@ -77,7 +77,7 @@ class ArticleMetadata {
 	 * @param mixed $singleData data to be saved
 	 */
 	public function setMetadataToCache( $pageId, $singleData ) {
-		$cache = ObjectCache::getMainWANInstance();
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$this->flushMetadataFromCache( $pageId );
 		$cache->set( $this->memcKeyPrefix() . '-' . $pageId, $singleData, 86400 ); // 24 hours
 	}
@@ -89,7 +89,7 @@ class ArticleMetadata {
 	 * @return array
 	 */
 	public function getMetadataFromCache( $pageId = null ) {
-		$cache = ObjectCache::getMainWANInstance();
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 
 		$keyPrefix = $this->memcKeyPrefix();
 
