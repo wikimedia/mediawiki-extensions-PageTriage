@@ -15,7 +15,8 @@
 			"Endermoon",
 			"A Chinese Wikipedian",
 			"Phenolla",
-			"94rain"
+			"94rain",
+			"神樂坂秀吉"
 		]
 	},
 	"pagetriage": "页面分配器",
@@ -139,7 +140,7 @@
 	"pagetriage-no-pages": "没有满足您的条件的页面。",
 	"pagetriage-warning-browser": "此工具可能无法在比Internet Explorer 11更旧的浏览器中工作。",
 	"pagetriage-welcome": "请巡查以下新页面以帮助改善{{SITENAME}}。[$1 了解更多] · [$2 提供反馈]",
-	"pagetriage-note-reviewed": "本页面已被巡查。",
+	"pagetriage-note-reviewed": "本页面已巡查。",
 	"pagetriage-note-not-reviewed": "该页面还没有被巡查。",
 	"pagetriage-note-deletion": "此页面已被提交删除。",
 	"pagetriage-refresh-list": "刷新列表",

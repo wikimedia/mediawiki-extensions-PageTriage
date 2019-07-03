@@ -294,6 +294,8 @@
 	"pagetriage-info-problem-recreated-desc": "Esta página foi excluída anteriormente.",
 	"pagetriage-info-problem-no-references": "Sem citações",
 	"pagetriage-info-problem-no-references-desc": "Está página não cita nenhuma fonte.",
+	"pagetriage-info-problem-copyvio": "Infringência",
+	"pagetriage-info-problem-copyvio-desc": "Esta página pode conter violações de direitos autorais.",
 	"pagetriage-info-timestamp-date-format": "d &#100;&#101; MMMM &#100;&#101; yyyy",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
 	"pagetriage-info-tooltip": "Mostrar metadados para esta página",

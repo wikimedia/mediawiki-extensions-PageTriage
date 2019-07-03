@@ -16,7 +16,8 @@
 			"Vlad5250",
 			"Shaleych",
 			"Lega4",
-			"Diralik"
+			"Diralik",
+			"Alexander Istomin"
 		]
 	},
 	"pagetriage": "Сортировка страниц",
@@ -84,7 +85,7 @@
 	"pagetriage-filter-unreviewed-edits": "Непроверенные страницы",
 	"pagetriage-filter-nominated-for-deletion": "Номинированные на удаление",
 	"pagetriage-filter-bot-edits": "Созданные ботами",
-	"pagetriage-filter-redirects": "Перенаправления",
+	"pagetriage-filter-redirects": "Перенаправления (не RfD)",
 	"pagetriage-filter-others": "Остальное",
 	"pagetriage-filter-namespace-heading": "В пространстве имён:",
 	"pagetriage-filter-article": "Статьи",

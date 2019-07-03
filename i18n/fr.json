@@ -376,6 +376,8 @@
 	"pagetriage-info-problem-recreated-desc": "Cette page a été supprimée précédemment.",
 	"pagetriage-info-problem-no-references": "Aucune référence",
 	"pagetriage-info-problem-no-references-desc": "Cette page ne cite aucune source.",
+	"pagetriage-info-problem-copyvio": "Copyvio",
+	"pagetriage-info-problem-copyvio-desc": "Cette page peut contenir des violations de copyright.",
 	"pagetriage-info-timestamp-date-format": "d MMMM yyyy",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
 	"pagetriage-info-tooltip": "Montrer les méta-données pour cette page",

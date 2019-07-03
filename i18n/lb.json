@@ -193,6 +193,7 @@
 	"pagetriage-info-problem-recreated-desc": "Dës Säit gouf virdru geläscht.",
 	"pagetriage-info-problem-no-references": "Keng Referenzen",
 	"pagetriage-info-problem-no-references-desc": "Dës Säit ernimmt keng Quellen.",
+	"pagetriage-info-problem-copyvio": "Coyright-Verletzung",
 	"pagetriage-info-timestamp-date-format": "d MMMM yyyy",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
 	"pagetriage-info-tooltip": "Meta-Donnéeë fir dës Säit weisen",
