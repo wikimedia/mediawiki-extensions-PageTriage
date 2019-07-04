@@ -6,6 +6,6 @@
 	<a class="mwe-pt-flyout-help-link" href="#"><%- mw.msg( 'pagetriage-toolbar-learn-more' ) %></a>
 	<span class="mwe-pt-tool-close"><%- mw.msg( 'pagetriage-toolbar-close' ) %></span>
 	<div class="mwe-pt-tool-content">
-	<!-- content goes here -->
+		<!-- content goes here -->
 	</div>
 </div>
