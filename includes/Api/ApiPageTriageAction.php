@@ -58,6 +58,7 @@ class ApiPageTriageAction extends ApiBase {
 		if ( $note ) {
 			$logEntry->setComment( $note );
 		}
+		$logEntry->addTags( 'pagetriage' );
 		$logEntry->publish( $logEntry->insert() );
 
 		$result = [ 'result' => 'success' ];
