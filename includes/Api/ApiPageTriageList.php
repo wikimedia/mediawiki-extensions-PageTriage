@@ -122,6 +122,14 @@ class ApiPageTriageList extends ApiBase {
 					);
 				}
 
+				// Talk page feedback count and URL.
+				if ( $opts['page_id'] ) {
+					// Only add when a single page is being requested, i.e. for the PageTriage toolbar.
+					$pageTitle = Title::newFromText( $metaData[ $page ]['title'] );
+					$metaData[$page]['talkpage_feedback_count'] = $this->getTalkpageFeedbackCount( $pageTitle );
+					$metaData[$page]['talk_page_url'] = $pageTitle->getTalkPageIfDefined()->getInternalURL();
+				}
+
 				// Add ORES data
 				if ( PageTriageUtil::oresIsAvailable() ) {
 					$metaData[$page] = $metaData[$page] + $oresMetadata->getMetadata( $page );
@@ -149,6 +157,32 @@ class ApiPageTriageList extends ApiBase {
 		// Output the results
 		$result['pages'] = $sortedMetaData;
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+	}
+
+	/**
+	 * Get the total number of pagetriage-tagged revisions of a talk page.
+	 * @param Title $pageTitle The title of the page in the PageTriage queue (i.e. not the talk page).
+	 * @return int
+	 */
+	protected function getTalkpageFeedbackCount( Title $pageTitle ) {
+		$dbr = wfGetDB( DB_REPLICA );
+		$tables = [
+			'change_tag_def',
+			'change_tag',
+			'revision',
+			'page',
+		];
+		$conds = [
+			'ctd_name' => 'pagetriage',
+			'page_namespace' => NS_TALK,
+			'page_title' => $pageTitle->getDBkey(),
+		];
+		$joinConds = [
+			'change_tag' => [ 'JOIN', 'ctd_id = ct_tag_id' ],
+			'revision' => [ 'JOIN', 'ct_rev_id = rev_id' ],
+			'page' => [ 'JOIN', 'rev_page = page_id' ],
+		];
+		return $dbr->selectRowCount( $tables, '*', $conds, __METHOD__, [], $joinConds );
 	}
 
 	/**

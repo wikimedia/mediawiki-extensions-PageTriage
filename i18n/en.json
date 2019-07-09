@@ -156,6 +156,8 @@
 	"pagetriage-page-status-autoreviewed": "This page was autopatrolled.",
 	"pagetriage-page-status-delete": "Marked for deletion",
 	"pagetriage-articleinfo-stat": "Stats: $1",
+	"pagetriage-has-talkpage-feedback": "Previous reviewers of this article have left {{PLURAL:$1|a comment|$1 comments}} on the $2.",
+	"pagetriage-has-talkpage-feedback-link": "talk page",
 	"pagetriage-js-required": "This extension requires a JavaScript enabled browser.",
 	"pagetriage-tags-title": "Add tags",
 	"pagetriage-tags-cat-common-label": "Common",

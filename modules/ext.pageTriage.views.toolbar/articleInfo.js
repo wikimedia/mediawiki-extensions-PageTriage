@@ -75,6 +75,28 @@ module.exports = ToolView.extend( {
 		return this.problemCount;
 	},
 
+	setBadge: function () {
+		var feedbackCount, $talkpageFeedbackBadge, badgeTooltip;
+		// Call parent view to set the problem-count badge (top right).
+		ToolView.prototype.setBadge.call( this );
+		// Add a second badge (bottom right) if there is talk page feedback for this article.
+		feedbackCount = this.model.get( 'talkpage_feedback_count' );
+		if ( feedbackCount > 0 ) {
+			$talkpageFeedbackBadge = this.$el.find( '.mwe-pt-talkpage-feedback-badge' );
+			if ( $talkpageFeedbackBadge.length === 0 ) {
+				$talkpageFeedbackBadge = $( '<span>' ).addClass( 'mwe-pt-talkpage-feedback-badge' );
+				this.$el.find( '.mwe-pt-tool-icon-container' ).append( $talkpageFeedbackBadge );
+			}
+			$talkpageFeedbackBadge.badge( feedbackCount, 'bottom', true );
+			// Use the same message (without link) as is used on the flyout, for the badge's tooltip.
+			badgeTooltip = mw.msg( 'pagetriage-has-talkpage-feedback', feedbackCount, mw.msg( 'pagetriage-has-talkpage-feedback-link' ) );
+			// Add OOUI classes to the badge element that was added in .badge(), in order to get the envelope icon.
+			$talkpageFeedbackBadge.find( '.notification-badge' )
+				.addClass( 'oo-ui-iconElement oo-ui-icon-message oo-ui-image-invert' )
+				.attr( 'title', badgeTooltip );
+		}
+	},
+
 	render: function () {
 		var bylineMessage, articleByline, stats, history,
 			url = new mw.Uri( mw.util.getUrl( mw.config.get( 'wgPageName' ) ) ),

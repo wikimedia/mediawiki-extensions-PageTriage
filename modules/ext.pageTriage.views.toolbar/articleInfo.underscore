@@ -12,7 +12,11 @@
 	</div>
 	<!-- page status  -->
 	<div class="mwe-pt-info-page-status">
-		<%= page_status_html %>
+		<p><%= page_status_html %></p>
+		<!-- talk page comments exist -->
+		<% if ( talkpage_feedback_message ) { %>
+			<p class="mwe-pt-has-talkpage-feedback"><%= talkpage_feedback_message %></p>
+		<% } %>
 	</div>
 	<!-- author info -->
 	<span class="mwe-pt-author">

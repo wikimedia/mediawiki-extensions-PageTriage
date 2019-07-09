@@ -579,4 +579,38 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			'Nominated for deletion only' );
 	}
 
+	/**
+	 * The pagetriagelist API method should return a count of the pagetriage-tagged edits on an
+	 * article's talk page.
+	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getTalkpageFeedbackCount
+	 */
+	public function testTalkpageFeedbackCount() {
+		// Create a test page.
+		$testPageTitle = 'Article talkpage message test';
+		$testPage = $this->insertPage( $testPageTitle, '' );
+
+		// Check that it's in the queue does not have any talk page message.
+		$list = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'page_id' => $testPage['id'] ] );
+		$pageInfo = $list[0]['pagetriagelist']['pages'][0];
+		static::assertArrayHasKey( 'talkpage_feedback_count', $pageInfo );
+		static::assertSame( 0, $pageInfo['talkpage_feedback_count'] );
+
+		// Add two messages to the talkpage. This is done via MessagePoster in the front end usually,
+		// so we don't have a PageTriage PHP method to use here.
+		$talkPageTitle = Title::newFromText( $testPageTitle, NS_TALK );
+		$page = WikiPage::factory( $talkPageTitle );
+		$page->doEditContent(
+			ContentHandler::makeContent( 'Test message.', $talkPageTitle ), '', 0, false,
+			static::getTestSysop()->getUser(), null, [ 'pagetriage' ]
+		);
+		$page->doEditContent(
+			ContentHandler::makeContent( 'Test message 2.', $talkPageTitle ), '', 0, false,
+			static::getTestSysop()->getUser(), null, [ 'pagetriage' ]
+		);
+
+		// Retrieve the page's metadata again, and check that the talkpage feedback is flagged.
+		$list = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'page_id' => $testPage['id'] ] );
+		$pageInfo = $list[0]['pagetriagelist']['pages'][0];
+		static::assertSame( 2, $pageInfo['talkpage_feedback_count'] );
+	}
 }
