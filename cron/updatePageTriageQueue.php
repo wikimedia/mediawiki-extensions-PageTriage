@@ -48,7 +48,7 @@ class UpdatePageTriageQueue extends Maintenance {
 		$startTime = wfTimestamp( TS_UNIX ) - 30 * 60 * 60 * 24;
 		$count = $this->getBatchSize();
 
-		$row = $this->dbr->selectRow(
+		$idRow = $this->dbr->selectRow(
 			[ 'pagetriage_page' ],
 			[ 'MAX(ptrp_page_id) AS max_id' ],
 			[],
@@ -56,17 +56,16 @@ class UpdatePageTriageQueue extends Maintenance {
 		);
 
 		// No data to process, exit
-		if ( $row === false ) {
+		if ( $idRow === false ) {
 			$this->output( "No data to process \n" );
 			return;
 		}
 
-		$startId = $row->max_id + 1;
+		$startId = $idRow->max_id + 1;
 
 		while ( $count === $this->getBatchSize() ) {
 			$count = 0;
 			$startTime = $this->dbr->addQuotes( $this->dbr->timestamp( $startTime ) );
-			$startId = (int)$startId;
 
 			// Remove pages older than 30 days, if
 			// 1. the page is in the article namespace and has been reviewed, or
@@ -77,7 +76,7 @@ class UpdatePageTriageQueue extends Maintenance {
 				[ 'ptrp_page_id', 'ptrp_created', 'page_namespace', 'ptrp_reviewed' ],
 				[
 					'(ptrp_created < ' . $startTime . ') OR
-					(ptrp_created = ' . $startTime . ' AND ptrp_page_id < ' . $startId . ')',
+					(ptrp_created = ' . $startTime . ' AND ptrp_page_id < ' . (int)$startId . ')',
 					$this->dbr->makeList( [
 						$this->dbr->makeList( [
 							'page_namespace' => 0,

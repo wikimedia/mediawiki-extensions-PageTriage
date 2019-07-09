@@ -39,7 +39,7 @@ class UpdateUserMetadata extends Maintenance {
 		$startTime = wfTimestamp( TS_UNIX ) - 60 * 60 * 24;
 		$count = $this->getBatchSize();
 
-		$row = $this->dbr->selectRow(
+		$idRow = $this->dbr->selectRow(
 			[ 'pagetriage_page' ],
 			[ 'MAX(ptrp_page_id) AS max_id' ],
 			[],
@@ -47,11 +47,11 @@ class UpdateUserMetadata extends Maintenance {
 		);
 
 		// No data to process, exit
-		if ( $row === false ) {
+		if ( $idRow === false ) {
 			return;
 		}
 
-		$startId = $row->max_id + 1;
+		$startId = $idRow->max_id + 1;
 
 		$pageTriageNamespaces = PageTriageUtil::getNamespaces();
 		if ( count( $pageTriageNamespaces ) > 0 ) {
@@ -63,14 +63,13 @@ class UpdateUserMetadata extends Maintenance {
 		while ( $count === $this->getBatchSize() ) {
 			$count = 0;
 			$startTime = $this->dbr->addQuotes( $this->dbr->timestamp( $startTime ) );
-			$startId = (int)$startId;
 
 			$res = $this->dbr->select(
 				[ 'pagetriage_page', 'page' ],
 				[ 'ptrp_page_id', 'ptrp_tags_updated' ],
 				[
 					'(ptrp_tags_updated < ' . $startTime . ') OR
-					(ptrp_tags_updated = ' . $startTime . ' AND ptrp_page_id < ' . $startId . ')',
+					(ptrp_tags_updated = ' . $startTime . ' AND ptrp_page_id < ' . (int)$startId . ')',
 					'page_id = ptrp_page_id',
 					'page_namespace' => $namespace
 				],
