@@ -80,7 +80,6 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$out->addModules( [
 			'ext.pageTriage.external',
 			'ext.pageTriage.util',
-			'ext.pageTriage.models',
 			'ext.pageTriage.views.list'
 		] );
 

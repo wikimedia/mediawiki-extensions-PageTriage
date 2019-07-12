@@ -161,29 +161,13 @@
 		},
 		"ext.pageTriage.util": {
 			"scripts": [
-				"ext.pageTriage.util/ext.pageTriage.messageUtil.js"
+				"ext.pageTriage.util/ext.pageTriage.messageUtil.js",
+				"ext.pageTriage.util/models/ext.pageTriage.article.js",
+				"ext.pageTriage.util/models/ext.pageTriage.revision.js",
+				"ext.pageTriage.util/models/ext.pageTriage.stats.js"
 			],
 			"messages": [
-				"pagetriage-api-error"
-			],
-			"dependencies": [
-				"ext.pageTriage.init"
-			]
-		},
-		"ext.pageTriage.models": {
-			"dependencies": [
-				"mediawiki.Title",
-				"mediawiki.Uri",
-				"mediawiki.api",
-				"mediawiki.user",
-				"ext.pageTriage.init"
-			],
-			"scripts": [
-				"ext.pageTriage.models/ext.pageTriage.article.js",
-				"ext.pageTriage.models/ext.pageTriage.revision.js",
-				"ext.pageTriage.models/ext.pageTriage.stats.js"
-			],
-			"messages": [
+				"pagetriage-api-error",
 				"pipe-separator",
 				"pagetriage-info-timestamp-date-format",
 				"pagetriage-page-status-unreviewed",
@@ -191,6 +175,13 @@
 				"pagetriage-page-status-reviewed",
 				"pagetriage-page-status-delete",
 				"pagetriage-page-status-reviewed-anonymous"
+			],
+			"dependencies": [
+				"mediawiki.Title",
+				"mediawiki.Uri",
+				"mediawiki.api",
+				"mediawiki.user",
+				"ext.pageTriage.init"
 			]
 		},
 		"jquery.tipoff": {
@@ -200,7 +191,6 @@
 		"ext.pageTriage.views.list": {
 			"dependencies": [
 				"mediawiki.jqueryMsg",
-				"ext.pageTriage.models",
 				"ext.pageTriage.util",
 				"jquery.tipoff",
 				"jquery.ui.button",
