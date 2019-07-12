@@ -432,6 +432,8 @@
 	"action-pagetriage-copyvio": "означување на страници како веројатни авторскоправни нарушувања",
 	"group-copyviobot": "Ботови за авторскоправни нарушувања",
 	"group-copyviobot-member": "{{GENDER:$1|бот за авторскоправни нарушувања}}",
+	"tag-pagetrieage": "Проверка на страници",
+	"tag-pagetriage-description": "За уредувања направени со додатокот „[[mw:Extension:PageTriage|Проверка на страници]]“",
 	"apihelp-pagetriageaction-description": "Означи статија како проверена или непроверена.",
 	"apihelp-pagetriageaction-summary": "Означи статија како проверена или непроверена.",
 	"apihelp-pagetriageaction-param-pageid": "Која статија да се означи како проверена или непроверена.",

@@ -430,6 +430,8 @@
 	"action-pagetriage-copyvio": "marquer les pages comme violations probables de droit d’auteur",
 	"group-copyviobot": "Robots ayant violé les droits de propriété",
 	"group-copyviobot-member": "{{GENDER:$1|robot ayant violé les droits de propriété}}",
+	"tag-pagetrieage": "PageTriage",
+	"tag-pagetriage-description": "Pour les modifications faites avec l’[[mw:Extension:PageTriage|extension PageTriage]]",
 	"apihelp-pagetriageaction-description": "Marquer un article comme relu ou non relu.",
 	"apihelp-pagetriageaction-summary": "Marquer un article comme relu ou non relu.",
 	"apihelp-pagetriageaction-param-pageid": "L'article qui doit être marqué comme relu ou non relu.",
