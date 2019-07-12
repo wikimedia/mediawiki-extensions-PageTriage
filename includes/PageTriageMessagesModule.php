@@ -35,7 +35,8 @@ class PageTriageMessagesModule extends ResourceLoaderFileModule {
 			[
 				'pagetriage-mark-mark-talk-page-notify-topic-title',
 				'pagetriage-mark-unmark-talk-page-notify-topic-title',
-				'pagetriage-tags-talk-page-notify-topic-title',
+				'pagetriage-note-sent-talk-page-notify-topic-title',
+				'pagetriage-tags-talk-page-notify-topic-title'
 			],
 			$config->get( 'PageTriageDeletionTagsOptionsContentLanguageMessages' )
 		);

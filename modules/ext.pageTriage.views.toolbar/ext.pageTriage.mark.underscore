@@ -2,11 +2,15 @@
 	<div class="mwe-pt-mark-helptext">
 		<%- mw.msg( 'pagetriage-mark-as-' + status + '-helptext' ) %>
 	</div>
-	<div id="mwe-pt-review-note">
-		<div id="mwe-pt-review-note-title"><%- mw.msg( noteTitle ) %></div>
-		<textarea id="mwe-pt-review-note-input"><%- mw.msg( 'pagetriage-personal-default-note', noteTarget ) %></textarea>
-	</div>
 	<div id="mwe-pt-mark-as-<%- status %>">
 		<button id='mwe-pt-mark-as-<%- status %>-button' class="ui-button-green"><%- mw.msg( "pagetriage-mark-as-" + status ) %></button>
+	</div>
+	<hr>
+	<div id="mwe-pt-review-note">
+		<div id="mwe-pt-review-note-title"><%- mw.msg( "pagetriage-add-a-note-creator-required" ) %></div>
+		<textarea id="mwe-pt-review-note-input"></textarea>
+	</div>
+	<div id="mwe-pt-send-message">
+		<button id="mwe-pt-send-message-button" class="ui-button-white"><%- mw.msg( "pagetriage-button-add-a-note-to-creator" ) %></button>
 	</div>
 </div>

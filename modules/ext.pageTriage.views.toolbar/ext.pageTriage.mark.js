@@ -7,7 +7,6 @@ $( function () {
 		title: mw.msg( 'pagetriage-mark-as-reviewed' ),
 		tooltip: '',
 		template: mw.template.get( 'ext.pageTriage.views.toolbar', 'mark.underscore' ),
-		noteChanged: false,
 
 		initialize: function ( options ) {
 			this.eventBus = options.eventBus;
@@ -39,17 +38,12 @@ $( function () {
 
 		submit: function ( action ) {
 			var that = this,
-				note = $( '#mwe-pt-review-note-input' ).val().trim();
-
-			if ( !that.noteChanged || !note.length ) {
 				note = '';
-			}
 
 			new mw.Api().postWithToken( 'csrf', {
 				action: 'pagetriageaction',
 				pageid: mw.config.get( 'wgArticleId' ),
-				reviewed: ( action === 'reviewed' ) ? '1' : '0',
-				note: note
+				reviewed: ( action === 'reviewed' ) ? '1' : '0'
 			} )
 				.done( function () {
 					that.talkPageNote( note, action );
@@ -57,6 +51,17 @@ $( function () {
 				.fail( function ( errorCode, data ) {
 					that.showMarkError( action, data.error.info || mw.msg( 'unknown-error' ) );
 				} );
+		},
+
+		submitNote: function () {
+			var that = this,
+				action = 'noteSent',
+				note = $( '#mwe-pt-review-note-input' ).val().trim();
+
+			if ( !note.length ) {
+				return;
+			}
+			that.talkPageNote( note, action );
 		},
 
 		talkPageNote: function ( note, action ) {
@@ -67,7 +72,8 @@ $( function () {
 				pageTitle = mw.config.get( 'wgPageTriagePagePrefixedText' );
 
 			// mark as unreviewed
-			if ( action !== 'reviewed' ) {
+			if ( action === 'unreviewed' ) {
+
 				// only send note if there was a reviewer and it's not the current user
 				if (
 					this.model.get( 'ptrp_last_reviewed_by' ) > 0 &&
@@ -82,39 +88,33 @@ $( function () {
 						'pagetriage-mark-unmark-talk-page-notify-topic-title'
 					).text();
 
-					if ( note ) {
-						note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' ).UnMark.note +
-							'|1=' + pageTitle +
-							'|2=' + mw.config.get( 'wgUserName' ) +
-							'|3=' + note + '}}';
-					} else {
-						note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' ).UnMark.nonote +
-							'|1=' + mw.config.get( 'wgUserName' ) +
-							'|2=' + pageTitle +
-							'}}';
-					}
+					note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' ).UnMark.nonote +
+						'|1=' + mw.config.get( 'wgUserName' ) +
+						'|2=' + pageTitle +
+						'}}';
 				} else {
 					that.hideFlyout( action );
 					return;
 				}
-			// mark as reviewed
-			} else {
+			// note was sent to creator
+			} else if ( action === 'noteSent' || action === 'reviewed' ) {
 				// there is no note, should not write anything in user talk page
 				if ( !note ) {
 					that.hideFlyout( action );
 					return;
 				}
+
 				talkPageTitle = this.model.get( 'creator_user_talk_page' );
 				messagePosterPromise = mw.messagePoster.factory.create(
 					new mw.Title( talkPageTitle )
 				);
 
 				topicTitle = mw.pageTriage.contentLanguageMessage(
-					'pagetriage-mark-mark-talk-page-notify-topic-title',
-					pageTitle
+					'pagetriage-note-sent-talk-page-notify-topic-title',
+					this.model.get( 'user_name' )
 				).text();
 
-				note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' ).Mark +
+				note = '{{subst:' + mw.config.get( 'wgTalkPageNoteTemplate' ).SendNote +
 					'|1=' + pageTitle +
 					'|2=' + mw.config.get( 'wgUserName' ) +
 					'|3=' + note + '}}';
@@ -139,6 +139,8 @@ $( function () {
 		hideFlyout: function ( action ) {
 			$.removeSpinner( 'mark-spinner' );
 			$( '#mwe-pt-mark-as-' + action + '-button' ).button( 'enable' );
+			$( '#mwe-pt-review-note-input' ).val( '' );
+			$( '#mwe-pt-send-message-button' ).button( 'disable' );
 			this.model.fetch();
 			this.hide();
 		},
@@ -162,30 +164,12 @@ $( function () {
 			var that = this,
 				status = this.model.get( 'patrol_status' ) === '0' ? 'reviewed' : 'unreviewed',
 				modules = mw.config.get( 'wgPageTriageCurationModules' ),
-				showNoteSection = true,
-				noteTarget = '',
-				noteTitle;
+				noteTarget = this.model.get( 'user_name' ),
+				note = '';
 
 			function handleFocus() {
-				$( this ).val( '' );
 				$( this ).css( 'color', 'black' );
 				$( this ).off( 'focus', handleFocus );
-			}
-
-			if ( status === 'unreviewed' ) {
-				noteTitle = 'pagetriage-add-a-note-reviewer';
-				// there is no reviewer recorded or the reviewer is reverting their previous reviewed status
-				if (
-					this.model.get( 'ptrp_last_reviewed_by' ) <= 0 ||
-					mw.config.get( 'wgUserName' ) === this.model.get( 'reviewer' )
-				) {
-					showNoteSection = false;
-				} else {
-					noteTarget = this.model.get( 'reviewer' );
-				}
-			} else {
-				noteTitle = 'pagetriage-add-a-note-creator';
-				noteTarget = this.model.get( 'user_name' );
 			}
 
 			this.changeTooltip();
@@ -194,8 +178,7 @@ $( function () {
 				this.model.toJSON(),
 				{
 					status: status,
-					noteTarget: noteTarget,
-					noteTitle: noteTitle
+					noteTarget: noteTarget
 				}
 			) ) );
 
@@ -204,11 +187,16 @@ $( function () {
 			// pagetriage-mark-as-reviewed-error, pagetriage-mark-as-unreviewed-error
 			$( '#mwe-pt-mark .mwe-pt-tool-title' ).text( mw.msg( 'pagetriage-mark-as-' + status ) );
 
-			// check if note is enabled for this namespace and if the note section should be shown
-			if ( modules.mark.note.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) !== -1 && showNoteSection ) {
+			// check if note is enabled for this namespace
+			if ( modules.mark.note.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) !== -1 ) {
 				$( '#mwe-pt-review-note' ).show();
-				$( '#mwe-pt-review-note-input' ).on( 'focus', handleFocus ).on( 'change', function () {
-					that.noteChanged = true;
+				$( '#mwe-pt-review-note-input' ).on( 'focus', handleFocus ).on( 'input', function () {
+					note = $( '#mwe-pt-review-note-input' ).val().trim();
+					if ( note.length ) {
+						$( '#mwe-pt-send-message-button' ).button( 'enable' );
+					} else {
+						$( '#mwe-pt-send-message-button' ).button( 'disable' );
+					}
 				} );
 			}
 
@@ -222,6 +210,15 @@ $( function () {
 					$( '#mwe-pt-mark-as-' + status + '-button' ).button( 'disable' );
 					$( '#mwe-pt-mark-as-' + status ).append( $.createSpinner( 'mark-spinner' ) ); // show spinner
 					that.submit( status );
+					e.stopPropagation();
+				} );
+
+			$( '#mwe-pt-send-message-button' )
+				.button( { disabled: true, icons: { secondary: 'ui-icon-triangle-1-e' } } )
+				.on( 'click', function ( e ) {
+					$( '#mwe-pt-send-message-button' ).button( 'disable' );
+					$( '#mwe-pt-send-message' ).append( $.createSpinner( 'mark-spinner' ) ); // show spinner
+					that.submitNote();
 					e.stopPropagation();
 				} );
 

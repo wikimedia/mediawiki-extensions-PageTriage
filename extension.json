@@ -724,6 +724,7 @@
 					"note": "Unreviewednote-NPF",
 					"nonote": "Unreviewednonote-NPF"
 				},
+				"SendNote": "Sentnote-NPF",
 				"Tags": "Taggednote-NPF"
 			}
 		},
