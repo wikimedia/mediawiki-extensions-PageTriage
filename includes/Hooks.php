@@ -574,8 +574,6 @@ class Hooks {
 
 		$afterTools = [
 			'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.js', // overall toolbar view last
-			'external/jquery.effects.core.js',
-			'external/jquery.effects.squish.js',
 		];
 
 		$viewsToolbarModule = $template + [
