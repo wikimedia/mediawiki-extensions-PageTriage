@@ -485,25 +485,9 @@ class Hooks {
 	 */
 	public static function onResourceLoaderGetConfigVars( &$vars ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$pageTriageCurationModules = $config->get( 'PageTriageCurationModules' );
-		$talkPageNoteTemplate = $config->get( 'TalkPageNoteTemplate' );
 		$pageTriageDraftNamespaceId = $config->get( 'PageTriageDraftNamespaceId' );
-		$pageTriageEnableCopyvio = $config->get( 'PageTriageEnableCopyvio' );
-
-		// check if WikiLove is enabled
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'WikiLove' ) ) {
-			$pageTriageCurationModules['wikiLove'] = [
-				// depends on WikiLove extension
-				'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#WikiLove',
-				'namespace' => [ NS_MAIN, NS_USER ],
-			];
-		}
-
-		$vars['wgPageTriageCurationModules'] = $pageTriageCurationModules;
 		$vars['pageTriageNamespaces'] = PageTriageUtil::getNamespaces();
 		$vars['wgPageTriageDraftNamespaceId'] = $pageTriageDraftNamespaceId;
-		$vars['wgTalkPageNoteTemplate'] = $talkPageNoteTemplate;
-		$vars['wgPageTriageEnableCopyvio'] = $pageTriageEnableCopyvio;
 	}
 
 	/**
@@ -512,31 +496,56 @@ class Hooks {
 	 * @param ResourceLoader &$resourceLoader
 	 */
 	public static function onResourceLoaderRegisterModules( &$resourceLoader ) {
-		$template = [
+		$viewsToolbarModule = [
 			'localBasePath' => __DIR__ . '/../modules',
-			'remoteExtPath' => 'PageTriage/modules'
-		];
-
-		$toolBaseClass = [
-			'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.js', // abstract class first
-		];
-
-		// Individual tools on toolbar
-		$tools = [
-			'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfo.js', // article metadata
-			'ext.pageTriage.views.toolbar/ext.pageTriage.minimize.js', // minimize
-			'ext.pageTriage.views.toolbar/ext.pageTriage.tags.js', // tagging
-			'ext.pageTriage.views.toolbar/ext.pageTriage.mark.js', // mark as reviewed
-			'ext.pageTriage.views.toolbar/ext.pageTriage.next.js', // next article
-			'ext.pageTriage.views.toolbar/ext.pageTriage.delete.js', // mark for deletion
-		];
-
-		$afterTools = [
-			'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.js', // overall toolbar view last
-		];
-
-		$viewsToolbarModule = $template + [
-			'class' => PageTriageMessagesModule::class,
+			'remoteExtPath' => 'PageTriage/modules',
+			'packageFiles' => [
+				'ext.pageTriage.views.toolbar/ToolbarView.js', // entry point
+				'ext.pageTriage.views.toolbar/ToolView.js', // abstract base class
+				'ext.pageTriage.views.toolbar/articleInfo.js', // article metadata
+				'ext.pageTriage.views.toolbar/minimize.js', // minimize
+				'ext.pageTriage.views.toolbar/tags.js', // tagging
+				'ext.pageTriage.views.toolbar/mark.js', // mark as reviewed
+				'ext.pageTriage.views.toolbar/next.js', // next article
+				'ext.pageTriage.views.toolbar/delete.js', // mark for deletion
+				[
+					'name' => 'ext.pageTriage.views.toolbar/contentLanguageMessages.json',
+					'callback' => function ( \ResourceLoaderContext $context ) {
+						$keys = array_merge(
+							[
+								'pagetriage-mark-mark-talk-page-notify-topic-title',
+								'pagetriage-mark-unmark-talk-page-notify-topic-title',
+								'pagetriage-note-sent-talk-page-notify-topic-title',
+								'pagetriage-tags-talk-page-notify-topic-title'
+							],
+							$context->getConfig()->get( 'PageTriageDeletionTagsOptionsContentLanguageMessages' )
+						);
+						$messages = [];
+						foreach ( $keys as $key ) {
+							$messages[$key] = $context->msg( $key )->inContentLanguage()->plain();
+						}
+						return $messages;
+					}
+				],
+				[
+					'name' => 'ext.pageTriage.views.toolbar/config.json',
+					'callback' => function ( \ResourceLoaderContext $context ) {
+						$pageTriageCurationModules = $context->getConfig()->get( 'PageTriageCurationModules' );
+						if ( ExtensionRegistry::getInstance()->isLoaded( 'WikiLove' ) ) {
+							$pageTriageCurationModules['wikiLove'] = [
+								// depends on WikiLove extension
+								'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#WikiLove',
+								'namespace' => [ NS_MAIN, NS_USER ],
+							];
+						}
+						return [
+							'PageTriageCurationModules' => $pageTriageCurationModules,
+							'PageTriageEnableCopyvio' => $context->getConfig()->get( 'PageTriageEnableCopyvio' ),
+							'TalkPageNoteTemplate' => $context->getConfig()->get( 'TalkPageNoteTemplate' )
+						];
+					}
+				]
+			],
 			'dependencies' => [
 				'mediawiki.api',
 				'mediawiki.jqueryMsg',
@@ -553,12 +562,30 @@ class Hooks {
 			],
 			'styles' => [
 				'ext.pageTriage.css', // stuff that's shared across all views
-				'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.css',
-				'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.css',
-				'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfo.css',
-				'ext.pageTriage.views.toolbar/ext.pageTriage.mark.css',
-				'ext.pageTriage.views.toolbar/ext.pageTriage.tags.css',
-				'ext.pageTriage.views.toolbar/ext.pageTriage.delete.css'
+				'ext.pageTriage.views.toolbar/ToolbarView.css',
+				'ext.pageTriage.views.toolbar/ToolView.css',
+				'ext.pageTriage.views.toolbar/articleInfo.css',
+				'ext.pageTriage.views.toolbar/mark.css',
+				'ext.pageTriage.views.toolbar/tags.css',
+				'ext.pageTriage.views.toolbar/delete.css'
+			],
+			'templates' => [
+				'articleInfo.underscore' =>
+					'ext.pageTriage.views.toolbar/articleInfo.underscore',
+				'articleInfoHistory.underscore' =>
+					'ext.pageTriage.views.toolbar/articleInfoHistory.underscore',
+				'delete.underscore' =>
+					'ext.pageTriage.views.toolbar/delete.underscore',
+				'mark.underscore' =>
+					'ext.pageTriage.views.toolbar/mark.underscore',
+				'tags.underscore' =>
+					'ext.pageTriage.views.toolbar/tags.underscore',
+				'ToolbarView.underscore' =>
+					'ext.pageTriage.views.toolbar/ToolbarView.underscore',
+				'ToolView.underscore' =>
+					'ext.pageTriage.views.toolbar/ToolView.underscore',
+				'wikilove.underscore' =>
+					'ext.pageTriage.views.toolbar/wikilove.underscore',
 			],
 			'messages' => [
 				'pagetriage-creation-dateformat',
@@ -643,8 +670,10 @@ class Hooks {
 		];
 
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'WikiLove' ) ) {
-			$tools[] = 'ext.pageTriage.views.toolbar/ext.pageTriage.wikilove.js';
-			$viewsToolbarModule['styles'][] = 'ext.pageTriage.views.toolbar/ext.pageTriage.wikilove.css';
+			$viewsToolbarModule['packageFiles'][] =
+				'ext.pageTriage.views.toolbar/wikilove.js';
+			$viewsToolbarModule['styles'][] = 'ext.pageTriage.views.toolbar/wikilove.css';
+			$viewsToolbarModule['dependencies'][] = 'ext.wikiLove.init';
 			$viewsToolbarModule['messages'] = array_merge( $viewsToolbarModule['messages'], [
 				'pagetriage-wikilove-page-creator',
 				'pagetriage-wikilove-edit-count',
@@ -655,31 +684,6 @@ class Hooks {
 				'wikilove-button-send',
 			] );
 		}
-
-		$viewsToolbarModule['scripts'] = array_merge(
-			$toolBaseClass,
-			$tools,
-			$afterTools
-		);
-
-		$viewsToolbarModule['templates'] = [
-			'articleInfo.underscore' =>
-				'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfo.underscore',
-			'articleInfoHistory.underscore' =>
-				'ext.pageTriage.views.toolbar/ext.pageTriage.articleInfoHistory.underscore',
-			'delete.underscore' =>
-				'ext.pageTriage.views.toolbar/ext.pageTriage.delete.underscore',
-			'mark.underscore' =>
-				'ext.pageTriage.views.toolbar/ext.pageTriage.mark.underscore',
-			'tags.underscore' =>
-				'ext.pageTriage.views.toolbar/ext.pageTriage.tags.underscore',
-			'toolbarView.underscore' =>
-				'ext.pageTriage.views.toolbar/ext.pageTriage.toolbarView.underscore',
-			'toolView.underscore' =>
-				'ext.pageTriage.views.toolbar/ext.pageTriage.toolView.underscore',
-			'wikilove.underscore' =>
-				'ext.pageTriage.views.toolbar/ext.pageTriage.wikilove.underscore',
-		];
 
 		$resourceLoader->register( 'ext.pageTriage.views.toolbar', $viewsToolbarModule );
 	}
