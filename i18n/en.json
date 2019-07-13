@@ -440,7 +440,7 @@
 	"action-pagetriage-copyvio": "tag pages as likely copyright violations",
 	"group-copyviobot": "Copyright violation bots",
 	"group-copyviobot-member": "{{GENDER:$1|copyright violation bot}}",
-	"tag-pagetrieage": "PageTriage",
+	"tag-pagetriage": "PageTriage",
 	"tag-pagetriage-description": "For edits made with the [[mw:Extension:PageTriage|PageTriage extension]]",
 	"apihelp-pagetriageaction-description": "Mark an article as reviewed or unreviewed.",
 	"apihelp-pagetriageaction-summary": "Mark an article as reviewed or unreviewed.",
