@@ -646,10 +646,7 @@ $( function () {
 				'|3=' + note + '}}';
 
 			messagePosterPromise.then( function ( messagePoster ) {
-				return messagePoster.post(
-					topicTitle,
-					note
-				);
+				return messagePoster.post( topicTitle, note, { tags: 'pagetriage' } );
 			} ).then( function () {
 				// update the article model, since it's now changed.
 				that.reset();

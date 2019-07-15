@@ -785,10 +785,7 @@ $( function () {
 				);
 
 				messagePosterPromise.then( function ( messagePoster ) {
-					return messagePoster.post(
-						topicTitle,
-						template
-					);
+					return messagePoster.post( topicTitle, template, { tags: 'pagetriage' } );
 				} ).then( function () {
 					that.reset();
 					window.location.reload( true );

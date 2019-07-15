@@ -121,10 +121,7 @@ $( function () {
 			}
 
 			messagePosterPromise.then( function ( messagePoster ) {
-				return messagePoster.post(
-					topicTitle,
-					note
-				);
+				return messagePoster.post( topicTitle, note, { tags: 'pagetriage' } );
 			} ).then( function () {
 				that.hideFlyout( action );
 			}, function ( errorCode, error ) {
