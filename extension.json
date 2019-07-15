@@ -646,9 +646,6 @@
 		"PageTriageMarkPatrolledLinkExpiry": {
 			"value": 86400
 		},
-		"PageTriageNoIndexTemplates": {
-			"value": []
-		},
 		"PageTriageNoIndexUnreviewedNewArticles": {
 			"value": false
 		},
