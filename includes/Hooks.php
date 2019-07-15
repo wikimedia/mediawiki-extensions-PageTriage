@@ -356,17 +356,6 @@ class Hooks {
 	}
 
 	/**
-	 * Formats a template name to match the format returned by getTemplates()
-	 * @param string $template
-	 * @return string
-	 */
-	private static function formatTemplateName( $template ) {
-		$template = ucfirst( trim( $template ) );
-		$template = str_replace( ' ', '_', $template );
-		return $template;
-	}
-
-	/**
 	 * Handler for hook ArticleViewFooter, this will determine whether to load
 	 * curation toolbar or 'mark as reviewed'/'reviewed' text
 	 *
