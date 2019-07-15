@@ -22,7 +22,8 @@
 			"Jelou",
 			"Carlosmg.dg",
 			"Harvest",
-			"Anarhistička Maca"
+			"Anarhistička Maca",
+			"Johny Weissmuller Jr"
 		]
 	},
 	"pagetriage": "Triaje de páginas",
@@ -132,6 +133,8 @@
 	"pagetriage-button-edit-details": "Editar los detalles",
 	"pagetriage-button-mark-for-deletion": "Marcar para borrado",
 	"pagetriage-add-a-note-creator": "Añadir un mensaje para el creador: (opcional)",
+	"pagetriage-add-a-note-creator-required": "Añadir un mensaje para el creador:",
+	"pagetriage-button-add-a-note-to-creator": "Añadir un mensaje para el creador",
 	"pagetriage-add-a-note-reviewer": "Añadir un mensaje para el revisor: (opcional)",
 	"pagetriage-personal-default-note": "Escribe una nota útil para {{GENDER:$1|$1}}. Se publicará en {{GENDER:$1|su}} página de discusión.",
 	"pagetriage-page-status-reviewed": "Marcada como revisada el $1 por $2 ($3$4$5)",
@@ -293,6 +296,7 @@
 	"pagetriage-del-tags-dbu2-label": "Usuario inexistente",
 	"pagetriage-del-tags-dbu3-label": "Galerías no libres",
 	"pagetriage-del-tags-dbu3-desc": "Galerías en el espacio de usuario que consisten en su mayor parte o en su totalidad de imágenes con licencia de «buen uso» o no libres. La normativa de contenido no libre de Wikipedia prohíbe el uso de contenido no libre en el espacio de usuario, incluido el contenido que el usuario haya subido; el uso de contenido que esté en el dominio público o bajo una licencia libre sí es aceptable. (U3)",
+	"pagetriage-note-sent-talk-page-notify-topic-title": "{{GENDER:|Te}} he enviado una nota sobre una página que {{GENDER:|has}} iniciado",
 	"pagetriage-tags-param-article-label": "Artículo:",
 	"pagetriage-tags-param-date-label": "Fecha:",
 	"pagetriage-tags-param-issues-label": "Describir los temas a resolver:",
@@ -334,6 +338,7 @@
 	"pagetriage-info-problem-recreated-desc": "Esta página fue anteriormente borrada",
 	"pagetriage-info-problem-no-references": "Sin citas",
 	"pagetriage-info-problem-no-references-desc": "Esta página no cita ninguna fuente.",
+	"pagetriage-info-problem-copyvio-desc": "Esta página puede contener violaciones de derechos de autor.",
 	"pagetriage-info-timestamp-date-format": "d &#100;&#101; MMMM &#100;&#101; yyyy",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
 	"pagetriage-info-tooltip": "Mostrar metadatos para esta página",
@@ -376,7 +381,7 @@
 	"echo-pref-subscription-page-review": "Revisiones de una página que he creado",
 	"echo-pref-tooltip-page-review": "Notificarme cuando alguien revise una página que he creado.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Revisión|Revisiones}} de página",
-	"tag-pagetrieage": "PageTriage",
+	"tag-pagetriage": "PageTriage",
 	"tag-pagetriage-description": "Para ediciones realizadas mediante la  [[mw:Extension:PageTriage|extensión PageTriage]]",
 	"apihelp-pagetriageaction-description": "Marcar un artículo como revisado o no revisado.",
 	"apihelp-pagetriageaction-summary": "Marcar un artículo como revisado o no revisado.",
