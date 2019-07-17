@@ -2,16 +2,12 @@
 <div id="mwe-pt-delete"></div>
 <!-- category list -->
 <div id="mwe-pt-delete-categories">
-	<%
-	for ( key in tags) {
-	%>
+	<% for ( key in tags) { %>
 		<div id="mwe-pt-category-<%- key %>" class="mwe-pt-delete-category">
 			<a href="#" cat="<%- key %>"><%- tags[key].label %></a>
 			<div class="mwe-pt-category-pokey"></div>
 		</div>
-	<%
-	}
-	%>
+	<% } %>
 </div>
 <div id="mwe-pt-delete-bottom">
 	<div class="mwe-pt-tool-warning-notice"><%- warningNotice %></div>

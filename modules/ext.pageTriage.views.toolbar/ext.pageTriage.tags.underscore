@@ -2,16 +2,12 @@
 <div id="mwe-pt-tags"></div>
 <!-- category list -->
 <div id="mwe-pt-categories">
-	<%
-	for ( key in tags) {
-	%>
+	<% for ( key in tags) { %>
 		<div id="mwe-pt-category-<%- key %>" class="mwe-pt-category">
 			<a href="#" cat="<%- key %>"><%- tags[key].label %></a> <span class="mwe-pt-tag-count"></span>
 			<div class="mwe-pt-category-pokey"></div>
 		</div>
-	<%
-	}
-	%>
+	<% } %>
 </div>
 <div id="mwe-pt-tags-bottom">
 	<div class="mwe-pt-tool-warning-notice"><%- warningNotice %></div>
