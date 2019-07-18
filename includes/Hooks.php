@@ -510,7 +510,7 @@ class Hooks {
 				'ext.pageTriage.views.toolbar/delete.js', // mark for deletion
 				[
 					'name' => 'ext.pageTriage.views.toolbar/contentLanguageMessages.json',
-					'callback' => function ( \ResourceLoaderContext $context ) {
+					'callback' => function ( \ResourceLoaderContext $context, \Config $config ) {
 						$keys = array_merge(
 							[
 								'pagetriage-mark-mark-talk-page-notify-topic-title',
@@ -518,7 +518,7 @@ class Hooks {
 								'pagetriage-note-sent-talk-page-notify-topic-title',
 								'pagetriage-tags-talk-page-notify-topic-title'
 							],
-							$context->getConfig()->get( 'PageTriageDeletionTagsOptionsContentLanguageMessages' )
+							$config->get( 'PageTriageDeletionTagsOptionsContentLanguageMessages' )
 						);
 						$messages = [];
 						foreach ( $keys as $key ) {
@@ -529,8 +529,8 @@ class Hooks {
 				],
 				[
 					'name' => 'ext.pageTriage.views.toolbar/config.json',
-					'callback' => function ( \ResourceLoaderContext $context ) {
-						$pageTriageCurationModules = $context->getConfig()->get( 'PageTriageCurationModules' );
+					'callback' => function ( \ResourceLoaderContext $context, \Config $config ) {
+						$pageTriageCurationModules = $config->get( 'PageTriageCurationModules' );
 						if ( ExtensionRegistry::getInstance()->isLoaded( 'WikiLove' ) ) {
 							$pageTriageCurationModules['wikiLove'] = [
 								// depends on WikiLove extension
@@ -540,8 +540,8 @@ class Hooks {
 						}
 						return [
 							'PageTriageCurationModules' => $pageTriageCurationModules,
-							'PageTriageEnableCopyvio' => $context->getConfig()->get( 'PageTriageEnableCopyvio' ),
-							'TalkPageNoteTemplate' => $context->getConfig()->get( 'TalkPageNoteTemplate' )
+							'PageTriageEnableCopyvio' => $config->get( 'PageTriageEnableCopyvio' ),
+							'TalkPageNoteTemplate' => $config->get( 'TalkPageNoteTemplate' )
 						];
 					}
 				]
