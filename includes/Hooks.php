@@ -407,11 +407,6 @@ class Hooks {
 			if ( $wgPageTriageEnableCurationToolbar || $request->getVal( 'curationtoolbar' ) === 'true' ) {
 				// Load the JavaScript for the curation toolbar
 				$outputPage->addModules( 'ext.pageTriage.toolbarStartup' );
-				// Set the config flags in JavaScript
-				$globalVars = [
-					'wgPageTriagePagePrefixedText' => $article->getTitle()->getPrefixedText()
-				];
-				$outputPage->addJsConfigVars( $globalVars );
 			} else {
 				if ( $needsReview ) {
 					// show 'Mark as reviewed' link

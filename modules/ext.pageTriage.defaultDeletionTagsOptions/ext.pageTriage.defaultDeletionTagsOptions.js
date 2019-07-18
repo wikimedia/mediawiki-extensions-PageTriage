@@ -27,7 +27,7 @@
 				label: '',
 				input: 'automated',
 				type: 'hidden',
-				value: mw.config.get( 'wgPageTriagePagePrefixedText' )
+				value: mw.config.get( 'wgPageName' ).replace( /_/g, ' ' )
 			}
 		},
 		tags = {
