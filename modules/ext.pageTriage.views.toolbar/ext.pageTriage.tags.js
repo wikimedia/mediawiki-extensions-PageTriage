@@ -629,7 +629,7 @@ $( function () {
 		talkPageNote: function ( note ) {
 			var topicTitle, messagePosterPromise,
 				that = this,
-				pageName = mw.config.get( 'wgPageTriagePagePrefixedText' );
+				pageName = mw.config.get( 'wgPageName' ).replace( /_/g, ' ' );
 
 			messagePosterPromise = mw.messagePoster.factory.create(
 				new mw.Title( this.model.get( 'creator_user_talk_page' ) )

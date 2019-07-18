@@ -23,7 +23,7 @@ $( function () {
 		}
 	};
 
-	pageName = mw.config.get( 'wgPageTriagePagePrefixedText' );
+	pageName = mw.config.get( 'wgPageName' ).replace( /_/g, ' ' );
 
 	// Deletion tagging
 	specialDeletionTagging = {

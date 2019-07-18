@@ -69,7 +69,7 @@ $( function () {
 				messagePosterPromise,
 				topicTitle,
 				that = this,
-				pageTitle = mw.config.get( 'wgPageTriagePagePrefixedText' );
+				pageTitle = mw.config.get( 'wgPageName' ).replace( /_/g, ' ' );
 
 			// mark as unreviewed
 			if ( action === 'unreviewed' ) {
