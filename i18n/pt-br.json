@@ -268,6 +268,7 @@
 	"pagetriage-del-tags-miscellanyfordeletion-label": "Miscelânea para exclusão",
 	"pagetriage-mark-mark-talk-page-notify-topic-title": "Uma página iniciada por {{GENDER:|si}} ($1) foi revista!",
 	"pagetriage-mark-unmark-talk-page-notify-topic-title": "Removi a revisão de uma página da qual {{GENDER:|você}} fez a curadoria",
+	"pagetriage-note-sent-talk-page-notify-topic-title": "Eu enviei a {{GENDER:|você}} uma nota sobre uma página que {{GENDER:|você}} iniciou",
 	"pagetriage-tags-param-article-label": "Artigo:",
 	"pagetriage-tags-param-date-label": "Data:",
 	"pagetriage-tags-param-issues-label": "Descreva os assuntos a serem tratados:",

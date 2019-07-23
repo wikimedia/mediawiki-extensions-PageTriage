@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ильнар"
+			"Ильнар",
+			"Ерней"
 		]
 	},
-	"pagetriage-filter-show-heading": "Күрсәт:",
+	"pagetriage-filter-show-heading": "Халәт:",
 	"pagetriage-filter-article": "Мәкалә",
 	"pagetriage-refresh-list": "Исемлекне яңарту",
 	"echo-category-title-page-review": "Битне {{PLURAL:$1|тикшерү}}"
