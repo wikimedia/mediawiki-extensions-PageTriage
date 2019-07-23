@@ -176,6 +176,12 @@ module.exports = ToolView.extend( {
 			'</span></li>';
 	},
 
+	formatOresProblem: function ( classification ) {
+		// classification is already translated; see OresMetadata::fetchScores().
+		return '<li class="mwe-pt-info-problem"><span class="mwe-pt-info-problem-name">' +
+			classification + '</span></li>';
+	},
+
 	enumerateProblems: function () {
 		var problems = '';
 		this.problemCount = 0;
@@ -210,6 +216,10 @@ module.exports = ToolView.extend( {
 		if ( config.PageTriageEnableCopyvio && parseInt( this.model.get( 'copyvio' ) ) ) {
 			this.problemCount++;
 			problems += this.formatCopyvioProblem();
+		}
+		if ( mw.config.get( 'wgPageTriageEnableOresFilters' ) && this.model.get( 'ores_draftquality' ) ) {
+			this.problemCount++;
+			problems += this.formatOresProblem( this.model.get( 'ores_draftquality' ) );
 		}
 		if ( problems ) {
 			problems = '<ul>' + problems + '</ul>';

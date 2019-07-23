@@ -486,8 +486,10 @@ class Hooks {
 	public static function onResourceLoaderGetConfigVars( &$vars ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$pageTriageDraftNamespaceId = $config->get( 'PageTriageDraftNamespaceId' );
+		$pageTriageEnableOresFilters = $config->get( 'PageTriageEnableOresFilters' );
 		$vars['pageTriageNamespaces'] = PageTriageUtil::getNamespaces();
 		$vars['wgPageTriageDraftNamespaceId'] = $pageTriageDraftNamespaceId;
+		$vars['wgPageTriageEnableOresFilters'] = $pageTriageEnableOresFilters;
 	}
 
 	/**
