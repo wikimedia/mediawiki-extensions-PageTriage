@@ -9,7 +9,8 @@
 			"Ypryima",
 			"Piramidion",
 			"Fitoschido",
-			"Vlad5250"
+			"Vlad5250",
+			"Movses"
 		]
 	},
 	"pagetriage": "Сортування сторінок",
@@ -78,7 +79,7 @@
 	"pagetriage-filter-unreviewed-edits": "Неперевірені сторінки",
 	"pagetriage-filter-nominated-for-deletion": "Номіновані на вилучення",
 	"pagetriage-filter-bot-edits": "Створені ботами",
-	"pagetriage-filter-redirects": "Перенаправлення",
+	"pagetriage-filter-redirects": "Перенаправлення (без потенційно проблемних)",
 	"pagetriage-filter-others": "Усі інші",
 	"pagetriage-filter-namespace-heading": "У просторі назв:",
 	"pagetriage-filter-article": "Статті",
