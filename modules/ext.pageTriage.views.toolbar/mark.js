@@ -8,6 +8,7 @@ module.exports = ToolView.extend( {
 	title: mw.msg( 'pagetriage-mark-as-reviewed' ),
 	tooltip: '',
 	template: mw.template.get( 'ext.pageTriage.views.toolbar', 'mark.underscore' ),
+	noteChanged: false,
 
 	initialize: function ( options ) {
 		this.eventBus = options.eventBus;
@@ -48,7 +49,14 @@ module.exports = ToolView.extend( {
 			reviewed: ( action === 'reviewed' ) ? '1' : '0'
 		} )
 			.done( function () {
-				that.talkPageNote( note, action );
+				// a note needs to be posted to article talk page when an article is marked as
+				// unreviewed and it meets the use case set in talkPageNote
+				if ( action === 'unreviewed' ) {
+					that.talkPageNote( note, action );
+				} else {
+					that.hideFlyout( action );
+					return;
+				}
 			} )
 			.fail( function ( errorCode, data ) {
 				that.showMarkError( action, data.error.info || mw.msg( 'unknown-error' ) );
@@ -68,29 +76,26 @@ module.exports = ToolView.extend( {
 
 	talkPageNote: function ( note, action ) {
 		var talkPageTitle,
-			messagePosterPromise,
 			topicTitle,
+			topicMessage,
 			that = this,
-			pageTitle = mw.config.get( 'wgPageName' ).replace( /_/g, ' ' );
+			pageTitle = mw.config.get( 'wgPageName' ).replace( /_/g, ' ' ),
+			sendNote1,
+			sendNote2,
+			sendNotePromise,
+			sendNoteToArticleTalkPage = false;
 
-		// mark as unreviewed
 		if ( action === 'unreviewed' ) {
-
-			// only send note if there was a reviewer and it's not the current user
+			// only send note if there was a previous reviewer and it's not the current user
 			if (
 				this.model.get( 'ptrp_last_reviewed_by' ) > 0 &&
 				mw.config.get( 'wgUserName' ) !== this.model.get( 'reviewer' )
 			) {
 				talkPageTitle = this.model.get( 'reviewer_user_talk_page' );
-				messagePosterPromise = mw.messagePoster.factory.create(
-					new mw.Title( talkPageTitle )
-				);
-
 				topicTitle = mw.pageTriage.contentLanguageMessage(
 					'pagetriage-mark-unmark-talk-page-notify-topic-title'
 				).text();
-
-				note = '{{subst:' + config.TalkPageNoteTemplate.UnMark.nonote +
+				topicMessage = '{{subst:' + config.TalkPageNoteTemplate.UnMark.nonote +
 					'|1=' + mw.config.get( 'wgUserName' ) +
 					'|2=' + pageTitle +
 					'}}';
@@ -98,8 +103,7 @@ module.exports = ToolView.extend( {
 				that.hideFlyout( action );
 				return;
 			}
-		// note was sent to creator
-		} else if ( action === 'noteSent' || action === 'reviewed' ) {
+		} else {
 			// there is no note, should not write anything in user talk page
 			if ( !note ) {
 				that.hideFlyout( action );
@@ -107,24 +111,37 @@ module.exports = ToolView.extend( {
 			}
 
 			talkPageTitle = this.model.get( 'creator_user_talk_page' );
-			messagePosterPromise = mw.messagePoster.factory.create(
-				new mw.Title( talkPageTitle )
-			);
-
 			topicTitle = mw.pageTriage.contentLanguageMessage(
-				'pagetriage-note-sent-talk-page-notify-topic-title',
-				this.model.get( 'user_name' )
+				'pagetriage-note-sent-talk-page-notify-topic-title'
 			).text();
-
-			note = '{{subst:' + config.TalkPageNoteTemplate.SendNote +
+			topicMessage = '{{subst:' + config.TalkPageNoteTemplate.SendNote +
 				'|1=' + pageTitle +
 				'|2=' + mw.config.get( 'wgUserName' ) +
 				'|3=' + note + '}}';
+
+			sendNoteToArticleTalkPage = true;
 		}
 
-		messagePosterPromise.then( function ( messagePoster ) {
-			return messagePoster.post( topicTitle, note, { tags: 'pagetriage' } );
-		} ).then( function () {
+		sendNote1 = that.sendNote( talkPageTitle, topicTitle, topicMessage );
+
+		// If the note needs to be posted to article talk page as well then we handle
+		// both post note promises resolve/reject states through a single promise
+		if ( sendNoteToArticleTalkPage ) {
+			talkPageTitle = this.model.get( 'talk_page_title' );
+			topicTitle = mw.pageTriage.contentLanguageMessage(
+				'pagetriage-feedback-from-new-page-review-process-title'
+			).text();
+			topicMessage = mw.pageTriage.contentLanguageMessage(
+				'pagetriage-feedback-from-new-page-review-process-message',
+				note
+			).text();
+			sendNote2 = that.sendNote( talkPageTitle, topicTitle, topicMessage );
+			sendNotePromise = $.when( sendNote1, sendNote2 );
+		} else { // Do not post note to article talk page
+			sendNotePromise = sendNote1;
+		}
+
+		sendNotePromise.then( function () {
 			that.hideFlyout( action );
 		}, function ( errorCode, error ) {
 			if ( error !== undefined ) {
@@ -132,6 +149,16 @@ module.exports = ToolView.extend( {
 			} else {
 				that.showMarkError( action, mw.msg( 'unknown-error' ) );
 			}
+		} );
+	},
+
+	sendNote: function ( talkPageTitle, topicTitle, note ) {
+		var messagePosterPromise = mw.messagePoster.factory.create(
+			new mw.Title( talkPageTitle )
+		);
+
+		return messagePosterPromise.then( function ( messagePoster ) {
+			return messagePoster.post( topicTitle, note, { tags: 'pagetriage' } );
 		} );
 	},
 
@@ -166,6 +193,7 @@ module.exports = ToolView.extend( {
 			note = '';
 
 		function handleFocus() {
+			$( this ).val( '' );
 			$( this ).css( 'color', 'black' );
 			$( this ).off( 'focus', handleFocus );
 		}
@@ -189,6 +217,7 @@ module.exports = ToolView.extend( {
 		if ( this.moduleConfig.note.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) !== -1 ) {
 			$( '#mwe-pt-review-note' ).show();
 			$( '#mwe-pt-review-note-input' ).on( 'focus', handleFocus ).on( 'input', function () {
+				that.noteChanged = true;
 				note = $( '#mwe-pt-review-note-input' ).val().trim();
 				if ( note.length ) {
 					$( '#mwe-pt-send-message-button' ).button( 'enable' );
