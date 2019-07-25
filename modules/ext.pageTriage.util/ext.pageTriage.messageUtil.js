@@ -2,9 +2,8 @@
 	mw.pageTriage.contentLanguageMessages = new mw.Map();
 
 	/**
-	 * Get a message object, in the content language.  The module that
-	 * ships this message must be a PageTriageMessagesModule and the
-	 * message must be listed in 'contentLanguageMessages'.
+	 * Get a message object, in the content language.  The message must have been exported
+	 * by a special module and added to mw.pageTriage.contentLanguageMessages.
 	 *
 	 * Other than that, it is exactly the same as mw.message, and jQueryMsg is supported.
 	 *
