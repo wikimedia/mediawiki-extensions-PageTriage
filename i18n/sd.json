@@ -5,7 +5,7 @@
 			"Tweety"
 		]
 	},
-	"pagetriage-edits": "$1 {{PLURAL:$1|ترميم|ترميمون}}",
+	"pagetriage-edits": "$1 {{PLURAL:$1|سنوار|سنوارون}}",
 	"pagetriage-author-bot": "بوٽ",
 	"pagetriage-filter-username": "واپرائيندڙ-نانءُ",
 	"pagetriage-filter-ns-all": "سڀ",
@@ -13,6 +13,6 @@
 	"pagetriage-filter-stat-all": "سڀ",
 	"pagetriage-filter-stat-unreviewed": "اڻـجائزو-ورتل",
 	"pagetriage-filter-stat-username": "واپرائيندڙ طرفان: $1",
-	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|ترميم|ترميمون}}",
+	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|سنوار|سنوارون}}",
 	"pagetriage-toolbar-close": "بند ڪريو"
 }
