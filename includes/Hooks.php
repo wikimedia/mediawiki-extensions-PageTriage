@@ -486,10 +486,8 @@ class Hooks {
 	public static function onResourceLoaderGetConfigVars( &$vars ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$pageTriageDraftNamespaceId = $config->get( 'PageTriageDraftNamespaceId' );
-		$pageTriageEnableOresFilters = $config->get( 'PageTriageEnableOresFilters' );
 		$vars['pageTriageNamespaces'] = PageTriageUtil::getNamespaces();
 		$vars['wgPageTriageDraftNamespaceId'] = $pageTriageDraftNamespaceId;
-		$vars['wgPageTriageEnableOresFilters'] = $pageTriageEnableOresFilters;
 	}
 
 	/**
@@ -543,7 +541,8 @@ class Hooks {
 						return [
 							'PageTriageCurationModules' => $pageTriageCurationModules,
 							'PageTriageEnableCopyvio' => $config->get( 'PageTriageEnableCopyvio' ),
-							'TalkPageNoteTemplate' => $config->get( 'TalkPageNoteTemplate' )
+							'PageTriageEnableOresFilters' => $config->get( 'PageTriageEnableOresFilters' ),
+							'TalkPageNoteTemplate' => $config->get( 'TalkPageNoteTemplate' ),
 						];
 					}
 				]

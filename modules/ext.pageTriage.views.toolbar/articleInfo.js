@@ -217,7 +217,7 @@ module.exports = ToolView.extend( {
 			this.problemCount++;
 			problems += this.formatCopyvioProblem();
 		}
-		if ( mw.config.get( 'wgPageTriageEnableOresFilters' ) && this.model.get( 'ores_draftquality' ) ) {
+		if ( config.PageTriageEnableOresFilters && this.model.get( 'ores_draftquality' ) ) {
 			this.problemCount++;
 			problems += this.formatOresProblem( this.model.get( 'ores_draftquality' ) );
 		}
