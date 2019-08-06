@@ -49,6 +49,7 @@
 	"pagetriage-info-help": "အကူအညီ",
 	"pagetriage-info-problem-recreated": "ယခင် ဖျက်ထားသော",
 	"pagetriage-info-problem-recreated-desc": "ဤစာမျက်နှာကို ယခင်က ဖျက်ထားသည်။",
+	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|ကျေးဇူးတင်}}}}",
 	"pagetriage-discuss-link": "{{GENDER:$1|ဆွေးနွေး}}",
 	"pagetriage-discuss-link-title": "{{GENDER:$1|ဆွေးနွေး}}"
 }

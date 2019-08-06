@@ -4,6 +4,10 @@
 			"Kareyac"
 		]
 	},
+	"pagetriage-please-wait": "Հաճեցէք սպասել...",
+	"pagetriage-author-not-autoconfirmed": "Նոր խմբագիր",
+	"pagetriage-author-bot": "Մեքենայիկ",
+	"pagetriage-filter-predicted-class-good": "Լաւ",
 	"pagetriage-filter-predicted-issues-none": "Ոչ մէկ",
 	"pagetriage-newest": "Նորագոյն",
 	"pagetriage-oldest": "Հնագոյն",
@@ -14,6 +18,11 @@
 	"pagetriage-filter-stat-namespace": "Անւանատարածք",
 	"pagetriage-filter-stat-predicted-class-good": "Լաւ",
 	"pagetriage-filter-stat-predicted-issues-none": "Ոչ մէկ",
+	"pagetriage-tags-cat-sources-label": "Աղբիւրներ",
+	"pagetriage-tags-param-article-label": "Յօդուած.",
+	"pagetriage-tags-param-date-label": "Թուական.",
+	"pagetriage-tags-param-free-yes-label": "Այո",
+	"pagetriage-tags-param-free-no-label": "Ոչ",
 	"pagetriage-info-history-header": "Պատմութիւն",
 	"pagetriage-info-help": "օգնութիւն",
 	"pagetriage-toolbar-learn-more": "Աւելի գիտնալ »",

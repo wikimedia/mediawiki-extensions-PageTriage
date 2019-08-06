@@ -6,6 +6,7 @@
 	},
 	"pagetriage-bytes": "$1 {{PLURAL:$1|bicoko*|bicoki*}}",
 	"pagetriage-author-blocked": "Blokusita",
+	"pagetriage-sort-by": "Ordinar segun:",
 	"pagetriage-filter-show-heading": "Montrez:",
 	"pagetriage-filter-ns-all": "Omna",
 	"pagetriage-filter-stat-all": "Omna",
