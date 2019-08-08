@@ -172,6 +172,8 @@
 	"pagetriage-page-status-autoreviewed": "Text that shows the page was autopatrolled (https://www.mediawiki.org/wiki/MediaWiki:Right-autopatrol)",
 	"pagetriage-page-status-delete": "Text that shows the page has been marked for deletion",
 	"pagetriage-articleinfo-stat": "Article info flyout stat\n*$1 is a list of stats separated by {{msg-mw|pagetriage-dot-separator}}. Example: \"{{int:Pagetriage-bytes|123}}{{int:pagetriage-dot-separator}}{{int:Pagetriage-edits|45}}{{int:pagetriage-dot-separator}}{{int:Pagetriage-categories|6}}\"\n{{Identical|Stats}}",
+	"pagetriage-has-talkpage-feedback": "Message on the article-info tab of the toolbar, shown when there's a previous PageTriage message on the article's talk page.\n* $1 is an integer count of the messages.\n* $2 is an HTML link, the text of which is {{msg-mw|pagetriage-has-talkpage-feedback-link}}.",
+	"pagetriage-has-talkpage-feedback-link": "Text of the link used in {{msg-mw|pagetriage-has-talkpage-feedback}}.",
 	"pagetriage-js-required": "Error message for browsers with JavaScript disabled",
 	"pagetriage-tags-title": "The title for the tag wizard flyout in the toolbar.\n{{Identical|Add tag}}",
 	"pagetriage-tags-cat-common-label": "Label for common category.\n{{Identical|Common}}",

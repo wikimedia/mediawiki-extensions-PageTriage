@@ -49,6 +49,22 @@
 	margin-bottom: 20px;
 }
 
+.mwe-pt-info-page-status p {
+	margin: 0;
+}
+
+.mwe-pt-has-talkpage-feedback {
+	font-size: smaller;
+}
+
+.mwe-pt-talkpage-feedback-badge .notification-badge {
+	/* Tweak the styles from oojs-ui.styles.icons-alerts for the display of the message icon. */
+	padding-left: 14px;
+	background-repeat: no-repeat;
+	background-position: 2px;
+	background-size: auto 10px;
+}
+
 .mew-pt-info-stat {
 	margin-top: 10px;
 }

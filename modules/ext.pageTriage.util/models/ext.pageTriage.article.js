@@ -21,7 +21,7 @@ $( function () {
 		},
 
 		formatMetadata: function ( article ) {
-			var bylineMessage, userCreationDateParsed, byline, titleUrl,
+			var bylineMessage, userCreationDateParsed, byline, titleUrl, talkPageLink, talkPageMsg,
 				creationDateParsed = Date.parseExact( article.get( 'creation_date' ), 'yyyyMMddHHmmss' ),
 				reviewedUpdatedParsed = Date.parseExact( article.get( 'ptrp_reviewed_updated' ), 'yyyyMMddHHmmss' ),
 				titleObj = new mw.Title( article.get( 'title' ) ),
@@ -99,6 +99,16 @@ $( function () {
 					)
 				);
 				article.set( 'user_contribs_title', article.get( 'creator_contribution_page' ) );
+			}
+
+			// Are there any PageTriage messages on the talk page?
+			article.set( 'talkpage_feedback_message', false );
+			if ( article.get( 'talkpage_feedback_count' ) > 0 ) {
+				talkPageLink = $( '<a>' )
+					.attr( 'href', article.get( 'talk_page_url' ) )
+					.text( mw.msg( 'pagetriage-has-talkpage-feedback-link' ) );
+				talkPageMsg = mw.message( 'pagetriage-has-talkpage-feedback', article.get( 'talkpage_feedback_count' ), talkPageLink ).parse();
+				article.set( 'talkpage_feedback_message', talkPageMsg );
 			}
 
 			// Set copyvio info
