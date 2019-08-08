@@ -170,6 +170,8 @@
 	"pagetriage-page-status-autoreviewed": "Cette page a été vérifiée automatiquement.",
 	"pagetriage-page-status-delete": "Marqué pour suppression",
 	"pagetriage-articleinfo-stat": "Stats: $1",
+	"pagetriage-has-talkpage-feedback": "Les relecteurs précédents de cet article ont laissé {{PLURAL:$1|un commentaire|$1 commentaires}} sur le $2.",
+	"pagetriage-has-talkpage-feedback-link": "page de discussion",
 	"pagetriage-js-required": "Cette extension nécessite un navigateur avec JavaScript activé.",
 	"pagetriage-tags-title": "Ajouter des balises",
 	"pagetriage-tags-cat-common-label": "Commun",
