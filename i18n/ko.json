@@ -144,6 +144,7 @@
 	"pagetriage-page-status-autoreviewed": "이 문서는 자동으로 검토되었습니다.",
 	"pagetriage-page-status-delete": "삭제로 표시함",
 	"pagetriage-articleinfo-stat": "상태: $1",
+	"pagetriage-has-talkpage-feedback-link": "토론 문서",
 	"pagetriage-js-required": "이 확장 기능은 자바스크립트가 가능한 브라우저가 필요합니다.",
 	"pagetriage-tags-title": "태그 추가",
 	"pagetriage-tags-cat-common-label": "공통",

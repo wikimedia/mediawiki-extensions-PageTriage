@@ -11,7 +11,8 @@
 			"המקיסט",
 			"Fitoschido",
 			"Erelon",
-			"Steeve815"
+			"Steeve815",
+			"YaronSh"
 		]
 	},
 	"pagetriage": "מיון דפים חדשים",
@@ -119,6 +120,7 @@
 	"pagetriage-page-status-autoreviewed": "הדף הזה נוטר באופן אוטומטי.",
 	"pagetriage-page-status-delete": "סומן למחיקה",
 	"pagetriage-articleinfo-stat": "סטטיסטיקה: $1",
+	"pagetriage-has-talkpage-feedback-link": "דף שיחה",
 	"pagetriage-js-required": "הרחבה זו דורשת דפדפן עם JavaScript.",
 	"pagetriage-tags-title": "הוספת תגים",
 	"pagetriage-tags-cat-common-label": "כללי",

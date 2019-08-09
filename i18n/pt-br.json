@@ -158,6 +158,7 @@
 	"pagetriage-page-status-autoreviewed": "Esta página foi auto-patrulhada.",
 	"pagetriage-page-status-delete": "Marcar para eliminação",
 	"pagetriage-articleinfo-stat": "Estado: $1",
+	"pagetriage-has-talkpage-feedback-link": "página de discussão",
 	"pagetriage-js-required": "Esta extensão requer o JavaScript ativado no navegador.",
 	"pagetriage-tags-title": "Adicionar etiquetas",
 	"pagetriage-tags-cat-common-label": "Comuns",

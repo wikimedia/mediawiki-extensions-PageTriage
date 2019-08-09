@@ -155,6 +155,8 @@
 	"pagetriage-page-status-autoreviewed": "تمت مراجعة هذه الصفحة تلقائيا.",
 	"pagetriage-page-status-delete": "معلمة للحذف",
 	"pagetriage-articleinfo-stat": "إحصائيات: $1",
+	"pagetriage-has-talkpage-feedback": "لقد ترك المراجعون السابقون لهذه المقالة {{PLURAL:$1|تعليقا|$1 تعليقات}} في $2.",
+	"pagetriage-has-talkpage-feedback-link": "صفحة النقاش",
 	"pagetriage-js-required": "تتطلب هذه الإضافة متصفحًا ممكنا لجافا سكريبت.",
 	"pagetriage-tags-title": "إضافة وسوم",
 	"pagetriage-tags-cat-common-label": "شائع",
