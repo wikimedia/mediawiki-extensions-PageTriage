@@ -10,7 +10,10 @@
 	"globals": {
 		"mw": false,
 		"Backbone": false,
-		"_": false
+		"_": false,
+		"OO": false,
+		"mediaWiki": false,
+		"jQuery": false
 	},
 	"rules": {
 		"max-len": "off",

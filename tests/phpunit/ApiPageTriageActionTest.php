@@ -157,8 +157,42 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 			);
 		} catch ( ApiUsageException $e ) {
 			$exception = true;
-			$this->assertTrue( $e->getStatusValue()->hasMessage( 'apierror-bad-pagetriage-page' ) );
+			$this->assertTrue( $e->getStatusValue()->hasMessage( 'apierror-missingtitle' ) );
 		}
 		$this->assertTrue( $exception, "Got exception" );
+	}
+
+	/**
+	 * @dataProvider provideOnlyOneParameter
+	 * @depends testLogin
+	 * @param array $params
+	 * @param string $errorMessage
+	 */
+	public function testOnlyOneParameter( array $params, $errorMessage ) {
+		$exception = false;
+		try {
+			$params += [
+				'action' => 'pagetriageaction',
+				'pageid' => 123,
+			];
+			$this->doApiRequestWithToken( $params );
+		} catch ( ApiUsageException $e ) {
+			$exception = true;
+			$this->assertTrue( $e->getStatusValue()->hasMessage( $errorMessage ) );
+		}
+		$this->assertTrue( $exception, "Got exception" );
+	}
+
+	public function provideOnlyOneParameter() {
+		return [
+			[
+				[],
+				'apierror-missingparam-one-of',
+			],
+			[
+				[ 'reviewed' => 1, 'enqueue' => 1 ],
+				'apierror-invalidparammix',
+			],
+		];
 	}
 }

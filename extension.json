@@ -36,6 +36,7 @@
 	"LogActionsHandlers": {
 		"pagetriage-curation/reviewed": "LogFormatter",
 		"pagetriage-curation/unreviewed": "LogFormatter",
+		"pagetriage-curation/enqueue": "LogFormatter",
 		"pagetriage-curation/tag": "MediaWiki\\Extension\\PageTriage\\PageTriageLogFormatter",
 		"pagetriage-curation/delete": "MediaWiki\\Extension\\PageTriage\\PageTriageLogFormatter",
 		"pagetriage-deletion/delete": "MediaWiki\\Extension\\PageTriage\\PageTriageLogFormatter",
@@ -600,6 +601,16 @@
 				"mediawiki.jqueryMsg",
 				"mediawiki.Uri"
 			]
+		},
+		"ext.PageTriage.enqueue": {
+			"styles": [],
+			"scripts": "ext.PageTriage.enqueue/ext.PageTriage.enqueue.js",
+			"messages": [
+				"pagetriage-enqueue-title",
+				"pagetriage-enqueue-tooltip",
+				"pagetriage-enqueue-confirmation"
+			],
+			"dependencies": "mediawiki.util"
 		}
 	},
 	"ResourceFileModulePaths": {

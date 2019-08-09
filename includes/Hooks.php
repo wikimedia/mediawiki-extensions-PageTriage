@@ -424,6 +424,9 @@ class Hooks {
 				$html = Html::rawElement( 'div', [ 'class' => 'mw-pagetriage-markpatrolled' ], $msg );
 				$outputPage->addHTML( $html );
 			}
+		} elseif ( is_null( $needsReview ) ) {
+			// Page is potentially usable, but not in the queue, allow users to add it manually
+			$outputPage->addModules( 'ext.PageTriage.enqueue' );
 		}
 	}
 
