@@ -153,6 +153,7 @@
 	"pagetriage-page-status-autoreviewed": "Страницава е автоиспатролирана.",
 	"pagetriage-page-status-delete": "Означи за бришење",
 	"pagetriage-articleinfo-stat": "Статистики: $1",
+	"pagetriage-has-talkpage-feedback": "Има {{PLURAL:$1|коментар|$1 коментари}} од претходни проверувачи на статијава на нејзината $2.",
 	"pagetriage-has-talkpage-feedback-link": "разговорна страница",
 	"pagetriage-js-required": "На овој додаток му треба прелистувач со JavaScript.",
 	"pagetriage-tags-title": "Додај ознаки:",
