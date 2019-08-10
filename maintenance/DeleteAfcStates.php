@@ -14,9 +14,10 @@ class DeleteAfcStates extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = 'Delete the afc_state tag value for every draft in the queue';
+		$this->addDescription( 'Delete the afc_state tag value for every draft in the queue' );
 		$this->addOption( 'dry-run', 'Do not delete anything, print what would be deleted' );
 		$this->setBatchSize( 100 );
+		$this->requireExtension( 'PageTriage' );
 	}
 
 	public function execute() {
