@@ -14,7 +14,7 @@ class PopulateDraftQueue extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = "Add missing Draft namespace pages to the AfC triage queue.";
+		$this->addDescription( "Add missing Draft namespace pages to the AfC triage queue." );
 		$this->requireExtension( 'PageTriage' );
 		$this->setBatchSize( 100 );
 	}

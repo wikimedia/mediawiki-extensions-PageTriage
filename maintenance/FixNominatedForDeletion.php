@@ -14,9 +14,10 @@ class FixNominatedForDeletion extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = 'Set ptrp_deleted on pages nominated for deletion';
+		$this->addDescription( 'Set ptrp_deleted on pages nominated for deletion' );
 		$this->addOption( 'dry-run', 'Do not fetch scores, only print revisions.' );
 		$this->setBatchSize( 100 );
+		$this->requireExtension( 'PageTriage' );
 	}
 
 	public function execute() {
