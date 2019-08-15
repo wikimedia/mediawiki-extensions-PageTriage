@@ -66,6 +66,7 @@
 	"pagetriage-note-not-reviewed": "এই পাতা এখনো পর্যালোচিত হয়নি।",
 	"pagetriage-note-deletion": "এই পাতাটি অপসারণের জন্য মনোনীত হয়েছে।",
 	"pagetriage-articleinfo-stat": "পরিসংখ্যান: $1",
+	"pagetriage-has-talkpage-feedback-link": "আলাপ পাতা",
 	"pagetriage-tags-title": "ট্যাগ যোগ করুন",
 	"pagetriage-tags-cat-common-label": "সাধারণ",
 	"pagetriage-tags-cat-metadata-label": "অধিউপাত্ত",

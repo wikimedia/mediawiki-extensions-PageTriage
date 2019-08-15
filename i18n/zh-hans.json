@@ -16,7 +16,8 @@
 			"A Chinese Wikipedian",
 			"Phenolla",
 			"94rain",
-			"神樂坂秀吉"
+			"神樂坂秀吉",
+			"Looong"
 		]
 	},
 	"pagetriage": "页面分配器",
@@ -160,6 +161,8 @@
 	"pagetriage-page-status-autoreviewed": "该页面被自动巡查。",
 	"pagetriage-page-status-delete": "标记待删除",
 	"pagetriage-articleinfo-stat": "统计：$1",
+	"pagetriage-has-talkpage-feedback": "这篇文章的前审查员已经留下在$2处{{PLURAL:$1|注释$1注释}}",
+	"pagetriage-has-talkpage-feedback-link": "讨论页",
 	"pagetriage-js-required": "该扩展程序需要启用JavaScript的浏览器。",
 	"pagetriage-tags-title": "添加标签",
 	"pagetriage-tags-cat-common-label": "常规",
