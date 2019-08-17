@@ -15,6 +15,10 @@
 		<div id="mwe-pt-tag-note-title"><%- mw.msg( 'pagetriage-add-a-note-creator' ) %></div>
 		<textarea id="mwe-pt-tag-note-input"><%- mw.msg( 'pagetriage-personal-default-note', creator ) %></textarea>
 	</div>
+	<div id="mwe-pt-checkbox-mark-reviewed-wrapper">
+		<input id="mwe-pt-checkbox-mark-reviewed" type="checkbox" value="mark reviewed" checked>
+		<label id="mwe-pt-checkbox-mark-reviewed-label" for="mwe-pt-checkbox-mark-reviewed"><%= mw.html.escape( mw.msg( 'pagetriage-markpatrolled' ) ) %></label>
+	</div>
 	<div id="mwe-pt-tag-submit">
 		<a href="#" id="mwe-pt-tag-submit-button" class="ui-button-green"><%- mw.msg( 'pagetriage-button-add-tag-number', 0 ) %></a>
 	</div>

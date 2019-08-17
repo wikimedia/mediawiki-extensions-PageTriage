@@ -281,22 +281,20 @@ module.exports = ToolView.extend( {
 			$( '#mwe-pt-category-' + cat + ' .mwe-pt-tag-count' ).empty();
 		}
 
+		// activate or deactivate the submit button and associated parts
 		if ( this.selectedTagCount > 0 ) {
+			$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
+			$( '#mwe-pt-checkbox-mark-reviewed-wrapper' ).show();
 			$( '#mwe-pt-tag-note' ).show();
 		} else {
+			$( '#mwe-pt-tag-total-count' ).empty();
+			$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
+			$( '#mwe-pt-checkbox-mark-reviewed-wrapper' ).hide();
 			$( '#mwe-pt-tag-note' ).hide();
 		}
 
 		// update the number in the submit button
 		$( '#mwe-pt-tag-submit-button .ui-button-text' ).text( mw.msg( 'pagetriage-button-add-tag-number', this.selectedTagCount ) );
-
-		// activate or deactivate the submit button and associated parts
-		if ( this.selectedTagCount > 0 ) {
-			$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
-		} else {
-			$( '#mwe-pt-tag-total-count' ).empty();
-			$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
-		}
 	},
 
 	/**
@@ -571,24 +569,28 @@ module.exports = ToolView.extend( {
 			return;
 		}
 
-		// Applying maintenance tags should automatically mark the page as reviewed
-		new mw.Api().postWithToken( 'csrf', {
-			action: 'pagetriageaction',
-			pageid: mw.config.get( 'wgArticleId' ),
-			// NOTE: if the logic for whether to mark as reviewed is changed,
-			//   be sure to also conditionally register actionQueue.mark below.
-			reviewed: '1',
-			skipnotif: '1'
-		} )
-			.done( function () {
-				// Register action for marking the page as reviewed.
-				actionQueue.mark = { reviewed: true };
-
-				that.applyTags( topText, bottomText, tagList );
+		// Applying maintenance tags does not automatically mark the page as reviewed
+		if ( $( '#mwe-pt-checkbox-mark-reviewed' ).is( ':checked' ) ) {
+			new mw.Api().postWithToken( 'csrf', {
+				action: 'pagetriageaction',
+				pageid: mw.config.get( 'wgArticleId' ),
+				// NOTE: if the logic for whether to mark as reviewed is changed,
+				//   be sure to also conditionally register actionQueue.mark below
+				reviewed: '1',
+				skipnotif: '1'
 			} )
-			.fail( function ( errorCode, data ) {
-				that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
-			} );
+				.done( function () {
+					// Register action for marking the page as reviewed.
+					actionQueue.mark = { reviewed: true };
+
+					that.applyTags( topText, bottomText, tagList );
+				} )
+				.fail( function ( errorCode, data ) {
+					that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
+				} );
+		} else {
+			that.applyTags( topText, bottomText, tagList );
+		}
 	},
 
 	/**
