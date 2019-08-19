@@ -20,8 +20,8 @@ class UpdatePageTriageQueue extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = "Remove reviewed pages from pagetriage queue if they"
-			. " are older then 30 days";
+		$this->addDescription( "Remove reviewed pages from pagetriage queue if they"
+			. " are older then 30 days" );
 		$this->requireExtension( 'PageTriage' );
 		$this->setBatchSize( 100 );
 	}
