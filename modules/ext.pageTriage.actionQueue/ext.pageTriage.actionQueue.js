@@ -50,9 +50,8 @@ mw.pageTriage.actionQueue = ( function () {
 		/**
 		 * Add to the queue under a certain action
 		 *
-		 * @param  {string} action An action that triggers this
-		 *  queue.
-		 * @param  {jQuery.Promise|Function} func Function to run when the action
+		 * @param {string} action An action that triggers this queue.
+		 * @param {jQuery.Promise|Function} func Function to run when the action
 		 *  is triggered.
 		 */
 		addToAction = function ( action, func ) {
@@ -79,11 +78,10 @@ mw.pageTriage.actionQueue = ( function () {
 			queue[ action ].push( func );
 		},
 		/**
-		 * Run all added functions that relate to the specific actin
+		 * Run all added functions that relate to the specific action
 		 *
 		 * @param {string|Array|Object} action Action name
-		 * @param {Mixed} data Data pushed as a parameter into the
-		 *  queued functions
+		 * @param {Mixed} [data] Data pushed as a parameter into the queued functions
 		 * @return {jQuery.Promise} A Promise that is resolved after
 		 *  all stored functions finished running
 		 */
@@ -124,12 +122,12 @@ mw.pageTriage.actionQueue = ( function () {
 						// $.when returns a resolved promise if all of the given promises
 						// were resolved. If even one was rejected, it immediately rejects
 						// its own promise and stops running the others.
-						// This is not a good case for this queue, where we mihght have
+						// This is not a good case for this queue, where we might have
 						// different promises from different tools that are unaware of one
 						// another.
 						// To fix this, we'll promisify all given functions and convert
 						// their failures to a resolved promise.
-						// Since all this queue cares about is waiting untill everything
+						// Since all this queue cares about is waiting until everything
 						// runs and not about returned values, this will ensure that we
 						// provide a consistent experience to all clients.
 						$.when( func( actionData[ actionName ] ) )
@@ -174,8 +172,8 @@ mw.pageTriage.actionQueue = ( function () {
 		/**
 		 * Run the functions in a specific action
 		 *
-		 * @param {string} action Action name
-		 * @param {Mixed} data Data pushed as a parameter into the
+		 * @param {string|Array|Object} action Action name
+		 * @param {Mixed} [data] Data pushed as a parameter into the
 		 *  queued functions
 		 * @return {jQuery.Promise} A Promise that is resolved after
 		 *  all stored functions finished running
@@ -185,16 +183,16 @@ mw.pageTriage.actionQueue = ( function () {
 		 * Run the functions in a specific action and refresh the page
 		 * when all functions finished running successfully.
 		 *
-		 * @param {string} action Action name
-		 * @param {Mixed} data Data pushed as a parameter into the
+		 * @param {string|Array|Object} action Action name
+		 * @param {Mixed} [data] Data pushed as a parameter into the
 		 *  queued functions
-		 * @param  {boolean} forcedReload Force a page reload
+		 * @param  {boolean} [forcedReload] Force a page reload, default true.
 		 * @return {jQuery.Promise} A Promise that is resolved after
 		 *  all stored functions finished running
 		 */
 		runAndRefresh: function ( action, data, forcedReload ) {
 			return runAllInAction( action, data ).always( function () {
-				window.location.reload( forcedReload );
+				window.location.reload( forcedReload !== false );
 			} );
 		}
 	};

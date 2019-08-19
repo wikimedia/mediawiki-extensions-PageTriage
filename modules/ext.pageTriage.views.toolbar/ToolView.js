@@ -238,6 +238,30 @@ module.exports = Backbone.View.extend( {
 			}
 		}
 		return count;
-	}
+	},
 
+	/**
+	 * Get standardized data to send back to callers of mw.pageTriage.actionQueue.
+	 * @param {Object} [data] Additional data to give the hook handler.
+	 * @return {Object}
+	 */
+	getDataForActionQueue: function ( data ) {
+		var reviewed;
+		data = data || {};
+
+		// Allow for data.reviewed override, since the caller might
+		// have just changed the reviewed status.
+		reviewed = !!( this.model.get( 'patrol_status' ) !== '0' || data.reviewed );
+
+		if ( reviewed ) {
+			data.reviewer = data.reviewer || this.model.get( 'reviewer' );
+		}
+
+		return $.extend( {
+			pageid: mw.config.get( 'wgArticleId' ),
+			title: mw.config.get( 'wgPageName' ),
+			creator: this.model.get( 'user_name' ),
+			reviewed: reviewed
+		}, data );
+	}
 } );

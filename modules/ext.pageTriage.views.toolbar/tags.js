@@ -1,7 +1,9 @@
 // view for displaying tags
 
 var ToolView = require( './ToolView.js' ),
-	config = require( './config.json' );
+	config = require( './config.json' ),
+	// Used to keep track of what actions we want to invoke, and with what data.
+	actionQueue = {};
 module.exports = ToolView.extend( {
 	id: 'mwe-pt-tag',
 	icon: 'icon_tag.png',
@@ -573,10 +575,15 @@ module.exports = ToolView.extend( {
 		new mw.Api().postWithToken( 'csrf', {
 			action: 'pagetriageaction',
 			pageid: mw.config.get( 'wgArticleId' ),
+			// NOTE: if the logic for whether to mark as reviewed is changed,
+			//   be sure to also conditionally register actionQueue.mark below.
 			reviewed: '1',
 			skipnotif: '1'
 		} )
 			.done( function () {
+				// Register action for marking the page as reviewed.
+				actionQueue.mark = { reviewed: true };
+
 				that.applyTags( topText, bottomText, tagList );
 			} )
 			.fail( function ( errorCode, data ) {
@@ -585,7 +592,7 @@ module.exports = ToolView.extend( {
 	},
 
 	/**
-	 * Handle an error occuring after submit
+	 * Handle an error occurring after submit
 	 *
 	 * @param {string} msg The error message to display
 	 */
@@ -614,12 +621,13 @@ module.exports = ToolView.extend( {
 			taglist: tagList.join( '|' )
 		} )
 			.done( function () {
+				actionQueue.tags = { tags: tagList };
+
 				if ( note ) {
+					actionQueue.tags.note = note;
 					that.talkPageNote( note );
 				} else {
-					// update the article model, since it's now changed.
-					that.reset();
-					window.location.reload( true );
+					mw.pageTriage.actionQueue.runAndRefresh( actionQueue, that.getDataForActionQueue() );
 				}
 			} )
 			.fail( function ( errorCode, data ) {
@@ -649,9 +657,7 @@ module.exports = ToolView.extend( {
 		messagePosterPromise.then( function ( messagePoster ) {
 			return messagePoster.post( topicTitle, note, { tags: 'pagetriage' } );
 		} ).then( function () {
-			// update the article model, since it's now changed.
-			that.reset();
-			window.location.reload( true );
+			mw.pageTriage.actionQueue.runAndRefresh( actionQueue, that.getDataForActionQueue() );
 		}, function () {
 			that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
 		} );
