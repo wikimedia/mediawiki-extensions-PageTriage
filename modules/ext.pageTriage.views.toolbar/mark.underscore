@@ -8,7 +8,7 @@
 	<div id="mwe-pt-review-note">
 		<hr>
 		<div id="mwe-pt-review-note-title"><%- mw.msg( "pagetriage-add-a-note-creator-required" ) %></div>
-		<textarea id="mwe-pt-review-note-input"></textarea>
+		<textarea id="mwe-pt-review-note-input"><%- mw.msg( "pagetriage-message-for-creator-default-note", noteTarget ) %></textarea>
 		<div id="mwe-pt-send-message">
 			<button id="mwe-pt-send-message-button" class="ui-button-white"><%- mw.msg( "pagetriage-button-add-a-note-to-creator" ) %></button>
 		</div>

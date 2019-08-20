@@ -515,6 +515,8 @@ class Hooks {
 							[
 								'pagetriage-mark-mark-talk-page-notify-topic-title',
 								'pagetriage-mark-unmark-talk-page-notify-topic-title',
+								'pagetriage-feedback-from-new-page-review-process-title',
+								'pagetriage-feedback-from-new-page-review-process-message',
 								'pagetriage-note-sent-talk-page-notify-topic-title',
 								'pagetriage-tags-talk-page-notify-topic-title'
 							],
@@ -646,6 +648,7 @@ class Hooks {
 				'pagetriage-add-a-note-creator-required',
 				'pagetriage-button-add-a-note-to-creator',
 				'pagetriage-add-a-note-reviewer',
+				'pagetriage-message-for-creator-default-note',
 				'pagetriage-personal-default-note',
 				'pagetriage-special-contributions',
 				'pagetriage-tagging-error',

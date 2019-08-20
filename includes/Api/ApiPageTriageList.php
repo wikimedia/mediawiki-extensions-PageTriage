@@ -125,6 +125,8 @@ class ApiPageTriageList extends ApiBase {
 				// Talk page feedback count and URL.
 				if ( $opts['page_id'] ) {
 					// Only add when a single page is being requested, i.e. for the PageTriage toolbar.
+					$talkPage = Title::makeTitle( NS_TALK, $metaData[$page]['title'] );
+					$metaData[$page]['talk_page_title'] = $talkPage->getPrefixedText();
 					$pageTitle = Title::newFromText( $metaData[ $page ]['title'] );
 					$metaData[$page]['talkpage_feedback_count'] = $this->getTalkpageFeedbackCount( $pageTitle );
 					$metaData[$page]['talk_page_url'] = $pageTitle->getTalkPageIfDefined()->getInternalURL();
