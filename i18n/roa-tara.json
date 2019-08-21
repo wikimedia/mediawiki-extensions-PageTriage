@@ -4,6 +4,12 @@
 			"Joetaras"
 		]
 	},
+	"pagetriage-hist": "cunde",
+	"pagetriage-bytes": "$1 {{PLURAL:$1|byte}}",
+	"pagetriage-edits": "$1 {{PLURAL:$1|cangiamende|cangiaminde}}",
+	"pagetriage-categories": "$1 {{PLURAL:$1|categorije}}",
+	"pagetriage-no-categories": "Nisciuna categorije",
+	"pagetriage-no-reference": "Nisciuna citazione",
 	"pagetriage-orphan": "Orfane",
 	"pagetriage-byline": "Ccrejate da $1 ($2$3$4)",
 	"pagetriage-author-blocked": "Bloccate",
@@ -24,7 +30,7 @@
 	"pagetriage-button-add-details": "Aggiunge le dettaglie",
 	"pagetriage-button-edit-details": "Cange le dettaglie",
 	"pagetriage-button-mark-for-deletion": "Signe pa scangellazione",
-	"pagetriage-add-a-note-creator-required": "Aggiunge 'nu messàgge pu ccrejatore:",
+	"pagetriage-add-a-note-creator-required": "Aggiunge 'nu messàgge pu ccrejatore. Stu messàgge avène 'nzerite pure jndr'à pàgene de le 'ngazzaminde d'a vôsce.",
 	"pagetriage-articleinfo-stat": "Statisteche: $1",
 	"pagetriage-tags-title": "Aggiunge le tag",
 	"pagetriage-tags-cat-common-label": "Comune",
