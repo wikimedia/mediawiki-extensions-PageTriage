@@ -160,7 +160,7 @@
 	"pagetriage-button-edit-details": "Modifier les détails",
 	"pagetriage-button-mark-for-deletion": "Marquer pour suppression",
 	"pagetriage-add-a-note-creator": "Ajouter un message pour le créateur: (facultatif)",
-	"pagetriage-add-a-note-creator-required": "Ajouter un message pour le créateur. ce message sera aussi posté sur la page de discussion de l’article.",
+	"pagetriage-add-a-note-creator-required": "Ajouter un message pour le créateur. Ce message sera aussi posté sur la page de discussion de l’article.",
 	"pagetriage-button-add-a-note-to-creator": "Ajouter un message pour le créateur",
 	"pagetriage-add-a-note-reviewer": "Ajouter un message pour le relecteur (facultatif):",
 	"pagetriage-message-for-creator-default-note": "Écrire une note utile pour {{GENDER:$1|$1}} et les futurs relecteurs.",
