@@ -20,7 +20,7 @@ class ApiPageTriageTagging extends ApiBase {
 
 		$params = $this->extractRequestParams();
 
-		if ( !ArticleMetadata::validatePageId( [ $params['pageid'] ], DB_REPLICA ) ) {
+		if ( !ArticleMetadata::validatePageIds( [ $params['pageid'] ], DB_REPLICA ) ) {
 			$this->dieWithError( 'apierror-bad-pagetriage-page' );
 		}
 
