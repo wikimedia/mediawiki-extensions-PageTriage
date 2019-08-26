@@ -281,7 +281,7 @@ class ArticleMetadata {
 	 * in page triage queue
 	 * @param int[] $pageIds List of page IDs.
 	 * @param int $validateDb const DB_MASTER/DB_REPLICA
-	 * @return array
+	 * @return int[] The valid page IDs.
 	 */
 	public static function validatePageIds( array $pageIds, $validateDb = DB_MASTER ) {
 		$cleanUp = [];
@@ -318,7 +318,7 @@ class ArticleMetadata {
 			}
 		}
 
-		return $cleanUp;
+		return array_unique( $cleanUp );
 	}
 
 	/**

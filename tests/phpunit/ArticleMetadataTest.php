@@ -3,62 +3,51 @@
 namespace MediaWiki\Extension\PageTriage\Test;
 
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
-use MediaWikiTestCase;
-use Wikimedia\Rdbms\IDatabase;
+use PageTriageTestCase;
+use Wikimedia\Rdbms\DBConnRef;
 
 /**
  * Tests for ArticleMetadata class
  *
  * @group EditorEngagement
- * @group Broken
+ * @group Database
+ * @group medium
  * @author Ian Baker
- * @covers MediaWiki\Extension\PageTriage\ArticleMetadata
+ * @covers \MediaWiki\Extension\PageTriage\ArticleMetadata
  */
-class ArticleMetadataTest extends MediaWikiTestCase {
+class ArticleMetadataTest extends PageTriageTestCase {
 
 	protected $pageTriage;
-	/** @var IDatabase */
+
+	/** @var DBConnRef */
 	protected $dbr;
-	protected $pageId;
+
+	/** @var int[] */
+	protected $pageIds;
+
 	/** @var ArticleMetadata */
 	protected $articleMetadata;
 
 	protected function setUp() : void {
 		parent::setUp();
-		$this->pageId = [];
+		$this->pageIds = [];
 		$this->dbr = wfGetDB( DB_REPLICA );
 
-		// Set up some page_id to test
-		$count = $start = 0;
-		while ( $count < 6 ) {
-			$res = $this->dbr->selectRow(
-						[ 'page', 'pagetriage_page' ],
-						[ 'page_id' ],
-						[
-							'page_is_redirect' => 0,
-							'page_id > ' . $start,
-							'page_id = ptrp_page_id'
-						],
-						__METHOD__,
-						[
-							'ORDER BY' => 'page_id',
-							'LIMIT' => 1,
-						]
-				);
-			if ( $res ) {
-				$this->pageId[$res->page_id] = $res->page_id;
-				$start = intval( $res->page_id );
-			}
-			$count++;
+		// Set up 6 pages to test with.
+		for ( $i = 0; $i < 6; $i++ ) {
+			$this->pageIds[] = $this->makePage( __CLASS__ . $i );
 		}
 
-		$this->articleMetadata = new ArticleMetadata( $this->pageId );
+		$this->articleMetadata = new ArticleMetadata( $this->pageIds );
 	}
 
 	protected function tearDown() : void {
 		parent::tearDown();
 	}
 
+	/**
+	 * @group Broken
+	 */
 	public function testGetValidTags() {
 		$tags = ArticleMetadata::getValidTags();
 
@@ -89,35 +78,29 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @depends testGetValidTags
-	 *
+	 * Valid page IDs must be in the pagetriage_page table.
 	 */
 	public function testValidatePageIds() {
-		$origPageId = array_merge( $this->pageId, [ 'cs', '99999999', 'abcde', '5ab', '200' ] );
+		$rawPageIds = array_merge( $this->pageIds, [ 'cs', '99999999', 'abcde', '5ab', '200' ] );
+		$validatedPageIds = ArticleMetadata::validatePageIds( $rawPageIds );
 
-		$pageId = ArticleMetadata::validatePageIds( $origPageId );
-
-		$this->assertEquals(
-			count( $origPageId ),
-			count( $pageId ),
-			'Article count doesn\'t match after ArticleMetadata::validatePageId()'
+		// Check that all invalid page IDs were removed.
+		$this->assertArrayEquals(
+			$this->pageIds,
+			$validatedPageIds,
+			'Page IDs don\'t match after ArticleMetadata::validatePageId()'
 		);
 
-		foreach ( $pageId as $val ) {
-			$this->assertEquals( (string)$val, (string)(int)$val );
-		}
-
+		// Check that they all exist in the pagetriage_page table.
 		$res = $this->dbr->select(
 			[ 'pagetriage_page' ],
 			[ 'ptrp_page_id' ],
-			[ 'ptrp_page_id' => $pageId ]
+			[ 'ptrp_page_id' => $validatedPageIds ]
 		);
-		$this->assertEquals( count( $pageId ), $this->dbr->numRows( $res ) );
+		$this->assertEquals( count( $validatedPageIds ), $this->dbr->numRows( $res ) );
 	}
 
 	/**
-	 *  @depends testValidatePageId
-	 *
 	 */
 	public function testGetMetadata() {
 		$data = $this->articleMetadata->getMetadata();
@@ -149,7 +132,7 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 		$res = $this->dbr->select(
 			[ 'pagetriage_page_tags' ],
 			[ 'ptrpt_page_id' ],
-			[ 'ptrpt_page_id' => $this->pageId ]
+			[ 'ptrpt_page_id' => $this->pageIds ]
 		);
 		$this->assertEquals( 0, $this->dbr->numRows( $res ) );
 	}
