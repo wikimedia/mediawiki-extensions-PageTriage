@@ -104,35 +104,44 @@ class PageTriage {
 		}
 
 		if ( !$this->retrieve() || $this->mReviewed == $reviewed ) {
-			return;
+			return; // status already set
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
-
-		$row = [
-				'ptrp_reviewed' => $reviewed,
-				'ptrp_reviewed_updated' => $dbw->timestamp( wfTimestampNow() )
-		];
-		$row['ptrp_last_reviewed_by'] = $user ? $user->getId() : 0;
-
-		$this->mReviewed = $reviewed;
-		$this->mReviewedUpdated = $row['ptrp_reviewed_updated'];
-		$this->mLastReviewedBy  = $row['ptrp_last_reviewed_by'];
-
 		$dbw->startAtomic( __METHOD__ );
-		// @Todo - case for marking a page as untriaged and make sure this logic is correct
-		if ( !$fromRc && $this->mReviewed && !is_null( $user ) ) {
-			$rc = RecentChange::newFromConds( [ 'rc_cur_id' => $this->mPageId, 'rc_new' => '1' ] );
-			if ( $rc && !$rc->getAttribute( 'rc_patrolled' ) ) {
-				$rc->reallyMarkPatrolled();
-				PatrolLog::record( $rc, false, $user, 'pagetriage' );
+		$set = [
+			'ptrp_reviewed' => $reviewed,
+			'ptrp_reviewed_updated' => $dbw->timestamp( wfTimestampNow() ),
+			'ptrp_last_reviewed_by' => $user ? $user->getId() : 0
+		];
+		$dbw->update(
+			'pagetriage_page',
+			$set,
+			[
+				'ptrp_page_id' => $this->mPageId,
+				'ptrp_reviewed != ' . $dbw->addQuotes( $reviewed )
+			],
+			__METHOD__
+		);
+		if ( $dbw->affectedRows() > 0 ) {
+			$this->mReviewed = $reviewed;
+			$this->mReviewedUpdated = $set['ptrp_reviewed_updated'];
+			$this->mLastReviewedBy = $set['ptrp_last_reviewed_by'];
+			// @Todo - case for marking a page as untriaged and make sure this logic is correct
+			if ( !$fromRc && $reviewed && $user ) {
+				$rc = RecentChange::newFromConds( [
+					'rc_cur_id' => $this->mPageId,
+					'rc_new' => '1'
+				] );
+				if ( $rc && !$rc->getAttribute( 'rc_patrolled' ) ) {
+					$rc->reallyMarkPatrolled();
+					PatrolLog::record( $rc, false, $user, 'pagetriage' );
+				}
 			}
-		}
-
-		$dbw->update( 'pagetriage_page', $row, [ 'ptrp_page_id' => $this->mPageId ], __METHOD__ );
-		// Log it if set by user
-		if ( $dbw->affectedRows() > 0 && $this->mLastReviewedBy ) {
-			$this->logUserTriageAction();
+			// Log it if set by user
+			if ( $this->mLastReviewedBy ) {
+				$this->logUserTriageAction();
+			}
 		}
 		$dbw->endAtomic( __METHOD__ );
 
