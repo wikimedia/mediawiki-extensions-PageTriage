@@ -59,7 +59,7 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 			'4::revId' => $revision->getId(),
 		] );
 		$logEntry->addTags( 'pagetriage' );
-		$logEntry->insert();
+		$logEntry->publish( $logEntry->insert() );
 	}
 
 	public function needsToken() {
