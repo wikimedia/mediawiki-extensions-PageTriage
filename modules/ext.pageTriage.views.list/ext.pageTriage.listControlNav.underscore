@@ -174,8 +174,18 @@
 									<% } %>
 								</div>
 							</div>
+							<!-- The date range elements will be populated via JS. -->
+							<div id="date-range-npp-filters" class="mwe-pt-control-section">
+							</div>
+						</div>
+					<% } else { %>
+						<div class="mwe-pt-control-section__col2">
+							<!-- The date range elements will be populated via JS. -->
+							<div id="date-range-npp-filters" class="mwe-pt-control-section">
+							</div>
 						</div>
 					<% } %>
+
 				</div>
 				<div class="mwe-pt-control-section">
 					<span class="mwe-pt-control-label">
@@ -284,6 +294,11 @@
 								</label> <br/>
 							</div>
 						</div>
+						<% if ( mw.config.get( 'wgShowOresFilters' ) ) { %>
+							<!-- The date range elements will be populated via JS. -->
+							<div id="date-range-afc-filters" class="mwe-pt-control-section">
+							</div>
+						<% } %>
 					</div>
 					<% if ( mw.config.get( 'wgShowOresFilters' ) ) { %>
 						<div class="mwe-pt-control-section__col2">
@@ -361,9 +376,16 @@
 								</div>
 							</div>
 						</div>
+					<% } else { %>
+						<div class="mwe-pt-control-section__col2">
+							<!-- The date range elements will be populated via JS. -->
+							<div id="date-range-afc-filters" class="mwe-pt-control-section">
+							</div>
+						</div>	
 					<% } %>
 				</div>
 			</div>
+			
 			<div class="mwe-pt-control-buttons">
 				<div id="mwe-pt-filter-set-button" class="ui-button-green"></div>
 			</div>

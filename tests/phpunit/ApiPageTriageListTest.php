@@ -450,6 +450,50 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	/**
 	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getPageIds()
 	 */
+	public function testFilterDateRange() {
+		$user = self::getTestUser()->getUser();
+		$page1 = $this->insertPage( 'DateRange20190215', 'Testing Date Range I', 0, $user );
+		$page2 = $this->insertPage( 'DateRange20190715', 'Testing Date Range II', 0, $user );
+
+		// Manually set the created at attribute to older dates.
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->update( 'pagetriage_page',
+			[ 'ptrp_created' => '20190215000000' ],
+			[ 'ptrp_page_id' => $page1['id'] ],
+			__METHOD__
+		);
+		$dbw->update( 'pagetriage_page',
+			[ 'ptrp_created' => '20190715233000' ],
+			[ 'ptrp_page_id' => $page2['id'] ],
+			__METHOD__
+		);
+
+		$list = $this->getPageTriageList( [
+			'namespace' => 0,
+			'date_range_from' => '20190216000000'
+		] );
+		$this->assertPages( [ 'DateRange20190715' ], $list,
+			'Pages to date' );
+
+		$list = $this->getPageTriageList( [
+			'namespace' => 0,
+			'date_range_to' => '20190215235959'
+		] );
+		$this->assertPages( [ 'DateRange20190215' ], $list,
+			'Pages to date' );
+
+		$list = $this->getPageTriageList( [
+			'namespace' => 0,
+			'date_range_from' => '20190105000000',
+			'date_range_to' => '20190714235959'
+		] );
+		$this->assertPages( [ 'DateRange20190215' ], $list,
+			'Pages to date' );
+	}
+
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getPageIds()
+	 */
 	public function testFilterType() {
 		$user = self::getTestUser()->getUser();
 		$otherPage = $this->insertPage( 'PageOther', 'some content', 0, $user );

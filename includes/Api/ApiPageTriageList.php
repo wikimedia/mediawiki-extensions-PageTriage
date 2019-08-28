@@ -282,6 +282,14 @@ class ApiPageTriageList extends ApiBase {
 			$conds[] = 'ptrp_reviewed ' . $reviewOpr . ' 0';
 		}
 
+		if ( isset( $opts['date_range_from'] ) && $opts['date_range_from'] ) {
+			$conds[] = ' ptrp_created  >= ' . $dbr->addQuotes( $dbr->timestamp( $opts['date_range_from'] ) );
+		}
+
+		if ( isset( $opts['date_range_to'] ) && $opts['date_range_to'] ) {
+			$conds[] = 'ptrp_created <= ' . $dbr->addQuotes( $dbr->timestamp( $opts['date_range_to'] ) );
+		}
+
 		// Filter on types
 		$redirects = $opts['showredirs'] ?? false;
 		$deleted = $opts['showdeleted'] ?? false;
@@ -418,7 +426,6 @@ class ApiPageTriageList extends ApiBase {
 			foreach ( $res as $row ) {
 				$pages[] = $row->ptrp_page_id;
 			}
-
 			return $pages;
 		}
 	}

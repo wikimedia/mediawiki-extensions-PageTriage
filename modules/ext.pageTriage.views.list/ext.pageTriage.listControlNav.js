@@ -74,6 +74,10 @@ $( function () {
 			// render and return the template. fill with the current model.
 			$( '#mwe-pt-list-control-nav-content' ).html( this.template( this.model.toJSON() ) );
 
+			// Insert the HTML for npp and afc date range filters
+			$( '#date-range-npp-filters' ).html( this.getDateRangeFilterSectionHtml( 'npp' ) );
+			$( '#date-range-afc-filters' ).html( this.getDateRangeFilterSectionHtml( 'afc' ) );
+
 			// Capture afc state-specific sort options for later
 			this.$afcDeclinedSortOptions = $( '.mwe-pt-afc-sort-declined' ).detach();
 			this.$afcSubmittedSortOptions = $( '.mwe-pt-afc-sort-submitted' ).detach();
@@ -336,6 +340,10 @@ $( function () {
 				apiParams.showreviewed = '1';
 				apiParams.afcDir = $( '#mwe-pt-sort-afc' ).val();
 			}
+
+			// Merge Date Range params.
+			apiParams = $.extend( this.getApiParamsDateRange( this.model.getMode() ), apiParams );
+
 			// Merge in ORES params.
 			apiParams = $.extend( this.getApiParamsOres( this.model.getMode() ), apiParams );
 
@@ -438,6 +446,42 @@ $( function () {
 		},
 
 		/**
+		 * Get API parameters from the form for the NPP or AFC context queue.
+		 * @param {string} context
+		 * @return {Object}
+		 */
+		getApiParamsDateRange: function ( context ) {
+			var apiParams = {}, fromDate, toDate;
+			if ( $( '#mwe-pt-filter-' + context + '-date-range-from' ).val() ) {
+				// The browser submits the date value in yyyy-MM-dd format, which is interpreted in UTC time by the Date() class
+				// if passed in this given format. It needs to be passed to Date() in yyyy/MM/dd format so that JavaScript reflects
+				// the date according to the selected date based on the current timezone that the browser is running.
+				fromDate = new Date( $( '#mwe-pt-filter-' + context + '-date-range-from' ).val().replace( /-/g, '/' ) );
+				// Set fromDate's time to the beginning of the day 00:00:00
+				fromDate.setHours( 0 );
+				fromDate.setMinutes( 0 );
+				fromDate.setSeconds( 0 );
+				// eslint-disable-next-line camelcase
+				apiParams.date_range_from = fromDate.toISOString(); // Pass the date in ISO timestamp format "2019-08-17T06:59:59.000Z"
+			}
+
+			if ( $( '#mwe-pt-filter-' + context + '-date-range-to' ).val() ) {
+				// The browser submits the date value in yyyy-MM-dd format, which is interpreted in UTC time by the Date() class
+				// if passed in this given format. It needs to be passed to Date() in yyyy/MM/dd format so that JavaScript reflects
+				// the date according to the selected date based on the current timezone that the browser is running.
+				toDate = new Date( $( '#mwe-pt-filter-' + context + '-date-range-to' ).val().replace( /-/g, '/' ) );
+				// Set toDate's time the end of day 23:59:59
+				toDate.setHours( 23 );
+				toDate.setMinutes( 59 );
+				toDate.setSeconds( 59 );
+				// eslint-disable-next-line camelcase
+				apiParams.date_range_to = toDate.toISOString(); // Pass the date in ISO timestamp format "2019-08-17T06:59:59.000Z"
+			}
+
+			return apiParams;
+		},
+
+		/**
 		 * Reload data from the model, showing a spinner while waiting for a response.
 		 * @param {Object} [options]
 		 */
@@ -485,7 +529,9 @@ $( function () {
 				type: [],
 				'predicted-class': [],
 				'predicted-issues': [],
-				top: []
+				top: [],
+				// eslint-disable-next-line camelcase
+				date_range: []
 			};
 
 			// Show/hide controls based on what feed mode we're in.
@@ -497,6 +543,9 @@ $( function () {
 			} else { // AfC
 				this.menuSyncAfc();
 			}
+
+			// Sync menu date range params content according to mode.
+			this.menuSyncDateRange( this.model.getMode() );
 
 			// Set the "Showing: ..." filter status.
 			this.filterStatus = Object.keys( this.newFilterStatus )
@@ -601,6 +650,30 @@ $( function () {
 			}
 		},
 
+		/**
+		 * Sync Date Range elements with the filters, for NPP or AFC context queue.
+		 * @param {string} context
+		 */
+		menuSyncDateRange: function ( context ) {
+			var dateRangeFrom, dateRangeTo, formattedDateFrom, formattedDateTo;
+
+			dateRangeFrom = this.model.getParam( 'date_range_from' );
+			if ( dateRangeFrom ) {
+				dateRangeFrom = new Date( dateRangeFrom );
+				formattedDateFrom = dateRangeFrom.toString( mw.msg( 'pagetriage-filter-date-range-format-showing' ) );
+				this.newFilterStatus.date_range.push( mw.msg( 'pagetriage-filter-stat-date_range_from', formattedDateFrom ) );
+				$( '#mwe-pt-filter-' + context + '-date-range-from' ).val( dateRangeFrom.toString( mw.msg( 'pagetriage-filter-date-range-format-input-field' ) ) );
+			}
+
+			dateRangeTo = this.model.getParam( 'date_range_to' );
+			if ( dateRangeTo ) {
+				dateRangeTo = new Date( dateRangeTo );
+				formattedDateTo = dateRangeTo.toString( mw.msg( 'pagetriage-filter-date-range-format-showing' ) );
+				this.newFilterStatus.date_range.push( mw.msg( 'pagetriage-filter-stat-date_range_to', formattedDateTo ) );
+				$( '#mwe-pt-filter-' + context + '-date-range-to' ).val( dateRangeTo.toString( mw.msg( 'pagetriage-filter-date-range-format-input-field' ) ) );
+			}
+		},
+
 		getValidAfcSortOptionId: function ( afcState, afcDir ) {
 			if ( afcDir === 'newestfirst' ) {
 				return 'mwe-pt-sort-afc-newestfirst';
@@ -676,7 +749,37 @@ $( function () {
 			if ( this.model.getParam( param ) ) {
 				this.newFilterStatus[ filterGroup ].push( mw.msg( message ) );
 			}
-		}
+		},
 
+		/**
+		 * Get Html for date range filters
+		 * @param {string} context The value 'npp' or 'afc'
+		 * @return {string}
+		 */
+		getDateRangeFilterSectionHtml: function ( context ) {
+			return '<span class="mwe-pt-control-label">' +
+						'<b>' + mw.msg( 'pagetriage-filter-date-range-heading' ) + '</b>' +
+					'</span>' +
+					'<div class="mwe-pt-control-options">' +
+						this.getDateRangeFilterFieldsHtml( context, 'from' ) +
+						'</br>' +
+						this.getDateRangeFilterFieldsHtml( context, 'to' ) +
+					'</div>';
+		},
+
+		/**
+		 * Get Html for date range label and input field
+		 * @param {string} context The value 'npp' or 'afc'
+		 * @param {string} dateRangeType The date range value 'to' or 'from'
+		 * @return {string}
+		 */
+		getDateRangeFilterFieldsHtml: function ( context, dateRangeType ) {
+			return '<label for="mwe-pt-filter-' + context + '-date-range-' + dateRangeType + '">' +
+						mw.msg( 'pagetriage-filter-date-range-' + dateRangeType ) + ' ' +
+					'</label>' +
+					'<input type="date" name="mwe-pt-filter-' + context + '-date-range-' + dateRangeType + '"' +
+						'id="mwe-pt-filter-' + context + '-date-range-' + dateRangeType + '"' +
+						'placeholder="' + mw.msg( 'pagetriage-filter-date-range-format-placeholder' ) + '"/>';
+		}
 	} );
 } );

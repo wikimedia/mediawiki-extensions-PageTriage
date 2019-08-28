@@ -571,6 +571,12 @@ class PageTriageUtil {
 			'username' => [
 				ApiBase::PARAM_TYPE => 'user',
 			],
+			'date_range_from' => [
+				ApiBase::PARAM_TYPE => 'timestamp',
+			],
+			'date_range_to' => [
+				ApiBase::PARAM_TYPE => 'timestamp',
+			],
 		];
 	}
 
