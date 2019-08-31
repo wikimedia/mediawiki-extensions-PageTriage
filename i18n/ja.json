@@ -8,7 +8,8 @@
 			"아라",
 			"Omotecho",
 			"Fitoschido",
-			"Suyama"
+			"Suyama",
+			"Kkairri"
 		]
 	},
 	"newpagesfeed": "新しいページのフィード",
@@ -43,6 +44,7 @@
 	"pagetriage-user-creation-dateformat": "yyyy年MM月dd日",
 	"pagetriage-showing": "表示中:",
 	"pagetriage-filter-list-prompt": "適用するフィルター",
+	"pagetriage-filter-predicted-issues-copyvio": "著作権侵害",
 	"pagetriage-unreviewed-article-count": "総未査読{{PLURAL:$1|ページ数}} $1 (最古のページ: $2)",
 	"pagetriage-sort-by": "並び順:",
 	"pagetriage-newest": "新しい順",
@@ -89,6 +91,7 @@
 	"pagetriage-filter-stat-predicted-class-stub": "スタブ",
 	"pagetriage-filter-stat-predicted-issues-vandalism": "荒らし",
 	"pagetriage-filter-stat-predicted-issues-spam": "スパム",
+	"pagetriage-filter-stat-predicted-issues-copyvio": "著作権侵害",
 	"pagetriage-no-pages": "検索条件に一致するページはありません。",
 	"pagetriage-warning-browser": "このツールは Internet Explorer 11 より古いブラウザーでは正しく動作しない可能性があります。",
 	"pagetriage-welcome": "{{SITENAME}}を改善するため、以下の新しいページを査読してください。[$1 詳細はこちら] · [$2 フィードバックを送信]",
@@ -242,6 +245,8 @@
 	"logentry-pagetriage-curation-tag": "$1 が $3 に{{PLURAL:$5|タグ}} $4 を{{GENDER:$2|付けました}}",
 	"logentry-pagetriage-curation-delete": "$1 が $3 に{{PLURAL:$5|タグ}} $4 で削除の{{GENDER:$2|印を付けました}}",
 	"logentry-pagetriage-deletion-delete": "$1 が $3 に{{PLURAL:$5|タグ}} $4 で削除の{{GENDER:$2|印を付けました}}",
+	"log-name-pagetriage-copyvio": "著作権侵害の恐れがある編集の記録",
+	"logentry-pagetriage-copyvio-insert": "$1 がページ「$3」の $4 の版に著作権侵害の恐れの印を付けました",
 	"pagetriage-tags-edit-summary": "$1を使用してページにタグ ($2) が追加されました",
 	"pagetriage-del-edit-summary": "$1で削除が提案されているページ ($2)",
 	"pagetriage-del-tags-param-discussion-label": "この記事をなぜ削除すべきか説明してください。そして可能な限り、関連する指針へのリンクを示してください",
@@ -260,6 +265,8 @@
 	"pagetriage-info-problem-orphan-desc": "このページは他のページからリンクされていません。",
 	"pagetriage-info-problem-no-references": "引用なし",
 	"pagetriage-info-problem-no-references-desc": "このページはどの資料も引用していません。",
+	"pagetriage-info-problem-copyvio": "著作権侵害",
+	"pagetriage-info-problem-copyvio-desc": "このページは著作権を侵害している恐れがあります。",
 	"pagetriage-info-timestamp-date-format": "yyyy年MM月dd日",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
 	"pagetriage-info-tooltip": "このページのメタデータを表示",
@@ -291,5 +298,8 @@
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|感謝}}}}",
 	"echo-pref-subscription-page-review": "自分が作成したページを、誰かが査読したとき",
 	"echo-pref-tooltip-page-review": "自分が作成したページを誰かが査読したときに通知する。",
-	"echo-category-title-page-review": "ページの{{PLURAL:$1|査読}}"
+	"echo-category-title-page-review": "ページの{{PLURAL:$1|査読}}",
+	"action-pagetriage-copyvio": "ページを著作権を侵害している恐れがあるとしてタグ付けします",
+	"apihelp-pagetriagelist-param-show_predicted_issues_copyvio": "著作権侵害の恐れがあるものを含めるか",
+	"apihelp-pagetriagestats-param-show_predicted_issues_copyvio": "著作権侵害の恐れがあるものを含めるか"
 }
