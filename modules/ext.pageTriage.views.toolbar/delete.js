@@ -31,16 +31,25 @@ pageName = mw.config.get( 'wgPageName' ).replace( /_/g, ' ' );
 // Deletion tagging
 specialDeletionTagging = {
 	afd: {
+		buildDeletionTag: function ( tagObj ) {
+			if ( !tagObj.subpageNumber ) {
+				return '{{subst:afd1}}';
+			}
+			return '{{subst:afdx|' + tagObj.subpageNumber + '}}';
+		},
+
 		buildDiscussionRequest: function ( reason, data ) {
 			data.appendtext = '{{subst:afd2|text=' + reason + ' ~~~~|pg=' + pageName + '}}\n';
 			data.summary = 'Creating deletion discussion page for [[' + pageName + ']].';
 		},
 
 		buildLogRequest: function ( oldText, reason, tagObj, data ) {
+			var page = tagObj.subpage || pageName;
+
 			oldText += '\n';
 			data.text = oldText.replace(
 				/(<!-- Add new entries to the TOP of the following list -->\n+)/,
-				'$1{{subst:afd3|pg=' + pageName + '}}\n'
+				'$1{{subst:afd3|pg=' + page + '}}\n'
 			);
 		},
 
@@ -93,6 +102,13 @@ specialDeletionTagging = {
 	},
 
 	mfd: {
+		buildDeletionTag: function ( tagObj ) {
+			if ( !tagObj.subpageNumber ) {
+				return '{{subst:mfd1}}';
+			}
+			return '{{subst:mfdx|' + tagObj.subpageNumber + '}}';
+		},
+
 		buildDiscussionRequest: function ( reason, data ) {
 			data.appendtext = '{{subst:mfd2|text=' + reason + ' ~~~~|pg=' + pageName + '}}\n';
 			data.summary = 'Creating deletion discussion page for [[' + pageName + ']].';
@@ -102,7 +118,8 @@ specialDeletionTagging = {
 			var date = new DateWrapper(),
 				dateHeader = '===' + date.getMonth() + ' ' + date.getDate() + ', ' + date.getYear() + '===\n',
 				dateHeaderRegex = new RegExp( '(===\\s*' + date.getMonth() + '\\s+' + date.getDate() + ',\\s+' + date.getYear() + '\\s*===)' ),
-				newData = '{{subst:mfd3|pg=' + pageName + '}}';
+				page = tagObj.subpage || pageName,
+				newData = '{{subst:mfd3|pg=' + page + '}}';
 
 			if ( dateHeaderRegex.test( oldText ) ) { // we have a section already
 				data.text = oldText.replace( dateHeaderRegex, '$1\n' + newData );
@@ -110,7 +127,7 @@ specialDeletionTagging = {
 				data.text = oldText.replace( '===', dateHeader + newData + '\n\n===' );
 			}
 
-			data.summary = 'Adding [[' + tagObj.prefix + '/' + pageName + ']].';
+			data.summary = 'Adding [[' + tagObj.prefix + '/' + page + ']].';
 			data.recreate = true;
 		},
 
@@ -604,8 +621,8 @@ module.exports = ToolView.extend( {
 	 * Submit the selected tags
 	 */
 	submit: function () {
-		var key, param,
-			that = this,
+		var that = this,
+			promises = [],
 			// reviewed value must be either '0' or '1'
 			markAsReviewed = this.deletionTagsOptions[ this.selectedCat ].reviewed || '0';
 
@@ -614,67 +631,82 @@ module.exports = ToolView.extend( {
 			return;
 		}
 
-		// check for any missing parameters
-		for ( key in this.selectedTag ) {
-			for ( param in this.selectedTag[ key ].params ) {
-				if (
-					this.selectedTag[ key ].params[ param ].input === 'required' &&
-					!this.selectedTag[ key ].params[ param ].value
-				) {
-					this.handleError(
-						mw.msg(
-							'pagetriage-tags-param-missing-required',
-							this.selectedTag[ key ].tag
-						) );
-					return;
-				}
-			}
-		}
-
 		// check if page is already nominated for deletion
 		if ( this.isPageNominatedForDeletion() ) {
 			this.handleError( mw.msg( 'pagetriage-tag-deletion-error' ) );
 			return;
 		}
 
-		// Applying deletion tags should mark the page as reviewed depending on the selected tag's
-		// reviewed option. If it is not set then the page will be marked as not reviewed.
-		new mw.Api().postWithToken( 'csrf', {
-			action: 'pagetriageaction',
-			pageid: mw.config.get( 'wgArticleId' ),
-			reviewed: markAsReviewed,
-			skipnotif: '1'
-		} )
-			.done( function () {
-				var key, tagObj;
-				// Log certain types of deletion nominations...
-				// If the selected tag category doesn't allow multiple selection
-				// and the selected tag has a prefix (like Wikipedia:Articles for
-				// deletion) update the log page for that deletion type.
-				// TODO: Make logging a JS config-based option
-				if ( !that.deletionTagsOptions[ that.selectedCat ].multiple ) {
-					for ( key in that.selectedTag ) {
-						tagObj = that.selectedTag[ key ];
-						if ( tagObj.prefix ) {
-							that.logPage( tagObj );
-							return;
+		// check for any missing parameters
+		// eslint-disable-next-line no-jquery/no-each-util
+		$.each( this.selectedTag, function ( key, tagObj ) {
+			var param;
+
+			for ( param in tagObj.params ) {
+				if (
+					tagObj.params[ param ].input === 'required' &&
+					!tagObj.params[ param ].value
+				) {
+					that.handleError(
+						mw.msg(
+							'pagetriage-tags-param-missing-required',
+							tagObj.tag
+						) );
+					return;
+				}
+			}
+
+			if ( tagObj.usesSubpages ) {
+				promises.push( that.pickDiscussionPageName( tagObj.prefix )
+					.then( function ( data ) {
+						tagObj.subpage = data.page;
+						tagObj.subpageNumber = data.number;
+					} )
+				);
+			}
+		} );
+
+		$.when.apply( null, promises ).then( function () {
+			// Applying deletion tags should mark the page as reviewed depending on the selected tag's
+			// reviewed option. If it is not set then the page will be marked as not reviewed.
+			return new mw.Api().postWithToken( 'csrf', {
+				action: 'pagetriageaction',
+				pageid: mw.config.get( 'wgArticleId' ),
+				// reviewed value must be either '0' or '1'
+				reviewed: markAsReviewed,
+				skipnotif: '1'
+			} )
+				.then( function () {
+					var key, tagObj;
+					// Log certain types of deletion nominations...
+					// If the selected tag category doesn't allow multiple selection
+					// and the selected tag has a prefix (like Wikipedia:Articles for
+					// deletion) update the log page for that deletion type.
+					// TODO: Make logging a JS config-based option
+					if ( !that.deletionTagsOptions[ that.selectedCat ].multiple ) {
+						for ( key in that.selectedTag ) {
+							tagObj = that.selectedTag[ key ];
+							if ( tagObj.prefix ) {
+								that.logPage( tagObj );
+								return;
+							}
 						}
 					}
-				}
-				that.tagPage();
+					that.tagPage();
 
-				// Queue up the necessary actions. These will get ran just before we refresh the page.
-				if ( markAsReviewed === '1' ) {
-					// Page was also marked as reviewed, so we want to fire the action for that, too.
-					// The 'reviewed' and 'reviewer' attributes on the model are not yet populated,
-					// so we have to pass those in manually.
-					actionQueue.mark = {
-						reviewed: true,
-						reviewer: mw.config.get( 'wgUserName' )
-					};
-				}
-				actionQueue.delete = { tags: that.selectedTag };
-			} )
+					// Queue up the necessary actions. These will get ran just before we refresh the page.
+					if ( markAsReviewed === '1' ) {
+						// Page was also marked as reviewed, so we want to fire the action for that, too.
+						// The 'reviewed' and 'reviewer' attributes on the model are not yet populated,
+						// so we have to pass those in manually.
+						actionQueue.mark = {
+							reviewed: true,
+							reviewer: mw.config.get( 'wgUserName' )
+						};
+					}
+					actionQueue.delete = { tags: that.selectedTag };
+				} );
+		} )
 			.fail( function ( errorCode, data ) {
 				that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
 			} );
@@ -703,9 +735,11 @@ module.exports = ToolView.extend( {
 			tagText = '',
 			paramsText = '',
 			that = this,
-			tempTag = '',
+			tempTag,
 			tagList = [],
-			count = this.objectPropCount( this.selectedTag );
+			count = this.objectPropCount( this.selectedTag ),
+			tagObj,
+			tagging;
 
 		if ( count === 0 ) {
 			return;
@@ -714,16 +748,24 @@ module.exports = ToolView.extend( {
 		// for multiple tags, they must be in db-xxx format, when combining them in
 		// db-multiple, remove 'db-' from each individual tags
 		for ( key in this.selectedTag ) {
-			tempTag = this.selectedTag[ key ].tag;
+			tagObj = this.selectedTag[ key ];
+			tempTag = tagObj.tag;
+			tagging = specialDeletionTagging[ tagObj.tag ];
+
 			if ( count > 1 ) {
-				if ( this.selectedTag[ key ].code !== undefined ) {
-					tempTag = this.selectedTag[ key ].code;
+				if ( tagObj.code !== undefined ) {
+					tempTag = tagObj.code;
 				} else {
 					tempTag = tempTag.replace( /^db-/gi, '' );
 				}
 			} else {
+				// Some deletion types have their custom building routine
+				if ( tagging && tagging.buildDeletionTag ) {
+					text = tagging.buildDeletionTag( tagObj );
+					continue;
+				}
 				// this template must be substituted
-				if ( this.selectedTag[ key ].subst ) {
+				if ( tagObj.subst ) {
 					// check if there is 'subst:' string yet
 					if ( tempTag.match( /^subst:/i ) === null ) {
 						tempTag = 'subst:' + tempTag;
@@ -734,12 +776,14 @@ module.exports = ToolView.extend( {
 				tagText += '|';
 			}
 			tagText += tempTag;
-			paramsText += this.buildParams( this.selectedTag[ key ] );
-			tagList.push( this.selectedTag[ key ].tag.toLowerCase() );
+			paramsText += that.buildParams( tagObj );
+			tagList.push( tagObj.tag.toLowerCase() );
 		}
 
 		if ( count === 1 ) {
-			text = '{{' + tagText + paramsText + '}}';
+			if ( text === '' ) {
+				text = '{{' + tagText + paramsText + '}}';
+			}
 		} else {
 			text = '{{' + $.pageTriageDeletionTagsMultiple.tag + '|' + tagText + paramsText + '}}';
 		}
@@ -785,6 +829,9 @@ module.exports = ToolView.extend( {
 		} else {
 			selected = this.selectedTag[ key ];
 			paramsText = this.buildParams( this.selectedTag[ key ] );
+			if ( selected.usesSubpages && selected.subpage ) {
+				paramsText += '|' + selected.subpage;
+			}
 		}
 
 		topicTitleKey = selected.talkpagenotiftopictitle;
@@ -895,10 +942,11 @@ module.exports = ToolView.extend( {
 	 * Generate the discussion page
 	 *
 	 * @param {Object} tagObj
+	 * @return {Promise}
 	 */
 	discussionPage: function ( tagObj ) {
 		var that = this,
-			title = tagObj.prefix + '/' + pageName,
+			title = tagObj.prefix + '/' + ( tagObj.subpage || pageName ),
 			request = {
 				action: 'edit',
 				title: title,
@@ -912,7 +960,7 @@ module.exports = ToolView.extend( {
 
 		specialDeletionTagging[ tagObj.tag ].buildDiscussionRequest( tagObj.params[ '1' ].value, request );
 
-		new mw.Api().postWithToken( 'csrf', request )
+		return new mw.Api().postWithToken( 'csrf', request )
 			.done( function () {
 				that.tagPage();
 			} )
@@ -975,6 +1023,74 @@ module.exports = ToolView.extend( {
 		}
 
 		return html;
-	}
+	},
 
+	pickDiscussionPageName: function ( prefix ) {
+		var that = this,
+			baseTitle = prefix + '/' + pageName,
+			baseTitleNoNS = new mw.Title( baseTitle ).getMainText();
+
+		return new mw.Api().get( {
+			action: 'query',
+			// Check whether first nomination exists
+			titles: baseTitle,
+			// And subsequent ones, too
+			list: 'allpages',
+			apnamespace: 4, // NS_PROJECT
+			apprefix: baseTitleNoNS + ' (',
+			aplimit: 'max',
+			formatversion: 2
+		} )
+			.then( function ( data ) {
+				var page, i, pages = {}, suffix;
+
+				if ( !data || !data.query ) {
+					throw new Error( 'API error' );
+				}
+				if ( data.query.pages ) {
+					page = data.query.pages[ 0 ];
+					if ( page && page.title && !page.missing ) {
+						pages[ page.title ] = true;
+					}
+				}
+				if ( data.query.allpages ) {
+					for ( page in data.query.allpages ) {
+						pages[ data.query.allpages[ page ].title ] = true;
+					}
+				}
+
+				if ( !pages[ baseTitle ] ) {
+					return { page: pageName, number: undefined };
+				}
+				for ( i = 2; i < 50; i++ ) {
+					suffix = ' (' + that.getNumeral( i ) + ' nomination)';
+					if ( !pages[ baseTitle + suffix ] ) {
+						return { page: pageName + suffix, number: that.getNumeral( i ) };
+					}
+				}
+				// If a page was nominated over 50 times (API limit for unprivileged users),
+				// there's something suspicious going on
+				throw new Error( 'Couldn\'t pick nomination page name' );
+			} );
+	},
+
+	getNumeral: function ( num ) {
+		if ( typeof num !== 'number' ) {
+			num = parseInt( num );
+		}
+		switch ( num ) {
+			case 1:
+				return '1st';
+			case 2:
+				return '2nd';
+			case 3:
+				return '3rd';
+			default:
+				if ( num <= 20 ) {
+					return num + 'th';
+				}
+		}
+
+		return Math.floor( num / 10 ) + this.getNumeral( num % 10 );
+	}
 } );
