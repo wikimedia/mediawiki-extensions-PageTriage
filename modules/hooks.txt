@@ -1,0 +1,8 @@
+hooks.txt
+
+This documents PageTriage's client-side hooks:
+
+'ext.pageTriage.toolbar.ready': When the toolbar is loaded and ready.
+* queue: A reference to the promise-based ActionQueue, allowing gadgets and
+external code to enqueue an function based on an action done, and before the
+page refreshes.

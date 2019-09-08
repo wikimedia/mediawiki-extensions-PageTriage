@@ -9,5 +9,10 @@ $( function () {
 	}
 
 	// Load the curation toolbar
-	mw.loader.load( 'ext.pageTriage.views.toolbar' );
+	mw.loader.using( 'ext.pageTriage.views.toolbar' )
+		.then( function () {
+			// Fire the 'ready' hook
+			mw.hook( 'ext.pageTriage.toolbar.ready' )
+				.fire( mw.pageTriage.actionQueue );
+		} );
 } );
