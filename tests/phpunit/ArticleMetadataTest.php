@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\PageTriage\Test;
 
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWikiTestCase;
+use Wikimedia\Rdbms\IDatabase;
 
 /**
  * Tests for ArticleMetadata class
@@ -16,8 +17,10 @@ use MediaWikiTestCase;
 class ArticleMetadataTest extends MediaWikiTestCase {
 
 	protected $pageTriage;
+	/** @var IDatabase */
 	protected $dbr;
 	protected $pageId;
+	/** @var ArticleMetadata */
 	protected $articleMetadata;
 
 	protected function setUp() {

@@ -54,7 +54,7 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 	protected function logActivity( RevisionRecord $revision ) {
 		$logEntry = new ManualLogEntry( 'pagetriage-copyvio', 'insert' );
 		$logEntry->setPerformer( $this->getUser() );
-		$logEntry->setTarget( Title::newFromId( $revision->getPageId() ) );
+		$logEntry->setTarget( Title::newFromID( $revision->getPageId() ) );
 		$logEntry->setParameters( [
 			'4::revId' => $revision->getId(),
 		] );

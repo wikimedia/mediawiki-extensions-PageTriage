@@ -2,33 +2,35 @@
 
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
+use LinksUpdate;
 use WikiPage;
 
 /**
  * The abstract class extended in each ArticleCompile, used by ArticleCompileProcessor.
  */
 abstract class ArticleCompileInterface {
+	/** @var int[] List of page IDs */
 	protected $mPageId;
 	protected $metadata;
+	/** @var WikiPage[] */
 	protected $articles;
+	/** @var LinksUpdate[] */
 	protected $linksUpdates;
 	protected $db;
+	/** @var int Either DB_MASTER or DB_REPLICA */
 	protected $componentDb;
 
 	/**
 	 * @param array $pageId
 	 * @param int $componentDb
-	 * @param array|null $articles
-	 * @param array|null $linksUpdates
+	 * @param WikiPage[] $articles
+	 * @param LinksUpdate[] $linksUpdates
 	 */
 	public function __construct(
-		array $pageId, $componentDb = DB_MASTER, $articles = null, $linksUpdates = null
+		array $pageId, $componentDb, array $articles, array $linksUpdates
 	) {
 		$this->mPageId = $pageId;
 		$this->metadata = array_fill_keys( $pageId, [] );
-		if ( is_null( $articles ) ) {
-			$articles = [];
-		}
 		$this->articles = $articles;
 		$this->linksUpdates = $linksUpdates;
 
