@@ -18,6 +18,7 @@
 namespace MediaWiki\Extension\PageTriage;
 
 use IContextSource;
+use LogicException;
 use ORES\Services\ORESServices;
 use ORES\Storage\ModelLookup;
 use ORES\Storage\ThresholdLookup;
@@ -137,6 +138,8 @@ class OresMetadata {
 				return $className;
 			}
 		}
+
+		throw new LogicException( "Couldn't determine quality class for probability $probability" );
 	}
 
 	/**
