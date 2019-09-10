@@ -20,7 +20,7 @@ class ArticleCompileProcessor {
 	protected $component;
 	protected $componentDb;
 	/** @var int[] List of page IDs */
-	protected $mPageId;
+	protected $pageIds;
 	protected $metadata;
 	protected $defaultMode;
 	/** @var WikiPage[] */
@@ -53,10 +53,10 @@ class ArticleCompileProcessor {
 	}
 
 	/**
-	 * @param array $pageId list of page id
+	 * @param int[] $pageIds List of page IDs.
 	 */
-	private function __construct( $pageId ) {
-		$this->mPageId = $pageId;
+	private function __construct( $pageIds ) {
+		$this->pageIds = $pageIds;
 
 		$this->component = [
 			'BasicData' => 'off',
@@ -73,24 +73,26 @@ class ArticleCompileProcessor {
 			$this->componentDb[$key] = DB_MASTER;
 		}
 
-		$this->metadata = array_fill_keys( $this->mPageId, [] );
+		$this->metadata = array_fill_keys( $this->pageIds, [] );
 		$this->defaultMode = true;
 		$this->articles = [];
 	}
 
 	/**
 	 * Factory for creating an instance
-	 * @param array $pageId
+	 * @param int[] $pageIds
 	 * @param bool $validated whether page ids are validated
 	 * @param int $validateDb const DB_MASTER/DB_REPLICA
 	 * @return ArticleCompileProcessor|false
 	 */
-	public static function newFromPageId( array $pageId, $validated = true, $validateDb = DB_MASTER ) {
+	public static function newFromPageId(
+		array $pageIds, $validated = true, $validateDb = DB_MASTER
+	) {
 		if ( !$validated ) {
-			$pageId = ArticleMetadata::validatePageId( $pageId, $validateDb );
+			$pageIds = ArticleMetadata::validatePageIds( $pageIds, $validateDb );
 		}
-		if ( $pageId ) {
-			return new ArticleCompileProcessor( $pageId );
+		if ( $pageIds ) {
+			return new ArticleCompileProcessor( $pageIds );
 		} else {
 			return false;
 		}
@@ -101,14 +103,14 @@ class ArticleCompileProcessor {
 	 * @param WikiPage $article
 	 */
 	public function registerArticle( WikiPage $article ) {
-		if ( in_array( $article->getId(), $this->mPageId ) ) {
+		if ( in_array( $article->getId(), $this->pageIds ) ) {
 			$this->articles[$article->getId()] = $article;
 		}
 	}
 
 	public function registerLinksUpdate( LinksUpdate $linksUpdate ) {
 		$id = $linksUpdate->getTitle()->getArticleId();
-		if ( in_array( $id, $this->mPageId ) ) {
+		if ( in_array( $id, $this->pageIds ) ) {
 			$this->linksUpdates[$id] = $linksUpdate;
 		}
 	}
@@ -201,7 +203,7 @@ class ArticleCompileProcessor {
 				// Additionally, the metadata will be cached in memcache for 24 hours.
 				// The logging statement below can alert us to errors in our hook implementation.
 				// Queue a job for each page that doesn't have metadata.
-				foreach ( $this->mPageId as $pageId ) {
+				foreach ( $this->pageIds as $pageId ) {
 					$job = new CompileArticleMetadataJob(
 						Title::newMainPage(),
 						[ 'pageId' => (int)$pageId ]
@@ -212,7 +214,7 @@ class ArticleCompileProcessor {
 					'Article metadata not found in DB, will attempt to save to DB via the job queue.',
 					[
 						'trace' => ( new \RuntimeException() )->getTraceAsString(),
-						'articles_without_metadata' => implode( ',', $this->mPageId ),
+						'articles_without_metadata' => implode( ',', $this->pageIds ),
 						'raw_query_string' => RequestContext::getMain()->getRequest()
 							->getRawQueryString(),
 					]
@@ -257,7 +259,7 @@ class ArticleCompileProcessor {
 		foreach ( $this->component as $key => $val ) {
 			if ( $val === 'on' ) {
 				$compClass = 'MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompile' . $key;
-				$comp = new $compClass( $this->mPageId, $this->componentDb[$key], $this->articles,
+				$comp = new $compClass( $this->pageIds, $this->componentDb[$key], $this->articles,
 					$this->linksUpdates
 				);
 				if ( !$comp->compile() ) {
@@ -294,7 +296,7 @@ class ArticleCompileProcessor {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbr = wfGetDB( DB_REPLICA );
 
-		if ( !$this->mPageId ) {
+		if ( !$this->pageIds ) {
 			return;
 		}
 
@@ -304,7 +306,7 @@ class ArticleCompileProcessor {
 		$res = $dbr->select(
 			[ 'pagetriage_page_tags', 'pagetriage_tags' ],
 			[ 'ptrpt_page_id', 'ptrt_tag_name', 'ptrpt_value' ],
-			[ 'ptrpt_page_id' => $this->mPageId, 'ptrpt_tag_id = ptrt_tag_id' ],
+			[ 'ptrpt_page_id' => $this->pageIds, 'ptrpt_tag_id = ptrt_tag_id' ],
 			__METHOD__
 		);
 		// data in $newData is used for update, initialize it with new metadata

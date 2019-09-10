@@ -850,7 +850,7 @@ class Hooks {
 			return;
 		}
 
-		if ( !ArticleMetadata::validatePageId(
+		if ( !ArticleMetadata::validatePageIds(
 			[ $rc->getTitle()->getArticleID() ], DB_REPLICA
 		) ) {
 			return;

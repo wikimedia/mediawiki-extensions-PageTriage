@@ -89,10 +89,10 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 	 * @depends testGetValidTags
 	 *
 	 */
-	public function testValidatePageId() {
+	public function testValidatePageIds() {
 		$origPageId = array_merge( $this->pageId, [ 'cs', '99999999', 'abcde', '5ab', '200' ] );
 
-		$pageId = ArticleMetadata::validatePageId( $origPageId );
+		$pageId = ArticleMetadata::validatePageIds( $origPageId );
 
 		$this->assertEquals(
 			count( $origPageId ),

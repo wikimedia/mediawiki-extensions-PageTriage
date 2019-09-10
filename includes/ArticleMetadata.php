@@ -13,7 +13,7 @@ use Title;
  */
 class ArticleMetadata {
 	/** @var int[] List of page IDs */
-	protected $mPageId;
+	protected $pageIds;
 
 	/**
 	 * @var array Page IDs that are known to exist in the queue
@@ -21,15 +21,15 @@ class ArticleMetadata {
 	private static $cache = [];
 
 	/**
-	 * @param array $pageId list of page id
+	 * @param int[] $pageIds List of page IDs.
 	 * @param bool $validated whether the page ids have been validated
 	 * @param int $validateDb const DB_MASTER/DB_REPLICA
 	 */
-	public function __construct( array $pageId, $validated = true, $validateDb = DB_MASTER ) {
+	public function __construct( array $pageIds, $validated = true, $validateDb = DB_MASTER ) {
 		if ( $validated ) {
-			$this->mPageId = $pageId;
+			$this->pageIds = $pageIds;
 		} else {
-			$this->mPageId = self::validatePageId( $pageId, $validateDb );
+			$this->pageIds = self::validatePageIds( $pageIds, $validateDb );
 		}
 	}
 
@@ -39,11 +39,11 @@ class ArticleMetadata {
 	 * @return bool
 	 */
 	public function deleteMetadata() {
-		if ( $this->mPageId ) {
+		if ( $this->pageIds ) {
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->delete(
 				'pagetriage_page_tags',
-				[ 'ptrpt_page_id' => $this->mPageId ],
+				[ 'ptrpt_page_id' => $this->pageIds ],
 				__METHOD__
 			);
 			// also remove it from the cache
@@ -63,7 +63,7 @@ class ArticleMetadata {
 
 		$keyPrefix = $this->memcKeyPrefix();
 		if ( is_null( $pageId ) ) {
-			foreach ( $this->mPageId as $pageId ) {
+			foreach ( $this->pageIds as $pageId ) {
 				$cache->delete( $keyPrefix . '-' . $pageId );
 			}
 		} else {
@@ -95,7 +95,7 @@ class ArticleMetadata {
 
 		if ( is_null( $pageId ) ) {
 			$metaData = [];
-			foreach ( $this->mPageId as $pageId ) {
+			foreach ( $this->pageIds as $pageId ) {
 				$metaDataCache = $cache->get( $keyPrefix . '-' . $pageId );
 				if ( $metaDataCache !== false ) {
 					$metaData[$pageId] = $metaDataCache;
@@ -193,7 +193,7 @@ class ArticleMetadata {
 	 * @return array $metadata: key (page Ids) => value (metadata) pairs
 	 */
 	public function getMetadata() {
-		$articles = $this->mPageId;
+		$articles = $this->pageIds;
 		$metaData = $this->getMetadataFromCache();
 		$articles = self::getPagesWithoutMetadata( $articles, $metaData );
 
@@ -279,11 +279,11 @@ class ArticleMetadata {
 	/**
 	 * Typecast the value in page id array to int and verify that it's
 	 * in page triage queue
-	 * @param array $pageIds
+	 * @param int[] $pageIds List of page IDs.
 	 * @param int $validateDb const DB_MASTER/DB_REPLICA
 	 * @return array
 	 */
-	public static function validatePageId( array $pageIds, $validateDb = DB_MASTER ) {
+	public static function validatePageIds( array $pageIds, $validateDb = DB_MASTER ) {
 		$cleanUp = [];
 		foreach ( $pageIds as $key => $val ) {
 			$casted = (int)$val;

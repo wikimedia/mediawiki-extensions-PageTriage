@@ -20,7 +20,7 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 		if ( !$revision ) {
 			$this->dieWithError( [ 'apierror-nosuchrevid', $params['revid'] ] );
 		}
-		if ( !ArticleMetadata::validatePageId( [ $revision->getPageId() ] ) ) {
+		if ( !ArticleMetadata::validatePageIds( [ $revision->getPageId() ] ) ) {
 			$this->dieWithError( 'apierror-bad-pagetriage-page' );
 		}
 
