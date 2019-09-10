@@ -74,3 +74,8 @@ p#mwe-pt-toolbar-vertical {
 	font-weight: normal;
 	line-height: 1.5em;
 }
+
+/* Prevent notification badges from getting in the way of clicking on the toolbar icons. */
+.mwe-pt-toolbar-big .notification-badge {
+	pointer-events: none;
+}

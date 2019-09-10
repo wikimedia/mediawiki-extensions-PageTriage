@@ -58,8 +58,6 @@
 }
 
 .mwe-pt-talkpage-feedback-badge .notification-badge {
-	/* Prevent the badges from getting in the way of clicking on the toolbar icon. */
-	pointer-events: none;
 	/* Tweak the styles from oojs-ui.styles.icons-alerts for the display of the message icon. */
 	padding-left: 14px;
 	background-repeat: no-repeat;
