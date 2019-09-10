@@ -1,0 +1,7 @@
+{
+	"extends": "../../.eslintrc.json",
+	"globals": {
+		"mediaWiki": false,
+		"QUnit": false
+	}
+}

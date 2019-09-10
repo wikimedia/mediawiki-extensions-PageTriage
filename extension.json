@@ -577,8 +577,15 @@
 		"ext.pageTriage.externalDeletionTagsOptions": {
 			"class": "MediaWiki\\Extension\\PageTriage\\PageTriageExternalDeletionTagsOptions"
 		},
+		"ext.pageTriage.actionQueue": {
+			"scripts": [ "ext.pageTriage.actionQueue/ext.pageTriage.actionQueue.js" ],
+			"dependencies": [ "ext.pageTriage.init" ]
+		},
 		"ext.pageTriage.toolbarStartup": {
-			"scripts": "ext.pageTriage.toolbarStartup/ext.pageTriage.toolbarStartup.js"
+			"scripts": [
+				"ext.pageTriage.toolbarStartup/ext.pageTriage.toolbarStartup.js"
+			],
+			"dependencies": [ "ext.pageTriage.actionQueue" ]
 		},
 		"ext.pageTriage.article": {
 			"styles": "ext.pageTriage.article/ext.pageTriage.article.css",
@@ -619,7 +626,8 @@
 		"ORESCheckModels": "MediaWiki\\Extension\\PageTriage\\Hooks::onORESCheckModels",
 		"ListDefinedTags": "MediaWiki\\Extension\\PageTriage\\Hooks::onDefinedTags",
 		"ChangeTagsListActive": "MediaWiki\\Extension\\PageTriage\\Hooks::onDefinedTags",
-		"ChangeTagsAllowedAdd": "MediaWiki\\Extension\\PageTriage\\Hooks::onDefinedTags"
+		"ChangeTagsAllowedAdd": "MediaWiki\\Extension\\PageTriage\\Hooks::onDefinedTags",
+		"ResourceLoaderTestModules": "MediaWiki\\Extension\\PageTriage\\Hooks::onResourceLoaderTestModules"
 	},
 	"config": {
 		"PageTriageEnableOresFilters": {
