@@ -9,7 +9,8 @@
 			"Woytecr",
 			"Fitoschido",
 			"Stojex",
-			"Railfail536"
+			"Railfail536",
+			"Rail"
 		]
 	},
 	"pagetriage-desc": "Ułatwia przeglądanie i zatwierdzanie nowych stron",
@@ -139,5 +140,9 @@
 	"echo-pref-tooltip-page-review": "Powiadom mnie, kiedy ktoś przejrzy stronę przeze mnie utworzoną.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Strona przejrzana|Strony przejrzane}}",
 	"apihelp-pagetriagelist-param-limit": "Maksymalna liczba zwracanych wyników.",
+	"apihelp-pagetriagelist-param-date_range_from": "Pokaż tylko strony utworzone tego dnia i później.",
+	"apihelp-pagetriagelist-param-date_range_to": "Pokaż tylko strony utworzone tego dnia i wcześniej.",
+	"apihelp-pagetriagestats-param-date_range_from": "Uwzględnij tylko strony utworzone tego dnia i później.",
+	"apihelp-pagetriagestats-param-date_range_to": "Uwzględnij tylko strony utworzone tego dnia i wcześniej.",
 	"apihelp-pagetriagetagging-description": "Dodaj znaczniki do artykułu."
 }

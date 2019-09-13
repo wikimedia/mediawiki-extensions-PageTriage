@@ -14,6 +14,12 @@
 	"pagetriage-byline": "Ccrejate da $1 ($2$3$4)",
 	"pagetriage-author-blocked": "Bloccate",
 	"pagetriage-author-bot": "Bot",
+	"pagetriage-filter-date-range-heading": "Indervalle de date:",
+	"pagetriage-filter-date-range-format-input-field": "yyyy-MM-dd",
+	"pagetriage-filter-date-range-format-placeholder": "mm/dd/yyyy",
+	"pagetriage-filter-date-range-format-showing": "MM/dd/yyyy",
+	"pagetriage-filter-date-range-from": "Da",
+	"pagetriage-filter-date-range-to": "A",
 	"pagetriage-filter-redirects": "Redirezionaminde (none RfD)",
 	"pagetriage-filter-article": "Vôsce",
 	"pagetriage-filter-username": "Nome utende",
@@ -21,6 +27,9 @@
 	"pagetriage-filter-ns-all": "Tutte",
 	"pagetriage-more": "De cchiù",
 	"pagetriage-filter-stat-all": "Tutte",
+	"pagetriage-filter-stat-date_range": "Indervalle de date",
+	"pagetriage-filter-stat-date_range_from": "Da: $1",
+	"pagetriage-filter-stat-date_range_to": "A: $1",
 	"pagetriage-filter-stat-bots": "Da bot",
 	"pagetriage-filter-stat-redirects": "Redirezionaminde",
 	"pagetriage-filter-stat-no-categories": "Nisciuna categorije",
@@ -49,5 +58,8 @@
 	"pagetriage-info-timestamp-date-format": "d MMMM yyyy",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
 	"pagetriage-toolbar-close": "Achiude",
-	"pagetriage-toolbar-minimize": "Minimizze"
+	"pagetriage-toolbar-minimize": "Minimizze",
+	"apihelp-pagetriagelist-param-date_range_from": "Fà 'ndrucà sulamende le pàggene ccrejate jndr'à sta date o apprisse.",
+	"apihelp-pagetriagelist-param-date_range_to": "Fà 'ndrucà sulamende le pàggene ccrejate jndr'à sta date o apprime.",
+	"apihelp-pagetriagestats-param-date_range_from": "'Nglude sulamende le pàggene ccrejate jndr'à sta date o apprisse."
 }
