@@ -1,7 +1,7 @@
 ( function ( mw ) {
 	QUnit.module( 'ext.pageTriage.actionQueue' );
 
-	QUnit.test( 'Testing the queue', function ( assert ) {
+	QUnit.test( 'Testing the queue: synchronous and asynchronous methods', function ( assert ) {
 		var test = {},
 			pushToTest = function ( action, text, data ) {
 				test[ action ] = test[ action ] || [];
@@ -14,6 +14,7 @@
 			done1 = assert.async(),
 			done2 = assert.async();
 
+		mw.pageTriage.actionQueue.reset();
 		mw.pageTriage.actionQueue.add( 'action1', function ( data ) {
 			pushToTest( 'action1', 'synchronous', data );
 			return true;
@@ -81,6 +82,172 @@
 					'Methods in "action2" ran successfully.'
 				);
 				done2();
+			} );
+	} );
+
+	QUnit.test( 'Testing the queue: run() with multiple actions', function ( assert ) {
+		var test = [],
+			pushToTest = function ( action, text, data ) {
+				test.push( {
+					action: action,
+					text: text,
+					data: data
+				} );
+			},
+			done = assert.async();
+
+		mw.pageTriage.actionQueue.reset();
+		// Add multiple methods to action1
+		mw.pageTriage.actionQueue.add( 'action1', function ( data ) {
+			pushToTest( 'action1', 'foo', data );
+		} );
+		mw.pageTriage.actionQueue.add( 'action1', function ( data ) {
+			pushToTest( 'action1', 'bar', data );
+		} );
+		mw.pageTriage.actionQueue.add( 'action1', function ( data ) {
+			pushToTest( 'action1', 'baz', data );
+		} );
+		mw.pageTriage.actionQueue.add( 'action1', function ( data ) {
+			var $deferred = $.Deferred();
+
+			setTimeout( function () {
+				pushToTest( 'action1', 'slow asynchronous success', data );
+				$deferred.resolve();
+			}, 500 );
+
+			return $deferred.promise();
+		} );
+		// Add multiple methods to action2
+		mw.pageTriage.actionQueue.add( 'action2', function ( data ) {
+			pushToTest( 'action2', 'foo2', data );
+		} );
+		mw.pageTriage.actionQueue.add( 'action2', function ( data ) {
+			pushToTest( 'action2', 'bar2', data );
+		} );
+		mw.pageTriage.actionQueue.add( 'action2', function ( data ) {
+			pushToTest( 'action2', 'baz2', data );
+		} );
+		mw.pageTriage.actionQueue.add( 'action2', function ( data ) {
+			var $deferred = $.Deferred();
+
+			setTimeout( function () {
+				pushToTest( 'action2', 'quick asynchronous failure', data );
+				$deferred.reject();
+			}, 100 );
+
+			return $deferred.promise();
+		} );
+
+		// Run both actions at once
+		mw.pageTriage.actionQueue.run( [ 'action1', 'action2' ], { param1: 'something', param2: 'else' } )
+			.then( function () {
+				// Check that all functions from both action queues ran
+				assert.deepEqual(
+					test,
+					[
+						{ action: 'action1', text: 'foo', data: { param1: 'something', param2: 'else' } },
+						{ action: 'action1', text: 'bar', data: { param1: 'something', param2: 'else' } },
+						{ action: 'action1', text: 'baz', data: { param1: 'something', param2: 'else' } },
+
+						{ action: 'action2', text: 'foo2', data: { param1: 'something', param2: 'else' } },
+						{ action: 'action2', text: 'bar2', data: { param1: 'something', param2: 'else' } },
+						{ action: 'action2', text: 'baz2', data: { param1: 'something', param2: 'else' } },
+						{ action: 'action2', text: 'quick asynchronous failure', data: { param1: 'something', param2: 'else' } },
+
+						{ action: 'action1', text: 'slow asynchronous success', data: { param1: 'something', param2: 'else' } }
+					],
+					'Methods from both queues ran successfully.'
+				);
+				done();
+			} );
+	} );
+
+	QUnit.test( 'Testing the queue: run() with actions with action-specific data', function ( assert ) {
+		var test = [],
+			pushToTest = function ( action, text, data ) {
+				test.push( {
+					action: action,
+					text: text,
+					data: data
+				} );
+			},
+			done = assert.async();
+
+		mw.pageTriage.actionQueue.reset();
+		// Add multiple methods to action1
+		mw.pageTriage.actionQueue.add( 'action1', function ( data ) {
+			pushToTest( 'action1', 'foo', data );
+		} );
+		mw.pageTriage.actionQueue.add( 'action1', function ( data ) {
+			pushToTest( 'action1', 'bar', data );
+		} );
+		mw.pageTriage.actionQueue.add( 'action1', function ( data ) {
+			pushToTest( 'action1', 'baz', data );
+		} );
+		mw.pageTriage.actionQueue.add( 'action1', function ( data ) {
+			var $deferred = $.Deferred();
+
+			setTimeout( function () {
+				pushToTest( 'action1', 'slow asynchronous success', data );
+				$deferred.resolve();
+			}, 500 );
+
+			return $deferred.promise();
+		} );
+		// Add multiple methods to action2
+		mw.pageTriage.actionQueue.add( 'action2', function ( data ) {
+			pushToTest( 'action2', 'foo2', data );
+		} );
+		mw.pageTriage.actionQueue.add( 'action2', function ( data ) {
+			pushToTest( 'action2', 'bar2', data );
+		} );
+		mw.pageTriage.actionQueue.add( 'action2', function ( data ) {
+			pushToTest( 'action2', 'baz2', data );
+		} );
+		mw.pageTriage.actionQueue.add( 'action2', function ( data ) {
+			var $deferred = $.Deferred();
+
+			setTimeout( function () {
+				pushToTest( 'action2', 'quick asynchronous failure', data );
+				$deferred.reject();
+			}, 100 );
+
+			return $deferred.promise();
+		} );
+
+		// Run both actions at once
+		mw.pageTriage.actionQueue.run(
+			{
+				action1: {
+					actionSpecific: 'onlyAction1GetsThis'
+				},
+				action2: {
+					somethingElse: true,
+					andAnother: 'somethingAction2Does'
+				}
+			},
+			// General data sent to all
+			{ param1: 'allActions', param2: 'getThese' }
+		)
+			.then( function () {
+				// Check that all functions from both action queues ran
+				assert.deepEqual(
+					test,
+					[
+						{ action: 'action1', text: 'foo', data: { param1: 'allActions', param2: 'getThese', actionSpecific: 'onlyAction1GetsThis' } },
+						{ action: 'action1', text: 'bar', data: { param1: 'allActions', param2: 'getThese', actionSpecific: 'onlyAction1GetsThis' } },
+						{ action: 'action1', text: 'baz', data: { param1: 'allActions', param2: 'getThese', actionSpecific: 'onlyAction1GetsThis' } },
+
+						{ action: 'action2', text: 'foo2', data: { param1: 'allActions', param2: 'getThese', somethingElse: true, andAnother: 'somethingAction2Does' } },
+						{ action: 'action2', text: 'bar2', data: { param1: 'allActions', param2: 'getThese', somethingElse: true, andAnother: 'somethingAction2Does' } },
+						{ action: 'action2', text: 'baz2', data: { param1: 'allActions', param2: 'getThese', somethingElse: true, andAnother: 'somethingAction2Does' } },
+						{ action: 'action2', text: 'quick asynchronous failure', data: { param1: 'allActions', param2: 'getThese', somethingElse: true, andAnother: 'somethingAction2Does' } },
+
+						{ action: 'action1', text: 'slow asynchronous success', data: { param1: 'allActions', param2: 'getThese', actionSpecific: 'onlyAction1GetsThis' } }
+					],
+					'Methods from both queues ran successfully.'
+				);
+				done();
 			} );
 	} );
 }( mediaWiki ) );
