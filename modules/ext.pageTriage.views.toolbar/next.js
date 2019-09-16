@@ -12,7 +12,7 @@ module.exports = ToolView.extend( {
 	icon: 'icon_skip.png', // the default icon
 	tooltip: 'pagetriage-next-tooltip',
 
-	apiParams: nextArticles.apiParams,
+	apiParams: nextArticles.getApiParams(),
 
 	initialize: function ( options ) {
 		this.eventBus = options.eventBus;
