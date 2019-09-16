@@ -91,7 +91,7 @@
 	"pagetriage-filter-date-range-format-input-field": "Date format specifier for page filter date range input field",
 	"pagetriage-filter-date-range-format-placeholder": "Date format specifier for page filter date range placeholder",
 	"pagetriage-filter-date-range-format-showing": "Date format specifier for page filter date range in showing area",
-	"pagetriage-filter-date-range-from": "Label for from date range filter field",
+	"pagetriage-filter-date-range-from": "Label for from date range filter field\n{{Identical|From}}",
 	"pagetriage-filter-date-range-to": "Label for to date range filter field",
 	"pagetriage-filter-show-heading": "Label for the state filter",
 	"pagetriage-filter-type-show-heading": "Label for the type filter",

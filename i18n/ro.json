@@ -5,7 +5,8 @@
 			"Stelistcristi",
 			"Kyouko",
 			"Andrei Stroe",
-			"Strainu"
+			"Strainu",
+			"GabiBil"
 		]
 	},
 	"pagetriage-please-wait": "Vă rugăm să așteptați...",
@@ -20,6 +21,11 @@
 	"pagetriage-sort-by": "Sortare după:",
 	"pagetriage-newest": "Cele mai recente",
 	"pagetriage-oldest": "Cele mai vechi",
+	"pagetriage-filter-date-range-format-input-field": "aaaa-LL-zz",
+	"pagetriage-filter-date-range-format-placeholder": "ll/zz/aaaa",
+	"pagetriage-filter-date-range-format-showing": "LL/zz/aaaa",
+	"pagetriage-filter-date-range-from": "De la",
+	"pagetriage-filter-date-range-to": "Către",
 	"pagetriage-filter-redirects": "Redirecționări",
 	"pagetriage-filter-article": "Articol",
 	"pagetriage-filter-username": "Nume de utilizator",
@@ -28,6 +34,7 @@
 	"pagetriage-filter-ns-all": "Toate",
 	"pagetriage-more": "Mai multe",
 	"pagetriage-filter-stat-all": "Toate",
+	"pagetriage-filter-stat-date_range_from": "De la: $1",
 	"pagetriage-filter-stat-bots": "De roboți",
 	"pagetriage-filter-stat-redirects": "Redirecționări",
 	"pagetriage-filter-stat-username": "După utilizator: $1",
