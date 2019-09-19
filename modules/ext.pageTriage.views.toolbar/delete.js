@@ -1,6 +1,9 @@
 // view for display deletion wizard
 
-var DateWrapper, pageName, specialDeletionTagging, ToolView;
+var DateWrapper, pageName, specialDeletionTagging, ToolView,
+	// Used to keep track of what actions we want to invoke, and with what data.
+	actionQueue = {};
+
 // date wrapper that generates a new Date() object
 DateWrapper = function DateWrapper() {
 	this.date = new Date();
@@ -161,7 +164,7 @@ module.exports = ToolView.extend( {
 
 	/**
 	 * Set up deletion tags based on namespace, for main namespace, show 'redirects
-	 * for discussion' or 'articles for deletion' for xfd depending on whehter the
+	 * for discussion' or 'articles for deletion' for xfd depending on whether the
 	 * article is a redirect
 	 */
 	setupDeletionTags: function () {
@@ -246,7 +249,7 @@ module.exports = ToolView.extend( {
 	},
 
 	/**
-	 * Build deletion tag check/raido and label
+	 * Build deletion tag check/radio and label
 	 *
 	 * @param {string} key
 	 * @param {Object} tagSet
@@ -602,7 +605,9 @@ module.exports = ToolView.extend( {
 	 */
 	submit: function () {
 		var key, param,
-			that = this;
+			that = this,
+			// reviewed value must be either '0' or '1'
+			markAsReviewed = this.deletionTagsOptions[ this.selectedCat ].reviewed || '0';
 
 		// no tag to submit
 		if ( this.objectPropCount( this.selectedTag ) === 0 ) {
@@ -637,8 +642,7 @@ module.exports = ToolView.extend( {
 		new mw.Api().postWithToken( 'csrf', {
 			action: 'pagetriageaction',
 			pageid: mw.config.get( 'wgArticleId' ),
-			// reviewed value must be either '0' or '1'
-			reviewed: that.deletionTagsOptions[ that.selectedCat ].reviewed || '0',
+			reviewed: markAsReviewed,
 			skipnotif: '1'
 		} )
 			.done( function () {
@@ -658,6 +662,18 @@ module.exports = ToolView.extend( {
 					}
 				}
 				that.tagPage();
+
+				// Queue up the necessary actions. These will get ran just before we refresh the page.
+				if ( markAsReviewed === '1' ) {
+					// Page was also marked as reviewed, so we want to fire the action for that, too.
+					// The 'reviewed' and 'reviewer' attributes on the model are not yet populated,
+					// so we have to pass those in manually.
+					actionQueue.mark = {
+						reviewed: true,
+						reviewer: mw.config.get( 'wgUserName' )
+					};
+				}
+				actionQueue.delete = { tags: that.selectedTag };
 			} )
 			.fail( function ( errorCode, data ) {
 				that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
@@ -788,8 +804,7 @@ module.exports = ToolView.extend( {
 			messagePosterPromise.then( function ( messagePoster ) {
 				return messagePoster.post( topicTitle, template, { tags: 'pagetriage' } );
 			} ).then( function () {
-				that.reset();
-				window.location.reload( true );
+				mw.pageTriage.actionQueue.runAndRefresh( actionQueue, that.getDataForActionQueue() );
 			}, function () {
 				that.handleError( mw.msg( 'pagetriage-del-talk-page-notify-error' ) );
 			} );

@@ -170,6 +170,9 @@ module.exports = ToolView.extend( {
 			that.render();
 		} );
 
+		// Fire action in case other scripts want to add to the flyout.
+		mw.pageTriage.actionQueue.run( 'articleinfo', this.getDataForActionQueue() );
+
 		return this;
 	},
 

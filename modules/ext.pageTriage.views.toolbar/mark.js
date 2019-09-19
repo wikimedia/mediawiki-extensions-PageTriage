@@ -41,22 +41,34 @@ module.exports = ToolView.extend( {
 
 	submit: function ( action ) {
 		var that = this,
-			note = '';
+			note = '',
+			reviewed = action === 'reviewed';
 
 		new mw.Api().postWithToken( 'csrf', {
 			action: 'pagetriageaction',
 			pageid: mw.config.get( 'wgArticleId' ),
-			reviewed: ( action === 'reviewed' ) ? '1' : '0'
+			reviewed: reviewed ? '1' : '0'
 		} )
 			.done( function () {
+				// Data to be sent back to consumers of the actionQueue API.
+				var actionData = that.getDataForActionQueue( {
+					reviewed: reviewed,
+					reviewer: mw.config.get( 'wgUserName' )
+				} );
+
+				if ( note ) {
+					actionData.note = note;
+				}
+
 				// a note needs to be posted to article talk page when an article is marked as
 				// unreviewed and it meets the use case set in talkPageNote
 				if ( action === 'unreviewed' ) {
 					that.talkPageNote( note, action );
 				} else {
 					that.hideFlyout( action );
-					return;
 				}
+
+				mw.pageTriage.actionQueue.run( 'mark', actionData );
 			} )
 			.fail( function ( errorCode, data ) {
 				that.showMarkError( action, data.error.info || mw.msg( 'unknown-error' ) );
