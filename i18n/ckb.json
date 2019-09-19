@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sarchia"
+			"Sarchia",
+			"Muhammed taha"
 		]
 	},
 	"pagetriage-filter-show-heading": "نیشاندان:",
-	"pagetriage-filter-stat-bots": "بۆتەکان",
+	"pagetriage-filter-stat-bots": "لەلایەن بۆتەکان",
 	"pagetriage-info-problem-no-references-desc": "ئەم پەڕەیە ئاماژەی بە ھیچ سەرچاوەیەک نەداوە."
 }

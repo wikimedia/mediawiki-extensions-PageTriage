@@ -1,9 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Karthi.dr"
+			"Karthi.dr",
+			"Nilesh shukla"
 		]
 	},
+	"pagetriage-filter-date-range-heading": "तिथि सीमा:",
+	"pagetriage-filter-date-range-to": "से",
+	"pagetriage-filter-stat-date_range": "तिथि सीमा",
 	"pagetriage-tags-param-free-yes-label": "हाँ",
-	"pagetriage-tags-param-free-no-label": "नहीं"
+	"pagetriage-tags-param-free-no-label": "नहीं",
+	"pagetriage-enqueue-title": "नए पृष्ठ फ़ीड में जोड़ें",
+	"pagetriage-enqueue-confirmation": "क्या आप वाकई इस पृष्ठ को नए पृष्ठ फ़ीड में जोड़ना चाहते हैं?"
 }

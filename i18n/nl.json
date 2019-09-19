@@ -17,7 +17,8 @@
 			"Optilete",
 			"Jeroen N",
 			"Xbaked potatox",
-			"Rots61"
+			"Rots61",
+			"Elroy"
 		]
 	},
 	"pagetriage": "Paginacontrole",
@@ -60,6 +61,7 @@
 	"pagetriage-newest": "Nieuwste",
 	"pagetriage-oldest": "Oudste",
 	"pagetriage-triage": "Controleren",
+	"pagetriage-filter-date-range-to": "Tot",
 	"pagetriage-filter-show-heading": "Weergeven:",
 	"pagetriage-filter-reviewed-edits": "Gecontroleerde pagina's",
 	"pagetriage-filter-unreviewed-edits": "Ongecontroleerde pagina's",
