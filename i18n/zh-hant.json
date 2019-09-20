@@ -7,7 +7,8 @@
 			"Simon Shek",
 			"LNDDYL",
 			"아라",
-			"Kly"
+			"Kly",
+			"Winston Sung"
 		]
 	},
 	"pagetriage": "頁面分檢器",
@@ -71,6 +72,7 @@
 	"pagetriage-afc-newest-declined": "拒絕日期（最新）",
 	"pagetriage-afc-oldest-declined": "拒絕日期（最舊）",
 	"pagetriage-triage": "檢閱",
+	"pagetriage-filter-date-range-heading": "日期範圍：",
 	"pagetriage-filter-show-heading": "狀況：",
 	"pagetriage-filter-type-show-heading": "類型：",
 	"pagetriage-filter-reviewed-edits": "已檢閱頁面",
@@ -103,6 +105,7 @@
 	"pagetriage-filter-stat-state": "狀態",
 	"pagetriage-filter-stat-type": "類型",
 	"pagetriage-filter-stat-all": "全部",
+	"pagetriage-filter-stat-date_range": "日期範圍",
 	"pagetriage-filter-stat-reviewed": "已檢閱",
 	"pagetriage-filter-stat-unreviewed": "未巡查",
 	"pagetriage-filter-stat-bots": "由機器人",

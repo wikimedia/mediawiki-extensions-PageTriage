@@ -23,6 +23,8 @@
 	"pagetriage-newest": "အသစ်ဆုံး",
 	"pagetriage-oldest": "အဟောင်းဆုံး",
 	"pagetriage-triage": "ပြန်လည်ဆန်းစစ်",
+	"pagetriage-filter-date-range-from": "မှ",
+	"pagetriage-filter-date-range-to": "သို့",
 	"pagetriage-filter-redirects": "ပြန်ညွှန်းများ (RfD မဟုတ်)",
 	"pagetriage-filter-article": "ဆောင်းပါး",
 	"pagetriage-filter-username": "အသုံးပြုသူအမည်",
