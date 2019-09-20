@@ -894,7 +894,7 @@ class Hooks {
 				'tests/qunit/test_ext.pageTriage.actionQueue.js'
 			],
 			'dependencies' => [
-				'ext.pageTriage.actionQueue'
+				'ext.pageTriage.toolbarStartup'
 			],
 			'localBasePath' => dirname( __DIR__ ),
 			'remoteExtPath' => 'PageTriage',
