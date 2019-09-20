@@ -623,6 +623,16 @@
 		"localBasePath": "modules",
 		"remoteExtPath": "PageTriage/modules"
 	},
+	"QUnitTestModule": {
+		"localBasePath": "tests/qunit",
+		"remoteExtPath": "PageTriage/tests/qunit",
+		"scripts": [
+			"test_ext.pageTriage.actionQueue.js"
+		],
+		"dependencies": [
+			"ext.pageTriage.toolbarStartup"
+		]
+	},
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\PageTriage\\Hooks::onLoadExtensionSchemaUpdates",
 		"TitleMoveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onTitleMoveComplete",
@@ -643,8 +653,7 @@
 		"ORESCheckModels": "MediaWiki\\Extension\\PageTriage\\Hooks::onORESCheckModels",
 		"ListDefinedTags": "MediaWiki\\Extension\\PageTriage\\Hooks::onDefinedTags",
 		"ChangeTagsListActive": "MediaWiki\\Extension\\PageTriage\\Hooks::onDefinedTags",
-		"ChangeTagsAllowedAdd": "MediaWiki\\Extension\\PageTriage\\Hooks::onDefinedTags",
-		"ResourceLoaderTestModules": "MediaWiki\\Extension\\PageTriage\\Hooks::onResourceLoaderTestModules"
+		"ChangeTagsAllowedAdd": "MediaWiki\\Extension\\PageTriage\\Hooks::onDefinedTags"
 	},
 	"config": {
 		"PageTriageEnableOresFilters": {

@@ -877,28 +877,4 @@ class Hooks {
 	public static function onDefinedTags( &$tags ) {
 		$tags[] = 'pagetriage';
 	}
-
-	/**
-	 * ResourceLoaderTestModules hook handler
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ResourceLoaderTestModules
-	 *
-	 * @param array &$testModules
-	 * @param ResourceLoader $resourceLoader
-	 * @return bool
-	 */
-	public static function onResourceLoaderTestModules( array &$testModules,
-		ResourceLoader $resourceLoader
-	) {
-		$testModules['qunit']['ext.PageTriage.tests'] = [
-			'scripts' => [
-				'tests/qunit/test_ext.pageTriage.actionQueue.js'
-			],
-			'dependencies' => [
-				'ext.pageTriage.toolbarStartup'
-			],
-			'localBasePath' => dirname( __DIR__ ),
-			'remoteExtPath' => 'PageTriage',
-		];
-		return true;
-	}
 }
