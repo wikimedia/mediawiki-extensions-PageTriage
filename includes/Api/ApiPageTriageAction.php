@@ -91,6 +91,7 @@ class ApiPageTriageAction extends ApiBase {
 		} );
 
 		$this->logAction( $article, 'enqueue', $note );
+		$this->logAction( $article, 'unreviewed', $note );
 	}
 
 	/**
