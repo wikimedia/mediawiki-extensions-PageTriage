@@ -62,7 +62,7 @@ ToolbarView = Backbone.View.extend( {
 		// delete
 		if ( this.isFlyoutEnabled( 'delete' ) ) {
 			DeleteView = require( './delete.js' );
-			tools.push( new DeleteView( { eventBus: eventBus, model: article, moudleConfig: modules.delete } ) );
+			tools.push( new DeleteView( { eventBus: eventBus, model: article, moduleConfig: modules.delete } ) );
 		}
 
 		// next article, should be always on
