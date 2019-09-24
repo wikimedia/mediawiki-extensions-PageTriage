@@ -5,6 +5,7 @@ var ToolView = require( './ToolView.js' ),
 module.exports = ToolView.extend( {
 	id: 'mwe-pt-mark',
 	icon: 'icon_mark_reviewed.png', // the default icon
+	renderWasBound: false,
 	title: mw.msg( 'pagetriage-mark-as-reviewed' ),
 	tooltip: '',
 	template: mw.template.get( 'ext.pageTriage.views.toolbar', 'mark.underscore' ),
@@ -262,12 +263,13 @@ module.exports = ToolView.extend( {
 			} );
 
 		// bind down here so it doesn't happen before the first render
-		this.model.unbind( 'change:patrol_status', function () {
-			that.render();
-		} );
-		this.model.bind( 'change:patrol_status', function () {
-			that.render();
-		} );
+		// Only bind this once
+		if ( !this.renderWasBound ) {
+			this.model.bind( 'change:patrol_status', function () {
+				that.render();
+			} );
+			this.renderWasBound = true;
+		}
 	}
 
 } );
