@@ -215,6 +215,19 @@
 				talkpagenotiftpl: 'Nothanks-sd-NPF'
 			},
 
+			dbg13: {
+				label: mw.msg( 'pagetriage-del-tags-dbg13-label' ),
+				tag: 'speedy deletion-abandoned draft', // redirect to db-g13
+				code: 'G13',
+				desc: mw.msg( 'pagetriage-del-tags-dbg13-desc' ),
+				params: {
+					url: $.extend( true, {}, param.url )
+				},
+				anchor: 'afc',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
+				talkpagenotiftpl: 'Afc-warn-NPF'
+			},
+
 			dbu2: {
 				label: mw.msg( 'pagetriage-del-tags-dbu2-label' ),
 				tag: 'speedy deletion-nonexistent user', // redirect to db-u2
@@ -235,6 +248,17 @@
 				anchor: 'fairusegallery',
 				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Db-gallery-notice-NPF'
+			},
+
+			dbu5: {
+				label: mw.msg( 'pagetriage-del-tags-dbu5-label' ),
+				tag: 'speedy deletion-web host', // redirect to db-u5
+				code: 'U5',
+				desc: mw.msg( 'pagetriage-del-tags-dbu5-desc' ),
+				params: {},
+				anchor: 'notwebhost',
+				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
+				talkpagenotiftpl: 'Db-webhost-notice-NPF'
 			},
 
 			prod: {
@@ -359,13 +383,15 @@
 				// do NOT mark page as reviewed when this deletion tag option is selected
 				reviewed: '0',
 				tags: {
-					dbg11: $.extend( true, {}, tags.dbg11 ),
 					dbu2: $.extend( true, {}, tags.dbu2 ),
 					dbu3: $.extend( true, {}, tags.dbu3 ),
+					dbu5: $.extend( true, {}, tags.dbu5 ),
 					dbg4: $.extend( true, {}, tags.dbg4 ),
+					dbg7: $.extend( true, {}, tags.dbg7 ),
 					dbg10: $.extend( true, {}, tags.dbg10 ),
+					dbg11: $.extend( true, {}, tags.dbg11 ),
 					dbg12: $.extend( true, {}, tags.dbg12 ),
-					dbg7: $.extend( true, {}, tags.dbg7 )
+					dbg13: $.extend( true, {}, tags.dbg13 )
 				}
 			},
 
