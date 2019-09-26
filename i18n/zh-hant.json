@@ -299,7 +299,7 @@
 	"apihelp-pagetriageaction-description": "標記條目為已檢閱或未檢閱。",
 	"apihelp-pagetriageaction-summary": "標記條目為已巡查或未巡查。",
 	"apihelp-pagetriageaction-param-pageid": "要標記為已檢閱或未檢閱的頁面。",
-	"apihelp-pagetriageaction-param-reviewed": "條目是否已巡查。",
+	"apihelp-pagetriageaction-param-reviewed": "頁面是否應被標記為已巡查。",
 	"apihelp-pagetriageaction-param-note": "巡查員對頁面創建者的個人提醒。",
 	"apihelp-pagetriageaction-param-skipnotif": "是否要略過通知。",
 	"apihelp-pagetriagelist-description": "取得建立頁面分檢器佇列的頁面 ID 清單。",

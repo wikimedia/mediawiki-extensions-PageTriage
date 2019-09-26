@@ -201,6 +201,7 @@
 	"pagetriage-del-tags-dbg11-label": "明显的广告宣传页面，或只有相关人物或团体的联系方法的页面",
 	"pagetriage-del-tags-dbg12-label": "未列明来源且语调负面的生者传记",
 	"pagetriage-del-tags-dbg12-desc": "包含不可靠的公有领域、合理使用或其他可兼容的自由许可协议的受版权保护材料的文本页面，且没有值得保留的非侵权内容。（G12）",
+	"pagetriage-del-tags-dbg13-label": "明显、拙劣的机器翻译",
 	"pagetriage-del-tags-dba1-label": "非常短，而且没有定义或内容",
 	"pagetriage-del-tags-dbg1-label": "没有实际内容的页面",
 	"pagetriage-del-tags-dba3-label": "复制自其他中文维基项目，或是与其他中文维基项目内容相同的文章",

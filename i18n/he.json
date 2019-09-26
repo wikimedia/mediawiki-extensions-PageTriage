@@ -12,7 +12,8 @@
 			"Fitoschido",
 			"Erelon",
 			"Steeve815",
-			"YaronSh"
+			"YaronSh",
+			"Falling star"
 		]
 	},
 	"pagetriage": "מיון דפים חדשים",
@@ -166,6 +167,7 @@
 	"pagetriage-del-tags-cat-prod-label": "הצעת מחיקה",
 	"pagetriage-del-tags-cat-prod-desc": "סימון הערך למחיקה בהנחה שאינו עומד בסטנדרטים.",
 	"pagetriage-del-tags-cat-discussion-desc": "לסמן את הדף הזה כדי לדון במחיקתו עם עורכים אחרים.",
+	"pagetriage-del-tags-dbg13-label": "ההגשות מטעם ה- AFC בוטלו",
 	"pagetriage-del-tags-dba1-label": "ללא תוכן",
 	"pagetriage-del-tags-dba3-label": "ללא תוכן",
 	"pagetriage-del-tags-dba3-desc": "כל ערך (שאינו דף פירושונים, הפניה או הפניה רכה) שמכיל רק קישורים חיצוניים, קטגוריות ופסקאות \"ראו גם\", ניסוח מחדש של הכותרת, ניסיונות לדבר עם האדם או הקבוצה בכותרת שלו, שאלה שהייתה צריכה להישאל בדלפק הייעוץ, הערות כמו הצ'אט, תבניות או תמונות.",

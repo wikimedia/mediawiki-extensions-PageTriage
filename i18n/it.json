@@ -11,7 +11,8 @@
 			"Nemo bis",
 			"Ricordisamoa",
 			"Selven",
-			"Annibale covini gerolamo"
+			"Annibale covini gerolamo",
+			"Sannita"
 		]
 	},
 	"pagetriage": "Triage pagina",
@@ -55,8 +56,8 @@
 	"pagetriage-oldest": "la più vecchia",
 	"pagetriage-triage": "Revisiona",
 	"pagetriage-filter-date-range-heading": "Intervallo di date:",
-	"pagetriage-filter-date-range-format-input-field": "dd/MM/yyyy",
-	"pagetriage-filter-date-range-format-placeholder": "dd/MM/yyyy",
+	"pagetriage-filter-date-range-format-input-field": "yyyy-MM-dd",
+	"pagetriage-filter-date-range-format-placeholder": "mm/dd/yyyy",
 	"pagetriage-filter-date-range-format-showing": "dd/MM/yyyy",
 	"pagetriage-filter-date-range-from": "Da",
 	"pagetriage-filter-date-range-to": "A",
