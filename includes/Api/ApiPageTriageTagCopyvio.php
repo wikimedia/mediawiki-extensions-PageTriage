@@ -40,9 +40,14 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 			$dbw->replace( 'pagetriage_page_tags', [ 'ptrpt_page_id', 'ptrpt_tag_id' ], $row );
 			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 			$this->logActivity( $revision );
+			$result = [ 'result' => 'success' ];
+		} else {
+			$result = [
+					'result' => 'done',
+					'pagetriage_unchanged_status' => $revision->getId(),
+				];
 		}
 
-		$result = [ 'result' => 'success' ];
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 

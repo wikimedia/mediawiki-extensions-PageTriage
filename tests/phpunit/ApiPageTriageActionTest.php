@@ -101,6 +101,51 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	/**
 	 * @depends testLogin
 	 */
+	public function testNoChangeReviewAction( $sessionArray ) {
+		$pageId = $this->makePage( 'Test ' );
+
+		list( $result ) = $this->doApiRequestWithToken(
+			[
+				'action' => 'pagetriageaction',
+				'pageid' => $pageId,
+				'reviewed' => '1',
+				'skipnotif' => '1'
+			],
+			$sessionArray['one'],
+			self::$users['one']->getUser()
+		);
+
+		$this->assertSame(
+			"success",
+			$result['pagetriageaction']['result'],
+			"First action should succeed"
+		);
+
+		list( $result ) = $this->doApiRequestWithToken(
+			[
+				'action' => 'pagetriageaction',
+				'pageid' => $pageId,
+				'reviewed' => '1',
+				'skipnotif' => '1'
+			],
+			$sessionArray['one'],
+			self::$users['one']->getUser()
+		);
+
+		$this->assertSame(
+			"done",
+			$result['pagetriageaction']['result'],
+			"second action should return 'done' rather than 'success'"
+		);
+		$this->assertSame(
+			$pageId,
+			$result['pagetriageaction']['pagetriage_unchanged_status']
+		);
+	}
+
+	/**
+	 * @depends testLogin
+	 */
 	public function testPermissionError( $sessionArray ) {
 		$pageId = $this->makePage( 'Test ' );
 

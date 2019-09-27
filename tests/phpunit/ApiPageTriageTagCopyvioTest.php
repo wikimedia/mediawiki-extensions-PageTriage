@@ -96,12 +96,12 @@ class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 		$this->assertEquals( $revId, $logevent['params']['revId'] );
 		$this->assertEquals( 'pagetriage-copyvio', $logevent['type'] );
 
-		// Should get success if posting a duplicate rev ID.
+		// Should get 'done' if posting a duplicate rev ID.
 		$request = $this->doApiRequestWithToken( [
 			'action' => 'pagetriagetagcopyvio',
 			'revid' => $revId,
 		] );
-		$this->assertEquals( 'success', $request[0]['pagetriagetagcopyvio']['result'] );
+		$this->assertEquals( 'done', $request[0]['pagetriagetagcopyvio']['result'] );
 
 		// But there should only be a single log entry.
 		$result = $this->getLogEventForTitle( (string)$title );
