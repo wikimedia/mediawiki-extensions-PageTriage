@@ -18,7 +18,8 @@
 			"94rain",
 			"神樂坂秀吉",
 			"Looong",
-			"予弦"
+			"予弦",
+			"Josephine W."
 		]
 	},
 	"pagetriage": "页面分配器",
@@ -216,6 +217,7 @@
 	"pagetriage-del-tags-dbu2-desc": "不存在用户的用户页（通过Special:Listusers检查），除了拥有编辑的匿名用户的用户页、出于修复拼写错误连入存在用户的用户页的重定向，以及刚刚被重命名的用户的前用户名（它应该被重定向至新用户名）。（U2）",
 	"pagetriage-del-tags-dbu3-label": "非自由图库",
 	"pagetriage-del-tags-dbu3-desc": "位于用户空间的画册，大部分或全部图像是“合理使用”或非自由版权的。维基百科的非自由内容方针禁止在用户空间使用非自由内容，即使这些内容是此用户上传的。使用位于公有领域或自由协议下的内容是可接受的。（U3）",
+	"pagetriage-del-tags-dbu5-desc": "公然误用维基百科为个人网页主机的用户主页。（U5）",
 	"pagetriage-del-tags-prod-notify-topic-title": "[[Wikipedia:Proposed deletion|提删]][[$1]]",
 	"pagetriage-del-tags-xfd-notify-topic-title": "有关[[$1]]的删除讨论",
 	"pagetriage-mark-mark-talk-page-notify-topic-title": "{{GENDER:|您}}开始的页面（$1）已被复核！",

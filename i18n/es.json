@@ -23,7 +23,8 @@
 			"Carlosmg.dg",
 			"Harvest",
 			"Anarhistička Maca",
-			"Johny Weissmuller Jr"
+			"Johny Weissmuller Jr",
+			"Madamebiblio"
 		]
 	},
 	"pagetriage": "Triaje de páginas",
@@ -101,6 +102,7 @@
 	"pagetriage-filter-stat-state": "Estado",
 	"pagetriage-filter-stat-type": "Tipo",
 	"pagetriage-filter-stat-all": "Todas",
+	"pagetriage-filter-stat-date_range_from": "Desde: $1",
 	"pagetriage-filter-stat-reviewed": "Revisada",
 	"pagetriage-filter-stat-unreviewed": "Sin revisar",
 	"pagetriage-filter-stat-bots": "Por bots",
