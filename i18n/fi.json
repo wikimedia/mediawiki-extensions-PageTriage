@@ -119,6 +119,7 @@
 	"pagetriage-tags-cat-writingstyle-label": "Kirjoitustyyli",
 	"pagetriage-tags-cat-moretags-label": "Muita merkkauksia",
 	"pagetriage-tags-cat-all-label": "Kaikki merkkaukset",
+	"pagetriage-tags-copypaste-label": "Kopioi ja liitä",
 	"pagetriage-tags-tooltip": "Lisää merkkauksia, joilla voidaan ilmoittaa sellaiset osa-alueet, joita voidaan parantaa tällä sivulla",
 	"pagetriage-del-tags-cat-csd-desc": "Merkitse tämä sivu välittömästi poistettavaksi, jos se täyttää jonkun alla olevista ehdoista.",
 	"pagetriage-del-tags-cat-prod-desc": "Merkitse tämä sivu poistettavaksi, jos on selkeästi vastoin yhteisön hyväksymiä sääntöjä.",
