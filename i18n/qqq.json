@@ -569,5 +569,6 @@
 	"apihelp-pagetriagetagging-param-note": "{{doc-apihelp-param|pagetriagetagging|note}}",
 	"apihelp-pagetriagetagging-param-taglist": "{{doc-apihelp-param|pagetriagetagging|taglist}}",
 	"apierror-bad-pagetriage-page": "{{doc-apierror}}",
+	"apierror-bad-pagetriage-enqueue-mainpage": "{{doc-apierror}}",
 	"apierror-pagetriage-missingtag": "{{doc-apierror}}"
 }

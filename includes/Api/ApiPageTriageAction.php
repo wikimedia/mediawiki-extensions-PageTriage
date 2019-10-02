@@ -75,6 +75,10 @@ class ApiPageTriageAction extends ApiBase {
 	 * @param string $note
 	 */
 	private function enqueue( Article $article, $note ) {
+		if ( $article->getTitle()->isMainPage() ) {
+			$this->dieWithError( 'apierror-bad-pagetriage-enqueue-mainpage' );
+		}
+
 		$pt = new PageTriage( $article->getId() );
 		$pt->addToPageTriageQueue();
 

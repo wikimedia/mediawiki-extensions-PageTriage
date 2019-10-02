@@ -552,5 +552,6 @@
 	"apihelp-pagetriagetagging-param-note": "Personal note to page creators from reviewers.",
 	"apihelp-pagetriagetagging-param-taglist": "Pipe-separated list of tags.",
 	"apierror-bad-pagetriage-page": "The page specified does not exist in pagetriage queue",
+	"apierror-bad-pagetriage-enqueue-mainpage": "The main page cannot be added to the pagetriage queue",
 	"apierror-pagetriage-missingtag": "Could not find a tag ID for the copyvio tag. Try running update.php."
 }
