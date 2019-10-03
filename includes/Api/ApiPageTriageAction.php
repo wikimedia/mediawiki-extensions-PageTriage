@@ -75,8 +75,12 @@ class ApiPageTriageAction extends ApiBase {
 	 * @param string $note
 	 */
 	private function enqueue( Article $article, $note ) {
-		if ( $article->getTitle()->isMainPage() ) {
+		$title = $article->getTitle();
+		if ( $title->isMainPage() ) {
 			$this->dieWithError( 'apierror-bad-pagetriage-enqueue-mainpage' );
+		}
+		if ( !in_array( $title->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
+			$this->dieWithError( 'apierror-bad-pagetriage-enqueue-invalidnamespace' );
 		}
 
 		$pt = new PageTriage( $article->getId() );
