@@ -545,5 +545,6 @@
 	"apihelp-pagetriagetagging-param-note": "Note personnelle des relecteurs aux créateurs de pages.",
 	"apihelp-pagetriagetagging-param-taglist": "Liste d’étiquettes séparée par des barres verticales.",
 	"apierror-bad-pagetriage-page": "La page spécifiée n’existe pas dans la file « pagetriage »",
+	"apierror-bad-pagetriage-enqueue-mainpage": "La page principale ne peut être ajoutée à la file pagetriage",
 	"apierror-pagetriage-missingtag": "Impossible de trouver un ID de balise pour la balise « copyvio ». Essayez de lancer <tt>update.php</tt>."
 }
