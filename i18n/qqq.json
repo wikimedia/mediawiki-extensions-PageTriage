@@ -570,5 +570,6 @@
 	"apihelp-pagetriagetagging-param-taglist": "{{doc-apihelp-param|pagetriagetagging|taglist}}",
 	"apierror-bad-pagetriage-page": "{{doc-apierror}}",
 	"apierror-bad-pagetriage-enqueue-mainpage": "{{doc-apierror}}",
+	"apierror-bad-pagetriage-enqueue-invalidnamespace": "{{doc-apierror}}",
 	"apierror-pagetriage-missingtag": "{{doc-apierror}}"
 }
