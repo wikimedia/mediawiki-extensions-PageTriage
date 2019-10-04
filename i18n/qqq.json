@@ -571,5 +571,6 @@
 	"apierror-bad-pagetriage-page": "{{doc-apierror}}",
 	"apierror-bad-pagetriage-enqueue-mainpage": "{{doc-apierror}}",
 	"apierror-bad-pagetriage-enqueue-invalidnamespace": "{{doc-apierror}}",
+	"apierror-bad-pagetriage-enqueue-alreadyqueued": "{{doc-apierror}}",
 	"apierror-pagetriage-missingtag": "{{doc-apierror}}"
 }

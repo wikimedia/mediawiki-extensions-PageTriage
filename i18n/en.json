@@ -554,5 +554,6 @@
 	"apierror-bad-pagetriage-page": "The page specified does not exist in pagetriage queue",
 	"apierror-bad-pagetriage-enqueue-mainpage": "The main page cannot be added to the pagetriage queue",
 	"apierror-bad-pagetriage-enqueue-invalidnamespace": "The page specified is in a namespace that does not have page triage enabled",
+	"apierror-bad-pagetriage-enqueue-alreadyqueued": "The page specified already exists in the pagetriage queue",
 	"apierror-pagetriage-missingtag": "Could not find a tag ID for the copyvio tag. Try running update.php."
 }

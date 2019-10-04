@@ -83,13 +83,18 @@ class ApiPageTriageAction extends ApiBase {
 			$this->dieWithError( 'apierror-bad-pagetriage-enqueue-invalidnamespace' );
 		}
 
-		$pt = new PageTriage( $article->getId() );
+		$articleId = $article->getId();
+		if ( ArticleMetadata::validatePageIds( [ $articleId ], DB_REPLICA ) ) {
+			$this->dieWithError( 'apierror-bad-pagetriage-enqueue-alreadyqueued' );
+		}
+
+		$pt = new PageTriage( $articleId );
 		$pt->addToPageTriageQueue();
 
-		DeferredUpdates::addCallableUpdate( function () use ( $article ) {
+		DeferredUpdates::addCallableUpdate( function () use ( $articleId ) {
 			// Validate the page ID from DB_MASTER, compile metadata from DB_MASTER and return.
 			$acp = ArticleCompileProcessor::newFromPageId(
-				[ $article->getId() ],
+				[ $articleId ],
 				false,
 				DB_MASTER
 			);
