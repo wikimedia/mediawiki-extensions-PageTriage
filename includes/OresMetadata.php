@@ -22,7 +22,6 @@ use ORES\Services\ORESServices;
 use ORES\Storage\ModelLookup;
 use ORES\Storage\ThresholdLookup;
 use Wikimedia\Rdbms\IResultWrapper;
-use Wikimedia\Rdbms\ResultWrapper;
 
 /**
  * Helper class to add metadata to articles in the list view of Special:NewPagesFeed.
@@ -197,7 +196,7 @@ class OresMetadata {
 	 * @param string $modelName
 	 * @param int[] $pageIds
 	 * @param array $extraConds
-	 * @return array|IResultWrapper|ResultWrapper
+	 * @return array|IResultWrapper
 	 */
 	private function getORESScores( $modelName, $pageIds, $extraConds = [] ) {
 		$dbr = wfGetDB( DB_REPLICA );
