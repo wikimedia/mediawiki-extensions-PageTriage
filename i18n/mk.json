@@ -547,5 +547,6 @@
 	"apihelp-pagetriagetagging-param-note": "Лична белешка за создавачите на страницата од проверувачите.",
 	"apihelp-pagetriagetagging-param-taglist": "Список на ознаки, одделени со исправена црта.",
 	"apierror-bad-pagetriage-page": "Укажаната страница не постои во редицата.",
+	"apierror-bad-pagetriage-enqueue-mainpage": "Главната страница не може да се стави во редицата",
 	"apierror-pagetriage-missingtag": "Не можев да ја најдам назнаката на ознаката за авторскоправни нарушувања. Обидете се со пуштање на update.php."
 }
