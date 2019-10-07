@@ -339,6 +339,7 @@
 						tag: 'afd',
 						prefix: 'Wikipedia:Articles for deletion',
 						discussion: true,
+						usesSubpages: true,
 						params: {
 							1: {
 								label: mw.msg( 'pagetriage-del-tags-param-discussion-label' ),
@@ -347,7 +348,7 @@
 								value: '',
 								skip: true // don't use this param in the main template
 							},
-							2: $.extend( true, {}, param.pagename )
+							2: $.extend( true, { skip: true }, param.pagename )
 						},
 						talkpagenotiftopictitle: 'pagetriage-del-tags-xfd-notify-topic-title',
 						talkpagenotiftpl: 'AfD-notice-NPF',
@@ -419,6 +420,7 @@
 						tag: 'mfd',
 						prefix: 'Wikipedia:Miscellany_for_deletion',
 						discussion: true,
+						usesSubpages: true,
 						params: {
 							1: {
 								label: mw.msg( 'pagetriage-del-tags-param-discussion-label' ),
