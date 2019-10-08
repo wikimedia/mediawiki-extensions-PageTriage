@@ -550,5 +550,7 @@
 	"apihelp-pagetriagetagging-param-taglist": "قائمة مفصولة بفواصل بالعلامات",
 	"apierror-bad-pagetriage-page": "الصفحة المحددة غير موجودة في قائمة انتظار فرز الصفحات",
 	"apierror-bad-pagetriage-enqueue-mainpage": "لا يمكن إضافة الصفحة الرئيسية إلى قائمة انتظار فرز الصفحات",
+	"apierror-bad-pagetriage-enqueue-invalidnamespace": "الصفحة المحددة موجودة في نطاق لم يتم تمكين فرز الصفحات به",
+	"apierror-bad-pagetriage-enqueue-alreadyqueued": "الصفحة المحددة موجودة بالفعل في قائمة انتظار فرز الصفحات",
 	"apierror-pagetriage-missingtag": "لا يمكن العثور على معرف وسم لوسم انتهاك حقوق الطبع والنشر; حاول تشغيل update.php."
 }

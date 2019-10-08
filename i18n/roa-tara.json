@@ -61,5 +61,7 @@
 	"pagetriage-toolbar-minimize": "Minimizze",
 	"apihelp-pagetriagelist-param-date_range_from": "Fà 'ndrucà sulamende le pàggene ccrejate jndr'à sta date o apprisse.",
 	"apihelp-pagetriagelist-param-date_range_to": "Fà 'ndrucà sulamende le pàggene ccrejate jndr'à sta date o apprime.",
-	"apihelp-pagetriagestats-param-date_range_from": "'Nglude sulamende le pàggene ccrejate jndr'à sta date o apprisse."
+	"apihelp-pagetriagestats-param-date_range_from": "'Nglude sulamende le pàggene ccrejate jndr'à sta date o apprisse.",
+	"apierror-bad-pagetriage-enqueue-invalidnamespace": "'A pàgene specificate jndr'à 'nu namespace non ge ave abbilitate 'u triage d'a pàgene",
+	"apierror-bad-pagetriage-enqueue-alreadyqueued": "'A pàgena specificate ggià esiste jndr'à code pagetriage"
 }

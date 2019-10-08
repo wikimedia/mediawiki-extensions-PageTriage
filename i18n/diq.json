@@ -60,5 +60,7 @@
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|vurnayış|vurnayışi}}",
 	"pagetriage-toolbar-close": "Kip ke",
 	"apihelp-pagetriagelist-param-recreated": "Tenya pelanê ke esteriyayê, benê cı ya zi nêbenê cı, inan mocneno.",
-	"apihelp-pagetriagestats-param-recreated": "Tenya pelanê ke esteriyayê, benê cı ya zi nêbenê cı, inan mocneno."
+	"apihelp-pagetriagestats-param-recreated": "Tenya pelanê ke esteriyayê, benê cı ya zi nêbenê cı, inan mocneno.",
+	"apierror-bad-pagetriage-enqueue-invalidnamespace": "Pela ke areze kerda, triyajê cı heruna nameyi de feal niyo",
+	"apierror-bad-pagetriage-enqueue-alreadyqueued": "Pela ke areze kerda, rêza triyajê pele de xora esta"
 }

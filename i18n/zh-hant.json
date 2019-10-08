@@ -400,5 +400,7 @@
 	"apihelp-pagetriagetagging-param-taglist": "豎號分隔的標籤清單。",
 	"apierror-bad-pagetriage-page": "指定的頁面不存在於頁面分檢器佇列",
 	"apierror-bad-pagetriage-enqueue-mainpage": "主頁面不能添加到 PageTriage 佇列",
+	"apierror-bad-pagetriage-enqueue-invalidnamespace": "所指定的頁面是在並沒有啟用頁面分檢的命名空間裡",
+	"apierror-bad-pagetriage-enqueue-alreadyqueued": "所指定的頁面已存在頁面分檢佇列裡",
 	"apierror-pagetriage-missingtag": "無法從侵犯版權標籤裡找出標籤 ID。請嘗試更新 update.php。"
 }

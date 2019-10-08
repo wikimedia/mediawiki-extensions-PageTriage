@@ -319,5 +319,6 @@
 	"apihelp-pagetriagestats-param-blocked_users": "Om endast sidor skapade av blockerade användare ska inkluderas.",
 	"apihelp-pagetriagestats-param-username": "Inkludera endast skapade sidor efter användarnamn.",
 	"apihelp-pagetriagestats-param-show_predicted_issues_vandalism": "Om förutspådda vandalismärenden ska inkluderas",
-	"apihelp-pagetriagestats-param-show_predicted_issues_none": "Om inga förutspådda ärenden ska inkluderas"
+	"apihelp-pagetriagestats-param-show_predicted_issues_none": "Om inga förutspådda ärenden ska inkluderas",
+	"apierror-bad-pagetriage-enqueue-alreadyqueued": "Den specificerade sidan finns redan i pagetriage-kön"
 }
