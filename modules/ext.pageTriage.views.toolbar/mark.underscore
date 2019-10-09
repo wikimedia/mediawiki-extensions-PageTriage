@@ -7,10 +7,20 @@
 	</div>
 	<div id="mwe-pt-review-note">
 		<hr>
-		<div id="mwe-pt-review-note-title"><%- mw.msg( "pagetriage-add-a-note-creator-required" ) %></div>
-		<textarea id="mwe-pt-review-note-input"><%- mw.msg( "pagetriage-message-for-creator-default-note", noteTarget ) %></textarea>
+		<div id="mwe-pt-review-note-title">
+			<% if( !hasPreviousReviewer ) { %>
+				<%- mw.msg( "pagetriage-add-a-note-creator-required" ) %>
+			<% } else { %>
+				<%- mw.message( "pagetriage-add-a-note-for-options-label" ) %>
+				<select id="mwe-pt-review-note-recipient">
+					<option value="reviewer"><%- mw.msg( "pagetriage-add-a-note-for-option-reviewer", previousReviewer ) %></option>
+					<option value="creator"><%- mw.msg( "pagetriage-add-a-note-for-option-creator", articleCreator ) %></option>
+				</select>
+			<% } %>
+		</div>
+		<textarea id="mwe-pt-review-note-input" placeholder="<%- mw.msg( 'pagetriage-message-for-creator-default-note', noteTarget ) %>"></textarea>
 		<div id="mwe-pt-send-message">
-			<button id="mwe-pt-send-message-button" class="ui-button-white"><%- mw.msg( "pagetriage-button-add-a-note-to-creator" ) %></button>
+			<button id="mwe-pt-send-message-button" class="ui-button-white"><%- mw.msg( "pagetriage-button-send-a-note" ) %></button>
 		</div>
 	</div>
 </div>
