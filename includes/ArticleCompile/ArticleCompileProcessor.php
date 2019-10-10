@@ -18,15 +18,16 @@ use WikiPage;
  */
 class ArticleCompileProcessor {
 	protected $component;
+	/** @var int[] Either DB_MASTER or DB_REPLICA */
 	protected $componentDb;
 	/** @var int[] List of page IDs */
 	protected $pageIds;
 	protected $metadata;
 	protected $defaultMode;
 	/** @var WikiPage[] */
-	protected $articles;
+	protected $articles = [];
 	/** @var LinksUpdate[] */
-	protected $linksUpdates;
+	protected $linksUpdates = [];
 
 	const SAVE_IMMEDIATE = 0;
 	const SAVE_DEFERRED = 1;
@@ -75,7 +76,6 @@ class ArticleCompileProcessor {
 
 		$this->metadata = array_fill_keys( $this->pageIds, [] );
 		$this->defaultMode = true;
-		$this->articles = [];
 	}
 
 	/**
@@ -109,7 +109,7 @@ class ArticleCompileProcessor {
 	}
 
 	public function registerLinksUpdate( LinksUpdate $linksUpdate ) {
-		$id = $linksUpdate->getTitle()->getArticleId();
+		$id = $linksUpdate->getTitle()->getArticleID();
 		if ( in_array( $id, $this->pageIds ) ) {
 			$this->linksUpdates[$id] = $linksUpdate;
 		}
@@ -259,6 +259,7 @@ class ArticleCompileProcessor {
 		foreach ( $this->component as $key => $val ) {
 			if ( $val === 'on' ) {
 				$compClass = 'MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompile' . $key;
+				/** @var ArticleCompileInterface $comp */
 				$comp = new $compClass( $this->pageIds, $this->componentDb[$key], $this->articles,
 					$this->linksUpdates
 				);

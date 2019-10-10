@@ -95,7 +95,7 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 
 		$alreadyCreated = false;
 		try {
-			list( $result, , $session ) = $this->doApiRequestWithToken(
+			list( $result, , ) = $this->doApiRequestWithToken(
 				$params,
 				$sessionArray['one'],
 				self::$users['one']->getUser()

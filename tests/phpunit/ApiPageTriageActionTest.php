@@ -87,7 +87,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 		$wgUser = self::$users['one']->getUser();
 		$pageId = $this->makePage( 'Test ' );
 
-		list( $result, , $session ) = $this->doApiRequestWithToken(
+		list( $result, , ) = $this->doApiRequestWithToken(
 			[
 				'action' => 'pagetriageaction',
 				'pageid' => $pageId,

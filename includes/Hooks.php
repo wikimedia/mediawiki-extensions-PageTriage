@@ -180,7 +180,7 @@ class Hooks {
 		DeferredUpdates::addCallableUpdate( function () use ( $linksUpdate ) {
 			// Validate the page ID from DB_MASTER, compile metadata from DB_MASTER and return.
 			$acp = ArticleCompileProcessor::newFromPageId(
-				[ $linksUpdate->getTitle()->getArticleId() ],
+				[ $linksUpdate->getTitle()->getArticleID() ],
 				false,
 				DB_MASTER
 			);
