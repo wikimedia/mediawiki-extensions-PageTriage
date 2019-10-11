@@ -24,7 +24,7 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 	 */
 	public static $users;
 
-	public function setUp() {
+	public function setUp() : void {
 		self::$users['one'] = new TestUser(
 			'PageTriageUser1',
 			'PageTriage Test User 1',
@@ -36,7 +36,7 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 		$this->pageTriage = new SpecialNewPagesFeed;
 	}
 
-	public function tearDown() {
+	public function tearDown() : void {
 		parent::tearDown();
 
 		// Remove the made up articles

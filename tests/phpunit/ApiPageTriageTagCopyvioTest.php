@@ -17,7 +17,7 @@ use Title;
  */
 class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 
-	public function setUp() {
+	public function setUp() : void {
 		global $wgHooks;
 		parent::setUp();
 		$this->setUpForOresCopyvioTests( $wgHooks );

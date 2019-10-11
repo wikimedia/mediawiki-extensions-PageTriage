@@ -23,7 +23,7 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 	/** @var ArticleMetadata */
 	protected $articleMetadata;
 
-	protected function setUp() {
+	protected function setUp() : void {
 		parent::setUp();
 		$this->pageId = [];
 		$this->dbr = wfGetDB( DB_REPLICA );
@@ -55,7 +55,7 @@ class ArticleMetadataTest extends MediaWikiTestCase {
 		$this->articleMetadata = new ArticleMetadata( $this->pageId );
 	}
 
-	protected function tearDown() {
+	protected function tearDown() : void {
 		parent::tearDown();
 	}
 

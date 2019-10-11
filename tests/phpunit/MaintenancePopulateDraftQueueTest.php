@@ -13,7 +13,7 @@ use PageTriageTestCase;
  */
 class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 
-	public function setUp() {
+	public function setUp() : void {
 		parent::setUp();
 		$this->tablesUsed = [ 'page', 'pagetriage_page', 'pagetriage_page_tags', 'pagetriage_tags' ];
 		// Start with the Draft mode turned off

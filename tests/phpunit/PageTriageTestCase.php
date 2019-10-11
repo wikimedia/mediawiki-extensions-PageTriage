@@ -14,7 +14,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	/** @var int */
 	protected $draftNsId = 150;
 
-	protected function setUp() {
+	protected function setUp() : void {
 		parent::setUp();
 
 		// Define a Draft NS unless there already is one.
