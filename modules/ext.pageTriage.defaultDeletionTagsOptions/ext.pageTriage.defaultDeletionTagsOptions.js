@@ -418,7 +418,7 @@
 						label: mw.msg( 'pagetriage-del-tags-miscellanyfordeletion-label' ),
 						desc: '',
 						tag: 'mfd',
-						prefix: 'Wikipedia:Miscellany_for_deletion',
+						prefix: 'Wikipedia:Miscellany for deletion',
 						discussion: true,
 						usesSubpages: true,
 						params: {
