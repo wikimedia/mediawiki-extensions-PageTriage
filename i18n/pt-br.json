@@ -479,6 +479,7 @@
 	"apihelp-pagetriagetagging-param-note": "Nota pessoal dos revisores para os criadores de páginas.",
 	"apihelp-pagetriagetagging-param-taglist": "Lista de etiquetas separadas por barras verticais.",
 	"apierror-bad-pagetriage-page": "A página especificada não existe na fila de triagem de páginas",
+	"apierror-bad-pagetriage-enqueue-mainpage": "A página principal não pode ser adicionada à fila de pagetriage",
 	"apierror-bad-pagetriage-enqueue-invalidnamespace": "A página especificada está em um espaço para nome que não possui a triagem de página ativada",
 	"apierror-bad-pagetriage-enqueue-alreadyqueued": "A página especificada já existe na fila de triagem de páginas",
 	"apierror-pagetriage-missingtag": "Não foi encontrado um identificador de etiqueta para a etiqueta de infringência dos direitos de autor. Tente executar o update.php."
