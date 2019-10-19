@@ -23,11 +23,10 @@ class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 		$this->setUpForOresCopyvioTests( $wgHooks );
 	}
 
-	/**
-	 * @expectedException ApiUsageException
-	 * @expectedExceptionMessage You don't have permission to tag pages as likely copyright violations.
-	 */
 	public function testCopyvioInvalidPermissions() {
+		$this->expectException( ApiUsageException::class );
+		$this->expectExceptionMessage(
+			"You don't have permission to tag pages as likely copyright violations." );
 		$this->doApiRequestWithToken(
 			[
 				'action' => 'pagetriagetagcopyvio',
@@ -36,12 +35,10 @@ class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 		);
 	}
 
-	/**
-	 * @expectedException ApiUsageException
-	 * @expectedExceptionMessage There is no revision with ID 5.
-	 */
 	public function testInvalidPageId() {
 		$this->setGroupPermissions( '*', 'pagetriage-copyvio', true );
+		$this->expectException( ApiUsageException::class );
+		$this->expectExceptionMessage( 'There is no revision with ID 5.' );
 		$this->doApiRequestWithToken(
 			[
 				'action' => 'pagetriagetagcopyvio',

@@ -103,8 +103,6 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 
 	/**
 	 * @depends testLogin
-	 * @expectedException ApiUsageException
-	 * @expectedExceptionMessageRegExp /The action you have requested is limited to users/
 	 */
 	public function testPermissionError( $sessionArray ) {
 		global $wgUser;
@@ -112,6 +110,9 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 		$wgUser = self::$users['two']->getUser();
 
 		$pageId = $this->makePage( 'Test ' );
+
+		$this->expectException( ApiUsageException::class );
+		$this->expectExceptionMessage( 'The action you have requested is limited to users' );
 		$this->doApiRequestWithToken( [
 			'action' => 'pagetriageaction',
 			'pageid' => $pageId,
@@ -120,12 +121,10 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 		], $sessionArray['two'], self::$users['two']->getUser() );
 	}
 
-	/**
-	 * @expectedException ApiUsageException
-	 * @expectedExceptionMessageRegExp  /The action you have requested is limited to users/
-	 */
 	public function testPermissionErrorAnon() {
 		$pageId = $this->makePage( 'Test' );
+		$this->expectException( ApiUsageException::class );
+		$this->expectExceptionMessage( 'The action you have requested is limited to users' );
 		$this->doApiRequestWithToken(
 			[
 				'action' => 'pagetriageaction',
