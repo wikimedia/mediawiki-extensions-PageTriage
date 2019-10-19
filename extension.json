@@ -194,7 +194,7 @@
 				"mediawiki.jqueryMsg",
 				"ext.pageTriage.util",
 				"jquery.tipoff",
-				"jquery.ui.button",
+				"jquery.ui",
 				"jquery.spinner",
 				"jquery.client"
 			],
