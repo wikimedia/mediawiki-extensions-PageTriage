@@ -7,6 +7,7 @@
 	"pagetriage-bytes": "$1 {{PLURAL:$1|bicoko*|bicoki*}}",
 	"pagetriage-author-blocked": "Blokusita",
 	"pagetriage-sort-by": "Ordinar segun:",
+	"pagetriage-triage": "Revizar",
 	"pagetriage-filter-date-range-format-input-field": "yyyy-MM-dd",
 	"pagetriage-filter-date-range-format-placeholder": "mm/dd/yyyy",
 	"pagetriage-filter-date-range-from": "De",
