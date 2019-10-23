@@ -688,7 +688,7 @@ module.exports = ToolView.extend( {
 							tagObj = that.selectedTag[ key ];
 							if ( tagObj.prefix ) {
 								that.logPage( tagObj );
-								return;
+								break;
 							}
 						}
 					}
