@@ -53,6 +53,10 @@ module.exports = ToolView.extend( {
 						}
 						window.location.href = url.toString();
 					} else {
+						// @TODO Remove this debugging output after resolution of https://phabricator.wikimedia.org/T232093
+						/* eslint-disable no-console */
+						console.error( 'PageTriage: Unable to get next page from page details.' );
+						console.error( that.apiParams, result );
 						that.disable();
 					}
 				} else {
