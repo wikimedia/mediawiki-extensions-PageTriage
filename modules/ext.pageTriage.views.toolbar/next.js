@@ -40,9 +40,9 @@ module.exports = ToolView.extend( {
 		new mw.Api().get( this.apiParams )
 			.done( function ( result ) {
 				var url;
-				if (
-					result.pagetriagelist && result.pagetriagelist.result === 'success' && result.pagetriagelist.pages[ 0 ]
-				) {
+				// If API returns the content for next page 'result.pagetriagelist.pages[ 0 ]'
+				// then user should be able to advance to next page
+				if ( result.pagetriagelist && result.pagetriagelist.pages && result.pagetriagelist.pages[ 0 ] ) {
 					page = result.pagetriagelist.pages[ 0 ];
 					if ( page.title ) {
 						url = new mw.Uri( mw.config.get( 'wgArticlePath' ).replace(
@@ -53,10 +53,6 @@ module.exports = ToolView.extend( {
 						}
 						window.location.href = url.toString();
 					} else {
-						// @TODO Remove this debugging output after resolution of https://phabricator.wikimedia.org/T232093
-						/* eslint-disable no-console */
-						console.error( 'PageTriage: Unable to get next page from page details.' );
-						console.error( that.apiParams, result );
 						that.disable();
 					}
 				} else {
