@@ -41,6 +41,7 @@
 	"pagetriage-no-patrol-right": "Du har ikke rettigheter til å merke denne siden som vurdert",
 	"pagetriage-author-blocked": "Blokkert",
 	"pagetriage-author-bot": "Bot",
+	"pagetriage-creation-dateformat": "HH:mm, d. MMMM yyyy",
 	"pagetriage-showing": "Viser:",
 	"pagetriage-filter-list-prompt": "Sett filtre",
 	"pagetriage-filter-predicted-class-heading": "Antatt klasse:",
