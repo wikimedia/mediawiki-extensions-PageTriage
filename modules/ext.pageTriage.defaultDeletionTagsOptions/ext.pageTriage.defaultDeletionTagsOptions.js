@@ -220,9 +220,7 @@
 				tag: 'speedy deletion-abandoned draft', // redirect to db-g13
 				code: 'G13',
 				desc: mw.msg( 'pagetriage-del-tags-dbg13-desc' ),
-				params: {
-					url: $.extend( true, {}, param.url )
-				},
+				params: {},
 				anchor: 'afc',
 				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 				talkpagenotiftpl: 'Afc-warn-NPF'
