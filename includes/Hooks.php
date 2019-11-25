@@ -811,9 +811,9 @@ class Hooks {
 	}
 
 	/**
-	 * @param DatabaseUpdater|null $updater
+	 * @param DatabaseUpdater $updater
 	 */
-	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
+	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
 		$base = __DIR__ . "/../sql";
 		// tables
 		$updater->addExtensionTable( 'pagetriage_tags', $base . '/PageTriageTags.sql' );
