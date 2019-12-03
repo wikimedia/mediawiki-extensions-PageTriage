@@ -163,6 +163,7 @@
 	"pagetriage-button-send-a-note": "Send message",
 	"pagetriage-add-a-note-reviewer": "Add a message for the reviewer: (optional)",
 	"pagetriage-message-for-creator-default-note": "Write a helpful note for {{GENDER:$1|$1}} and future reviewers.",
+	"pagetriage-message-for-reviewer-placeholder": "Write a helpful note for {{GENDER:$1|$1}}.",
 	"pagetriage-personal-default-note": "Write a helpful note for {{GENDER:$1|$1}}. It will be posted on {{GENDER:$1|his|her|their}} talk page.",
 	"pagetriage-page-status-reviewed": "Marked as reviewed on $1 by $2 ($3$4$5)",
 	"pagetriage-page-status-reviewed-anonymous": "Marked as reviewed",

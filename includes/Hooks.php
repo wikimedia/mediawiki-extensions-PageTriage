@@ -657,6 +657,7 @@ class Hooks {
 				'pagetriage-button-send-a-note',
 				'pagetriage-add-a-note-reviewer',
 				'pagetriage-message-for-creator-default-note',
+				'pagetriage-message-for-reviewer-placeholder',
 				'pagetriage-personal-default-note',
 				'pagetriage-special-contributions',
 				'pagetriage-tagging-error',

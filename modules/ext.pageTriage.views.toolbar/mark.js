@@ -213,7 +213,9 @@ module.exports = ToolView.extend( {
 			hasPreviousReviewer = this.model.get( 'ptrp_last_reviewed_by' ) > 0,
 			articleCreator = this.model.get( 'user_name' ),
 			previousReviewer = hasPreviousReviewer ? this.model.get( 'reviewer' ) : '',
-			noteTarget = hasPreviousReviewer ? previousReviewer : articleCreator;
+			noteTarget = hasPreviousReviewer ? previousReviewer : articleCreator,
+			notePlaceholder = hasPreviousReviewer ? 'pagetriage-message-for-reviewer-placeholder' :
+				'pagetriage-message-for-creator-default-note';
 
 		this.changeTooltip();
 
@@ -224,6 +226,7 @@ module.exports = ToolView.extend( {
 				status: status,
 				hasPreviousReviewer: hasPreviousReviewer,
 				noteTarget: noteTarget,
+				notePlaceholder: notePlaceholder,
 				previousReviewer: previousReviewer,
 				articleCreator: articleCreator
 			}
@@ -248,8 +251,14 @@ module.exports = ToolView.extend( {
 
 			if ( hasPreviousReviewer ) {
 				$( '#mwe-pt-review-note-recipient' ).on( 'change', function () {
-					noteTarget = $( this ).val() === 'reviewer' ? previousReviewer : articleCreator;
-					$( '#mwe-pt-review-note-input' ).attr( 'placeholder', mw.msg( 'pagetriage-message-for-creator-default-note', noteTarget ) );
+					if ( $( this ).val() === 'reviewer' ) {
+						noteTarget = previousReviewer;
+						notePlaceholder = 'pagetriage-message-for-reviewer-placeholder';
+					} else {
+						noteTarget = articleCreator;
+						notePlaceholder = 'pagetriage-message-for-creator-default-note';
+					}
+					$( '#mwe-pt-review-note-input' ).attr( 'placeholder', mw.msg( notePlaceholder, noteTarget ) );
 				} );
 			}
 		}
