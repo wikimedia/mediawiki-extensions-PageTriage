@@ -9,7 +9,6 @@ module.exports = ToolView.extend( {
 	title: mw.msg( 'pagetriage-mark-as-reviewed' ),
 	tooltip: '',
 	template: mw.template.get( 'ext.pageTriage.views.toolbar', 'mark.underscore' ),
-	noteChanged: false,
 
 	initialize: function ( options ) {
 		this.eventBus = options.eventBus;
@@ -64,7 +63,7 @@ module.exports = ToolView.extend( {
 				// a note needs to be posted to article talk page when an article is marked as
 				// unreviewed and it meets the use case set in talkPageNote
 				if ( action === 'unreviewed' ) {
-					that.talkPageNote( note, action );
+					that.talkPageNote( note, action, '' );
 				} else {
 					that.hideFlyout( action );
 				}
@@ -79,15 +78,20 @@ module.exports = ToolView.extend( {
 	submitNote: function () {
 		var that = this,
 			action = 'noteSent',
+			recipient = 'creator',
 			note = $( '#mwe-pt-review-note-input' ).val().trim();
 
 		if ( !note.length ) {
 			return;
 		}
-		that.talkPageNote( note, action );
+		// Get selected recipient from available options if there is a previous reviewer
+		if ( this.model.get( 'ptrp_last_reviewed_by' ) > 0 ) {
+			recipient = $( '#mwe-pt-review-note-recipient' ).val().trim();
+		}
+		that.talkPageNote( note, action, recipient );
 	},
 
-	talkPageNote: function ( note, action ) {
+	talkPageNote: function ( note, action, noteRecipient ) {
 		var talkPageTitle,
 			topicTitle,
 			topicMessage,
@@ -123,16 +127,19 @@ module.exports = ToolView.extend( {
 				return;
 			}
 
-			talkPageTitle = this.model.get( 'creator_user_talk_page' );
+			talkPageTitle = noteRecipient === 'reviewer' ?
+				this.model.get( 'reviewer_user_talk_page' ) : this.model.get( 'creator_user_talk_page' );
 			topicTitle = mw.pageTriage.contentLanguageMessage(
-				'pagetriage-note-sent-talk-page-notify-topic-title'
+				noteRecipient === 'reviewer' ?
+					'pagetriage-note-sent-talk-page-notify-topic-title-reviewer' :
+					'pagetriage-note-sent-talk-page-notify-topic-title'
 			).text();
 			topicMessage = '{{subst:' + config.TalkPageNoteTemplate.SendNote +
 				'|1=' + pageTitle +
 				'|2=' + mw.config.get( 'wgUserName' ) +
 				'|3=' + note + '}}';
-
-			sendNoteToArticleTalkPage = true;
+			// Only post on article talk page if note is sent to creator
+			sendNoteToArticleTalkPage = noteRecipient === 'creator';
 		}
 
 		sendNote1 = that.sendNote( talkPageTitle, topicTitle, topicMessage );
@@ -202,22 +209,23 @@ module.exports = ToolView.extend( {
 	render: function () {
 		var that = this,
 			status = this.model.get( 'patrol_status' ) === '0' ? 'reviewed' : 'unreviewed',
-			noteTarget = this.model.get( 'user_name' ),
-			note = '';
-
-		function handleFocus() {
-			$( this ).val( '' );
-			$( this ).css( 'color', 'black' );
-			$( this ).off( 'focus', handleFocus );
-		}
+			note = '',
+			hasPreviousReviewer = this.model.get( 'ptrp_last_reviewed_by' ) > 0,
+			articleCreator = this.model.get( 'user_name' ),
+			previousReviewer = hasPreviousReviewer ? this.model.get( 'reviewer' ) : '',
+			noteTarget = hasPreviousReviewer ? previousReviewer : articleCreator;
 
 		this.changeTooltip();
+
 		// create the mark as reviewed flyout content here.
 		this.$tel.html( this.template( $.extend(
 			this.model.toJSON(),
 			{
 				status: status,
-				noteTarget: noteTarget
+				hasPreviousReviewer: hasPreviousReviewer,
+				noteTarget: noteTarget,
+				previousReviewer: previousReviewer,
+				articleCreator: articleCreator
 			}
 		) ) );
 
@@ -229,8 +237,7 @@ module.exports = ToolView.extend( {
 		// check if note is enabled for this namespace
 		if ( this.moduleConfig.note.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) !== -1 ) {
 			$( '#mwe-pt-review-note' ).show();
-			$( '#mwe-pt-review-note-input' ).on( 'focus', handleFocus ).on( 'input', function () {
-				that.noteChanged = true;
+			$( '#mwe-pt-review-note-input' ).on( 'input', function () {
 				note = $( '#mwe-pt-review-note-input' ).val().trim();
 				if ( note.length ) {
 					$( '#mwe-pt-send-message-button' ).button( 'enable' );
@@ -238,6 +245,13 @@ module.exports = ToolView.extend( {
 					$( '#mwe-pt-send-message-button' ).button( 'disable' );
 				}
 			} );
+
+			if ( hasPreviousReviewer ) {
+				$( '#mwe-pt-review-note-recipient' ).on( 'change', function () {
+					noteTarget = $( this ).val() === 'reviewer' ? previousReviewer : articleCreator;
+					$( '#mwe-pt-review-note-input' ).attr( 'placeholder', mw.msg( 'pagetriage-message-for-creator-default-note', noteTarget ) );
+				} );
+			}
 		}
 
 		// set the Learn More link URL

@@ -28,5 +28,8 @@
 	font-size: 11px;
 	width: 400px;
 	margin: 5px 5px 2px 2px;
+}
+
+#mwe-pt-review-note-input::placeholder {
 	color: #666;
 }

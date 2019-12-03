@@ -522,6 +522,7 @@ class Hooks {
 								'pagetriage-feedback-from-new-page-review-process-title',
 								'pagetriage-feedback-from-new-page-review-process-message',
 								'pagetriage-note-sent-talk-page-notify-topic-title',
+								'pagetriage-note-sent-talk-page-notify-topic-title-reviewer',
 								'pagetriage-tags-talk-page-notify-topic-title'
 							],
 							$config->get( 'PageTriageDeletionTagsOptionsContentLanguageMessages' )
@@ -649,7 +650,11 @@ class Hooks {
 				'unknown-error',
 				'pagetriage-add-a-note-creator',
 				'pagetriage-add-a-note-creator-required',
+				'pagetriage-add-a-note-for-options-label',
+				'pagetriage-add-a-note-for-option-creator',
+				'pagetriage-add-a-note-for-option-reviewer',
 				'pagetriage-button-add-a-note-to-creator',
+				'pagetriage-button-send-a-note',
 				'pagetriage-add-a-note-reviewer',
 				'pagetriage-message-for-creator-default-note',
 				'pagetriage-personal-default-note',
