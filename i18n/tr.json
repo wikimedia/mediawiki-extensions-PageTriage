@@ -12,7 +12,8 @@
 			"Sayginer",
 			"Rapsar",
 			"Vito Genovese",
-			"Mirzali"
+			"Mirzali",
+			"BaRaN6161 TURK"
 		]
 	},
 	"pagetriage": "Sayfa Sıralayıcı",
@@ -109,7 +110,12 @@
 	"pagetriage-button-edit-details": "Ayrıntıları düzenle",
 	"pagetriage-button-mark-for-deletion": "Silinmek üzere işaretli",
 	"pagetriage-add-a-note-creator": "Sayfayı açan için bir ileti ekleyin: (isteğe bağlı)",
+	"pagetriage-add-a-note-for-options-label": "Bir mesaj gönder:",
+	"pagetriage-add-a-note-for-option-creator": "yaratıcı (Kullanıcı:$1)",
+	"pagetriage-add-a-note-for-option-reviewer": "inceleyici (Kullanıcı:$1)",
+	"pagetriage-button-send-a-note": "Mesaj gönder",
 	"pagetriage-add-a-note-reviewer": "Sayfayı inceleyen için bir ileti ekleyin: (isteğe bağlı)",
+	"pagetriage-message-for-reviewer-placeholder": "{{GENDER:$1|$1}} için faydalı bir not yazın.",
 	"pagetriage-personal-default-note": "{{GENDER:$1|$1}} için yararlı bir not yazın. Not, {{GENDER:$1|onun|onun|onun}} mesaj sayfasına bırakılacaktır.",
 	"pagetriage-page-status-reviewed": "$2 ($3$4$5) tarafından $1 tarihinde incelendi",
 	"pagetriage-page-status-reviewed-anonymous": "\"İncelendi\" olarak işaretle",
@@ -141,6 +147,7 @@
 	"pagetriage-del-tags-dbu3-label": "Özgür olmayan galeriler",
 	"pagetriage-del-tags-blpprod-label": "Silme Önerisi (Yaşayan İnsanlar)",
 	"pagetriage-del-tags-prod-label": "Silme Önerisi",
+	"pagetriage-note-sent-talk-page-notify-topic-title-reviewer": "{{GENDER:|Size}} bir sayfa hakkında incelenmiş not gönderdim",
 	"pagetriage-tags-param-article-label": "Madde:",
 	"pagetriage-tags-param-date-label": "Tarih:",
 	"pagetriage-tags-param-issues-label": "Ele alınacak sorunları açıklayın:",

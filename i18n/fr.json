@@ -21,7 +21,8 @@
 			"Mattho69",
 			"Derugon",
 			"Zarisi",
-			"DSwissK"
+			"DSwissK",
+			"Aaribaud"
 		]
 	},
 	"pagetriage": "Tri des pages",
@@ -170,9 +171,14 @@
 	"pagetriage-button-mark-for-deletion": "Marquer pour suppression",
 	"pagetriage-add-a-note-creator": "Ajouter un message pour le créateur (facultatif) :",
 	"pagetriage-add-a-note-creator-required": "Ajouter un message pour le créateur. Ce message sera aussi posté sur la page de discussion de l’article.",
+	"pagetriage-add-a-note-for-options-label": "Envoyer un message à :",
+	"pagetriage-add-a-note-for-option-creator": "créateur (User:$1)",
+	"pagetriage-add-a-note-for-option-reviewer": "relecteur (User:$1)",
 	"pagetriage-button-add-a-note-to-creator": "Ajouter un message pour le créateur",
+	"pagetriage-button-send-a-note": "Envoyer le message",
 	"pagetriage-add-a-note-reviewer": "Ajouter un message pour le relecteur (facultatif) :",
 	"pagetriage-message-for-creator-default-note": "Écrire une note utile pour {{GENDER:$1|$1}} et les futurs relecteurs.",
+	"pagetriage-message-for-reviewer-placeholder": "Écrire une note  d’aide pour {{GENDER:$1|$1}}.",
 	"pagetriage-personal-default-note": "Écrire une note utile à {{GENDER:$1|}}$1, qui sera publiée sur sa page de discussion.",
 	"pagetriage-page-status-reviewed": "Marqué comme relu le $1 par  $2 ($3$4$5)",
 	"pagetriage-page-status-reviewed-anonymous": "Marquée comme relue",
@@ -353,6 +359,7 @@
 	"pagetriage-mark-mark-talk-page-notify-topic-title": "Une page que {{GENDER:|}}vous avez commencée ($1) a été relue !",
 	"pagetriage-mark-unmark-talk-page-notify-topic-title": "J’ai remis en relecture une page que {{GENDER:|}}vous avez supervisée",
 	"pagetriage-note-sent-talk-page-notify-topic-title": "Je {{GENDER:|}}vous ai envoyé une note sur une page que {{GENDER:|}}vous avez commencée",
+	"pagetriage-note-sent-talk-page-notify-topic-title-reviewer": "Je {{GENDER:|}}vous ai envoyé une note concernant une page que {{GENDER:|}}vous avez relue",
 	"pagetriage-tags-param-article-label": "Article :",
 	"pagetriage-tags-param-date-label": "Date :",
 	"pagetriage-tags-param-issues-label": "Description des problèmes à résoudre :",
