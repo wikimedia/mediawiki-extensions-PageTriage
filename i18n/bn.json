@@ -5,7 +5,8 @@
 			"Aftabuzzaman",
 			"Rasal Lia",
 			"Fitoschido",
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"Sohom Datta"
 		]
 	},
 	"pagetriage-articles-for-creation": "সৃষ্টির জন্য নিবন্ধ",
@@ -68,6 +69,10 @@
 	"pagetriage-note-reviewed": "এই পাতাটি পর্যালোচিত হয়েছে।",
 	"pagetriage-note-not-reviewed": "এই পাতা এখনো পর্যালোচিত হয়নি।",
 	"pagetriage-note-deletion": "এই পাতাটি অপসারণের জন্য মনোনীত হয়েছে।",
+	"pagetriage-add-a-note-for-options-label": "একটি বার্তা পাঠান:",
+	"pagetriage-add-a-note-for-option-creator": "রচয়িতা (ব্যবহারকারী:$1)",
+	"pagetriage-button-send-a-note": "বার্তা পাঠান",
+	"pagetriage-message-for-reviewer-placeholder": "{{GENDER:$1|$1}}-এর জন্য একটি সহায়ক টীকা লিখুন।",
 	"pagetriage-articleinfo-stat": "পরিসংখ্যান: $1",
 	"pagetriage-has-talkpage-feedback-link": "আলাপ পাতা",
 	"pagetriage-tags-title": "ট্যাগ যোগ করুন",
@@ -85,6 +90,7 @@
 	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "$1-এর দ্রুত অপসারণের মনোনয়ন",
 	"pagetriage-del-tags-xfd-notify-topic-title": "[[$1]] সম্পর্কিত অপসারণ আলোচনা",
 	"pagetriage-mark-mark-talk-page-notify-topic-title": "একটি পাতা যা {{GENDER:|আপনি}} শুরু করেছিলেন ($1) তা পর্যালোচনা করা হয়েছে!",
+	"pagetriage-note-sent-talk-page-notify-topic-title-reviewer": "আপনার পর্যালোচনা করা একটি পৃষ্ঠা সম্পর্কে আমি আপনাকে একটি টীকা পাঠিয়েছি",
 	"pagetriage-tags-param-article-label": "নিবন্ধ:",
 	"pagetriage-tags-param-date-label": "তারিখ:",
 	"pagetriage-tags-param-free-yes-label": "হ্যাঁ",

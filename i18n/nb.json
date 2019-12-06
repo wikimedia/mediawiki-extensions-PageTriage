@@ -161,6 +161,7 @@
 	"pagetriage-button-send-a-note": "Send beskjed",
 	"pagetriage-add-a-note-reviewer": "Legg til en melding til vurderer: (valgfritt)",
 	"pagetriage-message-for-creator-default-note": "Skriv en nyttig beskjed til {{GENDER:$1|$1}} og de som går gjennom artikkelen i framtida.",
+	"pagetriage-message-for-reviewer-placeholder": "Skriv en nyttig merknad til {{GENDER:$1|$1}}.",
 	"pagetriage-personal-default-note": "Skriv en hjelpsom tilbakemelding til {{GENDER:$1|$1}}. Denne vil bli lagt til på {{GENDER:$1|hans|hennes|vedkommendes}} diskusjonsside.",
 	"pagetriage-page-status-reviewed": "Merket som vurdert $1 av $2 ($3$4$5)",
 	"pagetriage-page-status-reviewed-anonymous": "Merket som vurdert",

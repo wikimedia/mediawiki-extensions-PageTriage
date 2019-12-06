@@ -178,7 +178,7 @@
 	"pagetriage-button-send-a-note": "Envoyer le message",
 	"pagetriage-add-a-note-reviewer": "Ajouter un message pour le relecteur (facultatif) :",
 	"pagetriage-message-for-creator-default-note": "Écrire une note utile pour {{GENDER:$1|$1}} et les futurs relecteurs.",
-	"pagetriage-message-for-reviewer-placeholder": "Écrire une note  d’aide pour {{GENDER:$1|$1}}.",
+	"pagetriage-message-for-reviewer-placeholder": "Écrire une note utile pour {{GENDER:$1|}}$1.",
 	"pagetriage-personal-default-note": "Écrire une note utile à {{GENDER:$1|}}$1, qui sera publiée sur sa page de discussion.",
 	"pagetriage-page-status-reviewed": "Marqué comme relu le $1 par  $2 ($3$4$5)",
 	"pagetriage-page-status-reviewed-anonymous": "Marquée comme relue",

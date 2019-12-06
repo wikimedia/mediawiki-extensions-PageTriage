@@ -165,6 +165,7 @@
 	"pagetriage-button-send-a-note": "Enviar mensagem",
 	"pagetriage-add-a-note-reviewer": "Adicionar uma mensagem para o revisor: (opcional)",
 	"pagetriage-message-for-creator-default-note": "Escreva uma nota útil para {{GENDER:$1|$1}} e futuros revisores.",
+	"pagetriage-message-for-reviewer-placeholder": "Escreva uma nota útil para {{GENDER:$1|$1}}.",
 	"pagetriage-personal-default-note": "Escreva uma nota útil para {{GENDER:$1|$1}}. Esta será postada na página de discussão {{GENDER:$1|dele|dela|dele}}",
 	"pagetriage-page-status-reviewed": "Marcada como revisada em $1 por $2 ($3$4$5)",
 	"pagetriage-page-status-reviewed-anonymous": "Marcada como revisada",

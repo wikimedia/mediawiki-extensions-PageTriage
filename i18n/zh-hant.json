@@ -164,6 +164,7 @@
 	"pagetriage-button-send-a-note": "發送訊息",
 	"pagetriage-add-a-note-reviewer": "向巡查員傳送一則訊息：（可選）",
 	"pagetriage-message-for-creator-default-note": "為{{GENDER:$1|$1}}和往後的巡查員寫下有用的提醒。",
+	"pagetriage-message-for-reviewer-placeholder": "替{{GENDER:$1|$1}}寫個有幫助的提醒。",
 	"pagetriage-personal-default-note": "給{{GENDER:$1|$1}}寫一個有用的提醒。這會被發佈於此使用者的討論頁上。",
 	"pagetriage-page-status-reviewed": "由 $2 ($3$4$5) 於 $1 標記為已檢閱",
 	"pagetriage-page-status-reviewed-anonymous": "標記為已檢閱",
