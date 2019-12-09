@@ -138,6 +138,7 @@
 	"pagetriage-button-mark-for-deletion": "Marcar para borrado",
 	"pagetriage-add-a-note-creator": "Añadir un mensaje para el creador: (opcional)",
 	"pagetriage-add-a-note-creator-required": "Añadir un mensaje para el creador:",
+	"pagetriage-add-a-note-for-options-label": "Enviar un mensaje a:",
 	"pagetriage-button-add-a-note-to-creator": "Añadir un mensaje para el creador",
 	"pagetriage-add-a-note-reviewer": "Añadir un mensaje para el revisor: (opcional)",
 	"pagetriage-personal-default-note": "Escribe una nota útil para {{GENDER:$1|$1}}. Se publicará en {{GENDER:$1|su}} página de discusión.",

@@ -138,6 +138,8 @@
 	"pagetriage-add-a-note-creator": "Lägg till ett meddelande till skaparen: (valfritt)",
 	"pagetriage-add-a-note-creator-required": "Lägg till ett meddelande för skaparen:",
 	"pagetriage-add-a-note-for-options-label": "Skicka ett meddelande till:",
+	"pagetriage-add-a-note-for-option-creator": "skapare (User:$1)",
+	"pagetriage-add-a-note-for-option-reviewer": "granskare (User:$1)",
 	"pagetriage-button-add-a-note-to-creator": "Lägg till ett meddelande för skaparen",
 	"pagetriage-button-send-a-note": "Skicka meddelande",
 	"pagetriage-add-a-note-reviewer": "Lägg till ett meddelande till granskaren: (valfritt)",

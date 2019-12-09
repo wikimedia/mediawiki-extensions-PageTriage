@@ -19,6 +19,8 @@
 	"pagetriage-filter-stat-others": "Alle andre",
 	"pagetriage-filter-stat-recreated": "Tidligere slettet",
 	"pagetriage-filter-stat-namespace": "Navnerum",
+	"pagetriage-add-a-note-for-options-label": "Send en besked til:",
+	"pagetriage-button-send-a-note": "Send besked",
 	"pagetriage-tags-param-article-label": "Artikel:",
 	"log-name-pagetriage-copyvio": "Log over mulig brud på ophavsret",
 	"pagetriage-info-history-header": "Historik",

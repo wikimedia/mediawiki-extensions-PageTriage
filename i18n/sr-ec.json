@@ -143,6 +143,7 @@
 	"pagetriage-button-mark-for-deletion": "Означи за брисање",
 	"pagetriage-add-a-note-creator": "Додај поруку за творца: (опционално)",
 	"pagetriage-add-a-note-for-options-label": "Пошаљи поруку:",
+	"pagetriage-add-a-note-for-option-creator": "творац (User:$1)",
 	"pagetriage-button-send-a-note": "Пошаљи поруку",
 	"pagetriage-add-a-note-reviewer": "Додај поруку за прегледача: (опционално)",
 	"pagetriage-personal-default-note": "Напишите корисну напомену за {{GENDER:$1|корисника|корисницу}} $1. Она ће бити послата на страницу за разговор истог.",
