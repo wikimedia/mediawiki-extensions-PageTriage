@@ -7,6 +7,9 @@
 		]
 	},
 	"pagetriage-filter-nominated-for-deletion": "Pasiūlyti ištrinimui",
+	"pagetriage-add-a-note-for-options-label": "Kam siųsti žinutę:",
+	"pagetriage-button-send-a-note": "Siųsti žinutę",
+	"pagetriage-message-for-reviewer-placeholder": "Parašykite naudingą pastabą {{GENDER:$1|$1}}.",
 	"pagetriage-has-talkpage-feedback-link": "aptarimo puslapis",
 	"pagetriage-del-tags-prod-notify-topic-title": "[[Wikipedia:Proposed deletion|Pasiūlė [[$1]] ištrynimą]]",
 	"pagetriage-del-tags-xfd-notify-topic-title": "Trynimo diskusija apie [[$1]]",

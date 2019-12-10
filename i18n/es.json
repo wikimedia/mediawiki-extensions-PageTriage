@@ -24,7 +24,8 @@
 			"Harvest",
 			"Anarhistička Maca",
 			"Johny Weissmuller Jr",
-			"Madamebiblio"
+			"Madamebiblio",
+			"Ihojose"
 		]
 	},
 	"pagetriage": "Triaje de páginas",
@@ -139,7 +140,9 @@
 	"pagetriage-add-a-note-creator": "Añadir un mensaje para el creador: (opcional)",
 	"pagetriage-add-a-note-creator-required": "Añadir un mensaje para el creador:",
 	"pagetriage-add-a-note-for-options-label": "Enviar un mensaje a:",
+	"pagetriage-add-a-note-for-option-creator": "creador (Usuario:$1)",
 	"pagetriage-button-add-a-note-to-creator": "Añadir un mensaje para el creador",
+	"pagetriage-button-send-a-note": "Enviar mensaje",
 	"pagetriage-add-a-note-reviewer": "Añadir un mensaje para el revisor: (opcional)",
 	"pagetriage-personal-default-note": "Escribe una nota útil para {{GENDER:$1|$1}}. Se publicará en {{GENDER:$1|su}} página de discusión.",
 	"pagetriage-page-status-reviewed": "Marcada como revisada el $1 por $2 ($3$4$5)",
