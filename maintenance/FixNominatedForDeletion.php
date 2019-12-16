@@ -37,7 +37,7 @@ class FixNominatedForDeletion extends Maintenance {
 		] );
 		$iterator->addConditions( [
 			'ptrp_deleted' => 0,
-			'cl_to' => array_keys( ArticleCompileDeletionTag::getDeletionTags() ),
+			'cl_to' => array_map( 'strval', array_keys( ArticleCompileDeletionTag::getDeletionTags() ) ),
 		] );
 		// deduplicate pages in multiples deletion categories
 		$iterator->addOptions( [ 'GROUP BY' => 'ptrp_page_id' ] );

@@ -312,7 +312,7 @@ class PageTriageUtil {
 				[ 'page' ],
 				[ 'page_namespace', 'page_title' ],
 				[
-					'page_title' => array_keys( $title ),
+					'page_title' => array_map( 'strval', array_keys( $title ) ),
 					'page_namespace' => [ NS_USER, NS_USER_TALK ]
 				],
 				__METHOD__
