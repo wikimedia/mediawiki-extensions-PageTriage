@@ -116,6 +116,8 @@
 	"pagetriage-button-add-details": "Detailer dobäisetzen",
 	"pagetriage-button-edit-details": "Detailer änneren",
 	"pagetriage-button-mark-for-deletion": "Markéiere fir ze läschen",
+	"pagetriage-add-a-note-for-options-label": "E Message schécken un:",
+	"pagetriage-button-send-a-note": "Message schécken",
 	"pagetriage-page-status-reviewed": "Als nogekuckt markéiert den $1 vum $2 ($3$4$5)",
 	"pagetriage-page-status-reviewed-anonymous": "Als nogekuckt markéiert",
 	"pagetriage-page-status-unreviewed": "Dëse Säit ass nach net nogekuckt.",

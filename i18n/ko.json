@@ -145,6 +145,7 @@
 	"pagetriage-button-mark-for-deletion": "삭제로 표시",
 	"pagetriage-add-a-note-creator": "작성자에게 메시지 추가: (선택 사항)",
 	"pagetriage-add-a-note-for-options-label": "다음에 메시지 보내기:",
+	"pagetriage-add-a-note-for-option-creator": "만든이 (사용자:$1)",
 	"pagetriage-button-send-a-note": "메시지 보내기",
 	"pagetriage-add-a-note-reviewer": "검토자에게 메시지 추가: (선택 사항)",
 	"pagetriage-personal-default-note": "{{GENDER:$1|$1}}님이 유용한 참고를 적었습니다. {{GENDER:$1|사용자}} 토론 문서에 게시됩니다.",
