@@ -93,6 +93,14 @@ module.exports = ToolView.extend( {
 			$( '#mwe-pt-article-contributor-list' ).append( mw.message( 'pagetriage-wikilove-no-recipients' ).escaped() );
 		}
 
+		$( '.mwe-pt-recipient-checkbox' ).on( 'click', function () {
+			if ( $( '.mwe-pt-recipient-checkbox:checked' ).length > 0 ) {
+				$( '#mwe-pt-wikilove-button' ).button( 'enable' );
+			} else {
+				$( '#mwe-pt-wikilove-button' ).button( 'disable' );
+			}
+		} );
+
 		// initialize the button
 		var that = this;
 		$( '#mwe-pt-wikilove-button' )
@@ -105,6 +113,9 @@ module.exports = ToolView.extend( {
 				$.wikiLove.openDialog( recipients );
 				that.hide();
 			} );
+
+		// Disable the submit button to start with, will be re-enabled once a checkbox is selected
+		$( '#mwe-pt-wikilove-button' ).button( 'disable' );
 
 	}
 
