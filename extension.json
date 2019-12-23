@@ -47,6 +47,22 @@
 		"pagetriage-deletion",
 		"pagetriage-copyvio"
 	],
+	"ActionFilteredLogs": {
+		"pagetriage-curation": {
+			"review": [
+				"reviewed"
+			],
+			"unreview": [
+				"unreviewed"
+			],
+			"enqueue": [
+				"enqueue"
+			],
+			"tag": [
+				"tag"
+			]
+		}
+	},
 	"RateLimits": {
 		"pagetriage-mark-action": {
 			"anon": [
