@@ -117,6 +117,7 @@ class ApiPageTriageTagging extends ApiBase {
 						'pagetriage-deletion' => 'delete'
 					];
 					PageTriageUtil::createNotificationEvent(
+						// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 						$article,
 						$this->getUser(),
 						'pagetriage-add-deletion-tag',
@@ -130,6 +131,7 @@ class ApiPageTriageTagging extends ApiBase {
 						'pagetriage-curation' => 'tag'
 					];
 					PageTriageUtil::createNotificationEvent(
+						// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 						$article,
 						$this->getUser(),
 						'pagetriage-add-maintenance-tag',

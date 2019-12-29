@@ -36,7 +36,7 @@ class UpdateUserMetadata extends Maintenance {
 		$this->output( "Started processing... \n" );
 
 		// Scan for data updated more than a day ago
-		$startTime = wfTimestamp( TS_UNIX ) - 60 * 60 * 24;
+		$startTime = (int)wfTimestamp( TS_UNIX ) - 60 * 60 * 24;
 		$count = $this->getBatchSize();
 
 		$idRow = $this->dbr->selectRow(

@@ -45,7 +45,7 @@ class UpdatePageTriageQueue extends Maintenance {
 		$this->output( "Started processing... \n" );
 
 		// Scan for data with ptrp_created set more than 30 days ago
-		$startTime = wfTimestamp( TS_UNIX ) - 30 * 60 * 60 * 24;
+		$startTime = (int)wfTimestamp( TS_UNIX ) - 30 * 60 * 60 * 24;
 		$count = $this->getBatchSize();
 
 		$idRow = $this->dbr->selectRow(
@@ -122,7 +122,7 @@ class UpdatePageTriageQueue extends Maintenance {
 		}
 
 		// Also clean-up old logging data while we're at it.
-		$yearago = wfTimestamp( TS_UNIX ) - 365 * 60 * 60 * 24;
+		$yearago = (int)wfTimestamp( TS_UNIX ) - 365 * 60 * 60 * 24;
 		$yearago = $this->dbr->addQuotes( $this->dbr->timestamp( $yearago ) );
 		$this->dbw->delete(
 			'pagetriage_log',

@@ -36,7 +36,7 @@ class CleanupPageTriageLog extends Maintenance {
 
 		foreach ( $logTypes as $type ) {
 			$count = $this->batchSize;
-			$startTime = wfTimestamp( TS_UNIX ) - 60 * 24 * 60 * 60;
+			$startTime = (int)wfTimestamp( TS_UNIX ) - 60 * 24 * 60 * 60;
 
 			while ( $count == $this->batchSize ) {
 				$res = $dbr->select(

@@ -97,7 +97,7 @@ class PageTriageUtil {
 	 * @todo - Limit the number of records by a timestamp filter, maybe 30 days etc,
 	 *         depends on the time the triage queue should look back for listview
 	 */
-	public static function getUnreviewedArticleStat( $namespace = '' ) {
+	public static function getUnreviewedArticleStat( $namespace = 0 ) {
 		global $wgMemc;
 
 		$namespace = self::validatePageNamespace( $namespace );
@@ -158,10 +158,10 @@ class PageTriageUtil {
 
 	/**
 	 * Get number of reviewed articles in the past week
-	 * @param string|int $namespace Namespace number
+	 * @param int $namespace Namespace number
 	 * @return array Stats to be returned
 	 */
-	public static function getReviewedArticleStat( $namespace = '' ) {
+	public static function getReviewedArticleStat( $namespace = 0 ) {
 		global $wgMemc;
 
 		$namespace = self::validatePageNamespace( $namespace );
@@ -178,7 +178,7 @@ class PageTriageUtil {
 			return $data;
 		}
 
-		$time = wfTimestamp( TS_UNIX ) - 7 * 24 * 60 * 60;
+		$time = (int)wfTimestamp( TS_UNIX ) - 7 * 24 * 60 * 60;
 
 		$dbr = wfGetDB( DB_REPLICA );
 
@@ -217,7 +217,7 @@ class PageTriageUtil {
 	public static function getTopTriagers( $time = 'last-week' ) {
 		global $wgMemc;
 
-		$now = wfTimestamp( TS_UNIX );
+		$now = (int)wfTimestamp( TS_UNIX );
 
 		// times to look back for top trigers and expiration time in cache
 		$timeFrame = [

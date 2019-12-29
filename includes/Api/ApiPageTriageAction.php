@@ -32,8 +32,10 @@ class ApiPageTriageAction extends ApiBase {
 		$note = $params['note'];
 
 		if ( isset( $params['reviewed'] ) ) {
+			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 			$this->markAsReviewed( $article, $params['reviewed'], $note, $params['skipnotif'] );
 		} else {
+			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 			$this->enqueue( $article, $note );
 		}
 
@@ -43,7 +45,7 @@ class ApiPageTriageAction extends ApiBase {
 
 	/**
 	 * @param Article $article
-	 * @param bool $reviewedStatus
+	 * @param string $reviewedStatus
 	 * @param string $note
 	 * @param bool $skipNotif
 	 */

@@ -38,6 +38,7 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 		// If the revision ID hasn't been tagged with copyvio yet, then insert and log.
 		if ( $dbr->selectField( 'pagetriage_page_tags', 'ptrpt_page_id', $row ) === false ) {
 			$dbw->replace( 'pagetriage_page_tags', [ 'ptrpt_page_id', 'ptrpt_tag_id' ], $row );
+			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 			$this->logActivity( $revision );
 		}
 
