@@ -86,7 +86,7 @@
 	"JobClasses": {
 		"compileArticleMetadata": "\\MediaWiki\\Extension\\PageTriage\\CompileArticleMetadataJob"
 	},
-	"AutoloadClasses": {
+	"TestAutoloadClasses": {
 		"PageTriageTestCase": "tests/phpunit/PageTriageTestCase.php"
 	},
 	"ResourceModules": {
