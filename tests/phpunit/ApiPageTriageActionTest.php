@@ -82,9 +82,6 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	 * @depends testLogin
 	 */
 	public function testSuccessfulReviewAction( $sessionArray ) {
-		global $wgUser;
-
-		$wgUser = self::$users['one']->getUser();
 		$pageId = $this->makePage( 'Test ' );
 
 		list( $result, , ) = $this->doApiRequestWithToken(
@@ -105,10 +102,6 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	 * @depends testLogin
 	 */
 	public function testPermissionError( $sessionArray ) {
-		global $wgUser;
-
-		$wgUser = self::$users['two']->getUser();
-
 		$pageId = $this->makePage( 'Test ' );
 
 		$this->expectException( ApiUsageException::class );
@@ -142,10 +135,6 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	public function testPageError( $sessionArray ) {
 		$exception = false;
 		try {
-			global $wgUser;
-
-			$wgUser = self::$users['one']->getUser();
-
 			$this->doApiRequestWithToken(
 				[
 					'action' => 'pagetriageaction',

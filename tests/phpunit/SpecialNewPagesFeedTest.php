@@ -81,10 +81,6 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 	 * @depends testLogin
 	 */
 	public function testAddArticles( $sessionArray ) {
-		global $wgUser;
-
-		$wgUser = self::$users['one']->getUser();
-
 		$params = [
 			'action' => 'edit',
 			'title' => 'Vacation Disaster Mania',
