@@ -136,6 +136,7 @@
 	"pagetriage-tags-cat-writingstyle-label": "Yazım şekli",
 	"pagetriage-tags-cat-moretags-label": "Diğer etiketler",
 	"pagetriage-tags-cat-all-label": "Bütün etiketler",
+	"pagetriage-tags-update-label": "Güncelle",
 	"pagetriage-tags-tooltip": "Bu sayfanın iyileştirme alanlarını belirtmek için etiket ekleyin",
 	"pagetriage-del-tags-cat-csd-label": "Hızlı silme",
 	"pagetriage-del-tags-cat-csd-desc": "Bu sayfayı aşağıdaki kıstaslardan birine uyuyorsa hızlı silinmesi için işaretleyin.",
