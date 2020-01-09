@@ -89,19 +89,19 @@ class ApiPageTriageTagging extends ApiBase {
 
 			// Perform the text insertion
 			$api = new ApiMain(
-					new DerivativeRequest(
-						$this->getRequest(),
-						$apiParams + [
-							'action'	=> 'edit',
-							'title'		=> $title->getFullText(),
-							'token'		=> $params['token'],
-							'summary'	=> $editSummary,
-							'tags'      => 'pagetriage',
-						],
-						true
-					),
+				new DerivativeRequest(
+					$this->getRequest(),
+					$apiParams + [
+						'action' => 'edit',
+						'title' => $title->getFullText(),
+						'token' => $params['token'],
+						'summary' => $editSummary,
+						'tags' => 'pagetriage',
+					],
 					true
-				);
+				),
+				true
+			);
 
 			$api->execute();
 
