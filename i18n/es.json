@@ -25,7 +25,8 @@
 			"Anarhistička Maca",
 			"Johny Weissmuller Jr",
 			"Madamebiblio",
-			"Ihojose"
+			"Ihojose",
+			"DannyS712"
 		]
 	},
 	"pagetriage": "Triaje de páginas",
@@ -329,7 +330,7 @@
 	"logentry-pagetriage-deletion-delete": "$1 {{GENDER:$2|ha marcado}} $3 para borrado con {{PLURAL:$5|la etiqueta|las etiquetas}} $4",
 	"pagetriage-tags-edit-summary": "Se agregaron etiquetas a la página mediante $1 ($2)",
 	"pagetriage-del-edit-summary": "Página nominada para borrado utilizando $1 ($2)",
-	"pagetriage-del-tags-param-discussion-label": "Explica por qué este artículo debería borrarse y proporciona vínculos a las políticas pertinentes, siempre que sea posible",
+	"pagetriage-del-tags-param-discussion-label": "Explica por qué esta página debería borrarse y proporciona vínculos a las políticas pertinentes, siempre que sea posible",
 	"pagetriage-info-title": "Información de la página",
 	"pagetriage-info-problem-header": "Posibles problemas",
 	"pagetriage-info-history-header": "Historial",

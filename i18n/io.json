@@ -18,5 +18,7 @@
 	"pagetriage-filter-stat-date_range_from": "De: $1",
 	"pagetriage-filter-stat-blocked": "De blokusita uzeri",
 	"pagetriage-filter-stat-username": "nomo dil uzero: $1",
-	"log-description-pagetriage-copyvio": "This is the log of events received via the PageTriage Copyvio API."
+	"log-description-pagetriage-copyvio": "This is the log of events received via the PageTriage Copyvio API.",
+	"pagetriage-toolbar-learn-more": "Lernez pluse »",
+	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Dankar}}}}"
 }
