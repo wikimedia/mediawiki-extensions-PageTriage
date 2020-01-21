@@ -62,7 +62,7 @@ class ArticleMetadata {
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 
 		$keyPrefix = $this->memcKeyPrefix();
-		if ( is_null( $pageId ) ) {
+		if ( $pageId === null ) {
 			foreach ( $this->pageIds as $pageId ) {
 				$cache->delete( $keyPrefix . '-' . $pageId );
 			}
@@ -93,7 +93,7 @@ class ArticleMetadata {
 
 		$keyPrefix = $this->memcKeyPrefix();
 
-		if ( is_null( $pageId ) ) {
+		if ( $pageId === null ) {
 			$metaData = [];
 			foreach ( $this->pageIds as $pageId ) {
 				$metaDataCache = $cache->get( $keyPrefix . '-' . $pageId );

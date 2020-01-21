@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -7,8 +8,6 @@ if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
-
-use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 
 /**
  * A maintenance script that updates expired user metadata

@@ -8,9 +8,9 @@ class PageTriageUtilTest extends MediaWikiTestCase {
 	 * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil::isOresArticleQualityQuery()
 	 */
 	public function testIsOresArticlequalityQuery() {
-		self::assertEquals( false, PageTriageUtil::isOresArticleQualityQuery( [ 'page_id' => '123' ] ) );
-		self::assertEquals(
-			true,
+		self::assertFalse( PageTriageUtil::isOresArticleQualityQuery( [ 'page_id' => '123' ] ) );
+		self::assertTrue(
+
 			PageTriageUtil::isOresArticleQualityQuery( [ 'show_predicted_class_stub' => true ] )
 		);
 	}
@@ -19,9 +19,9 @@ class PageTriageUtilTest extends MediaWikiTestCase {
 	 * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil::isOresDraftQualityQuery()
 	 */
 	public function testIsOresDraftQualityQuery() {
-		self::assertEquals( false, PageTriageUtil::isOresDraftQualityQuery( [ 'page_id' => '123' ] ) );
-		self::assertEquals(
-			true,
+		self::assertFalse( PageTriageUtil::isOresDraftQualityQuery( [ 'page_id' => '123' ] ) );
+		self::assertTrue(
+
 			PageTriageUtil::isOresDraftQualityQuery( [ 'show_predicted_issues_vandalism' => true ] )
 		);
 	}

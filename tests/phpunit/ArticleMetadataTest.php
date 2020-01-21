@@ -134,7 +134,7 @@ class ArticleMetadataTest extends PageTriageTestCase {
 			[ 'ptrpt_page_id' ],
 			[ 'ptrpt_page_id' => $this->pageIds ]
 		);
-		$this->assertEquals( 0, $this->dbr->numRows( $res ) );
+		$this->assertSame( 0, $this->dbr->numRows( $res ) );
 	}
 
 }

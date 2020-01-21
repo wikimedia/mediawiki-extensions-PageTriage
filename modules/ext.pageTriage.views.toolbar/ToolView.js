@@ -105,7 +105,7 @@ module.exports = Backbone.View.extend( {
 		}
 
 		// remove the hover action
-		// eslint-disable-next-line no-jquery/no-unbind
+		// eslint-disable-next-line no-jquery/no-bind
 		this.$icon.unbind( 'mouseenter mouseleave' );
 	},
 
@@ -198,7 +198,7 @@ module.exports = Backbone.View.extend( {
 	},
 
 	disable: function () {
-		// eslint-disable-next-line no-jquery/no-unbind
+		// eslint-disable-next-line no-jquery/no-bind
 		this.$icon.unbind( 'mouseenter mouseleave click' );
 		this.setIcon( 'disabled' );
 		this.$icon.css( 'cursor', 'default' );

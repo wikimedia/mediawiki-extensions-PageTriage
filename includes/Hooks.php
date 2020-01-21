@@ -2,16 +2,16 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
+use Article;
 use Content;
 use DatabaseUpdater;
-use EchoEvent;
-use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
-use Article;
-use MediaWiki\Block\DatabaseBlock;
 use DeferredUpdates;
+use EchoEvent;
 use ExtensionRegistry;
 use Html;
 use LinksUpdate;
+use MediaWiki\Block\DatabaseBlock;
+use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddDeletionTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddMaintenanceTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageMarkAsReviewedPresentationModel;
@@ -240,15 +240,15 @@ class Hooks {
 		$pageTriage = new PageTriage( $pageId );
 
 		// action taken by system
-		if ( is_null( $user ) ) {
-			if ( is_null( $reviewed ) ) {
+		if ( $user === null ) {
+			if ( $reviewed === null ) {
 				$reviewed = '0';
 			}
 			return $pageTriage->addToPageTriageQueue( $reviewed );
 		// action taken by a user
 		} else {
 			// set reviewed if it's not set yet
-			if ( is_null( $reviewed ) ) {
+			if ( $reviewed === null ) {
 				$isAutopatrolled = ( $wgUseRCPatrol || $wgUseNPPatrol ) &&
 					!count( $title->getUserPermissionsErrors( 'autopatrol', $user ) );
 				if ( $isAutopatrolled && !$isDraft ) {
@@ -399,7 +399,7 @@ class Hooks {
 		// If it isn't, $needsReview will be null
 		// Also, users without the autopatrol right can't review their own pages
 		$needsReview = PageTriageUtil::doesPageNeedTriage( $article );
-		if ( !is_null( $needsReview )
+		if ( $needsReview !== null
 			&& !( $user->getId() == $article->getOldestRevision()->getUser()
 				&& !$user->isAllowed( 'autopatrol' )
 			)
@@ -424,7 +424,7 @@ class Hooks {
 				$html = Html::rawElement( 'div', [ 'class' => 'mw-pagetriage-markpatrolled' ], $msg );
 				$outputPage->addHTML( $html );
 			}
-		} elseif ( is_null( $needsReview ) && !$article->getTitle()->isMainPage() ) {
+		} elseif ( $needsReview === null && !$article->getTitle()->isMainPage() ) {
 			// Page is potentially usable, but not in the queue, allow users to add it manually
 			// Option is not shown if the article is the main page
 			$outputPage->addModules( 'ext.PageTriage.enqueue' );

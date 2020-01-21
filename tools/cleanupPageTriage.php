@@ -46,7 +46,7 @@ class CleanupPageTriage extends Maintenance {
 			foreach ( $res as $row ) {
 				$page[] = $row->page_id;
 				$start  = $row->page_id;
-			};
+			}
 			$count = count( $page );
 
 			if ( $count > 0 ) {

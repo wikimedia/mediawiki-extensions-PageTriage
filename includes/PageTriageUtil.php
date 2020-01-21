@@ -4,11 +4,11 @@ namespace MediaWiki\Extension\PageTriage;
 
 use ApiBase;
 use Article;
-use MediaWiki\Extension\PageTriage\Api\ApiPageTriageList;
-use MediaWiki\Block\DatabaseBlock;
 use EchoEvent;
 use Exception;
 use ExtensionRegistry;
+use MediaWiki\Block\DatabaseBlock;
+use MediaWiki\Extension\PageTriage\Api\ApiPageTriageList;
 use MediaWiki\MediaWikiServices;
 use ORES\Hooks\Helpers;
 use RequestContext;

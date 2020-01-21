@@ -2,14 +2,14 @@
 
 namespace MediaWiki\Extension\PageTriage\Api;
 
+use ApiBase;
 use ApiMain;
 use Article;
 use DerivativeRequest;
+use ManualLogEntry;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
-use ApiBase;
-use ManualLogEntry;
 
 class ApiPageTriageTagging extends ApiBase {
 

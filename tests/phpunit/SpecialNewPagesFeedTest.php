@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\PageTriage\Test;
 
-use MediaWiki\Extension\PageTriage\SpecialNewPagesFeed;
 use ApiTestCase;
 use ApiUsageException;
+use MediaWiki\Extension\PageTriage\SpecialNewPagesFeed;
 use TestUser;
 
 /**

@@ -2,15 +2,15 @@
 
 namespace MediaWiki\Extension\PageTriage\Api;
 
+use ApiBase;
+use Article;
 use DeferredUpdates;
+use ManualLogEntry;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriage;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
-use Article;
-use ApiBase;
-use ManualLogEntry;
 
 class ApiPageTriageAction extends ApiBase {
 

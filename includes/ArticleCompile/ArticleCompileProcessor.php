@@ -2,12 +2,12 @@
 
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
+use DeferredUpdates;
 use JobQueueGroup;
+use LinksUpdate;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\CompileArticleMetadataJob;
 use MediaWiki\Extension\PageTriage\PageTriage;
-use DeferredUpdates;
-use LinksUpdate;
 use MediaWiki\Logger\LoggerFactory;
 use RequestContext;
 use Title;

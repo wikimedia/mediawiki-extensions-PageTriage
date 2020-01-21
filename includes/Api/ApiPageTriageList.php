@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\PageTriage\Api;
 
+use ApiBase;
+use ApiResult;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\OresMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
-use ApiBase;
-use ApiResult;
 use MediaWiki\Logger\LoggerFactory;
 use ORES\Services\ORESServices;
 use SpecialPage;

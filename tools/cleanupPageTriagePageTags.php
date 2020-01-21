@@ -50,7 +50,7 @@ class CleanupPageTriagePageTags extends Maintenance {
 					$start  = $row->page_id;
 				}
 				$count++;
-			};
+			}
 
 			$pageCount = count( $page );
 			if ( $pageCount > 0 ) {
