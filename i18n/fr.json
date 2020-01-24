@@ -23,7 +23,8 @@
 			"Zarisi",
 			"DSwissK",
 			"Aaribaud",
-			"Thibaut120094"
+			"Thibaut120094",
+			"Choodyam"
 		]
 	},
 	"pagetriage": "Tri des pages",
@@ -461,7 +462,7 @@
 	"echo-category-title-page-review": "{{PLURAL:$1|Relecture|Relectures}} de page",
 	"right-pagetriage-copyvio": "Marquer les pages dans Special:NewPagesFeed comme violations probables des droits d’auteur, via l’API « pagetriage-tagcopyvio »",
 	"action-pagetriage-copyvio": "marquer les pages comme violations probables des droits d’auteur",
-	"group-copyviobot": "Robots ayant violé les droits d’auteurs",
+	"group-copyviobot": "Robots anti-contrefaçon",
 	"group-copyviobot-member": "{{GENDER:$1|robot ayant violé les droits d’auteur}}",
 	"tag-pagetriage": "PageTriage",
 	"tag-pagetriage-description": "Pour les modifications faites avec l’[[mw:Extension:PageTriage|extension PageTriage]]",
