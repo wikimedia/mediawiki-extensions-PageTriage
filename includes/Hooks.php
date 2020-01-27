@@ -848,6 +848,11 @@ class Hooks {
 			'pagetriage_tags',
 			$base . '/PageTriageTagsPatch-recreated.sql'
 		);
+		$updater->dropExtensionIndex(
+			'pagetriage_page_tags',
+			'ptrpt_page_tag_id',
+			$base . '/PageTriagePageTagsPatch-pk.sql'
+		);
 	}
 
 	/**
