@@ -149,7 +149,7 @@ class PageTriage {
 			if ( !$fromRc && $newReviewStatus && $user ) {
 				$rc = RecentChange::newFromConds( [
 					'rc_cur_id' => $this->mPageId,
-					'rc_new' => '1'
+					'rc_source' => RecentChange::SRC_NEW,
 				], __METHOD__ );
 				if ( $rc && !$rc->getAttribute( 'rc_patrolled' ) ) {
 					$rc->reallyMarkPatrolled();
