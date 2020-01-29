@@ -86,6 +86,7 @@ class ApiPageTriageList extends ApiBase {
 			$metaData = $articleMetadata->getMetadata();
 
 			$userPageStatus = PageTriageUtil::pageStatusForUser( $metaData );
+			$oresMetadata = null;
 
 			if ( PageTriageUtil::oresIsAvailable() ) {
 				$oresMetadata = OresMetadata::newFromGlobalState( $this->getContext(), $pages );
@@ -133,7 +134,7 @@ class ApiPageTriageList extends ApiBase {
 				}
 
 				// Add ORES data
-				if ( PageTriageUtil::oresIsAvailable() ) {
+				if ( $oresMetadata !== null ) {
 					$metaData[$page] = $metaData[$page] + $oresMetadata->getMetadata( $page );
 				}
 
@@ -225,6 +226,7 @@ class ApiPageTriageList extends ApiBase {
 		$options = [];
 		$conds = [];
 		$join_conds = [];
+		$offsetOperator = '';
 
 		// Database setup
 		$dbr = wfGetDB( DB_REPLICA );
