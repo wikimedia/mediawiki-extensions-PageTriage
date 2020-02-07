@@ -273,10 +273,9 @@ class Hooks {
 	 * @param Title $title
 	 */
 	private static function flushUserStatusCache( $title ) {
-		global $wgMemc;
-
 		if ( in_array( $title->getNamespace(), [ NS_USER, NS_USER_TALK ] ) ) {
-			$wgMemc->delete( PageTriageUtil::userStatusKey( $title->getText() ) );
+			$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+			$cache->delete( PageTriageUtil::userStatusKey( $title->getText() ) );
 		}
 	}
 

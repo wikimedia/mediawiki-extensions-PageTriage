@@ -98,47 +98,42 @@ class PageTriageUtil {
 	 *         depends on the time the triage queue should look back for listview
 	 */
 	public static function getUnreviewedArticleStat( $namespace = 0 ) {
-		global $wgMemc;
-
 		$namespace = self::validatePageNamespace( $namespace );
 
-		$key = wfMemcKey(
-			'pagetriage',
-			'unreviewed-article-' . $namespace,
-			'stat', self::getCacheVersion()
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+
+		return $cache->getWithSetCallback(
+			$cache->makeKey( 'pagetriage-unreviewed-pages-stat', $namespace ),
+			10 * $cache::TTL_MINUTE,
+			function () use ( $namespace ) {
+				$dbr = wfGetDB( DB_REPLICA );
+
+				$table = [ 'pagetriage_page', 'page' ];
+				$conds = [
+					'ptrp_reviewed' => 0,
+					'page_id = ptrp_page_id',
+					// remove redirect from the unreviewd number per bug40540
+					'page_is_redirect' => 0,
+					'page_namespace' => $namespace
+				];
+
+				$res = $dbr->selectRow(
+					$table,
+					[ 'COUNT(ptrp_page_id) AS total', 'MIN(ptrp_created) AS oldest' ],
+					$conds
+				);
+
+				$data = [ 'count' => 0, 'oldest' => '' ];
+
+				if ( $res ) {
+					$data['count'] = (int)$res->total;
+					$data['oldest'] = $res->oldest;
+				}
+
+				return $data;
+			},
+			[ 'version' => self::getCacheVersion() ]
 		);
-
-		$data = $wgMemc->get( $key );
-		if ( $data !== false ) {
-			return $data;
-		}
-
-		$dbr = wfGetDB( DB_REPLICA );
-
-		$table = [ 'pagetriage_page', 'page' ];
-		$conds = [
-			'ptrp_reviewed' => 0,
-			'page_id = ptrp_page_id',
-			'page_is_redirect' => 0, // remove redirect from the unreviewd number per bug40540
-			'page_namespace' => $namespace
-		];
-
-		$res = $dbr->selectRow(
-			$table,
-			[ 'COUNT(ptrp_page_id) AS total', 'MIN(ptrp_created) AS oldest' ],
-			$conds
-		);
-
-		$data = [ 'count' => 0, 'oldest' => '' ];
-
-		if ( $res ) {
-			$data['count'] = (int)$res->total;
-			$data['oldest'] = $res->oldest;
-		}
-
-		// make it expire in 10 minutes
-		$wgMemc->set( $key, $data, 600 );
-		return $data;
 	}
 
 	/**
@@ -162,50 +157,42 @@ class PageTriageUtil {
 	 * @return array Stats to be returned
 	 */
 	public static function getReviewedArticleStat( $namespace = 0 ) {
-		global $wgMemc;
-
 		$namespace = self::validatePageNamespace( $namespace );
 
-		$key = wfMemcKey(
-			'pagetriage',
-			'reviewed-article-' . $namespace,
-			'stat',
-			self::getCacheVersion()
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+
+		return $cache->getWithSetCallback(
+			$cache->makeKey( 'pagetriage-reviewed-pages-stat', $namespace ),
+			10 * $cache::TTL_MINUTE,
+			function () use ( $namespace ) {
+				$time = (int)wfTimestamp( TS_UNIX ) - 7 * 24 * 60 * 60;
+
+				$dbr = wfGetDB( DB_REPLICA );
+
+				$table = [ 'pagetriage_page', 'page' ];
+				$conds = [
+					'ptrp_reviewed' => 1,
+					'page_id = ptrp_page_id',
+					'page_namespace' => $namespace,
+					'ptrp_reviewed_updated > ' . $dbr->addQuotes( $dbr->timestamp( $time ) )
+				];
+
+				$res = $dbr->selectRow(
+					$table,
+					[ 'COUNT(ptrp_page_id) AS reviewed_count' ],
+					$conds
+				);
+
+				$data = [ 'reviewed_count' => 0 ];
+
+				if ( $res ) {
+					$data['reviewed_count'] = (int)$res->reviewed_count;
+				}
+
+				return $data;
+			},
+			[ 'version' => self::getCacheVersion() ]
 		);
-
-		$data = $wgMemc->get( $key );
-		if ( $data !== false ) {
-			return $data;
-		}
-
-		$time = (int)wfTimestamp( TS_UNIX ) - 7 * 24 * 60 * 60;
-
-		$dbr = wfGetDB( DB_REPLICA );
-
-		$table = [ 'pagetriage_page', 'page' ];
-		$conds = [
-			'ptrp_reviewed' => 1,
-			'page_id = ptrp_page_id',
-			'page_namespace' => $namespace,
-			'ptrp_reviewed_updated > ' . $dbr->addQuotes( $dbr->timestamp( $time ) )
-		];
-
-		$res = $dbr->selectRow(
-			$table,
-			[ 'COUNT(ptrp_page_id) AS reviewed_count' ],
-			$conds
-		);
-
-		$data = [ 'reviewed_count' => 0 ];
-
-		if ( $res ) {
-			$data['reviewed_count'] = (int)$res->reviewed_count;
-		}
-
-		// make it expire in 10 minutes
-		$wgMemc->set( $key, $data, 600 );
-
-		return $data;
 	}
 
 	/**
@@ -215,44 +202,45 @@ class PageTriageUtil {
 	 * @return array
 	 */
 	public static function getTopTriagers( $time = 'last-week' ) {
-		global $wgMemc;
-
 		$now = (int)wfTimestamp( TS_UNIX );
 
 		// times to look back for top trigers and expiration time in cache
 		$timeFrame = [
-				'last-day' => [ 'ts' => $now - 24 * 60 * 60, 'expire' => 60 * 60 ],
-				'last-week' => [ 'ts' => $now - 7 * 24 * 60 * 60, 'expire' => 24 * 60 * 60 ],
-				'last-month' => [ 'ts' => $now - 30 * 24 * 60 * 60, 'expire' => 24 * 60 * 60 ],
+			'last-day' => [ 'ts' => $now - 24 * 60 * 60, 'expire' => 60 * 60 ],
+			'last-week' => [ 'ts' => $now - 7 * 24 * 60 * 60, 'expire' => 24 * 60 * 60 ],
+			'last-month' => [ 'ts' => $now - 30 * 24 * 60 * 60, 'expire' => 24 * 60 * 60 ],
 		];
 
 		if ( !isset( $timeFrame[$time] ) ) {
 			$time = 'last-day';
 		}
 
-		$dbr = wfGetDB( DB_REPLICA );
-		$key = wfMemcKey( 'pagetriage', 'top-triager', $time, self::getCacheVersion() );
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$fname = __METHOD__;
 
-		$topTriager = $wgMemc->get( $key );
-		if ( $topTriager === false ) {
-			$res = $dbr->select(
-				[ 'pagetriage_log', 'user' ],
-				[ 'user_name', 'user_id', 'COUNT(ptrl_id) AS num' ],
-				[
-					'user_id = ptrl_user_id',
-					'ptrl_reviewed' => 1, // only reviewed status
-					'ptrl_timestamp > ' . $dbr->addQuotes( $dbr->timestamp( $timeFrame[$time]['ts'] ) )
-				],
-				__METHOD__,
-				[ 'GROUP BY' => 'user_id', 'ORDER BY' => 'num DESC', 'LIMIT' => 50 ]
-			);
+		return $cache->getWithSetCallback(
+			$cache->makeKey( 'pagetriage-top-triager', $time ),
+			$timeFrame[$time]['expire'],
+			function () use ( $timeFrame, $time, $fname ) {
+				$dbr = wfGetDB( DB_REPLICA );
 
-			$topTriager = iterator_to_array( $res );
+				$res = $dbr->select(
+					[ 'pagetriage_log', 'user' ],
+					[ 'user_name', 'user_id', 'COUNT(ptrl_id) AS num' ],
+					[
+						'user_id = ptrl_user_id',
+						'ptrl_reviewed' => 1, // only reviewed status
+						'ptrl_timestamp > ' .
+							$dbr->addQuotes( $dbr->timestamp( $timeFrame[$time]['ts'] ) )
+					],
+					$fname,
+					[ 'GROUP BY' => 'user_id', 'ORDER BY' => 'num DESC', 'LIMIT' => 50 ]
+				);
 
-			$wgMemc->set( $key, $topTriager, $timeFrame[$time]['expire'] );
-		}
-
-		return $topTriager;
+				return iterator_to_array( $res );
+			},
+			[ 'version' => self::getCacheVersion() ]
+		);
 	}
 
 	/**
@@ -261,7 +249,13 @@ class PageTriageUtil {
 	 * @return string
 	 */
 	public static function userStatusKey( $userName ) {
-		return wfMemcKey( 'pagetriage', 'user-page-status', sha1( $userName ), self::getCacheVersion() );
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+
+		return $cache->makeKey(
+			'pagetriage-user-page-status',
+			sha1( $userName ),
+			self::getCacheVersion()
+		);
 	}
 
 	/**
@@ -270,10 +264,10 @@ class PageTriageUtil {
 	 * @return array
 	 */
 	public static function pageStatusForUser( $users ) {
-		global $wgMemc;
-
 		$return = [];
 		$title  = [];
+
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 
 		foreach ( $users as $user ) {
 			$user = (array)$user;
@@ -283,7 +277,7 @@ class PageTriageUtil {
 				if ( !isset( $user[$val] ) || !$user[$val] ) {
 					continue;
 				}
-				$data = $wgMemc->get( self::userStatusKey( $user[$val] ) );
+				$data = $cache->get( self::userStatusKey( $user[$val] ) );
 				// data is in memcache
 				if ( $data !== false ) {
 					foreach ( $data as $pageKey => $status ) {
@@ -342,7 +336,7 @@ class PageTriageUtil {
 				} else {
 					$return[$value['t']->getPrefixedDBkey()] = 1;
 				}
-				$wgMemc->set(
+				$cache->set(
 					self::userStatusKey( $value['user_name'] ),
 					$dataToCache[$value['user_name']],
 					3600
