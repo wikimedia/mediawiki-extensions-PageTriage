@@ -249,8 +249,10 @@ class Hooks {
 		} else {
 			// set reviewed if it's not set yet
 			if ( $reviewed === null ) {
+				$permissionErrors = MediaWikiServices::getInstance()->getPermissionManager()
+					->getPermissionErrors( 'autopatrol', $user, $title );
 				$isAutopatrolled = ( $wgUseRCPatrol || $wgUseNPPatrol ) &&
-					!count( $title->getUserPermissionsErrors( 'autopatrol', $user ) );
+					!count( $permissionErrors );
 				if ( $isAutopatrolled && !$isDraft ) {
 					// Set as reviewed if the user has the autopatrol right
 					// and they're not creating a Draft.
