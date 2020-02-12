@@ -381,7 +381,8 @@ class Hooks {
 		}
 
 		// Don't show anything for user with no patrol right
-		if ( !$article->getTitle()->quickUserCan( 'patrol' ) ) {
+		$permManager = MediaWikiServices::getInstance()->getPermissionManager();
+		if ( !$permManager->quickUserCan( 'patrol', $user, $article->getTitle() ) ) {
 			return;
 		}
 
