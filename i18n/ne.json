@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"राम प्रसाद जोशी",
-			"Nirajan pant"
+			"Nirajan pant",
+			"पर्वत सुबेदी"
 		]
 	},
 	"pagetriage-filter-predicted-class-start": "शुरूवात",
@@ -10,5 +11,6 @@
 	"pagetriage-filter-stat-predicted-class-stub": "ठुटो",
 	"pagetriage-filter-stat-predicted-class-start": "शुरूवात",
 	"pagetriage-filter-stat-predicted-issues-attack": "आक्रमण",
+	"pagetriage-refresh-list": "सूची ताजा गर्नुहोस्",
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|धन्यवाद दिने}}}}"
 }
