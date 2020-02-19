@@ -115,26 +115,28 @@ class Hooks {
 	 * New article is created, insert it into PageTriage Queue and compile metadata.
 	 *
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageContentInsertComplete
-	 * @param WikiPage $article WikiPage created
+	 * @param WikiPage $wikiPage WikiPage created
 	 * @param User $user User creating the article
-	 * @param Content $content New content
-	 * @param string $summary Edit summary/comment
-	 * @param bool $isMinor Whether or not the edit was marked as minor
+	 * @param Content $content New content (No longer used)
+	 * @param string $summary Edit summary/comment (No longer used)
+	 * @param bool $isMinor Whether or not the edit was marked as minor (No longer used)
 	 * @param bool $isWatch (No longer used)
 	 * @param bool $section (No longer used)
-	 * @param int $flags Flags passed to Article::doEdit()
-	 * @param Revision $revision New Revision of the article
+	 * @param int $flags Flags passed to Article::doEdit() (No longer used)
+	 * @param Revision $revision New Revision of the article (No longer used)
 	 */
 	public static function onPageContentInsertComplete(
-		$article, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision
+		WikiPage $wikiPage,
+		$user,
+		$content, $summary, $isMinor, $isWatch, $section, $flags, $revision
 	) {
 		// Don't add to queue if not in a namespace of interest.
-		if ( !in_array( $article->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
+		if ( !in_array( $wikiPage->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			return;
 		}
 
 		// Add item to queue. Metadata compilation will get triggered in the LinksUpdate hook.
-		self::addToPageTriageQueue( $article->getId(), $article->getTitle(), $user );
+		self::addToPageTriageQueue( $wikiPage->getId(), $wikiPage->getTitle(), $user );
 	}
 
 	/**
@@ -296,7 +298,7 @@ class Hooks {
 	 * @param Article $article
 	 * @return bool
 	 */
-	private static function shouldShowNoIndex( $article ) {
+	private static function shouldShowNoIndex( Article $article ) {
 		global $wgPageTriageNoIndexUnreviewedNewArticles;
 
 		// If the __NOINDEX__ magic word is on a new article, then allow
@@ -306,12 +308,12 @@ class Hooks {
 		) {
 			// Short circuit since we know it will fail the next set
 			// of tests as well.
-			return self::isArticleNew( $article );
+			return self::isPageNew( $article->getPage() );
 		}
 
 		return $wgPageTriageNoIndexUnreviewedNewArticles
-			&& PageTriageUtil::doesPageNeedTriage( $article )
-			&& self::isArticleNew( $article );
+			&& PageTriageUtil::doesPageNeedTriage( $article->getPage() )
+			&& self::isPageNew( $article->getPage() );
 	}
 
 	/**
@@ -320,12 +322,12 @@ class Hooks {
 	 * Look in cache for the creation date, if not found, query the replica for the value
 	 * of ptrp_created.
 	 *
-	 * @param Article $article Article to check
+	 * @param WikiPage $wikiPage WikiPage to check
 	 * @return bool
 	 */
-	private static function isArticleNew( $article ) {
+	private static function isPageNew( WikiPage $wikiPage ) {
 		global $wgPageTriageMaxAge;
-		$pageId = $article->getId();
+		$pageId = $wikiPage->getId();
 		// Check cache for creation date.
 		$metaDataObject = new ArticleMetadata( [ $pageId ] );
 		$cacheData = $metaDataObject->getMetadataFromCache( $pageId );
@@ -363,9 +365,11 @@ class Hooks {
 	 * @param Article $article Article object to show link for.
 	 * @param bool $patrolFooterShown whether the patrol footer is shown
 	 */
-	public static function onArticleViewFooter( $article, $patrolFooterShown ) {
+	public static function onArticleViewFooter( Article $article, $patrolFooterShown ) {
 		global $wgPageTriageEnableCurationToolbar;
 
+		$wikiPage = $article->getPage();
+		$title = $wikiPage->getTitle();
 		$context = $article->getContext();
 		$user = $context->getUser();
 		$outputPage = $context->getOutput();
@@ -383,12 +387,12 @@ class Hooks {
 
 		// Don't show anything for user with no patrol right
 		$permManager = MediaWikiServices::getInstance()->getPermissionManager();
-		if ( !$permManager->quickUserCan( 'patrol', $user, $article->getTitle() ) ) {
+		if ( !$permManager->quickUserCan( 'patrol', $user, $title ) ) {
 			return;
 		}
 
 		// Only show in defined namespaces
-		if ( !in_array( $article->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
+		if ( !in_array( $title->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			return;
 		}
 
@@ -400,10 +404,11 @@ class Hooks {
 		// See if the page is in the PageTriage page queue
 		// If it isn't, $needsReview will be null
 		// Also, users without the autopatrol right can't review their own pages
-		$needsReview = PageTriageUtil::doesPageNeedTriage( $article );
+		$needsReview = PageTriageUtil::doesPageNeedTriage( $wikiPage );
 		if ( $needsReview !== null
-			&& !( $user->getId() == $article->getOldestRevision()->getUser()
-				&& !$user->isAllowed( 'autopatrol' )
+			&& (
+				$user->getId() != $wikiPage->getOldestRevision()->getUser()
+				|| $permManager->userHasRight( $user, 'autopatrol' )
 			)
 		) {
 			if ( $wgPageTriageEnableCurationToolbar || $request->getVal( 'curationtoolbar' ) === 'true' ) {
@@ -426,7 +431,7 @@ class Hooks {
 				$html = Html::rawElement( 'div', [ 'class' => 'mw-pagetriage-markpatrolled' ], $msg );
 				$outputPage->addHTML( $html );
 			}
-		} elseif ( $needsReview === null && !$article->getTitle()->isMainPage() ) {
+		} elseif ( $needsReview === null && !$title->isMainPage() ) {
 			// Page is potentially usable, but not in the queue, allow users to add it manually
 			// Option is not shown if the article is the main page
 			$outputPage->addModules( 'ext.PageTriage.enqueue' );
@@ -466,9 +471,13 @@ class Hooks {
 					$acp->compileMetadata();
 				}
 			}
-			$article = Article::newFromID( $rc->getAttribute( 'rc_cur_id' ) );
-			if ( $article ) {
-				PageTriageUtil::createNotificationEvent( $article, $user, 'pagetriage-mark-as-reviewed' );
+			$title = Title::newFromID( $rc->getAttribute( 'rc_cur_id' ) );
+			if ( $title ) {
+				PageTriageUtil::createNotificationEvent(
+					$title,
+					$user,
+					'pagetriage-mark-as-reviewed'
+				);
 			}
 		}
 	}

@@ -62,7 +62,7 @@ class ApiPageTriageAction extends ApiBase {
 			// notification on mark as reviewed
 			if ( !$skipNotif && $reviewedStatus ) {
 				PageTriageUtil::createNotificationEvent(
-					$article,
+					$article->getTitle(),
 					$this->getUser(),
 					'pagetriage-mark-as-reviewed',
 					[

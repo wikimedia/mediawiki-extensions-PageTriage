@@ -83,7 +83,7 @@ abstract class ArticleCompileInterface {
 		}
 	}
 
-	protected function getArticleByPageId( $pageId ) {
+	protected function getWikiPageByPageId( $pageId ) : ?WikiPage {
 		// Try if there is an up-to-date wikipage object from article save
 		// else try to create a new one, this is important for replication delay
 		if ( isset( $this->articles[$pageId] ) ) {
@@ -96,6 +96,7 @@ abstract class ArticleCompileInterface {
 			}
 			$article = WikiPage::newFromID( $pageId, $from );
 		}
+
 		return $article;
 	}
 
@@ -110,21 +111,29 @@ abstract class ArticleCompileInterface {
 				return $revision->getContent();
 			}
 		}
-		// Fall back on creating a new Article object and fetching from the DB
-		$article = $this->getArticleByPageId( $pageId );
-		return $article ? $article->getContent() : null;
+		// Fall back on creating a new WikiPage object and fetching from the DB
+		$wikiPage = $this->getWikiPageByPageId( $pageId );
+
+		return $wikiPage ? $wikiPage->getContent() : null;
 	}
 
+	/**
+	 * @param int $pageId
+	 * @return bool|\ParserOutput|null
+	 */
 	protected function getParserOutputByPageId( $pageId ) {
 		// Prefer a preregistered LinksUpdate
 		if ( isset( $this->linksUpdates[$pageId] ) ) {
 			return $this->linksUpdates[$pageId]->getParserOutput();
 		}
-		// Fall back on Article
-		$article = $this->getArticleByPageId( $pageId );
-		if ( !$article ) {
+		// Fall back on WikiPage
+		$wikiPage = $this->getWikiPageByPageId( $pageId );
+		if ( !$wikiPage ) {
 			return null;
 		}
-		return $article->getParserOutput( $article->makeParserOptions( 'canonical' ) );
+
+		return $wikiPage->getParserOutput(
+			$wikiPage->makeParserOptions( 'canonical' )
+		);
 	}
 }

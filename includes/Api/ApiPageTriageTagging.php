@@ -4,12 +4,13 @@ namespace MediaWiki\Extension\PageTriage\Api;
 
 use ApiBase;
 use ApiMain;
-use Article;
+use ApiUsageException;
 use DerivativeRequest;
 use ManualLogEntry;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
+use Title;
 
 class ApiPageTriageTagging extends ApiBase {
 
@@ -23,14 +24,8 @@ class ApiPageTriageTagging extends ApiBase {
 		if ( !ArticleMetadata::validatePageIds( [ $params['pageid'] ], DB_REPLICA ) ) {
 			$this->dieWithError( 'apierror-bad-pagetriage-page' );
 		}
+		$title = $this->getTitleByPageId( $params['pageid'] );
 
-		$article = Article::newFromID( $params['pageid'] );
-
-		if ( !$article ) {
-			$this->dieWithError( 'apierror-missingtitle', 'bad-page' );
-		}
-
-		$title = $article->getTitle();
 		$this->checkTitleUserPermissions( $title, [ 'create', 'edit', 'patrol' ] );
 
 		if ( $this->getUser()->pingLimiter( 'pagetriage-tagging-action' ) ) {
@@ -117,8 +112,7 @@ class ApiPageTriageTagging extends ApiBase {
 						'pagetriage-deletion' => 'delete'
 					];
 					PageTriageUtil::createNotificationEvent(
-						// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
-						$article,
+						$title,
 						$this->getUser(),
 						'pagetriage-add-deletion-tag',
 						[
@@ -131,8 +125,7 @@ class ApiPageTriageTagging extends ApiBase {
 						'pagetriage-curation' => 'tag'
 					];
 					PageTriageUtil::createNotificationEvent(
-						// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
-						$article,
+						$title,
 						$this->getUser(),
 						'pagetriage-add-maintenance-tag',
 						[
@@ -146,7 +139,7 @@ class ApiPageTriageTagging extends ApiBase {
 				foreach ( $entry as $type => $action ) {
 					$logEntry = new ManualLogEntry( $type, $action );
 					$logEntry->setPerformer( $this->getUser() );
-					$logEntry->setTarget( $article->getTitle() );
+					$logEntry->setTarget( $title );
 					if ( $note ) {
 						$logEntry->setComment( $note );
 					}
@@ -196,5 +189,21 @@ class ApiPageTriageTagging extends ApiBase {
 
 	public function isWriteMode() {
 		return true;
+	}
+
+	/**
+	 * type helper for strict checks
+	 * @param int $pageId
+	 * @return Title
+	 * @throws ApiUsageException
+	 */
+	private function getTitleByPageId( $pageId ) : Title {
+		$title = Title::newFromID( $pageId );
+		if ( $title === null ) {
+			$this->dieWithError( 'apierror-missingtitle', 'bad-page' );
+			throw new \LogicException( __METHOD__ . ': Impossible case, phpcs helper' );
+		}
+
+		return $title;
 	}
 }

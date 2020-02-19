@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\PageTriage;
 
 use ApiBase;
-use Article;
 use EchoEvent;
 use Exception;
 use ExtensionRegistry;
@@ -24,7 +23,7 @@ class PageTriageUtil {
 	/**
 	 * Get whether or not a page needs triaging
 	 *
-	 * @param WikiPage|Article|int $article
+	 * @param WikiPage $page
 	 *
 	 * @throws Exception
 	 * @return Mixed null if the page is not in the triage system,
@@ -32,19 +31,8 @@ class PageTriageUtil {
 	 * Return convention is this way so that null and false are equivalent
 	 * with a straight boolean test.
 	 */
-	public static function doesPageNeedTriage( $article ) {
-		if ( !$article ) {
-			throw new Exception( "Invalid argument to " . __METHOD__ );
-		}
-
-		if ( $article instanceof WikiPage || $article instanceof Article ) {
-			$pageId = $article->getId();
-		} elseif ( is_numeric( $article ) ) {
-			$pageId = $article;
-		} else {
-			return null;
-		}
-
+	public static function doesPageNeedTriage( WikiPage $page ) {
+		$pageId = $page->getId();
 		$dbr = wfGetDB( DB_REPLICA );
 
 		$row = $dbr->selectRow( 'pagetriage_page', 'ptrp_reviewed',
@@ -411,19 +399,19 @@ class PageTriageUtil {
 	 * 3. 'Add maintenance tag' curation flyout
 	 * 4. 'Add deletion tag' curation flyout
 	 *
-	 * @param Article $article
+	 * @param Title $title
 	 * @param User $user
 	 * @param string $type notification type
 	 * @param array|null $extra
 	 */
-	public static function createNotificationEvent( $article, $user, $type, $extra = null ) {
+	public static function createNotificationEvent( Title $title, $user, $type, $extra = null ) {
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) ) {
 			return;
 		}
 
 		$params = [
 			'type' => $type,
-			'title' => $article->getTitle(),
+			'title' => $title,
 			'agent' => $user,
 		];
 
