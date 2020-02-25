@@ -5,5 +5,7 @@
 		]
 	},
 	"pagetriage-please-wait": "Oota...",
-	"pagetriage-showing": "Näytethään:"
+	"pagetriage-showing": "Näytethään:",
+	"pagetriage-info-timestamp-date-format": "d. MMMM yyyy",
+	"pagetriage-tag-warning-notice": "Huomaa: Tämä sivu on ainoasthaan $1 {{PLURAL:$1|minuutin|minuuttia}} vanha. Älä markeeraa sitä vielä, jollei asia ole vakava."
 }
