@@ -227,6 +227,9 @@ class ArticleMetadata {
 
 	/**
 	 * Get the pages without metadata yet
+	 * @param array $articles
+	 * @param array $data
+	 * @return array
 	 */
 	private static function getPagesWithoutMetadata( $articles, $data ) {
 		foreach ( $articles as $key => $pageId ) {

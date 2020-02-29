@@ -434,8 +434,8 @@ class ApiPageTriageList extends ApiBase {
 
 	/**
 	 * @param string $model Name of the model this join is for
-	 * @param array $tables
-	 * @param array $join_conds
+	 * @param array &$tables
+	 * @param array &$join_conds
 	 */
 	private static function joinWithOres( $model, &$tables, &$join_conds ) {
 		$modelId = ORESServices::getModelLookup()->getModelId( $model );
