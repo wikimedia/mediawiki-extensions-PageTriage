@@ -6,7 +6,8 @@
 			"Borislav",
 			"StanProg",
 			"Vlad5250",
-			"Vodnokon4e"
+			"Vodnokon4e",
+			"Ted Masters"
 		]
 	},
 	"pagetriage": "Проверка на страници",
@@ -14,6 +15,7 @@
 	"pagetriage-new-page-patrol": "Патрулиране на нови страници",
 	"pagetriage-articles-for-creation": "Статии за създаване",
 	"pagetriage-please-wait": "Изчакайте…",
+	"pagetriage-api-invalidid": "Идентификационният номер, който предоставихте ($1), не е валиден.",
 	"pagetriage-markpatrolled": "Отбелязване на страницата като проверена",
 	"pagetriage-markunpatrolled": "Отбелязване на страницата като непроверена",
 	"pagetriage-api-error": "Възникна грешка при зареждането на интерфейса от API. Моля, презаредете страницата.",
