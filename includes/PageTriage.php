@@ -97,14 +97,18 @@ class PageTriage {
 	 * @param string $reviewed see PageTriage::getValidReviewedStatus()
 	 * @param User|null $user
 	 * @param bool $fromRc
+	 * @return bool If a page status was updated
 	 */
 	public function setTriageStatus( $reviewed, User $user = null, $fromRc = false ) {
 		if ( !array_key_exists( $reviewed, self::getValidReviewedStatus() ) ) {
 			$reviewed = '0';
 		}
 
-		if ( !$this->retrieve() || $this->mReviewed == $reviewed ) {
-			return; // status already set
+		if ( !$this->retrieve() ) {
+			return false; // Page doesn't exist in pagetriage_page
+		}
+		if ( $this->mReviewed == $reviewed ) {
+			return false; // Status doesn't change
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
@@ -151,6 +155,7 @@ class PageTriage {
 		if ( array_key_exists( $this->mPageId, $metadataArray ) ) {
 			$articleMetadata->flushMetadataFromCache( $this->mPageId );
 		}
+		return true;
 	}
 
 	/**

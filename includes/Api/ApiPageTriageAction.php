@@ -33,13 +33,12 @@ class ApiPageTriageAction extends ApiBase {
 
 		if ( isset( $params['reviewed'] ) ) {
 			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
-			$this->markAsReviewed( $article, $params['reviewed'], $note, $params['skipnotif'] );
+			$result = $this->markAsReviewed( $article, $params['reviewed'], $note, $params['skipnotif'] );
 		} else {
 			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
-			$this->enqueue( $article, $note );
+			$result = $this->enqueue( $article, $note );
 		}
 
-		$result = [ 'result' => 'success' ];
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
@@ -48,6 +47,7 @@ class ApiPageTriageAction extends ApiBase {
 	 * @param string $reviewedStatus
 	 * @param string $note
 	 * @param bool $skipNotif
+	 * @return array Result for API
 	 */
 	private function markAsReviewed( Article $article, $reviewedStatus, $note, $skipNotif ) {
 		if ( !ArticleMetadata::validatePageIds( [ $article->getId() ], DB_REPLICA ) ) {
@@ -55,26 +55,36 @@ class ApiPageTriageAction extends ApiBase {
 		}
 
 		$pageTriage = new PageTriage( $article->getId() );
-		$pageTriage->setTriageStatus( $reviewedStatus, $this->getUser() );
+		$statusChanged = $pageTriage->setTriageStatus( $reviewedStatus, $this->getUser() );
 
-		// notification on mark as reviewed
-		if ( !$skipNotif && $reviewedStatus ) {
-			PageTriageUtil::createNotificationEvent(
-				$article,
-				$this->getUser(),
-				'pagetriage-mark-as-reviewed',
-				[
-					'note' => $note,
-				]
-			);
+		// no notification or log entry if page status didn't change
+		if ( $statusChanged ) {
+			// notification on mark as reviewed
+			if ( !$skipNotif && $reviewedStatus ) {
+				PageTriageUtil::createNotificationEvent(
+					$article,
+					$this->getUser(),
+					'pagetriage-mark-as-reviewed',
+					[
+						'note' => $note,
+					]
+				);
+			}
+
+			$this->logAction( $article, $reviewedStatus ? 'reviewed' : 'unreviewed', $note );
+			return [ 'result' => 'success' ];
+		} else {
+			return [
+				'result' => 'done',
+				'pagetriage_unchanged_status' => $article->getId(),
+			];
 		}
-
-		$this->logAction( $article, $reviewedStatus ? 'reviewed' : 'unreviewed', $note );
 	}
 
 	/**
 	 * @param Article $article
 	 * @param string $note
+	 * @return array Result for API
 	 */
 	private function enqueue( Article $article, $note ) {
 		$title = $article->getTitle();
@@ -107,6 +117,8 @@ class ApiPageTriageAction extends ApiBase {
 
 		$this->logAction( $article, 'enqueue', $note );
 		$this->logAction( $article, 'unreviewed', $note );
+
+		return [ 'result' => 'success' ];
 	}
 
 	/**
