@@ -6,5 +6,7 @@
 	},
 	"pagetriage-please-wait": "ብኽብረትካ ተጸበይ...",
 	"pagetriage-author-bot": "ቦት",
-	"pagetriage-triage": "ከልስ"
+	"pagetriage-triage": "ከልስ",
+	"pagetriage-filter-article": "ጹሑፍ",
+	"pagetriage-tags-param-article-label": "ጹሑፍ፥"
 }
