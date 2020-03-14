@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
 use ContentHandler;
-use MessageCache;
+use MediaWiki\MediaWikiServices;
 use Sanitizer;
 
 /**
@@ -56,7 +56,7 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 		}
 
 		$text = trim( Sanitizer::stripAllTags(
-			MessageCache::singleton()->parse( $text )->getText( [
+			MediaWikiServices::getInstance()->getMessageCache()->parse( $text )->getText( [
 				'enableSectionEditLinks' => false,
 			] )
 		) );
