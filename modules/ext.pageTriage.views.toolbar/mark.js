@@ -30,7 +30,7 @@ module.exports = ToolView.extend( {
 
 	// overwrite parent function
 	setIcon: function ( dir ) {
-		if ( typeof ( dir ) !== 'string' ) {
+		if ( typeof dir !== 'string' ) {
 			dir = 'normal';
 		}
 		if ( dir === 'normal' && this.model.get( 'patrol_status' ) > 0 ) {
