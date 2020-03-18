@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Гусейн"
+			"Гусейн",
+			"Patriot Kur"
 		]
 	},
 	"pagetriage-filter-show-heading": "Нишо дој:",
@@ -9,7 +10,7 @@
 	"pagetriage-filter-stat-all": "Һәммәј",
 	"pagetriage-tags-cat-metadata-label": "Метамәлумотон",
 	"pagetriage-tags-cat-sources-label": "Сәвонон",
-	"pagetriage-tags-param-free-yes-label": "Бәле",
-	"pagetriage-tags-param-free-no-label": "Не",
+	"pagetriage-tags-param-free-yes-label": "Bəle",
+	"pagetriage-tags-param-free-no-label": "Ne",
 	"pagetriage-info-history-header": "Тарых"
 }
