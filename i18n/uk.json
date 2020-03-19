@@ -309,7 +309,7 @@
 	"echo-pref-subscription-page-review": "Перевірка сторінки, створеної мною",
 	"echo-pref-tooltip-page-review": "Повідомляти мене, коли хтось перевіряє сторінку, створену мною.",
 	"echo-category-title-page-review": "{{PLURAL:$1|перевірка|перевірки|перевірок}} сторінки",
-	"right-pagetriage-copyvio": "можливість позначати сторінки на Special:NewPagesFeed як ймовірні порушення авторських прав, використовуючи pagetriage-tagcopyvio API",
+	"right-pagetriage-copyvio": "Можливість позначати сторінки на Special:NewPagesFeed як ймовірні порушення авторських прав, використовуючи pagetriage-tagcopyvio API",
 	"action-pagetriage-copyvio": "позначення сторінок як ймовірні порушення авторських прав",
 	"group-copyviobot": "Боти, що працюють з копівіо",
 	"group-copyviobot-member": "{{GENDER:$1|бот, що працює з копівіо}}",
