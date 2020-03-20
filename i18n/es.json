@@ -425,6 +425,7 @@
 	"apihelp-pagetriagelist-param-showunreviewed": "Si se deben incluir las no revisadas.",
 	"apihelp-pagetriagelist-param-showdeleted": "Si se deben incluir las \"propuestas para eliminación\".",
 	"apihelp-pagetriagelist-param-limit": "La cantidad máxima de resultados que devolver.",
+	"apihelp-pagetriagelist-param-offset": "Cronomarcador a partir del cual comenzar.",
 	"apihelp-pagetriagelist-param-namespace": "De qué espacio de nombres se recuperarán las páginas.",
 	"apihelp-pagetriagelist-param-no_category": "Si se deben mostrar solo las páginas sin categorías.",
 	"apihelp-pagetriagelist-param-no_inbound_links": "Si se deben mostrar solo las páginas sin enlaces entrantes.",
