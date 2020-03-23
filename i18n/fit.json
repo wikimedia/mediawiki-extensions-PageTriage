@@ -5,7 +5,9 @@
 		]
 	},
 	"pagetriage-please-wait": "Oota...",
+	"pagetriage-edits": "$1 {{PLURAL:$1|mookkaus|mookkausta}}",
 	"pagetriage-showing": "Näytethään:",
 	"pagetriage-info-timestamp-date-format": "d. MMMM yyyy",
+	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|mookkaus|mookkausta}}",
 	"pagetriage-tag-warning-notice": "Huomaa: Tämä sivu on ainoasthaan $1 {{PLURAL:$1|minuutin|minuuttia}} vanha. Älä markeeraa sitä vielä, jollei asia ole vakava."
 }
