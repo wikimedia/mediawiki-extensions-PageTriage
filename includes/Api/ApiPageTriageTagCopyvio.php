@@ -43,9 +43,9 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 			$result = [ 'result' => 'success' ];
 		} else {
 			$result = [
-					'result' => 'done',
-					'pagetriage_unchanged_status' => $revision->getId(),
-				];
+				'result' => 'done',
+				'pagetriage_unchanged_status' => $revision->getId(),
+			];
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
