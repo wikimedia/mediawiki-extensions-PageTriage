@@ -16,6 +16,7 @@ use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddDeletionTagPresent
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddMaintenanceTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageMarkAsReviewedPresentationModel;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\SlotRecord;
 use MWTimestamp;
 use ParserOutput;
 use RecentChange;
@@ -102,8 +103,13 @@ class Hooks {
 		if ( $rev && $rev->getParentId() ) {
 			// Make sure $prev->getContent() is done post-send if possible
 			DeferredUpdates::addCallableUpdate( function () use ( $rev, $wikiPage, $user ) {
-				$prev = Revision::newFromId( $rev->getParentId() );
-				if ( $prev && !$wikiPage->isRedirect() && $prev->getContent()->isRedirect() ) {
+				$prevRevRecord = MediaWikiServices::getInstance()
+					->getRevisionLookup()
+					->getRevisionById( $rev->getParentId() );
+				if ( $prevRevRecord &&
+					!$wikiPage->isRedirect() &&
+					$prevRevRecord->getContent( SlotRecord::MAIN )->isRedirect()
+				) {
 					// Add item to queue, if it's not already there.
 					self::addToPageTriageQueue( $wikiPage->getId(), $wikiPage->getTitle(), $user );
 				}
