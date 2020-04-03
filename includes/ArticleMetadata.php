@@ -7,6 +7,8 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use RequestContext;
 use Title;
+use WANObjectCache;
+use Wikimedia\Rdbms\Database;
 
 /**
  * Handles article metadata retrieval and saving to cache
@@ -19,6 +21,9 @@ class ArticleMetadata {
 	 * @var array Page IDs that are known to exist in the queue
 	 */
 	private static $cache = [];
+
+	/** @var string */
+	private const KEY_COLLECTION = 'pagetriage-article-metadata';
 
 	/**
 	 * @param int[] $pageIds List of page IDs.
@@ -61,67 +66,21 @@ class ArticleMetadata {
 	public function flushMetadataFromCache( $pageId = null ) {
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 
-		$keyPrefix = $this->memcKeyPrefix();
 		$pageIdsPurge = ( $pageId === null ) ? $this->pageIds : [ $pageId ];
 		foreach ( $pageIdsPurge as $pageIdPurge ) {
-			$cache->delete( $keyPrefix . '-' . $pageIdPurge );
+			$cache->delete( $cache->makeKey( self::KEY_COLLECTION, $pageIdPurge ) );
+			// For Hooks::isPageNew
 			$cache->delete( $cache->makeKey( 'pagetriage-page-created', $pageIdPurge ) );
 		}
 	}
 
 	/**
-	 * Set the metadata to cache
-	 * @param int $pageId page id
-	 * @param mixed $singleData data to be saved
-	 */
-	public function setMetadataToCache( $pageId, $singleData ) {
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-		$this->flushMetadataFromCache( $pageId );
-		$cache->set( $this->memcKeyPrefix() . '-' . $pageId, $singleData, 86400 ); // 24 hours
-	}
-
-	/**
-	 * Get the metadata from cache
-	 * @param int|null $pageId the page id to get the cache data for, if null is provided
-	 *                    all page id in $this->mPageId will be obtained
-	 * @return array
-	 */
-	public function getMetadataFromCache( $pageId = null ) {
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-
-		$keyPrefix = $this->memcKeyPrefix();
-
-		if ( $pageId === null ) {
-			$metaData = [];
-			foreach ( $this->pageIds as $pageId ) {
-				$metaDataCache = $cache->get( $keyPrefix . '-' . $pageId );
-				if ( $metaDataCache !== false ) {
-					$metaData[$pageId] = $metaDataCache;
-				}
-			}
-			return $metaData;
-		} else {
-			return $cache->get( $keyPrefix . '-' . $pageId );
-		}
-	}
-
-	/**
-	 * Return the prefix of memcache key for article metadata
-	 * @return string
-	 */
-	protected function memcKeyPrefix() {
-		global $wgPageTriageCacheVersion;
-		return wfMemcKey( 'pagetriage', 'article', 'metadata', $wgPageTriageCacheVersion );
-	}
-
-	/**
 	 * Get metadata from the replica for an array of article IDs.
 	 *
-	 * @param array $articles
-	 * @return array
-	 *   An array of metadata keyed on article ID, or an empty array if no results are found.
+	 * @param int[] $pageIds
+	 * @return array[] Map of (page ID => article metadata)
 	 */
-	public static function getMetadataForArticles( array $articles ) {
+	public static function getMetadataForArticles( array $pageIds ) {
 		$dbr = wfGetDB( DB_REPLICA );
 
 		$res = $dbr->select(
@@ -146,7 +105,7 @@ class ArticleMetadata {
 				'reviewer' => 'user_name'
 			],
 			[
-				'ptrpt_page_id' => $articles,
+				'ptrpt_page_id' => $pageIds,
 				'ptrpt_tag_id = ptrt_tag_id',
 				'ptrpt_page_id = ptrp_page_id',
 				'page_id = ptrp_page_id'
@@ -191,45 +150,65 @@ class ArticleMetadata {
 	 * @return array $metadata: key (page Ids) => value (metadata) pairs
 	 */
 	public function getMetadata() {
-		$articles = $this->pageIds;
-		$metaData = $this->getMetadataFromCache();
-		$articles = self::getPagesWithoutMetadata( $articles, $metaData );
+		global $wgPageTriageCacheVersion;
 
-		// Grab metadata from database after cache attempt
-		if ( $articles ) {
-			$pageData = self::getMetadataForArticles( $articles );
-			$articles = self::getPagesWithoutMetadata( $articles, $pageData );
-			// Compile and save the metadata if it is still not available.
-			// If in a POST request, use a deferred update to save to the DB, otherwise add
-			// a job to the job queue for later processing.
-			if ( $articles ) {
-				$acp = ArticleCompileProcessor::newFromPageId( $articles, false, DB_REPLICA );
-				$mode = RequestContext::getMain()->getRequest()->wasPosted() ?
-					ArticleCompileProcessor::SAVE_DEFERRED : ArticleCompileProcessor::SAVE_JOB;
-				if ( $acp ) {
-					$pageData += $acp->compileMetadata( $mode );
+		// @TODO: inject this from somewhere
+		$wasPosted = RequestContext::getMain()->getRequest()->wasPosted();
+
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$metadataByKey = $cache->getMultiWithUnionSetCallback(
+			$cache->makeMultiKeys(
+				$this->pageIds,
+				function ( $pageId ) use ( $cache ) {
+					return $cache->makeKey( self::KEY_COLLECTION, $pageId );
 				}
-			}
+			),
+			$cache::TTL_DAY,
+			function ( array $pageIds, array &$ttls, array &$setOpts ) use ( $wasPosted ) {
+				$dbr = wfGetDB( DB_REPLICA );
 
-			$defaultVal = array_fill_keys( array_keys( self::getValidTags() ), '' );
-			foreach ( $pageData as $pageId => &$val ) {
-				$val += $defaultVal;
-				$this->setMetadataToCache( $pageId, $val );
-			}
+				$setOpts += Database::getCacheSetOptions( $dbr );
 
-			$metaData += $pageData;
-		}
+				// Grab metadata from database after cache attempt
+				$metadataByPageId = self::getMetadataForArticles( $pageIds );
+				$pageIdsCompile = self::getPagesWithoutMetadata( $pageIds, $metadataByPageId );
+				// Compile the denormalized metadata for pages that still don't have it
+				if ( $pageIdsCompile ) {
+					$acp = ArticleCompileProcessor::newFromPageId(
+						$pageIdsCompile,
+						false, // skip validation
+						DB_REPLICA
+					);
+					if ( $acp ) {
+						// Update the DB in a POSTSEND deferred update if the context is that
+						// of an HTTP POST request. Otherwise, enqueue a job to update the DB.
+						$mode = $wasPosted ? $acp::SAVE_DEFERRED : $acp::SAVE_JOB;
+						$metadataByPageId += $acp->compileMetadata( $mode );
+					}
+				}
 
-		return $metaData;
+				$placeholderMetadata = array_fill_keys( array_keys( self::getValidTags() ), '' );
+
+				foreach ( $metadataByPageId as $pageId => &$metadata ) {
+					$metadata += $placeholderMetadata;
+				}
+
+				return $metadataByPageId;
+			},
+			[ 'version' => $wgPageTriageCacheVersion ]
+		);
+		$metaDataByPageId = $cache->multiRemap( $this->pageIds, $metadataByKey );
+
+		return $metaDataByPageId;
 	}
 
 	/**
 	 * Get the pages without metadata yet
-	 * @param array $articles
-	 * @param array $data
+	 * @param int[] $articles
+	 * @param array[] $data
 	 * @return array
 	 */
-	private static function getPagesWithoutMetadata( $articles, $data ) {
+	private static function getPagesWithoutMetadata( array $articles, array $data ) {
 		foreach ( $articles as $key => $pageId ) {
 			if ( isset( $data[$pageId] ) ) {
 				unset( $articles[$key] );
@@ -243,31 +222,40 @@ class ArticleMetadata {
 	 * @return string[] Map of tag name to tag ID
 	 */
 	public static function getValidTags() {
-		global $wgPageTriageCacheVersion, $wgMemc;
+		global $wgPageTriageCacheVersion;
 
-		$key = wfMemcKey( 'pagetriage', 'valid', 'tags', $wgPageTriageCacheVersion );
-		$tags = $wgMemc->get( $key );
-		if ( $tags === false ) {
-			$tags = [];
+		$fname = __METHOD__;
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 
-			$dbr = wfGetDB( DB_REPLICA );
-			$res = $dbr->select(
-				[ 'pagetriage_tags' ],
-				[ 'ptrt_tag_id', 'ptrt_tag_name' ],
-				[],
-				__METHOD__
-			);
+		return $cache->getWithSetCallback(
+			$cache->makeKey( 'pagetriage-valid-tags' ),
+			2 * $cache::TTL_DAY,
+			function ( $oldValue, &$ttl, &$setOpts ) use ( $fname ) {
+				$dbr = wfGetDB( DB_REPLICA );
+				$setOpts += Database::getCacheSetOptions( $dbr );
 
-			foreach ( $res as $row ) {
-				$tags[$row->ptrt_tag_name] = $row->ptrt_tag_id;
-			}
-			// only set to cache if the result from db is not empty
-			if ( $tags ) {
-				$wgMemc->set( $key, $tags, 60 * 60 * 24 * 2 );
-			}
-		}
+				$dbr = wfGetDB( DB_REPLICA );
+				$res = $dbr->select(
+					[ 'pagetriage_tags' ],
+					[ 'ptrt_tag_id', 'ptrt_tag_name' ],
+					[],
+					$fname
+				);
 
-		return $tags;
+				$tags = [];
+				foreach ( $res as $row ) {
+					$tags[$row->ptrt_tag_name] = $row->ptrt_tag_id;
+				}
+
+				// Only set to cache if the result from db is not empty
+				if ( !$tags ) {
+					$ttl = WANObjectCache::TTL_UNCACHEABLE;
+				}
+
+				return $tags;
+			},
+			[ 'version' => $wgPageTriageCacheVersion ]
+		);
 	}
 
 	/**
