@@ -411,9 +411,10 @@ class Hooks {
 		// If it isn't, $needsReview will be null
 		// Also, users without the autopatrol right can't review their own pages
 		$needsReview = PageTriageUtil::doesPageNeedTriage( $wikiPage );
+		$revStore = MediaWikiServices::getInstance()->getRevisionStore();
 		if ( $needsReview !== null
 			&& (
-				$user->getId() != $wikiPage->getOldestRevision()->getUser()
+				!$user->equals( $revStore->getFirstRevision( $title )->getUser() )
 				|| $permManager->userHasRight( $user, 'autopatrol' )
 			)
 		) {

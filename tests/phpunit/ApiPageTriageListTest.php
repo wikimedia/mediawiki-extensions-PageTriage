@@ -564,12 +564,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		// Delete PageOther, then recreate it.
 		$page = WikiPage::factory( $otherPage['title'] );
 
-		if ( version_compare( MW_VERSION, '1.35', '<' ) ) {
-			$page->doDeleteArticle( 'Test' );
-		} else {
-			// Only in 1.35+ to use the new signature
-			$page->doDeleteArticleReal( 'Test', $user );
-		}
+		$page->doDeleteArticleReal( 'Test', $user );
 
 		$this->insertPage( 'PageOther', 'some content', 0, $user );
 
