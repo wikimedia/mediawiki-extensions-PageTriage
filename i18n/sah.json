@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ай-Куо",
-			"HalanTul"
+			"HalanTul",
+			"Ай-Куо"
 		]
 	},
 	"notification-header-pagetriage-mark-as-reviewed": "Сирэй'''$3''' {{GENDER:$2|дьүүллэммитэ}}.",
