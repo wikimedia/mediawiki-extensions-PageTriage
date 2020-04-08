@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
 use LinksUpdate;
+use MediaWiki\Revision\SlotRecord;
 use WikiPage;
 
 /**
@@ -106,9 +107,9 @@ abstract class ArticleCompileInterface {
 			return $this->articles[$pageId]->getContent();
 		}
 		if ( isset( $this->linksUpdates[$pageId] ) ) {
-			$revision = $this->linksUpdates[$pageId]->getRevision();
-			if ( $revision ) {
-				return $revision->getContent();
+			$revRecord = $this->linksUpdates[$pageId]->getRevisionRecord();
+			if ( $revRecord ) {
+				return $revRecord->getContent( SlotRecord::MAIN );
 			}
 		}
 		// Fall back on creating a new WikiPage object and fetching from the DB

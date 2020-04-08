@@ -147,7 +147,7 @@ class ArticleCompileProcessor {
 	 */
 	protected function getLastEditTimestamp( $pageId ) {
 		if ( isset( $this->linksUpdates[$pageId] ) ) {
-			return $this->linksUpdates[$pageId]->getRevision()->getTimestamp();
+			return $this->linksUpdates[$pageId]->getRevisionRecord()->getTimestamp();
 		}
 		if ( isset( $this->articles[$pageId] ) ) {
 			return $this->articles[$pageId]->getTimestamp();
