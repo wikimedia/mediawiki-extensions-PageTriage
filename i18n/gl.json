@@ -4,6 +4,7 @@
 			"Athena in Wonderland",
 			"Banjo",
 			"Elisardojm",
+			"Iváns",
 			"McDutchie",
 			"Nemo bis",
 			"Toliño"
@@ -101,7 +102,7 @@
 	"pagetriage-button-mark-for-deletion": "Marcar para borrar",
 	"pagetriage-add-a-note-creator": "Engadir unha mensaxe para o creador: (opcional)",
 	"pagetriage-add-a-note-reviewer": "Engadir unha mensaxe para o revisor: (opcional)",
-	"pagetriage-personal-default-note": "Escriba unha nota que lle sexa útil a {{GENDER:$1|$1}}. Ha publicarse na súa páxina de conversa.",
+	"pagetriage-personal-default-note": "Escribe unha mensaxe que sexa útil para {{GENDER:$1|$1}}. Será publicada na páxina de debate {{GENDER:$1|del|dela}}.",
 	"pagetriage-page-status-reviewed": "$2 ($3$4$5) marcouna como revisada o $1",
 	"pagetriage-page-status-reviewed-anonymous": "Marcada como revisada",
 	"pagetriage-page-status-unreviewed": "Esta páxina aínda non foi revisada",
