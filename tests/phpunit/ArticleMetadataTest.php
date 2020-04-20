@@ -54,27 +54,27 @@ class ArticleMetadataTest extends PageTriageTestCase {
 		$tags = ArticleMetadata::getValidTags();
 
 		$validTags = [
-					'linkcount',
-					'category_count',
-					'csd_status',
-					'prod_status',
-					'blp_prod_status',
-					'afd_status',
-					'rev_count',
-					'page_len',
-					'snippet',
-					'user_name',
-					'user_editcount',
-					'user_creation_date',
-					'user_autoconfirmed',
-					'user_experience',
-					'user_bot',
-					'user_block_status',
-					'user_id',
-					'reference',
-					'afc_state',
-					'copyvio'
-				];
+			'linkcount',
+			'category_count',
+			'csd_status',
+			'prod_status',
+			'blp_prod_status',
+			'afd_status',
+			'rev_count',
+			'page_len',
+			'snippet',
+			'user_name',
+			'user_editcount',
+			'user_creation_date',
+			'user_autoconfirmed',
+			'user_experience',
+			'user_bot',
+			'user_block_status',
+			'user_id',
+			'reference',
+			'afc_state',
+			'copyvio'
+		];
 
 		$this->assertEmpty( array_diff( array_keys( $tags ), $validTags ) );
 	}
