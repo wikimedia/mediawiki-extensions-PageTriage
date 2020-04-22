@@ -406,7 +406,7 @@
 	"apihelp-pagetriagetagcopyvio-param-revid": "Olası bir telif hakkı ihlali olarak etiketlenecek düzeltme kimliği",
 	"apihelp-pagetriagetagging-description": "Bir makaleye etiket ekleyin.",
 	"apihelp-pagetriagetagging-summary": "Bir makaleye etiket ekleyin.",
-	"apihelp-pagetriagetagging-param-pageid": "Etiketlenecek makale.",
+	"apihelp-pagetriagetagging-param-pageid": "Etiketlenecek madde.",
 	"apihelp-pagetriagetagging-param-top": "Bir makalenin üstüne eklenecek etiketleme metni.",
 	"apihelp-pagetriagetagging-param-bottom": "Bir makalenin altına eklenecek etiketleme metni.",
 	"apihelp-pagetriagetagging-param-deletion": "Etiketlemenin bir silme adaylığı için olup olmadığı.",
