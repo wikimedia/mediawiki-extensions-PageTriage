@@ -27,6 +27,7 @@ use Revision;
 use Status;
 use Title;
 use User;
+use Wikimedia\Rdbms\Database;
 use WikiPage;
 
 class Hooks {
@@ -338,26 +339,40 @@ class Hooks {
 	 * @return bool
 	 */
 	private static function isPageNew( WikiPage $wikiPage ) {
-		global $wgPageTriageMaxAge;
+		global $wgPageTriageMaxAge, $wgPageTriageCacheVersion;
+
 		$pageId = $wikiPage->getId();
-		// Check cache for creation date.
-		$metaDataObject = new ArticleMetadata( [ $pageId ] );
-		$cacheData = $metaDataObject->getMetadataFromCache( $pageId );
-		$pageCreationDateTime = $cacheData[ 'creation_date' ] ?? null;
-		// If not found in cache, get from replica. The ptrp_created field is equivalent to
-		// creation_date property set during article metadata compilation.
-		if ( !$pageCreationDateTime ) {
-			$dbr = wfGetDB( DB_REPLICA );
-			$pageCreationDateTime = $dbr->selectField(
-				'pagetriage_page',
-				'ptrp_created',
-				[ 'ptrp_page_id' => $pageId ]
-			);
+		if ( !$pageId ) {
+			return false;
 		}
+
+		// Check cache for creation date
+		$fname = __METHOD__;
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$pageCreationDateTime = $cache->getWithSetCallback(
+			$cache->makeKey( 'pagetriage-page-created', $pageId ),
+			$cache::TTL_DAY,
+			function ( $oldValue, &$ttl, array &$setOpts ) use ( $pageId, $fname ) {
+				// The ptrp_created field is equivalent to creation_date
+				// property set during article metadata compilation.
+				$dbr = wfGetDB( DB_REPLICA );
+				$setOpts += Database::getCacheSetOptions( $dbr );
+
+				return $dbr->selectField(
+					'pagetriage_page',
+					'ptrp_created',
+					[ 'ptrp_page_id' => $pageId ],
+					$fname
+				);
+			},
+			[ 'version' => $wgPageTriageCacheVersion ]
+		);
+
 		// If still not found, return false.
 		if ( !$pageCreationDateTime ) {
 			return false;
 		}
+
 		// Get the age of the article in days
 		$timestamp = new MWTimestamp( $pageCreationDateTime );
 		$dateInterval = $timestamp->diff( new MWTimestamp() );

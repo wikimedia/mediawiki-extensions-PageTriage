@@ -62,12 +62,10 @@ class ArticleMetadata {
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 
 		$keyPrefix = $this->memcKeyPrefix();
-		if ( $pageId === null ) {
-			foreach ( $this->pageIds as $pageId ) {
-				$cache->delete( $keyPrefix . '-' . $pageId );
-			}
-		} else {
-			$cache->delete( $keyPrefix . '-' . $pageId );
+		$pageIdsPurge = ( $pageId === null ) ? $this->pageIds : [ $pageId ];
+		foreach ( $pageIdsPurge as $pageIdPurge ) {
+			$cache->delete( $keyPrefix . '-' . $pageIdPurge );
+			$cache->delete( $cache->makeKey( 'pagetriage-page-created', $pageIdPurge ) );
 		}
 	}
 
