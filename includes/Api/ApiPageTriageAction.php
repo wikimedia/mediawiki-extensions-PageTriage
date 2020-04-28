@@ -50,11 +50,16 @@ class ApiPageTriageAction extends ApiBase {
 	 * @return array Result for API
 	 */
 	private function markAsReviewed( Article $article, $reviewedStatus, $note, $skipNotif ) {
-		if ( !ArticleMetadata::validatePageIds( [ $article->getId() ], DB_REPLICA ) ) {
+		if (
+			!ArticleMetadata::validatePageIds(
+				[ $article->getPage()->getId() ],
+				DB_REPLICA
+			)
+		) {
 			$this->dieWithError( 'apierror-bad-pagetriage-page' );
 		}
 
-		$pageTriage = new PageTriage( $article->getId() );
+		$pageTriage = new PageTriage( $article->getPage()->getId() );
 		$statusChanged = $pageTriage->setTriageStatus( $reviewedStatus, $this->getUser() );
 
 		// no notification or log entry if page status didn't change
@@ -76,7 +81,7 @@ class ApiPageTriageAction extends ApiBase {
 		} else {
 			return [
 				'result' => 'done',
-				'pagetriage_unchanged_status' => $article->getId(),
+				'pagetriage_unchanged_status' => $article->getPage()->getId(),
 			];
 		}
 	}
@@ -95,7 +100,7 @@ class ApiPageTriageAction extends ApiBase {
 			$this->dieWithError( 'apierror-bad-pagetriage-enqueue-invalidnamespace' );
 		}
 
-		$articleId = $article->getId();
+		$articleId = $article->getPage()->getId();
 		if ( ArticleMetadata::validatePageIds( [ $articleId ], DB_REPLICA ) ) {
 			$this->dieWithError( 'apierror-bad-pagetriage-enqueue-alreadyqueued' );
 		}
