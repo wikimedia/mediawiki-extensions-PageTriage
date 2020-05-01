@@ -39,6 +39,8 @@ class ArticleMetadataTest extends PageTriageTestCase {
 		}
 
 		$this->articleMetadata = new ArticleMetadata( $this->pageIds );
+
+		ArticleMetadata::clearStaticCache();
 	}
 
 	protected function tearDown() : void {
