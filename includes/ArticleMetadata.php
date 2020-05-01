@@ -254,10 +254,10 @@ class ArticleMetadata {
 
 			$dbr = wfGetDB( DB_REPLICA );
 			$res = $dbr->select(
-					[ 'pagetriage_tags' ],
-					[ 'ptrt_tag_id', 'ptrt_tag_name' ],
-					[],
-					__METHOD__
+				[ 'pagetriage_tags' ],
+				[ 'ptrt_tag_id', 'ptrt_tag_name' ],
+				[],
+				__METHOD__
 			);
 
 			foreach ( $res as $row ) {
@@ -309,10 +309,10 @@ class ArticleMetadata {
 			$db = wfGetDB( $validateDb );
 
 			$res = $db->select(
-					[ 'pagetriage_page' ],
-					[ 'ptrp_page_id' ],
-					[ 'ptrp_page_id' => $pageIds ],
-					__METHOD__
+				[ 'pagetriage_page' ],
+				[ 'ptrp_page_id' ],
+				[ 'ptrp_page_id' => $pageIds ],
+				__METHOD__
 			);
 
 			foreach ( $res as $row ) {
