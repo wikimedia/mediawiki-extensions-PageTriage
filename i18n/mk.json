@@ -464,7 +464,7 @@
 	"group-copyviobot": "Ботови за авторскоправни нарушувања",
 	"group-copyviobot-member": "{{GENDER:$1|бот за авторскоправни нарушувања}}",
 	"tag-pagetriage": "Проверка на страници",
-	"tag-pagetriage-description": "За уредувања направени со додатокот „[[mw:Extension:PageTriage|Проверка на страници]]“",
+	"tag-pagetriage-description": "За уредувања направени со додатокот „[[mw:Special:MyLanguage/Extension:PageTriage|Проверка на страници]]“",
 	"apihelp-pagetriageaction-description": "Означи статија како проверена или непроверена.",
 	"apihelp-pagetriageaction-summary": "Означи статија како проверена или непроверена.",
 	"apihelp-pagetriageaction-param-pageid": "Назнака на страницата врз која се врши дејството.",

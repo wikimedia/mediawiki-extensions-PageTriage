@@ -356,7 +356,7 @@
 	"echo-pref-tooltip-page-review": "Avvisami quando qualcuno revisiona una pagina che ho creato.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Pagina revisionata|Pagine revisionate}}",
 	"tag-pagetriage": "PageTriage",
-	"tag-pagetriage-description": "Per modifiche fatte con l'[[mw:Extension:PageTriage|estensione PageTriage]]",
+	"tag-pagetriage-description": "Per modifiche fatte con l'[[mw:Special:MyLanguage/Extension:PageTriage|estensione PageTriage]]",
 	"apihelp-pagetriageaction-param-pageid": "ID della pagina su cui è stata eseguita l'azione.",
 	"apihelp-pagetriageaction-param-note": "Nota personale ai creatori della pagina dai revisori.",
 	"apihelp-pagetriagelist-param-unreferenced": "Se mostrare solo le pagine senza riferimenti.",

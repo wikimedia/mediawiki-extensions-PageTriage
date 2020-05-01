@@ -324,7 +324,7 @@
 	"group-copyviobot": "Telif hakkı ihlali botları",
 	"group-copyviobot-member": "{{GENDER:$1|telif hakkı ihlali botu}}",
 	"tag-pagetriage": "PageTriage",
-	"tag-pagetriage-description": "[[mw:Extension:PageTriage|PageTriage uzantısı]] ile yapılan düzenlemeler için",
+	"tag-pagetriage-description": "[[mw:Special:MyLanguage/Extension:PageTriage|PageTriage uzantısı]] ile yapılan düzenlemeler için",
 	"apihelp-pagetriageaction-description": "Bir makaleyi incelenmiş veya incelenmemiş olarak işaretleyin.",
 	"apihelp-pagetriageaction-summary": "Bir makaleyi incelenmiş veya incelenmemiş olarak işaretleyin.",
 	"apihelp-pagetriageaction-param-pageid": "İşlemin gerçekleştirildiği sayfanın kimliği.",

@@ -316,7 +316,7 @@
 	"group-copyviobot": "侵權機器人",
 	"group-copyviobot-member": "{{GENDER:$1|侵權機器人}}",
 	"tag-pagetriage": "PageTriage",
-	"tag-pagetriage-description": "用於以 [[mw:Extension:PageTriage|PageTriage 擴充]]所作出的編輯",
+	"tag-pagetriage-description": "用於以 [[mw:Special:MyLanguage/Extension:PageTriage|PageTriage 擴充]]所作出的編輯",
 	"apihelp-pagetriageaction-description": "標記條目為已檢閱或未檢閱。",
 	"apihelp-pagetriageaction-summary": "標記條目為已巡查或未巡查。",
 	"apihelp-pagetriageaction-param-pageid": "要執行操作頁面的 ID。",

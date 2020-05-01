@@ -469,7 +469,7 @@
 	"group-copyviobot": "Robots anti-contrefaçon",
 	"group-copyviobot-member": "{{GENDER:$1|robot ayant violé les droits d’auteur}}",
 	"tag-pagetriage": "PageTriage",
-	"tag-pagetriage-description": "Pour les modifications faites avec l’[[mw:Extension:PageTriage|extension PageTriage]]",
+	"tag-pagetriage-description": "Pour les modifications faites avec l’[[mw:Special:MyLanguage/Extension:PageTriage|extension PageTriage]]",
 	"apihelp-pagetriageaction-description": "Marquer un article comme relu ou non relu.",
 	"apihelp-pagetriageaction-summary": "Marquer un article comme relu ou non relu.",
 	"apihelp-pagetriageaction-param-pageid": "Identifiant de la page sur laquelle est effectuée l’action.",

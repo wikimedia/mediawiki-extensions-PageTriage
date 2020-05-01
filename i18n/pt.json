@@ -297,7 +297,7 @@
 	"group-copyviobot": "Robôs para infringências de direitos de autor",
 	"group-copyviobot-member": "{{GENDER:$1|robô para infringências de direitos de autor}}",
 	"tag-pagetriage": "Triagem de Páginas",
-	"tag-pagetriage-description": "Para edições feitas com a [[mw:Extension:PageTriage|extensão Triagem de Páginas]]",
+	"tag-pagetriage-description": "Para edições feitas com a [[mw:Special:MyLanguage/Extension:PageTriage|extensão Triagem de Páginas]]",
 	"apihelp-pagetriageaction-description": "Marcar um artigo como revisto ou não revisto.",
 	"apihelp-pagetriageaction-summary": "Marcar um artigo como revisto ou não revisto.",
 	"apihelp-pagetriageaction-param-pageid": "Identificação da página em que a operação é realizada.",

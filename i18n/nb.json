@@ -310,7 +310,7 @@
 	"group-copyviobot": "Botter for opphavsrettsbrudd",
 	"group-copyviobot-member": "{{GENDER:$1|opphavsrettsbruddbot}}",
 	"tag-pagetriage": "PageTriage",
-	"tag-pagetriage-description": "For redigeringer gjort med utvidelsen [[mw:Extension:PageTriage|PageTriage]]",
+	"tag-pagetriage-description": "For redigeringer gjort med utvidelsen [[mw:Special:MyLanguage/Extension:PageTriage|PageTriage]]",
 	"apihelp-pagetriageaction-description": "Merk en artikkel som gjennomgått eller ikke gjennomgått",
 	"apihelp-pagetriageaction-summary": "Merk en artikkel som gjennomgått eller ikke gjennomgått.",
 	"apihelp-pagetriageaction-param-pageid": "ID-en til siden handlingen utføres på.",

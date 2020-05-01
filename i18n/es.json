@@ -411,7 +411,7 @@
 	"echo-pref-tooltip-page-review": "Notificarme cuando alguien revise una página que he creado.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Revisión|Revisiones}} de página",
 	"tag-pagetriage": "PageTriage",
-	"tag-pagetriage-description": "Para ediciones realizadas mediante la  [[mw:Extension:PageTriage|extensión PageTriage]]",
+	"tag-pagetriage-description": "Para ediciones realizadas mediante la  [[mw:Special:MyLanguage/Extension:PageTriage|extensión PageTriage]]",
 	"apihelp-pagetriageaction-description": "Marcar un artículo como revisado o no revisado.",
 	"apihelp-pagetriageaction-summary": "Marcar un artículo como revisado o no revisado.",
 	"apihelp-pagetriageaction-param-pageid": "El artículo a marcar como revisado o no revisado.",

@@ -308,7 +308,7 @@
 	"group-copyviobot": "Botovi za rješavanje kršenja autorskih prava",
 	"group-copyviobot-member": "{{GENDER:$1|bot za rješavanje kršenja autorskih prava|botica za rješavanje kršenja autorskih prava}}",
 	"tag-pagetriage": "Označivanja za pomnju",
-	"tag-pagetriage-description": "Za uređivanja načinjena pomoću [[mw:Extension:PageTriage|proširenja Označivanje za pomnju]]",
+	"tag-pagetriage-description": "Za uređivanja načinjena pomoću [[mw:Special:MyLanguage/Extension:PageTriage|proširenja Označivanje za pomnju]]",
 	"apihelp-pagetriageaction-description": "Označi članak provjerenim ili neprovjerenim",
 	"apihelp-pagetriageaction-summary": "Označivanje članka provjerenim ili neprovjerenim",
 	"apihelp-pagetriageaction-param-pageid": "Identifikacija (ID) stranice nad kojom će biti izvršena radnja.",

@@ -466,7 +466,7 @@
 	"group-copyviobot": "بوتات انتهاك حقوق النشر",
 	"group-copyviobot-member": "{{GENDER:$1|بوت انتهاك حقوق النشر}}",
 	"tag-pagetriage": "فرز الصفحة",
-	"tag-pagetriage-description": "للتعديلات التي تم إجراؤها باستخدام [[mw:Extension:PageTriage|امتداد فرز الصفحة]]",
+	"tag-pagetriage-description": "للتعديلات التي تم إجراؤها باستخدام [[mw:Special:MyLanguage/Extension:PageTriage|امتداد فرز الصفحة]]",
 	"apihelp-pagetriageaction-description": "تعليم مقالة كمراجعة أو غير مراجعة.",
 	"apihelp-pagetriageaction-summary": "تعليم مقالة كمراجعة أو غير مراجعة.",
 	"apihelp-pagetriageaction-param-pageid": "معرف للصفحة التي يتم تنفيذ الإجراء عليها.",
