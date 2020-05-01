@@ -469,7 +469,7 @@
 	"group-copyviobot": "Copyright violation bots",
 	"group-copyviobot-member": "{{GENDER:$1|copyright violation bot}}",
 	"tag-pagetriage": "PageTriage",
-	"tag-pagetriage-description": "For edits made with the [[mw:Extension:PageTriage|PageTriage extension]]",
+	"tag-pagetriage-description": "For edits made with the [[mw:Special:MyLanguage/Extension:PageTriage|PageTriage extension]]",
 	"apihelp-pagetriageaction-description": "Mark an article as reviewed or unreviewed.",
 	"apihelp-pagetriageaction-summary": "Mark an article as reviewed or unreviewed.",
 	"apihelp-pagetriageaction-param-pageid": "ID for the page that the action is performed on.",
