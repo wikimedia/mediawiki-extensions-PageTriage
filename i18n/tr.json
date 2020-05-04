@@ -160,7 +160,7 @@
 	"pagetriage-button-edit-details": "Ayrıntıları düzenle",
 	"pagetriage-button-mark-for-deletion": "Silinmek üzere işaretli",
 	"pagetriage-add-a-note-creator": "Sayfayı açan için bir ileti ekleyin: (isteğe bağlı)",
-	"pagetriage-add-a-note-creator-required": "İçerik oluşturucu için bir mesaj ekleyin. Bu mesaj makale tartışma sayfasına da gönderilecektir.",
+	"pagetriage-add-a-note-creator-required": "İçerik oluşturucu için bir mesaj ekleyin. Bu mesaj madde tartışma sayfasına da gönderilecektir.",
 	"pagetriage-add-a-note-for-options-label": "Bir mesaj gönder:",
 	"pagetriage-add-a-note-for-option-creator": "yaratıcı (Kullanıcı:$1)",
 	"pagetriage-add-a-note-for-option-reviewer": "inceleyici (Kullanıcı:$1)",
