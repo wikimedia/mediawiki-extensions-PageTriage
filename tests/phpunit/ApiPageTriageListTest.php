@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
+use MediaWiki\MediaWikiServices;
 
 /**
  * Tests the inclusion of the Draft namespace.
@@ -169,8 +170,11 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$from = Title::newFromText( 'Test page 3' );
 		$to = Title::newFromText( 'Draft:Test page 3' );
 		$this->insertPage( $from );
-		$movePage = new MovePage( $from, $to );
-		$movePage->move( static::getTestUser()->getUser(), '', false );
+
+		MediaWikiServices::getInstance()
+			->getMovePageFactory()
+			->newMovePage( $from, $to )
+			->move( static::getTestUser()->getUser(), '', false );
 
 		// Check that the moved page is in the queue of unreviewed pages.
 		$list = $this->getPageTriageList();
@@ -195,8 +199,10 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$originalPagesCount = count( $this->getPageTriageList() );
 
 		// Move the page to mainspace.
-		$movePage = new MovePage( $from, $to );
-		$movePage->move( static::getTestUser()->getUser(), '', false );
+		MediaWikiServices::getInstance()
+			->getMovePageFactory()
+			->newMovePage( $from, $to )
+			->move( static::getTestUser()->getUser(), '', false );
 
 		// Check that the queue has decremented by one.
 		static::assertEquals(
