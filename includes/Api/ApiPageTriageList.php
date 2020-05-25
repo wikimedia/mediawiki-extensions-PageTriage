@@ -453,9 +453,9 @@ class ApiPageTriageList extends ApiBase {
 
 	/**
 	 * @param array $opts
-	 * @return string
+	 * @return string SQL condition for use in a WHERE clause
 	 */
-	private static function buildTagQuery( $opts ) {
+	private static function buildTagQuery( array $opts ) {
 		$dbr = wfGetDB( DB_REPLICA );
 		$tagConds = '';
 
@@ -483,7 +483,7 @@ class ApiPageTriageList extends ApiBase {
 			'username' => [ 'name' => 'user_name', 'op' => '=', 'val' => false ]
 		];
 
-		$tags = ArticleMetadata::getValidTags();
+		$tagIDs = ArticleMetadata::getValidTags();
 		$table = 'pagetriage_pt';
 
 		// only single tag search is allowed
@@ -491,10 +491,10 @@ class ApiPageTriageList extends ApiBase {
 			if ( isset( $opts[$key] ) && $opts[$key] ) {
 				if ( $val['val'] === false ) {
 					// if val is false, use the value that was supplied via the api call
-					$tagConds = " $table.ptrpt_tag_id = '" . $tags[$val['name']] . "' AND " .
+					$tagConds = " $table.ptrpt_tag_id = " . $dbr->addQuotes( $tagIDs[$val['name']] ) . " AND " .
 						"$table.ptrpt_value " . $val['op'] . " " . $dbr->addQuotes( $opts[$key] );
 				} else {
-					$tagConds = " $table.ptrpt_tag_id = '" . $tags[$val['name']] . "' AND " .
+					$tagConds = " $table.ptrpt_tag_id = " . $dbr->addQuotes( $tagIDs[$val['name']] ) . " AND " .
 						"$table.ptrpt_value " . $val['op'] . " " . $dbr->addQuotes( $val['val'] );
 				}
 				break;

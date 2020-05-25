@@ -242,7 +242,7 @@ class ArticleMetadata {
 
 	/**
 	 * Return a list of valid metadata
-	 * @return array
+	 * @return string[] Map of tag name to tag ID
 	 */
 	public static function getValidTags() {
 		global $wgPageTriageCacheVersion, $wgMemc;
