@@ -16,7 +16,9 @@ use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddDeletionTagPresent
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddMaintenanceTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageMarkAsReviewedPresentationModel;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\User\UserIdentity;
 use MWTimestamp;
 use ParserOutput;
 use RecentChange;
@@ -88,14 +90,14 @@ class Hooks {
 	 * Check if a page is created from a redirect page, then insert into it PageTriage Queue
 	 * Note: Page will be automatically marked as triaged for users with autopatrol right
 	 *
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/NewRevisionFromEditComplete
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/RevisionFromEditComplete
 	 *
 	 * @param WikiPage $wikiPage the WikiPage edited
-	 * @param Revision|null $rev the new revision
+	 * @param RevisionRecord $rev the new revision
 	 * @param int $baseID the revision ID this was based on, if any
-	 * @param User $user the editing user
+	 * @param UserIdentity $user the editing user
 	 */
-	public static function onNewRevisionFromEditComplete( WikiPage $wikiPage, $rev, $baseID, $user ) {
+	public static function onRevisionFromEditComplete( WikiPage $wikiPage, $rev, $baseID, $user ) {
 		if ( !in_array( $wikiPage->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			return;
 		}
@@ -111,7 +113,11 @@ class Hooks {
 					$prevRevRecord->getContent( SlotRecord::MAIN )->isRedirect()
 				) {
 					// Add item to queue, if it's not already there.
-					self::addToPageTriageQueue( $wikiPage->getId(), $wikiPage->getTitle(), $user );
+					self::addToPageTriageQueue(
+						$wikiPage->getId(),
+						$wikiPage->getTitle(),
+						User::newFromIdentity( $user )
+					);
 				}
 			} );
 		}

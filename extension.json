@@ -640,7 +640,7 @@
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\PageTriage\\Hooks::onLoadExtensionSchemaUpdates",
 		"TitleMoveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onTitleMoveComplete",
-		"NewRevisionFromEditComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onNewRevisionFromEditComplete",
+		"RevisionFromEditComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onRevisionFromEditComplete",
 		"PageContentInsertComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageContentInsertComplete",
 		"PageContentSaveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageContentSaveComplete",
 		"LinksUpdateComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onLinksUpdateComplete",

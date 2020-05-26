@@ -238,7 +238,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 	/**
 	 * Make sure articles created from redirects are added to the queue.
-	 * @covers \MediaWiki\Extension\PageTriage\Hooks::onNewRevisionFromEditComplete()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::onRevisionFromEditComplete()
 	 */
 	public function testArticlesFromRedirects() {
 		$apiParams = [ 'namespace' => 0 ];
