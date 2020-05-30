@@ -396,7 +396,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		self::ensureOresModel( 'draftquality' );
 
 		$list = $this->getPageTriageList();
-		$this->assertEquals( 1, count( $list ), 'no filters' );
+		$this->assertSame( 1, count( $list ), 'no filters' );
 
 		$list = $this->getPageTriageList( [ 'show_predicted_class_b' => true ] );
 		$this->assertCount( 1, $list, 'show class B' );
