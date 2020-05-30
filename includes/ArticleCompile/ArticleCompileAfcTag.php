@@ -7,10 +7,10 @@ namespace MediaWiki\Extension\PageTriage\ArticleCompile;
  */
 class ArticleCompileAfcTag extends ArticleCompileInterface {
 
-	const UNSUBMITTED = 1;
-	const PENDING = 2;
-	const UNDER_REVIEW = 3;
-	const DECLINED = 4;
+	public const UNSUBMITTED = 1;
+	public const PENDING = 2;
+	public const UNDER_REVIEW = 3;
+	public const DECLINED = 4;
 
 	/**
 	 * @var array Associative array of page id to afc state. e.g. [ '123' => 2, '124' => 4 ]

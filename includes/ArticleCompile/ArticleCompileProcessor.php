@@ -29,9 +29,9 @@ class ArticleCompileProcessor {
 	/** @var LinksUpdate[] */
 	protected $linksUpdates = [];
 
-	const SAVE_IMMEDIATE = 0;
-	const SAVE_DEFERRED = 1;
-	const SAVE_JOB = 2;
+	public const SAVE_IMMEDIATE = 0;
+	public const SAVE_DEFERRED = 1;
+	public const SAVE_JOB = 2;
 
 	/**
 	 * Array of configuration options to pass to self::configComponentDb() for metadata compilation.
