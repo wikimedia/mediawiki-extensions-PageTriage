@@ -569,7 +569,7 @@ module.exports = ToolView.extend( {
 			return;
 		}
 
-		// Applying maintenance tags does not automatically mark the page as reviewed
+		// When applying maintenance tags, reviewer can choose if the page is reviewed or not
 		if ( $( '#mwe-pt-checkbox-mark-reviewed' ).is( ':checked' ) ) {
 			new mw.Api().postWithToken( 'csrf', {
 				action: 'pagetriageaction',
@@ -589,7 +589,23 @@ module.exports = ToolView.extend( {
 					that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
 				} );
 		} else {
-			that.applyTags( topText, bottomText, tagList );
+			new mw.Api().postWithToken( 'csrf', {
+				action: 'pagetriageaction',
+				pageid: mw.config.get( 'wgArticleId' ),
+				// NOTE: if the logic for whether to mark as reviewed is changed,
+				//   be sure to also conditionally register actionQueue.mark above
+				reviewed: '0',
+				skipnotif: '1'
+			} )
+				.done( function () {
+					// Register action for marking the page as unreviewed.
+					actionQueue.mark = { reviewed: false };
+
+					that.applyTags( topText, bottomText, tagList );
+				} )
+				.fail( function ( errorCode, data ) {
+					that.handleError( mw.msg( 'pagetriage-mark-as-unreviewed-error', data.error.info ) );
+				} );
 		}
 	},
 
