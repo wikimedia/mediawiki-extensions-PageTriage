@@ -63,7 +63,7 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 		// strip out non-useful data for snippet
 		$text = str_replace( [ '{', '}', '[edit]' ], '', $text );
 
-		return $wgLang->truncateForVisual( $text, 150 );
+		return $wgLang->truncateForDatabase( $text, 255 );
 	}
 
 	/**
