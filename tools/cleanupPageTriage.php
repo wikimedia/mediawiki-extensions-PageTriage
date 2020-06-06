@@ -5,6 +5,8 @@
  * @ingroup Maintenance
  */
 
+use MediaWiki\MediaWikiServices;
+
 require_once __DIR__ . '/../../../maintenance/Maintenance.php';
 
 /**
@@ -25,6 +27,7 @@ class CleanupPageTriage extends Maintenance {
 	public function execute() {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbr = wfGetDB( DB_REPLICA );
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 		$count = $this->batchSize;
 		$start = 0;
@@ -73,7 +76,7 @@ class CleanupPageTriage extends Maintenance {
 				$this->commitTransaction( $dbw, __METHOD__ );
 
 				$this->output( "processing " . $count . "\n" );
-				wfWaitForSlaves();
+				$lbFactory->waitForReplication();
 			}
 
 		}

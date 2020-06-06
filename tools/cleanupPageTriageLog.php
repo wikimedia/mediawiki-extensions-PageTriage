@@ -6,6 +6,8 @@
  * @ingroup Maintenance
  */
 
+use MediaWiki\MediaWikiServices;
+
 require_once __DIR__ . '/../../../maintenance/Maintenance.php';
 
 /**
@@ -26,6 +28,7 @@ class CleanupPageTriageLog extends Maintenance {
 	public function execute() {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbr = wfGetDB( DB_REPLICA );
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 		// clean up the following type and action
 		$logTypes = [
@@ -66,7 +69,7 @@ class CleanupPageTriageLog extends Maintenance {
 				}
 
 				$this->output( "processed " . $type['type'] . ' ' . $type['action'] . ': ' . $count . "\n" );
-				wfWaitForSlaves();
+				$lbFactory->waitForReplication();
 			}
 		}
 	}

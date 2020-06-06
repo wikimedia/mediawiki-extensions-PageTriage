@@ -2,6 +2,7 @@
 
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
+use MediaWiki\MediaWikiServices;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -59,6 +60,8 @@ class UpdateUserMetadata extends Maintenance {
 			$namespace = NS_MAIN;
 		}
 
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
 		while ( $count === $this->getBatchSize() ) {
 			$count = 0;
 			$startTime = $this->dbr->addQuotes( $this->dbr->timestamp( $startTime ) );
@@ -98,7 +101,7 @@ class UpdateUserMetadata extends Maintenance {
 				}
 
 				$this->output( "processed $count \n" );
-				wfWaitForSlaves();
+				$lbFactory->waitForReplication();
 			}
 		}
 

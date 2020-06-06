@@ -7,6 +7,7 @@ if ( $IP === false ) {
 require_once "$IP/maintenance/Maintenance.php";
 
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
+use MediaWiki\MediaWikiServices;
 
 /**
  * A maintenance script that updates expired page metadata
@@ -60,6 +61,8 @@ class UpdatePageTriageQueue extends Maintenance {
 			$this->output( "No data to process \n" );
 			return;
 		}
+
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 		$startId = $idRow->max_id + 1;
 
@@ -118,7 +121,7 @@ class UpdatePageTriageQueue extends Maintenance {
 			}
 
 			$this->output( "processed $count \n" );
-			wfWaitForSlaves();
+			$lbFactory->waitForReplication();
 		}
 
 		// Also clean-up old logging data while we're at it.
