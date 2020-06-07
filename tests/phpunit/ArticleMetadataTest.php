@@ -43,10 +43,6 @@ class ArticleMetadataTest extends PageTriageTestCase {
 		ArticleMetadata::clearStaticCache();
 	}
 
-	protected function tearDown() : void {
-		parent::tearDown();
-	}
-
 	/**
 	 * @group Broken
 	 */
