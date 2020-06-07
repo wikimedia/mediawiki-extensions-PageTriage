@@ -136,7 +136,7 @@ class PageTriage {
 				$rc = RecentChange::newFromConds( [
 					'rc_cur_id' => $this->mPageId,
 					'rc_new' => '1'
-				] );
+				], __METHOD__ );
 				if ( $rc && !$rc->getAttribute( 'rc_patrolled' ) ) {
 					$rc->reallyMarkPatrolled();
 					PatrolLog::record( $rc, false, $user, 'pagetriage' );
