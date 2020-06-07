@@ -61,7 +61,8 @@ class CleanupPageTriageLog extends Maintenance {
 					$dbw->update(
 						'logging',
 						[ 'log_params' => $newLogParams ],
-						[ 'log_id' => $row->log_id ]
+						[ 'log_id' => $row->log_id ],
+						__METHOD__
 					);
 
 					$startTime = wfTimestamp( TS_UNIX, $row->log_timestamp );

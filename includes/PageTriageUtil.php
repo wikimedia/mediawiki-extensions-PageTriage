@@ -36,7 +36,8 @@ class PageTriageUtil {
 		$dbr = wfGetDB( DB_REPLICA );
 
 		$row = $dbr->selectRow( 'pagetriage_page', 'ptrp_reviewed',
-			[ 'ptrp_page_id' => $pageId ]
+			[ 'ptrp_page_id' => $pageId ],
+			__METHOD__
 		);
 
 		if ( !$row ) {
@@ -89,11 +90,12 @@ class PageTriageUtil {
 		$namespace = self::validatePageNamespace( $namespace );
 
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$fname = __METHOD__;
 
 		return $cache->getWithSetCallback(
 			$cache->makeKey( 'pagetriage-unreviewed-pages-stat', $namespace ),
 			10 * $cache::TTL_MINUTE,
-			function () use ( $namespace ) {
+			function () use ( $namespace, $fname ) {
 				$dbr = wfGetDB( DB_REPLICA );
 
 				$table = [ 'pagetriage_page', 'page' ];
@@ -108,7 +110,8 @@ class PageTriageUtil {
 				$res = $dbr->selectRow(
 					$table,
 					[ 'COUNT(ptrp_page_id) AS total', 'MIN(ptrp_created) AS oldest' ],
-					$conds
+					$conds,
+					$fname
 				);
 
 				$data = [ 'count' => 0, 'oldest' => '' ];
@@ -148,11 +151,12 @@ class PageTriageUtil {
 		$namespace = self::validatePageNamespace( $namespace );
 
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$fname = __METHOD__;
 
 		return $cache->getWithSetCallback(
 			$cache->makeKey( 'pagetriage-reviewed-pages-stat', $namespace ),
 			10 * $cache::TTL_MINUTE,
-			function () use ( $namespace ) {
+			function () use ( $namespace, $fname ) {
 				$time = (int)wfTimestamp( TS_UNIX ) - 7 * 24 * 60 * 60;
 
 				$dbr = wfGetDB( DB_REPLICA );
@@ -168,7 +172,8 @@ class PageTriageUtil {
 				$res = $dbr->selectRow(
 					$table,
 					[ 'COUNT(ptrp_page_id) AS reviewed_count' ],
-					$conds
+					$conds,
+					$fname
 				);
 
 				$data = [ 'reviewed_count' => 0 ];
@@ -378,7 +383,8 @@ class PageTriageUtil {
 		$dbw->update(
 			'pagetriage_page_tags',
 			[ 'ptrpt_value' => $status ],
-			[ 'ptrpt_page_id' => $pageIds, 'ptrpt_tag_id' => $tags['user_block_status'] ]
+			[ 'ptrpt_page_id' => $pageIds, 'ptrpt_tag_id' => $tags['user_block_status'] ],
+			__METHOD__
 		);
 		PageTriage::bulkSetTagsUpdated( $pageIds );
 		$dbw->endAtomic( __METHOD__ );

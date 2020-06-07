@@ -56,7 +56,8 @@ class DeleteAfcStates extends Maintenance {
 				[
 					'ptrpt_page_id' => $pageIds,
 					'ptrpt_tag_id' => $afcStateTagId,
-				]
+				],
+				__METHOD__
 			);
 			$lbFactory->waitForReplication();
 
