@@ -127,7 +127,7 @@
 	"pagetriage-filter-stat-predicted-issues-attack": "Напад",
 	"pagetriage-filter-stat-predicted-issues-copyvio": "Кршење ауторских права",
 	"pagetriage-filter-stat-predicted-issues-none": "Нема",
-	"pagetriage-no-pages": "Нема страница које одговарају вашим критеријумима.",
+	"pagetriage-no-pages": "Нема страница које испуњавају наведене критеријуме.",
 	"pagetriage-warning-browser": "Ова алатка можда неће радити исправно у прегледачима старијима од Интернет експлорера 11.",
 	"pagetriage-welcome": "Прегледајте нове странице испод и помозите у побољшавању пројекта  {{SITENAME}}. [$1 Сазнајте више] · [$2 Оставите повратне информације]",
 	"pagetriage-note-reviewed": "Ова страница је прегледана.",
