@@ -95,7 +95,7 @@ class UpdateUserMetadata extends Maintenance {
 				$acp = ArticleCompileProcessor::newFromPageId( $pageId );
 				if ( $acp ) {
 					$acp->registerComponent( 'UserData' );
-					// safe to use slave db for data compilation
+					// safe to use replica db for data compilation
 					$acp->configComponentDb( [ 'UserData' => DB_REPLICA ] );
 					$acp->compileMetadata();
 				}

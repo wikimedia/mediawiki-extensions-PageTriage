@@ -57,7 +57,7 @@ class PageTriage {
 
 		// Pull page creation date from database
 		// must select from master here since the page has just been created, and probably
-		// hasn't propagated to the slaves yet.
+		// hasn't propagated to the replicas yet.
 		$res = $dbw->selectRow(
 			'revision',
 			[ 'MIN(rev_timestamp) AS creation_date', 'MAX(rev_timestamp) AS last_edit_date' ],
