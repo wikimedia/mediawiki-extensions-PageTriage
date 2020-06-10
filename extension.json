@@ -639,10 +639,9 @@
 	},
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\PageTriage\\Hooks::onLoadExtensionSchemaUpdates",
-		"TitleMoveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onTitleMoveComplete",
+		"PageMoveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageMoveComplete",
 		"RevisionFromEditComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onRevisionFromEditComplete",
-		"PageContentInsertComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageContentInsertComplete",
-		"PageContentSaveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageContentSaveComplete",
+		"PageSaveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageSaveComplete",
 		"LinksUpdateComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onLinksUpdateComplete",
 		"ArticleViewFooter": "MediaWiki\\Extension\\PageTriage\\Hooks::onArticleViewFooter",
 		"ArticleDeleteComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onArticleDeleteComplete",

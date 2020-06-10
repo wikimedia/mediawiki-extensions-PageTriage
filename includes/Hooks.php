@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\PageTriage;
 
 use Article;
-use Content;
 use DatabaseUpdater;
 use DeferredUpdates;
 use EchoEvent;
@@ -15,6 +14,7 @@ use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddDeletionTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddMaintenanceTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageMarkAsReviewedPresentationModel;
+use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
@@ -23,8 +23,6 @@ use MWTimestamp;
 use ParserOutput;
 use RecentChange;
 use ResourceLoader;
-use Revision;
-use Status;
 use Title;
 use User;
 use Wikimedia\Rdbms\Database;
@@ -36,21 +34,30 @@ class Hooks {
 	 * Mark a page as unreviewed after moving the page from non-main(article) namespace to
 	 * main(article) namespace
 	 *
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/TitleMoveComplete
-	 * @param Title &$oldTitle old title object
-	 * @param Title &$newTitle new title object
-	 * @param User $user User doing the move
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageMoveComplete
+	 * @param LinkTarget $oldTitle old title object
+	 * @param LinkTarget $newTitle new title object
+	 * @param UserIdentity $user User doing the move
 	 * @param int $oldid Page id of moved page
 	 * @param int $newid Page id of created redirect, or 0 if suppressed
 	 * @param string $reason Reason for the move
-	 * @param Revision $revision Null revision created by the move
+	 * @param RevisionRecord $revisionRecord Null revision created by the move
 	 */
-	public static function onTitleMoveComplete(
-		Title &$oldTitle, Title &$newTitle, User $user, $oldid, $newid, $reason, Revision $revision
+	public static function onPageMoveComplete(
+		LinkTarget $oldTitle,
+		LinkTarget $newTitle,
+		UserIdentity $user,
+		$oldid,
+		$newid,
+		$reason,
+		RevisionRecord $revisionRecord
 	) {
 		// Delete cache for record if it's in pagetriage queue
 		$articleMetadata = new ArticleMetadata( [ $oldid ] );
 		$articleMetadata->flushMetadataFromCache();
+
+		$oldTitle = Title::newFromLinkTarget( $oldTitle );
+		$newTitle = Title::newFromLinkTarget( $newTitle );
 
 		// Delete user status cache
 		self::flushUserStatusCache( $oldTitle );
@@ -70,6 +77,8 @@ class Hooks {
 		) {
 			return;
 		}
+
+		$user = User::newFromIdentity( $user );
 
 		// If not a new record to pagetriage queue, do nothing.
 		if ( !self::addToPageTriageQueue( $oldid, $newTitle, $user ) ) {
@@ -125,56 +134,49 @@ class Hooks {
 	}
 
 	/**
-	 * New article is created, insert it into PageTriage Queue and compile metadata.
+	 * Page saved, flush cache
 	 *
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageContentInsertComplete
+	 * If new article is created, insert it into PageTriage Queue and compile metadata.
+	 *
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageSaveComplete
 	 * @param WikiPage $wikiPage WikiPage created
-	 * @param User $user User creating the article
-	 * @param Content $content New content (No longer used)
-	 * @param string $summary Edit summary/comment (No longer used)
-	 * @param bool $isMinor Whether or not the edit was marked as minor (No longer used)
-	 * @param bool $isWatch (No longer used)
-	 * @param bool $section (No longer used)
-	 * @param int $flags Flags passed to Article::doEdit() (No longer used)
-	 * @param Revision $revision New Revision of the article (No longer used)
+	 * @param UserIdentity $user User creating the article
+	 * @param string $summary Edit summary/comment
+	 * @param int $flags Flags passed to Article::doEdit()
+	 * @param RevisionRecord $revisionRecord New Revision of the article
+	 * @param int|bool $originalRevId If the edit restores or repeats an earlier revision (such as a
+	 *   rollback or a null revision), the ID of that earlier revision. False otherwise.
+	 * @param int $undidRevId Rev ID (or 0) this edit undid
 	 */
-	public static function onPageContentInsertComplete(
+	public static function onPageSaveComplete(
 		WikiPage $wikiPage,
-		$user,
-		$content, $summary, $isMinor, $isWatch, $section, $flags, $revision
+		UserIdentity $user,
+		string $summary,
+		int $flags,
+		RevisionRecord $revisionRecord,
+		$originalRevId,
+		int $undidRevId
 	) {
+		$title = $wikiPage->getTitle();
+
+		self::flushUserStatusCache( $title );
+
+		if ( !( $flags & EDIT_NEW ) ) {
+			// Don't add to queue if its not a new page
+			return;
+		}
+
 		// Don't add to queue if not in a namespace of interest.
-		if ( !in_array( $wikiPage->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
+		if ( !in_array( $title->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			return;
 		}
 
 		// Add item to queue. Metadata compilation will get triggered in the LinksUpdate hook.
-		self::addToPageTriageQueue( $wikiPage->getId(), $wikiPage->getTitle(), $user );
-	}
-
-	/**
-	 * Flush user status cache on a successful save.
-	 *
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageContentSaveComplete
-	 *
-	 * @param WikiPage $wikiPage
-	 * @param User $user
-	 * @param Content $content
-	 * @param string $summary
-	 * @param bool $minoredit
-	 * @param bool $watchthis
-	 * @param string $sectionanchor
-	 * @param int $flags
-	 * @param Revision $revision
-	 * @param Status $status
-	 * @param int $baseRevId
-	 */
-	public static function onPageContentSaveComplete(
-		WikiPage $wikiPage, $user, $content, $summary,
-		$minoredit, $watchthis, $sectionanchor, $flags, $revision,
-		$status, $baseRevId
-	) {
-		self::flushUserStatusCache( $wikiPage->getTitle() );
+		self::addToPageTriageQueue(
+			$wikiPage->getId(),
+			$title,
+			User::newFromIdentity( $user )
+		);
 	}
 
 	/**
