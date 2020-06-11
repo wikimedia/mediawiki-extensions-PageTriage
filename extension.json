@@ -613,7 +613,6 @@
 			]
 		},
 		"ext.PageTriage.enqueue": {
-			"styles": [],
 			"scripts": "ext.PageTriage.enqueue/ext.PageTriage.enqueue.js",
 			"messages": [
 				"pagetriage-enqueue-title",
