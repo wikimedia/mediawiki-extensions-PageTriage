@@ -603,7 +603,6 @@ class Hooks {
 				'jquery.spinner',
 				'jquery.client',
 				'ext.pageTriage.externalTagsOptions',
-				'ext.pageTriage.externalDeletionTagsOptions',
 			],
 			'styles' => [
 				'ext.pageTriage.css', // stuff that's shared across all views
