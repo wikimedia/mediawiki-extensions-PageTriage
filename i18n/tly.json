@@ -5,12 +5,14 @@
 			"Гусейн"
 		]
 	},
+	"pagetriage-user-creation-dateformat": "ssss-MM-rr",
 	"pagetriage-filter-show-heading": "Нишо дој:",
-	"pagetriage-more": "Һәнијән",
-	"pagetriage-filter-stat-all": "Həmməy",
-	"pagetriage-tags-cat-metadata-label": "Метамәлумотон",
-	"pagetriage-tags-cat-sources-label": "Сәвонон",
-	"pagetriage-tags-param-free-yes-label": "Bəle",
+	"pagetriage-more": "Həniyən",
+	"pagetriage-filter-stat-all": "Həmə",
+	"pagetriage-tags-cat-metadata-label": "Metaməlumoton",
+	"pagetriage-tags-cat-sources-label": "Səvonon",
+	"pagetriage-tags-cat-structure-label": "Struktur",
+	"pagetriage-tags-param-free-yes-label": "Ha",
 	"pagetriage-tags-param-free-no-label": "Ne",
 	"pagetriage-info-history-header": "Тарых"
 }
