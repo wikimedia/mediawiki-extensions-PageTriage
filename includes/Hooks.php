@@ -139,23 +139,19 @@ class Hooks {
 	 * If new article is created, insert it into PageTriage Queue and compile metadata.
 	 *
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageSaveComplete
+	 *
 	 * @param WikiPage $wikiPage WikiPage created
 	 * @param UserIdentity $user User creating the article
 	 * @param string $summary Edit summary/comment
 	 * @param int $flags Flags passed to Article::doEdit()
 	 * @param RevisionRecord $revisionRecord New Revision of the article
-	 * @param int|bool $originalRevId If the edit restores or repeats an earlier revision (such as a
-	 *   rollback or a null revision), the ID of that earlier revision. False otherwise.
-	 * @param int $undidRevId Rev ID (or 0) this edit undid
 	 */
 	public static function onPageSaveComplete(
 		WikiPage $wikiPage,
 		UserIdentity $user,
 		string $summary,
 		int $flags,
-		RevisionRecord $revisionRecord,
-		$originalRevId,
-		int $undidRevId
+		RevisionRecord $revisionRecord
 	) {
 		$title = $wikiPage->getTitle();
 
