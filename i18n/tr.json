@@ -348,7 +348,7 @@
 	"apihelp-pagetriagelist-param-dir": "Listenin sıralanması gereken yön - oldestfirst, newestfirst, oldestreview veya newestreview.",
 	"apihelp-pagetriagelist-param-namespace": "Sayfaları almak için hangi ad alanı.",
 	"apihelp-pagetriagelist-param-no_category": "Yalnızca kategorisi olmayan sayfaların gösterilip gösterilmeyeceği.",
-	"apihelp-pagetriagelist-param-unreferenced": "Referans olmadan sadece sayfa gösterilip gösterilmeyeceği.",
+	"apihelp-pagetriagelist-param-unreferenced": "Kaynakça olmadan yalnızca sayfa gösterilip gösterilmeyeceği.",
 	"apihelp-pagetriagelist-param-no_inbound_links": "Yalnızca gelen bağlantısı olmayan sayfaların gösterilip gösterilmeyeceği.",
 	"apihelp-pagetriagelist-param-recreated": "Yalnızca önceden silinmiş sayfaların eklenip eklenmeyeceğini belirtir.",
 	"apihelp-pagetriagelist-param-non_autoconfirmed_users": "Yalnızca otomatik olarak onaylanmamış kullanıcılar tarafından oluşturulan sayfaların gösterilip gösterilmeyeceği.",
