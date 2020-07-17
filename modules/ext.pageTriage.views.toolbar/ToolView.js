@@ -242,6 +242,7 @@ module.exports = Backbone.View.extend( {
 
 	/**
 	 * Get standardized data to send back to callers of mw.pageTriage.actionQueue.
+	 *
 	 * @param {Object} [data] Additional data to give the hook handler.
 	 * @return {Object}
 	 */

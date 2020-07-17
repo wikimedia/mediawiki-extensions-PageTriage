@@ -318,6 +318,7 @@ $( function () {
 
 		/**
 		 * Fetch values from the form, used when building the API query.
+		 *
 		 * @param {boolean} [isListView] If true, will include params relevant to list view (dir
 		 * and limit). If false (i.e. we are getting statistics), list view specific params are
 		 * excluded.
@@ -359,6 +360,7 @@ $( function () {
 
 		/**
 		 * Get API parameters from the form for the NPP queue.
+		 *
 		 * @return {Object}
 		 */
 		getApiParamsNpp: function () {
@@ -447,6 +449,7 @@ $( function () {
 
 		/**
 		 * Get API parameters from the form for the NPP or AFC context queue.
+		 *
 		 * @param {string} context
 		 * @return {Object}
 		 */
@@ -483,6 +486,7 @@ $( function () {
 
 		/**
 		 * Reload data from the model, showing a spinner while waiting for a response.
+		 *
 		 * @param {Object} [options]
 		 */
 		modelFetch: function ( options ) {
@@ -652,6 +656,7 @@ $( function () {
 
 		/**
 		 * Sync Date Range elements with the filters, for NPP or AFC context queue.
+		 *
 		 * @param {string} context
 		 */
 		menuSyncDateRange: function ( context ) {
@@ -753,6 +758,7 @@ $( function () {
 
 		/**
 		 * Get Html for date range filters
+		 *
 		 * @param {string} context The value 'npp' or 'afc'
 		 * @return {string}
 		 */
@@ -769,6 +775,7 @@ $( function () {
 
 		/**
 		 * Get Html for date range label and input field
+		 *
 		 * @param {string} context The value 'npp' or 'afc'
 		 * @param {string} dateRangeType The date range value 'to' or 'from'
 		 * @return {string}

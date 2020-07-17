@@ -340,6 +340,7 @@ $( function () {
 
 		/**
 		 * Set the ArticleList mode.
+		 *
 		 * @TODO This also sets the namespace that will be queried, which means that it'll be saved as the current
 		 * filter namespace and so when NPP is selected the NS dropdown will not remember the previous state. Bad?
 		 * @param {string} newMode Either 'npp' or 'afc'.
@@ -360,6 +361,7 @@ $( function () {
 
 		/**
 		 * Get the current ArticleList mode.
+		 *
 		 * @return {string} Either 'npp' or 'afc'.
 		 */
 		getMode: function () {
