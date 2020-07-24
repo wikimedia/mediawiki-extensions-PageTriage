@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"01miki10",
 			"Alluk.",
 			"Beluga",
 			"Fitoschido",
@@ -58,7 +59,7 @@
 	"pagetriage-filter-namespace-heading": "Nimiavaruudessa:",
 	"pagetriage-filter-article": "Artikkeli",
 	"pagetriage-filter-user-heading": "On luonut käyttäjä",
-	"pagetriage-filter-username": "Käyttäjätunnus",
+	"pagetriage-filter-username": "Käyttäjänimi",
 	"pagetriage-filter-tag-heading": "Merkkauksella:",
 	"pagetriage-filter-second-show-heading": "Jotka:",
 	"pagetriage-filter-no-categories": "Ovat luokittelematta",
