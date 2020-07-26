@@ -1,4 +1,6 @@
 -- Store the list of articles to be reviewed or being reviewed already
+-- For ptrp_reviewed, values are:
+-- 0 = unreviewed, 1 = reviewed, 2 = patrolled, 3 = autopatrolled
 CREATE TABLE /*_*/pagetriage_page (
 	ptrp_page_id int unsigned NOT NULL PRIMARY KEY,
 	ptrp_reviewed tinyint unsigned NOT NULL DEFAULT 0, -- page reviewed status
