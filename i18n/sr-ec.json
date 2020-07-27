@@ -59,7 +59,7 @@
 	"pagetriage-filter-predicted-issues-none": "Нема",
 	"pagetriage-unreviewed-article-count": "Укупно постоји $1 {{PLURAL:$1|непрегледана страница|непрегледане странице|непрегледаних страница}} (најстарија: $2)",
 	"pagetriage-reviewed-article-count-past-week": "Ове недеље {{PLURAL:$1|је проверена|су проверене|је проверено}} $1 {{PLURAL:$1|страница|странице|страница}}",
-	"pagetriage-sort-by": "Сортирај по",
+	"pagetriage-sort-by": "Поређај по",
 	"pagetriage-newest": "најновије",
 	"pagetriage-oldest": "најстарије",
 	"pagetriage-afc-newest": "Датум прављења (најновији)",
