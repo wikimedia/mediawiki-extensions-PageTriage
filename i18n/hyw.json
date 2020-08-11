@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Azniv Stepanian",
 			"Kareyac"
 		]
 	},
@@ -15,7 +16,7 @@
 	"pagetriage-filter-article": "Յօդուած",
 	"pagetriage-filter-ns-all": "Բոլոր",
 	"pagetriage-filter-stat-all": "Բոլոր",
-	"pagetriage-filter-stat-namespace": "Անւանատարածք",
+	"pagetriage-filter-stat-namespace": "Անուանատարածք",
 	"pagetriage-filter-stat-predicted-class-good": "Լաւ",
 	"pagetriage-filter-stat-predicted-issues-none": "Ոչ մէկ",
 	"pagetriage-has-talkpage-feedback-link": "քննարկման էջ",
