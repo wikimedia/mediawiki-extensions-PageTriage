@@ -22,5 +22,7 @@
 	"log-description-pagetriage-copyvio": "This is the log of events received via the PageTriage Copyvio API.",
 	"pagetriage-info-help": "helpo",
 	"pagetriage-toolbar-learn-more": "Lernez pluse »",
+	"pagetriage-mark-title": "Indikar kom revizita",
+	"pagetriage-mark-as-reviewed": "Indikar kom revizita",
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Dankar}}}}"
 }
