@@ -37,6 +37,7 @@ class DeleteAfcStates extends Maintenance {
 		$iterator->addConditions( [
 			'ptrpt_tag_id' => $afcStateTagId,
 		] );
+		$iterator->setCaller( __METHOD__ );
 
 		foreach ( $iterator as $rows ) {
 			$pageIds = array_map( function ( $row ) {

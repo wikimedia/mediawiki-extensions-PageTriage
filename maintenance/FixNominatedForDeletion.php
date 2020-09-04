@@ -41,6 +41,7 @@ class FixNominatedForDeletion extends Maintenance {
 		] );
 		// deduplicate pages in multiples deletion categories
 		$iterator->addOptions( [ 'GROUP BY' => 'ptrp_page_id' ] );
+		$iterator->setCaller( __METHOD__ );
 
 		foreach ( $iterator as $rows ) {
 			$pageIds = array_map( function ( $row ) {
