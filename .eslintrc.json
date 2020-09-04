@@ -20,6 +20,8 @@
 		"no-jquery/no-global-selector": "off",
 		"no-jquery/no-class-state": "off",
 		"no-jquery/no-sizzle": "off",
-		"no-jquery/variable-pattern": "off"
+		"no-jquery/variable-pattern": "off",
+		"no-shadow": "warn",
+		"no-unreachable-loop": "warn"
 	}
 }
