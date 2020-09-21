@@ -43,6 +43,7 @@
 	"pagetriage-filter-stat-predicted-issues-vandalism": "Vandalism",
 	"pagetriage-filter-stat-predicted-issues-none": "Niciuna",
 	"pagetriage-no-pages": "Nicio pagină nu corespunde criteriilor dumneavoastră.",
+	"pagetriage-note-reviewed": "Această pagină a fost revizuită.",
 	"pagetriage-refresh-list": "Reîmprospătează lista",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|etichetă selectată|etichete selectate|de etichete selectate}}",
 	"pagetriage-tags-title": "Adăugare etichete",
@@ -89,5 +90,6 @@
 	"pagetriage-del-tooltip": "Nominalizează această pagină pentru ștergere",
 	"pagetriage-toolbar-close": "Închidere",
 	"pagetriage-toolbar-minimize": "Minimizare",
+	"notification-header-pagetriage-mark-as-reviewed": "Pagina '''$3''' a fost {{GENDER:$2|revizuită}}.",
 	"apihelp-pagetriagestats-param-recreated": "Dacă să includă doar pagini care au fost șterse în trecut."
 }
