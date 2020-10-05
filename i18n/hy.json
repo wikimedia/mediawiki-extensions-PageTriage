@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kareyac",
 			"Աշոտ1997"
 		]
 	},
@@ -48,6 +49,7 @@
 	"pagetriage-tags-cat-sources-label": "Աղբյուրներ",
 	"pagetriage-tags-cat-all-label": "Բոլոր պիտակները",
 	"pagetriage-del-tags-dba3-label": "Բովանդակություն չկա",
+	"pagetriage-tags-param-article-label": "Հոդված.",
 	"pagetriage-discuss-link": "Քննարկել",
 	"pagetriage-discuss-link-title": "Քննարկել",
 	"echo-pref-subscription-page-review": "Ստուգել իմ ստեղծած էջերից",
