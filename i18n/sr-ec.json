@@ -36,7 +36,7 @@
 	"pagetriage-no-author": "Није наведена ниједна информација о аутору",
 	"pagetriage-byline": "Направио/ла $1 ($2$3$4)",
 	"pagetriage-byline-new-editor": "Направио нови уредник $1 ($2$3$4)",
-	"pagetriage-articleinfo-byline": "Ову страницу је направио/ла $2 на датум $1 ($3$4$5)",
+	"pagetriage-articleinfo-byline": "Ову страницу је направио/-ла $2 на датум $1 ($3$4$5)",
 	"pagetriage-articleinfo-byline-new-editor": "Ову страницу је направио/ла $2 на датум $1 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|измена|измене|измена}} од датума $2",
 	"pagetriage-author-not-autoconfirmed": "Нови уредник",
