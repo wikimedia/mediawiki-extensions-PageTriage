@@ -26,7 +26,7 @@ class PageTriageUtil {
 	 * @param WikiPage $page
 	 *
 	 * @throws Exception
-	 * @return Mixed null if the page is not in the triage system,
+	 * @return mixed null if the page is not in the triage system,
 	 * otherwise whether or not the page is unreviewed.
 	 * Return convention is this way so that null and false are equivalent
 	 * with a straight boolean test.

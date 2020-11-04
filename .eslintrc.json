@@ -2,16 +2,15 @@
 	"root": true,
 	"extends": [
 		"wikimedia/client",
-		"wikimedia/jquery"
+		"wikimedia/jquery",
+		"wikimedia/mediawiki"
 	],
 	"env": {
 		"commonjs": true
 	},
 	"globals": {
-		"mw": false,
 		"Backbone": false,
 		"_": false,
-		"OO": false,
 		"mediaWiki": false,
 		"jQuery": false
 	},
@@ -22,6 +21,7 @@
 		"no-jquery/no-sizzle": "off",
 		"no-jquery/variable-pattern": "off",
 		"no-shadow": "warn",
-		"no-unreachable-loop": "warn"
+		"no-unreachable-loop": "warn",
+		"mediawiki/msg-doc": "warn"
 	}
 }
