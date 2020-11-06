@@ -34,7 +34,7 @@
 	"pagetriage-mark-as-reviewed-error": "Sayfayı \"incelendi\" olarak işaretlerken bir hata meydana geldi: $1",
 	"pagetriage-mark-as-unreviewed-error": "Sayfayı \"incelenmedi\" olarak işaretlerken bir hata meydana geldi: $1",
 	"pagetriage-hist": "geçmiş",
-	"pagetriage-bytes": "$1 {{PLURAL:$1|bayt|bayt}}",
+	"pagetriage-bytes": "$1 bayt",
 	"pagetriage-edits": "$1 {{PLURAL:$1|düzenleme|düzenleme}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|kategori|kategori}}",
 	"pagetriage-no-categories": "Kategorisiz",
