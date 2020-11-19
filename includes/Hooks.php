@@ -243,7 +243,7 @@ class Hooks {
 		$draftNsId = MediaWikiServices::getInstance()
 			->getMainConfig()
 			->get( 'PageTriageDraftNamespaceId' );
-		$isDraft = false !== $draftNsId && $title->inNamespace( $draftNsId );
+		$isDraft = $draftNsId !== false && $title->inNamespace( $draftNsId );
 
 		// Draft redirects are not patrolled or reviewed.
 		if ( $isDraft && $title->isRedirect() ) {
