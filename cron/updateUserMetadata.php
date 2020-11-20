@@ -31,6 +31,9 @@ class UpdateUserMetadata extends Maintenance {
 		$this->dbr = wfGetDB( DB_REPLICA );
 	}
 
+	/**
+	 * @suppress PhanPossiblyUndeclaredVariable False positive with $row
+	 */
 	public function execute() {
 		$this->init();
 		$this->output( "Started processing... \n" );

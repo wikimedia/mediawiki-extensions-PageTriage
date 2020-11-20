@@ -48,6 +48,7 @@ class CleanupPageTriagePageTags extends Maintenance {
 			$page = [];
 			$count = 0;
 			foreach ( $res as $row ) {
+				// @phan-suppress-next-line PhanPossiblyUndeclaredVariable
 				if ( !in_array( $row->page_id, $page ) ) {
 					$page[] = $row->page_id;
 					$start  = $row->page_id;

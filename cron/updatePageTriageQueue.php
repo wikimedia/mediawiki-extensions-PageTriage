@@ -32,6 +32,9 @@ class UpdatePageTriageQueue extends Maintenance {
 		$this->dbw = wfGetDB( DB_MASTER );
 	}
 
+	/**
+	 * @suppress PhanPossiblyUndeclaredVariable False positive with $row
+	 */
 	public function execute() {
 		global $wgPageTriageNamespaces;
 		// This list doesn't include Article or Draft
