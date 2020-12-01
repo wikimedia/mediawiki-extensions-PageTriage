@@ -393,8 +393,12 @@ class PageTriageUtil {
 		$metadata->flushMetadataFromCache();
 	}
 
+	/**
+	 * @return int
+	 */
 	private static function getCacheVersion() {
 		global $wgPageTriageCacheVersion;
+		// FIXME: This must return int, but returns the string "1.8"
 		return $wgPageTriageCacheVersion;
 	}
 

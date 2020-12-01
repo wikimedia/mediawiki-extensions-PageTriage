@@ -38,6 +38,9 @@ class PageTriageAddDeletionTagPresentationModel extends PageTriagePresentationMo
 		return $msg;
 	}
 
+	/**
+	 * @return array|false
+	 */
 	private function getDiscussionLink() {
 		if ( !in_array( 'afd', $this->getTags() ) ) {
 			return false;

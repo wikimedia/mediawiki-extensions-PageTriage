@@ -59,7 +59,7 @@ class OresMetadata {
 	/**
 	 * Map of ORES class names from thresholds lookup mapped to translatable strings.
 	 */
-	private static $oresClassToMsgKey = [
+	private const ORES_CLASS_TO_MSG_KEY = [
 		'Stub' => 'pagetriage-filter-stat-predicted-class-stub',
 		'Start' => 'pagetriage-filter-stat-predicted-class-start',
 		'C' => 'pagetriage-filter-stat-predicted-class-c',
@@ -156,7 +156,7 @@ class OresMetadata {
 	 * @return string Translated name of the class
 	 */
 	private function classToMessage( $className ) {
-		$key = self::$oresClassToMsgKey[ $className ];
+		$key = self::ORES_CLASS_TO_MSG_KEY[ $className ];
 		return $key ? $this->requestContext->msg( $key )->text() : '';
 	}
 

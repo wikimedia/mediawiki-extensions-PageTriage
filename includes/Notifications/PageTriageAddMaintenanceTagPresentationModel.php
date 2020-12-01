@@ -39,6 +39,9 @@ class PageTriageAddMaintenanceTagPresentationModel extends PageTriagePresentatio
 		return $msg;
 	}
 
+	/**
+	 * @return array|false
+	 */
 	private function getThankLink() {
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'Thanks' ) ) {
 			return false;

@@ -20,6 +20,10 @@ use Title;
  */
 class ApiPageTriageList extends ApiBase {
 
+	/**
+	 * @param string[] &$tables
+	 * @param array &$join_conds
+	 */
 	private static function joinWithTagCopyvio( &$tables, &$join_conds ) {
 		$tags = ArticleMetadata::getValidTags();
 		$tagId = $tags[ 'copyvio' ];
@@ -34,6 +38,10 @@ class ApiPageTriageList extends ApiBase {
 		];
 	}
 
+	/**
+	 * @param string[] &$tables
+	 * @param array &$join_conds
+	 */
 	private static function joinWithTags( &$tables, &$join_conds ) {
 		$tables[ 'pagetriage_pt' ] = 'pagetriage_page_tags';
 		$join_conds[ 'pagetriage_pt' ] = [
@@ -42,6 +50,11 @@ class ApiPageTriageList extends ApiBase {
 		];
 	}
 
+	/**
+	 * @param array $opts
+	 *
+	 * @return string|false
+	 */
 	private static function buildCopyvioCond( $opts ) {
 		if (
 			!isset( $opts[ 'show_predicted_issues_copyvio' ] ) ||

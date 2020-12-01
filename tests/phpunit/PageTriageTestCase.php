@@ -45,7 +45,10 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		);
 	}
 
-	protected function setUpForOresCopyvioTests( array &$wgHooks ) {
+	/**
+	 * @param array &$hooks
+	 */
+	protected function setUpForOresCopyvioTests( array &$hooks ) {
 		$this->tablesUsed[] = 'page';
 		$this->tablesUsed[] = 'revision';
 		$this->tablesUsed[] = 'pagetriage_page';
@@ -55,7 +58,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		$this->tablesUsed[] = 'ores_model';
 		$this->tablesUsed[] = 'ores_classification';
 		ArticleMetadata::clearStaticCache();
-		unset( $wgHooks[ 'ORESCheckModels' ] );
+		unset( $hooks[ 'ORESCheckModels' ] );
 	}
 
 	/**
@@ -101,6 +104,11 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		return $pageAndTitle[ 'id' ];
 	}
 
+	/**
+	 * @param string[] $expectedPages
+	 * @param array[] $response
+	 * @param string $msg
+	 */
 	protected function assertPages( $expectedPages, $response, $msg = '' ) {
 		$pagesFromResponse = array_map( function ( $item ) {
 			$title = $item[ 'title' ];

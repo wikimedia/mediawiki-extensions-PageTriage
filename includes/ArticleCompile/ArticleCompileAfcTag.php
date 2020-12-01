@@ -74,6 +74,11 @@ class ArticleCompileAfcTag extends ArticleCompileInterface {
 		return true;
 	}
 
+	/**
+	 * @param int[] $pageIds
+	 *
+	 * @return int[]
+	 */
 	private function loadPreviousAfcStates( $pageIds ) {
 		$states = [];
 		$afcStateTagId = $this->db->selectField(

@@ -23,6 +23,9 @@ abstract class PageTriagePresentationModel extends EchoEventPresentationModel {
 		];
 	}
 
+	/**
+	 * @return string[]
+	 */
 	protected function getTags() {
 		// BC: the extra params array used to be the tags directly, now the tags are under the key 'tags'
 		return $this->event->getExtraParam( 'tags', $this->event->getExtra() );

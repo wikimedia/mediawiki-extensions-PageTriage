@@ -9,6 +9,9 @@ use LogFormatter;
  */
 class PageTriageLogFormatter extends LogFormatter {
 
+	/**
+	 * @inheritDoc
+	 */
 	protected function getMessageParameters() {
 		$lang = $this->context->getLanguage();
 		$params = parent::getMessageParameters();

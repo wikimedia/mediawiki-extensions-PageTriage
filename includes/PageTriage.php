@@ -8,16 +8,22 @@ use User;
 
 class PageTriage {
 
-	// database property
+	/** @var int */
 	protected $mPageId;
+	/** @var string Review status as a string between "0" and "3" */
 	protected $mReviewed;
+	/** @var string */
 	protected $mCreated;
+	/** @var string Deletion flag as a string "0" or "1" */
 	protected $mDeleted;
+	/** @var string */
 	protected $mTagsUpdated;
+	/** @var string */
 	protected $mReviewedUpdated;
+	/** @var int */
 	protected $mLastReviewedBy;
 
-	// additional property
+	/** @var bool */
 	protected $mLoaded;
 
 	/**

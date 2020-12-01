@@ -84,6 +84,11 @@ abstract class ArticleCompileInterface {
 		}
 	}
 
+	/**
+	 * @param int $pageId
+	 *
+	 * @return WikiPage|null
+	 */
 	protected function getWikiPageByPageId( $pageId ) : ?WikiPage {
 		// Try if there is an up-to-date wikipage object from article save
 		// else try to create a new one, this is important for replication delay
@@ -101,6 +106,11 @@ abstract class ArticleCompileInterface {
 		return $article;
 	}
 
+	/**
+	 * @param int $pageId
+	 *
+	 * @return \Content|null
+	 */
 	protected function getContentByPageId( $pageId ) {
 		// Prefer a preregistered Article, then a preregistered LinksUpdate
 		if ( isset( $this->articles[$pageId] ) ) {
