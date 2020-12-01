@@ -433,7 +433,7 @@ class Hooks {
 		$revStore = MediaWikiServices::getInstance()->getRevisionStore();
 		if ( $needsReview !== null
 			&& (
-				!$user->equals( $revStore->getFirstRevision( $title )->getUser() )
+				!$user->equals( $revStore->getFirstRevision( $title )->getUser( RevisionRecord::RAW ) )
 				|| $permManager->userHasRight( $user, 'autopatrol' )
 			)
 		) {
