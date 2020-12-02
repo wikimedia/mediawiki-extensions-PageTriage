@@ -9,6 +9,7 @@
 			"Shirayuki",
 			"Sujiniku",
 			"Suyama",
+			"おはぐろ蜻蛉",
 			"아라"
 		]
 	},
@@ -300,6 +301,7 @@
 	"echo-pref-tooltip-page-review": "自分が作成したページを誰かが査読したときに通知する。",
 	"echo-category-title-page-review": "ページの{{PLURAL:$1|査読}}",
 	"action-pagetriage-copyvio": "著作権を侵害している恐れがあるとしてページにタグ付け",
+	"group-copyviobot": "著作権監視ボット",
 	"apihelp-pagetriagelist-param-show_predicted_issues_copyvio": "著作権侵害の恐れがあるものを含めるか",
 	"apihelp-pagetriagestats-param-show_predicted_issues_copyvio": "著作権侵害の恐れがあるものを含めるか"
 }
