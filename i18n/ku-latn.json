@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Balyozxane",
 			"Bikarhêner",
 			"George Animal",
 			"Ghybu",
@@ -11,6 +12,7 @@
 	"pagetriage-edits": "$1 {{PLURAL:$1|guhertin}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|kategorî}}",
 	"pagetriage-no-categories": "Kategorî tune",
+	"pagetriage-filter-predicted-class-stub": "Kurt",
 	"pagetriage-filter-redirects": "Beralîkirin",
 	"pagetriage-filter-article": "Gotar",
 	"pagetriage-filter-username": "Navê bikarhêner",
@@ -20,7 +22,9 @@
 	"pagetriage-filter-stat-all": "Heemû",
 	"pagetriage-filter-stat-redirects": "Beralîkirin",
 	"pagetriage-filter-stat-unreferenced": "Nîşan tune",
+	"pagetriage-filter-stat-predicted-class-stub": "Kurt",
 	"pagetriage-button-add-parameters": "Parametreyan lê zêde bike",
+	"pagetriage-tags-stub-label": "Kurt",
 	"pagetriage-tags-param-free-yes-label": "Erê",
 	"pagetriage-tags-param-free-no-label": "Na",
 	"pagetriage-info-help": "alîkarî",
