@@ -135,7 +135,7 @@ class ApiPageTriageList extends ApiBase {
 
 				// Add ORES data
 				if ( $oresMetadata !== null ) {
-					$metaData[$page] = $metaData[$page] + $oresMetadata->getMetadata( $page );
+					$metaData[$page] += $oresMetadata->getMetadata( $page );
 				}
 
 				$metaData[$page][ApiResult::META_BC_BOOLS] = [
