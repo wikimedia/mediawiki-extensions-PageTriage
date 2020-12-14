@@ -4,8 +4,11 @@
 			"Abbas dhothar"
 		]
 	},
-	"pagetriage-bytes": "$1 {{PLURAL:$1|بائیٹ|بائیٹس}}",
+	"pagetriage-bytes": "$1 {{PLURAL:$1|بائٹ|بائٹاں}}",
+	"pagetriage-author-bot": "بوٹ",
 	"pagetriage-more": "ہور",
+	"pagetriage-filter-stat-learners": "سکھن والے ولوں",
+	"pagetriage-tags-cat-structure-label": "ساخت",
 	"pagetriage-tags-cat-moretags-label": "ہور ٹیگ",
 	"pagetriage-toolbar-learn-more": "ہور سکھو »"
 }

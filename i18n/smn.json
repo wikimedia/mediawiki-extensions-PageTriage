@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Seipinne",
 			"Yupik"
 		]
 	},
 	"pagetriage-author-bot": "Botti",
 	"pagetriage-filter-show-heading": "Tile:",
-	"pagetriage-tags-cat-all-label": "Puoh kilgoleh"
+	"pagetriage-tags-cat-all-label": "Puoh kilgoleh",
+	"pagetriage-tags-param-date-label": "Peivim:"
 }
