@@ -185,20 +185,16 @@
 				"ext.pageTriage.init"
 			]
 		},
-		"jquery.tipoff": {
-			"styles": "jquery.tipoff/jquery.tipoff.css",
-			"scripts": "jquery.tipoff/jquery.tipoff.js"
-		},
 		"ext.pageTriage.views.list": {
 			"dependencies": [
 				"mediawiki.jqueryMsg",
 				"ext.pageTriage.util",
-				"jquery.tipoff",
 				"jquery.ui",
 				"jquery.spinner",
 				"jquery.client"
 			],
 			"scripts": [
+				"jquery.tipoff/jquery.tipoff.js",
 				"ext.pageTriage.views.list/ext.pageTriage.listItem.js",
 				"ext.pageTriage.views.list/ext.pageTriage.listControlNav.js",
 				"ext.pageTriage.views.list/ext.pageTriage.listStatsNav.js",
@@ -210,6 +206,7 @@
 				"listStatsNav.underscore": "ext.pageTriage.views.list/ext.pageTriage.listStatsNav.underscore"
 			},
 			"styles": [
+				"jquery.tipoff/jquery.tipoff.css",
 				"ext.pageTriage.css",
 				"ext.pageTriage.views.list/ext.pageTriage.listItem.css",
 				"ext.pageTriage.views.list/ext.pageTriage.listControlNav.css",
