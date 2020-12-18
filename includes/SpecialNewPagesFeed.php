@@ -70,7 +70,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 			'wgPageTriageInfiniteScrolling' => $wgPageTriageInfiniteScrolling,
 			'wgPageTriageStickyControlNav' => $wgPageTriageStickyControlNav,
 			'wgPageTriageStickyStatsNav' => $wgPageTriageStickyStatsNav,
-			'wgPageTriageEnableReviewButton' => $user->isLoggedIn() && $user->isAllowed( 'patrol' ),
+			'wgPageTriageEnableReviewButton' => $user->isRegistered() && $user->isAllowed( 'patrol' ),
 			'wgShowOresFilters' => $showOresFilters,
 			'wgShowCopyvio' => $showCopyvio,
 		];

@@ -406,7 +406,7 @@ class Hooks {
 		}
 
 		// Only logged in users can review
-		if ( !$user->isLoggedIn() ) {
+		if ( !$user->isRegistered() ) {
 			return;
 		}
 
