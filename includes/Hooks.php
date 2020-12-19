@@ -443,7 +443,7 @@ class Hooks {
 			} else {
 				if ( $needsReview ) {
 					// show 'Mark as reviewed' link
-					$msg = wfMessage( 'pagetriage-markpatrolled' )->text();
+					$msg = $context->msg( 'pagetriage-markpatrolled' )->text();
 					$msg = Html::element(
 						'a',
 						[ 'href' => '#', 'class' => 'mw-pagetriage-markpatrolled-link' ],
@@ -451,7 +451,7 @@ class Hooks {
 					);
 				} else {
 					// show 'Reviewed' text
-					$msg = wfMessage( 'pagetriage-reviewed' )->escaped();
+					$msg = $context->msg( 'pagetriage-reviewed' )->escaped();
 				}
 				$outputPage->addModules( [ 'ext.pageTriage.article' ] );
 				$html = Html::rawElement( 'div', [ 'class' => 'mw-pagetriage-markpatrolled' ], $msg );

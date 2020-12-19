@@ -61,16 +61,16 @@ class ApiPageTriageTagging extends ApiBase {
 		if ( $apiParams ) {
 			$projectLink = '[['
 				. $wgPageTriageProjectLink . '|'
-				. wfMessage( 'pagetriage-pagecuration' )->inContentLanguage()->plain()
+				. $this->msg( 'pagetriage-pagecuration' )->inContentLanguage()->plain()
 				. ']]';
 			if ( $params['deletion'] ) {
-				$editSummary = wfMessage(
+				$editSummary = $this->msg(
 					'pagetriage-del-edit-summary',
 					$projectLink,
 					$tags
 				)->inContentLanguage()->plain();
 			} else {
-				$editSummary = wfMessage(
+				$editSummary = $this->msg(
 					'pagetriage-tags-edit-summary',
 					$projectLink,
 					$tags
