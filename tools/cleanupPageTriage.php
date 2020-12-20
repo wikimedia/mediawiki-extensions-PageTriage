@@ -17,6 +17,7 @@ require_once __DIR__ . '/../../../maintenance/Maintenance.php';
  */
 class CleanupPageTriage extends Maintenance {
 
+	/** @var int */
 	protected $batchSize = 100;
 
 	public function __construct() {

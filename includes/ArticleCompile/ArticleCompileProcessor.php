@@ -17,12 +17,15 @@ use WikiPage;
  * Compiling metadata for articles
  */
 class ArticleCompileProcessor {
+	/** @var string[] */
 	protected $component;
 	/** @var int[] Either DB_MASTER or DB_REPLICA */
 	protected $componentDb;
 	/** @var int[] List of page IDs */
 	protected $pageIds;
+	/** @var array */
 	protected $metadata;
+	/** @var bool */
 	protected $defaultMode;
 	/** @var WikiPage[] */
 	protected $articles = [];

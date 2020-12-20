@@ -57,7 +57,7 @@ class OresMetadata {
 	private $scores;
 
 	/**
-	 * Map of ORES class names from thresholds lookup mapped to translatable strings.
+	 * @var string[] Map of ORES class names from thresholds lookup mapped to translatable strings.
 	 */
 	private const ORES_CLASS_TO_MSG_KEY = [
 		'Stub' => 'pagetriage-filter-stat-predicted-class-stub',

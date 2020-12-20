@@ -15,9 +15,13 @@ use MediaWiki\MediaWikiServices;
 class UpdatePageTriageQueue extends Maintenance {
 
 	/**
-	 * @var \Wikimedia\Rdbms\IDatabase
+	 * @var \Wikimedia\Rdbms\IDatabase|null
 	 */
-	protected $dbr, $dbw;
+	protected $dbr;
+	/**
+	 * @var \Wikimedia\Rdbms\IDatabase|null
+	 */
+	protected $dbw;
 
 	public function __construct() {
 		parent::__construct();

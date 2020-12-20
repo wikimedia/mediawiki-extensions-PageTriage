@@ -12,17 +12,19 @@ use WikiPage;
 abstract class ArticleCompileInterface {
 	/** @var int[] List of page IDs */
 	protected $mPageId;
+	/** @var array */
 	protected $metadata;
 	/** @var WikiPage[] */
 	protected $articles;
 	/** @var LinksUpdate[] */
 	protected $linksUpdates;
+	/** @var \Wikimedia\Rdbms\IDatabase */
 	protected $db;
 	/** @var int Either DB_MASTER or DB_REPLICA */
 	protected $componentDb;
 
 	/**
-	 * @param array $pageId
+	 * @param int[] $pageId
 	 * @param int $componentDb
 	 * @param WikiPage[] $articles
 	 * @param LinksUpdate[] $linksUpdates
