@@ -15,8 +15,6 @@ use TemplateParser;
  * @author Ryan Kaldari
  */
 class SpecialNewPagesFeed extends SpecialPage {
-	// Holds the various options for viewing the list
-	protected $opts;
 
 	/**
 	 * Initialize the special page.
