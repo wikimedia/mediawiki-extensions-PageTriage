@@ -18,12 +18,10 @@ require_once __DIR__ . '/../../../maintenance/Maintenance.php';
  */
 class CleanupPageTriageLog extends Maintenance {
 
-	/** @var int */
-	protected $batchSize = 100;
-
 	public function __construct() {
 		parent::__construct();
 		$this->requireExtension( 'PageTriage' );
+		$this->setBatchSize( 100 );
 	}
 
 	public function execute() {
@@ -37,12 +35,13 @@ class CleanupPageTriageLog extends Maintenance {
 			[ 'type' => 'pagetriage-curation', 'action' => 'delete' ],
 			[ 'type' => 'pagetriage-deletion', 'action' => 'delete' ]
 		];
+		$batchSize = $this->getBatchSize();
 
 		foreach ( $logTypes as $type ) {
-			$count = $this->batchSize;
+			$count = $batchSize;
 			$startTime = (int)wfTimestamp( TS_UNIX ) - 60 * 24 * 60 * 60;
 
-			while ( $count == $this->batchSize ) {
+			while ( $count == $batchSize ) {
 				$res = $dbr->select(
 					[ 'logging' ],
 					[ 'log_id', 'log_timestamp', 'log_params' ],
@@ -52,7 +51,7 @@ class CleanupPageTriageLog extends Maintenance {
 						'log_timestamp > ' . $dbr->addQuotes( $dbr->timestamp( $startTime ) )
 					],
 					__METHOD__,
-					[ 'LIMIT' => $this->batchSize, 'ORDER BY' => 'log_timestamp' ]
+					[ 'LIMIT' => $batchSize, 'ORDER BY' => 'log_timestamp' ]
 				);
 
 				$count = 0;

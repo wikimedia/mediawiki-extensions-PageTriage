@@ -17,12 +17,10 @@ require_once __DIR__ . '/../../../maintenance/Maintenance.php';
  */
 class CleanupPageTriage extends Maintenance {
 
-	/** @var int */
-	protected $batchSize = 100;
-
 	public function __construct() {
 		parent::__construct();
 		$this->requireExtension( 'PageTriage' );
+		$this->setBatchSize( 100 );
 	}
 
 	public function execute() {
@@ -30,10 +28,11 @@ class CleanupPageTriage extends Maintenance {
 		$dbr = wfGetDB( DB_REPLICA );
 		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
-		$count = $this->batchSize;
+		$batchSize = $this->getBatchSize();
+		$count = $batchSize;
 		$start = 0;
 
-		while ( $count == $this->batchSize ) {
+		while ( $count == $batchSize ) {
 			$res = $dbr->select(
 				[ 'pagetriage_page', 'page' ],
 				[ 'page_id' ],
@@ -43,7 +42,7 @@ class CleanupPageTriage extends Maintenance {
 					'ptrp_page_id > ' . $start
 				],
 				__METHOD__,
-				[ 'LIMIT' => $this->batchSize, 'ORDER BY' => 'ptrp_page_id' ]
+				[ 'LIMIT' => $batchSize, 'ORDER BY' => 'ptrp_page_id' ]
 			);
 
 			$page = [];
