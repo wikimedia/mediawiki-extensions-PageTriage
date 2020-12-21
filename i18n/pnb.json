@@ -6,6 +6,8 @@
 	},
 	"pagetriage-bytes": "$1 {{PLURAL:$1|بائٹ|بائٹاں}}",
 	"pagetriage-author-bot": "بوٹ",
+	"pagetriage-sort-by": "چُنن ترتیب:",
+	"pagetriage-filter-tag-heading": "ٹیگ نال:",
 	"pagetriage-more": "ہور",
 	"pagetriage-filter-stat-learners": "سکھن والے ولوں",
 	"pagetriage-tags-title": "ٹیگ رلاؤ:",
