@@ -6,13 +6,16 @@
 	},
 	"pagetriage-bytes": "$1 {{PLURAL:$1|بائٹ|بائٹاں}}",
 	"pagetriage-author-bot": "بوٹ",
+	"pagetriage-filter-predicted-issues-none": "کوئی نئیں",
 	"pagetriage-sort-by": "چُنن ترتیب:",
 	"pagetriage-filter-tag-heading": "ٹیگ نال:",
 	"pagetriage-more": "ہور",
 	"pagetriage-filter-stat-learners": "سکھن والے ولوں",
+	"pagetriage-filter-stat-predicted-issues-none": "کوئی نئیں",
 	"pagetriage-tags-title": "ٹیگ رلاؤ:",
 	"pagetriage-tags-cat-structure-label": "ساخت",
 	"pagetriage-tags-cat-moretags-label": "ہور ٹیگ",
 	"pagetriage-tags-cat-all-label": "سارے ٹیگ",
+	"pagetriage-info-history-show-full": "ظاہر مکمل تریخ",
 	"pagetriage-toolbar-learn-more": "ہور سکھو »"
 }
