@@ -1,21 +1,21 @@
 {
-  "name": "PageTriage",
-  "version": "0.2.1",
-  "private": true,
-  "description": "Build tools for PageTriage.",
-  "scripts": {
-    "test": "grunt test",
-    "doc": "jsduck"
-  },
-  "devDependencies": {
-    "eslint-config-wikimedia": "0.5.0",
-    "grunt": "1.0.2",
-    "grunt-banana-checker": "0.6.0",
-    "grunt-contrib-watch": "1.0.0",
-    "grunt-eslint": "20.1.0",
-    "grunt-jsonlint": "1.1.0",
-    "grunt-stylelint": "0.9.0",
-    "stylelint": "8.2.0",
-    "stylelint-config-wikimedia": "0.4.2"
-  }
+	"name": "PageTriage",
+	"version": "0.2.1",
+	"private": true,
+	"description": "Build tools for PageTriage.",
+	"scripts": {
+		"test": "grunt test",
+		"doc": "jsduck"
+	},
+	"devDependencies": {
+		"eslint-config-wikimedia": "0.5.0",
+		"grunt": "1.3.0",
+		"grunt-banana-checker": "0.6.0",
+		"grunt-contrib-watch": "1.1.0",
+		"grunt-eslint": "20.1.0",
+		"grunt-jsonlint": "1.1.0",
+		"grunt-stylelint": "0.9.0",
+		"stylelint": "8.2.0",
+		"stylelint-config-wikimedia": "0.4.2"
+	}
 }
