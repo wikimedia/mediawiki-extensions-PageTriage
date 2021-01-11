@@ -270,7 +270,7 @@
 	"pagetriage-tags-cleanupreorganise-desc": "{{optional}}\nDescription for cleanup-reorganise tag",
 	"pagetriage-tags-sections-label": "{{optional}}\nLabel for sections tag.\n{{Identical|Section}}",
 	"pagetriage-tags-sections-desc": "{{optional}}\nDescription for sections tag",
-	"pagetriage-tags-stub-label": "Label for stub tag\n{{Identical|Stub}}",
+	"pagetriage-tags-stub-label": "{{optional}}\nLabel for stub tag\n{{Identical|Stub}}",
 	"pagetriage-tags-stub-desc": "{{optional}}\nDescription for stub tag",
 	"pagetriage-tags-verylong-label": "{{optional}}\nLabel for very long tag",
 	"pagetriage-tags-verylong-desc": "{{optional}}\nDescription for very long tag",
