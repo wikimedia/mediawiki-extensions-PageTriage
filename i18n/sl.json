@@ -31,5 +31,7 @@
 	"echo-pref-subscription-page-review": "Preveritev strani, ki sem jo ustvaril",
 	"echo-pref-tooltip-page-review": "Obvesti me, ko nekdo pregleda stran, ki sem jo ustvaril.",
 	"echo-category-title-page-review": "Označi {{PLURAL:$1|pregled|pregleda|preglede|pregledov}}",
+	"tag-pagetriage": "PageTriage",
+	"tag-pagetriage-description": "Za urejanja z razširitvijo [[mw:Special:MyLanguage/Extension:PageTriage|PageTriage]]",
 	"apihelp-pagetriagestats-description": "Pridobite statistiko za triažo strani."
 }
