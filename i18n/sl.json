@@ -7,9 +7,12 @@
 			"Upwinxp"
 		]
 	},
+	"pagetriage-reviewed": "Pregledano",
 	"pagetriage-articleinfo-byline": "Stran je $1 ustvaril(-a) $2 ($3$4$5).",
 	"pagetriage-filter-nominated-for-deletion": "Predlagano za izbris",
+	"pagetriage-filter-stat-reviewed": "Pregledano",
 	"pagetriage-filter-stat-nominated-for-deletion": "Predlagano za izbris",
+	"pagetriage-note-reviewed": "Ta stran je pregledana.",
 	"pagetriage-note-deletion": "Ta stran je bila predlagana za izbris.",
 	"pagetriage-tags-cat-sources-label": "Viri",
 	"pagetriage-tags-uncategorised-desc": "Stran še ni uvrščena v nobeno kategorijo.",
@@ -25,6 +28,8 @@
 	"pagetriage-info-help": "pomoč",
 	"pagetriage-info-problem-non-autoconfirmed": "Nov urejevalec",
 	"pagetriage-info-problem-no-references-desc": "Članek ne navaja nobenega vira.",
+	"pagetriage-mark-title": "Označi kot pregledano",
+	"pagetriage-mark-as-reviewed": "Označi kot pregledano",
 	"pagetriage-wikilove-page-creator": "Ustvaritelj strani",
 	"pagetriage-wikilove-no-recipients": "Za to stran ni na voljo noben prejemnik.",
 	"pagetriage-del-tooltip": "Predlagaj to stran za izbris",
