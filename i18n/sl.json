@@ -8,8 +8,10 @@
 		]
 	},
 	"pagetriage-reviewed": "Pregledano",
+	"pagetriage-bytes": "$1 {{PLURAL:$1|bajt|bajta|bajti|bajtov}}",
 	"pagetriage-articleinfo-byline": "Stran je $1 ustvaril(-a) $2 ($3$4$5).",
 	"pagetriage-filter-nominated-for-deletion": "Predlagano za izbris",
+	"pagetriage-filter-article": "Članek",
 	"pagetriage-filter-stat-reviewed": "Pregledano",
 	"pagetriage-filter-stat-nominated-for-deletion": "Predlagano za izbris",
 	"pagetriage-note-reviewed": "Ta stran je pregledana.",
@@ -23,6 +25,7 @@
 	"pagetriage-tags-confusing-desc": "Stran je nejasna.",
 	"pagetriage-tags-tone-desc": "Stran ima neprimeren ton.",
 	"pagetriage-tags-recentism-desc": "Stran pretirano poudarja nedavne dogodke.",
+	"pagetriage-tags-param-article-label": "Članek:",
 	"pagetriage-tags-param-free-yes-label": "Da",
 	"pagetriage-tags-param-free-no-label": "Ne",
 	"pagetriage-info-help": "pomoč",
