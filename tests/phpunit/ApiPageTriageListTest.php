@@ -206,9 +206,9 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			->move( static::getTestUser()->getUser(), '', false );
 
 		// Check that the queue has decremented by one.
-		static::assertEquals(
+		static::assertCount(
 			$originalPagesCount - 1,
-			count( $this->getPageTriageList() )
+			$this->getPageTriageList()
 		);
 	}
 
@@ -397,7 +397,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		self::ensureOresModel( 'draftquality' );
 
 		$list = $this->getPageTriageList();
-		$this->assertSame( 1, count( $list ), 'no filters' );
+		$this->assertCount( 1, $list, 'no filters' );
 
 		$list = $this->getPageTriageList( [ 'show_predicted_class_b' => true ] );
 		$this->assertCount( 1, $list, 'show class B' );

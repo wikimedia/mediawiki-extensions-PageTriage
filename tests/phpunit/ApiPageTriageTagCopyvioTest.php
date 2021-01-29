@@ -105,7 +105,7 @@ class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 
 		// But there should only be a single log entry.
 		$result = $this->getLogEventForTitle( (string)$title );
-		$this->assertSame( 1, count( $result[0]['query']['logevents'] ) );
+		$this->assertCount( 1, $result[0]['query']['logevents'] );
 
 		// Verify that logging a new revision for this page works.
 		$this->editPage( (string)$title, 'should work' );
@@ -119,7 +119,7 @@ class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 		$this->assertPages( [ 'Page001' ], $list );
 		// Check that there are two log entries now.
 		$result = $this->getLogEventForTitle( (string)$title );
-		$this->assertEquals( 2, count( $result[0]['query']['logevents'] ) );
+		$this->assertCount( 2, $result[0]['query']['logevents'] );
 	}
 
 	protected function getLogEventForTitle( $title ) {
