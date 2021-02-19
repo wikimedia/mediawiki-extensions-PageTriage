@@ -17,6 +17,7 @@ class PageTriageExternalTagsOptions extends ResourceLoaderWikiModule {
 	protected function getPages( ResourceLoaderContext $context ) {
 		return [
 			'MediaWiki:PageTriageExternalTagsOptions.js' => [ 'type' => 'script' ],
+			'MediaWiki:PageTriageExternalDeletionTagsOptions.js' => [ 'type' => 'script' ],
 		];
 	}
 
@@ -25,14 +26,20 @@ class PageTriageExternalTagsOptions extends ResourceLoaderWikiModule {
 	 * @return array
 	 */
 	public function getDependencies( ResourceLoaderContext $context = null ) {
-		return [ 'ext.pageTriage.defaultTagsOptions' ];
+		return [
+			'ext.pageTriage.defaultTagsOptions',
+			'ext.pageTriage.defaultDeletionTagsOptions',
+		];
 	}
 
 	/**
 	 * @return array
 	 */
 	public function getMessages() {
-		global $wgPageTriageTagsOptionsMessages;
-		return $wgPageTriageTagsOptionsMessages;
+		global $wgPageTriageTagsOptionsMessages, $wgPageTriageDeletionTagsOptionsMessages;
+		return array_merge(
+			$wgPageTriageTagsOptionsMessages,
+			$wgPageTriageDeletionTagsOptionsMessages
+		);
 	}
 }
