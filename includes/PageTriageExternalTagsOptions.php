@@ -26,8 +26,7 @@ class PageTriageExternalTagsOptions extends RL\WikiModule {
 	 */
 	public function getDependencies( RL\Context $context = null ) {
 		return [
-			'ext.pageTriage.defaultTagsOptions',
-			'ext.pageTriage.defaultDeletionTagsOptions',
+			'ext.pageTriage.defaultTagsOptions'
 		];
 	}
 

@@ -340,7 +340,10 @@
 			]
 		},
 		"ext.pageTriage.defaultTagsOptions": {
-			"scripts": "ext.pageTriage.defaultTagsOptions/ext.pageTriage.defaultTagsOptions.js",
+			"scripts": [
+				"ext.pageTriage.defaultTagsOptions/ext.pageTriage.defaultTagsOptions.js",
+				"ext.pageTriage.defaultTagsOptions/ext.pageTriage.defaultDeletionTagsOptions.js"
+			],
 			"messages": [
 				"pagetriage-tags-title",
 				"pagetriage-tags-cat-common-label",
@@ -491,15 +494,7 @@
 				"pagetriage-tags-param-missing-required",
 				"pagetriage-tags-param-date-format",
 				"pagetriage-tags-param-for-label",
-				"pagetriage-tags-tooltip"
-			]
-		},
-		"ext.pageTriage.externalTagsOptions": {
-			"class": "MediaWiki\\Extension\\PageTriage\\PageTriageExternalTagsOptions"
-		},
-		"ext.pageTriage.defaultDeletionTagsOptions": {
-			"scripts": "ext.pageTriage.defaultDeletionTagsOptions/ext.pageTriage.defaultDeletionTagsOptions.js",
-			"messages": [
+				"pagetriage-tags-tooltip",
 				"pagetriage-del-tags-cat-csd-label",
 				"pagetriage-del-tags-cat-csd-desc",
 				"pagetriage-del-tags-cat-prod-label",
@@ -551,18 +546,16 @@
 				"pagetriage-del-tags-redirectsfordiscussion-label",
 				"pagetriage-del-tags-miscellanyfordeletion-label",
 				"pagetriage-tags-param-article-label",
-				"pagetriage-tags-param-url-label",
-				"pagetriage-tags-param-source-label",
 				"pagetriage-del-tags-param-discussion-label",
 				"pagetriage-del-title",
-				"pagetriage-del-tooltip",
-				"pagetriage-tags-param-url-label",
-				"pagetriage-tags-param-article-label",
-				"pagetriage-tags-param-source-label"
+				"pagetriage-del-tooltip"
 			],
 			"dependencies": [
 				"mediawiki.Title"
 			]
+		},
+		"ext.pageTriage.externalTagsOptions": {
+			"class": "MediaWiki\\Extension\\PageTriage\\PageTriageExternalTagsOptions"
 		},
 		"ext.pageTriage.toolbarStartup": {
 			"scripts": [
