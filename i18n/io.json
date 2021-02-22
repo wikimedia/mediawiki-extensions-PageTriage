@@ -5,6 +5,7 @@
 		]
 	},
 	"pagetriage-bytes": "$1 {{PLURAL:$1|bicoko*|bicoki*}}",
+	"pagetriage-edits": "$1 {{PLURAL:$1|redakturo|redakturi}}",
 	"pagetriage-author-blocked": "Blokusita",
 	"pagetriage-sort-by": "Ordinar segun:",
 	"pagetriage-triage": "Revizar",
@@ -24,5 +25,6 @@
 	"pagetriage-toolbar-learn-more": "Lernez pluse »",
 	"pagetriage-mark-title": "Indikar kom revizita",
 	"pagetriage-mark-as-reviewed": "Indikar kom revizita",
+	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|redakturo|redakturi}}",
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Dankar}}}}"
 }
