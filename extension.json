@@ -101,8 +101,8 @@
 		},
 		"ext.pageTriage.external": {
 			"scripts": [
-				"external/underscore.js",
-				"external/backbone.js",
+				"external/underscore/underscore-umd.js",
+				"external/backbone/backbone.js",
 				"external/date.js",
 				"external/datejs-mw.js",
 				"external/jquery.waypoints.js"

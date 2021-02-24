@@ -1,0 +1,10 @@
+backbone:
+  type: file
+  src: https://raw.githubusercontent.com/jashkenas/backbone/1.4.0/backbone.js
+  integrity: sha256-xkIpwJw3H1oyUalNAJBCoz5a4jLippTx31y4gYOPTV0=
+
+underscore:
+  type: file
+  src: https://raw.githubusercontent.com/jashkenas/underscore/1.13.1/underscore-umd.js
+  integrity: sha256-zBD3mc0Pa2X5XEASRFSX5bo8ufUZZKlGiUCye96YtIc=
+
