@@ -589,7 +589,8 @@ class Hooks {
 							'TalkPageNoteTemplate' => $config->get( 'TalkPageNoteTemplate' ),
 						];
 					}
-				]
+				],
+				'external/jquery.badge.js', // Merged into this RL module, see T221269
 			],
 			'dependencies' => [
 				'mediawiki.api',
@@ -597,7 +598,6 @@ class Hooks {
 				'mediawiki.messagePoster',
 				'mediawiki.Title',
 				'ext.pageTriage.util',
-				'jquery.badge.external',
 				'oojs-ui.styles.icons-alerts',
 				'jquery.ui',
 				'jquery.spinner',
@@ -605,6 +605,7 @@ class Hooks {
 				'ext.pageTriage.externalTagsOptions',
 			],
 			'styles' => [
+				'external/jquery.badge.css', // Merged into this RL module, see T221269
 				'ext.pageTriage.css', // stuff that's shared across all views
 				'ext.pageTriage.views.toolbar/ToolbarView.css',
 				'ext.pageTriage.views.toolbar/ToolView.css',

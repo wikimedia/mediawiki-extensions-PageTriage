@@ -16,6 +16,9 @@ var ToolbarView,
 	// array of flyouts disabled for the page creator
 	disabledForCreators = [ 'tags', 'mark', 'delete' ];
 
+// Used later via articleInfo.js
+require( './../external/jquery.badge.js' );
+
 // Add content language messages
 mw.pageTriage.contentLanguageMessages.set( require( './contentLanguageMessages.json' ) );
 
