@@ -6,5 +6,6 @@
 		]
 	},
 	"pagetriage-filter-show-heading": "Holati:",
-	"pagetriage-more": "Yana"
+	"pagetriage-more": "Yana",
+	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Rahmat}}}}"
 }
