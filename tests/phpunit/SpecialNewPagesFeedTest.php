@@ -36,12 +36,6 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 		$this->pageTriage = new SpecialNewPagesFeed;
 	}
 
-	public function tearDown() : void {
-		parent::tearDown();
-
-		// Remove the made up articles
-	}
-
 	// Create a fake logged in user
 	public function testLogin() {
 		$sessionArray = [];
