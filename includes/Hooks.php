@@ -836,8 +836,9 @@ class Hooks {
 		// New users get echo preferences set that are not the default settings for existing users.
 		// Specifically, new users are opted into email notifications for page reviews.
 		if ( !$autocreated ) {
-			$user->setOption( 'echo-subscriptions-email-page-review', true );
-			$user->saveSettings();
+			$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
+			$userOptionsManager->setOption( $user, 'echo-subscriptions-email-page-review', true );
+			$userOptionsManager->saveOptions( $user );
 		}
 		return true;
 	}
