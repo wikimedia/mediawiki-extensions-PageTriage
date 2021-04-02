@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Njardarlogar"
+		]
+	},
+	"notification-header-pagetriage-mark-as-reviewed": "Sida '''$3''' har blitt {{GENDER:$2|gjennomgått}}."
+}
