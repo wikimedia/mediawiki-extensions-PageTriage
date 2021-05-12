@@ -39,7 +39,7 @@ $( function () {
 				now.getUTCSeconds()
 			);
 
-			begin = Date.parseExact( dateStr, 'yyyyMMddHHmmss' );
+			begin = mw.pageTriage.parseMwTimestamp( dateStr );
 
 			diff = Math.round( ( now.getTime() - begin.getTime() ) / ( 1000 * 60 * 60 * 24 ) );
 			if ( diff ) {

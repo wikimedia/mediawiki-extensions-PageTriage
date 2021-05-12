@@ -2,6 +2,7 @@
 	"extends": "../../.eslintrc.json",
 	"globals": {
 		"mediaWiki": false,
+		"mw": false,
 		"QUnit": false
 	}
 }
