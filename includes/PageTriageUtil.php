@@ -227,7 +227,7 @@ class PageTriageUtil {
 							$dbr->addQuotes( $dbr->timestamp( $timeFrame[$time]['ts'] ) )
 					],
 					$fname,
-					[ 'GROUP BY' => 'user_id', 'ORDER BY' => 'num DESC', 'LIMIT' => 50 ]
+					[ 'GROUP BY' => [ 'user_name', 'user_id' ], 'ORDER BY' => 'num DESC', 'LIMIT' => 50 ]
 				);
 
 				return iterator_to_array( $res );
