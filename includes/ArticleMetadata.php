@@ -30,7 +30,7 @@ class ArticleMetadata {
 	 * @param bool $validated whether the page ids have been validated
 	 * @param int $validateDb const DB_MASTER/DB_REPLICA
 	 */
-	public function __construct( array $pageIds, $validated = true, $validateDb = DB_MASTER ) {
+	public function __construct( array $pageIds, $validated = true, $validateDb = DB_PRIMARY ) {
 		if ( $validated ) {
 			$this->pageIds = $pageIds;
 		} else {
@@ -45,7 +45,7 @@ class ArticleMetadata {
 	 */
 	public function deleteMetadata() {
 		if ( $this->pageIds ) {
-			$dbw = wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_PRIMARY );
 			$dbw->delete(
 				'pagetriage_page_tags',
 				[ 'ptrpt_page_id' => $this->pageIds ],
@@ -159,7 +159,7 @@ class ArticleMetadata {
 		$metadataByKey = $cache->getMultiWithUnionSetCallback(
 			$cache->makeMultiKeys(
 				$this->pageIds,
-				function ( $pageId ) use ( $cache ) {
+				static function ( $pageId ) use ( $cache ) {
 					return $cache->makeKey( self::KEY_COLLECTION, $pageId );
 				}
 			),
@@ -230,7 +230,7 @@ class ArticleMetadata {
 		return $cache->getWithSetCallback(
 			$cache->makeKey( 'pagetriage-valid-tags' ),
 			2 * $cache::TTL_DAY,
-			function ( $oldValue, &$ttl, &$setOpts ) use ( $fname ) {
+			static function ( $oldValue, &$ttl, &$setOpts ) use ( $fname ) {
 				$dbr = wfGetDB( DB_REPLICA );
 				$setOpts += Database::getCacheSetOptions( $dbr );
 
@@ -272,7 +272,7 @@ class ArticleMetadata {
 	 * @param int $validateDb const DB_MASTER/DB_REPLICA
 	 * @return int[] The valid page IDs.
 	 */
-	public static function validatePageIds( array $pageIds, $validateDb = DB_MASTER ) {
+	public static function validatePageIds( array $pageIds, $validateDb = DB_PRIMARY ) {
 		$cleanUp = [];
 		foreach ( $pageIds as $key => $val ) {
 			$casted = (int)$val;

@@ -190,12 +190,12 @@ class Hooks {
 			return;
 		}
 
-		DeferredUpdates::addCallableUpdate( function () use ( $linksUpdate ) {
+		DeferredUpdates::addCallableUpdate( static function () use ( $linksUpdate ) {
 			// Validate the page ID from DB_MASTER, compile metadata from DB_MASTER and return.
 			$acp = ArticleCompileProcessor::newFromPageId(
 				[ $linksUpdate->getTitle()->getArticleID() ],
 				false,
-				DB_MASTER
+				DB_PRIMARY
 			);
 			if ( $acp ) {
 				$acp->registerLinksUpdate( $linksUpdate );
@@ -350,7 +350,7 @@ class Hooks {
 		$pageCreationDateTime = $cache->getWithSetCallback(
 			$cache->makeKey( 'pagetriage-page-created', $pageId ),
 			$cache::TTL_DAY,
-			function ( $oldValue, &$ttl, array &$setOpts ) use ( $pageId, $fname ) {
+			static function ( $oldValue, &$ttl, array &$setOpts ) use ( $pageId, $fname ) {
 				// The ptrp_created field is equivalent to creation_date
 				// property set during article metadata compilation.
 				$dbr = wfGetDB( DB_REPLICA );
@@ -551,7 +551,7 @@ class Hooks {
 				'ext.pageTriage.views.toolbar/delete.js', // mark for deletion
 				[
 					'name' => 'ext.pageTriage.views.toolbar/contentLanguageMessages.json',
-					'callback' => function ( \ResourceLoaderContext $context, \Config $config ) {
+					'callback' => static function ( \ResourceLoaderContext $context, \Config $config ) {
 						$keys = array_merge(
 							[
 								'pagetriage-mark-mark-talk-page-notify-topic-title',
@@ -573,7 +573,7 @@ class Hooks {
 				],
 				[
 					'name' => 'ext.pageTriage.views.toolbar/config.json',
-					'callback' => function ( \ResourceLoaderContext $context, \Config $config ) {
+					'callback' => static function ( \ResourceLoaderContext $context, \Config $config ) {
 						$pageTriageCurationModules = $config->get( 'PageTriageCurationModules' );
 						if ( ExtensionRegistry::getInstance()->isLoaded( 'WikiLove' ) ) {
 							$pageTriageCurationModules['wikiLove'] = [
@@ -820,7 +820,7 @@ class Hooks {
 				if ( $metaData[$pageId]['user_id'] ) {
 					$users[$metaData[$pageId]['user_id']] = User::newFromId( $metaData[$pageId]['user_id'] );
 				}
-			break;
+				break;
 		}
 		return true;
 	}

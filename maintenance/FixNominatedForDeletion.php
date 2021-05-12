@@ -22,7 +22,7 @@ class FixNominatedForDeletion extends Maintenance {
 
 	public function execute() {
 		$dbr = $this->getDB( DB_REPLICA );
-		$dbw = $this->getDB( DB_MASTER );
+		$dbw = $this->getDB( DB_PRIMARY );
 		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 		$iterator = new BatchRowIterator(
@@ -44,7 +44,7 @@ class FixNominatedForDeletion extends Maintenance {
 		$iterator->setCaller( __METHOD__ );
 
 		foreach ( $iterator as $rows ) {
-			$pageIds = array_map( function ( $row ) {
+			$pageIds = array_map( static function ( $row ) {
 				return $row->ptrp_page_id;
 			}, $rows );
 

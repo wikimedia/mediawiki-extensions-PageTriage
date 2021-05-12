@@ -22,7 +22,7 @@ class DeleteAfcStates extends Maintenance {
 
 	public function execute() {
 		$dbr = $this->getDB( DB_REPLICA );
-		$dbw = $this->getDB( DB_MASTER );
+		$dbw = $this->getDB( DB_PRIMARY );
 		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 		$afcStateTagId = ArticleMetadata::getValidTags()['afc_state'];
@@ -40,7 +40,7 @@ class DeleteAfcStates extends Maintenance {
 		$iterator->setCaller( __METHOD__ );
 
 		foreach ( $iterator as $rows ) {
-			$pageIds = array_map( function ( $row ) {
+			$pageIds = array_map( static function ( $row ) {
 				return $row->ptrpt_page_id;
 			}, $rows );
 

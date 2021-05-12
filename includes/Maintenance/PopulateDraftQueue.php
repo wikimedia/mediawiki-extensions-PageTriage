@@ -36,7 +36,7 @@ class PopulateDraftQueue extends Maintenance {
 
 		// Set up.
 		$this->output( "Processing drafts in NS $pageTriageDraftNamespaceId...\n" );
-		$db = $this->getDB( DB_MASTER );
+		$db = $this->getDB( DB_PRIMARY );
 
 		// Loop through all batches.
 		$batchNum = 1;

@@ -59,7 +59,7 @@ class PageTriage {
 			return false;
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 
 		// Pull page creation date from database
 		// must select from master here since the page has just been created, and probably
@@ -117,7 +117,7 @@ class PageTriage {
 			return false; // Status doesn't change
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$dbw->startAtomic( __METHOD__ );
 		$set = [
 			'ptrp_reviewed' => $reviewed,
@@ -175,7 +175,7 @@ class PageTriage {
 			return;
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$dbw->update(
 			'pagetriage_page',
 			$row,
@@ -231,7 +231,7 @@ class PageTriage {
 			return;
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 
 		$row = [
 			'ptrl_page_id' => $this->mPageId,
@@ -253,7 +253,7 @@ class PageTriage {
 	 * Delete the page from page triage queue
 	 */
 	public function deleteFromPageTriage() {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 
 		$this->loadArticleMetadata();
 
@@ -275,7 +275,7 @@ class PageTriage {
 	 * @return string
 	 */
 	public static function bulkSetTagsUpdated( $pageIds ) {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 
 		$now = wfTimestampNow();
 		$dbw->update(

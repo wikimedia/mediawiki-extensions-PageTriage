@@ -74,7 +74,7 @@ class ArticleCompileProcessor {
 		];
 		// default to use master database for data compilation
 		foreach ( $this->component as $key => $value ) {
-			$this->componentDb[$key] = DB_MASTER;
+			$this->componentDb[$key] = DB_PRIMARY;
 		}
 
 		$this->metadata = array_fill_keys( $this->pageIds, [] );
@@ -89,7 +89,7 @@ class ArticleCompileProcessor {
 	 * @return ArticleCompileProcessor|false
 	 */
 	public static function newFromPageId(
-		array $pageIds, $validated = true, $validateDb = DB_MASTER
+		array $pageIds, $validated = true, $validateDb = DB_PRIMARY
 	) {
 		if ( !$validated ) {
 			$pageIds = ArticleMetadata::validatePageIds( $pageIds, $validateDb );
@@ -135,7 +135,7 @@ class ArticleCompileProcessor {
 	 *      example: array( 'BasicData' => DB_REPLICA, 'UserData' => DB_MASTER )
 	 */
 	public function configComponentDb( $config ) {
-		$dbMode = [ DB_MASTER, DB_REPLICA ];
+		$dbMode = [ DB_PRIMARY, DB_REPLICA ];
 		foreach ( $this->componentDb as $key => $value ) {
 			if ( isset( $config[$key] ) && in_array( $config[$key], $dbMode ) ) {
 				$this->componentDb[$key] = $config[$key];
@@ -156,7 +156,7 @@ class ArticleCompileProcessor {
 			return $this->articles[$pageId]->getTimestamp();
 		}
 		// TODO deduplicate with ArticleCompileInterface::getArticleByPageId(), maybe move to this class
-		$fromdb = $this->componentDb['BasicData'] === DB_MASTER ? 'fromdbmaster' : 'fromdb';
+		$fromdb = $this->componentDb['BasicData'] === DB_PRIMARY ? 'fromdbmaster' : 'fromdb';
 		$page = WikiPage::newFromID( $pageId, $fromdb );
 		if ( $page ) {
 			return $page->getTimestamp();
@@ -297,7 +297,7 @@ class ArticleCompileProcessor {
 	 * Save the compiling result to database as well as cache
 	 */
 	protected function save() {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$dbr = wfGetDB( DB_REPLICA );
 
 		if ( !$this->pageIds ) {

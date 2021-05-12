@@ -51,7 +51,7 @@ class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 	 * @throws \MWException
 	 */
 	public function testCopyvioInsertLog() {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		foreach ( [ 'pagetriage_page', 'page' ] as $table ) {
 			$dbw->delete( $table, '*' );
 		}

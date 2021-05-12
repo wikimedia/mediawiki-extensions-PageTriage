@@ -95,7 +95,7 @@ class PageTriageUtil {
 		return $cache->getWithSetCallback(
 			$cache->makeKey( 'pagetriage-unreviewed-pages-stat', $namespace ),
 			10 * $cache::TTL_MINUTE,
-			function () use ( $namespace, $fname ) {
+			static function () use ( $namespace, $fname ) {
 				$dbr = wfGetDB( DB_REPLICA );
 
 				$table = [ 'pagetriage_page', 'page' ];
@@ -156,7 +156,7 @@ class PageTriageUtil {
 		return $cache->getWithSetCallback(
 			$cache->makeKey( 'pagetriage-reviewed-pages-stat', $namespace ),
 			10 * $cache::TTL_MINUTE,
-			function () use ( $namespace, $fname ) {
+			static function () use ( $namespace, $fname ) {
 				$time = (int)wfTimestamp( TS_UNIX ) - 7 * 24 * 60 * 60;
 
 				$dbr = wfGetDB( DB_REPLICA );
@@ -214,7 +214,7 @@ class PageTriageUtil {
 		return $cache->getWithSetCallback(
 			$cache->makeKey( 'pagetriage-top-triager', $time ),
 			$timeFrame[$time]['expire'],
-			function () use ( $timeFrame, $time, $fname ) {
+			static function () use ( $timeFrame, $time, $fname ) {
 				$dbr = wfGetDB( DB_REPLICA );
 
 				$res = $dbr->select(
@@ -378,7 +378,7 @@ class PageTriageUtil {
 			return;
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$dbw->startAtomic( __METHOD__ );
 		$dbw->update(
 			'pagetriage_page_tags',

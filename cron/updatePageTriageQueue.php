@@ -33,7 +33,7 @@ class UpdatePageTriageQueue extends Maintenance {
 
 	protected function init() {
 		$this->dbr = wfGetDB( DB_REPLICA );
-		$this->dbw = wfGetDB( DB_MASTER );
+		$this->dbw = wfGetDB( DB_PRIMARY );
 	}
 
 	/**
@@ -45,7 +45,7 @@ class UpdatePageTriageQueue extends Maintenance {
 		// because they have special handling.
 		$secondaryNamespaces = array_filter(
 			$wgPageTriageNamespaces,
-			function ( $ns ) {
+			static function ( $ns ) {
 				return $ns !== 0;
 			}
 		);

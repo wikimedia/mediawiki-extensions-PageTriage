@@ -97,7 +97,7 @@ abstract class ArticleCompileInterface {
 		if ( isset( $this->articles[$pageId] ) ) {
 			$article = $this->articles[$pageId];
 		} else {
-			if ( $this->componentDb === DB_MASTER ) {
+			if ( $this->componentDb === DB_PRIMARY ) {
 				$from = 'fromdbmaster';
 			} else {
 				$from = 'fromdb';
