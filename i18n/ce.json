@@ -19,7 +19,7 @@
 	"pagetriage-more": "Дукха",
 	"pagetriage-filter-stat-type": "Тайпа",
 	"pagetriage-filter-stat-all": "Массо",
-	"pagetriage-filter-stat-nominated-for-deletion": "дӀаяха кховдинарш",
+	"pagetriage-filter-stat-nominated-for-deletion": "ДӀайаха кховдинарш",
 	"pagetriage-filter-stat-blocked": "блоктоьхна декъашхой",
 	"pagetriage-filter-stat-username": "декъашхочун цӀе: $1",
 	"pagetriage-filter-stat-namespace": "ЦӀерийн меттиг",
@@ -33,8 +33,8 @@
 	"pagetriage-info-title": "АгӀонах лаьцна хаам",
 	"pagetriage-info-history-header": "Истори",
 	"pagetriage-info-help": "гӀо",
-	"pagetriage-info-problem-no-categories-desc": "ХӀокху агӀона цхьаа категори йац.",
+	"pagetriage-info-problem-no-categories-desc": "ХӀокху агӀонан цхьаа категори йац.",
 	"pagetriage-toolbar-learn-more": "Цул совнаха хаа »",
 	"pagetriage-del-tooltip": "Кховдае хӀара агӀо дӀаяккхаре",
-	"pagetriage-afc-state-all": "Ерриге"
+	"pagetriage-afc-state-all": "Йерриге"
 }
