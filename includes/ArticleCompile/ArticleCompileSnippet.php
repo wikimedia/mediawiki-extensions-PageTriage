@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
-use ContentHandler;
 use MediaWiki\MediaWikiServices;
 use Sanitizer;
+use TextContent;
 
 /**
  * Article snippet
@@ -15,7 +15,7 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 		foreach ( $this->mPageId as $pageId ) {
 			$content = $this->getContentByPageId( $pageId );
 			if ( $content ) {
-				$text = ContentHandler::getContentText( $content );
+				$text = ( $content instanceof TextContent ) ? $content->getText() : null;
 				if ( $text !== null ) {
 					$this->metadata[$pageId]['snippet'] = self::generateArticleSnippet( $text );
 					$this->metadata[$pageId]['reference'] = self::checkReferenceTag( $text );
