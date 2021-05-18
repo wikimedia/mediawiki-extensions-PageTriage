@@ -20,7 +20,7 @@ abstract class ArticleCompileInterface {
 	protected $linksUpdates;
 	/** @var \Wikimedia\Rdbms\IDatabase */
 	protected $db;
-	/** @var int Either DB_MASTER or DB_REPLICA */
+	/** @var int Either DB_PRIMARY or DB_REPLICA */
 	protected $componentDb;
 
 	/**

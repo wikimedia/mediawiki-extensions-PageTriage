@@ -109,7 +109,7 @@ class ApiPageTriageAction extends ApiBase {
 		$pt->addToPageTriageQueue();
 
 		DeferredUpdates::addCallableUpdate( static function () use ( $articleId ) {
-			// Validate the page ID from DB_MASTER, compile metadata from DB_MASTER and return.
+			// Validate the page ID from DB_PRIMARY, compile metadata from DB_PRIMARY and return.
 			$acp = ArticleCompileProcessor::newFromPageId(
 				[ $articleId ],
 				false,

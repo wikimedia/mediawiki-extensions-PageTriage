@@ -87,7 +87,7 @@ class Hooks {
 		// Item was newly added to PageTriage queue in master DB, compile metadata.
 		$acp = ArticleCompileProcessor::newFromPageId( [ $oldid ] );
 		if ( $acp ) {
-			// Since this is a title move, the only component requiring DB_MASTER will be
+			// Since this is a title move, the only component requiring DB_PRIMARY will be
 			// BasicData.
 			$acp->configComponentDb(
 				ArticleCompileProcessor::getSafeComponentDbConfigForCompilation()
@@ -191,7 +191,7 @@ class Hooks {
 		}
 
 		DeferredUpdates::addCallableUpdate( static function () use ( $linksUpdate ) {
-			// Validate the page ID from DB_MASTER, compile metadata from DB_MASTER and return.
+			// Validate the page ID from DB_PRIMARY, compile metadata from DB_PRIMARY and return.
 			$acp = ArticleCompileProcessor::newFromPageId(
 				[ $linksUpdate->getTitle()->getArticleID() ],
 				false,
@@ -490,7 +490,7 @@ class Hooks {
 				$acp = ArticleCompileProcessor::newFromPageId( [ $rc->getAttribute( 'rc_cur_id' ) ] );
 				if ( $acp ) {
 					// Page was just inserted into PageTriage queue, so we need to compile BasicData
-					// from DB_MASTER, since that component accesses the pagetriage_page table.
+					// from DB_PRIMARY, since that component accesses the pagetriage_page table.
 					$acp->configComponentDb(
 						ArticleCompileProcessor::getSafeComponentDbConfigForCompilation()
 					);

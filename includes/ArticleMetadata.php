@@ -28,7 +28,7 @@ class ArticleMetadata {
 	/**
 	 * @param int[] $pageIds List of page IDs.
 	 * @param bool $validated whether the page ids have been validated
-	 * @param int $validateDb const DB_MASTER/DB_REPLICA
+	 * @param int $validateDb const DB_PRIMARY/DB_REPLICA
 	 */
 	public function __construct( array $pageIds, $validated = true, $validateDb = DB_PRIMARY ) {
 		if ( $validated ) {
@@ -269,7 +269,7 @@ class ArticleMetadata {
 	 * Typecast the value in page id array to int and verify that it's
 	 * in page triage queue
 	 * @param int[] $pageIds List of page IDs.
-	 * @param int $validateDb const DB_MASTER/DB_REPLICA
+	 * @param int $validateDb const DB_PRIMARY/DB_REPLICA
 	 * @return int[] The valid page IDs.
 	 */
 	public static function validatePageIds( array $pageIds, $validateDb = DB_PRIMARY ) {

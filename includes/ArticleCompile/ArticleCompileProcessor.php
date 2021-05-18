@@ -19,7 +19,7 @@ use WikiPage;
 class ArticleCompileProcessor {
 	/** @var string[] */
 	protected $component;
-	/** @var int[] Either DB_MASTER or DB_REPLICA */
+	/** @var int[] Either DB_PRIMARY or DB_REPLICA */
 	protected $componentDb;
 	/** @var int[] List of page IDs */
 	protected $pageIds;
@@ -85,7 +85,7 @@ class ArticleCompileProcessor {
 	 * Factory for creating an instance
 	 * @param int[] $pageIds
 	 * @param bool $validated whether page ids are validated
-	 * @param int $validateDb const DB_MASTER/DB_REPLICA
+	 * @param int $validateDb const DB_PRIMARY/DB_REPLICA
 	 * @return ArticleCompileProcessor|false
 	 */
 	public static function newFromPageId(
@@ -132,7 +132,7 @@ class ArticleCompileProcessor {
 	/**
 	 * Config what db to use for each component
 	 * @param array $config
-	 *      example: array( 'BasicData' => DB_REPLICA, 'UserData' => DB_MASTER )
+	 *      example: array( 'BasicData' => DB_REPLICA, 'UserData' => DB_PRIMARY )
 	 */
 	public function configComponentDb( $config ) {
 		$dbMode = [ DB_PRIMARY, DB_REPLICA ];
