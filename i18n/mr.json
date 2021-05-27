@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"V.narsikar"
-		]
-	},
-	"notification-header-pagetriage-mark-as-reviewed": "पान $3 हे <b>$1</b> द्वारे {{GENDER:$2|पुनर्विलोकित केल्या गेले}}"
-}
