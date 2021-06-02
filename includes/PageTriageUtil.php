@@ -360,7 +360,7 @@ class PageTriageUtil {
 		$res = $dbr->select(
 			[ 'pagetriage_page_tags' ],
 			[ 'ptrpt_page_id' ],
-			[ 'ptrpt_tag_id' => $tags['user_name'], 'ptrpt_value' => (string)$block->getTarget() ],
+			[ 'ptrpt_tag_id' => $tags['user_name'], 'ptrpt_value' => $block->getTargetName() ],
 			__METHOD__,
 			[ 'LIMIT' => $maxNumToProcess + 1 ]
 		);
