@@ -9,6 +9,7 @@
 	},
 	"pagetriage-reviewed": "Pregledano",
 	"pagetriage-bytes": "$1 {{PLURAL:$1|zlog|zloga|zlogi|zlogov}}",
+	"pagetriage-edits": "$1 {{PLURAL:$1|urejanje|urejanji|urejanja|urejanj}}",
 	"pagetriage-articleinfo-byline": "Stran je $1 ustvaril(-a) $2 ($3$4$5).",
 	"pagetriage-filter-nominated-for-deletion": "Predlagano za izbris",
 	"pagetriage-filter-article": "Članek",
