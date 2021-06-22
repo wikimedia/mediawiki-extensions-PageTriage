@@ -6,6 +6,9 @@
 			"Sarvaturi"
 		]
 	},
+	"pagetriage-categories": "$1 {{PLURAL:$1|catigurìa|catigurìi}}",
+	"pagetriage-author-bot": "Bot",
 	"pagetriage-filter-username": "Nomu utenti",
+	"pagetriage-tags-update-label": "Aggiorna",
 	"pagetriage-info-title": "Nfurmazzioni supra la pàggina"
 }
