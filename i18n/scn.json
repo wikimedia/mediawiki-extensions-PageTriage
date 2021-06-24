@@ -8,7 +8,9 @@
 	},
 	"pagetriage-categories": "$1 {{PLURAL:$1|catigurìa|catigurìi}}",
 	"pagetriage-author-bot": "Bot",
+	"pagetriage-filter-article": "Vuci",
 	"pagetriage-filter-username": "Nomu utenti",
 	"pagetriage-tags-update-label": "Aggiorna",
+	"pagetriage-tags-param-article-label": "Vuci:",
 	"pagetriage-info-title": "Nfurmazzioni supra la pàggina"
 }
