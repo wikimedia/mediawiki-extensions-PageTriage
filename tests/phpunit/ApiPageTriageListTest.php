@@ -652,13 +652,21 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		// so we don't have a PageTriage PHP method to use here.
 		$talkPageTitle = Title::newFromText( $testPageTitle, NS_TALK );
 		$page = WikiPage::factory( $talkPageTitle );
-		$page->doEditContent(
-			ContentHandler::makeContent( 'Test message.', $talkPageTitle ), '', 0, false,
-			static::getTestSysop()->getUser(), null, [ 'pagetriage' ]
+		$page->doUserEditContent(
+			ContentHandler::makeContent( 'Test message.', $talkPageTitle ),
+			static::getTestSysop()->getUser(),
+			'edit summary',
+			0,
+			false,
+			[ 'pagetriage' ]
 		);
-		$page->doEditContent(
-			ContentHandler::makeContent( 'Test message 2.', $talkPageTitle ), '', 0, false,
-			static::getTestSysop()->getUser(), null, [ 'pagetriage' ]
+		$page->doUserEditContent(
+			ContentHandler::makeContent( 'Test message 2.', $talkPageTitle ),
+			static::getTestSysop()->getUser(),
+			'edit summary',
+			0,
+			false,
+			[ 'pagetriage' ]
 		);
 
 		// Retrieve the page's metadata again, and check that the talkpage feedback is flagged.
