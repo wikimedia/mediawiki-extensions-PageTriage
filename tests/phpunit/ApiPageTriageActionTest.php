@@ -23,7 +23,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	public static $users;
 
 	// Prepare test environment
-	public function setUp() : void {
+	public function setUp(): void {
 		global $wgHooks;
 		parent::setUp();
 		$this->setUpForOresCopyvioTests( $wgHooks );

@@ -28,7 +28,7 @@ class ArticleMetadataTest extends PageTriageTestCase {
 	/** @var ArticleMetadata */
 	protected $articleMetadata;
 
-	protected function setUp() : void {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->pageIds = [];
 		$this->dbr = wfGetDB( DB_REPLICA );

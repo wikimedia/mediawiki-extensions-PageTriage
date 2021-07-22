@@ -197,7 +197,7 @@ class ApiPageTriageTagging extends ApiBase {
 	 * @return Title
 	 * @throws ApiUsageException
 	 */
-	private function getTitleByPageId( $pageId ) : Title {
+	private function getTitleByPageId( $pageId ): Title {
 		$title = Title::newFromID( $pageId );
 		if ( $title === null ) {
 			$this->dieWithError( 'apierror-missingtitle', 'bad-page' );

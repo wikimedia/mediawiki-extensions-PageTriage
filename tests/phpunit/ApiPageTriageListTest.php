@@ -20,7 +20,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	/**
 	 * Setup draft namespace, set up tables.
 	 */
-	public function setUp() : void {
+	public function setUp(): void {
 		global $wgHooks;
 		parent::setUp();
 		$this->setUpForOresCopyvioTests( $wgHooks );

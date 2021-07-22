@@ -91,7 +91,7 @@ abstract class ArticleCompileInterface {
 	 *
 	 * @return WikiPage|null
 	 */
-	protected function getWikiPageByPageId( $pageId ) : ?WikiPage {
+	protected function getWikiPageByPageId( $pageId ): ?WikiPage {
 		// Try if there is an up-to-date wikipage object from article save
 		// else try to create a new one, this is important for replication delay
 		if ( isset( $this->articles[$pageId] ) ) {

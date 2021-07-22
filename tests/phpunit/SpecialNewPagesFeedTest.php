@@ -24,7 +24,7 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 	 */
 	public static $users;
 
-	public function setUp() : void {
+	public function setUp(): void {
 		self::$users['one'] = new TestUser(
 			'PageTriageUser1',
 			'PageTriage Test User 1',
