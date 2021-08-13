@@ -12,6 +12,8 @@
 	"pagetriage-filter-username": "Nomu utenti",
 	"pagetriage-tags-update-label": "Aggiorna",
 	"pagetriage-tags-param-article-label": "Vuci:",
+	"pagetriage-tags-param-free-yes-label": "Sì",
+	"pagetriage-tags-param-free-no-label": "No",
 	"pagetriage-info-title": "Nfurmazzioni supra la pàggina",
 	"pagetriage-info-help": "aiutu",
 	"pagetriage-toolbar-close": "Chiudi"
