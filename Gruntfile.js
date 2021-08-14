@@ -1,13 +1,6 @@
-/*!
- * Grunt file
- *
- * @package PageTriage
- */
-
 /* eslint-env node */
 module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
-	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-eslint' );
 	grunt.loadNpmTasks( 'grunt-stylelint' );
 
@@ -16,12 +9,7 @@ module.exports = function ( grunt ) {
 			options: {
 				cache: true
 			},
-			all: [
-				'**/*.{js,json}',
-				'!node_modules/**',
-				'!modules/external/**',
-				'!vendor/**'
-			]
+			all: '.'
 		},
 		stylelint: {
 			all: [
@@ -32,17 +20,8 @@ module.exports = function ( grunt ) {
 		},
 		banana: {
 			all: 'i18n/'
-		},
-		watch: {
-			files: [
-				'<%= eslint.all %>',
-				'<%= stylelint.all %>'
-			],
-			tasks: 'test'
 		}
 	} );
 
-	grunt.registerTask( 'lint', [ 'eslint', 'stylelint', 'banana' ] );
-	grunt.registerTask( 'test', 'lint' );
-	grunt.registerTask( 'default', 'test' );
+	grunt.registerTask( 'test', [ 'eslint', 'stylelint', 'banana' ] );
 };

@@ -1,8 +1,5 @@
 {
-	"name": "PageTriage",
-	"version": "0.2.1",
 	"private": true,
-	"description": "Build tools for PageTriage.",
 	"scripts": {
 		"test": "grunt test",
 		"doc": "jsduck"
@@ -11,7 +8,6 @@
 		"eslint-config-wikimedia": "0.20.0",
 		"grunt": "1.4.0",
 		"grunt-banana-checker": "0.9.0",
-		"grunt-contrib-watch": "1.1.0",
 		"grunt-eslint": "23.0.0",
 		"grunt-stylelint": "0.16.0",
 		"stylelint-config-wikimedia": "0.10.3"
