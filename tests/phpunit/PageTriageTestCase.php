@@ -164,13 +164,17 @@ abstract class PageTriageTestCase extends ApiTestCase {
 
 	public static function ensureOresModel( $name ) {
 		$dbw = wfGetDB( DB_PRIMARY );
-		$ModelInfo = [
+		$modelInfo = [
 			'oresm_name' => $name,
 			'oresm_version' => '0.0.1',
 			'oresm_is_current' => 1
 		];
-		$dbw->upsert( 'ores_model', $ModelInfo, [ 'oresm_id' ], $ModelInfo );
-		return $dbw->selectField( 'ores_model', 'oresm_id', $ModelInfo );
+		$model = $dbw->selectField( 'ores_model', 'oresm_id', $modelInfo );
+		if ( $model ) {
+			return $model;
+		}
+		$dbw->upsert( 'ores_model', $modelInfo, [ 'oresm_id' ], $modelInfo );
+		return $dbw->selectField( 'ores_model', 'oresm_id', $modelInfo );
 	}
 
 }
