@@ -6,4 +6,3 @@ node_modules
 composer.lock
 vendor
 .eslintcache
-/modules/external/.foreign/
