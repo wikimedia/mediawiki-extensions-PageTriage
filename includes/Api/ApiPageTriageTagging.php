@@ -201,9 +201,9 @@ class ApiPageTriageTagging extends ApiBase {
 		$title = Title::newFromID( $pageId );
 		if ( $title === null ) {
 			$this->dieWithError( 'apierror-missingtitle', 'bad-page' );
-			throw new \LogicException( __METHOD__ . ': Impossible case, phpcs helper' );
 		}
 
+		// @phan-suppress-next-line PhanTypeMismatchReturnNullable Still T240141
 		return $title;
 	}
 }

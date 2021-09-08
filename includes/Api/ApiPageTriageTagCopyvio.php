@@ -43,7 +43,6 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 				$row,
 				__METHOD__
 			);
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 			$this->logActivity( $revision );
 			$result = [ 'result' => 'success' ];
 		} else {
