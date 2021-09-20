@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			")8",
 			"94rain",
 			"A Chinese Wikipedian",
 			"A Retired User",
@@ -271,6 +272,7 @@
 	"pagetriage-info-problem-orphan-desc": "无其他页面链接至该页面。",
 	"pagetriage-info-problem-no-references": "无引用",
 	"pagetriage-info-problem-no-references-desc": "该页面没有引用任何来源。",
+	"pagetriage-info-problem-copyvio": "侵权",
 	"pagetriage-info-timestamp-date-format": "yyyy年M月d日",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
 	"pagetriage-info-tooltip": "显示该页面的元数据",
