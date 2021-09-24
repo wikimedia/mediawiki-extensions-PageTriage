@@ -20,7 +20,10 @@ ArticleInfoHistoryView = Backbone.View.extend( {
 				// I'd rather do this date parsing in the model, but the change event isn't properly
 				// passed through to nested models, and switching to backbone-relational in order to
 				// move these few lines of code seems silly.
-				parsedTimestamp = new Date( historyItem.get( 'timestamp' ) );
+				parsedTimestamp = Date.parseExact(
+					historyItem.get( 'timestamp' ),
+					'yyyy-MM-ddTHH:mm:ssZ'
+				);
 
 				historyItem.set(
 					'timestamp_date',
@@ -120,7 +123,10 @@ module.exports = ToolView.extend( {
 			// put it all together in the byline
 			articleByline = mw.message(
 				bylineMessage,
-				mw.pageTriage.parseMwTimestamp( this.model.get( 'creation_date' ) ).toString(
+				Date.parseExact(
+					this.model.get( 'creation_date' ),
+					'yyyyMMddHHmmss'
+				).toString(
 					mw.msg( 'pagetriage-info-timestamp-date-format' )
 				),
 				this.model.buildLinkTag(

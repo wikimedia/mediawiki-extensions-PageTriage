@@ -22,8 +22,8 @@ $( function () {
 
 		formatMetadata: function ( article ) {
 			var bylineMessage, userCreationDateParsed, byline, titleUrl, $talkPageLink, talkPageMsg,
-				creationDateParsed = mw.pageTriage.parseMwTimestamp( article.get( 'creation_date' ) ),
-				reviewedUpdatedParsed = mw.pageTriage.parseMwTimestamp( article.get( 'ptrp_reviewed_updated' ) ),
+				creationDateParsed = Date.parseExact( article.get( 'creation_date' ), 'yyyyMMddHHmmss' ),
+				reviewedUpdatedParsed = Date.parseExact( article.get( 'ptrp_reviewed_updated' ), 'yyyyMMddHHmmss' ),
 				titleObj = new mw.Title( article.get( 'title' ) ),
 				nsId = titleObj.getNamespaceId();
 
@@ -42,7 +42,10 @@ $( function () {
 
 			// sometimes user info isn't set, so check that first.
 			if ( article.get( 'user_creation_date' ) ) {
-				userCreationDateParsed = mw.pageTriage.parseMwTimestamp( article.get( 'user_creation_date' ) );
+				userCreationDateParsed = Date.parseExact(
+					article.get( 'user_creation_date' ),
+					'yyyyMMddHHmmss'
+				);
 				article.set(
 					'user_creation_date_pretty', userCreationDateParsed.toString( mw.msg( 'pagetriage-info-timestamp-date-format' ) ) );
 			} else {
@@ -153,7 +156,10 @@ $( function () {
 						'page_status_html',
 						mw.message(
 							'pagetriage-page-status-reviewed',
-							mw.pageTriage.parseMwTimestamp( article.get( 'ptrp_reviewed_updated' ) ).toString(
+							Date.parseExact(
+								article.get( 'ptrp_reviewed_updated' ),
+								'yyyyMMddHHmmss'
+							).toString(
 								mw.msg( 'pagetriage-info-timestamp-date-format' )
 							),
 							this.buildLinkTag(
@@ -205,7 +211,7 @@ $( function () {
 				now.getUTCSeconds()
 			);
 
-			begin = mw.pageTriage.parseMwTimestamp( dateStr );
+			begin = Date.parseExact( dateStr, 'yyyyMMddHHmmss' );
 			diff = Math.round( ( now.getTime() - begin.getTime() ) / ( 1000 * 60 ) );
 
 			// only generate a warning if the page is less than 30 minutes old
