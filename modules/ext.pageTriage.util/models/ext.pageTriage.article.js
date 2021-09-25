@@ -22,32 +22,33 @@ $( function () {
 
 		formatMetadata: function ( article ) {
 			var bylineMessage, userCreationDateParsed, byline, titleUrl, $talkPageLink, talkPageMsg,
-				creationDateParsed = Date.parseExact( article.get( 'creation_date' ), 'yyyyMMddHHmmss' ),
-				reviewedUpdatedParsed = Date.parseExact( article.get( 'ptrp_reviewed_updated' ), 'yyyyMMddHHmmss' ),
+				creationDateParsed = moment.utc( article.get( 'creation_date_utc' ), 'YYYYMMDDHHmmss' ),
+				reviewedUpdatedParsed = moment.utc( article.get( 'ptrp_reviewed_updated' ), 'YYYYMMDDHHmmss' ),
 				titleObj = new mw.Title( article.get( 'title' ) ),
-				nsId = titleObj.getNamespaceId();
+				nsId = titleObj.getNamespaceId(),
+				offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
 
 			// Set whether it's a draft, which we'll reference in ext.pageTriage.listItem.underscore
 			article.set( 'is_draft', nsId === mw.config.get( 'wgPageTriageDraftNamespaceId' ) );
 
 			article.set(
 				'creation_date_pretty',
-				creationDateParsed.toString( mw.msg( 'pagetriage-creation-dateformat' ) )
+				creationDateParsed.utcOffset( offset ).format( mw.msg( 'pagetriage-creation-dateformat' ) )
 			);
 
 			article.set(
 				'reviewed_updated_pretty',
-				reviewedUpdatedParsed.toString( mw.msg( 'pagetriage-creation-dateformat' ) )
+				reviewedUpdatedParsed.utcOffset( offset ).format( mw.msg( 'pagetriage-creation-dateformat' ) )
 			);
 
 			// sometimes user info isn't set, so check that first.
 			if ( article.get( 'user_creation_date' ) ) {
-				userCreationDateParsed = Date.parseExact(
+				userCreationDateParsed = moment.utc(
 					article.get( 'user_creation_date' ),
-					'yyyyMMddHHmmss'
+					'YYYYMMDDHHmmss'
 				);
 				article.set(
-					'user_creation_date_pretty', userCreationDateParsed.toString( mw.msg( 'pagetriage-info-timestamp-date-format' ) ) );
+					'user_creation_date_pretty', userCreationDateParsed.utcOffset( offset ).format( mw.msg( 'pagetriage-info-timestamp-date-format' ) ) );
 			} else {
 				article.set( 'user_creation_date_pretty', '' );
 			}
@@ -156,10 +157,10 @@ $( function () {
 						'page_status_html',
 						mw.message(
 							'pagetriage-page-status-reviewed',
-							Date.parseExact(
+							moment.utc(
 								article.get( 'ptrp_reviewed_updated' ),
-								'yyyyMMddHHmmss'
-							).toString(
+								'YYYYMMDDHHmmss'
+							).utcOffset( offset ).format(
 								mw.msg( 'pagetriage-info-timestamp-date-format' )
 							),
 							this.buildLinkTag(
@@ -211,8 +212,8 @@ $( function () {
 				now.getUTCSeconds()
 			);
 
-			begin = Date.parseExact( dateStr, 'yyyyMMddHHmmss' );
-			diff = Math.round( ( now.getTime() - begin.getTime() ) / ( 1000 * 60 ) );
+			begin = moment.utc( dateStr, 'YYYYMMDDHHmmss' );
+			diff = Math.round( ( now.getTime() - begin.valueOf() ) / ( 1000 * 60 ) );
 
 			// only generate a warning if the page is less than 30 minutes old
 			if ( diff < 30 ) {

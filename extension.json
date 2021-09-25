@@ -103,49 +103,7 @@
 			"scripts": [
 				"external/underscore.js",
 				"external/backbone.js",
-				"external/date.js",
-				"external/datejs-mw.js",
 				"external/jquery.waypoints.js"
-			],
-			"messages": [
-				"sunday",
-				"monday",
-				"tuesday",
-				"wednesday",
-				"thursday",
-				"friday",
-				"saturday",
-				"sun",
-				"mon",
-				"tue",
-				"wed",
-				"thu",
-				"fri",
-				"sat",
-				"january",
-				"february",
-				"march",
-				"april",
-				"may_long",
-				"june",
-				"july",
-				"august",
-				"september",
-				"october",
-				"november",
-				"december",
-				"jan",
-				"feb",
-				"mar",
-				"apr",
-				"may",
-				"jun",
-				"jul",
-				"aug",
-				"sep",
-				"oct",
-				"nov",
-				"dec"
 			]
 		},
 		"ext.pageTriage.init": {
@@ -178,6 +136,7 @@
 				"mediawiki.Uri",
 				"mediawiki.api",
 				"mediawiki.user",
+				"moment",
 				"ext.pageTriage.init"
 			]
 		},
@@ -187,7 +146,8 @@
 				"ext.pageTriage.util",
 				"jquery.ui",
 				"jquery.spinner",
-				"jquery.client"
+				"jquery.client",
+				"moment"
 			],
 			"scripts": [
 				"jquery.tipoff/jquery.tipoff.js",
