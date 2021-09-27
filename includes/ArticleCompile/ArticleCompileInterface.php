@@ -98,9 +98,9 @@ abstract class ArticleCompileInterface {
 			$article = $this->articles[$pageId];
 		} else {
 			if ( $this->componentDb === DB_PRIMARY ) {
-				$from = 'fromdbmaster';
+				$from = WikiPage::READ_LATEST;
 			} else {
-				$from = 'fromdb';
+				$from = WikiPage::READ_NORMAL;
 			}
 			$article = WikiPage::newFromID( $pageId, $from );
 		}
