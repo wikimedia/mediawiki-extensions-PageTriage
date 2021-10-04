@@ -7,11 +7,6 @@
 			"Shirayuki"
 		]
 	},
-	"pagetriage-afc-oldest": "Created date (oldest)",
-	"pagetriage-tags-uncategorised-label": "Uncategorised",
-	"pagetriage-tags-cleanupreorganise-label": "Reorganise",
 	"pagetriage-del-tags-dbu3-desc": "Galleries in the userspace that consist mostly or entirely of \"fair use\" or non-free images. Wikipedia's non-free content policy prohibits the use of non-free content in userspace, even content that the user has uploaded; use of content in the public domain or under a free licence is acceptable. (U3)",
-	"pagetriage-tags-param-free-label": "This content is freely licensed.",
-	"pagetriage-toolbar-minimize": "Minimise",
-	"pagetriage-afc-state": "State"
+	"pagetriage-toolbar-minimize": "Minimise"
 }

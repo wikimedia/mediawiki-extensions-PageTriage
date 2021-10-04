@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"JSantos",
 			"Joao Xavier"
 		]
 	},
@@ -23,6 +24,7 @@
 	"pagetriage-filter-stat-blocked": "De blokusita uzeri",
 	"pagetriage-filter-stat-username": "nomo dil uzero: $1",
 	"pagetriage-tags-cat-sources-label": "Fonti",
+	"pagetriage-tags-param-date-label": "Datoː",
 	"log-description-pagetriage-copyvio": "This is the log of events received via the PageTriage Copyvio API.",
 	"pagetriage-info-help": "helpo",
 	"pagetriage-toolbar-learn-more": "Lernez pluse »",
