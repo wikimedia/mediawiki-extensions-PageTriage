@@ -12,7 +12,7 @@
 	"license-name": "MIT",
 	"type": "specialpage",
 	"requires": {
-		"MediaWiki": ">= 1.37.0"
+		"MediaWiki": ">= 1.38.0"
 	},
 	"APIModules": {
 		"pagetriagelist": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageList",
