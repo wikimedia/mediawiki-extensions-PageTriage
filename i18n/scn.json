@@ -6,6 +6,7 @@
 			"Sarvaturi"
 		]
 	},
+	"pagetriage-please-wait": "Aspittari pregu...",
 	"pagetriage-bytes": "$1 {{PLURAL:$1|byte}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|catigurìa|catigurìi}}",
 	"pagetriage-author-bot": "Bot",
