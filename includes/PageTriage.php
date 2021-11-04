@@ -49,7 +49,7 @@ class PageTriage {
 	 * @param User|null $user
 	 * @param bool $fromRc
 	 * @throws MWPageTriageMissingRevisionException
-	 * @return bool - true: add new record, false: update existing record
+	 * @return bool true: add new record, false: update existing record
 	 */
 	public function addToPageTriageQueue( $reviewed = '0', User $user = null, $fromRc = false ) {
 		if ( $this->retrieve() ) {
