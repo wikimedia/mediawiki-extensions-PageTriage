@@ -4,9 +4,10 @@
 			"SawJaemin"
 		]
 	},
-	"pagetriage-bytes": "$1 {{PLURAL:$1|ဘါဧံ|ဘါဧံ}}",
+	"pagetriage-bytes": "$1 {{PLURAL:$1|ဘါဧံ}}",
 	"pagetriage-filter-predicted-issues-none": "တအိၣ်ဘၣ်",
 	"pagetriage-filter-ns-all": "ခဲလၢာ်",
 	"pagetriage-filter-stat-all": "ခဲလၢာ်",
-	"pagetriage-filter-stat-predicted-issues-none": "တအိၣ်ဘၣ်"
+	"pagetriage-filter-stat-predicted-issues-none": "တအိၣ်ဘၣ်",
+	"pagetriage-info-help": "တၢ်မၤစၢၤ"
 }
