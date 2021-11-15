@@ -3,7 +3,8 @@
 		"authors": [
 			"Anarhistička Maca",
 			"Bugoslav",
-			"Fitoschido"
+			"Fitoschido",
+			"Ponor"
 		]
 	},
 	"pagetriage": "Razvrstavanje stranica",
@@ -19,8 +20,8 @@
 	"pagetriage-self-review-error": "Ne možete provjeravati stranice koje ste sami stvorili.",
 	"pagetriage-api-error": "Došlo je do pogrješke u učitavanju sučelja iz API-ija. Molimo Vas, pokušajte ponovo učitati stranicu.",
 	"pagetriage-reviewed": "Provjereno",
-	"pagetriage-mark-as-reviewed-error": "Prigodom označivanja stranice provjerenom dogodila se pogrješka: $1",
-	"pagetriage-mark-as-unreviewed-error": "Prigodom označivanja stranice neprovjerenom dogodila se pogrješka: $1",
+	"pagetriage-mark-as-reviewed-error": "Prilikom označavanja stranice provjerenom dogodila se pogreška: $1",
+	"pagetriage-mark-as-unreviewed-error": "Prilikom označavanja stranice neprovjerenom dogodila se pogreška: $1",
 	"pagetriage-hist": "pov",
 	"pagetriage-bytes": "$1 {{PLURAL:$1|bajt|bajta|bajtova}}",
 	"pagetriage-edits": "$1 {{PLURAL:$1|uređivanje|uređivanja}}",
