@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Kwaaku berko",
 			"Rberchie"
 		]
@@ -15,5 +16,5 @@
 	"pagetriage-filter-stat-predicted-class-good": "Papa",
 	"pagetriage-filter-stat-predicted-issues-vandalism": "Nsεmmone",
 	"pagetriage-filter-stat-predicted-issues-attack": "Ntɔkwa",
-	"pagetriage-filter-stat-predicted-issues-none": "hwee"
+	"pagetriage-filter-stat-predicted-issues-none": "Hwee"
 }
