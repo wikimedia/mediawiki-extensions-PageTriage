@@ -11,7 +11,8 @@
 			"Pyscowicz",
 			"Silvonen",
 			"Surjection",
-			"Valtlait"
+			"Valtlait",
+			"Rönttönen"
 		]
 	},
 	"newpagesfeed": "Uusien sivujen liukuhihna",
@@ -76,13 +77,13 @@
 	"pagetriage-filter-stat-all": "Kaikki",
 	"pagetriage-filter-stat-reviewed": "Katsastettu",
 	"pagetriage-filter-stat-unreviewed": "Katsastamatta",
-	"pagetriage-filter-stat-bots": "botit",
+	"pagetriage-filter-stat-bots": "Bottien tekemät",
 	"pagetriage-filter-stat-redirects": "Ohjaukset",
 	"pagetriage-filter-stat-nominated-for-deletion": "Ehdotettu poistettavaksi",
 	"pagetriage-filter-stat-no-categories": "Ilman luokkia",
-	"pagetriage-filter-stat-orphan": "orvot",
-	"pagetriage-filter-stat-non-autoconfirmed": "uudet käyttäjät",
-	"pagetriage-filter-stat-blocked": "estetyt käyttäjät",
+	"pagetriage-filter-stat-orphan": "Orvot",
+	"pagetriage-filter-stat-non-autoconfirmed": "Uusien käyttäjien tekemät",
+	"pagetriage-filter-stat-blocked": "Estettyjen käyttäjien tekemät",
 	"pagetriage-filter-stat-username": "käyttäjältä: $1",
 	"pagetriage-no-pages": "Hakuehdoilla ei löytynyt sivuja.",
 	"pagetriage-warning-browser": "Tämä työkalu ei kenties toimi kunnolla selaimissa, jotka ovat vanhempia kuin Internet Explorer 11.",

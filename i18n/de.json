@@ -6,7 +6,8 @@
 			"Metalhead64",
 			"Mirzali",
 			"Shirayuki",
-			"Wnme"
+			"Wnme",
+			"Umlaut"
 		]
 	},
 	"pagetriage": "Seitenprüfungshilfe",
@@ -70,6 +71,9 @@
 	"pagetriage-afc-oldest-declined": "Ablehnungsdatum (älteste)",
 	"pagetriage-triage": "Prüfen",
 	"pagetriage-filter-date-range-heading": "Datumsbereich:",
+	"pagetriage-filter-date-range-format-input-field": "jjjj-MM-tt",
+	"pagetriage-filter-date-range-format-placeholder": "mm/tt/jjjj",
+	"pagetriage-filter-date-range-format-showing": "MM/tt/jjjj",
 	"pagetriage-filter-date-range-from": "Von",
 	"pagetriage-filter-date-range-to": "Bis",
 	"pagetriage-filter-show-heading": "Status:",

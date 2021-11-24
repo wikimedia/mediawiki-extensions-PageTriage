@@ -4,5 +4,7 @@
 			"Yupik"
 		]
 	},
-	"pagetriage-categories": "$1 {{PLURAL:$1|kategoriija}}"
+	"pagetriage-categories": "$1 {{PLURAL:$1|kategoriija}}",
+	"pagetriage-filter-ns-all": "Buot",
+	"pagetriage-filter-stat-all": "Buot"
 }
