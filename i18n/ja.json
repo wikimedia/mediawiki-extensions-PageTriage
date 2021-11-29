@@ -12,6 +12,7 @@
 			"Sujiniku",
 			"Suyama",
 			"おはぐろ蜻蛉",
+			"カッパ鳥",
 			"아라"
 		]
 	},
@@ -87,7 +88,7 @@
 	"pagetriage-filter-stat-no-categories": "カテゴリなし",
 	"pagetriage-filter-stat-orphan": "孤立",
 	"pagetriage-filter-stat-non-autoconfirmed": "初心者",
-	"pagetriage-filter-stat-learners": "初学者",
+	"pagetriage-filter-stat-learners": "学習者",
 	"pagetriage-filter-stat-blocked": "ブロックされている利用者による",
 	"pagetriage-filter-stat-username": "利用者: $1 による",
 	"pagetriage-filter-stat-namespace": "名前空間",
