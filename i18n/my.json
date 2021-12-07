@@ -70,5 +70,7 @@
 	"pagetriage-toolbar-close": "ပိတ်ရန်",
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|ကျေးဇူးတင်}}}}",
 	"pagetriage-discuss-link": "{{GENDER:$1|ဆွေးနွေး}}",
-	"pagetriage-discuss-link-title": "{{GENDER:$1|ဆွေးနွေး}}"
+	"pagetriage-discuss-link-title": "{{GENDER:$1|ဆွေးနွေး}}",
+	"group-copyviobot": "မူပိုင်ခွင့် ချိုးဖောက်မှု ဘော့များ",
+	"group-copyviobot-member": "{{GENDER:$1|မူပိုင်ခွင့် ချိုးဖောက်မှု ဘော့}}"
 }
