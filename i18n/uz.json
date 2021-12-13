@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sociologist"
+			"Sociologist",
+			"Malikxan"
 		]
 	},
-	"pagetriage-filter-show-heading": "Holati:"
+	"pagetriage-filter-show-heading": "Holati:",
+	"pagetriage-more": "Yana",
+	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Rahmat}}}}"
 }

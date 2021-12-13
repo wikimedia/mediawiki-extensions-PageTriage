@@ -12,7 +12,8 @@
 			"Raoli",
 			"Ricordisamoa",
 			"Sannita",
-			"Selven"
+			"Selven",
+			"Daimona Eaytoy"
 		]
 	},
 	"pagetriage": "Triage pagina",
@@ -305,7 +306,7 @@
 	"pagetriage-info-history-show-full": "mostra la cronologia completa",
 	"pagetriage-info-help": "aiuto",
 	"pagetriage-info-problem-non-autoconfirmed": "Nuovo utente",
-	"pagetriage-info-problem-non-autoconfirmed-desc": "Questa pagina è stata creata da un utente non autoconfermato.",
+	"pagetriage-info-problem-non-autoconfirmed-desc": "Questa pagina è stata creata da un utente non autoconvalidato.",
 	"pagetriage-info-problem-blocked": "Utente bloccato",
 	"pagetriage-info-problem-blocked-desc": "Questa pagina è stata creata da un utente bloccato.",
 	"pagetriage-info-problem-no-categories": "Nessuna categoria",

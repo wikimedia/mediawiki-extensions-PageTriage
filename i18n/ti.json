@@ -6,8 +6,10 @@
 	},
 	"pagetriage-please-wait": "ብኽብረትካ ተጸበይ...",
 	"pagetriage-author-bot": "ቦት",
-	"pagetriage-triage": "ገምገመ",
+	"pagetriage-triage": "ገምግም",
 	"pagetriage-filter-article": "ጽሑፍ",
-	"pagetriage-has-talkpage-feedback-link": "ምይይጥ ገጽ",
+	"pagetriage-filter-username": "ስም ተጠቃሚ",
+	"pagetriage-more": "ተወሳኺ",
+	"pagetriage-has-talkpage-feedback-link": "ገጽ ምይይጥ",
 	"pagetriage-tags-param-article-label": "ጽሑፍ፦"
 }

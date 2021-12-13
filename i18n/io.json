@@ -1,10 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Joao Xavier"
+			"Joao Xavier",
+			"JSantos"
 		]
 	},
+	"pagetriage-reviewed": "Revizita",
 	"pagetriage-bytes": "$1 {{PLURAL:$1|bicoko*|bicoki*}}",
+	"pagetriage-edits": "$1 {{PLURAL:$1|redakturo|redakturi}}",
 	"pagetriage-author-blocked": "Blokusita",
 	"pagetriage-sort-by": "Ordinar segun:",
 	"pagetriage-triage": "Revizar",
@@ -12,15 +15,26 @@
 	"pagetriage-filter-date-range-format-placeholder": "mm/dd/yyyy",
 	"pagetriage-filter-date-range-from": "De",
 	"pagetriage-filter-show-heading": "Montrez:",
+	"pagetriage-filter-redirects": "Ridirekti (ne RfD)",
 	"pagetriage-filter-ns-all": "Omna",
 	"pagetriage-more": "Plusa",
 	"pagetriage-filter-stat-all": "Omna",
 	"pagetriage-filter-stat-date_range_from": "De: $1",
+	"pagetriage-filter-stat-reviewed": "Revizita",
+	"pagetriage-filter-stat-unreviewed": "Sen revizo",
+	"pagetriage-filter-stat-redirects": "Ridirekti",
 	"pagetriage-filter-stat-blocked": "De blokusita uzeri",
 	"pagetriage-filter-stat-username": "nomo dil uzero: $1",
 	"pagetriage-tags-cat-sources-label": "Fonti",
+	"pagetriage-tags-param-date-label": "Datoː",
+	"pagetriage-tags-param-free-yes-label": "Yes",
+	"pagetriage-tags-param-free-no-label": "No",
 	"log-description-pagetriage-copyvio": "This is the log of events received via the PageTriage Copyvio API.",
 	"pagetriage-info-help": "helpo",
 	"pagetriage-toolbar-learn-more": "Lernez pluse »",
+	"pagetriage-mark-title": "Indikar kom revizita",
+	"pagetriage-mark-as-reviewed": "Indikar kom revizita",
+	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|redakturo|redakturi}}",
+	"pagetriage-toolbar-close": "Klozez",
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Dankar}}}}"
 }

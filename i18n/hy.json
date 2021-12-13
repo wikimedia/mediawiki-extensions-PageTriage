@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Աշոտ1997"
+			"Աշոտ1997",
+			"Kareyac"
 		]
 	},
 	"pagetriage-please-wait": "Խնդրում ենք սպասել...",
@@ -42,12 +43,16 @@
 	"pagetriage-note-not-reviewed": "Այս էջը դեռ չի ստուգվել։",
 	"pagetriage-note-deletion": "Այս էջը առաջադրվել է ջնջման։",
 	"pagetriage-refresh-list": "Թարմացնել ցանկը",
+	"pagetriage-button-add-parameters": "Ավելացնել պարամետրներ",
 	"pagetriage-button-edit-details": "Խմբագրել մանրամասները",
 	"pagetriage-button-send-a-note": "Ուղարկել հաղորդագրություն",
 	"pagetriage-add-a-note-reviewer": "Ստուգողի համար հաղորդագրություն ավելացնել (պարտադիր չէ)",
 	"pagetriage-tags-cat-sources-label": "Աղբյուրներ",
 	"pagetriage-tags-cat-all-label": "Բոլոր պիտակները",
 	"pagetriage-del-tags-dba3-label": "Բովանդակություն չկա",
+	"pagetriage-tags-param-article-label": "Հոդված.",
+	"pagetriage-info-help": "օգնություն",
+	"pagetriage-toolbar-close": "Փակել",
 	"pagetriage-discuss-link": "Քննարկել",
 	"pagetriage-discuss-link-title": "Քննարկել",
 	"echo-pref-subscription-page-review": "Ստուգել իմ ստեղծած էջերից",

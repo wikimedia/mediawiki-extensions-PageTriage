@@ -438,6 +438,8 @@
 	"apihelp-pagetriagelist-param-show_predicted_issues_attack": "잠재적인 공격 문제를 포함할지의 여부",
 	"apihelp-pagetriagelist-param-show_predicted_issues_copyvio": "잠재적인 저작권 위반 문제를 포함할지의 여부",
 	"apihelp-pagetriagelist-param-show_predicted_issues_none": "잠재적인 문제를 포함하지 않을지의 여부",
+	"apihelp-pagetriagestats-param-showredirs": "넘겨주기를 포함할지의 여부입니다.",
+	"apihelp-pagetriagestats-param-showothers": "넘겨주기가 아니거나 삭제 신청이 되지 않은 일반 문서를 포함할지의 여부입니다.",
 	"apihelp-pagetriagestats-param-showbots": "봇이 만든 문서만 포함할지의 여부입니다.",
 	"apihelp-pagetriagestats-param-no_category": "분류가 없는 문서만 포함할지의 여부입니다.",
 	"apihelp-pagetriagestats-param-unreferenced": "각주가 없는 문서만 포함할지의 여부입니다.",
@@ -458,5 +460,6 @@
 	"apihelp-pagetriagestats-param-show_predicted_issues_attack": "잠재적인 공격 문제를 포함할지의 여부",
 	"apihelp-pagetriagestats-param-show_predicted_issues_copyvio": "잠재적인 저작권 위반 문제를 포함할지의 여부",
 	"apihelp-pagetriagestats-param-show_predicted_issues_none": "잠재적인 문제를 포함하지 않을지의 여부",
+	"apihelp-pagetriagetagging-description": "문서에 태그를 추가합니다.",
 	"apihelp-pagetriagetagging-summary": "문서에 태그를 추가합니다."
 }

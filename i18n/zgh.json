@@ -2,10 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Aslmad mohamed belarhzali",
-			"Mdb897"
+			"Mdb897",
+			"Hakim1bal"
 		]
 	},
 	"pagetriage-afc-oldest": "ⴰⵙⴰⴽⵓⴷ ⵏ ⵓⵙⵏⵓⵍⴼⵓ (ⴰⵣⴰⵢⴽⵓ ⴰⴽⴽ)",
+	"pagetriage-tags-param-free-yes-label": "ⵢⴰⵀ",
+	"pagetriage-tags-param-free-no-label": "ⵓⵀⵓ",
 	"pagetriage-afc-state": "ⴰⴷⴷⴰⴷ",
 	"apihelp-pagetriagelist-param-show_predicted_class_stub": "ⵉⵖ ⵉⵅⵚⵚⴰ ⴰⴷ ⵉⵜⵡⴰⵙⴽⵛⵎ ⵜⵎⴷⵍⵜ ⵏ ⵜⵎⵖⵔⵉⵜ ⵉⵜⵡⴰⵙⵓⵜⴳⵏ"
 }

@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Luky001"
+			"Luky001",
+			"Vegetator"
 		]
 	},
+	"pagetriage-more": "Viac",
 	"pagetriage-has-talkpage-feedback-link": "diskusná stránka",
 	"pagetriage-del-talk-page-notify-error": "Upozornenie autora na diskusnej stránke zlyhalo"
 }

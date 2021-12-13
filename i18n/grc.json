@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Michael5iLVEr"
+			"Michael5iLVEr",
+			"PastelKos"
 		]
 	},
 	"pagetriage-filter-date-range-format-input-field": "ἔτος-μήν-ἡμέρα",
 	"pagetriage-filter-date-range-format-placeholder": "μήν/ἡμέρα/ἔτος",
-	"pagetriage-filter-date-range-format-showing": "μήν/ἡμέρα/ἔτος"
+	"pagetriage-filter-date-range-format-showing": "μήν/ἡμέρα/ἔτος",
+	"pagetriage-more": "Πλείω"
 }

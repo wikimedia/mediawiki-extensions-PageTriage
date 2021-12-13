@@ -6,7 +6,8 @@
 			"Kyouko",
 			"Minisarm",
 			"Stelistcristi",
-			"Strainu"
+			"Strainu",
+			"NGC 54"
 		]
 	},
 	"pagetriage-please-wait": "Vă rugăm să așteptați...",
@@ -26,7 +27,7 @@
 	"pagetriage-filter-date-range-format-showing": "LL/zz/aaaa",
 	"pagetriage-filter-date-range-from": "De la",
 	"pagetriage-filter-date-range-to": "Către",
-	"pagetriage-filter-redirects": "Redirecționări",
+	"pagetriage-filter-redirects": "Redirecționări (nu RfD)",
 	"pagetriage-filter-article": "Articol",
 	"pagetriage-filter-username": "Nume de utilizator",
 	"pagetriage-filter-tag-heading": "Cu eticheta:",
@@ -42,6 +43,7 @@
 	"pagetriage-filter-stat-predicted-issues-vandalism": "Vandalism",
 	"pagetriage-filter-stat-predicted-issues-none": "Niciuna",
 	"pagetriage-no-pages": "Nicio pagină nu corespunde criteriilor dumneavoastră.",
+	"pagetriage-note-reviewed": "Această pagină a fost revizuită.",
 	"pagetriage-refresh-list": "Reîmprospătează lista",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|etichetă selectată|etichete selectate|de etichete selectate}}",
 	"pagetriage-tags-title": "Adăugare etichete",
@@ -65,6 +67,8 @@
 	"pagetriage-tags-param-free-yes-label": "Da",
 	"pagetriage-tags-param-free-no-label": "Nu",
 	"pagetriage-tags-param-missing-required": "Etichetei $1 îi lipsește un parametru obligatoriu.",
+	"log-name-pagetriage-curation": "Jurnal revizuiri pagini",
+	"log-name-pagetriage-deletion": "Jurnal ștergeri etichete",
 	"pagetriage-tags-edit-summary": "A adăugat etichete acestei pagini folosind $1 ($2)",
 	"pagetriage-del-tags-param-discussion-label": "Vă rugăm să explicați de ce această pagină ar trebui ștearsă și furnizați legătura către politicile relevante atunci când este posibil",
 	"pagetriage-info-title": "Informații despre pagină",
@@ -87,5 +91,6 @@
 	"pagetriage-del-tooltip": "Nominalizează această pagină pentru ștergere",
 	"pagetriage-toolbar-close": "Închidere",
 	"pagetriage-toolbar-minimize": "Minimizare",
+	"notification-header-pagetriage-mark-as-reviewed": "Pagina '''$3''' a fost {{GENDER:$2|revizuită}}.",
 	"apihelp-pagetriagestats-param-recreated": "Dacă să includă doar pagini care au fost șterse în trecut."
 }

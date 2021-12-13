@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kareyac"
+			"Kareyac",
+			"Azniv Stepanian"
 		]
 	},
 	"pagetriage-please-wait": "Հաճեցէք սպասել...",
+	"pagetriage-markpatrolled": "Էջը նշել իբրեւ վերանայուած էջ",
 	"pagetriage-author-not-autoconfirmed": "Նոր խմբագիր",
 	"pagetriage-author-bot": "Մեքենայիկ",
 	"pagetriage-filter-predicted-class-good": "Լաւ",
@@ -15,7 +17,7 @@
 	"pagetriage-filter-article": "Յօդուած",
 	"pagetriage-filter-ns-all": "Բոլոր",
 	"pagetriage-filter-stat-all": "Բոլոր",
-	"pagetriage-filter-stat-namespace": "Անւանատարածք",
+	"pagetriage-filter-stat-namespace": "Անուանատարածք",
 	"pagetriage-filter-stat-predicted-class-good": "Լաւ",
 	"pagetriage-filter-stat-predicted-issues-none": "Ոչ մէկ",
 	"pagetriage-has-talkpage-feedback-link": "քննարկման էջ",

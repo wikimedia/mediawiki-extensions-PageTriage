@@ -1,10 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Artsiom91"
+			"Artsiom91",
+			"Kareyac"
 		]
 	},
 	"pagetriage-filter-username": "Імя ўдзельніка",
+	"pagetriage-filter-ns-all": "Усе",
+	"pagetriage-more": "Болей",
+	"pagetriage-filter-stat-all": "Усе",
 	"pagetriage-filter-stat-username": "імя ўдзельніка: $1",
 	"pagetriage-tags-param-date-label": "Дата:",
 	"pagetriage-info-help": "даведка",
