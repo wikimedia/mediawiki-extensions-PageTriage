@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
+use MediaWiki\User\UserIdentity;
 use PatrolLog;
 use RecentChange;
-use User;
 
 class PageTriage {
 
@@ -46,12 +46,12 @@ class PageTriage {
 	 *    '1': reviewed manually
 	 *    '2': patrolled from Special:NewPages
 	 *    '3': auto-patrolled
-	 * @param User|null $user
+	 * @param UserIdentity|null $user
 	 * @param bool $fromRc
 	 * @throws MWPageTriageMissingRevisionException
 	 * @return bool true: add new record, false: update existing record
 	 */
-	public function addToPageTriageQueue( $reviewed = '0', User $user = null, $fromRc = false ) {
+	public function addToPageTriageQueue( $reviewed = '0', UserIdentity $user = null, $fromRc = false ) {
 		if ( $this->retrieve() ) {
 			if ( $this->mReviewed != $reviewed ) {
 				$this->setTriageStatus( $reviewed, $user, $fromRc );
@@ -101,11 +101,11 @@ class PageTriage {
 	/**
 	 * set the triage status of an article in pagetriage queue
 	 * @param string $reviewed see PageTriage::getValidReviewedStatus()
-	 * @param User|null $user
+	 * @param UserIdentity|null $user
 	 * @param bool $fromRc
 	 * @return bool If a page status was updated
 	 */
-	public function setTriageStatus( $reviewed, User $user = null, $fromRc = false ) {
+	public function setTriageStatus( $reviewed, UserIdentity $user = null, $fromRc = false ) {
 		if ( !array_key_exists( $reviewed, self::getValidReviewedStatus() ) ) {
 			$reviewed = '0';
 		}

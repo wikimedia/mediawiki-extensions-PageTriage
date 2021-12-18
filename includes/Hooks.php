@@ -78,8 +78,6 @@ class Hooks {
 			return;
 		}
 
-		$user = User::newFromIdentity( $user );
-
 		// If not a new record to pagetriage queue, do nothing.
 		if ( !self::addToPageTriageQueue( $oldid, $newTitle, $user ) ) {
 			return;
@@ -126,7 +124,7 @@ class Hooks {
 					self::addToPageTriageQueue(
 						$wikiPage->getId(),
 						$wikiPage->getTitle(),
-						User::newFromIdentity( $user )
+						$user
 					);
 				}
 			} );
@@ -171,7 +169,7 @@ class Hooks {
 		self::addToPageTriageQueue(
 			$wikiPage->getId(),
 			$title,
-			User::newFromIdentity( $user )
+			$user
 		);
 	}
 
@@ -232,11 +230,11 @@ class Hooks {
 	 *
 	 * @param int $pageId
 	 * @param Title $title
-	 * @param User|null $user
+	 * @param UserIdentity|null $userIdentity
 	 * @param string|null $reviewed numeric string See PageTriage::getValidReviewedStatus()
 	 * @return bool
 	 */
-	public static function addToPageTriageQueue( $pageId, $title, $user = null, $reviewed = null ) {
+	public static function addToPageTriageQueue( $pageId, $title, $userIdentity = null, $reviewed = null ) {
 		global $wgUseRCPatrol, $wgUseNPPatrol;
 
 		// Get draft information.
@@ -253,7 +251,7 @@ class Hooks {
 		$pageTriage = new PageTriage( $pageId );
 
 		// action taken by system
-		if ( $user === null ) {
+		if ( $userIdentity === null ) {
 			if ( $reviewed === null ) {
 				$reviewed = '0';
 			}
@@ -262,6 +260,7 @@ class Hooks {
 		} else {
 			// set reviewed if it's not set yet
 			if ( $reviewed === null ) {
+				$user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity( $userIdentity );
 				$permissionErrors = MediaWikiServices::getInstance()->getPermissionManager()
 					->getPermissionErrors( 'autopatrol', $user, $title );
 				$isAutopatrolled = ( $wgUseRCPatrol || $wgUseNPPatrol ) &&
@@ -276,7 +275,7 @@ class Hooks {
 					return $pageTriage->addToPageTriageQueue( '0' );
 				}
 			}
-			return $pageTriage->addToPageTriageQueue( $reviewed, $user );
+			return $pageTriage->addToPageTriageQueue( $reviewed, $userIdentity );
 		}
 	}
 
