@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Artsiom91",
-			"Kareyac"
+			"Kareyac",
+			"ZlyiLev"
 		]
 	},
 	"pagetriage-filter-username": "Імя ўдзельніка",
@@ -10,6 +11,7 @@
 	"pagetriage-more": "Болей",
 	"pagetriage-filter-stat-all": "Усе",
 	"pagetriage-filter-stat-username": "імя ўдзельніка: $1",
+	"pagetriage-tags-cat-metadata-label": "Метаданыя",
 	"pagetriage-tags-param-date-label": "Дата:",
 	"pagetriage-info-help": "даведка",
 	"pagetriage-toolbar-close": "Закрыць",

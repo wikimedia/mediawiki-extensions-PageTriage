@@ -4,9 +4,12 @@
 			"咽頭べさ"
 		]
 	},
+	"pagetriage-no-categories": "ကဏ္ဍဖိုင်ႏအဝ်ႏတဝ်း",
 	"pagetriage-newest": "အတသာသွတ်ꩻ",
 	"pagetriage-oldest": "အယသွတ်ꩻ",
 	"pagetriage-triage": "ထွားစဲစ်ချာ",
+	"pagetriage-filter-stat-no-categories": "ကဏ္ဍဖိုင်ႏအဝ်ႏတဝ်း",
+	"pagetriage-info-problem-no-categories": "ကဏ္ဍဖိုင်ႏအဝ်ႏတဝ်း",
 	"pagetriage-discuss-link": "{{GENDER:$1|အုံကွံ}}",
 	"pagetriage-discuss-link-title": "{{GENDER:$1|အုံကွံ}}"
 }
