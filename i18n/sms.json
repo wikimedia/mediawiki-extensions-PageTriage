@@ -5,6 +5,7 @@
 		]
 	},
 	"pagetriage-edits": "$1 {{PLURAL:$1|muuttâs|muttâz|muttsed}}",
+	"pagetriage-author-bot": "Bott",
 	"pagetriage-filter-show-heading": "Vueʹǩǩ:",
 	"pagetriage-filter-username": "Õõʹnninõmm",
 	"pagetriage-filter-all": "Čuäʹjet pukid",
@@ -15,6 +16,7 @@
 	"pagetriage-tags-title": "Lââʹzzet ǩeâlgglid",
 	"pagetriage-tags-refimprove-label": "Lââʹzz teâttkääiv",
 	"pagetriage-tags-notenglish-label": "Puäst ǩiõll",
+	"pagetriage-tags-update-label": "Peiʹvved",
 	"pagetriage-tags-param-article-label": "Artikkel:",
 	"pagetriage-tags-param-date-label": "Peiʹvvmieʹrr:",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|muuttâs|muttâz|muttsed}}",
