@@ -365,7 +365,7 @@ class PageTriageUtil {
 			[ 'LIMIT' => $maxNumToProcess + 1 ]
 		);
 
-		if ( $dbr->numRows( $res ) > $maxNumToProcess ) {
+		if ( $res->numRows() > $maxNumToProcess ) {
 			return;
 		}
 

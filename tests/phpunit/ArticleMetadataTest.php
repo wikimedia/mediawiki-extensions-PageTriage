@@ -95,7 +95,7 @@ class ArticleMetadataTest extends PageTriageTestCase {
 			[ 'ptrp_page_id' ],
 			[ 'ptrp_page_id' => $validatedPageIds ]
 		);
-		$this->assertEquals( count( $validatedPageIds ), $this->dbr->numRows( $res ) );
+		$this->assertEquals( count( $validatedPageIds ), $res->numRows() );
 	}
 
 	/**
@@ -132,7 +132,7 @@ class ArticleMetadataTest extends PageTriageTestCase {
 			[ 'ptrpt_page_id' ],
 			[ 'ptrpt_page_id' => $this->pageIds ]
 		);
-		$this->assertSame( 0, $this->dbr->numRows( $res ) );
+		$this->assertSame( 0, $res->numRows() );
 	}
 
 }

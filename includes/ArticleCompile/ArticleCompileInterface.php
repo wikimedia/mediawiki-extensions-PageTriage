@@ -66,7 +66,7 @@ abstract class ArticleCompileInterface {
 			[ 'LIMIT' => $maxNumToProcess + 1 ]
 		);
 
-		$record = $this->db->numRows( $res );
+		$record = $res->numRows();
 		if ( $record > $maxNumToProcess ) {
 			$this->metadata[$pageId][$indexName] = $maxNumToProcess . '+';
 		} else {
