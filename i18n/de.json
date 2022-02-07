@@ -7,7 +7,8 @@
 			"Mirzali",
 			"Shirayuki",
 			"Wnme",
-			"Umlaut"
+			"Umlaut",
+			"Brettchenweber"
 		]
 	},
 	"pagetriage": "Seitenprüfungshilfe",
@@ -318,7 +319,7 @@
 	"pagetriage-del-tags-dbg1-label": "Offensichtlicher Unsinn",
 	"pagetriage-del-tags-dbg1-desc": "Seiten, die offensichtlich unsinnig sind und nur aus zusammenhanglosem Text ohne erkennbar sinnvollem Inhalt bestehen.",
 	"pagetriage-del-tags-dba3-label": "Kein Inhalt",
-	"pagetriage-del-tags-dba3-desc": "Alle Artikel (außer Begriffsklärungsseiten, Weiterleitungen oder hinweisende Weiterleitungen), die nur aus Weblinks, Kategorien und „Siehe-auch“-Abschnitten bestehen, die eine Wiederholung des Lemmas oder eine bei der Hilfe oder Auskunft gestellten Frage sind, sowie chatartige Kommentare, markierende Vorlagen und/oder Bilder.",
+	"pagetriage-del-tags-dba3-desc": "Alle Artikel (außer Begriffsklärungsseiten, Weiterleitungen oder hinweisende Weiterleitungen), die nur aus Weblinks, Kategorien und „Siehe-auch“-Abschnitten bestehen, die eine Wiederholung des Lemmas oder einer bei der Hilfe oder Auskunft gestellten Frage sind, sowie chatartige Kommentare, markierende Vorlagen und/oder Bilder.",
 	"pagetriage-del-tags-dba9-label": "Keine Anzeichen von Wichtigkeit (musikalische Aufzeichnungen)",
 	"pagetriage-del-tags-dba9-desc": "Ein Artikel über eine musikalische Aufzeichnung, bei dem nicht ersichtlich ist, warum das Thema wichtig oder bedeutsam ist. Zudem ist kein Artikel zum Künstler vorhanden. (beide Bedingungen müssen erfüllt sein)",
 	"pagetriage-del-tags-dbg2-label": "Testseiten",
