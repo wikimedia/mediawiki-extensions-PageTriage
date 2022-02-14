@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Karapananguasú Kururú Teremembé"
+		]
+	},
+	"pagetriage-creation-dateformat": "HH:mm, MMMM d yyyy",
+	"pagetriage-filter-date-range-format-input-field": "MM-dd-yyyy",
+	"pagetriage-filter-date-range-format-placeholder": "mm/dd/yyyy",
+	"pagetriage-info-timestamp-date-format": "MMMM d yyyy"
+}
