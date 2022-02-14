@@ -455,28 +455,23 @@ $( function () {
 		 */
 		getApiParamsDateRange: function ( context ) {
 			var apiParams = {}, fromDate, toDate;
+			var offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
 			if ( $( '#mwe-pt-filter-' + context + '-date-range-from' ).val() ) {
-				// The browser submits the date value in yyyy-MM-dd format, which is interpreted in UTC time by the Date() class
-				// if passed in this given format. It needs to be passed to Date() in yyyy/MM/dd format so that JavaScript reflects
-				// the date according to the selected date based on the current timezone that the browser is running.
-				fromDate = new Date( $( '#mwe-pt-filter-' + context + '-date-range-from' ).val().replace( /-/g, '/' ) );
-				// Set fromDate's time to the beginning of the day 00:00:00
-				fromDate.setHours( 0 );
-				fromDate.setMinutes( 0 );
-				fromDate.setSeconds( 0 );
+				// Interpret the entered date as UTC initially, then subtract the offset so that it
+				// gets correctly treated as user time zone.
+				fromDate = moment.utc( $( '#mwe-pt-filter-' + context + '-date-range-from' ) )
+					.subtract( offset, 'minutes' );
 				// eslint-disable-next-line camelcase
 				apiParams.date_range_from = fromDate.toISOString(); // Pass the date in ISO timestamp format "2019-08-17T06:59:59.000Z"
 			}
 
 			if ( $( '#mwe-pt-filter-' + context + '-date-range-to' ).val() ) {
-				// The browser submits the date value in yyyy-MM-dd format, which is interpreted in UTC time by the Date() class
-				// if passed in this given format. It needs to be passed to Date() in yyyy/MM/dd format so that JavaScript reflects
-				// the date according to the selected date based on the current timezone that the browser is running.
-				toDate = new Date( $( '#mwe-pt-filter-' + context + '-date-range-to' ).val().replace( /-/g, '/' ) );
+				// Interpret the entered date as UTC initially, then subtract the offset so that it
+				// gets correctly treated as user time zone.
+				toDate = moment.utc( $( '#mwe-pt-filter-' + context + '-date-range-to' ) )
+					.subtract( offset, 'minutes' );
 				// Set toDate's time the end of day 23:59:59
-				toDate.setHours( 23 );
-				toDate.setMinutes( 59 );
-				toDate.setSeconds( 59 );
+				toDate.add( 1, 'day' ).subtract( 1, 'second' );
 				// eslint-disable-next-line camelcase
 				apiParams.date_range_to = toDate.toISOString(); // Pass the date in ISO timestamp format "2019-08-17T06:59:59.000Z"
 			}
@@ -661,21 +656,26 @@ $( function () {
 		 */
 		menuSyncDateRange: function ( context ) {
 			var dateRangeFrom, dateRangeTo, formattedDateFrom, formattedDateTo;
+			var offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
 
-			dateRangeFrom = this.model.getParam( 'date_range_from' );
+			dateRangeFrom = this.model.getParam( 'date_range_from' ); // ISO format
 			if ( dateRangeFrom ) {
-				dateRangeFrom = new Date( dateRangeFrom );
-				formattedDateFrom = dateRangeFrom.toString( mw.msg( 'pagetriage-filter-date-range-format-showing' ) );
+				dateRangeFrom = moment( dateRangeFrom );
+				formattedDateFrom = dateRangeFrom.utcOffset( offset )
+					.format( mw.msg( 'pagetriage-filter-date-range-format-showing' ) );
 				this.newFilterStatus.date_range.push( mw.msg( 'pagetriage-filter-stat-date_range_from', formattedDateFrom ) );
-				$( '#mwe-pt-filter-' + context + '-date-range-from' ).val( dateRangeFrom.toString( mw.msg( 'pagetriage-filter-date-range-format-input-field' ) ) );
+				$( '#mwe-pt-filter-' + context + '-date-range-from' ).val( dateRangeFrom.utcOffset( offset )
+					.format( mw.msg( 'pagetriage-filter-date-range-format-input-field' ) ) );
 			}
 
-			dateRangeTo = this.model.getParam( 'date_range_to' );
+			dateRangeTo = this.model.getParam( 'date_range_to' ); // ISO format
 			if ( dateRangeTo ) {
-				dateRangeTo = new Date( dateRangeTo );
-				formattedDateTo = dateRangeTo.toString( mw.msg( 'pagetriage-filter-date-range-format-showing' ) );
+				dateRangeTo = moment( dateRangeTo );
+				formattedDateTo = dateRangeTo.utcOffset( offset )
+					.format( mw.msg( 'pagetriage-filter-date-range-format-showing' ) );
 				this.newFilterStatus.date_range.push( mw.msg( 'pagetriage-filter-stat-date_range_to', formattedDateTo ) );
-				$( '#mwe-pt-filter-' + context + '-date-range-to' ).val( dateRangeTo.toString( mw.msg( 'pagetriage-filter-date-range-format-input-field' ) ) );
+				$( '#mwe-pt-filter-' + context + '-date-range-to' ).val( dateRangeTo.utcOffset( offset )
+					.format( mw.msg( 'pagetriage-filter-date-range-format-input-field' ) ) );
 			}
 		},
 

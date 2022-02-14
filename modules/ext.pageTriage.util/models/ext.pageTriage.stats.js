@@ -39,9 +39,9 @@ $( function () {
 				now.getUTCSeconds()
 			);
 
-			begin = Date.parseExact( dateStr, 'yyyyMMddHHmmss' );
+			begin = moment.utc( dateStr, 'YYYYMMDDHHmmss' );
 
-			diff = Math.round( ( now.getTime() - begin.getTime() ) / ( 1000 * 60 * 60 * 24 ) );
+			diff = Math.round( ( now.getTime() - begin.valueOf() ) / ( 1000 * 60 * 60 * 24 ) );
 			if ( diff ) {
 				return mw.msg( 'days', diff );
 			} else {

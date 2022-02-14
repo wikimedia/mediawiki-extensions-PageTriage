@@ -597,6 +597,7 @@ class Hooks {
 				'mediawiki.jqueryMsg',
 				'mediawiki.messagePoster',
 				'mediawiki.Title',
+				'moment',
 				'ext.pageTriage.util',
 				'oojs-ui.styles.icons-alerts',
 				'jquery.ui',
