@@ -11,6 +11,7 @@
 			"Shirayuki",
 			"Sujiniku",
 			"Suyama",
+			"Yamagata Yusuke",
 			"おはぐろ蜻蛉",
 			"カッパ鳥",
 			"아라"
@@ -54,6 +55,8 @@
 	"pagetriage-newest": "新しい順",
 	"pagetriage-oldest": "古い順",
 	"pagetriage-triage": "査読",
+	"pagetriage-filter-date-range-format-placeholder": "月/日/年(西暦4桁)",
+	"pagetriage-filter-date-range-format-showing": "月/日/年(西暦4桁)",
 	"pagetriage-filter-show-heading": "表示:",
 	"pagetriage-filter-reviewed-edits": "査読済ページ",
 	"pagetriage-filter-unreviewed-edits": "未査読ページ",
