@@ -314,7 +314,7 @@ class Hooks {
 		// If the __NOINDEX__ magic word is on a new article, then allow
 		// it to work, regardless of namespace robot policies.
 		if ( $article->mParserOutput instanceof ParserOutput
-			&& ( $article->mParserOutput->getPageProperty( 'noindex' ) ?? false ) !== false // T301915
+			&& $article->mParserOutput->getPageProperty( 'noindex' ) !== null
 		) {
 			// Short circuit since we know it will fail the next set
 			// of tests as well.
