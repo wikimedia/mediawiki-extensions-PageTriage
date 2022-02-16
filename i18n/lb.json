@@ -51,6 +51,8 @@
 	"pagetriage-triage": "Nokucken",
 	"pagetriage-filter-date-range-heading": "Zäitraum:",
 	"pagetriage-filter-date-range-format-input-field": "jjjj-MM-dd",
+	"pagetriage-filter-date-range-format-placeholder": "MM/DD/JJJJ",
+	"pagetriage-filter-date-range-format-showing": "MM/DD/JJJJ",
 	"pagetriage-filter-date-range-from": "Vum",
 	"pagetriage-filter-show-heading": "Status:",
 	"pagetriage-filter-type-show-heading": "Typ:",
