@@ -13,7 +13,8 @@
 			"Foomin10",
 			"RYOUMA1117",
 			"おはぐろ蜻蛉",
-			"カッパ鳥"
+			"カッパ鳥",
+			"Yamagata Yusuke"
 		]
 	},
 	"newpagesfeed": "新しいページのフィード",
@@ -54,7 +55,7 @@
 	"pagetriage-newest": "新しい順",
 	"pagetriage-oldest": "古い順",
 	"pagetriage-triage": "査読",
-	"pagetriage-filter-show-heading": "表示:",
+	"pagetriage-filter-show-heading": "状態:",
 	"pagetriage-filter-reviewed-edits": "査読済ページ",
 	"pagetriage-filter-unreviewed-edits": "未査読ページ",
 	"pagetriage-filter-nominated-for-deletion": "削除候補",
