@@ -3,12 +3,12 @@
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
 use DeferredUpdates;
-use JobQueueGroup;
 use LinksUpdate;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\CompileArticleMetadataJob;
 use MediaWiki\Extension\PageTriage\PageTriage;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
 use RequestContext;
 use Title;
 use WikiPage;
@@ -206,13 +206,14 @@ class ArticleCompileProcessor {
 				// Additionally, the metadata will be cached in memcache for 24 hours.
 				// The logging statement below can alert us to errors in our hook implementation.
 				// Queue a job for each page that doesn't have metadata.
+				$jobs = [];
 				foreach ( $this->pageIds as $pageId ) {
-					$job = new CompileArticleMetadataJob(
+					$jobs[] = new CompileArticleMetadataJob(
 						Title::newMainPage(),
 						[ 'pageId' => (int)$pageId ]
 					);
-					JobQueueGroup::singleton()->push( $job );
 				}
+				MediaWikiServices::getInstance()->getJobQueueGroup()->push( $jobs );
 				LoggerFactory::getInstance( 'PageTriage' )->debug(
 					'Article metadata not found in DB, will attempt to save to DB via the job queue.',
 					[
