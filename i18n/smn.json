@@ -6,10 +6,13 @@
 		]
 	},
 	"pagetriage-author-bot": "Botti",
+	"pagetriage-filter-predicted-issues-vandalism": "Vandalism",
 	"pagetriage-filter-show-heading": "Tile:",
 	"pagetriage-filter-ns-all": "Puoh",
 	"pagetriage-filter-stat-all": "Puoh",
+	"pagetriage-filter-stat-predicted-issues-vandalism": "Vandalism",
 	"pagetriage-tags-cat-writingstyle-label": "Čäällimstijlâ",
 	"pagetriage-tags-cat-all-label": "Puoh kilgoleh",
-	"pagetriage-tags-param-date-label": "Peivim:"
+	"pagetriage-tags-param-date-label": "Peivim:",
+	"pagetriage-toolbar-close": "Toopâ"
 }

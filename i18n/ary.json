@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Reda Benkhadra"
+			"Reda Benkhadra",
+			"Ideophagous"
 		]
 	},
 	"pagetriage-filter-ns-all": "كلشي",
 	"pagetriage-more": "كتر",
-	"pagetriage-filter-stat-all": "كلشي"
+	"pagetriage-filter-stat-all": "كلشي",
+	"pagetriage-info-help": "معاونة"
 }

@@ -19,7 +19,9 @@
 			"Sjoerddebruin",
 			"Southparkfan",
 			"Wiki13",
-			"Xbaked potatox"
+			"Xbaked potatox",
+			"Nickthijssen1994",
+			"Romaine"
 		]
 	},
 	"pagetriage": "Paginacontrole",
@@ -104,6 +106,8 @@
 	"pagetriage-filter-stat-username": "Door gebruiker: $1",
 	"pagetriage-filter-stat-namespace": "Naamruimte",
 	"pagetriage-filter-stat-predicted-issues-vandalism": "Vandalisme",
+	"pagetriage-filter-stat-predicted-issues-spam": "Spam",
+	"pagetriage-filter-stat-predicted-issues-copyvio": "Auteursrechtenschending",
 	"pagetriage-filter-stat-predicted-issues-none": "Geen",
 	"pagetriage-no-pages": "Er zijn geen pagina's die aan uw criteria voldoen.",
 	"pagetriage-warning-browser": "Dit hulpmiddel werkt mogelijk niet correct in browsers ouder dan Internet Explorer 11.",
@@ -128,6 +132,7 @@
 	"pagetriage-page-status-autoreviewed": "Deze pagina is automatisch gecontroleerd.",
 	"pagetriage-page-status-delete": "Gemarkeerd voor verwijdering",
 	"pagetriage-articleinfo-stat": "Statistieken: $1",
+	"pagetriage-has-talkpage-feedback-link": "overlegpagina",
 	"pagetriage-js-required": "Deze uitbreiding vereist een browser met JavaScript ingeschakeld.",
 	"pagetriage-tags-title": "Labels toevoegen",
 	"pagetriage-tags-cat-common-label": "Algemeen",
@@ -266,7 +271,9 @@
 	"pagetriage-del-tags-cat-prod-label": "Verwijderingsvoorstel",
 	"pagetriage-del-tags-cat-prod-desc": "Markeer deze pagina voor voorgestelde verwijdering als deze duidelijk in strijd is met de gemeenschapsnormen.",
 	"pagetriage-del-tags-cat-discussion-desc": "Markeer deze pagina om de verwijdering te bespreken met andere gebruikers.",
+	"pagetriage-del-tags-dbg10-label": "Aanvalspagina's",
 	"pagetriage-del-tags-dba1-label": "Geen context",
+	"pagetriage-del-tags-dbg1-label": "Klinkklare onzin",
 	"pagetriage-del-tags-dba3-label": "Geen inhoud",
 	"pagetriage-del-tags-dba3-desc": "Een artikel (anders dan disambiguatiepagina's, redirects of soft redirects) dat alleen bestaat uit externe koppelingen, categorieën en \"zie ook\"-secties, een herformulering van de paginanaam, pogingen om te communiceren met de persoon of groep die met de paginanaam wordt aangeduid, een vraag die bij de helpdesk gesteld moet worden, chat-achtige opmerkingen, sjablonen, en/of afbeeldingen. (A3)",
 	"pagetriage-del-tags-dbg2-label": "Testpagina's",

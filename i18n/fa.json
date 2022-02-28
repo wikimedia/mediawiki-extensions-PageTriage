@@ -11,13 +11,16 @@
 			"Nojan Madinehi",
 			"Omidh",
 			"Reza1615",
-			"Jeeputer"
+			"Jeeputer",
+			"Beginneruser"
 		]
 	},
 	"pagetriage": "تریاژ صفحات",
 	"newpagesfeed": "خوراک صفحه‌های تازه",
 	"pagetriage-desc": "بررسی و تأیید صفحه‌های تازه را تسهیل می‌کند",
 	"pagetriage-pagecuration": "بهسازی صفحه",
+	"pagetriage-new-page-patrol": "گشت صفحۀ جدید",
+	"pagetriage-articles-for-creation": "مقاله‌ها برای ایجاد",
 	"pagetriage-please-wait": "لطفاً صبر کنید...",
 	"pagetriage-api-invalidid": "شناسه‌ای که وارد کردید ($1) معتبر نیست",
 	"pagetriage-markpatrolled": "به این صفحه برچسب بررسی بزن",
@@ -64,6 +67,7 @@
 	"pagetriage-newest": "جدیدترین",
 	"pagetriage-oldest": "قدیمی ترین",
 	"pagetriage-triage": "بررسی",
+	"pagetriage-filter-date-range-heading": "بازهٔ زمانی:",
 	"pagetriage-filter-date-range-from": "از",
 	"pagetriage-filter-date-range-to": "تا",
 	"pagetriage-filter-show-heading": "حالت:",
