@@ -274,6 +274,8 @@
 	"pagetriage-afc-date-label-submission": "ثبت‌شده",
 	"pagetriage-afc-date-label-review": "تحت بازبینی، ثبت‌شده:",
 	"pagetriage-afc-date-label-declined": "برگشت‌خورده:",
+	"pagetriage-enqueue-title": "افزودن به خوراک صفحه‌های تازه",
+	"pagetriage-enqueue-confirmation": "آیا شما می‌خواهید این صفحه را به خوراک صفحه‌های تازه اضافه کنید؟",
 	"echo-pref-subscription-page-review": "بازبینی صفحهٔ ساخته شده توسط من",
 	"echo-pref-tooltip-page-review": "زمانی که کسی صفحهٔ‌ای که من ایجاد کرده‌ام را بررسی کرد من را مطلع کن.",
 	"echo-category-title-page-review": "{{PLURAL:$1|بازبینی|بازبینی‌های}} صفحه",
