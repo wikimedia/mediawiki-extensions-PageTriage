@@ -459,7 +459,7 @@ $( function () {
 			if ( $( '#mwe-pt-filter-' + context + '-date-range-from' ).val() ) {
 				// Interpret the entered date as UTC initially, then subtract the offset so that it
 				// gets correctly treated as user time zone.
-				fromDate = moment.utc( $( '#mwe-pt-filter-' + context + '-date-range-from' ) )
+				fromDate = moment.utc( $( '#mwe-pt-filter-' + context + '-date-range-from' ).val() )
 					.subtract( offset, 'minutes' );
 				// eslint-disable-next-line camelcase
 				apiParams.date_range_from = fromDate.toISOString(); // Pass the date in ISO timestamp format "2019-08-17T06:59:59.000Z"
@@ -468,7 +468,7 @@ $( function () {
 			if ( $( '#mwe-pt-filter-' + context + '-date-range-to' ).val() ) {
 				// Interpret the entered date as UTC initially, then subtract the offset so that it
 				// gets correctly treated as user time zone.
-				toDate = moment.utc( $( '#mwe-pt-filter-' + context + '-date-range-to' ) )
+				toDate = moment.utc( $( '#mwe-pt-filter-' + context + '-date-range-to' ).val() )
 					.subtract( offset, 'minutes' );
 				// Set toDate's time the end of day 23:59:59
 				toDate.add( 1, 'day' ).subtract( 1, 'second' );
