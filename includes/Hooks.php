@@ -336,7 +336,7 @@ class Hooks {
 	 * @return bool
 	 */
 	private static function isPageNew( WikiPage $wikiPage ) {
-		global $wgPageTriageMaxAge, $wgPageTriageCacheVersion;
+		global $wgPageTriageMaxAge;
 
 		$pageId = $wikiPage->getId();
 		if ( !$pageId ) {
@@ -362,7 +362,7 @@ class Hooks {
 					$fname
 				);
 			},
-			[ 'version' => $wgPageTriageCacheVersion ]
+			[ 'version' => PageTriage::CACHE_VERSION ]
 		);
 
 		// If still not found, return false.

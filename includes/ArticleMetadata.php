@@ -150,8 +150,6 @@ class ArticleMetadata {
 	 * @return array $metadata: key (page Ids) => value (metadata) pairs
 	 */
 	public function getMetadata() {
-		global $wgPageTriageCacheVersion;
-
 		// @TODO: inject this from somewhere
 		$wasPosted = RequestContext::getMain()->getRequest()->wasPosted();
 
@@ -205,7 +203,7 @@ class ArticleMetadata {
 
 				return $metadataByPageId;
 			},
-			[ 'version' => $wgPageTriageCacheVersion ]
+			[ 'version' => PageTriage::CACHE_VERSION ]
 		);
 		$metaDataByPageId = $cache->multiRemap( $this->pageIds, $metadataByKey );
 
@@ -232,8 +230,6 @@ class ArticleMetadata {
 	 * @return string[] Map of tag name to tag ID
 	 */
 	public static function getValidTags() {
-		global $wgPageTriageCacheVersion;
-
 		$fname = __METHOD__;
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 
@@ -264,7 +260,7 @@ class ArticleMetadata {
 
 				return $tags;
 			},
-			[ 'version' => $wgPageTriageCacheVersion ]
+			[ 'version' => PageTriage::CACHE_VERSION ]
 		);
 	}
 

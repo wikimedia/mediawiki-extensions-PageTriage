@@ -681,9 +681,6 @@
 				}
 			}
 		},
-		"PageTriageCacheVersion": {
-			"value": "1.8"
-		},
 		"PageTriageNamespaces": {
 			"value": [
 				0,
