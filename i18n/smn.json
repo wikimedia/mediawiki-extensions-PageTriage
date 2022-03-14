@@ -8,6 +8,7 @@
 	"pagetriage-author-bot": "Botti",
 	"pagetriage-filter-predicted-issues-vandalism": "Vandalism",
 	"pagetriage-filter-show-heading": "Tile:",
+	"pagetriage-filter-username": "Kevtteenommâ",
 	"pagetriage-filter-ns-all": "Puoh",
 	"pagetriage-filter-stat-all": "Puoh",
 	"pagetriage-filter-stat-predicted-issues-vandalism": "Vandalism",
@@ -17,5 +18,7 @@
 	"pagetriage-tags-cat-all-label": "Puoh kilgoleh",
 	"pagetriage-tags-param-date-label": "Peivim:",
 	"pagetriage-info-history-header": "Historjá",
-	"pagetriage-toolbar-close": "Toopâ"
+	"pagetriage-info-help": "iše",
+	"pagetriage-toolbar-close": "Toopâ",
+	"pagetriage-afc-state-all": "Puoh"
 }
