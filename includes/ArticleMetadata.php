@@ -193,6 +193,16 @@ class ArticleMetadata {
 					$metadata += $placeholderMetadata;
 				}
 
+				foreach ( $pageIds as $_ => $pageId ) {
+					if ( !isset( $metadataByPageId[ $pageId ] ) ) {
+						LoggerFactory::getInstance( 'PageTriage' )
+							->warning( 'Expected metadata to be cached for page ID {pageId}, but no metadata found.',
+								[ 'pageId' => $pageId ] );
+						// Set an uncacheable value so that WANObjectCache doesn't break (T303092).
+						$metadataByPageId[ $pageId ] = false;
+					}
+				}
+
 				return $metadataByPageId;
 			},
 			[ 'version' => $wgPageTriageCacheVersion ]
