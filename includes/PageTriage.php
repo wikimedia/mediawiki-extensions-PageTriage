@@ -31,6 +31,8 @@ class PageTriage {
 	 */
 	protected $mArticleMetadata;
 
+	public const CACHE_VERSION = 2;
+
 	/**
 	 * @param int $pageId
 	 */

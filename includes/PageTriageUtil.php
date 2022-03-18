@@ -123,7 +123,7 @@ class PageTriageUtil {
 
 				return $data;
 			},
-			[ 'version' => self::getCacheVersion() ]
+			[ 'version' => PageTriage::CACHE_VERSION ]
 		);
 	}
 
@@ -184,7 +184,7 @@ class PageTriageUtil {
 
 				return $data;
 			},
-			[ 'version' => self::getCacheVersion() ]
+			[ 'version' => PageTriage::CACHE_VERSION ]
 		);
 	}
 
@@ -232,7 +232,7 @@ class PageTriageUtil {
 
 				return iterator_to_array( $res );
 			},
-			[ 'version' => self::getCacheVersion() ]
+			[ 'version' => PageTriage::CACHE_VERSION ]
 		);
 	}
 
@@ -247,7 +247,7 @@ class PageTriageUtil {
 		return $cache->makeKey(
 			'pagetriage-user-page-status',
 			sha1( $userName ),
-			self::getCacheVersion()
+			PageTriage::CACHE_VERSION
 		);
 	}
 
@@ -391,15 +391,6 @@ class PageTriageUtil {
 
 		$metadata = new ArticleMetadata( $pageIds );
 		$metadata->flushMetadataFromCache();
-	}
-
-	/**
-	 * @return int
-	 */
-	private static function getCacheVersion() {
-		global $wgPageTriageCacheVersion;
-		// FIXME: This must return int, but returns the string "1.8"
-		return $wgPageTriageCacheVersion;
 	}
 
 	/**
