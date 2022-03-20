@@ -751,6 +751,7 @@ module.exports = ToolView.extend( {
 			tagObj = this.selectedTag[ key ];
 			tempTag = tagObj.tag;
 			tagging = specialDeletionTagging[ tagObj.tag ];
+			tagList.push( tagObj.tag.toLowerCase() );
 
 			if ( count > 1 ) {
 				if ( tagObj.code !== undefined ) {
@@ -777,7 +778,6 @@ module.exports = ToolView.extend( {
 			}
 			tagText += tempTag;
 			paramsText += that.buildParams( tagObj );
-			tagList.push( tagObj.tag.toLowerCase() );
 		}
 
 		if ( count === 1 ) {
