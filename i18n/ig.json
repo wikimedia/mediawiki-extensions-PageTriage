@@ -12,6 +12,7 @@
 	"log-action-filter-pagetriage-curation": "agwa nnwale ihu",
 	"log-action-filter-pagetriage-curation-review": "nlegharị",
 	"log-action-filter-pagetriage-curation-unreview": "elegharịghị",
+	"log-action-filter-pagetriage-curation-enqueue": "Na-eche",
 	"log-action-filter-pagetriage-curation-tag": "mmado",
 	"pagetriage-wikilove-edit-count": "{{PLURAL:$1|ḿmezi}} $1"
 }
