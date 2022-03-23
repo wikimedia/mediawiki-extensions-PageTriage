@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rance"
+			"Rance",
+			"Wangombe"
 		]
 	},
 	"pagetriage-filter-predicted-class-heading": "Daraja au darasa lililotabiriwa",
@@ -21,6 +22,11 @@
 	"pagetriage-filter-stat-predicted-issues-spam": "ujumbe usio muhimu",
 	"pagetriage-filter-stat-predicted-issues-attack": "shambulia",
 	"pagetriage-filter-stat-predicted-issues-none": "Hakuna matatizo",
+	"log-action-filter-pagetriage-curation": "Hatua ya kuangalia ukurasa",
+	"log-action-filter-pagetriage-curation-review": "Kukagua",
+	"log-action-filter-pagetriage-curation-unreview": "Hakijakaguliwa",
+	"log-action-filter-pagetriage-curation-enqueue": "Panga foleni",
+	"log-action-filter-pagetriage-curation-tag": "Kuweka alama",
 	"apihelp-pagetriagelist-param-show_predicted_class_c": "Ikiwa itahitaji kuhusisha daraja C lililotabiriwa",
 	"apihelp-pagetriagelist-param-show_predicted_class_good": "Ikiwa itahitaji kuhusisha daraja lililotabiriwa zuri",
 	"apihelp-pagetriagelist-param-show_predicted_class_featured": "Ikiwa itahitaji kuhusisha daraja husika lililotabiriwa",
