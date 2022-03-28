@@ -218,7 +218,7 @@
 	"log-name-pagetriage-curation": "سیاههٔ بهسازی صفحات",
 	"log-description-pagetriage-curation": "این صفحه حاولی سیاهه‌ای از اقداماتی است که با استفاده از ابزار بهسازی صفحات انجام شده‌اند.",
 	"log-name-pagetriage-deletion": "سیاههٔ برچسب حذف",
-	"log-description-pagetriage-deletion": "این صفحه حاوی سیاهه‌ای از اقداماتی است که با استفاده از جادوگر حذف در ابزار بهسازی صفحات انجام شده‌اند.",
+	"log-description-pagetriage-deletion": "این صفحه حاوی سیاهه‌ای از اقداماتی است که با استفاده از برنامۀ جادویی حذف در ابزار بهسازی صفحات انجام شده‌اند.",
 	"logentry-pagetriage-curation-reviewed": "$1 به $3 برچسب بررسی {{GENDER:$2|زد}}",
 	"logentry-pagetriage-curation-unreviewed": "$1 برچسب بررسی $3 را {{GENDER:$2|برداشت}}",
 	"logentry-pagetriage-curation-tag": "$1 به $3 برچسب بررسی {{GENDER:$2|زد}} و $4 {{PLURAL:$5|برچسب|برچسب}} افزود",
