@@ -11,6 +11,7 @@ use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
 use Title;
+use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiPageTriageTagging extends ApiBase {
 
@@ -163,22 +164,22 @@ class ApiPageTriageTagging extends ApiBase {
 	public function getAllowedParams() {
 		return [
 			'pageid' => [
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE => 'integer'
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'integer'
 			],
 			'token' => [
-				ApiBase::PARAM_REQUIRED => true
+				ParamValidator::PARAM_REQUIRED => true
 			],
 			'top' => null,
 			'bottom' => null,
 			'deletion' => [
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_TYPE => 'boolean'
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_TYPE => 'boolean'
 			],
 			'note' => null,
 			'taglist' => [
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI => true
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_ISMULTI => true
 			],
 		];
 	}

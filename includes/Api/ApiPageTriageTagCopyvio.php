@@ -8,6 +8,7 @@ use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use Title;
+use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiPageTriageTagCopyvio extends ApiBase {
 
@@ -79,8 +80,8 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 	public function getAllowedParams() {
 		return [
 			'revid' => [
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE => 'integer'
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'integer'
 			]
 		];
 	}

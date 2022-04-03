@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
-use ApiBase;
 use EchoEvent;
 use Exception;
 use ExtensionRegistry;
@@ -13,6 +12,7 @@ use ORES\Hooks\Helpers;
 use RequestContext;
 use Title;
 use User;
+use Wikimedia\ParamValidator\ParamValidator;
 use WikiPage;
 
 /**
@@ -446,22 +446,22 @@ class PageTriageUtil {
 	private static function getOresArticleQualityApiParams() {
 		return [
 			'show_predicted_class_stub' => [
-				ApiBase::PARAM_TYPE => 'boolean'
+				ParamValidator::PARAM_TYPE => 'boolean'
 			],
 			'show_predicted_class_start' => [
-				ApiBase::PARAM_TYPE => 'boolean'
+				ParamValidator::PARAM_TYPE => 'boolean'
 			],
 			'show_predicted_class_c' => [
-				ApiBase::PARAM_TYPE => 'boolean'
+				ParamValidator::PARAM_TYPE => 'boolean'
 			],
 			'show_predicted_class_b' => [
-				ApiBase::PARAM_TYPE => 'boolean'
+				ParamValidator::PARAM_TYPE => 'boolean'
 			],
 			'show_predicted_class_good' => [
-				ApiBase::PARAM_TYPE => 'boolean'
+				ParamValidator::PARAM_TYPE => 'boolean'
 			],
 			'show_predicted_class_featured' => [
-				ApiBase::PARAM_TYPE => 'boolean'
+				ParamValidator::PARAM_TYPE => 'boolean'
 			],
 		];
 	}
@@ -474,16 +474,16 @@ class PageTriageUtil {
 	private static function getOresDraftQualityApiParams() {
 		return [
 			'show_predicted_issues_vandalism' => [
-				ApiBase::PARAM_TYPE => 'boolean'
+				ParamValidator::PARAM_TYPE => 'boolean'
 			],
 			'show_predicted_issues_spam' => [
-				ApiBase::PARAM_TYPE => 'boolean'
+				ParamValidator::PARAM_TYPE => 'boolean'
 			],
 			'show_predicted_issues_attack' => [
-				ApiBase::PARAM_TYPE => 'boolean'
+				ParamValidator::PARAM_TYPE => 'boolean'
 			],
 			'show_predicted_issues_none' => [
-				ApiBase::PARAM_TYPE => 'boolean'
+				ParamValidator::PARAM_TYPE => 'boolean'
 			],
 		];
 	}
@@ -507,58 +507,58 @@ class PageTriageUtil {
 	public static function getCommonApiParams() {
 		return [
 			'showbots' => [
-				ApiBase::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 			'showredirs' => [
-				ApiBase::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 			'showothers' => [
-				ApiBase::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 			'showreviewed' => [
-				ApiBase::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 			'showunreviewed' => [
-				ApiBase::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 			'showdeleted' => [
-				ApiBase::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 			'namespace' => [
-				ApiBase::PARAM_TYPE => 'integer',
+				ParamValidator::PARAM_TYPE => 'integer',
 			],
 			'afc_state' => [
-				ApiBase::PARAM_TYPE => 'integer',
+				ParamValidator::PARAM_TYPE => 'integer',
 			],
 			'no_category' => [
-				ApiBase::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 			'unreferenced' => [
-				ApiBase::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 			'no_inbound_links' => [
-				ApiBase::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 			'recreated' => [
-				ApiBase::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 			'non_autoconfirmed_users' => [
-				ApiBase::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 			'learners' => [
-				ApiBase::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 			'blocked_users' => [
-				ApiBase::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 			'username' => [
-				ApiBase::PARAM_TYPE => 'user',
+				ParamValidator::PARAM_TYPE => 'user',
 			],
 			'date_range_from' => [
-				ApiBase::PARAM_TYPE => 'timestamp',
+				ParamValidator::PARAM_TYPE => 'timestamp',
 			],
 			'date_range_to' => [
-				ApiBase::PARAM_TYPE => 'timestamp',
+				ParamValidator::PARAM_TYPE => 'timestamp',
 			],
 		];
 	}
@@ -651,7 +651,7 @@ class PageTriageUtil {
 	public static function getCopyvioApiParam() {
 		return [
 			'show_predicted_issues_copyvio' => [
-				ApiBase::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 		];
 	}

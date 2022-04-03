@@ -11,6 +11,7 @@ use MediaWiki\Logger\LoggerFactory;
 use ORES\Services\ORESServices;
 use SpecialPage;
 use Title;
+use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 
 /**
@@ -525,22 +526,22 @@ class ApiPageTriageList extends ApiBase {
 			PageTriageUtil::getCommonApiParams(),
 			[
 				'page_id' => [
-					ApiBase::PARAM_TYPE => 'integer',
+					ParamValidator::PARAM_TYPE => 'integer',
 				],
 				'limit' => [
 					IntegerDef::PARAM_MAX => 200,
-					ApiBase::PARAM_DFLT => 20,
+					ParamValidator::PARAM_DEFAULT => 20,
 					IntegerDef::PARAM_MIN => 1,
-					ApiBase::PARAM_TYPE => 'integer',
+					ParamValidator::PARAM_TYPE => 'integer',
 				],
 				'offset' => [
-					ApiBase::PARAM_TYPE => 'integer',
+					ParamValidator::PARAM_TYPE => 'integer',
 				],
 				'pageoffset' => [
-					ApiBase::PARAM_TYPE => 'integer',
+					ParamValidator::PARAM_TYPE => 'integer',
 				],
 				'dir' => [
-					ApiBase::PARAM_TYPE => [
+					ParamValidator::PARAM_TYPE => [
 						'newestfirst',
 						'oldestfirst',
 						'oldestreview',
