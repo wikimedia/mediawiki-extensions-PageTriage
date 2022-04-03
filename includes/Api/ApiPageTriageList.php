@@ -11,6 +11,7 @@ use MediaWiki\Logger\LoggerFactory;
 use ORES\Services\ORESServices;
 use SpecialPage;
 use Title;
+use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 
 /**
  * API module to generate a list of pages to triage
@@ -527,9 +528,9 @@ class ApiPageTriageList extends ApiBase {
 					ApiBase::PARAM_TYPE => 'integer',
 				],
 				'limit' => [
-					ApiBase::PARAM_MAX => 200,
+					IntegerDef::PARAM_MAX => 200,
 					ApiBase::PARAM_DFLT => 20,
-					ApiBase::PARAM_MIN => 1,
+					IntegerDef::PARAM_MIN => 1,
 					ApiBase::PARAM_TYPE => 'integer',
 				],
 				'offset' => [
