@@ -15,7 +15,7 @@
 			"Reza1615"
 		]
 	},
-	"pagetriage": "تریاژ صفحات",
+	"pagetriage": "تریاژ صفحه‌ها",
 	"newpagesfeed": "خوراک صفحه‌های تازه",
 	"pagetriage-desc": "بررسی و تأیید صفحه‌های تازه را تسهیل می‌کند",
 	"pagetriage-pagecuration": "بهسازی صفحه",
@@ -215,7 +215,7 @@
 	"pagetriage-tags-param-free-no-label": "خیر",
 	"pagetriage-tags-param-missing-required": "برچسب $1 پارامتر مورد نیاز را نمایش می‌دهد.",
 	"pagetriage-tags-talk-page-notify-topic-title": "روش‌های بهبود $1",
-	"log-name-pagetriage-curation": "سیاههٔ بهسازی صفحات",
+	"log-name-pagetriage-curation": "سیاههٔ بهسازی صفحه‌ها",
 	"log-description-pagetriage-curation": "این صفحه حاولی سیاهه‌ای از اقداماتی است که با استفاده از ابزار بهسازی صفحات انجام شده‌اند.",
 	"log-name-pagetriage-deletion": "سیاههٔ برچسب حذف",
 	"log-description-pagetriage-deletion": "این صفحه حاوی سیاهه‌ای از اقداماتی است که با استفاده از برنامۀ جادویی حذف در ابزار بهسازی صفحات انجام شده‌اند.",
