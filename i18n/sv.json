@@ -6,6 +6,7 @@
 			"Jopparn",
 			"Lokal Profil",
 			"Rotsee",
+			"Sabelöga",
 			"Technic2",
 			"Umeaboy",
 			"WikiPhoenix"
@@ -254,6 +255,10 @@
 	"logentry-pagetriage-curation-tag": "$1 {{GENDER:$2|taggade}} $3 med {{PLURAL:$5|taggen|taggarna}} $4",
 	"logentry-pagetriage-curation-delete": "$1 {{GENDER:$2|markerade}} $3 för radering med {{PLURAL:$5|taggen|taggarna}} $4",
 	"logentry-pagetriage-deletion-delete": "$1 {{GENDER:$2|markerade}} $3 för radering med {{PLURAL:$5|taggen|taggarna}} $4",
+	"log-action-filter-pagetriage-curation-review": "Granskar",
+	"log-action-filter-pagetriage-curation-unreview": "Avbryter granskning",
+	"log-action-filter-pagetriage-curation-enqueue": "Lägger i kö",
+	"log-action-filter-pagetriage-curation-tag": "Taggar",
 	"pagetriage-tags-edit-summary": "Lade till taggar till sidan med hjälp av $1 ($2)",
 	"pagetriage-del-edit-summary": "Nominerade sidan för radering med hjälp av $1 ($2)",
 	"pagetriage-del-tags-param-discussion-label": "Förklara varför denna artikel bör raderas och ge länkar till de relevanta riktlinjerna när så är möjligt",
