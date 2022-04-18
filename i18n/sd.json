@@ -6,6 +6,7 @@
 		]
 	},
 	"pagetriage-new-page-patrol": "نئين صفحي جو گشت",
+	"pagetriage-bytes": "$1 {{PLURAL:$1|بائيٽ|بائيٽون}}",
 	"pagetriage-edits": "$1 {{PLURAL:$1|سنوار|سنوارون}}",
 	"pagetriage-author-bot": "بوٽ",
 	"pagetriage-filter-predicted-issues-none": "ڪوبہ نہ",
