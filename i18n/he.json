@@ -14,7 +14,9 @@
 			"YaronSh",
 			"המקיסט",
 			"חיים",
-			"ערן"
+			"ערן",
+			"Ex-Diktator",
+			"N100a"
 		]
 	},
 	"pagetriage": "מיון דפים חדשים",
@@ -39,6 +41,7 @@
 	"pagetriage-no-categories": "אין קטגוריות",
 	"pagetriage-no-reference": "אין ציטוטים",
 	"pagetriage-orphan": "יתום",
+	"pagetriage-recreated": "נמחק בעבר",
 	"pagetriage-no-author": "אין מידע על מחבר",
 	"pagetriage-byline": "נוצר על־ידי $1 ($2$3$4)",
 	"pagetriage-byline-new-editor": "נוצר על־ידי עורך חדש $1 ($2$3$4)",
@@ -95,6 +98,7 @@
 	"pagetriage-filter-stat-nominated-for-deletion": "מועמדים למחיקה",
 	"pagetriage-filter-stat-no-categories": "אין קטגוריות",
 	"pagetriage-filter-stat-orphan": "יתומים",
+	"pagetriage-filter-stat-recreated": "נמחק בעבר",
 	"pagetriage-filter-stat-non-autoconfirmed": "על ידי עורכים חדשים",
 	"pagetriage-filter-stat-blocked": "לפי משתמשים חסומים",
 	"pagetriage-filter-stat-username": "לפי שם משתמש: $1",
@@ -214,6 +218,7 @@
 	"pagetriage-info-problem-no-categories-desc": "הדף הזה אינו משויך לקטגוריות כלשהן.",
 	"pagetriage-info-problem-orphan": "יתום",
 	"pagetriage-info-problem-orphan-desc": "אין דפים המקשרים לדף זה.",
+	"pagetriage-info-problem-recreated": "נמחק בעבר",
 	"pagetriage-info-problem-recreated-desc": "הדף הזה נמחק בעבר.",
 	"pagetriage-info-problem-no-references": "אין הערות שוליים",
 	"pagetriage-info-problem-no-references-desc": "הדף הזה לא מצטט מקורות כלשהם.",
@@ -251,6 +256,7 @@
 	"pagetriage-afc-state-pending": "ממתין לסקירה",
 	"pagetriage-afc-state-reviewing": "בסקירה",
 	"pagetriage-afc-state-unsubmitted": "לא נשלח",
+	"pagetriage-afc-date-label-submission": "נשלח:",
 	"echo-pref-subscription-page-review": "סוקר דף שיצרתי",
 	"echo-pref-tooltip-page-review": "להודיע לי כשמישהו סוקר דף שיצרתי.",
 	"echo-category-title-page-review": "{{PLURAL:$1|סקירת|סקירות}} דף",
