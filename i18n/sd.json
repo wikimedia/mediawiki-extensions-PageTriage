@@ -11,7 +11,7 @@
 	"pagetriage-author-bot": "بوٽ",
 	"pagetriage-filter-predicted-issues-none": "ڪوبہ نہ",
 	"pagetriage-triage": "نظرثاني",
-	"pagetriage-filter-username": "واپرائيندڙ-نانءُ",
+	"pagetriage-filter-username": "واپرائيندڙنانءُ",
 	"pagetriage-filter-ns-all": "سڀ",
 	"pagetriage-filter-pending-ores-score": "ميسر ناهي",
 	"pagetriage-filter-stat-all": "سڀ",
@@ -20,5 +20,6 @@
 	"pagetriage-filter-stat-namespace": "نانءُپولار",
 	"pagetriage-filter-stat-predicted-issues-none": "ڪوبہ نہ",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|سنوار|سنوارون}}",
-	"pagetriage-toolbar-close": "بند ڪريو"
+	"pagetriage-toolbar-close": "بند ڪريو",
+	"tag-pagetriage-description": "[[mw:Special:MyLanguage/Extension:PageTriage|پيج.ٽرائيج وڌاء]] سان ڪيل سنوارن لاءِ"
 }
