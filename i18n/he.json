@@ -263,5 +263,20 @@
 	"apihelp-pagetriagelist-param-afc_state": "איזה מצב של ערכים ליצירה להציג.",
 	"apihelp-pagetriagelist-param-dir": "באיזה כיוון הרשימה תמוין: מהישן ביותר, מהחדש ביותר, מהסקירה הישנה ביותר או מהסקירה החדשה ביותר.",
 	"apihelp-pagetriagestats-param-afc_state": "עבור איזה מצב של ערכים ליצירה לקבל סטטיסטיקות.",
-	"apihelp-pagetriagetagging-summary": "הוסף תגיות למאמרים"
+	"apihelp-pagetriagetagcopyvio-description": "לתייג גרסה שסביר שהיא הפרת זכויות יוצרים בדף Special:NewPagesFeed. זה דורש את ההרשאה pagetriage-copyvio",
+	"apihelp-pagetriagetagcopyvio-summary": "לתייג גרסה בתור לתייג גרסה בתור שגרסה שסביר שהיא הפרת זכויות יוצרים.",
+	"apihelp-pagetriagetagcopyvio-param-revid": "מזהה גרסה לתיוג בתור גרסה שהיא הפרת זכויות יוצרים",
+	"apihelp-pagetriagetagging-description": "הוספית תגים לערך.",
+	"apihelp-pagetriagetagging-summary": "הוסף תגים לערך.",
+	"apihelp-pagetriagetagging-param-pageid": "איזה ערך לתייג.",
+	"apihelp-pagetriagetagging-param-top": "טקסט התיוג שצריך להוסיף בראש הערך.",
+	"apihelp-pagetriagetagging-param-bottom": "טקסט התיוג שצריך להוסיף לתחתית הערך.",
+	"apihelp-pagetriagetagging-param-deletion": "האם התיוג הוא בעבור העמדה למחיקה.",
+	"apihelp-pagetriagetagging-param-note": "הערה אישית מהסוקרים.",
+	"apihelp-pagetriagetagging-param-taglist": "רשימת תגים מופרדת בקווים אנכיים.",
+	"apierror-bad-pagetriage-page": "הדף שצוין אינו קיים בתור pagetriage",
+	"apierror-bad-pagetriage-enqueue-mainpage": "לא ניתן להוסיף את הדף הראשי לתור pagetriage",
+	"apierror-bad-pagetriage-enqueue-invalidnamespace": "הדף שצוין נמצא במרחב שם ש־page triage אינו מופעל בו",
+	"apierror-bad-pagetriage-enqueue-alreadyqueued": "הדף שצוין כבר קיים בתור pagetriage",
+	"apierror-pagetriage-missingtag": "לא היה אפשר למצוא מזהה תג לתג הפרת זכויות יוצרים. נא לנסות להריץ את update.php."
 }
