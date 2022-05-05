@@ -17,8 +17,12 @@ abstract class PageTriagePresentationModel extends EchoEventPresentationModel {
 	 * @inheritDoc
 	 */
 	public function getPrimaryLink() {
+		$title = $this->event->getTitle();
+		$url = $title->getFullUrl(
+			$title->isRedirect() ? [ 'redirect' => 'no' ] : ""
+		);
 		return [
-			'url' => $this->event->getTitle()->getFullURL(),
+			'url' => $url,
 			'label' => $this->msg( 'notification-link-text-view-page' )->text(),
 		];
 	}
