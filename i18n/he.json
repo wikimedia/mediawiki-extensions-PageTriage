@@ -267,7 +267,7 @@
 	"apihelp-pagetriagetagcopyvio-summary": "לתייג גרסה בתור לתייג גרסה בתור שגרסה שסביר שהיא הפרת זכויות יוצרים.",
 	"apihelp-pagetriagetagcopyvio-param-revid": "מזהה גרסה לתיוג בתור גרסה שהיא הפרת זכויות יוצרים",
 	"apihelp-pagetriagetagging-description": "הוספית תגים לערך.",
-	"apihelp-pagetriagetagging-summary": "הוסף תגים לערך.",
+	"apihelp-pagetriagetagging-summary": "הוספת תגים לערך.",
 	"apihelp-pagetriagetagging-param-pageid": "איזה ערך לתייג.",
 	"apihelp-pagetriagetagging-param-top": "טקסט התיוג שצריך להוסיף בראש הערך.",
 	"apihelp-pagetriagetagging-param-bottom": "טקסט התיוג שצריך להוסיף לתחתית הערך.",
