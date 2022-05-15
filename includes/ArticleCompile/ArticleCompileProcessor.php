@@ -217,7 +217,7 @@ class ArticleCompileProcessor {
 				LoggerFactory::getInstance( 'PageTriage' )->debug(
 					'Article metadata not found in DB, will attempt to save to DB via the job queue.',
 					[
-						'trace' => ( new \RuntimeException() )->getTraceAsString(),
+						'exception' => new \RuntimeException(),
 						'articles_without_metadata' => implode( ',', $this->pageIds ),
 						'raw_query_string' => RequestContext::getMain()->getRequest()
 							->getRawQueryString(),
