@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Pacha Tchernof",
 			"פוילישער",
 			"පසිඳු කාවින්ද"
 		]
@@ -40,7 +41,7 @@
 	"pagetriage-tags-param-missing-required": "טאַג $1 פעלט א נייטיגן פאראמעטער.",
 	"pagetriage-info-title": "בלאט אינפארמאציע",
 	"pagetriage-info-problem-header": "מעגלעכע פראבלעמען",
-	"pagetriage-info-history-header": "היסטאריע",
+	"pagetriage-info-history-header": "היסטאָריע",
 	"pagetriage-info-history-show-full": "ווייזן די גאנצע היסטאריע",
 	"pagetriage-info-help": "הילף"
 }
