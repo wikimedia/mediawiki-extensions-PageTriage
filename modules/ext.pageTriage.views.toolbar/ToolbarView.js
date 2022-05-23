@@ -26,8 +26,6 @@ mw.pageTriage.contentLanguageMessages.set( require( './contentLanguageMessages.j
 // currently, this is the main application view.
 ToolbarView = Backbone.View.extend( {
 	template: mw.template.get( 'ext.pageTriage.views.toolbar', 'ToolbarView.underscore' ),
-	// token for setting user options
-	optionsToken: '',
 
 	initialize: function () {
 		var MinimizeView, ArticleInfoView, WikiLoveView, MarkView, TagsView, DeleteView, NextView,

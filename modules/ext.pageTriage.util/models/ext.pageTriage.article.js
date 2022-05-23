@@ -282,7 +282,6 @@ $( function () {
 	mw.pageTriage.ArticleList = Backbone.Collection.extend( {
 		moreToLoad: true,
 		model: mw.pageTriage.Article,
-		optionsToken: '',
 
 		/** Current queue mode: 'npp' or 'afc'. */
 		mode: 'npp',
