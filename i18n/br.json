@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Fohanno",
-			"Fulup"
+			"Fulup",
+			"Huñvreüs"
 		]
 	},
 	"pagetriage-please-wait": "Gortozit mar plij...",
@@ -41,7 +42,7 @@
 	"pagetriage-filter-stat-no-categories": "Rummad ebet",
 	"pagetriage-filter-stat-orphan": "emzivaded",
 	"pagetriage-filter-stat-blocked": "implijerien stanket",
-	"pagetriage-filter-stat-username": "Anv implijer : $1",
+	"pagetriage-filter-stat-username": "Gant implijer: $1",
 	"pagetriage-note-reviewed": "Adwelet eo bet ar bajenn-mañ.",
 	"pagetriage-note-not-reviewed": "N'eo ket bet adwelet ar bajenn-mañ c'hoazh.",
 	"pagetriage-refresh-list": "Freskaat ar roll",
