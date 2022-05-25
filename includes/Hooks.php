@@ -609,11 +609,11 @@ class Hooks {
 				'external/jquery.badge.css', // Merged into this RL module, see T221269
 				'ext.pageTriage.css', // stuff that's shared across all views
 				'ext.pageTriage.views.toolbar/ToolbarView.css',
-				'ext.pageTriage.views.toolbar/ToolView.css',
+				'ext.pageTriage.views.toolbar/ToolView.less',
 				'ext.pageTriage.views.toolbar/articleInfo.css',
 				'ext.pageTriage.views.toolbar/mark.css',
-				'ext.pageTriage.views.toolbar/tags.css',
-				'ext.pageTriage.views.toolbar/delete.css'
+				'ext.pageTriage.views.toolbar/tags.less',
+				'ext.pageTriage.views.toolbar/delete.less'
 			],
 			'templates' => [
 				'articleInfo.underscore' =>
