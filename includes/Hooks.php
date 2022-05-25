@@ -16,13 +16,14 @@ use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddMaintenanceTagPres
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageMarkAsReviewedPresentationModel;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\ResourceLoader as RL;
+use MediaWiki\ResourceLoader\ResourceLoader;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\User\UserIdentity;
 use MWTimestamp;
 use ParserOutput;
 use RecentChange;
-use ResourceLoader;
 use Title;
 use User;
 use Wikimedia\Rdbms\Database;
@@ -550,7 +551,7 @@ class Hooks {
 				'ext.pageTriage.views.toolbar/delete.js', // mark for deletion
 				[
 					'name' => 'ext.pageTriage.views.toolbar/contentLanguageMessages.json',
-					'callback' => static function ( \ResourceLoaderContext $context, \Config $config ) {
+					'callback' => static function ( RL\Context $context, \Config $config ) {
 						$keys = array_merge(
 							[
 								'pagetriage-mark-mark-talk-page-notify-topic-title',
@@ -572,7 +573,7 @@ class Hooks {
 				],
 				[
 					'name' => 'ext.pageTriage.views.toolbar/config.json',
-					'callback' => static function ( \ResourceLoaderContext $context, \Config $config ) {
+					'callback' => static function ( RL\Context $context, \Config $config ) {
 						$pageTriageCurationModules = $config->get( 'PageTriageCurationModules' );
 						if ( ExtensionRegistry::getInstance()->isLoaded( 'WikiLove' ) ) {
 							$pageTriageCurationModules['wikiLove'] = [

@@ -2,19 +2,18 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
-use ResourceLoaderContext;
-use ResourceLoaderWikiModule;
+use MediaWiki\ResourceLoader as RL;
 
 /**
  * Custom ResourceLoader module that loads a custom PageTriageTagsOptions.js per-wiki.
  */
-class PageTriageExternalTagsOptions extends ResourceLoaderWikiModule {
+class PageTriageExternalTagsOptions extends RL\WikiModule {
 
 	/**
-	 * @param ResourceLoaderContext $context
+	 * @param RL\Context $context
 	 * @return array
 	 */
-	protected function getPages( ResourceLoaderContext $context ) {
+	protected function getPages( RL\Context $context ) {
 		return [
 			'MediaWiki:PageTriageExternalTagsOptions.js' => [ 'type' => 'script' ],
 			'MediaWiki:PageTriageExternalDeletionTagsOptions.js' => [ 'type' => 'script' ],
@@ -22,10 +21,10 @@ class PageTriageExternalTagsOptions extends ResourceLoaderWikiModule {
 	}
 
 	/**
-	 * @param ResourceLoaderContext|null $context
+	 * @param RL\Context|null $context
 	 * @return array
 	 */
-	public function getDependencies( ResourceLoaderContext $context = null ) {
+	public function getDependencies( RL\Context $context = null ) {
 		return [
 			'ext.pageTriage.defaultTagsOptions',
 			'ext.pageTriage.defaultDeletionTagsOptions',
