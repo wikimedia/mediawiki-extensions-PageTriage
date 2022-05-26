@@ -23,13 +23,11 @@ $( function () {
 		},
 
 		formatDaysFromNow: function ( dateStr ) {
-			var now, begin, diff;
-
 			if ( !dateStr ) {
 				return '';
 			}
 
-			now = new Date();
+			var now = new Date();
 			now = new Date(
 				now.getUTCFullYear(),
 				now.getUTCMonth(),
@@ -39,9 +37,9 @@ $( function () {
 				now.getUTCSeconds()
 			);
 
-			begin = moment.utc( dateStr, 'YYYYMMDDHHmmss' );
+			var begin = moment.utc( dateStr, 'YYYYMMDDHHmmss' );
 
-			diff = Math.round( ( now.getTime() - begin.valueOf() ) / ( 1000 * 60 * 60 * 24 ) );
+			var diff = Math.round( ( now.getTime() - begin.valueOf() ) / ( 1000 * 60 * 60 * 24 ) );
 			if ( diff ) {
 				return mw.msg( 'days', diff );
 			} else {

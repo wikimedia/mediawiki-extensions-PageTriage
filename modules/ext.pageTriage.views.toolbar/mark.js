@@ -97,8 +97,6 @@ module.exports = ToolView.extend( {
 			topicMessage,
 			that = this,
 			pageTitle = mw.config.get( 'wgPageName' ).replace( /_/g, ' ' ),
-			sendNote1,
-			sendNote2,
 			sendNotePromise,
 			sendNoteToArticleTalkPage = false;
 
@@ -142,7 +140,7 @@ module.exports = ToolView.extend( {
 			sendNoteToArticleTalkPage = noteRecipient === 'creator';
 		}
 
-		sendNote1 = that.sendNote( talkPageTitle, topicTitle, topicMessage );
+		var sendNote1 = that.sendNote( talkPageTitle, topicTitle, topicMessage );
 
 		// If the note needs to be posted to article talk page as well then we handle
 		// both post note promises resolve/reject states through a single promise
@@ -155,7 +153,7 @@ module.exports = ToolView.extend( {
 				'pagetriage-feedback-from-new-page-review-process-message',
 				note
 			).text();
-			sendNote2 = that.sendNote( talkPageTitle, topicTitle, topicMessage );
+			var sendNote2 = that.sendNote( talkPageTitle, topicTitle, topicMessage );
 			sendNotePromise = $.when( sendNote1, sendNote2 );
 		} else { // Do not post note to article talk page
 			sendNotePromise = sendNote1;

@@ -75,20 +75,19 @@ module.exports = ToolView.extend( {
 	},
 
 	setBadge: function () {
-		var feedbackCount, $talkpageFeedbackBadge, badgeTooltip;
 		// Call parent view to set the problem-count badge (top right).
 		ToolView.prototype.setBadge.call( this );
 		// Add a second badge (bottom right) if there is talk page feedback for this article.
-		feedbackCount = this.model.get( 'talkpage_feedback_count' );
+		var feedbackCount = this.model.get( 'talkpage_feedback_count' );
 		if ( feedbackCount > 0 ) {
-			$talkpageFeedbackBadge = this.$el.find( '.mwe-pt-talkpage-feedback-badge' );
+			var $talkpageFeedbackBadge = this.$el.find( '.mwe-pt-talkpage-feedback-badge' );
 			if ( $talkpageFeedbackBadge.length === 0 ) {
 				$talkpageFeedbackBadge = $( '<span>' ).addClass( 'mwe-pt-talkpage-feedback-badge' );
 				this.$el.find( '.mwe-pt-tool-icon-container' ).append( $talkpageFeedbackBadge );
 			}
 			$talkpageFeedbackBadge.badge( feedbackCount, 'bottom', true );
 			// Use the same message (without link) as is used on the flyout, for the badge's tooltip.
-			badgeTooltip = mw.msg( 'pagetriage-has-talkpage-feedback', feedbackCount, mw.msg( 'pagetriage-has-talkpage-feedback-link' ) );
+			var badgeTooltip = mw.msg( 'pagetriage-has-talkpage-feedback', feedbackCount, mw.msg( 'pagetriage-has-talkpage-feedback-link' ) );
 			// Add OOUI classes to the badge element that was added in .badge(), in order to get the envelope icon.
 			$talkpageFeedbackBadge.find( '.notification-badge' )
 				.addClass( 'oo-ui-iconElement oo-ui-icon-message oo-ui-image-invert' )
@@ -97,13 +96,9 @@ module.exports = ToolView.extend( {
 	},
 
 	render: function () {
-		var bylineMessage, articleByline, stats, history,
-			url = new mw.Uri( mw.util.getUrl( mw.config.get( 'wgPageName' ) ) ),
-			offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] ),
-			that = this;
-
 		this.enumerateProblems();
 		// set the history link
+		var url = new mw.Uri( mw.util.getUrl( mw.config.get( 'wgPageName' ) ) );
 		url.query.action = 'history';
 		this.model.set(
 			'history_link',
@@ -113,14 +108,16 @@ module.exports = ToolView.extend( {
 		// creator information
 		if ( this.model.get( 'user_name' ) ) {
 			// show new editor message only if the user is not anonymous and not autoconfirmed
+			var bylineMessage;
 			if ( this.model.get( 'user_id' ) > '0' && this.model.get( 'user_autoconfirmed' ) === '0' ) {
 				bylineMessage = 'pagetriage-articleinfo-byline-new-editor';
 			} else {
 				bylineMessage = 'pagetriage-articleinfo-byline';
 			}
 
+			var offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
 			// put it all together in the byline
-			articleByline = mw.message(
+			var articleByline = mw.message(
 				bylineMessage,
 				moment.utc(
 					this.model.get( 'creation_date_utc' ),
@@ -148,7 +145,7 @@ module.exports = ToolView.extend( {
 			this.model.set( 'articleByline_html', articleByline );
 		}
 
-		stats = [
+		var stats = [
 			mw.msg( 'pagetriage-bytes', this.model.get( 'page_len' ) ),
 			mw.msg( 'pagetriage-edits', this.model.get( 'rev_count' ) ),
 			mw.msg( 'pagetriage-categories', this.model.get( 'category_count' ) )
@@ -156,7 +153,7 @@ module.exports = ToolView.extend( {
 		this.model.set( 'articleStat', mw.msg( 'pagetriage-articleinfo-stat', stats.join( mw.msg( 'pagetriage-dot-separator' ) ) ) );
 
 		this.$tel.html( this.template( this.model.toJSON() ) );
-		history = new ArticleInfoHistoryView( { eventBus: this.eventBus, model: this.model.revisions } );
+		var history = new ArticleInfoHistoryView( { eventBus: this.eventBus, model: this.model.revisions } );
 		this.$tel.find( '#mwe-pt-info-history-container' ).append( history.render().$el );
 
 		// set the Learn More link URL
@@ -164,6 +161,7 @@ module.exports = ToolView.extend( {
 
 		// bind down here so it doesn't happen before the first render
 		// Only bind this once
+		var that = this;
 		if ( !this.renderWasBound ) {
 			this.model.bind( 'change:patrol_status', function () {
 				that.render();

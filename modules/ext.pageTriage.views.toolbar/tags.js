@@ -31,15 +31,14 @@ module.exports = ToolView.extend( {
 	 * Construct the 'All' category on the fly
 	 */
 	buildAllCategory: function () {
-		var cat, key, tag, tagKey, len, i,
-			list = [];
+		var list = [];
 		// first, loop through all tags and store them in the array list
-		for ( cat in this.tagsOptions ) {
+		for ( var cat in this.tagsOptions ) {
 			if ( this.tagsOptions[ cat ].alias ) {
 				continue;
 			}
-			for ( key in this.tagsOptions[ cat ].tags ) {
-				tag = $.extend( true, {}, this.tagsOptions[ cat ].tags[ key ] );
+			for ( var key in this.tagsOptions[ cat ].tags ) {
+				var tag = $.extend( true, {}, this.tagsOptions[ cat ].tags[ key ] );
 				tag.dest = cat;
 				list.push( tag );
 			}
@@ -60,9 +59,9 @@ module.exports = ToolView.extend( {
 			alias: true,
 			tags: {}
 		};
-		len = list.length;
-		for ( i = 0; i < len; i++ ) {
-			tagKey = list[ i ].tag.replace( /-/g, '' ).replace( / /g, '' ).toLowerCase();
+		var len = list.length;
+		for ( var i = 0; i < len; i++ ) {
+			var tagKey = list[ i ].tag.replace( /-/g, '' ).replace( / /g, '' ).toLowerCase();
 			this.tagsOptions.all.tags[ tagKey ] = list[ i ];
 		}
 	},
@@ -71,9 +70,8 @@ module.exports = ToolView.extend( {
 	 * Reset selected tag data
 	 */
 	reset: function () {
-		var cat;
 		this.selectedTagCount = 0;
-		for ( cat in this.tagsOptions ) {
+		for ( var cat in this.tagsOptions ) {
 			this.selectedTag[ cat ] = {};
 		}
 	},
@@ -147,14 +145,10 @@ module.exports = ToolView.extend( {
 	 * @param {string} cat
 	 */
 	displayTags: function ( cat ) {
-		var $tagList, key, checked, checkbox,
-			that = this,
-			tagSet = this.tagsOptions[ cat ].tags,
-			tagRow = '';
 
 		$( '#mwe-pt-tags' ).empty();
 
-		$tagList = $( '<div>' ).attr( 'id', 'mwe-pt-tag-list' );
+		var $tagList = $( '<div>' ).attr( 'id', 'mwe-pt-tag-list' );
 
 		// highlight the active category
 		$( '.mwe-pt-category' ).removeClass( 'mwe-pt-active' );
@@ -164,9 +158,11 @@ module.exports = ToolView.extend( {
 
 		$( '#mwe-pt-tags' ).append( $tagList );
 
-		for ( key in tagSet ) {
+		var that = this,
+			tagSet = this.tagsOptions[ cat ].tags;
+		for ( var key in tagSet ) {
 
-			checked = false;
+			var checked = false;
 
 			// If the tag has been selected, show it as checked
 			if ( this.selectedTag[ cat ][ key ] ) {
@@ -174,7 +170,7 @@ module.exports = ToolView.extend( {
 			}
 
 			// build the checkbox
-			checkbox = mw.html.element(
+			var checkbox = mw.html.element(
 				'input',
 				{
 					type: 'checkbox',
@@ -184,7 +180,7 @@ module.exports = ToolView.extend( {
 					checked: checked
 				}
 			);
-			tagRow = '<div class="mwe-pt-tag-row" id="mwe-pt-tag-row-' + key + '"><table><tr>';
+			var tagRow = '<div class="mwe-pt-tag-row" id="mwe-pt-tag-row-' + key + '"><table><tr>';
 			tagRow += '<td class="mwe-pt-tag-checkbox-cell">' + checkbox + '</td>';
 			tagRow += '<td><div id="mwe-pt-tag-' + key + '" class="mwe-pt-tag-label">' +
 				mw.html.escape( tagSet[ key ].label ) + '</div>';
@@ -304,19 +300,17 @@ module.exports = ToolView.extend( {
 	 * @param {string} cat
 	 */
 	showParamsLink: function ( key, cat ) {
-		var param, link,
-			allParamsHidden = true,
-			text = 'add',
-			tag = this.selectedTag[ cat ][ key ],
-			that = this;
 
+		var tag = this.selectedTag[ cat ][ key ];
 		// no params, don't show the link
 		if ( $.isEmptyObject( tag.params ) ) {
 			return;
 		}
 
+		var allParamsHidden = true,
+			text = 'add';
 		// check if there is non-hidden param
-		for ( param in tag.params ) {
+		for ( var param in tag.params ) {
 			if ( tag.params[ param ].type !== 'hidden' ) {
 				allParamsHidden = false;
 				// see if any of the parameters have been filled out
@@ -333,13 +327,14 @@ module.exports = ToolView.extend( {
 		// Construct the link that activates the params form
 		// Give grep a chance to find the usages:
 		// pagetriage-button-add-details, pagetriage-button-edit-details
-		link = mw.html.element(
+		var link = mw.html.element(
 			'a',
 			{ href: '#', id: 'mwe-pt-tag-params-' + key },
 			mw.msg( 'pagetriage-button-' + text + '-details' )
 		);
 		$( '#mwe-pt-tag-params-link-' + key ).html( '+&#160;' + link );
 
+		var that = this;
 		// Add click event to the link that shows the param form
 		$( '#mwe-pt-tag-params-' + key ).on( 'click', function () {
 			that.showParamsForm( key, cat );
@@ -363,20 +358,17 @@ module.exports = ToolView.extend( {
 	 * @param {string} cat
 	 */
 	showParamsForm: function ( key, cat ) {
-		var param, paramObj,
-			that = this,
-			html = '',
-			buttons = '',
+		var html = '',
 			tag = this.selectedTag[ cat ][ key ];
 
 		this.hideParamsLink( key );
 
-		for ( param in tag.params ) {
-			paramObj = tag.params[ param ];
+		for ( var param in tag.params ) {
+			var paramObj = tag.params[ param ];
 			html += this.buildHTML( param, paramObj, key );
 		}
 
-		buttons += mw.html.element(
+		var buttons = mw.html.element(
 			'button',
 			{ id: 'mwe-pt-tag-set-param-' + key, class: 'mwe-pt-tag-set-param-button ui-button-green' },
 			mw.msg( 'pagetriage-button-add-details' )
@@ -394,6 +386,7 @@ module.exports = ToolView.extend( {
 		$( '#mwe-pt-tag-params-form-' + key ).html( html );
 		$( '#mwe-pt-tag-params-form-' + key ).show();
 
+		var that = this;
 		// Add click even for the Set Parameters button
 		$( '#mwe-pt-tag-set-param-' + key ).button().on( 'click', function () {
 			if ( that.setParams( key, cat ) ) {
@@ -408,7 +401,7 @@ module.exports = ToolView.extend( {
 
 		// Add click even for the Cancel button
 		$( '#mwe-pt-tag-cancel-param-' + key ).button().on( 'click', function () {
-			var destCat, param;
+			var destCat;
 
 			// Hide the form and show the link to reopen it
 			that.hideParamsForm( key );
@@ -416,7 +409,7 @@ module.exports = ToolView.extend( {
 
 			// If there were any unset required params, uncheck the tag
 			// and hide the form link (basically, reset it)
-			for ( param in tag.params ) {
+			for ( var param in tag.params ) {
 				if ( tag.params[ param ].input === 'required' && !tag.params[ param ].value ) {
 					if ( tag.dest ) {
 						destCat = tag.dest;
@@ -450,9 +443,8 @@ module.exports = ToolView.extend( {
 	 * @return {boolean}
 	 */
 	setParams: function ( key, cat ) {
-		var param,
-			tag = this.selectedTag[ cat ][ key ];
-		for ( param in tag.params ) {
+		var tag = this.selectedTag[ cat ][ key ];
+		for ( var param in tag.params ) {
 			if ( tag.params[ param ].type === 'checkbox' ) {
 				// See if it's checked or not
 				if ( $( '#mwe-pt-tag-params-' + key + '-' + param ).is( ':checked' ) ) {
@@ -482,9 +474,8 @@ module.exports = ToolView.extend( {
 	 * @return {string}
 	 */
 	buildParams: function ( tagObj ) {
-		var param,
-			paramVal = '';
-		for ( param in tagObj.params ) {
+		var paramVal = '';
+		for ( var param in tagObj.params ) {
 			if ( tagObj.params[ param ].value ) {
 				paramVal += '|' + param + '=' + tagObj.params[ param ].value;
 			}
@@ -496,17 +487,6 @@ module.exports = ToolView.extend( {
 	 * Submit the selected tags
 	 */
 	submit: function () {
-		var cat, tagKey, tagObj, param,
-			topText = '',
-			bottomText = '',
-			processed = {},
-			that = this,
-			multipleTags = {},
-			tagList = [],
-			openText = '',
-			closeText = '',
-			multipleTagsText = '';
-
 		if ( this.model.get( 'page_len' ) < 1000 && this.selectedTagCount > 4 ) {
 			// eslint-disable-next-line no-alert
 			if ( !confirm( mw.msg( 'pagetriage-add-tag-confirmation', this.selectedTagCount ) ) ) {
@@ -516,15 +496,25 @@ module.exports = ToolView.extend( {
 			}
 		}
 
-		for ( cat in this.selectedTag ) {
+		var tagKey,
+			topText = '',
+			bottomText = '',
+			processed = {},
+			that = this,
+			multipleTags = {},
+			tagList = [],
+			openText = '',
+			closeText = '',
+			multipleTagsText = '';
+		for ( var cat in this.selectedTag ) {
 			for ( tagKey in this.selectedTag[ cat ] ) {
 				if ( processed[ tagKey ] ) {
 					continue;
 				}
-				tagObj = this.selectedTag[ cat ][ tagKey ];
+				var tagObj = this.selectedTag[ cat ][ tagKey ];
 
 				// Final check on required params
-				for ( param in tagObj.params ) {
+				for ( var param in tagObj.params ) {
 					if ( tagObj.params[ param ].input === 'required' && !tagObj.params[ param ].value ) {
 						that.handleError( mw.msg( 'pagetriage-tags-param-missing-required', tagObj.tag ) );
 						return;
@@ -654,15 +644,12 @@ module.exports = ToolView.extend( {
 	},
 
 	talkPageNote: function ( note ) {
-		var topicTitle, messagePosterPromise,
-			that = this,
-			pageName = mw.config.get( 'wgPageName' ).replace( /_/g, ' ' );
-
-		messagePosterPromise = mw.messagePoster.factory.create(
+		var messagePosterPromise = mw.messagePoster.factory.create(
 			new mw.Title( this.model.get( 'creator_user_talk_page' ) )
 		);
 
-		topicTitle = mw.pageTriage.contentLanguageMessage(
+		var pageName = mw.config.get( 'wgPageName' ).replace( /_/g, ' ' );
+		var topicTitle = mw.pageTriage.contentLanguageMessage(
 			'pagetriage-tags-talk-page-notify-topic-title',
 			pageName
 		).text();
@@ -672,6 +659,7 @@ module.exports = ToolView.extend( {
 			'|2=' + mw.config.get( 'wgUserName' ) +
 			'|3=' + note + '}}';
 
+		var that = this;
 		messagePosterPromise.then( function ( messagePoster ) {
 			return messagePoster.post( topicTitle, note, { tags: 'pagetriage' } );
 		} ).then( function () {
@@ -690,8 +678,7 @@ module.exports = ToolView.extend( {
 	 * @return {string}
 	 */
 	buildHTML: function ( name, obj, key ) {
-		var i,
-			html = '';
+		var html = '';
 
 		switch ( obj.type ) {
 			case 'hidden':
@@ -729,7 +716,7 @@ module.exports = ToolView.extend( {
 				break;
 			case 'select':
 				html += mw.html.escape( obj.label ) + ' ';
-				for ( i in obj.option ) {
+				for ( var i in obj.option ) {
 					html += mw.html.element(
 						'input',
 						{

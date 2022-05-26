@@ -268,15 +268,14 @@ $( function () {
 
 		// To be able to submit the form, at least one 'state' and one 'type' have to be checked
 		setSubmitButtonState: function () {
-			var anyState, anyType;
 			if ( this.model.getMode() !== 'npp' ) {
 				return;
 			}
 
-			anyState = $( '#mwe-pt-filter-reviewed-edits' ).prop( 'checked' ) ||
+			var anyState = $( '#mwe-pt-filter-reviewed-edits' ).prop( 'checked' ) ||
 				$( '#mwe-pt-filter-unreviewed-edits' ).prop( 'checked' );
 
-			anyType = $( '#mwe-pt-filter-nominated-for-deletion' ).prop( 'checked' ) ||
+			var anyType = $( '#mwe-pt-filter-nominated-for-deletion' ).prop( 'checked' ) ||
 				$( '#mwe-pt-filter-redirects' ).prop( 'checked' ) ||
 				$( '#mwe-pt-filter-others' ).prop( 'checked' );
 
@@ -454,12 +453,12 @@ $( function () {
 		 * @return {Object}
 		 */
 		getApiParamsDateRange: function ( context ) {
-			var apiParams = {}, fromDate, toDate;
+			var apiParams = {};
 			var offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
 			if ( $( '#mwe-pt-filter-' + context + '-date-range-from' ).val() ) {
 				// Interpret the entered date as UTC initially, then subtract the offset so that it
 				// gets correctly treated as user time zone.
-				fromDate = moment.utc( $( '#mwe-pt-filter-' + context + '-date-range-from' ).val() )
+				var fromDate = moment.utc( $( '#mwe-pt-filter-' + context + '-date-range-from' ).val() )
 					.subtract( offset, 'minutes' );
 				// eslint-disable-next-line camelcase
 				apiParams.date_range_from = fromDate.toISOString(); // Pass the date in ISO timestamp format "2019-08-17T06:59:59.000Z"
@@ -468,7 +467,7 @@ $( function () {
 			if ( $( '#mwe-pt-filter-' + context + '-date-range-to' ).val() ) {
 				// Interpret the entered date as UTC initially, then subtract the offset so that it
 				// gets correctly treated as user time zone.
-				toDate = moment.utc( $( '#mwe-pt-filter-' + context + '-date-range-to' ).val() )
+				var toDate = moment.utc( $( '#mwe-pt-filter-' + context + '-date-range-to' ).val() )
 					.subtract( offset, 'minutes' );
 				// Set toDate's time the end of day 23:59:59
 				toDate.add( 1, 'day' ).subtract( 1, 'second' );
@@ -602,12 +601,10 @@ $( function () {
 		 * Sync the menu and other UI elements with the filters, for the NPP queue.
 		 */
 		menuSyncNpp: function () {
-			var namespace, username;
-
 			// Make sure the radio button for the feed is correct, and the corresponding filter menu is shown.
 			$( '#mwe-pt-radio-npp' ).prop( 'checked', true );
 
-			namespace = this.model.getParam( 'namespace' );
+			var namespace = this.model.getParam( 'namespace' );
 			$( '#mwe-pt-filter-namespace' ).val( namespace );
 			this.newFilterStatus.namespace.push( $( '#mwe-pt-filter-namespace' ).find( ':selected' ).text() );
 
@@ -620,7 +617,7 @@ $( function () {
 
 			this.menuCheckboxUpdateOres( 'npp' );
 
-			username = this.model.getParam( 'username' );
+			var username = this.model.getParam( 'username' );
 			if ( username ) {
 				this.newFilterStatus.top.push( mw.msg( 'pagetriage-filter-stat-username', username ) );
 				$( '#mwe-pt-filter-user-selected' ).prop( 'checked', true );
@@ -655,23 +652,22 @@ $( function () {
 		 * @param {string} context
 		 */
 		menuSyncDateRange: function ( context ) {
-			var dateRangeFrom, dateRangeTo, formattedDateFrom, formattedDateTo;
 			var offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
 
-			dateRangeFrom = this.model.getParam( 'date_range_from' ); // ISO format
+			var dateRangeFrom = this.model.getParam( 'date_range_from' ); // ISO format
 			if ( dateRangeFrom ) {
 				dateRangeFrom = moment( dateRangeFrom );
-				formattedDateFrom = dateRangeFrom.utcOffset( offset )
+				var formattedDateFrom = dateRangeFrom.utcOffset( offset )
 					.format( mw.msg( 'pagetriage-filter-date-range-format-showing' ) );
 				this.newFilterStatus.date_range.push( mw.msg( 'pagetriage-filter-stat-date_range_from', formattedDateFrom ) );
 				$( '#mwe-pt-filter-' + context + '-date-range-from' ).val( dateRangeFrom.utcOffset( offset )
 					.format( mw.msg( 'pagetriage-filter-date-range-format-input-field' ) ) );
 			}
 
-			dateRangeTo = this.model.getParam( 'date_range_to' ); // ISO format
+			var dateRangeTo = this.model.getParam( 'date_range_to' ); // ISO format
 			if ( dateRangeTo ) {
 				dateRangeTo = moment( dateRangeTo );
-				formattedDateTo = dateRangeTo.utcOffset( offset )
+				var formattedDateTo = dateRangeTo.utcOffset( offset )
 					.format( mw.msg( 'pagetriage-filter-date-range-format-showing' ) );
 				this.newFilterStatus.date_range.push( mw.msg( 'pagetriage-filter-stat-date_range_to', formattedDateTo ) );
 				$( '#mwe-pt-filter-' + context + '-date-range-to' ).val( dateRangeTo.utcOffset( offset )
@@ -707,14 +703,11 @@ $( function () {
 		 * Sync the menu and other UI elements with the filters, for the AfC queue.
 		 */
 		menuSyncAfc: function () {
-			var sortOptionId,
-				afcStateName,
-				afcStateValue = this.model.getParam( 'afc_state' );
-
 			this.menuCheckboxUpdateOres( 'afc' );
 
 			$( '#mwe-pt-radio-afc' ).prop( 'checked', true );
 
+			var afcStateValue = this.model.getParam( 'afc_state' );
 			$( 'input[name=mwe-pt-filter-afc-radio][value=' + afcStateValue + ']' )
 				.prop( 'checked', true );
 
@@ -730,14 +723,14 @@ $( function () {
 				this.$afcDeclinedSortOptions.detach();
 			}
 
-			sortOptionId = this.getValidAfcSortOptionId(
+			var sortOptionId = this.getValidAfcSortOptionId(
 				this.model.getParam( 'afc_state' ),
 				this.model.getParam( 'afcDir' )
 			);
 			$( '#' + sortOptionId ).prop( 'selected', true );
 
 			// Set the "Showing: ..." filter status.
-			afcStateName = $( 'input[name=mwe-pt-filter-afc-radio]:checked' ).data( 'afc-state-name' );
+			var afcStateName = $( 'input[name=mwe-pt-filter-afc-radio]:checked' ).data( 'afc-state-name' );
 			this.newFilterStatus.state.push( mw.msg( 'pagetriage-afc-state-' + afcStateName ) );
 		},
 
