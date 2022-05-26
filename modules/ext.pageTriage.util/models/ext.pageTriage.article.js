@@ -92,13 +92,6 @@ $( function () {
 						article.get( 'creator_user_page_exist' )
 					)
 				);
-				article.set(
-					'user_talk_title_url',
-					this.buildRedLink(
-						article.get( 'creator_user_talk_page_url' ),
-						article.get( 'creator_user_talk_page_exist' )
-					)
-				);
 				article.set( 'user_contribs_title', article.get( 'creator_contribution_page' ) );
 			}
 
