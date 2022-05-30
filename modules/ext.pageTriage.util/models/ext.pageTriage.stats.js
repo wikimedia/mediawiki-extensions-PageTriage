@@ -56,6 +56,13 @@ $( function () {
 		url: function () {
 			var url = mw.util.wikiScript( 'api' ) + '?action=pagetriagestats&format=json';
 			if ( this.apiParams.namespace !== '' ) {
+				// afc_state is stored in the model as '1', '2', '3', '4', or 'all',
+				// but the api parameter should be an integer. Omitting the parameter
+				// entirely means there is no filtering, which is what 'all' should
+				// do. See T304574
+				if ( this.apiParams.afc_state && this.apiParams.afc_state === 'all' ) {
+					delete this.apiParams.afc_state;
+				}
 				url += '&' + $.param( this.apiParams );
 			}
 			return url;

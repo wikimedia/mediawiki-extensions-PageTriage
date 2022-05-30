@@ -385,6 +385,12 @@ $( function () {
 			delete params.afcDir;
 			// mode is defined in the model but is not an API parameter, so remove it.
 			delete params.mode;
+			// afc_state is stored in the model as '1', '2', '3', '4', or 'all', but
+			// the api parameter should be an integer. Omitting the parameter entirely
+			// means there is no filtering, which is what 'all' should do. See T304574
+			if ( params.afc_state && params.afc_state === 'all' ) {
+				delete params.afc_state;
+			}
 			return params;
 		},
 
