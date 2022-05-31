@@ -86,14 +86,12 @@ mw.pageTriage.actionQueue = ( function () {
 		 *  all stored functions finished running
 		 */
 		runAllInAction = function ( action, data ) {
-			var iterableActionNames,
-				actionData = {},
-				promises = [];
-
 			if ( !action ) {
 				throw new Error( 'mw.pageTriage.actionQueue could not invoke for a missing (empty) action' );
 			}
 
+			var iterableActionNames,
+				actionData = {};
 			if ( typeof action === 'object' && !Array.isArray( action ) ) {
 				// Action was given as an object, expected to have key/value of
 				// action name -> action-specific data to pass to the methods
@@ -113,6 +111,7 @@ mw.pageTriage.actionQueue = ( function () {
 				} );
 			}
 
+			var promises = [];
 			iterableActionNames.forEach( function ( actionName ) {
 				if ( !queue[ actionName ] ) {
 					return;

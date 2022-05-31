@@ -28,46 +28,45 @@ ToolbarView = Backbone.View.extend( {
 	template: mw.template.get( 'ext.pageTriage.views.toolbar', 'ToolbarView.underscore' ),
 
 	initialize: function () {
-		var MinimizeView, ArticleInfoView, WikiLoveView, MarkView, TagsView, DeleteView, NextView,
-			modules = config.PageTriageCurationModules;
+		var modules = config.PageTriageCurationModules;
 		// An array of tool instances to put on the bar, ordered top-to-bottom
 		tools = [];
 
-		MinimizeView = require( './minimize.js' );
+		var MinimizeView = require( './minimize.js' );
 		tools.push( new MinimizeView( { eventBus: eventBus, model: article, toolbar: this } ) );
 
 		// article information
 		if ( this.isFlyoutEnabled( 'articleInfo' ) ) {
-			ArticleInfoView = require( './articleInfo.js' );
+			var ArticleInfoView = require( './articleInfo.js' );
 			tools.push( new ArticleInfoView( { eventBus: eventBus, model: article, moduleConfig: modules.articleInfo } ) );
 		}
 
 		// wikilove
 		if ( this.isFlyoutEnabled( 'wikiLove' ) ) {
-			WikiLoveView = require( './wikilove.js' );
+			var WikiLoveView = require( './wikilove.js' );
 			tools.push( new WikiLoveView( { eventBus: eventBus, model: article, moduleConfig: modules.wikiLove } ) );
 		}
 
 		// mark as reviewed
 		if ( this.isFlyoutEnabled( 'mark' ) ) {
-			MarkView = require( './mark.js' );
+			var MarkView = require( './mark.js' );
 			tools.push( new MarkView( { eventBus: eventBus, model: article, moduleConfig: modules.mark } ) );
 		}
 
 		// add tags
 		if ( this.isFlyoutEnabled( 'tags' ) ) {
-			TagsView = require( './tags.js' );
+			var TagsView = require( './tags.js' );
 			tools.push( new TagsView( { eventBus: eventBus, model: article, moduleConfig: modules.tags } ) );
 		}
 
 		// delete
 		if ( this.isFlyoutEnabled( 'delete' ) ) {
-			DeleteView = require( './delete.js' );
+			var DeleteView = require( './delete.js' );
 			tools.push( new DeleteView( { eventBus: eventBus, model: article, moduleConfig: modules.delete } ) );
 		}
 
 		// next article, should be always on
-		NextView = require( './next.js' );
+		var NextView = require( './next.js' );
 		tools.push( new NextView( { eventBus: eventBus, model: article } ) );
 	},
 
@@ -99,7 +98,6 @@ ToolbarView = Backbone.View.extend( {
 	},
 
 	render: function () {
-		var that = this;
 		// build the bar and insert into the page.
 		// insert the empty toolbar into the document.
 		$( 'body' ).append( this.template() );
@@ -118,6 +116,7 @@ ToolbarView = Backbone.View.extend( {
 			cancel: '.mwe-pt-tool-content'
 		} );
 
+		var that = this;
 		// make clicking on the minimized toolbar expand to normal size
 		$( '#mwe-pt-toolbar-vertical' ).on( 'click', function () {
 			that.maximize( true );

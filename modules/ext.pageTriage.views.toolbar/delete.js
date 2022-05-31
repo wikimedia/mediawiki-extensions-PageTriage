@@ -185,8 +185,6 @@ module.exports = ToolView.extend( {
 	 * article is a redirect
 	 */
 	setupDeletionTags: function () {
-		var xfd;
-
 		// user namespace
 		if ( mw.config.get( 'wgCanonicalNamespace' ) === 'User' ) {
 			this.deletionTagsOptions = $.pageTriageDeletionTagsOptions.User;
@@ -194,7 +192,7 @@ module.exports = ToolView.extend( {
 		// default to main namespace
 		} else {
 			this.deletionTagsOptions = $.pageTriageDeletionTagsOptions.Main;
-			xfd = this.deletionTagsOptions.xfd;
+			var xfd = this.deletionTagsOptions.xfd;
 			// redirect
 			if ( Number( this.model.get( 'is_redirect' ) ) === 1 ) {
 				xfd.label = xfd.tags.redirectsfordiscussion.label;
@@ -253,10 +251,9 @@ module.exports = ToolView.extend( {
 	},
 
 	isPageNominatedForDeletion: function () {
-		var i,
-			deletion = [ 'csd_status', 'prod_status', 'blp_prod_status', 'afd_status' ];
+		var deletion = [ 'csd_status', 'prod_status', 'blp_prod_status', 'afd_status' ];
 
-		for ( i = 0; i < deletion.length; i++ ) {
+		for ( var i = 0; i < deletion.length; i++ ) {
 			if ( this.model.get( deletion[ i ] ) === '1' ) {
 				return true;
 			}
@@ -305,7 +302,7 @@ module.exports = ToolView.extend( {
 	 * @param {string} cat
 	 */
 	displayTags: function ( cat ) {
-		var tagDesc, key, param,
+		var key, param,
 			that = this,
 			tagSet = this.deletionTagsOptions[ cat ].tags,
 			elementType = this.deletionTagsOptions[ cat ].multiple ? 'checkbox' : 'radio',
@@ -317,7 +314,7 @@ module.exports = ToolView.extend( {
 		$( '#mwe-pt-delete-submit-button' ).button( 'disable' );
 
 		if ( this.deletionTagsOptions[ cat ].desc ) {
-			tagDesc = '<div id="mwe-pt-delete-category-desc">' + mw.html.escape( this.deletionTagsOptions[ cat ].desc ) + '</div>';
+			var tagDesc = '<div id="mwe-pt-delete-category-desc">' + mw.html.escape( this.deletionTagsOptions[ cat ].desc ) + '</div>';
 			$tagList.append( tagDesc );
 		}
 
@@ -416,19 +413,17 @@ module.exports = ToolView.extend( {
 	 * @param {string} key
 	 */
 	showParamsLink: function ( key ) {
-		var param, link,
-			allParamsHidden = true,
-			text = 'add',
-			tag = this.selectedTag[ key ],
-			that = this;
+		var tag = this.selectedTag[ key ];
 
 		// no params, don't show the link
 		if ( $.isEmptyObject( tag.params ) ) {
 			return;
 		}
 
+		var allParamsHidden = true,
+			text = 'add';
 		// check if there is non-hidden param
-		for ( param in tag.params ) {
+		for ( var param in tag.params ) {
 			if ( tag.params[ param ].type !== 'hidden' ) {
 				allParamsHidden = false;
 				// see if any of the parameters have been filled out
@@ -444,7 +439,7 @@ module.exports = ToolView.extend( {
 
 		// Give grep a chance to find the usages:
 		// pagetriage-button-add-details, pagetriage-button-edit-details
-		link = mw.html.element(
+		var link = mw.html.element(
 			'a',
 			{
 				href: '#',
@@ -454,6 +449,7 @@ module.exports = ToolView.extend( {
 		);
 		$( '#mwe-pt-delete-params-link-' + key ).html( '+&#160;' + link );
 		// Add click event to the link that shows the param form
+		var that = this;
 		$( '#mwe-pt-delete-params-' + key ).on( 'click', function () {
 			that.showParamsForm( key );
 		} );
@@ -474,8 +470,7 @@ module.exports = ToolView.extend( {
 	 * @param {Object} obj
 	 */
 	multiHideParamsLink: function ( obj ) {
-		var key;
-		for ( key in obj ) {
+		for ( var key in obj ) {
 			this.hideParamsLink( key );
 		}
 	},
@@ -486,16 +481,15 @@ module.exports = ToolView.extend( {
 	 * @param {string} key
 	 */
 	showParamsForm: function ( key ) {
-		var param, paramObj,
-			that = this,
+		var that = this,
 			html = '',
 			tag = this.selectedTag[ key ],
 			firstField = '';
 
 		this.hideParamsLink( key );
 
-		for ( param in tag.params ) {
-			paramObj = tag.params[ param ];
+		for ( var param in tag.params ) {
+			var paramObj = tag.params[ param ];
 			html += this.buildHTML( param, paramObj, key );
 			// Remember which field is first so we can focus it later
 			if ( !firstField && paramObj.type !== 'hidden' ) {
@@ -537,8 +531,7 @@ module.exports = ToolView.extend( {
 
 		// Add click event for the Cancel button
 		$( '#mwe-pt-delete-cancel-param-' + key ).button().on( 'click', function () {
-			var param;
-			for ( param in tag.params ) {
+			for ( var param in tag.params ) {
 				if ( tag.params[ param ].input === 'required' && !tag.params[ param ].value ) {
 					delete that.selectedTag[ key ];
 					$( '#mwe-pt-checkbox-delete-' + key ).prop( 'checked', false );
@@ -577,9 +570,8 @@ module.exports = ToolView.extend( {
 	 * @return {boolean}
 	 */
 	setParams: function ( key ) {
-		var param,
-			tag = this.selectedTag[ key ];
-		for ( param in tag.params ) {
+		var tag = this.selectedTag[ key ];
+		for ( var param in tag.params ) {
 			tag.params[ param ].value = $( '#mwe-pt-delete-params-' + key + '-' + param ).val();
 			if ( tag.params[ param ].input === 'required' && !tag.params[ param ].value ) {
 				$( '#mwe-pt-delete-params-form-error' ).text( mw.msg( 'pagetriage-tags-param-missing-required', tag.tag ) );
@@ -597,9 +589,8 @@ module.exports = ToolView.extend( {
 	 * @return {string}
 	 */
 	buildParams: function ( obj ) {
-		var param,
-			paramVal = '';
-		for ( param in obj.params ) {
+		var paramVal = '';
+		for ( var param in obj.params ) {
 			// this param should be skipped and not be added to tag
 			if ( obj.params[ param ].skip ) {
 				continue;
@@ -621,11 +612,6 @@ module.exports = ToolView.extend( {
 	 * Submit the selected tags
 	 */
 	submit: function () {
-		var that = this,
-			promises = [],
-			// reviewed value must be either '0' or '1'
-			markAsReviewed = this.deletionTagsOptions[ this.selectedCat ].reviewed || '0';
-
 		// no tag to submit
 		if ( this.objectPropCount( this.selectedTag ) === 0 ) {
 			return;
@@ -637,12 +623,13 @@ module.exports = ToolView.extend( {
 			return;
 		}
 
+		var that = this,
+			promises = [];
+
 		// check for any missing parameters
 		// eslint-disable-next-line no-jquery/no-each-util
 		$.each( this.selectedTag, function ( key, tagObj ) {
-			var param;
-
-			for ( param in tagObj.params ) {
+			for ( var param in tagObj.params ) {
 				if (
 					tagObj.params[ param ].input === 'required' &&
 					!tagObj.params[ param ].value
@@ -666,6 +653,8 @@ module.exports = ToolView.extend( {
 			}
 		} );
 
+		// reviewed value must be either '0' or '1'
+		var markAsReviewed = this.deletionTagsOptions[ this.selectedCat ].reviewed || '0';
 		$.when.apply( null, promises ).then( function () {
 			// Applying deletion tags should mark the page as reviewed depending on the selected tag's
 			// reviewed option. If it is not set then the page will be marked as not reviewed.
@@ -677,15 +666,14 @@ module.exports = ToolView.extend( {
 				skipnotif: '1'
 			} )
 				.then( function () {
-					var key, tagObj;
 					// Log certain types of deletion nominations...
 					// If the selected tag category doesn't allow multiple selection
 					// and the selected tag has a prefix (like Wikipedia:Articles for
 					// deletion) update the log page for that deletion type.
 					// TODO: Make logging a JS config-based option
 					if ( !that.deletionTagsOptions[ that.selectedCat ].multiple ) {
-						for ( key in that.selectedTag ) {
-							tagObj = that.selectedTag[ key ];
+						for ( var key in that.selectedTag ) {
+							var tagObj = that.selectedTag[ key ];
 							if ( tagObj.prefix ) {
 								that.logPage( tagObj );
 								break;
@@ -735,11 +723,8 @@ module.exports = ToolView.extend( {
 			tagText = '',
 			paramsText = '',
 			that = this,
-			tempTag,
 			tagList = [],
-			count = this.objectPropCount( this.selectedTag ),
-			tagObj,
-			tagging;
+			count = this.objectPropCount( this.selectedTag );
 
 		if ( count === 0 ) {
 			return;
@@ -748,9 +733,9 @@ module.exports = ToolView.extend( {
 		// for multiple tags, they must be in db-xxx format, when combining them in
 		// db-multiple, remove 'db-' from each individual tags
 		for ( key in this.selectedTag ) {
-			tagObj = this.selectedTag[ key ];
-			tempTag = tagObj.tag;
-			tagging = specialDeletionTagging[ tagObj.tag ];
+			var tagObj = this.selectedTag[ key ];
+			var tempTag = tagObj.tag;
+			var tagging = specialDeletionTagging[ tagObj.tag ];
 			tagList.push( tagObj.tag.toLowerCase() );
 
 			if ( count > 1 ) {
@@ -814,15 +799,12 @@ module.exports = ToolView.extend( {
 	 * @param {string} key
 	 */
 	notifyUser: function ( count, key ) {
-		var selected, topicTitleKey, templateName, template, messagePosterPromise,
-			topicTitle,
-			paramsText = '',
-			that = this;
-
 		if ( count === 0 || !this.selectedTag[ key ] ) {
 			return;
 		}
 
+		var selected,
+			paramsText = '';
 		// use generic template for multiple deletion tag
 		if ( count > 1 ) {
 			selected = $.pageTriageDeletionTagsMultiple;
@@ -834,20 +816,21 @@ module.exports = ToolView.extend( {
 			}
 		}
 
-		topicTitleKey = selected.talkpagenotiftopictitle;
-		topicTitle = mw.pageTriage.contentLanguageMessage( topicTitleKey, pageName ).text();
+		var topicTitleKey = selected.talkpagenotiftopictitle;
+		var topicTitle = mw.pageTriage.contentLanguageMessage( topicTitleKey, pageName ).text();
 
-		templateName = selected.talkpagenotiftpl;
+		var templateName = selected.talkpagenotiftpl;
 
-		template = '{{subst:' + templateName + '|' + pageName + paramsText + '}}';
+		var template = '{{subst:' + templateName + '|' + pageName + paramsText + '}}';
 
 		if ( this.model.get( 'user_name' ) ) {
-			messagePosterPromise = mw.messagePoster.factory.create(
+			var messagePosterPromise = mw.messagePoster.factory.create(
 				new mw.Title(
 					this.model.get( 'creator_user_talk_page' )
 				)
 			);
 
+			var that = this;
 			messagePosterPromise.then( function ( messagePoster ) {
 				return messagePoster.post( topicTitle, template, { tags: 'pagetriage' } );
 			} ).then( function () {
@@ -875,9 +858,8 @@ module.exports = ToolView.extend( {
 			rvprop: 'content'
 		} )
 			.done( function ( data ) {
-				var i;
 				if ( data && data.query && data.query.pages ) {
-					for ( i in data.query.pages ) {
+					for ( var i in data.query.pages ) {
 						if ( i === '-1' ) {
 							that.handleError( mw.msg( 'pagetriage-del-log-page-missing-error' ) );
 							return;

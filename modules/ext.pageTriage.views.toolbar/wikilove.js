@@ -9,46 +9,41 @@ module.exports = ToolView.extend( {
 	template: mw.template.get( 'ext.pageTriage.views.toolbar', 'wikilove.underscore' ),
 
 	bySortedValue: function ( obj, callback, context ) {
-		var key, length,
-			tuples = [];
-		for ( key in obj ) {
+		var tuples = [];
+		for ( var key in obj ) {
 			tuples.push( [ key, obj[ key ] ] );
 		}
 		tuples.sort( function ( a, b ) {
 			return a[ 1 ] - b[ 1 ];
 		} );
 
-		length = tuples.length;
+		var length = tuples.length;
 		while ( length-- ) {
 			callback.call( context, tuples[ length ][ 0 ], tuples[ length ][ 1 ] );
 		}
 	},
 
 	render: function () {
-		var userTitle, linkUrl, link, creator, i, contributor, x,
-			that = this,
-			contributorArray = [],
-			contributorCounts = {},
-			creatorContribCount = 1,
-			recipients = [];
-
 		// get the article's creator
-		creator = this.model.get( 'user_name' );
+		var creator = this.model.get( 'user_name' );
 
 		// get the last 20 editors of the article
+		var contributorArray = [];
 		this.model.revisions.each( function ( revision ) {
 			contributorArray.push( revision.get( 'user' ) );
 		} );
 
 		// count how many times each editor edited the article
-		for ( i = 0; i < contributorArray.length; i++ ) {
-			contributor = contributorArray[ i ];
+		var contributorCounts = {};
+		for ( var i = 0; i < contributorArray.length; i++ ) {
+			var contributor = contributorArray[ i ];
 			contributorCounts[ contributor ] = ( contributorCounts[ contributor ] || 0 ) + 1;
 		}
 
 		// construct the info for the article creator
-		link = mw.html.element( 'a', { href: this.model.get( 'creator_user_page_url' ) }, creator );
+		var link = mw.html.element( 'a', { href: this.model.get( 'creator_user_page_url' ) }, creator );
 
+		var creatorContribCount = 1;
 		if ( contributorArray.indexOf( creator ) !== -1 ) {
 			creatorContribCount = contributorCounts[ creator ];
 		}
@@ -69,14 +64,14 @@ module.exports = ToolView.extend( {
 			);
 		}
 
-		x = 0;
+		var x = 0;
 		// sort contributors by their number of edits
 		this.bySortedValue( contributorCounts, function ( name, count ) {
 			// include up to 9 additional editors (this corresponds to the limit in WikiLove)
 			if ( name !== creator && name !== mw.user.getName() && x < 9 ) {
 				try {
-					userTitle = new mw.Title( name, mw.config.get( 'wgNamespaceIds' ).user );
-					linkUrl = userTitle.getUrl();
+					var userTitle = new mw.Title( name, mw.config.get( 'wgNamespaceIds' ).user );
+					var linkUrl = userTitle.getUrl();
 					link = mw.html.element( 'a', { href: linkUrl }, name );
 				} catch ( e ) {
 					link = _.escape( name );
@@ -99,11 +94,12 @@ module.exports = ToolView.extend( {
 		}
 
 		// initialize the button
+		var that = this;
 		$( '#mwe-pt-wikilove-button' )
 			.button( { icons: { secondary: 'ui-icon-triangle-1-e' } } )
 			.on( 'click', function ( e ) {
 				e.preventDefault();
-				recipients = $( 'input:checkbox:checked.mwe-pt-recipient-checkbox' ).map( function () {
+				var recipients = $( 'input:checkbox:checked.mwe-pt-recipient-checkbox' ).map( function () {
 					return this.value;
 				} ).get();
 				$.wikiLove.openDialog( recipients );

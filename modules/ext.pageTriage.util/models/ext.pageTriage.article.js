@@ -21,8 +21,7 @@ $( function () {
 		},
 
 		formatMetadata: function ( article ) {
-			var bylineMessage, userCreationDateParsed, byline, titleUrl, $talkPageLink, talkPageMsg,
-				creationDateParsed = moment.utc( article.get( 'creation_date_utc' ), 'YYYYMMDDHHmmss' ),
+			var creationDateParsed = moment.utc( article.get( 'creation_date_utc' ), 'YYYYMMDDHHmmss' ),
 				reviewedUpdatedParsed = moment.utc( article.get( 'ptrp_reviewed_updated' ), 'YYYYMMDDHHmmss' ),
 				titleObj = new mw.Title( article.get( 'title' ) ),
 				nsId = titleObj.getNamespaceId(),
@@ -43,7 +42,7 @@ $( function () {
 
 			// sometimes user info isn't set, so check that first.
 			if ( article.get( 'user_creation_date' ) ) {
-				userCreationDateParsed = moment.utc(
+				var userCreationDateParsed = moment.utc(
 					article.get( 'user_creation_date' ),
 					'YYYYMMDDHHmmss'
 				);
@@ -57,6 +56,7 @@ $( function () {
 			if ( article.get( 'user_name' ) ) {
 				// decide which byline message to use depending on if the editor is new or not
 				// but don't show new editor for ip users
+				var bylineMessage;
 				if ( article.get( 'user_id' ) > '0' && article.get( 'user_autoconfirmed' ) < '1' ) {
 					bylineMessage = 'pagetriage-byline-new-editor';
 				} else {
@@ -64,7 +64,7 @@ $( function () {
 				}
 
 				// put it all together in the byline
-				byline = mw.message(
+				var byline = mw.message(
 					bylineMessage,
 					this.buildLinkTag(
 						article.get( 'creator_user_page_url' ),
@@ -105,10 +105,10 @@ $( function () {
 			// Are there any PageTriage messages on the talk page?
 			article.set( 'talkpage_feedback_message', false );
 			if ( article.get( 'talkpage_feedback_count' ) > 0 ) {
-				$talkPageLink = $( '<a>' )
+				var $talkPageLink = $( '<a>' )
 					.attr( 'href', article.get( 'talk_page_url' ) )
 					.text( mw.msg( 'pagetriage-has-talkpage-feedback-link' ) );
-				talkPageMsg = mw.message( 'pagetriage-has-talkpage-feedback', article.get( 'talkpage_feedback_count' ), $talkPageLink ).parse();
+				var talkPageMsg = mw.message( 'pagetriage-has-talkpage-feedback', article.get( 'talkpage_feedback_count' ), $talkPageLink ).parse();
 				article.set( 'talkpage_feedback_message', talkPageMsg );
 			}
 
@@ -188,7 +188,7 @@ $( function () {
 
 			article.set( 'title_url_format', mw.util.wikiUrlencode( article.get( 'title' ) ) );
 
-			titleUrl = new mw.Uri( mw.util.getUrl( article.get( 'title' ) ) );
+			var titleUrl = new mw.Uri( mw.util.getUrl( article.get( 'title' ) ) );
 			if ( Number( article.get( 'is_redirect' ) ) === 1 ) {
 				titleUrl.query.redirect = 'no';
 			}
@@ -196,13 +196,12 @@ $( function () {
 		},
 
 		tagWarningNotice: function () {
-			var now, begin, diff,
-				dateStr = this.get( 'creation_date_utc' );
+			var dateStr = this.get( 'creation_date_utc' );
 			if ( !dateStr ) {
 				return '';
 			}
 
-			now = new Date();
+			var now = new Date();
 			now = new Date(
 				now.getUTCFullYear(),
 				now.getUTCMonth(),
@@ -212,8 +211,8 @@ $( function () {
 				now.getUTCSeconds()
 			);
 
-			begin = moment.utc( dateStr, 'YYYYMMDDHHmmss' );
-			diff = Math.round( ( now.getTime() - begin.valueOf() ) / ( 1000 * 60 ) );
+			var begin = moment.utc( dateStr, 'YYYYMMDDHHmmss' );
+			var diff = Math.round( ( now.getTime() - begin.valueOf() ) / ( 1000 * 60 ) );
 
 			// only generate a warning if the page is less than 30 minutes old
 			if ( diff < 30 ) {
@@ -299,13 +298,13 @@ $( function () {
 		},
 
 		initialize: function ( options ) {
-			var filterOptionsJson, filterOptions;
 			this.eventBus = options.eventBus;
 			this.eventBus.bind( 'filterSet', this.setParams );
 
 			// Pull any saved filter settings from the user's option.
-			filterOptionsJson = mw.user.options.get( 'userjs-NewPagesFeedFilterOptions' );
+			var filterOptionsJson = mw.user.options.get( 'userjs-NewPagesFeedFilterOptions' );
 			if ( !mw.user.isAnon() && filterOptionsJson ) {
+				var filterOptions;
 				try {
 					filterOptions = JSON.parse( filterOptionsJson );
 					filterOptions = this.migrateFilterOptions( filterOptions );
@@ -431,8 +430,7 @@ $( function () {
 		 * @return {string}
 		 */
 		encodeFilterParams: function () {
-			var params;
-			params = this.apiParams;
+			var params = this.apiParams;
 			params.mode = this.getMode();
 			params.version = 2;
 			return JSON.stringify( params );

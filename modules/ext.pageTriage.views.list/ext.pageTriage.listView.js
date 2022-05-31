@@ -2,7 +2,7 @@
  * view for the article list
  */
 $( function () {
-	var that, list,
+	var list,
 		// create an event aggregator
 		eventBus = _.extend( {}, Backbone.Events ),
 
@@ -17,9 +17,6 @@ $( function () {
 	mw.pageTriage.ListView = Backbone.View.extend( {
 
 		initialize: function ( options ) {
-			// List view doesn't work well in older versions of Explorer
-			var blacklist = { msie: [ '<', 8 ] };
-
 			this.eventBus = options.eventBus; // access the eventBus
 			this.position = 0;
 
@@ -39,7 +36,7 @@ $( function () {
 				$( '#mwe-pt-list-more' ).append( $.createSpinner( 'more-spinner' ) );
 			} else {
 				// bind manualLoadMore function to 'More' link
-				that = this;
+				var that = this;
 				$( '#mwe-pt-list-more-link' ).on( 'click', function () {
 					that.manualLoadMore();
 					return false;
@@ -47,6 +44,8 @@ $( function () {
 			}
 
 			// Add a warning if we're using an unsupported browser
+			// List view doesn't work well in older versions of Explorer
+			var blacklist = { msie: [ '<', 8 ] };
 			if ( $.client.test( blacklist, null, true ) ) {
 				$( '#mwe-pt-list-warnings' ).append( $( '<div>' ).text( mw.msg( 'pagetriage-warning-browser' ) ) );
 			}
@@ -65,22 +64,19 @@ $( function () {
 		},
 
 		render: function () {
-			var controlNav;
 			// reset the position indicator
 			this.position = 0;
-			controlNav = new mw.pageTriage.ListControlNav( { eventBus: this.eventBus, model: articles, stats: stats } );
+			var controlNav = new mw.pageTriage.ListControlNav( { eventBus: this.eventBus, model: articles, stats: stats } );
 			controlNav.render();
 		},
 
 		// load more method for infinite scrolling
 		automaticLoadMore: function () {
-			var lastArticle,
-				that = this;
 			$( '#mwe-pt-list-load-more-anchor' ).waypoint( 'destroy' );
 			$( '#mwe-pt-list-more' ).show(); // show spinner
 
 			// set the offsets for the page fetch
-			lastArticle = articles.last( 1 );
+			var lastArticle = articles.last( 1 );
 			if ( 0 in lastArticle ) {
 				articles.apiParams.offset = lastArticle[ 0 ].attributes.creation_date_utc;
 				articles.apiParams.pageoffset = lastArticle[ 0 ].attributes.pageid;
@@ -89,6 +85,7 @@ $( function () {
 				articles.apiParams.pageoffset = 0;
 			}
 
+			var that = this;
 			// fetch more articles. we use a timeout to prevent double-loading.
 			setTimeout(
 				function () {
@@ -124,13 +121,11 @@ $( function () {
 
 		// manual load more method (i.e. infinite scrolling turned off)
 		manualLoadMore: function () {
-			var lastArticle,
-				that = this;
 			$( '#mwe-pt-list-more-link' ).hide();
 			$( '#mwe-pt-list-more' ).append( $.createSpinner( 'more-spinner' ) );
 
 			// set the offsets for the page fetch
-			lastArticle = articles.last( 1 );
+			var lastArticle = articles.last( 1 );
 			if ( 0 in lastArticle ) {
 				articles.apiParams.offset = lastArticle[ 0 ].attributes.creation_date_utc;
 				articles.apiParams.pageoffset = lastArticle[ 0 ].attributes.pageid;
@@ -139,6 +134,7 @@ $( function () {
 				articles.apiParams.pageoffset = 0;
 			}
 
+			var that = this;
 			articles.fetch( {
 				add: true,
 				success: function () {
@@ -169,7 +165,6 @@ $( function () {
 
 		// add a single article to the list
 		addOne: function ( article ) {
-			var view, pageInfo;
 			// define position, for making alternating background colors.
 			// this is added at the last minute, so it gets updated when the sort changes.
 			if ( !this.position ) {
@@ -178,8 +173,8 @@ $( function () {
 			this.position++;
 			article.set( 'position', this.position );
 			// pass in the specific article instance
-			view = new mw.pageTriage.ListItem( { eventBus: this.eventBus, model: article } );
-			pageInfo = view.render().el;
+			var view = new mw.pageTriage.ListItem( { eventBus: this.eventBus, model: article } );
+			var pageInfo = view.render().el;
 			$( '#mwe-pt-list-view' ).append( pageInfo );
 			if ( mw.config.get( 'wgPageTriageEnableReviewButton' ) ) {
 				$( pageInfo ).find( '.mwe-pt-list-triage-button' ).show().button( {
