@@ -830,7 +830,6 @@ class Hooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LocalUserCreated
 	 * @param User $user User object that was created.
 	 * @param bool $autocreated True when account was auto-created
-	 * @return bool
 	 */
 	public static function onLocalUserCreated( $user, $autocreated ) {
 		// New users get echo preferences set that are not the default settings for existing users.
@@ -838,9 +837,7 @@ class Hooks {
 		if ( !$autocreated ) {
 			$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
 			$userOptionsManager->setOption( $user, 'echo-subscriptions-email-page-review', true );
-			$userOptionsManager->saveOptions( $user );
 		}
-		return true;
 	}
 
 	public static function onUserMergeAccountFields( array &$updateFields ) {
