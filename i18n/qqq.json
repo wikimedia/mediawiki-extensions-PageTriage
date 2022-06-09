@@ -146,7 +146,7 @@
 	"pagetriage-filter-stat-learners": "Status display component for pages by newly autoconfirmed editors. This message is included as part of a comma-separated list.",
 	"pagetriage-filter-stat-blocked": "Status display component for pages by blocked users. This message is included as part of a comma-separated list.",
 	"pagetriage-filter-stat-username": "Status display component for filter by username. $1 is the username. This message is included as part of a comma-separated list.\n{{Identical|Username}}",
-	"pagetriage-filter-stat-namespace": "Name of the status display group for the namespace filter. This message appears before a namespace in parentheses, e.g.: Namespace (Article).",
+	"pagetriage-filter-stat-namespace": "Name of the status display group for the namespace filter. This message appears before a namespace in parentheses, e.g.: Namespace (Article).\n{{Identical|Namespace}}",
 	"pagetriage-filter-stat-predicted-class": "Name of the status display group for the 'predicted class' options. This message appears before a comma-separated list of predicted classes in parentheses, e.g.: Predicted class (B-class, Stub).",
 	"pagetriage-filter-stat-predicted-class-stub": "Status display component for predicted class of stub. This message is included as part of a comma-separated list.",
 	"pagetriage-filter-stat-predicted-class-start": "Status display component for predicted class of start. This message is included as part of a comma-separated list.\n{{Identical|Start}}",
