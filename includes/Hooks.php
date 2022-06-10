@@ -851,27 +851,12 @@ class Hooks {
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
 		$base = __DIR__ . "/../sql";
-		// tables
 		$updater->addExtensionTable( 'pagetriage_tags', $base . '/PageTriageTags.sql' );
 		$updater->addExtensionTable( 'pagetriage_page_tags', $base . '/PageTriagePageTags.sql' );
 		$updater->addExtensionTable( 'pagetriage_page', $base . '/PageTriagePage.sql' );
 		$updater->addExtensionTable( 'pagetriage_log', $base . '/PageTriageLog.sql' );
 
-		// patches
-		$updater->addExtensionIndex(
-			'pagetriage_page',
-			'ptrp_reviewed_updated',
-			$base . '/PageTriagePagePatch.sql'
-		);
-		$updater->dropExtensionField(
-			'pagetriage_log',
-			'ptrl_comment',
-			$base . '/PageTriageLogPatch_Drop_ptrl_comment.sql'
-		);
-		$updater->modifyExtensionTable(
-			'pagetriage_tags',
-			$base . '/PageTriageTagsPatch.sql'
-		);
+		// 1.32
 		$updater->modifyExtensionTable(
 			'pagetriage_tags',
 			$base . '/PageTriageTagsPatch-AfC.sql'
@@ -880,10 +865,14 @@ class Hooks {
 			'pagetriage_tags',
 			$base . '/PageTriageTagsPatch-copyvio.sql'
 		);
+
+		// 1.34
 		$updater->modifyExtensionTable(
 			'pagetriage_tags',
 			$base . '/PageTriageTagsPatch-recreated.sql'
 		);
+
+		// 1.35
 		$updater->dropExtensionIndex(
 			'pagetriage_page_tags',
 			'ptrpt_page_tag_id',
