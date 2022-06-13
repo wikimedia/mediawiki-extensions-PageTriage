@@ -1,0 +1,179 @@
+[
+	{
+		"name": "pagetriage_tags",
+		"comment": "Article metadata types",
+		"columns": [
+			{
+				"name": "ptrt_tag_id",
+				"type": "integer",
+				"options": { "autoincrement": true, "notnull": true, "unsigned": true }
+			},
+			{
+				"name": "ptrt_tag_name",
+				"type": "binary",
+				"options": { "notnull": true, "length": 20 }
+			},
+			{
+				"name": "ptrt_tag_desc",
+				"type": "binary",
+				"options": { "notnull": true, "length": 255 }
+			}
+		],
+		"indexes": [
+			{
+				"name": "ptrt_tag_id",
+				"columns": [ "ptrt_tag_name" ],
+				"unique": true
+			}
+		],
+		"pk": [ "ptrt_tag_id" ]
+	},
+	{
+		"name": "pagetriage_page_tags",
+		"comment": "Store the metadata for article to be reviewed",
+		"columns": [
+			{
+				"name": "ptrpt_page_id",
+				"type": "integer",
+				"options": { "notnull": true, "unsigned": true }
+			},
+			{
+				"name": "ptrpt_tag_id",
+				"type": "integer",
+				"options": { "notnull": true, "unsigned": true }
+			},
+			{
+				"name": "ptrpt_value",
+				"type": "binary",
+				"options": { "notnull": true, "length": 255 }
+			}
+		],
+		"indexes": [
+			{
+				"name": "ptrpt_tag_id_value",
+				"columns": [ "ptrpt_tag_id", "ptrpt_value" ],
+				"unique": false
+			}
+		],
+		"pk": [ "ptrpt_page_id", "ptrpt_tag_id" ]
+	},
+	{
+		"name": "pagetriage_page",
+		"comment": "Store the list of articles to be reviewed or being reviewed already. For ptrp_reviewed, values are: 0 = unreviewed, 1 = reviewed, 2 = patrolled, 3 = autopatrolled",
+		"columns": [
+			{
+				"name": "ptrp_page_id",
+				"type": "integer",
+				"options": { "notnull": true, "unsigned": true }
+			},
+			{
+				"name": "ptrp_reviewed",
+				"comment": "page reviewed status",
+				"type": "mwtinyint",
+				"options": { "notnull": true, "unsigned": true, "default": 0 }
+			},
+			{
+				"name": "ptrp_deleted",
+				"comment": "the page is nominated for deletion or not",
+				"type": "mwtinyint",
+				"options": { "notnull": true, "unsigned": true, "default": 0 }
+			},
+			{
+				"name": "ptrp_created",
+				"comment": "page created timestamp",
+				"type": "mwtimestamp",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "ptrp_tags_updated",
+				"comment": "metadata (tags) updated timestamp",
+				"type": "mwtimestamp",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "ptrp_reviewed_updated",
+				"comment": "the timestamp when ptrp_reviewed gets updated",
+				"type": "mwtimestamp",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "ptrp_last_reviewed_by",
+				"comment": "the last user who reviewed the page",
+				"type": "integer",
+				"options": { "notnull": true, "unsigned": true, "default": 0 }
+			}
+		],
+		"indexes": [
+			{
+				"name": "ptrp_reviewed_created_page_del",
+				"columns": [ "ptrp_reviewed", "ptrp_created", "ptrp_page_id", "ptrp_deleted" ],
+				"unique": false
+			},
+			{
+				"name": "ptrp_created_page_del",
+				"columns": [ "ptrp_created", "ptrp_page_id", "ptrp_deleted" ],
+				"unique": false
+			},
+			{
+				"name": "ptrp_del_created_page_reviewed",
+				"columns": [ "ptrp_deleted", "ptrp_created", "ptrp_page_id", "ptrp_reviewed" ],
+				"unique": false
+			},
+			{
+				"name": "ptrp_updated_page_reviewed",
+				"columns": [ "ptrp_tags_updated", "ptrp_page_id", "ptrp_reviewed" ],
+				"unique": false
+			},
+			{
+				"name": "ptrp_reviewed_updated",
+				"columns": [ "ptrp_reviewed_updated" ],
+				"unique": false
+			}
+		],
+		"pk": [ "ptrp_page_id" ]
+	},
+	{
+		"name": "pagetriage_log",
+		"comment": "Store the triage log for articles",
+		"columns": [
+			{
+				"name": "ptrl_id",
+				"type": "integer",
+				"options": { "autoincrement": true, "notnull": true, "unsigned": true }
+			},
+			{
+				"name": "ptrl_page_id",
+				"type": "integer",
+				"options": { "notnull": true, "unsigned": true }
+			},
+			{
+				"name": "ptrl_user_id",
+				"type": "integer",
+				"options": { "notnull": true, "unsigned": true }
+			},
+			{
+				"name": "ptrl_reviewed",
+				"type": "mwtinyint",
+				"options": { "notnull": true, "unsigned": true, "default": 0 }
+			},
+			{
+				"name": "ptrl_timestamp",
+				"type": "mwtimestamp",
+				"options": { "notnull": true }
+			}
+		],
+		"indexes": [
+			{
+				"name": "ptrl_page_id_timestamp",
+				"columns": [ "ptrl_page_id", "ptrl_timestamp" ],
+				"unique": false
+			},
+			{
+				"name": "ptrl_timestamp",
+				"columns": [ "ptrl_timestamp" ],
+				"unique": false
+			}
+		],
+		"pk": [ "ptrl_id" ]
+	}
+]

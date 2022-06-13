@@ -852,10 +852,7 @@ class Hooks {
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
 		$base = __DIR__ . "/../sql";
 		$dbType = $updater->getDB()->getType();
-		$updater->addExtensionTable( 'pagetriage_tags', $base . '/PageTriageTags.sql' );
-		$updater->addExtensionTable( 'pagetriage_page_tags', $base . '/PageTriagePageTags.sql' );
-		$updater->addExtensionTable( 'pagetriage_page', $base . '/PageTriagePage.sql' );
-		$updater->addExtensionTable( 'pagetriage_log', $base . '/PageTriageLog.sql' );
+		$updater->addExtensionTable( 'pagetriage_tags', "$base/$dbType/tables-generated.sql" );
 
 		$updater->addExtensionUpdate( [
 			[ __CLASS__, 'doOnSchemaUpdatesPopulatePageTriageTags' ],
