@@ -344,6 +344,11 @@ class Hooks {
 			return false;
 		}
 
+		// Allow disabling the age threshold for noindex by setting maxAge to null
+		if ( !$wgPageTriageMaxAge ) {
+			return true;
+		}
+
 		// Check cache for creation date
 		$fname = __METHOD__;
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
