@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
 use LinksUpdate;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\SlotRecord;
 use WikiPage;
 
@@ -102,7 +103,7 @@ abstract class ArticleCompileInterface {
 			} else {
 				$from = WikiPage::READ_NORMAL;
 			}
-			$article = WikiPage::newFromID( $pageId, $from );
+			$article = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $pageId, $from );
 		}
 
 		return $article;

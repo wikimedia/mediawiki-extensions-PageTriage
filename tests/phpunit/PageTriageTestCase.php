@@ -87,7 +87,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	protected function makePage( $title, $draftQualityClass = false, $copyvio = false ) {
 		$user = static::getTestUser()->getUser();
 		$pageAndTitle = $this->insertPage( $title, 'some content', $this->draftNsId, $user );
-		$page = WikiPage::factory( $pageAndTitle[ 'title' ] );
+		$page = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $pageAndTitle[ 'title' ] );
 		$revId = $page->getLatest();
 		if ( $draftQualityClass ) {
 			self::setDraftQuality( $revId, $draftQualityClass );

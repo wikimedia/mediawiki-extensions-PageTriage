@@ -157,7 +157,7 @@ class ArticleCompileProcessor {
 		}
 		// TODO deduplicate with ArticleCompileInterface::getArticleByPageId(), maybe move to this class
 		$fromdb = $this->componentDb['BasicData'] === DB_PRIMARY ? WikiPage::READ_LATEST : WikiPage::READ_NORMAL;
-		$page = WikiPage::newFromID( $pageId, $fromdb );
+		$page = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $pageId, $fromdb );
 		if ( $page ) {
 			return $page->getTimestamp();
 		}

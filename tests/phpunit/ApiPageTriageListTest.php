@@ -341,11 +341,13 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		] );
 		$user = static::getTestUser()->getUser();
 		$this->insertPage( 'Test page ores 1', 'some content', $this->draftNsId, $user );
-		$page = WikiPage::factory( Title::newFromText( 'Test page ores 1', $this->draftNsId ) );
+		$page = $this->getServiceContainer()->getWikiPageFactory()
+			->newFromTitle( Title::newFromText( 'Test page ores 1', $this->draftNsId ) );
 		$rev1 = $page->getLatest();
 
 		$this->insertPage( 'Test page ores 2', 'some content', $this->draftNsId, $user );
-		$page = WikiPage::factory( Title::newFromText( 'Test page ores 2', $this->draftNsId ) );
+		$page = $this->getServiceContainer()->getWikiPageFactory()
+			->newFromTitle( Title::newFromText( 'Test page ores 2', $this->draftNsId ) );
 		$rev2 = $page->getLatest();
 
 		$dbw = wfGetDB( DB_PRIMARY );
@@ -382,7 +384,8 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		] );
 		$user = static::getTestUser()->getUser();
 		$this->insertPage( 'Test page ores 3', 'some content', $this->draftNsId, $user );
-		$page = WikiPage::factory( Title::newFromText( 'Test page ores 3', $this->draftNsId ) );
+		$page = $this->getServiceContainer()->getWikiPageFactory()
+			->newFromTitle( Title::newFromText( 'Test page ores 3', $this->draftNsId ) );
 		$rev1 = $page->getLatest();
 
 		$dbw = wfGetDB( DB_PRIMARY );
@@ -569,7 +572,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			'Nominated for deletion, Redirects and all others => no filtering' );
 
 		// Delete PageOther, then recreate it.
-		$page = WikiPage::factory( $otherPage['title'] );
+		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $otherPage['title'] );
 
 		$page->doDeleteArticleReal( 'Test', $user );
 
@@ -651,7 +654,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		// Add two messages to the talkpage. This is done via MessagePoster in the front end usually,
 		// so we don't have a PageTriage PHP method to use here.
 		$talkPageTitle = Title::newFromText( $testPageTitle, NS_TALK );
-		$page = WikiPage::factory( $talkPageTitle );
+		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $talkPageTitle );
 		$page->doUserEditContent(
 			ContentHandler::makeContent( 'Test message.', $talkPageTitle ),
 			static::getTestSysop()->getUser(),
