@@ -3,6 +3,7 @@
 		"authors": [
 			"Artsiom91",
 			"Kareyac",
+			"No Sleep till Krupki",
 			"ZlyiLev"
 		]
 	},
@@ -10,7 +11,7 @@
 	"pagetriage-filter-ns-all": "Усе",
 	"pagetriage-more": "Болей",
 	"pagetriage-filter-stat-all": "Усе",
-	"pagetriage-filter-stat-username": "імя ўдзельніка: $1",
+	"pagetriage-filter-stat-username": "Зроплена ўдзельнікам: $1",
 	"pagetriage-tags-cat-metadata-label": "Метаданыя",
 	"pagetriage-tags-param-date-label": "Дата:",
 	"pagetriage-info-help": "даведка",
