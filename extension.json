@@ -602,6 +602,11 @@
 			"ext.pageTriage.toolbarStartup"
 		]
 	},
+	"HookHandlers": {
+		"undelete": {
+			"class": "MediaWiki\\Extension\\PageTriage\\HookHandlers\\UndeleteHookHandler"
+		}
+	},
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\PageTriage\\Hooks::onLoadExtensionSchemaUpdates",
 		"PageMoveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageMoveComplete",
@@ -621,7 +626,8 @@
 		"ORESCheckModels": "MediaWiki\\Extension\\PageTriage\\Hooks::onORESCheckModels",
 		"ListDefinedTags": "MediaWiki\\Extension\\PageTriage\\Hooks::onDefinedTags",
 		"ChangeTagsListActive": "MediaWiki\\Extension\\PageTriage\\Hooks::onDefinedTags",
-		"ChangeTagsAllowedAdd": "MediaWiki\\Extension\\PageTriage\\Hooks::onDefinedTags"
+		"ChangeTagsAllowedAdd": "MediaWiki\\Extension\\PageTriage\\Hooks::onDefinedTags",
+		"ArticleUndelete": "undelete"
 	},
 	"config": {
 		"PageTriageEnableOresFilters": {
