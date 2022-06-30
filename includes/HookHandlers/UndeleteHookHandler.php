@@ -21,6 +21,7 @@
 namespace MediaWiki\Extension\PageTriage\HookHandlers;
 
 use MediaWiki\Extension\PageTriage\Hooks as PageTriageHooks;
+use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Page\Hook\ArticleUndeleteHook;
 use Title;
 
@@ -38,6 +39,11 @@ class UndeleteHookHandler implements ArticleUndeleteHook {
 	public function onArticleUndelete( $title, $create, $comment, $oldPageId, $restoredPages ) {
 		if ( !$create ) {
 			// not interested in revdel actions
+			return;
+		}
+
+		if ( in_array( $title->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
+			// don't queue pages in namespaces where PageTriage is disabled
 			return;
 		}
 
