@@ -28,7 +28,8 @@
 			"Samwilson",
 			"Vivaelcelta",
 			"Yllelder",
-			"DiegoAmbrocio"
+			"DiegoAmbrocio",
+			"Francodiaz7"
 		]
 	},
 	"pagetriage": "Triaje de páginas",
@@ -175,7 +176,7 @@
 	"pagetriage-button-edit-details": "Editar los detalles",
 	"pagetriage-button-mark-for-deletion": "Marcar para borrado",
 	"pagetriage-add-a-note-creator": "Añadir un mensaje para el creador: (opcional)",
-	"pagetriage-add-a-note-creator-required": "Añadir un mensaje para el creador:",
+	"pagetriage-add-a-note-creator-required": "Añade un mensaje para el creador. Este mensaje también se publicará en la página de discusión del artículo.",
 	"pagetriage-add-a-note-for-options-label": "Enviar un mensaje a:",
 	"pagetriage-add-a-note-for-option-creator": "creador (Usuario:$1)",
 	"pagetriage-button-add-a-note-to-creator": "Añadir un mensaje para el creador",
@@ -440,7 +441,7 @@
 	"apihelp-pagetriageaction-description": "Marcar un artículo como revisado o no revisado.",
 	"apihelp-pagetriageaction-summary": "Marcar un artículo como revisado o no revisado.",
 	"apihelp-pagetriageaction-param-pageid": "El artículo a marcar como revisado o no revisado.",
-	"apihelp-pagetriageaction-param-reviewed": "Si el artículo está revisado.",
+	"apihelp-pagetriageaction-param-reviewed": "Si la página debe marcarse como revisada",
 	"apihelp-pagetriageaction-param-note": "Nota personal de los revisores a los creadores de páginas.",
 	"apihelp-pagetriageaction-param-skipnotif": "Si se debe omitir la notificación.",
 	"apihelp-pagetriagelist-param-page_id": "Devolver datos de los identificadores de página especificados, ignorando otros parámetros.",
