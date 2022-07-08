@@ -856,6 +856,7 @@ class Hooks {
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
 		$base = __DIR__ . "/../sql";
+		$dbType = $updater->getDB()->getType();
 		$updater->addExtensionTable( 'pagetriage_tags', $base . '/PageTriageTags.sql' );
 		$updater->addExtensionTable( 'pagetriage_page_tags', $base . '/PageTriagePageTags.sql' );
 		$updater->addExtensionTable( 'pagetriage_page', $base . '/PageTriagePage.sql' );
@@ -883,6 +884,20 @@ class Hooks {
 			'ptrpt_page_tag_id',
 			$base . '/PageTriagePageTagsPatch-pk.sql'
 		);
+
+		// 1.39
+		if ( $dbType === 'mysql' ) {
+			$updater->modifyExtensionField(
+				'pagetriage_log',
+				'ptrl_timestamp',
+				$base . '/patch-pagetriage_log-timestamp.sql'
+			);
+			$updater->modifyExtensionField(
+				'pagetriage_page',
+				'ptrp_reviewed_updated',
+				$base . '/patch-pagetriage_page-timestamps.sql'
+			);
+		}
 	}
 
 	/**

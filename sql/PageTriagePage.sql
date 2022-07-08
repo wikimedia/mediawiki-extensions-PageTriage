@@ -5,9 +5,9 @@ CREATE TABLE /*_*/pagetriage_page (
 	ptrp_page_id int unsigned NOT NULL PRIMARY KEY,
 	ptrp_reviewed tinyint unsigned NOT NULL DEFAULT 0, -- page reviewed status
 	ptrp_deleted tinyint unsigned NOT NULL DEFAULT 0, -- the page is nominated for deletion or not
-	ptrp_created VARBINARY(14) NOT NULL, -- page created timestamp
-	ptrp_tags_updated VARBINARY(14) NOT NULL, -- metadata (tags) updated timestamp
-	ptrp_reviewed_updated VARBINARY(14) NOT NULL, -- the timestamp when ptrp_reviewed gets updated
+	ptrp_created BINARY(14) NOT NULL, -- page created timestamp
+	ptrp_tags_updated BINARY(14) NOT NULL, -- metadata (tags) updated timestamp
+	ptrp_reviewed_updated BINARY(14) NOT NULL, -- the timestamp when ptrp_reviewed gets updated
 	ptrp_last_reviewed_by int unsigned NOT NULL default 0 -- the last user who reviewed the page
 ) /*$wgDBTableOptions*/;
 
