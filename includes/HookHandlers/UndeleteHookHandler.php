@@ -42,7 +42,7 @@ class UndeleteHookHandler implements ArticleUndeleteHook {
 			return;
 		}
 
-		if ( in_array( $title->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
+		if ( !in_array( $title->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			// don't queue pages in namespaces where PageTriage is disabled
 			return;
 		}
