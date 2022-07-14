@@ -24,5 +24,6 @@
 	"pagetriage-tags-param-article-label": "Artikkel:",
 	"pagetriage-tags-param-date-label": "Peiʹvvmieʹrr:",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|muuttâs|muttâz|muttsed}}",
-	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Späʹssbõõžž}}}}"
+	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Späʹssbõõžž}}}}",
+	"apihelp-pagetriagetagging-summary": "Lââʹzzted ǩeâlgglid artikkeela."
 }
