@@ -147,6 +147,7 @@ module.exports = ToolView.extend( {
 	deletionTagsOptions: {},
 	selectedTag: {},
 	selectedCat: '',
+	visibleParamsFormCount: 0,
 
 	/**
 	 * Initialize data on startup
@@ -180,9 +181,9 @@ module.exports = ToolView.extend( {
 	},
 
 	/**
-	 * Set up deletion tags based on namespace, for main namespace, show 'redirects
-	 * for discussion' or 'articles for deletion' for xfd depending on whether the
-	 * article is a redirect
+	 * Set up deletion tags based on namespace. For main namespace, set 'redirects
+	 * for discussion' or 'articles for deletion' depending on whether the
+	 * article is a redirect. For user namespace, set 'miscellany for deletion'.
 	 */
 	setupDeletionTags: function () {
 		// user namespace
@@ -228,6 +229,9 @@ module.exports = ToolView.extend( {
 		$( '#mwe-pt-delete-categories' ).find( 'div' ).each( function () {
 			var cat = $( $( this ).html() ).attr( 'cat' );
 			$( this ).on( 'click', function () {
+				that.visibleParamsFormCount = 0;
+				that.refreshSubmitButton();
+
 				$( this ).find( 'a' ).trigger( 'blur' );
 				that.displayTags( cat );
 				return false;
@@ -349,6 +353,13 @@ module.exports = ToolView.extend( {
 				var tagKeyMatches = $( this ).attr( 'id' ).match( /.*-delete-(.*)/ ),
 					tagKey = tagKeyMatches[ 1 ];
 
+				// if user unchecks a checkbox and there is an adjacent paramsForm
+				// that will be closed by this action, decrease the counter
+				if ( $( '#mwe-pt-delete-params-form-' + tagKey ).is( ':visible' ) ) {
+					that.visibleParamsFormCount--;
+					that.refreshSubmitButton();
+				}
+
 				$( '#mwe-pt-delete-params-form-' + tagKey ).hide();
 				if ( !that.selectedTag[ tagKey ] ) {
 					$( '#mwe-pt-checkbox-delete-' + tagKey ).prop( 'checked', true );
@@ -400,7 +411,9 @@ module.exports = ToolView.extend( {
 	 * Refresh the submit button
 	 */
 	refreshSubmitButton: function () {
-		if ( this.objectPropCount( this.selectedTag ) > 0 ) {
+		// Do not display the submit button until all visible paramsForms have
+		// had their "Add details" buttons clicked. T238025, T313108
+		if ( this.objectPropCount( this.selectedTag ) > 0 && this.visibleParamsFormCount === 0 ) {
 			$( '#mwe-pt-delete-submit-button' ).button( 'enable' );
 		} else {
 			$( '#mwe-pt-delete-submit-button' ).button( 'disable' );
@@ -476,7 +489,9 @@ module.exports = ToolView.extend( {
 	},
 
 	/**
-	 * Show the parameters form
+	 * Show the parameters form. Typically contains a label, a text input or
+	 * textarea, an "Add details" button, and a "Cancel" button. It collects
+	 * additional input from the user regarding a tag.
 	 *
 	 * @param {string} key
 	 */
@@ -485,6 +500,9 @@ module.exports = ToolView.extend( {
 			html = '',
 			tag = this.selectedTag[ key ],
 			firstField = '';
+
+		this.visibleParamsFormCount++;
+		this.refreshSubmitButton();
 
 		this.hideParamsLink( key );
 
@@ -520,18 +538,24 @@ module.exports = ToolView.extend( {
 		$( '#mwe-pt-delete-params-form-' + key ).html( html );
 		$( '#mwe-pt-delete-params-form-' + key ).show();
 
-		// Add click event for the Set Parameters button
+		// Add click event for the paramsForm "Add details" button
 		$( '#mwe-pt-delete-set-param-' + key ).button().on( 'click', function () {
 			if ( that.setParams( key ) ) {
+				that.visibleParamsFormCount--;
+				that.refreshSubmitButton();
+
 				// Hide the form and show the link to reopen it
 				that.hideParamsForm( key );
 				that.showParamsLink( key );
 			}
 		} );
 
-		// Add click event for the Cancel button
+		// Add click event for the paramsForm "Cancel" button
 		$( '#mwe-pt-delete-cancel-param-' + key ).button().on( 'click', function () {
 			for ( var param in tag.params ) {
+				that.visibleParamsFormCount--;
+				that.refreshSubmitButton();
+
 				if ( tag.params[ param ].input === 'required' && !tag.params[ param ].value ) {
 					delete that.selectedTag[ key ];
 					$( '#mwe-pt-checkbox-delete-' + key ).prop( 'checked', false );
@@ -666,20 +690,25 @@ module.exports = ToolView.extend( {
 				skipnotif: '1'
 			} )
 				.then( function () {
-					// Log certain types of deletion nominations...
-					// If the selected tag category doesn't allow multiple selection
-					// and the selected tag has a prefix (like Wikipedia:Articles for
-					// deletion) update the log page for that deletion type.
-					// TODO: Make logging a JS config-based option
-					if ( !that.deletionTagsOptions[ that.selectedCat ].multiple ) {
+					var isXFD = !that.deletionTagsOptions[ that.selectedCat ].multiple;
+					if ( isXFD ) {
 						for ( var key in that.selectedTag ) {
 							var tagObj = that.selectedTag[ key ];
 							if ( tagObj.prefix ) {
+								// Async fork #1: logPage() -> addToLog() -> disucssionPage(), which
+								// handles writing to the XFD daily log and creating the XFD page. This
+								// code path is only used for the XFD options (AFD for mainspace, RFD
+								// for redirects, MFD for userspace)
 								that.logPage( tagObj );
 								break;
 							}
 						}
 					}
+
+					// Async fork #2: tagPage() -> notifyUser(), which handles tagging the
+					// article with a deletion tag and notifying the creator on their user
+					// talk page. This code path is used by all deletion options (CSD, PROD,
+					// XFD).
 					that.tagPage();
 
 					// Queue up the necessary actions. These will get ran just before we refresh the page.
@@ -906,10 +935,9 @@ module.exports = ToolView.extend( {
 		new mw.Api().postWithToken( 'csrf', request )
 			.done( function ( data ) {
 				if ( data.edit && data.edit.result === 'Success' ) {
+					// If AFD or MFD, make page. Else we're done for now.
 					if ( tagObj.discussion ) {
 						that.discussionPage( tagObj );
-					} else {
-						that.tagPage();
 					}
 				} else {
 					that.handleError( mw.msg( 'pagetriage-del-log-page-adding-error' ) );
@@ -921,7 +949,7 @@ module.exports = ToolView.extend( {
 	},
 
 	/**
-	 * Generate the discussion page
+	 * Generate an AFD or MFD discussion page
 	 *
 	 * @param {Object} tagObj
 	 * @return {Promise}
@@ -943,9 +971,6 @@ module.exports = ToolView.extend( {
 		specialDeletionTagging[ tagObj.tag ].buildDiscussionRequest( tagObj.params[ '1' ].value, request );
 
 		return new mw.Api().postWithToken( 'csrf', request )
-			.done( function () {
-				that.tagPage();
-			} )
 			.fail( function () {
 				that.handleError( mw.msg( 'pagetriage-del-discussion-page-adding-error' ) );
 			} );
