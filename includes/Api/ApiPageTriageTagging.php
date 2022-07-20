@@ -106,12 +106,8 @@ class ApiPageTriageTagging extends ApiBase {
 			// logging to the logging table
 			if ( $params['taglist'] ) {
 				if ( $params['deletion'] ) {
-					$entry = [
-						// We want delete tag to have its own log as well as be included under page curation log
-						// Todo: Find a way to filter log by action (subtype) so the deletion log can be removed
-						'pagetriage-curation' => 'delete',
-						'pagetriage-deletion' => 'delete'
-					];
+					$action = 'delete';
+
 					PageTriageUtil::createNotificationEvent(
 						$title,
 						$this->getUser(),
@@ -122,9 +118,8 @@ class ApiPageTriageTagging extends ApiBase {
 						]
 					);
 				} else {
-					$entry = [
-						'pagetriage-curation' => 'tag'
-					];
+					$action = 'tag';
+
 					PageTriageUtil::createNotificationEvent(
 						$title,
 						$this->getUser(),
@@ -137,19 +132,17 @@ class ApiPageTriageTagging extends ApiBase {
 					);
 				}
 
-				foreach ( $entry as $type => $action ) {
-					$logEntry = new ManualLogEntry( $type, $action );
-					$logEntry->setPerformer( $this->getUser() );
-					$logEntry->setTarget( $title );
-					if ( $note ) {
-						$logEntry->setComment( $note );
-					}
-					$logEntry->setParameters( [
-						'tags' => $params['taglist']
-					] );
-					$logEntry->addTags( 'pagetriage' );
-					$logEntry->publish( $logEntry->insert() );
+				$logEntry = new ManualLogEntry( 'pagetriage-curation', $action );
+				$logEntry->setPerformer( $this->getUser() );
+				$logEntry->setTarget( $title );
+				if ( $note ) {
+					$logEntry->setComment( $note );
 				}
+				$logEntry->setParameters( [
+					'tags' => $params['taglist']
+				] );
+				$logEntry->addTags( 'pagetriage' );
+				$logEntry->publish( $logEntry->insert() );
 			}
 		}
 

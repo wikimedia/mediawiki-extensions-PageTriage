@@ -60,6 +60,9 @@
 			],
 			"tag": [
 				"tag"
+			],
+			"delete": [
+				"delete"
 			]
 		}
 	},

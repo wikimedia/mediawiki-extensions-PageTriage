@@ -1,7 +1,7 @@
 <?php
 /**
  * update parameter name from '4::tags' to 'tags' in pagetriage-curation
- * and pagetriage-deletion log
+ * and (now defunct) pagetriage-deletion log
  *
  * @ingroup Maintenance
  */
@@ -12,7 +12,7 @@ require_once __DIR__ . '/../../../maintenance/Maintenance.php';
 
 /**
  * Maintenance script that updates parameter name from '4::tags' to 'tags' in
- * pagetriage-curation and pagetriage-deletion log
+ * pagetriage-curation and (now defunct) pagetriage-deletion log
  *
  * @ingroup Maintenance
  */
@@ -33,6 +33,7 @@ class CleanupPageTriageLog extends Maintenance {
 		$logTypes = [
 			[ 'type' => 'pagetriage-curation', 'action' => 'tag' ],
 			[ 'type' => 'pagetriage-curation', 'action' => 'delete' ],
+			// The below log_type no longer exists. Leaving for backwards compatibility.
 			[ 'type' => 'pagetriage-deletion', 'action' => 'delete' ]
 		];
 		$batchSize = $this->getBatchSize();

@@ -419,6 +419,7 @@
 	"log-action-filter-pagetriage-curation-unreview": "{{doc-log-action-filter-action|pagetriage-curation|unreview}}",
 	"log-action-filter-pagetriage-curation-enqueue": "{{doc-log-action-filter-action|pagetriage-curation|enqueue}}",
 	"log-action-filter-pagetriage-curation-tag": "{{doc-log-action-filter-action|pagetriage-curation|tag}}",
+	"log-action-filter-pagetriage-curation-delete": "{{doc-log-action-filter-action|pagetriage-curation|delete}}",
 	"pagetriage-tags-edit-summary": "The edit summary that is posted when someone applies tags to an article with the Curation Toolbar in PageTriage.\n*$1 is a link to the local wiki page about the Curation Toolbar with {{msg-mw|pagetriage-pagecuration}} as the link text.\n*$2 is the list of tags added to the article.",
 	"pagetriage-del-edit-summary": "The edit summary that is posted when someone nominates an article for deletion with the Curation Toolbar in PageTriage.\n* $1 - a link to the local wiki page about the Curation Toolbar with {{msg-mw|pagetriage-pagecuration}} as the link text\n* $2 - the list of deletion tags added to the article",
 	"pagetriage-del-tags-param-discussion-label": "Prompt for explanation about why the user wants to nominate a page for deletion",
