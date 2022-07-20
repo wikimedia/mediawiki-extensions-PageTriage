@@ -34,7 +34,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 		global $wgPageTriageInfiniteScrolling,
 				$wgPageTriageStickyControlNav, $wgPageTriageStickyStatsNav,
 				$wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl, $wgPageTriageEnableOresFilters,
-				$wgPageTriageEnableCopyvio;
+				$wgPageTriageEnableCopyvio, $wgPageTriageEnableEnglishWikipediaFeatures;
 		$this->addHelpLink( 'Help:New_pages_feed' );
 
 		$request = $this->getRequest();
@@ -64,6 +64,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 			'wgPageTriageStickyControlNav' => $wgPageTriageStickyControlNav,
 			'wgPageTriageStickyStatsNav' => $wgPageTriageStickyStatsNav,
 			'wgPageTriageEnableReviewButton' => $user->isRegistered() && $user->isAllowed( 'patrol' ),
+			'wgPageTriageEnableEnglishWikipediaFeatures' => $wgPageTriageEnableEnglishWikipediaFeatures,
 			'wgShowOresFilters' => $showOresFilters,
 			'wgShowCopyvio' => $showCopyvio,
 		];

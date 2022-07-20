@@ -82,7 +82,7 @@ $( function () {
 			this.$afcDeclinedSortOptions = $( '.mwe-pt-afc-sort-declined' ).detach();
 			this.$afcSubmittedSortOptions = $( '.mwe-pt-afc-sort-submitted' ).detach();
 
-			// align the filter dropdown box with the dropdown control widget
+			// position the filter dropdown box in the correct location
 			// yield to other JS first per bug 46367
 			setTimeout( function () {
 				var startSide = $( 'body' ).hasClass( 'rtl' ) ? 'right' : 'left',
@@ -94,12 +94,16 @@ $( function () {
 				$( '#mwe-pt-dropdown-arrow' ).html( arrowClosed );
 			} );
 
-			// Set namespace options.
+			// Populate "namespace" combo box with options
 			$( '#mwe-pt-filter-namespace' ).empty().append( this.getNamespaceOptions() );
 
 			//
 			// now that the template's been inserted, set up some events for controlling it
 			//
+
+			// Do an initial filterSync() in case wgPageTriageEnableEnglishWikipediaFeatures = false. We need to
+			// unset some options that are turned off by this.
+			that.filterSync();
 
 			// Queue-mode radio buttons.
 			$( '.mwe-pt-queuemode-radio' ).on( 'change', function ( e ) {
@@ -122,7 +126,8 @@ $( function () {
 			} );
 
 			$( '#mwe-pt-filter-user' ).on( 'keypress', function ( e ) {
-				if ( e.which === 13 ) {
+				var userPressedEnter = e.which === 13;
+				if ( userPressedEnter ) {
 					$( '#mwe-pt-filter-set-button' ).trigger( 'click' );
 					e.preventDefault();
 					return false;
@@ -331,6 +336,21 @@ $( function () {
 				apiParams.namespace = $( '#mwe-pt-filter-namespace' ).val();
 				apiParams.nppDir = $( '#mwe-pt-sort-oldest' ).prop( 'checked' ) ?
 					'oldestfirst' : 'newestfirst';
+
+				var wgPageTriageEnableEnglishWikipediaFeatures = mw.config.get( 'wgPageTriageEnableEnglishWikipediaFeatures' );
+				if ( !wgPageTriageEnableEnglishWikipediaFeatures ) {
+					// Set to false any options that are supposed to be hidden by
+					// wgPageTriageEnableEnglishWikipediaFeatures = false
+					apiParams.showdeleted = false;
+					/* eslint-disable camelcase */
+					apiParams.show_predicted_class_stub = false;
+					apiParams.show_predicted_class_start = false;
+					apiParams.show_predicted_class_c = false;
+					apiParams.show_predicted_class_b = false;
+					apiParams.show_predicted_class_good = false;
+					apiParams.show_predicted_class_featured = false;
+					/* eslint-enable camelcase */
+				}
 			} else {
 				// AfC
 				apiParams.namespace = mw.config.get( 'wgNamespaceIds' ).draft;
@@ -560,6 +580,7 @@ $( function () {
 						// For the top-level filter, don't put it in parentheses and don't prefix it with a group label (T199277)
 						return filters[ 0 ];
 					}
+					// eslint-disable-next-line mediawiki/msg-doc
 					return mw.msg( 'pagetriage-filter-stat-' + group ) + ' ' +
 						mw.msg( 'parentheses', filters.join( mw.msg( 'comma-separator' ) ) );
 				} )
@@ -736,11 +757,13 @@ $( function () {
 
 			// Set the "Showing: ..." filter status.
 			var afcStateName = $( 'input[name=mwe-pt-filter-afc-radio]:checked' ).data( 'afc-state-name' );
+			// eslint-disable-next-line mediawiki/msg-doc
 			this.newFilterStatus.state.push( mw.msg( 'pagetriage-afc-state-' + afcStateName ) );
 		},
 
 		/**
-		 * Update a checkbox in the filter menu with data from the model.
+		 * Update a checkbox in the filter menu with data from the model, and update the filter status
+		 * string that is used to update the "showing" label (mwe-pt-filter-status)
 		 *
 		 * @param {jQuery} $checkbox The JQuery object of the input element.
 		 * @param {string} param The value (i.e. 1 or 0, checked or not).
@@ -750,6 +773,7 @@ $( function () {
 		menuCheckboxUpdate: function ( $checkbox, param, message, filterGroup ) {
 			$checkbox.prop( 'checked', parseInt( this.model.getParam( param ), 10 ) === 1 );
 			if ( this.model.getParam( param ) ) {
+				// eslint-disable-next-line mediawiki/msg-doc
 				this.newFilterStatus[ filterGroup ].push( mw.msg( message ) );
 			}
 		},
@@ -780,6 +804,7 @@ $( function () {
 		 */
 		getDateRangeFilterFieldsHtml: function ( context, dateRangeType ) {
 			return '<label for="mwe-pt-filter-' + context + '-date-range-' + dateRangeType + '">' +
+						// eslint-disable-next-line mediawiki/msg-doc
 						mw.msg( 'pagetriage-filter-date-range-' + dateRangeType ) + ' ' +
 					'</label>' +
 					'<input type="date" name="mwe-pt-filter-' + context + '-date-range-' + dateRangeType + '"' +

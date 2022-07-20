@@ -52,13 +52,13 @@ ToolbarView = Backbone.View.extend( {
 		}
 
 		// add tags
-		if ( this.isFlyoutEnabled( 'tags' ) ) {
+		if ( this.isFlyoutEnabled( 'tags' ) && config.PageTriageEnableEnglishWikipediaFeatures ) {
 			var TagsView = require( './tags.js' );
 			tools.push( new TagsView( { eventBus: eventBus, model: article, moduleConfig: modules.tags } ) );
 		}
 
 		// delete
-		if ( this.isFlyoutEnabled( 'delete' ) ) {
+		if ( this.isFlyoutEnabled( 'delete' ) && config.PageTriageEnableEnglishWikipediaFeatures ) {
 			var DeleteView = require( './delete.js' );
 			tools.push( new DeleteView( { eventBus: eventBus, model: article, moduleConfig: modules.delete } ) );
 		}

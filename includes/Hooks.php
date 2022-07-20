@@ -629,6 +629,8 @@ class Hooks {
 							'PageTriageCurationModules' => $pageTriageCurationModules,
 							'PageTriageEnableCopyvio' => $config->get( 'PageTriageEnableCopyvio' ),
 							'PageTriageEnableOresFilters' => $config->get( 'PageTriageEnableOresFilters' ),
+							'PageTriageEnableEnglishWikipediaFeatures' =>
+								$config->get( 'PageTriageEnableEnglishWikipediaFeatures' ),
 							'TalkPageNoteTemplate' => $config->get( 'TalkPageNoteTemplate' ),
 						];
 					}

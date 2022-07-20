@@ -83,11 +83,13 @@
 								<b><%- mw.msg( 'pagetriage-filter-type-show-heading' ) %></b>
 							</span>
 							<div class="mwe-pt-control-options">
-								<input type="checkbox"
-									   id="mwe-pt-filter-nominated-for-deletion"/>
-								<label for="mwe-pt-filter-nominated-for-deletion">
-									<%- mw.msg( 'pagetriage-filter-nominated-for-deletion' ) %>
-								</label> <br/>
+								<% if ( mw.config.get( 'wgPageTriageEnableEnglishWikipediaFeatures' ) ) { %>
+									<input type="checkbox"
+										id="mwe-pt-filter-nominated-for-deletion"/>
+									<label for="mwe-pt-filter-nominated-for-deletion">
+										<%- mw.msg( 'pagetriage-filter-nominated-for-deletion' ) %>
+									</label> <br/>
+								<% } %>
 								<input type="checkbox" id="mwe-pt-filter-redirects"/>
 								<label for="mwe-pt-filter-redirects">
 									<%- mw.msg( 'pagetriage-filter-redirects' ) %>
@@ -189,43 +191,45 @@
 						</div>
 					<% if ( mw.config.get( 'wgShowOresFilters' ) ) { %>
 						<div class="mwe-pt-control-section__col3">
-							<div class="mwe-pt-control-section">
-								<span class="mwe-pt-control-label">
-									<b><%- mw.msg( 'pagetriage-filter-predicted-class-heading' ) %></b>
-								</span>
-								<div class="mwe-pt-control-options">
-									<input type="checkbox"
-										   id="mwe-pt-filter-npp-predicted-class-stub"/>
-									<label for="mwe-pt-filter-npp-predicted-class-stub">
-										<%- mw.msg( 'pagetriage-filter-predicted-class-stub' ) %>
-									</label> <br/>
-									<input type="checkbox"
-										   id="mwe-pt-filter-npp-predicted-class-start"/>
-									<label for="mwe-pt-filter-npp-predicted-class-start">
-										<%- mw.msg( 'pagetriage-filter-predicted-class-start' ) %>
-									</label> <br/>
-									<input type="checkbox"
-										   id="mwe-pt-filter-npp-predicted-class-c"/>
-									<label for="mwe-pt-filter-npp-predicted-class-c">
-										<%- mw.msg( 'pagetriage-filter-predicted-class-c' ) %>
-									</label> <br/>
-									<input type="checkbox"
-										   id="mwe-pt-filter-npp-predicted-class-b"/>
-									<label for="mwe-pt-filter-npp-predicted-class-b">
-										<%- mw.msg( 'pagetriage-filter-predicted-class-b' ) %>
-									</label> <br/>
-									<input type="checkbox"
-										   id="mwe-pt-filter-npp-predicted-class-good"/>
-									<label for="mwe-pt-filter-npp-predicted-class-good">
-										<%- mw.msg( 'pagetriage-filter-predicted-class-good' ) %>
-									</label> <br/>
-									<input type="checkbox"
-										   id="mwe-pt-filter-npp-predicted-class-featured"/>
-									<label for="mwe-pt-filter-npp-predicted-class-featured">
-										<%- mw.msg( 'pagetriage-filter-predicted-class-featured' ) %>
-									</label> <br/>
+							<% if ( mw.config.get( 'wgPageTriageEnableEnglishWikipediaFeatures' ) ) { %>
+								<div class="mwe-pt-control-section">
+									<span class="mwe-pt-control-label">
+										<b><%- mw.msg( 'pagetriage-filter-predicted-class-heading' ) %></b>
+									</span>
+									<div class="mwe-pt-control-options">
+										<input type="checkbox"
+											id="mwe-pt-filter-npp-predicted-class-stub"/>
+										<label for="mwe-pt-filter-npp-predicted-class-stub">
+											<%- mw.msg( 'pagetriage-filter-predicted-class-stub' ) %>
+										</label> <br/>
+										<input type="checkbox"
+											id="mwe-pt-filter-npp-predicted-class-start"/>
+										<label for="mwe-pt-filter-npp-predicted-class-start">
+											<%- mw.msg( 'pagetriage-filter-predicted-class-start' ) %>
+										</label> <br/>
+										<input type="checkbox"
+											id="mwe-pt-filter-npp-predicted-class-c"/>
+										<label for="mwe-pt-filter-npp-predicted-class-c">
+											<%- mw.msg( 'pagetriage-filter-predicted-class-c' ) %>
+										</label> <br/>
+										<input type="checkbox"
+											id="mwe-pt-filter-npp-predicted-class-b"/>
+										<label for="mwe-pt-filter-npp-predicted-class-b">
+											<%- mw.msg( 'pagetriage-filter-predicted-class-b' ) %>
+										</label> <br/>
+										<input type="checkbox"
+											id="mwe-pt-filter-npp-predicted-class-good"/>
+										<label for="mwe-pt-filter-npp-predicted-class-good">
+											<%- mw.msg( 'pagetriage-filter-predicted-class-good' ) %>
+										</label> <br/>
+										<input type="checkbox"
+											id="mwe-pt-filter-npp-predicted-class-featured"/>
+										<label for="mwe-pt-filter-npp-predicted-class-featured">
+											<%- mw.msg( 'pagetriage-filter-predicted-class-featured' ) %>
+										</label> <br/>
+									</div>
 								</div>
-							</div>
+							<% } %>
 							<div class="mwe-pt-control-section">
 								<span class="mwe-pt-control-label">
 									<b><%- mw.msg( 'pagetriage-filter-predicted-issues-heading' ) %></b>

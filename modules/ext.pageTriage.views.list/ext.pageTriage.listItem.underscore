@@ -94,12 +94,14 @@
 		<% if ( mw.config.get( 'wgShowOresFilters' ) ) { %>
 		<div class="mwe-pt-info-row">
 			<div class="mwe-pt-predicted-class">
-				<span class="mwe-pt-article-ores-predicted-class-label">
-					<%- mw.msg( 'pagetriage-filter-predicted-class-heading' ) %>
-				</span>
-				<span class="mwe-pt-article-ores-predicted-class-value">
-					<%- ores_articlequality %>
-				</span>
+				<% if ( mw.config.get( 'wgPageTriageEnableEnglishWikipediaFeatures' ) ) { %>
+					<span class="mwe-pt-article-ores-predicted-class-label">
+						<%- mw.msg( 'pagetriage-filter-predicted-class-heading' ) %>
+					</span>
+					<span class="mwe-pt-article-ores-predicted-class-value">
+						<%- ores_articlequality %>
+					</span>
+				<% } %>
 			</div>
 			<div class="mwe-pt-potential-issues">
 				<span><%- mw.msg( 'pagetriage-filter-predicted-issues-heading' ) %></span>

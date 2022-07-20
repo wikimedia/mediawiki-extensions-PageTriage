@@ -16,7 +16,11 @@ use Wikimedia\ParamValidator\ParamValidator;
 class ApiPageTriageTagging extends ApiBase {
 
 	public function execute() {
-		global $wgPageTriageProjectLink;
+		global $wgPageTriageProjectLink, $wgPageTriageEnableEnglishWikipediaFeatures;
+
+		if ( !$wgPageTriageEnableEnglishWikipediaFeatures ) {
+			return;
+		}
 
 		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
 
