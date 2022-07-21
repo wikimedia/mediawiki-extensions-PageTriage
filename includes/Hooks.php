@@ -295,57 +295,92 @@ class Hooks {
 	/**
 	 * Determines whether to set noindex for the article specified
 	 *
-	 * Returns true if all of the following are true:
-	 *   1. The page includes __NOINDEX__
-	 *   2. The page was at some point in the triage queue
-	 *   3. The page is younger than the maximum age for "new pages"
-	 * or all of the following are true:
-	 *   1. $wgPageTriageNoIndexUnreviewedNewArticles is true
-	 *   2. The page is in the triage queue and has not been triaged
-	 *   3. The page is younger than the maximum age for "new pages"
-	 * Note that we always check the age of the page last since that is
-	 * potentially the most expensive check (if the data isn't cached).
+	 * The NOINDEX logic is explained at:
+	 * https://www.mediawiki.org/wiki/Extension:PageTriage#NOINDEX
 	 *
 	 * @param Article $article
 	 * @return bool
 	 */
 	private static function shouldShowNoIndex( Article $article ) {
-		global $wgPageTriageNoIndexUnreviewedNewArticles;
+		$page = $article->getPage();
 
-		// If the __NOINDEX__ magic word is on a new article, then allow
-		// it to work, regardless of namespace robot policies.
-		if ( $article->mParserOutput instanceof ParserOutput
-			&& $article->mParserOutput->getPageProperty( 'noindex' ) !== null
-		) {
-			// Short circuit since we know it will fail the next set
-			// of tests as well.
-			return self::isPageNew( $article->getPage() );
+		if ( self::shouldNoIndexForNewArticleReasons( $page ) ) {
+			return true;
 		}
 
-		return $wgPageTriageNoIndexUnreviewedNewArticles
-			&& PageTriageUtil::doesPageNeedTriage( $article->getPage() )
-			&& self::isPageNew( $article->getPage() );
+		$wikitextHasNoIndexMagicWord = $article->mParserOutput instanceof ParserOutput
+			&& $article->mParserOutput->getPageProperty( 'noindex' ) !== null;
+
+		if ( $wikitextHasNoIndexMagicWord && self::shouldNoIndexForMagicWordReasons( $page ) ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
-	 * Checks to see if an article is new, i.e. less than $wgPageTriageMaxAge
+	 * Calculate whether we should show NOINDEX, based on criteria related to whether
+	 * the page is reviewed.
 	 *
-	 * Look in cache for the creation date, if not found, query the replica for the value
+	 * The NOINDEX logic is explained at:
+	 * https://www.mediawiki.org/wiki/Extension:PageTriage#NOINDEX
+	 *
+	 * Note that we always check the age of the page last since that is potentially the
+	 * most expensive check (if the data isn't cached). Performance is important because
+	 * this code is run on every page.
+	 *
+	 * @param WikiPage $page
+	 * @return bool
+	 */
+	private static function shouldNoIndexForNewArticleReasons( WikiPage $page ) {
+		global $wgPageTriageNoIndexUnreviewedNewArticles, $wgPageTriageMaxAge;
+
+		if ( !$wgPageTriageNoIndexUnreviewedNewArticles ) {
+			return false;
+		} elseif ( !PageTriageUtil::isPageUnreviewed( $page ) ) {
+			return false;
+		} elseif ( !self::isNewEnoughToNoIndex( $page, $wgPageTriageMaxAge ) ) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	/**
+	 * Calculate whether we should show NOINDEX, based on criteria related to whether the
+	 * page contains a __NOINDEX__ magic word.
+	 *
+	 * The NOINDEX logic is explained at:
+	 * https://www.mediawiki.org/wiki/Extension:PageTriage#NOINDEX
+	 *
+	 * @param WikiPage $page
+	 * @return bool
+	 */
+	private static function shouldNoIndexForMagicWordReasons( WikiPage $page ) {
+		global $wgPageTriageMaxNoIndexAge;
+
+		return self::isNewEnoughToNoIndex( $page, $wgPageTriageMaxNoIndexAge );
+	}
+
+	/**
+	 * Checks to see if an article is new, i.e. less than the supplied $maxAgeInDays
+	 *
+	 * Look in cache for the creation date. If not found, query the replica for the value
 	 * of ptrp_created.
 	 *
 	 * @param WikiPage $wikiPage WikiPage to check
+	 * @param int|null|false $maxAgeInDays How many days old an article has to be to be
+	 * considered "not new".
 	 * @return bool
 	 */
-	private static function isPageNew( WikiPage $wikiPage ) {
-		global $wgPageTriageMaxAge;
-
+	private static function isNewEnoughToNoIndex( WikiPage $wikiPage, $maxAgeInDays ) {
 		$pageId = $wikiPage->getId();
 		if ( !$pageId ) {
 			return false;
 		}
 
-		// Allow disabling the age threshold for noindex by setting maxAge to null
-		if ( !$wgPageTriageMaxAge ) {
+		// Allow disabling the age threshold for noindex by setting maxAge to null, 0, or false
+		if ( !$maxAgeInDays ) {
 			return true;
 		}
 
@@ -380,7 +415,7 @@ class Hooks {
 		$timestamp = new MWTimestamp( $pageCreationDateTime );
 		$dateInterval = $timestamp->diff( new MWTimestamp() );
 		$articleDaysOld = $dateInterval->format( '%a' );
-		if ( $articleDaysOld < $wgPageTriageMaxAge ) {
+		if ( $articleDaysOld < $maxAgeInDays ) {
 			// If it's younger than the maximum age, return true.
 			return true;
 		}
@@ -437,7 +472,7 @@ class Hooks {
 		// See if the page is in the PageTriage page queue
 		// If it isn't, $needsReview will be null
 		// Also, users without the autopatrol right can't review their own pages
-		$needsReview = PageTriageUtil::doesPageNeedTriage( $wikiPage );
+		$needsReview = PageTriageUtil::isPageUnreviewed( $wikiPage );
 		$revStore = MediaWikiServices::getInstance()->getRevisionStore();
 		if ( $needsReview !== null
 			&& (

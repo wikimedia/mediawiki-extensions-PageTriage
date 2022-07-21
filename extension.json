@@ -648,6 +648,9 @@
 		"PageTriageMaxAge": {
 			"value": 90
 		},
+		"PageTriageMaxNoIndexAge": {
+			"value": 90
+		},
 		"PageTriagePagesPerRequest": {
 			"value": 20
 		},

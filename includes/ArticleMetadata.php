@@ -69,7 +69,7 @@ class ArticleMetadata {
 		$pageIdsPurge = ( $pageId === null ) ? $this->pageIds : [ $pageId ];
 		foreach ( $pageIdsPurge as $pageIdPurge ) {
 			$cache->delete( $cache->makeKey( self::KEY_COLLECTION, $pageIdPurge ) );
-			// For Hooks::isPageNew
+			// For Hooks::isNewEnoughToNoIndex
 			$cache->delete( $cache->makeKey( 'pagetriage-page-created', $pageIdPurge ) );
 		}
 	}

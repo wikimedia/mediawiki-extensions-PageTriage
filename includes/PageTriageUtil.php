@@ -31,7 +31,7 @@ class PageTriageUtil {
 	 * Return convention is this way so that null and false are equivalent
 	 * with a straight boolean test.
 	 */
-	public static function doesPageNeedTriage( WikiPage $page ) {
+	public static function isPageUnreviewed( WikiPage $page ) {
 		$pageId = $page->getId();
 		$dbr = wfGetDB( DB_REPLICA );
 
