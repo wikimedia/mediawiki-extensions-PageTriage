@@ -636,6 +636,9 @@
 		"PageTriageEnableCopyvio": {
 			"value": false
 		},
+		"PageTriageRedirectAutoreviewAge": {
+			"value": 180
+		},
 		"PageTriageMaxAge": {
 			"value": 90
 		},
