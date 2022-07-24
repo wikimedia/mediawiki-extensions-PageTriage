@@ -509,6 +509,9 @@ class PageTriageUtil {
 			'showbots' => [
 				ParamValidator::PARAM_TYPE => 'boolean',
 			],
+			'showautopatrolled' => [
+				ParamValidator::PARAM_TYPE => 'boolean',
+			],
 			'showredirs' => [
 				ParamValidator::PARAM_TYPE => 'boolean',
 			],

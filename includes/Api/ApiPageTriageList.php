@@ -299,6 +299,10 @@ class ApiPageTriageList extends ApiBase {
 			$conds[] = 'ptrp_reviewed ' . $reviewOpr . ' 0';
 		}
 
+		if ( isset( $opts['showautopatrolled'] ) && $opts['showautopatrolled'] ) {
+			$conds[] = 'ptrp_reviewed = 3';
+		}
+
 		if ( isset( $opts['date_range_from'] ) && $opts['date_range_from'] ) {
 			$conds[] = ' ptrp_created  >= ' . $dbr->addQuotes( $dbr->timestamp( $opts['date_range_from'] ) );
 		}
