@@ -160,6 +160,7 @@
 	"pagetriage-add-a-note-creator": "Add a message for the creator: (optional)",
 	"pagetriage-add-a-note-creator-required": "Add a message for the creator. This message will also be posted to the article talk page.",
 	"pagetriage-add-a-note-for-options-label": "Send a message to:",
+	"pagetriage-add-a-note-for-options-instruction-label": "Choose recipient:",
 	"pagetriage-add-a-note-for-option-creator": "creator (User:$1)",
 	"pagetriage-add-a-note-for-option-reviewer": "reviewer (User:$1)",
 	"pagetriage-button-add-a-note-to-creator": "Add a message for the creator",

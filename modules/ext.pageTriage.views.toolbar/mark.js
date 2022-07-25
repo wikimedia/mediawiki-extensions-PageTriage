@@ -238,9 +238,10 @@ module.exports = ToolView.extend( {
 		// check if note is enabled for this namespace
 		if ( this.moduleConfig.note.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) !== -1 ) {
 			$( '#mwe-pt-review-note' ).show();
-			$( '#mwe-pt-review-note-input' ).on( 'input', function () {
+			$( '#mwe-pt-review-note-input, #mwe-pt-review-note-recipient' ).on( 'input', function () {
+				var recipient = $( '#mwe-pt-review-note-recipient' ).val();
 				note = $( '#mwe-pt-review-note-input' ).val().trim();
-				if ( note.length ) {
+				if ( note.length && recipient.length ) {
 					$( '#mwe-pt-send-message-button' ).button( 'enable' );
 				} else {
 					$( '#mwe-pt-send-message-button' ).button( 'disable' );

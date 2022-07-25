@@ -694,6 +694,7 @@ class Hooks {
 				'pagetriage-add-a-note-creator',
 				'pagetriage-add-a-note-creator-required',
 				'pagetriage-add-a-note-for-options-label',
+				'pagetriage-add-a-note-for-options-instruction-label',
 				'pagetriage-add-a-note-for-option-creator',
 				'pagetriage-add-a-note-for-option-reviewer',
 				'pagetriage-button-add-a-note-to-creator',
