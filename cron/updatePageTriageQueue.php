@@ -36,11 +36,40 @@ class UpdatePageTriageQueue extends Maintenance {
 		$this->dbw = wfGetDB( DB_PRIMARY );
 	}
 
-	/**
-	 * @suppress PhanPossiblyUndeclaredVariable False positive with $row
-	 */
 	public function execute() {
+		$this->init();
+		$this->output( "Started processing... \n" );
+
+		$this->output( "cleanReviewedPagesAndUnusedNamespaces()... \n" );
+		$this->cleanReviewedPagesAndUnusedNamespaces();
+
+		$this->output( "cleanRedirects()... \n" );
+		$this->cleanRedirects();
+
+		$this->output( "cleanPageTriageLogTable()... \n" );
+		$this->cleanPageTriageLogTable();
+
+		$this->output( "Completed \n" );
+	}
+
+	/**
+	 * Removes pages from the SQL tables pagetriage_page and pagetriage_page_tags
+	 * if they meet certain criteria.
+	 *
+	 * Remove pages older than 30 days, if
+	 * 1. the page is in the article namespace and has been reviewed, or
+	 * 2. the page is not in a namespace that PageTriage patrols (not in main,
+	 * user, or draft)
+	 *
+	 * This is to help keep the number of rows in the tables pagetriage_page and
+	 * pagetriage_page_tags tables reasonable. Pages not in these tables will be
+	 * treated as reviewed, and the Page Curation toolbar will not show.
+	 */
+	private function cleanReviewedPagesAndUnusedNamespaces() {
 		global $wgPageTriageNamespaces;
+
+		$maxAgeInDays = 30;
+
 		// This list doesn't include Article or Draft
 		// because they have special handling.
 		$secondaryNamespaces = array_filter(
@@ -49,11 +78,52 @@ class UpdatePageTriageQueue extends Maintenance {
 				return $ns !== 0;
 			}
 		);
-		$this->init();
-		$this->output( "Started processing... \n" );
+		$startTime = (int)wfTimestamp( TS_UNIX ) - $maxAgeInDays * 60 * 60 * 24;
+		$sqlWhere = $this->dbr->makeList( [
+				// 1. the page is in the article namespace and has been reviewed, or
+				$this->dbr->makeList( [
+					'page_namespace' => 0,
+					'ptrp_reviewed > 0'
+				], LIST_AND ),
+				// 2. the page is not in main or draft namespaces or
+				'page_namespace' => $secondaryNamespaces,
+			], LIST_OR );
 
-		// Scan for data with ptrp_created set more than 30 days ago
-		$startTime = (int)wfTimestamp( TS_UNIX ) - 30 * 60 * 60 * 24;
+		$this->cleanPageTriagePageTable( $startTime, $sqlWhere );
+	}
+
+	/**
+	 * Removes pages from the SQL tables pagetriage_page and pagetriage_page_tags
+	 * if they meet certain criteria.
+	 *
+	 * Remove pages older than 180 days, if the page is a redirect. This is regardless
+	 * of its patrol status.
+	 *
+	 * This is to help keep the number of rows in the tables pagetriage_page and
+	 * pagetriage_page_tags tables reasonable. Pages not in these tables will be
+	 * treated as reviewed, and the Page Curation toolbar will not show.
+	 */
+	private function cleanRedirects() {
+		global $wgPageTriageRedirectAutoreviewAge;
+
+		$startTime = (int)wfTimestamp( TS_UNIX ) - $wgPageTriageRedirectAutoreviewAge * 60 * 60 * 24;
+		$sqlWhere = $this->dbr->makeList( [
+				'page_is_redirect' => 1,
+			], LIST_OR );
+
+		$this->cleanPageTriagePageTable( $startTime, $sqlWhere );
+	}
+
+	/**
+	 * Deletes data from the pagetriage_page and pagetriage_page_tags tables that
+	 * is older than $startTime and that meets the criteria in $sqlWhere.
+	 *
+	 * @param int $startTime a UNIX timestamp of the cutoff date
+	 * @param string $sqlWhere SQL to be injected into the WHERE clause of an SQL query
+	 * @suppress PhanPossiblyUndeclaredVariable False positive with $row
+	 */
+	private function cleanPageTriagePageTable( $startTime, $sqlWhere ) {
+		// Scan for data with ptrp_created set more than $startTime days ago
 		$count = $this->getBatchSize();
 
 		$idRow = $this->dbr->selectRow(
@@ -77,24 +147,13 @@ class UpdatePageTriageQueue extends Maintenance {
 			$count = 0;
 			$startTime = $this->dbr->addQuotes( $this->dbr->timestamp( $startTime ) );
 
-			// Remove pages older than 30 days, if
-			// 1. the page is in the article namespace and has been reviewed, or
-			// 2. the page is not in main or draft namespaces or
-			// 3. the page is a redirect
 			$res = $this->dbr->select(
 				[ 'pagetriage_page', 'page' ],
 				[ 'ptrp_page_id', 'ptrp_created', 'page_namespace', 'ptrp_reviewed' ],
 				[
 					'(ptrp_created < ' . $startTime . ') OR
 					(ptrp_created = ' . $startTime . ' AND ptrp_page_id < ' . (int)$startId . ')',
-					$this->dbr->makeList( [
-						$this->dbr->makeList( [
-							'page_namespace' => 0,
-							'ptrp_reviewed > 0'
-						], LIST_AND ),
-						'page_namespace' => $secondaryNamespaces,
-						'page_is_redirect' => 1,
-					], LIST_OR ),
+					$sqlWhere,
 				],
 				__METHOD__,
 				[ 'LIMIT' => $this->getBatchSize(), 'ORDER BY' => 'ptrp_created DESC, ptrp_page_id DESC' ],
@@ -116,11 +175,14 @@ class UpdatePageTriageQueue extends Maintenance {
 
 				$this->beginTransaction( $this->dbw, __METHOD__ );
 
+				// Delete from pagetriage_page table
 				$this->dbw->delete(
 						'pagetriage_page',
 						[ 'ptrp_page_id' => $pageId ],
 						__METHOD__
 				);
+
+				// Delete from pagetriage_page_tags table
 				$articleMetadata = new ArticleMetadata( $pageId );
 				$articleMetadata->deleteMetadata();
 
@@ -130,8 +192,16 @@ class UpdatePageTriageQueue extends Maintenance {
 			$this->output( "processed $count \n" );
 			$lbFactory->waitForReplication();
 		}
+	}
 
-		// Also clean-up old logging data while we're at it.
+	/**
+	 * Removes pages from the SQL table pagetriage_log if they meet certain
+	 * criteria.
+	 *
+	 * pagetriage_log keeps track of statistics about how many patrols each
+	 * patroller does. We can delete this data after a year.
+	 */
+	private function cleanPageTriageLogTable() {
 		$yearago = (int)wfTimestamp( TS_UNIX ) - 365 * 60 * 60 * 24;
 		$yearago = $this->dbr->addQuotes( $this->dbr->timestamp( $yearago ) );
 		$this->dbw->delete(
@@ -139,8 +209,6 @@ class UpdatePageTriageQueue extends Maintenance {
 			[ 'ptrl_timestamp < ' . $yearago ],
 			__METHOD__
 		);
-
-		$this->output( "Completed \n" );
 	}
 }
 
