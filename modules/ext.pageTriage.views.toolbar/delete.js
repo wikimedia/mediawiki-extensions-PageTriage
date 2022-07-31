@@ -890,18 +890,21 @@ module.exports = ToolView.extend( {
 				if ( data && data.query && data.query.pages ) {
 					for ( var i in data.query.pages ) {
 						if ( i === '-1' ) {
-							that.handleError( mw.msg( 'pagetriage-del-log-page-missing-error' ) );
+							// If log page is missing, skip ahead to making the AFD/MFD page
+							that.discussionPage( tagObj );
 							return;
 						}
 						that.addToLog( title, data.query.pages[ i ].revisions[ 0 ][ '*' ], tagObj );
 						break;
 					}
 				} else {
-					that.handleError( mw.msg( 'pagetriage-del-log-page-missing-error' ) );
+					// If log page is missing, skip ahead to making the AFD/MFD page
+					that.discussionPage( tagObj );
 				}
 			} )
 			.fail( function () {
-				that.handleError( mw.msg( 'pagetriage-del-log-page-missing-error' ) );
+				// If log page is missing, skip ahead to making the AFD/MFD page
+				that.discussionPage( tagObj );
 			} );
 	},
 
