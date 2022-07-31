@@ -690,6 +690,8 @@ module.exports = ToolView.extend( {
 				skipnotif: '1'
 			} )
 				.then( function () {
+					var promisesQueue = [];
+
 					var isXFD = !that.deletionTagsOptions[ that.selectedCat ].multiple;
 					if ( isXFD ) {
 						for ( var key in that.selectedTag ) {
@@ -699,19 +701,12 @@ module.exports = ToolView.extend( {
 								// handles writing to the XFD daily log and creating the XFD page. This
 								// code path is only used for the XFD options (AFD for mainspace, RFD
 								// for redirects, MFD for userspace)
-								that.logPage( tagObj );
+								promisesQueue.push( that.logPage( tagObj ) );
 								break;
 							}
 						}
 					}
 
-					// Async fork #2: tagPage() -> notifyUser(), which handles tagging the
-					// article with a deletion tag and notifying the creator on their user
-					// talk page. This code path is used by all deletion options (CSD, PROD,
-					// XFD).
-					that.tagPage();
-
-					// Queue up the necessary actions. These will get ran just before we refresh the page.
 					if ( markAsReviewed === '1' ) {
 						// Page was also marked as reviewed, so we want to fire the action for that, too.
 						// The 'reviewed' and 'reviewer' attributes on the model are not yet populated,
@@ -722,6 +717,16 @@ module.exports = ToolView.extend( {
 						};
 					}
 					actionQueue.delete = { tags: that.selectedTag };
+
+					// Wait for everything to finish, to avoid race conditions. We don't want
+					// to refresh before the AFD page is created above.
+					$.when.apply( $, promisesQueue ).then( function () {
+						// Async fork #2: tagPage() -> notifyUser() -> runAndRefresh(), which handles
+						// tagging the article with a deletion tag and notifying the creator on
+						// their user talk page. This code path is used by all deletion options
+						// (CSD, PROD, XFD).
+						that.tagPage();
+					} );
 				} );
 		} )
 			.fail( function ( errorCode, data ) {
