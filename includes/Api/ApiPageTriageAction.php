@@ -11,6 +11,7 @@ use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriage;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
 
 class ApiPageTriageAction extends ApiBase {
 
@@ -32,6 +33,16 @@ class ApiPageTriageAction extends ApiBase {
 		$note = $params['note'];
 
 		if ( isset( $params['reviewed'] ) ) {
+			// T314245 - do not allow someone to mark their own articles as reviewed
+			// when not being autopatrolled
+			$revStore = MediaWikiServices::getInstance()->getRevisionStore();
+			if ( $this->getUser()->equals( $revStore->getFirstRevision(
+				 $article->getTitle() )->getUser( RevisionRecord::RAW ) )
+				&& !$this->getUser()->isAllowed( 'autopatrol' )
+			) {
+				$this->dieWithError( 'markedaspatrollederror-noautopatrol' );
+			}
+
 			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 			$result = $this->markAsReviewed( $article, $params['reviewed'], $note, $params['skipnotif'] );
 		} else {
