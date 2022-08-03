@@ -388,6 +388,10 @@ $( function () {
 				apiParams.showbots = '1';
 			}
 
+			if ( $( '#mwe-pt-filter-autopatrolled-edits' ).prop( 'checked' ) ) {
+				apiParams.showautopatrolled = '1';
+			}
+
 			if ( $( '#mwe-pt-filter-redirects' ).prop( 'checked' ) ) {
 				apiParams.showredirs = '1';
 			}
@@ -632,6 +636,7 @@ $( function () {
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-learners' ), 'learners', 'pagetriage-filter-stat-learners', 'top' );
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-blocked' ), 'blocked_users', 'pagetriage-filter-stat-blocked', 'top' );
 			this.menuCheckboxUpdate( $( '#mwe-pt-filter-bot-edits' ), 'showbots', 'pagetriage-filter-stat-bots', 'top' );
+			this.menuCheckboxUpdate( $( '#mwe-pt-filter-autopatrolled-edits' ), 'showautopatrolled', 'pagetriage-filter-stat-autopatrolled', 'top' );
 
 			if ( !$( 'input[name=mwe-pt-filter-radio]:checked' ).val() ) {
 				// None of the radio buttons are selected. Pick the default.
