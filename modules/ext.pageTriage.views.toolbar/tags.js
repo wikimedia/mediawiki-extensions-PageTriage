@@ -605,6 +605,21 @@ module.exports = ToolView.extend( {
 	 * @param {string} msg The error message to display
 	 */
 	handleError: function ( msg ) {
+		// Log error to WikimediaEvents
+		var pageName = mw.config.get( 'wgPageName' );
+		var skin = mw.config.get( 'skin' );
+		var dumpOfTag = JSON.stringify( this.selectedTag );
+		var errorMessage = 'PageTriage error type: ' + msg + '\n' +
+			'File: tags.js\n' +
+			'Page name: ' + pageName + '\n' +
+			'Skin: ' + skin + '\n' +
+			'Dump of this.selectedTag: ' + dumpOfTag;
+		errorMessage = errorMessage.slice( 0, 1000 );
+		mw.log.error( errorMessage );
+		var err = new Error( errorMessage );
+		err.name = 'pageTriageHandleError';
+		mw.errorLogger.logError( err, 'error.pagetraige' );
+
 		$.removeSpinner( 'tag-spinner' );
 		// Re-enable the submit button (in case it is disabled)
 		$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
