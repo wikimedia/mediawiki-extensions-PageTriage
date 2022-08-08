@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bada Kaji",
 			"Nirajan pant",
 			"पर्वत सुबेदी",
 			"राम प्रसाद जोशी"
@@ -13,5 +14,5 @@
 	"pagetriage-filter-stat-predicted-class-start": "शुरूवात",
 	"pagetriage-filter-stat-predicted-issues-attack": "आक्रमण",
 	"pagetriage-refresh-list": "सूची ताजा गर्नुहोस्",
-	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|धन्यवाद दिने}}}}"
+	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|धन्यवाद दिनुहोस्}}}}"
 }
