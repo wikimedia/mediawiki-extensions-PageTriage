@@ -27,7 +27,8 @@
 			"Func",
 			"Lakejason0",
 			"Xiplus",
-			"开炸弹车"
+			"开炸弹车",
+			"Stang"
 		]
 	},
 	"pagetriage": "页面分配器",
@@ -41,7 +42,7 @@
 	"pagetriage-markpatrolled": "标记此页面为未巡查",
 	"pagetriage-markunpatrolled": "标记此页面为未巡查",
 	"pagetriage-self-review-error": "您不能巡查您自己创建的页面。",
-	"pagetriage-api-error": "在从API载入界面时发生错误。请尝试重新载入本页。",
+	"pagetriage-api-error": "在从API加载界面时发生错误。请尝试重新加载本页。",
 	"pagetriage-reviewed": "已巡查",
 	"pagetriage-mark-as-reviewed-error": "标记页面为已巡查时出错：$1",
 	"pagetriage-mark-as-unreviewed-error": "标记页面为未巡查时出错：$1",
