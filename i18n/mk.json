@@ -485,6 +485,7 @@
 	"apihelp-pagetriagelist-param-afc_state": "Која состојба на статиите за создавање да се прикаже.",
 	"apihelp-pagetriagelist-param-page_id": "Дај податоци за укажаните назнаки на страници, занемарувајќи ги другите параметри.",
 	"apihelp-pagetriagelist-param-showbots": "Дали да се прикажуваат само уредувања од ботови.",
+	"apihelp-pagetriagelist-param-showautopatrolled": "Дали да се прикажуваат само уредувања од корисници со право на автопатрола.",
 	"apihelp-pagetriagelist-param-showredirs": "Дали да се прикажуваат и пренасочувања.",
 	"apihelp-pagetriagelist-param-showothers": "Дали да се вклучат страници кои не се пренасочувања или предложени за бришење.",
 	"apihelp-pagetriagelist-param-showreviewed": "Дали да се прикажуваат и проверени.",
