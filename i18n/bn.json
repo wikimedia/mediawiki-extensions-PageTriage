@@ -7,6 +7,7 @@
 			"Rasal Lia",
 			"Sohom Datta",
 			"Yahya",
+			"আজিজ",
 			"আফতাবুজ্জামান"
 		]
 	},
@@ -57,6 +58,7 @@
 	"pagetriage-filter-stat-reviewed": "পর্যালোচিত",
 	"pagetriage-filter-stat-unreviewed": "অপর্যালোচিত",
 	"pagetriage-filter-stat-bots": "বট",
+	"pagetriage-filter-stat-autopatrolled": "স্বয়ংক্রিয় পরীক্ষক ব্যবহারকারী কর্তৃক",
 	"pagetriage-filter-stat-redirects": "পুনর্নির্দেশ",
 	"pagetriage-filter-stat-nominated-for-deletion": "অপসারণের জন্য মনোনীত",
 	"pagetriage-filter-stat-no-categories": "কোন বিষয়শ্রেণী নেই",
