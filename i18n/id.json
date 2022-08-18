@@ -4,6 +4,7 @@
 			"Daud I.F. Argana",
 			"Fitoschido",
 			"Kenrick95",
+			"Veracious",
 			"William Surya Permana",
 			"පසිඳු කාවින්ද"
 		]
@@ -80,6 +81,7 @@
 	"pagetriage-filter-unreviewed-edits": "yang belum ditinjau",
 	"pagetriage-filter-nominated-for-deletion": "yang dinominasikan untuk penghapusan",
 	"pagetriage-filter-bot-edits": "dibuat oleh bot",
+	"pagetriage-filter-autopatrolled-edits": "Dibuat oleh pengguna yang terpatroli otomatis",
 	"pagetriage-filter-redirects": "Pengalihan (bukan Permohonannya)",
 	"pagetriage-filter-others": "Lainnya",
 	"pagetriage-filter-namespace-heading": "Dalam ruang nama:",
@@ -112,6 +114,7 @@
 	"pagetriage-filter-stat-reviewed": "Telah ditinjau",
 	"pagetriage-filter-stat-unreviewed": "Belum ditinjau",
 	"pagetriage-filter-stat-bots": "Oleh bot",
+	"pagetriage-filter-stat-autopatrolled": "Oleh pengguna yang dipatroli otomatis",
 	"pagetriage-filter-stat-redirects": "Pengalihan",
 	"pagetriage-filter-stat-others": "Lainnya",
 	"pagetriage-filter-stat-nominated-for-deletion": "Dinominasikan untuk penghapusan",
@@ -141,6 +144,7 @@
 	"pagetriage-warning-browser": "Alat ini mungkin tidak bekerja dengan benar di peramban yang lebih tua dari Internet Explorer 11.",
 	"pagetriage-welcome": "Tolong tinjaulah halaman baru berikut ini dan bantulah meningkatkan kualitas {{SITENAME}}. [$1 Pelajari selengkapnya] · [$2 Tinggalkan umpan balik]",
 	"pagetriage-note-reviewed": "Halaman ini telah ditinjau.",
+	"pagetriage-note-autopatrolled": "Halaman ini terpatroli otomatis.",
 	"pagetriage-note-not-reviewed": "Halaman ini belum ditinjau.",
 	"pagetriage-note-deletion": "Halaman ini telah dinominasikan untuk penghapusan.",
 	"pagetriage-refresh-list": "Muat ulang daftar",
