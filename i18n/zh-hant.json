@@ -116,6 +116,7 @@
 	"pagetriage-filter-stat-reviewed": "已檢閱",
 	"pagetriage-filter-stat-unreviewed": "未巡查",
 	"pagetriage-filter-stat-bots": "由機器人",
+	"pagetriage-filter-stat-autopatrolled": "由自動巡查使用者",
 	"pagetriage-filter-stat-redirects": "重新導向",
 	"pagetriage-filter-stat-others": "所有其它",
 	"pagetriage-filter-stat-nominated-for-deletion": "已提名的刪除",
