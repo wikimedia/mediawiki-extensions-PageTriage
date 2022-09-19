@@ -15,6 +15,10 @@ module.exports = ToolView.extend( {
 		this.moduleConfig = options.moduleConfig || {};
 		this.model.on( 'change', this.setIcon, this );
 		this.model.on( 'change', this.changeTooltip, this );
+
+		if ( this.model.get( 'patrol_status' ) === '3' ) {
+			this.icon = 'icon_mark_autopatrolled.png'; // autopatrolled icon
+		}
 	},
 
 	changeTooltip: function () {
