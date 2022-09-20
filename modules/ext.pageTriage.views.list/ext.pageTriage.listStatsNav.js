@@ -31,11 +31,11 @@ $( function () {
 			$( '#mwe-pt-list-stats-nav-content' ).html( this.template( this.model.toJSON() ) );
 
 			// Add the stats.
-			if ( this.model.attributes.ptrUnreviewedCount && this.model.attributes.ptrOldest ) {
-				$( '#mwe-pt-unreviewed-stats' ).text( mw.msg( 'pagetriage-unreviewed-article-count', this.model.attributes.ptrUnreviewedCount, this.model.attributes.ptrOldest ) );
+			if ( this.model.attributes.ptrUnreviewedArticleCount && this.model.attributes.ptrOldest && this.model.attributes.ptrUnreviewedRedirectCount ) {
+				$( '#mwe-pt-unreviewed-stats' ).text( mw.msg( 'pagetriage-unreviewed-article-count', this.model.attributes.ptrUnreviewedArticleCount, this.model.attributes.ptrUnreviewedRedirectCount, this.model.attributes.ptrOldest ) );
 			}
-			if ( this.model.attributes.ptrReviewedCount ) {
-				$( '#mwe-pt-reviewed-stats' ).text( mw.msg( 'pagetriage-reviewed-article-count-past-week', this.model.attributes.ptrReviewedCount ) );
+			if ( this.model.attributes.ptrReviewedArticleCount && this.model.attributes.ptrReviewedRedirectCount ) {
+				$( '#mwe-pt-reviewed-stats' ).text( mw.msg( 'pagetriage-reviewed-article-count-past-week', this.model.attributes.ptrReviewedArticleCount, this.model.attributes.ptrReviewedRedirectCount ) );
 			}
 
 			// run setPosition since the statsNav may need to be floated immediately

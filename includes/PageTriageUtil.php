@@ -80,22 +80,45 @@ class PageTriageUtil {
 
 	/**
 	 * Get a list of stat for unreviewed articles
-	 * @param int $namespace
+	 * @param int $namespace Namespace number
+	 * @return array
+	 *
+	 */
+	public static function getUnreviewedArticleStat( $namespace = 0 ) {
+		return self::getUnreviewedPageStat( $namespace, false );
+	}
+
+	/**
+	 * Get a list of stat for unreviewed redirects
+	 * @param int $namespace Namespace number
+	 * @return array
+	 *
+	 */
+	public static function getUnreviewedRedirectStat( $namespace = 0 ) {
+		return self::getUnreviewedPageStat( $namespace, true );
+	}
+
+	/**
+	 * Get a list of stat for unreviewed pages
+	 * @param int $namespace Namespace number
+	 * @param bool $redirect
 	 * @return array
 	 *
 	 * @todo - Limit the number of records by a timestamp filter, maybe 30 days etc,
 	 *         depends on the time the triage queue should look back for listview
 	 */
-	public static function getUnreviewedArticleStat( $namespace = 0 ) {
+	public static function getUnreviewedPageStat( $namespace = 0, $redirect = false ) {
 		$namespace = self::validatePageNamespace( $namespace );
 
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$fname = __METHOD__;
 
+		$key = ( $redirect ) ? 'pagetriage-unreviewed-redirects-stat' : 'pagetriage-unreviewed-articles-stat';
+
 		return $cache->getWithSetCallback(
-			$cache->makeKey( 'pagetriage-unreviewed-pages-stat', $namespace ),
+			$cache->makeKey( $key, $namespace ),
 			10 * $cache::TTL_MINUTE,
-			static function () use ( $namespace, $fname ) {
+			static function () use ( $namespace, $fname, $redirect ) {
 				$dbr = wfGetDB( DB_REPLICA );
 
 				$table = [ 'pagetriage_page', 'page' ];
@@ -103,7 +126,7 @@ class PageTriageUtil {
 					'ptrp_reviewed' => 0,
 					'page_id = ptrp_page_id',
 					// remove redirect from the unreviewd number per bug40540
-					'page_is_redirect' => 0,
+					'page_is_redirect' => (int)$redirect,
 					'page_namespace' => $namespace
 				];
 
@@ -148,15 +171,36 @@ class PageTriageUtil {
 	 * @return array Stats to be returned
 	 */
 	public static function getReviewedArticleStat( $namespace = 0 ) {
+		return self::getReviewedPageStat( $namespace, false );
+	}
+
+	/**
+	 * Get number of reviewed redirects in the past week
+	 * @param int $namespace Namespace number
+	 * @return array Stats to be returned
+	 */
+	public static function getReviewedRedirectStat( $namespace = 0 ) {
+		return self::getReviewedPageStat( $namespace, true );
+	}
+
+	/**
+	 * Get number of reviewed articles in the past week
+	 * @param int $namespace Namespace number
+	 * @param bool $redirect
+	 * @return array Stats to be returned
+	 */
+	public static function getReviewedPageStat( $namespace = 0, $redirect = false ) {
 		$namespace = self::validatePageNamespace( $namespace );
 
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$fname = __METHOD__;
 
+		$key = ( $redirect ) ? 'pagetriage-reviewed-redirects-stat' : 'pagetriage-reviewed-articles-stat';
+
 		return $cache->getWithSetCallback(
-			$cache->makeKey( 'pagetriage-reviewed-pages-stat', $namespace ),
+			$cache->makeKey( $key, $namespace ),
 			10 * $cache::TTL_MINUTE,
-			static function () use ( $namespace, $fname ) {
+			static function () use ( $namespace, $fname, $redirect ) {
 				$time = (int)wfTimestamp( TS_UNIX ) - 7 * 24 * 60 * 60;
 
 				$dbr = wfGetDB( DB_REPLICA );
@@ -166,7 +210,7 @@ class PageTriageUtil {
 					'ptrp_reviewed' => 1,
 					'page_id = ptrp_page_id',
 					'page_namespace' => $namespace,
-					'page_is_redirect' => 0,
+					'page_is_redirect' => (int)$redirect,
 					'ptrp_reviewed_updated > ' . $dbr->addQuotes( $dbr->timestamp( $time ) )
 				];
 

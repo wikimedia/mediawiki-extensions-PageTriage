@@ -16,9 +16,11 @@ $( function () {
 
 		formatMetadata: function ( stats ) {
 			stats.set( 'afcMode', stats.get( 'namespace' ) === mw.config.get( 'wgPageTriageDraftNamespaceId' ) );
-			stats.set( 'ptrUnreviewedCount', stats.get( 'unreviewedarticle' ).count );
+			stats.set( 'ptrUnreviewedArticleCount', stats.get( 'unreviewedarticle' ).count );
+			stats.set( 'ptrUnreviewedRedirectCount', stats.get( 'unreviewedredirect' ).count );
 			stats.set( 'ptrOldest', this.formatDaysFromNow( stats.get( 'unreviewedarticle' ).oldest ) );
-			stats.set( 'ptrReviewedCount', stats.get( 'reviewedarticle' ).reviewed_count );
+			stats.set( 'ptrReviewedArticleCount', stats.get( 'reviewedarticle' ).reviewed_count );
+			stats.set( 'ptrReviewedRedirectCount', stats.get( 'reviewedredirect' ).reviewed_count );
 			stats.set( 'ptrFilterCount', stats.get( 'filteredarticle' ) );
 		},
 
