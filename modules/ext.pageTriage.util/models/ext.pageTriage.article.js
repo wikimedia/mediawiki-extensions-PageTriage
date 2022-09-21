@@ -195,20 +195,11 @@ $( function () {
 			}
 
 			var now = new Date();
-			now = new Date(
-				now.getUTCFullYear(),
-				now.getUTCMonth(),
-				now.getUTCDate(),
-				now.getUTCHours(),
-				now.getUTCMinutes(),
-				now.getUTCSeconds()
-			);
-
 			var begin = moment.utc( dateStr, 'YYYYMMDDHHmmss' );
-			var diff = Math.round( ( now.getTime() - begin.valueOf() ) / ( 1000 * 60 ) );
+			var diff = Math.round( ( now - begin ) / ( 1000 * 60 ) );
 
-			// only generate a warning if the page is less than 30 minutes old
-			if ( diff < 30 ) {
+			// only generate a warning if the page is less than 15 minutes old
+			if ( diff < 15 ) {
 				if ( diff < 1 ) {
 					diff = 1;
 				}
