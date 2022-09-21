@@ -12,9 +12,7 @@ var ToolbarView,
 	} ),
 	toolbar,
 	// array of tool instances
-	tools,
-	// array of flyouts disabled for the page creator
-	disabledForCreators = [ 'tags', 'mark', 'delete' ];
+	tools;
 
 // Used later via articleInfo.js
 require( './../external/jquery.badge.js' );
@@ -85,16 +83,7 @@ ToolbarView = Backbone.View.extend( {
 		}
 
 		// this flyout is disabled for current namespace
-		if ( modules[ flyout ].namespace.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) === -1 ) {
-			return false;
-		}
-
-		// this flyout is disabled for this user as he is the creator of the article
-		if ( disabledForCreators.indexOf( flyout ) !== -1 && article.get( 'user_name' ) === mw.user.getName() ) {
-			return false;
-		}
-
-		return true;
+		return ( modules[ flyout ].namespace.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) !== -1 );
 	},
 
 	render: function () {
