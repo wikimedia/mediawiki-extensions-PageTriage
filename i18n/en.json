@@ -405,6 +405,7 @@
 	"pagetriage-info-problem-header": "Possible issues",
 	"pagetriage-info-history-header": "History",
 	"pagetriage-info-history-show-full": "show full history",
+	"pagetriage-info-logs-show": "show logs",
 	"pagetriage-info-help": "help",
 	"pagetriage-info-problem-non-autoconfirmed": "New editor",
 	"pagetriage-info-problem-non-autoconfirmed-desc": "This page was created by a non-autoconfirmed editor.",
