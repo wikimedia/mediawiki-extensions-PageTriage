@@ -166,6 +166,7 @@ class PageTriageUtil {
 					'ptrp_reviewed' => 1,
 					'page_id = ptrp_page_id',
 					'page_namespace' => $namespace,
+					'page_is_redirect' => 0,
 					'ptrp_reviewed_updated > ' . $dbr->addQuotes( $dbr->timestamp( $time ) )
 				];
 
