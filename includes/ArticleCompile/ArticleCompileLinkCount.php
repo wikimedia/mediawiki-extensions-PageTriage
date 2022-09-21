@@ -15,7 +15,8 @@ class ArticleCompileLinkCount extends ArticleCompileInterface {
 					[
 						'page_id' => $pageId,
 						'page_namespace = pl_namespace',
-						'page_title = pl_title'
+						'page_title = pl_title',
+						'pl_from_namespace = 0' // T313777 - only considering backlinks from mainspace pages
 					],
 					$maxNumToProcess = 50,
 					'linkcount'
