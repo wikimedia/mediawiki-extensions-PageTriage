@@ -67,8 +67,8 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 	}
 
 	/**
-	 * Check if a page has reference, this just checks <ref> and </ref> tags
-	 * this is sufficient since we just want to get an estimate
+	 * Check if a page has a reference. This checks <ref> and </ref>
+	 * tags along with the presence of the sfn or harvb templates
 	 * @param string $text
 	 * @return string
 	 */
@@ -82,6 +82,13 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 			}
 			$openTag = strpos( $text, '<ref>' );
 			if ( $openTag !== false && $openTag < $closeTag ) {
+				return '1';
+			}
+		}
+
+		$refStyleArray = [ '{{sfn', '{{harvnb' ];
+		foreach ( $refStyleArray as $refStyle ) {
+			if ( stripos( $text, $refStyle ) !== false ) {
 				return '1';
 			}
 		}
