@@ -32,7 +32,7 @@
 	"pagetriage-filter-list-prompt": "Definir filtros",
 	"pagetriage-filter-predicted-issues-heading": "Possibile problemas:",
 	"pagetriage-filter-predicted-issues-copyvio": "Copyvio",
-	"pagetriage-unreviewed-article-count": "$1 {{PLURAL:$1|pagina|paginas}} non revidite in total (le plus ancian: $2)",
+	"pagetriage-unreviewed-article-count": "$1 articulo{{PLURAL:$1||s}} non revidite in total (le plus ancian: $2)",
 	"pagetriage-sort-by": "Ordinar per:",
 	"pagetriage-newest": "Le plus nove",
 	"pagetriage-oldest": "Le plus ancian",
