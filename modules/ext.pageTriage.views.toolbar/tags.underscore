@@ -21,7 +21,7 @@
 		<a href="#" id="mwe-pt-tag-submit-button" class="ui-button-green"><%- mw.msg( 'pagetriage-button-add-tag-number', 0 ) %></a>
 	</div>
 	<div id="mwe-pt-checkbox-mark-reviewed-wrapper">
-		<input id="mwe-pt-checkbox-mark-reviewed" type="checkbox" value="mark reviewed" checked>
+		<input id="mwe-pt-checkbox-mark-reviewed" type="checkbox" value="mark reviewed">
 		<label id="mwe-pt-checkbox-mark-reviewed-label" for="mwe-pt-checkbox-mark-reviewed"><%= mw.html.escape( mw.msg( 'pagetriage-markpatrolled' ) ) %></label>
 	</div>
 </div>
