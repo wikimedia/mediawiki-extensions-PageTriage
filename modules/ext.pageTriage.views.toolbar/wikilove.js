@@ -110,7 +110,7 @@ module.exports = ToolView.extend( {
 				var recipients = $( 'input:checkbox:checked.mwe-pt-recipient-checkbox' ).map( function () {
 					return this.value;
 				} ).get();
-				$.wikiLove.openDialog( recipients );
+				$.wikiLove.openDialog( recipients, [ 'pagetriage' ] );
 				that.hide();
 			} );
 
