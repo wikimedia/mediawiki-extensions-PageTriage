@@ -3,9 +3,12 @@
 		"authors": [
 			"Eitvys200",
 			"Hugo.arg",
+			"Pavel1513",
 			"Zygimantus"
 		]
 	},
+	"pagetriage-unreviewed-article-count": "Iš viso $1 {{PLURAL:$1|nepatikrintas straipsnis|nepatikrinų straipsnių}} (seniausias: $2)",
+	"pagetriage-reviewed-article-count-past-week": "$1 {{PLURAL:$1|stripsnis|straipsnių}} patikrinti šią savaitę",
 	"pagetriage-filter-nominated-for-deletion": "Pasiūlyti ištrinimui",
 	"pagetriage-add-a-note-for-options-label": "Kam siųsti žinutę:",
 	"pagetriage-button-send-a-note": "Siųsti žinutę",
