@@ -180,6 +180,7 @@
 	"pagetriage-add-a-note-creator": "Text for adding a personal note in curation toolbar for creator",
 	"pagetriage-add-a-note-creator-required": "Text for adding a personal note in curation toolbar for creator without optional text",
 	"pagetriage-add-a-note-for-options-label": "Text for adding a personal note in curation toolbar for creator or reviewer",
+	"pagetriage-add-a-note-for-options-instruction-label": "Text for asking the reviewer to choose a recipient for their message",
 	"pagetriage-add-a-note-for-option-creator": "Label for creator option when adding a personal note in curation toolbar. $1 is username",
 	"pagetriage-add-a-note-for-option-reviewer": "Label for reviewer option when adding a personal note in curation toolbar. $1 is username",
 	"pagetriage-button-add-a-note-to-creator": "Text for the button that submits note to creator in curation toolbar",

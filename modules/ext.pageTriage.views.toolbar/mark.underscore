@@ -13,6 +13,7 @@
 			<% } else { %>
 				<%- mw.message( "pagetriage-add-a-note-for-options-label" ) %>
 				<select id="mwe-pt-review-note-recipient">
+					<option disabled selected><%- mw.message( "pagetriage-add-a-note-for-options-instruction-label" ) %></option>
 					<option value="reviewer"><%- mw.msg( "pagetriage-add-a-note-for-option-reviewer", previousReviewer ) %></option>
 					<option value="creator"><%- mw.msg( "pagetriage-add-a-note-for-option-creator", articleCreator ) %></option>
 				</select>
