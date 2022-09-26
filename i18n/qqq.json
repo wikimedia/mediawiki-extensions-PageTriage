@@ -425,6 +425,7 @@
 	"pagetriage-info-problem-header": "Used as section header.",
 	"pagetriage-info-history-header": "{{Identical|History}}",
 	"pagetriage-info-history-show-full": "Used as link text.\n\nThe link points to History page (action=history).",
+	"pagetriage-info-logs-show": "Used as link text.\n\nThe link points to the logs page (Special:Log?page=PageName).",
 	"pagetriage-info-help": "Link text for the info flyout help button.\n{{Identical|Help}}",
 	"pagetriage-info-problem-non-autoconfirmed": "Title for the error displayed when the page author isn't autoconfirmed.",
 	"pagetriage-info-problem-non-autoconfirmed-desc": "Desription for the error displayed when the page author isn't autoconfirmed.",

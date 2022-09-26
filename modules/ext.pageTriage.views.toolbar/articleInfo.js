@@ -98,10 +98,16 @@ module.exports = ToolView.extend( {
 	render: function () {
 		this.enumerateProblems();
 		// set the history link
-		var url = new mw.Uri( mw.util.getUrl( mw.config.get( 'wgPageName' ) ) );
-		url.query.action = 'history';
+		var url = new mw.Uri( mw.util.getUrl( mw.config.get( 'wgPageName' ), { action: 'history' } ) );
 		this.model.set(
 			'history_link',
+			url.toString()
+		);
+
+		// set the logs link
+		url = new mw.Uri( mw.util.getUrl( 'Special:Log', { page: mw.config.get( 'wgPageName' ) } ) );
+		this.model.set(
+			'logs_link',
 			url.toString()
 		);
 

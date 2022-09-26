@@ -656,6 +656,7 @@ class Hooks {
 				'pagetriage-info-problem-header',
 				'pagetriage-info-history-header',
 				'pagetriage-info-history-show-full',
+				'pagetriage-info-logs-show',
 				'pagetriage-info-help',
 				'pagetriage-info-problem-non-autoconfirmed',
 				'pagetriage-info-problem-non-autoconfirmed-desc',
