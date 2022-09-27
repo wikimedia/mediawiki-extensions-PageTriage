@@ -336,6 +336,7 @@
 				"pagetriage-auto-refresh-list",
 				"pagetriage-info-timestamp-date-format",
 				"pagetriage-no-reference",
+				"pagetriage-tag-warning-notice",
 				"pagetriage-stats-filter-page-count"
 			]
 		},

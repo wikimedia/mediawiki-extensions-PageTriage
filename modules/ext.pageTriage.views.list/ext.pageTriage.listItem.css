@@ -67,6 +67,15 @@
 	display: table-cell;
 	text-align: right;
 	white-space: nowrap;
+	float: right;
+}
+
+.mwe-pt-mild-warning {
+	background-color: #f5f591;
+}
+
+.mwe-pt-severe-warning {
+	background-color: #f79c8f;
 }
 
 /* info about the article's author */

@@ -49,9 +49,23 @@
 					<% } %>
 				</span>
 			</div>
-			<span class="mwe-pt-creation-date">
+
+		<%
+			var css_class = "mwe-pt-creation-date";
+			var tooltip = "";
+
+			if ( article_age_in_minutes <= mild_warning_level ) {
+				tooltip = mw.msg( "pagetriage-tag-warning-notice", article_age_in_minutes );
+				if ( article_age_in_minutes <= severe_warning_level ) {
+					css_class += " mwe-pt-severe-warning";
+				} else {
+					css_class += " mwe-pt-mild-warning";
+				}
+			}
+		%>
+			<div class="<%- css_class %>" title="<%- tooltip %>">
 				<%- creation_date_pretty %>
-			</span>
+			</div>
 		</div>
 		<div class="mwe-pt-info-row">
 			<div class="mwe-pt-author">

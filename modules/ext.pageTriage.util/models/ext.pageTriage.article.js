@@ -27,12 +27,24 @@ $( function () {
 				nsId = titleObj.getNamespaceId(),
 				offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
 
+			// Setting the number of minutes for which a new article
+			// should be left alone (unless there are serious issues)
+			article.set( 'severe_warning_level', 15 );
+			article.set( 'mild_warning_level', 60 );
+
 			// Set whether it's a draft, which we'll reference in ext.pageTriage.listItem.underscore
 			article.set( 'is_draft', nsId === mw.config.get( 'wgPageTriageDraftNamespaceId' ) );
 
 			article.set(
 				'creation_date_pretty',
 				creationDateParsed.utcOffset( offset ).format( mw.msg( 'pagetriage-creation-dateformat' ) )
+			);
+
+			var now = new Date();
+
+			article.set(
+				'article_age_in_minutes',
+				Math.ceil( ( now - creationDateParsed ) / ( 1000 * 60 ) )
 			);
 
 			article.set(
@@ -189,21 +201,11 @@ $( function () {
 		},
 
 		tagWarningNotice: function () {
-			var dateStr = this.get( 'creation_date_utc' );
-			if ( !dateStr ) {
-				return '';
-			}
+			var articleAge = this.get( 'article_age_in_minutes' );
 
-			var now = new Date();
-			var begin = moment.utc( dateStr, 'YYYYMMDDHHmmss' );
-			var diff = Math.round( ( now - begin ) / ( 1000 * 60 ) );
-
-			// only generate a warning if the page is less than 15 minutes old
-			if ( diff < 15 ) {
-				if ( diff < 1 ) {
-					diff = 1;
-				}
-				return mw.msg( 'pagetriage-tag-warning-notice', diff );
+			if ( articleAge <= this.get( 'mild_warning_level' ) ) {
+				// Generate a warning if the page is less than 60 minutes old
+				return mw.msg( 'pagetriage-tag-warning-notice', articleAge );
 			} else {
 				return '';
 			}
