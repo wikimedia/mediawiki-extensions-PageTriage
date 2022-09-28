@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"DARMAS BUDI SANTOSO",
 			"Daud I.F. Argana",
 			"Fitoschido",
 			"Kenrick95",
@@ -158,6 +159,7 @@
 	"pagetriage-add-a-note-creator": "Tambahkan pesan untuk pembuat halaman: (opsional)",
 	"pagetriage-add-a-note-creator-required": "Tambahkan pesan untuk pembuat. Pesan ini juga akan dikirimkan ke halaman pembicaraan artikel.",
 	"pagetriage-add-a-note-for-options-label": "Kirim pesan kepada:",
+	"pagetriage-add-a-note-for-options-instruction-label": "Choose recipient:",
 	"pagetriage-add-a-note-for-option-creator": "pembuat (User:$1)",
 	"pagetriage-add-a-note-for-option-reviewer": "penilai (User:$1)",
 	"pagetriage-button-add-a-note-to-creator": "Tambahkan pesan untuk pembuat",
@@ -225,6 +227,7 @@
 	"pagetriage-info-problem-header": "Permasalahan terduga",
 	"pagetriage-info-history-header": "Riwayat",
 	"pagetriage-info-history-show-full": "tampilkan riwayat lengkap",
+	"pagetriage-info-logs-show": "show logs",
 	"pagetriage-info-help": "bantuan",
 	"pagetriage-info-problem-non-autoconfirmed": "Penyunting baru",
 	"pagetriage-info-problem-non-autoconfirmed-desc": "Halaman ini dibuat oleh penyunting yang belum dikonfirmasi otomatis.",
