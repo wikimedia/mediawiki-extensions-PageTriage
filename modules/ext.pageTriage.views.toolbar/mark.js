@@ -107,7 +107,7 @@ module.exports = ToolView.extend( {
 		if ( action === 'unreviewed' ) {
 			// only send note if there was a previous reviewer and it's not the current user
 			if (
-				this.model.get( 'ptrp_last_reviewed_by' ) > 0 &&
+				this.model.get( 'ptrp_last_reviewed_by' ) > 0 && note &&
 				mw.config.get( 'wgUserName' ) !== this.model.get( 'reviewer' )
 			) {
 				talkPageTitle = this.model.get( 'reviewer_user_talk_page' );
