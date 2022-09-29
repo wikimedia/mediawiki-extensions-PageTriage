@@ -127,6 +127,8 @@ class PageTriageUtil {
 					'page_id = ptrp_page_id',
 					// remove redirect from the unreviewd number per bug40540
 					'page_is_redirect' => (int)$redirect,
+					// remove deletion nominations from stats per T205741
+					'ptrp_deleted' => 0,
 					'page_namespace' => $namespace
 				];
 
