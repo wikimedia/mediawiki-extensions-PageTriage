@@ -35,7 +35,7 @@
 
 #mwe-pt-toolbar-inactive {
 	width: 15px;
-	height: 90px;
+	min-height: 90px;
 	cursor: pointer;
 	display: none;
 }
@@ -60,16 +60,11 @@
 p#mwe-pt-toolbar-vertical {
 	color: #333;
 	border: 0 solid #f00;
-	-webkit-transform: rotate( 90deg );
-	-moz-transform: rotate( 90deg );
-	-o-transform: rotate( 90deg );
-	-ms-transform: rotate( 90deg );
-	transform: rotate( 90deg );
+	writing-mode: vertical-rl;
 	white-space: nowrap;
 	display: block;
 	bottom: 0;
 	width: 20px;
-	height: 20px;
 	font-size: 1em;
 	font-weight: normal;
 	line-height: 1.5em;
