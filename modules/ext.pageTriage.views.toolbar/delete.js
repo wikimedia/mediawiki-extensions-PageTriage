@@ -987,6 +987,8 @@ module.exports = ToolView.extend( {
 			};
 
 		if ( !specialDeletionTagging[ tagObj.tag ] ) {
+			// T313303
+			that.handleError( 'tagObj.tag is not an allowed value ~ ' + tagObj.tag );
 			return;
 		}
 
