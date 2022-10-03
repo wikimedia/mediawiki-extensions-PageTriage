@@ -23,6 +23,7 @@
 	"log-action-filter-pagetriage-curation-enqueue": "క్యూలో పెడుతున్నాం",
 	"log-action-filter-pagetriage-curation-tag": "ట్యాగు పెడుతున్నాం",
 	"pagetriage-info-history-header": "చరిత్ర",
+	"pagetriage-info-logs-show": "చిట్టాలు చూపించు",
 	"pagetriage-info-help": "సహాయం",
 	"pagetriage-toolbar-learn-more": "మరింత తెలుసుకోండి »",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|మార్పు|మార్పులు}}"
