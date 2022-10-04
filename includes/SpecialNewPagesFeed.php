@@ -49,11 +49,6 @@ class SpecialNewPagesFeed extends SpecialPage {
 		// Output the title of the page
 		$out->setPageTitle( $this->msg( 'newpagesfeed' ) );
 
-		// Make sure global vars are strings rather than booleans (for passing to mw.config)
-		$wgPageTriageInfiniteScrolling = $this->booleanToString( $wgPageTriageInfiniteScrolling );
-		$wgPageTriageStickyControlNav = $this->booleanToString( $wgPageTriageStickyControlNav );
-		$wgPageTriageStickyStatsNav = $this->booleanToString( $wgPageTriageStickyStatsNav );
-
 		// Allow infinite scrolling override from query string parameter
 		// We don't use getBool() here since the param is optional
 		if ( $request->getText( 'infinite' ) === 'true' ) {
@@ -114,20 +109,6 @@ class SpecialNewPagesFeed extends SpecialPage {
 				'pagetriage-more' => $this->msg( 'pagetriage-more' ),
 			]
 		);
-	}
-
-	/**
-	 * Helper function to convert booleans to strings (for passing to mw.config)
-	 * @param bool $value The value to convert into a string
-	 * @return bool|string
-	 */
-	private function booleanToString( $value ) {
-		if ( is_string( $value ) ) {
-			return $value;
-		} else {
-			// Convert to string
-			return $value ? 'true' : 'false';
-		}
 	}
 
 	/**

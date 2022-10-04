@@ -652,7 +652,7 @@
 			"value": true
 		},
 		"PageTriageStickyControlNav": {
-			"value": true
+			"value": false
 		},
 		"PageTriageStickyStatsNav": {
 			"value": true
