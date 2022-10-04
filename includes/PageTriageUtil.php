@@ -207,7 +207,7 @@ class PageTriageUtil {
 
 				$table = [ 'pagetriage_page', 'page' ];
 				$conds = [
-					'ptrp_reviewed' => 1,
+					'ptrp_reviewed' => [ 1, 2 ], // T310108
 					'page_id = ptrp_page_id',
 					'page_namespace' => $namespace,
 					'page_is_redirect' => (int)$redirect,
