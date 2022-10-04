@@ -784,6 +784,7 @@ $( function () {
 					'</label>' +
 					'<input type="date" name="mwe-pt-filter-' + context + '-date-range-' + dateRangeType + '"' +
 						'id="mwe-pt-filter-' + context + '-date-range-' + dateRangeType + '"' +
+						'class="mwe-pt-filter-date-range-' + dateRangeType + '"' +
 						'placeholder="' + mw.msg( 'pagetriage-filter-date-range-format-placeholder' ) + '"/>';
 		}
 	} );
