@@ -3,10 +3,11 @@
 		"authors": [
 			"BRUTE",
 			"David1010",
-			"Otogi"
+			"Otogi",
+			"Გიო ოქრო"
 		]
 	},
-	"pagetriage-please-wait": "გთხოვთ მოიცადეთ...",
+	"pagetriage-please-wait": "გთხოვთ, მოიცადოთ…",
 	"pagetriage-bytes": "$1 {{PLURAL:$1|ბაიტი|ბაიტი}}",
 	"pagetriage-edits": "$1 {{PLURAL:$1|რედაქტირება|რედაქტირება}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|კატეგორია|კატეგორია}}",
