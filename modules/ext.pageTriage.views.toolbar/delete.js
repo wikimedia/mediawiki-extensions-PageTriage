@@ -697,7 +697,7 @@ module.exports = ToolView.extend( {
 						for ( var key in that.selectedTag ) {
 							var tagObj = that.selectedTag[ key ];
 							if ( tagObj.prefix ) {
-								// Async fork #1: logPage() -> addToLog() -> disucssionPage(), which
+								// Async fork #1: logPage() -> addToLog() -> discussionPage(), which
 								// handles writing to the XFD daily log and creating the XFD page. This
 								// code path is only used for the XFD options (AFD for mainspace, RFD
 								// for redirects, MFD for userspace)
@@ -899,31 +899,28 @@ module.exports = ToolView.extend( {
 		var that = this,
 			title = specialDeletionTagging[ tagObj.tag ].getLogPageTitle( tagObj.prefix );
 
-		new mw.Api().get( {
+		return new mw.Api().get( {
 			action: 'query',
 			prop: 'revisions',
 			titles: title,
 			rvprop: 'content'
 		} )
-			.done( function ( data ) {
+			.then( function ( data ) {
 				if ( data && data.query && data.query.pages ) {
 					for ( var i in data.query.pages ) {
 						if ( i === '-1' ) {
 							// If log page is missing, skip ahead to making the AFD/MFD page
-							that.discussionPage( tagObj );
-							return;
+							return that.discussionPage( tagObj );
 						}
-						that.addToLog( title, data.query.pages[ i ].revisions[ 0 ][ '*' ], tagObj );
-						break;
+						return that.addToLog( title, data.query.pages[ i ].revisions[ 0 ][ '*' ], tagObj );
 					}
 				} else {
 					// If log page is missing, skip ahead to making the AFD/MFD page
-					that.discussionPage( tagObj );
+					return that.discussionPage( tagObj );
 				}
-			} )
-			.fail( function () {
+			}, function () {
 				// If log page is missing, skip ahead to making the AFD/MFD page
-				that.discussionPage( tagObj );
+				return that.discussionPage( tagObj );
 			} );
 	},
 
@@ -954,18 +951,17 @@ module.exports = ToolView.extend( {
 			return;
 		}
 
-		new mw.Api().postWithToken( 'csrf', request )
-			.done( function ( data ) {
+		return new mw.Api().postWithToken( 'csrf', request )
+			.then( function ( data ) {
 				if ( data.edit && data.edit.result === 'Success' ) {
 					// If AFD or MFD, make page. Else we're done for now.
 					if ( tagObj.discussion ) {
-						that.discussionPage( tagObj );
+						return that.discussionPage( tagObj );
 					}
 				} else {
 					that.handleError( mw.msg( 'pagetriage-del-log-page-adding-error' ) );
 				}
-			} )
-			.fail( function () {
+			}, function () {
 				that.handleError( mw.msg( 'pagetriage-del-log-page-adding-error' ) );
 			} );
 	},
@@ -995,7 +991,7 @@ module.exports = ToolView.extend( {
 		specialDeletionTagging[ tagObj.tag ].buildDiscussionRequest( tagObj.params[ '1' ].value, request );
 
 		return new mw.Api().postWithToken( 'csrf', request )
-			.fail( function () {
+			.then( null, function () {
 				that.handleError( mw.msg( 'pagetriage-del-discussion-page-adding-error' ) );
 			} );
 	},
