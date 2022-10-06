@@ -56,7 +56,7 @@
 	"pagetriage-showing": "מוצגות:",
 	"pagetriage-filter-list-prompt": "הגדרת מסננים",
 	"pagetriage-filter-predicted-class-stub": "קצרמר",
-	"pagetriage-unreviewed-article-count": "בסך הכול יש {{PLURAL:$1|ערך אחד שלא נסקר|$1 ערכים שלא נסקרו}} {{PLURAL:$2|ודף הפניה אחד שלא נסקר|ו־$2 דפי הפניה שלא נסקרו}} (הישן ביותר: $3)",
+	"pagetriage-unreviewed-article-count": "{{PLURAL:$1|ערך אחד|$1 ערכים}} {{PLURAL:$2|ודף הפניה אחד|ו־$2 דפי הפניה}} לא נסקרו (הישן ביותר: $3)",
 	"pagetriage-reviewed-article-count-past-week": "{{PLURAL:$1|ערך אחד|$1 ערכים}} {{PLURAL:$2|ודף הפניה אחד|ו־$2 דפי הפניה}} נסקרו השבוע",
 	"pagetriage-sort-by": "מיון לפי:",
 	"pagetriage-newest": "החדשים ביותר",
