@@ -118,6 +118,9 @@ class PageTriage {
 		if ( $this->mReviewed == $reviewed ) {
 			return false; // Status doesn't change
 		}
+		if ( $this->mReviewed === '3' && $reviewed !== '0' ) {
+			return false; // Only unreviewing is allowed for autopatrolled articles
+		}
 
 		$dbw = wfGetDB( DB_PRIMARY );
 		$dbw->startAtomic( __METHOD__ );
