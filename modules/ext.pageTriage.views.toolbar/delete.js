@@ -51,6 +51,7 @@ specialDeletionTagging = {
 				/(<!-- Add new entries to the TOP of the following list -->\n+)/,
 				'$1{{subst:afd3|pg=' + page + '}}\n'
 			);
+			data.summary = 'Adding [[' + tagObj.prefix + '/' + pageName + ']].';
 		},
 
 		getLogPageTitle: function ( prefix ) {
