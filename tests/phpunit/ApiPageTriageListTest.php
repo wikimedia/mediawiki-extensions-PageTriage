@@ -2,7 +2,6 @@
 
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
 use MediaWiki\MediaWikiServices;
-use PHPUnit\Framework\Constraint\ArraySubset;
 
 /**
  * Tests the inclusion of the Draft namespace.
@@ -44,10 +43,8 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 		// Request the Draft namespace.
 		$list2 = $this->getPageTriageList();
-		static::assertThat(
-			$list2[0],
-			new ArraySubset( [ 'title' => 'Draft:Test page 1' ] )
-		);
+		static::assertArrayHasKey( 'title', $list2[0] );
+		static::assertSame( 'Draft:Test page 1', $list2[0][ 'title' ] );
 	}
 
 	/**
@@ -78,10 +75,9 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 		// Request the declined drafts.
 		$list2 = $this->getPageTriageList( $apiParams );
-		static::assertThat(
-			$list2[0],
-			new ArraySubset( [ 'title' => 'Draft:AfC test page' ] )
-		);
+
+		static::assertArrayHasKey( 'title', $list2[0] );
+		static::assertSame( 'Draft:AfC test page', $list2[0][ 'title' ] );
 
 		// Move the page out of the declined category, and it disappears from the list.
 		$this->insertPage( 'AfC test page', '[[category:nop]]', $this->draftNsId );
@@ -102,10 +98,8 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		);
 		// Should be in the Pending feed.
 		$list = $this->getPageTriageList( [ 'afc_state' => ArticleCompileAfcTag::UNDER_REVIEW ] );
-		static::assertThat(
-			$list[0],
-			new ArraySubset( [ 'title' => 'Draft:AfC test page' ] )
-		);
+		static::assertArrayHasKey( 'title', $list[0] );
+		static::assertSame( 'Draft:AfC test page', $list[0][ 'title' ] );
 
 		// Should still be in Pending feed if categories are in the opposite order.
 		// Also Declined category should be ignored, since Pending has higher priority.
@@ -116,10 +110,8 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			$this->draftNsId
 		);
 		$list = $this->getPageTriageList( [ 'afc_state' => ArticleCompileAfcTag::UNDER_REVIEW ] );
-		static::assertThat(
-			$list[0],
-			new ArraySubset( [ 'title' => 'Draft:AfC test page' ] )
-		);
+		static::assertArrayHasKey( 'title', $list[0] );
+		static::assertSame( 'Draft:AfC test page', $list[0][ 'title' ] );
 	}
 
 	/**
@@ -180,10 +172,8 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		// Check that the moved page is in the queue of unreviewed pages.
 		$list = $this->getPageTriageList();
 		static::assertCount( $originalPagesCount + 1, $list );
-		static::assertThat(
-			$list[0],
-			new ArraySubset( [ 'title' => 'Draft:Test page 3' ] )
-		);
+		static::assertArrayHasKey( 'title', $list[0] );
+		static::assertSame( 'Draft:Test page 3', $list[0][ 'title' ] );
 	}
 
 	/**
@@ -305,10 +295,8 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		if ( $originalTopPage ) {
 			static::assertEquals( $originalTopPage, $list[0] );
 		} else {
-			static::assertThat(
-				$list[0],
-				new ArraySubset( [ 'title' => 'Draft:Test page 5' ] )
-			);
+			static::assertArrayHasKey( 'title', $list[0] );
+			static::assertSame( 'Draft:Test page 5', $list[0][ 'title' ] );
 		}
 
 		// Manually set the reviewed at attribute to something really old.
@@ -325,10 +313,9 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		);
 
 		// 'Test page 5' should be the oldest.
-		static::assertThat(
-			$this->getPageTriageList( $apiParams )[0],
-			new ArraySubset( [ 'title' => 'Draft:Test page 5' ] )
-		);
+		$list = $this->getPageTriageList( $apiParams );
+		static::assertArrayHasKey( 'title', $list[0] );
+		static::assertSame( 'Draft:Test page 5', $list[0][ 'title' ] );
 	}
 
 	/**
