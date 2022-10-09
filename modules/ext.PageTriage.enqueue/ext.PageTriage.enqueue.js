@@ -16,7 +16,7 @@
 		mw.loader.using( 'oojs-ui-windows' ).then( function () {
 			loading = false;
 			OO.ui.confirm( mw.msg( 'pagetriage-enqueue-confirmation' ), {
-			} ).done( function ( enqueue ) {
+			} ).then( function ( enqueue ) {
 				if ( !enqueue ) {
 					return;
 				}

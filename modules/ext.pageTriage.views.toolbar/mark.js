@@ -53,7 +53,7 @@ module.exports = ToolView.extend( {
 			pageid: mw.config.get( 'wgArticleId' ),
 			reviewed: reviewed ? '1' : '0'
 		} )
-			.done( function () {
+			.then( function () {
 				// Data to be sent back to consumers of the actionQueue API.
 				var actionData = that.getDataForActionQueue( {
 					reviewed: reviewed,
@@ -74,7 +74,7 @@ module.exports = ToolView.extend( {
 
 				mw.pageTriage.actionQueue.run( 'mark', actionData );
 			} )
-			.fail( function ( errorCode, data ) {
+			.catch( function ( _errorCode, data ) {
 				that.showMarkError( action, data.error.info || mw.msg( 'unknown-error' ) );
 			} );
 	},
@@ -163,15 +163,17 @@ module.exports = ToolView.extend( {
 			sendNotePromise = sendNote1;
 		}
 
-		sendNotePromise.then( function () {
-			that.hideFlyout( action );
-		}, function ( errorCode, error ) {
-			if ( error !== undefined ) {
-				that.showMarkError( action, error );
-			} else {
-				that.showMarkError( action, mw.msg( 'unknown-error' ) );
-			}
-		} );
+		sendNotePromise
+			.then( function () {
+				that.hideFlyout( action );
+			} )
+			.catch( function ( _errorCode, error ) {
+				if ( error !== undefined ) {
+					that.showMarkError( action, error );
+				} else {
+					that.showMarkError( action, mw.msg( 'unknown-error' ) );
+				}
+			} );
 	},
 
 	sendNote: function ( talkPageTitle, topicTitle, note ) {

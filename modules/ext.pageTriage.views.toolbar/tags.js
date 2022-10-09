@@ -569,13 +569,13 @@ module.exports = ToolView.extend( {
 				reviewed: '1',
 				skipnotif: '1'
 			} )
-				.done( function () {
+				.then( function () {
 					// Register action for marking the page as reviewed.
 					actionQueue.mark = { reviewed: true };
 
 					that.applyTags( topText, bottomText, tagList );
 				} )
-				.fail( function ( errorCode, data ) {
+				.catch( function ( _errorCode, data ) {
 					that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
 				} );
 		} else {
@@ -587,13 +587,13 @@ module.exports = ToolView.extend( {
 				reviewed: '0',
 				skipnotif: '1'
 			} )
-				.done( function () {
+				.then( function () {
 					// Register action for marking the page as unreviewed.
 					actionQueue.mark = { reviewed: false };
 
 					that.applyTags( topText, bottomText, tagList );
 				} )
-				.fail( function ( errorCode, data ) {
+				.catch( function ( _errorCode, data ) {
 					that.handleError( mw.msg( 'pagetriage-mark-as-unreviewed-error', data.error.info ) );
 				} );
 		}
@@ -643,7 +643,7 @@ module.exports = ToolView.extend( {
 			note: note,
 			taglist: tagList.join( '|' )
 		} )
-			.done( function () {
+			.then( function () {
 				actionQueue.tags = { tags: tagList };
 
 				if ( note ) {
@@ -653,7 +653,7 @@ module.exports = ToolView.extend( {
 					mw.pageTriage.actionQueue.runAndRefresh( actionQueue, that.getDataForActionQueue() );
 				}
 			} )
-			.fail( function ( errorCode, data ) {
+			.catch( function ( _errorCode, data ) {
 				that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
 			} );
 	},

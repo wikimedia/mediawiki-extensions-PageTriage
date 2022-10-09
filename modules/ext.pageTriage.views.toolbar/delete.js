@@ -634,6 +634,9 @@ module.exports = ToolView.extend( {
 
 	/**
 	 * Submit the selected tags
+	 *
+	 * @return {jQuery.Promise} A promise that resolves either when the page is
+	 * tagged or if an error occurs.
 	 */
 	submit: function () {
 		// no tag to submit
@@ -679,57 +682,68 @@ module.exports = ToolView.extend( {
 
 		// reviewed value must be either '0' or '1'
 		var markAsReviewed = this.deletionTagsOptions[ this.selectedCat ].reviewed || '0';
-		$.when.apply( null, promises ).then( function () {
-			// Applying deletion tags should mark the page as reviewed depending on the selected tag's
-			// reviewed option. If it is not set then the page will be marked as not reviewed.
-			return new mw.Api().postWithToken( 'csrf', {
-				action: 'pagetriageaction',
-				pageid: mw.config.get( 'wgArticleId' ),
-				// reviewed value must be either '0' or '1'
-				reviewed: markAsReviewed,
-				skipnotif: '1'
+		// Wait until all discussion page names picked.
+		return $.when.apply( null, promises )
+			.then( function () {
+				// Applying deletion tags should mark the page as reviewed depending on the selected tag's
+				// reviewed option. If it is not set then the page will be marked as not reviewed.
+				return new mw.Api().postWithToken( 'csrf', {
+					action: 'pagetriageaction',
+					pageid: mw.config.get( 'wgArticleId' ),
+					// reviewed value must be either '0' or '1'
+					reviewed: markAsReviewed,
+					skipnotif: '1'
+				} );
 			} )
-				.then( function () {
-					var promisesQueue = [];
+			.then( function () {
+				if ( markAsReviewed === '1' ) {
+					// Page was also marked as reviewed, so we want to fire the action for that, too.
+					// The 'reviewed' and 'reviewer' attributes on the model are not yet populated,
+					// so we have to pass those in manually.
+					actionQueue.mark = {
+						reviewed: true,
+						reviewer: mw.config.get( 'wgUserName' )
+					};
+				}
+				actionQueue.delete = { tags: that.selectedTag };
 
-					var isXFD = !that.deletionTagsOptions[ that.selectedCat ].multiple;
-					if ( isXFD ) {
-						for ( var key in that.selectedTag ) {
-							var tagObj = that.selectedTag[ key ];
-							if ( tagObj.prefix ) {
-								// Async fork #1: logPage() -> addToLog() -> discussionPage(), which
-								// handles writing to the XFD daily log and creating the XFD page. This
-								// code path is only used for the XFD options (AFD for mainspace, RFD
-								// for redirects, MFD for userspace)
-								promisesQueue.push( that.logPage( tagObj ) );
-								break;
-							}
+				var rootPromise = $.Deferred(),
+					// End of the promise chain.
+					chainEnd = rootPromise;
+
+				var isXFD = !that.deletionTagsOptions[ that.selectedCat ].multiple;
+				if ( isXFD ) {
+					for ( var key in that.selectedTag ) {
+						var tagObj = that.selectedTag[ key ];
+						if ( tagObj.prefix ) {
+							// Handles writing to the XFD daily log and creating the XFD page. This
+							// code path is only used for the XFD options (AFD for mainspace, RFD
+							// for redirects, MFD for userspace)
+							chainEnd = chainEnd
+								.then( that.shouldLog.bind( that, tagObj ) )
+								.then( that.addToLog )
+								.then( that.makeDiscussionPage.bind( that, tagObj ) );
+							break;
 						}
 					}
+				}
+				// Handles tagging the article with a deletion tag and notifying the
+				// creator on their user talk page. This code path is used by all
+				// deletion options (CSD, PROD, XFD).
+				// Functions using `this` must be bound to avoid losing context.
+				chainEnd = chainEnd
+					.then( that.tagPage.bind( that ) )
+					.then( that.notifyUser.bind( that ) )
+					.then( mw.pageTriage.actionQueue.runAndRefresh.bind(
+						null, actionQueue, that.getDataForActionQueue()
+					) )
+					.catch( that.handleError );
 
-					if ( markAsReviewed === '1' ) {
-						// Page was also marked as reviewed, so we want to fire the action for that, too.
-						// The 'reviewed' and 'reviewer' attributes on the model are not yet populated,
-						// so we have to pass those in manually.
-						actionQueue.mark = {
-							reviewed: true,
-							reviewer: mw.config.get( 'wgUserName' )
-						};
-					}
-					actionQueue.delete = { tags: that.selectedTag };
-
-					// Wait for everything to finish, to avoid race conditions. We don't want
-					// to refresh before the AFD page is created above.
-					$.when.apply( $, promisesQueue ).then( function () {
-						// Async fork #2: tagPage() -> notifyUser() -> runAndRefresh(), which handles
-						// tagging the article with a deletion tag and notifying the creator on
-						// their user talk page. This code path is used by all deletion options
-						// (CSD, PROD, XFD).
-						that.tagPage();
-					} );
-				} );
-		} )
-			.fail( function ( errorCode, data ) {
+				// Begin running the promise chain.
+				rootPromise.resolve();
+				return chainEnd;
+			} )
+			.catch( function ( _errorCode, data ) {
 				that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
 			} );
 	},
@@ -737,9 +751,13 @@ module.exports = ToolView.extend( {
 	/**
 	 * Handle an error occurring after submit
 	 *
-	 * @param {string} msg The error message to display
+	 * @param {string|Error} msg The message to display
 	 */
 	handleError: function ( msg ) {
+		if ( msg instanceof Error ) {
+			msg = msg.message;
+		}
+
 		// Log error to WikimediaEvents
 		var skin = mw.config.get( 'skin' );
 		var dumpOfTag = JSON.stringify( this.selectedTag );
@@ -764,6 +782,11 @@ module.exports = ToolView.extend( {
 
 	/**
 	 * Add deletion tag template to the page
+	 *
+	 * @return {jQuery.Promise} A promise. Resolves if successful, rejects with
+	 * an `Error` if not. The resolved promise is an Object with the key `tagCount`
+	 * (the number of tags added to the page) and the key `tagKey` (the key
+	 * of the tag added to the page).
 	 */
 	tagPage: function () {
 		var key,
@@ -821,21 +844,22 @@ module.exports = ToolView.extend( {
 			text = '{{' + $.pageTriageDeletionTagsMultiple.tag + '|' + tagText + paramsText + '}}';
 		}
 
-		new mw.Api().postWithToken( 'csrf', {
+		return new mw.Api().postWithToken( 'csrf', {
 			action: 'pagetriagetagging',
 			pageid: mw.config.get( 'wgArticleId' ),
 			top: text,
 			deletion: 1,
 			taglist: tagList.join( '|' )
 		} )
-			.done( function () {
-				that.notifyUser( count, key );
+			.then( function () {
+				// To be passed into `addToLog`.
+				return { tagCount: count, tagKey: key };
 			} )
-			.fail( function ( errorCode ) {
+			.catch( function ( errorCode ) {
 				if ( errorCode === 'pagetriage-tag-deletion-error' ) {
-					that.handleError( mw.msg( 'pagetriage-tag-deletion-error' ) );
+					throw new Error( mw.msg( 'pagetriage-tag-deletion-error' ) );
 				} else {
-					that.handleError( mw.msg( 'pagetriage-tagging-error' ) );
+					throw new Error( mw.msg( 'pagetriage-tagging-error' ) );
 				}
 			} );
 	},
@@ -843,10 +867,16 @@ module.exports = ToolView.extend( {
 	/**
 	 * Notify the user on talk page
 	 *
-	 * @param {number} count
-	 * @param {string} key
+	 * @param {Object} data The data returned by `tagPage`
+	 * @param {number} data.count The number of deletion tags added
+	 * @param {string} data.key The key of the added deletion tag (if only one tag was added)
+	 * @return {jQuery.Promise} A promise. Resolves if successful, rejects with
+	 * an `Error` if not.
 	 */
-	notifyUser: function ( count, key ) {
+	notifyUser: function ( data ) {
+		var count = data.tagCount,
+			key = data.tagKey;
+
 		if ( count === 0 || !this.selectedTag[ key ] ) {
 			return;
 		}
@@ -878,26 +908,28 @@ module.exports = ToolView.extend( {
 				)
 			);
 
-			var that = this;
-			messagePosterPromise.then( function ( messagePoster ) {
+			return messagePosterPromise.then( function ( messagePoster ) {
 				return messagePoster.post( topicTitle, template, { tags: 'pagetriage' } );
-			} ).then( function () {
-				mw.pageTriage.actionQueue.runAndRefresh( actionQueue, that.getDataForActionQueue() );
-			}, function () {
-				that.handleError( mw.msg( 'pagetriage-del-talk-page-notify-error' ) );
+			} ).catch( function () {
+				throw new Error( mw.msg( 'pagetriage-del-talk-page-notify-error' ) );
 			} );
 		}
+
+		// Return a blank resolved promise to proceed with execution.
+		return $.Deferred().resolve();
 	},
 
 	/**
-	 * Get the content of the current log page, then attempt to add this page
-	 * to the log in another request
+	 * Check if a log entry should be saved, and return the data for saving the entry
+	 * if so.
 	 *
 	 * @param {Object} tagObj
+	 * @return {jQuery.Promise} A promise. Resolves if successful, rejects with
+	 * an `Error` if not. Resolves log append data if the page will be appended to
+	 * the log, `undefined` otherwise.
 	 */
-	logPage: function ( tagObj ) {
-		var that = this,
-			title = specialDeletionTagging[ tagObj.tag ].getLogPageTitle( tagObj.prefix );
+	shouldLog: function ( tagObj ) {
+		var title = specialDeletionTagging[ tagObj.tag ].getLogPageTitle( tagObj.prefix );
 
 		return new mw.Api().get( {
 			action: 'query',
@@ -908,31 +940,41 @@ module.exports = ToolView.extend( {
 			.then( function ( data ) {
 				if ( data && data.query && data.query.pages ) {
 					for ( var i in data.query.pages ) {
-						if ( i === '-1' ) {
-							// If log page is missing, skip ahead to making the AFD/MFD page
-							return that.discussionPage( tagObj );
+						// If log page is missing, skip ahead to making the AFD/MFD page
+						if ( i !== '-1' ) {
+							return {
+								title: title,
+								oldText: data.query.pages[ i ].revisions[ 0 ][ '*' ],
+								tagObj: tagObj
+							};
 						}
-						return that.addToLog( title, data.query.pages[ i ].revisions[ 0 ][ '*' ], tagObj );
 					}
-				} else {
-					// If log page is missing, skip ahead to making the AFD/MFD page
-					return that.discussionPage( tagObj );
 				}
-			}, function () {
-				// If log page is missing, skip ahead to making the AFD/MFD page
-				return that.discussionPage( tagObj );
+			} )
+			.catch( function () {
+				// Don't log.
 			} );
 	},
 
 	/**
 	 * Add a page to the log
 	 *
-	 * @param {string} title
-	 * @param {string} oldText
-	 * @param {Object} tagObj
+	 * @param {Object} data The data returned by `shouldLog`
+	 * @param {string} data.title The title of the log page
+	 * @param {string} data.oldText The current content of the log page
+	 * @param {Object} data.tagObj
+	 * @return {jQuery.Promise} A promise. Resolves if successful, rejects with
+	 * an `Error` if not.
 	 */
-	addToLog: function ( title, oldText, tagObj ) {
-		var that = this,
+	addToLog: function ( data ) {
+		if ( !data ) {
+			// No data returned or false, skip adding to log.
+			return;
+		}
+
+		var title = data.title,
+			oldText = data.oldText,
+			tagObj = data.tagObj,
 			request = {
 				action: 'edit',
 				title: title,
@@ -947,22 +989,17 @@ module.exports = ToolView.extend( {
 		);
 
 		if ( request.text === oldText ) {
-			that.handleError( mw.msg( 'pagetriage-del-log-page-adding-error' ) );
-			return;
+			throw new Error( mw.msg( 'pagetriage-del-log-page-adding-error' ) );
 		}
 
 		return new mw.Api().postWithToken( 'csrf', request )
-			.then( function ( data ) {
-				if ( data.edit && data.edit.result === 'Success' ) {
-					// If AFD or MFD, make page. Else we're done for now.
-					if ( tagObj.discussion ) {
-						return that.discussionPage( tagObj );
-					}
-				} else {
-					that.handleError( mw.msg( 'pagetriage-del-log-page-adding-error' ) );
+			.then( function ( editData ) {
+				if ( !editData.edit || editData.edit.result !== 'Success' ) {
+					throw new Error( mw.msg( 'pagetriage-del-log-page-adding-error' ) );
 				}
-			}, function () {
-				that.handleError( mw.msg( 'pagetriage-del-log-page-adding-error' ) );
+			} )
+			.catch( function () {
+				throw new Error( mw.msg( 'pagetriage-del-log-page-adding-error' ) );
 			} );
 	},
 
@@ -970,11 +1007,16 @@ module.exports = ToolView.extend( {
 	 * Generate an AFD or MFD discussion page
 	 *
 	 * @param {Object} tagObj
-	 * @return {Promise}
+	 * @return {jQuery.Promise} A promise. Resolves if successful, rejects with
+	 * an `Error` if not.
 	 */
-	discussionPage: function ( tagObj ) {
-		var that = this,
-			title = tagObj.prefix + '/' + ( tagObj.subpage || pageName ),
+	makeDiscussionPage: function ( tagObj ) {
+		if ( !tagObj.discussion ) {
+			// Does not warrant a discussion page.
+			return;
+		}
+
+		var title = tagObj.prefix + '/' + ( tagObj.subpage || pageName ),
 			request = {
 				action: 'edit',
 				title: title,
@@ -984,15 +1026,14 @@ module.exports = ToolView.extend( {
 
 		if ( !specialDeletionTagging[ tagObj.tag ] ) {
 			// T313303
-			that.handleError( 'tagObj.tag is not an allowed value ~ ' + tagObj.tag );
-			return;
+			throw new Error( 'tagObj.tag is not an allowed value ~ ' + tagObj.tag );
 		}
 
 		specialDeletionTagging[ tagObj.tag ].buildDiscussionRequest( tagObj.params[ '1' ].value, request );
 
 		return new mw.Api().postWithToken( 'csrf', request )
-			.then( null, function () {
-				that.handleError( mw.msg( 'pagetriage-del-discussion-page-adding-error' ) );
+			.catch( function () {
+				throw new Error( mw.msg( 'pagetriage-del-discussion-page-adding-error' ) );
 			} );
 	},
 
