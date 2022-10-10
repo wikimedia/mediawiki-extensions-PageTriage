@@ -410,7 +410,7 @@
 	"logentry-pagetriage-deletion-delete": "$1{{GENDER:$2|}} a marqué $3 pour suppression avec {{PLURAL:$5|la balise|les balises}} $4",
 	"log-name-pagetriage-copyvio": "Journal des violations de droit d’auteur potentielles",
 	"log-description-pagetriage-copyvio": "Voici le journal des événements reçus via l’API Copyvio PageTriage.",
-	"logentry-pagetriage-copyvio-insert": "$1{{GENDER:$2|}} a marqué la relecture $4 de $3 comme une violation potentielle du droit d’auteur",
+	"logentry-pagetriage-copyvio-insert": "$1{{GENDER:$2|}} a marqué la version $4 de $3 comme une violation potentielle du droit d’auteur",
 	"logentry-pagetriage-curation-enqueue": "$1{{GENDER:$2|}} a ajouté $3 au fil des nouvelles pages",
 	"log-action-filter-pagetriage-curation": "Action de triage de page",
 	"log-action-filter-pagetriage-curation-review": "Relecture",
