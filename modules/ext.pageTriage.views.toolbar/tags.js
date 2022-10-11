@@ -619,6 +619,8 @@ module.exports = ToolView.extend( {
 		var err = new Error( errorMessage );
 		err.name = 'pageTriageHandleError';
 		mw.errorLogger.logError( err, 'error.pagetraige' );
+		var sitename = mw.config.get( 'wgDBname' );
+		mw.track( 'counter.MediaWiki.extension.PageTriage.' + sitename + '.viewsToolbar.tags.error' );
 
 		$.removeSpinner( 'tag-spinner' );
 		// Re-enable the submit button (in case it is disabled)
