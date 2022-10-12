@@ -108,7 +108,7 @@
 	"pagetriage-filter-namespace-heading": "Prompt for the namespace to display",
 	"pagetriage-filter-article": "Select list option for the main namespace.\n{{Identical|Article}}",
 	"pagetriage-filter-user-heading": "Prompt for the user to find pages by. Immediately followed by an input field. Prefer no colon since we want it to match with the rest of the options in the list which are all of the style \"Were created by XXX\".",
-	"pagetriage-filter-username": "Placeholder text for the input where a username is entered.\n{{Identical|Username}}",
+	"pagetriage-filter-username": "Text for the filter sub-section related to creators",
 	"pagetriage-filter-tag-heading": "Prompt to find pages with a given tag",
 	"pagetriage-filter-second-show-heading": "Prompt for the second set of checkboxes in the filter menu. Followed by these checkboxes - \n*{{msg-mw|Pagetriage-filter-no-categories}}, \n*{{msg-mw|Pagetriage-filter-orphan}} and \n*{{msg-mw|Pagetriage-filter-non-autoconfirmed}}.\n{{Identical|That}}",
 	"pagetriage-filter-no-categories": "Checkbox text for pages with no categories",
