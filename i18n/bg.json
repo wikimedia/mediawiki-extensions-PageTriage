@@ -3,6 +3,7 @@
 		"authors": [
 			"Borislav",
 			"DCLXVI",
+			"Kareyac",
 			"StanProg",
 			"Ted Masters",
 			"Vlad5250",
@@ -65,7 +66,7 @@
 	"pagetriage-filter-reviewed-edits": "Проверени статии",
 	"pagetriage-filter-unreviewed-edits": "Непроверени страници",
 	"pagetriage-filter-nominated-for-deletion": "Номиниране за изтриване",
-	"pagetriage-filter-bot-edits": "Създадени от ботове",
+	"pagetriage-filter-bot-edits": "Ботове",
 	"pagetriage-filter-redirects": "Пренасочвания (не RfD)",
 	"pagetriage-filter-others": "Всички други",
 	"pagetriage-filter-namespace-heading": "В именно пространство:",

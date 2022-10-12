@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ajiniyaz",
+			"Ajiniyaz Nurniyazov"
+		]
+	},
+	"pagetriage-filter-bot-edits": "Botlar",
+	"pagetriage-filter-autopatrolled-edits": "Avtopatrul etilgen paydalanıwshılar",
+	"pagetriage-filter-user-heading": "Jaratqanlar:",
+	"pagetriage-filter-non-autoconfirmed": "Jańa kelgenler (avtomatik tastıyıqlanbaǵanlar)",
+	"pagetriage-filter-learners": "Úyreniwshiler (jańadan avtomatik tastıyıqlanǵanlar)",
+	"pagetriage-filter-blocked": "Bloklanǵan paydalanıwshılar"
+}

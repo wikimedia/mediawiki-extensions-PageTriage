@@ -3,6 +3,7 @@
 		"authors": [
 			"Assele",
 			"Haqmar",
+			"Kareyac",
 			"Sagan"
 		]
 	},
@@ -14,5 +15,6 @@
 	"pagetriage-sort-by": "Тәртипләштереү:",
 	"pagetriage-newest": "Иң яңы",
 	"pagetriage-oldest": "Иң иҫке",
-	"pagetriage-filter-show-heading": "Ошоларҙы күрһәт:"
+	"pagetriage-filter-show-heading": "Ошоларҙы күрһәт:",
+	"pagetriage-filter-bot-edits": "Боттар"
 }
