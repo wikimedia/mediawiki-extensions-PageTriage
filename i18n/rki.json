@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cakkaparla",
+			"ReyLon Mrat"
+		]
+	},
+	"pagetriage-filter-bot-edits": "ဘော့",
+	"pagetriage-filter-autopatrolled-edits": "သူ့စာသူလှည့်ပနာသုံးရေလူတိ",
+	"pagetriage-filter-user-heading": "တီထွင်ခရေ",
+	"pagetriage-filter-non-autoconfirmed": "လူသစ်များ (အလိုလိုအတည်ပြုခြင်းမဟိ)",
+	"pagetriage-filter-learners": "လေ့လာရေလူများ (အသစ်အလိုအလျောက်အတည်ပြုထားသည်)",
+	"pagetriage-filter-blocked": "ပိတ်ထားရေအသုံးပြုသူတိ"
+}

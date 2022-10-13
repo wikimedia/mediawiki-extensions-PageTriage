@@ -2,11 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Bjh21",
+			"Boke",
+			"Cakkaparla",
 			"Pansi123",
 			"Sau226",
 			"Shirayuki"
 		]
 	},
+	"pagetriage-filter-bot-edits": "ဘော့တ်တိ",
+	"pagetriage-filter-autopatrolled-edits": "သူ့စာကိုသူပြောင်းပနာသုံးသူ",
+	"pagetriage-filter-user-heading": "တီထွင်ခရေ",
+	"pagetriage-filter-non-autoconfirmed": "လူသစ်တိ(အလိုအလျောက်အတည်ပြုခြင်းမဟိန့်)",
+	"pagetriage-filter-learners": "သင်ယူရေလူများ (အသစ်အလိုလိုအတည်ပြုထားသည်)",
+	"pagetriage-filter-blocked": "အသုံးပြုရေလူတိကိုပိတ်ထားရေ",
 	"pagetriage-del-tags-dbu3-desc": "Galleries in the userspace that consist mostly or entirely of \"fair use\" or non-free images. Wikipedia's non-free content policy prohibits the use of non-free content in userspace, even content that the user has uploaded; use of content in the public domain or under a free licence is acceptable. (U3)",
 	"pagetriage-toolbar-minimize": "Minimise"
 }
