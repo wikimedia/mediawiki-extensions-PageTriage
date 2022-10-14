@@ -18,6 +18,7 @@
 			"Shaleych",
 			"Stjn",
 			"Tucvbif",
+			"UniCollab",
 			"Vlad5250",
 			"Yurik"
 		]
@@ -99,7 +100,7 @@
 	"pagetriage-filter-others": "Остальное",
 	"pagetriage-filter-namespace-heading": "В пространстве имён:",
 	"pagetriage-filter-article": "Статьи",
-	"pagetriage-filter-user-heading": "Были созданы",
+	"pagetriage-filter-user-heading": "Были созданы:",
 	"pagetriage-filter-username": "Имя участника",
 	"pagetriage-filter-tag-heading": "С тегом:",
 	"pagetriage-filter-second-show-heading": "Которые:",

@@ -372,6 +372,7 @@
 	"log-name-pagetriage-copyvio": "Potentielle-Urheberrechtsverletzungs-Logbuch",
 	"log-description-pagetriage-copyvio": "Dies ist das Logbuch der Ereignisse, die über die PageTriage-Urheberrechtsverletzungs-API erhalten wurden.",
 	"logentry-pagetriage-copyvio-insert": "$1 {{GENDER:$2|markierte}} die Version $4 auf $3 als mögliche Urheberrechtsverletzung",
+	"log-action-filter-pagetriage-curation-delete": "Löschen",
 	"pagetriage-tags-edit-summary": "Markierungen mit $1 zur Seite hinzugefügt ($2)",
 	"pagetriage-del-edit-summary": "Seite mit $1 zur Löschung vorgeschlagen ($2)",
 	"pagetriage-del-tags-param-discussion-label": "Bitte erkläre, warum diese Seite gelöscht werden sollte und gib, sofern möglich, Links zu den zutreffenden Richtlinien an.",

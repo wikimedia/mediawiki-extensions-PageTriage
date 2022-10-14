@@ -5,6 +5,8 @@
 			"Ajiniyaz Nurniyazov"
 		]
 	},
+	"pagetriage-unreviewed-article-count": "$1 {{PLURAL:$1|maqala|maqalalar}} hám $2 {{PLURAL:$2|jóneltiw|jóneltiwler}} kórip shıǵılmaǵan (eń eskisi: $3)",
+	"pagetriage-reviewed-article-count-past-week": "Usı háptede $1 {{PLURAL:$1|maqala|maqalalar}} hám $2 {{PLURAL:$2|jóneltiw|jóneltiwler}} kórip shıǵıldı",
 	"pagetriage-filter-bot-edits": "Botlar",
 	"pagetriage-filter-autopatrolled-edits": "Avtopatrul etilgen paydalanıwshılar",
 	"pagetriage-filter-user-heading": "Jaratqanlar:",
