@@ -24,13 +24,13 @@ $( function () {
 				this.eventBus.bind( 'articleListChange', function () {
 					that.setPosition();
 				} );
-
-				// when a request is made to refresh the list, do it
-				this.eventBus.bind( 'refreshListRequest', function () {
-					that.refreshList();
-					that.refreshStats();
-				} );
 			}
+
+			// when a request is made to refresh the list, do it
+			this.eventBus.bind( 'refreshListRequest', function () {
+				that.refreshList();
+				that.refreshStats();
+			} );
 
 			this.eventBus.bind( 'renderStats', function ( stats ) {
 				// fill in the counter when the stats view gets loaded.
