@@ -385,6 +385,7 @@
 	"log-action-filter-pagetriage-curation-unreview": "Dismarcar como revidite",
 	"log-action-filter-pagetriage-curation-enqueue": "Adder al cauda",
 	"log-action-filter-pagetriage-curation-tag": "Etiquettar",
+	"log-action-filter-pagetriage-curation-delete": "Deletion",
 	"pagetriage-tags-edit-summary": "Etiquettas addite al pagina usante $1 ($2)",
 	"pagetriage-del-edit-summary": "Pagina nominate pro deletion usante $1 ($2)",
 	"pagetriage-del-tags-param-discussion-label": "Per favor explica proque iste pagina deberea esser delite, e forni ligamines al politicas pertinente ubi possibile",

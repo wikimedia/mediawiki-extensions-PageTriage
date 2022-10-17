@@ -12,5 +12,6 @@
 	"pagetriage-filter-user-heading": "Jaratqanlar:",
 	"pagetriage-filter-non-autoconfirmed": "Jańa kelgenler (avtomatik tastıyıqlanbaǵanlar)",
 	"pagetriage-filter-learners": "Úyreniwshiler (jańadan avtomatik tastıyıqlanǵanlar)",
-	"pagetriage-filter-blocked": "Bloklanǵan paydalanıwshılar"
+	"pagetriage-filter-blocked": "Bloklanǵan paydalanıwshılar",
+	"log-action-filter-pagetriage-curation-delete": "Óshirilip atır"
 }

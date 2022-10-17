@@ -12,7 +12,8 @@
 			"SteveR",
 			"Vlad5250",
 			"Ypryima",
-			"Ата"
+			"Ата",
+			"Пан Хаунд"
 		]
 	},
 	"pagetriage": "Сортування сторінок",
@@ -102,7 +103,7 @@
 	"pagetriage-filter-unreferenced": "Без джерел",
 	"pagetriage-filter-orphan": "Є сиротами",
 	"pagetriage-filter-recreated": "Попередньо вилучені",
-	"pagetriage-filter-non-autoconfirmed": "Створені новачками (неавтопідтвердженими користувачами)",
+	"pagetriage-filter-non-autoconfirmed": "Новачки (не автоматично підтверджені)",
 	"pagetriage-filter-learners": "Створені учнями (недавно-автопідтвердженими користувачами)",
 	"pagetriage-filter-blocked": "Створені заблокованими користувачами",
 	"pagetriage-filter-all": "Показати всі",

@@ -53,6 +53,7 @@
 	"pagetriage-tags-param-date-label": "Datum:",
 	"pagetriage-tags-param-free-yes-label": "Da",
 	"pagetriage-tags-param-free-no-label": "Ne",
+	"log-action-filter-pagetriage-curation-delete": "Brisanje",
 	"pagetriage-info-logs-show": "prikaži dnevnike",
 	"pagetriage-info-help": "pomoč",
 	"pagetriage-info-problem-non-autoconfirmed": "Nov urejevalec",

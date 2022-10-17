@@ -395,6 +395,7 @@
 	"log-action-filter-pagetriage-curation-unreview": "Отпроверка",
 	"log-action-filter-pagetriage-curation-enqueue": "Вадење од редица",
 	"log-action-filter-pagetriage-curation-tag": "Означување",
+	"log-action-filter-pagetriage-curation-delete": "Бришење",
 	"pagetriage-tags-edit-summary": "Додавање на ознаки во страницата со помош на $1 ($2)",
 	"pagetriage-del-edit-summary": "Предложена страница за бришење користејќи $1 ($2)",
 	"pagetriage-del-tags-param-discussion-label": "Образложете зошто сметате дека страницава треба да се избрише и, по можност, наведете врски до правилата што се однесуваат на тоа.",
