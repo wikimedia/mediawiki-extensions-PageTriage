@@ -38,7 +38,7 @@ module.exports = ToolView.extend( {
 
 		// attempt to get the next page
 		new mw.Api().get( this.apiParams )
-			.done( function ( result ) {
+			.then( function ( result ) {
 				var url;
 				// If API returns the content for next page 'result.pagetriagelist.pages[ 0 ]'
 				// then user should be able to advance to next page
@@ -58,8 +58,7 @@ module.exports = ToolView.extend( {
 				} else {
 					that.disable();
 				}
-			} )
-			.fail( function () {
+			}, function () {
 				that.disable();
 			} );
 	}

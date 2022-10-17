@@ -4,15 +4,15 @@
 ( function () {
 	mw.pageTriage.action = {
 		submit: function () {
-			new mw.Api().postWithToken( 'csrf', {
+			return new mw.Api().postWithToken( 'csrf', {
 				action: 'pagetriageaction',
 				pageid: mw.config.get( 'wgArticleId' ),
 				reviewed: '1'
 			} )
-				.done( function () {
+				.then( function () {
 					$( '.mw-pagetriage-markpatrolled' ).text( mw.msg( 'pagetriage-reviewed' ) );
 				} )
-				.fail( function ( errorCode, data ) {
+				.catch( function ( _errorCode, data ) {
 					$( '.mw-pagetriage-markpatrolled' ).text( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
 				} );
 		}
