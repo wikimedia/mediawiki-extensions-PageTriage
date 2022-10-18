@@ -109,7 +109,7 @@
 	"pagetriage-filter-orphan": "Являются сиротами",
 	"pagetriage-filter-recreated": "Ранее уже удалялись",
 	"pagetriage-filter-non-autoconfirmed": "Созданы новыми участниками (не автоподтверждёнными)",
-	"pagetriage-filter-learners": "Были созданы начинающими участниками (недавно ставшими автоподтвержденными)",
+	"pagetriage-filter-learners": "Начинающие участники (недавно ставшие автоподтвержденными)",
 	"pagetriage-filter-blocked": "Заблокированные участники",
 	"pagetriage-filter-all": "Показать всё",
 	"pagetriage-filter-set-button": "Установить фильтры",
