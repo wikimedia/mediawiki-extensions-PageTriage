@@ -396,7 +396,7 @@ class Hooks {
 	 * @param bool $patrolFooterShown whether the patrol footer is shown
 	 */
 	public static function onArticleViewFooter( Article $article, $patrolFooterShown ) {
-		global $wgPageTriageEnableCurationToolbar;
+		global $wgPageTriageEnableCurationToolbar, $wgDBname;
 
 		$wikiPage = $article->getPage();
 		$title = $wikiPage->getTitle();
@@ -408,6 +408,9 @@ class Hooks {
 		// Overwrite the noindex rule defined in Article::view(), this also affects main namespace
 		if ( self::shouldShowNoIndex( $article ) ) {
 			$outputPage->setRobotPolicy( 'noindex,nofollow' );
+			MediaWikiServices::getInstance()->getStatsdDataFactory()->increment(
+				"extension.PageTriage.by_wiki.$wgDBname.noindex"
+			);
 		}
 
 		// Only logged in users can review
