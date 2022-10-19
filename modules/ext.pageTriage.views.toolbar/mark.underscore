@@ -12,6 +12,7 @@
 		<hr>
 		<div id="mwe-pt-review-note-title">
 			<% if( !hasPreviousReviewer ) { %>
+				<input id="mwe-pt-review-note-recipient" type="hidden" value="creator"/>
 				<%- mw.msg( "pagetriage-add-a-note-creator-required" ) %>
 			<% } else { %>
 				<%- mw.message( "pagetriage-add-a-note-for-options-label" ) %>
