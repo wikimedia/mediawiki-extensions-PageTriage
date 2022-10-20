@@ -771,7 +771,8 @@ module.exports = ToolView.extend( {
 		mw.log.error( errorMessage );
 		var err = new Error( errorMessage );
 		err.name = 'pageTriageHandleError';
-		mw.errorLogger.logError( err, 'error.pagetraige' );
+		var sitename = mw.config.get( 'wgDBname' );
+		mw.track( 'counter.MediaWiki.extension.PageTriage.' + sitename + '.viewsToolbar.delete.error' );
 
 		$.removeSpinner( 'delete-spinner' );
 		// Re-enable the submit button (in case it is disabled)
