@@ -503,10 +503,12 @@ module.exports = ToolView.extend( {
 			processed = {},
 			that = this,
 			multipleTags = {},
+			redirectTags = {},
 			tagList = [],
 			openText = '',
 			closeText = '',
-			multipleTagsText = '';
+			multipleTagsText = '',
+			multipleRedirectTagsText = '';
 		for ( var cat in this.selectedTag ) {
 			for ( tagKey in this.selectedTag[ cat ] ) {
 				if ( processed[ tagKey ] ) {
@@ -523,6 +525,9 @@ module.exports = ToolView.extend( {
 				}
 
 				switch ( tagObj.position ) {
+					case 'redirectTag':
+						redirectTags[ tagKey ] = tagObj;
+						break;
 					case 'bottom':
 					case 'stub':
 						bottomText += '\n\n{{' + tagObj.tag + this.buildParams( tagObj ) + '}}';
@@ -561,6 +566,16 @@ module.exports = ToolView.extend( {
 		}
 
 		topText += openText + multipleTagsText + closeText;
+
+		for ( tagKey in redirectTags ) {
+			multipleRedirectTagsText += '\n{{' + redirectTags[ tagKey ].tag +
+				this.buildParams( redirectTags[ tagKey ] ) + '}}';
+		}
+
+		if ( this.objectPropCount( redirectTags ) > 0 ) {
+			bottomText = '{{' + $.pageTriageTagsRedirectCategoryShell +
+				'|' + multipleRedirectTagsText + '\n}}' + bottomText;
+		}
 
 		if ( topText === '' && bottomText === '' ) {
 			return;
