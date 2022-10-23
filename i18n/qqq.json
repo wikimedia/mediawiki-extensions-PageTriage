@@ -121,6 +121,7 @@
 	"pagetriage-filter-blocked": "Checkbox text for pages by blocked users",
 	"pagetriage-filter-all": "Radio button text for all items radio button.\n{{Identical|Show all}}",
 	"pagetriage-filter-set-button": "Button text for the set filter button",
+	"pagetriage-filter-reset-button": "Button text for the reset filter button",
 	"pagetriage-stats-less-than-a-day": "Used if the page age is less than one day.\n\nUsed as <code>$2</code> in {{msg-mw|Pagetriage-unreviewed-article-count}}.",
 	"pagetriage-stats-reviewed-page-count": "Text showing the number of pages reviewed in the past week, $1 is the number of reviewed pages",
 	"pagetriage-stats-filter-page-count": "Text showing the number of pages from the primary filter, $1 is the number of pages",

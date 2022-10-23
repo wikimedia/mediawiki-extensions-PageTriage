@@ -394,13 +394,13 @@
 							<!-- The date range elements will be populated via JS. -->
 							<div id="date-range-afc-filters" class="mwe-pt-control-section">
 							</div>
-						</div>	
+						</div>
 					<% } %>
 				</div>
 			</div>
-			
 			<div class="mwe-pt-control-buttons">
 				<div id="mwe-pt-filter-set-button" class="ui-button-green"></div>
+				<div id="mwe-pt-filter-reset-button" class="mwe-pt-npp ui-button-red"></div>
 			</div>
 		</form>
 	</div>

@@ -270,7 +270,7 @@ $( function () {
 		/** Current queue mode: 'npp' or 'afc'. */
 		mode: 'npp',
 
-		apiParams: {
+		defaultApiParams: {
 			limit: 20,
 			nppDir: 'newestfirst',
 			afcDir: 'oldestreview',
@@ -280,9 +280,12 @@ $( function () {
 			showothers: 1
 		},
 
+		apiParams: null,
+
 		initialize: function ( options ) {
 			this.eventBus = options.eventBus;
 			this.eventBus.bind( 'filterSet', this.setParams );
+			this.apiParams = this.defaultApiParams;
 
 			// Pull any saved filter settings from the user's option.
 			var filterOptionsJson = mw.user.options.get( 'userjs-NewPagesFeedFilterOptions' );

@@ -101,6 +101,7 @@
 	"pagetriage-filter-blocked": "Blocked users",
 	"pagetriage-filter-all": "Show all",
 	"pagetriage-filter-set-button": "Set filters",
+	"pagetriage-filter-reset-button": "Reset filters",
 	"pagetriage-stats-less-than-a-day": "less than one day",
 	"pagetriage-stats-reviewed-page-count": "$1 {{PLURAL:$1|page|pages}} reviewed this week",
 	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|page|pages}} in your filtered list",

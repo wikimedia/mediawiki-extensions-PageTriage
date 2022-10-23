@@ -110,6 +110,24 @@ $( function () {
 				e.stopPropagation();
 			} );
 
+			// make a reset button
+			$( '#mwe-pt-filter-reset-button' ).button( {
+				label: mw.msg( 'pagetriage-filter-reset-button' )
+			} );
+			$( '#mwe-pt-filter-reset-button' ).on( 'click', function ( e ) {
+				that.model.setParams( that.model.defaultApiParams );
+				that.model.setParam( 'namespace', 0 );
+
+				// Resetting the other fields
+				that.menuSync();
+
+				// Resetting the date fields
+				$( '#mwe-pt-filter-npp-date-range-from' ).val( null );
+				$( '#mwe-pt-filter-npp-date-range-to' ).val( null );
+
+				e.stopPropagation();
+			} );
+
 			// make a submit button
 			$( '#mwe-pt-filter-set-button' ).button( {
 				label: mw.msg( 'pagetriage-filter-set-button' )
