@@ -333,6 +333,7 @@
 				"pagetriage-note-not-reviewed",
 				"pagetriage-note-deletion",
 				"pagetriage-refresh-list",
+				"pagetriage-auto-refresh-list",
 				"pagetriage-info-timestamp-date-format",
 				"pagetriage-no-reference",
 				"pagetriage-stats-filter-page-count"

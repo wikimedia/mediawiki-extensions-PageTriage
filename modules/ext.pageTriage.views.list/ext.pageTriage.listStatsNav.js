@@ -50,6 +50,22 @@ $( function () {
 				e.stopPropagation();
 			} );
 
+			var intervalID;
+
+			// Initialize Auto-Refresh List button
+			$( '#mwe-pt-autorefresh-checkbox' ).on( 'change', function ( e ) {
+				if ( $( '#mwe-pt-autorefresh-checkbox' ).prop( 'checked' ) ) {
+					// Fire the function that refreshes the feed every 30 seconds
+					intervalID = window.setInterval( function () {
+						that.eventBus.trigger( 'refreshListRequest' );
+					}, 30000 );
+				} else {
+					clearInterval( intervalID );
+				}
+
+				e.stopPropagation();
+			} );
+
 			// broadcast the stats in case any other views want to display bits of them.
 			// (the control view displays a summary)
 			this.eventBus.trigger( 'renderStats', this.model );

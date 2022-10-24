@@ -170,6 +170,7 @@
 	"pagetriage-note-not-reviewed": "A note that appears when a user hovers over a status icon",
 	"pagetriage-note-deletion": "A note that appears when a user hovers over a status icon",
 	"pagetriage-refresh-list": "A label for a button that refreshes the list of pages",
+	"pagetriage-auto-refresh-list": "A label for a checkbox that auto-refreshes the list of pages",
 	"pagetriage-tag-count-total": "Message that shows the number of tags being selected, $1 is the number",
 	"pagetriage-button-add-tag": "Text for the button that submits tags",
 	"pagetriage-button-add-tag-number": "Text for the button that submits tags. $1 is a number.",
