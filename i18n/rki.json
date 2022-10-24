@@ -7,14 +7,14 @@
 			"YaThaWinTha"
 		]
 	},
-	"pagetriage-reviewed-article-count-past-week": "$1 $2{{PLURAL:$1 ဆောင်ဘား၊ဆောင်းဘားများနန့်\n{{PLURAL:$2|}}}}ကိူ အေဂုတစ်ပတ်မှာ ပြန်ပနာသုံးသပ်ထားရေ",
+	"pagetriage-reviewed-article-count-past-week": "$1 $2{{PLURAL:$1 ဆောင်ဘား၊ ဆောင်းဘားတိနန့်\n{{PLURAL:$2|}}}}ကို အေဂုတစ်ပတ်မှာ ပြန်ပနာသုံးသပ်ထားရေ",
 	"pagetriage-filter-bot-edits": "ဘော့",
 	"pagetriage-filter-autopatrolled-edits": "သူ့စာသူလှည့်ပနာသုံးရေလူတိ",
 	"pagetriage-filter-user-heading": "တီထွင်ခရေ",
 	"pagetriage-filter-non-autoconfirmed": "လူသစ်တိ (အလိုလိုအတည်ပြုခြင်းမဟိ)",
 	"pagetriage-filter-learners": "လေ့လာရေလူတိ (အသစ်အလိုအလျောက်အတည်ပြုထားသည်)",
 	"pagetriage-filter-blocked": "ပိတ်ထားရေအသုံးပြုသူတိ",
-	"pagetriage-add-a-note-for-options-instruction-label": "လက်ခံသူကိုရွီး:",
+	"pagetriage-add-a-note-for-options-instruction-label": "လက်ခံလူကိုရွီးချယ်ပါ:",
 	"log-action-filter-pagetriage-curation-delete": "ဖျက်နီ​ယေ",
 	"pagetriage-info-logs-show": "မှတ်တမ်းတိပြ"
 }
