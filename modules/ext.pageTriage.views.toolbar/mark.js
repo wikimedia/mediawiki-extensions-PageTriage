@@ -221,11 +221,30 @@ module.exports = ToolView.extend( {
 			hasPreviousReviewer = this.model.get( 'ptrp_last_reviewed_by' ) > 0,
 			articleCreator = this.model.get( 'user_name' ),
 			previousReviewer = hasPreviousReviewer ? this.model.get( 'reviewer' ) : '';
-		let noteTarget = hasPreviousReviewer ? previousReviewer : articleCreator,
-			notePlaceholder = hasPreviousReviewer ? 'pagetriage-message-for-reviewer-placeholder' :
-				'pagetriage-message-for-creator-default-note';
+		let noteTarget = articleCreator,
+			notePlaceholder = 'pagetriage-message-for-creator-default-note',
+			numRecipients = 2,
+			noteRecipientRole,
+			noteMessage = 'pagetriage-add-a-note-for-options-label';
 
 		this.changeTooltip();
+
+		if ( !hasPreviousReviewer ||
+			mw.config.get( 'wgUserName' ) === previousReviewer ) {
+			numRecipients--;
+			noteTarget = articleCreator;
+			noteRecipientRole = 'creator';
+			noteMessage = 'pagetriage-add-a-note-creator-required';
+			notePlaceholder = 'pagetriage-message-for-creator-default-note';
+		}
+
+		if ( mw.config.get( 'wgUserName' ) === articleCreator ) {
+			numRecipients--;
+			noteTarget = previousReviewer;
+			noteRecipientRole = 'reviewer';
+			noteMessage = 'pagetriage-add-a-note-previous-reviewer';
+			notePlaceholder = 'pagetriage-message-for-reviewer-placeholder';
+		}
 
 		// create the mark as reviewed flyout content here.
 		this.$tel.html( this.template( $.extend(
@@ -236,7 +255,10 @@ module.exports = ToolView.extend( {
 				noteTarget: noteTarget,
 				notePlaceholder: notePlaceholder,
 				previousReviewer: previousReviewer,
-				articleCreator: articleCreator
+				articleCreator: articleCreator,
+				numRecipients: numRecipients,
+				noteRecipientRole: noteRecipientRole,
+				noteMessage: noteMessage
 			}
 		) ) );
 
@@ -246,8 +268,8 @@ module.exports = ToolView.extend( {
 		// * pagetriage-mark-as-unreviewed-error
 		$( '#mwe-pt-mark .mwe-pt-tool-title' ).text( mw.msg( 'pagetriage-mark-as-' + status ) );
 
-		// check if note is enabled for this namespace
-		if ( this.moduleConfig.note.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) !== -1 ) {
+		const noteIsEnabledForThisNamespace = this.moduleConfig.note.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) !== -1;
+		if ( noteIsEnabledForThisNamespace && numRecipients > 0 ) {
 			$( '#mwe-pt-review-note' ).show();
 			$( '#mwe-pt-review-note-input, #mwe-pt-review-note-recipient' ).on( 'input', function () {
 				const recipient = $( '#mwe-pt-review-note-recipient' ).val();
@@ -259,7 +281,7 @@ module.exports = ToolView.extend( {
 				}
 			} );
 
-			if ( hasPreviousReviewer ) {
+			if ( numRecipients > 1 ) {
 				$( '#mwe-pt-review-note-recipient' ).on( 'change', function () {
 					if ( $( this ).val() === 'reviewer' ) {
 						noteTarget = previousReviewer;

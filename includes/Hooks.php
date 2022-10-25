@@ -745,6 +745,7 @@ class Hooks implements
 				'unknown-error',
 				'pagetriage-add-a-note-creator',
 				'pagetriage-add-a-note-creator-required',
+				'pagetriage-add-a-note-previous-reviewer',
 				'pagetriage-add-a-note-for-options-label',
 				'pagetriage-add-a-note-for-options-instruction-label',
 				'pagetriage-add-a-note-for-option-creator',

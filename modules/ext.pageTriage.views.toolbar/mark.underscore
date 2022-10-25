@@ -11,13 +11,13 @@
 	<div id="mwe-pt-review-note">
 		<hr>
 		<div id="mwe-pt-review-note-title">
-			<% if( !hasPreviousReviewer ) { %>
-				<input id="mwe-pt-review-note-recipient" type="hidden" value="creator"/>
-				<%- mw.msg( "pagetriage-add-a-note-creator-required" ) %>
+			<% if( numRecipients === 1 ) { %>
+				<input id="mwe-pt-review-note-recipient" type="hidden" value="<%- noteRecipientRole %>"/>
+				<%- mw.msg( noteMessage, noteTarget ) %>
 			<% } else { %>
-				<%- mw.message( "pagetriage-add-a-note-for-options-label" ) %>
+				<%- mw.msg( "pagetriage-add-a-note-for-options-label" ) %>
 				<select id="mwe-pt-review-note-recipient">
-					<option disabled selected><%- mw.message( "pagetriage-add-a-note-for-options-instruction-label" ) %></option>
+					<option disabled selected><%- mw.msg( "pagetriage-add-a-note-for-options-instruction-label" ) %></option>
 					<option value="reviewer"><%- mw.msg( "pagetriage-add-a-note-for-option-reviewer", previousReviewer ) %></option>
 					<option value="creator"><%- mw.msg( "pagetriage-add-a-note-for-option-creator", articleCreator ) %></option>
 				</select>
