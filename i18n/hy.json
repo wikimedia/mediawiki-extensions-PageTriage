@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kareyac",
-			"Աշոտ1997"
+			"Աշոտ1997",
+			"Սերգեյ Սաֆարյան"
 		]
 	},
 	"pagetriage-please-wait": "Խնդրում ենք սպասել...",
@@ -30,6 +31,7 @@
 	"pagetriage-filter-date-range-format-placeholder": "աա/օօ/տտտտ",
 	"pagetriage-filter-bot-edits": "Բոտեր",
 	"pagetriage-filter-article": "Հոդված",
+	"pagetriage-filter-username": "Օգտանուն",
 	"pagetriage-filter-stat-bots": "Ըստ բոտերի",
 	"pagetriage-filter-stat-redirects": "Վերահղումներ",
 	"pagetriage-filter-stat-non-autoconfirmed": "Ըստ նորեկների",
