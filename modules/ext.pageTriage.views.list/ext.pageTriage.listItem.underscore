@@ -7,7 +7,7 @@
 	<div class="mwe-pt-status-icon">
 		<% if ( is_draft ) { %>
 			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_not_reviewed.png' %>" width="21" height="21" />
-		<% } else if ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) { %>
+		<% } else if ( mw.config.get( 'wgPageTriageEnableEnglishWikipediaFeatures' ) && ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) ) { %>
 			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_marked_for_deletion.png' %>" width="21" height="21" />
 		<% } else if ( patrol_status == "3" ) { %>
 			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_autopatrolled.png' %>" width="21" height="21" />
