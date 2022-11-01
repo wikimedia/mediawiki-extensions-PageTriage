@@ -44,6 +44,7 @@
 	"pagetriage-tags-param-date-label": "Datum:",
 	"pagetriage-tags-param-free-yes-label": "Da",
 	"pagetriage-tags-param-free-no-label": "Ne",
+	"log-name-pagetriage-curation": "Dnevnik pregledovanja strani",
 	"pagetriage-info-help": "pomoč",
 	"pagetriage-info-problem-non-autoconfirmed": "Nov urejevalec",
 	"pagetriage-info-problem-no-references-desc": "Članek ne navaja nobenega vira.",
