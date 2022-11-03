@@ -71,14 +71,14 @@ class UpdateUserMetadata extends Maintenance {
 
 		while ( $count === $this->getBatchSize() ) {
 			$count = 0;
-			$startTime = $this->dbr->addQuotes( $this->dbr->timestamp( $startTime ) );
-
 			$res = $this->dbr->select(
 				[ 'pagetriage_page', 'page' ],
 				[ 'ptrp_page_id', 'ptrp_tags_updated' ],
 				[
-					'(ptrp_tags_updated < ' . $startTime . ') OR
-					(ptrp_tags_updated = ' . $startTime . ' AND ptrp_page_id < ' . (int)$startId . ')',
+					$this->dbr->buildComparison( '<', [
+						'ptrp_tags_updated' => $this->dbr->timestamp( $startTime ),
+						'ptrp_page_id' => $startId,
+					] ),
 					'page_id = ptrp_page_id',
 					'page_namespace' => $namespace
 				],
@@ -97,7 +97,7 @@ class UpdateUserMetadata extends Maintenance {
 				if ( $row->ptrp_tags_updated ) {
 					$startTime = wfTimestamp( TS_UNIX, $row->ptrp_tags_updated );
 				}
-				$startId = $row->ptrp_page_id;
+				$startId = (int)$row->ptrp_page_id;
 
 				$acp = ArticleCompileProcessor::newFromPageId( $pageId );
 				if ( $acp ) {
