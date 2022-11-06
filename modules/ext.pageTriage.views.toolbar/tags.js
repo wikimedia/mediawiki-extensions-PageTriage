@@ -94,7 +94,8 @@ module.exports = ToolView.extend( {
 				tags: this.tagsOptions,
 				warningNotice: this.model.tagWarningNotice(),
 				title: this.title,
-				creator: this.model.get( 'user_name' )
+				creator: this.model.get( 'user_name' ),
+				patrolStatus: this.model.get( 'patrol_status' )
 			} ) );
 
 		// set the Learn More link URL
