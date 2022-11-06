@@ -254,7 +254,7 @@
 					params: {
 						date: param.date
 					},
-					position: 'bottom',
+					position: 'categories',
 					multiple: false
 				},
 

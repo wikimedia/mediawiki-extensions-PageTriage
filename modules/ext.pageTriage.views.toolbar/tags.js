@@ -524,10 +524,10 @@ module.exports = ToolView.extend( {
 
 				switch ( tagObj.position ) {
 					case 'bottom':
-						bottomText += '{{' + tagObj.tag + this.buildParams( tagObj ) + '}}';
+						bottomText += '\n\n{{' + tagObj.tag + this.buildParams( tagObj ) + '}}';
 						break;
 					case 'categories':
-						bottomText = '{{' + tagObj.tag + this.buildParams( tagObj ) + '}}' + bottomText;
+						bottomText = '\n{{' + tagObj.tag + this.buildParams( tagObj ) + '}}' + bottomText;
 						break;
 					case 'top':
 						/* falls through */
@@ -546,11 +546,11 @@ module.exports = ToolView.extend( {
 
 		if ( this.objectPropCount( multipleTags ) > 1 ) {
 			openText = '{{' + $.pageTriageTagsMultiple + '|';
-			closeText = '}}';
+			closeText = '\n}}';
 		}
 
 		for ( tagKey in multipleTags ) {
-			multipleTagsText += '{{' + multipleTags[ tagKey ].tag +
+			multipleTagsText += '\n{{' + multipleTags[ tagKey ].tag +
 				this.buildParams( multipleTags[ tagKey ] ) + '}}';
 		}
 
