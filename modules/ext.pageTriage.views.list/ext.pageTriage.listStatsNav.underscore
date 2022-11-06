@@ -1,4 +1,8 @@
 <div id="mwe-pt-refresh-button-holder">
+	<input type="checkbox" id="mwe-pt-autorefresh-checkbox"/>
+	<label for="mwe-pt-autorefresh-checkbox">
+		<%- mw.msg( 'pagetriage-auto-refresh-list' ) %>
+	</label>
 	<button id="mwe-pt-refresh-button"><%- mw.msg( 'pagetriage-refresh-list' ) %></button>
 </div>
 <% if ( !afcMode ) { %>

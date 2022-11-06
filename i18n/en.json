@@ -150,6 +150,7 @@
 	"pagetriage-note-not-reviewed": "This page has not yet been reviewed.",
 	"pagetriage-note-deletion": "This page has been nominated for deletion.",
 	"pagetriage-refresh-list": "Refresh list",
+	"pagetriage-auto-refresh-list": "Auto-refresh",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|tag|tags}} selected",
 	"pagetriage-button-add-tag": "Add selected tags",
 	"pagetriage-button-add-tag-number": "Add $1 selected tags",
