@@ -61,7 +61,7 @@ class ArticleMetadata {
 	/**
 	 * Flush the metadata in cache
 	 * @param int|null $pageId page id to be flushed, if null is provided, all
-	 *                    page id in $this->mPageId will be flushed
+	 *  page id in $this->mPageId will be flushed
 	 */
 	public function flushMetadataFromCache( $pageId = null ) {
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
@@ -174,7 +174,8 @@ class ArticleMetadata {
 				if ( $pageIdsCompile ) {
 					$acp = ArticleCompileProcessor::newFromPageId(
 						$pageIdsCompile,
-						false, // skip validation
+						// skip validation
+						false,
 						DB_REPLICA
 					);
 					if ( $acp ) {
@@ -187,7 +188,7 @@ class ArticleMetadata {
 
 				$placeholderMetadata = array_fill_keys( array_keys( self::getValidTags() ), '' );
 
-				foreach ( $metadataByPageId as $pageId => &$metadata ) {
+				foreach ( $metadataByPageId as &$metadata ) {
 					$metadata += $placeholderMetadata;
 				}
 
@@ -205,9 +206,7 @@ class ArticleMetadata {
 			},
 			[ 'version' => PageTriage::CACHE_VERSION ]
 		);
-		$metaDataByPageId = $cache->multiRemap( $this->pageIds, $metadataByKey );
-
-		return $metaDataByPageId;
+		return $cache->multiRemap( $this->pageIds, $metadataByKey );
 	}
 
 	/**

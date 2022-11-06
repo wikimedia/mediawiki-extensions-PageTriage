@@ -13,7 +13,7 @@ use User;
  * @group medium
  * @group Database
  * @group EditorEngagement
- * @covers MediaWiki\Extension\PageTriage\Api\ApiPageTriageAction
+ * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageAction
  */
 class ApiPageTriageActionTest extends PageTriageTestCase {
 
@@ -22,24 +22,23 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	 */
 	public static $users;
 
-	// Prepare test environment
 	public function setUp(): void {
 		global $wgHooks;
 		parent::setUp();
 		$this->setUpForOresCopyvioTests( $wgHooks );
 
 		self::$users['one'] = new TestUser(
-				'ApitestuserA',
-				'Api Test UserA',
-				'api_test_userA@example.com',
-				[ 'sysop' ]
+			'ApitestuserA',
+			'Api Test UserA',
+			'api_test_userA@example.com',
+			[ 'sysop' ]
 		);
 
 		self::$users['two'] = new TestUser(
-				'ApitestuserB',
-				'Api Test UserB',
-				'api_test_userB@example.com',
-				[]
+			'ApitestuserB',
+			'Api Test UserB',
+			'api_test_userB@example.com',
+			[]
 		);
 	}
 

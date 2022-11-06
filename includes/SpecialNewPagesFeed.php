@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
+use Exception;
 use Html;
 use SpecialPage;
 use TemplateParser;
@@ -19,7 +20,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 	/**
 	 * Initialize the special page.
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function __construct() {
 		parent::__construct( 'NewPagesFeed' );
@@ -31,17 +32,17 @@ class SpecialNewPagesFeed extends SpecialPage {
 	 * @throws \ConfigException
 	 */
 	public function execute( $sub ) {
-		global $wgPageTriageInfiniteScrolling,
-				$wgPageTriageStickyControlNav, $wgPageTriageStickyStatsNav,
-				$wgPageTriageLearnMoreUrl, $wgPageTriageFeedbackUrl, $wgPageTriageEnableOresFilters,
-				$wgPageTriageEnableCopyvio, $wgPageTriageEnableEnglishWikipediaFeatures;
+		// phpcs:ignore MediaWiki.Usage.ExtendClassUsage.FunctionConfigUsage
+		global $wgPageTriageInfiniteScrolling;
 		$this->addHelpLink( 'Help:New_pages_feed' );
+
+		$config = $this->getConfig();
 
 		$request = $this->getRequest();
 		$showOresFilters = PageTriageUtil::oresIsAvailable() &&
-			( $wgPageTriageEnableOresFilters || $request->getBool( 'ores' ) );
+			( $config->get( 'PageTriageEnableOresFilters' ) || $request->getBool( 'ores' ) );
 		$showCopyvio = $showOresFilters &&
-			( $wgPageTriageEnableCopyvio || $request->getBool( 'copyvio' ) );
+			( $config->get( 'PageTriageEnableCopyvio' ) || $request->getBool( 'copyvio' ) );
 		$this->setHeaders();
 		$out = $this->getOutput();
 		$user = $this->getUser();
@@ -61,10 +62,10 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$globalVars = [
 			'pageTriageNamespaces' => PageTriageUtil::getNamespaces(),
 			'wgPageTriageInfiniteScrolling' => $wgPageTriageInfiniteScrolling,
-			'wgPageTriageStickyControlNav' => $wgPageTriageStickyControlNav,
-			'wgPageTriageStickyStatsNav' => $wgPageTriageStickyStatsNav,
+			'wgPageTriageStickyControlNav' => $config->get( 'PageTriageStickyControlNav' ),
+			'wgPageTriageStickyStatsNav' => $config->get( 'PageTriageStickyStatsNav' ),
 			'wgPageTriageEnableReviewButton' => $user->isRegistered() && $user->isAllowed( 'patrol' ),
-			'wgPageTriageEnableEnglishWikipediaFeatures' => $wgPageTriageEnableEnglishWikipediaFeatures,
+			'wgPageTriageEnableEnglishWikipediaFeatures' => $config->get( 'PageTriageEnableEnglishWikipediaFeatures' ),
 			'wgShowOresFilters' => $showOresFilters,
 			'wgShowCopyvio' => $showCopyvio,
 		];
@@ -81,8 +82,8 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$warnings .= '<div id="mwe-pt-list-warnings" style="display: none;">';
 		$parsedWelcomeMessage = $this->msg(
 			'pagetriage-welcome',
-			$wgPageTriageLearnMoreUrl,
-			$wgPageTriageFeedbackUrl
+			$config->get( 'PageTriageLearnMoreUrl' ),
+			$config->get( 'PageTriageFeedbackUrl' )
 		)->parse();
 		$warnings .= Html::rawElement( 'div', [ 'class' => 'plainlinks' ], $parsedWelcomeMessage );
 		$warnings .= '</div>';

@@ -8,6 +8,9 @@ use PageTriageTestCase;
 
 /**
  * Tests for the populateDraftQueueTest.php maintenance script.
+ *
+ * @covers \MediaWiki\Extension\PageTriage\Maintenance\PopulateDraftQueue
+ *
  * @group medium
  * @group Database
  */
@@ -25,9 +28,6 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 		] );
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\PageTriage\Maintenance\PopulateDraftQueue
-	 */
 	public function testPreExistingPageAddedToDraftQueueAfterActivation() {
 		// Get the initial page count.
 		$initialCount = wfGetDB( DB_REPLICA )->selectRowCount( 'pagetriage_page' );
@@ -51,9 +51,6 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 		$this->assertEquals( $initialCount + 1, $newCount );
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\PageTriage\Maintenance\PopulateDraftQueue
-	 */
 	public function testPreExistingPagesWithCategoriesAreGivenCorrectTags() {
 		$testPageCount = 10;
 		// Get the initial page counts (because previous tests can leave things behind).

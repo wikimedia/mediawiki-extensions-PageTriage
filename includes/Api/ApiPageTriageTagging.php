@@ -16,9 +16,8 @@ use Wikimedia\ParamValidator\ParamValidator;
 class ApiPageTriageTagging extends ApiBase {
 
 	public function execute() {
-		global $wgPageTriageProjectLink, $wgPageTriageEnableEnglishWikipediaFeatures;
-
-		if ( !$wgPageTriageEnableEnglishWikipediaFeatures ) {
+		$config = $this->getConfig();
+		if ( !$config->get( 'PageTriageEnableEnglishWikipediaFeatures' ) ) {
 			return;
 		}
 
@@ -65,7 +64,7 @@ class ApiPageTriageTagging extends ApiBase {
 
 		if ( $apiParams ) {
 			$projectLink = '[['
-				. $wgPageTriageProjectLink . '|'
+				. $config->get( 'PageTriageProjectLink' ) . '|'
 				. $this->msg( 'pagetriage-pagecuration' )->inContentLanguage()->plain()
 				. ']]';
 			if ( $params['deletion'] ) {

@@ -8,8 +8,12 @@
 
 use MediaWiki\MediaWikiServices;
 
-require_once __DIR__ . '/../../../maintenance/Maintenance.php';
+$IP = getenv( 'MW_INSTALL_PATH' );
+if ( $IP === false ) {
+	$IP = __DIR__ . '/../../..';
+}
 
+require_once "$IP/maintenance/Maintenance.php";
 /**
  * Maintenance script that updates parameter name from '4::tags' to 'tags' in
  * pagetriage-curation and (now defunct) pagetriage-deletion log
@@ -77,5 +81,5 @@ class CleanupPageTriageLog extends Maintenance {
 	}
 }
 
-$maintClass = CleanupPageTriageLog::class; // Tells it to run the class
+$maintClass = CleanupPageTriageLog::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

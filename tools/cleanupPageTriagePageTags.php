@@ -7,7 +7,12 @@
 
 use MediaWiki\MediaWikiServices;
 
-require_once __DIR__ . '/../../../maintenance/Maintenance.php';
+$IP = getenv( 'MW_INSTALL_PATH' );
+if ( $IP === false ) {
+	$IP = __DIR__ . '/../../..';
+}
+
+require_once "$IP/maintenance/Maintenance.php";
 
 /**
  * Maintenance script that removes data from pagetriage_page_tags with page_id
@@ -72,5 +77,5 @@ class CleanupPageTriagePageTags extends Maintenance {
 	}
 }
 
-$maintClass = CleanupPageTriagePageTags::class; // Tells it to run the class
+$maintClass = CleanupPageTriagePageTags::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

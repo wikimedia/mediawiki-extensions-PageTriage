@@ -16,8 +16,12 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 			$table = [ 'revision', 'page' ];
 			$conds = [ 'rev_page' => $pageId, 'page_id = rev_page' ];
 
-			$row = $this->db->selectRow( $table, [ 'MIN(rev_timestamp) AS creation_date' ],
-						$conds, __METHOD__ );
+			$row = $this->db->selectRow(
+				$table,
+				[ 'MIN(rev_timestamp) AS creation_date' ],
+				$conds,
+				__METHOD__
+			);
 			if ( $row ) {
 				$this->metadata[$pageId]['creation_date'] = wfTimestamp( TS_MW, $row->creation_date );
 				$this->processEstimatedCount( $pageId, $table, $conds, $maxNumToProcess = 100, 'rev_count' );
@@ -26,21 +30,21 @@ class ArticleCompileBasicData extends ArticleCompileInterface {
 		}
 
 		// no record in page table
-		if ( $count == 0 ) {
+		if ( $count === 0 ) {
 			return false;
 		}
 
 		$res = $this->db->select(
-				[ 'page', 'pagetriage_page', 'user' ],
-				[
-					'page_id', 'page_namespace', 'page_title', 'page_len',
-					'ptrp_reviewed', 'page_is_redirect', 'ptrp_last_reviewed_by',
-					'ptrp_reviewed_updated', 'user_name AS reviewer'
-				],
-				[ 'page_id' => $this->mPageId, 'page_id = ptrp_page_id' ],
-				__METHOD__,
-				[],
-				[ 'user' => [ 'LEFT JOIN', 'user_id = ptrp_last_reviewed_by' ] ]
+			[ 'page', 'pagetriage_page', 'user' ],
+			[
+				'page_id', 'page_namespace', 'page_title', 'page_len',
+				'ptrp_reviewed', 'page_is_redirect', 'ptrp_last_reviewed_by',
+				'ptrp_reviewed_updated', 'user_name AS reviewer'
+			],
+			[ 'page_id' => $this->mPageId, 'page_id = ptrp_page_id' ],
+			__METHOD__,
+			[],
+			[ 'user' => [ 'LEFT JOIN', 'user_id = ptrp_last_reviewed_by' ] ]
 		);
 		foreach ( $res as $row ) {
 			if ( isset( $this->articles[$row->page_id] ) ) {

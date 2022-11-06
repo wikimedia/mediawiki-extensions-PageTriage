@@ -113,13 +113,16 @@ class PageTriage {
 		}
 
 		if ( !$this->retrieve() ) {
-			return false; // Page doesn't exist in pagetriage_page
+			// Page doesn't exist in pagetriage_page
+			return false;
 		}
 		if ( $this->mReviewed == $reviewed ) {
-			return false; // Status doesn't change
+			// Status doesn't change
+			return false;
 		}
 		if ( $this->mReviewed === '3' && $reviewed !== '0' ) {
-			return false; // Only unreviewing is allowed for autopatrolled articles
+			// Only unreviewing is allowed for autopatrolled articles
+			return false;
 		}
 
 		$dbw = wfGetDB( DB_PRIMARY );

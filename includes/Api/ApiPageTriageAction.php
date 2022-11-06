@@ -172,8 +172,10 @@ class ApiPageTriageAction extends ApiBase {
 			'reviewed' => [
 				ParamValidator::PARAM_REQUIRED => false,
 				ParamValidator::PARAM_TYPE => [
-					'1', // reviewed
-					'0', // unreviewed
+					// reviewed
+					'1',
+					// unreviewed
+					'0',
 				],
 			],
 			'enqueue' => [

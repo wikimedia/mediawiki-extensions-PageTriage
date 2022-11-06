@@ -2,11 +2,11 @@
 
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 
+/**
+ * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil
+ */
 class PageTriageUtilTest extends MediaWikiUnitTestCase {
 
-	/**
-	 * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil::isOresArticleQualityQuery()
-	 */
 	public function testIsOresArticlequalityQuery() {
 		self::assertFalse( PageTriageUtil::isOresArticleQualityQuery( [ 'page_id' => '123' ] ) );
 		self::assertTrue(
@@ -14,9 +14,6 @@ class PageTriageUtilTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil::isOresDraftQualityQuery()
-	 */
 	public function testIsOresDraftQualityQuery() {
 		self::assertFalse( PageTriageUtil::isOresDraftQualityQuery( [ 'page_id' => '123' ] ) );
 		self::assertTrue(

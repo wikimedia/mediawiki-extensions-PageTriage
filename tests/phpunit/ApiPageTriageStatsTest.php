@@ -3,6 +3,8 @@
 /**
  * Tests the inclusion of the Draft namespace.
  *
+ * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageStats
+ *
  * @group PageTriage
  * @group extensions
  * @group medium
@@ -10,9 +12,6 @@
  */
 class ApiPageTriageStatsTest extends PageTriageTestCase {
 
-	/**
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageStats
-	 */
 	public function testFilteredArticleCount() {
 		$apiParams = [
 			'action' => 'pagetriagestats',
@@ -47,7 +46,6 @@ class ApiPageTriageStatsTest extends PageTriageTestCase {
 	 *
 	 * @throws ApiUsageException
 	 * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil::getCommonApiParams()
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageStats::getAllowedParams()
 	 */
 	public function testApiParamsByEndpoint() {
 		// Test valid param to PageTriageStats.

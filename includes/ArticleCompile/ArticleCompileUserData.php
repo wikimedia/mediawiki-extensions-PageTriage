@@ -27,7 +27,7 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 			}
 		}
 
-		if ( count( $revId ) == 0 ) {
+		if ( count( $revId ) === 0 ) {
 			return true;
 		}
 
@@ -35,25 +35,25 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 
 		$actorQuery = ActorMigration::newMigration()->getJoin( 'rev_user' );
 		$res = $this->db->select(
-				array_merge( [ 'revision' ], $actorQuery['tables'],  [ 'user', 'ipblocks' ] ),
-				[
-					'rev_page AS page_id', 'user_id', 'user_name',
-					'user_real_name', 'user_registration', 'user_editcount',
-					'ipb_id', 'rev_user_text' => $actorQuery['fields']['rev_user_text']
-				],
-				[ 'rev_id' => $revId ],
-				__METHOD__,
-				[],
-				$actorQuery['joins'] + [
-					'user' => [ 'LEFT JOIN', $actorQuery['fields']['rev_user'] . ' = user_id' ],
-					'ipblocks' => [
-						'LEFT JOIN', [
-							$actorQuery['fields']['rev_user'] . ' = ipb_user',
-							$actorQuery['fields']['rev_user_text'] . ' = ipb_address',
-						   'ipb_expiry > ' . $now
-					   ]
-					]
+			array_merge( [ 'revision' ], $actorQuery['tables'],  [ 'user', 'ipblocks' ] ),
+			[
+				'rev_page AS page_id', 'user_id', 'user_name',
+				'user_real_name', 'user_registration', 'user_editcount',
+				'ipb_id', 'rev_user_text' => $actorQuery['fields']['rev_user_text']
+			],
+			[ 'rev_id' => $revId ],
+			__METHOD__,
+			[],
+			$actorQuery['joins'] + [
+				'user' => [ 'LEFT JOIN', $actorQuery['fields']['rev_user'] . ' = user_id' ],
+				'ipblocks' => [
+					'LEFT JOIN', [
+						$actorQuery['fields']['rev_user'] . ' = ipb_user',
+						$actorQuery['fields']['rev_user_text'] . ' = ipb_address',
+					   'ipb_expiry > ' . $now
+				   ]
 				]
+			]
 		);
 
 		foreach ( $res as $row ) {
@@ -72,8 +72,8 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 				$this->metadata[$row->page_id]['user_experience'] = $user->getExperienceLevel();
 				$this->metadata[$row->page_id]['user_bot'] = $user->isAllowed( 'bot' ) ? '1' : '0';
 				$this->metadata[$row->page_id]['user_block_status'] = $row->ipb_id ? '1' : '0';
-			// User doesn't exist, etc IP
 			} else {
+				// User doesn't exist, etc IP
 				$this->metadata[$row->page_id]['user_id'] = 0;
 				$this->metadata[$row->page_id]['user_name'] = $row->rev_user_text;
 				$this->metadata[$row->page_id]['user_editcount'] = 0;
