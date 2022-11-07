@@ -144,6 +144,7 @@
 	"pagetriage-note-not-reviewed": "Iste pagina non ha ancora essite revidite.",
 	"pagetriage-note-deletion": "Iste pagina ha essite nominate pro deletion.",
 	"pagetriage-refresh-list": "Refrescar lista",
+	"pagetriage-auto-refresh-list": "Auto-refrescar",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|etiquetta|etiquettas}} seligite",
 	"pagetriage-button-add-tag": "Adder le etiquettas seligite",
 	"pagetriage-button-add-tag-number": "Adder $1 etiquettas seligite",

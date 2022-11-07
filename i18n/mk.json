@@ -147,6 +147,7 @@
 	"pagetriage-note-not-reviewed": "Страницата сè уште не е проверена.",
 	"pagetriage-note-deletion": "Страницата е предложена за бришење.",
 	"pagetriage-refresh-list": "Превчитај го списокот",
+	"pagetriage-auto-refresh-list": "Автопревчитувај",
 	"pagetriage-tag-count-total": "{{PLURAL:$1|Одбрана е $1  ознака|Одбрани се $1 ознаки}}",
 	"pagetriage-button-add-tag": "Додај ги избраните ознаки",
 	"pagetriage-button-add-tag-number": "Додај $1 {{PLURAL:$1|избрана ознака|избрани ознаки}}",

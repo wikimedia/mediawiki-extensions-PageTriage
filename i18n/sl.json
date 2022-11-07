@@ -149,6 +149,7 @@
 	"pagetriage-note-not-reviewed": "Ta stran še ni bila pregledana.",
 	"pagetriage-note-deletion": "Ta stran je bila predlagana za izbris.",
 	"pagetriage-refresh-list": "Osveži seznam",
+	"pagetriage-auto-refresh-list": "Samodejno osveževanje",
 	"pagetriage-tag-count-total": "{{PLURAL:$1|Izbrana|Izbrani|Izbrane|Izbranih}} $1 {{PLURAL:$1|oznaka|oznaki|oznake|oznak}}",
 	"pagetriage-button-add-tag": "Dodaj izbrane oznake",
 	"pagetriage-button-add-tag-number": "Dodaj $1 {{PLURAL:$1|izbrano oznako|izbrani oznaki|izbrane oznake|izbranih oznak}}",

@@ -118,6 +118,7 @@
 	"pagetriage-note-not-reviewed": "このページはまだ査読されていません。",
 	"pagetriage-note-deletion": "このページの削除が提案されています。",
 	"pagetriage-refresh-list": "一覧を更新",
+	"pagetriage-auto-refresh-list": "自動更新",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|個のタグ}}が選択されています",
 	"pagetriage-button-add-tag": "選択したタグを追加",
 	"pagetriage-button-add-tag-number": "選択された $1 個のタグを追加",

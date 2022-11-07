@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Armenoid",
 			"Kareyac",
 			"Աշոտ1997",
 			"Սերգեյ Սաֆարյան"
@@ -11,6 +12,7 @@
 	"pagetriage-markpatrolled": "Նշել այս էջը որպես ստուգված",
 	"pagetriage-markunpatrolled": "Նշել այս էջը որպես չստուգված",
 	"pagetriage-self-review-error": "Դուք չեք կարող ստուգել Ձեր ստեղծած էջերը։",
+	"pagetriage-reviewed": "Վերանայված է",
 	"pagetriage-hist": "պատմ",
 	"pagetriage-bytes": "$1 բայթ",
 	"pagetriage-edits": "$1 խմբագրում",
@@ -32,6 +34,8 @@
 	"pagetriage-filter-bot-edits": "Բոտեր",
 	"pagetriage-filter-article": "Հոդված",
 	"pagetriage-filter-username": "Օգտանուն",
+	"pagetriage-filter-stat-reviewed": "Վերանայված",
+	"pagetriage-filter-stat-unreviewed": "Չվերանայված",
 	"pagetriage-filter-stat-bots": "Ըստ բոտերի",
 	"pagetriage-filter-stat-redirects": "Վերահղումներ",
 	"pagetriage-filter-stat-non-autoconfirmed": "Ըստ նորեկների",
