@@ -29,6 +29,7 @@
 			"Rodney Araujo",
 			"Ryo567",
 			"Samwilson",
+			"SpikeShroom",
 			"Vivaelcelta",
 			"Yllelder"
 		]
@@ -169,6 +170,7 @@
 	"pagetriage-note-not-reviewed": "Esta página aún no se ha revisado.",
 	"pagetriage-note-deletion": "Esta página ha sido marcada para su borrado.",
 	"pagetriage-refresh-list": "Recargar la lista",
+	"pagetriage-auto-refresh-list": "Autorefrescar",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|etiqueta seleccionada|etiquetas seleccionadas}}",
 	"pagetriage-button-add-tag": "Agregar etiquetas seleccionadas",
 	"pagetriage-button-add-tag-number": "Agregar $1 etiquetas seleccionadas",

@@ -2,8 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Ernác",
-			"Iltever"
+			"Iltever",
+			"Къарачайлы"
 		]
 	},
-	"pagetriage-more": "Энтда"
+	"pagetriage-more": "Энтда",
+	"pagetriage-auto-refresh-list": "Авто-джангыртыу"
 }

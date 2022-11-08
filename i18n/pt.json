@@ -154,6 +154,7 @@
 	"pagetriage-note-not-reviewed": "Esta página ainda não foi revista.",
 	"pagetriage-note-deletion": "Esta página foi nomeada para eliminação.",
 	"pagetriage-refresh-list": "Atualizar lista",
+	"pagetriage-auto-refresh-list": "Atualização automática",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|etiqueta|etiquetas}} selecionadas",
 	"pagetriage-button-add-tag": "Adicionar etiquetas selecionadas",
 	"pagetriage-button-add-tag-number": "Adicionar $1 etiquetas selecionadas",

@@ -50,6 +50,7 @@
 	"pagetriage-note-not-reviewed": "Այս էջը դեռ չի ստուգվել։",
 	"pagetriage-note-deletion": "Այս էջը առաջադրվել է ջնջման։",
 	"pagetriage-refresh-list": "Թարմացնել ցանկը",
+	"pagetriage-auto-refresh-list": "Ինքնաշխատ թարմացում",
 	"pagetriage-button-add-parameters": "Ավելացնել պարամետրներ",
 	"pagetriage-button-edit-details": "Խմբագրել մանրամասները",
 	"pagetriage-button-send-a-note": "Ուղարկել հաղորդագրություն",

@@ -115,6 +115,7 @@
 	"pagetriage-note-not-reviewed": "Questa pagina non è ancora stata revisionata.",
 	"pagetriage-note-deletion": "Questa pagina è stata proposta per la cancellazione.",
 	"pagetriage-refresh-list": "Aggiorna elenco",
+	"pagetriage-auto-refresh-list": "Auto aggiornamento",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|etichetta selezionata|etichette selezionate}}",
 	"pagetriage-button-add-tag": "Aggiungi etichette selezionate",
 	"pagetriage-button-add-tag-number": "Aggiungi $1 {{PLURAL:$1|etichetta selezionata|etichette selezionate}}",

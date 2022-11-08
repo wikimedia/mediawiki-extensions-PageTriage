@@ -159,6 +159,7 @@
 	"pagetriage-note-not-reviewed": "Эта страница ещё не была проверена.",
 	"pagetriage-note-deletion": "Эта страница была номинирована на удаление.",
 	"pagetriage-refresh-list": "Обновить список",
+	"pagetriage-auto-refresh-list": "Автообновление",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|тег выбран|тега выбрано|тегов выбрано}}",
 	"pagetriage-button-add-tag": "Добавить выбранные теги",
 	"pagetriage-button-add-tag-number": "Добавить $1 {{PLURAL:$1|выбранный тег|выбранных тега|выбранных тегов}}",
