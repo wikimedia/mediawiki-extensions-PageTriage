@@ -446,7 +446,7 @@
 	"pagetriage-wikilove-edit-count": "$1 modification{{PLURAL:$1||s}}",
 	"pagetriage-wikilove-no-recipients": "Aucun destinataire n’est disponible pour cette page.",
 	"pagetriage-wikilove-tooltip": "Envoyer des remerciements aux auteurs",
-	"pagetriage-next-tooltip": "Aller à la page suivante de la file d'attente",
+	"pagetriage-next-tooltip": "Aller à la page suivante de la file d’attente",
 	"pagetriage-del-log-page-missing-error": "La page de journal d’aujourd’hui n’a pas encore été créée !",
 	"pagetriage-del-log-page-adding-error": "Impossible de trouver l’endroit exact pour la discussion",
 	"pagetriage-del-talk-page-notify-error": "Échec de notification de l’auteur sur sa page de discussion",
