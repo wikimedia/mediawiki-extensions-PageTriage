@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Naudefj"
+			"Naudefj",
+			"Rooiratel"
 		]
 	},
 	"pagetriage-bytes": "$1 {{PLURAL:$1|greep|grepe}}",
@@ -24,6 +25,7 @@
 	"pagetriage-filter-ns-all": "Alle",
 	"pagetriage-more": "Meer",
 	"pagetriage-filter-stat-all": "Alle",
+	"pagetriage-auto-refresh-list": "Outo-verfris",
 	"pagetriage-tags-param-article-label": "Bladsy:",
 	"pagetriage-tags-param-date-label": "Datum:",
 	"pagetriage-tags-param-free-yes-label": "Ja",

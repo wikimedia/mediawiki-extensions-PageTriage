@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Athena in Wonderland",
+			"Avelino",
 			"Banjo",
 			"Elisardojm",
 			"Iváns",
@@ -93,6 +94,7 @@
 	"pagetriage-note-not-reviewed": "A páxina aínda non foi revisada.",
 	"pagetriage-note-deletion": "A páxina está marcada para borrar.",
 	"pagetriage-refresh-list": "Refrescar a lista",
+	"pagetriage-auto-refresh-list": "Actualización automática",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|etiqueta seleccionada|etiquetas seleccionadas}}",
 	"pagetriage-button-add-tag": "Engadir as etiquetas seleccionadas",
 	"pagetriage-button-add-tag-number": "Engadir as $1 etiquetas seleccionadas",
