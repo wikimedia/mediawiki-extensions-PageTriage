@@ -43,7 +43,7 @@ class CompileArticleMetadataJob extends Job {
 		}
 		// Use the replica for compilation of all components.
 		$config = ArticleCompileProcessor::getSafeComponentDbConfigForCompilation()
-				  + [ 'BasicData' => DB_REPLICA ];
+			+ [ 'BasicData' => DB_REPLICA ];
 		$acp->configComponentDb( $config );
 		$acp->compileMetadata();
 		return true;

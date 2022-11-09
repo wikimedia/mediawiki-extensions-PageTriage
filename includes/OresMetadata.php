@@ -211,8 +211,10 @@ class OresMetadata {
 			],
 			[
 				'ptrp_page_id',
-				'oresc_probability', // used for articlequality
-				'oresc_class', // used for draftquality
+				// used for articlequality
+				'oresc_probability',
+				// used for draftquality
+				'oresc_class',
 			],
 			[
 				'oresc_model' => $this->modelLookup->getModelId( $modelName ),

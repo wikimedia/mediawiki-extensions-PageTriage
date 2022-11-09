@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\PageTriage;
 
 use Article;
+use Config;
 use DatabaseUpdater;
 use DeferredUpdates;
 use EchoEvent;
@@ -281,7 +282,7 @@ class Hooks {
 	}
 
 	/**
-	 * Flush user page/user talk page existance status, this function should
+	 * Flush user page/user talk page existence status, this function should
 	 * be called when a page gets created/deleted/moved/restored
 	 * @param Title $title
 	 */
@@ -311,11 +312,7 @@ class Hooks {
 		$wikitextHasNoIndexMagicWord = $article->mParserOutput instanceof ParserOutput
 			&& $article->mParserOutput->getPageProperty( 'noindex' ) !== null;
 
-		if ( $wikitextHasNoIndexMagicWord && self::shouldNoIndexForMagicWordReasons( $page ) ) {
-			return true;
-		}
-
-		return false;
+		return $wikitextHasNoIndexMagicWord && self::shouldNoIndexForMagicWordReasons( $page );
 	}
 
 	/**
@@ -415,12 +412,9 @@ class Hooks {
 		$timestamp = new MWTimestamp( $pageCreationDateTime );
 		$dateInterval = $timestamp->diff( new MWTimestamp() );
 		$articleDaysOld = $dateInterval->format( '%a' );
-		if ( $articleDaysOld < $maxAgeInDays ) {
-			// If it's younger than the maximum age, return true.
-			return true;
-		}
 
-		return false;
+		// If it's younger than the maximum age, return true.
+		return $articleDaysOld < $maxAgeInDays;
 	}
 
 	/**
@@ -511,13 +505,11 @@ class Hooks {
 	 * Sync records from patrol queue to triage queue
 	 *
 	 * 'MarkPatrolledComplete': after an edit is marked patrolled
-	 * $rcid: ID of the revision marked as patrolled
-	 * $user: user (object) who marked the edit patrolled
-	 * $wcOnlySysopsCanPatrol: config setting indicating whether the user
+	 *
+	 * @param int $rcid ID of the revision marked as patrolled
+	 * @param User &$user user (object) who marked the edit patrolled
+	 * @param bool $wcOnlySysopsCanPatrol config setting indicating whether the user
 	 * must be a sysop to patrol the edit
-	 * @param int $rcid
-	 * @param User &$user
-	 * @param bool $wcOnlySysopsCanPatrol
 	 */
 	public static function onMarkPatrolledComplete( $rcid, &$user, $wcOnlySysopsCanPatrol ) {
 		$rc = RecentChange::newFromId( $rcid );
@@ -584,14 +576,22 @@ class Hooks {
 			'localBasePath' => __DIR__ . '/../modules',
 			'remoteExtPath' => 'PageTriage/modules',
 			'packageFiles' => [
-				'ext.pageTriage.views.toolbar/ToolbarView.js', // entry point
-				'ext.pageTriage.views.toolbar/ToolView.js', // abstract base class
-				'ext.pageTriage.views.toolbar/articleInfo.js', // article metadata
-				'ext.pageTriage.views.toolbar/minimize.js', // minimize
-				'ext.pageTriage.views.toolbar/tags.js', // tagging
-				'ext.pageTriage.views.toolbar/mark.js', // mark as reviewed
-				'ext.pageTriage.views.toolbar/next.js', // next article
-				'ext.pageTriage.views.toolbar/delete.js', // mark for deletion
+				// entry point
+				'ext.pageTriage.views.toolbar/ToolbarView.js',
+				// abstract base class
+				'ext.pageTriage.views.toolbar/ToolView.js',
+				// article metadata
+				'ext.pageTriage.views.toolbar/articleInfo.js',
+				// tagging
+				'ext.pageTriage.views.toolbar/minimize.js',
+				// tagging
+				'ext.pageTriage.views.toolbar/tags.js',
+				// mark as reviewed
+				'ext.pageTriage.views.toolbar/mark.js',
+				// next article
+				'ext.pageTriage.views.toolbar/next.js',
+				// mark for deletion
+				'ext.pageTriage.views.toolbar/delete.js',
 				[
 					'name' => 'ext.pageTriage.views.toolbar/contentLanguageMessages.json',
 					'callback' => static function ( RL\Context $context, \Config $config ) {
@@ -616,7 +616,7 @@ class Hooks {
 				],
 				[
 					'name' => 'ext.pageTriage.views.toolbar/config.json',
-					'callback' => static function ( RL\Context $context, \Config $config ) {
+					'callback' => static function ( RL\Context $context, Config $config ) {
 						$pageTriageCurationModules = $config->get( 'PageTriageCurationModules' );
 						if ( ExtensionRegistry::getInstance()->isLoaded( 'WikiLove' ) ) {
 							$pageTriageCurationModules['wikiLove'] = [
@@ -635,7 +635,8 @@ class Hooks {
 						];
 					}
 				],
-				'external/jquery.badge.js', // Merged into this RL module, see T221269
+				// Merged into this RL module, see T221269
+				'external/jquery.badge.js',
 			],
 			'dependencies' => [
 				'mediawiki.api',
@@ -651,8 +652,10 @@ class Hooks {
 				'ext.pageTriage.externalTagsOptions',
 			],
 			'styles' => [
-				'external/jquery.badge.css', // Merged into this RL module, see T221269
-				'ext.pageTriage.css', // stuff that's shared across all views
+				// Merged into this RL module, see T221269
+				'external/jquery.badge.css',
+				// stuff that's shared across all views
+				'ext.pageTriage.css',
 				'ext.pageTriage.views.toolbar/ToolbarView.css',
 				'ext.pageTriage.views.toolbar/ToolView.less',
 				'ext.pageTriage.views.toolbar/articleInfo.css',

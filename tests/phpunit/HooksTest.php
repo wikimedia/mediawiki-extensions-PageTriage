@@ -6,6 +6,9 @@ use PageTriageTestCase;
 
 /**
  * Tests the Hooks class.
+ *
+ * @covers \MediaWiki\Extension\PageTriage\PageTriage
+ *
  * @group PageTriage
  * @group extensions
  * @group medium
@@ -13,9 +16,6 @@ use PageTriageTestCase;
  */
 class HooksTest extends PageTriageTestCase {
 
-	/**
-	 * @covers \MediaWiki\Extension\PageTriage\PageTriage
-	 */
 	public function testDraftRedirectsAreNotAdded() {
 		$db = wfGetDB( DB_PRIMARY );
 		// Get the initial page count of the PageTriage queue.

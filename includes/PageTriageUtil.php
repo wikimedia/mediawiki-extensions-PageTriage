@@ -21,13 +21,13 @@ use WikiPage;
 class PageTriageUtil {
 
 	/**
-	 * Get whether or not a page needs triaging
+	 * Get whether a page needs triaging
 	 *
 	 * @param WikiPage $page
 	 *
 	 * @throws Exception
 	 * @return mixed null if the page is not in the triage system,
-	 * otherwise whether or not the page is unreviewed.
+	 * otherwise whether the page is unreviewed.
 	 * Return convention is this way so that null and false are equivalent
 	 * with a straight boolean test.
 	 */
@@ -35,7 +35,9 @@ class PageTriageUtil {
 		$pageId = $page->getId();
 		$dbr = wfGetDB( DB_REPLICA );
 
-		$row = $dbr->selectRow( 'pagetriage_page', 'ptrp_reviewed',
+		$row = $dbr->selectRow(
+			'pagetriage_page',
+			'ptrp_reviewed',
 			[ 'ptrp_page_id' => $pageId ],
 			__METHOD__
 		);
@@ -209,7 +211,8 @@ class PageTriageUtil {
 
 				$table = [ 'pagetriage_page', 'page' ];
 				$conds = [
-					'ptrp_reviewed' => [ 1, 2 ], // T310108
+					// T310108
+					'ptrp_reviewed' => [ 1, 2 ],
 					'page_id = ptrp_page_id',
 					'page_namespace' => $namespace,
 					'page_is_redirect' => (int)$redirect,
@@ -244,7 +247,7 @@ class PageTriageUtil {
 	public static function getTopTriagers( $time = 'last-week' ) {
 		$now = (int)wfTimestamp( TS_UNIX );
 
-		// times to look back for top trigers and expiration time in cache
+		// times to look back for top triagers and expiration time in cache
 		$timeFrame = [
 			'last-day' => [ 'ts' => $now - 24 * 60 * 60, 'expire' => 60 * 60 ],
 			'last-week' => [ 'ts' => $now - 7 * 24 * 60 * 60, 'expire' => 24 * 60 * 60 ],
@@ -269,7 +272,8 @@ class PageTriageUtil {
 					[ 'user_name', 'user_id', 'COUNT(ptrl_id) AS num' ],
 					[
 						'user_id = ptrl_user_id',
-						'ptrl_reviewed' => 1, // only reviewed status
+						// only reviewed status
+						'ptrl_reviewed' => 1,
 						'ptrl_timestamp > ' .
 							$dbr->addQuotes( $dbr->timestamp( $timeFrame[$time]['ts'] ) )
 					],

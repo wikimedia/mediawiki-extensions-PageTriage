@@ -2,9 +2,11 @@
 
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
+use Content;
 use LinksUpdate;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\SlotRecord;
+use Wikimedia\Rdbms\IDatabase;
 use WikiPage;
 
 /**
@@ -13,14 +15,19 @@ use WikiPage;
 abstract class ArticleCompileInterface {
 	/** @var int[] List of page IDs */
 	protected $mPageId;
+
 	/** @var array */
 	protected $metadata;
+
 	/** @var WikiPage[] */
 	protected $articles;
+
 	/** @var LinksUpdate[] */
 	protected $linksUpdates;
-	/** @var \Wikimedia\Rdbms\IDatabase */
+
+	/** @var IDatabase */
 	protected $db;
+
 	/** @var int Either DB_PRIMARY or DB_REPLICA */
 	protected $componentDb;
 
@@ -112,7 +119,7 @@ abstract class ArticleCompileInterface {
 	/**
 	 * @param int $pageId
 	 *
-	 * @return \Content|null
+	 * @return Content|null
 	 */
 	protected function getContentByPageId( $pageId ) {
 		// Prefer a preregistered Article, then a preregistered LinksUpdate

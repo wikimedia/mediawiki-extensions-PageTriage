@@ -72,5 +72,4 @@ class FixNominatedForDeletion extends Maintenance {
 }
 
 $maintClass = FixNominatedForDeletion::class;
-
 require_once RUN_MAINTENANCE_IF_MAIN;

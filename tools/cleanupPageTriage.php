@@ -7,8 +7,12 @@
 
 use MediaWiki\MediaWikiServices;
 
-require_once __DIR__ . '/../../../maintenance/Maintenance.php';
+$IP = getenv( 'MW_INSTALL_PATH' );
+if ( $IP === false ) {
+	$IP = __DIR__ . '/../../..';
+}
 
+require_once "$IP/maintenance/Maintenance.php";
 /**
  * Maintenance script that removes page with namespace other than NS_MAIN/NS_USER
  * from pagetriage queue
@@ -83,5 +87,5 @@ class CleanupPageTriage extends Maintenance {
 	}
 }
 
-$maintClass = CleanupPageTriage::class; // Tells it to run the class
+$maintClass = CleanupPageTriage::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

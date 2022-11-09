@@ -10,6 +10,7 @@ use MediaWiki\Extension\PageTriage\PageTriage;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use RequestContext;
+use RuntimeException;
 use Title;
 use WikiPage;
 
@@ -19,16 +20,22 @@ use WikiPage;
 class ArticleCompileProcessor {
 	/** @var string[] */
 	protected $component;
+
 	/** @var int[] Either DB_PRIMARY or DB_REPLICA */
 	protected $componentDb;
+
 	/** @var int[] List of page IDs */
 	protected $pageIds;
+
 	/** @var array */
 	protected $metadata;
+
 	/** @var bool */
 	protected $defaultMode;
+
 	/** @var WikiPage[] */
 	protected $articles = [];
+
 	/** @var LinksUpdate[] */
 	protected $linksUpdates = [];
 
@@ -217,7 +224,7 @@ class ArticleCompileProcessor {
 				LoggerFactory::getInstance( 'PageTriage' )->debug(
 					'Article metadata not found in DB, will attempt to save to DB via the job queue.',
 					[
-						'exception' => new \RuntimeException(),
+						'exception' => new RuntimeException(),
 						'articles_without_metadata' => implode( ',', $this->pageIds ),
 						'raw_query_string' => RequestContext::getMain()->getRequest()
 							->getRawQueryString(),
@@ -255,7 +262,7 @@ class ArticleCompileProcessor {
 	}
 
 	/**
-	 * Compile all of the registered components in order
+	 * Compile all the registered components in order
 	 */
 	protected function process() {
 		$completed = [];
@@ -283,7 +290,7 @@ class ArticleCompileProcessor {
 			foreach ( $this->metadata as $pageId => $row ) {
 				foreach ( $deletionTags as $val ) {
 					if ( $this->metadata[$pageId][$val] ) {
-						$this->metadata[$pageId]['category_count'] -= 1;
+						$this->metadata[$pageId]['category_count']--;
 					}
 				}
 

@@ -13,10 +13,13 @@ use TestUser;
  * @group medium
  * @group EditorEngagement
  * @author Ryan Kaldari
- * @covers MediaWiki\Extension\PageTriage\SpecialNewPagesFeed
+ * @covers \MediaWiki\Extension\PageTriage\SpecialNewPagesFeed
  */
 class SpecialNewPagesFeedTest extends ApiTestCase {
 
+	/**
+	 * @var SpecialNewPagesFeed
+	 */
 	protected $pageTriage;
 
 	/**
@@ -36,7 +39,11 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 		$this->pageTriage = new SpecialNewPagesFeed;
 	}
 
-	// Create a fake logged in user
+	/**
+	 * Create a fake logged in user
+	 *
+	 * @return array
+	 */
 	public function testLogin() {
 		$sessionArray = [];
 
@@ -91,7 +98,7 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 				self::$users['one']->getUser()
 			);
 		} catch ( ApiUsageException $e ) {
-			$this->assertEquals( $e->getStatusValue()->hasMessage( 'apierror-articleexists' ) );
+			$this->assertTrue( $e->getStatusValue()->hasMessage( 'apierror-articleexists' ) );
 			$alreadyCreated = true;
 		}
 
@@ -121,7 +128,7 @@ class SpecialNewPagesFeedTest extends ApiTestCase {
 					self::$users['one']->getUser()
 				);
 			} catch ( ApiUsageException $e ) {
-				$this->assertEquals( $e->getStatusValue()->hasMessage( 'apierror-articleexists' ) );
+				$this->assertTrue( $e->getStatusValue()->hasMessage( 'apierror-articleexists' ) );
 			}
 		}
 	}

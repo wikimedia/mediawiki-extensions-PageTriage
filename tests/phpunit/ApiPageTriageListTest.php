@@ -6,6 +6,8 @@ use MediaWiki\MediaWikiServices;
 /**
  * Tests the inclusion of the Draft namespace.
  *
+ * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList
+ *
  * @group PageTriage
  * @group extensions
  * @group medium
@@ -27,7 +29,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 	/**
 	 * Creating a page in Draft namespace adds it to the queue.
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList
 	 */
 	public function testCreateDraftPage() {
 		// Get initial queue length, for comparison.
@@ -49,7 +50,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 	/**
 	 * Adding/changing AfC categories.
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList
 	 */
 	public function testAfcTags() {
 		$page = $this->insertPage( 'AfC test page', '', $this->draftNsId );
@@ -87,7 +87,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 	/**
 	 * When there are multiple AfC categories on the page.
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList
 	 */
 	public function testMultiAfcCategories() {
 		// Insert pending and under review categories
@@ -116,7 +115,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 	/**
 	 * Getting unsubmitted drafts (not in related category).
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList
 	 */
 	public function testUnsubmittedDrafts() {
 		$apiParams = [ 'afc_state' => ArticleCompileAfcTag::UNSUBMITTED ];
@@ -153,7 +151,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 	/**
 	 * Moving an existing page to the Draft namespace adds it to the queue.
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList
 	 */
 	public function testMoveToDraftPage() {
 		// Get the initial queue count.
@@ -178,7 +175,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 	/**
 	 * Moving a page out of the Draft namespace removes it from the queue.
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList
 	 */
 	public function testMoveFromDraftPage() {
 		// Add a page to the Draft namespace.
@@ -204,7 +200,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 	/**
 	 * Make sure mainspace pages by autopatrolled users are marked as reviewed and vice versa.
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList
 	 * @covers \MediaWiki\Extension\PageTriage\Hooks::addToPageTriageQueue()
 	 */
 	public function testAutopatrolledCreation() {
@@ -255,7 +250,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	 *
 	 * @throws ApiUsageException
 	 * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil::getCommonApiParams()
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getAllowedParams()
 	 */
 	public function testApiParamsByEndpoint() {
 		// Test invalid params to PageTriageList.
@@ -275,7 +269,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 	/**
 	 * Sorting drafts by submission date or date of decline.
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getPageIds()
 	 */
 	public function testSubmissionSorting() {
 		$apiParams = [
@@ -318,9 +311,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		static::assertSame( 'Draft:Test page 5', $list[0][ 'title' ] );
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getPageIds()
-	 */
 	public function testQueryOres() {
 		$this->setMwGlobals( 'wgOresModels', [
 			'draftquality' => [ 'enabled' => true ],
@@ -361,9 +351,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$this->assertEquals( 'Draft:Test page ores 2', $list[0]['title'] );
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getPageIds()
-	 */
 	public function testQueryOresBoundaries() {
 		$this->setMwGlobals( 'wgOresModels', [
 			'draftquality' => [ 'enabled' => true ],
@@ -398,9 +385,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$this->assertCount( 0, $list, 'show class C ' );
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getPageIds()
-	 */
 	public function testQueryOresCopyvio() {
 		$dbw = wfGetDB( DB_PRIMARY );
 		foreach ( [ 'pagetriage_page', 'page' ] as $table ) {
@@ -414,12 +398,18 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		self::ensureOresModel( 'articlequality' );
 		self::ensureCopyvioTag();
 
-		$this->makePage( 'Page001' ); // DraftQuality: N/A
-		$this->makePage( 'Page002', 1 ); // DraftQuality: OK
-		$this->makePage( 'Page003', 2 ); // DraftQuality: SPAM
-		$this->makePage( 'Page004', false, true ); // DraftQuality: N/A, Copyvio
-		$this->makePage( 'Page005', 1, true ); // DraftQuality: OK, Copyvio
-		$this->makePage( 'Page006', 2, true ); // DraftQuality: SPAM, Copyvio
+		// DraftQuality: N/A
+		$this->makePage( 'Page001' );
+		// DraftQuality: OK
+		$this->makePage( 'Page002', 1 );
+		// DraftQuality: SPAM
+		$this->makePage( 'Page003', 2 );
+		// DraftQuality: N/A, Copyvio
+		$this->makePage( 'Page004', false, true );
+		// DraftQuality: OK, Copyvio
+		$this->makePage( 'Page005', 1, true );
+		// DraftQuality: SPAM, Copyvio
+		$this->makePage( 'Page006', 2, true );
 
 		$list = $this->getPageTriageList();
 		$this->assertPages( [
@@ -444,9 +434,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$this->assertPages( [ 'Page003', 'Page004', 'Page005', 'Page006' ], $list );
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getPageIds()
-	 */
 	public function testFilterDateRange() {
 		$user = self::getTestUser()->getUser();
 		$page1 = $this->insertPage( 'DateRange20190215', 'Testing Date Range I', 0, $user );
@@ -488,9 +475,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			'Pages to date' );
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getPageIds()
-	 */
 	public function testFilterType() {
 		$user = self::getTestUser()->getUser();
 		$otherPage = $this->insertPage( 'PageOther', 'some content', 0, $user );
@@ -573,9 +557,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			'Mainspace pages that were previously deleted' );
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getPageIds()
-	 */
 	public function testUndelete() {
 		$user = self::getTestUser()->getUser();
 		$this->insertPage( 'PageNormal', 'some content', 0, $user );
@@ -625,7 +606,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	/**
 	 * The pagetriagelist API method should return a count of the pagetriage-tagged edits on an
 	 * article's talk page.
-	 * @covers \MediaWiki\Extension\PageTriage\Api\ApiPageTriageList::getTalkpageFeedbackCount
 	 */
 	public function testTalkpageFeedbackCount() {
 		// Create a test page.
