@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
+use ApiDisabled;
 use Article;
 use Config;
 use DatabaseUpdater;
@@ -10,6 +11,7 @@ use EchoEvent;
 use ExtensionRegistry;
 use Html;
 use LinksUpdate;
+use MediaWiki\Api\Hook\ApiMain__moduleManagerHook;
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddDeletionTagPresentationModel;
@@ -30,7 +32,17 @@ use User;
 use Wikimedia\Rdbms\Database;
 use WikiPage;
 
-class Hooks {
+class Hooks implements ApiMain__moduleManagerHook {
+
+	/** @var Config */
+	private Config $config;
+
+	/**
+	 * @param Config $config
+	 */
+	public function __construct( Config $config ) {
+		$this->config = $config;
+	}
 
 	/**
 	 * Mark a page as unreviewed after moving the page from non-main(article) namespace to
@@ -1011,5 +1023,19 @@ class Hooks {
 	 */
 	public static function onDefinedTags( &$tags ) {
 		$tags[] = 'pagetriage';
+	}
+
+	// phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
+
+	/** @inheritDoc */
+	public function onApiMain__moduleManager( $moduleManager ) {
+		// phpcs:enable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
+		if ( !$this->config->get( 'PageTriageEnableEnglishWikipediaFeatures' ) ) {
+			$moduleManager->addModule(
+				'pagetriagetagging',
+				'action',
+				ApiDisabled::class
+			);
+		}
 	}
 }
