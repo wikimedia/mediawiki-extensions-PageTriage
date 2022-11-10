@@ -138,6 +138,12 @@ ToolbarView = Backbone.View.extend( {
 				}
 			} );
 
+		// Create left menu link to reopen the toolbar. Hide it initially to avoid a
+		// flash of content, we can show it later.
+		if ( $( '#t-opencurationtoolbar' ).length === 0 ) {
+			this.insertLink();
+		}
+
 		// Show the toolbar based on saved prefs.
 		switch ( mw.user.options.get( 'userjs-curationtoolbar' ) ) {
 			case 'hidden':
@@ -166,10 +172,8 @@ ToolbarView = Backbone.View.extend( {
 		if ( typeof savePref !== 'undefined' && savePref === true ) {
 			this.setToolbarPreference( 'hidden' );
 		}
-		// insert link to reopen into the toolbox (if it doesn't already exist)
-		if ( $( '#t-curationtoolbar' ).length === 0 ) {
-			this.insertLink();
-		}
+		// Show the Open Page Curation link in the left menu
+		$( '#t-opencurationtoolbar' ).show();
 		// Show hidden patrol link in case they want to use that instead
 		$( '#mw-content-text .patrollink' ).show();
 	},
@@ -187,6 +191,8 @@ ToolbarView = Backbone.View.extend( {
 					right: 'auto'
 				};
 
+		// hide the Open Page Curation link in the left menu
+		$( '#t-opencurationtoolbar' ).hide();
 		// close any open tools by triggering showTool with empty tool param
 		eventBus.trigger( 'showTool', '' );
 		// hide the regular toolbar content
@@ -216,6 +222,12 @@ ToolbarView = Backbone.View.extend( {
 					right: 'auto'
 				};
 
+		// hide the Open Page Curation link in the left menu
+		$( '#t-opencurationtoolbar' ).hide();
+		// show the entire toolbar, in case it is hidden
+		$( '#mwe-pt-toolbar' ).show();
+		// hide the "Mark this page as patrolled" link
+		$( '#mw-content-text .patrollink' ).hide();
 		// hide the minimized toolbar content
 		$( '#mwe-pt-toolbar-inactive' ).hide();
 		// show the regular toolbar content
@@ -234,18 +246,14 @@ ToolbarView = Backbone.View.extend( {
 	},
 	insertLink: function () {
 		var that = this,
-			$link = $( '<li>' ).attr( 'id', 't-curationtoolbar' ).append(
+			$link = $( '<li>' ).attr( 'id', 't-opencurationtoolbar' ).hide().append(
 				$( '<a>' ).attr( 'href', '#' )
 			);
 
 		$link.find( 'a' )
 			.text( mw.msg( 'pagetriage-toolbar-linktext' ) )
 			.on( 'click', function () {
-				if ( $( '#mwe-pt-toolbar' ).is( ':hidden' ) ) {
-					$( '#mwe-pt-toolbar' ).show();
-					$( '#mw-content-text .patrollink' ).hide();
-					that.setToolbarPreference( 'maximized' );
-				}
+				that.maximize( true );
 				this.blur();
 				return false;
 			} );
