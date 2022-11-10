@@ -250,7 +250,7 @@ class ApiPageTriageList extends ApiBase {
 			// Get the expected limit as defined in getAllowedParams
 			$options['LIMIT'] = $opts['limit'] + 1;
 
-			switch ( strtolower( $opts['dir'] ) ) {
+			switch ( strtolower( $opts['dir'] ?? '' ) ) {
 				case 'oldestfirst':
 					$options['ORDER BY'] = 'ptrp_created ASC, ptrp_page_id ASC';
 					$offsetOperator = ' > ';
