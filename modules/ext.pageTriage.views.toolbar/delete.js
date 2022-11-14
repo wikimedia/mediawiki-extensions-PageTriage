@@ -809,7 +809,14 @@ module.exports = ToolView.extend( {
 			var tagObj = this.selectedTag[ key ];
 			var tempTag = tagObj.tag;
 			var tagging = specialDeletionTagging[ tagObj.tag ];
-			tagList.push( tagObj.tag.toLowerCase() );
+
+			if ( !( 'discussionPage' in tagObj ) ||
+				tagObj.discussionPage === ''
+			) {
+				tagList.push( tagObj.tag.toLowerCase() );
+			} else {
+				tagList.push( '[[' + tagObj.discussionPage + ']]' );
+			}
 
 			if ( count > 1 ) {
 				if ( tagObj.code !== undefined ) {
@@ -983,6 +990,7 @@ module.exports = ToolView.extend( {
 				tags: 'pagetriage'
 			};
 
+		tagObj.discussionPage = title;
 		specialDeletionTagging[ tagObj.tag ].buildLogRequest(
 			oldText,
 			tagObj.params[ '1' ].value,
@@ -1026,6 +1034,7 @@ module.exports = ToolView.extend( {
 				tags: 'pagetriage'
 			};
 
+		tagObj.discussionPage = title;
 		if ( !specialDeletionTagging[ tagObj.tag ] ) {
 			// T313303
 			throw new Error( 'tagObj.tag is not an allowed value ~ ' + tagObj.tag );
