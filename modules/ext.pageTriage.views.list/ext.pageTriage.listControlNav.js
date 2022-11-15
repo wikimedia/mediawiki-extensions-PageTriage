@@ -101,10 +101,6 @@ $( function () {
 			// now that the template's been inserted, set up some events for controlling it
 			//
 
-			// Do an initial filterSync() in case wgPageTriageEnableEnglishWikipediaFeatures = false. We need to
-			// unset some options that are turned off by this.
-			that.filterSync();
-
 			// Queue-mode radio buttons.
 			$( '.mwe-pt-queuemode-radio' ).on( 'change', function ( e ) {
 				that.model.setMode( $( this ).val() );
@@ -336,21 +332,6 @@ $( function () {
 				apiParams.namespace = $( '#mwe-pt-filter-namespace' ).val();
 				apiParams.nppDir = $( '#mwe-pt-sort-oldest' ).prop( 'checked' ) ?
 					'oldestfirst' : 'newestfirst';
-
-				var wgPageTriageEnableEnglishWikipediaFeatures = mw.config.get( 'wgPageTriageEnableEnglishWikipediaFeatures' );
-				if ( !wgPageTriageEnableEnglishWikipediaFeatures ) {
-					// Set to false any options that are supposed to be hidden by
-					// wgPageTriageEnableEnglishWikipediaFeatures = false
-					apiParams.showdeleted = false;
-					/* eslint-disable camelcase */
-					apiParams.show_predicted_class_stub = false;
-					apiParams.show_predicted_class_start = false;
-					apiParams.show_predicted_class_c = false;
-					apiParams.show_predicted_class_b = false;
-					apiParams.show_predicted_class_good = false;
-					apiParams.show_predicted_class_featured = false;
-					/* eslint-enable camelcase */
-				}
 			} else {
 				// AfC
 				apiParams.namespace = mw.config.get( 'wgNamespaceIds' ).draft;
