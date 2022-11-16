@@ -45,10 +45,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		);
 	}
 
-	/**
-	 * @param array &$hooks
-	 */
-	protected function setUpForOresCopyvioTests( array &$hooks ) {
+	protected function setUpForOresCopyvioTests() {
 		$this->tablesUsed[] = 'page';
 		$this->tablesUsed[] = 'revision';
 		$this->tablesUsed[] = 'pagetriage_page';
@@ -58,7 +55,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		$this->tablesUsed[] = 'ores_model';
 		$this->tablesUsed[] = 'ores_classification';
 		ArticleMetadata::clearStaticCache();
-		unset( $hooks[ 'ORESCheckModels' ] );
+		$this->clearHook( 'ORESCheckModels' );
 	}
 
 	/**

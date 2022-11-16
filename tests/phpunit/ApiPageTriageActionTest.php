@@ -23,9 +23,8 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	public static $users;
 
 	public function setUp(): void {
-		global $wgHooks;
 		parent::setUp();
-		$this->setUpForOresCopyvioTests( $wgHooks );
+		$this->setUpForOresCopyvioTests();
 
 		self::$users['one'] = new TestUser(
 			'ApitestuserA',
