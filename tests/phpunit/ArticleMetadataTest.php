@@ -72,7 +72,7 @@ class ArticleMetadataTest extends PageTriageTestCase {
 			'copyvio'
 		];
 
-		$this->assertEmpty( array_diff( array_keys( $tags ), $validTags ) );
+		$this->assertArrayEquals( [], array_diff( array_keys( $tags ), $validTags ) );
 	}
 
 	/**
