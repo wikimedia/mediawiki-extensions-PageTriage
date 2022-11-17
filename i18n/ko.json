@@ -137,6 +137,7 @@
 	"pagetriage-note-not-reviewed": "이 문서는 아직 검토되지 않았습니다.",
 	"pagetriage-note-deletion": "이 문서는 삭제가 신청되었습니다.",
 	"pagetriage-refresh-list": "목록 새로 고침",
+	"pagetriage-auto-refresh-list": "자동 새로 고침",
 	"pagetriage-tag-count-total": "태그 $1개 선택됨",
 	"pagetriage-button-add-tag": "선택한 태그 추가",
 	"pagetriage-button-add-tag-number": "선택한 태그 $1개 추가",
