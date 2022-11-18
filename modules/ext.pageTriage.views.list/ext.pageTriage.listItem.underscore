@@ -54,13 +54,9 @@
 			var css_class = "mwe-pt-creation-date";
 			var tooltip = "";
 
-			if ( article_age_in_minutes <= mild_warning_level ) {
+			if ( article_age_in_minutes <= new_article_warning_minutes ) {
 				tooltip = mw.msg( "pagetriage-tag-warning-notice", article_age_in_minutes );
-				if ( article_age_in_minutes <= severe_warning_level ) {
-					css_class += " mwe-pt-severe-warning";
-				} else {
-					css_class += " mwe-pt-mild-warning";
-				}
+				css_class += " mwe-pt-new-article-warning";
 			}
 		%>
 			<div class="<%- css_class %>" title="<%- tooltip %>">

@@ -70,11 +70,7 @@
 	float: right;
 }
 
-.mwe-pt-mild-warning {
-	background-color: #f5f591;
-}
-
-.mwe-pt-severe-warning {
+.mwe-pt-new-article-warning {
 	background-color: #f79c8f;
 }
 
