@@ -32,7 +32,7 @@ class UpdateUserMetadata extends Maintenance {
 	}
 
 	protected function init() {
-		$this->dbr = wfGetDB( DB_REPLICA );
+		$this->dbr = PageTriageUtil::getConnection( DB_REPLICA );
 	}
 
 	/**

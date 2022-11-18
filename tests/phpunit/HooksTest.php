@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\PageTriage\Test;
 
+use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use PageTriageTestCase;
 
 /**
@@ -17,7 +18,7 @@ use PageTriageTestCase;
 class HooksTest extends PageTriageTestCase {
 
 	public function testDraftRedirectsAreNotAdded() {
-		$db = wfGetDB( DB_PRIMARY );
+		$db = PageTriageUtil::getConnection( DB_PRIMARY );
 		// Get the initial page count of the PageTriage queue.
 		$originalCount = $db->selectRowCount( 'pagetriage_page' );
 		// Insert a redirect.

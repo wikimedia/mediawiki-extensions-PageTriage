@@ -3,6 +3,7 @@
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriage;
+use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
 
 /**
@@ -32,7 +33,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 
 		// Insert minimal required data (subset of what's done in PageTriage/sql/PageTriageTags.sql)
 		// @TODO figure out why this is only run for the first test method when its in addDbData().
-		$db = wfGetDB( DB_PRIMARY );
+		$db = PageTriageUtil::getConnection( DB_PRIMARY );
 		$db->insert(
 			'pagetriage_tags',
 			[
@@ -118,7 +119,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	}
 
 	public static function setDraftQuality( $revId, $classId ) {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
 		foreach ( [ 0, 1, 2, 3 ] as $id ) {
 			$predicted = $classId === $id;
 			$dbw->insert( 'ores_classification', [
@@ -132,7 +133,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	}
 
 	public static function ensureCopyvioTag() {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
 
 		$dbw->upsert(
 			'pagetriage_tags',
@@ -143,7 +144,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	}
 
 	public static function setCopyvio( $pageId, $revId ) {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
 
 		$tagId = $dbw->selectField(
 			'pagetriage_tags', 'ptrt_tag_id', [ 'ptrt_tag_name' => 'copyvio' ]
@@ -160,7 +161,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	}
 
 	public static function ensureOresModel( $name ) {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
 		$modelInfo = [
 			'oresm_name' => $name,
 			'oresm_version' => '0.0.1',

@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Extension\PageTriage\PageTriageUtil;
+
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
@@ -32,8 +34,8 @@ class UpdatePageTriageQueue extends Maintenance {
 	}
 
 	protected function init() {
-		$this->dbr = wfGetDB( DB_REPLICA );
-		$this->dbw = wfGetDB( DB_PRIMARY );
+		$this->dbr = PageTriageUtil::getConnection( DB_REPLICA );
+		$this->dbw = PageTriageUtil::getConnection( DB_PRIMARY );
 	}
 
 	public function execute() {

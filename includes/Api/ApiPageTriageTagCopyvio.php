@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\PageTriage\Api;
 use ApiBase;
 use ManualLogEntry;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
+use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MWException;
@@ -35,8 +36,8 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 			'ptrpt_tag_id' => $tags['copyvio'],
 			'ptrpt_value' => $revision->getId()
 		];
-		$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
-		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$dbr = PageTriageUtil::getConnection( DB_REPLICA );
 		// If the revision ID hasn't been tagged with copyvio yet, then insert and log.
 		if ( $dbr->selectField( 'pagetriage_page_tags', 'ptrpt_page_id', $row, __METHOD__ ) === false ) {
 			$dbw->replace(

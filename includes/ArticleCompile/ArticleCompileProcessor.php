@@ -7,6 +7,7 @@ use LinksUpdate;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\CompileArticleMetadataJob;
 use MediaWiki\Extension\PageTriage\PageTriage;
+use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use RequestContext;
@@ -305,8 +306,8 @@ class ArticleCompileProcessor {
 	 * Save the compiling result to database as well as cache
 	 */
 	protected function save() {
-		$dbw = wfGetDB( DB_PRIMARY );
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$dbr = PageTriageUtil::getConnection( DB_REPLICA );
 
 		if ( !$this->pageIds ) {
 			return;

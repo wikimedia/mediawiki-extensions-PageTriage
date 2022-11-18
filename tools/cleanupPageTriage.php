@@ -5,6 +5,7 @@
  * @ingroup Maintenance
  */
 
+use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -28,8 +29,8 @@ class CleanupPageTriage extends Maintenance {
 	}
 
 	public function execute() {
-		$dbw = wfGetDB( DB_PRIMARY );
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$dbr = PageTriageUtil::getConnection( DB_REPLICA );
 		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 		$batchSize = $this->getBatchSize();

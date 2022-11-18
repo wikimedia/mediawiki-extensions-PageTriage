@@ -390,7 +390,7 @@ class Hooks {
 			static function ( $oldValue, &$ttl, array &$setOpts ) use ( $pageId, $fname ) {
 				// The ptrp_created field is equivalent to creation_date
 				// property set during article metadata compilation.
-				$dbr = wfGetDB( DB_REPLICA );
+				$dbr = PageTriageUtil::getConnection( DB_REPLICA );
 				$setOpts += Database::getCacheSetOptions( $dbr );
 
 				return $dbr->selectField(
