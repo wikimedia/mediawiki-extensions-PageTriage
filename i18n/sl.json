@@ -450,7 +450,7 @@
 	"pagetriage-tag-deletion-error": "Stran je že označena s predlogo za brisanje, prekinitev postopka.",
 	"pagetriage-toolbar-close": "Zapri",
 	"pagetriage-toolbar-minimize": "Zmanjšaj",
-	"pagetriage-tag-warning-notice": "Opomba: Ta stran je stara samo $1 {{PLURAL:$1|minuto|minuti|minute|minut}}. Pred označevanjem lahko še malo počakate, razen če je težava resna.",
+	"pagetriage-tag-warning-notice": "Ta stran je bila ustvarjena komaj pred $1 {{PLURAL:$1|minuto|minutama|minutami}}. Ne hitite z označevanjem strani na začetku vrste. Avtorji jih morda še vedno urejajo.",
 	"pagetriage-afc-state": "Stanje",
 	"pagetriage-afc-state-all": "Vse",
 	"pagetriage-afc-state-declined": "Zavrnjeno",

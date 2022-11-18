@@ -438,7 +438,7 @@
 	"pagetriage-tag-deletion-error": "Le pagina es ja etiquettate con un patrono de deletion. Procedura abortate.",
 	"pagetriage-toolbar-close": "Clauder",
 	"pagetriage-toolbar-minimize": "Minimisar",
-	"pagetriage-tag-warning-notice": "Nota: Iste pagina solmente existe desde $1 minuta{{PLURAL:$1||s}} retro. Considera attender un tempore ante de etiquettar lo, excepte si le problema es seriose.",
+	"pagetriage-tag-warning-notice": "Iste pagina solmente existe desde $1 minuta{{PLURAL:$1||s}} retro. Considera attender un tempore ante de etiquettar un pagina al initio del cauda. Le autor pote ancora esser in curso de laborar sur illo.",
 	"pagetriage-afc-state": "Stato",
 	"pagetriage-afc-state-all": "Totes",
 	"pagetriage-afc-state-declined": "Refusate",
