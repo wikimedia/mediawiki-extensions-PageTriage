@@ -21,4 +21,75 @@ class PageTriageUtilTest extends MediaWikiUnitTestCase {
 		);
 	}
 
+	/**
+	 * @dataProvider provideMapOresParamsToClassNames
+	 */
+	public function testMapOresParamsToClassNames( $model, $opts, $expect ) {
+		self::assertTrue( PageTriageUtil::mapOresParamsToClassNames( $model, $opts ) === $expect );
+	}
+
+	public static function provideMapOresParamsToClassNames() {
+		$optsNoQualitySelected = [
+			'showothers' => true,
+			'showunreviewed' => true,
+			'showdeleted' => true,
+			'namespace' => 0,
+		];
+
+		$optsOneArticleQualitySelected = [
+			'show_predicted_class_stub' => true,
+			'showothers' => true,
+			'showunreviewed' => true,
+			'showdeleted' => true,
+			'namespace' => 0,
+		];
+
+		$optsTwoArticleQualitySelected = [
+			'show_predicted_class_stub' => true,
+			'show_predicted_class_start' => true,
+			'showothers' => true,
+			'showunreviewed' => true,
+			'showdeleted' => true,
+			'namespace' => 0,
+		];
+
+		$optsOneDraftQualitySelected = [
+			'show_predicted_issues_vandalism' => true,
+			'showothers' => true,
+			'showunreviewed' => true,
+			'showdeleted' => true,
+			'namespace' => 0,
+		];
+
+		$optsTwoDraftQualitySelected = [
+			'show_predicted_issues_vandalism' => true,
+			'show_predicted_issues_spam' => true,
+			'showothers' => true,
+			'showunreviewed' => true,
+			'showdeleted' => true,
+			'namespace' => 0,
+		];
+
+		$optsMixOfBothQualityTypes = [
+			'show_predicted_class_stub' => true,
+			'show_predicted_class_start' => true,
+			'show_predicted_issues_vandalism' => true,
+			'show_predicted_issues_spam' => true,
+			'showothers' => true,
+			'showunreviewed' => true,
+			'showdeleted' => true,
+			'namespace' => 0,
+		];
+
+		return [
+			[ 'articlequality', $optsNoQualitySelected, [] ],
+			[ 'articlequality', $optsOneArticleQualitySelected, [ 'Stub' ] ],
+			[ 'articlequality', $optsTwoArticleQualitySelected, [ 'Stub', 'Start' ] ],
+			[ 'draftquality', $optsNoQualitySelected, [] ],
+			[ 'draftquality', $optsOneDraftQualitySelected, [ 'vandalism' ] ],
+			[ 'draftquality', $optsTwoDraftQualitySelected, [ 'vandalism', 'spam' ] ],
+			[ 'draftquality', $optsMixOfBothQualityTypes, [ 'vandalism', 'spam' ] ],
+			[ 'draftquality', [], [] ],
+		];
+	}
 }
