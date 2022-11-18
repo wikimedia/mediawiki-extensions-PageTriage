@@ -277,9 +277,7 @@ $( function () {
 			afcDir: 'oldestreview',
 			dir: 'newestfirst',
 			namespace: 0,
-			showreviewed: 1,
 			showunreviewed: 1,
-			showdeleted: 1,
 			showothers: 1
 		},
 
