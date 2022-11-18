@@ -29,8 +29,7 @@ $( function () {
 
 			// Setting the number of minutes for which a new article
 			// should be left alone (unless there are serious issues)
-			article.set( 'severe_warning_level', 15 );
-			article.set( 'mild_warning_level', 60 );
+			article.set( 'new_article_warning_minutes', 60 );
 
 			// Set whether it's a draft, which we'll reference in ext.pageTriage.listItem.underscore
 			article.set( 'is_draft', nsId === mw.config.get( 'wgPageTriageDraftNamespaceId' ) );
@@ -203,7 +202,7 @@ $( function () {
 		tagWarningNotice: function () {
 			var articleAge = this.get( 'article_age_in_minutes' );
 
-			if ( articleAge <= this.get( 'mild_warning_level' ) ) {
+			if ( articleAge <= this.get( 'new_article_warning_minutes' ) ) {
 				// Generate a warning if the page is less than 60 minutes old
 				return mw.msg( 'pagetriage-tag-warning-notice', articleAge );
 			} else {
