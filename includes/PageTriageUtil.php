@@ -455,6 +455,7 @@ class PageTriageUtil {
 	 * @param User $user
 	 * @param string $type notification type
 	 * @param array|null $extra
+	 * @return EchoEvent|bool|void $echoEvent
 	 */
 	public static function createNotificationEvent( Title $title, $user, $type, $extra = null ) {
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) ) {
@@ -472,7 +473,7 @@ class PageTriageUtil {
 			$params['extra'] = $extra;
 		}
 
-		EchoEvent::create( $params );
+		return EchoEvent::create( $params );
 	}
 
 	/**
