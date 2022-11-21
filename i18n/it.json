@@ -345,7 +345,7 @@
 	"pagetriage-tag-deletion-error": "Pagina già contrassegnata con un template di cancellazione, procedura annullata.",
 	"pagetriage-toolbar-close": "Chiudi",
 	"pagetriage-toolbar-minimize": "Minimizza",
-	"pagetriage-tag-warning-notice": "Nota: questa pagina è solo di $1 {{PLURAL:$1|minuto|minuti}} fa. Aspetta un po' prima di contrassegnarla a meno che il problema non sia serio.",
+	"pagetriage-tag-warning-notice": "Questa pagina è stata creata solo $1 {{PLURAL:$1|minuto|minuti}} fa. Non affrettarti a contrassegnare le pagine all'inizio della coda. L'autore potrebbe ancora lavorarci.",
 	"pagetriage-afc-state": "Stato",
 	"pagetriage-afc-state-all": "Tutti",
 	"notification-header-pagetriage-mark-as-reviewed": "La pagina '''$3''' è stata {{GENDER:$2|revisionata}}.",

@@ -470,7 +470,7 @@
 	"pagetriage-tag-deletion-error": "Page déjà marquée avec un modèle de suppression, procédure annulée.",
 	"pagetriage-toolbar-close": "Fermer",
 	"pagetriage-toolbar-minimize": "Réduire",
-	"pagetriage-tag-warning-notice": "Remarque : cette page ne date que de $1 minute{{PLURAL:$1||s}}. Veuillez attendre pour la marquer, sauf si le problème est important.",
+	"pagetriage-tag-warning-notice": "Remarque : cette page ne date que de $1 minute{{PLURAL:$1||s}}. Veuillez ne pas vous précipiter pour la marquer en tête de file d’attente. L’auteur y travaille peut-être encore.",
 	"pagetriage-afc-state": "État",
 	"pagetriage-afc-state-all": "Tous",
 	"pagetriage-afc-state-declined": "Refusé",

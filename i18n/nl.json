@@ -354,7 +354,7 @@
 	"pagetriage-tag-deletion-error": "De pagina is al genomineerd voor verwijdering. De procedure wordt afgebroken.",
 	"pagetriage-toolbar-close": "Sluiten",
 	"pagetriage-toolbar-minimize": "Minimaliseren",
-	"pagetriage-tag-warning-notice": "Let op: deze pagina is pas {{PLURAL:$1|één minuut|$1 minuten}} geleden aangemaakt. Overweeg nog even te wachten met labelen, tenzij de pagina een groot probleem oplevert.",
+	"pagetriage-tag-warning-notice": "Deze pagina is pas {{PLURAL:$1|één minuut|$1 minuten}} geleden aangemaakt. Wees niet te haastig met het labelen van pagina's die voorin de wachtrij staan. Mogelijk is de auteur er nog mee bezig.",
 	"pagetriage-afc-state": "Status",
 	"pagetriage-afc-state-all": "Alle",
 	"pagetriage-afc-state-declined": "Afgewezen",

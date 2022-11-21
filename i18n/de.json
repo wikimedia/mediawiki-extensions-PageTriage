@@ -424,7 +424,7 @@
 	"pagetriage-tag-deletion-error": "Die Seite wurde bereits mit einer Löschvorlage markiert.",
 	"pagetriage-toolbar-close": "Schließen",
 	"pagetriage-toolbar-minimize": "Minimieren",
-	"pagetriage-tag-warning-notice": "Hinweis: Diese Seite ist nur {{PLURAL:$1|eine Minute|$1 Minuten}} alt. Bitte markiere nicht vorschnell Seiten, die ganz vorne in der Warteschlange stehen. Der Autor arbeitet vielleicht noch daran.",
+	"pagetriage-tag-warning-notice": "Hinweis: Diese Seite ist erst {{PLURAL:$1|eine Minute|$1 Minuten}} alt. Bitte markiere nicht vorschnell Seiten, die ganz vorne in der Warteschlange stehen. Der Autor arbeitet vielleicht noch daran.",
 	"pagetriage-afc-state": "Status",
 	"pagetriage-afc-state-all": "Alle",
 	"pagetriage-afc-state-declined": "Abgelehnt",
