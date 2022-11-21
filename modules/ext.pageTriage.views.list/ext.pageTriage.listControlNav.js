@@ -443,8 +443,9 @@ $( function () {
 				apiParams.showunreviewed = '1';
 			}
 
-			if ( !apiParams.showdeleted && !apiParams.showredirs && !apiParams.showothers ) {
-				apiParams.showdeleted = '1';
+			var hasNoTypeSelected = !apiParams.showdeleted && !apiParams.showredirs && !apiParams.showothers;
+			if ( hasNoTypeSelected ) {
+				// One of these must be set; default to others
 				apiParams.showothers = '1';
 			}
 
