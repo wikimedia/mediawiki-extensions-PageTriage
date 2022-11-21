@@ -103,7 +103,8 @@ class PageTriageUtilTest extends MediaWikiIntegrationTestCase {
 			'revId' => 163,
 		];
 
-		$echoEvent = PageTriageUtil::createNotificationEvent( $title, $user, $type, $extra );
+		$status = PageTriageUtil::createNotificationEvent( $title, $user, $type, $extra );
+		$echoEvent = $status->getValue();
 
 		$titleResult = $echoEvent->getTitle()->getText();
 		$typeResult = $echoEvent->getType();
