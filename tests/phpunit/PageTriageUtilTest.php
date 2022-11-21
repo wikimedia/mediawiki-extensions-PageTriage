@@ -5,7 +5,7 @@ use MediaWiki\Extension\PageTriage\PageTriageUtil;
 /**
  * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil
  */
-class PageTriageUtilTest extends MediaWikiUnitTestCase {
+class PageTriageUtilTest extends MediaWikiIntegrationTestCase {
 
 	public function testIsOresArticlequalityQuery() {
 		self::assertFalse( PageTriageUtil::isOresArticleQualityQuery( [ 'page_id' => '123' ] ) );
@@ -91,5 +91,26 @@ class PageTriageUtilTest extends MediaWikiUnitTestCase {
 			[ 'draftquality', $optsMixOfBothQualityTypes, [ 'vandalism', 'spam' ] ],
 			[ 'draftquality', [], [] ],
 		];
+	}
+
+	public function testCreateNotificationEvent() {
+		$title = Title::newFromText( 'NotificationTest' );
+		$user = static::getTestSysop()->getUser( 'TestWikiAdmin' );
+		$type = 'pagetriage-add-maintenance-tag';
+		$extra = [
+			'tags' => [ 'under review' ],
+			'note' => '',
+			'revId' => 163,
+		];
+
+		$echoEvent = PageTriageUtil::createNotificationEvent( $title, $user, $type, $extra );
+
+		$titleResult = $echoEvent->getTitle()->getText();
+		$typeResult = $echoEvent->getType();
+		$extraTagResult = $echoEvent->getExtraParam( 'tags' );
+
+		$this->assertTrue( $titleResult === 'NotificationTest' );
+		$this->assertTrue( $typeResult === $type );
+		$this->assertTrue( $extraTagResult === $extra['tags'] );
 	}
 }
