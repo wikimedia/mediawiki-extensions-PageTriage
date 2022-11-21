@@ -44,7 +44,7 @@
 	"pagetriage-filter-unreviewed-edits": "Óyfirfarnar síður",
 	"pagetriage-filter-nominated-for-deletion": "Tilnefnd til eyðingar",
 	"pagetriage-filter-bot-edits": "Voru stofnaðar af vélmennum",
-	"pagetriage-filter-redirects": "Tilvísanir",
+	"pagetriage-filter-redirects": "Endurbeiningum (ekki RfD)",
 	"pagetriage-filter-namespace-heading": "Í nafnrými:",
 	"pagetriage-filter-article": "Greina",
 	"pagetriage-filter-user-heading": "Var stofnuð af",
