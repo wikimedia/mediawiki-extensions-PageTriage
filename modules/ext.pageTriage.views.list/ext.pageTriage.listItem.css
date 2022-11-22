@@ -7,7 +7,6 @@
 }
 
 .mwe-pt-info-pane {
-	padding: 0.5em 0.6em 0.6em 2.7em;
 	min-height: 4.8em;
 	display: table;
 	box-sizing: border-box;
@@ -21,8 +20,7 @@
 
 .mwe-pt-status-icon {
 	position: absolute;
-	top: 5px;
-	left: 5px;
+	margin: 5px 0 0 5px;
 	width: 21px;
 	height: 21px;
 }
@@ -37,6 +35,7 @@
 .mwe-pt-review {
 	text-align: right;
 	display: table-cell;
+	float: right;
 }
 
 /* info about the article */
@@ -72,6 +71,30 @@
 
 .mwe-pt-new-article-warning {
 	background-color: #f79c8f;
+	border-radius: 10px;
+	padding: 0 0.5em;
+}
+
+.mwe-pt-article-column-left {
+	float: left;
+}
+
+.mwe-pt-article-column-middle {
+	overflow: hidden;
+	padding: 0.5em 0.6em 0.6em 2.7em;
+}
+
+.mwe-pt-article-column-right {
+	float: right;
+	padding: 0.5em 0.6em 0.6em 0;
+	width: min-content;
+}
+
+.mwe-pt-article-column-right-bottom {
+	width: min-content;
+	right: 0.6em;
+	bottom: 0.6em;
+	position: absolute;
 }
 
 /* info about the article's author */
@@ -89,7 +112,7 @@
 .mwe-pt-snippet {
 	color: #54595d;
 	padding-right: 1em;
-	display: table-cell;
+	min-height: 1.5em;
 	vertical-align: top;
 	word-break: break-word;
 }
