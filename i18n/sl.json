@@ -100,6 +100,7 @@
 	"pagetriage-filter-blocked": "Blokirani uporabniki",
 	"pagetriage-filter-all": "Prikaži vse",
 	"pagetriage-filter-set-button": "Nastavi filtre",
+	"pagetriage-filter-reset-button": "Ponastavi filtre",
 	"pagetriage-stats-less-than-a-day": "manj kot en dan",
 	"pagetriage-stats-reviewed-page-count": "Ta teden {{PLURAL:$1|je bila pregledana $1 stran|sta bili pregledani $1 strani|so bile pregledane $1 strani|je bilo pregledanih $1 strani}}",
 	"pagetriage-stats-filter-page-count": "V vašem filtriranem seznamu {{PLURAL:$1|je $1 stran|sta $1 strani|so $1 strani|je $1 strani}}",

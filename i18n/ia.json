@@ -95,6 +95,7 @@
 	"pagetriage-filter-blocked": "Usatores blocate",
 	"pagetriage-filter-all": "Monstrar toto",
 	"pagetriage-filter-set-button": "Definir filtros",
+	"pagetriage-filter-reset-button": "Reinitialisar filtros",
 	"pagetriage-stats-less-than-a-day": "minus de un die",
 	"pagetriage-stats-reviewed-page-count": "$1 pagina{{PLURAL:$1||s}} revidite iste septimana",
 	"pagetriage-stats-filter-page-count": "$1 pagina{{PLURAL:$1||s}} in tu lista filtrate",

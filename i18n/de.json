@@ -100,6 +100,7 @@
 	"pagetriage-filter-blocked": "gesperrte Benutzer",
 	"pagetriage-filter-all": "Alle zeigen",
 	"pagetriage-filter-set-button": "Filter anwenden",
+	"pagetriage-filter-reset-button": "Filter zurücksetzen",
 	"pagetriage-stats-less-than-a-day": "weniger als ein Tag",
 	"pagetriage-stats-reviewed-page-count": "{{PLURAL:$1|Eine Seite|$1 Seiten}} überprüft in dieser Woche",
 	"pagetriage-stats-filter-page-count": "{{PLURAL:$1|Eine Seite|$1 Seiten}} in deiner gefilterten Liste",

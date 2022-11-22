@@ -87,6 +87,7 @@
 	"pagetriage-filter-blocked": "ブロックされている利用者",
 	"pagetriage-filter-all": "すべて表示",
 	"pagetriage-filter-set-button": "フィルターを適用",
+	"pagetriage-filter-reset-button": "フィルターをリセット",
 	"pagetriage-stats-less-than-a-day": "1 日未満",
 	"pagetriage-stats-reviewed-page-count": "今週は $1 {{PLURAL:$1|件のページ}}を査読しました",
 	"pagetriage-stats-filter-page-count": "フィルター リストに $1 {{PLURAL:$1|件のページ}}が入っています",
