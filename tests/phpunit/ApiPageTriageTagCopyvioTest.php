@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\PageTriage\Test;
 
 use ApiUsageException;
+use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use PageTriageTestCase;
 use Title;
 
@@ -50,7 +51,7 @@ class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 	 * @throws \MWException
 	 */
 	public function testCopyvioInsertLog() {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
 		foreach ( [ 'pagetriage_page', 'page' ] as $table ) {
 			$dbw->delete( $table, '*' );
 		}

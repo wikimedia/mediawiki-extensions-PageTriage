@@ -13,6 +13,7 @@ use RequestContext;
 use Title;
 use User;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\Rdbms\IDatabase;
 use WikiPage;
 
 /**
@@ -33,7 +34,7 @@ class PageTriageUtil {
 	 */
 	public static function isPageUnreviewed( WikiPage $page ) {
 		$pageId = $page->getId();
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = self::getConnection( DB_REPLICA );
 
 		$row = $dbr->selectRow(
 			'pagetriage_page',
@@ -121,7 +122,7 @@ class PageTriageUtil {
 			$cache->makeKey( $key, $namespace ),
 			10 * $cache::TTL_MINUTE,
 			static function () use ( $namespace, $fname, $redirect ) {
-				$dbr = wfGetDB( DB_REPLICA );
+				$dbr = self::getConnection( DB_REPLICA );
 
 				$table = [ 'pagetriage_page', 'page' ];
 				$conds = [
@@ -207,7 +208,7 @@ class PageTriageUtil {
 			static function () use ( $namespace, $fname, $redirect ) {
 				$time = (int)wfTimestamp( TS_UNIX ) - 7 * 24 * 60 * 60;
 
-				$dbr = wfGetDB( DB_REPLICA );
+				$dbr = self::getConnection( DB_REPLICA );
 
 				$table = [ 'pagetriage_page', 'page' ];
 				$conds = [
@@ -265,7 +266,7 @@ class PageTriageUtil {
 			$cache->makeKey( 'pagetriage-top-triager', $time ),
 			$timeFrame[$time]['expire'],
 			static function () use ( $timeFrame, $time, $fname ) {
-				$dbr = wfGetDB( DB_REPLICA );
+				$dbr = self::getConnection( DB_REPLICA );
 
 				$res = $dbr->select(
 					[ 'pagetriage_log', 'user' ],
@@ -345,7 +346,7 @@ class PageTriageUtil {
 		}
 
 		if ( $title ) {
-			$dbr = wfGetDB( DB_REPLICA );
+			$dbr = self::getConnection( DB_REPLICA );
 			$res = $dbr->select(
 				[ 'page' ],
 				[ 'page_namespace', 'page_title' ],
@@ -406,7 +407,7 @@ class PageTriageUtil {
 			return;
 		}
 
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = self::getConnection( DB_REPLICA );
 
 		$res = $dbr->select(
 			[ 'pagetriage_page_tags' ],
@@ -429,7 +430,7 @@ class PageTriageUtil {
 			return;
 		}
 
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = self::getConnection( DB_PRIMARY );
 		$dbw->startAtomic( __METHOD__ );
 		$dbw->update(
 			'pagetriage_page_tags',
@@ -721,4 +722,13 @@ class PageTriageUtil {
 		return $opts[ 'show_predicted_issues_copyvio' ] ?? false;
 	}
 
+	/**
+	 * Return an SQL database connection.
+	 *
+	 * @param int $type DB_PRIMARY or DB_REPLICA
+	 * @return null|IDatabase
+	 */
+	public static function getConnection( $type ) {
+		return MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( $type );
+	}
 }

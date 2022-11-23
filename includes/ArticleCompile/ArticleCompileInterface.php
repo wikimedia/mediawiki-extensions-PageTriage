@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
 use Content;
 use LinksUpdate;
+use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\SlotRecord;
 use Wikimedia\Rdbms\IDatabase;
@@ -45,7 +46,7 @@ abstract class ArticleCompileInterface {
 		$this->articles = $articles;
 		$this->linksUpdates = $linksUpdates;
 
-		$this->db = wfGetDB( $componentDb );
+		$this->db = PageTriageUtil::getConnection( $componentDb );
 
 		$this->componentDb = $componentDb;
 	}

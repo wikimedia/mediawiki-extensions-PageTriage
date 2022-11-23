@@ -202,7 +202,7 @@ class OresMetadata {
 	 * @return array|IResultWrapper
 	 */
 	private function getORESScores( $modelName, $pageIds, $extraConds = [] ) {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = PageTriageUtil::getConnection( DB_REPLICA );
 		$result = $dbr->select(
 			[
 				'pagetriage_page',

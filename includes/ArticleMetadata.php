@@ -45,7 +45,7 @@ class ArticleMetadata {
 	 */
 	public function deleteMetadata() {
 		if ( $this->pageIds ) {
-			$dbw = wfGetDB( DB_PRIMARY );
+			$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
 			$dbw->delete(
 				'pagetriage_page_tags',
 				[ 'ptrpt_page_id' => $this->pageIds ],
@@ -81,7 +81,7 @@ class ArticleMetadata {
 	 * @return array[] Map of (page ID => article metadata)
 	 */
 	public static function getMetadataForArticles( array $pageIds ) {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = PageTriageUtil::getConnection( DB_REPLICA );
 
 		$res = $dbr->select(
 			[
@@ -163,7 +163,7 @@ class ArticleMetadata {
 			),
 			$cache::TTL_DAY,
 			function ( array $pageIds, array &$ttls, array &$setOpts ) use ( $wasPosted ) {
-				$dbr = wfGetDB( DB_REPLICA );
+				$dbr = PageTriageUtil::getConnection( DB_REPLICA );
 
 				$setOpts += Database::getCacheSetOptions( $dbr );
 
@@ -236,10 +236,10 @@ class ArticleMetadata {
 			$cache->makeKey( 'pagetriage-valid-tags' ),
 			2 * $cache::TTL_DAY,
 			static function ( $oldValue, &$ttl, &$setOpts ) use ( $fname ) {
-				$dbr = wfGetDB( DB_REPLICA );
+				$dbr = PageTriageUtil::getConnection( DB_REPLICA );
 				$setOpts += Database::getCacheSetOptions( $dbr );
 
-				$dbr = wfGetDB( DB_REPLICA );
+				$dbr = PageTriageUtil::getConnection( DB_REPLICA );
 				$res = $dbr->select(
 					[ 'pagetriage_tags' ],
 					[ 'ptrt_tag_id', 'ptrt_tag_name' ],
@@ -297,7 +297,7 @@ class ArticleMetadata {
 		}
 
 		if ( $pageIds ) {
-			$db = wfGetDB( $validateDb );
+			$db = PageTriageUtil::getConnection( $validateDb );
 
 			$res = $db->select(
 				[ 'pagetriage_page' ],

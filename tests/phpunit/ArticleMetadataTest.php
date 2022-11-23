@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\PageTriage\Test;
 
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
+use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use PageTriageTestCase;
 use Wikimedia\Rdbms\DBConnRef;
 
@@ -31,7 +32,7 @@ class ArticleMetadataTest extends PageTriageTestCase {
 	protected function setUp(): void {
 		parent::setUp();
 		$this->pageIds = [];
-		$this->dbr = wfGetDB( DB_REPLICA );
+		$this->dbr = PageTriageUtil::getConnection( DB_REPLICA );
 
 		// Set up 6 pages to test with.
 		for ( $i = 0; $i < 6; $i++ ) {
