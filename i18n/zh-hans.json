@@ -304,7 +304,7 @@
 	"pagetriage-tag-deletion-error": "页面已经被删除模板标记，中止程序。",
 	"pagetriage-toolbar-close": "关闭",
 	"pagetriage-toolbar-minimize": "最小化",
-	"pagetriage-tag-warning-notice": "注意：本页面刚产生于$1{{PLURAL:$1|分钟}}前。除非问题严重，请考虑稍后再标记它。",
+	"pagetriage-tag-warning-notice": "本页面于$1{{PLURAL:$1|分钟}}前刚刚创建。请不要急于标记队列中最新的页面。作者可能还在进行修改。",
 	"pagetriage-afc-state": "状态",
 	"pagetriage-afc-state-all": "全部",
 	"pagetriage-afc-state-declined": "已拒绝",
