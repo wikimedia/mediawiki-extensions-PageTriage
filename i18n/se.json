@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kimberli Mäkäräinen (WMNO)",
 			"Yupik"
 		]
 	},
 	"pagetriage-categories": "$1 {{PLURAL:$1|kategoriija}}",
 	"pagetriage-filter-ns-all": "Buot",
-	"pagetriage-filter-stat-all": "Buot"
+	"pagetriage-filter-stat-all": "Buot",
+	"pagetriage-filter-stat-namespace": "Nammagomuvuohta"
 }
