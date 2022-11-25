@@ -135,6 +135,7 @@
 	"pagetriage-note-not-reviewed": "Страница још није проверена.",
 	"pagetriage-note-deletion": "Ова страница је номинована за брисање.",
 	"pagetriage-refresh-list": "Освежи списак",
+	"pagetriage-auto-refresh-list": "Аутоматски освежи",
 	"pagetriage-tag-count-total": "{{PLURAL:$1|Изабрана $1 ознака|Изабране $1 ознаке|Изабрано $1 ознака}}",
 	"pagetriage-button-add-tag": "Додај изабране ознаке",
 	"pagetriage-button-add-tag-number": "Додај изабране ознаке ($1)",
