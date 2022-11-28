@@ -524,13 +524,13 @@ module.exports = ToolView.extend( {
 
 				switch ( tagObj.position ) {
 					case 'bottom':
+					case 'stub':
 						bottomText += '\n\n{{' + tagObj.tag + this.buildParams( tagObj ) + '}}';
 						break;
 					case 'categories':
 						bottomText = '\n{{' + tagObj.tag + this.buildParams( tagObj ) + '}}' + bottomText;
 						break;
 					case 'top':
-						/* falls through */
 					default:
 						if ( tagObj.multiple ) {
 							multipleTags[ tagKey ] = tagObj;
@@ -544,14 +544,20 @@ module.exports = ToolView.extend( {
 			}
 		}
 
-		if ( this.objectPropCount( multipleTags ) > 1 ) {
-			openText = '{{' + $.pageTriageTagsMultiple + '|';
-			closeText = '\n}}';
-		}
-
+		// Generate a string of line breaks and templates. For example,
+		// \n{{No references}}\n{{Notability}}
 		for ( tagKey in multipleTags ) {
 			multipleTagsText += '\n{{' + multipleTags[ tagKey ].tag +
 				this.buildParams( multipleTags[ tagKey ] ) + '}}';
+		}
+
+		// If multiple templates, wrap string in {{Multiple issues}}. If just one template, trim()
+		// it to get rid of extra \n
+		if ( this.objectPropCount( multipleTags ) > 1 ) {
+			openText = '{{' + $.pageTriageTagsMultiple + '|';
+			closeText = '\n}}';
+		} else {
+			multipleTagsText = multipleTagsText.trim();
 		}
 
 		topText += openText + multipleTagsText + closeText;
