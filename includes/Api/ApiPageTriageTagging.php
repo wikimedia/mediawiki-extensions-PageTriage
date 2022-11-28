@@ -17,9 +17,6 @@ class ApiPageTriageTagging extends ApiBase {
 
 	public function execute() {
 		$config = $this->getConfig();
-		if ( !$config->get( 'PageTriageEnableEnglishWikipediaFeatures' ) ) {
-			return;
-		}
 
 		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
 

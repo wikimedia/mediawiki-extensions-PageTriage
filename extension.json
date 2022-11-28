@@ -612,9 +612,16 @@
 	"HookHandlers": {
 		"undelete": {
 			"class": "MediaWiki\\Extension\\PageTriage\\HookHandlers\\UndeleteHookHandler"
+		},
+		"main": {
+			"class": "MediaWiki\\Extension\\PageTriage\\Hooks",
+			"services": [
+				"MainConfig"
+			]
 		}
 	},
 	"Hooks": {
+		"ApiMain::moduleManager": "main",
 		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\PageTriage\\Hooks::onLoadExtensionSchemaUpdates",
 		"PageMoveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageMoveComplete",
 		"RevisionFromEditComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onRevisionFromEditComplete",
