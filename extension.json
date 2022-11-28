@@ -39,12 +39,10 @@
 		"pagetriage-curation/enqueue": "LogFormatter",
 		"pagetriage-curation/tag": "MediaWiki\\Extension\\PageTriage\\PageTriageLogFormatter",
 		"pagetriage-curation/delete": "MediaWiki\\Extension\\PageTriage\\PageTriageLogFormatter",
-		"pagetriage-deletion/delete": "MediaWiki\\Extension\\PageTriage\\PageTriageLogFormatter",
 		"pagetriage-copyvio/insert": "LogFormatter"
 	},
 	"LogTypes": [
 		"pagetriage-curation",
-		"pagetriage-deletion",
 		"pagetriage-copyvio"
 	],
 	"ActionFilteredLogs": {
