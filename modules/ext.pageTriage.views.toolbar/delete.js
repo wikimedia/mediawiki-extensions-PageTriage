@@ -735,6 +735,7 @@ module.exports = ToolView.extend( {
 				chainEnd = chainEnd
 					.then( that.tagPage.bind( that ) )
 					.then( that.notifyUser.bind( that ) )
+					.then( that.tagTalkPage.bind( that ) )
 					.then( mw.pageTriage.actionQueue.runAndRefresh.bind(
 						null, actionQueue, that.getDataForActionQueue()
 					) )
@@ -780,6 +781,37 @@ module.exports = ToolView.extend( {
 		// Show error message to the user
 		// eslint-disable-next-line no-alert
 		alert( msg );
+	},
+
+	/**
+	 * Add tag template (if relevant) to the article's talk page
+	 */
+	tagTalkPage: function () {
+		var key, tagObj;
+		for ( key in this.selectedTag ) {
+			tagObj = this.selectedTag[ key ];
+			if ( !( 'articletalkpagenotiftpl' in tagObj ) ||
+				tagObj.articletalkpagenotiftpl === '' ) {
+				break;
+			}
+
+			var template = tagObj.articletalkpagenotiftpl;
+			var paramsText = '|nom=' + mw.config.get( 'wgUserName' ) + '|nomdate={{subst:#time: Y-m-d}}';
+			var text = '{{' + template + paramsText + '}}';
+			var talkTitle = ( new mw.Title( mw.config.get( 'wgPageName' ) ) ).getTalkPage().toText();
+
+			return new mw.Api().postWithToken( 'csrf', {
+				action: 'edit',
+				title: talkTitle,
+				prependtext: text,
+				section: 0,
+				summary: 'Adding {{' + template + '}}',
+				tags: 'pagetriage'
+			} )
+				.catch( function ( errorCode ) {
+					throw new Error( errorCode + mw.msg( 'pagetriage-tagging-error' ) );
+				} );
+		}
 	},
 
 	/**

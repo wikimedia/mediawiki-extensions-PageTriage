@@ -39,6 +39,7 @@
 				anchor: '',
 				talkpagenotiftopictitle: 'pagetriage-del-tags-prod-notify-topic-title',
 				talkpagenotiftpl: 'ProdwarningBLP-NPF',
+				articletalkpagenotiftpl: 'Old prod',
 				subst: true
 			},
 
@@ -274,6 +275,7 @@
 				anchor: '',
 				talkpagenotiftopictitle: 'pagetriage-del-tags-prod-notify-topic-title',
 				talkpagenotiftpl: 'Proposed_deletion_notify-NPF',
+				articletalkpagenotiftpl: 'Old prod',
 				subst: true
 			}
 		};
