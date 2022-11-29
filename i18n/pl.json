@@ -142,7 +142,6 @@
 	"pagetriage-tags-param-free-yes-label": "Tak",
 	"pagetriage-tags-param-free-no-label": "Nie",
 	"pagetriage-tags-param-missing-required": "W znaczniku $1 brakuje wymaganego parametru.",
-	"log-name-pagetriage-deletion": "Rejestr oznaczania stron do usunięcia",
 	"log-name-pagetriage-copyvio": "Rejestr potencjalnych naruszeń praw autorskich",
 	"pagetriage-del-tags-param-discussion-label": "Wyjaśnij, dlaczego ta strona powinna zostać usunięta i podaj linki do odpowiednich zasad, jeśli to możliwe",
 	"pagetriage-info-title": "Informacje o stronie",
