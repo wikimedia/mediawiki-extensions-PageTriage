@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\PageTriage\Api;
 
 use ApiBase;
 use Article;
+use ChangeTags;
 use DeferredUpdates;
 use ManualLogEntry;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
@@ -31,6 +32,19 @@ class ApiPageTriageAction extends ApiBase {
 			$this->dieWithError( 'apierror-ratelimited' );
 		}
 
+		$logEntryTags = [];
+		if ( $params['tags'] ) {
+			$tagStatus = ChangeTags::canAddTagsAccompanyingChange(
+				$params['tags'],
+				$this->getUser()
+			);
+			if ( !$tagStatus->isOK() ) {
+				$this->dieStatus( $tagStatus );
+			}
+			$logEntryTags = $params['tags'];
+		}
+		$logEntryTags[] = 'pagetriage';
+
 		$note = $params['note'];
 
 		if ( isset( $params['reviewed'] ) ) {
@@ -44,9 +58,15 @@ class ApiPageTriageAction extends ApiBase {
 				$this->dieWithError( 'markedaspatrollederror-noautopatrol' );
 			}
 
-			$result = $this->markAsReviewed( $article, $params['reviewed'], $note, $params['skipnotif'] );
+			$result = $this->markAsReviewed(
+				$article,
+				$params['reviewed'],
+				$note,
+				$params['skipnotif'],
+				$logEntryTags
+			);
 		} else {
-			$result = $this->enqueue( $article, $note );
+			$result = $this->enqueue( $article, $note, $logEntryTags );
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
@@ -57,9 +77,10 @@ class ApiPageTriageAction extends ApiBase {
 	 * @param string $reviewedStatus
 	 * @param string $note
 	 * @param bool $skipNotif
+	 * @param array $tags
 	 * @return array Result for API
 	 */
-	private function markAsReviewed( Article $article, $reviewedStatus, $note, $skipNotif ) {
+	private function markAsReviewed( Article $article, $reviewedStatus, $note, $skipNotif, $tags ) {
 		if (
 			!ArticleMetadata::validatePageIds(
 				[ $article->getPage()->getId() ],
@@ -86,7 +107,12 @@ class ApiPageTriageAction extends ApiBase {
 				);
 			}
 
-			$this->logAction( $article, $reviewedStatus ? 'reviewed' : 'unreviewed', $note );
+			$this->logAction(
+				$article,
+				$reviewedStatus ? 'reviewed' : 'unreviewed',
+				$note,
+				$tags
+			);
 			return [ 'result' => 'success' ];
 		} else {
 			return [
@@ -99,9 +125,10 @@ class ApiPageTriageAction extends ApiBase {
 	/**
 	 * @param Article $article
 	 * @param string $note
+	 * @param array $tags
 	 * @return array Result for API
 	 */
-	private function enqueue( Article $article, $note ) {
+	private function enqueue( Article $article, $note, $tags ) {
 		$title = $article->getTitle();
 		if ( $title->isMainPage() ) {
 			$this->dieWithError( 'apierror-bad-pagetriage-enqueue-mainpage' );
@@ -130,8 +157,8 @@ class ApiPageTriageAction extends ApiBase {
 			}
 		} );
 
-		$this->logAction( $article, 'enqueue', $note );
-		$this->logAction( $article, 'unreviewed', $note );
+		$this->logAction( $article, 'enqueue', $note, $tags );
+		$this->logAction( $article, 'unreviewed', $note, $tags );
 
 		return [ 'result' => 'success' ];
 	}
@@ -142,8 +169,9 @@ class ApiPageTriageAction extends ApiBase {
 	 * @param Article $article
 	 * @param string $subtype
 	 * @param string $note
+	 * @param array $tags
 	 */
-	private function logAction( Article $article, $subtype, $note ) {
+	private function logAction( Article $article, $subtype, $note, $tags ) {
 		$logEntry = new ManualLogEntry(
 			'pagetriage-curation',
 			$subtype
@@ -155,7 +183,7 @@ class ApiPageTriageAction extends ApiBase {
 			$note = $contLang->truncateForDatabase( $note, 150 );
 			$logEntry->setComment( $note );
 		}
-		$logEntry->addTags( 'pagetriage' );
+		$logEntry->addTags( $tags );
 		$logEntry->publish( $logEntry->insert() );
 	}
 
@@ -187,9 +215,13 @@ class ApiPageTriageAction extends ApiBase {
 			],
 			'note' => null,
 			'skipnotif' => [
-				ParamValidator::PARAM_REQUIRED => false,
-				ParamValidator::PARAM_TYPE => 'boolean'
-			]
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_TYPE => 'boolean'
+			],
+			'tags' => [
+				ApiBase::PARAM_TYPE => 'tags',
+				ApiBase::PARAM_ISMULTI => true,
+			],
 		];
 	}
 
