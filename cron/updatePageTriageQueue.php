@@ -147,14 +147,14 @@ class UpdatePageTriageQueue extends Maintenance {
 
 		while ( $count === $this->getBatchSize() ) {
 			$count = 0;
-			$startTime = $this->dbr->addQuotes( $this->dbr->timestamp( $startTime ) );
-
 			$res = $this->dbr->select(
 				[ 'pagetriage_page', 'page' ],
 				[ 'ptrp_page_id', 'ptrp_created', 'page_namespace', 'ptrp_reviewed' ],
 				[
-					'(ptrp_created < ' . $startTime . ') OR
-					(ptrp_created = ' . $startTime . ' AND ptrp_page_id < ' . (int)$startId . ')',
+					$this->dbr->buildComparison( '<', [
+						'ptrp_created' => $this->dbr->timestamp( $startTime ),
+						'ptrp_page_id' => $startId,
+					] ),
 					$sqlWhere,
 				],
 				__METHOD__,
@@ -173,7 +173,7 @@ class UpdatePageTriageQueue extends Maintenance {
 				if ( $row->ptrp_created ) {
 					$startTime = wfTimestamp( TS_UNIX, $row->ptrp_created );
 				}
-				$startId = $row->ptrp_page_id;
+				$startId = (int)$row->ptrp_page_id;
 
 				$this->beginTransaction( $this->dbw, __METHOD__ );
 

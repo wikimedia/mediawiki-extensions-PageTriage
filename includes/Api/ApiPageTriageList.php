@@ -253,19 +253,19 @@ class ApiPageTriageList extends ApiBase {
 			switch ( strtolower( $opts['dir'] ?? '' ) ) {
 				case 'oldestfirst':
 					$options['ORDER BY'] = 'ptrp_created ASC, ptrp_page_id ASC';
-					$offsetOperator = ' > ';
+					$offsetOperator = '>';
 					break;
 				case 'oldestreview':
 					$options['ORDER BY'] = 'ptrp_reviewed_updated ASC, ptrp_page_id ASC';
-					$offsetOperator = ' > ';
+					$offsetOperator = '>';
 					break;
 				case 'newestreview':
 					$options['ORDER BY'] = 'ptrp_reviewed_updated DESC, ptrp_page_id DESC';
-					$offsetOperator = ' < ';
+					$offsetOperator = '<';
 					break;
 				default:
 					$options['ORDER BY'] = 'ptrp_created DESC, ptrp_page_id DESC';
-					$offsetOperator = ' < ';
+					$offsetOperator = '<';
 			}
 		}
 
@@ -332,25 +332,23 @@ class ApiPageTriageList extends ApiBase {
 		$conds['page_namespace'] = PageTriageUtil::validatePageNamespace( $nsId );
 
 		// Offset the list by timestamp
+		$offsetConds = [];
 		if (
 			array_key_exists( 'offset', $opts ) &&
 			is_numeric( $opts['offset'] ) &&
 			$opts['offset'] > 0 &&
 			!$count
 		) {
-			$opts['offset'] = $dbr->addQuotes( $dbr->timestamp( $opts['offset'] ) );
+			$offsetConds['ptrp_created'] = $dbr->timestamp( $opts['offset'] );
 			// Offset the list by page ID as well (in case multiple pages have the same timestamp)
 			if (
 				array_key_exists( 'pageoffset', $opts ) &&
 				is_numeric( $opts['pageoffset'] ) &&
 				$opts['pageoffset'] > 0
 			) {
-				$conds[] = '( ptrp_created' . $offsetOperator . $opts['offset'] . ') OR ' .
-					'( ptrp_created = ' . $opts['offset'] . ' AND ' .
-					'ptrp_page_id ' . $offsetOperator . $opts['pageoffset'] . ')';
-			} else {
-				$conds[] = 'ptrp_created' . $offsetOperator . $opts['offset'];
+				$offsetConds['ptrp_page_id'] = $opts['pageoffset'];
 			}
+			$conds[] = $dbr->buildComparison( $offsetOperator, $offsetConds );
 		}
 
 		$tagConds = self::buildTagQuery( $opts );
