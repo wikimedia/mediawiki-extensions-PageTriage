@@ -93,6 +93,9 @@
 			"i18n"
 		]
 	},
+	"ServiceWiringFiles": [
+		"ServiceWiring.php"
+	],
 	"ExtensionMessagesFiles": {
 		"PageTriageAlias": "PageTriage.alias.php"
 	},
@@ -623,7 +626,8 @@
 				"PermissionManager",
 				"RevisionStore",
 				"TitleFactory",
-				"UserOptionsManager"
+				"UserOptionsManager",
+				"PageTriageQueueManager"
 			]
 		},
 		"schema": {

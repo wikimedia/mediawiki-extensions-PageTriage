@@ -26,11 +26,6 @@ class PageTriage {
 	/** @var bool */
 	protected $mLoaded;
 
-	/**
-	 * @var ArticleMetadata
-	 */
-	protected $mArticleMetadata;
-
 	public const CACHE_VERSION = 2;
 
 	/**
@@ -249,32 +244,6 @@ class PageTriage {
 		];
 
 		$dbw->insert( 'pagetriage_log', $row, __METHOD__ );
-	}
-
-	protected function loadArticleMetadata() {
-		if ( !$this->mArticleMetadata ) {
-			$this->mArticleMetadata = new ArticleMetadata( [ $this->mPageId ] );
-		}
-	}
-
-	/**
-	 * Delete the page from page triage queue
-	 */
-	public function deleteFromPageTriage() {
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
-
-		$this->loadArticleMetadata();
-
-		$dbw->startAtomic( __METHOD__ );
-
-		$dbw->delete(
-				'pagetriage_page',
-				[ 'ptrp_page_id' => $this->mPageId ],
-				__METHOD__
-		);
-		$this->mArticleMetadata->deleteMetadata();
-
-		$dbw->endAtomic( __METHOD__ );
 	}
 
 	/**

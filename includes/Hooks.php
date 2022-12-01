@@ -75,6 +75,8 @@ class Hooks implements
 
 	/** @var Config */
 	private Config $config;
+	/** @var QueueManager */
+	private QueueManager $queueManager;
 
 	/** @var RevisionLookup */
 	private RevisionLookup $revisionLookup;
@@ -102,6 +104,7 @@ class Hooks implements
 	 * @param RevisionStore $revisionStore
 	 * @param TitleFactory $titleFactory
 	 * @param UserOptionsManager $userOptionsManager
+	 * @param QueueManager $queueManager
 	 */
 	public function __construct(
 		Config $config,
@@ -110,7 +113,8 @@ class Hooks implements
 		PermissionManager $permissionManager,
 		RevisionStore $revisionStore,
 		TitleFactory $titleFactory,
-		UserOptionsManager $userOptionsManager
+		UserOptionsManager $userOptionsManager,
+		QueueManager $queueManager
 	) {
 		$this->config = $config;
 		$this->revisionLookup = $revisionLookup;
@@ -119,6 +123,7 @@ class Hooks implements
 		$this->revisionStore = $revisionStore;
 		$this->titleFactory = $titleFactory;
 		$this->userOptionsManager = $userOptionsManager;
+		$this->queueManager = $queueManager;
 	}
 
 	/** @inheritDoc */
@@ -957,15 +962,10 @@ class Hooks implements
 		ManualLogEntry $logEntry,
 		int $archivedRevisionCount
 	) {
-		if ( !in_array( $page->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
-			return;
+		if ( $this->queueManager->isPageTriageNamespace( $page->getNamespace() ) ) {
+			// TODO: Factor the user status cache into another service.
+			self::flushUserStatusCache( $page );
+			$this->queueManager->deleteByPageId( $pageID );
 		}
-
-		// Remove the metadata we added when the article is deleted.
-		self::flushUserStatusCache( $page );
-
-		// Delete everything
-		$pageTriage = new PageTriage( $pageID );
-		$pageTriage->deleteFromPageTriage();
 	}
 }
