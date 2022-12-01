@@ -849,9 +849,42 @@
 					multiple: true
 				}
 			}
+		},
+		redirects: {
+			label: 'Redirect tags',
+			tags: {
+				'R-from-initialism': {
+					label: '{{R from initialism}}',
+					tag: 'R from initialism',
+					desc: 'redirect from an initialism (e.g. AGF) to its expanded form',
+					position: 'redirectTag',
+					multiple: true
+				},
+				'R-from-alternative-language': {
+					label: '{{R from alternative language}}',
+					tag: 'R from alternative language',
+					desc: 'redirect from or to a title in another language',
+					position: 'redirectTag',
+					params: {
+						1: {
+							label: 'From language (two-letter code):',
+							input: 'required',
+							type: 'text',
+							value: ''
+						},
+						2: {
+							label: 'To language (two-letter code):',
+							input: 'required',
+							type: 'text',
+							value: ''
+						}
+					},
+					multiple: true
+				}
+			}
 		}
-
 	};
+	$.pageTriageTagsRedirectCategoryShell = 'Redirect category shell';
 
 }() );
 // </nowiki>
