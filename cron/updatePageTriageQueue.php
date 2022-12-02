@@ -6,16 +6,15 @@
  * https://gerrit.wikimedia.org/r/plugins/gitiles/operations/puppet/+/refs/heads/production/modules/profile/manifests/mediawiki/maintenance/pagetriage.pp
  */
 
+use MediaWiki\Extension\PageTriage\PageTriageServices;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
+use MediaWiki\MediaWikiServices;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
-
-use MediaWiki\Extension\PageTriage\ArticleMetadata;
-use MediaWiki\MediaWikiServices;
 
 /**
  * A maintenance script that updates expired page metadata
@@ -150,6 +149,8 @@ class UpdatePageTriageQueue extends Maintenance {
 		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 		$startId = $idRow->max_id + 1;
+		$queueManager = PageTriageServices::wrap( MediaWikiServices::getInstance() )
+			->getQueueManager();
 
 		while ( $count === $this->getBatchSize() ) {
 			$count = 0;
@@ -168,33 +169,19 @@ class UpdatePageTriageQueue extends Maintenance {
 				[ 'page' => [ 'INNER JOIN', 'ptrp_page_id = page_id' ] ]
 			);
 
-			$pageId = [];
+			$pageIds = [];
 			foreach ( $res as $row ) {
-				$pageId[] = $row->ptrp_page_id;
+				$pageIds[] = $row->ptrp_page_id;
 				$count++;
 			}
 
-			if ( $pageId ) {
+			if ( $pageIds ) {
 				// update data from last row
 				if ( $row->ptrp_created ) {
 					$startTime = wfTimestamp( TS_UNIX, $row->ptrp_created );
 				}
 				$startId = (int)$row->ptrp_page_id;
-
-				$this->beginTransaction( $this->dbw, __METHOD__ );
-
-				// Delete from pagetriage_page table
-				$this->dbw->delete(
-						'pagetriage_page',
-						[ 'ptrp_page_id' => $pageId ],
-						__METHOD__
-				);
-
-				// Delete from pagetriage_page_tags table
-				$articleMetadata = new ArticleMetadata( $pageId );
-				$articleMetadata->deleteMetadata();
-
-				$this->commitTransaction( $this->dbw, __METHOD__ );
+				$queueManager->deleteByPageIds( $pageIds );
 			}
 
 			$this->output( "processed $count \n" );

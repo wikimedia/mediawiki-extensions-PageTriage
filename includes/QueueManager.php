@@ -27,24 +27,28 @@ class QueueManager {
 	 * @return Status OK if a page was deleted, not OK otherwise.
 	 */
 	public function deleteByPageId( int $pageId ): Status {
+		return $this->deleteByPageIds( [ $pageId ] );
+	}
+
+	/**
+	 * @param int[] $pageIds
+	 * @return Status OK if all pages were deleted, not OK otherwise.
+	 */
+	public function deleteByPageIds( array $pageIds ): Status {
 		$status = new Status();
-		$articleMetadata = new ArticleMetadata( [ $pageId ] );
-
+		// TODO: Factor out ArticleMetadata into value object / manager.
+		$articleMetadata = new ArticleMetadata( $pageIds );
 		$this->dbw->startAtomic( __METHOD__ );
-
 		$this->dbw->delete(
 			'pagetriage_page',
-			[ 'ptrp_page_id' => $pageId ],
+			[ 'ptrp_page_id' => $pageIds ],
 			__METHOD__,
 		);
-		$status->setOK( (bool)$this->dbw->affectedRows() );
-
-		// TODO: Factor out ArticleMetadata into value object / manager.
+		$status->setOK( count( $pageIds ) === $this->dbw->affectedRows() );
 		// TODO: Is "ArticleMetadata" used/useful without the core queue data in pagetriage_page?
 		//  if it isn't, we could make QueueManager handle create/update/delete for the page table
 		//  and metadata.
 		$articleMetadata->deleteMetadata();
-
 		$this->dbw->endAtomic( __METHOD__ );
 		return $status;
 	}
