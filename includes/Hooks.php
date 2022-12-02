@@ -779,6 +779,7 @@ class Hooks implements ApiMain__moduleManagerHook {
 				'pagetriage-categories',
 				'pagetriage-add-tag-confirmation',
 				'pagetriage-tag-deletion-error',
+				'pagetriage-tag-previousdeletion-error',
 				'pagetriage-toolbar-close',
 				'pagetriage-toolbar-minimize',
 				'pagetriage-tag-warning-notice'

@@ -276,6 +276,10 @@
 				talkpagenotiftopictitle: 'pagetriage-del-tags-prod-notify-topic-title',
 				talkpagenotiftpl: 'Proposed_deletion_notify-NPF',
 				articletalkpagenotiftpl: 'Old prod',
+				rejectionTemplates: {
+					article: [ 'Article for deletion/dated' ],
+					talkPage: [ 'Old prod', 'Old XfD multi', 'Old DRV' ]
+				},
 				subst: true
 			}
 		};

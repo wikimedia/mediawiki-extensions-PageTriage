@@ -468,6 +468,7 @@
 	"pagetriage-tagging-error": "Error message indicating that error has occurred while applying tags to a page",
 	"pagetriage-add-tag-confirmation": "Confirmation message upon tag submission. Parameters:\n* $1 is the number of tags.",
 	"pagetriage-tag-deletion-error": "Error message indicating that a page has already been nominated for deletion",
+	"pagetriage-tag-previousdeletion-error": "Error message indicating that a page has already been nominated for deletion.\n $1 is the name of the template.",
 	"pagetriage-toolbar-close": "Tooltip for the close button in the Curation Toolbar.\n{{Identical|Close}}",
 	"pagetriage-toolbar-minimize": "Tooltip for the minimize button in the Curation Toolbar (also docks the minimized toolbar to the side of the screen).\n{{Identical|Minimize}}",
 	"pagetriage-tag-warning-notice": "Message shown in tooltip for new pages.\n\nParameters:\n* $1 - number of minutes",

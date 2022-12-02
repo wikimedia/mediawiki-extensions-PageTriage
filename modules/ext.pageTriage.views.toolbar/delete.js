@@ -268,6 +268,85 @@ module.exports = ToolView.extend( {
 	},
 
 	/**
+	 * Checks if the page or talk page has any templates that should halt
+	 * the deletion
+	 *
+	 * @param {Object[]} selectedTag An array with the config options of the
+	 * currently selected tag
+	 * @return {jQuery.Promise} A promise. Resolves template data, if any
+	 * of the rejection templates are found. Resolves to false otherwise
+	 */
+	isAnyRejectionTemplatePresent: function ( selectedTag ) {
+		for ( var key in selectedTag ) {
+			if ( selectedTag[ key ].rejectionTemplates === undefined ) {
+				continue;
+			}
+
+			var promises = [];
+
+			// check for templates on the page
+			if ( selectedTag[ key ].rejectionTemplates.article !== undefined ) {
+				promises.push( this.areAnyOfTheseTemplatesPresentOnPage(
+					selectedTag[ key ].rejectionTemplates.article,
+					new mw.Title( mw.config.get( 'wgPageName' ) ).getPrefixedText() )
+				);
+			}
+
+			// check for templates on the talk page
+			if ( selectedTag[ key ].rejectionTemplates.talkPage !== undefined ) {
+				promises.push( this.areAnyOfTheseTemplatesPresentOnPage(
+					selectedTag[ key ].rejectionTemplates.talkPage,
+					new mw.Title( mw.config.get( 'wgPageName' ) ).getTalkPage().getPrefixedText() )
+				);
+			}
+
+			return $.when.apply( [], promises )
+				.then( function () {
+					// the return values of each of the functions called from the promises[] array
+					// is stored in a "magic" array called arguments.This needs to be changed ASAP
+					// when we move from using jQuery promises to ES6 Promise type of calls
+					for ( var i = 0; i < arguments.length; i++ ) {
+						if ( arguments[ i ].result !== false ) {
+							return arguments[ i ].template;
+						}
+					}
+					return false;
+				} );
+		}
+		return $.Deferred().resolve( false );
+	},
+
+	/**
+	 * Checks if any of a list of templates is present on a page
+	 *
+	 * @param {string[]} templateArray an array of template names
+	 * @param {mw.Title} pageTitle the title of the page to be checked
+	 * @return {jQuery.Promise} A promise. Resolves template data if
+	 * any of the templates are found
+	 */
+	areAnyOfTheseTemplatesPresentOnPage: function ( templateArray, pageTitle ) {
+		return new mw.Api().get( {
+			action: 'query',
+			titles: pageTitle,
+			prop: 'templates',
+			tltemplates: 'Template:' + templateArray.join( '|Template:' ),
+			format: 'json'
+		} )
+			.then( function ( data ) {
+				var key = Object.keys( data.query.pages )[ 0 ];
+				var templates = data.query.pages[ key ].templates;
+				var numTemplates = templates && templates.length;
+				if ( numTemplates ) {
+					return { result: true, template: templates[ 0 ].title };
+				}
+				return { result: false };
+			} )
+			.catch( function () {
+				return { result: false };
+			} );
+	},
+
+	/**
 	 * Build deletion tag check/radio and label
 	 *
 	 * @param {string} key
@@ -685,7 +764,13 @@ module.exports = ToolView.extend( {
 		// reviewed value must be either '0' or '1'
 		var markAsReviewed = this.deletionTagsOptions[ this.selectedCat ].reviewed || '0';
 		// Wait until all discussion page names picked.
-		return $.when.apply( null, promises )
+		return this.isAnyRejectionTemplatePresent( this.selectedTag )
+			.then( function ( rejectionTemplateFound ) {
+				if ( rejectionTemplateFound !== false ) {
+					return $.Deferred().reject( 'previousdeletion', rejectionTemplateFound );
+				}
+			} )
+			.then( $.when.apply( null, promises ) )
 			.then( function () {
 				// Applying deletion tags should mark the page as reviewed depending on the selected tag's
 				// reviewed option. If it is not set then the page will be marked as not reviewed.
@@ -747,7 +832,12 @@ module.exports = ToolView.extend( {
 				return chainEnd;
 			} )
 			.catch( function ( _errorCode, data ) {
-				that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
+				if ( _errorCode === 'previousdeletion' ) {
+					// isAnyRejectionTemplatePresent
+					that.handleError( mw.msg( 'pagetriage-tag-previousdeletion-error', data ) );
+				} else {
+					that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
+				}
 			} );
 	},
 
@@ -801,7 +891,7 @@ module.exports = ToolView.extend( {
 
 			var template = tagObj.articletalkpagenotiftpl;
 			var paramsText = '|nom=' + mw.config.get( 'wgUserName' ) + '|nomdate={{subst:#time: Y-m-d}}';
-			var text = '{{' + template + paramsText + '}}';
+			var text = '{{' + template + paramsText + '}}\n';
 			var talkTitle = ( new mw.Title( mw.config.get( 'wgPageName' ) ) ).getTalkPage().toText();
 
 			return new mw.Api().postWithToken( 'csrf', {
@@ -1189,6 +1279,12 @@ module.exports = ToolView.extend( {
 			} );
 	},
 
+	/**
+	 * Convert an integer into its ordinal form e.g. 2 => 2nd
+	 *
+	 * @param {number} num the integer that needs to be converted
+	 * @return {string} ordinal form of the input integer
+	 */
 	getNumeral: function ( num ) {
 		if ( typeof num !== 'number' ) {
 			num = parseInt( num );

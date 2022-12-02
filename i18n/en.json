@@ -448,6 +448,7 @@
 	"pagetriage-tagging-error": "Failed to apply tags to the page",
 	"pagetriage-add-tag-confirmation": "Are you sure you want to add $1 {{PLURAL:$1|tag|tags}} to such a short article?",
 	"pagetriage-tag-deletion-error": "Page already tagged with a deletion template, aborting procedure.",
+	"pagetriage-tag-previousdeletion-error": "A template ($1) indicating a previous deletion was found, aborting procedure.",
 	"pagetriage-toolbar-close": "Close",
 	"pagetriage-toolbar-minimize": "Minimize",
 	"pagetriage-tag-warning-notice": "This page was only created $1 {{PLURAL:$1|minute|minutes}} ago. Please don't rush to tag pages at the front of the queue. The author may still be working on it.",
