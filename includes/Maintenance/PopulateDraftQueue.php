@@ -76,7 +76,7 @@ class PopulateDraftQueue extends Maintenance {
 			foreach ( $drafts as $draft ) {
 				$this->beginTransaction( $db, __METHOD__ );
 				$pageTriage = new PageTriage( $draft->page_id );
-				$pageTriage->addToPageTriageQueue( '0' );
+				$pageTriage->addToPageTriageQueue();
 				$acp = ArticleCompileProcessor::newFromPageId( [ $draft->page_id ] );
 				if ( $acp ) {
 					$acp->compileMetadata();

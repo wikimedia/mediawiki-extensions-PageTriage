@@ -9,6 +9,32 @@ use JsonSerializable;
  */
 class QueueRecord implements JsonSerializable {
 
+	/**
+	 * The article is in an unreviewed state. "Needs review" is probably more accurate, as the
+	 * article can go between reviewed and back to unreviewed state if a PageTriage user marks
+	 * it as "unreviewed".
+	 */
+	public const REVIEW_STATUS_UNREVIEWED = 0;
+	/**
+	 * The article has been reviewed by a Special:NewPagesFeed user.
+	 */
+	public const REVIEW_STATUS_REVIEWED = 1;
+	/**
+	 * Set when an article is added to the page triage queue via the MarkPatrolledComplete hook.
+	 */
+	public const REVIEW_STATUS_PATROLLED = 2;
+	/**
+	 * The article was auto-patrolled.
+	 */
+	public const REVIEW_STATUS_AUTOPATROLLED = 3;
+
+	public const VALID_REVIEW_STATUSES = [
+		self::REVIEW_STATUS_UNREVIEWED,
+		self::REVIEW_STATUS_REVIEWED,
+		self::REVIEW_STATUS_PATROLLED,
+		self::REVIEW_STATUS_AUTOPATROLLED
+	];
+
 	/** @var int */
 	private int $pageId;
 	/** @var int */
@@ -66,8 +92,7 @@ class QueueRecord implements JsonSerializable {
 	}
 
 	/**
-	 * @return int An integer reflecting the review status, valid values range from 0-3.
-	 *  TODO: Document what the review statuses are.
+	 * @return int An integer reflecting the review status. Valid values are in self::VALID_REVIEW_STATUSES
 	 */
 	public function getReviewedStatus(): int {
 		return $this->reviewedStatus;
