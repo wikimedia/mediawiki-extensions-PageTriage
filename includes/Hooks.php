@@ -418,23 +418,19 @@ class Hooks implements
 		}
 
 		// Check cache for creation date
-		$fname = __METHOD__;
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$pageCreationDateTime = $cache->getWithSetCallback(
 			$cache->makeKey( 'pagetriage-page-created', $pageId ),
 			$cache::TTL_DAY,
-			static function ( $oldValue, &$ttl, array &$setOpts ) use ( $pageId, $fname ) {
+			static function ( $oldValue, &$ttl, array &$setOpts ) use ( $pageId ) {
 				// The ptrp_created field is equivalent to creation_date
 				// property set during article metadata compilation.
 				$dbr = PageTriageUtil::getConnection( DB_REPLICA );
 				$setOpts += Database::getCacheSetOptions( $dbr );
-
-				return $dbr->selectField(
-					'pagetriage_page',
-					'ptrp_created',
-					[ 'ptrp_page_id' => $pageId ],
-					$fname
-				);
+				$queueLookup = PageTriageServices::wrap( MediaWikiServices::getInstance() )
+					->getQueueLookup();
+				$queueRecord = $queueLookup->getByPageId( $pageId );
+				return $queueRecord instanceof QueueRecord ? $queueRecord->getCreatedTimestamp() : false;
 			},
 			[ 'version' => PageTriage::CACHE_VERSION ]
 		);
