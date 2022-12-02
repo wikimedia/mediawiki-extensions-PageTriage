@@ -2,18 +2,21 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
+use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
 use PatrolLog;
 use RecentChange;
 
+/**
+ * TODO: This class does too much. Refactoring into services and classes with single responsibility
+ * in progress, please don't add new methods here.
+ */
 class PageTriage {
 
 	/** @var int */
 	protected $mPageId;
 	/** @var string Review status as a string between "0" and "3" */
 	protected $mReviewed;
-	/** @var string */
-	protected $mCreated;
 	/** @var string Deletion flag as a string "0" or "1" */
 	protected $mDeleted;
 	/** @var string */
@@ -196,32 +199,18 @@ class PageTriage {
 			return true;
 		}
 
-		$dbr = PageTriageUtil::getConnection( DB_REPLICA );
-
-		$res = $dbr->selectRow(
-			[ 'pagetriage_page' ],
-			[
-				'ptrp_reviewed',
-				'ptrp_created',
-				'ptrp_deleted',
-				'ptrp_tags_updated',
-				'ptrp_reviewed_updated',
-				'ptrp_last_reviewed_by'
-			],
-			[ 'ptrp_page_id' => $this->mPageId ],
-			__METHOD__
-		);
-
-		if ( !$res ) {
+		$pageTriageServices = PageTriageServices::wrap( MediaWikiServices::getInstance() );
+		$queueLookup = $pageTriageServices->getQueueLookup();
+		$queueRecord = $queueLookup->getByPageId( $this->mPageId );
+		if ( !$queueRecord ) {
 			return false;
 		}
 
-		$this->mReviewed = $res->ptrp_reviewed;
-		$this->mCreated = $res->ptrp_created;
-		$this->mDeleted = $res->ptrp_deleted;
-		$this->mTagsUpdated = wfTimestamp( TS_UNIX, $res->ptrp_tags_updated );
-		$this->mReviewedUpdated = wfTimestamp( TS_UNIX, $res->ptrp_reviewed_updated );
-		$this->mLastReviewedBy = $res->ptrp_last_reviewed_by;
+		$this->mReviewed = (string)$queueRecord->getReviewedStatus();
+		$this->mDeleted = $queueRecord->isNominatedForDeletion() ? '1' : '0';
+		$this->mTagsUpdated = wfTimestamp( TS_UNIX, $queueRecord->getTagsUpdatedTimestamp() );
+		$this->mReviewedUpdated = wfTimestamp( TS_UNIX, $queueRecord->getReviewedUpdatedTimestamp() );
+		$this->mLastReviewedBy = $queueRecord->getLastReviewedByUserId();
 		$this->mLoaded = true;
 		return true;
 	}
