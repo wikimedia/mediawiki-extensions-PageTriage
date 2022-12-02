@@ -33,27 +33,17 @@ class PageTriageUtil {
 	 * @param WikiPage $page
 	 *
 	 * @throws Exception
-	 * @return mixed null if the page is not in the triage system,
-	 * otherwise whether the page is unreviewed.
-	 * Return convention is this way so that null and false are equivalent
-	 * with a straight boolean test.
+	 * @return bool|null Null if the page is not in the triage system,
+	 * true if the page is unreviewed, false otherwise.
 	 */
-	public static function isPageUnreviewed( WikiPage $page ) {
-		$pageId = $page->getId();
-		$dbr = self::getConnection( DB_REPLICA );
-
-		$row = $dbr->selectRow(
-			'pagetriage_page',
-			'ptrp_reviewed',
-			[ 'ptrp_page_id' => $pageId ],
-			__METHOD__
-		);
-
-		if ( !$row ) {
+	public static function isPageUnreviewed( WikiPage $page ): ?bool {
+		$queueLookup = PageTriageServices::wrap( MediaWikiServices::getInstance() )
+			->getQueueLookup();
+		$queueRecord = $queueLookup->getByPageId( $page->getId() );
+		if ( !$queueRecord ) {
 			return null;
 		}
-
-		return !(bool)$row->ptrp_reviewed;
+		return $queueRecord->getReviewedStatus() === QueueRecord::REVIEW_STATUS_UNREVIEWED;
 	}
 
 	/**
