@@ -13,49 +13,49 @@ ArticleInfoHistoryView = Backbone.View.extend( {
 			offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] ),
 			that = this,
 			lastDate = null,
-			x = 0;
+			addedRevisions = 0;
 
 		this.model.each( function ( historyItem ) {
 			// Display the 5 most recent revisions
-			if ( x < 5 ) {
-				// I'd rather do this date parsing in the model, but the change event isn't properly
-				// passed through to nested models, and switching to backbone-relational in order to
-				// move these few lines of code seems silly.
-				parsedTimestamp = moment( historyItem.get( 'timestamp' ) ); // ISO date format
-
-				historyItem.set(
-					'timestamp_date',
-					parsedTimestamp.utcOffset( offset ).format( mw.msg( 'pagetriage-info-timestamp-date-format' ) )
-				);
-				historyItem.set(
-					'timestamp_time',
-					parsedTimestamp.utcOffset( offset ).format( mw.msg( 'pagetriage-info-timestamp-time-format' ) )
-				);
-				if ( historyItem.get( 'timestamp_date' ) !== lastDate ) {
-					historyItem.set( 'new_date', true );
-				} else {
-					historyItem.set( 'new_date', false );
-				}
-				lastDate = historyItem.get( 'timestamp_date' );
-
-				// get a userlink.
-				// can't set link color since no userpage status is returned by the history api
-				if ( historyItem.get( 'user' ) ) {
-					try {
-						userTitle = new mw.Title( historyItem.get( 'user' ), mw.config.get( 'wgNamespaceIds' ).user );
-						historyItem.set( 'user_title_url', userTitle.getUrl() );
-					} catch ( e ) {
-						historyItem.set( 'user_title_url', '' );
-					}
-				}
-
-				historyItem.set( 'revision_url', mw.config.get( 'wgScriptPath' ) + '/index.php?title=' +
-									mw.util.wikiUrlencode( mw.config.get( 'wgPageName' ) ) +
-									'&oldid=' + historyItem.get( 'revid' ) );
-
-				that.$el.append( that.template( historyItem.toJSON() ) );
+			if ( addedRevisions >= 5 ) {
+				return;
 			}
-			x++;
+			// I'd rather do this date parsing in the model, but the change event isn't properly
+			// passed through to nested models, and switching to backbone-relational in order to
+			// move these few lines of code seems silly.
+			parsedTimestamp = moment( historyItem.get( 'timestamp' ) ); // ISO date format
+
+			historyItem.set(
+				'timestamp_date',
+				parsedTimestamp.utcOffset( offset ).format( mw.msg( 'pagetriage-info-timestamp-date-format' ) )
+			);
+			historyItem.set(
+				'timestamp_time',
+				parsedTimestamp.utcOffset( offset ).format( mw.msg( 'pagetriage-info-timestamp-time-format' ) )
+			);
+			historyItem.set( 'new_date', historyItem.get( 'timestamp_date' ) !== lastDate );
+			lastDate = historyItem.get( 'timestamp_date' );
+
+			// get a userlink.
+			// can't set link color since no userpage status is returned by the history api
+			if ( historyItem.get( 'user' ) ) {
+				try {
+					userTitle = new mw.Title( historyItem.get( 'user' ), mw.config.get( 'wgNamespaceIds' ).user );
+					historyItem.set( 'user_title_url', userTitle.getUrl() );
+				} catch ( e ) {
+					historyItem.set( 'user_title_url', '' );
+				}
+			}
+
+			historyItem.set(
+				'revision_url',
+				mw.config.get( 'wgScriptPath' ) + '/index.php?title=' +
+					mw.util.wikiUrlencode( mw.config.get( 'wgPageName' ) ) +
+					'&oldid=' + historyItem.get( 'revid' )
+			);
+
+			that.$el.append( that.template( historyItem.toJSON() ) );
+			addedRevisions++;
 		} );
 		return this;
 	}
@@ -79,20 +79,21 @@ module.exports = ToolView.extend( {
 		ToolView.prototype.setBadge.call( this );
 		// Add a second badge (bottom right) if there is talk page feedback for this article.
 		var feedbackCount = this.model.get( 'talkpage_feedback_count' );
-		if ( feedbackCount > 0 ) {
-			var $talkpageFeedbackBadge = this.$el.find( '.mwe-pt-talkpage-feedback-badge' );
-			if ( $talkpageFeedbackBadge.length === 0 ) {
-				$talkpageFeedbackBadge = $( '<span>' ).addClass( 'mwe-pt-talkpage-feedback-badge' );
-				this.$el.find( '.mwe-pt-tool-icon-container' ).append( $talkpageFeedbackBadge );
-			}
-			$talkpageFeedbackBadge.badge( feedbackCount, 'bottom', true );
-			// Use the same message (without link) as is used on the flyout, for the badge's tooltip.
-			var badgeTooltip = mw.msg( 'pagetriage-has-talkpage-feedback', feedbackCount, mw.msg( 'pagetriage-has-talkpage-feedback-link' ) );
-			// Add OOUI classes to the badge element that was added in .badge(), in order to get the envelope icon.
-			$talkpageFeedbackBadge.find( '.notification-badge' )
-				.addClass( 'oo-ui-iconElement oo-ui-icon-message oo-ui-image-invert' )
-				.attr( 'title', badgeTooltip );
+		if ( feedbackCount <= 0 ) {
+			return;
 		}
+		var $talkpageFeedbackBadge = this.$el.find( '.mwe-pt-talkpage-feedback-badge' );
+		if ( $talkpageFeedbackBadge.length === 0 ) {
+			$talkpageFeedbackBadge = $( '<span>' ).addClass( 'mwe-pt-talkpage-feedback-badge' );
+			this.$el.find( '.mwe-pt-tool-icon-container' ).append( $talkpageFeedbackBadge );
+		}
+		$talkpageFeedbackBadge.badge( feedbackCount, 'bottom', true );
+		// Use the same message (without link) as is used on the flyout, for the badge's tooltip.
+		var badgeTooltip = mw.msg( 'pagetriage-has-talkpage-feedback', feedbackCount, mw.msg( 'pagetriage-has-talkpage-feedback-link' ) );
+		// Add OOUI classes to the badge element that was added in .badge(), in order to get the envelope icon.
+		$talkpageFeedbackBadge.find( '.notification-badge' )
+			.addClass( 'oo-ui-iconElement oo-ui-icon-message oo-ui-image-invert' )
+			.attr( 'title', badgeTooltip );
 	},
 
 	render: function () {
