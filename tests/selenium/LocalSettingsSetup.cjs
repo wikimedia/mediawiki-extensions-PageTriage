@@ -42,8 +42,8 @@ if ( file_exists( "$IP/extensions/PageTriage/tests/selenium/PageTriage.LocalSett
 ` );
 }
 /**
- * Restore the original, unmodified LocalSettings.php. Note that you need to call restartPhpFpmService
- * for this to take effect in a Quibble environment.
+ * Restore the original, unmodified LocalSettings.php. Note that you need to call
+ * restartPhpFpmService for this to take effect in a Quibble environment.
  */
 async function restoreLocalSettings() {
 	console.log( 'Restoring original ' + localSettingsPath );

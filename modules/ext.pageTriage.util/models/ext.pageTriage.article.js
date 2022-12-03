@@ -75,6 +75,9 @@ $( function () {
 				}
 
 				// put it all together in the byline
+				// The following messages are used here:
+				// * pagetriage-byline-new-editor
+				// * pagetriage-byline
 				var byline = mw.message(
 					bylineMessage,
 					this.buildLinkTag(

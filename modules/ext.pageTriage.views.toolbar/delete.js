@@ -451,14 +451,15 @@ module.exports = ToolView.extend( {
 			return;
 		}
 
-		// Give grep a chance to find the usages:
-		// pagetriage-button-add-details, pagetriage-button-edit-details
 		var link = mw.html.element(
 			'a',
 			{
 				href: '#',
 				id: 'mwe-pt-delete-params-' + key
 			},
+			// The following messages are used here:
+			// * pagetriage-button-add-details
+			// * pagetriage-button-edit-details
 			mw.msg( 'pagetriage-button-' + text + '-details' )
 		);
 		$( '#mwe-pt-delete-params-link-' + key ).html( '+&#160;' + link );
@@ -785,6 +786,9 @@ module.exports = ToolView.extend( {
 
 	/**
 	 * Add tag template (if relevant) to the article's talk page
+	 *
+	 * @return {jQuery.Promise} A promise. Resolves if successful, rejects with
+	 * an `Error` if not.
 	 */
 	tagTalkPage: function () {
 		var key, tagObj;

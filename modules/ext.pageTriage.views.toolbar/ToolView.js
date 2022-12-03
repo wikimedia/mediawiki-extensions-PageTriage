@@ -171,6 +171,15 @@ module.exports = Backbone.View.extend( {
 		} );
 
 		if ( this.tooltip ) {
+			// The following messages are used here:
+			// * pagetriage-toolbar-minimize
+			// * pagetriage-info-tooltip
+			// * pagetriage-wikilove-tooltip
+			// * pagetriage-markunpatrolled
+			// * pagetriage-markpatrolled
+			// * pagetriage-tags-tooltip
+			// * pagetriage-del-tooltip
+			// * pagetriage-next-tooltip
 			this.$icon.attr( 'title', mw.msg( this.tooltip ) );
 		}
 

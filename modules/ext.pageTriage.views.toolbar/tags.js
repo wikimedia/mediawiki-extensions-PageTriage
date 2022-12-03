@@ -326,11 +326,12 @@ module.exports = ToolView.extend( {
 		}
 
 		// Construct the link that activates the params form
-		// Give grep a chance to find the usages:
-		// pagetriage-button-add-details, pagetriage-button-edit-details
 		var link = mw.html.element(
 			'a',
 			{ href: '#', id: 'mwe-pt-tag-params-' + key },
+			// The following messages are used here:
+			// * pagetriage-button-add-details
+			// * pagetriage-button-edit-details
 			mw.msg( 'pagetriage-button-' + text + '-details' )
 		);
 		$( '#mwe-pt-tag-params-link-' + key ).html( '+&#160;' + link );

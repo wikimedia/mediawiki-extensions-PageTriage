@@ -123,6 +123,9 @@ module.exports = ToolView.extend( {
 
 			var offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
 			// put it all together in the byline
+			// The following messages are used here:
+			// * pagetriage-articleinfo-byline-new-editor
+			// * pagetriage-articleinfo-byline
 			var articleByline = mw.message(
 				bylineMessage,
 				moment.utc(
@@ -179,17 +182,25 @@ module.exports = ToolView.extend( {
 	},
 
 	formatProblem: function ( problem ) {
-		// Give grep a chance to find the usages:
-		// pagetriage-info-problem-non-autoconfirmed, pagetriage-info-problem-blocked,
-		// pagetriage-info-problem-no-categories, pagetriage-info-problem-orphan,
-		// pagetriage-info-problem-recreated, pagetriage-info-problem-no-references,
-		// pagetriage-info-problem-non-autoconfirmed-desc, pagetriage-info-problem-blocked-desc,
-		// pagetriage-info-problem-no-categories-desc, pagetriage-info-problem-orphan-desc,
-		// pagetriage-info-problem-recreated-desc, pagetriage-info-problem-no-references-desc,
-		// pagetriage-info-problem-copyvio
 		return '<li class="mwe-pt-info-problem"><span class="mwe-pt-info-problem-name">' +
+			// The following messages are used here:
+			// * pagetriage-info-problem-non-autoconfirmed
+			// * pagetriage-info-problem-blocked
+			// * pagetriage-info-problem-no-categories
+			// * pagetriage-info-problem-orphan
+			// * pagetriage-info-problem-recreated
+			// * pagetriage-info-problem-no-references
+			// * pagetriage-info-problem-copyvio
 			mw.message( 'pagetriage-info-problem-' + problem ).escaped() +
 			'</span> - <span class="mwe-pt-info-problem-desc">' +
+			// The following messages are used here:
+			// * pagetriage-info-problem-non-autoconfirmed-desc
+			// * pagetriage-info-problem-blocked-desc
+			// * pagetriage-info-problem-no-categories-desc
+			// * pagetriage-info-problem-orphan-desc
+			// * pagetriage-info-problem-recreated-desc
+			// * pagetriage-info-problem-no-references-desc
+			// * pagetriage-info-problem-copyvio-desc
 			mw.message( 'pagetriage-info-problem-' + problem + '-desc' ).escaped() +
 			'</span></li>';
 	},
