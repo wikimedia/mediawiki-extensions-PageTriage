@@ -158,39 +158,37 @@ $( function () {
 			} else if ( article.get( 'patrol_status' ) === '3' ) {
 				article.set( 'page_status_html', mw.message( 'pagetriage-page-status-autoreviewed' ).escaped() );
 			// reviewed status
+			} else if ( article.get( 'ptrp_last_reviewed_by' ) !== 0 && article.get( 'reviewer' ) ) {
+				article.set(
+					'page_status_html',
+					mw.message(
+						'pagetriage-page-status-reviewed',
+						moment.utc(
+							article.get( 'ptrp_reviewed_updated' ),
+							'YYYYMMDDHHmmss'
+						).utcOffset( offset ).format(
+							mw.msg( 'pagetriage-info-timestamp-date-format' )
+						),
+						this.buildLinkTag(
+							article.get( 'reviewer_user_page_url' ),
+							article.get( 'reviewer' ),
+							article.get( 'reviewer_user_page_exist' )
+						),
+						this.buildLinkTag(
+							article.get( 'reviewer_user_talk_page_url' ),
+							mw.msg( 'sp-contributions-talk' ),
+							article.get( 'reviewer_user_talk_page_exist' )
+						),
+						mw.msg( 'pipe-separator' ),
+						this.buildLinkTag(
+							article.get( 'reviewer_contribution_page_url' ),
+							mw.msg( 'contribslink' ),
+							true
+						)
+					).parse()
+				);
 			} else {
-				if ( article.get( 'ptrp_last_reviewed_by' ) !== 0 && article.get( 'reviewer' ) ) {
-					article.set(
-						'page_status_html',
-						mw.message(
-							'pagetriage-page-status-reviewed',
-							moment.utc(
-								article.get( 'ptrp_reviewed_updated' ),
-								'YYYYMMDDHHmmss'
-							).utcOffset( offset ).format(
-								mw.msg( 'pagetriage-info-timestamp-date-format' )
-							),
-							this.buildLinkTag(
-								article.get( 'reviewer_user_page_url' ),
-								article.get( 'reviewer' ),
-								article.get( 'reviewer_user_page_exist' )
-							),
-							this.buildLinkTag(
-								article.get( 'reviewer_user_talk_page_url' ),
-								mw.msg( 'sp-contributions-talk' ),
-								article.get( 'reviewer_user_talk_page_exist' )
-							),
-							mw.msg( 'pipe-separator' ),
-							this.buildLinkTag(
-								article.get( 'reviewer_contribution_page_url' ),
-								mw.msg( 'contribslink' ),
-								true
-							)
-						).parse()
-					);
-				} else {
-					article.set( 'page_status_html', mw.msg( 'pagetriage-page-status-reviewed-anonymous' ).escaped() );
-				}
+				article.set( 'page_status_html', mw.msg( 'pagetriage-page-status-reviewed-anonymous' ).escaped() );
 			}
 
 			article.set( 'title_url_format', mw.util.wikiUrlencode( article.get( 'title' ) ) );
@@ -254,10 +252,9 @@ $( function () {
 				// data came directly from the api
 				// extract the useful bits of json.
 				return response.pagetriagelist.pages[ 0 ];
-			} else {
-				// already parsed by the collection's parse function.
-				return response;
 			}
+			// already parsed by the collection's parse function.
+			return response;
 		},
 
 		addHistory: function () {
@@ -292,19 +289,20 @@ $( function () {
 
 			// Pull any saved filter settings from the user's option.
 			var filterOptionsJson = mw.user.options.get( 'userjs-NewPagesFeedFilterOptions' );
-			if ( !mw.user.isAnon() && filterOptionsJson ) {
-				var filterOptions;
-				try {
-					filterOptions = JSON.parse( filterOptionsJson );
-					filterOptions = this.migrateFilterOptions( filterOptions );
-				} catch ( e ) {
-					// If we can't parse the options, give up.
-					mw.log.warn( 'Unable to parse stored filters: ' + filterOptionsJson );
-					return;
-				}
-				this.setMode( filterOptions.mode );
-				this.setParams( filterOptions );
+			if ( mw.user.isAnon() || !filterOptionsJson ) {
+				return;
 			}
+			var filterOptions;
+			try {
+				filterOptions = JSON.parse( filterOptionsJson );
+				filterOptions = this.migrateFilterOptions( filterOptions );
+			} catch ( e ) {
+				// If we can't parse the options, give up.
+				mw.log.warn( 'Unable to parse stored filters: ' + filterOptionsJson );
+				return;
+			}
+			this.setMode( filterOptions.mode );
+			this.setParams( filterOptions );
 		},
 
 		/**
@@ -395,7 +393,8 @@ $( function () {
 			}
 			if ( response.pagetriagelist &&
 				response.pagetriagelist.pages_missing_metadata &&
-				response.pagetriagelist.pages_missing_metadata.length ) {
+				response.pagetriagelist.pages_missing_metadata.length
+			) {
 				mw.log.warn( 'Metadata is missing for some pages.', JSON.stringify( response.pagetriagelist.pages_missing_metadata ) );
 				this.moreToLoad = true;
 			}
