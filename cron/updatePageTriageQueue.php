@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * There is a cron job that runs this maintenance script every 48 hours on enwiki,
+ * testwiki, and test2wiki. The Puppet file controlling the cron job is located at
+ * https://gerrit.wikimedia.org/r/plugins/gitiles/operations/puppet/+/refs/heads/production/modules/profile/manifests/mediawiki/maintenance/pagetriage.pp
+ */
+
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
