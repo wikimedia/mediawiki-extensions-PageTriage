@@ -576,7 +576,7 @@
 	"apihelp-pagetriagestats-param-show_predicted_issues_none": "S’il ne faut inclure aucun problème potentiel",
 	"apihelp-pagetriagetagcopyvio-description": "Marquer une révision comme une violation probable des droits d’auteur dans Special:NewPagesFeed. Nécessite le droit « pagetriage-copyvio ».",
 	"apihelp-pagetriagetagcopyvio-summary": "Marquer une révision comme une violation probable des droits d’auteur.",
-	"apihelp-pagetriagetagcopyvio-param-revid": "ID de la révision à marquer comme une violation probable des droits d’auteur.",
+	"apihelp-pagetriagetagcopyvio-param-revid": "Identifiant de la révision à marquer comme une violation probable des droits d’auteur",
 	"apihelp-pagetriagetagging-description": "Ajouter des balises à un article.",
 	"apihelp-pagetriagetagging-summary": "Ajouter des balises à un article.",
 	"apihelp-pagetriagetagging-param-pageid": "L’article à baliser.",
@@ -589,5 +589,5 @@
 	"apierror-bad-pagetriage-enqueue-mainpage": "La page principale ne peut être ajoutée à la file de triage des pages",
 	"apierror-bad-pagetriage-enqueue-invalidnamespace": "La page spécifiée est dans un espace de noms dont le triage des pages n’est pas activé",
 	"apierror-bad-pagetriage-enqueue-alreadyqueued": "La page spécifiée existe déjà dans la file de triage des pages",
-	"apierror-pagetriage-missingtag": "Impossible de trouver un ID de balise pour la balise « copyvio ». Essayez de lancer <tt>update.php</tt>."
+	"apierror-pagetriage-missingtag": "Impossible de trouver un identifiant de balise pour la balise « copyvio ». Essayez de lancer <tt>update.php</tt>."
 }
