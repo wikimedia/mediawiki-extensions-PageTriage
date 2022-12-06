@@ -32,34 +32,21 @@ const ToolbarView = Backbone.View.extend( {
 		const MinimizeView = require( './minimize.js' );
 		tools.push( new MinimizeView( { eventBus: eventBus, model: article, toolbar: this } ) );
 
-		// article information
-		if ( this.isFlyoutEnabled( 'articleInfo' ) ) {
-			const ArticleInfoView = require( './articleInfo.js' );
-			tools.push( new ArticleInfoView( { eventBus: eventBus, model: article, moduleConfig: modules.articleInfo } ) );
+		// article information, wikilove, mark as reviewed
+		const potentialTools = [ 'articleInfo', 'wikiLove', 'mark' ];
+		// tags and deletion only available when enwiki features are enabled
+		if ( config.PageTriageEnableEnglishWikipediaFeatures ) {
+			potentialTools.push( 'tags', 'delete' );
 		}
-
-		// wikilove
-		if ( this.isFlyoutEnabled( 'wikiLove' ) ) {
-			const WikiLoveView = require( './wikilove.js' );
-			tools.push( new WikiLoveView( { eventBus: eventBus, model: article, moduleConfig: modules.wikiLove } ) );
-		}
-
-		// mark as reviewed
-		if ( this.isFlyoutEnabled( 'mark' ) ) {
-			const MarkView = require( './mark.js' );
-			tools.push( new MarkView( { eventBus: eventBus, model: article, moduleConfig: modules.mark } ) );
-		}
-
-		// add tags
-		if ( this.isFlyoutEnabled( 'tags' ) && config.PageTriageEnableEnglishWikipediaFeatures ) {
-			const TagsView = require( './tags.js' );
-			tools.push( new TagsView( { eventBus: eventBus, model: article, moduleConfig: modules.tags } ) );
-		}
-
-		// delete
-		if ( this.isFlyoutEnabled( 'delete' ) && config.PageTriageEnableEnglishWikipediaFeatures ) {
-			const DeleteView = require( './delete.js' );
-			tools.push( new DeleteView( { eventBus: eventBus, model: article, moduleConfig: modules.delete } ) );
+		for ( const index in potentialTools ) {
+			const potentialToolName = potentialTools[ index ];
+			// potential tool names should correspond to the name for isFlyoutEnabled,
+			// the file name (without the .js) for the view's code, and the key to
+			// modules with the configuration to use
+			if ( this.isFlyoutEnabled( potentialToolName ) ) {
+				const ToolViewClass = require( './' + potentialToolName + '.js' );
+				tools.push( new ToolViewClass( { eventBus: eventBus, model: article, moduleConfig: modules[ potentialToolName ] } ) );
+			}
 		}
 
 		// next article, should be always on
