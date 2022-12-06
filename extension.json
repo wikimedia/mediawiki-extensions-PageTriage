@@ -123,6 +123,7 @@
 			]
 		},
 		"ext.pageTriage.init": {
+			"es6": true,
 			"scripts": [
 				"ext.pageTriage.init/ext.pageTriage.init.js"
 			],
@@ -131,6 +132,7 @@
 			]
 		},
 		"ext.pageTriage.util": {
+			"es6": true,
 			"scripts": [
 				"ext.pageTriage.util/ext.pageTriage.messageUtil.js",
 				"ext.pageTriage.util/models/ext.pageTriage.article.js",
@@ -157,6 +159,7 @@
 			]
 		},
 		"ext.pageTriage.views.list": {
+			"es6": true,
 			"dependencies": [
 				"mediawiki.jqueryMsg",
 				"ext.pageTriage.util",
@@ -339,6 +342,7 @@
 			]
 		},
 		"ext.pageTriage.defaultTagsOptions": {
+			"es6": true,
 			"scripts": [
 				"ext.pageTriage.defaultTagsOptions/ext.pageTriage.defaultTagsOptions.js",
 				"ext.pageTriage.defaultTagsOptions/ext.pageTriage.defaultDeletionTagsOptions.js"
@@ -557,6 +561,7 @@
 			"class": "MediaWiki\\Extension\\PageTriage\\PageTriageExternalTagsOptions"
 		},
 		"ext.pageTriage.toolbarStartup": {
+			"es6": true,
 			"scripts": [
 				"ext.pageTriage.toolbarStartup/ext.pageTriage.actionQueue.js",
 				"ext.pageTriage.toolbarStartup/ext.pageTriage.toolbarStartup.js"
@@ -564,6 +569,7 @@
 			"dependencies": [ "ext.pageTriage.init" ]
 		},
 		"ext.pageTriage.article": {
+			"es6": true,
 			"styles": "ext.pageTriage.article/ext.pageTriage.article.css",
 			"scripts": "ext.pageTriage.article/ext.pageTriage.article.js",
 			"messages": [
@@ -578,6 +584,7 @@
 			]
 		},
 		"ext.PageTriage.enqueue": {
+			"es6": true,
 			"scripts": "ext.PageTriage.enqueue/ext.PageTriage.enqueue.js",
 			"messages": [
 				"pagetriage-enqueue-title",
@@ -592,6 +599,7 @@
 		"remoteExtPath": "PageTriage/modules"
 	},
 	"QUnitTestModule": {
+		"es6": true,
 		"localBasePath": "tests/qunit",
 		"remoteExtPath": "PageTriage/tests/qunit",
 		"scripts": [

@@ -587,6 +587,7 @@ class Hooks implements ApiMain__moduleManagerHook {
 		$viewsToolbarModule = [
 			'localBasePath' => __DIR__ . '/../modules',
 			'remoteExtPath' => 'PageTriage/modules',
+			'es6' => true,
 			'packageFiles' => [
 				// entry point
 				'ext.pageTriage.views.toolbar/ToolbarView.js',

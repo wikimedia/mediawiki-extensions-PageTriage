@@ -30,6 +30,11 @@ class PageTriageExternalTagsOptions extends RL\WikiModule {
 		];
 	}
 
+	/** @inheritDoc */
+	public function requiresES6() {
+		return true;
+	}
+
 	/**
 	 * @return array
 	 */
