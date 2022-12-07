@@ -18,7 +18,8 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 				$text = ( $content instanceof TextContent ) ? $content->getText() : null;
 				if ( $text !== null ) {
 					$this->metadata[$pageId]['snippet'] = self::generateArticleSnippet( $text );
-					$this->metadata[$pageId]['reference'] = self::checkReferenceTag( $text );
+					// Reference tag (and other tags) have text strings as the value.
+					$this->metadata[$pageId]['reference'] = $this->hasReferenceTag( $text ) ? '1' : '0';
 				}
 			}
 		}
@@ -69,31 +70,32 @@ class ArticleCompileSnippet extends ArticleCompileInterface {
 	/**
 	 * Check if a page has a reference. This checks <ref> and </ref>
 	 * tags along with the presence of the sfn or harvb templates
-	 * @param string $text
-	 * @return string
+	 *
+	 * @param string $wikitext Article content in wikitext format.
+	 * @return bool
 	 */
-	public static function checkReferenceTag( $text ) {
-		$closeTag = strpos( $text, '</ref>' );
+	private function hasReferenceTag( string $wikitext ): bool {
+		$closeTag = strpos( $wikitext, '</ref>' );
 
 		if ( $closeTag !== false ) {
-			$openTag = strpos( $text, '<ref ' );
+			$openTag = strpos( $wikitext, '<ref ' );
 			if ( $openTag !== false && $openTag < $closeTag ) {
-				return '1';
+				return true;
 			}
-			$openTag = strpos( $text, '<ref>' );
+			$openTag = strpos( $wikitext, '<ref>' );
 			if ( $openTag !== false && $openTag < $closeTag ) {
-				return '1';
+				return true;
 			}
 		}
 
 		$refStyleArray = [ '{{sfn', '{{harvnb' ];
 		foreach ( $refStyleArray as $refStyle ) {
-			if ( stripos( $text, $refStyle ) !== false ) {
-				return '1';
+			if ( stripos( $wikitext, $refStyle ) !== false ) {
+				return true;
 			}
 		}
 
-		return '0';
+		return false;
 	}
 
 }
