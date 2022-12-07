@@ -1,11 +1,9 @@
 // view for display deletion wizard
-
-var DateWrapper, pageName, specialDeletionTagging, ToolView,
-	// Used to keep track of what actions we want to invoke, and with what data.
-	actionQueue = {};
+// Used to keep track of what actions we want to invoke, and with what data.
+const actionQueue = {};
 
 // date wrapper that generates a new Date() object
-DateWrapper = function DateWrapper() {
+const DateWrapper = function DateWrapper() {
 	this.date = new Date();
 	this.months = [
 		'January', 'February', 'March', 'April', 'May', 'June', 'July',
@@ -26,10 +24,10 @@ DateWrapper.prototype = {
 	}
 };
 
-pageName = mw.config.get( 'wgPageName' ).replace( /_/g, ' ' );
+const pageName = mw.config.get( 'wgPageName' ).replace( /_/g, ' ' );
 
 // Deletion tagging
-specialDeletionTagging = {
+const specialDeletionTagging = {
 	afd: {
 		buildDeletionTag: function ( tagObj ) {
 			if ( !tagObj.subpageNumber ) {
@@ -44,7 +42,7 @@ specialDeletionTagging = {
 		},
 
 		buildLogRequest: function ( oldText, reason, tagObj, data ) {
-			var page = tagObj.subpage || pageName;
+			const page = tagObj.subpage || pageName;
 
 			oldText += '\n';
 			data.text = oldText.replace(
@@ -55,7 +53,7 @@ specialDeletionTagging = {
 		},
 
 		getLogPageTitle: function ( prefix ) {
-			var date = new DateWrapper();
+			const date = new DateWrapper();
 			return prefix + '/Log/' + date.getYear() + ' ' + date.getMonth() + ' ' + date.getDate();
 		}
 	},
@@ -74,7 +72,7 @@ specialDeletionTagging = {
 		},
 
 		getLogPageTitle: function ( prefix ) {
-			var date = new DateWrapper();
+			const date = new DateWrapper();
 			return prefix + '/Log/' + date.getYear() + ' ' + date.getMonth() + ' ' + date.getDate();
 		}
 	},
@@ -97,7 +95,7 @@ specialDeletionTagging = {
 		},
 
 		getLogPageTitle: function ( prefix ) {
-			var date = new DateWrapper();
+			const date = new DateWrapper();
 			return prefix + '/' + date.getYear() + ' ' + date.getMonth() + ' ' + date.getDate();
 		}
 	},
@@ -116,7 +114,7 @@ specialDeletionTagging = {
 		},
 
 		buildLogRequest: function ( oldText, reason, tagObj, data ) {
-			var date = new DateWrapper(),
+			const date = new DateWrapper(),
 				dateHeader = '===' + date.getMonth() + ' ' + date.getDate() + ', ' + date.getYear() + '===\n',
 				dateHeaderRegex = new RegExp( '(===\\s*' + date.getMonth() + '\\s+' + date.getDate() + ',\\s+' + date.getYear() + '\\s*===)' ),
 				page = tagObj.subpage || pageName,
@@ -138,7 +136,7 @@ specialDeletionTagging = {
 	}
 };
 
-ToolView = require( './ToolView.js' );
+const ToolView = require( './ToolView.js' );
 module.exports = ToolView.extend( {
 	id: 'mwe-pt-deletion-wizard',
 	icon: 'icon_trash.png',
@@ -194,7 +192,7 @@ module.exports = ToolView.extend( {
 		// default to main namespace
 		} else {
 			this.deletionTagsOptions = $.pageTriageDeletionTagsOptions.Main;
-			var xfd = this.deletionTagsOptions.xfd;
+			const xfd = this.deletionTagsOptions.xfd;
 			// redirect
 			if ( Number( this.model.get( 'is_redirect' ) ) === 1 ) {
 				xfd.label = xfd.tags.redirectsfordiscussion.label;
@@ -211,8 +209,8 @@ module.exports = ToolView.extend( {
 	 * Render deletion tagging template
 	 */
 	render: function () {
-		var key,
-			that = this;
+		let key;
+		const that = this;
 
 		this.setupDeletionTags();
 		this.$tel.html( this.template( {
@@ -228,7 +226,7 @@ module.exports = ToolView.extend( {
 
 		// add click event for each category
 		$( '#mwe-pt-delete-categories' ).find( 'div' ).each( function () {
-			var cat = $( $( this ).html() ).attr( 'cat' );
+			const cat = $( $( this ).html() ).attr( 'cat' );
 			$( this ).on( 'click', function () {
 				that.visibleParamsFormCount = 0;
 				that.refreshSubmitButton();
@@ -249,6 +247,7 @@ module.exports = ToolView.extend( {
 			} ).end();
 
 		// show the first category as default
+		// eslint-disable-next-line no-unreachable-loop
 		for ( key in this.deletionTagsOptions ) {
 			this.displayTags( key );
 			break;
@@ -256,9 +255,9 @@ module.exports = ToolView.extend( {
 	},
 
 	isPageNominatedForDeletion: function () {
-		var deletion = [ 'csd_status', 'prod_status', 'blp_prod_status', 'afd_status' ];
+		const deletion = [ 'csd_status', 'prod_status', 'blp_prod_status', 'afd_status' ];
 
-		for ( var i = 0; i < deletion.length; i++ ) {
+		for ( let i = 0; i < deletion.length; i++ ) {
 			if ( this.model.get( deletion[ i ] ) === '1' ) {
 				return true;
 			}
@@ -277,12 +276,12 @@ module.exports = ToolView.extend( {
 	 * of the rejection templates are found. Resolves to false otherwise
 	 */
 	isAnyRejectionTemplatePresent: function ( selectedTag ) {
-		for ( var key in selectedTag ) {
+		for ( const key in selectedTag ) {
 			if ( selectedTag[ key ].rejectionTemplates === undefined ) {
 				continue;
 			}
 
-			var promises = [];
+			const promises = [];
 
 			// check for templates on the page
 			if ( selectedTag[ key ].rejectionTemplates.article !== undefined ) {
@@ -305,7 +304,7 @@ module.exports = ToolView.extend( {
 					// the return values of each of the functions called from the promises[] array
 					// is stored in a "magic" array called arguments.This needs to be changed ASAP
 					// when we move from using jQuery promises to ES6 Promise type of calls
-					for ( var i = 0; i < arguments.length; i++ ) {
+					for ( let i = 0; i < arguments.length; i++ ) {
 						if ( arguments[ i ].result !== false ) {
 							return arguments[ i ].template;
 						}
@@ -333,9 +332,9 @@ module.exports = ToolView.extend( {
 			format: 'json'
 		} )
 			.then( function ( data ) {
-				var key = Object.keys( data.query.pages )[ 0 ];
-				var templates = data.query.pages[ key ].templates;
-				var numTemplates = templates && templates.length;
+				const key = Object.keys( data.query.pages )[ 0 ];
+				const templates = data.query.pages[ key ].templates;
+				const numTemplates = templates && templates.length;
 				if ( numTemplates ) {
 					return { result: true, template: templates[ 0 ].title };
 				}
@@ -356,7 +355,7 @@ module.exports = ToolView.extend( {
 	 */
 	buildTagHTML: function ( key, tagSet, elementType ) {
 		// build the checkbox or radio
-		var checkbox = mw.html.element(
+		const checkbox = mw.html.element(
 			'input',
 			{
 				name: 'mwe-pt-delete',
@@ -386,19 +385,19 @@ module.exports = ToolView.extend( {
 	 * @param {string} cat
 	 */
 	displayTags: function ( cat ) {
-		var key, param,
-			that = this,
+		let key, param;
+		const that = this,
 			tagSet = this.deletionTagsOptions[ cat ].tags,
 			elementType = this.deletionTagsOptions[ cat ].multiple ? 'checkbox' : 'radio',
-			$tagList = $( '<div>' ).attr( 'id', 'mwe-pt-delete-list' ),
-			tagCount = 0;
+			$tagList = $( '<div>' ).attr( 'id', 'mwe-pt-delete-list' );
+		let tagCount = 0;
 
 		// unselect any previously selected tags and disable submit button
 		this.selectedTag = {};
 		$( '#mwe-pt-delete-submit-button' ).button( 'disable' );
 
 		if ( this.deletionTagsOptions[ cat ].desc ) {
-			var tagDesc = '<div id="mwe-pt-delete-category-desc">' + mw.html.escape( this.deletionTagsOptions[ cat ].desc ) + '</div>';
+			const tagDesc = '<div id="mwe-pt-delete-category-desc">' + mw.html.escape( this.deletionTagsOptions[ cat ].desc ) + '</div>';
 			$tagList.append( tagDesc );
 		}
 
@@ -430,7 +429,7 @@ module.exports = ToolView.extend( {
 			// eslint-disable-next-line no-loop-func
 			$( '#mwe-pt-delete-' + key + ', #mwe-pt-checkbox-delete-' + key ).on( 'click', function () {
 				// Extract the tag key from the id of whatever was clicked on
-				var tagKeyMatches = $( this ).attr( 'id' ).match( /.*-delete-(.*)/ ),
+				const tagKeyMatches = $( this ).attr( 'id' ).match( /.*-delete-(.*)/ ),
 					tagKey = tagKeyMatches[ 1 ];
 
 				// if user unchecks a checkbox and there is an adjacent paramsForm
@@ -506,17 +505,17 @@ module.exports = ToolView.extend( {
 	 * @param {string} key
 	 */
 	showParamsLink: function ( key ) {
-		var tag = this.selectedTag[ key ];
+		const tag = this.selectedTag[ key ];
 
 		// no params, don't show the link
 		if ( $.isEmptyObject( tag.params ) ) {
 			return;
 		}
 
-		var allParamsHidden = true,
+		let allParamsHidden = true,
 			text = 'add';
 		// check if there is non-hidden param
-		for ( var param in tag.params ) {
+		for ( const param in tag.params ) {
 			if ( tag.params[ param ].type !== 'hidden' ) {
 				allParamsHidden = false;
 				// see if any of the parameters have been filled out
@@ -530,7 +529,7 @@ module.exports = ToolView.extend( {
 			return;
 		}
 
-		var link = mw.html.element(
+		const link = mw.html.element(
 			'a',
 			{
 				href: '#',
@@ -543,7 +542,7 @@ module.exports = ToolView.extend( {
 		);
 		$( '#mwe-pt-delete-params-link-' + key ).html( '+&#160;' + link );
 		// Add click event to the link that shows the param form
-		var that = this;
+		const that = this;
 		$( '#mwe-pt-delete-params-' + key ).on( 'click', function () {
 			that.showParamsForm( key );
 		} );
@@ -564,7 +563,7 @@ module.exports = ToolView.extend( {
 	 * @param {Object} obj
 	 */
 	multiHideParamsLink: function ( obj ) {
-		for ( var key in obj ) {
+		for ( const key in obj ) {
 			this.hideParamsLink( key );
 		}
 	},
@@ -577,9 +576,9 @@ module.exports = ToolView.extend( {
 	 * @param {string} key
 	 */
 	showParamsForm: function ( key ) {
-		var that = this,
-			html = '',
-			tag = this.selectedTag[ key ],
+		const that = this;
+		const tag = this.selectedTag[ key ];
+		let html = '',
 			firstField = '';
 
 		this.visibleParamsFormCount++;
@@ -587,8 +586,8 @@ module.exports = ToolView.extend( {
 
 		this.hideParamsLink( key );
 
-		for ( var param in tag.params ) {
-			var paramObj = tag.params[ param ];
+		for ( const param in tag.params ) {
+			const paramObj = tag.params[ param ];
 			html += this.buildHTML( param, paramObj, key );
 			// Remember which field is first so we can focus it later
 			if ( !firstField && paramObj.type !== 'hidden' ) {
@@ -633,7 +632,7 @@ module.exports = ToolView.extend( {
 
 		// Add click event for the paramsForm "Cancel" button
 		$( '#mwe-pt-delete-cancel-param-' + key ).button().on( 'click', function () {
-			for ( var param in tag.params ) {
+			for ( const param in tag.params ) {
 				that.visibleParamsFormCount--;
 				that.refreshSubmitButton();
 
@@ -675,8 +674,8 @@ module.exports = ToolView.extend( {
 	 * @return {boolean}
 	 */
 	setParams: function ( key ) {
-		var tag = this.selectedTag[ key ];
-		for ( var param in tag.params ) {
+		const tag = this.selectedTag[ key ];
+		for ( const param in tag.params ) {
 			tag.params[ param ].value = $( '#mwe-pt-delete-params-' + key + '-' + param ).val();
 			if ( tag.params[ param ].input === 'required' && !tag.params[ param ].value ) {
 				$( '#mwe-pt-delete-params-form-error' ).text( mw.msg( 'pagetriage-tags-param-missing-required', tag.tag ) );
@@ -694,8 +693,8 @@ module.exports = ToolView.extend( {
 	 * @return {string}
 	 */
 	buildParams: function ( obj ) {
-		var paramVal = '';
-		for ( var param in obj.params ) {
+		let paramVal = '';
+		for ( const param in obj.params ) {
 			// this param should be skipped and not be added to tag
 			if ( obj.params[ param ].skip ) {
 				continue;
@@ -731,13 +730,13 @@ module.exports = ToolView.extend( {
 			return;
 		}
 
-		var that = this,
+		const that = this,
 			promises = [];
 
 		// check for any missing parameters
 		// eslint-disable-next-line no-jquery/no-each-util
 		$.each( this.selectedTag, function ( key, tagObj ) {
-			for ( var param in tagObj.params ) {
+			for ( const param in tagObj.params ) {
 				if (
 					tagObj.params[ param ].input === 'required' &&
 					!tagObj.params[ param ].value
@@ -762,7 +761,7 @@ module.exports = ToolView.extend( {
 		} );
 
 		// reviewed value must be either '0' or '1'
-		var markAsReviewed = this.deletionTagsOptions[ this.selectedCat ].reviewed || '0';
+		const markAsReviewed = this.deletionTagsOptions[ this.selectedCat ].reviewed || '0';
 		// Wait until all discussion page names picked.
 		return this.isAnyRejectionTemplatePresent( this.selectedTag )
 			.then( function ( rejectionTemplateFound ) {
@@ -794,14 +793,14 @@ module.exports = ToolView.extend( {
 				}
 				actionQueue.delete = { tags: that.selectedTag };
 
-				var rootPromise = $.Deferred(),
-					// End of the promise chain.
-					chainEnd = rootPromise;
+				const rootPromise = $.Deferred();
+				// End of the promise chain.
+				let chainEnd = rootPromise;
 
-				var isXFD = !that.deletionTagsOptions[ that.selectedCat ].multiple;
+				const isXFD = !that.deletionTagsOptions[ that.selectedCat ].multiple;
 				if ( isXFD ) {
-					for ( var key in that.selectedTag ) {
-						var tagObj = that.selectedTag[ key ];
+					for ( const key in that.selectedTag ) {
+						const tagObj = that.selectedTag[ key ];
 						if ( tagObj.prefix ) {
 							// Handles writing to the XFD daily log and creating the XFD page. This
 							// code path is only used for the XFD options (AFD for mainspace, RFD
@@ -852,18 +851,18 @@ module.exports = ToolView.extend( {
 		}
 
 		// Log error to WikimediaEvents
-		var skin = mw.config.get( 'skin' );
-		var dumpOfTag = JSON.stringify( this.selectedTag );
-		var errorMessage = 'PageTriage error type: ' + msg + '\n' +
+		const skin = mw.config.get( 'skin' );
+		const dumpOfTag = JSON.stringify( this.selectedTag );
+		let errorMessage = 'PageTriage error type: ' + msg + '\n' +
 			'File: delete.js\n' +
 			'Page name: ' + pageName + '\n' +
 			'Skin: ' + skin + '\n' +
 			'Dump of this.selectedTag: ' + dumpOfTag;
 		errorMessage = errorMessage.slice( 0, 1000 );
 		mw.log.error( errorMessage );
-		var err = new Error( errorMessage );
+		const err = new Error( errorMessage );
 		err.name = 'pageTriageHandleError';
-		var sitename = mw.config.get( 'wgDBname' );
+		const sitename = mw.config.get( 'wgDBname' );
 		mw.track( 'counter.MediaWiki.extension.PageTriage.' + sitename + '.viewsToolbar.delete.error' );
 
 		$.removeSpinner( 'delete-spinner' );
@@ -881,7 +880,8 @@ module.exports = ToolView.extend( {
 	 * an `Error` if not.
 	 */
 	tagTalkPage: function () {
-		var key, tagObj;
+		let key, tagObj;
+		// eslint-disable-next-line no-unreachable-loop
 		for ( key in this.selectedTag ) {
 			tagObj = this.selectedTag[ key ];
 			if ( !( 'articletalkpagenotiftpl' in tagObj ) ||
@@ -889,10 +889,10 @@ module.exports = ToolView.extend( {
 				break;
 			}
 
-			var template = tagObj.articletalkpagenotiftpl;
-			var paramsText = '|nom=' + mw.config.get( 'wgUserName' ) + '|nomdate={{subst:#time: Y-m-d}}';
-			var text = '{{' + template + paramsText + '}}\n';
-			var talkTitle = ( new mw.Title( mw.config.get( 'wgPageName' ) ) ).getTalkPage().toText();
+			const template = tagObj.articletalkpagenotiftpl;
+			const paramsText = '|nom=' + mw.config.get( 'wgUserName' ) + '|nomdate={{subst:#time: Y-m-d}}';
+			const text = '{{' + template + paramsText + '}}\n';
+			const talkTitle = ( new mw.Title( mw.config.get( 'wgPageName' ) ) ).getTalkPage().toText();
 
 			return new mw.Api().postWithToken( 'csrf', {
 				action: 'edit',
@@ -917,13 +917,13 @@ module.exports = ToolView.extend( {
 	 * of the tag added to the page).
 	 */
 	tagPage: function () {
-		var key,
-			text = '',
-			tagText = '',
-			paramsText = '',
-			that = this,
+		const that = this,
 			tagList = [],
 			count = this.objectPropCount( this.selectedTag );
+		let key,
+			text = '',
+			tagText = '',
+			paramsText = '';
 
 		if ( count === 0 ) {
 			return;
@@ -932,9 +932,9 @@ module.exports = ToolView.extend( {
 		// for multiple tags, they must be in db-xxx format, when combining them in
 		// db-multiple, remove 'db-' from each individual tags
 		for ( key in this.selectedTag ) {
-			var tagObj = this.selectedTag[ key ];
-			var tempTag = tagObj.tag;
-			var tagging = specialDeletionTagging[ tagObj.tag ];
+			const tagObj = this.selectedTag[ key ];
+			let tempTag = tagObj.tag;
+			const tagging = specialDeletionTagging[ tagObj.tag ];
 
 			if ( !( 'discussionPage' in tagObj ) ||
 				tagObj.discussionPage === ''
@@ -1009,14 +1009,14 @@ module.exports = ToolView.extend( {
 	 * an `Error` if not.
 	 */
 	notifyUser: function ( data ) {
-		var count = data.tagCount,
+		const count = data.tagCount,
 			key = data.tagKey;
 
 		if ( count === 0 || !this.selectedTag[ key ] ) {
 			return;
 		}
 
-		var selected,
+		let selected,
 			paramsText = '';
 		// use generic template for multiple deletion tag
 		if ( count > 1 ) {
@@ -1029,15 +1029,15 @@ module.exports = ToolView.extend( {
 			}
 		}
 
-		var topicTitleKey = selected.talkpagenotiftopictitle;
-		var topicTitle = mw.pageTriage.contentLanguageMessage( topicTitleKey, pageName ).text();
+		const topicTitleKey = selected.talkpagenotiftopictitle;
+		const topicTitle = mw.pageTriage.contentLanguageMessage( topicTitleKey, pageName ).text();
 
-		var templateName = selected.talkpagenotiftpl;
+		const templateName = selected.talkpagenotiftpl;
 
-		var template = '{{subst:' + templateName + '|' + pageName + paramsText + '}}';
+		const template = '{{subst:' + templateName + '|' + pageName + paramsText + '}}';
 
 		if ( this.model.get( 'user_name' ) ) {
-			var messagePosterPromise = mw.messagePoster.factory.create(
+			const messagePosterPromise = mw.messagePoster.factory.create(
 				new mw.Title(
 					this.model.get( 'creator_user_talk_page' )
 				)
@@ -1064,7 +1064,7 @@ module.exports = ToolView.extend( {
 	 * the log, `undefined` otherwise.
 	 */
 	shouldLog: function ( tagObj ) {
-		var title = specialDeletionTagging[ tagObj.tag ].getLogPageTitle( tagObj.prefix );
+		const title = specialDeletionTagging[ tagObj.tag ].getLogPageTitle( tagObj.prefix );
 
 		return new mw.Api().get( {
 			action: 'query',
@@ -1074,7 +1074,7 @@ module.exports = ToolView.extend( {
 		} )
 			.then( function ( data ) {
 				if ( data && data.query && data.query.pages ) {
-					for ( var i in data.query.pages ) {
+					for ( const i in data.query.pages ) {
 						// If log page is missing, skip ahead to making the AFD/MFD page
 						if ( i !== '-1' ) {
 							return {
@@ -1107,7 +1107,7 @@ module.exports = ToolView.extend( {
 			return;
 		}
 
-		var title = data.title,
+		const title = data.title,
 			oldText = data.oldText,
 			tagObj = data.tagObj,
 			request = {
@@ -1152,7 +1152,7 @@ module.exports = ToolView.extend( {
 			return;
 		}
 
-		var title = tagObj.prefix + '/' + ( tagObj.subpage || pageName ),
+		const title = tagObj.prefix + '/' + ( tagObj.subpage || pageName ),
 			request = {
 				action: 'edit',
 				title: title,
@@ -1183,7 +1183,7 @@ module.exports = ToolView.extend( {
 	 * @return {string}
 	 */
 	buildHTML: function ( name, obj, key ) {
-		var html = '';
+		let html = '';
 
 		switch ( obj.type ) {
 			case 'hidden':
@@ -1231,7 +1231,7 @@ module.exports = ToolView.extend( {
 	},
 
 	pickDiscussionPageName: function ( prefix ) {
-		var that = this,
+		const that = this,
 			baseTitle = prefix + '/' + pageName,
 			baseTitleNoNS = new mw.Title( baseTitle ).getMainText();
 
@@ -1247,7 +1247,8 @@ module.exports = ToolView.extend( {
 			formatversion: 2
 		} )
 			.then( function ( data ) {
-				var page, i, pages = {}, suffix;
+				const pages = {};
+				let page, i, suffix;
 
 				if ( !data || !data.query ) {
 					throw new Error( 'API error' );

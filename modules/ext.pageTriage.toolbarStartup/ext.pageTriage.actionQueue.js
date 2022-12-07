@@ -40,11 +40,11 @@
  * all functions have finished running.
  */
 mw.pageTriage.actionQueue = ( function () {
-	var queue = {},
-		/**
-		 * Reset the queue completely
-		 */
-		resetQueue = function () {
+	let queue = {};
+	/**
+	 * Reset the queue completely
+	 */
+	const resetQueue = function () {
 			queue = {};
 		},
 		/**
@@ -55,7 +55,7 @@ mw.pageTriage.actionQueue = ( function () {
 		 *  is triggered.
 		 */
 		addToAction = function ( action, func ) {
-			var err = [];
+			const err = [];
 			if ( !action ) {
 				err.push( 'Missing action type parameter.' );
 			}
@@ -90,8 +90,8 @@ mw.pageTriage.actionQueue = ( function () {
 				throw new Error( 'mw.pageTriage.actionQueue could not invoke for a missing (empty) action' );
 			}
 
-			var iterableActionNames,
-				actionData = {};
+			let iterableActionNames;
+			const actionData = {};
 			if ( typeof action === 'object' && !Array.isArray( action ) ) {
 				// Action was given as an object, expected to have key/value of
 				// action name -> action-specific data to pass to the methods
@@ -111,7 +111,7 @@ mw.pageTriage.actionQueue = ( function () {
 				} );
 			}
 
-			var promises = [];
+			const promises = [];
 			iterableActionNames.forEach( function ( actionName ) {
 				if ( !queue[ actionName ] ) {
 					return;

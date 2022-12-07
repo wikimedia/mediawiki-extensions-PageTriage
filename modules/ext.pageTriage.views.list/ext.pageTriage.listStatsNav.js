@@ -6,7 +6,7 @@ $( function () {
 		template: mw.template.get( 'ext.pageTriage.views.list', 'listStatsNav.underscore' ),
 
 		initialize: function ( options ) {
-			var that = this;
+			const that = this;
 
 			this.eventBus = options.eventBus; // access the eventBus
 
@@ -25,7 +25,7 @@ $( function () {
 		},
 
 		render: function () {
-			var that = this;
+			const that = this;
 
 			// insert the template into the document.  fill with the current model.
 			$( '#mwe-pt-list-stats-nav-content' ).html( this.template( this.model.toJSON() ) );
@@ -50,7 +50,7 @@ $( function () {
 				e.stopPropagation();
 			} );
 
-			var intervalID;
+			let intervalID;
 
 			// Initialize Auto-Refresh List button
 			$( '#mwe-pt-autorefresh-checkbox' ).on( 'change', function ( e ) {
@@ -75,7 +75,7 @@ $( function () {
 
 		// Create a waypoint trigger that floats the navbar when the user scrolls up
 		setWaypoint: function () {
-			var that = this;
+			const that = this;
 			$( '#mwe-pt-list-stats-nav-anchor' ).waypoint( 'destroy' ); // remove the old, maybe inaccurate ones.
 			$.waypoints.settings.scrollThrottle = 30;
 			$( '#mwe-pt-list-stats-nav-anchor' ).waypoint( function ( event, direction ) {
@@ -93,7 +93,7 @@ $( function () {
 
 		// See if the navbar needs to be floated (for non-scrolling events)
 		setPosition: function () {
-			var viewportBottom = $( window ).scrollTop() + $( window ).height();
+			const viewportBottom = $( window ).scrollTop() + $( window ).height();
 			// See if the nav anchor is visible in the current viewport
 			if ( viewportBottom > $( '#mwe-pt-list-stats-nav-anchor' ).offset().top ) {
 				// turn off floating nav, bring the bar back into the list.

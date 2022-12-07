@@ -1,18 +1,17 @@
 // view for the floating toolbar
 
-var ToolbarView,
-	config = require( './config.json' ),
-	// create an event aggregator
-	eventBus = _.extend( {}, Backbone.Events ),
-	// the current article
-	article = new mw.pageTriage.Article( {
-		eventBus: eventBus,
-		pageId: mw.config.get( 'wgArticleId' ),
-		includeHistory: true
-	} ),
-	toolbar,
-	// array of tool instances
-	tools;
+const config = require( './config.json' );
+// create an event aggregator
+const eventBus = _.extend( {}, Backbone.Events );
+// the current article
+const article = new mw.pageTriage.Article( {
+	eventBus: eventBus,
+	pageId: mw.config.get( 'wgArticleId' ),
+	includeHistory: true
+} );
+let toolbar;
+// array of tool instances
+let tools;
 
 // Used later via articleInfo.js
 require( './../external/jquery.badge.js' );
@@ -22,49 +21,49 @@ mw.pageTriage.contentLanguageMessages.set( require( './contentLanguageMessages.j
 
 // overall toolbar view
 // currently, this is the main application view.
-ToolbarView = Backbone.View.extend( {
+const ToolbarView = Backbone.View.extend( {
 	template: mw.template.get( 'ext.pageTriage.views.toolbar', 'ToolbarView.underscore' ),
 
 	initialize: function () {
-		var modules = config.PageTriageCurationModules;
+		const modules = config.PageTriageCurationModules;
 		// An array of tool instances to put on the bar, ordered top-to-bottom
 		tools = [];
 
-		var MinimizeView = require( './minimize.js' );
+		const MinimizeView = require( './minimize.js' );
 		tools.push( new MinimizeView( { eventBus: eventBus, model: article, toolbar: this } ) );
 
 		// article information
 		if ( this.isFlyoutEnabled( 'articleInfo' ) ) {
-			var ArticleInfoView = require( './articleInfo.js' );
+			const ArticleInfoView = require( './articleInfo.js' );
 			tools.push( new ArticleInfoView( { eventBus: eventBus, model: article, moduleConfig: modules.articleInfo } ) );
 		}
 
 		// wikilove
 		if ( this.isFlyoutEnabled( 'wikiLove' ) ) {
-			var WikiLoveView = require( './wikilove.js' );
+			const WikiLoveView = require( './wikilove.js' );
 			tools.push( new WikiLoveView( { eventBus: eventBus, model: article, moduleConfig: modules.wikiLove } ) );
 		}
 
 		// mark as reviewed
 		if ( this.isFlyoutEnabled( 'mark' ) ) {
-			var MarkView = require( './mark.js' );
+			const MarkView = require( './mark.js' );
 			tools.push( new MarkView( { eventBus: eventBus, model: article, moduleConfig: modules.mark } ) );
 		}
 
 		// add tags
 		if ( this.isFlyoutEnabled( 'tags' ) && config.PageTriageEnableEnglishWikipediaFeatures ) {
-			var TagsView = require( './tags.js' );
+			const TagsView = require( './tags.js' );
 			tools.push( new TagsView( { eventBus: eventBus, model: article, moduleConfig: modules.tags } ) );
 		}
 
 		// delete
 		if ( this.isFlyoutEnabled( 'delete' ) && config.PageTriageEnableEnglishWikipediaFeatures ) {
-			var DeleteView = require( './delete.js' );
+			const DeleteView = require( './delete.js' );
 			tools.push( new DeleteView( { eventBus: eventBus, model: article, moduleConfig: modules.delete } ) );
 		}
 
 		// next article, should be always on
-		var NextView = require( './next.js' );
+		const NextView = require( './next.js' );
 		tools.push( new NextView( { eventBus: eventBus, model: article } ) );
 	},
 
@@ -75,7 +74,7 @@ ToolbarView = Backbone.View.extend( {
 	 * @return {boolean}
 	 */
 	isFlyoutEnabled: function ( flyout ) {
-		var modules = config.PageTriageCurationModules;
+		const modules = config.PageTriageCurationModules;
 
 		// this flyout is disabled for curation toolbar
 		if ( typeof modules[ flyout ] === 'undefined' ) {
@@ -105,7 +104,7 @@ ToolbarView = Backbone.View.extend( {
 			cancel: '.mwe-pt-tool-content'
 		} );
 
-		var that = this;
+		const that = this;
 		// make clicking on the minimized toolbar expand to normal size
 		$( '#mwe-pt-toolbar-vertical' ).on( 'click', function () {
 			that.maximize( true );
@@ -125,7 +124,7 @@ ToolbarView = Backbone.View.extend( {
 		// Auto-resize all textareas as they type.
 		$( '#mwe-pt-toolbar' ).off( 'input.mwe-pt-tool-flyout' )
 			.on( 'input.mwe-pt-tool-flyout', 'textarea', function () {
-				var newHeight = this.scrollHeight + 2, // +2 to account for line-height.
+				const newHeight = this.scrollHeight + 2, // +2 to account for line-height.
 					maxHeight = 152; // Arbitrary, roughly 12 lines of text.
 
 				if ( newHeight > maxHeight ) {
@@ -179,7 +178,7 @@ ToolbarView = Backbone.View.extend( {
 	},
 
 	minimize: function ( savePref ) {
-		var dir = $( 'body' ).css( 'direction' ),
+		const dir = $( 'body' ).css( 'direction' ),
 			toolbarPosCss = dir === 'ltr' ?
 				{
 					left: 'auto',
@@ -210,7 +209,7 @@ ToolbarView = Backbone.View.extend( {
 	},
 
 	maximize: function ( savePref ) {
-		var dir = $( 'body' ).css( 'direction' ),
+		const dir = $( 'body' ).css( 'direction' ),
 			toolbarPosCss = dir === 'ltr' ?
 				{
 					left: 'auto',
@@ -245,7 +244,7 @@ ToolbarView = Backbone.View.extend( {
 		return new mw.Api().saveOption( 'userjs-curationtoolbar', state );
 	},
 	insertLink: function () {
-		var that = this,
+		const that = this,
 			$link = $( '<li>' ).attr( 'id', 't-opencurationtoolbar' ).hide().append(
 				$( '<a>' ).attr( 'href', '#' )
 			);

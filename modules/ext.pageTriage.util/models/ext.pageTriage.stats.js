@@ -29,7 +29,7 @@ $( function () {
 				return '';
 			}
 
-			var now = new Date();
+			let now = new Date();
 			now = new Date(
 				now.getUTCFullYear(),
 				now.getUTCMonth(),
@@ -39,9 +39,9 @@ $( function () {
 				now.getUTCSeconds()
 			);
 
-			var begin = moment.utc( dateStr, 'YYYYMMDDHHmmss' );
+			const begin = moment.utc( dateStr, 'YYYYMMDDHHmmss' );
 
-			var diff = Math.round( ( now.getTime() - begin.valueOf() ) / ( 1000 * 60 * 60 * 24 ) );
+			const diff = Math.round( ( now.getTime() - begin.valueOf() ) / ( 1000 * 60 * 60 * 24 ) );
 			if ( diff ) {
 				return mw.msg( 'days', diff );
 			} else {
@@ -54,7 +54,7 @@ $( function () {
 		},
 
 		url: function () {
-			var url = mw.util.wikiScript( 'api' ) + '?action=pagetriagestats&format=json';
+			let url = mw.util.wikiScript( 'api' ) + '?action=pagetriagestats&format=json';
 			if ( this.apiParams.namespace !== '' ) {
 				// afc_state is stored in the model as '1', '2', '3', '4', or 'all',
 				// but the api parameter should be an integer. Omitting the parameter

@@ -13,7 +13,7 @@ $( function () {
 		},
 
 		render: function () {
-			var data = this.model.toJSON();
+			const data = this.model.toJSON();
 
 			if ( mw.config.get( 'wgPageTriageEnableReviewButton' ) ) {
 				data.reviewRightHelpText = '';

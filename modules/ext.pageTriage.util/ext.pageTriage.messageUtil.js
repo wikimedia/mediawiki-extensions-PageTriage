@@ -13,7 +13,7 @@
 	 * @return {mw.Message}
 	 */
 	mw.pageTriage.contentLanguageMessage = function ( key ) {
-		var parameters = Array.prototype.slice.call( arguments, 1 );
+		const parameters = Array.prototype.slice.call( arguments, 1 );
 		return new mw.Message( mw.pageTriage.contentLanguageMessages, key, parameters );
 	};
 }() );

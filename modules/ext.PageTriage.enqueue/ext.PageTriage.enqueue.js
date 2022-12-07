@@ -1,12 +1,12 @@
 ( ( function ( mw, $ ) {
-	var sidebarLink = mw.util.addPortletLink(
-			'p-tb',
-			'#',
-			mw.msg( 'pagetriage-enqueue-title' ),
-			'p-pagetriage-enqueue',
-			mw.msg( 'pagetriage-enqueue-tooltip' )
-		),
-		loading = false;
+	const sidebarLink = mw.util.addPortletLink(
+		'p-tb',
+		'#',
+		mw.msg( 'pagetriage-enqueue-title' ),
+		'p-pagetriage-enqueue',
+		mw.msg( 'pagetriage-enqueue-tooltip' )
+	);
+	let loading = false;
 
 	$( sidebarLink ).on( 'click', function () {
 		if ( loading ) {

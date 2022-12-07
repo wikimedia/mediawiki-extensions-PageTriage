@@ -1,6 +1,6 @@
 // Minimize the toolbar
 
-var ToolView = require( './ToolView.js' );
+const ToolView = require( './ToolView.js' );
 module.exports = ToolView.extend( {
 	id: 'mwe-pt-minimize',
 	icon: 'icon_minimize.png', // the default icon

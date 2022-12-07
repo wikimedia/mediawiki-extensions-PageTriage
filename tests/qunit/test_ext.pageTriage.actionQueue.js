@@ -2,7 +2,7 @@
 	QUnit.module( 'ext.pageTriage.actionQueue' );
 
 	QUnit.test( 'Testing the queue: synchronous and asynchronous methods', function ( assert ) {
-		var test = {},
+		const test = {},
 			pushToTest = function ( action, text, data ) {
 				test[ action ] = test[ action ] || [];
 				test[ action ].push( {
@@ -24,7 +24,7 @@
 		} );
 
 		mw.pageTriage.actionQueue.add( 'action1', function ( data ) {
-			var $deferred = $.Deferred();
+			const $deferred = $.Deferred();
 
 			setTimeout( function () {
 				pushToTest( 'action1', 'slow asynchronous success', data );
@@ -34,7 +34,7 @@
 			return $deferred.promise();
 		} );
 		mw.pageTriage.actionQueue.add( 'action1', function ( data ) {
-			var $deferred = $.Deferred();
+			const $deferred = $.Deferred();
 
 			setTimeout( function () {
 				pushToTest( 'action1', 'quick asynchronous failure', data );
@@ -86,7 +86,7 @@
 	} );
 
 	QUnit.test( 'Testing the queue: run() with multiple actions', function ( assert ) {
-		var test = [],
+		const test = [],
 			pushToTest = function ( action, text, data ) {
 				test.push( {
 					action: action,
@@ -108,7 +108,7 @@
 			pushToTest( 'action1', 'baz', data );
 		} );
 		mw.pageTriage.actionQueue.add( 'action1', function ( data ) {
-			var $deferred = $.Deferred();
+			const $deferred = $.Deferred();
 
 			setTimeout( function () {
 				pushToTest( 'action1', 'slow asynchronous success', data );
@@ -128,7 +128,7 @@
 			pushToTest( 'action2', 'baz2', data );
 		} );
 		mw.pageTriage.actionQueue.add( 'action2', function ( data ) {
-			var $deferred = $.Deferred();
+			const $deferred = $.Deferred();
 
 			setTimeout( function () {
 				pushToTest( 'action2', 'quick asynchronous failure', data );
@@ -163,7 +163,7 @@
 	} );
 
 	QUnit.test( 'Testing the queue: run() with actions with action-specific data', function ( assert ) {
-		var test = [],
+		const test = [],
 			pushToTest = function ( action, text, data ) {
 				test.push( {
 					action: action,
@@ -185,7 +185,7 @@
 			pushToTest( 'action1', 'baz', data );
 		} );
 		mw.pageTriage.actionQueue.add( 'action1', function ( data ) {
-			var $deferred = $.Deferred();
+			const $deferred = $.Deferred();
 
 			setTimeout( function () {
 				pushToTest( 'action1', 'slow asynchronous success', data );
@@ -205,7 +205,7 @@
 			pushToTest( 'action2', 'baz2', data );
 		} );
 		mw.pageTriage.actionQueue.add( 'action2', function ( data ) {
-			var $deferred = $.Deferred();
+			const $deferred = $.Deferred();
 
 			setTimeout( function () {
 				pushToTest( 'action2', 'quick asynchronous failure', data );
