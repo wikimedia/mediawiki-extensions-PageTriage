@@ -68,7 +68,7 @@
 	"pagetriage-triage": "Vaata üle",
 	"pagetriage-filter-date-range-heading": "Kuupäevavahemik:",
 	"pagetriage-filter-date-range-format-input-field": "DD.MM.YYYY",
-	"pagetriage-filter-date-range-format-placeholder": "PP.KK.AAAA",
+	"pagetriage-filter-date-range-format-placeholder": "AAAA-KK-PP",
 	"pagetriage-filter-date-range-format-showing": "DD.MM.YYYY",
 	"pagetriage-filter-date-range-from": "Alates",
 	"pagetriage-filter-date-range-to": "Kuni",
