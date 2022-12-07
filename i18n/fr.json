@@ -466,6 +466,7 @@
 	"pagetriage-tagging-error": "Échec dans l’application des balises à la page",
 	"pagetriage-add-tag-confirmation": "Êtes-vous sûr{{GENDER:||e}} de vouloir ajouter $1 balise{{PLURAL:$1||s}} à un article si court ?",
 	"pagetriage-tag-deletion-error": "Page déjà marquée avec un modèle de suppression, procédure annulée.",
+	"pagetriage-tag-previousdeletion-error": "Un modèle ($1) a été trouvé indiquant une précédente suppression, interruption de la procédure.",
 	"pagetriage-toolbar-close": "Fermer",
 	"pagetriage-toolbar-minimize": "Réduire",
 	"pagetriage-tag-warning-notice": "Remarque : cette page ne date que de $1 minute{{PLURAL:$1||s}}. Veuillez ne pas vous précipiter pour la marquer en tête de file d’attente. L’auteur y travaille peut-être encore.",

@@ -446,6 +446,7 @@
 	"pagetriage-tagging-error": "Dodajanje oznak na stran ni uspelo",
 	"pagetriage-add-tag-confirmation": "Ali v tako kratek članek res želite dodati $1 {{PLURAL:$1|oznako|oznaki|oznake|oznak}}?",
 	"pagetriage-tag-deletion-error": "Stran je že označena s predlogo za brisanje, prekinitev postopka.",
+	"pagetriage-tag-previousdeletion-error": "Najdena je bila predloga ($1), ki označuje prejšnji izbris; postopek prekinjen.",
 	"pagetriage-toolbar-close": "Zapri",
 	"pagetriage-toolbar-minimize": "Zmanjšaj",
 	"pagetriage-tag-warning-notice": "Ta stran je bila ustvarjena komaj pred $1 {{PLURAL:$1|minuto|minutama|minutami}}. Ne hitite z označevanjem strani na začetku vrste. Avtorji jih morda še vedno urejajo.",

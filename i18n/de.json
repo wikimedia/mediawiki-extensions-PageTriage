@@ -420,6 +420,7 @@
 	"pagetriage-tagging-error": "Die Markierungen konnten nicht zur Seite hinzugefügt werden.",
 	"pagetriage-add-tag-confirmation": "Bist du sicher, dass du {{PLURAL:$1|eine Markierung|$1 Markierungen}} zu solch einem kurzen Artikel hinzufügen möchtest?",
 	"pagetriage-tag-deletion-error": "Die Seite wurde bereits mit einer Löschvorlage markiert.",
+	"pagetriage-tag-previousdeletion-error": "Es wurde eine Vorlage ($1) gefunden, die auf eine vorherige Löschung hinweist; der Vorgang wird abgebrochen.",
 	"pagetriage-toolbar-close": "Schließen",
 	"pagetriage-toolbar-minimize": "Minimieren",
 	"pagetriage-tag-warning-notice": "Hinweis: Diese Seite ist erst {{PLURAL:$1|eine Minute|$1 Minuten}} alt. Bitte markiere nicht vorschnell Seiten, die ganz vorne in der Warteschlange stehen. Der Autor arbeitet vielleicht noch daran.",
