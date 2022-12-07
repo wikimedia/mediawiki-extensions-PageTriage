@@ -2,14 +2,19 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
+use ApiRawMessage;
 use EchoEvent;
 use Exception;
 use ExtensionRegistry;
 use MediaWiki\Block\DatabaseBlock;
+use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\PageTriage\Api\ApiPageTriageList;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserIdentity;
+use MWException;
 use ORES\Hooks\Helpers;
 use RequestContext;
+use StatusValue;
 use Title;
 use User;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -456,11 +461,14 @@ class PageTriageUtil {
 	 * @param User $user
 	 * @param string $type notification type
 	 * @param array|null $extra
-	 * @return EchoEvent|bool|void $echoEvent
+	 * @return StatusValue
 	 */
-	public static function createNotificationEvent( Title $title, $user, $type, $extra = null ) {
+	public static function createNotificationEvent(
+		Title $title, UserIdentity $user, string $type, ?array $extra = null
+	): StatusValue {
+		$status = StatusValue::newGood();
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) ) {
-			return;
+			return $status;
 		}
 
 		$params = [
@@ -474,7 +482,16 @@ class PageTriageUtil {
 			$params['extra'] = $extra;
 		}
 
-		return EchoEvent::create( $params );
+		try {
+			$echoEvent = EchoEvent::create( $params );
+		} catch ( MWException $exception ) {
+			return StatusValue::newFatal( new ApiRawMessage( $exception->getMessage() ) );
+		}
+		if ( $echoEvent instanceof Event ) {
+			return StatusValue::newGood( $echoEvent );
+		} else {
+			return StatusValue::newFatal( new ApiRawMessage( 'Failed to create Echo event.' ) );
+		}
 	}
 
 	/**
