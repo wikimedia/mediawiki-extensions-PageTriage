@@ -18,6 +18,7 @@ use Wikimedia\Rdbms\DBConnRef;
  */
 class ArticleMetadataTest extends PageTriageTestCase {
 
+	/** @var PageTriage */
 	protected $pageTriage;
 
 	/** @var DBConnRef */
