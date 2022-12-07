@@ -5,7 +5,7 @@
 ( function () {
 
 	$.fn.tipoff = function ( html ) {
-		var $tooltip, hideTimer, showTimer,
+		let $tooltip, hideTimer, showTimer,
 			that = this;
 
 		// Show the tooltip after 200 milliseconds
