@@ -9,5 +9,6 @@
 	"pagetriage-filter-reset-button": "Фильтрлени ат",
 	"pagetriage-more": "Энтда",
 	"pagetriage-auto-refresh-list": "Авто-джангыртыу",
+	"pagetriage-tag-previousdeletion-error": "Процедураны тыйгъан, аны аллында кетерируню кёргюзтген ($1) шаблон табылгъанды.",
 	"pagetriage-tag-warning-notice": "Бу бет къуру $1 {{PLURAL:$1|такъийкъа}} мындан алгъа къуралгъанды. Тилейбиз, бетлени кёзюуню аллында белгилерге ашыкъмагъыз. Автор алкъын ишлей турургъа боллукъду."
 }
