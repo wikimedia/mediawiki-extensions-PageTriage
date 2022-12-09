@@ -21,7 +21,7 @@ $( function () {
 		},
 
 		formatMetadata: function ( article ) {
-			var creationDateParsed = moment.utc( article.get( 'creation_date_utc' ), 'YYYYMMDDHHmmss' ),
+			const creationDateParsed = moment.utc( article.get( 'creation_date_utc' ), 'YYYYMMDDHHmmss' ),
 				reviewedUpdatedParsed = moment.utc( article.get( 'ptrp_reviewed_updated' ), 'YYYYMMDDHHmmss' ),
 				titleObj = new mw.Title( article.get( 'title' ) ),
 				nsId = titleObj.getNamespaceId(),
@@ -39,7 +39,7 @@ $( function () {
 				creationDateParsed.utcOffset( offset ).format( mw.msg( 'pagetriage-creation-dateformat' ) )
 			);
 
-			var now = new Date();
+			const now = new Date();
 
 			article.set(
 				'article_age_in_minutes',
@@ -53,7 +53,7 @@ $( function () {
 
 			// sometimes user info isn't set, so check that first.
 			if ( article.get( 'user_creation_date' ) ) {
-				var userCreationDateParsed = moment.utc(
+				const userCreationDateParsed = moment.utc(
 					article.get( 'user_creation_date' ),
 					'YYYYMMDDHHmmss'
 				);
@@ -67,7 +67,7 @@ $( function () {
 			if ( article.get( 'user_name' ) ) {
 				// decide which byline message to use depending on if the editor is new or not
 				// but don't show new editor for ip users
-				var bylineMessage;
+				let bylineMessage;
 				if ( article.get( 'user_id' ) > '0' && article.get( 'user_autoconfirmed' ) < '1' ) {
 					bylineMessage = 'pagetriage-byline-new-editor';
 				} else {
@@ -78,7 +78,7 @@ $( function () {
 				// The following messages are used here:
 				// * pagetriage-byline-new-editor
 				// * pagetriage-byline
-				var byline = mw.message(
+				const byline = mw.message(
 					bylineMessage,
 					this.buildLinkTag(
 						article.get( 'creator_user_page_url' ),
@@ -112,10 +112,10 @@ $( function () {
 			// Are there any PageTriage messages on the talk page?
 			article.set( 'talkpage_feedback_message', false );
 			if ( article.get( 'talkpage_feedback_count' ) > 0 ) {
-				var $talkPageLink = $( '<a>' )
+				const $talkPageLink = $( '<a>' )
 					.attr( 'href', article.get( 'talk_page_url' ) )
 					.text( mw.msg( 'pagetriage-has-talkpage-feedback-link' ) );
-				var talkPageMsg = mw.message( 'pagetriage-has-talkpage-feedback', article.get( 'talkpage_feedback_count' ), $talkPageLink ).parse();
+				const talkPageMsg = mw.message( 'pagetriage-has-talkpage-feedback', article.get( 'talkpage_feedback_count' ), $talkPageLink ).parse();
 				article.set( 'talkpage_feedback_message', talkPageMsg );
 			}
 
@@ -193,7 +193,7 @@ $( function () {
 
 			article.set( 'title_url_format', mw.util.wikiUrlencode( article.get( 'title' ) ) );
 
-			var titleUrl = new mw.Uri( mw.util.getUrl( article.get( 'title' ) ) );
+			const titleUrl = new mw.Uri( mw.util.getUrl( article.get( 'title' ) ) );
 			if ( Number( article.get( 'is_redirect' ) ) === 1 ) {
 				titleUrl.query.redirect = 'no';
 			}
@@ -201,7 +201,7 @@ $( function () {
 		},
 
 		tagWarningNotice: function () {
-			var articleAge = this.get( 'article_age_in_minutes' );
+			const articleAge = this.get( 'article_age_in_minutes' );
 
 			if ( articleAge <= this.get( 'new_article_warning_minutes' ) ) {
 				// Generate a warning if the page is less than 60 minutes old
@@ -212,7 +212,7 @@ $( function () {
 		},
 
 		buildLinkTag: function ( url, text, exists ) {
-			var style = '';
+			let style = '';
 			if ( !exists ) {
 				url = this.buildRedLink( url, exists );
 				style = 'new';
@@ -288,11 +288,11 @@ $( function () {
 			this.apiParams = this.defaultApiParams;
 
 			// Pull any saved filter settings from the user's option.
-			var filterOptionsJson = mw.user.options.get( 'userjs-NewPagesFeedFilterOptions' );
+			const filterOptionsJson = mw.user.options.get( 'userjs-NewPagesFeedFilterOptions' );
 			if ( mw.user.isAnon() || !filterOptionsJson ) {
 				return;
 			}
-			var filterOptions;
+			let filterOptions;
 			try {
 				filterOptions = JSON.parse( filterOptionsJson );
 				filterOptions = this.migrateFilterOptions( filterOptions );
@@ -327,12 +327,13 @@ $( function () {
 		/**
 		 * Set the ArticleList mode.
 		 *
-		 * @TODO This also sets the namespace that will be queried, which means that it'll be saved as the current
+		 * TODO This also sets the namespace that will be queried, which means that it'll be saved as the current
 		 * filter namespace and so when NPP is selected the NS dropdown will not remember the previous state. Bad?
+		 *
 		 * @param {string} newMode Either 'npp' or 'afc'.
 		 */
 		setMode: function ( newMode ) {
-			var draftNsId = mw.config.get( 'wgPageTriageDraftNamespaceId' );
+			const draftNsId = mw.config.get( 'wgPageTriageDraftNamespaceId' );
 			if ( draftNsId && newMode === 'afc' ) {
 				this.mode = 'afc';
 				this.setParam( 'namespace', draftNsId );
@@ -355,7 +356,7 @@ $( function () {
 		},
 
 		url: function () {
-			var params = $.extend( {
+			const params = $.extend( {
 				action: 'pagetriagelist',
 				format: 'json'
 			}, this.getApiParams() );
@@ -364,7 +365,7 @@ $( function () {
 		},
 
 		getApiParams: function () {
-			var params = $.extend( {}, this.apiParams );
+			const params = $.extend( {}, this.apiParams );
 			// sorting (dir) is stored as 'nppDir' and 'afcDir' so they remain
 			// independent but only one is sent as 'dir' based on the mode
 			delete params.nppDir;
@@ -418,7 +419,7 @@ $( function () {
 		 * @return {string}
 		 */
 		encodeFilterParams: function () {
-			var params = this.apiParams;
+			const params = this.apiParams;
 			params.mode = this.getMode();
 			params.version = 2;
 			return JSON.stringify( params );

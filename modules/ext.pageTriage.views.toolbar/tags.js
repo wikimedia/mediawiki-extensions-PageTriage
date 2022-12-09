@@ -1,9 +1,9 @@
 // view for displaying tags
 
-var ToolView = require( './ToolView.js' ),
-	config = require( './config.json' ),
-	// Used to keep track of what actions we want to invoke, and with what data.
-	actionQueue = {};
+const ToolView = require( './ToolView.js' );
+const config = require( './config.json' );
+// Used to keep track of what actions we want to invoke, and with what data.
+const actionQueue = {};
 module.exports = ToolView.extend( {
 	id: 'mwe-pt-tag',
 	icon: 'icon_tag.png',
@@ -31,14 +31,14 @@ module.exports = ToolView.extend( {
 	 * Construct the 'All' category on the fly
 	 */
 	buildAllCategory: function () {
-		var list = [];
+		const list = [];
 		// first, loop through all tags and store them in the array list
-		for ( var cat in this.tagsOptions ) {
+		for ( const cat in this.tagsOptions ) {
 			if ( this.tagsOptions[ cat ].alias ) {
 				continue;
 			}
-			for ( var key in this.tagsOptions[ cat ].tags ) {
-				var tag = $.extend( true, {}, this.tagsOptions[ cat ].tags[ key ] );
+			for ( const key in this.tagsOptions[ cat ].tags ) {
+				const tag = $.extend( true, {}, this.tagsOptions[ cat ].tags[ key ] );
 				tag.dest = cat;
 				list.push( tag );
 			}
@@ -59,9 +59,9 @@ module.exports = ToolView.extend( {
 			alias: true,
 			tags: {}
 		};
-		var len = list.length;
-		for ( var i = 0; i < len; i++ ) {
-			var tagKey = list[ i ].tag.replace( /-/g, '' ).replace( / /g, '' ).toLowerCase();
+		const len = list.length;
+		for ( let i = 0; i < len; i++ ) {
+			const tagKey = list[ i ].tag.replace( /-/g, '' ).replace( / /g, '' ).toLowerCase();
 			this.tagsOptions.all.tags[ tagKey ] = list[ i ];
 		}
 	},
@@ -71,7 +71,7 @@ module.exports = ToolView.extend( {
 	 */
 	reset: function () {
 		this.selectedTagCount = 0;
-		for ( var cat in this.tagsOptions ) {
+		for ( const cat in this.tagsOptions ) {
 			this.selectedTag[ cat ] = {};
 		}
 	},
@@ -80,7 +80,7 @@ module.exports = ToolView.extend( {
 	 * Display the tag flyout, everything should be reset
 	 */
 	render: function () {
-		var that = this;
+		const that = this;
 
 		function handleFocus() {
 			$( this ).val( '' );
@@ -115,7 +115,7 @@ module.exports = ToolView.extend( {
 
 		// add click event for each category
 		$( '#mwe-pt-categories' ).find( 'div' ).each( function () {
-			var cat = $( $( this ).html() ).attr( 'cat' );
+			const cat = $( $( this ).html() ).attr( 'cat' );
 			$( this ).on( 'click',
 				function () {
 					$( this ).find( 'a' ).trigger( 'blur' );
@@ -149,7 +149,7 @@ module.exports = ToolView.extend( {
 
 		$( '#mwe-pt-tags' ).empty();
 
-		var $tagList = $( '<div>' ).attr( 'id', 'mwe-pt-tag-list' );
+		const $tagList = $( '<div>' ).attr( 'id', 'mwe-pt-tag-list' );
 
 		// highlight the active category
 		$( '.mwe-pt-category' ).removeClass( 'mwe-pt-active' );
@@ -159,11 +159,11 @@ module.exports = ToolView.extend( {
 
 		$( '#mwe-pt-tags' ).append( $tagList );
 
-		var that = this,
+		const that = this,
 			tagSet = this.tagsOptions[ cat ].tags;
-		for ( var key in tagSet ) {
+		for ( const key in tagSet ) {
 
-			var checked = false;
+			let checked = false;
 
 			// If the tag has been selected, show it as checked
 			if ( this.selectedTag[ cat ][ key ] ) {
@@ -171,7 +171,7 @@ module.exports = ToolView.extend( {
 			}
 
 			// build the checkbox
-			var checkbox = mw.html.element(
+			const checkbox = mw.html.element(
 				'input',
 				{
 					type: 'checkbox',
@@ -181,7 +181,7 @@ module.exports = ToolView.extend( {
 					checked: checked
 				}
 			);
-			var tagRow = '<div class="mwe-pt-tag-row" id="mwe-pt-tag-row-' + key + '"><table><tr>';
+			let tagRow = '<div class="mwe-pt-tag-row" id="mwe-pt-tag-row-' + key + '"><table><tr>';
 			tagRow += '<td class="mwe-pt-tag-checkbox-cell">' + checkbox + '</td>';
 			tagRow += '<td><div id="mwe-pt-tag-' + key + '" class="mwe-pt-tag-label">' +
 				mw.html.escape( tagSet[ key ].label ) + '</div>';
@@ -202,10 +202,10 @@ module.exports = ToolView.extend( {
 			// add click events for checking/unchecking tags to both the
 			// checkboxes and tag labels
 			$( '#mwe-pt-tag-' + key + ', #mwe-pt-checkbox-tag-' + key ).on( 'click', function () {
-				var destCat, alsoCommon, param,
-					// Extract the tag key from the id of whatever was clicked on
-					tagKeyMatches = $( this ).attr( 'id' ).match( /.*-tag-(.*)/ ),
-					tagKey = tagKeyMatches[ 1 ];
+				let destCat, alsoCommon, param;
+				// Extract the tag key from the id of whatever was clicked on
+				const tagKeyMatches = $( this ).attr( 'id' ).match( /.*-tag-(.*)/ );
+				const tagKey = tagKeyMatches[ 1 ];
 
 				// Tags in the 'common' group actually belong to other categories.
 				// In those cases we need to interact with the real parent
@@ -270,7 +270,7 @@ module.exports = ToolView.extend( {
 	 * @param {string} cat
 	 */
 	refreshTagCountDisplay: function ( key, cat ) {
-		var categoryTagCount = this.objectPropCount( this.selectedTag[ cat ] );
+		const categoryTagCount = this.objectPropCount( this.selectedTag[ cat ] );
 
 		if ( categoryTagCount > 0 ) {
 			$( '#mwe-pt-category-' + cat + ' .mwe-pt-tag-count' ).html( '(' + categoryTagCount + ')' );
@@ -302,16 +302,16 @@ module.exports = ToolView.extend( {
 	 */
 	showParamsLink: function ( key, cat ) {
 
-		var tag = this.selectedTag[ cat ][ key ];
+		const tag = this.selectedTag[ cat ][ key ];
 		// no params, don't show the link
 		if ( $.isEmptyObject( tag.params ) ) {
 			return;
 		}
 
-		var allParamsHidden = true,
+		let allParamsHidden = true,
 			text = 'add';
 		// check if there is non-hidden param
-		for ( var param in tag.params ) {
+		for ( const param in tag.params ) {
 			if ( tag.params[ param ].type !== 'hidden' ) {
 				allParamsHidden = false;
 				// see if any of the parameters have been filled out
@@ -326,7 +326,7 @@ module.exports = ToolView.extend( {
 		}
 
 		// Construct the link that activates the params form
-		var link = mw.html.element(
+		const link = mw.html.element(
 			'a',
 			{ href: '#', id: 'mwe-pt-tag-params-' + key },
 			// The following messages are used here:
@@ -336,7 +336,7 @@ module.exports = ToolView.extend( {
 		);
 		$( '#mwe-pt-tag-params-link-' + key ).html( '+&#160;' + link );
 
-		var that = this;
+		const that = this;
 		// Add click event to the link that shows the param form
 		$( '#mwe-pt-tag-params-' + key ).on( 'click', function () {
 			that.showParamsForm( key, cat );
@@ -360,17 +360,17 @@ module.exports = ToolView.extend( {
 	 * @param {string} cat
 	 */
 	showParamsForm: function ( key, cat ) {
-		var html = '',
-			tag = this.selectedTag[ cat ][ key ];
+		let html = '';
+		const tag = this.selectedTag[ cat ][ key ];
 
 		this.hideParamsLink( key );
 
-		for ( var param in tag.params ) {
-			var paramObj = tag.params[ param ];
+		for ( const param in tag.params ) {
+			const paramObj = tag.params[ param ];
 			html += this.buildHTML( param, paramObj, key );
 		}
 
-		var buttons = mw.html.element(
+		let buttons = mw.html.element(
 			'button',
 			{ id: 'mwe-pt-tag-set-param-' + key, class: 'mwe-pt-tag-set-param-button ui-button-green' },
 			mw.msg( 'pagetriage-button-add-details' )
@@ -388,7 +388,7 @@ module.exports = ToolView.extend( {
 		$( '#mwe-pt-tag-params-form-' + key ).html( html );
 		$( '#mwe-pt-tag-params-form-' + key ).show();
 
-		var that = this;
+		const that = this;
 		// Add click even for the Set Parameters button
 		$( '#mwe-pt-tag-set-param-' + key ).button().on( 'click', function () {
 			if ( that.setParams( key, cat ) ) {
@@ -403,7 +403,7 @@ module.exports = ToolView.extend( {
 
 		// Add click even for the Cancel button
 		$( '#mwe-pt-tag-cancel-param-' + key ).button().on( 'click', function () {
-			var destCat;
+			let destCat;
 
 			// Hide the form and show the link to reopen it
 			that.hideParamsForm( key );
@@ -411,7 +411,7 @@ module.exports = ToolView.extend( {
 
 			// If there were any unset required params, uncheck the tag
 			// and hide the form link (basically, reset it)
-			for ( var param in tag.params ) {
+			for ( const param in tag.params ) {
 				if ( tag.params[ param ].input === 'required' && !tag.params[ param ].value ) {
 					if ( tag.dest ) {
 						destCat = tag.dest;
@@ -445,8 +445,8 @@ module.exports = ToolView.extend( {
 	 * @return {boolean}
 	 */
 	setParams: function ( key, cat ) {
-		var tag = this.selectedTag[ cat ][ key ];
-		for ( var param in tag.params ) {
+		const tag = this.selectedTag[ cat ][ key ];
+		for ( const param in tag.params ) {
 			if ( tag.params[ param ].type === 'checkbox' ) {
 				// See if it's checked or not
 				if ( $( '#mwe-pt-tag-params-' + key + '-' + param ).is( ':checked' ) ) {
@@ -476,8 +476,8 @@ module.exports = ToolView.extend( {
 	 * @return {string}
 	 */
 	buildParams: function ( tagObj ) {
-		var paramVal = '';
-		for ( var param in tagObj.params ) {
+		let paramVal = '';
+		for ( const param in tagObj.params ) {
 			if ( tagObj.params[ param ].value ) {
 				paramVal += '|' + param + '=' + tagObj.params[ param ].value;
 			}
@@ -498,27 +498,27 @@ module.exports = ToolView.extend( {
 			}
 		}
 
-		var tagKey,
+		let tagKey,
 			topText = '',
-			bottomText = '',
-			processed = {},
-			that = this,
-			multipleTags = {},
-			redirectTags = {},
-			tagList = [],
-			openText = '',
+			bottomText = '';
+		const processed = {};
+		const that = this;
+		const multipleTags = {};
+		const redirectTags = {};
+		const tagList = [];
+		let openText = '',
 			closeText = '',
 			multipleTagsText = '',
 			multipleRedirectTagsText = '';
-		for ( var cat in this.selectedTag ) {
+		for ( const cat in this.selectedTag ) {
 			for ( tagKey in this.selectedTag[ cat ] ) {
 				if ( processed[ tagKey ] ) {
 					continue;
 				}
-				var tagObj = this.selectedTag[ cat ][ tagKey ];
+				const tagObj = this.selectedTag[ cat ][ tagKey ];
 
 				// Final check on required params
-				for ( var param in tagObj.params ) {
+				for ( const param in tagObj.params ) {
 					if ( tagObj.params[ param ].input === 'required' && !tagObj.params[ param ].value ) {
 						that.handleError( mw.msg( 'pagetriage-tags-param-missing-required', tagObj.tag ) );
 						return;
@@ -629,20 +629,20 @@ module.exports = ToolView.extend( {
 	 */
 	handleError: function ( msg ) {
 		// Log error to WikimediaEvents
-		var pageName = mw.config.get( 'wgPageName' );
-		var skin = mw.config.get( 'skin' );
-		var dumpOfTag = JSON.stringify( this.selectedTag );
-		var errorMessage = 'PageTriage error type: ' + msg + '\n' +
+		const pageName = mw.config.get( 'wgPageName' );
+		const skin = mw.config.get( 'skin' );
+		const dumpOfTag = JSON.stringify( this.selectedTag );
+		let errorMessage = 'PageTriage error type: ' + msg + '\n' +
 			'File: tags.js\n' +
 			'Page name: ' + pageName + '\n' +
 			'Skin: ' + skin + '\n' +
 			'Dump of this.selectedTag: ' + dumpOfTag;
 		errorMessage = errorMessage.slice( 0, 1000 );
 		mw.log.error( errorMessage );
-		var err = new Error( errorMessage );
+		const err = new Error( errorMessage );
 		err.name = 'pageTriageHandleError';
 		mw.errorLogger.logError( err, 'error.pagetraige' );
-		var sitename = mw.config.get( 'wgDBname' );
+		const sitename = mw.config.get( 'wgDBname' );
 		mw.track( 'counter.MediaWiki.extension.PageTriage.' + sitename + '.viewsToolbar.tags.error' );
 
 		$.removeSpinner( 'tag-spinner' );
@@ -654,8 +654,8 @@ module.exports = ToolView.extend( {
 	},
 
 	applyTags: function ( topText, bottomText, tagList ) {
-		var that = this,
-			note = $( '#mwe-pt-tag-note-input' ).val().trim();
+		const that = this;
+		let note = $( '#mwe-pt-tag-note-input' ).val().trim();
 		if ( !this.noteChanged || !note.length ) {
 			note = '';
 		}
@@ -684,12 +684,12 @@ module.exports = ToolView.extend( {
 	},
 
 	talkPageNote: function ( note ) {
-		var messagePosterPromise = mw.messagePoster.factory.create(
+		const messagePosterPromise = mw.messagePoster.factory.create(
 			new mw.Title( this.model.get( 'creator_user_talk_page' ) )
 		);
 
-		var pageName = mw.config.get( 'wgPageName' ).replace( /_/g, ' ' );
-		var topicTitle = mw.pageTriage.contentLanguageMessage(
+		const pageName = mw.config.get( 'wgPageName' ).replace( /_/g, ' ' );
+		const topicTitle = mw.pageTriage.contentLanguageMessage(
 			'pagetriage-tags-talk-page-notify-topic-title',
 			pageName
 		).text();
@@ -699,7 +699,7 @@ module.exports = ToolView.extend( {
 			'|2=' + mw.config.get( 'wgUserName' ) +
 			'|3=' + note + '}}';
 
-		var that = this;
+		const that = this;
 		messagePosterPromise.then( function ( messagePoster ) {
 			return messagePoster.post( topicTitle, note, { tags: 'pagetriage' } );
 		} ).then( function () {
@@ -718,7 +718,7 @@ module.exports = ToolView.extend( {
 	 * @return {string}
 	 */
 	buildHTML: function ( name, obj, key ) {
-		var html = '';
+		let html = '';
 
 		switch ( obj.type ) {
 			case 'hidden':
@@ -756,7 +756,7 @@ module.exports = ToolView.extend( {
 				break;
 			case 'select':
 				html += mw.html.escape( obj.label ) + ' ';
-				for ( var i in obj.option ) {
+				for ( const i in obj.option ) {
 					html += mw.html.element(
 						'input',
 						{

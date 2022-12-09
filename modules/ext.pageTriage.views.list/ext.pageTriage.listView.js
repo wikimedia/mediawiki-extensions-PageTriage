@@ -2,15 +2,14 @@
  * view for the article list
  */
 $( function () {
-	var list,
-		// create an event aggregator
-		eventBus = _.extend( {}, Backbone.Events ),
+	// create an event aggregator
+	const eventBus = _.extend( {}, Backbone.Events );
 
-		// instantiate the collection of articles
-		articles = new mw.pageTriage.ArticleList( { eventBus: eventBus } ),
+	// instantiate the collection of articles
+	const articles = new mw.pageTriage.ArticleList( { eventBus: eventBus } );
 
-		// grab pageTriage statistics
-		stats = new mw.pageTriage.Stats( { eventBus: eventBus } );
+	// grab pageTriage statistics
+	const stats = new mw.pageTriage.Stats( { eventBus: eventBus } );
 
 	// overall list view
 	// currently, this is the main application view.
@@ -36,7 +35,7 @@ $( function () {
 				$( '#mwe-pt-list-more' ).append( $.createSpinner( 'more-spinner' ) );
 			} else {
 				// bind manualLoadMore function to 'More' link
-				var that = this;
+				const that = this;
 				$( '#mwe-pt-list-more-link' ).on( 'click', function () {
 					that.manualLoadMore();
 					return false;
@@ -45,7 +44,7 @@ $( function () {
 
 			// Add a warning if we're using an unsupported browser
 			// List view doesn't work well in older versions of Explorer
-			var blacklist = { msie: [ '<', 8 ] };
+			const blacklist = { msie: [ '<', 8 ] };
 			if ( $.client.test( blacklist, null, true ) ) {
 				$( '#mwe-pt-list-warnings' ).append( $( '<div>' ).text( mw.msg( 'pagetriage-warning-browser' ) ) );
 			}
@@ -66,7 +65,7 @@ $( function () {
 		render: function () {
 			// reset the position indicator
 			this.position = 0;
-			var controlNav = new mw.pageTriage.ListControlNav( { eventBus: this.eventBus, model: articles, stats: stats } );
+			const controlNav = new mw.pageTriage.ListControlNav( { eventBus: this.eventBus, model: articles, stats: stats } );
 			controlNav.render();
 		},
 
@@ -76,7 +75,7 @@ $( function () {
 			$( '#mwe-pt-list-more' ).show(); // show spinner
 
 			// set the offsets for the page fetch
-			var lastArticle = articles.last( 1 );
+			const lastArticle = articles.last( 1 );
 			if ( 0 in lastArticle ) {
 				articles.apiParams.offset = lastArticle[ 0 ].attributes.creation_date_utc;
 				articles.apiParams.pageoffset = lastArticle[ 0 ].attributes.pageid;
@@ -85,7 +84,7 @@ $( function () {
 				articles.apiParams.pageoffset = 0;
 			}
 
-			var that = this;
+			const that = this;
 			// fetch more articles. we use a timeout to prevent double-loading.
 			setTimeout(
 				function () {
@@ -109,7 +108,7 @@ $( function () {
 
 		// insert a new waypoint for automatically loading more pages
 		createNewLoadMoreWaypoint: function () {
-			var that = this,
+			const that = this,
 				opts = { offset: '100%' };
 			$( '#mwe-pt-list-load-more-anchor' ).waypoint( function ( event, direction ) {
 				if ( direction === 'down' ) {
@@ -125,7 +124,7 @@ $( function () {
 			$( '#mwe-pt-list-more' ).append( $.createSpinner( 'more-spinner' ) );
 
 			// set the offsets for the page fetch
-			var lastArticle = articles.last( 1 );
+			const lastArticle = articles.last( 1 );
 			if ( 0 in lastArticle ) {
 				articles.apiParams.offset = lastArticle[ 0 ].attributes.creation_date_utc;
 				articles.apiParams.pageoffset = lastArticle[ 0 ].attributes.pageid;
@@ -134,7 +133,7 @@ $( function () {
 				articles.apiParams.pageoffset = 0;
 			}
 
-			var that = this;
+			const that = this;
 			articles.fetch( {
 				add: true,
 				success: function () {
@@ -152,13 +151,13 @@ $( function () {
 		},
 
 		// add stats data to the navigation
-		addStats: function ( stats ) {
-			var statsNav = new mw.pageTriage.ListStatsNav(
-				{ eventBus: this.eventBus, model: stats }
+		addStats: function ( statsObj ) {
+			const statsNav = new mw.pageTriage.ListStatsNav(
+				{ eventBus: this.eventBus, model: statsObj }
 			);
 			// Only render if there's an update; check to see if expected filteredarticle
 			// property is present in changed object.
-			if ( Object.prototype.hasOwnProperty.call( stats.changed, 'filteredarticle' ) ) {
+			if ( Object.prototype.hasOwnProperty.call( statsObj.changed, 'filteredarticle' ) ) {
 				statsNav.render();
 			}
 		},
@@ -173,8 +172,8 @@ $( function () {
 			this.position++;
 			article.set( 'position', this.position );
 			// pass in the specific article instance
-			var view = new mw.pageTriage.ListItem( { eventBus: this.eventBus, model: article } );
-			var pageInfo = view.render().el;
+			const view = new mw.pageTriage.ListItem( { eventBus: this.eventBus, model: article } );
+			const pageInfo = view.render().el;
 			$( '#mwe-pt-list-view' ).append( pageInfo );
 			if ( mw.config.get( 'wgPageTriageEnableReviewButton' ) ) {
 				$( pageInfo ).find( '.mwe-pt-list-triage-button' ).show().button( {
@@ -233,6 +232,6 @@ $( function () {
 	} );
 
 	// create an instance of the list view, which makes everything go.
-	list = new mw.pageTriage.ListView( { eventBus: eventBus } );
+	const list = new mw.pageTriage.ListView( { eventBus: eventBus } );
 	list.render();
 } );

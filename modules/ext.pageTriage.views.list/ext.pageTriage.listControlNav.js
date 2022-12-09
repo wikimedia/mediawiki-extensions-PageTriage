@@ -9,7 +9,7 @@ $( function () {
 		newFilterStatus: {},
 
 		initialize: function ( options ) {
-			var that = this;
+			const that = this;
 
 			this.eventBus = options.eventBus; // access the eventBus
 
@@ -50,7 +50,7 @@ $( function () {
 		 * @return {jQuery[]}
 		 */
 		getNamespaceOptions: function () {
-			var wgFormattedNamespaces = mw.config.get( 'wgFormattedNamespaces' ),
+			const wgFormattedNamespaces = mw.config.get( 'wgFormattedNamespaces' ),
 				pageTriageNamespaces = mw.config.get( 'pageTriageNamespaces' ),
 				draftNamespaceId = mw.config.get( 'wgPageTriageDraftNamespaceId' ),
 				draftIndex = pageTriageNamespaces.indexOf( draftNamespaceId );
@@ -61,7 +61,7 @@ $( function () {
 			}
 
 			return pageTriageNamespaces.map( function ( ns ) {
-				var text = ns === 0 ?
+				const text = ns === 0 ?
 					mw.msg( 'pagetriage-filter-article' ) :
 					wgFormattedNamespaces[ ns ];
 				return $( '<option>' ).attr( 'value', ns ).text( text );
@@ -69,7 +69,7 @@ $( function () {
 		},
 
 		render: function () {
-			var that = this;
+			const that = this;
 
 			// render and return the template. fill with the current model.
 			$( '#mwe-pt-list-control-nav-content' ).html( this.template( this.model.toJSON() ) );
@@ -85,7 +85,7 @@ $( function () {
 			// position the filter dropdown box in the correct location
 			// yield to other JS first per bug 46367
 			setTimeout( function () {
-				var startSide = $( 'body' ).hasClass( 'rtl' ) ? 'right' : 'left',
+				const startSide = $( 'body' ).hasClass( 'rtl' ) ? 'right' : 'left',
 					newStart = $( '#mwe-pt-filter-dropdown-control' ).width() - 8,
 					arrowClosed = $( 'body' ).hasClass( 'rtl' ) ? '&#x25c2;' : '&#x25b8;';
 				$( '#mwe-pt-control-dropdown' ).css( startSide, newStart );
@@ -140,7 +140,7 @@ $( function () {
 			} );
 
 			$( '#mwe-pt-filter-user' ).on( 'keypress', function ( e ) {
-				var userPressedEnter = e.which === 13;
+				const userPressedEnter = e.which === 13;
 				if ( userPressedEnter ) {
 					$( '#mwe-pt-filter-set-button' ).trigger( 'click' );
 					e.preventDefault();
@@ -206,7 +206,7 @@ $( function () {
 
 		// Create a waypoint trigger that floats the navbar when the user scrolls down
 		setWaypoint: function () {
-			var that = this;
+			const that = this;
 			$( '#mwe-pt-list-control-nav-anchor' ).waypoint( 'destroy' ); // remove the old, maybe inaccurate ones.
 			$.waypoints.settings.scrollThrottle = 30;
 			$( '#mwe-pt-list-control-nav-anchor' ).waypoint( function ( event, direction ) {
@@ -227,7 +227,7 @@ $( function () {
 		setPosition: function () {
 			// Different browsers represent the document's scroll position differently.
 			// I would expect jQuery to deal with this in some graceful fashion, but nooo...
-			var scrollTop = $( 'body' ).scrollTop() || $( 'html' ).scrollTop() || $( window ).scrollTop();
+			const scrollTop = $( 'body' ).scrollTop() || $( 'html' ).scrollTop() || $( window ).scrollTop();
 
 			if ( $( '#mwe-pt-list-view' ).offset().top > scrollTop ) {
 				// turn off floating nav, bring the bar back into the list.
@@ -250,7 +250,7 @@ $( function () {
 
 		// Toggle whether or not the filter drop-down interface is displayed
 		toggleFilterMenu: function ( action ) {
-			var that = this,
+			const that = this,
 				arrowClosed = $( 'body' ).hasClass( 'rtl' ) ? '&#x25c2;' : '&#x25b8;',
 				$controlDropdown = $( '#mwe-pt-control-dropdown' ),
 				$controlDropdownPokey = $( '#mwe-pt-control-dropdown-pokey' );
@@ -291,10 +291,10 @@ $( function () {
 				return;
 			}
 
-			var anyState = $( '#mwe-pt-filter-reviewed-edits' ).prop( 'checked' ) ||
+			const anyState = $( '#mwe-pt-filter-reviewed-edits' ).prop( 'checked' ) ||
 				$( '#mwe-pt-filter-unreviewed-edits' ).prop( 'checked' );
 
-			var anyType = $( '#mwe-pt-filter-nominated-for-deletion' ).prop( 'checked' ) ||
+			const anyType = $( '#mwe-pt-filter-nominated-for-deletion' ).prop( 'checked' ) ||
 				$( '#mwe-pt-filter-redirects' ).prop( 'checked' ) ||
 				$( '#mwe-pt-filter-others' ).prop( 'checked' );
 
@@ -310,7 +310,7 @@ $( function () {
 		 * @return {Object}
 		 */
 		getApiParamsOres: function ( context ) {
-			var apiParams = {},
+			const apiParams = {},
 				mapParamsToSelectors = {
 					'predicted-class-stub': 'show_predicted_class_stub',
 					'predicted-class-start': 'show_predicted_class_start',
@@ -343,7 +343,7 @@ $( function () {
 		 * @return {Object}
 		 */
 		getApiParams: function ( isListView ) {
-			var apiParams = {};
+			let apiParams = {};
 
 			if ( this.model.getMode() === 'npp' ) {
 				apiParams = this.getApiParamsNpp();
@@ -384,7 +384,7 @@ $( function () {
 		getApiParamsNpp: function () {
 			// Start with showing unreviewed pages by default. Sometimes when switching to
 			// NPP mode from AfC the filters lose their stickiness and nothing is shown.
-			var apiParams = {};
+			const apiParams = {};
 
 			// || 0 is a safeguard. Old code suggested for some reason
 			// the namespace filter may at times not exist.
@@ -461,7 +461,7 @@ $( function () {
 				apiParams.showunreviewed = '1';
 			}
 
-			var hasNoTypeSelected = !apiParams.showdeleted && !apiParams.showredirs && !apiParams.showothers;
+			const hasNoTypeSelected = !apiParams.showdeleted && !apiParams.showredirs && !apiParams.showothers;
 			if ( hasNoTypeSelected ) {
 				// One of these must be set; default to others
 				apiParams.showothers = '1';
@@ -477,12 +477,12 @@ $( function () {
 		 * @return {Object}
 		 */
 		getApiParamsDateRange: function ( context ) {
-			var apiParams = {};
-			var offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
+			const apiParams = {};
+			const offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
 			if ( $( '#mwe-pt-filter-' + context + '-date-range-from' ).val() ) {
 				// Interpret the entered date as UTC initially, then subtract the offset so that it
 				// gets correctly treated as user time zone.
-				var fromDate = moment.utc( $( '#mwe-pt-filter-' + context + '-date-range-from' ).val() )
+				const fromDate = moment.utc( $( '#mwe-pt-filter-' + context + '-date-range-from' ).val() )
 					.subtract( offset, 'minutes' );
 				// eslint-disable-next-line camelcase
 				apiParams.date_range_from = fromDate.toISOString(); // Pass the date in ISO timestamp format "2019-08-17T06:59:59.000Z"
@@ -491,7 +491,7 @@ $( function () {
 			if ( $( '#mwe-pt-filter-' + context + '-date-range-to' ).val() ) {
 				// Interpret the entered date as UTC initially, then subtract the offset so that it
 				// gets correctly treated as user time zone.
-				var toDate = moment.utc( $( '#mwe-pt-filter-' + context + '-date-range-to' ).val() )
+				const toDate = moment.utc( $( '#mwe-pt-filter-' + context + '-date-range-to' ).val() )
 					.subtract( offset, 'minutes' );
 				// Set toDate's time the end of day 23:59:59
 				toDate.add( 1, 'day' ).subtract( 1, 'second' );
@@ -531,7 +531,7 @@ $( function () {
 		 */
 		filterSync: function () {
 			// fetch the values from the menu
-			var apiParams = this.getApiParams( true );
+			const apiParams = this.getApiParams( true );
 
 			// the model in this context is mw.pageTriage.ArticleList
 			this.model.setParams( apiParams );
@@ -544,7 +544,7 @@ $( function () {
 
 		// Sync the menu and other UI elements with the contents of the filters
 		menuSync: function () {
-			var that = this;
+			const that = this;
 			this.newFilterStatus = {
 				namespace: [],
 				state: [],
@@ -572,7 +572,7 @@ $( function () {
 			// Set the "Showing: ..." filter status.
 			this.filterStatus = Object.keys( this.newFilterStatus )
 				.map( function ( group ) {
-					var filters = that.newFilterStatus[ group ];
+					const filters = that.newFilterStatus[ group ];
 					if ( filters.length === 0 ) {
 						return '';
 					}
@@ -597,20 +597,20 @@ $( function () {
 		 * @param {string} context
 		 */
 		menuCheckboxUpdateOres: function ( context ) {
-			var selectors = [
-					'predicted-class-stub',
-					'predicted-class-start',
-					'predicted-class-c',
-					'predicted-class-b',
-					'predicted-class-good',
-					'predicted-class-featured',
-					'predicted-issues-vandalism',
-					'predicted-issues-spam',
-					'predicted-issues-attack',
-					'predicted-issues-copyvio',
-					'predicted-issues-none'
-				],
-				key;
+			const selectors = [
+				'predicted-class-stub',
+				'predicted-class-start',
+				'predicted-class-c',
+				'predicted-class-b',
+				'predicted-class-good',
+				'predicted-class-featured',
+				'predicted-issues-vandalism',
+				'predicted-issues-spam',
+				'predicted-issues-attack',
+				'predicted-issues-copyvio',
+				'predicted-issues-none'
+			];
+			let key;
 			for ( key in selectors ) {
 				this.menuCheckboxUpdate(
 					$( '#mwe-pt-filter-' + context + '-' + selectors[ key ] ),
@@ -629,7 +629,7 @@ $( function () {
 			// Make sure the radio button for the feed is correct, and the corresponding filter menu is shown.
 			$( '#mwe-pt-radio-npp' ).prop( 'checked', true );
 
-			var namespace = this.model.getParam( 'namespace' );
+			const namespace = this.model.getParam( 'namespace' );
 			$( '#mwe-pt-filter-namespace' ).val( namespace );
 			this.newFilterStatus.namespace.push( $( '#mwe-pt-filter-namespace' ).find( ':selected' ).text() );
 
@@ -642,7 +642,7 @@ $( function () {
 
 			this.menuCheckboxUpdateOres( 'npp' );
 
-			var username = this.model.getParam( 'username' );
+			const username = this.model.getParam( 'username' );
 			if ( username ) {
 				this.newFilterStatus.top.push( mw.msg( 'pagetriage-filter-stat-username', username ) );
 				$( '#mwe-pt-filter-user-selected' ).prop( 'checked', true );
@@ -678,22 +678,22 @@ $( function () {
 		 * @param {string} context
 		 */
 		menuSyncDateRange: function ( context ) {
-			var offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
+			const offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
 
-			var dateRangeFrom = this.model.getParam( 'date_range_from' ); // ISO format
+			let dateRangeFrom = this.model.getParam( 'date_range_from' ); // ISO format
 			if ( dateRangeFrom ) {
 				dateRangeFrom = moment( dateRangeFrom );
-				var formattedDateFrom = dateRangeFrom.utcOffset( offset )
+				const formattedDateFrom = dateRangeFrom.utcOffset( offset )
 					.format( mw.msg( 'pagetriage-filter-date-range-format-showing' ) );
 				this.newFilterStatus.date_range.push( mw.msg( 'pagetriage-filter-stat-date_range_from', formattedDateFrom ) );
 				$( '#mwe-pt-filter-' + context + '-date-range-from' ).val( dateRangeFrom.utcOffset( offset )
 					.format( mw.msg( 'pagetriage-filter-date-range-format-input-field' ) ) );
 			}
 
-			var dateRangeTo = this.model.getParam( 'date_range_to' ); // ISO format
+			let dateRangeTo = this.model.getParam( 'date_range_to' ); // ISO format
 			if ( dateRangeTo ) {
 				dateRangeTo = moment( dateRangeTo );
-				var formattedDateTo = dateRangeTo.utcOffset( offset )
+				const formattedDateTo = dateRangeTo.utcOffset( offset )
 					.format( mw.msg( 'pagetriage-filter-date-range-format-showing' ) );
 				this.newFilterStatus.date_range.push( mw.msg( 'pagetriage-filter-stat-date_range_to', formattedDateTo ) );
 				$( '#mwe-pt-filter-' + context + '-date-range-to' ).val( dateRangeTo.utcOffset( offset )
@@ -733,7 +733,7 @@ $( function () {
 
 			$( '#mwe-pt-radio-afc' ).prop( 'checked', true );
 
-			var afcStateValue = this.model.getParam( 'afc_state' );
+			const afcStateValue = this.model.getParam( 'afc_state' );
 			$( 'input[name=mwe-pt-filter-afc-radio][value=' + afcStateValue + ']' )
 				.prop( 'checked', true );
 
@@ -749,14 +749,14 @@ $( function () {
 				this.$afcDeclinedSortOptions.detach();
 			}
 
-			var sortOptionId = this.getValidAfcSortOptionId(
+			const sortOptionId = this.getValidAfcSortOptionId(
 				this.model.getParam( 'afc_state' ),
 				this.model.getParam( 'afcDir' )
 			);
 			$( '#' + sortOptionId ).prop( 'selected', true );
 
 			// Set the "Showing: ..." filter status.
-			var afcStateName = $( 'input[name=mwe-pt-filter-afc-radio]:checked' ).data( 'afc-state-name' );
+			const afcStateName = $( 'input[name=mwe-pt-filter-afc-radio]:checked' ).data( 'afc-state-name' );
 			// eslint-disable-next-line mediawiki/msg-doc
 			this.newFilterStatus.state.push( mw.msg( 'pagetriage-afc-state-' + afcStateName ) );
 		},

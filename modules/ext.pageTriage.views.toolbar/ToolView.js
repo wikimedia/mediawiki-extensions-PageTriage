@@ -78,7 +78,7 @@ module.exports = Backbone.View.extend( {
 
 		// If the toolbar has been dragged to the other side of the screen
 		// make sure the flyout opens in the opposite direction.
-		var flyoutOffset = this.$el.find( '.mwe-pt-tool-flyout' ).outerWidth() + 8;
+		const flyoutOffset = this.$el.find( '.mwe-pt-tool-flyout' ).outerWidth() + 8;
 		if (
 			(
 				// For LTR, calculate the value from the left
@@ -120,7 +120,7 @@ module.exports = Backbone.View.extend( {
 		this.eventBus.unbind( 'showTool', null, this );
 
 		// re-add the hover action
-		var that = this;
+		const that = this;
 		// eslint-disable-next-line no-jquery/no-event-shorthand
 		this.$icon.hover(
 			function () {
@@ -138,7 +138,7 @@ module.exports = Backbone.View.extend( {
 			return null;
 		}
 
-		var iconPath;
+		let iconPath;
 		if ( this.specialIcon ) {
 			iconPath = this.iconPath( 'special' );
 		} else {
@@ -155,7 +155,7 @@ module.exports = Backbone.View.extend( {
 		this.$icon = this.$el.find( '.mwe-pt-tool-icon' );
 
 		// bind a click handler to open it.
-		var that = this;
+		const that = this;
 		this.$icon.on( 'click', function () {
 			that.click();
 		} );
@@ -223,7 +223,7 @@ module.exports = Backbone.View.extend( {
 	},
 
 	setBadge: function () {
-		var badgeCount = this.badgeCount();
+		const badgeCount = this.badgeCount();
 		if ( badgeCount ) {
 			this.$el.find( '.mwe-pt-tool-icon-container' ).badge( badgeCount );
 		}
@@ -236,7 +236,7 @@ module.exports = Backbone.View.extend( {
 	 * @return {number}
 	 */
 	objectPropCount: function ( obj ) {
-		var key,
+		let key,
 			count = 0;
 		for ( key in obj ) {
 			if ( Object.prototype.hasOwnProperty.call( obj, key ) ) {
@@ -257,7 +257,7 @@ module.exports = Backbone.View.extend( {
 
 		// Allow for data.reviewed override, since the caller might
 		// have just changed the reviewed status.
-		var reviewed = !!( this.model.get( 'patrol_status' ) !== '0' || data.reviewed );
+		const reviewed = !!( this.model.get( 'patrol_status' ) !== '0' || data.reviewed );
 
 		if ( reviewed ) {
 			data.reviewer = data.reviewer || this.model.get( 'reviewer' );

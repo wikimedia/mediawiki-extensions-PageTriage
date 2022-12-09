@@ -1,6 +1,6 @@
 // view for marking a page as reviewed or unreviewed
 
-var ToolView = require( './ToolView.js' ),
+const ToolView = require( './ToolView.js' ),
 	config = require( './config.json' );
 module.exports = ToolView.extend( {
 	id: 'mwe-pt-mark',
@@ -47,7 +47,7 @@ module.exports = ToolView.extend( {
 	},
 
 	submit: function ( action ) {
-		var that = this,
+		const that = this,
 			note = '',
 			reviewed = action === 'reviewed';
 
@@ -58,7 +58,7 @@ module.exports = ToolView.extend( {
 		} )
 			.then( function () {
 				// Data to be sent back to consumers of the actionQueue API.
-				var actionData = that.getDataForActionQueue( {
+				const actionData = that.getDataForActionQueue( {
 					reviewed: reviewed,
 					reviewer: mw.config.get( 'wgUserName' )
 				} );
@@ -83,10 +83,10 @@ module.exports = ToolView.extend( {
 	},
 
 	submitNote: function () {
-		var that = this,
-			action = 'noteSent',
-			recipient = 'creator',
-			note = $( '#mwe-pt-review-note-input' ).val().trim();
+		const that = this;
+		const action = 'noteSent';
+		let recipient = 'creator';
+		const note = $( '#mwe-pt-review-note-input' ).val().trim();
 
 		if ( !note.length ) {
 			return;
@@ -99,11 +99,11 @@ module.exports = ToolView.extend( {
 	},
 
 	talkPageNote: function ( note, action, noteRecipient ) {
-		var talkPageTitle,
+		const that = this;
+		const pageTitle = mw.config.get( 'wgPageName' ).replace( /_/g, ' ' );
+		let talkPageTitle,
 			topicTitle,
 			topicMessage,
-			that = this,
-			pageTitle = mw.config.get( 'wgPageName' ).replace( /_/g, ' ' ),
 			sendNotePromise,
 			sendNoteToArticleTalkPage = false;
 
@@ -147,7 +147,7 @@ module.exports = ToolView.extend( {
 			sendNoteToArticleTalkPage = noteRecipient === 'creator';
 		}
 
-		var sendNote1 = that.sendNote( talkPageTitle, topicTitle, topicMessage );
+		const sendNote1 = that.sendNote( talkPageTitle, topicTitle, topicMessage );
 
 		// If the note needs to be posted to article talk page as well then we handle
 		// both post note promises resolve/reject states through a single promise
@@ -160,7 +160,7 @@ module.exports = ToolView.extend( {
 				'pagetriage-feedback-from-new-page-review-process-message',
 				note
 			).text();
-			var sendNote2 = that.sendNote( talkPageTitle, topicTitle, topicMessage );
+			const sendNote2 = that.sendNote( talkPageTitle, topicTitle, topicMessage );
 			sendNotePromise = $.when( sendNote1, sendNote2 );
 		} else { // Do not post note to article talk page
 			sendNotePromise = sendNote1;
@@ -180,7 +180,7 @@ module.exports = ToolView.extend( {
 	},
 
 	sendNote: function ( talkPageTitle, topicTitle, note ) {
-		var messagePosterPromise = mw.messagePoster.factory.create(
+		const messagePosterPromise = mw.messagePoster.factory.create(
 			new mw.Title( talkPageTitle )
 		);
 
@@ -215,13 +215,13 @@ module.exports = ToolView.extend( {
 	},
 
 	render: function () {
-		var that = this,
+		let note = '';
+		const that = this,
 			status = this.model.get( 'patrol_status' ) === '0' ? 'reviewed' : 'unreviewed',
-			note = '',
 			hasPreviousReviewer = this.model.get( 'ptrp_last_reviewed_by' ) > 0,
 			articleCreator = this.model.get( 'user_name' ),
-			previousReviewer = hasPreviousReviewer ? this.model.get( 'reviewer' ) : '',
-			noteTarget = hasPreviousReviewer ? previousReviewer : articleCreator,
+			previousReviewer = hasPreviousReviewer ? this.model.get( 'reviewer' ) : '';
+		let noteTarget = hasPreviousReviewer ? previousReviewer : articleCreator,
 			notePlaceholder = hasPreviousReviewer ? 'pagetriage-message-for-reviewer-placeholder' :
 				'pagetriage-message-for-creator-default-note';
 
@@ -250,7 +250,7 @@ module.exports = ToolView.extend( {
 		if ( this.moduleConfig.note.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) !== -1 ) {
 			$( '#mwe-pt-review-note' ).show();
 			$( '#mwe-pt-review-note-input, #mwe-pt-review-note-recipient' ).on( 'input', function () {
-				var recipient = $( '#mwe-pt-review-note-recipient' ).val();
+				const recipient = $( '#mwe-pt-review-note-recipient' ).val();
 				note = $( '#mwe-pt-review-note-input' ).val().trim();
 				if ( note.length && recipient.length ) {
 					$( '#mwe-pt-send-message-button' ).button( 'enable' );

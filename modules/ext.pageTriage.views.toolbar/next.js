@@ -1,6 +1,6 @@
 // Move to the next page
 
-var
+const
 	// create an event aggregator
 	eventBus = _.extend( {}, Backbone.Events ),
 	// instantiate the collection of articles
@@ -28,7 +28,8 @@ module.exports = ToolView.extend( {
 	},
 
 	click: function () {
-		var page, that = this;
+		let page;
+		const that = this;
 
 		// find the next page.
 		this.eventBus.trigger( 'showTool', this );
@@ -39,7 +40,7 @@ module.exports = ToolView.extend( {
 		// attempt to get the next page
 		new mw.Api().get( this.apiParams )
 			.then( function ( result ) {
-				var url;
+				let url;
 				// If API returns the content for next page 'result.pagetriagelist.pages[ 0 ]'
 				// then user should be able to advance to next page
 				if ( result.pagetriagelist && result.pagetriagelist.pages && result.pagetriagelist.pages[ 0 ] ) {
