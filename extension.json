@@ -119,7 +119,8 @@
 			"scripts": [
 				"external/underscore.js",
 				"external/backbone.js",
-				"external/jquery.waypoints.js"
+				"external/jquery.waypoints.js",
+				"external/jquery.tipoff/jquery.tipoff.js"
 			]
 		},
 		"ext.pageTriage.init": {
@@ -163,13 +164,13 @@
 			"dependencies": [
 				"mediawiki.jqueryMsg",
 				"ext.pageTriage.util",
+				"ext.pageTriage.external",
 				"jquery.ui",
 				"jquery.spinner",
 				"jquery.client",
 				"moment"
 			],
 			"scripts": [
-				"jquery.tipoff/jquery.tipoff.js",
 				"ext.pageTriage.views.list/ext.pageTriage.listItem.js",
 				"ext.pageTriage.views.list/ext.pageTriage.listControlNav.js",
 				"ext.pageTriage.views.list/ext.pageTriage.listStatsNav.js",
@@ -181,7 +182,7 @@
 				"listStatsNav.underscore": "ext.pageTriage.views.list/ext.pageTriage.listStatsNav.underscore"
 			},
 			"styles": [
-				"jquery.tipoff/jquery.tipoff.css",
+				"external/jquery.tipoff/jquery.tipoff.css",
 				"ext.pageTriage.css",
 				"ext.pageTriage.views.list/ext.pageTriage.listItem.css",
 				"ext.pageTriage.views.list/ext.pageTriage.listControlNav.less",
