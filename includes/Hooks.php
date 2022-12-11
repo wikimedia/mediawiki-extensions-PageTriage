@@ -974,10 +974,6 @@ class Hooks implements ApiMain__moduleManagerHook {
 				[ 'ptrt_tag_name' => 'user_block_status', 'ptrt_tag_desc' => 'User block status' ],
 				[ 'ptrt_tag_name' => 'user_id', 'ptrt_tag_desc' => 'User id' ],
 				[ 'ptrt_tag_name' => 'reference', 'ptrt_tag_desc' => 'Check if page has references' ],
-				[ 'ptrt_tag_name' => 'afc_state', 'ptrt_tag_desc' => 'The submission state of drafts' ],
-				[ 'ptrt_tag_name' => 'copyvio', 'ptrt_tag_desc' =>
-					'Latest revision ID that has been tagged as a likely copyright violation, if any' ],
-				[ 'ptrt_tag_name' => 'recreated', 'ptrt_tag_desc' => 'Check if the page has been previously deleted.' ],
 				// 1.32
 				[ 'ptrt_tag_name' => 'afc_state', 'ptrt_tag_desc' => 'The submission state of drafts' ],
 				[ 'ptrt_tag_name' => 'copyvio', 'ptrt_tag_desc' =>
