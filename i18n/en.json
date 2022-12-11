@@ -365,7 +365,7 @@
 	"pagetriage-del-tags-redirectsfordiscussion-label": "Redirects for discussion",
 	"pagetriage-del-tags-miscellanyfordeletion-label": "Miscellany for deletion",
 	"pagetriage-feedback-from-new-page-review-process-title": "Feedback from New Page Review process",
-	"pagetriage-feedback-from-new-page-review-process-message": "I left the following feedback for the creator/future reviewers while reviewing this article: $1.",
+	"pagetriage-feedback-from-new-page-review-process-message": "I left the following feedback for the creator/future reviewers while reviewing this article: $1",
 	"pagetriage-mark-mark-talk-page-notify-topic-title": "A page {{GENDER:|you}} started ($1) has been reviewed!",
 	"pagetriage-mark-unmark-talk-page-notify-topic-title": "I have unreviewed a page {{GENDER:|you}} curated",
 	"pagetriage-note-sent-talk-page-notify-topic-title": "I have sent {{GENDER:|you}} a note about a page {{GENDER:|you}} started",
