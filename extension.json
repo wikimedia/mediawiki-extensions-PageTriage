@@ -617,7 +617,8 @@
 		"main": {
 			"class": "MediaWiki\\Extension\\PageTriage\\Hooks",
 			"services": [
-				"MainConfig"
+				"MainConfig",
+				"RevisionLookup"
 			]
 		},
 		"schema": {
@@ -628,7 +629,7 @@
 		"ApiMain::moduleManager": "main",
 		"LoadExtensionSchemaUpdates": "schema",
 		"PageMoveComplete": "main",
-		"RevisionFromEditComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onRevisionFromEditComplete",
+		"RevisionFromEditComplete": "main",
 		"PageSaveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageSaveComplete",
 		"LinksUpdateComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onLinksUpdateComplete",
 		"ArticleViewFooter": "MediaWiki\\Extension\\PageTriage\\Hooks::onArticleViewFooter",

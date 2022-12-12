@@ -21,8 +21,10 @@ use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddMaintenanceTagPres
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageMarkAsReviewedPresentationModel;
 use MediaWiki\Hook\PageMoveCompleteHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\Hook\RevisionFromEditCompleteHook;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\ResourceLoader;
+use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\User\UserIdentity;
@@ -39,7 +41,8 @@ class Hooks implements
 	ListDefinedTagsHook,
 	ChangeTagsListActiveHook,
 	ChangeTagsAllowedAddHook,
-	PageMoveCompleteHook
+	PageMoveCompleteHook,
+	RevisionFromEditCompleteHook
 {
 
 	private const TAG_NAME = 'pagetriage';
@@ -47,11 +50,16 @@ class Hooks implements
 	/** @var Config */
 	private Config $config;
 
+	/** @var RevisionLookup */
+	private RevisionLookup $revisionLookup;
+
 	/**
 	 * @param Config $config
+	 * @param RevisionLookup $revisionLookup
 	 */
-	public function __construct( Config $config ) {
+	public function __construct( Config $config, RevisionLookup $revisionLookup ) {
 		$this->config = $config;
+		$this->revisionLookup = $revisionLookup;
 	}
 
 	/** @inheritDoc */
@@ -106,18 +114,10 @@ class Hooks implements
 		}
 	}
 
-	/**
-	 * Check if a page is created from a redirect page, then insert into it PageTriage Queue
-	 * Note: Page will be automatically marked as triaged for users with autopatrol right
-	 *
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/RevisionFromEditComplete
-	 *
-	 * @param WikiPage $wikiPage the WikiPage edited
-	 * @param RevisionRecord $rev the new revision
-	 * @param int $baseID the revision ID this was based on, if any
-	 * @param UserIdentity $user the editing user
-	 */
-	public static function onRevisionFromEditComplete( WikiPage $wikiPage, $rev, $baseID, $user ) {
+	/** @inheritDoc */
+	public function onRevisionFromEditComplete( $wikiPage, $rev, $baseID, $user, &$tags ) {
+		// Check if a page is created from a redirect page, then insert into it PageTriage Queue
+		// Note: Page will be automatically marked as triaged for users with autopatrol right
 		if ( !in_array( $wikiPage->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			return;
 		}
@@ -125,9 +125,7 @@ class Hooks implements
 		if ( $rev && $rev->getParentId() ) {
 			// Make sure $prev->getContent() is done post-send if possible
 			DeferredUpdates::addCallableUpdate( function () use ( $rev, $wikiPage, $user ) {
-				$prevRevRecord = MediaWikiServices::getInstance()
-					->getRevisionLookup()
-					->getRevisionById( $rev->getParentId() );
+				$prevRevRecord = $this->revisionLookup->getRevisionById( $rev->getParentId() );
 				if ( $prevRevRecord &&
 					!$wikiPage->isRedirect() &&
 					$prevRevRecord->getContent( SlotRecord::MAIN )->isRedirect()
