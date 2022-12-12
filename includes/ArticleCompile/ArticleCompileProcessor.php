@@ -189,6 +189,8 @@ class ArticleCompileProcessor {
 	 *   The compiled metadata.
 	 */
 	public function compileMetadata( $mode = self::SAVE_IMMEDIATE ) {
+		$startTime = microtime( true );
+
 		// For deferred / job saves, use the replica for reading data.
 		if ( in_array( $mode, [ self::SAVE_DEFERRED, self::SAVE_JOB ] ) ) {
 			foreach ( $this->component as $key => $value ) {
@@ -239,6 +241,13 @@ class ArticleCompileProcessor {
 				break;
 			case self::SAVE_IMMEDIATE:
 				$this->save();
+		}
+
+		if ( $mode === self::SAVE_IMMEDIATE ) {
+			$this->statsdDataFactory->timing(
+				'timing.pageTriage.articleCompileProcessor.compileMetadata.saveImmediate',
+				microtime( true ) - $startTime
+			);
 		}
 
 		return $this->metadata;
