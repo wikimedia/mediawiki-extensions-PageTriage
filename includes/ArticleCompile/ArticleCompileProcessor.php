@@ -109,16 +109,6 @@ class ArticleCompileProcessor {
 		}
 	}
 
-	/**
-	 * Cache an up-to-date WikiPage object for later use
-	 * @param WikiPage $article
-	 */
-	public function registerArticle( WikiPage $article ) {
-		if ( in_array( $article->getId(), $this->pageIds ) ) {
-			$this->articles[$article->getId()] = $article;
-		}
-	}
-
 	public function registerLinksUpdate( LinksUpdate $linksUpdate ) {
 		$id = $linksUpdate->getTitle()->getArticleID();
 		if ( in_array( $id, $this->pageIds ) ) {
