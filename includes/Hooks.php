@@ -19,7 +19,7 @@ use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddDeletionTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddMaintenanceTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageMarkAsReviewedPresentationModel;
-use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Hook\PageMoveCompleteHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\ResourceLoader;
@@ -38,7 +38,8 @@ class Hooks implements
 	ApiMain__moduleManagerHook,
 	ListDefinedTagsHook,
 	ChangeTagsListActiveHook,
-	ChangeTagsAllowedAddHook
+	ChangeTagsAllowedAddHook,
+	PageMoveCompleteHook
 {
 
 	private const TAG_NAME = 'pagetriage';
@@ -53,28 +54,18 @@ class Hooks implements
 		$this->config = $config;
 	}
 
-	/**
-	 * Mark a page as unreviewed after moving the page from non-main(article) namespace to
-	 * main(article) namespace
-	 *
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageMoveComplete
-	 * @param LinkTarget $oldTitle old title object
-	 * @param LinkTarget $newTitle new title object
-	 * @param UserIdentity $user User doing the move
-	 * @param int $oldid Page id of moved page
-	 * @param int $newid Page id of created redirect, or 0 if suppressed
-	 * @param string $reason Reason for the move
-	 * @param RevisionRecord $revisionRecord Null revision created by the move
-	 */
-	public static function onPageMoveComplete(
-		LinkTarget $oldTitle,
-		LinkTarget $newTitle,
-		UserIdentity $user,
+	/** @inheritDoc */
+	public function onPageMoveComplete(
+		$oldTitle,
+		$newTitle,
+		$user,
 		$oldid,
 		$newid,
 		$reason,
-		RevisionRecord $revisionRecord
+		$revisionRecord
 	) {
+		// Mark a page as unreviewed after moving the page from non-main(article) namespace to
+		// main(article) namespace
 		// Delete cache for record if it's in pagetriage queue
 		$articleMetadata = new ArticleMetadata( [ $oldid ] );
 		$articleMetadata->flushMetadataFromCache();
@@ -91,9 +82,7 @@ class Hooks implements
 		// Do nothing further on if
 		// 1. the page move is within the same namespace or
 		// 2. the new page is not in either the main or draft namespaces
-		$draftNsId = MediaWikiServices::getInstance()
-			->getMainConfig()
-			->get( 'PageTriageDraftNamespaceId' );
+		$draftNsId = $this->config->get( 'PageTriageDraftNamespaceId' );
 		if (
 			$oldNamespace === $newNamespace
 			|| !in_array( $newNamespace, [ NS_MAIN, $draftNsId ], true )

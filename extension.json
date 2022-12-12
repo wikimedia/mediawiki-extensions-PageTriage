@@ -627,7 +627,7 @@
 	"Hooks": {
 		"ApiMain::moduleManager": "main",
 		"LoadExtensionSchemaUpdates": "schema",
-		"PageMoveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageMoveComplete",
+		"PageMoveComplete": "main",
 		"RevisionFromEditComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onRevisionFromEditComplete",
 		"PageSaveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageSaveComplete",
 		"LinksUpdateComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onLinksUpdateComplete",
