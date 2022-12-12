@@ -24,6 +24,17 @@
 		"no-shadow": "warn",
 		"no-unreachable-loop": "warn",
 		"mediawiki/msg-doc": "warn",
-		"no-var": "warn"
+		"no-var": "warn",
+		"no-restricted-syntax": [
+			"error",
+			{
+				"message": "Using .done() is not allowed. See https://www.mediawiki.org/wiki/Manual:Coding_conventions/JavaScript#Asynchronous_code",
+				"selector": "MemberExpression > Identifier[name=\"done\"]"
+			},
+			{
+				"message": "Using .fail() is not allowed. See https://www.mediawiki.org/wiki/Manual:Coding_conventions/JavaScript#Asynchronous_code",
+				"selector": "MemberExpression > Identifier[name=\"fail\"]"
+			}
+		]
 	}
 }
