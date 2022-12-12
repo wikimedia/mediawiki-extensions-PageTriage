@@ -364,7 +364,7 @@
 	"pagetriage-del-tags-redirectsfordiscussion-label": "Preusmeritve za pogovor",
 	"pagetriage-del-tags-miscellanyfordeletion-label": "Razno za brisanje",
 	"pagetriage-feedback-from-new-page-review-process-title": "Povratne informacije iz postopka pregleda nove strani",
-	"pagetriage-feedback-from-new-page-review-process-message": "Med pregledovanjem tega članka sem za ustvarjalca/prihodnje pregledovalce pustil naslednje povratne informacije: $1.",
+	"pagetriage-feedback-from-new-page-review-process-message": "Med pregledovanjem tega članka sem za ustvarjalca/prihodnje pregledovalce pustil naslednje povratne informacije: $1",
 	"pagetriage-mark-mark-talk-page-notify-topic-title": "Stran, {{GENDER:|ki ste jo}} začeli ($1), je bila pregledana!",
 	"pagetriage-mark-unmark-talk-page-notify-topic-title": "Stran, ki si jo {{GENDER:|pregledal|pregledala|pregledal_a}}, sem označil_a kot nepregledano",
 	"pagetriage-note-sent-talk-page-notify-topic-title": "Poslal_a sem {{GENDER:|ti}} obvestilo o strani, ki si jo {{GENDER:|začel|začela|začel_a}}",

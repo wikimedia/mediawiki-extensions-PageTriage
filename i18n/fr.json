@@ -384,7 +384,7 @@
 	"pagetriage-del-tags-redirectsfordiscussion-label": "Redirections pour discussion",
 	"pagetriage-del-tags-miscellanyfordeletion-label": "Vrac à supprimer",
 	"pagetriage-feedback-from-new-page-review-process-title": "Avis sur le processus de relecture de nouvelle page",
-	"pagetriage-feedback-from-new-page-review-process-message": "J’ai laissé le commentaire suivant pour le créateur et les futurs relecteurs lors de la relecture de cet article : $1.",
+	"pagetriage-feedback-from-new-page-review-process-message": "J’ai laissé le commentaire suivant pour le créateur et les futurs relecteurs lors de la relecture de cet article : $1",
 	"pagetriage-mark-mark-talk-page-notify-topic-title": "Une page que {{GENDER:|}}vous avez commencée ($1) a été relue !",
 	"pagetriage-mark-unmark-talk-page-notify-topic-title": "J’ai remis en relecture une page que {{GENDER:|}}vous avez supervisée",
 	"pagetriage-note-sent-talk-page-notify-topic-title": "Je {{GENDER:|}}vous ai envoyé une note sur une page que {{GENDER:|}}vous avez commencée",
