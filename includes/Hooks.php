@@ -27,6 +27,7 @@ use MediaWiki\ResourceLoader\ResourceLoader;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\User\UserIdentity;
 use MWTimestamp;
 use ParserOutput;
@@ -42,7 +43,8 @@ class Hooks implements
 	ChangeTagsListActiveHook,
 	ChangeTagsAllowedAddHook,
 	PageMoveCompleteHook,
-	RevisionFromEditCompleteHook
+	RevisionFromEditCompleteHook,
+	PageSaveCompleteHook
 {
 
 	private const TAG_NAME = 'pagetriage';
@@ -141,28 +143,19 @@ class Hooks implements
 		}
 	}
 
-	/**
-	 * Page saved, flush cache
-	 *
-	 * If new article is created, insert it into PageTriage Queue and compile metadata.
-	 *
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageSaveComplete
-	 *
-	 * @param WikiPage $wikiPage WikiPage created
-	 * @param UserIdentity $user User creating the article
-	 * @param string $summary Edit summary/comment
-	 * @param int $flags Flags passed to Article::doEdit()
-	 * @param RevisionRecord $revisionRecord New Revision of the article
-	 */
-	public static function onPageSaveComplete(
-		WikiPage $wikiPage,
-		UserIdentity $user,
-		string $summary,
-		int $flags,
-		RevisionRecord $revisionRecord
+	/** @inheritDoc */
+	public function onPageSaveComplete(
+		$wikiPage,
+		$user,
+		$summary,
+		$flags,
+		$revisionRecord,
+		$editResult
 	) {
+		// When a new article is created, insert it into PageTriage Queue and compile metadata.
 		$title = $wikiPage->getTitle();
 
+		// Page saved, flush cache
 		self::flushUserStatusCache( $title );
 
 		if ( !( $flags & EDIT_NEW ) ) {

@@ -630,7 +630,7 @@
 		"LoadExtensionSchemaUpdates": "schema",
 		"PageMoveComplete": "main",
 		"RevisionFromEditComplete": "main",
-		"PageSaveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageSaveComplete",
+		"PageSaveComplete": "main",
 		"LinksUpdateComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onLinksUpdateComplete",
 		"ArticleViewFooter": "MediaWiki\\Extension\\PageTriage\\Hooks::onArticleViewFooter",
 		"ArticleDeleteComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onArticleDeleteComplete",
