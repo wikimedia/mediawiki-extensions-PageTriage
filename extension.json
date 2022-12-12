@@ -618,7 +618,10 @@
 			"class": "MediaWiki\\Extension\\PageTriage\\Hooks",
 			"services": [
 				"MainConfig",
-				"RevisionLookup"
+				"RevisionLookup",
+				"StatsdDataFactory",
+				"PermissionManager",
+				"RevisionStore"
 			]
 		},
 		"schema": {
@@ -632,7 +635,7 @@
 		"RevisionFromEditComplete": "main",
 		"PageSaveComplete": "main",
 		"LinksUpdateComplete": "main",
-		"ArticleViewFooter": "MediaWiki\\Extension\\PageTriage\\Hooks::onArticleViewFooter",
+		"ArticleViewFooter": "main",
 		"ArticleDeleteComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onArticleDeleteComplete",
 		"MarkPatrolledComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onMarkPatrolledComplete",
 		"BlockIpComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onBlockIpComplete",

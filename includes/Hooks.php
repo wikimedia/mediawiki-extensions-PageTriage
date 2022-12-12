@@ -9,6 +9,7 @@ use DeferredUpdates;
 use EchoEvent;
 use ExtensionRegistry;
 use Html;
+use IBufferingStatsdDataFactory;
 use MediaWiki\Api\Hook\ApiMain__moduleManagerHook;
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\ChangeTags\Hook\ChangeTagsAllowedAddHook;
@@ -21,11 +22,14 @@ use MediaWiki\Extension\PageTriage\Notifications\PageTriageMarkAsReviewedPresent
 use MediaWiki\Hook\LinksUpdateCompleteHook;
 use MediaWiki\Hook\PageMoveCompleteHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\Hook\ArticleViewFooterHook;
 use MediaWiki\Page\Hook\RevisionFromEditCompleteHook;
+use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\ResourceLoader;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\User\UserIdentity;
@@ -34,6 +38,7 @@ use ParserOutput;
 use RecentChange;
 use Title;
 use User;
+use WikiMap;
 use Wikimedia\Rdbms\Database;
 use WikiPage;
 
@@ -45,7 +50,8 @@ class Hooks implements
 	PageMoveCompleteHook,
 	RevisionFromEditCompleteHook,
 	PageSaveCompleteHook,
-	LinksUpdateCompleteHook
+	LinksUpdateCompleteHook,
+	ArticleViewFooterHook
 {
 
 	private const TAG_NAME = 'pagetriage';
@@ -56,13 +62,34 @@ class Hooks implements
 	/** @var RevisionLookup */
 	private RevisionLookup $revisionLookup;
 
+	/** @var IBufferingStatsdDataFactory */
+	private IBufferingStatsdDataFactory $statsdDataFactory;
+
+	/** @var PermissionManager */
+	private PermissionManager $permissionManager;
+
+	/** @var RevisionStore */
+	private RevisionStore $revisionStore;
+
 	/**
 	 * @param Config $config
 	 * @param RevisionLookup $revisionLookup
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param PermissionManager $permissionManager
+	 * @param RevisionStore $revisionStore
 	 */
-	public function __construct( Config $config, RevisionLookup $revisionLookup ) {
+	public function __construct(
+		Config $config,
+		RevisionLookup $revisionLookup,
+		IBufferingStatsdDataFactory $statsdDataFactory,
+		PermissionManager $permissionManager,
+		RevisionStore $revisionStore
+	) {
 		$this->config = $config;
 		$this->revisionLookup = $revisionLookup;
+		$this->statsdDataFactory = $statsdDataFactory;
+		$this->permissionManager = $permissionManager;
+		$this->revisionStore = $revisionStore;
 	}
 
 	/** @inheritDoc */
@@ -414,16 +441,10 @@ class Hooks implements
 		return $articleDaysOld < $maxAgeInDays;
 	}
 
-	/**
-	 * Handler for hook ArticleViewFooter, this will determine whether to load
-	 * curation toolbar or 'mark as reviewed'/'reviewed' text
-	 *
-	 * @param Article $article Article object to show link for.
-	 * @param bool $patrolFooterShown whether the patrol footer is shown
-	 */
-	public static function onArticleViewFooter( Article $article, $patrolFooterShown ) {
-		global $wgPageTriageEnableCurationToolbar, $wgDBname;
-
+	/** @inheritDoc */
+	public function onArticleViewFooter( $article, $patrolFooterShown ) {
+		// Handler for hook ArticleViewFooter, this will determine whether to load
+		// curation toolbar or 'mark as reviewed'/'reviewed' text
 		$wikiPage = $article->getPage();
 		$title = $wikiPage->getTitle();
 		$context = $article->getContext();
@@ -434,8 +455,8 @@ class Hooks implements
 		// Overwrite the noindex rule defined in Article::view(), this also affects main namespace
 		if ( self::shouldShowNoIndex( $article ) ) {
 			$outputPage->setRobotPolicy( 'noindex,nofollow' );
-			MediaWikiServices::getInstance()->getStatsdDataFactory()->increment(
-				"extension.PageTriage.by_wiki.$wgDBname.noindex"
+			$this->statsdDataFactory->increment(
+				'extension.PageTriage.by_wiki.' . WikiMap::getCurrentWikiId() . '.noindex'
 			);
 		}
 
@@ -445,8 +466,7 @@ class Hooks implements
 		}
 
 		// Don't show anything for user with no patrol right
-		$permManager = MediaWikiServices::getInstance()->getPermissionManager();
-		if ( !$permManager->quickUserCan( 'patrol', $user, $title ) ) {
+		if ( !$this->permissionManager->quickUserCan( 'patrol', $user, $title ) ) {
 			return;
 		}
 
@@ -464,14 +484,14 @@ class Hooks implements
 		// If it isn't, $needsReview will be null
 		// Also, users without the autopatrol right can't review their own pages
 		$needsReview = PageTriageUtil::isPageUnreviewed( $wikiPage );
-		$revStore = MediaWikiServices::getInstance()->getRevisionStore();
 		if ( $needsReview !== null
 			&& (
-				!$user->equals( $revStore->getFirstRevision( $title )->getUser( RevisionRecord::RAW ) )
-				|| $permManager->userHasRight( $user, 'autopatrol' )
+				!$user->equals( $this->revisionStore->getFirstRevision( $title )->getUser( RevisionRecord::RAW ) )
+				|| $this->permissionManager->userHasRight( $user, 'autopatrol' )
 			)
 		) {
-			if ( $wgPageTriageEnableCurationToolbar || $request->getVal( 'curationtoolbar' ) === 'true' ) {
+			if ( $this->config->get( 'PageTriageEnableCurationToolbar' ) ||
+				$request->getVal( 'curationtoolbar' ) === 'true' ) {
 				// Load the JavaScript for the curation toolbar
 				$outputPage->addModules( 'ext.pageTriage.toolbarStartup' );
 			} else {
