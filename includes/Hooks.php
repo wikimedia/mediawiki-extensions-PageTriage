@@ -9,7 +9,6 @@ use DeferredUpdates;
 use EchoEvent;
 use ExtensionRegistry;
 use Html;
-use LinksUpdate;
 use MediaWiki\Api\Hook\ApiMain__moduleManagerHook;
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\ChangeTags\Hook\ChangeTagsAllowedAddHook;
@@ -19,6 +18,7 @@ use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddDeletionTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddMaintenanceTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageMarkAsReviewedPresentationModel;
+use MediaWiki\Hook\LinksUpdateCompleteHook;
 use MediaWiki\Hook\PageMoveCompleteHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\RevisionFromEditCompleteHook;
@@ -44,7 +44,8 @@ class Hooks implements
 	ChangeTagsAllowedAddHook,
 	PageMoveCompleteHook,
 	RevisionFromEditCompleteHook,
-	PageSaveCompleteHook
+	PageSaveCompleteHook,
+	LinksUpdateCompleteHook
 {
 
 	private const TAG_NAME = 'pagetriage';
@@ -176,21 +177,16 @@ class Hooks implements
 		);
 	}
 
-	/**
-	 * Update metadata when link information is updated.
-	 *
-	 * This is also run after every page save.
-	 *
-	 * Note that this hook can be triggered by a GET request (rollback action, until T88044 is
-	 * sorted out), in which case master DB connections and writes on GET request can occur.
-	 *
-	 * @param LinksUpdate $linksUpdate
-	 */
-	public static function onLinksUpdateComplete( LinksUpdate $linksUpdate ) {
+	/** @inheritDoc */
+	public function onLinksUpdateComplete( $linksUpdate, $ticket ) {
 		if ( !in_array( $linksUpdate->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			return;
 		}
 
+		// Update metadata when link information is updated.
+		// This is also run after every page save.
+		// Note that this hook can be triggered by a GET request (rollback action, until T88044 is
+		// sorted out), in which case master DB connections and writes on GET request can occur.
 		DeferredUpdates::addCallableUpdate( static function () use ( $linksUpdate ) {
 			// Validate the page ID from DB_PRIMARY, compile metadata from DB_PRIMARY and return.
 			$acp = ArticleCompileProcessor::newFromPageId(

@@ -631,7 +631,7 @@
 		"PageMoveComplete": "main",
 		"RevisionFromEditComplete": "main",
 		"PageSaveComplete": "main",
-		"LinksUpdateComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onLinksUpdateComplete",
+		"LinksUpdateComplete": "main",
 		"ArticleViewFooter": "MediaWiki\\Extension\\PageTriage\\Hooks::onArticleViewFooter",
 		"ArticleDeleteComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onArticleDeleteComplete",
 		"MarkPatrolledComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onMarkPatrolledComplete",
