@@ -13,6 +13,9 @@ use Html;
 use LinksUpdate;
 use MediaWiki\Api\Hook\ApiMain__moduleManagerHook;
 use MediaWiki\Block\DatabaseBlock;
+use MediaWiki\ChangeTags\Hook\ChangeTagsAllowedAddHook;
+use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
+use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddDeletionTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddMaintenanceTagPresentationModel;
@@ -32,7 +35,14 @@ use User;
 use Wikimedia\Rdbms\Database;
 use WikiPage;
 
-class Hooks implements ApiMain__moduleManagerHook {
+class Hooks implements
+	ApiMain__moduleManagerHook,
+	ListDefinedTagsHook,
+	ChangeTagsListActiveHook,
+	ChangeTagsAllowedAddHook
+{
+
+	private const TAG_NAME = 'pagetriage';
 
 	/** @var Config */
 	private Config $config;
@@ -1013,14 +1023,19 @@ class Hooks implements ApiMain__moduleManagerHook {
 		}
 	}
 
-	/**
-	 * ListDefinedTags, ChangeTagsListActive and ChangeTagsAllowedAdd hook handler.
-	 * Registers this extension's tags.
-	 *
-	 * @param string[] &$tags
-	 */
-	public static function onDefinedTags( &$tags ) {
-		$tags[] = 'pagetriage';
+	/** @inheritDoc */
+	public function onListDefinedTags( &$tags ) {
+		$tags[] = self::TAG_NAME;
+	}
+
+	/** @inheritDoc */
+	public function onChangeTagsAllowedAdd( &$allowedTags, $addTags, $user ) {
+		$allowedTags[] = self::TAG_NAME;
+	}
+
+	/** @inheritDoc */
+	public function onChangeTagsListActive( &$tags ) {
+		$tags[] = self::TAG_NAME;
 	}
 
 	// phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
@@ -1036,4 +1051,5 @@ class Hooks implements ApiMain__moduleManagerHook {
 			);
 		}
 	}
+
 }
