@@ -619,11 +619,14 @@
 			"services": [
 				"MainConfig"
 			]
+		},
+		"schema": {
+			"class": "MediaWiki\\Extension\\PageTriage\\HookHandlers\\Schema"
 		}
 	},
 	"Hooks": {
 		"ApiMain::moduleManager": "main",
-		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\PageTriage\\Hooks::onLoadExtensionSchemaUpdates",
+		"LoadExtensionSchemaUpdates": "schema",
 		"PageMoveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageMoveComplete",
 		"RevisionFromEditComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onRevisionFromEditComplete",
 		"PageSaveComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onPageSaveComplete",
