@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
 use DeferredUpdates;
+use IBufferingStatsdDataFactory;
 use LinksUpdate;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\CompileArticleMetadataJob;
@@ -40,6 +41,9 @@ class ArticleCompileProcessor {
 	/** @var LinksUpdate[] */
 	protected $linksUpdates = [];
 
+	/** @var IBufferingStatsdDataFactory */
+	private IBufferingStatsdDataFactory $statsdDataFactory;
+
 	public const SAVE_IMMEDIATE = 0;
 	public const SAVE_DEFERRED = 1;
 	public const SAVE_JOB = 2;
@@ -66,8 +70,9 @@ class ArticleCompileProcessor {
 
 	/**
 	 * @param int[] $pageIds List of page IDs.
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 */
-	private function __construct( $pageIds ) {
+	private function __construct( $pageIds, IBufferingStatsdDataFactory $statsdDataFactory ) {
 		$this->pageIds = $pageIds;
 
 		$this->component = [
@@ -87,6 +92,7 @@ class ArticleCompileProcessor {
 
 		$this->metadata = array_fill_keys( $this->pageIds, [] );
 		$this->defaultMode = true;
+		$this->statsdDataFactory = $statsdDataFactory;
 	}
 
 	/**
@@ -103,7 +109,10 @@ class ArticleCompileProcessor {
 			$pageIds = ArticleMetadata::validatePageIds( $pageIds, $validateDb );
 		}
 		if ( $pageIds ) {
-			return new ArticleCompileProcessor( $pageIds );
+			return new ArticleCompileProcessor(
+				$pageIds,
+				MediaWikiServices::getInstance()->getStatsdDataFactory()
+			);
 		} else {
 			return false;
 		}
@@ -260,6 +269,7 @@ class ArticleCompileProcessor {
 
 		foreach ( $this->component as $key => $val ) {
 			if ( $val === 'on' ) {
+				$startTime = microtime( true );
 				$compClass = 'MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompile' . $key;
 				/** @var ArticleCompileInterface $comp */
 				$comp = new $compClass( $this->pageIds, $this->componentDb[$key], $this->articles,
@@ -268,6 +278,10 @@ class ArticleCompileProcessor {
 				if ( !$comp->compile() ) {
 					break;
 				}
+				$this->statsdDataFactory->timing(
+					'timing.pageTriage.articleCompileProcessor.process.' . $key,
+					microtime( true ) - $startTime
+				);
 				foreach ( $comp->getMetadata() as $pageId => $row ) {
 					$this->metadata[$pageId] += $row;
 				}
