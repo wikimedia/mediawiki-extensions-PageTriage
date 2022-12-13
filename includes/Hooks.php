@@ -26,6 +26,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\ArticleViewFooterHook;
 use MediaWiki\Page\Hook\PageDeleteCompleteHook;
 use MediaWiki\Page\Hook\RevisionFromEditCompleteHook;
+use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\PermissionManager;
@@ -124,8 +125,8 @@ class Hooks implements
 		$newTitle = Title::newFromLinkTarget( $newTitle );
 
 		// Delete user status cache
-		self::flushUserStatusCache( $oldTitle );
-		self::flushUserStatusCache( $newTitle );
+		self::flushUserStatusCache( $oldTitle->toPageIdentity() );
+		self::flushUserStatusCache( $newTitle->toPageIdentity() );
 
 		$oldNamespace = $oldTitle->getNamespace();
 		$newNamespace = $newTitle->getNamespace();
@@ -196,7 +197,7 @@ class Hooks implements
 		$title = $wikiPage->getTitle();
 
 		// Page saved, flush cache
-		self::flushUserStatusCache( $title );
+		self::flushUserStatusCache( $title->toPageIdentity() );
 
 		if ( !( $flags & EDIT_NEW ) ) {
 			// Don't add to queue if its not a new page
@@ -300,14 +301,12 @@ class Hooks implements
 	 * Flush user page/user talk page existence status, this function should
 	 * be called when a page gets created/deleted/moved/restored
 	 *
-	 * FIXME: Would be better if this method used getDBKey() and page identity.
-	 *
-	 * @param Title $title
+	 * @param PageIdentity $pageIdentity
 	 */
-	private static function flushUserStatusCache( $title ) {
-		if ( in_array( $title->getNamespace(), [ NS_USER, NS_USER_TALK ] ) ) {
+	private static function flushUserStatusCache( PageIdentity $pageIdentity ): void {
+		if ( in_array( $pageIdentity->getNamespace(), [ NS_USER, NS_USER_TALK ] ) ) {
 			$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-			$cache->delete( PageTriageUtil::userStatusKey( $title->getText() ) );
+			$cache->delete( PageTriageUtil::userStatusKey( $pageIdentity->getDBkey() ) );
 		}
 	}
 
@@ -975,15 +974,9 @@ class Hooks implements
 		if ( !in_array( $page->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			return;
 		}
-		$title = $this->titleFactory->newFromDBkey( $page->getDBkey() );
-		if ( !$title ) {
-			return;
-		}
-		// TODO: Making a title here is annoying; we need to do that because
-		// flushUserStatusCache uses getText(), not getDBKey(), for its cache
-		// key.
+
 		// Remove the metadata we added when the article is deleted.
-		self::flushUserStatusCache( $title );
+		self::flushUserStatusCache( $page );
 
 		// Delete everything
 		$pageTriage = new PageTriage( $pageID );
