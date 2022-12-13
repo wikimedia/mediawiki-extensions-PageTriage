@@ -121,8 +121,8 @@ class Hooks implements
 		$articleMetadata = new ArticleMetadata( [ $oldid ] );
 		$articleMetadata->flushMetadataFromCache();
 
-		$oldTitle = Title::newFromLinkTarget( $oldTitle );
-		$newTitle = Title::newFromLinkTarget( $newTitle );
+		$oldTitle = $this->titleFactory->newFromLinkTarget( $oldTitle );
+		$newTitle = $this->titleFactory->newFromLinkTarget( $newTitle );
 
 		// Delete user status cache
 		self::flushUserStatusCache( $oldTitle->toPageIdentity() );
