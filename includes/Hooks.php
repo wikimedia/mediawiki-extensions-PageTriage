@@ -12,6 +12,7 @@ use Html;
 use IBufferingStatsdDataFactory;
 use ManualLogEntry;
 use MediaWiki\Api\Hook\ApiMain__moduleManagerHook;
+use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\ChangeTags\Hook\ChangeTagsAllowedAddHook;
 use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
 use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
@@ -40,6 +41,7 @@ use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserOptionsManager;
 use MWTimestamp;
 use ParserOutput;
 use RecentChange;
@@ -63,7 +65,8 @@ class Hooks implements
 	PageDeleteCompleteHook,
 	MarkPatrolledCompleteHook,
 	BlockIpCompleteHook,
-	ResourceLoaderGetConfigVarsHook
+	ResourceLoaderGetConfigVarsHook,
+	LocalUserCreatedHook
 {
 
 	private const TAG_NAME = 'pagetriage';
@@ -86,6 +89,9 @@ class Hooks implements
 	/** @var TitleFactory */
 	private TitleFactory $titleFactory;
 
+	/** @var UserOptionsManager */
+	private UserOptionsManager $userOptionsManager;
+
 	/**
 	 * @param Config $config
 	 * @param RevisionLookup $revisionLookup
@@ -93,6 +99,7 @@ class Hooks implements
 	 * @param PermissionManager $permissionManager
 	 * @param RevisionStore $revisionStore
 	 * @param TitleFactory $titleFactory
+	 * @param UserOptionsManager $userOptionsManager
 	 */
 	public function __construct(
 		Config $config,
@@ -100,7 +107,8 @@ class Hooks implements
 		IBufferingStatsdDataFactory $statsdDataFactory,
 		PermissionManager $permissionManager,
 		RevisionStore $revisionStore,
-		TitleFactory $titleFactory
+		TitleFactory $titleFactory,
+		UserOptionsManager $userOptionsManager
 	) {
 		$this->config = $config;
 		$this->revisionLookup = $revisionLookup;
@@ -108,6 +116,7 @@ class Hooks implements
 		$this->permissionManager = $permissionManager;
 		$this->revisionStore = $revisionStore;
 		$this->titleFactory = $titleFactory;
+		$this->userOptionsManager = $userOptionsManager;
 	}
 
 	/** @inheritDoc */
@@ -875,18 +884,12 @@ class Hooks implements
 		return true;
 	}
 
-	/**
-	 * Handler for LocalUserCreated hook
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LocalUserCreated
-	 * @param User $user User object that was created.
-	 * @param bool $autocreated True when account was auto-created
-	 */
-	public static function onLocalUserCreated( $user, $autocreated ) {
+	/** @inheritDoc */
+	public function onLocalUserCreated( $user, $autocreated ) {
 		// New users get echo preferences set that are not the default settings for existing users.
 		// Specifically, new users are opted into email notifications for page reviews.
 		if ( !$autocreated ) {
-			$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
-			$userOptionsManager->setOption( $user, 'echo-subscriptions-email-page-review', true );
+			$this->userOptionsManager->setOption( $user, 'echo-subscriptions-email-page-review', true );
 		}
 	}
 
