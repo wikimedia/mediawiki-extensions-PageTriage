@@ -640,7 +640,7 @@
 		"PageDeleteComplete": "main",
 		"MarkPatrolledComplete": "main",
 		"BlockIpComplete": "main",
-		"ResourceLoaderGetConfigVars": "MediaWiki\\Extension\\PageTriage\\Hooks::onResourceLoaderGetConfigVars",
+		"ResourceLoaderGetConfigVars": "main",
 		"BeforeCreateEchoEvent": "\\MediaWiki\\Extension\\PageTriage\\Hooks::onBeforeCreateEchoEvent",
 		"EchoGetDefaultNotifiedUsers": "MediaWiki\\Extension\\PageTriage\\Hooks::onEchoGetDefaultNotifiedUsers",
 		"LocalUserCreated": "MediaWiki\\Extension\\PageTriage\\Hooks::onLocalUserCreated",

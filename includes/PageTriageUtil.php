@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\PageTriage;
 
 use ApiRawMessage;
+use Config;
 use EchoEvent;
 use Exception;
 use ExtensionRegistry;
@@ -57,10 +58,11 @@ class PageTriageUtil {
 
 	/**
 	 * Get the IDs of applicable PageTriage namespaces.
+	 * @param Config|null $config
 	 * @return int[]
 	 */
-	public static function getNamespaces() {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
+	public static function getNamespaces( ?Config $config = null ): array {
+		$config = $config ?? MediaWikiServices::getInstance()->getMainConfig();
 		$pageTriageDraftNamespaceId = $config->get( 'PageTriageDraftNamespaceId' );
 		$pageTriageNamespaces = $config->get( 'PageTriageNamespaces' );
 		// Add the Draft namespace if configured.

@@ -32,6 +32,7 @@ use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\ResourceLoader as RL;
+use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\ResourceLoader\ResourceLoader;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
@@ -61,7 +62,8 @@ class Hooks implements
 	ArticleViewFooterHook,
 	PageDeleteCompleteHook,
 	MarkPatrolledCompleteHook,
-	BlockIpCompleteHook
+	BlockIpCompleteHook,
+	ResourceLoaderGetConfigVarsHook
 {
 
 	private const TAG_NAME = 'pagetriage';
@@ -554,15 +556,10 @@ class Hooks implements
 		PageTriageUtil::updateMetadataOnBlockChange( $block );
 	}
 
-	/**
-	 * Send php config vars to js via ResourceLoader
-	 *
-	 * @param array &$vars variables to be added to the output of the startup module
-	 */
-	public static function onResourceLoaderGetConfigVars( &$vars ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
+	/** @inheritDoc */
+	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
 		$pageTriageDraftNamespaceId = $config->get( 'PageTriageDraftNamespaceId' );
-		$vars['pageTriageNamespaces'] = PageTriageUtil::getNamespaces();
+		$vars['pageTriageNamespaces'] = PageTriageUtil::getNamespaces( $config );
 		$vars['wgPageTriageDraftNamespaceId'] = $pageTriageDraftNamespaceId;
 	}
 
