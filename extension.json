@@ -621,7 +621,8 @@
 				"RevisionLookup",
 				"StatsdDataFactory",
 				"PermissionManager",
-				"RevisionStore"
+				"RevisionStore",
+				"TitleFactory"
 			]
 		},
 		"schema": {
@@ -636,7 +637,7 @@
 		"PageSaveComplete": "main",
 		"LinksUpdateComplete": "main",
 		"ArticleViewFooter": "main",
-		"ArticleDeleteComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onArticleDeleteComplete",
+		"PageDeleteComplete": "main",
 		"MarkPatrolledComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onMarkPatrolledComplete",
 		"BlockIpComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onBlockIpComplete",
 		"ResourceLoaderGetConfigVars": "MediaWiki\\Extension\\PageTriage\\Hooks::onResourceLoaderGetConfigVars",

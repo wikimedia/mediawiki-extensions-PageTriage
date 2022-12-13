@@ -10,6 +10,7 @@ use EchoEvent;
 use ExtensionRegistry;
 use Html;
 use IBufferingStatsdDataFactory;
+use ManualLogEntry;
 use MediaWiki\Api\Hook\ApiMain__moduleManagerHook;
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\ChangeTags\Hook\ChangeTagsAllowedAddHook;
@@ -23,7 +24,10 @@ use MediaWiki\Hook\LinksUpdateCompleteHook;
 use MediaWiki\Hook\PageMoveCompleteHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\ArticleViewFooterHook;
+use MediaWiki\Page\Hook\PageDeleteCompleteHook;
 use MediaWiki\Page\Hook\RevisionFromEditCompleteHook;
+use MediaWiki\Page\ProperPageIdentity;
+use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\ResourceLoader;
@@ -37,6 +41,7 @@ use MWTimestamp;
 use ParserOutput;
 use RecentChange;
 use Title;
+use TitleFactory;
 use User;
 use WikiMap;
 use Wikimedia\Rdbms\Database;
@@ -51,7 +56,8 @@ class Hooks implements
 	RevisionFromEditCompleteHook,
 	PageSaveCompleteHook,
 	LinksUpdateCompleteHook,
-	ArticleViewFooterHook
+	ArticleViewFooterHook,
+	PageDeleteCompleteHook
 {
 
 	private const TAG_NAME = 'pagetriage';
@@ -71,25 +77,31 @@ class Hooks implements
 	/** @var RevisionStore */
 	private RevisionStore $revisionStore;
 
+	/** @var TitleFactory */
+	private TitleFactory $titleFactory;
+
 	/**
 	 * @param Config $config
 	 * @param RevisionLookup $revisionLookup
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param PermissionManager $permissionManager
 	 * @param RevisionStore $revisionStore
+	 * @param TitleFactory $titleFactory
 	 */
 	public function __construct(
 		Config $config,
 		RevisionLookup $revisionLookup,
 		IBufferingStatsdDataFactory $statsdDataFactory,
 		PermissionManager $permissionManager,
-		RevisionStore $revisionStore
+		RevisionStore $revisionStore,
+		TitleFactory $titleFactory
 	) {
 		$this->config = $config;
 		$this->revisionLookup = $revisionLookup;
 		$this->statsdDataFactory = $statsdDataFactory;
 		$this->permissionManager = $permissionManager;
 		$this->revisionStore = $revisionStore;
+		$this->titleFactory = $titleFactory;
 	}
 
 	/** @inheritDoc */
@@ -229,27 +241,6 @@ class Hooks implements
 	}
 
 	/**
-	 * Remove the metadata we added when the article is deleted.
-	 *
-	 * 'ArticleDeleteComplete': after an article is deleted
-	 * @param WikiPage $article the WikiPage that was deleted
-	 * @param User $user the user that deleted the article
-	 * @param string $reason the reason the article was deleted
-	 * @param int $id id of the article that was deleted
-	 */
-	public static function onArticleDeleteComplete( $article, $user, $reason, $id ) {
-		self::flushUserStatusCache( $article->getTitle() );
-
-		if ( !in_array( $article->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
-			return;
-		}
-
-		// Delete everything
-		$pageTriage = new PageTriage( $id );
-		$pageTriage->deleteFromPageTriage();
-	}
-
-	/**
 	 * Add page to page triage queue, check for autopatrol right if reviewed is not set
 	 *
 	 * This method should only be called from this class and its closures
@@ -308,6 +299,9 @@ class Hooks implements
 	/**
 	 * Flush user page/user talk page existence status, this function should
 	 * be called when a page gets created/deleted/moved/restored
+	 *
+	 * FIXME: Would be better if this method used getDBKey() and page identity.
+	 *
 	 * @param Title $title
 	 */
 	private static function flushUserStatusCache( $title ) {
@@ -968,4 +962,31 @@ class Hooks implements
 		}
 	}
 
+	/** @inheritDoc */
+	public function onPageDeleteComplete(
+		ProperPageIdentity $page,
+		Authority $deleter,
+		string $reason,
+		int $pageID,
+		RevisionRecord $deletedRev,
+		ManualLogEntry $logEntry,
+		int $archivedRevisionCount
+	) {
+		if ( !in_array( $page->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
+			return;
+		}
+		$title = $this->titleFactory->newFromDBkey( $page->getDBkey() );
+		if ( !$title ) {
+			return;
+		}
+		// TODO: Making a title here is annoying; we need to do that because
+		// flushUserStatusCache uses getText(), not getDBKey(), for its cache
+		// key.
+		// Remove the metadata we added when the article is deleted.
+		self::flushUserStatusCache( $title );
+
+		// Delete everything
+		$pageTriage = new PageTriage( $pageID );
+		$pageTriage->deleteFromPageTriage();
+	}
 }
