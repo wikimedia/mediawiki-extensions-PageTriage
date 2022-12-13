@@ -214,7 +214,7 @@
 	"pagetriage-del-tags-prod-notify-topic-title": "[[Wikipedia:Proposed deletion|Eliminação proposta]] de [[$1]]",
 	"pagetriage-del-tags-xfd-notify-topic-title": "Discussão da eliminação de [[$1]]",
 	"pagetriage-feedback-from-new-page-review-process-title": "Comentários do processo de revisão de nova página",
-	"pagetriage-feedback-from-new-page-review-process-message": "Deixei o seguinte comentário para o criador e futuros revisores ao rever este artigo: $1.",
+	"pagetriage-feedback-from-new-page-review-process-message": "Deixei o seguinte comentário para o criador e futuros revisores ao rever este artigo: $1",
 	"pagetriage-mark-mark-talk-page-notify-topic-title": "Uma página iniciada por {{GENDER:|si}} ($1) foi revista!",
 	"pagetriage-mark-unmark-talk-page-notify-topic-title": "Removi a revisão de uma página da qual {{GENDER:|você}} fez a curadoria",
 	"pagetriage-note-sent-talk-page-notify-topic-title": "Enviei-{{GENDER:|lhe}} uma nota sobre uma página iniciada por {{GENDER:|si}}",
