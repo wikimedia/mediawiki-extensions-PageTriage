@@ -639,7 +639,7 @@
 		"ArticleViewFooter": "main",
 		"PageDeleteComplete": "main",
 		"MarkPatrolledComplete": "main",
-		"BlockIpComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onBlockIpComplete",
+		"BlockIpComplete": "main",
 		"ResourceLoaderGetConfigVars": "MediaWiki\\Extension\\PageTriage\\Hooks::onResourceLoaderGetConfigVars",
 		"BeforeCreateEchoEvent": "\\MediaWiki\\Extension\\PageTriage\\Hooks::onBeforeCreateEchoEvent",
 		"EchoGetDefaultNotifiedUsers": "MediaWiki\\Extension\\PageTriage\\Hooks::onEchoGetDefaultNotifiedUsers",

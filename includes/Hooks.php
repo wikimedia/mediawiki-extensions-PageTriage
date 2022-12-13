@@ -12,7 +12,6 @@ use Html;
 use IBufferingStatsdDataFactory;
 use ManualLogEntry;
 use MediaWiki\Api\Hook\ApiMain__moduleManagerHook;
-use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\ChangeTags\Hook\ChangeTagsAllowedAddHook;
 use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
 use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
@@ -20,6 +19,7 @@ use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddDeletionTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddMaintenanceTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageMarkAsReviewedPresentationModel;
+use MediaWiki\Hook\BlockIpCompleteHook;
 use MediaWiki\Hook\LinksUpdateCompleteHook;
 use MediaWiki\Hook\MarkPatrolledCompleteHook;
 use MediaWiki\Hook\PageMoveCompleteHook;
@@ -60,7 +60,8 @@ class Hooks implements
 	LinksUpdateCompleteHook,
 	ArticleViewFooterHook,
 	PageDeleteCompleteHook,
-	MarkPatrolledCompleteHook
+	MarkPatrolledCompleteHook,
+	BlockIpCompleteHook
 {
 
 	private const TAG_NAME = 'pagetriage';
@@ -547,14 +548,9 @@ class Hooks implements
 		}
 	}
 
-	/**
-	 * Update Article metadata when a user gets blocked.
-	 *
-	 * 'BlockIpComplete': after an IP address or user is blocked
-	 * @param DatabaseBlock $block the block object that was saved
-	 * @param User $performer the user who did the block (not the one being blocked)
-	 */
-	public static function onBlockIpComplete( $block, $performer ) {
+	/** @inheritDoc */
+	public function onBlockIpComplete( $block, $performer, $priorBlock ) {
+		// Update Article metadata when a user gets blocked.
 		PageTriageUtil::updateMetadataOnBlockChange( $block );
 	}
 
