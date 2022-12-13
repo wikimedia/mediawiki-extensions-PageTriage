@@ -210,25 +210,23 @@ class Hooks implements
 		$editResult
 	) {
 		// When a new article is created, insert it into PageTriage Queue and compile metadata.
-		$title = $wikiPage->getTitle();
-
 		// Page saved, flush cache
-		self::flushUserStatusCache( $title->toPageIdentity() );
+		self::flushUserStatusCache( $wikiPage );
 
 		if ( !( $flags & EDIT_NEW ) ) {
-			// Don't add to queue if its not a new page
+			// Don't add to queue if it is not a new page
 			return;
 		}
 
 		// Don't add to queue if not in a namespace of interest.
-		if ( !in_array( $title->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
+		if ( !in_array( $wikiPage->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			return;
 		}
 
 		// Add item to queue. Metadata compilation will get triggered in the LinksUpdate hook.
 		self::addToPageTriageQueue(
 			$wikiPage->getId(),
-			$title,
+			$wikiPage->getTitle(),
 			$user
 		);
 	}
