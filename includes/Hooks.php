@@ -34,6 +34,7 @@ use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
+use MediaWiki\ResourceLoader\Hook\ResourceLoaderRegisterModulesHook;
 use MediaWiki\ResourceLoader\ResourceLoader;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
@@ -66,7 +67,8 @@ class Hooks implements
 	MarkPatrolledCompleteHook,
 	BlockIpCompleteHook,
 	ResourceLoaderGetConfigVarsHook,
-	LocalUserCreatedHook
+	LocalUserCreatedHook,
+	ResourceLoaderRegisterModulesHook
 {
 
 	private const TAG_NAME = 'pagetriage';
@@ -572,12 +574,8 @@ class Hooks implements
 		$vars['wgPageTriageDraftNamespaceId'] = $pageTriageDraftNamespaceId;
 	}
 
-	/**
-	 * Register modules that depend on other state
-	 *
-	 * @param ResourceLoader &$resourceLoader
-	 */
-	public static function onResourceLoaderRegisterModules( &$resourceLoader ) {
+	/** @inheritDoc */
+	public function onResourceLoaderRegisterModules( ResourceLoader $rl ): void {
 		$viewsToolbarModule = [
 			'localBasePath' => __DIR__ . '/../modules',
 			'remoteExtPath' => 'PageTriage/modules',
@@ -797,7 +795,7 @@ class Hooks implements
 			] );
 		}
 
-		$resourceLoader->register( 'ext.pageTriage.views.toolbar', $viewsToolbarModule );
+		$rl->register( 'ext.pageTriage.views.toolbar', $viewsToolbarModule );
 	}
 
 	/**
