@@ -21,6 +21,7 @@ use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddDeletionTagPresent
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddMaintenanceTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageMarkAsReviewedPresentationModel;
 use MediaWiki\Hook\LinksUpdateCompleteHook;
+use MediaWiki\Hook\MarkPatrolledCompleteHook;
 use MediaWiki\Hook\PageMoveCompleteHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\ArticleViewFooterHook;
@@ -58,7 +59,8 @@ class Hooks implements
 	PageSaveCompleteHook,
 	LinksUpdateCompleteHook,
 	ArticleViewFooterHook,
-	PageDeleteCompleteHook
+	PageDeleteCompleteHook,
+	MarkPatrolledCompleteHook
 {
 
 	private const TAG_NAME = 'pagetriage';
@@ -511,17 +513,9 @@ class Hooks implements
 		}
 	}
 
-	/**
-	 * Sync records from patrol queue to triage queue
-	 *
-	 * 'MarkPatrolledComplete': after an edit is marked patrolled
-	 *
-	 * @param int $rcid ID of the revision marked as patrolled
-	 * @param User &$user user (object) who marked the edit patrolled
-	 * @param bool $wcOnlySysopsCanPatrol config setting indicating whether the user
-	 * must be a sysop to patrol the edit
-	 */
-	public static function onMarkPatrolledComplete( $rcid, &$user, $wcOnlySysopsCanPatrol ) {
+	/** @inheritDoc */
+	public function onMarkPatrolledComplete( $rcid, $user, $wcOnlySysopsCanPatrol, $auto ) {
+		// Sync records from patrol queue to triage queue
 		$rc = RecentChange::newFromId( $rcid );
 
 		if ( $rc ) {
@@ -542,7 +536,7 @@ class Hooks implements
 					$acp->compileMetadata();
 				}
 			}
-			$title = Title::newFromID( $rc->getAttribute( 'rc_cur_id' ) );
+			$title = $this->titleFactory->newFromID( $rc->getAttribute( 'rc_cur_id' ) );
 			if ( $title ) {
 				PageTriageUtil::createNotificationEvent(
 					$title,

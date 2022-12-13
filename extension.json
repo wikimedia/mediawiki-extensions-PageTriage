@@ -638,7 +638,7 @@
 		"LinksUpdateComplete": "main",
 		"ArticleViewFooter": "main",
 		"PageDeleteComplete": "main",
-		"MarkPatrolledComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onMarkPatrolledComplete",
+		"MarkPatrolledComplete": "main",
 		"BlockIpComplete": "MediaWiki\\Extension\\PageTriage\\Hooks::onBlockIpComplete",
 		"ResourceLoaderGetConfigVars": "MediaWiki\\Extension\\PageTriage\\Hooks::onResourceLoaderGetConfigVars",
 		"BeforeCreateEchoEvent": "\\MediaWiki\\Extension\\PageTriage\\Hooks::onBeforeCreateEchoEvent",
