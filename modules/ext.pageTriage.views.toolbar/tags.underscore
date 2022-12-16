@@ -1,4 +1,4 @@
-<!-- tag list -->
+<!-- tag list. populated by javascript contained in tags.js -->
 <div id="mwe-pt-tags"></div>
 <!-- category list -->
 <div id="mwe-pt-categories">

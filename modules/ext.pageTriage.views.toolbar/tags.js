@@ -32,7 +32,8 @@ module.exports = ToolView.extend( {
 	 */
 	buildAllCategory: function () {
 		const list = [];
-		// first, loop through all tags and store them in the array list
+
+		// first, loop through all tags in other categories and store them in the "list" variable
 		for ( const cat in this.tagsOptions ) {
 			if ( this.tagsOptions[ cat ].alias ) {
 				continue;
@@ -43,7 +44,8 @@ module.exports = ToolView.extend( {
 				list.push( tag );
 			}
 		}
-		// then, sort the array in ascending order
+
+		// then, sort the "list" variable by tag name, in ascending order
 		list.sort( function ( a, b ) {
 			if ( a.label < b.label ) {
 				return -1;
@@ -53,6 +55,7 @@ module.exports = ToolView.extend( {
 			}
 			return 0;
 		} );
+
 		// finally, push the sorted array into the existing tag json object
 		this.tagsOptions.all = {
 			label: mw.msg( 'pagetriage-tags-cat-all-label' ),
@@ -136,8 +139,8 @@ module.exports = ToolView.extend( {
 			} )
 			.end();
 
-		// show tags under common by default
-		this.displayTags( 'common' );
+		// when the maintenance tag menu is first opened, show the 'All tags' menu by default
+		this.displayTags( 'all' );
 	},
 
 	/**
