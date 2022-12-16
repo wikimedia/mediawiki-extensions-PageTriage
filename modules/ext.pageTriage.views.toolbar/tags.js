@@ -149,10 +149,11 @@ module.exports = ToolView.extend( {
 	 * @param {string} cat
 	 */
 	displayTags: function ( cat ) {
+		const $tagList = $( '<div>' ).attr( 'id', 'mwe-pt-tag-list' );
+		let tagCount = 0;
 
 		$( '#mwe-pt-tags' ).empty();
-
-		const $tagList = $( '<div>' ).attr( 'id', 'mwe-pt-tag-list' );
+		$( '#mwe-pt-tags' ).append( this.renderSearchTextBox() );
 
 		// highlight the active category
 		$( '.mwe-pt-category' ).removeClass( 'mwe-pt-active' );
@@ -165,6 +166,11 @@ module.exports = ToolView.extend( {
 		const that = this,
 			tagSet = this.tagsOptions[ cat ].tags;
 		for ( const key in tagSet ) {
+
+			// Keep a running total of tags in the category
+			if ( Object.prototype.hasOwnProperty.call( tagSet, key ) ) {
+				tagCount++;
+			}
 
 			let checked = false;
 
@@ -264,6 +270,8 @@ module.exports = ToolView.extend( {
 				that.refreshTagCountDisplay( tagKey, destCat || cat );
 			} ).end();
 		}
+
+		this.showSearchTextBox( tagCount );
 	},
 
 	/**
@@ -791,5 +799,4 @@ module.exports = ToolView.extend( {
 
 		return html;
 	}
-
 } );

@@ -407,6 +407,7 @@ module.exports = ToolView.extend( {
 		$( '#mwe-pt-category-' + cat ).addClass( 'mwe-pt-active' );
 		$( '.mwe-pt-delete-category .mwe-pt-category-pokey' ).hide();
 		$( '#mwe-pt-category-' + cat + ' .mwe-pt-category-pokey' ).show();
+		$( '#mwe-pt-delete' ).append( this.renderSearchTextBox( 'mwe-pt-delete-row' ) );
 		$( '#mwe-pt-delete' ).append( $tagList );
 
 		for ( key in tagSet ) {
@@ -484,6 +485,7 @@ module.exports = ToolView.extend( {
 		if ( tagCount === 1 ) {
 			$( '#mwe-pt-delete .mwe-pt-delete-checkbox' ).trigger( 'click' );
 		}
+		this.showSearchTextBox( tagCount );
 	},
 
 	/**

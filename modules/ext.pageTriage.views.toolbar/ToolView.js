@@ -269,5 +269,50 @@ module.exports = Backbone.View.extend( {
 			creator: this.model.get( 'user_name' ),
 			reviewed: reviewed
 		}, data );
+	},
+
+	/**
+	 * Creates a hidden quick-search textbox
+	 *
+	 * @param {string} [tagClassName] The css class which covers all relevant tags
+	 * @return {jQuery} A div element containing the text box
+	 */
+	renderSearchTextBox: function ( tagClassName = 'mwe-pt-tag-row' ) {
+		return $( '<div>' ).attr( 'id', this.id + '-search' )
+			.addClass( 'mwe-pt-tag-quicksearch' )
+			.append(
+				mw.msg( 'pagetriage-tags-quickfilter-label' ) + ' ',
+				$( '<input>' )
+					.attr( { id: this.id + '-search-text',
+						type: 'text' } )
+					.on( 'input paste', null, tagClassName, this.filterTags )
+			).hide();
+	},
+
+	/**
+	 * Makes the search textbox visible when there are many tags
+	 *
+	 * @param {number} [tagCount] Number of tags that can be filtered
+	 */
+	showSearchTextBox: function ( tagCount ) {
+		if ( tagCount > 5 ) {
+			$( '#' + this.id + '-search' ).show();
+		}
+	},
+
+	/**
+	 * Hides tags which don't match the input string in the textbox
+	 *
+	 * @param {Event} [event]
+	 */
+	filterTags: function ( event ) {
+		const searchText = $( '#' + this.id ).val(),
+			tagRows = document.getElementsByClassName( event.data );
+		for ( let i = 0; i < tagRows.length; i++ ) {
+			tagRows[ i ].classList.remove( 'mwe-pt-tag-row-hide' );
+			if ( tagRows[ i ].outerHTML.toLowerCase().indexOf( searchText.toLowerCase() ) === -1 ) {
+				tagRows[ i ].classList.add( 'mwe-pt-tag-row-hide' );
+			}
+		}
 	}
 } );
