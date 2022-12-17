@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\PageTriage;
 
 use IDatabase;
+use stdClass;
 
 /**
  * Service class for retrieving PageTriage queue records.
@@ -33,7 +34,7 @@ class QueueLookup {
 				'ptrp_deleted',
 				'ptrp_tags_updated',
 				'ptrp_reviewed_updated',
-				'ptrp_last_reviewed_by'
+				'ptrp_last_reviewed_by',
 			],
 			[ 'ptrp_page_id' => $pageId ],
 			__METHOD__
@@ -41,7 +42,24 @@ class QueueLookup {
 		if ( !$row ) {
 			return null;
 		}
-		return QueueRecord::newFromRow( $row );
+		return $this->newFromRow( $row );
+	}
+
+	/**
+	 * @param stdClass $row
+	 * @return QueueRecord
+	 */
+	public function newFromRow( stdClass $row ): QueueRecord {
+		return new QueueRecord(
+			$row->ptrp_page_id,
+			$row->ptrp_reviewed,
+			// '0' casts to false so this will work as expected.
+			(bool)$row->ptrp_deleted,
+			$row->ptrp_created,
+			$row->ptrp_tags_updated,
+			$row->ptrp_reviewed_updated,
+			$row->ptrp_last_reviewed_by
+		);
 	}
 
 }
