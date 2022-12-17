@@ -646,6 +646,8 @@ $( function () {
 			if ( username ) {
 				this.newFilterStatus.top.push( mw.msg( 'pagetriage-filter-stat-username', username ) );
 				$( '#mwe-pt-filter-user-selected' ).prop( 'checked', true );
+			} else {
+				$( '#mwe-pt-filter-user-selected' ).prop( 'checked', false );
 			}
 			$( '#mwe-pt-filter-user' ).val( username );
 
