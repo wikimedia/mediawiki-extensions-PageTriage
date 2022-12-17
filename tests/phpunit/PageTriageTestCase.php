@@ -1,10 +1,15 @@
 <?php
 
+namespace MediaWiki\Extension\PageTriage\Test;
+
+use ApiTestCase;
+use ApiUsageException;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriage;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
+use MWException;
 
 /**
  * @group PageTriage

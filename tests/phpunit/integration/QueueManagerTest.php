@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\PageTriage\Integration;
+namespace MediaWiki\Extension\PageTriage\Test\Integration;
 
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\QueueManager;

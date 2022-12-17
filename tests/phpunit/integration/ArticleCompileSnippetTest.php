@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\PageTriage\Tests\Integration;
+namespace MediaWiki\Extension\PageTriage\Test\Integration;
 
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileSnippet;
 use MediaWikiIntegrationTestCase;

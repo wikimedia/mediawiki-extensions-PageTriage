@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\PageTriage\Test;
 
 use ApiUsageException;
-use PageTriageTestCase;
 use TestUser;
 use User;
 

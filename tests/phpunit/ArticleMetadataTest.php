@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\PageTriage\Test;
 
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
-use PageTriageTestCase;
 use Wikimedia\Rdbms\DBConnRef;
 
 /**

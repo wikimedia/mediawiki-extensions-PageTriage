@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\PageTriage\Test;
 
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
-use PageTriageTestCase;
 
 /**
  * Tests the Hooks class.

@@ -106,7 +106,7 @@
 		"compileArticleMetadata": "\\MediaWiki\\Extension\\PageTriage\\CompileArticleMetadataJob"
 	},
 	"TestAutoloadClasses": {
-		"PageTriageTestCase": "tests/phpunit/PageTriageTestCase.php"
+		"MediaWiki\\Extension\\PageTriage\\Test\\PageTriageTestCase": "tests/phpunit/PageTriageTestCase.php"
 	},
 	"ResourceModules": {
 		"mediawiki.template.underscore": {

@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\PageTriage\Test;
 
 use ApiUsageException;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
-use PageTriageTestCase;
 use Title;
 
 /**

@@ -1,6 +1,10 @@
 <?php
 
+namespace MediaWiki\Extension\PageTriage\Test;
+
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
+use MediaWikiIntegrationTestCase;
+use Title;
 
 /**
  * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil

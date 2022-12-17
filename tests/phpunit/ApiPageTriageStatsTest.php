@@ -1,5 +1,9 @@
 <?php
 
+namespace MediaWiki\Extension\PageTriage\Test;
+
+use ApiUsageException;
+
 /**
  * Tests the inclusion of the Draft namespace.
  *

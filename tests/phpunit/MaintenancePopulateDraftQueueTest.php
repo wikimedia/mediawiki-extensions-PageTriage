@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\PageTriage\Test;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
 use MediaWiki\Extension\PageTriage\Maintenance\PopulateDraftQueue;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
-use PageTriageTestCase;
 
 /**
  * Tests for the populateDraftQueueTest.php maintenance script.
