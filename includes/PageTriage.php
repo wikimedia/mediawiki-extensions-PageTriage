@@ -17,10 +17,6 @@ class PageTriage {
 	protected $mPageId;
 	/** @var string Review status as a string between "0" and "3" */
 	protected $mReviewed;
-	/** @var string Deletion flag as a string "0" or "1" */
-	protected $mDeleted;
-	/** @var string */
-	protected $mTagsUpdated;
 	/** @var string */
 	protected $mReviewedUpdated;
 	/** @var int */
@@ -207,8 +203,6 @@ class PageTriage {
 		}
 
 		$this->mReviewed = (string)$queueRecord->getReviewedStatus();
-		$this->mDeleted = $queueRecord->isNominatedForDeletion() ? '1' : '0';
-		$this->mTagsUpdated = wfTimestamp( TS_UNIX, $queueRecord->getTagsUpdatedTimestamp() );
 		$this->mReviewedUpdated = wfTimestamp( TS_UNIX, $queueRecord->getReviewedUpdatedTimestamp() );
 		$this->mLastReviewedBy = $queueRecord->getLastReviewedByUserId();
 		$this->mLoaded = true;
