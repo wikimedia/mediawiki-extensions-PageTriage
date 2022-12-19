@@ -8,6 +8,7 @@
 			"Liuxinyu970226",
 			"Simon Shek",
 			"Winston Sung",
+			"列维劳德",
 			"捍粵者",
 			"아라"
 		]
@@ -210,7 +211,7 @@
 	"pagetriage-del-tags-prod-notify-topic-title": "[[Wikipedia:Proposed deletion|提刪]][[$1]]",
 	"pagetriage-del-tags-xfd-notify-topic-title": "有關[[$1]]的刪除討論",
 	"pagetriage-feedback-from-new-page-review-process-title": "來自新頁面巡查程序的意見回饋",
-	"pagetriage-feedback-from-new-page-review-process-message": "在巡查此條目時，我留下以下意見回饋給建立者/往後巡查員：$1。",
+	"pagetriage-feedback-from-new-page-review-process-message": "在巡查此條目時，我留下以下意見回饋給建立者/往後巡查員：$1",
 	"pagetriage-mark-mark-talk-page-notify-topic-title": "{{GENDER:|您}}所建立的頁面（$1）已被檢閱！",
 	"pagetriage-mark-unmark-talk-page-notify-topic-title": "我已取消{{GENDER:|您}}所處理頁面的巡查",
 	"pagetriage-note-sent-talk-page-notify-topic-title": "我已發送給{{GENDER:|您}}關於{{GENDER:|您}}所建立頁面的提醒",
