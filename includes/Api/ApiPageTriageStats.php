@@ -44,6 +44,7 @@ class ApiPageTriageStats extends ApiBase {
 			[
 				'topreviewers' => [
 					ParamValidator::PARAM_TYPE => 'string',
+					ParamValidator::PARAM_DEPRECATED => true,
 				],
 			]
 		);
