@@ -98,6 +98,8 @@ class PageTriageUtilTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testCreateNotificationEvent() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'Echo' );
+
 		$title = Title::newFromText( 'NotificationTest' );
 		$user = static::getTestSysop()->getUser( 'TestWikiAdmin' );
 		$type = 'pagetriage-add-maintenance-tag';
