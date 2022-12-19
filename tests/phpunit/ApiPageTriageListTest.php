@@ -317,6 +317,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	}
 
 	public function testQueryOres() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
 		$this->setMwGlobals( 'wgOresModels', [
 			'draftquality' => [ 'enabled' => true ],
 			'articlequality' => [ 'enabled' => true ],
@@ -357,6 +358,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	}
 
 	public function testQueryOresBoundaries() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
 		$this->setMwGlobals( 'wgOresModels', [
 			'draftquality' => [ 'enabled' => true ],
 			'articlequality' => [ 'enabled' => true ],
@@ -391,6 +393,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	}
 
 	public function testQueryOresCopyvio() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
 		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
 		foreach ( [ 'pagetriage_page', 'page' ] as $table ) {
 			$dbw->delete( $table, '*' );

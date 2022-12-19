@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\PageTriage\Test;
 
 use ApiTestCase;
 use ApiUsageException;
+use ExtensionRegistry;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriage;
@@ -58,10 +59,14 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		$this->tablesUsed[] = 'pagetriage_tags';
 		$this->tablesUsed[] = 'pagetriage_page_tags';
 		$this->tablesUsed[] = 'pagetriage_log';
-		$this->tablesUsed[] = 'ores_model';
-		$this->tablesUsed[] = 'ores_classification';
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'ORES' ) ) {
+			$this->tablesUsed[] = 'ores_model';
+			$this->tablesUsed[] = 'ores_classification';
+		}
 		ArticleMetadata::clearStaticCache();
-		$this->clearHook( 'ORESCheckModels' );
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'ORES' ) ) {
+			$this->clearHook( 'ORESCheckModels' );
+		}
 	}
 
 	/**
