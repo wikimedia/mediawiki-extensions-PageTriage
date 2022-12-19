@@ -8,7 +8,8 @@
 			"Liuxinyu970226",
 			"Simon Shek",
 			"Winston Sung",
-			"아라"
+			"아라",
+			"捍粵者"
 		]
 	},
 	"pagetriage": "頁面分檢器",
@@ -27,7 +28,7 @@
 	"pagetriage-mark-as-reviewed-error": "在標記此頁面為已檢閱時發生錯誤：$1",
 	"pagetriage-mark-as-unreviewed-error": "在標記此頁面為未巡查時發生錯誤：$1",
 	"pagetriage-hist": "歷史",
-	"pagetriage-bytes": "$1字節",
+	"pagetriage-bytes": "$1字元",
 	"pagetriage-edits": "$1次編輯",
 	"pagetriage-categories": "$1 個分類",
 	"pagetriage-no-categories": "無分類",
@@ -144,7 +145,7 @@
 	"pagetriage-no-pages": "沒有滿足您的條件的頁面。",
 	"pagetriage-warning-browser": "此工具可能無法在比 Internet Explorer 11 更舊的瀏覽器中運作。",
 	"pagetriage-welcome": "請巡查下列的新頁面，幫助改善{{SITENAME}}。[$1 了解更多資訊] · [$2 留下意見回饋]",
-	"pagetriage-note-reviewed": "本頁面已被檢閱。",
+	"pagetriage-note-reviewed": "本頁面已檢閱。",
 	"pagetriage-note-not-reviewed": "此頁面尚未被檢閱。",
 	"pagetriage-note-deletion": "此頁面已被提交刪除。",
 	"pagetriage-refresh-list": "重新整理清單",
@@ -224,7 +225,7 @@
 	"pagetriage-tags-param-free-yes-label": "是",
 	"pagetriage-tags-param-free-no-label": "否",
 	"pagetriage-tags-param-missing-required": "標籤$1是遺失的必要參數。",
-	"pagetriage-tags-talk-page-notify-topic-title": "改進 $1 的方式",
+	"pagetriage-tags-talk-page-notify-topic-title": "改進$1的方式",
 	"log-name-pagetriage-curation": "頁面管理器日誌",
 	"log-description-pagetriage-curation": "這是頁面管理工具欄的操作日誌。",
 	"log-name-pagetriage-deletion": "刪除標籤日誌",
