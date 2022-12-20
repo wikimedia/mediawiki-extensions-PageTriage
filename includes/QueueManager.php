@@ -36,6 +36,9 @@ class QueueManager {
 	 */
 	public function deleteByPageIds( array $pageIds ): Status {
 		$status = new Status();
+		if ( !$pageIds ) {
+			return $status;
+		}
 		// TODO: Factor out ArticleMetadata into value object / manager.
 		$articleMetadata = new ArticleMetadata( $pageIds );
 		$this->dbw->startAtomic( __METHOD__ );
