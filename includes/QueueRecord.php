@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\PageTriage;
 
 use JsonSerializable;
-use stdClass;
 
 /**
  * Value object for PageTriage queue items.
@@ -14,8 +13,8 @@ class QueueRecord implements JsonSerializable {
 	private int $pageId;
 	/** @var int */
 	private int $reviewedStatus;
-	/** @var int */
-	private int $isNominatedForDeletion;
+	/** @var bool */
+	private bool $isNominatedForDeletion;
 	/** @var string */
 	private string $createdTimestamp;
 	/** @var string */
@@ -28,7 +27,7 @@ class QueueRecord implements JsonSerializable {
 	/**
 	 * @param int $pageId
 	 * @param int $reviewedStatus
-	 * @param int $isNominatedForDeletion
+	 * @param bool $isNominatedForDeletion
 	 * @param string $createdTimestamp
 	 * @param string $tagsUpdatedTimestamp
 	 * @param string $reviewedUpdatedTimestamp
@@ -37,7 +36,7 @@ class QueueRecord implements JsonSerializable {
 	public function __construct(
 		int $pageId,
 		int $reviewedStatus,
-		int $isNominatedForDeletion,
+		bool $isNominatedForDeletion,
 		string $createdTimestamp,
 		string $tagsUpdatedTimestamp,
 		string $reviewedUpdatedTimestamp,
@@ -50,22 +49,6 @@ class QueueRecord implements JsonSerializable {
 		$this->tagsUpdatedTimestamp = $tagsUpdatedTimestamp;
 		$this->reviewedUpdatedTimestamp = $reviewedUpdatedTimestamp;
 		$this->lastReviewedByUserId = $lastReviewedByUserId;
-	}
-
-	/**
-	 * @param stdClass $row
-	 * @return QueueRecord
-	 */
-	public static function newFromRow( stdClass $row ): self {
-		return new self(
-			$row->ptrp_page_id,
-			$row->ptrp_reviewed,
-			$row->ptrp_deleted,
-			$row->ptrp_created,
-			$row->ptrp_tags_updated,
-			$row->ptrp_reviewed_updated,
-			$row->ptrp_last_reviewed_by
-		);
 	}
 
 	/**
@@ -94,7 +77,7 @@ class QueueRecord implements JsonSerializable {
 	 * @return bool true if the associated page has been nominated for deletion, false otherwise.
 	 */
 	public function isNominatedForDeletion(): bool {
-		return (bool)$this->isNominatedForDeletion;
+		return $this->isNominatedForDeletion;
 	}
 
 	/**
