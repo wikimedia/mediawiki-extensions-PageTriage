@@ -268,10 +268,10 @@ class Hooks implements
 	 * @param int $pageId
 	 * @param Title $title
 	 * @param UserIdentity|null $userIdentity
-	 * @param string|null $reviewed numeric string See QueueRecord::VALID_REVIEW_STATUSES
 	 * @return bool
+	 * @throws MWPageTriageMissingRevisionException
 	 */
-	public static function addToPageTriageQueue( $pageId, $title, $userIdentity = null, $reviewed = null ) {
+	public static function addToPageTriageQueue( $pageId, $title, $userIdentity = null ): bool {
 		global $wgUseRCPatrol, $wgUseNPPatrol;
 
 		// Get draft information.
@@ -289,30 +289,27 @@ class Hooks implements
 
 		// action taken by system
 		if ( $userIdentity === null ) {
-			if ( $reviewed === null ) {
-				$reviewed = QueueRecord::REVIEW_STATUS_UNREVIEWED;
-			}
-			return $pageTriage->addToPageTriageQueue( $reviewed );
+			return $pageTriage->addToPageTriageQueue();
 		// action taken by a user
 		} else {
 			// set reviewed if it's not set yet
-			if ( $reviewed === null ) {
-				$user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity( $userIdentity );
-				$permissionErrors = MediaWikiServices::getInstance()->getPermissionManager()
-					->getPermissionErrors( 'autopatrol', $user, $title );
-				$isAutopatrolled = ( $wgUseRCPatrol || $wgUseNPPatrol ) &&
-					!count( $permissionErrors );
-				if ( $isAutopatrolled && !$isDraft ) {
-					// Set as reviewed if the user has the autopatrol right
-					// and they're not creating a Draft.
-					$reviewed = QueueRecord::REVIEW_STATUS_AUTOPATROLLED;
-				} else {
-					// If they have no autopatrol right and are not making an explicit review,
-					// set to unreviewed (as the system would, in this situation).
-					return $pageTriage->addToPageTriageQueue();
-				}
+			$user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity( $userIdentity );
+			$permissionErrors = MediaWikiServices::getInstance()->getPermissionManager()
+				->getPermissionErrors( 'autopatrol', $user, $title );
+			$isAutopatrolled = ( $wgUseRCPatrol || $wgUseNPPatrol ) &&
+				!count( $permissionErrors );
+			if ( $isAutopatrolled && !$isDraft ) {
+				// Set as reviewed if the user has the autopatrol right,
+				// and they're not creating a Draft.
+				$reviewed = QueueRecord::REVIEW_STATUS_AUTOPATROLLED;
+				return $pageTriage->addToPageTriageQueue(
+					QueueRecord::REVIEW_STATUS_AUTOPATROLLED,
+					$userIdentity
+				);
 			}
-			return $pageTriage->addToPageTriageQueue( $reviewed, $userIdentity );
+			// If they have no autopatrol right and are not making an explicit review,
+			// set to unreviewed (as the system would, in this situation).
+			return $pageTriage->addToPageTriageQueue();
 		}
 	}
 
