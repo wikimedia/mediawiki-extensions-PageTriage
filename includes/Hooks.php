@@ -776,7 +776,7 @@ class Hooks implements
 
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'WikiLove' ) ) {
 			$viewsToolbarModule['packageFiles'][] =
-				'ext.pageTriage.views.toolbar/wikilove.js';
+				'ext.pageTriage.views.toolbar/wikiLove.js';
 			$viewsToolbarModule['styles'][] = 'ext.pageTriage.views.toolbar/wikilove.css';
 			$viewsToolbarModule['dependencies'][] = 'ext.wikiLove.init';
 			$viewsToolbarModule['messages'] = array_merge( $viewsToolbarModule['messages'], [
