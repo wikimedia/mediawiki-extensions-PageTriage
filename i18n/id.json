@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Agam Riyandana",
 			"DARMAS BUDI SANTOSO",
 			"Daud I.F. Argana",
 			"Fitoschido",
@@ -159,7 +160,6 @@
 	"pagetriage-add-a-note-creator": "Tambahkan pesan untuk pembuat halaman: (opsional)",
 	"pagetriage-add-a-note-creator-required": "Tambahkan pesan untuk pembuat. Pesan ini juga akan dikirimkan ke halaman pembicaraan artikel.",
 	"pagetriage-add-a-note-for-options-label": "Kirim pesan kepada:",
-	"pagetriage-add-a-note-for-options-instruction-label": "Choose recipient:",
 	"pagetriage-add-a-note-for-option-creator": "pembuat (User:$1)",
 	"pagetriage-add-a-note-for-option-reviewer": "penilai (User:$1)",
 	"pagetriage-button-add-a-note-to-creator": "Tambahkan pesan untuk pembuat",
@@ -224,7 +224,6 @@
 	"pagetriage-info-problem-header": "Permasalahan terduga",
 	"pagetriage-info-history-header": "Riwayat",
 	"pagetriage-info-history-show-full": "tampilkan riwayat lengkap",
-	"pagetriage-info-logs-show": "show logs",
 	"pagetriage-info-help": "bantuan",
 	"pagetriage-info-problem-non-autoconfirmed": "Penyunting baru",
 	"pagetriage-info-problem-non-autoconfirmed-desc": "Halaman ini dibuat oleh penyunting yang belum dikonfirmasi otomatis.",
@@ -266,6 +265,7 @@
 	"pagetriage-tagging-error": "Gagal menerapkan tag ke halaman",
 	"pagetriage-add-tag-confirmation": "Apakah Anda yakin ingin menambahkan $1 {{PLURAL:$1|tag}} untuk artikel sependek ini?",
 	"pagetriage-tag-deletion-error": "Halaman sudah diberikan tag dengan templat penghapusan, prosedur dibatalkan.",
+	"pagetriage-tag-previousdeletion-error": "Templat ( $1 ) yang menunjukkan penghapusan sebelumnya ditemukan, membatalkan prosedur.",
 	"pagetriage-toolbar-close": "Tutup",
 	"pagetriage-toolbar-minimize": "Minimalkan",
 	"pagetriage-tag-warning-notice": "Catatan: Halaman ini hanya berusia $1 {{PLURAL:$1|menit}}. Pertimbangkan untuk menunggu sebelum memberikan tag ke halaman ini, kecuali permasalahannya cukup serius.",
