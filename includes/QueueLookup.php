@@ -49,7 +49,7 @@ class QueueLookup {
 	 * @param stdClass $row
 	 * @return QueueRecord
 	 */
-	public function newFromRow( stdClass $row ): QueueRecord {
+	private function newFromRow( stdClass $row ): QueueRecord {
 		return new QueueRecord(
 			$row->ptrp_page_id,
 			$row->ptrp_reviewed,
