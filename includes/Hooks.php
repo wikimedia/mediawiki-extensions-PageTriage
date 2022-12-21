@@ -268,7 +268,7 @@ class Hooks implements
 	 * @param int $pageId
 	 * @param Title $title
 	 * @param UserIdentity|null $userIdentity
-	 * @param string|null $reviewed numeric string See PageTriage::getValidReviewedStatus()
+	 * @param string|null $reviewed numeric string See QueueRecord::VALID_REVIEW_STATUSES
 	 * @return bool
 	 */
 	public static function addToPageTriageQueue( $pageId, $title, $userIdentity = null, $reviewed = null ) {
@@ -290,7 +290,7 @@ class Hooks implements
 		// action taken by system
 		if ( $userIdentity === null ) {
 			if ( $reviewed === null ) {
-				$reviewed = '0';
+				$reviewed = QueueRecord::REVIEW_STATUS_UNREVIEWED;
 			}
 			return $pageTriage->addToPageTriageQueue( $reviewed );
 		// action taken by a user
@@ -305,11 +305,11 @@ class Hooks implements
 				if ( $isAutopatrolled && !$isDraft ) {
 					// Set as reviewed if the user has the autopatrol right
 					// and they're not creating a Draft.
-					$reviewed = 3;
+					$reviewed = QueueRecord::REVIEW_STATUS_AUTOPATROLLED;
 				} else {
 					// If they have no autopatrol right and are not making an explicit review,
 					// set to unreviewed (as the system would, in this situation).
-					return $pageTriage->addToPageTriageQueue( '0' );
+					return $pageTriage->addToPageTriageQueue();
 				}
 			}
 			return $pageTriage->addToPageTriageQueue( $reviewed, $userIdentity );
@@ -541,7 +541,7 @@ class Hooks implements
 			}
 
 			$pt = new PageTriage( $rc->getAttribute( 'rc_cur_id' ) );
-			if ( $pt->addToPageTriageQueue( '2', $user, true ) ) {
+			if ( $pt->addToPageTriageQueue( QueueRecord::REVIEW_STATUS_PATROLLED, $user, true ) ) {
 				// Compile metadata for new page triage record.
 				$acp = ArticleCompileProcessor::newFromPageId( [ $rc->getAttribute( 'rc_cur_id' ) ] );
 				if ( $acp ) {

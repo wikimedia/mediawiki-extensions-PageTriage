@@ -13,44 +13,44 @@ use RecentChange;
  */
 class PageTriage {
 
-	/** @var int */
-	protected $mPageId;
-	/** @var string Review status as a string between "0" and "3" */
-	protected $mReviewed;
-	/** @var string */
-	protected $mReviewedUpdated;
-	/** @var int */
-	protected $mLastReviewedBy;
+	/** @var int The relevant page ID. */
+	protected int $mPageId;
+	/** @var int Review status, valid values are QueueRecord::VALID_REVIEW_STATUSES. */
+	protected int $currentReviewStatus;
+	/** @var string MediaWiki-style timestamp of when the last review happened. */
+	protected string $mReviewedUpdated;
+	/** @var int User ID of the user that last reviewed the article. */
+	protected int $mLastReviewedBy;
 
-	/** @var bool */
-	protected $mLoaded;
+	/** @var bool Used for in-process caching. */
+	protected bool $mLoaded;
 
 	public const CACHE_VERSION = 2;
 
 	/**
 	 * @param int $pageId
 	 */
-	public function __construct( $pageId ) {
-		$this->mPageId = (int)$pageId;
+	public function __construct( int $pageId ) {
+		$this->mPageId = $pageId;
 		$this->mLoaded = false;
 	}
 
 	/**
 	 * Add page to page triage queue
-	 * @param string $reviewed The reviewed status of the page...
-	 *    '0': unreviewed
-	 *    '1': reviewed manually
-	 *    '2': patrolled from Special:NewPages
-	 *    '3': auto-patrolled
+	 * @param int $reviewStatus The reviewed status of the page, see QueueRecord::VALID_REVIEW_STATUSES
 	 * @param UserIdentity|null $user
 	 * @param bool $fromRc
-	 * @throws MWPageTriageMissingRevisionException
 	 * @return bool true: add new record, false: update existing record
+	 * @throws MWPageTriageMissingRevisionException
 	 */
-	public function addToPageTriageQueue( $reviewed = '0', UserIdentity $user = null, $fromRc = false ) {
+	public function addToPageTriageQueue(
+		int $reviewStatus = 0,
+		UserIdentity $user = null,
+		bool $fromRc = false
+	): bool {
 		if ( $this->retrieve() ) {
-			if ( $this->mReviewed != $reviewed ) {
-				$this->setTriageStatus( $reviewed, $user, $fromRc );
+			if ( $this->currentReviewStatus != $reviewStatus ) {
+				$this->setTriageStatus( $reviewStatus, $user, $fromRc );
 			}
 			return false;
 		}
@@ -73,7 +73,7 @@ class PageTriage {
 
 		$row = [
 			'ptrp_page_id' => $this->mPageId,
-			'ptrp_reviewed' => $reviewed,
+			'ptrp_reviewed' => $reviewStatus,
 			'ptrp_created' => $res->creation_date,
 			'ptrp_reviewed_updated' => $res->last_edit_date
 		];
@@ -85,7 +85,7 @@ class PageTriage {
 
 		$dbw->insert( 'pagetriage_page', $row, __METHOD__, [ 'IGNORE' ] );
 
-		$this->mReviewed = $reviewed;
+		$this->currentReviewStatus = $reviewStatus;
 
 		if ( $this->mLastReviewedBy ) {
 			$this->logUserTriageAction();
@@ -95,26 +95,31 @@ class PageTriage {
 	}
 
 	/**
-	 * set the triage status of an article in pagetriage queue
-	 * @param string $reviewed see PageTriage::getValidReviewedStatus()
+	 * Set the review status of an article in the PageTriage queue.
+	 *
+	 * TODO: Move this code into QueueManager::setStatusForPageId().
+	 *
+	 * @param int $newReviewStatus see QueueRecord::VALID_REVIEW_STATUSES
 	 * @param UserIdentity|null $user
 	 * @param bool $fromRc
 	 * @return bool If a page status was updated
 	 */
-	public function setTriageStatus( $reviewed, UserIdentity $user = null, $fromRc = false ) {
-		if ( !array_key_exists( $reviewed, self::getValidReviewedStatus() ) ) {
-			$reviewed = '0';
+	public function setTriageStatus( int $newReviewStatus = 0, UserIdentity $user = null, bool $fromRc = false ): bool {
+		if ( !in_array( $newReviewStatus, QueueRecord::VALID_REVIEW_STATUSES ) ) {
+			// TODO: Should log an error here, or maybe just not accept invalid review status to begin with.
+			$newReviewStatus = QueueRecord::REVIEW_STATUS_UNREVIEWED;
 		}
 
 		if ( !$this->retrieve() ) {
 			// Page doesn't exist in pagetriage_page
 			return false;
 		}
-		if ( $this->mReviewed == $reviewed ) {
+		if ( $this->currentReviewStatus == $newReviewStatus ) {
 			// Status doesn't change
 			return false;
 		}
-		if ( $this->mReviewed === '3' && $reviewed !== '0' ) {
+		if ( $this->currentReviewStatus === QueueRecord::REVIEW_STATUS_AUTOPATROLLED &&
+			$newReviewStatus !== QueueRecord::REVIEW_STATUS_UNREVIEWED ) {
 			// Only unreviewing is allowed for autopatrolled articles
 			return false;
 		}
@@ -122,7 +127,7 @@ class PageTriage {
 		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
 		$dbw->startAtomic( __METHOD__ );
 		$set = [
-			'ptrp_reviewed' => $reviewed,
+			'ptrp_reviewed' => $newReviewStatus,
 			'ptrp_reviewed_updated' => $dbw->timestamp( wfTimestampNow() ),
 			'ptrp_last_reviewed_by' => $user ? $user->getId() : 0
 		];
@@ -131,20 +136,20 @@ class PageTriage {
 			$set,
 			[
 				'ptrp_page_id' => $this->mPageId,
-				'ptrp_reviewed != ' . $dbw->addQuotes( $reviewed )
+				'ptrp_reviewed != ' . $dbw->addQuotes( $newReviewStatus )
 			],
 			__METHOD__
 		);
 		if ( $dbw->affectedRows() > 0 ) {
-			$this->mReviewed = $reviewed;
+			$this->currentReviewStatus = $newReviewStatus;
 			$this->mReviewedUpdated = $set['ptrp_reviewed_updated'];
 			$this->mLastReviewedBy = $set['ptrp_last_reviewed_by'];
 			// @Todo - case for marking a page as untriaged and make sure this logic is correct
-			if ( !$fromRc && $reviewed && $user ) {
+			if ( !$fromRc && $newReviewStatus && $user ) {
 				$rc = RecentChange::newFromConds( [
 					'rc_cur_id' => $this->mPageId,
 					'rc_new' => '1'
-				], __METHOD__ );
+				] );
 				if ( $rc && !$rc->getAttribute( 'rc_patrolled' ) ) {
 					$rc->reallyMarkPatrolled();
 					PatrolLog::record( $rc, false, $user, 'pagetriage' );
@@ -202,7 +207,7 @@ class PageTriage {
 			return false;
 		}
 
-		$this->mReviewed = (string)$queueRecord->getReviewedStatus();
+		$this->currentReviewStatus = $queueRecord->getReviewedStatus();
 		$this->mReviewedUpdated = wfTimestamp( TS_UNIX, $queueRecord->getReviewedUpdatedTimestamp() );
 		$this->mLastReviewedBy = $queueRecord->getLastReviewedByUserId();
 		$this->mLoaded = true;
@@ -222,7 +227,7 @@ class PageTriage {
 		$row = [
 			'ptrl_page_id' => $this->mPageId,
 			'ptrl_user_id' => $this->mLastReviewedBy,
-			'ptrl_reviewed' => $this->mReviewed,
+			'ptrl_reviewed' => $this->currentReviewStatus,
 			'ptrl_timestamp' => $this->mReviewedUpdated
 		];
 
@@ -246,18 +251,5 @@ class PageTriage {
 		);
 
 		return $now;
-	}
-
-	/**
-	 * Get a list of valid reviewed status
-	 * @return array
-	 */
-	public static function getValidReviewedStatus() {
-		return [
-			'0' => 'unreviewed',
-			'1' => 'reviewed',
-			'2' => 'patrolled',
-			'3' => 'auto-patrolled'
-		];
 	}
 }

@@ -91,7 +91,7 @@ class ApiPageTriageAction extends ApiBase {
 		}
 
 		$pageTriage = new PageTriage( $article->getPage()->getId() );
-		$statusChanged = $pageTriage->setTriageStatus( $reviewedStatus, $this->getUser() );
+		$statusChanged = $pageTriage->setTriageStatus( (int)$reviewedStatus, $this->getUser() );
 
 		// no notification or log entry if page status didn't change
 		if ( $statusChanged ) {
