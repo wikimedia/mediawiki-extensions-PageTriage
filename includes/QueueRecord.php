@@ -43,8 +43,8 @@ class QueueRecord implements JsonSerializable {
 	private bool $isNominatedForDeletion;
 	/** @var string */
 	private string $createdTimestamp;
-	/** @var string */
-	private string $tagsUpdatedTimestamp;
+	/** @var null|string */
+	private ?string $tagsUpdatedTimestamp;
 	/** @var string */
 	private string $reviewedUpdatedTimestamp;
 	/** @var int */
@@ -55,7 +55,7 @@ class QueueRecord implements JsonSerializable {
 	 * @param int $reviewedStatus
 	 * @param bool $isNominatedForDeletion
 	 * @param string $createdTimestamp
-	 * @param string $tagsUpdatedTimestamp
+	 * @param null|string $tagsUpdatedTimestamp
 	 * @param string $reviewedUpdatedTimestamp
 	 * @param int $lastReviewedByUserId
 	 */
@@ -64,7 +64,7 @@ class QueueRecord implements JsonSerializable {
 		int $reviewedStatus,
 		bool $isNominatedForDeletion,
 		string $createdTimestamp,
-		string $tagsUpdatedTimestamp,
+		?string $tagsUpdatedTimestamp,
 		string $reviewedUpdatedTimestamp,
 		int $lastReviewedByUserId
 	) {
@@ -113,9 +113,10 @@ class QueueRecord implements JsonSerializable {
 	}
 
 	/**
-	 * @return string TS_MW timestamp of when the metadata for this record was updated.
+	 * @return null|string TS_MW timestamp of when the metadata for this record was updated, or null
+	 *  if that has not yet occurred.
 	 */
-	public function getTagsUpdatedTimestamp(): string {
+	public function getTagsUpdatedTimestamp(): ?string {
 		return $this->tagsUpdatedTimestamp;
 	}
 
@@ -126,8 +127,13 @@ class QueueRecord implements JsonSerializable {
 		return $this->reviewedUpdatedTimestamp;
 	}
 
+	/**
+	 * @return array Returns an array suitable for insertion into the pagetriage_page table. Arguably
+	 *  such a mapping shouldn't be defined in this class, but creating e.g. a formatter class for doing
+	 *  so seems like unnecessary paperwork.
+	 */
 	public function jsonSerialize(): array {
-		return [
+		$data = [
 			'ptrp_page_id' => $this->getPageId(),
 			'ptrp_reviewed' => $this->getReviewedStatus(),
 			'ptrp_deleted' => (int)$this->isNominatedForDeletion(),
@@ -136,5 +142,9 @@ class QueueRecord implements JsonSerializable {
 			'ptrp_reviewed_updated' => $this->getReviewedUpdatedTimestamp(),
 			'ptrp_last_reviewed_by' => $this->getLastReviewedByUserId(),
 		];
+		// Tags are set separately via ArticleMetadata so exclude this field on insert, as we don't know
+		// the timestamp value of when the tags will have been updated.
+		unset( $data['ptrp_tags_updated'] );
+		return $data;
 	}
 }

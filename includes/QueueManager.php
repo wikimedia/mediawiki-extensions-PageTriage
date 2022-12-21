@@ -21,6 +21,25 @@ class QueueManager {
 	}
 
 	/**
+	 * @param QueueRecord $queueRecord
+	 * @return Status OK if the row was added, not OK otherwise.
+	 */
+	public function insert( QueueRecord $queueRecord ): Status {
+		$status = new Status();
+		$queueRecordData = $queueRecord->jsonSerialize();
+		$this->dbw->insert(
+			'pagetriage_page',
+			$queueRecordData,
+			__METHOD__,
+			// 'IGNORE' is needed for fields like ptrp_tags_updated which will not be
+			// present on a new record.
+			[ 'IGNORE' ]
+		);
+		$status->setOK( $this->dbw->affectedRows() === 1 );
+		return $status;
+	}
+
+	/**
 	 * Delete an item by page ID.
 	 *
 	 * @param int $pageId

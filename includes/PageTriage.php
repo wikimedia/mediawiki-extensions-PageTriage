@@ -69,20 +69,23 @@ class PageTriage {
 			throw new MWPageTriageMissingRevisionException( 'Page missing revision!' );
 		}
 
-		$row = [
-			'ptrp_page_id' => $this->mPageId,
-			'ptrp_reviewed' => $reviewStatus,
-			'ptrp_created' => $res->creation_date,
-			'ptrp_reviewed_updated' => $res->last_edit_date
-		];
+		$queueRecord = new QueueRecord(
+			$this->mPageId,
+			$reviewStatus,
+			false,
+			$res->creation_date,
+			null,
+			$res->last_edit_date,
+			$user ? $user->getId() : 0,
+		);
+		/** @var QueueManager $queueManager */
+		$queueManager = MediaWikiServices::getInstance()->get( 'PageTriageQueueManager' );
+		$status = $queueManager->insert( $queueRecord );
 
-		$row['ptrp_last_reviewed_by'] = $user ? $user->getId() : 0;
-
-		$this->mReviewedUpdated = $row['ptrp_reviewed_updated'];
-
-		$dbw->insert( 'pagetriage_page', $row, __METHOD__, [ 'IGNORE' ] );
-
-		$this->currentReviewStatus = $reviewStatus;
+		if ( $status->isGood() ) {
+			$this->mReviewedUpdated = $queueRecord->getReviewedUpdatedTimestamp();
+			$this->currentReviewStatus = $reviewStatus;
+		}
 
 		return true;
 	}
