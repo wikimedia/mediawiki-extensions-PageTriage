@@ -55,7 +55,7 @@ class ApiPageTriageStatsTest extends PageTriageTestCase {
 		// Test valid param to PageTriageStats.
 		$response = $this->doApiRequest( [
 			'action' => 'pagetriagestats',
-			'topreviewers' => '1'
+			'recreated' => '1',
 		] );
 		static::assertArrayNotHasKey( 'warnings', $response[0] );
 		// Test invalid param to PageTriageStats.
