@@ -49,7 +49,7 @@ class PageTriage {
 		bool $fromRc = false
 	): bool {
 		if ( $this->retrieve() ) {
-			if ( $this->currentReviewStatus != $reviewStatus ) {
+			if ( $this->currentReviewStatus !== $reviewStatus ) {
 				$this->setTriageStatus( $reviewStatus, $user, $fromRc );
 			}
 			return false;
@@ -114,7 +114,7 @@ class PageTriage {
 			// Page doesn't exist in pagetriage_page
 			return false;
 		}
-		if ( $this->currentReviewStatus == $newReviewStatus ) {
+		if ( $this->currentReviewStatus === $newReviewStatus ) {
 			// Status doesn't change
 			return false;
 		}
@@ -149,7 +149,7 @@ class PageTriage {
 				$rc = RecentChange::newFromConds( [
 					'rc_cur_id' => $this->mPageId,
 					'rc_new' => '1'
-				] );
+				], __METHOD__ );
 				if ( $rc && !$rc->getAttribute( 'rc_patrolled' ) ) {
 					$rc->reallyMarkPatrolled();
 					PatrolLog::record( $rc, false, $user, 'pagetriage' );

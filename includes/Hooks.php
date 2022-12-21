@@ -301,7 +301,6 @@ class Hooks implements
 			if ( $isAutopatrolled && !$isDraft ) {
 				// Set as reviewed if the user has the autopatrol right,
 				// and they're not creating a Draft.
-				$reviewed = QueueRecord::REVIEW_STATUS_AUTOPATROLLED;
 				return $pageTriage->addToPageTriageQueue(
 					QueueRecord::REVIEW_STATUS_AUTOPATROLLED,
 					$userIdentity
