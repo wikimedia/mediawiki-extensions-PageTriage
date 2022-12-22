@@ -44,9 +44,6 @@ class RemoveOldRows extends Maintenance {
 		$this->output( "cleanRedirects()... \n" );
 		$this->cleanRedirects();
 
-		$this->output( "cleanPageTriageLogTable()... \n" );
-		$this->cleanPageTriageLogTable();
-
 		$this->output( "Completed \n" );
 	}
 
@@ -178,22 +175,5 @@ class RemoveOldRows extends Maintenance {
 			$this->output( "processed $count \n" );
 			$lbFactory->waitForReplication();
 		}
-	}
-
-	/**
-	 * Removes pages from the SQL table pagetriage_log if they meet certain
-	 * criteria.
-	 *
-	 * pagetriage_log keeps track of statistics about how many patrols each
-	 * patroller does. We can delete this data after a year.
-	 */
-	private function cleanPageTriageLogTable() {
-		$yearago = (int)wfTimestamp( TS_UNIX ) - 365 * 60 * 60 * 24;
-		$yearago = $this->dbr->addQuotes( $this->dbr->timestamp( $yearago ) );
-		$this->dbw->delete(
-			'pagetriage_log',
-			[ 'ptrl_timestamp < ' . $yearago ],
-			__METHOD__
-		);
 	}
 }

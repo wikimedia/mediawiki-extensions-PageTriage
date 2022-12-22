@@ -19,8 +19,6 @@ class PageTriage {
 	protected int $currentReviewStatus;
 	/** @var string MediaWiki-style timestamp of when the last review happened. */
 	protected string $mReviewedUpdated;
-	/** @var int User ID of the user that last reviewed the article. */
-	protected int $mLastReviewedBy;
 
 	/** @var bool Used for in-process caching. */
 	protected bool $mLoaded;
@@ -81,15 +79,10 @@ class PageTriage {
 		$row['ptrp_last_reviewed_by'] = $user ? $user->getId() : 0;
 
 		$this->mReviewedUpdated = $row['ptrp_reviewed_updated'];
-		$this->mLastReviewedBy  = $row['ptrp_last_reviewed_by'];
 
 		$dbw->insert( 'pagetriage_page', $row, __METHOD__, [ 'IGNORE' ] );
 
 		$this->currentReviewStatus = $reviewStatus;
-
-		if ( $this->mLastReviewedBy ) {
-			$this->logUserTriageAction();
-		}
 
 		return true;
 	}
@@ -143,7 +136,6 @@ class PageTriage {
 		if ( $dbw->affectedRows() > 0 ) {
 			$this->currentReviewStatus = $newReviewStatus;
 			$this->mReviewedUpdated = $set['ptrp_reviewed_updated'];
-			$this->mLastReviewedBy = $set['ptrp_last_reviewed_by'];
 			// @Todo - case for marking a page as untriaged and make sure this logic is correct
 			if ( !$fromRc && $newReviewStatus && $user ) {
 				$rc = RecentChange::newFromConds( [
@@ -154,10 +146,6 @@ class PageTriage {
 					$rc->reallyMarkPatrolled();
 					PatrolLog::record( $rc, false, $user, 'pagetriage' );
 				}
-			}
-			// Log it if set by user
-			if ( $this->mLastReviewedBy ) {
-				$this->logUserTriageAction();
 			}
 		}
 		$dbw->endAtomic( __METHOD__ );
@@ -209,29 +197,8 @@ class PageTriage {
 
 		$this->currentReviewStatus = $queueRecord->getReviewedStatus();
 		$this->mReviewedUpdated = wfTimestamp( TS_UNIX, $queueRecord->getReviewedUpdatedTimestamp() );
-		$this->mLastReviewedBy = $queueRecord->getLastReviewedByUserId();
 		$this->mLoaded = true;
 		return true;
-	}
-
-	/**
-	 * Log the user triage action
-	 */
-	protected function logUserTriageAction() {
-		if ( !$this->mLastReviewedBy ) {
-			return;
-		}
-
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
-
-		$row = [
-			'ptrl_page_id' => $this->mPageId,
-			'ptrl_user_id' => $this->mLastReviewedBy,
-			'ptrl_reviewed' => $this->currentReviewStatus,
-			'ptrl_timestamp' => $this->mReviewedUpdated
-		];
-
-		$dbw->insert( 'pagetriage_log', $row, __METHOD__ );
 	}
 
 	/**

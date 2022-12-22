@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\PageTriage\Api;
 
 use ApiBase;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
-use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiPageTriageStats extends ApiBase {
 	public function execute() {
@@ -25,10 +24,6 @@ class ApiPageTriageStats extends ApiBase {
 			'namespace' => $params['namespace']
 		];
 
-		if ( isset( $params['topreviewers'] ) ) {
-			$data['topreviewers'] = PageTriageUtil::getTopTriagers( $params['topreviewers'] );
-		}
-
 		$result = [ 'result' => 'success', 'stats' => $data ];
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
@@ -41,12 +36,6 @@ class ApiPageTriageStats extends ApiBase {
 			PageTriageUtil::getOresApiParams(),
 			PageTriageUtil::getCopyvioApiParam(),
 			PageTriageUtil::getCommonApiParams(),
-			[
-				'topreviewers' => [
-					ParamValidator::PARAM_TYPE => 'string',
-					ParamValidator::PARAM_DEPRECATED => true,
-				],
-			]
 		);
 	}
 }

@@ -237,55 +237,6 @@ class PageTriageUtil {
 	}
 
 	/**
-	 * Get top page triagers in various time frame
-	 * @param string $time time to look back for top triagers, possible values include
-	 *                     last-day, last-week, last-month
-	 * @return array
-	 */
-	public static function getTopTriagers( $time = 'last-week' ) {
-		$now = (int)wfTimestamp( TS_UNIX );
-
-		// times to look back for top triagers and expiration time in cache
-		$timeFrame = [
-			'last-day' => [ 'ts' => $now - 24 * 60 * 60, 'expire' => 60 * 60 ],
-			'last-week' => [ 'ts' => $now - 7 * 24 * 60 * 60, 'expire' => 24 * 60 * 60 ],
-			'last-month' => [ 'ts' => $now - 30 * 24 * 60 * 60, 'expire' => 24 * 60 * 60 ],
-		];
-
-		if ( !isset( $timeFrame[$time] ) ) {
-			$time = 'last-day';
-		}
-
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-		$fname = __METHOD__;
-
-		return $cache->getWithSetCallback(
-			$cache->makeKey( 'pagetriage-top-triager', $time ),
-			$timeFrame[$time]['expire'],
-			static function () use ( $timeFrame, $time, $fname ) {
-				$dbr = self::getConnection( DB_REPLICA );
-
-				$res = $dbr->select(
-					[ 'pagetriage_log', 'user' ],
-					[ 'user_name', 'user_id', 'COUNT(ptrl_id) AS num' ],
-					[
-						'user_id = ptrl_user_id',
-						// only reviewed status
-						'ptrl_reviewed' => 1,
-						'ptrl_timestamp > ' .
-							$dbr->addQuotes( $dbr->timestamp( $timeFrame[$time]['ts'] ) )
-					],
-					$fname,
-					[ 'GROUP BY' => [ 'user_name', 'user_id' ], 'ORDER BY' => 'num DESC', 'LIMIT' => 50 ]
-				);
-
-				return iterator_to_array( $res );
-			},
-			[ 'version' => PageTriage::CACHE_VERSION ]
-		);
-	}
-
-	/**
 	 * returns the cache key for user status
 	 * @param string $userName
 	 * @return string

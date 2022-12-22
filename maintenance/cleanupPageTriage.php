@@ -67,12 +67,6 @@ class CleanupPageTriage extends Maintenance {
 				);
 
 				$dbw->delete(
-					'pagetriage_log',
-					[ 'ptrl_page_id' => $page ],
-					__METHOD__
-				);
-
-				$dbw->delete(
 					'pagetriage_page_tags',
 					[ 'ptrpt_page_id' => $page ],
 					__METHOD__
