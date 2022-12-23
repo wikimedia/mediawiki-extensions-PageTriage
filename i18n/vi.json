@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Nguyenphutrong2",
 			"Nhatminh01",
 			"පසිඳු කාවින්ද"
 		]
@@ -11,8 +12,10 @@
 	"pagetriage-filter-stat-all": "Tất cả",
 	"pagetriage-filter-stat-bots": "Bởi bot",
 	"pagetriage-tags-cat-structure-label": "Cấu trúc",
+	"pagetriage-feedback-from-new-page-review-process-message": "Tôi đã để lại phản hồi sau cho người sáng tạo/người đánh giá trong tương lai khi xem lại bài viết này: $1",
 	"pagetriage-tags-param-free-yes-label": "Có",
 	"pagetriage-tags-param-free-no-label": "Không",
 	"pagetriage-info-history-header": "Lịch sử",
-	"pagetriage-info-help": "Trợ giúp"
+	"pagetriage-info-help": "Trợ giúp",
+	"pagetriage-tag-previousdeletion-error": "Đã tìm thấy một mẫu ($1) cho biết thao tác xóa trước đó, quy trình hủy bỏ."
 }
