@@ -94,6 +94,7 @@
 	"pagetriage-filter-blocked": "Blokirani korisnici",
 	"pagetriage-filter-all": "Prikaži sve",
 	"pagetriage-filter-set-button": "Postavi filtre",
+	"pagetriage-filter-reset-button": "Resetuj filtre",
 	"pagetriage-stats-less-than-a-day": "prije manje od jednoga dana",
 	"pagetriage-stats-reviewed-page-count": "Ovoga tjedna {{PLURAL:$1|provjerena je|provjerene su|provjereno je}} $1 {{PLURAL:$1|stranica|stranice|stranica}}",
 	"pagetriage-stats-filter-page-count": "{{PLURAL:$1|$1 stranica|$1 stranice|$1 stranica}} na Vašem isfiltriranom spisku",
