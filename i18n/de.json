@@ -412,7 +412,7 @@
 	"pagetriage-wikilove-tooltip": "Wertschätzung an die Autoren senden",
 	"pagetriage-next-tooltip": "Zur nächsten Seite in der Warteschlange gehen",
 	"pagetriage-del-log-page-missing-error": "Die Logbuchseite für den heutigen Tag wurde bislang noch nicht erstellt.",
-	"pagetriage-del-log-page-adding-error": "Der Ort an dem die Diskussion abgespeichert werden soll, konnte nicht ermittelt werden.",
+	"pagetriage-del-log-page-adding-error": "Der Ort, an dem die Diskussion abgespeichert werden soll, konnte nicht ermittelt werden.",
 	"pagetriage-del-talk-page-notify-error": "Der Autor konnte nicht auf seiner Diskussionsseite benachrichtigt werden.",
 	"pagetriage-del-discussion-page-adding-error": "Fehler beim Hinzufügen der Seite zur Löschdiskussionsseite!",
 	"pagetriage-del-title": "Löschantrag stellen",

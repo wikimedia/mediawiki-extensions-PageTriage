@@ -30,7 +30,8 @@
 			"开炸弹车",
 			"Stang",
 			"GuoPC",
-			"Lantianjialiang"
+			"Lantianjialiang",
+			"捍粵者"
 		]
 	},
 	"pagetriage": "页面分配器",
@@ -245,7 +246,7 @@
 	"pagetriage-tags-param-issues-label": "叙述要解决的问题：",
 	"pagetriage-tags-param-for-label": "该条目可能需要文字加工：",
 	"pagetriage-tags-param-blp-label": "这是在世人物的传记",
-	"pagetriage-tags-param-source-label": "请为那个来源添加URL：",
+	"pagetriage-tags-param-source-label": "请为来源添加URL：",
 	"pagetriage-tags-param-free-label": "该内容自由授权。",
 	"pagetriage-tags-param-url-label": "请添加这个来源的URL。",
 	"pagetriage-tags-param-free-yes-label": "是",
