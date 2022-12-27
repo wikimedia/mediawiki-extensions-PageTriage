@@ -98,41 +98,6 @@ const specialDeletionTagging = {
 			const date = new DateWrapper();
 			return prefix + '/' + date.getYear() + ' ' + date.getMonth() + ' ' + date.getDate();
 		}
-	},
-
-	mfd: {
-		buildDeletionTag: function ( tagObj ) {
-			if ( !tagObj.subpageNumber ) {
-				return '{{subst:mfd1}}';
-			}
-			return '{{subst:mfdx|' + tagObj.subpageNumber + '}}';
-		},
-
-		buildDiscussionRequest: function ( reason, data ) {
-			data.appendtext = '{{subst:mfd2|text=' + reason + ' ~~~~|pg=' + pageName + '}}\n';
-			data.summary = 'Creating deletion discussion page for [[' + pageName + ']].';
-		},
-
-		buildLogRequest: function ( oldText, reason, tagObj, data ) {
-			const date = new DateWrapper(),
-				dateHeader = '===' + date.getMonth() + ' ' + date.getDate() + ', ' + date.getYear() + '===\n',
-				dateHeaderRegex = new RegExp( '(===\\s*' + date.getMonth() + '\\s+' + date.getDate() + ',\\s+' + date.getYear() + '\\s*===)' ),
-				page = tagObj.subpage || pageName,
-				newData = '{{subst:mfd3|pg=' + page + '}}';
-
-			if ( dateHeaderRegex.test( oldText ) ) { // we have a section already
-				data.text = oldText.replace( dateHeaderRegex, '$1\n' + newData );
-			} else { // we need to create a new section
-				data.text = oldText.replace( '===', dateHeader + newData + '\n\n===' );
-			}
-
-			data.summary = 'Adding [[' + tagObj.prefix + '/' + page + ']].';
-			data.recreate = true;
-		},
-
-		getLogPageTitle: function ( prefix ) {
-			return prefix;
-		}
 	}
 };
 
@@ -180,28 +145,20 @@ module.exports = ToolView.extend( {
 	},
 
 	/**
-	 * Set up deletion tags based on namespace. For main namespace, set 'redirects
-	 * for discussion' or 'articles for deletion' depending on whether the
-	 * article is a redirect. For user namespace, set 'miscellany for deletion'.
+	 * Set up deletion tags. Set 'redirects for discussion' or 'articles for
+	 * deletion' depending on whether the article is a redirect.
 	 */
 	setupDeletionTags: function () {
-		// user namespace
-		if ( mw.config.get( 'wgCanonicalNamespace' ) === 'User' ) {
-			this.deletionTagsOptions = $.pageTriageDeletionTagsOptions.User;
-			this.deletionTagsOptions.mfd.label = this.deletionTagsOptions.mfd.tags.miscellanyfordeletion.label;
-		// default to main namespace
+		this.deletionTagsOptions = $.pageTriageDeletionTagsOptions.Main;
+		const xfd = this.deletionTagsOptions.xfd;
+		// redirect
+		if ( Number( this.model.get( 'is_redirect' ) ) === 1 ) {
+			xfd.label = xfd.tags.redirectsfordiscussion.label;
+			delete xfd.tags.articlefordeletion;
+		// non-redirect
 		} else {
-			this.deletionTagsOptions = $.pageTriageDeletionTagsOptions.Main;
-			const xfd = this.deletionTagsOptions.xfd;
-			// redirect
-			if ( Number( this.model.get( 'is_redirect' ) ) === 1 ) {
-				xfd.label = xfd.tags.redirectsfordiscussion.label;
-				delete xfd.tags.articlefordeletion;
-			// non-redirect
-			} else {
-				xfd.label = xfd.tags.articlefordeletion.label;
-				delete xfd.tags.redirectsfordiscussion;
-			}
+			xfd.label = xfd.tags.articlefordeletion.label;
+			delete xfd.tags.redirectsfordiscussion;
 		}
 	},
 
@@ -806,7 +763,7 @@ module.exports = ToolView.extend( {
 						if ( tagObj.prefix ) {
 							// Handles writing to the XFD daily log and creating the XFD page. This
 							// code path is only used for the XFD options (AFD for mainspace, RFD
-							// for redirects, MFD for userspace)
+							// for redirects)
 							chainEnd = chainEnd
 								.then( that.shouldLog.bind( that, tagObj ) )
 								.then( that.addToLog )
@@ -1077,7 +1034,7 @@ module.exports = ToolView.extend( {
 			.then( function ( data ) {
 				if ( data && data.query && data.query.pages ) {
 					for ( const i in data.query.pages ) {
-						// If log page is missing, skip ahead to making the AFD/MFD page
+						// If log page is missing, skip ahead to making the AFD page
 						if ( i !== '-1' ) {
 							return {
 								title: title,
@@ -1142,7 +1099,7 @@ module.exports = ToolView.extend( {
 	},
 
 	/**
-	 * Generate an AFD or MFD discussion page
+	 * Generate an AFD discussion page
 	 *
 	 * @param {Object} tagObj
 	 * @return {jQuery.Promise} A promise. Resolves if successful, rejects with
