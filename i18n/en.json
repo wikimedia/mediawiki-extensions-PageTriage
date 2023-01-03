@@ -61,6 +61,7 @@
 	"pagetriage-filter-predicted-issues-none": "None",
 	"pagetriage-unreviewed-article-count": "$1 {{PLURAL:$1|article|articles}} and $2 {{PLURAL:$2|redirect|redirects}} are unreviewed (oldest: $3)",
 	"pagetriage-reviewed-article-count-past-week": "$1 {{PLURAL:$1|article|articles}} and $2 {{PLURAL:$2|redirect|redirects}} were reviewed this week",
+	"pagetriage-unreviewed-draft-count": "$1 {{PLURAL:$1|draft|drafts}} {{PLURAL:$1|is|are}} awaiting review (oldest: $2)",
 	"pagetriage-sort-by": "Sort by:",
 	"pagetriage-newest": "Newest",
 	"pagetriage-oldest": "Oldest",

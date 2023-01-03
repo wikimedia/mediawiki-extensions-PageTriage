@@ -10,6 +10,7 @@ use ExtensionRegistry;
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\PageTriage\Api\ApiPageTriageList;
+use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
 use MWException;
@@ -228,6 +229,69 @@ class PageTriageUtil {
 
 				if ( $res ) {
 					$data['reviewed_count'] = (int)$res->reviewed_count;
+				}
+
+				return $data;
+			},
+			[ 'version' => PageTriage::CACHE_VERSION ]
+		);
+	}
+
+	/**
+	 * Get number of drafts awaiting review and the age of the
+	 * oldest submitted draft
+	 *
+	 * @return array ['count' => (int) number of unreviewed drafts,
+	 *			'oldest' => (string) timestamp of oldest unreviewed draft]
+	 *			an empty array is returned if the draft are not enabled
+	 */
+	public static function getUnreviewedDraftStats(): array {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		if ( !$config->get( 'PageTriageDraftNamespaceId' ) ) {
+			return [];
+		}
+
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$fname = __METHOD__;
+
+		return $cache->getWithSetCallback(
+			'pagetriage-unreviewed-drafts-stats',
+			// 10 minute cache
+			10 * $cache::TTL_MINUTE,
+			static function () use ( $fname, $config ) {
+				$dbr = self::getConnection( DB_REPLICA );
+
+				$afcStateTagId = $dbr->selectField(
+					'pagetriage_tags', 'ptrt_tag_id', [ 'ptrt_tag_name' => 'afc_state' ], $fname
+				);
+				if ( !$afcStateTagId ) {
+					return [];
+				}
+
+				$table = [ 'pagetriage_page', 'page', 'pagetriage_page_tags' ];
+				$conds = [
+					'page_id = ptrp_page_id',
+					'ptrp_page_id = ptrpt_page_id',
+					'ptrpt_tag_id' => $afcStateTagId,
+					'ptrpt_value' => ArticleCompileAfcTag::PENDING,
+					'page_namespace' => $config->get( 'PageTriageDraftNamespaceId' )
+				];
+
+				$res = $dbr->selectRow(
+					$table,
+					[
+						'COUNT(ptrp_page_id) AS total',
+						'MIN(ptrp_reviewed_updated) AS oldest',
+					],
+					$conds,
+					$fname
+				);
+
+				$data = [];
+
+				if ( $res ) {
+					$data['count'] = (int)$res->total;
+					$data['oldest'] = (string)$res->oldest;
 				}
 
 				return $data;

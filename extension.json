@@ -237,6 +237,7 @@
 				"pagetriage-filter-list-prompt",
 				"pagetriage-unreviewed-article-count",
 				"pagetriage-reviewed-article-count-past-week",
+				"pagetriage-unreviewed-draft-count",
 				"pagetriage-sort-by",
 				"pagetriage-newest",
 				"pagetriage-oldest",

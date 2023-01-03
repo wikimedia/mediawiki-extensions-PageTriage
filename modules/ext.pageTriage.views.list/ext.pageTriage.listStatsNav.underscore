@@ -5,8 +5,14 @@
 	</label>
 	<button id="mwe-pt-refresh-button"><%- mw.msg( 'pagetriage-refresh-list' ) %></button>
 </div>
-<% if ( !afcMode ) { %>
-	<div class="mwe-pt-bottom-nav-stats">
+<div class="mwe-pt-bottom-nav-stats">
+	<% if ( afcMode ) { %>
+		<% if ( ptrUnreviewedDraftCount && ptrUnreviewedDraftOldest ) { %>
+			<div id="mwe-pt-afc-stats">
+				<%- mw.msg( 'pagetriage-unreviewed-draft-count', mw.language.convertNumber( ptrUnreviewedDraftCount ), ptrUnreviewedDraftOldest ) %>
+			</div>
+		<% } %>
+	<% } else { %>
 		<div id="mwe-pt-unreviewed-stats">
 			<% if ( ptrUnreviewedArticleCount ) { %>
 				<%- mw.msg( 'pagetriage-unreviewed-article-count', ptrUnreviewedArticleCount, ptrUnreviewedRedirectCount, ptrOldest ) %>
@@ -17,5 +23,5 @@
 				<%- mw.msg( 'pagetriage-reviewed-article-count-past-week', ptrReviewedArticleCount, ptrReviewedRedirectCount ) %>
 			<% } %>
 		</div>
-	</div>
-<% } %>
+	<% } %>
+</div>
