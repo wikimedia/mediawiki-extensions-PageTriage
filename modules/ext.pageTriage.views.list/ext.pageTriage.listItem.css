@@ -104,7 +104,8 @@
 
 .mwe-pt-updated-date {
 	display: table-cell;
-	text-align: right;
+	float: right;
+	padding-right: 1em;
 	white-space: nowrap;
 }
 

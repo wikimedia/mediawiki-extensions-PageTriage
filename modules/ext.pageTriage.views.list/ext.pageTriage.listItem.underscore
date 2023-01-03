@@ -120,12 +120,12 @@
 					<% } else { %>
 						<%- mw.msg('pagetriage-no-author') %>
 					<% } %>
-					</div>
-					<div class="mwe-pt-updated-date">
-						<% if ( last_afc_action_date_label ) { %>
-						<span><%- last_afc_action_date_label %></span>
-						<span><%- reviewed_updated_pretty %></span>
-						<% } %>
+						<div class="mwe-pt-updated-date">
+							<% if ( last_afc_action_date_label ) { %>
+							<span><%- last_afc_action_date_label %></span>
+							<span><%- reviewed_updated_pretty %></span>
+							<% } %>
+						</div>
 					</div>
 				</div>
 				<div class="mwe-pt-info-row">
