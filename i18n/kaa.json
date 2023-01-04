@@ -3,11 +3,12 @@
 		"authors": [
 			"Ajiniyaz",
 			"Ajiniyaz Nurniyazov",
-			"Amire80"
+			"Amire80",
+			"Nurlan"
 		]
 	},
 	"pagetriage-unreviewed-article-count": "$1 {{PLURAL:$1|maqala|maqalalar}} hám $2 {{PLURAL:$2|baǵdarlaw|baǵdarlawlar}} kórip shıǵılmaǵan (eń eskisi: $3)",
-	"pagetriage-reviewed-article-count-past-week": "Usı háptede $1 {{PLURAL:$1|maqala|maqalalar}} hám $2 {{PLURAL:$2|baǵdarlaw|baǵdarlawlar}} kórip shıǵıldıe",
+	"pagetriage-reviewed-article-count-past-week": "Usı háptede $1 {{PLURAL:$1|maqala|maqalalar}} hám $2 {{PLURAL:$2|baǵdarlaw|baǵdarlawlar}} kórip shıǵıldı",
 	"pagetriage-filter-bot-edits": "Botlar",
 	"pagetriage-filter-autopatrolled-edits": "Avtopatrul etilgen paydalanıwshılar",
 	"pagetriage-filter-user-heading": "Jaratqanlar:",
