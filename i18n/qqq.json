@@ -332,6 +332,7 @@
 	"pagetriage-tags-update-label": "{{optional}}\nLabel for update tag.\n{{Identical|Update}}",
 	"pagetriage-tags-update-desc": "{{optional}}\nDescription for update tag",
 	"pagetriage-tags-tooltip": "Help message that displays when someone hovers over the tag wizard button",
+	"pagetriage-tags-quickfilter-label": "Label for the tag filter textbox",
 	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "Deletion tag option messages",
 	"pagetriage-del-tags-cat-csd-label": "{{optional}}\nLabel for speedy deletion category",
 	"pagetriage-del-tags-cat-csd-desc": "Description for speedy deletion category",

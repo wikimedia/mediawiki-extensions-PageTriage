@@ -312,6 +312,7 @@
 	"pagetriage-tags-update-label": "Update",
 	"pagetriage-tags-update-desc": "This page needs additional up-to-date information added.",
 	"pagetriage-tags-tooltip": "Add tags to indicate areas of improvement for this page",
+	"pagetriage-tags-quickfilter-label": "Filter tag list:",
 	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "Speedy deletion nomination of $1",
 	"pagetriage-del-tags-cat-csd-label": "Speedy deletion",
 	"pagetriage-del-tags-cat-csd-desc": "Mark this page for speedy deletion if it fits one of the criteria below.",
