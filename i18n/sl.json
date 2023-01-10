@@ -311,6 +311,7 @@
 	"pagetriage-tags-update-label": "Posodobitev",
 	"pagetriage-tags-update-desc": "To stran je treba posodobiti z novimi informacijami.",
 	"pagetriage-tags-tooltip": "Dodaj oznake, da označiš možnosti izboljšanja te strani",
+	"pagetriage-tags-quickfilter-label": "Seznam oznak za filtriranje:",
 	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "Predlog za hitri izbris $1",
 	"pagetriage-del-tags-cat-csd-label": "Hitri izbris",
 	"pagetriage-del-tags-cat-csd-desc": "To stran označite za hitri izbris, če ustreza kateremu od naslednjih kriterijev.",
