@@ -306,6 +306,7 @@
 	"pagetriage-tags-update-label": "Actualisar",
 	"pagetriage-tags-update-desc": "Iste pagina ha besonio de additional information actualisate.",
 	"pagetriage-tags-tooltip": "Adde etiquettas pro indicar areas a meliorar sur iste pagina",
+	"pagetriage-tags-quickfilter-label": "Lista de etiquettas de filtro:",
 	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "Nomination de deletion rapide de $1",
 	"pagetriage-del-tags-cat-csd-label": "Deletion rapide",
 	"pagetriage-del-tags-cat-csd-desc": "Marca iste pagina pro deletion rapide si illo corresponde a un del sequente criterios.",

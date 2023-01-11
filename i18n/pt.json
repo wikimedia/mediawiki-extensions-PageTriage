@@ -198,6 +198,7 @@
 	"pagetriage-tags-cat-moretags-label": "Mais etiquetas",
 	"pagetriage-tags-cat-all-label": "Todas as etiquetas",
 	"pagetriage-tags-tooltip": "Adiciona etiquetas para indicar as áreas desta página que podem ser melhoradas",
+	"pagetriage-tags-quickfilter-label": "Lista de etiquetas a filtrar:",
 	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "Nomeação para eliminação rápida de $1",
 	"pagetriage-del-tags-cat-csd-desc": "Marcar esta página para eliminação rápida se ela cumprir algum dos critérios abaixo.",
 	"pagetriage-del-tags-cat-prod-desc": "Marcar esta página como proposta para eliminação se ela violar claramente alguma norma da comunidade.",

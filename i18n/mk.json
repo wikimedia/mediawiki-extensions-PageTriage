@@ -309,6 +309,7 @@
 	"pagetriage-tags-update-label": "Поднова",
 	"pagetriage-tags-update-desc": "На страницата треба да се поднови со понови информации.",
 	"pagetriage-tags-tooltip": "Додајте ознаки на страницата за да означите каде сè има проблеми за решавање",
+	"pagetriage-tags-quickfilter-label": "Список на филтерски ознаки:",
 	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "Предлог за брзо бришење на $1",
 	"pagetriage-del-tags-cat-csd-label": "Брзо бришење",
 	"pagetriage-del-tags-cat-csd-desc": "Означете ја страницава за брзо бришење ако задоволува еден од долунаведените критериуми.",
