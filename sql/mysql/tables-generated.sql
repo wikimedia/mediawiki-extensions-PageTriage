@@ -46,15 +46,3 @@ CREATE TABLE /*_*/pagetriage_page (
   INDEX ptrp_reviewed_updated (ptrp_reviewed_updated),
   PRIMARY KEY(ptrp_page_id)
 ) /*$wgDBTableOptions*/;
-
-
-CREATE TABLE /*_*/pagetriage_log (
-  ptrl_id INT UNSIGNED AUTO_INCREMENT NOT NULL,
-  ptrl_page_id INT UNSIGNED NOT NULL,
-  ptrl_user_id INT UNSIGNED NOT NULL,
-  ptrl_reviewed TINYINT UNSIGNED DEFAULT 0 NOT NULL,
-  ptrl_timestamp BINARY(14) NOT NULL,
-  INDEX ptrl_page_id_timestamp (ptrl_page_id, ptrl_timestamp),
-  INDEX ptrl_timestamp (ptrl_timestamp),
-  PRIMARY KEY(ptrl_id)
-) /*$wgDBTableOptions*/;

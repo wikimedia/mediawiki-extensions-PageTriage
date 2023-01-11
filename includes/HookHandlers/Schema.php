@@ -30,15 +30,12 @@ class Schema implements LoadExtensionSchemaUpdatesHook {
 		// 1.39
 		if ( $dbType === 'mysql' ) {
 			$updater->modifyExtensionField(
-				'pagetriage_log',
-				'ptrl_timestamp',
-				$base . '/patch-pagetriage_log-timestamp.sql'
-			);
-			$updater->modifyExtensionField(
 				'pagetriage_page',
 				'ptrp_reviewed_updated',
 				$base . '/patch-pagetriage_page-timestamps.sql'
 			);
+			// T325519
+			$updater->dropExtensionTable( 'pagetriage_log' );
 		}
 	}
 
