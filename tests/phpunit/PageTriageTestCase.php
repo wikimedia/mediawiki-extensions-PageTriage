@@ -58,7 +58,6 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		$this->tablesUsed[] = 'pagetriage_page';
 		$this->tablesUsed[] = 'pagetriage_tags';
 		$this->tablesUsed[] = 'pagetriage_page_tags';
-		$this->tablesUsed[] = 'pagetriage_log';
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'ORES' ) ) {
 			$this->tablesUsed[] = 'ores_model';
 			$this->tablesUsed[] = 'ores_classification';

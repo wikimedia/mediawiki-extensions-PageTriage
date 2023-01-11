@@ -888,7 +888,6 @@ class Hooks implements
 	}
 
 	public static function onUserMergeAccountFields( array &$updateFields ) {
-		$updateFields[] = [ 'pagetriage_log', 'ptrl_user_id' ];
 		$updateFields[] = [ 'pagetriage_page', 'ptrp_last_reviewed_by' ];
 	}
 
