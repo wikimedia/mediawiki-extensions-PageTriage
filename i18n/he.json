@@ -285,7 +285,7 @@
 	"apihelp-pagetriagetagging-param-bottom": "טקסט התיוג שצריך להוסיף לתחתית הערך.",
 	"apihelp-pagetriagetagging-param-deletion": "האם התיוג הוא בעבור העמדה למחיקה.",
 	"apihelp-pagetriagetagging-param-note": "הערה אישית מהסוקרים.",
-	"apihelp-pagetriagetagging-param-taglist": "רשימת תגים מופרדת בקווים אנכיים.",
+	"apihelp-pagetriagetagging-param-taglist": "רשימת תגים מופרדת בקווים ניצבים.",
 	"apierror-bad-pagetriage-page": "הדף שצוין אינו קיים בתור pagetriage",
 	"apierror-bad-pagetriage-enqueue-mainpage": "לא ניתן להוסיף את הדף הראשי לתור pagetriage",
 	"apierror-bad-pagetriage-enqueue-invalidnamespace": "הדף שצוין נמצא במרחב שם ש־page triage אינו מופעל בו",
