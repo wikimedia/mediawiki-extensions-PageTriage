@@ -53,17 +53,3 @@ CREATE INDEX ptrp_updated_page_reviewed ON pagetriage_page (
 );
 
 CREATE INDEX ptrp_reviewed_updated ON pagetriage_page (ptrp_reviewed_updated);
-
-
-CREATE TABLE pagetriage_log (
-  ptrl_id SERIAL NOT NULL,
-  ptrl_page_id INT NOT NULL,
-  ptrl_user_id INT NOT NULL,
-  ptrl_reviewed SMALLINT DEFAULT 0 NOT NULL,
-  ptrl_timestamp TIMESTAMPTZ NOT NULL,
-  PRIMARY KEY(ptrl_id)
-);
-
-CREATE INDEX ptrl_page_id_timestamp ON pagetriage_log (ptrl_page_id, ptrl_timestamp);
-
-CREATE INDEX ptrl_timestamp ON pagetriage_log (ptrl_timestamp);
