@@ -490,6 +490,7 @@
 	"apihelp-pagetriageaction-param-note": "Personal note to page creators from reviewers.",
 	"apihelp-pagetriageaction-param-skipnotif": "Whether to skip notification.",
 	"apihelp-pagetriageaction-param-enqueue": "Whether the page should be added to PageTriage queue.",
+	"apihelp-pagetriageaction-param-tags": "Change tags to apply to the log entries generated for this action.",
 	"apihelp-pagetriagelist-description": "Get a list of page IDs for building a PageTriage queue.",
 	"apihelp-pagetriagelist-summary": "Get a list of page IDs for building a PageTriage queue.",
 	"apihelp-pagetriagelist-param-afc_state": "Which Articles-for-Creation state to show.",
