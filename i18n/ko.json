@@ -291,6 +291,7 @@
 	"pagetriage-tags-update-label": "업데이트",
 	"pagetriage-tags-update-desc": "이 페이지는 추가적인 최신 정보가 필요합니다.",
 	"pagetriage-tags-tooltip": "이 문서를 개선할 부분을 나타내는 태그 추가",
+	"pagetriage-tags-quickfilter-label": "필터 태그 목록:",
 	"pagetriage-del-tags-cat-csd-label": "빠른 삭제",
 	"pagetriage-del-tags-cat-csd-desc": "아래의 조건 중 하나와 맞는 경우 빠른 삭제를 해당 문서에 표시합니다.",
 	"pagetriage-del-tags-cat-prod-label": "제안한 삭제",
