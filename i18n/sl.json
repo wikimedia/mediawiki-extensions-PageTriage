@@ -31,7 +31,7 @@
 	"pagetriage-no-reference": "Ni sklicev",
 	"pagetriage-orphan": "Sirota",
 	"pagetriage-recreated": "Predhodno izbrisana",
-	"pagetriage-no-author": "Podatkov o avtorju ni.",
+	"pagetriage-no-author": "Ni podatkov o avtorju.",
 	"pagetriage-byline": "Ustvaril_a $1 ($2$3$4)",
 	"pagetriage-byline-new-editor": "Ustvaril novi urejevalec $1 ($2$3$4)",
 	"pagetriage-articleinfo-byline": "Stran je $1 ustvaril_a $2 ($3$4$5).",

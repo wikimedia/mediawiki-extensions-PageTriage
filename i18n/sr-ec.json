@@ -70,6 +70,7 @@
 	"pagetriage-afc-newest-declined": "Датум одбијања (најновији)",
 	"pagetriage-afc-oldest-declined": "Датум одбијања (најстарији)",
 	"pagetriage-triage": "Прегледај",
+	"pagetriage-filter-date-range-format-showing": "ММ/ДД/ГГГГ",
 	"pagetriage-filter-show-heading": "Стање:",
 	"pagetriage-filter-type-show-heading": "Врста:",
 	"pagetriage-filter-reviewed-edits": "прегледане странице",
