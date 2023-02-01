@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Eukarióta",
 			"Hanna Tardos",
 			"පසිඳු කාවින්ද"
 		]
 	},
 	"pagetriage-tags-quickfilter-label": "Címkelista szűrése:",
 	"pagetriage-tags-param-free-yes-label": "Igen",
-	"pagetriage-tags-param-free-no-label": "Nem"
+	"pagetriage-tags-param-free-no-label": "Nem",
+	"apihelp-pagetriageaction-param-tags": "Változtasd meg a címkéket, hogy alkalmazd őket az ezt a műveletet naplózó rendszernapló-bejegyzésekhez."
 }

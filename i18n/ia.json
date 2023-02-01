@@ -475,6 +475,7 @@
 	"apihelp-pagetriageaction-param-note": "Nota personal de revisores a creatores de paginas.",
 	"apihelp-pagetriageaction-param-skipnotif": "Si saltar le notification.",
 	"apihelp-pagetriageaction-param-enqueue": "Si le pagina debe esser addite al cauda de triage de paginas.",
+	"apihelp-pagetriageaction-param-tags": "Etiquettas de cambiamento a applicar al entratas de registro generate pro iste action.",
 	"apihelp-pagetriagelist-description": "Obtener un lista de IDs de pagina pro construer un cauda de triage de paginas.",
 	"apihelp-pagetriagelist-summary": "Obtener un lista de IDs de pagina pro construer un cauda de triage de paginas.",
 	"apihelp-pagetriagelist-param-afc_state": "Qual stato Articulos-a-crear monstrar.",

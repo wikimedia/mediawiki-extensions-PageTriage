@@ -337,6 +337,7 @@
 	"apihelp-pagetriageaction-param-note": "Nota pessoal dos revisores para os criadores de páginas.",
 	"apihelp-pagetriageaction-param-skipnotif": "Saltar a notificação, ou não.",
 	"apihelp-pagetriageaction-param-enqueue": "Indica se a página deve ser adicionada à fila de triagem.",
+	"apihelp-pagetriageaction-param-tags": "Alterar as etiquetas a aplicar às entradas de registo geradas para esta operação.",
 	"apihelp-pagetriagelist-description": "Obter uma lista de identificadores de página para criar uma fila de triagem de páginas.",
 	"apihelp-pagetriagelist-summary": "Obter uma lista de identificadores de página para criar uma fila de triagem de páginas.",
 	"apihelp-pagetriagelist-param-afc_state": "Que estado de Artigos-para-serem-criados mostrar.",

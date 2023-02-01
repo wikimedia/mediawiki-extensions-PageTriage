@@ -487,6 +487,7 @@
 	"apihelp-pagetriageaction-param-note": "Osebno sporočilo pregledovalcev ustvarjalcem strani.",
 	"apihelp-pagetriageaction-param-skipnotif": "Ali želite preskočiti obvestilo.",
 	"apihelp-pagetriageaction-param-enqueue": "Ali naj se stran doda v čakalno vrsto PageTriage (triaža strani).",
+	"apihelp-pagetriageaction-param-tags": "Sprememba oznak, ki bodo uporabljene za dnevniške zapise, ustvarjene za to dejanje.",
 	"apihelp-pagetriagelist-description": "Pridobite seznam ID-jev strani za ustvaritev čakalne vrste PageTriage (triažiranje strani).",
 	"apihelp-pagetriagelist-summary": "Pridobite seznam ID-jev strani za ustvaritev čakalne vrste PageTriage (triažiranje strani).",
 	"apihelp-pagetriagelist-param-afc_state": "Katero stanje člankov za ustvaritev želite prikazati.",

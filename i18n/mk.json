@@ -485,6 +485,7 @@
 	"apihelp-pagetriageaction-param-note": "Лична белешка за создавачите на страницата од проверувачите.",
 	"apihelp-pagetriageaction-param-skipnotif": "Дали да се прескокне известувањето.",
 	"apihelp-pagetriageaction-param-enqueue": "Дали страницата да се додаде во редицата.",
+	"apihelp-pagetriageaction-param-tags": "Смени ги ознаките за да важат за дневничките ставки создадени за ова дејство.",
 	"apihelp-pagetriagelist-description": "Дај список на назнаки на страници за составување на редицата за проверка на страници.",
 	"apihelp-pagetriagelist-summary": "Дај список на назнаки на страници за составување на редицата за проверка на страници.",
 	"apihelp-pagetriagelist-param-afc_state": "Која состојба на статиите за создавање да се прикаже.",

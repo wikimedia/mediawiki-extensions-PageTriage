@@ -367,6 +367,7 @@
 	"apihelp-pagetriageaction-param-reviewed": "Of de pagina gemarkeerd moet worden als gecontroleerd.",
 	"apihelp-pagetriageaction-param-note": "Persoonlijke opmerking aan paginamakers van controleurs.",
 	"apihelp-pagetriageaction-param-skipnotif": "Of de notificatie overgeslagen moet worden.",
+	"apihelp-pagetriageaction-param-tags": "Wijzigingstags om toe te passen op de logboekvermeldingen die voor deze actie zijn gegenereerd.",
 	"apihelp-pagetriagelist-description": "Een lijst van pagina-ID's opvragen voor het maken van een PageTriage-wachtrij.",
 	"apihelp-pagetriagelist-param-page_id": "Retourneer gegevens voor de opgegeven pagina-ID's, andere parameters negerend.",
 	"apihelp-pagetriagelist-param-showbots": "Of alleen botbewerkingen getoond moeten worden.",

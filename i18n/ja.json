@@ -15,6 +15,7 @@
 			"Yamagata Yusuke",
 			"おはぐろ蜻蛉",
 			"カッパ鳥",
+			"背番号4のエース",
 			"아라"
 		]
 	},
@@ -320,6 +321,7 @@
 	"echo-category-title-page-review": "ページの{{PLURAL:$1|査読}}",
 	"action-pagetriage-copyvio": "著作権を侵害している恐れがあるとしてページにタグ付け",
 	"group-copyviobot": "著作権監視ボット",
+	"apihelp-pagetriageaction-param-tags": "このアクションに対して生成されたログエントリに適用するタグを変更します。",
 	"apihelp-pagetriagelist-param-show_predicted_issues_copyvio": "著作権侵害の恐れがあるものを含めるか",
 	"apihelp-pagetriagestats-param-show_predicted_issues_copyvio": "著作権侵害の恐れがあるものを含めるか"
 }
