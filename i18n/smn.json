@@ -21,5 +21,6 @@
 	"pagetriage-info-history-header": "Historjá",
 	"pagetriage-info-help": "iše",
 	"pagetriage-toolbar-close": "Toopâ",
-	"pagetriage-afc-state-all": "Puoh"
+	"pagetriage-afc-state-all": "Puoh",
+	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Kijte}}}}"
 }
