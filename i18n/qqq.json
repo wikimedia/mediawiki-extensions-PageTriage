@@ -81,6 +81,7 @@
 	"pagetriage-filter-predicted-issues-none": "Checkbox for no ORES or copyright violation issues",
 	"pagetriage-unreviewed-article-count": "A description of the number of unreviewed pages and the age of the oldest article.\n\nParameters:\n* $1 - the number of unreviewed pages\n* $2 - the age of oldest article, this uses messages {{msg-mw|Pagetriage-stats-less-than-a-day}} or {{msg-mw|Days}}",
 	"pagetriage-reviewed-article-count-past-week": "A description of the number of reviewed pages in past week, $1 is the count of pages reviewed in past week",
+	"pagetriage-unreviewed-draft-count": "A description of the number of unreviewed drafts and the age of the oldest draft.\n\nParameters:\n* $1 - the number of unreviewed drafts\n* $2 - the age of oldest draft, this uses messages {{msg-mw|Pagetriage-stats-less-than-a-day}} or {{msg-mw|Days}}",
 	"pagetriage-sort-by": "Label for the sort-order buttons (oldest/newest).\n{{Identical|Sort by}}",
 	"pagetriage-newest": "Text for a sort-order button.\n{{Identical|Newest}}",
 	"pagetriage-oldest": "Text for a sort-order button.\n{{Identical|Oldest}}",

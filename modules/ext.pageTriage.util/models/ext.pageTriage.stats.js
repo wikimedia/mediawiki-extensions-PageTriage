@@ -21,6 +21,10 @@ $( function () {
 			stats.set( 'ptrOldest', this.formatDaysFromNow( stats.get( 'unreviewedarticle' ).oldest ) );
 			stats.set( 'ptrReviewedArticleCount', stats.get( 'reviewedarticle' ).reviewed_count );
 			stats.set( 'ptrReviewedRedirectCount', stats.get( 'reviewedredirect' ).reviewed_count );
+			if ( stats.get( 'afcMode' ) ) {
+				stats.set( 'ptrUnreviewedDraftCount', stats.get( 'unrevieweddraft' ).count );
+				stats.set( 'ptrUnreviewedDraftOldest', this.formatDaysFromNow( stats.get( 'unrevieweddraft' ).oldest ) );
+			}
 			stats.set( 'ptrFilterCount', stats.get( 'filteredarticle' ) );
 		},
 
@@ -41,11 +45,11 @@ $( function () {
 
 			const begin = moment.utc( dateStr, 'YYYYMMDDHHmmss' );
 
-			const diff = Math.round( ( now.getTime() - begin.valueOf() ) / ( 1000 * 60 * 60 * 24 ) );
-			if ( diff ) {
-				return mw.msg( 'days', diff );
+			const diffInDays = Math.round( ( now.getTime() - begin.valueOf() ) / ( 1000 * 60 * 60 * 24 ) );
+			if ( diffInDays ) {
+				return mw.msg( 'days', mw.language.convertNumber( diffInDays ) );
 			} else {
-				return mw.msg( 'pagetriage-stats-less-than-a-day', diff );
+				return mw.msg( 'pagetriage-stats-less-than-a-day', mw.language.convertNumber( diffInDays ) );
 			}
 		},
 
