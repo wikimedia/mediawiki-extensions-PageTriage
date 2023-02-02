@@ -9,6 +9,7 @@
 			"Helder.wiki",
 			"Luckas",
 			"Luckas Blade",
+			"Mello25",
 			"OTAVIO1981",
 			"Pedrofariasm"
 		]
@@ -405,6 +406,7 @@
 	"apihelp-pagetriageaction-param-note": "Nota pessoal dos revisores para os criadores de páginas.",
 	"apihelp-pagetriageaction-param-skipnotif": "Saltar a notificação, ou não.",
 	"apihelp-pagetriageaction-param-enqueue": "Se a página deve ser adicionada à fila PageTriage.",
+	"apihelp-pagetriageaction-param-tags": "Alterar as tags para aplicar às entradas de registo geradas para esta operação.",
 	"apihelp-pagetriagelist-description": "Obter uma lista de identificadores de página para criar uma fila de triagem de páginas.",
 	"apihelp-pagetriagelist-summary": "Obter uma lista de identificadores de página para criar uma fila de triagem de páginas.",
 	"apihelp-pagetriagelist-param-afc_state": "Que estado de Artigos-para-serem-criados mostrar.",
