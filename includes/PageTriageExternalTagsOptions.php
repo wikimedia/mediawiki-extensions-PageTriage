@@ -8,8 +8,6 @@ use MediaWiki\ResourceLoader as RL;
  * Custom ResourceLoader module that loads a custom PageTriageTagsOptions.js per-wiki.
  */
 class PageTriageExternalTagsOptions extends RL\WikiModule {
-	/** @inheritDoc */
-	protected $targets = [ 'desktop', 'mobile' ];
 
 	/**
 	 * @param RL\Context $context
