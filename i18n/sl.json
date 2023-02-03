@@ -60,6 +60,7 @@
 	"pagetriage-filter-predicted-issues-none": "Nobenih",
 	"pagetriage-unreviewed-article-count": "Skupno $1 {{PLURAL:$1|nepregledan članek|nepregledana članka|nepregledani članki|nepregledanih člankov}} in {{PLURAL:$2|nepregledana preusmeritev|nepregledani preusmeritvi|nepregledane preusmeritve|nepregledanih preusmeritev}} (najstarejše: $3)",
 	"pagetriage-reviewed-article-count-past-week": "Ta teden {{PLURAL:$1|{{PLURAL:$2|sta bila pregledana|so bili pregledani|je bilo pregledanih}} $1 članek|{{PLURAL:$2|so bili pregledani|je bilo pregledanih}} $1 članka|so bili pregledani $1 članki|je bilo pregledanih $1 člankov}} in $2 {{PLURAL:$2|preusmeritev|preusmeritvi|preusmeritve|preusmeritev}}.",
+	"pagetriage-unreviewed-draft-count": "Na pregled {{PLURAL:$1|čaka|čakata|čakajo|čaka}} $1 {{PLURAL:$1|osnutek|osnutka|osnutki|osnutkov}} (najstarejši: $2)",
 	"pagetriage-sort-by": "Razvrsti po:",
 	"pagetriage-newest": "Najnovejši",
 	"pagetriage-oldest": "Najstarejši",

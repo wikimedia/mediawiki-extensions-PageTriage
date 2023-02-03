@@ -55,6 +55,7 @@
 	"pagetriage-filter-predicted-issues-none": "Necun",
 	"pagetriage-unreviewed-article-count": "$1 articulo{{PLURAL:$1||s}} e $2 redirection{{PLURAL:$2||es}} non es revidite (le plus ancian: $3)",
 	"pagetriage-reviewed-article-count-past-week": "$1 articulo{{PLURAL:$1||s}} e $2 redirection{{PLURAL:$2||es}} ha essite revidite iste septimana",
+	"pagetriage-unreviewed-draft-count": "$1 version{{PLURAL:$1||es}} provisori attende revision (le plus ancian: $2)",
 	"pagetriage-sort-by": "Ordinar per:",
 	"pagetriage-newest": "Le plus nove",
 	"pagetriage-oldest": "Le plus ancian",

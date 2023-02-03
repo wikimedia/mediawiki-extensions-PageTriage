@@ -65,6 +65,7 @@
 	"pagetriage-filter-predicted-issues-none": "Nenhum",
 	"pagetriage-unreviewed-article-count": "$1 {{PLURAL:$1|artigo|artigos}} e $2 {{PLURAL:$2|redirecionamento|redirecionamentos}} aguardam revisão (mais antigo: $3)",
 	"pagetriage-reviewed-article-count-past-week": "$1 {{PLURAL:$1|artigo|artigos}} e $2 {{PLURAL:$2|redirecionamento|redirecionamentos}} foram revistos esta semana",
+	"pagetriage-unreviewed-draft-count": "$1 {{PLURAL:$1|rascunho aguarda|rascunhos aguardam}} revisão (mais antigo: $2)",
 	"pagetriage-sort-by": "Ordenar por:",
 	"pagetriage-newest": "Mais recentes",
 	"pagetriage-oldest": "Mais antigas",

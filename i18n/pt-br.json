@@ -65,6 +65,7 @@
 	"pagetriage-filter-predicted-issues-none": "Nenhum",
 	"pagetriage-unreviewed-article-count": "$1 {{PLURAL:$1|página|páginas}} não revisadas (mais antiga: $2)",
 	"pagetriage-reviewed-article-count-past-week": "$1 {{PLURAL:$1|página|páginas}} revisadas esta semana",
+	"pagetriage-unreviewed-draft-count": "$1 {{PLURAL:$1|O|Os}} {{PLURAL:$1|rascunho|rascunhos}} {{PLURAL:$1|está|estão}} esperando avaliação (mais velha: $2)",
 	"pagetriage-sort-by": "Ordenar por:",
 	"pagetriage-newest": "Mais recente",
 	"pagetriage-oldest": "Mais antiga",

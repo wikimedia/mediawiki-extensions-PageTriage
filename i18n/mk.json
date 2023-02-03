@@ -58,6 +58,7 @@
 	"pagetriage-filter-predicted-issues-none": "Ништо",
 	"pagetriage-unreviewed-article-count": "Има $1 {{PLURAL:$1|непроверена статија|непроверени статии}} и  и $2 {{PLURAL:$2|непроверено пренасочување|непроверени пренасочувања}} (најстара: $3)",
 	"pagetriage-reviewed-article-count-past-week": "Оваа недела {{PLURAL:$1|е проверена $1 статија|се проверени $1 статии}} и {{PLURAL:$2|е проверено $2 пренасочување|се проверени $2 пренасочувања}}",
+	"pagetriage-unreviewed-draft-count": "$1 {{PLURAL:$1|нацрт|нацрти}} {{PLURAL:$1|чека|чекаат}} н апроверка (најстар: $2)",
 	"pagetriage-sort-by": "Подреди по:",
 	"pagetriage-newest": "Најнови",
 	"pagetriage-oldest": "Најстари",

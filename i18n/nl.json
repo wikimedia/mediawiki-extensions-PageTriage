@@ -60,6 +60,7 @@
 	"pagetriage-filter-predicted-issues-none": "Geen",
 	"pagetriage-unreviewed-article-count": "$1 artikel{{PLURAL:$1||en}} en $2 doorverwijzing{{PLURAL:$2||en}} zijn nog niet gecontroleerd (oudste: $3)",
 	"pagetriage-reviewed-article-count-past-week": "Deze week zijn er $1 artikel{{PLURAL:$1||en}} en $2 doorverwijzing{{PLURAL:$2||en}} gecontroleerd",
+	"pagetriage-unreviewed-draft-count": "Er wacht{{PLURAL:$1| een concept|en $1 concepten}} op beoordeling (oudste: $2)",
 	"pagetriage-sort-by": "Sorteren op:",
 	"pagetriage-newest": "Nieuwste",
 	"pagetriage-oldest": "Oudste",

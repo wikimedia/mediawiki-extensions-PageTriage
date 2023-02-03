@@ -80,6 +80,7 @@
 	"pagetriage-filter-predicted-issues-none": "Aucun",
 	"pagetriage-unreviewed-article-count": "$1 article{{PLURAL:$1||s}} et $2 redirection{{PLURAL:$2||s}} n’ont pas encore été relus (le plus ancien : $3).",
 	"pagetriage-reviewed-article-count-past-week": "$1 article{{PLURAL:$1||s}} et $2 redirection{{PLURAL:$2||s}} ont été relus cette semaine.",
+	"pagetriage-unreviewed-draft-count": "$1 brouillon{{PLURAL:$1||s}} {{PLURAL:$1|es|son}}t en attente de relecture (le plus ancien : $2)",
 	"pagetriage-sort-by": "Trier par :",
 	"pagetriage-newest": "Depuis les plus récentes",
 	"pagetriage-oldest": "Depuis les plus anciennes",
