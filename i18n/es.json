@@ -84,6 +84,7 @@
 	"pagetriage-filter-predicted-issues-none": "Ninguno",
 	"pagetriage-unreviewed-article-count": "$1 total sin revisar {{PLURAL:$1|article|artículos}} (más antiguo: $2)",
 	"pagetriage-reviewed-article-count-past-week": "$1 {{PLURAL:$1|article|artículos}} durante esta semana",
+	"pagetriage-unreviewed-draft-count": "$1 {{PLURAL:$1|borrador está|borradores están}} a la espera de revisión (el más antiguo es de hace: $2)",
 	"pagetriage-sort-by": "Ordenar por:",
 	"pagetriage-newest": "Lo más nuevo",
 	"pagetriage-oldest": "Más antiguo",

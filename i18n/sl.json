@@ -535,7 +535,7 @@
 	"apihelp-pagetriagestats-param-showothers": "Ali naj bodo vključene običajne strani, ki niso preusmeritve ali predlagane za izbris.",
 	"apihelp-pagetriagestats-param-showreviewed": "Ali naj bodo vključene pregledane strani.",
 	"apihelp-pagetriagestats-param-showunreviewed": "Ali naj bodo vključene nepregledane strani.",
-	"apihelp-pagetriagestats-param-showdeleted": "Ali naj bodo vključene strani, ki so bile »predlagane za izbris«",
+	"apihelp-pagetriagestats-param-showdeleted": "Ali naj bodo vključene strani, ki so »predlagane za izbris«",
 	"apihelp-pagetriagestats-param-showbots": "Ali naj bodo vključene samo strani, ki so jih ustvarili boti.",
 	"apihelp-pagetriagestats-param-no_category": "Ali naj bodo vključene samo strani brez kategorij.",
 	"apihelp-pagetriagestats-param-unreferenced": "Ali naj bodo vključene samo strani brez sklicev.",
