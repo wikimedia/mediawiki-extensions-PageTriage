@@ -135,7 +135,10 @@ class PageTriageUtil {
 
 				$res = $dbr->selectRow(
 					$table,
-					[ 'COUNT(ptrp_page_id) AS total', 'MIN(ptrp_created) AS oldest' ],
+					[
+						'COUNT(ptrp_page_id) AS total',
+						'MIN(ptrp_reviewed_updated) AS oldest'
+					],
 					$conds,
 					$fname
 				);
