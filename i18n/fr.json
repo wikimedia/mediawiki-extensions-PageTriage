@@ -61,8 +61,6 @@
 	"pagetriage-no-patrol-right": "Vous n’avez pas les droits pour marquer cette page comme relue.",
 	"pagetriage-author-blocked": "Bloqué",
 	"pagetriage-author-bot": "Robot",
-	"pagetriage-creation-dateformat": "HH:mm, D MMMM YYYY",
-	"pagetriage-user-creation-dateformat": "YYYY-MM-DD",
 	"pagetriage-showing": "Affichage de :",
 	"pagetriage-filter-list-prompt": "Définir des filtres",
 	"pagetriage-filter-predicted-class-heading": "Classe prédite :",
