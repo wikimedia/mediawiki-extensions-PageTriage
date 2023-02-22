@@ -63,6 +63,7 @@
 	"pagetriage-afc-newest-declined": "Datum odbijanja (najnoviji)",
 	"pagetriage-afc-oldest-declined": "Datum odbijanja (najstariji)",
 	"pagetriage-triage": "Pregledaj",
+	"pagetriage-filter-date-range-format-showing": "MM/DD/GGGG",
 	"pagetriage-filter-show-heading": "Stanje:",
 	"pagetriage-filter-type-show-heading": "Vrsta:",
 	"pagetriage-filter-reviewed-edits": "pregledane stranice",
