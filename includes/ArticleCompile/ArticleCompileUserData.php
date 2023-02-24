@@ -50,8 +50,9 @@ class ArticleCompileUserData extends ArticleCompileInterface {
 					'LEFT JOIN', [
 						$actorQuery['fields']['rev_user'] . ' = ipb_user',
 						$actorQuery['fields']['rev_user_text'] . ' = ipb_address',
-					   'ipb_expiry > ' . $now
-				   ]
+						'ipb_expiry > ' . $now,
+						'ipb_sitewide' => 1
+					]
 				]
 			]
 		);

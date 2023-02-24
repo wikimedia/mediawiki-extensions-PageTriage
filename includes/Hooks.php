@@ -24,6 +24,7 @@ use MediaWiki\Hook\BlockIpCompleteHook;
 use MediaWiki\Hook\LinksUpdateCompleteHook;
 use MediaWiki\Hook\MarkPatrolledCompleteHook;
 use MediaWiki\Hook\PageMoveCompleteHook;
+use MediaWiki\Hook\UnblockUserCompleteHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\ArticleViewFooterHook;
 use MediaWiki\Page\Hook\PageDeleteCompleteHook;
@@ -66,6 +67,7 @@ class Hooks implements
 	PageDeleteCompleteHook,
 	MarkPatrolledCompleteHook,
 	BlockIpCompleteHook,
+	UnblockUserCompleteHook,
 	ResourceLoaderGetConfigVarsHook,
 	LocalUserCreatedHook,
 	ResourceLoaderRegisterModulesHook
@@ -559,7 +561,13 @@ class Hooks implements
 	/** @inheritDoc */
 	public function onBlockIpComplete( $block, $performer, $priorBlock ) {
 		// Update Article metadata when a user gets blocked.
-		PageTriageUtil::updateMetadataOnBlockChange( $block );
+		PageTriageUtil::updateMetadataOnBlockChange( $block, (int)$block->isSitewide() );
+	}
+
+	/** @inheritDoc */
+	public function onUnblockUserComplete( $block, $performer ) {
+		// Update Article metadata when a user gets unblocked.
+		PageTriageUtil::updateMetadataOnBlockChange( $block, 0 );
 	}
 
 	/** @inheritDoc */
