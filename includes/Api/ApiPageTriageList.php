@@ -521,6 +521,9 @@ class ApiPageTriageList extends ApiBase {
 		return $tagConds;
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	public function getAllowedParams() {
 		return array_merge(
 			PageTriageUtil::getOresApiParams(),

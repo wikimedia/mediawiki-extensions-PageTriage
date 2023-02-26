@@ -191,6 +191,9 @@ class ApiPageTriageAction extends ApiBase {
 		return 'csrf';
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	public function getAllowedParams() {
 		return [
 			'pageid' => [

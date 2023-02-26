@@ -79,6 +79,9 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 		return 'csrf';
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	public function getAllowedParams() {
 		return [
 			'revid' => [

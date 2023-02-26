@@ -118,6 +118,10 @@ class ArticleCompileProcessor {
 		}
 	}
 
+	/**
+	 * Register a linksUpdate to the processor for future compiling
+	 * @param LinksUpdate $linksUpdate
+	 */
 	public function registerLinksUpdate( LinksUpdate $linksUpdate ) {
 		$id = $linksUpdate->getTitle()->getArticleID();
 		if ( in_array( $id, $this->pageIds ) ) {

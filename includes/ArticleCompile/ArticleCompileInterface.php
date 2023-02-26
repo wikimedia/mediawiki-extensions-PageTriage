@@ -53,6 +53,9 @@ abstract class ArticleCompileInterface {
 
 	abstract public function compile();
 
+	/**
+	 * @return array
+	 */
 	public function getMetadata() {
 		return $this->metadata;
 	}

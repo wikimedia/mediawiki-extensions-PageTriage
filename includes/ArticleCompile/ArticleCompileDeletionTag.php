@@ -7,6 +7,11 @@ namespace MediaWiki\Extension\PageTriage\ArticleCompile;
  */
 class ArticleCompileDeletionTag extends ArticleCompileInterface {
 
+	/**
+	 * Returns the category to deletion tag map
+	 *
+	 * @return array
+	 */
 	public static function getDeletionTags() {
 		return [
 			'All_articles_proposed_for_deletion' => 'prod_status',

@@ -7,10 +7,16 @@ use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 
 class CompileArticleMetadataJob extends Job {
 
+	/**
+	 * @inheritDoc
+	 */
 	public function __construct( $title, $params ) {
 		parent::__construct( 'compileArticleMetadata', $title, $params );
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	public function getDeduplicationInfo() {
 		$info = parent::getDeduplicationInfo();
 		return $info['params']['pageId'];

@@ -29,10 +29,16 @@ class PageTriageServices {
 		return new static( $coreServices );
 	}
 
+	/**
+	 * @return QueueManager
+	 */
 	public function getQueueManager(): QueueManager {
 		return $this->coreServices->get( 'PageTriageQueueManager' );
 	}
 
+	/**
+	 * @return QueueLookup
+	 */
 	public function getQueueLookup(): QueueLookup {
 		return $this->coreServices->get( 'PageTriageQueueLookup' );
 	}
