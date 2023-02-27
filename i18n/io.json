@@ -8,6 +8,7 @@
 	"pagetriage-reviewed": "Revizita",
 	"pagetriage-bytes": "$1 {{PLURAL:$1|bicoko*|bicoki*}}",
 	"pagetriage-edits": "$1 {{PLURAL:$1|redakturo|redakturi}}",
+	"pagetriage-categories": "$1 {{PLURAL:$1|kategorio|kategorii}}",
 	"pagetriage-author-blocked": "Blokusita",
 	"pagetriage-sort-by": "Ordinar segun:",
 	"pagetriage-triage": "Revizar",
