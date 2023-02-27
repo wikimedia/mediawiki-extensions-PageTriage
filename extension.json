@@ -539,12 +539,6 @@
 				"pagetriage-del-tags-dba10-desc",
 				"pagetriage-del-tags-dba2-label",
 				"pagetriage-del-tags-dba2-desc",
-				"pagetriage-del-tags-dbu2-label",
-				"pagetriage-del-tags-dbu2-desc",
-				"pagetriage-del-tags-dbu3-label",
-				"pagetriage-del-tags-dbu3-desc",
-				"pagetriage-del-tags-dbu5-label",
-				"pagetriage-del-tags-dbu5-desc",
 				"pagetriage-del-tags-dba9-label",
 				"pagetriage-del-tags-dba9-desc",
 				"pagetriage-del-tags-blpprod-label",
@@ -553,7 +547,6 @@
 				"pagetriage-del-tags-prod-desc",
 				"pagetriage-del-tags-articlefordeletion-label",
 				"pagetriage-del-tags-redirectsfordiscussion-label",
-				"pagetriage-del-tags-miscellanyfordeletion-label",
 				"pagetriage-tags-param-article-label",
 				"pagetriage-del-tags-param-discussion-label",
 				"pagetriage-del-title",
@@ -710,15 +703,13 @@
 				"articleInfo": {
 					"helplink": "//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#PageInfo",
 					"namespace": [
-						0,
-						2
+						0
 					]
 				},
 				"mark": {
 					"helplink": "//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#MarkReviewed",
 					"namespace": [
-						0,
-						2
+						0
 					],
 					"note": [
 						0
@@ -733,16 +724,14 @@
 				"delete": {
 					"helplink": "//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#MarkDeletion",
 					"namespace": [
-						0,
-						2
+						0
 					]
 				}
 			}
 		},
 		"PageTriageNamespaces": {
 			"value": [
-				0,
-				2
+				0
 			]
 		},
 		"TalkPageNoteTemplate": {
@@ -958,12 +947,6 @@
 				"pagetriage-del-tags-dba10-desc",
 				"pagetriage-del-tags-dba2-label",
 				"pagetriage-del-tags-dba2-desc",
-				"pagetriage-del-tags-dbu2-label",
-				"pagetriage-del-tags-dbu2-desc",
-				"pagetriage-del-tags-dbu3-label",
-				"pagetriage-del-tags-dbu3-desc",
-				"pagetriage-del-tags-dbu5-label",
-				"pagetriage-del-tags-dbu5-desc",
 				"pagetriage-del-tags-dba9-label",
 				"pagetriage-del-tags-dba9-desc",
 				"pagetriage-del-tags-blpprod-label",
@@ -972,7 +955,6 @@
 				"pagetriage-del-tags-prod-desc",
 				"pagetriage-del-tags-articlefordeletion-label",
 				"pagetriage-del-tags-redirectsfordiscussion-label",
-				"pagetriage-del-tags-miscellanyfordeletion-label",
 				"pagetriage-tags-param-article-label",
 				"pagetriage-tags-param-url-label",
 				"pagetriage-tags-param-source-label",

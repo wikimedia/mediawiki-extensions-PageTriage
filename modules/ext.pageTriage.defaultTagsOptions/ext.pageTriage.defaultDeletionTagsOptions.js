@@ -227,39 +227,6 @@
 				talkpagenotiftpl: 'Afc-warn-NPF'
 			},
 
-			dbu2: {
-				label: mw.msg( 'pagetriage-del-tags-dbu2-label' ),
-				tag: 'speedy deletion-nonexistent user', // redirect to db-u2
-				code: 'U2',
-				desc: mw.msg( 'pagetriage-del-tags-dbu2-desc' ),
-				params: {},
-				anchor: 'nouser',
-				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
-				talkpagenotiftpl: 'Db-u2-notice-NPF'
-			},
-
-			dbu3: {
-				label: mw.msg( 'pagetriage-del-tags-dbu3-label' ),
-				tag: 'speedy deletion-nonfree galleries', // redirect to db-u3
-				code: 'U3',
-				desc: mw.msg( 'pagetriage-del-tags-dbu3-desc' ),
-				params: {},
-				anchor: 'fairusegallery',
-				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
-				talkpagenotiftpl: 'Db-gallery-notice-NPF'
-			},
-
-			dbu5: {
-				label: mw.msg( 'pagetriage-del-tags-dbu5-label' ),
-				tag: 'speedy deletion-web host', // redirect to db-u5
-				code: 'U5',
-				desc: mw.msg( 'pagetriage-del-tags-dbu5-desc' ),
-				params: {},
-				anchor: 'notwebhost',
-				talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
-				talkpagenotiftpl: 'Db-webhost-notice-NPF'
-			},
-
 			prod: {
 				label: mw.msg( 'pagetriage-del-tags-prod-label' ),
 				tag: 'prod',
@@ -378,69 +345,7 @@
 					}
 				}
 			}
-		},
-
-		User: {
-			csdcommon: {
-				label: mw.msg( 'pagetriage-del-tags-cat-csd-label' ),
-				desc: mw.msg( 'pagetriage-del-tags-cat-csd-desc' ),
-				multiple: true,
-				// do NOT mark page as reviewed when this deletion tag option is selected
-				reviewed: '0',
-				tags: {
-					dbu2: $.extend( true, {}, tags.dbu2 ),
-					dbu3: $.extend( true, {}, tags.dbu3 ),
-					dbu5: $.extend( true, {}, tags.dbu5 ),
-					dbg4: $.extend( true, {}, tags.dbg4 ),
-					dbg7: $.extend( true, {}, tags.dbg7 ),
-					dbg10: $.extend( true, {}, tags.dbg10 ),
-					dbg11: $.extend( true, {}, tags.dbg11 ),
-					dbg12: $.extend( true, {}, tags.dbg12 ),
-					dbg13: $.extend( true, {}, tags.dbg13 )
-				}
-			},
-
-			proposeddeletion: {
-				label: mw.msg( 'pagetriage-del-tags-cat-prod-label' ),
-				desc: mw.msg( 'pagetriage-del-tags-cat-prod-desc' ),
-				multiple: false,
-				// do NOT mark page as reviewed when this deletion tag option is selected
-				reviewed: '0',
-				tags: {
-					prod: $.extend( true, {}, tags.prod )
-				}
-			},
-
-			mfd: {
-				label: '',
-				desc: mw.msg( 'pagetriage-del-tags-cat-discussion-desc' ),
-				multiple: false,
-				// mark page as reviewed when this deletion tag option is selected
-				reviewed: '1',
-				tags: {
-					miscellanyfordeletion: {
-						label: mw.msg( 'pagetriage-del-tags-miscellanyfordeletion-label' ),
-						desc: '',
-						tag: 'mfd',
-						prefix: 'Wikipedia:Miscellany for deletion',
-						discussion: true,
-						usesSubpages: true,
-						params: {
-							1: {
-								label: mw.msg( 'pagetriage-del-tags-param-discussion-label' ),
-								input: 'required',
-								type: 'textarea',
-								value: '',
-								skip: true // don't use this param in the main template
-							}
-						},
-						talkpagenotiftopictitle: 'pagetriage-del-tags-xfd-notify-topic-title',
-						talkpagenotiftpl: 'MFDWarning-NPF'
-					}
-				}
-			}
 		}
-
 	};
 
 }() );
