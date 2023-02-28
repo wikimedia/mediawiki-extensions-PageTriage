@@ -23,8 +23,11 @@ mw.pageTriage.contentLanguageMessages.set( require( './contentLanguageMessages.j
 // currently, this is the main application view.
 const ToolbarView = Backbone.View.extend( {
 	template: mw.template.get( 'ext.pageTriage.views.toolbar', 'ToolbarView.underscore' ),
+	openCurationToolbarLinkId: 't-opencurationtoolbar',
 
 	initialize: function () {
+		this.openCurationToolbarSelector = '#' + this.openCurationToolbarLinkId;
+
 		const modules = config.PageTriageCurationModules;
 		// An array of tool instances to put on the bar, ordered top-to-bottom
 		tools = [];
@@ -126,7 +129,7 @@ const ToolbarView = Backbone.View.extend( {
 
 		// Create left menu link to reopen the toolbar. Hide it initially to avoid a
 		// flash of content, we can show it later.
-		if ( $( '#t-opencurationtoolbar' ).length === 0 ) {
+		if ( $( this.openCurationToolbarSelector ).length === 0 ) {
 			this.insertLink();
 		}
 
@@ -159,7 +162,7 @@ const ToolbarView = Backbone.View.extend( {
 			this.setToolbarPreference( 'hidden' );
 		}
 		// Show the Open Page Curation link in the left menu
-		$( '#t-opencurationtoolbar' ).show();
+		$( this.openCurationToolbarSelector ).show();
 		// Show hidden patrol link in case they want to use that instead
 		$( '#mw-content-text .patrollink' ).show();
 	},
@@ -178,7 +181,7 @@ const ToolbarView = Backbone.View.extend( {
 				};
 
 		// hide the Open Page Curation link in the left menu
-		$( '#t-opencurationtoolbar' ).hide();
+		$( this.openCurationToolbarSelector ).hide();
 		// close any open tools by triggering showTool with empty tool param
 		eventBus.trigger( 'showTool', '' );
 		// hide the regular toolbar content
@@ -209,7 +212,7 @@ const ToolbarView = Backbone.View.extend( {
 				};
 
 		// hide the Open Page Curation link in the left menu
-		$( '#t-opencurationtoolbar' ).hide();
+		$( this.openCurationToolbarSelector ).hide();
 		// show the entire toolbar, in case it is hidden
 		$( '#mwe-pt-toolbar' ).show();
 		// hide the "Mark this page as patrolled" link
@@ -232,19 +235,23 @@ const ToolbarView = Backbone.View.extend( {
 	},
 	insertLink: function () {
 		const that = this,
-			$link = $( '<li>' ).attr( 'id', 't-opencurationtoolbar' ).hide().append(
-				$( '<a>' ).attr( 'href', '#' )
+			pageCurationLink = mw.util.addPortletLink(
+				'p-tb',
+				'#',
+				mw.msg( 'pagetriage-toolbar-linktext' ),
+				this.openCurationToolbarLinkId
 			);
 
-		$link.find( 'a' )
-			.text( mw.msg( 'pagetriage-toolbar-linktext' ) )
+		if ( !pageCurationLink ) {
+			return;
+		}
+		$( pageCurationLink )
+			.hide()
 			.on( 'click', function () {
 				that.maximize( true );
 				this.blur();
 				return false;
 			} );
-		$( '#p-tb' ).find( 'ul' ).append( $link );
-		return true;
 	}
 } );
 
