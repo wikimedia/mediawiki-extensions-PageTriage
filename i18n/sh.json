@@ -181,7 +181,6 @@
 	"pagetriage-del-tags-cat-prod-desc": "Označite ovu stranicu prijedlogom za brisanje ako očito ne udovoljava standardima zajednice.",
 	"pagetriage-del-tags-cat-discussion-desc": "Označite ovu stranicu ukoliko želite prodiskutirati s drugim urednicima o njenom brisanju.",
 	"pagetriage-del-tags-dba3-label": "Bez sadržaja",
-	"pagetriage-del-tags-dbu3-desc": "Galerije u suradničkom prostoru koje se sastoje uglavnom od neslobodnih slika za „poštenu upotrebu”. Pravilo o neslobodnim sadržajima zabranjuje njihovo korištenje na suradničkim stranicama, čak i oni koji je suradnik/ca postavio/la; u potpunosti prihvatljivi su svi sadržaji koji su u javnom vlasništvu ili pod licencijom slobodnoga sadržaja",
 	"pagetriage-del-tags-prod-notify-topic-title": "[[Wikipedia:Proposed deletion|Predložano brisanje]]: [[$1]]",
 	"pagetriage-del-tags-xfd-notify-topic-title": "Rasprava o brisanju stranice [[$1]]",
 	"pagetriage-mark-mark-talk-page-notify-topic-title": "Provjerena je stranica koju {{GENDER:|ste}} započeli ($1)!",

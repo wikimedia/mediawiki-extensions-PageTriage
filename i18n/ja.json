@@ -243,8 +243,6 @@
 	"pagetriage-del-tags-dba10-label": "既存の話題と重複する、最近作成された記事",
 	"pagetriage-del-tags-dba2-label": "別のウィキメディア プロジェクトに存在する他言語の記事",
 	"pagetriage-del-tags-dba2-desc": "他のウィキメディア プロジェクトの記事と基本的に同じ内容の記事。(A2)",
-	"pagetriage-del-tags-dbu2-label": "存在しない利用者",
-	"pagetriage-del-tags-dbu3-label": "フリーではないギャラリー",
 	"pagetriage-del-tags-blpprod-label": "提案削除 (存命人物)",
 	"pagetriage-del-tags-blpprod-desc": "資料がない存命人物についての記事",
 	"pagetriage-del-tags-prod-label": "提案削除",

@@ -130,7 +130,6 @@
 	"pagetriage-del-tags-cat-discussion-desc": "Merkitse tämä sivu poistokeskusteluun.",
 	"pagetriage-del-tags-dba3-label": "Ei sisältöä",
 	"pagetriage-del-tags-dbg7-label": "Sivun luonut käyttäjä pyytää poistamista",
-	"pagetriage-del-tags-dbu3-label": "Galleria, jotka eivät ole vapaita",
 	"pagetriage-del-tags-prod-notify-topic-title": "Sivun [[$1]] [[Wikipedia:Proposed deletion|poistoehdotus]]",
 	"pagetriage-del-tags-xfd-notify-topic-title": "Sivun [[$1]] poistokeskustelu",
 	"pagetriage-tags-param-article-label": "Artikkeli:",

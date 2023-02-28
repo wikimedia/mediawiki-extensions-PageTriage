@@ -174,8 +174,6 @@
 	"pagetriage-del-tags-dba3-desc": "Bilo koji članak (osim višeznačja, preusmerenja ili mekog preusmerenja) koji se sastoji samo od spoljašnje veze, tagova kategorija i odeljka „Vidi još”, drugačije formulisanog naslova, pokušaja da se dopisuje sa osobom ili grupom koja je imenovana istim naslovom, pitanja koje je trebalo da se postavi na pomoćnim ili referentnim odsecima, komentara poput ćaskanja, tagova šablona i/ili slika. (A3)",
 	"pagetriage-del-tags-dbg7-label": "Autor zahteva brisanje",
 	"pagetriage-del-tags-dbg7-desc": "Stranice na kojima je autor zatražio brisanje, bilo eksplicitno ili pražnjenjem stranice. (G7)",
-	"pagetriage-del-tags-dbu3-label": "Neslobodne galerije",
-	"pagetriage-del-tags-dbu3-desc": "Galerije u korisničkom prostoru koje se uglavnom ili u potpunosti sastoje od „poštene upotrebe” ili neslobodnih slika. Pravila Vikipedije o neslobodnom sadržaju zabranjuju korišćenje neslobodnog sadržaja u korisničkom prostoru, čak i sadržaj koji je korisnik otpremio. Korišćenje sadržaja u javnom vlasništvu ili pod slobodnom licencom je prihvatljivo. (U3)",
 	"pagetriage-del-tags-prod-notify-topic-title": "[[Wikipedia:Proposed deletion|Predloženo brisanje]] stranice [[$1]]",
 	"pagetriage-del-tags-xfd-notify-topic-title": "Diskusija o brisanju stranice [[$1]]",
 	"pagetriage-mark-mark-talk-page-notify-topic-title": "Stranica koju {{GENDER:|ste}} napravili ($1) je pregledana.",

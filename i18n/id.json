@@ -198,8 +198,6 @@
 	"pagetriage-del-tags-dba3-desc": "Artikel apapun (kecuali halaman disambiguasi, pengalihan, atau pengalihan lunak) yang hanya berisi pranala eksternal, tag kategori dan bagian \"lihat pula\", mengungkapkan kembali judul, berupaya menghubung-hubungkan pengguna atau kelompok yang bernama sama dengan judul, sebuah pertanyaan yang seharusnya ditanyakan di halaman bantuan atau meha referensi, komentar yang menyerupai obrolan, tag templat, dan gambar. (A3)",
 	"pagetriage-del-tags-dbg7-label": "Penghapusan yang diminta oleh penulis",
 	"pagetriage-del-tags-dbg7-desc": "Halaman di mana sang penulisnya telah meminta penghapusan, baik secara eksplisit maupun dengan cara mengosongkan halaman. (G7)",
-	"pagetriage-del-tags-dbu3-label": "Galeri yang tidak-bebas-pakai",
-	"pagetriage-del-tags-dbu3-desc": "Galeri di ruang pengguna yang sebagian besarnya atau seluruhnya terdiri dari gambar-gambar dengan lisensi \"penggunaan wajar\" atau yang tidak-bebas-pakai. Kebijakan konten di Wikipedia melarang penggunaan konten yang tidak-bebas-pakai dalam ruang pengguna, bahkan konten yang diunggah sendiri oleh pengguna; penggunaan konten dalam domain publik atau di bawah lisensi bebas masih dapat diterima. (U3)",
 	"pagetriage-feedback-from-new-page-review-process-message": "Saya meninggalkan umpan balik berikut untuk pembuat/peninjau masa depan saat meninjau artikel ini: $1",
 	"pagetriage-tags-param-article-label": "Artikel:",
 	"pagetriage-tags-param-date-label": "Tanggal:",

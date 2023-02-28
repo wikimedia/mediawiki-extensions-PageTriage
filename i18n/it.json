@@ -275,8 +275,6 @@
 	"pagetriage-del-tags-dba3-desc": "Qualsiasi voce (diversa da pagine di disambiguazione, redirect o soft redirect) che sia composta solo di collegamenti esterni, categorie e sezioni \"Voci correlate\", parafrasi del titolo, tentativi di contattare la persona o il gruppo nominati nel titolo, una domanda che dovrebbe essere posta allo sportello informazioni o nelle pagine di aiuto, commenti in stile chat, template o immagini. (A3)",
 	"pagetriage-del-tags-dbg7-label": "L'autore richiede la cancellazione",
 	"pagetriage-del-tags-dbg7-desc": "Pagine dove l'autore ha richiesto la cancellazione, esplicitamente o svuotando la pagina. (G7)",
-	"pagetriage-del-tags-dbu3-label": "Gallerie non libere",
-	"pagetriage-del-tags-dbu3-desc": "Gallerie d'immagini nel namespace utente che contengono delle immagini in \"fair use\" o non-libere. Le politiche di {{SITENAME}} vietano l'uso di contenuto non libero nel namespace utente anche se caricato dall'utente; è accettato l'uso di contenuti in pubblico dominio o sotto licenza libera. (U3)",
 	"pagetriage-tags-param-article-label": "Voce:",
 	"pagetriage-tags-param-date-label": "Data:",
 	"pagetriage-tags-param-issues-label": "Descrivere i problemi da affrontare:",
