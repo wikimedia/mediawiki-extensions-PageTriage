@@ -187,8 +187,13 @@ $( function () {
 						)
 					).parse()
 				);
+			// Rare case where the article is reviewed, but ptrp_last_reviewed_by is not set.
+			// Possibly triggered by an article getting flipped to redirect, then reverted?
 			} else {
-				article.set( 'page_status_html', mw.msg( 'pagetriage-page-status-reviewed-anonymous' ).escaped() );
+				article.set(
+					'page_status_html',
+					mw.message( 'pagetriage-page-status-reviewed-anonymous' ).escaped()
+				);
 			}
 
 			article.set( 'title_url_format', mw.util.wikiUrlencode( article.get( 'title' ) ) );
