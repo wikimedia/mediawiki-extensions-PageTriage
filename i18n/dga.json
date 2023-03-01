@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Domo John"
+		]
+	},
+	"pagetriage-add-a-note-creator-required": "Paale toɔla ko a maalmaala, {{GENDER:$1|$1}}. Te na toɔle a toɔla ŋa ka o gaa a dɛmmo yelyeluu gampɛlɛ ka o danseɛ di o meŋaŋ.",
+	"pagetriage-add-a-note-previous-reviewer": "Paale toɔla ko a puoriŋ leɛkaara, {{GENDER:$1|$1}}. Te na toɔle a toɔla ŋa meŋ ka o gaa a dɛmmo yelyeluu gampɛlɛ ka o danseɛ di o meŋaŋ .",
+	"pagetriage-personal-default-note": "Sɛge sɛgere naŋ taa sommo ko {{GENDER:$1|$1}}. Te na toɔle o la ka o gaa{{GENDER:$1|o|o|ba}} yelyeluu gampɛlɛ ka o danseɛ di o meŋaŋ ."
+}
