@@ -186,7 +186,7 @@
 	"pagetriage-button-send-a-note": "发送信息",
 	"pagetriage-add-a-note-reviewer": "给巡查者发送一条消息（可选）：",
 	"pagetriage-message-for-reviewer-placeholder": "给{{GENDER:$1|$1}}写一条帮助性的留言。",
-	"pagetriage-personal-default-note": "给{{GENDER:$1|$1}}写一个有帮助的提示。这将发布在{{GENDER:$1|他|她|他}}的讨论页上。",
+	"pagetriage-personal-default-note": "给{{GENDER:$1|$1}}写一个有帮助的提示。这将发布在{{GENDER:$1|他|她|他}}的讨论页上并自动签名。",
 	"pagetriage-page-status-reviewed": "被$2（$3$4$5）于$1标记为已巡查",
 	"pagetriage-page-status-reviewed-anonymous": "标记为已巡查",
 	"pagetriage-page-status-unreviewed": "该页面仍未巡查。",

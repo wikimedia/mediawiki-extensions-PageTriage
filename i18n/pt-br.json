@@ -11,7 +11,8 @@
 			"Luckas Blade",
 			"Mello25",
 			"OTAVIO1981",
-			"Pedrofariasm"
+			"Pedrofariasm",
+			"Re demz"
 		]
 	},
 	"pagetriage": "Triagem de Páginas",
@@ -162,7 +163,8 @@
 	"pagetriage-button-edit-details": "Editar detalhes",
 	"pagetriage-button-mark-for-deletion": "Marcar para eliminação",
 	"pagetriage-add-a-note-creator": "Adicionar uma mensagem para o criador: (opcional)",
-	"pagetriage-add-a-note-creator-required": "Adicionar uma mensagem para o criador. Esta mensagem também será postada na página de discussão do artigo.",
+	"pagetriage-add-a-note-creator-required": "Adicionar uma mensagem para {{GENDER:$1|o criador, $1|a criadora, 1$}}. Esta mensagem também será postada na página de discussão do artigo e assinada automaticamente.",
+	"pagetriage-add-a-note-previous-reviewer": "Adicione uma mensagem para {{GENDER:$1|o revisor|revisora}} anterior, {{GENDER:$1|$1}}. Essa mensagem também será postada na página de discussão do artigo e será assinada automaticamente.",
 	"pagetriage-add-a-note-for-options-label": "Enviar uma mensagem para:",
 	"pagetriage-add-a-note-for-option-creator": "criador (User:$1)",
 	"pagetriage-add-a-note-for-option-reviewer": "revisor (User:$1)",
@@ -171,7 +173,7 @@
 	"pagetriage-add-a-note-reviewer": "Adicionar uma mensagem para o revisor: (opcional)",
 	"pagetriage-message-for-creator-default-note": "Escreva uma nota útil para {{GENDER:$1|$1}} e futuros revisores.",
 	"pagetriage-message-for-reviewer-placeholder": "Escreva uma nota útil para {{GENDER:$1|$1}}.",
-	"pagetriage-personal-default-note": "Escreva uma nota útil para {{GENDER:$1|$1}}. Esta será postada na página de discussão {{GENDER:$1|dele|dela|dele}}",
+	"pagetriage-personal-default-note": "Escreva uma nota útil para {{GENDER:$1|$1}}. Esta será postada na página de discussão {{GENDER:$1|dele|dela|dele}} e será assinada automaticamente.",
 	"pagetriage-page-status-reviewed": "Marcada como revisada em $1 por $2 ($3$4$5)",
 	"pagetriage-page-status-reviewed-anonymous": "Marcada como revisada",
 	"pagetriage-page-status-unreviewed": "Esta página ainda não foi revisada.",
