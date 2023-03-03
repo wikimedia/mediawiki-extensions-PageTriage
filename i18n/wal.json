@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ella Lachow"
+		]
+	},
+	"pagetriage-add-a-note-creator-required": "Medhiyaagaasi kiitaa gujja, {{GENDER:$1|$1}}. Ha kiitay haasayaa sinttan uttanawunne issi guttan paramettanawu de'ees.",
+	"pagetriage-personal-default-note": "{{GENDER:$1|$1}} hagaassi maddiyaa hasayissota xaafa. I hagan {{GENDER:$1|aagan|iigan|etaagan}} haasayaa sinttan uttanawunne issi guttan paramettanawu de'ees."
+}
