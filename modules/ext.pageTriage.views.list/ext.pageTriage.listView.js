@@ -44,8 +44,8 @@ $( function () {
 
 			// Add a warning if we're using an unsupported browser
 			// List view doesn't work well in older versions of Explorer
-			const blacklist = { msie: [ '<', 8 ] };
-			if ( $.client.test( blacklist, null, true ) ) {
+			const warnlist = { msie: [ '<', 8 ] };
+			if ( $.client.test( warnlist, null, true ) ) {
 				$( '#mwe-pt-list-warnings' ).append( $( '<div>' ).text( mw.msg( 'pagetriage-warning-browser' ) ) );
 			}
 			// Display whatever warnings we have
