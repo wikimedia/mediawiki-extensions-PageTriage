@@ -43,7 +43,7 @@ $( function () {
 				now.getUTCSeconds()
 			);
 
-			const begin = moment.utc( dateStr, 'YYYYMMDDHHmmss' );
+			const begin = moment.utc( dateStr );
 
 			const diffInDays = Math.round( ( now.getTime() - begin.valueOf() ) / ( 1000 * 60 * 60 * 24 ) );
 			if ( diffInDays ) {
