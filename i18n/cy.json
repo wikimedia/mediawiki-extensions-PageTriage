@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"JonesT143"
+		]
+	},
+	"pagetriage-hist": "hanes",
+	"pagetriage-edits": "$1 {{PLURAL:$1|golygiad|golygiad|olygiad|golygiad|golygiad|golygiadau}}",
+	"pagetriage-categories": "$1 {{PLURAL:$1|categori|categori|gategori|chategori|chategori|categori}}",
+	"pagetriage-no-categories": "Heb gategorïau",
+	"pagetriage-author-not-autoconfirmed": "Golygydd newydd"
+}
