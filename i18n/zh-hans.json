@@ -31,7 +31,8 @@
 			"아라",
 			"GuoPC",
 			"Lantianjialiang",
-			"捍粵者"
+			"捍粵者",
+			"MPGuy2824"
 		]
 	},
 	"pagetriage": "页面分配器",
@@ -66,7 +67,7 @@
 	"pagetriage-no-patrol-right": "您没有权限标记该页面为已巡查",
 	"pagetriage-author-blocked": "已封禁",
 	"pagetriage-author-bot": "机器人",
-	"pagetriage-creation-dateformat": "yyyy年MM月d日 HH:mm",
+	"pagetriage-creation-dateformat": "yyyy年MM月D日 HH:mm",
 	"pagetriage-showing": "显示：",
 	"pagetriage-filter-list-prompt": "设置过滤器",
 	"pagetriage-filter-predicted-class-heading": "预测等级：",
