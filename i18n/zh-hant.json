@@ -257,7 +257,7 @@
 	"pagetriage-info-problem-no-references-desc": "這個頁面沒有引用任何來源。",
 	"pagetriage-info-problem-copyvio": "侵犯版權",
 	"pagetriage-info-problem-copyvio-desc": "此頁面包含太多侵犯版權內容。",
-	"pagetriage-info-timestamp-date-format": "yyyy年M月d日",
+	"pagetriage-info-timestamp-date-format": "yyyy年M月D日",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
 	"pagetriage-info-tooltip": "顯示這個頁面的詮釋資料",
 	"pagetriage-toolbar-collapsed": "管理器",
