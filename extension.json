@@ -644,7 +644,6 @@
 		"BeforeCreateEchoEvent": "\\MediaWiki\\Extension\\PageTriage\\Hooks::onBeforeCreateEchoEvent",
 		"EchoGetDefaultNotifiedUsers": "MediaWiki\\Extension\\PageTriage\\Hooks::onEchoGetDefaultNotifiedUsers",
 		"LocalUserCreated": "main",
-		"UserMergeAccountFields": "MediaWiki\\Extension\\PageTriage\\Hooks::onUserMergeAccountFields",
 		"ResourceLoaderRegisterModules": "main",
 		"ORESCheckModels": "MediaWiki\\Extension\\PageTriage\\Hooks::onORESCheckModels",
 		"ListDefinedTags": "main",

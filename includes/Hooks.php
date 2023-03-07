@@ -888,15 +888,6 @@ class Hooks implements
 	}
 
 	/**
-	 * Adds to the list of fields to be updated when user accounts are merged
-	 * Called by https://www.mediawiki.org/wiki/Extension:UserMerge
-	 * @param array &$updateFields array of fields to be updated
-	 */
-	public static function onUserMergeAccountFields( array &$updateFields ) {
-		$updateFields[] = [ 'pagetriage_page', 'ptrp_last_reviewed_by' ];
-	}
-
-	/**
 	 * @param RecentChange $rc
 	 * @param array &$models Models names to score
 	 */
