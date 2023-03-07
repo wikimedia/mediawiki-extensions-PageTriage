@@ -7,7 +7,7 @@ use Title;
 /**
  * Article page length, creation date, number of edit, title, article triage status
  */
-class ArticleCompileBasicData extends ArticleCompileInterface {
+class ArticleCompileBasicData extends ArticleCompile {
 
 	public function compile() {
 		$count = 0;

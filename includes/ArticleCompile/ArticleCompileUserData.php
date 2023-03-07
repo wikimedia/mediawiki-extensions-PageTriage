@@ -8,7 +8,7 @@ use User;
 /**
  * Article User data
  */
-class ArticleCompileUserData extends ArticleCompileInterface {
+class ArticleCompileUserData extends ArticleCompile {
 
 	public function compile() {
 		// Grab the earliest revision based on rev_timestamp and rev_id

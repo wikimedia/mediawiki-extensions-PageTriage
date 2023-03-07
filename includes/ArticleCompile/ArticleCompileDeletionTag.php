@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 /**
  * Article Deletion Tag
  */
-class ArticleCompileDeletionTag extends ArticleCompileInterface {
+class ArticleCompileDeletionTag extends ArticleCompile {
 
 	/**
 	 * Returns the category to deletion tag map

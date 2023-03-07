@@ -13,7 +13,7 @@ use WikiPage;
 /**
  * The abstract class extended in each ArticleCompile, used by ArticleCompileProcessor.
  */
-abstract class ArticleCompileInterface {
+abstract class ArticleCompile {
 	/** @var int[] List of page IDs */
 	protected $mPageId;
 

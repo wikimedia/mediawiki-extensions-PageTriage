@@ -8,7 +8,7 @@ namespace MediaWiki\Extension\PageTriage\ArticleCompile;
  *   but it's a lot of work to get around this, and we're querying the replica in
  *   a deferred update anyway.
  */
-class ArticleCompileRecreated extends ArticleCompileInterface {
+class ArticleCompileRecreated extends ArticleCompile {
 
 	/**
 	 * Implements ArticleCompileInterface::compile(), called when generating tags.

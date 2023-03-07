@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 /**
  * Article link count
  */
-class ArticleCompileLinkCount extends ArticleCompileInterface {
+class ArticleCompileLinkCount extends ArticleCompile {
 
 	public function compile() {
 		foreach ( $this->mPageId as $pageId ) {
