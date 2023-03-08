@@ -74,15 +74,20 @@ class RemoveOldRows extends Maintenance {
 			}
 		);
 		$startTime = (int)wfTimestamp( TS_UNIX ) - $maxAgeInDays * 60 * 60 * 24;
-		$sqlWhere = $this->dbr->makeList( [
-				// 1. the page is in the article namespace and has been reviewed, or
-				$this->dbr->makeList( [
-					'page_namespace' => 0,
-					'ptrp_reviewed > 0'
-				], LIST_AND ),
-				// 2. the page is not in main or draft namespaces or
+
+		// the page is in the article namespace and has been reviewed.
+		$reviewedMainspaceWhere = $this->dbr->makeList( [
+			'page_namespace' => NS_MAIN,
+			'ptrp_reviewed > 0'
+		], LIST_AND );
+		$sqlWhere = $reviewedMainspaceWhere;
+		if ( count( $secondaryNamespaces ) ) {
+			$sqlWhere = $this->dbr->makeList( [
+				$reviewedMainspaceWhere,
+				// the page is not in main or draft namespaces
 				'page_namespace' => $secondaryNamespaces,
 			], LIST_OR );
+		}
 
 		$this->cleanPageTriagePageTable( $startTime, $sqlWhere );
 	}
