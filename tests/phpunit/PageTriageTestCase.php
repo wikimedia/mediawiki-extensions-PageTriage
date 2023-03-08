@@ -37,6 +37,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 			$this->draftNsId = $draftNsId;
 		}
 
+		$this->setMainCache( CACHE_NONE );
 		// Insert minimal required data (subset of what's done in PageTriage/sql/PageTriageTags.sql)
 		// @TODO figure out why this is only run for the first test method when its in addDbData().
 		$db = PageTriageUtil::getConnection( DB_PRIMARY );
