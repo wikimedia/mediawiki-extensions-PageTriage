@@ -51,7 +51,7 @@ class ArticleCompileAfcTag extends ArticleCompileInterface {
 			// Try to identify the current afc_state of the page
 			// and request updating of 'update_reviewed_timestamp'
 			// if the state has changed.
-			$categories = array_keys( $parserOutput->getCategories() );
+			$categories = $parserOutput->getCategoryNames();
 			foreach ( self::getAfcCategories() as $afcStateValue => $afcCategory ) {
 				if ( in_array( $afcCategory, $categories ) ) {
 					$this->metadata[$pageId]['afc_state'] = $afcStateValue;
