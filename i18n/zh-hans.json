@@ -69,7 +69,7 @@
 	"pagetriage-no-patrol-right": "您无权将此页面标记为已审核",
 	"pagetriage-author-blocked": "已封禁",
 	"pagetriage-author-bot": "机器人",
-	"pagetriage-creation-dateformat": "yyyy年MM月D日 HH:mm",
+	"pagetriage-creation-dateformat": "yyyy年M月D日 HH:mm",
 	"pagetriage-user-creation-dateformat": "YYYY-MM-DD",
 	"pagetriage-showing": "显示：",
 	"pagetriage-filter-list-prompt": "设置过滤器",
