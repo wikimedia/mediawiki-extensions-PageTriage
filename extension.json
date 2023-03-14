@@ -12,7 +12,7 @@
 	"license-name": "MIT",
 	"type": "specialpage",
 	"requires": {
-		"MediaWiki": ">= 1.38.0"
+		"MediaWiki": ">= 1.39.0"
 	},
 	"APIModules": {
 		"pagetriagelist": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageList",
@@ -565,7 +565,9 @@
 				"ext.pageTriage.toolbarStartup/ext.pageTriage.actionQueue.js",
 				"ext.pageTriage.toolbarStartup/ext.pageTriage.toolbarStartup.js"
 			],
-			"dependencies": [ "ext.pageTriage.init" ]
+			"dependencies": [
+				"ext.pageTriage.init"
+			]
 		},
 		"ext.pageTriage.article": {
 			"styles": "ext.pageTriage.article/ext.pageTriage.article.css",
