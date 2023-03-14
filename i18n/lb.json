@@ -3,7 +3,8 @@
 		"authors": [
 			"Les Meloures",
 			"Robby",
-			"Soued031"
+			"Soued031",
+			"Volvox"
 		]
 	},
 	"pagetriage": "Säiten nokucken",
@@ -228,7 +229,7 @@
 	"pagetriage-afc-date-label-declined": "Refuséiert:",
 	"pagetriage-discuss-link": "{{GENDER:$1|Diskutéieren}}",
 	"pagetriage-discuss-link-title": "{{GENDER:$1|Diskutéieren}}",
-	"echo-pref-subscription-page-review": "Eng Säit iwwerliesen déi ech ugeluecht hunn",
+	"echo-pref-subscription-page-review": "Eng Säit iwwerliesen, déi ech ugeluecht hunn",
 	"echo-pref-tooltip-page-review": "Mech informéiere wann een eng Säit nokuckt déi ech ugeluecht hunn.",
 	"echo-category-title-page-review": "mol Säit {{PLURAL:$1|nogekuckt}}",
 	"apihelp-pagetriagelist-example-1": "Lëscht vun 100 netnogekuckte Säiten aus dem Nummraum 0"
