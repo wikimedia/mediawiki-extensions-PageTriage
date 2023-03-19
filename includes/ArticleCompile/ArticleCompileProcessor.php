@@ -284,7 +284,7 @@ class ArticleCompileProcessor {
 			if ( $val === 'on' ) {
 				$startTime = microtime( true );
 				$compClass = 'MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompile' . $key;
-				/** @var ArticleCompileInterface $comp */
+				/** @var ArticleCompile $comp */
 				$comp = new $compClass( $this->pageIds, $this->componentDb[$key], $this->articles,
 					$this->linksUpdates
 				);

@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 /**
  * Tags for AfC submission state.
  */
-class ArticleCompileAfcTag extends ArticleCompileInterface {
+class ArticleCompileAfcTag extends ArticleCompile {
 
 	public const UNSUBMITTED = 1;
 	public const PENDING = 2;

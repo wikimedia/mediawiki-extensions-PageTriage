@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 /**
  * Article category count
  */
-class ArticleCompileCategoryCount extends ArticleCompileInterface {
+class ArticleCompileCategoryCount extends ArticleCompile {
 
 	public function compile() {
 		foreach ( $this->mPageId as $pageId ) {

@@ -9,7 +9,7 @@ use TextContent;
 /**
  * Article snippet
  */
-class ArticleCompileSnippet extends ArticleCompileInterface {
+class ArticleCompileSnippet extends ArticleCompile {
 
 	public function compile() {
 		foreach ( $this->mPageId as $pageId ) {
