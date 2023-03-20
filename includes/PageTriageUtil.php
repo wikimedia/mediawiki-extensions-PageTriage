@@ -147,7 +147,7 @@ class PageTriageUtil {
 
 				if ( $res ) {
 					$data['count'] = (int)$res->total;
-					$data['oldest'] = $res->oldest;
+					$data['oldest'] = wfTimestamp( TS_ISO_8601, $res->oldest );
 				}
 
 				return $data;
@@ -294,7 +294,7 @@ class PageTriageUtil {
 
 				if ( $res ) {
 					$data['count'] = (int)$res->total;
-					$data['oldest'] = (string)$res->oldest;
+					$data['oldest'] = wfTimestamp( TS_ISO_8601, $res->oldest );
 				}
 
 				return $data;
