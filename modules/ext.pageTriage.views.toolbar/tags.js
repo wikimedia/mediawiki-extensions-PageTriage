@@ -64,7 +64,10 @@ module.exports = ToolView.extend( {
 		};
 		const len = list.length;
 		for ( let i = 0; i < len; i++ ) {
-			const tagKey = list[ i ].tag.replace( /-/g, '' ).replace( / /g, '' ).toLowerCase();
+			// T332105: Combine the tag (template name) and the label to
+			// produce a unique key
+			let tagKey = list[ i ].tag + list[ i ].label;
+			tagKey = tagKey.replace( /[- (){}]/g, '' ).toLowerCase();
 			this.tagsOptions.all.tags[ tagKey ] = list[ i ];
 		}
 	},
