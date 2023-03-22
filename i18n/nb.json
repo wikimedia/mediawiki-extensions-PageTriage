@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Danmichaelo",
+			"EdoAug",
 			"Fitoschido",
 			"Jeblad",
 			"Jon Harald Søby",
@@ -14,7 +15,7 @@
 	"pagetriage-pagecuration": "Sidekuratering",
 	"pagetriage-new-page-patrol": "Patruljering av nye sider",
 	"pagetriage-articles-for-creation": "Artikkeloppretting",
-	"pagetriage-please-wait": "Vennligst vent…",
+	"pagetriage-please-wait": "Vennligst vent …",
 	"pagetriage-api-invalidid": "ID-en du oppga ($1) er ugyldig.",
 	"pagetriage-markpatrolled": "Merk denne siden som vurdert",
 	"pagetriage-markunpatrolled": "Merk denne siden som uvurdert",
