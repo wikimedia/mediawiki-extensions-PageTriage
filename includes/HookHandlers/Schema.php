@@ -37,6 +37,13 @@ class Schema implements LoadExtensionSchemaUpdatesHook {
 			// T325519
 			$updater->dropExtensionTable( 'pagetriage_log' );
 		}
+
+		// T333389
+		$updater->modifyExtensionField(
+			'pagetriage_page',
+			'ptrp_tags_updated',
+			$base . '/' . $dbType . '/patch_ptrp_tags_updated_nullable.sql'
+		);
 	}
 
 	/**
