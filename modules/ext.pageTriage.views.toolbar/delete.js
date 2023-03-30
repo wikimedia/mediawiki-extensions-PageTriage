@@ -75,29 +75,6 @@ const specialDeletionTagging = {
 			const date = new DateWrapper();
 			return prefix + '/Log/' + date.getYear() + ' ' + date.getMonth() + ' ' + date.getDate();
 		}
-	},
-
-	ffd: {
-		buildDiscussionRequest: function () {
-			// No-op
-		},
-
-		buildLogRequest: function ( oldText, reason, tagObj, data ) {
-			if ( !oldText ) {
-				data.text = '{{subst:Ffd log}}';
-			} else {
-				data.text = '';
-			}
-
-			data.text += data.text + '\n{{subst:ffd2|Reason=' + reason + '|1=' + mw.config.get( 'wgTitle' ) + '}} ~~~~';
-			data.summary = 'Adding [[' + pageName + ']].';
-			data.recreate = true;
-		},
-
-		getLogPageTitle: function ( prefix ) {
-			const date = new DateWrapper();
-			return prefix + '/' + date.getYear() + ' ' + date.getMonth() + ' ' + date.getDate();
-		}
 	}
 };
 
