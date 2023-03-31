@@ -52,6 +52,7 @@ const listItemPropFormatter = ( pageInfo ) => {
 	listItemProps.patrolStatus = parseInt( pageInfo.patrol_status );
 	listItemProps.title = pageInfo.title;
 	listItemProps.isRedirect = pageInfo.is_redirect === '1';
+	listItemProps.redirectTarget = pageInfo.redirect_target;
 	listItemProps.categoryCount = parseInt( pageInfo.category_count );
 	listItemProps.linkCount = parseInt( pageInfo.linkcount );
 	listItemProps.referenceCount = parseInt( pageInfo.reference );

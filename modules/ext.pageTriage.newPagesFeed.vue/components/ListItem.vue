@@ -87,7 +87,13 @@
 						</span>
 					</div>
 					<div class="mwe-vue-pt-snippet">
-						{{ snippet }}
+						<span v-if="isRedirect">
+							<cdx-icon :icon="redirectIcon.icon" dir="rtl" class="mwe-vue-pt-redirect-icon"></cdx-icon>
+							<a :href="redirectTargetUrl" target="_blank">{{ redirectTarget }}</a>
+						</span>
+						<span v-else>
+							{{ snippet }}
+						</span>
 					</div>
 				</div>
 				<div class="mwe-vue-pt-info-row-block-right">
@@ -147,7 +153,7 @@
  * @author DannyS712
  * An individual list item in the feed.
  */
-const { cdxIconError, cdxIconSuccess, cdxIconTrash } = require( './icons.json' );
+const { cdxIconError, cdxIconSuccess, cdxIconTrash, cdxIconNewline } = require( './icons.json' );
 const { CdxButton, CdxIcon, CdxInfoChip } = require( '@wikimedia/codex' );
 const CreatorByline = require( './CreatorByline.vue' );
 // Basic validation for 'YYYYMMDDHHmmss' timestamps
@@ -248,6 +254,7 @@ module.exports = {
 		 */
 		title: { type: String, required: true },
 		isRedirect: { type: Boolean, required: true },
+		redirectTarget: { type: String, required: false, default: null },
 		creatorUserPageExists: { type: Boolean, required: true },
 		creatorTalkPageExists: { type: Boolean, required: true },
 		creationDateUTC: {
@@ -304,6 +311,9 @@ module.exports = {
 			}
 			return img;
 		},
+		redirectIcon: function () {
+			return { icon: cdxIconNewline };
+		},
 		oddEvenClass: function () { return this.position % 2 === 0 ? 'mwe-vue-pt-article-row-even' : 'mwe-vue-pt-article-row-odd'; },
 		isDraft: function () {
 			const pageNamespaceId = ( new mw.Title( this.title ) ).getNamespaceId();
@@ -320,6 +330,9 @@ module.exports = {
 				params.redirect = 'no';
 			}
 			return mw.util.getUrl( this.title, params );
+		},
+		redirectTargetUrl: function () {
+			return mw.util.getUrl( this.redirectTarget );
 		},
 		historyUrl: function () {
 			return mw.util.getUrl( this.title, { action: 'history' } );
@@ -509,5 +522,9 @@ module.exports = {
 
 .mwe-vue-pt-new-article-warning > .cdx-info-chip--text {
 	color: @color-emphasized;
+}
+
+.mwe-vue-pt-redirect-icon {
+	color: @color-subtle;
 }
 </style>
