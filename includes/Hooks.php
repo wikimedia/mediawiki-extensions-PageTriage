@@ -577,6 +577,59 @@ class Hooks implements
 		$vars['wgPageTriageDraftNamespaceId'] = $pageTriageDraftNamespaceId;
 	}
 
+	/**
+	 * Generates messages for toolbar
+	 *
+	 * @param RL\Context $context
+	 * @param Config $config
+	 * @return array
+	 */
+	public static function toolbarContentLanguageMessages( RL\Context $context, \Config $config ) {
+		$keys = array_merge(
+			[
+				'pagetriage-mark-mark-talk-page-notify-topic-title',
+				'pagetriage-mark-unmark-talk-page-notify-topic-title',
+				'pagetriage-feedback-from-new-page-review-process-title',
+				'pagetriage-feedback-from-new-page-review-process-message',
+				'pagetriage-note-sent-talk-page-notify-topic-title',
+				'pagetriage-note-sent-talk-page-notify-topic-title-reviewer',
+				'pagetriage-tags-talk-page-notify-topic-title'
+			],
+			$config->get( 'PageTriageDeletionTagsOptionsContentLanguageMessages' )
+		);
+		$messages = [];
+		foreach ( $keys as $key ) {
+			$messages[$key] = $context->msg( $key )->inContentLanguage()->plain();
+		}
+		return $messages;
+	}
+
+	/**
+	 * Generates messages for toolbar
+	 *
+	 * @param RL\Context $context
+	 * @param Config $config
+	 * @return array
+	 */
+	public static function toolbarConfig( RL\Context $context, Config $config ) {
+		$pageTriageCurationModules = $config->get( 'PageTriageCurationModules' );
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'WikiLove' ) ) {
+			$pageTriageCurationModules['wikiLove'] = [
+				// depends on WikiLove extension
+				'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#WikiLove',
+				'namespace' => [ NS_MAIN, NS_USER ],
+			];
+		}
+		return [
+			'PageTriageCurationModules' => $pageTriageCurationModules,
+			'PageTriageEnableCopyvio' => $config->get( 'PageTriageEnableCopyvio' ),
+			'PageTriageEnableOresFilters' => $config->get( 'PageTriageEnableOresFilters' ),
+			'PageTriageEnableEnglishWikipediaFeatures' =>
+				$config->get( 'PageTriageEnableEnglishWikipediaFeatures' ),
+			'TalkPageNoteTemplate' => $config->get( 'TalkPageNoteTemplate' ),
+		];
+	}
+
 	/** @inheritDoc */
 	public function onResourceLoaderRegisterModules( ResourceLoader $rl ): void {
 		$viewsToolbarModule = [
@@ -602,46 +655,11 @@ class Hooks implements
 				'ext.pageTriage.views.toolbar/delete.js',
 				[
 					'name' => 'ext.pageTriage.views.toolbar/contentLanguageMessages.json',
-					'callback' => static function ( RL\Context $context, \Config $config ) {
-						$keys = array_merge(
-							[
-								'pagetriage-mark-mark-talk-page-notify-topic-title',
-								'pagetriage-mark-unmark-talk-page-notify-topic-title',
-								'pagetriage-feedback-from-new-page-review-process-title',
-								'pagetriage-feedback-from-new-page-review-process-message',
-								'pagetriage-note-sent-talk-page-notify-topic-title',
-								'pagetriage-note-sent-talk-page-notify-topic-title-reviewer',
-								'pagetriage-tags-talk-page-notify-topic-title'
-							],
-							$config->get( 'PageTriageDeletionTagsOptionsContentLanguageMessages' )
-						);
-						$messages = [];
-						foreach ( $keys as $key ) {
-							$messages[$key] = $context->msg( $key )->inContentLanguage()->plain();
-						}
-						return $messages;
-					}
+					'callback' => 'MediaWiki\\Extension\\PageTriage\\Hooks::toolbarContentLanguageMessages'
 				],
 				[
 					'name' => 'ext.pageTriage.views.toolbar/config.json',
-					'callback' => static function ( RL\Context $context, Config $config ) {
-						$pageTriageCurationModules = $config->get( 'PageTriageCurationModules' );
-						if ( ExtensionRegistry::getInstance()->isLoaded( 'WikiLove' ) ) {
-							$pageTriageCurationModules['wikiLove'] = [
-								// depends on WikiLove extension
-								'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#WikiLove',
-								'namespace' => [ NS_MAIN, NS_USER ],
-							];
-						}
-						return [
-							'PageTriageCurationModules' => $pageTriageCurationModules,
-							'PageTriageEnableCopyvio' => $config->get( 'PageTriageEnableCopyvio' ),
-							'PageTriageEnableOresFilters' => $config->get( 'PageTriageEnableOresFilters' ),
-							'PageTriageEnableEnglishWikipediaFeatures' =>
-								$config->get( 'PageTriageEnableEnglishWikipediaFeatures' ),
-							'TalkPageNoteTemplate' => $config->get( 'TalkPageNoteTemplate' ),
-						];
-					}
+					'callback' => 'MediaWiki\\Extension\\PageTriage\\Hooks::toolbarConfig'
 				],
 				// Merged into this RL module, see T221269
 				'external/jquery.badge.js',
