@@ -35,8 +35,6 @@ use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
-use MediaWiki\ResourceLoader\Hook\ResourceLoaderRegisterModulesHook;
-use MediaWiki\ResourceLoader\ResourceLoader;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
@@ -69,8 +67,7 @@ class Hooks implements
 	BlockIpCompleteHook,
 	UnblockUserCompleteHook,
 	ResourceLoaderGetConfigVarsHook,
-	LocalUserCreatedHook,
-	ResourceLoaderRegisterModulesHook
+	LocalUserCreatedHook
 {
 
 	private const TAG_NAME = 'pagetriage';
@@ -631,188 +628,6 @@ class Hooks implements
 				$config->get( 'PageTriageEnableEnglishWikipediaFeatures' ),
 			'TalkPageNoteTemplate' => $config->get( 'TalkPageNoteTemplate' ),
 		];
-	}
-
-	/** @inheritDoc */
-	public function onResourceLoaderRegisterModules( ResourceLoader $rl ): void {
-		$viewsToolbarModule = [
-			'localBasePath' => __DIR__ . '/../modules',
-			'remoteExtPath' => 'PageTriage/modules',
-			'es6' => true,
-			'packageFiles' => [
-				// entry point
-				'ext.pageTriage.views.toolbar/ToolbarView.js',
-				// abstract base class
-				'ext.pageTriage.views.toolbar/ToolView.js',
-				// article metadata
-				'ext.pageTriage.views.toolbar/articleInfo.js',
-				// tagging
-				'ext.pageTriage.views.toolbar/minimize.js',
-				// tagging
-				'ext.pageTriage.views.toolbar/tags.js',
-				// mark as reviewed
-				'ext.pageTriage.views.toolbar/mark.js',
-				// next article
-				'ext.pageTriage.views.toolbar/next.js',
-				// mark for deletion
-				'ext.pageTriage.views.toolbar/delete.js',
-				[
-					'name' => 'ext.pageTriage.views.toolbar/contentLanguageMessages.json',
-					'callback' => 'MediaWiki\\Extension\\PageTriage\\Hooks::toolbarContentLanguageMessages'
-				],
-				[
-					'name' => 'ext.pageTriage.views.toolbar/config.json',
-					'callback' => 'MediaWiki\\Extension\\PageTriage\\Hooks::toolbarConfig'
-				],
-				// Merged into this RL module, see T221269
-				'external/jquery.badge.js',
-				'ext.pageTriage.views.toolbar/wikiLove.js'
-			],
-			'dependencies' => [
-				'mediawiki.api',
-				'mediawiki.jqueryMsg',
-				'mediawiki.messagePoster',
-				'mediawiki.Title',
-				'moment',
-				'ext.pageTriage.util',
-				'oojs-ui.styles.icons-alerts',
-				'jquery.ui',
-				'jquery.spinner',
-				'jquery.client',
-				'ext.pageTriage.externalTagsOptions',
-			],
-			'styles' => [
-				// Merged into this RL module, see T221269
-				'external/jquery.badge.css',
-				// stuff that's shared across all views
-				'ext.pageTriage.css',
-				'ext.pageTriage.views.toolbar/ToolbarView.css',
-				'ext.pageTriage.views.toolbar/ToolView.less',
-				'ext.pageTriage.views.toolbar/articleInfo.css',
-				'ext.pageTriage.views.toolbar/mark.css',
-				'ext.pageTriage.views.toolbar/tags.less',
-				'ext.pageTriage.views.toolbar/delete.less',
-				'ext.pageTriage.views.toolbar/wikilove.css',
-			],
-			'templates' => [
-				'articleInfo.underscore' =>
-					'ext.pageTriage.views.toolbar/articleInfo.underscore',
-				'articleInfoHistory.underscore' =>
-					'ext.pageTriage.views.toolbar/articleInfoHistory.underscore',
-				'delete.underscore' =>
-					'ext.pageTriage.views.toolbar/delete.underscore',
-				'mark.underscore' =>
-					'ext.pageTriage.views.toolbar/mark.underscore',
-				'tags.underscore' =>
-					'ext.pageTriage.views.toolbar/tags.underscore',
-				'ToolbarView.underscore' =>
-					'ext.pageTriage.views.toolbar/ToolbarView.underscore',
-				'ToolView.underscore' =>
-					'ext.pageTriage.views.toolbar/ToolView.underscore',
-				'wikilove.underscore' =>
-					'ext.pageTriage.views.toolbar/wikilove.underscore',
-			],
-			'messages' => [
-				'pagetriage-wikilove-page-creator',
-				'pagetriage-wikilove-edit-count',
-				'pagetriage-wikilove-helptext',
-				'pagetriage-wikilove-no-recipients',
-				'pagetriage-wikilove-tooltip',
-				'wikilove',
-				'wikilove-button-send',
-				'pagetriage-creation-dateformat',
-				'pagetriage-user-creation-dateformat',
-				'pagetriage-mark-as-reviewed',
-				'pagetriage-mark-as-unreviewed',
-				'pagetriage-info-title',
-				'pagetriage-byline',
-				'pagetriage-byline-new-editor',
-				'pagetriage-articleinfo-byline',
-				'pagetriage-articleinfo-byline-new-editor',
-				'pipe-separator',
-				'pagetriage-edits',
-				'pagetriage-editcount',
-				'pagetriage-author-bot',
-				'pagetriage-no-author',
-				'pagetriage-info-problem-header',
-				'pagetriage-info-history-header',
-				'pagetriage-info-history-show-full',
-				'pagetriage-info-logs-show',
-				'pagetriage-info-help',
-				'pagetriage-info-problem-non-autoconfirmed',
-				'pagetriage-info-problem-non-autoconfirmed-desc',
-				'pagetriage-info-problem-blocked',
-				'pagetriage-info-problem-blocked-desc',
-				'pagetriage-info-problem-no-categories',
-				'pagetriage-info-problem-no-categories-desc',
-				'pagetriage-info-problem-orphan',
-				'pagetriage-info-problem-orphan-desc',
-				'pagetriage-info-problem-recreated',
-				'pagetriage-info-problem-recreated-desc',
-				'pagetriage-info-problem-no-references',
-				'pagetriage-info-problem-no-references-desc',
-				'pagetriage-info-problem-copyvio',
-				'pagetriage-info-problem-copyvio-desc',
-				'pagetriage-info-timestamp-date-format',
-				'pagetriage-info-timestamp-time-format',
-				'pagetriage-info-tooltip',
-				'pagetriage-toolbar-collapsed',
-				'pagetriage-toolbar-linktext',
-				'pagetriage-toolbar-learn-more',
-				'pagetriage-mark-as-reviewed-helptext',
-				'pagetriage-mark-as-unreviewed-helptext',
-				'pagetriage-mark-as-reviewed-error',
-				'pagetriage-mark-as-unreviewed-error',
-				'pagetriage-markpatrolled',
-				'pagetriage-markunpatrolled',
-				'pagetriage-note-reviewed',
-				'pagetriage-note-not-reviewed',
-				'pagetriage-note-deletion',
-				'pagetriage-next-tooltip',
-				'sp-contributions-talk',
-				'contribslink',
-				'comma-separator',
-				'unknown-error',
-				'pagetriage-add-a-note-creator',
-				'pagetriage-add-a-note-creator-required',
-				'pagetriage-add-a-note-previous-reviewer',
-				'pagetriage-add-a-note-for-options-label',
-				'pagetriage-add-a-note-for-options-instruction-label',
-				'pagetriage-add-a-note-for-option-creator',
-				'pagetriage-add-a-note-for-option-reviewer',
-				'pagetriage-button-add-a-note-to-creator',
-				'pagetriage-button-send-a-note',
-				'pagetriage-add-a-note-reviewer',
-				'pagetriage-message-for-creator-default-note',
-				'pagetriage-message-for-reviewer-placeholder',
-				'pagetriage-personal-default-note',
-				'pagetriage-special-contributions',
-				'pagetriage-tagging-error',
-				'pagetriage-del-log-page-missing-error',
-				'pagetriage-del-log-page-adding-error',
-				'pagetriage-del-talk-page-notify-error',
-				'pagetriage-del-discussion-page-adding-error',
-				'pagetriage-page-status-reviewed',
-				'pagetriage-page-status-reviewed-anonymous',
-				'pagetriage-page-status-unreviewed',
-				'pagetriage-page-status-autoreviewed',
-				'pagetriage-page-status-delete',
-				'pagetriage-dot-separator',
-				'pagetriage-articleinfo-stat',
-				'pagetriage-has-talkpage-feedback',
-				'pagetriage-has-talkpage-feedback-link',
-				'pagetriage-bytes',
-				'pagetriage-edits',
-				'pagetriage-categories',
-				'pagetriage-add-tag-confirmation',
-				'pagetriage-tag-deletion-error',
-				'pagetriage-tag-previousdeletion-error',
-				'pagetriage-toolbar-close',
-				'pagetriage-toolbar-minimize',
-				'pagetriage-tag-warning-notice'
-			],
-		];
-		$rl->register( 'ext.pageTriage.views.toolbar', $viewsToolbarModule );
 	}
 
 	/**
