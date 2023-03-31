@@ -140,12 +140,11 @@ class ApiPageTriageList extends ApiBase {
 
 				// Talk page feedback count and URL.
 				if ( $opts['page_id'] ) {
-					// Only add when a single page is being requested, i.e. for the PageTriage toolbar.
-					$talkPage = Title::makeTitle( NS_TALK, $metaData[$page]['title'] );
+					// Only add when a single page is being requested, e.g. for the PageTriage toolbar.
+					$talkPage = Title::newFromText( $metaData[ $page ]['title'] )->getTalkPageIfDefined();
 					$metaData[$page]['talk_page_title'] = $talkPage->getPrefixedText();
-					$pageTitle = Title::newFromText( $metaData[ $page ]['title'] );
-					$metaData[$page]['talkpage_feedback_count'] = $this->getTalkpageFeedbackCount( $pageTitle );
-					$metaData[$page]['talk_page_url'] = $pageTitle->getTalkPageIfDefined()->getInternalURL();
+					$metaData[$page]['talkpage_feedback_count'] = $this->getTalkpageFeedbackCount( $talkPage );
+					$metaData[$page]['talk_page_url'] = $talkPage->getInternalURL();
 				}
 
 				// Add ORES data
@@ -179,7 +178,7 @@ class ApiPageTriageList extends ApiBase {
 
 	/**
 	 * Get the total number of pagetriage-tagged revisions of a talk page.
-	 * @param Title $pageTitle The title of the page in the PageTriage queue (i.e. not the talk page).
+	 * @param Title $pageTitle The title of the talk page
 	 * @return int
 	 */
 	protected function getTalkpageFeedbackCount( Title $pageTitle ) {
@@ -192,8 +191,7 @@ class ApiPageTriageList extends ApiBase {
 		];
 		$conds = [
 			'ctd_name' => 'pagetriage',
-			'page_namespace' => NS_TALK,
-			'page_title' => $pageTitle->getDBkey(),
+			'page_id' => $pageTitle->getArticleID(),
 		];
 		$joinConds = [
 			'change_tag' => [ 'JOIN', 'ctd_id = ct_tag_id' ],

@@ -620,7 +620,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$testPageTitle = 'Article talkpage message test';
 		$testPage = $this->insertPage( $testPageTitle, '' );
 
-		// Check that it's in the queue does not have any talk page message.
+		// Check that it's in the queue and does not have any talk page message.
 		$list = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'page_id' => $testPage['id'] ] );
 		$pageInfo = $list[0]['pagetriagelist']['pages'][0];
 		static::assertArrayHasKey( 'talkpage_feedback_count', $pageInfo );
@@ -651,5 +651,33 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$list = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'page_id' => $testPage['id'] ] );
 		$pageInfo = $list[0]['pagetriagelist']['pages'][0];
 		static::assertSame( 2, $pageInfo['talkpage_feedback_count'] );
+
+		// Now the same, for a draft page
+		$testDraftTitle = 'Draft talkpage message test';
+		$testDraft = $this->insertPage( $testDraftTitle, '', $this->draftNsId );
+
+		// Check that it's in the queue and does not have any talk page message.
+		$list = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'page_id' => $testDraft['id'] ] );
+		$draftInfo = $list[0]['pagetriagelist']['pages'][0];
+		static::assertArrayHasKey( 'talkpage_feedback_count', $draftInfo );
+		static::assertSame( 0, $draftInfo['talkpage_feedback_count'] );
+
+		// Add one message to the talkpage. This is done via MessagePoster in the front end usually,
+		// so we don't have a PageTriage PHP method to use here.
+		$draftTalkTitle = $testDraft['title']->getTalkPageIfDefined();
+		$draft = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $draftTalkTitle );
+		$draft->doUserEditContent(
+			ContentHandler::makeContent( 'Test message.', $draftTalkTitle ),
+			static::getTestSysop()->getUser(),
+			'edit summary',
+			0,
+			false,
+			[ 'pagetriage' ]
+		);
+
+		// Retrieve the page's metadata again, and check that the talkpage feedback is flagged.
+		$list = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'page_id' => $testDraft['id'] ] );
+		$draftInfo = $list[0]['pagetriagelist']['pages'][0];
+		static::assertSame( 1, $draftInfo['talkpage_feedback_count'] );
 	}
 }

@@ -29,7 +29,10 @@ abstract class PageTriageTestCase extends ApiTestCase {
 			getCanonicalIndex( 'draft' );
 		if ( $draftNsId === null ) {
 			$this->setMwGlobals( [
-				'wgExtraNamespaces' => [ $this->draftNsId => 'Draft' ],
+				'wgExtraNamespaces' => [
+					$this->draftNsId => 'Draft',
+					$this->draftNsId + 1 => 'Draft_talk'
+				],
 				'wgPageTriageDraftNamespaceId' => $this->draftNsId
 			] );
 			$this->overrideMwServices();
