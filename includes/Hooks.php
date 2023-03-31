@@ -613,14 +613,17 @@ class Hooks implements
 	 */
 	public static function toolbarConfig( RL\Context $context, Config $config ) {
 		$pageTriageCurationModules = $config->get( 'PageTriageCurationModules' );
+		$pageTriageCurationDependencies = [];
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'WikiLove' ) ) {
 			$pageTriageCurationModules['wikiLove'] = [
 				// depends on WikiLove extension
 				'helplink' => '//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#WikiLove',
 				'namespace' => [ NS_MAIN, NS_USER ],
 			];
+			$pageTriageCurationDependencies[] = 'ext.wikiLove.init';
 		}
 		return [
+			'PageTriageCurationDependencies' => $pageTriageCurationDependencies,
 			'PageTriageCurationModules' => $pageTriageCurationModules,
 			'PageTriageEnableCopyvio' => $config->get( 'PageTriageEnableCopyvio' ),
 			'PageTriageEnableOresFilters' => $config->get( 'PageTriageEnableOresFilters' ),
@@ -663,6 +666,7 @@ class Hooks implements
 				],
 				// Merged into this RL module, see T221269
 				'external/jquery.badge.js',
+				'ext.pageTriage.views.toolbar/wikiLove.js'
 			],
 			'dependencies' => [
 				'mediawiki.api',
@@ -687,7 +691,8 @@ class Hooks implements
 				'ext.pageTriage.views.toolbar/articleInfo.css',
 				'ext.pageTriage.views.toolbar/mark.css',
 				'ext.pageTriage.views.toolbar/tags.less',
-				'ext.pageTriage.views.toolbar/delete.less'
+				'ext.pageTriage.views.toolbar/delete.less',
+				'ext.pageTriage.views.toolbar/wikilove.css',
 			],
 			'templates' => [
 				'articleInfo.underscore' =>
@@ -708,6 +713,13 @@ class Hooks implements
 					'ext.pageTriage.views.toolbar/wikilove.underscore',
 			],
 			'messages' => [
+				'pagetriage-wikilove-page-creator',
+				'pagetriage-wikilove-edit-count',
+				'pagetriage-wikilove-helptext',
+				'pagetriage-wikilove-no-recipients',
+				'pagetriage-wikilove-tooltip',
+				'wikilove',
+				'wikilove-button-send',
 				'pagetriage-creation-dateformat',
 				'pagetriage-user-creation-dateformat',
 				'pagetriage-mark-as-reviewed',
@@ -800,23 +812,6 @@ class Hooks implements
 				'pagetriage-tag-warning-notice'
 			],
 		];
-
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'WikiLove' ) ) {
-			$viewsToolbarModule['packageFiles'][] =
-				'ext.pageTriage.views.toolbar/wikiLove.js';
-			$viewsToolbarModule['styles'][] = 'ext.pageTriage.views.toolbar/wikilove.css';
-			$viewsToolbarModule['dependencies'][] = 'ext.wikiLove.init';
-			$viewsToolbarModule['messages'] = array_merge( $viewsToolbarModule['messages'], [
-				'pagetriage-wikilove-page-creator',
-				'pagetriage-wikilove-edit-count',
-				'pagetriage-wikilove-helptext',
-				'pagetriage-wikilove-no-recipients',
-				'pagetriage-wikilove-tooltip',
-				'wikilove',
-				'wikilove-button-send',
-			] );
-		}
-
 		$rl->register( 'ext.pageTriage.views.toolbar', $viewsToolbarModule );
 	}
 

@@ -256,7 +256,7 @@ const ToolbarView = Backbone.View.extend( {
 } );
 
 $( function () {
-	article.fetch(
+	mw.loader.using( config.PageTriageCurationDependencies ).then( () => article.fetch(
 		{
 			success: function () {
 				// create an instance of the toolbar view
@@ -265,5 +265,5 @@ $( function () {
 				article.set( 'successfulModelLoading', 1 );
 			}
 		}
-	);
+	) );
 } );
