@@ -25,8 +25,8 @@ CREATE TABLE /*_*/pagetriage_page (
   ptrp_reviewed TINYINT UNSIGNED DEFAULT 0 NOT NULL,
   ptrp_deleted TINYINT UNSIGNED DEFAULT 0 NOT NULL,
   ptrp_created BINARY(14) NOT NULL,
-  ptrp_tags_updated BINARY(14) NOT NULL,
-  ptrp_reviewed_updated BINARY(14) DEFAULT NULL,
+  ptrp_tags_updated BINARY(14) DEFAULT NULL,
+  ptrp_reviewed_updated BINARY(14) NOT NULL,
   ptrp_last_reviewed_by INT UNSIGNED DEFAULT 0 NOT NULL,
   INDEX ptrp_reviewed_created_page_del (
     ptrp_reviewed, ptrp_created, ptrp_page_id,

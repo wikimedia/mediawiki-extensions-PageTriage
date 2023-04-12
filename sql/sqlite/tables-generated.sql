@@ -25,8 +25,8 @@ CREATE TABLE /*_*/pagetriage_page (
   ptrp_reviewed SMALLINT UNSIGNED DEFAULT 0 NOT NULL,
   ptrp_deleted SMALLINT UNSIGNED DEFAULT 0 NOT NULL,
   ptrp_created BLOB NOT NULL,
-  ptrp_tags_updated BLOB NOT NULL,
-  ptrp_reviewed_updated BLOB DEFAULT NULL,
+  ptrp_tags_updated BLOB DEFAULT NULL,
+  ptrp_reviewed_updated BLOB NOT NULL,
   ptrp_last_reviewed_by INTEGER UNSIGNED DEFAULT 0 NOT NULL,
   PRIMARY KEY(ptrp_page_id)
 );

@@ -27,8 +27,8 @@ CREATE TABLE pagetriage_page (
   ptrp_reviewed SMALLINT DEFAULT 0 NOT NULL,
   ptrp_deleted SMALLINT DEFAULT 0 NOT NULL,
   ptrp_created TIMESTAMPTZ NOT NULL,
-  ptrp_tags_updated TIMESTAMPTZ NOT NULL,
-  ptrp_reviewed_updated TIMESTAMPTZ DEFAULT NULL,
+  ptrp_tags_updated TIMESTAMPTZ DEFAULT NULL,
+  ptrp_reviewed_updated TIMESTAMPTZ NOT NULL,
   ptrp_last_reviewed_by INT DEFAULT 0 NOT NULL,
   PRIMARY KEY(ptrp_page_id)
 );
