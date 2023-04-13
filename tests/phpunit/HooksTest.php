@@ -17,7 +17,7 @@ use MediaWiki\Extension\PageTriage\PageTriageUtil;
 class HooksTest extends PageTriageTestCase {
 
 	public function testDraftRedirectsAreNotAdded() {
-		$db = PageTriageUtil::getConnection( DB_PRIMARY );
+		$db = PageTriageUtil::getPrimaryConnection();
 		// Get the initial page count of the PageTriage queue.
 		$originalCount = $db->selectRowCount( 'pagetriage_page' );
 		// Insert a redirect.

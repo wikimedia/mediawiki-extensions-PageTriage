@@ -51,7 +51,7 @@ class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 	 */
 	public function testCopyvioInsertLog() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$dbw = PageTriageUtil::getPrimaryConnection();
 		foreach ( [ 'pagetriage_page', 'page' ] as $table ) {
 			$dbw->delete( $table, '*' );
 		}

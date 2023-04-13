@@ -46,7 +46,11 @@ abstract class ArticleCompile {
 		$this->articles = $articles;
 		$this->linksUpdates = $linksUpdates;
 
-		$this->db = PageTriageUtil::getConnection( $componentDb );
+		if ( $componentDb == DB_PRIMARY ) {
+			$this->db = PageTriageUtil::getPrimaryConnection();
+		} else {
+			$this->db = PageTriageUtil::getReplicaConnection();
+		}
 
 		$this->componentDb = $componentDb;
 	}

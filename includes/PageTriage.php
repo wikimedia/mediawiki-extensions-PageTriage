@@ -53,7 +53,7 @@ class PageTriage {
 			return false;
 		}
 
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$dbw = PageTriageUtil::getPrimaryConnection();
 
 		// Pull page creation date from database
 		// must select from master here since the page has just been created, and probably
@@ -120,7 +120,7 @@ class PageTriage {
 			return false;
 		}
 
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$dbw = PageTriageUtil::getPrimaryConnection();
 		$dbw->startAtomic( __METHOD__ );
 		$set = [
 			'ptrp_reviewed' => $newReviewStatus,
@@ -173,7 +173,7 @@ class PageTriage {
 			return;
 		}
 
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$dbw = PageTriageUtil::getPrimaryConnection();
 		$dbw->update(
 			'pagetriage_page',
 			$row,
@@ -210,7 +210,7 @@ class PageTriage {
 	 * @return string
 	 */
 	public static function bulkSetTagsUpdated( $pageIds ) {
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$dbw = PageTriageUtil::getPrimaryConnection();
 
 		$now = wfTimestampNow();
 		$dbw->update(

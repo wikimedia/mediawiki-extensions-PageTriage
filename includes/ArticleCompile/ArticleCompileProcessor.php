@@ -181,7 +181,7 @@ class ArticleCompileProcessor {
 	 *
 	 * @param int $mode Class SAVE_* constant
 	 *  - SAVE_IMMEDIATE = Unless overridden with self::configComponentDb(), uses
-	 *    master DB for reads and writes. The caller should use self::configComponentDB()
+	 *    primary DB for reads and writes. The caller should use self::configComponentDB()
 	 *    to use the replica for as many compilation components as possible.
 	 *  - SAVE_DEFERRED = The replica is used for reads. The metadata will be written
 	 *    to the database at the end of the request in a deferred update.
@@ -323,8 +323,8 @@ class ArticleCompileProcessor {
 	 * Save the compiling result to database as well as cache
 	 */
 	protected function save() {
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
-		$dbr = PageTriageUtil::getConnection( DB_REPLICA );
+		$dbw = PageTriageUtil::getPrimaryConnection();
+		$dbr = PageTriageUtil::getReplicaConnection();
 
 		if ( !$this->pageIds ) {
 			return;

@@ -70,7 +70,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		);
 
 		// Check that the database was updated correctly (not really necessary?).
-		$db = PageTriageUtil::getConnection( DB_PRIMARY );
+		$db = PageTriageUtil::getPrimaryConnection();
 		$pageTags = $db->select( 'pagetriage_page_tags', '*',
 			[ 'ptrpt_page_id' => $page['id'] ],
 			__METHOD__
@@ -298,7 +298,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		}
 
 		// Manually set the reviewed at attribute to something really old.
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$dbw = PageTriageUtil::getPrimaryConnection();
 		$dbw->update( 'pagetriage_page',
 			[ 'ptrp_reviewed_updated' => '20010115000000' ],
 			[ 'ptrp_page_id' => $page['id'] ],
@@ -333,7 +333,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			->newFromTitle( Title::newFromText( 'Test page ores 2', $this->draftNsId ) );
 		$rev2 = $page->getLatest();
 
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$dbw = PageTriageUtil::getPrimaryConnection();
 
 		$dbw->insert( 'ores_classification', [
 			'oresc_model' => self::ensureOresModel( 'articlequality' ),
@@ -369,7 +369,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			->newFromTitle( Title::newFromText( 'Test page ores 3', $this->draftNsId ) );
 		$rev1 = $page->getLatest();
 
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$dbw = PageTriageUtil::getPrimaryConnection();
 
 		$dbw->insert( 'ores_classification', [
 			'oresc_model' => self::ensureOresModel( 'articlequality' ),
@@ -394,7 +394,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 	public function testQueryOresCopyvio() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$dbw = PageTriageUtil::getPrimaryConnection();
 		foreach ( [ 'pagetriage_page', 'page' ] as $table ) {
 			$dbw->delete( $table, '*' );
 		}
@@ -448,7 +448,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$page2 = $this->insertPage( 'DateRange20190715', 'Testing Date Range II', 0, $user );
 
 		// Manually set the created at attribute to older dates.
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$dbw = PageTriageUtil::getPrimaryConnection();
 		$dbw->update( 'pagetriage_page',
 			[ 'ptrp_created' => '20190215000000' ],
 			[ 'ptrp_page_id' => $page1['id'] ],

@@ -21,6 +21,7 @@ use Title;
 use User;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 use WikiPage;
 
 /**
@@ -120,7 +121,7 @@ class PageTriageUtil {
 			$cache->makeKey( $key, $namespace ),
 			10 * $cache::TTL_MINUTE,
 			static function () use ( $namespace, $fname, $redirect ) {
-				$dbr = self::getConnection( DB_REPLICA );
+				$dbr = self::getReplicaConnection();
 
 				$table = [ 'pagetriage_page', 'page' ];
 				$conds = [
@@ -209,7 +210,7 @@ class PageTriageUtil {
 			static function () use ( $namespace, $fname, $redirect ) {
 				$time = (int)wfTimestamp( TS_UNIX ) - 7 * 24 * 60 * 60;
 
-				$dbr = self::getConnection( DB_REPLICA );
+				$dbr = self::getReplicaConnection();
 
 				$table = [ 'pagetriage_page', 'page' ];
 				$conds = [
@@ -262,7 +263,7 @@ class PageTriageUtil {
 			// 10 minute cache
 			10 * $cache::TTL_MINUTE,
 			static function () use ( $fname, $config ) {
-				$dbr = self::getConnection( DB_REPLICA );
+				$dbr = self::getReplicaConnection();
 
 				$afcStateTagId = $dbr->selectField(
 					'pagetriage_tags', 'ptrt_tag_id', [ 'ptrt_tag_name' => 'afc_state' ], $fname
@@ -361,7 +362,7 @@ class PageTriageUtil {
 		}
 
 		if ( $title ) {
-			$dbr = self::getConnection( DB_REPLICA );
+			$dbr = self::getReplicaConnection();
 			$res = $dbr->select(
 				[ 'page' ],
 				[ 'page_namespace', 'page_title' ],
@@ -422,7 +423,7 @@ class PageTriageUtil {
 			return;
 		}
 
-		$dbr = self::getConnection( DB_REPLICA );
+		$dbr = self::getReplicaConnection();
 
 		$res = $dbr->select(
 			[ 'pagetriage_page_tags' ],
@@ -445,7 +446,7 @@ class PageTriageUtil {
 			return;
 		}
 
-		$dbw = self::getConnection( DB_PRIMARY );
+		$dbw = self::getPrimaryConnection();
 		$dbw->startAtomic( __METHOD__ );
 		$dbw->update(
 			'pagetriage_page_tags',
@@ -750,12 +751,20 @@ class PageTriageUtil {
 	}
 
 	/**
-	 * Return an SQL database connection.
+	 * Return an SQL primary database connection.
 	 *
-	 * @param int $type DB_PRIMARY or DB_REPLICA
 	 * @return null|IDatabase
 	 */
-	public static function getConnection( $type ) {
-		return MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( $type );
+	public static function getPrimaryConnection() {
+		return MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->getPrimaryDatabase();
+	}
+
+	/**
+	 * Return an SQL replica database connection.
+	 *
+	 * @return null|IReadableDatabase
+	 */
+	public static function getReplicaConnection() {
+		return MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->getReplicaDatabase();
 	}
 }
