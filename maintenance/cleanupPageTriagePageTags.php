@@ -30,8 +30,8 @@ class CleanupPageTriagePageTags extends Maintenance {
 	}
 
 	public function execute() {
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
-		$dbr = PageTriageUtil::getConnection( DB_REPLICA );
+		$dbw = PageTriageUtil::getPrimaryConnection();
+		$dbr = PageTriageUtil::getReplicaConnection();
 		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 		$batchSize = $this->getBatchSize();

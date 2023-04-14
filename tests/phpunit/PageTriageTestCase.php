@@ -43,7 +43,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		$this->setMainCache( CACHE_NONE );
 		// Insert minimal required data (subset of what's done in PageTriage/sql/PageTriageTags.sql)
 		// @TODO figure out why this is only run for the first test method when its in addDbData().
-		$db = PageTriageUtil::getConnection( DB_PRIMARY );
+		$db = PageTriageUtil::getPrimaryConnection();
 		$db->insert(
 			'pagetriage_tags',
 			[
@@ -132,7 +132,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	}
 
 	public static function setDraftQuality( $revId, $classId ) {
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$dbw = PageTriageUtil::getPrimaryConnection();
 		foreach ( [ 0, 1, 2, 3 ] as $id ) {
 			$predicted = $classId === $id;
 			$dbw->insert( 'ores_classification', [
@@ -146,7 +146,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	}
 
 	public static function ensureCopyvioTag() {
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$dbw = PageTriageUtil::getPrimaryConnection();
 
 		$dbw->upsert(
 			'pagetriage_tags',
@@ -157,7 +157,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	}
 
 	public static function setCopyvio( $pageId, $revId ) {
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$dbw = PageTriageUtil::getPrimaryConnection();
 
 		$tagId = $dbw->selectField(
 			'pagetriage_tags', 'ptrt_tag_id', [ 'ptrt_tag_name' => 'copyvio' ]
@@ -174,7 +174,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	}
 
 	public static function ensureOresModel( $name ) {
-		$dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$dbw = PageTriageUtil::getPrimaryConnection();
 		$modelInfo = [
 			'oresm_name' => $name,
 			'oresm_version' => '0.0.1',

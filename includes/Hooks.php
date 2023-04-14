@@ -423,7 +423,7 @@ class Hooks implements
 			static function ( $oldValue, &$ttl, array &$setOpts ) use ( $pageId ) {
 				// The ptrp_created field is equivalent to creation_date
 				// property set during article metadata compilation.
-				$dbr = PageTriageUtil::getConnection( DB_REPLICA );
+				$dbr = PageTriageUtil::getReplicaConnection();
 				$setOpts += Database::getCacheSetOptions( $dbr );
 				$queueLookup = PageTriageServices::wrap( MediaWikiServices::getInstance() )
 					->getQueueLookup();

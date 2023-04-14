@@ -30,7 +30,7 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 
 	public function testPreExistingPageAddedToDraftQueueAfterActivation() {
 		// Get the initial page count.
-		$initialCount = PageTriageUtil::getConnection( DB_REPLICA )->selectRowCount( 'pagetriage_page' );
+		$initialCount = PageTriageUtil::getReplicaConnection()->selectRowCount( 'pagetriage_page' );
 		// Create a page in the Draft namespace and confirm that it hasn't been added to the
 		// PageTriage queue.
 		$testPage = $this->insertPage( self::class . 'Test1', '', $this->draftNsId );
@@ -47,14 +47,14 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 		);
 
 		// Now the page should be in the queue.
-		$newCount = PageTriageUtil::getConnection( DB_REPLICA )->selectRowCount( 'pagetriage_page' );
+		$newCount = PageTriageUtil::getReplicaConnection()->selectRowCount( 'pagetriage_page' );
 		$this->assertEquals( $initialCount + 1, $newCount );
 	}
 
 	public function testPreExistingPagesWithCategoriesAreGivenCorrectTags() {
 		$testPageCount = 10;
 		// Get the initial page counts (because previous tests can leave things behind).
-		$db = PageTriageUtil::getConnection( DB_REPLICA );
+		$db = PageTriageUtil::getReplicaConnection();
 		$initialCount = $db->selectRowCount( 'pagetriage_page' );
 		$initialAfCPendingCount = $db->selectRowCount(
 			[ 'pagetriage_page_tags', 'pagetriage_tags' ],

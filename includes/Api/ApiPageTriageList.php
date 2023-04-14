@@ -182,7 +182,7 @@ class ApiPageTriageList extends ApiBase {
 	 * @return int
 	 */
 	protected function getTalkpageFeedbackCount( Title $pageTitle ) {
-		$dbr = PageTriageUtil::getConnection( DB_REPLICA );
+		$dbr = PageTriageUtil::getReplicaConnection();
 		$tables = [
 			'change_tag_def',
 			'change_tag',
@@ -242,7 +242,7 @@ class ApiPageTriageList extends ApiBase {
 		$offsetOperator = '';
 
 		// Database setup
-		$dbr = PageTriageUtil::getConnection( DB_REPLICA );
+		$dbr = PageTriageUtil::getReplicaConnection();
 
 		if ( !$count ) {
 			// Get the expected limit as defined in getAllowedParams
@@ -471,7 +471,7 @@ class ApiPageTriageList extends ApiBase {
 	 * @return string SQL condition for use in a WHERE clause
 	 */
 	private static function buildTagQuery( array $opts ) {
-		$dbr = PageTriageUtil::getConnection( DB_REPLICA );
+		$dbr = PageTriageUtil::getReplicaConnection();
 		$tagConds = '';
 
 		$searchableTags = [

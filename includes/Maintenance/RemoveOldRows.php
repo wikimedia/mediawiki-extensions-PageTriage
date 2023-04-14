@@ -30,8 +30,8 @@ class RemoveOldRows extends Maintenance {
 	}
 
 	protected function init() {
-		$this->dbr = PageTriageUtil::getConnection( DB_REPLICA );
-		$this->dbw = PageTriageUtil::getConnection( DB_PRIMARY );
+		$this->dbr = PageTriageUtil::getReplicaConnection();
+		$this->dbw = PageTriageUtil::getPrimaryConnection();
 	}
 
 	public function execute() {

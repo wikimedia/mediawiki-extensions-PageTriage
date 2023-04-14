@@ -32,7 +32,7 @@ class ArticleMetadataTest extends PageTriageTestCase {
 	protected function setUp(): void {
 		parent::setUp();
 		$this->pageIds = [];
-		$this->dbr = PageTriageUtil::getConnection( DB_REPLICA );
+		$this->dbr = PageTriageUtil::getReplicaConnection();
 
 		// Set up 6 pages to test with.
 		for ( $i = 0; $i < 6; $i++ ) {
