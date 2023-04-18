@@ -447,12 +447,13 @@ class PageTriageUtil {
 
 		$dbw = self::getPrimaryConnection();
 		$dbw->startAtomic( __METHOD__ );
-		$dbw->update(
-			'pagetriage_page_tags',
-			[ 'ptrpt_value' => $status ],
-			[ 'ptrpt_page_id' => $pageIds, 'ptrpt_tag_id' => $tags['user_block_status'] ],
-			__METHOD__
-		);
+		$dbw->newUpdateQueryBuilder()
+			->update( 'pagetriage_page_tags' )
+			->set( [ 'ptrpt_value' => $status ] )
+			->where( [ 'ptrpt_page_id' => $pageIds, 'ptrpt_tag_id' => $tags['user_block_status'] ] )
+			->caller( __METHOD__ )
+			->execute();
+
 		PageTriage::bulkSetTagsUpdated( $pageIds );
 		$dbw->endAtomic( __METHOD__ );
 

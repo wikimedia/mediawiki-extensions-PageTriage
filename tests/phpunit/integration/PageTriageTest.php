@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\PageTriage\Test\Integration;
 
 use MediaWiki\Extension\PageTriage\PageTriage;
+use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -30,5 +31,35 @@ class PageTriageTest extends MediaWikiIntegrationTestCase {
 		$this->assertTrue( $result );
 		$record = $pageTriage->retrieve();
 		$this->assertTrue( $record );
+	}
+
+	public function testBulkSetTagsUpdated() {
+		// Skipping this test if ORES is not loaded. See: T335998
+		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
+		$this->db->truncate( 'pagetriage_page' );
+		$this->db->truncate( 'pagetriage_page_tags' );
+		$this->db->truncate( 'pagetriage_tags' );
+		$pageIds[] = $this->insertPage( 'PageTriageTest', 'Testing 123' )['id'];
+
+		$dbr = PageTriageUtil::getReplicaConnection();
+		$pageTriagePage = $dbr->newSelectQueryBuilder()
+			->select( 'ptrp_tags_updated' )
+			->from( 'pagetriage_page' )
+			->where( [ 'ptrp_page_id' => $pageIds ] )
+			->caller( __METHOD__ )
+			->fetchField();
+
+		$this->assertNull( $pageTriagePage );
+
+		PageTriage::bulkSetTagsUpdated( $pageIds );
+
+		$newPageTriagePage = $dbr->newSelectQueryBuilder()
+			->select( 'ptrp_tags_updated' )
+			->from( 'pagetriage_page' )
+			->where( [ 'ptrp_page_id' => $pageIds ] )
+			->caller( __METHOD__ )
+			->fetchField();
+
+		$this->assertNotNull( $newPageTriagePage );
 	}
 }

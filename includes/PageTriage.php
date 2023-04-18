@@ -127,15 +127,16 @@ class PageTriage {
 			'ptrp_reviewed_updated' => $dbw->timestamp( wfTimestampNow() ),
 			'ptrp_last_reviewed_by' => $user ? $user->getId() : 0
 		];
-		$dbw->update(
-			'pagetriage_page',
-			$set,
-			[
+		$dbw->newUpdateQueryBuilder()
+			->update( 'pagetriage_page' )
+			->set( $set )
+			->where( [
 				'ptrp_page_id' => $this->mPageId,
 				'ptrp_reviewed != ' . $dbw->addQuotes( $newReviewStatus )
-			],
-			__METHOD__
-		);
+			] )
+			->caller( __METHOD__ )
+			->execute();
+
 		if ( $dbw->affectedRows() > 0 ) {
 			$this->currentReviewStatus = $newReviewStatus;
 			$this->mReviewedUpdated = $set['ptrp_reviewed_updated'];
@@ -174,12 +175,12 @@ class PageTriage {
 		}
 
 		$dbw = PageTriageUtil::getPrimaryConnection();
-		$dbw->update(
-			'pagetriage_page',
-			$row,
-			[ 'ptrp_page_id' => $this->mPageId ],
-			__METHOD__
-		);
+		$dbw->newUpdateQueryBuilder()
+			->update( 'pagetriage_page' )
+			->set( $row )
+			->where( [ 'ptrp_page_id' => $this->mPageId ] )
+			->caller( __METHOD__ )
+			->execute();
 	}
 
 	/**
@@ -213,12 +214,12 @@ class PageTriage {
 		$dbw = PageTriageUtil::getPrimaryConnection();
 
 		$now = wfTimestampNow();
-		$dbw->update(
-			'pagetriage_page',
-			[ 'ptrp_tags_updated' => $dbw->timestamp( $now ) ],
-			[ 'ptrp_page_id' => $pageIds ],
-			__METHOD__
-		);
+		$dbw->newUpdateQueryBuilder()
+			->update( 'pagetriage_page' )
+			->set( [ 'ptrp_tags_updated' => $dbw->timestamp( $now ) ] )
+			->where( [ 'ptrp_page_id' => $pageIds ] )
+			->caller( __METHOD__ )
+			->execute();
 
 		return $now;
 	}
