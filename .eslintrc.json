@@ -6,7 +6,8 @@
 		"wikimedia/mediawiki"
 	],
 	"env": {
-		"commonjs": true
+		"commonjs": true,
+		"jest": true
 	},
 	"globals": {
 		"Backbone": false,
