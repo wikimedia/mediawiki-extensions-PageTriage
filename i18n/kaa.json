@@ -15,6 +15,7 @@
 	"pagetriage-filter-non-autoconfirmed": "Jańa kelgenler (avtomatik tastıyıqlanbaǵanlar)",
 	"pagetriage-filter-learners": "Úyreniwshiler (jańadan avtomatik tastıyıqlanǵanlar)",
 	"pagetriage-filter-blocked": "Bloklanǵan paydalanıwshılar",
+	"pagetriage-filter-stat-namespace": "Atamalar kópligi",
 	"pagetriage-auto-refresh-list": "Avto-jańalaw",
 	"log-action-filter-pagetriage-curation-delete": "Óshirilip atır"
 }
