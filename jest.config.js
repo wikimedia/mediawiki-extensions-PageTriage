@@ -1,10 +1,13 @@
 module.exports = {
 	moduleNameMapper: {
+		// backbone needs this defined here because of the way it checks for jquery & underscore
+		underscore: '<rootDir>/modules/external/underscore.js',
 		'ext.pageTriage.defaultTagsOptions': '<rootDir>/modules/ext.pageTriage.defaultTagsOptions/main.js',
 		'ext.pageTriage.util': '<rootDir>/modules/ext.pageTriage.util/main.js',
-		'^./modules/(.+)/ext.pageTriage.(.+).underscore': '<rootDir>/modules/$1/$2.underscore',
+		// @TODO: map virtual files with full path
+		'./icons.json': '<rootDir>/tests/mocks/icons.json',
 		// backbone needs this defined here because of the way it checks for jquery & underscore
-		underscore: '<rootDir>/modules/external/underscore.js'
+		'^./modules/(.+)/ext.pageTriage.(.+).underscore': '<rootDir>/modules/$1/$2.underscore'
 	},
 	collectCoverage: true,
 	collectCoverageFrom: [
@@ -23,6 +26,20 @@ module.exports = {
 		}
 	},
 	testEnvironment: 'jsdom',
+	transform: {
+		'^.+\\.vue$': '@vue/vue3-jest',
+		'^.+\\js$': 'babel-jest'
+	},
+	testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(js|ts)$',
+	moduleFileExtensions: [ 'js', 'vue' ],
+	coverageReporters: [ 'text', 'json-summary' ],
+	testEnvironmentOptions: {
+		url: 'http://localhost:8080',
+		customExportConditions: [
+			'node',
+			'node-addons'
+		]
+	},
 	setupFilesAfterEnv: [
 		'<rootDir>/jest.setup.js'
 	]

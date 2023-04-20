@@ -46,6 +46,9 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$this->setHeaders();
 		$out = $this->getOutput();
 		$user = $this->getUser();
+		// Decide which UI to load
+		$uiVersion = $request->getInt( 'ui_version', $config->get( 'PageTriageUIVersion' ) );
+		$listModule = ( $uiVersion === 1 ? 'ext.pageTriage.list' : 'ext.pageTriage.views.list' );
 
 		// Output the title of the page
 		$out->setPageTitle( $this->msg( 'newpagesfeed' ) );
@@ -64,18 +67,18 @@ class SpecialNewPagesFeed extends SpecialPage {
 			'wgPageTriageInfiniteScrolling' => $wgPageTriageInfiniteScrolling,
 			'wgPageTriageStickyControlNav' => $config->get( 'PageTriageStickyControlNav' ),
 			'wgPageTriageStickyStatsNav' => $config->get( 'PageTriageStickyStatsNav' ),
+			'wgPageTriageUIVersion' => $uiVersion,
 			'wgPageTriageEnableReviewButton' => $user->isRegistered() && $user->isAllowed( 'patrol' ),
 			'wgPageTriageEnableEnglishWikipediaFeatures' => $config->get( 'PageTriageEnableEnglishWikipediaFeatures' ),
 			'wgShowOresFilters' => $showOresFilters,
 			'wgShowCopyvio' => $showCopyvio,
 		];
 		$out->addJsConfigVars( $globalVars );
-
 		// Load the JS
 		$out->addModules( [
 			'ext.pageTriage.external',
 			'ext.pageTriage.util',
-			'ext.pageTriage.views.list'
+			$listModule
 		] );
 
 		$warnings = '';

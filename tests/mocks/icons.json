@@ -1,0 +1,10 @@
+{
+	"cdxIconArticleCheck": "\u003Cpath d=\"m9 17-4.59-4.59L5.83 11 9 14.17l8-8V3a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V9z\"/\u003E",
+	"cdxIconInfoFilled": {
+		"langCodeMap": {
+			"ar": "\u003Cpath d=\"M8 19a1 1 0 001 1h2a1 1 0 001-1v-1H8zm9-12a7 7 0 10-12 4.9S7 14 7 15v1a1 1 0 001 1h4a1 1 0 001-1v-1c0-1 2-3.1 2-3.1A7 7 0 0017 7z\"/\u003E"
+		},
+		"default": "\u003Cpath d=\"M10 0C4.477 0 0 4.477 0 10s4.477 10 10 10 10-4.477 10-10S15.523 0 10 0zM9 5h2v2H9zm0 4h2v6H9z\"/\u003E"
+	},
+	"cdxIconTrash": "\u003Cpath d=\"M17 2h-3.5l-1-1h-5l-1 1H3v2h14zM4 17a2 2 0 002 2h8a2 2 0 002-2V5H4z\"/\u003E"
+}
