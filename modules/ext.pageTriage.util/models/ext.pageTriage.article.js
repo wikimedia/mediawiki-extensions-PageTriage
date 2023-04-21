@@ -121,16 +121,19 @@ $( function () {
 
 			// Set copyvio info
 			if ( article.get( 'copyvio' ) ) {
-				article.set(
-					'copyvio_link_url',
-					'https://tools.wmflabs.org/copypatrol/en?' + $.param( {
+				// As of 2023, the valid values for this on the CopyPatrol side are: en, es, ar,
+				// fr, simple. Splitting the wgServerName ensures that Simple English Wikipedia
+				// correctly renders as "simple".
+				const wikiLanguageCodeForCopyPatrolURL = mw.config.get( 'wgServerName' ).split( '.' )[ 0 ];
+
+				const link = 'https://copypatrol.toolforge.org/' + wikiLanguageCodeForCopyPatrolURL + '?' +
+					$.param( {
 						filter: 'all',
-						searchCriteria: 'page_exact',
-						searchText: titleObj.getMainText(),
+						filterPage: titleObj.getMainText(),
 						drafts: article.get( 'is_draft' ) ? 1 : 0,
 						revision: article.get( 'copyvio' )
-					} )
-				);
+					} );
+				article.set( 'copyvio_link_url', link );
 			} else {
 				// Make sure 'copyvio' is defined so it doesn't break in the template
 				article.set( 'copyvio', false );
