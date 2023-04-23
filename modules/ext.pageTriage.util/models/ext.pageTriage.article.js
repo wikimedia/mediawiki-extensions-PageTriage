@@ -125,14 +125,13 @@ $( function () {
 				// fr, simple. Splitting the wgServerName ensures that Simple English Wikipedia
 				// correctly renders as "simple".
 				const wikiLanguageCodeForCopyPatrolURL = mw.config.get( 'wgServerName' ).split( '.' )[ 0 ];
+				const filter = 'all';
+				const filterPage = titleObj.getMainText();
+				const drafts = article.get( 'is_draft' ) ? 1 : 0;
+				const revision = article.get( 'copyvio' );
 
-				const link = 'https://copypatrol.toolforge.org/' + wikiLanguageCodeForCopyPatrolURL + '?' +
-					$.param( {
-						filter: 'all',
-						filterPage: titleObj.getMainText(),
-						drafts: article.get( 'is_draft' ) ? 1 : 0,
-						revision: article.get( 'copyvio' )
-					} );
+				const link = this.generateCopyPatrolURL( wikiLanguageCodeForCopyPatrolURL, filter, filterPage, drafts, revision );
+
 				article.set( 'copyvio_link_url', link );
 			} else {
 				// Make sure 'copyvio' is defined so it doesn't break in the template
@@ -206,6 +205,16 @@ $( function () {
 				titleUrl.query.redirect = 'no';
 			}
 			article.set( 'title_url', titleUrl.toString() );
+		},
+
+		generateCopyPatrolURL( wikiLanguageCodeForCopyPatrolURL, filter, filterPage, drafts, revision ) {
+			return 'https://copypatrol.toolforge.org/' + wikiLanguageCodeForCopyPatrolURL + '?' +
+				$.param( {
+					filter: filter,
+					filterPage: filterPage,
+					drafts: drafts,
+					revision: revision
+				} );
 		},
 
 		tagWarningNotice: function () {
