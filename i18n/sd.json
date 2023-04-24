@@ -16,6 +16,8 @@
 	"pagetriage-filter-pending-ores-score": "ميسر ناهي",
 	"pagetriage-filter-stat-all": "سڀ",
 	"pagetriage-filter-stat-unreviewed": "اڻـجائزو-ورتل",
+	"pagetriage-filter-stat-bots": "بوٽس پاران",
+	"pagetriage-filter-stat-redirects": "چورڻا",
 	"pagetriage-filter-stat-username": "واپرائيندڙ طرفان: $1",
 	"pagetriage-filter-stat-namespace": "نانءُپولار",
 	"pagetriage-filter-stat-predicted-issues-none": "ڪوبہ نہ",
