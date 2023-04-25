@@ -45,12 +45,12 @@ use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsManager;
+use MediaWiki\WikiMap\WikiMap;
 use MWTimestamp;
 use ParserOutput;
 use RecentChange;
 use Title;
 use User;
-use WikiMap;
 use Wikimedia\Rdbms\Database;
 use WikiPage;
 
