@@ -29,7 +29,10 @@
 			"Ryo567",
 			"Samwilson",
 			"Vivaelcelta",
-			"Yllelder"
+			"Yllelder",
+			"La Mantis",
+			"SpikeShroom",
+			"ZebaX2010"
 		]
 	},
 	"pagetriage": "Triaje de páginas",
@@ -209,7 +212,7 @@
 	"pagetriage-tags-copyedit-desc": "Esta página necesita una revisión de la gramática, estilo, cohesión, tono y/o de la ortografía.",
 	"pagetriage-tags-morefootnotes-label": "Más notas",
 	"pagetriage-tags-morefootnotes-desc": "Esta página tiene algunas referencias, pero las citas en el texto son insuficientes.",
-	"pagetriage-tags-refimprove-label": "Referencias",
+	"pagetriage-tags-refimprove-label": "Más referencias",
 	"pagetriage-tags-refimprove-desc": "Esta página necesita referencias adicionales o fuentes de verificación.",
 	"pagetriage-tags-uncategorised-label": "Sin categorizar",
 	"pagetriage-tags-uncategorised-desc": "Esta página no pertenece a ninguna categoría.",
