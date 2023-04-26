@@ -65,6 +65,83 @@
 				type: 'text',
 				value: ''
 			}
+		},
+
+		LINKROT_TAG = {
+			label: mw.msg( 'pagetriage-tags-linkrot-label' ),
+			tag: 'linkrot',
+			desc: mw.msg( 'pagetriage-tags-linkrot-desc' ),
+			params: {
+				date: param.date
+			},
+			position: 'top',
+			multiple: true
+		},
+
+		COPYEDIT_TAG = {
+			label: mw.msg( 'pagetriage-tags-copyedit-label' ),
+			tag: 'copy edit',
+			desc: mw.msg( 'pagetriage-tags-copyedit-desc' ),
+			params: {
+				date: param.date,
+				for: $.extend( true, {}, param.for )
+			},
+			position: 'top',
+			multiple: true
+		},
+
+		MOREFOOTNOTES_TAG = {
+			label: mw.msg( 'pagetriage-tags-morefootnotes-label' ),
+			tag: 'more footnotes',
+			desc: mw.msg( 'pagetriage-tags-morefootnotes-desc' ),
+			params: {
+				date: param.date,
+				blp: $.extend( true, {}, param.blp )
+			},
+			position: 'top',
+			multiple: true
+		},
+
+		REFIMPROVE_TAG = {
+			label: mw.msg( 'pagetriage-tags-refimprove-label' ),
+			tag: 'refimprove',
+			desc: mw.msg( 'pagetriage-tags-refimprove-desc' ),
+			params: {
+				date: param.date
+			},
+			position: 'top',
+			multiple: true
+		},
+
+		UNREFERENCED_TAG = {
+			label: mw.msg( 'pagetriage-tags-unreferenced-label' ),
+			tag: 'unreferenced',
+			desc: mw.msg( 'pagetriage-tags-unreferenced-desc' ),
+			params: {
+				date: param.date
+			},
+			position: 'top',
+			multiple: true
+		},
+
+		STUB_TAG = {
+			label: mw.msg( 'pagetriage-tags-stub-label' ),
+			tag: 'stub',
+			desc: mw.msg( 'pagetriage-tags-stub-desc' ),
+			params: { },
+			position: 'bottom',
+			multiple: false
+		},
+
+		UNCATEGORISED_TAG = {
+			label: mw.msg( 'pagetriage-tags-uncategorised-label' ),
+			tag: 'uncategorised',
+			desc: mw.msg( 'pagetriage-tags-uncategorised-desc' ),
+			params: {
+				date: param.date
+			},
+			position: 'categories',
+			multiple: false
 		};
 
 	$.pageTriageTagsMultiple = 'Multiple issues';
@@ -75,89 +152,13 @@
 			label: mw.msg( 'pagetriage-tags-cat-common-label' ),
 			alias: true,
 			tags: {
-				linkrot: {
-					label: mw.msg( 'pagetriage-tags-linkrot-label' ),
-					tag: 'linkrot',
-					desc: mw.msg( 'pagetriage-tags-linkrot-desc' ),
-					params: {
-						date: param.date
-					},
-					position: 'top',
-					dest: 'sources',
-					multiple: true
-				},
-
-				copyedit: {
-					label: mw.msg( 'pagetriage-tags-copyedit-label' ),
-					tag: 'copy edit',
-					desc: mw.msg( 'pagetriage-tags-copyedit-desc' ),
-					params: {
-						date: param.date,
-						for: $.extend( true, {}, param.for )
-					},
-					position: 'top',
-					dest: 'cleanup',
-					multiple: true
-				},
-
-				morefootnotes: {
-					label: mw.msg( 'pagetriage-tags-morefootnotes-label' ),
-					tag: 'more footnotes',
-					desc: mw.msg( 'pagetriage-tags-morefootnotes-desc' ),
-					params: {
-						date: param.date,
-						blp: $.extend( true, {}, param.blp )
-					},
-					position: 'top',
-					dest: 'sources',
-					multiple: true
-				},
-
-				refimprove: {
-					label: mw.msg( 'pagetriage-tags-refimprove-label' ),
-					tag: 'refimprove',
-					desc: mw.msg( 'pagetriage-tags-refimprove-desc' ),
-					params: {
-						date: param.date
-					},
-					position: 'top',
-					dest: 'sources',
-					multiple: true
-				},
-
-				unreferenced: {
-					label: mw.msg( 'pagetriage-tags-unreferenced-label' ),
-					tag: 'unreferenced',
-					desc: mw.msg( 'pagetriage-tags-unreferenced-desc' ),
-					params: {
-						date: param.date
-					},
-					position: 'top',
-					dest: 'sources',
-					multiple: true
-				},
-
-				stub: {
-					label: mw.msg( 'pagetriage-tags-stub-label' ),
-					tag: 'stub',
-					desc: mw.msg( 'pagetriage-tags-stub-desc' ),
-					params: { },
-					position: 'bottom',
-					dest: 'structure',
-					multiple: false
-				},
-
-				uncategorised: {
-					label: mw.msg( 'pagetriage-tags-uncategorised-label' ),
-					tag: 'uncategorised',
-					desc: mw.msg( 'pagetriage-tags-uncategorised-desc' ),
-					params: {
-						date: param.date
-					},
-					position: 'categories',
-					dest: 'metadata',
-					multiple: false
-				}
+				linkrot: Object.assign( {}, LINKROT_TAG, { dest: 'sources' } ),
+				copyedit: Object.assign( {}, COPYEDIT_TAG, { dest: 'cleanup' } ),
+				morefootnotes: Object.assign( {}, MOREFOOTNOTES_TAG, { dest: 'sources' } ),
+				refimprove: Object.assign( {}, REFIMPROVE_TAG, { dest: 'sources' } ),
+				unreferenced: Object.assign( {}, UNREFERENCED_TAG, { dest: 'sources' } ),
+				stub: Object.assign( {}, STUB_TAG, { dest: 'structure' } ),
+				uncategorised: Object.assign( {}, UNCATEGORISED_TAG, { dest: 'metadata' } )
 			}
 		},
 
@@ -176,17 +177,7 @@
 					multiple: true
 				},
 
-				copyedit: {
-					label: mw.msg( 'pagetriage-tags-copyedit-label' ),
-					tag: 'copy edit',
-					desc: mw.msg( 'pagetriage-tags-copyedit-desc' ),
-					params: {
-						date: param.date,
-						for: $.extend( true, {}, param.for )
-					},
-					position: 'top',
-					multiple: true
-				},
+				copyedit: COPYEDIT_TAG,
 
 				expertsubject: {
 					label: mw.msg( 'pagetriage-tags-expertsubject-label' ),
@@ -280,16 +271,7 @@
 					multiple: true
 				},
 
-				uncategorised: {
-					label: mw.msg( 'pagetriage-tags-uncategorised-label' ),
-					tag: 'uncategorised',
-					desc: mw.msg( 'pagetriage-tags-uncategorised-desc' ),
-					params: {
-						date: param.date
-					},
-					position: 'categories',
-					multiple: false
-				}
+				uncategorised: UNCATEGORISED_TAG
 			}
 		},
 
@@ -378,16 +360,7 @@
 					multiple: true
 				},
 
-				linkrot: {
-					label: mw.msg( 'pagetriage-tags-linkrot-label' ),
-					tag: 'linkrot',
-					desc: mw.msg( 'pagetriage-tags-linkrot-desc' ),
-					params: {
-						date: param.date
-					},
-					position: 'top',
-					multiple: true
-				},
+				linkrot: LINKROT_TAG,
 
 				citationstyle: {
 					label: mw.msg( 'pagetriage-tags-citationstyle-label' ),
@@ -412,28 +385,9 @@
 					multiple: true
 				},
 
-				morefootnotes: {
-					label: mw.msg( 'pagetriage-tags-morefootnotes-label' ),
-					tag: 'more footnotes',
-					desc: mw.msg( 'pagetriage-tags-morefootnotes-desc' ),
-					params: {
-						date: param.date,
-						blp: $.extend( true, {}, param.blp )
-					},
-					position: 'top',
-					multiple: true
-				},
+				morefootnotes: MOREFOOTNOTES_TAG,
 
-				refimprove: {
-					label: mw.msg( 'pagetriage-tags-refimprove-label' ),
-					tag: 'refimprove',
-					desc: mw.msg( 'pagetriage-tags-refimprove-desc' ),
-					params: {
-						date: param.date
-					},
-					position: 'top',
-					multiple: true
-				},
+				refimprove: REFIMPROVE_TAG,
 
 				blpsources: {
 					label: mw.msg( 'pagetriage-tags-blpsources-label' ),
@@ -457,16 +411,7 @@
 					multiple: true
 				},
 
-				unreferenced: {
-					label: mw.msg( 'pagetriage-tags-unreferenced-label' ),
-					tag: 'unreferenced',
-					desc: mw.msg( 'pagetriage-tags-unreferenced-desc' ),
-					params: {
-						date: param.date
-					},
-					position: 'top',
-					multiple: true
-				},
+				unreferenced: UNREFERENCED_TAG,
 
 				originalresearch: {
 					label: mw.msg( 'pagetriage-tags-originalresearch-label' ),
@@ -583,14 +528,7 @@
 					multiple: true
 				},
 
-				stub: {
-					label: mw.msg( 'pagetriage-tags-stub-label' ),
-					tag: 'stub',
-					desc: mw.msg( 'pagetriage-tags-stub-desc' ),
-					params: { },
-					position: 'bottom',
-					multiple: false
-				},
+				stub: STUB_TAG,
 
 				verylong: {
 					label: mw.msg( 'pagetriage-tags-verylong-label' ),
