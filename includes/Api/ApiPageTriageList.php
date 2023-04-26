@@ -183,22 +183,19 @@ class ApiPageTriageList extends ApiBase {
 	 */
 	protected function getTalkpageFeedbackCount( Title $pageTitle ) {
 		$dbr = PageTriageUtil::getReplicaConnection();
-		$tables = [
-			'change_tag_def',
-			'change_tag',
-			'revision',
-			'page',
-		];
-		$conds = [
-			'ctd_name' => 'pagetriage',
-			'page_id' => $pageTitle->getArticleID(),
-		];
-		$joinConds = [
-			'change_tag' => [ 'JOIN', 'ctd_id = ct_tag_id' ],
-			'revision' => [ 'JOIN', 'ct_rev_id = rev_id' ],
-			'page' => [ 'JOIN', 'rev_page = page_id' ],
-		];
-		return $dbr->selectRowCount( $tables, '*', $conds, __METHOD__, [], $joinConds );
+		$feedbackCount = $dbr->newSelectQueryBuilder()
+			->select( '*' )
+			->from( 'change_tag_def' )
+			->join( 'change_tag', 'change_tag', 'ctd_id = ct_tag_id' )
+			->join( 'revision', 'revision', 'ct_rev_id = rev_id' )
+			->join( 'page', 'page', 'rev_page = page_id' )
+			->where( [
+				'ctd_name' => 'pagetriage',
+				'page_id' => $pageTitle->getArticleID(),
+			] )
+			->caller( __METHOD__ )
+			->fetchRowCount();
+		return $feedbackCount;
 	}
 
 	/**

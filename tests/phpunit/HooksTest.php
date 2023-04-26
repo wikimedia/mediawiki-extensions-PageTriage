@@ -19,11 +19,18 @@ class HooksTest extends PageTriageTestCase {
 	public function testDraftRedirectsAreNotAdded() {
 		$db = PageTriageUtil::getPrimaryConnection();
 		// Get the initial page count of the PageTriage queue.
-		$originalCount = $db->selectRowCount( 'pagetriage_page' );
+		$originalCount = $db->newSelectQueryBuilder()
+			->select( '*' )
+			->from( 'pagetriage_page' )
+			->fetchRowCount();
 		// Insert a redirect.
 		$this->insertPage( 'Draft:Redirect test', '#REDIRECT [[Redirect test target]]' );
 		// Check that it wasn't added to the queue.
-		static::assertEquals( $originalCount, $db->selectRowCount( 'pagetriage_page' ) );
+		$actualCount = $db->newSelectQueryBuilder()
+			->select( '*' )
+			->from( 'pagetriage_page' )
+			->fetchRowCount();
+		static::assertEquals( $originalCount, $actualCount );
 	}
 
 }

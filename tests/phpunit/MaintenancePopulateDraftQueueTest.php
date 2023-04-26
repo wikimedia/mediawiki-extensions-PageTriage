@@ -29,8 +29,12 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 	}
 
 	public function testPreExistingPageAddedToDraftQueueAfterActivation() {
+		$dbr = PageTriageUtil::getReplicaConnection();
 		// Get the initial page count.
-		$initialCount = PageTriageUtil::getReplicaConnection()->selectRowCount( 'pagetriage_page' );
+		$initialCount = $dbr->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'pagetriage_page' )
+		->fetchField();
 		// Create a page in the Draft namespace and confirm that it hasn't been added to the
 		// PageTriage queue.
 		$testPage = $this->insertPage( self::class . 'Test1', '', $this->draftNsId );
@@ -47,7 +51,10 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 		);
 
 		// Now the page should be in the queue.
-		$newCount = PageTriageUtil::getReplicaConnection()->selectRowCount( 'pagetriage_page' );
+		$newCount = $dbr->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'pagetriage_page' )
+			->fetchField();
 		$this->assertEquals( $initialCount + 1, $newCount );
 	}
 
@@ -55,17 +62,21 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 		$testPageCount = 10;
 		// Get the initial page counts (because previous tests can leave things behind).
 		$db = PageTriageUtil::getReplicaConnection();
-		$initialCount = $db->selectRowCount( 'pagetriage_page' );
-		$initialAfCPendingCount = $db->selectRowCount(
-			[ 'pagetriage_page_tags', 'pagetriage_tags' ],
-			'*',
-			[
-				'ptrpt_tag_id = ptrt_tag_id',
+		$initialCount = $db->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'pagetriage_page' )
+			->fetchField();
+		$initialAfCPendingCount = $db->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'pagetriage_page_tags' )
+			->join( 'pagetriage_tags', null, 'ptrpt_tag_id = ptrt_tag_id' )
+			->where( [
 				'ptrt_tag_name' => 'afc_state',
 				'ptrpt_value' => ArticleCompileAfcTag::PENDING,
-			],
-			__METHOD__
-		);
+			] )
+			->caller( __METHOD__ )
+			->fetchField();
+
 		// Add 10 pages, five with categories.
 		for ( $i = 1; $i <= $testPageCount; $i++ ) {
 			$text = ( $i % 2 ) ? '[[Category:Pending AfC submissions]]' : '';

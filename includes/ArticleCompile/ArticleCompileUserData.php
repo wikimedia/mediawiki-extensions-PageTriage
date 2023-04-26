@@ -14,13 +14,14 @@ class ArticleCompileUserData extends ArticleCompile {
 		// Grab the earliest revision based on rev_timestamp and rev_id
 		$revId = [];
 		foreach ( $this->mPageId as $pageId ) {
-			$res = $this->db->selectRow(
-				[ 'revision' ],
-				[ 'rev_id' ],
-				[ 'rev_page' => $pageId ],
-				__METHOD__,
-				[ 'LIMIT' => 1, 'ORDER BY' => 'rev_timestamp, rev_id' ]
-			);
+			$res = $this->db->newSelectQueryBuilder()
+				->select( 'rev_id' )
+				->from( 'revision' )
+				->where( [ 'rev_page' => $pageId ] )
+				->limit( 1 )
+				->orderBy( [ 'rev_timestamp', 'rev_id' ] )
+				->caller( __METHOD__ )
+				->fetchRow();
 
 			if ( $res ) {
 				$revId[] = $res->rev_id;

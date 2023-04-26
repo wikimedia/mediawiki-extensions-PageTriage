@@ -172,9 +172,11 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	public static function setCopyvio( $pageId, $revId ) {
 		$dbw = PageTriageUtil::getPrimaryConnection();
 
-		$tagId = $dbw->selectField(
-			'pagetriage_tags', 'ptrt_tag_id', [ 'ptrt_tag_name' => 'copyvio' ]
-		);
+		$tagId = $dbw->newSelectQueryBuilder()
+			->select( 'ptrt_tag_id' )
+			->from( 'pagetriage_tags' )
+			->where( [ 'ptrt_tag_name' => 'copyvio' ] )
+			->fetchField();
 
 		$dbw->insert(
 			'pagetriage_page_tags',
@@ -193,7 +195,11 @@ abstract class PageTriageTestCase extends ApiTestCase {
 			'oresm_version' => '0.0.1',
 			'oresm_is_current' => 1
 		];
-		$model = $dbw->selectField( 'ores_model', 'oresm_id', $modelInfo );
+		$model = $dbw->newSelectQueryBuilder()
+			->select( 'oresm_id' )
+			->from( 'ores_model' )
+			->where( $modelInfo )
+			->fetchField();
 		if ( $model ) {
 			return $model;
 		}

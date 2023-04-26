@@ -25,9 +25,8 @@ class QueueLookup {
 	 * @return QueueRecord|null
 	 */
 	public function getByPageId( int $pageId ): ?QueueRecord {
-		$row = $this->dbr->selectRow(
-			'pagetriage_page',
-			[
+		$row = $this->dbr->newSelectQueryBuilder()
+			->select( [
 				'ptrp_page_id',
 				'ptrp_reviewed',
 				'ptrp_created',
@@ -35,10 +34,12 @@ class QueueLookup {
 				'ptrp_tags_updated',
 				'ptrp_reviewed_updated',
 				'ptrp_last_reviewed_by',
-			],
-			[ 'ptrp_page_id' => $pageId ],
-			__METHOD__
-		);
+			] )
+			->from( 'pagetriage_page' )
+			->where( [ 'ptrp_page_id' => $pageId ] )
+			->caller( __METHOD__ )
+			->fetchRow();
+
 		if ( !$row ) {
 			return null;
 		}

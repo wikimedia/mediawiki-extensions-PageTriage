@@ -38,7 +38,13 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 		$dbw = PageTriageUtil::getPrimaryConnection();
 		$dbr = PageTriageUtil::getReplicaConnection();
 		// If the revision ID hasn't been tagged with copyvio yet, then insert and log.
-		if ( $dbr->selectField( 'pagetriage_page_tags', 'ptrpt_page_id', $row, __METHOD__ ) === false ) {
+		$ptrptPageId = $dbr->newSelectQueryBuilder()
+			->select( 'ptrpt_page_id' )
+			->from( 'pagetriage_page_tags' )
+			->where( $row )
+			->caller( __METHOD__ )
+			->fetchField();
+		if ( $ptrptPageId === false ) {
 			$dbw->replace(
 				'pagetriage_page_tags',
 				[ [ 'ptrpt_page_id', 'ptrpt_tag_id' ] ],

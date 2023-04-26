@@ -24,14 +24,13 @@ class ArticleCompileRecreated extends ArticleCompile {
 			'log_action' => [ 'delete', 'delete_redir' ],
 		];
 
-		$res = $this->db->select(
-			[ 'logging', 'page' ],
-			[ 'DISTINCT page_id' ],
-			$conds,
-			__METHOD__,
-			[],
-			[ 'page' => [ 'JOIN', 'page_title = log_title AND page_namespace = log_namespace' ] ]
-		);
+		$res = $this->db->newSelectQueryBuilder()
+			->select( [ 'DISTINCT page_id' ] )
+			->from( 'logging' )
+			->join( 'page', 'page', 'page_title = log_title AND page_namespace = log_namespace' )
+			->where( $conds )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 
 		// The recreated tag will never change, so we don't need to set false
 		// for the pages that aren't recreations.

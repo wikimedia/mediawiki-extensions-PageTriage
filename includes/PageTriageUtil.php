@@ -121,10 +121,8 @@ class PageTriageUtil {
 			static function () use ( $namespace, $fname, $redirect ) {
 				$dbr = self::getReplicaConnection();
 
-				$table = [ 'pagetriage_page', 'page' ];
 				$conds = [
 					'ptrp_reviewed' => 0,
-					'page_id = ptrp_page_id',
 					// remove redirect from the unreviewd number per bug40540
 					'page_is_redirect' => (int)$redirect,
 					// remove deletion nominations from stats per T205741
@@ -132,15 +130,16 @@ class PageTriageUtil {
 					'page_namespace' => $namespace
 				];
 
-				$res = $dbr->selectRow(
-					$table,
-					[
-						'COUNT(ptrp_page_id) AS total',
-						'MIN(ptrp_reviewed_updated) AS oldest'
-					],
-					$conds,
-					$fname
-				);
+				$res = $dbr->newSelectQueryBuilder()
+					->select( [
+							'COUNT(ptrp_page_id) AS total',
+							'MIN(ptrp_reviewed_updated) AS oldest'
+						] )
+					->from( 'pagetriage_page' )
+					->join( 'page', null, 'page_id = ptrp_page_id' )
+					->where( $conds )
+					->caller( $fname )
+					->fetchRow();
 
 				$data = [ 'count' => 0, 'oldest' => '' ];
 
@@ -209,23 +208,21 @@ class PageTriageUtil {
 				$time = (int)wfTimestamp( TS_UNIX ) - 7 * 24 * 60 * 60;
 
 				$dbr = self::getReplicaConnection();
-
-				$table = [ 'pagetriage_page', 'page' ];
 				$conds = [
 					// T310108
 					'ptrp_reviewed' => [ 1, 2 ],
-					'page_id = ptrp_page_id',
 					'page_namespace' => $namespace,
 					'page_is_redirect' => (int)$redirect,
 					'ptrp_reviewed_updated > ' . $dbr->addQuotes( $dbr->timestamp( $time ) )
 				];
 
-				$res = $dbr->selectRow(
-					$table,
-					[ 'COUNT(ptrp_page_id) AS reviewed_count' ],
-					$conds,
-					$fname
-				);
+				$res = $dbr->newSelectQueryBuilder()
+					->select( [ 'reviewed_count' => 'COUNT(ptrp_page_id)' ] )
+					->from( 'pagetriage_page' )
+					->join( 'page', null, 'page_id = ptrp_page_id' )
+					->where( $conds )
+					->caller( $fname )
+					->fetchRow();
 
 				$data = [ 'reviewed_count' => 0 ];
 
@@ -263,31 +260,34 @@ class PageTriageUtil {
 			static function () use ( $fname, $config ) {
 				$dbr = self::getReplicaConnection();
 
-				$afcStateTagId = $dbr->selectField(
-					'pagetriage_tags', 'ptrt_tag_id', [ 'ptrt_tag_name' => 'afc_state' ], $fname
-				);
+				$afcStateTagId = $dbr->newSelectQueryBuilder()
+					->select( 'ptrt_tag_id' )
+					->from( 'pagetriage_tags' )
+					->where( [ 'ptrt_tag_name' => 'afc_state' ] )
+					->caller( $fname )
+					->fetchField();
+
 				if ( !$afcStateTagId ) {
 					return [];
 				}
 
-				$table = [ 'pagetriage_page', 'page', 'pagetriage_page_tags' ];
 				$conds = [
-					'page_id = ptrp_page_id',
-					'ptrp_page_id = ptrpt_page_id',
 					'ptrpt_tag_id' => $afcStateTagId,
 					'ptrpt_value' => ArticleCompileAfcTag::PENDING,
 					'page_namespace' => $config->get( 'PageTriageDraftNamespaceId' )
 				];
 
-				$res = $dbr->selectRow(
-					$table,
-					[
-						'COUNT(ptrp_page_id) AS total',
-						'MIN(ptrp_reviewed_updated) AS oldest',
-					],
-					$conds,
-					$fname
-				);
+				$res = $dbr->newSelectQueryBuilder()
+						->select( [
+							'COUNT(ptrp_page_id) AS total',
+							'MIN(ptrp_reviewed_updated) AS oldest',
+						] )
+						->from( 'page' )
+						->join( 'pagetriage_page', null, 'page_id = ptrp_page_id' )
+						->join( 'pagetriage_page_tags', null, 'ptrp_page_id = ptrpt_page_id' )
+						->where( $conds )
+						->caller( $fname )
+						->fetchRow();
 
 				$data = [];
 
@@ -361,15 +361,17 @@ class PageTriageUtil {
 
 		if ( $title ) {
 			$dbr = self::getReplicaConnection();
-			$res = $dbr->select(
-				[ 'page' ],
-				[ 'page_namespace', 'page_title' ],
-				[
-					'page_title' => array_map( 'strval', array_keys( $title ) ),
-					'page_namespace' => [ NS_USER, NS_USER_TALK ]
-				],
-				__METHOD__
-			);
+			$res = $dbr->newSelectQueryBuilder()
+				->select( [ 'page_namespace', 'page_title' ] )
+				->from( 'page' )
+				->where(
+					[
+						'page_title' => array_map( 'strval', array_keys( $title ) ),
+						'page_namespace' => [ NS_USER, NS_USER_TALK ]
+					]
+				)
+				->caller( __METHOD__ )
+				->fetchResultSet();
 
 			$dataToCache = [];
 			// if there is result from the database, that means the page exists, set it to the
@@ -423,13 +425,13 @@ class PageTriageUtil {
 
 		$dbr = self::getReplicaConnection();
 
-		$res = $dbr->select(
-			[ 'pagetriage_page_tags' ],
-			[ 'ptrpt_page_id' ],
-			[ 'ptrpt_tag_id' => $tags['user_name'], 'ptrpt_value' => $block->getTargetName() ],
-			__METHOD__,
-			[ 'LIMIT' => $maxNumToProcess + 1 ]
-		);
+		$res = $dbr->newSelectQueryBuilder()
+			->select( [ 'ptrpt_page_id' ] )
+			->from( 'pagetriage_page_tags' )
+			->where( [ 'ptrpt_tag_id' => $tags['user_name'], 'ptrpt_value' => $block->getTargetName() ] )
+			->limit( $maxNumToProcess + 1 )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 
 		if ( $res->numRows() > $maxNumToProcess ) {
 			return;

@@ -45,7 +45,7 @@ class ArticleMetadataTest extends PageTriageTestCase {
 	}
 
 	/**
-	 * @group Broken
+	 * @covers \MediaWiki\Extension\PageTriage\ArticleMetadata::getValidTags()
 	 */
 	public function testGetValidTags() {
 		$tags = ArticleMetadata::getValidTags();
@@ -70,7 +70,8 @@ class ArticleMetadataTest extends PageTriageTestCase {
 			'user_id',
 			'reference',
 			'afc_state',
-			'copyvio'
+			'copyvio',
+			'recreated'
 		];
 
 		$this->assertArrayEquals( [], array_diff( array_keys( $tags ), $validTags ) );
@@ -91,11 +92,12 @@ class ArticleMetadataTest extends PageTriageTestCase {
 		);
 
 		// Check that they all exist in the pagetriage_page table.
-		$res = $this->dbr->select(
-			[ 'pagetriage_page' ],
-			[ 'ptrp_page_id' ],
-			[ 'ptrp_page_id' => $validatedPageIds ]
-		);
+		$res = $this->dbr->newSelectQueryBuilder()
+			->select( 'ptrp_page_id' )
+			->from( 'pagetriage_page' )
+			->where( [ 'ptrp_page_id' => $validatedPageIds ] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 		$this->assertEquals( count( $validatedPageIds ), $res->numRows() );
 	}
 
@@ -128,11 +130,12 @@ class ArticleMetadataTest extends PageTriageTestCase {
 	 */
 	public function testDeleteMetadata() {
 		$this->articleMetadata->deleteMetadata();
-		$res = $this->dbr->select(
-			[ 'pagetriage_page_tags' ],
-			[ 'ptrpt_page_id' ],
-			[ 'ptrpt_page_id' => $this->pageIds ]
-		);
+		$res = $this->dbr->newSelectQueryBuilder()
+			->select( 'ptrpt_page_id' )
+			->from( 'pagetriage_page_tags' )
+			->where( [ 'ptrpt_page_id' => $this->pageIds ] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 		$this->assertSame( 0, $res->numRows() );
 	}
 

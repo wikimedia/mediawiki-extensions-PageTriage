@@ -48,24 +48,24 @@ class PopulateDraftQueue extends Maintenance {
 			$batchNum++;
 
 			// Find all Draft NS pages that don't have records in the PageTriage table.
-			$drafts = $db->select(
-				[ 'page', 'pagetriage_page', 'pagetriage_page_tags' ],
-				[ 'page_id' ],
-				[
+			$drafts = $db->newSelectQueryBuilder()
+				->select( 'page_id' )
+				->from( 'page' )
+				->leftJoin( 'pagetriage_page', 'pagetriage_page', 'page_id = ptrp_page_id' )
+				->leftJoin( 'pagetriage_page_tags', 'pagetriage_page_tags',
+					[
+						'page_id = ptrpt_page_id',
+						'ptrpt_tag_id' => $afcStateTagId,
+					]
+				)
+				->where( [
 					'ptrp_page_id IS NULL OR ptrpt_page_id IS NULL',
 					'page_namespace' => $pageTriageDraftNamespaceId,
 					'page_is_redirect' => '0',
-				],
-				__METHOD__,
-				[ 'LIMIT' => $this->getBatchSize() ],
-				[
-					'pagetriage_page' => [ 'LEFT JOIN', [ 'page_id = ptrp_page_id' ] ],
-					'pagetriage_page_tags' => [ 'LEFT JOIN', [
-						'page_id = ptrpt_page_id',
-						'ptrpt_tag_id' => $afcStateTagId,
-					] ],
-				]
-			);
+				] )
+				->limit( $this->getBatchSize() )
+				->caller( __METHOD__ )
+				->fetchResultSet();
 
 			// The loop will exit if this is the last batch.
 			if ( $drafts->numRows() < $this->getBatchSize() ) {

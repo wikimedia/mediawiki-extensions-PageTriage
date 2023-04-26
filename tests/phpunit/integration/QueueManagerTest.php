@@ -37,14 +37,34 @@ class QueueManagerTest extends MediaWikiIntegrationTestCase {
 
 	public function testDeleteExistentPage() {
 		$page = $this->insertPage( 'PageTriageTest', '' )['title'];
-		$this->assertSame( 1, $this->db->selectRowCount( 'pagetriage_page' ) );
+		$this->assertSame( 1,
+			$this->db->newSelectQueryBuilder()
+				->select( '*' )
+				->from( 'pagetriage_page' )
+				->fetchRowCount()
+		);
 		$acp = ArticleCompileProcessor::newFromPageId( [ $page->getId() ] );
 		$acp->compileMetadata();
-		$this->assertSame( 1, $this->db->selectRowCount( 'pagetriage_page_tags' ) );
+		$this->assertSame( 1,
+			$this->db->newSelectQueryBuilder()
+				->select( '*' )
+				->from( 'pagetriage_page_tags' )
+				->fetchRowCount()
+		);
 		$status = $this->getQueueManager()->deleteByPageId( $page->getId() );
 		$this->assertTrue( $status->isOK() );
-		$this->assertSame( 0, $this->db->selectRowCount( 'pagetriage_page' ) );
-		$this->assertSame( 0, $this->db->selectRowCount( 'pagetriage_page_tags' ) );
+		$this->assertSame( 0,
+			$this->db->newSelectQueryBuilder()
+				->select( '*' )
+				->from( 'pagetriage_page' )
+				->fetchRowCount()
+		);
+		$this->assertSame( 0,
+			$this->db->newSelectQueryBuilder()
+				->select( '*' )
+				->from( 'pagetriage_page_tags' )
+				->fetchRowCount()
+		);
 	}
 
 	public function testIsPageTriageNamespace() {

@@ -126,12 +126,11 @@ class RemoveOldRows extends Maintenance {
 		// Scan for data with ptrp_created set more than $startTime days ago
 		$count = $this->getBatchSize();
 
-		$idRow = $this->dbr->selectRow(
-			[ 'pagetriage_page' ],
-			[ 'MAX(ptrp_page_id) AS max_id' ],
-			[],
-			__METHOD__
-		);
+		$idRow = $this->dbr->newSelectQueryBuilder()
+			->select( [ 'max_id' => 'MAX(ptrp_page_id)' ] )
+			->from( 'pagetriage_page' )
+			->caller( __METHOD__ )
+			->fetchRow();
 
 		// No data to process, exit
 		if ( $idRow === false ) {
@@ -147,20 +146,21 @@ class RemoveOldRows extends Maintenance {
 
 		while ( $count === $this->getBatchSize() ) {
 			$count = 0;
-			$res = $this->dbr->select(
-				[ 'pagetriage_page', 'page' ],
-				[ 'ptrp_page_id', 'ptrp_created', 'page_namespace', 'ptrp_reviewed' ],
-				[
+			$res = $this->dbr->newSelectQueryBuilder()
+				->select( [ 'ptrp_page_id', 'ptrp_created', 'page_namespace', 'ptrp_reviewed' ] )
+				->from( 'pagetriage_page' )
+				->join( 'page', 'page', 'ptrp_page_id = page_id' )
+				->where( [
 					$this->dbr->buildComparison( '<', [
 						'ptrp_created' => $this->dbr->timestamp( $startTime ),
 						'ptrp_page_id' => $startId,
 					] ),
 					$sqlWhere,
-				],
-				__METHOD__,
-				[ 'LIMIT' => $this->getBatchSize(), 'ORDER BY' => 'ptrp_created DESC, ptrp_page_id DESC' ],
-				[ 'page' => [ 'INNER JOIN', 'ptrp_page_id = page_id' ] ]
-			);
+				] )
+				->limit( $this->getBatchSize() )
+				->orderBy( [ 'ptrp_created DESC', 'ptrp_page_id DESC' ] )
+				->caller( __METHOD__ )
+				->fetchResultSet();
 
 			$pageIds = [];
 			foreach ( $res as $row ) {

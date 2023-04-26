@@ -81,16 +81,20 @@ class ArticleCompileAfcTag extends ArticleCompile {
 	 */
 	private function loadPreviousAfcStates( $pageIds ) {
 		$states = [];
-		$afcStateTagId = $this->db->selectField(
-			'pagetriage_tags', 'ptrt_tag_id', [ 'ptrt_tag_name' => 'afc_state' ], __METHOD__
-		);
+		$afcStateTagId = $this->db->newSelectQueryBuilder()
+			->select( 'ptrt_tag_id' )
+			->from( 'pagetriage_tags' )
+			->where( [ 'ptrt_tag_name' => 'afc_state' ] )
+			->caller( __METHOD__ )
+			->fetchField();
 		if ( $afcStateTagId ) {
-			$result = $this->db->select(
-				'pagetriage_page_tags',
-				[ 'pageId' => 'ptrpt_page_id', 'afcState' => 'ptrpt_value' ],
-				[ 'ptrpt_page_id' => $pageIds, 'ptrpt_tag_id' => $afcStateTagId ],
-				__METHOD__
-			);
+			$result = $this->db->newSelectQueryBuilder()
+				->select( [ 'pageId' => 'ptrpt_page_id', 'afcState' => 'ptrpt_value' ] )
+				->from( 'pagetriage_page_tags' )
+				->where( [ 'ptrpt_page_id' => $pageIds, 'ptrpt_tag_id' => $afcStateTagId ] )
+				->caller( __METHOD__ )
+				->fetchResultSet();
+
 			foreach ( $result as $row ) {
 				$states[$row->pageId] = intval( $row->afcState );
 			}
