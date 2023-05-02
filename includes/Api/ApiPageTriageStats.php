@@ -6,6 +6,7 @@ use ApiBase;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 
 class ApiPageTriageStats extends ApiBase {
+
 	public function execute() {
 		// Remove empty params. This unfortunately means you can't query for User:0 :(
 		$params = array_filter( $this->extractRequestParams() );
