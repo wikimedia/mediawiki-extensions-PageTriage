@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\PageTriage;
 
 use ApiRawMessage;
 use Config;
-use EchoEvent;
 use Exception;
 use ExtensionRegistry;
 use MediaWiki\Block\DatabaseBlock;
@@ -12,12 +11,12 @@ use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\PageTriage\Api\ApiPageTriageList;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MWException;
 use ORES\Hooks\Helpers;
 use RequestContext;
 use StatusValue;
-use Title;
 use User;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\Rdbms\IDatabase;
@@ -494,7 +493,7 @@ class PageTriageUtil {
 		}
 
 		try {
-			$echoEvent = EchoEvent::create( $params );
+			$echoEvent = Event::create( $params );
 		} catch ( MWException $exception ) {
 			return StatusValue::newFatal( new ApiRawMessage( $exception->getMessage() ) );
 		}

@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
-use Title;
+use MediaWiki\Title\Title;
 
 /**
  * Article page length, creation date, number of edit, title, article triage status

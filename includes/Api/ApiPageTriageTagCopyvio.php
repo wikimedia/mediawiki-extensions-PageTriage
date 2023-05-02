@@ -8,8 +8,8 @@ use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Title\Title;
 use MWException;
-use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiPageTriageTagCopyvio extends ApiBase {

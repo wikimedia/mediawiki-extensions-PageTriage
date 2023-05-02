@@ -5,12 +5,12 @@ namespace MediaWiki\Extension\PageTriage\Api;
 use ApiBase;
 use ApiMain;
 use ApiUsageException;
-use DerivativeRequest;
 use ManualLogEntry;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
-use Title;
+use MediaWiki\Request\DerivativeRequest;
+use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiPageTriageTagging extends ApiBase {

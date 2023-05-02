@@ -3,9 +3,9 @@
 namespace MediaWiki\Extension\PageTriage;
 
 use Exception;
-use Html;
+use MediaWiki\Html\Html;
+use MediaWiki\Html\TemplateParser;
 use SpecialPage;
-use TemplateParser;
 
 /**
  * This file defines the SpecialNewPagesFeed class which handles the functionality for the

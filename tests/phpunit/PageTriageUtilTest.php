@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\PageTriage\Test;
 
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
+use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
-use Title;
 
 /**
  * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil

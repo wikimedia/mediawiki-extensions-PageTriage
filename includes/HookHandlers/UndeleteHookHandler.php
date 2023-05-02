@@ -23,7 +23,7 @@ namespace MediaWiki\Extension\PageTriage\HookHandlers;
 use MediaWiki\Extension\PageTriage\Hooks as PageTriageHooks;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Page\Hook\ArticleUndeleteHook;
-use Title;
+use MediaWiki\Title\Title;
 
 /**
  * @author Taavi Väänänen <hi@taavi.wtf>

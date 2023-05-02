@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
-use IDatabase;
 use stdClass;
+use Wikimedia\Rdbms\IDatabase;
 
 /**
  * Service class for retrieving PageTriage queue records.

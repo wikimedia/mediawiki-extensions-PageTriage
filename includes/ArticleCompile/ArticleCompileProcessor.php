@@ -4,16 +4,16 @@ namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
 use DeferredUpdates;
 use IBufferingStatsdDataFactory;
-use LinksUpdate;
+use MediaWiki\Deferred\LinksUpdate\LinksUpdate;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\CompileArticleMetadataJob;
 use MediaWiki\Extension\PageTriage\PageTriage;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use RequestContext;
 use RuntimeException;
-use Title;
 use WikiPage;
 
 /**

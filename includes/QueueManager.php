@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
-use IDatabase;
 use Status;
+use Wikimedia\Rdbms\IDatabase;
 
 /**
  * Class for adding, updating and deleting items from a queue of pages awaiting triage.

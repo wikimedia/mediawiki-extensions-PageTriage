@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\PageTriage\Notifications;
 
-use EchoEventPresentationModel;
-use Title;
+use MediaWiki\Extension\Notifications\Formatters\EchoEventPresentationModel;
+use MediaWiki\Title\Title;
 
 abstract class PageTriagePresentationModel extends EchoEventPresentationModel {
 	/**

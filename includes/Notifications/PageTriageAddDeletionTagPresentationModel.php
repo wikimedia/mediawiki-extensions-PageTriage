@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\PageTriage\Notifications;
 
-use Title;
+use MediaWiki\Title\Title;
 
 class PageTriageAddDeletionTagPresentationModel extends PageTriagePresentationModel {
 	/**

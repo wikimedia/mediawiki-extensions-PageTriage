@@ -8,9 +8,9 @@ use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\OresMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Title\Title;
 use ORES\Services\ORESServices;
 use SpecialPage;
-use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 

@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\PageTriage\Test;
 
 use ApiUsageException;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
-use Title;
+use MediaWiki\Title\Title;
 
 /**
  * Tests for ApiPageTriageTagCopyvio class.

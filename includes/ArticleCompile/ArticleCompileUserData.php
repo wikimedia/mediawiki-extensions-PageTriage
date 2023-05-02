@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
-use ActorMigration;
+use MediaWiki\User\ActorMigration;
 use User;
 
 /**
