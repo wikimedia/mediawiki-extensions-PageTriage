@@ -768,10 +768,13 @@
 		"localBasePath": "tests/qunit",
 		"remoteExtPath": "PageTriage/tests/qunit",
 		"scripts": [
-			"test_ext.pageTriage.actionQueue.js"
+			"test_ext.pageTriage.actionQueue.js",
+			"test_ext.pageTriage.article.js"
 		],
 		"dependencies": [
-			"ext.pageTriage.toolbarStartup"
+			"ext.pageTriage.toolbarStartup",
+			"ext.pageTriage.article",
+			"ext.pageTriage.util"
 		]
 	},
 	"HookHandlers": {
