@@ -22,56 +22,6 @@ use Wikimedia\ParamValidator\TypeDef\IntegerDef;
  */
 class ApiPageTriageList extends ApiBase {
 
-	/**
-	 * @param string[] &$tables
-	 * @param array &$join_conds
-	 */
-	private static function joinWithTagCopyvio( &$tables, &$join_conds ) {
-		$tags = ArticleMetadata::getValidTags();
-		$tagId = $tags[ 'copyvio' ];
-
-		$tables[ 'pagetriage_page_tags_copyvio' ] = 'pagetriage_page_tags';
-		$join_conds[ 'pagetriage_page_tags_copyvio' ] = [
-			'LEFT JOIN',
-			[
-				'pagetriage_page_tags_copyvio.ptrpt_page_id = ptrp_page_id',
-				'pagetriage_page_tags_copyvio.ptrpt_tag_id' => $tagId,
-			]
-		];
-	}
-
-	/**
-	 * @param string[] &$tables
-	 * @param array &$join_conds
-	 */
-	private static function joinWithTags( &$tables, &$join_conds ) {
-		$tables[ 'pagetriage_pt' ] = 'pagetriage_page_tags';
-		$join_conds[ 'pagetriage_pt' ] = [
-			'INNER JOIN',
-			"pagetriage_pt.ptrpt_page_id = ptrp_page_id",
-		];
-	}
-
-	/**
-	 * @param array $opts
-	 *
-	 * @return string|false
-	 */
-	private static function buildCopyvioCond( $opts ) {
-		if (
-			!isset( $opts[ 'show_predicted_issues_copyvio' ] ) ||
-			!$opts[ 'show_predicted_issues_copyvio' ]
-		) {
-			return false;
-		}
-		$tags = ArticleMetadata::getValidTags();
-		if ( !isset( $tags[ 'copyvio' ] ) ) {
-			return false;
-		}
-
-		return "pagetriage_page_tags_copyvio.ptrpt_value IS NOT NULL";
-	}
-
 	public function execute() {
 		// Get the API parameters and store them
 		$opts = $this->extractRequestParams();
@@ -174,6 +124,56 @@ class ApiPageTriageList extends ApiBase {
 		// Output the results
 		$result['pages'] = $sortedMetaData;
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+	}
+
+	/**
+	 * @param string[] &$tables
+	 * @param array &$join_conds
+	 */
+	private static function joinWithTagCopyvio( &$tables, &$join_conds ) {
+		$tags = ArticleMetadata::getValidTags();
+		$tagId = $tags[ 'copyvio' ];
+
+		$tables[ 'pagetriage_page_tags_copyvio' ] = 'pagetriage_page_tags';
+		$join_conds[ 'pagetriage_page_tags_copyvio' ] = [
+			'LEFT JOIN',
+			[
+				'pagetriage_page_tags_copyvio.ptrpt_page_id = ptrp_page_id',
+				'pagetriage_page_tags_copyvio.ptrpt_tag_id' => $tagId,
+			]
+		];
+	}
+
+	/**
+	 * @param string[] &$tables
+	 * @param array &$join_conds
+	 */
+	private static function joinWithTags( &$tables, &$join_conds ) {
+		$tables[ 'pagetriage_pt' ] = 'pagetriage_page_tags';
+		$join_conds[ 'pagetriage_pt' ] = [
+			'INNER JOIN',
+			"pagetriage_pt.ptrpt_page_id = ptrp_page_id",
+		];
+	}
+
+	/**
+	 * @param array $opts
+	 *
+	 * @return string|false
+	 */
+	private static function buildCopyvioCond( $opts ) {
+		if (
+			!isset( $opts[ 'show_predicted_issues_copyvio' ] ) ||
+			!$opts[ 'show_predicted_issues_copyvio' ]
+		) {
+			return false;
+		}
+		$tags = ArticleMetadata::getValidTags();
+		if ( !isset( $tags[ 'copyvio' ] ) ) {
+			return false;
+		}
+
+		return "pagetriage_page_tags_copyvio.ptrpt_value IS NOT NULL";
 	}
 
 	/**
