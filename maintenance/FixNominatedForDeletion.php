@@ -53,12 +53,12 @@ class FixNominatedForDeletion extends Maintenance {
 				continue;
 			}
 
-			$dbw->update(
-				'pagetriage_page',
-				[ 'ptrp_deleted' => 1 ],
-				[ 'ptrp_page_id' => $pageIds ],
-				__METHOD__
-			);
+			$dbw->newUpdateQueryBuilder()
+				->update( 'pagetriage_page' )
+				->set( [ 'ptrp_deleted' => 1 ] )
+				->where( [ 'ptrp_page_id' => $pageIds ] )
+				->caller( __METHOD__ )
+				->execute();
 			$lbFactory->waitForReplication();
 
 			$count = count( $pageIds );

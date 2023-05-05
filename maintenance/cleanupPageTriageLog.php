@@ -64,12 +64,12 @@ class CleanupPageTriageLog extends Maintenance {
 				foreach ( $res as $row ) {
 					$newLogParams = str_replace( 's:7:"4::tags";', 's:4:"tags";', $row->log_params );
 
-					$dbw->update(
-						'logging',
-						[ 'log_params' => $newLogParams ],
-						[ 'log_id' => $row->log_id ],
-						__METHOD__
-					);
+					$dbw->newUpdateQueryBuilder()
+						->update( 'logging' )
+						->set( [ 'log_params' => $newLogParams ] )
+						->where( [ 'log_id' => $row->log_id ] )
+						->caller( __METHOD__ )
+						->execute();
 
 					$startTime = wfTimestamp( TS_UNIX, $row->log_timestamp );
 					$count++;

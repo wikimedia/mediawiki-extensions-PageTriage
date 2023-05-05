@@ -299,11 +299,12 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 		// Manually set the reviewed at attribute to something really old.
 		$dbw = PageTriageUtil::getPrimaryConnection();
-		$dbw->update( 'pagetriage_page',
-			[ 'ptrp_reviewed_updated' => '20010115000000' ],
-			[ 'ptrp_page_id' => $page['id'] ],
-			__METHOD__
-		);
+		$dbw->newUpdateQueryBuilder()
+			->update( 'pagetriage_page' )
+			->set( [ 'ptrp_reviewed_updated' => '20010115000000' ] )
+			->where( [ 'ptrp_page_id' => $page['id'] ] )
+			->caller( __METHOD__ )
+			->execute();
 
 		// Insert another draft in a relevant category.
 		$this->insertPage( 'Draft:Test page 6', '[[Category:Pending AfC submissions]]',
@@ -449,16 +450,19 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 		// Manually set the created at attribute to older dates.
 		$dbw = PageTriageUtil::getPrimaryConnection();
-		$dbw->update( 'pagetriage_page',
-			[ 'ptrp_created' => '20190215000000' ],
-			[ 'ptrp_page_id' => $page1['id'] ],
-			__METHOD__
-		);
-		$dbw->update( 'pagetriage_page',
-			[ 'ptrp_created' => '20190715233000' ],
-			[ 'ptrp_page_id' => $page2['id'] ],
-			__METHOD__
-		);
+		$dbw->newUpdateQueryBuilder()
+			->update( 'pagetriage_page' )
+			->set( [ 'ptrp_created' => '20190215000000' ] )
+			->where( [ 'ptrp_page_id' => $page1['id'] ] )
+			->caller( __METHOD__ )
+			->execute();
+
+		$dbw->newUpdateQueryBuilder()
+			->update( 'pagetriage_page' )
+			->set( [ 'ptrp_created' => '20190715233000' ] )
+			->where( [ 'ptrp_page_id' => $page2['id'] ] )
+			->caller( __METHOD__ )
+			->execute();
 
 		$list = $this->getPageTriageList( [
 			'namespace' => 0,
