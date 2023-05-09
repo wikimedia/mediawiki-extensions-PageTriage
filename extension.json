@@ -730,7 +730,8 @@
 				"ext.pageTriage.toolbarStartup/ext.pageTriage.toolbarStartup.js"
 			],
 			"dependencies": [
-				"ext.pageTriage.init"
+				"ext.pageTriage.init",
+				"ext.pageTriage.util"
 			]
 		},
 		"ext.pageTriage.article": {
