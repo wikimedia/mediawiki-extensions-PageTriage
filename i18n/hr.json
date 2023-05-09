@@ -262,7 +262,7 @@
 	"pagetriage-wikilove-page-creator": "Stvaralac stranice",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|uređivanje|uređivanja}}",
 	"pagetriage-wikilove-no-recipients": "Za ovu stranicu nisu dostupni primaoci.",
-	"pagetriage-wikilove-tooltip": "Pošaljite Vašu zahvalnost autorima",
+	"pagetriage-wikilove-tooltip": "Pošaljite svoju zahvalnost autorima",
 	"pagetriage-next-tooltip": "Idi na sljedeću stranicu u redu",
 	"pagetriage-del-log-page-missing-error": "Evidencijska stranica za današnji datum nije još uvijek stvorena!",
 	"pagetriage-del-log-page-adding-error": "Pronalaženje ciljnog mjesta za raspravu nije uspjelo",
