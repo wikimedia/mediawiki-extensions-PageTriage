@@ -1,3 +1,5 @@
+const actionQueue = require( './ext.pageTriage.actionQueue.js' );
+
 $( function () {
 	const ns = mw.config.get( 'wgNamespaceNumber' );
 
@@ -13,6 +15,11 @@ $( function () {
 		.then( function () {
 			// Fire the 'ready' hook
 			mw.hook( 'ext.pageTriage.toolbar.ready' )
-				.fire( mw.pageTriage.actionQueue );
+				.fire( actionQueue );
 		} );
 } );
+
+module.exports = { actionQueue };
+
+// public facing API
+mw.pageTriage.actionQueue = actionQueue;

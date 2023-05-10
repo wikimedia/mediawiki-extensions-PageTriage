@@ -39,7 +39,7 @@
  * Both of the above methods return a promise that resolves when
  * all functions have finished running.
  */
-mw.pageTriage.actionQueue = ( function () {
+const actionQueue = ( function () {
 	let queue = {};
 	/**
 	 * Reset the queue completely
@@ -196,3 +196,5 @@ mw.pageTriage.actionQueue = ( function () {
 		}
 	};
 }() );
+
+module.exports = actionQueue;

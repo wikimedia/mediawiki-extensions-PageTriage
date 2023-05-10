@@ -725,13 +725,12 @@
 		},
 		"ext.pageTriage.toolbarStartup": {
 			"es6": true,
-			"scripts": [
-				"ext.pageTriage.toolbarStartup/ext.pageTriage.actionQueue.js",
-				"ext.pageTriage.toolbarStartup/ext.pageTriage.toolbarStartup.js"
+			"packageFiles": [
+				"ext.pageTriage.toolbarStartup/ext.pageTriage.toolbarStartup.js",
+				"ext.pageTriage.toolbarStartup/ext.pageTriage.actionQueue.js"
 			],
 			"dependencies": [
-				"ext.pageTriage.init",
-				"ext.pageTriage.util"
+				"ext.pageTriage.init"
 			]
 		},
 		"ext.pageTriage.article": {
