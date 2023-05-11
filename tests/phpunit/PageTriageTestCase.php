@@ -10,6 +10,7 @@ use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriage;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
+use MockHttpTrait;
 use MWException;
 
 /**
@@ -17,6 +18,8 @@ use MWException;
  * @group extensions
  */
 abstract class PageTriageTestCase extends ApiTestCase {
+
+	use MockHttpTrait;
 
 	/** @var int */
 	protected $draftNsId = 150;
@@ -56,6 +59,17 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		);
 	}
 
+	/**
+	 * Helper method for mocking ORES scores data normally fetched from
+	 * https://ores.wikimedia.org/v3/scores/$wgOresWikiId/?format=json
+	 * @return string
+	 */
+	protected function getFakeOresScores() {
+		global $wgOresWikiId;
+		$scores = file_get_contents( __DIR__ . '/data/ores/scores.json' );
+		return "{\n\"$wgOresWikiId\": $scores\n}";
+	}
+
 	protected function setUpForOresCopyvioTests() {
 		$this->tablesUsed[] = 'page';
 		$this->tablesUsed[] = 'revision';
@@ -79,6 +93,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	 * @throws ApiUsageException
 	 */
 	protected function getPageTriageList( array $params = [] ) {
+		$this->installMockHttp( $this->makeFakeHttpRequest( $this->getFakeOresScores() ) );
 		$list = $this->doApiRequest( array_merge( [
 			'action' => 'pagetriagelist',
 			'showunreviewed' => '1',
