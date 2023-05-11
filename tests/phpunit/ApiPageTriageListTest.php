@@ -8,6 +8,7 @@ use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
+use MockHttpTrait;
 
 /**
  * Tests the inclusion of the Draft namespace.
@@ -20,6 +21,8 @@ use MediaWiki\Title\Title;
  * @group Database
  */
 class ApiPageTriageListTest extends PageTriageTestCase {
+
+	use MockHttpTrait;
 
 	/** @var int */
 	protected $draftNsId = 150;
@@ -625,6 +628,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$testPage = $this->insertPage( $testPageTitle, '' );
 
 		// Check that it's in the queue and does not have any talk page message.
+		$this->installMockHttp( $this->makeFakeHttpRequest( $this->getFakeOresScores() ) );
 		$list = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'page_id' => $testPage['id'] ] );
 		$pageInfo = $list[0]['pagetriagelist']['pages'][0];
 		static::assertArrayHasKey( 'talkpage_feedback_count', $pageInfo );
