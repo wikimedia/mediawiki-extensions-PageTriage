@@ -13,5 +13,6 @@ mw.pageTriage.contentLanguageMessages = new mw.Map();
  */
 mw.pageTriage.contentLanguageMessage = function ( key ) {
 	const parameters = Array.prototype.slice.call( arguments, 1 );
+	// eslint-disable-next-line mediawiki/msg-doc
 	return new mw.Message( mw.pageTriage.contentLanguageMessages, key, parameters );
 };

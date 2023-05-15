@@ -15,7 +15,7 @@
 		"@wdio/mocha-framework": "7.16.6",
 		"@wdio/spec-reporter": "7.19.7",
 		"@wikimedia/mw-node-qunit": "^7.0.0",
-		"eslint-config-wikimedia": "0.24.0",
+		"eslint-config-wikimedia": "0.25.0",
 		"grunt": "1.6.1",
 		"grunt-banana-checker": "0.10.0",
 		"grunt-eslint": "24.0.1",
