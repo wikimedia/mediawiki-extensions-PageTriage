@@ -47,6 +47,8 @@ const ToolbarView = Backbone.View.extend( {
 			// the file name (without the .js) for the view's code, and the key to
 			// modules with the configuration to use
 			if ( this.isFlyoutEnabled( potentialToolName ) ) {
+				// FIXME or describe why it is okay
+				// eslint-disable-next-line security/detect-non-literal-require
 				const ToolViewClass = require( './' + potentialToolName + '.js' );
 				tools.push( new ToolViewClass( { eventBus: eventBus, model: article, moduleConfig: modules[ potentialToolName ] } ) );
 			}

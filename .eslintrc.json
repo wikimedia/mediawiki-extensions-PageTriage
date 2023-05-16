@@ -26,6 +26,7 @@
 		"no-shadow": "warn",
 		"no-unreachable-loop": "warn",
 		"mediawiki/msg-doc": "warn",
+		"security/detect-bidi-characters": "off",
 		"no-var": "warn",
 		"no-restricted-syntax": [
 			"error",
