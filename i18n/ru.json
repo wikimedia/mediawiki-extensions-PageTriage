@@ -170,7 +170,7 @@
 	"pagetriage-add-a-note-creator": "Добавить сообщение для создателя: (не обязательно)",
 	"pagetriage-add-a-note-for-options-instruction-label": "Выберите получателя:",
 	"pagetriage-add-a-note-reviewer": "Добавить сообщение для проверяющего: (не обязательно)",
-	"pagetriage-personal-default-note": "Напишите полезное замечание для {{GENDER:$1|$1}}. Оно будет размещено на {{GENDER:$1|его|её|}} странице обсуждения.",
+	"pagetriage-personal-default-note": "Напишите полезное замечание для {{GENDER:$1|$1}}. Оно будет размещено на {{GENDER:$1|его|её|}} странице обсуждения и автоматически подписано.",
 	"pagetriage-page-status-reviewed": "Помечено как проверенное в $1 участником $2 ($3$4$5)",
 	"pagetriage-page-status-reviewed-anonymous": "Помечено как проверенное",
 	"pagetriage-page-status-unreviewed": "Эта страница до сих пор не проверена.",
