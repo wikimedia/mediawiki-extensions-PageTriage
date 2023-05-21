@@ -4,9 +4,22 @@
 <% } %>
 </span>
 <li class="mwe-pt-info-history-entry">
-	<a href="<%- revision_url %>"><%- timestamp_time %></a> &#xb7;
-	<a href="<%- user_title_url %>"><%- user %></a>
-	<% if ( parsedcomment ) { %>
-		&#xb7; <%= parsedcomment %>
+	<% if ( (typeof suppressed) !== 'undefined' ) { %>
+		<span class="mwe-pt-history-suppressed"><%- timestamp_time %></span> &#xb7;
+		<span class="mwe-pt-history-suppressed"><%- mw.msg( 'rev-deleted-user' ) %></span>
+		&#xb7; <span class="mwe-pt-history-suppressed"><%- mw.msg( 'rev-deleted-comment' ) %></span>
+	<% } else { %>
+		<% if ( (typeof userhidden) !== 'undefined' ) { %>
+			<span class="mwe-pt-history-deleted"><%- timestamp_time %></span> &#xb7;
+			<span class="mwe-pt-history-deleted"><%- mw.msg( 'rev-deleted-user' ) %></span>
+		<% } else { %>
+			<a href="<%- revision_url %>"><%- timestamp_time %></a> &#xb7;
+			<a href="<%- user_title_url %>"><%- user %></a>
+		<% } %>
+		<% if ( (typeof commenthidden) !== 'undefined' ) { %>
+			&#xb7; <span class="mwe-pt-history-deleted"><%- mw.msg( 'rev-deleted-comment' ) %></span>
+		<% } else if ( parsedcomment ) { %>
+			&#xb7; <%= parsedcomment %>
+		<% } %>
 	<% } %>
 </li>
