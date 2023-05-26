@@ -181,8 +181,9 @@ module.exports = ToolView.extend( {
 		return this;
 	},
 
-	formatProblem: function ( problem ) {
-		return '<li class="mwe-pt-info-problem"><span class="mwe-pt-info-problem-name">' +
+	formatProblem: function ( problem, link = '' ) {
+		let output =
+			'<span class="mwe-pt-info-problem-name">' +
 			// The following messages are used here:
 			// * pagetriage-info-problem-non-autoconfirmed
 			// * pagetriage-info-problem-blocked
@@ -202,7 +203,15 @@ module.exports = ToolView.extend( {
 			// * pagetriage-info-problem-no-references-desc
 			// * pagetriage-info-problem-copyvio-desc
 			mw.message( 'pagetriage-info-problem-' + problem + '-desc' ).escaped() +
-			'</span></li>';
+			'</span>';
+
+		if ( link ) {
+			output = `<a href="${link}" target="_blank">${output}</a>`;
+		}
+
+		output = `<li class="mwe-pt-info-problem">${output}</li>`;
+
+		return output;
 	},
 
 	formatCopyvioProblem: function () {
@@ -249,7 +258,11 @@ module.exports = ToolView.extend( {
 		}
 		if ( parseInt( this.model.get( 'recreated' ) ) === 1 ) {
 			this.problemCount++;
-			problems += this.formatProblem( 'recreated' );
+			const previouslyDeletedLogLink = mw.util.getUrl( 'Special:Log', {
+				type: 'delete',
+				page: this.model.get( 'title' )
+			} );
+			problems += this.formatProblem( 'recreated', previouslyDeletedLogLink );
 		}
 		if ( config.PageTriageEnableCopyvio && parseInt( this.model.get( 'copyvio' ) ) ) {
 			this.problemCount++;
