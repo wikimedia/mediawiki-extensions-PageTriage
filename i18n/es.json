@@ -32,7 +32,8 @@
 			"Francodiaz7",
 			"La Mantis",
 			"SpikeShroom",
-			"ZebaX2010"
+			"ZebaX2010",
+			"No se"
 		]
 	},
 	"pagetriage": "Triaje de páginas",
@@ -368,6 +369,7 @@
 	"logentry-pagetriage-curation-tag": "$1 {{GENDER:$2|ha etiquetado}} $3 con {{PLURAL:$5|la etiqueta|las etiquetas}} $4",
 	"logentry-pagetriage-curation-delete": "$1 {{GENDER:$2|ha marcado}} $3 para borrado con {{PLURAL:$5|la etiqueta|las etiquetas}} $4",
 	"logentry-pagetriage-deletion-delete": "$1 {{GENDER:$2|ha marcado}} $3 para borrado con {{PLURAL:$5|la etiqueta|las etiquetas}} $4",
+	"log-name-pagetriage-copyvio": "Registro de posibles infracciones de derechos de autor",
 	"pagetriage-tags-edit-summary": "Se agregaron etiquetas a la página mediante $1 ($2)",
 	"pagetriage-del-edit-summary": "Página nominada para borrado utilizando $1 ($2)",
 	"pagetriage-del-tags-param-discussion-label": "Explica por qué esta página debería borrarse y proporciona vínculos a las políticas pertinentes, siempre que sea posible",
