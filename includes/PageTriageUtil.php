@@ -377,7 +377,7 @@ class PageTriageUtil {
 			// cache array with value 1
 			foreach ( $res as $row ) {
 				$user = $title[$row->page_title];
-				if ( $row->page_namespace === NS_USER ) {
+				if ( (int)$row->page_namespace === NS_USER ) {
 					$dataToCache[$user['user_name']][$user['u']->getPrefixedDBkey()] = 1;
 				} else {
 					$dataToCache[$user['user_name']][$user['t']->getPrefixedDBkey()] = 1;
