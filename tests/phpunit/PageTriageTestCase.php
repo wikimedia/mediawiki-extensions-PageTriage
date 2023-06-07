@@ -11,7 +11,6 @@ use MediaWiki\Extension\PageTriage\PageTriage;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
 use MockHttpTrait;
-use MWException;
 
 /**
  * @group PageTriage
@@ -108,7 +107,6 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	 * @param bool $draftQualityClass
 	 * @param bool $copyvio
 	 * @return mixed
-	 * @throws MWException
 	 */
 	protected function makePage( $title, $draftQualityClass = false, $copyvio = false ) {
 		$user = static::getTestUser()->getUser();

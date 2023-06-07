@@ -9,7 +9,6 @@ use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
-use MWException;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiPageTriageTagCopyvio extends ApiBase {
@@ -62,7 +61,6 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 	 * Log insertion activity for this API endpoint.
 	 *
 	 * @param RevisionRecord $revision
-	 * @throws MWException
 	 */
 	protected function logActivity( RevisionRecord $revision ) {
 		$logEntry = new ManualLogEntry( 'pagetriage-copyvio', 'insert' );

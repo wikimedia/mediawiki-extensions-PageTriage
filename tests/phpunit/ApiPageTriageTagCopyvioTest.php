@@ -46,9 +46,6 @@ class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 		);
 	}
 
-	/**
-	 * @throws \MWException
-	 */
 	public function testCopyvioInsertLog() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
 		$dbw = PageTriageUtil::getPrimaryConnection();

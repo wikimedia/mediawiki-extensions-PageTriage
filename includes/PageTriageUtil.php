@@ -13,7 +13,6 @@ use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
-use MWException;
 use ORES\Hooks\Helpers;
 use RequestContext;
 use StatusValue;
@@ -493,11 +492,7 @@ class PageTriageUtil {
 			$params['extra'] = $extra;
 		}
 
-		try {
-			$echoEvent = Event::create( $params );
-		} catch ( MWException $exception ) {
-			return StatusValue::newFatal( new ApiRawMessage( $exception->getMessage() ) );
-		}
+		$echoEvent = Event::create( $params );
 		if ( $echoEvent instanceof Event ) {
 			return StatusValue::newGood( $echoEvent );
 		} else {
