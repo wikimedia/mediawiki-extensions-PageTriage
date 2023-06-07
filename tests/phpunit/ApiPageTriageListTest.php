@@ -560,7 +560,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		// Delete PageOther, then recreate it.
 		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $otherPage['title'] );
 
-		$page->doDeleteArticleReal( 'Test', $user );
+		$this->deletePage( $page, 'Test', $user );
 
 		$this->insertPage( 'PageOther', 'some content', 0, $user );
 

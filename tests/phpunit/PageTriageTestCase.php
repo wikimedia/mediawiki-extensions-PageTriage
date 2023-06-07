@@ -199,8 +199,8 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		if ( $model ) {
 			return $model;
 		}
-		$dbw->upsert( 'ores_model', $modelInfo, [ 'oresm_id' ], $modelInfo );
-		return $dbw->selectField( 'ores_model', 'oresm_id', $modelInfo );
+		$dbw->insert( 'ores_model', $modelInfo );
+		return $dbw->insertId();
 	}
 
 }
