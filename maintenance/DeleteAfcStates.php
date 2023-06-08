@@ -52,14 +52,14 @@ class DeleteAfcStates extends Maintenance {
 				continue;
 			}
 
-			$dbw->delete(
-				'pagetriage_page_tags',
-				[
+			$dbw->newDeleteQueryBuilder()
+				->delete( 'pagetriage_page_tags' )
+				->where( [
 					'ptrpt_page_id' => $pageIds,
 					'ptrpt_tag_id' => $afcStateTagId,
-				],
-				__METHOD__
-			);
+				] )
+				->caller( __METHOD__ )
+				->execute();
 			$lbFactory->waitForReplication();
 
 			$count = count( $pageIds );

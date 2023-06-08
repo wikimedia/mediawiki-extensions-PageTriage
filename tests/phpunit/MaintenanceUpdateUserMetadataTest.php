@@ -19,7 +19,11 @@ class MaintenanceUpdateUserMetadataTest extends PageTriageTestCase {
 		parent::setUp();
 		$this->tablesUsed = [ 'pagetriage_page', 'page' ];
 		// Delete any dangling page triage pages before inserting our test data
-		PageTriageUtil::getPrimaryConnection()->delete( 'pagetriage_page', '*' );
+		PageTriageUtil::getPrimaryConnection()->newDeleteQueryBuilder()
+			->delete( 'pagetriage_page' )
+			->where( '1 = 1' )
+			->caller( __METHOD__ )
+			->execute();
 	}
 
 	public function testSuccessfulUpdateUserMetadata() {

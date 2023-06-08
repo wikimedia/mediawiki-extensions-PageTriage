@@ -61,11 +61,11 @@ class QueueManager {
 		// TODO: Factor out ArticleMetadata into value object / manager.
 		$articleMetadata = new ArticleMetadata( $pageIds );
 		$this->dbw->startAtomic( __METHOD__ );
-		$this->dbw->delete(
-			'pagetriage_page',
-			[ 'ptrp_page_id' => $pageIds ],
-			__METHOD__,
-		);
+		$this->dbw->newDeleteQueryBuilder()
+			->delete( 'pagetriage_page' )
+			->where( [ 'ptrp_page_id' => $pageIds ] )
+			->caller( __METHOD__ )
+			->execute();
 		$status->setOK( count( $pageIds ) === $this->dbw->affectedRows() );
 		// TODO: Is "ArticleMetadata" used/useful without the core queue data in pagetriage_page?
 		//  if it isn't, we could make QueueManager handle create/update/delete for the page table

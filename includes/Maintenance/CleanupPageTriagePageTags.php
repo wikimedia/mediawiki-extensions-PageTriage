@@ -61,11 +61,11 @@ class CleanupPageTriagePageTags extends Maintenance {
 
 			$pageCount = count( $page );
 			if ( $pageCount > 0 ) {
-				$dbw->delete(
-					'pagetriage_page_tags',
-					[ 'ptrpt_page_id' => $page ],
-					__METHOD__
-				);
+				$dbw->newDeleteQueryBuilder()
+					->delete( 'pagetriage_page_tags' )
+					->where( [ 'ptrpt_page_id' => $page ] )
+					->caller( __METHOD__ )
+					->execute();
 
 				$this->output( "processing " . $pageCount . "\n" );
 				$lbFactory->waitForReplication();

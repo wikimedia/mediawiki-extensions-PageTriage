@@ -50,7 +50,11 @@ class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
 		$dbw = PageTriageUtil::getPrimaryConnection();
 		foreach ( [ 'pagetriage_page', 'page' ] as $table ) {
-			$dbw->delete( $table, '*' );
+			$dbw->newDeleteQueryBuilder()
+				->delete( $table )
+				->where( '1 = 1' )
+				->caller( __METHOD__ )
+				->execute();
 		}
 
 		$this->setMwGlobals( 'wgOresModels', [

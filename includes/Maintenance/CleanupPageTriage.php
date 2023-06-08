@@ -60,17 +60,17 @@ class CleanupPageTriage extends Maintenance {
 			if ( $count > 0 ) {
 				$this->beginTransaction( $dbw, __METHOD__ );
 
-				$dbw->delete(
-					'pagetriage_page',
-					[ 'ptrp_page_id' => $page ],
-					__METHOD__
-				);
+				$dbw->newDeleteQueryBuilder()
+					->delete( 'pagetriage_page' )
+					->where( [ 'ptrp_page_id' => $page ] )
+					->caller( __METHOD__ )
+					->execute();
 
-				$dbw->delete(
-					'pagetriage_page_tags',
-					[ 'ptrpt_page_id' => $page ],
-					__METHOD__
-				);
+				$dbw->newDeleteQueryBuilder()
+					->delete( 'pagetriage_page_tags' )
+					->where( [ 'ptrpt_page_id' => $page ] )
+					->caller( __METHOD__ )
+					->execute();
 
 				$this->commitTransaction( $dbw, __METHOD__ );
 

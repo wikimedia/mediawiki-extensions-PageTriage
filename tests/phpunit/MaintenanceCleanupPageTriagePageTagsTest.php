@@ -21,9 +21,21 @@ class MaintenanceCleanupPageTriagePageTagsTest extends PageTriageTestCase {
 		$this->tablesUsed = [ 'pagetriage_page_tags', 'pagetriage_page', 'pagetriage_tags' ];
 		// Delete any dangling page triage pages before inserting our test data
 		$dbw = PageTriageUtil::getPrimaryConnection();
-		$dbw->delete( 'pagetriage_page', '*' );
-		$dbw->delete( 'pagetriage_page_tags', '*' );
-		$dbw->delete( 'pagetriage_tags', '*' );
+		$dbw->newDeleteQueryBuilder()
+			->delete( 'pagetriage_page' )
+			->where( '1 = 1' )
+			->caller( __METHOD__ )
+			->execute();
+		$dbw->newDeleteQueryBuilder()
+			->delete( 'pagetriage_page_tags' )
+			->where( '1 = 1' )
+			->caller( __METHOD__ )
+			->execute();
+		$dbw->newDeleteQueryBuilder()
+			->delete( 'pagetriage_tags' )
+			->where( '1 = 1' )
+			->caller( __METHOD__ )
+			->execute();
 	}
 
 	public function testSuccessfulCleanupPageTriagePageTags() {
@@ -58,7 +70,11 @@ class MaintenanceCleanupPageTriagePageTagsTest extends PageTriageTestCase {
 		$this->assertSame( 2, $countPageTriagePageTags );
 
 		// Delete page in pagetriage_page table
-		$dbw->delete( 'pagetriage_page', [ 'ptrp_page_id' => $mainNsPage[ 'id' ] ] );
+		$dbw->newDeleteQueryBuilder()
+			->delete( 'pagetriage_page' )
+			->where( [ 'ptrp_page_id' => $mainNsPage[ 'id' ] ] )
+			->caller( __METHOD__ )
+			->execute();
 
 		$newCountPageTriagePages = $dbr->newSelectQueryBuilder()
 			->select( '*' )

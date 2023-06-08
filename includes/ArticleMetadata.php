@@ -46,11 +46,11 @@ class ArticleMetadata {
 	public function deleteMetadata() {
 		if ( $this->pageIds ) {
 			$dbw = PageTriageUtil::getPrimaryConnection();
-			$dbw->delete(
-				'pagetriage_page_tags',
-				[ 'ptrpt_page_id' => $this->pageIds ],
-				__METHOD__
-			);
+			$dbw->newDeleteQueryBuilder()
+				->delete( 'pagetriage_page_tags' )
+				->where( [ 'ptrpt_page_id' => $this->pageIds ] )
+				->caller( __METHOD__ )
+				->execute();
 			// also remove it from the cache
 			$this->flushMetadataFromCache();
 		}

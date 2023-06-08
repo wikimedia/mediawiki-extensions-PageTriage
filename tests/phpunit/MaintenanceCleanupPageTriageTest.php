@@ -19,8 +19,17 @@ class MaintenanceCleanupPageTriageTest extends PageTriageTestCase {
 		parent::setUp();
 		$this->tablesUsed = [ 'pagetriage_page', 'pagetriage_page_tags' ];
 		// Delete any dangling page triage pages before inserting our test data
-		PageTriageUtil::getPrimaryConnection()->delete( 'pagetriage_page', '*' );
-		PageTriageUtil::getPrimaryConnection()->delete( 'pagetriage_page_tags', '*' );
+		$dbw = PageTriageUtil::getPrimaryConnection();
+		$dbw->newDeleteQueryBuilder()
+			->delete( 'pagetriage_page' )
+			->where( '1 = 1' )
+			->caller( __METHOD__ )
+			->execute();
+		$dbw->newDeleteQueryBuilder()
+			->delete( 'pagetriage_page_tags' )
+			->where( '1 = 1' )
+			->caller( __METHOD__ )
+			->execute();
 	}
 
 	public function testSuccessfulPageTriageCleanup() {
