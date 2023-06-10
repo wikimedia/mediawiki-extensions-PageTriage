@@ -6,7 +6,6 @@ use ApiDisabled;
 use Article;
 use Config;
 use DeferredUpdates;
-use EchoEvent;
 use ExtensionRegistry;
 use IBufferingStatsdDataFactory;
 use ManualLogEntry;
@@ -15,6 +14,7 @@ use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\ChangeTags\Hook\ChangeTagsAllowedAddHook;
 use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
 use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
+use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddDeletionTagPresentationModel;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddMaintenanceTagPresentationModel;
@@ -656,6 +656,7 @@ class Hooks implements
 				'category' => 'page-review',
 				'group' => 'neutral',
 				'section' => 'message',
+				'user-locators' => [ [ self::class . '::locateUsersForNotification' ] ],
 			];
 		}
 		if ( in_array( 'pagetriage-add-maintenance-tag', $wgPageTriageEnabledEchoEvents ) ) {
@@ -664,6 +665,7 @@ class Hooks implements
 				'category' => 'page-review',
 				'group' => 'neutral',
 				'section' => 'alert',
+				'user-locators' => [ [ self::class . '::locateUsersForNotification' ] ],
 			];
 		}
 		if ( in_array( 'pagetriage-add-deletion-tag', $wgPageTriageEnabledEchoEvents ) ) {
@@ -672,6 +674,7 @@ class Hooks implements
 				'category' => 'page-review',
 				'group' => 'negative',
 				'section' => 'alert',
+				'user-locators' => [ [ self::class . '::locateUsersForNotification' ] ],
 			];
 			$icons['trash'] = [
 				'path' => 'PageTriage/echo-icons/trash.svg'
@@ -682,36 +685,29 @@ class Hooks implements
 	}
 
 	/**
-	 * Add users to be notified on an echo event
-	 * @param EchoEvent $event
-	 * @param array &$users
-	 * @return bool
+	 * For locating users to be notifies of an Echo Event.
+	 * @param Event $event
+	 * @return array
 	 */
-	public static function onEchoGetDefaultNotifiedUsers( $event, &$users ) {
-		switch ( $event->getType() ) {
-			// notify the page creator/starter
-			case 'pagetriage-mark-as-reviewed':
-			case 'pagetriage-add-maintenance-tag':
-			case 'pagetriage-add-deletion-tag':
-				if ( !$event->getTitle() ) {
-					break;
-				}
-
-				$pageId = $event->getTitle()->getArticleID();
-
-				$articleMetadata = new ArticleMetadata( [ $pageId ], false, DB_REPLICA );
-				$metaData = $articleMetadata->getMetadata();
-
-				if ( !$metaData ) {
-					break;
-				}
-
-				if ( $metaData[$pageId]['user_id'] ) {
-					$users[$metaData[$pageId]['user_id']] = User::newFromId( $metaData[$pageId]['user_id'] );
-				}
-				break;
+	public static function locateUsersForNotification( Event $event ) {
+		if ( !$event->getTitle() ) {
+			return [];
 		}
-		return true;
+
+		$pageId = $event->getTitle()->getArticleID();
+
+		$articleMetadata = new ArticleMetadata( [ $pageId ], false, DB_REPLICA );
+		$metaData = $articleMetadata->getMetadata();
+
+		if ( !$metaData ) {
+			return [];
+		}
+
+		$users = [];
+		if ( $metaData[$pageId]['user_id'] ) {
+			$users[$metaData[$pageId]['user_id']] = User::newFromId( $metaData[$pageId]['user_id'] );
+		}
+		return $users;
 	}
 
 	/** @inheritDoc */
