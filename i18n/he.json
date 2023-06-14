@@ -425,6 +425,7 @@
 	"pagetriage-info-problem-no-references-desc": "הדף הזה לא מצטט מקורות כלשהם.",
 	"pagetriage-info-problem-copyvio": "הפרת זכויות יוצרים",
 	"pagetriage-info-problem-copyvio-desc": "ייתכן שהדף הזה מכיל הפרות זכויות יוצרים.",
+	"pagetriage-info-timestamp-date-format": "D [ב]MMMM YYYY",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
 	"pagetriage-info-tooltip": "הצגת מטא־נתונים עבור הדף הזה",
 	"pagetriage-toolbar-collapsed": "דפים חדשים",
