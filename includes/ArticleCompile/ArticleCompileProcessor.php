@@ -333,12 +333,13 @@ class ArticleCompileProcessor {
 		$tags = ArticleMetadata::getValidTags();
 
 		// Grab existing old metadata
-		$res = $dbr->select(
-			[ 'pagetriage_page_tags', 'pagetriage_tags' ],
-			[ 'ptrpt_page_id', 'ptrt_tag_name', 'ptrpt_value' ],
-			[ 'ptrpt_page_id' => $this->pageIds, 'ptrpt_tag_id = ptrt_tag_id' ],
-			__METHOD__
-		);
+		$res = $dbr->newSelectQueryBuilder()
+			->select( [ 'ptrpt_page_id', 'ptrt_tag_name', 'ptrpt_value' ] )
+			->from( 'pagetriage_page_tags' )
+			->join( 'pagetriage_tags', null, 'ptrpt_tag_id = ptrt_tag_id' )
+			->where( [ 'ptrpt_page_id' => $this->pageIds ] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 		// data in $newData is used for update, initialize it with new metadata
 		$newData = $this->metadata;
 		// Loop through old metadata value and compare them with the new one,

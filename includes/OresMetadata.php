@@ -203,30 +203,24 @@ class OresMetadata {
 	 */
 	private function getORESScores( $modelName, $pageIds, $extraConds = [] ) {
 		$dbr = PageTriageUtil::getReplicaConnection();
-		$result = $dbr->select(
-			[
-				'pagetriage_page',
-				'page',
-				'ores_classification',
-			],
-			[
-				'ptrp_page_id',
-				// used for articlequality
-				'oresc_probability',
-				// used for draftquality
-				'oresc_class',
-			],
-			[
+		$result = $dbr->newSelectQueryBuilder()
+			->select( [
+					'ptrp_page_id',
+					// used for articlequality
+					'oresc_probability',
+					// used for draftquality
+					'oresc_class',
+				] )
+			->from( 'pagetriage_page' )
+			->join( 'page', 'page', 'ptrp_page_id=page_id' )
+			->leftJoin( 'ores_classification', 'ores_classification', 'page_latest=oresc_rev' )
+			->where( [
 				'oresc_model' => $this->modelLookup->getModelId( $modelName ),
 				'ptrp_page_id' => $pageIds,
-			] + $extraConds,
-			__METHOD__,
-			[],
-			[
-				'page' => [ 'INNER JOIN', 'ptrp_page_id=page_id' ],
-				'ores_classification' => [ 'INNER JOIN', 'page_latest=oresc_rev' ],
-			]
-		);
+			] + $extraConds )
+			->caller( __METHOD__ )
+			->fetchResultSet();
+
 		return $result ?: [];
 	}
 }

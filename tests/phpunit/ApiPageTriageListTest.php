@@ -74,10 +74,13 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 		// Check that the database was updated correctly (not really necessary?).
 		$db = PageTriageUtil::getPrimaryConnection();
-		$pageTags = $db->select( 'pagetriage_page_tags', '*',
-			[ 'ptrpt_page_id' => $page['id'] ],
-			__METHOD__
-		);
+		$pageTags = $db->newSelectQueryBuilder()
+			->select( '*' )
+			->from( 'pagetriage_page_tags' )
+			->where( [ 'ptrpt_page_id' => $page['id'] ] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
+
 		static::assertEquals( 2, $pageTags->numRows() );
 		static::assertEquals( ArticleCompileAfcTag::DECLINED, $pageTags->current()->ptrpt_value );
 

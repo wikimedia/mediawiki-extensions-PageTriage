@@ -83,15 +83,8 @@ class ArticleMetadata {
 	public static function getMetadataForArticles( array $pageIds ) {
 		$dbr = PageTriageUtil::getReplicaConnection();
 
-		$res = $dbr->select(
-			[
-				'pagetriage_page_tags',
-				'pagetriage_tags',
-				'page',
-				'pagetriage_page',
-				'user'
-			],
-			[
+		$res = $dbr->newSelectQueryBuilder()
+			->select( [
 				'ptrpt_page_id',
 				'ptrt_tag_name',
 				'ptrpt_value',
@@ -103,17 +96,15 @@ class ArticleMetadata {
 				'ptrp_last_reviewed_by',
 				'ptrp_reviewed_updated',
 				'reviewer' => 'user_name'
-			],
-			[
-				'ptrpt_page_id' => $pageIds,
-				'ptrpt_tag_id = ptrt_tag_id',
-				'ptrpt_page_id = ptrp_page_id',
-				'page_id = ptrp_page_id'
-			],
-			__METHOD__,
-			[],
-			[ 'user' => [ 'LEFT JOIN', 'user_id = ptrp_last_reviewed_by' ] ]
-		);
+			] )
+			->from( 'pagetriage_page_tags' )
+			->join( 'pagetriage_tags', null, 'ptrpt_tag_id = ptrt_tag_id' )
+			->join( 'pagetriage_page', null, 'ptrpt_page_id = ptrp_page_id' )
+			->join( 'page', null, 'page_id = ptrp_page_id' )
+			->leftJoin( 'user', 'user', 'user_id = ptrp_last_reviewed_by' )
+			->where( [ 'ptrpt_page_id' => $pageIds ] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 
 		$pageData = [];
 		foreach ( $res as $row ) {
@@ -239,12 +230,11 @@ class ArticleMetadata {
 				$dbr = PageTriageUtil::getReplicaConnection();
 				$setOpts += Database::getCacheSetOptions( $dbr );
 
-				$res = $dbr->select(
-					[ 'pagetriage_tags' ],
-					[ 'ptrt_tag_id', 'ptrt_tag_name' ],
-					[],
-					$fname
-				);
+				$res = $dbr->newSelectQueryBuilder()
+					->select( [ 'ptrt_tag_id', 'ptrt_tag_name' ] )
+					->from( 'pagetriage_tags' )
+					->caller( $fname )
+					->fetchResultSet();
 
 				$tags = [];
 				foreach ( $res as $row ) {
@@ -302,12 +292,12 @@ class ArticleMetadata {
 				$db = PageTriageUtil::getReplicaConnection();
 			}
 
-			$res = $db->select(
-				[ 'pagetriage_page' ],
-				[ 'ptrp_page_id' ],
-				[ 'ptrp_page_id' => $pageIds ],
-				__METHOD__
-			);
+			$res = $db->newSelectQueryBuilder()
+				->select( [ 'ptrp_page_id' ] )
+				->from( 'pagetriage_page' )
+				->where( [ 'ptrp_page_id' => $pageIds ] )
+				->caller( __METHOD__ )
+				->fetchResultSet();
 
 			foreach ( $res as $row ) {
 				$cleanUp[] = $row->ptrp_page_id;
