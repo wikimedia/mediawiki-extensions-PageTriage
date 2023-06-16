@@ -532,7 +532,7 @@ const ListControlNav = Backbone.View.extend( {
 		// fetch the values from the menu
 		const apiParams = this.getApiParams( true );
 
-		// the model in this context is mw.pageTriage.ArticleList
+		// the model in this context is ArticleList
 		this.model.setParams( apiParams );
 		this.model.saveFilterParams();
 

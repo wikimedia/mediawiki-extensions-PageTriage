@@ -126,19 +126,10 @@
 				"external/jquery.tipoff/jquery.tipoff.js"
 			]
 		},
-		"ext.pageTriage.init": {
-			"es6": true,
-			"scripts": [
-				"ext.pageTriage.init/ext.pageTriage.init.js"
-			],
-			"dependencies": [
-				"ext.pageTriage.external"
-			]
-		},
 		"ext.pageTriage.util": {
 			"es6": true,
-			"scripts": [
-				"ext.pageTriage.util/ext.pageTriage.messageUtil.js",
+			"packageFiles": [
+				"ext.pageTriage.util/main.js",
 				"ext.pageTriage.util/models/ext.pageTriage.article.js",
 				"ext.pageTriage.util/models/ext.pageTriage.revision.js",
 				"ext.pageTriage.util/models/ext.pageTriage.stats.js"
@@ -159,7 +150,7 @@
 				"mediawiki.api",
 				"mediawiki.user",
 				"moment",
-				"ext.pageTriage.init"
+				"ext.pageTriage.external"
 			]
 		},
 		"ext.pageTriage.views.toolbar": {
@@ -731,7 +722,7 @@
 				"ext.pageTriage.toolbarStartup/ext.pageTriage.actionQueue.js"
 			],
 			"dependencies": [
-				"ext.pageTriage.init"
+				"ext.pageTriage.external"
 			]
 		},
 		"ext.pageTriage.article": {
@@ -743,7 +734,7 @@
 				"pagetriage-mark-as-reviewed-error"
 			],
 			"dependencies": [
-				"ext.pageTriage.init",
+				"ext.pageTriage.external",
 				"mediawiki.api",
 				"mediawiki.jqueryMsg",
 				"mediawiki.Uri"
@@ -763,20 +754,6 @@
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
 		"remoteExtPath": "PageTriage/modules"
-	},
-	"QUnitTestModule": {
-		"es6": true,
-		"localBasePath": "tests/qunit",
-		"remoteExtPath": "PageTriage/tests/qunit",
-		"scripts": [
-			"test_ext.pageTriage.actionQueue.js",
-			"test_ext.pageTriage.article.js"
-		],
-		"dependencies": [
-			"ext.pageTriage.toolbarStartup",
-			"ext.pageTriage.article",
-			"ext.pageTriage.util"
-		]
 	},
 	"HookHandlers": {
 		"undelete": {

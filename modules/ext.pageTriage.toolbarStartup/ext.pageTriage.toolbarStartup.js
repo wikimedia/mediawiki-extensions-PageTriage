@@ -22,4 +22,4 @@ $( function () {
 module.exports = { actionQueue };
 
 // public facing API
-mw.pageTriage.actionQueue = actionQueue;
+mw.pageTriage = { actionQueue };

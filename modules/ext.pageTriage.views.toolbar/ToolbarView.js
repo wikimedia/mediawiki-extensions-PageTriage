@@ -1,10 +1,11 @@
 // view for the floating toolbar
+const { Article, contentLanguageMessages } = require( 'ext.pageTriage.util' );
 
 const config = require( './config.json' );
 // create an event aggregator
 const eventBus = _.extend( {}, Backbone.Events );
 // the current article
-const article = new mw.pageTriage.Article( {
+const article = new Article( {
 	eventBus: eventBus,
 	pageId: mw.config.get( 'wgArticleId' ),
 	includeHistory: true
@@ -17,7 +18,7 @@ let tools;
 require( './../external/jquery.badge.js' );
 
 // Add content language messages
-mw.pageTriage.contentLanguageMessages.set( require( './contentLanguageMessages.json' ) );
+contentLanguageMessages.set( require( './contentLanguageMessages.json' ) );
 
 // overall toolbar view
 // currently, this is the main application view.

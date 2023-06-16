@@ -1,14 +1,19 @@
 /**
  * view for the article list
  */
+const ListStatsNav = require( './ext.pageTriage.listStatsNav.js' );
+const ListControlNav = require( './ext.pageTriage.listControlNav.js' );
+const ListItem = require( './ext.pageTriage.listItem.js' );
+const { Stats, ArticleList } = require( 'ext.pageTriage.util' );
+
 // create an event aggregator
 const eventBus = _.extend( {}, Backbone.Events );
 
 // instantiate the collection of articles
-const articles = new mw.pageTriage.ArticleList( { eventBus: eventBus } );
+const articles = new ArticleList( { eventBus: eventBus } );
 
 // grab pageTriage statistics
-const stats = new mw.pageTriage.Stats( { eventBus: eventBus } );
+const stats = new Stats( { eventBus: eventBus } );
 
 // overall list view
 // currently, this is the main application view.
@@ -64,7 +69,7 @@ const ListView = Backbone.View.extend( {
 	render: function () {
 		// reset the position indicator
 		this.position = 0;
-		const controlNav = new mw.pageTriage.ListControlNav( { eventBus: this.eventBus, model: articles, stats: stats } );
+		const controlNav = new ListControlNav( { eventBus: this.eventBus, model: articles, stats: stats } );
 		controlNav.render();
 	},
 
@@ -151,7 +156,7 @@ const ListView = Backbone.View.extend( {
 
 	// add stats data to the navigation
 	addStats: function ( statsObj ) {
-		const statsNav = new mw.pageTriage.ListStatsNav(
+		const statsNav = new ListStatsNav(
 			{ eventBus: this.eventBus, model: statsObj }
 		);
 		// Only render if there's an update; check to see if expected filteredarticle
@@ -171,7 +176,7 @@ const ListView = Backbone.View.extend( {
 		this.position++;
 		article.set( 'position', this.position );
 		// pass in the specific article instance
-		const view = new mw.pageTriage.ListItem( { eventBus: this.eventBus, model: article } );
+		const view = new ListItem( { eventBus: this.eventBus, model: article } );
 		const pageInfo = view.render().el;
 		$( '#mwe-pt-list-view' ).append( pageInfo );
 		if ( mw.config.get( 'wgPageTriageEnableReviewButton' ) ) {

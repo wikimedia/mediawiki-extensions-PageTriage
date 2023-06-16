@@ -1,6 +1,8 @@
+const { RevisionList } = require( './ext.pageTriage.revision.js' );
+
 // Article represents the metadata for a single article.
 // ArticleList is a collection of articles for use in the list view
-mw.pageTriage.Article = Backbone.Model.extend( {
+const Article = Backbone.Model.extend( {
 	defaults: {
 		title: 'Empty Article',
 		pageid: ''
@@ -273,14 +275,14 @@ mw.pageTriage.Article = Backbone.Model.extend( {
 	},
 
 	addHistory: function () {
-		this.revisions = new mw.pageTriage.RevisionList( { eventBus: this.eventBus, pageId: this.pageId } );
+		this.revisions = new RevisionList( { eventBus: this.eventBus, pageId: this.pageId } );
 		this.revisions.fetch();
 	}
 } );
 
-mw.pageTriage.ArticleList = Backbone.Collection.extend( {
+const ArticleList = Backbone.Collection.extend( {
 	moreToLoad: true,
-	model: mw.pageTriage.Article,
+	model: Article,
 
 	/** Current queue mode: 'npp' or 'afc'. */
 	mode: 'npp',
@@ -452,3 +454,5 @@ mw.pageTriage.ArticleList = Backbone.Collection.extend( {
 	}
 
 } );
+
+module.exports = { Article, ArticleList };

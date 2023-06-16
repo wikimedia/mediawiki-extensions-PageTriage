@@ -1,6 +1,6 @@
 // Stats represents the dashboard data for pagetriage
 
-mw.pageTriage.Stats = Backbone.Model.extend( {
+const Stats = Backbone.Model.extend( {
 	defaults: {
 		title: 'PageTriage Dashboard Data',
 		pageid: ''
@@ -77,3 +77,5 @@ mw.pageTriage.Stats = Backbone.Model.extend( {
 		return response.pagetriagestats.stats;
 	}
 } );
+
+module.exports = Stats;

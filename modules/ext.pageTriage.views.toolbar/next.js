@@ -1,10 +1,10 @@
 // Move to the next page
-
+const { ArticleList } = require( 'ext.pageTriage.util' );
 const
 	// create an event aggregator
 	eventBus = _.extend( {}, Backbone.Events ),
 	// instantiate the collection of articles
-	nextArticles = new mw.pageTriage.ArticleList( { eventBus: eventBus } ),
+	nextArticles = new ArticleList( { eventBus: eventBus } ),
 	ToolView = require( './ToolView.js' );
 
 module.exports = ToolView.extend( {
