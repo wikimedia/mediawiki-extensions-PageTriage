@@ -3,21 +3,21 @@
 namespace MediaWiki\Extension\PageTriage;
 
 use stdClass;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
  * Service class for retrieving PageTriage queue records.
  */
 class QueueLookup {
 
-	/** @var IDatabase */
-	private IDatabase $dbr;
+	/** @var IConnectionProvider */
+	private IConnectionProvider $dbProvider;
 
 	/**
-	 * @param IDatabase $dbr
+	 * @param IConnectionProvider $dbProvider
 	 */
-	public function __construct( IDatabase $dbr ) {
-		$this->dbr = $dbr;
+	public function __construct( IConnectionProvider $dbProvider ) {
+		$this->dbProvider = $dbProvider;
 	}
 
 	/**
@@ -25,7 +25,8 @@ class QueueLookup {
 	 * @return QueueRecord|null
 	 */
 	public function getByPageId( int $pageId ): ?QueueRecord {
-		$row = $this->dbr->newSelectQueryBuilder()
+		$dbr = $this->dbProvider->getReplicaDatabase();
+		$row = $dbr->newSelectQueryBuilder()
 			->select( [
 				'ptrp_page_id',
 				'ptrp_reviewed',

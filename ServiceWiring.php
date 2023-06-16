@@ -6,9 +6,9 @@ use MediaWiki\MediaWikiServices;
 
 return [
 	'PageTriageQueueManager' => static function ( MediaWikiServices $services ): QueueManager {
-		return new QueueManager( $services->getDBLoadBalancerFactory()->getPrimaryDatabase() );
+		return new QueueManager( $services->getDBLoadBalancerFactory() );
 	},
 	'PageTriageQueueLookup' => static function ( MediaWikiServices $services ): QueueLookup {
-		return new QueueLookup( $services->getDBLoadBalancerFactory()->getReplicaDatabase() );
+		return new QueueLookup( $services->getDBLoadBalancerFactory() );
 	},
 ];

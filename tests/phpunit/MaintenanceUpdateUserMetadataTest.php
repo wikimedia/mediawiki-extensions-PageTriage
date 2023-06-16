@@ -30,7 +30,7 @@ class MaintenanceUpdateUserMetadataTest extends PageTriageTestCase {
 		$dbr = PageTriageUtil::getReplicaConnection();
 		$dbw = PageTriageUtil::getPrimaryConnection();
 
-		$mainNsPage = $this->insertPage( 'Main123', 'Test 1', NS_MAIN );
+		$mainNsPage = $this->insertPage( 'MainMetadata', 'Test 1', NS_MAIN );
 		$dbw->newUpdateQueryBuilder()
 			->update( 'pagetriage_page' )
 			->set( [ 'ptrp_tags_updated' => $dbr->timestamp( '20200323210427' ) ] )

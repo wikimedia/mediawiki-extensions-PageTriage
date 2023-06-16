@@ -750,7 +750,7 @@ class PageTriageUtil {
 	/**
 	 * Return an SQL primary database connection.
 	 *
-	 * @return null|IDatabase
+	 * @return IDatabase
 	 */
 	public static function getPrimaryConnection() {
 		return MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->getPrimaryDatabase();
@@ -759,7 +759,7 @@ class PageTriageUtil {
 	/**
 	 * Return an SQL replica database connection.
 	 *
-	 * @return null|IReadableDatabase
+	 * @return IReadableDatabase
 	 */
 	public static function getReplicaConnection() {
 		return MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->getReplicaDatabase();

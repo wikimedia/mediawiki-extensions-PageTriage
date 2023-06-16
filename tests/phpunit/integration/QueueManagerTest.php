@@ -77,7 +77,7 @@ class QueueManagerTest extends MediaWikiIntegrationTestCase {
 
 	private function getQueueManager(): QueueManager {
 		return new QueueManager(
-			$this->getServiceContainer()->getDBLoadBalancerFactory()->getPrimaryDatabase()
+			$this->getServiceContainer()->getDBLoadBalancerFactory()
 		);
 	}
 

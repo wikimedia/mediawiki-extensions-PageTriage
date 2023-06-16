@@ -32,8 +32,8 @@ class MaintenanceRemoveOldRowsTest extends PageTriageTestCase {
 		$dbw = PageTriageUtil::getPrimaryConnection();
 
 		// Create some pages in the USER and MAIN namespace
-		$mainNsPage = $this->insertPage( 'Main1', 'Test 1', NS_MAIN );
-		$userNsPage = $this->insertPage( 'User1', 'Test 1', NS_USER );
+		$mainNsPage = $this->insertPage( 'MainRows', 'Test 1', NS_MAIN );
+		$userNsPage = $this->insertPage( 'UserRows', 'Test 1', NS_USER );
 
 		$initialPageTriageCount = $dbr->newSelectQueryBuilder()
 			->select( '*' )

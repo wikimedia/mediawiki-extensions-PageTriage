@@ -3,21 +3,21 @@
 namespace MediaWiki\Extension\PageTriage;
 
 use Status;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
  * Class for adding, updating and deleting items from a queue of pages awaiting triage.
  */
 class QueueManager {
 
-	/** @var IDatabase */
-	private IDatabase $dbw;
+	/** @var IConnectionProvider */
+	private IConnectionProvider $dbProvider;
 
 	/**
-	 * @param IDatabase $dbw
+	 * @param IConnectionProvider $dbProvider
 	 */
-	public function __construct( IDatabase $dbw ) {
-		$this->dbw = $dbw;
+	public function __construct( IConnectionProvider $dbProvider ) {
+		$this->dbProvider = $dbProvider;
 	}
 
 	/**
@@ -27,7 +27,8 @@ class QueueManager {
 	public function insert( QueueRecord $queueRecord ): Status {
 		$status = new Status();
 		$queueRecordData = $queueRecord->jsonSerialize();
-		$this->dbw->insert(
+		$dbw = $this->dbProvider->getPrimaryDatabase();
+		$dbw->insert(
 			'pagetriage_page',
 			$queueRecordData,
 			__METHOD__,
@@ -35,7 +36,7 @@ class QueueManager {
 			// present on a new record.
 			[ 'IGNORE' ]
 		);
-		$status->setOK( $this->dbw->affectedRows() === 1 );
+		$status->setOK( $dbw->affectedRows() === 1 );
 		return $status;
 	}
 
@@ -54,24 +55,25 @@ class QueueManager {
 	 * @return Status OK if all pages were deleted, not OK otherwise.
 	 */
 	public function deleteByPageIds( array $pageIds ): Status {
+		$dbw = $this->dbProvider->getPrimaryDatabase();
 		$status = new Status();
 		if ( !$pageIds ) {
 			return $status;
 		}
 		// TODO: Factor out ArticleMetadata into value object / manager.
 		$articleMetadata = new ArticleMetadata( $pageIds );
-		$this->dbw->startAtomic( __METHOD__ );
-		$this->dbw->newDeleteQueryBuilder()
+		$dbw->startAtomic( __METHOD__ );
+		$dbw->newDeleteQueryBuilder()
 			->delete( 'pagetriage_page' )
 			->where( [ 'ptrp_page_id' => $pageIds ] )
 			->caller( __METHOD__ )
 			->execute();
-		$status->setOK( count( $pageIds ) === $this->dbw->affectedRows() );
+		$status->setOK( count( $pageIds ) === $dbw->affectedRows() );
 		// TODO: Is "ArticleMetadata" used/useful without the core queue data in pagetriage_page?
 		//  if it isn't, we could make QueueManager handle create/update/delete for the page table
 		//  and metadata.
 		$articleMetadata->deleteMetadata();
-		$this->dbw->endAtomic( __METHOD__ );
+		$dbw->endAtomic( __METHOD__ );
 		return $status;
 	}
 
