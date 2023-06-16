@@ -1,7 +1,7 @@
 // Handles the interface for actually marking an article as reviewed
 //
 
-mw.pageTriage.action = {
+const action = {
 	submit: function () {
 		return new mw.Api().postWithToken( 'csrf', {
 			action: 'pagetriageaction',
@@ -20,7 +20,7 @@ mw.pageTriage.action = {
 $( function () {
 	$( '.mw-pagetriage-markpatrolled-link' )
 		.on( 'click', function () {
-			mw.pageTriage.action.submit();
+			action.submit();
 			return false;
 		} );
 } );
