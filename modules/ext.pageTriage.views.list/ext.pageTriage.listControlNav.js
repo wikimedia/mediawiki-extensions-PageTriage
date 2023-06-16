@@ -1,6 +1,6 @@
 // controls navbar
 
-mw.pageTriage.ListControlNav = Backbone.View.extend( {
+const ListControlNav = Backbone.View.extend( {
 	tagName: 'div',
 	template: mw.template.get( 'ext.pageTriage.views.list', 'listControlNav.underscore' ),
 	filterMenuVisible: 0,
@@ -814,3 +814,5 @@ mw.pageTriage.ListControlNav = Backbone.View.extend( {
 					'placeholder="' + mw.msg( 'pagetriage-filter-date-range-format-placeholder' ) + '"/>';
 	}
 } );
+
+module.exports = ListControlNav;

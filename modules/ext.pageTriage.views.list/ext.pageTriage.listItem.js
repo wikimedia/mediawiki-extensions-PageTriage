@@ -1,6 +1,6 @@
 // view for a single list item
 
-mw.pageTriage.ListItem = Backbone.View.extend( {
+const ListItem = Backbone.View.extend( {
 	tagName: 'div',
 	className: 'mwe-pt-list-item',
 	template: mw.template.get( 'ext.pageTriage.views.list', 'listItem.underscore' ),
@@ -30,3 +30,5 @@ mw.pageTriage.ListItem = Backbone.View.extend( {
 	}
 
 } );
+
+module.exports = ListItem;

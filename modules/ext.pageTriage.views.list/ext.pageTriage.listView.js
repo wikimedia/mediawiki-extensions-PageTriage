@@ -12,7 +12,7 @@ const stats = new mw.pageTriage.Stats( { eventBus: eventBus } );
 
 // overall list view
 // currently, this is the main application view.
-mw.pageTriage.ListView = Backbone.View.extend( {
+const ListView = Backbone.View.extend( {
 
 	initialize: function ( options ) {
 		this.eventBus = options.eventBus; // access the eventBus
@@ -230,8 +230,10 @@ mw.pageTriage.ListView = Backbone.View.extend( {
 
 } );
 
-$( function () {
+function init() {
 	// create an instance of the list view, which makes everything go.
-	const list = new mw.pageTriage.ListView( { eventBus: eventBus } );
+	const list = new ListView( { eventBus: eventBus } );
 	list.render();
-} );
+}
+
+module.exports = init;

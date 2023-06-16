@@ -337,7 +337,8 @@
 				"jquery.client",
 				"moment"
 			],
-			"scripts": [
+			"packageFiles": [
+				"ext.pageTriage.views.list/main.js",
 				"ext.pageTriage.views.list/ext.pageTriage.listItem.js",
 				"ext.pageTriage.views.list/ext.pageTriage.listControlNav.js",
 				"ext.pageTriage.views.list/ext.pageTriage.listStatsNav.js",
