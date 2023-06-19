@@ -1,4 +1,6 @@
 // view for display deletion wizard
+const { contentLanguageMessage } = require( 'ext.pageTriage.util' );
+
 // Used to keep track of what actions we want to invoke, and with what data.
 const actionQueue = {};
 
@@ -966,7 +968,7 @@ module.exports = ToolView.extend( {
 		}
 
 		const topicTitleKey = selected.talkpagenotiftopictitle;
-		const topicTitle = mw.pageTriage.contentLanguageMessage( topicTitleKey, pageName ).text();
+		const topicTitle = contentLanguageMessage( topicTitleKey, pageName ).text();
 
 		const templateName = selected.talkpagenotiftpl;
 

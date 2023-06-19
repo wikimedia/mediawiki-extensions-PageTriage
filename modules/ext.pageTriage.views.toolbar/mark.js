@@ -1,4 +1,5 @@
 // view for marking a page as reviewed or unreviewed
+const { contentLanguageMessage } = require( 'ext.pageTriage.util' );
 
 const ToolView = require( './ToolView.js' ),
 	config = require( './config.json' );
@@ -114,7 +115,7 @@ module.exports = ToolView.extend( {
 				mw.config.get( 'wgUserName' ) !== this.model.get( 'reviewer' )
 			) {
 				talkPageTitle = this.model.get( 'reviewer_user_talk_page' );
-				topicTitle = mw.pageTriage.contentLanguageMessage(
+				topicTitle = contentLanguageMessage(
 					'pagetriage-mark-unmark-talk-page-notify-topic-title'
 				).text();
 				topicMessage = '{{subst:' + config.TalkPageNoteTemplate.UnMark.nonote +
@@ -134,7 +135,7 @@ module.exports = ToolView.extend( {
 
 			talkPageTitle = noteRecipient === 'reviewer' ?
 				this.model.get( 'reviewer_user_talk_page' ) : this.model.get( 'creator_user_talk_page' );
-			topicTitle = mw.pageTriage.contentLanguageMessage(
+			topicTitle = contentLanguageMessage(
 				noteRecipient === 'reviewer' ?
 					'pagetriage-note-sent-talk-page-notify-topic-title-reviewer' :
 					'pagetriage-note-sent-talk-page-notify-topic-title'
@@ -153,10 +154,10 @@ module.exports = ToolView.extend( {
 		// both post note promises resolve/reject states through a single promise
 		if ( sendNoteToArticleTalkPage ) {
 			talkPageTitle = this.model.get( 'talk_page_title' );
-			topicTitle = mw.pageTriage.contentLanguageMessage(
+			topicTitle = contentLanguageMessage(
 				'pagetriage-feedback-from-new-page-review-process-title'
 			).text();
-			topicMessage = mw.pageTriage.contentLanguageMessage(
+			topicMessage = contentLanguageMessage(
 				'pagetriage-feedback-from-new-page-review-process-message',
 				note
 			).text();
