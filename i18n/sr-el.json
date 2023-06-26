@@ -269,7 +269,6 @@
 	"action-pagetriage-copyvio": "označi stranice kao verovatno kršenje autorskih prava",
 	"group-copyviobot": "Botovi za kršenje autorskih prava",
 	"group-copyviobot-member": "{{GENDER:$1|bot za kršenje autorskih prava}}",
-	"apihelp-pagetriageaction-description": "Označavanje članka kao pregledanog ili nepregledanog.",
 	"apihelp-pagetriageaction-summary": "Označavanje članka kao pregledanog ili nepregledanog.",
 	"apihelp-pagetriagestats-param-showbots": "Uključivanje samo stranica koje naprave botovi.",
 	"apihelp-pagetriagestats-param-no_category": "Uključivanje samo stranica bez kategorije.",

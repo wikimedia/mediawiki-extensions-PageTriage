@@ -412,6 +412,5 @@
 	"echo-pref-tooltip-page-review": "زمانی که کسی صفحهٔ‌ای که من ایجاد کرده‌ام را بررسی کرد من را مطلع کن.",
 	"echo-category-title-page-review": "{{PLURAL:$1|بازبینی|بازبینی‌های}} صفحه",
 	"apihelp-pagetriagelist-param-limit": "حداکثر تعداد نتایج برای بازگشت.",
-	"apihelp-pagetriagetagging-description": "افزودن برچسب به یک مقاله.",
 	"apihelp-pagetriagetagging-summary": "افزودن برچسب به یک مقاله."
 }

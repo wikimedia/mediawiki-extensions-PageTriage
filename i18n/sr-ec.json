@@ -274,7 +274,6 @@
 	"action-pagetriage-copyvio": "означи странице као вероватно кршење ауторских права",
 	"group-copyviobot": "Ботови за кршење ауторских права",
 	"group-copyviobot-member": "{{GENDER:$1|бот за кршење ауторских права}}",
-	"apihelp-pagetriageaction-description": "Означавање чланка као прегледаног или непрегледаног.",
 	"apihelp-pagetriageaction-summary": "Означавање чланка као прегледаног или непрегледаног.",
 	"apihelp-pagetriagestats-param-showbots": "Укључивање само страница које направе ботови.",
 	"apihelp-pagetriagestats-param-no_category": "Укључивање само страница без категорије.",

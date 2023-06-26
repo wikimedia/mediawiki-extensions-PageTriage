@@ -136,6 +136,5 @@
 	"pagetriage-mark-as-unreviewed-helptext": "Отбележете страницата като непроверена, ако смятате, че трябва да бъде проверена по-задълбочено.",
 	"pagetriage-del-tooltip": "Предлагане на страницата за изтриване",
 	"pagetriage-toolbar-close": "Затваряне",
-	"echo-pref-tooltip-page-review": "Известяване, когато някой прегледа страница, която съм създал.",
-	"apihelp-pagetriageaction-description": "Отбелязване на статия като проверена или непроверена."
+	"echo-pref-tooltip-page-review": "Известяване, когато някой прегледа страница, която съм създал."
 }

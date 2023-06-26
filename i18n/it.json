@@ -364,7 +364,6 @@
 	"apihelp-pagetriagestats-param-username": "Includi solo le pagine create dal nome utente.",
 	"apihelp-pagetriagestats-param-date_range_from": "Includi solo le pagine create in questo giorno o successivamente.",
 	"apihelp-pagetriagestats-param-date_range_to": "Includi solo le pagine create in questo giorno o precedentemente.",
-	"apihelp-pagetriagetagging-description": "Aggiunge etichette a una voce.",
 	"apihelp-pagetriagetagging-summary": "Aggiunge etichette a una voce.",
 	"apihelp-pagetriagetagging-param-pageid": "La voce da etichettare.",
 	"apihelp-pagetriagetagging-param-note": "Nota personale ai creatori della pagina dai revisori."

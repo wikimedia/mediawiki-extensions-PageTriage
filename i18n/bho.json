@@ -176,7 +176,6 @@
 	"echo-pref-subscription-page-review": "हमरी बनावल पन्ना के समीक्षा सभ",
 	"echo-pref-tooltip-page-review": "हमरी बनावल पन्ना के समीक्षा भइला पर हमके सूचना भेजीं।",
 	"echo-category-title-page-review": "पन्ना {{PLURAL:$1|समीक्षा|समीक्षा सभ}}",
-	"apihelp-pagetriageaction-description": "लेख के समीक्षित या बिना-समीक्षित चिन्हित करीं।",
 	"apihelp-pagetriagetagging-param-note": "पन्ना बनावेवाला लोगन खातिर समीक्षकन के टिप्पणी।",
 	"apihelp-pagetriagetagging-param-taglist": "टैग सभ के पाइप-अलगावल लिस्ट।"
 }

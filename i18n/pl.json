@@ -177,6 +177,5 @@
 	"apihelp-pagetriagelist-param-date_range_from": "Pokaż tylko strony utworzone tego dnia i później.",
 	"apihelp-pagetriagelist-param-date_range_to": "Pokaż tylko strony utworzone tego dnia i wcześniej.",
 	"apihelp-pagetriagestats-param-date_range_from": "Uwzględnij tylko strony utworzone tego dnia i później.",
-	"apihelp-pagetriagestats-param-date_range_to": "Uwzględnij tylko strony utworzone tego dnia i wcześniej.",
-	"apihelp-pagetriagetagging-description": "Dodaj znaczniki do artykułu."
+	"apihelp-pagetriagestats-param-date_range_to": "Uwzględnij tylko strony utworzone tego dnia i wcześniej."
 }
