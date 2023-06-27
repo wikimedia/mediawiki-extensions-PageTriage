@@ -548,6 +548,7 @@
 	"apihelp-pagetriagestats-param-show_predicted_issues_copyvio": "Дали да се вклучат потенцијалните проблеми со авторскоправни нарушувања",
 	"apihelp-pagetriagestats-param-show_predicted_issues_none": "Дали да се вклучи отсуство на потенцијални проблеми",
 	"apihelp-pagetriagetagcopyvio-summary": "Означи преработка како веројатно авторскоправно нарушување.",
+	"apihelp-pagetriagetagcopyvio-extended-description": "Преработката прикажана на Special:NewPagesFeed. Потребно е правото pagetriage-copyvio.",
 	"apihelp-pagetriagetagcopyvio-param-revid": "Назнака на преработката што се означува како веројатно авторскоправно нарушување",
 	"apihelp-pagetriagetagging-summary": "Додај ознаки во статија.",
 	"apihelp-pagetriagetagging-param-pageid": "Статијата што треба да се означи.",

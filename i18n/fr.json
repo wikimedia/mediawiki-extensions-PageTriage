@@ -570,6 +570,7 @@
 	"apihelp-pagetriagestats-param-show_predicted_issues_copyvio": "S’il faut inclure les problèmes potentiels de copyvio",
 	"apihelp-pagetriagestats-param-show_predicted_issues_none": "S’il ne faut inclure aucun problème potentiel",
 	"apihelp-pagetriagetagcopyvio-summary": "Marquer une révision comme une violation probable des droits d’auteur.",
+	"apihelp-pagetriagetagcopyvio-extended-description": "La révision est affichée dans Special:NewPagesFeed. Nécessite le droit pagetriage-copyvio.",
 	"apihelp-pagetriagetagcopyvio-param-revid": "Identifiant de la révision à marquer comme une violation probable des droits d’auteur",
 	"apihelp-pagetriagetagging-summary": "Ajouter des balises à un article.",
 	"apihelp-pagetriagetagging-param-pageid": "L’article à baliser.",
