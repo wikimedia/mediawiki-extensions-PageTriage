@@ -12,15 +12,15 @@ use MediaWikiIntegrationTestCase;
 class PageTriageUtilTest extends MediaWikiIntegrationTestCase {
 
 	public function testIsOresArticlequalityQuery() {
-		self::assertFalse( PageTriageUtil::isOresArticleQualityQuery( [ 'page_id' => '123' ] ) );
-		self::assertTrue(
+		$this->assertFalse( PageTriageUtil::isOresArticleQualityQuery( [ 'page_id' => '123' ] ) );
+		$this->assertTrue(
 			PageTriageUtil::isOresArticleQualityQuery( [ 'show_predicted_class_stub' => true ] )
 		);
 	}
 
 	public function testIsOresDraftQualityQuery() {
-		self::assertFalse( PageTriageUtil::isOresDraftQualityQuery( [ 'page_id' => '123' ] ) );
-		self::assertTrue(
+		$this->assertFalse( PageTriageUtil::isOresDraftQualityQuery( [ 'page_id' => '123' ] ) );
+		$this->assertTrue(
 			PageTriageUtil::isOresDraftQualityQuery( [ 'show_predicted_issues_vandalism' => true ] )
 		);
 	}
@@ -29,7 +29,7 @@ class PageTriageUtilTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideMapOresParamsToClassNames
 	 */
 	public function testMapOresParamsToClassNames( $model, $opts, $expect ) {
-		self::assertTrue( PageTriageUtil::mapOresParamsToClassNames( $model, $opts ) === $expect );
+		$this->assertTrue( PageTriageUtil::mapOresParamsToClassNames( $model, $opts ) === $expect );
 	}
 
 	public static function provideMapOresParamsToClassNames() {

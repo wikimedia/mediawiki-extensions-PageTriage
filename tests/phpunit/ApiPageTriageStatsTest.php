@@ -57,13 +57,13 @@ class ApiPageTriageStatsTest extends PageTriageTestCase {
 			'action' => 'pagetriagestats',
 			'recreated' => '1',
 		] );
-		static::assertArrayNotHasKey( 'warnings', $response[0] );
+		$this->assertArrayNotHasKey( 'warnings', $response[0] );
 		// Test invalid param to PageTriageStats.
 		$response = $this->doApiRequest( [
 			'action' => 'pagetriagestats',
 			'offset' => '56789',
 		] );
-		static::assertEquals( 'Unrecognized parameter: offset.',
+		$this->assertEquals( 'Unrecognized parameter: offset.',
 			$response[0]['warnings']['main']['warnings'] );
 	}
 }

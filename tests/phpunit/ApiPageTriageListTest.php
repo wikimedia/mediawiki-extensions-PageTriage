@@ -48,12 +48,12 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		// If we don't ask for it, a draft page shouldn't be returned.
 		$this->insertPage( Title::newFromText( 'Draft:Test page 1' ) );
 		$list1 = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'showunreviewed' => '1' ] );
-		static::assertCount( $originalPagesCount, $list1[0]['pagetriagelist']['pages'] );
+		$this->assertCount( $originalPagesCount, $list1[0]['pagetriagelist']['pages'] );
 
 		// Request the Draft namespace.
 		$list2 = $this->getPageTriageList();
-		static::assertArrayHasKey( 'title', $list2[0] );
-		static::assertSame( 'Draft:Test page 1', $list2[0][ 'title' ] );
+		$this->assertArrayHasKey( 'title', $list2[0] );
+		$this->assertSame( 'Draft:Test page 1', $list2[0][ 'title' ] );
 	}
 
 	/**
@@ -65,7 +65,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 		// Initially there should be no declined drafts.
 		$list1 = $this->getPageTriageList( $apiParams );
-		static::assertCount( 0, $list1 );
+		$this->assertCount( 0, $list1 );
 
 		// Add category.
 		$this->insertPage( 'AfC test page', '[[Category:Declined AfC submissions]]',
@@ -81,19 +81,19 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			->caller( __METHOD__ )
 			->fetchResultSet();
 
-		static::assertEquals( 2, $pageTags->numRows() );
-		static::assertEquals( ArticleCompileAfcTag::DECLINED, $pageTags->current()->ptrpt_value );
+		$this->assertEquals( 2, $pageTags->numRows() );
+		$this->assertEquals( ArticleCompileAfcTag::DECLINED, $pageTags->current()->ptrpt_value );
 
 		// Request the declined drafts.
 		$list2 = $this->getPageTriageList( $apiParams );
 
-		static::assertArrayHasKey( 'title', $list2[0] );
-		static::assertSame( 'Draft:AfC test page', $list2[0][ 'title' ] );
+		$this->assertArrayHasKey( 'title', $list2[0] );
+		$this->assertSame( 'Draft:AfC test page', $list2[0][ 'title' ] );
 
 		// Move the page out of the declined category, and it disappears from the list.
 		$this->insertPage( 'AfC test page', '[[category:nop]]', $this->draftNsId );
 		$list3 = $this->getPageTriageList( $apiParams );
-		static::assertCount( 0, $list3 );
+		$this->assertCount( 0, $list3 );
 	}
 
 	/**
@@ -108,8 +108,8 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		);
 		// Should be in the Pending feed.
 		$list = $this->getPageTriageList( [ 'afc_state' => ArticleCompileAfcTag::UNDER_REVIEW ] );
-		static::assertArrayHasKey( 'title', $list[0] );
-		static::assertSame( 'Draft:AfC test page', $list[0][ 'title' ] );
+		$this->assertArrayHasKey( 'title', $list[0] );
+		$this->assertSame( 'Draft:AfC test page', $list[0][ 'title' ] );
 
 		// Should still be in Pending feed if categories are in the opposite order.
 		// Also Declined category should be ignored, since Pending has higher priority.
@@ -120,8 +120,8 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			$this->draftNsId
 		);
 		$list = $this->getPageTriageList( [ 'afc_state' => ArticleCompileAfcTag::UNDER_REVIEW ] );
-		static::assertArrayHasKey( 'title', $list[0] );
-		static::assertSame( 'Draft:AfC test page', $list[0][ 'title' ] );
+		$this->assertArrayHasKey( 'title', $list[0] );
+		$this->assertSame( 'Draft:AfC test page', $list[0][ 'title' ] );
 	}
 
 	/**
@@ -136,7 +136,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$this->insertPage( 'Test page 2', '', $this->draftNsId );
 
 		// There should be one more unsubmitted draft.
-		static::assertCount(
+		$this->assertCount(
 			$originalUnsubmittedCount + 1,
 			$this->getPageTriageList( $apiParams )
 		);
@@ -147,14 +147,14 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		);
 
 		// Should now be back to the original count.
-		static::assertCount(
+		$this->assertCount(
 			$originalUnsubmittedCount,
 			$this->getPageTriageList( $apiParams )
 		);
 
 		// Remove the category and the page should once again be 'unsubmitted'.
 		$this->insertPage( 'Test page 2', '[[Category:Nop]]', $this->draftNsId );
-		static::assertCount(
+		$this->assertCount(
 			$originalUnsubmittedCount + 1,
 			$this->getPageTriageList( $apiParams )
 		);
@@ -179,9 +179,9 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 		// Check that the moved page is in the queue of unreviewed pages.
 		$list = $this->getPageTriageList();
-		static::assertCount( $originalPagesCount + 1, $list );
-		static::assertArrayHasKey( 'title', $list[0] );
-		static::assertSame( 'Draft:Test page 3', $list[0][ 'title' ] );
+		$this->assertCount( $originalPagesCount + 1, $list );
+		$this->assertArrayHasKey( 'title', $list[0] );
+		$this->assertSame( 'Draft:Test page 3', $list[0][ 'title' ] );
 	}
 
 	/**
@@ -203,7 +203,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			->move( static::getTestUser()->getUser(), '', false );
 
 		// Check that the queue has decremented by one.
-		static::assertCount(
+		$this->assertCount(
 			$originalPagesCount - 1,
 			$this->getPageTriageList()
 		);
@@ -222,7 +222,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$list = $this->getPageTriageList( $apiParams );
 
 		// First check count($list) in case this test is ran standalone.
-		static::assertTrue( count( $list ) === 0 || $list[0]['title'] !== 'Mainspace test page 1' );
+		$this->assertTrue( count( $list ) === 0 || $list[0]['title'] !== 'Mainspace test page 1' );
 
 		// Create another page using a non-autopatrolled user.
 		$user = static::getTestUser()->getUser();
@@ -230,7 +230,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 		// Test page 2 *should* be in the queue (and at the top since it's the most recent).
 		$list = $this->getPageTriageList( $apiParams );
-		static::assertEquals( 'Mainspace test page 2', $list[0]['title'] );
+		$this->assertEquals( 'Mainspace test page 2', $list[0]['title'] );
 	}
 
 	/**
@@ -245,7 +245,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 		// Should not be in unreviewed list (test user is a sysop and hence autopatrolled).
 		$list = $this->getPageTriageList( $apiParams );
-		static::assertTrue( count( $list ) === 0 || $list[0]['title'] !== $pageTitle );
+		$this->assertTrue( count( $list ) === 0 || $list[0]['title'] !== $pageTitle );
 
 		// Turn the redirect into an article using a non-autopatrolled user.
 		$user = static::getTestUser()->getUser();
@@ -253,7 +253,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 		// [[Redirect test]] should now be in the queue (and at the top since it's the most recent).
 		$list = $this->getPageTriageList( $apiParams );
-		static::assertEquals( $pageTitle, $list[0]['title'] );
+		$this->assertEquals( $pageTitle, $list[0]['title'] );
 	}
 
 	/**
@@ -268,14 +268,14 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			'action' => 'pagetriagelist',
 			'topreviewers' => '1',
 		] );
-		static::assertEquals( 'Unrecognized parameter: topreviewers.',
+		$this->assertEquals( 'Unrecognized parameter: topreviewers.',
 			$response[0]['warnings']['main']['warnings'] );
 		// Test valid param to PageTriageList.
 		$response = $this->doApiRequest( [
 			'action' => 'pagetriagelist',
 			'offset' => '56789',
 		] );
-		static::assertArrayNotHasKey( 'warnings', $response[0] );
+		$this->assertArrayNotHasKey( 'warnings', $response[0] );
 	}
 
 	/**
@@ -297,10 +297,10 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		// Original top page should still be the top (or the new one, if none existed beforehand).
 		$list = $this->getPageTriageList( $apiParams );
 		if ( $originalTopPage ) {
-			static::assertEquals( $originalTopPage, $list[0] );
+			$this->assertEquals( $originalTopPage, $list[0] );
 		} else {
-			static::assertArrayHasKey( 'title', $list[0] );
-			static::assertSame( 'Draft:Test page 5', $list[0][ 'title' ] );
+			$this->assertArrayHasKey( 'title', $list[0] );
+			$this->assertSame( 'Draft:Test page 5', $list[0][ 'title' ] );
 		}
 
 		// Manually set the reviewed at attribute to something really old.
@@ -319,8 +319,8 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 		// 'Test page 5' should be the oldest.
 		$list = $this->getPageTriageList( $apiParams );
-		static::assertArrayHasKey( 'title', $list[0] );
-		static::assertSame( 'Draft:Test page 5', $list[0][ 'title' ] );
+		$this->assertArrayHasKey( 'title', $list[0] );
+		$this->assertSame( 'Draft:Test page 5', $list[0][ 'title' ] );
 	}
 
 	public function testQueryOres() {
@@ -638,8 +638,8 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$this->installMockHttp( $this->makeFakeHttpRequest( $this->getFakeOresScores() ) );
 		$list = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'page_id' => $testPage['id'] ] );
 		$pageInfo = $list[0]['pagetriagelist']['pages'][0];
-		static::assertArrayHasKey( 'talkpage_feedback_count', $pageInfo );
-		static::assertSame( 0, $pageInfo['talkpage_feedback_count'] );
+		$this->assertArrayHasKey( 'talkpage_feedback_count', $pageInfo );
+		$this->assertSame( 0, $pageInfo['talkpage_feedback_count'] );
 
 		// Add two messages to the talkpage. This is done via MessagePoster in the front end usually,
 		// so we don't have a PageTriage PHP method to use here.
@@ -665,7 +665,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		// Retrieve the page's metadata again, and check that the talkpage feedback is flagged.
 		$list = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'page_id' => $testPage['id'] ] );
 		$pageInfo = $list[0]['pagetriagelist']['pages'][0];
-		static::assertSame( 2, $pageInfo['talkpage_feedback_count'] );
+		$this->assertSame( 2, $pageInfo['talkpage_feedback_count'] );
 
 		// Now the same, for a draft page
 		$testDraftTitle = 'Draft talkpage message test';
@@ -674,8 +674,8 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		// Check that it's in the queue and does not have any talk page message.
 		$list = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'page_id' => $testDraft['id'] ] );
 		$draftInfo = $list[0]['pagetriagelist']['pages'][0];
-		static::assertArrayHasKey( 'talkpage_feedback_count', $draftInfo );
-		static::assertSame( 0, $draftInfo['talkpage_feedback_count'] );
+		$this->assertArrayHasKey( 'talkpage_feedback_count', $draftInfo );
+		$this->assertSame( 0, $draftInfo['talkpage_feedback_count'] );
 
 		// Add one message to the talkpage. This is done via MessagePoster in the front end usually,
 		// so we don't have a PageTriage PHP method to use here.
@@ -693,6 +693,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		// Retrieve the page's metadata again, and check that the talkpage feedback is flagged.
 		$list = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'page_id' => $testDraft['id'] ] );
 		$draftInfo = $list[0]['pagetriagelist']['pages'][0];
-		static::assertSame( 1, $draftInfo['talkpage_feedback_count'] );
+		$this->assertSame( 1, $draftInfo['talkpage_feedback_count'] );
 	}
 }

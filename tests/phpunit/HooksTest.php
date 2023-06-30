@@ -30,7 +30,7 @@ class HooksTest extends PageTriageTestCase {
 			->select( '*' )
 			->from( 'pagetriage_page' )
 			->fetchRowCount();
-		static::assertEquals( $originalCount, $actualCount );
+		$this->assertEquals( $originalCount, $actualCount );
 	}
 
 }
