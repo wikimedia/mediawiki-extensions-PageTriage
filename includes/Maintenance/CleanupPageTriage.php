@@ -9,7 +9,6 @@ namespace MediaWiki\Extension\PageTriage\Maintenance;
 
 use Maintenance;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
-use MediaWiki\MediaWikiServices;
 
 /**
  * Maintenance script that removes page with namespace other than NS_MAIN/NS_USER
@@ -28,7 +27,6 @@ class CleanupPageTriage extends Maintenance {
 	public function execute() {
 		$dbw = PageTriageUtil::getPrimaryConnection();
 		$dbr = PageTriageUtil::getReplicaConnection();
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 		$batchSize = $this->getBatchSize();
 		$count = $batchSize;
@@ -75,7 +73,7 @@ class CleanupPageTriage extends Maintenance {
 				$this->commitTransaction( $dbw, __METHOD__ );
 
 				$this->output( "processing " . $count . "\n" );
-				$lbFactory->waitForReplication();
+				$this->waitForReplication();
 			}
 
 		}

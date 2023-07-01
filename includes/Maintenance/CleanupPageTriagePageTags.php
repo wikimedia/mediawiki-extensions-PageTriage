@@ -9,7 +9,6 @@ namespace MediaWiki\Extension\PageTriage\Maintenance;
 
 use Maintenance;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
-use MediaWiki\MediaWikiServices;
 
 /**
  * Maintenance script that removes data from pagetriage_page_tags with page_id
@@ -28,7 +27,6 @@ class CleanupPageTriagePageTags extends Maintenance {
 	public function execute() {
 		$dbw = PageTriageUtil::getPrimaryConnection();
 		$dbr = PageTriageUtil::getReplicaConnection();
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 		$batchSize = $this->getBatchSize();
 		$count = $batchSize;
@@ -68,7 +66,7 @@ class CleanupPageTriagePageTags extends Maintenance {
 					->execute();
 
 				$this->output( "processing " . $pageCount . "\n" );
-				$lbFactory->waitForReplication();
+				$this->waitForReplication();
 			}
 
 		}

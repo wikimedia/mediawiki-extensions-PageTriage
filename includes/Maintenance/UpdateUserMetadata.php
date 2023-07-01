@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\PageTriage\Maintenance;
 use Maintenance;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
-use MediaWiki\MediaWikiServices;
 
 /**
  * A maintenance script that updates expired user metadata
@@ -62,8 +61,6 @@ class UpdateUserMetadata extends Maintenance {
 			$namespace = NS_MAIN;
 		}
 
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
 		while ( $count === $this->getBatchSize() ) {
 			$count = 0;
 			$res = $this->dbr->newSelectQueryBuilder()
@@ -104,7 +101,7 @@ class UpdateUserMetadata extends Maintenance {
 				}
 
 				$this->output( "processed $count \n" );
-				$lbFactory->waitForReplication();
+				$this->waitForReplication();
 			}
 		}
 

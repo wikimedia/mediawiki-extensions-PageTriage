@@ -138,8 +138,6 @@ class RemoveOldRows extends Maintenance {
 			return;
 		}
 
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
 		$startId = $idRow->max_id + 1;
 		$queueManager = PageTriageServices::wrap( MediaWikiServices::getInstance() )
 			->getQueueManager();
@@ -178,7 +176,7 @@ class RemoveOldRows extends Maintenance {
 			}
 
 			$this->output( "processed $count \n" );
-			$lbFactory->waitForReplication();
+			$this->waitForReplication();
 		}
 	}
 }

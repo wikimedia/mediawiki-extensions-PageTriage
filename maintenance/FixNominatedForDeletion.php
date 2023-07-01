@@ -1,7 +1,6 @@
 <?php
 
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileDeletionTag;
-use MediaWiki\MediaWikiServices;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -23,7 +22,6 @@ class FixNominatedForDeletion extends Maintenance {
 	public function execute() {
 		$dbr = $this->getDB( DB_REPLICA );
 		$dbw = $this->getDB( DB_PRIMARY );
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 		$iterator = new BatchRowIterator(
 			$dbr,
@@ -59,7 +57,7 @@ class FixNominatedForDeletion extends Maintenance {
 				->where( [ 'ptrp_page_id' => $pageIds ] )
 				->caller( __METHOD__ )
 				->execute();
-			$lbFactory->waitForReplication();
+			$this->waitForReplication();
 
 			$count = count( $pageIds );
 			$first = reset( $pageIds );

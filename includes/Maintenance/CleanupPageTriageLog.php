@@ -3,7 +3,6 @@ namespace MediaWiki\Extension\PageTriage\Maintenance;
 
 use Maintenance;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
-use MediaWiki\MediaWikiServices;
 
 /**
  * Maintenance script that updates parameter name from '4::tags' to 'tags' in
@@ -22,7 +21,6 @@ class CleanupPageTriageLog extends Maintenance {
 	public function execute() {
 		$dbw = PageTriageUtil::getPrimaryConnection();
 		$dbr = PageTriageUtil::getReplicaConnection();
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 		// clean up the following type and action
 		$logTypes = [
@@ -69,7 +67,7 @@ class CleanupPageTriageLog extends Maintenance {
 				}
 
 				$this->output( "processed " . $type['type'] . ' ' . $type['action'] . ': ' . $count . "\n" );
-				$lbFactory->waitForReplication();
+				$this->waitForReplication();
 			}
 		}
 	}
