@@ -144,9 +144,9 @@
 			multiple: false
 		};
 
-	$.pageTriageTagsMultiple = 'Multiple issues';
+	const pageTriageTagsMultiple = 'Multiple issues';
 
-	$.pageTriageTagsOptions = {
+	const pageTriageTagsOptions = {
 
 		common: {
 			label: mw.msg( 'pagetriage-tags-cat-common-label' ),
@@ -822,7 +822,18 @@
 			}
 		}
 	};
-	$.pageTriageTagsRedirectCategoryShell = 'Redirect category shell';
+	const pageTriageTagsRedirectCategoryShell = 'Redirect category shell';
 
+	if ( typeof $ !== 'undefined' ) {
+		$.pageTriageTagsMultiple = pageTriageTagsMultiple;
+		$.pageTriageTagsRedirectCategoryShell = pageTriageTagsRedirectCategoryShell;
+		$.pageTriageTagsOptions = pageTriageTagsOptions;
+	}
+
+	module.exports = {
+		pageTriageTagsMultiple,
+		pageTriageTagsRedirectCategoryShell,
+		pageTriageTagsOptions
+	};
 }() );
 // </nowiki>

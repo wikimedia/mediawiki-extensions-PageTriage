@@ -3,6 +3,8 @@
 const { contentLanguageMessage } = require( 'ext.pageTriage.util' );
 const ToolView = require( './ToolView.js' );
 const config = require( './config.json' );
+const tagsOptions = require( 'ext.pageTriage.defaultTagsOptions' );
+
 // Used to keep track of what actions we want to invoke, and with what data.
 const actionQueue = {};
 module.exports = ToolView.extend( {
@@ -11,7 +13,7 @@ module.exports = ToolView.extend( {
 	title: mw.msg( 'pagetriage-tags-title' ),
 	tooltip: 'pagetriage-tags-tooltip',
 	template: mw.template.get( 'ext.pageTriage.views.toolbar', 'tags.underscore' ),
-	tagsOptions: $.pageTriageTagsOptions,
+	tagsOptions,
 	selectedTag: {},
 	selectedTagCount: 0,
 	noteChanged: false,
@@ -717,7 +719,7 @@ module.exports = ToolView.extend( {
 			'|3=' + note + '}}';
 
 		const that = this;
-		messagePosterPromise.then( function ( messagePoster ) {
+		return messagePosterPromise.then( function ( messagePoster ) {
 			return messagePoster.post( topicTitle, note, { tags: 'pagetriage' } );
 		} ).then( function () {
 			mw.pageTriage.actionQueue.runAndRefresh( actionQueue, that.getDataForActionQueue() );

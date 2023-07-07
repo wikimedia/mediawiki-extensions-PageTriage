@@ -6,3 +6,27 @@ Backbone.setDomLibrary( $ );
 // mediawiki
 const mockMediaWiki = require( '@wikimedia/mw-node-qunit/src/mockMediaWiki.js' );
 global.mw = mockMediaWiki();
+global.mw.Map = Map;
+
+class Message {
+	text() {
+		return '<message>';
+	}
+}
+class Title {
+}
+
+class MessagePoster {
+	post() {
+		return Promise.resolve();
+	}
+}
+
+global.mw.Title = Title;
+global.mw.Message = Message;
+
+global.mw.messagePoster = {
+	factory: {
+		create: () => Promise.resolve( new MessagePoster() )
+	}
+};

@@ -1,0 +1,6 @@
+{
+	"@doc": "Virtual JSON. This code is only used in tests.",
+	"TalkPageNoteTemplate": {
+		"Tags": "Taggednote-NPF"
+	}
+}

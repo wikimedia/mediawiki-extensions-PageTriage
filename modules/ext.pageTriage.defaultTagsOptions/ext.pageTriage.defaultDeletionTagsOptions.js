@@ -250,13 +250,13 @@
 			}
 		};
 
-	$.pageTriageDeletionTagsMultiple = {
+	const pageTriageDeletionTagsMultiple = {
 		tag: 'Db-multiple',
 		talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
 		talkpagenotiftpl: 'Db-notice-multiple-NPF'
 	};
 
-	$.pageTriageDeletionTagsOptions = {
+	const pageTriageDeletionTagsOptions = {
 
 		Main: {
 			speedydeletioncommon: {
@@ -347,4 +347,13 @@
 		}
 	};
 
+	if ( typeof $ !== 'undefined' ) {
+		$.pageTriageDeletionTagsMultiple = pageTriageDeletionTagsMultiple;
+		$.pageTriageDeletionTagsOptions = pageTriageDeletionTagsOptions;
+	}
+
+	module.exports = {
+		pageTriageDeletionTagsMultiple,
+		pageTriageDeletionTagsOptions
+	};
 }() );
