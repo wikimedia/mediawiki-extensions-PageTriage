@@ -1,5 +1,6 @@
 // view for displaying tags
 
+const { contentLanguageMessage } = require( 'ext.pageTriage.util' );
 const ToolView = require( './ToolView.js' );
 const config = require( './config.json' );
 // Used to keep track of what actions we want to invoke, and with what data.
@@ -705,7 +706,7 @@ module.exports = ToolView.extend( {
 		);
 
 		const pageName = mw.config.get( 'wgPageName' ).replace( /_/g, ' ' );
-		const topicTitle = mw.pageTriage.contentLanguageMessage(
+		const topicTitle = contentLanguageMessage(
 			'pagetriage-tags-talk-page-notify-topic-title',
 			pageName
 		).text();
