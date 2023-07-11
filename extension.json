@@ -504,7 +504,7 @@
 		},
 		"ext.pageTriage.defaultTagsOptions": {
 			"es6": true,
-			"scripts": [
+			"packageFiles": [
 				"ext.pageTriage.defaultTagsOptions/main.js",
 				"ext.pageTriage.defaultTagsOptions/ext.pageTriage.defaultTagsOptions.js",
 				"ext.pageTriage.defaultTagsOptions/ext.pageTriage.defaultDeletionTagsOptions.js"
