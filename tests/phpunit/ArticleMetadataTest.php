@@ -3,8 +3,6 @@
 namespace MediaWiki\Extension\PageTriage\Test;
 
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
-use MediaWiki\Extension\PageTriage\PageTriageUtil;
-use Wikimedia\Rdbms\DBConnRef;
 
 /**
  * Tests for ArticleMetadata class
@@ -20,9 +18,6 @@ class ArticleMetadataTest extends PageTriageTestCase {
 	/** @var PageTriage */
 	protected $pageTriage;
 
-	/** @var DBConnRef */
-	protected $dbr;
-
 	/** @var int[] */
 	protected $pageIds;
 
@@ -32,7 +27,6 @@ class ArticleMetadataTest extends PageTriageTestCase {
 	protected function setUp(): void {
 		parent::setUp();
 		$this->pageIds = [];
-		$this->dbr = PageTriageUtil::getReplicaConnection();
 
 		// Set up 6 pages to test with.
 		for ( $i = 0; $i < 6; $i++ ) {
@@ -92,7 +86,7 @@ class ArticleMetadataTest extends PageTriageTestCase {
 		);
 
 		// Check that they all exist in the pagetriage_page table.
-		$res = $this->dbr->newSelectQueryBuilder()
+		$res = $this->db->newSelectQueryBuilder()
 			->select( 'ptrp_page_id' )
 			->from( 'pagetriage_page' )
 			->where( [ 'ptrp_page_id' => $validatedPageIds ] )
@@ -130,7 +124,7 @@ class ArticleMetadataTest extends PageTriageTestCase {
 	 */
 	public function testDeleteMetadata() {
 		$this->articleMetadata->deleteMetadata();
-		$res = $this->dbr->newSelectQueryBuilder()
+		$res = $this->db->newSelectQueryBuilder()
 			->select( 'ptrpt_page_id' )
 			->from( 'pagetriage_page_tags' )
 			->where( [ 'ptrpt_page_id' => $this->pageIds ] )

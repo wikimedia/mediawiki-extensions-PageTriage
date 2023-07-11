@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\PageTriage\Test;
 use ApiUsageException;
 use ContentHandler;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
-use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use MockHttpTrait;
@@ -73,8 +72,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		);
 
 		// Check that the database was updated correctly (not really necessary?).
-		$db = PageTriageUtil::getPrimaryConnection();
-		$pageTags = $db->newSelectQueryBuilder()
+		$pageTags = $this->db->newSelectQueryBuilder()
 			->select( '*' )
 			->from( 'pagetriage_page_tags' )
 			->where( [ 'ptrpt_page_id' => $page['id'] ] )
@@ -304,8 +302,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		}
 
 		// Manually set the reviewed at attribute to something really old.
-		$dbw = PageTriageUtil::getPrimaryConnection();
-		$dbw->newUpdateQueryBuilder()
+		$this->db->newUpdateQueryBuilder()
 			->update( 'pagetriage_page' )
 			->set( [ 'ptrp_reviewed_updated' => '20010115000000' ] )
 			->where( [ 'ptrp_page_id' => $page['id'] ] )
@@ -340,17 +337,15 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			->newFromTitle( Title::newFromText( 'Test page ores 2', $this->draftNsId ) );
 		$rev2 = $page->getLatest();
 
-		$dbw = PageTriageUtil::getPrimaryConnection();
-
-		$dbw->insert( 'ores_classification', [
-			'oresc_model' => self::ensureOresModel( 'articlequality' ),
+		$this->db->insert( 'ores_classification', [
+			'oresc_model' => $this->ensureOresModel( 'articlequality' ),
 			'oresc_probability' => 0.4,
 			'oresc_rev' => $rev1,
 			'oresc_class' => 1,
 			'oresc_is_predicted' => 1,
 		] );
 
-		self::setDraftQuality( $rev2, 2 );
+		$this->setDraftQuality( $rev2, 2 );
 
 		$list = $this->getPageTriageList();
 		$this->assertGreaterThan( 1, count( $list ) );
@@ -376,16 +371,14 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			->newFromTitle( Title::newFromText( 'Test page ores 3', $this->draftNsId ) );
 		$rev1 = $page->getLatest();
 
-		$dbw = PageTriageUtil::getPrimaryConnection();
-
-		$dbw->insert( 'ores_classification', [
-			'oresc_model' => self::ensureOresModel( 'articlequality' ),
+		$this->db->insert( 'ores_classification', [
+			'oresc_model' => $this->ensureOresModel( 'articlequality' ),
 			'oresc_probability' => 0.5,
 			'oresc_rev' => $rev1,
 			'oresc_class' => 1,
 			'oresc_is_predicted' => 1,
 		] );
-		self::ensureOresModel( 'draftquality' );
+		$this->ensureOresModel( 'draftquality' );
 
 		$list = $this->getPageTriageList();
 		$this->assertCount( 1, $list, 'no filters' );
@@ -401,9 +394,8 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 	public function testQueryOresCopyvio() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
-		$dbw = PageTriageUtil::getPrimaryConnection();
 		foreach ( [ 'pagetriage_page', 'page' ] as $table ) {
-			$dbw->newDeleteQueryBuilder()
+			$this->db->newDeleteQueryBuilder()
 				->delete( $table )
 				->where( '1 = 1' )
 				->caller( __METHOD__ )
@@ -413,9 +405,9 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			'draftquality' => [ 'enabled' => true ],
 			'articlequality' => [ 'enabled' => true ],
 		] );
-		self::ensureOresModel( 'draftquality' );
-		self::ensureOresModel( 'articlequality' );
-		self::ensureCopyvioTag();
+		$this->ensureOresModel( 'draftquality' );
+		$this->ensureOresModel( 'articlequality' );
+		$this->ensureCopyvioTag();
 
 		// DraftQuality: N/A
 		$this->makePage( 'Page001' );
@@ -459,15 +451,14 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$page2 = $this->insertPage( 'DateRange20190715', 'Testing Date Range II', 0, $user );
 
 		// Manually set the created at attribute to older dates.
-		$dbw = PageTriageUtil::getPrimaryConnection();
-		$dbw->newUpdateQueryBuilder()
+		$this->db->newUpdateQueryBuilder()
 			->update( 'pagetriage_page' )
 			->set( [ 'ptrp_created' => '20190215000000' ] )
 			->where( [ 'ptrp_page_id' => $page1['id'] ] )
 			->caller( __METHOD__ )
 			->execute();
 
-		$dbw->newUpdateQueryBuilder()
+		$this->db->newUpdateQueryBuilder()
 			->update( 'pagetriage_page' )
 			->set( [ 'ptrp_created' => '20190715233000' ] )
 			->where( [ 'ptrp_page_id' => $page2['id'] ] )

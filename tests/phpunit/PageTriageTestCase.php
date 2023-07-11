@@ -8,7 +8,6 @@ use ExtensionRegistry;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriage;
-use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
 use MockHttpTrait;
 
@@ -45,8 +44,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		$this->setMainCache( CACHE_NONE );
 		// Insert minimal required data (subset of what's done in PageTriage/sql/PageTriageTags.sql)
 		// @TODO figure out why this is only run for the first test method when its in addDbData().
-		$db = PageTriageUtil::getPrimaryConnection();
-		$db->insert(
+		$this->db->insert(
 			'pagetriage_tags',
 			[
 				[ 'ptrt_tag_name' => 'afc_state' ],
@@ -114,10 +112,10 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		$page = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $pageAndTitle[ 'title' ] );
 		$revId = $page->getLatest();
 		if ( $draftQualityClass ) {
-			self::setDraftQuality( $revId, $draftQualityClass );
+			$this->setDraftQuality( $revId, $draftQualityClass );
 		}
 		if ( $copyvio ) {
-			self::setCopyvio( $pageAndTitle[ 'id' ], $revId );
+			$this->setCopyvio( $pageAndTitle[ 'id' ], $revId );
 		}
 		$acp = ArticleCompileProcessor::newFromPageId( [
 			$page->getId()
@@ -144,12 +142,11 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		$this->assertArrayEquals( $expectedPages, $pagesFromResponse, false, false, $msg );
 	}
 
-	public static function setDraftQuality( $revId, $classId ) {
-		$dbw = PageTriageUtil::getPrimaryConnection();
+	public function setDraftQuality( $revId, $classId ) {
 		foreach ( [ 0, 1, 2, 3 ] as $id ) {
 			$predicted = $classId === $id;
-			$dbw->insert( 'ores_classification', [
-				'oresc_model' => self::ensureOresModel( 'draftquality' ),
+			$this->db->insert( 'ores_classification', [
+				'oresc_model' => $this->ensureOresModel( 'draftquality' ),
 				'oresc_class' => $id,
 				'oresc_probability' => $predicted ? 0.7 : 0.1,
 				'oresc_is_predicted' => $predicted ? 1 : 0,
@@ -158,10 +155,8 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		}
 	}
 
-	public static function ensureCopyvioTag() {
-		$dbw = PageTriageUtil::getPrimaryConnection();
-
-		$dbw->upsert(
+	public function ensureCopyvioTag() {
+		$this->db->upsert(
 			'pagetriage_tags',
 			[ 'ptrt_tag_name' => 'copyvio', 'ptrt_tag_desc' => 'copyvio' ],
 			[ 'ptrt_tag_name' ],
@@ -169,16 +164,14 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		);
 	}
 
-	public static function setCopyvio( $pageId, $revId ) {
-		$dbw = PageTriageUtil::getPrimaryConnection();
-
-		$tagId = $dbw->newSelectQueryBuilder()
+	public function setCopyvio( $pageId, $revId ) {
+		$tagId = $this->db->newSelectQueryBuilder()
 			->select( 'ptrt_tag_id' )
 			->from( 'pagetriage_tags' )
 			->where( [ 'ptrt_tag_name' => 'copyvio' ] )
 			->fetchField();
 
-		$dbw->insert(
+		$this->db->insert(
 			'pagetriage_page_tags',
 			[
 				'ptrpt_page_id' => $pageId,
@@ -188,14 +181,13 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		);
 	}
 
-	public static function ensureOresModel( $name ) {
-		$dbw = PageTriageUtil::getPrimaryConnection();
+	public function ensureOresModel( $name ) {
 		$modelInfo = [
 			'oresm_name' => $name,
 			'oresm_version' => '0.0.1',
 			'oresm_is_current' => 1
 		];
-		$model = $dbw->newSelectQueryBuilder()
+		$model = $this->db->newSelectQueryBuilder()
 			->select( 'oresm_id' )
 			->from( 'ores_model' )
 			->where( $modelInfo )
@@ -203,8 +195,8 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		if ( $model ) {
 			return $model;
 		}
-		$dbw->insert( 'ores_model', $modelInfo );
-		return $dbw->insertId();
+		$this->db->insert( 'ores_model', $modelInfo );
+		return $this->db->insertId();
 	}
 
 }
