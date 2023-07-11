@@ -1,6 +1,5 @@
 const { Article } = require( 'ext.pageTriage.util' );
-const TagToolView = require( '../../modules/ext.pageTriage.views.toolbar/tags.js' );
-
+let TagToolView;
 describe( 'TagToolView', () => {
 	beforeEach( () => {
 		mw.config.get = jest.fn( ( key ) => {
@@ -11,6 +10,8 @@ describe( 'TagToolView', () => {
 					return null;
 			}
 		} );
+		// needs to be loaded after mw.config.get has been defined to avoid fatal.
+		TagToolView = require( '../../modules/ext.pageTriage.views.toolbar/tags.js' );
 	} );
 
 	test( 'talkPageNote', () => {
@@ -24,7 +25,9 @@ describe( 'TagToolView', () => {
 			pageId: 5,
 			includeHistory: true
 		} );
-		const toolbar = new TagToolView( { eventBus, model } );
+		// pageTriageTagsOptions will not import for some reason.
+		const tagsOptions = { all: {} };
+		const toolbar = new TagToolView( { tagsOptions, eventBus, model } );
 		return toolbar.talkPageNote( 'foo' ).then( () => {
 			expect( actionQueue.runAndRefresh ).toBeCalled();
 		} );
