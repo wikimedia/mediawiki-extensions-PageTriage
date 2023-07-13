@@ -17,7 +17,8 @@
 			"もなー(偽物)",
 			"カッパ鳥",
 			"背番号4のエース",
-			"아라"
+			"아라",
+			"Kokage si"
 		]
 	},
 	"newpagesfeed": "新しいページのフィード",
@@ -78,7 +79,7 @@
 	"pagetriage-filter-redirects": "リダイレクト（削除に関するRfDではありません）",
 	"pagetriage-filter-namespace-heading": "対象名前空間:",
 	"pagetriage-filter-article": "記事",
-	"pagetriage-filter-user-heading": "作成者",
+	"pagetriage-filter-user-heading": "作成者:",
 	"pagetriage-filter-username": "利用者名",
 	"pagetriage-filter-tag-heading": "対象タグ:",
 	"pagetriage-filter-second-show-heading": "条件:",
