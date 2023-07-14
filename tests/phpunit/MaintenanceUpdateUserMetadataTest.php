@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\PageTriage\Test;
 
 use MediaWiki\Extension\PageTriage\Maintenance\UpdateUserMetadata;
-use MediaWiki\Extension\PageTriage\PageTriageUtil;
 
 /**
  * Tests for the updateUserMetadata.php maintenance script.
@@ -19,7 +18,7 @@ class MaintenanceUpdateUserMetadataTest extends PageTriageTestCase {
 		parent::setUp();
 		$this->tablesUsed = [ 'pagetriage_page', 'page' ];
 		// Delete any dangling page triage pages before inserting our test data
-		PageTriageUtil::getPrimaryConnection()->newDeleteQueryBuilder()
+		$this->db->newDeleteQueryBuilder()
 			->delete( 'pagetriage_page' )
 			->where( '1 = 1' )
 			->caller( __METHOD__ )
@@ -27,13 +26,10 @@ class MaintenanceUpdateUserMetadataTest extends PageTriageTestCase {
 	}
 
 	public function testSuccessfulUpdateUserMetadata() {
-		$dbr = PageTriageUtil::getReplicaConnection();
-		$dbw = PageTriageUtil::getPrimaryConnection();
-
 		$mainNsPage = $this->insertPage( 'MainMetadata', 'Test 1', NS_MAIN );
-		$dbw->newUpdateQueryBuilder()
+		$this->db->newUpdateQueryBuilder()
 			->update( 'pagetriage_page' )
-			->set( [ 'ptrp_tags_updated' => $dbr->timestamp( '20200323210427' ) ] )
+			->set( [ 'ptrp_tags_updated' => $this->db->timestamp( '20200323210427' ) ] )
 			->where( [ 'ptrp_page_id' => $mainNsPage['id'] ] )
 			->execute();
 

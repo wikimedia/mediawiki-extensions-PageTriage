@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\PageTriage\Test;
 
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
 use MediaWiki\Extension\PageTriage\Maintenance\PopulateDraftQueue;
-use MediaWiki\Extension\PageTriage\PageTriageUtil;
 
 /**
  * Tests for the populateDraftQueueTest.php maintenance script.
@@ -29,9 +28,8 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 	}
 
 	public function testPreExistingPageAddedToDraftQueueAfterActivation() {
-		$dbr = PageTriageUtil::getReplicaConnection();
 		// Get the initial page count.
-		$initialCount = $dbr->newSelectQueryBuilder()
+		$initialCount = $this->db->newSelectQueryBuilder()
 			->select( 'COUNT(*)' )
 			->from( 'pagetriage_page' )
 		->fetchField();
@@ -51,7 +49,7 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 		);
 
 		// Now the page should be in the queue.
-		$newCount = $dbr->newSelectQueryBuilder()
+		$newCount = $this->db->newSelectQueryBuilder()
 			->select( 'COUNT(*)' )
 			->from( 'pagetriage_page' )
 			->fetchField();
@@ -61,12 +59,11 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 	public function testPreExistingPagesWithCategoriesAreGivenCorrectTags() {
 		$testPageCount = 10;
 		// Get the initial page counts (because previous tests can leave things behind).
-		$db = PageTriageUtil::getReplicaConnection();
-		$initialCount = $db->newSelectQueryBuilder()
+		$initialCount = $this->db->newSelectQueryBuilder()
 			->select( 'COUNT(*)' )
 			->from( 'pagetriage_page' )
 			->fetchField();
-		$initialAfCPendingCount = $db->newSelectQueryBuilder()
+		$initialAfCPendingCount = $this->db->newSelectQueryBuilder()
 			->select( 'COUNT(*)' )
 			->from( 'pagetriage_page_tags' )
 			->join( 'pagetriage_tags', null, 'ptrpt_tag_id = ptrt_tag_id' )

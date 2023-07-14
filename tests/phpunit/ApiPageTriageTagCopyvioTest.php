@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\PageTriage\Test;
 
 use ApiUsageException;
-use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Title\Title;
 
 /**
@@ -48,9 +47,8 @@ class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 
 	public function testCopyvioInsertLog() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
-		$dbw = PageTriageUtil::getPrimaryConnection();
 		foreach ( [ 'pagetriage_page', 'page' ] as $table ) {
-			$dbw->newDeleteQueryBuilder()
+			$this->db->newDeleteQueryBuilder()
 				->delete( $table )
 				->where( '1 = 1' )
 				->caller( __METHOD__ )
@@ -61,9 +59,9 @@ class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 			'draftquality' => [ 'enabled' => true ],
 			'articlequality' => [ 'enabled' => true ],
 		] );
-		self::ensureOresModel( 'draftquality' );
-		self::ensureOresModel( 'articlequality' );
-		self::ensureCopyvioTag();
+		$this->ensureOresModel( 'draftquality' );
+		$this->ensureOresModel( 'articlequality' );
+		$this->ensureCopyvioTag();
 
 		$page1 = $this->makePage( 'Page001' );
 		$this->makePage( 'Page002' );

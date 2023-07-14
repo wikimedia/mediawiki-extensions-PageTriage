@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\PageTriage\Test\Integration;
 
 use MediaWiki\Extension\PageTriage\PageTriage;
-use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -41,8 +40,7 @@ class PageTriageTest extends MediaWikiIntegrationTestCase {
 		$this->db->truncate( 'pagetriage_tags' );
 		$pageIds[] = $this->insertPage( 'PageTriageTest', 'Testing 123' )['id'];
 
-		$dbr = PageTriageUtil::getReplicaConnection();
-		$pageTriagePage = $dbr->newSelectQueryBuilder()
+		$pageTriagePage = $this->db->newSelectQueryBuilder()
 			->select( 'ptrp_tags_updated' )
 			->from( 'pagetriage_page' )
 			->where( [ 'ptrp_page_id' => $pageIds ] )
@@ -53,7 +51,7 @@ class PageTriageTest extends MediaWikiIntegrationTestCase {
 
 		PageTriage::bulkSetTagsUpdated( $pageIds );
 
-		$newPageTriagePage = $dbr->newSelectQueryBuilder()
+		$newPageTriagePage = $this->db->newSelectQueryBuilder()
 			->select( 'ptrp_tags_updated' )
 			->from( 'pagetriage_page' )
 			->where( [ 'ptrp_page_id' => $pageIds ] )
