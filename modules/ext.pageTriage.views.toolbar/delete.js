@@ -1,6 +1,6 @@
 // view for display deletion wizard
 const { contentLanguageMessage } = require( 'ext.pageTriage.util' );
-const { pageTriageDeletionTagsMultiple, pageTriageDeletionTagsOptions } = require( 'ext.pageTriage.defaultTagsOptions' );
+
 // Used to keep track of what actions we want to invoke, and with what data.
 const actionQueue = {};
 
@@ -128,7 +128,7 @@ module.exports = ToolView.extend( {
 	 * deletion' depending on whether the article is a redirect.
 	 */
 	setupDeletionTags: function () {
-		this.deletionTagsOptions = pageTriageDeletionTagsOptions.Main;
+		this.deletionTagsOptions = $.pageTriageDeletionTagsOptions.Main;
 		const xfd = this.deletionTagsOptions.xfd;
 		// redirect
 		if ( Number( this.model.get( 'is_redirect' ) ) === 1 ) {
@@ -914,7 +914,7 @@ module.exports = ToolView.extend( {
 				text = '{{' + tagText + paramsText + '}}';
 			}
 		} else {
-			text = '{{' + pageTriageDeletionTagsMultiple.tag + '|' + tagText + paramsText + '}}';
+			text = '{{' + $.pageTriageDeletionTagsMultiple.tag + '|' + tagText + paramsText + '}}';
 		}
 
 		return new mw.Api().postWithToken( 'csrf', {
@@ -958,7 +958,7 @@ module.exports = ToolView.extend( {
 			paramsText = '';
 		// use generic template for multiple deletion tag
 		if ( count > 1 ) {
-			selected = pageTriageDeletionTagsMultiple;
+			selected = $.pageTriageDeletionTagsMultiple;
 		} else {
 			selected = this.selectedTag[ key ];
 			paramsText = this.buildParams( this.selectedTag[ key ] );
