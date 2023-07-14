@@ -1,0 +1,429 @@
+<template>
+	<div class="mwe-vue-pt-article-row" :class="oddEvenClass">
+		<cdx-icon
+			:class="`mwe-vue-pt-status-icon patrol-status-${patrolStatus}`"
+			:icon="statusIcon"
+		></cdx-icon>
+		<div class="mwe-vue-pt-info-pane">
+			<div class="mwe-vue-pt-info-row">
+				<div class="mwe-vue-pt-article">
+					<span class="mwe-vue-pt-bold">
+						<a :href="titleUrl" target="_blank">{{ title }}</a>
+					</span>
+					<span>
+						(<a :href="historyUrl">{{ $i18n( 'pagetriage-hist' ).text() }}</a>)
+					</span>
+					<span>
+						{{ $i18n( 'pagetriage-dot-separator' ).text() }}
+						{{ $i18n( 'pagetriage-bytes', pageLen ).text() }}
+						{{ $i18n( 'pagetriage-dot-separator' ).text() }}
+						{{ $i18n( 'pagetriage-edits', revCount ).text() }}
+						<span v-if="!isDraft">
+							<span v-if="categoryCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
+								{{ $i18n( 'pagetriage-no-categories' ).text() }}
+							</span>
+							<span v-if="categoryCount !== 0">
+								{{ $i18n( 'pagetriage-dot-separator' ).text() }}
+								{{ $i18n( 'pagetriage-categories', categoryCount ).text() }}
+							</span>
+							<span v-if="linkCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
+								{{ $i18n( 'pagetriage-orphan' ).text() }}
+							</span>
+							<span v-if="recreated" class="mwe-vue-pt-metadata-warning">
+								{{ $i18n( 'pagetriage-recreated' ).text() }}
+							</span>
+						</span>
+						<span v-if="referenceCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
+							{{ $i18n( 'pagetriage-no-reference' ).text() }}
+						</span>
+					</span>
+				</div>
+				<span class="mwe-vue-pt-article-col-right mwe-vue-pt-bold">
+					<cdx-info-chip
+						v-if="newArticleWarning"
+						status="warning"
+						:title="$i18n( 'pagetriage-tag-warning-notice', articleAge ).text()"
+					>
+						{{ creationDatePretty }}
+					</cdx-info-chip>
+					<span v-else>
+						{{ creationDatePretty }}
+					</span>
+				</span>
+			</div>
+			<div class="mwe-vue-pt-info-row">
+				<div>
+					<span v-if="creatorName">
+						<creator-byline
+							:creator-name="creatorName"
+							:creator-user-id="creatorUserId"
+							:creator-auto-confirmed="creatorAutoConfirmed"
+							:creator-user-page-exists="creatorUserPageExists"
+							:creator-talk-page-exists="creatorTalkPageExists"
+						></creator-byline>
+						<span v-if="creatorUserId > 0">
+							{{ $i18n( 'pagetriage-dot-separator' ).text() }}
+							{{ $i18n( 'pagetriage-editcount', creatorEditCount, creatorRegistrationPretty ).text() }}
+							<span v-if="creatorIsBot">
+								{{ $i18n( 'pagetriage-dot-separator' ).text() }}
+								{{ $i18n( 'pagetriage-author-bot' ).text() }}
+							</span>
+						</span>
+						<span v-if="creatorBlocked" class="mwe-vue-pt-metadata-warning">
+							{{ $i18n( 'pagetriage-author-blocked' ).text() }}
+						</span>
+					</span>
+					<span v-else>
+						{{ $i18n( 'pagetriage-no-author' ).text() }}
+					</span>
+				</div>
+				<div class="mwe-vue-pt-article-col-right">
+					<span v-if="lastAfcActionLabel">
+						<span>
+							{{ $i18n( 'lastAfcActionLabel' ).text() }}
+						</span>
+						<span>{{ reviewedUpdatedPretty }}</span>
+					</span>
+				</div>
+			</div>
+			<div class="mwe-vue-pt-info-row">
+				<div class="mwe-vue-pt-snippet">
+					{{ snippet }}
+				</div>
+				<div class="mwe-vue-pt-article-col-right">
+					<a
+						:href="titleUrl"
+						target="_blank"
+						:title="reviewRightHelpText"
+					>
+						<cdx-button action="progressive" weight="primary">
+							{{ $i18n( 'pagetriage-triage' ).text() }}
+						</cdx-button>
+					</a>
+				</div>
+			</div>
+			<div v-if="showOres" class="mwe-vue-pt-info-row">
+				<div>
+					<span>{{ $i18n( 'pagetriage-filter-predicted-class-heading' ).text() }}</span>
+					<span>{{ oresArticleQuality }}</span>
+				</div>
+				<div class="mwe-vue-pt-article-col-right">
+					<span>{{ $i18n( 'pagetriage-filter-predicted-issues-heading' ).text() }}</span>
+					<span v-if="!oresDraftQuality && !( copyvio && showCopyvio )">
+						{{ $i18n( 'pagetriage-filter-stat-predicted-issues-none' ).text() }}
+					</span>
+					<span v-if="oresDraftQuality" class="mwe-vue-pt-issue">
+						{{ oresDraftQuality }}
+					</span>
+					<span v-if="copyvio && showCopyvio">
+						<span v-if="oresDraftQuality">
+							{{ $i18n( 'pagetriage-dot-separator' ).text() }}
+						</span>
+						<span class="mw-parser-output mwe-vue-pt-issue">
+							<a
+								:href="copyvioLink"
+								target="_blank"
+								class="external"
+							>
+								{{ $i18n( 'pagetriage-filter-stat-predicted-issues-copyvio' ).text() }}
+							</a>
+						</span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script>
+/**
+ * @author DannyS712
+ * An individual list item in the feed.
+ */
+
+const { CdxButton, CdxIcon, CdxInfoChip } = require( '@wikimedia/codex' );
+const { cdxIconArticleCheck, cdxIconInfoFilled, cdxIconTrash } = require( './icons.json' );
+const CreatorByline = require( './CreatorByline.vue' );
+const now = new Date();
+// Basic validation for 'YYYYMMDDHHmmss' timestamps
+const timestampValidator = ( value ) => {
+	if ( typeof value !== 'string' ) {
+		return false;
+	}
+	// allow empty values
+	if ( value.length === 0 ) {
+		return true;
+	}
+	// otherwise should be a 14 digit integer
+	return !( value.length !== 14 ||
+		isNaN( value ) ||
+		isNaN( parseInt( value ) )
+	);
+};
+// @vue/component
+module.exports = {
+	configureCompat: {
+		MODE: 3
+	},
+	compilerOptions: {
+		whitespace: 'condense'
+	},
+	name: 'ListItem',
+	components: {
+		CdxButton,
+		CdxIcon,
+		CdxInfoChip,
+		CreatorByline
+	},
+	props: {
+		position: { type: Number, required: true },
+		/*
+		 * Info from pagetriage_page_tags
+		 * see: https://www.mediawiki.org/wiki/Extension:PageTriage#List_of_tags
+         */
+		// Creator information tags
+		creatorUserId: { type: Number, required: true },
+		creatorName: { type: String, required: true },
+		creatorEditCount: { type: Number, required: true },
+		creatorRegistrationUTC: {
+			type: String,
+			required: false,
+			default: '',
+			validator( value ) { return timestampValidator( value ); }
+		},
+		creatorAutoConfirmed: { type: Boolean, required: true },
+		creatorIsBot: { type: Boolean, required: true },
+		creatorBlocked: { type: Boolean, required: true },
+		// Deletion tags
+		afdStatus: { type: Boolean, required: true },
+		blpProdStatus: { type: Boolean, required: true },
+		csdStatus: { type: Boolean, required: true },
+		prodStatus: { type: Boolean, required: true },
+		// Warning tags
+		categoryCount: { type: Number, required: true },
+		linkCount: { type: Number, required: true },
+		referenceCount: { type: Number, required: true },
+		recreated: { type: Boolean, required: true },
+		// Page information tags
+		pageLen: { type: Number, required: true },
+		revCount: { type: Number, required: true },
+		snippet: { type: String, required: true },
+		// afc state tag
+		afcState: {
+			type: Number,
+			required: true,
+			validator( value ) {
+				return [
+					1, // unsubmitted
+					2, // pending
+					3, // under review
+					4 // declined
+				].indexOf( value ) !== -1;
+			}
+		},
+		// copyvio tag; latest revision ID that has been tagged as a likely copyright violation. 0 if not tagged.
+		copyvio: { type: Number, required: true },
+		// patrol status codes
+		// see: https://www.mediawiki.org/wiki/Extension:PageTriage#Status_codes
+		patrolStatus: {
+			type: Number,
+			required: true,
+			validator( value ) {
+				return [
+					0, // unreviewed
+					1, // reviewed
+					2, // patrolled
+					3 // autopatrolled
+				].indexOf( value ) !== -1;
+			}
+		},
+		/*
+		 * Other info from API
+		 */
+		title: { type: String, required: true },
+		isRedirect: { type: Boolean, required: true },
+		creatorUserPageExists: { type: Boolean, required: true },
+		creatorTalkPageExists: { type: Boolean, required: true },
+		creationDateUTC: {
+			type: String,
+			required: true,
+			validator( value ) { return timestampValidator( value ); }
+		},
+		reviewedUpdatedUTC: {
+			type: String,
+			required: true,
+			validator( value ) { return timestampValidator( value ); }
+		},
+		/*
+		 * ORES data may be undefined if extension is not available
+		 * a quick check of the results returned by the PageTriageList API
+		 * shows results that align with this apps predicted class & ratings values
+		 * such as: 'Start', 'Stub', 'Spam', C-class', along with other values
+		 * such as: 'N/A', and ''
+		 */
+		oresArticleQuality: { type: String, default: undefined },
+		oresDraftQuality: { type: String, default: undefined }
+	},
+	data: function () {
+		return {
+			showOres: mw.config.get( 'wgShowOresFilters' ),
+			showCopyvio: mw.config.get( 'wgShowCopyvio' ),
+			enableReviewButton: mw.config.get( 'wgPageTriageEnableReviewButton' ),
+			draftNamespaceId: mw.config.get( 'wgPageTriageDraftNamespaceId' ),
+			timeOffset: parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] )
+		};
+	},
+	computed: {
+		statusIcon: function () {
+			if ( this.isDraft ) {
+				return cdxIconInfoFilled;
+			} else if ( mw.config.get( 'wgPageTriageEnableEnglishWikipediaFeatures' ) && ( this.afdStatus || this.blpProdStatus || this.csdStatus || this.prodStatus ) ) {
+				return cdxIconTrash;
+			} else if ( this.patrolStatus !== 0 ) {
+				return cdxIconArticleCheck;
+			} else {
+				return cdxIconInfoFilled;
+			}
+		},
+		oddEvenClass: function () { return this.position % 2 === 0 ? 'mwe-vue-pt-article-row-even' : 'mwe-vue-pt-article-row-odd'; },
+		isDraft: function () {
+			const pageNamespaceId = ( new mw.Title( this.title ) ).getNamespaceId();
+			return pageNamespaceId === this.draftNamespaceId;
+		},
+		titleUrl: function () {
+			const params = {};
+			if ( this.isRedirect ) {
+				params.redirect = 'no';
+			}
+			return mw.util.getUrl( this.title, params );
+		},
+		historyUrl: function () {
+			return mw.util.getUrl( this.title, { action: 'history' } );
+		},
+		creationDatePretty: function () {
+			return this.prettyTimestamp( this.creationDateUTC );
+		},
+		articleAge: function () {
+			const creationDateParsed = moment.utc( this.creationDateUTC, 'YYYYMMDDHHmmss' );
+			return Math.ceil( ( now - creationDateParsed ) / ( 1000 * 60 ) );
+		},
+		newArticleWarning: function () {
+			return ( ( this.isDraft === undefined || this.isDraft === false ) && ( this.articleAge <= 60 ) );
+		},
+		creatorRegistrationPretty: function () {
+			return this.prettyTimestamp( this.creatorRegistrationUTC );
+		},
+		reviewedUpdatedPretty: function () {
+			return this.prettyTimestamp( this.reviewedUpdatedUTC );
+		},
+		lastAfcActionLabel: function () {
+			if ( this.afcState === 2 ) {
+				return 'pagetriage-afc-date-label-submission';
+			} else if ( this.afcState === 3 ) {
+				return 'pagetriage-afc-date-label-review';
+			} else if ( this.afcState === 4 ) {
+				return 'pagetriage-afc-date-label-declined';
+			}
+			return '';
+		},
+		reviewRightHelpText: function () {
+			if ( this.enableReviewButton ) {
+				return '';
+			}
+			return this.$i18n( 'pagetriage-no-patrol-right' ).text();
+		},
+		copyvioLink: function () {
+			if ( this.copyvio === 0 ) {
+				// Shouldn't be used
+				return '';
+			}
+			return 'https://tools.wmflabs.org/copypatrol/en?filter=all&searchCriteria=page_exact' +
+				'&searchText=' + ( new mw.Title( this.title ) ).getMainText() +
+				'&drafts=' + ( this.isDraft ? '1' : '0' ) +
+				'&revision=' + this.copyvio;
+		}
+	},
+	methods: {
+		parseTimestamp: function ( utcTimestamp ) {
+			return moment.utc( utcTimestamp, 'YYYYMMDDHHmmss' );
+		},
+		prettyTimestamp: function ( utcTimestamp ) {
+			return this.parseTimestamp( utcTimestamp ).utcOffset( this.timeOffset ).format(
+				this.$i18n( 'pagetriage-creation-dateformat' ).text()
+			);
+		}
+	}
+};
+</script>
+
+<style lang="less">
+@import 'mediawiki.skin.variables.less';
+.mwe-vue-pt-metadata-warning::before {
+	color: initial;
+	content: ' · ';
+}
+.mwe-vue-pt-info-pane {
+	padding: 0.5em 0.6em 0.6em 2.7em;
+	min-height: 4.8em;
+	display: table;
+	box-sizing: border-box;
+	width: 100%;
+}
+.mwe-vue-pt-info-row {
+	display: table-row;
+	vertical-align: top;
+	& > div {
+		display: table-cell;
+	}
+}
+.mwe-vue-pt-status-icon {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+.patrol-status-0 {
+	color: @accent-color-base;
+}
+.patrol-status-1 {
+	color: @color-success;
+}
+.patrol-status-3 {
+	color: @color-visited;
+}
+/* info about the article */
+.mwe-vue-pt-article {
+	font-size: 1.1em;
+	line-height: 1.6em;
+	/* Info on the right hand side: creation date, updated date, potential isues, etc. */
+	&-col-right {
+		float: right;
+		text-align: right;
+		white-space: nowrap;
+	}
+	&-row {
+		position: relative;
+		border: 1px solid #ccc;
+		border-top: 0;
+		&-even {
+			background-color: #f1f1f1;
+		}
+		&-odd {
+			background-color: @background-color-base;
+		}
+	}
+}
+.mwe-vue-pt-bold {
+	font-weight: bold;
+}
+.mwe-vue-pt-metadata-warning,
+.mwe-vue-pt-issue {
+	color: #c00;
+	font-weight: bold;
+}
+/* the article snippet */
+.mwe-vue-pt-snippet {
+	color: #808080;
+	padding-right: 1em;
+	vertical-align: top;
+}
+</style>

@@ -22,11 +22,17 @@ class MessagePoster {
 	}
 }
 
+class Api {
+	get() {
+		return Promise.resolve( { pagetriagestats: { stats: '' } } );
+	}
+}
+
 global.mw.Title = Title;
 global.mw.Message = Message;
-
 global.mw.messagePoster = {
 	factory: {
 		create: () => Promise.resolve( new MessagePoster() )
 	}
 };
+global.mw.Api = Api;
