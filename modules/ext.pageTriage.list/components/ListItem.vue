@@ -90,7 +90,7 @@
 				<div class="mwe-vue-pt-snippet">
 					{{ snippet }}
 				</div>
-				<div class="mwe-vue-pt-article-col-right">
+				<div v-if="enableReviewButton" class="mwe-vue-pt-article-col-right">
 					<a
 						:href="titleUrl"
 						target="_blank"
