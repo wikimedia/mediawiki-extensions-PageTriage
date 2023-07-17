@@ -3,7 +3,6 @@
 const { contentLanguageMessage } = require( 'ext.pageTriage.util' );
 const ToolView = require( './ToolView.js' );
 const config = require( './config.json' );
-const { pageTriageTagsMultiple, pageTriageTagsRedirectCategoryShell, pageTriageTagsOptions } = require( 'ext.pageTriage.defaultTagsOptions' );
 
 // Used to keep track of what actions we want to invoke, and with what data.
 const actionQueue = {};
@@ -23,7 +22,7 @@ module.exports = ToolView.extend( {
 	 * @param {Object} options
 	 */
 	initialize: function ( options ) {
-		this.tagsOptions = options.tagsOptions ? options.tagsOptions : pageTriageTagsOptions;
+		this.tagsOptions = options.tagsOptions ? options.tagsOptions : $.pageTriageTagsOptions;
 		this.eventBus = options.eventBus;
 		this.moduleConfig = options.moduleConfig || {};
 		this.buildAllCategory();
@@ -579,7 +578,7 @@ module.exports = ToolView.extend( {
 		// If multiple templates, wrap string in {{Multiple issues}}. If just one template, trim()
 		// it to get rid of extra \n
 		if ( this.objectPropCount( multipleTags ) > 1 ) {
-			openText = '{{' + pageTriageTagsMultiple + '|';
+			openText = '{{' + $.pageTriageTagsMultiple + '|';
 			closeText = '\n}}';
 		} else {
 			multipleTagsText = multipleTagsText.trim();
@@ -593,7 +592,7 @@ module.exports = ToolView.extend( {
 		}
 
 		if ( this.objectPropCount( redirectTags ) > 0 ) {
-			bottomText = '{{' + pageTriageTagsRedirectCategoryShell +
+			bottomText = '{{' + $.pageTriageTagsRedirectCategoryShell +
 				'|' + multipleRedirectTagsText + '\n}}' + bottomText;
 		}
 
