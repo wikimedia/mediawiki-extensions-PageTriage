@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Alesaru",
 			"Andrei Stroe",
 			"GabiBil",
 			"Kyouko",
@@ -16,6 +17,7 @@
 	"pagetriage-no-author": "Nicio informație despre autor prezentă",
 	"pagetriage-byline": "Creată de $1 ($2$3$4)",
 	"pagetriage-byline-new-editor": "Creată de noul editor $1 ($2$3$4)",
+	"pagetriage-byline-new-editor-heading": "Creat de {{GENDER:$1| nou}} {{GENDER:$1| editor}}",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|modificare|modificări|de modificări}} începând cu $2",
 	"pagetriage-author-bot": "Robot",
 	"pagetriage-filter-list-prompt": "Setare filtre",
