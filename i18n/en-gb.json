@@ -4,9 +4,15 @@
 			"Bjh21",
 			"Pansi123",
 			"Sau226",
-			"Shirayuki"
+			"Shirayuki",
+			"Boke",
+			"Cakkaparla",
+			"Novem Linguae",
+			"Reedy"
 		]
 	},
+	"pagetriage-del-tags-dba7-desc": "An article about a real person, individual animal(s), organisation (for example, a band, club, or company, not including educational institutions), or web content that does not indicate why its subject is important or significant. This is distinct from verifiability and reliability of sources, and is a lower standard than notability. (A7)",
 	"pagetriage-del-tags-dbu3-desc": "Galleries in the userspace that consist mostly or entirely of \"fair use\" or non-free images. Wikipedia's non-free content policy prohibits the use of non-free content in userspace, even content that the user has uploaded; use of content in the public domain or under a free licence is acceptable. (U3)",
+	"pagetriage-tags-param-free-label": "This content is freely licenced.",
 	"pagetriage-toolbar-minimize": "Minimise"
 }
