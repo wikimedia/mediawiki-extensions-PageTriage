@@ -12,7 +12,7 @@ describe( 'DeleteToolView', () => {
 			}
 		} );
 		// needs to be loaded after mw.config.get has been defined to avoid fatal.
-		DeleteToolView = require( '../../modules/ext.pageTriage.views.toolbar/delete.js' );
+		DeleteToolView = require( '../../../modules/ext.pageTriage.views.toolbar/delete.js' );
 	} );
 
 	test( 'notifyUser', () => {

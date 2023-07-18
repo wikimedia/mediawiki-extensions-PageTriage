@@ -11,7 +11,7 @@ describe( 'TagToolView', () => {
 			}
 		} );
 		// needs to be loaded after mw.config.get has been defined to avoid fatal.
-		TagToolView = require( '../../modules/ext.pageTriage.views.toolbar/tags.js' );
+		TagToolView = require( '../../../modules/ext.pageTriage.views.toolbar/tags.js' );
 	} );
 
 	test( 'talkPageNote', () => {
