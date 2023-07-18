@@ -35,7 +35,7 @@
 	"pagetriage-byline": "Created by $1 ($2$3$4)",
 	"pagetriage-byline-heading": "Created by {{GENDER:$1}}",
 	"pagetriage-byline-new-editor": "Created by new editor $1 ($2$3$4)",
-	"pagetriage-byline-new-editor-heading": "Created by {{GENDER:$1|new}} {{GENDER:$1|editor}}",
+	"pagetriage-byline-new-editor-heading": "Created by a {{GENDER:$1|new editor}}",
 	"pagetriage-articleinfo-byline": "This page was created on $1 by $2 ($3$4$5)",
 	"pagetriage-articleinfo-byline-new-editor": "This page was created on $1 by new editor $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|edit|edits}} since $2",
