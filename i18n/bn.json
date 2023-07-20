@@ -21,6 +21,7 @@
 	"pagetriage-no-reference": "কোন তথ্যসূত্র নেই",
 	"pagetriage-recreated": "পূর্বে অপসারিত",
 	"pagetriage-byline": "$1 দ্বারা তৈরি হয়েছে ($2$3$4)",
+	"pagetriage-byline-heading": "{{GENDER:$1}} দ্বারা তৈরি",
 	"pagetriage-byline-new-editor": "নতুন সম্পাদক $1 দ্বারা তৈরি হয়েছে ($2$3$4)",
 	"pagetriage-editcount": "$2 থেকে $1টি {{PLURAL:$1|সম্পাদনা}}",
 	"pagetriage-author-not-autoconfirmed": "নতুন সম্পাদক",
