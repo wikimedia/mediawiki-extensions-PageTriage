@@ -19,6 +19,9 @@ use PageArchive;
  */
 class HooksTest extends PageTriageTestCase {
 
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::onPageSaveComplete()
+	 */
 	public function testDraftRedirectsAreNotAdded() {
 		// Get the initial page count of the PageTriage queue.
 		$originalCount = $this->db->newSelectQueryBuilder()
@@ -35,6 +38,9 @@ class HooksTest extends PageTriageTestCase {
 		$this->assertEquals( $originalCount, $actualCount );
 	}
 
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::onPageDeleteComplete()
+	 */
 	public function testOnPageDelete() {
 		$title = Title::newFromText( 'Delete me' );
 		$page = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $title );
@@ -58,6 +64,9 @@ class HooksTest extends PageTriageTestCase {
 		$this->assertSame( 0, $afterDeleteCount );
 	}
 
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\HookHandlers\UndeleteHookHandler::onArticleUndelete()
+	 */
 	public function testOnArticleUndelete() {
 		$title = Title::newFromText( 'Undelete me' );
 		$page = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $title );

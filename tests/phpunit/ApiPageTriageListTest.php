@@ -160,6 +160,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 	/**
 	 * Moving an existing page to the Draft namespace adds it to the queue.
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::onPageMoveComplete()
 	 */
 	public function testMoveToDraftPage() {
 		// Get the initial queue count.
@@ -184,6 +185,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 	/**
 	 * Moving a page out of the Draft namespace removes it from the queue.
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::onPageMoveComplete()
 	 */
 	public function testMoveFromDraftPage() {
 		// Add a page to the Draft namespace.
