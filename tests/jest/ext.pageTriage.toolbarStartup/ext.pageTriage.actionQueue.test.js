@@ -1,4 +1,4 @@
-const actionQueue = require( '../../modules/ext.pageTriage.toolbarStartup/ext.pageTriage.actionQueue.js' );
+const actionQueue = require( '../../../modules/ext.pageTriage.toolbarStartup/ext.pageTriage.actionQueue.js' );
 describe( 'ext.pageTriage.actionQueue', () => {
 
 	test( 'Testing the queue: synchronous and asynchronous methods', function () {
