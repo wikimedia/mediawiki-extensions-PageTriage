@@ -113,13 +113,84 @@ class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 		$this->assertCount( 2, $result[0]['query']['logevents'] );
 	}
 
+	public function testCopyvioDeleteLog() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
+		$this->setMwGlobals( 'wgOresModels', [
+			'draftquality' => [ 'enabled' => true ],
+			'articlequality' => [ 'enabled' => true ],
+		] );
+		$this->ensureOresModel( 'draftquality' );
+		$this->ensureOresModel( 'articlequality' );
+		$this->ensureCopyvioTag();
+
+		$page = $this->makeDraft( 'Page001' );
+
+		// No copyvio yet.
+		$list = $this->getPageTriageList();
+		$this->assertPages( [ 'Page001'	], $list );
+		$list = $this->getPageTriageList( [ 'show_predicted_issues_copyvio' => 1 ] );
+		$this->assertEquals( [], $list );
+
+		// Tag page for copyvio.
+		$title = Title::newFromID( $page );
+		$revId = $title->getLatestRevID();
+		$this->setGroupPermissions( '*', 'pagetriage-copyvio', true );
+		$request = $this->doApiRequestWithToken(
+			[
+				'action' => 'pagetriagetagcopyvio',
+				'revid' => $revId,
+			]
+		);
+		$this->assertEquals( 'success', $request[0]['pagetriagetagcopyvio']['result'] );
+		$list = $this->getPageTriageList( [ 'show_predicted_issues_copyvio' => 1 ] );
+		$this->assertPages( [ 'Page001' ], $list );
+
+		// Check that log entry was created.
+		$result = $this->getLogEventForTitle( (string)$title );
+		$logevent = $result[0]['query']['logevents'][0];
+		$this->assertEquals( 'insert', $logevent['action'] );
+		$this->assertEquals( $revId, $logevent['params']['revId'] );
+		$this->assertEquals( 'pagetriage-copyvio', $logevent['type'] );
+
+		// Untag page for copyvio.
+		$request = $this->doApiRequestWithToken(
+			[
+				'action' => 'pagetriagetagcopyvio',
+				'revid' => $revId,
+				'untag' => true,
+			]
+		);
+		$this->assertEquals( 'success', $request[0]['pagetriagetagcopyvio']['result'] );
+		$list = $this->getPageTriageList( [ 'show_predicted_issues_copyvio' => 1 ] );
+		$this->assertPages( [], $list );
+
+		// Check that log entry was created.
+		$result = $this->getLogEventForTitle( (string)$title );
+		$this->assertCount( 2, $result[0]['query']['logevents'] );
+		$logevent = $result[0]['query']['logevents'][0];
+		$this->assertEquals( 'delete', $logevent['action'] );
+		$this->assertEquals( $revId, $logevent['params']['revId'] );
+		$this->assertEquals( 'pagetriage-copyvio', $logevent['type'] );
+
+		// Should get 'done' if posting a duplicate rev ID.
+		$request = $this->doApiRequestWithToken( [
+			'action' => 'pagetriagetagcopyvio',
+			'revid' => $revId,
+			'untag' => true,
+		] );
+		$this->assertEquals( 'done', $request[0]['pagetriagetagcopyvio']['result'] );
+
+		// But there should still only be two log entries (1 tag and 1 untag).
+		$result = $this->getLogEventForTitle( (string)$title );
+		$this->assertCount( 2, $result[0]['query']['logevents'] );
+	}
+
 	protected function getLogEventForTitle( $title ) {
 		return $this->doApiRequest(
 			[
 				'action' => 'query',
 				'list' => 'logevents',
 				'letype' => 'pagetriage-copyvio',
-				'leaction' => 'pagetriage-copyvio/insert',
 				'letitle' => $title,
 			]
 		);
