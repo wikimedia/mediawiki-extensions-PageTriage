@@ -83,9 +83,9 @@ module.exports = {
 	border-top: 0;
 }
 #mwe-vue-pt-feed-load-more .cdx-progress-bar {
-	margin: auto;
 	/* Override codex styles to make a quieter version */
 	background-color: inherit;
 	border: unset;
+	margin: 1.5em 0 1.5em 0;
 }
 </style>
