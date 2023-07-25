@@ -6,13 +6,6 @@
 	>
 		<div id="mwe-vue-pt-feed-load-more">
 			<cdx-progress-bar></cdx-progress-bar>
-			<cdx-button
-				action="progressive"
-				type="button"
-				@click="emitLoadMore"
-			>
-				{{ $i18n( 'pagetriage-more' ).text() }}
-			</cdx-button>
 		</div>
 	</div>
 </template>
@@ -25,7 +18,7 @@
  * so that the intersection observer does not need to be recreated each time.
  */
 
-const { CdxButton, CdxProgressBar } = require( '@wikimedia/codex' );
+const { CdxProgressBar } = require( '@wikimedia/codex' );
 const { onMounted, ref } = require( 'vue' );
 // @vue/component
 module.exports = {
@@ -36,7 +29,6 @@ module.exports = {
 		whitespace: 'condense'
 	},
 	components: {
-		CdxButton,
 		CdxProgressBar
 	},
 	props: {
@@ -65,8 +57,7 @@ module.exports = {
 			observer.observe( barRef.value );
 		} );
 		return {
-			barRef,
-			emitLoadMore
+			barRef
 		};
 	}
 };
