@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\PageTriage\Test;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
+use User;
 
 /**
  * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil
@@ -100,8 +101,8 @@ class PageTriageUtilTest extends MediaWikiIntegrationTestCase {
 	public function testCreateNotificationEvent() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'Echo' );
 
-		$title = Title::newFromText( 'NotificationTest' );
-		$user = static::getTestSysop()->getUser( 'TestWikiAdmin' );
+		$title = Title::makeTitle( NS_MAIN, 'NotificationTest' );
+		$user = $this->createMock( User::class );
 		$type = 'pagetriage-add-maintenance-tag';
 		$extra = [
 			'tags' => [ 'under review' ],
@@ -116,8 +117,8 @@ class PageTriageUtilTest extends MediaWikiIntegrationTestCase {
 		$typeResult = $echoEvent->getType();
 		$extraTagResult = $echoEvent->getExtraParam( 'tags' );
 
-		$this->assertTrue( $titleResult === 'NotificationTest' );
-		$this->assertTrue( $typeResult === $type );
-		$this->assertTrue( $extraTagResult === $extra['tags'] );
+		$this->assertSame( 'NotificationTest', $titleResult );
+		$this->assertSame( $type, $typeResult );
+		$this->assertSame( $extra['tags'], $extraTagResult );
 	}
 }
