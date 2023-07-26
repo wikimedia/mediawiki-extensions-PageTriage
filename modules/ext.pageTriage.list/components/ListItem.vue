@@ -80,7 +80,7 @@
 				<div class="mwe-vue-pt-article-col-right">
 					<span v-if="lastAfcActionLabel">
 						<span>
-							{{ $i18n( 'lastAfcActionLabel' ).text() }}
+							{{ lastAfcActionLabel }}
 						</span>
 						<span>{{ reviewedUpdatedPretty }}</span>
 					</span>
@@ -318,11 +318,11 @@ module.exports = {
 		},
 		lastAfcActionLabel: function () {
 			if ( this.afcState === 2 ) {
-				return 'pagetriage-afc-date-label-submission';
+				return this.$i18n( 'pagetriage-afc-date-label-submission' ).text();
 			} else if ( this.afcState === 3 ) {
-				return 'pagetriage-afc-date-label-review';
+				return this.$i18n( 'pagetriage-afc-date-label-review' ).text();
 			} else if ( this.afcState === 4 ) {
-				return 'pagetriage-afc-date-label-declined';
+				return this.$i18n( 'pagetriage-afc-date-label-declined' ).text();
 			}
 			return '';
 		},
