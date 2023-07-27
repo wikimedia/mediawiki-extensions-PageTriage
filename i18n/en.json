@@ -568,5 +568,7 @@
 	"apierror-bad-pagetriage-enqueue-mainpage": "The main page cannot be added to the pagetriage queue",
 	"apierror-bad-pagetriage-enqueue-invalidnamespace": "The page specified is in a namespace that does not have page triage enabled",
 	"apierror-bad-pagetriage-enqueue-alreadyqueued": "The page specified already exists in the pagetriage queue",
-	"apierror-pagetriage-missingtag": "Could not find a tag ID for the copyvio tag. Try running update.php."
+	"apierror-pagetriage-missingtag": "Could not find a tag ID for the copyvio tag. Try running update.php.",
+	"apihelp-query+isreviewed-summary": "Determine if a page is marked as reviewed.",
+	"apihelp-query+isreviewed-example-1": "Determine if [[Main Page]] is marked as reviewed."
 }

@@ -21,6 +21,9 @@
 		"pagetriagetagcopyvio": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageTagCopyvio",
 		"pagetriagetagging": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageTagging"
 	},
+	"APIPropModules": {
+		"isreviewed": "MediaWiki\\Extension\\PageTriage\\Api\\ApiIsReviewed"
+	},
 	"AvailableRights": [
 		"pagetriage-copyvio"
 	],
