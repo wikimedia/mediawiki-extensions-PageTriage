@@ -6,6 +6,8 @@
 	},
 	"pagetriage-author-bot": "Бот",
 	"pagetriage-filter-stat-bots": "Боттор тарабынан",
+	"pagetriage-tags-externallinks-label": "Тышкы шилтемелер",
 	"pagetriage-tags-param-free-yes-label": "Ооба",
-	"pagetriage-tags-param-free-no-label": "Жок"
+	"pagetriage-tags-param-free-no-label": "Жок",
+	"pagetriage-toolbar-close": "Жабуу"
 }
