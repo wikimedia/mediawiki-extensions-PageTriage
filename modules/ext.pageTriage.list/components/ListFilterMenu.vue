@@ -203,6 +203,10 @@ module.exports = {
 	},
 	setup() {
 		const settings = useSettingsStore();
+		settings.$subscribe( ( _mutation, state ) => {
+			// persist the whole state to local storage whenever it changes
+			localStorage.setItem( 'ext.pageTriage.settings', JSON.stringify( state ) );
+		} );
 		// Need to include at least one of reviewed/unreviewed, and at least
 		// one of nominated for deletion/redirects/normal articles
 		const canSaveSettings = computed( () => {
