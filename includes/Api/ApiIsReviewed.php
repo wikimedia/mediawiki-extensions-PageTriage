@@ -2,15 +2,28 @@
 
 namespace MediaWiki\Extension\PageTriage\Api;
 
+use ApiQuery;
 use ApiQueryBase;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\WikiPageFactory;
 
 /**
  * Changes the Action API to support ?action=query&prop=isreviewed, which returns
  * true if a page is marked as reviewed, and false if it isn't.
  */
 class ApiIsReviewed extends ApiQueryBase {
+
+	private WikiPageFactory $wikiPageFactory;
+
+	/**
+	 * @param ApiQuery $queryModule
+	 * @param string $moduleName
+	 * @param WikiPageFactory $wikiPageFactory
+	 */
+	public function __construct( ApiQuery $queryModule, $moduleName, WikiPageFactory $wikiPageFactory ) {
+		parent::__construct( $queryModule, $moduleName );
+		$this->wikiPageFactory = $wikiPageFactory;
+	}
 
 	public function execute() {
 		$titlesAndPageIds = $this->getPageSet()->getAllTitlesByNamespace();
@@ -21,7 +34,7 @@ class ApiIsReviewed extends ApiQueryBase {
 		}
 
 		foreach ( $titlesAndPageIds[0] as $pageId ) {
-			$wikipage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $pageId );
+			$wikipage = $this->wikiPageFactory->newFromID( $pageId );
 
 			$wikipageDoesNotExist = $wikipage === null;
 			if ( $wikipageDoesNotExist ) {
