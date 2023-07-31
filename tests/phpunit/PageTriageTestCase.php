@@ -104,7 +104,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	 * @param string $title
 	 * @param bool $draftQualityClass
 	 * @param bool $copyvio
-	 * @return mixed
+	 * @return int page_id
 	 */
 	protected function makePage( $title, $draftQualityClass = false, $copyvio = false ) {
 		$user = static::getTestUser()->getUser();

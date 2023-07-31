@@ -47,6 +47,26 @@ class PageTriageUtil {
 	}
 
 	/**
+	 * Return the ptrl_reviewed status of a page.
+	 *
+	 * @param WikiPage $page
+	 *
+	 * @throws Exception
+	 * @return int|null 0 = unreviewed, 1 = marked as reviewed, 2 = marked as
+	 * patrolled, 3 = autopatrolled, null = not in queue (treated as marked as
+	 * reviewed)
+	 */
+	public static function getStatus( WikiPage $page ) {
+		$queueLookup = PageTriageServices::wrap( MediaWikiServices::getInstance() )
+			->getQueueLookup();
+		$queueRecord = $queueLookup->getByPageId( $page->getId() );
+		if ( !$queueRecord ) {
+			return null;
+		}
+		return $queueRecord->getReviewedStatus();
+	}
+
+	/**
 	 * Get the IDs of applicable PageTriage namespaces.
 	 * @param Config|null $config
 	 * @return int[]
