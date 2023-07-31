@@ -54,6 +54,7 @@
 }
 
 .mwe-pt-metadata-warning,
+.mwe-pt-metadata-warning > a,
 .mwe-pt-issue {
 	color: #c00;
 	font-weight: bold;

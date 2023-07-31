@@ -30,7 +30,7 @@
 								{{ $i18n( 'pagetriage-orphan' ).text() }}
 							</span>
 							<span v-if="recreated" class="mwe-vue-pt-metadata-warning">
-								{{ $i18n( 'pagetriage-recreated' ).text() }}
+								<a :href="previouslyDeletedLogLink">{{ $i18n( 'pagetriage-recreated' ).text() }}</a>
 							</span>
 						</span>
 						<span v-if="referenceCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
@@ -341,6 +341,9 @@ module.exports = {
 				'&searchText=' + ( new mw.Title( this.title ) ).getMainText() +
 				'&drafts=' + ( this.isDraft ? '1' : '0' ) +
 				'&revision=' + this.copyvio;
+		},
+		previouslyDeletedLogLink: function () {
+			return mw.util.getUrl( 'Special:Log', { type: 'delete', page: this.title } );
 		}
 	},
 	methods: {
@@ -416,6 +419,7 @@ module.exports = {
 	font-weight: bold;
 }
 .mwe-vue-pt-metadata-warning,
+.mwe-vue-pt-metadata-warning > a,
 .mwe-vue-pt-issue {
 	color: #c00;
 	font-weight: bold;
