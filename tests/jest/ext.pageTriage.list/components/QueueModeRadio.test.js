@@ -1,7 +1,6 @@
 const { mount } = require( '@vue/test-utils' );
 const { createTestingPinia } = require( '@pinia/testing' );
 let QueueModeRadio;
-let useSettingsStore;
 let settings;
 let wrapper;
 describe( 'QueueModeRadio.vue', () => {
@@ -14,7 +13,7 @@ describe( 'QueueModeRadio.vue', () => {
 					return null;
 			}
 		} );
-		useSettingsStore = require( '../../../../modules/ext.pageTriage.list/stores/settings.js' ).useSettingsStore;
+		const { useSettingsStore } = require( 'ext.pageTriage.util' );
 		QueueModeRadio = require( '../../../../modules/ext.pageTriage.list/components/QueueModeRadio.vue' );
 		wrapper = mount( QueueModeRadio, {
 			global: {

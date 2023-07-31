@@ -23,7 +23,7 @@
  */
 
 const { CdxRadio } = require( '@wikimedia/codex' );
-const { useSettingsStore } = require( '../stores/settings.js' );
+const { useSettingsStore } = require( 'ext.pageTriage.util' );
 // @vue/component
 module.exports = {
 	configureCompat: {

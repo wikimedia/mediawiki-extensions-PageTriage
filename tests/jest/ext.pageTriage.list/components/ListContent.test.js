@@ -2,7 +2,6 @@ const { mount } = require( '@vue/test-utils' );
 const { createTestingPinia } = require( '@pinia/testing' );
 let ListContent;
 let wrapper;
-let useSettingsStore;
 let settings;
 describe( 'ListContent.vue', () => {
 	beforeEach( () => {
@@ -14,7 +13,7 @@ describe( 'ListContent.vue', () => {
 					return null;
 			}
 		} );
-		useSettingsStore = require( '../../../../modules/ext.pageTriage.list/stores/settings.js' ).useSettingsStore;
+		const { useSettingsStore } = require( 'ext.pageTriage.util' );
 		ListContent = require( '../../../../modules/ext.pageTriage.list/components/ListContent.vue' );
 		wrapper = mount( ListContent, {
 			global: {

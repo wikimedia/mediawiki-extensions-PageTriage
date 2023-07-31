@@ -1,9 +1,26 @@
-const { Article } = require( 'ext.pageTriage.util' );
-let pageTriageDeletionTagsOptions, DeleteToolView, model, modelRedirect, eventBus;
+let pageTriageDeletionTagsOptions, Article, DeleteToolView, model, modelRedirect, eventBus;
 
 describe( 'DeleteToolView', () => {
 	beforeEach( () => {
 		eventBus = _.extend( {}, Backbone.Events );
+		mw.config.get = jest.fn( ( key ) => {
+			switch ( key ) {
+				case 'wgPageName':
+					return 'PageName';
+				default:
+					return null;
+			}
+		} );
+		mw.user.options.get = jest.fn( ( key ) => {
+			switch ( key ) {
+				case 'timecorrection':
+					return 'ZoneInfo|-480|America/Los_Angeles';
+				default:
+					return null;
+			}
+		} );
+		// needs to be loaded after mw.config.get has been defined to avoid fatal.
+		Article = require( 'ext.pageTriage.util' ).Article;
 		model = new Article( {
 			eventBus,
 			pageId: 5,
@@ -17,17 +34,8 @@ describe( 'DeleteToolView', () => {
 			pageId: 5,
 			includeHistory: true
 		} );
-
-		mw.config.get = jest.fn( ( key ) => {
-			switch ( key ) {
-				case 'wgPageName':
-					return 'PageName';
-				default:
-					return null;
-			}
-		} );
-		// needs to be loaded after mw.config.get has been defined to avoid fatal.
 		const defaultTagsOptions = require( 'ext.pageTriage.defaultTagsOptions' );
+
 		// for first test cache current value
 		if ( !pageTriageDeletionTagsOptions ) {
 			pageTriageDeletionTagsOptions = $.extend( true, {}, defaultTagsOptions.pageTriageDeletionTagsOptions );
