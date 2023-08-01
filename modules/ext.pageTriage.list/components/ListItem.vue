@@ -384,14 +384,18 @@ module.exports = {
 	top: 5px;
 	left: 5px;
 }
-.patrol-status-0 {
+/* icon colors */
+.cdx-icon.patrol-status-0 {
 	color: @accent-color-base;
 }
-.patrol-status-1 {
+.cdx-icon.patrol-status-1 {
 	color: @color-success;
 }
-.patrol-status-3 {
+.cdx-icon.patrol-status-3 {
 	color: @color-visited;
+}
+.cdx-icon.cdx-info-chip__icon--warning {
+	color: @color-warning;
 }
 /* info about the article */
 .mwe-vue-pt-article {
