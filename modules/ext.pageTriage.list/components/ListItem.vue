@@ -90,7 +90,7 @@
 				<div class="mwe-vue-pt-snippet">
 					{{ snippet }}
 				</div>
-				<div v-if="enableReviewButton" class="mwe-vue-pt-article-col-right">
+				<div v-if="enableReviewButton" class="mwe-vue-pt-article-col-right review-button">
 					<a
 						:href="titleUrl"
 						target="_blank"
@@ -107,7 +107,7 @@
 					<span>{{ $i18n( 'pagetriage-filter-predicted-class-heading' ).text() }}</span>
 					<span>{{ oresArticleQuality }}</span>
 				</div>
-				<div class="mwe-vue-pt-article-col-right">
+				<div class="mwe-vue-pt-article-col-right ores-pt-issues">
 					<span>{{ $i18n( 'pagetriage-filter-predicted-issues-heading' ).text() }}</span>
 					<span v-if="!oresDraftQuality && !( copyvio && showCopyvio )">
 						{{ $i18n( 'pagetriage-filter-stat-predicted-issues-none' ).text() }}
@@ -433,5 +433,13 @@ module.exports = {
 	color: #808080;
 	padding-right: 1em;
 	vertical-align: top;
+}
+.review-button {
+	position: absolute;
+	right: 0.65em;
+	bottom: 1.75em;
+}
+.ores-pt-issues {
+	height: 0.55em;
 }
 </style>
