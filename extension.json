@@ -22,7 +22,12 @@
 		"pagetriagetagging": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageTagging"
 	},
 	"APIPropModules": {
-		"isreviewed": "MediaWiki\\Extension\\PageTriage\\Api\\ApiIsReviewed"
+		"isreviewed": {
+			"class": "MediaWiki\\Extension\\PageTriage\\Api\\ApiIsReviewed",
+			"services": [
+				"WikiPageFactory"
+			]
+		}
 	},
 	"AvailableRights": [
 		"pagetriage-copyvio"

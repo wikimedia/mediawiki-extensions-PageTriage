@@ -6,7 +6,6 @@ use MediaWiki\Extension\PageTriage\PageTriage;
 use MediaWiki\Extension\PageTriage\PageTriageServices;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Extension\PageTriage\QueueRecord;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 
 /**
@@ -23,7 +22,7 @@ class ApiIsReviewedTest extends PageTriageTestCase {
 
 	public function testUnreviewedPage() {
 		$pageId = $this->makePage( Title::newFromText( 'testUnreviewedPage' ) );
-		$wikipage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $pageId );
+		$wikipage = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId );
 		$this->assertNotNull( $wikipage, 'Page should exist' );
 
 		$status = PageTriageUtil::getStatus( $wikipage );
@@ -46,7 +45,7 @@ class ApiIsReviewedTest extends PageTriageTestCase {
 
 	public function testReviewedPage() {
 		$pageId = $this->makePage( Title::newFromText( 'testReviewedPage' ) );
-		$wikipage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $pageId );
+		$wikipage = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId );
 		$this->assertNotNull( $wikipage, 'Page should exist' );
 
 		$pageTriage = new PageTriage( $pageId );
@@ -71,7 +70,7 @@ class ApiIsReviewedTest extends PageTriageTestCase {
 
 	public function testPatrolledPage() {
 		$pageId = $this->makePage( Title::newFromText( 'testPatrolledPage' ) );
-		$wikipage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $pageId );
+		$wikipage = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId );
 		$this->assertNotNull( $wikipage, 'Page should exist' );
 
 		$pageTriage = new PageTriage( $pageId );
@@ -96,7 +95,7 @@ class ApiIsReviewedTest extends PageTriageTestCase {
 
 	public function testAutopatrolledPage() {
 		$pageId = $this->makePage( Title::newFromText( 'testAutopatrolledPage' ) );
-		$wikipage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $pageId );
+		$wikipage = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId );
 		$this->assertNotNull( $wikipage, 'Page should exist' );
 
 		$pageTriage = new PageTriage( $pageId );
@@ -121,10 +120,10 @@ class ApiIsReviewedTest extends PageTriageTestCase {
 
 	public function testPageNotInNewPagesFeed() {
 		$pageId = $this->makePage( Title::newFromText( 'testPageNotInNewPagesFeed' ) );
-		$wikipage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $pageId );
+		$wikipage = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId );
 		$this->assertNotNull( $wikipage, 'Page should exist' );
 
-		$queueManager = PageTriageServices::wrap( MediaWikiServices::getInstance() )
+		$queueManager = PageTriageServices::wrap( $this->getServiceContainer() )
 			->getQueueManager();
 		$queueManager->deleteByPageIds( [ $pageId ] );
 		$status = PageTriageUtil::getStatus( $wikipage );
@@ -146,11 +145,11 @@ class ApiIsReviewedTest extends PageTriageTestCase {
 
 	public function testUnreviewedPages() {
 		$pageId1 = $this->makePage( Title::newFromText( 'testUnreviewedPages1' ) );
-		$wikipage1 = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $pageId1 );
+		$wikipage1 = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId1 );
 		$this->assertNotNull( $wikipage1, 'Page 1 should exist' );
 
 		$pageId2 = $this->makePage( Title::newFromText( 'testUnreviewedPages2' ) );
-		$wikipage2 = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $pageId2 );
+		$wikipage2 = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId2 );
 		$this->assertNotNull( $wikipage2, 'Page 2 should exist' );
 
 		$status = PageTriageUtil::getStatus( $wikipage1 );
@@ -186,11 +185,11 @@ class ApiIsReviewedTest extends PageTriageTestCase {
 
 	public function testValidAndInvalidPages() {
 		$pageId1 = $this->makePage( Title::newFromText( 'testValidAndInvalidPages_ValidPage' ) );
-		$wikipage1 = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $pageId1 );
+		$wikipage1 = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId1 );
 		$this->assertNotNull( $wikipage1, 'Page 1 should exist' );
 
 		$pageId2 = 46454555;
-		$wikipage2 = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromId( $pageId2 );
+		$wikipage2 = $this->getServiceContainer()->getWikiPageFactory()->newFromId( $pageId2 );
 		$this->assertNull( $wikipage2, 'Page 2 should not exist' );
 
 		$status = PageTriageUtil::getStatus( $wikipage1 );
