@@ -17,7 +17,13 @@
 	"APIModules": {
 		"pagetriagelist": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageList",
 		"pagetriagestats": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageStats",
-		"pagetriageaction": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageAction",
+		"pagetriageaction": {
+			"class": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageAction",
+			"services": [
+				"RevisionStore",
+				"ContentLanguage"
+			]
+		},
 		"pagetriagetagcopyvio": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageTagCopyvio",
 		"pagetriagetagging": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageTagging"
 	},
