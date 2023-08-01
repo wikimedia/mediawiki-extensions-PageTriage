@@ -48,9 +48,7 @@ const ArticleInfoHistoryView = Backbone.View.extend( {
 
 			historyItem.set(
 				'revision_url',
-				mw.config.get( 'wgScriptPath' ) + '/index.php?title=' +
-					mw.util.wikiUrlencode( mw.config.get( 'wgPageName' ) ) +
-					'&oldid=' + historyItem.get( 'revid' )
+				mw.util.getUrl( mw.config.get( 'wgPageName' ), { oldid: historyItem.get( 'revid' ) } )
 			);
 
 			that.$el.append( that.template( historyItem.toJSON() ) );
