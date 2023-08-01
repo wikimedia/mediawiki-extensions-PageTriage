@@ -1,7 +1,6 @@
 const { mount } = require( '@vue/test-utils' );
 const { createTestingPinia } = require( '@pinia/testing' );
 let ListFilterMenu;
-let useSettingsStore;
 let settings;
 let wrapper;
 describe( 'ListFilterMenu.vue', () => {
@@ -24,7 +23,7 @@ describe( 'ListFilterMenu.vue', () => {
 					return null;
 			}
 		} );
-		useSettingsStore = require( '../../../../modules/ext.pageTriage.list/stores/settings.js' ).useSettingsStore;
+		const { useSettingsStore } = require( 'ext.pageTriage.util' );
 		ListFilterMenu = require( '../../../../modules/ext.pageTriage.list/components/ListFilterMenu.vue' );
 		wrapper = mount( ListFilterMenu, {
 			global: {

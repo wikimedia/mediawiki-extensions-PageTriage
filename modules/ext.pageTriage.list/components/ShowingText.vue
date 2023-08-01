@@ -11,7 +11,7 @@
  * Displays this currently applied filters for the feed.
  */
 
-const { useSettingsStore } = require( '../stores/settings.js' );
+const { useSettingsStore } = require( 'ext.pageTriage.util' );
 const { getNamespaceOptions } = require( '../namespaces.js' );
 const namespaceOptions = getNamespaceOptions();
 const offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );

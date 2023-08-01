@@ -1,6 +1,7 @@
 const { Article, ArticleList } = require( './models/ext.pageTriage.article.js' );
 const { Revision, RevisionList } = require( './models/ext.pageTriage.stats.js' );
 const Stats = require( './models/ext.pageTriage.stats.js' );
+const { useSettingsStore } = require( './stores/settings.js' );
 
 const contentLanguageMessages = new mw.Map();
 
@@ -22,5 +23,5 @@ const contentLanguageMessage = function ( key ) {
 };
 
 module.exports = { ArticleList, Article, RevisionList, Revision, Stats,
-	contentLanguageMessages, contentLanguageMessage
+	contentLanguageMessages, contentLanguageMessage, useSettingsStore
 };

@@ -1,5 +1,5 @@
-const { Article } = require( 'ext.pageTriage.util' );
-let TagToolView;
+let Article,
+	TagToolView;
 describe( 'TagToolView', () => {
 	beforeEach( () => {
 		mw.config.get = jest.fn( ( key ) => {
@@ -10,7 +10,16 @@ describe( 'TagToolView', () => {
 					return null;
 			}
 		} );
+		mw.user.options.get = jest.fn( ( key ) => {
+			switch ( key ) {
+				case 'timecorrection':
+					return 'ZoneInfo|-480|America/Los_Angeles';
+				default:
+					return null;
+			}
+		} );
 		// needs to be loaded after mw.config.get has been defined to avoid fatal.
+		Article = require( 'ext.pageTriage.util' ).Article;
 		TagToolView = require( '../../../modules/ext.pageTriage.views.toolbar/tags.js' );
 	} );
 

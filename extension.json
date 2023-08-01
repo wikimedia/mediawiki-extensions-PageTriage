@@ -139,6 +139,7 @@
 			"es6": true,
 			"packageFiles": [
 				"ext.pageTriage.util/main.js",
+				"ext.pageTriage.util/stores/settings.js",
 				"ext.pageTriage.util/models/ext.pageTriage.article.js",
 				"ext.pageTriage.util/models/ext.pageTriage.revision.js",
 				"ext.pageTriage.util/models/ext.pageTriage.stats.js"
@@ -159,6 +160,7 @@
 				"mediawiki.api",
 				"mediawiki.user",
 				"moment",
+				"pinia",
 				"ext.pageTriage.external"
 			]
 		},
@@ -531,7 +533,6 @@
 			"packageFiles": [
 				"ext.pageTriage.list/init.js",
 				"ext.pageTriage.list/namespaces.js",
-				"ext.pageTriage.list/stores/settings.js",
 				"ext.pageTriage.list/App.vue",
 				"ext.pageTriage.list/components/ControlSection.vue",
 				"ext.pageTriage.list/components/DateControlSection.vue",

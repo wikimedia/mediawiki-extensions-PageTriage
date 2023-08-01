@@ -1,6 +1,19 @@
-const { Article } = require( '../../modules/ext.pageTriage.util/models/ext.pageTriage.article.js' );
+let Article;
 
 describe( 'ext.pageTriage.article', () => {
+	beforeEach( () => {
+		mw.user.options.get = jest.fn( ( key ) => {
+			switch ( key ) {
+				case 'timecorrection':
+					return 'ZoneInfo|-480|America/Los_Angeles';
+				default:
+					return null;
+			}
+		} );
+		// needs to be loaded after mw.config.get has been defined to avoid fatal.
+		Article = require( 'ext.pageTriage.util' ).Article;
+	} );
+
 	test( 'generateCopyPatrolURL() should generate a valid URL for enwiki', function () {
 		const wikiLanguageCodeForCopyPatrolURL = 'en';
 		const filter = 'all';
