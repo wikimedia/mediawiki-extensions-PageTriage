@@ -20,6 +20,9 @@ module.exports = {
 	components: {
 		ListFilterMenu: require( './components/ListFilterMenu.vue' ),
 		ListContent: require( './components/ListContent.vue' )
+	},
+	mounted() {
+		$( '#mwe-pt-list-warnings' ).show();
 	}
 };
 </script>
