@@ -71,17 +71,23 @@ const defaultSettings = Object.freeze( {
 
 let params = {};
 
+const initState = () => {
+	const stored = localStorage.getItem( 'ext.pageTriage.settings' );
+	const fresh = {
+		immediate: JSON.parse( JSON.stringify( defaultImmediate ) ),
+		controlMenuOpen: false,
+		applied: JSON.parse( JSON.stringify( defaultSettings ) ),
+		unsaved: JSON.parse( JSON.stringify( defaultSettings ) ),
+		params: { mode: defaultSettings.queueMode },
+		currentFilteredCount: -1
+	};
+	return stored ? JSON.parse( stored ) : fresh;
+};
+
 const offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
 module.exports = {
 	useSettingsStore: defineStore( 'settings', {
-		state: () => ( {
-			immediate: JSON.parse( JSON.stringify( defaultImmediate ) ),
-			controlMenuOpen: false,
-			applied: JSON.parse( JSON.stringify( defaultSettings ) ),
-			unsaved: JSON.parse( JSON.stringify( defaultSettings ) ),
-			params: { mode: defaultSettings.queueMode },
-			currentFilteredCount: -1
-		} ),
+		state: initState,
 		getters: {
 			// returns a deep copy of applied settings
 			cloneApplied: ( state ) => {
