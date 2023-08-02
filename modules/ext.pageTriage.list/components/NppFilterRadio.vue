@@ -136,7 +136,7 @@ module.exports = {
 }
 legend.no-indent {
 	padding-left: 0;
-	margin-left: -1em;
+	margin-left: -12px;
 }
 #mwe-vue-pt-filter-radio-username {
 	display: inline;
@@ -145,10 +145,6 @@ legend.no-indent {
 	.mixin-screen-reader-text()
 }
 #mwe-vue-pt-filter-input-username {
-    display: inline-block;
-    position: relative;
-    z-index: 0;
     margin-left: calc(1.4285714em + 8px);
-    line-height: 1.4285714;
 }
 </style>

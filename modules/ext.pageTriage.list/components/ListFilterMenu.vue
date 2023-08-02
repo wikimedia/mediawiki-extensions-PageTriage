@@ -246,14 +246,26 @@ module.exports = {
 };
 </script>
 
-<style>
+<style lang="less">
+@import 'mediawiki.skin.variables.less';
 #mwe-vue-pt-menu-heading {
 	padding: 0.5em 1em 1em 1em;
 	top: 0;
 	z-index: 10;
 }
+.mwe-vue-pt-control-options {
+	margin-left: 0.5em;
+}
+.mwe-vue-pt-control-label {
+	white-space: nowrap;
+	padding: 3px;
+}
 .mwe-vue-pt-control-label-right {
 	float: right;
+}
+.mwe-vue-pt-control-section {
+	min-width: 0;
+	padding-bottom: 3px;
 }
 .mwe-vue-pt-control-buttons {
 	margin: 0.2em 0 0 -0.4em;
@@ -269,6 +281,13 @@ module.exports = {
 	box-shadow: 0 7px 10px rgba( 0, 0, 0, 0.4 );
 	width: min-content;
 }
+#mwe-vue-pt-control-dropdown fieldset {
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-left: 12px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
 #mwe-vue-pt-control-menu-toggle {
 	color: #0645ad;
 	cursor: pointer;
@@ -276,5 +295,34 @@ module.exports = {
 .mwe-vue-pt-control-section__row1 {
 	display: flex;
 	flex-direction: row;
+}
+.mwe-vue-pt-control-options .cdx-radio {
+	margin-bottom: 3px;
+}
+.mwe-vue-pt-control-options .cdx-radio input.cdx-radio__input {
+	margin: 0;
+	min-width: min-content;
+	min-height: unset;
+	width: 1em;
+	height: 1em;
+}
+.mwe-vue-pt-control-options .cdx-radio span.cdx-radio__icon {
+	min-width: unset;
+	min-height: unset;
+	width: 16px;
+	height: 16px;
+	margin: 1px;
+	padding: 1px;
+	border-width: 1px;
+}
+.mwe-vue-pt-control-options .cdx-radio input.cdx-radio__input:enabled:checked+.cdx-radio__icon {
+	width: 16px;
+	height: 16px;
+	margin: 1px;
+	padding: 1px;
+	border-width: 1px;
+	background-color: @color-progressive;
+	border-color: @color-base--subtle;
+	background-clip: content-box;
 }
 </style>
