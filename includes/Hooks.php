@@ -788,4 +788,28 @@ class Hooks implements
 			$this->queueManager->deleteByPageId( $pageID );
 		}
 	}
+
+	/** @inheritDoc */
+	public function onPageUndeleteComplete(
+		ProperPageIdentity $page,
+		Authority $restorer,
+		string $reason,
+		RevisionRecord $restoredRev,
+		ManualLogEntry $logEntry,
+		int $restoredRevisionCount,
+		bool $created,
+		array $restoredPageIds
+	) {
+		if ( !$created ) {
+			// not interested in revdel actions
+			return;
+		}
+
+		if ( !in_array( $page->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
+			// don't queue pages in namespaces where PageTriage is disabled
+			return;
+		}
+		$wikiPage = new WikiPage( $page );
+		$this->addToPageTriageQueue( $wikiPage->getId(), $wikiPage->getTitle() );
+	}
 }

@@ -65,9 +65,9 @@ class HooksTest extends PageTriageTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\PageTriage\HookHandlers\UndeleteHookHandler::onArticleUndelete()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::onPageUndeleteComplete()
 	 */
-	public function testOnArticleUndelete() {
+	public function testOnPageUndelete() {
 		$title = Title::newFromText( 'Undelete me' );
 		$page = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $title );
 		$user = $this->getTestUser()->getUser();
