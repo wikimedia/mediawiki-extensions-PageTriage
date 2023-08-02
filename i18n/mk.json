@@ -563,5 +563,7 @@
 	"apierror-bad-pagetriage-enqueue-mainpage": "Главната страница не може да се стави во редицата",
 	"apierror-bad-pagetriage-enqueue-invalidnamespace": "Укажаната страница е во именски простор кој нема овозможено проверки на страници",
 	"apierror-bad-pagetriage-enqueue-alreadyqueued": "Укажаната страница веќе постои во редицата за проверка",
-	"apierror-pagetriage-missingtag": "Не можев да ја најдам назнаката на ознаката за авторскоправни нарушувања. Обидете се со пуштање на update.php."
+	"apierror-pagetriage-missingtag": "Не можев да ја најдам назнаката на ознаката за авторскоправни нарушувања. Обидете се со пуштање на update.php.",
+	"apihelp-query+isreviewed-summary": "Утврдува дали страница е означена како проверена.",
+	"apihelp-query+isreviewed-example-1": "Утврдува дали [[Main Page|Главна страница]] е означена како проверена."
 }

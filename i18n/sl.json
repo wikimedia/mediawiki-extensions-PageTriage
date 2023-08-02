@@ -564,5 +564,7 @@
 	"apierror-bad-pagetriage-enqueue-mainpage": "Glavne strani ni mogoče dodati v čakalno vrsto pagetriage",
 	"apierror-bad-pagetriage-enqueue-invalidnamespace": "Navedena stran je v imenskem prostoru, ki nima omogočenega triažiranja strani",
 	"apierror-bad-pagetriage-enqueue-alreadyqueued": "V čakalni vrsti pagetriage navedena stran že obstaja",
-	"apierror-pagetriage-missingtag": "Ni bilo mogoče najti ID-ja oznake za kršitev avtorskih pravic. Poskusite zagnati update.php."
+	"apierror-pagetriage-missingtag": "Ni bilo mogoče najti ID-ja oznake za kršitev avtorskih pravic. Poskusite zagnati update.php.",
+	"apihelp-query+isreviewed-summary": "Ugotovite, ali je stran označena kot pregledana.",
+	"apihelp-query+isreviewed-example-1": "Ugotovite, ali je [[Main Page|Glavna stran]] označena kot pregledana."
 }

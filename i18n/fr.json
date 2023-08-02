@@ -585,5 +585,7 @@
 	"apierror-bad-pagetriage-enqueue-mainpage": "La page principale ne peut être ajoutée à la file de triage des pages",
 	"apierror-bad-pagetriage-enqueue-invalidnamespace": "La page spécifiée est dans un espace de noms dont le triage des pages n’est pas activé",
 	"apierror-bad-pagetriage-enqueue-alreadyqueued": "La page spécifiée existe déjà dans la file de triage des pages",
-	"apierror-pagetriage-missingtag": "Impossible de trouver un identifiant de balise pour la balise « copyvio ». Essayez de lancer <tt>update.php</tt>."
+	"apierror-pagetriage-missingtag": "Impossible de trouver un identifiant de balise pour la balise « copyvio ». Essayez de lancer <tt>update.php</tt>.",
+	"apihelp-query+isreviewed-summary": "Déterminer si une page est marquée comme relue.",
+	"apihelp-query+isreviewed-example-1": "Déterminer si la [[Main Page|Page principale]] est marquée comme relue."
 }
