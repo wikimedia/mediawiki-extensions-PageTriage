@@ -977,9 +977,6 @@
 		"remoteExtPath": "PageTriage/modules"
 	},
 	"HookHandlers": {
-		"undelete": {
-			"class": "MediaWiki\\Extension\\PageTriage\\HookHandlers\\UndeleteHookHandler"
-		},
 		"main": {
 			"class": "MediaWiki\\Extension\\PageTriage\\Hooks",
 			"services": [
@@ -1016,7 +1013,7 @@
 		"ListDefinedTags": "main",
 		"ChangeTagsListActive": "main",
 		"ChangeTagsAllowedAdd": "main",
-		"ArticleUndelete": "undelete"
+		"PageUndeleteComplete": "main"
 	},
 	"config": {
 		"PageTriageEnableOresFilters": {
