@@ -4,4 +4,4 @@ const pinia = createPinia();
 const app = require( './App.vue' );
 createMwApp( app )
 	.use( pinia )
-	.mount( '#mw-content-text' );
+	.mount( '#mwe-pt-list' );

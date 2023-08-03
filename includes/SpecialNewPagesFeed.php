@@ -46,9 +46,15 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$this->setHeaders();
 		$out = $this->getOutput();
 		$user = $this->getUser();
+
 		// Decide which UI to load
 		$uiVersion = $request->getInt( 'ui_version', $config->get( 'PageTriageUIVersion' ) );
-		$listModule = ( $uiVersion === 1 ? 'ext.pageTriage.list' : 'ext.pageTriage.views.list' );
+		$listModule = 'ext.pageTriage.views.list';
+		$listHtml = $this->getListViewHtml();
+		if ( $uiVersion === 1 ) {
+			$listModule = 'ext.pageTriage.list';
+			$listHtml = Html::rawElement( 'div', [ 'id' => 'mwe-pt-list' ] );
+		}
 
 		// Output the title of the page
 		$out->setPageTitle( $this->msg( 'newpagesfeed' ) );
@@ -95,7 +101,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 			'.client-nojs #mwe-pt-list-view, .client-js #mwe-pt-list-view-no-js { display: none; }'
 		);
 		// Output the HTML for the triage interface
-		$out->addHTML( $this->getListViewHtml() );
+		$out->addHTML( $listHtml );
 	}
 
 	/**
