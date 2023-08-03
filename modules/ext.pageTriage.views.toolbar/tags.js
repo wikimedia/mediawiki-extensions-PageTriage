@@ -25,8 +25,18 @@ module.exports = ToolView.extend( {
 		this.tagsOptions = options.tagsOptions ? options.tagsOptions : $.pageTriageTagsOptions;
 		this.eventBus = options.eventBus;
 		this.moduleConfig = options.moduleConfig || {};
+		this.maybeExcludeRedirectsTemplates();
 		this.buildAllCategory();
 		this.reset();
+	},
+
+	/**
+	 * Exclude redirect templates if the page is not a redirect
+	 */
+	maybeExcludeRedirectsTemplates: function () {
+		if ( this.model.attributes.is_redirect === '0' ) {
+			delete this.tagsOptions.redirects;
+		}
 	},
 
 	/**
