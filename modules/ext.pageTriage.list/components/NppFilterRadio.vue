@@ -141,7 +141,7 @@ legend.no-indent {
 #mwe-vue-pt-filter-radio-username {
 	display: inline;
 }
-#mwe-vue-pt-filter-radio-username > label {
+#mwe-vue-pt-filter-radio-username label {
 	.mixin-screen-reader-text()
 }
 #mwe-vue-pt-filter-input-username {
