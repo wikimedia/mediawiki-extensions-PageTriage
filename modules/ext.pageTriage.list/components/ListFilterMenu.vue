@@ -204,8 +204,16 @@ module.exports = {
 	setup() {
 		const settings = useSettingsStore();
 		settings.$subscribe( ( _mutation, state ) => {
-			// persist the whole state to local storage whenever it changes
-			localStorage.setItem( 'ext.pageTriage.settings', JSON.stringify( state ) );
+			// persist most state to local storage whenever it changes
+			const filter = ( key, value ) => {
+				// Don't store the control menu open/closed state
+				if ( key === 'controlMenuOpen' ) {
+					return undefined;
+				} else {
+					return value;
+				}
+			};
+			localStorage.setItem( 'ext.pageTriage.settings', JSON.stringify( state, filter ) );
 		} );
 		// Need to include at least one of reviewed/unreviewed, and at least
 		// one of nominated for deletion/redirects/normal articles

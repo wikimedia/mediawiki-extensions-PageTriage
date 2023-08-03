@@ -72,16 +72,24 @@ const defaultSettings = Object.freeze( {
 let params = {};
 
 const initState = () => {
-	const stored = localStorage.getItem( 'ext.pageTriage.settings' );
-	const fresh = {
-		immediate: JSON.parse( JSON.stringify( defaultImmediate ) ),
-		controlMenuOpen: false,
-		applied: JSON.parse( JSON.stringify( defaultSettings ) ),
-		unsaved: JSON.parse( JSON.stringify( defaultSettings ) ),
-		params: { mode: defaultSettings.queueMode },
-		currentFilteredCount: -1
-	};
-	return stored ? JSON.parse( stored ) : fresh;
+	// If breaking changes need to be made to state, increment the version number to load defaults
+	const version = 1;
+	const stored = JSON.parse( localStorage.getItem( 'ext.pageTriage.settings' ) );
+	// return stored state if it exists and is the current version
+	if ( stored && stored.version && stored.version === version ) {
+		return stored;
+	// return defaults otherwise
+	} else {
+		return {
+			version: version,
+			immediate: JSON.parse( JSON.stringify( defaultImmediate ) ),
+			controlMenuOpen: false,
+			applied: JSON.parse( JSON.stringify( defaultSettings ) ),
+			unsaved: JSON.parse( JSON.stringify( defaultSettings ) ),
+			params: { mode: defaultSettings.queueMode },
+			currentFilteredCount: -1
+		};
+	}
 };
 
 const offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
