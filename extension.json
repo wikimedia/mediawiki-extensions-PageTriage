@@ -993,7 +993,8 @@
 				"RevisionStore",
 				"TitleFactory",
 				"UserOptionsManager",
-				"PageTriageQueueManager"
+				"PageTriageQueueManager",
+				"WikiPageFactory"
 			]
 		},
 		"schema": {

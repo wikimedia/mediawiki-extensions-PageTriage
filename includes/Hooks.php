@@ -28,9 +28,11 @@ use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\ArticleViewFooterHook;
 use MediaWiki\Page\Hook\PageDeleteCompleteHook;
+use MediaWiki\Page\Hook\PageUndeleteCompleteHook;
 use MediaWiki\Page\Hook\RevisionFromEditCompleteHook;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\ProperPageIdentity;
+use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\ResourceLoader as RL;
@@ -67,7 +69,8 @@ class Hooks implements
 	BlockIpCompleteHook,
 	UnblockUserCompleteHook,
 	ResourceLoaderGetConfigVarsHook,
-	LocalUserCreatedHook
+	LocalUserCreatedHook,
+	PageUndeleteCompleteHook
 {
 
 	private const TAG_NAME = 'pagetriage';
@@ -95,6 +98,9 @@ class Hooks implements
 	/** @var UserOptionsManager */
 	private UserOptionsManager $userOptionsManager;
 
+	/** @var WikiPageFactory */
+	private WikiPageFactory $wikiPageFactory;
+
 	/**
 	 * @param Config $config
 	 * @param RevisionLookup $revisionLookup
@@ -104,6 +110,7 @@ class Hooks implements
 	 * @param TitleFactory $titleFactory
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param QueueManager $queueManager
+	 * @param WikiPageFactory $wikiPageFactory
 	 */
 	public function __construct(
 		Config $config,
@@ -113,7 +120,8 @@ class Hooks implements
 		RevisionStore $revisionStore,
 		TitleFactory $titleFactory,
 		UserOptionsManager $userOptionsManager,
-		QueueManager $queueManager
+		QueueManager $queueManager,
+		WikiPageFactory $wikiPageFactory
 	) {
 		$this->config = $config;
 		$this->revisionLookup = $revisionLookup;
@@ -123,6 +131,7 @@ class Hooks implements
 		$this->titleFactory = $titleFactory;
 		$this->userOptionsManager = $userOptionsManager;
 		$this->queueManager = $queueManager;
+		$this->wikiPageFactory = $wikiPageFactory;
 	}
 
 	/** @inheritDoc */
@@ -799,7 +808,7 @@ class Hooks implements
 		int $restoredRevisionCount,
 		bool $created,
 		array $restoredPageIds
-	) {
+	): void {
 		if ( !$created ) {
 			// not interested in revdel actions
 			return;
@@ -809,7 +818,8 @@ class Hooks implements
 			// don't queue pages in namespaces where PageTriage is disabled
 			return;
 		}
-		$wikiPage = new WikiPage( $page );
-		$this->addToPageTriageQueue( $wikiPage->getId(), $wikiPage->getTitle() );
+
+		$wikiPage = $this->wikiPageFactory->newFromTitle( $page );
+		self::addToPageTriageQueue( $wikiPage->getId(), $wikiPage->getTitle() );
 	}
 }
