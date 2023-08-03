@@ -4,10 +4,20 @@
 			"Bosogo"
 		]
 	},
+	"pagetriage-bytes": "$1 {{PLURAL:$1|байт}}",
+	"pagetriage-categories": "$1 {{PLURAL:$1|категория}}",
+	"pagetriage-author-blocked": "Бөгөттөлгөн",
 	"pagetriage-author-bot": "Бот",
+	"pagetriage-filter-article": "Макала",
+	"pagetriage-more": "Көбүрөөк",
 	"pagetriage-filter-stat-bots": "Боттор тарабынан",
+	"pagetriage-filter-stat-namespace": "Аталыш мейкиндиги",
 	"pagetriage-tags-externallinks-label": "Тышкы шилтемелер",
+	"pagetriage-tags-param-article-label": "Макала:",
+	"pagetriage-tags-param-date-label": "Дата:",
 	"pagetriage-tags-param-free-yes-label": "Ооба",
 	"pagetriage-tags-param-free-no-label": "Жок",
+	"pagetriage-info-help": "жардам",
+	"pagetriage-toolbar-learn-more": "Толук маалымат »",
 	"pagetriage-toolbar-close": "Жабуу"
 }
