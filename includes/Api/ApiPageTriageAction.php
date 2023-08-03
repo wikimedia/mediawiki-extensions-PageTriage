@@ -3,19 +3,41 @@
 namespace MediaWiki\Extension\PageTriage\Api;
 
 use ApiBase;
+use ApiMain;
 use Article;
 use ChangeTags;
 use DeferredUpdates;
+use Language;
 use ManualLogEntry;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriage;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Revision\RevisionStore;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiPageTriageAction extends ApiBase {
+
+	private RevisionStore $revStore;
+	private Language $contLang;
+
+	/**
+	 * @param ApiMain $queryModule
+	 * @param string $moduleName
+	 * @param RevisionStore $revStore
+	 * @param Language $contLang
+	 */
+	public function __construct(
+		ApiMain $queryModule,
+		$moduleName,
+		RevisionStore $revStore,
+		Language $contLang
+	) {
+		parent::__construct( $queryModule, $moduleName );
+		$this->revStore = $revStore;
+		$this->contLang = $contLang;
+	}
 
 	public function execute() {
 		$params = $this->extractRequestParams();
@@ -50,11 +72,11 @@ class ApiPageTriageAction extends ApiBase {
 		if ( isset( $params['reviewed'] ) ) {
 			// T314245 - do not allow someone to mark their own articles as reviewed
 			// when not being autopatrolled
-			$revStore = MediaWikiServices::getInstance()->getRevisionStore();
-			if ( $this->getUser()->equals( $revStore->getFirstRevision(
-				 $article->getPage() )->getUser( RevisionRecord::RAW ) )
-				&& !$this->getAuthority()->isAllowed( 'autopatrol' )
-			) {
+			$pageCreator = $this->revStore->getFirstRevision(
+				 $article->getPage() )->getUser( RevisionRecord::RAW );
+			$isPageCreator = $this->getUser()->equals( $pageCreator );
+			$isNotAutopatrolled = !$this->getAuthority()->isAllowed( 'autopatrol' );
+			if ( $isPageCreator && $isNotAutopatrolled ) {
 				$this->dieWithError( 'markedaspatrollederror-noautopatrol' );
 			}
 
@@ -179,8 +201,7 @@ class ApiPageTriageAction extends ApiBase {
 		$logEntry->setPerformer( $this->getUser() );
 		$logEntry->setTarget( $article->getTitle() );
 		if ( $note ) {
-			$contLang = MediaWikiServices::getInstance()->getContentLanguage();
-			$note = $contLang->truncateForDatabase( $note, 150 );
+			$note = $this->contLang->truncateForDatabase( $note, 150 );
 			$logEntry->setComment( $note );
 		}
 		$logEntry->addTags( $tags );
@@ -218,12 +239,12 @@ class ApiPageTriageAction extends ApiBase {
 			],
 			'note' => null,
 			'skipnotif' => [
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_TYPE => 'boolean'
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_TYPE => 'boolean'
 			],
 			'tags' => [
-				ApiBase::PARAM_TYPE => 'tags',
-				ApiBase::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_TYPE => 'tags',
+				ParamValidator::PARAM_ISMULTI => true,
 			],
 		];
 	}
