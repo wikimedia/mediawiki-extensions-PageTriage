@@ -274,7 +274,7 @@ module.exports = {
 	position: absolute;
 	z-index: 50;
 	border: 1px solid #aaa;
-	padding: 0.5em 1em 0.2em 1em;
+	padding: 0.5em 1em;
 	margin-left: 48px;
 	color: #000;
 	cursor: default;
