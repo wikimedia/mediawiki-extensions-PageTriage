@@ -13,29 +13,27 @@
 		<legend class="no-indent">
 			{{ filterUserHeadingLabel }}
 		</legend>
-		<cdx-radio
-			v-for="radio in byRadios"
-			:key="radio.value"
-			v-model="selected"
-			name="npp-filter-radio-group"
-			:input-value="radio.value"
-			:inline="radio.inline"
-			@click="$emit( 'update:filter', radio.value )"
-		>
+		<template v-for="radio in byRadios" :key="radio.value">
+			<cdx-radio
+				:id="`mwe-vue-pt-filter-radio-${radio.value}`"
+				v-model="selected"
+				name="npp-filter-radio-group"
+				:input-value="radio.value"
+				:inline="radio.inline"
+				@click="$emit( 'update:filter', radio.value )"
+			>
+				<span>{{ radio.label }}</span>
+			</cdx-radio>
 			<span v-if="radio.value === 'username'">
-				<span class="mwe-vue-pt-screen-reader">
-					{{ radio.label }}
-				</span>
 				<input
-					id="mwe-vue-pt-filter-user"
+					id="mwe-vue-pt-filter-input-username"
 					v-model="byUser"
 					type="text"
 					:placeholder="$i18n( 'pagetriage-filter-username' ).text()"
 					@input="$emit( 'update:user', $event.target.value )"
 				>
 			</span>
-			<span v-else>{{ radio.label }}</span>
-		</cdx-radio>
+		</template>
 	</fieldset>
 	<cdx-radio
 		v-model="selected"
@@ -140,10 +138,17 @@ legend.no-indent {
 	padding-left: 0;
 	margin-left: -1em;
 }
-#mwe-vue-pt-filter-user {
-	width: 100px;
+#mwe-vue-pt-filter-radio-username {
+	display: inline;
 }
-.mwe-vue-pt-screen-reader {
+#mwe-vue-pt-filter-radio-username > label {
 	.mixin-screen-reader-text()
+}
+#mwe-vue-pt-filter-input-username {
+    display: inline-block;
+    position: relative;
+    z-index: 0;
+    margin-left: calc(1.4285714em + 8px);
+    line-height: 1.4285714;
 }
 </style>
