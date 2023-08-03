@@ -554,5 +554,7 @@
 	"apierror-bad-pagetriage-enqueue-mainpage": "Le pagina principal non pote esser addite al cauda de triage de paginas.",
 	"apierror-bad-pagetriage-enqueue-invalidnamespace": "Le pagina specificate es in un spatio de nomines que non ha le triage de paginas activate.",
 	"apierror-bad-pagetriage-enqueue-alreadyqueued": "Le pagina specificate ja existe in le cauda de triage de paginas.",
-	"apierror-pagetriage-missingtag": "Non poteva trovar un ID pro le etiquetta copyvio. Essaya executar update.php."
+	"apierror-pagetriage-missingtag": "Non poteva trovar un ID pro le etiquetta copyvio. Essaya executar update.php.",
+	"apihelp-query+isreviewed-summary": "Determina si un pagina es marcate como revidite.",
+	"apihelp-query+isreviewed-example-1": "Determina si le [[Main Page|Pagina principal]] es marcate como revidite."
 }

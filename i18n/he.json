@@ -574,5 +574,7 @@
 	"apierror-bad-pagetriage-enqueue-mainpage": "לא ניתן להוסיף את הדף הראשי לתור pagetriage",
 	"apierror-bad-pagetriage-enqueue-invalidnamespace": "הדף שצוין נמצא במרחב שם ש־page triage אינו מופעל בו",
 	"apierror-bad-pagetriage-enqueue-alreadyqueued": "הדף שצוין כבר קיים בתור pagetriage",
-	"apierror-pagetriage-missingtag": "לא היה אפשר למצוא מזהה תג לתג הפרת זכויות יוצרים. נא לנסות להריץ את update.php."
+	"apierror-pagetriage-missingtag": "לא היה אפשר למצוא מזהה תג לתג הפרת זכויות יוצרים. נא לנסות להריץ את update.php.",
+	"apihelp-query+isreviewed-summary": "לקבוע האם דף מסומן כבדוק.",
+	"apihelp-query+isreviewed-example-1": "לקבוע האם [[Main Page]] מסומן כבדוק."
 }
