@@ -1,9 +1,14 @@
 <template>
 	<div class="mwe-vue-pt-article-row" :class="oddEvenClass">
-		<cdx-icon
-			:class="`mwe-vue-pt-status-icon patrol-status-${patrolStatus}`"
-			:icon="statusIcon"
-		></cdx-icon>
+		<div class="mwe-vue-pt-status-icon">
+			<img
+				:src="statusIcon.src"
+				:title="statusIcon.title"
+				alt=""
+				width="21"
+				height="21"
+			>
+		</div>
 		<div class="mwe-vue-pt-info-pane">
 			<div class="mwe-vue-pt-info-row">
 				<div class="mwe-vue-pt-article">
@@ -141,8 +146,7 @@
  * An individual list item in the feed.
  */
 
-const { CdxButton, CdxIcon, CdxInfoChip } = require( '@wikimedia/codex' );
-const { cdxIconArticleCheck, cdxIconInfoFilled, cdxIconTrash } = require( './icons.json' );
+const { CdxButton, CdxInfoChip } = require( '@wikimedia/codex' );
 const CreatorByline = require( './CreatorByline.vue' );
 const now = new Date();
 // Basic validation for 'YYYYMMDDHHmmss' timestamps
@@ -171,7 +175,6 @@ module.exports = {
 	name: 'ListItem',
 	components: {
 		CdxButton,
-		CdxIcon,
 		CdxInfoChip,
 		CreatorByline
 	},
@@ -275,15 +278,24 @@ module.exports = {
 	},
 	computed: {
 		statusIcon: function () {
-			if ( this.isDraft ) {
-				return cdxIconInfoFilled;
-			} else if ( mw.config.get( 'wgPageTriageEnableEnglishWikipediaFeatures' ) && ( this.afdStatus || this.blpProdStatus || this.csdStatus || this.prodStatus ) ) {
-				return cdxIconTrash;
-			} else if ( this.patrolStatus !== 0 ) {
-				return cdxIconArticleCheck;
-			} else {
-				return cdxIconInfoFilled;
+			const imageBase = mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/';
+			const img = {
+				src: `${imageBase}icon_not_reviewed.png`,
+				title: this.$i18n( 'pagetriage-page-status-unreviewed' ).text()
+			};
+			if ( !this.isDraft ) {
+				if ( mw.config.get( 'wgPageTriageEnableEnglishWikipediaFeatures' ) && ( this.afdStatus || this.blpProdStatus || this.csdStatus || this.prodStatus ) ) {
+					img.src = `${imageBase}icon_marked_for_deletion.png`;
+					img.title = this.$i18n( 'pagetriage-page-status-delete' ).text();
+				} else if ( this.patrolStatus === 3 ) {
+					img.src = `${imageBase}icon_autopatrolled.png`;
+					img.title = this.$i18n( 'pagetriage-page-status-autoreviewed' ).text();
+				} else if ( this.patrolStatus !== 0 ) {
+					img.src = `${imageBase}icon_reviewed.png`;
+					img.title = this.$i18n( 'pagetriage-page-status-reviewed-anonymous' ).text();
+				}
 			}
+			return img;
 		},
 		oddEvenClass: function () { return this.position % 2 === 0 ? 'mwe-vue-pt-article-row-even' : 'mwe-vue-pt-article-row-odd'; },
 		isDraft: function () {
@@ -383,19 +395,6 @@ module.exports = {
 	position: absolute;
 	top: 5px;
 	left: 5px;
-}
-/* icon colors */
-.cdx-icon.patrol-status-0 {
-	color: @accent-color-base;
-}
-.cdx-icon.patrol-status-1 {
-	color: @color-success;
-}
-.cdx-icon.patrol-status-3 {
-	color: @color-visited;
-}
-.cdx-icon.cdx-info-chip__icon--warning {
-	color: @color-warning;
 }
 /* info about the article */
 .mwe-vue-pt-article {

@@ -554,16 +554,7 @@
 				"ext.pageTriage.list/components/NppFilterRadio.vue",
 				"ext.pageTriage.list/components/AfcSortSelect.vue",
 				"ext.pageTriage.list/components/AfcStateRadio.vue",
-				"ext.pageTriage.list/components/ShowingText.vue",
-				{
-					"name": "ext.pageTriage.list/components/icons.json",
-					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
-					"callbackParam": [
-						"cdxIconArticleCheck",
-						"cdxIconInfoFilled",
-						"cdxIconTrash"
-					]
-				}
+				"ext.pageTriage.list/components/ShowingText.vue"
 			],
 			"styles": [
 				"external/jquery.tipoff/jquery.tipoff.css",
