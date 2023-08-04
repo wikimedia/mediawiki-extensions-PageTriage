@@ -532,6 +532,7 @@
 	"apihelp-pagetriagestats-param-showunreviewed": "Whether to include unreviewed.",
 	"apihelp-pagetriagestats-param-showdeleted": "Whether to include \"proposed for deletion\".",
 	"apihelp-pagetriagestats-param-showbots": "Whether to include only pages created by bots.",
+	"apihelp-pagetriagestats-param-showautopatrolled": "Whether to show only edits by users with the autopatrol user right.",
 	"apihelp-pagetriagestats-param-no_category": "Whether to include only pages with no category.",
 	"apihelp-pagetriagestats-param-unreferenced": "Whether to include only pages with no references.",
 	"apihelp-pagetriagestats-param-no_inbound_links": "Whether to include only pages with no inbound links.",

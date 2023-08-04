@@ -552,6 +552,7 @@
 	"apihelp-pagetriagestats-param-showunreviewed": "{{doc-apihelp-param|pagetriagestats|showunreviewed}}",
 	"apihelp-pagetriagestats-param-showdeleted": "{{doc-apihelp-param|pagetriagestats|showdeleted}}",
 	"apihelp-pagetriagestats-param-showbots": "{{doc-apihelp-param|pagetriagestats|showbots}}",
+	"apihelp-pagetriagestats-param-showautopatrolled": "{{doc-apihelp-param|pagetriagestats|showautopatrolled}}",
 	"apihelp-pagetriagestats-param-no_category": "{{doc-apihelp-param|pagetriagestats|no_category}}",
 	"apihelp-pagetriagestats-param-unreferenced": "{{doc-apihelp-param|pagetriagestats|unreferenced}}",
 	"apihelp-pagetriagestats-param-no_inbound_links": "{{doc-apihelp-param|pagetriagestats|no_inbound_links}}",
