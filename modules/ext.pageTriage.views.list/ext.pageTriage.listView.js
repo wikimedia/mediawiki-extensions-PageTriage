@@ -179,12 +179,10 @@ const ListView = Backbone.View.extend( {
 		const view = new ListItem( { eventBus: this.eventBus, model: article } );
 		const pageInfo = view.render().el;
 		$( '#mwe-pt-list-view' ).append( pageInfo );
-		if ( mw.config.get( 'wgPageTriageEnableReviewButton' ) ) {
-			$( pageInfo ).find( '.mwe-pt-list-triage-button' ).show().button( {
-				label: mw.msg( 'pagetriage-triage' ),
-				icons: { secondary: 'ui-icon-triangle-1-e' }
-			} );
-		}
+		$( pageInfo ).find( '.mwe-pt-list-triage-button' ).show().button( {
+			label: mw.msg( 'pagetriage-triage' ),
+			icons: { secondary: 'ui-icon-triangle-1-e' }
+		} );
 	},
 
 	// add all the items in the articles collection

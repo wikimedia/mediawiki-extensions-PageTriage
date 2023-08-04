@@ -35,7 +35,7 @@
 			</div>
 			<div class="mwe-pt-article-column-right-bottom">
 				<div class="mwe-pt-review">
-					<a class="mwe-pt-list-triage-button ui-button-blue" style="display:none;" href="<%- title_url %>" target="_blank" title='<%- reviewRightHelpText %>'></a>
+					<a class="mwe-pt-list-triage-button ui-button-blue" href="<%- title_url %>" target="_blank" %></a>
 				</div>
 				<% if ( mw.config.get( 'wgShowOresFilters' ) ) { %>
 					<div class="mwe-pt-potential-issues">
