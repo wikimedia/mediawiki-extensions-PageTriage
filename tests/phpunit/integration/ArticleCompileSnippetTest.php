@@ -7,6 +7,7 @@ use MediaWikiIntegrationTestCase;
 
 /**
  * @covers \MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileSnippet
+ * @group Database
  */
 class ArticleCompileSnippetTest extends MediaWikiIntegrationTestCase {
 
