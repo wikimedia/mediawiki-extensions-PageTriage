@@ -518,6 +518,7 @@
 	"apihelp-pagetriagestats-param-showunreviewed": "Si includer paginas non revidite.",
 	"apihelp-pagetriagestats-param-showdeleted": "Indica si includer paginas \"proponite pro deletion\".",
 	"apihelp-pagetriagestats-param-showbots": "Si includer solmente paginas create per robots.",
+	"apihelp-pagetriagestats-param-showautopatrolled": "Si monstrar solmente modificationes de usatores con le derecto de usator autopatrol.",
 	"apihelp-pagetriagestats-param-no_category": "Si includer solmente paginas sin categoria.",
 	"apihelp-pagetriagestats-param-unreferenced": "Si includer solmente paginas sin referentias.",
 	"apihelp-pagetriagestats-param-no_inbound_links": "Si includer solmente paginas sin ligamines entrante.",
