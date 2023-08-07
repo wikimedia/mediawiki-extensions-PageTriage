@@ -32,7 +32,7 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 		$initialCount = $this->db->newSelectQueryBuilder()
 			->select( 'COUNT(*)' )
 			->from( 'pagetriage_page' )
-		->fetchField();
+			->fetchField();
 		// Create a page in the Draft namespace and confirm that it hasn't been added to the
 		// PageTriage queue.
 		$testPage = $this->insertPage( self::class . 'Test1', '', $this->draftNsId );
