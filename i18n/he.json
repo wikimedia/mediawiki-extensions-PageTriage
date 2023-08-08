@@ -538,6 +538,7 @@
 	"apihelp-pagetriagestats-param-showunreviewed": "האם לכלול דפים שלא נסקרו.",
 	"apihelp-pagetriagestats-param-showdeleted": "האם לכלול דפים \"מוצעים למחיקה\".",
 	"apihelp-pagetriagestats-param-showbots": "האם לכלול רק דפים שנוצרו על־ידי בוטים.",
+	"apihelp-pagetriagestats-param-showautopatrolled": "האם להציג רק עריכות של משתמשים עם הרשאות בדוק עריכות אוטומטי.",
 	"apihelp-pagetriagestats-param-no_category": "האם לכלול רק דפים ללא קטגוריה.",
 	"apihelp-pagetriagestats-param-unreferenced": "האם לכלול רק דפים ללא מקורות.",
 	"apihelp-pagetriagestats-param-no_inbound_links": "האם לכלול רק דפים ללא קישורים נכנסים.",
