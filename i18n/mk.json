@@ -527,6 +527,7 @@
 	"apihelp-pagetriagestats-param-showunreviewed": "Дали да се прикажуваат и непроверени.",
 	"apihelp-pagetriagestats-param-showdeleted": "Дали да се вклучат и „предложени за бришење“.",
 	"apihelp-pagetriagestats-param-showbots": "Дали да се опфатени само страници создадени од ботови.",
+	"apihelp-pagetriagestats-param-showautopatrolled": "Дали да се прикажуваат само уредувања од корисници со право на автопатрола.",
 	"apihelp-pagetriagestats-param-no_category": "Дали да се опфатени само страници без категорија.",
 	"apihelp-pagetriagestats-param-unreferenced": "Дали да се опфатени само страници без наводи.",
 	"apihelp-pagetriagestats-param-no_inbound_links": "Дали да се опфатени само страници без дојдовни врски.",
