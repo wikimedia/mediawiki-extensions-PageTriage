@@ -60,7 +60,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Text indicating the page author (for when the author is a new editor). Parameters:\n* $1 is the article creation date.\n* $2 is a link to the author's user page.\n* $3 is a link to the author's talk page.\n* $4 is a separator character\n* $5 is a link to the author's contributions.",
 	"pagetriage-editcount": "Display of page author's editing experience. $1 is total edit count, $2 is author's join date",
 	"pagetriage-author-not-autoconfirmed": "String indicating that the author was not yet autoconfirmed when the page was last edited",
-	"pagetriage-no-patrol-right": "String indicating that a user does not have rights to mark a page as reviewed",
 	"pagetriage-author-blocked": "String indicating that the author was blocked when the page was last edited.\n{{Identical|Blocked}}",
 	"pagetriage-author-bot": "String indicating that the author is a bot.\n{{Identical|Bot}}",
 	"pagetriage-creation-dateformat": "{{Optional}}\n{{DataFormatSpecifiers/en|the page creation date.}}",

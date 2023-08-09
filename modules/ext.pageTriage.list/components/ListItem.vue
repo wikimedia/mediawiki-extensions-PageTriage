@@ -90,11 +90,10 @@
 				<div class="mwe-vue-pt-snippet">
 					{{ snippet }}
 				</div>
-				<div v-if="enableReviewButton" class="mwe-vue-pt-article-col-right review-button">
+				<div class="mwe-vue-pt-article-col-right review-button">
 					<a
 						:href="titleUrl"
 						target="_blank"
-						:title="reviewRightHelpText"
 					>
 						<cdx-button action="progressive" weight="primary">
 							{{ $i18n( 'pagetriage-triage' ).text() }}
@@ -268,7 +267,6 @@ module.exports = {
 		return {
 			showOres: mw.config.get( 'wgShowOresFilters' ),
 			showCopyvio: mw.config.get( 'wgShowCopyvio' ),
-			enableReviewButton: mw.config.get( 'wgPageTriageEnableReviewButton' ),
 			draftNamespaceId: mw.config.get( 'wgPageTriageDraftNamespaceId' ),
 			timeOffset: parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] )
 		};
@@ -325,12 +323,6 @@ module.exports = {
 				return this.$i18n( 'pagetriage-afc-date-label-declined' ).text();
 			}
 			return '';
-		},
-		reviewRightHelpText: function () {
-			if ( this.enableReviewButton ) {
-				return '';
-			}
-			return this.$i18n( 'pagetriage-no-patrol-right' ).text();
 		},
 		copyvioLink: function () {
 			if ( this.copyvio === 0 ) {
