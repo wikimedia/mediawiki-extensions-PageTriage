@@ -42,7 +42,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Ову страницу је направио/ла $2 на датум $1 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|измена|измене|измена}} од датума $2",
 	"pagetriage-author-not-autoconfirmed": "Нови уредник",
-	"pagetriage-no-patrol-right": "Немате дозволу да означите ову страницу као прегледану",
 	"pagetriage-author-blocked": "Блокиран/а",
 	"pagetriage-author-bot": "Бот",
 	"pagetriage-showing": "Приказује се:",

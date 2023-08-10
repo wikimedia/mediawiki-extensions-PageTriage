@@ -35,7 +35,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Ta strona została stworzona $1 przez nowego edytora $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|edycja|edycje|edycji}} od $2",
 	"pagetriage-author-not-autoconfirmed": "Nowy edytor",
-	"pagetriage-no-patrol-right": "Nie masz uprawnień do oznaczenia tej strony jako „sprawdzonej”",
 	"pagetriage-author-blocked": "Zablokowany(a)",
 	"pagetriage-author-bot": "Bot",
 	"pagetriage-filter-list-prompt": "Ustaw filtry",

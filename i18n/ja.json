@@ -48,7 +48,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "このページは、新しい編集者 $2 ($3$4$5) が $1 に作成しました。",
 	"pagetriage-editcount": "$2 以降、$1 {{PLURAL:$1|回編集}}",
 	"pagetriage-author-not-autoconfirmed": "新しい編集者",
-	"pagetriage-no-patrol-right": "あなたにはこのページを査読済にする権限がありません",
 	"pagetriage-author-blocked": "ブロック済",
 	"pagetriage-author-bot": "ボット",
 	"pagetriage-creation-dateformat": "yyyy年MM月dd日 HH:mm",

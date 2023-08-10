@@ -34,7 +34,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Ang pahinang ito ay nalikha noong $1 ng bagong patnugot na si $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|pagbabago|mga pagbabago}} magmula pa noong $2",
 	"pagetriage-author-not-autoconfirmed": "Bagong patnugot",
-	"pagetriage-no-patrol-right": "Wala kang karapatan na suriing muli ang pahinang ito",
 	"pagetriage-author-blocked": "Hinarang",
 	"pagetriage-author-bot": "Bot",
 	"pagetriage-creation-dateformat": "OO:mm, a BBBB tttt",

@@ -33,7 +33,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Αυτή η σελίδα δημιουργήθηκε στις $1 από το νέο συντάκτη $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|επεξεργασία|επεξεργασίες}} από $2",
 	"pagetriage-author-not-autoconfirmed": "Νέος συντάκτης",
-	"pagetriage-no-patrol-right": "Δεν έχετε τα δικαιώματα για να επισημάνετε αυτή τη σελίδα ως επιθεωρημένη",
 	"pagetriage-author-blocked": "Φραγμένος",
 	"pagetriage-author-bot": "Ρομπότ",
 	"pagetriage-showing": "Εμφανίζονται:",

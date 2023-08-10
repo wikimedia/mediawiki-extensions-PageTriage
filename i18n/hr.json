@@ -37,7 +37,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Ovu je stranicu stvorio/la novi/nova suradnik/ca $2 ($3$4$5) na nadnevak $1.",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|uređivanje|uređivanja}} od nadnevka $2",
 	"pagetriage-author-not-autoconfirmed": "Novi suradnik/ca",
-	"pagetriage-no-patrol-right": "Nemate odgovarajuće razine prava da biste mogli označiti ovu stranicu provjerenom.",
 	"pagetriage-author-blocked": "Blokiran",
 	"pagetriage-author-bot": "Robot",
 	"pagetriage-creation-dateformat": "HH:mm, d. MMMM yyyy.",

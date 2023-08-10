@@ -46,7 +46,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Цю сторінку створив $1 новий дописувач $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|1=редагування|редагування|редагувань}}, починаючи з $2",
 	"pagetriage-author-not-autoconfirmed": "Новачок",
-	"pagetriage-no-patrol-right": "У Вас немає права на позначення цієї сторінки як перевіреної",
 	"pagetriage-author-blocked": "Заблокований",
 	"pagetriage-author-bot": "Бот",
 	"pagetriage-creation-dateformat": "HH:mm, d MMMM yyyy",

@@ -38,7 +38,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "이 문서는 새 편집자 $2 ($3$4$5)님에 의해 $1에 만들었습니다",
 	"pagetriage-editcount": "$2로부터 편집 $1회",
 	"pagetriage-author-not-autoconfirmed": "새 편집자",
-	"pagetriage-no-patrol-right": "이 문서를 검토한 것으로 표시할 권한이 없습니다",
 	"pagetriage-author-blocked": "차단됨",
 	"pagetriage-author-bot": "봇",
 	"pagetriage-creation-dateformat": "yyyy년 MMMM d일 HH:mm",

@@ -28,7 +28,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Þessi síða var stofnuð $1 af nýja notandanum $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|breyting|breytingar}} síðan $2",
 	"pagetriage-author-not-autoconfirmed": "Nýr notandi",
-	"pagetriage-no-patrol-right": "Þú hefur ekki réttindi til að merkja þessa síðu sem yfirfarna",
 	"pagetriage-author-blocked": "Bannaður",
 	"pagetriage-author-bot": "Vélmenni",
 	"pagetriage-showing": "Sýni:",

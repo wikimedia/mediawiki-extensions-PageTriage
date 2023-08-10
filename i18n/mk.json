@@ -38,7 +38,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Оваа страница е создадена на $1 од новиот уредник $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|уредување|уредувања}} од $2",
 	"pagetriage-author-not-autoconfirmed": "Нов уредник",
-	"pagetriage-no-patrol-right": "Немате право да ја означите страницава како проверена",
 	"pagetriage-author-blocked": "Блокиран",
 	"pagetriage-author-bot": "Бот",
 	"pagetriage-creation-dateformat": "HH:mm, d MMMM yyyy г.",

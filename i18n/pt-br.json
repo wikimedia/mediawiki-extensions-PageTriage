@@ -45,7 +45,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Esta página foi criada em $1 pelo novo editor $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|edição|edições}} desde $2",
 	"pagetriage-author-not-autoconfirmed": "Novo editor",
-	"pagetriage-no-patrol-right": "Você não tem permissão para marcar esta página como revisada",
 	"pagetriage-author-blocked": "Bloqueado",
 	"pagetriage-author-bot": "Bot",
 	"pagetriage-user-creation-dateformat": "aaaa-MM-dd",

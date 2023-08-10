@@ -5,6 +5,7 @@
 		]
 	},
 	"pagetriage-bytes": "$1 {{PLURAL:$1|байт}}",
+	"pagetriage-edits": "$1 {{PLURAL:$1|түзөтүү}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|категория}}",
 	"pagetriage-no-categories": "Категориялар жок",
 	"pagetriage-author-blocked": "Бөгөттөлгөн",
@@ -24,8 +25,10 @@
 	"pagetriage-tags-param-date-label": "Дата:",
 	"pagetriage-tags-param-free-yes-label": "Ооба",
 	"pagetriage-tags-param-free-no-label": "Жок",
+	"pagetriage-info-history-header": "Тарых",
 	"pagetriage-info-help": "жардам",
 	"pagetriage-info-problem-no-categories": "Категориялар жок",
 	"pagetriage-toolbar-learn-more": "Толук маалымат »",
+	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|түзөтүү}}",
 	"pagetriage-toolbar-close": "Жабуу"
 }

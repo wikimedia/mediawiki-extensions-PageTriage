@@ -41,7 +41,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "تم إنشاء هذه الصفحة في $1 بواسطة المحرر الجديد $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|تعديل|تعديلات}} منذ $2",
 	"pagetriage-author-not-autoconfirmed": "محرر جديد",
-	"pagetriage-no-patrol-right": "ليست لديك صلاحية مراجعة هذه الصفحة",
 	"pagetriage-author-blocked": "ممنوع",
 	"pagetriage-author-bot": "بوت",
 	"pagetriage-showing": "عرض:",

@@ -38,7 +38,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "O novo editor $2 ($3$4$5) creou esta páxina o $1",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|edición|edicións}} desde o $2",
 	"pagetriage-author-not-autoconfirmed": "Novo editor",
-	"pagetriage-no-patrol-right": "Non ten os dereitos necesarios para marcar esta páxina como revisada",
 	"pagetriage-author-blocked": "Bloqueado",
 	"pagetriage-author-bot": "Bot",
 	"pagetriage-creation-dateformat": "d &#100;&#101; MMMM &#100;&#101; yyyy á&#115; HH:mm",

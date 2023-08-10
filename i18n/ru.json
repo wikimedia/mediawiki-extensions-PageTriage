@@ -53,7 +53,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Эта страница была создана в $1 новым участником $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|правка|правки|правок}}, начиная с $2",
 	"pagetriage-author-not-autoconfirmed": "Новый участник",
-	"pagetriage-no-patrol-right": "У вас нет прав для пометки данной страницы как проверенной",
 	"pagetriage-author-blocked": "Заблокирован",
 	"pagetriage-author-bot": "Бот",
 	"pagetriage-showing": "Показаны:",

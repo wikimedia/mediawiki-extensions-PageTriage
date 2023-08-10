@@ -48,7 +48,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "該頁由新手 $2 ($3$4$5) 建立於 $1",
 	"pagetriage-editcount": "自$2以來$1次編輯",
 	"pagetriage-author-not-autoconfirmed": "新手",
-	"pagetriage-no-patrol-right": "您並無權限標記此頁面已檢閱",
 	"pagetriage-author-blocked": "已封鎖",
 	"pagetriage-author-bot": "機器人",
 	"pagetriage-creation-dateformat": "yyyy年M月D日 HH:mm",

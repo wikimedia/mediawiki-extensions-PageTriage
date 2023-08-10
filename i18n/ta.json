@@ -14,7 +14,6 @@
 	"pagetriage-no-author": "ஆக்குநர் தகவல் காணப்படவில்லை",
 	"pagetriage-editcount": "$2லிருந்து $1 {{PLURAL:$1|தொகுப்பு|தொகுத்தல்கள்}}",
 	"pagetriage-author-not-autoconfirmed": "புதிய தொகுப்பாளர்",
-	"pagetriage-no-patrol-right": "உங்களுக்கு இந்த பக்கத்தை பரிசீலிப்பதற்கான அனுமதி இல்லை",
 	"pagetriage-author-blocked": "தடுக்கப்பட்டது",
 	"pagetriage-author-bot": "தானியங்கி",
 	"pagetriage-showing": "காண்பிக்கிறது:",

@@ -45,7 +45,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Esta página foi criada a $1 pelo novo editor $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|edição|edições}} desde $2",
 	"pagetriage-author-not-autoconfirmed": "Novo editor",
-	"pagetriage-no-patrol-right": "Não tem direitos suficientes para marcar esta página como revista",
 	"pagetriage-author-blocked": "Bloqueado",
 	"pagetriage-author-bot": "Robô",
 	"pagetriage-showing": "A mostrar:",

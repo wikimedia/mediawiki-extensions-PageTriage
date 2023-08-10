@@ -43,7 +43,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Questa pagina è stata creata il $1 dal nuovo contributore $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|modifica|modifiche}} dal $2",
 	"pagetriage-author-not-autoconfirmed": "Nuovo utente",
-	"pagetriage-no-patrol-right": "Non si dispone dei permessi necessari per contrassegnare questa pagina come revisionata",
 	"pagetriage-author-blocked": "Bloccato",
 	"pagetriage-author-bot": "Bot",
 	"pagetriage-user-creation-dateformat": "dd/MM/yyyy",

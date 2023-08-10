@@ -34,7 +34,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Тази страница е създадена на $1 от новия редактор $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|редакция|редакции}} от $2",
 	"pagetriage-author-not-autoconfirmed": "Нов редактор",
-	"pagetriage-no-patrol-right": "Не разполагате с нужните права за отбелязване на страницата като проверена",
 	"pagetriage-author-blocked": "Блокиран",
 	"pagetriage-author-bot": "Бот",
 	"pagetriage-showing": "Показване на:",

@@ -39,7 +39,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Denne siden ble opprettet $1 av den nye skribenten $2 ($3$4$5)",
 	"pagetriage-editcount": "{{PLURAL:$1|én redigering|$1 redigeringer}} siden $2",
 	"pagetriage-author-not-autoconfirmed": "Ny skribent",
-	"pagetriage-no-patrol-right": "Du har ikke rettigheter til å merke denne siden som vurdert",
 	"pagetriage-author-blocked": "Blokkert",
 	"pagetriage-author-bot": "Bot",
 	"pagetriage-creation-dateformat": "HH:mm, d. MMMM yyyy",

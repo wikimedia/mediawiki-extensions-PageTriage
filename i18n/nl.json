@@ -51,7 +51,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Deze pagina is aangemaakt door nieuwe gebruiker $2 ($3$4$5) op $1",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|bewerking|bewerkingen}} sinds $2",
 	"pagetriage-author-not-autoconfirmed": "Nieuwe gebruiker",
-	"pagetriage-no-patrol-right": "U hebt niet de juiste rechten om deze pagina als gecontroleerd te markeren",
 	"pagetriage-author-blocked": "Geblokkeerd",
 	"pagetriage-author-bot": "Bot",
 	"pagetriage-showing": "Weergegeven:",

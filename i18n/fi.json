@@ -42,7 +42,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Tämän sivun on luonut uusi käyttäjä $2 ($3$4$5) $1",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|muokkaus|muokkausta}} alkaen $2",
 	"pagetriage-author-not-autoconfirmed": "Uusi käyttäjä",
-	"pagetriage-no-patrol-right": "Sinulla ei ole oikeutta merkitä tätä sivua katsastetuksi",
 	"pagetriage-author-blocked": "Estetty",
 	"pagetriage-author-bot": "Botti",
 	"pagetriage-showing": "Näytetään:",

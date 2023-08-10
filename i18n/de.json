@@ -41,7 +41,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Diese Seite wurde am $1 vom neuen Benutzer $2 ($3$4$5) erstellt.",
 	"pagetriage-editcount": "{{PLURAL:$1|$1 Bearbeitung|$1 Bearbeitungen}} seit dem $2",
 	"pagetriage-author-not-autoconfirmed": "Neuer Benutzer",
-	"pagetriage-no-patrol-right": "Du hast nicht die Rechte, diese Seite als geprüft zu markieren.",
 	"pagetriage-author-blocked": "Gesperrt",
 	"pagetriage-author-bot": "Bot",
 	"pagetriage-showing": "Angezeigt wird:",

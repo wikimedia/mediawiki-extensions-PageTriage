@@ -35,7 +35,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Selle lehekülje on loonud uus toimetaja $2 ($3$4$5) kuupäeval $1.",
 	"pagetriage-editcount": "{{PLURAL:$1|Üks muudatus|$1 muudatust}} alates kuupäevast $2",
 	"pagetriage-author-not-autoconfirmed": "Uus toimetaja",
-	"pagetriage-no-patrol-right": "Sul pole õigust seda lehekülge ülevaadatuks märkida.",
 	"pagetriage-author-blocked": "Blokeeritud",
 	"pagetriage-author-bot": "Robot",
 	"pagetriage-creation-dateformat": "HH:mm, d. MMMM yyyy",

@@ -34,7 +34,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "ഈ താൾ സൃഷ്ടിച്ചത് $1-ന് പുതിയ ഉപയോക്താവായ $2 ആണ് ($3$4$5)",
 	"pagetriage-editcount": "$2 മുതൽ {{PLURAL:$1|ഒരു തിരുത്തൽ|$1 തിരുത്തലുകൾ}}",
 	"pagetriage-author-not-autoconfirmed": "പുതിയ ലേഖിക/ലേഖകൻ",
-	"pagetriage-no-patrol-right": "ഈ താൾ സംശോധനം ചെയ്തുവെന്ന് അടയാളപ്പെടുത്താനുള്ള അവകാശം താങ്കൾക്കില്ല",
 	"pagetriage-author-blocked": "തടയപ്പെട്ടിരിക്കുന്നു",
 	"pagetriage-author-bot": "യന്ത്രം",
 	"pagetriage-showing": "പ്രദർശിപ്പിക്കുന്നത്:",

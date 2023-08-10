@@ -41,7 +41,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Halaman ini dibuat pada $1 oleh penyunting baru $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|suntingan}} sejak $2",
 	"pagetriage-author-not-autoconfirmed": "Penyunting baru",
-	"pagetriage-no-patrol-right": "Anda tidak memiliki hak untuk menandai halaman ini sebagai telah ditinjau",
 	"pagetriage-author-blocked": "Diblokir",
 	"pagetriage-author-bot": "Bot",
 	"pagetriage-showing": "Menampilkan:",

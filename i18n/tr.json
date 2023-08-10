@@ -49,7 +49,6 @@
 	"pagetriage-articleinfo-byline-new-editor": "Bu sayfa $1 tarihinde yeni editör $2 ($3$4$5) tarafından açıldı",
 	"pagetriage-editcount": "$2 tarihinden beri $1 {{PLURAL:$1|değişiklik|değişiklik}} yaptı",
 	"pagetriage-author-not-autoconfirmed": "Yeni düzenleyici",
-	"pagetriage-no-patrol-right": "Bu sayfayı \"incelendi\" olarak işaretleme haklarına sahip değilsiniz",
 	"pagetriage-author-blocked": "Engellendi",
 	"pagetriage-author-bot": "Bot",
 	"pagetriage-showing": "Gösteriliyor:",
