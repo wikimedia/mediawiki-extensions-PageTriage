@@ -548,6 +548,7 @@
 	"apihelp-pagetriagestats-param-showunreviewed": "S’il faut inclure les éléments non relus.",
 	"apihelp-pagetriagestats-param-showdeleted": "S’il faut inclure les éléments « proposés pour la  suppression ».",
 	"apihelp-pagetriagestats-param-showbots": "S’il faut inclure uniquement les pages créées par les robots.",
+	"apihelp-pagetriagestats-param-showautopatrolled": "S’il faut afficher seulement les droits par utilisateur avec le droit utilisateur autopatrol",
 	"apihelp-pagetriagestats-param-no_category": "S’il faut inclure uniquement les pages sans catégorie.",
 	"apihelp-pagetriagestats-param-unreferenced": "S’il faut inclure uniquement les pages sans références.",
 	"apihelp-pagetriagestats-param-no_inbound_links": "S’il faut inclure uniquement les pages sans liens internes.",
