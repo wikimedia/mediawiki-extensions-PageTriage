@@ -270,6 +270,11 @@ module.exports = {
 }
 .mwe-vue-pt-control-label-right {
 	float: right;
+	@media only screen
+	and (min-width: 611px)
+	and (max-width: 830px) {
+		float: none;
+	}
 }
 .mwe-vue-pt-control-section {
 	min-width: 0;
