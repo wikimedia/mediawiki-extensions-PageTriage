@@ -527,6 +527,7 @@
 	"apihelp-pagetriagestats-param-showunreviewed": "Ali naj bodo vključene nepregledane strani.",
 	"apihelp-pagetriagestats-param-showdeleted": "Ali naj bodo vključene strani, ki so »predlagane za izbris«",
 	"apihelp-pagetriagestats-param-showbots": "Ali naj bodo vključene samo strani, ki so jih ustvarili boti.",
+	"apihelp-pagetriagestats-param-showautopatrolled": "Ali naj bodo prikazana samo urejanja urejevalcev z uporabniško pravico samodejnega potrjevanja.",
 	"apihelp-pagetriagestats-param-no_category": "Ali naj bodo vključene samo strani brez kategorij.",
 	"apihelp-pagetriagestats-param-unreferenced": "Ali naj bodo vključene samo strani brez sklicev.",
 	"apihelp-pagetriagestats-param-no_inbound_links": "Ali naj bodo vključene samo strani brez vstopnih povezav.",
