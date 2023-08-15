@@ -148,11 +148,11 @@ module.exports = {
 		showStats() {
 			// make sure all the values were computed
 			return this.queueMode === 'npp' &&
-				this.unreviewedArticleCount.value !== -1 &&
-				this.unreviewedRedirectCount.value !== -1 &&
-				this.unreviewedOldest.value !== '?' &&
-				this.reviewedArticleCount.value !== -1 &&
-				this.reviewedRedirectCount.value !== -1;
+				this.unreviewedArticleCount !== -1 &&
+				this.unreviewedRedirectCount !== -1 &&
+				this.unreviewedOldest !== '?' &&
+				this.reviewedArticleCount !== -1 &&
+				this.reviewedRedirectCount !== -1;
 		}
 	}
 };

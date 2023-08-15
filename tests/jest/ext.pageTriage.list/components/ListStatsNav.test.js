@@ -8,5 +8,6 @@ describe( 'ListStatsNav.vue', () => {
 	} );
 	it( 'mounts', () => {
 		expect( wrapper.exists() ).toBe( true );
+		expect( wrapper.vm.showStats ).toBe( false );
 	} );
 } );
