@@ -358,7 +358,7 @@ module.exports = {
 	content: ' · ';
 }
 .mwe-vue-pt-info-pane {
-	padding: 0.5em 0.6em 0.6em 2.7em;
+	padding: 0.2em 0.6em 0.6em 2.25em;
 	min-height: 4.8em;
 	display: table;
 	box-sizing: border-box;
@@ -373,7 +373,7 @@ module.exports = {
 }
 .mwe-vue-pt-status-icon {
 	position: absolute;
-	top: 5px;
+	top: 8px;
 	left: 5px;
 }
 /* icon colors */
