@@ -1,5 +1,8 @@
 <template>
-	<div id="mwe-vue-pt-stats-navigation" class="mwe-vue-pt-navigation-bar mwe-vue-pt-control-gradient">
+	<div
+		id="mwe-vue-pt-stats-navigation"
+		class="mwe-vue-pt-navigation-bar mwe-vue-pt-control-gradient"
+		:class="{ 'mwe-vue-pt-navigation-bar-sticky-footer': stickyFooter }">
 		<div id="mwe-vue-pt-stats-navigation-content">
 			<span class="mwe-vue-pt-refresh-controls">
 				<labeled-checkbox
@@ -74,6 +77,11 @@ module.exports = {
 			doAutoRefresh
 		};
 	},
+	data() {
+		return {
+			stickyFooter: false
+		};
+	},
 	computed: {
 		unreviewedArticleCount() {
 			if ( this.apiResult.result === 'success' &&
@@ -106,17 +114,7 @@ module.exports = {
 				if ( !rawOldest ) {
 					return '';
 				}
-				let now = new Date();
-				now = new Date(
-					now.getUTCFullYear(),
-					now.getUTCMonth(),
-					now.getUTCDate(),
-					now.getUTCHours(),
-					now.getUTCMinutes(),
-					now.getUTCSeconds()
-				);
-				const begin = moment.utc( rawOldest, 'YYYYMMDDHHmmss' );
-				const diff = Math.round( ( now.getTime() - begin.valueOf() ) / ( 1000 * 60 * 60 * 24 ) );
+				const diff = this.calculateDiff( rawOldest );
 				if ( diff ) {
 					return this.$i18n( 'days', diff ).text();
 				}
@@ -154,6 +152,43 @@ module.exports = {
 				this.reviewedArticleCount !== -1 &&
 				this.reviewedRedirectCount !== -1;
 		}
+	},
+	methods: {
+		calculateDiff( rawOldest ) {
+			let now = new Date();
+			now = new Date(
+				now.getUTCFullYear(),
+				now.getUTCMonth(),
+				now.getUTCDate(),
+				now.getUTCHours(),
+				now.getUTCMinutes(),
+				now.getUTCSeconds()
+			);
+			const begin = moment.utc( rawOldest, 'YYYYMMDDHHmmss' );
+
+			return Math.round( ( now.getTime() - begin.valueOf() ) / ( 1000 * 60 * 60 * 24 ) );
+		}
+	},
+	mounted() {
+		const mwFooter = document.getElementById( 'footer' );
+		if ( mwFooter ) {
+			const options = {
+				root: mwFooter.value,
+				rootMargin: '0px',
+				threshold: 0
+			};
+			const observerCallback = ( function ( entries ) {
+				const observerEntry = entries[ 0 ];
+				// whether we scrolled to see it or away from it
+				if ( observerEntry.isIntersecting ) {
+					this.stickyFooter = false;
+				} else {
+					this.stickyFooter = true;
+				}
+			} ).bind( this );
+			const observer = new IntersectionObserver( observerCallback, options );
+			observer.observe( mwFooter );
+		}
 	}
 };
 </script>
@@ -174,6 +209,8 @@ module.exports = {
 	position: sticky;
 	bottom: 0;
 	z-index: 1;
+}
+.mwe-vue-pt-navigation-bar-sticky-footer {
 	box-shadow: 0 -7px 10px rgba( 0, 0, 0, 0.4 );
 }
 #mwe-vue-pt-stats-navigation-content {
