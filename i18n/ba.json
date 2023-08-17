@@ -5,7 +5,8 @@
 			"Haqmar",
 			"Kareyac",
 			"Lifeway",
-			"Sagan"
+			"Sagan",
+			"З. ӘЙЛЕ"
 		]
 	},
 	"pagetriage-author-not-autoconfirmed": "Яңы мөхәррирләүсе",
@@ -16,6 +17,6 @@
 	"pagetriage-sort-by": "Тәртипләштереү:",
 	"pagetriage-newest": "Иң яңы",
 	"pagetriage-oldest": "Иң иҫке",
-	"pagetriage-filter-show-heading": "Ошоларҙы күрһәт:",
+	"pagetriage-filter-show-heading": "Торош:",
 	"pagetriage-filter-bot-edits": "Боттар"
 }
