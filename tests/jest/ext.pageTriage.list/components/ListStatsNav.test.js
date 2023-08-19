@@ -5,6 +5,7 @@ describe( 'ListStatsNav.vue', () => {
 	beforeEach( () => {
 		ListStatsNav = require( '../../../../modules/ext.pageTriage.list/components/ListStatsNav.vue' );
 		wrapper = mount( ListStatsNav );
+		wrapper.vm.calculateDiff = jest.fn().mockReturnValue( 42 );
 	} );
 	it( 'mounts', () => {
 		expect( wrapper.exists() ).toBe( true );
