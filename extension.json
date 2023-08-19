@@ -12,7 +12,7 @@
 	"license-name": "MIT",
 	"type": "specialpage",
 	"requires": {
-		"MediaWiki": ">= 1.40.0"
+		"MediaWiki": ">= 1.41"
 	},
 	"APIModules": {
 		"pagetriagelist": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageList",
@@ -217,22 +217,14 @@
 				"ext.pageTriage.views.toolbar/wikilove.css"
 			],
 			"templates": {
-				"articleInfo.underscore":
-					"ext.pageTriage.views.toolbar/articleInfo.underscore",
-				"articleInfoHistory.underscore":
-					"ext.pageTriage.views.toolbar/articleInfoHistory.underscore",
-				"delete.underscore":
-					"ext.pageTriage.views.toolbar/delete.underscore",
-				"mark.underscore":
-					"ext.pageTriage.views.toolbar/mark.underscore",
-				"tags.underscore":
-					"ext.pageTriage.views.toolbar/tags.underscore",
-				"ToolbarView.underscore":
-					"ext.pageTriage.views.toolbar/ToolbarView.underscore",
-				"ToolView.underscore":
-					"ext.pageTriage.views.toolbar/ToolView.underscore",
-				"wikilove.underscore":
-					"ext.pageTriage.views.toolbar/wikilove.underscore"
+				"articleInfo.underscore": "ext.pageTriage.views.toolbar/articleInfo.underscore",
+				"articleInfoHistory.underscore": "ext.pageTriage.views.toolbar/articleInfoHistory.underscore",
+				"delete.underscore": "ext.pageTriage.views.toolbar/delete.underscore",
+				"mark.underscore": "ext.pageTriage.views.toolbar/mark.underscore",
+				"tags.underscore": "ext.pageTriage.views.toolbar/tags.underscore",
+				"ToolbarView.underscore": "ext.pageTriage.views.toolbar/ToolbarView.underscore",
+				"ToolView.underscore": "ext.pageTriage.views.toolbar/ToolView.underscore",
+				"wikilove.underscore": "ext.pageTriage.views.toolbar/wikilove.underscore"
 			},
 			"messages": [
 				"pagetriage-wikilove-page-creator",
