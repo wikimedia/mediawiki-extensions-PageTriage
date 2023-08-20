@@ -170,7 +170,7 @@ module.exports = ToolView.extend( {
 		// Only bind this once
 		const that = this;
 		if ( !this.renderWasBound ) {
-			this.model.bind( 'change:patrol_status', function () {
+			this.model.bind( 'change', function () {
 				that.render();
 			} );
 			this.renderWasBound = true;
