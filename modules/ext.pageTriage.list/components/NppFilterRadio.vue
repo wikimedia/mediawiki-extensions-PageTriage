@@ -144,7 +144,4 @@ legend.no-indent {
 #mwe-vue-pt-filter-radio-username label {
 	.mixin-screen-reader-text()
 }
-#mwe-vue-pt-filter-input-username {
-    margin-left: calc(1.4285714em + 8px);
-}
 </style>
