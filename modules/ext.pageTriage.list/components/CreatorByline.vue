@@ -5,11 +5,11 @@
 	<span v-else>
 		{{ $i18n( 'pagetriage-byline-heading', creatorName ).text() }}
 	</span>
-	<a :href="userPageUrl" :class="userPageClasses">
+	<a :href="userPageUrl" class="cdx-link" :class="userPageClass">
 		{{ creatorName }}
 	</a>
 	(
-	<a :href="talkPageUrl" :class="talkPageClasses">
+	<a :href="talkPageUrl" class="cdx-link" :class="talkPageClass">
 		{{ $i18n( 'sp-contributions-talk' ).text() }}
 	</a>
 	{{ $i18n( 'pipe-separator' ).text() }}
@@ -25,7 +25,8 @@
  */
 
 // see: https://doc.wikimedia.org/codex/latest/components/mixins/link.html
-const redLink = 'cdx-link is-red-link';
+const skin = mw.config.get( 'skin' );
+const redLink = skin === 'vector' ? 'new' : 'is-red-link';
 const params = { action: 'edit', redlink: 1 };
 // @vue/component
 module.exports = {
@@ -44,7 +45,7 @@ module.exports = {
 		creatorTalkPageExists: { type: Boolean, required: true }
 	},
 	computed: {
-		userPageClasses: function () {
+		userPageClass: function () {
 			return this.creatorUserPageExists ? '' : redLink;
 		},
 		userPageUrl: function () {
@@ -53,7 +54,7 @@ module.exports = {
 			}
 			return mw.util.getUrl( `User:${this.creatorName}`, params );
 		},
-		talkPageClasses: function () {
+		talkPageClass: function () {
 			return this.creatorTalkPageExists ? '' : redLink;
 		},
 		talkPageUrl: function () {
