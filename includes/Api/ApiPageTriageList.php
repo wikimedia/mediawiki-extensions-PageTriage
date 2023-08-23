@@ -3,12 +3,14 @@
 namespace MediaWiki\Extension\PageTriage\Api;
 
 use ApiBase;
+use ApiMain;
 use ApiResult;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\OresMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Title\Title;
+use MediaWiki\User\UserFactory;
 use ORES\Services\ORESServices;
 use SpecialPage;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -21,6 +23,18 @@ use Wikimedia\ParamValidator\TypeDef\IntegerDef;
  * @ingroup Extensions
  */
 class ApiPageTriageList extends ApiBase {
+
+	/** @var UserFactory */
+	private UserFactory $userFactory;
+
+	/**
+	 * @param ApiMain $query
+	 * @param string $moduleName
+	 */
+	public function __construct( ApiMain $query, string $moduleName, UserFactory $userFactory ) {
+		$this->userFactory = $userFactory;
+		parent::__construct( $query, $moduleName );
+	}
 
 	public function execute() {
 		// Get the API parameters and store them
@@ -72,12 +86,20 @@ class ApiPageTriageList extends ApiBase {
 					$metaData[$page]['creation_date']
 				);
 
-				// Page creator
-				$metaData[$page] += $this->createUserInfo(
-					$metaData[$page]['user_name'],
-					$userPageStatus,
-					'creator'
-				);
+				if ( $metaData[$page]['user_name'] ) {
+					// Page creator
+					$user = $this->userFactory->newFromName( $metaData[$page]['user_name'] );
+					if ( $user && $user->isHidden() ) {
+						$metaData[$page]['user_name'] = null;
+						$metaData[$page]['creator_hidden'] = true;
+					} else {
+						$metaData[$page] += $this->createUserInfo(
+							$metaData[$page]['user_name'],
+							$userPageStatus,
+							'creator'
+						);
+					}
+				}
 
 				// Page reviewer
 				if ( $metaData[$page]['reviewer'] ) {
@@ -103,7 +125,7 @@ class ApiPageTriageList extends ApiBase {
 				}
 
 				$metaData[$page][ApiResult::META_BC_BOOLS] = [
-					'creator_user_page_exist', 'creator_user_talk_page_exist',
+					'creator_hidden', 'creator_user_page_exist', 'creator_user_talk_page_exist',
 					'reviewer_user_page_exist', 'reviewer_user_talk_page_exist',
 				];
 
@@ -219,6 +241,7 @@ class ApiPageTriageList extends ApiBase {
 			$prefix . '_user_talk_page_exist' => isset( $userPageStatus[$userTalkPage->getPrefixedDBkey()] ),
 			$prefix . '_contribution_page' => $userContribsPage->getPrefixedText(),
 			$prefix . '_contribution_page_url' => $userContribsPage->getFullURL(),
+			$prefix . '_hidden' => false,
 		];
 	}
 

@@ -58,6 +58,7 @@ const listItemPropFormatter = ( pageInfo ) => {
 	listItemProps.revCount = parseInt( pageInfo.rev_count );
 	listItemProps.creationDateUTC = pageInfo.creation_date_utc;
 	listItemProps.creatorName = pageInfo.user_name;
+	listItemProps.creatorHidden = pageInfo.creator_hidden;
 	listItemProps.creatorAutoConfirmed = pageInfo.user_autoconfirmed === '1';
 	listItemProps.creatorRegistrationUTC = pageInfo.user_creation_date;
 	listItemProps.creatorUserId = parseInt( pageInfo.user_id );

@@ -321,7 +321,7 @@ module.exports = ToolView.extend( {
 		if ( this.selectedTagCount > 0 ) {
 			$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
 			$( '#mwe-pt-checkbox-mark-reviewed-wrapper' ).show();
-			if ( mw.config.get( 'wgUserName' ) !== this.model.get( 'user_name' ) ) {
+			if ( mw.config.get( 'wgUserName' ) !== this.model.get( 'user_name' ) && !this.model.get( 'creator_hidden' ) ) {
 				$( '#mwe-pt-tag-note' ).show();
 			}
 		} else {

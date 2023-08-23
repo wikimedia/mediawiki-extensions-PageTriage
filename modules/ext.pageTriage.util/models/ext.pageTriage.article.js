@@ -106,7 +106,8 @@ const Article = Backbone.Model.extend( {
 					article.get( 'creator_user_page_exist' )
 				)
 			);
-			article.set( 'user_contribs_title', article.get( 'creator_contribution_page' ) );
+		} else if ( article.get( 'creator_hidden' ) ) {
+			article.set( 'author_byline_html', mw.msg( 'rev-deleted-user' ) );
 		}
 
 		// Are there any PageTriage messages on the talk page?

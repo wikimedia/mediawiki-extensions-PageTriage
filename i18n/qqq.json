@@ -57,6 +57,7 @@
 	"pagetriage-byline-new-editor": "Text indicating the page author (for when the author is a new editor). $1 is a link to the author's user page, $2 is a link to the author's talk page, $3 is a separator character, $4 is a link to the author's contributions.",
 	"pagetriage-byline-new-editor-heading": "Text indicating the page author (for when the author is a new editor). Parameters:\n* $1 - the 'author's username, used for GENDER support.",
 	"pagetriage-articleinfo-byline": "Text indicating the page author. $1 is the article creation date, $2 is a link to the author's user page, $3 is a link to the author's talk page, $4 is a separator character. $5 is a link to the author's contributions.",
+	"pagetriage-articleinfo-byline-hidden-username": "Text indicating that a article was created by a author whoes name has been removed in the article info section of the pagetriage toolbar. $1 is the article creation date",
 	"pagetriage-articleinfo-byline-new-editor": "Text indicating the page author (for when the author is a new editor). Parameters:\n* $1 is the article creation date.\n* $2 is a link to the author's user page.\n* $3 is a link to the author's talk page.\n* $4 is a separator character\n* $5 is a link to the author's contributions.",
 	"pagetriage-editcount": "Display of page author's editing experience. $1 is total edit count, $2 is author's join date",
 	"pagetriage-author-not-autoconfirmed": "String indicating that the author was not yet autoconfirmed when the page was last edited",

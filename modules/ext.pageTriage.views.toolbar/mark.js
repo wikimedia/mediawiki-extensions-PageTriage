@@ -221,6 +221,7 @@ module.exports = ToolView.extend( {
 			status = this.model.get( 'patrol_status' ) === '0' ? 'reviewed' : 'unreviewed',
 			hasPreviousReviewer = this.model.get( 'ptrp_last_reviewed_by' ) > 0,
 			articleCreator = this.model.get( 'user_name' ),
+			articleCreatorHidden = this.model.get( 'creator_hidden' ),
 			previousReviewer = hasPreviousReviewer ? this.model.get( 'reviewer' ) : '';
 		let noteTarget = articleCreator,
 			notePlaceholder = 'pagetriage-message-for-creator-default-note',
@@ -239,7 +240,7 @@ module.exports = ToolView.extend( {
 			notePlaceholder = 'pagetriage-message-for-creator-default-note';
 		}
 
-		if ( mw.config.get( 'wgUserName' ) === articleCreator ) {
+		if ( mw.config.get( 'wgUserName' ) === articleCreator || articleCreatorHidden ) {
 			numRecipients--;
 			noteTarget = previousReviewer;
 			noteRecipientRole = 'reviewer';

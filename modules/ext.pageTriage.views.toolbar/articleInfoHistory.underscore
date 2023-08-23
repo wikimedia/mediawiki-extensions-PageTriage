@@ -4,20 +4,22 @@
 <% } %>
 </span>
 <li class="mwe-pt-info-history-entry">
+	<!-- TODO(sohom): This section seems to not be in line with what is shown in MediaWiki history,
+	we should clean this up and have it reflect the styles used in the MediaWiki history page -->
 	<% if ( (typeof suppressed) !== 'undefined' ) { %>
-		<span class="mwe-pt-history-suppressed"><%- timestamp_time %></span> &#xb7;
-		<span class="mwe-pt-history-suppressed"><%- mw.msg( 'rev-deleted-user' ) %></span>
-		&#xb7; <span class="mwe-pt-history-suppressed"><%- mw.msg( 'rev-deleted-comment' ) %></span>
+		<span class="history-deleted mw-history-suppressed"><%- timestamp_time %></span> &#xb7;
+		<span class="history-deleted mw-history-suppressed mw-userlink"><%- mw.msg( 'rev-deleted-user' ) %></span>
+		&#xb7; <span class="history-deleted mw-history-suppressed"><%- mw.msg( 'rev-deleted-comment' ) %></span>
 	<% } else { %>
 		<% if ( (typeof userhidden) !== 'undefined' ) { %>
-			<span class="mwe-pt-history-deleted"><%- timestamp_time %></span> &#xb7;
-			<span class="mwe-pt-history-deleted"><%- mw.msg( 'rev-deleted-user' ) %></span>
+			<span class="history-deleted"><%- timestamp_time %></span> &#xb7;
+			<span class="history-deleted mw-userlink"><%- mw.msg( 'rev-deleted-user' ) %></span>
 		<% } else { %>
 			<a href="<%- revision_url %>"><%- timestamp_time %></a> &#xb7;
 			<a href="<%- user_title_url %>"><%- user %></a>
 		<% } %>
 		<% if ( (typeof commenthidden) !== 'undefined' ) { %>
-			&#xb7; <span class="mwe-pt-history-deleted"><%- mw.msg( 'rev-deleted-comment' ) %></span>
+			&#xb7; <span class="history-deleted"><%- mw.msg( 'rev-deleted-comment' ) %></span>
 		<% } else if ( parsedcomment ) { %>
 			&#xb7; <%= parsedcomment %>
 		<% } %>

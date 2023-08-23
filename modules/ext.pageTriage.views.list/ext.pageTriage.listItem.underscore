@@ -105,7 +105,13 @@
 				<div class="mwe-pt-info-row">
 					<div class="mwe-pt-author">
 					<% if ( typeof( user_name ) !== "undefined" ) { %>
-						<%= author_byline_html %>
+						<% if ( !creator_hidden ) { %>
+							<%= author_byline_html %>
+						<% } else { %>
+							<span class="history-deleted mw-history-suppressed mw-userlink">
+								<%= author_byline_html %>
+							</span>
+						<% } %>
 						<!-- user_id is undefined or '0' for IP users -->
 						<% if ( typeof ( user_id ) != 'undefined' && Number( user_id ) !== 0 ) { %>
 							&#xb7;

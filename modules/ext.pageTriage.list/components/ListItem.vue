@@ -58,9 +58,15 @@
 			</div>
 			<div class="mwe-vue-pt-info-row">
 				<div>
-					<span v-if="creatorName">
+					<!-- if the username is suppressed, present it the same way as in core changelists -->
+					<span v-if="creatorHidden" class="history-deleted mw-history-suppressed mw-userlink">
+						{{ $i18n( 'rev-deleted-user' ).text() }}
+					</span>
+					<span v-else-if="creatorName">
 						<creator-byline
+							v-if="creatorName"
 							:creator-name="creatorName"
+							:creator-hidden="creatorHidden"
 							:creator-user-id="creatorUserId"
 							:creator-auto-confirmed="creatorAutoConfirmed"
 							:creator-user-page-exists="creatorUserPageExists"
@@ -185,6 +191,7 @@ module.exports = {
          */
 		// Creator information tags
 		creatorUserId: { type: Number, required: true },
+		creatorHidden: { type: Boolean, required: true },
 		creatorName: { type: String, required: true },
 		creatorEditCount: { type: Number, required: true },
 		creatorRegistrationUTC: {

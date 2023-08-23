@@ -267,6 +267,7 @@ module.exports = Backbone.View.extend( {
 			pageid: mw.config.get( 'wgArticleId' ),
 			title: mw.config.get( 'wgPageName' ),
 			creator: this.model.get( 'user_name' ),
+			creatorHidden: this.model.get( 'creator_hidden' ),
 			reviewed: reviewed
 		}, data );
 	},

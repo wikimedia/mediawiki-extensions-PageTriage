@@ -57,6 +57,9 @@ class SpecialNewPagesFeed extends SpecialPage {
 		// Output the title of the page
 		$out->setPageTitleMsg( $this->msg( 'newpagesfeed' ) );
 
+		// Load common interface css
+		$out->addModuleStyles( [ 'mediawiki.interface.helpers.styles' ] );
+
 		// Allow infinite scrolling override from query string parameter
 		// We don't use getBool() here since the param is optional
 		if ( $request->getText( 'infinite' ) === 'true' ) {

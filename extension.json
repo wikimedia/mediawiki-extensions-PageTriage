@@ -15,7 +15,12 @@
 		"MediaWiki": ">= 1.41"
 	},
 	"APIModules": {
-		"pagetriagelist": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageList",
+		"pagetriagelist": {
+			"class": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageList",
+			"services": [
+				"UserFactory"
+			]
+		},
 		"pagetriagestats": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageStats",
 		"pagetriageaction": {
 			"class": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageAction",
@@ -239,8 +244,10 @@
 				"pagetriage-mark-as-unreviewed",
 				"pagetriage-info-title",
 				"pagetriage-byline",
+				"rev-deleted-user",
 				"pagetriage-byline-new-editor",
 				"pagetriage-articleinfo-byline",
+				"pagetriage-articleinfo-byline-hidden-username",
 				"pagetriage-articleinfo-byline-new-editor",
 				"pipe-separator",
 				"pagetriage-edits",
@@ -390,6 +397,7 @@
 				"pagetriage-recreated",
 				"pagetriage-no-author",
 				"pagetriage-byline",
+				"rev-deleted-user",
 				"pagetriage-byline-new-editor",
 				"pagetriage-editcount",
 				"pagetriage-author-not-autoconfirmed",
@@ -602,6 +610,7 @@
 				"pagetriage-unreviewed-article-count",
 				"pagetriage-reviewed-article-count-past-week",
 				"pagetriage-unreviewed-draft-count",
+				"rev-deleted-user",
 				"pagetriage-sort-by",
 				"pagetriage-newest",
 				"pagetriage-oldest",

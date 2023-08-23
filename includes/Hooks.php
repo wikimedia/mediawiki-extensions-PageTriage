@@ -506,6 +506,7 @@ class Hooks implements
 				$request->getVal( 'curationtoolbar' ) === 'true' ) {
 				// Load the JavaScript for the curation toolbar
 				$outputPage->addModules( 'ext.pageTriage.toolbarStartup' );
+				$outputPage->addModuleStyles( [ 'mediawiki.interface.helpers.styles' ] );
 			} else {
 				if ( $needsReview ) {
 					// show 'Mark as reviewed' link

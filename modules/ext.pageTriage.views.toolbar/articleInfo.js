@@ -109,6 +109,8 @@ module.exports = ToolView.extend( {
 			url.toString()
 		);
 
+		const offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
+
 		// creator information
 		if ( this.model.get( 'user_name' ) ) {
 			// show new editor message only if the user is not anonymous and not autoconfirmed
@@ -119,7 +121,6 @@ module.exports = ToolView.extend( {
 				bylineMessage = 'pagetriage-articleinfo-byline';
 			}
 
-			const offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
 			// put it all together in the byline
 			// The following messages are used here:
 			// * pagetriage-articleinfo-byline-new-editor
@@ -150,6 +151,13 @@ module.exports = ToolView.extend( {
 				)
 			).parse();
 			this.model.set( 'articleByline_html', articleByline );
+		} else if ( this.model.get( 'creator_hidden' ) ) {
+			this.model.set( 'articleByline_html', mw.msg( 'pagetriage-articleinfo-byline-hidden-username', moment.utc(
+				this.model.get( 'creation_date_utc' ),
+				'YYYYMMDDHHmmss'
+			).utcOffset( offset ).format(
+				mw.msg( 'pagetriage-info-timestamp-date-format' )
+			), mw.msg( 'rev-deleted-user' ) ) );
 		}
 
 		const stats = [

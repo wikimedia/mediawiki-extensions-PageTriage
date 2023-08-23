@@ -68,12 +68,3 @@
 .mew-pt-info-stat {
 	margin-top: 10px;
 }
-
-.mwe-pt-history-suppressed {
-	text-decoration-line: line-through;
-	text-decoration-style: double;
-}
-
-.mwe-pt-history-deleted {
-	text-decoration-line: line-through;
-}

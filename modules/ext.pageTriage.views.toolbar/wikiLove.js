@@ -26,11 +26,14 @@ module.exports = ToolView.extend( {
 	render: function () {
 		// get the article's creator
 		const creator = this.model.get( 'user_name' );
+		const creatorHidden = this.model.get( 'creator_hidden' );
 
 		// get the last 20 editors of the article
 		const contributorArray = [];
 		this.model.revisions.each( function ( revision ) {
-			contributorArray.push( revision.get( 'user' ) );
+			if ( typeof ( revision.get( 'userhidden' ) ) === 'undefined' ) {
+				contributorArray.push( revision.get( 'user' ) );
+			}
 		} );
 
 		// count how many times each editor edited the article
@@ -54,7 +57,7 @@ module.exports = ToolView.extend( {
 		// set the Learn More link URL
 		$( '#mwe-pt-wikilove .mwe-pt-flyout-help-link' ).attr( 'href', this.moduleConfig.helplink );
 
-		if ( mw.user.getName() !== creator ) {
+		if ( mw.user.getName() !== creator && !creatorHidden ) {
 			// add the creator info to the top of the list
 			$( '#mwe-pt-article-contributor-list' ).append(
 				'<input type="checkbox" class="mwe-pt-recipient-checkbox" value="' + _.escape( creator ) + '"/>' +
