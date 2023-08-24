@@ -53,11 +53,11 @@ module.exports = {
 				this.addIf( settings.applied.nppIncludeOthers, 'others', this.msgObj.type );
 				this.addPredictedClass( settings.applied.nppPredictedRating );
 				this.addPredictedIssues( settings.applied.nppPossibleIssues );
-				this.addDate( settings.applied.nppDateFrom, settings.applied.nppDateTo );
+				this.addDate( settings.applied.nppDate.from, settings.applied.nppDate.to );
 			} else {
 				this.addPredictedClass( settings.applied.afcPredictedRating );
 				this.addPredictedIssues( settings.applied.afcPossibleIssues );
-				this.addDate( settings.applied.afcDateFrom, settings.applied.afcDateTo );
+				this.addDate( settings.applied.afcDate.from, settings.applied.afcDate.to );
 				this.addState( settings.applied.afcSubmissionState );
 			}
 			const comma = this.$i18n( 'comma-separator' ).text();

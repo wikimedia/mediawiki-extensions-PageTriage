@@ -62,8 +62,8 @@
 								></labeled-checkbox>
 							</control-section>
 							<date-control-section
-								v-model:from="settings.unsaved.nppDateFrom"
-								v-model:to="settings.unsaved.nppDateTo"
+								v-model:from="settings.unsaved.nppDate.from"
+								v-model:to="settings.unsaved.nppDate.to"
 								type="npp"
 							></date-control-section>
 						</div>
@@ -103,8 +103,8 @@
 							</control-section>
 							<date-control-section
 								v-if="showOresFilters"
-								v-model:from="settings.unsaved.afcDateFrom"
-								v-model:to="settings.unsaved.afcDateTo"
+								v-model:from="settings.unsaved.afcDate.from"
+								v-model:to="settings.unsaved.afcDate.to"
 								type="afc"
 							></date-control-section>
 						</div>
@@ -134,8 +134,8 @@
 						</template>
 						<div v-else class="mwe-vue-pt-control-section__col2">
 							<date-control-section
-								v-model:from="settings.unsaved.afcDateFrom"
-								v-model:to="settings.unsaved.afcDateTo"
+								v-model:from="settings.unsaved.afcDate.from"
+								v-model:to="settings.unsaved.afcDate.to"
 								type="afc"
 							></date-control-section>
 						</div>
@@ -206,18 +206,7 @@ module.exports = {
 	},
 	setup() {
 		const settings = useSettingsStore();
-		settings.$subscribe( ( _mutation, state ) => {
-			// persist most state to local storage whenever it changes
-			const filter = ( key, value ) => {
-				// Don't store the control menu open/closed state
-				if ( key === 'controlMenuOpen' ) {
-					return undefined;
-				} else {
-					return value;
-				}
-			};
-			localStorage.setItem( 'ext.pageTriage.settings', JSON.stringify( state, filter ) );
-		} );
+		settings.loadApiParams();
 		// Need to include at least one of reviewed/unreviewed, and at least
 		// one of nominated for deletion/redirects/normal articles
 		const canSaveSettings = computed( () => {

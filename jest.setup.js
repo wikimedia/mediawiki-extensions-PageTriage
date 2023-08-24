@@ -26,6 +26,9 @@ class Api {
 	get() {
 		return Promise.resolve( { pagetriagestats: { stats: '' } } );
 	}
+	saveOption() {
+		return Promise.resolve( true );
+	}
 }
 
 class IntersectionObserver {
@@ -43,3 +46,4 @@ global.mw.messagePoster = {
 };
 global.mw.Api = Api;
 global.IntersectionObserver = IntersectionObserver;
+global.mw.user.options = new mw.Map();

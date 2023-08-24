@@ -154,9 +154,6 @@ module.exports = {
 		};
 		const addFromApi = function ( apiParams ) {
 			apiParams.action = 'pagetriagelist';
-			apiParams.format = 'json';
-			apiParams.formatversion = 2;
-			apiParams.limit = API_PAGE_LIMIT;
 			apiParams.offset = apiOffsets.value.normal;
 			apiParams.pageoffset = apiOffsets.value.page;
 			api.get( apiParams ).then(
@@ -174,13 +171,14 @@ module.exports = {
 			// data up via events
 			settings.updateFilteredCount( newStats.pagetriagestats.stats.filteredarticle );
 		};
-		const updateStats = function () {
+		const updateStats = function ( params ) {
 			// make a copy, and remove unknown params
-			const apiParams = Object.assign( {}, settings.apiOptions() );
+			const apiParams = Object.assign( {}, params );
 			delete apiParams.dir;
+			delete apiParams.limit;
+			delete apiParams.offset;
+			delete apiParams.pageoffset;
 			apiParams.action = 'pagetriagestats';
-			apiParams.format = 'json';
-			apiParams.formatversion = 2;
 			api.get( apiParams ).then(
 				( res ) => processNewStats( res ),
 				( res ) => onApiFailure( res, false )
@@ -192,11 +190,13 @@ module.exports = {
 				return;
 			}
 			alreadyLoading.value = true;
-			// make a copy
-			const paramsFromStore = Object.assign( {}, settings.apiOptions() );
+			// make a copy, and remove unknown params
+			const paramsFromStore = Object.assign( {}, settings.params );
 			delete paramsFromStore.mode;
+			delete paramsFromStore.nppDir;
+			delete paramsFromStore.version;
 			addFromApi( paramsFromStore );
-			updateStats();
+			updateStats( paramsFromStore );
 		};
 		const clearCurrentData = function () {
 			feedEntries.value = [];
