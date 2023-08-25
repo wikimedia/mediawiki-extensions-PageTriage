@@ -45,12 +45,11 @@ class SpecialNewPagesFeed extends SpecialPage {
 			( $config->get( 'PageTriageEnableCopyvio' ) || $request->getBool( 'copyvio' ) );
 		$this->setHeaders();
 		$out = $this->getOutput();
-		$user = $this->getUser();
 
 		// Decide which UI to load
-		$uiVersion = $request->getInt( 'ui_version', $config->get( 'PageTriageUIVersion' ) );
+		$uiVersion = $request->getText( 'pagetriage_ui', $config->get( 'PageTriageUIVersion' ) );
 		$listModule = 'ext.pageTriage.views.list';
-		if ( $uiVersion === 1 ) {
+		if ( $uiVersion === 'new' ) {
 			$listModule = 'ext.pageTriage.list';
 		}
 
