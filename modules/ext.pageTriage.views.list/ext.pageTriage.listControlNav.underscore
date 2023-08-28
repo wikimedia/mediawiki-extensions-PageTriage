@@ -55,14 +55,16 @@
 			<div class="mwe-pt-control-section__npp mwe-pt-npp">
 				<div class="mwe-pt-control-section__row1">
 					<div class="mwe-pt-control-section__col1">
-						<div class="mwe-pt-control-section">
-							<span class="mwe-pt-control-label">
-								<b><%- mw.msg( 'pagetriage-filter-namespace-heading' ) %></b>
-							</span>
-							<div class="mwe-pt-control-options">
-								<select id="mwe-pt-filter-namespace"></select>
+						<% if ( filterNamespaces.length > 1 ) { %>
+							<div class="mwe-pt-control-section">
+								<span class="mwe-pt-control-label">
+									<b><%- mw.msg( 'pagetriage-filter-namespace-heading' ) %></b>
+								</span>
+								<div class="mwe-pt-control-options">
+									<select id="mwe-pt-filter-namespace"></select>
+								</div>
 							</div>
-						</div>
+						<% } %>
 						<div class="mwe-pt-control-section">
 							<span class="mwe-pt-control-label">
 								<b><%- mw.msg( 'pagetriage-filter-show-heading' ) %></b>
@@ -265,7 +267,7 @@
 						</div>
 					<% } %>
 				</div>
-				
+
 			</div>
 			<div class="mwe-pt-control-section__afc mwe-pt-afc">
 				<div class="mwe-pt-control-section__row1">

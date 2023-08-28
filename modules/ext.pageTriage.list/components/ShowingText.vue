@@ -70,6 +70,9 @@ module.exports = {
 					if ( group === 'top' || ( settings.immediate.queueMode === 'afc' && group === 'state' ) ) {
 						return groupShowing[ 0 ];
 					}
+					if ( group === 'namespace' && getNamespaceOptions().length <= 1 ) {
+						return '';
+					}
 					let groupMsg = '';
 					if ( group === 'type' ) {
 						groupMsg = this.$i18n( 'pagetriage-filter-stat-type', 'blerb' ) + ' ' +

@@ -5,12 +5,15 @@ const ListControlNav = Backbone.View.extend( {
 	template: mw.template.get( 'ext.pageTriage.views.list', 'listControlNav.underscore' ),
 	filterMenuVisible: 0,
 	filterStatus: mw.msg( 'pagetriage-filter-stat-all' ),
+	filterNamespaces: [],
 	newFilterStatus: {},
 
 	initialize: function ( options ) {
 		const that = this;
 
 		this.eventBus = options.eventBus; // access the eventBus
+
+		this.filterNamespaces = this.getNamespaceOptions();
 
 		if ( mw.config.get( 'wgPageTriageStickyControlNav' ) ) {
 			this.setWaypoint(); // create scrolling waypoint
@@ -70,8 +73,12 @@ const ListControlNav = Backbone.View.extend( {
 	render: function () {
 		const that = this;
 
+		const filterNamespaces = this.filterNamespaces;
+
 		// render and return the template. fill with the current model.
-		$( '#mwe-pt-list-control-nav-content' ).html( this.template( this.model.toJSON() ) );
+		$( '#mwe-pt-list-control-nav-content' ).html( this.template( $.extend( this.model.toJSON(), {
+			filterNamespaces: filterNamespaces
+		} ) ) );
 
 		// Insert the HTML for npp and afc date range filters
 		$( '#date-range-npp-filters' ).html( this.getDateRangeFilterSectionHtml( 'npp' ) );
@@ -94,7 +101,7 @@ const ListControlNav = Backbone.View.extend( {
 		} );
 
 		// Populate "namespace" combo box with options
-		$( '#mwe-pt-filter-namespace' ).empty().append( this.getNamespaceOptions() );
+		$( '#mwe-pt-filter-namespace' ).empty().append( filterNamespaces );
 
 		//
 		// now that the template's been inserted, set up some events for controlling it
@@ -579,6 +586,11 @@ const ListControlNav = Backbone.View.extend( {
 					// For the top-level filter, don't put it in parentheses and don't prefix it with a group label (T199277)
 					return filters[ 0 ];
 				}
+
+				if ( group === 'namespace' && that.filterNamespaces.length <= 1 ) {
+					return '';
+				}
+
 				// eslint-disable-next-line mediawiki/msg-doc
 				return mw.msg( 'pagetriage-filter-stat-' + group ) + ' ' +
 					mw.msg( 'parentheses', filters.join( mw.msg( 'comma-separator' ) ) );

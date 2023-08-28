@@ -26,7 +26,10 @@
 				>
 					<div v-show="settings.immediate.queueMode === 'npp'" class="mwe-vue-pt-control-section__row1">
 						<div class="mwe-vue-pt-control-section__col1">
-							<control-section label-msg="pagetriage-filter-namespace-heading">
+							<control-section
+								v-if="namespaceOptions.length > 1"
+								label-msg="pagetriage-filter-namespace-heading"
+							>
 								<select v-model="settings.unsaved.nppNamespace">
 									<option
 										v-for="( namespace, i ) in namespaceOptions"
