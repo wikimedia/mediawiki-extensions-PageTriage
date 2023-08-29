@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Kaganer",
-			"Kotwys"
+			"Kotwys",
+			"Света Поторочина"
 		]
 	},
 	"pagetriage-filter-show-heading": "Югдурез:",
-	"pagetriage-filter-ns-all": "Ваньзэ",
-	"pagetriage-filter-stat-all": "Ваньзэ"
+	"pagetriage-filter-ns-all": "Ваньмыз",
+	"pagetriage-filter-stat-all": "Ваньмыз"
 }
