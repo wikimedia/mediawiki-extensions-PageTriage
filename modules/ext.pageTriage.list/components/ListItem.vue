@@ -433,4 +433,7 @@ module.exports = {
 .ores-pt-issues {
 	height: 0.55em;
 }
+.cdx-icon.cdx-info-chip__icon--warning {
+	color: @color-warning;
+}
 </style>
