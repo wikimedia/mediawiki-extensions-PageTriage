@@ -1,5 +1,5 @@
 <template>
-	<b>
+	<b class="mwe-vue-pt-sort-label">
 		{{ $i18n( 'pagetriage-sort-by' ).text() }}
 	</b>
 	<cdx-radio
@@ -53,3 +53,10 @@ module.exports = {
 	}
 };
 </script>
+
+<style>
+.mwe-vue-pt-sort-label {
+	padding-right: 5px;
+	white-space: nowrap;
+}
+</style>

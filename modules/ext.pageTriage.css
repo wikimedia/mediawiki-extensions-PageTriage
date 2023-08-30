@@ -26,7 +26,11 @@
 	display: none;
 }
 
-/** Ensure the filter panel is entirely visible even when there is no results */
+#mwe-pt-list {
+	min-width: 360px;
+}
+
+/** Ensure the filter panel is entirely visible even when there are no results */
 .mw-special-NewPagesFeed #mwe-pt-list {
 	min-height: 550px;
 }
