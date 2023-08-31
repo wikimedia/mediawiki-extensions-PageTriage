@@ -277,7 +277,6 @@ module.exports = {
 	}
 }
 .mwe-vue-pt-control-section {
-	min-width: 0;
 	padding-bottom: 3px;
 }
 .mwe-vue-pt-control-buttons {

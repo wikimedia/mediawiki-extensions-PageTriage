@@ -1,22 +1,25 @@
 <template>
 	<control-section label-msg="pagetriage-filter-date-range-heading">
-		<label :for="`mwe-vue-pt-filter-${type}-date-range-from`">{{ $i18n( 'pagetriage-filter-date-range-from' ).text() }}</label>
-		<input
-			:id="`mwe-vue-pt-filter-${type}-date-range-from`"
-			type="date"
-			:value="from"
-			:placeholder="$i18n( 'pagetriage-filter-date-range-format-placeholder' ).text()"
-			@input="$emit( 'update:from', $event.target.value )"
-		>
-		<br>
-		<label :for="`mwe-vue-pt-filter-${type}-date-range-to`">{{ $i18n( 'pagetriage-filter-date-range-to' ).text() }}</label>
-		<input
-			:id="`mwe-vue-pt-filter-${type}-date-range-to`"
-			type="date"
-			:value="to"
-			:placeholder="$i18n( 'pagetriage-filter-date-range-format-placeholder' ).text()"
-			@input="$emit( 'update:to', $event.target.value )"
-		>
+		<div class="mwe-vue-date-container">
+			<label class="mwe-vue-date-label" :for="`mwe-vue-pt-filter-${type}-date-range-from`">{{ $i18n( 'pagetriage-filter-date-range-from' ).text() }}</label>
+			<input
+				:id="`mwe-vue-pt-filter-${type}-date-range-from`"
+				type="date"
+				:value="from"
+				:placeholder="$i18n( 'pagetriage-filter-date-range-format-placeholder' ).text()"
+				@input="$emit( 'update:from', $event.target.value )"
+			>
+		</div>
+		<div class="mwe-vue-date-container">
+			<label class="mwe-vue-date-label" :for="`mwe-vue-pt-filter-${type}-date-range-to`">{{ $i18n( 'pagetriage-filter-date-range-to' ).text() }}</label>
+			<input
+				:id="`mwe-vue-pt-filter-${type}-date-range-to`"
+				type="date"
+				:value="to"
+				:placeholder="$i18n( 'pagetriage-filter-date-range-format-placeholder' ).text()"
+				@input="$emit( 'update:to', $event.target.value )"
+			>
+		</div>
 	</control-section>
 </template>
 
@@ -48,6 +51,13 @@ module.exports = {
 <style>
 #mwe-vue-pt-filter-npp-date-range-from,
 #mwe-vue-pt-filter-npp-date-range-to {
-	float: right;
+	display: table-cell;
+	margin: 5px 0px 5px 15px;
+}
+.mwe-vue-date-container {
+	display: table-row;
+}
+.mwe-vue-date-label {
+	display: table-cell;
 }
 </style>
