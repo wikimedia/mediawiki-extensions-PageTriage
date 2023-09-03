@@ -18,7 +18,9 @@
 		"pagetriagelist": {
 			"class": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageList",
 			"services": [
-				"UserFactory"
+				"UserFactory",
+				"RedirectLookup",
+				"TitleFormatter"
 			]
 		},
 		"pagetriagestats": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageStats",
