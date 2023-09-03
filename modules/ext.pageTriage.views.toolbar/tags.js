@@ -53,6 +53,7 @@ module.exports = ToolView.extend( {
 			for ( const key in this.tagsOptions[ cat ].tags ) {
 				const tag = $.extend( true, {}, this.tagsOptions[ cat ].tags[ key ] );
 				tag.dest = cat;
+				tag.destKey = key;
 				list.push( tag );
 			}
 		}
@@ -226,16 +227,21 @@ module.exports = ToolView.extend( {
 			// add click events for checking/unchecking tags to both the
 			// checkboxes and tag labels
 			$( '#mwe-pt-tag-' + key + ', #mwe-pt-checkbox-tag-' + key ).on( 'click', function () {
-				let destCat, alsoCommon, param;
+				let destCat, destKey, alsoCommon, param;
+
 				// Extract the tag key from the id of whatever was clicked on
 				const tagKeyMatches = $( this ).attr( 'id' ).match( /.*-tag-(.*)/ );
 				const tagKey = tagKeyMatches[ 1 ];
+
+				let allTagKey = tagSet[ tagKey ].tag + tagSet[ tagKey ].label;
+				allTagKey = allTagKey.replace( /[- (){}]/g, '' ).toLowerCase();
 
 				// Tags in the 'common' group actually belong to other categories.
 				// In those cases we need to interact with the real parent
 				// category which is indicated in the 'dest' attribute.
 				if ( ( cat === 'common' || cat === 'all' ) && tagSet[ tagKey ].dest ) {
 					destCat = tagSet[ tagKey ].dest;
+					destKey = tagSet[ tagKey ].destKey;
 				}
 
 				// Tags in other groups may also belong to the 'common' group.
@@ -251,12 +257,13 @@ module.exports = ToolView.extend( {
 					that.selectedTagCount++;
 					that.selectedTag[ cat ][ tagKey ] = tagSet[ tagKey ];
 					if ( destCat ) {
-						that.selectedTag[ destCat ][ tagKey ] = tagSet[ tagKey ];
+						that.selectedTag[ destCat ][ destKey ] = tagSet[ tagKey ];
 					}
 					if ( alsoCommon ) {
 						that.selectedTag.common[ tagKey ] = tagSet[ tagKey ];
 					}
-					that.selectedTag.all[ tagKey ] = tagSet[ tagKey ];
+
+					that.selectedTag.all[ allTagKey ] = tagSet[ tagKey ];
 					that.showParamsLink( tagKey, cat );
 					// show the param form if there is required parameter
 					for ( param in tagSet[ tagKey ].params ) {
@@ -271,12 +278,12 @@ module.exports = ToolView.extend( {
 					that.selectedTagCount--;
 					delete that.selectedTag[ cat ][ tagKey ];
 					if ( destCat ) {
-						delete that.selectedTag[ destCat ][ tagKey ];
+						delete that.selectedTag[ destCat ][ destKey ];
 					}
 					if ( alsoCommon ) {
 						delete that.selectedTag.common[ tagKey ];
 					}
-					delete that.selectedTag.all[ tagKey ];
+					delete that.selectedTag.all[ allTagKey ];
 					that.hideParamsLink( tagKey );
 					// If the param form is visible, hide it
 					that.hideParamsForm( tagKey );
