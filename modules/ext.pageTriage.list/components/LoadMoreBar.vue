@@ -1,10 +1,6 @@
 <template>
-	<div
-		v-show="haveMore"
-		id="loadMoreBar"
-		ref="barRef"
-	>
-		<div id="mwe-vue-pt-feed-load-more">
+	<div id="loadMoreBar" ref="barRef">
+		<div id="mwe-vue-pt-feed-load-more" :class="!haveMore ? 'mwe-pt-hidden' : null">
 			<cdx-progress-bar></cdx-progress-bar>
 		</div>
 	</div>

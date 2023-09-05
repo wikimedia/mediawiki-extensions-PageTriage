@@ -170,25 +170,19 @@ module.exports = {
 		}
 	},
 	mounted() {
-		const mwFooter = document.getElementById( 'footer' );
-		if ( mwFooter ) {
-			const options = {
-				root: mwFooter.value,
-				rootMargin: '0px',
-				threshold: 0
-			};
-			const observerCallback = ( function ( entries ) {
-				const observerEntry = entries[ 0 ];
-				// whether we scrolled to see it or away from it
-				if ( observerEntry.isIntersecting ) {
-					this.stickyFooter = false;
-				} else {
-					this.stickyFooter = true;
-				}
-			} ).bind( this );
-			const observer = new IntersectionObserver( observerCallback, options );
-			observer.observe( mwFooter );
-		}
+		const options = {
+			// Offset the height occupied by this element + the approximate bottom margin of the last list item
+			rootMargin: `-${this.$el.offsetHeight + 10}px`
+		};
+		const observerCallback = ( function ( entries ) {
+			const observerEntry = entries[ 0 ];
+			// not sticky if the previous sibling is visible
+			// sticky if the previous sibling is not visible
+			this.stickyFooter = !observerEntry.isIntersecting;
+		} ).bind( this );
+		const observer = new IntersectionObserver( observerCallback, options );
+		// Observe the visibility of the element before this one;
+		observer.observe( this.$el.previousElementSibling );
 	}
 };
 </script>
