@@ -145,7 +145,6 @@
 			"es6": true,
 			"packageFiles": [
 				"ext.pageTriage.util/main.js",
-				"ext.pageTriage.util/stores/settings.js",
 				"ext.pageTriage.util/models/ext.pageTriage.article.js",
 				"ext.pageTriage.util/models/ext.pageTriage.revision.js",
 				"ext.pageTriage.util/models/ext.pageTriage.stats.js"
@@ -545,7 +544,8 @@
 				"ext.pageTriage.list/components/NppFilterRadio.vue",
 				"ext.pageTriage.list/components/AfcSortSelect.vue",
 				"ext.pageTriage.list/components/AfcStateRadio.vue",
-				"ext.pageTriage.list/components/ShowingText.vue"
+				"ext.pageTriage.list/components/ShowingText.vue",
+				"ext.pageTriage.list/stores/settings.js"
 			],
 			"styles": [
 				"external/jquery.tipoff/jquery.tipoff.css",

@@ -79,7 +79,7 @@ const { ref, watch } = require( 'vue' );
 const ListItem = require( './ListItem.vue' );
 const LoadMoreBar = require( './LoadMoreBar.vue' );
 const StatsBar = require( './ListStatsNav.vue' );
-const { useSettingsStore } = require( 'ext.pageTriage.util' );
+const { useSettingsStore } = require( '../stores/settings.js' );
 const { storeToRefs } = require( 'pinia' );
 // @vue/component
 module.exports = {

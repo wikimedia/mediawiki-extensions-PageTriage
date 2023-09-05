@@ -11,6 +11,8 @@ describe( 'ListFilterMenu.vue', () => {
 					return [ 0, 118 ];
 				case 'wgPageTriageDraftNamespaceId':
 					return 118;
+				case 'wgNamespaceIds':
+					return { draft: 118 };
 				default:
 					return null;
 			}
@@ -23,7 +25,7 @@ describe( 'ListFilterMenu.vue', () => {
 					return null;
 			}
 		} );
-		const { useSettingsStore } = require( 'ext.pageTriage.util' );
+		const { useSettingsStore } = require( '../../../../modules/ext.pageTriage.list/stores/settings.js' );
 		ListFilterMenu = require( '../../../../modules/ext.pageTriage.list/components/ListFilterMenu.vue' );
 		wrapper = mount( ListFilterMenu, {
 			global: {

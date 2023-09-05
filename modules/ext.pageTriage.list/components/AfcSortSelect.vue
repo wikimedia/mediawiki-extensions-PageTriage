@@ -34,7 +34,7 @@
  */
 const { storeToRefs } = require( 'pinia' );
 const { computed } = require( 'vue' );
-const { useSettingsStore } = require( 'ext.pageTriage.util' );
+const { useSettingsStore } = require( '../stores/settings.js' );
 // @vue/component
 module.exports = {
 	configureCompat: {

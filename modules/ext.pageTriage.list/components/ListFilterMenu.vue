@@ -178,7 +178,7 @@ const NppSortDirRadio = require( './NppSortDirRadio.vue' );
 const NppFilterRadio = require( './NppFilterRadio.vue' );
 const ShowingText = require( './ShowingText.vue' );
 const { CdxButton } = require( '@wikimedia/codex' );
-const { useSettingsStore } = require( 'ext.pageTriage.util' );
+const { useSettingsStore } = require( '../stores/settings.js' );
 const { getNamespaceOptions } = require( '../namespaces.js' );
 // @vue/component
 module.exports = {

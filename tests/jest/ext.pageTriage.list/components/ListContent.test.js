@@ -13,7 +13,7 @@ describe( 'ListContent.vue', () => {
 					return null;
 			}
 		} );
-		const { useSettingsStore } = require( 'ext.pageTriage.util' );
+		const { useSettingsStore } = require( '../../../../modules/ext.pageTriage.list/stores/settings.js' );
 		ListContent = require( '../../../../modules/ext.pageTriage.list/components/ListContent.vue' );
 		wrapper = mount( ListContent, {
 			global: {
