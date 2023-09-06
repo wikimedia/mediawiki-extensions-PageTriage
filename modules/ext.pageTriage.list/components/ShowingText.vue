@@ -1,5 +1,5 @@
 <template>
-	<span class="mwe-vue-pt-control-label">
+	<span>
 		<b>{{ $i18n( 'pagetriage-showing' ).text() }}</b>
 		{{ showingText }}
 	</span>
