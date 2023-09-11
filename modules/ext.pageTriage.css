@@ -21,6 +21,7 @@
 	display: block;
 }
 
+.mwe-pt-hidden,
 .mwe-pt-mode-afc .mwe-pt-npp {
 	display: none;
 }

@@ -28,6 +28,12 @@ class Api {
 	}
 }
 
+class IntersectionObserver {
+	observe() {
+		return null;
+	}
+}
+
 global.mw.Title = Title;
 global.mw.Message = Message;
 global.mw.messagePoster = {
@@ -36,3 +42,4 @@ global.mw.messagePoster = {
 	}
 };
 global.mw.Api = Api;
+global.IntersectionObserver = IntersectionObserver;
