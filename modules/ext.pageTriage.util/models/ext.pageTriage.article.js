@@ -198,8 +198,6 @@ const Article = Backbone.Model.extend( {
 			);
 		}
 
-		article.set( 'title_url_format', mw.util.wikiUrlencode( article.get( 'title' ) ) );
-
 		const titleUrl = new mw.Uri( mw.util.getUrl( article.get( 'title' ) ) );
 		if ( Number( article.get( 'is_redirect' ) ) === 1 ) {
 			titleUrl.query.redirect = 'no';

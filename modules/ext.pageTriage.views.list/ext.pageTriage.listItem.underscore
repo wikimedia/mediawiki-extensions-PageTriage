@@ -70,7 +70,7 @@
 					<div class="mwe-pt-article">
 						<span class="mwe-pt-page-title"><a href="<%- title_url %>" target="_blank"><%- title %></a></span>
 						<span class="mwe-pt-histlink">
-							(<a href="<%- mw.util.getUrl( title_url_format, { action: 'history' } ) %>"><%- mw.msg( "pagetriage-hist" ) %></a>)
+							(<a href="<%- mw.util.getUrl( title, { action: 'history' } ) %>"><%- mw.msg( "pagetriage-hist" ) %></a>)
 						</span>
 						<span class="mwe-pt-metadata">
 							&#xb7;
@@ -91,7 +91,7 @@
 								<% if ( recreated == "1" ) { %>
 									&#xb7;
 									<span class="mwe-pt-metadata-warning">
-										<a href="<%- mw.util.getUrl( 'Special:Log', { type: 'delete', page: title_url_format } ) %>"><%- mw.msg("pagetriage-recreated") %></a>
+										<a href="<%- mw.util.getUrl( 'Special:Log', { type: 'delete', page: title } ) %>"><%- mw.msg("pagetriage-recreated") %></a>
 									</span>
 								<% } %>
 							<% } %>
