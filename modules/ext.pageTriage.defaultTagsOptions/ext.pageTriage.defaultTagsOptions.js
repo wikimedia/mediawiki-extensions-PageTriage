@@ -2122,13 +2122,13 @@
 					params: {
 						1: {
 							label: 'From language (two-letter code):',
-							input: 'required',
+							input: 'optional',
 							type: 'text',
 							value: ''
 						},
 						2: {
 							label: 'To language (two-letter code):',
-							input: 'required',
+							input: 'optional',
 							type: 'text',
 							value: ''
 						}
