@@ -568,7 +568,7 @@
 	"apihelp-pagetriagetagging-param-note": "הערה אישית מהסוקרים.",
 	"apihelp-pagetriagetagging-param-taglist": "רשימת תגים מופרדת בקווים ניצבים.",
 	"apierror-bad-pagetriage-page": "הדף שצוין אינו קיים בתור pagetriage",
-	"apierror-bad-pagetriage-enqueue-mainpage": "לא ניתן להוסיף את הדף הראשי לתור pagetriage",
+	"apierror-bad-pagetriage-enqueue-mainpage": "לא ניתן להוסיף את העמוד הראשי לתור pagetriage",
 	"apierror-bad-pagetriage-enqueue-invalidnamespace": "הדף שצוין נמצא במרחב שם ש־page triage אינו מופעל בו",
 	"apierror-bad-pagetriage-enqueue-alreadyqueued": "הדף שצוין כבר קיים בתור pagetriage",
 	"apierror-pagetriage-missingtag": "לא היה אפשר למצוא מזהה תג לתג הפרת זכויות יוצרים. נא לנסות להריץ את update.php."
