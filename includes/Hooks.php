@@ -472,8 +472,8 @@ class Hooks implements
 			);
 		}
 
-		// Only logged in users can review
-		if ( !$user->isRegistered() ) {
+		// Only named users can review
+		if ( !$user->isNamed() ) {
 			return;
 		}
 

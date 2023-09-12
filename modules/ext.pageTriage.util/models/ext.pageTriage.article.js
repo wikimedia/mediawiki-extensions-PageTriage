@@ -304,7 +304,7 @@ const ArticleList = Backbone.Collection.extend( {
 
 		// Pull any saved filter settings from the user's option.
 		const filterOptionsJson = mw.user.options.get( 'userjs-NewPagesFeedFilterOptions' );
-		if ( mw.user.isAnon() || !filterOptionsJson ) {
+		if ( !mw.user.isNamed() || !filterOptionsJson ) {
 			return;
 		}
 		let filterOptions;
@@ -442,7 +442,7 @@ const ArticleList = Backbone.Collection.extend( {
 
 	// Save the filter parameters to a user's option
 	saveFilterParams: function () {
-		if ( !mw.user.isAnon() ) {
+		if ( mw.user.isNamed() ) {
 			return new mw.Api().saveOption( 'userjs-NewPagesFeedFilterOptions', this.encodeFilterParams() );
 		}
 	},
