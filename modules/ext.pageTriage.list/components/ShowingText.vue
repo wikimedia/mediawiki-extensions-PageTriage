@@ -1,8 +1,8 @@
 <template>
-	<span>
+	<div class="mwe-vue-pt-showing-section">
 		<b>{{ $i18n( 'pagetriage-showing' ).text() }}</b>
 		{{ showingText }}
-	</span>
+	</div>
 </template>
 
 <script>
@@ -208,3 +208,14 @@ module.exports = {
 	}
 };
 </script>
+
+<style>
+.mwe-vue-pt-showing-section {
+	width: 50%;
+	display: inline-flex;
+}
+.mwe-vue-pt-showing-section b {
+	padding-right: 5px;
+	white-space: nowrap;
+}
+</style>

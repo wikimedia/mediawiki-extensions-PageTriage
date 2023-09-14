@@ -1,160 +1,163 @@
 <template>
 	<div id="mwe-vue-pt-menu-heading" class="mwe-vue-pt-control-gradient">
-		<p v-if="haveDraftNamespace">
+		<div v-if="haveDraftNamespace">
 			<queue-mode-radio></queue-mode-radio>
-		</p>
-		<showing-text></showing-text>
-		<span v-show="settings.currentFilteredCount !== -1" class="mwe-vue-pt-control-label-right">
-			{{ $i18n( 'pagetriage-stats-filter-page-count', settings.currentFilteredCount ).text() }}
-		</span>
-		<br>
-		<span v-show="settings.immediate.queueMode === 'npp'" class="mwe-vue-pt-control-label-right">
-			<npp-sort-dir-radio></npp-sort-dir-radio>
-		</span>
-		<span v-show="settings.immediate.queueMode === 'afc'" class="mwe-vue-pt-control-label-right">
-			<afc-sort-select></afc-sort-select>
-		</span>
-		<div id="mwe-vue-pt-control-menu-toggle">
-			<b @click="toggleControlMenu">{{ $i18n( 'pagetriage-filter-set-button' ).text() }} {{ settings.controlMenuOpen ? '▾' : '▸' }}</b>
-			<!-- Dropdown goes within the toggle with absolute position to overlay the feed -->
-			<div
-				v-if="settings.controlMenuOpen"
-				id="mwe-vue-pt-control-dropdown"
-				class="mwe-vue-pt-control-gradient"
-			>
-				<div v-show="settings.immediate.queueMode === 'npp'" class="mwe-vue-pt-control-section__row1">
-					<div class="mwe-vue-pt-control-section__col1">
-						<control-section label-msg="pagetriage-filter-namespace-heading">
-							<select v-model="settings.unsaved.nppNamespace">
-								<option
-									v-for="( namespace, i ) in namespaceOptions"
-									:key="`pagetriage-filter-namespace-${i}`"
-									:value="i"
-								>
-									{{ namespace }}
-								</option>
-							</select>
-						</control-section>
-						<control-section label-msg="pagetriage-filter-show-heading">
-							<labeled-checkbox
-								v-model:checked="settings.unsaved.nppIncludeUnreviewed"
-								label-msg="pagetriage-filter-unreviewed-edits"
-							></labeled-checkbox>
-							<labeled-checkbox
-								v-model:checked="settings.unsaved.nppIncludeReviewed"
-								label-msg="pagetriage-filter-reviewed-edits"
-							></labeled-checkbox>
-						</control-section>
-						<control-section label-msg="pagetriage-filter-type-show-heading">
-							<labeled-checkbox
-								v-model:checked="settings.unsaved.nppIncludeNominated"
-								label-msg="pagetriage-filter-nominated-for-deletion"
-							></labeled-checkbox>
-							<labeled-checkbox
-								v-model:checked="settings.unsaved.nppIncludeRedirects"
-								label-msg="pagetriage-filter-redirects"
-							></labeled-checkbox>
-							<labeled-checkbox
-								v-model:checked="settings.unsaved.nppIncludeOthers"
-								label-msg="pagetriage-filter-others"
-							></labeled-checkbox>
-						</control-section>
-						<date-control-section
-							v-model:from="settings.unsaved.nppDateFrom"
-							v-model:to="settings.unsaved.nppDateTo"
-							type="npp"
-						></date-control-section>
-					</div>
-					<control-section label-msg="pagetriage-filter-second-show-heading">
-						<npp-filter-radio
-							v-model:filter="settings.unsaved.nppFilter"
-							v-model:user="settings.unsaved.nppFilterUser"
-						>
-						</npp-filter-radio>
-					</control-section>
-					<div v-if="showOresFilters" class="mwe-vue-pt-control-section__col2">
-						<control-section label-msg="pagetriage-filter-predicted-class-heading">
-							<labeled-checkbox
-								v-for="( _, rating ) in settings.unsaved.nppPredictedRating"
-								:key="`${rating}-${settings.unsaved.nppPredictedRating[ rating ]}`"
-								v-model:checked="settings.unsaved.nppPredictedRating[ rating ]"
-								:label-msg="'pagetriage-filter-predicted-class-' + rating"
+		</div>
+		<div class="mwe-vue-pt-menu-section">
+			<showing-text></showing-text>
+			<div v-show="settings.currentFilteredCount !== -1" class="mwe-vue-pt-control-label-right mwe-vue-pt-filter-count">
+				{{ $i18n( 'pagetriage-stats-filter-page-count', settings.currentFilteredCount ).text() }}
+			</div>
+		</div>
+		<div>
+			<div v-show="settings.immediate.queueMode === 'npp'" class="mwe-vue-pt-control-label-right mwe-vue-pt-sort-section">
+				<npp-sort-dir-radio></npp-sort-dir-radio>
+			</div>
+			<div v-show="settings.immediate.queueMode === 'afc'" class="mwe-vue-pt-control-label-right mwe-vue-pt-sort-section">
+				<afc-sort-select></afc-sort-select>
+			</div>
+			<div id="mwe-vue-pt-control-menu-toggle">
+				<b @click="toggleControlMenu">{{ $i18n( 'pagetriage-filter-set-button' ).text() }} {{ settings.controlMenuOpen ? '▾' : '▸' }}</b>
+				<!-- Dropdown goes within the toggle with absolute position to overlay the feed -->
+				<div
+					v-if="settings.controlMenuOpen"
+					id="mwe-vue-pt-control-dropdown"
+					class="mwe-vue-pt-control-gradient"
+				>
+					<div v-show="settings.immediate.queueMode === 'npp'" class="mwe-vue-pt-control-section__row1">
+						<div class="mwe-vue-pt-control-section__col1">
+							<control-section label-msg="pagetriage-filter-namespace-heading">
+								<select v-model="settings.unsaved.nppNamespace">
+									<option
+										v-for="( namespace, i ) in namespaceOptions"
+										:key="`pagetriage-filter-namespace-${i}`"
+										:value="i"
+									>
+										{{ namespace }}
+									</option>
+								</select>
+							</control-section>
+							<control-section label-msg="pagetriage-filter-show-heading">
+								<labeled-checkbox
+									v-model:checked="settings.unsaved.nppIncludeUnreviewed"
+									label-msg="pagetriage-filter-unreviewed-edits"
+								></labeled-checkbox>
+								<labeled-checkbox
+									v-model:checked="settings.unsaved.nppIncludeReviewed"
+									label-msg="pagetriage-filter-reviewed-edits"
+								></labeled-checkbox>
+							</control-section>
+							<control-section label-msg="pagetriage-filter-type-show-heading">
+								<labeled-checkbox
+									v-model:checked="settings.unsaved.nppIncludeNominated"
+									label-msg="pagetriage-filter-nominated-for-deletion"
+								></labeled-checkbox>
+								<labeled-checkbox
+									v-model:checked="settings.unsaved.nppIncludeRedirects"
+									label-msg="pagetriage-filter-redirects"
+								></labeled-checkbox>
+								<labeled-checkbox
+									v-model:checked="settings.unsaved.nppIncludeOthers"
+									label-msg="pagetriage-filter-others"
+								></labeled-checkbox>
+							</control-section>
+							<date-control-section
+								v-model:from="settings.unsaved.nppDateFrom"
+								v-model:to="settings.unsaved.nppDateTo"
+								type="npp"
+							></date-control-section>
+						</div>
+						<control-section label-msg="pagetriage-filter-second-show-heading">
+							<npp-filter-radio
+								v-model:filter="settings.unsaved.nppFilter"
+								v-model:user="settings.unsaved.nppFilterUser"
 							>
-							</labeled-checkbox>
+							</npp-filter-radio>
 						</control-section>
-						<control-section label-msg="pagetriage-filter-predicted-issues-heading">
-							<labeled-checkbox
-								v-for="( _, issue ) in settings.unsaved.nppPossibleIssues"
-								:key="`${issue}-${settings.unsaved.nppPossibleIssues[ issue ]}`"
-								v-model:checked="settings.unsaved.nppPossibleIssues[ issue ]"
-								:label-msg="'pagetriage-filter-predicted-issues-' + issue"
-							>
-							</labeled-checkbox>
-						</control-section>
-					</div>
-				</div>
-				<div v-show="settings.immediate.queueMode === 'afc'" class="mwe-vue-pt-control-section__row1">
-					<div class="mwe-vue-pt-control-section__col1">
-						<control-section label-msg="pagetriage-filter-show-heading">
-							<afc-state-radio v-model:state="settings.unsaved.afcSubmissionState"
-							></afc-state-radio>
-						</control-section>
-						<date-control-section
-							v-if="showOresFilters"
-							v-model:from="settings.unsaved.afcDateFrom"
-							v-model:to="settings.unsaved.afcDateTo"
-							type="afc"
-						></date-control-section>
-					</div>
-					<template v-if="showOresFilters">
-						<div class="mwe-vue-pt-control-section__col2">
+						<div v-if="showOresFilters" class="mwe-vue-pt-control-section__col2">
 							<control-section label-msg="pagetriage-filter-predicted-class-heading">
 								<labeled-checkbox
-									v-for="( _, rating ) in settings.unsaved.afcPredictedRating"
-									:key="`${rating}-${settings.unsaved.afcPredictedRating[ rating ]}`"
-									v-model:checked="settings.unsaved.afcPredictedRating[ rating ]"
+									v-for="( _, rating ) in settings.unsaved.nppPredictedRating"
+									:key="`${rating}-${settings.unsaved.nppPredictedRating[ rating ]}`"
+									v-model:checked="settings.unsaved.nppPredictedRating[ rating ]"
 									:label-msg="'pagetriage-filter-predicted-class-' + rating"
 								>
 								</labeled-checkbox>
 							</control-section>
-						</div>
-						<div class="mwe-vue-pt-control-section__col3">
 							<control-section label-msg="pagetriage-filter-predicted-issues-heading">
 								<labeled-checkbox
-									v-for="( _, issue ) in settings.unsaved.afcPossibleIssues"
-									:key="`${issue}-${settings.unsaved.afcPossibleIssues[ issue ]}`"
-									v-model:checked="settings.unsaved.afcPossibleIssues[ issue ]"
+									v-for="( _, issue ) in settings.unsaved.nppPossibleIssues"
+									:key="`${issue}-${settings.unsaved.nppPossibleIssues[ issue ]}`"
+									v-model:checked="settings.unsaved.nppPossibleIssues[ issue ]"
 									:label-msg="'pagetriage-filter-predicted-issues-' + issue"
 								>
 								</labeled-checkbox>
 							</control-section>
 						</div>
-					</template>
-					<div v-else class="mwe-vue-pt-control-section__col2">
-						<date-control-section
-							v-model:from="settings.unsaved.afcDateFrom"
-							v-model:to="settings.unsaved.afcDateTo"
-							type="afc"
-						></date-control-section>
 					</div>
-				</div>
+					<div v-show="settings.immediate.queueMode === 'afc'" class="mwe-vue-pt-control-section__row1">
+						<div class="mwe-vue-pt-control-section__col1">
+							<control-section label-msg="pagetriage-filter-show-heading">
+								<afc-state-radio v-model:state="settings.unsaved.afcSubmissionState"
+								></afc-state-radio>
+							</control-section>
+							<date-control-section
+								v-if="showOresFilters"
+								v-model:from="settings.unsaved.afcDateFrom"
+								v-model:to="settings.unsaved.afcDateTo"
+								type="afc"
+							></date-control-section>
+						</div>
+						<template v-if="showOresFilters">
+							<div class="mwe-vue-pt-control-section__col2">
+								<control-section label-msg="pagetriage-filter-predicted-class-heading">
+									<labeled-checkbox
+										v-for="( _, rating ) in settings.unsaved.afcPredictedRating"
+										:key="`${rating}-${settings.unsaved.afcPredictedRating[ rating ]}`"
+										v-model:checked="settings.unsaved.afcPredictedRating[ rating ]"
+										:label-msg="'pagetriage-filter-predicted-class-' + rating"
+									>
+									</labeled-checkbox>
+								</control-section>
+							</div>
+							<div class="mwe-vue-pt-control-section__col3">
+								<control-section label-msg="pagetriage-filter-predicted-issues-heading">
+									<labeled-checkbox
+										v-for="( _, issue ) in settings.unsaved.afcPossibleIssues"
+										:key="`${issue}-${settings.unsaved.afcPossibleIssues[ issue ]}`"
+										v-model:checked="settings.unsaved.afcPossibleIssues[ issue ]"
+										:label-msg="'pagetriage-filter-predicted-issues-' + issue"
+									>
+									</labeled-checkbox>
+								</control-section>
+							</div>
+						</template>
+						<div v-else class="mwe-vue-pt-control-section__col2">
+							<date-control-section
+								v-model:from="settings.unsaved.afcDateFrom"
+								v-model:to="settings.unsaved.afcDateTo"
+								type="afc"
+							></date-control-section>
+						</div>
+					</div>
 
-				<div class="mwe-vue-pt-control-buttons">
-					<cdx-button
-						action="progressive"
-						type="primary"
-						:disabled="!canSaveSettings"
-						@click="doSaveSettings"
-					>
-						{{ $i18n( 'pagetriage-filter-set-button' ).text() }}
-					</cdx-button>
-					<cdx-button
-						action="destructive"
-						type="primary"
-						@click="settings.reset"
-					>
-						{{ $i18n( 'pagetriage-filter-reset-button' ).text() }}
-					</cdx-button>
+					<div class="mwe-vue-pt-control-buttons">
+						<cdx-button
+							action="progressive"
+							type="primary"
+							:disabled="!canSaveSettings"
+							@click="doSaveSettings"
+						>
+							{{ $i18n( 'pagetriage-filter-set-button' ).text() }}
+						</cdx-button>
+						<cdx-button
+							action="destructive"
+							type="primary"
+							@click="settings.reset"
+						>
+							{{ $i18n( 'pagetriage-filter-reset-button' ).text() }}
+						</cdx-button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -270,11 +273,19 @@ module.exports = {
 }
 .mwe-vue-pt-control-label-right {
 	float: right;
-	@media only screen
-	and (min-width: 611px)
-	and (max-width: 830px) {
-		float: none;
-	}
+}
+.mwe-vue-pt-filter-count {
+	width: 50%;
+	display: inline-flex;
+	justify-content: end;
+}
+.mwe-vue-pt-sort-section {
+	width: 50%;
+	display: inline-flex;
+	justify-content: end;
+}
+.mwe-vue-pt-menu-section {
+	display: flex;
 }
 .mwe-vue-pt-control-section {
 	padding-bottom: 3px;
