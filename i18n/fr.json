@@ -3,6 +3,7 @@
 		"authors": [
 			"0x010C",
 			"Aaribaud",
+			"Amire80",
 			"Boniface",
 			"Brunoperel",
 			"Choodyam",
@@ -546,7 +547,7 @@
 	"apihelp-pagetriagestats-param-showothers": "S’il faut inclure les pages normales qui ne sont ni redirigées, ni candidates à la suppression.",
 	"apihelp-pagetriagestats-param-showreviewed": "S’il faut inclure les éléments revus.",
 	"apihelp-pagetriagestats-param-showunreviewed": "S’il faut inclure les éléments non relus.",
-	"apihelp-pagetriagestats-param-showdeleted": "S’il faut inclure les éléments « proposés pour la  suppression ».",
+	"apihelp-pagetriagestats-param-showdeleted": "S’il faut inclure les éléments « proposés pour la suppression ».",
 	"apihelp-pagetriagestats-param-showbots": "S’il faut inclure uniquement les pages créées par les robots.",
 	"apihelp-pagetriagestats-param-showautopatrolled": "S’il faut afficher seulement les droits par utilisateur avec le droit utilisateur autopatrol",
 	"apihelp-pagetriagestats-param-no_category": "S’il faut inclure uniquement les pages sans catégorie.",
