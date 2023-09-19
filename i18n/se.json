@@ -14,6 +14,7 @@
 	"pagetriage-button-send-a-note": "Sádde dieđu",
 	"pagetriage-tags-title": "Lasit gilkoriid",
 	"pagetriage-tags-cat-metadata-label": "Metadata",
+	"pagetriage-tags-cat-structure-label": "Struktuvra",
 	"pagetriage-toolbar-learn-more": "Lassedieđut »",
 	"pagetriage-toolbar-close": "Gidde",
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Giitte}}}}"
