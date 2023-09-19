@@ -1,0 +1,14 @@
+{
+	"values": {
+		"pagetriage-mark-mark-talk-page-notify-topic-title": "A page {{GENDER:|you}} started ($1) has been reviewed!",
+		"pagetriage-mark-unmark-talk-page-notify-topic-title": "I have unreviewed a page {{GENDER:|you}} curated",
+		"pagetriage-feedback-from-new-page-review-process-title": "Feedback from New Page Review process",
+		"pagetriage-feedback-from-new-page-review-process-message": "I left the following feedback for the creator/future reviewers while reviewing this article: $1",
+		"pagetriage-note-sent-talk-page-notify-topic-title": "I have sent {{GENDER:|you}} a note about a page {{GENDER:|you}} started",
+		"pagetriage-note-sent-talk-page-notify-topic-title-reviewer": "I have sent {{GENDER:|you}} a note about a page {{GENDER:|you}} reviewed",
+		"pagetriage-tags-talk-page-notify-topic-title": "Ways to improve $1",
+		"pagetriage-del-tags-prod-notify-topic-title": "[[Wikipedia:Proposed deletion|Proposed deletion]] of [[$1]]",
+		"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "Speedy deletion nomination of $1",
+		"pagetriage-del-tags-xfd-notify-topic-title": "Deletion discussion about [[$1]]"
+	}
+}

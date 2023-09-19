@@ -26,7 +26,9 @@ const ToolbarView = Backbone.View.extend( {
 	template: mw.template.get( 'ext.pageTriage.views.toolbar', 'ToolbarView.underscore' ),
 	openCurationToolbarLinkId: 't-opencurationtoolbar',
 
-	initialize: function () {
+	initialize: function ( options ) {
+		this.tbVersion = options.tbVersion;
+
 		this.openCurationToolbarSelector = '#' + this.openCurationToolbarLinkId;
 
 		const modules = config.PageTriageCurationModules;
@@ -57,7 +59,7 @@ const ToolbarView = Backbone.View.extend( {
 
 		// next article, should be always on
 		const NextView = require( './next.js' );
-		tools.push( new NextView( { eventBus: eventBus, model: article } ) );
+		tools.push( new NextView( { eventBus: eventBus, model: article, tbVersion: this.tbVersion } ) );
 	},
 
 	/**
@@ -79,9 +81,8 @@ const ToolbarView = Backbone.View.extend( {
 	},
 
 	render: function () {
-		// build the bar and insert into the page.
-		// insert the empty toolbar into the document.
-		$( 'body' ).append( this.template() );
+		// build the empty toolbar.
+		this.$el.html( this.template() );
 
 		_.each( tools, function ( tool ) {
 			// append the individual tool template to the toolbar's big tool div part
@@ -258,15 +259,21 @@ const ToolbarView = Backbone.View.extend( {
 	}
 } );
 
-$( function () {
-	mw.loader.using( config.PageTriageCurationDependencies ).then( () => article.fetch(
-		{
-			success: function () {
-				// create an instance of the toolbar view
-				toolbar = new ToolbarView( { eventBus: eventBus } );
-				toolbar.render();
-				article.set( 'successfulModelLoading', 1 );
-			}
-		}
-	) );
-} );
+module.exports = {
+	oldToolbar: function ( options ) {
+		const create = function () {
+			article.fetch(
+				{
+					success: function () {
+						// create an instance of the toolbar view
+						const el = document.getElementById( 'mw-pagetriage-toolbar' );
+						toolbar = new ToolbarView( Object.assign( options, { el, eventBus } ) );
+						toolbar.render();
+						article.set( 'successfulModelLoading', 1 );
+					}
+				}
+			);
+		};
+		mw.loader.using( config.PageTriageCurationDependencies ).then( create );
+	}
+};

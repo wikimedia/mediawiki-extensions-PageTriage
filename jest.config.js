@@ -6,6 +6,9 @@ module.exports = {
 		'ext.pageTriage.util': '<rootDir>/modules/ext.pageTriage.util/main.js',
 		// @TODO: map virtual files with full path
 		'./icons.json': '<rootDir>/tests/mocks/icons.json',
+		'./config.json': '<rootDir>/tests/mocks/config.json',
+		'./contentLanguageMessages.json': '<rootDir>/tests/mocks/contentLanguageMessages.json',
+		'../../../external/jquery.badge.js': '<rootDir>/modules/external/jquery.badge.js',
 		// backbone needs this defined here because of the way it checks for jquery & underscore
 		'^./modules/(.+)/ext.pageTriage.(.+).underscore': '<rootDir>/modules/$1/$2.underscore'
 	},

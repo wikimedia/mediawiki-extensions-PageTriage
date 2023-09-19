@@ -10,6 +10,7 @@
 		v-for="feedEntry in feedEntries"
 		v-bind="feedEntry"
 		:key="feedEntry.position"
+		:tb-version="tbVersion"
 	></list-item>
 	<div
 		v-if="!feedEntries.length && !haveMoreToLoad"
@@ -96,6 +97,10 @@ module.exports = {
 		ListItem,
 		LoadMoreBar,
 		StatsBar
+	},
+	props: {
+		// optional toolbar feature flag
+		tbVersion: { type: String, default: null }
 	},
 	setup() {
 		const settings = useSettingsStore();

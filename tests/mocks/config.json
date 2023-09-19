@@ -1,0 +1,53 @@
+{
+	"PageTriageCurationDependencies": [
+		"ext.wikiLove.init"
+	],
+	"PageTriageCurationModules": {
+		"articleInfo": {
+			"helplink": "//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#PageInfo",
+			"namespace": [
+				0
+			]
+		},
+		"mark": {
+			"helplink": "//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#MarkReviewed",
+			"namespace": [
+				0
+			],
+			"note": [
+				0
+			]
+		},
+		"tags": {
+			"helplink": "//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#AddTags",
+			"namespace": [
+				0
+			]
+		},
+		"delete": {
+			"helplink": "//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#MarkDeletion",
+			"namespace": [
+				0
+			]
+		},
+		"wikiLove": {
+			"helplink": "//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#WikiLove",
+			"namespace": [
+				0,
+				2
+			]
+		}
+	},
+	"PageTriageEnableCopyvio": false,
+	"PageTriageEnableOresFilters": true,
+	"PageTriageEnableEnglishWikipediaFeatures": true,
+	"TalkPageNoteTemplate": {
+		"Mark": "Reviewednote-NPF",
+		"UnMark": {
+			"note": "Unreviewednote-NPF",
+			"nonote": "Unreviewednonote-NPF"
+		},
+		"SendNote": "Sentnote-NPF",
+		"Tags": "Taggednote-NPF"
+	}
+}

@@ -179,6 +179,7 @@
 		"ext.pageTriage.views.toolbar": {
 			"es6": true,
 			"packageFiles": [
+				"ext.pageTriage.views.toolbar/init.js",
 				"ext.pageTriage.views.toolbar/ToolbarView.js",
 				"ext.pageTriage.views.toolbar/ToolView.js",
 				"ext.pageTriage.views.toolbar/articleInfo.js",
@@ -187,6 +188,12 @@
 				"ext.pageTriage.views.toolbar/mark.js",
 				"ext.pageTriage.views.toolbar/next.js",
 				"ext.pageTriage.views.toolbar/delete.js",
+				"ext.pageTriage.views.toolbar/vue/init.js",
+				"ext.pageTriage.views.toolbar/vue/plugins/backbone.js",
+				"ext.pageTriage.views.toolbar/vue/App.vue",
+				"ext.pageTriage.views.toolbar/vue/components/ToolIcon.vue",
+				"ext.pageTriage.views.toolbar/vue/components/ToolMinimize.vue",
+				"ext.pageTriage.views.toolbar/vue/components/ToolNext.vue",
 				{
 					"name": "ext.pageTriage.views.toolbar/contentLanguageMessages.json",
 					"callback": "MediaWiki\\Extension\\PageTriage\\Hooks::toolbarContentLanguageMessages"
@@ -199,6 +206,8 @@
 				"ext.pageTriage.views.toolbar/wikiLove.js"
 			],
 			"dependencies": [
+				"vue",
+				"pinia",
 				"mediawiki.api",
 				"mediawiki.jqueryMsg",
 				"mediawiki.messagePoster",
