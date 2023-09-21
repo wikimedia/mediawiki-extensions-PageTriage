@@ -9,12 +9,12 @@
 			"З. ӘЙЛЕ"
 		]
 	},
-	"pagetriage-author-not-autoconfirmed": "Яңы мөхәррирләүсе",
-	"pagetriage-author-blocked": "Блоклы",
+	"pagetriage-author-not-autoconfirmed": "Яңы мөхәррир",
+	"pagetriage-author-blocked": "Бикләнгән",
 	"pagetriage-author-bot": "Бот",
-	"pagetriage-showing": "Күрһәтеләсәктәр:",
-	"pagetriage-filter-list-prompt": "Һөҙгөстәрҙе көйләү",
-	"pagetriage-sort-by": "Тәртипләштереү:",
+	"pagetriage-showing": "Күрһәтелгәндәр:",
+	"pagetriage-filter-list-prompt": "Фильтрҙар ҡуйырға",
+	"pagetriage-sort-by": "Айырырға:",
 	"pagetriage-newest": "Иң яңы",
 	"pagetriage-oldest": "Иң иҫке",
 	"pagetriage-filter-show-heading": "Торош:",
