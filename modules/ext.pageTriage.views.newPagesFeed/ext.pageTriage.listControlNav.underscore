@@ -191,7 +191,7 @@
 						</div>
 					<% if ( mw.config.get( 'wgShowOresFilters' ) ) { %>
 						<div class="mwe-pt-control-section__col3">
-							<% if ( mw.config.get( 'wgPageTriageEnableEnglishWikipediaFeatures' ) ) { %>
+							<% if ( mw.config.get( 'wgPageTriageEnableExtendedFeatures' ) ) { %>
 								<div class="mwe-pt-control-section">
 									<span class="mwe-pt-control-label">
 										<b><%- mw.msg( 'pagetriage-filter-predicted-class-heading' ) %></b>

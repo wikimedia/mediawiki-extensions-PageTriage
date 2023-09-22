@@ -41,7 +41,7 @@ const ToolbarView = Backbone.View.extend( {
 		// article information, wikilove, mark as reviewed
 		const potentialTools = [ 'articleInfo', 'wikiLove', 'mark' ];
 		// tags and deletion only available when enwiki features are enabled
-		if ( config.PageTriageEnableEnglishWikipediaFeatures ) {
+		if ( config.PageTriageEnableExtendedFeatures ) {
 			potentialTools.push( 'tags', 'delete' );
 		}
 		for ( const index in potentialTools ) {

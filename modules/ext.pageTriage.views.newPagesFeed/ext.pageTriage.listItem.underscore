@@ -8,7 +8,7 @@
 			<div class="mwe-pt-status-icon">
 				<% if ( is_draft ) { %>
 					<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.newPagesFeed/images/icon_not_reviewed.png' %>" width="21" height="21" />
-				<% } else if ( mw.config.get( 'wgPageTriageEnableEnglishWikipediaFeatures' ) && ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) ) { %>
+				<% } else if ( mw.config.get( 'wgPageTriageEnableExtendedFeatures' ) && ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) ) { %>
 					<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.newPagesFeed/images/icon_marked_for_deletion.png' %>" width="21" height="21" />
 				<% } else if ( patrol_status == "3" ) { %>
 					<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.newPagesFeed/images/icon_autopatrolled.png' %>" width="21" height="21" />
@@ -147,7 +147,7 @@
 			<% if ( mw.config.get( 'wgShowOresFilters' ) ) { %>
 			<div class="mwe-pt-info-row">
 				<div class="mwe-pt-predicted-class">
-					<% if ( mw.config.get( 'wgPageTriageEnableEnglishWikipediaFeatures' ) ) { %>
+					<% if ( mw.config.get( 'wgPageTriageEnableExtendedFeatures' ) ) { %>
 						<span class="mwe-pt-article-ores-predicted-class-label">
 							<%- mw.msg( 'pagetriage-filter-predicted-class-heading' ) %>
 						</span>

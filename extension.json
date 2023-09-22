@@ -1351,7 +1351,7 @@
 			"description": "The ID of the Draft namespace, as defined in $wgExtraNamespaces. If false, all AfC features are disabled.",
 			"value": false
 		},
-		"PageTriageEnableEnglishWikipediaFeatures": {
+		"PageTriageEnableExtendedFeatures": {
 			"value": true
 		}
 	},

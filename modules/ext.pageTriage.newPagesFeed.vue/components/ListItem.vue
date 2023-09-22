@@ -288,7 +288,7 @@ module.exports = {
 				title: this.$i18n( 'pagetriage-page-status-unreviewed' ).text()
 			};
 			if ( !this.isDraft ) {
-				if ( mw.config.get( 'wgPageTriageEnableEnglishWikipediaFeatures' ) && ( this.afdStatus || this.blpProdStatus || this.csdStatus || this.prodStatus ) ) {
+				if ( mw.config.get( 'wgPageTriageEnableExtendedFeatures' ) && ( this.afdStatus || this.blpProdStatus || this.csdStatus || this.prodStatus ) ) {
 					img.src = `${imageBase}icon_marked_for_deletion.png`;
 					img.title = this.$i18n( 'pagetriage-page-status-delete' ).text();
 				} else if ( this.patrolStatus === 3 ) {

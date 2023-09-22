@@ -634,8 +634,8 @@ class Hooks implements
 			'PageTriageCurationModules' => $pageTriageCurationModules,
 			'PageTriageEnableCopyvio' => $config->get( 'PageTriageEnableCopyvio' ),
 			'PageTriageEnableOresFilters' => $config->get( 'PageTriageEnableOresFilters' ),
-			'PageTriageEnableEnglishWikipediaFeatures' =>
-				$config->get( 'PageTriageEnableEnglishWikipediaFeatures' ),
+			'PageTriageEnableExtendedFeatures' =>
+				$config->get( 'PageTriageEnableExtendedFeatures' ),
 			'TalkPageNoteTemplate' => $config->get( 'TalkPageNoteTemplate' ),
 		];
 	}
@@ -773,7 +773,7 @@ class Hooks implements
 	/** @inheritDoc */
 	public function onApiMain__moduleManager( $moduleManager ) {
 		// phpcs:enable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
-		if ( !$this->config->get( 'PageTriageEnableEnglishWikipediaFeatures' ) ) {
+		if ( !$this->config->get( 'PageTriageEnableExtendedFeatures' ) ) {
 			$moduleManager->addModule(
 				'pagetriagetagging',
 				'action',

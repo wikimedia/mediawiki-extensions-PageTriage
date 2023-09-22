@@ -74,7 +74,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 			'wgPageTriageStickyControlNav' => $config->get( 'PageTriageStickyControlNav' ),
 			'wgPageTriageStickyStatsNav' => $config->get( 'PageTriageStickyStatsNav' ),
 			'wgPageTriageUIVersion' => $uiVersion,
-			'wgPageTriageEnableEnglishWikipediaFeatures' => $config->get( 'PageTriageEnableEnglishWikipediaFeatures' ),
+			'wgPageTriageEnableExtendedFeatures' => $config->get( 'PageTriageEnableExtendedFeatures' ),
 			'wgShowOresFilters' => $showOresFilters,
 			'wgShowCopyvio' => $showCopyvio,
 		];
