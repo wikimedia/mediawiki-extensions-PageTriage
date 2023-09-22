@@ -55,7 +55,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 		}
 
 		// Output the title of the page
-		$out->setPageTitle( $this->msg( 'newpagesfeed' ) );
+		$out->setPageTitleMsg( $this->msg( 'newpagesfeed' ) );
 
 		// Allow infinite scrolling override from query string parameter
 		// We don't use getBool() here since the param is optional
