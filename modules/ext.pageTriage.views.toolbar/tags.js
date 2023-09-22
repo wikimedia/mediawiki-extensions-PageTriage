@@ -241,7 +241,13 @@ module.exports = ToolView.extend( {
 				// category which is indicated in the 'dest' attribute.
 				if ( ( cat === 'common' || cat === 'all' ) && tagSet[ tagKey ].dest ) {
 					destCat = tagSet[ tagKey ].dest;
-					destKey = tagSet[ tagKey ].destKey;
+					// destKey is only available for 'all' and not for 'common'
+					// if we are in the 'common' column, use tagKey instead
+					if ( cat === 'all' ) {
+						destKey = tagSet[ tagKey ].destKey;
+					} else {
+						destKey = tagKey;
+					}
 				}
 
 				// Tags in other groups may also belong to the 'common' group.
@@ -263,7 +269,7 @@ module.exports = ToolView.extend( {
 						that.selectedTag.common[ tagKey ] = tagSet[ tagKey ];
 					}
 
-					that.selectedTag.all[ allTagKey ] = tagSet[ tagKey ];
+					that.selectedTag.all[ allTagKey ] = that.tagsOptions.all.tags[ allTagKey ];
 					that.showParamsLink( tagKey, cat );
 					// show the param form if there is required parameter
 					for ( param in tagSet[ tagKey ].params ) {
@@ -581,6 +587,9 @@ module.exports = ToolView.extend( {
 						break;
 				}
 				processed[ tagKey ] = true;
+				if ( cat === 'all' ) {
+					processed[ tagObj.destKey ] = true;
+				}
 				tagList.push( tagObj.tag.toLowerCase() );
 			}
 		}
