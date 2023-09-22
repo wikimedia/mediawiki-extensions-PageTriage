@@ -29,14 +29,14 @@ class ArticleCompileDeletionTag extends ArticleCompile {
 		foreach ( $this->mPageId as $pageId ) {
 			$parserOutput = $this->getParserOutputByPageId( $pageId );
 			if ( $parserOutput ) {
-				$categories = $parserOutput->getCategories();
 				$deleted = false;
 				foreach ( $deletionTags as $category => $tag ) {
 					if ( !isset( $this->metadata[$pageId][$tag] )
 						|| $this->metadata[$pageId][$tag] === "0"
 					) {
-						$this->metadata[$pageId][$tag] = isset( $categories[$category] ) ? '1' : '0';
-						$deleted = isset( $categories[$category] ) || $deleted;
+						$hasCategory = $parserOutput->getCategorySortKey( $category ) !== null;
+						$this->metadata[$pageId][$tag] = $hasCategory ? '1' : '0';
+						$deleted = $hasCategory || $deleted;
 					}
 				}
 				$this->metadata[$pageId]['deleted'] = $deleted;
