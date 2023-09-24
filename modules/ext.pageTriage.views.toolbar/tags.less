@@ -30,8 +30,10 @@
 }
 
 #mwe-pt-tags {
-	float: right;
-	width: 382px;
+	&:not( .mwe-pt-tags-redirect-only ) {
+		float: right;
+		width: 382px;
+	}
 	height: 293px;
 	overflow: auto;
 	padding: 8px;

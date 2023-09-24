@@ -15,6 +15,7 @@ module.exports = ToolView.extend( {
 	selectedTag: {},
 	selectedTagCount: 0,
 	noteChanged: false,
+	isRedirect: false,
 
 	/**
 	 * Initialize data on startup
@@ -25,17 +26,27 @@ module.exports = ToolView.extend( {
 		this.tagsOptions = options.tagsOptions ? options.tagsOptions : $.pageTriageTagsOptions;
 		this.eventBus = options.eventBus;
 		this.moduleConfig = options.moduleConfig || {};
-		this.maybeExcludeRedirectsTemplates();
-		this.buildAllCategory();
+		this.handleRedirectsTemplates();
 		this.reset();
 	},
 
 	/**
 	 * Exclude redirect templates if the page is not a redirect
+	 * if the page is a redirect, delete all tags except the redirect tags
 	 */
-	maybeExcludeRedirectsTemplates: function () {
+	handleRedirectsTemplates: function () {
 		if ( this.model.attributes.is_redirect === '0' ) {
 			delete this.tagsOptions.redirects;
+			this.buildAllCategory();
+		} else {
+			this.isRedirect = true;
+			Object
+				.getOwnPropertyNames( this.tagsOptions )
+				.forEach( function ( prop ) {
+					if ( prop !== 'redirects' ) {
+						delete this.tagsOptions[ prop ];
+					}
+				}.bind( this ) );
 		}
 	},
 
@@ -156,7 +167,15 @@ module.exports = ToolView.extend( {
 			.end();
 
 		// when the maintenance tag menu is first opened, show the 'All tags' menu by default
-		this.displayTags( 'all' );
+		// if the article is a redirect, we don't have any tabs other than 'redirects'
+		// so we can show that as a fullscreen
+		if ( this.isRedirect ) {
+			this.displayTags( 'redirects' );
+			$( '#mwe-pt-categories' ).hide();
+			$( '#mwe-pt-tags' ).addClass( 'mwe-pt-tags-redirect-only' );
+		} else {
+			this.displayTags( 'all' );
+		}
 	},
 
 	/**
@@ -261,7 +280,9 @@ module.exports = ToolView.extend( {
 				// Tags in other groups may also belong to the 'common' group.
 				// In these cases, we need to update the corresponding tag
 				// in the 'common' group as well.
-				if ( cat !== 'common' && that.tagsOptions.common.tags[ tagKey ] !== undefined ) {
+				if ( cat !== 'common' &&
+					that.tagsOptions.common &&
+					that.tagsOptions.common.tags[ tagKey ] !== undefined ) {
 					alsoCommon = true;
 				}
 
@@ -277,7 +298,10 @@ module.exports = ToolView.extend( {
 						that.selectedTag.common[ tagKey ] = tagSet[ tagKey ];
 					}
 
-					that.selectedTag.all[ allTagKey ] = that.tagsOptions.all.tags[ allTagKey ];
+					if ( that.tagsOptions.all ) {
+						that.selectedTag.all[ allTagKey ] = that.tagsOptions.all.tags[ allTagKey ];
+					}
+
 					that.showParamsLink( tagKey, cat );
 					// show the param form if there is required parameter
 					for ( param in tagSet[ tagKey ].params ) {
@@ -297,7 +321,9 @@ module.exports = ToolView.extend( {
 					if ( alsoCommon ) {
 						delete that.selectedTag.common[ tagKey ];
 					}
-					delete that.selectedTag.all[ allTagKey ];
+					if ( that.tagsOptions.all ) {
+						delete that.selectedTag.all[ allTagKey ];
+					}
 					that.hideParamsLink( tagKey );
 					// If the param form is visible, hide it
 					that.hideParamsForm( tagKey );
