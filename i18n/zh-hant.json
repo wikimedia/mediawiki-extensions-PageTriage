@@ -189,7 +189,7 @@
 	"pagetriage-has-talkpage-feedback": "此條目的前一個巡查員在$2留下 {{PLURAL:$1|1 個評論|$1 個評論}}。",
 	"pagetriage-has-talkpage-feedback-link": "討論頁",
 	"pagetriage-js-required": "此擴充功能需要瀏覽器有啟用 JavaScript。",
-	"pagetriage-tags-title": "添加標籤",
+	"pagetriage-tags-title": "新增標籤",
 	"pagetriage-tags-cat-common-label": "常規",
 	"pagetriage-tags-cat-metadata-label": "詮釋資料",
 	"pagetriage-tags-cat-cleanup-label": "清理",
