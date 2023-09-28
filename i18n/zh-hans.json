@@ -32,13 +32,14 @@
 			"神樂坂秀吉",
 			"铁桶",
 			"飞舞回堂前",
-			"아라"
+			"아라",
+			"LittlePaw365"
 		]
 	},
 	"pagetriage": "页面分诊台",
 	"pagetriage-dot-separator": "&#32;·&#32;",
 	"newpagesfeed": "新页面供稿",
-	"pagetriage-desc": "用于审核和批准新页面的便利工具",
+	"pagetriage-desc": "协助复核和核准新页面",
 	"pagetriage-pagecuration": "页面监护",
 	"pagetriage-new-page-patrol": "新页面巡查",
 	"pagetriage-articles-for-creation": "建立条目",
