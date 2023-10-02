@@ -34,6 +34,7 @@
 	"pagetriage-byline-new-editor": "Create per le nove redactor $1 ($2$3$4)",
 	"pagetriage-byline-new-editor-heading": "Create per un nove contribut{{GENDER:$1|or|rice}}",
 	"pagetriage-articleinfo-byline": "Iste pagina ha essite create le $1 per $2 ($3$4$5)",
+	"pagetriage-articleinfo-byline-hidden-username": "Iste pagina ha essite create le $1",
 	"pagetriage-articleinfo-byline-new-editor": "Iste pagina ha essite create le $1 per le nove redactor $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|modification|modificationes}} depost $2",
 	"pagetriage-author-not-autoconfirmed": "Nove contributor",

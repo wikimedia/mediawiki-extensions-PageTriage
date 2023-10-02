@@ -35,6 +35,7 @@
 	"pagetriage-byline-new-editor": "Создадена од новиот уредник $1 ($2$3$4)",
 	"pagetriage-byline-new-editor-heading": "Создадено од {{GENDER:$1|нов уредник|нова уредничка}}",
 	"pagetriage-articleinfo-byline": "Оваа страница е создадена на $1 од $2 ($3$4$5)",
+	"pagetriage-articleinfo-byline-hidden-username": "Оваа страница е создадена на $1",
 	"pagetriage-articleinfo-byline-new-editor": "Оваа страница е создадена на $1 од новиот уредник $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|уредување|уредувања}} од $2",
 	"pagetriage-author-not-autoconfirmed": "Нов уредник",

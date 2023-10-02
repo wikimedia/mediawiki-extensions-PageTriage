@@ -37,6 +37,7 @@
 	"pagetriage-byline-new-editor": "Ustvaril novi urejevalec $1 ($2$3$4)",
 	"pagetriage-byline-new-editor-heading": "{{GENDER:$1|Ustvaril nov urejevalec|Ustvarila nova urejevalka|Ustvaril_a nov_a urejevalec_ka}}",
 	"pagetriage-articleinfo-byline": "Stran je $1 ustvaril_a $2 ($3$4$5).",
+	"pagetriage-articleinfo-byline-hidden-username": "Ta stran je bila ustvarjena dne $1",
 	"pagetriage-articleinfo-byline-new-editor": "To stran je dne $1 ustvaril novi urejevalec $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|urejanje|urejanji|urejanja|urejanj}} od $2",
 	"pagetriage-author-not-autoconfirmed": "Nov urejevalec",
