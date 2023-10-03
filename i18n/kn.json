@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ashay vb",
 			"~aanzx"
 		]
 	},
+	"pagetriage-articleinfo-byline-hidden-username": "ಈ ಪುಟವನ್ನು $1ನಲ್ಲಿ ರಚಿಸಲಾಗಿದೆ",
 	"log-action-filter-pagetriage-curation-delete": "ಅಳಿಸಲಾಗುತ್ತಿದೆ"
 }
