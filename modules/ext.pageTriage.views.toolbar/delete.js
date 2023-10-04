@@ -43,7 +43,8 @@ const specialDeletionTagging = {
 			data.summary = 'Creating deletion discussion page for [[' + pageName + ']].';
 		},
 
-		buildLogRequest: function ( oldText, reason, tagObj, data ) {
+		// eslint-disable-next-line no-unused-vars
+		buildLogRequest: function ( oldText, _reason, tagObj, data, _redirectTarget ) {
 			const page = tagObj.subpage || pageName;
 
 			oldText += '\n';
@@ -65,11 +66,12 @@ const specialDeletionTagging = {
 			// No-op
 		},
 
-		buildLogRequest: function ( oldText, reason, tagObj, data ) {
+		buildLogRequest: function ( oldText, reason, tagObj, data, redirectTarget ) {
 			data.text = oldText.replace(
 				// FIXME: This is pretty fragile (and English Wikipedia specific).
 				/(<!-- Add new entries directly below this line\.? -->)/,
-				'$1\n{{subst:rfd2|text=' + reason + '|redirect=' + pageName + '}} ~~~~\n'
+				'$1\n{{subst:rfd2|text=' + reason + '|redirect=' + pageName +
+				'|target=' + redirectTarget + '}} ~~~~\n'
 			);
 		},
 
@@ -745,7 +747,7 @@ module.exports = ToolView.extend( {
 							// for redirects)
 							chainEnd = chainEnd
 								.then( that.shouldLog.bind( that, tagObj ) )
-								.then( that.addToLog )
+								.then( that.addToLog.bind( that ) )
 								.then( that.makeDiscussionPage.bind( that, tagObj ) );
 							break;
 						}
@@ -1059,7 +1061,8 @@ module.exports = ToolView.extend( {
 			oldText,
 			tagObj.params[ '1' ].value,
 			tagObj,
-			request
+			request,
+			this.model.get( 'redirect_target' )
 		);
 
 		if ( request.text === oldText ) {

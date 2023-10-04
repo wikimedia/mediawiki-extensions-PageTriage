@@ -9,10 +9,12 @@ use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\OresMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserFactory;
 use ORES\Services\ORESServices;
 use SpecialPage;
+use TitleFormatter;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 
@@ -27,12 +29,26 @@ class ApiPageTriageList extends ApiBase {
 	/** @var UserFactory */
 	private UserFactory $userFactory;
 
+	/** @var RedirectLookup */
+	private $redirectLookup;
+
+	/** @var TitleFormatter */
+	private $titleFormatter;
+
 	/**
 	 * @param ApiMain $query
 	 * @param string $moduleName
 	 */
-	public function __construct( ApiMain $query, string $moduleName, UserFactory $userFactory ) {
+	public function __construct(
+		ApiMain $query,
+		string $moduleName,
+		UserFactory $userFactory,
+		RedirectLookup $redirectLookup,
+		TitleFormatter $titleFormatter
+	) {
 		$this->userFactory = $userFactory;
+		$this->redirectLookup = $redirectLookup;
+		$this->titleFormatter = $titleFormatter;
 		parent::__construct( $query, $moduleName );
 	}
 
@@ -110,13 +126,21 @@ class ApiPageTriageList extends ApiBase {
 					);
 				}
 
+				$pageTitle = Title::newFromText( $metaData[ $page ]['title'] );
+
 				// Talk page feedback count and URL.
 				if ( $opts['page_id'] ) {
 					// Only add when a single page is being requested, e.g. for the PageTriage toolbar.
-					$talkPage = Title::newFromText( $metaData[ $page ]['title'] )->getTalkPageIfDefined();
+					$talkPage = $pageTitle->getTalkPageIfDefined();
 					$metaData[$page]['talk_page_title'] = $talkPage->getPrefixedText();
 					$metaData[$page]['talkpage_feedback_count'] = $this->getTalkpageFeedbackCount( $talkPage );
 					$metaData[$page]['talk_page_url'] = $talkPage->getInternalURL();
+				}
+
+				$redirectTarget = $this->redirectLookup->getRedirectTarget( $pageTitle );
+
+				if ( $redirectTarget !== null ) {
+					$metaData[$page]['redirect_target'] = $this->titleFormatter->getPrefixedText( $redirectTarget );
 				}
 
 				// Add ORES data
