@@ -20,6 +20,7 @@
 				name="npp-filter-radio-group"
 				:input-value="radio.value"
 				:inline="radio.inline"
+				:ref="radio.value"
 				@click="$emit( 'update:filter', radio.value )"
 			>
 				<span>{{ radio.label }}</span>
@@ -31,6 +32,7 @@
 					type="text"
 					:placeholder="$i18n( 'pagetriage-filter-username' ).text()"
 					@input="$emit( 'update:user', $event.target.value )"
+					@focus="checkRadioButton"
 				>
 			</span>
 		</template>
@@ -125,6 +127,12 @@ module.exports = {
 				}
 			]
 		};
+	},
+	methods: {
+		checkRadioButton: function () {
+			this.$refs.username[ 0 ].input.checked = true;
+			this.$emit( 'update:filter', 'username' );
+		}
 	}
 };
 </script>
