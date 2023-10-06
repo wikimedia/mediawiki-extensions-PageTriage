@@ -5,8 +5,6 @@
 				:src="statusIcon.src"
 				:title="statusIcon.title"
 				alt=""
-				width="21"
-				height="21"
 			>
 		</div>
 		<div class="mwe-vue-pt-info-pane">
@@ -43,7 +41,7 @@
 						</span>
 					</span>
 				</div>
-				<span class="mwe-vue-pt-article-col-right mwe-vue-pt-bold">
+				<div class="mwe-vue-pt-article-col-right mwe-vue-pt-bold">
 					<cdx-info-chip
 						v-if="newArticleWarning"
 						status="warning"
@@ -54,7 +52,7 @@
 					<span v-else>
 						{{ creationDatePretty }}
 					</span>
-				</span>
+				</div>
 			</div>
 			<div class="mwe-vue-pt-info-row">
 				<div>
@@ -384,23 +382,18 @@ module.exports = {
 	content: ' · ';
 }
 .mwe-vue-pt-info-pane {
-	padding: 0.2em 0.6em 0.6em 2.25em;
-	min-height: 4.8em;
-	display: table;
-	box-sizing: border-box;
+	padding: 0.6em;
 	width: 100%;
 }
 .mwe-vue-pt-info-row {
-	display: table-row;
-	vertical-align: top;
+	position: relative;
 	& > div {
 		display: table-cell;
+		width: 100%;
 	}
 }
 .mwe-vue-pt-status-icon {
-	position: absolute;
-	top: 8px;
-	left: 5px;
+	padding-left: 0.6em;
 }
 /* info about the article */
 .mwe-vue-pt-article {
@@ -408,14 +401,20 @@ module.exports = {
 	line-height: 1.6em;
 	/* Info on the right hand side: creation date, updated date, potential isues, etc. */
 	&-col-right {
-		float: right;
 		text-align: right;
 		white-space: nowrap;
+	}
+	&-col-right > .cdx-info-chip {
+		vertical-align: bottom;
 	}
 	&-row {
 		position: relative;
 		border: 1px solid #ccc;
 		border-top: 0;
+		box-sizing: border-box;
+		& > div {
+			display: table-cell;
+		}
 		&-even {
 			background-color: #f1f1f1;
 		}
@@ -436,13 +435,11 @@ module.exports = {
 /* the article snippet */
 .mwe-vue-pt-snippet {
 	color: #808080;
-	padding-right: 1em;
-	vertical-align: top;
+	padding-right: 14em;
 }
 .review-button {
 	position: absolute;
-	right: 0.65em;
-	bottom: 1.75em;
+	bottom: 0.2em;
 }
 .ores-pt-issues {
 	height: 0.55em;
