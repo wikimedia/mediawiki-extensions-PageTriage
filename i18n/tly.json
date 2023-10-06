@@ -10,9 +10,9 @@
 	"pagetriage-user-creation-dateformat": "ssss-MM-rr",
 	"pagetriage-filter-date-range-to": "Bə",
 	"pagetriage-filter-show-heading": "Һол:",
-	"pagetriage-filter-ns-all": "Həmə",
+	"pagetriage-filter-ns-all": "Həmmə",
 	"pagetriage-more": "Ve",
-	"pagetriage-filter-stat-all": "Həmə",
+	"pagetriage-filter-stat-all": "Həmmə",
 	"pagetriage-tags-cat-metadata-label": "Metaməlumoton",
 	"pagetriage-tags-cat-sources-label": "Səvonon",
 	"pagetriage-tags-cat-structure-label": "Struktur",
@@ -20,5 +20,5 @@
 	"pagetriage-tags-param-free-yes-label": "Ha",
 	"pagetriage-tags-param-free-no-label": "Ne",
 	"pagetriage-info-history-header": "Torix",
-	"pagetriage-afc-state-all": "Həmə"
+	"pagetriage-afc-state-all": "Həmmə"
 }
