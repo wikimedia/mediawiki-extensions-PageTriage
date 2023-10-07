@@ -17,7 +17,9 @@
 				<afc-sort-select></afc-sort-select>
 			</div>
 			<div id="mwe-vue-pt-control-menu-toggle">
-				<b @click="toggleControlMenu">{{ $i18n( 'pagetriage-filter-set-button' ).text() }} {{ settings.controlMenuOpen ? '▾' : '▸' }}</b>
+				<b @click="toggleControlMenu" role="button" :aria-pressed="settings.controlMenuOpen">
+					{{ $i18n( 'pagetriage-filter-set-button' ).text() }} {{ settings.controlMenuOpen ? '▾' : '▸' }}
+				</b>
 				<!-- Dropdown goes within the toggle with absolute position to overlay the feed -->
 				<div
 					v-if="settings.controlMenuOpen"
@@ -147,7 +149,7 @@
 					<div class="mwe-vue-pt-control-buttons">
 						<cdx-button
 							action="progressive"
-							type="primary"
+							weight="primary"
 							:disabled="!canSaveSettings"
 							@click="doSaveSettings"
 						>
@@ -155,7 +157,7 @@
 						</cdx-button>
 						<cdx-button
 							action="destructive"
-							type="primary"
+							weight="normal"
 							@click="settings.reset"
 						>
 							{{ $i18n( 'pagetriage-filter-reset-button' ).text() }}
@@ -310,6 +312,9 @@ module.exports = {
 .mwe-vue-pt-control-section__row1 {
 	display: flex;
 	flex-direction: row;
+}
+.mwe-vue-pt-control-options input:hover {
+	cursor: @cursor-base--hover;
 }
 .mwe-vue-pt-control-options .cdx-radio {
 	margin-bottom: 3px;
