@@ -2037,7 +2037,19 @@
 					tag: 'expand language',
 					desc: 'This page can be expanded with material from a foreign-language Wikipedia',
 					params: {
-						date: param.date
+						date: param.date,
+						langcode: {
+							label: 'Language of the foreign-language wikipedia (two/three-letter code):',
+							input: 'required',
+							type: 'text',
+							value: ''
+						},
+						otherarticle: {
+							label: 'Name of the article in the original language:',
+							input: 'required',
+							type: 'text',
+							value: ''
+						}
 					},
 					position: 'top',
 					multiple: true
