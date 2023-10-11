@@ -10,6 +10,12 @@ $( function () {
 		return;
 	}
 
+	// Append toolbar element to the body.
+	// It needs to be near the top of the DOM for stacking context.
+	const toolbar = document.createElement( 'div' );
+	toolbar.id = 'mw-pagetriage-toolbar';
+	$( 'body' ).append( toolbar );
+
 	// Load the curation toolbar
 	mw.loader.using( 'ext.pageTriage.views.toolbar' )
 		.then( function () {

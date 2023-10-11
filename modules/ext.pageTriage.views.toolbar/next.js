@@ -17,6 +17,7 @@ module.exports = ToolView.extend( {
 	initialize: function ( options ) {
 		this.eventBus = options.eventBus;
 		this.moduleConfig = options.moduleConfig || {};
+		this.tbVersion = options.tbVersion;
 	},
 
 	setParams: function () {
@@ -51,6 +52,10 @@ module.exports = ToolView.extend( {
 						) );
 						if ( page.is_redirect === '1' ) {
 							url.query.redirect = 'no';
+						}
+						if ( that.tbVersion ) {
+							// eslint-disable-next-line camelcase
+							url.query.pagetriage_tb = that.tbVersion;
 						}
 						window.location.href = url.toString();
 					} else {

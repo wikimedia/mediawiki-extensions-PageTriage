@@ -1,5 +1,7 @@
 // dependencies provided by ext.pageTriage.external
-global.$ = require( 'jquery' );
+global.jQuery = require( 'jquery' );
+global.$ = global.jQuery;
+// enough jquery-ui for testing
 global._ = require( './modules/external/underscore.js' );
 global.Backbone = require( './modules/external/backbone.js' );
 Backbone.setDomLibrary( $ );

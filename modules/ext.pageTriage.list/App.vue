@@ -1,6 +1,6 @@
 <template>
 	<list-filter-menu></list-filter-menu>
-	<list-content></list-content>
+	<list-content :tb-version="tbVersion"></list-content>
 </template>
 
 <script>
@@ -20,6 +20,13 @@ module.exports = {
 	components: {
 		ListFilterMenu: require( './components/ListFilterMenu.vue' ),
 		ListContent: require( './components/ListContent.vue' )
+	},
+	props: {
+		// optional toolbar feature flag
+		tbVersion: {
+			type: String,
+			default: null
+		}
 	},
 	mounted() {
 		$( '#mwe-pt-list-warnings' ).show();

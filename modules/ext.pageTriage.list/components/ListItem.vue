@@ -271,7 +271,9 @@ module.exports = {
 		 * such as: 'N/A', and ''
 		 */
 		oresArticleQuality: { type: String, default: undefined },
-		oresDraftQuality: { type: String, default: undefined }
+		oresDraftQuality: { type: String, default: undefined },
+		// optional toolbar feature flag
+		tbVersion: { type: String, default: null }
 	},
 	data: function () {
 		return {
@@ -309,6 +311,11 @@ module.exports = {
 		},
 		titleUrl: function () {
 			const params = {};
+			// open feature flagged version of toolbar
+			if ( this.tbVersion ) {
+				// eslint-disable-next-line camelcase
+				params.pagetriage_tb = this.tbVersion;
+			}
 			if ( this.isRedirect ) {
 				params.redirect = 'no';
 			}
