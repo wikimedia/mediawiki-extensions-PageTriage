@@ -66,7 +66,6 @@
 						<creator-byline
 							v-if="creatorName"
 							:creator-name="creatorName"
-							:creator-hidden="creatorHidden"
 							:creator-user-id="creatorUserId"
 							:creator-auto-confirmed="creatorAutoConfirmed"
 							:creator-user-page-exists="creatorUserPageExists"
@@ -171,7 +170,7 @@ const timestampValidator = ( value ) => {
 };
 // @vue/component
 module.exports = {
-	configureCompat: {
+	compatConfig: {
 		MODE: 3
 	},
 	compilerOptions: {

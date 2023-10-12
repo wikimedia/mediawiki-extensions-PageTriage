@@ -16,11 +16,11 @@
 		<template v-for="radio in byRadios" :key="radio.value">
 			<cdx-radio
 				:id="`mwe-vue-pt-filter-radio-${radio.value}`"
+				:ref="radio.value"
 				v-model="selected"
 				name="npp-filter-radio-group"
 				:input-value="radio.value"
 				:inline="radio.inline"
-				:ref="radio.value"
 				@click="$emit( 'update:filter', radio.value )"
 			>
 				<span>{{ radio.label }}</span>
@@ -56,7 +56,7 @@ const { CdxRadio } = require( '@wikimedia/codex' );
 const { ref } = require( 'vue' );
 // @vue/component
 module.exports = {
-	configureCompat: {
+	compatConfig: {
 		MODE: 3
 	},
 	compilerOptions: {

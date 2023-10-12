@@ -11,7 +11,7 @@
 // @vue/component
 module.exports = {
 	// Enable Vue 3 mode with configureCompat and compilerOptions
-	configureCompat: {
+	compatConfig: {
 		MODE: 3
 	},
 	compilerOptions: {

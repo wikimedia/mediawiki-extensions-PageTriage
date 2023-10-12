@@ -42,7 +42,7 @@ const { CdxButton } = require( '@wikimedia/codex' );
 const LabeledCheckbox = require( './LabeledCheckbox.vue' );
 // @vue/component
 module.exports = {
-	configureCompat: {
+	compatConfig: {
 		MODE: 3
 	},
 	compilerOptions: {

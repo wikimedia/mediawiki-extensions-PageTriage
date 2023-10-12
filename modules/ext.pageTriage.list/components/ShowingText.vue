@@ -27,7 +27,7 @@ const defaultMsg = {
 };
 // @vue/component
 module.exports = {
-	configureCompat: {
+	compatConfig: {
 		MODE: 3
 	},
 	compilerOptions: {
