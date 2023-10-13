@@ -5,11 +5,17 @@
 	<span v-else>
 		{{ $i18n( 'pagetriage-byline-heading', creatorName ).text() }}
 	</span>
-	<a :href="userPageUrl" class="cdx-link" :class="userPageClass">
+	<a
+		:href="userPageUrl"
+		class="cdx-link"
+		:class="userPageClass">
 		{{ creatorName }}
 	</a>
 	(
-	<a :href="talkPageUrl" class="cdx-link" :class="talkPageClass">
+	<a
+		:href="talkPageUrl"
+		class="cdx-link"
+		:class="talkPageClass">
 		{{ $i18n( 'sp-contributions-talk' ).text() }}
 	</a>
 	{{ $i18n( 'pipe-separator' ).text() }}
@@ -30,7 +36,7 @@ const redLink = skin === 'vector' ? 'new' : 'is-red-link';
 const params = { action: 'edit', redlink: 1 };
 // @vue/component
 module.exports = {
-	configureCompat: {
+	compatConfig: {
 		MODE: 3
 	},
 	compilerOptions: {

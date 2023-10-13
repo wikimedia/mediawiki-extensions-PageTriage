@@ -17,7 +17,10 @@
 				<afc-sort-select></afc-sort-select>
 			</div>
 			<div id="mwe-vue-pt-control-menu-toggle">
-				<b @click="toggleControlMenu" role="button" :aria-pressed="settings.controlMenuOpen">
+				<b
+					role="button"
+					:aria-pressed="settings.controlMenuOpen"
+					@click="toggleControlMenu">
 					{{ $i18n( 'pagetriage-filter-set-button' ).text() }} {{ settings.controlMenuOpen ? '▾' : '▸' }}
 				</b>
 				<!-- Dropdown goes within the toggle with absolute position to overlay the feed -->
@@ -190,7 +193,7 @@ const { useSettingsStore } = require( '../stores/settings.js' );
 const { getNamespaceOptions } = require( '../namespaces.js' );
 // @vue/component
 module.exports = {
-	configureCompat: {
+	compatConfig: {
 		MODE: 3
 	},
 	compilerOptions: {

@@ -20,7 +20,7 @@
 let lastGeneratedIdNum = 0;
 // @vue/component
 module.exports = {
-	configureCompat: {
+	compatConfig: {
 		MODE: 3
 	},
 	compilerOptions: {

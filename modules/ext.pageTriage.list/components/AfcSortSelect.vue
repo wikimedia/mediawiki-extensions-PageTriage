@@ -37,7 +37,7 @@ const { computed } = require( 'vue' );
 const { useSettingsStore } = require( '../stores/settings.js' );
 // @vue/component
 module.exports = {
-	configureCompat: {
+	compatConfig: {
 		MODE: 3
 	},
 	compilerOptions: {

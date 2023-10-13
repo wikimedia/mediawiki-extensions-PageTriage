@@ -85,7 +85,7 @@ const { useSettingsStore } = require( '../stores/settings.js' );
 const { storeToRefs } = require( 'pinia' );
 // @vue/component
 module.exports = {
-	configureCompat: {
+	compatConfig: {
 		MODE: 3,
 		ATTR_FALSE_VALUE: false
 	},
