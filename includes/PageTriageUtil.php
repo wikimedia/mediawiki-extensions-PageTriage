@@ -72,7 +72,7 @@ class PageTriageUtil {
 	 * @return int[]
 	 */
 	public static function getNamespaces( ?Config $config = null ): array {
-		$config = $config ?? MediaWikiServices::getInstance()->getMainConfig();
+		$config ??= MediaWikiServices::getInstance()->getMainConfig();
 		$pageTriageDraftNamespaceId = $config->get( 'PageTriageDraftNamespaceId' );
 		$pageTriageNamespaces = $config->get( 'PageTriageNamespaces' );
 		// Add the Draft namespace if configured.
