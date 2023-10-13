@@ -33,13 +33,9 @@ class ApiPageTriageTagging extends ApiBase {
 			$this->dieWithError( 'apierror-ratelimited' );
 		}
 
-		$apiParams = [];
-		if ( $params['top'] ) {
-			$apiParams['prependtext'] = $params['top'] . "\n\n";
-		}
-		if ( $params['bottom'] ) {
-			$apiParams['appendtext'] = "\n\n" . $params['bottom'];
-		}
+		$apiParams = [
+			'text' => $params['wikitext']
+		];
 
 		// Parse tags into a human readable list for the edit summary
 		$tags = $contLang->commaList( $params['taglist'] );
@@ -59,91 +55,89 @@ class ApiPageTriageTagging extends ApiBase {
 			}
 		}
 
-		if ( $apiParams ) {
-			$projectLink = '[['
-				. $config->get( 'PageTriageProjectLink' ) . '|'
-				. $this->msg( 'pagetriage-pagecuration' )->inContentLanguage()->plain()
-				. ']]';
-			if ( $params['deletion'] ) {
-				$editSummary = $this->msg(
-					'pagetriage-del-edit-summary',
-					$projectLink,
-					$tags
-				)->inContentLanguage()->plain();
-			} else {
-				$editSummary = $this->msg(
-					'pagetriage-tags-edit-summary',
-					$projectLink,
-					$tags
-				)->inContentLanguage()->plain();
-			}
+		$projectLink = '[['
+			. $config->get( 'PageTriageProjectLink' ) . '|'
+			. $this->msg( 'pagetriage-pagecuration' )->inContentLanguage()->plain()
+			. ']]';
+		if ( $params['deletion'] ) {
+			$editSummary = $this->msg(
+				'pagetriage-del-edit-summary',
+				$projectLink,
+				$tags
+			)->inContentLanguage()->plain();
+		} else {
+			$editSummary = $this->msg(
+				'pagetriage-tags-edit-summary',
+				$projectLink,
+				$tags
+			)->inContentLanguage()->plain();
+		}
 
-			// tagging something for deletion should automatically watchlist it
-			if ( $params['deletion'] ) {
-				$apiParams['watchlist'] = 'watch';
-			}
+		// tagging something for deletion should automatically watchlist it
+		if ( $params['deletion'] ) {
+			$apiParams['watchlist'] = 'watch';
+		}
 
-			// Perform the text insertion
-			$api = new ApiMain(
-				new DerivativeRequest(
-					$this->getRequest(),
-					$apiParams + [
-						'action' => 'edit',
-						'title' => $title->getFullText(),
-						'token' => $params['token'],
-						'summary' => $editSummary,
-						'tags' => 'pagetriage',
-					],
-					true
-				),
+		// Perform the text insertion
+		$api = new ApiMain(
+			new DerivativeRequest(
+				$this->getRequest(),
+				$apiParams + [
+					'action' => 'edit',
+					'title' => $title->getFullText(),
+					'token' => $params['token'],
+					'summary' => $editSummary,
+					'tags' => 'pagetriage',
+				],
 				true
-			);
+			),
+			true
+		);
 
-			$api->execute();
+		$api->execute();
 
-			$note = $contLang->truncateForDatabase( $params['note'], 150 );
+		$note = $contLang->truncateForDatabase( $params['note'], 150 );
 
-			// logging to the logging table
-			if ( $params['taglist'] ) {
-				if ( $params['deletion'] ) {
-					$action = 'delete';
+		// logging to the logging table
+		if ( $params['taglist'] ) {
+			if ( $params['deletion'] ) {
+				$action = 'delete';
 
-					PageTriageUtil::createNotificationEvent(
-						$title,
-						$this->getUser(),
-						'pagetriage-add-deletion-tag',
-						[
-							'tags' => $params['taglist'],
-							'note' => $note,
-						]
-					);
-				} else {
-					$action = 'tag';
+				PageTriageUtil::createNotificationEvent(
+					$title,
+					$this->getUser(),
+					'pagetriage-add-deletion-tag',
+					[
+						'tags' => $params['taglist'],
+						'note' => $note,
+					]
+				);
+			} else {
+				$action = 'tag';
 
-					PageTriageUtil::createNotificationEvent(
-						$title,
-						$this->getUser(),
-						'pagetriage-add-maintenance-tag',
-						[
-							'tags' => $params['taglist'],
-							'note' => $note,
-							'revId' => $api->getResult()->getResultData( [ 'edit', 'newrevid' ] ),
-						]
-					);
-				}
-
-				$logEntry = new ManualLogEntry( 'pagetriage-curation', $action );
-				$logEntry->setPerformer( $this->getUser() );
-				$logEntry->setTarget( $title );
-				if ( $note ) {
-					$logEntry->setComment( $note );
-				}
-				$logEntry->setParameters( [
-					'tags' => $params['taglist']
-				] );
-				$logEntry->addTags( 'pagetriage' );
-				$logEntry->publish( $logEntry->insert() );
+				PageTriageUtil::createNotificationEvent(
+					$title,
+					$this->getUser(),
+					'pagetriage-add-maintenance-tag',
+					[
+						'tags' => $params['taglist'],
+						'note' => $note,
+						'revId' => $api->getResult()->getResultData( [ 'edit', 'newrevid' ] ),
+					]
+				);
 			}
+
+			$logEntry = new ManualLogEntry( 'pagetriage-curation', $action );
+			$logEntry->setPerformer( $this->getUser() );
+			$logEntry->setTarget( $title );
+			if ( $note ) {
+				$logEntry->setComment( $note );
+			}
+			$logEntry->setParameters( [
+				'tags' => $params['taglist']
+			] );
+			$logEntry->addTags( 'pagetriage' );
+			$logEntry->publish( $logEntry->insert() );
 		}
 
 		$result = [ 'result' => 'success' ];
@@ -166,8 +160,10 @@ class ApiPageTriageTagging extends ApiBase {
 			'token' => [
 				ParamValidator::PARAM_REQUIRED => true
 			],
-			'top' => null,
-			'bottom' => null,
+			'wikitext' => [
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'string'
+			],
 			'deletion' => [
 				ParamValidator::PARAM_REQUIRED => false,
 				ParamValidator::PARAM_TYPE => 'boolean'

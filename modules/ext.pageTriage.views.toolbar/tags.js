@@ -543,143 +543,251 @@ module.exports = ToolView.extend( {
 	},
 
 	/**
+	 * Fetch the current article content so that
+	 * the tagging module can apply transformations
+	 * based on the tags being added.
+	 *
+	 * @return {Promise<string>} A promise that resolves when the article content has been fetched.
+	 */
+	fetchArticleContent: function () {
+		return new mw.Api().get( {
+			action: 'query',
+			prop: 'revisions',
+			rvprop: 'content',
+			rvlimit: 1,
+			titles: mw.config.get( 'wgPageName' )
+		} ).then( function ( data ) {
+			const page = data.query.pages[ Object.keys( data.query.pages )[ 0 ] ];
+			return page.revisions[ 0 ][ '*' ];
+		} );
+	},
+
+	/**
+	 * Given a tag, return the wikitext corresponding to the tag based on the
+	 * current article wikitext
+	 *
+	 * @param {string} wikitext
+	 * @param {string} tag
+	 * @return {string} The wikitext corresponding to the tag
+	 */
+	extractTagFromWikitext: function ( wikitext, tag ) {
+		const tagStart = '{{' + tag;
+		const startingIndex = wikitext.indexOf( tagStart );
+
+		if ( wikitext.indexOf( tagStart ) === -1 ) {
+			return '';
+		}
+
+		let templateBraces = 0;
+
+		for ( let i = startingIndex; i < wikitext.length; i++ ) {
+			if ( wikitext[ i ] === '{' ) {
+				templateBraces++;
+			} else if ( wikitext[ i ] === '}' ) {
+				templateBraces--;
+			}
+
+			if ( templateBraces === 0 ) {
+				return wikitext.slice( startingIndex, i + 1 );
+			}
+		}
+	},
+
+	/**
+	 * Given a template wrapper and some tag wikitext, extract the wrapper from the article wikitext
+	 * (if it is present), add the tags to the wrapper and replace the wrapper in the article
+	 * else construct a new wrapper and add the tags to it and place it in the article wikitext.
+	 *
+	 * For example, if the wrapper is "Multiple issues", the tag wikitext is {{advert}}\n{{peacock}}
+	 * and the article wikitext is the following:
+	 * ```
+	 * {{Multiple issues|
+	 * {{notability}}
+	 * {{should be deleted}}
+	 * }}
+	 *
+	 * PageTriage is the best.
+	 * ```
+	 *
+	 * the function will find the existing Multiple issues wrapper tag and try to append the tagWikitext
+	 * as part of the Multiple issues tag block, so the returned output would be:
+	 *
+	 * ```
+	 * {{Multiple issues|
+	 * {{notability}}
+	 * {{should be deleted}}
+	 * {{advert}}
+	 * {{peacock}}
+	 * }}
+	 *
+	 * PageTriage is the best.
+	 * ```
+	 *
+	 * @param {string} articleWikitext
+	 * @param {string} wrapper
+	 * @param {string} tagWikitext
+	 * @param {"top"|"bottom"} position
+	 * @param {boolean} shouldWrap
+	 * @return {string} Article text with the tag wrapped in the wrapper placed in the appropriate position
+	 */
+	addToExistingTags: function ( articleWikitext, wrapper, tagWikitext, position, shouldWrap ) {
+		const existingWrapper = this.extractTagFromWikitext( articleWikitext, wrapper );
+		if ( existingWrapper ) {
+			return articleWikitext.replace(
+				existingWrapper,
+				existingWrapper.slice( 0, existingWrapper.length - 2 ).trim() + tagWikitext + '\n}}'
+			);
+		}
+
+		let wrappedWikitext = tagWikitext;
+
+		if ( shouldWrap ) {
+			wrappedWikitext = '\n{{' + wrapper + '|' + tagWikitext + '\n}}';
+		}
+
+		if ( position === 'top' ) {
+			return wrappedWikitext + '\n' + articleWikitext;
+		}
+		return articleWikitext + '\n' + wrappedWikitext;
+
+	},
+
+	/**
 	 * Submit the selected tags
 	 */
 	submit: function () {
-		if ( this.model.get( 'page_len' ) < 1000 && this.selectedTagCount > 4 ) {
-			// eslint-disable-next-line no-alert
-			if ( !confirm( mw.msg( 'pagetriage-add-tag-confirmation', this.selectedTagCount ) ) ) {
-				$.removeSpinner( 'tag-spinner' );
-				$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
-				return;
-			}
-		}
-
-		let tagKey,
-			topText = '',
-			bottomText = '';
-		const processed = {};
-		const that = this;
-		const multipleTags = {};
-		const redirectTags = {};
-		const tagList = [];
-		let openText = '',
-			closeText = '',
-			multipleTagsText = '',
-			multipleRedirectTagsText = '';
-		for ( const cat in this.selectedTag ) {
-			for ( tagKey in this.selectedTag[ cat ] ) {
-				if ( processed[ tagKey ] ) {
-					continue;
+		this.fetchArticleContent().then( function ( wikitext ) {
+			if ( this.model.get( 'page_len' ) < 1000 && this.selectedTagCount > 4 ) {
+				// eslint-disable-next-line no-alert
+				if ( !confirm( mw.msg( 'pagetriage-add-tag-confirmation', this.selectedTagCount ) ) ) {
+					$.removeSpinner( 'tag-spinner' );
+					$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
+					return;
 				}
-				const tagObj = this.selectedTag[ cat ][ tagKey ];
+			}
 
-				// Final check on required params
-				for ( const param in tagObj.params ) {
-					if ( tagObj.params[ param ].input === 'required' && !tagObj.params[ param ].value ) {
-						that.handleError( mw.msg( 'pagetriage-tags-param-missing-required', tagObj.tag ) );
-						return;
+			let tagKey,
+				bottomText = '';
+			const processed = {};
+			const that = this;
+			const multipleTags = {};
+			const redirectTags = {};
+			const tagList = [];
+			let multipleTagsText = '',
+				multipleRedirectTagsText = '';
+			for ( const cat in this.selectedTag ) {
+				for ( tagKey in this.selectedTag[ cat ] ) {
+					if ( processed[ tagKey ] ) {
+						continue;
 					}
-				}
+					const tagObj = this.selectedTag[ cat ][ tagKey ];
 
-				switch ( tagObj.position ) {
-					case 'redirectTag':
-						redirectTags[ tagKey ] = tagObj;
-						break;
-					case 'bottom':
-					case 'stub':
-						bottomText += '\n\n{{' + tagObj.tag + this.buildParams( tagObj ) + '}}';
-						break;
-					case 'categories':
-						bottomText = '\n{{' + tagObj.tag + this.buildParams( tagObj ) + '}}' + bottomText;
-						break;
-					case 'top':
-					default:
-						if ( tagObj.multiple ) {
-							multipleTags[ tagKey ] = tagObj;
-						} else {
-							topText += '{{' + tagObj.tag + this.buildParams( tagObj ) + '}}';
+					// Final check on required params
+					for ( const param in tagObj.params ) {
+						if ( tagObj.params[ param ].input === 'required' && !tagObj.params[ param ].value ) {
+							that.handleError( mw.msg( 'pagetriage-tags-param-missing-required', tagObj.tag ) );
+							return;
 						}
-						break;
+					}
+
+					switch ( tagObj.position ) {
+						case 'redirectTag':
+							redirectTags[ tagKey ] = tagObj;
+							break;
+						case 'bottom':
+						case 'stub':
+							bottomText += '\n\n{{' + tagObj.tag + this.buildParams( tagObj ) + '}}';
+							break;
+						case 'categories':
+							bottomText = '\n{{' + tagObj.tag + this.buildParams( tagObj ) + '}}' + bottomText;
+							break;
+						case 'top':
+						default:
+							if ( tagObj.multiple ) {
+								multipleTags[ tagKey ] = tagObj;
+							} else {
+								wikitext = '{{' + tagObj.tag + this.buildParams( tagObj ) + '}}\n' + wikitext;
+							}
+							break;
+					}
+					processed[ tagKey ] = true;
+					if ( cat === 'all' ) {
+						processed[ tagObj.destKey ] = true;
+					}
+					tagList.push( tagObj.tag.toLowerCase() );
 				}
-				processed[ tagKey ] = true;
-				if ( cat === 'all' ) {
-					processed[ tagObj.destKey ] = true;
-				}
-				tagList.push( tagObj.tag.toLowerCase() );
 			}
-		}
 
-		// Generate a string of line breaks and templates. For example,
-		// \n{{No references}}\n{{Notability}}
-		for ( tagKey in multipleTags ) {
-			multipleTagsText += '\n{{' + multipleTags[ tagKey ].tag +
+			wikitext = wikitext + bottomText;
+
+			// Generate a string of line breaks and templates. For example,
+			// \n{{No references}}\n{{Notability}}
+			for ( tagKey in multipleTags ) {
+				multipleTagsText += '\n{{' + multipleTags[ tagKey ].tag +
 				this.buildParams( multipleTags[ tagKey ] ) + '}}';
-		}
+			}
 
-		// If multiple templates, wrap string in {{Multiple issues}}. If just one template, trim()
-		// it to get rid of extra \n
-		if ( this.objectPropCount( multipleTags ) > 1 ) {
-			openText = '{{' + $.pageTriageTagsMultiple + '|';
-			closeText = '\n}}';
-		} else {
-			multipleTagsText = multipleTagsText.trim();
-		}
+			wikitext = this.addToExistingTags(
+				wikitext,
+				$.pageTriageTagsMultiple,
+				multipleTagsText,
+				'top',
+				this.objectPropCount( multipleTags ) > 1
+			);
 
-		topText += openText + multipleTagsText + closeText;
-
-		for ( tagKey in redirectTags ) {
-			multipleRedirectTagsText += '\n{{' + redirectTags[ tagKey ].tag +
+			for ( tagKey in redirectTags ) {
+				multipleRedirectTagsText += '\n{{' + redirectTags[ tagKey ].tag +
 				this.buildParams( redirectTags[ tagKey ] ) + '}}';
-		}
+			}
 
-		if ( this.objectPropCount( redirectTags ) > 0 ) {
-			bottomText = '{{' + $.pageTriageTagsRedirectCategoryShell +
-				'|' + multipleRedirectTagsText + '\n}}' + bottomText;
-		}
+			if ( this.objectPropCount( redirectTags ) > 0 ) {
+				wikitext = this.addToExistingTags(
+					wikitext,
+					$.pageTriageTagsRedirectCategoryShell,
+					multipleRedirectTagsText,
+					'bottom'
+				);
+			}
 
-		if ( topText === '' && bottomText === '' ) {
-			return;
-		}
-
-		// When applying maintenance tags, reviewer can choose if the page is reviewed or not
-		if ( $( '#mwe-pt-checkbox-mark-reviewed' ).is( ':checked' ) ) {
-			new mw.Api().postWithToken( 'csrf', {
-				action: 'pagetriageaction',
-				pageid: mw.config.get( 'wgArticleId' ),
-				// NOTE: if the logic for whether to mark as reviewed is changed,
-				//   be sure to also conditionally register actionQueue.mark below
-				reviewed: '1',
-				skipnotif: '1'
-			} )
-				.then( function () {
-					// Register action for marking the page as reviewed.
-					actionQueue.mark = { reviewed: true };
-
-					that.applyTags( topText, bottomText, tagList );
+			// When applying maintenance tags, reviewer can choose if the page is reviewed or not
+			if ( $( '#mwe-pt-checkbox-mark-reviewed' ).is( ':checked' ) ) {
+				new mw.Api().postWithToken( 'csrf', {
+					action: 'pagetriageaction',
+					pageid: mw.config.get( 'wgArticleId' ),
+					// NOTE: if the logic for whether to mark as reviewed is changed,
+					//   be sure to also conditionally register actionQueue.mark below
+					reviewed: '1',
+					skipnotif: '1'
 				} )
-				.catch( function ( _errorCode, data ) {
-					that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
-				} );
-		} else {
-			new mw.Api().postWithToken( 'csrf', {
-				action: 'pagetriageaction',
-				pageid: mw.config.get( 'wgArticleId' ),
-				// NOTE: if the logic for whether to mark as reviewed is changed,
-				//   be sure to also conditionally register actionQueue.mark above
-				reviewed: '0',
-				skipnotif: '1'
-			} )
-				.then( function () {
-					// Register action for marking the page as unreviewed.
-					actionQueue.mark = { reviewed: false };
+					.then( function () {
+						// Register action for marking the page as reviewed.
+						actionQueue.mark = { reviewed: true };
 
-					that.applyTags( topText, bottomText, tagList );
+						that.applyTags( wikitext, tagList );
+					} )
+					.catch( function ( _errorCode, data ) {
+						that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
+					} );
+			} else {
+				new mw.Api().postWithToken( 'csrf', {
+					action: 'pagetriageaction',
+					pageid: mw.config.get( 'wgArticleId' ),
+					// NOTE: if the logic for whether to mark as reviewed is changed,
+					//   be sure to also conditionally register actionQueue.mark above
+					reviewed: '0',
+					skipnotif: '1'
 				} )
-				.catch( function ( _errorCode, data ) {
-					that.handleError( mw.msg( 'pagetriage-mark-as-unreviewed-error', data.error.info ) );
-				} );
-		}
+					.then( function () {
+						// Register action for marking the page as unreviewed.
+						actionQueue.mark = { reviewed: false };
+
+						that.applyTags( wikitext, tagList );
+					} )
+					.catch( function ( _errorCode, data ) {
+						that.handleError( mw.msg( 'pagetriage-mark-as-unreviewed-error', data.error.info ) );
+					} );
+			}
+		}.bind( this ) );
 	},
 
 	/**
@@ -713,7 +821,7 @@ module.exports = ToolView.extend( {
 		alert( msg );
 	},
 
-	applyTags: function ( topText, bottomText, tagList ) {
+	applyTags: function ( wikitext, tagList ) {
 		const that = this;
 		let note = $( '#mwe-pt-tag-note-input' ).val().trim();
 		if ( !this.noteChanged || !note.length ) {
@@ -723,8 +831,7 @@ module.exports = ToolView.extend( {
 		new mw.Api().postWithToken( 'csrf', {
 			action: 'pagetriagetagging',
 			pageid: mw.config.get( 'wgArticleId' ),
-			top: topText,
-			bottom: bottomText,
+			wikitext: wikitext,
 			note: note,
 			taglist: tagList.join( '|' )
 		} )
