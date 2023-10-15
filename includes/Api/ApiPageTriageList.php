@@ -140,7 +140,7 @@ class ApiPageTriageList extends ApiBase {
 				$redirectTarget = $this->redirectLookup->getRedirectTarget( $pageTitle );
 
 				if ( $redirectTarget !== null ) {
-					$metaData[$page]['redirect_target'] = $this->titleFormatter->getPrefixedText( $redirectTarget );
+					$metaData[$page]['redirect_target'] = $this->titleFormatter->getFullText( $redirectTarget );
 				}
 
 				// Add ORES data
