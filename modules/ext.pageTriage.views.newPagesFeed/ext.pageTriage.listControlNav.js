@@ -2,7 +2,7 @@
 
 const ListControlNav = Backbone.View.extend( {
 	tagName: 'div',
-	template: mw.template.get( 'ext.pageTriage.views.list', 'listControlNav.underscore' ),
+	template: mw.template.get( 'ext.pageTriage.views.newPagesFeed', 'listControlNav.underscore' ),
 	filterMenuVisible: 0,
 	filterStatus: mw.msg( 'pagetriage-filter-stat-all' ),
 	filterNamespaces: [],

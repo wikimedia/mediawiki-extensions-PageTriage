@@ -3,7 +3,7 @@
 const ListItem = Backbone.View.extend( {
 	tagName: 'div',
 	className: 'mwe-pt-list-item',
-	template: mw.template.get( 'ext.pageTriage.views.list', 'listItem.underscore' ),
+	template: mw.template.get( 'ext.pageTriage.views.newPagesFeed', 'listItem.underscore' ),
 
 	// listen for changes to the model and re-render.
 	initialize: function () {

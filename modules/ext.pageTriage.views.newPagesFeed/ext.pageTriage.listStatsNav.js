@@ -2,7 +2,7 @@
 
 const ListStatsNav = Backbone.View.extend( {
 	tagName: 'div',
-	template: mw.template.get( 'ext.pageTriage.views.list', 'listStatsNav.underscore' ),
+	template: mw.template.get( 'ext.pageTriage.views.newPagesFeed', 'listStatsNav.underscore' ),
 
 	initialize: function ( options ) {
 		const that = this;

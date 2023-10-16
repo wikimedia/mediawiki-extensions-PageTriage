@@ -282,7 +282,7 @@ module.exports = {
 	},
 	computed: {
 		statusIcon: function () {
-			const imageBase = mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/';
+			const imageBase = mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.newPagesFeed/images/';
 			const img = {
 				src: `${imageBase}icon_not_reviewed.png`,
 				title: this.$i18n( 'pagetriage-page-status-unreviewed' ).text()

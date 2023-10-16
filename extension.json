@@ -345,7 +345,7 @@
 				"pagetriage-tag-warning-notice"
 			]
 		},
-		"ext.pageTriage.views.list": {
+		"ext.pageTriage.views.newPagesFeed": {
 			"es6": true,
 			"dependencies": [
 				"mediawiki.jqueryMsg",
@@ -357,24 +357,24 @@
 				"moment"
 			],
 			"packageFiles": [
-				"ext.pageTriage.views.list/main.js",
-				"ext.pageTriage.views.list/ext.pageTriage.listItem.js",
-				"ext.pageTriage.views.list/ext.pageTriage.listControlNav.js",
-				"ext.pageTriage.views.list/ext.pageTriage.listStatsNav.js",
-				"ext.pageTriage.views.list/ext.pageTriage.listView.js"
+				"ext.pageTriage.views.newPagesFeed/main.js",
+				"ext.pageTriage.views.newPagesFeed/ext.pageTriage.listItem.js",
+				"ext.pageTriage.views.newPagesFeed/ext.pageTriage.listControlNav.js",
+				"ext.pageTriage.views.newPagesFeed/ext.pageTriage.listStatsNav.js",
+				"ext.pageTriage.views.newPagesFeed/ext.pageTriage.listView.js"
 			],
 			"templates": {
-				"listControlNav.underscore": "ext.pageTriage.views.list/ext.pageTriage.listControlNav.underscore",
-				"listItem.underscore": "ext.pageTriage.views.list/ext.pageTriage.listItem.underscore",
-				"listStatsNav.underscore": "ext.pageTriage.views.list/ext.pageTriage.listStatsNav.underscore"
+				"listControlNav.underscore": "ext.pageTriage.views.newPagesFeed/ext.pageTriage.listControlNav.underscore",
+				"listItem.underscore": "ext.pageTriage.views.newPagesFeed/ext.pageTriage.listItem.underscore",
+				"listStatsNav.underscore": "ext.pageTriage.views.newPagesFeed/ext.pageTriage.listStatsNav.underscore"
 			},
 			"styles": [
 				"external/jquery.tipoff/jquery.tipoff.css",
 				"ext.pageTriage.css",
-				"ext.pageTriage.views.list/ext.pageTriage.listItem.css",
-				"ext.pageTriage.views.list/ext.pageTriage.listControlNav.less",
-				"ext.pageTriage.views.list/ext.pageTriage.listStatsNav.css",
-				"ext.pageTriage.views.list/ext.pageTriage.listView.css"
+				"ext.pageTriage.views.newPagesFeed/ext.pageTriage.listItem.css",
+				"ext.pageTriage.views.newPagesFeed/ext.pageTriage.listControlNav.less",
+				"ext.pageTriage.views.newPagesFeed/ext.pageTriage.listStatsNav.css",
+				"ext.pageTriage.views.newPagesFeed/ext.pageTriage.listView.css"
 			],
 			"messages": [
 				"blanknamespace",

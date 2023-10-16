@@ -3,13 +3,13 @@
 	<!-- status icon -->
 	<div class="mwe-pt-info-status-icon">
 		<% if ( afd_status == "1" || blp_prod_status == "1" || csd_status == "1" || prod_status == "1" ) { %>
-			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_marked_for_deletion.png' %>" width="21" height="21" title="<%- mw.msg( "pagetriage-note-deletion" ) %>" />
+			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.newPagesFeed/images/icon_marked_for_deletion.png' %>" width="21" height="21" title="<%- mw.msg( "pagetriage-note-deletion" ) %>" />
 		<% } else if ( patrol_status == "3" ) { %>
-			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_autopatrolled.png' %>" width="21" height="21" title="<%- mw.msg( "pagetriage-note-autopatrolled" ) %>" />
+			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.newPagesFeed/images/icon_autopatrolled.png' %>" width="21" height="21" title="<%- mw.msg( "pagetriage-note-autopatrolled" ) %>" />
 		<% } else if ( patrol_status != "0" ) { %>
-			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_reviewed.png' %>" width="21" height="21" title="<%- mw.msg( "pagetriage-note-reviewed" ) %>" />
+			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.newPagesFeed/images/icon_reviewed.png' %>" width="21" height="21" title="<%- mw.msg( "pagetriage-note-reviewed" ) %>" />
 		<% } else { %>
-			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.list/images/icon_not_reviewed.png' %>" width="21" height="21" title="<%- mw.msg( "pagetriage-note-not-reviewed" ) %>" />
+			<img src="<%- mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.newPagesFeed/images/icon_not_reviewed.png' %>" width="21" height="21" title="<%- mw.msg( "pagetriage-note-not-reviewed" ) %>" />
 		<% } %>
 	</div>
 	<!-- page status  -->
