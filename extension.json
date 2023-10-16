@@ -1052,7 +1052,7 @@
 			"value": true
 		},
 		"PageTriageUIVersion": {
-			"value": "old"
+			"value": "new"
 		},
 		"PageTriageMarkPatrolledLinkExpiry": {
 			"value": 86400

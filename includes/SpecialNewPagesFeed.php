@@ -48,9 +48,9 @@ class SpecialNewPagesFeed extends SpecialPage {
 
 		// Decide which UI to load
 		$uiVersion = $request->getText( 'pagetriage_ui', $config->get( 'PageTriageUIVersion' ) );
-		$listModule = 'ext.pageTriage.views.newPagesFeed';
-		if ( $uiVersion === 'new' ) {
-			$listModule = 'ext.pageTriage.newPagesFeed.vue';
+		$listModule = 'ext.pageTriage.newPagesFeed.vue';
+		if ( $uiVersion === 'old' ) {
+			$listModule = 'ext.pageTriage.views.newPagesFeed';
 		}
 
 		// Output the title of the page
