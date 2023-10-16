@@ -4,7 +4,7 @@ let NppFilterRadio;
 let wrapper;
 describe( 'NppFilterRadio.vue', () => {
 	beforeEach( () => {
-		NppFilterRadio = require( '../../../../modules/ext.pageTriage.list/components/NppFilterRadio.vue' );
+		NppFilterRadio = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/components/NppFilterRadio.vue' );
 		wrapper = mount( NppFilterRadio, {
 			mixins: [ mixins ]
 		} );

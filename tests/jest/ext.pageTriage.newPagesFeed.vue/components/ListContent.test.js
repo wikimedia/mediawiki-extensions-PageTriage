@@ -1,22 +1,10 @@
 const { mount } = require( '@vue/test-utils' );
 const { createTestingPinia } = require( '@pinia/testing' );
-let ListFilterMenu;
-let settings;
+let ListContent;
 let wrapper;
-describe( 'ListFilterMenu.vue', () => {
+let settings;
+describe( 'ListContent.vue', () => {
 	beforeEach( () => {
-		mw.config.get = jest.fn( ( key ) => {
-			switch ( key ) {
-				case 'pageTriageNamespaces':
-					return [ 0, 118 ];
-				case 'wgPageTriageDraftNamespaceId':
-					return 118;
-				case 'wgNamespaceIds':
-					return { draft: 118 };
-				default:
-					return null;
-			}
-		} );
 		mw.user.options.get = jest.fn( ( key ) => {
 			switch ( key ) {
 				case 'timecorrection':
@@ -25,9 +13,9 @@ describe( 'ListFilterMenu.vue', () => {
 					return null;
 			}
 		} );
-		const { useSettingsStore } = require( '../../../../modules/ext.pageTriage.list/stores/settings.js' );
-		ListFilterMenu = require( '../../../../modules/ext.pageTriage.list/components/ListFilterMenu.vue' );
-		wrapper = mount( ListFilterMenu, {
+		const { useSettingsStore } = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/stores/settings.js' );
+		ListContent = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/components/ListContent.vue' );
+		wrapper = mount( ListContent, {
 			global: {
 				plugins: [ createTestingPinia( {
 					stubActions: false

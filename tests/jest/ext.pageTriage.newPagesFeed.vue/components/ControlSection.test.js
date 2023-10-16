@@ -3,7 +3,7 @@ let ControlSection;
 let wrapper;
 describe( 'ControlSection.vue', () => {
 	beforeEach( () => {
-		ControlSection = require( '../../../../modules/ext.pageTriage.list/components/ControlSection.vue' );
+		ControlSection = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/components/ControlSection.vue' );
 		wrapper = mount( ControlSection );
 	} );
 	it( 'mounts', () => {

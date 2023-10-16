@@ -530,7 +530,7 @@
 				"pagetriage-stats-filter-page-count"
 			]
 		},
-		"ext.pageTriage.list": {
+		"ext.pageTriage.newPagesFeed.vue": {
 			"es6": true,
 			"dependencies": [
 				"@wikimedia/codex",
@@ -546,30 +546,30 @@
 				"vue"
 			],
 			"packageFiles": [
-				"ext.pageTriage.list/init.js",
-				"ext.pageTriage.list/namespaces.js",
-				"ext.pageTriage.list/App.vue",
-				"ext.pageTriage.list/components/ControlSection.vue",
-				"ext.pageTriage.list/components/DateControlSection.vue",
-				"ext.pageTriage.list/components/LabeledCheckbox.vue",
-				"ext.pageTriage.list/components/ListItem.vue",
-				"ext.pageTriage.list/components/CreatorByline.vue",
-				"ext.pageTriage.list/components/ListFilterMenu.vue",
-				"ext.pageTriage.list/components/ListContent.vue",
-				"ext.pageTriage.list/components/ListStatsNav.vue",
-				"ext.pageTriage.list/components/LoadMoreBar.vue",
-				"ext.pageTriage.list/components/QueueModeRadio.vue",
-				"ext.pageTriage.list/components/NppSortDirRadio.vue",
-				"ext.pageTriage.list/components/NppFilterRadio.vue",
-				"ext.pageTriage.list/components/AfcSortSelect.vue",
-				"ext.pageTriage.list/components/AfcStateRadio.vue",
-				"ext.pageTriage.list/components/ShowingText.vue",
-				"ext.pageTriage.list/stores/settings.js"
+				"ext.pageTriage.newPagesFeed.vue/init.js",
+				"ext.pageTriage.newPagesFeed.vue/namespaces.js",
+				"ext.pageTriage.newPagesFeed.vue/App.vue",
+				"ext.pageTriage.newPagesFeed.vue/components/ControlSection.vue",
+				"ext.pageTriage.newPagesFeed.vue/components/DateControlSection.vue",
+				"ext.pageTriage.newPagesFeed.vue/components/LabeledCheckbox.vue",
+				"ext.pageTriage.newPagesFeed.vue/components/ListItem.vue",
+				"ext.pageTriage.newPagesFeed.vue/components/CreatorByline.vue",
+				"ext.pageTriage.newPagesFeed.vue/components/ListFilterMenu.vue",
+				"ext.pageTriage.newPagesFeed.vue/components/ListContent.vue",
+				"ext.pageTriage.newPagesFeed.vue/components/ListStatsNav.vue",
+				"ext.pageTriage.newPagesFeed.vue/components/LoadMoreBar.vue",
+				"ext.pageTriage.newPagesFeed.vue/components/QueueModeRadio.vue",
+				"ext.pageTriage.newPagesFeed.vue/components/NppSortDirRadio.vue",
+				"ext.pageTriage.newPagesFeed.vue/components/NppFilterRadio.vue",
+				"ext.pageTriage.newPagesFeed.vue/components/AfcSortSelect.vue",
+				"ext.pageTriage.newPagesFeed.vue/components/AfcStateRadio.vue",
+				"ext.pageTriage.newPagesFeed.vue/components/ShowingText.vue",
+				"ext.pageTriage.newPagesFeed.vue/stores/settings.js"
 			],
 			"styles": [
 				"external/jquery.tipoff/jquery.tipoff.css",
 				"ext.pageTriage.css",
-				"ext.pageTriage.list/ext.pageTriage.list.less"
+				"ext.pageTriage.newPagesFeed.vue/ext.pageTriage.newPagesFeed.less"
 			],
 			"messages": [
 				"blanknamespace",

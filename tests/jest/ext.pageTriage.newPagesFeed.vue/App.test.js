@@ -1,9 +1,5 @@
 const { mount } = require( '@vue/test-utils' );
-const { createTestingPinia } = require( '@pinia/testing' );
-const mixins = require( '../../../mocks/mixins.js' );
-let ShowingText;
-let wrapper;
-describe( 'ShowingText.vue', () => {
+describe( 'App.vue', () => {
 	beforeEach( () => {
 		mw.config.get = jest.fn( ( key ) => {
 			switch ( key ) {
@@ -23,15 +19,10 @@ describe( 'ShowingText.vue', () => {
 					return null;
 			}
 		} );
-		ShowingText = require( '../../../../modules/ext.pageTriage.list/components/ShowingText.vue' );
-		wrapper = mount( ShowingText, {
-			global: {
-				mixins: [ mixins ],
-				plugins: [ createTestingPinia() ]
-			}
-		} );
 	} );
-	it( 'mounts', () => {
+	it( 'exists', () => {
+		const App = require( '../../../modules/ext.pageTriage.newPagesFeed.vue/App.vue' );
+		const wrapper = mount( App );
 		expect( wrapper.exists() ).toBe( true );
 	} );
 } );

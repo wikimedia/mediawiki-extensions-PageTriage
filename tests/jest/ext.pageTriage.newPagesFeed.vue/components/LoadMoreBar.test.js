@@ -10,7 +10,7 @@ describe( 'LoadMoreBar.vue', () => {
 			disconnect: () => null
 		} );
 		window.IntersectionObserver = mockIntersectionObserver;
-		LoadMoreBar = require( '../../../../modules/ext.pageTriage.list/components/LoadMoreBar.vue' );
+		LoadMoreBar = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/components/LoadMoreBar.vue' );
 		wrapper = mount( LoadMoreBar );
 	} );
 	it( 'mounts', () => {

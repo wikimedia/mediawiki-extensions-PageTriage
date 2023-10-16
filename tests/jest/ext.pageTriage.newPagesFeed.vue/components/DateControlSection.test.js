@@ -3,7 +3,7 @@ let DateControlSection;
 let wrapper;
 describe( 'DateControlSection.vue', () => {
 	beforeEach( () => {
-		DateControlSection = require( '../../../../modules/ext.pageTriage.list/components/DateControlSection.vue' );
+		DateControlSection = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/components/DateControlSection.vue' );
 		wrapper = mount( DateControlSection );
 	} );
 	it( 'mounts', () => {

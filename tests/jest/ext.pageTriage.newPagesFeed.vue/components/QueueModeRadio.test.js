@@ -13,8 +13,8 @@ describe( 'QueueModeRadio.vue', () => {
 					return null;
 			}
 		} );
-		const { useSettingsStore } = require( '../../../../modules/ext.pageTriage.list/stores/settings.js' );
-		QueueModeRadio = require( '../../../../modules/ext.pageTriage.list/components/QueueModeRadio.vue' );
+		const { useSettingsStore } = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/stores/settings.js' );
+		QueueModeRadio = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/components/QueueModeRadio.vue' );
 		wrapper = mount( QueueModeRadio, {
 			global: {
 				plugins: [ createTestingPinia( {
