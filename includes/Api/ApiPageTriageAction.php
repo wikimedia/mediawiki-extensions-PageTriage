@@ -129,9 +129,26 @@ class ApiPageTriageAction extends ApiBase {
 				);
 			}
 
+			$reviewLogEntryType = 'reviewed';
+
+			if ( !$reviewedStatus ) {
+				$reviewLogEntryType = 'unreviewed';
+			}
+
+			if ( $article->getTitle()->isRedirect() ) {
+				$reviewLogEntryType .= '-redirect';
+			} else {
+				$reviewLogEntryType .= '-article';
+			}
+
+			// The following messages will be used by this log entry
+			// * logentry-pagetriage-curation-reviewed-redirect
+			// * logentry-pagetriage-curation-reviewed-article
+			// * logentry-pagetriage-curation-unreviewed-redirect
+			// * logentry-pagetriage-curation-unreviewed-article
 			$this->logAction(
 				$article,
-				$reviewedStatus ? 'reviewed' : 'unreviewed',
+				$reviewLogEntryType,
 				$note,
 				$tags
 			);
@@ -179,8 +196,13 @@ class ApiPageTriageAction extends ApiBase {
 			}
 		} );
 
+		// The following messages will be used by this log entry
+		// * logentry-pagetriage-curation-reviewed-redirect
+		// * logentry-pagetriage-curation-reviewed-article
+		$reviewLogEntryType = 'unreviewed-' . ( $title->isRedirect() ? 'redirect' : 'article' );
+
 		$this->logAction( $article, 'enqueue', $note, $tags );
-		$this->logAction( $article, 'unreviewed', $note, $tags );
+		$this->logAction( $article, $reviewLogEntryType, $note, $tags );
 
 		return [ 'result' => 'success' ];
 	}

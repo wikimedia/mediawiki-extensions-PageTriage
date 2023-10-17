@@ -56,7 +56,11 @@
 	},
 	"LogActionsHandlers": {
 		"pagetriage-curation/reviewed": "LogFormatter",
+		"pagetriage-curation/reviewed-redirect": "LogFormatter",
+		"pagetriage-curation/reviewed-article": "LogFormatter",
 		"pagetriage-curation/unreviewed": "LogFormatter",
+		"pagetriage-curation/unreviewed-article": "LogFormatter",
+		"pagetriage-curation/unreviewed-redirect": "LogFormatter",
 		"pagetriage-curation/enqueue": "LogFormatter",
 		"pagetriage-curation/tag": "MediaWiki\\Extension\\PageTriage\\PageTriageLogFormatter",
 		"pagetriage-curation/delete": "MediaWiki\\Extension\\PageTriage\\PageTriageLogFormatter",
@@ -69,10 +73,14 @@
 	"ActionFilteredLogs": {
 		"pagetriage-curation": {
 			"review": [
-				"reviewed"
+				"reviewed",
+				"reviewed-article",
+				"reviewed-redirect"
 			],
 			"unreview": [
-				"unreviewed"
+				"unreviewed",
+				"unreviewed-redirect",
+				"unreviewed-article"
 			],
 			"enqueue": [
 				"enqueue"
