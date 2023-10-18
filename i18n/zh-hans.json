@@ -521,7 +521,7 @@
 	"apihelp-pagetriagelist-param-showreviewed": "是否包括已审核。",
 	"apihelp-pagetriagelist-param-showunreviewed": "是否包括未审核。",
 	"apihelp-pagetriagelist-param-showdeleted": "是否包括“建议删除”。",
-	"apihelp-pagetriagelist-param-limit": "要返回的最大结果数。",
+	"apihelp-pagetriagelist-param-limit": "最大返回结果数。",
 	"apihelp-pagetriagelist-param-offset": "开始的时间戳。",
 	"apihelp-pagetriagelist-param-pageoffset": "开始的页面ID（也需要传递$1偏移量参数）。",
 	"apihelp-pagetriagelist-param-dir": "列表的排序方式 - oldestfirst、newestfirst、oldestreview或newestreview。",
