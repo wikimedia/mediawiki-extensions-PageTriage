@@ -352,8 +352,15 @@ module.exports = {
 				// Shouldn't be used
 				return '';
 			}
-			return 'https://tools.wmflabs.org/copypatrol/en?filter=all&searchCriteria=page_exact' +
-				'&searchText=' + ( new mw.Title( this.title ) ).getMainText() +
+
+			// As of 2023, the valid values for this on the CopyPatrol side are: en, es, ar,
+			// fr, simple. Splitting the wgServerName ensures that Simple English Wikipedia
+			// correctly renders as "simple".
+			const wikiLanguageCodeForCopyPatrolURL = mw.config.get( 'wgServerName' ).split( '.' )[ 0 ];
+
+			return 'https://copypatrol.toolforge.org/' + wikiLanguageCodeForCopyPatrolURL +
+				'?filter=all' +
+				'&filterPage=' + ( new mw.Title( this.title ) ).getMainText() +
 				'&drafts=' + ( this.isDraft ? '1' : '0' ) +
 				'&revision=' + this.copyvio;
 		},
