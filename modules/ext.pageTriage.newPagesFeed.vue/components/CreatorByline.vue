@@ -11,8 +11,7 @@
 		:class="userPageClass">
 		{{ creatorName }}
 	</a>
-	(
-	<a
+	(<a
 		:href="talkPageUrl"
 		class="cdx-link"
 		:class="talkPageClass">
@@ -21,8 +20,7 @@
 	{{ $i18n( 'pipe-separator' ).text() }}
 	<a :href="contribsUrl">
 		{{ $i18n( 'contribslink' ).text() }}
-	</a>
-	)
+	</a>)
 </template>
 
 <script>
