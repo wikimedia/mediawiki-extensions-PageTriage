@@ -322,7 +322,7 @@ module.exports = {
 			return mw.util.getUrl( this.title, { action: 'history' } );
 		},
 		creationDatePretty: function () {
-			return this.prettyTimestamp( this.creationDateUTC );
+			return this.prettyTimestamp( this.creationDateUTC, true );
 		},
 		articleAge: function () {
 			const creationDateParsed = moment.utc( this.creationDateUTC, 'YYYYMMDDHHmmss' );
@@ -332,10 +332,10 @@ module.exports = {
 			return ( ( this.isDraft === undefined || this.isDraft === false ) && ( this.articleAge <= 60 ) );
 		},
 		creatorRegistrationPretty: function () {
-			return this.prettyTimestamp( this.creatorRegistrationUTC );
+			return this.prettyTimestamp( this.creatorRegistrationUTC, false );
 		},
 		reviewedUpdatedPretty: function () {
-			return this.prettyTimestamp( this.reviewedUpdatedUTC );
+			return this.prettyTimestamp( this.reviewedUpdatedUTC, true );
 		},
 		lastAfcActionLabel: function () {
 			if ( this.afcState === 2 ) {
@@ -372,9 +372,15 @@ module.exports = {
 		parseTimestamp: function ( utcTimestamp ) {
 			return moment.utc( utcTimestamp, 'YYYYMMDDHHmmss' );
 		},
-		prettyTimestamp: function ( utcTimestamp ) {
+		prettyTimestamp: function ( utcTimestamp, includeTime ) {
+			let format;
+			if ( includeTime ) {
+				format = this.$i18n( 'pagetriage-creation-dateformat' ).text();
+			} else {
+				format = this.$i18n( 'pagetriage-info-timestamp-date-format' ).text();
+			}
 			return this.parseTimestamp( utcTimestamp ).utcOffset( this.timeOffset ).format(
-				this.$i18n( 'pagetriage-creation-dateformat' ).text()
+				format
 			);
 		}
 	}
