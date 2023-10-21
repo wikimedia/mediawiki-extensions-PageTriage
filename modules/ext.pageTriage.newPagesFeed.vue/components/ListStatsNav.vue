@@ -14,7 +14,6 @@
 				</labeled-checkbox>
 				<cdx-button
 					id="mwe-vue-pt-refresh-button"
-					class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
 					@click="$emit( 'refresh-feed' )"
 				>
 					<span>
