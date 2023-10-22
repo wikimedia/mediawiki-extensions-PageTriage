@@ -1,13 +1,10 @@
 <template>
-	<input
+	<cdx-checkbox
 		:id="inputId"
-		:checked="checked"
-		type="checkbox"
-		@change="$emit( 'update:checked', $event.target.checked )"
-	>
-	<label :for="inputId">
+		v-model="value"
+		inline>
 		{{ labelText }}
-	</label>
+	</cdx-checkbox>
 	<br v-if="!noBreak">
 </template>
 
@@ -16,6 +13,9 @@
  * @author DannyS712
  * Labeled checkox for mulitple filter controls
  */
+
+const { CdxCheckbox, useModelWrapper } = require( '@wikimedia/codex' );
+const { toRef } = require( 'vue' );
 
 let lastGeneratedIdNum = 0;
 // @vue/component
@@ -27,6 +27,9 @@ module.exports = {
 		whitespace: 'condense'
 	},
 	name: 'LabeledCheckbox',
+	components: {
+		CdxCheckbox
+	},
 	props: {
 		// id is used to associated input with the <label> via `for`, if not
 		// provided auto generate one
@@ -60,10 +63,18 @@ module.exports = {
 				].indexOf( value ) !== -1;
 			}
 		},
+		// eslint-disable-next-line vue/no-unused-properties
 		checked: { type: Boolean, default: false },
 		noBreak: { type: Boolean, default: false }
 	},
 	emits: [ 'update:checked' ],
+	setup( props, { emit } ) {
+		const value = useModelWrapper( toRef( props, 'checked' ), emit, 'update:checked' );
+
+		return {
+			value
+		};
+	},
 	computed: {
 		labelText: function () {
 			// See labelMsg validator for possible keys
@@ -73,3 +84,11 @@ module.exports = {
 	}
 };
 </script>
+
+<style lang="less">
+@import 'mediawiki.skin.variables.less';
+
+.cdx-checkbox--inline {
+	margin-bottom: @spacing-50;
+}
+</style>

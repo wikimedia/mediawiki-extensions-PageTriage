@@ -1,20 +1,13 @@
 <template>
-	<b class="mwe-vue-pt-sort-label">
-		{{ $i18n( 'pagetriage-sort-by' ).text() }}
-	</b>
-	<cdx-radio
-		v-for="radio in radios"
-		:key="`mwe-vue-pt-radio-${radio.value}`"
-		v-model="settings.immediate.nppSortDir"
-		name="npp-sort-dir-radio-group"
-		:input-value="radio.value"
-		:inline="true"
-		@change="settings.updateImmediate( 'nppSortDir', radio.value )"
-	>
-		<span>
-			{{ radio.label }}
-		</span>
-	</cdx-radio>
+	<cdx-field>
+		<cdx-toggle-button-group
+			v-model="settings.immediate.nppSortDir"
+			:buttons="buttons"
+			name="npp-sort-dir-radio-group"
+			@update:model-value="( newVal ) => settings.updateImmediate( 'nppSortDir', newVal )"
+		>
+		</cdx-toggle-button-group>
+	</cdx-field>
 </template>
 
 <script>
@@ -22,7 +15,7 @@
  * Control for new page patrol queue sorting
  */
 
-const { CdxRadio } = require( '@wikimedia/codex' );
+const { CdxToggleButtonGroup, CdxField } = require( '@wikimedia/codex' );
 const { useSettingsStore } = require( '../stores/settings.js' );
 // @vue/component
 module.exports = {
@@ -33,9 +26,12 @@ module.exports = {
 		whitespace: 'condense'
 	},
 	name: 'NppSortDirRadio',
-	components: { CdxRadio },
+	components: {
+		CdxToggleButtonGroup,
+		CdxField
+	},
 	data() {
-		const radios = [
+		const buttons = [
 			{
 				label: this.$i18n( 'pagetriage-newest' ).text(),
 				value: 'newestfirst'
@@ -47,16 +43,9 @@ module.exports = {
 		];
 		const settings = useSettingsStore();
 		return {
-			radios,
+			buttons,
 			settings
 		};
 	}
 };
 </script>
-
-<style>
-.mwe-vue-pt-sort-label {
-	padding-right: 5px;
-	white-space: nowrap;
-}
-</style>

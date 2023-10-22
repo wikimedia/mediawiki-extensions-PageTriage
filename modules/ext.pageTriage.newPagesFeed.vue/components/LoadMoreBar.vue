@@ -1,7 +1,7 @@
 <template>
 	<div id="loadMoreBar" ref="barRef">
 		<div id="mwe-vue-pt-feed-load-more" :class="!haveMore ? 'mwe-pt-hidden' : null">
-			<cdx-progress-bar :aria-label="$i18n( 'pagetriage-please-wait' ).text()"></cdx-progress-bar>
+			<cdx-progress-bar :aria-label="$i18n( 'pagetriage-please-wait' ).text()" :inline="true"></cdx-progress-bar>
 		</div>
 	</div>
 </template>
@@ -59,20 +59,15 @@ module.exports = {
 };
 </script>
 
-<style>
+<style lang="less">
+@import 'mediawiki.skin.variables.less';
+
 #mwe-vue-pt-feed-load-more {
 	text-align: center;
-	font-size: 17px;
-	background-color: #e8f2f8;
+	background-color: @background-color-base;
+	border-left: @border-subtle;
+	border-right: @border-subtle;
 	margin: 0;
-	padding: 0.4em;
-	border: 1px solid #ccc;
 	border-top: 0;
-}
-#mwe-vue-pt-feed-load-more .cdx-progress-bar {
-	/* Override codex styles to make a quieter version */
-	background-color: inherit;
-	border: unset;
-	margin: 1.5em 0 1.5em 0;
 }
 </style>

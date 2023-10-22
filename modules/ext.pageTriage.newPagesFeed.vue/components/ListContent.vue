@@ -1,24 +1,24 @@
 <template>
-	<div
+	<cdx-message
 		v-show="apiError"
-		class="mwe-vue-pt-error"
+		type="error"
+		class="mwe-vue-pt-feed-items-error"
 	>
 		{{ $i18n( 'pagetriage-api-error' ).text() }}
-		<br>
-	</div>
+	</cdx-message>
 	<list-item
 		v-for="feedEntry in feedEntries"
 		v-bind="feedEntry"
 		:key="feedEntry.position"
 		:tb-version="tbVersion"
 	></list-item>
-	<div
+	<cdx-message
 		v-if="!feedEntries.length && !haveMoreToLoad"
-		class="mwe-vue-pt-error"
+		type="error"
+		class="mwe-vue-pt-feed-items-error"
 	>
 		{{ $i18n( 'pagetriage-no-pages' ).text() }}
-		<br>
-	</div>
+	</cdx-message>
 	<load-more-bar :have-more="haveMoreToLoad" @trigger-load="loadFromFilters"></load-more-bar>
 	<stats-bar
 		:api-result="feedStats"
@@ -78,6 +78,7 @@ const listItemPropFormatter = ( pageInfo ) => {
 };
 
 const { ref, watch } = require( 'vue' );
+const { CdxMessage } = require( '@wikimedia/codex' );
 const ListItem = require( './ListItem.vue' );
 const LoadMoreBar = require( './LoadMoreBar.vue' );
 const StatsBar = require( './ListStatsNav.vue' );
@@ -96,7 +97,8 @@ module.exports = {
 	components: {
 		ListItem,
 		LoadMoreBar,
-		StatsBar
+		StatsBar,
+		CdxMessage
 	},
 	props: {
 		// optional toolbar feature flag
@@ -235,13 +237,8 @@ module.exports = {
 
 <style lang="less">
 @import 'mediawiki.skin.variables.less';
-.mwe-vue-pt-error {
-	color: @color-error;
-	font-size: 1.2em;
-	line-height: 1.3em;
-	margin: 0;
-	padding: 0.4em;
-	border: 1px solid #ccc;
-	border-top: 0;
+
+.mwe-vue-pt-feed-items-error {
+	margin: @spacing-50;
 }
 </style>

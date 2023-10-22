@@ -76,6 +76,7 @@ module.exports = {
 
 <style lang="less">
 @import 'mediawiki.skin.variables.less';
+
 .cdx-link {
 	.cdx-mixin-link();
 }

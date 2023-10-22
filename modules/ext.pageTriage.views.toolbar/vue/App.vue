@@ -327,6 +327,7 @@ module.exports = {
 	width: 100%;
 	height: 100%;
 }
+
 #mwe-pt-toolbar {
 	position: fixed;
 	top: 140px;
@@ -338,26 +339,33 @@ module.exports = {
 	border: 1px solid #9f9f9f;
 	box-shadow: 0 4px 8px rgba( 0, 0, 0, 0.4 );
 }
-.mw-content-ltr  #mwe-pt-toolbar {
+
+.mw-content-ltr #mwe-pt-toolbar {
 	left: 'auto';
-	right: 0
+	right: 0;
 }
+
 .mw-content-rtl #mwe-pt-toolbar {
 	left: 0;
 	right: 'auto';
 }
+
 .skin-monobook #mwe-pt-toolbar {
 	font-size: 1.5em;
 }
+
 .ve-activated #mwe-pt-toolbar {
 	display: none;
 }
+
 .mwe-pt-toolbar-maximized {
 	width: 35px;
 }
+
 .mwe-pt-toolbar-minimized {
 	width: 15px;
 }
+
 #mwe-pt-toolbar-inactive {
 	width: 15px;
 	min-height: 90px;
@@ -365,13 +373,16 @@ module.exports = {
 	/* overrides backbone style; not needed once backbone toolbar is removed. */
 	display: block;
 }
+
 .mwe-pt-toolbar-close {
 	width: 12px;
 }
+
 .mwe-pt-toolbar-minimized .mwe-pt-toolbar-hidden {
 	width: auto;
 	text-align: center;
 }
+
 .mwe-pt-toolbar-close-button {
 	background-image: url( ../images/close.png );
 	height: 12px;
@@ -379,6 +390,7 @@ module.exports = {
 	margin: 0 auto;
 	cursor: pointer;
 }
+
 #mwe-pt-toolbar-vertical {
 	color: #333;
 	border: 0 solid #f00;

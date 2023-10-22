@@ -566,18 +566,30 @@
 				"ext.pageTriage.newPagesFeed.vue/components/ListContent.vue",
 				"ext.pageTriage.newPagesFeed.vue/components/ListStatsNav.vue",
 				"ext.pageTriage.newPagesFeed.vue/components/LoadMoreBar.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/QueueModeRadio.vue",
+				"ext.pageTriage.newPagesFeed.vue/components/QueueModeTab.vue",
 				"ext.pageTriage.newPagesFeed.vue/components/NppSortDirRadio.vue",
 				"ext.pageTriage.newPagesFeed.vue/components/NppFilterRadio.vue",
 				"ext.pageTriage.newPagesFeed.vue/components/AfcSortSelect.vue",
 				"ext.pageTriage.newPagesFeed.vue/components/AfcStateRadio.vue",
 				"ext.pageTriage.newPagesFeed.vue/components/ShowingText.vue",
-				"ext.pageTriage.newPagesFeed.vue/stores/settings.js"
+				"ext.pageTriage.newPagesFeed.vue/components/UsernameLookup.vue",
+				"ext.pageTriage.newPagesFeed.vue/stores/settings.js",
+				{
+					"name": "ext.pageTriage.newPagesFeed.vue/components/icons.json",
+					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
+					"callbackParam": [
+						"cdxIconError",
+						"cdxIconSuccess",
+						"cdxIconTrash",
+						"cdxIconPlay",
+						"cdxIconStop",
+						"cdxIconReload"
+					]
+				}
 			],
 			"styles": [
 				"external/jquery.tipoff/jquery.tipoff.css",
-				"ext.pageTriage.css",
-				"ext.pageTriage.newPagesFeed.vue/ext.pageTriage.newPagesFeed.less"
+				"ext.pageTriage.css"
 			],
 			"messages": [
 				"blanknamespace",
@@ -625,6 +637,7 @@
 				"pagetriage-user-creation-dateformat",
 				"pagetriage-special-contributions",
 				"pagetriage-showing",
+				"pagetriage-active-filters",
 				"pagetriage-filter-list-prompt",
 				"pagetriage-unreviewed-article-count",
 				"pagetriage-reviewed-article-count-past-week",
@@ -720,6 +733,7 @@
 				"pagetriage-filter-predicted-issues-attack",
 				"pagetriage-filter-predicted-issues-copyvio",
 				"pagetriage-filter-predicted-issues-none",
+				"pagetriage-filter-username-lookup-nousernamefound",
 				"pagetriage-new-page-patrol",
 				"pagetriage-articles-for-creation",
 				"pagetriage-filter-all",

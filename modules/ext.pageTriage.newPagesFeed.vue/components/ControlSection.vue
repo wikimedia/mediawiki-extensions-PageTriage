@@ -1,12 +1,14 @@
 <template>
-	<fieldset class="mwe-vue-pt-control-section">
-		<legend class="mwe-vue-pt-control-label">
-			<b>{{ labelText }}</b>
-		</legend>
-		<div class="mwe-vue-pt-control-options">
-			<slot></slot>
-		</div>
-	</fieldset>
+	<div class="mwe-vue-pt-control-section-wrapper">
+		<cdx-field class="mwe-vue-pt-control-section" :is-fieldset="true">
+			<template #label>
+				{{ labelText }}
+			</template>
+			<div class="mwe-vue-pt-control-options">
+				<slot></slot>
+			</div>
+		</cdx-field>
+	</div>
 </template>
 
 <script>
@@ -15,6 +17,8 @@
  * Helper for controls form, contains a specific section with a message label
  * and slot content
  */
+
+const { CdxField } = require( '@wikimedia/codex' );
 
 // @vue/component
 module.exports = {
@@ -25,6 +29,9 @@ module.exports = {
 		whitespace: 'condense'
 	},
 	name: 'ControlSection',
+	components: {
+		CdxField
+	},
 	props: {
 		labelMsg: {
 			type: String,
@@ -54,10 +61,16 @@ module.exports = {
 };
 </script>
 
-<style>
+<style lang="less">
+@import 'mediawiki.skin.variables.less';
+
 .mwe-vue-pt-control-options {
-	margin-left: 1em;
-	margin-right: 0.5em;
+	margin-left: @spacing-100;
+	margin-right: @spacing-50;
 	white-space: nowrap;
+}
+
+.mwe-vue-pt-control-section-wrapper {
+	margin: @spacing-25;
 }
 </style>
