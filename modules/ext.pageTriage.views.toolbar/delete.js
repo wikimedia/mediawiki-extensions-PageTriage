@@ -849,6 +849,26 @@ module.exports = ToolView.extend( {
 	},
 
 	/**
+	 * Fetch the current article content so that
+	 * the tagging module can apply transformations
+	 * based on the tags being added.
+	 *
+	 * @return {Promise<string>} A promise that resolves when the article content has been fetched.
+	 */
+	fetchArticleContent: function () {
+		return new mw.Api().get( {
+			action: 'query',
+			prop: 'revisions',
+			rvprop: 'content',
+			rvlimit: 1,
+			titles: mw.config.get( 'wgPageName' )
+		} ).then( function ( data ) {
+			const page = data.query.pages[ Object.keys( data.query.pages )[ 0 ] ];
+			return page.revisions[ 0 ][ '*' ];
+		} );
+	},
+
+	/**
 	 * Add deletion tag template to the page
 	 *
 	 * @return {jQuery.Promise} A promise. Resolves if successful, rejects with
@@ -919,24 +939,26 @@ module.exports = ToolView.extend( {
 			text = '{{' + $.pageTriageDeletionTagsMultiple.tag + '|' + tagText + paramsText + '}}';
 		}
 
-		return new mw.Api().postWithToken( 'csrf', {
-			action: 'pagetriagetagging',
-			pageid: mw.config.get( 'wgArticleId' ),
-			top: text,
-			deletion: 1,
-			taglist: tagList.join( '|' )
-		} )
-			.then( function () {
-				// To be passed into `addToLog`.
-				return { tagCount: count, tagKey: key };
+		return this.fetchArticleContent().then( function ( wikitext ) {
+			return new mw.Api().postWithToken( 'csrf', {
+				action: 'pagetriagetagging',
+				pageid: mw.config.get( 'wgArticleId' ),
+				wikitext: text + wikitext,
+				deletion: 1,
+				taglist: tagList.join( '|' )
 			} )
-			.catch( function ( errorCode ) {
-				if ( errorCode === 'pagetriage-tag-deletion-error' ) {
-					throw new Error( mw.msg( 'pagetriage-tag-deletion-error' ) );
-				} else {
-					throw new Error( mw.msg( 'pagetriage-tagging-error' ) );
-				}
-			} );
+				.then( function () {
+					// To be passed into `addToLog`.
+					return { tagCount: count, tagKey: key };
+				} )
+				.catch( function ( errorCode ) {
+					if ( errorCode === 'pagetriage-tag-deletion-error' ) {
+						throw new Error( mw.msg( 'pagetriage-tag-deletion-error' ) );
+					} else {
+						throw new Error( mw.msg( 'pagetriage-tagging-error' ) );
+					}
+				} );
+		} );
 	},
 
 	/**
