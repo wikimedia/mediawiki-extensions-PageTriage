@@ -288,8 +288,6 @@
 	"apihelp-pagetriagestats-param-topreviewers": "Incluyir los 50 revisores principales nun periodu de tiempu determináu. Los valores válidos incluyen últimu-día, última-selmana (predetermináu), o últimu-mes.",
 	"apihelp-pagetriagetagging-summary": "Añadir etiquetes a un artículu.",
 	"apihelp-pagetriagetagging-param-pageid": "L'artículu pal que ser etiquetáu.",
-	"apihelp-pagetriagetagging-param-top": "El testu de la etiqueta a añadir al principiu d'un artículu.",
-	"apihelp-pagetriagetagging-param-bottom": "El testu de la etiqueta a añadir al final d'un artículu.",
 	"apihelp-pagetriagetagging-param-deletion": "Si l'etiquetáu ye o nun ye pa una candidatura a desaniciu",
 	"apihelp-pagetriagetagging-param-note": "Nota personal de los revisores a los criadores de páxines.",
 	"apihelp-pagetriagetagging-param-taglist": "Llista d'etiquetes separaes por barres verticales.",

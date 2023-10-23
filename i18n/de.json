@@ -514,7 +514,6 @@
 	"apihelp-pagetriagetagcopyvio-param-revid": "Kennung der Version, die als vermutliche Urheberrechtsverletzung markiert werden soll.",
 	"apihelp-pagetriagetagging-summary": "Ergänzt Markierungen für einen Artikel.",
 	"apihelp-pagetriagetagging-param-pageid": "Der Artikel, der markiert werden soll.",
-	"apihelp-pagetriagetagging-param-top": "Der am Artikelanfang hinzuzufügende Markierungstext.",
 	"apihelp-pagetriagetagging-param-deletion": "Ob die Markierung für einen Löschvorschlag ist oder nicht.",
 	"apihelp-pagetriagetagging-param-note": "Persönliche Nachricht an die Seitenersteller von den Prüfern.",
 	"apihelp-pagetriagetagging-param-taglist": "Pipe-getrennte Liste mit Markierungen.",

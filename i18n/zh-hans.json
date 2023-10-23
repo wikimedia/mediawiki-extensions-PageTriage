@@ -583,8 +583,6 @@
 	"apihelp-pagetriagetagcopyvio-param-revid": "要标记为疑似侵权的修订版本ID",
 	"apihelp-pagetriagetagging-summary": "添加标签到一个条目。",
 	"apihelp-pagetriagetagging-param-pageid": "要标记的条目。",
-	"apihelp-pagetriagetagging-param-top": "要添加到条目顶部的标记文本。",
-	"apihelp-pagetriagetagging-param-bottom": "要被添加到条目底部的标签文本。",
 	"apihelp-pagetriagetagging-param-deletion": "是否也要标记已被提名删除的。",
 	"apihelp-pagetriagetagging-param-note": "审核者给页面创建者的个人注释。",
 	"apihelp-pagetriagetagging-param-taglist": "竖线分隔的标签列表。",

@@ -578,8 +578,6 @@
 	"apihelp-pagetriagetagcopyvio-param-revid": "Identifiant de la révision à marquer comme une violation probable des droits d’auteur",
 	"apihelp-pagetriagetagging-summary": "Ajouter des balises à un article.",
 	"apihelp-pagetriagetagging-param-pageid": "L’article à baliser.",
-	"apihelp-pagetriagetagging-param-top": "Le texte de balisage qui sera ajouté en haut d’un article.",
-	"apihelp-pagetriagetagging-param-bottom": "Le texte de balisage qui sera ajouté en bas de l’article.",
 	"apihelp-pagetriagetagging-param-deletion": "Si le marquage concerne une proposition de suppression.",
 	"apihelp-pagetriagetagging-param-note": "Note personnelle des relecteurs aux créateurs de pages.",
 	"apihelp-pagetriagetagging-param-taglist": "Liste d’étiquettes séparée par des barres verticales.",

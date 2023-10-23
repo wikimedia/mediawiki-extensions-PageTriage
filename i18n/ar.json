@@ -551,8 +551,6 @@
 	"apihelp-pagetriagetagcopyvio-param-revid": "معرف المراجعة لوسك باعتبارها انتهاكا محتملا لحقوق الطبع والنشر",
 	"apihelp-pagetriagetagging-summary": "أضف وسوما إلى مقالة.",
 	"apihelp-pagetriagetagging-param-pageid": "المقالة التي سيتم وسمها.",
-	"apihelp-pagetriagetagging-param-top": "نص الوسم لإضافته إلى الجزء العلوي من المقالة.",
-	"apihelp-pagetriagetagging-param-bottom": "نص الوسم لإضافته إلى أسفل المقالة.",
 	"apihelp-pagetriagetagging-param-deletion": "تحديد ما إذا كان الوسم لترشيح حذف أم لا.",
 	"apihelp-pagetriagetagging-param-note": "ملاحظة شخصية لمنشئي الصفحة من المراجعين.",
 	"apihelp-pagetriagetagging-param-taglist": "قائمة مفصولة بفواصل بالعلامات",

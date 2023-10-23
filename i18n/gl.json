@@ -399,8 +399,6 @@
 	"apihelp-pagetriagestats-param-topreviewers": "Incluir os 50 revisores principais no período de tempo dado. Os valores válidos inclúen o último día, a última semana (valor por defecto) e o último mes.",
 	"apihelp-pagetriagetagging-summary": "Engadir etiquetas a un artigo.",
 	"apihelp-pagetriagetagging-param-pageid": "O artigo para o que será etiquetado.",
-	"apihelp-pagetriagetagging-param-top": "Texto etiquetado a engadir ó comezo dun artigo.",
-	"apihelp-pagetriagetagging-param-bottom": "Texto etiquetado a engadir ó final dun artigo.",
 	"apihelp-pagetriagetagging-param-deletion": "Se o etiquetado é para unha nominación de borrado ou non.",
 	"apihelp-pagetriagetagging-param-note": "Nota persoal dos revisores ós creadores da páxina.",
 	"apihelp-pagetriagetagging-param-taglist": "Lista de etiquetas separadas por barras verticais."

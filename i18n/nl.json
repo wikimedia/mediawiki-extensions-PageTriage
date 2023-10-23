@@ -399,8 +399,6 @@
 	"apihelp-pagetriagestats-param-blocked_users": "Of alleen pagina's aangemaakt door geblokkeerde gebruikers opgenomen moeten worden.",
 	"apihelp-pagetriagestats-param-username": "Alleen pagina's aangemaakt door gebruikersnaam opnemen.",
 	"apihelp-pagetriagetagging-param-pageid": "De pagina waarvoor wordt gelabeld.",
-	"apihelp-pagetriagetagging-param-top": "De labeltekst die wordt toegevoegd bovenaan een pagina.",
-	"apihelp-pagetriagetagging-param-bottom": "De labeltekst die wordt toegevoegd onderaan een pagina.",
 	"apihelp-pagetriagetagging-param-deletion": "Of de tagging wel of niet voor een verwijderingsnominatie is.",
 	"apihelp-pagetriagetagging-param-note": "Persoonlijke opmerking aan paginamakers van controleurs.",
 	"apihelp-pagetriagetagging-param-taglist": "Pijp-tekengescheiden lijst van labels."

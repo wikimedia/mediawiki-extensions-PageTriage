@@ -555,8 +555,6 @@
 	"apihelp-pagetriagetagcopyvio-param-revid": "Назнака на преработката што се означува како веројатно авторскоправно нарушување",
 	"apihelp-pagetriagetagging-summary": "Додај ознаки во статија.",
 	"apihelp-pagetriagetagging-param-pageid": "Статијата што треба да се означи.",
-	"apihelp-pagetriagetagging-param-top": "Текстот на означувањето што се додава најгоре во статијата.",
-	"apihelp-pagetriagetagging-param-bottom": "Текстот на означувањето што се додава најдолу во статијата.",
 	"apihelp-pagetriagetagging-param-deletion": "Дали означувањето се однесува на предложено бришење.",
 	"apihelp-pagetriagetagging-param-note": "Лична белешка за создавачите на страницата од проверувачите.",
 	"apihelp-pagetriagetagging-param-taglist": "Список на ознаки, одделени со исправена црта.",

@@ -405,8 +405,6 @@
 	"apihelp-pagetriagetagcopyvio-param-revid": "Identificador da revisão a etiquetar como provável infringência de direitos de autor",
 	"apihelp-pagetriagetagging-summary": "Acrescentar etiquetas a um artigo.",
 	"apihelp-pagetriagetagging-param-pageid": "O artigo a ser etiquetado.",
-	"apihelp-pagetriagetagging-param-top": "O texto de etiquetagem a ser adicionado no topo de um artigo.",
-	"apihelp-pagetriagetagging-param-bottom": "O texto de etiquetagem a ser adicionado no fundo de um artigo.",
 	"apihelp-pagetriagetagging-param-deletion": "Se a etiquetagem é para uma nomeação para eliminação, ou não.",
 	"apihelp-pagetriagetagging-param-note": "Nota pessoal dos revisores para os criadores de páginas.",
 	"apihelp-pagetriagetagging-param-taglist": "Lista de etiquetas separadas por barras verticais.",

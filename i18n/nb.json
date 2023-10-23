@@ -381,8 +381,6 @@
 	"apihelp-pagetriagetagcopyvio-param-revid": "Sideversjons-ID som skal tagges som mulig opphavsrettsbrudd",
 	"apihelp-pagetriagetagging-summary": "Legg til tagger til en artikkel.",
 	"apihelp-pagetriagetagging-param-pageid": "Artikkelen som skal tagges.",
-	"apihelp-pagetriagetagging-param-top": "Taggteksten som skal legges til på toppen av artikkelen.",
-	"apihelp-pagetriagetagging-param-bottom": "Taggteksten som skal legges til bunnen av artikkelen.",
 	"apihelp-pagetriagetagging-param-deletion": "Hvorvidt taggingen er en slettenominasjon.",
 	"apihelp-pagetriagetagging-param-note": "Personlig merknad til sideopprettere fra de som gjennomgår.",
 	"apihelp-pagetriagetagging-param-taglist": "Liste over tagger atskilt av vertikalstrek.",

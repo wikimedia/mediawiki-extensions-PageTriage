@@ -541,8 +541,6 @@
 	"apihelp-pagetriagetagcopyvio-param-revid": "Ідентифікатор версії, яку треба позначити як ймовірне порушення авторських прав",
 	"apihelp-pagetriagetagging-summary": "Додати теги до статті.",
 	"apihelp-pagetriagetagging-param-pageid": "Стаття, до якої мають бути додані теги.",
-	"apihelp-pagetriagetagging-param-top": "Текст із тегами, що має бути доданий вгорі статті.",
-	"apihelp-pagetriagetagging-param-bottom": "Текст із тегами, що має бути доданий внизу статті.",
 	"apihelp-pagetriagetagging-param-deletion": "Чи теги додаються для номінації на вилучення.",
 	"apihelp-pagetriagetagging-param-note": "Особиста примітка для творців сторінки від рецензентів.",
 	"apihelp-pagetriagetagging-param-taglist": "Список тегів, розділений вертикальною рискою.",
