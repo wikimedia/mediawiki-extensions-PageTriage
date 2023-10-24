@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Mansur",
 			"Ерней",
 			"Ильгиз",
 			"Ильнар"
@@ -11,5 +12,6 @@
 	"pagetriage-refresh-list": "Исемлекне яңарту",
 	"pagetriage-has-talkpage-feedback-link": "бәхәс бите",
 	"pagetriage-tags-quickfilter-label": "Сөзгеч теглары исемлеге:",
-	"echo-category-title-page-review": "Битне {{PLURAL:$1|тикшерү}}"
+	"echo-category-title-page-review": "Битне {{PLURAL:$1|тикшерү}}",
+	"apihelp-pagetriagetagging-param-wikitext": "Мәкаләгә өстәлгән тегны үз эченә алган Викитекст."
 }

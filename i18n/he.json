@@ -567,6 +567,7 @@
 	"apihelp-pagetriagetagcopyvio-param-revid": "מזהה גרסה לתיוג בתור גרסה שהיא הפרת זכויות יוצרים",
 	"apihelp-pagetriagetagging-summary": "הוספת תגים לערך.",
 	"apihelp-pagetriagetagging-param-pageid": "איזה ערך לתייג.",
+	"apihelp-pagetriagetagging-param-wikitext": "קוד הוויקי שמכיל את התג שנוסף לערך.",
 	"apihelp-pagetriagetagging-param-deletion": "האם התיוג הוא בעבור העמדה למחיקה.",
 	"apihelp-pagetriagetagging-param-note": "הערה אישית מהסוקרים.",
 	"apihelp-pagetriagetagging-param-taglist": "רשימת תגים מופרדת בקווים ניצבים.",

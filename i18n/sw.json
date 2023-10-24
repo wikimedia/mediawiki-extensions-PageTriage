@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Rance",
+			"Stacy Lavuha",
 			"Wangombe"
 		]
 	},
@@ -41,5 +42,6 @@
 	"apihelp-pagetriagestats-param-show_predicted_class_featured": "Ikiwa itahitaji kuhusisha daraja lililotabiriwa kuhusishwa",
 	"apihelp-pagetriagestats-param-show_predicted_issues_spam": "Ikiwa itahitaji kuhusisha matatizo yaliyotabiriwa yatokanayo na ujumbe hatarishi au usio muhimu",
 	"apihelp-pagetriagestats-param-show_predicted_issues_attack": "Ikiwa itahitaji kuhusisha matatizo yaliyotabiriwa yatokanayo na shambulio",
-	"apihelp-pagetriagestats-param-show_predicted_issues_none": "Ikiwa itahitaji kuhusisha matatizo yasiyotabiriwa"
+	"apihelp-pagetriagestats-param-show_predicted_issues_none": "Ikiwa itahitaji kuhusisha matatizo yasiyotabiriwa",
+	"apihelp-pagetriagetagging-param-wikitext": "Maandishi ya Wiki yaliyo na lebo iliyoongezwa kwenye nakala."
 }
