@@ -45,6 +45,7 @@
 					<cdx-info-chip
 						v-if="newArticleWarning"
 						status="warning"
+						class="mwe-vue-pt-new-article-warning"
 						:title="$i18n( 'pagetriage-tag-warning-notice', articleAge ).text()"
 					>
 						{{ creationDatePretty }}
@@ -457,6 +458,13 @@ module.exports = {
 	height: 0.55em;
 }
 .cdx-icon.cdx-info-chip__icon--warning {
-	color: @color-warning;
+	color: @background-color-warning-subtle;
+}
+.cdx-info-chip {
+	background-color: @color-warning;
+	border-color: @border-color-warning;
+}
+.mwe-vue-pt-new-article-warning > .cdx-info-chip--text {
+	color: @color-emphasized;
 }
 </style>
