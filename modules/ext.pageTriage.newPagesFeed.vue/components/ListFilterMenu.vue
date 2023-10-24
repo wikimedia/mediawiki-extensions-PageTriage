@@ -345,7 +345,7 @@ module.exports = {
 	padding: 1px;
 	border-width: 1px;
 	background-color: @color-progressive;
-	border-color: @color-base--subtle;
+	border-color: @border-color-interactive;
 	background-clip: content-box;
 }
 </style>
