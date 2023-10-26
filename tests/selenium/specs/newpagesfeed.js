@@ -40,6 +40,9 @@ describe( 'Special:NewPagesFeed', function () {
 
 		assert( await NewPagesFeed.listview.isExisting() );
 
+		// wait untill atleast one article is loaded
+		await NewPagesFeed.articleRows.waitForDisplayed();
+
 		// Check that unreviewed article shows up in Special:NewPagesFeed
 		expect( await NewPagesFeed.listview.getText() ).toContain( articleName );
 	} );
