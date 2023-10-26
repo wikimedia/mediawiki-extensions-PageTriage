@@ -265,7 +265,7 @@ module.exports = {
 			$( this.backboneTools ).before( mark.place() );
 		}
 		// tags and deletion only available when enwiki features are enabled
-		if ( config.PageTriageEnableEnglishWikipediaFeatures ) {
+		if ( config.PageTriageEnableExtendedFeatures ) {
 			if ( isFlyoutEnabled( 'tags' ) ) {
 				const Tags = require( '../tags.js' );
 				const tags = new Tags( { eventBus: eventBus, model: this.article, moduleConfig: modules.tags } );
