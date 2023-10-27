@@ -9,6 +9,10 @@ class NewPagesFeed extends Page {
 	open() {
 		super.openTitle( 'Special:NewPagesFeed' );
 	}
+
+	get articleRows() {
+		return $( '.mwe-vue-pt-article-row' );
+	}
 }
 
 module.exports = new NewPagesFeed();
