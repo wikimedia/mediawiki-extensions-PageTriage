@@ -771,7 +771,8 @@ module.exports = ToolView.extend( {
 					wikitext,
 					$.pageTriageTagsRedirectCategoryShell,
 					multipleRedirectTagsText,
-					'bottom'
+					'bottom',
+					true
 				);
 			}
 
