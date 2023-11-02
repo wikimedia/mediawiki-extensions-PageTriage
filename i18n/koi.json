@@ -4,5 +4,9 @@
 			"Римма"
 		]
 	},
+	"logentry-pagetriage-curation-reviewed-redirect": "$1 {{GENDER:$2|пасйӧм}} мӧдӧталӧм $3 вильмӧтӧм",
+	"logentry-pagetriage-curation-reviewed-article": "$1 {{GENDER:$2|пасйӧм}}статья $3 видзӧтӧм вылӧ лёдзын",
+	"logentry-pagetriage-curation-unreviewed-redirect": "$1 {{GENDER:$2|пасйӧм}} мӧдӧталӧм $3 абу вильмӧтӧм",
+	"logentry-pagetriage-curation-unreviewed-article": "$1 {{GENDER:$2|пасйӧм}} статья $3 пасйӧма кыдз вильмӧтӧм",
 	"apihelp-pagetriagetagging-param-wikitext": "Статья дынӧ содтӧм тега викитекст"
 }
