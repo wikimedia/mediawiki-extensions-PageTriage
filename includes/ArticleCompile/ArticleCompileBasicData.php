@@ -13,20 +13,24 @@ class ArticleCompileBasicData extends ArticleCompile {
 		$count = 0;
 		// Process page individually because MIN() GROUP BY is slow
 		foreach ( $this->mPageId as $pageId ) {
-			$table = [ 'revision', 'page' ];
-			$conds = [ 'rev_page' => $pageId, 'page_id = rev_page' ];
-
 			$row = $this->db->newSelectQueryBuilder()
 				->select( [ 'creation_date' => 'MIN(rev_timestamp)' ] )
 				->from( 'revision' )
 				->join( 'page', 'page', 'page_id = rev_page' )
-				->where( $conds )
+				->where( [ 'rev_page' => $pageId ] )
 				->caller( __METHOD__ )
 				->fetchRow();
 
 			if ( $row ) {
 				$this->metadata[$pageId]['creation_date'] = wfTimestamp( TS_MW, $row->creation_date );
-				$this->processEstimatedCount( $pageId, $table, $conds, $maxNumToProcess = 100, 'rev_count' );
+				$res = $this->db->newSelectQueryBuilder()
+					->select( '1' )
+					->from( 'revision' )
+					->join( 'page', null, [ 'page_id = rev_page' ] )
+					->where( [ 'rev_page' => $pageId ] )
+					->limit( 101 )
+					->caller( __METHOD__ )->fetchResultSet();
+				$this->processEstimatedCount( $pageId, $res, 100, 'rev_count' );
 				$count++;
 			}
 		}
