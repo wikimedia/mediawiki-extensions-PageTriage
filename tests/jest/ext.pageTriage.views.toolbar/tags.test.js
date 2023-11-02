@@ -93,4 +93,44 @@ PageTriage is the best.
 		expect( toolbar.addToExistingTags( 'Txt', 'Multiple issues', '{{advert}}', 'top', false ) ).toBe( '{{advert}}\nTxt' );
 		expect( toolbar.addToExistingTags( 'Text', 'mu', '{{advert}}', 'bottom', true ) ).toBe( 'Text\n\n{{mu|{{advert}}\n}}' );
 	} );
+
+	test( 'redirects should be wrapped', () => {
+		const model = new Article( {
+			pageId: 5,
+			includeHistory: true
+		} );
+
+		const tagsOptions = {
+			redirects: {
+				tags: {
+					'R-from-initialism': {
+						label: '{{R from initialism}}',
+						tag: 'R from initialism',
+						desc: 'redirect from an initialism (e.g. AGF) to its expanded form',
+						position: 'redirectTag',
+						multiple: true
+					}
+				}
+			}
+		};
+
+		const selectedTags = {
+			redirects: tagsOptions.redirects.tags
+		};
+
+		$.pageTriageTagsRedirectCategoryShell = 'Redirect category shell';
+
+		jest.spyOn( TagToolView.prototype, 'fetchArticleContent' ).mockImplementation( () => Promise.resolve( '#REDIRECT [[Hello]]' ) );
+
+		const applyTags = jest.spyOn( TagToolView.prototype, 'applyTags' ).mockImplementation( () => {
+		} );
+
+		const toolbar = new TagToolView( { tagsOptions, model } );
+
+		toolbar.selectedTag = selectedTags;
+
+		return toolbar.submit().then( () => {
+			expect( applyTags ).toBeCalledWith( '\n#REDIRECT [[Hello]]\n\n{{Redirect category shell|\n{{R from initialism}}\n}}', [ 'r from initialism' ] );
+		} );
+	} );
 } );
