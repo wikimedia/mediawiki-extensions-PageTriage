@@ -272,7 +272,8 @@ module.exports = {
 	float: right;
 }
 .mwe-vue-pt-filter-count {
-	width: 50%;
+	width: 25%;
+	padding-left: 10px;
 	display: inline-flex;
 	justify-content: end;
 }

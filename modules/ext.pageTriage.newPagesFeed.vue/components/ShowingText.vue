@@ -214,8 +214,9 @@ module.exports = {
 
 <style>
 .mwe-vue-pt-showing-section {
-	width: 50%;
+	width: 75%;
 	display: inline-flex;
+	padding-right: 10px;
 }
 .mwe-vue-pt-showing-section b {
 	padding-right: 5px;
