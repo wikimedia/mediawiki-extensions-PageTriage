@@ -363,7 +363,7 @@
 	"echo-pref-tooltip-page-review": "Meld mij wanneer iemand een pagina die ik heb gemaakt, heeft gecontroleerd.",
 	"echo-category-title-page-review": "Paginacontrole{{PLURAL:$1||s}}",
 	"apihelp-pagetriageaction-description": "Een pagina markeren als gecontroleerd of niet-gecontroleerd.",
-	"apihelp-pagetriageaction-param-pageid": "ID van de pagina waarop de actie wordt uitgevoerd.",
+	"apihelp-pagetriageaction-param-pageid": "ID van de pagina waarop de handeling wordt verricht.",
 	"apihelp-pagetriageaction-param-reviewed": "Of de pagina gemarkeerd moet worden als gecontroleerd.",
 	"apihelp-pagetriageaction-param-note": "Persoonlijke opmerking aan paginamakers van controleurs.",
 	"apihelp-pagetriageaction-param-skipnotif": "Of de notificatie overgeslagen moet worden.",
