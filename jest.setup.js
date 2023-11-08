@@ -31,6 +31,9 @@ class Api {
 	saveOption() {
 		return Promise.resolve( true );
 	}
+	postWithToken() {
+		return Promise.resolve();
+	}
 }
 
 class IntersectionObserver {

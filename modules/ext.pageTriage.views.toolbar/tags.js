@@ -680,9 +680,11 @@ module.exports = ToolView.extend( {
 
 	/**
 	 * Submit the selected tags
+	 *
+	 * @return {jQuery.Promise<void>}
 	 */
 	submit: function () {
-		this.fetchArticleContent().then( function ( wikitext ) {
+		return this.fetchArticleContent().then( function ( wikitext ) {
 			if ( this.model.get( 'page_len' ) < 1000 && this.selectedTagCount > 4 ) {
 				// eslint-disable-next-line no-alert
 				if ( !confirm( mw.msg( 'pagetriage-add-tag-confirmation', this.selectedTagCount ) ) ) {
@@ -778,7 +780,7 @@ module.exports = ToolView.extend( {
 
 			// When applying maintenance tags, reviewer can choose if the page is reviewed or not
 			if ( $( '#mwe-pt-checkbox-mark-reviewed' ).is( ':checked' ) ) {
-				new mw.Api().postWithToken( 'csrf', {
+				return new mw.Api().postWithToken( 'csrf', {
 					action: 'pagetriageaction',
 					pageid: mw.config.get( 'wgArticleId' ),
 					// NOTE: if the logic for whether to mark as reviewed is changed,
@@ -796,7 +798,7 @@ module.exports = ToolView.extend( {
 						that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
 					} );
 			} else {
-				new mw.Api().postWithToken( 'csrf', {
+				return new mw.Api().postWithToken( 'csrf', {
 					action: 'pagetriageaction',
 					pageid: mw.config.get( 'wgArticleId' ),
 					// NOTE: if the logic for whether to mark as reviewed is changed,
