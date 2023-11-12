@@ -746,7 +746,6 @@
 			],
 			"messages": [
 				"pagetriage-tags-title",
-				"pagetriage-tags-cat-common-label",
 				"pagetriage-tags-cat-metadata-label",
 				"pagetriage-tags-cat-cleanup-label",
 				"pagetriage-tags-cat-neutrality-label",
@@ -1141,7 +1140,6 @@
 		"PageTriageTagsOptionsMessages": {
 			"value": [
 				"pagetriage-tags-title",
-				"pagetriage-tags-cat-common-label",
 				"pagetriage-tags-cat-metadata-label",
 				"pagetriage-tags-cat-cleanup-label",
 				"pagetriage-tags-cat-neutrality-label",
