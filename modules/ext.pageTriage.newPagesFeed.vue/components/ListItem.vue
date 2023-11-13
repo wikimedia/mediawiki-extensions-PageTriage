@@ -458,11 +458,11 @@ module.exports = {
 	color: @color-base;
 }
 
-.mwe-vue-pt-page-status-reviewed {
+.cdx-icon.mwe-vue-pt-page-status-reviewed {
 	color: @color-success;
 }
 
-.mwe-vue-pt-page-status-autoreviewed {
+.cdx-icon.mwe-vue-pt-page-status-autoreviewed {
 	color: @color-visited;
 }
 /* the article snippet */
