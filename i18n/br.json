@@ -3,7 +3,8 @@
 		"authors": [
 			"Fohanno",
 			"Fulup",
-			"Huñvreüs"
+			"Huñvreüs",
+			"Adriendelucca"
 		]
 	},
 	"pagetriage-please-wait": "Gortozit mar plij...",
@@ -59,7 +60,7 @@
 	"pagetriage-tags-cat-structure-label": "Framm",
 	"pagetriage-tags-cat-moretags-label": "Muioc'h a dikedennoù",
 	"pagetriage-tags-cat-all-label": "An holl dikedennoù",
-	"pagetriage-tags-refimprove-label": "Daveennoù",
+	"pagetriage-tags-refimprove-label": "Daveennoù all",
 	"pagetriage-tags-externallinks-label": "Liammoù diavaez",
 	"pagetriage-tags-catimprove-label": "Rummadoù all",
 	"pagetriage-tags-orphan-label": "Emzivad",
