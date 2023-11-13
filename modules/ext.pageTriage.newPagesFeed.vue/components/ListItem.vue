@@ -150,7 +150,6 @@
 const { cdxIconError, cdxIconSuccess, cdxIconTrash } = require( './icons.json' );
 const { CdxButton, CdxIcon, CdxInfoChip } = require( '@wikimedia/codex' );
 const CreatorByline = require( './CreatorByline.vue' );
-const now = new Date();
 // Basic validation for 'YYYYMMDDHHmmss' timestamps
 const timestampValidator = ( value ) => {
 	if ( typeof value !== 'string' ) {
@@ -330,6 +329,7 @@ module.exports = {
 		},
 		articleAge: function () {
 			const creationDateParsed = moment.utc( this.creationDateUTC, 'YYYYMMDDHHmmss' );
+			const now = new Date();
 			return Math.ceil( ( now - creationDateParsed ) / ( 1000 * 60 ) );
 		},
 		newArticleWarning: function () {
