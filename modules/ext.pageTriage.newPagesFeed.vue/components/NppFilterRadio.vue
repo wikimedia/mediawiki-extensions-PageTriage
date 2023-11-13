@@ -26,14 +26,13 @@
 				<span>{{ radio.label }}</span>
 			</cdx-radio>
 			<span v-if="radio.value === 'username'">
-				<input
+				<username-lookup
 					id="mwe-vue-pt-filter-input-username"
-					v-model="byUser"
-					type="text"
+					v-model:username="byUser"
 					:placeholder="$i18n( 'pagetriage-filter-username' ).text()"
-					@input="$emit( 'update:user', $event.target.value )"
+					@update:username="( newVal ) => $emit( 'update:user', newVal )"
 					@focus="checkRadioButton"
-				>
+				></username-lookup>
 			</span>
 		</template>
 	</fieldset>
@@ -53,6 +52,7 @@
  */
 
 const { CdxRadio } = require( '@wikimedia/codex' );
+const UsernameLookup = require( './UsernameLookup.vue' );
 const { ref } = require( 'vue' );
 // @vue/component
 module.exports = {
@@ -63,7 +63,7 @@ module.exports = {
 		whitespace: 'condense'
 	},
 	name: 'NppFilterRadio',
-	components: { CdxRadio },
+	components: { CdxRadio, UsernameLookup },
 	props: {
 		filter: { type: String, default: '' },
 		user: { type: String, default: '' }
@@ -139,17 +139,21 @@ module.exports = {
 
 <style lang="less">
 @import 'mediawiki.mixins.less';
+
 .no-border {
 	border: 0;
 }
+
 legend.no-indent {
 	padding-left: 0;
 	margin-left: -12px;
 }
+
 #mwe-vue-pt-filter-radio-username {
 	display: inline;
 }
+
 #mwe-vue-pt-filter-radio-username label {
-	.mixin-screen-reader-text()
+	.mixin-screen-reader-text();
 }
 </style>

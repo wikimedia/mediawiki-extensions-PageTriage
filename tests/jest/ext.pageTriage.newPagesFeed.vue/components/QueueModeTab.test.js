@@ -1,9 +1,9 @@
 const { mount } = require( '@vue/test-utils' );
 const { createTestingPinia } = require( '@pinia/testing' );
-let QueueModeRadio;
+let QueueModeTab;
 let settings;
 let wrapper;
-describe( 'QueueModeRadio.vue', () => {
+describe( 'QueueModeTab.vue', () => {
 	beforeEach( () => {
 		mw.user.options.get = jest.fn( ( key ) => {
 			switch ( key ) {
@@ -14,8 +14,8 @@ describe( 'QueueModeRadio.vue', () => {
 			}
 		} );
 		const { useSettingsStore } = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/stores/settings.js' );
-		QueueModeRadio = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/components/QueueModeRadio.vue' );
-		wrapper = mount( QueueModeRadio, {
+		QueueModeTab = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/components/QueueModeTab.vue' );
+		wrapper = mount( QueueModeTab, {
 			global: {
 				plugins: [ createTestingPinia( {
 					stubActions: false

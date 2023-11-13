@@ -1,26 +1,27 @@
 <template>
 	<div
 		id="mwe-vue-pt-stats-navigation"
-		class="mwe-vue-pt-navigation-bar mwe-vue-pt-control-gradient"
-		:class="{ 'mwe-vue-pt-navigation-bar-sticky-footer': stickyFooter }">
+		class="mwe-vue-pt-navigation-bar mwe-vue-pt-control-gradient">
 		<div id="mwe-vue-pt-stats-navigation-content">
-			<span class="mwe-vue-pt-refresh-controls">
-				<labeled-checkbox
-					v-model:checked="doAutoRefresh"
-					input-id="mwe-vue-pt-autorefresh-checkbox"
-					:no-break="true"
-					label-msg="pagetriage-auto-refresh-list"
+			<div class="mwe-vue-pt-refresh-controls">
+				<cdx-toggle-button
+					v-model="doAutoRefresh"
+					input-id="mwe-vue-pt-autorefresh-toggle"
 				>
-				</labeled-checkbox>
+					<cdx-icon v-if="doAutoRefresh" :icon="cdxIconStop"></cdx-icon>
+					<cdx-icon v-else :icon="cdxIconPlay"></cdx-icon>
+					{{ $i18n( 'pagetriage-auto-refresh-list' ).text() }}
+				</cdx-toggle-button>
 				<cdx-button
 					id="mwe-vue-pt-refresh-button"
 					@click="$emit( 'refresh-feed' )"
 				>
+					<cdx-icon :icon="cdxIconReload"></cdx-icon>
 					<span>
 						{{ $i18n( 'pagetriage-refresh-list' ).text() }}
 					</span>
 				</cdx-button>
-			</span>
+			</div>
 			<div v-show="showStats">
 				<div>{{ $i18n( 'pagetriage-unreviewed-article-count', unreviewedArticleCount, unreviewedRedirectCount, unreviewedOldest ).text() }}</div>
 
@@ -37,8 +38,8 @@
  */
 
 const { ref, watch } = require( 'vue' );
-const { CdxButton } = require( '@wikimedia/codex' );
-const LabeledCheckbox = require( './LabeledCheckbox.vue' );
+const { CdxButton, CdxToggleButton, CdxIcon } = require( '@wikimedia/codex' );
+const { cdxIconPlay, cdxIconStop, cdxIconReload } = require( './icons.json' );
 // @vue/component
 module.exports = {
 	compatConfig: {
@@ -50,7 +51,8 @@ module.exports = {
 	name: 'ListStatsNav',
 	components: {
 		CdxButton,
-		LabeledCheckbox
+		CdxToggleButton,
+		CdxIcon
 	},
 	props: {
 		queueMode: { type: String, default: 'npp' },
@@ -73,12 +75,10 @@ module.exports = {
 			}
 		} );
 		return {
+			cdxIconPlay,
+			cdxIconReload,
+			cdxIconStop,
 			doAutoRefresh
-		};
-	},
-	data() {
-		return {
-			stickyFooter: false
 		};
 	},
 	computed: {
@@ -167,46 +167,38 @@ module.exports = {
 
 			return Math.round( ( now.getTime() - begin.valueOf() ) / ( 1000 * 60 * 60 * 24 ) );
 		}
-	},
-	mounted() {
-		const options = {
-			// Offset the height occupied by this element + the approximate bottom margin of the last list item
-			rootMargin: `-${this.$el.offsetHeight + 10}px`
-		};
-		const observerCallback = ( function ( entries ) {
-			const observerEntry = entries[ 0 ];
-			// not sticky if the previous sibling is visible
-			// sticky if the previous sibling is not visible
-			this.stickyFooter = !observerEntry.isIntersecting;
-		} ).bind( this );
-		const observer = new IntersectionObserver( observerCallback, options );
-		// Observe the visibility of the element before this one;
-		observer.observe( this.$el.previousElementSibling );
 	}
 };
 </script>
 
-<style>
+<style lang="less">
+@import 'mediawiki.skin.variables.less';
+
 .mwe-vue-pt-navigation-bar {
-	border: 1px solid #ccc;
+	border: @border-subtle;
 }
+
 .mwe-vue-pt-control-gradient {
-	background: #c9c9c9;
+	background: @background-color-interactive;
 }
+
 .mwe-vue-pt-refresh-controls {
 	float: right;
 }
+
 #mwe-vue-pt-stats-navigation {
 	min-height: 50px;
-	border-top: 1px solid #ccc;
+	border-top: @border-subtle;
 	position: sticky;
 	bottom: 0;
-	z-index: 1;
+	z-index: @z-index-above-content;
 }
-.mwe-vue-pt-navigation-bar-sticky-footer {
-	box-shadow: 0 -7px 10px rgba( 0, 0, 0, 0.4 );
+
+.skin-minerva #mwe-vue-pt-refresh-button {
+	display: inline-block;
 }
+
 #mwe-vue-pt-stats-navigation-content {
-	padding: 0.5em 1em;
+	padding: @spacing-50 @spacing-100;
 }
 </style>

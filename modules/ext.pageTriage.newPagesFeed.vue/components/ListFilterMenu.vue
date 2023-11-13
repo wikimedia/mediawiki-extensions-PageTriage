@@ -1,28 +1,17 @@
 <template>
+	<template v-if="haveDraftNamespace">
+		<queue-mode-tab></queue-mode-tab>
+	</template>
 	<div id="mwe-vue-pt-menu-heading" class="mwe-vue-pt-control-gradient">
-		<div v-if="haveDraftNamespace">
-			<queue-mode-radio></queue-mode-radio>
-		</div>
-		<div class="mwe-vue-pt-menu-section">
-			<showing-text></showing-text>
-			<div v-show="settings.currentFilteredCount !== -1" class="mwe-vue-pt-control-label-right mwe-vue-pt-filter-count">
-				{{ $i18n( 'pagetriage-stats-filter-page-count', settings.currentFilteredCount ).text() }}
-			</div>
-		</div>
-		<div>
-			<div v-show="settings.immediate.queueMode === 'npp'" class="mwe-vue-pt-control-label-right mwe-vue-pt-sort-section">
-				<npp-sort-dir-radio></npp-sort-dir-radio>
-			</div>
-			<div v-show="settings.immediate.queueMode === 'afc'" class="mwe-vue-pt-control-label-right mwe-vue-pt-sort-section">
-				<afc-sort-select></afc-sort-select>
-			</div>
+		<showing-text></showing-text>
+		<div class="mwe-pt-vue-menu-section">
 			<div id="mwe-vue-pt-control-menu-toggle">
-				<b
-					role="button"
+				<cdx-button
 					:aria-pressed="settings.controlMenuOpen"
+					action="progressive"
 					@click="toggleControlMenu">
-					{{ $i18n( 'pagetriage-filter-set-button' ).text() }} {{ settings.controlMenuOpen ? '▾' : '▸' }}
-				</b>
+					{{ $i18n( 'pagetriage-filter-set-button' ).text() }}
+				</cdx-button>
 				<!-- Dropdown goes within the toggle with absolute position to overlay the feed -->
 				<div
 					v-if="settings.controlMenuOpen"
@@ -160,13 +149,19 @@
 						</cdx-button>
 						<cdx-button
 							action="destructive"
-							weight="normal"
+							weight="quiet"
 							@click="settings.reset"
 						>
 							{{ $i18n( 'pagetriage-filter-reset-button' ).text() }}
 						</cdx-button>
 					</div>
 				</div>
+			</div>
+			<div v-show="settings.immediate.queueMode === 'npp'" class="mwe-vue-pt-control-label-right mwe-vue-pt-sort-section">
+				<npp-sort-dir-radio></npp-sort-dir-radio>
+			</div>
+			<div v-show="settings.immediate.queueMode === 'afc'" class="mwe-vue-pt-control-label-right mwe-vue-pt-sort-section">
+				<afc-sort-select></afc-sort-select>
 			</div>
 		</div>
 	</div>
@@ -182,7 +177,7 @@ const { computed } = require( 'vue' );
 const ControlSection = require( './ControlSection.vue' );
 const DateControlSection = require( './DateControlSection.vue' );
 const LabeledCheckbox = require( './LabeledCheckbox.vue' );
-const QueueModeRadio = require( './QueueModeRadio.vue' );
+const QueueModeTab = require( './QueueModeTab.vue' );
 const AfcSortSelect = require( './AfcSortSelect.vue' );
 const AfcStateRadio = require( './AfcStateRadio.vue' );
 const NppSortDirRadio = require( './NppSortDirRadio.vue' );
@@ -204,7 +199,7 @@ module.exports = {
 		ControlSection,
 		DateControlSection,
 		LabeledCheckbox,
-		QueueModeRadio,
+		QueueModeTab,
 		NppSortDirRadio,
 		NppFilterRadio,
 		AfcSortSelect,
@@ -256,97 +251,87 @@ module.exports = {
 
 <style lang="less">
 @import 'mediawiki.skin.variables.less';
+
 #mwe-vue-pt-menu-heading {
-	padding: 0.5em 1em 1em 1em;
+	padding: @spacing-75 @spacing-100 @spacing-100 @spacing-100;
 	top: 0;
-	z-index: 10;
 }
+
 .mwe-vue-pt-control-options {
-	margin-left: 0.5em;
+	margin-left: @spacing-50;
 }
+
 .mwe-vue-pt-control-label {
 	white-space: nowrap;
-	padding: 3px;
+	padding: @spacing-25;
 }
+
 .mwe-vue-pt-control-label-right {
 	float: right;
 }
-.mwe-vue-pt-filter-count {
-	width: 25%;
-	padding-left: 10px;
-	display: inline-flex;
-	justify-content: end;
-}
+
 .mwe-vue-pt-sort-section {
-	width: 50%;
+	flex: 0 0 50%;
 	display: inline-flex;
 	justify-content: end;
+
+	.cdx-label {
+		padding-bottom: 0;
+	}
 }
-.mwe-vue-pt-menu-section {
-	display: flex;
-}
+
 .mwe-vue-pt-control-section {
-	padding-bottom: 3px;
+	padding-bottom: @spacing-35;
 }
+
 .mwe-vue-pt-control-buttons {
-	margin: 0.2em 0 0 -0.4em;
+	margin: @spacing-25 0 0 0;
+
+	.cdx-button {
+		float: right;
+		margin-left: @spacing-50;
+	}
 }
+
 #mwe-vue-pt-control-dropdown {
+	background-color: @background-color-interactive-subtle;
 	position: absolute;
-	z-index: 50;
-	border: 1px solid #aaa;
-	padding: 0.5em 1em;
-	margin-left: 48px;
-	color: #000;
+	z-index: @z-index-dropdown;
+	border: @border-subtle;
+	padding: @spacing-100;
+	border-radius: @border-radius-base;
 	cursor: default;
-	box-shadow: 0 7px 10px rgba( 0, 0, 0, 0.4 );
+	box-shadow: @box-shadow-drop-medium;
 	width: min-content;
 }
+
 #mwe-vue-pt-control-dropdown fieldset {
 	padding-top: 0;
-	padding-bottom: 0;
-	padding-left: 12px;
-	margin-top: 3px;
-	margin-bottom: 3px;
+	padding-bottom: @spacing-25;
+	padding-left: @spacing-75;
+	margin-top: @spacing-12;
+	margin-bottom: @spacing-12;
 }
+
+.mwe-pt-vue-menu-section {
+	display: flex;
+	width: 100%;
+}
+
 #mwe-vue-pt-control-menu-toggle {
-	color: #0645ad;
-	cursor: pointer;
+	flex: 0 0 50%;
 }
+
 .mwe-vue-pt-control-section__row1 {
 	display: flex;
 	flex-direction: row;
 }
+
 .mwe-vue-pt-control-options input:hover {
 	cursor: @cursor-base--hover;
 }
+
 .mwe-vue-pt-control-options .cdx-radio {
-	margin-bottom: 3px;
-}
-.mwe-vue-pt-control-options .cdx-radio input.cdx-radio__input {
-	margin: 0;
-	min-width: min-content;
-	min-height: unset;
-	width: 1em;
-	height: 1em;
-}
-.mwe-vue-pt-control-options .cdx-radio span.cdx-radio__icon {
-	min-width: unset;
-	min-height: unset;
-	width: 16px;
-	height: 16px;
-	margin: 1px;
-	padding: 1px;
-	border-width: 1px;
-}
-.mwe-vue-pt-control-options .cdx-radio input.cdx-radio__input:enabled:checked+.cdx-radio__icon {
-	width: 16px;
-	height: 16px;
-	margin: 1px;
-	padding: 1px;
-	border-width: 1px;
-	background-color: @color-progressive;
-	border-color: @border-color-interactive;
-	background-clip: content-box;
+	margin-bottom: @spacing-50;
 }
 </style>

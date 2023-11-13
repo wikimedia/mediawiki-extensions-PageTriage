@@ -2,23 +2,21 @@
 	<control-section label-msg="pagetriage-filter-date-range-heading">
 		<div class="mwe-vue-date-container">
 			<label class="mwe-vue-date-label" :for="`mwe-vue-pt-filter-${type}-date-range-from`">{{ $i18n( 'pagetriage-filter-date-range-from' ).text() }}</label>
-			<input
+			<cdx-text-input
 				:id="`mwe-vue-pt-filter-${type}-date-range-from`"
-				type="date"
-				:value="from"
-				:placeholder="$i18n( 'pagetriage-filter-date-range-format-placeholder' ).text()"
-				@input="$emit( 'update:from', $event.target.value )"
-			>
+				input-type="date"
+				:model-value="from"
+				@update:model-value="( newVal ) => $emit( 'update:from', newVal )"
+			></cdx-text-input>
 		</div>
 		<div class="mwe-vue-date-container">
 			<label class="mwe-vue-date-label" :for="`mwe-vue-pt-filter-${type}-date-range-to`">{{ $i18n( 'pagetriage-filter-date-range-to' ).text() }}</label>
-			<input
+			<cdx-text-input
 				:id="`mwe-vue-pt-filter-${type}-date-range-to`"
-				type="date"
-				:value="to"
-				:placeholder="$i18n( 'pagetriage-filter-date-range-format-placeholder' ).text()"
-				@input="$emit( 'update:to', $event.target.value )"
-			>
+				input-type="date"
+				:model-value="to"
+				@update:model-value="( newVal ) => $emit( 'update:to', newVal )"
+			></cdx-text-input>
 		</div>
 	</control-section>
 </template>
@@ -29,6 +27,7 @@
  * Controls for date ranges
  */
 const ControlSection = require( './ControlSection.vue' );
+const { CdxTextInput } = require( '@wikimedia/codex' );
 // @vue/component
 module.exports = {
 	compatConfig: {
@@ -38,7 +37,10 @@ module.exports = {
 		whitespace: 'condense'
 	},
 	name: 'DateControlSection',
-	components: { ControlSection },
+	components: {
+		ControlSection,
+		CdxTextInput
+	},
 	props: {
 		type: { type: String, required: true },
 		from: { type: String, default: '' },
@@ -48,15 +50,23 @@ module.exports = {
 };
 </script>
 
-<style>
+<style lang="less">
+@import 'mediawiki.skin.variables.less';
+
 #mwe-vue-pt-filter-npp-date-range-from,
 #mwe-vue-pt-filter-npp-date-range-to {
 	display: table-cell;
-	margin: 5px 0px 5px 15px;
+	margin: @spacing-30 0 @spacing-30 @spacing-50;
 }
+
 .mwe-vue-date-container {
 	display: table-row;
+
+	.cdx-text-input {
+		min-width: unset;
+	}
 }
+
 .mwe-vue-date-label {
 	display: table-cell;
 }

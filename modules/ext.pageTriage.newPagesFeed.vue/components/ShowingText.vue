@@ -1,7 +1,14 @@
 <template>
 	<div class="mwe-vue-pt-showing-section">
-		<b>{{ $i18n( 'pagetriage-showing' ).text() }}</b>
-		{{ showingText }}
+		<b>{{ $i18n( 'pagetriage-active-filters' ).text() }}</b>
+		<template v-for="group in Object.keys( showingObj )" :key="group">
+			<cdx-info-chip
+				v-for="groupShowing in showingObj[ group ]"
+				:key="groupShowing"
+				class="mwe-vue-pt-showing-filter-chip">
+				{{ groupShowing }}
+			</cdx-info-chip>
+		</template>
 	</div>
 </template>
 
@@ -13,6 +20,7 @@
 
 const { useSettingsStore } = require( '../stores/settings.js' );
 const { getNamespaceOptions } = require( '../namespaces.js' );
+const { CdxInfoChip } = require( '@wikimedia/codex' );
 const namespaceOptions = getNamespaceOptions();
 const offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
 const defaultMsg = {
@@ -34,13 +42,16 @@ module.exports = {
 		whitespace: 'condense'
 	},
 	name: 'ShowingText',
+	components: {
+		CdxInfoChip
+	},
 	data: function () {
 		return {
 			msgObj: JSON.parse( JSON.stringify( defaultMsg ) )
 		};
 	},
 	computed: {
-		showingText: function () {
+		showingObj: function () {
 			this.reset();
 			const settings = useSettingsStore();
 			if ( settings.immediate.queueMode === 'npp' ) {
@@ -60,38 +71,13 @@ module.exports = {
 				this.addDate( settings.applied.afcDate.from, settings.applied.afcDate.to );
 				this.addState( settings.applied.afcSubmissionState );
 			}
-			const comma = this.$i18n( 'comma-separator' ).text();
-			return Object.keys( this.msgObj )
-				.map( ( group ) => {
-					const groupShowing = this.msgObj[ group ];
-					if ( !groupShowing || groupShowing.length === 0 ) {
-						return '';
-					}
-					if ( group === 'top' || ( settings.immediate.queueMode === 'afc' && group === 'state' ) ) {
-						return groupShowing[ 0 ];
-					}
-					if ( group === 'namespace' && getNamespaceOptions().length <= 1 ) {
-						return '';
-					}
-					let groupMsg = '';
-					if ( group === 'type' ) {
-						groupMsg = this.$i18n( 'pagetriage-filter-stat-type', 'blerb' ) + ' ' +
-							this.$i18n( 'parentheses', groupShowing.join( comma ) ).text();
-					} else {
-						// Possible keys
-						// 'pagetriage-filter-stat-namespace'
-						// 'pagetriage-filter-stat-state'
-						// 'pagetriage-filter-stat-predicted-class'
-						// 'pagetriage-filter-stat-predicted-issues'
-						// 'pagetriage-filter-stat-date_range'
-						// eslint-disable-next-line mediawiki/msg-doc
-						groupMsg = this.$i18n( `pagetriage-filter-stat-${group}` ) + ' ' +
-							this.$i18n( 'parentheses', groupShowing.join( comma ) ).text();
-					}
-					return groupMsg;
-				} )
-				.filter( ( msg ) => msg !== '' )
-				.join( comma );
+
+			const msgParts = JSON.parse( JSON.stringify( this.msgObj ) );
+			if ( getNamespaceOptions().length <= 1 ) {
+				msgParts.namespace = [];
+			}
+
+			return msgParts;
 		}
 	},
 	methods: {
@@ -111,6 +97,9 @@ module.exports = {
 			} else if ( nppFilter === 'bot-edits' ) {
 				// Need a different message key (not -bot-edits)
 				localMsg = this.$i18n( 'pagetriage-filter-stat-bots' ).text();
+			} else if ( nppFilter === 'autopatrolled-edits' ) {
+				// same as above, needs a different message key
+				localMsg = this.$i18n( 'pagetriage-filter-stat-autopatrolled' ).text();
 			} else {
 				// Possible keys
 				// 'pagetriage-filter-stat-no-categories':
@@ -212,14 +201,15 @@ module.exports = {
 };
 </script>
 
-<style>
+<style lang="less">
+@import 'mediawiki.skin.variables.less';
+
 .mwe-vue-pt-showing-section {
-	width: 75%;
-	display: inline-flex;
-	padding-right: 10px;
+	margin-bottom: @spacing-25;
 }
-.mwe-vue-pt-showing-section b {
-	padding-right: 5px;
-	white-space: nowrap;
+
+.mwe-vue-pt-showing-filter-chip {
+	background-color: @background-color-base;
+	margin: @spacing-25 0 0 @spacing-25;
 }
 </style>

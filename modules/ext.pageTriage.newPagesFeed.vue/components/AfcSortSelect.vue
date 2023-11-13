@@ -1,29 +1,11 @@
 <template>
-	<label for="mwe-vue-pt-sort-afc">
-		<b>
-			{{ $i18n( 'pagetriage-sort-by' ).text() }}
-		</b>
-	</label>
-	<select
+	<cdx-select
 		id="mwe-vue-pt-sort-afc"
-		v-model="settings.immediate.afcSort"
-		@change="settings.updateImmediate( 'afcSort', $event.target.value )"
+		v-model:selected="settings.immediate.afcSort"
+		:menu-items="afcMenuItems"
+		@update:selected="( newVal ) => settings.updateImmediate( 'afcSort', newVal )"
 	>
-		<option value="newestfirst">
-			{{ $i18n( 'pagetriage-afc-newest' ).text() }}
-		</option>
-		<option value="oldestfirst">
-			{{ $i18n( 'pagetriage-afc-oldest' ).text() }}
-		</option>
-		<template v-if="afcSortUpdated">
-			<option value="newestreview">
-				{{ newestReviewText }}
-			</option>
-			<option value="oldestreview">
-				{{ oldestReviewText }}
-			</option>
-		</template>
-	</select>
+	</cdx-select>
 </template>
 
 <script>
@@ -32,6 +14,7 @@
  * 'newestreview' and 'oldestreview' are used for both newest/oldest submitted and newest/oldest declined,
  * PageTriage adds one or the other, we just change the label - only shown when filtering for submitted, under review, or declined
  */
+const { CdxSelect } = require( '@wikimedia/codex' );
 const { storeToRefs } = require( 'pinia' );
 const { computed } = require( 'vue' );
 const { useSettingsStore } = require( '../stores/settings.js' );
@@ -44,6 +27,9 @@ module.exports = {
 		whitespace: 'condense'
 	},
 	name: 'AfcSortSelect',
+	components: {
+		CdxSelect
+	},
 	setup() {
 		return {
 			// if the declined/submitted sort options should be included, the end of
@@ -81,7 +67,27 @@ module.exports = {
 			// pagetriage-afc-oldest-submitted
 			// eslint-disable-next-line mediawiki/msg-doc
 			return this.$i18n( `pagetriage-afc-oldest-${this.afcSortUpdated}` ).text();
+		},
+		afcMenuItems: function () {
+			const afcMenuItems = [
+				{ label: this.$i18n( 'pagetriage-afc-newest' ).text(), value: 'newestfirst' },
+				{ label: this.$i18n( 'pagetriage-afc-oldest' ).text(), value: 'oldestfirst' }
+			];
+
+			if ( this.afcSortUpdated ) {
+				afcMenuItems.push( { label: this.newestReviewText, value: 'newestreview' } );
+				afcMenuItems.push( { label: this.oldestReviewText, value: 'oldestreview' } );
+			}
+
+			return afcMenuItems;
+
 		}
 	}
 };
 </script>
+
+<style lang="less">
+#mwe-vue-pt-sort-afc {
+	min-width: unset;
+}
+</style>

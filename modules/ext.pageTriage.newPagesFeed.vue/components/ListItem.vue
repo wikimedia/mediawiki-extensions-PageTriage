@@ -1,11 +1,11 @@
 <template>
-	<div class="mwe-vue-pt-article-row" :class="oddEvenClass">
+	<div class="mwe-vue-pt-article-row">
 		<div class="mwe-vue-pt-status-icon">
-			<img
-				:src="statusIcon.src"
+			<cdx-icon
+				:icon="statusIcon.icon"
 				:title="statusIcon.title"
-				alt=""
-			>
+				:class="statusIcon.class"
+			></cdx-icon>
 		</div>
 		<div class="mwe-vue-pt-info-pane">
 			<div class="mwe-vue-pt-info-row">
@@ -22,29 +22,31 @@
 						{{ $i18n( 'pagetriage-dot-separator' ).text() }}
 						{{ $i18n( 'pagetriage-edits', revCount ).text() }}
 						<span v-if="!isDraft">
-							<span v-if="categoryCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
+							<cdx-info-chip v-if="categoryCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
 								{{ $i18n( 'pagetriage-no-categories' ).text() }}
-							</span>
+							</cdx-info-chip>
 							<span v-if="categoryCount !== 0">
 								{{ $i18n( 'pagetriage-dot-separator' ).text() }}
 								{{ $i18n( 'pagetriage-categories', categoryCount ).text() }}
 							</span>
-							<span v-if="linkCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
+							<cdx-info-chip v-if="linkCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
 								{{ $i18n( 'pagetriage-orphan' ).text() }}
-							</span>
-							<span v-if="recreated" class="mwe-vue-pt-metadata-warning">
+							</cdx-info-chip>
+							<cdx-info-chip v-if="recreated" class="mwe-vue-pt-metadata-warning">
 								<a :href="previouslyDeletedLogLink">{{ $i18n( 'pagetriage-recreated' ).text() }}</a>
-							</span>
+							</cdx-info-chip>
 						</span>
-						<span v-if="referenceCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
+						<cdx-info-chip v-if="referenceCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
 							{{ $i18n( 'pagetriage-no-reference' ).text() }}
-						</span>
+						</cdx-info-chip>
+						<cdx-info-chip v-if="creatorBlocked" class="mwe-vue-pt-metadata-warning">
+							{{ $i18n( 'pagetriage-author-blocked' ).text() }}
+						</cdx-info-chip>
 					</span>
 				</div>
 				<div class="mwe-vue-pt-article-col-right mwe-vue-pt-bold">
 					<cdx-info-chip
 						v-if="newArticleWarning"
-						status="warning"
 						class="mwe-vue-pt-new-article-warning"
 						:title="$i18n( 'pagetriage-tag-warning-notice', articleAge ).text()"
 					>
@@ -56,58 +58,57 @@
 				</div>
 			</div>
 			<div class="mwe-vue-pt-info-row">
-				<div>
-					<!-- if the username is suppressed, present it the same way as in core changelists -->
-					<span v-if="creatorHidden" class="history-deleted mw-history-suppressed mw-userlink">
-						{{ $i18n( 'rev-deleted-user' ).text() }}
-					</span>
-					<span v-else-if="creatorName">
-						<creator-byline
-							v-if="creatorName"
-							:creator-name="creatorName"
-							:creator-user-id="creatorUserId"
-							:creator-auto-confirmed="creatorAutoConfirmed"
-							:creator-user-page-exists="creatorUserPageExists"
-							:creator-talk-page-exists="creatorTalkPageExists"
-						></creator-byline>
-						<span v-if="creatorUserId > 0">
-							{{ $i18n( 'pagetriage-dot-separator' ).text() }}
-							{{ $i18n( 'pagetriage-editcount', creatorEditCount, creatorRegistrationPretty ).text() }}
-							<span v-if="creatorIsBot">
+				<div class="mwe-vue-pt-info-row-block-left">
+					<div>
+						<!-- if the username is suppressed, present it the same way as in core changelists -->
+						<span v-if="creatorHidden" class="history-deleted mw-history-suppressed mw-userlink">
+							{{ $i18n( 'rev-deleted-user' ).text() }}
+						</span>
+						<span v-else-if="creatorName">
+							<creator-byline
+								v-if="creatorName"
+								:creator-name="creatorName"
+								:creator-user-id="creatorUserId"
+								:creator-auto-confirmed="creatorAutoConfirmed"
+								:creator-user-page-exists="creatorUserPageExists"
+								:creator-talk-page-exists="creatorTalkPageExists"
+							></creator-byline>
+							<span v-if="creatorUserId > 0">
 								{{ $i18n( 'pagetriage-dot-separator' ).text() }}
-								{{ $i18n( 'pagetriage-author-bot' ).text() }}
+								{{ $i18n( 'pagetriage-editcount', creatorEditCount, creatorRegistrationPretty ).text() }}
+								<span v-if="creatorIsBot">
+									{{ $i18n( 'pagetriage-dot-separator' ).text() }}
+									{{ $i18n( 'pagetriage-author-bot' ).text() }}
+								</span>
 							</span>
 						</span>
-						<span v-if="creatorBlocked" class="mwe-vue-pt-metadata-warning">
-							{{ $i18n( 'pagetriage-author-blocked' ).text() }}
+						<span v-else>
+							{{ $i18n( 'pagetriage-no-author' ).text() }}
 						</span>
-					</span>
-					<span v-else>
-						{{ $i18n( 'pagetriage-no-author' ).text() }}
-					</span>
+					</div>
+					<div class="mwe-vue-pt-snippet">
+						{{ snippet }}
+					</div>
 				</div>
-				<div class="mwe-vue-pt-article-col-right">
-					<span v-if="lastAfcActionLabel">
-						<span>
-							{{ lastAfcActionLabel }}
+				<div class="mwe-vue-pt-info-row-block-right">
+					<div class="mwe-vue-pt-article-col-right">
+						<span v-if="lastAfcActionLabel">
+							<span>
+								{{ lastAfcActionLabel }}
+							</span>
+							<span>{{ reviewedUpdatedPretty }}</span>
 						</span>
-						<span>{{ reviewedUpdatedPretty }}</span>
-					</span>
-				</div>
-			</div>
-			<div class="mwe-vue-pt-info-row">
-				<div class="mwe-vue-pt-snippet">
-					{{ snippet }}
-				</div>
-				<div class="mwe-vue-pt-article-col-right review-button">
-					<a
-						:href="titleUrl"
-						target="_blank"
-					>
-						<cdx-button action="progressive" weight="primary">
-							{{ $i18n( 'pagetriage-triage' ).text() }}
-						</cdx-button>
-					</a>
+					</div>
+					<div class="mwe-vue-pt-article-col-right review-button">
+						<a
+							:href="titleUrl"
+							target="_blank"
+						>
+							<cdx-button>
+								{{ $i18n( 'pagetriage-triage' ).text() }}
+							</cdx-button>
+						</a>
+					</div>
 				</div>
 			</div>
 			<div v-if="showOres" class="mwe-vue-pt-info-row">
@@ -120,14 +121,14 @@
 					<span v-if="!oresDraftQuality && !( copyvio && showCopyvio )">
 						{{ $i18n( 'pagetriage-filter-stat-predicted-issues-none' ).text() }}
 					</span>
-					<span v-if="oresDraftQuality" class="mwe-vue-pt-issue">
+					<cdx-info-chip v-if="oresDraftQuality" class="mwe-vue-pt-issue">
 						{{ oresDraftQuality }}
-					</span>
+					</cdx-info-chip>
 					<span v-if="copyvio && showCopyvio">
 						<span v-if="oresDraftQuality">
 							{{ $i18n( 'pagetriage-dot-separator' ).text() }}
 						</span>
-						<span class="mw-parser-output mwe-vue-pt-issue">
+						<cdx-info-chip class="mw-parser-output mwe-vue-pt-issue">
 							<a
 								:href="copyvioLink"
 								target="_blank"
@@ -135,7 +136,7 @@
 							>
 								{{ $i18n( 'pagetriage-filter-stat-predicted-issues-copyvio' ).text() }}
 							</a>
-						</span>
+						</cdx-info-chip>
 					</span>
 				</div>
 			</div>
@@ -148,8 +149,8 @@
  * @author DannyS712
  * An individual list item in the feed.
  */
-
-const { CdxButton, CdxInfoChip } = require( '@wikimedia/codex' );
+const { cdxIconError, cdxIconSuccess, cdxIconTrash } = require( './icons.json' );
+const { CdxButton, CdxIcon, CdxInfoChip } = require( '@wikimedia/codex' );
 const CreatorByline = require( './CreatorByline.vue' );
 const now = new Date();
 // Basic validation for 'YYYYMMDDHHmmss' timestamps
@@ -179,10 +180,10 @@ module.exports = {
 	components: {
 		CdxButton,
 		CdxInfoChip,
+		CdxIcon,
 		CreatorByline
 	},
 	props: {
-		position: { type: Number, required: true },
 		/*
 		 * Info from pagetriage_page_tags
 		 * see: https://www.mediawiki.org/wiki/Extension:PageTriage#List_of_tags
@@ -283,26 +284,28 @@ module.exports = {
 	},
 	computed: {
 		statusIcon: function () {
-			const imageBase = mw.config.get( 'wgExtensionAssetsPath' ) + '/PageTriage/modules/ext.pageTriage.views.newPagesFeed/images/';
 			const img = {
-				src: `${imageBase}icon_not_reviewed.png`,
-				title: this.$i18n( 'pagetriage-page-status-unreviewed' ).text()
+				icon: cdxIconError,
+				title: this.$i18n( 'pagetriage-page-status-unreviewed' ).text(),
+				class: 'mwe-vue-pt-page-status-unreviewed'
 			};
 			if ( !this.isDraft ) {
 				if ( mw.config.get( 'wgPageTriageEnableExtendedFeatures' ) && ( this.afdStatus || this.blpProdStatus || this.csdStatus || this.prodStatus ) ) {
-					img.src = `${imageBase}icon_marked_for_deletion.png`;
+					img.icon = cdxIconTrash;
 					img.title = this.$i18n( 'pagetriage-page-status-delete' ).text();
+					img.class = 'mwe-vue-pt-page-status-delete';
 				} else if ( this.patrolStatus === 3 ) {
-					img.src = `${imageBase}icon_autopatrolled.png`;
+					img.icon = cdxIconSuccess;
 					img.title = this.$i18n( 'pagetriage-page-status-autoreviewed' ).text();
+					img.class = 'mwe-vue-pt-page-status-autoreviewed';
 				} else if ( this.patrolStatus !== 0 ) {
-					img.src = `${imageBase}icon_reviewed.png`;
+					img.icon = cdxIconSuccess;
 					img.title = this.$i18n( 'pagetriage-page-status-reviewed-anonymous' ).text();
+					img.class = 'mwe-vue-pt-page-status-reviewed';
 				}
 			}
 			return img;
 		},
-		oddEvenClass: function () { return this.position % 2 === 0 ? 'mwe-vue-pt-article-row-even' : 'mwe-vue-pt-article-row-odd'; },
 		isDraft: function () {
 			const pageNamespaceId = ( new mw.Title( this.title ) ).getNamespaceId();
 			return pageNamespaceId === this.draftNamespaceId;
@@ -390,80 +393,101 @@ module.exports = {
 
 <style lang="less">
 @import 'mediawiki.skin.variables.less';
-.mwe-vue-pt-metadata-warning::before {
-	color: initial;
-	content: ' · ';
-}
+
 .mwe-vue-pt-info-pane {
-	padding: 0.6em;
+	padding: @spacing-50;
 	width: 100%;
 }
+
 .mwe-vue-pt-info-row {
 	position: relative;
+	display: flex;
+
 	& > div {
-		display: table-cell;
 		width: 100%;
 	}
 }
+
 .mwe-vue-pt-status-icon {
-	padding-left: 0.6em;
+	padding-left: @size-75;
+	padding-top: @size-75;
 }
 /* info about the article */
 .mwe-vue-pt-article {
-	font-size: 1.1em;
-	line-height: 1.6em;
 	/* Info on the right hand side: creation date, updated date, potential isues, etc. */
 	&-col-right {
 		text-align: right;
 		white-space: nowrap;
+		justify-self: flex-end;
 	}
+
 	&-col-right > .cdx-info-chip {
 		vertical-align: bottom;
 	}
+
 	&-row {
 		position: relative;
-		border: 1px solid #ccc;
+		border: @border-subtle;
 		border-top: 0;
 		box-sizing: border-box;
-		& > div {
-			display: table-cell;
-		}
-		&-even {
-			background-color: #f1f1f1;
-		}
-		&-odd {
-			background-color: @background-color-base;
-		}
+		display: flex;
 	}
 }
+
 .mwe-vue-pt-bold {
 	font-weight: bold;
 }
+
 .mwe-vue-pt-metadata-warning,
-.mwe-vue-pt-metadata-warning > a,
 .mwe-vue-pt-issue {
-	color: #c00;
-	font-weight: bold;
+	background: @background-color-destructive-subtle;
+	border-color: @border-color-destructive;
+	margin-left: @spacing-25;
+	font-size: @size-75;
+
+	@media screen and ( max-width: @max-width-breakpoint-mobile ) {
+		margin-top: @spacing-25;
+	}
+}
+
+.cdx-icon.mwe-vue-pt-page-status-unreviewed {
+	color: @color-progressive;
+}
+
+.cdx-icon.mwe-vue-pt-page-status-delete {
+	color: @color-base;
+}
+
+.mwe-vue-pt-page-status-reviewed {
+	color: @color-success;
+}
+
+.mwe-vue-pt-page-status-autoreviewed {
+	color: @color-visited;
 }
 /* the article snippet */
 .mwe-vue-pt-snippet {
-	color: #808080;
+	color: @color-subtle;
 	padding-right: 14em;
 }
+
 .review-button {
-	position: absolute;
-	bottom: 0.2em;
+	padding: @spacing-25 @spacing-25 @spacing-25 0;
 }
+
 .ores-pt-issues {
 	height: 0.55em;
 }
-.cdx-icon.cdx-info-chip__icon--warning {
+
+.mwe-vue-pt-new-article-warning .cdx-icon.cdx-info-chip__icon--warning {
 	color: @background-color-warning-subtle;
 }
-.cdx-info-chip {
+
+.mwe-vue-pt-new-article-warning.cdx-info-chip {
 	background-color: @color-warning;
 	border-color: @border-color-warning;
 }
+
 .mwe-vue-pt-new-article-warning > .cdx-info-chip--text {
 	color: @color-emphasized;
 }
