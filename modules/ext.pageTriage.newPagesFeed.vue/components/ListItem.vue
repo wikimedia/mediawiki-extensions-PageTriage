@@ -91,13 +91,11 @@
 					</div>
 				</div>
 				<div class="mwe-vue-pt-info-row-block-right">
-					<div class="mwe-vue-pt-article-col-right">
-						<span v-if="lastAfcActionLabel">
-							<span>
-								{{ lastAfcActionLabel }}
-							</span>
-							<span>{{ reviewedUpdatedPretty }}</span>
+					<div v-if="lastAfcActionLabel" class="mwe-vue-pt-article-col-right">
+						<span>
+							{{ lastAfcActionLabel }}
 						</span>
+						<span>{{ reviewedUpdatedPretty }}</span>
 					</div>
 					<div class="mwe-vue-pt-article-col-right review-button">
 						<a
@@ -402,9 +400,10 @@ module.exports = {
 .mwe-vue-pt-info-row {
 	position: relative;
 	display: flex;
+	width: 100%;
 
-	& > div {
-		width: 100%;
+	&-block-right {
+		margin-left: auto;
 	}
 }
 
@@ -416,9 +415,9 @@ module.exports = {
 .mwe-vue-pt-article {
 	/* Info on the right hand side: creation date, updated date, potential isues, etc. */
 	&-col-right {
+		margin-left: auto;
 		text-align: right;
 		white-space: nowrap;
-		justify-self: flex-end;
 	}
 
 	&-col-right > .cdx-info-chip {
@@ -468,7 +467,9 @@ module.exports = {
 /* the article snippet */
 .mwe-vue-pt-snippet {
 	color: @color-subtle;
-	padding-right: 14em;
+	margin-right: @spacing-50;
+	word-wrap: break-word;
+	overflow-wrap: anywhere;
 }
 
 .review-button {
