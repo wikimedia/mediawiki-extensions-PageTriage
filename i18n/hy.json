@@ -24,7 +24,7 @@
 	"pagetriage-no-author": "Հեղինակի մասին տեղեկություն չկա",
 	"pagetriage-byline": "Ստեղծել է $1 մասնակիցը ($2$3$4)",
 	"pagetriage-author-not-autoconfirmed": "Նոր խմբագիր",
-	"pagetriage-author-blocked": "Արգելափակված",
+	"pagetriage-author-blocked": "Հեղինակն արգելափակված է",
 	"pagetriage-author-bot": "Բոտ",
 	"pagetriage-filter-predicted-class-start": "Սկիզբ",
 	"pagetriage-filter-predicted-issues-vandalism": "Վանդալիզմ",
