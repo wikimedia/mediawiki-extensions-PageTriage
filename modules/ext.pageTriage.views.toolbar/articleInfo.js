@@ -245,7 +245,11 @@ module.exports = ToolView.extend( {
 		// pagetriage-info-problem-no-references, pagetriage-info-problem-copyvio
 		if ( parseInt( this.model.get( 'user_block_status' ) ) === 1 ) {
 			this.problemCount++;
-			problems += this.formatProblem( 'blocked' );
+			const blockLogLink = mw.util.getUrl( 'Special:Log', {
+				type: 'block',
+				page: this.model.get( 'user_name' )
+			} );
+			problems += this.formatProblem( 'blocked', blockLogLink );
 		}
 		if ( parseInt( this.model.get( 'is_redirect' ) ) === 0 ) {
 			if ( parseInt( this.model.get( 'category_count' ) ) < 1 ) {
@@ -254,7 +258,12 @@ module.exports = ToolView.extend( {
 			}
 			if ( parseInt( this.model.get( 'linkcount' ) ) < 1 ) {
 				this.problemCount++;
-				problems += this.formatProblem( 'orphan' );
+				const whatLinksHereLink = mw.util.getUrl( 'Special:WhatLinksHere', {
+					namespace: 0,
+					hideredirs: 1,
+					target: this.model.get( 'title' )
+				} );
+				problems += this.formatProblem( 'orphan', whatLinksHereLink );
 			}
 			if ( typeof this.model.get( 'reference' ) !== 'undefined' &&
 				parseInt( this.model.get( 'reference' ) ) === 0 ) {
