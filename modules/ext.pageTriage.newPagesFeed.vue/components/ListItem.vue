@@ -1,5 +1,5 @@
 <template>
-	<div class="mwe-vue-pt-article-row">
+	<div class="mwe-vue-pt-article-row" :class="oddEvenClass">
 		<div class="mwe-vue-pt-status-icon">
 			<cdx-icon
 				:icon="statusIcon.icon"
@@ -182,6 +182,7 @@ module.exports = {
 		CreatorByline
 	},
 	props: {
+		position: { type: Number, required: true },
 		/*
 		 * Info from pagetriage_page_tags
 		 * see: https://www.mediawiki.org/wiki/Extension:PageTriage#List_of_tags
@@ -304,6 +305,7 @@ module.exports = {
 			}
 			return img;
 		},
+		oddEvenClass: function () { return this.position % 2 === 0 ? 'mwe-vue-pt-article-row-even' : 'mwe-vue-pt-article-row-odd'; },
 		isDraft: function () {
 			const pageNamespaceId = ( new mw.Title( this.title ) ).getNamespaceId();
 			return pageNamespaceId === this.draftNamespaceId;
@@ -435,6 +437,10 @@ module.exports = {
 
 .mwe-vue-pt-bold {
 	font-weight: bold;
+}
+
+.mwe-vue-pt-article-row-even {
+	background: @background-color-interactive-subtle;
 }
 
 .mwe-vue-pt-metadata-warning,
