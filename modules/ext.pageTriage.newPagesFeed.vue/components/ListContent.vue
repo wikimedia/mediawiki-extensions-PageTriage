@@ -22,6 +22,7 @@
 	<load-more-bar :have-more="haveMoreToLoad" @trigger-load="loadFromFilters"></load-more-bar>
 	<stats-bar
 		:api-result="feedStats"
+		:queue-mode="immediate.queueMode"
 		@refresh-feed="refreshFeed"
 	></stats-bar>
 </template>
@@ -217,7 +218,7 @@ module.exports = {
 			clearCurrentData();
 			loadFromFilters();
 		};
-		const { applied } = storeToRefs( settings );
+		const { applied, immediate } = storeToRefs( settings );
 		watch(
 			applied,
 			refreshFeed
@@ -227,6 +228,7 @@ module.exports = {
 			apiError,
 			feedEntries,
 			haveMoreToLoad,
+			immediate,
 			loadFromFilters,
 			refreshFeed,
 			feedStats
