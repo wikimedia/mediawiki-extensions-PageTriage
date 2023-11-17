@@ -19,7 +19,7 @@ class MaintenanceUpdateUserMetadataTest extends PageTriageTestCase {
 		$this->tablesUsed = [ 'pagetriage_page', 'page' ];
 		// Delete any dangling page triage pages before inserting our test data
 		$this->db->newDeleteQueryBuilder()
-			->delete( 'pagetriage_page' )
+			->deleteFrom( 'pagetriage_page' )
 			->where( '1 = 1' )
 			->caller( __METHOD__ )
 			->execute();

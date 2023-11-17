@@ -49,7 +49,7 @@ class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
 		foreach ( [ 'pagetriage_page', 'page' ] as $table ) {
 			$this->db->newDeleteQueryBuilder()
-				->delete( $table )
+				->deleteFrom( $table )
 				->where( '1 = 1' )
 				->caller( __METHOD__ )
 				->execute();

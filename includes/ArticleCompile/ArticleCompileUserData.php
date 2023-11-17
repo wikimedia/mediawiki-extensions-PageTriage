@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
-use MediaWiki\User\ActorMigration;
 use User;
 
 /**
@@ -32,59 +31,56 @@ class ArticleCompileUserData extends ArticleCompile {
 			return true;
 		}
 
-		$now = $this->db->addQuotes( $this->db->timestamp() );
-
-		$actorQuery = ActorMigration::newMigration()->getJoin( 'rev_user' );
-		$res = $this->db->select(
-			array_merge( [ 'revision' ], $actorQuery['tables'],  [ 'user', 'ipblocks' ] ),
-			[
-				'rev_page AS page_id', 'user_id', 'user_name',
-				'user_real_name', 'user_registration', 'user_editcount',
-				'ipb_id', 'rev_user_text' => $actorQuery['fields']['rev_user_text']
-			],
-			[ 'rev_id' => $revId ],
-			__METHOD__,
-			[],
-			$actorQuery['joins'] + [
-				'user' => [ 'LEFT JOIN', $actorQuery['fields']['rev_user'] . ' = user_id' ],
-				'ipblocks' => [
-					'LEFT JOIN', [
-						$actorQuery['fields']['rev_user'] . ' = ipb_user',
-						$actorQuery['fields']['rev_user_text'] . ' = ipb_address',
-						'ipb_expiry > ' . $now,
+		$res = $this->db->newSelectQueryBuilder()
+			->select( [
+				'rev_page', 'actor_name',
+				'user_id', 'user_name', 'user_real_name', 'user_registration', 'user_editcount',
+				'blocked' => 'EXISTS (' . $this->db->newSelectQueryBuilder()
+					->select( '1' )
+					->from( 'ipblocks' )
+					->where( [
+						'ipb_user=actor_user',
+						$this->db->expr( 'ipb_expiry', '>', $this->db->timestamp() ),
 						'ipb_sitewide' => 1
-					]
-				]
-			]
-		);
+					] )
+					->getSQL() . ')'
+			] )
+			->from( 'revision' )
+			->join( 'actor', null, 'actor_id=rev_actor' )
+			->leftJoin( 'user', null, 'user_id=actor_user' )
+			->where( [ 'rev_id' => $revId ] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 
 		foreach ( $res as $row ) {
+			$data = [];
 			// User exists
 			if ( $row->user_id ) {
 				$user = User::newFromRow( $row );
-				$this->metadata[$row->page_id]['user_id'] = $row->user_id;
-				$this->metadata[$row->page_id]['user_name'] = $user->getName();
-				$this->metadata[$row->page_id]['user_editcount'] = $user->getEditCount();
-				$this->metadata[$row->page_id]['user_creation_date'] = wfTimestamp(
+				$data['user_id'] = $row->user_id;
+				$data['user_name'] = $user->getName();
+				$data['user_editcount'] = $user->getEditCount();
+				$data['user_creation_date'] = wfTimestamp(
 					TS_MW,
 					$user->getRegistration()
 				);
-				$this->metadata[$row->page_id]['user_autoconfirmed'] =
+				$data['user_autoconfirmed'] =
 					$user->isAllowed( 'autoconfirmed' ) ? '1' : '0';
-				$this->metadata[$row->page_id]['user_experience'] = $user->getExperienceLevel();
-				$this->metadata[$row->page_id]['user_bot'] = $user->isAllowed( 'bot' ) ? '1' : '0';
-				$this->metadata[$row->page_id]['user_block_status'] = $row->ipb_id ? '1' : '0';
+				$data['user_experience'] = $user->getExperienceLevel();
+				$data['user_bot'] = $user->isAllowed( 'bot' ) ? '1' : '0';
+				$data['user_block_status'] = $row->blocked ? '1' : '0';
 			} else {
 				// User doesn't exist, etc IP
-				$this->metadata[$row->page_id]['user_id'] = 0;
-				$this->metadata[$row->page_id]['user_name'] = $row->rev_user_text;
-				$this->metadata[$row->page_id]['user_editcount'] = 0;
-				$this->metadata[$row->page_id]['user_creation_date'] = '';
-				$this->metadata[$row->page_id]['user_autoconfirmed'] = '0';
-				$this->metadata[$row->page_id]['user_experience'] = 'anonymous';
-				$this->metadata[$row->page_id]['user_bot'] = '0';
-				$this->metadata[$row->page_id]['user_block_status'] = $row->ipb_id ? '1' : '0';
+				$data['user_id'] = 0;
+				$data['user_name'] = $row->actor_name;
+				$data['user_editcount'] = 0;
+				$data['user_creation_date'] = '';
+				$data['user_autoconfirmed'] = '0';
+				$data['user_experience'] = 'anonymous';
+				$data['user_bot'] = '0';
+				$data['user_block_status'] = $row->blocked ? '1' : '0';
 			}
+			$this->metadata[$row->rev_page] = $data;
 		}
 
 		return true;

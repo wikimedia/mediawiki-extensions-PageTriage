@@ -64,7 +64,7 @@ class QueueManager {
 		$articleMetadata = new ArticleMetadata( $pageIds );
 		$dbw->startAtomic( __METHOD__ );
 		$dbw->newDeleteQueryBuilder()
-			->delete( 'pagetriage_page' )
+			->deleteFrom( 'pagetriage_page' )
 			->where( [ 'ptrp_page_id' => $pageIds ] )
 			->caller( __METHOD__ )
 			->execute();

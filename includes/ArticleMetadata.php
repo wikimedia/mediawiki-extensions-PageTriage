@@ -47,7 +47,7 @@ class ArticleMetadata {
 		if ( $this->pageIds ) {
 			$dbw = PageTriageUtil::getPrimaryConnection();
 			$dbw->newDeleteQueryBuilder()
-				->delete( 'pagetriage_page_tags' )
+				->deleteFrom( 'pagetriage_page_tags' )
 				->where( [ 'ptrpt_page_id' => $this->pageIds ] )
 				->caller( __METHOD__ )
 				->execute();
