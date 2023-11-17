@@ -1,5 +1,6 @@
 const { mount } = require( '@vue/test-utils' );
 const { createTestingPinia } = require( '@pinia/testing' );
+const mixins = require( '../../../mocks/mixins.js' );
 let QueueModeTab;
 let settings;
 let wrapper;
@@ -17,6 +18,7 @@ describe( 'QueueModeTab.vue', () => {
 		QueueModeTab = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/components/QueueModeTab.vue' );
 		wrapper = mount( QueueModeTab, {
 			global: {
+				mixins: [ mixins ],
 				plugins: [ createTestingPinia( {
 					stubActions: false
 				} ) ]

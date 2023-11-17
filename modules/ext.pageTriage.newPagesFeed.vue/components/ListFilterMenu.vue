@@ -1,8 +1,8 @@
 <template>
-	<template v-if="haveDraftNamespace">
-		<queue-mode-tab></queue-mode-tab>
-	</template>
 	<div id="mwe-vue-pt-menu-heading" class="mwe-vue-pt-control-gradient">
+		<template v-if="haveDraftNamespace">
+			<queue-mode-tab></queue-mode-tab>
+		</template>
 		<showing-text></showing-text>
 		<div class="mwe-pt-vue-menu-section">
 			<div id="mwe-vue-pt-control-menu-toggle">
