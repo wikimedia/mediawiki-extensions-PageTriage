@@ -2,6 +2,8 @@
 
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
+use MediaWiki\MainConfigNames;
+use MediaWiki\MediaWikiServices;
 use User;
 
 /**
@@ -31,19 +33,36 @@ class ArticleCompileUserData extends ArticleCompile {
 			return true;
 		}
 
+		if ( MediaWikiServices::getInstance()->getMainConfig()
+			->get( MainConfigNames::BlockTargetMigrationStage ) & SCHEMA_COMPAT_READ_OLD
+		) {
+			$blockQuery = $this->db->newSelectQueryBuilder()
+				->select( '1' )
+				->from( 'ipblocks' )
+				->where( [
+					'ipb_user=actor_user',
+					$this->db->expr( 'ipb_expiry', '>', $this->db->timestamp() ),
+					'ipb_sitewide' => 1
+				] )
+				->getSQL();
+		} else {
+			$blockQuery = $this->db->newSelectQueryBuilder()
+				->select( '1' )
+				->from( 'block' )
+				->join( 'block_target', null, 'bt_id=bl_target' )
+				->where( [
+					'bt_user=actor_user',
+					$this->db->expr( 'bl_expiry', '>', $this->db->timestamp() ),
+					'bl_sitewide' => 1
+				] )
+				->getSQL();
+		}
+
 		$res = $this->db->newSelectQueryBuilder()
 			->select( [
 				'rev_page', 'actor_name',
 				'user_id', 'user_name', 'user_real_name', 'user_registration', 'user_editcount',
-				'blocked' => 'EXISTS (' . $this->db->newSelectQueryBuilder()
-					->select( '1' )
-					->from( 'ipblocks' )
-					->where( [
-						'ipb_user=actor_user',
-						$this->db->expr( 'ipb_expiry', '>', $this->db->timestamp() ),
-						'ipb_sitewide' => 1
-					] )
-					->getSQL() . ')'
+				'blocked' => 'EXISTS (' . $blockQuery . ')'
 			] )
 			->from( 'revision' )
 			->join( 'actor', null, 'actor_id=rev_actor' )
