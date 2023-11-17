@@ -7,7 +7,6 @@
 		:menu-config="menuConfig"
 		inline
 		@input="onInput"
-		@update:selected="( newVal ) => $emit( 'update:username', newVal )"
 		@focus="$emit( 'focus' )"
 	>
 		<template #no-results>
@@ -38,7 +37,7 @@ module.exports = {
 		username: { type: String, default: '' }
 	},
 	emits: [ 'update:username', 'focus' ],
-	setup( props ) {
+	setup( props, { emit } ) {
 		const menuItems = ref( [] );
 		const currentSearchTerm = ref( '' );
 
@@ -61,6 +60,11 @@ module.exports = {
 				menuItems.value = [];
 				return;
 			}
+
+			// Update the parent username variable so that
+			// even if the user does not end up selecting anything,
+			// the username change is registered.
+			emit( 'update:username', value );
 
 			fetchUsernames( value ).then( ( data ) => {
 				if ( currentSearchTerm.value !== value ) {
