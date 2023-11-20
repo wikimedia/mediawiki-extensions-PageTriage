@@ -256,7 +256,7 @@ module.exports = ToolView.extend( {
 				this.problemCount++;
 				problems += this.formatProblem( 'no-categories' );
 			}
-			if ( parseInt( this.model.get( 'linkcount' ) ) < 1 ) {
+			if ( this.model.get( 'is_orphan' ) ) {
 				this.problemCount++;
 				const whatLinksHereLink = mw.util.getUrl( 'Special:WhatLinksHere', {
 					namespace: 0,

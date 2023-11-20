@@ -29,7 +29,7 @@ class ArticleCompileBasicData extends ArticleCompile {
 					->join( 'page', null, [ 'page_id = rev_page' ] )
 					->where( [ 'rev_page' => $pageId ] )
 					->limit( 101 )
-					->caller( __METHOD__ )->fetchResultSet();
+					->caller( __METHOD__ )->fetchResultSet()->numRows();
 				$this->processEstimatedCount( $pageId, $res, 100, 'rev_count' );
 				$count++;
 			}

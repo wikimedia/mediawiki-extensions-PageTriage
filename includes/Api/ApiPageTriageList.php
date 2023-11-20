@@ -8,6 +8,7 @@ use ApiResult;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\OresMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
+use MediaWiki\Linker\LinksMigration;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Title\Title;
@@ -37,6 +38,9 @@ class ApiPageTriageList extends ApiBase {
 	/** @var TitleFormatter */
 	private $titleFormatter;
 
+	/** @var LinksMigration */
+	private $linksMigration;
+
 	/**
 	 * @param ApiMain $query
 	 * @param string $moduleName
@@ -46,9 +50,11 @@ class ApiPageTriageList extends ApiBase {
 		string $moduleName,
 		UserFactory $userFactory,
 		RedirectLookup $redirectLookup,
-		TitleFormatter $titleFormatter
+		TitleFormatter $titleFormatter,
+		LinksMigration $linksMigration
 	) {
 		$this->userFactory = $userFactory;
+		$this->linksMigration = $linksMigration;
 		$this->redirectLookup = $redirectLookup;
 		$this->titleFormatter = $titleFormatter;
 		parent::__construct( $query, $moduleName );
@@ -137,6 +143,7 @@ class ApiPageTriageList extends ApiBase {
 					$metaData[$page]['talk_page_title'] = $talkPage->getPrefixedText();
 					$metaData[$page]['talkpage_feedback_count'] = $this->getTalkpageFeedbackCount( $talkPage );
 					$metaData[$page]['talk_page_url'] = $talkPage->getInternalURL();
+					$metaData[$page]['is_orphan'] = $this->isOrphan( $page );
 				}
 
 				$redirectTarget = $this->redirectLookup->getRedirectTarget( $pageTitle );
@@ -152,7 +159,7 @@ class ApiPageTriageList extends ApiBase {
 
 				$metaData[$page][ApiResult::META_BC_BOOLS] = [
 					'creator_hidden', 'creator_user_page_exist', 'creator_user_talk_page_exist',
-					'reviewer_user_page_exist', 'reviewer_user_talk_page_exist',
+					'reviewer_user_page_exist', 'reviewer_user_talk_page_exist', 'is_orphan'
 				];
 
 				$sortedMetaData[] = [ 'pageid' => $page ] + $metaData[$page];
@@ -244,6 +251,18 @@ class ApiPageTriageList extends ApiBase {
 			->caller( __METHOD__ )
 			->fetchRowCount();
 		return $feedbackCount;
+	}
+
+	/**
+	 * Get if a specific page is a orphan. This will only be used
+	 * when the user is on a specific page and not the feed. The feed will continue to use
+	 * the compiled and cached link count.
+	 * @param int $pageId The ID of the page
+	 * @return bool
+	 */
+	protected function isOrphan( int $pageId ): bool {
+		$linkCount = PageTriageUtil::getLinkCount( $this->linksMigration, $pageId, 1 );
+		return $linkCount === 0;
 	}
 
 	/**

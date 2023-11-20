@@ -20,7 +20,8 @@
 			"services": [
 				"UserFactory",
 				"RedirectLookup",
-				"TitleFormatter"
+				"TitleFormatter",
+				"LinksMigration"
 			]
 		},
 		"pagetriagestats": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageStats",

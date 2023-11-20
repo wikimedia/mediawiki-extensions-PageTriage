@@ -10,6 +10,7 @@ use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\PageTriage\Api\ApiPageTriageList;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
+use MediaWiki\Linker\LinksMigration;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
@@ -765,6 +766,34 @@ class PageTriageUtil {
 	 */
 	public static function isCopyvioQuery( $opts ) {
 		return $opts[ 'show_predicted_issues_copyvio' ] ?? false;
+	}
+
+	/**
+	 * Get a count of how many links are in a specific page.
+	 * @param LinksMigration $linksMigration
+	 * @param int $pageId The page for which links need to be fetched
+	 * @param int $limit Number of links to fetch, defaults to 51
+	 * @return int Number of links
+	 */
+	public static function getLinkCount( LinksMigration $linksMigration, int $pageId, int $limit = 51 ): int {
+		[ $blNamespace, $blTitle ] = $linksMigration->getTitleFields( 'pagelinks' );
+		$dbr = self::getReplicaConnection();
+		$queryInfo = $linksMigration->getQueryInfo( 'pagelinks', 'pagelinks' );
+		$res = $dbr->newSelectQueryBuilder()
+				->select( '1' )
+				->tables( $queryInfo['tables'] )
+				->joinConds( $queryInfo['joins'] )
+				->join( 'page', null, [ "page_namespace = $blNamespace", "page_title = $blTitle" ] )
+				->where( [
+					'page_id' => $pageId,
+					'page_is_redirect' => 0,
+					// T313777 - only considering backlinks from mainspace pages
+					'pl_from_namespace' => 0,
+				] )
+				->limit( $limit )
+				->caller( __METHOD__ )
+				->fetchResultSet()->numRows();
+		return $res;
 	}
 
 	/**

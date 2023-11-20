@@ -8,7 +8,6 @@ use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\SlotRecord;
 use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\IResultWrapper;
 use WikiPage;
 
 /**
@@ -69,12 +68,11 @@ abstract class ArticleCompile {
 	 * Provide an estimated count for an item, for example: if $maxNumToProcess is
 	 * 100 and the result is greater than 100, then the result should be 100+
 	 * @param int $pageId page id
-	 * @param IResultWrapper $res Result of the query
+	 * @param int $record Number of rows in query
 	 * @param int $maxNumToProcess max number to process/display
 	 * @param string $indexName the array index name to be saved
 	 */
-	protected function processEstimatedCount( $pageId, $res, $maxNumToProcess, $indexName ) {
-		$record = $res->numRows();
+	protected function processEstimatedCount( int $pageId, int $record, int $maxNumToProcess, string $indexName ) {
 		if ( $record > $maxNumToProcess ) {
 			$this->metadata[$pageId][$indexName] = $maxNumToProcess . '+';
 		} else {

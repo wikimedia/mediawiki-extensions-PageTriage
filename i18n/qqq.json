@@ -50,7 +50,7 @@
 	"pagetriage-categories": "The number of categories in the page. Parameters:\n* $1 - number of categories\n{{Identical|Category}}",
 	"pagetriage-no-categories": "Label indicating a page with no categories.\n{{Identical|No category}}",
 	"pagetriage-no-reference": "Label indicating a page with no reference citations",
-	"pagetriage-orphan": "Label indicating a page has no external links (orphan).\n{{Identical|Orphan}}",
+	"pagetriage-orphan": "Label indicating a page might have no external links (orphan).",
 	"pagetriage-recreated": "Label indicating a page was previously deleted.",
 	"pagetriage-no-author": "Error message for missing page author information",
 	"pagetriage-byline": "Text indicating the page author.\n*$1 is a link to the author's user page.\n*$2 is a link to the author's talk page.\n*$3 is a separator character.\n*$4 is a link to the author's contributions.",
