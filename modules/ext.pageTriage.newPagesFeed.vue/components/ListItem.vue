@@ -415,6 +415,8 @@ module.exports = {
 }
 /* info about the article */
 .mwe-vue-pt-article {
+	margin-right: @spacing-50;
+
 	/* Info on the right hand side: creation date, updated date, potential isues, etc. */
 	&-col-right {
 		margin-left: auto;
