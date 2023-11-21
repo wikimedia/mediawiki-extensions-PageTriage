@@ -568,7 +568,7 @@
 				"ext.pageTriage.newPagesFeed.vue/components/LoadMoreBar.vue",
 				"ext.pageTriage.newPagesFeed.vue/components/QueueModeTab.vue",
 				"ext.pageTriage.newPagesFeed.vue/components/NppSortDirRadio.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/NppFilterRadio.vue",
+				"ext.pageTriage.newPagesFeed.vue/components/FilterRadios.vue",
 				"ext.pageTriage.newPagesFeed.vue/components/AfcSortSelect.vue",
 				"ext.pageTriage.newPagesFeed.vue/components/AfcStateRadio.vue",
 				"ext.pageTriage.newPagesFeed.vue/components/ShowingText.vue",
