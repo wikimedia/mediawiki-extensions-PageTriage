@@ -498,7 +498,7 @@
 	"apihelp-pagetriagelist-param-non_autoconfirmed_users": "Si monstrar solmente paginas create per usatores non autoconfirmate.",
 	"apihelp-pagetriagelist-param-learners": "Si se debe monstrar unicamente paginas create per usatores novemente autoconfirmate.",
 	"apihelp-pagetriagelist-param-blocked_users": "Si monstrar solmente paginas create per usatores blocate.",
-	"apihelp-pagetriagelist-param-username": "Si monstrar solmente paginas per nomine de usator.",
+	"apihelp-pagetriagelist-param-username": "Monstrar solmente paginas create a base de nomine de usator.",
 	"apihelp-pagetriagelist-param-date_range_from": "Si monstrar solmente paginas create a partir de iste data.",
 	"apihelp-pagetriagelist-param-date_range_to": "Si monstrar solmente paginas create usque a iste data.",
 	"apihelp-pagetriagelist-param-show_predicted_class_stub": "Si includer le classe previste de pecietta (''stub'')",
