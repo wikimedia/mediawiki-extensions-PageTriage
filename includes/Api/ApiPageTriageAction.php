@@ -13,6 +13,7 @@ use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriage;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
+use MediaWiki\Extension\PageTriage\QueueRecord;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -44,9 +45,7 @@ class ApiPageTriageAction extends ApiBase {
 		$this->requireOnlyOneParameter( $params, 'reviewed', 'enqueue' );
 
 		$article = Article::newFromID( $params['pageid'] );
-		if ( $article ) {
-			$this->checkTitleUserPermissions( $article->getTitle(), 'patrol' );
-		} else {
+		if ( !$article ) {
 			$this->dieWithError( 'apierror-missingtitle', 'bad-page' );
 		}
 
@@ -70,14 +69,8 @@ class ApiPageTriageAction extends ApiBase {
 		$note = $params['note'];
 
 		if ( isset( $params['reviewed'] ) ) {
-			// T314245 - do not allow someone to mark their own articles as reviewed
-			// when not being autopatrolled
-			$pageCreator = $this->revStore->getFirstRevision(
-				$article->getPage() )->getUser( RevisionRecord::RAW );
-			$isPageCreator = $this->getUser()->equals( $pageCreator );
-			$isNotAutopatrolled = !$this->getAuthority()->isAllowed( 'autopatrol' );
-			if ( $isPageCreator && $isNotAutopatrolled ) {
-				$this->dieWithError( 'markedaspatrollederror-noautopatrol' );
+			if ( !$this->canPerformReviewAction( (int)$params['reviewed'], $article ) ) {
+				$this->dieWithError( [ 'apierror-permissiondenied', $this->msg( 'action-patrol' ) ] );
 			}
 
 			$result = $this->markAsReviewed(
@@ -88,10 +81,58 @@ class ApiPageTriageAction extends ApiBase {
 				$logEntryTags
 			);
 		} else {
+			$this->checkTitleUserPermissions( $article->getTitle(), 'patrol' );
+
 			$result = $this->enqueue( $article, $note, $logEntryTags );
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+	}
+
+	/**
+	 * Check if the user is allowed to perform the action they are supposed to
+	 * perform.
+	 * @param int $attemptedReviewAction This will be 0 when attempting to unreview
+	 * and 1 when attempting to review corresponding to the QueueRecord::... values
+	 * that will be set in the database.
+	 * @param Article $article Article on which this action is to be performed
+	 * @return bool
+	 */
+	private function canPerformReviewAction( int $attemptedReviewAction, Article $article ): bool {
+		$isPatroller = $this->getAuthority()->isAllowed( 'patrol' );
+		$isAutopatrolled = $this->getAuthority()->isAllowed( 'autopatrol' );
+
+		if ( $isPatroller && $isAutopatrolled ) {
+			return true;
+		}
+
+		$pageCreator = $this->revStore->getFirstRevision(
+			$article->getPage() )->getUser( RevisionRecord::RAW );
+		$isPageCreator = $this->getUser()->equals( $pageCreator );
+
+		$attemptingToReview = $attemptedReviewAction === QueueRecord::REVIEW_STATUS_REVIEWED;
+
+		if ( $attemptingToReview ) {
+
+			// T314245 - do not allow someone to mark their own articles as reviewed
+			// when not being autopatrolled
+			if ( !$isPageCreator && $isPatroller ) {
+				return true;
+			}
+		} else {
+			// attempting to unreview a page
+			if ( $isPatroller ) {
+				return true;
+			}
+
+			// T351954 - Allow autopatrolled users to unreview their own
+			// articles
+			if ( $isPageCreator && $isAutopatrolled ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**

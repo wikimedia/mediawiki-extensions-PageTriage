@@ -628,14 +628,27 @@
 				"mediawiki.Uri"
 			]
 		},
-		"ext.PageTriage.enqueue": {
-			"scripts": "ext.PageTriage.enqueue/ext.PageTriage.enqueue.js",
+		"ext.pageTriage.sidebarLink": {
+			"es6": true,
+			"localBasePath": "modules/ext.pageTriage.sidebarLink",
+			"packageFiles": [
+				"index.js",
+				"enqueue.js",
+				"unreview.js"
+			],
 			"messages": [
 				"pagetriage-enqueue-title",
 				"pagetriage-enqueue-tooltip",
-				"pagetriage-enqueue-confirmation"
+				"pagetriage-enqueue-confirmation",
+				"pagetriage-unreview-title",
+				"pagetriage-unreview-tooltip",
+				"pagetriage-unreview-summary"
 			],
-			"dependencies": "mediawiki.util"
+			"dependencies": [
+				"mediawiki.util",
+				"oojs-ui-core",
+				"oojs-ui-windows"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
