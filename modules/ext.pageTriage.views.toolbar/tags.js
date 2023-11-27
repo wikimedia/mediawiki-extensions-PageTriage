@@ -246,7 +246,7 @@ module.exports = ToolView.extend( {
 			// add click events for checking/unchecking tags to both the
 			// checkboxes and tag labels
 			$( '#mwe-pt-tag-' + key + ', #mwe-pt-checkbox-tag-' + key ).on( 'click', function () {
-				let destCat, destKey, alsoCommon, param;
+				let destCat, destKey, param;
 
 				// Extract the tag key from the id of whatever was clicked on
 				const tagKeyMatches = $( this ).attr( 'id' ).match( /.*-tag-(.*)/ );
@@ -263,27 +263,12 @@ module.exports = ToolView.extend( {
 					tagSet[ tagKey ].allTagKey = allTagKey;
 				}
 
-				// Tags in the 'common' group actually belong to other categories.
+				// Tags in the 'all' group actually belong to other categories.
 				// In those cases we need to interact with the real parent
 				// category which is indicated in the 'dest' attribute.
-				if ( ( cat === 'common' || cat === 'all' ) && tagSet[ tagKey ].dest ) {
+				if ( ( cat === 'all' ) && tagSet[ tagKey ].dest ) {
 					destCat = tagSet[ tagKey ].dest;
-					// destKey is only available for 'all' and not for 'common'
-					// if we are in the 'common' column, use tagKey instead
-					if ( cat === 'all' ) {
-						destKey = tagSet[ tagKey ].destKey;
-					} else {
-						destKey = tagKey;
-					}
-				}
-
-				// Tags in other groups may also belong to the 'common' group.
-				// In these cases, we need to update the corresponding tag
-				// in the 'common' group as well.
-				if ( cat !== 'common' &&
-					that.tagsOptions.common &&
-					that.tagsOptions.common.tags[ tagKey ] !== undefined ) {
-					alsoCommon = true;
+					destKey = tagSet[ tagKey ].destKey;
 				}
 
 				if ( !that.selectedTag[ cat ][ tagKey ] ) {
@@ -293,9 +278,6 @@ module.exports = ToolView.extend( {
 					that.selectedTag[ cat ][ tagKey ] = tagSet[ tagKey ];
 					if ( destCat ) {
 						that.selectedTag[ destCat ][ destKey ] = tagSet[ tagKey ];
-					}
-					if ( alsoCommon ) {
-						that.selectedTag.common[ tagKey ] = tagSet[ tagKey ];
 					}
 
 					if ( that.tagsOptions.all ) {
@@ -317,9 +299,6 @@ module.exports = ToolView.extend( {
 					delete that.selectedTag[ cat ][ tagKey ];
 					if ( destCat ) {
 						delete that.selectedTag[ destCat ][ destKey ];
-					}
-					if ( alsoCommon ) {
-						delete that.selectedTag.common[ tagKey ];
 					}
 					if ( that.tagsOptions.all ) {
 						delete that.selectedTag.all[ allTagKey ];

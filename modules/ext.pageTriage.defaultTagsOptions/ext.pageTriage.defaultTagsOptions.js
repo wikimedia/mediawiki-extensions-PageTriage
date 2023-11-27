@@ -148,20 +148,6 @@
 
 	const pageTriageTagsOptions = {
 
-		common: {
-			label: mw.msg( 'pagetriage-tags-cat-common-label' ),
-			alias: true,
-			tags: {
-				linkrot: Object.assign( {}, LINKROT_TAG, { dest: 'sources' } ),
-				copyedit: Object.assign( {}, COPYEDIT_TAG, { dest: 'cleanup' } ),
-				morefootnotes: Object.assign( {}, MOREFOOTNOTES_TAG, { dest: 'sources' } ),
-				refimprove: Object.assign( {}, REFIMPROVE_TAG, { dest: 'sources' } ),
-				unreferenced: Object.assign( {}, UNREFERENCED_TAG, { dest: 'sources' } ),
-				stub: Object.assign( {}, STUB_TAG, { dest: 'structure' } ),
-				uncategorised: Object.assign( {}, UNCATEGORISED_TAG, { dest: 'metadata' } )
-			}
-		},
-
 		cleanup: {
 			label: mw.msg( 'pagetriage-tags-cat-cleanup-label' ),
 			tags: {
@@ -966,107 +952,6 @@
 
 	$.pageTriageTagsOptions = {
 		all: {},
-		common: {
-			label: mw.msg( 'pagetriage-tags-cat-common-label' ),
-			alias: true,
-			tags: {
-				underreview: {
-					label: 'Under review',
-					tag: 'Under review',
-					desc: 'You intend to assess the article but it will take some time. Tag to avoid patrolling redundancy.',
-					params: {
-						date: param.date
-					},
-					position: 'top',
-					multiple: true
-				},
-
-				linkrot: {
-					label: mw.msg( 'pagetriage-tags-linkrot-label' ),
-					tag: 'linkrot',
-					desc: mw.msg( 'pagetriage-tags-linkrot-desc' ),
-					params: {
-						date: param.date
-					},
-					position: 'top',
-					dest: 'sources',
-					multiple: true
-				},
-
-				copyedit: {
-					label: mw.msg( 'pagetriage-tags-copyedit-label' ),
-					tag: 'copy edit',
-					desc: mw.msg( 'pagetriage-tags-copyedit-desc' ),
-					params: {
-						date: param.date,
-						for: $.extend( true, {}, param.for )
-					},
-					position: 'top',
-					dest: 'cleanup',
-					multiple: true
-				},
-
-				morefootnotes: {
-					label: mw.msg( 'pagetriage-tags-morefootnotes-label' ),
-					tag: 'more footnotes',
-					desc: mw.msg( 'pagetriage-tags-morefootnotes-desc' ),
-					params: {
-						date: param.date,
-						blp: $.extend( true, {}, param.blp )
-					},
-					position: 'top',
-					dest: 'sources',
-					multiple: true
-				},
-
-				refimprove: {
-					label: mw.msg( 'pagetriage-tags-refimprove-label' ),
-					tag: 'refimprove',
-					desc: mw.msg( 'pagetriage-tags-refimprove-desc' ),
-					params: {
-						date: param.date
-					},
-					position: 'top',
-					dest: 'sources',
-					multiple: true
-				},
-
-				unreferenced: {
-					label: mw.msg( 'pagetriage-tags-unreferenced-label' ),
-					tag: 'unreferenced',
-					desc: mw.msg( 'pagetriage-tags-unreferenced-desc' ),
-					params: {
-						date: param.date
-					},
-					position: 'top',
-					dest: 'sources',
-					multiple: true
-				},
-
-				stub: {
-					label: mw.msg( 'pagetriage-tags-stub-label' ),
-					tag: 'stub',
-					desc: mw.msg( 'pagetriage-tags-stub-desc' ),
-					params: { },
-					position: 'bottom',
-					dest: 'structure',
-					multiple: false
-				},
-
-				uncategorised: {
-					label: mw.msg( 'pagetriage-tags-uncategorised-label' ),
-					tag: 'uncategorised',
-					desc: mw.msg( 'pagetriage-tags-uncategorised-desc' ),
-					params: {
-						date: param.date
-					},
-					position: 'categories',
-					dest: 'metadata',
-					multiple: false
-				}
-			}
-		},
-
 		cleanup: {
 			label: mw.msg( 'pagetriage-tags-cat-cleanup-label' ),
 			tags: {
@@ -2850,6 +2735,5 @@
 			}
 		}
 	};
-	$.pageTriageTagsOptions.common.tags.orphan = $.pageTriageTagsOptions.metadata.tags.orphan;
 }( jQuery, mediaWiki ) );
 // </nowiki>

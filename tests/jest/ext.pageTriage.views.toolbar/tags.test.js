@@ -133,4 +133,65 @@ PageTriage is the best.
 			expect( applyTags ).toBeCalledWith( '\n#REDIRECT [[Hello]]\n\n{{Redirect category shell|\n{{R from initialism}}\n}}', [ 'r from initialism' ] );
 		} );
 	} );
+
+	test( 'selecting from the all category should not cause duplications', function () {
+		const model = new Article( {
+			pageId: 5,
+			includeHistory: true
+		} );
+
+		const tagsOptions = {
+			sources: {
+				tags: {
+					disputed: {
+						label: 'Accuracy issues',
+						tag: 'disputed',
+						desc: 'This page has questionable factual accuracy.',
+						params: {
+							date: {
+								label: 'date',
+								input: 'required',
+								type: 'textarea',
+								value: 'today'
+							}
+						},
+						position: 'top',
+						multiple: true
+					},
+					linkrot: {
+						label: 'Link rot',
+						tag: 'linkrot',
+						desc: 'This page has issues with Link rot',
+						params: {
+							date: {
+								label: 'date',
+								input: 'required',
+								type: 'textarea',
+								value: 'today'
+							}
+						},
+						position: 'top',
+						multiple: true
+					}
+				}
+			}
+		};
+
+		$.pageTriageTagsMultiple = 'Multiple issues';
+
+		jest.spyOn( TagToolView.prototype, 'fetchArticleContent' ).mockImplementation( () => Promise.resolve( 'This is a page.' ) );
+
+		const applyTags = jest.spyOn( TagToolView.prototype, 'applyTags' ).mockImplementation( () => {
+		} );
+
+		const toolbar = new TagToolView( { tagsOptions: JSON.parse( JSON.stringify( tagsOptions ) ), model } );
+
+		toolbar.selectedTag = {
+			all: tagsOptions.sources.tags
+		};
+
+		return toolbar.submit().then( () => {
+			expect( applyTags ).toBeCalledWith( '\n{{Multiple issues|\n{{disputed|date=today}}\n{{linkrot|date=today}}\n}}\nThis is a page.', [ 'disputed', 'linkrot' ] );
+		} );
+	} );
 } );

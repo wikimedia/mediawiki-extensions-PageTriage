@@ -12,6 +12,7 @@ module.exports = {
 		// backbone needs this defined here because of the way it checks for jquery & underscore
 		'^./modules/(.+)/ext.pageTriage.(.+).underscore': '<rootDir>/modules/$1/$2.underscore'
 	},
+	clearMocks: true,
 	collectCoverage: true,
 	collectCoverageFrom: [
 		'modules/**/*.(js|vue)'
