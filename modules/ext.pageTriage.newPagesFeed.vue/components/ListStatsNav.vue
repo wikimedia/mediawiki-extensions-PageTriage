@@ -22,10 +22,13 @@
 					</span>
 				</cdx-button>
 			</div>
-			<div v-show="showStats">
+			<div v-if="showStats">
 				<div>{{ $i18n( 'pagetriage-unreviewed-article-count', unreviewedArticleCount, unreviewedRedirectCount, unreviewedOldest ).text() }}</div>
 
 				<div>{{ $i18n( 'pagetriage-reviewed-article-count-past-week', reviewedArticleCount, reviewedRedirectCount ).text() }}</div>
+			</div>
+			<div v-else-if="showDraftStats">
+				<div>{{ $i18n( 'pagetriage-unreviewed-draft-count', unreviewedDraftCount, unreviewedOldestDraft ).text() }}</div>
 			</div>
 		</div>
 	</div>
@@ -87,7 +90,7 @@ module.exports = {
 				this.apiResult.stats &&
 				this.apiResult.stats.unreviewedarticle
 			) {
-				return this.apiResult.stats.unreviewedarticle.count;
+				return this.apiResult.stats.unreviewedarticle.count || 0;
 			}
 			// Should not be shown
 			return -1;
@@ -97,7 +100,17 @@ module.exports = {
 				this.apiResult.stats &&
 				this.apiResult.stats.unreviewedredirect
 			) {
-				return this.apiResult.stats.unreviewedredirect.count;
+				return this.apiResult.stats.unreviewedredirect.count || 0;
+			}
+			// Should not be shown
+			return -1;
+		},
+		unreviewedDraftCount() {
+			if ( this.apiResult.result === 'success' &&
+				this.apiResult.stats &&
+				this.apiResult.stats.unrevieweddraft
+			) {
+				return this.apiResult.stats.unrevieweddraft.count || 0;
 			}
 			// Should not be shown
 			return -1;
@@ -120,14 +133,35 @@ module.exports = {
 				return this.$i18n( 'pagetriage-stats-less-than-a-day', diff ).text();
 			}
 			// Should not be shown
-			return '?';
+			return -1;
+		},
+		unreviewedOldestDraft() {
+			if ( this.apiResult.result === 'success' &&
+				this.apiResult.stats &&
+				this.apiResult.stats.unrevieweddraft &&
+				this.apiResult.stats.unrevieweddraft.count
+			) {
+				const rawOldest = this.apiResult.stats.unreviewedarticle.oldest;
+				// convert to number of days based on formatDaysFromNow in
+				// pagetriage
+				if ( !rawOldest ) {
+					return '';
+				}
+				const diff = this.calculateDiff( rawOldest );
+				if ( diff ) {
+					return this.$i18n( 'days', diff ).text();
+				}
+				return this.$i18n( 'pagetriage-stats-less-than-a-day', diff ).text();
+			}
+			// Should not be shown
+			return -1;
 		},
 		reviewedArticleCount() {
 			if ( this.apiResult.result === 'success' &&
 				this.apiResult.stats &&
 				this.apiResult.stats.reviewedarticle
 			) {
-				return this.apiResult.stats.reviewedarticle.reviewed_count;
+				return this.apiResult.stats.reviewedarticle.reviewed_count || 0;
 			}
 			// Should not be shown
 			return -1;
@@ -137,7 +171,7 @@ module.exports = {
 				this.apiResult.stats &&
 				this.apiResult.stats.reviewedredirect
 			) {
-				return this.apiResult.stats.reviewedredirect.reviewed_count;
+				return this.apiResult.stats.reviewedredirect.reviewed_count || 0;
 			}
 			// Should not be shown
 			return -1;
@@ -150,6 +184,12 @@ module.exports = {
 				this.unreviewedOldest !== '?' &&
 				this.reviewedArticleCount !== -1 &&
 				this.reviewedRedirectCount !== -1;
+		},
+		showDraftStats() {
+			// make sure all the values were computed
+			return this.queueMode === 'afc' &&
+				this.unreviewedDraftCount !== -1 &&
+				this.unreviewedOldestDraft !== -1;
 		}
 	},
 	methods: {
