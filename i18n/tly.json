@@ -7,18 +7,22 @@
 		]
 	},
 	"pagetriage-please-wait": "Zəhmət nıbu...",
+	"pagetriage-no-categories": "Kategorijon nin",
 	"pagetriage-user-creation-dateformat": "ssss-MM-rr",
 	"pagetriage-filter-date-range-to": "Bə",
 	"pagetriage-filter-show-heading": "Һол:",
 	"pagetriage-filter-ns-all": "Həmmə",
 	"pagetriage-more": "Ve",
 	"pagetriage-filter-stat-all": "Həmmə",
+	"pagetriage-filter-stat-no-categories": "Kategorijon nin",
 	"pagetriage-tags-cat-metadata-label": "Metaməlumoton",
 	"pagetriage-tags-cat-sources-label": "Səvonon",
 	"pagetriage-tags-cat-structure-label": "Struktur",
+	"pagetriage-tags-catimprove-label": "Vej kategorijon",
 	"pagetriage-tags-update-label": "Xovniyey",
 	"pagetriage-tags-param-free-yes-label": "Ha",
 	"pagetriage-tags-param-free-no-label": "Ne",
 	"pagetriage-info-history-header": "Torix",
+	"pagetriage-info-problem-no-categories": "Kategorijon nin",
 	"pagetriage-afc-state-all": "Həmmə"
 }
