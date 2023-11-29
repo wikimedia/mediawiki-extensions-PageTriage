@@ -9,6 +9,9 @@
 				{{ groupShowing }}
 			</cdx-info-chip>
 		</template>
+		<div v-show="settings.currentFilteredCount !== -1" class="mwe-vue-pt-control-label-right mwe-vue-pt-filter-count">
+			{{ $i18n( 'pagetriage-stats-filter-page-count', settings.currentFilteredCount ).text() }}
+		</div>
 	</div>
 </template>
 
@@ -44,6 +47,13 @@ module.exports = {
 	name: 'ShowingText',
 	components: {
 		CdxInfoChip
+	},
+	setup() {
+		const settings = useSettingsStore();
+		settings.loadApiParams();
+		return {
+			settings
+		};
 	},
 	data: function () {
 		return {
@@ -211,5 +221,9 @@ module.exports = {
 .mwe-vue-pt-showing-filter-chip {
 	background-color: @background-color-base;
 	margin: @spacing-25 0 0 @spacing-25;
+}
+
+.mwe-vue-pt-filter-count {
+	margin-left: @spacing-50;
 }
 </style>
