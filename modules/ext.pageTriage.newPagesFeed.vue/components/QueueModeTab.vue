@@ -1,17 +1,10 @@
 <template>
-	<cdx-tabs
-		v-model:active="settings.immediate.queueMode"
-		framed
-		@update:active="( newVal ) => { settings.updateImmediate( 'queueMode', newVal ) }">
-		<cdx-tab
-			name="npp"
-			:label="$i18n( 'pagetriage-new-page-patrol' ).text()">
-		</cdx-tab>
-		<cdx-tab
-			name="afc"
-			:label="$i18n( 'pagetriage-articles-for-creation' ).text()">
-		</cdx-tab>
-	</cdx-tabs>
+	<cdx-toggle-button-group
+		v-model="settings.immediate.queueMode"
+		:buttons="buttons"
+		class="mwe-vue-pt-npp-afc-mode-toggle"
+		@update:model-value="( newVal ) => { settings.updateImmediate( 'queueMode', newVal ) }">
+	</cdx-toggle-button-group>
 </template>
 
 <script>
@@ -19,7 +12,7 @@
  * Tab group for switching between new page patrol and articles for creation queues
  */
 
-const { CdxTab, CdxTabs } = require( '@wikimedia/codex' );
+const { CdxToggleButtonGroup } = require( '@wikimedia/codex' );
 const { useSettingsStore } = require( '../stores/settings.js' );
 // @vue/component
 module.exports = {
@@ -30,9 +23,32 @@ module.exports = {
 		whitespace: 'condense'
 	},
 	name: 'QueueModeTab',
-	components: { CdxTab, CdxTabs },
+	components: { CdxToggleButtonGroup },
 	data() {
-		return { settings: useSettingsStore() };
+		const buttons = [
+			{
+				label: this.$i18n( 'pagetriage-new-page-patrol' ).text(),
+				value: 'npp'
+			},
+			{
+				label: this.$i18n( 'pagetriage-articles-for-creation' ).text(),
+				value: 'afc'
+			}
+		];
+		const settings = useSettingsStore();
+		return {
+			buttons,
+			settings
+		};
 	}
 };
 </script>
+
+<style lang="less">
+@import 'mediawiki.skin.variables.less';
+
+.mwe-vue-pt-npp-afc-mode-toggle {
+	margin-bottom: @spacing-50;
+}
+
+</style>
