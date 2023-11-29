@@ -154,7 +154,6 @@
 	"pagetriage-articleinfo-stat": "Statistik: $1",
 	"pagetriage-js-required": "Detta tillägg kräver en webbläsare med JavaScript.",
 	"pagetriage-tags-title": "Lägg till taggar:",
-	"pagetriage-tags-cat-common-label": "Allmän",
 	"pagetriage-tags-cat-metadata-label": "Metadata",
 	"pagetriage-tags-cat-cleanup-label": "Rensning",
 	"pagetriage-tags-cat-neutrality-label": "Neutralitet",
