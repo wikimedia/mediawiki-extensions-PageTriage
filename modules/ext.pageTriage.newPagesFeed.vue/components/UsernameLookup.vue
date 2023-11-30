@@ -2,11 +2,13 @@
 	<cdx-lookup
 		v-model:selected="usernameVal"
 		:initial-input-value="username"
+		:value="currentSearchTerm"
 		:menu-items="menuItems"
 		class="mwe-vue-pt-username-lookup"
 		:menu-config="menuConfig"
 		inline
 		@input="onInput"
+		@paste.prevent="onPaste"
 		@focus="$emit( 'focus' )"
 	>
 		<template #no-results>
@@ -39,7 +41,7 @@ module.exports = {
 	emits: [ 'update:username', 'focus' ],
 	setup( props, { emit } ) {
 		const menuItems = ref( [] );
-		const currentSearchTerm = ref( '' );
+		const currentSearchTerm = ref( props.username );
 
 		function fetchUsernames( searchTerm ) {
 			const api = new mw.Api();
@@ -51,6 +53,12 @@ module.exports = {
 				aulimit: 3,
 				auwitheditsonly: '1'
 			} ).then( ( resp ) => { return resp.query.allusers; } );
+		}
+
+		function onPaste( evt ) {
+			const clipboardText = evt.clipboardData.getData( 'text/plain' ).trim();
+			currentSearchTerm.value = clipboardText;
+			onInput( clipboardText );
 		}
 
 		function onInput( value ) {
@@ -101,7 +109,9 @@ module.exports = {
 			usernameVal: ref( props.username ),
 			menuConfig,
 			menuItems,
-			onInput
+			currentSearchTerm,
+			onInput,
+			onPaste
 		};
 	}
 };
