@@ -8,7 +8,8 @@
 			"Mirzali",
 			"Shirayuki",
 			"Umlaut",
-			"Wnme"
+			"Wnme",
+			"The Other Karma"
 		]
 	},
 	"pagetriage": "Seitenprüfungshilfe",
@@ -83,6 +84,7 @@
 	"pagetriage-filter-unreviewed-edits": "Ungeprüfte Seiten",
 	"pagetriage-filter-nominated-for-deletion": "Zur Löschung vorgeschlagene",
 	"pagetriage-filter-bot-edits": "Bots",
+	"pagetriage-filter-autopatrolled-edits": "Autopatrollierte Benutzer",
 	"pagetriage-filter-redirects": "Weiterleitungen (keine RfD)",
 	"pagetriage-filter-others": "Alle anderen",
 	"pagetriage-filter-namespace-heading": "Im Namensraum:",
@@ -116,6 +118,7 @@
 	"pagetriage-filter-stat-reviewed": "Überprüft",
 	"pagetriage-filter-stat-unreviewed": "Ungeprüft",
 	"pagetriage-filter-stat-bots": "Von Bots",
+	"pagetriage-filter-stat-autopatrolled": "Von Autopatrollierten Benutzern",
 	"pagetriage-filter-stat-redirects": "Weiterleitungen",
 	"pagetriage-filter-stat-others": "Alle anderen",
 	"pagetriage-filter-stat-nominated-for-deletion": "Zur Löschung vorgeschlagen",
@@ -145,6 +148,7 @@
 	"pagetriage-warning-browser": "Dieses Hilfsmittel funktioniert möglicherweise nicht mit Browsern, die älter sind als der Internet Explorer 11.",
 	"pagetriage-welcome": "Bitte überprüfe die unten angezeigten neuen Seiten und hilf, {{SITENAME}} zu verbessern. [$1 Erfahre mehr hierzu] · [$2 Hinterlasse eine Rückmeldung]",
 	"pagetriage-note-reviewed": "Diese Seite wurde geprüft.",
+	"pagetriage-note-autopatrolled": "Diese Seite wurde automatisch autopatrolliert.",
 	"pagetriage-note-not-reviewed": "Diese Seite wurde bislang noch nicht geprüft.",
 	"pagetriage-note-deletion": "Diese Seite wurde zum Löschen vorgeschlagen.",
 	"pagetriage-refresh-list": "Liste aktualisieren",
