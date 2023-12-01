@@ -141,7 +141,7 @@ module.exports = {
 				this.apiResult.stats.unrevieweddraft &&
 				this.apiResult.stats.unrevieweddraft.count
 			) {
-				const rawOldest = this.apiResult.stats.unreviewedarticle.oldest;
+				const rawOldest = this.apiResult.stats.unrevieweddraft.oldest;
 				// convert to number of days based on formatDaysFromNow in
 				// pagetriage
 				if ( !rawOldest ) {
