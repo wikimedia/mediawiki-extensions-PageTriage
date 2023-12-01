@@ -17,6 +17,8 @@ use SpecialPage;
 use TitleFormatter;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
+use Wikimedia\Rdbms\IExpression;
+use Wikimedia\Rdbms\OrExpressionGroup;
 
 /**
  * API module to generate a list of pages to triage
@@ -394,8 +396,12 @@ class ApiPageTriageList extends ApiBase {
 		}
 
 		$tagConds = self::buildTagQuery( $opts );
-		if ( $tagConds ) {
-			$conds[] = $tagConds;
+		$numberOfTagConds = count( $tagConds );
+
+		if ( $numberOfTagConds > 0 ) {
+			$conds[] = new OrExpressionGroup( ...$tagConds );
+			$options['GROUP BY'] = "ptrp_page_id";
+			$options['HAVING'] = "COUNT(*) = $numberOfTagConds";
 			self::joinWithTags( $tables, $join_conds );
 		}
 
@@ -471,6 +477,11 @@ class ApiPageTriageList extends ApiBase {
 				$options,
 				$join_conds
 			);
+
+			if ( $res === false ) {
+				return 0;
+			}
+
 			return (int)$res->total;
 		} else {
 			// Pull page IDs from database
@@ -512,51 +523,44 @@ class ApiPageTriageList extends ApiBase {
 
 	/**
 	 * @param array $opts
-	 * @return string SQL condition for use in a WHERE clause
+	 * @return IExpression[] SQL condition for use in a WHERE clause
 	 */
 	private static function buildTagQuery( array $opts ) {
 		$dbr = PageTriageUtil::getReplicaConnection();
-		$tagConds = '';
+		$tagConds = [];
 
 		$searchableTags = [
 			// no categories assigned
-			'no_category' => [ 'name' => 'category_count', 'op' => '=', 'val' => '0' ],
+			'no_category' => [ 'name' => 'category_count', 'val' => 0 ],
 			// No citations
-			'unreferenced' => [ 'name' => 'reference', 'op' => '=', 'val' => '0' ],
+			'unreferenced' => [ 'name' => 'reference', 'val' => 0 ],
 			// AfC status
-			'afc_state' => [ 'name' => 'afc_state', 'op' => '=', 'val' => false ],
+			'afc_state' => [ 'name' => 'afc_state', 'val' => null ],
 			// no inbound links
-			'no_inbound_links' => [ 'name' => 'linkcount', 'op' => '=', 'val' => '0' ],
+			'no_inbound_links' => [ 'name' => 'linkcount', 'val' => 0 ],
 			// previously deleted
-			'recreated' => [ 'name' => 'recreated', 'op' => '=', 'val' => '1' ],
+			'recreated' => [ 'name' => 'recreated', 'val' => 1 ],
 			// non auto confirmed users
-			'non_autoconfirmed_users' => [ 'name' => 'user_autoconfirmed', 'op' => '=', 'val' => '0' ],
+			'non_autoconfirmed_users' => [ 'name' => 'user_autoconfirmed', 'val' => 0 ],
 			// learning users (newly autoconfirmed)
-			'learners' => [ 'name' => 'user_experience', 'op' => '=', 'val' => 'learner' ],
+			'learners' => [ 'name' => 'user_experience', 'val' => 'learner' ],
 			// blocked users
-			'blocked_users' => [ 'name' => 'user_block_status', 'op' => '=', 'val' => '1' ],
+			'blocked_users' => [ 'name' => 'user_block_status', 'val' => 1 ],
 			// bots
-			'showbots' => [ 'name' => 'user_bot', 'op' => '=', 'val' => '1' ],
+			'showbots' => [ 'name' => 'user_bot', 'val' => 1 ],
 			// user name
 			// false means use the actual value
-			'username' => [ 'name' => 'user_name', 'op' => '=', 'val' => false ]
+			'username' => [ 'name' => 'user_name', 'val' => null ]
 		];
 
 		$tagIDs = ArticleMetadata::getValidTags();
-		$table = 'pagetriage_pt';
 
 		// only single tag search is allowed
 		foreach ( $searchableTags as $key => $val ) {
 			if ( isset( $opts[$key] ) && $opts[$key] ) {
-				if ( $val['val'] === false ) {
-					// if val is false, use the value that was supplied via the api call
-					$tagConds = " $table.ptrpt_tag_id = " . $dbr->addQuotes( $tagIDs[$val['name']] ) . " AND " .
-						"$table.ptrpt_value " . $val['op'] . " " . $dbr->addQuotes( $opts[$key] );
-				} else {
-					$tagConds = " $table.ptrpt_tag_id = " . $dbr->addQuotes( $tagIDs[$val['name']] ) . " AND " .
-						"$table.ptrpt_value " . $val['op'] . " " . $dbr->addQuotes( $val['val'] );
-				}
-				break;
+				$tagConds[] = $dbr
+					->expr( "ptrpt_tag_id", "=", $tagIDs[$val['name']] )
+					->and( "ptrpt_value", "=", $val['val'] ?? $opts[$key] );
 			}
 		}
 

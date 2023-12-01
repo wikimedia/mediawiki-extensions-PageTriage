@@ -95,6 +95,37 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	}
 
 	/**
+	 * Test cases where the user requests a afc page with a specific submission type
+	 */
+	public function testAfcTagsAndThatFilter() {
+		$user = self::getTestUser()->getUser();
+		$apiParams = [
+			'afc_state' => ArticleCompileAfcTag::DECLINED,
+			'recreated' => 1
+		];
+
+		$this->insertPage( 'Normal Unsubmitted Page', '', $this->draftNsId );
+		$this->insertPage( 'Declined Afc Page', '[[Category:Declined AfC submissions]]', $this->draftNsId );
+
+		$recreatedPage = $this->insertPage( 'Recreated declined afc submission', 'some stuff', $this->draftNsId );
+
+		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $recreatedPage['title'] );
+
+		$this->deletePage( $page, 'Test', $user );
+
+		$recreatedPage = $this->insertPage(
+			'Recreated declined afc submission',
+			'[[Category:Declined AfC submissions]]',
+			$this->draftNsId
+		);
+
+		$list = $this->getPageTriageList( $apiParams );
+
+		$this->assertCount( 1, $list );
+		$this->assertSame( 'Draft:Recreated declined afc submission', $list[0]['title'] );
+	}
+
+	/**
 	 * When there are multiple AfC categories on the page.
 	 */
 	public function testMultiAfcCategories() {

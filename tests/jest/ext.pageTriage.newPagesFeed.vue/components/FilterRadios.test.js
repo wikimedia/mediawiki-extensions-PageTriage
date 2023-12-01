@@ -1,11 +1,11 @@
 const { mount } = require( '@vue/test-utils' );
 const mixins = require( '../../../mocks/mixins.js' );
-let NppFilterRadio;
+let FilterRadios;
 let wrapper;
-describe( 'NppFilterRadio.vue', () => {
+describe( 'FilterRadios.vue', () => {
 	beforeEach( () => {
-		NppFilterRadio = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/components/NppFilterRadio.vue' );
-		wrapper = mount( NppFilterRadio, {
+		FilterRadios = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/components/FilterRadios.vue' );
+		wrapper = mount( FilterRadios, {
 			mixins: [ mixins ]
 		} );
 	} );

@@ -65,11 +65,12 @@
 							></date-control-section>
 						</div>
 						<control-section label-msg="pagetriage-filter-second-show-heading">
-							<npp-filter-radio
+							<filter-radios
 								v-model:filter="settings.unsaved.nppFilter"
 								v-model:user="settings.unsaved.nppFilterUser"
+								type="npp"
 							>
-							</npp-filter-radio>
+							</filter-radios>
 						</control-section>
 						<div v-if="showOresFilters" class="mwe-vue-pt-control-section__col2">
 							<control-section label-msg="pagetriage-filter-predicted-class-heading">
@@ -105,8 +106,18 @@
 								type="afc"
 							></date-control-section>
 						</div>
-						<template v-if="showOresFilters">
+						<control-section label-msg="pagetriage-filter-second-show-heading">
 							<div class="mwe-vue-pt-control-section__col2">
+								<filter-radios
+									v-model:filter="settings.unsaved.afcFilter"
+									v-model:user="settings.unsaved.afcFilterUser"
+									type="afc"
+								>
+								</filter-radios>
+							</div>
+						</control-section>
+						<template v-if="showOresFilters">
+							<div class="mwe-vue-pt-control-section__col3">
 								<control-section label-msg="pagetriage-filter-predicted-class-heading">
 									<labeled-checkbox
 										v-for="( _, rating ) in settings.unsaved.afcPredictedRating"
@@ -116,8 +127,6 @@
 									>
 									</labeled-checkbox>
 								</control-section>
-							</div>
-							<div class="mwe-vue-pt-control-section__col3">
 								<control-section label-msg="pagetriage-filter-predicted-issues-heading">
 									<labeled-checkbox
 										v-for="( _, issue ) in settings.unsaved.afcPossibleIssues"
@@ -181,7 +190,7 @@ const QueueModeTab = require( './QueueModeTab.vue' );
 const AfcSortSelect = require( './AfcSortSelect.vue' );
 const AfcStateRadio = require( './AfcStateRadio.vue' );
 const NppSortDirRadio = require( './NppSortDirRadio.vue' );
-const NppFilterRadio = require( './NppFilterRadio.vue' );
+const FilterRadios = require( './FilterRadios.vue' );
 const ShowingText = require( './ShowingText.vue' );
 const { CdxButton } = require( '@wikimedia/codex' );
 const { useSettingsStore } = require( '../stores/settings.js' );
@@ -201,7 +210,7 @@ module.exports = {
 		LabeledCheckbox,
 		QueueModeTab,
 		NppSortDirRadio,
-		NppFilterRadio,
+		FilterRadios,
 		AfcSortSelect,
 		AfcStateRadio,
 		ShowingText,

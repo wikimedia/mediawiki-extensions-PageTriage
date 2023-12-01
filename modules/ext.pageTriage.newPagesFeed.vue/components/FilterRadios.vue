@@ -62,11 +62,12 @@ module.exports = {
 	compilerOptions: {
 		whitespace: 'condense'
 	},
-	name: 'NppFilterRadio',
+	name: 'FilterRadios',
 	components: { CdxRadio, UsernameLookup },
 	props: {
 		filter: { type: String, default: '' },
-		user: { type: String, default: '' }
+		user: { type: String, default: '' },
+		type: { type: String, default: 'npp' }
 	},
 	emits: [
 		'update:filter',
@@ -78,28 +79,32 @@ module.exports = {
 			byUser: ref( props.user )
 		};
 	},
-	data: function () {
+	data: function ( props ) {
+		const thatRadios = [
+			{
+				value: 'no-categories',
+				label: this.$i18n( 'pagetriage-filter-no-categories' ).text()
+			},
+			{
+				value: 'unreferenced',
+				label: this.$i18n( 'pagetriage-filter-unreferenced' ).text()
+			},
+			{
+				value: 'recreated',
+				label: this.$i18n( 'pagetriage-filter-recreated' ).text()
+			}
+		];
+
+		if ( props.type === 'npp' ) {
+			thatRadios.push( {
+				value: 'orphan',
+				label: this.$i18n( 'pagetriage-filter-orphan' ).text()
+			} );
+		}
 		return {
 			filterUserHeadingLabel: this.$i18n( 'pagetriage-filter-user-heading' ).text(),
 			filterAllLabel: this.$i18n( 'pagetriage-filter-all' ).text(),
-			thatRadios: [
-				{
-					value: 'no-categories',
-					label: this.$i18n( 'pagetriage-filter-no-categories' ).text()
-				},
-				{
-					value: 'unreferenced',
-					label: this.$i18n( 'pagetriage-filter-unreferenced' ).text()
-				},
-				{
-					value: 'orphan',
-					label: this.$i18n( 'pagetriage-filter-orphan' ).text()
-				},
-				{
-					value: 'recreated',
-					label: this.$i18n( 'pagetriage-filter-recreated' ).text()
-				}
-			],
+			thatRadios,
 			byRadios: [
 				{
 					value: 'non-autoconfirmed',
