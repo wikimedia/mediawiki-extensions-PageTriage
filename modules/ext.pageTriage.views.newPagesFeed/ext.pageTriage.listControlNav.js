@@ -118,7 +118,7 @@ const ListControlNav = Backbone.View.extend( {
 
 		// make a reset button
 		$( '#mwe-pt-filter-reset-button' ).button( {
-			label: mw.msg( 'pagetriage-filter-reset-button' )
+			label: $( '<span>' ).text( mw.msg( 'pagetriage-filter-reset-button' ) ).html()
 		} );
 		$( '#mwe-pt-filter-reset-button' ).on( 'click', function ( e ) {
 			that.model.setParams( that.model.defaultApiParams );
@@ -136,7 +136,7 @@ const ListControlNav = Backbone.View.extend( {
 
 		// make a submit button
 		$( '#mwe-pt-filter-set-button' ).button( {
-			label: mw.msg( 'pagetriage-filter-set-button' )
+			label: $( '<span>' ).text( mw.msg( 'pagetriage-filter-set-button' ) ).html()
 		} );
 		$( '#mwe-pt-filter-set-button' ).on( 'click', function ( e ) {
 			that.filterSync();
@@ -798,14 +798,19 @@ const ListControlNav = Backbone.View.extend( {
 	 * @return {string}
 	 */
 	getDateRangeFilterSectionHtml: function ( context ) {
-		return '<span class="mwe-pt-control-label">' +
-					'<b>' + mw.msg( 'pagetriage-filter-date-range-heading' ) + '</b>' +
-				'</span>' +
-				'<div class="mwe-pt-control-options">' +
+		return $( '<span>' )
+			.attr( 'class', 'mwe-pt-control-label' )
+			.append(
+				$( '<b>' ).text( mw.msg( 'pagetriage-filter-date-range-heading' )
+				)
+			).prop( 'outerHTML' ) +
+			$( '<div>' )
+				.attr( 'class', 'mwe-pt-control-options' )
+				.append(
 					this.getDateRangeFilterFieldsHtml( context, 'from' ) +
 					'</br>' +
-					this.getDateRangeFilterFieldsHtml( context, 'to' ) +
-				'</div>';
+					this.getDateRangeFilterFieldsHtml( context, 'to' )
+				).prop( 'outerHTML' );
 	},
 
 	/**
@@ -816,14 +821,19 @@ const ListControlNav = Backbone.View.extend( {
 	 * @return {string}
 	 */
 	getDateRangeFilterFieldsHtml: function ( context, dateRangeType ) {
-		return '<label for="mwe-pt-filter-' + context + '-date-range-' + dateRangeType + '">' +
-					// eslint-disable-next-line mediawiki/msg-doc
-					mw.msg( 'pagetriage-filter-date-range-' + dateRangeType ) + ' ' +
-				'</label>' +
-				'<input type="date" name="mwe-pt-filter-' + context + '-date-range-' + dateRangeType + '"' +
-					'id="mwe-pt-filter-' + context + '-date-range-' + dateRangeType + '"' +
-					'class="mwe-pt-filter-date-range-' + dateRangeType + '"' +
-					'placeholder="' + mw.msg( 'pagetriage-filter-date-range-format-placeholder' ) + '"/>';
+		// The following messages can be used by this code:
+		// * pagetriage-filter-date-range-to
+		// * pagetriage-filter-date-range-from
+		return $( '<label>' ).attr( 'for', 'mwe-pt-filter-' + context + '-date-range-' + dateRangeType )
+			.text( mw.msg( 'pagetriage-filter-date-range-' + dateRangeType ) + ' ' )
+			.prop( 'outerHTML' ) +
+			$( '<input>' ).attr( {
+				type: 'date',
+				name: 'mwe-pt-filter-' + context + '-date-range-' + dateRangeType,
+				id: 'mwe-pt-filter-' + context + '-date-range-' + dateRangeType,
+				class: 'mwe-pt-filter-date-range-' + dateRangeType,
+				placeholder: mw.msg( 'pagetriage-filter-date-range-format-placeholder' )
+			} ).prop( 'outerHTML' );
 	}
 } );
 

@@ -180,7 +180,7 @@ const ListView = Backbone.View.extend( {
 		const pageInfo = view.render().el;
 		$( '#mwe-pt-list-view' ).append( pageInfo );
 		$( pageInfo ).find( '.mwe-pt-list-triage-button' ).show().button( {
-			label: mw.msg( 'pagetriage-triage' ),
+			label: $( '<span>' ).text( mw.msg( 'pagetriage-triage' ) ).html(),
 			icons: { secondary: 'ui-icon-triangle-1-e' }
 		} );
 	},

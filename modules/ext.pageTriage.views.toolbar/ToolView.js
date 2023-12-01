@@ -282,7 +282,9 @@ module.exports = Backbone.View.extend( {
 		return $( '<div>' ).attr( 'id', this.id + '-search' )
 			.addClass( 'mwe-pt-tag-quicksearch' )
 			.append(
-				mw.msg( 'pagetriage-tags-quickfilter-label' ) + ' ',
+				$( '<label>' )
+					.text( mw.msg( 'pagetriage-tags-quickfilter-label' ) )
+					.attr( 'for', this.id + '-search-text' ),
 				$( '<input>' )
 					.attr( { id: this.id + '-search-text',
 						type: 'text' } )
