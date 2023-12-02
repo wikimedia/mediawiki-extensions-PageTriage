@@ -30,7 +30,7 @@
 								{{ $i18n( 'pagetriage-categories', categoryCount ).text() }}
 							</span>
 							<cdx-info-chip v-if="linkCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
-								{{ $i18n( 'pagetriage-orphan' ).text() }}
+								<a :href="whatLinksHereLink">{{ $i18n( 'pagetriage-orphan' ).text() }}</a>
 							</cdx-info-chip>
 							<cdx-info-chip v-if="recreated" class="mwe-vue-pt-metadata-warning">
 								<a :href="previouslyDeletedLogLink">{{ $i18n( 'pagetriage-recreated' ).text() }}</a>
@@ -40,7 +40,7 @@
 							{{ $i18n( 'pagetriage-no-reference' ).text() }}
 						</cdx-info-chip>
 						<cdx-info-chip v-if="creatorBlocked" class="mwe-vue-pt-metadata-warning">
-							{{ $i18n( 'pagetriage-author-blocked' ).text() }}
+							<a :href="blockLogLink">{{ $i18n( 'pagetriage-author-blocked' ).text() }}</a>
 						</cdx-info-chip>
 					</span>
 				</div>
@@ -370,6 +370,16 @@ module.exports = {
 		},
 		previouslyDeletedLogLink: function () {
 			return mw.util.getUrl( 'Special:Log', { type: 'delete', page: this.title } );
+		},
+		blockLogLink: function () {
+			return mw.util.getUrl( 'Special:Log', { type: 'block', page: this.creatorName } );
+		},
+		whatLinksHereLink: function () {
+			return mw.util.getUrl( 'Special:WhatLinksHere', {
+				namespace: 0,
+				hideredirs: 1,
+				target: this.title
+			} );
 		}
 	},
 	methods: {

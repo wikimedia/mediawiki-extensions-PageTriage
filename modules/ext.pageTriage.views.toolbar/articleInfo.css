@@ -30,6 +30,11 @@
 	color: #666;
 }
 
+a .mwe-pt-info-problem-desc {
+	text-decoration: underline;
+	color: #36c;
+}
+
 .mwe-pt-info-status-icon {
 	float: left;
 	padding: 3px 5px 7px 3px;
