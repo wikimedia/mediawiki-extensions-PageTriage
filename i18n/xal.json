@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ukhant Erdemt"
+			"Ukhant Erdemt",
+			"Алия"
 		]
 	},
-	"pagetriage-articleinfo-byline-hidden-username": "Эн халх $1-ар бүтәгдв"
+	"pagetriage-articleinfo-byline-hidden-username": "Эн халх $1-ар бүтәгдв",
+	"pagetriage-active-filters": "Идвктә шүүлтүр:"
 }
