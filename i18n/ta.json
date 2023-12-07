@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Fahimrazick",
 			"Fitoschido",
 			"Karthi.dr",
 			"Shanmugamp7"
@@ -99,6 +100,6 @@
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|தொகுப்பு|தொகுப்புகள்}}",
 	"pagetriage-del-talk-page-notify-error": "ஆக்குநரின் பேச்சுப் பக்கத்தில் அறிவித்தல் தோல்வியடைந்தது",
 	"pagetriage-del-tooltip": "இந்தப் பக்கத்தை நீக்க பரிந்துரை",
-	"pagetriage-toolbar-close": "மூடுக",
+	"pagetriage-toolbar-close": "மூடு",
 	"pagetriage-toolbar-minimize": "சிறிதாக்கவும்"
 }
