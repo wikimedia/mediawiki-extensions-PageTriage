@@ -82,10 +82,6 @@ module.exports = {
 	data: function ( props ) {
 		const thatRadios = [
 			{
-				value: 'no-categories',
-				label: this.$i18n( 'pagetriage-filter-no-categories' ).text()
-			},
-			{
 				value: 'unreferenced',
 				label: this.$i18n( 'pagetriage-filter-unreferenced' ).text()
 			},
@@ -99,6 +95,10 @@ module.exports = {
 			thatRadios.push( {
 				value: 'orphan',
 				label: this.$i18n( 'pagetriage-filter-orphan' ).text()
+			} );
+			thatRadios.push( {
+				value: 'no-categories',
+				label: this.$i18n( 'pagetriage-filter-no-categories' ).text()
 			} );
 		}
 		return {
