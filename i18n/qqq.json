@@ -505,7 +505,7 @@
 	"apihelp-pagetriageaction-param-note": "{{doc-apihelp-param|pagetriageaction|note}}",
 	"apihelp-pagetriageaction-param-skipnotif": "{{doc-apihelp-param|pagetriageaction|skipnotif}}",
 	"apihelp-pagetriageaction-param-enqueue": "{{doc-apihelp-param|pagetriageaction|enqueue}}",
-	"apihelp-pagetriageaction-param-tags": "{{doc-apihelp-param|pagetriageaction|tags}}",
+	"apihelp-pagetriageaction-param-tags": "A '''[[mw:Help:Tags|change tag]]''' is an annotation associated with an edit or log entry. \n\n{{doc-apihelp-param|pagetriageaction|tags}}",
 	"apihelp-pagetriagelist-description": "{{doc-apihelp-description|pagetriagelist}}",
 	"apihelp-pagetriagelist-summary": "{{doc-apihelp-summary|pagetriagelist}}",
 	"apihelp-pagetriagelist-param-afc_state": "{{doc-apihelp-param|pagetriagelist|afc_state}}",
