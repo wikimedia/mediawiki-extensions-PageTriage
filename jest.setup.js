@@ -8,7 +8,6 @@ Backbone.setDomLibrary( $ );
 // mediawiki
 const mockMediaWiki = require( '@wikimedia/mw-node-qunit/src/mockMediaWiki.js' );
 global.mw = mockMediaWiki();
-global.mw.Map = Map;
 
 class Message {
 	text() {
@@ -51,4 +50,4 @@ global.mw.messagePoster = {
 };
 global.mw.Api = Api;
 global.IntersectionObserver = IntersectionObserver;
-global.mw.user.options = new mw.Map();
+global.mw.user.options = new Map();
