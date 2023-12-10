@@ -583,7 +583,8 @@
 						"cdxIconTrash",
 						"cdxIconPlay",
 						"cdxIconStop",
-						"cdxIconReload"
+						"cdxIconReload",
+						"cdxIconNewline"
 					]
 				}
 			],
