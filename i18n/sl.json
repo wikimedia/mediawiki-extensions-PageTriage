@@ -4,7 +4,8 @@
 			"Dbc334",
 			"Eleassar",
 			"Janezdrilc",
-			"Upwinxp"
+			"Upwinxp",
+			"Amire80"
 		]
 	},
 	"pagetriage": "Triažiranje strani",
@@ -349,8 +350,8 @@
 	"pagetriage-feedback-from-new-page-review-process-message": "Med pregledovanjem tega članka sem za ustvarjalca/prihodnje pregledovalce pustil naslednje povratne informacije: $1.",
 	"pagetriage-mark-mark-talk-page-notify-topic-title": "Stran, {{GENDER:|ki ste jo}} začeli ($1), je bila pregledana!",
 	"pagetriage-mark-unmark-talk-page-notify-topic-title": "Stran, ki si jo {{GENDER:|pregledal|pregledala|pregledal_a}}, sem označil_a kot nepregledano",
-	"pagetriage-note-sent-talk-page-notify-topic-title": "Poslal_a sem {{GENDER:|ti}} obvestilo o strani, ki si jo {{GENDER:|začel|začela|začel_a}}",
-	"pagetriage-note-sent-talk-page-notify-topic-title-reviewer": "Poslal_a sem {{GENDER:|ti}} obvestilo o strani, ki si jo {{GENDER:|pregledal|pregledala|pregledal_a}}",
+	"pagetriage-note-sent-talk-page-notify-topic-title": "Poslal/a sem {{GENDER:|ti}} obvestilo o strani, ki si jo {{GENDER:|začel|začela|začel/a}}",
+	"pagetriage-note-sent-talk-page-notify-topic-title-reviewer": "Poslal/a sem {{GENDER:|ti}} obvestilo o strani, ki si jo {{GENDER:|pregledal|pregledala|pregledal/a}}",
 	"pagetriage-tags-param-article-label": "Članek:",
 	"pagetriage-tags-param-date-label": "Datum:",
 	"pagetriage-tags-param-issues-label": "Opišite težave, ki jih je treba obravnavati:",

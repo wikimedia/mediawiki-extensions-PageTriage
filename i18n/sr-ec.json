@@ -290,7 +290,7 @@
 	"logentry-pagetriage-curation-tag": "$1 је {{GENDER:$2|означио|означила}} страницу $3 са {{PLURAL:$5|следећом ознаком|следећим ознакама}}: $4",
 	"logentry-pagetriage-curation-delete": "$1 је {{GENDER:$2|означио|означила}} страницу $3 за брисање са {{PLURAL:$5|следећом ознаком|следећим ознакама}}: $4",
 	"logentry-pagetriage-deletion-delete": "$1 је {{GENDER:$2|означио|означила}} страницу $3 за брисање са {{PLURAL:$5|следећом ознаком|следећим ознакама}}: $4",
-	"log-name-pagetriage-copyvio": "Дневник потенционалног кршења ауторских права",
+	"log-name-pagetriage-copyvio": "Дневник могућег кршења ауторских права",
 	"log-description-pagetriage-copyvio": "Ово је дневник догађаја примљеним путем API-ја PageTriage кршење ауторских права.",
 	"logentry-pagetriage-copyvio-insert": "$1 је {{GENDER:$2|означио|означила}} измену $4 на страници $3 као потенцијално кршење ауторских права",
 	"pagetriage-tags-edit-summary": "Додате ознаке на страници коришћењем алатке $1 ($2)",

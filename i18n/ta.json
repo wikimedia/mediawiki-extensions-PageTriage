@@ -3,7 +3,8 @@
 		"authors": [
 			"Fitoschido",
 			"Karthi.dr",
-			"Shanmugamp7"
+			"Shanmugamp7",
+			"Fahimrazick"
 		]
 	},
 	"pagetriage-please-wait": "தயவுசெய்து காத்திருங்கள்...",
@@ -39,9 +40,9 @@
 	"pagetriage-filter-all": "அனைத்தையும் காண்பி",
 	"pagetriage-filter-set-button": "வடிகட்டிகளை அமை",
 	"pagetriage-stats-less-than-a-day": "ஒரு நாளுக்கும் குறைவான",
-	"pagetriage-filter-ns-all": "அனைத்தும்",
+	"pagetriage-filter-ns-all": "யாவும்",
 	"pagetriage-more": "மேலும்",
-	"pagetriage-filter-stat-all": "அனைத்தும்",
+	"pagetriage-filter-stat-all": "யாவும்",
 	"pagetriage-filter-stat-reviewed": "பரிசீலிக்கப்பட்டது",
 	"pagetriage-filter-stat-unreviewed": "பரிசீலிக்கப்படாதது",
 	"pagetriage-filter-stat-bots": "தானியங்கிகள்",
@@ -102,6 +103,6 @@
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|தொகுப்பு|தொகுப்புகள்}}",
 	"pagetriage-del-talk-page-notify-error": "ஆக்குநரின் பேச்சுப் பக்கத்தில் அறிவித்தல் தோல்வியடைந்தது",
 	"pagetriage-del-tooltip": "இந்தப் பக்கத்தை நீக்க பரிந்துரை",
-	"pagetriage-toolbar-close": "மூடுக",
+	"pagetriage-toolbar-close": "மூடு",
 	"pagetriage-toolbar-minimize": "சிறிதாக்கவும்"
 }
