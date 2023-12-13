@@ -47,9 +47,9 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		$this->db->insert(
 			'pagetriage_tags',
 			[
-				[ 'ptrt_tag_name' => 'afc_state' ],
-				[ 'ptrt_tag_name' => 'user_name' ],
-				[ 'ptrt_tag_name' => 'recreated' ]
+				[ 'ptrt_tag_name' => 'afc_state', 'ptrt_tag_desc' => 'For testing' ],
+				[ 'ptrt_tag_name' => 'user_name', 'ptrt_tag_desc' => 'For testing' ],
+				[ 'ptrt_tag_name' => 'recreated', 'ptrt_tag_desc' => 'For testing' ]
 			],
 			__METHOD__,
 			[ 'IGNORE' ]
