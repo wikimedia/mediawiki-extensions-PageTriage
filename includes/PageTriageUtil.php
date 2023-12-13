@@ -293,7 +293,7 @@ class PageTriageUtil {
 
 				$conds = [
 					'ptrpt_tag_id' => $afcStateTagId,
-					'ptrpt_value' => ArticleCompileAfcTag::PENDING,
+					'ptrpt_value' => (string)ArticleCompileAfcTag::PENDING,
 					'page_namespace' => $config->get( 'PageTriageDraftNamespaceId' )
 				];
 
@@ -473,7 +473,7 @@ class PageTriageUtil {
 		$dbw->startAtomic( __METHOD__ );
 		$dbw->newUpdateQueryBuilder()
 			->update( 'pagetriage_page_tags' )
-			->set( [ 'ptrpt_value' => $userBlockStatusToWrite ] )
+			->set( [ 'ptrpt_value' => (string)$userBlockStatusToWrite ] )
 			->where( [ 'ptrpt_page_id' => $pageIds, 'ptrpt_tag_id' => $tags['user_block_status'] ] )
 			->caller( __METHOD__ )
 			->execute();

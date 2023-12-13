@@ -68,7 +68,7 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 			->join( 'pagetriage_tags', null, 'ptrpt_tag_id = ptrt_tag_id' )
 			->where( [
 				'ptrt_tag_name' => 'afc_state',
-				'ptrpt_value' => ArticleCompileAfcTag::PENDING,
+				'ptrpt_value' => (string)ArticleCompileAfcTag::PENDING,
 			] )
 			->caller( __METHOD__ )
 			->fetchField();
@@ -106,7 +106,7 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 			[
 				'ptrpt_tag_id = ptrt_tag_id',
 				'ptrt_tag_name' => 'afc_state',
-				'ptrpt_value' => ArticleCompileAfcTag::PENDING,
+				'ptrpt_value' => (string)ArticleCompileAfcTag::PENDING,
 			],
 			[ [ 5 + $initialAfCPendingCount ] ]
 		);
