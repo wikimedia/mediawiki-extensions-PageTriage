@@ -112,7 +112,9 @@ module.exports = {
 			// placeholder reference for drag area
 			dragArea: ref( null ),
 			// placeholder reference for toolbar
-			toolbar: ref( null )
+			toolbar: ref( null ),
+			// placeholder reference for text dir
+			dir: ref( 'ltr' )
 		};
 	},
 	data: function () {
@@ -123,7 +125,7 @@ module.exports = {
 			includeHistory: true
 		} );
 		// Set initial toolbar display state from preference.
-		const display = mw.user.options.get( 'userjs-curationtoolbar' );
+		const display = mw.user.options.get( 'userjs-curationtoolbar', 'maximized' );
 		const style = {};
 		const isDragging = false;
 		return {
@@ -152,12 +154,14 @@ module.exports = {
 		},
 		// records the starting position and enables dragging when the pointer is down on the toolbar
 		dragEnable: function ( event ) {
-			// starting pointer position
-			pos.start.x = event.clientX;
-			pos.start.y = event.clientY;
-			this.isDragging = true;
-			// add move handler; set directly for immediate effect
-			this.dragArea.onpointermove = this.doDrag;
+			if ( event.which && event.which === 1 ) {
+				// starting pointer position
+				pos.start.x = event.clientX;
+				pos.start.y = event.clientY;
+				this.isDragging = true;
+				// add move handler; set directly for immediate effect
+				this.dragArea.onpointermove = this.doDrag;
+			}
 		},
 		// disables dragging when the pointer is released from the toolbar
 		dragDisable: function () {
@@ -182,19 +186,29 @@ module.exports = {
 		},
 		// actually calculates and updates the position of the toolbar
 		updatePosition: function () {
-			// calculate toolbar x position, constrained to window
-			const maxLeft = $( window ).width() - this.toolbar.offsetWidth;
-			let left = this.toolbar.offsetLeft - pos.new.x;
-			left = Math.max( left, 0 );
-			left = Math.min( left, maxLeft );
 			// calculate toolbar y position, constrained to window
-			const maxTop = $( window ).height() - this.toolbar.offsetHeight;
+			const maxY = $( window ).height() - this.toolbar.offsetHeight;
 			let top = this.toolbar.offsetTop - pos.new.y;
 			top = Math.max( top, 0 );
-			top = Math.min( top, maxTop );
-			// set element position
+			top = Math.min( top, maxY );
 			this.style.top = `${top}px`;
-			this.style.left = `${left}px`;
+
+			// calculate toolbar x position, constrained to window
+			const maxX = $( window ).width() - this.toolbar.offsetWidth;
+			// ltr sets position relative to right side
+			if ( this.dir === 'ltr' ) {
+				const offsetRight = maxX - this.toolbar.offsetLeft;
+				let right = offsetRight + pos.new.x;
+				right = Math.max( right, 0 );
+				right = Math.min( right, maxX );
+				this.style.right = `${right}px`;
+			// rtl sets position relative to left side
+			} else if ( this.dir === 'rtl' ) {
+				let left = this.toolbar.offsetLeft - pos.new.x;
+				left = Math.max( left, 0 );
+				left = Math.min( left, maxX );
+				this.style.left = `${left}px`;
+			}
 		},
 		close: function () {
 			this.setToolbarDisplay( 'hidden' );
@@ -243,6 +257,10 @@ module.exports = {
 	 * Recreates much of the Toolbarview.js render method for compatibility with backbone tool views
 	 */
 	mounted: function () {
+		// RTL check for drag behavior
+		if ( document.querySelector( 'body.rtl' ) ) {
+			this.dir = 'rtl';
+		}
 		// Stop dragging any time the pointer is released, regardless of its location
 		document.addEventListener( 'pointerup', this.dragDisable );
 		// Update position on resize to keep the toolbar within the viewport
