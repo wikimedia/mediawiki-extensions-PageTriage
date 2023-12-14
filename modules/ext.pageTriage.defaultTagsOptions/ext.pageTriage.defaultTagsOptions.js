@@ -122,6 +122,126 @@
 
 	$.pageTriageTagsOptions = {
 		all: {},
+
+		common: {
+			label: mw.msg( 'pagetriage-tags-cat-common-label' ),
+			alias: true,
+			tags: {
+				// TODO: these are all duplicates of other entries in this list. this should be refactored to
+				// avoid duplication.
+				// TODO: underreview is an exception and is only found up here. it should also be added to one
+				// of the menus that isn't the "common" menu
+				// TODO: refactoring strategy: this should just be an array of tags, e.g. common: ['underreview',
+				// 'linkrot', '...']. Then JS code somewhere else handles the duplicating.
+				underreview: {
+					label: 'Under review',
+					tag: 'Under review',
+					desc: 'You intend to assess the article but it will take some time. Tag to avoid patrolling redundancy.',
+					params: {
+						date: param.date
+					},
+					position: 'top',
+					multiple: true
+				},
+
+				linkrot: {
+					label: mw.msg( 'pagetriage-tags-linkrot-label' ),
+					tag: 'linkrot',
+					desc: mw.msg( 'pagetriage-tags-linkrot-desc' ),
+					params: {
+						date: param.date
+					},
+					position: 'top',
+					dest: 'sources',
+					multiple: true
+				},
+
+				copyedit: {
+					label: mw.msg( 'pagetriage-tags-copyedit-label' ),
+					tag: 'copy edit',
+					desc: mw.msg( 'pagetriage-tags-copyedit-desc' ),
+					params: {
+						date: param.date,
+						for: $.extend( true, {}, param.for )
+					},
+					position: 'top',
+					dest: 'cleanup',
+					multiple: true
+				},
+
+				morefootnotes: {
+					label: mw.msg( 'pagetriage-tags-morefootnotes-label' ),
+					tag: 'more footnotes',
+					desc: mw.msg( 'pagetriage-tags-morefootnotes-desc' ),
+					params: {
+						date: param.date,
+						blp: $.extend( true, {}, param.blp )
+					},
+					position: 'top',
+					dest: 'sources',
+					multiple: true
+				},
+
+				refimprove: {
+					label: mw.msg( 'pagetriage-tags-refimprove-label' ),
+					tag: 'refimprove',
+					desc: mw.msg( 'pagetriage-tags-refimprove-desc' ),
+					params: {
+						date: param.date
+					},
+					position: 'top',
+					dest: 'sources',
+					multiple: true
+				},
+
+				unreferenced: {
+					label: mw.msg( 'pagetriage-tags-unreferenced-label' ),
+					tag: 'unreferenced',
+					desc: mw.msg( 'pagetriage-tags-unreferenced-desc' ),
+					params: {
+						date: param.date
+					},
+					position: 'top',
+					dest: 'sources',
+					multiple: true
+				},
+
+				stub: {
+					label: mw.msg( 'pagetriage-tags-stub-label' ),
+					tag: 'stub',
+					desc: mw.msg( 'pagetriage-tags-stub-desc' ),
+					params: { },
+					position: 'bottom',
+					dest: 'structure',
+					multiple: false
+				},
+
+				uncategorised: {
+					label: mw.msg( 'pagetriage-tags-uncategorised-label' ),
+					tag: 'uncategorised',
+					desc: mw.msg( 'pagetriage-tags-uncategorised-desc' ),
+					params: {
+						date: param.date
+					},
+					position: 'categories',
+					dest: 'metadata',
+					multiple: false
+				},
+
+				orphan: {
+					label: mw.msg( 'pagetriage-tags-orphan-label' ),
+					tag: 'orphan',
+					desc: mw.msg( 'pagetriage-tags-orphan-desc' ),
+					params: {
+						date: param.date
+					},
+					position: 'top',
+					// TODO: add `dest: 'metadata',` ?
+					multiple: true
+				}
+			}
+		},
+
 		cleanup: {
 			label: mw.msg( 'pagetriage-tags-cat-cleanup-label' ),
 			tags: {

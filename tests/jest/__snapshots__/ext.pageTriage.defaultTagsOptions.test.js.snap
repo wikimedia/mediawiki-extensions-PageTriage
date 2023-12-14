@@ -526,6 +526,159 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
       },
     },
   },
+  "common": {
+    "alias": true,
+    "label": "pagetriage-tags-cat-common-label",
+    "tags": {
+      "copyedit": {
+        "desc": "pagetriage-tags-copyedit-desc",
+        "dest": "cleanup",
+        "label": "pagetriage-tags-copyedit-label",
+        "multiple": true,
+        "params": {
+          "date": {
+            "input": "automated",
+            "label": "pagetriage-tags-param-date-label",
+            "type": "hidden",
+            "value": "pagetriage-tags-param-date-format",
+          },
+          "for": {
+            "input": "optional",
+            "label": "pagetriage-tags-param-for-label",
+            "type": "textarea",
+            "value": "",
+          },
+        },
+        "position": "top",
+        "tag": "copy edit",
+      },
+      "linkrot": {
+        "desc": "pagetriage-tags-linkrot-desc",
+        "dest": "sources",
+        "label": "pagetriage-tags-linkrot-label",
+        "multiple": true,
+        "params": {
+          "date": {
+            "input": "automated",
+            "label": "pagetriage-tags-param-date-label",
+            "type": "hidden",
+            "value": "pagetriage-tags-param-date-format",
+          },
+        },
+        "position": "top",
+        "tag": "linkrot",
+      },
+      "morefootnotes": {
+        "desc": "pagetriage-tags-morefootnotes-desc",
+        "dest": "sources",
+        "label": "pagetriage-tags-morefootnotes-label",
+        "multiple": true,
+        "params": {
+          "blp": {
+            "input": "optional",
+            "label": "pagetriage-tags-param-blp-label",
+            "type": "checkbox",
+            "value": "",
+          },
+          "date": {
+            "input": "automated",
+            "label": "pagetriage-tags-param-date-label",
+            "type": "hidden",
+            "value": "pagetriage-tags-param-date-format",
+          },
+        },
+        "position": "top",
+        "tag": "more footnotes",
+      },
+      "orphan": {
+        "desc": "pagetriage-tags-orphan-desc",
+        "label": "pagetriage-tags-orphan-label",
+        "multiple": true,
+        "params": {
+          "date": {
+            "input": "automated",
+            "label": "pagetriage-tags-param-date-label",
+            "type": "hidden",
+            "value": "pagetriage-tags-param-date-format",
+          },
+        },
+        "position": "top",
+        "tag": "orphan",
+      },
+      "refimprove": {
+        "desc": "pagetriage-tags-refimprove-desc",
+        "dest": "sources",
+        "label": "pagetriage-tags-refimprove-label",
+        "multiple": true,
+        "params": {
+          "date": {
+            "input": "automated",
+            "label": "pagetriage-tags-param-date-label",
+            "type": "hidden",
+            "value": "pagetriage-tags-param-date-format",
+          },
+        },
+        "position": "top",
+        "tag": "refimprove",
+      },
+      "stub": {
+        "desc": "pagetriage-tags-stub-desc",
+        "dest": "structure",
+        "label": "pagetriage-tags-stub-label",
+        "multiple": false,
+        "params": {},
+        "position": "bottom",
+        "tag": "stub",
+      },
+      "uncategorised": {
+        "desc": "pagetriage-tags-uncategorised-desc",
+        "dest": "metadata",
+        "label": "pagetriage-tags-uncategorised-label",
+        "multiple": false,
+        "params": {
+          "date": {
+            "input": "automated",
+            "label": "pagetriage-tags-param-date-label",
+            "type": "hidden",
+            "value": "pagetriage-tags-param-date-format",
+          },
+        },
+        "position": "categories",
+        "tag": "uncategorised",
+      },
+      "underreview": {
+        "desc": "You intend to assess the article but it will take some time. Tag to avoid patrolling redundancy.",
+        "label": "Under review",
+        "multiple": true,
+        "params": {
+          "date": {
+            "input": "automated",
+            "label": "pagetriage-tags-param-date-label",
+            "type": "hidden",
+            "value": "pagetriage-tags-param-date-format",
+          },
+        },
+        "position": "top",
+        "tag": "Under review",
+      },
+      "unreferenced": {
+        "desc": "pagetriage-tags-unreferenced-desc",
+        "dest": "sources",
+        "label": "pagetriage-tags-unreferenced-label",
+        "multiple": true,
+        "params": {
+          "date": {
+            "input": "automated",
+            "label": "pagetriage-tags-param-date-label",
+            "type": "hidden",
+            "value": "pagetriage-tags-param-date-format",
+          },
+        },
+        "position": "top",
+        "tag": "unreferenced",
+      },
+    },
+  },
   "copyrightviolation": {
     "label": "Copyright violation",
     "tags": {

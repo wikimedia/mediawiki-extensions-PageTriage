@@ -208,6 +208,7 @@
 	"pagetriage-has-talkpage-feedback-link": "Text of the link used in {{msg-mw|pagetriage-has-talkpage-feedback}}.",
 	"pagetriage-js-required": "Error message for browsers with JavaScript disabled",
 	"pagetriage-tags-title": "The title for the tag wizard flyout in the toolbar.\n{{Identical|Add tag}}",
+	"pagetriage-tags-cat-common-label": "Label for common category.\n{{Identical|Common}}",
 	"pagetriage-tags-cat-metadata-label": "Label for metadata category.\n{{Identical|Metadata}}",
 	"pagetriage-tags-cat-cleanup-label": "Label for cleanup category\n{{Identical|Cleanup}}",
 	"pagetriage-tags-cat-neutrality-label": "Label for neutrality category.\n{{Identical|Neutrality}}",
