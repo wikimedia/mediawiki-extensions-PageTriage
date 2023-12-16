@@ -2,7 +2,7 @@ const { Article, ArticleList } = require( './models/ext.pageTriage.article.js' )
 const { Revision, RevisionList } = require( './models/ext.pageTriage.stats.js' );
 const Stats = require( './models/ext.pageTriage.stats.js' );
 
-const contentLanguageMessages = new Map();
+const contentLanguageMessages = new mw.Map();
 
 /**
  * Get a message object, in the content language.  The message must have been exported
