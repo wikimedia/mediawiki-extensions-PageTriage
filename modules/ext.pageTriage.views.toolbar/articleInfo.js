@@ -220,15 +220,6 @@ module.exports = ToolView.extend( {
 		return output;
 	},
 
-	formatCopyvioProblem: function () {
-		return '<li class="mwe-pt-info-problem">' +
-			'<a href="' + this.model.get( 'copyvio_link_url' ) + '" target="_blank" class="external">' +
-			mw.message( 'pagetriage-info-problem-copyvio' ).escaped() +
-			'</a> - <span class="mwe-pt-info-problem-desc">' +
-			mw.message( 'pagetriage-info-problem-copyvio-desc' ).escaped() +
-			'</span></li>';
-	},
-
 	formatOresProblem: function ( classification ) {
 		// classification is already translated; see OresMetadata::fetchScores().
 		return '<li class="mwe-pt-info-problem"><span class="mwe-pt-info-problem-name">' +
@@ -281,7 +272,7 @@ module.exports = ToolView.extend( {
 		}
 		if ( config.PageTriageEnableCopyvio && parseInt( this.model.get( 'copyvio' ) ) ) {
 			this.problemCount++;
-			problems += this.formatCopyvioProblem();
+			problems += this.formatProblem( 'copyvio', this.model.get( 'copyvio_link_url' ) );
 		}
 		if ( config.PageTriageEnableOresFilters && this.model.get( 'ores_draftquality' ) ) {
 			this.problemCount++;
