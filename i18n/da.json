@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Saederup92",
-			"Sarrus"
+			"Sarrus",
+			"Zakawer2"
 		]
 	},
 	"pagetriage-categories": "$1 {{PLURAL:$1|kategori|kategorier}}",
+	"pagetriage-orphan": "Muligvis forældreløs side",
 	"pagetriage-recreated": "Tidligere slettet",
 	"pagetriage-filter-predicted-issues-vandalism": "Hærværk",
 	"pagetriage-filter-date-range-from": "Fra",
@@ -13,6 +15,7 @@
 	"pagetriage-filter-type-show-heading": "Type:",
 	"pagetriage-filter-others": "Alle andre",
 	"pagetriage-filter-article": "Artikel",
+	"pagetriage-filter-orphan": "Kan muligvis være forældreløs",
 	"pagetriage-filter-stat-type": "Type",
 	"pagetriage-filter-stat-date_range_from": "Fra: $1",
 	"pagetriage-filter-stat-date_range_to": "Til: $1",

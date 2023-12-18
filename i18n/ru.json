@@ -44,7 +44,7 @@
 	"pagetriage-categories": "$1 {{PLURAL:$1|категория|категории|категорий}}",
 	"pagetriage-no-categories": "Нет категорий",
 	"pagetriage-no-reference": "Нет примечаний",
-	"pagetriage-orphan": "Страница-сирота",
+	"pagetriage-orphan": "Возможно, страница-сирота",
 	"pagetriage-recreated": "Ранее удалявшаяся",
 	"pagetriage-no-author": "Нет информации, предоставленной автором",
 	"pagetriage-byline": "Создано $1 ($2$3$4)",
