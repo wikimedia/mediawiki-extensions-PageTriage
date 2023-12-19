@@ -88,7 +88,10 @@
 					</div>
 					<div class="mwe-vue-pt-snippet">
 						<span v-if="isRedirect">
-							<cdx-icon :icon="redirectIcon.icon" dir="rtl" class="mwe-vue-pt-redirect-icon"></cdx-icon>
+							<cdx-icon
+								:icon="redirectIcon.icon"
+								dir="rtl"
+								class="mwe-vue-pt-redirect-icon"></cdx-icon>
 							<a :href="redirectTargetUrl" target="_blank">{{ redirectTarget }}</a>
 						</span>
 						<span v-else>
