@@ -8,7 +8,8 @@
 			"ديفيد",
 			"زكريا",
 			"محمد أحمد عبد الفتاح",
-			"Alshamiri1"
+			"Alshamiri1",
+			"علاء"
 		]
 	},
 	"pagetriage": "فارز الصفحات",
@@ -94,7 +95,7 @@
 	"pagetriage-filter-tag-heading": "لها العلامة:",
 	"pagetriage-filter-second-show-heading": "هي :",
 	"pagetriage-filter-no-categories": "ليس لها أي تصنيفات",
-	"pagetriage-filter-unreferenced": "ليست لديك اقتباسات",
+	"pagetriage-filter-unreferenced": "ليس لديك اقتباسات",
 	"pagetriage-filter-orphan": "هي يتيمة",
 	"pagetriage-filter-recreated": "حُذِفت سابقا",
 	"pagetriage-filter-non-autoconfirmed": "تم إنشاؤه من قبل القادمين الجدد (مستخدمين غير مؤكدين تلقائيا)",
