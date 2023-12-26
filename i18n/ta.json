@@ -7,7 +7,7 @@
 			"Fahimrazick"
 		]
 	},
-	"pagetriage-please-wait": "தயவுசெய்து காத்திருங்கள்...",
+	"pagetriage-please-wait": "காத்திருக்க...",
 	"pagetriage-hist": "வரலாறு",
 	"pagetriage-edits": "$1 {{PLURAL:$1|தொகு|தொகுத்தல்கள்}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|பகுப்பு|பகுப்புகள்}}",
@@ -54,7 +54,7 @@
 	"pagetriage-filter-stat-blocked": "தடைசெய்யப்பட்ட பயனர்கள்",
 	"pagetriage-filter-stat-username": "பயனர் பெயர்: $1",
 	"pagetriage-no-pages": "உங்கள் நிபந்தனையுடன் எந்தப் பக்கமும் பொருந்தவில்லை",
-	"pagetriage-warning-browser": "இன்டர்நெட் எக்ஸ்ப்ளோரர் 11 க்கு முந்தைய உலாவிகளில் இந்தக் கருவி சரியாக வேலை செய்யாமலிருக்கலாம்.",
+	"pagetriage-warning-browser": "இக்கருவி இண்டர்நெட்டு எக்ஸ்ப்ளோரர் 11 இற்கு முந்திய உலாவிகளிற் சரியாக வேலை செய்யாமலிருக்கலாம்.",
 	"pagetriage-note-reviewed": "இந்தப் பக்கம் பரிசீலிக்கப்பட்டது.",
 	"pagetriage-note-not-reviewed": "இந்தப் பக்கம் இன்னும் பரிசீலிக்கப்படவில்லை.",
 	"pagetriage-note-deletion": "இப்பக்கம் நீக்கலுக்கு பரிந்துரைக்கப்பட்டுள்ளது.",
@@ -69,7 +69,7 @@
 	"pagetriage-tags-cat-metadata-label": "மேல் நிலைத் தரவு",
 	"pagetriage-tags-cat-cleanup-label": "துப்புரவு",
 	"pagetriage-tags-cat-neutrality-label": "நடுநிலையானது",
-	"pagetriage-tags-cat-sources-label": "மூலம்:",
+	"pagetriage-tags-cat-sources-label": "மூலங்கள்",
 	"pagetriage-tags-cat-structure-label": "கட்டமைப்பு",
 	"pagetriage-tags-cat-unwantedcontent-label": "தேவையற்ற உள்ளடக்கம்",
 	"pagetriage-tags-cat-verifiability-label": "சரிபார்க்கும் தன்மை",
