@@ -158,33 +158,34 @@ class Hooks implements
 		self::flushUserStatusCache( $oldTitle->toPageIdentity() );
 		self::flushUserStatusCache( $newTitle->toPageIdentity() );
 
-		$oldNamespace = $oldTitle->getNamespace();
 		$newNamespace = $newTitle->getNamespace();
-		// Do nothing further on if
-		// 1. the page move is within the same namespace or
-		// 2. the new page is not in either the main or draft namespaces
 		$draftNsId = $this->config->get( 'PageTriageDraftNamespaceId' );
-		if (
-			$oldNamespace === $newNamespace
-			|| !in_array( $newNamespace, [ NS_MAIN, $draftNsId ], true )
-		) {
+		if ( !in_array( $newNamespace, [ NS_MAIN, $draftNsId ], true ) ) {
 			return;
 		}
 
-		// If not a new record to pagetriage queue, do nothing.
-		if ( !self::addToPageTriageQueue( $oldid, $newTitle, $user ) ) {
-			return;
-		}
-		// Item was newly added to PageTriage queue in master DB, compile metadata.
-		$acp = ArticleCompileProcessor::newFromPageId( [ $oldid ] );
-		if ( $acp ) {
-			// Since this is a title move, the only component requiring DB_PRIMARY will be
-			// BasicData.
-			$acp->configComponentDb(
-				ArticleCompileProcessor::getSafeComponentDbConfigForCompilation()
+		$newAdditionToFeed = self::addToPageTriageQueue( $oldid, $newTitle, $user );
+		DeferredUpdates::addCallableUpdate( static function () use ( $oldid, $newAdditionToFeed ) {
+			$acp = ArticleCompileProcessor::newFromPageId(
+				[ $oldid ],
+				false
 			);
-			$acp->compileMetadata();
-		}
+			if ( $acp ) {
+				// If the article is new, compile all metadata, else only compile the 'recreated'
+				// field
+				if ( $newAdditionToFeed ) {
+					// Since this is a title move, the only component requiring DB_PRIMARY will be
+					// BasicData.
+					$acp->configComponentDb(
+						ArticleCompileProcessor::getSafeComponentDbConfigForCompilation()
+					);
+
+				} else {
+					$acp->registerComponent( 'Recreated' );
+				}
+				$acp->compileMetadata();
+			}
+		} );
 	}
 
 	/** @inheritDoc */
