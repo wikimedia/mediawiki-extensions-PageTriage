@@ -112,12 +112,6 @@ module.exports = ToolView.extend( {
 	render: function () {
 		const that = this;
 
-		function handleFocus() {
-			$( this ).val( '' );
-			$( this ).css( 'color', 'black' );
-			$( this ).off( 'focus', handleFocus );
-		}
-
 		this.reset();
 		this.$tel.html( this.template(
 			{
@@ -130,18 +124,6 @@ module.exports = ToolView.extend( {
 
 		// set the Learn More link URL
 		$( '#mwe-pt-tag .mwe-pt-flyout-help-link' ).attr( 'href', this.moduleConfig.helplink );
-		$( '#mwe-pt-tag-note-input' )
-			.on( 'keyup', function () {
-				if ( that.selectedTagCount > 0 ) {
-					$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
-				} else {
-					$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
-				}
-			} )
-			.on( 'focus', handleFocus )
-			.on( 'change', function () {
-				that.noteChanged = true;
-			} );
 
 		// add click event for each category
 		$( '#mwe-pt-categories' ).find( 'div' ).each( function () {
@@ -831,10 +813,7 @@ module.exports = ToolView.extend( {
 
 	applyTags: function ( wikitext, tagList ) {
 		const that = this;
-		let note = $( '#mwe-pt-tag-note-input' ).val().trim();
-		if ( !this.noteChanged || !note.length ) {
-			note = '';
-		}
+		const note = $( '#mwe-pt-tag-note-input' ).val().trim();
 
 		new mw.Api().postWithToken( 'csrf', {
 			action: 'pagetriagetagging',

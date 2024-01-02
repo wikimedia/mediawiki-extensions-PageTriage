@@ -9,7 +9,7 @@ const assert = require( 'assert' ),
 
 describe( 'Special:NewPagesFeed', function () {
 	it( 'is viewable', async function () {
-		await NewPagesFeed.open();
+		NewPagesFeed.open();
 		await browser.waitUntil( async () => {
 			return await NewPagesFeed.listview.getText() !== 'Please wait...';
 		} );
@@ -26,14 +26,14 @@ describe( 'Special:NewPagesFeed', function () {
 		const articleName = Util.getTestString( 'NewArticle-' );
 		await EditPage.open( articleName );
 		await EditPage.saveArticle( Util.getTestString() );
-		await RunJobs.run();
+		RunJobs.run();
 
 		// close and reopen the browser window, logging out the user and making it easier
 		// to navigate to Special:NewPagesFeed
 		await browser.reloadSession();
 
 		// Special:NewPagesFeed
-		await NewPagesFeed.open();
+		NewPagesFeed.open();
 		await browser.waitUntil( async () => {
 			return await NewPagesFeed.listview.getText() !== 'Please wait...';
 		} );
