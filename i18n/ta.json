@@ -63,7 +63,7 @@
 	"pagetriage-button-add-details": "விவரங்களைச் சேர்",
 	"pagetriage-button-edit-details": "தொகுப்பு விவரங்கள்",
 	"pagetriage-button-mark-for-deletion": "நீக்கலுக்கு குறி",
-	"pagetriage-add-a-note-creator": "உருவாக்குனருக்கு ஒரு செய்தியைச் சேர்: (விருப்பத்தேர்வு)",
+	"pagetriage-add-a-note-creator": "ஆக்குநருக்கு ஒரு செய்தியைச் சேர்: (விரும்பினால்)",
 	"pagetriage-personal-default-note": "{{GENDER:$1|$1}} க்கு ஒரு உதவிகரமான குறிப்பை எழுதவும். இது அவர்களின் பேச்சுப் பக்கத்தில் பதிவிடப்படும்.",
 	"pagetriage-tags-cat-common-label": "பொதுவான",
 	"pagetriage-tags-cat-metadata-label": "மேல் நிலைத் தரவு",
