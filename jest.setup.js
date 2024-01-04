@@ -9,6 +9,7 @@ Backbone.setDomLibrary( $ );
 const mockMediaWiki = require( '@wikimedia/mw-node-qunit/src/mockMediaWiki.js' );
 global.mw = mockMediaWiki();
 global.mw.Map = Map;
+global.mediaWiki = mw;
 
 class Message {
 	text() {
