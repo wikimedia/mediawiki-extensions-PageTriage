@@ -351,11 +351,6 @@
 		$.pageTriageDeletionTagsMultiple = pageTriageDeletionTagsMultiple;
 		$.pageTriageDeletionTagsOptions = pageTriageDeletionTagsOptions;
 	}
-
-	module.exports = {
-		pageTriageDeletionTagsMultiple,
-		pageTriageDeletionTagsOptions
-	};
 }() );
 
 // ============================================================================================
@@ -686,3 +681,5 @@ $.pageTriageDeletionTagsOptions.Main.speedydeletioncommon.tags = {
 		talkpagenotiftpl: 'Redirnone-warn-NPF'
 	}
 };
+
+module.exports = { $ };

@@ -15,13 +15,13 @@ describe( 'defaultTagsOptions', () => {
 	} );
 
 	test( 'defaultTagsOptions', () => {
-		expect( defaultTagsOptions.pageTriageTagsRedirectCategoryShell ).not.toBe( undefined );
-		expect( defaultTagsOptions.pageTriageTagsMultiple ).not.toBe( undefined );
-		expect( defaultTagsOptions.pageTriageTagsOptions ).not.toBe( undefined );
+		expect( defaultTagsOptions.$.pageTriageTagsRedirectCategoryShell ).not.toBe( undefined );
+		expect( defaultTagsOptions.$.pageTriageTagsMultiple ).not.toBe( undefined );
+		expect( defaultTagsOptions.$.pageTriageTagsOptions ).not.toBe( undefined );
 	} );
 
 	test( 'defaultDeletionTagsOptions', () => {
-		expect( defaultTagsOptions.pageTriageDeletionTagsMultiple ).not.toBe( undefined );
-		expect( defaultTagsOptions.pageTriageDeletionTagsOptions ).not.toBe( undefined );
+		expect( defaultTagsOptions.$.pageTriageDeletionTagsMultiple ).not.toBe( undefined );
+		expect( defaultTagsOptions.$.pageTriageDeletionTagsOptions ).not.toBe( undefined );
 	} );
 } );

@@ -38,10 +38,10 @@ describe( 'DeleteToolView', () => {
 
 		// for first test cache current value
 		if ( !pageTriageDeletionTagsOptions ) {
-			pageTriageDeletionTagsOptions = $.extend( true, {}, defaultTagsOptions.pageTriageDeletionTagsOptions );
+			pageTriageDeletionTagsOptions = $.extend( true, {}, defaultTagsOptions.$.pageTriageDeletionTagsOptions );
 		} else {
 			// reset. There might have been side effects
-			defaultTagsOptions.pageTriageDeletionTagsOptions = pageTriageDeletionTagsOptions;
+			defaultTagsOptions.$.pageTriageDeletionTagsOptions = pageTriageDeletionTagsOptions;
 		}
 		$.pageTriageDeletionTagsOptions = $.extend( true, {}, pageTriageDeletionTagsOptions );
 
