@@ -13,7 +13,6 @@ module.exports = {
 		'^./modules/(.+)/ext.pageTriage.(.+).underscore': '<rootDir>/modules/$1/$2.underscore'
 	},
 	clearMocks: true,
-	collectCoverage: true,
 	collectCoverageFrom: [
 		'modules/**/*.(js|vue)'
 	],
