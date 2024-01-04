@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\PageTriage\Maintenance;
 use Maintenance;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
+use Wikimedia\Rdbms\IDatabase;
 
 /**
  * A maintenance script that updates expired user metadata
@@ -11,11 +12,11 @@ use MediaWiki\Extension\PageTriage\PageTriageUtil;
 class UpdateUserMetadata extends Maintenance {
 
 	/**
-	 * @var \Wikimedia\Rdbms\IDatabase|null
+	 * @var IDatabase|null
 	 */
 	protected $dbr;
 	/**
-	 * @var \Wikimedia\Rdbms\IDatabase|null
+	 * @var IDatabase|null
 	 */
 	protected $dbw;
 

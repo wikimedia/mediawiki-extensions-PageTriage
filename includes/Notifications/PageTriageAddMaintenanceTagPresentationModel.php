@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\PageTriage\Notifications;
 
 use ExtensionRegistry;
-use SpecialPage;
+use MediaWiki\SpecialPage\SpecialPage;
 
 class PageTriageAddMaintenanceTagPresentationModel extends PageTriagePresentationModel {
 	/**

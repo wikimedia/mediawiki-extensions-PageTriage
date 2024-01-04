@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
-use DeferredUpdates;
 use IBufferingStatsdDataFactory;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Deferred\LinksUpdate\LinksUpdate;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\CompileArticleMetadataJob;

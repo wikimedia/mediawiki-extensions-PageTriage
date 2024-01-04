@@ -3,9 +3,10 @@
 namespace MediaWiki\Extension\PageTriage;
 
 use Exception;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\Html\Html;
 use MediaWiki\Html\TemplateParser;
-use SpecialPage;
+use MediaWiki\SpecialPage\SpecialPage;
 
 /**
  * This file defines the SpecialNewPagesFeed class which handles the functionality for the
@@ -29,7 +30,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 	/**
 	 * Define what happens when the special page is loaded by the user.
 	 * @param string $sub The subpage, if any
-	 * @throws \ConfigException
+	 * @throws ConfigException
 	 */
 	public function execute( $sub ) {
 		// phpcs:ignore MediaWiki.Usage.ExtendClassUsage.FunctionConfigUsage

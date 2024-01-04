@@ -6,6 +6,7 @@ use Content;
 use LinksUpdate;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Revision\SlotRecord;
 use Wikimedia\Rdbms\IDatabase;
 use WikiPage;
@@ -138,7 +139,7 @@ abstract class ArticleCompile {
 
 	/**
 	 * @param int $pageId
-	 * @return bool|\ParserOutput|null
+	 * @return bool|ParserOutput|null
 	 */
 	protected function getParserOutputByPageId( $pageId ) {
 		// Prefer a preregistered LinksUpdate
