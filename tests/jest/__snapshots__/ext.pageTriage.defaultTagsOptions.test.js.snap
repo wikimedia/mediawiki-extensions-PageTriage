@@ -592,6 +592,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
       },
       "orphan": {
         "desc": "pagetriage-tags-orphan-desc",
+        "dest": "metadata",
         "label": "pagetriage-tags-orphan-label",
         "multiple": true,
         "params": {

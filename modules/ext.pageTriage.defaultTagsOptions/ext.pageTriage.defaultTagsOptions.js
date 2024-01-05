@@ -130,6 +130,8 @@
 			alias: true,
 			tags: {
 				// The tag MUST also exist in a subsection, or the tag will not work.
+				// The tag MUST have a "dest" set. This should be equal to the name of the menu that
+				// the other tag is located in.
 				// TODO: these are all duplicates of other entries in this list. this should be refactored to
 				// avoid duplication.
 				// TODO: refactoring strategy: this should just be an array of tags, e.g. common: ['underreview',
@@ -238,7 +240,7 @@
 						date: param.date
 					},
 					position: 'top',
-					// TODO: add `dest: 'metadata',` ?
+					dest: 'metadata',
 					multiple: true
 				}
 			}
