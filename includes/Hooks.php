@@ -4,8 +4,6 @@ namespace MediaWiki\Extension\PageTriage;
 
 use ApiDisabled;
 use Article;
-use Config;
-use DeferredUpdates;
 use ExtensionRegistry;
 use IBufferingStatsdDataFactory;
 use ManualLogEntry;
@@ -14,6 +12,8 @@ use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\ChangeTags\Hook\ChangeTagsAllowedAddHook;
 use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
 use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
+use MediaWiki\Config\Config;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\Notifications\PageTriageAddDeletionTagPresentationModel;
@@ -33,9 +33,10 @@ use MediaWiki\Page\Hook\RevisionFromEditCompleteHook;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\PermissionManager;
-use MediaWiki\ResourceLoader as RL;
+use MediaWiki\ResourceLoader\Context;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
@@ -45,12 +46,11 @@ use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\Utils\MWTimestamp;
 use MediaWiki\WikiMap\WikiMap;
-use MWTimestamp;
-use ParserOutput;
 use RecentChange;
-use User;
 use Wikimedia\Rdbms\Database;
 use WikiPage;
 
@@ -587,11 +587,11 @@ class Hooks implements
 	/**
 	 * Generates messages for toolbar
 	 *
-	 * @param RL\Context $context
+	 * @param Context $context
 	 * @param Config $config
 	 * @return array
 	 */
-	public static function toolbarContentLanguageMessages( RL\Context $context, \Config $config ) {
+	public static function toolbarContentLanguageMessages( Context $context, Config $config ) {
 		$keys = array_merge(
 			[
 				'pagetriage-mark-mark-talk-page-notify-topic-title',
@@ -614,11 +614,11 @@ class Hooks implements
 	/**
 	 * Generates messages for toolbar
 	 *
-	 * @param RL\Context $context
+	 * @param Context $context
 	 * @param Config $config
 	 * @return array
 	 */
-	public static function toolbarConfig( RL\Context $context, Config $config ) {
+	public static function toolbarConfig( Context $context, Config $config ) {
 		$pageTriageCurationModules = $config->get( 'PageTriageCurationModules' );
 		$pageTriageCurationDependencies = [];
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'WikiLove' ) ) {

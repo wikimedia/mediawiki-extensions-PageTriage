@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
-use User;
+use MediaWiki\User\User;
 
 /**
  * Article User data

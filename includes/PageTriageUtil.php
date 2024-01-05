@@ -3,10 +3,10 @@
 namespace MediaWiki\Extension\PageTriage;
 
 use ApiRawMessage;
-use Config;
 use Exception;
 use ExtensionRegistry;
 use MediaWiki\Block\DatabaseBlock;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\PageTriage\Api\ApiPageTriageList;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;

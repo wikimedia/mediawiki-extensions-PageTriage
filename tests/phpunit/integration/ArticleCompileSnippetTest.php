@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\PageTriage\Test\Integration;
 
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileSnippet;
 use MediaWikiIntegrationTestCase;
+use Wikimedia\TestingAccessWrapper;
 
 /**
  * @covers \MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileSnippet
@@ -20,7 +21,7 @@ class ArticleCompileSnippetTest extends MediaWikiIntegrationTestCase {
 			[],
 		);
 		/** @var ArticleCompileSnippet $articleCompileSnippet */
-		$articleCompileSnippet = \Wikimedia\TestingAccessWrapper::newFromObject( $articleCompileSnippet );
+		$articleCompileSnippet = TestingAccessWrapper::newFromObject( $articleCompileSnippet );
 		// <ref></ref> style references
 		$this->assertFalse( $articleCompileSnippet->hasReferenceTag( 'no ref text' ) );
 		$this->assertFalse( $articleCompileSnippet->hasReferenceTag( 'no ref text<ref>' ) );

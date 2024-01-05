@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Parser\Sanitizer;
 use MediaWiki\Title\Title;
-use Sanitizer;
 use TextContent;
 
 /**

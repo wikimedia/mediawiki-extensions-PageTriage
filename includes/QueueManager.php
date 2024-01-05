@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
-use Status;
+use MediaWiki\Status\Status;
 use Wikimedia\Rdbms\IConnectionProvider;
 
 /**

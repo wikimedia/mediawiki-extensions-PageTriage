@@ -6,6 +6,7 @@ use Maintenance;
 use MediaWiki\Extension\PageTriage\PageTriageServices;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
+use Wikimedia\Rdbms\IDatabase;
 
 /**
  * A maintenance script that updates expired page metadata
@@ -13,11 +14,11 @@ use MediaWiki\MediaWikiServices;
 class RemoveOldRows extends Maintenance {
 
 	/**
-	 * @var \Wikimedia\Rdbms\IDatabase|null
+	 * @var IDatabase|null
 	 */
 	protected $dbr;
 	/**
-	 * @var \Wikimedia\Rdbms\IDatabase|null
+	 * @var IDatabase|null
 	 */
 	protected $dbw;
 
