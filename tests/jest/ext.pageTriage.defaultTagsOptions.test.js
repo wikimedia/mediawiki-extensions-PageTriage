@@ -14,14 +14,25 @@ describe( 'defaultTagsOptions', () => {
 		defaultTagsOptions = require( '../../modules/ext.pageTriage.defaultTagsOptions/main.js' );
 	} );
 
-	test( 'defaultTagsOptions', () => {
+	test( 'defaultTagsOptions should exist', () => {
 		expect( defaultTagsOptions.$.pageTriageTagsRedirectCategoryShell ).not.toBe( undefined );
 		expect( defaultTagsOptions.$.pageTriageTagsMultiple ).not.toBe( undefined );
 		expect( defaultTagsOptions.$.pageTriageTagsOptions ).not.toBe( undefined );
 	} );
 
-	test( 'defaultDeletionTagsOptions', () => {
+	test( 'defaultDeletionTagsOptions should exist', () => {
 		expect( defaultTagsOptions.$.pageTriageDeletionTagsMultiple ).not.toBe( undefined );
 		expect( defaultTagsOptions.$.pageTriageDeletionTagsOptions ).not.toBe( undefined );
+	} );
+
+	test( 'defaultTagsOptions should match snapshot', () => {
+		expect( defaultTagsOptions.$.pageTriageTagsRedirectCategoryShell ).toMatchSnapshot();
+		expect( defaultTagsOptions.$.pageTriageTagsMultiple ).toMatchSnapshot();
+		expect( defaultTagsOptions.$.pageTriageTagsOptions ).toMatchSnapshot();
+	} );
+
+	test( 'defaultDeletionTagsOptions should match snapshot', () => {
+		expect( defaultTagsOptions.$.pageTriageDeletionTagsMultiple ).toMatchSnapshot();
+		expect( defaultTagsOptions.$.pageTriageDeletionTagsOptions ).toMatchSnapshot();
 	} );
 } );
