@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
 use Content;
-use LinksUpdate;
+use MediaWiki\Deferred\LinksUpdate\LinksUpdate;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\ParserOutput;
