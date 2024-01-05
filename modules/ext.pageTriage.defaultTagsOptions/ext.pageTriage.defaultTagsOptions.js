@@ -815,12 +815,6 @@
 		$.pageTriageTagsRedirectCategoryShell = pageTriageTagsRedirectCategoryShell;
 		$.pageTriageTagsOptions = pageTriageTagsOptions;
 	}
-
-	module.exports = {
-		pageTriageTagsMultiple,
-		pageTriageTagsRedirectCategoryShell,
-		pageTriageTagsOptions
-	};
 }() );
 // </nowiki>
 
@@ -2737,3 +2731,5 @@
 	};
 }( jQuery, mediaWiki ) );
 // </nowiki>
+
+module.exports = { $ };
