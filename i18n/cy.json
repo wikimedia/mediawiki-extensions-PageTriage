@@ -10,7 +10,7 @@
 	"pagetriage-edits": "$1 {{PLURAL:$1|golygiad|golygiad|olygiad|golygiad|golygiad|golygiadau}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|categori|categori|gategori|chategori|chategori|categori}}",
 	"pagetriage-no-categories": "Heb gategorïau",
-	"pagetriage-byline-heading": "Crëwyd gan {{GENDER:$1}}",
+	"pagetriage-byline-heading": "Crëwyd gan {{GENDER:$1|$1}}",
 	"pagetriage-byline-new-editor-heading": "Crëwyd gan {{GENDER:$1|golygydd newydd}}",
 	"pagetriage-author-not-autoconfirmed": "Golygydd newydd",
 	"pagetriage-author-blocked": "Wedi ei flocio",

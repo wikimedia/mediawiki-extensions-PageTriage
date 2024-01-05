@@ -33,7 +33,7 @@
 	"pagetriage-recreated": "Predhodno izbrisana",
 	"pagetriage-no-author": "Ni podatkov o avtorju.",
 	"pagetriage-byline": "Ustvaril_a $1 ($2$3$4)",
-	"pagetriage-byline-heading": "{{GENDER|Ustvaril|Ustvarila|Ustvaril_a}} {{GENDER:$1}}",
+	"pagetriage-byline-heading": "{{GENDER|Ustvaril|Ustvarila|Ustvaril_a}} {{GENDER:$1|$1}}",
 	"pagetriage-byline-new-editor": "Ustvaril novi urejevalec $1 ($2$3$4)",
 	"pagetriage-byline-new-editor-heading": "{{GENDER:$1|Ustvaril nov urejevalec|Ustvarila nova urejevalka|Ustvaril_a nov_a urejevalec_ka}}",
 	"pagetriage-articleinfo-byline": "Stran je $1 ustvaril_a $2 ($3$4$5).",

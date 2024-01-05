@@ -5,7 +5,7 @@
 		]
 	},
 	"pagetriage-recreated": "پہلے مٹائے ہوئے",
-	"pagetriage-byline-heading": "{{GENDER:$1}}ولوں تخلیق تھیا",
+	"pagetriage-byline-heading": "{{GENDER:$1|$1}}ولوں تخلیق تھیا",
 	"pagetriage-filter-predicted-class-start": "شروع",
 	"pagetriage-filter-predicted-class-featured": "خاص خوبیاں آلے",
 	"pagetriage-filter-predicted-issues-none": "کوئی وی کائنی",

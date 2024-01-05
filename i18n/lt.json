@@ -33,7 +33,7 @@
 	"pagetriage-recreated": "Anksčiau ištrinta",
 	"pagetriage-no-author": "Nėra informacijos apie autorių",
 	"pagetriage-byline": "Sukūrė $1 ($2$3$4)",
-	"pagetriage-byline-heading": "Sukūrė {{GENDER:$1}}",
+	"pagetriage-byline-heading": "Sukūrė {{GENDER:$1|$1}}",
 	"pagetriage-byline-new-editor": "Sukūrė naujas redaktorius $1 ($2$3$4)",
 	"pagetriage-byline-new-editor-heading": "Sukūrė {{GENDER:$1|naujas redaktorius|nauja redaktorė}}",
 	"pagetriage-articleinfo-byline": "Šis puslapis sukurtas $1 $2 ($3$4$5)",

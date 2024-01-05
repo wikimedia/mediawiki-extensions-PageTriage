@@ -45,7 +45,7 @@
 	"pagetriage-recreated": "נמחק בעבר",
 	"pagetriage-no-author": "אין מידע על מחבר",
 	"pagetriage-byline": "נוצר על־ידי $1 ($2$3$4)",
-	"pagetriage-byline-heading": "נוצר על־ידי {{GENDER:$1}}",
+	"pagetriage-byline-heading": "נוצר על־ידי {{GENDER:$1|$1}}",
 	"pagetriage-byline-new-editor": "נוצר על־ידי העורך החדש $1 ($2$3$4)",
 	"pagetriage-byline-new-editor-heading": "נוצר על־ידי {{GENDER:$1|עורך חדש|עורכת חדשה}}",
 	"pagetriage-articleinfo-byline": "הדף הזה נוצר ב־$1 על־ידי $2‏ ($3$4$5)",

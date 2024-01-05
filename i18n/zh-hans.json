@@ -64,7 +64,7 @@
 	"pagetriage-recreated": "之前已删除",
 	"pagetriage-no-author": "目前没有作者信息",
 	"pagetriage-byline": "由$1（$2$3$4）创建",
-	"pagetriage-byline-heading": "由{{GENDER:$1}}创建",
+	"pagetriage-byline-heading": "由{{GENDER:$1|$1}}创建",
 	"pagetriage-byline-new-editor": "由新手$1（$2$3$4）创建",
 	"pagetriage-byline-new-editor-heading": "由{{GENDER:$1|新手}}创建",
 	"pagetriage-articleinfo-byline": "该页由$2 ($3$4$5)创建于$1",
