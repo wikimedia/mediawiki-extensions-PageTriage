@@ -120,6 +120,8 @@
 
 	$.pageTriageTagsMultiple = 'Multiple issues';
 
+	// TODO: document what fields such as 'multiple' and 'dest' mean, or give them more descriptive names,
+	// such as 'includeInMultipleIssuesTag' and 'otherMenuThisTagIsIncludedIn'
 	$.pageTriageTagsOptions = {
 		all: {},
 
@@ -127,10 +129,9 @@
 			label: mw.msg( 'pagetriage-tags-cat-common-label' ),
 			alias: true,
 			tags: {
+				// The tag MUST also exist in a subsection, or the tag will not work.
 				// TODO: these are all duplicates of other entries in this list. this should be refactored to
 				// avoid duplication.
-				// TODO: underreview is an exception and is only found up here. it should also be added to one
-				// of the menus that isn't the "common" menu
 				// TODO: refactoring strategy: this should just be an array of tags, e.g. common: ['underreview',
 				// 'linkrot', '...']. Then JS code somewhere else handles the duplicating.
 				underreview: {
@@ -141,6 +142,7 @@
 						date: param.date
 					},
 					position: 'top',
+					dest: 'moretags',
 					multiple: true
 				},
 
@@ -1279,6 +1281,17 @@
 					label: mw.msg( 'pagetriage-tags-plot-label' ),
 					tag: 'plot',
 					desc: mw.msg( 'pagetriage-tags-plot-desc' ),
+					params: {
+						date: param.date
+					},
+					position: 'top',
+					multiple: true
+				},
+
+				underreview: {
+					label: 'Under review',
+					tag: 'Under review',
+					desc: 'You intend to assess the article but it will take some time. Tag to avoid patrolling redundancy.',
 					params: {
 						date: param.date
 					},
