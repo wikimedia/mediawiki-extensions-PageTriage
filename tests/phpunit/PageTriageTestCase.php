@@ -8,7 +8,6 @@ use ExtensionRegistry;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriage;
-use MediaWiki\MediaWikiServices;
 use MockHttpTrait;
 
 /**
@@ -26,7 +25,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		parent::setUp();
 
 		// Define a Draft NS unless there already is one.
-		$draftNsId = MediaWikiServices::getInstance()->getNamespaceInfo()->
+		$draftNsId = $this->getServiceContainer()->getNamespaceInfo()->
 			getCanonicalIndex( 'draft' );
 		if ( $draftNsId === null ) {
 			$this->setMwGlobals( [
@@ -109,7 +108,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	protected function makePage( $title, $draftQualityClass = false, $copyvio = false ) {
 		$user = static::getTestUser()->getUser();
 		$pageAndTitle = $this->insertPage( $title, 'some content', $this->draftNsId, $user );
-		$page = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $pageAndTitle[ 'title' ] );
+		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $pageAndTitle[ 'title' ] );
 		$revId = $page->getLatest();
 		if ( $draftQualityClass ) {
 			$this->setDraftQuality( $revId, $draftQualityClass );
