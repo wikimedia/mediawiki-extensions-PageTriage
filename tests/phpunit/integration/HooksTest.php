@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\PageTriage\Test;
 
 use ContentHandler;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use PageArchive;
 
@@ -43,7 +42,7 @@ class HooksTest extends PageTriageTestCase {
 	 */
 	public function testOnPageDelete() {
 		$title = Title::newFromText( 'Delete me' );
-		$page = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $title );
+		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
 		$user = $this->getTestUser()->getUser();
 		$page->doUserEditContent( ContentHandler::makeContent( 'Delete this article', $title ), $user, 'Comment' );
 
@@ -69,7 +68,7 @@ class HooksTest extends PageTriageTestCase {
 	 */
 	public function testOnPageUndelete() {
 		$title = Title::newFromText( 'Undelete me' );
-		$page = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $title );
+		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
 		$user = $this->getTestUser()->getUser();
 		$page->doUserEditContent( ContentHandler::makeContent( 'Undelete this article', $title ), $user, 'Comment' );
 

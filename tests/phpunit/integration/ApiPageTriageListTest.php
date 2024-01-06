@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\PageTriage\Test;
 use ApiUsageException;
 use ContentHandler;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use MockHttpTrait;
 
@@ -202,7 +201,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$to = Title::newFromText( 'Draft:Test page 3' );
 		$this->insertPage( $from );
 
-		MediaWikiServices::getInstance()
+		$this->getServiceContainer()
 			->getMovePageFactory()
 			->newMovePage( $from, $to )
 			->move( static::getTestUser()->getUser(), '', false );
@@ -228,7 +227,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$originalPagesCount = count( $this->getPageTriageList() );
 
 		// Move the page to mainspace.
-		MediaWikiServices::getInstance()
+		$this->getServiceContainer()
 			->getMovePageFactory()
 			->newMovePage( $from, $to )
 			->move( static::getTestUser()->getUser(), '', false );
