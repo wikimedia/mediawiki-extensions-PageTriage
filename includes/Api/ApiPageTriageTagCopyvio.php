@@ -22,7 +22,10 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 		if ( !$revision ) {
 			$this->dieWithError( [ 'apierror-nosuchrevid', $params['revid'] ] );
 		}
-		if ( !ArticleMetadata::validatePageIds( [ $revision->getPageId() ] ) ) {
+
+		$pageId = $revision->getPageId();
+
+		if ( !ArticleMetadata::validatePageIds( [ $pageId ] ) ) {
 			$this->dieWithError( 'apierror-bad-pagetriage-page' );
 		}
 
@@ -31,7 +34,7 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 			$this->dieWithError( 'apierror-pagetriage-missingtag' );
 		}
 		$row = [
-			'ptrpt_page_id' => $revision->getPageId(),
+			'ptrpt_page_id' => $pageId,
 			'ptrpt_tag_id' => $tags['copyvio'],
 			'ptrpt_value' => $revision->getId()
 		];
@@ -51,6 +54,10 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 				$row,
 				__METHOD__
 			);
+
+			$metadata = new ArticleMetadata( [ $pageId ] );
+			$metadata->flushMetadataFromCache();
+
 			$this->logActivity( $revision );
 			$result = [ 'result' => 'success' ];
 		} else {
