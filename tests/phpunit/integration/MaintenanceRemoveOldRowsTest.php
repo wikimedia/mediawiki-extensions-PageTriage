@@ -16,7 +16,6 @@ class MaintenanceRemoveOldRowsTest extends PageTriageTestCase {
 
 	public function setUp(): void {
 		parent::setUp();
-		$this->tablesUsed = [ 'pagetriage_page' ];
 		// Delete any dangling page triage pages before inserting our test data
 		$this->db->newDeleteQueryBuilder()
 			->deleteFrom( 'pagetriage_page' )

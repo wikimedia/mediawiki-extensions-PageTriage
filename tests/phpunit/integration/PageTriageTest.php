@@ -14,9 +14,6 @@ use MediaWikiIntegrationTestCase;
  */
 class PageTriageTest extends MediaWikiIntegrationTestCase {
 
-	/** @inheritDoc */
-	protected $tablesUsed = [ 'page', 'revision', 'pagetriage_page', 'pagetriage_page_tags', 'pagetriage_tags' ];
-
 	public function testAddToPageTriageQueue() {
 		$pageId = $this->insertPage( 'PageTriageTest', '' )['id'];
 		// Reset tables so we have a blank slate to begin with when adding the item to the queue.
