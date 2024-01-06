@@ -68,15 +68,6 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	}
 
 	protected function setUpForOresCopyvioTests() {
-		$this->tablesUsed[] = 'page';
-		$this->tablesUsed[] = 'revision';
-		$this->tablesUsed[] = 'pagetriage_page';
-		$this->tablesUsed[] = 'pagetriage_tags';
-		$this->tablesUsed[] = 'pagetriage_page_tags';
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'ORES' ) ) {
-			$this->tablesUsed[] = 'ores_model';
-			$this->tablesUsed[] = 'ores_classification';
-		}
 		ArticleMetadata::clearStaticCache();
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'ORES' ) ) {
 			$this->clearHook( 'ORESCheckModels' );

@@ -11,9 +11,6 @@ use MediaWikiIntegrationTestCase;
  */
 class QueueLookupTest extends MediaWikiIntegrationTestCase {
 
-	/** @inheritDoc */
-	protected $tablesUsed = [ 'pagetriage_page' ];
-
 	public function setUp(): void {
 		parent::setUp();
 		// Clear queue entries that were automatically added on page creation in parent::setUp().

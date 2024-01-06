@@ -17,7 +17,6 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 
 	public function setUp(): void {
 		parent::setUp();
-		$this->tablesUsed = [ 'page', 'pagetriage_page', 'pagetriage_page_tags', 'pagetriage_tags' ];
 		// Start with the Draft mode turned off
 		// (also use a different ID and NS name, just in case we're assuming these).
 		$this->draftNsId = 210;
