@@ -2,7 +2,7 @@
 	"name": "PageTriage",
 	"private": true,
 	"scripts": {
-		"coverage": "npm -s run test:unit",
+		"coverage": "npm -s run test:unit -- --coverage",
 		"test": "npm run lint && npm run -s test:unit",
 		"test:unit": "jest --silent",
 		"selenium-daily": "npm run selenium-test",
