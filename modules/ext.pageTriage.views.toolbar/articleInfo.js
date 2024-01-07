@@ -188,36 +188,35 @@ module.exports = ToolView.extend( {
 	},
 
 	formatProblem: function ( problem, link = '' ) {
-		let output =
-			'<span class="mwe-pt-info-problem-name">' +
-			// The following messages are used here:
-			// * pagetriage-info-problem-non-autoconfirmed
-			// * pagetriage-info-problem-blocked
-			// * pagetriage-info-problem-no-categories
-			// * pagetriage-info-problem-orphan
-			// * pagetriage-info-problem-recreated
-			// * pagetriage-info-problem-no-references
-			// * pagetriage-info-problem-copyvio
+		// The following messages are used here:
+		// * pagetriage-info-problem-non-autoconfirmed
+		// * pagetriage-info-problem-blocked
+		// * pagetriage-info-problem-no-categories
+		// * pagetriage-info-problem-orphan
+		// * pagetriage-info-problem-recreated
+		// * pagetriage-info-problem-no-references
+		// * pagetriage-info-problem-copyvio
+		const problemHtml = '<span class="mwe-pt-info-problem-name">' +
 			mw.message( 'pagetriage-info-problem-' + problem ).escaped() +
-			'</span> - <span class="mwe-pt-info-problem-desc">' +
-			// The following messages are used here:
-			// * pagetriage-info-problem-non-autoconfirmed-desc
-			// * pagetriage-info-problem-blocked-desc
-			// * pagetriage-info-problem-no-categories-desc
-			// * pagetriage-info-problem-orphan-desc
-			// * pagetriage-info-problem-recreated-desc
-			// * pagetriage-info-problem-no-references-desc
-			// * pagetriage-info-problem-copyvio-desc
+			'</span>';
+
+		// The following messages are used here:
+		// * pagetriage-info-problem-non-autoconfirmed-desc
+		// * pagetriage-info-problem-blocked-desc
+		// * pagetriage-info-problem-no-categories-desc
+		// * pagetriage-info-problem-orphan-desc
+		// * pagetriage-info-problem-recreated-desc
+		// * pagetriage-info-problem-no-references-desc
+		// * pagetriage-info-problem-copyvio-desc
+		let descHtml = '<span class="mwe-pt-info-problem-desc">' +
 			mw.message( 'pagetriage-info-problem-' + problem + '-desc' ).escaped() +
 			'</span>';
 
 		if ( link ) {
-			output = `<a href="${link}" target="_blank">${output}</a>`;
+			descHtml = `<a href="${link}" target="_blank">${descHtml}</a>`;
 		}
 
-		output = `<li class="mwe-pt-info-problem">${output}</li>`;
-
-		return output;
+		return `<li class="mwe-pt-info-problem">${problemHtml} - ${descHtml}</li>`;
 	},
 
 	formatOresProblem: function ( classification ) {
