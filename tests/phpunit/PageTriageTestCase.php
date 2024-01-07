@@ -91,12 +91,16 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	}
 
 	/**
+	 * Similar to MediaWikiIntegrationTestCase->insertPage(), but writes article metatdata (data in the
+	 * pagetriage_page_tags SQL table) synchronously. Normally it is done with an asynchronous
+	 * DeferredUpdate, but that is hard to test.
+	 *
 	 * @param string $title
 	 * @param bool $draftQualityClass
 	 * @param bool $copyvio
 	 * @return int page_id
 	 */
-	protected function makePage( $title, $draftQualityClass = false, $copyvio = false ) {
+	protected function makeDraft( $title, $draftQualityClass = false, $copyvio = false ) {
 		$user = static::getTestUser()->getUser();
 		$pageAndTitle = $this->insertPage( $title, 'some content', $this->draftNsId, $user );
 		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $pageAndTitle[ 'title' ] );

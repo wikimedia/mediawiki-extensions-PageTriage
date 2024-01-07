@@ -79,7 +79,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	 * @depends testLogin
 	 */
 	public function testSuccessfulReviewAction( $sessionArray ) {
-		$pageId = $this->makePage( 'Test ' );
+		$pageId = $this->makeDraft( 'Test ' );
 
 		list( $result, , ) = $this->doApiRequestWithToken(
 			[
@@ -99,7 +99,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	 * @depends testLogin
 	 */
 	public function testNoChangeReviewAction( $sessionArray ) {
-		$pageId = $this->makePage( 'Test ' );
+		$pageId = $this->makeDraft( 'Test ' );
 
 		list( $result ) = $this->doApiRequestWithToken(
 			[
@@ -144,7 +144,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	 * @depends testLogin
 	 */
 	public function testPermissionError( $sessionArray ) {
-		$pageId = $this->makePage( 'Test ' );
+		$pageId = $this->makeDraft( 'Test ' );
 
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'The action you have requested is limited to users' );
@@ -157,7 +157,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	}
 
 	public function testPermissionErrorAnon() {
-		$pageId = $this->makePage( 'Test' );
+		$pageId = $this->makeDraft( 'Test' );
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'The action you have requested is limited to users' );
 		$this->doApiRequestWithToken(

@@ -30,7 +30,7 @@ class ArticleMetadataTest extends PageTriageTestCase {
 
 		// Set up 6 pages to test with.
 		for ( $i = 0; $i < 6; $i++ ) {
-			$this->pageIds[] = $this->makePage( __CLASS__ . $i );
+			$this->pageIds[] = $this->makeDraft( __CLASS__ . $i );
 		}
 
 		$this->articleMetadata = new ArticleMetadata( $this->pageIds );
