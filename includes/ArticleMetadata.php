@@ -107,8 +107,12 @@ class ArticleMetadata {
 			->fetchResultSet();
 
 		$pageData = [];
+		// One row per tag per page. So 2 pages with 3 tags each will generate 6 rows.
 		foreach ( $res as $row ) {
+			// Set the tag
 			$pageData[$row->ptrpt_page_id][$row->ptrt_tag_name] = $row->ptrpt_value;
+
+			// If not set yet, add some other basic page data too
 			if ( !isset( $pageData[$row->ptrpt_page_id]['creation_date'] ) ) {
 				$pageData[$row->ptrpt_page_id]['creation_date'] = wfTimestamp( TS_MW, $row->ptrp_created );
 				// The patrol_status has 4 possible values:
