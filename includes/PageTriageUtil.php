@@ -153,8 +153,8 @@ class PageTriageUtil {
 
 				$res = $dbr->newSelectQueryBuilder()
 					->select( [
-						'COUNT(ptrp_page_id) AS total',
-						'MIN(ptrp_reviewed_updated) AS oldest'
+						'total' => 'COUNT(ptrp_page_id)',
+						'oldest' => 'MIN(ptrp_reviewed_updated)'
 					] )
 					->from( 'pagetriage_page' )
 					->join( 'page', null, 'page_id = ptrp_page_id' )
@@ -300,8 +300,8 @@ class PageTriageUtil {
 
 				$res = $dbr->newSelectQueryBuilder()
 					->select( [
-						'COUNT(ptrp_page_id) AS total',
-						'MIN(ptrp_reviewed_updated) AS oldest',
+						'total' => 'COUNT(ptrp_page_id)',
+						'oldest' => 'MIN(ptrp_reviewed_updated)',
 					] )
 					->from( 'page' )
 					->join( 'pagetriage_page', null, 'page_id = ptrp_page_id' )
