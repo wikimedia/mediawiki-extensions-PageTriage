@@ -442,17 +442,17 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$this->ensureCopyvioTag();
 
 		// DraftQuality: N/A
-		$this->makePage( 'Page001' );
+		$this->makeDraft( 'Page001' );
 		// DraftQuality: OK
-		$this->makePage( 'Page002', 1 );
+		$this->makeDraft( 'Page002', 1 );
 		// DraftQuality: SPAM
-		$this->makePage( 'Page003', 2 );
+		$this->makeDraft( 'Page003', 2 );
 		// DraftQuality: N/A, Copyvio
-		$this->makePage( 'Page004', false, true );
+		$this->makeDraft( 'Page004', false, true );
 		// DraftQuality: OK, Copyvio
-		$this->makePage( 'Page005', 1, true );
+		$this->makeDraft( 'Page005', 1, true );
 		// DraftQuality: SPAM, Copyvio
-		$this->makePage( 'Page006', 2, true );
+		$this->makeDraft( 'Page006', 2, true );
 
 		$list = $this->getPageTriageList();
 		$this->assertPages( [

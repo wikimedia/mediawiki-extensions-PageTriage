@@ -63,8 +63,8 @@ class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 		$this->ensureOresModel( 'articlequality' );
 		$this->ensureCopyvioTag();
 
-		$page1 = $this->makePage( 'Page001' );
-		$this->makePage( 'Page002' );
+		$page1 = $this->makeDraft( 'Page001' );
+		$this->makeDraft( 'Page002' );
 
 		$list = $this->getPageTriageList();
 		$this->assertPages( [
