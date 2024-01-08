@@ -98,6 +98,7 @@
 	"pagetriage-articleinfo-stat": "आँकड़ा:$1",
 	"pagetriage-js-required": "एह एक्सटेंशन खातिर जावास्क्रिप्ट वाला ब्राउजर जरूरी बाटे।",
 	"pagetriage-tags-title": "टैग जोड़ीं",
+	"pagetriage-tags-cat-common-label": "आम इस्तेमाल के",
 	"pagetriage-tags-cat-metadata-label": "मेटाडेटा",
 	"pagetriage-tags-cat-cleanup-label": "सफाई",
 	"pagetriage-tags-cat-neutrality-label": "तटस्थता",

@@ -111,6 +111,7 @@
 	"pagetriage-articleinfo-stat": "Tilastotiedot: $1",
 	"pagetriage-js-required": "Tämä laajennus vaatii selaimen, jossa on JavaScript.",
 	"pagetriage-tags-title": "Lisää merkkauksia",
+	"pagetriage-tags-cat-common-label": "Yleiset",
 	"pagetriage-tags-cat-metadata-label": "Metatieto",
 	"pagetriage-tags-cat-cleanup-label": "Siivous",
 	"pagetriage-tags-cat-neutrality-label": "Neutraalius",

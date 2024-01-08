@@ -200,6 +200,7 @@
 	"pagetriage-has-talkpage-feedback-link": "página de discusión",
 	"pagetriage-js-required": "Esta extensión requiere un navegador con JavaScript activado.",
 	"pagetriage-tags-title": "Añadir etiquetas",
+	"pagetriage-tags-cat-common-label": "Común",
 	"pagetriage-tags-cat-metadata-label": "Metadatos",
 	"pagetriage-tags-cat-cleanup-label": "Limpieza",
 	"pagetriage-tags-cat-neutrality-label": "Neutralidad",

@@ -216,6 +216,7 @@
 	"pagetriage-has-talkpage-feedback-link": "讨论页",
 	"pagetriage-js-required": "此扩展需要支持JavaScript的浏览器。",
 	"pagetriage-tags-title": "添加标签",
+	"pagetriage-tags-cat-common-label": "常用",
 	"pagetriage-tags-cat-metadata-label": "元数据",
 	"pagetriage-tags-cat-cleanup-label": "清理",
 	"pagetriage-tags-cat-neutrality-label": "中立性",

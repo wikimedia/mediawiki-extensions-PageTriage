@@ -165,6 +165,7 @@
 	"pagetriage-has-talkpage-feedback-link": "aptarimo puslapis",
 	"pagetriage-js-required": "Šiam plėtiniui reikalinga JavaScript tinkama naršyklė.",
 	"pagetriage-tags-title": "Pridėti žymes",
+	"pagetriage-tags-cat-common-label": "Bendras",
 	"pagetriage-tags-cat-metadata-label": "Metaduomenys",
 	"pagetriage-tags-cat-cleanup-label": "Valymas",
 	"pagetriage-tags-cat-neutrality-label": "Neutralumas",

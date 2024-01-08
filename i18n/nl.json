@@ -200,6 +200,7 @@
 	"pagetriage-has-talkpage-feedback-link": "overlegpagina",
 	"pagetriage-js-required": "Deze uitbreiding vereist een browser met JavaScript ingeschakeld.",
 	"pagetriage-tags-title": "Labels toevoegen",
+	"pagetriage-tags-cat-common-label": "Algemeen",
 	"pagetriage-tags-cat-metadata-label": "Metadata",
 	"pagetriage-tags-cat-cleanup-label": "Opruimen",
 	"pagetriage-tags-cat-neutrality-label": "Neutraliteit",

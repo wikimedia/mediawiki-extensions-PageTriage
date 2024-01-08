@@ -140,6 +140,7 @@
 	"pagetriage-page-status-delete": "Επισημάνθηκε για διαγραφή",
 	"pagetriage-articleinfo-stat": "Στατιστικά: $1",
 	"pagetriage-tags-title": "Προσθήκη ετικετών",
+	"pagetriage-tags-cat-common-label": "Κοινόχρηστο",
 	"pagetriage-tags-cat-metadata-label": "Μεταδεδομένα",
 	"pagetriage-tags-cat-cleanup-label": "Εκκαθάριση",
 	"pagetriage-tags-cat-neutrality-label": "Ουδετερότητα",

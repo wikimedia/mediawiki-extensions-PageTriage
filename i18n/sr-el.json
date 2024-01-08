@@ -152,6 +152,7 @@
 	"pagetriage-articleinfo-stat": "Statistike: $1",
 	"pagetriage-js-required": "Ovaj dodatak zahteva pregledač sa omogućenim JavaScript-om.",
 	"pagetriage-tags-title": "Dodaj oznake",
+	"pagetriage-tags-cat-common-label": "Česta",
 	"pagetriage-tags-cat-metadata-label": "Metapodaci",
 	"pagetriage-tags-cat-cleanup-label": "Čišćenje",
 	"pagetriage-tags-cat-neutrality-label": "Neutralnost",

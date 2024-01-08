@@ -164,6 +164,7 @@
 	"pagetriage-articleinfo-stat": "Arvandmed: $1",
 	"pagetriage-js-required": "Selle lisa jaoks on vaja JavaScripti toega brauserit.",
 	"pagetriage-tags-title": "Märgiste lisamine",
+	"pagetriage-tags-cat-common-label": "Üldine",
 	"pagetriage-tags-cat-metadata-label": "Metaandmed",
 	"pagetriage-tags-cat-cleanup-label": "Puhastamine",
 	"pagetriage-tags-cat-neutrality-label": "Neutraalsus",

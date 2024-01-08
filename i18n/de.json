@@ -175,6 +175,7 @@
 	"pagetriage-has-talkpage-feedback-link": "Diskussionsseite",
 	"pagetriage-js-required": "Diese Erweiterung benötigt einen JavaScript-fähigen Browser.",
 	"pagetriage-tags-title": "Markierungen hinzufügen",
+	"pagetriage-tags-cat-common-label": "Allgemein",
 	"pagetriage-tags-cat-metadata-label": "Metadaten",
 	"pagetriage-tags-cat-cleanup-label": "Bereinigung",
 	"pagetriage-tags-cat-neutrality-label": "Neutralität",

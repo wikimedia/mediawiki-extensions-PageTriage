@@ -205,6 +205,7 @@
 	"pagetriage-has-talkpage-feedback-link": "page de discussion",
 	"pagetriage-js-required": "Cette extension nécessite un navigateur avec JavaScript activé.",
 	"pagetriage-tags-title": "Ajouter des balises",
+	"pagetriage-tags-cat-common-label": "Commun",
 	"pagetriage-tags-cat-metadata-label": "Métadonnées",
 	"pagetriage-tags-cat-cleanup-label": "Nettoyage",
 	"pagetriage-tags-cat-neutrality-label": "Neutralité",

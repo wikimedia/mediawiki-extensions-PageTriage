@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Augustus A C",
 			"Omarov M."
 		]
 	},
@@ -15,8 +16,9 @@
 	"pagetriage-categories": "$1 {{PLURAL:$1|категория}}",
 	"pagetriage-no-categories": "Категориял гьечӀо",
 	"pagetriage-no-reference": "Цитатаби гьечӀо",
-	"pagetriage-orphan": "Бесдалаб",
+	"pagetriage-orphan": "Батизе бегьула бесдалаб",
 	"pagetriage-recreated": "Цебе гилдизабун букӀараб",
+	"pagetriage-no-author": "Авторасул информация кьун гьечӀо",
 	"pagetriage-byline": "Гьабурал: $1 ($2$3$4)",
 	"pagetriage-author-not-autoconfirmed": "ЦӀияв редактор",
 	"pagetriage-author-bot": "Бот",
@@ -34,7 +36,7 @@
 	"pagetriage-filter-type-show-heading": "Тайпа:",
 	"pagetriage-filter-bot-edits": "Ботал",
 	"pagetriage-filter-article": "Макъала",
-	"pagetriage-info-help": "кумек",
+	"pagetriage-info-help": "квеки",
 	"pagetriage-info-problem-non-autoconfirmed": "ЦӀияв редактор",
 	"pagetriage-info-problem-blocked": "Блокинавурав гӀахьалчи",
 	"pagetriage-info-problem-no-categories": "Категориял гьечӀо",

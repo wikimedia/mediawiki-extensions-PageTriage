@@ -181,6 +181,7 @@
 	"pagetriage-has-talkpage-feedback-link": "сторінці обговорення",
 	"pagetriage-js-required": "Це розширення вимагає браузер з увімкненим JavaScript.",
 	"pagetriage-tags-title": "Додати мітки",
+	"pagetriage-tags-cat-common-label": "Загальні",
 	"pagetriage-tags-cat-metadata-label": "Метадані",
 	"pagetriage-tags-cat-cleanup-label": "Очищення",
 	"pagetriage-tags-cat-neutrality-label": "Нейтральність",

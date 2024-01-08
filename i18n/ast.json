@@ -140,6 +140,7 @@
 	"pagetriage-articleinfo-stat": "Estadístiques: $1",
 	"pagetriage-js-required": "Esta estensión rique un restolador con JavaScript activáu.",
 	"pagetriage-tags-title": "Añadir etiquetes",
+	"pagetriage-tags-cat-common-label": "Común",
 	"pagetriage-tags-cat-metadata-label": "Metadatos",
 	"pagetriage-tags-cat-cleanup-label": "Llimpieza",
 	"pagetriage-tags-cat-neutrality-label": "Neutralidá",

@@ -112,6 +112,7 @@
 	"pagetriage-articleinfo-stat": "Estatísticas: $1",
 	"pagetriage-js-required": "Esta extensión necesita que o navegador teña o JavaScript activado.",
 	"pagetriage-tags-title": "Engadir etiquetas",
+	"pagetriage-tags-cat-common-label": "Común",
 	"pagetriage-tags-cat-metadata-label": "Metadatos",
 	"pagetriage-tags-cat-cleanup-label": "Limpeza",
 	"pagetriage-tags-cat-neutrality-label": "Neutralidade",

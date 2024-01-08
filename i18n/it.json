@@ -141,6 +141,7 @@
 	"pagetriage-articleinfo-stat": "Statistiche: $1",
 	"pagetriage-js-required": "Questa estensione richiede un browser con JavaScript abilitato.",
 	"pagetriage-tags-title": "Aggiungi etichette",
+	"pagetriage-tags-cat-common-label": "Comuni",
 	"pagetriage-tags-cat-metadata-label": "Metadati",
 	"pagetriage-tags-cat-cleanup-label": "Pulizia",
 	"pagetriage-tags-cat-neutrality-label": "Neutralità",

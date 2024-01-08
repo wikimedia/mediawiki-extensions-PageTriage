@@ -179,6 +179,7 @@
 	"pagetriage-has-talkpage-feedback-link": "страница обсуждения",
 	"pagetriage-js-required": "Это расширение требует браузер с поддержкой JavaScript.",
 	"pagetriage-tags-title": "Добавить теги",
+	"pagetriage-tags-cat-common-label": "Викисклад",
 	"pagetriage-tags-cat-metadata-label": "Метаданные",
 	"pagetriage-tags-cat-cleanup-label": "Чистить",
 	"pagetriage-tags-cat-neutrality-label": "Нейтральность",

@@ -191,6 +191,7 @@
 	"pagetriage-has-talkpage-feedback-link": "討論頁",
 	"pagetriage-js-required": "此擴充功能需要瀏覽器有啟用 JavaScript。",
 	"pagetriage-tags-title": "新增標籤",
+	"pagetriage-tags-cat-common-label": "常規",
 	"pagetriage-tags-cat-metadata-label": "詮釋資料",
 	"pagetriage-tags-cat-cleanup-label": "清理",
 	"pagetriage-tags-cat-neutrality-label": "中立性",
