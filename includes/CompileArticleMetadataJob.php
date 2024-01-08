@@ -35,7 +35,8 @@ class CompileArticleMetadataJob extends Job {
 		// Metadata now exists in the replica, so there is no need to save.
 		$metadata = ArticleMetadata::getMetadataForArticles( [ $this->params['pageId'] ] );
 		if ( isset( $metadata[ $this->params['pageId'] ] ) &&
-			 ArticleMetadata::isValidMetadata( $metadata[ $this->params['pageId'] ] ) ) {
+			ArticleMetadata::isValidMetadata( $metadata[ $this->params['pageId'] ] )
+		) {
 			return true;
 		}
 

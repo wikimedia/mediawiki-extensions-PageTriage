@@ -153,9 +153,9 @@ class PageTriageUtil {
 
 				$res = $dbr->newSelectQueryBuilder()
 					->select( [
-							'COUNT(ptrp_page_id) AS total',
-							'MIN(ptrp_reviewed_updated) AS oldest'
-						] )
+						'COUNT(ptrp_page_id) AS total',
+						'MIN(ptrp_reviewed_updated) AS oldest'
+					] )
 					->from( 'pagetriage_page' )
 					->join( 'page', null, 'page_id = ptrp_page_id' )
 					->where( $conds )
@@ -299,16 +299,16 @@ class PageTriageUtil {
 				];
 
 				$res = $dbr->newSelectQueryBuilder()
-						->select( [
-							'COUNT(ptrp_page_id) AS total',
-							'MIN(ptrp_reviewed_updated) AS oldest',
-						] )
-						->from( 'page' )
-						->join( 'pagetriage_page', null, 'page_id = ptrp_page_id' )
-						->join( 'pagetriage_page_tags', null, 'ptrp_page_id = ptrpt_page_id' )
-						->where( $conds )
-						->caller( $fname )
-						->fetchRow();
+					->select( [
+						'COUNT(ptrp_page_id) AS total',
+						'MIN(ptrp_reviewed_updated) AS oldest',
+					] )
+					->from( 'page' )
+					->join( 'pagetriage_page', null, 'page_id = ptrp_page_id' )
+					->join( 'pagetriage_page_tags', null, 'ptrp_page_id = ptrpt_page_id' )
+					->where( $conds )
+					->caller( $fname )
+					->fetchRow();
 
 				$data = [];
 
@@ -385,12 +385,10 @@ class PageTriageUtil {
 			$res = $dbr->newSelectQueryBuilder()
 				->select( [ 'page_namespace', 'page_title' ] )
 				->from( 'page' )
-				->where(
-					[
-						'page_title' => array_map( 'strval', array_keys( $title ) ),
-						'page_namespace' => [ NS_USER, NS_USER_TALK ]
-					]
-				)
+				->where( [
+					'page_title' => array_map( 'strval', array_keys( $title ) ),
+					'page_namespace' => [ NS_USER, NS_USER_TALK ]
+				] )
 				->caller( __METHOD__ )
 				->fetchResultSet();
 
@@ -780,19 +778,19 @@ class PageTriageUtil {
 		$dbr = self::getReplicaConnection();
 		$queryInfo = $linksMigration->getQueryInfo( 'pagelinks', 'pagelinks' );
 		$res = $dbr->newSelectQueryBuilder()
-				->select( '1' )
-				->tables( $queryInfo['tables'] )
-				->joinConds( $queryInfo['joins'] )
-				->join( 'page', null, [ "page_namespace = $blNamespace", "page_title = $blTitle" ] )
-				->where( [
-					'page_id' => $pageId,
-					'page_is_redirect' => 0,
-					// T313777 - only considering backlinks from mainspace pages
-					'pl_from_namespace' => 0,
-				] )
-				->limit( $limit )
-				->caller( __METHOD__ )
-				->fetchResultSet()->numRows();
+			->select( '1' )
+			->tables( $queryInfo['tables'] )
+			->joinConds( $queryInfo['joins'] )
+			->join( 'page', null, [ "page_namespace = $blNamespace", "page_title = $blTitle" ] )
+			->where( [
+				'page_id' => $pageId,
+				'page_is_redirect' => 0,
+				// T313777 - only considering backlinks from mainspace pages
+				'pl_from_namespace' => 0,
+			] )
+			->limit( $limit )
+			->caller( __METHOD__ )
+			->fetchResultSet()->numRows();
 		return $res;
 	}
 

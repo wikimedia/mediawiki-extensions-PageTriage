@@ -205,12 +205,12 @@ class OresMetadata {
 		$dbr = PageTriageUtil::getReplicaConnection();
 		$result = $dbr->newSelectQueryBuilder()
 			->select( [
-					'ptrp_page_id',
-					// used for articlequality
-					'oresc_probability',
-					// used for draftquality
-					'oresc_class',
-				] )
+				'ptrp_page_id',
+				// used for articlequality
+				'oresc_probability',
+				// used for draftquality
+				'oresc_class',
+			] )
 			->from( 'pagetriage_page' )
 			->join( 'page', 'page', 'ptrp_page_id=page_id' )
 			->leftJoin( 'ores_classification', 'ores_classification', 'page_latest=oresc_rev' )

@@ -73,7 +73,7 @@ class ApiPageTriageAction extends ApiBase {
 			// T314245 - do not allow someone to mark their own articles as reviewed
 			// when not being autopatrolled
 			$pageCreator = $this->revStore->getFirstRevision(
-				 $article->getPage() )->getUser( RevisionRecord::RAW );
+				$article->getPage() )->getUser( RevisionRecord::RAW );
 			$isPageCreator = $this->getUser()->equals( $pageCreator );
 			$isNotAutopatrolled = !$this->getAuthority()->isAllowed( 'autopatrol' );
 			if ( $isPageCreator && $isNotAutopatrolled ) {
