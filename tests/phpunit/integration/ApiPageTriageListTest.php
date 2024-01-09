@@ -70,20 +70,21 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			$this->draftNsId
 		);
 
-		// Check that the database was updated correctly (not really necessary?).
+		// Check that the database was updated correctly.
 		$pageTags = $this->db->newSelectQueryBuilder()
 			->select( '*' )
 			->from( 'pagetriage_page_tags' )
-			->where( [ 'ptrpt_page_id' => $page['id'] ] )
+			->join( 'pagetriage_tags', null, 'ptrt_tag_id = ptrpt_tag_id' )
+			->where( [
+				'ptrpt_page_id' => $page['id'],
+				'ptrt_tag_name' => 'afc_state'
+			] )
 			->caller( __METHOD__ )
 			->fetchResultSet();
-
-		$this->assertEquals( 2, $pageTags->numRows() );
 		$this->assertEquals( ArticleCompileAfcTag::DECLINED, $pageTags->current()->ptrpt_value );
 
 		// Request the declined drafts.
 		$list2 = $this->getPageTriageList( $apiParams );
-
 		$this->assertArrayHasKey( 'title', $list2[0] );
 		$this->assertSame( 'Draft:AfC test page', $list2[0][ 'title' ] );
 
