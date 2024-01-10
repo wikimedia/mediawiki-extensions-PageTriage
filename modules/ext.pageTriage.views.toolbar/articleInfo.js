@@ -157,7 +157,7 @@ module.exports = ToolView.extend( {
 				'YYYYMMDDHHmmss'
 			).utcOffset( offset ).format(
 				mw.msg( 'pagetriage-info-timestamp-date-format' )
-			), mw.msg( 'rev-deleted-user' ) ) );
+			), $( '<span>' ).text( mw.msg( 'rev-deleted-user' ) ) ).html() );
 		}
 
 		const stats = [

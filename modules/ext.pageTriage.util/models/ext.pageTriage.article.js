@@ -107,7 +107,7 @@ const Article = Backbone.Model.extend( {
 				)
 			);
 		} else if ( article.get( 'creator_hidden' ) ) {
-			article.set( 'author_byline_html', mw.msg( 'rev-deleted-user' ) );
+			article.set( 'author_byline_html', $( '<span>' ).text( mw.msg( 'rev-deleted-user' ) ).html() );
 		}
 
 		// Are there any PageTriage messages on the talk page?
