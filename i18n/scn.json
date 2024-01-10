@@ -12,6 +12,7 @@
 	"pagetriage-edits": "$1 {{PLURAL:$1|canciamentu|canciamenti}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|catigurìa|catigurìi}}",
 	"pagetriage-no-categories": "Nudda catigurìa",
+	"pagetriage-byline-heading": "Criatu di {{GENDER:$1|$1}}",
 	"pagetriage-author-blocked": "Bluccatu",
 	"pagetriage-author-bot": "Bot",
 	"pagetriage-filter-predicted-issues-spam": "Spam",
