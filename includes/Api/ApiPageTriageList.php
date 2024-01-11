@@ -569,13 +569,15 @@ class ApiPageTriageList extends ApiBase {
 		];
 
 		$tagIDs = ArticleMetadata::getValidTags();
+		// "pagetriage_pt" alias from self::joinWithTags
+		$table = 'pagetriage_pt';
 
 		// only single tag search is allowed
 		foreach ( $searchableTags as $key => $val ) {
 			if ( isset( $opts[$key] ) && $opts[$key] ) {
 				$tagConds[] = $dbr
-					->expr( "ptrpt_tag_id", "=", $tagIDs[$val['name']] )
-					->and( "ptrpt_value", "=", $val['val'] ?? $opts[$key] );
+					->expr( "$table.ptrpt_tag_id", "=", $tagIDs[$val['name']] )
+					->and( "$table.ptrpt_value", "=", $val['val'] ?? $opts[$key] );
 			}
 		}
 
