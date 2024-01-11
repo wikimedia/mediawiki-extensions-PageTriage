@@ -258,12 +258,11 @@ class PageTriageUtil {
 	}
 
 	/**
-	 * Get number of drafts awaiting review and the age of the
-	 * oldest submitted draft
+	 * Get number of drafts awaiting review and the age of the oldest submitted draft
 	 *
 	 * @return array ['count' => (int) number of unreviewed drafts,
-	 *			'oldest' => (string) timestamp of oldest unreviewed draft]
-	 *			an empty array is returned if the draft are not enabled
+	 * 'oldest' => (string) timestamp of oldest unreviewed draft].
+	 * An empty array is returned if $wgPageTriageDraftNamespaceId is not enabled.
 	 */
 	public static function getUnreviewedDraftStats(): array {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
