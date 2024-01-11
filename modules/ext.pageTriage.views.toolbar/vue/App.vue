@@ -18,8 +18,12 @@
 				<tool-minimize
 					@minimize="minimize"
 				></tool-minimize>
-				<!-- backbone.js toolbar icons go here -->
-				<span ref="backboneTools" class="mwe-pt-hidden"></span>
+				<!-- Individual toolbar icons go here. You can place Vue components in bewteen them. -->
+				<span ref="articleInfoTool" class="mwe-pt-hidden"></span>
+				<span ref="wikiLoveTool" class="mwe-pt-hidden"></span>
+				<span ref="markTool" class="mwe-pt-hidden"></span>
+				<span ref="tagsTool" class="mwe-pt-hidden"></span>
+				<span ref="deleteTool" class="mwe-pt-hidden"></span>
 				<tool-next
 					:page="article.attributes"
 					:tb-version="tbVersion"
@@ -107,8 +111,12 @@ module.exports = {
 	},
 	setup: function () {
 		return {
-			// placeholder reference for inserting backbone tools
-			backboneTools: ref( null ),
+			// placeholder references for inserting backbone tools
+			articleInfoTool: ref( null ),
+			wikiLoveTool: ref( null ),
+			markTool: ref( null ),
+			tagsTool: ref( null ),
+			deleteTool: ref( null ),
 			// placeholder reference for drag area
 			dragArea: ref( null ),
 			// placeholder reference for toolbar
@@ -270,29 +278,29 @@ module.exports = {
 			require( '../../../external/jquery.badge.js' );
 			const ArticleInfo = require( '../articleInfo.js' );
 			const articleInfo = new ArticleInfo( { eventBus: eventBus, model: this.article, moduleConfig: modules.articleInfo } );
-			$( this.backboneTools ).before( articleInfo.place() );
+			$( this.articleInfoTool ).before( articleInfo.place() );
 		}
 		if ( isFlyoutEnabled( 'wikiLove' ) ) {
 			const WikiLove = require( '../wikiLove.js' );
 			const wikiLove = new WikiLove( { eventBus: eventBus, model: this.article, moduleConfig: modules.wikiLove } );
-			$( this.backboneTools ).before( wikiLove.place() );
+			$( this.wikiLoveTool ).before( wikiLove.place() );
 		}
 		if ( isFlyoutEnabled( 'mark' ) ) {
 			const Mark = require( '../mark.js' );
 			const mark = new Mark( { eventBus: eventBus, model: this.article, moduleConfig: modules.mark } );
-			$( this.backboneTools ).before( mark.place() );
+			$( this.markTool ).before( mark.place() );
 		}
 		// tags and deletion only available when enwiki features are enabled
 		if ( config.PageTriageEnableExtendedFeatures ) {
 			if ( isFlyoutEnabled( 'tags' ) ) {
 				const Tags = require( '../tags.js' );
 				const tags = new Tags( { eventBus: eventBus, model: this.article, moduleConfig: modules.tags } );
-				$( this.backboneTools ).before( tags.place() );
+				$( this.tagsTool ).before( tags.place() );
 			}
 			if ( isFlyoutEnabled( 'delete' ) ) {
 				const Delete = require( '../delete.js' );
 				const deletion = new Delete( { eventBus: eventBus, model: this.article, moduleConfig: modules.delete } );
-				$( this.backboneTools ).before( deletion.place() );
+				$( this.deleteTool ).before( deletion.place() );
 			}
 		}
 
