@@ -318,7 +318,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		];
 
 		$originalTopPageList = $this->getPageTriageList( $apiParams );
-		$originalTopPage = $originalTopPageList !== [] ? $originalTopPageList[0] : null;
+		$this->assertSame( [], $originalTopPageList, 'Queue is currently empty' );
 
 		// New draft in a relevant category.
 		$page = $this->insertPage( 'Test page 5', '[[Category:Declined AfC submissions]]',
@@ -327,12 +327,8 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 		// Original top page should still be the top (or the new one, if none existed beforehand).
 		$list = $this->getPageTriageList( $apiParams );
-		if ( $originalTopPage ) {
-			$this->assertEquals( $originalTopPage, $list[0] );
-		} else {
-			$this->assertArrayHasKey( 'title', $list[0] );
-			$this->assertSame( 'Draft:Test page 5', $list[0][ 'title' ] );
-		}
+		$this->assertArrayHasKey( 'title', $list[0] );
+		$this->assertSame( 'Draft:Test page 5', $list[0][ 'title' ] );
 
 		// Manually set the reviewed at attribute to something really old.
 		$this->db->newUpdateQueryBuilder()
