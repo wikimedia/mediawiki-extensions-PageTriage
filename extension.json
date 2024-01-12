@@ -203,6 +203,11 @@
 				"ext.pageTriage.views.toolbar/vue/components/ToolIcon.vue",
 				"ext.pageTriage.views.toolbar/vue/components/ToolMinimize.vue",
 				"ext.pageTriage.views.toolbar/vue/components/ToolNext.vue",
+				"ext.pageTriage.views.toolbar/vue/components/ToolFlyout.vue",
+				"ext.pageTriage.views.toolbar/vue/components/FlyoutHeader.vue",
+				"ext.pageTriage.views.toolbar/vue/components/FlyoutContent.vue",
+				"ext.pageTriage.views.toolbar/vue/components/FlyoutFooter.vue",
+				"ext.pageTriage.views.toolbar/vue/components/FlyoutNotes.vue",
 				{
 					"name": "ext.pageTriage.views.toolbar/contentLanguageMessages.json",
 					"callback": "MediaWiki\\Extension\\PageTriage\\Hooks::toolbarContentLanguageMessages"
