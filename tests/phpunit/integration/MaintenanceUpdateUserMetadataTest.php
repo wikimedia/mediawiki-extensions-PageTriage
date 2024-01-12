@@ -14,16 +14,6 @@ use MediaWiki\Extension\PageTriage\Maintenance\UpdateUserMetadata;
  */
 class MaintenanceUpdateUserMetadataTest extends PageTriageTestCase {
 
-	public function setUp(): void {
-		parent::setUp();
-		// Delete any dangling page triage pages before inserting our test data
-		$this->db->newDeleteQueryBuilder()
-			->deleteFrom( 'pagetriage_page' )
-			->where( '1 = 1' )
-			->caller( __METHOD__ )
-			->execute();
-	}
-
 	public function testSuccessfulUpdateUserMetadata() {
 		$mainNsPage = $this->insertPage( 'MainMetadata', 'Test 1', NS_MAIN );
 		$this->db->newUpdateQueryBuilder()

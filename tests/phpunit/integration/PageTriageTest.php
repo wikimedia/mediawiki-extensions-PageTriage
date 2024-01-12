@@ -16,10 +16,14 @@ class PageTriageTest extends MediaWikiIntegrationTestCase {
 
 	public function testAddToPageTriageQueue() {
 		$pageId = $this->insertPage( 'PageTriageTest', '' )['id'];
-		// Reset tables so we have a blank slate to begin with when adding the item to the queue.
-		$this->db->truncate( 'pagetriage_page' );
-		$this->db->truncate( 'pagetriage_page_tags' );
-		$this->db->truncate( 'pagetriage_tags' );
+
+		// Remove from queue to test adding to it
+		$this->db->newDeleteQueryBuilder()
+			->deleteFrom( 'pagetriage_page' )
+			->where( [ 'ptrp_page_id' => $pageId ] )
+			->caller( __METHOD__ )
+			->execute();
+
 		$pageTriage = new PageTriage( $pageId );
 		$record = $pageTriage->retrieve();
 		$this->assertFalse( $record );
@@ -32,9 +36,6 @@ class PageTriageTest extends MediaWikiIntegrationTestCase {
 	public function testBulkSetTagsUpdated() {
 		// Skipping this test if ORES is not loaded. See: T335998
 		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
-		$this->db->truncate( 'pagetriage_page' );
-		$this->db->truncate( 'pagetriage_page_tags' );
-		$this->db->truncate( 'pagetriage_tags' );
 		$pageIds[] = $this->insertPage( 'PageTriageTest', 'Testing 123' )['id'];
 
 		$pageTriagePage = $this->db->newSelectQueryBuilder()

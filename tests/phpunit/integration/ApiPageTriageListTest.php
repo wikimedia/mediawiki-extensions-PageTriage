@@ -427,13 +427,6 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 	public function testQueryOresCopyvio() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
-		foreach ( [ 'pagetriage_page', 'page' ] as $table ) {
-			$this->db->newDeleteQueryBuilder()
-				->deleteFrom( $table )
-				->where( '1 = 1' )
-				->caller( __METHOD__ )
-				->execute();
-		}
 		$this->setMwGlobals( 'wgOresModels', [
 			'draftquality' => [ 'enabled' => true ],
 			'articlequality' => [ 'enabled' => true ],

@@ -14,10 +14,6 @@ class QueueManagerTest extends MediaWikiIntegrationTestCase {
 
 	public function setUp(): void {
 		parent::setUp();
-		// Clear queue entries that were automatically added on page creation in parent::setUp().
-		$this->db->truncate( 'pagetriage_page' );
-		$this->db->truncate( 'pagetriage_page_tags' );
-		$this->db->truncate( 'pagetriage_tags' );
 		$this->db->insert(
 			'pagetriage_tags', [
 				// Add a single tag, so metadata is compiled.

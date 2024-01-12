@@ -14,21 +14,6 @@ use MediaWiki\Extension\PageTriage\Maintenance\CleanupPageTriage;
  */
 class MaintenanceCleanupPageTriageTest extends PageTriageTestCase {
 
-	public function setUp(): void {
-		parent::setUp();
-		// Delete any dangling page triage pages before inserting our test data
-		$this->db->newDeleteQueryBuilder()
-			->deleteFrom( 'pagetriage_page' )
-			->where( '1 = 1' )
-			->caller( __METHOD__ )
-			->execute();
-		$this->db->newDeleteQueryBuilder()
-			->deleteFrom( 'pagetriage_page_tags' )
-			->where( '1 = 1' )
-			->caller( __METHOD__ )
-			->execute();
-	}
-
 	public function testSuccessfulPageTriageCleanup() {
 		// Allow PROJECT namespaces to be added to the queue
 		$this->overrideConfigValue( 'PageTriageNamespaces', [ 0, 2, 4 ] );

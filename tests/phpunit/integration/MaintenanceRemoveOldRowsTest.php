@@ -14,16 +14,6 @@ use MediaWiki\Extension\PageTriage\Maintenance\RemoveOldRows;
  */
 class MaintenanceRemoveOldRowsTest extends PageTriageTestCase {
 
-	public function setUp(): void {
-		parent::setUp();
-		// Delete any dangling page triage pages before inserting our test data
-		$this->db->newDeleteQueryBuilder()
-			->deleteFrom( 'pagetriage_page' )
-			->where( '1 = 1' )
-			->caller( __METHOD__ )
-			->execute();
-	}
-
 	public function testSuccessfulRemoveOldRows() {
 		$this->overrideConfigValue( 'PageTriageNamespaces', [ 0, 2 ] );
 		// Create some pages in the USER and MAIN namespace

@@ -11,12 +11,6 @@ use MediaWikiIntegrationTestCase;
  */
 class QueueLookupTest extends MediaWikiIntegrationTestCase {
 
-	public function setUp(): void {
-		parent::setUp();
-		// Clear queue entries that were automatically added on page creation in parent::setUp().
-		$this->db->truncate( 'pagetriage_page' );
-	}
-
 	public function testGetByPageId() {
 		$page = $this->insertPage( 'QueueLookupTest', 'Testing 1, 2' );
 		$fetchedPage = $this->getQueueLookup()->getByPageId( $page[ 'id' ] );
