@@ -66,4 +66,36 @@ class ApiPageTriageStatsTest extends PageTriageTestCase {
 		$this->assertEquals( 'Unrecognized parameter: offset.',
 			$response[0]['warnings']['main']['warnings'] );
 	}
+
+	/**
+	 * Regression test for T354900. Checks for database error when filtering with both
+	 * the copyvio potential issue and non-autoconfirmed users selected.
+	 */
+	public function testCopyvioAndNonAutoconfirmedFilterCombination() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
+		$this->overrideConfigValue( 'OresWikiId', 'enwiki' );
+		$this->overrideConfigValue( 'OresModels', [
+			'articlequality' => [
+				'enabled' => true,
+				'namespaces' => [ 0 ],
+				'cleanParent' => true
+			],
+			'draftquality' => [
+				'enabled' => true,
+				'namespaces' => [ 0 ],
+				'types' => [ 1 ]
+			],
+		] );
+		$response = $this->doApiRequest( [
+			'action' => 'pagetriagestats',
+			'show_predicted_issues_copyvio' => 1,
+			'non_autoconfirmed_users' => 1,
+		] );
+		$this->assertEquals(
+			'success',
+			$response[0]['pagetriagestats']['result'],
+			'Trying to get a pagetriage list with filters copyvio and non-autoconfirmed users ' .
+			'should not throw database error'
+		);
+	}
 }
