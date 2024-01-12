@@ -430,9 +430,9 @@ class PageTriageUtil {
 	/**
 	 * Update user metadata when a user's block status is updated
 	 * @param DatabaseBlock $block block object
-	 * @param int $status 1/0
+	 * @param int $userBlockStatusToWrite 1/0
 	 */
-	public static function updateMetadataOnBlockChange( $block, $status = 1 ) {
+	public static function updateMetadataOnBlockChange( $block, $userBlockStatusToWrite = 1 ) {
 		// do instant update if the number of page to be updated is less or equal to
 		// the number below, otherwise, delay this to the cron
 		$maxNumToProcess = 500;
@@ -444,10 +444,14 @@ class PageTriageUtil {
 
 		$dbr = self::getReplicaConnection();
 
+		// Select all articles in PageTriage queue created by the blocked user
 		$res = $dbr->newSelectQueryBuilder()
 			->select( [ 'ptrpt_page_id' ] )
 			->from( 'pagetriage_page_tags' )
-			->where( [ 'ptrpt_tag_id' => $tags['user_name'], 'ptrpt_value' => $block->getTargetName() ] )
+			->where( [
+				'ptrpt_tag_id' => $tags['user_name'],
+				'ptrpt_value' => $block->getTargetName()
+			] )
 			->limit( $maxNumToProcess + 1 )
 			->caller( __METHOD__ )
 			->fetchResultSet();
@@ -461,7 +465,8 @@ class PageTriageUtil {
 			$pageIds[] = $row->ptrpt_page_id;
 		}
 
-		if ( !$pageIds ) {
+		$noArticlesNeedUpdating = !$pageIds;
+		if ( $noArticlesNeedUpdating ) {
 			return;
 		}
 
@@ -469,7 +474,7 @@ class PageTriageUtil {
 		$dbw->startAtomic( __METHOD__ );
 		$dbw->newUpdateQueryBuilder()
 			->update( 'pagetriage_page_tags' )
-			->set( [ 'ptrpt_value' => $status ] )
+			->set( [ 'ptrpt_value' => $userBlockStatusToWrite ] )
 			->where( [ 'ptrpt_page_id' => $pageIds, 'ptrpt_tag_id' => $tags['user_block_status'] ] )
 			->caller( __METHOD__ )
 			->execute();

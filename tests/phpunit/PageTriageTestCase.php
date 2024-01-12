@@ -8,6 +8,7 @@ use ExtensionRegistry;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriage;
+use MediaWiki\User\UserIdentity;
 use MockHttpTrait;
 
 /**
@@ -119,10 +120,18 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	 * @param string $title
 	 * @param bool $draftQualityClass
 	 * @param bool $copyvio
+	 * @param ?UserIdentity $user If null, will create a random user for you.
 	 * @return int page_id
 	 */
-	protected function makeDraft( $title, $draftQualityClass = false, $copyvio = false ) {
-		$user = static::getTestUser()->getUser();
+	protected function makeDraft(
+		$title,
+		$draftQualityClass = false,
+		$copyvio = false,
+		?UserIdentity $user = null
+	) {
+		if ( !$user ) {
+			$user = static::getTestUser()->getUser();
+		}
 		$pageAndTitle = $this->insertPage( $title, 'some content', $this->draftNsId, $user );
 		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $pageAndTitle[ 'title' ] );
 		$revId = $page->getLatest();

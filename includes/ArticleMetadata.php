@@ -220,7 +220,7 @@ class ArticleMetadata {
 	}
 
 	/**
-	 * Return a list of valid metadata
+	 * Return a complete list of metadata tag names and IDs in the pagetriage_tags table
 	 * @return string[] Map of tag name to tag ID
 	 */
 	public static function getValidTags() {

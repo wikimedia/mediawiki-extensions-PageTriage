@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\PageTriage\Test;
 
 use ContentHandler;
+use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Title\Title;
 use PageArchive;
 
@@ -102,4 +103,46 @@ class HooksTest extends PageTriageTestCase {
 		$this->assertSame( 1, $afterUndeleteCount );
 	}
 
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil::updateMetadataOnBlockChange
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::onBlockIpComplete
+	 */
+	public function testBlockUserAndUpdateMetadata() {
+		$user = $this->getMutableTestUser();
+		$this->assertTrue( (bool)$user->getUser()->getId(), 'User successfully created' );
+
+		$this->assertFalse( (bool)$user->getUser()->getBlock(), 'User is not blocked' );
+
+		$pageId = $this->makeDraft( __METHOD__, false, false, $user->getUser() );
+		$this->assertTrue( (bool)$pageId, 'Page successfully created' );
+
+		$metadata = ArticleMetadata::getMetadataForArticles( [ $pageId ] );
+		$this->assertNotEmpty( $metadata, 'PageTriage page metadata exists (1)' );
+
+		$this->assertSame(
+			'0',
+			$metadata[ $pageId ]['user_block_status'],
+			'Page author is not marked as blocked in PageTriage system'
+		);
+
+		$this->getServiceContainer()->getBlockUserFactory()->newBlockUser(
+			$user->getUser(),
+			$this->getTestSysop()->getAuthority(),
+			'infinity',
+			'test block'
+		)->placeBlock();
+		$block = $user->getUser()->getBlock();
+		$this->assertTrue( (bool)$block, 'User successfully blocked' );
+
+		$this->assertTrue( (bool)$user->getUser()->getBlock(), 'User is blocked' );
+
+		$metadata = ArticleMetadata::getMetadataForArticles( [ $pageId ] );
+		$this->assertNotEmpty( $metadata, 'PageTriage page metadata exists (2)' );
+
+		$this->assertSame(
+			'1',
+			$metadata[ $pageId ]['user_block_status'],
+			'Page author is marked as blocked in PageTriage system'
+		);
+	}
 }
