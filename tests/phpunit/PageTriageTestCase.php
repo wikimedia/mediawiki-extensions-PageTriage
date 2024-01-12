@@ -202,7 +202,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 			[
 				'ptrpt_page_id' => $pageId,
 				'ptrpt_tag_id' => $tagId,
-				'ptrpt_value' => $revId,
+				'ptrpt_value' => (string)$revId,
 			]
 		);
 	}

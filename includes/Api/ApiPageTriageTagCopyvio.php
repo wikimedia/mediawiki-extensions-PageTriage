@@ -36,7 +36,7 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 		$row = [
 			'ptrpt_page_id' => $pageId,
 			'ptrpt_tag_id' => $tags['copyvio'],
-			'ptrpt_value' => $revision->getId()
+			'ptrpt_value' => (string)$revision->getId()
 		];
 		$dbw = PageTriageUtil::getPrimaryConnection();
 		$dbr = PageTriageUtil::getReplicaConnection();

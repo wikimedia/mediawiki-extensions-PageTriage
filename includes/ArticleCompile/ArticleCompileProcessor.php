@@ -374,7 +374,7 @@ class ArticleCompileProcessor {
 					$row = [
 						'ptrpt_page_id' => $pageId,
 						'ptrpt_tag_id' => $tags[$key],
-						'ptrpt_value' => $val
+						'ptrpt_value' => (string)$val
 					];
 					$dbw->replace(
 						'pagetriage_page_tags',

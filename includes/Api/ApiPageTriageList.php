@@ -577,7 +577,7 @@ class ApiPageTriageList extends ApiBase {
 			if ( isset( $opts[$key] ) && $opts[$key] ) {
 				$tagConds[] = $dbr
 					->expr( "$table.ptrpt_tag_id", "=", $tagIDs[$val['name']] )
-					->and( "$table.ptrpt_value", "=", $val['val'] ?? $opts[$key] );
+					->and( "$table.ptrpt_value", "=", (string)( $val['val'] ?? $opts[$key] ) );
 			}
 		}
 
