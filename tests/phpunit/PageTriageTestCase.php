@@ -121,18 +121,20 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	 * @param bool $draftQualityClass
 	 * @param bool $copyvio
 	 * @param ?UserIdentity $user If null, will create a random user for you.
+	 * @param string $text Wikitext of the draft page.
 	 * @return int page_id
 	 */
 	protected function makeDraft(
 		$title,
 		$draftQualityClass = false,
 		$copyvio = false,
-		?UserIdentity $user = null
+		?UserIdentity $user = null,
+		?string $text = 'some content'
 	) {
 		if ( !$user ) {
 			$user = static::getTestUser()->getUser();
 		}
-		$pageAndTitle = $this->insertPage( $title, 'some content', $this->draftNsId, $user );
+		$pageAndTitle = $this->insertPage( $title, $text, $this->draftNsId, $user );
 		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $pageAndTitle[ 'title' ] );
 		$revId = $page->getLatest();
 		if ( $draftQualityClass ) {

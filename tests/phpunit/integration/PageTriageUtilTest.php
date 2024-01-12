@@ -5,15 +5,15 @@ namespace MediaWiki\Extension\PageTriage\Test;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
-use MediaWikiIntegrationTestCase;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\LBFactory;
 
 /**
  * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil
+ * @group Database
  */
-class PageTriageUtilTest extends MediaWikiIntegrationTestCase {
+class PageTriageUtilTest extends PageTriageTestCase {
 
 	public function testIsOresArticlequalityQuery() {
 		$this->assertFalse( PageTriageUtil::isOresArticleQualityQuery( [ 'page_id' => '123' ] ) );
@@ -131,5 +131,38 @@ class PageTriageUtilTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( 'NotificationTest', $titleResult );
 		$this->assertSame( $type, $typeResult );
 		$this->assertSame( $extra['tags'], $extraTagResult );
+	}
+
+	public function testGetUnreviewedDraftStats() {
+		$unsubmittedDraft = $this->makeDraft( 'Unsubmitted draft', false, false, null, 'test' );
+		$this->assertTrue( (bool)$unsubmittedDraft, 'Page successfully created (1)' );
+
+		$submittedDraft1 = $this->makeDraft( 'Submitted draft 1', false, false, null,
+			'[[Category:Pending AfC submissions]]' );
+		$this->assertTrue( (bool)$submittedDraft1, 'Page successfully created (2)' );
+
+		$submittedDraft2 = $this->makeDraft( 'Submitted draft 2', false, false, null,
+			'[[Category:Pending AfC submissions]]' );
+		$this->assertTrue( (bool)$submittedDraft2, 'Page successfully created (3)' );
+
+		$declinedDraft = $this->makeDraft( 'Declined draft', false, false, null,
+			'[[Category:Declined AfC submissions]]' );
+		$this->assertTrue( (bool)$declinedDraft, 'Page successfully created (4)' );
+
+		$stats = PageTriageUtil::getUnreviewedDraftStats();
+		$this->assertSame(
+			2,
+			$stats[ 'count' ],
+			'Number of unreviewed drafts is correct'
+		);
+
+		$revision = $this->getServiceContainer()->getRevisionLookup()
+			->getRevisionByPageId( $submittedDraft1 );
+		$timestamp = wfTimestamp( TS_ISO_8601, $revision->getTimestamp() );
+		$this->assertSame(
+			$timestamp,
+			$stats[ 'oldest' ],
+			'Timestamp of oldest unreviewed draft is correct'
+		);
 	}
 }
