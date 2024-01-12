@@ -37,12 +37,10 @@ class CleanupPageTriage extends Maintenance {
 				->select( [ 'page_id' ] )
 				->from( 'pagetriage_page' )
 				->join( 'page', null, 'page_id = ptrp_page_id' )
-				->where(
-					[
-						'page_namespace != "' . NS_MAIN . '" AND page_namespace != "' . NS_USER . '"',
-						'ptrp_page_id > ' . $start
-					]
-				)
+				->where( [
+					$dbr->expr( 'page_namespace', '!=', [ NS_MAIN, NS_USER ] ),
+					$dbr->expr( 'ptrp_page_id', '>', $start ),
+				] )
 				->limit( $batchSize )
 				->orderBy( 'ptrp_page_id' )
 				->caller( __METHOD__ )

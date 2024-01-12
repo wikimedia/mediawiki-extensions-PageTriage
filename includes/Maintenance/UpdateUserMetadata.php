@@ -5,6 +5,7 @@ use Maintenance;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\SelectQueryBuilder;
 
 /**
  * A maintenance script that updates expired user metadata
@@ -76,7 +77,7 @@ class UpdateUserMetadata extends Maintenance {
 					'page_namespace' => $namespace
 				] )
 				->limit( $this->getBatchSize() )
-				->orderBy( [ 'ptrp_tags_updated DESC', 'ptrp_page_id DESC' ] )
+				->orderBy( [ 'ptrp_tags_updated', 'ptrp_page_id' ], SelectQueryBuilder::SORT_DESC )
 				->caller( __METHOD__ )
 				->fetchResultSet();
 

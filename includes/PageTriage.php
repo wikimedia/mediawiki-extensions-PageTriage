@@ -135,7 +135,7 @@ class PageTriage {
 			->set( $set )
 			->where( [
 				'ptrp_page_id' => $this->mPageId,
-				'ptrp_reviewed != ' . $dbw->addQuotes( $newReviewStatus )
+				$dbw->expr( 'ptrp_reviewed', '!=', $newReviewStatus ),
 			] )
 			->caller( __METHOD__ )
 			->execute();

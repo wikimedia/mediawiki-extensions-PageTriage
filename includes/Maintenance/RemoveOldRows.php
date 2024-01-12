@@ -7,6 +7,7 @@ use MediaWiki\Extension\PageTriage\PageTriageServices;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\SelectQueryBuilder;
 
 /**
  * A maintenance script that updates expired page metadata
@@ -157,7 +158,7 @@ class RemoveOldRows extends Maintenance {
 					$sqlWhere,
 				] )
 				->limit( $this->getBatchSize() )
-				->orderBy( [ 'ptrp_created DESC', 'ptrp_page_id DESC' ] )
+				->orderBy( [ 'ptrp_created', 'ptrp_page_id' ], SelectQueryBuilder::SORT_DESC )
 				->caller( __METHOD__ )
 				->fetchResultSet();
 

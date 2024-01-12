@@ -316,23 +316,23 @@ class ApiPageTriageList extends ApiBase {
 			switch ( strtolower( $opts['dir'] ?? '' ) ) {
 				// Created date (oldest)
 				case 'oldestfirst':
-					$options['ORDER BY'] = 'ptrp_created ASC, ptrp_page_id ASC';
+					$options['ORDER BY'] = [ 'ptrp_created ASC', 'ptrp_page_id ASC' ];
 					$offsetOperator = '>';
 					break;
 				// Submitted date (oldest)
 				case 'oldestreview':
-					$options['ORDER BY'] = 'ptrp_reviewed_updated ASC, ptrp_page_id ASC';
+					$options['ORDER BY'] = [ 'ptrp_reviewed_updated ASC', 'ptrp_page_id ASC' ];
 					$offsetOperator = '>';
 					break;
 				// Submitted date (newest)
 				case 'newestreview':
-					$options['ORDER BY'] = 'ptrp_reviewed_updated DESC, ptrp_page_id DESC';
+					$options['ORDER BY'] = [ 'ptrp_reviewed_updated DESC', 'ptrp_page_id DESC' ];
 					$offsetOperator = '<';
 					break;
 				// Created date (newest)
 				case 'newestfirst':
 				default:
-					$options['ORDER BY'] = 'ptrp_created DESC, ptrp_page_id DESC';
+					$options['ORDER BY'] = [ 'ptrp_created DESC', 'ptrp_page_id DESC' ];
 					$offsetOperator = '<';
 			}
 		}
@@ -457,11 +457,8 @@ class ApiPageTriageList extends ApiBase {
 			if ( $showOK ) {
 				unset( $opts[ 'show_predicted_issues_none' ] );
 				$draftqualityCopyvioConds[] = $dbr->makeList( [
-					$dbr->makeList( [
-						'ores_draftquality_cls.oresc_class=1',
-						'ores_draftquality_cls.oresc_class IS NULL'
-					], LIST_OR ),
-					'pagetriage_page_tags_copyvio.ptrpt_value IS NULL',
+					'ores_draftquality_cls.oresc_class' => [ 1, null ],
+					'pagetriage_page_tags_copyvio.ptrpt_value' => null,
 				], LIST_AND );
 			}
 

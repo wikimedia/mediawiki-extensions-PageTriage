@@ -59,7 +59,7 @@ class PopulateDraftQueue extends Maintenance {
 					]
 				)
 				->where( [
-					'ptrp_page_id IS NULL OR ptrpt_page_id IS NULL',
+					$db->expr( 'ptrp_page_id', '=', null )->or( 'ptrpt_page_id', '=', null ),
 					'page_namespace' => $pageTriageDraftNamespaceId,
 					'page_is_redirect' => '0',
 				] )

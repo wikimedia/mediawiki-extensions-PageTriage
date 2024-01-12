@@ -234,7 +234,7 @@ class PageTriageUtil {
 					'ptrp_reviewed' => [ 1, 2 ],
 					'page_namespace' => $namespace,
 					'page_is_redirect' => (int)$redirect,
-					'ptrp_reviewed_updated > ' . $dbr->addQuotes( $dbr->timestamp( $time ) )
+					$dbr->expr( 'ptrp_reviewed_updated', '>', $dbr->timestamp( $time ) ),
 				];
 
 				$res = $dbr->newSelectQueryBuilder()

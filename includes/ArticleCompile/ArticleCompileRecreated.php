@@ -27,7 +27,7 @@ class ArticleCompileRecreated extends ArticleCompile {
 		$res = $this->db->newSelectQueryBuilder()
 			->select( [ 'DISTINCT page_id' ] )
 			->from( 'logging' )
-			->join( 'page', 'page', 'page_title = log_title AND page_namespace = log_namespace' )
+			->join( 'page', 'page', [ 'page_title = log_title', 'page_namespace = log_namespace' ] )
 			->where( $conds )
 			->caller( __METHOD__ )
 			->fetchResultSet();
