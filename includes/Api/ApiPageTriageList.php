@@ -314,18 +314,23 @@ class ApiPageTriageList extends ApiBase {
 			$options['LIMIT'] = $opts['limit'] + 1;
 
 			switch ( strtolower( $opts['dir'] ?? '' ) ) {
+				// Created date (oldest)
 				case 'oldestfirst':
 					$options['ORDER BY'] = 'ptrp_created ASC, ptrp_page_id ASC';
 					$offsetOperator = '>';
 					break;
+				// Submitted date (oldest)
 				case 'oldestreview':
 					$options['ORDER BY'] = 'ptrp_reviewed_updated ASC, ptrp_page_id ASC';
 					$offsetOperator = '>';
 					break;
+				// Submitted date (newest)
 				case 'newestreview':
 					$options['ORDER BY'] = 'ptrp_reviewed_updated DESC, ptrp_page_id DESC';
 					$offsetOperator = '<';
 					break;
+				// Created date (newest)
+				case 'newestfirst':
 				default:
 					$options['ORDER BY'] = 'ptrp_created DESC, ptrp_page_id DESC';
 					$offsetOperator = '<';
