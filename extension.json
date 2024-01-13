@@ -158,7 +158,6 @@
 			]
 		},
 		"ext.pageTriage.util": {
-			"es6": true,
 			"packageFiles": [
 				"ext.pageTriage.util/main.js",
 				"ext.pageTriage.util/models/ext.pageTriage.article.js",
@@ -186,7 +185,6 @@
 			]
 		},
 		"ext.pageTriage.views.toolbar": {
-			"es6": true,
 			"packageFiles": [
 				"ext.pageTriage.views.toolbar/init.js",
 				"ext.pageTriage.views.toolbar/ToolbarView.js",
@@ -360,7 +358,6 @@
 			]
 		},
 		"ext.pageTriage.views.newPagesFeed": {
-			"es6": true,
 			"dependencies": [
 				"mediawiki.jqueryMsg",
 				"ext.pageTriage.util",
@@ -545,7 +542,6 @@
 			]
 		},
 		"ext.pageTriage.newPagesFeed.vue": {
-			"es6": true,
 			"dependencies": [
 				"@wikimedia/codex",
 				"mediawiki.util",
@@ -759,7 +755,6 @@
 			]
 		},
 		"ext.pageTriage.defaultTagsOptions": {
-			"es6": true,
 			"packageFiles": [
 				"ext.pageTriage.defaultTagsOptions/main.js",
 				"ext.pageTriage.defaultTagsOptions/ext.pageTriage.defaultTagsOptions.js",
@@ -973,7 +968,6 @@
 			"class": "MediaWiki\\Extension\\PageTriage\\PageTriageExternalTagsOptions"
 		},
 		"ext.pageTriage.toolbarStartup": {
-			"es6": true,
 			"packageFiles": [
 				"ext.pageTriage.toolbarStartup/ext.pageTriage.toolbarStartup.js",
 				"ext.pageTriage.toolbarStartup/ext.pageTriage.actionQueue.js"
@@ -983,7 +977,6 @@
 			]
 		},
 		"ext.pageTriage.article": {
-			"es6": true,
 			"styles": "ext.pageTriage.article/ext.pageTriage.article.css",
 			"scripts": "ext.pageTriage.article/ext.pageTriage.article.js",
 			"messages": [
@@ -998,7 +991,6 @@
 			]
 		},
 		"ext.PageTriage.enqueue": {
-			"es6": true,
 			"scripts": "ext.PageTriage.enqueue/ext.PageTriage.enqueue.js",
 			"messages": [
 				"pagetriage-enqueue-title",
