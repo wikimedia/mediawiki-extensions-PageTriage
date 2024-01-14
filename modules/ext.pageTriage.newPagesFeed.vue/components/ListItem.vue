@@ -45,6 +45,20 @@
 							<cdx-info-chip v-if="creatorBlocked" class="mwe-vue-pt-metadata-warning">
 								<a :href="blockLogLink">{{ $i18n( 'pagetriage-author-blocked' ).text() }}</a>
 							</cdx-info-chip>
+							<cdx-info-chip v-if="oresDraftQuality" class="mwe-vue-pt-issue">
+								{{ oresDraftQuality }}
+							</cdx-info-chip>
+							<span v-if="copyvio && showCopyvio">
+								<cdx-info-chip class="mw-parser-output mwe-vue-pt-issue">
+									<a
+										:href="copyvioLink"
+										target="_blank"
+										class="external"
+									>
+										{{ $i18n( 'pagetriage-filter-stat-predicted-issues-copyvio' ).text() }}
+									</a>
+								</cdx-info-chip>
+							</span>
 						</span>
 					</span>
 				</div>
@@ -126,29 +140,6 @@
 				<div>
 					<span>{{ $i18n( 'pagetriage-filter-predicted-class-heading' ).text() }}</span>
 					<span>{{ oresArticleQuality }}</span>
-				</div>
-				<div class="mwe-vue-pt-article-col-right ores-pt-issues">
-					<span>{{ $i18n( 'pagetriage-filter-predicted-issues-heading' ).text() }}</span>
-					<span v-if="!oresDraftQuality && !( copyvio && showCopyvio )">
-						{{ $i18n( 'pagetriage-filter-stat-predicted-issues-none' ).text() }}
-					</span>
-					<cdx-info-chip v-if="oresDraftQuality" class="mwe-vue-pt-issue">
-						{{ oresDraftQuality }}
-					</cdx-info-chip>
-					<span v-if="copyvio && showCopyvio">
-						<span v-if="oresDraftQuality">
-							{{ $i18n( 'pagetriage-dot-separator' ).text() }}
-						</span>
-						<cdx-info-chip class="mw-parser-output mwe-vue-pt-issue">
-							<a
-								:href="copyvioLink"
-								target="_blank"
-								class="external"
-							>
-								{{ $i18n( 'pagetriage-filter-stat-predicted-issues-copyvio' ).text() }}
-							</a>
-						</cdx-info-chip>
-					</span>
 				</div>
 			</div>
 		</div>
