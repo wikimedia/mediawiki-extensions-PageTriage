@@ -25,8 +25,8 @@ describe( 'ListFilterMenu.vue', () => {
 					return null;
 			}
 		} );
-		const { useSettingsStore } = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/stores/settings.js' );
-		ListFilterMenu = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/components/ListFilterMenu.vue' );
+		const { useSettingsStore } = require( '../../../../modules/ext.pageTriage.newPagesFeed/stores/settings.js' );
+		ListFilterMenu = require( '../../../../modules/ext.pageTriage.newPagesFeed/components/ListFilterMenu.vue' );
 		wrapper = mount( ListFilterMenu, {
 			global: {
 				plugins: [ createTestingPinia( {

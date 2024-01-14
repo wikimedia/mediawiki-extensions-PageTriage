@@ -358,7 +358,7 @@
 				"pagetriage-tag-warning-notice"
 			]
 		},
-		"ext.pageTriage.newPagesFeed.vue": {
+		"ext.pageTriage.newPagesFeed": {
 			"dependencies": [
 				"@wikimedia/codex",
 				"mediawiki.util",
@@ -373,28 +373,28 @@
 				"vue"
 			],
 			"packageFiles": [
-				"ext.pageTriage.newPagesFeed.vue/init.js",
-				"ext.pageTriage.newPagesFeed.vue/namespaces.js",
-				"ext.pageTriage.newPagesFeed.vue/App.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/ControlSection.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/DateControlSection.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/LabeledCheckbox.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/ListItem.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/CreatorByline.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/ListFilterMenu.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/ListContent.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/ListStatsNav.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/LoadMoreBar.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/QueueModeTab.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/NppSortDirRadio.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/FilterRadios.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/AfcSortSelect.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/AfcStateRadio.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/ShowingText.vue",
-				"ext.pageTriage.newPagesFeed.vue/components/UsernameLookup.vue",
-				"ext.pageTriage.newPagesFeed.vue/stores/settings.js",
+				"ext.pageTriage.newPagesFeed/init.js",
+				"ext.pageTriage.newPagesFeed/namespaces.js",
+				"ext.pageTriage.newPagesFeed/App.vue",
+				"ext.pageTriage.newPagesFeed/components/ControlSection.vue",
+				"ext.pageTriage.newPagesFeed/components/DateControlSection.vue",
+				"ext.pageTriage.newPagesFeed/components/LabeledCheckbox.vue",
+				"ext.pageTriage.newPagesFeed/components/ListItem.vue",
+				"ext.pageTriage.newPagesFeed/components/CreatorByline.vue",
+				"ext.pageTriage.newPagesFeed/components/ListFilterMenu.vue",
+				"ext.pageTriage.newPagesFeed/components/ListContent.vue",
+				"ext.pageTriage.newPagesFeed/components/ListStatsNav.vue",
+				"ext.pageTriage.newPagesFeed/components/LoadMoreBar.vue",
+				"ext.pageTriage.newPagesFeed/components/QueueModeTab.vue",
+				"ext.pageTriage.newPagesFeed/components/NppSortDirRadio.vue",
+				"ext.pageTriage.newPagesFeed/components/FilterRadios.vue",
+				"ext.pageTriage.newPagesFeed/components/AfcSortSelect.vue",
+				"ext.pageTriage.newPagesFeed/components/AfcStateRadio.vue",
+				"ext.pageTriage.newPagesFeed/components/ShowingText.vue",
+				"ext.pageTriage.newPagesFeed/components/UsernameLookup.vue",
+				"ext.pageTriage.newPagesFeed/stores/settings.js",
 				{
-					"name": "ext.pageTriage.newPagesFeed.vue/components/icons.json",
+					"name": "ext.pageTriage.newPagesFeed/components/icons.json",
 					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
 					"callbackParam": [
 						"cdxIconError",

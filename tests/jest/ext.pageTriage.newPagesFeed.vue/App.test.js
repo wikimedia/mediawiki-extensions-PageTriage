@@ -21,7 +21,7 @@ describe( 'App.vue', () => {
 		} );
 	} );
 	it( 'exists', () => {
-		const App = require( '../../../modules/ext.pageTriage.newPagesFeed.vue/App.vue' );
+		const App = require( '../../../modules/ext.pageTriage.newPagesFeed/App.vue' );
 		const wrapper = mount( App );
 		expect( wrapper.exists() ).toBe( true );
 	} );

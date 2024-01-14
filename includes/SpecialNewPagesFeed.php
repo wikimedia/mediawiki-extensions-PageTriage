@@ -76,7 +76,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$out->addModules( [
 			'ext.pageTriage.external',
 			'ext.pageTriage.util',
-			'ext.pageTriage.newPagesFeed.vue'
+			'ext.pageTriage.newPagesFeed'
 		] );
 
 		$warnings = '';

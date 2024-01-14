@@ -23,7 +23,7 @@ describe( 'ShowingText.vue', () => {
 					return null;
 			}
 		} );
-		ShowingText = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/components/ShowingText.vue' );
+		ShowingText = require( '../../../../modules/ext.pageTriage.newPagesFeed/components/ShowingText.vue' );
 		wrapper = mount( ShowingText, {
 			global: {
 				mixins: [ mixins ],
