@@ -17,31 +17,35 @@
 						(<a :href="historyUrl">{{ $i18n( 'pagetriage-hist' ).text() }}</a>)
 					</span>
 					<span>
-						{{ $i18n( 'pagetriage-dot-separator' ).text() }}
-						{{ $i18n( 'pagetriage-bytes', pageLen ).text() }}
-						{{ $i18n( 'pagetriage-dot-separator' ).text() }}
-						{{ $i18n( 'pagetriage-edits', revCount ).text() }}
-						<span v-if="!isDraft">
-							<cdx-info-chip v-if="categoryCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
-								{{ $i18n( 'pagetriage-no-categories' ).text() }}
-							</cdx-info-chip>
+						<span class="mwe-vue-pt-article-stats">
+							{{ $i18n( 'pagetriage-dot-separator' ).text() }}
+							{{ $i18n( 'pagetriage-bytes', pageLen ).text() }}
+							{{ $i18n( 'pagetriage-dot-separator' ).text() }}
+							{{ $i18n( 'pagetriage-edits', revCount ).text() }}
 							<span v-if="categoryCount !== 0">
 								{{ $i18n( 'pagetriage-dot-separator' ).text() }}
 								{{ $i18n( 'pagetriage-categories', categoryCount ).text() }}
 							</span>
-							<cdx-info-chip v-if="linkCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
-								<a :href="whatLinksHereLink">{{ $i18n( 'pagetriage-orphan' ).text() }}</a>
+						</span>
+						<span class="mwe-vue-pt-problem-chips">
+							<span v-if="!isDraft">
+								<cdx-info-chip v-if="categoryCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
+									{{ $i18n( 'pagetriage-no-categories' ).text() }}
+								</cdx-info-chip>
+								<cdx-info-chip v-if="linkCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
+									<a :href="whatLinksHereLink">{{ $i18n( 'pagetriage-orphan' ).text() }}</a>
+								</cdx-info-chip>
+								<cdx-info-chip v-if="recreated" class="mwe-vue-pt-metadata-warning">
+									<a :href="previouslyDeletedLogLink">{{ $i18n( 'pagetriage-recreated' ).text() }}</a>
+								</cdx-info-chip>
+							</span>
+							<cdx-info-chip v-if="referenceCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
+								{{ $i18n( 'pagetriage-no-reference' ).text() }}
 							</cdx-info-chip>
-							<cdx-info-chip v-if="recreated" class="mwe-vue-pt-metadata-warning">
-								<a :href="previouslyDeletedLogLink">{{ $i18n( 'pagetriage-recreated' ).text() }}</a>
+							<cdx-info-chip v-if="creatorBlocked" class="mwe-vue-pt-metadata-warning">
+								<a :href="blockLogLink">{{ $i18n( 'pagetriage-author-blocked' ).text() }}</a>
 							</cdx-info-chip>
 						</span>
-						<cdx-info-chip v-if="referenceCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
-							{{ $i18n( 'pagetriage-no-reference' ).text() }}
-						</cdx-info-chip>
-						<cdx-info-chip v-if="creatorBlocked" class="mwe-vue-pt-metadata-warning">
-							<a :href="blockLogLink">{{ $i18n( 'pagetriage-author-blocked' ).text() }}</a>
-						</cdx-info-chip>
 					</span>
 				</div>
 				<div class="mwe-vue-pt-article-col-right mwe-vue-pt-bold">
