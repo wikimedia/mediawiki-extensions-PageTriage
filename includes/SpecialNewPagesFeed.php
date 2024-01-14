@@ -47,13 +47,6 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$this->setHeaders();
 		$out = $this->getOutput();
 
-		// Decide which UI to load
-		$uiVersion = $request->getText( 'pagetriage_ui', $config->get( 'PageTriageUIVersion' ) );
-		$listModule = 'ext.pageTriage.newPagesFeed.vue';
-		if ( $uiVersion === 'old' ) {
-			$listModule = 'ext.pageTriage.views.newPagesFeed';
-		}
-
 		// Output the title of the page
 		$out->setPageTitleMsg( $this->msg( 'newpagesfeed' ) );
 
@@ -74,7 +67,6 @@ class SpecialNewPagesFeed extends SpecialPage {
 			'wgPageTriageInfiniteScrolling' => $wgPageTriageInfiniteScrolling,
 			'wgPageTriageStickyControlNav' => $config->get( 'PageTriageStickyControlNav' ),
 			'wgPageTriageStickyStatsNav' => $config->get( 'PageTriageStickyStatsNav' ),
-			'wgPageTriageUIVersion' => $uiVersion,
 			'wgPageTriageEnableExtendedFeatures' => $config->get( 'PageTriageEnableExtendedFeatures' ),
 			'wgShowOresFilters' => $showOresFilters,
 			'wgShowCopyvio' => $showCopyvio,
@@ -84,7 +76,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 		$out->addModules( [
 			'ext.pageTriage.external',
 			'ext.pageTriage.util',
-			$listModule
+			'ext.pageTriage.newPagesFeed.vue'
 		] );
 
 		$warnings = '';

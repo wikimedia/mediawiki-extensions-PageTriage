@@ -1073,9 +1073,6 @@
 		"PageTriageStickyStatsNav": {
 			"value": true
 		},
-		"PageTriageUIVersion": {
-			"value": "new"
-		},
 		"PageTriageMarkPatrolledLinkExpiry": {
 			"value": 86400
 		},
