@@ -312,7 +312,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	/**
 	 * Sorting drafts by submission date or date of decline.
 	 */
-	public function testSubmissionSorting() {
+	public function testSubmissionSortingByOldestReview() {
 		$apiParams = [
 			'dir' => 'oldestreview',
 		];
@@ -347,6 +347,50 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$list = $this->getPageTriageList( $apiParams );
 		$this->assertArrayHasKey( 'title', $list[0] );
 		$this->assertSame( 'Draft:Test page 5', $list[0][ 'title' ] );
+	}
+
+	public function testSubmissionSortingByCreatedDate() {
+		$oldest = $this->insertPage( 'Oldest created', '', $this->draftNsId );
+		$this->insertPage( 'Page in the middle', '', $this->draftNsId );
+		$newest = $this->insertPage( 'Newest created', '', $this->draftNsId );
+
+		$apiParams = [ 'dir' => 'oldestfirst' ];
+		$list = $this->getPageTriageList( $apiParams );
+		$this->assertArrayHasKey( 'title', $list[0] );
+		$this->assertSame( $oldest[ 'title' ]->getPrefixedText(), $list[0][ 'title' ] );
+
+		$apiParams = [ 'dir' => 'newestfirst' ];
+		$list = $this->getPageTriageList( $apiParams );
+		$this->assertArrayHasKey( 'title', $list[0] );
+		$this->assertSame( $newest[ 'title' ]->getPrefixedText(), $list[0][ 'title' ] );
+	}
+
+	public function testSubmissionSortingBySubmittedDate() {
+		$page1 = $this->insertPage( 'Oldest created', '', $this->draftNsId );
+		$page2 = $this->insertPage( 'Page in the middle', '', $this->draftNsId );
+		$page3 = $this->insertPage( 'Newest created', '', $this->draftNsId );
+
+		// Now submit them, in an order different than their creation date.
+		// ptrp_reviewed_updated is a timestamp, only accurate to the second.
+		// Sleep for 1 second to avoid identical timestamps and a flaky test.
+		$this->editPage( $page2[ 'title' ], '[[Category:Pending AfC submissions]]' );
+		sleep( 1 );
+		$this->editPage( $page3[ 'title' ], '[[Category:Pending AfC submissions]]' );
+		sleep( 1 );
+		$this->editPage( $page1[ 'title' ], '[[Category:Pending AfC submissions]]' );
+
+		$oldestSubmitted = $page2;
+		$newestSubmitted = $page1;
+
+		$apiParams = [ 'dir' => 'oldestreview' ];
+		$list = $this->getPageTriageList( $apiParams );
+		$this->assertArrayHasKey( 'title', $list[0] );
+		$this->assertSame( $oldestSubmitted[ 'title' ]->getPrefixedText(), $list[0][ 'title' ] );
+
+		$apiParams = [ 'dir' => 'newestreview' ];
+		$list = $this->getPageTriageList( $apiParams );
+		$this->assertArrayHasKey( 'title', $list[0] );
+		$this->assertSame( $newestSubmitted[ 'title' ]->getPrefixedText(), $list[0][ 'title' ] );
 	}
 
 	public function testQueryOres() {
