@@ -2,7 +2,6 @@
 namespace MediaWiki\Extension\PageTriage\Test;
 
 use MediaWiki\Extension\PageTriage\SpecialNewPagesFeed;
-use MediaWiki\Request\FauxRequest;
 use SpecialPageTestBase;
 
 /**
@@ -36,10 +35,10 @@ class SpecialNewPagesFeedTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( 'pagetriage-more', $html );
 	}
 
-	public function testPageLoadsNewUI() {
+	public function testPageLoadsUI() {
 		[ $html, ] = $this->executeSpecialPage(
 			'',
-			new FauxRequest( [ 'pagetriage_ui' => 'new' ] ),
+			null,
 			'qqx'
 		);
 
