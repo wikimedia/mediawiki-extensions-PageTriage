@@ -246,7 +246,6 @@
 	"pagetriage-tags-param-free-yes-label": "Yes",
 	"pagetriage-tags-param-free-no-label": "No",
 	"pagetriage-tags-param-missing-required": "Tag $1 is missing required parameter.",
-	"pagetriage-tags-param-date-format": "$1 $2",
 	"pagetriage-tags-talk-page-notify-topic-title": "Ways to improve $1",
 	"log-name-pagetriage-curation": "Page curation log",
 	"log-description-pagetriage-curation": "This is the log of actions taken on page curation toolbar.",

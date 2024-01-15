@@ -592,7 +592,6 @@
 				"pagetriage-tags-param-free-yes-label",
 				"pagetriage-tags-param-free-no-label",
 				"pagetriage-tags-param-missing-required",
-				"pagetriage-tags-param-date-format",
 				"pagetriage-tags-tooltip",
 				"pagetriage-tags-quickfilter-label",
 				"pagetriage-del-tags-cat-csd-label",
@@ -838,7 +837,6 @@
 				"pagetriage-tags-param-free-yes-label",
 				"pagetriage-tags-param-free-no-label",
 				"pagetriage-tags-param-missing-required",
-				"pagetriage-tags-param-date-format",
 				"pagetriage-tags-tooltip"
 			]
 		},

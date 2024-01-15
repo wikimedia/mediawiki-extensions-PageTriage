@@ -267,7 +267,6 @@
 	"pagetriage-tags-param-free-yes-label": "Label for Yes answer of free parameter.\n{{Identical|Yes}}",
 	"pagetriage-tags-param-free-no-label": "Label for No answer of free parameter.\n{{Identical|No}}",
 	"pagetriage-tags-param-missing-required": "Error message for missing required tag parameter, $1 is the tag name",
-	"pagetriage-tags-param-date-format": "{{notranslate}}\nThe date format for the date parameter of tags, $1 is the month, $2 is the year",
 	"pagetriage-tags-talk-page-notify-topic-title": "Used as topic title in a toolbar with JavaScript",
 	"log-name-pagetriage-curation": "{{doc-logpage}}",
 	"log-description-pagetriage-curation": "Descriptive header text for Page curation log page.",
