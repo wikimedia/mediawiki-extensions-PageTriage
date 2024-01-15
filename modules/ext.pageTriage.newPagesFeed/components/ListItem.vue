@@ -28,7 +28,7 @@
 							</span>
 						</span>
 						<span class="mwe-vue-pt-problem-chips">
-							<span v-if="!isDraft">
+							<template v-if="!isDraft">
 								<cdx-info-chip v-if="categoryCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
 									{{ $i18n( 'pagetriage-no-categories' ).text() }}
 								</cdx-info-chip>
@@ -38,7 +38,7 @@
 								<cdx-info-chip v-if="recreated" class="mwe-vue-pt-metadata-warning">
 									<a :href="previouslyDeletedLogLink">{{ $i18n( 'pagetriage-recreated' ).text() }}</a>
 								</cdx-info-chip>
-							</span>
+							</template>
 							<cdx-info-chip v-if="referenceCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
 								{{ $i18n( 'pagetriage-no-reference' ).text() }}
 							</cdx-info-chip>
@@ -48,17 +48,15 @@
 							<cdx-info-chip v-if="oresDraftQuality" class="mwe-vue-pt-issue">
 								{{ oresDraftQuality }}
 							</cdx-info-chip>
-							<span v-if="copyvio && showCopyvio">
-								<cdx-info-chip class="mw-parser-output mwe-vue-pt-issue">
-									<a
-										:href="copyvioLink"
-										target="_blank"
-										class="external"
-									>
-										{{ $i18n( 'pagetriage-filter-stat-predicted-issues-copyvio' ).text() }}
-									</a>
-								</cdx-info-chip>
-							</span>
+							<cdx-info-chip v-if="copyvio && showCopyvio" class="mw-parser-output mwe-vue-pt-issue">
+								<a
+									:href="copyvioLink"
+									target="_blank"
+									class="external"
+								>
+									{{ $i18n( 'pagetriage-filter-stat-predicted-issues-copyvio' ).text() }}
+								</a>
+							</cdx-info-chip>
 						</span>
 					</span>
 				</div>
