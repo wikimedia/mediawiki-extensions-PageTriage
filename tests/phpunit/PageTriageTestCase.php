@@ -7,7 +7,6 @@ use ApiUsageException;
 use ExtensionRegistry;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
-use MediaWiki\Extension\PageTriage\PageTriage;
 use MediaWiki\User\UserIdentity;
 use MockHttpTrait;
 
@@ -147,8 +146,6 @@ abstract class PageTriageTestCase extends ApiTestCase {
 			$page->getId()
 		] );
 		$acp->compileMetadata();
-		$pageTriage = new PageTriage( $page->getId() );
-		$pageTriage->addToPageTriageQueue();
 		return $pageAndTitle[ 'id' ];
 	}
 
