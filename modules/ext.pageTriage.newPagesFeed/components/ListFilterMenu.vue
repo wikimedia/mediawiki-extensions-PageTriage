@@ -104,7 +104,6 @@
 								></afc-state-radio>
 							</control-section>
 							<date-control-section
-								v-if="showOresFilters"
 								v-model:from="settings.unsaved.afcDate.from"
 								v-model:to="settings.unsaved.afcDate.to"
 								type="afc"
@@ -145,13 +144,6 @@
 								</control-section>
 							</div>
 						</template>
-						<div v-else class="mwe-vue-pt-control-section__col3">
-							<date-control-section
-								v-model:from="settings.unsaved.afcDate.from"
-								v-model:to="settings.unsaved.afcDate.to"
-								type="afc"
-							></date-control-section>
-						</div>
 					</div>
 
 					<div class="mwe-vue-pt-control-buttons">
