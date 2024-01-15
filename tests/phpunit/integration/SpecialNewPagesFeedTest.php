@@ -35,19 +35,4 @@ class SpecialNewPagesFeedTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( 'pagetriage-more', $html );
 	}
 
-	public function testPageLoadsUI() {
-		[ $html, ] = $this->executeSpecialPage(
-			'',
-			null,
-			'qqx'
-		);
-
-		// Welcome message should display
-		$this->assertStringContainsString( 'pagetriage-welcome', $html );
-		// List View content should load
-		$this->assertStringContainsString( 'pagetriage-please-wait', $html );
-		$this->assertStringContainsString( 'pagetriage-js-required', $html );
-		$this->assertStringContainsString( 'pagetriage-more', $html );
-	}
-
 }
