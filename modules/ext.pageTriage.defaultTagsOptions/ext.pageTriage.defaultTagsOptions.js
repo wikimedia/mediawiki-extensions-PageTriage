@@ -165,7 +165,6 @@
 						for: $.extend( true, {}, param.for )
 					},
 					position: 'top',
-					common: true,
 					multiple: true
 				},
 
@@ -258,6 +257,7 @@
 						date: param.date
 					},
 					position: 'categories',
+					common: true,
 					multiple: false
 				},
 
@@ -423,6 +423,7 @@
 						date: param.date
 					},
 					position: 'top',
+					common: true,
 					multiple: true
 				},
 
@@ -756,6 +757,7 @@
 						date: param.date
 					},
 					position: 'top',
+					common: true,
 					multiple: true
 				},
 
@@ -1211,7 +1213,6 @@
 						date: param.date
 					},
 					position: 'top',
-					common: true,
 					multiple: true
 				},
 
