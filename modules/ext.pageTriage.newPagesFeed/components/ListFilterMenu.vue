@@ -64,7 +64,10 @@
 								type="npp"
 							></date-control-section>
 						</div>
-						<control-section label-msg="pagetriage-filter-second-show-heading">
+						<control-section
+							class="mwe-vue-pt-control-section__col2"
+							label-msg="pagetriage-filter-second-show-heading"
+						>
 							<filter-radios
 								v-model:filter="settings.unsaved.nppFilter"
 								v-model:user="settings.unsaved.nppFilterUser"
@@ -72,7 +75,7 @@
 							>
 							</filter-radios>
 						</control-section>
-						<div v-if="showOresFilters" class="mwe-vue-pt-control-section__col2">
+						<div v-if="showOresFilters" class="mwe-vue-pt-control-section__col3">
 							<control-section label-msg="pagetriage-filter-predicted-class-heading">
 								<labeled-checkbox
 									v-for="( _, rating ) in settings.unsaved.nppPredictedRating"
@@ -93,6 +96,7 @@
 							</control-section>
 						</div>
 					</div>
+
 					<div v-show="settings.immediate.queueMode === 'afc'" class="mwe-vue-pt-control-section__row1">
 						<div class="mwe-vue-pt-control-section__col1">
 							<control-section label-msg="pagetriage-filter-show-heading">
@@ -106,8 +110,11 @@
 								type="afc"
 							></date-control-section>
 						</div>
-						<control-section label-msg="pagetriage-filter-second-show-heading">
-							<div class="mwe-vue-pt-control-section__col2">
+						<control-section
+							label-msg="pagetriage-filter-second-show-heading"
+							class="mwe-vue-pt-control-section__col2"
+						>
+							<div>
 								<filter-radios
 									v-model:filter="settings.unsaved.afcFilter"
 									v-model:user="settings.unsaved.afcFilterUser"
@@ -138,7 +145,7 @@
 								</control-section>
 							</div>
 						</template>
-						<div v-else class="mwe-vue-pt-control-section__col2">
+						<div v-else class="mwe-vue-pt-control-section__col3">
 							<date-control-section
 								v-model:from="settings.unsaved.afcDate.from"
 								v-model:to="settings.unsaved.afcDate.to"
