@@ -65,7 +65,6 @@
 	"pagetriage-author-blocked": "Bloqué",
 	"pagetriage-author-bot": "Robot",
 	"pagetriage-creation-dateformat": "YYYY-MM-DD HH:mm",
-	"pagetriage-user-creation-dateformat": "YYYY-MM-DD",
 	"pagetriage-showing": "Affichage de :",
 	"pagetriage-filter-list-prompt": "Définir des filtres",
 	"pagetriage-filter-predicted-class-heading": "Classe prédite :",

@@ -1,10 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ciaranchen",
 			"Liuxinyu970226"
 		]
 	},
 	"pagetriage-author-bot": "機械人",
 	"pagetriage-filter-username": "用戶名稱",
-	"pagetriage-filter-stat-bots": "機械人"
+	"pagetriage-filter-stat-bots": "機械人",
+	"logentry-pagetriage-copyvio-delete": "$1 {{GENDER:$2|unmarked}} 對 $3 進行了 $4 修訂，可能存在版權侵權",
+	"apihelp-pagetriagetagcopyvio-param-untag": "移除侵犯版權的標籤"
 }

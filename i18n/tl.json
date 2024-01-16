@@ -36,8 +36,6 @@
 	"pagetriage-author-not-autoconfirmed": "Bagong patnugot",
 	"pagetriage-author-blocked": "Hinarang",
 	"pagetriage-author-bot": "Bot",
-	"pagetriage-creation-dateformat": "OO:mm, a BBBB tttt",
-	"pagetriage-user-creation-dateformat": "tttt-BB-aa",
 	"pagetriage-showing": "Ipinapakita ang:",
 	"pagetriage-filter-list-prompt": "Itakda ang mga pansala",
 	"pagetriage-unreviewed-article-count": "$1 hindi pa nasusuring muli na {{PLURAL:$1|pahina|mga pahina}} (pinakaluma: $2)",
