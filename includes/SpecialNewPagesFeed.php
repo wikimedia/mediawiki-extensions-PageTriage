@@ -33,8 +33,6 @@ class SpecialNewPagesFeed extends SpecialPage {
 	 * @throws ConfigException
 	 */
 	public function execute( $sub ) {
-		// phpcs:ignore MediaWiki.Usage.ExtendClassUsage.FunctionConfigUsage
-		global $wgPageTriageInfiniteScrolling;
 		$this->addHelpLink( 'Help:New_pages_feed' );
 
 		$config = $this->getConfig();
@@ -53,20 +51,9 @@ class SpecialNewPagesFeed extends SpecialPage {
 		// Load common interface css
 		$out->addModuleStyles( [ 'mediawiki.interface.helpers.styles' ] );
 
-		// Allow infinite scrolling override from query string parameter
-		// We don't use getBool() here since the param is optional
-		if ( $request->getText( 'infinite' ) === 'true' ) {
-			$wgPageTriageInfiniteScrolling = 'true';
-		} elseif ( $request->getText( 'infinite' ) === 'false' ) {
-			$wgPageTriageInfiniteScrolling = 'false';
-		}
-
 		// Set the config flags in JavaScript
 		$globalVars = [
 			'pageTriageNamespaces' => PageTriageUtil::getNamespaces(),
-			'wgPageTriageInfiniteScrolling' => $wgPageTriageInfiniteScrolling,
-			'wgPageTriageStickyControlNav' => $config->get( 'PageTriageStickyControlNav' ),
-			'wgPageTriageStickyStatsNav' => $config->get( 'PageTriageStickyStatsNav' ),
 			'wgPageTriageEnableExtendedFeatures' => $config->get( 'PageTriageEnableExtendedFeatures' ),
 			'wgShowOresFilters' => $showOresFilters,
 			'wgShowCopyvio' => $showCopyvio,
