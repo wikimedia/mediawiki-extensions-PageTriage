@@ -13,7 +13,7 @@ describe( 'NppSortDirRadio.vue', () => {
 					return null;
 			}
 		} );
-		NppSortDirRadio = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/components/NppSortDirRadio.vue' );
+		NppSortDirRadio = require( '../../../../modules/ext.pageTriage.newPagesFeed/components/NppSortDirRadio.vue' );
 		wrapper = mount( NppSortDirRadio, {
 			global: {
 				mixins: [ mixins ],

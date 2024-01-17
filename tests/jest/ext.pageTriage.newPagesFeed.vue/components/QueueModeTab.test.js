@@ -14,8 +14,8 @@ describe( 'QueueModeTab.vue', () => {
 					return null;
 			}
 		} );
-		const { useSettingsStore } = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/stores/settings.js' );
-		QueueModeTab = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/components/QueueModeTab.vue' );
+		const { useSettingsStore } = require( '../../../../modules/ext.pageTriage.newPagesFeed/stores/settings.js' );
+		QueueModeTab = require( '../../../../modules/ext.pageTriage.newPagesFeed/components/QueueModeTab.vue' );
 		wrapper = mount( QueueModeTab, {
 			global: {
 				mixins: [ mixins ],

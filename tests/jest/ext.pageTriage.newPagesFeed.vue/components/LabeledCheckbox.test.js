@@ -3,7 +3,7 @@ let LabeledCheckbox;
 let wrapper;
 describe( 'LabeledCheckbox.vue', () => {
 	beforeEach( () => {
-		LabeledCheckbox = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/components/LabeledCheckbox.vue' );
+		LabeledCheckbox = require( '../../../../modules/ext.pageTriage.newPagesFeed/components/LabeledCheckbox.vue' );
 		wrapper = mount( LabeledCheckbox );
 	} );
 	it( 'mounts', () => {

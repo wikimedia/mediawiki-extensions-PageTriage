@@ -13,8 +13,8 @@ describe( 'ListContent.vue', () => {
 					return null;
 			}
 		} );
-		const { useSettingsStore } = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/stores/settings.js' );
-		ListContent = require( '../../../../modules/ext.pageTriage.newPagesFeed.vue/components/ListContent.vue' );
+		const { useSettingsStore } = require( '../../../../modules/ext.pageTriage.newPagesFeed/stores/settings.js' );
+		ListContent = require( '../../../../modules/ext.pageTriage.newPagesFeed/components/ListContent.vue' );
 		wrapper = mount( ListContent, {
 			global: {
 				plugins: [ createTestingPinia( {
