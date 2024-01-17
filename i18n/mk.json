@@ -33,7 +33,7 @@
 	"pagetriage-byline": "{{GENDER:$1|Создадено}} од $1 ($2$3$4)",
 	"pagetriage-byline-heading": "{{GENDER:$1|Создадено}} од",
 	"pagetriage-byline-new-editor": "{{GENDER:$1|Создадено од новиот уредник|Создадено од новата уредничка}} $1 ($2$3$4)",
-	"pagetriage-byline-new-editor-heading": "{GENDER:$1|Создадено од нов уредник|Создадено од нова уредничка}}",
+	"pagetriage-byline-new-editor-heading": "{{GENDER:$1|Создадено од нов уредник|Создадено од нова уредничка}}",
 	"pagetriage-articleinfo-byline": "Оваа страница е создадена на $1 од $2 ($3$4$5)",
 	"pagetriage-articleinfo-byline-hidden-username": "Оваа страница е создадена на $1",
 	"pagetriage-articleinfo-byline-new-editor": "Оваа страница е создадена на $1 од новиот уредник $2 ($3$4$5)",
