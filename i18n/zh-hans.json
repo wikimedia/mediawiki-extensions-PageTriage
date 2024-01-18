@@ -139,7 +139,6 @@
 	"pagetriage-stats-filter-page-count": "您筛选的列表中有$1个{{PLURAL:$1|页面}}",
 	"pagetriage-filter-ns-all": "全部",
 	"pagetriage-filter-pending-ores-score": "不适用",
-	"pagetriage-more": "更多",
 	"pagetriage-filter-stat-state": "状态",
 	"pagetriage-filter-stat-type": "类型",
 	"pagetriage-filter-stat-all": "全部",

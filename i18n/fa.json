@@ -111,7 +111,6 @@
 	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|صفحهٔ|صفحهٔ}} در لیست فیلتر‌ شده شما",
 	"pagetriage-filter-ns-all": "همه",
 	"pagetriage-filter-pending-ores-score": "ن/م",
-	"pagetriage-more": "بیشتر",
 	"pagetriage-filter-stat-state": "حالت",
 	"pagetriage-filter-stat-type": "نوع",
 	"pagetriage-filter-stat-all": "همه",

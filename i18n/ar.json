@@ -108,7 +108,6 @@
 	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|صفحة|صفحات}} في قائمتك المصفاة",
 	"pagetriage-filter-ns-all": "الكل",
 	"pagetriage-filter-pending-ores-score": "غ/م",
-	"pagetriage-more": "المزيد",
 	"pagetriage-filter-stat-state": "الحالة",
 	"pagetriage-filter-stat-type": "النوع",
 	"pagetriage-filter-stat-all": "الكل",

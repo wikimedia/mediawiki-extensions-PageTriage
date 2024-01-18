@@ -95,7 +95,6 @@
 	"pagetriage-stats-filter-page-count": "필터한 목록에 {{PLURAL:$1|문서}} $1개",
 	"pagetriage-filter-ns-all": "모두",
 	"pagetriage-filter-pending-ores-score": "N/A",
-	"pagetriage-more": "더 보기",
 	"pagetriage-filter-stat-state": "상태",
 	"pagetriage-filter-stat-type": "유형",
 	"pagetriage-filter-stat-all": "모두",

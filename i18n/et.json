@@ -102,7 +102,6 @@
 	"pagetriage-stats-reviewed-page-count": "{{PLURAL:$1|Üks lehekülg|$1 lehekülge}} sel nädalal üle vaadatud",
 	"pagetriage-stats-filter-page-count": "{{PLURAL:$1|Üks lehekülg|$1 lehekülge}} sinu filtritud loendis",
 	"pagetriage-filter-ns-all": "Kõik",
-	"pagetriage-more": "Rohkem",
 	"pagetriage-filter-stat-state": "olek",
 	"pagetriage-filter-stat-type": "tüüp",
 	"pagetriage-filter-stat-all": "Kõik",

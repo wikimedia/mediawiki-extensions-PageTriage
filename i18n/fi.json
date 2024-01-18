@@ -74,7 +74,6 @@
 	"pagetriage-stats-reviewed-page-count": "$1 {{PLURAL:$1|sivu|sivua}} katsastettu tällä viikolla",
 	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|sivu|sivua}} suodatetulla listallasi",
 	"pagetriage-filter-ns-all": "Kaikki",
-	"pagetriage-more": "Lisää",
 	"pagetriage-filter-stat-all": "Kaikki",
 	"pagetriage-filter-stat-reviewed": "Katsastettu",
 	"pagetriage-filter-stat-unreviewed": "Katsastamatta",

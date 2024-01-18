@@ -120,7 +120,6 @@
 	"pagetriage-stats-filter-page-count": "{{PLURAL:$1|דף אחד|$1 דפים}} ברשימה המסוננת שלך",
 	"pagetriage-filter-ns-all": "הכול",
 	"pagetriage-filter-pending-ores-score": "לא זמין",
-	"pagetriage-more": "עוד",
 	"pagetriage-filter-stat-state": "מצב",
 	"pagetriage-filter-stat-type": "סוג",
 	"pagetriage-filter-stat-all": "הכול",

@@ -62,7 +62,6 @@
 	"pagetriage-stats-reviewed-page-count": "एह हफ्ता में $1 {{PLURAL:$1|पन्ना|पन्ना सभ}} के समीक्षा भइल",
 	"pagetriage-stats-filter-page-count": "आपकी फिल्टर कइल लिस्ट में $1 {{PLURAL:$1|पन्ना|पन्ना सभ}} बा",
 	"pagetriage-filter-ns-all": "सगरी",
-	"pagetriage-more": "अउरी",
 	"pagetriage-filter-stat-all": "सगरी",
 	"pagetriage-filter-stat-reviewed": "समीक्षित",
 	"pagetriage-filter-stat-unreviewed": "बिना-समीक्षित",

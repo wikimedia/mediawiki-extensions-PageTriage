@@ -9,7 +9,6 @@
 	"pagetriage-categories": "$1 {{PLURAL:$1|kategory|kategoryen}}",
 	"pagetriage-no-categories": "Gjin kategoryen",
 	"pagetriage-filter-username": "Meidochnamme",
-	"pagetriage-more": "Mear",
 	"pagetriage-filter-stat-no-categories": "gjin kategoryen",
 	"pagetriage-tags-param-free-yes-label": "Ja",
 	"pagetriage-tags-param-free-no-label": "Nee",

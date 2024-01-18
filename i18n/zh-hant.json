@@ -116,7 +116,6 @@
 	"pagetriage-stats-filter-page-count": "在您的篩選清單裡有 $1 {{PLURAL:$1|個頁面|個頁面}}",
 	"pagetriage-filter-ns-all": "全部",
 	"pagetriage-filter-pending-ores-score": "N/A",
-	"pagetriage-more": "更多",
 	"pagetriage-filter-stat-state": "狀態",
 	"pagetriage-filter-stat-type": "類型",
 	"pagetriage-filter-stat-all": "全部",

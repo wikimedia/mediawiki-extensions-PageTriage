@@ -72,7 +72,6 @@
 	"pagetriage-stats-reviewed-page-count": "$1 {{PLURAL:$1|páxina revisada|páxinas revisada}} esta semana",
 	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|páxina|páxinas}} na súa lista filtrada",
 	"pagetriage-filter-ns-all": "Todos",
-	"pagetriage-more": "Máis",
 	"pagetriage-filter-stat-all": "Todas",
 	"pagetriage-filter-stat-reviewed": "Revisados",
 	"pagetriage-filter-stat-unreviewed": "Sen revisar",

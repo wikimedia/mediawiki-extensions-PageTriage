@@ -107,7 +107,6 @@
 	"pagetriage-stats-filter-page-count": "{{PLURAL:$1|Eine Seite|$1 Seiten}} in deiner gefilterten Liste",
 	"pagetriage-filter-ns-all": "Alle",
 	"pagetriage-filter-pending-ores-score": "N/A",
-	"pagetriage-more": "Mehr",
 	"pagetriage-filter-stat-state": "Status",
 	"pagetriage-filter-stat-type": "Typ",
 	"pagetriage-filter-stat-all": "Alle",

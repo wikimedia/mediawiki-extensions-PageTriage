@@ -129,7 +129,6 @@
 	"pagetriage-stats-filter-page-count": "$1 page{{PLURAL:$1||s}} dans votre liste filtrée",
 	"pagetriage-filter-ns-all": "Tous",
 	"pagetriage-filter-pending-ores-score": "s.o.",
-	"pagetriage-more": "Plus",
 	"pagetriage-filter-stat-state": "État",
 	"pagetriage-filter-stat-type": "Type",
 	"pagetriage-filter-stat-all": "Tous",

@@ -94,7 +94,6 @@
 	"pagetriage-stats-reviewed-page-count": "今週は $1 {{PLURAL:$1|件のページ}}を査読しました",
 	"pagetriage-stats-filter-page-count": "フィルター リストに $1 {{PLURAL:$1|件のページ}}が入っています",
 	"pagetriage-filter-ns-all": "すべて",
-	"pagetriage-more": "続き",
 	"pagetriage-filter-stat-state": "都道府県・州",
 	"pagetriage-filter-stat-all": "すべて",
 	"pagetriage-filter-stat-reviewed": "査読済",

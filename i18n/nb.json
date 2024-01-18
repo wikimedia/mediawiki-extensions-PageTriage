@@ -103,7 +103,6 @@
 	"pagetriage-stats-filter-page-count": "{{PLURAL:$1|én side|$1 sider}} i din filtrerte liste",
 	"pagetriage-filter-ns-all": "Alle",
 	"pagetriage-filter-pending-ores-score": "I/T",
-	"pagetriage-more": "Mer",
 	"pagetriage-filter-stat-state": "Status",
 	"pagetriage-filter-stat-type": "Type",
 	"pagetriage-filter-stat-all": "Alle",

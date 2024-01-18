@@ -65,7 +65,6 @@
 	"pagetriage-stats-reviewed-page-count": "$1 {{PLURAL:$1|strona je|stronje stej|strony su|stronow je}} so tutón tydźeń {{PLURAL:$1|přepruwowała|přepruwuwałoj|přepruwowali|přepruwowało}}",
 	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|strona|stronje|strony|stronow}} w twojej filtorwanej lisćinje",
 	"pagetriage-filter-ns-all": "Wšě",
-	"pagetriage-more": "Wjace",
 	"pagetriage-filter-stat-all": "Wšě",
 	"pagetriage-filter-stat-reviewed": "přepruwowany",
 	"pagetriage-filter-stat-unreviewed": "njepřepruwowane",

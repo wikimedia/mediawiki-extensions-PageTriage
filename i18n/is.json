@@ -59,7 +59,6 @@
 	"pagetriage-stats-reviewed-page-count": "$1 {{PLURAL:$1|síða yfirfarin|síður yfirfarnar}} í þessari viku",
 	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|síða|síður}} í síaða listanum þínum",
 	"pagetriage-filter-ns-all": "Öll",
-	"pagetriage-more": "Meira",
 	"pagetriage-filter-stat-all": "Allar",
 	"pagetriage-filter-stat-reviewed": "Yfirfarið",
 	"pagetriage-filter-stat-unreviewed": "Óyfirfarið",

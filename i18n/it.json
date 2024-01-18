@@ -89,7 +89,6 @@
 	"pagetriage-stats-reviewed-page-count": "$1 {{PLURAL:$1|pagina|pagine}} revisionate questa settimana",
 	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|pagina|pagine}} nel tuo elenco filtrato",
 	"pagetriage-filter-ns-all": "Tutti",
-	"pagetriage-more": "Ancora",
 	"pagetriage-filter-stat-type": "Tipo",
 	"pagetriage-filter-stat-all": "Tutte",
 	"pagetriage-filter-stat-date_range": "Intervallo di date",

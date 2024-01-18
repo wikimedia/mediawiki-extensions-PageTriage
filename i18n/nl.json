@@ -124,7 +124,6 @@
 	"pagetriage-stats-filter-page-count": "Er {{PLURAL:$1|staat één pagina|staan $1 pagina’s}} in uw gefilterde lijst",
 	"pagetriage-filter-ns-all": "Alle",
 	"pagetriage-filter-pending-ores-score": "N.v.t.",
-	"pagetriage-more": "Meer",
 	"pagetriage-filter-stat-state": "Status",
 	"pagetriage-filter-stat-type": "Type",
 	"pagetriage-filter-stat-all": "Alle",

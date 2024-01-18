@@ -95,7 +95,6 @@
 	"pagetriage-stats-reviewed-page-count": "$1 {{PLURAL:$1|sida|sidor}} patrullerade denna vecka",
 	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|sida|sidor}} i den filtrerade listan",
 	"pagetriage-filter-ns-all": "Alla",
-	"pagetriage-more": "Mer",
 	"pagetriage-filter-stat-type": "Typ",
 	"pagetriage-filter-stat-all": "Alla",
 	"pagetriage-filter-stat-date_range": "Datumintervall",

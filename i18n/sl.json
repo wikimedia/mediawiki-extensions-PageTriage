@@ -109,7 +109,6 @@
 	"pagetriage-stats-filter-page-count": "V vašem filtriranem seznamu {{PLURAL:$1|je $1 stran|sta $1 strani|so $1 strani|je $1 strani}}",
 	"pagetriage-filter-ns-all": "Vse",
 	"pagetriage-filter-pending-ores-score": "Ni na voljo",
-	"pagetriage-more": "Več",
 	"pagetriage-filter-stat-state": "Stanje",
 	"pagetriage-filter-stat-type": "Vrsta",
 	"pagetriage-filter-stat-all": "Vse",

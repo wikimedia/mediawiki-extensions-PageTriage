@@ -105,7 +105,6 @@
 	"pagetriage-stats-filter-page-count": "$1 pagina{{PLURAL:$1||s}} in tu lista filtrate",
 	"pagetriage-filter-ns-all": "Totes",
 	"pagetriage-filter-pending-ores-score": "N/D",
-	"pagetriage-more": "Plus",
 	"pagetriage-filter-stat-state": "Stato",
 	"pagetriage-filter-stat-type": "Typo",
 	"pagetriage-filter-stat-all": "Totes",

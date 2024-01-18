@@ -84,7 +84,6 @@
 	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|σελίδα|σελίδες}} στη φιλτραρισμένη λίστα σας",
 	"pagetriage-filter-ns-all": "Όλα",
 	"pagetriage-filter-pending-ores-score": "N/A",
-	"pagetriage-more": "Περισσότερα",
 	"pagetriage-filter-stat-state": "Κατάσταση",
 	"pagetriage-filter-stat-type": "Τύπος",
 	"pagetriage-filter-stat-all": "Όλα",

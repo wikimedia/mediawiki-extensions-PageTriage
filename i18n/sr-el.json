@@ -92,7 +92,6 @@
 	"pagetriage-stats-filter-page-count": "Na vašem filtriranom spisku {{PLURAL:$1|je $1 stranica|su $1 stranice|je $1 stranica}}",
 	"pagetriage-filter-ns-all": "Sve",
 	"pagetriage-filter-pending-ores-score": "Nedostupno",
-	"pagetriage-more": "Još",
 	"pagetriage-filter-stat-state": "Stanje",
 	"pagetriage-filter-stat-type": "Vrsta",
 	"pagetriage-filter-stat-all": "Sve",

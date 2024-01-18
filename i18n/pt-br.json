@@ -110,7 +110,6 @@
 	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|página|páginas}} na sua lista filtrada",
 	"pagetriage-filter-ns-all": "Todas",
 	"pagetriage-filter-pending-ores-score": "N/A",
-	"pagetriage-more": "Mais",
 	"pagetriage-filter-stat-state": "Estado",
 	"pagetriage-filter-stat-type": "Tipo",
 	"pagetriage-filter-stat-all": "Todas",

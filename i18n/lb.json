@@ -78,7 +78,6 @@
 	"pagetriage-stats-reviewed-page-count": "{{PLURAL:$1|Eng Säit|$1 Säiten}} dës Woch nogekuckt",
 	"pagetriage-stats-filter-page-count": "{{PLURAL:$1|Eng Säit|$1 Säiten}} an Ärer gefilterter Lëscht",
 	"pagetriage-filter-ns-all": "All",
-	"pagetriage-more": "Méi",
 	"pagetriage-filter-stat-type": "Typ",
 	"pagetriage-filter-stat-all": "All",
 	"pagetriage-filter-stat-date_range": "Zäitraum",

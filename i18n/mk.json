@@ -108,7 +108,6 @@
 	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|страница|страници}} во вашиот исфилтриран список",
 	"pagetriage-filter-ns-all": "Сите",
 	"pagetriage-filter-pending-ores-score": "Н/П",
-	"pagetriage-more": "Уште",
 	"pagetriage-filter-stat-state": "Состојба",
 	"pagetriage-filter-stat-type": "Вид",
 	"pagetriage-filter-stat-all": "Сите",

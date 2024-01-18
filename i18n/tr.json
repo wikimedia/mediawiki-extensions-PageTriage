@@ -112,7 +112,6 @@
 	"pagetriage-stats-filter-page-count": "Süzgeç uygulanmış listenizde $1 {{PLURAL:$1|sayfa|sayfa}} var",
 	"pagetriage-filter-ns-all": "Hepsi",
 	"pagetriage-filter-pending-ores-score": "Bilinmiyor",
-	"pagetriage-more": "Daha fazla",
 	"pagetriage-filter-stat-state": "Durum",
 	"pagetriage-filter-stat-type": "Tür",
 	"pagetriage-filter-stat-all": "Hepsi",

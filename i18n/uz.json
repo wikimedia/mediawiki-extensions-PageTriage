@@ -8,7 +8,6 @@
 	"pagetriage-filter-date-range-format-placeholder": "OO/KK/YYYY",
 	"pagetriage-filter-date-range-format-showing": "OO/KK/YYYY",
 	"pagetriage-filter-show-heading": "Holati:",
-	"pagetriage-more": "Yana",
 	"pagetriage-info-timestamp-date-format": "K OOOO YYYY",
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Rahmat}}}}"
 }

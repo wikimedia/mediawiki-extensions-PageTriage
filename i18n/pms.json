@@ -65,7 +65,6 @@
 	"pagetriage-stats-reviewed-page-count": "$1 {{PLURAL:$1|pàgina|pàgine}} revisionà sta sman-a",
 	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|pàgina|pàgine}} an soa lista filtrà",
 	"pagetriage-filter-ns-all": "Tùit",
-	"pagetriage-more": "Pi",
 	"pagetriage-filter-stat-all": "Tùit",
 	"pagetriage-filter-stat-reviewed": "revisionà",
 	"pagetriage-filter-stat-unreviewed": "nen revisionà",

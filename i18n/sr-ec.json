@@ -108,7 +108,6 @@
 	"pagetriage-stats-filter-page-count": "На вашем филтрираном списку {{PLURAL:$1|је $1 страница|су $1 странице|је $1 страница}}",
 	"pagetriage-filter-ns-all": "Све",
 	"pagetriage-filter-pending-ores-score": "Недоступно",
-	"pagetriage-more": "Још",
 	"pagetriage-filter-stat-state": "Стање",
 	"pagetriage-filter-stat-type": "Врста",
 	"pagetriage-filter-stat-all": "Све",

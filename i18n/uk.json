@@ -110,7 +110,6 @@
 	"pagetriage-stats-filter-page-count": "У Вашому відфільтрованому списку $1 {{PLURAL:$1|сторінка|сторінки|сторінок}}",
 	"pagetriage-filter-ns-all": "Усі",
 	"pagetriage-filter-pending-ores-score": "Н/Д",
-	"pagetriage-more": "Більше",
 	"pagetriage-filter-stat-state": "Стан",
 	"pagetriage-filter-stat-type": "Тип",
 	"pagetriage-filter-stat-all": "Усі",
