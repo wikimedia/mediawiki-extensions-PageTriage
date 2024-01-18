@@ -32,7 +32,6 @@ class SpecialNewPagesFeedTest extends SpecialPageTestBase {
 		// List View content should load
 		$this->assertStringContainsString( 'pagetriage-please-wait', $html );
 		$this->assertStringContainsString( 'pagetriage-js-required', $html );
-		$this->assertStringContainsString( 'pagetriage-more', $html );
 	}
 
 }

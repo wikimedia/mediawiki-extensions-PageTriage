@@ -96,7 +96,6 @@ class SpecialNewPagesFeed extends SpecialPage {
 			[
 				'pagetriage-please-wait' => $this->msg( 'pagetriage-please-wait' ),
 				'pagetriage-js-required' => $this->msg( 'pagetriage-js-required' ),
-				'pagetriage-more' => $this->msg( 'pagetriage-more' ),
 			]
 		);
 	}
