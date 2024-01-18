@@ -880,15 +880,6 @@
 		"PageTriagePagesPerRequest": {
 			"value": 20
 		},
-		"PageTriageInfiniteScrolling": {
-			"value": true
-		},
-		"PageTriageStickyControlNav": {
-			"value": false
-		},
-		"PageTriageStickyStatsNav": {
-			"value": true
-		},
 		"PageTriageMarkPatrolledLinkExpiry": {
 			"value": 86400
 		},
