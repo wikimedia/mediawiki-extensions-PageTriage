@@ -132,7 +132,6 @@
 	"pagetriage-stats-filter-page-count": "Text showing the number of pages from the primary filter, $1 is the number of pages",
 	"pagetriage-filter-ns-all": "For the namespace filter select list, text indicating that all namespaces will be selected.\n{{Identical|All}}",
 	"pagetriage-filter-pending-ores-score": "Text to display if the ORES result for an article is pending.",
-	"pagetriage-more": "Text for a link that loads more pages into list.\n{{Identical|More}}",
 	"pagetriage-filter-stat-state": "Name of the status display group for 'state' options. This message appears before a comma-separated list of states in parentheses, e.g.: State (Reviewed, Unreviewed).",
 	"pagetriage-filter-stat-type": "Name of the status display group for 'type' options. This message appears before a comma-separated list of states in parentheses, e.g.: State (Reviewed, Unreviewed).",
 	"pagetriage-filter-stat-all": "Status display component for all pages (no filter).\n{{Identical|All}}",
