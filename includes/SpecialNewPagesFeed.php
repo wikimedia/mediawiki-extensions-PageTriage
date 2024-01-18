@@ -66,16 +66,16 @@ class SpecialNewPagesFeed extends SpecialPage {
 			'ext.pageTriage.newPagesFeed'
 		] );
 
-		$warnings = '';
-		$warnings .= '<div id="mwe-pt-list-warnings" style="display: none;">';
+		$header = '';
+		$header .= '<div id="mwe-pt-list-warnings" style="display: none;">';
 		$parsedWelcomeMessage = $this->msg(
 			'pagetriage-welcome',
 			$config->get( 'PageTriageLearnMoreUrl' ),
 			$config->get( 'PageTriageFeedbackUrl' )
 		)->parse();
-		$warnings .= Html::rawElement( 'div', [ 'class' => 'plainlinks' ], $parsedWelcomeMessage );
-		$warnings .= '</div>';
-		$out->addHTML( $warnings );
+		$header .= Html::rawElement( 'div', [ 'class' => 'plainlinks' ], $parsedWelcomeMessage );
+		$header .= '</div>';
+		$out->addHTML( $header );
 		$out->addInlineStyle(
 			'.client-nojs #mwe-pt-list-view, .client-js #mwe-pt-list-view-no-js { display: none; }'
 		);
@@ -91,6 +91,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 	private function getListViewHtml() {
 		$templateParser = new TemplateParser( __DIR__ . '/templates' );
 
+		// HTML for this is located in includes/templates/ListView.mustache
 		return $templateParser->processTemplate(
 			'ListView',
 			[
