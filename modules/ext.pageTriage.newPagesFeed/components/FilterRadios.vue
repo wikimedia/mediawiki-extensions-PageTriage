@@ -56,12 +56,6 @@ const UsernameLookup = require( './UsernameLookup.vue' );
 const { ref } = require( 'vue' );
 // @vue/component
 module.exports = {
-	compatConfig: {
-		MODE: 3
-	},
-	compilerOptions: {
-		whitespace: 'condense'
-	},
 	name: 'FilterRadios',
 	components: { CdxRadio, UsernameLookup },
 	props: {

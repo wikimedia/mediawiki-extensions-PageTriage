@@ -10,13 +10,6 @@
 
 // @vue/component
 module.exports = {
-	// Enable Vue 3 mode with configureCompat and compilerOptions
-	compatConfig: {
-		MODE: 3
-	},
-	compilerOptions: {
-		whitespace: 'condense'
-	},
 	components: {
 		ListFilterMenu: require( './components/ListFilterMenu.vue' ),
 		ListContent: require( './components/ListContent.vue' )

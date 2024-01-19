@@ -19,12 +19,6 @@ const { CdxToggleButtonGroup, CdxField } = require( '@wikimedia/codex' );
 const { useSettingsStore } = require( '../stores/settings.js' );
 // @vue/component
 module.exports = {
-	compatConfig: {
-		MODE: 3
-	},
-	compilerOptions: {
-		whitespace: 'condense'
-	},
 	name: 'NppSortDirRadio',
 	components: {
 		CdxToggleButtonGroup,

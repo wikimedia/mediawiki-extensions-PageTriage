@@ -18,12 +18,6 @@ const { CdxProgressBar } = require( '@wikimedia/codex' );
 const { onMounted, ref } = require( 'vue' );
 // @vue/component
 module.exports = {
-	compatConfig: {
-		MODE: 3
-	},
-	compilerOptions: {
-		whitespace: 'condense'
-	},
 	components: {
 		CdxProgressBar
 	},
