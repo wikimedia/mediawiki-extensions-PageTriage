@@ -179,12 +179,14 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	}
 
 	public function ensureCopyvioTag() {
-		$this->db->upsert(
-			'pagetriage_tags',
-			[ 'ptrt_tag_name' => 'copyvio', 'ptrt_tag_desc' => 'copyvio' ],
-			[ 'ptrt_tag_name' ],
-			[ 'ptrt_tag_desc' => 'copyvio' ]
-		);
+		$this->db->newInsertQueryBuilder()
+			->insertInto( 'pagetriage_tags' )
+			->row( [ 'ptrt_tag_name' => 'copyvio', 'ptrt_tag_desc' => 'copyvio' ] )
+			->onDuplicateKeyUpdate()
+			->uniqueIndexFields( [ 'ptrt_tag_name' ] )
+			->set( [ 'ptrt_tag_desc' => 'copyvio' ] )
+			->caller( __METHOD__ )
+			->execute();
 	}
 
 	public function setCopyvio( $pageId, $revId ) {
