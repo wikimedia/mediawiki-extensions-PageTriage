@@ -410,13 +410,17 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			->newFromTitle( Title::newFromText( 'Test page ores 2', $this->draftNsId ) );
 		$rev2 = $page->getLatest();
 
-		$this->db->insert( 'ores_classification', [
-			'oresc_model' => $this->ensureOresModel( 'articlequality' ),
-			'oresc_probability' => 0.4,
-			'oresc_rev' => $rev1,
-			'oresc_class' => 1,
-			'oresc_is_predicted' => 1,
-		] );
+		$this->db->newInsertQueryBuilder()
+			->insertInto( 'ores_classification' )
+			->row( [
+				'oresc_model' => $this->ensureOresModel( 'articlequality' ),
+				'oresc_probability' => 0.4,
+				'oresc_rev' => $rev1,
+				'oresc_class' => 1,
+				'oresc_is_predicted' => 1,
+			] )
+			->caller( __METHOD__ )
+			->execute();
 
 		$this->setDraftQuality( $rev2, 2 );
 
@@ -444,13 +448,17 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			->newFromTitle( Title::newFromText( 'Test page ores 3', $this->draftNsId ) );
 		$rev1 = $page->getLatest();
 
-		$this->db->insert( 'ores_classification', [
+		$this->db->newInsertQueryBuilder()
+			->insertInto( 'ores_classification' )
+			->row( [
 			'oresc_model' => $this->ensureOresModel( 'articlequality' ),
 			'oresc_probability' => 0.5,
 			'oresc_rev' => $rev1,
 			'oresc_class' => 1,
 			'oresc_is_predicted' => 1,
-		] );
+			] )
+			->caller( __METHOD__ )
+			->execute();
 		$this->ensureOresModel( 'draftquality' );
 
 		$list = $this->getPageTriageList();

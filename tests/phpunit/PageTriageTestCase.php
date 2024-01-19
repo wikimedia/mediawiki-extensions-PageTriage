@@ -42,38 +42,39 @@ abstract class PageTriageTestCase extends ApiTestCase {
 
 		$this->setMainCache( CACHE_NONE );
 		// @TODO figure out why this is only run for the first test method when its in addDbData().
-		$this->db->insert(
-			'pagetriage_tags',
-			[
-				[ 'ptrt_tag_name' => 'linkcount', 'ptrt_tag_desc' => 'Number of inbound links' ],
-				[ 'ptrt_tag_name' => 'category_count', 'ptrt_tag_desc' => 'Category mapping count' ],
-				[ 'ptrt_tag_name' => 'csd_status', 'ptrt_tag_desc' => 'CSD status' ],
-				[ 'ptrt_tag_name' => 'prod_status', 'ptrt_tag_desc' => 'PROD status' ],
-				[ 'ptrt_tag_name' => 'blp_prod_status', 'ptrt_tag_desc' => 'BLP PROD status' ],
-				[ 'ptrt_tag_name' => 'afd_status', 'ptrt_tag_desc' => 'AFD status' ],
-				[ 'ptrt_tag_name' => 'rev_count', 'ptrt_tag_desc' => 'Number of edits to the article' ],
-				[ 'ptrt_tag_name' => 'page_len', 'ptrt_tag_desc' => 'Number of bytes of article' ],
-				[ 'ptrt_tag_name' => 'snippet', 'ptrt_tag_desc' => 'Beginning of article snippet' ],
-				[ 'ptrt_tag_name' => 'user_name', 'ptrt_tag_desc' => 'User name' ],
-				[ 'ptrt_tag_name' => 'user_editcount', 'ptrt_tag_desc' => 'User total edit' ],
-				[ 'ptrt_tag_name' => 'user_creation_date', 'ptrt_tag_desc' => 'User registration date' ],
-				[ 'ptrt_tag_name' => 'user_autoconfirmed', 'ptrt_tag_desc' => 'Check if user is autoconfirmed' ],
-				[ 'ptrt_tag_name' => 'user_experience',
-					'ptrt_tag_desc' => 'Experience level: newcomer, learner, experienced or anonymous' ],
-				[ 'ptrt_tag_name' => 'user_bot', 'ptrt_tag_desc' => 'Check if user is in bot group' ],
-				[ 'ptrt_tag_name' => 'user_block_status', 'ptrt_tag_desc' => 'User block status' ],
-				[ 'ptrt_tag_name' => 'user_id', 'ptrt_tag_desc' => 'User id' ],
-				[ 'ptrt_tag_name' => 'reference', 'ptrt_tag_desc' => 'Check if page has references' ],
-				// 1.32
-				[ 'ptrt_tag_name' => 'afc_state', 'ptrt_tag_desc' => 'The submission state of drafts' ],
-				[ 'ptrt_tag_name' => 'copyvio', 'ptrt_tag_desc' =>
-					'Latest revision ID that has been tagged as a likely copyright violation, if any' ],
-				// 1.34
-				[ 'ptrt_tag_name' => 'recreated', 'ptrt_tag_desc' => 'Check if the page has been previously deleted.' ],
-			],
-			__METHOD__,
-			[ 'IGNORE' ]
-		);
+		$pageTriageDefaultTags = [
+			[ 'ptrt_tag_name' => 'linkcount', 'ptrt_tag_desc' => 'Number of inbound links' ],
+			[ 'ptrt_tag_name' => 'category_count', 'ptrt_tag_desc' => 'Category mapping count' ],
+			[ 'ptrt_tag_name' => 'csd_status', 'ptrt_tag_desc' => 'CSD status' ],
+			[ 'ptrt_tag_name' => 'prod_status', 'ptrt_tag_desc' => 'PROD status' ],
+			[ 'ptrt_tag_name' => 'blp_prod_status', 'ptrt_tag_desc' => 'BLP PROD status' ],
+			[ 'ptrt_tag_name' => 'afd_status', 'ptrt_tag_desc' => 'AFD status' ],
+			[ 'ptrt_tag_name' => 'rev_count', 'ptrt_tag_desc' => 'Number of edits to the article' ],
+			[ 'ptrt_tag_name' => 'page_len', 'ptrt_tag_desc' => 'Number of bytes of article' ],
+			[ 'ptrt_tag_name' => 'snippet', 'ptrt_tag_desc' => 'Beginning of article snippet' ],
+			[ 'ptrt_tag_name' => 'user_name', 'ptrt_tag_desc' => 'User name' ],
+			[ 'ptrt_tag_name' => 'user_editcount', 'ptrt_tag_desc' => 'User total edit' ],
+			[ 'ptrt_tag_name' => 'user_creation_date', 'ptrt_tag_desc' => 'User registration date' ],
+			[ 'ptrt_tag_name' => 'user_autoconfirmed', 'ptrt_tag_desc' => 'Check if user is autoconfirmed' ],
+			[ 'ptrt_tag_name' => 'user_experience',
+				'ptrt_tag_desc' => 'Experience level: newcomer, learner, experienced or anonymous' ],
+			[ 'ptrt_tag_name' => 'user_bot', 'ptrt_tag_desc' => 'Check if user is in bot group' ],
+			[ 'ptrt_tag_name' => 'user_block_status', 'ptrt_tag_desc' => 'User block status' ],
+			[ 'ptrt_tag_name' => 'user_id', 'ptrt_tag_desc' => 'User id' ],
+			[ 'ptrt_tag_name' => 'reference', 'ptrt_tag_desc' => 'Check if page has references' ],
+			// 1.32
+			[ 'ptrt_tag_name' => 'afc_state', 'ptrt_tag_desc' => 'The submission state of drafts' ],
+			[ 'ptrt_tag_name' => 'copyvio', 'ptrt_tag_desc' =>
+				'Latest revision ID that has been tagged as a likely copyright violation, if any' ],
+			// 1.34
+			[ 'ptrt_tag_name' => 'recreated', 'ptrt_tag_desc' => 'Check if the page has been previously deleted.' ],
+		];
+		$this->db->newInsertQueryBuilder()
+			->insertInto( 'pagetriage_tags' )
+			->rows( $pageTriageDefaultTags )
+			->caller( __METHOD__ )
+			->ignore()
+			->execute();
 	}
 
 	/**
@@ -168,13 +169,17 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	public function setDraftQuality( $revId, $classId ) {
 		foreach ( [ 0, 1, 2, 3 ] as $id ) {
 			$predicted = $classId === $id;
-			$this->db->insert( 'ores_classification', [
-				'oresc_model' => $this->ensureOresModel( 'draftquality' ),
-				'oresc_class' => $id,
-				'oresc_probability' => $predicted ? 0.7 : 0.1,
-				'oresc_is_predicted' => $predicted ? 1 : 0,
-				'oresc_rev' => $revId,
-			] );
+			$this->db->newInsertQueryBuilder()
+				->insertInto( 'ores_classification' )
+				->row( [
+					'oresc_model' => $this->ensureOresModel( 'draftquality' ),
+					'oresc_class' => $id,
+					'oresc_probability' => $predicted ? 0.7 : 0.1,
+					'oresc_is_predicted' => $predicted ? 1 : 0,
+					'oresc_rev' => $revId,
+				] )
+				->caller( __METHOD__ )
+				->execute();
 		}
 	}
 
@@ -194,14 +199,15 @@ abstract class PageTriageTestCase extends ApiTestCase {
 			->where( [ 'ptrt_tag_name' => 'copyvio' ] )
 			->fetchField();
 
-		$this->db->insert(
-			'pagetriage_page_tags',
-			[
+		$this->db->newInsertQueryBuilder()
+			->insertInto( 'pagetriage_page_tags' )
+			->row( [
 				'ptrpt_page_id' => $pageId,
 				'ptrpt_tag_id' => $tagId,
 				'ptrpt_value' => (string)$revId,
-			]
-		);
+			] )
+			->caller( __METHOD__ )
+			->execute();
 	}
 
 	public function ensureOresModel( $name ) {
@@ -218,7 +224,11 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		if ( $model ) {
 			return $model;
 		}
-		$this->db->insert( 'ores_model', $modelInfo );
+		$this->db->newInsertQueryBuilder()
+			->insertInto( 'ores_model' )
+			->row( $modelInfo )
+			->caller( __METHOD__ )
+			->execute();
 		return $this->db->insertId();
 	}
 

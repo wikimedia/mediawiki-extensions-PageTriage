@@ -28,14 +28,14 @@ class QueueManager {
 		$status = new Status();
 		$queueRecordData = $queueRecord->jsonSerialize();
 		$dbw = $this->dbProvider->getPrimaryDatabase();
-		$dbw->insert(
-			'pagetriage_page',
-			$queueRecordData,
-			__METHOD__,
+		$dbw->newInsertQueryBuilder()
+			->insertInto( 'pagetriage_page' )
+			->row( $queueRecordData )
+			->caller( __METHOD__ )
 			// 'IGNORE' is needed for fields like ptrp_tags_updated which will not be
 			// present on a new record.
-			[ 'IGNORE' ]
-		);
+			->ignore()
+			->execute();
 		$status->setOK( $dbw->affectedRows() === 1 );
 		return $status;
 	}

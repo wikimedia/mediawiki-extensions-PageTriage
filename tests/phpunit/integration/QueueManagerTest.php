@@ -14,13 +14,15 @@ class QueueManagerTest extends MediaWikiIntegrationTestCase {
 
 	public function setUp(): void {
 		parent::setUp();
-		$this->db->insert(
-			'pagetriage_tags', [
+		$this->db->newInsertQueryBuilder()
+			->insertInto( 'pagetriage_tags' )
 				// Add a single tag, so metadata is compiled.
 				// TODO: Add a convenience method for populating this in the test DB?
+			->row(
 				[ 'ptrt_tag_name' => 'linkcount', 'ptrt_tag_desc' => 'Number of inbound links' ]
-			]
-		);
+			)
+			->caller( __METHOD__ )
+			->execute();
 	}
 
 	public function testDeleteNonexistentPage() {
