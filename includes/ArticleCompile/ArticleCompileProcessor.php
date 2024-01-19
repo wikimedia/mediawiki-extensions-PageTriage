@@ -376,12 +376,12 @@ class ArticleCompileProcessor {
 						'ptrpt_tag_id' => $tags[$key],
 						'ptrpt_value' => (string)$val
 					];
-					$dbw->replace(
-						'pagetriage_page_tags',
-						[ [ 'ptrpt_page_id', 'ptrpt_tag_id' ] ],
-						$row,
-						__METHOD__
-					);
+					$dbw->newReplaceQueryBuilder()
+						->replaceInto( 'pagetriage_page_tags' )
+						->uniqueIndexFields( [ 'ptrpt_page_id', 'ptrpt_tag_id' ] )
+						->row( $row )
+						->caller( __METHOD__ )
+						->execute();
 				}
 			}
 			$pt = new PageTriage( $pageId );

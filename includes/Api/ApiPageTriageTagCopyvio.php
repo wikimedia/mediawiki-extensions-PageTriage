@@ -69,12 +69,12 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 	private function insertCopyvioTag( $ptrptPageId, $dbw, $row, $revision ) {
 		$pageNotTaggedForCopyvio = $ptrptPageId === false;
 		if ( $pageNotTaggedForCopyvio ) {
-			$dbw->replace(
-				'pagetriage_page_tags',
-				[ [ 'ptrpt_page_id', 'ptrpt_tag_id' ] ],
-				$row,
-				__METHOD__
-			);
+			$dbw->newReplaceQueryBuilder()
+				->replaceInto( 'pagetriage_page_tags' )
+				->uniqueIndexFields( [ 'ptrpt_page_id', 'ptrpt_tag_id' ] )
+				->row( $row )
+				->caller( __METHOD__ )
+				->execute();
 
 			$metadata = new ArticleMetadata( [ $revision->getPageId() ] );
 			$metadata->flushMetadataFromCache();
