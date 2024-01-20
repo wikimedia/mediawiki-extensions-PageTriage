@@ -6,6 +6,7 @@ use ApiUsageException;
 use ContentHandler;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
 use MediaWiki\Title\Title;
+use MediaWiki\Utils\MWTimestamp;
 use MockHttpTrait;
 
 /**
@@ -366,17 +367,19 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	}
 
 	public function testSubmissionSortingBySubmittedDate() {
+		$clock = (int)wfTimestamp( TS_UNIX );
+
 		$page1 = $this->insertPage( 'Oldest created', '', $this->draftNsId );
 		$page2 = $this->insertPage( 'Page in the middle', '', $this->draftNsId );
 		$page3 = $this->insertPage( 'Newest created', '', $this->draftNsId );
 
 		// Now submit them, in an order different than their creation date.
 		// ptrp_reviewed_updated is a timestamp, only accurate to the second.
-		// Sleep for 1 second to avoid identical timestamps and a flaky test.
+		// Adjust time for 1 second to avoid identical timestamps and a flaky test.
 		$this->editPage( $page2[ 'title' ], '[[Category:Pending AfC submissions]]' );
-		sleep( 1 );
+		MWTimestamp::setFakeTime( ++$clock );
 		$this->editPage( $page3[ 'title' ], '[[Category:Pending AfC submissions]]' );
-		sleep( 1 );
+		MWTimestamp::setFakeTime( ++$clock );
 		$this->editPage( $page1[ 'title' ], '[[Category:Pending AfC submissions]]' );
 
 		$oldestSubmitted = $page2;
