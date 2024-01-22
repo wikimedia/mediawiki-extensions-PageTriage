@@ -23,12 +23,6 @@ const { ref, watch } = require( 'vue' );
 const { useSettingsStore } = require( '../stores/settings.js' );
 // @vue/component
 module.exports = {
-	compatConfig: {
-		MODE: 3
-	},
-	compilerOptions: {
-		whitespace: 'condense'
-	},
 	name: 'AfcStateRadio',
 	components: { CdxRadio },
 	props: {

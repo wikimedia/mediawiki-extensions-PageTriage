@@ -29,12 +29,6 @@ const client = new mw.Api( {
 
 // @vue/component
 module.exports = {
-	configureCompat: {
-		MODE: 3
-	},
-	compilerOptions: {
-		whitespace: 'condense'
-	},
 	name: 'ToolNext',
 	components: {
 		ToolIcon

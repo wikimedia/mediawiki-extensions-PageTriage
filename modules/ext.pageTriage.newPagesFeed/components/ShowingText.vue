@@ -38,12 +38,6 @@ const defaultMsg = {
 };
 // @vue/component
 module.exports = {
-	compatConfig: {
-		MODE: 3
-	},
-	compilerOptions: {
-		whitespace: 'condense'
-	},
 	name: 'ShowingText',
 	components: {
 		CdxInfoChip

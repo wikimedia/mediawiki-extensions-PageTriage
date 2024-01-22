@@ -25,12 +25,6 @@ const { CdxLookup } = require( '@wikimedia/codex' );
 const { ref } = require( 'vue' );
 // @vue/component
 module.exports = {
-	compatConfig: {
-		MODE: 3
-	},
-	compilerOptions: {
-		whitespace: 'condense'
-	},
 	name: 'UsernameLookup',
 	components: {
 		CdxLookup

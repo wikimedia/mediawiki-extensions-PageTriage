@@ -17,13 +17,6 @@
 <script>
 // @vue/component
 module.exports = {
-	// Enable Vue 3 mode with configureCompat and compilerOptions
-	configureCompat: {
-		MODE: 3
-	},
-	compilerOptions: {
-		whitespace: 'condense'
-	},
 	props: {
 		helpLink: {
 			type: String,

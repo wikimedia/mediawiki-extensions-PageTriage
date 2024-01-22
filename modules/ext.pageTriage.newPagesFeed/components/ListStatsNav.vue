@@ -45,12 +45,6 @@ const { CdxButton, CdxToggleButton, CdxIcon } = require( '@wikimedia/codex' );
 const { cdxIconPlay, cdxIconStop, cdxIconReload } = require( './icons.json' );
 // @vue/component
 module.exports = {
-	compatConfig: {
-		MODE: 3
-	},
-	compilerOptions: {
-		whitespace: 'condense'
-	},
 	name: 'ListStatsNav',
 	components: {
 		CdxButton,

@@ -34,12 +34,6 @@ const redLink = skin === 'vector' ? 'new' : 'is-red-link';
 const params = { action: 'edit', redlink: 1 };
 // @vue/component
 module.exports = {
-	compatConfig: {
-		MODE: 3
-	},
-	compilerOptions: {
-		whitespace: 'condense'
-	},
 	name: 'CreatorByline',
 	props: {
 		creatorName: { type: String, required: true },

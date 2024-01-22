@@ -196,12 +196,6 @@ const { useSettingsStore } = require( '../stores/settings.js' );
 const { getNamespaceOptions } = require( '../namespaces.js' );
 // @vue/component
 module.exports = {
-	compatConfig: {
-		MODE: 3
-	},
-	compilerOptions: {
-		whitespace: 'condense'
-	},
 	name: 'ListFilterMenu',
 	components: {
 		ControlSection,

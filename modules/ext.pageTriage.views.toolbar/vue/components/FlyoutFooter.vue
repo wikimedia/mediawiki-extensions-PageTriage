@@ -7,12 +7,6 @@
 <script>
 // @vue/component
 module.exports = {
-	// Enable Vue 3 mode with configureCompat and compilerOptions
-	configureCompat: {
-		MODE: 3
-	},
-	compilerOptions: {
-		whitespace: 'condense'
-	}
+// Leave this as an empty object as scaffolding for when content is added later
 };
 </script>
