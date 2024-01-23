@@ -134,7 +134,7 @@
 					</div>
 				</div>
 			</div>
-			<div v-if="showOres" class="mwe-vue-pt-info-row">
+			<div v-if="showOres && !isRedirect" class="mwe-vue-pt-info-row">
 				<div>
 					<span>{{ $i18n( 'pagetriage-filter-predicted-class-heading' ).text() }}</span>
 					<span>{{ oresArticleQuality }}</span>
