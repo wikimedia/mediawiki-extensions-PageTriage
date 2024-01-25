@@ -804,7 +804,7 @@ class PageTriageUtil {
 	 * @return IDatabase
 	 */
 	public static function getPrimaryConnection() {
-		return MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->getPrimaryDatabase();
+		return MediaWikiServices::getInstance()->getConnectionProvider()->getPrimaryDatabase();
 	}
 
 	/**
@@ -813,6 +813,6 @@ class PageTriageUtil {
 	 * @return IReadableDatabase
 	 */
 	public static function getReplicaConnection() {
-		return MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->getReplicaDatabase();
+		return MediaWikiServices::getInstance()->getConnectionProvider()->getReplicaDatabase();
 	}
 }
