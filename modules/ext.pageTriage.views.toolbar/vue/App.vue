@@ -351,8 +351,7 @@ module.exports = {
 	position: fixed;
 	top: 140px;
 	z-index: 50;
-	padding: 3px;
-	padding-bottom: 5px;
+	padding: 3px 3px 5px;
 	background-color: #cacaca;
 	border-radius: 4px;
 	border: 1px solid #9f9f9f;
@@ -360,13 +359,13 @@ module.exports = {
 }
 
 .mw-content-ltr #mwe-pt-toolbar {
-	left: 'auto';
+	left: auto;
 	right: 0;
 }
 
 .mw-content-rtl #mwe-pt-toolbar {
 	left: 0;
-	right: 'auto';
+	right: auto;
 }
 
 .skin-monobook #mwe-pt-toolbar {
