@@ -79,15 +79,13 @@ module.exports = {
 					return;
 				}
 
-				const results = data.map( ( result ) => {
+				// Update menuItems.
+				menuItems.value = data.map( ( result ) => {
 					return {
 						label: result.name,
 						value: result.name
 					};
 				} );
-
-				// Update menuItems.
-				menuItems.value = results;
 
 			} ).catch( () => {
 				// On error, set results to empty.
