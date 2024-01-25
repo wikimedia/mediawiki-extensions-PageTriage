@@ -87,7 +87,6 @@ class ArticleCompileUserData extends ArticleCompile {
 					$user->isAllowed( 'autoconfirmed' ) ? '1' : '0';
 				$data['user_experience'] = $user->getExperienceLevel();
 				$data['user_bot'] = $user->isAllowed( 'bot' ) ? '1' : '0';
-				$data['user_block_status'] = $row->blocked ? '1' : '0';
 			} else {
 				// User doesn't exist, etc IP
 				$data['user_id'] = 0;
@@ -97,8 +96,8 @@ class ArticleCompileUserData extends ArticleCompile {
 				$data['user_autoconfirmed'] = '0';
 				$data['user_experience'] = 'anonymous';
 				$data['user_bot'] = '0';
-				$data['user_block_status'] = $row->blocked ? '1' : '0';
 			}
+			$data['user_block_status'] = $row->blocked ? '1' : '0';
 			$this->metadata[$row->rev_page] = $data;
 		}
 
