@@ -78,14 +78,14 @@ class ArticleCompileSnippet extends ArticleCompile {
 	 * @return bool
 	 */
 	private function hasReferenceTag( string $wikitext ): bool {
-		$closeTag = strpos( $wikitext, '</ref>' );
+		$closeTag = stripos( $wikitext, '</ref>' );
 
 		if ( $closeTag !== false ) {
-			$openTag = strpos( $wikitext, '<ref ' );
+			$openTag = stripos( $wikitext, '<ref ' );
 			if ( $openTag !== false && $openTag < $closeTag ) {
 				return true;
 			}
-			$openTag = strpos( $wikitext, '<ref>' );
+			$openTag = stripos( $wikitext, '<ref>' );
 			if ( $openTag !== false && $openTag < $closeTag ) {
 				return true;
 			}

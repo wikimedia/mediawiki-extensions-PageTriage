@@ -32,6 +32,15 @@ class ArticleCompileSnippetTest extends MediaWikiIntegrationTestCase {
 			'2 refs<ref>some ref</ref><ref>second ref</ref>' ) );
 		$this->assertTrue( $articleCompileSnippet->hasReferenceTag( '1 refs<ref name="x">some ref</ref>' ) );
 
+		// Check case insensitivity for <ref> and </ref>
+		$this->assertTrue( $articleCompileSnippet->hasReferenceTag( '1 ref <Ref>some ref</Ref>' ) );
+		$this->assertTrue( $articleCompileSnippet->hasReferenceTag( '1 ref <ref>some ref</Ref>' ) );
+		$this->assertTrue( $articleCompileSnippet->hasReferenceTag( '1 ref <Ref>some ref</ref>' ) );
+		$this->assertTrue( $articleCompileSnippet->hasReferenceTag( '1 ref <ReF>some ref</Ref>' ) );
+		$this->assertTrue( $articleCompileSnippet->hasReferenceTag( '1 ref <REF>some ref</REF>' ) );
+		$this->assertTrue( $articleCompileSnippet->hasReferenceTag( '1 ref <ref>some ref</REF>' ) );
+		$this->assertTrue( $articleCompileSnippet->hasReferenceTag( '1 ref <REF>some ref</ref>' ) );
+
 		// sfn - short footnote style references
 		$this->assertTrue( $articleCompileSnippet->hasReferenceTag( '1 ref{{sfn|short footnote}}' ) );
 		$this->assertTrue( $articleCompileSnippet->hasReferenceTag( '1 ref{{Sfn|short footnote}}' ) );
