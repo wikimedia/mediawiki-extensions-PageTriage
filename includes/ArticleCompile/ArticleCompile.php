@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
 use Content;
+use IDBAccessObject;
 use MediaWiki\Deferred\LinksUpdate\LinksUpdate;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
@@ -105,9 +106,9 @@ abstract class ArticleCompile {
 			$article = $this->articles[$pageId];
 		} else {
 			if ( $this->componentDb === DB_PRIMARY ) {
-				$from = WikiPage::READ_LATEST;
+				$from = IDBAccessObject::READ_LATEST;
 			} else {
-				$from = WikiPage::READ_NORMAL;
+				$from = IDBAccessObject::READ_NORMAL;
 			}
 			$article = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $pageId, $from );
 		}

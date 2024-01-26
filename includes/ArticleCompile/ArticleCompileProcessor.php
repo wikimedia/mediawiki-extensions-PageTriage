@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
 use IBufferingStatsdDataFactory;
+use IDBAccessObject;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Deferred\LinksUpdate\LinksUpdate;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
@@ -167,7 +168,8 @@ class ArticleCompileProcessor {
 			return $this->articles[$pageId]->getTimestamp();
 		}
 		// TODO deduplicate with ArticleCompileInterface::getArticleByPageId(), maybe move to this class
-		$fromdb = $this->componentDb['BasicData'] === DB_PRIMARY ? WikiPage::READ_LATEST : WikiPage::READ_NORMAL;
+		$fromdb = $this->componentDb['BasicData'] === DB_PRIMARY ?
+			IDBAccessObject::READ_LATEST : IDBAccessObject::READ_NORMAL;
 		$page = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $pageId, $fromdb );
 		if ( $page ) {
 			return $page->getTimestamp();
