@@ -185,38 +185,38 @@
 				"ext.pageTriage.external"
 			]
 		},
-		"ext.pageTriage.views.toolbar": {
+		"ext.pageTriage.toolbar": {
 			"packageFiles": [
-				"ext.pageTriage.views.toolbar/init.js",
-				"ext.pageTriage.views.toolbar/ToolbarView.js",
-				"ext.pageTriage.views.toolbar/ToolView.js",
-				"ext.pageTriage.views.toolbar/articleInfo.js",
-				"ext.pageTriage.views.toolbar/minimize.js",
-				"ext.pageTriage.views.toolbar/tags.js",
-				"ext.pageTriage.views.toolbar/mark.js",
-				"ext.pageTriage.views.toolbar/next.js",
-				"ext.pageTriage.views.toolbar/delete.js",
-				"ext.pageTriage.views.toolbar/vue/init.js",
-				"ext.pageTriage.views.toolbar/vue/plugins/backbone.js",
-				"ext.pageTriage.views.toolbar/vue/App.vue",
-				"ext.pageTriage.views.toolbar/vue/components/ToolIcon.vue",
-				"ext.pageTriage.views.toolbar/vue/components/ToolMinimize.vue",
-				"ext.pageTriage.views.toolbar/vue/components/ToolNext.vue",
-				"ext.pageTriage.views.toolbar/vue/components/ToolFlyout.vue",
-				"ext.pageTriage.views.toolbar/vue/components/FlyoutHeader.vue",
-				"ext.pageTriage.views.toolbar/vue/components/FlyoutContent.vue",
-				"ext.pageTriage.views.toolbar/vue/components/FlyoutFooter.vue",
-				"ext.pageTriage.views.toolbar/vue/components/FlyoutNotes.vue",
+				"ext.pageTriage.toolbar/init.js",
+				"ext.pageTriage.toolbar/ToolbarView.js",
+				"ext.pageTriage.toolbar/ToolView.js",
+				"ext.pageTriage.toolbar/articleInfo.js",
+				"ext.pageTriage.toolbar/minimize.js",
+				"ext.pageTriage.toolbar/tags.js",
+				"ext.pageTriage.toolbar/mark.js",
+				"ext.pageTriage.toolbar/next.js",
+				"ext.pageTriage.toolbar/delete.js",
+				"ext.pageTriage.toolbar/vue/init.js",
+				"ext.pageTriage.toolbar/vue/plugins/backbone.js",
+				"ext.pageTriage.toolbar/vue/App.vue",
+				"ext.pageTriage.toolbar/vue/components/ToolIcon.vue",
+				"ext.pageTriage.toolbar/vue/components/ToolMinimize.vue",
+				"ext.pageTriage.toolbar/vue/components/ToolNext.vue",
+				"ext.pageTriage.toolbar/vue/components/ToolFlyout.vue",
+				"ext.pageTriage.toolbar/vue/components/FlyoutHeader.vue",
+				"ext.pageTriage.toolbar/vue/components/FlyoutContent.vue",
+				"ext.pageTriage.toolbar/vue/components/FlyoutFooter.vue",
+				"ext.pageTriage.toolbar/vue/components/FlyoutNotes.vue",
 				{
-					"name": "ext.pageTriage.views.toolbar/contentLanguageMessages.json",
+					"name": "ext.pageTriage.toolbar/contentLanguageMessages.json",
 					"callback": "MediaWiki\\Extension\\PageTriage\\Hooks::toolbarContentLanguageMessages"
 				},
 				{
-					"name": "ext.pageTriage.views.toolbar/config.json",
+					"name": "ext.pageTriage.toolbar/config.json",
 					"callback": "MediaWiki\\Extension\\PageTriage\\Hooks::toolbarConfig"
 				},
 				"external/jquery.badge.js",
-				"ext.pageTriage.views.toolbar/wikiLove.js"
+				"ext.pageTriage.toolbar/wikiLove.js"
 			],
 			"dependencies": [
 				"vue",
@@ -236,23 +236,23 @@
 			"styles": [
 				"external/jquery.badge.css",
 				"ext.pageTriage.css",
-				"ext.pageTriage.views.toolbar/ToolbarView.css",
-				"ext.pageTriage.views.toolbar/ToolView.less",
-				"ext.pageTriage.views.toolbar/articleInfo.css",
-				"ext.pageTriage.views.toolbar/mark.css",
-				"ext.pageTriage.views.toolbar/tags.less",
-				"ext.pageTriage.views.toolbar/delete.less",
-				"ext.pageTriage.views.toolbar/wikilove.css"
+				"ext.pageTriage.toolbar/ToolbarView.css",
+				"ext.pageTriage.toolbar/ToolView.less",
+				"ext.pageTriage.toolbar/articleInfo.css",
+				"ext.pageTriage.toolbar/mark.css",
+				"ext.pageTriage.toolbar/tags.less",
+				"ext.pageTriage.toolbar/delete.less",
+				"ext.pageTriage.toolbar/wikilove.css"
 			],
 			"templates": {
-				"articleInfo.underscore": "ext.pageTriage.views.toolbar/articleInfo.underscore",
-				"articleInfoHistory.underscore": "ext.pageTriage.views.toolbar/articleInfoHistory.underscore",
-				"delete.underscore": "ext.pageTriage.views.toolbar/delete.underscore",
-				"mark.underscore": "ext.pageTriage.views.toolbar/mark.underscore",
-				"tags.underscore": "ext.pageTriage.views.toolbar/tags.underscore",
-				"ToolbarView.underscore": "ext.pageTriage.views.toolbar/ToolbarView.underscore",
-				"ToolView.underscore": "ext.pageTriage.views.toolbar/ToolView.underscore",
-				"wikilove.underscore": "ext.pageTriage.views.toolbar/wikilove.underscore"
+				"articleInfo.underscore": "ext.pageTriage.toolbar/articleInfo.underscore",
+				"articleInfoHistory.underscore": "ext.pageTriage.toolbar/articleInfoHistory.underscore",
+				"delete.underscore": "ext.pageTriage.toolbar/delete.underscore",
+				"mark.underscore": "ext.pageTriage.toolbar/mark.underscore",
+				"tags.underscore": "ext.pageTriage.toolbar/tags.underscore",
+				"ToolbarView.underscore": "ext.pageTriage.toolbar/ToolbarView.underscore",
+				"ToolView.underscore": "ext.pageTriage.toolbar/ToolView.underscore",
+				"wikilove.underscore": "ext.pageTriage.toolbar/wikilove.underscore"
 			},
 			"messages": [
 				"pagetriage-wikilove-page-creator",

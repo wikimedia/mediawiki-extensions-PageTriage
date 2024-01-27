@@ -13,7 +13,7 @@ describe( 'App.vue', () => {
 		} );
 		mw.util.wikiScript = jest.fn( () => '' );
 		$.pageTriageTagsOptions = { all: {} };
-		const App = require( '../../../../modules/ext.pageTriage.views.toolbar/vue/App.vue' );
+		const App = require( '../../../../modules/ext.pageTriage.toolbar/vue/App.vue' );
 		wrapper = mount( App );
 	} );
 	it( 'mounts', () => {

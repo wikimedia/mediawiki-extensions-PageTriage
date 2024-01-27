@@ -5,7 +5,7 @@ const config = require( './config.json' );
 
 const ArticleInfoHistoryView = Backbone.View.extend( {
 	id: 'mwe-pt-info-history',
-	template: mw.template.get( 'ext.pageTriage.views.toolbar', 'articleInfoHistory.underscore' ),
+	template: mw.template.get( 'ext.pageTriage.toolbar', 'articleInfoHistory.underscore' ),
 
 	render: function () {
 		let parsedTimestamp, userTitle;
@@ -63,7 +63,7 @@ module.exports = ToolView.extend( {
 	icon: 'icon_info.png', // the default icon
 	title: mw.msg( 'pagetriage-info-title' ),
 	tooltip: 'pagetriage-info-tooltip',
-	template: mw.template.get( 'ext.pageTriage.views.toolbar', 'articleInfo.underscore' ),
+	template: mw.template.get( 'ext.pageTriage.toolbar', 'articleInfo.underscore' ),
 	renderWasBound: false,
 
 	badgeCount: function () {

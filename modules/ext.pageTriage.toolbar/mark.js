@@ -9,7 +9,7 @@ module.exports = ToolView.extend( {
 	renderWasBound: false,
 	title: mw.msg( 'pagetriage-mark-as-reviewed' ),
 	tooltip: '',
-	template: mw.template.get( 'ext.pageTriage.views.toolbar', 'mark.underscore' ),
+	template: mw.template.get( 'ext.pageTriage.toolbar', 'mark.underscore' ),
 
 	initialize: function ( options ) {
 		this.eventBus = options.eventBus;

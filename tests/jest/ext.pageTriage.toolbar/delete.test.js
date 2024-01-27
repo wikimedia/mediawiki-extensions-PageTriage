@@ -45,7 +45,7 @@ describe( 'DeleteToolView', () => {
 		}
 		$.pageTriageDeletionTagsOptions = $.extend( true, {}, pageTriageDeletionTagsOptions );
 
-		DeleteToolView = require( '../../../modules/ext.pageTriage.views.toolbar/delete.js' );
+		DeleteToolView = require( '../../../modules/ext.pageTriage.toolbar/delete.js' );
 	} );
 
 	const checkSetup = () => {

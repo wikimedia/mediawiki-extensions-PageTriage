@@ -11,7 +11,7 @@ module.exports = ToolView.extend( {
 	icon: 'icon_tag.png',
 	title: mw.msg( 'pagetriage-tags-title' ),
 	tooltip: 'pagetriage-tags-tooltip',
-	template: mw.template.get( 'ext.pageTriage.views.toolbar', 'tags.underscore' ),
+	template: mw.template.get( 'ext.pageTriage.toolbar', 'tags.underscore' ),
 	selectedTag: {},
 	selectedTagCount: 0,
 	noteChanged: false,
