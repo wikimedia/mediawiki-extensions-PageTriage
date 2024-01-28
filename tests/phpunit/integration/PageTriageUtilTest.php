@@ -5,9 +5,6 @@ namespace MediaWiki\Extension\PageTriage\Test;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
-use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\ILoadBalancer;
-use Wikimedia\Rdbms\LBFactory;
 
 /**
  * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil
@@ -105,12 +102,6 @@ class PageTriageUtilTest extends PageTriageTestCase {
 		$this->markTestSkippedIfExtensionNotLoaded( 'Echo' );
 		// The hook handler in GrowthExperiments triggers DB access.
 		$this->clearHook( 'UserGetDefaultOptions' );
-		$lb = $this->createMock( ILoadBalancer::class );
-		$lb->method( 'getConnection' )->willReturn( $this->createMock( IDatabase::class ) );
-		$lbFactory = $this->createMock( LBFactory::class );
-		$lbFactory->method( 'getExternalLB' )->willReturn( $lb );
-		$this->setService( 'DBLoadBalancerFactory', $lbFactory );
-		$this->setService( 'DBLoadBalancer', $lb );
 
 		$title = Title::makeTitle( NS_MAIN, 'NotificationTest' );
 		$user = $this->createMock( User::class );
