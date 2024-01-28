@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kalakpagh"
+		]
+	},
+	"pagetriage-byline": "$1 ($2$3$4) yoogi {{GENDER:$1|Created}}",
+	"pagetriage-byline-new-editor": "{{GENDER:$1|Created}} maliniŋdi palli  $1 ($2$3$4)",
+	"pagetriage-byline-new-editor-heading": "Maliniŋdi palli yoogi {{GENDER:$1|Created}}",
+	"apihelp-pagetriagetagcopyvio-param-untag": "Yihimi yaabu'soli birigibu ŋɔ"
+}
