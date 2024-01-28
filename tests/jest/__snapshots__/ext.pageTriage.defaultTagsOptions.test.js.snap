@@ -442,11 +442,11 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
 {
   "all": {},
   "cleanup": {
-    "label": "pagetriage-tags-cat-cleanup-label",
+    "label": "Cleanup",
     "tags": {
       "cleanup": {
-        "desc": "pagetriage-tags-cleanup-desc",
-        "label": "pagetriage-tags-cleanup-label",
+        "desc": "This page requires cleanup.",
+        "label": "Cleanup",
         "multiple": true,
         "params": {
           "date": {
@@ -457,7 +457,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "reason": {
             "input": "required",
-            "label": "pagetriage-tags-param-issues-label",
+            "label": "Describe issues to be addressed:",
             "type": "textarea",
             "value": "",
           },
@@ -466,8 +466,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "cleanup",
       },
       "copyedit": {
-        "desc": "pagetriage-tags-copyedit-desc",
-        "label": "pagetriage-tags-copyedit-label",
+        "desc": "This page needs copy editing for grammar, style, cohesion, tone, and/or spelling.",
+        "label": "Copy edit",
         "multiple": true,
         "params": {
           "date": {
@@ -478,7 +478,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "for": {
             "input": "optional",
-            "label": "pagetriage-tags-param-for-label",
+            "label": "This article may require copy editing for:",
             "type": "textarea",
             "value": "",
           },
@@ -487,8 +487,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "copy edit",
       },
       "prose": {
-        "desc": "pagetriage-tags-prose-desc",
-        "label": "pagetriage-tags-prose-label",
+        "desc": "This page is in a list format that is better presented using prose.",
+        "label": "Prose",
         "multiple": true,
         "params": {
           "date": {
@@ -502,8 +502,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "prose",
       },
       "roughtranslation": {
-        "desc": "pagetriage-tags-roughtranslation-desc",
-        "label": "pagetriage-tags-roughtranslation-label",
+        "desc": "This page is poorly translated and must be updated.",
+        "label": "Rough translation",
         "multiple": false,
         "params": {},
         "position": "top",
@@ -531,9 +531,9 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
     "label": "pagetriage-tags-cat-common-label",
     "tags": {
       "copyedit": {
-        "desc": "pagetriage-tags-copyedit-desc",
+        "desc": "This page needs copy editing for grammar, style, cohesion, tone, and/or spelling.",
         "dest": "cleanup",
-        "label": "pagetriage-tags-copyedit-label",
+        "label": "Copy edit",
         "multiple": true,
         "params": {
           "date": {
@@ -544,7 +544,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "for": {
             "input": "optional",
-            "label": "pagetriage-tags-param-for-label",
+            "label": "This article may require copy editing for:",
             "type": "textarea",
             "value": "",
           },
@@ -553,9 +553,9 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "copy edit",
       },
       "linkrot": {
-        "desc": "pagetriage-tags-linkrot-desc",
+        "desc": "This page uses bare URLs for references, which are prone to link rot.",
         "dest": "sources",
-        "label": "pagetriage-tags-linkrot-label",
+        "label": "Bare URLs",
         "multiple": true,
         "params": {
           "date": {
@@ -569,14 +569,14 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "linkrot",
       },
       "morefootnotes": {
-        "desc": "pagetriage-tags-morefootnotes-desc",
+        "desc": "This page has some references, but insufficient in-text citations.",
         "dest": "sources",
-        "label": "pagetriage-tags-morefootnotes-label",
+        "label": "More footnotes",
         "multiple": true,
         "params": {
           "blp": {
             "input": "optional",
-            "label": "pagetriage-tags-param-blp-label",
+            "label": "This is a biography of a living person",
             "type": "checkbox",
             "value": "",
           },
@@ -591,9 +591,9 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "more footnotes",
       },
       "orphan": {
-        "desc": "pagetriage-tags-orphan-desc",
+        "desc": "No other pages link to this page.",
         "dest": "metadata",
-        "label": "pagetriage-tags-orphan-label",
+        "label": "Orphan",
         "multiple": true,
         "params": {
           "date": {
@@ -607,9 +607,9 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "orphan",
       },
       "refimprove": {
-        "desc": "pagetriage-tags-refimprove-desc",
+        "desc": "This page needs additional references or sources for verification.",
         "dest": "sources",
-        "label": "pagetriage-tags-refimprove-label",
+        "label": "More references",
         "multiple": true,
         "params": {
           "date": {
@@ -623,18 +623,18 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "refimprove",
       },
       "stub": {
-        "desc": "pagetriage-tags-stub-desc",
+        "desc": "This page is very short.",
         "dest": "structure",
-        "label": "pagetriage-tags-stub-label",
+        "label": "Stub",
         "multiple": false,
         "params": {},
         "position": "bottom",
         "tag": "stub",
       },
       "uncategorised": {
-        "desc": "pagetriage-tags-uncategorised-desc",
+        "desc": "This page doesn't belong to any categories.",
         "dest": "metadata",
-        "label": "pagetriage-tags-uncategorised-label",
+        "label": "Uncategorised",
         "multiple": false,
         "params": {
           "date": {
@@ -664,9 +664,9 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "Under review",
       },
       "unreferenced": {
-        "desc": "pagetriage-tags-unreferenced-desc",
+        "desc": "This page has no references at all.",
         "dest": "sources",
-        "label": "pagetriage-tags-unreferenced-label",
+        "label": "No references",
         "multiple": true,
         "params": {
           "date": {
@@ -727,7 +727,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "url": {
             "input": "required",
-            "label": "pagetriage-tags-param-url-label",
+            "label": "Please add a URL for that source.",
             "type": "text",
             "value": "",
           },
@@ -748,13 +748,13 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "free": {
             "input": "optional",
-            "label": "pagetriage-tags-param-free-label",
+            "label": "This content is freely licensed.",
             "type": "checkbox",
             "value": "",
           },
           "source": {
             "input": "required",
-            "label": "pagetriage-tags-param-source-label",
+            "label": "Please add a URL for that source:",
             "type": "text",
             "value": "",
           },
@@ -775,7 +775,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "url": {
             "input": "required",
-            "label": "pagetriage-tags-param-url-label",
+            "label": "Please add a URL for that source.",
             "type": "text",
             "value": "",
           },
@@ -794,11 +794,11 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
     },
   },
   "metadata": {
-    "label": "pagetriage-tags-cat-metadata-label",
+    "label": "Metadata",
     "tags": {
       "deadend": {
-        "desc": "pagetriage-tags-deadend-desc",
-        "label": "pagetriage-tags-deadend-label",
+        "desc": "This page has no links to other pages.",
+        "label": "Dead end",
         "multiple": true,
         "params": {
           "date": {
@@ -812,8 +812,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "dead end",
       },
       "externallinks": {
-        "desc": "pagetriage-tags-externallinks-desc",
-        "label": "pagetriage-tags-externallinks-label",
+        "desc": "This page's external links do not follow content policies or guidelines.",
+        "label": "External links",
         "multiple": true,
         "params": {
           "date": {
@@ -863,8 +863,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "improve categories",
       },
       "orphan": {
-        "desc": "pagetriage-tags-orphan-desc",
-        "label": "pagetriage-tags-orphan-label",
+        "desc": "No other pages link to this page.",
+        "label": "Orphan",
         "multiple": true,
         "params": {
           "date": {
@@ -878,8 +878,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "orphan",
       },
       "overlinked": {
-        "desc": "pagetriage-tags-overlinked-desc",
-        "label": "pagetriage-tags-overlinked-label",
+        "desc": "This page has too many duplicate and/or irrelevant links.",
+        "label": "Too many links",
         "multiple": true,
         "params": {
           "date": {
@@ -893,8 +893,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "overlinked",
       },
       "uncategorised": {
-        "desc": "pagetriage-tags-uncategorised-desc",
-        "label": "pagetriage-tags-uncategorised-label",
+        "desc": "This page doesn\'t belong to any categories.",
+        "label": "Uncategorised",
         "multiple": false,
         "params": {
           "date": {
@@ -982,7 +982,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "reason": {
             "input": "required",
-            "label": "pagetriage-tags-param-issues-label",
+            "label": "Describe issues to be addressed:",
             "type": "textarea",
             "value": "",
           },
@@ -2287,7 +2287,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "details": {
             "input": "optional",
-            "label": "pagetriage-tags-param-issues-label",
+            "label": "Describe issues to be addressed:",
             "type": "textarea",
             "value": "",
           },
@@ -2326,8 +2326,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "hoax",
       },
       "linkrot": {
-        "desc": "pagetriage-tags-linkrot-desc",
-        "label": "pagetriage-tags-linkrot-label",
+        "desc": "This page uses bare URLs for references, which are prone to link rot.",
+        "label": "Bare URLs",
         "multiple": true,
         "params": {
           "date": {
@@ -2341,13 +2341,13 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "linkrot",
       },
       "morefootnotes": {
-        "desc": "pagetriage-tags-morefootnotes-desc",
-        "label": "pagetriage-tags-morefootnotes-label",
+        "desc": "This page has some references, but insufficient in-text citations.",
+        "label": "More footnotes",
         "multiple": true,
         "params": {
           "blp": {
             "input": "optional",
-            "label": "pagetriage-tags-param-blp-label",
+            "label": "This is a biography of a living person",
             "type": "checkbox",
             "value": "",
           },
@@ -2413,7 +2413,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "blp": {
             "input": "optional",
-            "label": "pagetriage-tags-param-blp-label",
+            "label": "This is a biography of a living person",
             "type": "checkbox",
             "value": "",
           },
@@ -2573,7 +2573,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "reason": {
             "input": "required",
-            "label": "pagetriage-tags-param-issues-label",
+            "label": "Describe issues to be addressed:",
             "type": "textarea",
             "value": "",
           },
@@ -2682,7 +2682,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "reason": {
             "input": "required",
-            "label": "pagetriage-tags-param-issues-label",
+            "label": "Describe issues to be addressed:",
             "type": "textarea",
             "value": "",
           },

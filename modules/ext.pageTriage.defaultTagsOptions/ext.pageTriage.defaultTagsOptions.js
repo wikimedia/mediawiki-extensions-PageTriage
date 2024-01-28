@@ -28,49 +28,49 @@
 		},
 
 		for: {
-			label: mw.msg( 'pagetriage-tags-param-for-label' ),
+			label: 'This article may require copy editing for:',
 			input: 'optional',
 			type: 'textarea',
 			value: ''
 		},
 
 		blp: {
-			label: mw.msg( 'pagetriage-tags-param-blp-label' ),
+			label: 'This is a biography of a living person',
 			input: 'optional',
 			type: 'checkbox',
 			value: ''
 		},
 
 		reason: {
-			label: mw.msg( 'pagetriage-tags-param-issues-label' ),
+			label: 'Describe issues to be addressed:',
 			input: 'required',
 			type: 'textarea',
 			value: ''
 		},
 
 		details: {
-			label: mw.msg( 'pagetriage-tags-param-issues-label' ),
+			label: 'Describe issues to be addressed:',
 			input: 'optional',
 			type: 'textarea',
 			value: ''
 		},
 
 		source: {
-			label: mw.msg( 'pagetriage-tags-param-source-label' ),
+			label: 'Please add a URL for that source:',
 			input: 'required',
 			type: 'text',
 			value: ''
 		},
 
 		free: {
-			label: mw.msg( 'pagetriage-tags-param-free-label' ),
+			label: 'This content is freely licensed.',
 			input: 'optional',
 			type: 'checkbox',
 			value: ''
 		},
 
 		url: {
-			label: mw.msg( 'pagetriage-tags-param-url-label' ),
+			label: 'Please add a URL for that source.',
 			input: 'required',
 			type: 'text',
 			value: ''
@@ -166,9 +166,9 @@
 				},
 
 				linkrot: {
-					label: mw.msg( 'pagetriage-tags-linkrot-label' ),
+					label: 'Bare URLs',
 					tag: 'linkrot',
-					desc: mw.msg( 'pagetriage-tags-linkrot-desc' ),
+					desc: 'This page uses bare URLs for references, which are prone to link rot.',
 					params: {
 						date: param.date
 					},
@@ -178,9 +178,9 @@
 				},
 
 				copyedit: {
-					label: mw.msg( 'pagetriage-tags-copyedit-label' ),
+					label: 'Copy edit',
 					tag: 'copy edit',
-					desc: mw.msg( 'pagetriage-tags-copyedit-desc' ),
+					desc: 'This page needs copy editing for grammar, style, cohesion, tone, and/or spelling.',
 					params: {
 						date: param.date,
 						for: $.extend( true, {}, param.for )
@@ -191,9 +191,9 @@
 				},
 
 				morefootnotes: {
-					label: mw.msg( 'pagetriage-tags-morefootnotes-label' ),
+					label: 'More footnotes',
 					tag: 'more footnotes',
-					desc: mw.msg( 'pagetriage-tags-morefootnotes-desc' ),
+					desc: 'This page has some references, but insufficient in-text citations.',
 					params: {
 						date: param.date,
 						blp: $.extend( true, {}, param.blp )
@@ -204,9 +204,9 @@
 				},
 
 				refimprove: {
-					label: mw.msg( 'pagetriage-tags-refimprove-label' ),
+					label: 'More references',
 					tag: 'refimprove',
-					desc: mw.msg( 'pagetriage-tags-refimprove-desc' ),
+					desc: 'This page needs additional references or sources for verification.',
 					params: {
 						date: param.date
 					},
@@ -216,9 +216,9 @@
 				},
 
 				unreferenced: {
-					label: mw.msg( 'pagetriage-tags-unreferenced-label' ),
+					label: 'No references',
 					tag: 'unreferenced',
-					desc: mw.msg( 'pagetriage-tags-unreferenced-desc' ),
+					desc: 'This page has no references at all.',
 					params: {
 						date: param.date
 					},
@@ -228,9 +228,9 @@
 				},
 
 				stub: {
-					label: mw.msg( 'pagetriage-tags-stub-label' ),
+					label: 'Stub',
 					tag: 'stub',
-					desc: mw.msg( 'pagetriage-tags-stub-desc' ),
+					desc: 'This page is very short.',
 					params: { },
 					position: 'bottom',
 					dest: 'structure',
@@ -238,9 +238,9 @@
 				},
 
 				uncategorised: {
-					label: mw.msg( 'pagetriage-tags-uncategorised-label' ),
+					label: 'Uncategorised',
 					tag: 'uncategorised',
-					desc: mw.msg( 'pagetriage-tags-uncategorised-desc' ),
+					desc: 'This page doesn\'t belong to any categories.',
 					params: {
 						date: param.date
 					},
@@ -250,9 +250,9 @@
 				},
 
 				orphan: {
-					label: mw.msg( 'pagetriage-tags-orphan-label' ),
+					label: 'Orphan',
 					tag: 'orphan',
-					desc: mw.msg( 'pagetriage-tags-orphan-desc' ),
+					desc: 'No other pages link to this page.',
 					params: {
 						date: param.date
 					},
@@ -264,12 +264,12 @@
 		},
 
 		cleanup: {
-			label: mw.msg( 'pagetriage-tags-cat-cleanup-label' ),
+			label: 'Cleanup',
 			tags: {
 				cleanup: {
-					label: mw.msg( 'pagetriage-tags-cleanup-label' ),
+					label: 'Cleanup',
 					tag: 'cleanup',
-					desc: mw.msg( 'pagetriage-tags-cleanup-desc' ),
+					desc: 'This page requires cleanup.',
 					params: {
 						date: param.date,
 						reason: $.extend( true, {}, param.reason )
@@ -279,9 +279,9 @@
 				},
 
 				copyedit: {
-					label: mw.msg( 'pagetriage-tags-copyedit-label' ),
+					label: 'Copy edit',
 					tag: 'copy edit',
-					desc: mw.msg( 'pagetriage-tags-copyedit-desc' ),
+					desc: 'This page needs copy editing for grammar, style, cohesion, tone, and/or spelling.',
 					params: {
 						date: param.date,
 						for: $.extend( true, {}, param.for )
@@ -302,9 +302,9 @@
 				},
 
 				prose: {
-					label: mw.msg( 'pagetriage-tags-prose-label' ),
+					label: 'Prose',
 					tag: 'prose',
-					desc: mw.msg( 'pagetriage-tags-prose-desc' ),
+					desc: 'This page is in a list format that is better presented using prose.',
 					params: {
 						date: param.date
 					},
@@ -313,9 +313,9 @@
 				},
 
 				roughtranslation: {
-					label: mw.msg( 'pagetriage-tags-roughtranslation-label' ),
+					label: 'Rough translation',
 					tag: 'rough translation',
-					desc: mw.msg( 'pagetriage-tags-roughtranslation-desc' ),
+					desc: 'This page is poorly translated and must be updated.',
 					params: { },
 					position: 'top',
 					multiple: false
@@ -324,12 +324,12 @@
 		},
 
 		metadata: {
-			label: mw.msg( 'pagetriage-tags-cat-metadata-label' ),
+			label: 'Metadata',
 			tags: {
 				deadend: {
-					label: mw.msg( 'pagetriage-tags-deadend-label' ),
+					label: 'Dead end',
 					tag: 'dead end',
-					desc: mw.msg( 'pagetriage-tags-deadend-desc' ),
+					desc: 'This page has no links to other pages.',
 					params: {
 						date: param.date
 					},
@@ -338,9 +338,9 @@
 				},
 
 				externallinks: {
-					label: mw.msg( 'pagetriage-tags-externallinks-label' ),
+					label: 'External links',
 					tag: 'external links',
-					desc: mw.msg( 'pagetriage-tags-externallinks-desc' ),
+					desc: 'This page\'s external links do not follow content policies or guidelines.',
 					params: {
 						date: param.date
 					},
@@ -349,9 +349,9 @@
 				},
 
 				orphan: {
-					label: mw.msg( 'pagetriage-tags-orphan-label' ),
+					label: 'Orphan',
 					tag: 'orphan',
-					desc: mw.msg( 'pagetriage-tags-orphan-desc' ),
+					desc: 'No other pages link to this page.',
 					params: {
 						date: param.date
 					},
@@ -360,9 +360,9 @@
 				},
 
 				overlinked: {
-					label: mw.msg( 'pagetriage-tags-overlinked-label' ),
+					label: 'Too many links',
 					tag: 'overlinked',
-					desc: mw.msg( 'pagetriage-tags-overlinked-desc' ),
+					desc: 'This page has too many duplicate and/or irrelevant links.',
 					params: {
 						date: param.date
 					},
@@ -382,9 +382,9 @@
 				},
 
 				uncategorised: {
-					label: mw.msg( 'pagetriage-tags-uncategorised-label' ),
+					label: 'Uncategorised',
 					tag: 'uncategorised',
-					desc: mw.msg( 'pagetriage-tags-uncategorised-desc' ),
+					desc: 'This page doesn\'t belong to any categories.',
 					params: {
 						date: param.date
 					},
@@ -730,9 +730,9 @@
 				},
 
 				linkrot: {
-					label: mw.msg( 'pagetriage-tags-linkrot-label' ),
+					label: 'Bare URLs',
 					tag: 'linkrot',
-					desc: mw.msg( 'pagetriage-tags-linkrot-desc' ),
+					desc: 'This page uses bare URLs for references, which are prone to link rot.',
 					params: {
 						date: param.date
 					},
@@ -764,9 +764,9 @@
 				},
 
 				morefootnotes: {
-					label: mw.msg( 'pagetriage-tags-morefootnotes-label' ),
+					label: 'More footnotes',
 					tag: 'more footnotes',
-					desc: mw.msg( 'pagetriage-tags-morefootnotes-desc' ),
+					desc: 'This page has some references, but insufficient in-text citations.',
 					params: {
 						date: param.date,
 						blp: $.extend( true, {}, param.blp )
