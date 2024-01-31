@@ -364,19 +364,19 @@ class ApiPageTriageList extends ApiBase {
 			}
 		}
 		if ( $reviewOpr !== '>=' ) {
-			$conds[] = 'ptrp_reviewed ' . $reviewOpr . ' 0';
+			$conds[] = $dbr->expr( 'ptrp_reviewed', $reviewOpr, 0 );
 		}
 
 		if ( isset( $opts['showautopatrolled'] ) && $opts['showautopatrolled'] ) {
-			$conds[] = 'ptrp_reviewed = 3';
+			$conds['ptrp_reviewed'] = 3;
 		}
 
 		if ( isset( $opts['date_range_from'] ) && $opts['date_range_from'] ) {
-			$conds[] = ' ptrp_created  >= ' . $dbr->addQuotes( $dbr->timestamp( $opts['date_range_from'] ) );
+			$conds[] = $dbr->expr( 'ptrp_created', '>=', $dbr->timestamp( $opts['date_range_from'] ) );
 		}
 
 		if ( isset( $opts['date_range_to'] ) && $opts['date_range_to'] ) {
-			$conds[] = 'ptrp_created <= ' . $dbr->addQuotes( $dbr->timestamp( $opts['date_range_to'] ) );
+			$conds[] = $dbr->expr( 'ptrp_created', '<=', $dbr->timestamp( $opts['date_range_to'] ) );
 		}
 
 		// Filter on types
