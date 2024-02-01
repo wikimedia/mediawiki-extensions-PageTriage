@@ -537,7 +537,7 @@ class Hooks implements
 		$rc = RecentChange::newFromId( $rcid );
 
 		if ( $rc ) {
-			if ( !in_array( $rc->getTitle()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
+			if ( !in_array( $rc->getPage()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 				return;
 			}
 
@@ -739,7 +739,7 @@ class Hooks implements
 		}
 
 		if ( !ArticleMetadata::validatePageIds(
-			[ $rc->getTitle()->getArticleID() ], DB_REPLICA
+			[ (int)$rc->getPage()->getDBkey() ], DB_REPLICA
 		) ) {
 			return;
 		}
