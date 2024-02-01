@@ -338,8 +338,9 @@ class Hooks implements
 			return true;
 		}
 
-		$wikitextHasNoIndexMagicWord = $article->mParserOutput instanceof ParserOutput
-			&& $article->mParserOutput->getPageProperty( 'noindex' ) !== null;
+		$parserOutput = $article->getParserOutput();
+		$wikitextHasNoIndexMagicWord = $parserOutput instanceof ParserOutput
+			&& $parserOutput->getPageProperty( 'noindex' ) !== null;
 
 		return $wikitextHasNoIndexMagicWord && self::shouldNoIndexForMagicWordReasons( $page );
 	}
