@@ -83,6 +83,7 @@ const filtersToParams = {
 	learners: 'learners',
 	blocked: 'blocked_users',
 	'bot-edits': 'showbots',
+	'autopatrolled-edits': 'showautopatrolled',
 	username: 'username'
 };
 
@@ -171,6 +172,7 @@ module.exports = {
 					blocked_users: 'blocked',
 					/* eslint-enable camelcase */
 					showbots: 'bot-edits',
+					showautopatrolled: 'autopatrolled-edits',
 					username: 'username'
 				};
 				for ( const param in settings ) {
