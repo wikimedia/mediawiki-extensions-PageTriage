@@ -105,7 +105,7 @@
 	"pagetriage-filter-second-show-heading": "Которые:",
 	"pagetriage-filter-no-categories": "Не имеют категорий",
 	"pagetriage-filter-unreferenced": "Не содержат ссылок на источники",
-	"pagetriage-filter-orphan": "Являются сиротами",
+	"pagetriage-filter-orphan": "Могут быть сиротами",
 	"pagetriage-filter-recreated": "Ранее уже удалялись",
 	"pagetriage-filter-non-autoconfirmed": "Созданы новыми участниками (не автоподтверждёнными)",
 	"pagetriage-filter-learners": "Начинающие участники (недавно ставшие автоподтвержденными)",
