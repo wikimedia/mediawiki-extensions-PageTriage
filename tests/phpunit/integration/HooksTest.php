@@ -2,7 +2,12 @@
 
 namespace MediaWiki\Extension\PageTriage\Test;
 
+use CommentStoreComment;
+use ContentHandler;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
+use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Title\Title;
+use RecentChange;
 
 /**
  * Tests the Hooks class.
@@ -33,6 +38,92 @@ class HooksTest extends PageTriageTestCase {
 			->from( 'pagetriage_page' )
 			->fetchRowCount();
 		$this->assertEquals( $originalCount, $actualCount );
+	}
+
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::onPageDeleteComplete()
+	 */
+	public function testOnPageDelete() {
+		$title = Title::newFromText( 'Delete me' );
+		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
+		$user = $this->getTestUser()->getUser();
+		$content = ContentHandler::makeContent( 'Delete this article', $title );
+		$comment = CommentStoreComment::newUnsavedComment( 'Comment' );
+		$updater = $page->newPageUpdater( $user );
+		$updater->setContent( SlotRecord::MAIN, $content );
+		$updater->setRcPatrolStatus( RecentChange::PRC_PATROLLED );
+		$updater->saveRevision( $comment );
+
+		$beforeDeleteCount = $this->db->newSelectQueryBuilder()
+			->select( '*' )
+			->from( 'pagetriage_page' )
+			->where( [ 'ptrp_page_id' => $page->getId() ] )
+			->fetchRowCount();
+		$this->assertSame( 1, $beforeDeleteCount );
+
+		$deletePage = $this->getServiceContainer()
+					 ->getDeletePageFactory()
+					 ->newDeletePage( $page, $this->getTestSysop()->getUser() );
+		$delStatus = $deletePage->deleteIfAllowed( 'reason' );
+		$this->assertTrue( $delStatus->isGood() );
+
+		$afterDeleteCount = $this->db->newSelectQueryBuilder()
+			->select( '*' )
+			->from( 'pagetriage_page' )
+			->where( [ 'ptrp_page_id' => $page->getId() ] )
+			->fetchRowCount();
+		$this->assertSame( 0, $afterDeleteCount );
+	}
+
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::onPageUndeleteComplete()
+	 */
+	public function testOnPageUndelete() {
+		$title = Title::newFromText( 'Undelete me' );
+		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
+		$user = $this->getTestUser()->getUser();
+		$sysOp = $this->getTestSysop()->getUser();
+		$content = ContentHandler::makeContent( 'Undelete this article', $title );
+		$comment = CommentStoreComment::newUnsavedComment( 'Comment' );
+		$updater = $page->newPageUpdater( $user );
+		$updater->setContent( SlotRecord::MAIN, $content );
+		$updater->setRcPatrolStatus( RecentChange::PRC_PATROLLED );
+		$updater->saveRevision( $comment );
+
+		$beforeDeleteCount = $this->db->newSelectQueryBuilder()
+			->select( '*' )
+			->from( 'pagetriage_page' )
+			->where( [ 'ptrp_page_id' => $page->getId() ] )
+			->fetchRowCount();
+		$this->assertSame( 1, $beforeDeleteCount );
+
+		// Delete this article
+		$deletePage = $this->getServiceContainer()
+			->getDeletePageFactory()
+			->newDeletePage( $page, $sysOp );
+		$delStatus = $deletePage->deleteIfAllowed( 'reason' );
+		$this->assertTrue( $delStatus->isGood() );
+
+		$afterDeleteCount = $this->db->newSelectQueryBuilder()
+			->select( '*' )
+			->from( 'pagetriage_page' )
+			->where( [ 'ptrp_page_id' => $page->getId() ] )
+			->fetchRowCount();
+		$this->assertSame( 0, $afterDeleteCount );
+
+		// Undelete the article
+		$undeletePage = $this->getServiceContainer()
+			->getUndeletePageFactory()
+			->newUndeletePage( $page, $sysOp );
+		$undelStatus = $undeletePage->undeleteIfAllowed( 'reason' );
+		$this->assertTrue( $undelStatus->isGood() );
+
+		$afterUndeleteCount = $this->db->newSelectQueryBuilder()
+			->select( '*' )
+			->from( 'pagetriage_page' )
+			->where( [ 'ptrp_page_id' => $page->getId() ] )
+			->fetchRowCount();
+		$this->assertSame( 1, $afterUndeleteCount );
 	}
 
 	/**
