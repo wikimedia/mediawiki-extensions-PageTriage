@@ -51,19 +51,19 @@ describe( 'PageTriage Toolbar', function () {
 			return await Toolbar.tagToolIcon.waitForDisplayed();
 		} );
 
-		assert( Toolbar.tagToolIcon.isExisting() );
+		assert( await Toolbar.tagToolIcon.isExisting() );
 
-		Toolbar.tagToolIcon.click();
+		await Toolbar.tagToolIcon.click();
 
 		await browser.waitUntil( async () => {
 			return await Toolbar.tagToolBody.waitForDisplayed();
 		} );
 
-		assert( Toolbar.tagToolBody.isExisting() );
+		assert( await Toolbar.tagToolBody.isExisting() );
 
-		Toolbar.tagToolFirstCheckbox.click();
+		await Toolbar.tagToolFirstCheckbox.click();
 		await Toolbar.tagToolSubmitButton.waitForEnabled();
-		Toolbar.tagToolSubmitButton.click();
+		await Toolbar.tagToolSubmitButton.click();
 		await browser.waitUntil( async () => {
 			return !( await Toolbar.tagToolSubmitButton.isExisting() );
 		} );
