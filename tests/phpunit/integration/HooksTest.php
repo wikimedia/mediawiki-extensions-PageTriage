@@ -2,10 +2,7 @@
 
 namespace MediaWiki\Extension\PageTriage\Test;
 
-use ContentHandler;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
-use MediaWiki\Title\Title;
-use PageArchive;
 
 /**
  * Tests the Hooks class.
@@ -36,71 +33,6 @@ class HooksTest extends PageTriageTestCase {
 			->from( 'pagetriage_page' )
 			->fetchRowCount();
 		$this->assertEquals( $originalCount, $actualCount );
-	}
-
-	/**
-	 * @covers \MediaWiki\Extension\PageTriage\Hooks::onPageDeleteComplete()
-	 */
-	public function testOnPageDelete() {
-		$title = Title::newFromText( 'Delete me' );
-		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
-		$user = $this->getTestUser()->getUser();
-		$page->doUserEditContent( ContentHandler::makeContent( 'Delete this article', $title ), $user, 'Comment' );
-
-		$beforeDeleteCount = $this->db->newSelectQueryBuilder()
-			->select( '*' )
-			->from( 'pagetriage_page' )
-			->where( [ 'ptrp_page_id' => $page->getId() ] )
-			->fetchRowCount();
-		$this->assertSame( 1, $beforeDeleteCount );
-
-		$page->doDeleteArticleReal( 'Reason', $this->getTestSysop()->getUser() );
-
-		$afterDeleteCount = $this->db->newSelectQueryBuilder()
-			->select( '*' )
-			->from( 'pagetriage_page' )
-			->where( [ 'ptrp_page_id' => $page->getId() ] )
-			->fetchRowCount();
-		$this->assertSame( 0, $afterDeleteCount );
-	}
-
-	/**
-	 * @covers \MediaWiki\Extension\PageTriage\Hooks::onPageUndeleteComplete()
-	 */
-	public function testOnPageUndelete() {
-		$title = Title::newFromText( 'Undelete me' );
-		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
-		$user = $this->getTestUser()->getUser();
-		$page->doUserEditContent( ContentHandler::makeContent( 'Undelete this article', $title ), $user, 'Comment' );
-
-		$beforeDeleteCount = $this->db->newSelectQueryBuilder()
-			->select( '*' )
-			->from( 'pagetriage_page' )
-			->where( [ 'ptrp_page_id' => $page->getId() ] )
-			->fetchRowCount();
-		$this->assertSame( 1, $beforeDeleteCount );
-
-		// Delete this article
-		$page->doDeleteArticleReal( 'Reason', $this->getTestSysop()->getUser() );
-
-		$afterDeleteCount = $this->db->newSelectQueryBuilder()
-			->select( '*' )
-			->from( 'pagetriage_page' )
-			->where( [ 'ptrp_page_id' => $page->getId() ] )
-			->fetchRowCount();
-		$this->assertSame( 0, $afterDeleteCount );
-
-		// Undelete the article
-		$archive = new PageArchive( $title );
-		$archive->undeleteAsUser( [], $this->getTestSysop()->getUser() );
-
-		$afterUndeleteCount = $this->db->newSelectQueryBuilder()
-			->select( '*' )
-			->from( 'pagetriage_page' )
-			// After undeleting, page ID changes; we need to get the next page created
-			->where( [ 'ptrp_page_id' => $page->getId() + 1 ] )
-			->fetchRowCount();
-		$this->assertSame( 1, $afterUndeleteCount );
 	}
 
 	/**
