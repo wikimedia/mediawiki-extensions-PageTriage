@@ -1,4 +1,5 @@
-// See https://www.mediawiki.org/wiki/Extension:PageTriage for basic documentation on configuration.
+// See https://www.mediawiki.org/wiki/Extension:PageTriage#On-wiki_configuration for basic
+// documentation on configuration.
 ( function () {
 	$.pageTriageDeletionTagsMultiple = {
 		tag: 'Db-multiple',
