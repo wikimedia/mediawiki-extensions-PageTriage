@@ -46,7 +46,9 @@ module.exports = {
 				auexcludegroup: 'bot',
 				aulimit: 3,
 				auwitheditsonly: '1'
-			} ).then( ( resp ) => { return resp.query.allusers; } );
+			} ).then( ( resp ) => {
+				return resp.query.allusers;
+			} );
 		}
 
 		function onPaste( evt ) {

@@ -29,9 +29,11 @@ class Api {
 	get() {
 		return Promise.resolve( { pagetriagestats: { stats: '' } } );
 	}
+
 	saveOption() {
 		return Promise.resolve( true );
 	}
+
 	postWithToken() {
 		return Promise.resolve();
 	}

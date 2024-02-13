@@ -104,7 +104,7 @@ module.exports = {
 		const API_PAGE_LIMIT = 20;
 		const api = new mw.Api( {
 			// specifying url allows for requests from jsdom
-			ajax: { url: `${mw.config.get( 'wgScriptPath' )}/api.php` }
+			ajax: { url: `${ mw.config.get( 'wgScriptPath' ) }/api.php` }
 		} );
 		const apiError = ref( false );
 		const feedEntries = ref( [] );

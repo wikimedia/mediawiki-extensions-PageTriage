@@ -29,7 +29,7 @@ module.exports = {
 		// provided auto generate one
 		inputId: {
 			type: String,
-			default: ( props ) => `mwe-vue-pt-checkbox-${props.labelMsg}-${++lastGeneratedIdNum}`
+			default: ( props ) => `mwe-vue-pt-checkbox-${ props.labelMsg }-${ ++lastGeneratedIdNum }`
 		},
 		labelMsg: {
 			type: String,

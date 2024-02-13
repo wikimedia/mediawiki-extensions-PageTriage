@@ -20,7 +20,7 @@ describe( 'PageTriage Toolbar', function () {
 		const nonAdminUserBot = new MWBot();
 
 		await nonAdminUserBot.loginGetEditToken( {
-			apiUrl: `${browser.config.baseUrl}/api.php`,
+			apiUrl: `${ browser.config.baseUrl }/api.php`,
 			username: username,
 			password: password
 		} );
@@ -103,7 +103,7 @@ describe( 'PageTriage Toolbar', function () {
 			return !( await Toolbar.tagToolSubmitButton.isExisting() );
 		} );
 
-		await EditPage.open( `User talk:${username}` );
+		await EditPage.open( `User talk:${ username }` );
 
 		const userTalkPageTxt = await EditPage.content.getValue();
 

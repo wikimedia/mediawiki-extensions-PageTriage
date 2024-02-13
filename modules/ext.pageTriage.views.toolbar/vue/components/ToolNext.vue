@@ -19,7 +19,7 @@ const ToolIcon = require( './ToolIcon.vue' );
 
 const client = new mw.Api( {
 		// specifying url allows for requests from jsdom
-		ajax: { url: `${mw.config.get( 'wgScriptPath' )}/api.php` }
+		ajax: { url: `${ mw.config.get( 'wgScriptPath' ) }/api.php` }
 	}, { timeout: 1 } ),
 	defaultParams = {
 		action: 'pagetriagelist',

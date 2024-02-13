@@ -44,9 +44,9 @@ module.exports = {
 	},
 	computed: {
 		src: function () {
-			const path = `${mw.config.get( 'wgExtensionAssetsPath' )}/PageTriage/modules/ext.pageTriage.views.toolbar/images/icons`;
+			const path = `${ mw.config.get( 'wgExtensionAssetsPath' ) }/PageTriage/modules/ext.pageTriage.views.toolbar/images/icons`;
 			const dir = this.disabled ? 'disabled' : this.dir;
-			return `${path}/${dir}/${this.file}`;
+			return `${ path }/${ dir }/${ this.file }`;
 		}
 	},
 	methods: {

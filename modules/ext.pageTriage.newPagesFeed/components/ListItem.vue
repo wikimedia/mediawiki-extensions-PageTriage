@@ -191,7 +191,9 @@ module.exports = {
 			type: String,
 			required: false,
 			default: '',
-			validator( value ) { return timestampValidator( value ); }
+			validator( value ) {
+				return timestampValidator( value );
+			}
 		},
 		creatorAutoConfirmed: { type: Boolean, required: true },
 		creatorIsBot: { type: Boolean, required: true },
@@ -250,12 +252,16 @@ module.exports = {
 		creationDateUTC: {
 			type: String,
 			required: true,
-			validator( value ) { return timestampValidator( value ); }
+			validator( value ) {
+				return timestampValidator( value );
+			}
 		},
 		reviewedUpdatedUTC: {
 			type: String,
 			required: true,
-			validator( value ) { return timestampValidator( value ); }
+			validator( value ) {
+				return timestampValidator( value );
+			}
 		},
 		/*
 		 * ORES data may be undefined if extension is not available
@@ -304,7 +310,9 @@ module.exports = {
 		redirectIcon: function () {
 			return { icon: cdxIconNewline };
 		},
-		oddEvenClass: function () { return this.position % 2 === 0 ? 'mwe-vue-pt-article-row-even' : 'mwe-vue-pt-article-row-odd'; },
+		oddEvenClass: function () {
+			return this.position % 2 === 0 ? 'mwe-vue-pt-article-row-even' : 'mwe-vue-pt-article-row-odd';
+		},
 		isDraft: function () {
 			const pageNamespaceId = ( new mw.Title( this.title ) ).getNamespaceId();
 			return pageNamespaceId === this.draftNamespaceId;

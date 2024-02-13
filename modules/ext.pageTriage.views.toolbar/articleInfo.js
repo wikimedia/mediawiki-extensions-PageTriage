@@ -213,10 +213,10 @@ module.exports = ToolView.extend( {
 			'</span>';
 
 		if ( link ) {
-			descHtml = `<a href="${link}" target="_blank">${descHtml}</a>`;
+			descHtml = `<a href="${ link }" target="_blank">${ descHtml }</a>`;
 		}
 
-		return `<li class="mwe-pt-info-problem">${problemHtml} - ${descHtml}</li>`;
+		return `<li class="mwe-pt-info-problem">${ problemHtml } - ${ descHtml }</li>`;
 	},
 
 	formatOresProblem: function ( classification ) {

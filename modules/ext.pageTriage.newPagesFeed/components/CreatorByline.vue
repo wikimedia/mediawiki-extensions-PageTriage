@@ -48,18 +48,18 @@ module.exports = {
 		},
 		userPageUrl: function () {
 			if ( this.creatorUserPageExists ) {
-				return mw.util.getUrl( `User:${this.creatorName}` );
+				return mw.util.getUrl( `User:${ this.creatorName }` );
 			}
-			return mw.util.getUrl( `User:${this.creatorName}`, params );
+			return mw.util.getUrl( `User:${ this.creatorName }`, params );
 		},
 		talkPageClass: function () {
 			return this.creatorTalkPageExists ? '' : redLink;
 		},
 		talkPageUrl: function () {
 			if ( this.creatorTalkPageExists ) {
-				return mw.util.getUrl( `User talk:${this.creatorName}` );
+				return mw.util.getUrl( `User talk:${ this.creatorName }` );
 			}
-			return mw.util.getUrl( `User talk:${this.creatorName}`, params );
+			return mw.util.getUrl( `User talk:${ this.creatorName }`, params );
 		},
 		contribsUrl: function () {
 			return mw.util.getUrl( 'Special:Contributions/' + this.creatorName );

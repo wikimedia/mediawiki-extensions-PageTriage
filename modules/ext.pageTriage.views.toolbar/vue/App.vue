@@ -142,7 +142,7 @@ module.exports = {
 			// mwe-pt-toolbar-hidden
 			// mwe-pt-toolbar-maximized
 			// mwe-pt-toolbar-minimized
-			return `mwe-pt-toolbar-${this.display}`;
+			return `mwe-pt-toolbar-${ this.display }`;
 		}
 	},
 	methods: {
@@ -192,7 +192,7 @@ module.exports = {
 			let top = this.toolbar.offsetTop - pos.new.y;
 			top = Math.max( top, 0 );
 			top = Math.min( top, maxY );
-			this.style.top = `${top}px`;
+			this.style.top = `${ top }px`;
 
 			// calculate toolbar x position, constrained to window
 			const maxX = $( window ).width() - this.toolbar.offsetWidth;
@@ -202,13 +202,13 @@ module.exports = {
 				let right = offsetRight + pos.new.x;
 				right = Math.max( right, 0 );
 				right = Math.min( right, maxX );
-				this.style.right = `${right}px`;
+				this.style.right = `${ right }px`;
 			// rtl sets position relative to left side
 			} else if ( this.dir === 'rtl' ) {
 				let left = this.toolbar.offsetLeft - pos.new.x;
 				left = Math.max( left, 0 );
 				left = Math.min( left, maxX );
-				this.style.left = `${left}px`;
+				this.style.left = `${ left }px`;
 			}
 		},
 		close: function () {

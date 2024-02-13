@@ -130,7 +130,9 @@ const actionQueue = ( function () {
 						// runs and not about returned values, this will ensure that we
 						// provide a consistent experience to all clients.
 						$.when( func( actionData[ actionName ] ) )
-							.then( null, function () { return $.Deferred().resolve(); } ) );
+							.then( null, function () {
+								return $.Deferred().resolve();
+							} ) );
 				} );
 			} );
 
