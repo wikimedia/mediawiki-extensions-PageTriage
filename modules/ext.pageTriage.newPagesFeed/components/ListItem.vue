@@ -477,6 +477,12 @@ module.exports = {
 	}
 }
 
+.skin-monobook .mwe-vue-pt-problem-chip {
+	// Monobook reduces the font size from 100% to 90%, so we need to increase the
+	// font size 100/90 = 1.1111
+	font-size: 1.1111em;
+}
+
 .cdx-icon.mwe-vue-pt-page-status-unreviewed {
 	color: @color-progressive;
 }
