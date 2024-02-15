@@ -27,28 +27,28 @@
 								{{ $i18n( 'pagetriage-categories', categoryCount ).text() }}
 							</span>
 						</span>
-						<span class="mwe-vue-pt-problem-chips">
+						<span class="mwe-vue-pt-problem-chips-container">
 							<template v-if="!isDraft">
-								<cdx-info-chip v-if="categoryCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
+								<cdx-info-chip v-if="categoryCount === 0 && !isRedirect" class="mwe-vue-pt-problem-chip">
 									{{ $i18n( 'pagetriage-no-categories' ).text() }}
 								</cdx-info-chip>
-								<cdx-info-chip v-if="linkCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
+								<cdx-info-chip v-if="linkCount === 0 && !isRedirect" class="mwe-vue-pt-problem-chip">
 									<a :href="whatLinksHereLink">{{ $i18n( 'pagetriage-orphan' ).text() }}</a>
 								</cdx-info-chip>
-								<cdx-info-chip v-if="recreated" class="mwe-vue-pt-metadata-warning">
+								<cdx-info-chip v-if="recreated" class="mwe-vue-pt-problem-chip">
 									<a :href="previouslyDeletedLogLink">{{ $i18n( 'pagetriage-recreated' ).text() }}</a>
 								</cdx-info-chip>
 							</template>
-							<cdx-info-chip v-if="referenceCount === 0 && !isRedirect" class="mwe-vue-pt-metadata-warning">
+							<cdx-info-chip v-if="referenceCount === 0 && !isRedirect" class="mwe-vue-pt-problem-chip">
 								{{ $i18n( 'pagetriage-no-reference' ).text() }}
 							</cdx-info-chip>
-							<cdx-info-chip v-if="creatorBlocked" class="mwe-vue-pt-metadata-warning">
+							<cdx-info-chip v-if="creatorBlocked" class="mwe-vue-pt-problem-chip">
 								<a :href="blockLogLink">{{ $i18n( 'pagetriage-author-blocked' ).text() }}</a>
 							</cdx-info-chip>
-							<cdx-info-chip v-if="oresDraftQuality" class="mwe-vue-pt-issue">
+							<cdx-info-chip v-if="oresDraftQuality" class="mwe-vue-pt-problem-chip">
 								{{ oresDraftQuality }}
 							</cdx-info-chip>
-							<cdx-info-chip v-if="copyvio && showCopyvio" class="mw-parser-output mwe-vue-pt-issue">
+							<cdx-info-chip v-if="copyvio && showCopyvio" class="mw-parser-output mwe-vue-pt-problem-chip">
 								<a
 									:href="copyvioLink"
 									target="_blank"
@@ -466,8 +466,7 @@ module.exports = {
 	background: @background-color-interactive-subtle;
 }
 
-.mwe-vue-pt-metadata-warning,
-.mwe-vue-pt-issue {
+.mwe-vue-pt-problem-chip {
 	background: @background-color-destructive-subtle;
 	border-color: @border-color-destructive;
 	margin-left: @spacing-25;
