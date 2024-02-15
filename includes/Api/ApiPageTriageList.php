@@ -490,26 +490,26 @@ class ApiPageTriageList extends ApiBase {
 		}
 
 		if ( $count ) {
-			$res = $dbr->selectRowCount(
-				$tables,
-				'ptrp_page_id',
-				$conds,
-				__METHOD__,
-				$options,
-				$join_conds
-			);
+			$res = $dbr->newSelectQueryBuilder()
+				->select( 'ptrp_page_id' )
+				->tables( $tables )
+				->joinConds( $join_conds )
+				->conds( $conds )
+				->options( $options )
+				->caller( __METHOD__ )
+				->fetchRowCount();
 
 			return $res;
 		} else {
 			// Pull page IDs from database
-			$res = $dbr->select(
-				$tables,
-				'ptrp_page_id',
-				$conds,
-				__METHOD__,
-				$options,
-				$join_conds
-			);
+			$res = $dbr->newSelectQueryBuilder()
+				->select( 'ptrp_page_id' )
+				->tables( $tables )
+				->joinConds( $join_conds )
+				->conds( $conds )
+				->options( $options )
+				->caller( __METHOD__ )
+				->fetchResultSet();
 
 			// Loop through result set and return ids
 			foreach ( $res as $row ) {
