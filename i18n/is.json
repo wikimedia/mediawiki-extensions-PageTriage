@@ -3,7 +3,8 @@
 		"authors": [
 			"Fitoschido",
 			"Snævar",
-			"Sveinn í Felli"
+			"Sveinn í Felli",
+			"Stefán Örvar Sigmundsson"
 		]
 	},
 	"pagetriage-please-wait": "Vinsamlegast bíddu ...",
@@ -47,7 +48,7 @@
 	"pagetriage-filter-redirects": "Endurbeiningum (ekki RfD)",
 	"pagetriage-filter-namespace-heading": "Í nafnrými:",
 	"pagetriage-filter-article": "Greina",
-	"pagetriage-filter-user-heading": "Voru útbúin af:",
+	"pagetriage-filter-user-heading": "Voru búnar til af:",
 	"pagetriage-filter-username": "Notandanafn",
 	"pagetriage-filter-second-show-heading": "Sem:",
 	"pagetriage-filter-no-categories": "Hafa enga flokka",
