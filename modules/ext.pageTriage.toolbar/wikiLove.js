@@ -6,7 +6,7 @@ module.exports = ToolView.extend( {
 	icon: 'icon_wikilove.png', // the default icon
 	title: mw.msg( 'wikilove' ),
 	tooltip: 'pagetriage-wikilove-tooltip',
-	template: mw.template.get( 'ext.pageTriage.views.toolbar', 'wikilove.underscore' ),
+	template: mw.template.get( 'ext.pageTriage.toolbar', 'wikilove.underscore' ),
 
 	bySortedValue: function ( obj, callback, context ) {
 		const tuples = [];

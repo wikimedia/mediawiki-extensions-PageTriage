@@ -47,7 +47,7 @@ module.exports = Backbone.View.extend( {
 	// from here down is stuff you probably won't want to override
 	tagName: 'div',
 	className: 'mwe-pt-tool',
-	chromeTemplate: mw.template.get( 'ext.pageTriage.views.toolbar', 'ToolView.underscore' ),
+	chromeTemplate: mw.template.get( 'ext.pageTriage.toolbar', 'ToolView.underscore' ),
 	visible: false,
 	rendered: false,
 
@@ -212,7 +212,7 @@ module.exports = Backbone.View.extend( {
 
 	iconPath: function ( dir ) {
 		return mw.config.get( 'wgExtensionAssetsPath' ) +
-			'/PageTriage/modules/ext.pageTriage.views.toolbar/images/icons/' +
+			'/PageTriage/modules/ext.pageTriage.toolbar/images/icons/' +
 			dir +
 			'/' +
 			this.icon;

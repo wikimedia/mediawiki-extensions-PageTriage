@@ -17,7 +17,7 @@ $( function () {
 	$( 'body' ).append( toolbar );
 
 	// Load the curation toolbar
-	mw.loader.using( 'ext.pageTriage.views.toolbar' )
+	mw.loader.using( 'ext.pageTriage.toolbar' )
 		.then( function () {
 			// Fire the 'ready' hook
 			mw.hook( 'ext.pageTriage.toolbar.ready' )

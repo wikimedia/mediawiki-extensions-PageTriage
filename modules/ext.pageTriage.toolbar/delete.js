@@ -88,7 +88,7 @@ module.exports = ToolView.extend( {
 	icon: 'icon_trash.png',
 	title: mw.msg( 'pagetriage-del-title' ),
 	tooltip: 'pagetriage-del-tooltip',
-	template: mw.template.get( 'ext.pageTriage.views.toolbar', 'delete.underscore' ),
+	template: mw.template.get( 'ext.pageTriage.toolbar', 'delete.underscore' ),
 	deletionTagsOptions: {},
 	selectedTag: {},
 	selectedCat: '',

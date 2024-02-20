@@ -23,7 +23,7 @@ contentLanguageMessages.set( require( './contentLanguageMessages.json' ) );
 // overall toolbar view
 // currently, this is the main application view.
 const ToolbarView = Backbone.View.extend( {
-	template: mw.template.get( 'ext.pageTriage.views.toolbar', 'ToolbarView.underscore' ),
+	template: mw.template.get( 'ext.pageTriage.toolbar', 'ToolbarView.underscore' ),
 	openCurationToolbarLinkId: 't-opencurationtoolbar',
 
 	initialize: function ( options ) {
