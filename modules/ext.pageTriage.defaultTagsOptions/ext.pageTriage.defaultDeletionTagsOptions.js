@@ -10,7 +10,7 @@
 	$.pageTriageDeletionTagsOptions = {
 		Main: {
 			speedydeletioncommon: {
-				label: mw.msg( 'pagetriage-del-tags-cat-csd-label' ),
+				label: 'Speedy deletion',
 				desc: 'Mark this page for speedy deletion only if it fits one of the criteria below. There is no catch-all – if it doesn’t fit, use PROD or AfD.',
 				multiple: true,
 				// do NOT mark page as reviewed when this deletion tag option is selected.
@@ -362,16 +362,16 @@
 			},
 
 			proposeddeletion: {
-				label: mw.msg( 'pagetriage-del-tags-cat-prod-label' ),
-				desc: mw.msg( 'pagetriage-del-tags-cat-prod-desc' ),
+				label: 'Proposed deletion',
+				desc: 'Mark this page for proposed deletion if it clearly violates community standards.',
 				multiple: false,
 				// do NOT mark page as reviewed when this deletion tag option is selected
 				reviewed: '0',
 				tags: {
 					blpprod: {
-						label: mw.msg( 'pagetriage-del-tags-blpprod-label' ),
+						label: 'Proposed Deletion (Living People)',
 						tag: 'blp-prod',
-						desc: mw.msg( 'pagetriage-del-tags-blpprod-desc' ),
+						desc: 'An article about a living person that has no sources',
 						params: {},
 						anchor: '',
 						talkpagenotiftopictitle: 'pagetriage-del-tags-prod-notify-topic-title',
@@ -380,12 +380,12 @@
 					},
 
 					prod: {
-						label: mw.msg( 'pagetriage-del-tags-prod-label' ),
+						label: 'Proposed Deletion',
 						tag: 'prod',
-						desc: mw.msg( 'pagetriage-del-tags-prod-desc' ),
+						desc: 'Uncontroversial deletions that do not meet any speedy deletion criteria',
 						params: {
 							1: {
-								label: mw.msg( 'pagetriage-del-tags-param-discussion-label' ),
+								label: 'Please explain why this page should be deleted, and provide links to the relevant policies wherever possible',
 								input: 'required',
 								type: 'textarea',
 								value: ''
@@ -406,13 +406,13 @@
 
 			xfd: {
 				label: '',
-				desc: mw.msg( 'pagetriage-del-tags-cat-discussion-desc' ),
+				desc: 'Mark this page to discuss its deletion with other editors.',
 				multiple: false,
 				// mark page as reviewed when this deletion tag option is selected
 				reviewed: '1',
 				tags: {
 					articlefordeletion: {
-						label: mw.msg( 'pagetriage-del-tags-articlefordeletion-label' ),
+						label: 'Articles for deletion',
 						desc: '',
 						tag: 'afd',
 						prefix: 'Wikipedia:Articles for deletion',
@@ -420,7 +420,7 @@
 						usesSubpages: true,
 						params: {
 							1: {
-								label: mw.msg( 'pagetriage-del-tags-param-discussion-label' ),
+								label: 'Please explain why this page should be deleted, and provide links to the relevant policies wherever possible',
 								input: 'required',
 								type: 'textarea',
 								value: '',
@@ -440,13 +440,13 @@
 					},
 
 					redirectsfordiscussion: {
-						label: mw.msg( 'pagetriage-del-tags-redirectsfordiscussion-label' ),
+						label: 'Redirects for discussion',
 						desc: '',
 						tag: 'rfd-NPF',
 						prefix: 'Wikipedia:Redirects for discussion',
 						params: {
 							1: {
-								label: mw.msg( 'pagetriage-del-tags-param-discussion-label' ),
+								label: 'Please explain why this page should be deleted, and provide links to the relevant policies wherever possible',
 								input: 'required',
 								type: 'textarea',
 								value: ''

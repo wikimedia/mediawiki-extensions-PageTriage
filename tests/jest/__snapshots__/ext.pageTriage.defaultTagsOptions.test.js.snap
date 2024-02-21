@@ -12,15 +12,15 @@ exports[`defaultTagsOptions defaultDeletionTagsOptions should match snapshot 2`]
 {
   "Main": {
     "proposeddeletion": {
-      "desc": "pagetriage-del-tags-cat-prod-desc",
-      "label": "pagetriage-del-tags-cat-prod-label",
+      "desc": "Mark this page for proposed deletion if it clearly violates community standards.",
+      "label": "Proposed deletion",
       "multiple": false,
       "reviewed": "0",
       "tags": {
         "blpprod": {
           "anchor": "",
-          "desc": "pagetriage-del-tags-blpprod-desc",
-          "label": "pagetriage-del-tags-blpprod-label",
+          "desc": "An article about a living person that has no sources",
+          "label": "Proposed Deletion (Living People)",
           "params": {},
           "subst": true,
           "tag": "blp-prod",
@@ -30,12 +30,12 @@ exports[`defaultTagsOptions defaultDeletionTagsOptions should match snapshot 2`]
         "prod": {
           "anchor": "",
           "articletalkpagenotiftpl": "Old prod",
-          "desc": "pagetriage-del-tags-prod-desc",
-          "label": "pagetriage-del-tags-prod-label",
+          "desc": "Uncontroversial deletions that do not meet any speedy deletion criteria",
+          "label": "Proposed Deletion",
           "params": {
             "1": {
               "input": "required",
-              "label": "pagetriage-del-tags-param-discussion-label",
+              "label": "Please explain why this page should be deleted, and provide links to the relevant policies wherever possible",
               "type": "textarea",
               "value": "",
             },
@@ -59,7 +59,7 @@ exports[`defaultTagsOptions defaultDeletionTagsOptions should match snapshot 2`]
     },
     "speedydeletioncommon": {
       "desc": "Mark this page for speedy deletion only if it fits one of the criteria below. There is no catch-all – if it doesn’t fit, use PROD or AfD.",
-      "label": "pagetriage-del-tags-cat-csd-label",
+      "label": "Speedy deletion",
       "multiple": true,
       "reviewed": "0",
       "tags": {
@@ -379,7 +379,7 @@ exports[`defaultTagsOptions defaultDeletionTagsOptions should match snapshot 2`]
       },
     },
     "xfd": {
-      "desc": "pagetriage-del-tags-cat-discussion-desc",
+      "desc": "Mark this page to discuss its deletion with other editors.",
       "label": "",
       "multiple": false,
       "reviewed": "1",
@@ -387,11 +387,11 @@ exports[`defaultTagsOptions defaultDeletionTagsOptions should match snapshot 2`]
         "articlefordeletion": {
           "desc": "",
           "discussion": true,
-          "label": "pagetriage-del-tags-articlefordeletion-label",
+          "label": "Articles for deletion",
           "params": {
             "1": {
               "input": "required",
-              "label": "pagetriage-del-tags-param-discussion-label",
+              "label": "Please explain why this page should be deleted, and provide links to the relevant policies wherever possible",
               "skip": true,
               "type": "textarea",
               "value": "",
@@ -413,11 +413,11 @@ exports[`defaultTagsOptions defaultDeletionTagsOptions should match snapshot 2`]
         },
         "redirectsfordiscussion": {
           "desc": "",
-          "label": "pagetriage-del-tags-redirectsfordiscussion-label",
+          "label": "Redirects for discussion",
           "params": {
             "1": {
               "input": "required",
-              "label": "pagetriage-del-tags-param-discussion-label",
+              "label": "Please explain why this page should be deleted, and provide links to the relevant policies wherever possible",
               "type": "textarea",
               "value": "",
             },
