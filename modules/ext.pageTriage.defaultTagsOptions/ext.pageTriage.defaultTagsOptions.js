@@ -143,7 +143,7 @@
 		all: {},
 
 		common: {
-			label: mw.msg( 'pagetriage-tags-cat-common-label' ),
+			label: 'Common',
 			alias: true,
 			tags: {
 				// The tag MUST also exist in a subsection, or the tag will not work.
@@ -421,9 +421,9 @@
 			label: 'Neutrality',
 			tags: {
 				autobiography: {
-					label: mw.msg( 'pagetriage-tags-autobiography-label' ),
+					label: 'Autobiography',
 					tag: 'autobiography',
-					desc: mw.msg( 'pagetriage-tags-autobiography-desc' ),
+					desc: 'This page is an autobiography and is not written neutrally.',
 					params: {
 						date: param.date
 					},
@@ -432,9 +432,9 @@
 				},
 
 				coi: {
-					label: mw.msg( 'pagetriage-tags-coi-label' ),
+					label: 'Conflict of interest',
 					tag: 'coi',
-					desc: mw.msg( 'pagetriage-tags-coi-desc' ),
+					desc: 'This page creator or major contributor may have a conflict of interest.',
 					params: {
 						date: param.date
 					},
@@ -465,9 +465,9 @@
 				},
 
 				peacock: {
-					label: mw.msg( 'pagetriage-tags-peacock-label' ),
+					label: 'Peacock',
 					tag: 'peacock',
-					desc: mw.msg( 'pagetriage-tags-peacock-desc' ),
+					desc: 'This page contains peacock terms that promote the subject without adding information.',
 					params: {
 						date: param.date
 					},
@@ -476,9 +476,9 @@
 				},
 
 				pov: {
-					label: mw.msg( 'pagetriage-tags-pov-label' ),
+					label: 'POV',
 					tag: 'pov',
-					desc: mw.msg( 'pagetriage-tags-pov-desc' ),
+					desc: 'This page does not maintain a neutral point of view.',
 					params: {
 						date: param.date
 					},
@@ -487,9 +487,9 @@
 				},
 
 				recentism: {
-					label: mw.msg( 'pagetriage-tags-recentism-label' ),
+					label: 'Recent event slant',
 					tag: 'recentism',
-					desc: mw.msg( 'pagetriage-tags-recentism-desc' ),
+					desc: 'This page is slanted towards recent events.',
 					params: {
 						date: param.date
 					},
@@ -498,9 +498,9 @@
 				},
 
 				toofewopinions: {
-					label: mw.msg( 'pagetriage-tags-toofewopinions-label' ),
+					label: 'Too few viewpoints',
 					tag: 'too few opinions',
-					desc: mw.msg( 'pagetriage-tags-toofewopinions-desc' ),
+					desc: 'This page does not include all significant viewpoints.',
 					params: {
 						date: param.date
 					},
@@ -520,9 +520,9 @@
 				},
 
 				weasel: {
-					label: mw.msg( 'pagetriage-tags-weasel-label' ),
+					label: 'Weasel',
 					tag: 'weasel',
-					desc: mw.msg( 'pagetriage-tags-weasel-desc' ),
+					desc: 'This page\'s neutrality is compromised by the use of weasel words.',
 					params: {
 						date: param.date
 					},
@@ -705,7 +705,7 @@
 		},
 
 		sources: {
-			label: mw.msg( 'pagetriage-tags-cat-sources-label' ),
+			label: 'Sources',
 			tags: {
 				sourcesexist: {
 					label: 'Sources Exist',
@@ -719,9 +719,9 @@
 				},
 
 				disputed: {
-					label: mw.msg( 'pagetriage-tags-disputed-label' ),
+					label: 'Accuracy issues',
 					tag: 'disputed',
-					desc: mw.msg( 'pagetriage-tags-disputed-desc' ),
+					desc: 'This page has questionable factual accuracy.',
 					params: {
 						date: param.date
 					},
@@ -741,9 +741,9 @@
 				},
 
 				citationstyle: {
-					label: mw.msg( 'pagetriage-tags-citationstyle-label' ),
+					label: 'Citation style',
 					tag: 'citation style',
-					desc: mw.msg( 'pagetriage-tags-citationstyle-desc' ),
+					desc: 'This page has unclear or inconsistent inline citations.',
 					params: {
 						date: param.date,
 						details: $.extend( true, {}, param.details )
@@ -753,9 +753,9 @@
 				},
 
 				hoax: {
-					label: mw.msg( 'pagetriage-tags-hoax-label' ),
+					label: 'Hoax',
 					tag: 'hoax',
-					desc: mw.msg( 'pagetriage-tags-hoax-desc' ),
+					desc: 'This page may be a complete hoax.',
 					params: {
 						date: param.date
 					},
@@ -776,9 +776,9 @@
 				},
 
 				refimprove: {
-					label: mw.msg( 'pagetriage-tags-refimprove-label' ),
+					label: 'More references',
 					tag: 'refimprove',
-					desc: mw.msg( 'pagetriage-tags-refimprove-desc' ),
+					desc: 'This page needs additional references or sources for verification.',
 					params: {
 						date: param.date
 					},
@@ -787,7 +787,7 @@
 				},
 
 				blpsources: {
-					label: mw.msg( 'pagetriage-tags-blpsources-label' ),
+					label: 'More sources (BLP)',
 					tag: 'BLP sources',
 					desc: 'This page about a living person (BLP) needs additional sources citations for verification.',
 					params: {
@@ -798,9 +798,9 @@
 				},
 
 				nofootnotes: {
-					label: mw.msg( 'pagetriage-tags-nofootnotes-label' ),
+					label: 'No footnotes',
 					tag: 'no footnotes',
-					desc: mw.msg( 'pagetriage-tags-nofootnotes-desc' ),
+					desc: 'This page has references, but no in-text citations.',
 					params: {
 						date: param.date
 					},
@@ -809,9 +809,9 @@
 				},
 
 				unreferenced: {
-					label: mw.msg( 'pagetriage-tags-unreferenced-label' ),
+					label: 'No references',
 					tag: 'unreferenced',
-					desc: mw.msg( 'pagetriage-tags-unreferenced-desc' ),
+					desc: 'This page has no references at all.',
 					params: {
 						date: param.date
 					},
@@ -820,9 +820,9 @@
 				},
 
 				originalresearch: {
-					label: mw.msg( 'pagetriage-tags-originalresearch-label' ),
+					label: 'Original research',
 					tag: 'original research',
-					desc: mw.msg( 'pagetriage-tags-originalresearch-desc' ),
+					desc: 'This page has original research or unverified claims.',
 					params: {
 						date: param.date
 					},
@@ -831,9 +831,9 @@
 				},
 
 				primarysources: {
-					label: mw.msg( 'pagetriage-tags-primarysources-label' ),
+					label: 'Primary sources',
 					tag: 'primary sources',
-					desc: mw.msg( 'pagetriage-tags-primarysources-desc' ),
+					desc: 'This page relies too heavily on primary sources, and needs secondary sources.',
 					params: {
 						date: param.date,
 						blp: $.extend( true, {}, param.blp )
@@ -854,9 +854,9 @@
 				},
 
 				onesource: {
-					label: mw.msg( 'pagetriage-tags-onesource-label' ),
+					label: 'Single source',
 					tag: 'one source',
-					desc: mw.msg( 'pagetriage-tags-onesource-desc' ),
+					desc: 'This page relies largely or entirely upon a single source.',
 					params: {
 						date: param.date
 					},
@@ -889,21 +889,21 @@
 		},
 
 		structure: {
-			label: mw.msg( 'pagetriage-tags-cat-structure-label' ),
+			label: 'Structure',
 			tags: {
 				condense: {
-					label: mw.msg( 'pagetriage-tags-condense-label' ),
+					label: 'Condense',
 					tag: 'condense',
-					desc: mw.msg( 'pagetriage-tags-condense-desc' ),
+					desc: 'This page has too many section headers dividing up its content.',
 					params: { },
 					position: 'top',
 					multiple: true
 				},
 
 				leadmissing: {
-					label: mw.msg( 'pagetriage-tags-leadmissing-label' ),
+					label: 'Lead missing',
 					tag: 'lead missing',
-					desc: mw.msg( 'pagetriage-tags-leadmissing-desc' ),
+					desc: 'This page has no lead section and one should be written.',
 					params: {
 						date: param.date
 					},
@@ -912,9 +912,9 @@
 				},
 
 				leadrewrite: {
-					label: mw.msg( 'pagetriage-tags-leadrewrite-label' ),
+					label: 'Lead rewrite',
 					tag: 'lead rewrite',
-					desc: mw.msg( 'pagetriage-tags-leadrewrite-desc' ),
+					desc: 'This page\'s lead section needs to be rewritten to comply with guidelines.',
 					params: {
 						date: param.date,
 						reason: $.extend( true, {}, param.reason )
@@ -924,9 +924,9 @@
 				},
 
 				leadtoolong: {
-					label: mw.msg( 'pagetriage-tags-leadtoolong-label' ),
+					label: 'Lead too long',
 					tag: 'lead too long',
-					desc: mw.msg( 'pagetriage-tags-leadtoolong-desc' ),
+					desc: 'This page\'s lead section is too long and should be shortened.',
 					params: {
 						date: param.date
 					},
@@ -935,9 +935,9 @@
 				},
 
 				leadtooshort: {
-					label: mw.msg( 'pagetriage-tags-leadtooshort-label' ),
+					label: 'Lead too short',
 					tag: 'lead too short',
-					desc: mw.msg( 'pagetriage-tags-leadtooshort-desc' ),
+					desc: 'This page\'s lead section is too short and should be expanded.',
 					params: {
 						date: param.date
 					},
@@ -946,9 +946,9 @@
 				},
 
 				cleanupreorganise: {
-					label: mw.msg( 'pagetriage-tags-cleanupreorganise-label' ),
+					label: 'Reorganise',
 					tag: 'cleanup-reorganize',
-					desc: mw.msg( 'pagetriage-tags-cleanupreorganise-desc' ),
+					desc: 'This page is in need of reorganization to comply with layout guidelines.',
 					params: {
 						date: param.date
 					},
@@ -957,9 +957,9 @@
 				},
 
 				sections: {
-					label: mw.msg( 'pagetriage-tags-sections-label' ),
+					label: 'Sections',
 					tag: 'sections',
-					desc: mw.msg( 'pagetriage-tags-sections-desc' ),
+					desc: 'This page needs to be broken into sections.',
 					params: {
 						date: param.date
 					},
@@ -968,18 +968,18 @@
 				},
 
 				stub: {
-					label: mw.msg( 'pagetriage-tags-stub-label' ),
+					label: 'Stub',
 					tag: 'stub',
-					desc: mw.msg( 'pagetriage-tags-stub-desc' ),
+					desc: 'This page is very short.',
 					params: { },
 					position: 'bottom',
 					multiple: false
 				},
 
 				verylong: {
-					label: mw.msg( 'pagetriage-tags-verylong-label' ),
+					label: 'Very long',
 					tag: 'very long',
-					desc: mw.msg( 'pagetriage-tags-verylong-desc' ),
+					desc: 'This page is too long.',
 					params: {
 						date: param.date
 					},
@@ -993,9 +993,9 @@
 			label: 'Copyright violation',
 			tags: {
 				closeparaphrasing: {
-					label: mw.msg( 'pagetriage-tags-closeparaphrasing-label' ),
+					label: 'Close paraphrasing',
 					tag: 'close paraphrasing',
-					desc: mw.msg( 'pagetriage-tags-closeparaphrasing-desc' ),
+					desc: 'This page contains close paraphrasing of a copyrighted source.',
 					params: {
 						date: param.date,
 						source: $.extend( true, {}, param.source ),
@@ -1006,9 +1006,9 @@
 				},
 
 				copypaste: {
-					label: mw.msg( 'pagetriage-tags-copypaste-label' ),
+					label: 'Copy and paste',
 					tag: 'copypaste',
-					desc: mw.msg( 'pagetriage-tags-copypaste-desc' ),
+					desc: 'This page appears to have been copied and pasted from a source.',
 					params: {
 						date: param.date,
 						url: $.extend( true, {}, param.url )
@@ -1018,9 +1018,9 @@
 				},
 
 				nonfree: {
-					label: mw.msg( 'pagetriage-tags-nonfree-label' ),
+					label: 'Copyrighted content',
 					tag: 'non-free',
-					desc: mw.msg( 'pagetriage-tags-nonfree-desc' ),
+					desc: 'This page contains excessive or improper use of copyrighted materials.',
 					params: { },
 					position: 'top',
 					multiple: false
@@ -1046,12 +1046,12 @@
 		},
 
 		writingstyle: {
-			label: mw.msg( 'pagetriage-tags-cat-writingstyle-label' ),
+			label: 'Writing style',
 			tags: {
 				advert: {
-					label: mw.msg( 'pagetriage-tags-advert-label' ),
+					label: 'Advertisement',
 					tag: 'advert',
-					desc: mw.msg( 'pagetriage-tags-advert-desc' ),
+					desc: 'This page is written like an advertisement.',
 					params: {
 						date: param.date
 					},
@@ -1060,9 +1060,9 @@
 				},
 
 				confusing: {
-					label: mw.msg( 'pagetriage-tags-confusing-label' ),
+					label: 'Confusing',
 					tag: 'confusing',
-					desc: mw.msg( 'pagetriage-tags-confusing-desc' ),
+					desc: 'This page is confusing or unclear.',
 					params: {
 						date: param.date,
 						reason: $.extend( true, {}, param.reason )
@@ -1072,9 +1072,9 @@
 				},
 
 				essaylike: {
-					label: mw.msg( 'pagetriage-tags-essaylike-label' ),
+					label: 'Essay',
 					tag: 'essay-like',
-					desc: mw.msg( 'pagetriage-tags-essaylike-desc' ),
+					desc: 'This page is written like an essay and needs cleanup.',
 					params: {
 						date: param.date
 					},
@@ -1083,9 +1083,9 @@
 				},
 
 				fansite: {
-					label: mw.msg( 'pagetriage-tags-fansite-label' ),
+					label: 'Fan site',
 					tag: 'fansite',
-					desc: mw.msg( 'pagetriage-tags-fansite-desc' ),
+					desc: 'This page resembles a fansite.',
 					params: {
 						date: param.date
 					},
@@ -1116,9 +1116,9 @@
 				},
 
 				notenglish: {
-					label: mw.msg( 'pagetriage-tags-notenglish-label' ),
+					label: 'Incorrect language',
 					tag: 'not english',
-					desc: mw.msg( 'pagetriage-tags-notenglish-desc' ),
+					desc: 'This page is written in an incorrect language and needs translation.',
 					params: { },
 					position: 'top',
 					multiple: false
@@ -1147,9 +1147,9 @@
 				},
 
 				overlydetailed: {
-					label: mw.msg( 'pagetriage-tags-overlydetailed-label' ),
+					label: 'Overly detailed',
 					tag: 'overly detailed',
-					desc: mw.msg( 'pagetriage-tags-overlydetailed-desc' ),
+					desc: 'This page contains an excessive amount of intricate detail.',
 					params: {
 						date: param.date
 					},
@@ -1158,9 +1158,9 @@
 				},
 
 				technical: {
-					label: mw.msg( 'pagetriage-tags-technical-label' ),
+					label: 'Technical',
 					tag: 'technical',
-					desc: mw.msg( 'pagetriage-tags-technical-desc' ),
+					desc: 'This page is too technical for the uninitiated reader.',
 					params: {
 						date: param.date
 					},
@@ -1169,9 +1169,9 @@
 				},
 
 				tense: {
-					label: mw.msg( 'pagetriage-tags-tense-label' ),
+					label: 'Tense',
 					tag: 'tense',
-					desc: mw.msg( 'pagetriage-tags-tense-desc' ),
+					desc: 'This page is written in an incorrect tense.',
 					params: {
 						date: param.date
 					},
@@ -1180,9 +1180,9 @@
 				},
 
 				tone: {
-					label: mw.msg( 'pagetriage-tags-tone-label' ),
+					label: 'Tone',
 					tag: 'tone',
-					desc: mw.msg( 'pagetriage-tags-tone-desc' ),
+					desc: 'Tone of this page is not appropriate.',
 					params: {
 						date: param.date
 					},
@@ -1215,12 +1215,12 @@
 		},
 
 		moretags: {
-			label: mw.msg( 'pagetriage-tags-cat-moretags-label' ),
+			label: 'More tags',
 			tags: {
 				allplot: {
-					label: mw.msg( 'pagetriage-tags-allplot-label' ),
+					label: 'All plot',
 					tag: 'all plot',
-					desc: mw.msg( 'pagetriage-tags-allplot-desc' ),
+					desc: 'This page is almost entirely a plot summary.',
 					params: {
 						date: param.date
 					},
@@ -1264,9 +1264,9 @@
 				},
 
 				fiction: {
-					label: mw.msg( 'pagetriage-tags-fiction-label' ),
+					label: 'Fiction',
 					tag: 'fiction',
-					desc: mw.msg( 'pagetriage-tags-fiction-desc' ),
+					desc: 'This page fails to distinguish between fact and fiction.',
 					params: {
 						date: param.date
 					},
@@ -1275,9 +1275,9 @@
 				},
 
 				inuniverse: {
-					label: mw.msg( 'pagetriage-tags-inuniverse-label' ),
+					label: 'Fictional perspective',
 					tag: 'in-universe',
-					desc: mw.msg( 'pagetriage-tags-inuniverse-desc' ),
+					desc: 'This page subject is fictional and needs rewriting from a non-fictional perspective.',
 					params: {
 						date: param.date
 					},
@@ -1286,9 +1286,9 @@
 				},
 
 				outofdate: {
-					label: mw.msg( 'pagetriage-tags-outofdate-label' ),
+					label: 'Out of date',
 					tag: 'out of date',
-					desc: mw.msg( 'pagetriage-tags-outofdate-desc' ),
+					desc: 'This page needs out-of-date information removed or updated.',
 					params: {
 						date: param.date
 					},
@@ -1297,9 +1297,9 @@
 				},
 
 				plot: {
-					label: mw.msg( 'pagetriage-tags-plot-label' ),
+					label: 'Plot',
 					tag: 'plot',
-					desc: mw.msg( 'pagetriage-tags-plot-desc' ),
+					desc: 'This page\'s plot summary is too long or excessively detailed.',
 					params: {
 						date: param.date
 					},
@@ -1319,9 +1319,9 @@
 				},
 
 				update: {
-					label: mw.msg( 'pagetriage-tags-update-label' ),
+					label: 'Update',
 					tag: 'update',
-					desc: mw.msg( 'pagetriage-tags-update-desc' ),
+					desc: 'This page needs additional up-to-date information added.',
 					params: {
 						date: param.date
 					},

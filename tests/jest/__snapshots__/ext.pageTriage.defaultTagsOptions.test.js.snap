@@ -528,7 +528,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
   },
   "common": {
     "alias": true,
-    "label": "pagetriage-tags-cat-common-label",
+    "label": "Common",
     "tags": {
       "copyedit": {
         "desc": "This page needs copy editing for grammar, style, cohesion, tone, and/or spelling.",
@@ -736,8 +736,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "Copyvio-revdel",
       },
       "closeparaphrasing": {
-        "desc": "pagetriage-tags-closeparaphrasing-desc",
-        "label": "pagetriage-tags-closeparaphrasing-label",
+        "desc": "This page contains close paraphrasing of a copyrighted source.",
+        "label": "Close paraphrasing",
         "multiple": false,
         "params": {
           "date": {
@@ -763,8 +763,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "close paraphrasing",
       },
       "copypaste": {
-        "desc": "pagetriage-tags-copypaste-desc",
-        "label": "pagetriage-tags-copypaste-label",
+        "desc": "This page appears to have been copied and pasted from a source.",
+        "label": "Copy and paste",
         "multiple": false,
         "params": {
           "date": {
@@ -784,8 +784,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "copypaste",
       },
       "nonfree": {
-        "desc": "pagetriage-tags-nonfree-desc",
-        "label": "pagetriage-tags-nonfree-label",
+        "desc": "This page contains excessive or improper use of copyrighted materials.",
+        "label": "Copyrighted content",
         "multiple": false,
         "params": {},
         "position": "top",
@@ -925,11 +925,11 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
     },
   },
   "moretags": {
-    "label": "pagetriage-tags-cat-moretags-label",
+    "label": "More tags",
     "tags": {
       "allplot": {
-        "desc": "pagetriage-tags-allplot-desc",
-        "label": "pagetriage-tags-allplot-label",
+        "desc": "This page is almost entirely a plot summary.",
+        "label": "All plot",
         "multiple": true,
         "params": {
           "date": {
@@ -991,8 +991,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "expert needed",
       },
       "fiction": {
-        "desc": "pagetriage-tags-fiction-desc",
-        "label": "pagetriage-tags-fiction-label",
+        "desc": "This page fails to distinguish between fact and fiction.",
+        "label": "Fiction",
         "multiple": true,
         "params": {
           "date": {
@@ -1006,8 +1006,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "fiction",
       },
       "inuniverse": {
-        "desc": "pagetriage-tags-inuniverse-desc",
-        "label": "pagetriage-tags-inuniverse-label",
+        "desc": "This page subject is fictional and needs rewriting from a non-fictional perspective.",
+        "label": "Fictional perspective",
         "multiple": true,
         "params": {
           "date": {
@@ -1021,8 +1021,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "in-universe",
       },
       "outofdate": {
-        "desc": "pagetriage-tags-outofdate-desc",
-        "label": "pagetriage-tags-outofdate-label",
+        "desc": "This page needs out-of-date information removed or updated.",
+        "label": "Out of date",
         "multiple": true,
         "params": {
           "date": {
@@ -1036,8 +1036,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "out of date",
       },
       "plot": {
-        "desc": "pagetriage-tags-plot-desc",
-        "label": "pagetriage-tags-plot-label",
+        "desc": "This page's plot summary is too long or excessively detailed.",
+        "label": "Plot",
         "multiple": true,
         "params": {
           "date": {
@@ -1066,8 +1066,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "Under review",
       },
       "update": {
-        "desc": "pagetriage-tags-update-desc",
-        "label": "pagetriage-tags-update-label",
+        "desc": "This page needs additional up-to-date information added.",
+        "label": "Update",
         "multiple": true,
         "params": {
           "date": {
@@ -1086,8 +1086,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
     "label": "Neutrality",
     "tags": {
       "autobiography": {
-        "desc": "pagetriage-tags-autobiography-desc",
-        "label": "pagetriage-tags-autobiography-label",
+        "desc": "This page is an autobiography and is not written neutrally.",
+        "label": "Autobiography",
         "multiple": true,
         "params": {
           "date": {
@@ -1101,8 +1101,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "autobiography",
       },
       "coi": {
-        "desc": "pagetriage-tags-coi-desc",
-        "label": "pagetriage-tags-coi-label",
+        "desc": "This page creator or major contributor may have a conflict of interest.",
+        "label": "Conflict of interest",
         "multiple": true,
         "params": {
           "date": {
@@ -1146,8 +1146,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "overcoverage",
       },
       "peacock": {
-        "desc": "pagetriage-tags-peacock-desc",
-        "label": "pagetriage-tags-peacock-label",
+        "desc": "This page contains peacock terms that promote the subject without adding information.",
+        "label": "Peacock",
         "multiple": true,
         "params": {
           "date": {
@@ -1161,8 +1161,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "peacock",
       },
       "pov": {
-        "desc": "pagetriage-tags-pov-desc",
-        "label": "pagetriage-tags-pov-label",
+        "desc": "This page does not maintain a neutral point of view.",
+        "label": "POV",
         "multiple": true,
         "params": {
           "date": {
@@ -1176,8 +1176,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "pov",
       },
       "recentism": {
-        "desc": "pagetriage-tags-recentism-desc",
-        "label": "pagetriage-tags-recentism-label",
+        "desc": "This page is slanted towards recent events.",
+        "label": "Recent event slant",
         "multiple": true,
         "params": {
           "date": {
@@ -1191,8 +1191,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "recentism",
       },
       "toofewopinions": {
-        "desc": "pagetriage-tags-toofewopinions-desc",
-        "label": "pagetriage-tags-toofewopinions-label",
+        "desc": "This page does not include all significant viewpoints.",
+        "label": "Too few viewpoints",
         "multiple": false,
         "params": {
           "date": {
@@ -1221,8 +1221,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "undue weight",
       },
       "weasel": {
-        "desc": "pagetriage-tags-weasel-desc",
-        "label": "pagetriage-tags-weasel-label",
+        "desc": "This page's neutrality is compromised by the use of weasel words.",
+        "label": "Weasel",
         "multiple": true,
         "params": {
           "date": {
@@ -2257,11 +2257,11 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
     },
   },
   "sources": {
-    "label": "pagetriage-tags-cat-sources-label",
+    "label": "Sources",
     "tags": {
       "blpsources": {
         "desc": "This page about a living person (BLP) needs additional sources citations for verification.",
-        "label": "pagetriage-tags-blpsources-label",
+        "label": "More sources (BLP)",
         "multiple": true,
         "params": {
           "date": {
@@ -2275,8 +2275,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "BLP sources",
       },
       "citationstyle": {
-        "desc": "pagetriage-tags-citationstyle-desc",
-        "label": "pagetriage-tags-citationstyle-label",
+        "desc": "This page has unclear or inconsistent inline citations.",
+        "label": "Citation style",
         "multiple": true,
         "params": {
           "date": {
@@ -2296,8 +2296,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "citation style",
       },
       "disputed": {
-        "desc": "pagetriage-tags-disputed-desc",
-        "label": "pagetriage-tags-disputed-label",
+        "desc": "This page has questionable factual accuracy.",
+        "label": "Accuracy issues",
         "multiple": true,
         "params": {
           "date": {
@@ -2311,8 +2311,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "disputed",
       },
       "hoax": {
-        "desc": "pagetriage-tags-hoax-desc",
-        "label": "pagetriage-tags-hoax-label",
+        "desc": "This page may be a complete hoax.",
+        "label": "Hoax",
         "multiple": true,
         "params": {
           "date": {
@@ -2362,8 +2362,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "more footnotes",
       },
       "nofootnotes": {
-        "desc": "pagetriage-tags-nofootnotes-desc",
-        "label": "pagetriage-tags-nofootnotes-label",
+        "desc": "This page has references, but no in-text citations.",
+        "label": "No footnotes",
         "multiple": true,
         "params": {
           "date": {
@@ -2377,8 +2377,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "no footnotes",
       },
       "onesource": {
-        "desc": "pagetriage-tags-onesource-desc",
-        "label": "pagetriage-tags-onesource-label",
+        "desc": "This page relies largely or entirely upon a single source.",
+        "label": "Single source",
         "multiple": true,
         "params": {
           "date": {
@@ -2392,8 +2392,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "one source",
       },
       "originalresearch": {
-        "desc": "pagetriage-tags-originalresearch-desc",
-        "label": "pagetriage-tags-originalresearch-label",
+        "desc": "This page has original research or unverified claims.",
+        "label": "Original research",
         "multiple": true,
         "params": {
           "date": {
@@ -2407,8 +2407,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "original research",
       },
       "primarysources": {
-        "desc": "pagetriage-tags-primarysources-desc",
-        "label": "pagetriage-tags-primarysources-label",
+        "desc": "This page relies too heavily on primary sources, and needs secondary sources.",
+        "label": "Primary sources",
         "multiple": true,
         "params": {
           "blp": {
@@ -2428,8 +2428,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "primary sources",
       },
       "refimprove": {
-        "desc": "pagetriage-tags-refimprove-desc",
-        "label": "pagetriage-tags-refimprove-label",
+        "desc": "This page needs additional references or sources for verification.",
+        "label": "More references",
         "multiple": true,
         "params": {
           "date": {
@@ -2488,8 +2488,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "Third-party",
       },
       "unreferenced": {
-        "desc": "pagetriage-tags-unreferenced-desc",
-        "label": "pagetriage-tags-unreferenced-label",
+        "desc": "This page has no references at all.",
+        "label": "No references",
         "multiple": true,
         "params": {
           "date": {
@@ -2520,11 +2520,11 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
     },
   },
   "structure": {
-    "label": "pagetriage-tags-cat-structure-label",
+    "label": "Structure",
     "tags": {
       "cleanupreorganise": {
-        "desc": "pagetriage-tags-cleanupreorganise-desc",
-        "label": "pagetriage-tags-cleanupreorganise-label",
+        "desc": "This page is in need of reorganization to comply with layout guidelines.",
+        "label": "Reorganise",
         "multiple": true,
         "params": {
           "date": {
@@ -2538,16 +2538,16 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "cleanup-reorganize",
       },
       "condense": {
-        "desc": "pagetriage-tags-condense-desc",
-        "label": "pagetriage-tags-condense-label",
+        "desc": "This page has too many section headers dividing up its content.",
+        "label": "Condense",
         "multiple": true,
         "params": {},
         "position": "top",
         "tag": "condense",
       },
       "leadmissing": {
-        "desc": "pagetriage-tags-leadmissing-desc",
-        "label": "pagetriage-tags-leadmissing-label",
+        "desc": "This page has no lead section and one should be written.",
+        "label": "Lead missing",
         "multiple": true,
         "params": {
           "date": {
@@ -2561,8 +2561,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "lead missing",
       },
       "leadrewrite": {
-        "desc": "pagetriage-tags-leadrewrite-desc",
-        "label": "pagetriage-tags-leadrewrite-label",
+        "desc": "This page's lead section needs to be rewritten to comply with guidelines.",
+        "label": "Lead rewrite",
         "multiple": true,
         "params": {
           "date": {
@@ -2582,8 +2582,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "lead rewrite",
       },
       "leadtoolong": {
-        "desc": "pagetriage-tags-leadtoolong-desc",
-        "label": "pagetriage-tags-leadtoolong-label",
+        "desc": "This page's lead section is too long and should be shortened.",
+        "label": "Lead too long",
         "multiple": true,
         "params": {
           "date": {
@@ -2597,8 +2597,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "lead too long",
       },
       "leadtooshort": {
-        "desc": "pagetriage-tags-leadtooshort-desc",
-        "label": "pagetriage-tags-leadtooshort-label",
+        "desc": "This page's lead section is too short and should be expanded.",
+        "label": "Lead too short",
         "multiple": true,
         "params": {
           "date": {
@@ -2612,8 +2612,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "lead too short",
       },
       "sections": {
-        "desc": "pagetriage-tags-sections-desc",
-        "label": "pagetriage-tags-sections-label",
+        "desc": "This page needs to be broken into sections.",
+        "label": "Sections",
         "multiple": true,
         "params": {
           "date": {
@@ -2627,16 +2627,16 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "sections",
       },
       "stub": {
-        "desc": "pagetriage-tags-stub-desc",
-        "label": "pagetriage-tags-stub-label",
+        "desc": "This page is very short.",
+        "label": "Stub",
         "multiple": false,
         "params": {},
         "position": "bottom",
         "tag": "stub",
       },
       "verylong": {
-        "desc": "pagetriage-tags-verylong-desc",
-        "label": "pagetriage-tags-verylong-label",
+        "desc": "This page is too long.",
+        "label": "Very long",
         "multiple": true,
         "params": {
           "date": {
@@ -2652,11 +2652,11 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
     },
   },
   "writingstyle": {
-    "label": "pagetriage-tags-cat-writingstyle-label",
+    "label": "Writing style",
     "tags": {
       "advert": {
-        "desc": "pagetriage-tags-advert-desc",
-        "label": "pagetriage-tags-advert-label",
+        "desc": "This page is written like an advertisement.",
+        "label": "Advertisement",
         "multiple": true,
         "params": {
           "date": {
@@ -2670,8 +2670,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "advert",
       },
       "confusing": {
-        "desc": "pagetriage-tags-confusing-desc",
-        "label": "pagetriage-tags-confusing-label",
+        "desc": "This page is confusing or unclear.",
+        "label": "Confusing",
         "multiple": true,
         "params": {
           "date": {
@@ -2706,8 +2706,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "context",
       },
       "essaylike": {
-        "desc": "pagetriage-tags-essaylike-desc",
-        "label": "pagetriage-tags-essaylike-label",
+        "desc": "This page is written like an essay and needs cleanup.",
+        "label": "Essay",
         "multiple": true,
         "params": {
           "date": {
@@ -2721,8 +2721,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "essay-like",
       },
       "fansite": {
-        "desc": "pagetriage-tags-fansite-desc",
-        "label": "pagetriage-tags-fansite-label",
+        "desc": "This page resembles a fansite.",
+        "label": "Fan site",
         "multiple": true,
         "params": {
           "date": {
@@ -2781,16 +2781,16 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "news release",
       },
       "notenglish": {
-        "desc": "pagetriage-tags-notenglish-desc",
-        "label": "pagetriage-tags-notenglish-label",
+        "desc": "This page is written in an incorrect language and needs translation.",
+        "label": "Incorrect language",
         "multiple": false,
         "params": {},
         "position": "top",
         "tag": "not english",
       },
       "overlydetailed": {
-        "desc": "pagetriage-tags-overlydetailed-desc",
-        "label": "pagetriage-tags-overlydetailed-label",
+        "desc": "This page contains an excessive amount of intricate detail.",
+        "label": "Overly detailed",
         "multiple": true,
         "params": {
           "date": {
@@ -2819,8 +2819,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "over-quotation",
       },
       "technical": {
-        "desc": "pagetriage-tags-technical-desc",
-        "label": "pagetriage-tags-technical-label",
+        "desc": "This page is too technical for the uninitiated reader.",
+        "label": "Technical",
         "multiple": true,
         "params": {
           "date": {
@@ -2834,8 +2834,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "technical",
       },
       "tense": {
-        "desc": "pagetriage-tags-tense-desc",
-        "label": "pagetriage-tags-tense-label",
+        "desc": "This page is written in an incorrect tense.",
+        "label": "Tense",
         "multiple": true,
         "params": {
           "date": {
@@ -2849,8 +2849,8 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "tense",
       },
       "tone": {
-        "desc": "pagetriage-tags-tone-desc",
-        "label": "pagetriage-tags-tone-label",
+        "desc": "Tone of this page is not appropriate.",
+        "label": "Tone",
         "multiple": true,
         "params": {
           "date": {
