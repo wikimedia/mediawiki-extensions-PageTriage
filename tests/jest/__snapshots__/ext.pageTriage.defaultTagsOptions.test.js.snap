@@ -466,6 +466,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "cleanup",
       },
       "copyedit": {
+        "common": true,
         "desc": "This page needs copy editing for grammar, style, cohesion, tone, and/or spelling.",
         "label": "Copy edit",
         "multiple": true,
@@ -529,157 +530,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
   "common": {
     "alias": true,
     "label": "Common",
-    "tags": {
-      "copyedit": {
-        "desc": "This page needs copy editing for grammar, style, cohesion, tone, and/or spelling.",
-        "dest": "cleanup",
-        "label": "Copy edit",
-        "multiple": true,
-        "params": {
-          "date": {
-            "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
-            "type": "hidden",
-            "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
-          },
-          "for": {
-            "input": "optional",
-            "label": "This article may require copy editing for:",
-            "type": "textarea",
-            "value": "",
-          },
-        },
-        "position": "top",
-        "tag": "copy edit",
-      },
-      "linkrot": {
-        "desc": "This page uses bare URLs for references, which are prone to link rot.",
-        "dest": "sources",
-        "label": "Bare URLs",
-        "multiple": true,
-        "params": {
-          "date": {
-            "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
-            "type": "hidden",
-            "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
-          },
-        },
-        "position": "top",
-        "tag": "linkrot",
-      },
-      "morefootnotes": {
-        "desc": "This page has some references, but insufficient in-text citations.",
-        "dest": "sources",
-        "label": "More footnotes",
-        "multiple": true,
-        "params": {
-          "blp": {
-            "input": "optional",
-            "label": "This is a biography of a living person",
-            "type": "checkbox",
-            "value": "",
-          },
-          "date": {
-            "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
-            "type": "hidden",
-            "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
-          },
-        },
-        "position": "top",
-        "tag": "more footnotes",
-      },
-      "orphan": {
-        "desc": "No other pages link to this page.",
-        "dest": "metadata",
-        "label": "Orphan",
-        "multiple": true,
-        "params": {
-          "date": {
-            "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
-            "type": "hidden",
-            "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
-          },
-        },
-        "position": "top",
-        "tag": "orphan",
-      },
-      "refimprove": {
-        "desc": "This page needs additional references or sources for verification.",
-        "dest": "sources",
-        "label": "More references",
-        "multiple": true,
-        "params": {
-          "date": {
-            "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
-            "type": "hidden",
-            "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
-          },
-        },
-        "position": "top",
-        "tag": "refimprove",
-      },
-      "stub": {
-        "desc": "This page is very short.",
-        "dest": "structure",
-        "label": "Stub",
-        "multiple": false,
-        "params": {},
-        "position": "bottom",
-        "tag": "stub",
-      },
-      "uncategorised": {
-        "desc": "This page doesn't belong to any categories.",
-        "dest": "metadata",
-        "label": "Uncategorised",
-        "multiple": false,
-        "params": {
-          "date": {
-            "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
-            "type": "hidden",
-            "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
-          },
-        },
-        "position": "categories",
-        "tag": "uncategorised",
-      },
-      "underreview": {
-        "desc": "You intend to assess the article but it will take some time. Tag to avoid patrolling redundancy.",
-        "dest": "moretags",
-        "label": "Under review",
-        "multiple": true,
-        "params": {
-          "date": {
-            "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
-            "type": "hidden",
-            "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
-          },
-        },
-        "position": "top",
-        "tag": "Under review",
-      },
-      "unreferenced": {
-        "desc": "This page has no references at all.",
-        "dest": "sources",
-        "label": "No references",
-        "multiple": true,
-        "params": {
-          "date": {
-            "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
-            "type": "hidden",
-            "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
-          },
-        },
-        "position": "top",
-        "tag": "unreferenced",
-      },
-    },
+    "tags": {},
   },
   "copyrightviolation": {
     "label": "Copyright violation",
@@ -863,6 +714,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "improve categories",
       },
       "orphan": {
+        "common": true,
         "desc": "No other pages link to this page.",
         "label": "Orphan",
         "multiple": true,
@@ -893,6 +745,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "overlinked",
       },
       "uncategorised": {
+        "common": true,
         "desc": "This page doesn\'t belong to any categories.",
         "label": "Uncategorised",
         "multiple": false,
@@ -1051,6 +904,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "plot",
       },
       "underreview": {
+        "common": true,
         "desc": "You intend to assess the article but it will take some time. Tag to avoid patrolling redundancy.",
         "label": "Under review",
         "multiple": true,
@@ -2326,6 +2180,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "hoax",
       },
       "linkrot": {
+        "common": true,
         "desc": "This page uses bare URLs for references, which are prone to link rot.",
         "label": "Bare URLs",
         "multiple": true,
@@ -2341,6 +2196,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "linkrot",
       },
       "morefootnotes": {
+        "common": true,
         "desc": "This page has some references, but insufficient in-text citations.",
         "label": "More footnotes",
         "multiple": true,
@@ -2428,6 +2284,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "primary sources",
       },
       "refimprove": {
+        "common": true,
         "desc": "This page needs additional references or sources for verification.",
         "label": "More references",
         "multiple": true,
@@ -2488,6 +2345,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "Third-party",
       },
       "unreferenced": {
+        "common": true,
         "desc": "This page has no references at all.",
         "label": "No references",
         "multiple": true,
@@ -2627,6 +2485,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "sections",
       },
       "stub": {
+        "common": true,
         "desc": "This page is very short.",
         "label": "Stub",
         "multiple": false,
