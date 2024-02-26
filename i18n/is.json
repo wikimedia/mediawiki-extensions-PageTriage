@@ -3,7 +3,8 @@
 		"authors": [
 			"Fitoschido",
 			"Snævar",
-			"Sveinn í Felli"
+			"Sveinn í Felli",
+			"Stefán Örvar Sigmundsson"
 		]
 	},
 	"pagetriage-please-wait": "Vinsamlegast bíddu ...",
@@ -118,7 +119,7 @@
 	"pagetriage-info-history-show-full": "birta tæmandi breytingaskrá",
 	"pagetriage-info-help": "hjálp",
 	"pagetriage-info-problem-non-autoconfirmed": "Nýr notandi",
-	"pagetriage-info-problem-non-autoconfirmed-desc": "Þessi síða var búin til af notenda sem er ekki sjálfkrafa staðfestur.",
+	"pagetriage-info-problem-non-autoconfirmed-desc": "Þessi síða var búin til af notanda sem er ekki sjálfvirkt staðfestur.",
 	"pagetriage-info-problem-blocked": "Bannaður notandi",
 	"pagetriage-info-problem-blocked-desc": "Þessi síða var stofnuð af bönnuðum notanda.",
 	"pagetriage-info-problem-no-categories": "Engir flokkar",
