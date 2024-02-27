@@ -12,7 +12,8 @@
 			"Mello25",
 			"OTAVIO1981",
 			"Pedrofariasm",
-			"Re demz"
+			"Re demz",
+			"YuriNikolai"
 		]
 	},
 	"pagetriage": "Triagem de Páginas",
@@ -102,8 +103,8 @@
 	"pagetriage-filter-unreferenced": "Não ter referências",
 	"pagetriage-filter-orphan": "São órfãs",
 	"pagetriage-filter-recreated": "Foram excluídos anteriormente",
-	"pagetriage-filter-non-autoconfirmed": "Foram criadas por novato (usuários  não autoconfirmados)",
-	"pagetriage-filter-learners": "Foram criadas por aprendizes (usuários recentemente autoconfirmados)",
+	"pagetriage-filter-non-autoconfirmed": "Recém-chegados (não autoconfirmados)",
+	"pagetriage-filter-learners": "Aprendizes (recentemente autoconfirmados)",
 	"pagetriage-filter-blocked": "Usuários bloqueados",
 	"pagetriage-filter-all": "Mostrar todos",
 	"pagetriage-filter-set-button": "Definir filtros",
