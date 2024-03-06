@@ -3,11 +3,13 @@
 namespace MediaWiki\Extension\PageTriage\Test;
 
 use ApiUsageException;
-use ContentHandler;
+use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
+use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\Utils\MWTimestamp;
 use MockHttpTrait;
+use TextContent;
 
 /**
  * Tests the inclusion of the Draft namespace.
@@ -713,22 +715,15 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		// so we don't have a PageTriage PHP method to use here.
 		$talkPageTitle = Title::newFromText( $testPageTitle, NS_TALK );
 		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $talkPageTitle );
-		$page->doUserEditContent(
-			ContentHandler::makeContent( 'Test message.', $talkPageTitle ),
-			static::getTestSysop()->getUser(),
-			'edit summary',
-			0,
-			false,
-			[ 'pagetriage' ]
-		);
-		$page->doUserEditContent(
-			ContentHandler::makeContent( 'Test message 2.', $talkPageTitle ),
-			static::getTestSysop()->getUser(),
-			'edit summary',
-			0,
-			false,
-			[ 'pagetriage' ]
-		);
+		$pageUpdater = $page->newPageUpdater( static::getTestSysop()->getUser() );
+		$pageUpdater->setContent( SlotRecord::MAIN, new TextContent( 'Test message.' ) )
+			->addTags( [ 'pagetriage' ] );
+		$pageUpdater->saveRevision( CommentStoreComment::newUnsavedComment( 'edit summary' ), EDIT_NEW );
+
+		$pageUpdater = $page->newPageUpdater( static::getTestSysop()->getUser() );
+		$pageUpdater->setContent( SlotRecord::MAIN, new TextContent( 'Test message 2.' ) )
+			->addTags( [ 'pagetriage' ] );
+		$pageUpdater->saveRevision( CommentStoreComment::newUnsavedComment( 'edit summary' ), EDIT_UPDATE );
 
 		// Retrieve the page's metadata again, and check that the talkpage feedback is flagged.
 		$list = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'page_id' => $testPage['id'] ] );
@@ -749,14 +744,10 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		// so we don't have a PageTriage PHP method to use here.
 		$draftTalkTitle = $testDraft['title']->getTalkPageIfDefined();
 		$draft = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $draftTalkTitle );
-		$draft->doUserEditContent(
-			ContentHandler::makeContent( 'Test message.', $draftTalkTitle ),
-			static::getTestSysop()->getUser(),
-			'edit summary',
-			0,
-			false,
-			[ 'pagetriage' ]
-		);
+		$pageUpdater = $draft->newPageUpdater( static::getTestSysop()->getUser() );
+		$pageUpdater->setContent( SlotRecord::MAIN, new TextContent( 'Test message.' ) )
+			->addTags( [ 'pagetriage' ] );
+		$pageUpdater->saveRevision( CommentStoreComment::newUnsavedComment( 'edit summary' ), EDIT_NEW );
 
 		// Retrieve the page's metadata again, and check that the talkpage feedback is flagged.
 		$list = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'page_id' => $testDraft['id'] ] );
