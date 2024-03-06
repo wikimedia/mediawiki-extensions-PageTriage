@@ -53,7 +53,7 @@ describe( 'DeleteToolView', () => {
 		expect(
 			$.pageTriageDeletionTagsOptions.Main.xfd.tags.redirectsfordiscussion.label
 		).toBe(
-			'pagetriage-del-tags-redirectsfordiscussion-label'
+			'Redirects for discussion'
 		);
 	};
 
@@ -64,7 +64,7 @@ describe( 'DeleteToolView', () => {
 			expect( toolbar.deletionTagsOptions.xfd ).toBe( undefined );
 			toolbar.setupDeletionTags();
 			expect( toolbar.deletionTagsOptions.xfd.label ).toBe(
-				'pagetriage-del-tags-articlefordeletion-label'
+				'Articles for deletion'
 			);
 			// Check that there were side-effects  😱
 			expect( toolbar.deletionTagsOptions.xfd.tags.redirectsfordiscussion ).toBe(
@@ -84,7 +84,7 @@ describe( 'DeleteToolView', () => {
 			expect( toolbar.deletionTagsOptions.xfd ).toBe( undefined );
 			toolbar.setupDeletionTags();
 			expect( toolbar.deletionTagsOptions.xfd.label ).toBe(
-				'pagetriage-del-tags-redirectsfordiscussion-label'
+				'Redirects for discussion'
 			);
 			expect( toolbar.deletionTagsOptions.xfd.tags.articlefordeletion ).toBe(
 				undefined
