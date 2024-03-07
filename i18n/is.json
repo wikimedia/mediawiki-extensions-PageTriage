@@ -103,7 +103,6 @@
 	"logentry-pagetriage-curation-tag": "$1 {{GENDER:$2|merkti}} $3 með $4 {{PLURAL:$5|sniði|sniðum}}",
 	"pagetriage-tags-edit-summary": "Bætti sniði við síðuna með $1 ($2)",
 	"pagetriage-del-edit-summary": "Tilnefndi síðuna til eyðingar með $1 ($2)",
-	"pagetriage-del-tags-param-discussion-label": "Útskýrðu afhverju á að eyða þessari grein og settu fram tengla á viðeigandi samþykktir þegar það er í boði.",
 	"pagetriage-info-title": "Upplýsingar um síðu",
 	"pagetriage-info-problem-header": "Möguleg vandamál",
 	"pagetriage-info-history-header": "Breytingaskrá",

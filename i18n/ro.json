@@ -58,7 +58,6 @@
 	"pagetriage-tags-param-missing-required": "Etichetei $1 îi lipsește un parametru obligatoriu.",
 	"log-name-pagetriage-curation": "Jurnal revizuiri pagini",
 	"pagetriage-tags-edit-summary": "A adăugat etichete acestei pagini folosind $1 ($2)",
-	"pagetriage-del-tags-param-discussion-label": "Vă rugăm să explicați de ce această pagină ar trebui ștearsă și furnizați legătura către politicile relevante atunci când este posibil",
 	"pagetriage-info-title": "Informații despre pagină",
 	"pagetriage-info-problem-header": "Probleme posibile",
 	"pagetriage-info-history-header": "Istoric",
