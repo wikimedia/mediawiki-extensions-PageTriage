@@ -49,7 +49,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 				'lgname' => $user->getUser()->getName(),
 				'lgpassword' => $user->getPassword()
 			];
-			list( $result, , $session ) = $this->doApiRequest( $params );
+			[ $result, , $session ] = $this->doApiRequest( $params );
 			$this->assertArrayHasKey( "login", $result );
 			$this->assertArrayHasKey( "result", $result['login'] );
 			$this->assertEquals( "NeedToken", $result['login']['result'] );
@@ -61,7 +61,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 				'lgname' => $user->getUser()->getName(),
 				'lgpassword' => $user->getPassword()
 			];
-			list( $result, , $session ) = $this->doApiRequest( $params, $session );
+			[ $result, , $session ] = $this->doApiRequest( $params, $session );
 			$this->assertArrayHasKey( "login", $result );
 			$this->assertArrayHasKey( "result", $result['login'] );
 			$this->assertEquals( "Success", $result['login']['result'] );
@@ -81,7 +81,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	public function testSuccessfulReviewAction( $sessionArray ) {
 		$pageId = $this->makeDraft( 'Test ' );
 
-		list( $result, , ) = $this->doApiRequestWithToken(
+		[ $result, , ] = $this->doApiRequestWithToken(
 			[
 				'action' => 'pagetriageaction',
 				'pageid' => $pageId,
@@ -101,7 +101,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	public function testNoChangeReviewAction( $sessionArray ) {
 		$pageId = $this->makeDraft( 'Test ' );
 
-		list( $result ) = $this->doApiRequestWithToken(
+		[ $result ] = $this->doApiRequestWithToken(
 			[
 				'action' => 'pagetriageaction',
 				'pageid' => $pageId,
@@ -118,7 +118,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 			"First action should succeed"
 		);
 
-		list( $result ) = $this->doApiRequestWithToken(
+		[ $result ] = $this->doApiRequestWithToken(
 			[
 				'action' => 'pagetriageaction',
 				'pageid' => $pageId,

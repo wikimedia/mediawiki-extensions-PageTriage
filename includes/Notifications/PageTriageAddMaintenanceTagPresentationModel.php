@@ -53,7 +53,7 @@ class PageTriageAddMaintenanceTagPresentationModel extends PageTriagePresentatio
 		}
 
 		$thankingUser = $this->getViewingUserForGender();
-		list( , $thankedUser ) = $this->getAgentForOutput();
+		[ , $thankedUser ] = $this->getAgentForOutput();
 		$labelMsg = $this->msg( 'pagetriage-thank-link' );
 		$labelMsg->params( $thankingUser, $thankedUser );
 		$descMsg = $this->msg( 'pagetriage-thank-link-title' );

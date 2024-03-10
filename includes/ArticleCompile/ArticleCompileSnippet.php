@@ -49,7 +49,7 @@ class ArticleCompileSnippet extends ArticleCompile {
 			}
 			$tempStr = substr( $text, 0, $closeCurPos + 2 );
 
-			$openCurPos = strrpos( $tempStr,  '{{' );
+			$openCurPos = strrpos( $tempStr, '{{' );
 			if ( $openCurPos === false ) {
 				$text = substr_replace( $text, '', $closeCurPos, 2 );
 			} else {

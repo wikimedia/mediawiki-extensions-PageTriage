@@ -137,6 +137,7 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 		$logEntry->publish( $logEntry->insert() );
 	}
 
+	/** @inheritDoc */
 	public function needsToken() {
 		return 'csrf';
 	}
@@ -157,10 +158,12 @@ class ApiPageTriageTagCopyvio extends ApiBase {
 		];
 	}
 
+	/** @inheritDoc */
 	public function mustBePosted() {
 		return true;
 	}
 
+	/** @inheritDoc */
 	public function isWriteMode() {
 		return true;
 	}
