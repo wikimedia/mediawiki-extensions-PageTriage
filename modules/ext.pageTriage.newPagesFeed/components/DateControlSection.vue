@@ -48,7 +48,9 @@ module.exports = {
 @import 'mediawiki.skin.variables.less';
 
 #mwe-vue-pt-filter-npp-date-range-from,
-#mwe-vue-pt-filter-npp-date-range-to {
+#mwe-vue-pt-filter-npp-date-range-to,
+#mwe-vue-pt-filter-afc-date-range-from,
+#mwe-vue-pt-filter-afc-date-range-to {
 	display: table-cell;
 	margin: @spacing-30 0 @spacing-30 0;
 }
