@@ -19,7 +19,7 @@
 	"pagetriage-orphan": "Батизе бегьула бесдалаб",
 	"pagetriage-recreated": "Цебе гилдизабун букӀараб",
 	"pagetriage-no-author": "Авторасул информация кьун гьечӀо",
-	"pagetriage-byline": "Гьабурал: $1 ($2$3$4)",
+	"pagetriage-byline": "{{GENDER\n:$1|Гьижи}}: $1 ($2$3$4)",
 	"pagetriage-author-not-autoconfirmed": "ЦӀиредактор",
 	"pagetriage-author-bot": "Бот",
 	"pagetriage-showing": "Рихьизари:",
