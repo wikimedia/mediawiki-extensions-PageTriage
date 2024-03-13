@@ -140,8 +140,6 @@
 	"pagetriage-js-required": "ഈ അനുബന്ധം പ്രവർത്തിക്കാൻ ജാവാസ്ക്രിപ്റ്റ് സജ്ജമായ ബ്രൗസർ ആവശ്യമാണ്.",
 	"pagetriage-tags-title": "റ്റാഗുകൾ ചേർക്കുക",
 	"pagetriage-tags-cat-all-label": "എല്ലാ റ്റാഗുകളും",
-	"pagetriage-del-tags-dba3-label": "ഉള്ളടക്കം ഇല്ല",
-	"pagetriage-del-tags-dbg7-label": "രചയിതാവ് മായ്ക്കാൻ ആവശ്യപ്പെട്ടിരിക്കുന്നു",
 	"pagetriage-tags-param-article-label": "ലേഖനം:",
 	"pagetriage-tags-param-date-label": "തീയതി:",
 	"pagetriage-tags-param-free-yes-label": "ശരി",

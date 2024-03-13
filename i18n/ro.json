@@ -50,7 +50,6 @@
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|etichetă selectată|etichete selectate|de etichete selectate}}",
 	"pagetriage-tags-title": "Adăugare etichete",
 	"pagetriage-tags-cat-all-label": "Toate etichetele",
-	"pagetriage-del-tags-dba3-label": "Fără conținut",
 	"pagetriage-tags-param-article-label": "Articol:",
 	"pagetriage-tags-param-date-label": "Dată:",
 	"pagetriage-tags-param-free-yes-label": "Da",

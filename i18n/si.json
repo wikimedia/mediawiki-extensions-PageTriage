@@ -81,8 +81,6 @@
 	"pagetriage-articleinfo-stat": "සංඛ්‍යාති: $1",
 	"pagetriage-tags-title": "ටැගයන් එක් කරන්න",
 	"pagetriage-tags-cat-all-label": "සියළු ටැග",
-	"pagetriage-del-tags-dba3-label": "අන්තර්ගතයක් නොමැත",
-	"pagetriage-del-tags-dbg7-label": "කතෘ විසින් මකා දැමීමට ඉල්ලා සිටී",
 	"pagetriage-tags-param-article-label": "ලිපිය:",
 	"pagetriage-tags-param-date-label": "දිනය:",
 	"pagetriage-tags-param-free-yes-label": "ඔව්",

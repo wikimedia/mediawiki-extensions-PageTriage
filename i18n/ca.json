@@ -9,7 +9,6 @@
 	"pagetriage": "Triatge de pàgines",
 	"pagetriage-categories": "$1 {{PLURAL:$1|categoria|categories}}",
 	"pagetriage-warning-browser": "Potser aquesta eina no funcioni correctament en navegadors anteriors a l’Internet Explorer 11.",
-	"pagetriage-del-tags-dbg5-desc": "Pàgines creades per usuaris bandejats o blocats en violació de llur bandejament o blocatge que no tenen edicions substancials d’altres persones. (G5)",
 	"pagetriage-discuss-link": "{{GENDER:$1|Discussió}}",
 	"pagetriage-discuss-link-title": "{{GENDER:$1|Discussió}}"
 }
