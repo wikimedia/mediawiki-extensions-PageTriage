@@ -74,6 +74,7 @@ module.exports = {
 				this.addPredictedIssues( settings.applied.nppPossibleIssues );
 				this.addDate( settings.applied.nppDate.from, settings.applied.nppDate.to );
 			} else {
+				this.addTop( settings.applied.afcFilter, settings.applied.afcFilterUser );
 				this.addPredictedClass( settings.applied.afcPredictedRating );
 				this.addPredictedIssues( settings.applied.afcPossibleIssues );
 				this.addDate( settings.applied.afcDate.from, settings.applied.afcDate.to );
@@ -95,17 +96,17 @@ module.exports = {
 		addNamespace: function ( namespace ) {
 			this.msgObj.namespace = [ namespaceOptions[ namespace ] ];
 		},
-		addTop: function ( nppFilter, nppFilterUser ) {
-			if ( !nppFilter || nppFilter === 'all' ) {
+		addTop: function ( filter, filterUser ) {
+			if ( !filter || filter === 'all' ) {
 				return;
 			}
 			let localMsg = '';
-			if ( nppFilter === 'username' && nppFilterUser ) {
-				localMsg = this.$i18n( 'pagetriage-filter-stat-username', nppFilterUser ).text();
-			} else if ( nppFilter === 'bot-edits' ) {
+			if ( filter === 'username' && filterUser ) {
+				localMsg = this.$i18n( 'pagetriage-filter-stat-username', filterUser ).text();
+			} else if ( filter === 'bot-edits' ) {
 				// Need a different message key (not -bot-edits)
 				localMsg = this.$i18n( 'pagetriage-filter-stat-bots' ).text();
-			} else if ( nppFilter === 'autopatrolled-edits' ) {
+			} else if ( filter === 'autopatrolled-edits' ) {
 				// same as above, needs a different message key
 				localMsg = this.$i18n( 'pagetriage-filter-stat-autopatrolled' ).text();
 			} else {
@@ -120,7 +121,7 @@ module.exports = {
 				// 'pagetriage-filter-stat-autopatrolled-edits':
 				// 'pagetriage-filter-stat-user-heading':
 				// eslint-disable-next-line mediawiki/msg-doc
-				localMsg = this.$i18n( `pagetriage-filter-stat-${ nppFilter }` ).text();
+				localMsg = this.$i18n( `pagetriage-filter-stat-${ filter }` ).text();
 			}
 			this.msgObj.top = [ localMsg ];
 		},
