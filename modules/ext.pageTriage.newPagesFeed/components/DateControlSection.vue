@@ -50,7 +50,7 @@ module.exports = {
 #mwe-vue-pt-filter-npp-date-range-from,
 #mwe-vue-pt-filter-npp-date-range-to {
 	display: table-cell;
-	margin: @spacing-30 0 @spacing-30 @spacing-50;
+	margin: @spacing-30 0 @spacing-30 0;
 }
 
 .mwe-vue-date-container {
@@ -63,5 +63,6 @@ module.exports = {
 
 .mwe-vue-date-label {
 	display: table-cell;
+	padding-right: @spacing-30;
 }
 </style>
