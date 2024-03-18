@@ -19,6 +19,7 @@
 	"pagetriage-tags-param-date-label": "Peivim:",
 	"pagetriage-info-history-header": "Historjá",
 	"pagetriage-info-help": "iše",
+	"pagetriage-info-problem-blocked": "Estum kevttee",
 	"pagetriage-toolbar-close": "Toopâ",
 	"pagetriage-afc-state-all": "Puoh",
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Kijte}}}}"
