@@ -3,21 +3,12 @@
 ( function () {
 	$.pageTriageTagsRedirectCategoryShell = 'Redirect category shell';
 
-	const today = new Date();
-
-	const month = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July',
-		'August', 'September', 'October', 'November', 'December' ];
-
 	const param = {
 		date: {
 			label: mw.msg( 'pagetriage-tags-param-date-label' ),
 			input: 'automated',
 			type: 'hidden',
-			value: mw.msg(
-				'pagetriage-tags-param-date-format',
-				month[ today.getUTCMonth() ],
-				today.getUTCFullYear()
-			)
+			value: '{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}'
 		},
 
 		1: {
