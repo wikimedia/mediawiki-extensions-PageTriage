@@ -173,17 +173,17 @@ module.exports = {
 		showStats() {
 			// make sure all the values were computed
 			return this.queueMode === 'npp' &&
-				this.unreviewedArticleCount !== -1 &&
-				this.unreviewedRedirectCount !== -1 &&
-				this.unreviewedOldest !== '?' &&
-				this.reviewedArticleCount !== -1 &&
-				this.reviewedRedirectCount !== -1;
+				this.unreviewedArticleCount >= 0 &&
+				this.unreviewedRedirectCount >= 0 &&
+				this.unreviewedOldest !== '' &&
+				this.reviewedArticleCount >= 0 &&
+				this.reviewedRedirectCount >= 0;
 		},
 		showDraftStats() {
 			// make sure all the values were computed
 			return this.queueMode === 'afc' &&
-				this.unreviewedDraftCount !== -1 &&
-				this.unreviewedOldestDraft !== -1;
+				this.unreviewedDraftCount >= 0 &&
+				this.unreviewedOldestDraft !== '';
 		}
 	},
 	methods: {
