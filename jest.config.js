@@ -35,7 +35,7 @@ module.exports = {
 	},
 	testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(js|ts)$',
 	moduleFileExtensions: [ 'js', 'vue' ],
-	coverageReporters: [ 'text', 'json-summary' ],
+	coverageReporters: [ 'text', 'json-summary', 'lcov', 'clover' ],
 	testEnvironmentOptions: {
 		url: 'http://localhost:8080',
 		customExportConditions: [
