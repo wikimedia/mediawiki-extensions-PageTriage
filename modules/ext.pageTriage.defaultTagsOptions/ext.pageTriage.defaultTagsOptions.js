@@ -137,120 +137,7 @@
 			label: 'Common',
 			alias: true,
 			tags: {
-				// The tag MUST also exist in a subsection, or the tag will not work.
-				// The tag MUST have a "dest" set. This should be equal to the name of the menu that
-				// the other tag is located in.
-				// TODO: these are all duplicates of other entries in this list. this should be refactored to
-				// avoid duplication.
-				// TODO: refactoring strategy: this should just be an array of tags, e.g. common: ['underreview',
-				// 'linkrot', '...']. Then JS code somewhere else handles the duplicating.
-				underreview: {
-					label: 'Under review',
-					tag: 'Under review',
-					desc: 'You intend to assess the article but it will take some time. Tag to avoid patrolling redundancy.',
-					params: {
-						date: param.date
-					},
-					position: 'top',
-					dest: 'moretags',
-					multiple: true
-				},
-
-				linkrot: {
-					label: 'Bare URLs',
-					tag: 'linkrot',
-					desc: 'This page uses bare URLs for references, which are prone to link rot.',
-					params: {
-						date: param.date
-					},
-					position: 'top',
-					dest: 'sources',
-					multiple: true
-				},
-
-				copyedit: {
-					label: 'Copy edit',
-					tag: 'copy edit',
-					desc: 'This page needs copy editing for grammar, style, cohesion, tone, and/or spelling.',
-					params: {
-						date: param.date,
-						for: $.extend( true, {}, param.for )
-					},
-					position: 'top',
-					dest: 'cleanup',
-					multiple: true
-				},
-
-				morefootnotes: {
-					label: 'More footnotes',
-					tag: 'more footnotes',
-					desc: 'This page has some references, but insufficient in-text citations.',
-					params: {
-						date: param.date,
-						blp: $.extend( true, {}, param.blp )
-					},
-					position: 'top',
-					dest: 'sources',
-					multiple: true
-				},
-
-				refimprove: {
-					label: 'More references',
-					tag: 'refimprove',
-					desc: 'This page needs additional references or sources for verification.',
-					params: {
-						date: param.date
-					},
-					position: 'top',
-					dest: 'sources',
-					multiple: true
-				},
-
-				unreferenced: {
-					label: 'No references',
-					tag: 'unreferenced',
-					desc: 'This page has no references at all.',
-					params: {
-						date: param.date
-					},
-					position: 'top',
-					dest: 'sources',
-					multiple: true
-				},
-
-				stub: {
-					label: 'Stub',
-					tag: 'stub',
-					desc: 'This page is very short.',
-					params: { },
-					position: 'bottom',
-					dest: 'structure',
-					multiple: false
-				},
-
-				uncategorised: {
-					label: 'Uncategorised',
-					tag: 'uncategorised',
-					desc: 'This page doesn\'t belong to any categories.',
-					params: {
-						date: param.date
-					},
-					position: 'categories',
-					dest: 'metadata',
-					multiple: false
-				},
-
-				orphan: {
-					label: 'Orphan',
-					tag: 'orphan',
-					desc: 'No other pages link to this page.',
-					params: {
-						date: param.date
-					},
-					position: 'top',
-					dest: 'metadata',
-					multiple: true
-				}
+			// This will be filled up on the fly depending on the value of the "common" parameter for each individual tag
 			}
 		},
 
@@ -278,6 +165,7 @@
 						for: $.extend( true, {}, param.for )
 					},
 					position: 'top',
+					common: true,
 					multiple: true
 				},
 
@@ -347,6 +235,7 @@
 						date: param.date
 					},
 					position: 'top',
+					common: true,
 					multiple: true
 				},
 
@@ -380,6 +269,7 @@
 						date: param.date
 					},
 					position: 'categories',
+					common: true,
 					multiple: false
 				},
 
@@ -728,6 +618,7 @@
 						date: param.date
 					},
 					position: 'top',
+					common: true,
 					multiple: true
 				},
 
@@ -763,6 +654,7 @@
 						blp: $.extend( true, {}, param.blp )
 					},
 					position: 'top',
+					common: true,
 					multiple: true
 				},
 
@@ -774,6 +666,7 @@
 						date: param.date
 					},
 					position: 'top',
+					common: true,
 					multiple: true
 				},
 
@@ -807,6 +700,7 @@
 						date: param.date
 					},
 					position: 'top',
+					common: true,
 					multiple: true
 				},
 
@@ -964,6 +858,7 @@
 					desc: 'This page is very short.',
 					params: { },
 					position: 'bottom',
+					common: true,
 					multiple: false
 				},
 
@@ -1306,6 +1201,7 @@
 						date: param.date
 					},
 					position: 'top',
+					common: true,
 					multiple: true
 				},
 

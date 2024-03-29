@@ -37,7 +37,7 @@ module.exports = ToolView.extend( {
 	handleRedirectsTemplates: function () {
 		if ( this.model.attributes.is_redirect === '0' ) {
 			delete this.tagsOptions.redirects;
-			this.buildAllCategory();
+			this.buildAllAndCommonCategories();
 		} else {
 			this.isRedirect = true;
 			Object
@@ -51,10 +51,11 @@ module.exports = ToolView.extend( {
 	},
 
 	/**
-	 * Construct the 'All' category on the fly
+	 * Construct the 'All' and 'Common' categories on the fly
 	 */
-	buildAllCategory: function () {
+	buildAllAndCommonCategories: function () {
 		const list = [];
+		const commonList = [];
 
 		// first, loop through all tags in other categories and store them in the "list" variable
 		for ( const cat in this.tagsOptions ) {
@@ -66,6 +67,9 @@ module.exports = ToolView.extend( {
 				tag.dest = cat;
 				tag.destKey = key;
 				list.push( tag );
+				if ( tag.common ) {
+					commonList.push( tag );
+				}
 			}
 		}
 
@@ -80,13 +84,23 @@ module.exports = ToolView.extend( {
 			return 0;
 		} );
 
+		// push the sorted array of common tags into the existing tag json object
+		let len = commonList.length;
+		for ( let i = 0; i < len; i++ ) {
+			// T332105: Combine the tag (template name) and the label to
+			// produce a unique key
+			let tagKey = commonList[ i ].tag + commonList[ i ].label;
+			tagKey = tagKey.replace( /[- (){}]/g, '' ).toLowerCase();
+			this.tagsOptions.common.tags[ tagKey ] = commonList[ i ];
+		}
+
 		// finally, push the sorted array into the existing tag json object
 		this.tagsOptions.all = {
 			label: mw.msg( 'pagetriage-tags-cat-all-label' ),
 			alias: true,
 			tags: {}
 		};
-		const len = list.length;
+		len = list.length;
 		for ( let i = 0; i < len; i++ ) {
 			// T332105: Combine the tag (template name) and the label to
 			// produce a unique key
@@ -228,7 +242,7 @@ module.exports = ToolView.extend( {
 			// add click events for checking/unchecking tags to both the
 			// checkboxes and tag labels
 			$( '#mwe-pt-tag-' + key + ', #mwe-pt-checkbox-tag-' + key ).on( 'click', function () {
-				let destCat, destKey, alsoCommon, param;
+				let destCat, destKey, param;
 
 				// Extract the tag key from the id of whatever was clicked on
 				const tagKeyMatches = $( this ).attr( 'id' ).match( /.*-tag-(.*)/ );
@@ -250,24 +264,7 @@ module.exports = ToolView.extend( {
 				// category which is indicated in the 'dest' attribute.
 				if ( ( cat === 'common' || cat === 'all' ) && tagSet[ tagKey ].dest ) {
 					destCat = tagSet[ tagKey ].dest;
-					// destKey is only available for 'all' and not for 'common'
-					// if we are in the 'common' column, use tagKey instead
-					if ( cat === 'all' ) {
-						destKey = tagSet[ tagKey ].destKey;
-					} else {
-						destKey = tagKey;
-					}
-				}
-
-				// Tags in other groups may also belong to the 'common' group.
-				// In these cases, we need to update the corresponding tag
-				// in the 'common' group as well.
-				if (
-					cat !== 'common' &&
-					that.tagsOptions.common &&
-					that.tagsOptions.common.tags[ tagKey ] !== undefined
-				) {
-					alsoCommon = true;
+					destKey = tagSet[ tagKey ].destKey;
 				}
 
 				if ( !that.selectedTag[ cat ][ tagKey ] ) {
@@ -278,7 +275,7 @@ module.exports = ToolView.extend( {
 					if ( destCat ) {
 						that.selectedTag[ destCat ][ destKey ] = tagSet[ tagKey ];
 					}
-					if ( alsoCommon ) {
+					if ( tagSet[ tagKey ].common ) {
 						that.selectedTag.common[ tagKey ] = tagSet[ tagKey ];
 					}
 					if ( that.tagsOptions.all ) {
@@ -300,7 +297,7 @@ module.exports = ToolView.extend( {
 					if ( destCat ) {
 						delete that.selectedTag[ destCat ][ destKey ];
 					}
-					if ( alsoCommon ) {
+					if ( tagSet[ tagKey ].common ) {
 						delete that.selectedTag.common[ tagKey ];
 					}
 					if ( that.tagsOptions.all ) {
