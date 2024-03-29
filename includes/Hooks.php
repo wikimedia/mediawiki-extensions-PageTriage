@@ -26,6 +26,7 @@ use MediaWiki\Hook\PageMoveCompleteHook;
 use MediaWiki\Hook\UnblockUserCompleteHook;
 use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\Page\Hook\ArticleViewFooterHook;
 use MediaWiki\Page\Hook\PageDeleteCompleteHook;
 use MediaWiki\Page\Hook\PageUndeleteCompleteHook;
@@ -477,11 +478,6 @@ class Hooks implements
 			return;
 		}
 
-		// Don't show anything for user with no patrol right
-		if ( !$this->permissionManager->quickUserCan( 'patrol', $user, $title ) ) {
-			return;
-		}
-
 		// Only show in defined namespaces
 		if ( !in_array( $title->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			return;
@@ -492,14 +488,31 @@ class Hooks implements
 			return;
 		}
 
+		$userCanPatrol = $this->permissionManager->quickUserCan( 'patrol', $user, $title );
+		$userCanAutoPatrol = $this->permissionManager->userHasRight( $user, 'autopatrol' );
+
+		$outputPage->addJsConfigVars( [
+			'wgPageTriageUserCanPatrol' => $userCanPatrol,
+			'wgPageTriageUserCanAutoPatrol' => $userCanAutoPatrol
+		] );
+
+		// Don't show anything for user with no patrol right
+		if ( !$userCanPatrol ) {
+
+			// Maybe allow autopatrolled users to unpatrol their article
+			$this->maybeShowUnpatrolLink( $wikiPage, $user, $outputPage );
+			return;
+		}
+
 		// See if the page is in the PageTriage page queue
 		// If it isn't, $needsReview will be null
 		// Also, users without the autopatrol right can't review their own pages
 		$needsReview = PageTriageUtil::isPageUnreviewed( $wikiPage );
+
 		if ( $needsReview !== null
 			&& (
 				!$user->equals( $this->revisionStore->getFirstRevision( $title )->getUser( RevisionRecord::RAW ) )
-				|| $this->permissionManager->userHasRight( $user, 'autopatrol' )
+				|| $userCanAutoPatrol
 			)
 		) {
 			if ( $this->config->get( 'PageTriageEnableCurationToolbar' ) ||
@@ -527,7 +540,37 @@ class Hooks implements
 		} elseif ( $needsReview === null && !$title->isMainPage() ) {
 			// Page is potentially usable, but not in the queue, allow users to add it manually
 			// Option is not shown if the article is the main page
-			$outputPage->addModules( 'ext.PageTriage.enqueue' );
+			$outputPage->addModules( 'ext.pageTriage.sidebarLink' );
+		}
+	}
+
+	/**
+	 * Show a link to autopatrolled users without the 'patrol'
+	 * userright that allows them to unreview a specific page iff
+	 * the page is autopatrolled && they are the page's creator
+	 *
+	 * @param WikiPage $wikiPage Wikipage being viewed
+	 * @param User $user Current user
+	 * @param OutputPage $out Output of current page
+	 */
+	private function maybeShowUnpatrolLink( WikiPage $wikiPage, User $user, OutputPage $out ): void {
+		$reviewStatus = PageTriageUtil::getStatus( $wikiPage );
+		$articleIsNotAutoPatrolled = $reviewStatus !== QueueRecord::REVIEW_STATUS_AUTOPATROLLED;
+		if ( $articleIsNotAutoPatrolled ) {
+			return;
+		}
+
+		$isAutopatrolled = $this->permissionManager->userHasRight( $user, 'autopatrol' );
+
+		if ( !$isAutopatrolled ) {
+			return;
+		}
+
+		$pageCreator = $this->revisionStore->getFirstRevision( $wikiPage )->getUser( RevisionRecord::RAW );
+		$isPageCreator = $pageCreator->equals( $user );
+
+		if ( $isPageCreator ) {
+			$out->addModules( 'ext.pageTriage.sidebarLink' );
 		}
 	}
 

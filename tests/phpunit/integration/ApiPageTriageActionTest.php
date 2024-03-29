@@ -22,6 +22,8 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	public static $users;
 
 	public function setUp(): void {
+		global $wgGroupPermissions;
+		$wgGroupPermissions['autopatrol']['autopatrol'] = true;
 		parent::setUp();
 		$this->setUpForOresCopyvioTests();
 
@@ -37,6 +39,13 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 			'Api Test UserB',
 			'api_test_userB@example.com',
 			[]
+		);
+
+		self::$users['autopatrolleduser'] = new TestUser(
+			'ApitestuserC',
+			'Api Test UserC',
+			'api_test_userC@example.com',
+			[ 'autopatrol' ]
 		);
 	}
 
@@ -147,19 +156,28 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 		$pageId = $this->makeDraft( 'Test ' );
 
 		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( 'The action you have requested is limited to users' );
+		$this->expectExceptionMessage( 'You don\'t have permission to mark others\' edits as patrolled.' );
 		$this->doApiRequestWithToken( [
 			'action' => 'pagetriageaction',
 			'pageid' => $pageId,
 			'skipnotif' => 1,
 			'reviewed' => '1'
 		], $sessionArray['two'], self::$users['two']->getUser() );
+
+		$this->expectException( ApiUsageException::class );
+		$this->expectExceptionMessage( 'You don\'t have permission to mark others\' edits as patrolled.' );
+		$this->doApiRequestWithToken( [
+			'action' => 'pagetriageaction',
+			'pageid' => $pageId,
+			'skipnotif' => 1,
+			'reviewed' => '1'
+		], $sessionArray['autopatrolleduser'], self::$users['autopatrolleduser']->getUser() );
 	}
 
 	public function testPermissionErrorAnon() {
 		$pageId = $this->makeDraft( 'Test' );
 		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( 'The action you have requested is limited to users' );
+		$this->expectExceptionMessage( 'You don\'t have permission to mark others\' edits as patrolled.' );
 		$this->doApiRequestWithToken(
 			[
 				'action' => 'pagetriageaction',
