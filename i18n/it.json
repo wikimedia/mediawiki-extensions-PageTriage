@@ -205,6 +205,7 @@
 	"pagetriage-tag-warning-notice": "Questa pagina è stata creata solo $1 {{PLURAL:$1|minuto|minuti}} fa. Non affrettarti a contrassegnare le pagine all'inizio della coda. L'autore potrebbe ancora lavorarci.",
 	"pagetriage-afc-state": "Stato",
 	"pagetriage-afc-state-all": "Tutti",
+	"pagetriage-unreview-title": "Contrassegna questa pagina come non revisionata",
 	"notification-header-pagetriage-mark-as-reviewed": "La pagina '''$3''' è stata {{GENDER:$2|revisionata}}.",
 	"notification-header-pagetriage-add-maintenance-tag": "{{GENDER:$2|Un revisore|Una revisora}} ha suggerito miglioramenti alla pagina '''$3'''. {{PLURAL:$5|Etichetta|Etichette}}: $4",
 	"notification-header-pagetriage-add-deletion-tag": "La pagina '''$3''' è stata {{GENDER:$2|contrassegnata per la cancellazione}}. {{PLURAL:$5|Etichetta|Etichette}}: $4.",

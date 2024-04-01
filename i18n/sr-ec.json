@@ -274,6 +274,7 @@
 	"pagetriage-afc-date-label-submission": "Послато:",
 	"pagetriage-afc-date-label-review": "Под прегледом, послато:",
 	"pagetriage-afc-date-label-declined": "Одбијено:",
+	"pagetriage-unreview-title": "Означи страницу као непрегледану",
 	"notification-header-pagetriage-mark-as-reviewed": "Страница '''$3''' је {{GENDER:$2|прегледана}}.",
 	"notification-header-pagetriage-add-maintenance-tag": "{{GENDER:$2|Прегледач је предложио|Прегледачица је предложила}} побољшања на страници '''$3'''. {{PLURAL:$5|Ознака|Ознаке}}: $4.",
 	"notification-header-pagetriage-add-deletion-tag": "Страница '''$3''' је {{GENDER:$2|означена за брисање}}. {{PLURAL:$5|Ознака|Ознаке}}: $4.",
