@@ -89,9 +89,9 @@ PageTriage is the best.
 PageTriage is the best.
 			` );
 
-		expect( toolbar.addToExistingTags( '', 'Multiple issues', '{{advert}}', 'top', true ) ).toBe( '\n{{Multiple issues|{{advert}}\n}}\n' );
+		expect( toolbar.addToExistingTags( '', 'Multiple issues', '{{advert}}', 'top', true ) ).toBe( '{{Multiple issues|{{advert}}\n}}\n' );
 		expect( toolbar.addToExistingTags( 'Txt', 'Multiple issues', '{{advert}}', 'top', false ) ).toBe( '{{advert}}\nTxt' );
-		expect( toolbar.addToExistingTags( 'Text', 'mu', '{{advert}}', 'bottom', true ) ).toBe( 'Text\n\n{{mu|{{advert}}\n}}' );
+		expect( toolbar.addToExistingTags( 'Text', 'mu', '{{advert}}', 'bottom', true ) ).toBe( 'Text\n{{mu|{{advert}}\n}}' );
 	} );
 
 	test( 'redirects should be wrapped', () => {
@@ -130,7 +130,7 @@ PageTriage is the best.
 		toolbar.selectedTag = selectedTags;
 
 		return toolbar.submit().then( () => {
-			expect( applyTags ).toBeCalledWith( '\n#REDIRECT [[Hello]]\n\n{{Redirect category shell|\n{{R from initialism}}\n}}', [ 'r from initialism' ] );
+			expect( applyTags ).toBeCalledWith( '\n#REDIRECT [[Hello]]\n{{Redirect category shell|\n{{R from initialism}}\n}}', [ 'r from initialism' ] );
 		} );
 	} );
 
@@ -191,7 +191,7 @@ PageTriage is the best.
 		};
 
 		return toolbar.submit().then( () => {
-			expect( applyTags ).toBeCalledWith( '\n{{Multiple issues|\n{{disputed|date=today}}\n{{linkrot|date=today}}\n}}\nThis is a page.', [ 'disputed', 'linkrot' ] );
+			expect( applyTags ).toBeCalledWith( '{{Multiple issues|\n{{disputed|date=today}}\n{{linkrot|date=today}}\n}}\nThis is a page.', [ 'disputed', 'linkrot' ] );
 		} );
 	} );
 } );
