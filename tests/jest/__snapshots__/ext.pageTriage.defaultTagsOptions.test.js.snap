@@ -745,8 +745,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "overlinked",
       },
       "uncategorised": {
-        "common": true,
-        "desc": "This page doesn\'t belong to any categories.",
+        "desc": "This page doesn't belong to any categories.",
         "label": "Uncategorised",
         "multiple": false,
         "params": {
@@ -2231,6 +2230,21 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         },
         "position": "top",
         "tag": "no footnotes",
+      },
+      "nosignificantcoverage": {
+        "desc": "This page has some references, but they do not show that there has been significant coverage of the subject",
+        "label": "No significant coverage",
+        "multiple": true,
+        "params": {
+          "date": {
+            "input": "automated",
+            "label": "pagetriage-tags-param-date-label",
+            "type": "hidden",
+            "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
+          },
+        },
+        "position": "top",
+        "tag": "No significant coverage",
       },
       "onesource": {
         "desc": "This page relies largely or entirely upon a single source.",

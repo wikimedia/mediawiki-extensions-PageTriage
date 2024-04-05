@@ -269,7 +269,6 @@
 						date: param.date
 					},
 					position: 'categories',
-					common: true,
 					multiple: false
 				},
 
@@ -667,6 +666,17 @@
 					},
 					position: 'top',
 					common: true,
+					multiple: true
+				},
+
+				nosignificantcoverage: {
+					label: 'No significant coverage',
+					tag: 'No significant coverage',
+					desc: 'This page has some references, but they do not show that there has been significant coverage of the subject',
+					params: {
+						date: param.date
+					},
+					position: 'top',
 					multiple: true
 				},
 
