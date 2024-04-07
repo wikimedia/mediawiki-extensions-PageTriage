@@ -463,7 +463,8 @@ module.exports = {
 }
 
 .mwe-vue-pt-article-row-even {
-	background: @background-color-interactive-subtle;
+	// darken( @background-color-interactive-subtle, 1% ) = #f5f6f8
+	background: #f5f6f8;
 }
 
 .mwe-vue-pt-problem-chip {
