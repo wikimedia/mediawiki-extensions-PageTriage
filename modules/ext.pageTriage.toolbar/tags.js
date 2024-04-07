@@ -647,7 +647,7 @@ module.exports = ToolView.extend( {
 		let wrappedWikitext = tagWikitext;
 
 		if ( shouldWrap ) {
-			wrappedWikitext = '\n{{' + wrapper + '|' + tagWikitext + '\n}}';
+			wrappedWikitext = '{{' + wrapper + '|' + tagWikitext + '\n}}';
 		}
 
 		if ( position === 'top' ) {
@@ -729,9 +729,13 @@ module.exports = ToolView.extend( {
 
 			// Generate a string of line breaks and templates. For example,
 			// \n{{No references}}\n{{Notability}}
+			const tagsArray = [];
 			for ( tagKey in multipleTags ) {
-				multipleTagsText += '\n{{' + multipleTags[ tagKey ].tag +
-				this.buildParams( multipleTags[ tagKey ] ) + '}}';
+				tagsArray.push( '{{' + multipleTags[ tagKey ].tag + this.buildParams( multipleTags[ tagKey ] ) + '}}' );
+			}
+			multipleTagsText = tagsArray.join( '\n' );
+			if ( tagsArray.length > 1 ) {
+				multipleTagsText = '\n' + multipleTagsText;
 			}
 
 			wikitext = this.addToExistingTags(
