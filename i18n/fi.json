@@ -65,7 +65,7 @@
 	"pagetriage-filter-tag-heading": "Merkkauksella:",
 	"pagetriage-filter-second-show-heading": "Jotka:",
 	"pagetriage-filter-no-categories": "Ovat luokittelematta",
-	"pagetriage-filter-orphan": "Ovat orpoja",
+	"pagetriage-filter-orphan": "Voivat olla orpoja",
 	"pagetriage-filter-non-autoconfirmed": "On luonut uusi tulokas (ei automaattisesti hyväksytyt käyttäjät)",
 	"pagetriage-filter-blocked": "Estetyt käyttäjät",
 	"pagetriage-filter-all": "Näytä kaikki",
