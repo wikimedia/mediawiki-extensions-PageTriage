@@ -373,7 +373,7 @@ module.exports = {
 			// correctly renders as "simple".
 			const wikiLanguageCodeForCopyPatrolURL = mw.config.get( 'wgServerName' ).split( '.' )[ 0 ];
 
-			return 'https://copypatrol.toolforge.org/' + wikiLanguageCodeForCopyPatrolURL +
+			return 'https://copypatrol.wmcloud.org/' + wikiLanguageCodeForCopyPatrolURL +
 				'?filter=all' +
 				'&filterPage=' + ( new mw.Title( this.title ) ).getMainText() +
 				'&drafts=' + ( this.isDraft ? '1' : '0' ) +

@@ -207,7 +207,7 @@ const Article = Backbone.Model.extend( {
 	},
 
 	generateCopyPatrolURL( wikiLanguageCodeForCopyPatrolURL, filter, filterPage, drafts, revision ) {
-		return 'https://copypatrol.toolforge.org/' + wikiLanguageCodeForCopyPatrolURL + '?' +
+		return 'https://copypatrol.wmcloud.org/' + wikiLanguageCodeForCopyPatrolURL + '?' +
 			$.param( {
 				filter: filter,
 				filterPage: filterPage,

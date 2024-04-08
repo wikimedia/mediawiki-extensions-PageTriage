@@ -24,7 +24,7 @@ describe( 'ext.pageTriage.article', () => {
 		const article = new Article( { pageId: 123 } );
 		const actual = article.generateCopyPatrolURL( wikiLanguageCodeForCopyPatrolURL, filter, filterPage, drafts, revision );
 
-		const expected = 'https://copypatrol.toolforge.org/en?filter=all&filterPage=18th%2BGame%2BDevelopers%2BChoice%2BAwards&drafts=0&revision=1146389450';
+		const expected = 'https://copypatrol.wmcloud.org/en?filter=all&filterPage=18th%2BGame%2BDevelopers%2BChoice%2BAwards&drafts=0&revision=1146389450';
 
 		expect( actual ).toBe( expected );
 	} );
