@@ -55,6 +55,11 @@
 			"pagetriage-copyvio": true
 		}
 	},
+	"GrantPermissions": {
+		"highvolume": {
+			"pagetriage-copyvio": true
+		}
+	},
 	"LogActionsHandlers": {
 		"pagetriage-curation/reviewed": "LogFormatter",
 		"pagetriage-curation/reviewed-redirect": "LogFormatter",
