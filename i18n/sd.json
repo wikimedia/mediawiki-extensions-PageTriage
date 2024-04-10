@@ -9,6 +9,7 @@
 	"pagetriage-bytes": "$1 {{PLURAL:$1|بائيٽ|بائيٽون}}",
 	"pagetriage-edits": "$1 {{PLURAL:$1|سنوار|سنوارون}}",
 	"pagetriage-author-bot": "بوٽ",
+	"pagetriage-filter-predicted-issues-spam": "اسپام",
 	"pagetriage-filter-predicted-issues-none": "ڪوبہ نہ",
 	"pagetriage-triage": "نظرثاني",
 	"pagetriage-filter-date-range-from": "کان",
