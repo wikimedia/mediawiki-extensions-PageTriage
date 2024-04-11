@@ -22,7 +22,7 @@
 					</span>
 				</cdx-button>
 			</div>
-			<div v-if="showStats">
+			<div v-if="showStats && hasValidStats">
 				<div>
 					{{ $i18n( 'pagetriage-unreviewed-article-count', unreviewedArticleCount,
 						unreviewedRedirectCount, unreviewedOldest ).text() }}
@@ -33,7 +33,7 @@
 						reviewedRedirectCount ).text() }}
 				</div>
 			</div>
-			<div v-else-if="showDraftStats">
+			<div v-else-if="showDraftStats && hasValidStats">
 				<div>
 					{{ $i18n( 'pagetriage-unreviewed-draft-count', unreviewedDraftCount,
 						unreviewedOldestDraft ).text() }}
@@ -70,6 +70,7 @@ module.exports = {
 	emits: [ 'refresh-feed' ],
 	setup( _props, { emit } ) {
 		const doAutoRefresh = ref( false );
+		const hasValidStats = ref( false );
 		let intervalID;
 		watch( doAutoRefresh, ( autoRefresh ) => {
 			if ( autoRefresh === true ) {
@@ -80,11 +81,15 @@ module.exports = {
 				clearInterval( intervalID );
 			}
 		} );
+		watch( () => _props.apiResult, ( newValue ) => {
+			hasValidStats.value = newValue.result === 'success';
+		} );
 		return {
 			cdxIconPlay,
 			cdxIconReload,
 			cdxIconStop,
-			doAutoRefresh
+			doAutoRefresh,
+			hasValidStats
 		};
 	},
 	computed: {
