@@ -252,6 +252,22 @@
 						anchor: 'banned'
 					},
 
+					dbg6: {
+						label: 'Housekeeping and non-controversial cleanup',
+						tag: 'speedy deletion-technical',
+						code: 'G6',
+						desc: 'A page that needs to be deleted to merge histories, reverse a redirect, or perform other non-controversial technical tasks. (G6)',
+						params: {
+							rationale: {
+								label: 'Rationale:',
+								input: 'optional',
+								type: 'text',
+								value: ''
+							}
+						},
+						anchor: 'housekeeping'
+					},
+
 					dbg7: {
 						label: 'Author requests deletion',
 						tag: 'speedy deletion-author request',

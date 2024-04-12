@@ -336,6 +336,21 @@ exports[`defaultTagsOptions defaultDeletionTagsOptions should match snapshot 2`]
           },
           "tag": "speedy deletion-blocked user",
         },
+        "dbg6": {
+          "anchor": "housekeeping",
+          "code": "G6",
+          "desc": "A page that needs to be deleted to merge histories, reverse a redirect, or perform other non-controversial technical tasks. (G6)",
+          "label": "Housekeeping and non-controversial cleanup",
+          "params": {
+            "rationale": {
+              "input": "optional",
+              "label": "Rationale:",
+              "type": "text",
+              "value": "",
+            },
+          },
+          "tag": "speedy deletion-technical",
+        },
         "dbg7": {
           "anchor": "blanked",
           "code": "G7",
