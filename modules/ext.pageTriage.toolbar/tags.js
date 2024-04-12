@@ -649,12 +649,13 @@ module.exports = ToolView.extend( {
 		if ( shouldWrap ) {
 			wrappedWikitext = '{{' + wrapper + '|' + tagWikitext + '\n}}';
 		}
-
 		if ( position === 'top' ) {
-			return wrappedWikitext + '\n' + articleWikitext;
+			if ( !this.isRedirect || ( this.isRedirect && tagWikitext !== 'redirectTag' ) ) {
+				return wrappedWikitext + '\n' + articleWikitext.replace( /^\s+/, '' );
+			}
+			return wrappedWikitext + articleWikitext.replace( /^\s+/, '' );
 		}
-		return articleWikitext + '\n' + wrappedWikitext;
-
+		return articleWikitext.replace( /^\s+/, '' ) + '\n' + wrappedWikitext;
 	},
 
 	/**

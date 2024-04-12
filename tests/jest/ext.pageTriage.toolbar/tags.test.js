@@ -130,7 +130,7 @@ PageTriage is the best.
 		toolbar.selectedTag = selectedTags;
 
 		return toolbar.submit().then( () => {
-			expect( applyTags ).toBeCalledWith( '\n#REDIRECT [[Hello]]\n{{Redirect category shell|\n{{R from initialism}}\n}}', [ 'r from initialism' ] );
+			expect( applyTags ).toBeCalledWith( '#REDIRECT [[Hello]]\n{{Redirect category shell|\n{{R from initialism}}\n}}', [ 'r from initialism' ] );
 		} );
 	} );
 
