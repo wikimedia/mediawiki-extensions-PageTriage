@@ -128,7 +128,7 @@
 	"pagetriage-info-problem-orphan-desc": "Engar aðrar síður tengjast þessari síðu.",
 	"pagetriage-info-problem-no-references": "Engar tilvísanir",
 	"pagetriage-info-problem-no-references-desc": "Þessi síða vísar ekki í heimildir.",
-	"pagetriage-info-timestamp-date-format": "d. MMMM yyyy",
+	"pagetriage-info-timestamp-date-format": "D. MMMM YYYY",
 	"pagetriage-info-tooltip": "Sýna lýsigögn fyrir þessa síðu",
 	"pagetriage-toolbar-learn-more": "Læra meira »",
 	"pagetriage-mark-title": "Merkja sem yfirfarna",
