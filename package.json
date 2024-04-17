@@ -5,6 +5,7 @@
 		"coverage": "npm -s run test:unit -- --coverage",
 		"test": "npm run lint && npm run -s test:unit",
 		"test:unit": "jest --silent",
+		"update-snapshot": "jest --updateSnapshot",
 		"selenium-daily": "npm run selenium-test",
 		"selenium-test": "wdio tests/selenium/wdio.conf.js",
 		"lint": "npm -s run lint:js && npm -s run lint:styles && npm -s run lint:i18n",
