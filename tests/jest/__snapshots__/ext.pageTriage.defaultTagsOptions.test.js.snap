@@ -466,7 +466,6 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "cleanup",
       },
       "copyedit": {
-        "common": true,
         "desc": "This page needs copy editing for grammar, style, cohesion, tone, and/or spelling.",
         "label": "Copy edit",
         "multiple": true,
@@ -699,6 +698,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "Histmerge",
       },
       "morecategories": {
+        "common": true,
         "desc": "This page may require additional categories.",
         "label": "Improve categories",
         "multiple": false,
@@ -903,7 +903,6 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "plot",
       },
       "underreview": {
-        "common": true,
         "desc": "You intend to assess the article but it will take some time. Tag to avoid patrolling redundancy.",
         "label": "Under review",
         "multiple": true,
@@ -1094,6 +1093,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
     "label": "Notability",
     "tags": {
       "notability": {
+        "common": true,
         "desc": "The page's subject may not meet the general notability guideline.",
         "label": "General",
         "multiple": true,
@@ -2247,6 +2247,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "No significant coverage",
       },
       "onesource": {
+        "common": true,
         "desc": "This page relies largely or entirely upon a single source.",
         "label": "Single source",
         "multiple": true,
