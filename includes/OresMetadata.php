@@ -199,7 +199,7 @@ class OresMetadata {
 	 * @param string $modelName
 	 * @param int[] $pageIds
 	 * @param array $extraConds
-	 * @return array|IResultWrapper
+	 * @return IResultWrapper
 	 */
 	private function getORESScores( $modelName, $pageIds, $extraConds = [] ) {
 		$dbr = PageTriageUtil::getReplicaConnection();
@@ -221,6 +221,6 @@ class OresMetadata {
 			->caller( __METHOD__ )
 			->fetchResultSet();
 
-		return $result ?: [];
+		return $result;
 	}
 }
