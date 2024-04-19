@@ -90,12 +90,37 @@ const ToolbarView = Backbone.View.extend( {
 			$( '#mwe-pt-toolbar-main' ).append( tool.place() );
 		} );
 
+		function calculatePosition( element, position ) {
+			const toolbarWidth = element.outerWidth( true );
+			const toolbarHeight = element.outerHeight( true );
+			const windowWidth = $( window ).width();
+			const windowHeight = $( window ).height();
+			const maxLeft = windowWidth - toolbarWidth;
+			const maxTop = windowHeight - toolbarHeight;
+			const left = Math.max( 0, Math.min( position.left, maxLeft ) );
+			const top = Math.max( 0, Math.min( position.top, maxTop ) );
+			return { left: left, top: top };
+		}
 		// make it draggable
 		$( '#mwe-pt-toolbar' ).draggable( {
-			containment: 'window', // keep the curation bar inside the window
+			start: function ( _event, ui ) {
+				$( this ).data( 'startPosition', ui.position );
+			},
+			drag: function ( _event, ui ) {
+				const newPosition = calculatePosition( $( this ), ui.position );
+				ui.position.left = newPosition.left;
+				ui.position.top = newPosition.top;
+			},
 			delay: 200, // these options prevent unwanted drags when attempting to click buttons
 			distance: 10,
 			cancel: '.mwe-pt-tool-content'
+		} );
+
+		$( window ).on( 'resize', function () {
+			toolbar = $( '#mwe-pt-toolbar' );
+			const position = { left: parseInt( toolbar.css( 'left' ), 10 ), top: parseInt( toolbar.css( 'top' ), 10 ) };
+			const newPosition = calculatePosition( toolbar, position );
+			toolbar.css( newPosition );
 		} );
 
 		const that = this;
