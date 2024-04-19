@@ -16,6 +16,11 @@ const contentLanguageMessages = new mw.Map();
  * @return {mw.Message}
  */
 const contentLanguageMessage = function ( key ) {
+	// Adding this assert to weed out issues caused by passing invalid/undefined message keys
+	// This code path should never be triggered unless there is a bug in surrounding code.
+	if ( !key ) {
+		throw new Error( 'Invalid message key passed into contentLanguageMessage()' );
+	}
 	const parameters = Array.prototype.slice.call( arguments, 1 );
 	// eslint-disable-next-line mediawiki/msg-doc
 	return new mw.Message( contentLanguageMessages, key, parameters );

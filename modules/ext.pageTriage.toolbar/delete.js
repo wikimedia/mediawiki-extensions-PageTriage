@@ -992,9 +992,16 @@ module.exports = ToolView.extend( {
 		}
 
 		const topicTitleKey = selected.talkpagenotiftopictitle;
-		const topicTitle = contentLanguageMessage( topicTitleKey, pageName ).text();
-
 		const templateName = selected.talkpagenotiftpl;
+
+		// If a talkpagenotiftopictitle or/and a talkpagenotiftpl is not associated
+		// with a deletion tag we should not be sending a talk page notification for
+		// that specific tag. Instead return a blank promise and continue with execution.
+		if ( !topicTitleKey || !templateName ) {
+			return $.Deferred().resolve();
+		}
+
+		const topicTitle = contentLanguageMessage( topicTitleKey, pageName ).text();
 
 		const template = '{{subst:' + templateName + '|' + pageName + paramsText + '}}';
 

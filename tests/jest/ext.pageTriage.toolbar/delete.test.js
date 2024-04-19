@@ -98,10 +98,28 @@ describe( 'DeleteToolView', () => {
 		} );
 	} );
 
-	test( 'notifyUser', () => {
+	test( 'notifyUser with no talk page template', () => {
 		const toolbar = new DeleteToolView( { eventBus, model } );
 		toolbar.selectedTag.tagKey = {
 			usesSubpages: false
+		};
+
+		const msg = toolbar.notifyUser( {
+			tagCount: 1,
+			tagKey: 'tagKey'
+		} );
+
+		return msg.then( function () {
+			expect( true ).toBe( true );
+		} );
+	} );
+
+	test( 'notifyUser with talk page template', () => {
+		const toolbar = new DeleteToolView( { eventBus, model } );
+		toolbar.selectedTag.tagKey = {
+			usesSubpages: false,
+			talkpagenotiftopictitle: 'pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title',
+			talkpagenotiftpl: 'Db-foreign-notice-NPF'
 		};
 
 		const msg = toolbar.notifyUser( {
