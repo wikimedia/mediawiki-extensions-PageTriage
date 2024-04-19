@@ -1,4 +1,4 @@
-( function () {
+$( function () {
 	let config;
 	if ( mw.config.get( 'wgPageTriageUserCanPatrol' ) ) {
 		config = require( './enqueue.js' );
@@ -8,12 +8,11 @@
 		return;
 	}
 
-	const sideBarLink =
-		mw.util.addPortletLink.apply( null, config.portletConfig );
+	const sideBarLink = mw.util.addPortletLink( ...config.portletConfig );
 
 	sideBarLink.addEventListener( 'click', () => {
 		mw.loader.using( [ 'oojs-ui-core' ] ).then( () => {
 			config.onClick();
 		} );
 	} );
-}() );
+} );
