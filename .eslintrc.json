@@ -10,11 +10,11 @@
 		"jest": true
 	},
 	"globals": {
-		"Backbone": false,
-		"_": false,
-		"mediaWiki": false,
-		"jQuery": false,
-		"moment": false
+		"Backbone": "readonly",
+		"_": "readonly",
+		"mediaWiki": "readonly",
+		"jQuery": "readonly",
+		"moment": "readonly"
 	},
 	"rules": {
 		"compat/compat": "off",
