@@ -20,7 +20,6 @@
 		"compat/compat": "warn",
 		"no-jquery/no-global-selector": "off",
 		"no-jquery/no-sizzle": "warn",
-		"no-jquery/variable-pattern": "warn",
 		"no-restricted-syntax": [
 			"error",
 			{

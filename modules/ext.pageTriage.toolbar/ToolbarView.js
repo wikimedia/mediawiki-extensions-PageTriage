@@ -10,7 +10,6 @@ const article = new Article( {
 	pageId: mw.config.get( 'wgArticleId' ),
 	includeHistory: true
 } );
-let toolbar;
 // array of tool instances
 let tools;
 
@@ -117,10 +116,10 @@ const ToolbarView = Backbone.View.extend( {
 		} );
 
 		$( window ).on( 'resize', function () {
-			toolbar = $( '#mwe-pt-toolbar' );
-			const position = { left: parseInt( toolbar.css( 'left' ), 10 ), top: parseInt( toolbar.css( 'top' ), 10 ) };
-			const newPosition = calculatePosition( toolbar, position );
-			toolbar.css( newPosition );
+			const $toolbar = $( '#mwe-pt-toolbar' );
+			const position = { left: parseInt( $toolbar.css( 'left' ), 10 ), top: parseInt( $toolbar.css( 'top' ), 10 ) };
+			const newPosition = calculatePosition( $toolbar, position );
+			$toolbar.css( newPosition );
 		} );
 
 		const that = this;
@@ -292,7 +291,7 @@ module.exports = {
 					success: function () {
 						// create an instance of the toolbar view
 						const el = document.getElementById( 'mw-pagetriage-toolbar' );
-						toolbar = new ToolbarView( Object.assign( options, { el, eventBus } ) );
+						const toolbar = new ToolbarView( Object.assign( options, { el, eventBus } ) );
 						toolbar.render();
 						article.set( 'successfulModelLoading', 1 );
 					}
