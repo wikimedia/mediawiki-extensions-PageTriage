@@ -29,32 +29,51 @@
 						</span>
 						<span class="mwe-vue-pt-problem-chips-container">
 							<template v-if="!isDraft">
-								<cdx-info-chip v-if="categoryCount === 0 && !isRedirect" class="mwe-vue-pt-problem-chip">
+								<cdx-info-chip
+									v-if="categoryCount === 0 && !isRedirect"
+									class="mwe-vue-pt-problem-chip"
+								>
 									{{ $i18n( 'pagetriage-no-categories' ).text() }}
 								</cdx-info-chip>
-								<cdx-info-chip v-if="linkCount === 0 && !isRedirect" class="mwe-vue-pt-problem-chip">
-									<a :href="whatLinksHereLink">{{ $i18n( 'pagetriage-orphan' ).text() }}</a>
+								<cdx-info-chip
+									v-if="linkCount === 0 && !isRedirect"
+									class="mwe-vue-pt-problem-chip"
+								>
+									<a :href="whatLinksHereLink">
+										{{ $i18n( 'pagetriage-orphan' ).text() }}
+									</a>
 								</cdx-info-chip>
 								<cdx-info-chip v-if="recreated" class="mwe-vue-pt-problem-chip">
-									<a :href="previouslyDeletedLogLink">{{ $i18n( 'pagetriage-recreated' ).text() }}</a>
+									<a :href="previouslyDeletedLogLink">
+										{{ $i18n( 'pagetriage-recreated' ).text() }}
+									</a>
 								</cdx-info-chip>
 							</template>
-							<cdx-info-chip v-if="referenceCount === 0 && !isRedirect" class="mwe-vue-pt-problem-chip">
+							<cdx-info-chip
+								v-if="referenceCount === 0 && !isRedirect"
+								class="mwe-vue-pt-problem-chip"
+							>
 								{{ $i18n( 'pagetriage-no-reference' ).text() }}
 							</cdx-info-chip>
 							<cdx-info-chip v-if="creatorBlocked" class="mwe-vue-pt-problem-chip">
-								<a :href="blockLogLink">{{ $i18n( 'pagetriage-author-blocked' ).text() }}</a>
+								<a :href="blockLogLink">
+									{{ $i18n( 'pagetriage-author-blocked' ).text() }}
+								</a>
 							</cdx-info-chip>
 							<cdx-info-chip v-if="oresDraftQuality" class="mwe-vue-pt-problem-chip">
 								{{ oresDraftQuality }}
 							</cdx-info-chip>
-							<cdx-info-chip v-if="copyvio && showCopyvio" class="mw-parser-output mwe-vue-pt-problem-chip">
+							<cdx-info-chip
+								v-if="copyvio && showCopyvio"
+								class="mw-parser-output mwe-vue-pt-problem-chip"
+							>
 								<a
 									:href="copyvioLink"
 									target="_blank"
 									class="external"
 								>
-									{{ $i18n( 'pagetriage-filter-stat-predicted-issues-copyvio' ).text() }}
+									{{ $i18n( 'pagetriage-filter-stat-predicted-issues-copyvio' )
+										.text() }}
 								</a>
 							</cdx-info-chip>
 						</span>
@@ -76,8 +95,12 @@
 			<div class="mwe-vue-pt-info-row">
 				<div class="mwe-vue-pt-info-row-block-left">
 					<div>
-						<!-- if the username is suppressed, present it the same way as in core changelists -->
-						<span v-if="creatorHidden" class="history-deleted mw-history-suppressed mw-userlink">
+						<!-- if the username is suppressed, present it the same way as in core
+						changelists -->
+						<span
+							v-if="creatorHidden"
+							class="history-deleted mw-history-suppressed mw-userlink"
+						>
 							{{ $i18n( 'rev-deleted-user' ).text() }}
 						</span>
 						<span v-else-if="creatorName">
@@ -91,7 +114,8 @@
 							></creator-byline>
 							<span v-if="creatorUserId > 0">
 								{{ $i18n( 'pagetriage-dot-separator' ).text() }}
-								{{ $i18n( 'pagetriage-editcount', creatorEditCount, creatorRegistrationPretty ).text() }}
+								{{ $i18n( 'pagetriage-editcount', creatorEditCount,
+									creatorRegistrationPretty ).text() }}
 								<span v-if="creatorIsBot">
 									{{ $i18n( 'pagetriage-dot-separator' ).text() }}
 									{{ $i18n( 'pagetriage-author-bot' ).text() }}
@@ -225,7 +249,8 @@ module.exports = {
 				].indexOf( value ) !== -1;
 			}
 		},
-		// copyvio tag; latest revision ID that has been tagged as a likely copyright violation. 0 if not tagged.
+		// copyvio tag; latest revision ID that has been tagged as a likely copyright violation.
+		// 0 if not tagged.
 		copyvio: { type: Number, required: true },
 		// patrol status codes
 		// see: https://www.mediawiki.org/wiki/Extension:PageTriage#Status_codes
@@ -344,7 +369,8 @@ module.exports = {
 			return Math.ceil( ( now - creationDateParsed ) / ( 1000 * 60 ) );
 		},
 		newArticleWarning: function () {
-			return ( ( this.isDraft === undefined || this.isDraft === false ) && ( this.articleAge <= 60 ) );
+			const isNotDraft = this.isDraft === undefined || this.isDraft === false;
+			return ( isNotDraft && this.articleAge <= 60 );
 		},
 		creatorRegistrationPretty: function () {
 			return this.prettyTimestamp( this.creatorRegistrationUTC, false );

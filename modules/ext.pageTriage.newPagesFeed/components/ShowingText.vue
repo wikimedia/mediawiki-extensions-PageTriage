@@ -9,8 +9,12 @@
 				{{ groupShowing }}
 			</cdx-info-chip>
 		</template>
-		<div v-show="settings.currentFilteredCount !== -1" class="mwe-vue-pt-control-label-right mwe-vue-pt-filter-count">
-			{{ $i18n( 'pagetriage-stats-filter-page-count', settings.currentFilteredCount ).text() }}
+		<div
+			v-show="settings.currentFilteredCount !== -1"
+			class="mwe-vue-pt-control-label-right mwe-vue-pt-filter-count"
+		>
+			{{ $i18n( 'pagetriage-stats-filter-page-count', settings.currentFilteredCount )
+				.text() }}
 		</div>
 	</div>
 </template>

@@ -137,7 +137,8 @@
 			label: 'Common',
 			alias: true,
 			tags: {
-			// This will be filled up on the fly depending on the value of the "common" parameter for each individual tag
+				// This will be filled up on the fly depending on the value of the "common"
+				// parameter for each individual tag
 			}
 		},
 

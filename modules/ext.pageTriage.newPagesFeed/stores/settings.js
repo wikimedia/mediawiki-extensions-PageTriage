@@ -88,7 +88,8 @@ const filtersToParams = {
 };
 
 const initState = () => {
-	// Named users store params ( user-centric ) in a user option, other users store params in localStorage ( client-centric )
+	// Named users store params ( user-centric ) in a user option, other users store params
+	// in localStorage ( client-centric )
 	const stored = mw.user.options.get( 'userjs-NewPagesFeedFilterOptions', localStorage.getItem( 'userjs-NewPagesFeedFilterOptions' ) );
 	return {
 		immediate: JSON.parse( JSON.stringify( defaultImmediate ) ),
@@ -220,7 +221,8 @@ module.exports = {
 					this.unsaved.nppIncludeNominated = !!this.params.showdeleted;
 					this.unsaved.nppIncludeRedirects = !!this.params.showredirs;
 					this.unsaved.nppIncludeOthers = !!this.params.showothers;
-					this.oresParamsToFilters( this.unsaved.nppPossibleIssues, this.unsaved.nppPredictedRating );
+					this.oresParamsToFilters( this.unsaved.nppPossibleIssues,
+						this.unsaved.nppPredictedRating );
 					this.nppParamsToFilters();
 					this.dateParamsToFilters( this.unsaved.nppDate );
 				// AFC-specific settings
@@ -228,7 +230,8 @@ module.exports = {
 					this.immediate.afcSortDir = this.params.dir;
 					this.unsaved.afcSubmissionState = this.afcStateParamToFilter();
 					this.afcParamsToFilters();
-					this.oresParamsToFilters( this.unsaved.afcPossibleIssues, this.unsaved.afcPredictedRating );
+					this.oresParamsToFilters( this.unsaved.afcPossibleIssues,
+						this.unsaved.afcPredictedRating );
 					this.dateParamsToFilters( this.unsaved.afcDate );
 				}
 				// Apply new form settings
@@ -261,7 +264,8 @@ module.exports = {
 			updateFilteredCount: function ( val ) {
 				this.currentFilteredCount = val;
 			},
-			// Add boolean form value as numeric API parameter if set, otherwise delete from parameters
+			// Add boolean form value as numeric API parameter if set, otherwise delete
+			// from parameters
 			addIfToggled: function ( paramName, optionToggle ) {
 				if ( optionToggle ) {
 					this.params[ paramName ] = 1;
@@ -308,7 +312,8 @@ module.exports = {
 				} else {
 					// unset username when another filter is selected
 					this.unsaved.nppFilterUser = '';
-					// everything else is logically boolean and should set a numeric API parameter if defined
+					// everything else is logically boolean and should set a numeric API
+					// parameter if defined
 					if ( filtersToParams[ this.applied.nppFilter ] !== undefined ) {
 						this.params[ filtersToParams[ this.applied.nppFilter ] ] = 1;
 					}
@@ -321,7 +326,8 @@ module.exports = {
 				} else {
 					// unset username when another filter is selected
 					this.unsaved.afcFilterUser = '';
-					// everything else is logically boolean and should set a numeric API parameter if defined
+					// everything else is logically boolean and should set a numeric API
+					// parameter if defined
 					if ( filtersToParams[ this.applied.afcFilter ] !== undefined ) {
 						this.params[ filtersToParams[ this.applied.afcFilter ] ] = 1;
 					}

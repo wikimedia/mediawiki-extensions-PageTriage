@@ -1,7 +1,10 @@
 <template>
 	<control-section label-msg="pagetriage-filter-date-range-heading">
 		<div class="mwe-vue-date-container">
-			<label class="mwe-vue-date-label" :for="`mwe-vue-pt-filter-${type}-date-range-from`">{{ $i18n( 'pagetriage-filter-date-range-from' ).text() }}</label>
+			<label
+				class="mwe-vue-date-label"
+				:for="`mwe-vue-pt-filter-${type}-date-range-from`"
+			>{{ $i18n( 'pagetriage-filter-date-range-from' ).text() }}</label>
 			<cdx-text-input
 				:id="`mwe-vue-pt-filter-${type}-date-range-from`"
 				input-type="date"
@@ -10,7 +13,10 @@
 			></cdx-text-input>
 		</div>
 		<div class="mwe-vue-date-container">
-			<label class="mwe-vue-date-label" :for="`mwe-vue-pt-filter-${type}-date-range-to`">{{ $i18n( 'pagetriage-filter-date-range-to' ).text() }}</label>
+			<label
+				class="mwe-vue-date-label"
+				:for="`mwe-vue-pt-filter-${type}-date-range-to`"
+			>{{ $i18n( 'pagetriage-filter-date-range-to' ).text() }}</label>
 			<cdx-text-input
 				:id="`mwe-vue-pt-filter-${type}-date-range-to`"
 				input-type="date"

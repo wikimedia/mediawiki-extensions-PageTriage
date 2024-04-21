@@ -23,12 +23,21 @@
 				</cdx-button>
 			</div>
 			<div v-if="showStats">
-				<div>{{ $i18n( 'pagetriage-unreviewed-article-count', unreviewedArticleCount, unreviewedRedirectCount, unreviewedOldest ).text() }}</div>
+				<div>
+					{{ $i18n( 'pagetriage-unreviewed-article-count', unreviewedArticleCount,
+						unreviewedRedirectCount, unreviewedOldest ).text() }}
+				</div>
 
-				<div>{{ $i18n( 'pagetriage-reviewed-article-count-past-week', reviewedArticleCount, reviewedRedirectCount ).text() }}</div>
+				<div>
+					{{ $i18n( 'pagetriage-reviewed-article-count-past-week', reviewedArticleCount,
+						reviewedRedirectCount ).text() }}
+				</div>
 			</div>
 			<div v-else-if="showDraftStats">
-				<div>{{ $i18n( 'pagetriage-unreviewed-draft-count', unreviewedDraftCount, unreviewedOldestDraft ).text() }}</div>
+				<div>
+					{{ $i18n( 'pagetriage-unreviewed-draft-count', unreviewedDraftCount,
+						unreviewedOldestDraft ).text() }}
+				</div>
 			</div>
 		</div>
 	</div>

@@ -18,7 +18,10 @@
 					id="mwe-vue-pt-control-dropdown"
 					class="mwe-vue-pt-control-gradient"
 				>
-					<div v-show="settings.immediate.queueMode === 'npp'" class="mwe-vue-pt-control-section__row1">
+					<div
+						v-show="settings.immediate.queueMode === 'npp'"
+						class="mwe-vue-pt-control-section__row1"
+					>
 						<div class="mwe-vue-pt-control-section__col1">
 							<control-section
 								v-if="namespaceOptions.length > 1"
@@ -97,7 +100,10 @@
 						</div>
 					</div>
 
-					<div v-show="settings.immediate.queueMode === 'afc'" class="mwe-vue-pt-control-section__row1">
+					<div
+						v-show="settings.immediate.queueMode === 'afc'"
+						class="mwe-vue-pt-control-section__row1"
+					>
 						<div class="mwe-vue-pt-control-section__col1">
 							<control-section label-msg="pagetriage-filter-show-heading">
 								<afc-state-radio v-model:state="settings.unsaved.afcSubmissionState"
@@ -124,7 +130,9 @@
 						</control-section>
 						<template v-if="showOresFilters">
 							<div class="mwe-vue-pt-control-section__col3">
-								<control-section label-msg="pagetriage-filter-predicted-class-heading">
+								<control-section
+									label-msg="pagetriage-filter-predicted-class-heading"
+								>
 									<labeled-checkbox
 										v-for="( _, rating ) in settings.unsaved.afcPredictedRating"
 										:key="`${rating}-${settings.unsaved.afcPredictedRating[ rating ]}`"
@@ -133,7 +141,9 @@
 									>
 									</labeled-checkbox>
 								</control-section>
-								<control-section label-msg="pagetriage-filter-predicted-issues-heading">
+								<control-section
+									label-msg="pagetriage-filter-predicted-issues-heading"
+								>
 									<labeled-checkbox
 										v-for="( _, issue ) in settings.unsaved.afcPossibleIssues"
 										:key="`${issue}-${settings.unsaved.afcPossibleIssues[ issue ]}`"
@@ -165,10 +175,16 @@
 					</div>
 				</div>
 			</div>
-			<div v-show="settings.immediate.queueMode === 'npp'" class="mwe-vue-pt-control-label-right mwe-vue-pt-sort-section">
+			<div
+				v-show="settings.immediate.queueMode === 'npp'"
+				class="mwe-vue-pt-control-label-right mwe-vue-pt-sort-section"
+			>
 				<npp-sort-dir-radio></npp-sort-dir-radio>
 			</div>
-			<div v-show="settings.immediate.queueMode === 'afc'" class="mwe-vue-pt-control-label-right mwe-vue-pt-sort-section">
+			<div
+				v-show="settings.immediate.queueMode === 'afc'"
+				class="mwe-vue-pt-control-label-right mwe-vue-pt-sort-section"
+			>
 				<afc-sort-select></afc-sort-select>
 			</div>
 		</div>

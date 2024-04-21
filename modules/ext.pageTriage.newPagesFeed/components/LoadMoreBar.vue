@@ -1,7 +1,8 @@
 <template>
 	<div id="loadMoreBar" ref="barRef">
 		<div id="mwe-vue-pt-feed-load-more" :class="!haveMore ? 'mwe-pt-hidden' : null">
-			<cdx-progress-bar :aria-label="$i18n( 'pagetriage-please-wait' ).text()" :inline="true"></cdx-progress-bar>
+			<cdx-progress-bar :aria-label="$i18n( 'pagetriage-please-wait' ).text()" :inline="true">
+			</cdx-progress-bar>
 		</div>
 	</div>
 </template>

@@ -52,13 +52,21 @@ const ToolbarView = Backbone.View.extend( {
 				// FIXME or describe why it is okay
 				// eslint-disable-next-line security/detect-non-literal-require
 				const ToolViewClass = require( './' + potentialToolName + '.js' );
-				tools.push( new ToolViewClass( { eventBus: eventBus, model: article, moduleConfig: modules[ potentialToolName ] } ) );
+				tools.push( new ToolViewClass( {
+					eventBus: eventBus,
+					model: article,
+					moduleConfig: modules[ potentialToolName ]
+				} ) );
 			}
 		}
 
 		// next article, should be always on
 		const NextView = require( './next.js' );
-		tools.push( new NextView( { eventBus: eventBus, model: article, tbVersion: this.tbVersion } ) );
+		tools.push( new NextView( {
+			eventBus: eventBus,
+			model: article,
+			tbVersion: this.tbVersion
+		} ) );
 	},
 
 	/**
@@ -291,7 +299,9 @@ module.exports = {
 					success: function () {
 						// create an instance of the toolbar view
 						const el = document.getElementById( 'mw-pagetriage-toolbar' );
-						const toolbar = new ToolbarView( Object.assign( options, { el, eventBus } ) );
+						const toolbar = new ToolbarView(
+							Object.assign( options, { el, eventBus } )
+						);
 						toolbar.render();
 						article.set( 'successfulModelLoading', 1 );
 					}

@@ -11,8 +11,9 @@
 <script>
 /**
  * @author DannyS712
- * 'newestreview' and 'oldestreview' are used for both newest/oldest submitted and newest/oldest declined,
- * PageTriage adds one or the other, we just change the label - only shown when filtering for submitted, under review, or declined
+ * 'newestreview' and 'oldestreview' are used for both newest/oldest submitted and
+ * newest/oldest declined, PageTriage adds one or the other, we just change the label -
+ * only shown when filtering for submitted, under review, or declined
  */
 const { CdxSelect } = require( '@wikimedia/codex' );
 const { storeToRefs } = require( 'pinia' );
