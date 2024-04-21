@@ -31,7 +31,7 @@
 		"@wikimedia/codex-icons": "1.4.0",
 		"@wikimedia/mw-node-qunit": "7.2.0",
 		"babel-jest": "^29.6.1",
-		"eslint": "^8.36.0",
+		"eslint": "8.57.0",
 		"eslint-config-wikimedia": "0.27.0",
 		"eslint-plugin-vue": "^9.21.1",
 		"grunt-banana-checker": "0.11.1",
