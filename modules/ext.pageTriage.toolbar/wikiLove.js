@@ -110,7 +110,7 @@ module.exports = ToolView.extend( {
 			.button( { icons: { secondary: 'ui-icon-triangle-1-e' } } )
 			.on( 'click', function ( e ) {
 				e.preventDefault();
-				const recipients = $( 'input:checkbox:checked.mwe-pt-recipient-checkbox' ).map( function () {
+				const recipients = $( '.mwe-pt-recipient-checkbox:checked' ).map( function () {
 					return this.value;
 				} ).get();
 				$.wikiLove.openDialog( recipients, [ 'pagetriage' ] );

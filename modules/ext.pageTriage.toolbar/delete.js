@@ -373,7 +373,7 @@ module.exports = ToolView.extend( {
 
 				// if user unchecks a checkbox and there is an adjacent paramsForm
 				// that will be closed by this action, decrease the counter
-				if ( $( '#mwe-pt-delete-params-form-' + tagKey ).is( ':visible' ) ) {
+				if ( $( '#mwe-pt-delete-params-form-' + tagKey ).css( 'display' ) === 'block' ) {
 					that.visibleParamsFormCount--;
 					that.refreshSubmitButton();
 				}
