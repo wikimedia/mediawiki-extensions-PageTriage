@@ -573,7 +573,7 @@ module.exports = ToolView.extend( {
 	 *
 	 * @param {string} wikitext
 	 * @param {string} tag
-	 * @return {string} The wikitext corresponding to the tag
+	 * @return {string|void} The wikitext corresponding to the tag
 	 */
 	extractTagFromWikitext: function ( wikitext, tag ) {
 		const tagStart = '{{' + tag;
