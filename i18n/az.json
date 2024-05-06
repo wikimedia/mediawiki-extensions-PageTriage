@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Nemoralis",
 			"Patriot Kor",
 			"Wertuose",
 			"Гусейн"
@@ -8,7 +9,7 @@
 	},
 	"pagetriage-bytes": "$1 bayt",
 	"pagetriage-edits": "$1 {{PLURAL:$1|redaktə|redaktə}}",
-	"pagetriage-auto-refresh-list": "Avto-nujə karde",
+	"pagetriage-auto-refresh-list": "Avtoyenilənmə",
 	"pagetriage-info-help": "kömək",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|redaktə|redaktə}}"
 }

@@ -4,6 +4,7 @@
 			"Anarhistička Maca",
 			"Bugoslav",
 			"Fitoschido",
+			"MaGa",
 			"Ponor"
 		]
 	},
@@ -239,7 +240,7 @@
 	"pagetriage-tag-deletion-error": "Stranica je već označena predloškom za brisanje. Postupak obustavljen.",
 	"pagetriage-toolbar-close": "Zatvori",
 	"pagetriage-toolbar-minimize": "Smanji",
-	"pagetriage-tag-warning-notice": "Napomena: Ova stranica stvorena je prije samo $1 {{PLURAL:$1|minutu|minute|minuta}}. Razmotrite pričekati prije nego je označite, osim ako je slučaj seriozan.",
+	"pagetriage-tag-warning-notice": "Ova je stranica stvorena prije samo $1 {{PLURAL:$1|minute|minute|minuta}}. Molimo nemojte žuriti s označavanjem stranica koje su na početku reda čekanja. Suradnici ih možda još uređuju.",
 	"pagetriage-afc-state": "Stanje",
 	"pagetriage-afc-state-all": "Svi",
 	"pagetriage-afc-state-declined": "Odbačeno",
