@@ -35,9 +35,11 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 		// Create a page in the Draft namespace and confirm that it hasn't been added to the
 		// PageTriage queue.
 		$testPage = $this->insertPage( self::class . 'Test1', '', $this->draftNsId );
-		$this->assertSelect( 'pagetriage_page', 'ptrp_page_id',
-			[ 'ptrp_page_id' => $testPage['id'] ], []
-		);
+		$this->newSelectQueryBuilder()
+			->select( 'ptrp_page_id' )
+			->from( 'pagetriage_page' )
+			->where( [ 'ptrp_page_id' => $testPage['id'] ] )
+			->assertEmptyResult();
 
 		// Enable Drafts mode in PageTriage, and run the maintenance script.
 		$this->setMwGlobals( 'wgPageTriageDraftNamespaceId', $this->draftNsId );
@@ -83,9 +85,10 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 			'#REDIRECT [[Non-draft page]]', $this->draftNsId
 		);
 		// No extra pages in the queue to start with.
-		$this->assertSelect( [ 'pagetriage_page' ], [ 'count' => 'COUNT(*)' ], [],
-			[ [ $initialCount ] ]
-		);
+		$this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'pagetriage_page' )
+			->assertFieldValue( $initialCount );
 
 		// Enable Drafts mode in PageTriage, and run the maintenance script.
 		$this->setMwGlobals( 'wgPageTriageDraftNamespaceId', $this->draftNsId );
@@ -97,18 +100,18 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 		);
 
 		// Now there are 10 more pages in the queue, 5 of them with the afc_state tag for 'pending'.
-		$this->assertSelect( [ 'pagetriage_page' ], [ 'count' => 'COUNT(*)' ], [],
-			[ [ 10 + $initialCount ] ]
-		);
-		$this->assertSelect(
-			[ 'pagetriage_page_tags', 'pagetriage_tags' ],
-			[ 'COUNT(*)' ],
-			[
-				'ptrpt_tag_id = ptrt_tag_id',
+		$this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'pagetriage_page' )
+			->assertFieldValue( 10 + $initialCount );
+		$this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'pagetriage_page_tags' )
+			->join( 'pagetriage_tags', null, 'ptrpt_tag_id = ptrt_tag_id' )
+			->where( [
 				'ptrt_tag_name' => 'afc_state',
 				'ptrpt_value' => (string)ArticleCompileAfcTag::PENDING,
-			],
-			[ [ 5 + $initialAfCPendingCount ] ]
-		);
+			] )
+			->assertFieldValue( 5 + $initialAfCPendingCount );
 	}
 }
