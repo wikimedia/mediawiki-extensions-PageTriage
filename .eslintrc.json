@@ -19,7 +19,6 @@
 	"rules": {
 		"compat/compat": "warn",
 		"no-jquery/no-global-selector": "off",
-		"no-jquery/no-sizzle": "warn",
 		"no-restricted-syntax": [
 			"error",
 			{
