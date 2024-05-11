@@ -782,6 +782,17 @@
 					},
 					position: 'top',
 					multiple: true
+				},
+
+				onlyprimarysources: {
+					label: 'Only primary sources',
+					tag: 'Only primary sources',
+					desc: 'This page only references primary sources.',
+					params: {
+						date: param.date
+					},
+					position: 'top',
+					multiple: true
 				}
 			}
 		},

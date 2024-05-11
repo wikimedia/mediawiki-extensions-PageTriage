@@ -2262,6 +2262,21 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "position": "top",
         "tag": "one source",
       },
+      "onlyprimarysources": {
+        "desc": "This page only references primary sources.",
+        "label": "Only primary sources",
+        "multiple": true,
+        "params": {
+          "date": {
+            "input": "automated",
+            "label": "pagetriage-tags-param-date-label",
+            "type": "hidden",
+            "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
+          },
+        },
+        "position": "top",
+        "tag": "Only primary sources",
+      },
       "originalresearch": {
         "desc": "This page has original research or unverified claims.",
         "label": "Original research",
