@@ -655,7 +655,7 @@ module.exports = ToolView.extend( {
 	/**
 	 * Submit the selected tags
 	 *
-	 * @return {jQuery.Promise} A promise that resolves either when the page is
+	 * @return {jQuery.Promise|void} A promise that resolves either when the page is
 	 * tagged or if an error occurs.
 	 */
 	submit: function () {
@@ -871,7 +871,7 @@ module.exports = ToolView.extend( {
 	/**
 	 * Add deletion tag template to the page
 	 *
-	 * @return {jQuery.Promise} A promise. Resolves if successful, rejects with
+	 * @return {jQuery.Promise|void} A promise. Resolves if successful, rejects with
 	 * an `Error` if not. The resolved promise is an Object with the key `tagCount`
 	 * (the number of tags added to the page) and the key `tagKey` (the key
 	 * of the tag added to the page).
@@ -967,7 +967,7 @@ module.exports = ToolView.extend( {
 	 * @param {Object} data The data returned by `tagPage`
 	 * @param {number} data.count The number of deletion tags added
 	 * @param {string} data.key The key of the added deletion tag (if only one tag was added)
-	 * @return {jQuery.Promise} A promise. Resolves if successful, rejects with
+	 * @return {jQuery.Promise|void} A promise. Resolves if successful, rejects with
 	 * an `Error` if not.
 	 */
 	notifyUser: function ( data ) {
@@ -1060,7 +1060,7 @@ module.exports = ToolView.extend( {
 	 * @param {string} data.title The title of the log page
 	 * @param {string} data.oldText The current content of the log page
 	 * @param {Object} data.tagObj
-	 * @return {jQuery.Promise} A promise. Resolves if successful, rejects with
+	 * @return {jQuery.Promise|void} A promise. Resolves if successful, rejects with
 	 * an `Error` if not.
 	 */
 	addToLog: function ( data ) {
@@ -1106,7 +1106,7 @@ module.exports = ToolView.extend( {
 	 * Generate an AFD discussion page
 	 *
 	 * @param {Object} tagObj
-	 * @return {jQuery.Promise} A promise. Resolves if successful, rejects with
+	 * @return {jQuery.Promise|void} A promise. Resolves if successful, rejects with
 	 * an `Error` if not.
 	 */
 	makeDiscussionPage: function ( tagObj ) {
