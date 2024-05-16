@@ -64,7 +64,7 @@
 								{{ oresDraftQuality }}
 							</cdx-info-chip>
 							<cdx-info-chip
-								v-if="copyvio && showCopyvio"
+								v-if="copyvioNumber && showCopyvio"
 								class="mw-parser-output mwe-vue-pt-problem-chip"
 							>
 								<a
@@ -251,7 +251,7 @@ module.exports = {
 		},
 		// copyvio tag; latest revision ID that has been tagged as a likely copyright violation.
 		// 0 if not tagged.
-		copyvio: { type: Number, required: true },
+		copyvio: { type: [ Number, String ], required: true },
 		// patrol status codes
 		// see: https://www.mediawiki.org/wiki/Extension:PageTriage#Status_codes
 		patrolStatus: {
@@ -417,6 +417,10 @@ module.exports = {
 				hideredirs: 1,
 				target: this.title
 			} );
+		},
+		copyvioNumber: function () {
+			const copyvioValue = parseInt( this.copyvio );
+			return isNaN( copyvioValue ) ? 0 : copyvioValue;
 		}
 	},
 	methods: {
