@@ -301,7 +301,7 @@
 	"group-copyviobot": "Robots de violation de derectos de autor",
 	"group-copyviobot-member": "{{GENDER:$1|robot de violation de derectos de autor}}",
 	"tag-pagetriage": "Triage de paginas",
-	"tag-pagetriage-description": "Pro modificationes facite con le [[mw:Special:MyLanguage/Extension:PageTriage|extension PageTriage]]",
+	"tag-pagetriage-description": "Pro modificationes facite con le [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:PageTriage extension PageTriage]",
 	"apihelp-pagetriageaction-summary": "Marcar un articulo como revidite o non revidite.",
 	"apihelp-pagetriageaction-param-pageid": "ID del pagina sur le qual le action es effectuate.",
 	"apihelp-pagetriageaction-param-reviewed": "Si le pagina debe esser marcate como revidite",

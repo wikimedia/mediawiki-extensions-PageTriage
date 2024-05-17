@@ -321,7 +321,7 @@
 	"group-copyviobot": "Robots voor schending van auteursrechten",
 	"group-copyviobot-member": "{{GENDER:$1|robot voor schending van auteursrechten}}",
 	"tag-pagetriage": "PageTriage",
-	"tag-pagetriage-description": "Voor bewerkingen gemaakt met de [[mw:Special:MyLanguage/Extension:PageTriage|uitbreiding PageTriage]]",
+	"tag-pagetriage-description": "Voor bewerkingen die zijn gemaakt met de [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:PageTriage uitbreiding PageTriage]",
 	"apihelp-pagetriageaction-summary": "Een artikel markeren als beoordeeld of niet beoordeeld.",
 	"apihelp-pagetriageaction-param-pageid": "ID van de pagina waarop de handeling wordt verricht.",
 	"apihelp-pagetriageaction-param-reviewed": "Of de pagina als beoordeeld gemarkeerd moet worden",
