@@ -3,7 +3,7 @@
 		v-for="radio in thatRadios"
 		:key="radio.value"
 		v-model="selected"
-		name="npp-filter-radio-group"
+		:name="type + '-filter-radio-group'"
 		:input-value="radio.value"
 		@click="$emit( 'update:filter', radio.value )"
 	>
@@ -18,7 +18,7 @@
 				:id="`mwe-vue-pt-filter-radio-${radio.value}`"
 				:ref="radio.value"
 				v-model="selected"
-				name="npp-filter-radio-group"
+				:name="type + '-filter-radio-group'"
 				:input-value="radio.value"
 				:inline="radio.inline"
 				@click="$emit( 'update:filter', radio.value )"
@@ -38,7 +38,7 @@
 	</fieldset>
 	<cdx-radio
 		v-model="selected"
-		name="npp-filter-radio-group"
+		:name="type + '-filter-radio-group'"
 		input-value="all"
 		@click="$emit( 'update:filter', 'all' )"
 	>
