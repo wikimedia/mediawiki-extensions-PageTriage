@@ -15,9 +15,9 @@ describe( 'defaultTagsOptions', () => {
 	} );
 
 	test( 'defaultTagsOptions should exist', () => {
-		expect( defaultTagsOptions.$.pageTriageTagsRedirectCategoryShell ).not.toBe( undefined );
-		expect( defaultTagsOptions.$.pageTriageTagsMultiple ).not.toBe( undefined );
-		expect( defaultTagsOptions.$.pageTriageTagsOptions ).not.toBe( undefined );
+		expect( defaultTagsOptions.tags.redirectCategoryShell ).not.toBe( undefined );
+		expect( defaultTagsOptions.tags.multiple ).not.toBe( undefined );
+		expect( defaultTagsOptions.tags.tagOptions ).not.toBe( undefined );
 	} );
 
 	test( 'defaultDeletionTagsOptions should exist', () => {
@@ -26,9 +26,9 @@ describe( 'defaultTagsOptions', () => {
 	} );
 
 	test( 'defaultTagsOptions should match snapshot', () => {
-		expect( defaultTagsOptions.$.pageTriageTagsRedirectCategoryShell ).toMatchSnapshot();
-		expect( defaultTagsOptions.$.pageTriageTagsMultiple ).toMatchSnapshot();
-		expect( defaultTagsOptions.$.pageTriageTagsOptions ).toMatchSnapshot();
+		expect( defaultTagsOptions.tags.redirectCategoryShell ).toMatchSnapshot();
+		expect( defaultTagsOptions.tags.multiple ).toMatchSnapshot();
+		expect( defaultTagsOptions.tags.tagOptions ).toMatchSnapshot();
 	} );
 
 	test( 'defaultDeletionTagsOptions should match snapshot', () => {
