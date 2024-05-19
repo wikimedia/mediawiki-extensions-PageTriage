@@ -580,7 +580,7 @@
 			"packageFiles": [
 				"ext.pageTriage.defaultTagsOptions/main.js",
 				"ext.pageTriage.defaultTagsOptions/tags.json",
-				"ext.pageTriage.defaultTagsOptions/ext.pageTriage.defaultDeletionTagsOptions.js"
+				"ext.pageTriage.defaultTagsOptions/deletion.json"
 			],
 			"messages": [
 				"pagetriage-tags-title",
