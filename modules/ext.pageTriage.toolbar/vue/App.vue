@@ -322,9 +322,11 @@ module.exports = {
 				this.close();
 				break;
 			case 'minimized':
+				$( patrolLinkSelector ).hide();
 				this.minimize();
 				break;
 			case 'maximized':
+				$( patrolLinkSelector ).hide();
 				// falls through
 			default:
 				break;
