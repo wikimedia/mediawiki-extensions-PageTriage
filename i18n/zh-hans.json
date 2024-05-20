@@ -327,7 +327,7 @@
 	"group-copyviobot": "侵权机器人",
 	"group-copyviobot-member": "{{GENDER:$1|侵权机器人}}",
 	"tag-pagetriage": "PageTriage",
-	"tag-pagetriage-description": "用[[mw:Special:MyLanguage/Extension:PageTriage|PageTriage扩展]]进行的编辑",
+	"tag-pagetriage-description": "使用[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:PageTriage PageTriage扩展]做出的编辑",
 	"apihelp-pagetriageaction-summary": "标记一个条目为已审核或未审核。",
 	"apihelp-pagetriageaction-param-pageid": "用于执行此操作的页面ID。",
 	"apihelp-pagetriageaction-param-reviewed": "页面是否应标记为已审核",

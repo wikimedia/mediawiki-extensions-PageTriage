@@ -316,7 +316,7 @@
 	"group-copyviobot": "בוטים להפרת זכויות יוצרים",
 	"group-copyviobot-member": "{{GENDER:$1|בוט הפרת זכויות יוצרים}}",
 	"tag-pagetriage": "מיון דפים",
-	"tag-pagetriage-description": "עבור עריכות שנעשו עם [[mw:Special:MyLanguage/Extension:PageTriage|הרחבת PageTriage]]",
+	"tag-pagetriage-description": "עבור עריכות שנעשו עם [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:PageTriage הרחבת PageTriage]",
 	"apihelp-pagetriageaction-summary": "סימון ערך כערך שנסקר או לא נסקר.",
 	"apihelp-pagetriageaction-param-pageid": "מזהה עבור הדף שהפעולה מתבצעת בו.",
 	"apihelp-pagetriageaction-param-reviewed": "האם לסמן את הדף כדף שנסקר",
