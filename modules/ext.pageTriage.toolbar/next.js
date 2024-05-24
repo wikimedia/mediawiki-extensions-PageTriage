@@ -17,7 +17,7 @@ module.exports = ToolView.extend( {
 	initialize: function ( options ) {
 		this.eventBus = options.eventBus;
 		this.moduleConfig = options.moduleConfig || {};
-		this.tbVersion = options.tbVersion;
+		this.pageTriageUi = options.pageTriageUi;
 	},
 
 	setParams: function () {
@@ -53,9 +53,9 @@ module.exports = ToolView.extend( {
 						if ( page.is_redirect === '1' ) {
 							url.query.redirect = 'no';
 						}
-						if ( that.tbVersion ) {
+						if ( that.pageTriageUi ) {
 							// eslint-disable-next-line camelcase
-							url.query.pagetriage_tb = that.tbVersion;
+							url.query.pagetriage_ui = that.pageTriageUi;
 						}
 						window.location.href = url.toString();
 					} else {

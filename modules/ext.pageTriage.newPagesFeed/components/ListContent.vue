@@ -10,7 +10,7 @@
 		v-for="feedEntry in feedEntries"
 		v-bind="feedEntry"
 		:key="feedEntry.position"
-		:tb-version="tbVersion"
+		:page-triage-ui="pageTriageUi"
 	></list-item>
 	<cdx-message
 		v-if="!feedEntries.length && !haveMoreToLoad"
@@ -97,7 +97,7 @@ module.exports = {
 	},
 	props: {
 		// optional toolbar feature flag
-		tbVersion: { type: String, default: null }
+		pageTriageUi: { type: String, default: null }
 	},
 	setup() {
 		const settings = useSettingsStore();

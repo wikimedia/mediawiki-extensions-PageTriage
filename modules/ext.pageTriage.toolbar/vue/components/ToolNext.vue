@@ -38,7 +38,7 @@ module.exports = {
 			type: Object,
 			required: true
 		},
-		tbVersion: {
+		pageTriageUi: {
 			type: String,
 			default: null
 		}
@@ -76,9 +76,9 @@ module.exports = {
 				if ( nextPage.is_redirect === '1' ) {
 					uri.query.redirect = 'no';
 				}
-				if ( this.tbVersion ) {
+				if ( this.pageTriageUi ) {
 					// eslint-disable-next-line camelcase
-					uri.query.pagetriage_tb = this.tbVersion;
+					uri.query.pagetriage_ui = this.pageTriageUi;
 				}
 				return uri.toString();
 			}.bind( this ) )

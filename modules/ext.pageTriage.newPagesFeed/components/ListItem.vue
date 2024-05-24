@@ -298,7 +298,7 @@ module.exports = {
 		oresArticleQuality: { type: String, default: undefined },
 		oresDraftQuality: { type: String, default: undefined },
 		// optional toolbar feature flag
-		tbVersion: { type: String, default: null }
+		pageTriageUi: { type: String, default: null }
 	},
 	data: function () {
 		return {
@@ -345,9 +345,9 @@ module.exports = {
 		titleUrl: function () {
 			const params = {};
 			// open feature flagged version of toolbar
-			if ( this.tbVersion ) {
+			if ( this.pageTriageUi ) {
 				// eslint-disable-next-line camelcase
-				params.pagetriage_tb = this.tbVersion;
+				params.pagetriage_ui = this.pageTriageUi;
 			}
 			if ( this.isRedirect ) {
 				params.redirect = 'no';

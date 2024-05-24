@@ -26,7 +26,7 @@ const ToolbarView = Backbone.View.extend( {
 	openCurationToolbarLinkId: 't-opencurationtoolbar',
 
 	initialize: function ( options ) {
-		this.tbVersion = options.tbVersion;
+		this.pageTriageUi = options.pageTriageUi;
 
 		this.openCurationToolbarSelector = '#' + this.openCurationToolbarLinkId;
 
@@ -65,7 +65,7 @@ const ToolbarView = Backbone.View.extend( {
 		tools.push( new NextView( {
 			eventBus: eventBus,
 			model: article,
-			tbVersion: this.tbVersion
+			pageTriageUi: this.pageTriageUi
 		} ) );
 	},
 

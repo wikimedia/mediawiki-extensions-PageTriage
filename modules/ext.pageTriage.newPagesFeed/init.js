@@ -4,12 +4,12 @@ const pinia = createPinia();
 const app = require( './App.vue' );
 
 // get toolbar version parameter
-const tbVersion = mw.util.getParamValue( 'pagetriage_tb' );
+const pageTriageUi = mw.util.getParamValue( 'pagetriage_ui' );
 const props = {};
 
 // Drop bad input instead of validating and throwing a warning
-if ( [ 'new', 'old' ].indexOf( tbVersion ) !== -1 ) {
-	props.tbVersion = tbVersion;
+if ( [ 'old' ].indexOf( pageTriageUi ) !== -1 ) {
+	props.pageTriageUi = pageTriageUi;
 }
 
 createMwApp( app, props )

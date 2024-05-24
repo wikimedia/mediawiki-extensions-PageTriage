@@ -27,7 +27,6 @@ module.exports = ToolView.extend( {
 		this.tagOptions = options.tagOptions ? options.tagOptions : tagOptions.tagOptions;
 		this.eventBus = options.eventBus;
 		this.moduleConfig = options.moduleConfig || {};
-		this.handleRedirectsTemplates();
 		this.reset();
 	},
 
@@ -126,6 +125,7 @@ module.exports = ToolView.extend( {
 	 */
 	render: function () {
 		const that = this;
+		this.handleRedirectsTemplates();
 
 		this.reset();
 		this.$tel.html( this.template(

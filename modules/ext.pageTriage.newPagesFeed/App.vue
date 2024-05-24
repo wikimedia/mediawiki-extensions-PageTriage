@@ -1,6 +1,6 @@
 <template>
 	<list-filter-menu></list-filter-menu>
-	<list-content :tb-version="tbVersion"></list-content>
+	<list-content :page-triage-ui="pageTriageUi"></list-content>
 </template>
 
 <script>
@@ -16,7 +16,7 @@ module.exports = {
 	},
 	props: {
 		// optional toolbar feature flag
-		tbVersion: {
+		pageTriageUi: {
 			type: String,
 			default: null
 		}

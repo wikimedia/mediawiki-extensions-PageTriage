@@ -26,7 +26,7 @@
 				<span ref="deleteTool" class="mwe-pt-hidden"></span>
 				<tool-next
 					:page="article.attributes"
-					:tb-version="tbVersion"
+					:page-triage-ui="pageTriageUi"
 				></tool-next>
 			</div>
 		</div>
@@ -97,7 +97,7 @@ module.exports = {
 		ToolNext
 	},
 	props: {
-		tbVersion: {
+		pageTriageUi: {
 			type: String,
 			default: null
 		}
