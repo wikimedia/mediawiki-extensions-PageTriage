@@ -34,7 +34,8 @@
 			"捍粵者",
 			"MPGuy2824",
 			"LittlePaw365",
-			"Xyb"
+			"Xyb",
+			"LowensteinYang"
 		]
 	},
 	"pagetriage": "页面分诊台",
@@ -168,7 +169,7 @@
 	"pagetriage-filter-stat-predicted-issues-vandalism": "破坏",
 	"pagetriage-filter-stat-predicted-issues-spam": "广告宣传",
 	"pagetriage-filter-stat-predicted-issues-attack": "攻击",
-	"pagetriage-filter-stat-predicted-issues-copyvio": "侵权",
+	"pagetriage-filter-stat-predicted-issues-copyvio": "侵犯著作权",
 	"pagetriage-filter-stat-predicted-issues-none": "无",
 	"pagetriage-no-pages": "没有符合您条件的页面。",
 	"pagetriage-warning-browser": "此工具在Internet Explorer 11之前的浏览器中可能无法正常工作。",
