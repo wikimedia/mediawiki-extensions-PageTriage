@@ -34,7 +34,8 @@
 			"SpikeShroom",
 			"Vivaelcelta",
 			"Yllelder",
-			"ZebaX2010"
+			"ZebaX2010",
+			"Eulalio"
 		]
 	},
 	"pagetriage": "Triaje de páginas",
@@ -330,6 +331,7 @@
 	"pagetriage-tags-update-label": "Actualizar",
 	"pagetriage-tags-update-desc": "Esta página necesita que se añada información más actualizada.",
 	"pagetriage-tags-tooltip": "Añade etiquetas para señalar áreas a mejorar para esta página",
+	"pagetriage-tags-quickfilter-label": "Lista de etiquetas de filtro:",
 	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "Solicitud de borrado rápido para $1",
 	"pagetriage-del-tags-cat-csd-label": "Borrado rápido",
 	"pagetriage-del-tags-cat-csd-desc": "Marcar esta página para borrado rápido si cumple alguno de los siguientes criterios.",
@@ -402,6 +404,7 @@
 	"pagetriage-info-problem-header": "Posibles problemas",
 	"pagetriage-info-history-header": "Historial",
 	"pagetriage-info-history-show-full": "ver el historial completo",
+	"pagetriage-info-logs-show": "mostrar los registros",
 	"pagetriage-info-help": "ayuda",
 	"pagetriage-info-problem-non-autoconfirmed": "Nuevo editor",
 	"pagetriage-info-problem-non-autoconfirmed-desc": "Esta página fue creada por un editor no autoconfirmado.",
