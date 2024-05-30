@@ -236,7 +236,7 @@
 				"jquery.ui",
 				"jquery.spinner",
 				"jquery.client",
-				"ext.pageTriage.externalTagsOptions"
+				"ext.pageTriage.defaultTagsOptions"
 			],
 			"styles": [
 				"external/jquery.badge.css",
@@ -606,9 +606,6 @@
 			"dependencies": [
 				"mediawiki.Title"
 			]
-		},
-		"ext.pageTriage.externalTagsOptions": {
-			"class": "MediaWiki\\Extension\\PageTriage\\PageTriageExternalTagsOptions"
 		},
 		"ext.pageTriage.toolbarStartup": {
 			"packageFiles": [
