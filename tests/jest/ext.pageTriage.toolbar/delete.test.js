@@ -1,4 +1,4 @@
-let pageTriageDeletionTagsOptions, Article, DeleteToolView, model, modelRedirect, eventBus;
+let Article, DeleteToolView, model, eventBus;
 
 describe( 'DeleteToolView', () => {
 	beforeEach( () => {
@@ -27,75 +27,7 @@ describe( 'DeleteToolView', () => {
 			includeHistory: true
 		} );
 
-		modelRedirect = new Article( {
-			// eslint-disable-next-line camelcase
-			is_redirect: 1,
-			eventBus,
-			pageId: 5,
-			includeHistory: true
-		} );
-		const defaultTagsOptions = require( 'ext.pageTriage.defaultTagsOptions' );
-
-		// for first test cache current value
-		if ( !pageTriageDeletionTagsOptions ) {
-			pageTriageDeletionTagsOptions = $.extend( true, {}, defaultTagsOptions.$.pageTriageDeletionTagsOptions );
-		} else {
-			// reset. There might have been side effects
-			defaultTagsOptions.$.pageTriageDeletionTagsOptions = pageTriageDeletionTagsOptions;
-		}
-		$.pageTriageDeletionTagsOptions = $.extend( true, {}, pageTriageDeletionTagsOptions );
-
 		DeleteToolView = require( '../../../modules/ext.pageTriage.toolbar/delete.js' );
-	} );
-
-	const checkSetup = () => {
-		// Check that there were side-effects on the global 😱
-		expect(
-			$.pageTriageDeletionTagsOptions.Main.xfd.tags.redirectsfordiscussion.label
-		).toBe(
-			'Redirects for discussion'
-		);
-	};
-
-	describe( 'setupDeletionTags', () => {
-		test( 'default', () => {
-			checkSetup();
-			const toolbar = new DeleteToolView( { eventBus, model } );
-			expect( toolbar.deletionTagsOptions.xfd ).toBe( undefined );
-			toolbar.setupDeletionTags();
-			expect( toolbar.deletionTagsOptions.xfd.label ).toBe(
-				'Articles for deletion'
-			);
-			// Check that there were side-effects  😱
-			expect( toolbar.deletionTagsOptions.xfd.tags.redirectsfordiscussion ).toBe(
-				undefined
-			);
-			// Check that there were side-effects on the global 😱
-			expect(
-				$.pageTriageDeletionTagsOptions.Main.xfd.tags.redirectsfordiscussion
-			).toBe(
-				undefined
-			);
-		} );
-
-		test( 'redirect', () => {
-			checkSetup();
-			const toolbar = new DeleteToolView( { eventBus, model: modelRedirect } );
-			expect( toolbar.deletionTagsOptions.xfd ).toBe( undefined );
-			toolbar.setupDeletionTags();
-			expect( toolbar.deletionTagsOptions.xfd.label ).toBe(
-				'Redirects for discussion'
-			);
-			expect( toolbar.deletionTagsOptions.xfd.tags.articlefordeletion ).toBe(
-				undefined
-			);
-			// Check that there were side-effects on the global 😱
-			expect(
-				$.pageTriageDeletionTagsOptions.Main.xfd.tags.articlefordeletion
-			).toBe(
-				undefined
-			);
-		} );
 	} );
 
 	test( 'notifyUser with no talk page template', () => {

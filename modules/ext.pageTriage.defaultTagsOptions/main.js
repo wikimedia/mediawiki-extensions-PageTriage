@@ -1,7 +1,6 @@
+const defaultDeletionTagsOptions = require( './deletion.json' );
 const defaultTagsOptions = require( './tags.json' );
-const defaultDeletionTagsOptions = require( './ext.pageTriage.defaultDeletionTagsOptions.js' );
 
-const allTags = Object.assign( {}, defaultDeletionTagsOptions );
 /*
 * "Tags" are items that appear in the Page Curation toolbar "Add tags" flyout menu.
 *
@@ -20,6 +19,8 @@ const allTags = Object.assign( {}, defaultDeletionTagsOptions );
 * @param {boolean} multiple - If there are multiple tags being placed, include this tag in
 * the {{Multiple issues}} tag.
 */
-allTags.tags = defaultTagsOptions;
 
-module.exports = allTags;
+module.exports = {
+	deletion: defaultDeletionTagsOptions,
+	tags: defaultTagsOptions
+};
