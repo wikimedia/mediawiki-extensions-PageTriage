@@ -466,13 +466,13 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
           "reason": {
-            "input": "required",
-            "label": "Describe issues to be addressed:",
+            "input": "optional",
+            "label": "This article may require copy editing for:",
             "type": "textarea",
             "value": "",
           },
@@ -487,7 +487,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -508,7 +508,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -531,7 +531,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -562,7 +562,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -607,7 +607,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -634,7 +634,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -668,7 +668,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -677,13 +677,13 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "dead end",
       },
       "externallinks": {
-        "desc": "This page's external links do not follow content policies or guidelines.",
+        "desc": "This page"s external links do not follow content policies or guidelines.",
         "label": "External links",
         "multiple": true,
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -698,7 +698,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -720,7 +720,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -736,7 +736,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -751,7 +751,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -760,13 +760,13 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "overlinked",
       },
       "uncategorised": {
-        "desc": "This page doesn't belong to any categories.",
+        "desc": "This page doesn"t belong to any categories.",
         "label": "Uncategorised",
         "multiple": false,
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -781,7 +781,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -801,7 +801,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -816,7 +816,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -843,13 +843,13 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
           "reason": {
-            "input": "required",
-            "label": "Describe issues to be addressed:",
+            "input": "optional",
+            "label": "This article may require copy editing for:",
             "type": "textarea",
             "value": "",
           },
@@ -864,7 +864,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -879,7 +879,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -894,7 +894,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -903,13 +903,13 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "out of date",
       },
       "plot": {
-        "desc": "This page's plot summary is too long or excessively detailed.",
+        "desc": "This page"s plot summary is too long or excessively detailed.",
         "label": "Plot",
         "multiple": true,
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -924,7 +924,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -939,7 +939,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -959,7 +959,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -974,7 +974,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -989,7 +989,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1004,7 +1004,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1019,7 +1019,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1034,7 +1034,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1049,7 +1049,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1064,7 +1064,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1079,7 +1079,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1088,13 +1088,13 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "undue weight",
       },
       "weasel": {
-        "desc": "This page's neutrality is compromised by the use of weasel words.",
+        "desc": "This page"s neutrality is compromised by the use of weasel words.",
         "label": "Weasel",
         "multiple": true,
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1109,13 +1109,13 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
     "tags": {
       "notability": {
         "common": true,
-        "desc": "The page's subject may not meet the general notability guideline.",
+        "desc": "The page"s subject may not meet the general notability guideline.",
         "label": "General",
         "multiple": true,
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1124,7 +1124,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "notability",
       },
       "notabilityAcademics": {
-        "desc": "The page's subject may not meet the notability guideline for academics.",
+        "desc": "The page"s subject may not meet the notability guideline for academics.",
         "label": "Academic",
         "multiple": true,
         "params": {
@@ -1136,7 +1136,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1145,7 +1145,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "notability",
       },
       "notabilityBiographies": {
-        "desc": "The page's subject may not meet the notability guideline for biographies.",
+        "desc": "The page"s subject may not meet the notability guideline for biographies.",
         "label": "Biographies",
         "multiple": true,
         "params": {
@@ -1157,7 +1157,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1166,7 +1166,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "notability",
       },
       "notabilityBooks": {
-        "desc": "The page's subject may not meet the notability guideline for books.",
+        "desc": "The page"s subject may not meet the notability guideline for books.",
         "label": "Books",
         "multiple": true,
         "params": {
@@ -1178,7 +1178,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1187,7 +1187,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "notability",
       },
       "notabilityCompanies": {
-        "desc": "The page's subject may not meet the notability guideline for companies.",
+        "desc": "The page"s subject may not meet the notability guideline for companies.",
         "label": "Companies",
         "multiple": true,
         "params": {
@@ -1199,7 +1199,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1208,7 +1208,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "notability",
       },
       "notabilityEvents": {
-        "desc": "The page's subject may not meet the notability guideline for events.",
+        "desc": "The page"s subject may not meet the notability guideline for events.",
         "label": "Events",
         "multiple": true,
         "params": {
@@ -1220,7 +1220,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1229,7 +1229,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "notability",
       },
       "notabilityFilms": {
-        "desc": "The page's subject may not meet the notability guideline for films.",
+        "desc": "The page"s subject may not meet the notability guideline for films.",
         "label": "Films",
         "multiple": true,
         "params": {
@@ -1241,7 +1241,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1250,7 +1250,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "notability",
       },
       "notabilityMusic": {
-        "desc": "The page's subject may not meet the notability guideline for music.",
+        "desc": "The page"s subject may not meet the notability guideline for music.",
         "label": "Music",
         "multiple": true,
         "params": {
@@ -1262,7 +1262,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1271,7 +1271,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "notability",
       },
       "notabilityNeologisms": {
-        "desc": "The page's subject may not meet the notability guideline for neologisms.",
+        "desc": "The page"s subject may not meet the notability guideline for neologisms.",
         "label": "Neologisms",
         "multiple": true,
         "params": {
@@ -1283,7 +1283,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1292,7 +1292,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "notability",
       },
       "notabilityNumbers": {
-        "desc": "The page's subject may not meet the notability guideline for numbers.",
+        "desc": "The page"s subject may not meet the notability guideline for numbers.",
         "label": "Numbers",
         "multiple": true,
         "params": {
@@ -1304,7 +1304,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1313,7 +1313,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "notability",
       },
       "notabilityPlaces": {
-        "desc": "The page's subject may not meet the notability guideline for places.",
+        "desc": "The page"s subject may not meet the notability guideline for places.",
         "label": "Places",
         "multiple": true,
         "params": {
@@ -1325,7 +1325,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1334,7 +1334,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "notability",
       },
       "notabilityProducts": {
-        "desc": "The page's subject may not meet the notability guideline for products and services.",
+        "desc": "The page"s subject may not meet the notability guideline for products and services.",
         "label": "Products",
         "multiple": true,
         "params": {
@@ -1346,7 +1346,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1355,7 +1355,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "notability",
       },
       "notabilitySport": {
-        "desc": "The page's subject may not meet the notability guideline for sports and athletics.",
+        "desc": "The page"s subject may not meet the notability guideline for sports and athletics.",
         "label": "Sports",
         "multiple": true,
         "params": {
@@ -1367,7 +1367,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1376,7 +1376,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "notability",
       },
       "notabilityWeb": {
-        "desc": "The page's subject may not meet the notability guideline for web content.",
+        "desc": "The page"s subject may not meet the notability guideline for web content.",
         "label": "Web content",
         "multiple": true,
         "params": {
@@ -1388,7 +1388,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -1535,7 +1535,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "R from ambiguous term",
       },
       "R-from-birth-name": {
-        "desc": "redirect from a person's birth name to a more common name",
+        "desc": "redirect from a person"s birth name to a more common name",
         "label": "{{R from birth name}}",
         "multiple": true,
         "position": "redirectTag",
@@ -1626,7 +1626,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "R from gene symbol",
       },
       "R-from-given-name": {
-        "desc": "redirect from a person's given name",
+        "desc": "redirect from a person"s given name",
         "label": "{{R from given name}}",
         "multiple": true,
         "position": "redirectTag",
@@ -1689,7 +1689,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "R from long name",
       },
       "R-from-married-name": {
-        "desc": "redirect from a person's married name to a more common name",
+        "desc": "redirect from a person"s married name to a more common name",
         "label": "{{R from married name}}",
         "multiple": true,
         "position": "redirectTag",
@@ -1724,7 +1724,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "R from misspelling",
       },
       "R-from-modification": {
-        "desc": "redirect from a modification of the target's title, such as with words rearranged",
+        "desc": "redirect from a modification of the target"s title, such as with words rearranged",
         "label": "{{R from modification}}",
         "multiple": true,
         "position": "redirectTag",
@@ -1773,7 +1773,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "R from name and country",
       },
       "R-from-name-with-title": {
-        "desc": "redirect from a person's name preceded or followed by a title to the name with no title or with the title in parentheses",
+        "desc": "redirect from a person"s name preceded or followed by a title to the name with no title or with the title in parentheses",
         "label": "{{R from name with title}}",
         "multiple": true,
         "position": "redirectTag",
@@ -1808,7 +1808,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "R from person",
       },
       "R-from-personal-name": {
-        "desc": "redirect from an individual's personal name to an article titled with their professional or other better known moniker",
+        "desc": "redirect from an individual"s personal name to an article titled with their professional or other better known moniker",
         "label": "{{R from personal name}}",
         "multiple": true,
         "position": "redirectTag",
@@ -1871,7 +1871,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "R from scientific name",
       },
       "R-from-short-name": {
-        "desc": "redirect from a title that is a shortened form of a person's full name, a book title, or other more complete title",
+        "desc": "redirect from a title that is a shortened form of a person"s full name, a book title, or other more complete title",
         "label": "{{R from short name}}",
         "multiple": true,
         "position": "redirectTag",
@@ -1892,7 +1892,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "R from song",
       },
       "R-from-sort-name": {
-        "desc": "redirect from the target's sort name, such as beginning with their surname rather than given name",
+        "desc": "redirect from the target"s sort name, such as beginning with their surname rather than given name",
         "label": "{{R from sort name}}",
         "multiple": true,
         "position": "redirectTag",
@@ -2053,7 +2053,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "R to portal namespace",
       },
       "R-to-project-namespace": {
-        "desc": "redirect from any page inside or outside of project (Wikipedia: or WP:) space to any page in the project namespace",
+        "desc": "redirect from any page inside or outside of project ("Wikipedia": or WP:) space to any page in the project namespace",
         "label": "{{R to project namespace}}",
         "multiple": true,
         "position": "redirectTag",
@@ -2088,7 +2088,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "R to subpage",
       },
       "R-to-subtopic": {
-        "desc": "redirect to a subtopic of the redirect's title",
+        "desc": "redirect to a subtopic of the redirect"s title",
         "label": "{{R to subtopic}}",
         "multiple": true,
         "position": "redirectTag",
@@ -2134,7 +2134,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2149,7 +2149,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2170,7 +2170,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2185,7 +2185,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2201,7 +2201,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2223,7 +2223,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2238,7 +2238,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2253,7 +2253,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2269,7 +2269,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2284,7 +2284,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2299,7 +2299,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2320,7 +2320,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
           },
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2336,7 +2336,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2351,7 +2351,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2366,7 +2366,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2381,7 +2381,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2397,7 +2397,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2406,13 +2406,13 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "unreferenced",
       },
       "unreliable": {
-        "desc": "This page's references may not be reliable sources.",
+        "desc": "This page"s references may not be reliable sources.",
         "label": "Unreliable sources",
         "multiple": true,
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2432,7 +2432,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2455,7 +2455,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2464,19 +2464,19 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "lead missing",
       },
       "leadrewrite": {
-        "desc": "This page's lead section needs to be rewritten to comply with guidelines.",
+        "desc": "This page"s lead section needs to be rewritten to comply with guidelines.",
         "label": "Lead rewrite",
         "multiple": true,
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
           "reason": {
-            "input": "required",
-            "label": "Describe issues to be addressed:",
+            "input": "optional",
+            "label": "This article may require copy editing for:",
             "type": "textarea",
             "value": "",
           },
@@ -2485,13 +2485,13 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "lead rewrite",
       },
       "leadtoolong": {
-        "desc": "This page's lead section is too long and should be shortened.",
+        "desc": "This page"s lead section is too long and should be shortened.",
         "label": "Lead too long",
         "multiple": true,
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2500,13 +2500,13 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "tag": "lead too long",
       },
       "leadtooshort": {
-        "desc": "This page's lead section is too short and should be expanded.",
+        "desc": "This page"s lead section is too short and should be expanded.",
         "label": "Lead too short",
         "multiple": true,
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2521,7 +2521,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2545,7 +2545,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2565,7 +2565,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2580,13 +2580,13 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
           "reason": {
-            "input": "required",
-            "label": "Describe issues to be addressed:",
+            "input": "optional",
+            "label": "This article may require copy editing for:",
             "type": "textarea",
             "value": "",
           },
@@ -2601,7 +2601,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2616,7 +2616,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2631,7 +2631,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2646,7 +2646,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2661,7 +2661,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2676,7 +2676,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2699,7 +2699,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2714,7 +2714,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2729,7 +2729,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2744,7 +2744,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2759,7 +2759,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },
@@ -2774,7 +2774,7 @@ exports[`defaultTagsOptions defaultTagsOptions should match snapshot 3`] = `
         "params": {
           "date": {
             "input": "automated",
-            "label": "pagetriage-tags-param-date-label",
+            "label": "Date:",
             "type": "hidden",
             "value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}",
           },

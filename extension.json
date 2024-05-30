@@ -579,13 +579,12 @@
 		"ext.pageTriage.defaultTagsOptions": {
 			"packageFiles": [
 				"ext.pageTriage.defaultTagsOptions/main.js",
-				"ext.pageTriage.defaultTagsOptions/ext.pageTriage.defaultTagsOptions.js",
+				"ext.pageTriage.defaultTagsOptions/tags.json",
 				"ext.pageTriage.defaultTagsOptions/ext.pageTriage.defaultDeletionTagsOptions.js"
 			],
 			"messages": [
 				"pagetriage-tags-title",
 				"pagetriage-tags-cat-all-label",
-				"pagetriage-tags-param-date-label",
 				"pagetriage-tag-count-total",
 				"pagetriage-button-add-tag",
 				"pagetriage-button-add-tag-number",

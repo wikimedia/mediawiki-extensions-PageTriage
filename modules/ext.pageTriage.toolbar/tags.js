@@ -3,6 +3,7 @@
 const { contentLanguageMessage } = require( 'ext.pageTriage.util' );
 const ToolView = require( './ToolView.js' );
 const config = require( './config.json' );
+const { tags: tagOptions } = require( 'ext.pageTriage.defaultTagsOptions' );
 
 // Used to keep track of what actions we want to invoke, and with what data.
 const actionQueue = {};
@@ -23,7 +24,7 @@ module.exports = ToolView.extend( {
 	 * @param {Object} options
 	 */
 	initialize: function ( options ) {
-		this.tagsOptions = options.tagsOptions ? options.tagsOptions : $.pageTriageTagsOptions;
+		this.tagOptions = options.tagOptions ? options.tagOptions : tagOptions.tagOptions;
 		this.eventBus = options.eventBus;
 		this.moduleConfig = options.moduleConfig || {};
 		this.handleRedirectsTemplates();
@@ -36,15 +37,15 @@ module.exports = ToolView.extend( {
 	 */
 	handleRedirectsTemplates: function () {
 		if ( this.model.attributes.is_redirect === '0' ) {
-			delete this.tagsOptions.redirects;
+			delete this.tagOptions.redirects;
 			this.buildAllAndCommonCategories();
 		} else {
 			this.isRedirect = true;
 			Object
-				.getOwnPropertyNames( this.tagsOptions )
+				.getOwnPropertyNames( this.tagOptions )
 				.forEach( function ( prop ) {
 					if ( prop !== 'redirects' ) {
-						delete this.tagsOptions[ prop ];
+						delete this.tagOptions[ prop ];
 					}
 				}.bind( this ) );
 		}
@@ -58,12 +59,12 @@ module.exports = ToolView.extend( {
 		const commonList = [];
 
 		// first, loop through all tags in other categories and store them in the "list" variable
-		for ( const cat in this.tagsOptions ) {
-			if ( this.tagsOptions[ cat ].alias ) {
+		for ( const cat in this.tagOptions ) {
+			if ( this.tagOptions[ cat ].alias ) {
 				continue;
 			}
-			for ( const key in this.tagsOptions[ cat ].tags ) {
-				const tag = $.extend( true, {}, this.tagsOptions[ cat ].tags[ key ] );
+			for ( const key in this.tagOptions[ cat ].tags ) {
+				const tag = $.extend( true, {}, this.tagOptions[ cat ].tags[ key ] );
 				tag.dest = cat;
 				tag.destKey = key;
 				list.push( tag );
@@ -91,11 +92,11 @@ module.exports = ToolView.extend( {
 			// produce a unique key
 			let tagKey = commonList[ i ].tag + commonList[ i ].label;
 			tagKey = tagKey.replace( /[- (){}]/g, '' ).toLowerCase();
-			this.tagsOptions.common.tags[ tagKey ] = commonList[ i ];
+			this.tagOptions.common.tags[ tagKey ] = commonList[ i ];
 		}
 
 		// finally, push the sorted array into the existing tag json object
-		this.tagsOptions.all = {
+		this.tagOptions.all = {
 			label: mw.msg( 'pagetriage-tags-cat-all-label' ),
 			alias: true,
 			tags: {}
@@ -106,7 +107,7 @@ module.exports = ToolView.extend( {
 			// produce a unique key
 			let tagKey = list[ i ].tag + list[ i ].label;
 			tagKey = tagKey.replace( /[- (){}]/g, '' ).toLowerCase();
-			this.tagsOptions.all.tags[ tagKey ] = list[ i ];
+			this.tagOptions.all.tags[ tagKey ] = list[ i ];
 		}
 	},
 
@@ -115,7 +116,7 @@ module.exports = ToolView.extend( {
 	 */
 	reset: function () {
 		this.selectedTagCount = 0;
-		for ( const cat in this.tagsOptions ) {
+		for ( const cat in this.tagOptions ) {
 			this.selectedTag[ cat ] = {};
 		}
 	},
@@ -129,7 +130,7 @@ module.exports = ToolView.extend( {
 		this.reset();
 		this.$tel.html( this.template(
 			{
-				tags: this.tagsOptions,
+				tags: this.tagOptions,
 				warningNotice: this.model.tagWarningNotice(),
 				title: this.title,
 				creator: this.model.get( 'user_name' ),
@@ -195,7 +196,7 @@ module.exports = ToolView.extend( {
 		$( '#mwe-pt-tags' ).append( $tagList );
 
 		const that = this,
-			tagSet = this.tagsOptions[ cat ].tags;
+			tagSet = this.tagOptions[ cat ].tags;
 		for ( const key in tagSet ) {
 
 			// Keep a running total of tags in the category
@@ -278,8 +279,8 @@ module.exports = ToolView.extend( {
 					if ( tagSet[ tagKey ].common ) {
 						that.selectedTag.common[ tagKey ] = tagSet[ tagKey ];
 					}
-					if ( that.tagsOptions.all ) {
-						that.selectedTag.all[ allTagKey ] = that.tagsOptions.all.tags[ allTagKey ];
+					if ( that.tagOptions.all ) {
+						that.selectedTag.all[ allTagKey ] = that.tagOptions.all.tags[ allTagKey ];
 					}
 					that.showParamsLink( tagKey, cat );
 					// show the param form if there is required parameter
@@ -300,7 +301,7 @@ module.exports = ToolView.extend( {
 					if ( tagSet[ tagKey ].common ) {
 						delete that.selectedTag.common[ tagKey ];
 					}
-					if ( that.tagsOptions.all ) {
+					if ( that.tagOptions.all ) {
 						delete that.selectedTag.all[ allTagKey ];
 					}
 					that.hideParamsLink( tagKey );
@@ -741,7 +742,7 @@ module.exports = ToolView.extend( {
 
 			wikitext = this.addToExistingTags(
 				wikitext,
-				$.pageTriageTagsMultiple,
+				tagOptions.multiple,
 				multipleTagsText,
 				'top',
 				this.objectPropCount( multipleTags ) > 1
@@ -755,7 +756,7 @@ module.exports = ToolView.extend( {
 			if ( this.objectPropCount( redirectTags ) > 0 ) {
 				wikitext = this.addToExistingTags(
 					wikitext,
-					$.pageTriageTagsRedirectCategoryShell,
+					tagOptions.redirectCategoryShell,
 					multipleRedirectTagsText,
 					'bottom',
 					true
