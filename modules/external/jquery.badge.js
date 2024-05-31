@@ -83,6 +83,6 @@
 
 	/**
 	 * @class jQuery
-	 * @mixins jQuery.plugin.badge
+	 * @mixes jQuery.plugin.badge
 	 */
 }( jQuery ) );
