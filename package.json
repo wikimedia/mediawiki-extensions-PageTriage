@@ -27,8 +27,8 @@
 		"@wdio/local-runner": "7.19.7",
 		"@wdio/mocha-framework": "7.16.6",
 		"@wdio/spec-reporter": "7.19.7",
-		"@wikimedia/codex": "1.6.0",
-		"@wikimedia/codex-icons": "1.6.0",
+		"@wikimedia/codex": "1.6.1",
+		"@wikimedia/codex-icons": "1.6.1",
 		"@wikimedia/mw-node-qunit": "7.2.0",
 		"babel-jest": "^29.6.1",
 		"eslint": "8.57.0",
@@ -38,7 +38,7 @@
 		"jest": "^29.6.1",
 		"jest-environment-jsdom": "^29.6.1",
 		"stylelint-config-wikimedia": "0.16.1",
-		"vue": "^3.3.9",
+		"vue": "3.4.27",
 		"wdio-mediawiki": "2.5.0"
 	}
 }
