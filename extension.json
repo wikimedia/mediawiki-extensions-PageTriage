@@ -630,7 +630,6 @@
 			]
 		},
 		"ext.pageTriage.sidebarLink": {
-			"es6": true,
 			"localBasePath": "modules/ext.pageTriage.sidebarLink",
 			"packageFiles": [
 				"index.js",
