@@ -579,8 +579,8 @@
 		"ext.pageTriage.tagData": {
 			"packageFiles": [
 				"ext.pageTriage.tagData/main.js",
-				"ext.pageTriage.tagData/tags.json",
-				"ext.pageTriage.tagData/deletion.json"
+				"ext.pageTriage.tagData/maintenanceTags.json",
+				"ext.pageTriage.tagData/deletionTags.json"
 			],
 			"messages": [
 				"pagetriage-tags-title",

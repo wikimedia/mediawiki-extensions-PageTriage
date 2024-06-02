@@ -3,7 +3,7 @@
 const { contentLanguageMessage } = require( 'ext.pageTriage.util' );
 const ToolView = require( './ToolView.js' );
 const config = require( './config.json' );
-const { tags: tagOptions } = require( 'ext.pageTriage.tagData' );
+const { maintenanceTags: tagOptions } = require( 'ext.pageTriage.tagData' );
 
 // Used to keep track of what actions we want to invoke, and with what data.
 const actionQueue = {};

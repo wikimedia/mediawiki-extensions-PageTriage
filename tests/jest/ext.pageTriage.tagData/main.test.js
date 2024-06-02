@@ -7,13 +7,13 @@ describe( 'tagData', () => {
 	} );
 
 	test( 'tagData should exist', () => {
-		expect( tagData.tags.redirectCategoryShell ).not.toBe( undefined );
-		expect( tagData.tags.multiple ).not.toBe( undefined );
-		expect( tagData.tags.tagOptions ).not.toBe( undefined );
+		expect( tagData.maintenanceTags.redirectCategoryShell ).not.toBe( undefined );
+		expect( tagData.maintenanceTags.multiple ).not.toBe( undefined );
+		expect( tagData.maintenanceTags.tagOptions ).not.toBe( undefined );
 	} );
 
 	test( 'defaultDeletionTagsOptions should exist', () => {
-		expect( tagData.deletion.multiple ).not.toBe( undefined );
-		expect( tagData.deletion.main ).not.toBe( undefined );
+		expect( tagData.deletionTags.multiple ).not.toBe( undefined );
+		expect( tagData.deletionTags.main ).not.toBe( undefined );
 	} );
 } );
