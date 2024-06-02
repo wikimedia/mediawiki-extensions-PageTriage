@@ -1,6 +1,6 @@
 // view for display deletion wizard
 const { contentLanguageMessage } = require( 'ext.pageTriage.util' );
-const { deletion: deletionTagOptions } = require( 'ext.pageTriage.defaultTagsOptions' );
+const { deletion: deletionTagOptions } = require( 'ext.pageTriage.tagData' );
 
 // Used to keep track of what actions we want to invoke, and with what data.
 const actionQueue = {};

@@ -2,7 +2,7 @@ module.exports = {
 	moduleNameMapper: {
 		// backbone needs this defined here because of the way it checks for jquery & underscore
 		underscore: '<rootDir>/modules/external/underscore.js',
-		'ext.pageTriage.defaultTagsOptions$': '<rootDir>/modules/ext.pageTriage.defaultTagsOptions/main.js',
+		'ext.pageTriage.tagData$': '<rootDir>/modules/ext.pageTriage.tagData/main.js',
 		'ext.pageTriage.util': '<rootDir>/modules/ext.pageTriage.util/main.js',
 		// @TODO: map virtual files with full path
 		'./icons.json': '<rootDir>/tests/mocks/icons.json',
