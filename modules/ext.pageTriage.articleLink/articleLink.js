@@ -1,5 +1,11 @@
-// Handles the interface for actually marking an article as reviewed
-//
+/**
+ * Handles the interface for the "Mark this page as reviewed" link that is shown in
+ * the bottom right corner of articles when $wgPageTriageEnableCurationToolbar = false.
+ *
+ * This is different from the [Mark this page as patrolled] link, which is also placed
+ * at the bottom right of articles by the MediaWiki core patrolled edits system. In fact,
+ * these two links end up adjacent to each other.
+ */
 
 const action = {
 	submit: function () {

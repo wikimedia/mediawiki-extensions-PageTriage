@@ -615,9 +615,9 @@
 				"ext.pageTriage.external"
 			]
 		},
-		"ext.pageTriage.article": {
-			"styles": "ext.pageTriage.article/ext.pageTriage.article.css",
-			"scripts": "ext.pageTriage.article/ext.pageTriage.article.js",
+		"ext.pageTriage.articleLink": {
+			"styles": "ext.pageTriage.articleLink/articleLink.css",
+			"scripts": "ext.pageTriage.articleLink/articleLink.js",
 			"messages": [
 				"pagetriage-reviewed",
 				"pagetriage-mark-as-reviewed-error"
