@@ -91,7 +91,7 @@ const ToolbarView = Backbone.View.extend( {
 		// build the empty toolbar.
 		this.$el.html( this.template() );
 
-		_.each( tools, function ( tool ) {
+		_.each( tools, ( tool ) => {
 			// append the individual tool template to the toolbar's big tool div part
 			// this is the icon and hidden div. (the actual tool content)
 			$( '#mwe-pt-toolbar-main' ).append( tool.place() );
@@ -123,7 +123,7 @@ const ToolbarView = Backbone.View.extend( {
 			cancel: '.mwe-pt-tool-content'
 		} );
 
-		$( window ).on( 'resize', function () {
+		$( window ).on( 'resize', () => {
 			const $toolbar = $( '#mwe-pt-toolbar' );
 			const position = { left: parseInt( $toolbar.css( 'left' ), 10 ), top: parseInt( $toolbar.css( 'top' ), 10 ) };
 			const newPosition = calculatePosition( $toolbar, position );
@@ -132,7 +132,7 @@ const ToolbarView = Backbone.View.extend( {
 
 		const that = this;
 		// make clicking on the minimized toolbar expand to normal size
-		$( '#mwe-pt-toolbar-vertical' ).on( 'click', function () {
+		$( '#mwe-pt-toolbar-vertical' ).on( 'click', () => {
 			that.maximize( true );
 		} );
 
@@ -143,7 +143,7 @@ const ToolbarView = Backbone.View.extend( {
 		}
 
 		// make the close button do something
-		$( '.mwe-pt-toolbar-close-button' ).on( 'click', function () {
+		$( '.mwe-pt-toolbar-close-button' ).on( 'click', () => {
 			that.hide( true );
 		} );
 

@@ -134,7 +134,7 @@ PageTriage is the best.
 		} );
 	} );
 
-	test( 'selecting from the all category should not cause duplications', function () {
+	test( 'selecting from the all category should not cause duplications', () => {
 		const model = new Article( {
 			pageId: 5,
 			includeHistory: true

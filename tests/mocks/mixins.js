@@ -1,7 +1,5 @@
 module.exports = {
 	methods: {
-		$i18n: jest.fn( ( msg ) => {
-			return { text: () => msg };
-		} )
+		$i18n: jest.fn( ( msg ) => ( { text: () => msg } ) )
 	}
 };

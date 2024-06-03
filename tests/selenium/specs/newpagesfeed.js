@@ -7,16 +7,14 @@ const assert = require( 'assert' ),
 	RunJobs = require( 'wdio-mediawiki/RunJobs' ),
 	Util = require( 'wdio-mediawiki/Util' );
 
-describe( 'Special:NewPagesFeed', function () {
-	it( 'is viewable', async function () {
+describe( 'Special:NewPagesFeed', () => {
+	it( 'is viewable', async () => {
 		NewPagesFeed.open();
-		await browser.waitUntil( async () => {
-			return await NewPagesFeed.listview.getText() !== 'Please wait...';
-		} );
+		await browser.waitUntil( async () => await NewPagesFeed.listview.getText() !== 'Please wait...' );
 		assert( await NewPagesFeed.listview.isExisting() );
 	} );
 
-	it( 'new article appears in feed', async function () {
+	it( 'new article appears in feed', async () => {
 		// Create account
 		const username = Util.getTestString( 'User-' );
 		const password = Util.getTestString();
@@ -34,9 +32,7 @@ describe( 'Special:NewPagesFeed', function () {
 
 		// Special:NewPagesFeed
 		NewPagesFeed.open();
-		await browser.waitUntil( async () => {
-			return await NewPagesFeed.listview.getText() !== 'Please wait...';
-		} );
+		await browser.waitUntil( async () => await NewPagesFeed.listview.getText() !== 'Please wait...' );
 
 		assert( await NewPagesFeed.listview.isExisting() );
 

@@ -108,9 +108,7 @@ module.exports = {
 		state: initState,
 		getters: {
 			// returns a deep copy of applied settings
-			cloneApplied: ( state ) => {
-				return JSON.parse( JSON.stringify( state.applied ) );
-			}
+			cloneApplied: ( state ) => JSON.parse( JSON.stringify( state.applied ) )
 		},
 		actions: {
 			// Map AFC submission state form values to API parameters

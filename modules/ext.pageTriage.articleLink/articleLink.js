@@ -14,18 +14,18 @@ const action = {
 			pageid: mw.config.get( 'wgArticleId' ),
 			reviewed: '1'
 		} )
-			.then( function () {
+			.then( () => {
 				$( '.mw-pagetriage-markpatrolled' ).text( mw.msg( 'pagetriage-reviewed' ) );
 			} )
-			.catch( function ( _errorCode, data ) {
+			.catch( ( _errorCode, data ) => {
 				$( '.mw-pagetriage-markpatrolled' ).text( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
 			} );
 	}
 };
 
-$( function () {
+$( () => {
 	$( '.mw-pagetriage-markpatrolled-link' )
-		.on( 'click', function () {
+		.on( 'click', () => {
 			action.submit();
 			return false;
 		} );

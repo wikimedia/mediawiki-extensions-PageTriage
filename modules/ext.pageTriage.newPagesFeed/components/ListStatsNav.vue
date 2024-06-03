@@ -74,7 +74,7 @@ module.exports = {
 		let intervalID;
 		watch( doAutoRefresh, ( autoRefresh ) => {
 			if ( autoRefresh === true ) {
-				intervalID = setInterval( function () {
+				intervalID = setInterval( () => {
 					emit( 'refresh-feed' );
 				}, 30000 );
 			} else {

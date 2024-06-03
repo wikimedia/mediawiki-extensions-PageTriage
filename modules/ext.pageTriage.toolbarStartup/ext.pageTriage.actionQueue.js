@@ -96,7 +96,7 @@ const actionQueue = ( function () {
 				// Action was given as an object, expected to have key/value of
 				// action name -> action-specific data to pass to the methods
 				iterableActionNames = Object.keys( action );
-				iterableActionNames.forEach( function ( actionName ) {
+				iterableActionNames.forEach( ( actionName ) => {
 					// Merge general data with action-specific data
 					actionData[ actionName ] = $.extend( true, {}, data, action[ actionName ] );
 				} );
@@ -105,18 +105,18 @@ const actionQueue = ( function () {
 				// is the general provided data
 				// Cast to an Array so we can treat both string and array the same
 				iterableActionNames = Array.isArray( action ) ? action : [ action ];
-				iterableActionNames.forEach( function ( actionName ) {
+				iterableActionNames.forEach( ( actionName ) => {
 					// All actions get the same data
 					actionData[ actionName ] = data;
 				} );
 			}
 
 			const promises = [];
-			iterableActionNames.forEach( function ( actionName ) {
+			iterableActionNames.forEach( ( actionName ) => {
 				if ( !queue[ actionName ] ) {
 					return;
 				}
-				queue[ actionName ].forEach( function ( func ) {
+				queue[ actionName ].forEach( ( func ) => {
 					promises.push(
 						// $.when returns a resolved promise if all of the given promises
 						// were resolved. If even one was rejected, it immediately rejects
@@ -130,9 +130,7 @@ const actionQueue = ( function () {
 						// runs and not about returned values, this will ensure that we
 						// provide a consistent experience to all clients.
 						$.when( func( actionData[ actionName ] ) )
-							.then( null, function () {
-								return $.Deferred().resolve();
-							} ) );
+							.then( null, () => $.Deferred().resolve() ) );
 				} );
 			} );
 
@@ -192,7 +190,7 @@ const actionQueue = ( function () {
 		 *  all stored functions finished running
 		 */
 		runAndRefresh: function ( action, data, forcedReload ) {
-			return runAllInAction( action, data ).always( function () {
+			return runAllInAction( action, data ).always( () => {
 				window.location.reload( forcedReload !== false );
 			} );
 		}

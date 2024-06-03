@@ -10,10 +10,8 @@ module.exports = {
 			pageTriageNamespaces.splice( draftIndex, 1 );
 		}
 
-		return pageTriageNamespaces.map( function ( ns ) {
-			return ns === 0 ?
-				mw.msg( 'pagetriage-filter-article' ) :
-				wgFormattedNamespaces[ ns ];
-		} );
+		return pageTriageNamespaces.map( ( ns ) => ns === 0 ?
+			mw.msg( 'pagetriage-filter-article' ) :
+			wgFormattedNamespaces[ ns ] );
 	}
 };

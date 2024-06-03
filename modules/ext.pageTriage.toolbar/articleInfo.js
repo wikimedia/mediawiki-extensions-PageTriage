@@ -14,7 +14,7 @@ const ArticleInfoHistoryView = Backbone.View.extend( {
 		let lastDate = null;
 		let addedRevisions = 0;
 
-		this.model.each( function ( historyItem ) {
+		this.model.each( ( historyItem ) => {
 			// Display the 5 most recent revisions
 			if ( addedRevisions >= 5 ) {
 				return;
@@ -178,7 +178,7 @@ module.exports = ToolView.extend( {
 		// Only bind this once
 		const that = this;
 		if ( !this.renderWasBound ) {
-			this.model.bind( 'change', function () {
+			this.model.bind( 'change', () => {
 				that.render();
 			} );
 			this.renderWasBound = true;

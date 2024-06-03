@@ -123,10 +123,10 @@ module.exports = Backbone.View.extend( {
 		const that = this;
 		// eslint-disable-next-line no-jquery/no-event-shorthand
 		this.$icon.hover(
-			function () {
+			() => {
 				that.setIcon( 'hover' );
 			},
-			function () {
+			() => {
 				that.setIcon( 'normal' );
 			}
 		);
@@ -156,7 +156,7 @@ module.exports = Backbone.View.extend( {
 
 		// bind a click handler to open it.
 		const that = this;
-		this.$icon.on( 'click', function () {
+		this.$icon.on( 'click', () => {
 			that.click();
 		} );
 
@@ -184,7 +184,7 @@ module.exports = Backbone.View.extend( {
 		}
 
 		// set up an event for the close button
-		this.$el.find( '.mwe-pt-tool-close' ).on( 'click', function () {
+		this.$el.find( '.mwe-pt-tool-close' ).on( 'click', () => {
 			that.hide();
 		} );
 

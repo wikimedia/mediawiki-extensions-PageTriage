@@ -1,6 +1,6 @@
 const actionQueue = require( './ext.pageTriage.actionQueue.js' );
 
-$( function () {
+$( () => {
 	const ns = mw.config.get( 'wgNamespaceNumber' );
 
 	// Only show curation toolbar for enabled namespaces, minus the draftspace.
@@ -18,7 +18,7 @@ $( function () {
 
 	// Load the curation toolbar
 	mw.loader.using( 'ext.pageTriage.toolbar' )
-		.then( function () {
+		.then( () => {
 			// Fire the 'ready' hook
 			mw.hook( 'ext.pageTriage.toolbar.ready' )
 				.fire( actionQueue );

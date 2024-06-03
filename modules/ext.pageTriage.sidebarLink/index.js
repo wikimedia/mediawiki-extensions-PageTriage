@@ -1,4 +1,4 @@
-$( function () {
+$( () => {
 	let config;
 	if ( mw.config.get( 'wgPageTriageUserCanPatrol' ) ) {
 		config = require( './enqueue.js' );

@@ -8,7 +8,7 @@ const portletConfig = [
 
 function onClick() {
 	OO.ui.prompt( mw.msg( 'pagetriage-unreview-summary' ), {
-	} ).then( function ( unreviewNote ) {
+	} ).then( ( unreviewNote ) => {
 		if ( !unreviewNote ) {
 			return;
 		}
@@ -18,7 +18,7 @@ function onClick() {
 			pageid: mw.config.get( 'wgArticleId' ),
 			reviewed: 0,
 			note: unreviewNote
-		} ).then( function ( result ) {
+		} ).then( ( result ) => {
 			if ( result.pagetriageaction && result.pagetriageaction.result === 'success' ) {
 				document.location.reload();
 			}

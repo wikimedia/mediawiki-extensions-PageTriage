@@ -178,7 +178,7 @@ module.exports = ToolView.extend( {
 
 		// add click event for tag submission
 		$( '#mwe-pt-delete-submit-button' ).button( { disabled: true } )
-			.on( 'click', function () {
+			.on( 'click', () => {
 				$( '#mwe-pt-delete-submit-button' ).button( 'disable' );
 				$( '#mwe-pt-delete-submit' ).append( $.createSpinner( 'delete-spinner' ) ); // show spinner
 				that.submit();
@@ -270,7 +270,7 @@ module.exports = ToolView.extend( {
 			tltemplates: 'Template:' + templateArray.join( '|Template:' ),
 			format: 'json'
 		} )
-			.then( function ( data ) {
+			.then( ( data ) => {
 				const key = Object.keys( data.query.pages )[ 0 ];
 				const templates = data.query.pages[ key ].templates;
 				const numTemplates = templates && templates.length;
@@ -279,9 +279,7 @@ module.exports = ToolView.extend( {
 				}
 				return { result: false };
 			} )
-			.catch( function () {
-				return { result: false };
-			} );
+			.catch( () => ( { result: false } ) );
 	},
 
 	/**
@@ -484,7 +482,7 @@ module.exports = ToolView.extend( {
 		$( '#mwe-pt-delete-params-link-' + key ).html( '+&#160;' + link );
 		// Add click event to the link that shows the param form
 		const that = this;
-		$( '#mwe-pt-delete-params-' + key ).on( 'click', function () {
+		$( '#mwe-pt-delete-params-' + key ).on( 'click', () => {
 			that.showParamsForm( key );
 		} );
 	},
@@ -560,7 +558,7 @@ module.exports = ToolView.extend( {
 		$( '#mwe-pt-delete-params-form-' + key ).show();
 
 		// Add click event for the paramsForm "Add details" button
-		$( '#mwe-pt-delete-set-param-' + key ).button().on( 'click', function () {
+		$( '#mwe-pt-delete-set-param-' + key ).button().on( 'click', () => {
 			if ( that.setParams( key ) ) {
 				that.visibleParamsFormCount--;
 				that.refreshSubmitButton();
@@ -572,7 +570,7 @@ module.exports = ToolView.extend( {
 		} );
 
 		// Add click event for the paramsForm "Cancel" button
-		$( '#mwe-pt-delete-cancel-param-' + key ).button().on( 'click', function () {
+		$( '#mwe-pt-delete-cancel-param-' + key ).button().on( 'click', () => {
 			for ( const param in tag.params ) {
 				that.visibleParamsFormCount--;
 				that.refreshSubmitButton();
@@ -676,7 +674,7 @@ module.exports = ToolView.extend( {
 
 		// check for any missing parameters
 		// eslint-disable-next-line no-jquery/no-each-util
-		$.each( this.selectedTag, function ( key, tagObj ) {
+		$.each( this.selectedTag, ( key, tagObj ) => {
 			for ( const param in tagObj.params ) {
 				if (
 					tagObj.params[ param ].input === 'required' &&
@@ -693,7 +691,7 @@ module.exports = ToolView.extend( {
 
 			if ( tagObj.usesSubpages ) {
 				promises.push( that.pickDiscussionPageName( tagObj.prefix )
-					.then( function ( data ) {
+					.then( ( data ) => {
 						tagObj.subpage = data.page;
 						tagObj.subpageNumber = data.number;
 					} )
@@ -705,24 +703,22 @@ module.exports = ToolView.extend( {
 		const markAsReviewed = this.deletionTagsOptions[ this.selectedCat ].reviewed || '0';
 		// Wait until all discussion page names picked.
 		return this.isAnyRejectionTemplatePresent( this.selectedTag )
-			.then( function ( rejectionTemplateFound ) {
+			.then( ( rejectionTemplateFound ) => {
 				if ( rejectionTemplateFound !== false ) {
 					return $.Deferred().reject( 'previousdeletion', rejectionTemplateFound );
 				}
 			} )
 			.then( $.when.apply( null, promises ) )
-			.then( function () {
-				// Applying deletion tags should mark the page as reviewed depending on the selected tag's
-				// reviewed option. If it is not set then the page will be marked as not reviewed.
-				return new mw.Api().postWithToken( 'csrf', {
-					action: 'pagetriageaction',
-					pageid: mw.config.get( 'wgArticleId' ),
-					// reviewed value must be either '0' or '1'
-					reviewed: markAsReviewed,
-					skipnotif: '1'
-				} );
-			} )
-			.then( function () {
+			// Applying deletion tags should mark the page as reviewed depending on the selected tag's
+			// reviewed option. If it is not set then the page will be marked as not reviewed.
+			.then( () => new mw.Api().postWithToken( 'csrf', {
+				action: 'pagetriageaction',
+				pageid: mw.config.get( 'wgArticleId' ),
+				// reviewed value must be either '0' or '1'
+				reviewed: markAsReviewed,
+				skipnotif: '1'
+			} ) )
+			.then( () => {
 				if ( markAsReviewed === '1' ) {
 					// Page was also marked as reviewed, so we want to fire the action for that, too.
 					// The 'reviewed' and 'reviewer' attributes on the model are not yet populated,
@@ -771,7 +767,7 @@ module.exports = ToolView.extend( {
 				rootPromise.resolve();
 				return chainEnd;
 			} )
-			.catch( function ( _errorCode, data ) {
+			.catch( ( _errorCode, data ) => {
 				if ( _errorCode === 'previousdeletion' ) {
 					// isAnyRejectionTemplatePresent
 					that.handleError( mw.msg( 'pagetriage-tag-previousdeletion-error', data ) );
@@ -843,7 +839,7 @@ module.exports = ToolView.extend( {
 				summary: 'Adding {{' + template + '}}',
 				tags: 'pagetriage'
 			} )
-				.catch( function ( errorCode ) {
+				.catch( ( errorCode ) => {
 					throw new Error( errorCode + mw.msg( 'pagetriage-tagging-error' ) );
 				} );
 		}
@@ -863,7 +859,7 @@ module.exports = ToolView.extend( {
 			rvprop: 'content',
 			rvlimit: 1,
 			titles: mw.config.get( 'wgPageName' )
-		} ).then( function ( data ) {
+		} ).then( ( data ) => {
 			const page = data.query.pages[ Object.keys( data.query.pages )[ 0 ] ];
 			return page.revisions[ 0 ][ '*' ];
 		} );
@@ -940,26 +936,23 @@ module.exports = ToolView.extend( {
 			text = '{{' + deletionTagOptions.multiple.tag + '|' + tagText + paramsText + '}}';
 		}
 
-		return this.fetchArticleContent().then( function ( wikitext ) {
-			return new mw.Api().postWithToken( 'csrf', {
-				action: 'pagetriagetagging',
-				pageid: mw.config.get( 'wgArticleId' ),
-				wikitext: text + wikitext,
-				deletion: 1,
-				taglist: tagList.join( '|' )
-			} )
-				.then( function () {
-					// To be passed into `addToLog`.
-					return { tagCount: count, tagKey: key };
-				} )
-				.catch( function ( errorCode ) {
-					if ( errorCode === 'pagetriage-tag-deletion-error' ) {
-						throw new Error( mw.msg( 'pagetriage-tag-deletion-error' ) );
-					} else {
-						throw new Error( mw.msg( 'pagetriage-tagging-error' ) );
-					}
-				} );
-		} );
+		return this.fetchArticleContent().then( ( wikitext ) => new mw.Api().postWithToken( 'csrf', {
+			action: 'pagetriagetagging',
+			pageid: mw.config.get( 'wgArticleId' ),
+			wikitext: text + wikitext,
+			deletion: 1,
+			taglist: tagList.join( '|' )
+		} )
+			// To be passed into `addToLog`.
+			.then( () => ( { tagCount: count, tagKey: key } )
+			)
+			.catch( ( errorCode ) => {
+				if ( errorCode === 'pagetriage-tag-deletion-error' ) {
+					throw new Error( mw.msg( 'pagetriage-tag-deletion-error' ) );
+				} else {
+					throw new Error( mw.msg( 'pagetriage-tagging-error' ) );
+				}
+			} ) );
 	},
 
 	/**
@@ -1013,9 +1006,7 @@ module.exports = ToolView.extend( {
 				)
 			);
 
-			return messagePosterPromise.then( function ( messagePoster ) {
-				return messagePoster.post( topicTitle, template, { tags: 'pagetriage' } );
-			} ).catch( function () {
+			return messagePosterPromise.then( ( messagePoster ) => messagePoster.post( topicTitle, template, { tags: 'pagetriage' } ) ).catch( () => {
 				throw new Error( mw.msg( 'pagetriage-del-talk-page-notify-error' ) );
 			} );
 		}
@@ -1042,7 +1033,7 @@ module.exports = ToolView.extend( {
 			titles: title,
 			rvprop: 'content'
 		} )
-			.then( function ( data ) {
+			.then( ( data ) => {
 				if ( data && data.query && data.query.pages ) {
 					for ( const i in data.query.pages ) {
 						// If log page is missing, skip ahead to making the AFD page
@@ -1056,7 +1047,7 @@ module.exports = ToolView.extend( {
 					}
 				}
 			} )
-			.catch( function () {
+			.catch( () => {
 				// Don't log.
 			} );
 	},
@@ -1100,12 +1091,12 @@ module.exports = ToolView.extend( {
 		}
 
 		return new mw.Api().postWithToken( 'csrf', request )
-			.then( function ( editData ) {
+			.then( ( editData ) => {
 				if ( !editData.edit || editData.edit.result !== 'Success' ) {
 					throw new Error( mw.msg( 'pagetriage-del-log-page-adding-error' ) );
 				}
 			} )
-			.catch( function () {
+			.catch( () => {
 				throw new Error( mw.msg( 'pagetriage-del-log-page-adding-error' ) );
 			} );
 	},
@@ -1140,7 +1131,7 @@ module.exports = ToolView.extend( {
 		specialDeletionTagging[ tagObj.tag ].buildDiscussionRequest( tagObj.params[ '1' ].value, request );
 
 		return new mw.Api().postWithToken( 'csrf', request )
-			.catch( function () {
+			.catch( () => {
 				throw new Error( mw.msg( 'pagetriage-del-discussion-page-adding-error' ) );
 			} );
 	},
@@ -1217,7 +1208,7 @@ module.exports = ToolView.extend( {
 			aplimit: 'max',
 			formatversion: 2
 		} )
-			.then( function ( data ) {
+			.then( ( data ) => {
 				const pages = {};
 				let page, i, suffix;
 

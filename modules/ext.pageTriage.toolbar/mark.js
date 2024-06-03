@@ -56,7 +56,7 @@ module.exports = ToolView.extend( {
 			pageid: mw.config.get( 'wgArticleId' ),
 			reviewed: reviewed ? '1' : '0'
 		} )
-			.then( function () {
+			.then( () => {
 				// Data to be sent back to consumers of the actionQueue API.
 				const actionData = that.getDataForActionQueue( {
 					reviewed: reviewed,
@@ -77,7 +77,7 @@ module.exports = ToolView.extend( {
 
 				mw.pageTriage.actionQueue.run( 'mark', actionData );
 			} )
-			.catch( function ( _errorCode, data ) {
+			.catch( ( _errorCode, data ) => {
 				that.showMarkError( action, data.error.info || mw.msg( 'unknown-error' ) );
 			} );
 	},
@@ -167,10 +167,10 @@ module.exports = ToolView.extend( {
 		}
 
 		sendNotePromise
-			.then( function () {
+			.then( () => {
 				that.hideFlyout( action );
 			} )
-			.catch( function ( _errorCode, error ) {
+			.catch( ( _errorCode, error ) => {
 				if ( error !== undefined ) {
 					that.showMarkError( action, error );
 				} else {
@@ -184,9 +184,7 @@ module.exports = ToolView.extend( {
 			new mw.Title( talkPageTitle )
 		);
 
-		return messagePosterPromise.then( function ( messagePoster ) {
-			return messagePoster.post( topicTitle, note, { tags: 'pagetriage' } );
-		} );
+		return messagePosterPromise.then( ( messagePoster ) => messagePoster.post( topicTitle, note, { tags: 'pagetriage' } ) );
 	},
 
 	hideFlyout: function ( action ) {
@@ -272,7 +270,7 @@ module.exports = ToolView.extend( {
 		const noteIsEnabledForThisNamespace = this.moduleConfig.note.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) !== -1;
 		if ( noteIsEnabledForThisNamespace && numRecipients > 0 ) {
 			$( '#mwe-pt-review-note' ).show();
-			$( '#mwe-pt-review-note-input, #mwe-pt-review-note-recipient' ).on( 'input', function () {
+			$( '#mwe-pt-review-note-input, #mwe-pt-review-note-recipient' ).on( 'input', () => {
 				const recipient = $( '#mwe-pt-review-note-recipient' ).val();
 				note = $( '#mwe-pt-review-note-input' ).val().trim();
 				if ( note.length && recipient.length ) {
@@ -305,7 +303,7 @@ module.exports = ToolView.extend( {
 		// initialize the buttons
 		$( '#mwe-pt-mark-as-' + status + '-button' )
 			.button( { icons: { secondary: 'ui-icon-triangle-1-e' } } )
-			.on( 'click', function ( e ) {
+			.on( 'click', ( e ) => {
 				$( '#mwe-pt-mark-as-' + status + '-button' ).button( 'disable' );
 				$( '#mwe-pt-mark-as-' + status ).append( $.createSpinner( 'mark-spinner' ) ); // show spinner
 				that.submit( status );
@@ -314,7 +312,7 @@ module.exports = ToolView.extend( {
 
 		$( '#mwe-pt-send-message-button' )
 			.button( { disabled: true, icons: { secondary: 'ui-icon-triangle-1-e' } } )
-			.on( 'click', function ( e ) {
+			.on( 'click', ( e ) => {
 				$( '#mwe-pt-send-message-button' ).button( 'disable' );
 				$( '#mwe-pt-send-message' ).append( $.createSpinner( 'mark-spinner' ) ); // show spinner
 				that.submitNote();
@@ -324,7 +322,7 @@ module.exports = ToolView.extend( {
 		// bind down here so it doesn't happen before the first render
 		// Only bind this once
 		if ( !this.renderWasBound ) {
-			this.model.bind( 'change:patrol_status', function () {
+			this.model.bind( 'change:patrol_status', () => {
 				that.render();
 			} );
 			this.renderWasBound = true;
