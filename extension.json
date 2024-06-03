@@ -236,7 +236,7 @@
 				"jquery.ui",
 				"jquery.spinner",
 				"jquery.client",
-				"ext.pageTriage.defaultTagsOptions"
+				"ext.pageTriage.tagData"
 			],
 			"styles": [
 				"external/jquery.badge.css",
@@ -576,11 +576,11 @@
 				"pagetriage-stats-filter-page-count"
 			]
 		},
-		"ext.pageTriage.defaultTagsOptions": {
+		"ext.pageTriage.tagData": {
 			"packageFiles": [
-				"ext.pageTriage.defaultTagsOptions/main.js",
-				"ext.pageTriage.defaultTagsOptions/tags.json",
-				"ext.pageTriage.defaultTagsOptions/deletion.json"
+				"ext.pageTriage.tagData/main.js",
+				"ext.pageTriage.tagData/tags.json",
+				"ext.pageTriage.tagData/deletion.json"
 			],
 			"messages": [
 				"pagetriage-tags-title",

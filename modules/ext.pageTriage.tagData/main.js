@@ -1,5 +1,5 @@
-const defaultDeletionTagsOptions = require( './deletion.json' );
-const defaultTagsOptions = require( './tags.json' );
+const deletionTags = require( './deletion.json' );
+const maintenanceTags = require( './tags.json' );
 
 /*
 * "Tags" are items that appear in the Page Curation toolbar "Add tags" flyout menu.
@@ -21,6 +21,6 @@ const defaultTagsOptions = require( './tags.json' );
 */
 
 module.exports = {
-	deletion: defaultDeletionTagsOptions,
-	tags: defaultTagsOptions
+	deletion: deletionTags,
+	tags: maintenanceTags
 };
