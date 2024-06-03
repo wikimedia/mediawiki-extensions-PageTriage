@@ -186,7 +186,7 @@
 	"pagetriage-button-add-details": "添加详细信息",
 	"pagetriage-button-edit-details": "编辑详细信息",
 	"pagetriage-button-mark-for-deletion": "标记为删除",
-	"pagetriage-add-a-note-creator": "给创建者发送一个消息：（可选）",
+	"pagetriage-add-a-note-creator": "给创建者留言：（可选）",
 	"pagetriage-add-a-note-for-options-label": "发送消息给：",
 	"pagetriage-add-a-note-for-option-creator": "创建者 （User:$1）",
 	"pagetriage-add-a-note-for-option-reviewer": "审核者 （User:$1）",
