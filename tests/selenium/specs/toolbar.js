@@ -72,7 +72,7 @@ describe( 'PageTriage Toolbar', function () {
 
 		const articleTxt = await EditPage.content.getValue();
 
-		assert( articleTxt.includes( '{{notability|1=Academics|date=' ) );
+		assert( articleTxt.includes( '{{ai-generated|date=' ) );
 
 	} );
 

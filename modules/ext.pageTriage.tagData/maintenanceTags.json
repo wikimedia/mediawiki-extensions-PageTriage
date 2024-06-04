@@ -1451,6 +1451,22 @@
 					"multiple": true
 				},
 
+				"promotionaltone": {
+					"label": "Promotional tone",
+					"tag": "promotional tone",
+					"desc": "This page contains text that is written in a promotional tone.",
+					"params": {
+						"date": {
+							"label": "Date:",
+							"input": "automated",
+							"type": "hidden",
+							"value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}"
+						}
+					},
+					"position": "top",
+					"multiple": true
+				},
+
 				"technical": {
 					"label": "Technical",
 					"tag": "technical",
@@ -1536,6 +1552,22 @@
 		"moretags": {
 			"label": "More tags",
 			"tags": {
+				"ai-generated": {
+					"label": "AI-generated",
+					"tag": "ai-generated",
+					"desc": "This page may incorporate text from a large language model.",
+					"params": {
+						"date": {
+							"label": "Date:",
+							"input": "automated",
+							"type": "hidden",
+							"value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}"
+						}
+					},
+					"position": "top",
+					"multiple": true
+				},
+
 				"allplot": {
 					"label": "All plot",
 					"tag": "all plot",
@@ -1622,6 +1654,22 @@
 					"label": "Fictional perspective",
 					"tag": "in-universe",
 					"desc": "This page subject is fictional and needs rewriting from a non-fictional perspective.",
+					"params": {
+						"date": {
+							"label": "Date:",
+							"input": "automated",
+							"type": "hidden",
+							"value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}"
+						}
+					},
+					"position": "top",
+					"multiple": true
+				},
+
+				"noplot": {
+					"label": "No plot",
+					"tag": "no plot",
+					"desc": "This page needs a plot summary.",
 					"params": {
 						"date": {
 							"label": "Date:",
