@@ -4,12 +4,14 @@
 			"Bosogo"
 		]
 	},
+	"pagetriage-please-wait": "Күтө туруңуз...",
 	"pagetriage-bytes": "$1 {{PLURAL:$1|байт}}",
 	"pagetriage-edits": "$1 {{PLURAL:$1|түзөтүү}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|категория}}",
 	"pagetriage-no-categories": "Категориялар жок",
 	"pagetriage-author-blocked": "Бөгөттөлгөн",
 	"pagetriage-author-bot": "Бот",
+	"pagetriage-user-creation-dateformat": "ЖЖЖЖ-АА-КК",
 	"pagetriage-filter-article": "Макала",
 	"pagetriage-filter-username": "Колдонуучунун аты",
 	"pagetriage-more": "Көбүрөөк",
