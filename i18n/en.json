@@ -190,6 +190,7 @@
 	"pagetriage-tags-tooltip": "Add tags to indicate areas of improvement for this page",
 	"pagetriage-tags-quickfilter-label": "Filter tag list:",
 	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "Speedy deletion nomination of $1",
+	"pagetriage-del-tags-speedy-deletion-nomination-notify-without-article-name": "Speedy deletion of your article",
 	"pagetriage-del-tags-prod-notify-topic-title": "[[Wikipedia:Proposed deletion|Proposed deletion]] of [[$1]]",
 	"pagetriage-del-tags-xfd-notify-topic-title": "Deletion discussion about [[$1]]",
 	"pagetriage-feedback-from-new-page-review-process-title": "Feedback from New Page Review process",

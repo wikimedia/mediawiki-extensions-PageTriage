@@ -280,7 +280,7 @@
 					"desc": "Pages that disparage, threaten, intimidate or harass their subject or some other entity, and serve no other purpose. (G10)",
 					"params": {},
 					"anchor": "attack",
-					"talkpagenotiftopictitle": "pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title",
+					"talkpagenotiftopictitle": "pagetriage-del-tags-speedy-deletion-nomination-notify-without-article-name",
 					"talkpagenotiftpl": "Db-attack-notice-NPF"
 				},
 
@@ -291,8 +291,8 @@
 					"desc": "A biography of a living person that is entirely negative in tone and unsourced, where there is no neutral version in the history to revert to. (G10)",
 					"params": {},
 					"anchor": "",
-					"talkpagenotiftopictitle": "pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title",
-					"talkpagenotiftpl": "db-negublp-notice"
+					"talkpagenotiftopictitle": "pagetriage-del-tags-speedy-deletion-nomination-notify-without-article-name",
+					"talkpagenotiftpl": "Db-negublp-notice-NPF"
 				},
 
 				"dbg11": {

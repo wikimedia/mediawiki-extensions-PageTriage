@@ -211,6 +211,7 @@
 	"pagetriage-tags-tooltip": "Help message that displays when someone hovers over the tag wizard button",
 	"pagetriage-tags-quickfilter-label": "Label for the tag filter textbox",
 	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "Deletion tag option messages",
+	"pagetriage-del-tags-speedy-deletion-nomination-notify-without-article-name": "Deletion tag option messages",
 	"pagetriage-del-tags-prod-notify-topic-title": "Deletion tag option messages",
 	"pagetriage-del-tags-xfd-notify-topic-title": "Deletion tag option messages",
 	"pagetriage-feedback-from-new-page-review-process-title": "Used as topic title in a toolbar with Javascript",

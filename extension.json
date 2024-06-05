@@ -821,6 +821,7 @@
 			"value": [
 				"pagetriage-del-tags-prod-notify-topic-title",
 				"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title",
+				"pagetriage-del-tags-speedy-deletion-nomination-notify-without-article-name",
 				"pagetriage-del-tags-xfd-notify-topic-title"
 			]
 		},
