@@ -17,7 +17,9 @@
 		"moment": "readonly"
 	},
 	"rules": {
+		"arrow-body-style": "warn",
 		"compat/compat": "warn",
+		"no-jquery/no-extend": "warn",
 		"no-jquery/no-global-selector": "off",
 		"no-restricted-syntax": [
 			"error",
@@ -30,6 +32,6 @@
 				"selector": "MemberExpression > Identifier[name=\"fail\"]"
 			}
 		],
-		"es-x/no-resizable-and-growable-arraybuffers": "warn"
+		"prefer-arrow-callback": "warn"
 	}
 }
