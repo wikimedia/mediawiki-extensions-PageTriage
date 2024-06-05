@@ -533,7 +533,7 @@ class Hooks implements
 					// show 'Reviewed' text
 					$msg = $context->msg( 'pagetriage-reviewed' )->escaped();
 				}
-				$outputPage->addModules( [ 'ext.pageTriage.article' ] );
+				$outputPage->addModules( [ 'ext.pageTriage.articleLink' ] );
 				$html = Html::rawElement( 'div', [ 'class' => 'mw-pagetriage-markpatrolled' ], $msg );
 				$outputPage->addHTML( $html );
 			}
