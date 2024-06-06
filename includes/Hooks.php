@@ -598,7 +598,11 @@ class Hooks implements
 				}
 			}
 			$title = $this->titleFactory->newFromID( $rc->getAttribute( 'rc_cur_id' ) );
-			if ( $title ) {
+			$isInPageTriageNamespaces = in_array(
+				$title->getNamespace(),
+				$this->config->get( 'PageTriageNamespaces' )
+			);
+			if ( $title && $isInPageTriageNamespaces ) {
 				PageTriageUtil::createNotificationEvent(
 					$title,
 					$user,
