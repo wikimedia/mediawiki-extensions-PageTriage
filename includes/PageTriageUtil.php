@@ -68,7 +68,14 @@ class PageTriageUtil {
 	}
 
 	/**
-	 * Get the IDs of applicable PageTriage namespaces.
+	 * Get the IDs of applicable PageTriage namespaces, including draftspace.
+	 *
+	 * This is useful if you want to get the namespaces where PageTriage should
+	 * write to SQL for the Special:NewPagesFeed. If you want to get the namespaces
+	 * where PageTriage should display a toolbar or send a notification, you should
+	 * instead use $config->get( 'PageTriageNamespaces' ), which does not include
+	 * draftspace.
+	 *
 	 * @param Config|null $config
 	 * @return int[]
 	 */
