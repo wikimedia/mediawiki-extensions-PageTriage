@@ -1,7 +1,7 @@
 const actionQueue = require( '../../../modules/ext.pageTriage.toolbarStartup/ext.pageTriage.actionQueue.js' );
 describe( 'ext.pageTriage.actionQueue', () => {
 
-	test( 'Testing the queue: synchronous and asynchronous methods', function () {
+	test( 'Testing the queue: synchronous and asynchronous methods', () => {
 		const test = {},
 			pushToTest = function ( action, text, data ) {
 				test[ action ] = test[ action ] || [];
@@ -13,28 +13,28 @@ describe( 'ext.pageTriage.actionQueue', () => {
 			};
 
 		actionQueue.reset();
-		actionQueue.add( 'action1', function ( data ) {
+		actionQueue.add( 'action1', ( data ) => {
 			pushToTest( 'action1', 'synchronous', data );
 			return true;
 		} );
-		actionQueue.add( 'action2', function ( data ) {
+		actionQueue.add( 'action2', ( data ) => {
 			pushToTest( 'action2', 'synchronous without returning true', data );
 		} );
 
-		actionQueue.add( 'action1', function ( data ) {
+		actionQueue.add( 'action1', ( data ) => {
 			const $deferred = $.Deferred();
 
-			setTimeout( function () {
+			setTimeout( () => {
 				pushToTest( 'action1', 'slow asynchronous success', data );
 				$deferred.resolve();
 			}, 500 );
 
 			return $deferred.promise();
 		} );
-		actionQueue.add( 'action1', function ( data ) {
+		actionQueue.add( 'action1', ( data ) => {
 			const $deferred = $.Deferred();
 
-			setTimeout( function () {
+			setTimeout( () => {
 				pushToTest( 'action1', 'quick asynchronous failure', data );
 				$deferred.reject();
 			}, 100 );
@@ -59,7 +59,7 @@ describe( 'ext.pageTriage.actionQueue', () => {
 
 		// Run the queue
 		const test1 = actionQueue.run( 'action1', [ 'testparam1', 'testparam2' ] )
-			.always( function () {
+			.always( () => {
 				expect(
 					test.action1
 				).toBe(
@@ -74,7 +74,7 @@ describe( 'ext.pageTriage.actionQueue', () => {
 				return Promise.resolve();
 			} );
 		const test2 = actionQueue.run( 'action2', { test1: 'param3', test2: 'param4' } )
-			.always( function () {
+			.always( () => {
 				expect(
 					test.action2
 				).toBe(
@@ -88,7 +88,7 @@ describe( 'ext.pageTriage.actionQueue', () => {
 		return Promise.all( [ test1, test2 ] );
 	} );
 
-	test( 'Testing the queue: run() with multiple actions', function () {
+	test( 'Testing the queue: run() with multiple actions', () => {
 		const test = [],
 			pushToTest = function ( action, text, data ) {
 				test.push( {
@@ -100,19 +100,19 @@ describe( 'ext.pageTriage.actionQueue', () => {
 
 		actionQueue.reset();
 		// Add multiple methods to action1
-		actionQueue.add( 'action1', function ( data ) {
+		actionQueue.add( 'action1', ( data ) => {
 			pushToTest( 'action1', 'foo', data );
 		} );
-		actionQueue.add( 'action1', function ( data ) {
+		actionQueue.add( 'action1', ( data ) => {
 			pushToTest( 'action1', 'bar', data );
 		} );
-		actionQueue.add( 'action1', function ( data ) {
+		actionQueue.add( 'action1', ( data ) => {
 			pushToTest( 'action1', 'baz', data );
 		} );
-		actionQueue.add( 'action1', function ( data ) {
+		actionQueue.add( 'action1', ( data ) => {
 			const $deferred = $.Deferred();
 
-			setTimeout( function () {
+			setTimeout( () => {
 				pushToTest( 'action1', 'slow asynchronous success', data );
 				$deferred.resolve();
 			}, 500 );
@@ -120,19 +120,19 @@ describe( 'ext.pageTriage.actionQueue', () => {
 			return $deferred.promise();
 		} );
 		// Add multiple methods to action2
-		actionQueue.add( 'action2', function ( data ) {
+		actionQueue.add( 'action2', ( data ) => {
 			pushToTest( 'action2', 'foo2', data );
 		} );
-		actionQueue.add( 'action2', function ( data ) {
+		actionQueue.add( 'action2', ( data ) => {
 			pushToTest( 'action2', 'bar2', data );
 		} );
-		actionQueue.add( 'action2', function ( data ) {
+		actionQueue.add( 'action2', ( data ) => {
 			pushToTest( 'action2', 'baz2', data );
 		} );
-		actionQueue.add( 'action2', function ( data ) {
+		actionQueue.add( 'action2', ( data ) => {
 			const $deferred = $.Deferred();
 
-			setTimeout( function () {
+			setTimeout( () => {
 				pushToTest( 'action2', 'quick asynchronous failure', data );
 				$deferred.reject();
 			}, 100 );
@@ -142,7 +142,7 @@ describe( 'ext.pageTriage.actionQueue', () => {
 
 		// Run both actions at once
 		return actionQueue.run( [ 'action1', 'action2' ], { param1: 'something', param2: 'else' } )
-			.then( function () {
+			.then( () => {
 				// Check that all functions from both action queues ran
 				expect(
 					test
@@ -165,7 +165,7 @@ describe( 'ext.pageTriage.actionQueue', () => {
 			} );
 	} );
 
-	test( 'Testing the queue: run() with actions with action-specific data', function () {
+	test( 'Testing the queue: run() with actions with action-specific data', () => {
 		const test = [],
 			pushToTest = function ( action, text, data ) {
 				test.push( {
@@ -177,19 +177,19 @@ describe( 'ext.pageTriage.actionQueue', () => {
 
 		actionQueue.reset();
 		// Add multiple methods to action1
-		actionQueue.add( 'action1', function ( data ) {
+		actionQueue.add( 'action1', ( data ) => {
 			pushToTest( 'action1', 'foo', data );
 		} );
-		actionQueue.add( 'action1', function ( data ) {
+		actionQueue.add( 'action1', ( data ) => {
 			pushToTest( 'action1', 'bar', data );
 		} );
-		actionQueue.add( 'action1', function ( data ) {
+		actionQueue.add( 'action1', ( data ) => {
 			pushToTest( 'action1', 'baz', data );
 		} );
-		actionQueue.add( 'action1', function ( data ) {
+		actionQueue.add( 'action1', ( data ) => {
 			const $deferred = $.Deferred();
 
-			setTimeout( function () {
+			setTimeout( () => {
 				pushToTest( 'action1', 'slow asynchronous success', data );
 				$deferred.resolve();
 			}, 500 );
@@ -197,19 +197,19 @@ describe( 'ext.pageTriage.actionQueue', () => {
 			return $deferred.promise();
 		} );
 		// Add multiple methods to action2
-		actionQueue.add( 'action2', function ( data ) {
+		actionQueue.add( 'action2', ( data ) => {
 			pushToTest( 'action2', 'foo2', data );
 		} );
-		actionQueue.add( 'action2', function ( data ) {
+		actionQueue.add( 'action2', ( data ) => {
 			pushToTest( 'action2', 'bar2', data );
 		} );
-		actionQueue.add( 'action2', function ( data ) {
+		actionQueue.add( 'action2', ( data ) => {
 			pushToTest( 'action2', 'baz2', data );
 		} );
-		actionQueue.add( 'action2', function ( data ) {
+		actionQueue.add( 'action2', ( data ) => {
 			const $deferred = $.Deferred();
 
-			setTimeout( function () {
+			setTimeout( () => {
 				pushToTest( 'action2', 'quick asynchronous failure', data );
 				$deferred.reject();
 			}, 100 );
@@ -231,7 +231,7 @@ describe( 'ext.pageTriage.actionQueue', () => {
 			// General data sent to all
 			{ param1: 'allActions', param2: 'getThese' }
 		)
-			.then( function () {
+			.then( () => {
 				// Check that all functions from both action queues ran
 				expect(
 					test

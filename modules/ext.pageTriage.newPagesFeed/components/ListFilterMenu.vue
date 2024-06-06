@@ -230,16 +230,14 @@ module.exports = {
 		settings.loadApiParams();
 		// Need to include at least one of reviewed/unreviewed, and at least
 		// one of nominated for deletion/redirects/normal articles
-		const canSaveSettings = computed( () => {
-			return (
-				( settings.unsaved.nppIncludeUnreviewed || settings.unsaved.nppIncludeReviewed ) &&
+		const canSaveSettings = computed( () => (
+			( settings.unsaved.nppIncludeUnreviewed || settings.unsaved.nppIncludeReviewed ) &&
 				(
 					settings.unsaved.nppIncludeNominated ||
 					settings.unsaved.nppIncludeRedirects ||
 					settings.unsaved.nppIncludeOthers
 				)
-			);
-		} );
+		) );
 		const doSaveSettings = function () {
 			settings.update( settings.unsaved );
 			settings.controlMenuOpen = false;

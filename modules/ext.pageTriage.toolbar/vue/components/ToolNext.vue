@@ -63,7 +63,7 @@ module.exports = {
 			params.limit = 1;
 			params.offset = page.creation_date_utc;
 			params.pageoffset = page.pageid;
-			return client.get( params ).then( function ( res ) {
+			return client.get( params ).then( ( res ) => {
 				// If API doesn't return content for next page
 				// then user cannot advance to next page
 				if ( !res.pagetriagelist || !res.pagetriagelist.pages || !res.pagetriagelist.pages[ 0 ] || !res.pagetriagelist.pages[ 0 ].title ) {
@@ -81,11 +81,11 @@ module.exports = {
 					uri.query.pagetriage_ui = this.pageTriageUi;
 				}
 				return uri.toString();
-			}.bind( this ) )
-				.then( function ( uri ) {
+			} )
+				.then( ( uri ) => {
 					this.uri = uri;
 					this.disabled = typeof uri === 'undefined';
-				}.bind( this ) );
+				} );
 		}
 	},
 	mounted: function () {

@@ -42,11 +42,11 @@ module.exports = ToolView.extend( {
 			this.isRedirect = true;
 			Object
 				.getOwnPropertyNames( this.tagOptions )
-				.forEach( function ( prop ) {
+				.forEach( ( prop ) => {
 					if ( prop !== 'redirects' ) {
 						delete this.tagOptions[ prop ];
 					}
-				}.bind( this ) );
+				} );
 		}
 	},
 
@@ -74,7 +74,7 @@ module.exports = ToolView.extend( {
 		}
 
 		// then, sort the "list" variable by tag name, in ascending order
-		list.sort( function ( a, b ) {
+		list.sort( ( a, b ) => {
 			if ( a.label < b.label ) {
 				return -1;
 			}
@@ -155,7 +155,7 @@ module.exports = ToolView.extend( {
 		// add click event for tag submission
 		$( '#mwe-pt-tag-submit-button' )
 			.button( { disabled: true } )
-			.on( 'click', function () {
+			.on( 'click', () => {
 				$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
 				$( '#mwe-pt-tag-submit' ).append( $.createSpinner( 'tag-spinner' ) ); // show spinner
 				that.submit();
@@ -393,7 +393,7 @@ module.exports = ToolView.extend( {
 
 		const that = this;
 		// Add click event to the link that shows the param form
-		$( '#mwe-pt-tag-params-' + key ).on( 'click', function () {
+		$( '#mwe-pt-tag-params-' + key ).on( 'click', () => {
 			that.showParamsForm( key, cat );
 			return false;
 		} );
@@ -445,7 +445,7 @@ module.exports = ToolView.extend( {
 
 		const that = this;
 		// Add click even for the Set Parameters button
-		$( '#mwe-pt-tag-set-param-' + key ).button().on( 'click', function () {
+		$( '#mwe-pt-tag-set-param-' + key ).button().on( 'click', () => {
 			// When setting parameters, we need to make sure that all tags that are duplicated across categories
 			// are updated to reflect the param changes made to the tag in the current category.
 			// For most tags that are not in the all category, we can find the dupicate tag in the all category
@@ -464,7 +464,7 @@ module.exports = ToolView.extend( {
 		} );
 
 		// Add click even for the Cancel button
-		$( '#mwe-pt-tag-cancel-param-' + key ).button().on( 'click', function () {
+		$( '#mwe-pt-tag-cancel-param-' + key ).button().on( 'click', () => {
 			let destCat;
 
 			// Hide the form and show the link to reopen it
@@ -562,7 +562,7 @@ module.exports = ToolView.extend( {
 			rvprop: 'content',
 			rvlimit: 1,
 			titles: mw.config.get( 'wgPageName' )
-		} ).then( function ( data ) {
+		} ).then( ( data ) => {
 			const page = data.query.pages[ Object.keys( data.query.pages )[ 0 ] ];
 			return page.revisions[ 0 ][ '*' ];
 		} );
@@ -665,7 +665,7 @@ module.exports = ToolView.extend( {
 	 * @return {jQuery.Promise<void>}
 	 */
 	submit: function () {
-		return this.fetchArticleContent().then( function ( wikitext ) {
+		return this.fetchArticleContent().then( ( wikitext ) => {
 			if ( this.model.get( 'page_len' ) < 1000 && this.selectedTagCount > 4 ) {
 				// eslint-disable-next-line no-alert
 				if ( !confirm( mw.msg( 'pagetriage-add-tag-confirmation', this.selectedTagCount ) ) ) {
@@ -773,13 +773,13 @@ module.exports = ToolView.extend( {
 					reviewed: '1',
 					skipnotif: '1'
 				} )
-					.then( function () {
+					.then( () => {
 						// Register action for marking the page as reviewed.
 						actionQueue.mark = { reviewed: true };
 
 						that.applyTags( wikitext, tagList );
 					} )
-					.catch( function ( _errorCode, data ) {
+					.catch( ( _errorCode, data ) => {
 						that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
 					} );
 			} else {
@@ -791,17 +791,17 @@ module.exports = ToolView.extend( {
 					reviewed: '0',
 					skipnotif: '1'
 				} )
-					.then( function () {
+					.then( () => {
 						// Register action for marking the page as unreviewed.
 						actionQueue.mark = { reviewed: false };
 
 						that.applyTags( wikitext, tagList );
 					} )
-					.catch( function ( _errorCode, data ) {
+					.catch( ( _errorCode, data ) => {
 						that.handleError( mw.msg( 'pagetriage-mark-as-unreviewed-error', data.error.info ) );
 					} );
 			}
-		}.bind( this ) );
+		} );
 	},
 
 	/**
@@ -846,7 +846,7 @@ module.exports = ToolView.extend( {
 			note: note,
 			taglist: tagList.join( '|' )
 		} )
-			.then( function () {
+			.then( () => {
 				actionQueue.tags = { tags: tagList };
 
 				if ( note ) {
@@ -856,7 +856,7 @@ module.exports = ToolView.extend( {
 					mw.pageTriage.actionQueue.runAndRefresh( actionQueue, that.getDataForActionQueue() );
 				}
 			} )
-			.catch( function ( _errorCode, data ) {
+			.catch( ( _errorCode, data ) => {
 				that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error', data.error.info ) );
 			} );
 	},
@@ -878,11 +878,9 @@ module.exports = ToolView.extend( {
 			'|3=' + note + '}}';
 
 		const that = this;
-		return messagePosterPromise.then( function ( messagePoster ) {
-			return messagePoster.post( topicTitle, note, { tags: 'pagetriage' } );
-		} ).then( function () {
+		return messagePosterPromise.then( ( messagePoster ) => messagePoster.post( topicTitle, note, { tags: 'pagetriage' } ) ).then( () => {
 			mw.pageTriage.actionQueue.runAndRefresh( actionQueue, that.getDataForActionQueue() );
-		}, function () {
+		}, () => {
 			that.handleError( mw.msg( 'pagetriage-mark-as-reviewed-error' ) );
 		} );
 	},

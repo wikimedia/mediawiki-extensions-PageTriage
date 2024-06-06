@@ -46,9 +46,7 @@ module.exports = {
 				auexcludegroup: 'bot',
 				aulimit: 3,
 				auwitheditsonly: '1'
-			} ).then( ( resp ) => {
-				return resp.query.allusers;
-			} );
+			} ).then( ( resp ) => resp.query.allusers );
 		}
 
 		function onPaste( evt ) {
@@ -82,12 +80,10 @@ module.exports = {
 				}
 
 				// Update menuItems.
-				menuItems.value = data.map( ( result ) => {
-					return {
-						label: result.name,
-						value: result.name
-					};
-				} );
+				menuItems.value = data.map( ( result ) => ( {
+					label: result.name,
+					value: result.name
+				} ) );
 
 			} ).catch( () => {
 				// On error, set results to empty.

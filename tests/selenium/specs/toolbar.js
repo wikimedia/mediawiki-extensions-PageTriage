@@ -10,8 +10,8 @@ const assert = require( 'assert' ),
 	username = Util.getTestString( 'User-' ),
 	Api = require( 'wdio-mediawiki/Api' );
 
-describe( 'PageTriage Toolbar', function () {
-	before( async function () {
+describe( 'PageTriage Toolbar', () => {
+	before( async () => {
 		const bot = await Api.bot();
 		// Create account with known username and password
 		const password = Util.getTestString();
@@ -28,45 +28,35 @@ describe( 'PageTriage Toolbar', function () {
 		RunJobs.run();
 	} );
 
-	it( 'should load', async function () {
+	it( 'should load', async () => {
 		await browser.reloadSession();
 		await LoginPage.loginAdmin();
 		Toolbar.open( articleName );
-		await browser.waitUntil( async () => {
-			return await Toolbar.toolbarBody.waitForDisplayed();
-		} );
+		await browser.waitUntil( async () => await Toolbar.toolbarBody.waitForDisplayed() );
 
 		assert( Toolbar.toolbarBody.isExisting() );
 	} );
 
-	it( 'should allow user to add a maintainence tag to a page', async function () {
+	it( 'should allow user to add a maintainence tag to a page', async () => {
 		await browser.reloadSession();
 		await LoginPage.loginAdmin();
 		Toolbar.open( articleName );
-		await browser.waitUntil( async () => {
-			return await Toolbar.toolbarBody.waitForDisplayed();
-		} );
+		await browser.waitUntil( async () => await Toolbar.toolbarBody.waitForDisplayed() );
 
-		await browser.waitUntil( async () => {
-			return await Toolbar.tagToolIcon.waitForDisplayed();
-		} );
+		await browser.waitUntil( async () => await Toolbar.tagToolIcon.waitForDisplayed() );
 
 		assert( await Toolbar.tagToolIcon.isExisting() );
 
 		await Toolbar.tagToolIcon.click();
 
-		await browser.waitUntil( async () => {
-			return await Toolbar.tagToolBody.waitForDisplayed();
-		} );
+		await browser.waitUntil( async () => await Toolbar.tagToolBody.waitForDisplayed() );
 
 		assert( await Toolbar.tagToolBody.isExisting() );
 
 		await Toolbar.tagToolFirstCheckbox.click();
 		await Toolbar.tagToolSubmitButton.waitForEnabled();
 		await Toolbar.tagToolSubmitButton.click();
-		await browser.waitUntil( async () => {
-			return !( await Toolbar.tagToolSubmitButton.isExisting() );
-		} );
+		await browser.waitUntil( async () => !( await Toolbar.tagToolSubmitButton.isExisting() ) );
 
 		await EditPage.open( articleName );
 
@@ -76,32 +66,24 @@ describe( 'PageTriage Toolbar', function () {
 
 	} );
 
-	it( 'should allow user to add a maintainence tag to a page and send a note to user', async function () {
+	it( 'should allow user to add a maintainence tag to a page and send a note to user', async () => {
 		await browser.reloadSession();
 		await LoginPage.loginAdmin();
 		Toolbar.open( articleName );
-		await browser.waitUntil( async () => {
-			return await Toolbar.toolbarBody.waitForDisplayed();
-		} );
+		await browser.waitUntil( async () => await Toolbar.toolbarBody.waitForDisplayed() );
 
-		await browser.waitUntil( async () => {
-			return await Toolbar.tagToolIcon.waitForDisplayed();
-		} );
+		await browser.waitUntil( async () => await Toolbar.tagToolIcon.waitForDisplayed() );
 
 		Toolbar.tagToolIcon.click();
 
-		await browser.waitUntil( async () => {
-			return await Toolbar.tagToolBody.waitForDisplayed();
-		} );
+		await browser.waitUntil( async () => await Toolbar.tagToolBody.waitForDisplayed() );
 
 		Toolbar.tagToolFirstCheckbox.click();
 		await Toolbar.tagToolNoteBox.waitForDisplayed();
 		const comment = Util.getTestString( 'Comment-' );
 		await Toolbar.tagToolNoteBox.setValue( comment );
 		Toolbar.tagToolSubmitButton.click();
-		await browser.waitUntil( async () => {
-			return !( await Toolbar.tagToolSubmitButton.isExisting() );
-		} );
+		await browser.waitUntil( async () => !( await Toolbar.tagToolSubmitButton.isExisting() ) );
 
 		await EditPage.open( `User talk:${ username }` );
 

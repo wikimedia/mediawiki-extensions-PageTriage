@@ -41,7 +41,7 @@ describe( 'DeleteToolView', () => {
 			tagKey: 'tagKey'
 		} );
 
-		return msg.then( function () {
+		return msg.then( () => {
 			expect( true ).toBe( true );
 		} );
 	} );
@@ -59,7 +59,7 @@ describe( 'DeleteToolView', () => {
 			tagKey: 'tagKey'
 		} );
 
-		return msg.then( function () {
+		return msg.then( () => {
 			expect( true ).toBe( true );
 		} );
 	} );

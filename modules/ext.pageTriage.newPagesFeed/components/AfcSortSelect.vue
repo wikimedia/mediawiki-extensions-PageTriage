@@ -29,7 +29,7 @@ module.exports = {
 		return {
 			// if the declined/submitted sort options should be included, the end of
 			// the message key to use (pagetriage-afc-(old|new)est-(declined|submitted))
-			afcSortUpdated: computed( function () {
+			afcSortUpdated: computed( () => {
 				const { applied } = storeToRefs( useSettingsStore() );
 				if ( applied.value.afcSubmissionState === 'declined' ) {
 					return 'declined';

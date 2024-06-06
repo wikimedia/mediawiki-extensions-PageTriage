@@ -248,7 +248,7 @@ module.exports = {
 			}
 			mw.util.hidePortlet( openCurationToolbarLinkId );
 			const maximize = this.maximize;
-			pageCurationLink.addEventListener( 'click', function () {
+			pageCurationLink.addEventListener( 'click', () => {
 				pageCurationLink.blur();
 				maximize();
 			} );

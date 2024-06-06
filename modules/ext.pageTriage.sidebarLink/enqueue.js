@@ -8,7 +8,7 @@ const portletConfig = [
 
 function onClick() {
 	OO.ui.confirm( mw.msg( 'pagetriage-enqueue-confirmation' ), {
-	} ).then( function ( enqueue ) {
+	} ).then( ( enqueue ) => {
 		if ( !enqueue ) {
 			return;
 		}
@@ -17,7 +17,7 @@ function onClick() {
 			action: 'pagetriageaction',
 			pageid: mw.config.get( 'wgArticleId' ),
 			enqueue: 1
-		} ).then( function ( result ) {
+		} ).then( ( result ) => {
 			if ( result.pagetriageaction && result.pagetriageaction.result === 'success' ) {
 				document.location.reload();
 			}

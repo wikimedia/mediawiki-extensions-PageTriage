@@ -13,9 +13,7 @@ module.exports = ToolView.extend( {
 		for ( const key in obj ) {
 			tuples.push( [ key, obj[ key ] ] );
 		}
-		tuples.sort( function ( a, b ) {
-			return a[ 1 ] - b[ 1 ];
-		} );
+		tuples.sort( ( a, b ) => a[ 1 ] - b[ 1 ] );
 
 		let length = tuples.length;
 		while ( length-- ) {
@@ -30,7 +28,7 @@ module.exports = ToolView.extend( {
 
 		// get the last 20 editors of the article
 		const contributorArray = [];
-		this.model.revisions.each( function ( revision ) {
+		this.model.revisions.each( ( revision ) => {
 			if ( typeof ( revision.get( 'userhidden' ) ) === 'undefined' ) {
 				contributorArray.push( revision.get( 'user' ) );
 			}
@@ -69,7 +67,7 @@ module.exports = ToolView.extend( {
 
 		let x = 0;
 		// sort contributors by their number of edits
-		this.bySortedValue( contributorCounts, function ( name, count ) {
+		this.bySortedValue( contributorCounts, ( name, count ) => {
 			// include up to 9 additional editors (this corresponds to the limit in WikiLove)
 			if ( name !== creator && name !== mw.user.getName() && x < 9 ) {
 				try {
@@ -96,7 +94,7 @@ module.exports = ToolView.extend( {
 			$( '#mwe-pt-article-contributor-list' ).append( mw.message( 'pagetriage-wikilove-no-recipients' ).escaped() );
 		}
 
-		$( '.mwe-pt-recipient-checkbox' ).on( 'click', function () {
+		$( '.mwe-pt-recipient-checkbox' ).on( 'click', () => {
 			if ( $( '.mwe-pt-recipient-checkbox:checked' ).length > 0 ) {
 				$( '#mwe-pt-wikilove-button' ).button( 'enable' );
 			} else {
@@ -108,7 +106,7 @@ module.exports = ToolView.extend( {
 		const that = this;
 		$( '#mwe-pt-wikilove-button' )
 			.button( { icons: { secondary: 'ui-icon-triangle-1-e' } } )
-			.on( 'click', function ( e ) {
+			.on( 'click', ( e ) => {
 				e.preventDefault();
 				const recipients = $( '.mwe-pt-recipient-checkbox:checked' ).map( function () {
 					return this.value;

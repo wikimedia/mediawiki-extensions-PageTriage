@@ -14,7 +14,7 @@ describe( 'ext.pageTriage.article', () => {
 		Article = require( 'ext.pageTriage.util' ).Article;
 	} );
 
-	test( 'generateCopyPatrolURL() should generate a valid URL for enwiki', function () {
+	test( 'generateCopyPatrolURL() should generate a valid URL for enwiki', () => {
 		const wikiLanguageCodeForCopyPatrolURL = 'en';
 		const filter = 'all';
 		const filterPage = '18th+Game+Developers+Choice+Awards';
