@@ -580,6 +580,7 @@ class Hooks implements
 		$rc = RecentChange::newFromId( $rcid );
 
 		if ( $rc ) {
+			// Run for PageTriage namespaces and for draftspace
 			if ( !in_array( $rc->getPage()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 				return;
 			}
@@ -597,6 +598,8 @@ class Hooks implements
 					$acp->compileMetadata();
 				}
 			}
+
+			// Only notify for PageTriage namespaces, not for draftspace
 			$title = $this->titleFactory->newFromID( $rc->getAttribute( 'rc_cur_id' ) );
 			$isInPageTriageNamespaces = in_array(
 				$title->getNamespace(),
