@@ -456,8 +456,13 @@ class Hooks implements
 
 	/** @inheritDoc */
 	public function onArticleViewFooter( $article, $patrolFooterShown ) {
-		// Handler for hook ArticleViewFooter, this will determine whether to load
-		// curation toolbar or 'mark as reviewed'/'reviewed' text
+		// Handler for hook ArticleViewFooter. This will...
+		//   1) determine whether to turn on noindex for new, unreviewed articles,
+		//   2) set the JS variables wgPageTriageUserCanPatrol and wgPageTriageUserCanAutoPatrol,
+		//   3) determine whether to load a link for autopatrolled users to unpatrol their article,
+		//   4) determine whether to load the Page Curation toolbar, and/or
+		//   5) determine whether to load the "Add to New Pages Feed" link
+
 		$wikiPage = $article->getPage();
 		$title = $wikiPage->getTitle();
 		$context = $article->getContext();
@@ -465,6 +470,7 @@ class Hooks implements
 		$outputPage = $context->getOutput();
 		$request = $context->getRequest();
 
+		// 1) Determine whether to turn on noindex for new, unreviewed articles.
 		// Overwrite the noindex rule defined in Article::view(), this also affects main namespace
 		if ( self::shouldShowNoIndex( $article ) ) {
 			$outputPage->setRobotPolicy( 'noindex,nofollow' );
@@ -473,42 +479,41 @@ class Hooks implements
 			);
 		}
 
+		// onArticleViewFooter() is run every time any article is not viewed from cache, so exit
+		// early if we can, to increase performance.
 		// Only named users can review
 		if ( !$user->isNamed() ) {
 			return;
 		}
-
 		// Only show in defined namespaces
 		if ( !in_array( $title->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			return;
 		}
-
 		// Don't do anything if it's coming from Special:NewPages
 		if ( $request->getVal( 'patrolpage' ) ) {
 			return;
 		}
 
+		// 2) set the JS variables wgPageTriageUserCanPatrol and wgPageTriageUserCanAutoPatrol
 		$userCanPatrol = $this->permissionManager->quickUserCan( 'patrol', $user, $title );
 		$userCanAutoPatrol = $this->permissionManager->userHasRight( $user, 'autopatrol' );
-
 		$outputPage->addJsConfigVars( [
 			'wgPageTriageUserCanPatrol' => $userCanPatrol,
 			'wgPageTriageUserCanAutoPatrol' => $userCanAutoPatrol
 		] );
 
-		// Don't show anything for user with no patrol right
+		// 3) determine whether to load a link for autopatrolled users to unpatrol their article
 		if ( !$userCanPatrol ) {
-
-			// Maybe allow autopatrolled users to unpatrol their article
 			$this->maybeShowUnpatrolLink( $wikiPage, $user, $outputPage );
 			return;
 		}
 
+		// 4) determine whether to load the Page Curation toolbar.
+		// 5) determine whether to load the "Add to New Pages Feed" link.
 		// See if the page is in the PageTriage page queue
 		// If it isn't, $needsReview will be null
 		// Also, users without the autopatrol right can't review their own pages
 		$needsReview = PageTriageUtil::isPageUnreviewed( $wikiPage );
-
 		if ( $needsReview !== null
 			&& (
 				!$user->equals( $this->revisionStore->getFirstRevision( $title )->getUser( RevisionRecord::RAW ) )
