@@ -578,40 +578,41 @@ class Hooks implements
 	public function onMarkPatrolledComplete( $rcid, $user, $wcOnlySysopsCanPatrol, $auto ) {
 		// Sync records from patrol queue to triage queue
 		$rc = RecentChange::newFromId( $rcid );
+		if ( !$rc ) {
+			return;
+		}
 
-		if ( $rc ) {
-			// Run for PageTriage namespaces and for draftspace
-			if ( !in_array( $rc->getPage()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
-				return;
-			}
+		// Run for PageTriage namespaces and for draftspace
+		if ( !in_array( $rc->getPage()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
+			return;
+		}
 
-			$pt = new PageTriage( $rc->getAttribute( 'rc_cur_id' ) );
-			if ( $pt->addToPageTriageQueue( QueueRecord::REVIEW_STATUS_PATROLLED, $user, true ) ) {
-				// Compile metadata for new page triage record.
-				$acp = ArticleCompileProcessor::newFromPageId( [ $rc->getAttribute( 'rc_cur_id' ) ] );
-				if ( $acp ) {
-					// Page was just inserted into PageTriage queue, so we need to compile BasicData
-					// from DB_PRIMARY, since that component accesses the pagetriage_page table.
-					$acp->configComponentDb(
-						ArticleCompileProcessor::getSafeComponentDbConfigForCompilation()
-					);
-					$acp->compileMetadata();
-				}
-			}
-
-			// Only notify for PageTriage namespaces, not for draftspace
-			$title = $this->titleFactory->newFromID( $rc->getAttribute( 'rc_cur_id' ) );
-			$isInPageTriageNamespaces = in_array(
-				$title->getNamespace(),
-				$this->config->get( 'PageTriageNamespaces' )
-			);
-			if ( $title && $isInPageTriageNamespaces ) {
-				PageTriageUtil::createNotificationEvent(
-					$title,
-					$user,
-					'pagetriage-mark-as-reviewed'
+		$pt = new PageTriage( $rc->getAttribute( 'rc_cur_id' ) );
+		if ( $pt->addToPageTriageQueue( QueueRecord::REVIEW_STATUS_PATROLLED, $user, true ) ) {
+			// Compile metadata for new page triage record.
+			$acp = ArticleCompileProcessor::newFromPageId( [ $rc->getAttribute( 'rc_cur_id' ) ] );
+			if ( $acp ) {
+				// Page was just inserted into PageTriage queue, so we need to compile BasicData
+				// from DB_PRIMARY, since that component accesses the pagetriage_page table.
+				$acp->configComponentDb(
+					ArticleCompileProcessor::getSafeComponentDbConfigForCompilation()
 				);
+				$acp->compileMetadata();
 			}
+		}
+
+		// Only notify for PageTriage namespaces, not for draftspace
+		$title = $this->titleFactory->newFromID( $rc->getAttribute( 'rc_cur_id' ) );
+		$isInPageTriageNamespaces = in_array(
+			$title->getNamespace(),
+			$this->config->get( 'PageTriageNamespaces' )
+		);
+		if ( $title && $isInPageTriageNamespaces ) {
+			PageTriageUtil::createNotificationEvent(
+				$title,
+				$user,
+				'pagetriage-mark-as-reviewed'
+			);
 		}
 	}
 
