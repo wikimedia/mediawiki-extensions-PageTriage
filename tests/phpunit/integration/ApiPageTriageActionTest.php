@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\PageTriage\Test;
 
 use MediaWiki\Api\ApiUsageException;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\User\User;
 use TestUser;
 
@@ -40,12 +41,30 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 			[]
 		);
 
-		self::$users['autopatrolleduser'] = new TestUser(
+		self::$users['blockeduser'] = new TestUser(
 			'ApitestuserC',
 			'Api Test UserC',
-			'api_test_userC@example.com',
+			'api_test_userB@example.com',
+			[ 'sysop' ]
+		);
+
+		self::$users['autopatrolleduser'] = new TestUser(
+			'ApitestuserD',
+			'Api Test UserD',
+			'api_test_userD@example.com',
 			[ 'autopatrol' ]
 		);
+
+		$blockUserAction = MediaWikiServices::getInstance()
+			->getBlockUserFactory()
+			->newBlockUser(
+				'ApitestuserC',
+				self::$users['one']->getAuthority(),
+				'infinite',
+				'Test reason'
+			);
+
+		$blockUserAction->placeBlock();
 	}
 
 	public function testLogin() {
@@ -87,7 +106,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	 * @depends testLogin
 	 */
 	public function testSuccessfulReviewAction( $sessionArray ) {
-		$pageId = $this->makeDraft( 'Test ' );
+		$pageId = $this->makeDraft( 'Test' );
 
 		[ $result, , ] = $this->doApiRequestWithToken(
 			[
@@ -101,6 +120,58 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 		);
 
 		$this->assertEquals( "success", $result['pagetriageaction']['result'] );
+	}
+
+	/**
+	 * @depends testLogin
+	 */
+	public function testBlockedUserReview() {
+		$pageId = $this->makeDraft( 'Test' );
+
+		$this->expectException( ApiUsageException::class );
+		[ $result, , ] = $this->doApiRequestWithToken(
+			[
+				'action' => 'pagetriageaction',
+				'pageid' => $pageId,
+				'reviewed' => '1',
+				'skipnotif' => '1'
+			],
+			null,
+			self::$users['blockeduser']->getUser()
+		);
+		$this->assertNotEquals( "success", $result['pagetriageaction']['result'] );
+	}
+
+	/**
+	 * @depends testLogin
+	 */
+	public function testBlockedUserUnReview() {
+		$pageId = $this->makeDraft( 'Test' );
+
+		$this->doApiRequestWithToken(
+			[
+				'action' => 'pagetriageaction',
+				'pageid' => $pageId,
+				'reviewed' => '1',
+				'skipnotif' => '1'
+			],
+			null,
+			self::$users['one']->getUser()
+		);
+
+		$this->expectException( ApiUsageException::class );
+		$this->doApiRequestWithToken(
+			[
+				'action' => 'pagetriageaction',
+				'pageid' => $pageId,
+				'reviewed' => '1',
+				'skipnotif' => '1'
+			],
+			null,
+			self::$users['blockeduser']->getUser()
+		);
+
+		$this->assertNotEquals( "success", $result['pagetriageaction']['result'] );
 	}
 
 	/**
