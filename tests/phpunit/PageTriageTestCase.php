@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\PageTriage\Test;
 
-use ApiTestCase;
 use ApiUsageException;
 use ExtensionRegistry;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
+use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\User\UserIdentity;
 use MockHttpTrait;
 

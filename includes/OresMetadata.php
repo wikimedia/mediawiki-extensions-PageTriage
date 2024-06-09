@@ -17,8 +17,8 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
-use IContextSource;
 use LogicException;
+use MediaWiki\Context\IContextSource;
 use ORES\Services\ORESServices;
 use ORES\Storage\ModelLookup;
 use ORES\Storage\ThresholdLookup;

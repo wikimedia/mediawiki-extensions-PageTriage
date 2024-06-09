@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
 use IBufferingStatsdDataFactory;
 use IDBAccessObject;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Deferred\LinksUpdate\LinksUpdate;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
@@ -13,7 +14,6 @@ use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
-use RequestContext;
 use RuntimeException;
 use WikiPage;
 

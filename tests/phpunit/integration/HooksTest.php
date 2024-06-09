@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\PageTriage\Test;
 
-use CommentStoreComment;
 use ContentHandler;
+use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;

@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
-use RequestContext;
 use WANObjectCache;
 use Wikimedia\Rdbms\Database;
 

@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\PageTriage\HookHandlers;
 
-use DatabaseUpdater;
+use MediaWiki\Installer\DatabaseUpdater;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 
 /**
