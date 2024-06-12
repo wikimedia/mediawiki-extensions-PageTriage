@@ -63,4 +63,21 @@ describe( 'DeleteToolView', () => {
 			expect( true ).toBe( true );
 		} );
 	} );
+
+	test( 'notifyUser without talkpagenotiftopictitle', () => {
+		const toolbar = new DeleteToolView( { eventBus, model } );
+		toolbar.selectedTag.tagKey = {
+			usesSubpages: false,
+			talkpagenotiftpl: 'Db-foreign-notice-NPF'
+		};
+
+		const msg = toolbar.notifyUser( {
+			tagCount: 1,
+			tagKey: 'tagKey'
+		} );
+
+		return msg.then( () => {
+			expect( true ).toBe( true );
+		} );
+	} );
 } );

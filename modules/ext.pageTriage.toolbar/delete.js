@@ -987,30 +987,24 @@ module.exports = ToolView.extend( {
 
 		const topicTitleKey = selected.talkpagenotiftopictitle;
 		const templateName = selected.talkpagenotiftpl;
-
-		// If a talkpagenotiftopictitle or/and a talkpagenotiftpl is not associated
+		// If a talkpagenotiftopictitle and a talkpagenotiftpl is not associated
 		// with a deletion tag we should not be sending a talk page notification for
 		// that specific tag. Instead return a blank promise and continue with execution.
-		if ( !topicTitleKey || !templateName ) {
+		if ( !topicTitleKey && !templateName ) {
 			return $.Deferred().resolve();
 		}
-
-		const topicTitle = contentLanguageMessage( topicTitleKey, pageName ).text();
-
+		const topicTitle = ( !topicTitleKey && templateName ) ? '' : contentLanguageMessage( topicTitleKey, pageName ).text();
 		const template = '{{subst:' + templateName + '|' + pageName + paramsText + '}}';
-
 		if ( this.model.get( 'user_name' ) ) {
 			const messagePosterPromise = mw.messagePoster.factory.create(
 				new mw.Title(
 					this.model.get( 'creator_user_talk_page' )
 				)
 			);
-
 			return messagePosterPromise.then( ( messagePoster ) => messagePoster.post( topicTitle, template, { tags: 'pagetriage' } ) ).catch( () => {
 				throw new Error( mw.msg( 'pagetriage-del-talk-page-notify-error' ) );
 			} );
 		}
-
 		// Return a blank resolved promise to proceed with execution.
 		return $.Deferred().resolve();
 	},
