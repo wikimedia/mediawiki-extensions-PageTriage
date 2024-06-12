@@ -458,10 +458,9 @@ class Hooks implements
 	public function onArticleViewFooter( $article, $patrolFooterShown ) {
 		// Handler for hook ArticleViewFooter. This will...
 		//   1) determine whether to turn on noindex for new, unreviewed articles,
-		//   2) set the JS variables wgPageTriageUserCanPatrol and wgPageTriageUserCanAutoPatrol,
-		//   3) determine whether to load a link for autopatrolled users to unpatrol their article,
-		//   4) determine whether to load the Page Curation toolbar, and/or
-		//   5) determine whether to load the "Add to New Pages Feed" link
+		//   2) determine whether to load a link for autopatrolled users to unpatrol their article,
+		//   3) determine whether to load the Page Curation toolbar, and/or
+		//   4) determine whether to load the "Add to New Pages Feed" link
 
 		$wikiPage = $article->getPage();
 		$title = $wikiPage->getTitle();
@@ -494,22 +493,20 @@ class Hooks implements
 			return;
 		}
 
-		// 2) set the JS variables wgPageTriageUserCanPatrol and wgPageTriageUserCanAutoPatrol
+		// 2) determine whether to load a link for autopatrolled users to unpatrol their article
 		$userCanPatrol = $this->permissionManager->quickUserCan( 'patrol', $user, $title );
 		$userCanAutoPatrol = $this->permissionManager->userHasRight( $user, 'autopatrol' );
 		$outputPage->addJsConfigVars( [
 			'wgPageTriageUserCanPatrol' => $userCanPatrol,
 			'wgPageTriageUserCanAutoPatrol' => $userCanAutoPatrol
 		] );
-
-		// 3) determine whether to load a link for autopatrolled users to unpatrol their article
 		if ( !$userCanPatrol ) {
 			$this->maybeShowUnpatrolLink( $wikiPage, $user, $outputPage );
 			return;
 		}
 
-		// 4) determine whether to load the Page Curation toolbar.
-		// 5) determine whether to load the "Add to New Pages Feed" link.
+		// 3) determine whether to load the Page Curation toolbar.
+		// 4) determine whether to load the "Add to New Pages Feed" link.
 		// See if the page is in the PageTriage page queue
 		// If it isn't, $needsReview will be null
 		// Also, users without the autopatrol right can't review their own pages
