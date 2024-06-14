@@ -199,6 +199,7 @@
 	"pagetriage-tags-tooltip": "הוספת תגים לציון מקומות לשיפור בדף הזה",
 	"pagetriage-tags-quickfilter-label": "סינון רשימת תגים:",
 	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "העמדה למחיקה מהירה של $1",
+	"pagetriage-del-tags-speedy-deletion-nomination-notify-without-article-name": "מחיקה מהירה של הערך שלך",
 	"pagetriage-del-tags-prod-notify-topic-title": "[[Wikipedia:Proposed deletion|מחיקה מוצעת]] של [[$1]]",
 	"pagetriage-del-tags-xfd-notify-topic-title": "דיון מחיקה על [[$1]]",
 	"pagetriage-feedback-from-new-page-review-process-title": "משוב מתהליך סקירת דפים חדש",
