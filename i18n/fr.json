@@ -210,6 +210,7 @@
 	"pagetriage-tags-tooltip": "Ajouter des balises pour indiquer les éléments à améliorer sur cette page",
 	"pagetriage-tags-quickfilter-label": "Liste de balises à filtrer :",
 	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "Demande de suppression rapide de $1",
+	"pagetriage-del-tags-speedy-deletion-nomination-notify-without-article-name": "Suppression immédiate de votre article",
 	"pagetriage-del-tags-prod-notify-topic-title": "[[Wikipedia:Proposed deletion|Suppression proposée]] de [[$1]]",
 	"pagetriage-del-tags-xfd-notify-topic-title": "Discussion concernant la suppression de [[$1]]",
 	"pagetriage-feedback-from-new-page-review-process-title": "Avis sur le processus de relecture de nouvelle page",
