@@ -263,7 +263,7 @@ module.exports = Backbone.View.extend( {
 			data.reviewer = data.reviewer || this.model.get( 'reviewer' );
 		}
 
-		return $.extend( {
+		return Object.assign( {
 			pageid: mw.config.get( 'wgArticleId' ),
 			title: mw.config.get( 'wgPageName' ),
 			creator: this.model.get( 'user_name' ),

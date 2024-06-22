@@ -246,7 +246,7 @@ module.exports = ToolView.extend( {
 		}
 
 		// create the mark as reviewed flyout content here.
-		this.$tel.html( this.template( $.extend(
+		this.$tel.html( this.template( Object.assign(
 			this.model.toJSON(),
 			{
 				status: status,

@@ -372,7 +372,7 @@ const ArticleList = Backbone.Collection.extend( {
 	},
 
 	url: function () {
-		const params = $.extend( {
+		const params = Object.assign( {
 			action: 'pagetriagelist',
 			format: 'json'
 		}, this.getApiParams() );
@@ -381,7 +381,7 @@ const ArticleList = Backbone.Collection.extend( {
 	},
 
 	getApiParams: function () {
-		const params = $.extend( {}, this.apiParams );
+		const params = Object.assign( {}, this.apiParams );
 		// sorting (dir) is stored as 'nppDir' and 'afcDir' so they remain
 		// independent but only one is sent as 'dir' based on the mode
 		delete params.nppDir;

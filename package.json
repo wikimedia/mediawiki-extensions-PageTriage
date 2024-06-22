@@ -32,12 +32,12 @@
 		"@wikimedia/mw-node-qunit": "7.2.0",
 		"babel-jest": "^29.6.1",
 		"eslint": "8.57.0",
-		"eslint-config-wikimedia": "0.28.0",
+		"eslint-config-wikimedia": "0.28.2",
 		"eslint-plugin-vue": "^9.21.1",
 		"grunt-banana-checker": "0.13.0",
 		"jest": "^29.6.1",
 		"jest-environment-jsdom": "^29.6.1",
-		"stylelint-config-wikimedia": "0.17.1",
+		"stylelint-config-wikimedia": "0.17.2",
 		"vue": "3.4.27",
 		"wdio-mediawiki": "2.5.0"
 	}
