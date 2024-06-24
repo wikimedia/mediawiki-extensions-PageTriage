@@ -86,7 +86,7 @@ class ArticleMetadataTest extends PageTriageTestCase {
 		);
 
 		// Check that they all exist in the pagetriage_page table.
-		$res = $this->db->newSelectQueryBuilder()
+		$res = $this->getDb()->newSelectQueryBuilder()
 			->select( 'ptrp_page_id' )
 			->from( 'pagetriage_page' )
 			->where( [ 'ptrp_page_id' => $validatedPageIds ] )
@@ -124,7 +124,7 @@ class ArticleMetadataTest extends PageTriageTestCase {
 	 */
 	public function testDeleteMetadata() {
 		$this->articleMetadata->deleteMetadata();
-		$res = $this->db->newSelectQueryBuilder()
+		$res = $this->getDb()->newSelectQueryBuilder()
 			->select( 'ptrpt_page_id' )
 			->from( 'pagetriage_page_tags' )
 			->where( [ 'ptrpt_page_id' => $this->pageIds ] )

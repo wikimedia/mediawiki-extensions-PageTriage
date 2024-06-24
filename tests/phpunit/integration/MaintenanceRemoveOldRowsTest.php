@@ -20,18 +20,18 @@ class MaintenanceRemoveOldRowsTest extends PageTriageTestCase {
 		$mainNsPage = $this->insertPage( 'MainRows', 'Test 1', NS_MAIN );
 		$userNsPage = $this->insertPage( 'UserRows', 'Test 1', NS_USER );
 
-		$initialPageTriageCount = $this->db->newSelectQueryBuilder()
+		$initialPageTriageCount = $this->getDb()->newSelectQueryBuilder()
 			->select( '*' )
 			->from( 'pagetriage_page' )
 			->fetchRowCount();
 		$this->assertEquals( 2, $initialPageTriageCount );
 
 		// Change the create date so that they will be deleted by the cron
-		$this->db->newUpdateQueryBuilder()
+		$this->getDb()->newUpdateQueryBuilder()
 			->update( 'pagetriage_page' )
 			->set( [
 				'ptrp_reviewed' => 1,
-				'ptrp_created' => $this->db->timestamp( '20200323210427' )
+				'ptrp_created' => $this->getDb()->timestamp( '20200323210427' )
 			] )
 			->where( [ 'ptrp_page_id' => [ $mainNsPage[ 'id' ], $userNsPage[ 'id' ] ] ] )
 			->caller( __METHOD__ )
@@ -47,7 +47,7 @@ class MaintenanceRemoveOldRowsTest extends PageTriageTestCase {
 			"Completed \n"
 		);
 
-		$newPageTriageCount = $this->db->newSelectQueryBuilder()
+		$newPageTriageCount = $this->getDb()->newSelectQueryBuilder()
 			->select( '*' )
 			->from( 'pagetriage_page' )
 			->fetchRowCount();

@@ -14,7 +14,7 @@ class QueueManagerTest extends MediaWikiIntegrationTestCase {
 
 	public function setUp(): void {
 		parent::setUp();
-		$this->db->newInsertQueryBuilder()
+		$this->getDb()->newInsertQueryBuilder()
 			->insertInto( 'pagetriage_tags' )
 				// Add a single tag, so metadata is compiled.
 				// TODO: Add a convenience method for populating this in the test DB?
@@ -33,7 +33,7 @@ class QueueManagerTest extends MediaWikiIntegrationTestCase {
 	public function testDeleteExistentPage() {
 		$page = $this->insertPage( 'PageTriageTest', '' )['title'];
 		$this->assertSame( 1,
-			$this->db->newSelectQueryBuilder()
+			$this->getDb()->newSelectQueryBuilder()
 				->select( '*' )
 				->from( 'pagetriage_page' )
 				->fetchRowCount()
@@ -41,7 +41,7 @@ class QueueManagerTest extends MediaWikiIntegrationTestCase {
 		$acp = ArticleCompileProcessor::newFromPageId( [ $page->getId() ] );
 		$acp->compileMetadata();
 		$this->assertSame( 1,
-			$this->db->newSelectQueryBuilder()
+			$this->getDb()->newSelectQueryBuilder()
 				->select( '*' )
 				->from( 'pagetriage_page_tags' )
 				->fetchRowCount()
@@ -49,13 +49,13 @@ class QueueManagerTest extends MediaWikiIntegrationTestCase {
 		$status = $this->getQueueManager()->deleteByPageId( $page->getId() );
 		$this->assertTrue( $status->isOK() );
 		$this->assertSame( 0,
-			$this->db->newSelectQueryBuilder()
+			$this->getDb()->newSelectQueryBuilder()
 				->select( '*' )
 				->from( 'pagetriage_page' )
 				->fetchRowCount()
 		);
 		$this->assertSame( 0,
-			$this->db->newSelectQueryBuilder()
+			$this->getDb()->newSelectQueryBuilder()
 				->select( '*' )
 				->from( 'pagetriage_page_tags' )
 				->fetchRowCount()

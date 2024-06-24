@@ -16,9 +16,9 @@ class MaintenanceUpdateUserMetadataTest extends PageTriageTestCase {
 
 	public function testSuccessfulUpdateUserMetadata() {
 		$mainNsPage = $this->insertPage( 'MainMetadata', 'Test 1', NS_MAIN );
-		$this->db->newUpdateQueryBuilder()
+		$this->getDb()->newUpdateQueryBuilder()
 			->update( 'pagetriage_page' )
-			->set( [ 'ptrp_tags_updated' => $this->db->timestamp( '20200323210427' ) ] )
+			->set( [ 'ptrp_tags_updated' => $this->getDb()->timestamp( '20200323210427' ) ] )
 			->where( [ 'ptrp_page_id' => $mainNsPage['id'] ] )
 			->execute();
 

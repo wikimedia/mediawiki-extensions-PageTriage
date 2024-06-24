@@ -28,7 +28,7 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 
 	public function testPreExistingPageAddedToDraftQueueAfterActivation() {
 		// Get the initial page count.
-		$initialCount = $this->db->newSelectQueryBuilder()
+		$initialCount = $this->getDb()->newSelectQueryBuilder()
 			->select( 'COUNT(*)' )
 			->from( 'pagetriage_page' )
 			->fetchField();
@@ -50,7 +50,7 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 		);
 
 		// Now the page should be in the queue.
-		$newCount = $this->db->newSelectQueryBuilder()
+		$newCount = $this->getDb()->newSelectQueryBuilder()
 			->select( 'COUNT(*)' )
 			->from( 'pagetriage_page' )
 			->fetchField();
@@ -60,11 +60,11 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 	public function testPreExistingPagesWithCategoriesAreGivenCorrectTags() {
 		$testPageCount = 10;
 		// Get the initial page counts (because previous tests can leave things behind).
-		$initialCount = $this->db->newSelectQueryBuilder()
+		$initialCount = $this->getDb()->newSelectQueryBuilder()
 			->select( 'COUNT(*)' )
 			->from( 'pagetriage_page' )
 			->fetchField();
-		$initialAfCPendingCount = $this->db->newSelectQueryBuilder()
+		$initialAfCPendingCount = $this->getDb()->newSelectQueryBuilder()
 			->select( 'COUNT(*)' )
 			->from( 'pagetriage_page_tags' )
 			->join( 'pagetriage_tags', null, 'ptrpt_tag_id = ptrt_tag_id' )

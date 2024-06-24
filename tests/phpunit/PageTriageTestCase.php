@@ -69,7 +69,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 			// 1.34
 			[ 'ptrt_tag_name' => 'recreated', 'ptrt_tag_desc' => 'Check if the page has been previously deleted.' ],
 		];
-		$this->db->newInsertQueryBuilder()
+		$this->getDb()->newInsertQueryBuilder()
 			->insertInto( 'pagetriage_tags' )
 			->rows( $pageTriageDefaultTags )
 			->caller( __METHOD__ )
@@ -169,7 +169,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	public function setDraftQuality( $revId, $classId ) {
 		foreach ( [ 0, 1, 2, 3 ] as $id ) {
 			$predicted = $classId === $id;
-			$this->db->newInsertQueryBuilder()
+			$this->getDb()->newInsertQueryBuilder()
 				->insertInto( 'ores_classification' )
 				->row( [
 					'oresc_model' => $this->ensureOresModel( 'draftquality' ),
@@ -184,7 +184,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	}
 
 	public function ensureCopyvioTag() {
-		$this->db->newInsertQueryBuilder()
+		$this->getDb()->newInsertQueryBuilder()
 			->insertInto( 'pagetriage_tags' )
 			->row( [ 'ptrt_tag_name' => 'copyvio', 'ptrt_tag_desc' => 'copyvio' ] )
 			->onDuplicateKeyUpdate()
@@ -195,13 +195,13 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	}
 
 	public function setCopyvio( $pageId, $revId ) {
-		$tagId = $this->db->newSelectQueryBuilder()
+		$tagId = $this->getDb()->newSelectQueryBuilder()
 			->select( 'ptrt_tag_id' )
 			->from( 'pagetriage_tags' )
 			->where( [ 'ptrt_tag_name' => 'copyvio' ] )
 			->fetchField();
 
-		$this->db->newInsertQueryBuilder()
+		$this->getDb()->newInsertQueryBuilder()
 			->insertInto( 'pagetriage_page_tags' )
 			->row( [
 				'ptrpt_page_id' => $pageId,
@@ -218,7 +218,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 			'oresm_version' => '0.0.1',
 			'oresm_is_current' => 1
 		];
-		$model = $this->db->newSelectQueryBuilder()
+		$model = $this->getDb()->newSelectQueryBuilder()
 			->select( 'oresm_id' )
 			->from( 'ores_model' )
 			->where( $modelInfo )
@@ -226,12 +226,12 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		if ( $model ) {
 			return $model;
 		}
-		$this->db->newInsertQueryBuilder()
+		$this->getDb()->newInsertQueryBuilder()
 			->insertInto( 'ores_model' )
 			->row( $modelInfo )
 			->caller( __METHOD__ )
 			->execute();
-		return $this->db->insertId();
+		return $this->getDb()->insertId();
 	}
 
 }

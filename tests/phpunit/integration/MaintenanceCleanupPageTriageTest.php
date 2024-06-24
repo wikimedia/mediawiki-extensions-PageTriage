@@ -23,7 +23,7 @@ class MaintenanceCleanupPageTriageTest extends PageTriageTestCase {
 		// Create a PROJECT page
 		$this->insertPage( 'ProjectPage', 'Test 1', NS_PROJECT );
 
-		$initialPageTriageCount = $this->db->newSelectQueryBuilder()
+		$initialPageTriageCount = $this->getDb()->newSelectQueryBuilder()
 			->select( '*' )
 			->from( 'pagetriage_page' )
 			->fetchRowCount();
@@ -34,7 +34,7 @@ class MaintenanceCleanupPageTriageTest extends PageTriageTestCase {
 		$this->expectOutputString( "processing 1\n" );
 
 		// The script should delete the USER_TALK page from the queue
-		$newPageTriageCount = $this->db->newSelectQueryBuilder()
+		$newPageTriageCount = $this->getDb()->newSelectQueryBuilder()
 			->select( '*' )
 			->from( 'pagetriage_page' )
 			->fetchRowCount();

@@ -74,7 +74,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		);
 
 		// Check that the database was updated correctly.
-		$pageTags = $this->db->newSelectQueryBuilder()
+		$pageTags = $this->getDb()->newSelectQueryBuilder()
 			->select( '*' )
 			->from( 'pagetriage_page_tags' )
 			->join( 'pagetriage_tags', null, 'ptrt_tag_id = ptrpt_tag_id' )
@@ -334,9 +334,9 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$this->assertSame( 'Draft:Test page 5', $list[0][ 'title' ] );
 
 		// Manually set the reviewed at attribute to something really old.
-		$this->db->newUpdateQueryBuilder()
+		$this->getDb()->newUpdateQueryBuilder()
 			->update( 'pagetriage_page' )
-			->set( [ 'ptrp_reviewed_updated' => $this->db->timestamp( '20010115000000' ) ] )
+			->set( [ 'ptrp_reviewed_updated' => $this->getDb()->timestamp( '20010115000000' ) ] )
 			->where( [ 'ptrp_page_id' => $page['id'] ] )
 			->caller( __METHOD__ )
 			->execute();
@@ -415,7 +415,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			->newFromTitle( Title::newFromText( 'Test page ores 2', $this->draftNsId ) );
 		$rev2 = $page->getLatest();
 
-		$this->db->newInsertQueryBuilder()
+		$this->getDb()->newInsertQueryBuilder()
 			->insertInto( 'ores_classification' )
 			->row( [
 				'oresc_model' => $this->ensureOresModel( 'articlequality' ),
@@ -453,7 +453,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			->newFromTitle( Title::newFromText( 'Test page ores 3', $this->draftNsId ) );
 		$rev1 = $page->getLatest();
 
-		$this->db->newInsertQueryBuilder()
+		$this->getDb()->newInsertQueryBuilder()
 			->insertInto( 'ores_classification' )
 			->row( [
 			'oresc_model' => $this->ensureOresModel( 'articlequality' ),
@@ -530,16 +530,16 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$page2 = $this->insertPage( 'DateRange20190715', 'Testing Date Range II', 0, $user );
 
 		// Manually set the created at attribute to older dates.
-		$this->db->newUpdateQueryBuilder()
+		$this->getDb()->newUpdateQueryBuilder()
 			->update( 'pagetriage_page' )
-			->set( [ 'ptrp_created' => $this->db->timestamp( '20190215000000' ) ] )
+			->set( [ 'ptrp_created' => $this->getDb()->timestamp( '20190215000000' ) ] )
 			->where( [ 'ptrp_page_id' => $page1['id'] ] )
 			->caller( __METHOD__ )
 			->execute();
 
-		$this->db->newUpdateQueryBuilder()
+		$this->getDb()->newUpdateQueryBuilder()
 			->update( 'pagetriage_page' )
-			->set( [ 'ptrp_created' => $this->db->timestamp( '20190715233000' ) ] )
+			->set( [ 'ptrp_created' => $this->getDb()->timestamp( '20190715233000' ) ] )
 			->where( [ 'ptrp_page_id' => $page2['id'] ] )
 			->caller( __METHOD__ )
 			->execute();

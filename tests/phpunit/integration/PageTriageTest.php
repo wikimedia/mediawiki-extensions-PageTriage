@@ -18,7 +18,7 @@ class PageTriageTest extends MediaWikiIntegrationTestCase {
 		$pageId = $this->insertPage( 'PageTriageTest', '' )['id'];
 
 		// Remove from queue to test adding to it
-		$this->db->newDeleteQueryBuilder()
+		$this->getDb()->newDeleteQueryBuilder()
 			->deleteFrom( 'pagetriage_page' )
 			->where( [ 'ptrp_page_id' => $pageId ] )
 			->caller( __METHOD__ )
@@ -38,7 +38,7 @@ class PageTriageTest extends MediaWikiIntegrationTestCase {
 		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
 		$pageIds[] = $this->insertPage( 'PageTriageTest', 'Testing 123' )['id'];
 
-		$pageTriagePage = $this->db->newSelectQueryBuilder()
+		$pageTriagePage = $this->getDb()->newSelectQueryBuilder()
 			->select( 'ptrp_tags_updated' )
 			->from( 'pagetriage_page' )
 			->where( [ 'ptrp_page_id' => $pageIds ] )
@@ -49,7 +49,7 @@ class PageTriageTest extends MediaWikiIntegrationTestCase {
 
 		PageTriage::bulkSetTagsUpdated( $pageIds );
 
-		$newPageTriagePage = $this->db->newSelectQueryBuilder()
+		$newPageTriagePage = $this->getDb()->newSelectQueryBuilder()
 			->select( 'ptrp_tags_updated' )
 			->from( 'pagetriage_page' )
 			->where( [ 'ptrp_page_id' => $pageIds ] )

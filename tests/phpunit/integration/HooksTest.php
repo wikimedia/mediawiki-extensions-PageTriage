@@ -26,14 +26,14 @@ class HooksTest extends PageTriageTestCase {
 	 */
 	public function testDraftRedirectsAreNotAdded() {
 		// Get the initial page count of the PageTriage queue.
-		$originalCount = $this->db->newSelectQueryBuilder()
+		$originalCount = $this->getDb()->newSelectQueryBuilder()
 			->select( '*' )
 			->from( 'pagetriage_page' )
 			->fetchRowCount();
 		// Insert a redirect.
 		$this->insertPage( 'Draft:Redirect test', '#REDIRECT [[Redirect test target]]' );
 		// Check that it wasn't added to the queue.
-		$actualCount = $this->db->newSelectQueryBuilder()
+		$actualCount = $this->getDb()->newSelectQueryBuilder()
 			->select( '*' )
 			->from( 'pagetriage_page' )
 			->fetchRowCount();
@@ -54,7 +54,7 @@ class HooksTest extends PageTriageTestCase {
 		$updater->setRcPatrolStatus( RecentChange::PRC_PATROLLED );
 		$updater->saveRevision( $comment );
 
-		$beforeDeleteCount = $this->db->newSelectQueryBuilder()
+		$beforeDeleteCount = $this->getDb()->newSelectQueryBuilder()
 			->select( '*' )
 			->from( 'pagetriage_page' )
 			->where( [ 'ptrp_page_id' => $page->getId() ] )
@@ -67,7 +67,7 @@ class HooksTest extends PageTriageTestCase {
 		$delStatus = $deletePage->deleteIfAllowed( 'reason' );
 		$this->assertTrue( $delStatus->isGood() );
 
-		$afterDeleteCount = $this->db->newSelectQueryBuilder()
+		$afterDeleteCount = $this->getDb()->newSelectQueryBuilder()
 			->select( '*' )
 			->from( 'pagetriage_page' )
 			->where( [ 'ptrp_page_id' => $page->getId() ] )
@@ -90,7 +90,7 @@ class HooksTest extends PageTriageTestCase {
 		$updater->setRcPatrolStatus( RecentChange::PRC_PATROLLED );
 		$updater->saveRevision( $comment );
 
-		$beforeDeleteCount = $this->db->newSelectQueryBuilder()
+		$beforeDeleteCount = $this->getDb()->newSelectQueryBuilder()
 			->select( '*' )
 			->from( 'pagetriage_page' )
 			->where( [ 'ptrp_page_id' => $page->getId() ] )
@@ -104,7 +104,7 @@ class HooksTest extends PageTriageTestCase {
 		$delStatus = $deletePage->deleteIfAllowed( 'reason' );
 		$this->assertTrue( $delStatus->isGood() );
 
-		$afterDeleteCount = $this->db->newSelectQueryBuilder()
+		$afterDeleteCount = $this->getDb()->newSelectQueryBuilder()
 			->select( '*' )
 			->from( 'pagetriage_page' )
 			->where( [ 'ptrp_page_id' => $page->getId() ] )
@@ -118,7 +118,7 @@ class HooksTest extends PageTriageTestCase {
 		$undelStatus = $undeletePage->undeleteIfAllowed( 'reason' );
 		$this->assertTrue( $undelStatus->isGood() );
 
-		$afterUndeleteCount = $this->db->newSelectQueryBuilder()
+		$afterUndeleteCount = $this->getDb()->newSelectQueryBuilder()
 			->select( '*' )
 			->from( 'pagetriage_page' )
 			->where( [ 'ptrp_page_id' => $page->getId() ] )
