@@ -13,7 +13,10 @@
 			"捍粵者",
 			"MPGuy2824",
 			"Stang",
-			"Xiplus"
+			"Xiplus",
+			"Cookai1205",
+			"LowensteinYang",
+			"TongcyDai"
 		]
 	},
 	"pagetriage": "頁面分檢器",
@@ -284,7 +287,7 @@
 	"log-description-pagetriage-curation": "這是頁面管理工具欄的操作日誌。",
 	"log-name-pagetriage-deletion": "刪除標籤日誌",
 	"log-description-pagetriage-deletion": "這是頁面管理器刪除嚮導的操作日誌。",
-	"logentry-pagetriage-curation-reviewed": "$1 {{GENDER:$2|已標記}} $3 為已檢閱",
+	"logentry-pagetriage-curation-reviewed": "$1 {{GENDER:$2|標記}} $3 為已檢閱",
 	"logentry-pagetriage-curation-unreviewed": "$1 {{GENDER:$2|已標記}} $3 為未巡查",
 	"logentry-pagetriage-curation-tag": "$1已將$3{{GENDER:$2|標記上}}$4{{PLURAL:$5|標籤}}",
 	"logentry-pagetriage-curation-delete": "$1已使用$4{{PLURAL:$5|標籤}}將$3{{GENDER:$2|標記以刪除}}",
