@@ -497,6 +497,20 @@ module.exports = {
 	background: #f5f6f8;
 }
 
+html.skin-theme-clientpref-night {
+	.mwe-vue-pt-article-row-even {
+		background: @background-color-interactive-subtle;
+	}
+}
+
+@media ( prefers-color-scheme: dark ) {
+	html.skin-theme-clientpref-os {
+		.mwe-vue-pt-article-row-even {
+			background: @background-color-interactive-subtle;
+		}
+	}
+}
+
 .mwe-vue-pt-problem-chip {
 	background: @background-color-destructive-subtle;
 	border-color: @border-color-destructive;
