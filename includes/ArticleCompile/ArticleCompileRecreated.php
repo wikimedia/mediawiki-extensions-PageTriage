@@ -32,10 +32,18 @@ class ArticleCompileRecreated extends ArticleCompile {
 			->caller( __METHOD__ )
 			->fetchResultSet();
 
-		// The recreated tag will never change, so we don't need to set false
-		// for the pages that aren't recreations.
+		$wasPreviouslyDeleted = [];
+
 		foreach ( $res as $row ) {
-			$this->metadata[$row->page_id]['recreated'] = true;
+			$wasPreviouslyDeleted[$row->page_id] = true;
+		}
+
+		foreach ( $this->mPageId as $pageId ) {
+			if ( array_key_exists( $pageId, $wasPreviouslyDeleted ) ) {
+				$this->metadata[$pageId]['recreated'] = true;
+			} else {
+				$this->metadata[$pageId]['recreated'] = false;
+			}
 		}
 
 		return true;
