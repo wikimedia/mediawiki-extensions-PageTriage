@@ -19,7 +19,6 @@ use ORES\Services\ORESServices;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 use Wikimedia\Rdbms\IExpression;
-use Wikimedia\Rdbms\OrExpressionGroup;
 
 /**
  * API module to generate a list of pages to triage
@@ -423,7 +422,7 @@ class ApiPageTriageList extends ApiBase {
 		$numberOfTagConds = count( $tagConds );
 
 		if ( $numberOfTagConds > 0 ) {
-			$conds[] = new OrExpressionGroup( ...$tagConds );
+			$conds[] = $dbr->orExpr( $tagConds );
 			$options['GROUP BY'] = "ptrp_page_id";
 			$options['HAVING'] = "COUNT(*) = $numberOfTagConds";
 			self::joinWithTags( $tables, $join_conds );
