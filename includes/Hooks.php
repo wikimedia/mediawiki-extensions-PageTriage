@@ -158,31 +158,56 @@ class Hooks implements
 		self::flushUserStatusCache( $oldTitle->toPageIdentity() );
 		self::flushUserStatusCache( $newTitle->toPageIdentity() );
 
+		$oldNamespace = $oldTitle->getNamespace();
 		$newNamespace = $newTitle->getNamespace();
+
 		$draftNsId = $this->config->get( 'PageTriageDraftNamespaceId' );
+
+		// If the page is in a namespace we don't care about, abort
 		if ( !in_array( $newNamespace, [ NS_MAIN, $draftNsId ], true ) ) {
 			return;
 		}
 
+		// Else if the page is moved around in the same namespace we only care about updating
+		// the recreated attribute
+		if ( $oldNamespace === $newNamespace ) {
+			// Check if the page currently exists in the feed
+			$pageTriage = new PageTriage( $oldid );
+			if ( $pageTriage->retrieve() ) {
+				DeferredUpdates::addCallableUpdate( static function () use ( $oldid ) {
+					$acp = ArticleCompileProcessor::newFromPageId(
+						[ $oldid ],
+						false
+					);
+
+					if ( $acp ) {
+						$acp->registerComponent( 'Recreated' );
+						$acp->compileMetadata();
+					}
+				} );
+			}
+			return;
+		}
+
+		// else it was moved from one namespace to another, we might need a full recompile
 		$newAdditionToFeed = self::addToPageTriageQueue( $oldid, $newTitle, $user );
+
+		// The page was already in the feed so a recompile is not needed
+		if ( !$newAdditionToFeed ) {
+			return;
+		}
+
 		DeferredUpdates::addCallableUpdate( static function () use ( $oldid, $newAdditionToFeed ) {
 			$acp = ArticleCompileProcessor::newFromPageId(
 				[ $oldid ],
 				false
 			);
 			if ( $acp ) {
-				// If the article is new, compile all metadata, else only compile the 'recreated'
-				// field
-				if ( $newAdditionToFeed ) {
-					// Since this is a title move, the only component requiring DB_PRIMARY will be
-					// BasicData.
-					$acp->configComponentDb(
-						ArticleCompileProcessor::getSafeComponentDbConfigForCompilation()
-					);
-
-				} else {
-					$acp->registerComponent( 'Recreated' );
-				}
+				// Since this is a title move, the only component requiring DB_PRIMARY will be
+				// BasicData.
+				$acp->configComponentDb(
+					ArticleCompileProcessor::getSafeComponentDbConfigForCompilation()
+				);
 				$acp->compileMetadata();
 			}
 		} );
