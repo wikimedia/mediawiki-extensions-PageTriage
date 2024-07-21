@@ -5,6 +5,9 @@ namespace MediaWiki\Extension\PageTriage\Test;
 use ContentHandler;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
+use MediaWiki\Extension\PageTriage\PageTriage;
+use MediaWiki\Extension\PageTriage\PageTriageUtil;
+use MediaWiki\Extension\PageTriage\QueueRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
 use RecentChange;
@@ -124,6 +127,39 @@ class HooksTest extends PageTriageTestCase {
 			->where( [ 'ptrp_page_id' => $page->getId() ] )
 			->fetchRowCount();
 		$this->assertSame( 1, $afterUndeleteCount );
+	}
+
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::onPageMoveComplete()
+	 */
+	public function testMoveShouldNotUnreviewArticle() {
+		$title = Title::newFromText( 'Move me' );
+		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
+		$user = $this->getTestUser()->getUser();
+		$content = ContentHandler::makeContent( 'Move this article', $title );
+		$comment = CommentStoreComment::newUnsavedComment( 'Comment' );
+		$updater = $page->newPageUpdater( $user );
+		$updater->setContent( SlotRecord::MAIN, $content );
+		$updater->setRcPatrolStatus( RecentChange::PRC_PATROLLED );
+		$updater->saveRevision( $comment );
+
+		$pageTriage = new PageTriage( $page->getId() );
+		$pageTriage->setTriageStatus( QueueRecord::REVIEW_STATUS_REVIEWED );
+
+		// Move this article
+		$movePage = $this->getServiceContainer()
+			->getMovePageFactory()
+			->newMovePage( $title, Title::newFromText( 'Move me to here' ) );
+		$moveStatus = $movePage->moveIfAllowed( $user, 'move to a new title' );
+		$this->assertTrue( $moveStatus->isGood() );
+
+		$status = PageTriageUtil::getStatus( $page );
+
+		$this->assertSame(
+			QueueRecord::REVIEW_STATUS_REVIEWED,
+			$status,
+			'Page should be marked as reviewed'
+		);
 	}
 
 	/**
