@@ -318,6 +318,7 @@
 				"pagetriage-note-not-reviewed",
 				"pagetriage-note-deletion",
 				"pagetriage-next-tooltip",
+				"pagetriage-next-tooltip-disabled",
 				"rev-deleted-comment",
 				"rev-deleted-user",
 				"sp-contributions-talk",

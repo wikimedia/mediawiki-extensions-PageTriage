@@ -286,6 +286,7 @@
 	"pagetriage-wikilove-no-recipients": "A warning message displayed when there are no possible WikiLove recipients for the page.",
 	"pagetriage-wikilove-tooltip": "Help message that displays when someone hovers over the WikiLove button",
 	"pagetriage-next-tooltip": "Help message that displays when someone hovers over the Next button",
+	"pagetriage-next-tooltip-disabled": "Help message that displays when someone hovers over the disabled Next button.",
 	"pagetriage-del-log-page-missing-error": "Error message indicating that the log page for current date has not been created",
 	"pagetriage-del-log-page-adding-error": "Error message indicating a failure of adding the page to discussion",
 	"pagetriage-del-talk-page-notify-error": "Error message indicating a failure of notifying the author on user talk page",

@@ -6,6 +6,7 @@
 		@mouseleave="mouseleave"
 	>
 		<img
+			:class="{ 'mwe-pt-tool-icon-disabled': disabled }"
 			class="mwe-pt-tool-icon"
 			:src="src"
 			:title="title"
@@ -69,5 +70,9 @@ module.exports = {
 .mwe-pt-tool-icon {
 	width: 35px;
 	height: 35px;
+}
+
+.mwe-pt-tool-icon-disabled {
+	cursor: default;
 }
 </style>

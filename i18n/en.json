@@ -265,6 +265,7 @@
 	"pagetriage-wikilove-no-recipients": "No recipients are available for this page.",
 	"pagetriage-wikilove-tooltip": "Send appreciation to the authors",
 	"pagetriage-next-tooltip": "Go to the next page in the queue",
+	"pagetriage-next-tooltip-disabled": "Last article in the queue",
 	"pagetriage-del-log-page-missing-error": "Log page for today has not been created yet!",
 	"pagetriage-del-log-page-adding-error": "Failed to find target spot for the discussion",
 	"pagetriage-del-talk-page-notify-error": "Failed to notify author on talk page",

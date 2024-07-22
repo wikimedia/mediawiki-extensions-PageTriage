@@ -2,7 +2,7 @@
 	<div id="mwe-pt-next" class="mwe-pt-tool">
 		<a :href="uri">
 			<tool-icon
-				:title="$i18n( 'pagetriage-next-tooltip' ).text()"
+				:title="disabled ? $i18n( 'pagetriage-next-tooltip-disabled' ).text() : $i18n( 'pagetriage-next-tooltip' ).text()"
 				:disabled="disabled"
 				file="icon_skip.png"
 			></tool-icon>
