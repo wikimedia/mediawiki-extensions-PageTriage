@@ -11,10 +11,12 @@
 	"pagetriage-please-wait": "कृपया प्रतिक्षा गर्नुहोस्…",
 	"pagetriage-orphan": "अनाथ",
 	"pagetriage-filter-predicted-class-start": "शुरूवात",
+	"pagetriage-filter-predicted-issues-vandalism": "बर्बरता",
 	"pagetriage-filter-predicted-issues-attack": "आक्रमण",
 	"pagetriage-more": "थप",
 	"pagetriage-filter-stat-predicted-class-stub": "ठुटो",
 	"pagetriage-filter-stat-predicted-class-start": "शुरूवात",
+	"pagetriage-filter-stat-predicted-issues-vandalism": "बर्बरता",
 	"pagetriage-filter-stat-predicted-issues-attack": "आक्रमण",
 	"pagetriage-refresh-list": "सूची ताजा गर्नुहोस्",
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|धन्यवाद दिनुहोस्}}}}"
