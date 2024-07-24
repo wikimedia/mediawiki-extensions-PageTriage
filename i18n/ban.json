@@ -4,5 +4,11 @@
 			"Chinamoonroll"
 		]
 	},
-	"pagetriage-tags-param-free-yes-label": "Inggih"
+	"pagetriage-filter-nominated-for-deletion": "Kausulan antuk kaapus",
+	"pagetriage-filter-stat-nominated-for-deletion": "Kausulan antuk kaapus",
+	"pagetriage-button-mark-for-deletion": "Cihna antuk kaapus",
+	"pagetriage-page-status-delete": "Kacihna antuk kaapus",
+	"pagetriage-tags-param-free-yes-label": "Inggih",
+	"pagetriage-del-title": "Cihna antuk kaapus",
+	"pagetriage-del-tooltip": "Usulan kaca niki antuk kaapus"
 }
