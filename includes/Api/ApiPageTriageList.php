@@ -19,6 +19,7 @@ use ORES\Services\ORESServices;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 use Wikimedia\Rdbms\IExpression;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 /**
  * API module to generate a list of pages to triage
@@ -212,10 +213,11 @@ class ApiPageTriageList extends ApiBase {
 
 	/**
 	 * @param array $opts
+	 * @param IReadableDatabase $dbr
 	 *
-	 * @return string|false
+	 * @return IExpression|false
 	 */
-	private static function buildCopyvioCond( $opts ) {
+	private static function buildCopyvioCond( $opts, IReadableDatabase $dbr ) {
 		if (
 			!isset( $opts[ 'show_predicted_issues_copyvio' ] ) ||
 			!$opts[ 'show_predicted_issues_copyvio' ]
@@ -227,7 +229,7 @@ class ApiPageTriageList extends ApiBase {
 			return false;
 		}
 
-		return "pagetriage_page_tags_copyvio.ptrpt_value IS NOT NULL";
+		return $dbr->expr( 'pagetriage_page_tags_copyvio.ptrpt_value', '!=', null );
 	}
 
 	/**
@@ -391,7 +393,11 @@ class ApiPageTriageList extends ApiBase {
 			$typeConds['ptrp_deleted'] = $deleted ? 1 : 0;
 		}
 		if ( $typeConds ) {
-			$conds[] = $dbr->makeList( $typeConds, $others ? LIST_AND : LIST_OR );
+			if ( $others ) {
+				$conds[] = $dbr->andExpr( $typeConds );
+			} else {
+				$conds[] = $dbr->orExpr( $typeConds );
+			}
 		}
 
 		// Show by namespace. Defaults to main namespace.
@@ -455,10 +461,11 @@ class ApiPageTriageList extends ApiBase {
 			$showOK = $opts[ 'show_predicted_issues_none' ] ?? false;
 			if ( $showOK ) {
 				unset( $opts[ 'show_predicted_issues_none' ] );
-				$draftqualityCopyvioConds[] = $dbr->makeList( [
-					'ores_draftquality_cls.oresc_class' => [ 1, null ],
-					'pagetriage_page_tags_copyvio.ptrpt_value' => null,
-				], LIST_AND );
+				$draftqualityCopyvioConds[] = $dbr->expr( 'pagetriage_page_tags_copyvio.ptrpt_value', '=', null )
+					->andExpr(
+						$dbr->expr( 'ores_draftquality_cls.oresc_class', '=', 1 )
+							->or( 'ores_draftquality_cls.oresc_class', '=', null )
+					);
 			}
 
 			$oresCond = ORESServices::getDatabaseQueryBuilder()->buildQuery(
@@ -470,13 +477,13 @@ class ApiPageTriageList extends ApiBase {
 				$draftqualityCopyvioConds[] = $oresCond;
 			}
 
-			$copyvioCond = self::buildCopyvioCond( $opts );
+			$copyvioCond = self::buildCopyvioCond( $opts, $dbr );
 			if ( $copyvioCond ) {
 				$draftqualityCopyvioConds[] = $copyvioCond;
 			}
 
 			if ( $draftqualityCopyvioConds ) {
-				$conds[] = $dbr->makeList( $draftqualityCopyvioConds, LIST_OR );
+				$conds[] = $dbr->orExpr( $draftqualityCopyvioConds );
 			}
 
 			if ( $showOK || $oresCond ) {

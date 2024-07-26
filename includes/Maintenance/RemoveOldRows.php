@@ -7,6 +7,7 @@ use MediaWiki\Extension\PageTriage\PageTriageServices;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 /**
@@ -78,17 +79,17 @@ class RemoveOldRows extends Maintenance {
 		$startTime = (int)wfTimestamp( TS_UNIX ) - $maxAgeInDays * 60 * 60 * 24;
 
 		// the page is in the article namespace and has been reviewed.
-		$reviewedMainspaceWhere = $this->dbr->makeList( [
+		$reviewedMainspaceWhere = $this->dbr->andExpr( [
 			'page_namespace' => NS_MAIN,
-			'ptrp_reviewed > 0'
-		], LIST_AND );
+			$this->dbr->expr( 'ptrp_reviewed', '>', 0 ),
+		] );
 		$sqlWhere = $reviewedMainspaceWhere;
 		if ( count( $secondaryNamespaces ) ) {
-			$sqlWhere = $this->dbr->makeList( [
+			$sqlWhere = $this->dbr->orExpr( [
 				$reviewedMainspaceWhere,
 				// the page is not in main or draft namespaces
-				'page_namespace' => $secondaryNamespaces,
-			], LIST_OR );
+				'page_namespace' => array_values( $secondaryNamespaces ),
+			] );
 		}
 
 		$this->cleanPageTriagePageTable( $startTime, $sqlWhere );
@@ -109,9 +110,7 @@ class RemoveOldRows extends Maintenance {
 		global $wgPageTriageRedirectAutoreviewAge;
 
 		$startTime = (int)wfTimestamp( TS_UNIX ) - $wgPageTriageRedirectAutoreviewAge * 60 * 60 * 24;
-		$sqlWhere = $this->dbr->makeList( [
-				'page_is_redirect' => 1,
-			], LIST_OR );
+		$sqlWhere = $this->dbr->expr( 'page_is_redirect', '=', 1 );
 
 		$this->cleanPageTriagePageTable( $startTime, $sqlWhere );
 	}
@@ -121,7 +120,7 @@ class RemoveOldRows extends Maintenance {
 	 * is older than $startTime and that meets the criteria in $sqlWhere.
 	 *
 	 * @param int $startTime a UNIX timestamp of the cutoff date
-	 * @param string $sqlWhere SQL to be injected into the WHERE clause of an SQL query
+	 * @param IExpression $sqlWhere SQL to be injected into the WHERE clause of an SQL query
 	 * @suppress PhanPossiblyUndeclaredVariable False positive with $row
 	 */
 	private function cleanPageTriagePageTable( $startTime, $sqlWhere ) {
