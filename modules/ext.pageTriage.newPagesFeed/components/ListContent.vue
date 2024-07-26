@@ -73,6 +73,7 @@ const listItemPropFormatter = ( pageInfo ) => {
 	listItemProps.afcState = parseInt( pageInfo.afc_state );
 	listItemProps.reviewedUpdatedUTC = pageInfo.ptrp_reviewed_updated;
 	listItemProps.snippet = pageInfo.snippet;
+	listItemProps.contentSimilarity = pageInfo.content_similarity;
 	listItemProps.oresArticleQuality = pageInfo.ores_articlequality;
 	listItemProps.oresDraftQuality = pageInfo.ores_draftquality;
 	listItemProps.copyvio = pageInfo.copyvio || 0;

@@ -66,6 +66,7 @@ class ArticleCompileProcessor {
 			'DeletionTag' => DB_REPLICA,
 			'AfcTag' => DB_REPLICA,
 			'Recreated' => DB_REPLICA,
+			'CheckRecreated' => DB_REPLICA,
 		];
 	}
 
@@ -85,6 +86,7 @@ class ArticleCompileProcessor {
 			'DeletionTag' => 'off',
 			'AfcTag' => 'off',
 			'Recreated' => 'off',
+			'CheckRecreated' => 'off',
 		];
 		// default to use master database for data compilation
 		foreach ( $this->component as $key => $value ) {
