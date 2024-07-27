@@ -243,6 +243,9 @@ module.exports = {
 			settings.controlMenuOpen = false;
 		};
 		const toggleControlMenu = () => {
+			if ( settings.controlMenuOpen ) {
+				settings.update( settings.unsaved );
+			}
 			settings.controlMenuOpen = !settings.controlMenuOpen;
 		};
 		return {
