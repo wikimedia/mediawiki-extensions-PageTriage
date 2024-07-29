@@ -1,3 +1,15 @@
+@import 'mediawiki.skin.variables.less';
+
+html.skin-theme-clientpref-night .mwe-pt-tool-flyout {
+	background: #282828;
+}
+
+@media ( prefers-color-scheme: dark ) {
+	html.skin-theme-clientpref-os .mwe-pt-tool-flyout {
+		background: #282828;
+	}
+}
+
 #mwe-pt-info .mwe-pt-tool-flyout {
 	top: -26px;
 }
@@ -25,6 +37,16 @@
 	color: #f00;
 }
 
+html.skin-theme-clientpref-night .mwe-pt-info-problem-name {
+	color: @color-destructive;
+}
+
+@media ( prefers-color-scheme: dark ) {
+	html.skin-theme-clientpref-os .mwe-pt-info-problem-name {
+		color: @color-destructive;
+	}
+}
+
 .mwe-pt-info-problem-desc {
 	font-size: 0.9em;
 	color: #666;
@@ -33,6 +55,16 @@
 a .mwe-pt-info-problem-desc {
 	text-decoration: underline;
 	color: #36c;
+}
+
+html.skin-theme-clientpref-night .mwe-pt-info-problem-desc {
+	color: @background-color-backdrop-dark;
+}
+
+@media ( prefers-color-scheme: dark ) {
+	html.skin-theme-clientpref-os .mwe-pt-info-problem-desc {
+		color: @background-color-backdrop-dark;
+	}
 }
 
 .mwe-pt-info-status-icon {

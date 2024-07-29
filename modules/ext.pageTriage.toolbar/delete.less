@@ -1,3 +1,5 @@
+@import 'mediawiki.skin.variables.less';
+
 #mwe-pt-deletion-wizard .mwe-pt-tool-content {
 	background-color: #f3f3f3;
 	padding: 0;
@@ -111,4 +113,28 @@
 	color: #666;
 	margin: 0 0 0.8em 0.7em;
 	font-size: 0.92em;
+}
+
+html.skin-theme-clientpref-night #mwe-pt-delete-category-desc,
+html.skin-theme-clientpref-night #mwe-pt-delete-list .mwe-pt-delete-desc {
+	color: @background-color-backdrop-dark;
+}
+
+@media ( prefers-color-scheme: dark ) {
+	html.skin-theme-clientpref-os #mwe-pt-delete-category-desc,
+	html.skin-theme-clientpref-os #mwe-pt-delete-list .mwe-pt-delete-desc {
+		color: @background-color-backdrop-dark;
+	}
+}
+
+html.skin-theme-clientpref-night #mwe-pt-deletion-wizard .mwe-pt-tool-content,
+html.skin-theme-clientpref-night #mwe-pt-delete {
+	background: #282828;
+}
+
+@media ( prefers-color-scheme: dark ) {
+	html.skin-theme-clientpref-os #mwe-pt-deletion-wizard .mwe-pt-tool-content,
+	html.skin-theme-clientpref-os #mwe-pt-delete {
+		background: #282828;
+	}
 }

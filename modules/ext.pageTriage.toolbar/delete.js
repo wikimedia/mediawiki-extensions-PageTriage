@@ -538,7 +538,7 @@ module.exports = ToolView.extend( {
 			'button',
 			{
 				id: 'mwe-pt-delete-set-param-' + key,
-				class: 'mwe-pt-delete-set-param-button ui-button-green'
+				class: 'mwe-pt-delete-set-param-button ui-button-red'
 			},
 			mw.msg( 'pagetriage-button-add-details' )
 		);

@@ -427,4 +427,5 @@ module.exports = {
 .mwe-pt-toolbar-maximized .notification-badge {
 	pointer-events: none;
 }
+
 </style>

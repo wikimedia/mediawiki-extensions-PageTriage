@@ -1,3 +1,5 @@
+@import 'mediawiki.skin.variables.less';
+
 .mwe-pt-tool {
 	width: 35px;
 	height: 35px;
@@ -77,6 +79,16 @@
 	cursor: pointer;
 }
 
+html.skin-theme-clientpref-night .mwe-pt-tool-close {
+	color: @background-color-backdrop-dark;
+}
+
+@media ( prefers-color-scheme: dark ) {
+	html.skin-theme-clientpref-os .mwe-pt-tool-close {
+		color: @background-color-backdrop-dark;
+	}
+}
+
 .mwe-pt-tool-warning-notice {
 	color: #808080;
 	font-size: 0.8em;
@@ -88,4 +100,14 @@
 
 .mwe-pt-tag-quicksearch {
 	margin-left: 0.5em;
+}
+
+html.skin-theme-clientpref-night .mwe-pt-tool-content {
+	background: #282828;
+}
+
+@media ( prefers-color-scheme: dark ) {
+	html.skin-theme-clientpref-os .mwe-pt-tool-content {
+		background: #282828;
+	}
 }

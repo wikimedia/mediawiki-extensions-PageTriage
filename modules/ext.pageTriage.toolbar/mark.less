@@ -1,3 +1,5 @@
+@import 'mediawiki.skin.variables.less';
+
 /* override the default width */
 #mwe-pt-mark .mwe-pt-tool-flyout {
 	/**
@@ -33,4 +35,24 @@
 
 #mwe-pt-review-note-input::placeholder {
 	color: #666;
+}
+
+html.skin-theme-clientpref-night #mwe-pt-review-note-input::placeholder {
+	color: @background-color-backdrop-dark;
+}
+
+@media ( prefers-color-scheme: dark ) {
+	html.skin-theme-clientpref-os #mwe-pt-review-note-input::placeholder {
+		color: @background-color-backdrop-dark;
+	}
+}
+
+html.skin-theme-clientpref-night #mwe-pt-send-message-button:disabled {
+	opacity: 0.53;
+}
+
+@media ( prefers-color-scheme: dark ) {
+	html.skin-theme-clientpref-os #mwe-pt-send-message-button:disabled {
+		opacity: 0.53;
+	}
 }

@@ -243,11 +243,11 @@
 				"ext.pageTriage.css",
 				"ext.pageTriage.toolbar/ToolbarView.css",
 				"ext.pageTriage.toolbar/ToolView.less",
-				"ext.pageTriage.toolbar/articleInfo.css",
-				"ext.pageTriage.toolbar/mark.css",
+				"ext.pageTriage.toolbar/articleInfo.less",
+				"ext.pageTriage.toolbar/mark.less",
 				"ext.pageTriage.toolbar/tags.less",
 				"ext.pageTriage.toolbar/delete.less",
-				"ext.pageTriage.toolbar/wikilove.css"
+				"ext.pageTriage.toolbar/wikilove.less"
 			],
 			"templates": {
 				"articleInfo.underscore": "ext.pageTriage.toolbar/articleInfo.underscore",

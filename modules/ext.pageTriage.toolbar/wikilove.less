@@ -1,0 +1,19 @@
+@import 'mediawiki.skin.variables.less';
+
+#mwe-pt-wikilove .mwe-pt-info-text {
+	color: #666;
+}
+
+html.skin-theme-clientpref-night #mwe-pt-wikilove .mwe-pt-info-text {
+	color: @background-color-backdrop-dark;
+}
+
+@media ( prefers-color-scheme: dark ) {
+	html.skin-theme-clientpref-os #mwe-pt-wikilove .mwe-pt-info-text {
+		color: @background-color-backdrop-dark;
+	}
+}
+
+#mwe-pt-article-contributor-list {
+	margin-top: 0.8em;
+}

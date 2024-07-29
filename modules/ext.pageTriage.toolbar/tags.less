@@ -1,3 +1,5 @@
+@import 'mediawiki.skin.variables.less';
+
 #mwe-pt-tag .mwe-pt-tool-flyout {
 	width: 530px;
 	top: -210px;
@@ -131,6 +133,16 @@
 	}
 }
 
+html.skin-theme-clientpref-night #mwe-pt-tag-list .mwe-pt-tag-desc {
+	color: @background-color-backdrop-dark;
+}
+
+@media ( prefers-color-scheme: dark ) {
+	html.skin-theme-clientpref-os #mwe-pt-tag-list .mwe-pt-tag-desc {
+		color: @background-color-backdrop-dark;
+	}
+}
+
 #mwe-pt-tag-note {
 	display: none;
 	margin-top: 5px;
@@ -157,4 +169,16 @@
 #mwe-pt-checkbox-mark-reviewed-wrapper {
 	display: none;
 	margin-left: 2em;
+}
+
+html.skin-theme-clientpref-night #mwe-pt-tag .mwe-pt-tool-content,
+html.skin-theme-clientpref-night #mwe-pt-tags {
+	background: #282828;
+}
+
+@media ( prefers-color-scheme: dark ) {
+	html.skin-theme-clientpref-os #mwe-pt-tag .mwe-pt-tool-content,
+	html.skin-theme-clientpref-os #mwe-pt-tags {
+		background: #282828;
+	}
 }
