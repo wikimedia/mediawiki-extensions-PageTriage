@@ -262,6 +262,7 @@
 	"pagetriage-wikilove-no-recipients": "Нема примачи за оваа статија.",
 	"pagetriage-wikilove-tooltip": "Изразете им почит на авторите",
 	"pagetriage-next-tooltip": "Оди на следната страница во редицата",
+	"pagetriage-next-tooltip-disabled": "Последна статија во редицата",
 	"pagetriage-del-log-page-missing-error": "Дневничката страница за денес сè уште не е создадена!",
 	"pagetriage-del-log-page-adding-error": "Не успеав да го пронајдам целното место за дискусијата",
 	"pagetriage-del-talk-page-notify-error": "Не успеав да го известам авторот на разговорната страница",

@@ -274,6 +274,7 @@
 	"pagetriage-wikilove-no-recipients": "אין נמענים זמינים עבור הדף הזה.",
 	"pagetriage-wikilove-tooltip": "שליחת הערכה לכותבים",
 	"pagetriage-next-tooltip": "מעבר אל הדף הבא בתור",
+	"pagetriage-next-tooltip-disabled": "הערך האחרון בתור",
 	"pagetriage-del-log-page-missing-error": "דף היומן עבור היום עוד לא נוצר!",
 	"pagetriage-del-log-page-adding-error": "לא נמצא יעד לדיון",
 	"pagetriage-del-talk-page-notify-error": "שליחת הודעה לדף שיחת משתמש של המחבר לא הצליחה",
