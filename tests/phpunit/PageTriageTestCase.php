@@ -6,6 +6,7 @@ use ApiUsageException;
 use ExtensionRegistry;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\User\UserIdentity;
 use MockHttpTrait;
@@ -28,12 +29,12 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		$draftNsId = $this->getServiceContainer()->getNamespaceInfo()->
 			getCanonicalIndex( 'draft' );
 		if ( $draftNsId === null ) {
-			$this->setMwGlobals( [
-				'wgExtraNamespaces' => [
+			$this->overrideConfigValues( [
+				MainConfigNames::ExtraNamespaces => [
 					$this->draftNsId => 'Draft',
 					$this->draftNsId + 1 => 'Draft_talk'
 				],
-				'wgPageTriageDraftNamespaceId' => $this->draftNsId
+				'PageTriageDraftNamespaceId' => $this->draftNsId,
 			] );
 			$this->overrideMwServices();
 		} else {
