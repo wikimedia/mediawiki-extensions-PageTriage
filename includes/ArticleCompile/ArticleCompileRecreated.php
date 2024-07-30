@@ -20,8 +20,9 @@ class ArticleCompileRecreated extends ArticleCompile {
 			'log_type' => 'delete',
 
 			// We only care about full-page deletions, not revision deletions.
-			// 'delete_redir' is the same as 'delete' except for redirects, which we do want.
-			'log_action' => [ 'delete', 'delete_redir' ],
+			// 'delete_redir' and 'delete_redir2' are the same as 'delete' except for
+			// redirects, which we do want.
+			'log_action' => [ 'delete', 'delete_redir', 'delete_redir2' ],
 		];
 
 		$res = $this->db->newSelectQueryBuilder()
