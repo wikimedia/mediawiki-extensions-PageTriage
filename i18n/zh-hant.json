@@ -48,6 +48,7 @@
 	"pagetriage-byline-new-editor": "由新手 $1（$2$3$4） 建立",
 	"pagetriage-byline-new-editor-heading": "由{{GENDER:$1|新編者}}建立",
 	"pagetriage-articleinfo-byline": "此頁由 $2 ($3$4$5) 建立於 $1",
+	"pagetriage-articleinfo-byline-hidden-username": "此頁面建立於 $1。",
 	"pagetriage-articleinfo-byline-new-editor": "該頁由新手 $2 ($3$4$5) 建立於 $1",
 	"pagetriage-editcount": "自$2以來$1次編輯",
 	"pagetriage-author-not-autoconfirmed": "新手",
@@ -437,6 +438,7 @@
 	"apihelp-pagetriagestats-param-showunreviewed": "是否要包含未巡查。",
 	"apihelp-pagetriagestats-param-showdeleted": "是否包括「建議刪除」。",
 	"apihelp-pagetriagestats-param-showbots": "是否僅包含由機器人建立的頁面。",
+	"apihelp-pagetriagestats-param-showautopatrolled": "是否僅顯示擁有自動巡查使用者權限的使用者編輯。",
 	"apihelp-pagetriagestats-param-no_category": "是否僅包含無分類的頁面。",
 	"apihelp-pagetriagestats-param-unreferenced": "是否僅包含不帶任何參考文獻的頁面。",
 	"apihelp-pagetriagestats-param-no_inbound_links": "是否僅包含無內部連結的頁面。",
@@ -473,5 +475,7 @@
 	"apierror-bad-pagetriage-enqueue-mainpage": "主頁面不能添加到 PageTriage 佇列",
 	"apierror-bad-pagetriage-enqueue-invalidnamespace": "所指定的頁面是在並沒有啟用頁面分檢的命名空間裡",
 	"apierror-bad-pagetriage-enqueue-alreadyqueued": "所指定的頁面已存在頁面分檢佇列裡",
-	"apierror-pagetriage-missingtag": "無法從侵犯版權標籤裡找出標籤 ID。請嘗試更新 update.php。"
+	"apierror-pagetriage-missingtag": "無法從侵犯版權標籤裡找出標籤 ID。請嘗試更新 update.php。",
+	"apihelp-query+isreviewed-summary": "判斷頁面是否標記為已檢閱。",
+	"apihelp-query+isreviewed-example-1": "判斷[[Main Page]]是否標記為已檢閱。"
 }

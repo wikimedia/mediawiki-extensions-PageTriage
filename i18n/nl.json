@@ -21,7 +21,8 @@
 			"Sjoerddebruin",
 			"Southparkfan",
 			"Wiki13",
-			"Xbaked potatox"
+			"Xbaked potatox",
+			"HanV"
 		]
 	},
 	"pagetriage": "PageTriage",
@@ -518,9 +519,9 @@
 	"apihelp-pagetriagelist-param-non_autoconfirmed_users": "Of alleen door niet automatisch bevestigde gebruikers aangemaakte pagina’s getoond moeten worden.",
 	"apihelp-pagetriagelist-param-learners": "Of alleen door recentelijk automatisch bevestigde gebruikers aangemaakte pagina’s getoond moeten worden.",
 	"apihelp-pagetriagelist-param-blocked_users": "Of alleen door geblokkeerde gebruikers aangemaakte pagina’s getoond moeten worden.",
-	"apihelp-pagetriagelist-param-username": "Alleen pagina’s tonen die op basis van gebruikersnaam zijn aangemaakt.",
+	"apihelp-pagetriagelist-param-username": "Alleen pagina’s weergeven die op basis van gebruikersnaam zijn aangemaakt.",
 	"apihelp-pagetriagelist-param-date_range_from": "Toon alleen pagina’s die op deze datum en daarna zijn gemaakt.",
-	"apihelp-pagetriagelist-param-date_range_to": "Alleen pagina’s tonen die op deze datum en eerder zijn gemaakt.",
+	"apihelp-pagetriagelist-param-date_range_to": "Alleen pagina’s weergeven die op deze datum en eerder zijn gemaakt.",
 	"apihelp-pagetriagelist-param-show_predicted_class_stub": "Of de voorspelde klasse ‘stub’ moet worden opgenomen",
 	"apihelp-pagetriagelist-param-show_predicted_class_start": "Of de voorspelde klasse ‘start’ moet worden opgenomen",
 	"apihelp-pagetriagelist-param-show_predicted_class_c": "Of de voorspelde klasse C moet worden opgenomen",
