@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
+			"Karmwiki",
 			"McDutchie"
 		]
 	},
@@ -259,6 +260,7 @@
 	"pagetriage-wikilove-no-recipients": "Nulle destinatario es disponibile pro iste pagina.",
 	"pagetriage-wikilove-tooltip": "Inviar appreciation al autores",
 	"pagetriage-next-tooltip": "Ir al proxime pagina in le cauda",
+	"pagetriage-next-tooltip-disabled": "Ultime articulo in le cauda",
 	"pagetriage-del-log-page-missing-error": "Le pagina de registro pro hodie non ha ancora essite create!",
 	"pagetriage-del-log-page-adding-error": "Non poteva trovar le loco de destination pro le discussion",
 	"pagetriage-del-talk-page-notify-error": "Non poteva notificar le autor sur le pagina de discussion",
