@@ -400,7 +400,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 	public function testQueryOres() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
-		$this->setMwGlobals( 'wgOresModels', [
+		$this->overrideConfigValue( 'OresModels', [
 			'draftquality' => [ 'enabled' => true ],
 			'articlequality' => [ 'enabled' => true ],
 		] );
@@ -443,7 +443,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 	public function testQueryOresBoundaries() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
-		$this->setMwGlobals( 'wgOresModels', [
+		$this->overrideConfigValue( 'OresModels', [
 			'draftquality' => [ 'enabled' => true ],
 			'articlequality' => [ 'enabled' => true ],
 		] );
@@ -480,7 +480,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 	public function testQueryOresCopyvio() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
-		$this->setMwGlobals( 'wgOresModels', [
+		$this->overrideConfigValue( 'OresModels', [
 			'draftquality' => [ 'enabled' => true ],
 			'articlequality' => [ 'enabled' => true ],
 		] );

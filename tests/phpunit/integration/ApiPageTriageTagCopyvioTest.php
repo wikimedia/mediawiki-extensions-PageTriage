@@ -47,7 +47,7 @@ class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 
 	public function testCopyvioInsertLog() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
-		$this->setMwGlobals( 'wgOresModels', [
+		$this->overrideConfigValue( 'OresModels', [
 			'draftquality' => [ 'enabled' => true ],
 			'articlequality' => [ 'enabled' => true ],
 		] );
@@ -115,7 +115,7 @@ class ApiPageTriageTagCopyvioTest extends PageTriageTestCase {
 
 	public function testCopyvioDeleteLog() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
-		$this->setMwGlobals( 'wgOresModels', [
+		$this->overrideConfigValue( 'OresModels', [
 			'draftquality' => [ 'enabled' => true ],
 			'articlequality' => [ 'enabled' => true ],
 		] );

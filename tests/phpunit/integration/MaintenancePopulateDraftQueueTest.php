@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\PageTriage\Test;
 
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
 use MediaWiki\Extension\PageTriage\Maintenance\PopulateDraftQueue;
+use MediaWiki\MainConfigNames;
 
 /**
  * Tests for the populateDraftQueueTest.php maintenance script.
@@ -20,9 +21,9 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 		// Start with the Draft mode turned off
 		// (also use a different ID and NS name, just in case we're assuming these).
 		$this->draftNsId = 210;
-		$this->setMwGlobals( [
-			'wgExtraNamespaces' => [ $this->draftNsId => 'Submissions' ],
-			'wgPageTriageDraftNamespaceId' => false,
+		$this->overrideConfigValues( [
+			MainConfigNames::ExtraNamespaces => [ $this->draftNsId => 'Submissions' ],
+			'PageTriageDraftNamespaceId' => false,
 		] );
 	}
 
@@ -42,7 +43,7 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 			->assertEmptyResult();
 
 		// Enable Drafts mode in PageTriage, and run the maintenance script.
-		$this->setMwGlobals( 'wgPageTriageDraftNamespaceId', $this->draftNsId );
+		$this->overrideConfigValue( 'PageTriageDraftNamespaceId', $this->draftNsId );
 		$maint = new PopulateDraftQueue();
 		$maint->execute();
 		$this->expectOutputString(
@@ -91,7 +92,7 @@ class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
 			->assertFieldValue( $initialCount );
 
 		// Enable Drafts mode in PageTriage, and run the maintenance script.
-		$this->setMwGlobals( 'wgPageTriageDraftNamespaceId', $this->draftNsId );
+		$this->overrideConfigValue( 'PageTriageDraftNamespaceId', $this->draftNsId );
 		$maint = new PopulateDraftQueue();
 		$maint->execute();
 		$this->expectOutputString(
