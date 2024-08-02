@@ -22,8 +22,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	public static $users;
 
 	public function setUp(): void {
-		global $wgGroupPermissions;
-		$wgGroupPermissions['autopatrol']['autopatrol'] = true;
+		$this->setGroupPermissions( 'autopatrol', 'autopatrol', true );
 		parent::setUp();
 		$this->setUpForOresCopyvioTests();
 
