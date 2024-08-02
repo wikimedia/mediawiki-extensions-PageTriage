@@ -307,12 +307,10 @@ class Hooks implements
 	 * @throws MWPageTriageMissingRevisionException
 	 */
 	public static function addToPageTriageQueue( $pageId, $title, $userIdentity = null ): bool {
-		global $wgUseRCPatrol, $wgUseNPPatrol;
+		$config = MediaWikiServices::getInstance()->getMainConfig();
 
 		// Get draft information.
-		$draftNsId = MediaWikiServices::getInstance()
-			->getMainConfig()
-			->get( 'PageTriageDraftNamespaceId' );
+		$draftNsId = $config->get( 'PageTriageDraftNamespaceId' );
 		$isDraft = $draftNsId !== false && $title->inNamespace( $draftNsId );
 
 		// Draft redirects are not patrolled or reviewed.
@@ -331,7 +329,9 @@ class Hooks implements
 			$user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity( $userIdentity );
 			$permissionErrors = MediaWikiServices::getInstance()->getPermissionManager()
 				->getPermissionErrors( 'autopatrol', $user, $title );
-			$isAutopatrolled = ( $wgUseRCPatrol || $wgUseNPPatrol ) &&
+			$useRCPatrol = $config->get( 'UseRCPatrol' );
+			$useNPPatrol = $config->get( 'UseNPPatrol' );
+			$isAutopatrolled = ( $useRCPatrol || $useNPPatrol ) &&
 				!count( $permissionErrors );
 			if ( $isAutopatrolled && !$isDraft ) {
 				// Set as reviewed if the user has the autopatrol right,
@@ -397,13 +397,13 @@ class Hooks implements
 	 * @return bool
 	 */
 	private static function shouldNoIndexForNewArticleReasons( WikiPage $page ) {
-		global $wgPageTriageNoIndexUnreviewedNewArticles, $wgPageTriageMaxAge;
+		$config = MediaWikiServices::getInstance()->getMainConfig();
 
-		if ( !$wgPageTriageNoIndexUnreviewedNewArticles ) {
+		if ( !$config->get( 'PageTriageNoIndexUnreviewedNewArticles' ) ) {
 			return false;
 		} elseif ( !PageTriageUtil::isPageUnreviewed( $page ) ) {
 			return false;
-		} elseif ( !self::isNewEnoughToNoIndex( $page, $wgPageTriageMaxAge ) ) {
+		} elseif ( !self::isNewEnoughToNoIndex( $page, $config->get( 'PageTriageMaxAge' ) ) ) {
 			return false;
 		} else {
 			return true;
@@ -421,9 +421,9 @@ class Hooks implements
 	 * @return bool
 	 */
 	private static function shouldNoIndexForMagicWordReasons( WikiPage $page ) {
-		global $wgPageTriageMaxNoIndexAge;
+		$config = MediaWikiServices::getInstance()->getMainConfig();
 
-		return self::isNewEnoughToNoIndex( $page, $wgPageTriageMaxNoIndexAge );
+		return self::isNewEnoughToNoIndex( $page, $config->get( 'PageTriageMaxNoIndexAge' ) );
 	}
 
 	/**
@@ -730,16 +730,17 @@ class Hooks implements
 	public static function onBeforeCreateEchoEvent(
 		&$notifications, &$notificationCategories, &$icons
 	) {
-		global $wgPageTriageEnabledEchoEvents;
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$enabledEchoEvents = $config->get( 'PageTriageEnabledEchoEvents' );
 
-		if ( $wgPageTriageEnabledEchoEvents ) {
+		if ( $enabledEchoEvents ) {
 			$notificationCategories['page-review'] = [
 				'priority' => 8,
 				'tooltip' => 'echo-pref-tooltip-page-review',
 			];
 		}
 
-		if ( in_array( 'pagetriage-mark-as-reviewed', $wgPageTriageEnabledEchoEvents ) ) {
+		if ( in_array( 'pagetriage-mark-as-reviewed', $enabledEchoEvents ) ) {
 			$notifications['pagetriage-mark-as-reviewed'] = [
 				'presentation-model' => PageTriageMarkAsReviewedPresentationModel::class,
 				'category' => 'page-review',
@@ -748,7 +749,7 @@ class Hooks implements
 				'user-locators' => [ [ self::class . '::locateUsersForNotification' ] ],
 			];
 		}
-		if ( in_array( 'pagetriage-add-maintenance-tag', $wgPageTriageEnabledEchoEvents ) ) {
+		if ( in_array( 'pagetriage-add-maintenance-tag', $enabledEchoEvents ) ) {
 			$notifications['pagetriage-add-maintenance-tag'] = [
 				'presentation-model' => PageTriageAddMaintenanceTagPresentationModel::class,
 				'category' => 'page-review',
@@ -757,7 +758,7 @@ class Hooks implements
 				'user-locators' => [ [ self::class . '::locateUsersForNotification' ] ],
 			];
 		}
-		if ( in_array( 'pagetriage-add-deletion-tag', $wgPageTriageEnabledEchoEvents ) ) {
+		if ( in_array( 'pagetriage-add-deletion-tag', $enabledEchoEvents ) ) {
 			$notifications['pagetriage-add-deletion-tag'] = [
 				'presentation-model' => PageTriageAddDeletionTagPresentationModel::class,
 				'category' => 'page-review',
