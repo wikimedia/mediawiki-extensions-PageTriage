@@ -204,6 +204,7 @@
 	"pagetriage-afc-state-all": "Kaikki",
 	"pagetriage-afc-state-declined": "Hylätty",
 	"pagetriage-afc-state-pending": "Odottaa arviota",
+	"notification-header-pagetriage-mark-as-reviewed": "Sivu '''$3''' on {{GENDER:$2|tarkastettu}}.",
 	"pagetriage-discuss-link-title": "{{GENDER:$1|Keskustelu}}",
 	"echo-pref-subscription-page-review": "Katsastanut sivun, jonka olen luonut",
 	"echo-pref-tooltip-page-review": "Ilmoita minulle, kun joku katsastaa sivun, jonka olen luonut.",

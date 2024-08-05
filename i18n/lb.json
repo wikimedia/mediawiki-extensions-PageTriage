@@ -12,7 +12,7 @@
 	"pagetriage-api-invalidid": "D'ID déi Dir uginn hutt ($1) ass net valabel.",
 	"pagetriage-markpatrolled": "Des Säit als nogekuckt markéieren",
 	"pagetriage-markunpatrolled": "Des Säit als net nogekuckt markéieren",
-	"pagetriage-self-review-error": "Säiten déi Dir ugeluecht hutt kënnt Dir net nokucken.",
+	"pagetriage-self-review-error": "Säiten, déi Dir ugeluecht hutt, kënnt Dir net nokucken.",
 	"pagetriage-reviewed": "Nogekuckt",
 	"pagetriage-mark-as-reviewed-error": "Beim Markéieren vun der Säit als nogekuckt ass e Feeler geschitt: $1",
 	"pagetriage-hist": "Versiounen",
