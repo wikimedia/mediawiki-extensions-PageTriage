@@ -225,10 +225,15 @@ class Hooks implements
 			// Make sure $prev->getContent() is done post-send if possible
 			DeferredUpdates::addCallableUpdate( function () use ( $rev, $wikiPage, $user ) {
 				$prevRevRecord = $this->revisionLookup->getRevisionById( $rev->getParentId() );
-				if ( $prevRevRecord &&
-					!$wikiPage->isRedirect() &&
-					$prevRevRecord->getContent( SlotRecord::MAIN )->isRedirect()
-				) {
+				if ( !$prevRevRecord ) {
+					return;
+				}
+
+				$wasRedirectBecameArticle = !$wikiPage->isRedirect() &&
+					$prevRevRecord->getContent( SlotRecord::MAIN )->isRedirect();
+				$wasArticleBecameRedirect = $wikiPage->isRedirect() &&
+					!$prevRevRecord->getContent( SlotRecord::MAIN )->isRedirect();
+				if ( $wasRedirectBecameArticle || $wasArticleBecameRedirect ) {
 					// Add item to queue, if it's not already there.
 					self::addToPageTriageQueue(
 						$wikiPage->getId(),
