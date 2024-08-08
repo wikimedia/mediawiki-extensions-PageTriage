@@ -497,13 +497,15 @@ module.exports = {
 	background: #f5f6f8;
 }
 
-html.skin-theme-clientpref-night {
-	.mwe-vue-pt-article-row-even {
-		background: @background-color-interactive-subtle;
+@media screen {
+	html.skin-theme-clientpref-night {
+		.mwe-vue-pt-article-row-even {
+			background: @background-color-interactive-subtle;
+		}
 	}
 }
 
-@media ( prefers-color-scheme: dark ) {
+@media screen and ( prefers-color-scheme: dark ) {
 	html.skin-theme-clientpref-os {
 		.mwe-vue-pt-article-row-even {
 			background: @background-color-interactive-subtle;
