@@ -14,7 +14,7 @@ const article = new Article( {
 let tools;
 
 // Used later via articleInfo.js
-require( './../external/jquery.badge.js' );
+require( '../external/jquery.badge.js' );
 
 // Add content language messages
 contentLanguageMessages.set( require( './contentLanguageMessages.json' ) );

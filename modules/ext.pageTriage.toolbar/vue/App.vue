@@ -268,7 +268,7 @@ module.exports = {
 		window.addEventListener( 'resize', this.resize );
 		// More verbose than the original loop, but it allows for individual migrations and allows for static module loading.
 		if ( isFlyoutEnabled( 'articleInfo' ) ) {
-			require( '../../../external/jquery.badge.js' );
+			require( '../../external/jquery.badge.js' );
 			const ArticleInfo = require( '../articleInfo.js' );
 			const articleInfo = new ArticleInfo( { eventBus: eventBus, model: this.article, moduleConfig: modules.articleInfo } );
 			$( this.articleInfoTool ).before( articleInfo.place() );
