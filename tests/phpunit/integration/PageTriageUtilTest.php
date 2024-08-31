@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\PageTriage\Test;
 
+use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Title\Title;
-use MediaWiki\User\User;
 
 /**
  * @covers \MediaWiki\Extension\PageTriage\PageTriageUtil
@@ -104,7 +104,7 @@ class PageTriageUtilTest extends PageTriageTestCase {
 		$this->clearHook( 'UserGetDefaultOptions' );
 
 		$title = Title::makeTitle( NS_MAIN, 'NotificationTest' );
-		$user = $this->createMock( User::class );
+		$user = $this->getTestUser()->getUser();
 		$type = 'pagetriage-add-maintenance-tag';
 		$extra = [
 			'tags' => [ 'under review' ],
@@ -114,6 +114,7 @@ class PageTriageUtilTest extends PageTriageTestCase {
 
 		$status = PageTriageUtil::createNotificationEvent( $title, $user, $type, $extra );
 		$echoEvent = $status->getValue();
+		$this->assertInstanceOf( Event::class, $echoEvent );
 
 		$titleResult = $echoEvent->getTitle()->getText();
 		$typeResult = $echoEvent->getType();
