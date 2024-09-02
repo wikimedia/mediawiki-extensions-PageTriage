@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"ChiK",
 			"Ravi Mundkur",
 			"Vishwanatha Badikana"
 		]
 	},
 	"pagetriage-filter-stat-bots": "ಬಾಟ್‍ಲೆ ಮೂಲಕೊ",
+	"pagetriage-info-help": "ಸಕಾಯೊ",
 	"pagetriage-toolbar-linktext": "ತೆರೆಯಿನ ಪುಟೊತ ಪಾಲನೆ"
 }
