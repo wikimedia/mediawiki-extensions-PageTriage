@@ -90,6 +90,7 @@ class Schema implements LoadExtensionSchemaUpdatesHook {
 			->insertInto( 'pagetriage_tags' )
 			->rows( $pageTriageDefaultTags )
 			->caller( __METHOD__ )
+			// ignore() prevents inserting this tag again if it already exists, since ptrt_tag_name is a unique key
 			->ignore()
 			->execute();
 
