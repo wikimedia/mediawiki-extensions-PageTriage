@@ -168,20 +168,20 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	}
 
 	public function setDraftQuality( $revId, $classId ) {
+		$queryBuilder = $this->getDb()->newInsertQueryBuilder()
+			->insertInto( 'ores_classification' )
+			->caller( __METHOD__ );
 		foreach ( [ 0, 1, 2, 3 ] as $id ) {
 			$predicted = $classId === $id;
-			$this->getDb()->newInsertQueryBuilder()
-				->insertInto( 'ores_classification' )
-				->row( [
-					'oresc_model' => $this->ensureOresModel( 'draftquality' ),
-					'oresc_class' => $id,
-					'oresc_probability' => $predicted ? 0.7 : 0.1,
-					'oresc_is_predicted' => $predicted ? 1 : 0,
-					'oresc_rev' => $revId,
-				] )
-				->caller( __METHOD__ )
-				->execute();
+			$queryBuilder->row( [
+				'oresc_model' => $this->ensureOresModel( 'draftquality' ),
+				'oresc_class' => $id,
+				'oresc_probability' => $predicted ? 0.7 : 0.1,
+				'oresc_is_predicted' => $predicted ? 1 : 0,
+				'oresc_rev' => $revId,
+			] );
 		}
+		$queryBuilder->execute();
 	}
 
 	public function ensureCopyvioTag() {
