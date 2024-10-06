@@ -23,6 +23,7 @@
 	"pagetriage-reviewed": "Reviewed",
 	"pagetriage-mark-as-reviewed-error": "An error occurred while marking the page as reviewed: $1",
 	"pagetriage-mark-as-unreviewed-error": "An error occurred while marking the page as unreviewed: $1",
+	"pagetriage-sendnote-error": "An error occurred while sending note: $1",
 	"pagetriage-hist": "hist",
 	"pagetriage-bytes": "$1 {{PLURAL:$1|byte|bytes}}",
 	"pagetriage-edits": "$1 {{PLURAL:$1|edit|edits}}",

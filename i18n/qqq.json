@@ -44,6 +44,7 @@
 	"pagetriage-reviewed": "Text to indicate a page has been reviewed.\n{{Identical|Reviewed}}",
 	"pagetriage-mark-as-reviewed-error": "Generic error message for marking page as reviewed. $1 is the error text returned by the API.",
 	"pagetriage-mark-as-unreviewed-error": "Generic error message for marking page as unreviewed. $1 is the error text returned by the API.",
+	"pagetriage-sendnote-error": "Generic error message for sending review/unreview note. $1 is the error text returned by the API.",
 	"pagetriage-hist": "A link to the revision history of a page. Appears in parentheses after the page name.",
 	"pagetriage-bytes": "The number of bytes in the page. Parameters:\n* $1 - number of bytes\n{{Identical|Byte}}",
 	"pagetriage-edits": "The number of times the page has been edited. Parameters:\n* $1 - number of edits\n{{Identical|Edit}}",
