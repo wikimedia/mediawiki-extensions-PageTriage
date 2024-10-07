@@ -5,7 +5,7 @@
 		]
 	},
 	"pagetriage-please-wait": "Vueʹrddsââʹst...",
-	"pagetriage-edits": "$1 {{PLURAL:$1|muuttâs|muttâz|muttsed}}",
+	"pagetriage-edits": "{{PLURAL:$1|$1 muttsed|1=õhtt muuttâs|2=$1 muttâz|3=$1 muttâz|4=$1 muttâz|5=$1 muttâz|6=$1 muttâz}}",
 	"pagetriage-categories": "{{PLURAL:$1|$1 kategoriad|0=Ni õhtt kategoria|1=1 kategoria|2=2 kategoria|3=3 kategoria|4=4 kategoria|5=5 kategoria|6=6 kategoria}}",
 	"pagetriage-no-categories": "Ni õhtt kategoria",
 	"pagetriage-author-bot": "Bott",
@@ -28,7 +28,7 @@
 	"pagetriage-info-history-header": "Historia",
 	"pagetriage-info-problem-no-categories": "Ni õhtt kategoria",
 	"pagetriage-info-tooltip": "Čuäʹjet tän seeid metateâđaid",
-	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|muuttâs|muttâz|muttsed}}",
+	"pagetriage-wikilove-edit-count": "{{PLURAL:$1|$1 muttsed|1=õhtt muuttâs|2=$1 muttâz|3=$1 muttâz|4=$1 muttâz|5=$1 muttâz|6=$1 muttâz}}",
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Späʹssbõõžž}}}}",
 	"pagetriage-discuss-link": "{{GENDER:$1|Saǥstõõl}}",
 	"pagetriage-discuss-link-title": "{{GENDER:$1|Saǥstõõllmõš}}",
