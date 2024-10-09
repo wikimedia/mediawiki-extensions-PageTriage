@@ -312,6 +312,7 @@
 				"pagetriage-mark-as-unreviewed-helptext",
 				"pagetriage-mark-as-reviewed-error",
 				"pagetriage-mark-as-unreviewed-error",
+				"pagetriage-sendnote-error",
 				"pagetriage-markpatrolled",
 				"pagetriage-markunpatrolled",
 				"pagetriage-note-reviewed",

@@ -84,7 +84,7 @@ module.exports = ToolView.extend( {
 
 	submitNote: function () {
 		const that = this;
-		const action = 'noteSent';
+		const action = 'sendnote';
 		let recipient = 'creator';
 		const note = $( '#mwe-pt-review-note-input' ).val().trim();
 
@@ -189,9 +189,14 @@ module.exports = ToolView.extend( {
 
 	hideFlyout: function ( action ) {
 		$.removeSpinner( 'mark-spinner' );
-		$( '#mwe-pt-mark-as-' + action + '-button' ).button( 'enable' );
+
+		if ( action === 'sendnote' ) {
+			$( '#mwe-pt-send-message-button' ).button( 'disable' );
+		} else {
+			$( '#mwe-pt-mark-as-' + action + '-button' ).button( 'enable' );
+		}
+
 		$( '#mwe-pt-review-note-input' ).val( '' );
-		$( '#mwe-pt-send-message-button' ).button( 'disable' );
 		this.model.fetch();
 		this.hide();
 	},
@@ -199,17 +204,24 @@ module.exports = ToolView.extend( {
 	/**
 	 * Handle an error occurring after submit
 	 *
-	 * @param {string} action Whether the action was reviewing or unreviewing
+	 * @param {string} action One of 'reviewed', 'unreviewed' or 'sendnote'
 	 * @param {string} errorMsg The specific error that occurred
 	 */
 	showMarkError: function ( action, errorMsg ) {
+		if ( action === 'sendnote' ) {
+			$( '#mwe-pt-send-message-button' ).button( 'enable' );
+		} else {
+			action = 'mark-as-' + action;
+			$( '#mwe-pt-' + action + '-button' ).button( 'enable' );
+		}
+
 		// The following messages are used here:
 		// * pagetriage-mark-as-reviewed-error
 		// * pagetriage-mark-as-unreviewed-error
+		// * pagetriage-sendnote-error
 		// eslint-disable-next-line no-alert
-		alert( mw.msg( 'pagetriage-mark-as-' + action + '-error', errorMsg ) );
+		alert( mw.msg( 'pagetriage-' + action + '-error', errorMsg ) );
 		$.removeSpinner( 'mark-spinner' );
-		$( '#mwe-pt-mark-as-' + action + '-button' ).button( 'enable' );
 	},
 
 	render: function () {
