@@ -27,7 +27,8 @@
 			"Wladek92",
 			"Wyz",
 			"Zarisi",
-			"SleaY"
+			"SleaY",
+			"Méthodes Bulebe Hangi"
 		]
 	},
 	"pagetriage": "Triage des pages",
@@ -119,7 +120,7 @@
 	"pagetriage-filter-second-show-heading": "Qui :",
 	"pagetriage-filter-no-categories": "sont sans catégories",
 	"pagetriage-filter-unreferenced": "n’ont pas de références",
-	"pagetriage-filter-orphan": "sont orphelines",
+	"pagetriage-filter-orphan": "Peut être orphelines",
 	"pagetriage-filter-recreated": "ont été précédemment supprimées",
 	"pagetriage-filter-non-autoconfirmed": "Nouveaux venus (non confirmés automatiquement)",
 	"pagetriage-filter-learners": "Apprentis (nouvellement confirmés automatiquement)",
@@ -143,7 +144,7 @@
 	"pagetriage-filter-stat-bots": "Par robots",
 	"pagetriage-filter-stat-autopatrolled": "Par des utilisateurs vérifiés automatiquement",
 	"pagetriage-filter-stat-redirects": "Redirections",
-	"pagetriage-filter-stat-others": "Toutes les autres",
+	"pagetriage-filter-stat-others": "Articles non proposés à la suppression",
 	"pagetriage-filter-stat-nominated-for-deletion": "Nommées pour suppression",
 	"pagetriage-filter-stat-no-categories": "Sans catégorie",
 	"pagetriage-filter-stat-unreferenced": "Sans référence",
