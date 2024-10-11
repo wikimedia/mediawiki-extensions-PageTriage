@@ -399,7 +399,14 @@
 				"ext.pageTriage.newPagesFeed/components/AfcStateRadio.vue",
 				"ext.pageTriage.newPagesFeed/components/ShowingText.vue",
 				"ext.pageTriage.newPagesFeed/components/UsernameLookup.vue",
+				"ext.pageTriage.newPagesFeed/components/KeywordSearch.vue",
 				"ext.pageTriage.newPagesFeed/stores/settings.js",
+				{
+					"name": "ext.pageTriage.newPagesFeed/features.json",
+					"config": [
+						"PageTriageEnableKeywordSearch"
+					]
+				},
 				{
 					"name": "ext.pageTriage.newPagesFeed/components/icons.json",
 					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
@@ -499,6 +506,7 @@
 				"pagetriage-filter-article",
 				"pagetriage-filter-user-heading",
 				"pagetriage-filter-username",
+				"pagetriage-filter-keyword",
 				"pagetriage-filter-tag-heading",
 				"pagetriage-filter-second-show-heading",
 				"pagetriage-filter-no-categories",
@@ -533,6 +541,7 @@
 				"pagetriage-filter-stat-learners",
 				"pagetriage-filter-stat-blocked",
 				"pagetriage-filter-stat-username",
+				"pagetriage-filter-stat-keyword",
 				"pagetriage-filter-stat-namespace",
 				"pagetriage-filter-stat-predicted-class",
 				"pagetriage-filter-stat-predicted-class-stub",
@@ -826,6 +835,9 @@
 				"pagetriage-del-tags-speedy-deletion-nomination-notify-without-article-name",
 				"pagetriage-del-tags-xfd-notify-topic-title"
 			]
+		},
+		"PageTriageEnableKeywordSearch": {
+			"value": true
 		},
 		"PageTriageDraftNamespaceId": {
 			"description": "The ID of the Draft namespace, as defined in $wgExtraNamespaces. If false, all AfC features are disabled.",

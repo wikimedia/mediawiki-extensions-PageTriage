@@ -74,6 +74,7 @@
 							<filter-radios
 								v-model:filter="settings.unsaved.nppFilter"
 								v-model:user="settings.unsaved.nppFilterUser"
+								v-model:keyword="settings.unsaved.nppFilterKeyword"
 								type="npp"
 							>
 							</filter-radios>

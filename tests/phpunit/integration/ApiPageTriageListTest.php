@@ -567,6 +567,19 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			'Pages to date' );
 	}
 
+	public function testKeywordSearch() {
+		$page1 = $this->insertPage( 'KeywordSearchFoo', 'Testing Foo Keyword Search ', $this->draftNsId );
+		$page2 = $this->insertPage( 'KeywordSearchBar', 'Testing bar Keyword Search ', $this->draftNsId );
+
+		$apiParams = [ 'keyword' => "Foo" ];
+		$list = $this->getPageTriageList( $apiParams );
+		$this->assertPages( [ 'KeywordSearchFoo' ], $list, 'Keyword search' );
+
+		$apiParams = [ 'keyword' => "bar" ];
+		$list = $this->getPageTriageList( $apiParams );
+		$this->assertPages( [ 'KeywordSearchBar' ], $list, 'Keyword search' );
+	}
+
 	public function testFilterType() {
 		$user = self::getTestUser()->getUser();
 		$otherPage = $this->insertPage( 'PageOther', 'some content', 0, $user );
