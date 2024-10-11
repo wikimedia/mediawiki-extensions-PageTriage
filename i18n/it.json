@@ -29,6 +29,7 @@
 	"pagetriage-reviewed": "Revisionata",
 	"pagetriage-mark-as-reviewed-error": "Si è verificato un errore durante la segnalazione della pagina come revisionata: $1",
 	"pagetriage-mark-as-unreviewed-error": "Si è verificato un errore durante la segnalazione della pagina come non revisionata: $1",
+	"pagetriage-sendnote-error": "Si è verificato un errore durante l'invio della nota: $1",
 	"pagetriage-hist": "cron",
 	"pagetriage-bytes": "$1 {{PLURAL:$1|byte}}",
 	"pagetriage-edits": "$1 {{PLURAL:$1|modifica|modifiche}}",
