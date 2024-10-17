@@ -35,6 +35,7 @@
 	"pagetriage-reviewed": "נסקר",
 	"pagetriage-mark-as-reviewed-error": "אירעה שגיאה בעת סימון שהדף נסקר: $1",
 	"pagetriage-mark-as-unreviewed-error": "אירעה שגיאה בעת סימון דף כדף שלא נסקר: $1",
+	"pagetriage-sendnote-error": "אירעה שגיאה בעת שליחת הערה: $1",
 	"pagetriage-hist": "היסטוריה",
 	"pagetriage-bytes": "{{PLURAL:$1|בית אחד|$1 בתים}}",
 	"pagetriage-edits": "{{PLURAL:$1|עריכה אחת|$1 עריכות}}",
