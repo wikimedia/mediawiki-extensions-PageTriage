@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\PageTriage\Api;
 
-use ApiQuery;
-use ApiQueryBase;
+use MediaWiki\Api\ApiQuery;
+use MediaWiki\Api\ApiQueryBase;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Page\WikiPageFactory;
 

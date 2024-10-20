@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\PageTriage\Api;
 
-use ApiBase;
+use MediaWiki\Api\ApiBase;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 
 class ApiPageTriageStats extends ApiBase {

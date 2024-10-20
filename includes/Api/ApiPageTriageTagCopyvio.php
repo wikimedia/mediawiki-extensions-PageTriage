@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\PageTriage\Api;
 
-use ApiBase;
 use ManualLogEntry;
+use MediaWiki\Api\ApiBase;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;

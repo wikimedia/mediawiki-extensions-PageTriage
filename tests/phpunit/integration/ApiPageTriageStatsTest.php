@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\PageTriage\Test;
 
-use ApiUsageException;
+use MediaWiki\Api\ApiUsageException;
 
 /**
  * Tests the inclusion of the Draft namespace.

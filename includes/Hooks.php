@@ -2,11 +2,9 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
-use ApiDisabled;
 use Article;
-use ExtensionRegistry;
-use IBufferingStatsdDataFactory;
 use ManualLogEntry;
+use MediaWiki\Api\ApiDisabled;
 use MediaWiki\Api\Hook\ApiMain__moduleManagerHook;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\ChangeTags\Hook\ChangeTagsAllowedAddHook;
@@ -37,6 +35,7 @@ use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\ResourceLoader\Context;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use MediaWiki\Revision\RevisionLookup;
@@ -53,6 +52,7 @@ use MediaWiki\Utils\MWTimestamp;
 use MediaWiki\WikiMap\WikiMap;
 use RecentChange;
 use Wikimedia\Rdbms\Database;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 use WikiPage;
 
 class Hooks implements

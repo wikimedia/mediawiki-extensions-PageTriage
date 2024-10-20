@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\PageTriage\Maintenance;
 
-use Maintenance;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriage;
+use MediaWiki\Maintenance\Maintenance;
 
 /**
  * A maintenance script for populating the Draft namespace queue.

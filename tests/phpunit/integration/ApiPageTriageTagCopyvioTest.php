@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\PageTriage\Test;
 
-use ApiUsageException;
+use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Title\Title;
 
 /**

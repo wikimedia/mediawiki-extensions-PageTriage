@@ -7,8 +7,8 @@
 
 namespace MediaWiki\Extension\PageTriage\Maintenance;
 
-use Maintenance;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
+use MediaWiki\Maintenance\Maintenance;
 
 /**
  * Maintenance script that removes page with namespace other than NS_MAIN/NS_USER

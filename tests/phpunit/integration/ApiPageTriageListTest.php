@@ -2,14 +2,14 @@
 
 namespace MediaWiki\Extension\PageTriage\Test;
 
-use ApiUsageException;
+use MediaWiki\Api\ApiUsageException;
 use MediaWiki\CommentStore\CommentStoreComment;
+use MediaWiki\Content\TextContent;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\Utils\MWTimestamp;
 use MockHttpTrait;
-use TextContent;
 
 /**
  * Tests the inclusion of the Draft namespace.
