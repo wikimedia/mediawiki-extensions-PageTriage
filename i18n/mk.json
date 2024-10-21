@@ -162,7 +162,7 @@
 	"pagetriage-button-add-a-note-to-creator": "Додајте порака за создавачот",
 	"pagetriage-button-send-a-note": "Испрати порака",
 	"pagetriage-add-a-note-reviewer": "Додај порака за проверувачот: (незадолжително)",
-	"pagetriage-message-for-creator-default-note": "Напишете корисна забелешка за {{GENDER:$1|$1}} и идните проверувачи.",
+	"pagetriage-message-for-creator-default-note": "Напишете корисна белешка за {{GENDER:$1|$1}} и идните проверувачи.",
 	"pagetriage-message-for-reviewer-placeholder": "Напишете корисна белешка за {{GENDER:$1|$1}}.",
 	"pagetriage-personal-default-note": "Напишете корисна белешка за корисникот {{GENDER:$1|$1}} што ќе му помогне. Истата ќе биде објавена на {{GENDER:$1|неговата|нејзината|неговата}} разговорната страница.",
 	"pagetriage-page-status-reviewed": "Означено како проверено на $1 од $2 ($3$4$5)",
