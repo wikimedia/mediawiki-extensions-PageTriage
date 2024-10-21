@@ -2,14 +2,14 @@
 
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
-use Content;
-use IDBAccessObject;
+use MediaWiki\Content\Content;
 use MediaWiki\Deferred\LinksUpdate\LinksUpdate;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Revision\SlotRecord;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IDBAccessObject;
 use WikiPage;
 
 /**

@@ -2,9 +2,8 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
-use ApiRawMessage;
 use Exception;
-use ExtensionRegistry;
+use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
@@ -13,6 +12,7 @@ use MediaWiki\Extension\PageTriage\Api\ApiPageTriageList;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
 use MediaWiki\Linker\LinksMigration;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
