@@ -14,6 +14,7 @@ use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriage;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Extension\PageTriage\QueueRecord;
+use MediaWiki\Permissions\PermissionStatus;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -99,8 +100,27 @@ class ApiPageTriageAction extends ApiBase {
 	 * @return bool
 	 */
 	private function canPerformReviewAction( int $attemptedReviewAction, Article $article ): bool {
-		$isPatroller = $this->getAuthority()->isAllowed( 'patrol' );
-		$isAutopatrolled = $this->getAuthority()->isAllowed( 'autopatrol' );
+		$patrolPermissionStatus = new PermissionStatus();
+		$autopatrolledPermissionStatus = new PermissionStatus();
+		$isPatroller = $this->getAuthority()->definitelyCan(
+			'patrol',
+			$article->getPage(),
+			$patrolPermissionStatus
+		);
+		$isAutopatrolled = $this->getAuthority()->definitelyCan(
+			'autopatrol',
+			$article->getPage(),
+			$autopatrolledPermissionStatus
+		);
+
+		if (
+			$patrolPermissionStatus->isBlocked() ||
+			$autopatrolledPermissionStatus->isBlocked()
+		) {
+			/* found via work on T366991 - according to the code, the types (?Block) match here */
+			/* @phan-suppress-next-line PhanTypeMismatchArgumentNullable */
+			$this->dieBlocked( $patrolPermissionStatus->getBlock() );
+		}
 
 		if ( $isPatroller && $isAutopatrolled ) {
 			return true;
