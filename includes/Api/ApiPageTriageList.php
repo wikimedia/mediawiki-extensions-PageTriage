@@ -29,22 +29,11 @@ use Wikimedia\Rdbms\IReadableDatabase;
  */
 class ApiPageTriageList extends ApiBase {
 
-	/** @var UserFactory */
 	private UserFactory $userFactory;
+	private RedirectLookup $redirectLookup;
+	private TitleFormatter $titleFormatter;
+	private LinksMigration $linksMigration;
 
-	/** @var RedirectLookup */
-	private $redirectLookup;
-
-	/** @var TitleFormatter */
-	private $titleFormatter;
-
-	/** @var LinksMigration */
-	private $linksMigration;
-
-	/**
-	 * @param ApiMain $query
-	 * @param string $moduleName
-	 */
 	public function __construct(
 		ApiMain $query,
 		string $moduleName,

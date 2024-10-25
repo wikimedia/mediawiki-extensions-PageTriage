@@ -24,15 +24,9 @@ class ApiPageTriageAction extends ApiBase {
 	private RevisionStore $revStore;
 	private Language $contLang;
 
-	/**
-	 * @param ApiMain $queryModule
-	 * @param string $moduleName
-	 * @param RevisionStore $revStore
-	 * @param Language $contLang
-	 */
 	public function __construct(
 		ApiMain $queryModule,
-		$moduleName,
+		string $moduleName,
 		RevisionStore $revStore,
 		Language $contLang
 	) {
