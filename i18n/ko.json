@@ -23,6 +23,7 @@
 	"pagetriage-reviewed": "검토됨",
 	"pagetriage-mark-as-reviewed-error": "검토함으로 문서를 표시하는 도중 오류가 발생했습니다: $1",
 	"pagetriage-mark-as-unreviewed-error": "검토하지 않음으로 문서를 표시하는 도중 오류가 발생했습니다: $1",
+	"pagetriage-sendnote-error": "노트를 보내는 도중 오류가 발생했습니다: $1",
 	"pagetriage-hist": "역사",
 	"pagetriage-bytes": "$1 바이트",
 	"pagetriage-edits": "편집 $1회",
