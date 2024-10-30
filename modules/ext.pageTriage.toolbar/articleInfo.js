@@ -267,12 +267,7 @@ module.exports = ToolView.extend( {
 				type: 'delete',
 				page: this.model.get( 'title' )
 			} );
-			const compareContentSimilarity = this.model.get( 'content_similarity' );
-			let compareRecreatedMetadata = '';
-			if ( compareContentSimilarity !== undefined ) {
-				compareRecreatedMetadata = compareContentSimilarity + mw.message( 'pagetriage-info-similarity-desc' );
-			}
-			problems += this.formatProblem( 'recreated', previouslyDeletedLogLink ) + ' ' + compareRecreatedMetadata;
+			problems += this.formatProblem( 'recreated', previouslyDeletedLogLink );
 		}
 		if ( config.PageTriageEnableCopyvio && parseInt( this.model.get( 'copyvio' ) ) ) {
 			this.problemCount++;

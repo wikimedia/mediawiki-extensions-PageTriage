@@ -248,7 +248,6 @@
 	"pagetriage-info-problem-no-references-desc": "This page does not cite any sources.",
 	"pagetriage-info-problem-copyvio": "Copyvio",
 	"pagetriage-info-problem-copyvio-desc": "This page may contain copyright violations.",
-	"pagetriage-info-similarity-desc": "% similarity found in recreated content.",
 	"pagetriage-info-timestamp-date-format": "D MMMM YYYY",
 	"pagetriage-info-timestamp-time-format": "HH:mm",
 	"pagetriage-info-tooltip": "Show metadata for this page",
