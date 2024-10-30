@@ -51,7 +51,7 @@ class Schema implements LoadExtensionSchemaUpdatesHook {
 	 * @return void
 	 */
 	public static function doOnSchemaUpdatesPopulatePageTriageTags( DatabaseUpdater $updater ): void {
-		$updateKey = 'populatePageTriageTags-1.43';
+		$updateKey = 'populatePageTriageTags-1.34';
 		if ( $updater->updateRowExists( $updateKey ) ) {
 			$updater->output( "...default pagetriage tags already added\n" );
 			return;
@@ -84,10 +84,6 @@ class Schema implements LoadExtensionSchemaUpdatesHook {
 				'Latest revision ID that has been tagged as a likely copyright violation, if any' ],
 			// 1.34
 			[ 'ptrt_tag_name' => 'recreated', 'ptrt_tag_desc' => 'Check if the page has been previously deleted.' ],
-			// 1.43
-			[ 'ptrt_tag_name' => 'content_similarity', 'ptrt_tag_desc' =>
-			  'Check content similarity between recently created page and the latest deleted revision of it.' ],
-
 		];
 		$dbw = $updater->getDB();
 		$dbw->newInsertQueryBuilder()

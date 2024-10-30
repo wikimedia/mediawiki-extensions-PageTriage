@@ -69,8 +69,6 @@ abstract class PageTriageTestCase extends ApiTestCase {
 				'Latest revision ID that has been tagged as a likely copyright violation, if any' ],
 			// 1.34
 			[ 'ptrt_tag_name' => 'recreated', 'ptrt_tag_desc' => 'Check if the page has been previously deleted.' ],
-			[ 'ptrt_tag_name' => 'content_similarity', 'ptrt_tag_desc' =>
-			  'Check content similarity between recently created page and the latest deleted revision of it.' ],
 		];
 		$this->getDb()->newInsertQueryBuilder()
 			->insertInto( 'pagetriage_tags' )

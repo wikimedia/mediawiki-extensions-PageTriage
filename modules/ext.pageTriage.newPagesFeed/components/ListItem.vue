@@ -46,7 +46,6 @@
 								<cdx-info-chip v-if="recreated" class="mwe-vue-pt-problem-chip">
 									<a :href="previouslyDeletedLogLink">
 										{{ $i18n( 'pagetriage-recreated' ).text() }}
-										<span v-if="contentSimilarity !== undefined">- {{ contentSimilarity }}% similarity</span>
 									</a>
 								</cdx-info-chip>
 							</template>
@@ -233,7 +232,6 @@ module.exports = {
 		linkCount: { type: Number, required: true },
 		referenceCount: { type: Number, required: true },
 		recreated: { type: Boolean, required: true },
-		contentSimilarity: { type: Number, default: undefined },
 		// Page information tags
 		pageLen: { type: Number, required: true },
 		revCount: { type: Number, required: true },
@@ -499,15 +497,13 @@ module.exports = {
 	background: #f5f6f8;
 }
 
-@media screen {
-	html.skin-theme-clientpref-night {
-		.mwe-vue-pt-article-row-even {
-			background: @background-color-interactive-subtle;
-		}
+html.skin-theme-clientpref-night {
+	.mwe-vue-pt-article-row-even {
+		background: @background-color-interactive-subtle;
 	}
 }
 
-@media screen and ( prefers-color-scheme: dark ) {
+@media ( prefers-color-scheme: dark ) {
 	html.skin-theme-clientpref-os {
 		.mwe-vue-pt-article-row-even {
 			background: @background-color-interactive-subtle;

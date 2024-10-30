@@ -65,8 +65,7 @@ class ArticleMetadataTest extends PageTriageTestCase {
 			'reference',
 			'afc_state',
 			'copyvio',
-			'recreated',
-			'content_similarity'
+			'recreated'
 		];
 
 		$this->assertArrayEquals( [], array_diff( array_keys( $tags ), $validTags ) );
