@@ -665,6 +665,9 @@ class PageTriageUtil {
 			'username' => [
 				ParamValidator::PARAM_TYPE => 'user',
 			],
+			'keyword' => [
+				ParamValidator::PARAM_TYPE => 'string',
+			],
 			'date_range_from' => [
 				ParamValidator::PARAM_TYPE => 'timestamp',
 			],

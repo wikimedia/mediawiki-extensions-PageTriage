@@ -28,6 +28,7 @@
 const { useSettingsStore } = require( '../stores/settings.js' );
 const { getNamespaceOptions } = require( '../namespaces.js' );
 const { CdxInfoChip } = require( '@wikimedia/codex' );
+const featureFlags = require( '../features.json' );
 const namespaceOptions = getNamespaceOptions();
 const offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
 const defaultMsg = {
@@ -64,7 +65,10 @@ module.exports = {
 			const settings = useSettingsStore();
 			if ( settings.immediate.queueMode === 'npp' ) {
 				this.addNamespace( settings.applied.nppNamespace );
-				this.addTop( settings.applied.nppFilter, settings.applied.nppFilterUser );
+				if ( featureFlags.PageTriageEnableKeywordSearch ) {
+					this.addTop( settings.applied.nppFilter,
+						settings.applied.nppFilterUser, settings.applied.nppFilterKeyword );
+				}
 				this.addIf( settings.applied.nppIncludeReviewed, 'reviewed', this.msgObj.state );
 				this.addIf( settings.applied.nppIncludeUnreviewed, 'unreviewed', this.msgObj.state );
 				this.addIf( settings.applied.nppIncludeNominated, 'nominated-for-deletion', this.msgObj.type );
@@ -74,7 +78,10 @@ module.exports = {
 				this.addPredictedIssues( settings.applied.nppPossibleIssues );
 				this.addDate( settings.applied.nppDate.from, settings.applied.nppDate.to );
 			} else {
-				this.addTop( settings.applied.afcFilter, settings.applied.afcFilterUser );
+				if ( featureFlags.PageTriageEnableKeywordSearch ) {
+					this.addTop( settings.applied.afcFilter,
+						settings.applied.afcFilterUser, settings.applied.afcFilterKeyword );
+				}
 				this.addPredictedClass( settings.applied.afcPredictedRating );
 				this.addPredictedIssues( settings.applied.afcPossibleIssues );
 				this.addDate( settings.applied.afcDate.from, settings.applied.afcDate.to );
@@ -96,13 +103,15 @@ module.exports = {
 		addNamespace: function ( namespace ) {
 			this.msgObj.namespace = [ namespaceOptions[ namespace ] ];
 		},
-		addTop: function ( filter, filterUser ) {
+		addTop: function ( filter, filterUser, filterKeyword ) {
 			if ( !filter || filter === 'all' ) {
 				return;
 			}
 			let localMsg = '';
 			if ( filter === 'username' && filterUser ) {
 				localMsg = this.$i18n( 'pagetriage-filter-stat-username', filterUser ).text();
+			} else if ( filter === 'keyword' && filterKeyword && featureFlags.PageTriageEnableKeywordSearch ) {
+				localMsg = this.$i18n( 'pagetriage-filter-stat-keyword', filterKeyword ).text();
 			} else if ( filter === 'bot-edits' ) {
 				// Need a different message key (not -bot-edits)
 				localMsg = this.$i18n( 'pagetriage-filter-stat-bots' ).text();

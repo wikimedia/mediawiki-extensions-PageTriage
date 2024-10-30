@@ -34,6 +34,8 @@ const defaultSettings = Object.freeze( {
 	afcFilter: 'all',
 	afcFilterUser: '',
 	nppFilterUser: '',
+	afcFilterKeyword: '',
+	nppFilterKeyword: '',
 	nppPredictedRating: {
 		stub: false,
 		start: false,
@@ -84,7 +86,8 @@ const filtersToParams = {
 	blocked: 'blocked_users',
 	'bot-edits': 'showbots',
 	'autopatrolled-edits': 'showautopatrolled',
-	username: 'username'
+	username: 'username',
+	keyword: 'keyword'
 };
 
 const initState = () => {
@@ -172,7 +175,8 @@ module.exports = {
 					/* eslint-enable camelcase */
 					showbots: 'bot-edits',
 					showautopatrolled: 'autopatrolled-edits',
-					username: 'username'
+					username: 'username',
+					keyword: 'keyword'
 				};
 				for ( const param in settings ) {
 					if ( params[ param ] ) {
@@ -183,6 +187,7 @@ module.exports = {
 			// Map NPP API parameters to form values
 			nppParamsToFilters: function () {
 				this.unsaved.nppFilterUser = this.params.username || '';
+				this.unsaved.nppFilterKeyword = this.params.keyword || '';
 				this.unsaved.nppFilter = this.paramsToFilter( this.params ) || 'all';
 			},
 			// Map AFC API parameters to form values
@@ -307,9 +312,12 @@ module.exports = {
 				// username requires text input
 				if ( this.applied.nppFilter === 'username' && this.applied.nppFilterUser ) {
 					this.params.username = this.applied.nppFilterUser;
+				} else if ( this.applied.nppFilter === 'keyword' && this.applied.nppFilterKeyword ) {
+					this.params.keyword = this.applied.nppFilterKeyword;
 				} else {
-					// unset username when another filter is selected
+					// unset username and keyword when another filter is selected
 					this.unsaved.nppFilterUser = '';
+					this.unsaved.nppFilterKeyword = '';
 					// everything else is logically boolean and should set a numeric API
 					// parameter if defined
 					if ( filtersToParams[ this.applied.nppFilter ] !== undefined ) {

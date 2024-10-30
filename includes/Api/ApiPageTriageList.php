@@ -20,6 +20,7 @@ use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\LikeValue;
 
 /**
  * API module to generate a list of pages to triage
@@ -59,6 +60,14 @@ class ApiPageTriageList extends ApiBase {
 			$pages = [ $opts['page_id'] ];
 			$pageIdValidated = false;
 		} else {
+			$config = $this->getContext()->getConfig();
+
+			// If keyword search is disabled, remove manually unset the 'keyword'
+			// key from the query array
+			if ( !$config->get( 'PageTriageEnableKeywordSearch' ) ) {
+				unset( $opts['keyword'] );
+			}
+
 			// Retrieve the list of page IDs
 			$pages = self::getPageIds( $opts );
 			$pageIdValidated = true;
@@ -578,6 +587,14 @@ class ApiPageTriageList extends ApiBase {
 			}
 		}
 
+		// add keyword search condition
+		if ( isset( $opts['keyword'] ) && $opts['keyword'] ) {
+			$keyword = $opts['keyword'];
+			$tagConds[] = $dbr
+				->expr( "$table.ptrpt_tag_id", "=", $tagIDs['snippet'] )
+				->and( "$table.ptrpt_value", IExpression::LIKE,
+						new LikeValue( $dbr->anyString(), $keyword, $dbr->anyString() ) );
+		}
 		return $tagConds;
 	}
 
