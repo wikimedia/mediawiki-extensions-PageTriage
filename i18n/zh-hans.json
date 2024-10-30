@@ -39,7 +39,6 @@
 		]
 	},
 	"pagetriage": "页面分诊台",
-	"pagetriage-dot-separator": "&#32;·&#32;",
 	"newpagesfeed": "新页面供稿",
 	"pagetriage-desc": "协助复核和核准新页面",
 	"pagetriage-pagecuration": "页面监护",
@@ -75,7 +74,6 @@
 	"pagetriage-author-blocked": "已封禁",
 	"pagetriage-author-bot": "机器人",
 	"pagetriage-creation-dateformat": "yyyy年M月D日 HH:mm",
-	"pagetriage-user-creation-dateformat": "YYYY-MM-DD",
 	"pagetriage-showing": "显示：",
 	"pagetriage-filter-list-prompt": "设置过滤器",
 	"pagetriage-filter-predicted-class-heading": "预测等级：",

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Domo John"
+			"Domo John",
+			"Joachim Yirkang"
 		]
 	},
 	"pagetriage-add-a-note-creator-required": "Paale toɔla ko a maalmaala, {{GENDER:$1|$1}}. Te na toɔle a toɔla ŋa ka o gaa a dɛmmo yelyeluu gampɛlɛ ka o danseɛ di o meŋaŋ.",
