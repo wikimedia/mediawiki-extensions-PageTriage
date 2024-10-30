@@ -43,7 +43,7 @@ class PageTriage {
 	 */
 	public function addToPageTriageQueue(
 		int $reviewStatus = 0,
-		UserIdentity $user = null,
+		?UserIdentity $user = null,
 		bool $fromRc = false
 	): bool {
 		if ( $this->retrieve() ) {
@@ -103,7 +103,9 @@ class PageTriage {
 	 * @param bool $fromRc
 	 * @return bool If a page status was updated
 	 */
-	public function setTriageStatus( int $newReviewStatus = 0, UserIdentity $user = null, bool $fromRc = false ): bool {
+	public function setTriageStatus(
+		int $newReviewStatus = 0, ?UserIdentity $user = null, bool $fromRc = false
+	): bool {
 		if ( !in_array( $newReviewStatus, QueueRecord::VALID_REVIEW_STATUSES ) ) {
 			// TODO: Should log an error here, or maybe just not accept invalid review status to begin with.
 			$newReviewStatus = QueueRecord::REVIEW_STATUS_UNREVIEWED;
