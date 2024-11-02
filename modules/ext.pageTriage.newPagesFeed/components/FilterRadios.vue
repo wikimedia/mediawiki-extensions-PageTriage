@@ -15,7 +15,6 @@
 			v-if="enableKeywordSearch"
 			id="mwe-vue-pt-filter-input-keyword"
 			v-model:keyword="localKeyword"
-			:placeholder="$i18n( 'pagetriage-filter-keyword' ).text()"
 			@update:keyword="( newVal ) => $emit( 'update:keyword', newVal )"
 			@focus="checkRadioButton( 'keyword' )"
 		></keyword-search>

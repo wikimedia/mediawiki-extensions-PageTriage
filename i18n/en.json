@@ -96,6 +96,7 @@
 	"pagetriage-filter-user-heading": "Were created by:",
 	"pagetriage-filter-username": "Username",
 	"pagetriage-filter-keyword": "Keyword search",
+	"pagetriage-filter-keyword-placeholder": "For example: Olympics",
 	"pagetriage-filter-tag-heading": "With tag:",
 	"pagetriage-filter-second-show-heading": "That:",
 	"pagetriage-filter-no-categories": "Have no categories",

@@ -3,7 +3,7 @@
 		<cdx-text-input
 			:model-value="keyword"
 			class="mwe-vue-pt-keyword-search"
-			:placeholder="$i18n( 'pagetriage-filter-keyword' ).text()"
+			:placeholder="$i18n( 'pagetriage-filter-keyword-placeholder' ).text()"
 			@focus="$emit( 'focus' )"
 			@update:model-value="( newVal ) => {
 				$emit( 'update:keyword', newVal )
