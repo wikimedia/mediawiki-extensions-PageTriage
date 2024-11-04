@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Naudefj"
+			"Naudefj",
+			"Rooiratel"
 		]
 	},
 	"pagetriage-bytes": "$1 {{PLURAL:$1|greep|grepe}}",

@@ -2,8 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Ernác",
-			"Iltever"
+			"Iltever",
+			"Къарачайлы"
 		]
 	},
-	"pagetriage-more": "Энтда"
+	"pagetriage-filter-ns-all": "Барысы да",
+	"pagetriage-more": "Энтда",
+	"pagetriage-filter-stat-all": "Барысы да",
+	"pagetriage-afc-state-all": "Барысы да"
 }

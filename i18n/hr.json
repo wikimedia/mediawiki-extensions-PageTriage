@@ -4,7 +4,8 @@
 			"Anarhistička Maca",
 			"Bugoslav",
 			"Fitoschido",
-			"Ponor"
+			"Ponor",
+			"MaGa"
 		]
 	},
 	"pagetriage": "Razvrstavanje stranica",
@@ -70,6 +71,9 @@
 	"pagetriage-afc-oldest-declined": "Nadnevak odbacivanja (najstariji)",
 	"pagetriage-triage": "Provjeri",
 	"pagetriage-filter-date-range-heading": "Datumski raspon:",
+	"pagetriage-filter-date-range-format-input-field": "GGGG-MM-DD",
+	"pagetriage-filter-date-range-format-placeholder": "MM/DD/GGGG",
+	"pagetriage-filter-date-range-format-showing": "MM/DD/GGGG",
 	"pagetriage-filter-date-range-from": "Od",
 	"pagetriage-filter-date-range-to": "Do",
 	"pagetriage-filter-show-heading": "Stanje:",
@@ -308,7 +312,7 @@
 	"action-pagetriage-copyvio": "označiti stranice kao vjerojatna kršenja autorskih prava",
 	"group-copyviobot": "Botovi za rješavanje kršenja autorskih prava",
 	"group-copyviobot-member": "{{GENDER:$1|bot za rješavanje kršenja autorskih prava|botica za rješavanje kršenja autorskih prava}}",
-	"tag-pagetriage": "Označivanja za pomnju",
+	"tag-pagetriage": "provjera stranice",
 	"tag-pagetriage-description": "Za uređivanja načinjena pomoću [[mw:Special:MyLanguage/Extension:PageTriage|proširenja Označivanje za pomnju]]",
 	"apihelp-pagetriageaction-description": "Označi članak provjerenim ili neprovjerenim",
 	"apihelp-pagetriageaction-summary": "Označivanje članka provjerenim ili neprovjerenim",

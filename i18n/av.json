@@ -5,7 +5,6 @@
 			"Augustus A C"
 		]
 	},
-	"pagetriage-dot-separator": "&#32;·&#32;",
 	"pagetriage-pagecuration": "Гьумер куратинаби",
 	"pagetriage-new-page-patrol": "ЦӀияб гьумералъул патрул",
 	"pagetriage-articles-for-creation": "Гьаризесел макъалаби",
@@ -23,8 +22,6 @@
 	"pagetriage-byline": "Гьабурал: $1 ($2$3$4)",
 	"pagetriage-author-not-autoconfirmed": "ЦӀиредактор",
 	"pagetriage-author-bot": "Бот",
-	"pagetriage-creation-dateformat": "HH:mm, D MMMM YYYY",
-	"pagetriage-user-creation-dateformat": "YYYY-MM-DD",
 	"pagetriage-showing": "Рихьизари:",
 	"pagetriage-filter-list-prompt": "Филтрал рекъезаризе",
 	"pagetriage-filter-predicted-class-start": "Байбихьи",

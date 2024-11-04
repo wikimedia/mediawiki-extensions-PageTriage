@@ -11,7 +11,10 @@
 			"Luckas Blade",
 			"OTAVIO1981",
 			"Pedrofariasm",
-			"Mello25"
+			"Mello25",
+			"Lc97",
+			"Re demz",
+			"YuriNikolai"
 		]
 	},
 	"pagetriage": "Triagem de Páginas",
@@ -47,7 +50,6 @@
 	"pagetriage-no-patrol-right": "Você não tem permissão para marcar esta página como revisada",
 	"pagetriage-author-blocked": "Bloqueado",
 	"pagetriage-author-bot": "Bot",
-	"pagetriage-user-creation-dateformat": "aaaa-MM-dd",
 	"pagetriage-showing": "Mostrando:",
 	"pagetriage-filter-list-prompt": "Definir filtros",
 	"pagetriage-filter-predicted-class-heading": "Classe prevista:",
