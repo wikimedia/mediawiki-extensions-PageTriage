@@ -329,7 +329,7 @@
 	"apihelp-pagetriageaction-param-note": "Note personnelle des relecteurs et concernant les créateurs de pages.",
 	"apihelp-pagetriageaction-param-skipnotif": "S’il faut ignorer la notification.",
 	"apihelp-pagetriageaction-param-enqueue": "Si la page devrait être ajoutée à la file de triage des pages.",
-	"apihelp-pagetriageaction-param-tags": "Modifier les balises à appliquer aux entrées de journal générées pour cette action.",
+	"apihelp-pagetriageaction-param-tags": "Les balises de modification à appliquer aux entrées de journal générées pour cette action.",
 	"apihelp-pagetriagelist-summary": "Obtenir une liste des IDs de page pour construire une file de PageTriage.",
 	"apihelp-pagetriagelist-param-afc_state": "Quel état afficher pour Articles-à-créer.",
 	"apihelp-pagetriagelist-param-page_id": "Renvoyer les données concernant l’identificateur de page spécifié, en ignorant les autres paramètres.",
