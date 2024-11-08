@@ -1,14 +1,13 @@
 'use strict';
-const assert = require( 'assert' ),
-	Toolbar = require( '../pageobjects/toolbar.page' ),
-	EditPage = require( '../pageobjects/editpage.page' ),
-	LoginPage = require( 'wdio-mediawiki/LoginPage' ),
-	RunJobs = require( 'wdio-mediawiki/RunJobs' ),
-	Util = require( 'wdio-mediawiki/Util' ),
-	MWBot = require( 'mwbot' ),
-	articleName = Util.getTestString( 'NewArticle-' ),
-	username = Util.getTestString( 'User-' ),
-	Api = require( 'wdio-mediawiki/Api' );
+const Toolbar = require( '../pageobjects/toolbar.page' );
+const EditPage = require( '../pageobjects/editpage.page' );
+const LoginPage = require( 'wdio-mediawiki/LoginPage' );
+const RunJobs = require( 'wdio-mediawiki/RunJobs' );
+const Util = require( 'wdio-mediawiki/Util' );
+const MWBot = require( 'mwbot' );
+const articleName = Util.getTestString( 'NewArticle-' );
+const username = Util.getTestString( 'User-' );
+const Api = require( 'wdio-mediawiki/Api' );
 
 describe( 'PageTriage Toolbar', () => {
 	before( async () => {
@@ -34,7 +33,7 @@ describe( 'PageTriage Toolbar', () => {
 		Toolbar.open( articleName );
 		await browser.waitUntil( async () => await Toolbar.toolbarBody.waitForDisplayed() );
 
-		assert( Toolbar.toolbarBody.isExisting() );
+		await expect( await Toolbar.toolbarBody ).toExist();
 	} );
 
 	it( 'should allow user to add a maintainence tag to a page', async () => {
@@ -45,13 +44,13 @@ describe( 'PageTriage Toolbar', () => {
 
 		await browser.waitUntil( async () => await Toolbar.tagToolIcon.waitForDisplayed() );
 
-		assert( await Toolbar.tagToolIcon.isExisting() );
+		await expect( await Toolbar.tagToolIcon ).toExist();
 
 		await Toolbar.tagToolIcon.click();
 
 		await browser.waitUntil( async () => await Toolbar.tagToolBody.waitForDisplayed() );
 
-		assert( await Toolbar.tagToolBody.isExisting() );
+		await expect( await Toolbar.tagToolBody ).toExist();
 
 		await Toolbar.tagToolFirstCheckbox.click();
 		await Toolbar.tagToolSubmitButton.waitForEnabled();
@@ -60,9 +59,7 @@ describe( 'PageTriage Toolbar', () => {
 
 		await EditPage.open( articleName );
 
-		const articleTxt = await EditPage.content.getValue();
-
-		assert( articleTxt.includes( '{{ai-generated|date=' ) );
+		await expect( await EditPage.content ).toHaveValueContaining( '{{ai-generated|date=' );
 
 	} );
 
@@ -87,9 +84,7 @@ describe( 'PageTriage Toolbar', () => {
 
 		await EditPage.open( `User talk:${ username }` );
 
-		const userTalkPageTxt = await EditPage.content.getValue();
-
-		assert( userTalkPageTxt.includes( comment ) );
+		await expect( await EditPage.content ).toHaveValueContaining( comment );
 
 	} );
 } );

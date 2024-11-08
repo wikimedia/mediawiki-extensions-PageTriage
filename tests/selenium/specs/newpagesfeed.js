@@ -1,17 +1,16 @@
 'use strict';
 
-const assert = require( 'assert' ),
-	NewPagesFeed = require( '../pageobjects/newpagesfeed.page' ),
-	EditPage = require( '../pageobjects/editpage.page' ),
-	CreateAccountPage = require( 'wdio-mediawiki/CreateAccountPage' ),
-	RunJobs = require( 'wdio-mediawiki/RunJobs' ),
-	Util = require( 'wdio-mediawiki/Util' );
+const NewPagesFeed = require( '../pageobjects/newpagesfeed.page' );
+const EditPage = require( '../pageobjects/editpage.page' );
+const CreateAccountPage = require( 'wdio-mediawiki/CreateAccountPage' );
+const RunJobs = require( 'wdio-mediawiki/RunJobs' );
+const Util = require( 'wdio-mediawiki/Util' );
 
 describe( 'Special:NewPagesFeed', () => {
 	it( 'is viewable', async () => {
 		NewPagesFeed.open();
 		await browser.waitUntil( async () => await NewPagesFeed.listview.getText() !== 'Please wait...' );
-		assert( await NewPagesFeed.listview.isExisting() );
+		await expect( await NewPagesFeed.listview ).toExist();
 	} );
 
 	it( 'new article appears in feed', async () => {
@@ -34,12 +33,12 @@ describe( 'Special:NewPagesFeed', () => {
 		NewPagesFeed.open();
 		await browser.waitUntil( async () => await NewPagesFeed.listview.getText() !== 'Please wait...' );
 
-		assert( await NewPagesFeed.listview.isExisting() );
+		await expect( await NewPagesFeed.listview ).toExist();
 
 		// wait untill atleast one article is loaded
 		await NewPagesFeed.articleRows.waitForDisplayed();
 
 		// Check that unreviewed article shows up in Special:NewPagesFeed
-		expect( await NewPagesFeed.listview.getText() ).toContain( articleName );
+		await expect( await NewPagesFeed.listview ).toHaveTextContaining( articleName );
 	} );
 } );
