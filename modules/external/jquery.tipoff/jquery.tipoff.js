@@ -5,7 +5,7 @@
 ( function () {
 
 	$.fn.tipoff = function ( html ) {
-		let $tooltip, hideTimer, showTimer,
+		let hideTimer, showTimer,
 			that = this;
 
 		// Show the tooltip after 200 milliseconds
@@ -23,7 +23,7 @@
 		}
 
 		// Create the tiptool
-		$tooltip = $( '<div>' )
+		const $tooltip = $( '<div>' )
 			.addClass( 'mw-tipoff' )
 			.css( 'display', 'none' )
 			.html( '<div class="mw-tipoff-pokey"></div>' + html );

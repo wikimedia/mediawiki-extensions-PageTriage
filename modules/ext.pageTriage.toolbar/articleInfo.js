@@ -8,7 +8,6 @@ const ArticleInfoHistoryView = Backbone.View.extend( {
 	template: mw.template.get( 'ext.pageTriage.toolbar', 'articleInfoHistory.underscore' ),
 
 	render: function () {
-		let parsedTimestamp, userTitle;
 		const offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
 		const that = this;
 		let lastDate = null;
@@ -22,7 +21,7 @@ const ArticleInfoHistoryView = Backbone.View.extend( {
 			// I'd rather do this date parsing in the model, but the change event isn't properly
 			// passed through to nested models, and switching to backbone-relational in order to
 			// move these few lines of code seems silly.
-			parsedTimestamp = moment( historyItem.get( 'timestamp' ) ); // ISO date format
+			const parsedTimestamp = moment( historyItem.get( 'timestamp' ) ); // ISO date format
 
 			historyItem.set(
 				'timestamp_date',
@@ -39,7 +38,7 @@ const ArticleInfoHistoryView = Backbone.View.extend( {
 			// can't set link color since no userpage status is returned by the history api
 			if ( historyItem.get( 'user' ) ) {
 				try {
-					userTitle = new mw.Title( historyItem.get( 'user' ), mw.config.get( 'wgNamespaceIds' ).user );
+					const userTitle = new mw.Title( historyItem.get( 'user' ), mw.config.get( 'wgNamespaceIds' ).user );
 					historyItem.set( 'user_title_url', userTitle.getUrl() );
 				} catch ( e ) {
 					historyItem.set( 'user_title_url', '' );
@@ -96,17 +95,17 @@ module.exports = ToolView.extend( {
 	render: function () {
 		this.enumerateProblems();
 		// set the history link
-		let url = new mw.Uri( mw.util.getUrl( mw.config.get( 'wgPageName' ), { action: 'history' } ) );
+		const historyUrl = new mw.Uri( mw.util.getUrl( mw.config.get( 'wgPageName' ), { action: 'history' } ) );
 		this.model.set(
 			'history_link',
-			url.toString()
+			historyUrl.toString()
 		);
 
 		// set the logs link
-		url = new mw.Uri( mw.util.getUrl( 'Special:Log', { page: mw.config.get( 'wgPageName' ) } ) );
+		const logUrl = new mw.Uri( mw.util.getUrl( 'Special:Log', { page: mw.config.get( 'wgPageName' ) } ) );
 		this.model.set(
 			'logs_link',
-			url.toString()
+			logUrl.toString()
 		);
 
 		const offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
