@@ -163,13 +163,13 @@ module.exports = ToolView.extend( {
 		}
 
 		// add click event for each category
-		$( '#mwe-pt-delete-categories' ).find( 'div' ).each( function () {
-			const cat = $( $( this ).html() ).attr( 'cat' );
-			$( this ).on( 'click', function () {
+		$( '#mwe-pt-delete-categories' ).find( 'div' ).each( ( i, el ) => {
+			const cat = $( $( el ).html() ).attr( 'cat' );
+			$( el ).on( 'click', () => {
 				that.visibleParamsFormCount = 0;
 				that.refreshSubmitButton();
 
-				$( this ).find( 'a' ).trigger( 'blur' );
+				$( el ).find( 'a' ).trigger( 'blur' );
 				that.displayTags( cat );
 				return false;
 			} ).end();
@@ -363,9 +363,9 @@ module.exports = ToolView.extend( {
 			// add click events for checking/unchecking tags to both the
 			// checkboxes and tag labels
 
-			$( '#mwe-pt-delete-' + key + ', #mwe-pt-checkbox-delete-' + key ).on( 'click', function () {
+			$( '#mwe-pt-delete-' + key + ', #mwe-pt-checkbox-delete-' + key ).on( 'click', ( e ) => {
 				// Extract the tag key from the id of whatever was clicked on
-				const tagKeyMatches = $( this ).attr( 'id' ).match( /.*-delete-(.*)/ ),
+				const tagKeyMatches = $( e.delegateTarget ).attr( 'id' ).match( /.*-delete-(.*)/ ),
 					tagKey = tagKeyMatches[ 1 ];
 
 				// if user unchecks a checkbox and there is an adjacent paramsForm
