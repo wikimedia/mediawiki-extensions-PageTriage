@@ -82,6 +82,7 @@
 				<div class="mwe-vue-pt-article-col-right mwe-vue-pt-bold">
 					<cdx-info-chip
 						v-if="newArticleWarning"
+						status="warning"
 						class="mwe-vue-pt-new-article-warning"
 						:title="$i18n( 'pagetriage-tag-warning-notice', articleAge ).text()"
 					>
@@ -557,19 +558,6 @@ html.skin-theme-clientpref-night {
 
 .ores-pt-issues {
 	height: 0.55em;
-}
-
-.mwe-vue-pt-new-article-warning .cdx-icon.cdx-info-chip__icon--warning {
-	color: @background-color-warning-subtle;
-}
-
-.mwe-vue-pt-new-article-warning.cdx-info-chip {
-	background-color: @color-warning;
-	border-color: @border-color-warning;
-}
-
-.mwe-vue-pt-new-article-warning > .cdx-info-chip--text {
-	color: @color-emphasized;
 }
 
 .mwe-vue-pt-redirect-icon {
