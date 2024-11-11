@@ -9,7 +9,6 @@ const ArticleInfoHistoryView = Backbone.View.extend( {
 
 	render: function () {
 		const offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
-		const that = this;
 		let lastDate = null;
 		let addedRevisions = 0;
 
@@ -52,7 +51,7 @@ const ArticleInfoHistoryView = Backbone.View.extend( {
 
 			historyItem.set( 'temp', historyItem.has( 'temp' ) && this.options.showTemp );
 
-			that.$el.append( that.template( historyItem.toJSON() ) );
+			this.$el.append( this.template( historyItem.toJSON() ) );
 			addedRevisions++;
 		} );
 		return this;
@@ -183,10 +182,9 @@ module.exports = ToolView.extend( {
 
 		// bind down here so it doesn't happen before the first render
 		// Only bind this once
-		const that = this;
 		if ( !this.renderWasBound ) {
 			this.model.bind( 'change', () => {
-				that.render();
+				this.render();
 			} );
 			this.renderWasBound = true;
 		}

@@ -50,8 +50,7 @@ module.exports = ToolView.extend( {
 	},
 
 	submit: function ( action ) {
-		const that = this,
-			note = '',
+		const note = '',
 			reviewed = action === 'reviewed';
 
 		new mw.Api().postWithToken( 'csrf', {
@@ -61,7 +60,7 @@ module.exports = ToolView.extend( {
 		} )
 			.then( () => {
 				// Data to be sent back to consumers of the actionQueue API.
-				const actionData = that.getDataForActionQueue( {
+				const actionData = this.getDataForActionQueue( {
 					reviewed: reviewed,
 					reviewer: mw.config.get( 'wgUserName' )
 				} );
@@ -73,20 +72,19 @@ module.exports = ToolView.extend( {
 				// a note needs to be posted to article talk page when an article is marked as
 				// unreviewed and it meets the use case set in talkPageNote
 				if ( action === 'unreviewed' ) {
-					that.talkPageNote( note, action, '' );
+					this.talkPageNote( note, action, '' );
 				} else {
-					that.hideFlyout( action );
+					this.hideFlyout( action );
 				}
 
 				mw.pageTriage.actionQueue.run( 'mark', actionData );
 			} )
 			.catch( ( _errorCode, data ) => {
-				that.showMarkError( action, data.error.info || mw.msg( 'unknown-error' ) );
+				this.showMarkError( action, data.error.info || mw.msg( 'unknown-error' ) );
 			} );
 	},
 
 	submitNote: function () {
-		const that = this;
 		const action = 'sendnote';
 		let recipient = 'creator';
 		const note = $( '#mwe-pt-review-note-input' ).val().trim();
@@ -98,11 +96,10 @@ module.exports = ToolView.extend( {
 		if ( this.model.get( 'ptrp_last_reviewed_by' ) > 0 ) {
 			recipient = $( '#mwe-pt-review-note-recipient' ).val().trim();
 		}
-		that.talkPageNote( note, action, recipient );
+		this.talkPageNote( note, action, recipient );
 	},
 
 	talkPageNote: function ( note, action, noteRecipient ) {
-		const that = this;
 		const pageTitle = mw.config.get( 'wgPageName' ).replace( /_/g, ' ' );
 		let talkPageTitle,
 			topicTitle,
@@ -125,13 +122,13 @@ module.exports = ToolView.extend( {
 					'|2=' + pageTitle +
 					'}}';
 			} else {
-				that.hideFlyout( action );
+				this.hideFlyout( action );
 				return;
 			}
 		} else {
 			// there is no note, should not write anything in user talk page
 			if ( !note ) {
-				that.hideFlyout( action );
+				this.hideFlyout( action );
 				return;
 			}
 
@@ -150,7 +147,7 @@ module.exports = ToolView.extend( {
 			sendNoteToArticleTalkPage = noteRecipient === 'creator';
 		}
 
-		const sendNote1 = that.sendNote( talkPageTitle, topicTitle, topicMessage );
+		const sendNote1 = this.sendNote( talkPageTitle, topicTitle, topicMessage );
 
 		// If the note needs to be posted to article talk page as well then we handle
 		// both post note promises resolve/reject states through a single promise
@@ -163,7 +160,7 @@ module.exports = ToolView.extend( {
 				'pagetriage-feedback-from-new-page-review-process-message',
 				note
 			).text();
-			const sendNote2 = that.sendNote( talkPageTitle, topicTitle, topicMessage );
+			const sendNote2 = this.sendNote( talkPageTitle, topicTitle, topicMessage );
 			sendNotePromise = $.when( sendNote1, sendNote2 );
 		} else { // Do not post note to article talk page
 			sendNotePromise = sendNote1;
@@ -171,13 +168,13 @@ module.exports = ToolView.extend( {
 
 		sendNotePromise
 			.then( () => {
-				that.hideFlyout( action );
+				this.hideFlyout( action );
 			} )
 			.catch( ( _errorCode, error ) => {
 				if ( error !== undefined ) {
-					that.showMarkError( action, error );
+					this.showMarkError( action, error );
 				} else {
-					that.showMarkError( action, mw.msg( 'unknown-error' ) );
+					this.showMarkError( action, mw.msg( 'unknown-error' ) );
 				}
 			} );
 	},
@@ -228,8 +225,7 @@ module.exports = ToolView.extend( {
 
 	render: function () {
 		let note = '';
-		const that = this,
-			status = this.model.get( 'patrol_status' ) === '0' ? 'reviewed' : 'unreviewed',
+		const status = this.model.get( 'patrol_status' ) === '0' ? 'reviewed' : 'unreviewed',
 			hasPreviousReviewer = this.model.get( 'ptrp_last_reviewed_by' ) > 0,
 			articleCreator = this.model.get( 'user_name' ),
 			articleCreatorHidden = this.model.get( 'creator_hidden' ),
@@ -319,7 +315,7 @@ module.exports = ToolView.extend( {
 			.on( 'click', ( e ) => {
 				$( '#mwe-pt-mark-as-' + status + '-button' ).attr( 'disabled', true );
 				$( '#mwe-pt-mark-as-' + status ).append( $.createSpinner( 'mark-spinner' ) ); // show spinner
-				that.submit( status );
+				this.submit( status );
 				e.stopPropagation();
 			} );
 
@@ -327,7 +323,7 @@ module.exports = ToolView.extend( {
 			.on( 'click', ( e ) => {
 				$( '#mwe-pt-send-message-button' ).attr( 'disabled', true );
 				$( '#mwe-pt-send-message' ).append( $.createSpinner( 'mark-spinner' ) ); // show spinner
-				that.submitNote();
+				this.submitNote();
 				e.stopPropagation();
 			} );
 
@@ -335,7 +331,7 @@ module.exports = ToolView.extend( {
 		// Only bind this once
 		if ( !this.renderWasBound ) {
 			this.model.bind( 'change:patrol_status', () => {
-				that.render();
+				this.render();
 			} );
 			this.renderWasBound = true;
 		}

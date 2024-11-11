@@ -103,13 +103,12 @@ module.exports = ToolView.extend( {
 		} );
 
 		// initialize the button
-		const that = this;
 		$( '#mwe-pt-wikilove-button' )
 			.on( 'click', ( e ) => {
 				e.preventDefault();
 				const recipients = $( '.mwe-pt-recipient-checkbox:checked' ).map( ( i, el ) => el.value ).get();
 				$.wikiLove.openDialog( recipients, [ 'pagetriage' ] );
-				that.hide();
+				this.hide();
 			} );
 
 		// Disable the submit button to start with, will be re-enabled once a checkbox is selected

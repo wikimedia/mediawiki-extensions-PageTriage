@@ -121,14 +121,13 @@ module.exports = Backbone.View.extend( {
 		this.eventBus.unbind( 'showTool', null, this );
 
 		// re-add the hover action
-		const that = this;
 		// eslint-disable-next-line no-jquery/no-event-shorthand
 		this.$icon.hover(
 			() => {
-				that.setIcon( 'hover' );
+				this.setIcon( 'hover' );
 			},
 			() => {
-				that.setIcon( 'normal' );
+				this.setIcon( 'normal' );
 			}
 		);
 	},
@@ -156,18 +155,17 @@ module.exports = Backbone.View.extend( {
 		this.$icon = this.$el.find( '.mwe-pt-tool-icon' );
 
 		// bind a click handler to open it.
-		const that = this;
 		this.$icon.on( 'click', () => {
-			that.click();
+			this.click();
 		} );
 
 		// and a hover action.
 		this.$icon.on( {
-			mouseenter: function () {
-				that.setIcon( 'hover' );
+			mouseenter: () => {
+				this.setIcon( 'hover' );
 			},
-			mouseleave: function () {
-				that.setIcon( 'normal' );
+			mouseleave: () => {
+				this.setIcon( 'normal' );
 			}
 		} );
 
@@ -186,7 +184,7 @@ module.exports = Backbone.View.extend( {
 
 		// set up an event for the close button
 		this.$el.find( '.mwe-pt-tool-close' ).on( 'click', () => {
-			that.hide();
+			this.hide();
 		} );
 
 		// $tel is the "tool element".  put stuff that goes in the tool there.

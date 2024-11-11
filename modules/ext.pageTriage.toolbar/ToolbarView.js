@@ -130,15 +130,14 @@ const ToolbarView = Backbone.View.extend( {
 			$toolbar.css( newPosition );
 		} );
 
-		const that = this;
 		// make clicking on the minimized toolbar expand to normal size
 		$( '#mwe-pt-toolbar-vertical' ).on( 'click', () => {
-			that.maximize( true );
+			this.maximize( true );
 		} );
 
 		// make the close button do something
 		$( '.mwe-pt-toolbar-close-button' ).on( 'click', () => {
-			that.hide( true );
+			this.hide( true );
 		} );
 
 		// Auto-resize all textareas as they type.
@@ -264,13 +263,12 @@ const ToolbarView = Backbone.View.extend( {
 		return new mw.Api().saveOption( 'userjs-curationtoolbar', state );
 	},
 	insertLink: function () {
-		const that = this,
-			pageCurationLink = mw.util.addPortletLink(
-				'p-tb',
-				'#',
-				mw.msg( 'pagetriage-toolbar-linktext' ),
-				this.openCurationToolbarLinkId
-			);
+		const pageCurationLink = mw.util.addPortletLink(
+			'p-tb',
+			'#',
+			mw.msg( 'pagetriage-toolbar-linktext' ),
+			this.openCurationToolbarLinkId
+		);
 
 		if ( !pageCurationLink ) {
 			return;
@@ -278,7 +276,7 @@ const ToolbarView = Backbone.View.extend( {
 		$( pageCurationLink )
 			.hide()
 			.on( 'click', ( e ) => {
-				that.maximize( true );
+				this.maximize( true );
 				e.delegateTarget.blur();
 				return false;
 			} );
