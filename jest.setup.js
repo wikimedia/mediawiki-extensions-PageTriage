@@ -1,3 +1,7 @@
+'use strict';
+
+/* global Backbone, $, mw */
+
 // dependencies provided by ext.pageTriage.external
 global.jQuery = require( 'jquery' );
 global.$ = global.jQuery;
