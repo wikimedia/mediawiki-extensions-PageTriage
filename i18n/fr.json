@@ -3,7 +3,6 @@
 		"authors": [
 			"0x010C",
 			"Aaribaud",
-			"Amire80",
 			"Boniface",
 			"Brunoperel",
 			"Choodyam",
@@ -28,7 +27,8 @@
 			"Weft",
 			"Wladek92",
 			"Wyz",
-			"Zarisi"
+			"Zarisi",
+			"Mahabarata"
 		]
 	},
 	"pagetriage": "Triage des pages",
@@ -56,10 +56,10 @@
 	"pagetriage-orphan": "Possible orpheline",
 	"pagetriage-recreated": "Précédemment supprimée",
 	"pagetriage-no-author": "Aucune information présente sur l’auteur",
-	"pagetriage-byline": "Créée par $1 ($2$3$4)",
-	"pagetriage-byline-heading": "Créé par {{GENDER:$1|$1}}",
-	"pagetriage-byline-new-editor": "Créée par le nouvel auteur $1 ($2$3$4)",
-	"pagetriage-byline-new-editor-heading": "Créé par {{GENDER:$1|un nouvel éditeur|une nouvelle éditrice}}",
+	"pagetriage-byline": "{{GENDER:$1|}}Créée par $1 ($2$3$4)",
+	"pagetriage-byline-heading": "{{GENDER:$1|}}Créée par",
+	"pagetriage-byline-new-editor": "Créée par {{GENDER:$1|le nouvel auteur|la nouvelle autrice}} $1 ($2$3$4)",
+	"pagetriage-byline-new-editor-heading": "Créée par {{GENDER:$1|un nouvel auteur|une nouvelle autrice}}",
 	"pagetriage-articleinfo-byline": "Cette page a été créée le $1 par $2 ($3$4$5)",
 	"pagetriage-articleinfo-byline-hidden-username": "Cette page a été créée le $1",
 	"pagetriage-articleinfo-byline-new-editor": "Cette page a été créée le $1 par le nouvel auteur $2 ($3$4$5)",
@@ -329,7 +329,7 @@
 	"apihelp-pagetriageaction-param-note": "Note personnelle des relecteurs et concernant les créateurs de pages.",
 	"apihelp-pagetriageaction-param-skipnotif": "S’il faut ignorer la notification.",
 	"apihelp-pagetriageaction-param-enqueue": "Si la page devrait être ajoutée à la file de triage des pages.",
-	"apihelp-pagetriageaction-param-tags": "Modifier les balises à appliquer aux entrées de journal générées pour cette action.",
+	"apihelp-pagetriageaction-param-tags": "Les balises de modification à appliquer aux entrées de journal générées pour cette action.",
 	"apihelp-pagetriagelist-summary": "Obtenir une liste des IDs de page pour construire une file de PageTriage.",
 	"apihelp-pagetriagelist-param-afc_state": "Quel état afficher pour Articles-à-créer.",
 	"apihelp-pagetriagelist-param-page_id": "Renvoyer les données concernant l’identificateur de page spécifié, en ignorant les autres paramètres.",

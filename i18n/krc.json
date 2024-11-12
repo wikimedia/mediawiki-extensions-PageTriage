@@ -7,8 +7,11 @@
 		]
 	},
 	"pagetriage-filter-reset-button": "Фильтрлени ат",
+	"pagetriage-filter-ns-all": "Барысы да",
+	"pagetriage-filter-stat-all": "Барысы да",
 	"pagetriage-auto-refresh-list": "Авто-джангыртыу",
 	"pagetriage-feedback-from-new-page-review-process-message": "Статьяны къарагъандан сора къураучцулагъа/келликде рецензиячылагъа быллай оюм къойдум: $1",
 	"pagetriage-tag-previousdeletion-error": "Процедураны тыйгъан, аны аллында кетерируню кёргюзтген ($1) шаблон табылгъанды.",
-	"pagetriage-tag-warning-notice": "Бу бет къуру $1 {{PLURAL:$1|такъийкъа}} мындан алгъа къуралгъанды. Тилейбиз, бетлени кёзюуню аллында белгилерге ашыкъмагъыз. Автор алкъын ишлей турургъа боллукъду."
+	"pagetriage-tag-warning-notice": "Бу бет къуру $1 {{PLURAL:$1|такъийкъа}} мындан алгъа къуралгъанды. Тилейбиз, бетлени кёзюуню аллында белгилерге ашыкъмагъыз. Автор алкъын ишлей турургъа боллукъду.",
+	"pagetriage-afc-state-all": "Барысы да"
 }
