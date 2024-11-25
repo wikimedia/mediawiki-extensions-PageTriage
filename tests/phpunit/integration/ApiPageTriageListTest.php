@@ -372,8 +372,11 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$clock = (int)wfTimestamp( TS_UNIX );
 
 		$page1 = $this->insertPage( 'Oldest created', '', $this->draftNsId );
+		MWTimestamp::setFakeTime( ++$clock );
 		$page2 = $this->insertPage( 'Page in the middle', '', $this->draftNsId );
+		MWTimestamp::setFakeTime( ++$clock );
 		$page3 = $this->insertPage( 'Newest created', '', $this->draftNsId );
+		MWTimestamp::setFakeTime( ++$clock );
 
 		// Now submit them, in an order different than their creation date.
 		// ptrp_reviewed_updated is a timestamp, only accurate to the second.
@@ -383,6 +386,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$this->editPage( $page3[ 'title' ], '[[Category:Pending AfC submissions]]' );
 		MWTimestamp::setFakeTime( ++$clock );
 		$this->editPage( $page1[ 'title' ], '[[Category:Pending AfC submissions]]' );
+		MWTimestamp::setFakeTime( ++$clock );
 
 		$oldestSubmitted = $page2;
 		$newestSubmitted = $page1;
