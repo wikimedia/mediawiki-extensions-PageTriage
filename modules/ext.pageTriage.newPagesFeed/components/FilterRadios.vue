@@ -108,13 +108,15 @@ module.exports = {
 				value: 'no-categories',
 				label: this.$i18n( 'pagetriage-filter-no-categories' ).text()
 			} );
-			if ( featureFlag.PageTriageEnableKeywordSearch ) {
-				thatRadios.push( {
-					value: 'keyword',
-					label: this.$i18n( 'pagetriage-filter-keyword' ).text()
-				} );
-			}
 		}
+
+		if ( featureFlag.PageTriageEnableKeywordSearch ) {
+			thatRadios.push( {
+				value: 'keyword',
+				label: this.$i18n( 'pagetriage-filter-keyword' ).text()
+			} );
+		}
+
 		return {
 			filterUserHeadingLabel: this.$i18n( 'pagetriage-filter-user-heading' ).text(),
 			filterAllLabel: this.$i18n( 'pagetriage-filter-all' ).text(),
