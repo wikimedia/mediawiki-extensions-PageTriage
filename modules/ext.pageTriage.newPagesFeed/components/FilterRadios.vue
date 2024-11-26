@@ -175,12 +175,4 @@ legend.no-indent {
 	padding-left: 0;
 	margin-left: -12px;
 }
-
-#mwe-vue-pt-filter-radio-username {
-	display: inline;
-}
-
-#mwe-vue-pt-filter-radio-username label {
-	.mixin-screen-reader-text();
-}
 </style>
