@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
 	moduleNameMapper: {
 		// backbone needs this defined here because of the way it checks for jquery & underscore

@@ -1,35 +1,6 @@
 {
 	"root": true,
 	"extends": [
-		"wikimedia/client-es6",
-		"wikimedia/jquery",
-		"wikimedia/mediawiki"
-	],
-	"env": {
-		"commonjs": true,
-		"jest": true
-	},
-	"globals": {
-		"Backbone": "readonly",
-		"_": "readonly",
-		"mediaWiki": "readonly",
-		"jQuery": "readonly",
-		"moment": "readonly"
-	},
-	"rules": {
-		"compat/compat": "warn",
-		"no-jquery/no-extend": "warn",
-		"no-jquery/no-global-selector": "off",
-		"no-restricted-syntax": [
-			"error",
-			{
-				"message": "Using .done() is not allowed. See https://www.mediawiki.org/wiki/Manual:Coding_conventions/JavaScript#Asynchronous_code",
-				"selector": "MemberExpression > Identifier[name=\"done\"]"
-			},
-			{
-				"message": "Using .fail() is not allowed. See https://www.mediawiki.org/wiki/Manual:Coding_conventions/JavaScript#Asynchronous_code",
-				"selector": "MemberExpression > Identifier[name=\"fail\"]"
-			}
-		]
-	}
+		"wikimedia/server"
+	]
 }
