@@ -28,11 +28,12 @@
 			"MacOS Weed",
 			"Mahabarata",
 			"Méthodes Bulebe Hangi",
-			"SleaY"
+			"SleaY",
+			"Juwan"
 		]
 	},
 	"pagetriage": "Triage des pages",
-	"pagetriage-dot-separator": "&nbsp;'''·'''&#32;",
+	"pagetriage-dot-separator": "&#32;·&#32;",
 	"newpagesfeed": "Fil des nouvelles pages",
 	"pagetriage-desc": "Facilite la relecture et l’approbation des nouvelles pages",
 	"pagetriage-pagecuration": "Conservation des pages",
