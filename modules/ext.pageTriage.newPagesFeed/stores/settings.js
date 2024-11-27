@@ -193,6 +193,7 @@ module.exports = {
 			// Map AFC API parameters to form values
 			afcParamsToFilters: function () {
 				this.unsaved.afcFilterUser = this.params.username || '';
+				this.unsaved.afcFilterKeyword = this.params.keyword || '';
 				this.unsaved.afcFilter = this.paramsToFilter( this.params ) || 'all';
 			},
 			/* Map date API parameters to form values
@@ -329,9 +330,12 @@ module.exports = {
 				// username requires text input
 				if ( this.applied.afcFilter === 'username' && this.applied.afcFilterUser ) {
 					this.params.username = this.applied.afcFilterUser;
+				} else if ( this.applied.afcFilter === 'keyword' && this.applied.afcFilterKeyword ) {
+					this.params.keyword = this.applied.afcFilterKeyword;
 				} else {
 					// unset username when another filter is selected
 					this.unsaved.afcFilterUser = '';
+					this.unsaved.afcFilterKeyword = '';
 					// everything else is logically boolean and should set a numeric API
 					// parameter if defined
 					if ( filtersToParams[ this.applied.afcFilter ] !== undefined ) {

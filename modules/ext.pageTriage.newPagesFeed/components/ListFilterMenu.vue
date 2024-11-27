@@ -124,6 +124,7 @@
 								<filter-radios
 									v-model:filter="settings.unsaved.afcFilter"
 									v-model:user="settings.unsaved.afcFilterUser"
+									v-model:keyword="settings.unsaved.afcFilterKeyword"
 									type="afc"
 								>
 								</filter-radios>
