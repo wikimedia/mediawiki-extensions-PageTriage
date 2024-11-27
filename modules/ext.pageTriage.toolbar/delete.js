@@ -148,7 +148,6 @@ module.exports = ToolView.extend( {
 	 * Render deletion tagging template
 	 */
 	render: function () {
-		let key;
 		const that = this;
 
 		this.setupDeletionTags();
@@ -187,7 +186,7 @@ module.exports = ToolView.extend( {
 
 		// show the first category as default
 		// eslint-disable-next-line no-unreachable-loop
-		for ( key in this.deletionTagsOptions ) {
+		for ( const key in this.deletionTagsOptions ) {
 			this.displayTags( key );
 			break;
 		}
@@ -322,7 +321,6 @@ module.exports = ToolView.extend( {
 	 * @param {string} cat
 	 */
 	displayTags: function ( cat ) {
-		let key, param;
 		const that = this,
 			tagSet = this.deletionTagsOptions[ cat ].tags,
 			elementType = this.deletionTagsOptions[ cat ].multiple ? 'checkbox' : 'radio',
@@ -347,7 +345,7 @@ module.exports = ToolView.extend( {
 		$( '#mwe-pt-delete' ).append( this.renderSearchTextBox( 'mwe-pt-delete-row' ) );
 		$( '#mwe-pt-delete' ).append( $tagList );
 
-		for ( key in tagSet ) {
+		for ( const key in tagSet ) {
 
 			// Keep a running total of tags in the category
 			if ( Object.prototype.hasOwnProperty.call( tagSet, key ) ) {
@@ -364,7 +362,7 @@ module.exports = ToolView.extend( {
 
 			// add click events for checking/unchecking tags to both the
 			// checkboxes and tag labels
-			// eslint-disable-next-line no-loop-func
+
 			$( '#mwe-pt-delete-' + key + ', #mwe-pt-checkbox-delete-' + key ).on( 'click', function () {
 				// Extract the tag key from the id of whatever was clicked on
 				const tagKeyMatches = $( this ).attr( 'id' ).match( /.*-delete-(.*)/ ),
@@ -395,7 +393,7 @@ module.exports = ToolView.extend( {
 					that.selectedTag[ tagKey ] = tagSet[ tagKey ];
 					that.showParamsLink( tagKey );
 					// show the param form if there is required parameter
-					for ( param in tagSet[ tagKey ].params ) {
+					for ( const param in tagSet[ tagKey ].params ) {
 						if ( tagSet[ tagKey ].params[ param ].input === 'required' ) {
 							that.showParamsForm( tagKey );
 							break;
@@ -817,10 +815,9 @@ module.exports = ToolView.extend( {
 	 * an `Error` if not.
 	 */
 	tagTalkPage: function () {
-		let key, tagObj;
 		// eslint-disable-next-line no-unreachable-loop
-		for ( key in this.selectedTag ) {
-			tagObj = this.selectedTag[ key ];
+		for ( const key in this.selectedTag ) {
+			const tagObj = this.selectedTag[ key ];
 			if ( !( 'articletalkpagenotiftpl' in tagObj ) ||
 				tagObj.articletalkpagenotiftpl === '' ) {
 				break;
@@ -877,8 +874,7 @@ module.exports = ToolView.extend( {
 		const that = this,
 			tagList = [],
 			count = this.objectPropCount( this.selectedTag );
-		let key,
-			text = '',
+		let text = '',
 			tagText = '',
 			paramsText = '';
 
@@ -886,6 +882,7 @@ module.exports = ToolView.extend( {
 			return;
 		}
 
+		let key;
 		// for multiple tags, they must be in db-xxx format, when combining them in
 		// db-multiple, remove 'db-' from each individual tags
 		for ( key in this.selectedTag ) {
@@ -1204,19 +1201,18 @@ module.exports = ToolView.extend( {
 		} )
 			.then( ( data ) => {
 				const pages = {};
-				let page, i, suffix;
 
 				if ( !data || !data.query ) {
 					throw new Error( 'API error' );
 				}
 				if ( data.query.pages ) {
-					page = data.query.pages[ 0 ];
+					const page = data.query.pages[ 0 ];
 					if ( page && page.title && !page.missing ) {
 						pages[ page.title ] = true;
 					}
 				}
 				if ( data.query.allpages ) {
-					for ( page in data.query.allpages ) {
+					for ( const page in data.query.allpages ) {
 						pages[ data.query.allpages[ page ].title ] = true;
 					}
 				}
@@ -1224,8 +1220,8 @@ module.exports = ToolView.extend( {
 				if ( !pages[ baseTitle ] ) {
 					return { page: pageName, number: undefined };
 				}
-				for ( i = 2; i < 50; i++ ) {
-					suffix = ' (' + that.getNumeral( i ) + ' nomination)';
+				for ( let i = 2; i < 50; i++ ) {
+					const suffix = ' (' + that.getNumeral( i ) + ' nomination)';
 					if ( !pages[ baseTitle + suffix ] ) {
 						return { page: pageName + suffix, number: that.getNumeral( i ) };
 					}

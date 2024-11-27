@@ -236,9 +236,8 @@ module.exports = Backbone.View.extend( {
 	 * @return {number}
 	 */
 	objectPropCount: function ( obj ) {
-		let key,
-			count = 0;
-		for ( key in obj ) {
+		let count = 0;
+		for ( const key in obj ) {
 			if ( Object.prototype.hasOwnProperty.call( obj, key ) ) {
 				count++;
 			}

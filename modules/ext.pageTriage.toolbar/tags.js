@@ -243,7 +243,7 @@ module.exports = ToolView.extend( {
 			// add click events for checking/unchecking tags to both the
 			// checkboxes and tag labels
 			$( '#mwe-pt-tag-' + key + ', #mwe-pt-checkbox-tag-' + key ).on( 'click', function () {
-				let destCat, destKey, param;
+				let destCat, destKey;
 
 				// Extract the tag key from the id of whatever was clicked on
 				const tagKeyMatches = $( this ).attr( 'id' ).match( /.*-tag-(.*)/ );
@@ -284,7 +284,7 @@ module.exports = ToolView.extend( {
 					}
 					that.showParamsLink( tagKey, cat );
 					// show the param form if there is required parameter
-					for ( param in tagSet[ tagKey ].params ) {
+					for ( const param in tagSet[ tagKey ].params ) {
 						if ( tagSet[ tagKey ].params[ param ].input === 'required' ) {
 							that.showParamsForm( tagKey, cat );
 							break;
@@ -675,8 +675,7 @@ module.exports = ToolView.extend( {
 				}
 			}
 
-			let tagKey,
-				bottomText = '';
+			let bottomText = '';
 			const processed = {};
 			const that = this;
 			const multipleTags = {};
@@ -685,7 +684,7 @@ module.exports = ToolView.extend( {
 			let multipleTagsText = '',
 				multipleRedirectTagsText = '';
 			for ( const cat in this.selectedTag ) {
-				for ( tagKey in this.selectedTag[ cat ] ) {
+				for ( const tagKey in this.selectedTag[ cat ] ) {
 					if ( processed[ tagKey ] ) {
 						continue;
 					}
@@ -732,7 +731,7 @@ module.exports = ToolView.extend( {
 			// Generate a string of line breaks and templates. For example,
 			// \n{{No references}}\n{{Notability}}
 			const tagsArray = [];
-			for ( tagKey in multipleTags ) {
+			for ( const tagKey in multipleTags ) {
 				tagsArray.push( '{{' + multipleTags[ tagKey ].tag + this.buildParams( multipleTags[ tagKey ] ) + '}}' );
 			}
 			multipleTagsText = tagsArray.join( '\n' );
@@ -748,7 +747,7 @@ module.exports = ToolView.extend( {
 				this.objectPropCount( multipleTags ) > 1
 			);
 
-			for ( tagKey in redirectTags ) {
+			for ( const tagKey in redirectTags ) {
 				multipleRedirectTagsText += '\n{{' + redirectTags[ tagKey ].tag +
 				this.buildParams( redirectTags[ tagKey ] ) + '}}';
 			}
