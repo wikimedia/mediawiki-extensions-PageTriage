@@ -66,8 +66,11 @@ module.exports = {
 			if ( settings.immediate.queueMode === 'npp' ) {
 				this.addNamespace( settings.applied.nppNamespace );
 				if ( featureFlags.PageTriageEnableKeywordSearch ) {
-					this.addTop( settings.applied.nppFilter,
-						settings.applied.nppFilterUser, settings.applied.nppFilterKeyword );
+					// Check if nppFilterKeyword is not empty
+					if ( settings.applied.nppFilterKeyword ) {
+						this.addTop( settings.applied.nppFilter,
+							settings.applied.nppFilterUser, settings.applied.nppFilterKeyword );
+					}
 				}
 				this.addIf( settings.applied.nppIncludeReviewed, 'reviewed', this.msgObj.state );
 				this.addIf( settings.applied.nppIncludeUnreviewed, 'unreviewed', this.msgObj.state );
@@ -79,8 +82,11 @@ module.exports = {
 				this.addDate( settings.applied.nppDate.from, settings.applied.nppDate.to );
 			} else {
 				if ( featureFlags.PageTriageEnableKeywordSearch ) {
-					this.addTop( settings.applied.afcFilter,
-						settings.applied.afcFilterUser, settings.applied.afcFilterKeyword );
+					// Check that keyword is not empty
+					if ( settings.applied.afcFilterKeyword ) {
+						this.addTop( settings.applied.afcFilter,
+							settings.applied.afcFilterUser, settings.applied.afcFilterKeyword );
+					}
 				}
 				this.addPredictedClass( settings.applied.afcPredictedRating );
 				this.addPredictedIssues( settings.applied.afcPossibleIssues );
