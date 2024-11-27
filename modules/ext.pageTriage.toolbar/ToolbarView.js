@@ -283,9 +283,9 @@ const ToolbarView = Backbone.View.extend( {
 		}
 		$( pageCurationLink )
 			.hide()
-			.on( 'click', function () {
+			.on( 'click', ( e ) => {
 				that.maximize( true );
-				this.blur();
+				e.delegateTarget.blur();
 				return false;
 			} );
 	}

@@ -141,11 +141,11 @@ module.exports = ToolView.extend( {
 		$( '#mwe-pt-tag .mwe-pt-flyout-help-link' ).attr( 'href', this.moduleConfig.helplink );
 
 		// add click event for each category
-		$( '#mwe-pt-categories' ).find( 'div' ).each( function () {
-			const cat = $( $( this ).html() ).attr( 'cat' );
+		$( '#mwe-pt-categories' ).find( 'div' ).each( ( i, el ) => {
+			const cat = $( $( el ).html() ).attr( 'cat' );
 			$( this ).on( 'click',
-				function () {
-					$( this ).find( 'a' ).trigger( 'blur' );
+				() => {
+					$( el ).find( 'a' ).trigger( 'blur' );
 					that.displayTags( cat );
 					return false;
 				}
@@ -242,11 +242,11 @@ module.exports = ToolView.extend( {
 
 			// add click events for checking/unchecking tags to both the
 			// checkboxes and tag labels
-			$( '#mwe-pt-tag-' + key + ', #mwe-pt-checkbox-tag-' + key ).on( 'click', function () {
+			$( '#mwe-pt-tag-' + key + ', #mwe-pt-checkbox-tag-' + key ).on( 'click', ( e ) => {
 				let destCat, destKey;
 
 				// Extract the tag key from the id of whatever was clicked on
-				const tagKeyMatches = $( this ).attr( 'id' ).match( /.*-tag-(.*)/ );
+				const tagKeyMatches = $( e.delegateTarget ).attr( 'id' ).match( /.*-tag-(.*)/ );
 				const tagKey = tagKeyMatches[ 1 ];
 
 				let allTagKey = tagSet[ tagKey ].tag + tagSet[ tagKey ].label;
