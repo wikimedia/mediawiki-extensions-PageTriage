@@ -250,9 +250,13 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	public function testAutopatrolledCreation() {
 		$apiParams = [ 'namespace' => 0 ];
 
+		// Make sure sysops are autopatrolled.
+		$this->setGroupPermissions( 'sysop', 'autopatrol', true );
+
+		// Then have a sysop insert a page.
 		$this->insertPage( 'Mainspace test page 1', '' );
 
-		// Should not be in unreviewed list (test user is a sysop and hence autopatrolled).
+		// Should not be in unreviewed list
 		$list = $this->getPageTriageList( $apiParams );
 
 		// First check count($list) in case this test is ran standalone.
@@ -275,9 +279,13 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$apiParams = [ 'namespace' => 0 ];
 		$pageTitle = 'Redirect test';
 
+		// Make sure sysops are autopatrolled.
+		$this->setGroupPermissions( 'sysop', 'autopatrol', true );
+
+		// Then have a sysop insert a page.
 		$this->insertPage( $pageTitle, '#REDIRECT [[Foo]]' );
 
-		// Should not be in unreviewed list (test user is a sysop and hence autopatrolled).
+		// Should not be in unreviewed list
 		$list = $this->getPageTriageList( $apiParams );
 		$this->assertTrue( count( $list ) === 0 || $list[0]['title'] !== $pageTitle );
 
