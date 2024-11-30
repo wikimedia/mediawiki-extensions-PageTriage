@@ -310,7 +310,7 @@ module.exports = {
 			},
 			// Map NPP form values to API parameters and unset user form value if needed
 			addNppFilter: function () {
-				// username requires text input
+				// username and keyword filters require text input
 				if ( this.applied.nppFilter === 'username' && this.applied.nppFilterUser ) {
 					this.params.username = this.applied.nppFilterUser;
 				} else if ( this.applied.nppFilter === 'keyword' && this.applied.nppFilterKeyword ) {
@@ -324,6 +324,11 @@ module.exports = {
 					if ( filtersToParams[ this.applied.nppFilter ] !== undefined ) {
 						this.params[ filtersToParams[ this.applied.nppFilter ] ] = 1;
 					}
+				}
+				// Bug fix T380822: Keyword radio button is selected, but the textbox is empty
+				if ( this.params.keyword === 1 && !this.applied.nppFilterKeyword ) {
+					this.params.keyword = undefined;
+					this.unsaved.nppFilterKeyword = '';
 				}
 			},
 			addAfcFilter: function () {
@@ -341,6 +346,11 @@ module.exports = {
 					if ( filtersToParams[ this.applied.afcFilter ] !== undefined ) {
 						this.params[ filtersToParams[ this.applied.afcFilter ] ] = 1;
 					}
+				}
+				// Bug fix T380822: Keyword radio button is selected, but the textbox is empty
+				if ( this.params.keyword === 1 && !this.applied.afcFilterKeyword ) {
+					this.params.keyword = undefined;
+					this.unsaved.afcFilterKeyword = '';
 				}
 			},
 			// Set API parameters from form values
