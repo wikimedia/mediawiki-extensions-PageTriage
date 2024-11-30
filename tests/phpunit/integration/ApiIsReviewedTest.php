@@ -6,7 +6,7 @@ use MediaWiki\Extension\PageTriage\PageTriage;
 use MediaWiki\Extension\PageTriage\PageTriageServices;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Extension\PageTriage\QueueRecord;
-use MediaWiki\Title\Title;
+use MediaWiki\Tests\Api\ApiTestCase;
 
 /**
  * Tests that ?action=query&prop=isreviewed works
@@ -18,10 +18,15 @@ use MediaWiki\Title\Title;
  * @group extensions
  * @group Database
  */
-class ApiIsReviewedTest extends PageTriageTestCase {
+class ApiIsReviewedTest extends ApiTestCase {
 
 	public function testUnreviewedPage() {
-		$pageId = $this->makeDraft( Title::newFromText( 'testUnreviewedPage' ) );
+		$pageId = $this->insertPage(
+			'testUnreviewedPage',
+			'Text',
+			NS_MAIN,
+			$this->getTestUser()->getUser()
+		)[ 'id' ];
 		$wikipage = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId );
 		$this->assertNotNull( $wikipage, 'Page should exist' );
 
@@ -44,7 +49,12 @@ class ApiIsReviewedTest extends PageTriageTestCase {
 	}
 
 	public function testReviewedPage() {
-		$pageId = $this->makeDraft( Title::newFromText( 'testReviewedPage' ) );
+		$pageId = $this->insertPage(
+			'testReviewedPage',
+			'Text',
+			NS_MAIN,
+			$this->getTestUser()->getUser()
+		)[ 'id' ];
 		$wikipage = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId );
 		$this->assertNotNull( $wikipage, 'Page should exist' );
 
@@ -69,7 +79,12 @@ class ApiIsReviewedTest extends PageTriageTestCase {
 	}
 
 	public function testPatrolledPage() {
-		$pageId = $this->makeDraft( Title::newFromText( 'testPatrolledPage' ) );
+		$pageId = $this->insertPage(
+			'testPatrolledPage',
+			'Text',
+			NS_MAIN,
+			$this->getTestUser()->getUser()
+		)[ 'id' ];
 		$wikipage = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId );
 		$this->assertNotNull( $wikipage, 'Page should exist' );
 
@@ -94,7 +109,12 @@ class ApiIsReviewedTest extends PageTriageTestCase {
 	}
 
 	public function testAutopatrolledPage() {
-		$pageId = $this->makeDraft( Title::newFromText( 'testAutopatrolledPage' ) );
+		$pageId = $this->insertPage(
+			'testAutopatrolledPage',
+			'Text',
+			NS_MAIN,
+			$this->getTestUser()->getUser()
+		)[ 'id' ];
 		$wikipage = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId );
 		$this->assertNotNull( $wikipage, 'Page should exist' );
 
@@ -119,7 +139,12 @@ class ApiIsReviewedTest extends PageTriageTestCase {
 	}
 
 	public function testPageNotInNewPagesFeed() {
-		$pageId = $this->makeDraft( Title::newFromText( 'testPageNotInNewPagesFeed' ) );
+		$pageId = $this->insertPage(
+			'testPageNotInNewPagesFeed',
+			'Text',
+			NS_MAIN,
+			$this->getTestUser()->getUser()
+		)[ 'id' ];
 		$wikipage = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId );
 		$this->assertNotNull( $wikipage, 'Page should exist' );
 
@@ -144,11 +169,21 @@ class ApiIsReviewedTest extends PageTriageTestCase {
 	}
 
 	public function testUnreviewedPages() {
-		$pageId1 = $this->makeDraft( Title::newFromText( 'testUnreviewedPages1' ) );
+		$pageId1 = $this->insertPage(
+			'testUnreviewedPages1',
+			'Text',
+			NS_MAIN,
+			$this->getTestUser()->getUser()
+		)[ 'id' ];
 		$wikipage1 = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId1 );
 		$this->assertNotNull( $wikipage1, 'Page 1 should exist' );
 
-		$pageId2 = $this->makeDraft( Title::newFromText( 'testUnreviewedPages2' ) );
+		$pageId2 = $this->insertPage(
+			'testUnreviewedPages2',
+			'Text',
+			NS_MAIN,
+			$this->getTestUser()->getUser()
+		)[ 'id' ];
 		$wikipage2 = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId2 );
 		$this->assertNotNull( $wikipage2, 'Page 2 should exist' );
 
@@ -184,7 +219,12 @@ class ApiIsReviewedTest extends PageTriageTestCase {
 	}
 
 	public function testValidAndInvalidPages() {
-		$pageId1 = $this->makeDraft( Title::newFromText( 'testValidAndInvalidPages_ValidPage' ) );
+		$pageId1 = $this->insertPage(
+			'testValidAndInvalidPages_ValidPage',
+			'Text',
+			NS_MAIN,
+			$this->getTestUser()->getUser()
+		)[ 'id' ];
 		$wikipage1 = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId1 );
 		$this->assertNotNull( $wikipage1, 'Page 1 should exist' );
 
