@@ -16,7 +16,6 @@
 	},
 	"rules": {
 		"compat/compat": "warn",
-		"no-jquery/no-extend": "warn",
 		"no-jquery/no-global-selector": "off",
 		"no-restricted-syntax": [
 			"error",
