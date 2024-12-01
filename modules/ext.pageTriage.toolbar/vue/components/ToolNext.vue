@@ -2,7 +2,8 @@
 	<div id="mwe-pt-next" class="mwe-pt-tool">
 		<a :href="uri">
 			<tool-icon
-				:title="disabled ? $i18n( 'pagetriage-next-tooltip-disabled' ).text() : $i18n( 'pagetriage-next-tooltip' ).text()"
+				:title="disabled ? $i18n( 'pagetriage-next-tooltip-disabled' ).text() :
+					$i18n( 'pagetriage-next-tooltip' ).text()"
 				:disabled="disabled"
 				file="icon_skip.png"
 			></tool-icon>
@@ -66,7 +67,12 @@ module.exports = {
 			return client.get( params ).then( ( res ) => {
 				// If API doesn't return content for next page
 				// then user cannot advance to next page
-				if ( !res.pagetriagelist || !res.pagetriagelist.pages || !res.pagetriagelist.pages[ 0 ] || !res.pagetriagelist.pages[ 0 ].title ) {
+				if (
+					!res.pagetriagelist ||
+					!res.pagetriagelist.pages ||
+					!res.pagetriagelist.pages[ 0 ] ||
+					!res.pagetriagelist.pages[ 0 ].title
+				) {
 					return;
 				}
 				const nextPage = res.pagetriagelist.pages[ 0 ];

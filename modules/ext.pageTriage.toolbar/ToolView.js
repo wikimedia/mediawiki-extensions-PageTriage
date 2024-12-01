@@ -10,7 +10,8 @@ module.exports = Backbone.View.extend( {
 	title: 'Abstract tool view', // the title for the flyout window
 	scrollable: false, // should the output of render be in a scrollable div?
 
-	// should the content be re-rendered every time the tool is opened, or just rendered the first time?
+	// should the content be re-rendered every time the tool is opened, or just rendered the
+	// first time?
 	reRender: false,
 
 	// These things will likely be overridden with functions.

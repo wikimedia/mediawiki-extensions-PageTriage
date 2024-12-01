@@ -707,8 +707,9 @@ module.exports = ToolView.extend( {
 				}
 			} )
 			.then( $.when.apply( null, promises ) )
-			// Applying deletion tags should mark the page as reviewed depending on the selected tag's
-			// reviewed option. If it is not set then the page will be marked as not reviewed.
+			// Applying deletion tags should mark the page as reviewed depending on the selected
+			// tag's reviewed option. If it is not set then the page will be marked as not
+			// reviewed.
 			.then( () => new mw.Api().postWithToken( 'csrf', {
 				action: 'pagetriageaction',
 				pageid: mw.config.get( 'wgArticleId' ),
@@ -718,9 +719,9 @@ module.exports = ToolView.extend( {
 			} ) )
 			.then( () => {
 				if ( markAsReviewed === '1' ) {
-					// Page was also marked as reviewed, so we want to fire the action for that, too.
-					// The 'reviewed' and 'reviewer' attributes on the model are not yet populated,
-					// so we have to pass those in manually.
+					// Page was also marked as reviewed, so we want to fire the action for that,
+					// too. The 'reviewed' and 'reviewer' attributes on the model are not yet
+					// populated, so we have to pass those in manually.
 					actionQueue.mark = {
 						reviewed: true,
 						reviewer: mw.config.get( 'wgUserName' )

@@ -252,10 +252,11 @@ module.exports = ToolView.extend( {
 				let allTagKey = tagSet[ tagKey ].tag + tagSet[ tagKey ].label;
 				allTagKey = allTagKey.replace( /[- (){}]/g, '' ).toLowerCase();
 
-				// If the tag is in the 'all' category, we already have a destinationCategory which we can use to sync the tag data
-				// across category. However, for non 'all' categories we can't identify the corresponding tag in the 'all' category
-				// to fix this, we generate the allTagKey (which should be the key for the tag in the 'all category') above
-				// and use it to sync the tag data across categories.
+				// If the tag is in the 'all' category, we already have a destinationCategory
+				// which we can use to sync the tag data across category. However, for non 'all'
+				// categories we can't identify the corresponding tag in the 'all' category
+				// to fix this, we generate the allTagKey (which should be the key for the tag
+				// in the 'all category') above and use it to sync the tag data across categories.
 				if ( cat !== 'all' ) {
 					tagSet[ tagKey ].allTagKey = allTagKey;
 				}
@@ -446,11 +447,12 @@ module.exports = ToolView.extend( {
 		const that = this;
 		// Add click even for the Set Parameters button
 		$( '#mwe-pt-tag-set-param-' + key ).button().on( 'click', () => {
-			// When setting parameters, we need to make sure that all tags that are duplicated across categories
-			// are updated to reflect the param changes made to the tag in the current category.
-			// For most tags that are not in the all category, we can find the dupicate tag in the all category
-			// by using the previously set allTagKey. However, for tags in the all category, we need to
-			// use the destKey and dest (Category) to locate the duplicated tag.
+			// When setting parameters, we need to make sure that all tags that are duplicated
+			// across categories are updated to reflect the param changes made to the tag in
+			// the current category. For most tags that are not in the all category, we can find
+			// the dupicate tag in the all category by using the previously set allTagKey.
+			// However, for tags in the all category, we need to use the destKey and dest
+			// (Category) to locate the duplicated tag.
 			if ( that.setParams( key, key, cat ) ) {
 				if ( tag.dest ) {
 					that.setParams( key, tag.destKey, tag.dest );
@@ -615,8 +617,8 @@ module.exports = ToolView.extend( {
 	 * PageTriage is the best.
 	 * ```
 	 *
-	 * the function will find the existing Multiple issues wrapper tag and try to append the tagWikitext
-	 * as part of the Multiple issues tag block, so the returned output would be:
+	 * the function will find the existing Multiple issues wrapper tag and try to append the
+	 * tagWikitext as part of the Multiple issues tag block, so the returned output would be:
 	 *
 	 * ```
 	 * {{Multiple issues|
@@ -634,7 +636,8 @@ module.exports = ToolView.extend( {
 	 * @param {string} tagWikitext
 	 * @param {"top"|"bottom"} position
 	 * @param {boolean} shouldWrap
-	 * @return {string} Article text with the tag wrapped in the wrapper placed in the appropriate position
+	 * @return {string} Article text with the tag wrapped in the wrapper placed in the appropriate
+	 * position
 	 */
 	addToExistingTags: function ( articleWikitext, wrapper, tagWikitext, position, shouldWrap ) {
 		const existingWrapper = this.extractTagFromWikitext( articleWikitext, wrapper );
@@ -852,7 +855,10 @@ module.exports = ToolView.extend( {
 					actionQueue.tags.note = note;
 					that.talkPageNote( note );
 				} else {
-					mw.pageTriage.actionQueue.runAndRefresh( actionQueue, that.getDataForActionQueue() );
+					mw.pageTriage.actionQueue.runAndRefresh(
+						actionQueue,
+						that.getDataForActionQueue()
+					);
 				}
 			} )
 			.catch( ( _errorCode, data ) => {

@@ -44,7 +44,11 @@ module.exports = ToolView.extend( {
 				let url;
 				// If API returns the content for next page 'result.pagetriagelist.pages[ 0 ]'
 				// then user should be able to advance to next page
-				if ( result.pagetriagelist && result.pagetriagelist.pages && result.pagetriagelist.pages[ 0 ] ) {
+				if (
+					result.pagetriagelist &&
+					result.pagetriagelist.pages &&
+					result.pagetriagelist.pages[ 0 ]
+				) {
 					page = result.pagetriagelist.pages[ 0 ];
 					if ( page.title ) {
 						url = new mw.Uri( mw.config.get( 'wgArticlePath' ).replace(

@@ -86,7 +86,8 @@ module.exports = ToolView.extend( {
 		$talkpageFeedbackBadge.badge( feedbackCount, 'bottom', true );
 		// Use the same message (without link) as is used on the flyout, for the badge's tooltip.
 		const badgeTooltip = mw.msg( 'pagetriage-has-talkpage-feedback', feedbackCount, mw.msg( 'pagetriage-has-talkpage-feedback-link' ) );
-		// Add OOUI classes to the badge element that was added in .badge(), in order to get the envelope icon.
+		// Add OOUI classes to the badge element that was added in .badge(), in order to get the
+		// envelope icon.
 		$talkpageFeedbackBadge.find( '.notification-badge' )
 			.addClass( 'oo-ui-iconElement oo-ui-icon-message oo-ui-image-invert' )
 			.attr( 'title', badgeTooltip );
@@ -167,7 +168,10 @@ module.exports = ToolView.extend( {
 		this.model.set( 'articleStat', mw.msg( 'pagetriage-articleinfo-stat', stats.join( mw.msg( 'pagetriage-dot-separator' ) ) ) );
 
 		this.$tel.html( this.template( this.model.toJSON() ) );
-		const history = new ArticleInfoHistoryView( { eventBus: this.eventBus, model: this.model.revisions } );
+		const history = new ArticleInfoHistoryView( {
+			eventBus: this.eventBus,
+			model: this.model.revisions
+		} );
 		this.$tel.find( '#mwe-pt-info-history-container' ).append( history.render().$el );
 
 		// set the Learn More link URL

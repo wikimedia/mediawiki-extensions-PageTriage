@@ -18,7 +18,8 @@
 				<tool-minimize
 					@minimize="minimize"
 				></tool-minimize>
-				<!-- Individual toolbar icons go here. You can place Vue components in bewteen them. -->
+				<!-- Individual toolbar icons go here. You can place Vue components in bewteen
+				them. -->
 				<span ref="articleInfoTool" class="mwe-pt-hidden"></span>
 				<span ref="wikiLoveTool" class="mwe-pt-hidden"></span>
 				<span ref="markTool" class="mwe-pt-hidden"></span>
@@ -50,8 +51,9 @@
 
 <script>
 /**
- * Curation Toolbar container that supports Vue components and backbone views to enable incremental migration.
- * Designed to completely replace ToolbarView.js upon promotion to the default toolbar experience.
+ * Curation Toolbar container that supports Vue components and backbone views to enable incremental
+ * migration. Designed to completely replace ToolbarView.js upon promotion to the default toolbar
+ * experience.
  */
 
 const { Article, contentLanguageMessages } = require( 'ext.pageTriage.util' );
@@ -153,7 +155,8 @@ module.exports = {
 			mw.user.options.set( 'userjs-curationtoolbar', display );
 			new mw.Api().saveOption( 'userjs-curationtoolbar', display );
 		},
-		// records the starting position and enables dragging when the pointer is down on the toolbar
+		// records the starting position and enables dragging when the pointer is down on the
+		// toolbar
 		dragEnable: function ( event ) {
 			if ( event.which && event.which === 1 ) {
 				// starting pointer position
@@ -266,33 +269,54 @@ module.exports = {
 		document.addEventListener( 'pointerup', this.dragDisable );
 		// Update position on resize to keep the toolbar within the viewport
 		window.addEventListener( 'resize', this.resize );
-		// More verbose than the original loop, but it allows for individual migrations and allows for static module loading.
+		// More verbose than the original loop, but it allows for individual migrations and allows
+		// for static module loading.
 		if ( isFlyoutEnabled( 'articleInfo' ) ) {
 			require( '../../external/jquery.badge.js' );
 			const ArticleInfo = require( '../articleInfo.js' );
-			const articleInfo = new ArticleInfo( { eventBus: eventBus, model: this.article, moduleConfig: modules.articleInfo } );
+			const articleInfo = new ArticleInfo( {
+				eventBus: eventBus,
+				model: this.article,
+				moduleConfig: modules.articleInfo
+			} );
 			$( this.articleInfoTool ).before( articleInfo.place() );
 		}
 		if ( isFlyoutEnabled( 'wikiLove' ) ) {
 			const WikiLove = require( '../wikiLove.js' );
-			const wikiLove = new WikiLove( { eventBus: eventBus, model: this.article, moduleConfig: modules.wikiLove } );
+			const wikiLove = new WikiLove( {
+				eventBus: eventBus,
+				model: this.article,
+				moduleConfig: modules.wikiLove
+			} );
 			$( this.wikiLoveTool ).before( wikiLove.place() );
 		}
 		if ( isFlyoutEnabled( 'mark' ) ) {
 			const Mark = require( '../mark.js' );
-			const mark = new Mark( { eventBus: eventBus, model: this.article, moduleConfig: modules.mark } );
+			const mark = new Mark( {
+				eventBus: eventBus,
+				model: this.article,
+				moduleConfig: modules.mark
+			} );
 			$( this.markTool ).before( mark.place() );
 		}
 		// tags and deletion only available when enwiki features are enabled
 		if ( config.PageTriageEnableExtendedFeatures ) {
 			if ( isFlyoutEnabled( 'tags' ) ) {
 				const Tags = require( '../tags.js' );
-				const tags = new Tags( { eventBus: eventBus, model: this.article, moduleConfig: modules.tags } );
+				const tags = new Tags( {
+					eventBus: eventBus,
+					model: this.article,
+					moduleConfig: modules.tags
+				} );
 				$( this.tagsTool ).before( tags.place() );
 			}
 			if ( isFlyoutEnabled( 'delete' ) ) {
 				const Delete = require( '../delete.js' );
-				const deletion = new Delete( { eventBus: eventBus, model: this.article, moduleConfig: modules.delete } );
+				const deletion = new Delete( {
+					eventBus: eventBus,
+					model: this.article,
+					moduleConfig: modules.delete
+				} );
 				$( this.deleteTool ).before( deletion.place() );
 			}
 		}

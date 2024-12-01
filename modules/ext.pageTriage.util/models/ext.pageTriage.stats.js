@@ -45,7 +45,10 @@ const Stats = Backbone.Model.extend( {
 
 		const begin = moment.utc( dateStr );
 
-		const diffInDays = Math.round( ( now.getTime() - begin.valueOf() ) / ( 1000 * 60 * 60 * 24 ) );
+		const diffInDays = Math.round(
+			( now.getTime() - begin.valueOf() ) /
+			( 1000 * 60 * 60 * 24 )
+		);
 		if ( diffInDays ) {
 			return mw.msg( 'days', mw.language.convertNumber( diffInDays ) );
 		} else {

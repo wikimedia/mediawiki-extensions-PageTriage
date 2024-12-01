@@ -184,7 +184,10 @@ PageTriage is the best.
 		const applyTags = jest.spyOn( TagToolView.prototype, 'applyTags' ).mockImplementation( () => {
 		} );
 
-		const toolbar = new TagToolView( { tagsOptions: JSON.parse( JSON.stringify( tagsOptions ) ), model } );
+		const toolbar = new TagToolView( {
+			tagsOptions: JSON.parse( JSON.stringify( tagsOptions ) ),
+			model
+		} );
 
 		toolbar.selectedTag = {
 			all: tagsOptions.sources.tags
