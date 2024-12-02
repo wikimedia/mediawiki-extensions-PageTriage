@@ -59,10 +59,8 @@ class ArticleCompileSnippet extends ArticleCompile {
 		}
 
 		$text = trim( Sanitizer::stripAllTags(
-			MediaWikiServices::getInstance()->getMessageCache()->parse( $text, $title )->getText( [
-				'enableSectionEditLinks' => false,
-				'userLang' => $lang
-			] )
+			MediaWikiServices::getInstance()->getMessageCache()
+				->parseWithPostprocessing( $text, $title, true, false, $lang )->getContentHolderText()
 		) );
 		// strip out non-useful data for snippet
 		$text = str_replace( [ '{', '}', '[edit]' ], '', $text );
