@@ -3,7 +3,7 @@
 		<tool-icon
 			:title="$i18n( 'pagetriage-toolbar-minimize' ).text()"
 			:disabled="false"
-			file="icon_minimize.png"
+			file="minimize"
 			@click="$emit( 'minimize' )"
 		></tool-icon>
 	</div>

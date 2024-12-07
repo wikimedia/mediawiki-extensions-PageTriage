@@ -236,7 +236,11 @@
 				"jquery.ui",
 				"jquery.spinner",
 				"jquery.client",
-				"ext.pageTriage.tagData"
+				"ext.pageTriage.tagData",
+				"ext.pageTriage.icons",
+				"ext.pageTriage.icons.hover",
+				"ext.pageTriage.icons.disabled",
+				"ext.pageTriage.icons.active"
 			],
 			"styles": [
 				"external/jquery.badge.css",
@@ -661,6 +665,82 @@
 				"oojs-ui-core",
 				"oojs-ui-windows"
 			]
+		},
+		"ext.pageTriage.icons": {
+			"class": "MediaWiki\\ResourceLoader\\ImageModule",
+			"selectorWithoutVariant": ".mwe-pt-tool-icon-{name}",
+			"selectorWithVariant": ".mwe-pt-tool-{variant}.mwe-pt-tool-icon-{name}",
+			"variants": [],
+			"images": {
+				"close": "ext.pageTriage.toolbar/images/close.png",
+				"flyout-pokey": "ext.pageTriage.toolbar/images/flyout_pokey.png",
+				"flyout-pokey-flipped": "ext.pageTriage.toolbar/images/flyout_pokey_flipped.png",
+				"minimize-mini": "ext.pageTriage.toolbar/images/minimize.png",
+				"minimize2-mini": "ext.pageTriage.toolbar/images/minimize2.png",
+				"baby-pokey": "ext.pageTriage.toolbar/images/baby_pokey.png",
+				"info": "ext.pageTriage.toolbar/images/icons/normal/icon_info.png",
+				"mark-autopatrolled": "ext.pageTriage.toolbar/images/icons/normal/icon_mark_autopatrolled.png",
+				"mark-reviewed": "ext.pageTriage.toolbar/images/icons/normal/icon_mark_reviewed.png",
+				"minimize": "ext.pageTriage.toolbar/images/icons/normal/icon_minimize.png",
+				"skip": "ext.pageTriage.toolbar/images/icons/normal/icon_skip.png",
+				"tag": "ext.pageTriage.toolbar/images/icons/normal/icon_tag.png",
+				"trash": "ext.pageTriage.toolbar/images/icons/normal/icon_trash.png",
+				"wikilove": "ext.pageTriage.toolbar/images/icons/normal/icon_wikilove.png",
+				"mark-autopatrolled-special": "ext.pageTriage.toolbar/images/icons/special/icon_mark_autopatrolled.png",
+				"mark-reviewed-special": "ext.pageTriage.toolbar/images/icons/special/icon_mark_reviewed.png",
+				"trash-special": "ext.pageTriage.toolbar/images/icons/special/icon_trash_red.png",
+				"mark-autopatrolled-info": "ext.pageTriage.toolbar/images/pageInfo/icon_autopatrolled.png",
+				"mark-deletion-info": "ext.pageTriage.toolbar/images/pageInfo/icon_marked_for_deletion.png",
+				"not-reviewed-info": "ext.pageTriage.toolbar/images/pageInfo/icon_not_reviewed.png",
+				"reviewed-info": "ext.pageTriage.toolbar/images/pageInfo/icon_reviewed.png"
+			}
+		},
+		"ext.pageTriage.icons.hover": {
+			"class": "MediaWiki\\ResourceLoader\\ImageModule",
+			"selectorWithoutVariant": ".mwe-pt-tool-icon-{name}:hover",
+			"selectorWithVariant": ".mwe-pt-tool-{variant}.mwe-pt-tool-icon-{name}:hover",
+			"variants": [],
+			"images": {
+				"close": "ext.pageTriage.toolbar/images/close_hover.png",
+				"info": "ext.pageTriage.toolbar/images/icons/hover/icon_info.png",
+				"mark-autopatrolled": "ext.pageTriage.toolbar/images/icons/hover/icon_mark_autopatrolled.png",
+				"mark-reviewed": "ext.pageTriage.toolbar/images/icons/hover/icon_mark_reviewed.png",
+				"minimize": "ext.pageTriage.toolbar/images/icons/hover/icon_minimize.png",
+				"skip": "ext.pageTriage.toolbar/images/icons/hover/icon_skip.png",
+				"tag": "ext.pageTriage.toolbar/images/icons/hover/icon_tag.png",
+				"trash": "ext.pageTriage.toolbar/images/icons/hover/icon_trash.png",
+				"wikilove": "ext.pageTriage.toolbar/images/icons/hover/icon_wikilove.png"
+			}
+		},
+		"ext.pageTriage.icons.disabled": {
+			"class": "MediaWiki\\ResourceLoader\\ImageModule",
+			"selectorWithoutVariant": ".mwe-pt-tool-icon-{name}-disabled",
+			"selectorWithVariant": ".mwe-pt-tool-{variant}.mwe-pt-tool-icon-{name}-disabled",
+			"variants": [],
+			"images": {
+				"info": "ext.pageTriage.toolbar/images/icons/disabled/icon_info.png",
+				"mark-reviewed": "ext.pageTriage.toolbar/images/icons/disabled/icon_mark_reviewed.png",
+				"skip": "ext.pageTriage.toolbar/images/icons/disabled/icon_skip.png",
+				"tag": "ext.pageTriage.toolbar/images/icons/disabled/icon_tag.png",
+				"trash": "ext.pageTriage.toolbar/images/icons/disabled/icon_trash.png",
+				"wikilove": "ext.pageTriage.toolbar/images/icons/disabled/icon_wikilove.png"
+			}
+		},
+		"ext.pageTriage.icons.active": {
+			"class": "MediaWiki\\ResourceLoader\\ImageModule",
+			"selectorWithoutVariant": ".mwe-pt-tool-icon-{name}:active",
+			"selectorWithVariant": ".mwe-pt-tool-{variant}.mwe-pt-tool-icon-{name}:active",
+			"variants": [],
+			"images": {
+				"close": "ext.pageTriage.toolbar/images/icons/active/icon_close.png",
+				"info": "ext.pageTriage.toolbar/images/icons/active/icon_info.png",
+				"mark-reviewed": "ext.pageTriage.toolbar/images/icons/active/icon_mark_reviewed.png",
+				"mark-autopatrolled": "ext.pageTriage.toolbar/images/icons/active/icon_mark_autopatrolled.png",
+				"skip": "ext.pageTriage.toolbar/images/icons/active/icon_skip.png",
+				"tag": "ext.pageTriage.toolbar/images/icons/active/icon_tag.png",
+				"trash": "ext.pageTriage.toolbar/images/icons/active/icon_trash.png",
+				"wikilove": "ext.pageTriage.toolbar/images/icons/active/icon_wikilove.png"
+			}
 		}
 	},
 	"ResourceFileModulePaths": {

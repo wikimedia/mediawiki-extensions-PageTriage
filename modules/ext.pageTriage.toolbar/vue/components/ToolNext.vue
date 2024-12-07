@@ -5,7 +5,7 @@
 				:title="disabled ? $i18n( 'pagetriage-next-tooltip-disabled' ).text() :
 					$i18n( 'pagetriage-next-tooltip' ).text()"
 				:disabled="disabled"
-				file="icon_skip.png"
+				file="skip"
 			></tool-icon>
 		</a>
 	</div>

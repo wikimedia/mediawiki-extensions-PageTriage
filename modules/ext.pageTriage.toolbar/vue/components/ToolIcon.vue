@@ -2,16 +2,15 @@
 	<div
 		class="mwe-pt-tool-icon-container"
 		@click="click"
-		@mouseover="mouseover"
-		@mouseleave="mouseleave"
 	>
-		<img
-			:class="{ 'mwe-pt-tool-icon-disabled': disabled }"
+		<div
+			:class="disabled ? `mwe-pt-tool-icon-${file}-disabled mwe-pt-tool-icon-disabled` :
+				useSpecialIcon ? `mwe-pt-tool-icon-${file}-special` :
+				`mwe-pt-tool-icon-${file}`"
 			class="mwe-pt-tool-icon"
-			:src="src"
 			:title="title"
-			alt=""
 		>
+		</div>
 	</div>
 </template>
 
@@ -35,32 +34,18 @@ module.exports = {
 		file: {
 			type: String,
 			required: true
+		},
+		useSpecialIcon: {
+			type: Boolean,
+			required: false
 		}
 	},
 	emits: [ 'click' ],
-	data() {
-		return {
-			dir: 'normal'
-		};
-	},
-	computed: {
-		src: function () {
-			const path = `${ mw.config.get( 'wgExtensionAssetsPath' ) }/PageTriage/modules/ext.pageTriage.toolbar/images/icons`;
-			const dir = this.disabled ? 'disabled' : this.dir;
-			return `${ path }/${ dir }/${ this.file }`;
-		}
-	},
 	methods: {
 		click: function () {
 			if ( !this.disabled ) {
 				this.$emit( 'click' );
 			}
-		},
-		mouseover: function () {
-			this.dir = 'hover';
-		},
-		mouseleave: function () {
-			this.dir = 'normal';
 		}
 	}
 };
