@@ -143,7 +143,7 @@ module.exports = ToolView.extend( {
 		// add click event for each category
 		$( '#mwe-pt-categories' ).find( 'div' ).each( ( i, el ) => {
 			const cat = $( $( el ).html() ).attr( 'cat' );
-			$( this ).on( 'click',
+			$( el ).on( 'click',
 				() => {
 					$( el ).find( 'a' ).trigger( 'blur' );
 					that.displayTags( cat );
