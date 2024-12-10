@@ -180,7 +180,7 @@ module.exports = ToolView.extend( {
 
 		// add click event for each category
 		$( '#mwe-pt-delete-categories' ).find( 'div' ).each( ( i, el ) => {
-			const cat = $( $( el ).html() ).attr( 'cat' );
+			const cat = $( el ).find( '[cat]' ).attr( 'cat' );
 			$( el ).on( 'click', () => {
 				this.visibleParamsFormCount = 0;
 				this.refreshSubmitButton();
