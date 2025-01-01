@@ -7,5 +7,6 @@
 	"pagetriage-bytes": "$1 {{PLURAL:$1|ਬਾਈਟ|ਬਾਈਟਾਂ}}",
 	"pagetriage-filter-predicted-issues-vandalism": "ਭੰਨ-ਤੋੜ",
 	"pagetriage-triage": "ਪਰਖੋ",
+	"pagetriage-filter-blocked": "ਪਾਬੰਦੀਸ਼ੁਦਾ ਵਰਤੋਂਕਾਰ",
 	"pagetriage-filter-stat-predicted-issues-vandalism": "ਭੰਨ-ਤੋੜ"
 }
