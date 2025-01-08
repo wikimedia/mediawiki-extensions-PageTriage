@@ -30,7 +30,7 @@ describe( 'PageTriage Toolbar', () => {
 	it( 'should load', async () => {
 		await browser.reloadSession();
 		await LoginPage.loginAdmin();
-		Toolbar.open( articleName );
+		await Toolbar.open( articleName );
 		await browser.waitUntil( async () => await Toolbar.toolbarBody.waitForDisplayed() );
 
 		await expect( await Toolbar.toolbarBody ).toExist();
@@ -39,7 +39,7 @@ describe( 'PageTriage Toolbar', () => {
 	it( 'should allow user to add a maintainence tag to a page', async () => {
 		await browser.reloadSession();
 		await LoginPage.loginAdmin();
-		Toolbar.open( articleName );
+		await Toolbar.open( articleName );
 		await browser.waitUntil( async () => await Toolbar.toolbarBody.waitForDisplayed() );
 
 		await browser.waitUntil( async () => await Toolbar.tagToolIcon.waitForDisplayed() );
@@ -66,7 +66,7 @@ describe( 'PageTriage Toolbar', () => {
 	it( 'should allow user to add a maintainence tag to a page and send a note to user', async () => {
 		await browser.reloadSession();
 		await LoginPage.loginAdmin();
-		Toolbar.open( articleName );
+		await Toolbar.open( articleName );
 		await browser.waitUntil( async () => await Toolbar.toolbarBody.waitForDisplayed() );
 
 		await browser.waitUntil( async () => await Toolbar.tagToolIcon.waitForDisplayed() );
