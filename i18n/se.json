@@ -6,9 +6,11 @@
 		]
 	},
 	"pagetriage-categories": "$1 {{PLURAL:$1|kategoriija}}",
+	"pagetriage-no-categories": "Ii oktage kategoriija",
 	"pagetriage-filter-username": "Geavaheaddjinamma",
 	"pagetriage-filter-ns-all": "Buot",
 	"pagetriage-filter-stat-all": "Buot",
+	"pagetriage-filter-stat-no-categories": "Ii oktage kategoriija",
 	"pagetriage-filter-stat-namespace": "Nammagomuvuohta",
 	"pagetriage-button-add-parameters": "Lasit paramehteriid",
 	"pagetriage-button-send-a-note": "Sádde dieđu",
