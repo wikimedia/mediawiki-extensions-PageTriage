@@ -25,6 +25,8 @@
 	"pagetriage-info-help": "жардам",
 	"pagetriage-info-problem-no-categories": "Категориялар жок",
 	"pagetriage-toolbar-learn-more": "Толук маалымат »",
+	"pagetriage-mark-title": "Текшерилди деп белгилөө",
+	"pagetriage-mark-as-reviewed": "Текшерилди деп белгилөө",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|түзөтүү}}",
 	"pagetriage-toolbar-close": "Жабуу"
 }
