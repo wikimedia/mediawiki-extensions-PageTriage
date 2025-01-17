@@ -8,7 +8,7 @@ const Util = require( 'wdio-mediawiki/Util' );
 
 describe( 'Special:NewPagesFeed', () => {
 	it( 'is viewable', async () => {
-		NewPagesFeed.open();
+		await NewPagesFeed.open();
 		await browser.waitUntil( async () => await NewPagesFeed.listview.getText() !== 'Please wait...' );
 		await expect( await NewPagesFeed.listview ).toExist();
 	} );
@@ -30,7 +30,7 @@ describe( 'Special:NewPagesFeed', () => {
 		await browser.reloadSession();
 
 		// Special:NewPagesFeed
-		NewPagesFeed.open();
+		await NewPagesFeed.open();
 		await browser.waitUntil( async () => await NewPagesFeed.listview.getText() !== 'Please wait...' );
 
 		await expect( await NewPagesFeed.listview ).toExist();

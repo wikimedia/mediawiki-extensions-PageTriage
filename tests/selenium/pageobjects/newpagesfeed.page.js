@@ -8,8 +8,8 @@ class NewPagesFeed extends Page {
 		return $( '#mwe-pt-list' );
 	}
 
-	open() {
-		super.openTitle( 'Special:NewPagesFeed' );
+	async open() {
+		return super.openTitle( 'Special:NewPagesFeed' );
 	}
 
 	get articleRows() {

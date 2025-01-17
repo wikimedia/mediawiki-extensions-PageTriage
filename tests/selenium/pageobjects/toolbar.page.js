@@ -8,8 +8,8 @@ class PageTriageToolbar extends Page {
 		return $( '#mw-pagetriage-toolbar' );
 	}
 
-	open( page ) {
-		super.openTitle( page, { showcurationtoolbar: 1 } );
+	async open( page ) {
+		return super.openTitle( page, { showcurationtoolbar: 1 } );
 	}
 
 	get tagToolIcon() {
