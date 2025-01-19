@@ -38,6 +38,6 @@
 		"jest-environment-jsdom": "29.7.0",
 		"stylelint-config-wikimedia": "0.17.2",
 		"vue": "3.4.27",
-		"wdio-mediawiki": "2.5.0"
+		"wdio-mediawiki": "2.6.0"
 	}
 }
