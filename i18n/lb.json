@@ -16,7 +16,7 @@
 	"pagetriage-reviewed": "Nogekuckt",
 	"pagetriage-mark-as-reviewed-error": "Beim Markéieren vun der Säit als nogekuckt ass e Feeler geschitt: $1",
 	"pagetriage-hist": "Versiounen",
-	"pagetriage-bytes": "$1 {{PLURAL:$1|Byte|Byten}}",
+	"pagetriage-bytes": "$1 {{PLURAL:$1|Byte}}",
 	"pagetriage-edits": "$1 {{PLURAL:$1|Ännerung|Ännerungen}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|Kategorie|Kategorien}}",
 	"pagetriage-no-categories": "Keng Kategorien",
