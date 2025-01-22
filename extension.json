@@ -245,7 +245,7 @@
 			"styles": [
 				"external/jquery.badge.css",
 				"ext.pageTriage.css",
-				"ext.pageTriage.toolbar/ToolbarView.css",
+				"ext.pageTriage.toolbar/ToolbarView.less",
 				"ext.pageTriage.toolbar/ToolView.less",
 				"ext.pageTriage.toolbar/articleInfo.less",
 				"ext.pageTriage.toolbar/mark.less",

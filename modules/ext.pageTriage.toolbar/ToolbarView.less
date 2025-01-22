@@ -1,3 +1,4 @@
+@import 'mediawiki.skin.variables.less';
 /* stylesheet for the main toolbar view */
 
 #mwe-pt-toolbar {
@@ -73,4 +74,9 @@ p#mwe-pt-toolbar-vertical {
 /* Prevent notification badges from getting in the way of clicking on the toolbar icons. */
 .mwe-pt-toolbar-big .notification-badge {
 	pointer-events: none;
+}
+/* The previous implementation used jquery-ui 'ui-button-*' classes which contained a margin by default.
+This was added to have the Codex styles have roughly the same margin. Also see [[phab:T362827]] */
+#mwe-pt-toolbar .cdx-button {
+	margin: @spacing-25;
 }

@@ -176,9 +176,9 @@ module.exports = ToolView.extend( {
 		} );
 
 		// add click event for tag submission
-		$( '#mwe-pt-delete-submit-button' ).button( { disabled: true } )
+		$( '#mwe-pt-delete-submit-button' ).attr( 'disabled', true )
 			.on( 'click', () => {
-				$( '#mwe-pt-delete-submit-button' ).button( 'disable' );
+				$( '#mwe-pt-delete-submit-button' ).attr( 'disabled', true ); // disable button
 				$( '#mwe-pt-delete-submit' ).append( $.createSpinner( 'delete-spinner' ) ); // show spinner
 				that.submit();
 				return false;
@@ -329,7 +329,7 @@ module.exports = ToolView.extend( {
 
 		// unselect any previously selected tags and disable submit button
 		this.selectedTag = {};
-		$( '#mwe-pt-delete-submit-button' ).button( 'disable' );
+		$( '#mwe-pt-delete-submit-button' ).attr( 'disabled', true );
 
 		if ( this.deletionTagsOptions[ cat ].desc ) {
 			const tagDesc = '<div id="mwe-pt-delete-category-desc">' + mw.html.escape( this.deletionTagsOptions[ cat ].desc ) + '</div>';
@@ -430,9 +430,9 @@ module.exports = ToolView.extend( {
 		// Do not display the submit button until all visible paramsForms have
 		// had their "Add details" buttons clicked. T238025, T313108
 		if ( this.objectPropCount( this.selectedTag ) > 0 && this.visibleParamsFormCount === 0 ) {
-			$( '#mwe-pt-delete-submit-button' ).button( 'enable' );
+			$( '#mwe-pt-delete-submit-button' ).attr( 'disabled', false );
 		} else {
-			$( '#mwe-pt-delete-submit-button' ).button( 'disable' );
+			$( '#mwe-pt-delete-submit-button' ).attr( 'disabled', true );
 		}
 	},
 
@@ -536,7 +536,7 @@ module.exports = ToolView.extend( {
 			'button',
 			{
 				id: 'mwe-pt-delete-set-param-' + key,
-				class: 'mwe-pt-delete-set-param-button ui-button-red'
+				class: 'mwe-pt-delete-set-param-button cdx-button'
 			},
 			mw.msg( 'pagetriage-button-add-details' )
 		);
@@ -544,7 +544,7 @@ module.exports = ToolView.extend( {
 			'button',
 			{
 				id: 'mwe-pt-delete-cancel-param-' + key,
-				class: 'ui-button-red'
+				class: 'cdx-button cdx-button--action-destructive'
 			},
 			mw.msg( 'cancel' )
 		);
@@ -556,7 +556,7 @@ module.exports = ToolView.extend( {
 		$( '#mwe-pt-delete-params-form-' + key ).show();
 
 		// Add click event for the paramsForm "Add details" button
-		$( '#mwe-pt-delete-set-param-' + key ).button().on( 'click', () => {
+		$( '#mwe-pt-delete-set-param-' + key ).on( 'click', () => {
 			if ( that.setParams( key ) ) {
 				that.visibleParamsFormCount--;
 				that.refreshSubmitButton();
@@ -568,7 +568,7 @@ module.exports = ToolView.extend( {
 		} );
 
 		// Add click event for the paramsForm "Cancel" button
-		$( '#mwe-pt-delete-cancel-param-' + key ).button().on( 'click', () => {
+		$( '#mwe-pt-delete-cancel-param-' + key ).on( 'click', () => {
 			for ( const param in tag.params ) {
 				that.visibleParamsFormCount--;
 				that.refreshSubmitButton();
@@ -803,7 +803,7 @@ module.exports = ToolView.extend( {
 
 		$.removeSpinner( 'delete-spinner' );
 		// Re-enable the submit button (in case it is disabled)
-		$( '#mwe-pt-delete-submit-button' ).button( 'enable' );
+		$( '#mwe-pt-delete-submit-button' ).attr( 'disabled', false );
 		// Show error message to the user
 		// eslint-disable-next-line no-alert
 		alert( msg );

@@ -12,6 +12,6 @@
 <div id="mwe-pt-delete-bottom">
 	<div class="mwe-pt-tool-warning-notice"><%- warningNotice %></div>
 	<div id="mwe-pt-delete-submit">
-		<a href="#" id="mwe-pt-delete-submit-button" class="ui-button-green"><%- mw.msg( 'pagetriage-button-mark-for-deletion' ) %></a>
+		<button id="mwe-pt-delete-submit-button" class="cdx-button cdx-button--action-progressive"><%- mw.msg( 'pagetriage-button-mark-for-deletion' ) %></button>
 	</div>
 </div>
