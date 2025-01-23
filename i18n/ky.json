@@ -28,5 +28,6 @@
 	"pagetriage-mark-title": "Текшерилди деп белгилөө",
 	"pagetriage-mark-as-reviewed": "Текшерилди деп белгилөө",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|түзөтүү}}",
-	"pagetriage-toolbar-close": "Жабуу"
+	"pagetriage-toolbar-close": "Жабуу",
+	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Ыраазылык билдирүү}}}}"
 }
