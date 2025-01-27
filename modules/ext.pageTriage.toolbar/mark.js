@@ -191,9 +191,9 @@ module.exports = ToolView.extend( {
 		$.removeSpinner( 'mark-spinner' );
 
 		if ( action === 'sendnote' ) {
-			$( '#mwe-pt-send-message-button' ).button( 'disable' );
+			$( '#mwe-pt-send-message-button' ).attr( 'disabled', true );
 		} else {
-			$( '#mwe-pt-mark-as-' + action + '-button' ).button( 'enable' );
+			$( '#mwe-pt-mark-as-' + action + '-button' ).attr( 'disabled', false );
 		}
 
 		$( '#mwe-pt-review-note-input' ).val( '' );
@@ -209,10 +209,10 @@ module.exports = ToolView.extend( {
 	 */
 	showMarkError: function ( action, errorMsg ) {
 		if ( action === 'sendnote' ) {
-			$( '#mwe-pt-send-message-button' ).button( 'enable' );
+			$( '#mwe-pt-send-message-button' ).attr( 'disabled', false );
 		} else {
 			action = 'mark-as-' + action;
-			$( '#mwe-pt-' + action + '-button' ).button( 'enable' );
+			$( '#mwe-pt-' + action + '-button' ).attr( 'disabled', true );
 		}
 
 		// The following messages are used here:
@@ -286,9 +286,9 @@ module.exports = ToolView.extend( {
 				const recipient = $( '#mwe-pt-review-note-recipient' ).val();
 				note = $( '#mwe-pt-review-note-input' ).val().trim();
 				if ( note.length && recipient.length ) {
-					$( '#mwe-pt-send-message-button' ).button( 'enable' );
+					$( '#mwe-pt-send-message-button' ).attr( 'disabled', false );
 				} else {
-					$( '#mwe-pt-send-message-button' ).button( 'disable' );
+					$( '#mwe-pt-send-message-button' ).attr( 'disabled', true );
 				}
 			} );
 
@@ -314,18 +314,16 @@ module.exports = ToolView.extend( {
 
 		// initialize the buttons
 		$( '#mwe-pt-mark-as-' + status + '-button' )
-			.button( { icons: { secondary: 'ui-icon-triangle-1-e' } } )
 			.on( 'click', ( e ) => {
-				$( '#mwe-pt-mark-as-' + status + '-button' ).button( 'disable' );
+				$( '#mwe-pt-mark-as-' + status + '-button' ).attr( 'disabled', true );
 				$( '#mwe-pt-mark-as-' + status ).append( $.createSpinner( 'mark-spinner' ) ); // show spinner
 				that.submit( status );
 				e.stopPropagation();
 			} );
 
-		$( '#mwe-pt-send-message-button' )
-			.button( { disabled: true, icons: { secondary: 'ui-icon-triangle-1-e' } } )
+		$( '#mwe-pt-send-message-button' ).attr( 'disabled', true )
 			.on( 'click', ( e ) => {
-				$( '#mwe-pt-send-message-button' ).button( 'disable' );
+				$( '#mwe-pt-send-message-button' ).attr( 'disabled', true );
 				$( '#mwe-pt-send-message' ).append( $.createSpinner( 'mark-spinner' ) ); // show spinner
 				that.submitNote();
 				e.stopPropagation();

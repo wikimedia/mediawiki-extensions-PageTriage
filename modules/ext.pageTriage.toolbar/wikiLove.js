@@ -96,16 +96,15 @@ module.exports = ToolView.extend( {
 
 		$( '.mwe-pt-recipient-checkbox' ).on( 'click', () => {
 			if ( $( '.mwe-pt-recipient-checkbox:checked' ).length > 0 ) {
-				$( '#mwe-pt-wikilove-button' ).button( 'enable' );
+				$( '#mwe-pt-wikilove-button' ).attr( 'disabled', false );
 			} else {
-				$( '#mwe-pt-wikilove-button' ).button( 'disable' );
+				$( '#mwe-pt-wikilove-button' ).attr( 'disabled', true );
 			}
 		} );
 
 		// initialize the button
 		const that = this;
 		$( '#mwe-pt-wikilove-button' )
-			.button( { icons: { secondary: 'ui-icon-triangle-1-e' } } )
 			.on( 'click', ( e ) => {
 				e.preventDefault();
 				const recipients = $( '.mwe-pt-recipient-checkbox:checked' ).map( ( i, el ) => el.value ).get();
@@ -114,7 +113,7 @@ module.exports = ToolView.extend( {
 			} );
 
 		// Disable the submit button to start with, will be re-enabled once a checkbox is selected
-		$( '#mwe-pt-wikilove-button' ).button( 'disable' );
+		$( '#mwe-pt-wikilove-button' ).attr( 'disabled', true );
 
 	}
 

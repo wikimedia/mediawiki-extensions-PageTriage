@@ -18,7 +18,7 @@
 </div>
 <div id="mwe-pt-tags-bottom2">
 	<div id="mwe-pt-tag-submit">
-		<a href="#" id="mwe-pt-tag-submit-button" class="ui-button-green"><%- mw.msg( 'pagetriage-button-add-tag-number', 0 ) %></a>
+		<button id="mwe-pt-tag-submit-button" class="cdx-button"><%- mw.msg( 'pagetriage-button-add-tag-number', 0 ) %></button>
 	</div>
 	<div id="mwe-pt-checkbox-mark-reviewed-wrapper">
 		<input id="mwe-pt-checkbox-mark-reviewed" type="checkbox" value="mark reviewed"

@@ -153,10 +153,9 @@ module.exports = ToolView.extend( {
 		} );
 
 		// add click event for tag submission
-		$( '#mwe-pt-tag-submit-button' )
-			.button( { disabled: true } )
+		$( '#mwe-pt-tag-submit-button' ).attr( 'disabled', true )
 			.on( 'click', () => {
-				$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
+				$( '#mwe-pt-tag-submit-button' ).attr( 'disabled', true );
 				$( '#mwe-pt-tag-submit' ).append( $.createSpinner( 'tag-spinner' ) ); // show spinner
 				that.submit();
 				return false;
@@ -334,20 +333,20 @@ module.exports = ToolView.extend( {
 
 		// activate or deactivate the submit button and associated parts
 		if ( this.selectedTagCount > 0 ) {
-			$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
+			$( '#mwe-pt-tag-submit-button' ).attr( 'disabled', false );
 			$( '#mwe-pt-checkbox-mark-reviewed-wrapper' ).show();
 			if ( mw.config.get( 'wgUserName' ) !== this.model.get( 'user_name' ) && !this.model.get( 'creator_hidden' ) ) {
 				$( '#mwe-pt-tag-note' ).show();
 			}
 		} else {
 			$( '#mwe-pt-tag-total-count' ).empty();
-			$( '#mwe-pt-tag-submit-button' ).button( 'disable' );
+			$( '#mwe-pt-tag-submit-button' ).attr( 'disabled', true );
 			$( '#mwe-pt-checkbox-mark-reviewed-wrapper' ).hide();
 			$( '#mwe-pt-tag-note' ).hide();
 		}
 
 		// update the number in the submit button
-		$( '#mwe-pt-tag-submit-button .ui-button-text' ).text( mw.msg( 'pagetriage-button-add-tag-number', this.selectedTagCount ) );
+		$( '#mwe-pt-tag-submit-button' ).text( mw.msg( 'pagetriage-button-add-tag-number', this.selectedTagCount ) );
 	},
 
 	/**
@@ -428,12 +427,12 @@ module.exports = ToolView.extend( {
 
 		let buttons = mw.html.element(
 			'button',
-			{ id: 'mwe-pt-tag-set-param-' + key, class: 'mwe-pt-tag-set-param-button ui-button-green' },
+			{ id: 'mwe-pt-tag-set-param-' + key, class: 'mwe-pt-tag-set-param-button cdx-button' },
 			mw.msg( 'pagetriage-button-add-details' )
 		);
 		buttons += mw.html.element(
 			'button',
-			{ id: 'mwe-pt-tag-cancel-param-' + key, class: 'ui-button-red' },
+			{ id: 'mwe-pt-tag-cancel-param-' + key, class: 'cdx-button cdx-button--action-destructive' },
 			mw.msg( 'cancel' )
 		);
 		html += '<div class="mwe-pt-tag-params-form-buttons">' + buttons + '</div>';
@@ -446,7 +445,7 @@ module.exports = ToolView.extend( {
 
 		const that = this;
 		// Add click even for the Set Parameters button
-		$( '#mwe-pt-tag-set-param-' + key ).button().on( 'click', () => {
+		$( '#mwe-pt-tag-set-param-' + key ).on( 'click', () => {
 			// When setting parameters, we need to make sure that all tags that are duplicated
 			// across categories are updated to reflect the param changes made to the tag in
 			// the current category. For most tags that are not in the all category, we can find
@@ -466,7 +465,7 @@ module.exports = ToolView.extend( {
 		} );
 
 		// Add click even for the Cancel button
-		$( '#mwe-pt-tag-cancel-param-' + key ).button().on( 'click', () => {
+		$( '#mwe-pt-tag-cancel-param-' + key ).on( 'click', () => {
 			let destCat;
 
 			// Hide the form and show the link to reopen it
@@ -673,7 +672,7 @@ module.exports = ToolView.extend( {
 				// eslint-disable-next-line no-alert
 				if ( !confirm( mw.msg( 'pagetriage-add-tag-confirmation', this.selectedTagCount ) ) ) {
 					$.removeSpinner( 'tag-spinner' );
-					$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
+					$( '#mwe-pt-tag-submit-button' ).attr( 'disabled', false );
 					return;
 				}
 			}
@@ -831,7 +830,7 @@ module.exports = ToolView.extend( {
 
 		$.removeSpinner( 'tag-spinner' );
 		// Re-enable the submit button (in case it is disabled)
-		$( '#mwe-pt-tag-submit-button' ).button( 'enable' );
+		$( '#mwe-pt-tag-submit-button' ).attr( 'disabled', false );
 		// Show error message to the user
 		// eslint-disable-next-line no-alert
 		alert( msg );

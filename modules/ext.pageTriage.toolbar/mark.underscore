@@ -4,7 +4,7 @@
 	</div>
 	<div id="mwe-pt-mark-as-<%- status %>">
 		<button id='mwe-pt-mark-as-<%- status %>-button'
-			class="<%- (status == "reviewed") ? "ui-button-green" : "ui-button-red" %>">
+			class="cdx-button <%- (status == "reviewed") ? "cdx-button--action-progressive" : "cdx-button--action-destructive" %>">
 			<%- mw.msg( "pagetriage-mark-as-" + status ) %>
 		</button>
 	</div>
@@ -25,7 +25,9 @@
 		</div>
 		<textarea id="mwe-pt-review-note-input" placeholder="<%- mw.msg( notePlaceholder, noteTarget ) %>"></textarea>
 		<div id="mwe-pt-send-message">
-			<button id="mwe-pt-send-message-button" class="ui-button-white"><%- mw.msg( "pagetriage-button-send-a-note" ) %></button>
+			<button id="mwe-pt-send-message-button" class="cdx-button">
+				<%- mw.msg( "pagetriage-button-send-a-note" ) %>
+			</button>
 		</div>
 	</div>
 </div>
