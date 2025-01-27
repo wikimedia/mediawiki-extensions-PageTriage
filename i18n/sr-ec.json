@@ -300,6 +300,8 @@
 	"log-name-pagetriage-copyvio": "Дневник могућег кршења ауторских права",
 	"log-description-pagetriage-copyvio": "Ово је дневник догађаја примљеним путем API-ја PageTriage кршење ауторских права.",
 	"logentry-pagetriage-copyvio-insert": "$1 је {{GENDER:$2|означио|означила}} измену $4 на $3 као могуће кршење ауторских права",
+	"logentry-pagetriage-curation-enqueue": "$1 је {{GENDER:$2|додао|додала}} $3 у фид „Нове странице”",
+	"log-action-filter-pagetriage-curation": "Предузета радња",
 	"log-action-filter-pagetriage-curation-review": "Прегледање",
 	"log-action-filter-pagetriage-curation-tag": "Означавање",
 	"pagetriage-tags-edit-summary": "Додате ознаке на страници коришћењем алатке $1 ($2)",
