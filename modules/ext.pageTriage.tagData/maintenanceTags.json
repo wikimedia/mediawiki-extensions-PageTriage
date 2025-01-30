@@ -57,6 +57,28 @@
 					"multiple": true
 				},
 
+				"merge": {
+					"label": "Merge",
+					"tag": "merge",
+					"desc": "Merge this page into a different page",
+					"params": {
+						"1": {
+							"label": "Article to merge this article to:",
+							"input": "required",
+							"type": "text",
+							"value": ""
+						},
+						"date": {
+							"label": "Date:",
+							"input": "automated",
+							"type": "hidden",
+							"value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}"
+						}
+					},
+					"position": "top",
+					"multiple": true
+				},
+
 				"translation": {
 					"label": "Needs translation",
 					"tag": "not English",
