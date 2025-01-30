@@ -169,7 +169,10 @@ class ApiPageTriageTagging extends ApiBase {
 				ParamValidator::PARAM_REQUIRED => false,
 				ParamValidator::PARAM_TYPE => 'boolean'
 			],
-			'note' => null,
+			'note' => [
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_DEFAULT => '',
+			],
 			'taglist' => [
 				ParamValidator::PARAM_REQUIRED => true,
 				ParamValidator::PARAM_ISMULTI => true
