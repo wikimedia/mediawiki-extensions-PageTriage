@@ -283,7 +283,7 @@
 	"group-copyviobot": "Боти, що працюють з копівіо",
 	"group-copyviobot-member": "{{GENDER:$1|бот, що працює з копівіо}}",
 	"tag-pagetriage": "Перевірка сторінок",
-	"tag-pagetriage-description": "Для редагувань, здійснених через [[mw:Special:MyLanguage/Extension:PageTriage|розширення PageTriage]]",
+	"tag-pagetriage-description": "Для редагувань, здійснених через [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:PageTriage розширення PageTriage]",
 	"apihelp-pagetriageaction-summary": "Позначити статтю як перевірену або неперевірену.",
 	"apihelp-pagetriageaction-param-pageid": "Ідентифікатор сторінки, на якій виконується дія.",
 	"apihelp-pagetriageaction-param-reviewed": "Чи має бути відмічена сторінка як перевірена",
