@@ -70,6 +70,8 @@ module.exports = {
 					if ( settings.applied.nppFilterKeyword ) {
 						this.addTop( settings.applied.nppFilter,
 							settings.applied.nppFilterUser, settings.applied.nppFilterKeyword );
+					} else {
+						this.addTop( settings.applied.nppFilter, settings.applied.nppFilterUser );
 					}
 				}
 				this.addIf( settings.applied.nppIncludeReviewed, 'reviewed', this.msgObj.state );
@@ -86,6 +88,9 @@ module.exports = {
 					if ( settings.applied.afcFilterKeyword ) {
 						this.addTop( settings.applied.afcFilter,
 							settings.applied.afcFilterUser, settings.applied.afcFilterKeyword );
+					} else {
+						this.addTop( settings.applied.afcFilter,
+							settings.applied.afcFilterUser );
 					}
 				}
 				this.addPredictedClass( settings.applied.afcPredictedRating );
