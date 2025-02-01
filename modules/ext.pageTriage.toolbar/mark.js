@@ -212,7 +212,7 @@ module.exports = ToolView.extend( {
 			$( '#mwe-pt-send-message-button' ).attr( 'disabled', false );
 		} else {
 			action = 'mark-as-' + action;
-			$( '#mwe-pt-' + action + '-button' ).attr( 'disabled', true );
+			$( '#mwe-pt-' + action + '-button' ).attr( 'disabled', false );
 		}
 
 		// The following messages are used here:
