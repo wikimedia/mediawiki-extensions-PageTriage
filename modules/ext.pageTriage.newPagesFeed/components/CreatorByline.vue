@@ -40,10 +40,14 @@ module.exports = {
 		creatorUserId: { type: Number, required: true },
 		creatorAutoConfirmed: { type: Boolean, required: true },
 		creatorUserPageExists: { type: Boolean, required: true },
-		creatorTalkPageExists: { type: Boolean, required: true }
+		creatorTalkPageExists: { type: Boolean, required: true },
+		creatorIsTempAccount: { type: Boolean, required: false }
 	},
 	computed: {
 		userPageClass: function () {
+			if ( this.creatorIsTempAccount ) {
+				return 'mw-tempuserlink';
+			}
 			return this.creatorUserPageExists ? '' : redLink;
 		},
 		userPageUrl: function () {
