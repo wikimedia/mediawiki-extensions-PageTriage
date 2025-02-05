@@ -6,6 +6,7 @@ use MediaWiki\Api\ApiUsageException;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Content\TextContent;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
+use MediaWiki\Request\FauxRequest;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\Utils\MWTimestamp;
@@ -408,6 +409,32 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$list = $this->getPageTriageList( $apiParams );
 		$this->assertArrayHasKey( 'title', $list[0] );
 		$this->assertSame( $newestSubmitted[ 'title' ]->getPrefixedText(), $list[0][ 'title' ] );
+	}
+
+	public function testSubmissionWithNonTempUser() {
+		$page = $this->insertPage( 'Page title', 'page text', $this->draftNsId );
+
+		$apiParams = [ 'dir' => 'oldestfirst' ];
+		$list = $this->getPageTriageList( $apiParams );
+
+		$this->assertArrayHasKey( 'title', $list[0] );
+		$this->assertSame( $page[ 'title' ]->getPrefixedText(), $list[0][ 'title' ] );
+		$this->assertSame( false, $list[0][ 'creator_is_temp_account' ] );
+	}
+
+	public function testSubmissionWithTempUser() {
+		$tempUser = $this->getServiceContainer()
+			->getTempUserCreator()
+			->create( null, new FauxRequest() )
+			->getUser();
+		$page = $this->insertPage( 'Page title', 'page text', $this->draftNsId, $tempUser );
+
+		$apiParams = [ 'dir' => 'oldestfirst' ];
+		$list = $this->getPageTriageList( $apiParams );
+
+		$this->assertArrayHasKey( 'title', $list[0] );
+		$this->assertSame( $page[ 'title' ]->getPrefixedText(), $list[0][ 'title' ] );
+		$this->assertSame( true, $list[0][ 'creator_is_temp_account' ] );
 	}
 
 	public function testQueryOres() {

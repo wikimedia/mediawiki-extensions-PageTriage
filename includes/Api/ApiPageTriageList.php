@@ -111,6 +111,7 @@ class ApiPageTriageList extends ApiBase {
 				if ( $metaData[$page]['user_name'] ) {
 					// Page creator
 					$user = $this->userFactory->newFromName( $metaData[$page]['user_name'] );
+					$metaData[$page]['creator_is_temp_account'] = $user->isTemp();
 					if ( $user && $user->isHidden() ) {
 						$metaData[$page]['user_name'] = null;
 						$metaData[$page]['creator_hidden'] = true;
