@@ -3,12 +3,13 @@
 		"authors": [
 			"Karthi.dr",
 			"Nilesh shukla",
-			"Saurmandal"
+			"Saurmandal",
+			"Bunnypranav"
 		]
 	},
 	"pagetriage-filter-date-range-heading": "तिथि सीमा:",
 	"pagetriage-filter-date-range-to": "से",
-	"pagetriage-filter-autopatrolled-edits": "स्वतः परीक्षित सदस्यों द्वारा बनाए गए थे",
+	"pagetriage-filter-autopatrolled-edits": "स्वतः परीक्षित सदस्य",
 	"pagetriage-filter-stat-date_range": "तिथि सीमा",
 	"pagetriage-filter-stat-autopatrolled": "स्वतः परीक्षित सदस्यों द्वारा",
 	"pagetriage-note-autopatrolled": "इस पृष्ठ को स्वतः परीक्षित कर दिया गया है।",
