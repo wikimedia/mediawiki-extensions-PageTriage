@@ -262,6 +262,24 @@
 					"tag": "speedy deletion-technical"
 				},
 
+				"dbg6Copypaste": {
+					"anchor": "Copy paste move",
+					"tag": "db-copypaste",
+					"code": "G6",
+					"desc": "Cut-and-paste page moves that need to be temporarily deleted to make room for a clean page move. (G6)",
+					"label": "Housekeeping and non-controversial cleanup",
+					"params": {
+						"1": {
+							"input": "optional",
+							"label": "The page from where the content was copied.",
+							"type": "text",
+							"value": ""
+						}
+					},
+					"talkpagenotiftopictitle": "pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title",
+					"talkpagenotiftpl": "Db-copypaste-notice-NPF"
+				},
+
 				"dbg7": {
 					"label": "Author requests deletion",
 					"tag": "speedy deletion-author request",
