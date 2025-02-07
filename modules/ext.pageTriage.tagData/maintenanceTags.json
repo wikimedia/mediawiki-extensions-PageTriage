@@ -79,10 +79,10 @@
 					"multiple": true
 				},
 
-				"translation": {
-					"label": "Needs translation",
-					"tag": "not English",
-					"desc": "This page is written in a language other than English and needs translation.",
+				"oneother": {
+					"label": "One other topic",
+					"tag": "one other topic",
+					"desc": "This disambiguation page contains the primary topic and one other topic for the ambiguous title.",
 					"params": {
 						"date": {
 							"label": "Date:",
@@ -118,6 +118,22 @@
 					"params": { },
 					"position": "top",
 					"multiple": false
+				},
+
+				"translation": {
+					"label": "Needs translation",
+					"tag": "not English",
+					"desc": "This page is written in a language other than English and needs translation.",
+					"params": {
+						"date": {
+							"label": "Date:",
+							"input": "automated",
+							"type": "hidden",
+							"value": "{{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}"
+						}
+					},
+					"position": "top",
+					"multiple": true
 				}
 			}
 		},
