@@ -3,6 +3,7 @@
 		"authors": [
 			"Alshamiri1",
 			"Ciphers",
+			"Dyolf77 (WMF)",
 			"Fitoschido",
 			"Meno25",
 			"Mr. Ibrahem",
@@ -247,7 +248,7 @@
 	"pagetriage-mark-as-reviewed": "التعليم كمراجعة",
 	"pagetriage-mark-as-unreviewed": "التعليم كغير مراجعة",
 	"pagetriage-mark-as-reviewed-helptext": "علم هذه الصفحة كمراجعة إذا كنت قد انتهيت من فحصها.",
-	"pagetriage-mark-as-unreviewed-helptext": "علم هذه الصفحة كغير مراجعةإذا كنت تعتقد أنها بحاجة إلى مزيد من التحقق.",
+	"pagetriage-mark-as-unreviewed-helptext": "علّم هذه الصفحة كغير مراجعة إذا كنت تعتقد أنها بحاجة إلى مزيد من التحقق.",
 	"pagetriage-wikilove-helptext": "حدد أسماء المحررين الذين ترغب في شكرهم.",
 	"pagetriage-wikilove-page-creator": "منشئ الصفحة",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|تعديل}}",
