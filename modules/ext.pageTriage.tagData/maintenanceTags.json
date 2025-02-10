@@ -2225,7 +2225,7 @@
 				"R-to-disambiguation-page": {
 					"label": "{{R to disambiguation page}}",
 					"tag": "R to disambiguation page",
-					"desc": "redirect to a disambiguation page",
+					"desc": "redirect to a disambiguation page. This template should only appear on a redirect page that has \"(disambiguation)\" at the end of its title; otherwise, use R from ambiguous term.",
 					"position": "redirectTag",
 					"multiple": true
 				},

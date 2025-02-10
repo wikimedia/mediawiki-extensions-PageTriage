@@ -263,11 +263,11 @@
 				},
 
 				"dbg6Copypaste": {
+					"label": "Cut-and-paste page move",
 					"anchor": "Copy paste move",
 					"tag": "db-copypaste",
 					"code": "G6",
 					"desc": "Cut-and-paste page moves that need to be temporarily deleted to make room for a clean page move. (G6)",
-					"label": "Housekeeping and non-controversial cleanup",
 					"params": {
 						"1": {
 							"input": "optional",
