@@ -3,15 +3,25 @@
 		"authors": [
 			"Karthi.dr",
 			"Nilesh shukla",
-			"Saurmandal"
+			"Saurmandal",
+			"Bunnypranav"
 		]
 	},
+	"newpagesfeed": "नए पृष्ठ फ़ीड",
+	"pagetriage-desc": "नए पृष्ठों की समीक्षा और अनुमोदन की सुविधा प्रदान करता है",
+	"pagetriage-please-wait": "कृपया प्रतीक्षा करें...",
+	"pagetriage-api-invalidid": "आपके द्वारा दी गई आईडी ($1) मान्य नहीं है।",
+	"pagetriage-self-review-error": "आप अपने द्वारा बनाए गए पृष्ठों की समीक्षा नहीं कर सकते।",
 	"pagetriage-filter-date-range-heading": "तिथि सीमा:",
 	"pagetriage-filter-date-range-to": "से",
 	"pagetriage-filter-autopatrolled-edits": "स्वतः परीक्षित सदस्यों द्वारा बनाए गए थे",
+	"pagetriage-filter-recreated": "पहले हटा दिए गए थे",
+	"pagetriage-filter-all": "सभी दिखाएँ",
+	"pagetriage-filter-ns-all": "सभी",
 	"pagetriage-filter-stat-date_range": "तिथि सीमा",
 	"pagetriage-filter-stat-autopatrolled": "स्वतः परीक्षित सदस्यों द्वारा",
 	"pagetriage-note-autopatrolled": "इस पृष्ठ को स्वतः परीक्षित कर दिया गया है।",
+	"pagetriage-button-send-a-note": "संदेश भेजें",
 	"pagetriage-tags-param-free-yes-label": "हाँ",
 	"pagetriage-tags-param-free-no-label": "नहीं",
 	"pagetriage-enqueue-title": "नए पृष्ठ फ़ीड में जोड़ें",
