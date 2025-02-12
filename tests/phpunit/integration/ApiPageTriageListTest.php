@@ -8,6 +8,7 @@ use MediaWiki\Content\TextContent;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Tests\User\TempUser\TempUserTestTrait;
 use MediaWiki\Title\Title;
 use MediaWiki\Utils\MWTimestamp;
 use MockHttpTrait;
@@ -25,6 +26,7 @@ use MockHttpTrait;
 class ApiPageTriageListTest extends PageTriageTestCase {
 
 	use MockHttpTrait;
+	use TempUserTestTrait;
 
 	/** @var int */
 	protected $draftNsId = 150;
@@ -423,6 +425,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	}
 
 	public function testSubmissionWithTempUser() {
+		$this->enableAutoCreateTempUser();
 		$tempUser = $this->getServiceContainer()
 			->getTempUserCreator()
 			->create( null, new FauxRequest() )
