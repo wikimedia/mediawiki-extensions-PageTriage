@@ -11,6 +11,7 @@
 		:class="userPageClass">
 		{{ creatorName }}
 	</a>
+	<a v-if="creatorIsTempAccount" class="ext-page-triage-tempaccount-show-ip-link cdx-link"></a>
 	(<a
 		:href="talkPageUrl"
 		class="cdx-link"

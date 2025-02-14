@@ -123,7 +123,12 @@
 		}
 	},
 	"SpecialPages": {
-		"NewPagesFeed": "MediaWiki\\Extension\\PageTriage\\SpecialNewPagesFeed"
+		"NewPagesFeed": {
+			"class": "MediaWiki\\Extension\\PageTriage\\SpecialNewPagesFeed",
+			"services": [
+				"UserOptionsLookup"
+			]
+		}
 	},
 	"MessagesDirs": {
 		"PageTriage": [
@@ -189,6 +194,19 @@
 				"pinia",
 				"ext.pageTriage.external"
 			]
+		},
+		"ext.pageTriage.showIp": {
+			"localBasePath": "modules/ext.pageTriage.showIp",
+			"remoteExtPath": "PageTriage/modules/ext.pageTriage.showIp",
+			"packageFiles": [
+				"main.js",
+				"showIp.js"
+			],
+			"dependencies": [
+				"mediawiki.api",
+				"mediawiki.jqueryMsg"
+			],
+			"messages": [ "pagetriage-new-page-feed-show-ip", "pagetriage-new-page-feed-show-ip-not-found" ]
 		},
 		"ext.pageTriage.toolbar": {
 			"packageFiles": [

@@ -6,7 +6,11 @@ use Exception;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Html\Html;
 use MediaWiki\Html\TemplateParser;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Output\OutputPage;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\User\Options\UserOptionsLookup;
 
 /**
  * This file defines the SpecialNewPagesFeed class which handles the functionality for the
@@ -17,14 +21,16 @@ use MediaWiki\SpecialPage\SpecialPage;
  * @author Ryan Kaldari
  */
 class SpecialNewPagesFeed extends SpecialPage {
+	private UserOptionsLookup $userOptionsLookup;
 
 	/**
 	 * Initialize the special page.
 	 *
 	 * @throws Exception
 	 */
-	public function __construct() {
+	public function __construct( UserOptionsLookup $userOptionsLookup ) {
 		parent::__construct( 'NewPagesFeed' );
+		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**
@@ -81,6 +87,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 		);
 		// Output the HTML for the triage interface
 		$out->addHTML( $this->getListViewHtml() );
+		$this->maybeAddShowIpModule( $out );
 	}
 
 	/**
@@ -99,6 +106,37 @@ class SpecialNewPagesFeed extends SpecialPage {
 				'pagetriage-js-required' => $this->msg( 'pagetriage-js-required' ),
 			]
 		);
+	}
+
+	/**
+	 * @param OutputPage $out
+	 * @return void
+	 */
+	private function maybeAddShowIpModule( OutputPage $out ): void {
+		if ( !ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' ) ) {
+			return;
+		}
+		if ( !MediaWikiServices::getInstance()->getTempUserConfig()->isKnown() ) {
+			return;
+		} else {
+			$authority = $out->getAuthority();
+			// If the user isn't authorized to view temporary account IP data without having to accept the
+			// agreement, ensure they have relevant rights and have accepted the agreement.
+			if ( !$authority->isAllowed( 'checkuser-temporary-account-no-preference' ) ) {
+				if ( !$authority->isAllowed( 'checkuser-temporary-account' ) ) {
+					return;
+				}
+				if ( !$this->userOptionsLookup->getOption( $authority->getUser(),
+					'checkuser-temporary-account-enable' ) ) {
+					return;
+				}
+			}
+			$block = $authority->getBlock();
+			if ( $block !== null && $block->isSitewide() ) {
+				return;
+			}
+		}
+		$out->addModules( [ 'ext.pageTriage.showIp' ] );
 	}
 
 	/**
