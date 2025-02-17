@@ -14,7 +14,9 @@ use MediaWiki\Page\RedirectLookup;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFormatter;
-use MediaWiki\User\UserFactory;
+use MediaWiki\User\TempUser\TempUserDetailsLookup;
+use MediaWiki\User\User;
+use MediaWiki\User\UserArray;
 use ORES\Services\ORESServices;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
@@ -30,23 +32,23 @@ use Wikimedia\Rdbms\LikeValue;
  */
 class ApiPageTriageList extends ApiBase {
 
-	private UserFactory $userFactory;
 	private RedirectLookup $redirectLookup;
 	private TitleFormatter $titleFormatter;
 	private LinksMigration $linksMigration;
+	private TempUserDetailsLookup $tempUserDetailsLookup;
 
 	public function __construct(
 		ApiMain $query,
 		string $moduleName,
-		UserFactory $userFactory,
 		RedirectLookup $redirectLookup,
 		TitleFormatter $titleFormatter,
-		LinksMigration $linksMigration
+		LinksMigration $linksMigration,
+		TempUserDetailsLookup $tempUserDetailsLookup
 	) {
-		$this->userFactory = $userFactory;
 		$this->linksMigration = $linksMigration;
 		$this->redirectLookup = $redirectLookup;
 		$this->titleFormatter = $titleFormatter;
+		$this->tempUserDetailsLookup = $tempUserDetailsLookup;
 		parent::__construct( $query, $moduleName );
 	}
 
@@ -93,6 +95,8 @@ class ApiPageTriageList extends ApiBase {
 				$oresMetadata = OresMetadata::newFromGlobalState( $this->getContext(), $pages );
 			}
 
+			$creatorsByName = $this->preloadCreators( $metaData );
+
 			// Sort data according to page order returned by our query. Also convert it to a
 			// slightly different format that's more Backbone-friendly.
 			foreach ( $pages as $page ) {
@@ -108,10 +112,21 @@ class ApiPageTriageList extends ApiBase {
 					$metaData[$page]['creation_date']
 				);
 
-				if ( $metaData[$page]['user_name'] ) {
+				$creatorName = $metaData[$page]['user_name'];
+				if ( $creatorName ) {
 					// Page creator
-					$user = $this->userFactory->newFromName( $metaData[$page]['user_name'] );
-					$metaData[$page]['creator_is_temp_account'] = $user && $user->isTemp();
+					$user = $creatorsByName[$creatorName] ?? null;
+
+					if ( $user && $user->isTemp() ) {
+						$metaData[$page]['creator_is_temp_account'] = true;
+						$metaData[$page]['creator_is_expired_temp_account'] = $this->tempUserDetailsLookup->isExpired(
+							$user
+						);
+					} else {
+						$metaData[$page]['creator_is_temp_account'] = false;
+						$metaData[$page]['creator_is_expired_temp_account'] = false;
+					}
+
 					if ( $user && $user->isHidden() ) {
 						$metaData[$page]['user_name'] = null;
 						$metaData[$page]['creator_hidden'] = true;
@@ -178,6 +193,34 @@ class ApiPageTriageList extends ApiBase {
 		// Output the results
 		$result['pages'] = $sortedMetaData;
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+	}
+
+	/**
+	 * Preload user data for page creators.
+	 * @param array $metaData Combined metadata returned by ArticleMetadata::getMetadata().
+	 * @return User[] Map of User objects keyed by user name.
+	 */
+	private function preloadCreators( array $metaData ): array {
+		$creatorNames = [];
+
+		foreach ( $metaData as $data ) {
+			if ( $data['user_name'] ) {
+				$creatorNames[] = $data['user_name'];
+			}
+		}
+
+		$creatorsByName = array_fill_keys( $creatorNames, null );
+
+		$users = UserArray::newFromNames( $creatorNames );
+
+		foreach ( $users as $user ) {
+			$creatorsByName[$user->getName()] = $user;
+		}
+
+		// Preload expiration status for temporary accounts in this list (T358469).
+		$this->tempUserDetailsLookup->preloadExpirationStatus( $users );
+
+		return $creatorsByName;
 	}
 
 	/**

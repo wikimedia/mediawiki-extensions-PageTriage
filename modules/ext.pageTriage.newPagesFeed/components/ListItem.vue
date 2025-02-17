@@ -119,6 +119,7 @@
 								:creator-user-page-exists="creatorUserPageExists"
 								:creator-talk-page-exists="creatorTalkPageExists"
 								:creator-is-temp-account="creatorIsTempAccount"
+								:creator-is-expired-temp-account="creatorIsExpiredTempAccount"
 							></creator-byline>
 							<span v-if="creatorUserId > 0">
 								{{ $i18n( 'pagetriage-dot-separator' ).text() }}
@@ -307,7 +308,8 @@ module.exports = {
 		oresDraftQuality: { type: String, default: undefined },
 		// optional toolbar feature flag
 		pageTriageUi: { type: String, default: null },
-		creatorIsTempAccount: { type: Boolean, default: false }
+		creatorIsTempAccount: { type: Boolean, default: false },
+		creatorIsExpiredTempAccount: { type: Boolean, default: false }
 	},
 	data: function () {
 		return {

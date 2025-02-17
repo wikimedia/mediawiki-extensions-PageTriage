@@ -6,6 +6,7 @@
 		{{ $i18n( 'pagetriage-byline-heading', creatorName ).text() }}
 	</span>
 	<a
+		v-tooltip="userPageTooltip"
 		:href="userPageUrl"
 		class="cdx-link"
 		:class="userPageClass">
@@ -28,6 +29,7 @@
 /**
  * Byline for list item creator
  */
+const { CdxTooltip } = require( '@wikimedia/codex' );
 
 // see: https://doc.wikimedia.org/codex/latest/components/mixins/link.html
 const skin = mw.config.get( 'skin' );
@@ -36,20 +38,30 @@ const params = { action: 'edit', redlink: 1 };
 // @vue/component
 module.exports = {
 	name: 'CreatorByline',
+	directives: {
+		tooltip: CdxTooltip
+	},
 	props: {
 		creatorName: { type: String, required: true },
 		creatorUserId: { type: Number, required: true },
 		creatorAutoConfirmed: { type: Boolean, required: true },
 		creatorUserPageExists: { type: Boolean, required: true },
 		creatorTalkPageExists: { type: Boolean, required: true },
-		creatorIsTempAccount: { type: Boolean, required: false }
+		creatorIsTempAccount: { type: Boolean, required: false },
+		creatorIsExpiredTempAccount: { type: Boolean, required: false }
 	},
 	computed: {
 		userPageClass: function () {
+			if ( this.creatorIsExpiredTempAccount ) {
+				return 'mw-tempuserlink mw-tempuserlink-expired';
+			}
 			if ( this.creatorIsTempAccount ) {
 				return 'mw-tempuserlink';
 			}
 			return this.creatorUserPageExists ? '' : redLink;
+		},
+		userPageTooltip: function () {
+			return this.creatorIsExpiredTempAccount ? mw.msg( 'tempuser-expired-link-tooltip' ) : '';
 		},
 		userPageUrl: function () {
 			if ( this.creatorUserPageExists ) {
@@ -78,5 +90,9 @@ module.exports = {
 
 .cdx-link {
 	.cdx-mixin-link();
+
+	&.mw-tempuserlink-expired {
+		text-decoration: line-through;
+	}
 }
 </style>

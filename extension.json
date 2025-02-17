@@ -18,10 +18,10 @@
 		"pagetriagelist": {
 			"class": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageList",
 			"services": [
-				"UserFactory",
 				"RedirectLookup",
 				"TitleFormatter",
-				"LinksMigration"
+				"LinksMigration",
+				"TempUserDetailsLookup"
 			]
 		},
 		"pagetriagestats": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageStats",
@@ -452,6 +452,7 @@
 				"parentheses",
 				"pipe-separator",
 				"sp-contributions-talk",
+				"tempuser-expired-link-tooltip",
 				"pagetriage-afc-state",
 				"pagetriage-afc-newest",
 				"pagetriage-afc-oldest",
