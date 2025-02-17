@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kisare",
 			"Rance",
 			"Stacy Lavuha",
 			"Wangombe"
@@ -15,6 +16,10 @@
 	"pagetriage-filter-predicted-issues-spam": "Ujumbe usiofaa",
 	"pagetriage-filter-predicted-issues-attack": "Shambulia",
 	"pagetriage-filter-predicted-issues-none": "Hakuna",
+	"pagetriage-filter-all": "Onyesha yote",
+	"pagetriage-filter-set-button": "Weka machujio",
+	"pagetriage-filter-reset-button": "Weka upya machujio",
+	"pagetriage-stats-less-than-a-day": "chini ya siku moja",
 	"pagetriage-filter-stat-predicted-class-start": "Anza",
 	"pagetriage-filter-stat-predicted-class-c": "daraja-c",
 	"pagetriage-filter-stat-predicted-class-b": "daraja-b",
