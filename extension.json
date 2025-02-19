@@ -209,9 +209,6 @@
 				"ext.pageTriage.toolbar/vue/components/ToolNext.vue",
 				"ext.pageTriage.toolbar/vue/components/ToolFlyout.vue",
 				"ext.pageTriage.toolbar/vue/components/FlyoutHeader.vue",
-				"ext.pageTriage.toolbar/vue/components/FlyoutContent.vue",
-				"ext.pageTriage.toolbar/vue/components/FlyoutFooter.vue",
-				"ext.pageTriage.toolbar/vue/components/FlyoutNotes.vue",
 				{
 					"name": "ext.pageTriage.toolbar/contentLanguageMessages.json",
 					"callback": "MediaWiki\\Extension\\PageTriage\\Hooks::toolbarContentLanguageMessages"

@@ -5,20 +5,21 @@
 			:title="title"
 			@close-flyout="closeFlyout">
 		</flyout-header>
-		<flyout-content>
-			<slot></slot>
-		</flyout-content>
+		<div class="mwe-pt-vue-tool-content">
+			<slot name="content"></slot>
+			<slot name="notes"></slot>
+			<slot name="footer"></slot>
+		</div>
 	</div>
 </template>
 
 <script>
+const { inject } = require( 'vue' );
 const FlyoutHeader = require( './FlyoutHeader.vue' );
-const FlyoutContent = require( './FlyoutContent.vue' );
 // @vue/component
 module.exports = {
 	components: {
-		FlyoutHeader,
-		FlyoutContent
+		FlyoutHeader
 	},
 	props: {
 		helpLink: {
@@ -30,10 +31,16 @@ module.exports = {
 			required: true
 		}
 	},
+	setup: function () {
+		const { showFlyout, updateShowFlyout } = inject( 'showFlyout' );
+		return {
+			showFlyout,
+			updateShowFlyout
+		};
+	},
 	methods: {
 		closeFlyout: function () {
-			const flyoutContainer = document.getElementById( 'mwe-pt-vue-flyout' );
-			flyoutContainer.style.display = 'none';
+			this.updateShowFlyout( !this.showFlyout );
 		}
 	}
 };
@@ -42,8 +49,6 @@ module.exports = {
 
 <style>
 .mwe-pt-vue-tool-flyout {
-	position: absolute;
-	top: 12px;
 	width: 500px;
 	padding: 5px;
 	background-color: #cacaca;
@@ -60,5 +65,12 @@ module.exports = {
 	&-flipped {
 		left: 46px;
 	}
+}
+
+.mwe-pt-vue-tool-content {
+	background-color: #fff;
+	font-size: 0.8em;
+	border: 1px solid #9f9f9f;
+	padding: 6px;
 }
 </style>
