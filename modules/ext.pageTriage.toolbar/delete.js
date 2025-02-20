@@ -137,6 +137,8 @@ module.exports = ToolView.extend( {
 		if ( Number( this.model.get( 'is_redirect' ) ) === 1 ) {
 			xfd.label = xfd.tags.redirectsfordiscussion.label;
 			delete xfd.tags.articlefordeletion;
+			// Remove proposed deletion (PROD) for redirects. See T377062
+			delete this.deletionTagsOptions.proposeddeletion;
 		// non-redirect
 		} else {
 			xfd.label = xfd.tags.articlefordeletion.label;
