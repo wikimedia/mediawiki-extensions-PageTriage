@@ -60,7 +60,7 @@ const { Article, contentLanguageMessages } = require( 'ext.pageTriage.util' );
 // Add content language messages
 contentLanguageMessages.set( require( '../contentLanguageMessages.json' ) );
 
-const { ref } = require( 'vue' ),
+const { ref, provide } = require( 'vue' ),
 	// create an event aggregator
 	eventBus = _.extend( {}, Backbone.Events ),
 	config = require( '../config.json' ),
@@ -105,6 +105,11 @@ module.exports = {
 		}
 	},
 	setup: function () {
+		const showFlyout = ref( false );
+		const updateShowFlyout = ( value ) => {
+			showFlyout.value = value;
+		};
+		provide( 'showFlyout', { showFlyout, updateShowFlyout } );
 		return {
 			// placeholder references for inserting backbone tools
 			articleInfoTool: ref( null ),
@@ -112,12 +117,18 @@ module.exports = {
 			markTool: ref( null ),
 			tagsTool: ref( null ),
 			deleteTool: ref( null ),
+			// placeholder reference for BackBone flyouts
+			flyout: ref( false ),
 			// placeholder reference for drag area
 			dragArea: ref( null ),
 			// placeholder reference for toolbar
 			toolbar: ref( null ),
 			// placeholder reference for text dir
-			dir: ref( 'ltr' )
+			dir: ref( 'ltr' ),
+			// TODO: Remove lint exception when developing first toolbar flyout
+			// eslint-disable-next-line vue/no-unused-properties
+			showFlyout,
+			updateShowFlyout
 		};
 	},
 	data: function () {
@@ -255,6 +266,22 @@ module.exports = {
 				pageCurationLink.blur();
 				maximize();
 			} );
+		},
+		// TODO: remove this lint exception after first vue flyout module is developed
+		// eslint-disable-next-line vue/no-unused-properties
+		toggleFlyout: function ( module ) {
+			const modFlyout = document.getElementById( `mwe-pt-vue-${ module }-flyout` );
+			if ( modFlyout.style.display === 'none' ) {
+				this.updateShowFlyout( true );
+				// The flag is true, so it means there's a BackBone flyout open.
+				// We need to close it.
+				if ( this.flyout ) {
+					$( '.mwe-pt-tool-pokey' ).hide();
+					$( '.mwe-pt-tool-flyout' ).hide();
+				}
+			} else {
+				this.updateShowFlyout( false );
+			}
 		}
 	},
 	/*
@@ -280,6 +307,16 @@ module.exports = {
 				moduleConfig: modules.articleInfo
 			} );
 			$( this.articleInfoTool ).before( articleInfo.place() );
+			// Override Backbone tool click handler
+			articleInfo.click = ( function () {
+				if ( articleInfo.visible ) {
+					articleInfo.hide();
+				} else {
+					articleInfo.show();
+					this.flyout = true;
+					this.updateShowFlyout( false );
+				}
+			} ).bind( this );
 		}
 		if ( isFlyoutEnabled( 'wikiLove' ) ) {
 			const WikiLove = require( '../wikiLove.js' );
@@ -289,6 +326,16 @@ module.exports = {
 				moduleConfig: modules.wikiLove
 			} );
 			$( this.wikiLoveTool ).before( wikiLove.place() );
+			// Override Backbone tool click handler
+			wikiLove.click = ( function () {
+				if ( wikiLove.visible ) {
+					wikiLove.hide();
+				} else {
+					wikiLove.show();
+					this.flyout = true;
+					this.updateShowFlyout( false );
+				}
+			} ).bind( this );
 		}
 		if ( isFlyoutEnabled( 'mark' ) ) {
 			const Mark = require( '../mark.js' );
@@ -298,6 +345,16 @@ module.exports = {
 				moduleConfig: modules.mark
 			} );
 			$( this.markTool ).before( mark.place() );
+			// Override Backbone tool click handler
+			mark.click = ( function () {
+				if ( mark.visible ) {
+					mark.hide();
+				} else {
+					mark.show();
+					this.flyout = true;
+					this.updateShowFlyout( false );
+				}
+			} ).bind( this );
 		}
 		// tags and deletion only available when enwiki features are enabled
 		if ( config.PageTriageEnableExtendedFeatures ) {
@@ -309,6 +366,16 @@ module.exports = {
 					moduleConfig: modules.tags
 				} );
 				$( this.tagsTool ).before( tags.place() );
+				// Override Backbone tool click handler
+				tags.click = ( function () {
+					if ( tags.visible ) {
+						tags.hide();
+					} else {
+						tags.show();
+						this.flyout = true;
+						this.updateShowFlyout( false );
+					}
+				} ).bind( this );
 			}
 			if ( isFlyoutEnabled( 'delete' ) ) {
 				const Delete = require( '../delete.js' );
@@ -318,6 +385,16 @@ module.exports = {
 					moduleConfig: modules.delete
 				} );
 				$( this.deleteTool ).before( deletion.place() );
+				// Override Backbone tool click handler
+				deletion.click = ( function () {
+					if ( deletion.visible ) {
+						deletion.hide();
+					} else {
+						deletion.show();
+						this.flyout = true;
+						this.updateShowFlyout( false );
+					}
+				} ).bind( this );
 			}
 		}
 
