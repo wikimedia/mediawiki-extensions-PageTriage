@@ -136,12 +136,6 @@ const ToolbarView = Backbone.View.extend( {
 			that.maximize( true );
 		} );
 
-		// since transform only works in IE 9 and higher, use writing-mode
-		// to rotate the minimized toolbar content in older versions
-		if ( $.client.test( { msie: [ [ '<', 9 ] ] }, null, true ) ) {
-			$( '#mwe-pt-toolbar-vertical' ).css( 'writing-mode', 'tb-rl' );
-		}
-
 		// make the close button do something
 		$( '.mwe-pt-toolbar-close-button' ).on( 'click', () => {
 			that.hide( true );
