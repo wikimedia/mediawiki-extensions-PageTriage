@@ -825,8 +825,9 @@ module.exports = ToolView.extend( {
 		const err = new Error( errorMessage );
 		err.name = 'pageTriageHandleError';
 		mw.errorLogger.logError( err, 'error.pagetraige' );
-		const sitename = mw.config.get( 'wgDBname' );
-		mw.track( 'counter.MediaWiki.extension.PageTriage.' + sitename + '.viewsToolbar.tags.error' );
+		const dbname = mw.config.get( 'wgDBname' );
+		mw.track( 'counter.MediaWiki.extension.PageTriage.' + dbname + '.viewsToolbar.tags.error' );
+		mw.track( 'stats.mediawiki_pagetriage_viewstoolbar_tags_error_total', { wiki: dbname } );
 
 		$.removeSpinner( 'tag-spinner' );
 		// Re-enable the submit button (in case it is disabled)
