@@ -1,5 +1,8 @@
 <template>
-	<div class="mwe-vue-pt-article-row" :class="oddEvenClass">
+	<div
+		ref="listItem"
+		class="mwe-vue-pt-article-row"
+		:class="oddEvenClass">
 		<div class="mwe-vue-pt-status-icon">
 			<cdx-icon
 				:icon="statusIcon.icon"
@@ -10,8 +13,11 @@
 		<div class="mwe-vue-pt-info-pane">
 			<div class="mwe-vue-pt-info-row">
 				<div class="mwe-vue-pt-article">
-					<span class="mwe-vue-pt-bold">
-						<a :href="titleUrl" target="_blank">{{ title }}</a>
+					<span id="" class="mwe-vue-pt-bold">
+						<a
+							:data-page-title="title"
+							:href="titleUrl"
+							target="_blank">{{ title }}</a>
 					</span>
 					<span>
 						(<a :href="historyUrl">{{ $i18n( 'pagetriage-hist' ).text() }}</a>)
@@ -441,6 +447,9 @@ module.exports = {
 				format
 			);
 		}
+	},
+	mounted() {
+		mw.hook( 'wikipage.content' ).fire( $( this.$refs.listItem ) );
 	}
 };
 </script>

@@ -43,6 +43,14 @@ class Api {
 	}
 }
 
+class Rest {
+	post() {
+		return Promise.resolve( { ips: [
+			'127.0.0.1'
+		] } );
+	}
+}
+
 class IntersectionObserver {
 	observe() {
 		return null;
@@ -57,5 +65,6 @@ global.mw.messagePoster = {
 	}
 };
 global.mw.Api = Api;
+global.mw.Rest = Rest;
 global.IntersectionObserver = IntersectionObserver;
 global.mw.user.options = new mw.Map();
