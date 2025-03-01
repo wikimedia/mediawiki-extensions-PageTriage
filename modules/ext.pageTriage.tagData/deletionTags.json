@@ -295,6 +295,7 @@
 					"label": "Attack pages",
 					"tag": "speedy deletion-attack",
 					"code": "G10",
+					"blank": true,
 					"desc": "Pages that disparage, threaten, intimidate or harass their subject or some other entity, and serve no other purpose. (G10)",
 					"params": {},
 					"anchor": "attack",

@@ -882,6 +882,7 @@ module.exports = ToolView.extend( {
 		let text = '',
 			tagText = '',
 			paramsText = '';
+		let blankPage;
 
 		if ( count === 0 ) {
 			return;
@@ -894,6 +895,9 @@ module.exports = ToolView.extend( {
 			const tagObj = this.selectedTag[ key ];
 			let tempTag = tagObj.tag;
 			const tagging = specialDeletionTagging[ tagObj.tag ];
+			// Get if a page should be blanked while deletion tagging
+			// Used for blanking a page when {{speedy deletion-attack}} tagged, see T381226
+			blankPage = tagObj.blank || false;
 
 			if ( !( 'discussionPage' in tagObj ) ||
 				tagObj.discussionPage === ''
@@ -938,23 +942,27 @@ module.exports = ToolView.extend( {
 			text = '{{' + deletionTagOptions.multiple.tag + '|' + tagText + paramsText + '}}';
 		}
 
-		return this.fetchArticleContent().then( ( wikitext ) => new mw.Api().postWithToken( 'csrf', {
-			action: 'pagetriagetagging',
-			pageid: mw.config.get( 'wgArticleId' ),
-			wikitext: text + wikitext,
-			deletion: 1,
-			taglist: tagList.join( '|' )
-		} )
-			// To be passed into `addToLog`.
-			.then( () => ( { tagCount: count, tagKey: key } )
-			)
-			.catch( ( errorCode ) => {
-				if ( errorCode === 'pagetriage-tag-deletion-error' ) {
-					throw new Error( mw.msg( 'pagetriage-tag-deletion-error' ) );
-				} else {
-					throw new Error( mw.msg( 'pagetriage-tagging-error' ) );
-				}
-			} ) );
+		return this.fetchArticleContent().then( ( wikitext ) => {
+			const postData = {
+				action: 'pagetriagetagging',
+				pageid: mw.config.get( 'wgArticleId' ),
+				// If 'blankPage' is true, then replace the page content with only the deletion tags
+				wikitext: ( blankPage === true ) ? text : text + wikitext,
+				deletion: 1,
+				taglist: tagList.join( '|' )
+			};
+			return new mw.Api().postWithToken( 'csrf', postData )
+				// To be passed into `addToLog`.
+				.then( () => ( { tagCount: count, tagKey: key } )
+				)
+				.catch( ( errorCode ) => {
+					if ( errorCode === 'pagetriage-tag-deletion-error' ) {
+						throw new Error( mw.msg( 'pagetriage-tag-deletion-error' ) );
+					} else {
+						throw new Error( mw.msg( 'pagetriage-tagging-error' ) );
+					}
+				} );
+		} );
 	},
 
 	/**
