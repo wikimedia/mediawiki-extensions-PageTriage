@@ -218,6 +218,8 @@
 	"pagetriage-tags-param-free-no-label": "לא",
 	"pagetriage-tags-param-missing-required": "בתבנית $1 חסר הפרמטר.",
 	"pagetriage-tags-talk-page-notify-topic-title": "דרכים לשפר את $1",
+	"pagetriage-new-page-feed-show-ip": "הצגת כתובת IP",
+	"pagetriage-new-page-feed-show-ip-not-found": "לא נמצאה כתובת IP עבור חשבון חולף",
 	"log-name-pagetriage-curation": "יומן טיפול בדפים",
 	"log-description-pagetriage-curation": "זהו יומן של פעולות שנעשו באמצעות סרגל הטיפול בדפים",
 	"logentry-pagetriage-curation-reviewed": "$1 {{GENDER:$2|סימן|סימנה|}} את $3 כדף שנסקר",

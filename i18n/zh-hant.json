@@ -218,6 +218,7 @@
 	"pagetriage-tags-param-free-no-label": "否",
 	"pagetriage-tags-param-missing-required": "標籤$1是遺失的必要參數。",
 	"pagetriage-tags-talk-page-notify-topic-title": "改進$1的方式",
+	"pagetriage-new-page-feed-show-ip": "顯示IP",
 	"log-name-pagetriage-curation": "頁面管理器日誌",
 	"log-description-pagetriage-curation": "這是頁面管理工具欄的操作日誌。",
 	"logentry-pagetriage-curation-reviewed": "$1 {{GENDER:$2|標記}} $3 為已檢閱",

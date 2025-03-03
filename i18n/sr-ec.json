@@ -199,6 +199,7 @@
 	"pagetriage-tags-param-free-no-label": "Не",
 	"pagetriage-tags-param-missing-required": "Ознаци $1 недостаје неопходан параметар.",
 	"pagetriage-tags-talk-page-notify-topic-title": "Начини за побољшавање странице $1",
+	"pagetriage-new-page-feed-show-ip": "Прикажи IP",
 	"log-name-pagetriage-curation": "Дневник збрињавања страница",
 	"log-description-pagetriage-curation": "Ово је дневник радњи предузетих на траци са алаткама за збрињавање страница.",
 	"logentry-pagetriage-curation-reviewed": "$1 је {{GENDER:$2|означио|означила}} страницу $3 прегледаном",

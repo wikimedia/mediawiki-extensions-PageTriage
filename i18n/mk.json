@@ -206,6 +206,8 @@
 	"pagetriage-tags-param-free-no-label": "Не",
 	"pagetriage-tags-param-missing-required": "На ознаката ѝ недостасува $1 задолжителен параметар.",
 	"pagetriage-tags-talk-page-notify-topic-title": "Како да се подобри $1",
+	"pagetriage-new-page-feed-show-ip": "Прикажи IP",
+	"pagetriage-new-page-feed-show-ip-not-found": "Не најдов IP за привремената сметка",
 	"log-name-pagetriage-curation": "Дневник на згрижување",
 	"log-description-pagetriage-curation": "Ова е дневникот на дејства извршени од алатникот за згрижување.",
 	"logentry-pagetriage-curation-reviewed": "$1 {{GENDER:$2|ја означи страницата}} $3 како проверена",
