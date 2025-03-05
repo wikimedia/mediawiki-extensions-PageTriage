@@ -173,6 +173,8 @@
 	"pagetriage-tags-param-free-no-label": "아니오",
 	"pagetriage-tags-param-missing-required": "$1 태그에 필수 변수가 없습니다.",
 	"pagetriage-tags-talk-page-notify-topic-title": "$1 개선 방법",
+	"pagetriage-new-page-feed-show-ip": "IP 표시",
+	"pagetriage-new-page-feed-show-ip-not-found": "임시 계정에 대한 IP를 찾을 수 없습니다",
 	"log-name-pagetriage-curation": "문서 큐레이트 기록",
 	"log-description-pagetriage-curation": "문서 큐레이트 도구 모음에서 수행한 작업 기록입니다.",
 	"logentry-pagetriage-curation-reviewed": "$1님이 $3 문서를 검토한 것으로 {{GENDER:$2|표시했습니다}}",
