@@ -198,7 +198,6 @@ module.exports = ToolView.extend( {
 
 		$( '#mwe-pt-review-note-input' ).val( '' );
 		this.model.fetch();
-		this.hide();
 	},
 
 	/**
