@@ -133,16 +133,31 @@ module.exports = ToolView.extend( {
 	setupDeletionTags: function () {
 		this.deletionTagsOptions = deletionTagOptions.main;
 		const xfd = this.deletionTagsOptions.xfd;
+		const csd = this.deletionTagsOptions.speedydeletioncommon;
 		// redirect
 		if ( Number( this.model.get( 'is_redirect' ) ) === 1 ) {
 			xfd.label = xfd.tags.redirectsfordiscussion.label;
 			delete xfd.tags.articlefordeletion;
 			// Remove proposed deletion (PROD) for redirects. See T377062
 			delete this.deletionTagsOptions.proposeddeletion;
+			// If articleonly is true, remove the tag
+			// from redirects. See T343399
+			for ( const tag in csd.tags ) {
+				if ( csd.tags[ tag ].articleonly ) {
+					delete csd.tags[ tag ];
+				}
+			}
 		// non-redirect
 		} else {
 			xfd.label = xfd.tags.articlefordeletion.label;
 			delete xfd.tags.redirectsfordiscussion;
+			// If redirectonly is true, remove the tag
+			// from non-redirects. See T343399
+			for ( const tag in csd.tags ) {
+				if ( csd.tags[ tag ].redirectonly ) {
+					delete csd.tags[ tag ];
+				}
+			}
 		}
 	},
 
