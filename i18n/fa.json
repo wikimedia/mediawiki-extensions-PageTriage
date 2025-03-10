@@ -197,6 +197,8 @@
 	"pagetriage-tags-param-free-no-label": "خیر",
 	"pagetriage-tags-param-missing-required": "برچسب $1 پارامتر مورد نیاز را نمایش می‌دهد.",
 	"pagetriage-tags-talk-page-notify-topic-title": "روش‌های بهبود $1",
+	"pagetriage-new-page-feed-show-ip": "نمایش آی‌پی",
+	"pagetriage-new-page-feed-show-ip-not-found": "هیچ آی‌پی برای این حساب موقت یافت نشد",
 	"log-name-pagetriage-curation": "سیاههٔ بهسازی صفحه‌ها",
 	"log-description-pagetriage-curation": "این صفحه حاولی سیاهه‌ای از اقداماتی است که با استفاده از ابزار بهسازی صفحات انجام شده‌اند.",
 	"logentry-pagetriage-curation-reviewed": "$1 به $3 برچسب بررسی {{GENDER:$2|زد}}",

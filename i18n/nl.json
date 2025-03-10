@@ -223,6 +223,8 @@
 	"pagetriage-tags-param-free-no-label": "Nee",
 	"pagetriage-tags-param-missing-required": "Voor het label $1 ontbreekt een verplichte parameter.",
 	"pagetriage-tags-talk-page-notify-topic-title": "Manieren om $1  te verbeteren",
+	"pagetriage-new-page-feed-show-ip": "IP-adres weergeven",
+	"pagetriage-new-page-feed-show-ip-not-found": "Geen IP-adres gevonden voor het tijdelijke account",
 	"log-name-pagetriage-curation": "Logboek paginaconservering",
 	"log-description-pagetriage-curation": "Dit is het logboek met handelingen vanuit de werkbalk paginaconservering.",
 	"logentry-pagetriage-curation-reviewed": "$1 {{GENDER:$2|heeft}} $3 als beoordeeld gemarkeerd",
