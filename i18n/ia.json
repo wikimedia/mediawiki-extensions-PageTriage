@@ -204,6 +204,8 @@
 	"pagetriage-tags-param-free-no-label": "No",
 	"pagetriage-tags-param-missing-required": "Un parametro obligatori manca al etiquetta $1.",
 	"pagetriage-tags-talk-page-notify-topic-title": "Manieras de meliorar $1",
+	"pagetriage-new-page-feed-show-ip": "Monstrar IP",
+	"pagetriage-new-page-feed-show-ip-not-found": "Necun adresse IP trovate pro le conto temporari",
 	"log-name-pagetriage-curation": "Registro de conservation de paginas",
 	"log-description-pagetriage-curation": "Isto es le registro de actiones prendite a partir del instrumentario de conservation de paginas.",
 	"logentry-pagetriage-curation-reviewed": "$1 {{GENDER:$2|ha marcate}} $3 como revidite",
