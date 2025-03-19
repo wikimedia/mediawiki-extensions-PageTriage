@@ -3,6 +3,8 @@
 namespace MediaWiki\Extension\PageTriage\ArticleCompile;
 
 use MediaWiki\Content\TextContent;
+use MediaWiki\Language\Language;
+use MediaWiki\Language\MessageParser;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\Sanitizer;
 use MediaWiki\Title\Title;
@@ -13,12 +15,17 @@ use MediaWiki\Title\Title;
 class ArticleCompileSnippet extends ArticleCompile {
 
 	public function compile() {
+		$services = MediaWikiServices::getInstance();
+		$lang = $services->getContentLanguage();
+		$msgParser = $services->getMessageParser();
 		foreach ( $this->mPageId as $pageId ) {
 			$content = $this->getContentByPageId( $pageId );
 			if ( $content ) {
 				$text = ( $content instanceof TextContent ) ? $content->getText() : null;
 				if ( $text !== null ) {
-					$this->metadata[$pageId]['snippet'] = self::generateArticleSnippet( $text, $pageId );
+					$this->metadata[$pageId]['snippet'] = self::generateArticleSnippet(
+						$text, $pageId, $lang, $msgParser
+					);
 					// Reference tag (and other tags) have text strings as the value.
 					$this->metadata[$pageId]['reference'] = $this->hasReferenceTag( $text ) ? '1' : '0';
 				}
@@ -31,12 +38,14 @@ class ArticleCompileSnippet extends ArticleCompile {
 	 * Generate article snippet for listview from article text
 	 * @param string $text page text
 	 * @param int $pageId Id of the page
+	 * @param Language $lang
+	 * @param MessageParser $msgParser
 	 * @return string
 	 */
-	public static function generateArticleSnippet( string $text, int $pageId ) {
+	public static function generateArticleSnippet( string $text, int $pageId, Language $lang,
+		MessageParser $msgParser ) {
 		$text = strip_tags( $text );
 		$attempt = 0;
-		$lang = MediaWikiServices::getInstance()->getContentLanguage();
 		$title = Title::newFromID( $pageId );
 
 		// 10 attempts at most, the logic here is to find the first }} and
@@ -59,8 +68,7 @@ class ArticleCompileSnippet extends ArticleCompile {
 		}
 
 		$text = trim( Sanitizer::stripAllTags(
-			MediaWikiServices::getInstance()->getMessageCache()
-				->parseWithPostprocessing( $text, $title, true, false, $lang )->getContentHolderText()
+			$msgParser->parse( $text, $title, true, false, $lang )->getContentHolderText()
 		) );
 		// strip out non-useful data for snippet
 		$text = str_replace( [ '{', '}', '[edit]' ], '', $text );
