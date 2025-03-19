@@ -12,7 +12,7 @@
 	"license-name": "MIT",
 	"type": "specialpage",
 	"requires": {
-		"MediaWiki": ">= 1.43.0"
+		"MediaWiki": ">= 1.44"
 	},
 	"APIModules": {
 		"pagetriagelist": {
@@ -206,7 +206,10 @@
 				"mediawiki.api",
 				"mediawiki.jqueryMsg"
 			],
-			"messages": [ "pagetriage-new-page-feed-show-ip", "pagetriage-new-page-feed-show-ip-not-found" ]
+			"messages": [
+				"pagetriage-new-page-feed-show-ip",
+				"pagetriage-new-page-feed-show-ip-not-found"
+			]
 		},
 		"ext.pageTriage.toolbar": {
 			"packageFiles": [
