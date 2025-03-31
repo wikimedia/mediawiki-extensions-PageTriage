@@ -45,7 +45,7 @@ module.exports = ToolView.extend( {
 		let link = mw.html.element( 'a', { href: this.model.get( 'creator_user_page_url' ) }, creator );
 
 		let creatorContribCount = 1;
-		if ( contributorArray.indexOf( creator ) !== -1 ) {
+		if ( contributorArray.includes( creator ) ) {
 			creatorContribCount = contributorCounts[ creator ];
 		}
 

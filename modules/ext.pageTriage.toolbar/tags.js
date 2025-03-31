@@ -581,7 +581,7 @@ module.exports = ToolView.extend( {
 		const tagStart = '{{' + tag;
 		const startingIndex = wikitext.indexOf( tagStart );
 
-		if ( wikitext.indexOf( tagStart ) === -1 ) {
+		if ( !wikitext.includes( tagStart ) ) {
 			return '';
 		}
 

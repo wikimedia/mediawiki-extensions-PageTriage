@@ -41,7 +41,7 @@ module.exports = {
 					'pagetriage-filter-type-show-heading',
 					'pagetriage-filter-predicted-class-heading',
 					'pagetriage-filter-predicted-issues-heading'
-				].indexOf( value ) !== -1;
+				].includes( value );
 			}
 		}
 	},

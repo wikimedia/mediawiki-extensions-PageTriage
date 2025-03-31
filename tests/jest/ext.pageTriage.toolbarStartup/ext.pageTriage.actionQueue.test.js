@@ -162,7 +162,7 @@ describe( 'ext.pageTriage.actionQueue', () => {
 					],
 					'Methods from both queues ran successfully.'
 				);
-				return Promise.resolve();
+				return;
 			} );
 	} );
 
@@ -251,7 +251,7 @@ describe( 'ext.pageTriage.actionQueue', () => {
 					],
 					'Methods from both queues ran successfully.'
 				);
-				return Promise.resolve();
+				return;
 			} );
 	} );
 } );

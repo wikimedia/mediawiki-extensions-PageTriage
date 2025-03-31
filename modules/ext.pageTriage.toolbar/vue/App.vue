@@ -80,7 +80,7 @@ const { ref, provide } = require( 'vue' ),
 		}
 
 		// this flyout is disabled for current namespace
-		return ( modules[ flyout ].namespace.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) !== -1 );
+		return ( modules[ flyout ].namespace.includes( mw.config.get( 'wgNamespaceNumber' ) ) );
 	};
 
 const ToolMinimize = require( './components/ToolMinimize.vue' );
