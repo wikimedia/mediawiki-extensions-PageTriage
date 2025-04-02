@@ -22,6 +22,7 @@ class CompileArticleMetadataJob extends Job {
 		return $info['params']['pageId'];
 	}
 
+	/** @inheritDoc */
 	public function ignoreDuplicates() {
 		return true;
 	}

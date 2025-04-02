@@ -57,6 +57,7 @@ abstract class ArticleCompile {
 		$this->componentDb = $componentDb;
 	}
 
+	/** @return bool */
 	abstract public function compile();
 
 	/**

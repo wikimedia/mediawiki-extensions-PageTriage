@@ -10,6 +10,7 @@ use MediaWiki\MediaWikiServices;
  */
 class ArticleCompileLinkCount extends ArticleCompile {
 
+	/** @inheritDoc */
 	public function compile() {
 		$linksMigration = MediaWikiServices::getInstance()->getLinksMigration();
 		foreach ( $this->mPageId as $pageId ) {

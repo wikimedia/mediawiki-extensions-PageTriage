@@ -9,6 +9,7 @@ use MediaWiki\User\User;
  */
 class ArticleCompileUserData extends ArticleCompile {
 
+	/** @inheritDoc */
 	public function compile() {
 		// Grab the earliest revision based on rev_timestamp and rev_id
 		$revId = [];

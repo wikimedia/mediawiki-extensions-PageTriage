@@ -24,6 +24,7 @@ class ArticleCompileDeletionTag extends ArticleCompile {
 		];
 	}
 
+	/** @inheritDoc */
 	public function compile() {
 		$deletionTags = self::getDeletionTags();
 		foreach ( $this->mPageId as $pageId ) {

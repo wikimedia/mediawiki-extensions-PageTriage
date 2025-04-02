@@ -14,6 +14,7 @@ use MediaWiki\Title\Title;
  */
 class ArticleCompileSnippet extends ArticleCompile {
 
+	/** @inheritDoc */
 	public function compile() {
 		$services = MediaWikiServices::getInstance();
 		$lang = $services->getContentLanguage();

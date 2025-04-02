@@ -284,6 +284,7 @@ class ApiPageTriageAction extends ApiBase {
 		$logEntry->publish( $logEntry->insert() );
 	}
 
+	/** @inheritDoc */
 	public function needsToken() {
 		return 'csrf';
 	}

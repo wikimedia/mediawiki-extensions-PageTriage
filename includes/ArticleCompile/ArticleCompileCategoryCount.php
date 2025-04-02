@@ -7,6 +7,7 @@ namespace MediaWiki\Extension\PageTriage\ArticleCompile;
  */
 class ArticleCompileCategoryCount extends ArticleCompile {
 
+	/** @inheritDoc */
 	public function compile() {
 		foreach ( $this->mPageId as $pageId ) {
 			$parserOutput = $this->getParserOutputByPageId( $pageId );

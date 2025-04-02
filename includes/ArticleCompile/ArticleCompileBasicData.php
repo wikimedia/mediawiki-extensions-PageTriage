@@ -9,6 +9,7 @@ use MediaWiki\Title\Title;
  */
 class ArticleCompileBasicData extends ArticleCompile {
 
+	/** @inheritDoc */
 	public function compile() {
 		$count = 0;
 		// Process page individually because MIN() GROUP BY is slow
