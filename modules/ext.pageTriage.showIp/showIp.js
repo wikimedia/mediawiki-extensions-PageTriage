@@ -47,11 +47,11 @@ const getRevisionId = ( title, api ) => {
 const getTempAccountUserIpAddress = ( target, title ) => {
 	const api = new mw.Api();
 	const deferred = $.Deferred();
+	// eslint-disable-next-line no-jquery/no-done-fail
 	api.getToken( 'csrf' )
 		.then( ( token ) => {
 			getRevisionId( title, api )
 				.then( ( revid ) => getIpAddress( target, token, deferred, revid ) );
-		// eslint-disable-next-line no-restricted-syntax
 		} ).fail( ( err, errObject ) => {
 			deferred.reject( err, errObject );
 		} );

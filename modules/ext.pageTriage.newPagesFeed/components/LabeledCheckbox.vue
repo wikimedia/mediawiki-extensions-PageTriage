@@ -54,7 +54,7 @@ module.exports = {
 					'pagetriage-filter-reviewed-edits',
 					'pagetriage-filter-unreviewed-edits',
 					'pagetriage-refresh-list'
-				].indexOf( value ) !== -1;
+				].includes( value );
 			}
 		},
 		// eslint-disable-next-line vue/no-unused-properties

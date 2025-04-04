@@ -278,7 +278,7 @@ module.exports = ToolView.extend( {
 		// * pagetriage-mark-as-unreviewed-error
 		$( '#mwe-pt-mark .mwe-pt-tool-title' ).text( mw.msg( 'pagetriage-mark-as-' + status ) );
 
-		const noteIsEnabledForThisNamespace = this.moduleConfig.note.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) !== -1;
+		const noteIsEnabledForThisNamespace = this.moduleConfig.note.includes( mw.config.get( 'wgNamespaceNumber' ) );
 		if ( noteIsEnabledForThisNamespace && numRecipients > 0 ) {
 			$( '#mwe-pt-review-note' ).show();
 			$( '#mwe-pt-review-note-input, #mwe-pt-review-note-recipient' ).on( 'input', () => {

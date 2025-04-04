@@ -313,7 +313,7 @@ module.exports = Backbone.View.extend( {
 			tagRows = document.getElementsByClassName( event.data );
 		for ( let i = 0; i < tagRows.length; i++ ) {
 			tagRows[ i ].classList.remove( 'mwe-pt-tag-row-hide' );
-			if ( tagRows[ i ].outerHTML.toLowerCase().indexOf( searchText.toLowerCase() ) === -1 ) {
+			if ( !tagRows[ i ].outerHTML.toLowerCase().includes( searchText.toLowerCase() ) ) {
 				tagRows[ i ].classList.add( 'mwe-pt-tag-row-hide' );
 			}
 		}

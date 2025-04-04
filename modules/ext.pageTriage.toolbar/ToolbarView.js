@@ -84,7 +84,7 @@ const ToolbarView = Backbone.View.extend( {
 		}
 
 		// this flyout is disabled for current namespace
-		return ( modules[ flyout ].namespace.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) !== -1 );
+		return ( modules[ flyout ].namespace.includes( mw.config.get( 'wgNamespaceNumber' ) ) );
 	},
 
 	render: function () {

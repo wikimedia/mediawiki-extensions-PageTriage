@@ -255,7 +255,7 @@ module.exports = {
 					2, // pending
 					3, // under review
 					4 // declined
-				].indexOf( value ) !== -1;
+				].includes( value );
 			}
 		},
 		// copyvio tag; latest revision ID that has been tagged as a likely copyright violation.
@@ -272,7 +272,7 @@ module.exports = {
 					1, // reviewed
 					2, // patrolled
 					3 // autopatrolled
-				].indexOf( value ) !== -1;
+				].includes( value );
 			}
 		},
 		/*

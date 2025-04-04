@@ -8,7 +8,7 @@ const pageTriageUi = mw.util.getParamValue( 'pagetriage_ui' );
 const props = {};
 
 // Drop bad input instead of validating and throwing a warning
-if ( [ 'old' ].indexOf( pageTriageUi ) !== -1 ) {
+if ( [ 'old' ].includes( pageTriageUi ) ) {
 	props.pageTriageUi = pageTriageUi;
 }
 

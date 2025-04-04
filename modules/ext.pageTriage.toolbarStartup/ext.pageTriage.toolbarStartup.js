@@ -4,7 +4,7 @@ $( () => {
 	const ns = mw.config.get( 'wgNamespaceNumber' );
 
 	// Only show curation toolbar for enabled namespaces, minus the draftspace.
-	if ( mw.config.get( 'pageTriageNamespaces' ).indexOf( ns ) === -1 ||
+	if ( !mw.config.get( 'pageTriageNamespaces' ).includes( ns ) ||
 		ns === mw.config.get( 'wgPageTriageDraftNamespaceId' )
 	) {
 		return;
