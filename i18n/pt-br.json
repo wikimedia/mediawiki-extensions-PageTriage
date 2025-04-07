@@ -15,7 +15,8 @@
 			"Lc97",
 			"Re demz",
 			"YuriNikolai",
-			"McDutchie"
+			"McDutchie",
+			"TheEduGobi"
 		]
 	},
 	"pagetriage": "Triagem de Páginas",
@@ -92,7 +93,7 @@
 	"pagetriage-filter-bot-edits": "Foram criados por bots",
 	"pagetriage-filter-redirects": "Redirecionamentos (não RfD)",
 	"pagetriage-filter-others": "Todos os outros",
-	"pagetriage-filter-namespace-heading": "No domínio:",
+	"pagetriage-filter-namespace-heading": "No espaço nominal:",
 	"pagetriage-filter-article": "Artigo",
 	"pagetriage-filter-user-heading": "Foram criados por",
 	"pagetriage-filter-username": "Nome de usuário",
