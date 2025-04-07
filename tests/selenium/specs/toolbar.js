@@ -71,15 +71,16 @@ describe( 'PageTriage Toolbar', () => {
 
 		await browser.waitUntil( async () => await Toolbar.tagToolIcon.waitForDisplayed() );
 
-		Toolbar.tagToolIcon.click();
+		await Toolbar.tagToolIcon.click();
 
 		await browser.waitUntil( async () => await Toolbar.tagToolBody.waitForDisplayed() );
 
-		Toolbar.tagToolFirstCheckbox.click();
+		await Toolbar.tagToolFirstCheckbox.click();
 		await Toolbar.tagToolNoteBox.waitForDisplayed();
 		const comment = Util.getTestString( 'Comment-' );
 		await Toolbar.tagToolNoteBox.setValue( comment );
-		Toolbar.tagToolSubmitButton.click();
+		await Toolbar.tagToolSubmitButton.waitForEnabled();
+		await Toolbar.tagToolSubmitButton.click();
 		await browser.waitUntil( async () => !( await Toolbar.tagToolSubmitButton.isExisting() ) );
 
 		await EditPage.open( `User talk:${ username }` );
