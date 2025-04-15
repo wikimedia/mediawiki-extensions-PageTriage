@@ -772,7 +772,7 @@
 			"services": [
 				"MainConfig",
 				"RevisionLookup",
-				"StatsdDataFactory",
+				"StatsFactory",
 				"PermissionManager",
 				"RevisionStore",
 				"TitleFactory",

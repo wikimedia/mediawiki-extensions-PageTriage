@@ -52,7 +52,7 @@ use MediaWiki\Utils\MWTimestamp;
 use MediaWiki\WikiMap\WikiMap;
 use RecentChange;
 use Wikimedia\Rdbms\Database;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 use WikiPage;
 
 class Hooks implements
@@ -84,14 +84,14 @@ class Hooks implements
 	/** @var RevisionLookup */
 	private RevisionLookup $revisionLookup;
 
-	/** @var IBufferingStatsdDataFactory */
-	private IBufferingStatsdDataFactory $statsdDataFactory;
-
 	/** @var PermissionManager */
 	private PermissionManager $permissionManager;
 
 	/** @var RevisionStore */
 	private RevisionStore $revisionStore;
+
+	/** @var StatsFactory */
+	private StatsFactory $statsFactory;
 
 	/** @var TitleFactory */
 	private TitleFactory $titleFactory;
@@ -105,7 +105,7 @@ class Hooks implements
 	/**
 	 * @param Config $config
 	 * @param RevisionLookup $revisionLookup
-	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param StatsFactory $statsFactory
 	 * @param PermissionManager $permissionManager
 	 * @param RevisionStore $revisionStore
 	 * @param TitleFactory $titleFactory
@@ -116,7 +116,7 @@ class Hooks implements
 	public function __construct(
 		Config $config,
 		RevisionLookup $revisionLookup,
-		IBufferingStatsdDataFactory $statsdDataFactory,
+		StatsFactory $statsFactory,
 		PermissionManager $permissionManager,
 		RevisionStore $revisionStore,
 		TitleFactory $titleFactory,
@@ -126,7 +126,7 @@ class Hooks implements
 	) {
 		$this->config = $config;
 		$this->revisionLookup = $revisionLookup;
-		$this->statsdDataFactory = $statsdDataFactory;
+		$this->statsFactory = $statsFactory->withComponent( 'PageTriage' );
 		$this->permissionManager = $permissionManager;
 		$this->revisionStore = $revisionStore;
 		$this->titleFactory = $titleFactory;
@@ -504,9 +504,10 @@ class Hooks implements
 		// Overwrite the noindex rule defined in Article::view(), this also affects main namespace
 		if ( self::shouldShowNoIndex( $article ) ) {
 			$outputPage->setRobotPolicy( 'noindex,nofollow' );
-			$this->statsdDataFactory->increment(
-				'extension.PageTriage.by_wiki.' . WikiMap::getCurrentWikiId() . '.noindex'
-			);
+			$this->statsFactory->getCounter( 'noindex_total' )
+				->setLabel( 'wiki', WikiMap::getCurrentWikiId() )
+				->copyToStatsdAt( 'extension.PageTriage.by_wiki.' . WikiMap::getCurrentWikiId() . '.noindex' )
+				->increment();
 		}
 
 		// onArticleViewFooter() is run every time any article is not viewed from cache, so exit

@@ -14,7 +14,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use RuntimeException;
 use Wikimedia\Rdbms\IDBAccessObject;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 use WikiPage;
 
 /**
@@ -42,8 +42,8 @@ class ArticleCompileProcessor {
 	/** @var LinksUpdate[] */
 	protected $linksUpdates = [];
 
-	/** @var IBufferingStatsdDataFactory */
-	private IBufferingStatsdDataFactory $statsdDataFactory;
+	/** @var StatsFactory */
+	private StatsFactory $statsFactory;
 
 	public const SAVE_IMMEDIATE = 0;
 	public const SAVE_DEFERRED = 1;
@@ -71,9 +71,9 @@ class ArticleCompileProcessor {
 
 	/**
 	 * @param int[] $pageIds List of page IDs.
-	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param StatsFactory $statsFactory
 	 */
-	private function __construct( $pageIds, IBufferingStatsdDataFactory $statsdDataFactory ) {
+	private function __construct( $pageIds, StatsFactory $statsFactory ) {
 		$this->pageIds = $pageIds;
 
 		$this->component = [
@@ -93,7 +93,7 @@ class ArticleCompileProcessor {
 
 		$this->metadata = array_fill_keys( $this->pageIds, [] );
 		$this->defaultMode = true;
-		$this->statsdDataFactory = $statsdDataFactory;
+		$this->statsFactory = $statsFactory->withComponent( 'PageTriage' );
 	}
 
 	/**
@@ -112,7 +112,7 @@ class ArticleCompileProcessor {
 		if ( $pageIds ) {
 			return new ArticleCompileProcessor(
 				$pageIds,
-				MediaWikiServices::getInstance()->getStatsdDataFactory()
+				MediaWikiServices::getInstance()->getStatsFactory()
 			);
 		} else {
 			return false;
@@ -250,10 +250,9 @@ class ArticleCompileProcessor {
 		}
 
 		if ( $mode === self::SAVE_IMMEDIATE ) {
-			$this->statsdDataFactory->timing(
-				'timing.pageTriage.articleCompileProcessor.compileMetadata.saveImmediate',
-				microtime( true ) - $startTime
-			);
+			$this->statsFactory->getTiming( 'articleCompileProcessor_compileMetadata_saveImmediate_seconds' )
+				->copyToStatsdAt( 'timing.pageTriage.articleCompileProcessor.compileMetadata.saveImmediate' )
+				->observe( microtime( true ) - $startTime );
 		}
 
 		return $this->metadata;
@@ -293,10 +292,10 @@ class ArticleCompileProcessor {
 				if ( !$comp->compile() ) {
 					break;
 				}
-				$this->statsdDataFactory->timing(
-					'timing.pageTriage.articleCompileProcessor.process.' . $key,
-					microtime( true ) - $startTime
-				);
+				$this->statsFactory->getTiming( 'articleCompileProcessor_process_seconds' )
+					->setLabel( 'key', $key )
+					->copyToStatsdAt( 'timing.pageTriage.articleCompileProcessor.process.' . $key )
+					->observe( microtime( true ) - $startTime );
 				foreach ( $comp->getMetadata() as $pageId => $row ) {
 					$this->metadata[$pageId] += $row;
 				}
