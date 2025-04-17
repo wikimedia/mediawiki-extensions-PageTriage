@@ -4,5 +4,8 @@
 			"Don Alessandro"
 		]
 	},
-	"pagetriage-filter-date-range-format-showing": "AA/KK/YYYY"
+	"pagetriage-filter-date-range-format-showing": "AA/KK/YYYY",
+	"notification-header-pagetriage-mark-as-reviewed": "'''$3''', {{GENDER:$2|incelengen}}.",
+	"notification-header-pagetriage-add-maintenance-tag": "Bir inceleyici, '''$3''' saifesinde eyileştirmeler teklif {{GENDER:$2|etti}}. {{PLURAL:$5|Teg}}: $4.",
+	"notification-header-pagetriage-add-deletion-tag": "'''$3''' saifesi {{GENDER:$2|yoq etilmek üzere belgilendi}}. {{PLURAL:$5|Teg}}: $4."
 }
