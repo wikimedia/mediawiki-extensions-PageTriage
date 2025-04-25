@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
+use MediaWiki\Logging\PatrolLog;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\User\UserIdentity;
-use PatrolLog;
-use RecentChange;
 
 /**
  * TODO: This class does too much. Refactoring into services and classes with single responsibility

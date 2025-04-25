@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
-use LogFormatter;
+use MediaWiki\Logging\LogFormatter;
 
 /**
  * Formats the logs for display on Special:Log

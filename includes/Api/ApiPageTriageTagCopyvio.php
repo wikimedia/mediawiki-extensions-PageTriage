@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\PageTriage\Api;
 
-use ManualLogEntry;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
+use MediaWiki\Logging\ManualLogEntry;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;

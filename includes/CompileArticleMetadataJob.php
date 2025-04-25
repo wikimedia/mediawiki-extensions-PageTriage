@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
-use Job;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
+use MediaWiki\JobQueue\Job;
 
 class CompileArticleMetadataJob extends Job {
 

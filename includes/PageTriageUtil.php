@@ -12,6 +12,7 @@ use MediaWiki\Extension\PageTriage\Api\ApiPageTriageList;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
 use MediaWiki\Linker\LinksMigration;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\WikiPage;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
@@ -21,7 +22,6 @@ use StatusValue;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IReadableDatabase;
-use WikiPage;
 
 /**
  * Utility class for PageTriage
