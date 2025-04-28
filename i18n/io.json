@@ -46,5 +46,7 @@
 	"pagetriage-mark-as-reviewed": "Indikar kom revizita",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|redakturo|redakturi}}",
 	"pagetriage-toolbar-close": "Klozez",
-	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Dankar}}}}"
+	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Dankar}}}}",
+	"echo-pref-tooltip-page-review": "Informez me kande ulu revizos pagino quan me kreis.",
+	"echo-category-title-page-review": "{{PLURAL:$1|Revizuro|Revizuri}} di la pagino"
 }
