@@ -61,7 +61,7 @@
 	"pagetriage-reviewed-article-count-past-week": "이번 주 {{PLURAL:$1|문서}} $1개 검토함",
 	"pagetriage-sort-by": "정렬 기준:",
 	"pagetriage-newest": "최신",
-	"pagetriage-oldest": "오래됨",
+	"pagetriage-oldest": "최초",
 	"pagetriage-triage": "검토",
 	"pagetriage-filter-date-range-heading": "날짜 범위:",
 	"pagetriage-filter-date-range-format-input-field": "yyyy-MM-dd",
