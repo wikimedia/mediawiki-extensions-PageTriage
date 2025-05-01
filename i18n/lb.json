@@ -9,7 +9,7 @@
 	},
 	"pagetriage": "Säiten nokucken",
 	"pagetriage-please-wait": "Wgl. waarden ...",
-	"pagetriage-api-invalidid": "D'ID déi Dir uginn hutt ($1) ass net valabel.",
+	"pagetriage-api-invalidid": "D'ID, déi Dir uginn hutt, ($1) ass net valabel.",
 	"pagetriage-markpatrolled": "Des Säit als nogekuckt markéieren",
 	"pagetriage-markunpatrolled": "Des Säit als net nogekuckt markéieren",
 	"pagetriage-self-review-error": "Säiten, déi Dir ugeluecht hutt, kënnt Dir net nokucken.",
