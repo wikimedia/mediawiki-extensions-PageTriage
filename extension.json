@@ -822,12 +822,6 @@
 		"PageTriageMaxNoIndexAge": {
 			"value": 90
 		},
-		"PageTriagePagesPerRequest": {
-			"value": 20
-		},
-		"PageTriageMarkPatrolledLinkExpiry": {
-			"value": 86400
-		},
 		"PageTriageNoIndexUnreviewedNewArticles": {
 			"value": false
 		},
@@ -895,37 +889,6 @@
 				"pagetriage-mark-as-reviewed",
 				"pagetriage-add-maintenance-tag",
 				"pagetriage-add-deletion-tag"
-			]
-		},
-		"PtTemplatePath": {
-			"value": "modules",
-			"path": true
-		},
-		"PageTriageTagsOptionsMessages": {
-			"value": [
-				"pagetriage-tags-title",
-				"pagetriage-tags-cat-all-label",
-				"pagetriage-tags-param-date-label",
-				"pagetriage-tag-count-total",
-				"pagetriage-button-add-tag",
-				"pagetriage-button-add-tag-number",
-				"pagetriage-button-add-parameters",
-				"pagetriage-button-add-details",
-				"pagetriage-button-edit-details",
-				"pagetriage-button-mark-for-deletion",
-				"cancel",
-				"pagetriage-tags-param-free-yes-label",
-				"pagetriage-tags-param-free-no-label",
-				"pagetriage-tags-param-missing-required",
-				"pagetriage-tags-tooltip"
-			]
-		},
-		"PageTriageDeletionTagsOptionsMessages": {
-			"value": [
-				"pagetriage-tags-param-article-label",
-				"pagetriage-del-title",
-				"pagetriage-del-tooltip",
-				"pagetriage-tags-param-article-label"
 			]
 		},
 		"PageTriageDeletionTagsOptionsContentLanguageMessages": {
