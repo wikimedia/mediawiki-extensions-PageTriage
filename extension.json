@@ -187,7 +187,6 @@
 			],
 			"dependencies": [
 				"mediawiki.Title",
-				"mediawiki.Uri",
 				"mediawiki.api",
 				"mediawiki.user",
 				"moment",
@@ -660,8 +659,7 @@
 			"dependencies": [
 				"ext.pageTriage.external",
 				"mediawiki.api",
-				"mediawiki.jqueryMsg",
-				"mediawiki.Uri"
+				"mediawiki.jqueryMsg"
 			]
 		},
 		"ext.pageTriage.sidebarLink": {

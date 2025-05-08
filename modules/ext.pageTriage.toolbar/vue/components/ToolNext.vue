@@ -76,15 +76,14 @@ module.exports = {
 					return;
 				}
 				const nextPage = res.pagetriagelist.pages[ 0 ];
-				const uri = new mw.Uri( mw.config.get( 'wgArticlePath' ).replace(
+				const uri = new URL( mw.config.get( 'wgArticlePath' ).replace(
 					'$1', mw.util.wikiUrlencode( nextPage.title )
-				) );
+				), location.href );
 				if ( nextPage.is_redirect === '1' ) {
-					uri.query.redirect = 'no';
+					uri.searchParams.set( 'redirect', 'no' );
 				}
 				if ( this.pageTriageUi ) {
-					// eslint-disable-next-line camelcase
-					uri.query.pagetriage_ui = this.pageTriageUi;
+					uri.searchParams.set( 'pagetriage_ui', this.pageTriageUi );
 				}
 				return uri.toString();
 			} )
