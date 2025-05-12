@@ -114,27 +114,30 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	}
 
 	/**
-	 * Similar to MediaWikiIntegrationTestCase->insertPage(), but writes article metatdata (data in the
-	 * pagetriage_page_tags SQL table) synchronously. Normally it is done with an asynchronous
-	 * DeferredUpdate, but that is hard to test.
+	 * Similar to MediaWikiIntegrationTestCase->insertPage(), but creates a page in the
+	 * draft namespace, and calculates PageTriage metadata immediately. Can also specify
+	 * several advanced things in the options (copyvio, ORES).
 	 *
-	 * @param string $title
-	 * @param bool $draftQualityClass
-	 * @param bool $copyvio
+	 * @param string $title Draft title. Do not include the namespace.
+	 * @param false|int $draftQualityClass Related to Extension:ORES.
+	 * @param bool $copyvio Whether or not to set the copyvio pagetriage_page_tag.
 	 * @param ?UserIdentity $user If null, will create a random user for you.
 	 * @param string $text Wikitext of the draft page.
 	 * @return int page_id
 	 */
 	protected function makeDraft(
-		$title,
+		string $title,
+		// TODO: change to false|int once PHP 7.4 CI gets turned off
+		// (union types is PHP 8.0)
 		$draftQualityClass = false,
-		$copyvio = false,
+		bool $copyvio = false,
 		?UserIdentity $user = null,
 		?string $text = 'some content'
 	) {
 		if ( !$user ) {
 			$user = static::getTestUser()->getUser();
 		}
+
 		$pageAndTitle = $this->insertPage( $title, $text, $this->draftNsId, $user );
 		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $pageAndTitle[ 'title' ] );
 		$revId = $page->getLatest();
@@ -144,10 +147,15 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		if ( $copyvio ) {
 			$this->setCopyvio( $pageAndTitle[ 'id' ], $revId );
 		}
+
+		// Write article metatdata (data in the pagetriage_page_tags SQL table) synchronously.
+		// Normally this is done with an asynchronous DeferredUpdate, but that is hard to
+		// test.
 		$acp = ArticleCompileProcessor::newFromPageId( [
 			$page->getId()
 		] );
 		$acp->compileMetadata();
+
 		return $pageAndTitle[ 'id' ];
 	}
 
