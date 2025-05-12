@@ -55,6 +55,8 @@ class SpecialNewPagesFeedTest extends SpecialPageTestBase {
 	}
 
 	public function testShowIpModuleDoesLoadIfUserHasPermissions() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
+
 		$this->enableAutoCreateTempUser();
 		$mediaWikiServices = $this->getServiceContainer();
 		$title = $mediaWikiServices->getTitleFactory()->newFromText( __METHOD__ );
