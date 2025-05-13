@@ -1,8 +1,7 @@
 <template>
 	<cdx-lookup
 		v-model:selected="usernameVal"
-		:initial-input-value="username"
-		:value="currentSearchTerm"
+		v-model:input-value="currentSearchTerm"
 		:menu-items="menuItems"
 		class="mwe-vue-pt-username-lookup"
 		:menu-config="menuConfig"
