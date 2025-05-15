@@ -34,6 +34,9 @@ class PageTriageTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testBulkSetTagsUpdated() {
+		// This test started being flaky around May 2025. T394375
+		$this->markTestSkipped();
+
 		// Skipping this test if ORES is not loaded. See: T335998
 		$this->markTestSkippedIfExtensionNotLoaded( 'ORES' );
 
