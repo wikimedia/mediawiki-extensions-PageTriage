@@ -200,9 +200,9 @@ const Article = Backbone.Model.extend( {
 			);
 		}
 
-		const titleUrl = new mw.Uri( mw.util.getUrl( article.get( 'title' ) ) );
+		const titleUrl = new URL( mw.util.getUrl( article.get( 'title' ) ), location.href );
 		if ( Number( article.get( 'is_redirect' ) ) === 1 ) {
-			titleUrl.query.redirect = 'no';
+			titleUrl.searchParams.set( 'redirect', 'no' );
 		}
 		article.set( 'title_url', titleUrl.toString() );
 	},
@@ -245,10 +245,10 @@ const Article = Backbone.Model.extend( {
 	},
 
 	buildRedLink: function ( url, exists ) {
-		url = new mw.Uri( url );
+		url = new URL( url, location.href );
 		if ( !exists ) {
-			url.query.action = 'edit';
-			url.query.redlink = 1;
+			url.searchParams.set( 'action', 'edit' );
+			url.searchParams.set( 'redlink', '1' );
 		}
 		return url.toString();
 	},
