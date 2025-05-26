@@ -7,13 +7,15 @@
 			"Priviet",
 			"Yearning",
 			"Ykhwong",
-			"아라"
+			"아라",
+			"YeBoy371"
 		]
 	},
 	"pagetriage": "문서 선별",
 	"newpagesfeed": "새 문서 피드",
 	"pagetriage-desc": "새 문서를 검토하고 승인을 쉽게 합니다",
 	"pagetriage-pagecuration": "문서 큐레이션",
+	"pagetriage-new-page-patrol": "새 문서 점검",
 	"pagetriage-please-wait": "기다려 주세요...",
 	"pagetriage-api-invalidid": "제공한 ID($1)가 올바르지 않습니다.",
 	"pagetriage-markpatrolled": "이 문서를 검토한 것으로 표시",
