@@ -13,7 +13,7 @@
 		"lint:fix:js": "npm -s run lint:js -- --fix",
 		"lint:fix:styles": "npm -s run lint:styles -- --fix",
 		"lint:js": "eslint --cache .",
-		"lint:styles": "stylelint \"**/*.{less,css,vue}\"",
+		"lint:styles": "stylelint --cache \"**/*.{less,css,vue}\"",
 		"lint:i18n": "banana-checker --requireLowerCase=0 i18n/"
 	},
 	"devDependencies": {

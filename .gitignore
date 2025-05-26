@@ -9,3 +9,4 @@ vendor
 .vscode
 /coverage/
 tests/selenium/log/
+/.stylelintcache
