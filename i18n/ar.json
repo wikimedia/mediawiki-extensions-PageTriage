@@ -11,7 +11,8 @@
 			"Alshamiri1",
 			"علاء",
 			"بهتين شوكت",
-			"Dyolf77 (WMF)"
+			"Dyolf77 (WMF)",
+			"Lolekek"
 		]
 	},
 	"pagetriage": "فارز الصفحات",
@@ -409,13 +410,13 @@
 	"pagetriage-info-problem-non-autoconfirmed": "محرر جديد",
 	"pagetriage-info-problem-non-autoconfirmed-desc": "تم إنشاء هذه الصفحة بواسطة محرر غير مؤكد تلقائيا.",
 	"pagetriage-info-problem-blocked": "مستخدم ممنوع",
-	"pagetriage-info-problem-blocked-desc": "تم إنشاء هذه الصفحة من قبل مستخدم ممنوع.",
+	"pagetriage-info-problem-blocked-desc": "أُنشئت هذه الصفحة من قبل مستخدم ممنوع.",
 	"pagetriage-info-problem-no-categories": "بدون تصنيفات",
 	"pagetriage-info-problem-no-categories-desc": "لا تنتمي هذه الصفحة إلى أية تصنيفات.",
 	"pagetriage-info-problem-orphan": "يتيمة",
 	"pagetriage-info-problem-orphan-desc": "لا توجد صفحات أخرى تصل إلى هذه الصفحة.",
 	"pagetriage-info-problem-recreated": "حٌذِف سابقا",
-	"pagetriage-info-problem-recreated-desc": "تم حذف هذه الصفحة من قبل",
+	"pagetriage-info-problem-recreated-desc": "حُذفت هذه الصفحة من قبل",
 	"pagetriage-info-problem-no-references": "لا استشهادات",
 	"pagetriage-info-problem-no-references-desc": "هذه الصفحة لا تستشهد بأي مصادر.",
 	"pagetriage-info-problem-copyvio": "انتهاكات حقوق الطبع والنشر",
