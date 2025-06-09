@@ -384,7 +384,7 @@
 	"apihelp-pagetriagetagcopyvio-param-untag": "Odstranitev oznake kršitve avtorskih pravic",
 	"apihelp-pagetriagetagging-summary": "Dodajte oznake v članek.",
 	"apihelp-pagetriagetagging-param-pageid": "Članek, v katerega želite dodati oznake.",
-	"apihelp-pagetriagetagging-param-wikitext": "Wikibesedilo, ki vsebuje oznako, dodano članku.",
+	"apihelp-pagetriagetagging-param-wikitext": "Vikibesedilo, ki vsebuje oznako, dodano članku.",
 	"apihelp-pagetriagetagging-param-deletion": "Ne glede na to, ali je označevanje namenjeno predlaganju za izbris.",
 	"apihelp-pagetriagetagging-param-note": "Osebno sporočilo pregledovalcev ustvarjalcem strani.",
 	"apihelp-pagetriagetagging-param-taglist": "Seznam oznak, ločenih z navpičnico.",
