@@ -19,7 +19,7 @@ describe( 'PageTriage Toolbar', () => {
 		const nonAdminUserBot = new MWBot();
 
 		await nonAdminUserBot.loginGetEditToken( {
-			apiUrl: `${ browser.config.baseUrl }/api.php`,
+			apiUrl: `${ browser.options.baseUrl }/api.php`,
 			username: username,
 			password: password
 		} );
@@ -59,7 +59,7 @@ describe( 'PageTriage Toolbar', () => {
 
 		await EditPage.open( articleName );
 
-		await expect( await EditPage.content ).toHaveValueContaining( '{{ai-generated|date=' );
+		await expect( await EditPage.content ).toHaveValue( expect.stringContaining( '{{ai-generated|date=' ) );
 
 	} );
 
@@ -85,7 +85,7 @@ describe( 'PageTriage Toolbar', () => {
 
 		await EditPage.open( `User talk:${ username }` );
 
-		await expect( await EditPage.content ).toHaveValueContaining( comment );
+		await expect( await EditPage.content ).toHaveValue( expect.stringContaining( comment ) );
 
 	} );
 } );

@@ -39,6 +39,6 @@ describe( 'Special:NewPagesFeed', () => {
 		await NewPagesFeed.articleRows.waitForDisplayed();
 
 		// Check that unreviewed article shows up in Special:NewPagesFeed
-		await expect( await NewPagesFeed.listview ).toHaveTextContaining( articleName );
+		await expect( await NewPagesFeed.listview ).toHaveText( expect.stringContaining( articleName ) );
 	} );
 } );
