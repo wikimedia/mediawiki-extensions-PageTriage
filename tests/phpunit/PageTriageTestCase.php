@@ -127,9 +127,7 @@ abstract class PageTriageTestCase extends ApiTestCase {
 	 */
 	protected function makeDraft(
 		string $title,
-		// TODO: change to false|int once PHP 7.4 CI gets turned off
-		// (union types is PHP 8.0)
-		$draftQualityClass = false,
+		false|int $draftQualityClass = false,
 		bool $copyvio = false,
 		?UserIdentity $user = null,
 		?string $text = 'some content'
