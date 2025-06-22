@@ -136,6 +136,7 @@ class HooksTest extends PageTriageTestCase {
 		$title = Title::newFromText( 'Move me' );
 		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
 		$user = $this->getTestUser()->getUser();
+		$this->overrideUserPermissions( $user, [ 'edit', 'createpage', 'move' ] );
 		$content = ContentHandler::makeContent( 'Move this article', $title );
 		$comment = CommentStoreComment::newUnsavedComment( 'Comment' );
 		$updater = $page->newPageUpdater( $user );
