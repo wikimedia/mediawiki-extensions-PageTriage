@@ -5,7 +5,8 @@
 			"Bugoslav",
 			"Fitoschido",
 			"MaGa",
-			"Ponor"
+			"Ponor",
+			"Hijerovit"
 		]
 	},
 	"pagetriage": "Razvrstavanje stranica",
@@ -141,7 +142,7 @@
 	"pagetriage-filter-stat-predicted-issues-copyvio": "Kršenje autorskih prava",
 	"pagetriage-filter-stat-predicted-issues-none": "Nema",
 	"pagetriage-no-pages": "Nema stranica koje odgovaraju Vašim uvjetima.",
-	"pagetriage-warning-browser": "Ovo oruđe možda ne će raditi ispravno s preglednicima starijim nego Internet Explorer 11.",
+	"pagetriage-warning-browser": "Ovaj alat možda neće raditi ispravno s preglednicima starijim od Internet Explorera 11.",
 	"pagetriage-welcome": "Molimo Vas, provjerite niže navedene nove stranice, te tako pomozite projektu {{SITENAME}}. [$1 Saznajte više] · [$2 Ostavite povratne obavijesti]",
 	"pagetriage-note-reviewed": "Ova je stranica provjerena.",
 	"pagetriage-note-not-reviewed": "Ova stranica još nije provjerena.",
