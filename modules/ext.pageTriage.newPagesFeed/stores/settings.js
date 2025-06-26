@@ -329,6 +329,14 @@ module.exports = {
 				if ( this.params.keyword === 1 && !this.applied.nppFilterKeyword ) {
 					this.params.keyword = undefined;
 					this.unsaved.nppFilterKeyword = '';
+					this.unsaved.nppFilter = 'all';
+				}
+
+				// Bug fix T394100
+				if ( this.params.username === 1 && !this.applied.nppFilterUser ) {
+					this.params.username = undefined;
+					this.unsaved.nppFilterUser = '';
+					this.unsaved.nppFilter = 'all';
 				}
 			},
 			addAfcFilter: function () {
@@ -351,6 +359,14 @@ module.exports = {
 				if ( this.params.keyword === 1 && !this.applied.afcFilterKeyword ) {
 					this.params.keyword = undefined;
 					this.unsaved.afcFilterKeyword = '';
+					this.unsaved.afcFilter = 'all';
+				}
+
+				// Bug fix T394100
+				if ( this.params.username === 1 && !this.applied.afcFilterUser ) {
+					this.params.username = undefined;
+					this.unsaved.afcFilterUser = '';
+					this.unsaved.afcFilter = 'all';
 				}
 			},
 			// Set API parameters from form values
