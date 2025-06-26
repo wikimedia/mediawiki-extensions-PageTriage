@@ -35,13 +35,16 @@ module.exports = ToolView.extend( {
 	// overwrite parent function
 	setIcon: function ( dir ) {
 		if ( this.model.get( 'patrol_status' ) === '3' ) {
+			dir = 'special';
 			this.icon = 'icon_mark_autopatrolled.png'; // autopatrolled icon
 		}
 		if ( typeof dir !== 'string' ) {
 			dir = 'normal';
 		}
-		if ( dir === 'normal' && this.model.get( 'patrol_status' ) > 0 ) {
+		if ( dir === 'normal' && this.model.get( 'patrol_status' ) > 0 &&
+			this.model.get( 'patrol_status' ) !== '3' ) {
 			dir = 'special';
+			this.icon = 'icon_mark_reviewed.png';
 		}
 		this.$icon.attr( 'src', this.iconPath( dir ) );
 	},
