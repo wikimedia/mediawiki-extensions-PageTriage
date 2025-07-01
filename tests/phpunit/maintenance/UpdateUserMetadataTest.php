@@ -12,7 +12,7 @@ use MediaWiki\Extension\PageTriage\Maintenance\UpdateUserMetadata;
  * @group medium
  * @group Database
  */
-class MaintenanceUpdateUserMetadataTest extends PageTriageTestCase {
+class UpdateUserMetadataTest extends PageTriageTestCase {
 
 	public function testSuccessfulUpdateUserMetadata() {
 		$mainNsPage = $this->insertPage( 'MainMetadata', 'Test 1', NS_MAIN );

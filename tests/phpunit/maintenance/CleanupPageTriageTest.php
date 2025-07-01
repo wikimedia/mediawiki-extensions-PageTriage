@@ -12,7 +12,7 @@ use MediaWiki\Extension\PageTriage\Maintenance\CleanupPageTriage;
  * @group medium
  * @group Database
  */
-class MaintenanceCleanupPageTriageTest extends PageTriageTestCase {
+class CleanupPageTriageTest extends PageTriageTestCase {
 
 	public function testSuccessfulPageTriageCleanup() {
 		// Allow PROJECT namespaces to be added to the queue

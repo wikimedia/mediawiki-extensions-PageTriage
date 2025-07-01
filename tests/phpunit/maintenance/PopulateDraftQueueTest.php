@@ -14,7 +14,7 @@ use MediaWiki\MainConfigNames;
  * @group medium
  * @group Database
  */
-class MaintenancePopulateDraftQueueTest extends PageTriageTestCase {
+class PopulateDraftQueueTest extends PageTriageTestCase {
 
 	public function setUp(): void {
 		parent::setUp();

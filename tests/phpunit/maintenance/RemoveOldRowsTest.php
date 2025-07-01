@@ -12,7 +12,7 @@ use MediaWiki\Extension\PageTriage\Maintenance\RemoveOldRows;
  * @group medium
  * @group Database
  */
-class MaintenanceRemoveOldRowsTest extends PageTriageTestCase {
+class RemoveOldRowsTest extends PageTriageTestCase {
 
 	public function testSuccessfulRemoveOldRows() {
 		$this->overrideConfigValue( 'PageTriageNamespaces', [ 0, 2 ] );
