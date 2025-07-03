@@ -144,7 +144,7 @@
 	"AutoloadClasses": {
 		"MediaWiki\\Extension\\PageTriage\\Maintenance\\CleanupPageTriage": "maintenance/cleanupPageTriage.php",
 		"MediaWiki\\Extension\\PageTriage\\Maintenance\\PopulateDraftQueue": "maintenance/populateDraftQueue.php",
-		"MediaWiki\\Extension\\PageTriage\\Maintenance\\UpdatePageTriageQueue": "cron/updatePageTriageQueue.php",
+		"MediaWiki\\Extension\\PageTriage\\Maintenance\\PurgeOldPages": "maintenance/purgeOldPages.php",
 		"MediaWiki\\Extension\\PageTriage\\Maintenance\\UpdateUserMetadata": "maintenance/updateUserMetadata.php"
 	},
 	"AutoloadNamespaces": {

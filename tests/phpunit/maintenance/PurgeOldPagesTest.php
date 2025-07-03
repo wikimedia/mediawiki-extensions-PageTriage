@@ -2,17 +2,17 @@
 
 namespace MediaWiki\Extension\PageTriage\Test;
 
-use MediaWiki\Extension\PageTriage\Maintenance\UpdatePageTriageQueue;
+use MediaWiki\Extension\PageTriage\Maintenance\PurgeOldPages;
 
 /**
- * Tests for the updatePageTriageQueue.php maintenance script.
+ * Tests for the purgeOldPages.php maintenance script.
  *
- * @covers \MediaWiki\Extension\PageTriage\Maintenance\UpdatePageTriageQueue
+ * @covers \MediaWiki\Extension\PageTriage\Maintenance\PurgeOldPages
  *
  * @group medium
  * @group Database
  */
-class UpdatePageTriageQueueTest extends PageTriageTestCase {
+class PurgeOldPagesTest extends PageTriageTestCase {
 
 	public function testSuccessfulRemoveOldRows() {
 		$this->overrideConfigValue( 'PageTriageNamespaces', [ 0, 2 ] );
@@ -37,7 +37,7 @@ class UpdatePageTriageQueueTest extends PageTriageTestCase {
 			->caller( __METHOD__ )
 			->execute();
 
-		$maint = new UpdatePageTriageQueue();
+		$maint = new PurgeOldPages();
 		$maint->execute();
 		$this->expectOutputString( "Started processing... \n" .
 			"cleanReviewedPagesAndUnusedNamespaces()... \n" .
