@@ -1,10 +1,8 @@
-'use strict';
-
-const NewPagesFeed = require( '../pageobjects/newpagesfeed.page' );
-const EditPage = require( '../pageobjects/editpage.page' );
-const CreateAccountPage = require( 'wdio-mediawiki/CreateAccountPage' );
-const RunJobs = require( 'wdio-mediawiki/RunJobs' );
-const Util = require( 'wdio-mediawiki/Util' );
+import NewPagesFeed from '../pageobjects/newpagesfeed.page.js';
+import EditPage from '../pageobjects/editpage.page.js';
+import CreateAccountPage from 'wdio-mediawiki/CreateAccountPage.js';
+import RunJobs from 'wdio-mediawiki/RunJobs.js';
+import { getTestString } from 'wdio-mediawiki/Util.js';
 
 describe( 'Special:NewPagesFeed', () => {
 	it( 'is viewable', async () => {
@@ -15,14 +13,14 @@ describe( 'Special:NewPagesFeed', () => {
 
 	it( 'new article appears in feed', async () => {
 		// Create account
-		const username = Util.getTestString( 'User-' );
-		const password = Util.getTestString();
+		const username = getTestString( 'User-' );
+		const password = getTestString();
 		await CreateAccountPage.createAccount( username, password );
 
 		// Create an unreviewed article
-		const articleName = Util.getTestString( 'NewArticle-' );
+		const articleName = getTestString( 'NewArticle-' );
 		await EditPage.open( articleName );
-		await EditPage.saveArticle( Util.getTestString() );
+		await EditPage.saveArticle( getTestString() );
 		RunJobs.run();
 
 		// close and reopen the browser window, logging out the user and making it easier

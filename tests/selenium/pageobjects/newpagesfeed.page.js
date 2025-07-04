@@ -1,6 +1,4 @@
-'use strict';
-
-const Page = require( 'wdio-mediawiki/Page' );
+import Page from 'wdio-mediawiki/Page.js';
 
 class NewPagesFeed extends Page {
 
@@ -17,4 +15,4 @@ class NewPagesFeed extends Page {
 	}
 }
 
-module.exports = new NewPagesFeed();
+export default new NewPagesFeed();

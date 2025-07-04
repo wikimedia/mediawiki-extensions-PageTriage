@@ -1,20 +1,19 @@
-'use strict';
-const Toolbar = require( '../pageobjects/toolbar.page' );
-const EditPage = require( '../pageobjects/editpage.page' );
-const LoginPage = require( 'wdio-mediawiki/LoginPage' );
-const RunJobs = require( 'wdio-mediawiki/RunJobs' );
-const Util = require( 'wdio-mediawiki/Util' );
-const MWBot = require( 'mwbot' );
-const articleName = Util.getTestString( 'NewArticle-' );
-const username = Util.getTestString( 'User-' );
-const Api = require( 'wdio-mediawiki/Api' );
+import Toolbar from '../pageobjects/toolbar.page.js';
+import EditPage from '../pageobjects/editpage.page.js';
+import LoginPage from 'wdio-mediawiki/LoginPage.js';
+import RunJobs from 'wdio-mediawiki/RunJobs.js';
+import MWBot from 'mwbot';
+import { getTestString } from 'wdio-mediawiki/Util.js';
+const articleName = getTestString( 'NewArticle-' );
+const username = getTestString( 'User-' );
+import { createAccount, mwbot } from 'wdio-mediawiki/Api.js';
 
 describe( 'PageTriage Toolbar', () => {
 	before( async () => {
-		const bot = await Api.bot();
+		const bot = await mwbot();
 		// Create account with known username and password
-		const password = Util.getTestString();
-		await Api.createAccount( bot, username, password );
+		const password = getTestString();
+		await createAccount( bot, username, password );
 
 		const nonAdminUserBot = new MWBot();
 
@@ -23,7 +22,7 @@ describe( 'PageTriage Toolbar', () => {
 			username: username,
 			password: password
 		} );
-		await nonAdminUserBot.create( articleName, Util.getTestString(), Util.getTestString() );
+		await nonAdminUserBot.create( articleName, getTestString(), getTestString() );
 		RunJobs.run();
 	} );
 
@@ -77,7 +76,7 @@ describe( 'PageTriage Toolbar', () => {
 
 		await Toolbar.tagToolFirstCheckbox.click();
 		await Toolbar.tagToolNoteBox.waitForDisplayed();
-		const comment = Util.getTestString( 'Comment-' );
+		const comment = getTestString( 'Comment-' );
 		await Toolbar.tagToolNoteBox.setValue( comment );
 		await Toolbar.tagToolSubmitButton.waitForEnabled();
 		await Toolbar.tagToolSubmitButton.click();

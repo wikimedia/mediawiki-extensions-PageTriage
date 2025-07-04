@@ -1,6 +1,4 @@
-'use strict';
-
-const Page = require( 'wdio-mediawiki/Page' );
+import Page from 'wdio-mediawiki/Page.js';
 
 class PageTriageToolbar extends Page {
 
@@ -33,4 +31,4 @@ class PageTriageToolbar extends Page {
 	}
 }
 
-module.exports = new PageTriageToolbar();
+export default new PageTriageToolbar();
