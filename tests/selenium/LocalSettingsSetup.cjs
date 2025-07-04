@@ -1,5 +1,3 @@
-'use strict';
-
 const childProcess = require( 'child_process' ),
 	process = require( 'process' ),
 	phpVersion = process.env.PHP_VERSION,
