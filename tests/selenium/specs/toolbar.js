@@ -2,27 +2,24 @@ import Toolbar from '../pageobjects/toolbar.page.js';
 import EditPage from '../pageobjects/editpage.page.js';
 import LoginPage from 'wdio-mediawiki/LoginPage.js';
 import RunJobs from 'wdio-mediawiki/RunJobs.js';
-import MWBot from 'mwbot';
 import { getTestString } from 'wdio-mediawiki/Util.js';
+import { createAccount, mwbot } from 'wdio-mediawiki/Api.js';
+
 const articleName = getTestString( 'NewArticle-' );
 const username = getTestString( 'User-' );
-import { createAccount, mwbot } from 'wdio-mediawiki/Api.js';
 
 describe( 'PageTriage Toolbar', () => {
 	before( async () => {
-		const bot = await mwbot();
-		// Create account with known username and password
+		// Use adminBot to create nonAdminBot's account. nonAdminBot is an account with
+		// no special user groups. Used to test a normal user that doesn't have
+		// autopatrolled, patroller, etc.
+		const adminBot = await mwbot();
 		const password = getTestString();
-		await createAccount( bot, username, password );
+		await createAccount( adminBot, username, password );
 
-		const nonAdminUserBot = new MWBot();
-
-		await nonAdminUserBot.loginGetEditToken( {
-			apiUrl: `${ browser.options.baseUrl }/api.php`,
-			username: username,
-			password: password
-		} );
-		await nonAdminUserBot.create( articleName, getTestString(), getTestString() );
+		// Create an article using nonAdminBot's account.
+		const nonAdminBot = await mwbot( username, password );
+		await nonAdminBot.create( articleName, getTestString(), getTestString() );
 		RunJobs.run();
 	} );
 
