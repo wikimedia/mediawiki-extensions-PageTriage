@@ -197,7 +197,7 @@ class Hooks implements
 			return;
 		}
 
-		DeferredUpdates::addCallableUpdate( static function () use ( $oldid, $newAdditionToFeed ) {
+		DeferredUpdates::addCallableUpdate( static function () use ( $oldid ) {
 			$acp = ArticleCompileProcessor::newFromPageId(
 				[ $oldid ],
 				false
