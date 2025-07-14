@@ -5,11 +5,13 @@ namespace MediaWiki\Extension\PageTriage\Maintenance;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Maintenance\Maintenance;
 
+// @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 /**
  * Remove page with namespace other than NS_MAIN/NS_USER from pagetriage queue
@@ -76,5 +78,7 @@ class CleanupPageTriage extends Maintenance {
 	}
 }
 
+// @codeCoverageIgnoreStart
 $maintClass = CleanupPageTriage::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreEnd
