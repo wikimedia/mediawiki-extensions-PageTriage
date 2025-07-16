@@ -12,7 +12,7 @@ use MediaWiki\Extension\PageTriage\Maintenance\PurgeOldPages;
 use MediaWiki\Maintenance\Maintenance;
 
 /**
- * @deprecated since 1.45. Use maintenance/purgeOldPages.php instead.
+ * @deprecated since 1.45. Use maintenance/PurgeOldPages.php instead.
  */
 class UpdatePageTriageQueue extends Maintenance {
 
