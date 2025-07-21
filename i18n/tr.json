@@ -16,7 +16,8 @@
 			"Sayginer",
 			"Tarkovsky",
 			"ToprakM",
-			"Vito Genovese"
+			"Vito Genovese",
+			"Joseph"
 		]
 	},
 	"pagetriage": "Sayfa Sıralayıcı",
@@ -348,7 +349,7 @@
 	"apihelp-pagetriagelist-param-showreviewed": "İncelemenin dahil edilip edilmeyeceği.",
 	"apihelp-pagetriagelist-param-showunreviewed": "İncelenmemiş olarak dahil edilip edilmeyeceği.",
 	"apihelp-pagetriagelist-param-showdeleted": "\"Silinmesi önerilen\" ifadesinin dahil edilip edilmeyeceği",
-	"apihelp-pagetriagelist-param-limit": "Döndürülecek maksimum sonuç sayısı.",
+	"apihelp-pagetriagelist-param-limit": "Döndürülecek en fazla sonuç sayısı.",
 	"apihelp-pagetriagelist-param-offset": "Başlamak için zaman damgası.",
 	"apihelp-pagetriagelist-param-pageoffset": "Sayfa kimliğinin başlaması ($1offset parametresinin de geçirilmesini gerektirir).",
 	"apihelp-pagetriagelist-param-dir": "Listenin sıralanması gereken yön - oldestfirst, newestfirst, oldestreview veya newestreview.",

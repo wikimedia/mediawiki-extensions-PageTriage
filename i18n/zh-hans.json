@@ -35,7 +35,8 @@
 			"MPGuy2824",
 			"LittlePaw365",
 			"Xyb",
-			"LowensteinYang"
+			"LowensteinYang",
+			"SaoMikoto"
 		]
 	},
 	"pagetriage": "页面分诊台",
@@ -407,7 +408,7 @@
 	"log-name-pagetriage-deletion": "删除标签日志",
 	"log-description-pagetriage-deletion": "这是在页面处理删除向导进行的操作的日志。",
 	"logentry-pagetriage-curation-reviewed": "$1{{GENDER:$2|标记}}$3为已审核",
-	"logentry-pagetriage-curation-unreviewed": "$1{{GENDER:$2|标记}}$3为未审核",
+	"logentry-pagetriage-curation-unreviewed": "$1将{{GENDER:$2|标记}}$3为未审核",
 	"logentry-pagetriage-curation-tag": "$1已将$3{{GENDER:$2|标记}}上{{PLURAL:$5|标签}}$4",
 	"logentry-pagetriage-curation-delete": "$1已用$4{{PLURAL:$5|标签}}将$3{{GENDER:$2|标记}}为待删除",
 	"logentry-pagetriage-deletion-delete": "$1用$4{{PLURAL:$5|标签}}{{GENDER:$2|标记}}$3待删除",
