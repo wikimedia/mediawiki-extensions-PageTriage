@@ -67,45 +67,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 		$blockUserAction->placeBlock();
 	}
 
-	public function testLogin() {
-		$sessionArray = [];
-
-		foreach ( self::$users as $key => $user ) {
-			$params = [
-				'action' => 'login',
-				'lgname' => $user->getUser()->getName(),
-				'lgpassword' => $user->getPassword()
-			];
-			[ $result, , $session ] = $this->doApiRequest( $params );
-			$this->assertArrayHasKey( "login", $result );
-			$this->assertArrayHasKey( "result", $result['login'] );
-			$this->assertEquals( "NeedToken", $result['login']['result'] );
-			$token = $result['login']['token'];
-
-			$params = [
-				'action' => 'login',
-				'lgtoken' => $token,
-				'lgname' => $user->getUser()->getName(),
-				'lgpassword' => $user->getPassword()
-			];
-			[ $result, , $session ] = $this->doApiRequest( $params, $session );
-			$this->assertArrayHasKey( "login", $result );
-			$this->assertArrayHasKey( "result", $result['login'] );
-			$this->assertEquals( "Success", $result['login']['result'] );
-
-			$this->assertNotEmpty( $session, 'API Login must return a session' );
-
-			$sessionArray[$key] = $session;
-
-		}
-
-		return $sessionArray;
-	}
-
-	/**
-	 * @depends testLogin
-	 */
-	public function testSuccessfulReviewAction( $sessionArray ) {
+	public function testSuccessfulReviewAction() {
 		$pageId = $this->makeDraft( 'Test' );
 
 		[ $result, , ] = $this->doApiRequestWithToken(
@@ -115,16 +77,13 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 				'reviewed' => '1',
 				'skipnotif' => '1'
 			],
-			$sessionArray['one'],
+			null,
 			self::$users['one']->getUser()
 		);
 
 		$this->assertEquals( "success", $result['pagetriageaction']['result'] );
 	}
 
-	/**
-	 * @depends testLogin
-	 */
 	public function testBlockedUserReview() {
 		$pageId = $this->makeDraft( 'Test' );
 
@@ -142,9 +101,6 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 		$this->assertNotEquals( "success", $result['pagetriageaction']['result'] );
 	}
 
-	/**
-	 * @depends testLogin
-	 */
 	public function testBlockedUserUnReview() {
 		$pageId = $this->makeDraft( 'Test' );
 
@@ -174,10 +130,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 		$this->assertNotEquals( "success", $result['pagetriageaction']['result'] );
 	}
 
-	/**
-	 * @depends testLogin
-	 */
-	public function testNoChangeReviewAction( $sessionArray ) {
+	public function testNoChangeReviewAction() {
 		$pageId = $this->makeDraft( 'Test ' );
 
 		[ $result ] = $this->doApiRequestWithToken(
@@ -187,7 +140,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 				'reviewed' => '1',
 				'skipnotif' => '1'
 			],
-			$sessionArray['one'],
+			null,
 			self::$users['one']->getUser()
 		);
 
@@ -204,7 +157,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 				'reviewed' => '1',
 				'skipnotif' => '1'
 			],
-			$sessionArray['one'],
+			null,
 			self::$users['one']->getUser()
 		);
 
@@ -219,10 +172,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 		);
 	}
 
-	/**
-	 * @depends testLogin
-	 */
-	public function testPermissionError( $sessionArray ) {
+	public function testPermissionError() {
 		$pageId = $this->makeDraft( 'Test ' );
 
 		$this->expectException( ApiUsageException::class );
@@ -232,7 +182,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 			'pageid' => $pageId,
 			'skipnotif' => 1,
 			'reviewed' => '1'
-		], $sessionArray['two'], self::$users['two']->getUser() );
+		], null, self::$users['two']->getUser() );
 
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'You don\'t have permission to mark others\' edits as patrolled.' );
@@ -241,7 +191,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 			'pageid' => $pageId,
 			'skipnotif' => 1,
 			'reviewed' => '1'
-		], $sessionArray['autopatrolleduser'], self::$users['autopatrolleduser']->getUser() );
+		], null, self::$users['autopatrolleduser']->getUser() );
 	}
 
 	public function testPermissionErrorAnon() {
@@ -259,10 +209,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 		);
 	}
 
-	/**
-	 * @depends testLogin
-	 */
-	public function testPageError( $sessionArray ) {
+	public function testPageError() {
 		$exception = false;
 		try {
 			$this->doApiRequestWithToken(
@@ -270,7 +217,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 					'action' => 'pagetriageaction',
 					'pageid' => 999999999,
 					'reviewed' => '1' ],
-				$sessionArray['one'],
+				null,
 				self::$users['one']->getUser()
 			);
 		} catch ( ApiUsageException $e ) {
