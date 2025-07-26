@@ -81,5 +81,15 @@ global.mw.messagePoster = {
 };
 global.mw.Api = Api;
 global.mw.Rest = Rest;
+global.mw.message = function ( key ) {
+	return {
+		text: function () {
+			return `${ key }`;
+		},
+		escaped: function () {
+			return `${ key }`;
+		}
+	};
+};
 global.IntersectionObserver = IntersectionObserver;
 global.mw.user.options = new mw.Map();
