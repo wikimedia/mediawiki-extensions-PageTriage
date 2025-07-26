@@ -66,7 +66,7 @@ function createShowIpLink( k, v, title ) {
 	// get the empty showIp link element
 	const $showIpLink = $element.find( '.ext-page-triage-tempaccount-show-ip-link' );
 	if ( $showIpLink ) {
-		$showIpLink.append( mw.msg( 'pagetriage-new-page-feed-show-ip' ) );
+		$showIpLink.append( mw.message( 'pagetriage-new-page-feed-show-ip' ).escaped() );
 		$showIpLink.on( 'click', () => {
 			const username = $tempUserLink.text();
 			getTempAccountUserIpAddress( username, title ).then( ( { ips } ) => {
@@ -77,7 +77,7 @@ function createShowIpLink( k, v, title ) {
 				if ( ipResult ) {
 					$showIpLink.replaceWith( `<a class="cdx-link" href="/wiki/Special:IPContributions/${ ipResult }">${ ipResult }</a>` );
 				} else {
-					$showIpLink.replaceWith( `${ mw.msg( 'pagetriage-new-page-feed-show-ip-not-found' ) }` );
+					$showIpLink.replaceWith( `${ mw.message( 'pagetriage-new-page-feed-show-ip-not-found' ).escaped() }` );
 				}
 			} );
 		} );
