@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Olve Utne"
+			"Olve Utne",
+			"Yupik"
 		]
 	},
 	"pagetriage-author-blocked": "Buđđusum",
+	"pagetriage-filter-username": "Adnejnamma",
 	"pagetriage-info-history-header": "Histurrja",
 	"pagetriage-info-problem-blocked": "Buđđusum adnej",
 	"pagetriage-info-problem-blocked-desc": "Dát bielle lij állgáduvvum buđđusum adnejist."
