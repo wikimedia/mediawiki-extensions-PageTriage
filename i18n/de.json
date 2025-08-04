@@ -9,7 +9,8 @@
 			"Shirayuki",
 			"Umlaut",
 			"Wnme",
-			"The Other Karma"
+			"The Other Karma",
+			"PretzelRocky"
 		]
 	},
 	"pagetriage": "Seitenprüfungshilfe",
@@ -160,6 +161,7 @@
 	"pagetriage-add-a-note-creator": "Füge eine Nachricht für den Autor hinzu: (optional)",
 	"pagetriage-add-a-note-for-options-label": "Sende eine Nachricht an:",
 	"pagetriage-add-a-note-for-option-creator": "Ersteller (Benutzer:$1)",
+	"pagetriage-button-add-a-note-to-creator": "Füge eine Nachricht für den Ersteller hinzu",
 	"pagetriage-button-send-a-note": "Nachricht senden",
 	"pagetriage-add-a-note-reviewer": "Füge eine Nachricht für den Prüfer hinzu: (optional)",
 	"pagetriage-personal-default-note": "Verfasse einen nützlichen Hinweis an {{GENDER:$1|$1}}. Er wird auf {{GENDER:$1|seiner|ihrer}} Diskussionsseite gespeichert.",
@@ -449,6 +451,7 @@
 	"action-pagetriage-copyvio": "Seiten als vermutliche Urheberrechtsverletzungen zu markieren",
 	"group-copyviobot": "URV-Bots",
 	"group-copyviobot-member": "{{GENDER:$1|URV-Bot}}",
+	"tag-pagetriage": "Seitentriage",
 	"apihelp-pagetriageaction-description": "Markiert einen Artikel als überprüft oder nicht überprüft.",
 	"apihelp-pagetriageaction-summary": "Markiert einen Artikel als überprüft oder nicht überprüft.",
 	"apihelp-pagetriageaction-param-pageid": "ID für die Seite, auf der die Aktion ausgeführt wird.",
