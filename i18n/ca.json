@@ -4,12 +4,14 @@
 			"Arnaugir",
 			"Fitoschido",
 			"Vriullop",
-			"Paucabot"
+			"Paucabot",
+			"Yupik"
 		]
 	},
 	"pagetriage": "Triatge de pàgines",
 	"pagetriage-categories": "$1 {{PLURAL:$1|categoria|categories}}",
 	"pagetriage-active-filters": "Filtres actius:",
+	"pagetriage-filter-username": "Nom d'usuari",
 	"pagetriage-warning-browser": "Potser aquesta eina no funcioni correctament en navegadors anteriors a l’Internet Explorer 11.",
 	"pagetriage-discuss-link": "{{GENDER:$1|Discussió}}",
 	"pagetriage-discuss-link-title": "{{GENDER:$1|Discussió}}"
