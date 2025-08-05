@@ -688,6 +688,9 @@ module.exports = ToolView.extend( {
 			promises = [];
 
 		// check for any missing parameters
+		// also check if there are duplicate tag codes
+		// (and removing the duplicates. See: T354403)
+		const uniqueTags = new Set();
 		// eslint-disable-next-line no-jquery/no-each-util
 		$.each( this.selectedTag, ( key, tagObj ) => {
 			for ( const param in tagObj.params ) {
@@ -712,6 +715,16 @@ module.exports = ToolView.extend( {
 					} )
 				);
 			}
+
+			if ( tagObj.code !== undefined ) {
+				if ( uniqueTags.has( tagObj.code ) ) {
+					// Remove tagObject from the array of selected tags
+					delete this.selectedTag[ key ];
+				} else {
+					uniqueTags.add( tagObj.code );
+				}
+			}
+
 		} );
 
 		// reviewed value must be either '0' or '1'
