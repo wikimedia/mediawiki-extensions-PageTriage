@@ -79,15 +79,27 @@
 	],
 	"ActionFilteredLogs": {
 		"pagetriage-curation": {
-			"review": [
+			"review-all": [
 				"reviewed",
 				"reviewed-article",
 				"reviewed-redirect"
 			],
-			"unreview": [
+			"review-article": [
+				"reviewed-article"
+			],
+			"review-redirect": [
+				"review-redirect"
+			],
+			"unreview-all": [
 				"unreviewed",
 				"unreviewed-redirect",
 				"unreviewed-article"
+			],
+			"unreview-article": [
+				"unreview-article"
+			],
+			"unreview-redirect": [
+				"unreview-redirect"
 			],
 			"enqueue": [
 				"enqueue"
