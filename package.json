@@ -21,7 +21,7 @@
 		"@pinia/testing": "^0.1.2",
 		"@vue/test-utils": "2.4.6",
 		"@vue/vue3-jest": "29.2.6",
-		"@wdio/cli": "9.15.0",
+		"@wdio/cli": "9.18.4",
 		"@wdio/junit-reporter": "9.15.0",
 		"@wdio/local-runner": "9.15.0",
 		"@wdio/mocha-framework": "9.15.0",
