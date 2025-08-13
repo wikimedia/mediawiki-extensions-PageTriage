@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Yueman"
+		]
+	},
+	"pagetriage-filter-ns-all": "全部",
+	"pagetriage-filter-stat-all": "全部",
+	"pagetriage-filter-stat-namespace": "空間名",
+	"pagetriage-tags-param-date-label": "日子：",
+	"pagetriage-tags-param-free-yes-label": "係",
+	"pagetriage-info-help": "幫手",
+	"pagetriage-toolbar-close": "閂"
+}
