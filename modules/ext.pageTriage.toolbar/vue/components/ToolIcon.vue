@@ -1,48 +1,53 @@
 <template>
-	<div
-		class="mwe-pt-tool-icon-container"
-		@click="click"
-	>
-		<div
-			:class="disabled ? `mwe-pt-tool-icon-${file}-disabled mwe-pt-tool-icon-disabled` :
-				useSpecialIcon ? `mwe-pt-tool-icon-${file}-special` :
-				`mwe-pt-tool-icon-${file}`"
-			class="mwe-pt-tool-icon"
-			:title="title"
-		>
-		</div>
+	<div class="mwe-pt-tool-icon-container" @click="click">
+		<div :class="iconClass" :title></div>
 	</div>
 </template>
 
 <script>
-/**
- *  Tool Icon
- */
-
 // @vue/component
-module.exports = {
+module.exports = exports = {
 	name: 'ToolIcon',
 	props: {
-		title: {
-			type: String,
-			required: true
-		},
-		disabled: {
-			type: Boolean,
-			required: true
-		},
 		file: {
 			type: String,
 			required: true
 		},
+		title: {
+			type: String,
+			required: true
+		},
+		isOpen: {
+			type: Boolean,
+			default: false
+		},
+		disabled: {
+			type: Boolean,
+			default: false
+		},
 		useSpecialIcon: {
 			type: Boolean,
-			required: false
+			default: false
 		}
 	},
 	emits: [ 'click' ],
+	computed: {
+		iconClass() {
+			let classes = 'mwe-pt-tool-icon mwe-pt-tool-icon-' + this.file;
+
+			if ( this.disabled ) {
+				classes += '-disabled mwe-pt-tool-icon-disabled';
+			} else if ( this.isOpen ) {
+				classes += '-active';
+			} else if ( this.useSpecialIcon ) {
+				classes += '-special';
+			}
+
+			return classes;
+		}
+	},
 	methods: {
-		click: function () {
+		click() {
 			if ( !this.disabled ) {
 				this.$emit( 'click' );
 			}

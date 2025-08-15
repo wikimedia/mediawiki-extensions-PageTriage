@@ -281,7 +281,7 @@ const Article = Backbone.Model.extend( {
 
 	addHistory: function () {
 		this.revisions = new RevisionList( { eventBus: this.eventBus, pageId: this.pageId } );
-		this.revisions.fetch();
+		this.revisions.fetch( { success: () => this.trigger( 'ready' ) } );
 	}
 } );
 

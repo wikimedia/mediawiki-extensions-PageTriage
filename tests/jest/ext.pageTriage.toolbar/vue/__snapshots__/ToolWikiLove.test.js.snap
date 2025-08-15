@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToolWikiLove.vue renders properly 1`] = `
+<div
+  class="mwe-pt-tool"
+  id="mwe-pt-wikilove"
+>
+  <div
+    class="mwe-pt-tool-icon-container"
+  >
+    <div
+      class="mwe-pt-tool-icon mwe-pt-tool-icon-wikilove"
+      title="Send appreciation to the authors"
+    />
+  </div>
+  
+  <div
+    class="mwe-pt-tool-pokey mwe-pt-tool-pokey-not-flipped"
+    style="display: none;"
+  />
+  <div
+    class="mwe-pt-tool-flyout mwe-pt-tool-flyout-not-flipped"
+    style="display: none;"
+  >
+    
+    <span
+      class="mwe-pt-tool-title"
+    >
+      WikiLove
+    </span>
+    <a
+      class="mwe-pt-flyout-help-link"
+      href="//en.wikipedia.org/wiki/Wikipedia:Page_Curation/Help#WikiLove"
+    >
+      Learn more »
+    </a>
+    <span
+      class="mwe-pt-tool-close"
+    >
+      Close
+    </span>
+    
+    <div
+      class="mwe-pt-tool-content"
+    >
+      
+      <div>
+        Select the names of editors you wish to thank.
+      </div>
+      <div
+        class="mwe-pt-article-contributor-list"
+      >
+        
+        
+      </div>
+      <button
+        class="cdx-button cdx-button--action-progressive cdx-button--weight-normal cdx-button--size-medium cdx-button--framed"
+      >
+        
+        Send WikiLove
+        
+      </button>
+      
+      
+      
+      
+      
+    </div>
+  </div>
+  
+</div>
+`;

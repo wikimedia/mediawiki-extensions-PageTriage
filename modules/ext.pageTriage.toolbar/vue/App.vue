@@ -1,7 +1,7 @@
 <template>
 	<!-- used for the drag event listener and prevents page interaction while dragging toolbar -->
 	<div
-		v-show="isDragging === true"
+		v-show="isDragging"
 		id="mwe-pt-toolbar-drag-area"
 		ref="dragArea"
 	></div>
@@ -10,9 +10,8 @@
 		id="mwe-pt-toolbar"
 		ref="toolbar"
 		:class="displayClass"
-		:style="style"
-		@pointerdown="dragEnable"
-	>
+		:style
+		@pointerdown="dragEnable">
 		<div v-show="display === 'maximized'" id="mwe-pt-toolbar-active">
 			<div id="mwe-pt-toolbar-main">
 				<tool-minimize
@@ -21,7 +20,16 @@
 				<!-- Individual toolbar icons go here. You can place Vue components in bewteen
 				them. -->
 				<span ref="articleInfoTool" class="mwe-pt-hidden"></span>
-				<span ref="wikiLoveTool" class="mwe-pt-hidden"></span>
+				<tool-wiki-love
+					v-if="pageTriageUi === 'wikilove' && isFlyoutEnabled( 'wikiLove' )"
+					:article
+					:event-bus
+				></tool-wiki-love>
+				<span
+					v-else
+					ref="wikiLoveTool"
+					class="mwe-pt-hidden"
+				></span>
 				<span ref="markTool" class="mwe-pt-hidden"></span>
 				<span ref="tagsTool" class="mwe-pt-hidden"></span>
 				<span ref="deleteTool" class="mwe-pt-hidden"></span>
@@ -60,7 +68,7 @@ const { Article, contentLanguageMessages } = require( 'ext.pageTriage.util' );
 // Add content language messages
 contentLanguageMessages.set( require( '../contentLanguageMessages.json' ) );
 
-const { ref, provide } = require( 'vue' ),
+const { ref } = require( 'vue' ),
 	// create an event aggregator
 	eventBus = _.extend( {}, Backbone.Events ),
 	config = require( '../config.json' ),
@@ -85,6 +93,7 @@ const { ref, provide } = require( 'vue' ),
 
 const ToolMinimize = require( './components/ToolMinimize.vue' );
 const ToolNext = require( './components/ToolNext.vue' );
+const ToolWikiLove = require( './components/ToolWikiLove.vue' );
 
 // Tracks position of toolbar during drag.
 const pos = {
@@ -96,7 +105,8 @@ const pos = {
 module.exports = {
 	components: {
 		ToolMinimize,
-		ToolNext
+		ToolNext,
+		ToolWikiLove
 	},
 	props: {
 		pageTriageUi: {
@@ -105,12 +115,11 @@ module.exports = {
 		}
 	},
 	setup: function () {
-		const showFlyout = ref( false );
-		const updateShowFlyout = ( value ) => {
-			showFlyout.value = value;
-		};
-		provide( 'showFlyout', { showFlyout, updateShowFlyout } );
 		return {
+			currentTool: null,
+			currentFlyout: null,
+			currentPokey: null,
+
 			// placeholder references for inserting backbone tools
 			articleInfoTool: ref( null ),
 			wikiLoveTool: ref( null ),
@@ -124,11 +133,7 @@ module.exports = {
 			// placeholder reference for toolbar
 			toolbar: ref( null ),
 			// placeholder reference for text dir
-			dir: ref( 'ltr' ),
-			// TODO: Remove lint exception when developing first toolbar flyout
-			// eslint-disable-next-line vue/no-unused-properties
-			showFlyout,
-			updateShowFlyout
+			dir: ref( 'ltr' )
 		};
 	},
 	data: function () {
@@ -144,9 +149,11 @@ module.exports = {
 		const isDragging = false;
 		return {
 			article,
+			eventBus,
 			display,
 			style,
-			isDragging
+			isDragging,
+			isFlyoutEnabled
 		};
 	},
 	computed: {
@@ -170,29 +177,46 @@ module.exports = {
 		// toolbar
 		dragEnable: function ( event ) {
 			if ( event.which && event.which === 1 ) {
-				// starting pointer position
-				pos.start.x = event.clientX;
-				pos.start.y = event.clientY;
+				event.preventDefault();
+
+				// starting toolbar position
+				const rect = this.$refs.toolbar.getBoundingClientRect();
+				pos.start.x = event.clientX - rect.left;
+				pos.start.y = event.clientY - rect.top;
+
 				this.isDragging = true;
 				// add move handler; set directly for immediate effect
-				this.dragArea.onpointermove = this.doDrag;
+				document.documentElement.onpointermove = this.doDrag;
 			}
 		},
 		// disables dragging when the pointer is released from the toolbar
 		dragDisable: function () {
 			this.isDragging = false;
 			// remove move handler; unset directly for immediate effect
-			this.dragArea.onpointermove = null;
+			document.documentElement.onpointermove = null;
 		},
 		// tracks the pointer while dragging
 		doDrag: function ( event ) {
+			if ( !this.isDragging ) {
+				return;
+			}
+
 			event.preventDefault();
+
+			// get extents of screen dimensions
+			const rect = this.$refs.toolbar.getBoundingClientRect();
+			const limitX = document.documentElement.clientWidth - rect.width;
+			const limitY = document.documentElement.clientHeight - rect.height;
+
 			// track pointer position
-			pos.new.x = pos.start.x - event.clientX;
-			pos.new.y = pos.start.y - event.clientY;
-			pos.start.x = event.clientX;
-			pos.start.y = event.clientY;
-			this.updatePosition();
+			const targetX = Math.max( Math.min( event.clientX - pos.start.x, limitX ), 0 );
+			const targetY = Math.max( Math.min( event.clientY - pos.start.y, limitY ), 0 );
+
+			// set new target position
+			this.style.left = targetX + 'px';
+			this.style.top = targetY + 'px';
+
+			this.$nextTick( this.refreshFlyout );
 		},
 		resize: function () {
 			pos.start = { x: 0, y: 0 };
@@ -267,20 +291,38 @@ module.exports = {
 				maximize();
 			} );
 		},
-		// TODO: remove this lint exception after first vue flyout module is developed
-		// eslint-disable-next-line vue/no-unused-properties
-		toggleFlyout: function ( module ) {
-			const modFlyout = document.getElementById( `mwe-pt-vue-${ module }-flyout` );
-			if ( modFlyout.style.display === 'none' ) {
-				this.updateShowFlyout( true );
-				// The flag is true, so it means there's a BackBone flyout open.
-				// We need to close it.
-				if ( this.flyout ) {
-					$( '.mwe-pt-tool-pokey' ).hide();
-					$( '.mwe-pt-tool-flyout' ).hide();
+		isVueComponent( component ) {
+			return component !== null && !Object.prototype.hasOwnProperty.call( component, 'cid' );
+		},
+		getToolComponents( tool ) {
+			const result = { flyout: null, pokey: null };
+
+			if ( tool !== null ) {
+				const element = tool.el || tool.$el || null;
+
+				if ( element !== null ) {
+					result.flyout = element.querySelector( '.mwe-pt-tool-flyout' );
+					result.pokey = element.querySelector( '.mwe-pt-tool-pokey' );
 				}
-			} else {
-				this.updateShowFlyout( false );
+			}
+
+			return result;
+		},
+		refreshFlyout() {
+			if ( this.currentFlyout === null || this.currentPokey === null ) {
+				return;
+			}
+
+			const rect = this.currentFlyout.getBoundingClientRect();
+			const corner = this.dir === 'ltr' ? rect.left :
+				document.documentElement.clientWidth - rect.right;
+
+			if ( corner <= 0 ) {
+				this.currentFlyout.className = 'mwe-pt-tool-flyout mwe-pt-tool-flyout-flipped';
+				this.currentPokey.className = 'mwe-pt-tool-pokey mwe-pt-tool-pokey-flipped';
+			} else if ( corner - rect.width > 57 ) {
+				this.currentFlyout.className = 'mwe-pt-tool-flyout mwe-pt-tool-flyout-not-flipped';
+				this.currentPokey.className = 'mwe-pt-tool-pokey mwe-pt-tool-pokey-not-flipped';
 			}
 		}
 	},
@@ -292,6 +334,26 @@ module.exports = {
 		if ( document.querySelector( 'body.rtl' ) ) {
 			this.dir = 'rtl';
 		}
+
+		eventBus.bind( 'showTool', ( newTool ) => {
+			if ( newTool !== this.currentTool ) {
+				if ( this.isVueComponent( this.currentTool ) ) {
+					this.currentTool.active = false;
+				}
+
+				this.currentTool = newTool || null;
+
+				const { flyout, pokey } = this.getToolComponents( newTool );
+				this.currentFlyout = flyout;
+				this.currentPokey = pokey;
+			}
+
+			if ( this.isVueComponent( this.currentTool ) ) {
+				this.currentTool.active = !this.currentTool.active;
+				this.$nextTick( this.refreshFlyout );
+			}
+		} );
+
 		// Stop dragging any time the pointer is released, regardless of its location
 		document.addEventListener( 'pointerup', this.dragDisable );
 		// Update position on resize to keep the toolbar within the viewport
@@ -314,11 +376,10 @@ module.exports = {
 				} else {
 					articleInfo.show();
 					this.flyout = true;
-					this.updateShowFlyout( false );
 				}
 			} ).bind( this );
 		}
-		if ( isFlyoutEnabled( 'wikiLove' ) ) {
+		if ( this.pageTriageUi !== 'wikilove' && isFlyoutEnabled( 'wikiLove' ) ) {
 			const WikiLove = require( '../wikiLove.js' );
 			const wikiLove = new WikiLove( {
 				eventBus: eventBus,
@@ -333,7 +394,6 @@ module.exports = {
 				} else {
 					wikiLove.show();
 					this.flyout = true;
-					this.updateShowFlyout( false );
 				}
 			} ).bind( this );
 		}
@@ -352,7 +412,6 @@ module.exports = {
 				} else {
 					mark.show();
 					this.flyout = true;
-					this.updateShowFlyout( false );
 				}
 			} ).bind( this );
 		}
@@ -373,7 +432,6 @@ module.exports = {
 					} else {
 						tags.show();
 						this.flyout = true;
-						this.updateShowFlyout( false );
 					}
 				} ).bind( this );
 			}
@@ -392,7 +450,6 @@ module.exports = {
 					} else {
 						deletion.show();
 						this.flyout = true;
-						this.updateShowFlyout( false );
 					}
 				} ).bind( this );
 			}

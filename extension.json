@@ -222,6 +222,7 @@
 			]
 		},
 		"ext.pageTriage.toolbar": {
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
 			"packageFiles": [
 				"ext.pageTriage.toolbar/init.js",
 				"ext.pageTriage.toolbar/ToolbarView.js",
@@ -239,6 +240,7 @@
 				"ext.pageTriage.toolbar/vue/components/ToolMinimize.vue",
 				"ext.pageTriage.toolbar/vue/components/ToolNext.vue",
 				"ext.pageTriage.toolbar/vue/components/ToolFlyout.vue",
+				"ext.pageTriage.toolbar/vue/components/ToolWikiLove.vue",
 				"ext.pageTriage.toolbar/vue/components/FlyoutHeader.vue",
 				{
 					"name": "ext.pageTriage.toolbar/contentLanguageMessages.json",
@@ -395,6 +397,10 @@
 				"pagetriage-toolbar-close",
 				"pagetriage-toolbar-minimize",
 				"pagetriage-tag-warning-notice"
+			],
+			"codexComponents": [
+				"CdxButton",
+				"CdxCheckbox"
 			]
 		},
 		"ext.pageTriage.newPagesFeed": {
@@ -755,8 +761,8 @@
 		},
 		"ext.pageTriage.icons.active": {
 			"class": "MediaWiki\\ResourceLoader\\ImageModule",
-			"selectorWithoutVariant": ".mwe-pt-tool-icon-{name}:active",
-			"selectorWithVariant": ".mwe-pt-tool-{variant}.mwe-pt-tool-icon-{name}:active",
+			"selectorWithoutVariant": ".mwe-pt-tool-icon-{name}-active",
+			"selectorWithVariant": ".mwe-pt-tool-{variant}.mwe-pt-tool-icon-{name}-active",
 			"variants": [],
 			"images": {
 				"close": "ext.pageTriage.toolbar/images/icons/active/icon_close.png",

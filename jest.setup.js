@@ -20,7 +20,22 @@ class Message {
 		return '<message>';
 	}
 }
+
 class Title {
+	constructor( title, namespace ) {
+		this.title = title;
+		this.namespace = namespace ? mw.config.get(
+			'wgFormattedNamespaces'
+		)[ namespace ] + ':' : '';
+	}
+
+	toString() {
+		return this.namespace + this.title;
+	}
+
+	getUrl() {
+		return '/wiki/' + this.toString();
+	}
 }
 
 class MessagePoster {
