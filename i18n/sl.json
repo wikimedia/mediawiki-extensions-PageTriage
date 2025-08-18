@@ -8,6 +8,7 @@
 		]
 	},
 	"pagetriage": "Triažiranje strani",
+	"pagetriage-dot-separator": "&#32;·&#32;",
 	"newpagesfeed": "Vir novih strani",
 	"pagetriage-desc": "Olajšuje pregledovanje in odobravanje novih strani",
 	"pagetriage-pagecuration": "Skrb za strani",
@@ -41,6 +42,7 @@
 	"pagetriage-author-blocked": "Blokiran_a",
 	"pagetriage-author-bot": "Bot",
 	"pagetriage-creation-dateformat": "HH.mm, d. MMMM YYYY",
+	"pagetriage-user-creation-dateformat": "LLLL-MM-DD",
 	"pagetriage-showing": "Prikazano:",
 	"pagetriage-filter-list-prompt": "Nastavite filtre",
 	"pagetriage-filter-predicted-class-heading": "Predvideni razred:",
