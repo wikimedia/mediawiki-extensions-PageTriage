@@ -820,7 +820,7 @@ class Hooks implements
 	 * @param array &$models Models names to score
 	 */
 	public static function onORESCheckModels( RecentChange $rc, &$models ) {
-		if ( !in_array( $rc->getAttribute( 'rc_type' ), [ RC_NEW, RC_EDIT ] ) ) {
+		if ( !in_array( $rc->getAttribute( 'rc_source' ), [ RecentChange::SRC_NEW, RecentChange::SRC_EDIT ] ) ) {
 			return;
 		}
 
