@@ -222,8 +222,6 @@
 	"logentry-pagetriage-copyvio-delete": "$1 {{GENDER:$2|ha dismarcate}} le version $4 de $3 como violation potential del derecto de autor",
 	"logentry-pagetriage-curation-enqueue": "$1 {{GENDER:$2|ha addite}} $3 al fluxo de nove paginas",
 	"log-action-filter-pagetriage-curation": "Action de triage de paginas",
-	"log-action-filter-pagetriage-curation-review": "Marcar como revidite",
-	"log-action-filter-pagetriage-curation-unreview": "Dismarcar como revidite",
 	"log-action-filter-pagetriage-curation-enqueue": "Adder al cauda",
 	"log-action-filter-pagetriage-curation-tag": "Etiquettar",
 	"log-action-filter-pagetriage-curation-delete": "Deletion",

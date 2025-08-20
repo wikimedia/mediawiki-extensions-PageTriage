@@ -236,8 +236,6 @@
 	"logentry-pagetriage-copyvio-delete": "$1 {{GENDER:$2|היטל|ביטלה}} את הסימון של הגרסה $4 של $3 כהפרת זכויות יוצרים אפשרית",
 	"logentry-pagetriage-curation-enqueue": "$1 {{GENDER:$2|הוסיף|הוסיפה}} את $3 להזנת הדפים החדשים",
 	"log-action-filter-pagetriage-curation": "פעולת מיון דף",
-	"log-action-filter-pagetriage-curation-review": "מתבצעת סקירה",
-	"log-action-filter-pagetriage-curation-unreview": "מתבצע ביטול סקירה",
 	"log-action-filter-pagetriage-curation-enqueue": "הכנסה לתור",
 	"log-action-filter-pagetriage-curation-tag": "תיוג",
 	"log-action-filter-pagetriage-curation-delete": "מחיקה",

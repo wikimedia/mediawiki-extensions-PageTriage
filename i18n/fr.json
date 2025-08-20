@@ -251,8 +251,6 @@
 	"logentry-pagetriage-copyvio-delete": "$1 {{GENDER:$2|}}a annulé la révision $4 sur $3 du fait d'une violation potentielle du droit d'auteur",
 	"logentry-pagetriage-curation-enqueue": "$1{{GENDER:$2|}} a ajouté $3 au fil des nouvelles pages",
 	"log-action-filter-pagetriage-curation": "Action de triage de page",
-	"log-action-filter-pagetriage-curation-review": "Relecture",
-	"log-action-filter-pagetriage-curation-unreview": "Annulation de relecture",
 	"log-action-filter-pagetriage-curation-enqueue": "Mise en file d’attente",
 	"log-action-filter-pagetriage-curation-tag": "Balisage",
 	"log-action-filter-pagetriage-curation-delete": "Suppression",

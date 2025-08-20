@@ -226,8 +226,6 @@
 	"logentry-pagetriage-copyvio-delete": "$1 je {{GENDER:$2|odoznačil|odoznačila|odoznačil_a}} redakcijo $4 strani $3 kot možno kršitev avtorskih pravic",
 	"logentry-pagetriage-curation-enqueue": "$1 je v vir novih strani {{GENDER:$2|dodal|dodala|dodal_a}} $3",
 	"log-action-filter-pagetriage-curation": "Dejanje triaže strani",
-	"log-action-filter-pagetriage-curation-review": "Pregled",
-	"log-action-filter-pagetriage-curation-unreview": "Preklic pregleda",
 	"log-action-filter-pagetriage-curation-enqueue": "Postavljanje v čakalno vrsto",
 	"log-action-filter-pagetriage-curation-tag": "Označevanje",
 	"log-action-filter-pagetriage-curation-delete": "Brisanje",

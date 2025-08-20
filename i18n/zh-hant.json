@@ -235,8 +235,6 @@
 	"logentry-pagetriage-copyvio-delete": "$1{{GENDER:$2|取消標記}}在$3的修訂 $4 為潛在侵犯版權",
 	"logentry-pagetriage-curation-enqueue": "$1{{GENDER:$2|已添加}}$3到新頁面供稿",
 	"log-action-filter-pagetriage-curation": "頁面分流操作",
-	"log-action-filter-pagetriage-curation-review": "審查",
-	"log-action-filter-pagetriage-curation-unreview": "取消審查",
 	"log-action-filter-pagetriage-curation-enqueue": "加入佇列",
 	"log-action-filter-pagetriage-curation-tag": "標記",
 	"log-action-filter-pagetriage-curation-delete": "刪除",

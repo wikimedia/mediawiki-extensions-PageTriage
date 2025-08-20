@@ -189,8 +189,6 @@
 	"logentry-pagetriage-copyvio-insert": "$1 {{GENDER:$2|märkis}} leheküljel $3 redaktsiooni $4 võimalikuks autoriõiguse rikkumiseks",
 	"logentry-pagetriage-curation-enqueue": "$1 {{GENDER:$2|lisas}} lehekülje $3 uute lehekülgede voogu",
 	"log-action-filter-pagetriage-curation": "Lehekülje järelevalve toiming",
-	"log-action-filter-pagetriage-curation-review": "Ülevaatus",
-	"log-action-filter-pagetriage-curation-unreview": "Ülevaatuse tühistamine",
 	"log-action-filter-pagetriage-curation-enqueue": "Järjekorda lisamine",
 	"log-action-filter-pagetriage-curation-tag": "Märgistamine",
 	"log-action-filter-pagetriage-curation-delete": "Kustutamine",

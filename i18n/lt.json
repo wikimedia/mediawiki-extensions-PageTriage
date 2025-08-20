@@ -191,8 +191,6 @@
 	"log-description-pagetriage-copyvio": "Tai yra įvykių, gautų per PageTriage Copyvio API, žurnalas.",
 	"logentry-pagetriage-copyvio-insert": "$1 {{GENDER:$2|pažymėjo}} versiją $4, $3 kaip galima autorinių teisių pažeidimą",
 	"logentry-pagetriage-curation-enqueue": "$1 {{GENDER:$2|pridėjo}} $3 į Naujų puslapių srautą",
-	"log-action-filter-pagetriage-curation-review": "Peržiūra",
-	"log-action-filter-pagetriage-curation-unreview": "Žymėjimas kaip neperžiūrėto",
 	"log-action-filter-pagetriage-curation-enqueue": "Šalinimas iš eilės",
 	"log-action-filter-pagetriage-curation-tag": "Žymėjimas",
 	"log-action-filter-pagetriage-curation-delete": "Trynimas",

@@ -214,8 +214,6 @@
 	"logentry-pagetriage-copyvio-insert": "$1 {{GENDER:$2|علم|علمت}} المراجعة $4 في $3 كخرق محتمل لحقوق النشر",
 	"logentry-pagetriage-curation-enqueue": "$1 {{GENDER:$2|أُضِيف|أُضِيفت}} $3 إلى تغذية الصفحات الجديدة",
 	"log-action-filter-pagetriage-curation": "إجراء فرز الصفحة",
-	"log-action-filter-pagetriage-curation-review": "مراجعة",
-	"log-action-filter-pagetriage-curation-unreview": "عدم المراجعة",
 	"log-action-filter-pagetriage-curation-tag": "وضع الوسوم",
 	"log-action-filter-pagetriage-curation-delete": "الحذف",
 	"pagetriage-tags-edit-summary": "تمت إضافة علامات إلى الصفحة باستخدام $1 ($2)",

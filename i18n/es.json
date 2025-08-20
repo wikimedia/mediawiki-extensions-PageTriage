@@ -219,8 +219,6 @@
 	"logentry-pagetriage-curation-delete": "$1 {{GENDER:$2|ha marcado}} $3 para borrado con {{PLURAL:$5|la etiqueta|las etiquetas}} $4",
 	"log-name-pagetriage-copyvio": "Registro de posibles infracciones de derechos de autor",
 	"log-action-filter-pagetriage-curation": "Acción de triaje de páginas",
-	"log-action-filter-pagetriage-curation-review": "Revisando",
-	"log-action-filter-pagetriage-curation-unreview": "Sin revisar",
 	"log-action-filter-pagetriage-curation-enqueue": "Puesta en cola",
 	"log-action-filter-pagetriage-curation-tag": "Etiquetado",
 	"pagetriage-tags-edit-summary": "Se agregaron etiquetas a la página mediante $1 ($2)",

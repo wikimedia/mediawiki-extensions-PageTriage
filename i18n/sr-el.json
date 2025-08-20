@@ -211,7 +211,6 @@
 	"logentry-pagetriage-copyvio-delete": "$1 je {{GENDER:$2|poništio|poništila}} označavanje izmene $4 na $3 kao moguće kršenje autorskih prava",
 	"logentry-pagetriage-curation-enqueue": "$1 je {{GENDER:$2|dodao|dodala}} $3 u fid „Nove stranice”",
 	"log-action-filter-pagetriage-curation": "Preduzeta radnja",
-	"log-action-filter-pagetriage-curation-review": "Pregledanje",
 	"log-action-filter-pagetriage-curation-tag": "Označavanje",
 	"log-action-filter-pagetriage-curation-delete": "Brisanje",
 	"pagetriage-tags-edit-summary": "Dodate oznake na stranici korišćenjem alatke $1 ($2)",

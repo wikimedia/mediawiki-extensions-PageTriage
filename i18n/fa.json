@@ -210,7 +210,6 @@
 	"logentry-pagetriage-curation-tag": "$1 به $3 برچسب بررسی {{GENDER:$2|زد}} و $4 {{PLURAL:$5|برچسب|برچسب}} افزود",
 	"logentry-pagetriage-curation-delete": "$1 به $3 برچسب حذف {{GENDER:$2|زد}} و $4 {{PLURAL:$5|برچسب|برچسب}} افزود",
 	"log-name-pagetriage-copyvio": "سیاهۀ نقض قانون حق تکثیر بالقوه",
-	"log-action-filter-pagetriage-curation-review": "بازنگری",
 	"log-action-filter-pagetriage-curation-tag": "برچسب‌زنی",
 	"pagetriage-tags-edit-summary": "افزودن برچسب‌ها به صفحه با استفاده از $1 ($2)",
 	"pagetriage-del-edit-summary": "نامزد کردن صفحه برای حذف توسط $1 ($2)",

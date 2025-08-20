@@ -215,8 +215,6 @@
 	"logentry-pagetriage-copyvio-insert": "$1 marcou a revisão $4 de $3 como uma possível infringência de direitos de autor{{GENDER:$2|}}",
 	"logentry-pagetriage-curation-enqueue": "$1 adicionou $3 ao ''feed'' de páginas novas{{GENDER:$2|}}",
 	"log-action-filter-pagetriage-curation": "Ação de triagem de página",
-	"log-action-filter-pagetriage-curation-review": "Em revisão",
-	"log-action-filter-pagetriage-curation-unreview": "Em anulamento de revisão",
 	"log-action-filter-pagetriage-curation-enqueue": "Em fila de espera",
 	"log-action-filter-pagetriage-curation-tag": "Em etiquetagem",
 	"log-action-filter-pagetriage-curation-delete": "A eliminar",

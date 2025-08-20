@@ -172,8 +172,6 @@
 	"logentry-pagetriage-curation-unreviewed": "$1 {{GENDER:$2|markerade}} $3 som ogranskad",
 	"logentry-pagetriage-curation-tag": "$1 {{GENDER:$2|taggade}} $3 med {{PLURAL:$5|taggen|taggarna}} $4",
 	"logentry-pagetriage-curation-delete": "$1 {{GENDER:$2|markerade}} $3 för radering med {{PLURAL:$5|taggen|taggarna}} $4",
-	"log-action-filter-pagetriage-curation-review": "Granskar",
-	"log-action-filter-pagetriage-curation-unreview": "Avbryter granskning",
 	"log-action-filter-pagetriage-curation-enqueue": "Lägger i kö",
 	"log-action-filter-pagetriage-curation-tag": "Taggar",
 	"pagetriage-tags-edit-summary": "Lade till taggar till sidan med hjälp av $1 ($2)",

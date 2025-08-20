@@ -221,7 +221,6 @@
 	"log-description-pagetriage-copyvio": "Este é o registo dos eventos recebidos através da API de infringências de direitos de autor, da triagem de páginas.",
 	"logentry-pagetriage-copyvio-insert": "$1 {{GENDER:$2|marcou}} a revisão $4 de $3 como um potencial infringência de direitos de autor",
 	"logentry-pagetriage-curation-enqueue": "$1 {{GENDER:$2|adicionou}} $3 para o feed de novas páginas",
-	"log-action-filter-pagetriage-curation-review": "Revisando",
 	"pagetriage-tags-edit-summary": "Adicionou etiquetas à página utilizando $1 ($2)",
 	"pagetriage-del-edit-summary": "Nomeou a página para eliminação utilizando $1 ($2)",
 	"pagetriage-info-title": "Informação da página",

@@ -251,8 +251,6 @@
 	"logentry-pagetriage-copyvio-delete": "$1取消了对$3的修订版本$4的疑似侵犯版权{{GENDER:$2|标记}}",
 	"logentry-pagetriage-curation-enqueue": "$1{{GENDER:$2|已添加}}$3到新页面供稿",
 	"log-action-filter-pagetriage-curation": "页面分诊台操作",
-	"log-action-filter-pagetriage-curation-review": "审核",
-	"log-action-filter-pagetriage-curation-unreview": "取消审核",
 	"log-action-filter-pagetriage-curation-enqueue": "队列",
 	"log-action-filter-pagetriage-curation-tag": "标记",
 	"log-action-filter-pagetriage-curation-delete": "删除",

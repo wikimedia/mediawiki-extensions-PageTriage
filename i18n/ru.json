@@ -195,7 +195,6 @@
 	"logentry-pagetriage-curation-tag": "$1 добавил{{GENDER:$2||а}} на $3 тег{{PLURAL:$5||и}} $4",
 	"logentry-pagetriage-curation-delete": "$1 пометил{{GENDER:$2||а}} $3 для удаления с $4 тег{{PLURAL:$5|ом|ами}}",
 	"logentry-pagetriage-curation-enqueue": "$1 {{GENDER:$2|добавил}} $3 к ленте новых страниц",
-	"log-action-filter-pagetriage-curation-review": "Проверка",
 	"pagetriage-tags-edit-summary": "Добавлены теги на страницу с помощью $1 ($2)",
 	"pagetriage-del-edit-summary": "Номинация страницы на удаление с помощью $1 ($2)",
 	"pagetriage-info-title": "Информация о странице",
