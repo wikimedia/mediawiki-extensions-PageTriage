@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"BOKOBA VEROLY"
+		]
+	},
+	"log-action-filter-pagetriage-curation-review-all": "Misala nyonso ya kotalela",
+	"log-action-filter-pagetriage-curation-review-article": "Botaleli kaka masolo",
+	"log-action-filter-pagetriage-curation-review-redirect": "Bozongeli kaka bisika ya sika",
+	"log-action-filter-pagetriage-curation-unreview-all": "Misala nyonso ya kozanga kotalela",
+	"log-action-filter-pagetriage-curation-unreview-article": "Kaka masolo oyo etalelami te",
+	"log-action-filter-pagetriage-curation-unreview-redirect": "Kozanga kotala ba redirections kaka"
+}
