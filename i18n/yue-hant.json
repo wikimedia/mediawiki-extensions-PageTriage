@@ -4,8 +4,11 @@
 			"Yueman"
 		]
 	},
+	"pagetriage-filter-blocked": "受封鎖用戶",
 	"pagetriage-filter-ns-all": "全部",
 	"pagetriage-filter-stat-all": "全部",
+	"pagetriage-filter-stat-bots": "機械人",
+	"pagetriage-filter-stat-blocked": "受封鎖用戶",
 	"pagetriage-filter-stat-namespace": "空間名",
 	"pagetriage-tags-param-date-label": "日子：",
 	"pagetriage-tags-param-free-yes-label": "係",
