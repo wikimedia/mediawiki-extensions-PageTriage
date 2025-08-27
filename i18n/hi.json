@@ -7,10 +7,12 @@
 			"Saurmandal"
 		]
 	},
+	"pagetriage": "पेज ट्राइएज",
 	"newpagesfeed": "नए पृष्ठ फ़ीड",
 	"pagetriage-desc": "नए पृष्ठों की समीक्षा और अनुमोदन की सुविधा प्रदान करता है",
 	"pagetriage-pagecuration": "पृष्ठ क्यूरेशन",
 	"pagetriage-new-page-patrol": "नया पृष्ठ गश्ती",
+	"pagetriage-articles-for-creation": "सृजन के लिए लेख",
 	"pagetriage-please-wait": "कृपया प्रतीक्षा करें...",
 	"pagetriage-api-invalidid": "आपके द्वारा दी गई आईडी ($1) मान्य नहीं है।",
 	"pagetriage-markpatrolled": "इस पृष्ठ को समीक्षित चिह्नित करें",
