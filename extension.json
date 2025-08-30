@@ -176,8 +176,7 @@
 		"ext.pageTriage.external": {
 			"scripts": [
 				"external/underscore.js",
-				"external/backbone.js",
-				"external/jquery.tipoff/jquery.tipoff.js"
+				"external/backbone.js"
 			]
 		},
 		"ext.pageTriage.util": {
@@ -455,7 +454,6 @@
 				}
 			],
 			"styles": [
-				"external/jquery.tipoff/jquery.tipoff.css",
 				"ext.pageTriage.css"
 			],
 			"messages": [
