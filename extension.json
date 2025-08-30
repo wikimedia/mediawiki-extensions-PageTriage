@@ -177,7 +177,6 @@
 			"scripts": [
 				"external/underscore.js",
 				"external/backbone.js",
-				"external/jquery.waypoints.js",
 				"external/jquery.tipoff/jquery.tipoff.js"
 			]
 		},
