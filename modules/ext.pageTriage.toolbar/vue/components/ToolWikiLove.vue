@@ -139,5 +139,9 @@ module.exports = exports = {
 			}
 		}
 	}
+
+	.cdx-button {
+		margin: 0;
+	}
 }
 </style>
