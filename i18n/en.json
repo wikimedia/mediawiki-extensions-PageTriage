@@ -212,7 +212,7 @@
 	"pagetriage-new-page-feed-show-ip": "Show IP",
 	"pagetriage-new-page-feed-show-ip-not-found": "No IP found for temporary account",
 	"log-name-pagetriage-curation": "Page curation log",
-	"log-description-pagetriage-curation": "This is the log of actions taken on page curation toolbar.",
+	"log-description-pagetriage-curation": "This is a log of actions taken using the Page Curation toolbar.",
 	"logentry-pagetriage-curation-reviewed": "$1 {{GENDER:$2|marked}} $3 as reviewed",
 	"logentry-pagetriage-curation-reviewed-redirect": "$1 {{GENDER:$2|marked}} the redirect $3 as reviewed",
 	"logentry-pagetriage-curation-reviewed-article": "$1 {{GENDER:$2|marked}} the article $3 as reviewed",
