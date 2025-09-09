@@ -152,7 +152,7 @@
 	"pagetriage-tags-param-missing-required": "Manca un parametro richiesto all'etichetta $1",
 	"pagetriage-tags-talk-page-notify-topic-title": "Modi per migliorare $1",
 	"log-name-pagetriage-curation": "Cura della pagina",
-	"log-description-pagetriage-curation": "Questo è il registro delle azioni intraprese nella barra degli strumenti della pagina di cura.",
+	"log-description-pagetriage-curation": "Questo è un registro delle azioni intraprese utilizzando la barra degli strumenti di Page Curation.",
 	"logentry-pagetriage-curation-reviewed": "$1 ha {{GENDER:$2|contrassegnato}} $3 come revisionata",
 	"logentry-pagetriage-curation-reviewed-article": "$1 ha {{GENDER:$2|contrassegnato}} la voce $3 come revisionata",
 	"logentry-pagetriage-curation-unreviewed": "$1 ha {{GENDER:$2|contrassegnato}} $3 come non revisionata",
