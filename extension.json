@@ -88,7 +88,7 @@
 				"reviewed-article"
 			],
 			"review-redirect": [
-				"review-redirect"
+				"reviewed-redirect"
 			],
 			"unreview-all": [
 				"unreviewed",
@@ -96,10 +96,10 @@
 				"unreviewed-article"
 			],
 			"unreview-article": [
-				"unreview-article"
+				"unreviewed-article"
 			],
 			"unreview-redirect": [
-				"unreview-redirect"
+				"unreviewed-redirect"
 			],
 			"enqueue": [
 				"enqueue"
