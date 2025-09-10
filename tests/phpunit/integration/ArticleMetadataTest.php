@@ -95,8 +95,6 @@ class ArticleMetadataTest extends PageTriageTestCase {
 		$this->assertEquals( count( $validatedPageIds ), $res->numRows() );
 	}
 
-	/**
-	 */
 	public function testGetMetadata() {
 		$data = $this->articleMetadata->getMetadata();
 		$this->assertGreaterThan( 0, count( $data ) );

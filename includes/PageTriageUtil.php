@@ -110,7 +110,6 @@ class PageTriageUtil {
 	 * Get a list of stat for unreviewed articles
 	 * @param int $namespace Namespace number
 	 * @return array
-	 *
 	 */
 	public static function getUnreviewedArticleStat( $namespace = 0 ) {
 		return self::getUnreviewedPageStat( $namespace, false );
@@ -120,7 +119,6 @@ class PageTriageUtil {
 	 * Get a list of stat for unreviewed redirects
 	 * @param int $namespace Namespace number
 	 * @return array
-	 *
 	 */
 	public static function getUnreviewedRedirectStat( $namespace = 0 ) {
 		return self::getUnreviewedPageStat( $namespace, true );
