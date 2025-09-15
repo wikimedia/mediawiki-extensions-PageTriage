@@ -177,8 +177,6 @@ module.exports = {
 		// toolbar
 		dragEnable: function ( event ) {
 			if ( event.which && event.which === 1 ) {
-				event.preventDefault();
-
 				// starting toolbar position
 				const rect = this.$refs.toolbar.getBoundingClientRect();
 				pos.start.x = event.clientX - rect.left;
