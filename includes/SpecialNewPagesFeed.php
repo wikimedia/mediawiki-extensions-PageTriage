@@ -16,7 +16,6 @@ use MediaWiki\User\Options\UserOptionsLookup;
  * This file defines the SpecialNewPagesFeed class which handles the functionality for the
  * New Pages Feed (Special:NewPagesFeed).
  *
- * @file
  * @ingroup Extensions
  * @author Ryan Kaldari
  */
