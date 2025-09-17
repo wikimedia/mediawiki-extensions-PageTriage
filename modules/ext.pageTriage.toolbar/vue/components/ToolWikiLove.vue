@@ -26,7 +26,10 @@
 					</cdx-checkbox>
 				</div>
 
-				<cdx-button action="progressive" @click="send">
+				<cdx-button
+					action="progressive"
+					:disabled="selected.length < 1"
+					@click="send">
 					{{ $i18n( 'wikilove-button-send' ).text() }}
 				</cdx-button>
 			</template>

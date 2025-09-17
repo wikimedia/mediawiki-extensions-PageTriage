@@ -125,7 +125,6 @@ describe( 'ToolWikiLove.vue', () => {
 		await wrapper.vm.$nextTick();
 		ready();
 
-		expect( wrapper.exists() ).toBe( true );
 		expect( wrapper.vm.editors ).toStrictEqual( [
 			{
 				username: 'John Doe',
@@ -138,6 +137,25 @@ describe( 'ToolWikiLove.vue', () => {
 				isCreator: false
 			}
 		] );
+	} );
+
+	test( 'toggles send button based on selection count', async () => {
+		const wrapper = mount( ToolWikiLove, {
+			propsData: {
+				article: { on() {} },
+				eventBus: {}
+			}
+		} );
+
+		const sendButton = wrapper.find( '.cdx-button' );
+
+		wrapper.vm.selected = [];
+		await wrapper.vm.$nextTick();
+		expect( sendButton.isDisabled() ).toBe( true );
+
+		wrapper.vm.selected = [ 'Stranger' ];
+		await wrapper.vm.$nextTick();
+		expect( sendButton.isDisabled() ).toBe( false );
 	} );
 
 	test( 'getEditorUrl', () => {

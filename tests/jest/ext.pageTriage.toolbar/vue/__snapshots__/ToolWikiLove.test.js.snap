@@ -55,6 +55,7 @@ exports[`ToolWikiLove.vue renders properly 1`] = `
       </div>
       <button
         class="cdx-button cdx-button--action-progressive cdx-button--weight-normal cdx-button--size-medium cdx-button--framed"
+        disabled=""
       >
         
         Send WikiLove
