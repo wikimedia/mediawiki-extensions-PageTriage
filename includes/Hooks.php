@@ -854,11 +854,8 @@ class Hooks implements
 		$tags[] = self::TAG_NAME;
 	}
 
-	// phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
-
 	/** @inheritDoc */
 	public function onApiMain__moduleManager( $moduleManager ) {
-		// phpcs:enable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
 		if ( !$this->config->get( 'PageTriageEnableExtendedFeatures' ) ) {
 			$moduleManager->addModule(
 				'pagetriagetagging',
