@@ -197,7 +197,7 @@
 	"pagetriage-tags-param-missing-required": "У тегові $1 відсутній обов'язковий параметр.",
 	"pagetriage-tags-talk-page-notify-topic-title": "Шляхи покращення $1",
 	"log-name-pagetriage-curation": "Сторінка журналу куратора",
-	"log-description-pagetriage-curation": "Це журналу дій, прийнятих на сторінці інструментів курирування.",
+	"log-description-pagetriage-curation": "Це журнал дій, виконаних за допомогою панелі інструментів «Курування сторінок».",
 	"logentry-pagetriage-curation-reviewed": "$1 {{GENDER:$2|позначив|позначила}} $3 як перевірену",
 	"logentry-pagetriage-curation-unreviewed": "$1 {{GENDER:$2|позначив|позначила}} $3 як неперевірену",
 	"logentry-pagetriage-curation-tag": "$1 {{GENDER:$2|поставив|поставила}} $4 {{PLURAL:$5|тег|теги|тегів}} на $3",
