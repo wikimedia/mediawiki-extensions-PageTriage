@@ -12,7 +12,8 @@
 			"علاء",
 			"بهتين شوكت",
 			"Dyolf77 (WMF)",
-			"Lolekek"
+			"Lolekek",
+			"Hubaishan"
 		]
 	},
 	"pagetriage": "فارز الصفحات",
@@ -398,6 +399,7 @@
 	"log-action-filter-pagetriage-curation": "إجراء فرز الصفحة",
 	"log-action-filter-pagetriage-curation-review": "مراجعة",
 	"log-action-filter-pagetriage-curation-unreview": "عدم المراجعة",
+	"log-action-filter-pagetriage-curation-enqueue": "إدراج في قائمة الانتظار",
 	"log-action-filter-pagetriage-curation-tag": "وضع الوسوم",
 	"pagetriage-tags-edit-summary": "تمت إضافة علامات إلى الصفحة باستخدام $1 ($2)",
 	"pagetriage-del-edit-summary": "رشح صفحة للحذف باستخدام $1 ($2)",
