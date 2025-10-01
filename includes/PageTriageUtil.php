@@ -7,6 +7,7 @@ use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Deferred\LinksUpdate\PageLinksTable;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\PageTriage\Api\ApiPageTriageList;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
@@ -787,7 +788,7 @@ class PageTriageUtil {
 	 */
 	public static function getLinkCount( LinksMigration $linksMigration, int $pageId, int $limit = 51 ): int {
 		[ $blNamespace, $blTitle ] = $linksMigration->getTitleFields( 'pagelinks' );
-		$dbr = self::getReplicaConnection();
+		$dbr = self::getReplicaConnection( PageLinksTable::VIRTUAL_DOMAIN );
 		$queryInfo = $linksMigration->getQueryInfo( 'pagelinks', 'pagelinks' );
 		$res = $dbr->newSelectQueryBuilder()
 			->select( '1' )
@@ -811,16 +812,19 @@ class PageTriageUtil {
 	 *
 	 * @return IDatabase
 	 */
-	public static function getPrimaryConnection() {
+	public static function getPrimaryConnection(): IDatabase {
 		return MediaWikiServices::getInstance()->getConnectionProvider()->getPrimaryDatabase();
 	}
 
 	/**
 	 * Return an SQL replica database connection.
 	 *
+	 * @param string|false $domain
 	 * @return IReadableDatabase
 	 */
-	public static function getReplicaConnection() {
-		return MediaWikiServices::getInstance()->getConnectionProvider()->getReplicaDatabase();
+	public static function getReplicaConnection( $domain = false ): IReadableDatabase {
+		return MediaWikiServices::getInstance()
+			->getConnectionProvider()
+			->getReplicaDatabase( $domain );
 	}
 }
