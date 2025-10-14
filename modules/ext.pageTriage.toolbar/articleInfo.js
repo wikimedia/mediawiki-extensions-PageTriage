@@ -2,7 +2,7 @@
 
 const ToolView = require( './ToolView.js' );
 const config = require( './config.json' );
-
+const { getTempAccountUserIpAddress } = require( '../ext.pageTriage.showIp/showIp.js' );
 const ArticleInfoHistoryView = Backbone.View.extend( {
 	id: 'mwe-pt-info-history',
 	template: mw.template.get( 'ext.pageTriage.toolbar', 'articleInfoHistory.underscore' ),
@@ -50,6 +50,8 @@ const ArticleInfoHistoryView = Backbone.View.extend( {
 				mw.util.getUrl( mw.config.get( 'wgPageName' ), { oldid: historyItem.get( 'revid' ) } )
 			);
 
+			historyItem.set( 'temp', historyItem.has( 'temp' ) && this.options.showTemp );
+
 			that.$el.append( that.template( historyItem.toJSON() ) );
 			addedRevisions++;
 		} );
@@ -93,7 +95,7 @@ module.exports = ToolView.extend( {
 			.attr( 'title', badgeTooltip );
 	},
 
-	render: function () {
+	render: async function () {
 		this.enumerateProblems();
 		// set the history link
 		const historyUrl = new URL( mw.util.getUrl( mw.config.get( 'wgPageName' ), { action: 'history' } ), location.href );
@@ -133,10 +135,11 @@ module.exports = ToolView.extend( {
 				).utcOffset( offset ).format(
 					mw.msg( 'pagetriage-info-timestamp-date-format' )
 				),
-				this.model.buildLinkTag(
+				await this.buildUserTag(
 					this.model.get( 'creator_user_page_url' ),
 					this.model.get( 'user_name' ),
-					this.model.get( 'creator_user_page_exist' )
+					this.model.get( 'creator_user_page_exist' ),
+					this.model.has( 'creator_is_temp_account' )
 				),
 				this.model.buildLinkTag(
 					this.model.get( 'creator_user_talk_page_url' ),
@@ -170,7 +173,8 @@ module.exports = ToolView.extend( {
 		this.$tel.html( this.template( this.model.toJSON() ) );
 		const history = new ArticleInfoHistoryView( {
 			eventBus: this.eventBus,
-			model: this.model.revisions
+			model: this.model.revisions,
+			showTemp: await this.checkTempRights()
 		} );
 		this.$tel.find( '#mwe-pt-info-history-container' ).append( history.render().$el );
 
@@ -186,6 +190,8 @@ module.exports = ToolView.extend( {
 			} );
 			this.renderWasBound = true;
 		}
+
+		await this.addShowIpEventListeners();
 
 		return this;
 	},
@@ -284,5 +290,63 @@ module.exports = ToolView.extend( {
 			problems = '<ul>' + problems + '</ul>';
 		}
 		this.model.set( 'problems_html', problems );
+	},
+
+	hasTempRights: null,
+
+	checkTempRights: async function () {
+		if ( this.hasTempRights === null ) {
+			const rights = await mw.user.getRights();
+			this.hasTempRights = rights.includes( 'checkuser-temporary-account' );
+		}
+
+		return this.hasTempRights;
+	},
+
+	buildUserTag: async function ( url, text, exists, isTemp ) {
+		const linkTag = this.model.buildLinkTag( url, text, exists );
+
+		if ( isTemp && await this.checkTempRights() ) {
+			const showIpLink = document.createElement( 'a' );
+			showIpLink.className = 'mwe-pt-info-show-ip';
+			showIpLink.innerText = mw.msg( 'pagetriage-new-page-feed-show-ip' );
+
+			linkTag.push( document.createTextNode( ' ' ), showIpLink );
+		}
+
+		return linkTag;
+	},
+
+	addShowIpEventListeners: async function () {
+		if ( !await this.checkTempRights() ) {
+			return;
+		}
+
+		for ( const link of this.$el.find( '.mwe-pt-info-show-ip' ) ) {
+			link.addEventListener( 'click', async () => {
+				const username = link.previousElementSibling.innerText;
+				const title = mw.config.get( 'wgPageName' );
+				let ipResult, newLink;
+
+				try {
+					ipResult = await getTempAccountUserIpAddress( username, title );
+				} catch ( error ) {
+					mw.errorLogger.logError( error );
+					mw.log.error( error );
+				}
+
+				if ( ipResult ) {
+					newLink = document.createElement( 'a' );
+					newLink.className = 'cdx-link';
+					newLink.href = '/wiki/Special:IPContributions/' + ipResult;
+					newLink.target = '_blank';
+					newLink.innerText = ipResult;
+				} else {
+					newLink = document.createTextNode( mw.msg( 'pagetriage-new-page-feed-show-ip-not-found' ) );
+				}
+
+				link.replaceWith( newLink );
+			} );
+		}
 	}
 } );

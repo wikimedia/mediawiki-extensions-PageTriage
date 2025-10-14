@@ -60,9 +60,13 @@ class Api {
 
 class Rest {
 	post() {
-		return Promise.resolve( { ips: [
-			'127.0.0.1'
-		] } );
+		return Promise.resolve( {
+			'~2025-3939': {
+				revIps: {
+					5: '127.0.0.1'
+				}
+			}
+		} );
 	}
 }
 

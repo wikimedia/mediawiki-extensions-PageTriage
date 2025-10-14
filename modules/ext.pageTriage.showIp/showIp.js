@@ -1,13 +1,22 @@
+const restApi = new mw.Rest();
+
 // makes an API request to retrieve IP information for a given temp account/revision combination
 // see https://www.mediawiki.org/wiki/Extension:CheckUser for more details
 const getIpAddress = ( target, token, deferred, revId ) => {
-	const restApi = new mw.Rest();
-	restApi.post(
-		`/checkuser/v0/temporaryaccount/${ target }/revisions/${ revId }`,
-		{ token: token }
-	).then(
+	const revision = revId.toString();
+
+	restApi.post( '/checkuser/v0/batch-temporaryaccount', {
+		users: {
+			[ target ]: {
+				revIds: [ revision ],
+				logIds: [],
+				lastUsedIp: false
+			}
+		},
+		token
+	} ).then(
 		( data ) => {
-			deferred.resolve( data );
+			deferred.resolve( data[ target ].revIps[ revision ] || null );
 		},
 		( err, errObject ) => {
 			deferred.reject( err, errObject );
@@ -69,11 +78,7 @@ function createShowIpLink( k, v, title ) {
 		$showIpLink.append( mw.message( 'pagetriage-new-page-feed-show-ip' ).escaped() );
 		$showIpLink.on( 'click', () => {
 			const username = $tempUserLink.text();
-			getTempAccountUserIpAddress( username, title ).then( ( { ips } ) => {
-				let ipResult;
-				for ( const key in ips ) {
-					ipResult = ips[ key ];
-				}
+			getTempAccountUserIpAddress( username, title ).then( ( ipResult ) => {
 				if ( ipResult ) {
 					$showIpLink.replaceWith( `<a class="cdx-link" href="/wiki/Special:IPContributions/${ ipResult }">${ ipResult }</a>` );
 				} else {

@@ -2,10 +2,10 @@ const { showIp, getRevisionId, getIpAddress } = require( '../../../modules/ext.p
 describe( 'showIp.js', () => {
 	test( 'getIpAddress', () => {
 		const deferred = $.Deferred();
-		getIpAddress( '~2025-3939', '', deferred );
+		getIpAddress( '~2025-3939', '', deferred, 5 );
 
-		deferred.promise().then( ( { ips } ) => {
-			expect( ips ).toEqual( [ '127.0.0.1' ] );
+		deferred.promise().then( ( ipResult ) => {
+			expect( ipResult ).toEqual( '127.0.0.1' );
 		} );
 	} );
 

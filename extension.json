@@ -251,7 +251,8 @@
 					"callback": "MediaWiki\\Extension\\PageTriage\\Hooks::toolbarConfig"
 				},
 				"external/jquery.badge.js",
-				"ext.pageTriage.toolbar/wikiLove.js"
+				"ext.pageTriage.toolbar/wikiLove.js",
+				"ext.pageTriage.showIp/showIp.js"
 			],
 			"dependencies": [
 				"vue",
@@ -396,7 +397,9 @@
 				"pagetriage-tag-previousdeletion-error",
 				"pagetriage-toolbar-close",
 				"pagetriage-toolbar-minimize",
-				"pagetriage-tag-warning-notice"
+				"pagetriage-tag-warning-notice",
+				"pagetriage-new-page-feed-show-ip",
+				"pagetriage-new-page-feed-show-ip-not-found"
 			],
 			"codexComponents": [
 				"CdxButton",
