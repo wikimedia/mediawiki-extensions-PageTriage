@@ -13,7 +13,8 @@
 			"علاء",
 			"محمد أحمد عبد الفتاح",
 			"Lolekek",
-			"Hubaishan"
+			"Hubaishan",
+			"Mohammed Qays"
 		]
 	},
 	"pagetriage": "فارز الصفحات",
@@ -50,7 +51,7 @@
 	"pagetriage-articleinfo-byline-new-editor": "تم إنشاء هذه الصفحة في $1 بواسطة المحرر الجديد $2 ($3$4$5)",
 	"pagetriage-editcount": "$1 {{PLURAL:$1|تعديل|تعديلات}} منذ $2",
 	"pagetriage-author-not-autoconfirmed": "محرر جديد",
-	"pagetriage-author-blocked": "تم حظر المؤلف",
+	"pagetriage-author-blocked": "مُنع المؤلف",
 	"pagetriage-author-bot": "بوت",
 	"pagetriage-showing": "عرض:",
 	"pagetriage-active-filters": "المرشحات النشطة:",
