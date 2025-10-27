@@ -31,7 +31,7 @@
 	"pagetriage-markunpatrolled": "標記此頁面為未巡查",
 	"pagetriage-self-review-error": "您無法檢閱您自己建立的頁面。",
 	"pagetriage-api-error": "在從API載入界面時發生錯誤。請嘗試重新載入本頁。",
-	"pagetriage-reviewed": "已審核",
+	"pagetriage-reviewed": "已檢閱",
 	"pagetriage-mark-as-reviewed-error": "在標記此頁面為已檢閱時發生錯誤：$1",
 	"pagetriage-mark-as-unreviewed-error": "在標記此頁面為未巡查時發生錯誤：$1",
 	"pagetriage-hist": "歷史",

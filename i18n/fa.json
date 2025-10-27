@@ -14,7 +14,8 @@
 			"Nojan Madinehi",
 			"Omidh",
 			"Reza1615",
-			"Ebrahim"
+			"Ebrahim",
+			"LordProfo"
 		]
 	},
 	"pagetriage": "تریاژ صفحه‌ها",
@@ -312,7 +313,7 @@
 	"pagetriage-tags-unbalanced-desc": "این صفحه ممکن است به دیدگاه‌هایی خاص، وزنی ناروا داده باشد.",
 	"pagetriage-tags-update-label": "روزآمدسازی",
 	"pagetriage-tags-update-desc": "این صفحه نیازمند افزودن اطلاعات به‌روز بیشتر است.",
-	"pagetriage-tags-tooltip": "برچسب‌ها‌ را به منظور نشان دادن قسمت‌های که نیاز به بهترشدن دارند اضافه کنید",
+	"pagetriage-tags-tooltip": "برای نشان دادن زمینه‌های بهبود این صفحه، برچسب‌ها را بیافزایید",
 	"pagetriage-del-tags-speedy-deletion-nomination-notify-topic-title": "نامزدی حذف سریع $1",
 	"pagetriage-del-tags-cat-csd-label": "حذف سریع",
 	"pagetriage-del-tags-cat-csd-desc": "به این صفحه در صورت برخورداری از یکی از معیارهای زیر برچسب حذف سریع بزنید.",
