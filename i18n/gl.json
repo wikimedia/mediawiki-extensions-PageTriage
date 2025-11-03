@@ -93,7 +93,7 @@
 	"pagetriage-note-reviewed": "A páxina foi revisada.",
 	"pagetriage-note-not-reviewed": "A páxina aínda non foi revisada.",
 	"pagetriage-note-deletion": "A páxina está marcada para borrar.",
-	"pagetriage-refresh-list": "Refrescar a lista",
+	"pagetriage-refresh-list": "Actualizar a lista",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|etiqueta seleccionada|etiquetas seleccionadas}}",
 	"pagetriage-button-add-tag": "Engadir as etiquetas seleccionadas",
 	"pagetriage-button-add-tag-number": "Engadir as $1 etiquetas seleccionadas",
