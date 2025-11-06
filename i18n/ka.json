@@ -50,6 +50,7 @@
 	"pagetriage-tags-param-free-yes-label": "დიახ",
 	"pagetriage-tags-param-free-no-label": "არა",
 	"pagetriage-tags-param-missing-required": "ღილაკი $1 არ მოიძებნა შესაბამისი პარამეტრი.",
+	"pagetriage-new-page-feed-show-ip": "IP-ის ჩვენება",
 	"pagetriage-info-title": "გვერდის ინფო",
 	"pagetriage-info-history-header": "ისტორია",
 	"pagetriage-info-history-show-full": "მთელი ისტორიის ჩვენება",
