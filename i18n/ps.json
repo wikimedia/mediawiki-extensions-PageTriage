@@ -8,7 +8,19 @@
 			"شاه زمان پټان"
 		]
 	},
+	"pagetriage": "مخ ډلبندۍ بهير",
+	"pagetriage-dot-separator": "&#32;·&#32;",
+	"pagetriage-pagecuration": "مخ رغاونه",
+	"pagetriage-new-page-patrol": "نوي مخ لمېسل‌څار",
+	"pagetriage-articles-for-creation": "جوړېدو وړ ليکنې",
+	"pagetriage-please-wait": "مهرباني وکړئ په تمه شئ...",
 	"pagetriage-edits": "$1 {{PLURAL:$1|سمونه|سمونې}}",
+	"pagetriage-author-not-autoconfirmed": "نوی سمونگر",
+	"pagetriage-author-bot": "روباټ",
+	"pagetriage-creation-dateformat": "HH:mm، D MMMM YYYY",
+	"pagetriage-user-creation-dateformat": "YYYY-MM-DD",
+	"pagetriage-showing": "ښودل:",
+	"pagetriage-filter-list-prompt": "چاڼگر ټاکل",
 	"pagetriage-filter-show-heading": "دريځ:",
 	"pagetriage-filter-unreviewed-edits": "نامخکتلي مخونه",
 	"pagetriage-filter-article": "ليکنه",
@@ -28,5 +40,6 @@
 	"pagetriage-info-help": "لارښود",
 	"pagetriage-toolbar-learn-more": "نور څه زده کول »",
 	"pagetriage-mark-as-unreviewed": "نامخکتلی په نښه کول",
-	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|edit|سمونې}}"
+	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|edit|سمونې}}",
+	"group-copyviobot": "لمېسل‌رښتې سرغړاوي روباټونه"
 }
