@@ -37,7 +37,7 @@
 	"pagetriage-mark-as-unreviewed-error": "Sayfayı \"incelenmedi\" olarak işaretlerken bir hata meydana geldi: $1",
 	"pagetriage-hist": "geçmiş",
 	"pagetriage-bytes": "$1 bayt",
-	"pagetriage-edits": "$1 değişiklik",
+	"pagetriage-edits": "$1 {{PLURAL:$1|değişiklik}}",
 	"pagetriage-categories": "$1 {{PLURAL:$1|kategori|kategori}}",
 	"pagetriage-no-categories": "Kategorisiz",
 	"pagetriage-no-reference": "Kaynaksız",
