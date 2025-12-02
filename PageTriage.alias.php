@@ -118,12 +118,17 @@ $specialPageAliases['vi'] = [
 	'NewPagesFeed' => [ 'Nguồn_tin_trang_mới' ],
 ];
 
-/** Simplified Chinese (中文（简体）‎) */
-$specialPageAliases['zh-hans'] = [
-	'NewPagesFeed' => [ '新页面供给' ],
+/** Chinese (中文) */
+$specialPageAliases['zh'] = [
+	'NewPagesFeed' => [ 'NewPagesFeed' ],
 ];
 
-/** Traditional Chinese (中文（繁體）‎) */
+/** Simplified Chinese (中文（简体）) */
+$specialPageAliases['zh-hans'] = [
+	'NewPagesFeed' => [ '新页面供稿', '新页面供给' ],
+];
+
+/** Traditional Chinese (中文（繁體）) */
 $specialPageAliases['zh-hant'] = [
 	'NewPagesFeed' => [ '新頁面供稿' ],
 ];
