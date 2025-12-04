@@ -190,6 +190,7 @@
 	"pagetriage-tags-param-free-no-label": "Ne",
 	"pagetriage-tags-param-missing-required": "Oznaci $1 nedostaje neophodan parametar.",
 	"pagetriage-tags-talk-page-notify-topic-title": "Načini za poboljšanje stranice $1",
+	"pagetriage-new-page-feed-show-ip": "Odaj adresu",
 	"log-name-pagetriage-curation": "Evidencija označivanja za pomnju",
 	"log-description-pagetriage-curation": "Ovo je evidencija radnji poduzetih na orudnoj vrpci za pomnju nad stranicama",
 	"logentry-pagetriage-curation-reviewed": "$1 {{GENDER:$2|označava}} stranicu $3 provjerenom",
