@@ -76,63 +76,20 @@ class Hooks implements
 
 	private const TAG_NAME = 'pagetriage';
 
-	/** @var Config */
-	private Config $config;
-	/** @var QueueManager */
-	private QueueManager $queueManager;
+	private readonly StatsFactory $statsFactory;
 
-	/** @var RevisionLookup */
-	private RevisionLookup $revisionLookup;
-
-	/** @var PermissionManager */
-	private PermissionManager $permissionManager;
-
-	/** @var RevisionStore */
-	private RevisionStore $revisionStore;
-
-	/** @var StatsFactory */
-	private StatsFactory $statsFactory;
-
-	/** @var TitleFactory */
-	private TitleFactory $titleFactory;
-
-	/** @var UserOptionsManager */
-	private UserOptionsManager $userOptionsManager;
-
-	/** @var WikiPageFactory */
-	private WikiPageFactory $wikiPageFactory;
-
-	/**
-	 * @param Config $config
-	 * @param RevisionLookup $revisionLookup
-	 * @param StatsFactory $statsFactory
-	 * @param PermissionManager $permissionManager
-	 * @param RevisionStore $revisionStore
-	 * @param TitleFactory $titleFactory
-	 * @param UserOptionsManager $userOptionsManager
-	 * @param QueueManager $queueManager
-	 * @param WikiPageFactory $wikiPageFactory
-	 */
 	public function __construct(
-		Config $config,
-		RevisionLookup $revisionLookup,
+		private readonly Config $config,
+		private readonly RevisionLookup $revisionLookup,
 		StatsFactory $statsFactory,
-		PermissionManager $permissionManager,
-		RevisionStore $revisionStore,
-		TitleFactory $titleFactory,
-		UserOptionsManager $userOptionsManager,
-		QueueManager $queueManager,
-		WikiPageFactory $wikiPageFactory
+		private readonly PermissionManager $permissionManager,
+		private readonly RevisionStore $revisionStore,
+		private readonly TitleFactory $titleFactory,
+		private readonly UserOptionsManager $userOptionsManager,
+		private readonly QueueManager $queueManager,
+		private readonly WikiPageFactory $wikiPageFactory,
 	) {
-		$this->config = $config;
-		$this->revisionLookup = $revisionLookup;
 		$this->statsFactory = $statsFactory->withComponent( 'PageTriage' );
-		$this->permissionManager = $permissionManager;
-		$this->revisionStore = $revisionStore;
-		$this->titleFactory = $titleFactory;
-		$this->userOptionsManager = $userOptionsManager;
-		$this->queueManager = $queueManager;
-		$this->wikiPageFactory = $wikiPageFactory;
 	}
 
 	/** @inheritDoc */

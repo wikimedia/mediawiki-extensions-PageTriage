@@ -21,18 +21,13 @@ use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiPageTriageAction extends ApiBase {
 
-	private RevisionStore $revStore;
-	private Language $contLang;
-
 	public function __construct(
 		ApiMain $queryModule,
 		string $moduleName,
-		RevisionStore $revStore,
-		Language $contLang
+		private readonly RevisionStore $revStore,
+		private readonly Language $contLang,
 	) {
 		parent::__construct( $queryModule, $moduleName );
-		$this->revStore = $revStore;
-		$this->contLang = $contLang;
 	}
 
 	public function execute() {

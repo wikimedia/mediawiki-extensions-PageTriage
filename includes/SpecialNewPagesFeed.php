@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
-use Exception;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Html\Html;
 use MediaWiki\Html\TemplateParser;
@@ -20,16 +19,10 @@ use MediaWiki\User\Options\UserOptionsLookup;
  * @author Ryan Kaldari
  */
 class SpecialNewPagesFeed extends SpecialPage {
-	private UserOptionsLookup $userOptionsLookup;
-
-	/**
-	 * Initialize the special page.
-	 *
-	 * @throws Exception
-	 */
-	public function __construct( UserOptionsLookup $userOptionsLookup ) {
+	public function __construct(
+		private readonly UserOptionsLookup $userOptionsLookup,
+	) {
 		parent::__construct( 'NewPagesFeed' );
-		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**

@@ -32,26 +32,6 @@ use Wikimedia\Rdbms\IResultWrapper;
 class OresMetadata {
 
 	/**
-	 * @var ThresholdLookup
-	 */
-	private $thresholdLookup;
-
-	/**
-	 * @var ModelLookup
-	 */
-	private $modelLookup;
-
-	/**
-	 * @var array
-	 */
-	private $oresModelClasses;
-
-	/**
-	 * @var IContextSource
-	 */
-	private $requestContext;
-
-	/**
 	 * @var array
 	 */
 	private $scores;
@@ -81,17 +61,12 @@ class OresMetadata {
 	 * @param int[] $pageIds
 	 */
 	public function __construct(
-		ThresholdLookup $thresholdLookup,
-		ModelLookup $modelLookup,
-		array $oresModelClasses,
-		IContextSource $requestContext,
+		private readonly ThresholdLookup $thresholdLookup,
+		private readonly ModelLookup $modelLookup,
+		private readonly array $oresModelClasses,
+		private readonly IContextSource $requestContext,
 		$pageIds
 	) {
-		$this->thresholdLookup = $thresholdLookup;
-		$this->modelLookup = $modelLookup;
-		$this->oresModelClasses = $oresModelClasses;
-		$this->requestContext = $requestContext;
-
 		// Pre-fetch the ORES scores for all the pages of interest
 		$this->scores = $this->fetchScores( $pageIds );
 	}

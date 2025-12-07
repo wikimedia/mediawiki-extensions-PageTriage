@@ -32,23 +32,14 @@ use Wikimedia\Rdbms\LikeValue;
  */
 class ApiPageTriageList extends ApiBase {
 
-	private RedirectLookup $redirectLookup;
-	private TitleFormatter $titleFormatter;
-	private LinksMigration $linksMigration;
-	private TempUserDetailsLookup $tempUserDetailsLookup;
-
 	public function __construct(
 		ApiMain $query,
 		string $moduleName,
-		RedirectLookup $redirectLookup,
-		TitleFormatter $titleFormatter,
-		LinksMigration $linksMigration,
-		TempUserDetailsLookup $tempUserDetailsLookup
+		private readonly RedirectLookup $redirectLookup,
+		private readonly TitleFormatter $titleFormatter,
+		private readonly LinksMigration $linksMigration,
+		private readonly TempUserDetailsLookup $tempUserDetailsLookup,
 	) {
-		$this->linksMigration = $linksMigration;
-		$this->redirectLookup = $redirectLookup;
-		$this->titleFormatter = $titleFormatter;
-		$this->tempUserDetailsLookup = $tempUserDetailsLookup;
 		parent::__construct( $query, $moduleName );
 	}
 

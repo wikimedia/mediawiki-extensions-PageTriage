@@ -10,14 +10,9 @@ use Wikimedia\Rdbms\IConnectionProvider;
  */
 class QueueManager {
 
-	/** @var IConnectionProvider */
-	private IConnectionProvider $dbProvider;
-
-	/**
-	 * @param IConnectionProvider $dbProvider
-	 */
-	public function __construct( IConnectionProvider $dbProvider ) {
-		$this->dbProvider = $dbProvider;
+	public function __construct(
+		private readonly IConnectionProvider $dbProvider,
+	) {
 	}
 
 	/**
