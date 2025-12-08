@@ -22,7 +22,6 @@ const Article = Backbone.Model.extend( {
 
 	formatMetadata: function ( article ) {
 		const creationDateParsed = moment.utc( article.get( 'creation_date_utc' ), 'YYYYMMDDHHmmss' ),
-			reviewedUpdatedParsed = moment.utc( article.get( 'ptrp_reviewed_updated' ), 'YYYYMMDDHHmmss' ),
 			titleObj = new mw.Title( article.get( 'title' ) ),
 			nsId = titleObj.getNamespaceId(),
 			offset = parseInt( mw.user.options.get( 'timecorrection' ).split( '|' )[ 1 ] );
@@ -44,11 +43,6 @@ const Article = Backbone.Model.extend( {
 		article.set(
 			'article_age_in_minutes',
 			Math.ceil( ( now - creationDateParsed ) / ( 1000 * 60 ) )
-		);
-
-		article.set(
-			'reviewed_updated_pretty',
-			reviewedUpdatedParsed.utcOffset( offset ).format( mw.msg( 'pagetriage-creation-dateformat' ) )
 		);
 
 		// sometimes user info isn't set, so check that first.
