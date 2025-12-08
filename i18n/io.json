@@ -31,6 +31,7 @@
 	"pagetriage-filter-stat-redirects": "Ridirekti",
 	"pagetriage-filter-stat-blocked": "De blokusita uzeri",
 	"pagetriage-filter-stat-username": "nomo dil uzero: $1",
+	"pagetriage-filter-stat-namespace": "Nomaro (''namespace'')",
 	"pagetriage-filter-stat-predicted-class-good": "Bona",
 	"pagetriage-tags-cat-sources-label": "Fonti",
 	"pagetriage-tags-update-label": "Aktualigar",
