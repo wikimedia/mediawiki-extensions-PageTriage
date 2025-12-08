@@ -574,14 +574,14 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		// Manually set the created at attribute to older dates.
 		$this->getDb()->newUpdateQueryBuilder()
 			->update( 'pagetriage_page' )
-			->set( [ 'ptrp_created' => $this->getDb()->timestamp( '20190215000000' ) ] )
+			->set( [ 'ptrp_reviewed_updated' => $this->getDb()->timestamp( '20190215000000' ) ] )
 			->where( [ 'ptrp_page_id' => $page1['id'] ] )
 			->caller( __METHOD__ )
 			->execute();
 
 		$this->getDb()->newUpdateQueryBuilder()
 			->update( 'pagetriage_page' )
-			->set( [ 'ptrp_created' => $this->getDb()->timestamp( '20190715233000' ) ] )
+			->set( [ 'ptrp_reviewed_updated' => $this->getDb()->timestamp( '20190715233000' ) ] )
 			->where( [ 'ptrp_page_id' => $page2['id'] ] )
 			->caller( __METHOD__ )
 			->execute();

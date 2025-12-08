@@ -92,10 +92,10 @@
 						class="mwe-vue-pt-new-article-warning"
 						:title="$i18n( 'pagetriage-tag-warning-notice', articleAge ).text()"
 					>
-						{{ creationDatePretty }}
+						{{ reviewedUpdatedPretty }}
 					</cdx-info-chip>
 					<span v-else>
-						{{ creationDatePretty }}
+						{{ reviewedUpdatedPretty }}
 					</span>
 				</div>
 			</div>
@@ -370,9 +370,6 @@ module.exports = {
 		},
 		historyUrl: function () {
 			return mw.util.getUrl( this.title, { action: 'history' } );
-		},
-		creationDatePretty: function () {
-			return this.prettyTimestamp( this.creationDateUTC, true );
 		},
 		articleAge: function () {
 			const creationDateParsed = moment.utc( this.creationDateUTC, 'YYYYMMDDHHmmss' );

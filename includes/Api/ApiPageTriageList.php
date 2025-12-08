@@ -406,11 +406,11 @@ class ApiPageTriageList extends ApiBase {
 		}
 
 		if ( isset( $opts['date_range_from'] ) && $opts['date_range_from'] ) {
-			$conds[] = $dbr->expr( 'ptrp_created', '>=', $dbr->timestamp( $opts['date_range_from'] ) );
+			$conds[] = $dbr->expr( 'ptrp_reviewed_updated', '>=', $dbr->timestamp( $opts['date_range_from'] ) );
 		}
 
 		if ( isset( $opts['date_range_to'] ) && $opts['date_range_to'] ) {
-			$conds[] = $dbr->expr( 'ptrp_created', '<=', $dbr->timestamp( $opts['date_range_to'] ) );
+			$conds[] = $dbr->expr( 'ptrp_reviewed_updated', '<=', $dbr->timestamp( $opts['date_range_to'] ) );
 		}
 
 		// Filter on types
