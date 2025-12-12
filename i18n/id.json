@@ -176,7 +176,7 @@
 	"pagetriage-articleinfo-stat": "Status: $1",
 	"pagetriage-has-talkpage-feedback": "Penilai artikel ini yang sebelumnya telah meninggalkan {{PLURAL:$1|$1 komentar}} di $2.",
 	"pagetriage-has-talkpage-feedback-link": "halaman pembicaraan",
-	"pagetriage-js-required": "Ekstensi ini memerlukan peramban yang mengaktifkan JavaScript.",
+	"pagetriage-js-required": "Pengaya ini memerlukan peramban yang menyalakan JavaScript.",
 	"pagetriage-tags-title": "Tambahkan tag",
 	"pagetriage-tags-cat-all-label": "Semua tag",
 	"pagetriage-tags-tooltip": "Tambahkan tag untuk menandai area mana yang perlu diperbaiki di halaman ini",
