@@ -9,7 +9,8 @@
 			"පසිඳු කාවින්ද",
 			"Agam Riyandana",
 			"DARMAS BUDI SANTOSO",
-			"MarioMS"
+			"MarioMS",
+			"Penyuwangi"
 		]
 	},
 	"pagetriage": "Triase Halaman",
@@ -94,7 +95,7 @@
 	"pagetriage-filter-tag-heading": "Dengan tag:",
 	"pagetriage-filter-second-show-heading": "Yang:",
 	"pagetriage-filter-no-categories": "tidak memiliki kategori",
-	"pagetriage-filter-unreferenced": "Tidak punya sitasi",
+	"pagetriage-filter-unreferenced": "Tidak punya rujukan",
 	"pagetriage-filter-orphan": "merupakan artikel yatim",
 	"pagetriage-filter-recreated": "Sebelumnya pernah dihapus",
 	"pagetriage-filter-non-autoconfirmed": "Dibuat oleh penyunting baru (pengguna belum terkonfirmasi otomatis)",
@@ -177,7 +178,7 @@
 	"pagetriage-articleinfo-stat": "Status: $1",
 	"pagetriage-has-talkpage-feedback": "Penilai artikel ini yang sebelumnya telah meninggalkan {{PLURAL:$1|$1 komentar}} di $2.",
 	"pagetriage-has-talkpage-feedback-link": "halaman pembicaraan",
-	"pagetriage-js-required": "Ekstensi ini memerlukan peramban yang mengaktifkan JavaScript.",
+	"pagetriage-js-required": "Pengaya ini memerlukan peramban yang menyalakan JavaScript.",
 	"pagetriage-tags-title": "Tambahkan tag",
 	"pagetriage-tags-cat-common-label": "Umum",
 	"pagetriage-tags-cat-metadata-label": "Metadata",
