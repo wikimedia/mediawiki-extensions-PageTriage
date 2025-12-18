@@ -34,8 +34,8 @@ async function overrideLocalSettings() {
 	console.log( 'Setting up modified ' + localSettingsPath );
 	fs.writeFileSync( localSettingsPath,
 		localSettingsContents + `
-if ( file_exists( "$IP/extensions/PageTriage/tests/selenium/PageTriage.LocalSettings.php" ) ) {
-	require_once "$IP/extensions/PageTriage/tests/selenium/PageTriage.LocalSettings.php";
+if ( file_exists( "$wgExtensionDirectory/PageTriage/tests/selenium/PageTriage.LocalSettings.php" ) ) {
+	require_once "$wgExtensionDirectory/PageTriage/tests/selenium/PageTriage.LocalSettings.php";
 }
 ` );
 }
