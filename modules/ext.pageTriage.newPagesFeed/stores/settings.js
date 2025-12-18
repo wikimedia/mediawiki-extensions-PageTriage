@@ -93,14 +93,14 @@ const filtersToParams = {
 const initState = () => {
 	// Named users store params ( user-centric ) in a user option, other users store params
 	// in localStorage ( client-centric )
-	const stored = mw.user.options.get( 'userjs-NewPagesFeedFilterOptions', localStorage.getItem( 'userjs-NewPagesFeedFilterOptions' ) );
+	const paramsJson = mw.user.options.get( 'userjs-NewPagesFeedFilterOptions', mw.storage.get( 'userjs-NewPagesFeedFilterOptions' ) );
 	return {
 		immediate: JSON.parse( JSON.stringify( defaultImmediate ) ),
 		controlMenuOpen: false,
 		applied: JSON.parse( JSON.stringify( defaultSettings ) ),
 		unsaved: JSON.parse( JSON.stringify( defaultSettings ) ),
 		// Load stored API parameters if possible, else defaults
-		params: JSON.parse( stored ) || defaultParams,
+		params: JSON.parse( paramsJson ) || defaultParams,
 		currentFilteredCount: -1
 	};
 };
@@ -400,14 +400,15 @@ module.exports = {
 					this.afcStateFilterToParam( this.applied.afcSubmissionState );
 					this.addDateFilters( this.applied.afcDate.from, this.applied.afcDate.to );
 				}
+				const paramsJson = JSON.stringify( this.params );
 				// Set the filter parameters to a users option
-				mw.user.options.set( 'userjs-NewPagesFeedFilterOptions', JSON.stringify( this.params ) );
+				mw.user.options.set( 'userjs-NewPagesFeedFilterOptions', paramsJson );
 				// Store the option to a user preference if possible
 				if ( mw.user.isNamed() ) {
-					new mw.Api().saveOption( 'userjs-NewPagesFeedFilterOptions', JSON.stringify( this.params ) );
+					new mw.Api().saveOption( 'userjs-NewPagesFeedFilterOptions', paramsJson );
 				// Otherwise use local storage
 				} else {
-					localStorage.setItem( 'userjs-NewPagesFeedFilterOptions', JSON.stringify( this.params ) );
+					mw.storage.set( 'userjs-NewPagesFeedFilterOptions', paramsJson );
 				}
 			}
 		}

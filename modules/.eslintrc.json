@@ -16,7 +16,6 @@
 	},
 	"rules": {
 		"compat/compat": "warn",
-		"no-jquery/no-global-selector": "off",
-		"mediawiki/no-storage": "warn"
+		"no-jquery/no-global-selector": "off"
 	}
 }
