@@ -43,6 +43,7 @@ module.exports = {
 			}
 			emitLoadMore();
 		};
+		// eslint-disable-next-line compat/compat
 		const observer = new IntersectionObserver( observerCallback );
 		onMounted( () => {
 			observer.observe( barRef.value );

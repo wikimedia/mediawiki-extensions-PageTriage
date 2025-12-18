@@ -783,9 +783,9 @@ module.exports = ToolView.extend( {
 					} ) )
 					.then( () => {
 						if ( markAsReviewed === '1' ) {
-							// Page was also marked as reviewed, so we want to fire the action for that,
-							// too. The 'reviewed' and 'reviewer' attributes on the model are not yet
-							// populated, so we have to pass those in manually.
+							// Page was also marked as reviewed, so we want to fire the action
+							// for that, too. The 'reviewed' and 'reviewer' attributes on the
+							// model are not yet populated, so we have to pass those in manually.
 							actionQueue.mark = {
 								reviewed: true,
 								reviewer: mw.config.get( 'wgUserName' )
