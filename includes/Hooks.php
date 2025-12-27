@@ -604,6 +604,17 @@ class Hooks implements
 				$user,
 				'pagetriage-mark-as-reviewed'
 			);
+
+			$logEntry = new ManualLogEntry(
+				'pagetriage-curation',
+				'reviewed-' . ( $title->isRedirect() ? 'redirect' : 'article' )
+			);
+
+			$logEntry->setPerformer( $user );
+			$logEntry->setTarget( $title );
+			// Explicitly not including the #PageTriage tag
+			// since the action came from a non-PageTriage component
+			$logEntry->publish( $logEntry->insert() );
 		}
 	}
 
