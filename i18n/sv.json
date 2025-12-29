@@ -7,6 +7,7 @@
 			"Lokal Profil",
 			"Rotsee",
 			"Sabelöga",
+			"Stefan2255",
 			"Technic2",
 			"Umeaboy",
 			"WikiPhoenix"
@@ -235,6 +236,8 @@
 	"echo-pref-subscription-page-review": "Granska en sida jag skapat",
 	"echo-pref-tooltip-page-review": "Meddela mig när någon granskat en sida jag skapat.",
 	"echo-category-title-page-review": "{{PLURAL:$1|Sidgranskning|Sidgranskningar}}",
+	"apihelp-pagetriagelist-param-date_range_from": "Visa endast sidor som placerats i kö från och med detta datum.",
+	"apihelp-pagetriagelist-param-date_range_to": "Visa endast sidor som placerats i kö detta datum och tidigare.",
 	"apihelp-pagetriagelist-param-show_predicted_class_stub": "Om förutspådda klasstubb ska inkluderas",
 	"apihelp-pagetriagelist-param-show_predicted_issues_vandalism": "Om förutspådda vandalismärenden ska inkluderas",
 	"apihelp-pagetriagelist-param-show_predicted_issues_attack": "Om förutspådda attackärenden ska inkluderas",
