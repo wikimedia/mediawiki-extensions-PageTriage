@@ -21,6 +21,7 @@
 			"Tucvbif",
 			"UniCollab",
 			"Vlad5250",
+			"Vonavy",
 			"Yurik"
 		]
 	},
@@ -263,8 +264,8 @@
 	"apihelp-pagetriageaction-param-pageid": "Идентификатор страницы, на которой выполняется действие.",
 	"apihelp-pagetriageaction-param-reviewed": "Следует ли помечать страницу как просмотренную",
 	"apihelp-pagetriageaction-param-enqueue": "Следует ли добавить страницу в очередь PageTriage.",
-	"apihelp-pagetriagelist-param-date_range_from": "Показывать только страницы, созданные на эту дату и позже.",
-	"apihelp-pagetriagelist-param-date_range_to": "Показывать только страницы, созданные на эту дату и ранее.",
+	"apihelp-pagetriagelist-param-date_range_from": "Показывать только страницы, добавленные в очередь в эту дату и позже.",
+	"apihelp-pagetriagelist-param-date_range_to": "Показывать только страницы, добавленные в очередь в эту дату и ранее.",
 	"apihelp-pagetriagelist-param-show_predicted_class_stub": "Включить ли предсказываемый класс «заготовка»",
 	"apihelp-pagetriagelist-param-show_predicted_class_start": "Включить ли предсказываемый класс «начальная»",
 	"apihelp-pagetriagelist-param-show_predicted_class_c": "Включить ли предсказываемый класс C",
