@@ -4,10 +4,15 @@
 			"Cabal"
 		]
 	},
+	"pagetriage": "ਵਰਕੇ ਦੀ ਪਰਖ-ਪੜਚੋਲ",
+	"pagetriage-pagecuration": "ਵਰਕੇ ਦੀ ਸੰਰਚਨਾ",
 	"pagetriage-bytes": "$1 {{PLURAL:$1|ਬਾਈਟ|ਬਾਈਟਾਂ}}",
 	"pagetriage-filter-predicted-issues-vandalism": "ਭੰਨ-ਤੋੜ",
 	"pagetriage-triage": "ਪਰਖੋ",
 	"pagetriage-filter-keyword": "ਖ਼ਾਸ-ਸ਼ਬਦ ਖੋਜ",
 	"pagetriage-filter-blocked": "ਪਾਬੰਦੀਸ਼ੁਦਾ ਵਰਤੋਂਕਾਰ",
-	"pagetriage-filter-stat-predicted-issues-vandalism": "ਭੰਨ-ਤੋੜ"
+	"pagetriage-filter-stat-predicted-issues-vandalism": "ਭੰਨ-ਤੋੜ",
+	"pagetriage-has-talkpage-feedback-link": "ਗੱਲਬਾਤ ਵਰਕਾ",
+	"pagetriage-info-title": "ਵਰਕੇ ਦੀ ਜਾਣਕਾਰੀ",
+	"pagetriage-wikilove-page-creator": "ਵਰਕਾ ਸਿਰਜਣਹਾਰ"
 }
