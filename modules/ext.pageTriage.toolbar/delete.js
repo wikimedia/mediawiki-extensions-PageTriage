@@ -74,6 +74,7 @@ const specialDeletionTagging = {
 				'$1\n{{subst:rfd2|text=' + reason + '|redirect=' + pageName +
 				'|target=' + redirectTarget + '}} ~~~~\n'
 			);
+			data.summary = 'Adding [[' + pageName + ']].';
 		},
 
 		getLogPageTitle: function ( prefix ) {
