@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aca",
 			"Winston Sung"
 		]
 	},
@@ -15,7 +16,7 @@
 	"pagetriage-markpatrolled": "Označi ovu stranicu provjerenom",
 	"pagetriage-markunpatrolled": "Označi ovu stranicu neprovjerenom",
 	"pagetriage-self-review-error": "Ne možete provjeravati stranice koje ste vi napravili.",
-	"pagetriage-api-error": "Došlo je do pogrješke u učitavanju sučelja iz извршникот-ija. Molimo Vas, preučitajte stranicu.",
+	"pagetriage-api-error": "Došlo je do greške pri učitavanju interfejsa iz API-ja. Ponovno učitajte stranicu.",
 	"pagetriage-reviewed": "Provjeren",
 	"pagetriage-mark-as-reviewed-error": "Dogodila se prigodom obilježavanja stranice provjerenom: $1",
 	"pagetriage-mark-as-unreviewed-error": "Dogodila se pogreška prigodom označivanja stranice neprovjerenom: $1",
