@@ -154,7 +154,7 @@ module.exports = {
 			}
 			// offset with the last
 			const lastPage = allPages[ allPages.length - 1 ];
-			apiOffsets.value.normal = lastPage.creation_date_utc;
+			apiOffsets.value.normal = lastPage.ptrp_reviewed_updated;
 			apiOffsets.value.page = lastPage.pageid;
 		};
 		const addFromApi = function ( apiParams ) {
