@@ -445,7 +445,11 @@ class ApiPageTriageList extends ApiBase {
 			$opts['offset'] > 0 &&
 			!$count
 		) {
-			$offsetConds['ptrp_created'] = $dbr->timestamp( $opts['offset'] );
+			if ( str_contains( strtolower( $opts['dir'] ?? '' ), 'review' ) ) {
+				$offsetConds['ptrp_reviewed_updated'] = $dbr->timestamp( $opts['offset'] );
+			} else {
+				$offsetConds['ptrp_created'] = $dbr->timestamp( $opts['offset'] );
+			}
 			// Offset the list by page ID as well (in case multiple pages have the same timestamp)
 			if (
 				array_key_exists( 'pageoffset', $opts ) &&
