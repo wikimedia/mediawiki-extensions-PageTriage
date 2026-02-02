@@ -28,11 +28,11 @@ module.exports = {
 		const buttons = [
 			{
 				label: this.$i18n( 'pagetriage-newest' ).text(),
-				value: 'newestreview'
+				value: 'newestfirst'
 			},
 			{
 				label: this.$i18n( 'pagetriage-oldest' ).text(),
-				value: 'oldestreview'
+				value: 'oldestfirst'
 			}
 		];
 		const settings = useSettingsStore();
