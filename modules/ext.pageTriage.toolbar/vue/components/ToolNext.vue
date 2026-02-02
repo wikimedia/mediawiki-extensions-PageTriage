@@ -54,7 +54,7 @@ module.exports = {
 	},
 	methods: {
 		getNext: function ( page ) {
-			if ( !page.ptrp_reviewed_updated ) {
+			if ( !page.creation_date_utc ) {
 				return;
 			}
 			// make a copy
@@ -62,7 +62,7 @@ module.exports = {
 			const params = Object.assign( {}, defaultParams, initParams );
 			delete params.mode;
 			params.limit = 1;
-			params.offset = page.ptrp_reviewed_updated;
+			params.offset = page.creation_date_utc;
 			params.pageoffset = page.pageid;
 			return client.get( params ).then( ( res ) => {
 				// If API doesn't return content for next page
