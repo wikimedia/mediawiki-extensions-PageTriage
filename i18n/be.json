@@ -4,6 +4,7 @@
 			"Artsiom91",
 			"Kareyac",
 			"No Sleep till Krupki",
+			"Ucukor",
 			"Vlad5250",
 			"ZlyiLev"
 		]
@@ -56,5 +57,5 @@
 	"pagetriage-discuss-link": "{{GENDER:$1|Абмеркаваць}}",
 	"pagetriage-discuss-link-title": "{{GENDER:$1|Абмеркаваць}}",
 	"right-pagetriage-copyvio": "Пазначэнне старонак у Special:NewPagesFeed як магчымыя парушэнні аўтарскіх правоў праз pagetriage-tagcopyvio API",
-	"action-pagetriage-copyvio": "пазначаць старонкі як верагодныя парушэнні аўтарскіх правоў"
+	"action-pagetriage-copyvio": "пазначаць старонкі як магчымыя парушэнні аўтарскіх правоў"
 }
