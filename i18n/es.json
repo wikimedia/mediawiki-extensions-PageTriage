@@ -322,6 +322,8 @@
 	"apihelp-pagetriagelist-param-non_autoconfirmed_users": "Si se deben mostrar solo las páginas creadas por usuarios no autoconfirmados.",
 	"apihelp-pagetriagelist-param-blocked_users": "Si se deben mostrar solo las páginas creadas por usuarios bloqueados.",
 	"apihelp-pagetriagelist-param-username": "Mostrar solo las páginas creadas por nombre de usuario.",
+	"apihelp-pagetriagelist-param-date_range_from": "Mostrar sólo las páginas puestas en cola en esta fecha y después.",
+	"apihelp-pagetriagelist-param-date_range_to": "Mostrar sólo las páginas en cola en esta fecha y anteriores.",
 	"apihelp-pagetriagelist-example-1": "Listar 100 páginas en el espacio de nombres 0",
 	"apihelp-pagetriagestats-summary": "Obtener las estadísticas del triaje de páginas.",
 	"apihelp-pagetriagestats-param-showredirs": "Si se deben incluir redirecciones.",
