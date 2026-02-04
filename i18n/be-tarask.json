@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Renessaince",
-			"Wizardist"
+			"Wizardist",
+			"Ucukor"
 		]
 	},
 	"pagetriage": "Page Triage",
@@ -11,5 +12,6 @@
 	"pagetriage-pagecuration": "Куратарства старонкамі",
 	"pagetriage-reviewed": "Праверана",
 	"pagetriage-filter-stat-reviewed": "Правераныя",
+	"pagetriage-add-a-note-for-option-reviewer": "рэцэнзэнт (Карыстальнік: $1 )",
 	"pagetriage-mark-as-reviewed": "Пазначыць як праверанае"
 }
