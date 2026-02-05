@@ -7,8 +7,8 @@
 			"Saurmandal"
 		]
 	},
-	"pagetriage": "पेज ट्राइएज",
-	"newpagesfeed": "नए पृष्ठ फ़ीड",
+	"pagetriage": "पृष्ठ ट्रियाज",
+	"newpagesfeed": "नए पृष्ठों का फ़ीड",
 	"pagetriage-desc": "नए पृष्ठों की समीक्षा और अनुमोदन की सुविधा प्रदान करता है",
 	"pagetriage-pagecuration": "पृष्ठ क्यूरेशन",
 	"pagetriage-new-page-patrol": "नया पृष्ठ गश्ती",
@@ -27,7 +27,7 @@
 	"pagetriage-bytes": "$1 {{PLURAL:$2|बाइट|बाइट्स}}",
 	"pagetriage-edits": "$1 {{PLURAL:$1|सम्पादन}}",
 	"pagetriage-categories": "{{PLURAL:$1|एक श्रेणी|$1 श्रेणियाँ}}",
-	"pagetriage-no-categories": "श्रेणीयाँ नहीं",
+	"pagetriage-no-categories": "कोई श्रेणी नहीं",
 	"pagetriage-no-reference": "कोई उद्धरण नहीं",
 	"pagetriage-orphan": "संभवतः अनाथ",
 	"pagetriage-no-author": "लेखक की कोई जानकारी उपलब्ध नहीं है",
