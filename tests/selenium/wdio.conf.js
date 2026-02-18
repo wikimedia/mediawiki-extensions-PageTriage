@@ -4,7 +4,12 @@ import LocalSettingsSetup from './LocalSettingsSetup.cjs';
 export const config = { ...wdioDefaults,
 	// Override, or add to, the setting from wdio-mediawiki.
 	// Learn more at https://webdriver.io/docs/configurationfile/
-	maxInstances: 4,
+	// To enable video recording, enable video and disable browser headless
+	// recordVideo: true,
+	// useBrowserHeadless: false,
+	//
+	// To enable screenshots on all tests, disable screenshotsOnFailureOnly
+	// screenshotsOnFailureOnly: false,
 	onPrepare: async function () {
 		await LocalSettingsSetup.overrideLocalSettings();
 		await LocalSettingsSetup.restartPhpFpmService();
