@@ -20,7 +20,7 @@ describe( 'PageTriage Toolbar', () => {
 		// Create an article using nonAdmin's account.
 		const nonAdminApiUser = await createApiClient( { username, password } );
 		await nonAdminApiUser.edit( articleName, getTestString(), getTestString() );
-		RunJobs.run();
+		await RunJobs.run();
 	} );
 
 	it( 'should load', async () => {

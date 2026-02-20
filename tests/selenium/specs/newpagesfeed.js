@@ -21,7 +21,7 @@ describe( 'Special:NewPagesFeed', () => {
 		const articleName = getTestString( 'NewArticle-' );
 		await EditPage.open( articleName );
 		await EditPage.saveArticle( getTestString() );
-		RunJobs.run();
+		await RunJobs.run();
 
 		// close and reopen the browser window, logging out the user and making it easier
 		// to navigate to Special:NewPagesFeed
