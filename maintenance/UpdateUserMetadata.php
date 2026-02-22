@@ -6,6 +6,7 @@ use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileProcessor;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Maintenance\Maintenance;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 // @codeCoverageIgnoreStart
@@ -22,7 +23,7 @@ require_once "$IP/maintenance/Maintenance.php";
 class UpdateUserMetadata extends Maintenance {
 
 	/**
-	 * @var IDatabase|null
+	 * @var IReadableDatabase|null
 	 */
 	protected $dbr;
 	/**

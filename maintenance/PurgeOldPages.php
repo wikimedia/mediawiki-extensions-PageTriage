@@ -14,6 +14,7 @@ use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IExpression;
+use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 // @codeCoverageIgnoreStart
@@ -30,7 +31,7 @@ require_once "$IP/maintenance/Maintenance.php";
 class PurgeOldPages extends Maintenance {
 
 	/**
-	 * @var IDatabase|null
+	 * @var IReadableDatabase|null
 	 */
 	protected $dbr;
 	/**
