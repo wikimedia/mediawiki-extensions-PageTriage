@@ -15,6 +15,7 @@
 	"pagetriage-filter-stat-no-categories": "Ij ohtâgin luokka",
 	"pagetriage-filter-stat-predicted-issues-vandalism": "Vandalism",
 	"pagetriage-button-add-parameters": "Lasseet parameetterijd",
+	"pagetriage-articleinfo-stat": "Statistiik: $1",
 	"pagetriage-has-talkpage-feedback-link": "savâstâllâmsiijđon",
 	"pagetriage-tags-title": "Lasseet kilgolijd",
 	"pagetriage-tags-cat-all-label": "Puoh kilgoleh",
@@ -22,6 +23,7 @@
 	"pagetriage-info-history-header": "Historjá",
 	"pagetriage-info-help": "iše",
 	"pagetriage-info-problem-blocked": "Estum kevttee",
+	"pagetriage-toolbar-learn-more": "Lasetiäđuh »",
 	"pagetriage-toolbar-close": "Toopâ",
 	"pagetriage-afc-state-all": "Puoh",
 	"pagetriage-thank-link": "{{GENDER:$1|{{GENDER:$2|Kijte}}}}"
