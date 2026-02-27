@@ -61,17 +61,17 @@
 		}
 	},
 	"LogActionsHandlers": {
-		"pagetriage-curation/reviewed": "LogFormatter",
-		"pagetriage-curation/reviewed-redirect": "LogFormatter",
-		"pagetriage-curation/reviewed-article": "LogFormatter",
-		"pagetriage-curation/unreviewed": "LogFormatter",
-		"pagetriage-curation/unreviewed-article": "LogFormatter",
-		"pagetriage-curation/unreviewed-redirect": "LogFormatter",
-		"pagetriage-curation/enqueue": "LogFormatter",
+		"pagetriage-curation/reviewed": "MediaWiki\\Logging\\LogFormatter",
+		"pagetriage-curation/reviewed-redirect": "MediaWiki\\Logging\\LogFormatter",
+		"pagetriage-curation/reviewed-article": "MediaWiki\\Logging\\LogFormatter",
+		"pagetriage-curation/unreviewed": "MediaWiki\\Logging\\LogFormatter",
+		"pagetriage-curation/unreviewed-article": "MediaWiki\\Logging\\LogFormatter",
+		"pagetriage-curation/unreviewed-redirect": "MediaWiki\\Logging\\LogFormatter",
+		"pagetriage-curation/enqueue": "MediaWiki\\Logging\\LogFormatter",
 		"pagetriage-curation/tag": "MediaWiki\\Extension\\PageTriage\\PageTriageLogFormatter",
 		"pagetriage-curation/delete": "MediaWiki\\Extension\\PageTriage\\PageTriageLogFormatter",
-		"pagetriage-copyvio/insert": "LogFormatter",
-		"pagetriage-copyvio/delete": "LogFormatter"
+		"pagetriage-copyvio/insert": "MediaWiki\\Logging\\LogFormatter",
+		"pagetriage-copyvio/delete": "MediaWiki\\Logging\\LogFormatter"
 	},
 	"LogTypes": [
 		"pagetriage-curation",
