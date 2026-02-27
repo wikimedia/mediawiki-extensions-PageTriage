@@ -27,7 +27,7 @@ class QueueManagerTest extends MediaWikiIntegrationTestCase {
 
 	public function testDeleteNonexistentPage() {
 		$status = $this->getQueueManager()->deleteByPageId( -1 );
-		$this->assertFalse( $status->isOK() );
+		$this->assertStatusNotOK( $status );
 	}
 
 	public function testDeleteExistentPage() {
@@ -47,7 +47,7 @@ class QueueManagerTest extends MediaWikiIntegrationTestCase {
 				->fetchRowCount()
 		);
 		$status = $this->getQueueManager()->deleteByPageId( $page->getId() );
-		$this->assertTrue( $status->isOK() );
+		$this->assertStatusOK( $status );
 		$this->assertSame( 0,
 			$this->getDb()->newSelectQueryBuilder()
 				->select( '*' )
