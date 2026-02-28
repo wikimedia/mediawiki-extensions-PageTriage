@@ -202,7 +202,6 @@ class ApiPageTriageTagging extends ApiBase {
 			$this->dieWithError( 'apierror-missingtitle', 'bad-page' );
 		}
 
-		// @phan-suppress-next-line PhanTypeMismatchReturnNullable Still T240141
 		return $title;
 	}
 }
