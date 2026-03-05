@@ -22,7 +22,8 @@
 			"UniCollab",
 			"Vlad5250",
 			"Yurik",
-			"Vonavy"
+			"Vonavy",
+			"Putnik"
 		]
 	},
 	"pagetriage": "Сортировка страниц",
@@ -189,6 +190,7 @@
 	"pagetriage-tags-param-free-no-label": "Нет",
 	"pagetriage-tags-param-missing-required": "Отсутствует обязательный параметр для тега $1.",
 	"pagetriage-tags-talk-page-notify-topic-title": "Способы улучшить $1",
+	"pagetriage-new-page-feed-show-ip-not-found": "IP-адреса для временной учетной записи не найдены.",
 	"log-name-pagetriage-curation": "Журнал проверки страниц",
 	"log-description-pagetriage-curation": "Это журнал действий, совершённых с помощью панели проверки.",
 	"logentry-pagetriage-curation-reviewed": "$1 пометил{{GENDER:$2||а}} $3 как проверенную",
