@@ -1,7 +1,6 @@
 import NewPagesFeed from '../pageobjects/newpagesfeed.page.js';
 import EditPage from '../pageobjects/editpage.page.js';
 import CreateAccountPage from 'wdio-mediawiki/CreateAccountPage.js';
-import RunJobs from 'wdio-mediawiki/RunJobs.js';
 import { getTestString } from 'wdio-mediawiki/Util.js';
 
 describe( 'Special:NewPagesFeed', () => {
@@ -21,7 +20,6 @@ describe( 'Special:NewPagesFeed', () => {
 		const articleName = getTestString( 'NewArticle-' );
 		await EditPage.open( articleName );
 		await EditPage.saveArticle( getTestString() );
-		await RunJobs.run();
 
 		// close and reopen the browser window, logging out the user and making it easier
 		// to navigate to Special:NewPagesFeed

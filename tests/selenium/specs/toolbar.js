@@ -1,7 +1,6 @@
 import Toolbar from '../pageobjects/toolbar.page.js';
 import EditPage from '../pageobjects/editpage.page.js';
 import LoginPage from 'wdio-mediawiki/LoginPage.js';
-import RunJobs from 'wdio-mediawiki/RunJobs.js';
 import { getTestString } from 'wdio-mediawiki/Util.js';
 import { createApiClient } from 'wdio-mediawiki/Api.js';
 
@@ -20,7 +19,6 @@ describe( 'PageTriage Toolbar', () => {
 		// Create an article using nonAdmin's account.
 		const nonAdminApiUser = await createApiClient( { username, password } );
 		await nonAdminApiUser.edit( articleName, getTestString(), getTestString() );
-		await RunJobs.run();
 	} );
 
 	it( 'should load', async () => {
