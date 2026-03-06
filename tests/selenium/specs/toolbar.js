@@ -19,11 +19,10 @@ describe( 'PageTriage Toolbar', () => {
 		// Create an article using nonAdmin's account.
 		const nonAdminApiUser = await createApiClient( { username, password } );
 		await nonAdminApiUser.edit( articleName, getTestString(), getTestString() );
+		await LoginPage.loginAdmin();
 	} );
 
 	it( 'should load', async () => {
-		await browser.reloadSession();
-		await LoginPage.loginAdmin();
 		await Toolbar.open( articleName );
 		await browser.waitUntil( async () => await Toolbar.toolbarBody.waitForDisplayed() );
 
@@ -31,8 +30,6 @@ describe( 'PageTriage Toolbar', () => {
 	} );
 
 	it( 'should allow user to add a maintainence tag to a page', async () => {
-		await browser.reloadSession();
-		await LoginPage.loginAdmin();
 		await Toolbar.open( articleName );
 		await browser.waitUntil( async () => await Toolbar.toolbarBody.waitForDisplayed() );
 
@@ -58,8 +55,6 @@ describe( 'PageTriage Toolbar', () => {
 	} );
 
 	it( 'should allow user to add a maintainence tag to a page and send a note to user', async () => {
-		await browser.reloadSession();
-		await LoginPage.loginAdmin();
 		await Toolbar.open( articleName );
 		await browser.waitUntil( async () => await Toolbar.toolbarBody.waitForDisplayed() );
 
