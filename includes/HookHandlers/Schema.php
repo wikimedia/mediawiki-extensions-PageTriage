@@ -53,7 +53,7 @@ class Schema implements LoadExtensionSchemaUpdatesHook {
 	public static function doOnSchemaUpdatesPopulatePageTriageTags( DatabaseUpdater $updater ): void {
 		$updateKey = 'populatePageTriageTags-1.34';
 		if ( $updater->updateRowExists( $updateKey ) ) {
-			$updater->output( "...default pagetriage tags already added\n" );
+			$updater->outputApplied( "...default pagetriage tags already added\n" );
 			return;
 		}
 
