@@ -12,10 +12,10 @@ export const config = { ...wdioDefaults,
 	// screenshotsOnFailureOnly: false,
 	onPrepare: async function () {
 		await LocalSettingsSetup.overrideLocalSettings();
-		await LocalSettingsSetup.restartPhpFpmService();
+		await LocalSettingsSetup.resetPhpFpmOpCache();
 	},
 	onComplete: async function () {
 		await LocalSettingsSetup.restoreLocalSettings();
-		await LocalSettingsSetup.restartPhpFpmService();
+		await LocalSettingsSetup.resetPhpFpmOpCache();
 	}
 };
