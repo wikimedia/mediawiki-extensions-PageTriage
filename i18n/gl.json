@@ -164,7 +164,7 @@
 	"pagetriage-auto-refresh-list": "Actualización automática",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|etiqueta seleccionada|etiquetas seleccionadas}}",
 	"pagetriage-button-add-tag": "Engadir as etiquetas seleccionadas",
-	"pagetriage-button-add-tag-number": "Engadir as $1 etiquetas seleccionadas",
+	"pagetriage-button-add-tag-number": "Engadir {{PLURAL:$1|a etiqueta seleccionada|as $1 etiquetas seleccionadas}}",
 	"pagetriage-button-add-parameters": "Engadir os parámetros",
 	"pagetriage-button-add-details": "Engada os detalles",
 	"pagetriage-button-edit-details": "Editar os detalles",
