@@ -163,7 +163,7 @@
 	"pagetriage-auto-refresh-list": "Аутоматски освежи",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|ознака изабрана|ознаке изабране}}",
 	"pagetriage-button-add-tag": "Додај изабране ознаке",
-	"pagetriage-button-add-tag-number": "Додај изабране ознаке ($1)",
+	"pagetriage-button-add-tag-number": "Додај {{PLURAL:$1|изабрану ознаку|изабране ознаке}} ($1)",
 	"pagetriage-button-add-parameters": "Додај параметар",
 	"pagetriage-button-add-details": "Додај детаље",
 	"pagetriage-button-edit-details": "Уреди детаље",
