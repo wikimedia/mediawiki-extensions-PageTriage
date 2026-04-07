@@ -153,7 +153,7 @@
 	"pagetriage-refresh-list": "Оновити список",
 	"pagetriage-tag-count-total": "Обрано $1 {{PLURAL:$1|тег|теги|тегів}}",
 	"pagetriage-button-add-tag": "Додати вибрані теги",
-	"pagetriage-button-add-tag-number": "Додати $1 вибраних тегів",
+	"pagetriage-button-add-tag-number": "Додати $1 {{PLURAL:$1|вибраний тег|вибрані теги|вибраних тегів}}",
 	"pagetriage-button-add-parameters": "Додати параметри",
 	"pagetriage-button-add-details": "Додати подробиці",
 	"pagetriage-button-edit-details": "Змінити подробиці",
