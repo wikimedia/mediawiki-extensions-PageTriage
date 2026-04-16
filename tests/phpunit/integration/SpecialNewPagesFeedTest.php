@@ -5,9 +5,9 @@ use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\PageTriage\SpecialNewPagesFeed;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\Tests\Specials\SpecialPageTestBase;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\Tests\User\TempUser\TempUserTestTrait;
-use SpecialPageTestBase;
 
 /**
  * Tests for SpecialNewPagesFeed class (PageTriage list view)
