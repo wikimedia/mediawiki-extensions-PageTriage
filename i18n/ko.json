@@ -8,7 +8,8 @@
 			"Yearning",
 			"Ykhwong",
 			"아라",
-			"YeBoy371"
+			"YeBoy371",
+			"Tensama0415"
 		]
 	},
 	"pagetriage": "문서 선별",
@@ -143,7 +144,7 @@
 	"pagetriage-tag-count-total": "태그 $1개 선택됨",
 	"pagetriage-button-add-tag": "선택한 태그 추가",
 	"pagetriage-button-add-tag-number": "선택한 태그 $1개 추가",
-	"pagetriage-button-add-parameters": "변수 추가",
+	"pagetriage-button-add-parameters": "매개변수 추가",
 	"pagetriage-button-add-details": "자세한 사항 추가",
 	"pagetriage-button-edit-details": "자세한 사항 편집",
 	"pagetriage-button-mark-for-deletion": "삭제로 표시",
@@ -170,7 +171,7 @@
 	"pagetriage-tags-param-date-label": "날짜:",
 	"pagetriage-tags-param-free-yes-label": "예",
 	"pagetriage-tags-param-free-no-label": "아니오",
-	"pagetriage-tags-param-missing-required": "$1 태그에 필수 변수가 없습니다.",
+	"pagetriage-tags-param-missing-required": "$1 태그에 필수 매개변수가 없습니다.",
 	"pagetriage-tags-talk-page-notify-topic-title": "$1 개선 방법",
 	"log-name-pagetriage-curation": "문서 큐레이트 기록",
 	"log-description-pagetriage-curation": "문서 큐레이트 도구 모음에서 수행한 작업 기록입니다.",
@@ -248,6 +249,7 @@
 	"echo-category-title-page-review": "문서 {{PLURAL:$1|검토}}",
 	"group-copyviobot": "저작권 위반 봇",
 	"group-copyviobot-member": "{{GENDER:$1|저작권 위반 봇}}",
+	"apihelp-pagetriageaction-param-tags": "이 작업에 대해 생성되는 로그 항목에 적용할 변경 태그입니다.",
 	"apihelp-pagetriagelist-param-unreferenced": "각주 없는 문서만 표시할지의 여부입니다.",
 	"apihelp-pagetriagelist-param-recreated": "과거에 삭제된 문서만 표시할지의 여부입니다.",
 	"apihelp-pagetriagelist-param-learners": "자동 인증된 신규 사용자가 만든 문서만 표시할지의 여부입니다.",
