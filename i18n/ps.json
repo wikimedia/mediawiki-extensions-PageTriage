@@ -25,12 +25,14 @@
 	"pagetriage-filter-list-prompt": "چاڼگر ټاکل",
 	"pagetriage-filter-show-heading": "دريځ:",
 	"pagetriage-filter-unreviewed-edits": "نامخکتلي مخونه",
+	"pagetriage-filter-namespace-heading": "نوم‌تشيال کې:",
 	"pagetriage-filter-article": "ليکنه",
 	"pagetriage-filter-username": "کارن‌نوم",
 	"pagetriage-filter-ns-all": "ټول",
 	"pagetriage-filter-stat-all": "ټول",
 	"pagetriage-filter-stat-unreviewed": "نامخکتلي",
 	"pagetriage-filter-stat-username": "د کارن له مخې: $1",
+	"pagetriage-filter-stat-namespace": "نوم‌تشيال",
 	"pagetriage-tags-param-article-label": "ليکنه:",
 	"pagetriage-tags-param-date-label": "نېټه:",
 	"pagetriage-tags-param-free-yes-label": "هو",
@@ -41,5 +43,8 @@
 	"pagetriage-toolbar-learn-more": "نور څه زده کول »",
 	"pagetriage-mark-as-unreviewed": "نامخکتلی په نښه کول",
 	"pagetriage-wikilove-edit-count": "$1 {{PLURAL:$1|edit|سمونې}}",
-	"group-copyviobot": "لمېسل‌رښتې سرغړاوي روباټونه"
+	"group-copyviobot": "لمېسل‌رښتې سرغړاوي روباټونه",
+	"apihelp-pagetriagelist-param-namespace": "له کوم نوم‌تشيال نه مخونه راوباسو.",
+	"apihelp-pagetriagelist-example-1": "په ۰ نوم‌تشيال کې ۱۰۰ ناکتلي مخونه لړليکول",
+	"apihelp-pagetriagestats-param-namespace": "له کوم نوم‌تشيال نه شمارنې راوباسو."
 }
