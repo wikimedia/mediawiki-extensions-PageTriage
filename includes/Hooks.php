@@ -33,7 +33,7 @@ use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\PermissionManager;
-use MediaWiki\RecentChanges\Hook\MarkPatrolledCompleteHook;
+use MediaWiki\RecentChanges\Hook\MarkPatrolledAuditHook;
 use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\ResourceLoader\Context;
@@ -66,7 +66,7 @@ class Hooks implements
 	LinksUpdateCompleteHook,
 	ArticleViewFooterHook,
 	PageDeleteCompleteHook,
-	MarkPatrolledCompleteHook,
+	MarkPatrolledAuditHook,
 	BlockIpCompleteHook,
 	UnblockUserCompleteHook,
 	ResourceLoaderGetConfigVarsHook,
@@ -566,22 +566,16 @@ class Hooks implements
 	}
 
 	/** @inheritDoc */
-	public function onMarkPatrolledComplete( $rcid, $user, $wcOnlySysopsCanPatrol, $auto ) {
-		// Sync records from patrol queue to triage queue
-		$rc = RecentChange::newFromId( $rcid );
-		if ( !$rc ) {
-			return;
-		}
-
+	public function onMarkPatrolledAudit( $recentChange, $userIdentity, int $logId ): void {
 		// Run for PageTriage namespaces and for draftspace
-		if ( !in_array( $rc->getPage()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
+		if ( !in_array( $recentChange->getPage()->getNamespace(), PageTriageUtil::getNamespaces() ) ) {
 			return;
 		}
 
-		$pt = new PageTriage( $rc->getAttribute( 'rc_cur_id' ) );
-		if ( $pt->addToPageTriageQueue( QueueRecord::REVIEW_STATUS_PATROLLED, $user, true ) ) {
+		$pt = new PageTriage( $recentChange->getAttribute( 'rc_cur_id' ) );
+		if ( $pt->addToPageTriageQueue( QueueRecord::REVIEW_STATUS_PATROLLED, $userIdentity, true ) ) {
 			// Compile metadata for new page triage record.
-			$acp = ArticleCompileProcessor::newFromPageId( [ $rc->getAttribute( 'rc_cur_id' ) ] );
+			$acp = ArticleCompileProcessor::newFromPageId( [ $recentChange->getAttribute( 'rc_cur_id' ) ] );
 			if ( $acp ) {
 				// Page was just inserted into PageTriage queue, so we need to compile BasicData
 				// from DB_PRIMARY, since that component accesses the pagetriage_page table.
@@ -593,7 +587,7 @@ class Hooks implements
 		}
 
 		// Only notify for PageTriage namespaces, not for draftspace
-		$title = $this->titleFactory->newFromID( $rc->getAttribute( 'rc_cur_id' ) );
+		$title = $this->titleFactory->newFromID( $recentChange->getAttribute( 'rc_cur_id' ) );
 		$isInPageTriageNamespaces = in_array(
 			$title->getNamespace(),
 			$this->config->get( 'PageTriageNamespaces' )
@@ -601,7 +595,7 @@ class Hooks implements
 		if ( $title && $isInPageTriageNamespaces ) {
 			PageTriageUtil::createNotificationEvent(
 				$title,
-				$user,
+				$userIdentity,
 				'pagetriage-mark-as-reviewed'
 			);
 
@@ -610,7 +604,7 @@ class Hooks implements
 				'reviewed-' . ( $title->isRedirect() ? 'redirect' : 'article' )
 			);
 
-			$logEntry->setPerformer( $user );
+			$logEntry->setPerformer( $userIdentity );
 			$logEntry->setTarget( $title );
 			// Explicitly not including the #PageTriage tag
 			// since the action came from a non-PageTriage component

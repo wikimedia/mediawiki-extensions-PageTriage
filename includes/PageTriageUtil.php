@@ -16,7 +16,6 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\WikiPage;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\Title;
-use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use ORES\Hooks\Helpers;
 use StatusValue;
@@ -499,7 +498,7 @@ class PageTriageUtil {
 	 * 4. 'Add deletion tag' curation flyout
 	 *
 	 * @param Title $title
-	 * @param User $user
+	 * @param UserIdentity $user
 	 * @param string $type notification type
 	 * @param array|null $extra
 	 * @return StatusValue

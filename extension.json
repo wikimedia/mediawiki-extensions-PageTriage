@@ -811,7 +811,7 @@
 		"LinksUpdateComplete": "main",
 		"ArticleViewFooter": "main",
 		"PageDeleteComplete": "main",
-		"MarkPatrolledComplete": "main",
+		"MarkPatrolledAudit": "main",
 		"BlockIpComplete": "main",
 		"UnblockUserComplete": "main",
 		"ResourceLoaderGetConfigVars": "main",
