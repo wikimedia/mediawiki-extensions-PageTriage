@@ -157,7 +157,7 @@
 	"pagetriage-auto-refresh-list": "Auto-refrescar",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|etiquetta|etiquettas}} seligite",
 	"pagetriage-button-add-tag": "Adder le etiquettas seligite",
-	"pagetriage-button-add-tag-number": "Adder $1 etiquettas seligite",
+	"pagetriage-button-add-tag-number": "Adder $1 etiquetta{{PLURAL:$1||s}} seligite",
 	"pagetriage-button-add-parameters": "Adder parametros",
 	"pagetriage-button-add-details": "Adder detalios",
 	"pagetriage-button-edit-details": "Modificar detalios",
