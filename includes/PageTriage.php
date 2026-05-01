@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\PageTriage;
 
-use MediaWiki\Logging\PatrolLog;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\User\UserIdentity;
@@ -152,8 +151,9 @@ class PageTriage {
 					'rc_source' => RecentChange::SRC_NEW,
 				], __METHOD__ );
 				if ( $rc && !$rc->getAttribute( 'rc_patrolled' ) ) {
-					$rc->reallyMarkPatrolled();
-					PatrolLog::record( $rc, false, $user, 'pagetriage' );
+					$patrolManager = MediaWikiServices::getInstance()->getPatrolManager();
+					$patrolManager->reallyMarkPatrolled( $rc );
+					$patrolManager->createPatrolLog( $rc, $user, 'pagetriage' );
 				}
 			}
 		}
