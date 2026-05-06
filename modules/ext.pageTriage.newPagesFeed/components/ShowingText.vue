@@ -142,7 +142,7 @@ module.exports = {
 				// 'pagetriage-filter-stat-blocked':
 				// 'pagetriage-filter-stat-autopatrolled-edits':
 				// 'pagetriage-filter-stat-user-heading':
-				// eslint-disable-next-line mediawiki/msg-doc
+
 				localMsg = this.$i18n( `pagetriage-filter-stat-${ filter }` ).text();
 			}
 			this.msgObj.top = [ localMsg ];
@@ -158,7 +158,7 @@ module.exports = {
 				// 'pagetriage-filter-stat-nominated-for-deletion'
 				// 'pagetriage-filter-stat-redirects'
 				// 'pagetriage-filter-stat-others'
-				// eslint-disable-next-line mediawiki/msg-doc
+
 				this.$i18n( `pagetriage-filter-stat-${ msgSuffix }` ).text()
 			);
 		},
@@ -175,7 +175,7 @@ module.exports = {
 					// 'pagetriage-filter-stat-predicted-class-b'
 					// 'pagetriage-filter-stat-predicted-class-good'
 					// 'pagetriage-filter-stat-predicted-class-featured'
-					// eslint-disable-next-line mediawiki/msg-doc
+
 					this.$i18n( `pagetriage-filter-stat-predicted-class-${ settingsOption }` ).text()
 				);
 			}
@@ -192,7 +192,7 @@ module.exports = {
 					// 'pagetriage-filter-stat-predicted-issues-attack'
 					// 'pagetriage-filter-stat-predicted-issues-copyvio'
 					// 'pagetriage-filter-stat-predicted-issues-none'
-					// eslint-disable-next-line mediawiki/msg-doc
+
 					this.$i18n( `pagetriage-filter-stat-predicted-issues-${ settingsOption }` ).text()
 				);
 			}
@@ -225,7 +225,7 @@ module.exports = {
 			// 'pagetriage-afc-state-pending'
 			// 'pagetriage-afc-state-reviewing'
 			// 'pagetriage-afc-state-declined'
-			// eslint-disable-next-line mediawiki/msg-doc
+
 			this.msgObj.state.push( this.$i18n( `pagetriage-afc-state-${ state }` ).text() );
 		}
 	}

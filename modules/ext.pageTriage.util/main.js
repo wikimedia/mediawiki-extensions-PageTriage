@@ -22,7 +22,7 @@ const contentLanguageMessage = function ( key ) {
 		throw new Error( 'Invalid message key passed into contentLanguageMessage()' );
 	}
 	const parameters = Array.prototype.slice.call( arguments, 1 );
-	// eslint-disable-next-line mediawiki/msg-doc
+
 	return new mw.Message( contentLanguageMessages, key, parameters );
 };
 

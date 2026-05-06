@@ -27,7 +27,7 @@ describe( 'ToolWikiLove.vue', () => {
 	};
 
 	config.global.mocks.$i18n = ( key, ...args ) => ( {
-		// eslint-disable-next-line mediawiki/msg-doc
+
 		text: () => mw.msg( key, ...args )
 	} );
 

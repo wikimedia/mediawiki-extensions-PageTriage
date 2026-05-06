@@ -53,14 +53,14 @@ module.exports = {
 			// Possible keys
 			// pagetriage-afc-newest-declined
 			// pagetriage-afc-newest-submitted
-			// eslint-disable-next-line mediawiki/msg-doc
+
 			return this.$i18n( `pagetriage-afc-newest-${ this.afcSortUpdated }` ).text();
 		},
 		oldestReviewText: function () {
 			// Possible keys
 			// pagetriage-afc-oldest-declined
 			// pagetriage-afc-oldest-submitted
-			// eslint-disable-next-line mediawiki/msg-doc
+
 			return this.$i18n( `pagetriage-afc-oldest-${ this.afcSortUpdated }` ).text();
 		},
 		afcMenuItems: function () {
