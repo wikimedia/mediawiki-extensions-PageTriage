@@ -254,6 +254,7 @@
 	"group-copyviobot": "저작권 위반 봇",
 	"group-copyviobot-member": "{{GENDER:$1|저작권 위반 봇}}",
 	"apihelp-pagetriageaction-param-tags": "이 작업에 대해 생성되는 로그 항목에 적용할 변경 태그입니다.",
+	"apihelp-pagetriagelist-param-limit": "반환할 결과의 최대 수입니다.",
 	"apihelp-pagetriagelist-param-unreferenced": "각주 없는 문서만 표시할지의 여부입니다.",
 	"apihelp-pagetriagelist-param-recreated": "과거에 삭제된 문서만 표시할지의 여부입니다.",
 	"apihelp-pagetriagelist-param-learners": "자동 인증된 신규 사용자가 만든 문서만 표시할지의 여부입니다.",
