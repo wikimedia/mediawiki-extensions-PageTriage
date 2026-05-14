@@ -338,7 +338,7 @@
 	"apihelp-pagetriageaction-param-pageid": "ID van de pagina waarop de handeling wordt verricht.",
 	"apihelp-pagetriageaction-param-reviewed": "Of de pagina als beoordeeld gemarkeerd moet worden",
 	"apihelp-pagetriageaction-param-note": "Persoonlijke opmerking van beoordelaars aan pagina-aanmakers.",
-	"apihelp-pagetriageaction-param-skipnotif": "Of de notificatie overgeslagen moet worden.",
+	"apihelp-pagetriageaction-param-skipnotif": "Of de melding overgeslagen moet worden.",
 	"apihelp-pagetriageaction-param-enqueue": "Of de pagina aan de PageTriage-wachtrij moet worden toegevoegd.",
 	"apihelp-pagetriageaction-param-tags": "Wijzigingslabels om toe te passen op de logboekvermeldingen die voor deze handeling zijn gegenereerd.",
 	"apihelp-pagetriagelist-summary": "Een lijst van pagina-ID’s opvragen voor het maken van een PageTriage-wachtrij.",
