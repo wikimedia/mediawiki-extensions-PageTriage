@@ -11,9 +11,12 @@
 	"pagetriage-desc": "Прылады для прагляду і зацьверджаньня новых старонак",
 	"pagetriage-pagecuration": "Куратарства старонкамі",
 	"pagetriage-reviewed": "Праверана",
+	"pagetriage-filter-show-heading": "Стан:",
 	"pagetriage-filter-tag-heading": "З тэґам:",
+	"pagetriage-filter-stat-state": "Стан",
 	"pagetriage-filter-stat-reviewed": "Правераныя",
 	"pagetriage-add-a-note-for-options-instruction-label": "Абраць атрымальніка:",
 	"pagetriage-add-a-note-for-option-reviewer": "рэцэнзэнт (Карыстальнік: $1 )",
-	"pagetriage-mark-as-reviewed": "Пазначыць як праверанае"
+	"pagetriage-mark-as-reviewed": "Пазначыць як праверанае",
+	"pagetriage-afc-state": "Стан"
 }
