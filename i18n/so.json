@@ -5,6 +5,7 @@
 		]
 	},
 	"pagetriage-byline": "{{GENDER:$1|Waxaa abuuray}} $1 ($2$3$4)",
+	"pagetriage-welcome": "Fadlan dib u eeg bogagga cusub ee hoose oo ka caawi hagaajinta {{SITENAME}}. [$1 Wax badan baro] · [$2 Ka tag ra'yi-celin]",
 	"pagetriage-new-page-feed-show-ip": "Muuji IP",
 	"pagetriage-new-page-feed-show-ip-not-found": "IP looma helin akoonkan ku meelgaarka ah",
 	"pagetriage-info-problem-blocked-desc": "Boggan waxaa sameeyay isticmaale la xannibay.",
