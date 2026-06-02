@@ -3,7 +3,8 @@
 		"authors": [
 			"Renessaince",
 			"Wizardist",
-			"Ucukor"
+			"Ucukor",
+			"Red Winged Duck"
 		]
 	},
 	"pagetriage": "Page Triage",
@@ -12,7 +13,7 @@
 	"pagetriage-pagecuration": "Куратарства старонкамі",
 	"pagetriage-reviewed": "Праверана",
 	"pagetriage-filter-show-heading": "Стан:",
-	"pagetriage-filter-tag-heading": "З тэґам:",
+	"pagetriage-filter-tag-heading": "З тэгам:",
 	"pagetriage-filter-stat-state": "Стан",
 	"pagetriage-filter-stat-reviewed": "Правераныя",
 	"pagetriage-add-a-note-for-options-instruction-label": "Абраць атрымальніка:",
