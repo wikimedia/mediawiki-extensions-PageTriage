@@ -50,7 +50,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$originalPagesCount = count( $originalList[0]['pagetriagelist']['pages'] );
 
 		// If we don't ask for it, a draft page shouldn't be returned.
-		$this->insertPage( Title::newFromText( 'Draft:Test page 1' ) );
+		$this->insertPage( Title::makeTitle( $this->draftNsId, 'Test page 1' ) );
 		$list1 = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'showunreviewed' => '1' ] );
 		$this->assertCount( $originalPagesCount, $list1[0]['pagetriagelist']['pages'] );
 
@@ -204,8 +204,8 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$originalPagesCount = count( $this->getPageTriageList() );
 
 		// Move the page from mainspace to Draft.
-		$from = Title::newFromText( 'Test page 3' );
-		$to = Title::newFromText( 'Draft:Test page 3' );
+		$from = Title::makeTitle( NS_MAIN, 'Test page 3' );
+		$to = Title::makeTitle( $this->draftNsId, 'Test page 3' );
 		$this->insertPage( $from );
 
 		$this->getServiceContainer()
@@ -226,8 +226,8 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 	 */
 	public function testMoveFromDraftPage() {
 		// Add a page to the Draft namespace.
-		$from = Title::newFromText( 'Draft:Test page 4' );
-		$to = Title::newFromText( 'Mainspace page 4' );
+		$from = Title::makeTitle( $this->draftNsId, 'Test page 4' );
+		$to = Title::makeTitle( NS_MAIN, 'Mainspace page 4' );
 		$this->insertPage( $from );
 
 		// Get the queue count.
@@ -449,12 +449,12 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$user = static::getTestUser()->getUser();
 		$this->insertPage( 'Test page ores 1', 'some content', $this->draftNsId, $user );
 		$page = $this->getServiceContainer()->getWikiPageFactory()
-			->newFromTitle( Title::newFromText( 'Test page ores 1', $this->draftNsId ) );
+			->newFromTitle( Title::makeTitle( $this->draftNsId, 'Test page ores 1' ) );
 		$rev1 = $page->getLatest();
 
 		$this->insertPage( 'Test page ores 2', 'some content', $this->draftNsId, $user );
 		$page = $this->getServiceContainer()->getWikiPageFactory()
-			->newFromTitle( Title::newFromText( 'Test page ores 2', $this->draftNsId ) );
+			->newFromTitle( Title::makeTitle( $this->draftNsId, 'Test page ores 2' ) );
 		$rev2 = $page->getLatest();
 
 		$this->getDb()->newInsertQueryBuilder()
@@ -492,7 +492,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$user = static::getTestUser()->getUser();
 		$this->insertPage( 'Test page ores 3', 'some content', $this->draftNsId, $user );
 		$page = $this->getServiceContainer()->getWikiPageFactory()
-			->newFromTitle( Title::newFromText( 'Test page ores 3', $this->draftNsId ) );
+			->newFromTitle( Title::makeTitle( $this->draftNsId, 'Test page ores 3' ) );
 		$rev1 = $page->getLatest();
 
 		$this->getDb()->newInsertQueryBuilder()
@@ -768,7 +768,7 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 
 		// Add two messages to the talkpage. This is done via MessagePoster in the front end usually,
 		// so we don't have a PageTriage PHP method to use here.
-		$talkPageTitle = Title::newFromText( $testPageTitle, NS_TALK );
+		$talkPageTitle = Title::makeTitle( NS_TALK, $testPageTitle );
 		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $talkPageTitle );
 		$pageUpdater = $page->newPageUpdater( static::getTestSysop()->getUser() );
 		$pageUpdater->setContent( SlotRecord::MAIN, new TextContent( 'Test message.' ) )

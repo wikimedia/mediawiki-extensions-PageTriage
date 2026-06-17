@@ -47,7 +47,7 @@ class HooksTest extends PageTriageTestCase {
 	 * @covers \MediaWiki\Extension\PageTriage\Hooks::onPageDeleteComplete()
 	 */
 	public function testOnPageDelete() {
-		$title = Title::newFromText( 'Delete me' );
+		$title = Title::makeTitle( NS_MAIN, 'Delete me' );
 		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
 		$user = $this->getTestUser()->getUser();
 		$content = ContentHandler::makeContent( 'Delete this article', $title );
@@ -82,7 +82,7 @@ class HooksTest extends PageTriageTestCase {
 	 * @covers \MediaWiki\Extension\PageTriage\Hooks::onPageUndeleteComplete()
 	 */
 	public function testOnPageUndelete() {
-		$title = Title::newFromText( 'Undelete me' );
+		$title = Title::makeTitle( NS_MAIN, 'Undelete me' );
 		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
 		$user = $this->getTestUser()->getUser();
 		$sysOp = $this->getTestSysop()->getUser();
@@ -133,7 +133,7 @@ class HooksTest extends PageTriageTestCase {
 	 * @covers \MediaWiki\Extension\PageTriage\Hooks::onPageMoveComplete()
 	 */
 	public function testMoveShouldNotUnreviewArticle() {
-		$title = Title::newFromText( 'Move me' );
+		$title = Title::makeTitle( NS_MAIN, 'Move me' );
 		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
 		$user = $this->getTestUser()->getUser();
 		$this->overrideUserPermissions( $user, [ 'edit', 'createpage', 'move' ] );
@@ -150,7 +150,7 @@ class HooksTest extends PageTriageTestCase {
 		// Move this article
 		$movePage = $this->getServiceContainer()
 			->getMovePageFactory()
-			->newMovePage( $title, Title::newFromText( 'Move me to here' ) );
+			->newMovePage( $title, Title::makeTitle( NS_MAIN, 'Move me to here' ) );
 		$moveStatus = $movePage->moveIfAllowed( $user, 'move to a new title' );
 		$this->assertStatusGood( $moveStatus );
 
