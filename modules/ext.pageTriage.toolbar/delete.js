@@ -62,11 +62,7 @@ const specialDeletionTagging = {
 		}
 	},
 
-	'rfd-NPF': {
-		buildDiscussionRequest: function () {
-			// No-op
-		},
-
+	rfd: {
 		buildLogRequest: function ( oldText, reason, tagObj, data, redirectTarget ) {
 			data.text = oldText.replace(
 				// FIXME: This is pretty fragile (and English Wikipedia specific).
@@ -640,15 +636,22 @@ module.exports = ToolView.extend( {
 	 * Build the parameter for request
 	 *
 	 * @param {Object} obj
+	 * @param {string} [wikitext] The text of the page
 	 * @return {string}
 	 */
-	buildParams: function ( obj ) {
+	buildParams: function ( obj, wikitext ) {
 		let paramVal = '';
 		for ( const param in obj.params ) {
 			// this param should be skipped and not be added to tag
 			if ( obj.params[ param ].skip ) {
 				continue;
 			}
+
+			if ( obj.wrapTagAroundPage && wikitext && obj.params[ param ].input === 'pagecontent' ) {
+				paramVal += '|' + param + '=' + wikitext;
+				continue;
+			}
+
 			if ( obj.params[ param ].value ) {
 				// integer parameter
 				if ( !isNaN( parseInt( param ) ) ) {
@@ -732,7 +735,8 @@ module.exports = ToolView.extend( {
 				}
 			} )
 			.then( $.when.apply( null, promises ) )
-			.then( () => {
+			.then( this.fetchArticleContent.bind( this ) )
+			.then( ( wikitext ) => {
 				actionQueue.delete = { tags: this.selectedTag };
 
 				const rootPromise = $.Deferred();
@@ -760,7 +764,7 @@ module.exports = ToolView.extend( {
 				// deletion options (CSD, PROD, XFD).
 				// Functions using `this` must be bound to avoid losing context.
 				chainEnd = chainEnd
-					.then( this.tagPage.bind( this ) )
+					.then( this.tagPage.bind( this, wikitext ) )
 					.then( this.notifyUser.bind( this ) )
 					.then( this.tagTalkPage.bind( this ) )
 					.then( mw.pageTriage.actionQueue.runAndRefresh.bind(
@@ -894,98 +898,100 @@ module.exports = ToolView.extend( {
 	/**
 	 * Add deletion tag template to the page
 	 *
+	 * @param {string} wikitext The current wikitext of the page
 	 * @return {jQuery.Promise|void} A promise. Resolves if successful, rejects with
 	 * an `Error` if not. The resolved promise is an Object with the key `tagCount`
 	 * (the number of tags added to the page) and the key `tagKey` (the key
 	 * of the tag added to the page).
 	 */
-	tagPage: function () {
-		const tagList = [],
-			count = this.objectPropCount( this.selectedTag );
-		let text = '',
-			tagText = '',
-			paramsText = '';
-		let blankPage;
+	tagPage: function ( wikitext ) {
+		const count = this.objectPropCount( this.selectedTag );
 
 		if ( count === 0 ) {
 			return;
 		}
 
-		let key;
-		// for multiple tags, they must be in db-xxx format, when combining them in
-		// db-multiple, remove 'db-' from each individual tags
-		for ( key in this.selectedTag ) {
-			const tagObj = this.selectedTag[ key ];
+		const tagList = [];
+		let text = '';
+		let noContentAfterTag = false;
+		// singleKey is used as the only key in the count == 1 path
+		// and as a placeholder valid value that is passed to notifyUser and addToLog
+		// since their code depends on having a valid key.
+		// TODO (sohom): Remove that dependency
+		const singleKey = Object.keys( this.selectedTag )[ 0 ];
+
+		if ( count === 1 ) {
+			const tagObj = this.selectedTag[ singleKey ];
 			let tempTag = tagObj.tag;
 			const tagging = specialDeletionTagging[ tagObj.tag ];
-			// Get if a page should be blanked while deletion tagging
-			// Used for blanking a page when {{speedy deletion-attack}} tagged, see T381226
-			blankPage = tagObj.blank || false;
 
-			if ( !( 'discussionPage' in tagObj ) ||
-				tagObj.discussionPage === ''
-			) {
+			noContentAfterTag = tagObj.blank || tagObj.wrapTagAroundPage || false;
+
+			// This template must be substituted.
+			if ( tagObj.subst ) {
+				tempTag = 'subst:' + tempTag;
+			}
+
+			const paramsText = this.buildParams( tagObj, wikitext );
+
+			// Some deletion types have their own custom building routine.
+			if ( tagging && tagging.buildDeletionTag ) {
+				text = tagging.buildDeletionTag( tagObj );
+			} else {
+				text = '{{' + tempTag + paramsText + '}}';
+			}
+
+			if ( !( 'discussionPage' in tagObj ) || tagObj.discussionPage === '' ) {
 				tagList.push( tagObj.tag.toLowerCase() );
 			} else {
 				tagList.push( '[[' + tagObj.discussionPage + ']]' );
 			}
-
-			if ( count > 1 ) {
-				if ( tagObj.code !== undefined ) {
-					tempTag = tagObj.code;
-				} else {
-					tempTag = tempTag.replace( /^db-/gi, '' );
-				}
-			} else {
-				// Some deletion types have their custom building routine
-				if ( tagging && tagging.buildDeletionTag ) {
-					text = tagging.buildDeletionTag( tagObj );
-					continue;
-				}
-				// this template must be substituted
-				if ( tagObj.subst ) {
-					// check if there is 'subst:' string yet
-					if ( tempTag.match( /^subst:/i ) === null ) {
-						tempTag = 'subst:' + tempTag;
-					}
-				}
-			}
-			if ( tagText ) {
-				tagText += '|';
-			}
-			tagText += tempTag;
-			paramsText += this.buildParams( tagObj );
-		}
-
-		if ( count === 1 ) {
-			if ( text === '' ) {
-				text = '{{' + tagText + paramsText + '}}';
-			}
 		} else {
+			// For multiple tags, they must be in db-xxx format. When combining them
+			// into db-multiple, use codes instead
+			let tagText = '';
+			let paramsText = '';
+
+			for ( const key in this.selectedTag ) {
+				const tagObj = this.selectedTag[ key ];
+
+				// Blank the page when deletion tagging if requested,
+				// e.g. {{speedy deletion-attack}}, see T381226.
+				noContentAfterTag = tagObj.blank || noContentAfterTag;
+
+				if ( !( 'discussionPage' in tagObj ) || tagObj.discussionPage === '' ) {
+					tagList.push( tagObj.tag.toLowerCase() );
+				} else {
+					tagList.push( '[[' + tagObj.discussionPage + ']]' );
+				}
+
+				if ( tagText ) {
+					tagText += '|';
+				}
+				tagText += tagObj.code;
+				paramsText += this.buildParams( tagObj );
+			}
+
 			text = '{{' + deletionTagOptions.multiple.tag + '|' + tagText + paramsText + '}}';
 		}
 
-		return this.fetchArticleContent().then( ( wikitext ) => {
-			const postData = {
-				action: 'pagetriagetagging',
-				pageid: mw.config.get( 'wgArticleId' ),
-				// If 'blankPage' is true, then replace the page content with only the deletion tags
-				wikitext: ( blankPage === true ) ? text : text + wikitext,
-				deletion: 1,
-				taglist: tagList.join( '|' )
-			};
-			return new mw.Api().postWithToken( 'csrf', postData )
-				// To be passed into `addToLog`.
-				.then( () => ( { tagCount: count, tagKey: key } )
-				)
-				.catch( ( errorCode ) => {
-					if ( errorCode === 'pagetriage-tag-deletion-error' ) {
-						throw new Error( mw.msg( 'pagetriage-tag-deletion-error' ) );
-					} else {
-						throw new Error( mw.msg( 'pagetriage-tagging-error' ) );
-					}
-				} );
-		} );
+		const postData = {
+			action: 'pagetriagetagging',
+			pageid: mw.config.get( 'wgArticleId' ),
+			wikitext: text + ( noContentAfterTag ? '' : wikitext ),
+			deletion: 1,
+			taglist: tagList.join( '|' )
+		};
+
+		return new mw.Api().postWithToken( 'csrf', postData )
+			// To be passed into `addToLog`.
+			.then( () => ( { tagCount: count, tagKey: singleKey } ) )
+			.catch( ( errorCode ) => {
+				if ( errorCode === 'pagetriage-tag-deletion-error' ) {
+					throw new Error( mw.msg( 'pagetriage-tag-deletion-error' ) );
+				}
+				throw new Error( mw.msg( 'pagetriage-tagging-error' ) );
+			} );
 	},
 
 	/**

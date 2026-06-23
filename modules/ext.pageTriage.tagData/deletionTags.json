@@ -478,18 +478,25 @@
 				"redirectsfordiscussion": {
 					"label": "Redirects for discussion",
 					"desc": "",
-					"tag": "rfd-NPF",
+					"tag": "rfd",
 					"prefix": "Wikipedia:Redirects for discussion",
 					"params": {
 						"1": {
 							"label": "Please explain why this page should be deleted, and provide links to the relevant policies wherever possible",
 							"input": "required",
 							"type": "textarea",
-							"value": ""
+							"value": "",
+							"skip": true
+						},
+						"content": {
+							"label": "Content of the redirect page",
+							"input": "pagecontent",
+							"type": "hidden"
 						}
 					},
 					"talkpagenotiftpl": "RFD notice",
-					"subst": true
+					"subst": true,
+					"wrapTagAroundPage": true
 				}
 			}
 		}
