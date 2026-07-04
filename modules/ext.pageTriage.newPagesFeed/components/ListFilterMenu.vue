@@ -5,7 +5,7 @@
 		</template>
 		<showing-text></showing-text>
 		<div class="mwe-pt-vue-menu-section">
-			<div id="mwe-vue-pt-control-menu-toggle">
+			<div id="mwe-vue-pt-control-menu-toggle" ref="menuToggle">
 				<cdx-button
 					:aria-pressed="settings.controlMenuOpen"
 					action="progressive"
@@ -199,7 +199,7 @@
  * Controls for filtering feed content
  */
 
-const { computed } = require( 'vue' );
+const { computed, onMounted, onBeforeUnmount, ref } = require( 'vue' );
 const ControlSection = require( './ControlSection.vue' );
 const DateControlSection = require( './DateControlSection.vue' );
 const LabeledCheckbox = require( './LabeledCheckbox.vue' );
@@ -250,13 +250,35 @@ module.exports = {
 			}
 			settings.controlMenuOpen = !settings.controlMenuOpen;
 		};
+		// Reference to the container wrapping both the toggle button and the
+		// dropdown, used to detect clicks outside the open filter overlay.
+		const menuToggle = ref( null );
+		// When the overlay is open and the user clicks anywhere outside of it,
+		// save the current settings and dismiss the overlay, matching the
+		// behavior of closing it with the toggle button.
+		const handleClickOutside = ( event ) => {
+			if (
+				settings.controlMenuOpen &&
+				menuToggle.value &&
+				!menuToggle.value.contains( event.target )
+			) {
+				doSaveSettings();
+			}
+		};
+		onMounted( () => {
+			document.addEventListener( 'mousedown', handleClickOutside );
+		} );
+		onBeforeUnmount( () => {
+			document.removeEventListener( 'mousedown', handleClickOutside );
+		} );
 		return {
 			// settings
 			settings,
 			// housekeeping
 			toggleControlMenu,
 			canSaveSettings,
-			doSaveSettings
+			doSaveSettings,
+			menuToggle
 		};
 	},
 	data: function () {

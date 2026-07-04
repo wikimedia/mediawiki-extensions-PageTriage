@@ -36,6 +36,11 @@ describe( 'ListFilterMenu.vue', () => {
 		} );
 		settings = useSettingsStore();
 	} );
+	afterEach( () => {
+		// Unmount so the component's document click listener is removed
+		// between tests.
+		wrapper.unmount();
+	} );
 	it( 'mounts in npp queueMode', () => {
 		settings.immediate.queueMode = 'npp';
 		settings.updateImmediate();
@@ -45,5 +50,39 @@ describe( 'ListFilterMenu.vue', () => {
 		settings.immediate.queueMode = 'afc';
 		settings.updateImmediate();
 		expect( wrapper.exists() ).toBe( true );
+	} );
+	it( 'saves and dismisses the overlay when clicking outside of it', () => {
+		// Stand in for the menu container that the template ref points to; the
+		// component template is not rendered in this test environment.
+		const menuContainer = document.createElement( 'div' );
+		document.body.appendChild( menuContainer );
+		wrapper.vm.menuToggle = menuContainer;
+		settings.controlMenuOpen = true;
+		const updateSpy = jest.spyOn( settings, 'update' );
+		updateSpy.mockClear();
+
+		// A click outside the menu container should save and close it.
+		document.body.dispatchEvent( new MouseEvent( 'mousedown', { bubbles: true } ) );
+
+		expect( updateSpy ).toHaveBeenCalledWith( settings.unsaved );
+		expect( settings.controlMenuOpen ).toBe( false );
+		menuContainer.remove();
+	} );
+	it( 'stays open when clicking inside the overlay', () => {
+		const menuContainer = document.createElement( 'div' );
+		const insideElement = document.createElement( 'span' );
+		menuContainer.appendChild( insideElement );
+		document.body.appendChild( menuContainer );
+		wrapper.vm.menuToggle = menuContainer;
+		settings.controlMenuOpen = true;
+		const updateSpy = jest.spyOn( settings, 'update' );
+		updateSpy.mockClear();
+
+		// A click inside the menu container should leave it open.
+		insideElement.dispatchEvent( new MouseEvent( 'mousedown', { bubbles: true } ) );
+
+		expect( updateSpy ).not.toHaveBeenCalled();
+		expect( settings.controlMenuOpen ).toBe( true );
+		menuContainer.remove();
 	} );
 } );
