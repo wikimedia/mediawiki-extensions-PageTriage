@@ -3,6 +3,7 @@
 		"authors": [
 			"Arnaugir",
 			"Fitoschido",
+			"Lluis Cat",
 			"Paucabot",
 			"Vriullop",
 			"Yupik"
@@ -11,7 +12,9 @@
 	"pagetriage": "Triatge de pàgines",
 	"pagetriage-categories": "$1 {{PLURAL:$1|categoria|categories}}",
 	"pagetriage-active-filters": "Filtres actius:",
+	"pagetriage-filter-predicted-class-featured": "Destacat",
 	"pagetriage-filter-username": "Nom d'usuari",
+	"pagetriage-filter-stat-predicted-class-featured": "Destacat",
 	"pagetriage-warning-browser": "Potser aquesta eina no funcioni correctament en navegadors anteriors a l’Internet Explorer 11.",
 	"pagetriage-discuss-link": "{{GENDER:$1|Discussió}}",
 	"pagetriage-discuss-link-title": "{{GENDER:$1|Discussió}}"
