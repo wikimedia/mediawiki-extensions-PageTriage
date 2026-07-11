@@ -461,7 +461,6 @@ class Hooks implements
 			$outputPage->setRobotPolicy( 'noindex,nofollow' );
 			$this->statsFactory->getCounter( 'noindex_total' )
 				->setLabel( 'wiki', WikiMap::getCurrentWikiId() )
-				->copyToStatsdAt( 'extension.PageTriage.by_wiki.' . WikiMap::getCurrentWikiId() . '.noindex' )
 				->increment();
 		}
 

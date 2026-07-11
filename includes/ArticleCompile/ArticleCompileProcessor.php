@@ -251,7 +251,6 @@ class ArticleCompileProcessor {
 
 		if ( $mode === self::SAVE_IMMEDIATE ) {
 			$this->statsFactory->getTiming( 'articleCompileProcessor_compileMetadata_saveImmediate_seconds' )
-				->copyToStatsdAt( 'timing.pageTriage.articleCompileProcessor.compileMetadata.saveImmediate' )
 				->observe( microtime( true ) - $startTime );
 		}
 
@@ -294,7 +293,6 @@ class ArticleCompileProcessor {
 				}
 				$this->statsFactory->getTiming( 'articleCompileProcessor_process_seconds' )
 					->setLabel( 'key', $key )
-					->copyToStatsdAt( 'timing.pageTriage.articleCompileProcessor.process.' . $key )
 					->observe( microtime( true ) - $startTime );
 				foreach ( $comp->getMetadata() as $pageId => $row ) {
 					$this->metadata[$pageId] += $row;
