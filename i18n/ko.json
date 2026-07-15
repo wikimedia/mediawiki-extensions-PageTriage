@@ -383,7 +383,7 @@
 	"apihelp-pagetriagestats-param-date_range_from": "이 날짜 이후에 만들어진 문서만 포함합니다.",
 	"apihelp-pagetriagestats-param-date_range_to": "이 날짜 이전에 만들어진 문서만 포함합니다.",
 	"apihelp-pagetriagestats-param-keyword": "스니펫에 이 키워드가 포함된 문서만 포함합니다.",
-	"apihelp-pagetriagestats-param-topreviewers": "지정된 기간 동안 가장 많은 검토를 한 남긴 상위 50명의 리뷰를 포함합니다. 유효한 값은 last-day, last-week(기본값) 또는 last-month입니다.",
+	"apihelp-pagetriagestats-param-topreviewers": "지정된 기간 동안 가장 많은 검토를 한 남긴 상위 50명의 검토를 포함합니다. 유효한 값은 last-day, last-week(기본값) 또는 last-month입니다.",
 	"apihelp-pagetriagestats-param-show_predicted_class_stub": "예측된 토막글 등급을 포함할지의 여부",
 	"apihelp-pagetriagestats-param-show_predicted_class_start": "예측된 시작 등급을 포함할지의 여부",
 	"apihelp-pagetriagestats-param-show_predicted_class_c": "예측된 C 등급을 포함할지의 여부",
