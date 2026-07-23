@@ -52,7 +52,6 @@ use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\MWTimestamp;
 use MediaWiki\WikiMap\WikiMap;
-use Wikimedia\Rdbms\Database;
 use Wikimedia\Stats\StatsFactory;
 
 class Hooks implements
@@ -416,11 +415,9 @@ class Hooks implements
 		$pageCreationDateTime = $cache->getWithSetCallback(
 			$cache->makeKey( 'pagetriage-page-created', $pageId ),
 			$cache::TTL_DAY,
-			static function ( $oldValue, &$ttl, array &$setOpts ) use ( $pageId ) {
+			static function () use ( $pageId ) {
 				// The ptrp_created field is equivalent to creation_date
 				// property set during article metadata compilation.
-				$dbr = PageTriageUtil::getReplicaConnection();
-				$setOpts += Database::getCacheSetOptions( $dbr );
 				$queueLookup = PageTriageServices::wrap( MediaWikiServices::getInstance() )
 					->getQueueLookup();
 				$queueRecord = $queueLookup->getByPageId( $pageId );

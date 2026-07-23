@@ -157,11 +157,7 @@ class ArticleMetadata {
 				}
 			),
 			$cache::TTL_DAY,
-			function ( array $pageIds, array &$ttls, array &$setOpts ) use ( $wasPosted ) {
-				$dbr = PageTriageUtil::getReplicaConnection();
-
-				$setOpts += Database::getCacheSetOptions( $dbr );
-
+			function ( array $pageIds ) use ( $wasPosted ) {
 				// Grab metadata from database after cache attempt
 				$metadataByPageId = self::getMetadataForArticles( $pageIds );
 				$pageIdsCompile = self::getPagesWithoutMetadata( $pageIds, $metadataByPageId );
