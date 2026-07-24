@@ -1254,7 +1254,7 @@
 				"Copyviorevdel": {
 					"label": "Revision Deletion",
 					"tag": "Copyvio-revdel",
-					"desc": "Certain revisions of the page violates copyright policies.",
+					"desc": "Certain revisions of the page violate copyright policies.",
 					"params": {
 						"date": {
 							"label": "Date:",
