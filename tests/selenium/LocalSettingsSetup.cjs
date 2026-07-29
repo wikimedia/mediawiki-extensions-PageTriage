@@ -6,7 +6,9 @@ const childProcess = require( 'child_process' ),
 	path = require( 'path' ),
 	ip = path.resolve( __dirname + '/../../../../' ),
 	localSettingsPath = path.resolve( ip + '/LocalSettings.php' ),
-	localSettingsContents = fs.readFileSync( localSettingsPath );
+	// Absent when MediaWiki runs on a remote server instead of alongside the tests.
+	hasLocalSettings = fs.existsSync( localSettingsPath ),
+	localSettingsContents = hasLocalSettings ? fs.readFileSync( localSettingsPath ) : null;
 
 /**
  * Reset the PHP-Fpm opcache under Quibble environment
@@ -49,6 +51,10 @@ async function resetPhpFpmOpCache() {
  * a Quibble environment.
  */
 async function overrideLocalSettings() {
+	if ( !hasLocalSettings ) {
+		console.log( 'No ' + localSettingsPath + '; skipping settings override' );
+		return;
+	}
 	console.log( 'Setting up modified ' + localSettingsPath );
 	fs.writeFileSync( localSettingsPath,
 		localSettingsContents + `
@@ -65,6 +71,9 @@ if ( file_exists( "$wgExtensionDirectory/PageTriage/tests/selenium/PageTriage.Lo
  * a Quibble environment.
  */
 async function restoreLocalSettings() {
+	if ( !hasLocalSettings ) {
+		return;
+	}
 	console.log( 'Restoring original ' + localSettingsPath );
 	await fs.writeFileSync( localSettingsPath, localSettingsContents );
 }
