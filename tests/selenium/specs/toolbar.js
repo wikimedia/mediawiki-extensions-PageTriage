@@ -37,6 +37,8 @@ describe( 'PageTriage Toolbar', () => {
 
 		await expect( await Toolbar.tagToolIcon ).toExist();
 
+		await Toolbar.loadedMarkToolIcon.waitForDisplayed();
+
 		await Toolbar.tagToolIcon.click();
 
 		await browser.waitUntil( async () => await Toolbar.tagToolBody.waitForDisplayed() );
@@ -59,6 +61,8 @@ describe( 'PageTriage Toolbar', () => {
 		await browser.waitUntil( async () => await Toolbar.toolbarBody.waitForDisplayed() );
 
 		await browser.waitUntil( async () => await Toolbar.tagToolIcon.waitForDisplayed() );
+
+		await Toolbar.loadedMarkToolIcon.waitForDisplayed();
 
 		await Toolbar.tagToolIcon.click();
 

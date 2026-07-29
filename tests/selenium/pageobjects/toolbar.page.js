@@ -10,6 +10,10 @@ class PageTriageToolbar extends Page {
 		return super.openTitle( page, { showcurationtoolbar: 1 } );
 	}
 
+	get loadedMarkToolIcon() {
+		return $( '#mwe-pt-mark .mwe-pt-tool-icon[title]' );
+	}
+
 	get tagToolIcon() {
 		return $( '#mwe-pt-tag .mwe-pt-tool-icon' );
 	}
