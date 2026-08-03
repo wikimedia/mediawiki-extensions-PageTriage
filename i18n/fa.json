@@ -158,7 +158,7 @@
 	"pagetriage-refresh-list": "تازه کردن فهرست",
 	"pagetriage-tag-count-total": "$1 {{PLURAL:$1|برچسب|برچسب}} انتخاب شد",
 	"pagetriage-button-add-tag": "افزودن برچسب‌های انتخاب شده",
-	"pagetriage-button-add-tag-number": "افزودن $1 برچسب انتخاب شده",
+	"pagetriage-button-add-tag-number": "افزودن $1 {{PLURAL:$1|برچسب|برچسب‌های}} انتخاب‌شده",
 	"pagetriage-button-add-parameters": "افزودن پارامترها",
 	"pagetriage-button-add-details": "افزودن جزئیات",
 	"pagetriage-button-edit-details": "ویرایش جزئیات",
