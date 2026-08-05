@@ -30,7 +30,8 @@
 			"Weft",
 			"Wladek92",
 			"Wyz",
-			"Zarisi"
+			"Zarisi",
+			"Framawiki"
 		]
 	},
 	"pagetriage": "Triage des pages",
@@ -55,7 +56,7 @@
 	"pagetriage-edits": "$1 modification{{PLURAL:$1||s}}",
 	"pagetriage-categories": "$1 catégorie{{PLURAL:$1||s}}",
 	"pagetriage-no-categories": "Aucune catégorie",
-	"pagetriage-no-reference": "Aucune citation",
+	"pagetriage-no-reference": "Aucune référence",
 	"pagetriage-orphan": "Possible orpheline",
 	"pagetriage-recreated": "Précédemment supprimée",
 	"pagetriage-no-author": "Aucune information présente sur l’auteur",
