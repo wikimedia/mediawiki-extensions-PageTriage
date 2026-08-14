@@ -8,7 +8,6 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use Wikimedia\ObjectCache\WANObjectCache;
-use Wikimedia\Rdbms\Database;
 
 /**
  * Handles article metadata retrieval and saving to cache
@@ -226,10 +225,8 @@ class ArticleMetadata {
 		return $cache->getWithSetCallback(
 			$cache->makeKey( 'pagetriage-valid-tags' ),
 			2 * $cache::TTL_DAY,
-			static function ( $oldValue, &$ttl, &$setOpts ) use ( $fname ) {
+			static function ( $oldValue, &$ttl ) use ( $fname ) {
 				$dbr = PageTriageUtil::getReplicaConnection();
-				$setOpts += Database::getCacheSetOptions( $dbr );
-
 				$res = $dbr->newSelectQueryBuilder()
 					->select( [ 'ptrt_tag_id', 'ptrt_tag_name' ] )
 					->from( 'pagetriage_tags' )
