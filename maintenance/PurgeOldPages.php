@@ -79,14 +79,13 @@ class PurgeOldPages extends Maintenance {
 	 * treated as reviewed, and the Page Curation toolbar will not show.
 	 */
 	private function cleanReviewedPagesAndUnusedNamespaces() {
-		global $wgPageTriageNamespaces;
-
+		$config = $this->getConfig();
 		$maxAgeInDays = 30;
 
 		// This list doesn't include Article or Draft
 		// because they have special handling.
 		$secondaryNamespaces = array_filter(
-			$wgPageTriageNamespaces,
+			$config->get( 'PageTriageNamespaces' ),
 			static function ( $ns ) {
 				return $ns !== 0;
 			}
@@ -122,9 +121,9 @@ class PurgeOldPages extends Maintenance {
 	 * treated as reviewed, and the Page Curation toolbar will not show.
 	 */
 	private function cleanRedirects() {
-		global $wgPageTriageRedirectAutoreviewAge;
+		$redirectAutoreviewAge = $this->getConfig()->get( 'PageTriageRedirectAutoreviewAge' );
 
-		$startTime = (int)wfTimestamp( TS_UNIX ) - $wgPageTriageRedirectAutoreviewAge * 60 * 60 * 24;
+		$startTime = (int)wfTimestamp( TS_UNIX ) - $redirectAutoreviewAge * 60 * 60 * 24;
 		$sqlWhere = $this->dbr->expr( 'page_is_redirect', '=', 1 );
 
 		$this->cleanPageTriagePageTable( $startTime, $sqlWhere );

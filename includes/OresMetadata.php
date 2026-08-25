@@ -80,11 +80,11 @@ class OresMetadata {
 	 * @return OresMetadata
 	 */
 	public static function newFromGlobalState( IContextSource $context, $pageIds ) {
-		global $wgOresModelClasses;
+		$config = $context->getConfig();
 		return new self(
 			ORESServices::getThresholdLookup(),
 			ORESServices::getModelLookup(),
-			$wgOresModelClasses,
+			$config->get( 'OresModelClasses' ),
 			$context,
 			$pageIds
 		);
