@@ -10,7 +10,8 @@
 			"Railfail536",
 			"Stojex",
 			"WTM",
-			"Woytecr"
+			"Woytecr",
+			"PanWor"
 		]
 	},
 	"newpagesfeed": "Nowe strony",
@@ -18,7 +19,7 @@
 	"pagetriage-new-page-patrol": "Nowe strony",
 	"pagetriage-articles-for-creation": "Artykuły do zamieszczenia",
 	"pagetriage-please-wait": "Proszę czekać…",
-	"pagetriage-api-invalidid": "Podane przez ciebie ID ($1) nie jest prawidłowe.",
+	"pagetriage-api-invalidid": "Podane przez Ciebie ID ($1) nie jest prawidłowe.",
 	"pagetriage-markpatrolled": "Oznacz tę stronę jako „sprawdzoną”",
 	"pagetriage-self-review-error": "Nie możesz oznaczać jako „spradwzonych” utworzonych przez siebie stron.",
 	"pagetriage-reviewed": "Przejrzana",
