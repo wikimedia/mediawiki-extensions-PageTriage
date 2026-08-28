@@ -241,28 +241,37 @@ module.exports = {
 				)
 		) );
 		const doSaveSettings = function () {
-			settings.update( settings.unsaved );
-			settings.controlMenuOpen = false;
+			settings.saveFilters();
 		};
 		const toggleControlMenu = () => {
 			if ( settings.controlMenuOpen ) {
-				settings.update( settings.unsaved );
+				if ( settings.urlOverridesActive ) {
+					settings.dismissMenu();
+				} else {
+					settings.saveFilters();
+				}
+			} else {
+				settings.controlMenuOpen = true;
 			}
-			settings.controlMenuOpen = !settings.controlMenuOpen;
 		};
 		// Reference to the container wrapping both the toggle button and the
 		// dropdown, used to detect clicks outside the open filter overlay.
 		const menuToggle = ref( null );
 		// When the overlay is open and the user clicks anywhere outside of it,
 		// save the current settings and dismiss the overlay, matching the
-		// behavior of closing it with the toggle button.
+		// behavior of closing it with the toggle button. URL session overlays
+		// are dismissed without persisting.
 		const handleClickOutside = ( event ) => {
 			if (
 				settings.controlMenuOpen &&
 				menuToggle.value &&
 				!menuToggle.value.contains( event.target )
 			) {
-				doSaveSettings();
+				if ( settings.urlOverridesActive ) {
+					settings.dismissMenu();
+				} else {
+					doSaveSettings();
+				}
 			}
 		};
 		onMounted( () => {

@@ -1,6 +1,7 @@
 // @author DannyS712
 
 const { defineStore } = require( 'pinia' );
+const { applyUrlParams } = require( '../urlParams.js' );
 
 const submissionNumbers = [ '~invalid~', 'unsubmitted', 'pending', 'reviewing', 'declined' ];
 
@@ -97,6 +98,8 @@ const initState = () => {
 	return {
 		immediate: JSON.parse( JSON.stringify( defaultImmediate ) ),
 		controlMenuOpen: false,
+		// True when URL query parameters overrode feed filters for this session
+		urlOverridesActive: false,
 		applied: JSON.parse( JSON.stringify( defaultSettings ) ),
 		unsaved: JSON.parse( JSON.stringify( defaultSettings ) ),
 		// Load stored API parameters if possible, else defaults
@@ -238,6 +241,10 @@ module.exports = {
 						this.unsaved.afcPredictedRating );
 					this.dateParamsToFilters( this.unsaved.afcDate );
 				}
+				// Overlay session-only URL params after saved prefs are loaded
+				if ( applyUrlParams( this ) ) {
+					this.urlOverridesActive = true;
+				}
 				// Apply new form settings
 				this.update( this.unsaved );
 			},
@@ -255,6 +262,18 @@ module.exports = {
 				// deep copy
 				this.applied = JSON.parse( JSON.stringify( newVal ) );
 				this.setApiParams();
+			},
+			// User explicitly applied filters; persist even if this session
+			// started from URL query parameters
+			saveFilters: function () {
+				this.urlOverridesActive = false;
+				this.update( this.unsaved );
+				this.controlMenuOpen = false;
+			},
+			// Close the overlay without persisting session URL overlays
+			dismissMenu: function () {
+				this.unsaved = JSON.parse( JSON.stringify( this.applied ) );
+				this.controlMenuOpen = false;
 			},
 			reset: function () {
 				this.unsaved = JSON.parse( JSON.stringify( defaultSettings ) );
@@ -399,6 +418,10 @@ module.exports = {
 					this.params.dir = this.immediate.afcSort;
 					this.afcStateFilterToParam( this.applied.afcSubmissionState );
 					this.addDateFilters( this.applied.afcDate.from, this.applied.afcDate.to );
+				}
+				// URL overrides are session-only; do not overwrite saved prefs
+				if ( this.urlOverridesActive ) {
+					return;
 				}
 				const paramsJson = JSON.stringify( this.params );
 				// Set the filter parameters to a users option

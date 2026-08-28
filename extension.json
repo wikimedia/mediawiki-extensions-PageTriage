@@ -411,6 +411,7 @@
 				"@wikimedia/codex",
 				"mediawiki.util",
 				"mediawiki.api",
+				"mediawiki.storage",
 				"moment",
 				"mediawiki.jqueryMsg",
 				"ext.pageTriage.util",
@@ -423,6 +424,7 @@
 			"packageFiles": [
 				"ext.pageTriage.newPagesFeed/init.js",
 				"ext.pageTriage.newPagesFeed/namespaces.js",
+				"ext.pageTriage.newPagesFeed/urlParams.js",
 				"ext.pageTriage.newPagesFeed/App.vue",
 				"ext.pageTriage.newPagesFeed/components/ControlSection.vue",
 				"ext.pageTriage.newPagesFeed/components/DateControlSection.vue",

@@ -85,4 +85,26 @@ describe( 'ListFilterMenu.vue', () => {
 		expect( settings.controlMenuOpen ).toBe( true );
 		menuContainer.remove();
 	} );
+	it( 'still allows Set filters when URL overrides are active', () => {
+		expect( wrapper.vm.canSaveSettings ).toBe( true );
+		settings.urlOverridesActive = true;
+		expect( wrapper.vm.canSaveSettings ).toBe( true );
+	} );
+	it( 'dismisses without saving when clicking outside during URL overrides', () => {
+		const menuContainer = document.createElement( 'div' );
+		document.body.appendChild( menuContainer );
+		wrapper.vm.menuToggle = menuContainer;
+		settings.controlMenuOpen = true;
+		settings.urlOverridesActive = true;
+		const saveSpy = jest.spyOn( settings, 'saveFilters' );
+		const dismissSpy = jest.spyOn( settings, 'dismissMenu' );
+
+		document.body.dispatchEvent( new MouseEvent( 'mousedown', { bubbles: true } ) );
+
+		expect( saveSpy ).not.toHaveBeenCalled();
+		expect( dismissSpy ).toHaveBeenCalled();
+		expect( settings.controlMenuOpen ).toBe( false );
+		expect( settings.urlOverridesActive ).toBe( true );
+		menuContainer.remove();
+	} );
 } );
