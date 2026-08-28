@@ -5,6 +5,11 @@
 	<span v-else>
 		{{ $i18n( 'pagetriage-byline-heading', creatorName ).text() }}
 	</span>
+	<user-info-button
+		v-if="showUserInfoCard"
+		class="ext-page-triage-userinfocard-button"
+		:username="creatorName"
+	></user-info-button>
 	<a
 		v-tooltip="userPageTooltip"
 		:href="userPageUrl"
@@ -29,6 +34,7 @@
 /**
  * Byline for list item creator
  */
+const { defineAsyncComponent } = require( 'vue' );
 const { CdxTooltip } = require( '@wikimedia/codex' );
 
 // see: https://doc.wikimedia.org/codex/latest/components/mixins/link.html
@@ -38,6 +44,22 @@ const params = { action: 'edit', redlink: 1 };
 // @vue/component
 module.exports = {
 	name: 'CreatorByline',
+	components: {
+		// CheckUser is an optional dependency, so the module which holds the button is
+		// requested only when the byline shows the button.
+		UserInfoButton: defineAsyncComponent( {
+			loader: () => new Promise( ( resolve, reject ) => {
+				mw.loader.using(
+					'ext.checkUser.userInfoCard',
+					( require ) => {
+						resolve( require( 'ext.checkUser.userInfoCard' ).UserCardButton );
+					},
+					reject
+				);
+			} ),
+			onError() {}
+		} )
+	},
 	directives: {
 		tooltip: CdxTooltip
 	},
@@ -51,6 +73,11 @@ module.exports = {
 		creatorIsExpiredTempAccount: { type: Boolean, required: false }
 	},
 	computed: {
+		showUserInfoCard: function () {
+			// The card only supports registered users.
+			return this.creatorUserId > 0 &&
+				!!mw.user.options.get( 'checkuser-userinfocard-enable' );
+		},
 		userPageClass: function () {
 			if ( this.creatorIsExpiredTempAccount ) {
 				return 'mw-tempuserlink mw-tempuserlink-expired';
@@ -94,5 +121,13 @@ module.exports = {
 	&.mw-tempuserlink-expired {
 		text-decoration: line-through;
 	}
+}
+
+// The byline is a line of text, but the button is taller than the text. Keep the
+// button aligned with the text and prevent it from making the line higher.
+.ext-page-triage-userinfocard-button.cdx-button {
+	vertical-align: text-bottom;
+	margin-top: -@spacing-25;
+	margin-bottom: -@spacing-25;
 }
 </style>

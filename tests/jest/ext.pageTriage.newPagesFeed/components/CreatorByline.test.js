@@ -1,5 +1,17 @@
 const utils = require( '@vue/test-utils' );
 const CreatorByLine = require( '../../../../modules/ext.pageTriage.newPagesFeed/components/CreatorByline.vue' );
+
+const userInfoCardPreference = 'checkuser-userinfocard-enable';
+const mountWithUserInfoCard = ( propsData ) => utils.mount( CreatorByLine, {
+	propsData: Object.assign( {
+		creatorUserId: 1,
+		creatorName: 'name',
+		creatorAutoConfirmed: true,
+		creatorUserPageExists: true,
+		creatorTalkPageExists: true
+	}, propsData )
+} );
+
 let wrapper;
 describe( 'CreatorByline.vue', () => {
 	it( 'mounts', () => {
@@ -79,5 +91,28 @@ describe( 'CreatorByline.vue', () => {
 		expect( wrapper.vm.creatorIsTempAccount ).toBe( false );
 		expect( wrapper.vm.userPageClass ).toBe( '' );
 		expect( wrapper.vm.userPageTooltip ).toBe( '' );
+	} );
+
+	describe( 'user info card button', () => {
+		afterEach( () => {
+			mw.user.options.delete( userInfoCardPreference );
+		} );
+
+		it( 'shows when the user enabled the user info card', () => {
+			mw.user.options.set( userInfoCardPreference, '1' );
+			wrapper = mountWithUserInfoCard();
+			expect( wrapper.vm.showUserInfoCard ).toBe( true );
+		} );
+
+		it( 'does not show when the user did not enable the user info card', () => {
+			wrapper = mountWithUserInfoCard();
+			expect( wrapper.vm.showUserInfoCard ).toBe( false );
+		} );
+
+		it( 'does not show for a creator which is not registered', () => {
+			mw.user.options.set( userInfoCardPreference, '1' );
+			wrapper = mountWithUserInfoCard( { creatorUserId: 0 } );
+			expect( wrapper.vm.showUserInfoCard ).toBe( false );
+		} );
 	} );
 } );
