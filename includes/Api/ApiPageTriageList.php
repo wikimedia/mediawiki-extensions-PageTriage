@@ -87,6 +87,7 @@ class ApiPageTriageList extends ApiBase {
 			}
 
 			$creatorsByName = $this->preloadCreators( $metaData );
+			$reviewersByName = $this->preloadReviewers( $metaData );
 
 			// Sort data according to page order returned by our query. Also convert it to a
 			// slightly different format that's more Backbone-friendly.
@@ -131,12 +132,23 @@ class ApiPageTriageList extends ApiBase {
 				}
 
 				// Page reviewer
-				if ( $metaData[$page]['reviewer'] ) {
-					$metaData[$page] += $this->createUserInfo(
-						$metaData[$page]['reviewer'],
-						$userPageStatus,
-						'reviewer'
-					);
+				$reviewerName = $metaData[$page]['reviewer'];
+				if ( $reviewerName ) {
+					$reviewer = $reviewersByName[$reviewerName] ?? null;
+
+					if ( $reviewer && $reviewer->isHidden() ) {
+						// Do not show the name or the ID of a suppressed reviewer. The clients
+						// then show the page as reviewed by an unknown user.
+						$metaData[$page]['reviewer'] = null;
+						$metaData[$page]['ptrp_last_reviewed_by'] = '0';
+						$metaData[$page]['reviewer_hidden'] = true;
+					} else {
+						$metaData[$page] += $this->createUserInfo(
+							$reviewerName,
+							$userPageStatus,
+							'reviewer'
+						);
+					}
 				}
 
 				$pageTitle = Title::newFromText( $metaData[ $page ]['title'] );
@@ -164,7 +176,8 @@ class ApiPageTriageList extends ApiBase {
 
 				$metaData[$page][ApiResult::META_BC_BOOLS] = [
 					'creator_hidden', 'creator_user_page_exist', 'creator_user_talk_page_exist',
-					'reviewer_user_page_exist', 'reviewer_user_talk_page_exist', 'is_orphan'
+					'reviewer_hidden', 'reviewer_user_page_exist', 'reviewer_user_talk_page_exist',
+					'is_orphan'
 				];
 
 				$sortedMetaData[] = [ 'pageid' => $page ] + $metaData[$page];
@@ -212,6 +225,33 @@ class ApiPageTriageList extends ApiBase {
 		$this->tempUserDetailsLookup->preloadExpirationStatus( $users );
 
 		return $creatorsByName;
+	}
+
+	/**
+	 * Preload user data for page reviewers.
+	 *
+	 * The API does not report temporary account status for reviewers. Thus this
+	 * method does not preload temporary account data, and preloadCreators() does.
+	 *
+	 * @param array $metaData Combined metadata returned by ArticleMetadata::getMetadata().
+	 * @return User[] Map of User objects keyed by user name.
+	 */
+	private function preloadReviewers( array $metaData ): array {
+		$reviewerNames = [];
+
+		foreach ( $metaData as $data ) {
+			if ( $data['reviewer'] ?? null ) {
+				$reviewerNames[] = $data['reviewer'];
+			}
+		}
+
+		$reviewersByName = array_fill_keys( $reviewerNames, null );
+
+		foreach ( UserArray::newFromNames( $reviewerNames ) as $user ) {
+			$reviewersByName[$user->getName()] = $user;
+		}
+
+		return $reviewersByName;
 	}
 
 	/**
