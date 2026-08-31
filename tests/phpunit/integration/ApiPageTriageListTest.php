@@ -6,6 +6,9 @@ use MediaWiki\Api\ApiUsageException;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Content\TextContent;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
+use MediaWiki\Extension\PageTriage\ArticleMetadata;
+use MediaWiki\Extension\PageTriage\PageTriage;
+use MediaWiki\Extension\PageTriage\QueueRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\Utils\MWTimestamp;
@@ -753,5 +756,61 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$list = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'page_id' => $testDraft['id'] ] );
 		$draftInfo = $list[0]['pagetriagelist']['pages'][0];
 		$this->assertSame( 1, $draftInfo['talkpage_feedback_count'] );
+	}
+
+	/**
+	 * The API must not disclose the name of a reviewer whose name is suppressed.
+	 */
+	public function testSuppressedReviewerIsNotDisclosed() {
+		$reviewer = $this->getMutableTestUser()->getUser();
+		$pageId = $this->makeDraft( __METHOD__ );
+
+		// Record $reviewer as the last reviewer of the draft.
+		$pageTriage = new PageTriage( $pageId );
+		$pageTriage->setTriageStatus( QueueRecord::REVIEW_STATUS_REVIEWED, $reviewer );
+		ArticleMetadata::clearStaticCache();
+
+		// Before suppression the API shows the reviewer.
+		$pageInfo = $this->getPageTriageList( [ 'page_id' => $pageId ] )[0];
+		$this->assertSame( $reviewer->getName(), $pageInfo['reviewer'] );
+		$this->assertFalse( $pageInfo['reviewer_hidden'] );
+		$this->assertSame(
+			'User:' . $reviewer->getName(),
+			$pageInfo['reviewer_user_page']
+		);
+
+		// Suppress the name of the reviewer.
+		$this->getServiceContainer()->getBlockUserFactory()->newBlockUser(
+			$reviewer,
+			$this->getTestUser( [ 'sysop', 'suppress' ] )->getAuthority(),
+			'infinity',
+			'test suppression',
+			[ 'isHideUser' => true ]
+		)->placeBlock();
+		ArticleMetadata::clearStaticCache();
+
+		// After suppression the API shows no reviewer data.
+		$pageInfo = $this->getPageTriageList( [ 'page_id' => $pageId ] )[0];
+		$this->assertNull( $pageInfo['reviewer'] );
+		$this->assertTrue( $pageInfo['reviewer_hidden'] );
+		$this->assertSame( '0', $pageInfo['ptrp_last_reviewed_by'] );
+
+		$disclosingFields = [
+			'reviewer_user_page',
+			'reviewer_user_page_url',
+			'reviewer_user_talk_page',
+			'reviewer_user_talk_page_url',
+			'reviewer_contribution_page',
+			'reviewer_contribution_page_url',
+		];
+		foreach ( $disclosingFields as $field ) {
+			$this->assertArrayNotHasKey( $field, $pageInfo );
+		}
+
+		// The name of the reviewer must not be anywhere in the response.
+		$this->assertStringNotContainsString(
+			$reviewer->getName(),
+			json_encode( $pageInfo )
+		);
 	}
 }
