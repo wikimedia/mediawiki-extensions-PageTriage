@@ -6,7 +6,7 @@ const { applyUrlParams } = require( '../urlParams.js' );
 const submissionNumbers = [ '~invalid~', 'unsubmitted', 'pending', 'reviewing', 'declined' ];
 
 // Default API parameters; mode, showunreviewed, and showothers map to settings
-const defaultParams = {
+const defaultParams = Object.freeze( {
 	mode: 'npp',
 	namespace: 0,
 	showunreviewed: 1,
@@ -14,7 +14,7 @@ const defaultParams = {
 	format: 'json',
 	formatversion: 2,
 	version: 2
-};
+} );
 
 // 'queueMode', 'nppSortDir', or 'afcSort'
 const defaultImmediate = Object.freeze( {
@@ -104,7 +104,7 @@ const initState = () => {
 		applied: JSON.parse( JSON.stringify( defaultSettings ) ),
 		unsaved: JSON.parse( JSON.stringify( defaultSettings ) ),
 		// Load stored API parameters if possible, else defaults
-		params: JSON.parse( paramsJson ) || defaultParams,
+		params: JSON.parse( paramsJson ) || JSON.parse( JSON.stringify( defaultParams ) ),
 		currentFilteredCount: -1
 	};
 };
