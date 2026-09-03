@@ -72,7 +72,6 @@ module.exports = {
 	computed: {
 		labelText: function () {
 			// See labelMsg validator for possible keys
-			// eslint-disable-next-line mediawiki/msg-doc
 			return this.$i18n( this.labelMsg ).text();
 		}
 	}
