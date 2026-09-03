@@ -66,6 +66,7 @@
 	"pagetriage-unreviewed-article-count": "$1 {{PLURAL:$1|article|articles}} and $2 {{PLURAL:$2|redirect|redirects}} are unreviewed (oldest: $3)",
 	"pagetriage-reviewed-article-count-past-week": "$1 {{PLURAL:$1|article|articles}} and $2 {{PLURAL:$2|redirect|redirects}} were reviewed this week",
 	"pagetriage-unreviewed-draft-count": "$1 {{PLURAL:$1|draft is|drafts are}} awaiting review (oldest: $2)",
+	"pagetriage-stats-not-available": "N/A",
 	"pagetriage-sort-by": "Sort by:",
 	"pagetriage-newest": "Newest",
 	"pagetriage-oldest": "Oldest",

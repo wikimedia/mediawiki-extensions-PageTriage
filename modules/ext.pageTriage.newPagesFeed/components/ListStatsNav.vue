@@ -146,14 +146,18 @@ module.exports = {
 		unreviewedOldestDraft() {
 			if ( this.apiResult.result === 'success' &&
 				this.apiResult.stats &&
-				this.apiResult.stats.unrevieweddraft &&
-				this.apiResult.stats.unrevieweddraft.count
+				this.apiResult.stats.unrevieweddraft
 			) {
-				const rawOldest = this.apiResult.stats.unrevieweddraft.oldest;
+				const draftStats = this.apiResult.stats.unrevieweddraft;
+				// T381043:
+				if ( !draftStats.count ) {
+					return this.$i18n( 'pagetriage-stats-not-available' ).text();
+				}
+				const rawOldest = draftStats.oldest;
 				// convert to number of days based on formatDaysFromNow in
 				// pagetriage
 				if ( !rawOldest ) {
-					return '';
+					return this.$i18n( 'pagetriage-stats-not-available' ).text();
 				}
 				const diff = this.calculateDiff( rawOldest );
 				if ( diff ) {
