@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\PageTriage\Test;
 
 use MediaWiki\Api\ApiUsageException;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\User\User;
 use TestUser;
 
@@ -55,7 +54,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 			[ 'autopatrol' ]
 		);
 
-		$blockUserAction = MediaWikiServices::getInstance()
+		$blockUserAction = $this->getServiceContainer()
 			->getBlockUserFactory()
 			->newBlockUser(
 				'ApitestuserC',
