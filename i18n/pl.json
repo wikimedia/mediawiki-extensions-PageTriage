@@ -57,6 +57,7 @@
 	"pagetriage-filter-predicted-issues-attack": "Atak",
 	"pagetriage-filter-predicted-issues-copyvio": "Naruszenie licencji",
 	"pagetriage-filter-predicted-issues-none": "Brak",
+	"pagetriage-stats-not-available": "—",
 	"pagetriage-sort-by": "Sortuj według:",
 	"pagetriage-newest": "Najnowsze",
 	"pagetriage-oldest": "Najstarsze",

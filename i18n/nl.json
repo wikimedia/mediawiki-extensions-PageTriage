@@ -80,6 +80,7 @@
 	"pagetriage-unreviewed-article-count": "$1 {{PLURAL:$1|pagina|pagina's}} en $2 doorverwijzing{{PLURAL:$2||en}} zijn nog niet gecontroleerd (oudste: $3)",
 	"pagetriage-reviewed-article-count-past-week": "Deze week {{PLURAL:$1|is er één pagina|zijn er $1 pagina's}} gecontroleerd en $2 {{PLURAL:$2|doorverwijzing|doorverwijzingen}}",
 	"pagetriage-unreviewed-draft-count": "Er wacht{{PLURAL:$1| een concept|en $1 concepten}} op beoordeling (oudste: $2)",
+	"pagetriage-stats-not-available": "N.v.t.",
 	"pagetriage-sort-by": "Sorteren op:",
 	"pagetriage-newest": "Nieuwste",
 	"pagetriage-oldest": "Oudste",

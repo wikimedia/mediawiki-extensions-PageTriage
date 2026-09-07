@@ -59,6 +59,7 @@
 	"pagetriage-unreviewed-article-count": "$1 {{PLURAL:$1|maqaal|maqaallo}} iyo $2 {{PLURAL:$2|dib u jeedin|dib u jeedinno}} lama dib u eegin (ugu da'da weyn: $3)",
 	"pagetriage-reviewed-article-count-past-week": "$1 {{PLURAL:$1|maqaal|maqaallo}} iyo $2 {{PLURAL:$2|dib u jeedin|dib u jeedinno}} ayaa dib loo eegay toddobaadkan.",
 	"pagetriage-unreviewed-draft-count": "$1 {{PLURAL:$1|qabyo-qoraal ayaa|qabyo qoraallo ayaa}} sugaya dib u eegis (ugu da'da weyn: $2)",
+	"pagetriage-stats-not-available": "Lama Heli karo",
 	"pagetriage-sort-by": "Ku kala saar:",
 	"pagetriage-newest": "Ugu cusub",
 	"pagetriage-oldest": "ugu duqsan",

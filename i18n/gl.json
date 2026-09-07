@@ -68,6 +68,7 @@
 	"pagetriage-unreviewed-article-count": "$1 {{PLURAL:$1|artigo|artigos}} e $2 {{PLURAL:$2|redirección|redireccións}} sen revisar (o máis vello: $3)",
 	"pagetriage-reviewed-article-count-past-week": "$1 {{PLURAL:$1|artigo revisado|artigos revisados}} e $2 {{PLURAL:$2|redirección revisada|redireccións revisadas}} esta semana",
 	"pagetriage-unreviewed-draft-count": "$1 {{PLURAL:$1|borrador está|borradores están}} á espera de revisión (o máis vello: $2)",
+	"pagetriage-stats-not-available": "N/D",
 	"pagetriage-sort-by": "Ordenar por:",
 	"pagetriage-newest": "Os máis novos",
 	"pagetriage-oldest": "Os máis antigos",
