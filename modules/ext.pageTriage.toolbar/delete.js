@@ -1,6 +1,7 @@
 // view for display deletion wizard
 const { contentLanguageMessage } = require( 'ext.pageTriage.util' );
 const { deletionTags: deletionTagOptions } = require( 'ext.pageTriage.tagData' );
+const tagInserter = require( './tagInserter.js' );
 
 // Used to keep track of what actions we want to invoke, and with what data.
 const actionQueue = {};
@@ -975,10 +976,14 @@ module.exports = ToolView.extend( {
 			text = '{{' + deletionTagOptions.multiple.tag + '|' + tagText + paramsText + '}}';
 		}
 
+		const pageWikitext = noContentAfterTag ?
+			text :
+			tagInserter.insertAtMosSection( wikitext, text, 'deletionAndProtection' );
+
 		const postData = {
 			action: 'pagetriagetagging',
 			pageid: mw.config.get( 'wgArticleId' ),
-			wikitext: text + ( noContentAfterTag ? '' : wikitext ),
+			wikitext: pageWikitext,
 			deletion: 1,
 			taglist: tagList.join( '|' )
 		};

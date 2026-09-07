@@ -4,6 +4,7 @@ const { contentLanguageMessage } = require( 'ext.pageTriage.util' );
 const ToolView = require( './ToolView.js' );
 const config = require( './config.json' );
 const { maintenanceTags: tagOptions } = require( 'ext.pageTriage.tagData' );
+const tagInserter = require( './tagInserter.js' );
 
 // Used to keep track of what actions we want to invoke, and with what data.
 const actionQueue = {};
@@ -564,98 +565,6 @@ module.exports = ToolView.extend( {
 	},
 
 	/**
-	 * Given a tag, return the wikitext corresponding to the tag based on the
-	 * current article wikitext
-	 *
-	 * @param {string} wikitext
-	 * @param {string} tag
-	 * @return {string|void} The wikitext corresponding to the tag
-	 */
-	extractTagFromWikitext: function ( wikitext, tag ) {
-		const tagStart = '{{' + tag;
-		const startingIndex = wikitext.indexOf( tagStart );
-
-		if ( !wikitext.includes( tagStart ) ) {
-			return '';
-		}
-
-		let templateBraces = 0;
-
-		for ( let i = startingIndex; i < wikitext.length; i++ ) {
-			if ( wikitext[ i ] === '{' ) {
-				templateBraces++;
-			} else if ( wikitext[ i ] === '}' ) {
-				templateBraces--;
-			}
-
-			if ( templateBraces === 0 ) {
-				return wikitext.slice( startingIndex, i + 1 );
-			}
-		}
-	},
-
-	/**
-	 * Given a template wrapper and some tag wikitext, extract the wrapper from the article wikitext
-	 * (if it is present), add the tags to the wrapper and replace the wrapper in the article
-	 * else construct a new wrapper and add the tags to it and place it in the article wikitext.
-	 *
-	 * For example, if the wrapper is "Multiple issues", the tag wikitext is {{advert}}\n{{peacock}}
-	 * and the article wikitext is the following:
-	 * ```
-	 * {{Multiple issues|
-	 * {{notability}}
-	 * {{should be deleted}}
-	 * }}
-	 *
-	 * PageTriage is the best.
-	 * ```
-	 *
-	 * the function will find the existing Multiple issues wrapper tag and try to append the
-	 * tagWikitext as part of the Multiple issues tag block, so the returned output would be:
-	 *
-	 * ```
-	 * {{Multiple issues|
-	 * {{notability}}
-	 * {{should be deleted}}
-	 * {{advert}}
-	 * {{peacock}}
-	 * }}
-	 *
-	 * PageTriage is the best.
-	 * ```
-	 *
-	 * @param {string} articleWikitext
-	 * @param {string} wrapper
-	 * @param {string} tagWikitext
-	 * @param {"top"|"bottom"} position
-	 * @param {boolean} shouldWrap
-	 * @return {string} Article text with the tag wrapped in the wrapper placed in the appropriate
-	 * position
-	 */
-	addToExistingTags: function ( articleWikitext, wrapper, tagWikitext, position, shouldWrap ) {
-		const existingWrapper = this.extractTagFromWikitext( articleWikitext, wrapper );
-		if ( existingWrapper ) {
-			return articleWikitext.replace(
-				existingWrapper,
-				existingWrapper.slice( 0, existingWrapper.length - 2 ).trim() + tagWikitext + '\n}}'
-			);
-		}
-
-		let wrappedWikitext = tagWikitext;
-
-		if ( shouldWrap ) {
-			wrappedWikitext = '{{' + wrapper + '|' + tagWikitext + '\n}}';
-		}
-		if ( position === 'top' ) {
-			if ( !this.isRedirect || ( this.isRedirect && tagWikitext !== 'redirectTag' ) ) {
-				return wrappedWikitext + '\n' + articleWikitext.replace( /^\s+/, '' );
-			}
-			return wrappedWikitext + articleWikitext.replace( /^\s+/, '' );
-		}
-		return articleWikitext.replace( /^\s+/, '' ) + '\n' + wrappedWikitext;
-	},
-
-	/**
 	 * Submit the selected tags
 	 *
 	 * @return {jQuery.Promise<void>}
@@ -671,13 +580,13 @@ module.exports = ToolView.extend( {
 				}
 			}
 
-			let bottomText = '';
 			const processed = {};
 			const multipleTags = {};
 			const redirectTags = {};
+			const nonMultipleTopTags = [];
+			const categoryTags = [];
+			const bottomTags = [];
 			const tagList = [];
-			let multipleTagsText = '',
-				multipleRedirectTagsText = '';
 			for ( const cat in this.selectedTag ) {
 				for ( const tagKey in this.selectedTag[ cat ] ) {
 					if ( processed[ tagKey ] ) {
@@ -693,23 +602,23 @@ module.exports = ToolView.extend( {
 						}
 					}
 
+					const tagWikitext = '{{' + tagObj.tag + this.buildParams( tagObj ) + '}}';
 					switch ( tagObj.position ) {
 						case 'redirectTag':
 							redirectTags[ tagKey ] = tagObj;
 							break;
 						case 'bottom':
-						case 'stub':
-							bottomText += '\n\n{{' + tagObj.tag + this.buildParams( tagObj ) + '}}';
+							bottomTags.push( tagWikitext );
 							break;
 						case 'categories':
-							bottomText = '\n{{' + tagObj.tag + this.buildParams( tagObj ) + '}}' + bottomText;
+							categoryTags.push( tagWikitext );
 							break;
 						case 'top':
 						default:
 							if ( tagObj.multiple ) {
 								multipleTags[ tagKey ] = tagObj;
 							} else {
-								wikitext = '{{' + tagObj.tag + this.buildParams( tagObj ) + '}}\n' + wikitext;
+								nonMultipleTopTags.push( tagWikitext );
 							}
 							break;
 					}
@@ -721,7 +630,13 @@ module.exports = ToolView.extend( {
 				}
 			}
 
-			wikitext = wikitext + bottomText;
+			if ( nonMultipleTopTags.length ) {
+				wikitext = tagInserter.insertTags(
+					wikitext,
+					nonMultipleTopTags.join( '\n' ),
+					'top'
+				);
+			}
 
 			// Generate a string of line breaks and templates. For example,
 			// \n{{No references}}\n{{Notability}}
@@ -729,31 +644,59 @@ module.exports = ToolView.extend( {
 			for ( const tagKey in multipleTags ) {
 				tagsArray.push( '{{' + multipleTags[ tagKey ].tag + this.buildParams( multipleTags[ tagKey ] ) + '}}' );
 			}
-			multipleTagsText = tagsArray.join( '\n' );
+			let multipleTagsText = tagsArray.join( '\n' );
 			if ( tagsArray.length > 1 ) {
 				multipleTagsText = '\n' + multipleTagsText;
 			}
 
-			wikitext = this.addToExistingTags(
-				wikitext,
-				tagOptions.multiple,
-				multipleTagsText,
-				'top',
-				this.objectPropCount( multipleTags ) > 1
-			);
+			if ( multipleTagsText ) {
+				const merged = tagInserter.mergeIntoWrapper(
+					wikitext,
+					tagOptions.multiple,
+					multipleTagsText
+				);
+				if ( merged !== wikitext ) {
+					wikitext = merged;
+				} else {
+					const shouldWrap = this.objectPropCount( multipleTags ) > 1;
+					const needle = shouldWrap ?
+						'{{' + tagOptions.multiple + '|' + multipleTagsText + '\n}}' :
+						multipleTagsText;
+					wikitext = tagInserter.insertAtMosSection(
+						wikitext,
+						needle,
+						'maintenanceTags'
+					);
+				}
+			}
 
+			if ( categoryTags.length ) {
+				wikitext = tagInserter.insertTags(
+					wikitext,
+					categoryTags.join( '\n' ),
+					'categories'
+				);
+			}
+
+			if ( bottomTags.length ) {
+				wikitext = tagInserter.insertTags(
+					wikitext,
+					bottomTags.join( '\n' ),
+					'bottom'
+				);
+			}
+
+			let multipleRedirectTagsText = '';
 			for ( const tagKey in redirectTags ) {
 				multipleRedirectTagsText += '\n{{' + redirectTags[ tagKey ].tag +
 				this.buildParams( redirectTags[ tagKey ] ) + '}}';
 			}
 
 			if ( this.objectPropCount( redirectTags ) > 0 ) {
-				wikitext = this.addToExistingTags(
+				wikitext = tagInserter.insertRedirectTags(
 					wikitext,
 					tagOptions.redirectCategoryShell,
-					multipleRedirectTagsText,
-					'bottom',
-					true
+					multipleRedirectTagsText
 				);
 			}
 

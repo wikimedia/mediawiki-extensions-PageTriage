@@ -7,6 +7,8 @@ describe( 'DeleteToolView', () => {
 			switch ( key ) {
 				case 'wgPageName':
 					return 'PageName';
+				case 'wgArticleId':
+					return 5;
 				default:
 					return null;
 			}
@@ -78,6 +80,64 @@ describe( 'DeleteToolView', () => {
 
 		return msg.then( () => {
 			expect( true ).toBe( true );
+		} );
+	} );
+
+	test( 'tagPage inserts deletion tags after a short description', () => {
+		const postWithToken = jest.spyOn( mw.Api.prototype, 'postWithToken' )
+			.mockResolvedValue( {} );
+		const toolbar = new DeleteToolView( { eventBus, model } );
+		toolbar.selectedTag = {
+			g11: {
+				tag: 'db-g11',
+				params: {}
+			}
+		};
+
+		return toolbar.tagPage( '{{Short description|Foo}}\n\nYou should buy this product. It\'s great. Wikipedia says so.' ).then( () => {
+			const posted = postWithToken.mock.calls[ 0 ][ 1 ].wikitext;
+			expect( posted ).toBe(
+				'{{Short description|Foo}}\n\n{{db-g11}}\n\nYou should buy this product. It\'s great. Wikipedia says so.\n'
+			);
+		} );
+	} );
+
+	test( 'tagPage replaces the page when blank is set', () => {
+		const postWithToken = jest.spyOn( mw.Api.prototype, 'postWithToken' )
+			.mockResolvedValue( {} );
+		const toolbar = new DeleteToolView( { eventBus, model } );
+		toolbar.selectedTag = {
+			attack: {
+				tag: 'db-attack',
+				params: {},
+				blank: true
+			}
+		};
+
+		return toolbar.tagPage( '{{Short description|Foo}}\n\n Evil, evil attack page. Very bad.' ).then( () => {
+			expect( postWithToken.mock.calls[ 0 ][ 1 ].wikitext ).toBe( '{{db-attack}}' );
+		} );
+	} );
+
+	test( 'tagPage replaces the page when wrapTagAroundPage is set', () => {
+		const postWithToken = jest.spyOn( mw.Api.prototype, 'postWithToken' )
+			.mockResolvedValue( {} );
+		const toolbar = new DeleteToolView( { eventBus, model } );
+		toolbar.selectedTag = {
+			rfd: {
+				tag: 'rfd',
+				params: {
+					content: {
+						input: 'pagecontent'
+					}
+				},
+				wrapTagAroundPage: true
+			}
+		};
+
+		return toolbar.tagPage( '#REDIRECT [[Foo]]' ).then( () => {
+			expect( postWithToken.mock.calls[ 0 ][ 1 ].wikitext )
+				.toBe( '{{rfd|content=#REDIRECT [[Foo]]}}' );
 		} );
 	} );
 } );
