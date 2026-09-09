@@ -3,6 +3,7 @@ const { createTestingPinia } = require( '@pinia/testing' );
 const mixins = require( '../../../mocks/mixins.js' );
 let ShowingText;
 let wrapper;
+
 describe( 'ShowingText.vue', () => {
 	beforeEach( () => {
 		mw.config.get = jest.fn( ( key ) => {
@@ -31,7 +32,26 @@ describe( 'ShowingText.vue', () => {
 			}
 		} );
 	} );
+
 	it( 'mounts', () => {
 		expect( wrapper.exists() ).toBe( true );
+	} );
+
+	// T422315: Show NPP and AfC filters as active filter chips.
+
+	it( 'shows the NPP unreferenced filter chip', () => {
+		const settings = wrapper.vm.settings;
+		settings.immediate.queueMode = 'npp';
+		settings.applied.nppFilter = 'unreferenced';
+
+		expect( wrapper.vm.showingObj.top ).toContain( 'pagetriage-filter-stat-unreferenced' );
+	} );
+
+	it( 'shows the AfC unreferenced filter chip', () => {
+		const settings = wrapper.vm.settings;
+		settings.immediate.queueMode = 'afc';
+		settings.applied.afcFilter = 'unreferenced';
+
+		expect( wrapper.vm.showingObj.top ).toContain( 'pagetriage-filter-stat-unreferenced' );
 	} );
 } );

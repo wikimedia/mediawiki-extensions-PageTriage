@@ -75,6 +75,15 @@ module.exports = {
 						this.addTop( settings.applied.nppFilter, settings.applied.nppFilterUser );
 					}
 				}
+				// T422315: Show NPP chips.
+				if (
+					settings.applied.nppFilter &&
+					settings.applied.nppFilter !== 'all' &&
+					!settings.applied.nppFilterKeyword &&
+					!settings.applied.nppFilterUser
+				) {
+					this.addTop( settings.applied.nppFilter );
+				}
 				this.addIf( settings.applied.nppIncludeReviewed, 'reviewed', this.msgObj.state );
 				this.addIf( settings.applied.nppIncludeUnreviewed, 'unreviewed', this.msgObj.state );
 				this.addIf( settings.applied.nppIncludeNominated, 'nominated-for-deletion', this.msgObj.type );
@@ -94,6 +103,15 @@ module.exports = {
 					if ( settings.applied.afcFilterUser ) {
 						this.addTop( settings.applied.afcFilter, settings.applied.afcFilterUser );
 					}
+				}
+				// T422315 AfC chips all shows
+				if (
+					settings.applied.afcFilter &&
+					settings.applied.afcFilter !== 'all' &&
+					!settings.applied.afcFilterKeyword &&
+					!settings.applied.afcFilterUser
+				) {
+					this.addTop( settings.applied.afcFilter );
 				}
 				this.addPredictedClass( settings.applied.afcPredictedRating );
 				this.addPredictedIssues( settings.applied.afcPossibleIssues );
