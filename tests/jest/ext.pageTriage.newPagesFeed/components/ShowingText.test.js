@@ -28,7 +28,9 @@ describe( 'ShowingText.vue', () => {
 		wrapper = mount( ShowingText, {
 			global: {
 				mixins: [ mixins ],
-				plugins: [ createTestingPinia() ]
+				plugins: [ createTestingPinia( {
+					stubActions: false
+				} ) ]
 			}
 		} );
 	} );
@@ -53,5 +55,12 @@ describe( 'ShowingText.vue', () => {
 		settings.applied.afcFilter = 'unreferenced';
 
 		expect( wrapper.vm.showingObj.top ).toContain( 'pagetriage-filter-stat-unreferenced' );
+	} );
+
+	it( 'shows a chip when pages the user created are excluded', () => {
+		const { useSettingsStore } = require( '../../../../modules/ext.pageTriage.newPagesFeed/stores/settings.js' );
+		const settings = useSettingsStore();
+		settings.applied.excludeFilter = 'own';
+		expect( wrapper.vm.showingObj.exclude ).toContain( 'pagetriage-filter-stat-hide-own-pages' );
 	} );
 } );

@@ -32,6 +32,7 @@ module.exports = {
 			required: true,
 			validator( value ) {
 				return [
+					'pagetriage-filter-exclude-heading',
 					'pagetriage-filter-date-range-heading',
 					'pagetriage-filter-namespace-heading',
 					'pagetriage-filter-show-heading',

@@ -185,14 +185,15 @@ class PageTriageUtil {
 	 * @param array $filters Associative array of filter names/values.
 	 *                       See ApiPageTriageStats->getAllowedParams() for possible values,
 	 *                       which are the same that the ApiPageTriageList endpoint accepts.
+	 * @param UserIdentity|null $user Requesting user, used to apply hideownpages
 	 * @return int Number of pages based on the selected filters
 	 */
-	public static function getArticleFilterStat( $filters ) {
+	public static function getArticleFilterStat( $filters, ?UserIdentity $user = null ) {
 		if ( !isset( $filters['showreviewed'] ) && !isset( $filters['showunreviewed'] ) ) {
 			$filters['showunreviewed'] = 'showunreviewed';
 		}
 
-		return ApiPageTriageList::getPageIds( $filters, true );
+		return ApiPageTriageList::getPageIds( $filters, true, $user );
 	}
 
 	/**
@@ -662,6 +663,9 @@ class PageTriageUtil {
 			],
 			'username' => [
 				ParamValidator::PARAM_TYPE => 'user',
+			],
+			'hideownpages' => [
+				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 			'keyword' => [
 				ParamValidator::PARAM_TYPE => 'string',

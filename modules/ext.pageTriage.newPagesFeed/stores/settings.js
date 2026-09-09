@@ -74,7 +74,8 @@ const defaultSettings = Object.freeze( {
 	afcDate: {
 		from: '',
 		to: ''
-	}
+	},
+	excludeFilter: 'none'
 } );
 
 const filtersToParams = {
@@ -199,6 +200,11 @@ module.exports = {
 				this.unsaved.afcFilterKeyword = this.params.keyword || '';
 				this.unsaved.afcFilter = this.paramsToFilter( this.params ) || 'all';
 			},
+			// Map hide-own-pages API parameter to the Exclude radio group
+			excludeParamToFilter: function () {
+				this.unsaved.excludeFilter =
+					this.params.hideownpages && !mw.user.isAnon() ? 'own' : 'none';
+			},
 			/* Map date API parameters to form values
 			 *  @param {Object} NPP or AFC date forms setting object
 			 */
@@ -241,6 +247,7 @@ module.exports = {
 						this.unsaved.afcPredictedRating );
 					this.dateParamsToFilters( this.unsaved.afcDate );
 				}
+				this.excludeParamToFilter();
 				// Overlay session-only URL params after saved prefs are loaded
 				if ( applyUrlParams( this ) ) {
 					this.urlOverridesActive = true;
@@ -295,6 +302,12 @@ module.exports = {
 				} else {
 					delete this.params[ paramName ];
 				}
+			},
+			addExcludeFilter: function () {
+				this.addIfToggled(
+					'hideownpages',
+					this.applied.excludeFilter === 'own' && !mw.user.isAnon()
+				);
 			},
 			// Map ORES form values to API parameters
 			addOresFilters: function ( optionsObj, paramPrefix ) {
@@ -419,6 +432,7 @@ module.exports = {
 					this.afcStateFilterToParam( this.applied.afcSubmissionState );
 					this.addDateFilters( this.applied.afcDate.from, this.applied.afcDate.to );
 				}
+				this.addExcludeFilter();
 				// URL overrides are session-only; do not overwrite saved prefs
 				if ( this.urlOverridesActive ) {
 					return;

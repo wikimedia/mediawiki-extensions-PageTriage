@@ -66,6 +66,15 @@
 								v-model:to="settings.unsaved.nppDate.to"
 								type="npp"
 							></date-control-section>
+							<control-section
+								v-if="canExcludeOwnPages"
+								label-msg="pagetriage-filter-exclude-heading"
+							>
+								<exclude-radios
+									v-model:filter="settings.unsaved.excludeFilter"
+									type="npp"
+								></exclude-radios>
+							</control-section>
 						</div>
 						<control-section
 							class="mwe-vue-pt-control-section__col2"
@@ -115,6 +124,15 @@
 								v-model:to="settings.unsaved.afcDate.to"
 								type="afc"
 							></date-control-section>
+							<control-section
+								v-if="canExcludeOwnPages"
+								label-msg="pagetriage-filter-exclude-heading"
+							>
+								<exclude-radios
+									v-model:filter="settings.unsaved.excludeFilter"
+									type="afc"
+								></exclude-radios>
+							</control-section>
 						</div>
 						<control-section
 							label-msg="pagetriage-filter-second-show-heading"
@@ -208,6 +226,7 @@ const AfcSortSelect = require( './AfcSortSelect.vue' );
 const AfcStateRadio = require( './AfcStateRadio.vue' );
 const NppSortDirRadio = require( './NppSortDirRadio.vue' );
 const FilterRadios = require( './FilterRadios.vue' );
+const ExcludeRadios = require( './ExcludeRadios.vue' );
 const ShowingText = require( './ShowingText.vue' );
 const { CdxButton } = require( '@wikimedia/codex' );
 const { useSettingsStore } = require( '../stores/settings.js' );
@@ -222,6 +241,7 @@ module.exports = {
 		QueueModeTab,
 		NppSortDirRadio,
 		FilterRadios,
+		ExcludeRadios,
 		AfcSortSelect,
 		AfcStateRadio,
 		ShowingText,
@@ -287,7 +307,8 @@ module.exports = {
 			toggleControlMenu,
 			canSaveSettings,
 			doSaveSettings,
-			menuToggle
+			menuToggle,
+			canExcludeOwnPages: !mw.user.isAnon()
 		};
 	},
 	data: function () {

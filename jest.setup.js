@@ -97,3 +97,6 @@ global.mw.message = function ( key ) {
 };
 global.IntersectionObserver = IntersectionObserver;
 global.mw.user.options = new mw.Map();
+if ( typeof global.mw.user.isAnon !== 'function' ) {
+	global.mw.user.isAnon = () => false;
+}

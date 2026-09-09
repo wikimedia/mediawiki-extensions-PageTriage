@@ -21,7 +21,7 @@ class ApiPageTriageStats extends ApiBase {
 			'unreviewedredirect' => PageTriageUtil::getUnreviewedRedirectStat( $params['namespace'] ),
 			'reviewedarticle' => PageTriageUtil::getReviewedArticleStat( $params['namespace'] ),
 			'reviewedredirect' => PageTriageUtil::getReviewedRedirectStat( $params['namespace'] ),
-			'filteredarticle' => PageTriageUtil::getArticleFilterStat( $params ),
+			'filteredarticle' => PageTriageUtil::getArticleFilterStat( $params, $this->getUser() ),
 			'unrevieweddraft' => PageTriageUtil::getUnreviewedDraftStats(),
 			'namespace' => $params['namespace']
 		];

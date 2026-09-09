@@ -17,6 +17,7 @@ use MediaWiki\Title\TitleFormatter;
 use MediaWiki\User\TempUser\TempUserDetailsLookup;
 use MediaWiki\User\User;
 use MediaWiki\User\UserArray;
+use MediaWiki\User\UserIdentity;
 use ORES\Services\ORESServices;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
@@ -62,7 +63,7 @@ class ApiPageTriageList extends ApiBase {
 			}
 
 			// Retrieve the list of page IDs
-			$pages = self::getPageIds( $opts );
+			$pages = self::getPageIds( $opts, false, $this->getUser() );
 			$pageIdValidated = true;
 		}
 		$pageIdValidateDb = DB_REPLICA;
@@ -233,6 +234,58 @@ class ApiPageTriageList extends ApiBase {
 	}
 
 	/**
+	 * Map hideownpages to an internal not_username value from the requesting user.
+	 * Anonymous IPs are ignored; named and temporary accounts are eligible.
+	 *
+	 * @param array &$opts
+	 * @param UserIdentity $user
+	 */
+	private static function applyHideOwnPagesOption( array &$opts, UserIdentity $user ): void {
+		if ( empty( $opts['hideownpages'] ) || !$user->isRegistered() ) {
+			return;
+		}
+		$name = $user->getName();
+		if ( $name !== '' ) {
+			$opts['not_username'] = $name;
+		}
+	}
+
+	/**
+	 * Exclude pages created by a specific user.
+	 * Pages with no user_name tag are kept (not created by the excluded user).
+	 *
+	 * @param array $opts
+	 * @param string[] &$tables
+	 * @param array &$join_conds
+	 * @param array &$conds
+	 */
+	private static function applyExcludeUserQuery(
+		array $opts,
+		array &$tables,
+		array &$join_conds,
+		array &$conds
+	): void {
+		if ( empty( $opts['not_username'] ) ) {
+			return;
+		}
+		$tagIDs = ArticleMetadata::getValidTags();
+		if ( !isset( $tagIDs['user_name'] ) ) {
+			return;
+		}
+		$dbr = PageTriageUtil::getReplicaConnection();
+		$tables['pagetriage_exclude_user'] = 'pagetriage_page_tags';
+		$join_conds['pagetriage_exclude_user'] = [
+			'LEFT JOIN',
+			[
+				'pagetriage_exclude_user.ptrpt_page_id = ptrp_page_id',
+				'pagetriage_exclude_user.ptrpt_tag_id' => $tagIDs['user_name'],
+			]
+		];
+		$conds[] = $dbr->expr( 'pagetriage_exclude_user.ptrpt_value', '!=', $opts['not_username'] )
+			->or( 'pagetriage_exclude_user.ptrpt_value', '=', null );
+	}
+
+	/**
 	 * @param string[] &$tables
 	 * @param array &$join_conds
 	 */
@@ -328,11 +381,15 @@ class ApiPageTriageList extends ApiBase {
 	 * Return all the page ids in PageTriage matching the specified filters
 	 * @param array $opts Array of filtering options
 	 * @param bool $count Set to true to return a count instead
+	 * @param UserIdentity|null $user Requesting user, used to apply hideownpages
 	 * @return array|int an array of ids or total number of pages
 	 *
 	 * @todo - enforce a range of timestamp to reduce tag record scan
 	 */
-	public static function getPageIds( $opts = [], $count = false ) {
+	public static function getPageIds( $opts = [], $count = false, ?UserIdentity $user = null ) {
+		if ( $user !== null ) {
+			self::applyHideOwnPagesOption( $opts, $user );
+		}
 		// Initialize required variables
 		$pages = [];
 		$options = [];
@@ -466,6 +523,8 @@ class ApiPageTriageList extends ApiBase {
 			$options['HAVING'] = "COUNT(*) = $numberOfTagConds";
 			self::joinWithTags( $tables, $join_conds );
 		}
+
+		self::applyExcludeUserQuery( $opts, $tables, $join_conds, $conds );
 
 		// ORES articlequality filter
 		if ( PageTriageUtil::oresIsAvailable() &&

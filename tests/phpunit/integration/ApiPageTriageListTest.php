@@ -622,6 +622,90 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$this->assertPages( [ 'KeywordSearchBar' ], $list, 'Keyword search' );
 	}
 
+	public function testHideOwnPages() {
+		$viewer = self::getTestUser()->getUser();
+		$other = self::getMutableTestUser()->getUser();
+
+		$this->makeDraft( 'HideOwnMine', false, false, $viewer );
+		$this->makeDraft( 'HideOwnTheirs', false, false, $other );
+
+		$unfilteredTitles = $this->pageTitlesFromList( $this->getPageTriageList() );
+		$this->assertContains( 'HideOwnMine', $unfilteredTitles, 'No exclude includes own page' );
+		$this->assertContains( 'HideOwnTheirs', $unfilteredTitles, 'No exclude includes other page' );
+
+		$listParams = [
+			'action' => 'pagetriagelist',
+			'showunreviewed' => '1',
+			'namespace' => $this->draftNsId,
+			'hideownpages' => '1',
+			'limit' => 200,
+		];
+		$asViewerTitles = $this->pageTitlesFromList(
+			$this->doApiRequest( $listParams, null, false, $viewer )[0]['pagetriagelist']['pages']
+		);
+		$this->assertNotContains( 'HideOwnMine', $asViewerTitles, 'Hide pages created by the requesting user' );
+		$this->assertContains( 'HideOwnTheirs', $asViewerTitles, 'Keep pages created by someone else' );
+
+		$asOtherTitles = $this->pageTitlesFromList(
+			$this->doApiRequest( $listParams, null, false, $other )[0]['pagetriagelist']['pages']
+		);
+		$this->assertContains( 'HideOwnMine', $asOtherTitles, 'Keep pages created by someone else' );
+		$this->assertNotContains(
+			'HideOwnTheirs', $asOtherTitles, 'Hide pages created by a different requesting user'
+		);
+
+		$statsParams = [
+			'action' => 'pagetriagestats',
+			'showunreviewed' => '1',
+			'namespace' => $this->draftNsId,
+		];
+		$countWithout = $this->doApiRequest( $statsParams, null, false, $viewer )[0]
+			['pagetriagestats']['stats']['filteredarticle'];
+		$countWith = $this->doApiRequest( $statsParams + [ 'hideownpages' => '1' ], null, false, $viewer )[0]
+			['pagetriagestats']['stats']['filteredarticle'];
+		$this->assertSame(
+			$countWithout - 1,
+			$countWith,
+			'Stats count drops by the viewer-created page'
+		);
+
+		$this->makeDraft(
+			'HideOwnMinePending',
+			false,
+			false,
+			$viewer,
+			'[[Category:Pending AfC submissions]]'
+		);
+		$this->makeDraft(
+			'HideOwnTheirsPending',
+			false,
+			false,
+			$other,
+			'[[Category:Pending AfC submissions]]'
+		);
+
+		$pendingTitles = $this->pageTitlesFromList(
+			$this->doApiRequest( [
+				'action' => 'pagetriagelist',
+				'showunreviewed' => '1',
+				'namespace' => $this->draftNsId,
+				'afc_state' => ArticleCompileAfcTag::PENDING,
+				'hideownpages' => '1',
+				'limit' => 200,
+			], null, false, $viewer )[0]['pagetriagelist']['pages']
+		);
+		$this->assertNotContains(
+			'HideOwnMinePending',
+			$pendingTitles,
+			'Hide own pages stacks with AfC pending state'
+		);
+		$this->assertContains(
+			'HideOwnTheirsPending',
+			$pendingTitles,
+			'Keep someone else\'s pending AfC page'
+		);
+	}
+
 	public function testFilterType() {
 		$user = self::getTestUser()->getUser();
 		$otherPage = $this->insertPage( 'PageOther', 'some content', 0, $user );
@@ -808,5 +892,18 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 		$list = $this->doApiRequest( [ 'action' => 'pagetriagelist', 'page_id' => $testDraft['id'] ] );
 		$draftInfo = $list[0]['pagetriagelist']['pages'][0];
 		$this->assertSame( 1, $draftInfo['talkpage_feedback_count'] );
+	}
+
+	/**
+	 * @param array[] $pages pagetriagelist pages
+	 * @return string[] Unprefixed titles
+	 */
+	private function pageTitlesFromList( array $pages ): array {
+		return array_map( static function ( $item ) {
+			$title = $item['title'];
+			return strpos( $title, ':' ) !== false ?
+				explode( ':', $title )[1] :
+				$title;
+		}, $pages );
 	}
 }

@@ -38,6 +38,7 @@ const defaultMsg = {
 	'predicted-class': [],
 	'predicted-issues': [],
 	top: [],
+	exclude: [],
 	// eslint-disable-next-line camelcase
 	date_range: []
 };
@@ -91,6 +92,7 @@ module.exports = {
 				this.addIf( settings.applied.nppIncludeOthers, 'others', this.msgObj.type );
 				this.addPredictedClass( settings.applied.nppPredictedRating );
 				this.addPredictedIssues( settings.applied.nppPossibleIssues );
+				this.addExclude( settings.applied.excludeFilter );
 				this.addDate( settings.applied.nppDate.from, settings.applied.nppDate.to );
 			} else {
 				if ( featureFlags.PageTriageEnableKeywordSearch ) {
@@ -115,6 +117,7 @@ module.exports = {
 				}
 				this.addPredictedClass( settings.applied.afcPredictedRating );
 				this.addPredictedIssues( settings.applied.afcPossibleIssues );
+				this.addExclude( settings.applied.excludeFilter );
 				this.addDate( settings.applied.afcDate.from, settings.applied.afcDate.to );
 				this.addState( settings.applied.afcSubmissionState );
 			}
@@ -176,9 +179,15 @@ module.exports = {
 				// 'pagetriage-filter-stat-nominated-for-deletion'
 				// 'pagetriage-filter-stat-redirects'
 				// 'pagetriage-filter-stat-others'
+				// 'pagetriage-filter-stat-hide-own-pages'
 
 				this.$i18n( `pagetriage-filter-stat-${ msgSuffix }` ).text()
 			);
+		},
+		addExclude: function ( excludeFilter ) {
+			if ( excludeFilter === 'own' ) {
+				this.addIf( true, 'hide-own-pages', this.msgObj.exclude );
+			}
 		},
 		addPredictedClass: function ( settingsObj ) {
 			for ( const settingsOption in settingsObj ) {
