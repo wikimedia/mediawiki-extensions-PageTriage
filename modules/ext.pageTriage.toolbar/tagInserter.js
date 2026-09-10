@@ -79,7 +79,7 @@ function escapeTemplateNameForRegExp( name ) {
  * @return {number} -1 if not found
  */
 function findTemplateStart( wikitext, name ) {
-	const pattern = '\\{\\{\\s*' +
+	const pattern = '\\{\\{\\s*(?:subst:)?\\s*' +
 		escapeTemplateNameForRegExp( name ) +
 		'(?=[\\s_]*[|}])';
 	const match = wikitext.match( new RegExp( pattern, 'i' ) );
@@ -129,6 +129,24 @@ function extractTemplate( wikitext, name ) {
 		return '';
 	}
 	return extractTemplateAt( wikitext, startingIndex );
+}
+
+/**
+ * Whether `name` (or `{{subst:name}}`) is already on the page.
+ *
+ * @param {string} wikitext
+ * @param {string} name
+ * @return {boolean}
+ */
+function hasTemplate( wikitext, name ) {
+	if ( extractTemplate( wikitext, name ) !== '' ) {
+		return true;
+	}
+	// Any {{…-stub}} / {{stub}} counts as the stub tag already being present.
+	if ( normalizeTemplateName( name ) === 'stub' ) {
+		return new MOSOrderPositionFinder().hasSection( wikitext, 'stubTemplates' );
+	}
+	return false;
 }
 
 /**
@@ -523,6 +541,7 @@ function insertRedirectTags( wikitext, wrapper, innerWikitext ) {
 module.exports = {
 	POSITION_TO_SECTION,
 	extractTemplate,
+	hasTemplate,
 	mergeIntoWrapper,
 	insertAtMosSection,
 	insertTags,

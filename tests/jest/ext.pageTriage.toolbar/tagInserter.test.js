@@ -27,6 +27,27 @@ describe( 'tagInserter', () => {
 		} );
 	} );
 
+	describe( 'hasTemplate', () => {
+		test( 'finds a standalone maintenance tag regardless of case', () => {
+			expect( tagInserter.hasTemplate( '{{Disputed}}\ntest', 'disputed' ) ).toBe( true );
+		} );
+
+		test( 'finds a tag nested in Multiple issues', () => {
+			expect( tagInserter.hasTemplate(
+				'{{Multiple issues|\n{{advert}}\n}}\n\nLead.',
+				'advert'
+			) ).toBe( true );
+		} );
+
+		test( 'returns false when the template is absent', () => {
+			expect( tagInserter.hasTemplate( '{{advert}}\nLead.', 'disputed' ) ).toBe( false );
+		} );
+
+		test( 'treats a topic stub as the stub tag already being present', () => {
+			expect( tagInserter.hasTemplate( 'Lead.\n\n{{France-stub}}', 'stub' ) ).toBe( true );
+		} );
+	} );
+
 	describe( 'mergeIntoWrapper', () => {
 		test( 'appends tags inside an existing Multiple issues wrapper', () => {
 			const wikitext = `

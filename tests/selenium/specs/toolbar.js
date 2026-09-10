@@ -5,6 +5,7 @@ import { getTestString } from 'wdio-mediawiki/Util.js';
 import { createApiClient } from 'wdio-mediawiki/Api.js';
 
 const articleName = getTestString( 'NewArticle-' );
+const articleNameWithNote = getTestString( 'NewArticle-' );
 const username = getTestString( 'User-' );
 
 describe( 'PageTriage Toolbar', () => {
@@ -16,9 +17,10 @@ describe( 'PageTriage Toolbar', () => {
 		const password = getTestString();
 		await api.createAccount( username, password );
 
-		// Create an article using nonAdmin's account.
+		// Create articles using nonAdmin's account.
 		const nonAdminApiUser = await createApiClient( { username, password } );
 		await nonAdminApiUser.edit( articleName, getTestString(), getTestString() );
+		await nonAdminApiUser.edit( articleNameWithNote, getTestString(), getTestString() );
 		await LoginPage.loginAdmin();
 	} );
 
@@ -57,7 +59,7 @@ describe( 'PageTriage Toolbar', () => {
 	} );
 
 	it( 'should allow user to add a maintainence tag to a page and send a note to user', async () => {
-		await Toolbar.open( articleName );
+		await Toolbar.open( articleNameWithNote );
 		await browser.waitUntil( async () => await Toolbar.toolbarBody.waitForDisplayed() );
 
 		await browser.waitUntil( async () => await Toolbar.tagToolIcon.waitForDisplayed() );

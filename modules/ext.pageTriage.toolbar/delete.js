@@ -738,7 +738,25 @@ module.exports = ToolView.extend( {
 			.then( $.when.apply( null, promises ) )
 			.then( this.fetchArticleContent.bind( this ) )
 			.then( ( wikitext ) => {
-				actionQueue.delete = { tags: this.selectedTag };
+				const skippedTags = [];
+				const tagsToApply = {};
+				for ( const key of Object.keys( this.selectedTag ) ) {
+					const tagObj = this.selectedTag[ key ];
+					if ( tagObj.tag && tagInserter.hasTemplate( wikitext, tagObj.tag ) ) {
+						skippedTags.push( tagObj.tag );
+					} else {
+						tagsToApply[ key ] = tagObj;
+					}
+				}
+				if ( this.objectPropCount( tagsToApply ) === 0 ) {
+					this.handleError(
+						mw.msg( 'pagetriage-tag-already-present', skippedTags.length, skippedTags.join( ', ' ) ),
+						true
+					);
+					return;
+				}
+
+				actionQueue.delete = { tags: tagsToApply };
 
 				const rootPromise = $.Deferred();
 				// End of the promise chain.
@@ -746,8 +764,8 @@ module.exports = ToolView.extend( {
 
 				const isXFD = !this.deletionTagsOptions[ this.selectedCat ].multiple;
 				if ( isXFD ) {
-					for ( const key in this.selectedTag ) {
-						const tagObj = this.selectedTag[ key ];
+					for ( const key in tagsToApply ) {
+						const tagObj = tagsToApply[ key ];
 						if ( tagObj.prefix ) {
 							// Handles writing to the XFD daily log and creating the XFD page. This
 							// code path is only used for the XFD options (AFD for mainspace, RFD
@@ -765,9 +783,9 @@ module.exports = ToolView.extend( {
 				// deletion options (CSD, PROD, XFD).
 				// Functions using `this` must be bound to avoid losing context.
 				chainEnd = chainEnd
-					.then( this.tagPage.bind( this, wikitext ) )
+					.then( this.tagPage.bind( this, wikitext, tagsToApply ) )
 					.then( this.notifyUser.bind( this ) )
-					.then( this.tagTalkPage.bind( this ) )
+					.then( this.tagTalkPage.bind( this, tagsToApply ) )
 					.then( mw.pageTriage.actionQueue.runAndRefresh.bind(
 						null, actionQueue, this.getDataForActionQueue()
 					) )
@@ -792,7 +810,7 @@ module.exports = ToolView.extend( {
 							};
 						}
 					} )
-					.catch( this.handleError );
+					.catch( ( err ) => this.handleError( err ) );
 
 				// Begin running the promise chain.
 				rootPromise.resolve();
@@ -812,27 +830,31 @@ module.exports = ToolView.extend( {
 	 * Handle an error occurring after submit
 	 *
 	 * @param {string|Error} msg The message to display
+	 * @param {boolean} [skipTracking] Don't log to error dashboards. For expected
+	 * UX cases such as every selected tag already being on the page.
 	 */
-	handleError: function ( msg ) {
+	handleError: function ( msg, skipTracking ) {
 		if ( msg instanceof Error ) {
 			msg = msg.message;
 		}
 
-		// Log error to WikimediaEvents
-		const skin = mw.config.get( 'skin' );
-		const dumpOfTag = JSON.stringify( this.selectedTag );
-		let errorMessage = 'PageTriage error type: ' + msg + '\n' +
-			'File: delete.js\n' +
-			'Page name: ' + pageName + '\n' +
-			'Skin: ' + skin + '\n' +
-			'Dump of this.selectedTag: ' + dumpOfTag;
-		errorMessage = errorMessage.slice( 0, 1000 );
-		mw.log.error( errorMessage );
-		const err = new Error( errorMessage );
-		err.name = 'pageTriageHandleError';
-		const dbname = mw.config.get( 'wgDBname' );
-		mw.track( 'counter.MediaWiki.extension.PageTriage.' + dbname + '.viewsToolbar.delete.error' );
-		mw.track( 'stats.mediawiki_pagetriage_viewstoolbar_delete_error_total', 1, { wiki: dbname } );
+		if ( !skipTracking ) {
+			// Log error to WikimediaEvents
+			const skin = mw.config.get( 'skin' );
+			const dumpOfTag = JSON.stringify( this.selectedTag );
+			let errorMessage = 'PageTriage error type: ' + msg + '\n' +
+				'File: delete.js\n' +
+				'Page name: ' + pageName + '\n' +
+				'Skin: ' + skin + '\n' +
+				'Dump of this.selectedTag: ' + dumpOfTag;
+			errorMessage = errorMessage.slice( 0, 1000 );
+			mw.log.error( errorMessage );
+			const err = new Error( errorMessage );
+			err.name = 'pageTriageHandleError';
+			const dbname = mw.config.get( 'wgDBname' );
+			mw.track( 'counter.MediaWiki.extension.PageTriage.' + dbname + '.viewsToolbar.delete.error' );
+			mw.track( 'stats.mediawiki_pagetriage_viewstoolbar_delete_error_total', 1, { wiki: dbname } );
+		}
 
 		$.removeSpinner( 'delete-spinner' );
 		// Re-enable the submit button (in case it is disabled)
@@ -845,13 +867,15 @@ module.exports = ToolView.extend( {
 	/**
 	 * Add tag template (if relevant) to the article's talk page
 	 *
+	 * @param {Object} [tags] Tags to apply. Defaults to the current selection.
 	 * @return {jQuery.Promise} A promise. Resolves if successful, rejects with
 	 * an `Error` if not.
 	 */
-	tagTalkPage: function () {
+	tagTalkPage: function ( tags ) {
+		const tagsToApply = tags || this.selectedTag;
 		// eslint-disable-next-line no-unreachable-loop
-		for ( const key in this.selectedTag ) {
-			const tagObj = this.selectedTag[ key ];
+		for ( const key in tagsToApply ) {
+			const tagObj = tagsToApply[ key ];
 			if ( !( 'articletalkpagenotiftpl' in tagObj ) ||
 				tagObj.articletalkpagenotiftpl === '' ) {
 				break;
@@ -871,7 +895,7 @@ module.exports = ToolView.extend( {
 				tags: 'pagetriage'
 			} )
 				.catch( ( errorCode ) => {
-					throw new Error( errorCode + mw.msg( 'pagetriage-tagging-error' ) );
+					throw new Error( errorCode + mw.msg( 'pagetriage-tagging-error', 1 ) );
 				} );
 		}
 	},
@@ -900,13 +924,15 @@ module.exports = ToolView.extend( {
 	 * Add deletion tag template to the page
 	 *
 	 * @param {string} wikitext The current wikitext of the page
+	 * @param {Object} [tags] Tags to apply. Defaults to the current selection.
 	 * @return {jQuery.Promise|void} A promise. Resolves if successful, rejects with
 	 * an `Error` if not. The resolved promise is an Object with the key `tagCount`
 	 * (the number of tags added to the page) and the key `tagKey` (the key
 	 * of the tag added to the page).
 	 */
-	tagPage: function ( wikitext ) {
-		const count = this.objectPropCount( this.selectedTag );
+	tagPage: function ( wikitext, tags ) {
+		const selectedTag = tags || this.selectedTag;
+		const count = this.objectPropCount( selectedTag );
 
 		if ( count === 0 ) {
 			return;
@@ -919,10 +945,10 @@ module.exports = ToolView.extend( {
 		// and as a placeholder valid value that is passed to notifyUser and addToLog
 		// since their code depends on having a valid key.
 		// TODO (sohom): Remove that dependency
-		const singleKey = Object.keys( this.selectedTag )[ 0 ];
+		const singleKey = Object.keys( selectedTag )[ 0 ];
 
 		if ( count === 1 ) {
-			const tagObj = this.selectedTag[ singleKey ];
+			const tagObj = selectedTag[ singleKey ];
 			let tempTag = tagObj.tag;
 			const tagging = specialDeletionTagging[ tagObj.tag ];
 
@@ -953,8 +979,8 @@ module.exports = ToolView.extend( {
 			let tagText = '';
 			let paramsText = '';
 
-			for ( const key in this.selectedTag ) {
-				const tagObj = this.selectedTag[ key ];
+			for ( const key in selectedTag ) {
+				const tagObj = selectedTag[ key ];
 
 				// Blank the page when deletion tagging if requested,
 				// e.g. {{speedy deletion-attack}}, see T381226.
@@ -995,7 +1021,7 @@ module.exports = ToolView.extend( {
 				if ( errorCode === 'pagetriage-tag-deletion-error' ) {
 					throw new Error( mw.msg( 'pagetriage-tag-deletion-error' ) );
 				}
-				throw new Error( mw.msg( 'pagetriage-tagging-error' ) );
+				throw new Error( mw.msg( 'pagetriage-tagging-error', count ) );
 			} );
 	},
 

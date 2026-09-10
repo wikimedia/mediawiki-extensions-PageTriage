@@ -140,4 +140,35 @@ describe( 'DeleteToolView', () => {
 				.toBe( '{{rfd|content=#REDIRECT [[Foo]]}}' );
 		} );
 	} );
+
+	test( 'T41319: does not re-tag when the deletion template is already present', () => {
+		const postWithToken = jest.spyOn( mw.Api.prototype, 'postWithToken' )
+			.mockResolvedValue( {} );
+		const toolbar = new DeleteToolView( { eventBus, model } );
+		toolbar.deletionTagsOptions = {
+			proposeddeletion: {
+				multiple: false,
+				reviewed: '0'
+			}
+		};
+		toolbar.selectedCat = 'proposeddeletion';
+		toolbar.selectedTag = {
+			blpprod: {
+				tag: 'blp-prod',
+				params: {}
+			}
+		};
+
+		jest.spyOn( toolbar, 'fetchArticleContent' )
+			.mockResolvedValue( '{{subst:blp-prod}}\nLead.' );
+		const handleError = jest.spyOn( toolbar, 'handleError' ).mockImplementation( () => {
+		} );
+		const tagPage = jest.spyOn( toolbar, 'tagPage' );
+
+		return toolbar.submit().then( () => {
+			expect( handleError ).toHaveBeenCalled();
+			expect( tagPage ).not.toHaveBeenCalled();
+			expect( postWithToken ).not.toHaveBeenCalled();
+		} );
+	} );
 } );

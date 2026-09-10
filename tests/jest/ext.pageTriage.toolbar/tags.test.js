@@ -306,4 +306,151 @@ describe( 'TagToolView', () => {
 			);
 		} );
 	} );
+
+	test( 'T41319: does not re-add a tag that is already on the page', () => {
+		const model = new Article( {
+			pageId: 5,
+			includeHistory: true
+		} );
+
+		const tagsOptions = {
+			sources: {
+				tags: {
+					disputed: {
+						label: 'Accuracy issues',
+						tag: 'disputed',
+						desc: 'This page has questionable factual accuracy.',
+						params: {},
+						position: 'top',
+						multiple: true
+					}
+				}
+			}
+		};
+
+		jest.spyOn( TagToolView.prototype, 'fetchArticleContent' )
+			.mockImplementation( () => Promise.resolve( '{{Disputed}}\ntest' ) );
+
+		const applyTags = jest.spyOn( TagToolView.prototype, 'applyTags' ).mockImplementation( () => {
+		} );
+		const handleError = jest.spyOn( TagToolView.prototype, 'handleError' ).mockImplementation( () => {
+		} );
+
+		const toolbar = new TagToolView( {
+			tagsOptions: JSON.parse( JSON.stringify( tagsOptions ) ),
+			model
+		} );
+
+		toolbar.selectedTag = {
+			sources: tagsOptions.sources.tags
+		};
+
+		return toolbar.submit().then( () => {
+			expect( applyTags ).not.toHaveBeenCalled();
+			expect( handleError ).toHaveBeenCalled();
+		} );
+	} );
+
+	test( 'T41319: skips an existing tag and still adds a new one', () => {
+		const model = new Article( {
+			pageId: 5,
+			includeHistory: true
+		} );
+
+		const tagsOptions = {
+			sources: {
+				tags: {
+					disputed: {
+						label: 'Accuracy issues',
+						tag: 'disputed',
+						desc: 'This page has questionable factual accuracy.',
+						params: {},
+						position: 'top',
+						multiple: true
+					},
+					advert: {
+						label: 'Advert',
+						tag: 'advert',
+						desc: 'This page is written like an advertisement.',
+						params: {
+							date: {
+								label: 'date',
+								input: 'required',
+								type: 'textarea',
+								value: 'today'
+							}
+						},
+						position: 'top',
+						multiple: true
+					}
+				}
+			}
+		};
+
+		jest.spyOn( TagToolView.prototype, 'fetchArticleContent' )
+			.mockImplementation( () => Promise.resolve( '{{Disputed}}\ntest' ) );
+
+		const applyTags = jest.spyOn( TagToolView.prototype, 'applyTags' ).mockImplementation( () => {
+		} );
+
+		const toolbar = new TagToolView( {
+			tagsOptions: JSON.parse( JSON.stringify( tagsOptions ) ),
+			model
+		} );
+
+		toolbar.selectedTag = {
+			sources: tagsOptions.sources.tags
+		};
+
+		return toolbar.submit().then( () => {
+			expect( applyTags ).toBeCalledWith(
+				'{{Multiple issues|\n{{advert|date=today}}\n{{Disputed}}\n}}\ntest\n',
+				[ 'advert' ]
+			);
+		} );
+	} );
+
+	test( 'T41588: skips stub when any stub template is already on the page', () => {
+		const model = new Article( {
+			pageId: 5,
+			includeHistory: true
+		} );
+
+		const tagsOptions = {
+			categories: {
+				tags: {
+					stub: {
+						label: 'Stub',
+						tag: 'stub',
+						desc: 'This page is very short.',
+						params: {},
+						position: 'bottom',
+						multiple: false
+					}
+				}
+			}
+		};
+
+		jest.spyOn( TagToolView.prototype, 'fetchArticleContent' )
+			.mockImplementation( () => Promise.resolve( 'Lead.\n\n{{France-stub}}' ) );
+
+		const applyTags = jest.spyOn( TagToolView.prototype, 'applyTags' ).mockImplementation( () => {
+		} );
+		const handleError = jest.spyOn( TagToolView.prototype, 'handleError' ).mockImplementation( () => {
+		} );
+
+		const toolbar = new TagToolView( {
+			tagsOptions: JSON.parse( JSON.stringify( tagsOptions ) ),
+			model
+		} );
+
+		toolbar.selectedTag = {
+			categories: tagsOptions.categories.tags
+		};
+
+		return toolbar.submit().then( () => {
+			expect( applyTags ).not.toHaveBeenCalled();
+			expect( handleError ).toHaveBeenCalled();
+		} );
+	} );
 } );

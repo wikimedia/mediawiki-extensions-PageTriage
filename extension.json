@@ -408,6 +408,7 @@
 				"pagetriage-categories",
 				"pagetriage-add-tag-confirmation",
 				"pagetriage-tag-deletion-error",
+				"pagetriage-tag-already-present",
 				"pagetriage-tag-previousdeletion-error",
 				"pagetriage-toolbar-close",
 				"pagetriage-toolbar-minimize",

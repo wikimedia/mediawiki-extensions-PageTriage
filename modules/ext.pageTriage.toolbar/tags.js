@@ -587,12 +587,23 @@ module.exports = ToolView.extend( {
 			const categoryTags = [];
 			const bottomTags = [];
 			const tagList = [];
+			// skip tags if they were already added in a previous edit
+			const skippedTags = [];
 			for ( const cat in this.selectedTag ) {
 				for ( const tagKey in this.selectedTag[ cat ] ) {
 					if ( processed[ tagKey ] ) {
 						continue;
 					}
 					const tagObj = this.selectedTag[ cat ][ tagKey ];
+
+					if ( tagInserter.hasTemplate( wikitext, tagObj.tag ) ) {
+						skippedTags.push( tagObj.tag );
+						processed[ tagKey ] = true;
+						if ( cat === 'all' ) {
+							processed[ tagObj.destKey ] = true;
+						}
+						continue;
+					}
 
 					// Final check on required params
 					for ( const param in tagObj.params ) {
@@ -628,6 +639,15 @@ module.exports = ToolView.extend( {
 					}
 					tagList.push( tagObj.tag.toLowerCase() );
 				}
+			}
+
+			if ( tagList.length === 0 ) {
+				// Already-present tags are a user-facing notice, not an application error.
+				this.handleError(
+					mw.msg( 'pagetriage-tag-already-present', skippedTags.length, skippedTags.join( ', ' ) ),
+					true
+				);
+				return;
 			}
 
 			if ( nonMultipleTopTags.length ) {
@@ -733,25 +753,29 @@ module.exports = ToolView.extend( {
 	 * Handle an error occurring after submit
 	 *
 	 * @param {string} msg The error message to display
+	 * @param {boolean} [skipTracking] Don't log to error dashboards. For expected
+	 * UX cases such as every selected tag already being on the page.
 	 */
-	handleError: function ( msg ) {
-		// Log error to WikimediaEvents
-		const pageName = mw.config.get( 'wgPageName' );
-		const skin = mw.config.get( 'skin' );
-		const dumpOfTag = JSON.stringify( this.selectedTag );
-		let errorMessage = 'PageTriage error type: ' + msg + '\n' +
-			'File: tags.js\n' +
-			'Page name: ' + pageName + '\n' +
-			'Skin: ' + skin + '\n' +
-			'Dump of this.selectedTag: ' + dumpOfTag;
-		errorMessage = errorMessage.slice( 0, 1000 );
-		mw.log.error( errorMessage );
-		const err = new Error( errorMessage );
-		err.name = 'pageTriageHandleError';
-		mw.errorLogger.logError( err, 'error.pagetraige' );
-		const dbname = mw.config.get( 'wgDBname' );
-		mw.track( 'counter.MediaWiki.extension.PageTriage.' + dbname + '.viewsToolbar.tags.error' );
-		mw.track( 'stats.mediawiki_pagetriage_viewstoolbar_tags_error_total', 1, { wiki: dbname } );
+	handleError: function ( msg, skipTracking ) {
+		if ( !skipTracking ) {
+			// Log error to WikimediaEvents
+			const pageName = mw.config.get( 'wgPageName' );
+			const skin = mw.config.get( 'skin' );
+			const dumpOfTag = JSON.stringify( this.selectedTag );
+			let errorMessage = 'PageTriage error type: ' + msg + '\n' +
+				'File: tags.js\n' +
+				'Page name: ' + pageName + '\n' +
+				'Skin: ' + skin + '\n' +
+				'Dump of this.selectedTag: ' + dumpOfTag;
+			errorMessage = errorMessage.slice( 0, 1000 );
+			mw.log.error( errorMessage );
+			const err = new Error( errorMessage );
+			err.name = 'pageTriageHandleError';
+			mw.errorLogger.logError( err, 'error.pagetraige' );
+			const dbname = mw.config.get( 'wgDBname' );
+			mw.track( 'counter.MediaWiki.extension.PageTriage.' + dbname + '.viewsToolbar.tags.error' );
+			mw.track( 'stats.mediawiki_pagetriage_viewstoolbar_tags_error_total', 1, { wiki: dbname } );
+		}
 
 		$.removeSpinner( 'tag-spinner' );
 		// Re-enable the submit button (in case it is disabled)
