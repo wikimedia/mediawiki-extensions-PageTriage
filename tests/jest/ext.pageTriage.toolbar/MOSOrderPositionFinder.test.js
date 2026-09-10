@@ -89,6 +89,18 @@ describe( 'MOSOrderPositionFinder', () => {
 				'{{More citations needed|date=January 2024}}\n\nLead.'
 			).maintenanceTags ).toBe( 0 );
 		} );
+
+		test( 'matches {{Issues}} as a Multiple issues alias', () => {
+			expect( finder.getAllExistingSectionPositions(
+				'{{Issues|\n{{notability}}\n}}\n\nLead.'
+			).maintenanceTags ).toBe( 0 );
+		} );
+
+		test( 'matches a template with a space after {{', () => {
+			expect( finder.getAllExistingSectionPositions(
+				'{{ Multiple issues|\n{{notability}}\n}}\n\nLead.'
+			).maintenanceTags ).toBe( 0 );
+		} );
 	} );
 
 	describe( 'insertAtSection', () => {

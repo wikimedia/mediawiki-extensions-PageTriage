@@ -650,24 +650,12 @@ module.exports = ToolView.extend( {
 			}
 
 			if ( multipleTagsText ) {
-				const merged = tagInserter.mergeIntoWrapper(
+				wikitext = tagInserter.insertMaintenanceTags(
 					wikitext,
 					tagOptions.multiple,
-					multipleTagsText
+					multipleTagsText,
+					tagsArray.length
 				);
-				if ( merged !== wikitext ) {
-					wikitext = merged;
-				} else {
-					const shouldWrap = this.objectPropCount( multipleTags ) > 1;
-					const needle = shouldWrap ?
-						'{{' + tagOptions.multiple + '|' + multipleTagsText + '\n}}' :
-						multipleTagsText;
-					wikitext = tagInserter.insertAtMosSection(
-						wikitext,
-						needle,
-						'maintenanceTags'
-					);
-				}
 			}
 
 			if ( categoryTags.length ) {

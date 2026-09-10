@@ -1,5 +1,5 @@
 {
-	"*": "MOS:ORDER detection data used by MOSOrderPositionFinder.",
+	"*": "MOS:ORDER detection data used by MOSOrderPositionFinder. Redirects to wrapper templates (see Multiple issues and redirectCategoryShell) also live on the `name` objects, or in `aliases` for wrapper templates.",
 	"sectionOrder": [
 		"top",
 		"shortDescription",
@@ -73,10 +73,6 @@
 				"Lowercase title",
 				"Miscapitalization",
 				"Lowercase-user",
-				{
-					"*": "TODO (msk): rfd this. should probably target {{Technical reasons}} instead.",
-					"name": "Techlim"
-				},
 				"User lowercase",
 				"Lower case",
 				"Lowercase",
@@ -335,6 +331,7 @@
 				"Technical reasons",
 				"Technical redirect",
 				"Technical restrictions",
+				"Techlim",
 				"This",
 				"This article",
 				"This article is about",
@@ -503,8 +500,32 @@
 			"type": "templates",
 			"names": [
 				{
-					"*": "not from Twinkle",
-					"name": "Multiple issues"
+					"*": [
+						"not from Twinkle",
+						"https://en.wikipedia.org/w/index.php?title=Special:WhatLinksHere/Template:Multiple_issues&hidetrans=1&hidelinks=1"
+					],
+					"name": "Multiple issues",
+					"aliases": [
+						"Article issues",
+						"Articleissues",
+						"Issues",
+						"Many issues",
+						"Mi",
+						"Mult",
+						"Multi",
+						"Multi issue",
+						"Multi issues",
+						"Multiple",
+						"Multiple errors",
+						"Multiple issue",
+						"Multiple problems",
+						"Multipleissues",
+						"Multiples issues",
+						"Mult iss",
+						"Multple issues",
+						"Multissues",
+						"Various issues"
+					]
 				},
 				"Cleanup",
 				"Cleanup rewrite",
@@ -871,6 +892,46 @@
 		},
 		"bottom": {
 			"type": "end"
+		},
+		"redirectCategoryShell": {
+			"*": [
+				"https://en.wikipedia.org/w/index.php?title=Special:WhatLinksHere/Template:Redirect_category_shell&hidetrans=1&hidelinks=1"
+			],
+			"type": "templates",
+			"names": [
+				{
+					"name": "Redirect category shell",
+					"aliases": [
+						"R cat",
+						"R cat shell",
+						"R category shell",
+						"R catsh",
+						"R cs",
+						"R shell",
+						"Rcat",
+						"Rcat banner holder",
+						"Rcat shell",
+						"Rcatgroup",
+						"Rcatholder",
+						"Rcatsh",
+						"Rcatshell",
+						"Rcs",
+						"Red shell",
+						"Redirect banner shell",
+						"Redirect cat shell",
+						"Redirect category group",
+						"Redirect category holder",
+						"Redirect container",
+						"Redirect reason",
+						"Redirect reasons",
+						"Redirect shell",
+						"Redr",
+						"Rshell",
+						"This is a redirect",
+						"This is a redirect."
+					]
+				}
+			]
 		}
 	}
 }

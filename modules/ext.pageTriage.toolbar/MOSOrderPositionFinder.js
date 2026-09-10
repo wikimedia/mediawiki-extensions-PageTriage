@@ -283,6 +283,13 @@ class MOSOrderPositionFinder {
 				result.push( item );
 			} else if ( item && typeof item.name === 'string' ) {
 				result.push( item.name );
+				if ( Array.isArray( item.aliases ) ) {
+					for ( const alias of item.aliases ) {
+						if ( typeof alias === 'string' ) {
+							result.push( alias );
+						}
+					}
+				}
 			}
 		}
 		return result;
@@ -351,7 +358,7 @@ class MOSOrderPositionFinder {
 			);
 		}
 
-		const regExString = '\\{\\{(?:' +
+		const regExString = '\\{\\{\\s*(?:' +
 			alternatives.join( '|' ) +
 			')(?![ -\\|]section)';
 		// Don't match section maintenance tags, e.g. {{More citations needed section}}

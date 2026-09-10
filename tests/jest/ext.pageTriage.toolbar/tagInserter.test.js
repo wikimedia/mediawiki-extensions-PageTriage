@@ -53,9 +53,49 @@ PageTriage is the best.
 			` );
 		} );
 
+		test( 'adds a pipe when the wrapper has no parameters', () => {
+			expect( tagInserter.mergeIntoWrapper(
+				'{{Multiple issues}}\n\nLead.\n',
+				'Multiple issues',
+				'{{advert}}'
+			) ).toBe(
+				'{{Multiple issues|\n{{advert}}\n}}\n\nLead.\n'
+			);
+		} );
+
 		test( 'returns the original wikitext when the wrapper is absent', () => {
 			expect( tagInserter.mergeIntoWrapper( 'Txt', 'Multiple issues', '{{advert}}' ) )
 				.toBe( 'Txt' );
+		} );
+
+		test( 'finds a wrapper regardless of template-name case', () => {
+			expect( tagInserter.mergeIntoWrapper(
+				'{{multiple issues|\n{{notability}}\n}}\n\nLead.\n',
+				'Multiple issues',
+				'{{advert}}'
+			) ).toBe(
+				'{{multiple issues|\n{{notability}}\n{{advert}}\n}}\n\nLead.\n'
+			);
+		} );
+
+		test( 'merges into {{Issues}} as a Multiple issues alias', () => {
+			expect( tagInserter.mergeIntoWrapper(
+				'{{Issues|\n{{notability}}\n}}\n\nLead.\n',
+				'Multiple issues',
+				'{{advert}}'
+			) ).toBe(
+				'{{Issues|\n{{notability}}\n{{advert}}\n}}\n\nLead.\n'
+			);
+		} );
+
+		test( 'merges into {{This is a redirect}} as a Redirect category shell alias', () => {
+			expect( tagInserter.mergeIntoWrapper(
+				'#REDIRECT [[Hello]]\n{{This is a redirect|\n{{R from move}}\n}}',
+				'Redirect category shell',
+				'\n{{R from initialism}}'
+			) ).toBe(
+				'#REDIRECT [[Hello]]\n{{This is a redirect|\n{{R from move}}\n{{R from initialism}}\n}}'
+			);
 		} );
 	} );
 
@@ -141,6 +181,125 @@ PageTriage is the best.
 				'\n{{R from initialism}}'
 			) ).toBe(
 				'#REDIRECT [[Hello]]\n{{Redirect category shell|\n{{R from move}}\n{{R from initialism}}\n}}'
+			);
+		} );
+
+		test( 'wraps a standalone R-tag together with newly added redirect tags', () => {
+			expect( tagInserter.insertRedirectTags(
+				'#REDIRECT [[Hello]]\n{{R from move}}',
+				'Redirect category shell',
+				'\n{{R from initialism}}'
+			) ).toBe(
+				'#REDIRECT [[Hello]]\n{{Redirect category shell|\n{{R from initialism}}\n{{R from move}}\n}}'
+			);
+		} );
+
+		test( 'wraps an R-tag on the same line as #REDIRECT', () => {
+			expect( tagInserter.insertRedirectTags(
+				'#REDIRECT [[Hello]] {{R from move}}',
+				'Redirect category shell',
+				'\n{{R from initialism}}'
+			) ).toBe(
+				'#REDIRECT [[Hello]]\n{{Redirect category shell|\n{{R from initialism}}\n{{R from move}}\n}}'
+			);
+		} );
+
+		test( 'does not escape a same-line non-absorbable template after ]]', () => {
+			expect( tagInserter.insertRedirectTags(
+				'#REDIRECT [[Foobar]] {{unknown template}}',
+				'Redirect category shell',
+				'\n{{R printworthy}}'
+			) ).toBe(
+				'#REDIRECT [[Foobar]]\n{{Redirect category shell|\n{{R printworthy}}\n}}\n{{unknown template}}'
+			);
+		} );
+
+		test( 'does not prefix a same-line comment with a space after ]]', () => {
+			expect( tagInserter.insertRedirectTags(
+				'#REDIRECT [[Foobar]] <!-- comment -->',
+				'Redirect category shell',
+				'\n{{R printworthy}}'
+			) ).toBe(
+				'#REDIRECT [[Foobar]]\n{{Redirect category shell|\n{{R printworthy}}\n}}\n<!-- comment -->'
+			);
+		} );
+	} );
+
+	describe( 'insertMaintenanceTags', () => {
+		test( 'T361988: wraps an existing standalone tag into a new Multiple issues', () => {
+			expect( tagInserter.insertMaintenanceTags(
+				'{{Disputed}}\ntest',
+				'Multiple issues',
+				'\n{{advert|date=today}}\n{{all plot|date=today}}',
+				2
+			) ).toBe(
+				'{{Multiple issues|\n{{advert|date=today}}\n{{all plot|date=today}}\n{{Disputed}}\n}}\ntest\n'
+			);
+		} );
+
+		test( 'merges into a parameterless {{Multiple issues}}', () => {
+			expect( tagInserter.insertMaintenanceTags(
+				'{{Multiple issues}}\ntest',
+				'Multiple issues',
+				'{{advert}}',
+				1
+			) ).toBe(
+				'{{Multiple issues|\n{{advert}}\n}}\ntest'
+			);
+		} );
+
+		test( 'T323883: appends a third tag inside an existing Multiple issues', () => {
+			expect( tagInserter.insertMaintenanceTags(
+				'{{Multiple issues|\n{{advert|date=today}}\n{{all plot|date=today}}\n}}\n\ntest\n',
+				'Multiple issues',
+				'{{disputed|date=today}}',
+				1
+			) ).toBe(
+				'{{Multiple issues|\n{{advert|date=today}}\n{{all plot|date=today}}\n{{disputed|date=today}}\n}}\n\ntest\n'
+			);
+		} );
+
+		test( 'wraps one existing standalone tag together with one newly added tag', () => {
+			expect( tagInserter.insertMaintenanceTags(
+				'{{Disputed}}\ntest',
+				'Multiple issues',
+				'{{advert|date=today}}',
+				1
+			) ).toBe(
+				'{{Multiple issues|\n{{advert|date=today}}\n{{Disputed}}\n}}\ntest\n'
+			);
+		} );
+
+		test( 'merges into {{Multiple issues|section=yes}} instead of nesting another wrapper', () => {
+			expect( tagInserter.insertMaintenanceTags(
+				'{{Multiple issues|section=yes|\n{{advert}}\n}}\n',
+				'Multiple issues',
+				'{{peacock}}',
+				1
+			) ).toBe(
+				'{{Multiple issues|section=yes|\n{{advert}}\n{{peacock}}\n}}\n'
+			);
+		} );
+
+		test( 'merges into {{ Multiple issues}} with a space after {{', () => {
+			expect( tagInserter.insertMaintenanceTags(
+				'{{ Multiple issues|\n{{advert}}\n}}\n',
+				'Multiple issues',
+				'{{peacock}}',
+				1
+			) ).toBe(
+				'{{ Multiple issues|\n{{advert}}\n{{peacock}}\n}}\n'
+			);
+		} );
+
+		test( 'does not pull a multiple:false tag into Multiple issues', () => {
+			expect( tagInserter.insertMaintenanceTags(
+				'{{Rough translation}}\ntest',
+				'Multiple issues',
+				'\n{{advert|date=today}}\n{{all plot|date=today}}',
+				2
+			) ).toBe(
+				'{{Multiple issues|\n{{advert|date=today}}\n{{all plot|date=today}}\n}}\n{{Rough translation}}\ntest\n'
 			);
 		} );
 	} );
