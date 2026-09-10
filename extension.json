@@ -32,8 +32,18 @@
 				"ContentLanguage"
 			]
 		},
-		"pagetriagetagcopyvio": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageTagCopyvio",
-		"pagetriagetagging": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageTagging"
+		"pagetriagetagcopyvio": {
+			"class": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageTagCopyvio",
+			"services": [
+				"RevisionStore"
+			]
+		},
+		"pagetriagetagging": {
+			"class": "MediaWiki\\Extension\\PageTriage\\Api\\ApiPageTriageTagging",
+			"services": [
+				"ContentLanguage"
+			]
+		}
 	},
 	"APIPropModules": {
 		"isreviewed": {

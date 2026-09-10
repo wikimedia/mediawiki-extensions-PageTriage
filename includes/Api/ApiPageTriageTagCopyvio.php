@@ -3,23 +3,31 @@
 namespace MediaWiki\Extension\PageTriage\Api;
 
 use MediaWiki\Api\ApiBase;
+use MediaWiki\Api\ApiMain;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Logging\ManualLogEntry;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\Rdbms\IDatabase;
 
 class ApiPageTriageTagCopyvio extends ApiBase {
 
+	public function __construct(
+		ApiMain $mainModule,
+		string $moduleName,
+		private readonly RevisionStore $revisionStore,
+	) {
+		parent::__construct( $mainModule, $moduleName );
+	}
+
 	public function execute() {
 		$this->checkUserRightsAny( 'pagetriage-copyvio' );
 
 		$params = $this->extractRequestParams();
-		$revisionStore = MediaWikiServices::getInstance()->getRevisionStore();
-		$revision = $revisionStore->getRevisionById( $params['revid'] );
+		$revision = $this->revisionStore->getRevisionById( $params['revid'] );
 		if ( !$revision ) {
 			$this->dieWithError( [ 'apierror-nosuchrevid', $params['revid'] ] );
 		}

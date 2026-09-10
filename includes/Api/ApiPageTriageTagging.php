@@ -7,18 +7,24 @@ use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
+use MediaWiki\Language\Language;
 use MediaWiki\Logging\ManualLogEntry;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\DerivativeRequest;
 use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiPageTriageTagging extends ApiBase {
 
+	public function __construct(
+		ApiMain $mainModule,
+		string $moduleName,
+		private readonly Language $contentLanguage,
+	) {
+		parent::__construct( $mainModule, $moduleName );
+	}
+
 	public function execute() {
 		$config = $this->getConfig();
-
-		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
 
 		$params = $this->extractRequestParams();
 
@@ -38,7 +44,7 @@ class ApiPageTriageTagging extends ApiBase {
 		];
 
 		// Parse tags into a human readable list for the edit summary
-		$tags = $contLang->commaList( $params['taglist'] );
+		$tags = $this->contentLanguage->commaList( $params['taglist'] );
 
 		// Check if the page has been nominated for deletion
 		if ( $params['deletion'] ) {
@@ -96,7 +102,7 @@ class ApiPageTriageTagging extends ApiBase {
 
 		$api->execute();
 
-		$note = $contLang->truncateForDatabase( $params['note'], 150 );
+		$note = $this->contentLanguage->truncateForDatabase( $params['note'], 150 );
 
 		// logging to the logging table
 		if ( $params['taglist'] ) {
