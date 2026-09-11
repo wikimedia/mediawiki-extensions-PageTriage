@@ -11,7 +11,6 @@ namespace MediaWiki\Extension\PageTriage\Maintenance;
 use MediaWiki\Extension\PageTriage\PageTriageServices;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Maintenance\Maintenance;
-use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\IReadableDatabase;
@@ -154,7 +153,7 @@ class PurgeOldPages extends Maintenance {
 		}
 
 		$startId = $idRow->max_id + 1;
-		$queueManager = PageTriageServices::wrap( MediaWikiServices::getInstance() )
+		$queueManager = PageTriageServices::wrap( $this->getServiceContainer() )
 			->getQueueManager();
 
 		while ( $count === $this->getBatchSize() ) {
