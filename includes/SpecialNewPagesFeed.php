@@ -5,11 +5,11 @@ namespace MediaWiki\Extension\PageTriage;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Html\Html;
 use MediaWiki\Html\TemplateParser;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\Options\UserOptionsLookup;
+use MediaWiki\User\TempUser\TempUserConfig;
 
 /**
  * This file defines the SpecialNewPagesFeed class which handles the functionality for the
@@ -20,6 +20,7 @@ use MediaWiki\User\Options\UserOptionsLookup;
  */
 class SpecialNewPagesFeed extends SpecialPage {
 	public function __construct(
+		private readonly TempUserConfig $tempUserConfig,
 		private readonly UserOptionsLookup $userOptionsLookup,
 	) {
 		parent::__construct( 'NewPagesFeed' );
@@ -108,7 +109,7 @@ class SpecialNewPagesFeed extends SpecialPage {
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' ) ) {
 			return;
 		}
-		if ( !MediaWikiServices::getInstance()->getTempUserConfig()->isKnown() ) {
+		if ( !$this->tempUserConfig->isKnown() ) {
 			return;
 		} else {
 			$authority = $out->getAuthority();

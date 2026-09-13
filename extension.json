@@ -138,6 +138,7 @@
 		"NewPagesFeed": {
 			"class": "MediaWiki\\Extension\\PageTriage\\SpecialNewPagesFeed",
 			"services": [
+				"TempUserConfig",
 				"UserOptionsLookup"
 			]
 		}

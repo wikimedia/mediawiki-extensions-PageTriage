@@ -25,8 +25,11 @@ class SpecialNewPagesFeedTest extends SpecialPageTestBase {
 	 * @return SpecialPage
 	 */
 	protected function newSpecialPage() {
-		$userOptionsLookup = $this->getServiceContainer()->getUserOptionsLookup();
-		return new SpecialNewPagesFeed( $userOptionsLookup );
+		$services = $this->getServiceContainer();
+		return new SpecialNewPagesFeed(
+			$services->getTempUserConfig(),
+			$services->getUserOptionsLookup()
+		);
 	}
 
 	public function testPageLoads() {
@@ -45,7 +48,7 @@ class SpecialNewPagesFeedTest extends SpecialPageTestBase {
 
 	public function testShowIpModuleDoesNotLoadIfNoCheckUserExtension() {
 		$this->disableAutoCreateTempUser();
-		$page = new SpecialNewPagesFeed( $this->getServiceContainer()->getUserOptionsLookup() );
+		$page = $this->newSpecialPage();
 
 		$output = RequestContext::getMain()->getOutput();
 		$page->execute( '' );
@@ -75,7 +78,7 @@ class SpecialNewPagesFeedTest extends SpecialPageTestBase {
 		// user has checkuser-temporary-account-no-preference permission
 		$testAuthority = $this->mockRegisteredAuthorityWithPermissions(
 			[ 'checkuser-temporary-account-no-preference' ] );
-		$page = new SpecialNewPagesFeed( $mediaWikiServices->getUserOptionsLookup() );
+		$page = $this->newSpecialPage();
 		$requestContext = RequestContext::getMain();
 		$requestContext->setAuthority( $testAuthority );
 		$output = $requestContext->getOutput();
@@ -103,7 +106,7 @@ class SpecialNewPagesFeedTest extends SpecialPageTestBase {
 		// user has no permissions
 		$testAuthority = $this->mockRegisteredAuthorityWithPermissions(
 			[] );
-		$page = new SpecialNewPagesFeed( $mediaWikiServices->getUserOptionsLookup() );
+		$page = $this->newSpecialPage();
 		$requestContext = RequestContext::getMain();
 		$requestContext->setAuthority( $testAuthority );
 		$output = $requestContext->getOutput();
@@ -134,7 +137,7 @@ class SpecialNewPagesFeedTest extends SpecialPageTestBase {
 			[ 'checkuser-temporary-account-no-preference' ]
 		);
 		$testAuthority = $this->mockUserAuthorityWithBlock( $testAuthority->getUser(), $block );
-		$page = new SpecialNewPagesFeed( $mediaWikiServices->getUserOptionsLookup() );
+		$page = $this->newSpecialPage();
 		$requestContext = RequestContext::getMain();
 		$requestContext->setAuthority( $testAuthority );
 		$output = $requestContext->getOutput();
@@ -168,7 +171,7 @@ class SpecialNewPagesFeedTest extends SpecialPageTestBase {
 			'checkuser-temporary-account-enable',
 			false
 		);
-		$page = new SpecialNewPagesFeed( $mediaWikiServices->getUserOptionsLookup() );
+		$page = $this->newSpecialPage();
 		$requestContext = RequestContext::getMain();
 		$requestContext->setAuthority( $testAuthority );
 		$output = $requestContext->getOutput();
