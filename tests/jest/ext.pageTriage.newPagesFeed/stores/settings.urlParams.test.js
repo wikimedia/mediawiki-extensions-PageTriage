@@ -114,9 +114,9 @@ describe( 'settings store URL params', () => {
 		expect( settings.controlMenuOpen ).toBe( false );
 		expect( settings.immediate.queueMode ).toBe( 'npp' );
 		expect( settings.applied.nppFilter ).toBe( 'username' );
-		expect( settings.applied.nppFilterUser ).toBe( 'Jimbo Wales' );
-		expect( settings.applied.afcFilterUser ).toBe( 'Jimbo Wales' );
-		expect( settings.params.username ).toBe( 'Jimbo Wales' );
+		expect( settings.applied.nppFilterUser ).toEqual( [ 'Jimbo Wales' ] );
+		expect( settings.applied.afcFilterUser ).toEqual( [ 'Jimbo Wales' ] );
+		expect( settings.params.username ).toEqual( [ 'Jimbo Wales' ] );
 		expect( saveOptionSpy ).not.toHaveBeenCalled();
 		expect( mw.user.options.set ).not.toHaveBeenCalled();
 	} );
@@ -129,7 +129,7 @@ describe( 'settings store URL params', () => {
 		settings.updateImmediate( 'queueMode', 'afc' );
 
 		expect( settings.immediate.queueMode ).toBe( 'afc' );
-		expect( settings.params.username ).toBe( 'Alice' );
+		expect( settings.params.username ).toEqual( [ 'Alice' ] );
 		expect( settings.applied.afcFilter ).toBe( 'username' );
 		expect( saveOptionSpy ).not.toHaveBeenCalled();
 	} );
@@ -219,5 +219,51 @@ describe( 'settings store URL params', () => {
 		expect( settings.urlOverridesActive ).toBe( false );
 		expect( settings.applied.nppPredictedRating.stub ).toBe( false );
 		expect( settings.params.show_predicted_class_stub ).toBeUndefined();
+	} );
+
+	it( 'normalizes a saved string username', () => {
+		mw.user.options.get = jest.fn( ( key, fallback ) => {
+			switch ( key ) {
+				case 'timecorrection':
+					return 'ZoneInfo|-480|America/Los_Angeles';
+				case 'userjs-NewPagesFeedFilterOptions':
+					return JSON.stringify( {
+						mode: 'npp',
+						username: 'Jimbo_Wales'
+					} );
+				default:
+					return fallback || null;
+			}
+		} );
+		const { useSettingsStore } = require( '../../../../modules/ext.pageTriage.newPagesFeed/stores/settings.js' );
+		setActivePinia( createPinia() );
+		const stored = useSettingsStore();
+		stored.loadApiParams();
+
+		expect( stored.applied.nppFilter ).toBe( 'username' );
+		expect( stored.applied.nppFilterUser ).toEqual( [ 'Jimbo Wales' ] );
+	} );
+
+	it( 'does not treat an empty saved username array as an active filter', () => {
+		mw.user.options.get = jest.fn( ( key, fallback ) => {
+			switch ( key ) {
+				case 'timecorrection':
+					return 'ZoneInfo|-480|America/Los_Angeles';
+				case 'userjs-NewPagesFeedFilterOptions':
+					return JSON.stringify( {
+						mode: 'npp',
+						username: []
+					} );
+				default:
+					return fallback || null;
+			}
+		} );
+		const { useSettingsStore } = require( '../../../../modules/ext.pageTriage.newPagesFeed/stores/settings.js' );
+		setActivePinia( createPinia() );
+		const stored = useSettingsStore();
+		stored.loadApiParams();
+
+		expect( stored.applied.nppFilter ).toBe( 'all' );
+		expect( stored.applied.nppFilterUser ).toEqual( [] );
 	} );
 } );

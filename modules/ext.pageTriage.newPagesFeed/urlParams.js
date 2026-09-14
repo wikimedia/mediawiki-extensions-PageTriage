@@ -5,6 +5,8 @@
  * Handlers run in order after saved prefs are loaded and must not persist.
  */
 
+const { normalizeUsernames } = require( './usernames.js' );
+
 /**
  * @typedef {Object} UrlParamHandler
  * @property {string} name Query parameter name
@@ -103,13 +105,14 @@ const urlParamHandlers = [
 	},
 	{
 		name: 'username',
+		validate: ( value ) => normalizeUsernames( value ).length > 0,
 		apply: ( value, settings ) => {
-			const username = value.replace( /_/g, ' ' );
+			const usernames = normalizeUsernames( value );
 
 			settings.unsaved.nppFilter = 'username';
-			settings.unsaved.nppFilterUser = username;
+			settings.unsaved.nppFilterUser = usernames;
 			settings.unsaved.afcFilter = 'username';
-			settings.unsaved.afcFilterUser = username;
+			settings.unsaved.afcFilterUser = usernames;
 		}
 	},
 	{

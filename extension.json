@@ -438,6 +438,7 @@
 			"packageFiles": [
 				"ext.pageTriage.newPagesFeed/init.js",
 				"ext.pageTriage.newPagesFeed/namespaces.js",
+				"ext.pageTriage.newPagesFeed/usernames.js",
 				"ext.pageTriage.newPagesFeed/urlParams.js",
 				"ext.pageTriage.newPagesFeed/App.vue",
 				"ext.pageTriage.newPagesFeed/components/ControlSection.vue",
@@ -605,6 +606,7 @@
 				"pagetriage-filter-stat-learners",
 				"pagetriage-filter-stat-blocked",
 				"pagetriage-filter-stat-username",
+				"pagetriage-filter-stat-usernames",
 				"pagetriage-filter-stat-keyword",
 				"pagetriage-filter-stat-namespace",
 				"pagetriage-filter-stat-predicted-class",
@@ -634,6 +636,7 @@
 				"pagetriage-filter-predicted-issues-copyvio",
 				"pagetriage-filter-predicted-issues-none",
 				"pagetriage-filter-username-lookup-nousernamefound",
+				"pagetriage-filter-username-lookup-limit",
 				"pagetriage-new-page-patrol",
 				"pagetriage-articles-for-creation",
 				"pagetriage-filter-all",

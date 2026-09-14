@@ -675,9 +675,17 @@ class ApiPageTriageList extends ApiBase {
 		// only single tag search is allowed
 		foreach ( $searchableTags as $key => $val ) {
 			if ( isset( $opts[$key] ) && $opts[$key] ) {
+				$value = $val['val'] ?? $opts[$key];
+				if ( is_array( $value ) ) {
+					// Multi-valued filters, such as several usernames, match any of the values
+					$value = array_slice( array_values( $value ), 0, PageTriageUtil::MAX_USERNAME_FILTER );
+					$value = array_map( 'strval', $value );
+				} else {
+					$value = (string)$value;
+				}
 				$tagConds[] = $dbr
 					->expr( "$table.ptrpt_tag_id", "=", $tagIDs[$val['name']] )
-					->and( "$table.ptrpt_value", "=", (string)( $val['val'] ?? $opts[$key] ) );
+					->and( "$table.ptrpt_value", "=", $value );
 			}
 		}
 

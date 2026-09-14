@@ -2,6 +2,7 @@
 
 const { defineStore } = require( 'pinia' );
 const { applyUrlParams } = require( '../urlParams.js' );
+const { normalizeUsernames } = require( '../usernames.js' );
 
 const submissionNumbers = [ '~invalid~', 'unsubmitted', 'pending', 'reviewing', 'declined' ];
 
@@ -33,8 +34,8 @@ const defaultSettings = Object.freeze( {
 	nppIncludeOthers: true,
 	nppFilter: 'all',
 	afcFilter: 'all',
-	afcFilterUser: '',
-	nppFilterUser: '',
+	afcFilterUser: [],
+	nppFilterUser: [],
 	afcFilterKeyword: '',
 	nppFilterKeyword: '',
 	nppPredictedRating: {
@@ -90,6 +91,21 @@ const filtersToParams = {
 	'autopatrolled-edits': 'showautopatrolled',
 	username: 'username',
 	keyword: 'keyword'
+};
+
+/**
+ * Whether an API parameter should be treated as an active filter.
+ * Empty arrays are falsy here so a stored `"username": []` does not
+ * select the username filter.
+ *
+ * @param {*} value
+ * @return {boolean}
+ */
+const isSetParam = ( value ) => {
+	if ( Array.isArray( value ) ) {
+		return value.length > 0;
+	}
+	return !!value;
 };
 
 const initState = () => {
@@ -183,20 +199,20 @@ module.exports = {
 					keyword: 'keyword'
 				};
 				for ( const param in settings ) {
-					if ( params[ param ] ) {
+					if ( isSetParam( params[ param ] ) ) {
 						return settings[ param ];
 					}
 				}
 			},
 			// Map NPP API parameters to form values
 			nppParamsToFilters: function () {
-				this.unsaved.nppFilterUser = this.params.username || '';
+				this.unsaved.nppFilterUser = normalizeUsernames( this.params.username );
 				this.unsaved.nppFilterKeyword = this.params.keyword || '';
 				this.unsaved.nppFilter = this.paramsToFilter( this.params ) || 'all';
 			},
 			// Map AFC API parameters to form values
 			afcParamsToFilters: function () {
-				this.unsaved.afcFilterUser = this.params.username || '';
+				this.unsaved.afcFilterUser = normalizeUsernames( this.params.username );
 				this.unsaved.afcFilterKeyword = this.params.keyword || '';
 				this.unsaved.afcFilter = this.paramsToFilter( this.params ) || 'all';
 			},
@@ -343,13 +359,13 @@ module.exports = {
 			// Map NPP form values to API parameters and unset user form value if needed
 			addNppFilter: function () {
 				// username and keyword filters require text input
-				if ( this.applied.nppFilter === 'username' && this.applied.nppFilterUser ) {
-					this.params.username = this.applied.nppFilterUser;
+				if ( this.applied.nppFilter === 'username' && this.applied.nppFilterUser.length ) {
+					this.params.username = normalizeUsernames( this.applied.nppFilterUser );
 				} else if ( this.applied.nppFilter === 'keyword' && this.applied.nppFilterKeyword ) {
 					this.params.keyword = this.applied.nppFilterKeyword;
 				} else {
 					// unset username and keyword when another filter is selected
-					this.unsaved.nppFilterUser = '';
+					this.unsaved.nppFilterUser = [];
 					this.unsaved.nppFilterKeyword = '';
 					// everything else is logically boolean and should set a numeric API
 					// parameter if defined
@@ -365,21 +381,21 @@ module.exports = {
 				}
 
 				// Bug fix T394100
-				if ( this.params.username === 1 && !this.applied.nppFilterUser ) {
+				if ( this.params.username === 1 && !this.applied.nppFilterUser.length ) {
 					this.params.username = undefined;
-					this.unsaved.nppFilterUser = '';
+					this.unsaved.nppFilterUser = [];
 					this.unsaved.nppFilter = 'all';
 				}
 			},
 			addAfcFilter: function () {
 				// username requires text input
-				if ( this.applied.afcFilter === 'username' && this.applied.afcFilterUser ) {
-					this.params.username = this.applied.afcFilterUser;
+				if ( this.applied.afcFilter === 'username' && this.applied.afcFilterUser.length ) {
+					this.params.username = normalizeUsernames( this.applied.afcFilterUser );
 				} else if ( this.applied.afcFilter === 'keyword' && this.applied.afcFilterKeyword ) {
 					this.params.keyword = this.applied.afcFilterKeyword;
 				} else {
 					// unset username when another filter is selected
-					this.unsaved.afcFilterUser = '';
+					this.unsaved.afcFilterUser = [];
 					this.unsaved.afcFilterKeyword = '';
 					// everything else is logically boolean and should set a numeric API
 					// parameter if defined
@@ -395,9 +411,9 @@ module.exports = {
 				}
 
 				// Bug fix T394100
-				if ( this.params.username === 1 && !this.applied.afcFilterUser ) {
+				if ( this.params.username === 1 && !this.applied.afcFilterUser.length ) {
 					this.params.username = undefined;
-					this.unsaved.afcFilterUser = '';
+					this.unsaved.afcFilterUser = [];
 					this.unsaved.afcFilter = 'all';
 				}
 			},

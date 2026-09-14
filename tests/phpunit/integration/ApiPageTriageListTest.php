@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\PageTriage\Test;
 
-use MediaWiki\Api\ApiUsageException;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Content\TextContent;
 use MediaWiki\Extension\PageTriage\ArticleCompile\ArticleCompileAfcTag;
+use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Tests\User\TempUser\TempUserTestTrait;
@@ -704,6 +704,34 @@ class ApiPageTriageListTest extends PageTriageTestCase {
 			$pendingTitles,
 			'Keep someone else\'s pending AfC page'
 		);
+	}
+
+	public function testUsernameFilter() {
+		$userOne = static::getTestUser()->getUser();
+		$userTwo = $this->getMutableTestUser()->getUser();
+		$userThree = $this->getMutableTestUser()->getUser();
+
+		$this->makeDraft( 'PageByUserOne', false, false, $userOne );
+		$this->makeDraft( 'PageByUserTwo', false, false, $userTwo );
+		$this->makeDraft( 'PageByUserThree', false, false, $userThree );
+
+		$list = $this->getPageTriageList( [ 'username' => $userOne->getName() ] );
+		$this->assertPages( [ 'PageByUserOne' ], $list, 'Single username' );
+
+		$list = $this->getPageTriageList( [
+			'username' => $userOne->getName() . '|' . $userTwo->getName(),
+		] );
+		$this->assertPages( [ 'PageByUserOne', 'PageByUserTwo' ], $list, 'Several usernames' );
+	}
+
+	public function testUsernameFilterLimit() {
+		$usernames = [];
+		for ( $i = 0; $i <= PageTriageUtil::MAX_USERNAME_FILTER; $i++ ) {
+			$usernames[] = "Username filter test $i";
+		}
+
+		$this->expectApiErrorCode( 'toomanyvalues' );
+		$this->getPageTriageList( [ 'username' => implode( '|', $usernames ) ] );
 	}
 
 	public function testFilterType() {

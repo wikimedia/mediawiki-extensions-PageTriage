@@ -29,6 +29,12 @@ use Wikimedia\Rdbms\IReadableDatabase;
 class PageTriageUtil {
 
 	/**
+	 * Maximum number of usernames the "username" filter accepts at once. This keeps the
+	 * IN () list in the page tag query small enough to stay cheap.
+	 */
+	public const MAX_USERNAME_FILTER = 10;
+
+	/**
 	 * Get whether a page needs triaging
 	 *
 	 * @param WikiPage $page
@@ -663,6 +669,9 @@ class PageTriageUtil {
 			],
 			'username' => [
 				ParamValidator::PARAM_TYPE => 'user',
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_ISMULTI_LIMIT1 => self::MAX_USERNAME_FILTER,
+				ParamValidator::PARAM_ISMULTI_LIMIT2 => self::MAX_USERNAME_FILTER,
 			],
 			'hideownpages' => [
 				ParamValidator::PARAM_TYPE => 'boolean',

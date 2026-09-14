@@ -1,4 +1,5 @@
 const { applyUrlParams } = require( '../../../modules/ext.pageTriage.newPagesFeed/urlParams.js' );
+const { MAX_FILTER_USERNAMES } = require( '../../../modules/ext.pageTriage.newPagesFeed/usernames.js' );
 
 function makePredictedRating() {
 	return {
@@ -16,9 +17,9 @@ function makeSettings( queueMode ) {
 		immediate: { queueMode: queueMode || 'npp' },
 		unsaved: {
 			nppFilter: 'all',
-			nppFilterUser: '',
+			nppFilterUser: [],
 			afcFilter: 'all',
-			afcFilterUser: '',
+			afcFilterUser: [],
 			nppIncludeReviewed: false,
 			nppIncludeUnreviewed: true,
 			nppDate: { from: '', to: '' },
@@ -62,7 +63,7 @@ describe( 'urlParams.js', () => {
 		expect( applyUrlParams( settings ) ).toBe( false );
 		expect( settings.immediate.queueMode ).toBe( 'npp' );
 		expect( settings.unsaved.nppFilter ).toBe( 'all' );
-		expect( settings.unsaved.nppFilterUser ).toBe( '' );
+		expect( settings.unsaved.nppFilterUser ).toEqual( [] );
 	} );
 
 	it( 'ignores empty param values', () => {
@@ -103,17 +104,46 @@ describe( 'urlParams.js', () => {
 		const settings = makeSettings();
 		expect( applyUrlParams( settings ) ).toBe( true );
 		expect( settings.unsaved.nppFilter ).toBe( 'username' );
-		expect( settings.unsaved.nppFilterUser ).toBe( 'Alice' );
+		expect( settings.unsaved.nppFilterUser ).toEqual( [ 'Alice' ] );
 		expect( settings.unsaved.afcFilter ).toBe( 'username' );
-		expect( settings.unsaved.afcFilterUser ).toBe( 'Alice' );
+		expect( settings.unsaved.afcFilterUser ).toEqual( [ 'Alice' ] );
 	} );
 
 	it( 'normalizes underscores in username to spaces', () => {
 		mockParams( { username: 'Jimbo_Wales' } );
 		const settings = makeSettings();
 		expect( applyUrlParams( settings ) ).toBe( true );
-		expect( settings.unsaved.nppFilterUser ).toBe( 'Jimbo Wales' );
-		expect( settings.unsaved.afcFilterUser ).toBe( 'Jimbo Wales' );
+		expect( settings.unsaved.nppFilterUser ).toEqual( [ 'Jimbo Wales' ] );
+		expect( settings.unsaved.afcFilterUser ).toEqual( [ 'Jimbo Wales' ] );
+	} );
+
+	it( 'applies several pipe-separated usernames', () => {
+		mockParams( { username: 'Alice|Jimbo_Wales|Alice|' } );
+		const settings = makeSettings();
+		expect( applyUrlParams( settings ) ).toBe( true );
+		expect( settings.unsaved.nppFilterUser ).toEqual( [ 'Alice', 'Jimbo Wales' ] );
+		expect( settings.unsaved.afcFilterUser ).toEqual( [ 'Alice', 'Jimbo Wales' ] );
+	} );
+
+	it( 'truncates the username list to the maximum', () => {
+		const usernames = [];
+		for ( let i = 0; i <= MAX_FILTER_USERNAMES; i++ ) {
+			usernames.push( `User ${ i }` );
+		}
+		mockParams( { username: usernames.join( '|' ) } );
+		const settings = makeSettings();
+		expect( applyUrlParams( settings ) ).toBe( true );
+		expect( settings.unsaved.nppFilterUser ).toHaveLength( MAX_FILTER_USERNAMES );
+		expect( settings.unsaved.nppFilterUser ).toEqual(
+			usernames.slice( 0, MAX_FILTER_USERNAMES )
+		);
+	} );
+
+	it( 'ignores a username param with no usable names', () => {
+		mockParams( { username: '|_|' } );
+		const settings = makeSettings();
+		expect( applyUrlParams( settings ) ).toBe( false );
+		expect( settings.unsaved.nppFilter ).toBe( 'all' );
 	} );
 
 	it( 'applies username to both fields when feed is afc', () => {
@@ -122,9 +152,9 @@ describe( 'urlParams.js', () => {
 		expect( applyUrlParams( settings ) ).toBe( true );
 		expect( settings.immediate.queueMode ).toBe( 'afc' );
 		expect( settings.unsaved.afcFilter ).toBe( 'username' );
-		expect( settings.unsaved.afcFilterUser ).toBe( 'Alice' );
+		expect( settings.unsaved.afcFilterUser ).toEqual( [ 'Alice' ] );
 		expect( settings.unsaved.nppFilter ).toBe( 'username' );
-		expect( settings.unsaved.nppFilterUser ).toBe( 'Alice' );
+		expect( settings.unsaved.nppFilterUser ).toEqual( [ 'Alice' ] );
 	} );
 
 	it( 'still applies username when feed is invalid', () => {
@@ -132,7 +162,7 @@ describe( 'urlParams.js', () => {
 		const settings = makeSettings();
 		expect( applyUrlParams( settings ) ).toBe( true );
 		expect( settings.immediate.queueMode ).toBe( 'npp' );
-		expect( settings.unsaved.nppFilterUser ).toBe( 'Bob' );
+		expect( settings.unsaved.nppFilterUser ).toEqual( [ 'Bob' ] );
 	} );
 
 	it( 'applies status=reviewed and clears unreviewed', () => {

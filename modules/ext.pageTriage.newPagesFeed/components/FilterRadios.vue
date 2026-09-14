@@ -38,9 +38,9 @@
 			<span v-if="radio.value === 'username'">
 				<username-lookup
 					id="mwe-vue-pt-filter-input-username"
-					v-model:username="byUser"
+					v-model:usernames="byUser"
 					:placeholder="$i18n( 'pagetriage-filter-username' ).text()"
-					@update:username="( newVal ) => $emit( 'update:user', newVal )"
+					@update:usernames="( newVal ) => $emit( 'update:user', newVal )"
 					@focus="checkRadioButton( 'username' )"
 				></username-lookup>
 			</span>
@@ -72,7 +72,7 @@ module.exports = {
 	components: { CdxRadio, UsernameLookup, KeywordSearch },
 	props: {
 		filter: { type: String, default: '' },
-		user: { type: String, default: '' },
+		user: { type: Array, default: () => [] },
 		type: { type: String, default: 'npp' },
 		keyword: { type: String, default: '' }
 	},
@@ -160,6 +160,9 @@ module.exports = {
 	watch: {
 		keyword( newVal ) {
 			this.localKeyword = newVal;
+		},
+		user( newVal ) {
+			this.byUser = newVal;
 		}
 	}
 

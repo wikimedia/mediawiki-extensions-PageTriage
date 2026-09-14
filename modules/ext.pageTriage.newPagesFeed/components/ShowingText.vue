@@ -72,7 +72,7 @@ module.exports = {
 						this.addTop( settings.applied.nppFilter,
 							settings.applied.nppFilterUser, settings.applied.nppFilterKeyword );
 					}
-					if ( settings.applied.nppFilterUser ) {
+					if ( settings.applied.nppFilterUser.length ) {
 						this.addTop( settings.applied.nppFilter, settings.applied.nppFilterUser );
 					}
 				}
@@ -81,7 +81,7 @@ module.exports = {
 					settings.applied.nppFilter &&
 					settings.applied.nppFilter !== 'all' &&
 					!settings.applied.nppFilterKeyword &&
-					!settings.applied.nppFilterUser
+					!settings.applied.nppFilterUser.length
 				) {
 					this.addTop( settings.applied.nppFilter );
 				}
@@ -102,7 +102,7 @@ module.exports = {
 							settings.applied.afcFilterUser, settings.applied.afcFilterKeyword );
 					}
 
-					if ( settings.applied.afcFilterUser ) {
+					if ( settings.applied.afcFilterUser.length ) {
 						this.addTop( settings.applied.afcFilter, settings.applied.afcFilterUser );
 					}
 				}
@@ -111,7 +111,7 @@ module.exports = {
 					settings.applied.afcFilter &&
 					settings.applied.afcFilter !== 'all' &&
 					!settings.applied.afcFilterKeyword &&
-					!settings.applied.afcFilterUser
+					!settings.applied.afcFilterUser.length
 				) {
 					this.addTop( settings.applied.afcFilter );
 				}
@@ -142,8 +142,18 @@ module.exports = {
 				return;
 			}
 			let localMsg = '';
-			if ( filter === 'username' && filterUser ) {
-				localMsg = this.$i18n( 'pagetriage-filter-stat-username', filterUser ).text();
+			if ( filter === 'username' && filterUser.length ) {
+				if ( filterUser.length === 1 ) {
+					localMsg = this.$i18n(
+						'pagetriage-filter-stat-username',
+						filterUser[ 0 ]
+					).text();
+				} else {
+					localMsg = this.$i18n(
+						'pagetriage-filter-stat-usernames',
+						filterUser.join( this.$i18n( 'comma-separator' ).text() )
+					).text();
+				}
 			} else if ( filter === 'keyword' && filterKeyword && featureFlags.PageTriageEnableKeywordSearch ) {
 				localMsg = this.$i18n( 'pagetriage-filter-stat-keyword', filterKeyword ).text();
 			} else if ( filter === 'bot-edits' ) {
