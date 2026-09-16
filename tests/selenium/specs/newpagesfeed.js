@@ -15,6 +15,10 @@ describe( 'Special:NewPagesFeed', () => {
 		const username = getTestString( 'User-' );
 		const password = getTestString();
 		await CreateAccountPage.createAccount( username, password );
+		// The account creation redirects, for example to Special:WelcomeSurvey.
+		// The redirect can replace the edit form if the test continues too soon.
+		// (T437133)
+		await CreateAccountPage.create.waitForExist( { reverse: true } );
 
 		// Create an unreviewed article
 		const articleName = getTestString( 'NewArticle-' );
