@@ -3,6 +3,9 @@
 	"extends": [
 		"wikimedia/selenium"
 	],
+	"globals": {
+		"mw": "readonly"
+	},
 	"parserOptions": {
 		"ecmaVersion": 2021,
 		"sourceType": "module"
