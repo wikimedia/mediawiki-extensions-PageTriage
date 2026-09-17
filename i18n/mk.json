@@ -209,7 +209,7 @@
 	"pagetriage-new-page-feed-show-ip": "Прикажи IP",
 	"pagetriage-new-page-feed-show-ip-not-found": "Не најдов IP за привремената сметка",
 	"log-name-pagetriage-curation": "Дневник на згрижување",
-	"log-description-pagetriage-curation": "Ова е дневникот на дејства извршени од алатникот за згрижување.",
+	"log-description-pagetriage-curation": "Ова е дневник на дејства извршени со Алатникот за згрижување страници.",
 	"logentry-pagetriage-curation-reviewed": "$1 {{GENDER:$2|ја означи страницата}} $3 како проверена",
 	"logentry-pagetriage-curation-reviewed-redirect": "$1 {{GENDER:$2|го означи}} пренасочувањето $3 како проверено",
 	"logentry-pagetriage-curation-reviewed-article": "$1 {{GENDER:$2|ја означи}} статијата $3 како проверена",
