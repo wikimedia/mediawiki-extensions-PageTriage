@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"PanWor"
+		]
+	},
+	"pagetriage-filter-hide-own-pages": "Strony utworzone przeze mnie",
+	"pagetriage-filter-stat-hide-own-pages": "Strony nieutworzone przeze mnie"
+}
