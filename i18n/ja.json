@@ -95,7 +95,7 @@
 	"pagetriage-filter-orphan": "孤立している可能性あり",
 	"pagetriage-filter-recreated": "以前に削除された",
 	"pagetriage-filter-non-autoconfirmed": "初心者（自動承認を受ける前）",
-	"pagetriage-filter-learners": "初学者（自動承認を受けたばかり）",
+	"pagetriage-filter-learners": "初心者（自動承認を受けたばかり）",
 	"pagetriage-filter-blocked": "ブロックされている利用者",
 	"pagetriage-filter-all": "すべて表示",
 	"pagetriage-filter-set-button": "フィルターを適用",
