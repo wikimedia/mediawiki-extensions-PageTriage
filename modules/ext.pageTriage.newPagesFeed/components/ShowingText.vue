@@ -106,7 +106,7 @@ module.exports = {
 						this.addTop( settings.applied.afcFilter, settings.applied.afcFilterUser );
 					}
 				}
-				// T422315 AfC chips all shows
+				// T422315: Show AfC chips.
 				if (
 					settings.applied.afcFilter &&
 					settings.applied.afcFilter !== 'all' &&
