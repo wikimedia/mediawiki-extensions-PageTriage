@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kirsan"
+			"Kirsan",
+			"Orbitminis"
 		]
 	},
 	"pagetriage-filter-username": "Pòzwa brëkòwnika",
-	"pagetriage-filter-stat-username": "Pòzwa brëkòwnika: $1"
+	"pagetriage-filter-stat-username": "przez brëkòwnika: $1"
 }
