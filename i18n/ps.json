@@ -298,7 +298,7 @@
 	"pagetriage-discuss-link": "{{GENDER:$1|شنل}}",
 	"pagetriage-discuss-link-title": "{{GENDER:$1|شنل}}",
 	"echo-pref-subscription-page-review": "زما د جوړ کړي مخ بیاکتنه",
-	"echo-pref-tooltip-page-review": "کله چې يو څوک زما د جوړ کړئ مخ بیاکتنه کوي؛ نو ماته دې خبر راکړل شي.",
+	"echo-pref-tooltip-page-review": "کله چې يو څوک زما د جوړ کړي مخ بیاکتنه کوي؛ نو ماته دې خبر راکړل شي.",
 	"echo-category-title-page-review": "مخ {{PLURAL:$1|بیاکتنه|بياکتنې}}",
 	"action-pagetriage-copyvio": "مخونه د لمېس‌رښتې د سرغړاوي په توگه نښلن کړئ",
 	"group-copyviobot": "لمېسل‌رښتې سرغړاوي روباټونه",
