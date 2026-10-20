@@ -49,9 +49,11 @@ use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\MWTimestamp;
 use MediaWiki\WikiMap\WikiMap;
+use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Stats\StatsFactory;
 
 class Hooks implements
@@ -87,6 +89,9 @@ class Hooks implements
 		private readonly UserOptionsManager $userOptionsManager,
 		private readonly QueueManager $queueManager,
 		private readonly WikiPageFactory $wikiPageFactory,
+		private readonly QueueLookup $queueLookup,
+		private readonly UserFactory $userFactory,
+		private readonly WANObjectCache $wanCache,
 	) {
 		$this->statsFactory = $statsFactory->withComponent( 'PageTriage' );
 	}
@@ -111,8 +116,8 @@ class Hooks implements
 		$newTitle = $this->titleFactory->newFromLinkTarget( $newTitle );
 
 		// Delete user status cache
-		self::flushUserStatusCache( $oldTitle->toPageIdentity() );
-		self::flushUserStatusCache( $newTitle->toPageIdentity() );
+		$this->flushUserStatusCache( $oldTitle->toPageIdentity() );
+		$this->flushUserStatusCache( $newTitle->toPageIdentity() );
 
 		$oldNamespace = $oldTitle->getNamespace();
 		$newNamespace = $newTitle->getNamespace();
@@ -146,7 +151,7 @@ class Hooks implements
 		}
 
 		// else it was moved from one namespace to another, we might need a full recompile
-		$newAdditionToFeed = self::addToPageTriageQueue( $oldid, $newTitle, $user );
+		$newAdditionToFeed = $this->addToPageTriageQueue( $oldid, $newTitle, $user );
 
 		// The page was already in the feed so a recompile is not needed
 		if ( !$newAdditionToFeed ) {
@@ -191,7 +196,7 @@ class Hooks implements
 					!$prevRevRecord->getContent( SlotRecord::MAIN )->isRedirect();
 				if ( $wasRedirectBecameArticle || $wasArticleBecameRedirect ) {
 					// Add item to queue, if it's not already there.
-					self::addToPageTriageQueue(
+					$this->addToPageTriageQueue(
 						$wikiPage->getId(),
 						$wikiPage->getTitle(),
 						$user
@@ -212,7 +217,7 @@ class Hooks implements
 	) {
 		// When a new article is created, insert it into PageTriage Queue and compile metadata.
 		// Page saved, flush cache
-		self::flushUserStatusCache( $wikiPage );
+		$this->flushUserStatusCache( $wikiPage );
 
 		if ( !( $flags & EDIT_NEW ) ) {
 			// Don't add to queue if it is not a new page
@@ -225,7 +230,7 @@ class Hooks implements
 		}
 
 		// Add item to queue. Metadata compilation will get triggered in the LinksUpdate hook.
-		self::addToPageTriageQueue(
+		$this->addToPageTriageQueue(
 			$wikiPage->getId(),
 			$wikiPage->getTitle(),
 			$user
@@ -267,11 +272,9 @@ class Hooks implements
 	 * @return bool
 	 * @throws MWPageTriageMissingRevisionException
 	 */
-	public static function addToPageTriageQueue( $pageId, $title, $userIdentity = null ): bool {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-
+	public function addToPageTriageQueue( $pageId, $title, $userIdentity = null ): bool {
 		// Get draft information.
-		$draftNsId = $config->get( 'PageTriageDraftNamespaceId' );
+		$draftNsId = $this->config->get( 'PageTriageDraftNamespaceId' );
 		$isDraft = $draftNsId !== false && $title->inNamespace( $draftNsId );
 
 		// Draft redirects are not patrolled or reviewed.
@@ -287,11 +290,10 @@ class Hooks implements
 		// action taken by a user
 		} else {
 			// set reviewed if it's not set yet
-			$user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity( $userIdentity );
-			$permissionErrors = MediaWikiServices::getInstance()->getPermissionManager()
-				->getPermissionErrors( 'autopatrol', $user, $title );
-			$useRCPatrol = $config->get( 'UseRCPatrol' );
-			$useNPPatrol = $config->get( 'UseNPPatrol' );
+			$user = $this->userFactory->newFromUserIdentity( $userIdentity );
+			$permissionErrors = $this->permissionManager->getPermissionErrors( 'autopatrol', $user, $title );
+			$useRCPatrol = $this->config->get( 'UseRCPatrol' );
+			$useNPPatrol = $this->config->get( 'UseNPPatrol' );
 			$isAutopatrolled = ( $useRCPatrol || $useNPPatrol ) &&
 				!count( $permissionErrors );
 			if ( $isAutopatrolled && !$isDraft ) {
@@ -314,10 +316,9 @@ class Hooks implements
 	 *
 	 * @param PageIdentity $pageIdentity
 	 */
-	private static function flushUserStatusCache( PageIdentity $pageIdentity ): void {
+	private function flushUserStatusCache( PageIdentity $pageIdentity ): void {
 		if ( in_array( $pageIdentity->getNamespace(), [ NS_USER, NS_USER_TALK ] ) ) {
-			$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-			$cache->delete( PageTriageUtil::userStatusKey( $pageIdentity->getDBkey() ) );
+			$this->wanCache->delete( PageTriageUtil::userStatusKey( $pageIdentity->getDBkey() ) );
 		}
 	}
 
@@ -330,10 +331,10 @@ class Hooks implements
 	 * @param Article $article
 	 * @return bool
 	 */
-	private static function shouldShowNoIndex( Article $article ) {
+	private function shouldShowNoIndex( Article $article ) {
 		$page = $article->getPage();
 
-		if ( self::shouldNoIndexForNewArticleReasons( $page ) ) {
+		if ( $this->shouldNoIndexForNewArticleReasons( $page ) ) {
 			return true;
 		}
 
@@ -341,7 +342,7 @@ class Hooks implements
 		$wikitextHasNoIndexMagicWord = $parserOutput instanceof ParserOutput
 			&& $parserOutput->getPageProperty( 'noindex' ) !== null;
 
-		return $wikitextHasNoIndexMagicWord && self::shouldNoIndexForMagicWordReasons( $page );
+		return $wikitextHasNoIndexMagicWord && $this->shouldNoIndexForMagicWordReasons( $page );
 	}
 
 	/**
@@ -358,14 +359,12 @@ class Hooks implements
 	 * @param WikiPage $page
 	 * @return bool
 	 */
-	private static function shouldNoIndexForNewArticleReasons( WikiPage $page ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-
-		if ( !$config->get( 'PageTriageNoIndexUnreviewedNewArticles' ) ) {
+	private function shouldNoIndexForNewArticleReasons( WikiPage $page ) {
+		if ( !$this->config->get( 'PageTriageNoIndexUnreviewedNewArticles' ) ) {
 			return false;
 		} elseif ( !PageTriageUtil::isPageUnreviewed( $page ) ) {
 			return false;
-		} elseif ( !self::isNewEnoughToNoIndex( $page, $config->get( 'PageTriageMaxAge' ) ) ) {
+		} elseif ( !$this->isNewEnoughToNoIndex( $page, $this->config->get( 'PageTriageMaxAge' ) ) ) {
 			return false;
 		} else {
 			return true;
@@ -382,10 +381,8 @@ class Hooks implements
 	 * @param WikiPage $page
 	 * @return bool
 	 */
-	private static function shouldNoIndexForMagicWordReasons( WikiPage $page ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-
-		return self::isNewEnoughToNoIndex( $page, $config->get( 'PageTriageMaxNoIndexAge' ) );
+	private function shouldNoIndexForMagicWordReasons( WikiPage $page ) {
+		return $this->isNewEnoughToNoIndex( $page, $this->config->get( 'PageTriageMaxNoIndexAge' ) );
 	}
 
 	/**
@@ -399,7 +396,7 @@ class Hooks implements
 	 * considered "not new".
 	 * @return bool
 	 */
-	private static function isNewEnoughToNoIndex( WikiPage $wikiPage, $maxAgeInDays ) {
+	private function isNewEnoughToNoIndex( WikiPage $wikiPage, $maxAgeInDays ) {
 		$pageId = $wikiPage->getId();
 		if ( !$pageId ) {
 			return false;
@@ -411,16 +408,13 @@ class Hooks implements
 		}
 
 		// Check cache for creation date
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-		$pageCreationDateTime = $cache->getWithSetCallback(
-			$cache->makeKey( 'pagetriage-page-created', $pageId ),
-			$cache::TTL_DAY,
-			static function () use ( $pageId ) {
+		$pageCreationDateTime = $this->wanCache->getWithSetCallback(
+			$this->wanCache->makeKey( 'pagetriage-page-created', $pageId ),
+			$this->wanCache::TTL_DAY,
+			function () use ( $pageId ) {
 				// The ptrp_created field is equivalent to creation_date
 				// property set during article metadata compilation.
-				$queueLookup = PageTriageServices::wrap( MediaWikiServices::getInstance() )
-					->getQueueLookup();
-				$queueRecord = $queueLookup->getByPageId( $pageId );
+				$queueRecord = $this->queueLookup->getByPageId( $pageId );
 				return $queueRecord instanceof QueueRecord ? $queueRecord->getCreatedTimestamp() : false;
 			},
 			[ 'version' => PageTriage::CACHE_VERSION ]
@@ -457,7 +451,7 @@ class Hooks implements
 
 		// 1) Determine whether to turn on noindex for new, unreviewed articles.
 		// Overwrite the noindex rule defined in Article::view(), this also affects main namespace
-		if ( self::shouldShowNoIndex( $article ) ) {
+		if ( $this->shouldShowNoIndex( $article ) ) {
 			$outputPage->setRobotPolicy( 'noindex,nofollow' );
 			$this->statsFactory->getCounter( 'noindex_total' )
 				->setLabel( 'wiki', WikiMap::getCurrentWikiId() )
@@ -836,7 +830,7 @@ class Hooks implements
 	) {
 		if ( $this->queueManager->isPageTriageNamespace( $page->getNamespace() ) ) {
 			// TODO: Factor the user status cache into another service.
-			self::flushUserStatusCache( $page );
+			$this->flushUserStatusCache( $page );
 			$this->queueManager->deleteByPageId( $pageID );
 		}
 	}
@@ -863,6 +857,6 @@ class Hooks implements
 		}
 
 		$wikiPage = $this->wikiPageFactory->newFromTitle( $page );
-		self::addToPageTriageQueue( $wikiPage->getId(), $wikiPage->getTitle() );
+		$this->addToPageTriageQueue( $wikiPage->getId(), $wikiPage->getTitle() );
 	}
 }

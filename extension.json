@@ -821,7 +821,10 @@
 				"TitleFactory",
 				"UserOptionsManager",
 				"PageTriageQueueManager",
-				"WikiPageFactory"
+				"WikiPageFactory",
+				"PageTriageQueueLookup",
+				"UserFactory",
+				"WANObjectCache"
 			]
 		},
 		"schema": {
