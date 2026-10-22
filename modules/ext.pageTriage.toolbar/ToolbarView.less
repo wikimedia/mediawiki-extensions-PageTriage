@@ -64,6 +64,11 @@ p#mwe-pt-toolbar-vertical {
 	writing-mode: vertical-rl;
 	white-space: nowrap;
 	display: block;
+	/* Set the margins here instead of relying on the skin's paragraph styles. With
+	   vertical text, Minerva's paragraph margins end up on the left and right, which
+	   pushes the text out of the toolbar, and leaves no space below the close button.
+	   These are the margins Vector and MonoBook give a paragraph. */
+	margin: 0.4em 0 0.5em;
 	bottom: 0;
 	width: 20px;
 	font-size: 1em;
