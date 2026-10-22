@@ -285,7 +285,7 @@
 	"pagetriage-del-discussion-page-adding-error": "삭제 토론 문서에 문서를 추가하는 데 실패했습니다!",
 	"pagetriage-del-title": "삭제로 표시",
 	"pagetriage-del-tooltip": "이 문서를 삭제한 것을 포함",
-	"pagetriage-tagging-error": "문서에 태그를 적용하지 못했습니다",
+	"pagetriage-tagging-error": "문서에 {{PLURAL:$1|태그}} $1개를 적용하지 못했습니다",
 	"pagetriage-add-tag-confirmation": "이러한 짧은 문서에 $1 {{PLURAL:$1|태그}}를 추가하겠습니까?",
 	"pagetriage-tag-deletion-error": "문서가 이미 삭제 틀로 태그했으므로 절차를 중단합니다.",
 	"pagetriage-tag-previousdeletion-error": "이전 삭제를 나타내는 틀($1)이 발견되어 절차가 중단되었습니다.",
