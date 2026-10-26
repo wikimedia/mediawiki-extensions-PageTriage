@@ -306,6 +306,7 @@
 	"pagetriage-tagging-error": "Het toevoegen van {{PLURAL:$1|het label|de labels}} aan de pagina is mislukt",
 	"pagetriage-add-tag-confirmation": "Weet u zeker dat u {{PLURAL:$1|één label|$1 labels}} wilt toevoegen aan zo’n korte pagina?",
 	"pagetriage-tag-deletion-error": "De pagina is al gelabeld met een verwijderingssjabloon. De procedure wordt afgebroken.",
+	"pagetriage-tag-already-present": "{{PLURAL:$1|Dit label is|Deze labels zijn}} al op deze pagina aanwezig en {{PLURAL:$1|is|zijn}} niet toegevoegd: $2",
 	"pagetriage-tag-previousdeletion-error": "Er is een sjabloon ($1) gevonden dat aangeeft dat er een eerdere verwijdering is gevonden, waardoor de procedure wordt afgebroken.",
 	"pagetriage-toolbar-close": "Sluiten",
 	"pagetriage-toolbar-minimize": "Minimaliseren",
