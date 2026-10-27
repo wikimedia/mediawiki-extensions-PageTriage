@@ -217,6 +217,11 @@ module.exports = {
 			this.$nextTick( this.refreshFlyout );
 		},
 		resize: function () {
+			// The toolbar isn't displayed while VisualEditor is open or the toolbar is
+			// closed. Its offsets are all 0 then, which would move it to the top left.
+			if ( window.getComputedStyle( this.toolbar ).display === 'none' ) {
+				return;
+			}
 			pos.start = { x: 0, y: 0 };
 			pos.new = { x: 0, y: 0 };
 			this.updatePosition();
