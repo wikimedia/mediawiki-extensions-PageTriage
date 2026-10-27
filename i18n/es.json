@@ -213,6 +213,8 @@
 	"pagetriage-tags-param-free-no-label": "No",
 	"pagetriage-tags-param-missing-required": "La etiqueta \"$1\" es el parámetro necesario que falta.",
 	"pagetriage-tags-talk-page-notify-topic-title": "Maneras de mejorar $1",
+	"pagetriage-new-page-feed-show-ip": "Mostrar IP",
+	"pagetriage-new-page-feed-show-ip-not-found": "No se encontró ninguna dirección IP para la cuenta temporal",
 	"log-name-pagetriage-curation": "Registro de conservación de páginas",
 	"log-description-pagetriage-curation": "Este es el registro de acciones tomadas en la barra de herramientas de conservación de páginas.",
 	"logentry-pagetriage-curation-reviewed": "$1 {{GENDER:$2|ha marcado}} a $3 como revisada",
