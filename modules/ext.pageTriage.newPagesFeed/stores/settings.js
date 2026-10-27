@@ -230,9 +230,9 @@ module.exports = {
 					dateObj.from = fromDate.format( 'YYYY-MM-DD' );
 				}
 				if ( this.params.date_range_to ) {
+					// date_range_to is already the end of the chosen day (see
+					// addDateFilters), so don't move it forward again
 					const toDate = moment.utc( this.params.date_range_to ).add( offset, 'minutes' );
-					// move to the end of the given day
-					toDate.add( 1, 'day' ).subtract( 1, 'second' );
 					dateObj.to = toDate.format( 'YYYY-MM-DD' );
 				}
 			},
