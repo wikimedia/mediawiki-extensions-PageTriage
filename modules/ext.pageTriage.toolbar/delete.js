@@ -394,11 +394,13 @@ module.exports = ToolView.extend( {
 					// different category from the selected one, refresh data
 					if ( this.selectedCat !== cat ) {
 						this.multiHideParamsLink( this.selectedTag );
+						this.multiHideParamsForm( this.selectedTag );
 						this.selectedTag = {};
 						this.selectedCat = cat;
 					// this category doesn't allow multiple selection
 					} else if ( !this.deletionTagsOptions[ cat ].multiple ) {
 						this.multiHideParamsLink( this.selectedTag );
+						this.multiHideParamsForm( this.selectedTag );
 						this.selectedTag = {};
 					}
 
@@ -612,6 +614,21 @@ module.exports = ToolView.extend( {
 	 */
 	hideParamsForm: function ( key ) {
 		$( '#mwe-pt-delete-params-form-' + key ).hide();
+	},
+
+	/**
+	 * Hide the parameters form for multiple deletion tags, e.g. when another
+	 * tag replaces them, and stop counting them as open forms
+	 *
+	 * @param {Object} obj
+	 */
+	multiHideParamsForm: function ( obj ) {
+		for ( const key in obj ) {
+			if ( $( '#mwe-pt-delete-params-form-' + key ).css( 'display' ) === 'block' ) {
+				this.visibleParamsFormCount--;
+			}
+			this.hideParamsForm( key );
+		}
 	},
 
 	/**

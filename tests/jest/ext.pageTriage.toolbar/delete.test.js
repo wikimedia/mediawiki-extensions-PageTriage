@@ -171,4 +171,72 @@ describe( 'DeleteToolView', () => {
 			expect( postWithToken ).not.toHaveBeenCalled();
 		} );
 	} );
+
+	describe( 'displayTags', () => {
+		const originalElement = mw.html.element;
+
+		beforeEach( () => {
+			// Simplified mw.html.element, not provided by the mock
+			mw.html.element = ( name, attrs, contents ) => {
+				const $el = $( '<' + name + '>' );
+				for ( const attr in attrs ) {
+					if ( attrs[ attr ] !== false ) {
+						$el.attr( attr, attrs[ attr ] === true ? attr : attrs[ attr ] );
+					}
+				}
+				return $el.text( contents || '' ).prop( 'outerHTML' );
+			};
+		} );
+
+		afterEach( () => {
+			mw.html.element = originalElement;
+			document.body.innerHTML = '';
+		} );
+
+		test( 'T242069: selecting another tag hides the details form of the previous tag', () => {
+			// Parameter forms are hidden by default in delete.less
+			document.body.innerHTML = '<style>.mwe-pt-delete-params-form { display: none; }</style>' +
+				'<div id="mwe-pt-delete"></div>' +
+				'<button id="mwe-pt-delete-submit-button"></button>';
+			const toolbar = new DeleteToolView( { eventBus, model } );
+			toolbar.deletionTagsOptions = {
+				proposeddeletion: {
+					label: 'Proposed deletion',
+					multiple: false,
+					tags: {
+						blpprod: {
+							label: 'Proposed Deletion (Living People)',
+							tag: 'blp-prod',
+							desc: '',
+							params: {}
+						},
+						prod: {
+							label: 'Proposed Deletion',
+							tag: 'prod',
+							desc: '',
+							params: {
+								1: {
+									label: 'Details',
+									input: 'required',
+									type: 'textarea',
+									value: ''
+								}
+							}
+						}
+					}
+				}
+			};
+			toolbar.displayTags( 'proposeddeletion' );
+
+			$( '#mwe-pt-delete-prod' ).trigger( 'click' );
+			expect( $( '#mwe-pt-delete-params-form-prod' ).css( 'display' ) ).toBe( 'block' );
+			expect( $( '#mwe-pt-delete-submit-button' ).prop( 'disabled' ) ).toBe( true );
+
+			$( '#mwe-pt-delete-blpprod' ).trigger( 'click' );
+			expect( Object.keys( toolbar.selectedTag ) ).toEqual( [ 'blpprod' ] );
+			expect( $( '#mwe-pt-delete-params-form-prod' ).css( 'display' ) ).toBe( 'none' );
+			expect( toolbar.visibleParamsFormCount ).toBe( 0 );
+			expect( $( '#mwe-pt-delete-submit-button' ).prop( 'disabled' ) ).toBe( false );
+		} );
+	} );
 } );
