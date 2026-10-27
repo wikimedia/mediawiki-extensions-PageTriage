@@ -177,7 +177,7 @@
 	"pagetriage-message-for-reviewer-placeholder": "پیامی مفید برای {{GENDER:$1|$1}} بنویسید.",
 	"pagetriage-personal-default-note": "پیامی سودمند برای {{GENDER:$1|$1}} بنویسید. این پیام در صفحهٔ بحث کاربری وی نمایش می‌یابد.",
 	"pagetriage-page-status-reviewed": "بررسی‌شده در $1 توسط $2 ($3$4$5)",
-	"pagetriage-page-status-reviewed-anonymous": "علامت‌گذاری‌شده به عنوان بررسی‌شده",
+	"pagetriage-page-status-reviewed-anonymous": "نشانه‌گذاری‌شده به‌عنوان بررسی‌شده",
 	"pagetriage-page-status-unreviewed": "این صفحه هنوز بررسی نشده است.",
 	"pagetriage-page-status-autoreviewed": "این صفحه به صورت خودکار برچسب گشت خورده است.",
 	"pagetriage-page-status-delete": "علامت‌گذاری‌شده برای حذف",
