@@ -272,7 +272,7 @@
 	"pagetriage-del-discussion-page-adding-error": "د ړنگولو شنن‌مخ ته د مخ ورگډول نابرياله شول!",
 	"pagetriage-del-title": "ړنگېدو ته په‌نښه‌کول",
 	"pagetriage-del-tooltip": "دا مخ ړنگولو لپاره نوماند کړئ",
-	"pagetriage-tagging-error": "په دې مخ د نښلنونو پلي‌کول نابرياله شول",
+	"pagetriage-tagging-error": "په دې مخ د $1 {{PLURAL:$1|نښلن|نښلنونو}} پلي‌کول نابرياله شول",
 	"pagetriage-add-tag-confirmation": "ايا تاسو ډاډه ياست چې په دومره لنډه ليکنه کې $1 {{PLURAL:$1|نښلن|نښلنونه}} ورگډ کړئ؟",
 	"pagetriage-tag-deletion-error": "مخ لادمخه د ړنگولو کينډۍ سره نښلن شوی، د لغوه‌کولو چلندلار.",
 	"pagetriage-tag-previousdeletion-error": "يوه کينډۍ ($1) وموندل شوه چې د پخوانۍ ړنگولو ښودنه کوي، د لغوه‌کولو چلندلار.",
