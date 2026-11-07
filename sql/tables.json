@@ -97,6 +97,12 @@
 				"options": { "notnull": true }
 			},
 			{
+				"name": "ptrp_enqueued",
+				"comment": "the timestamp when the page was enqueued for review",
+				"type": "mwtimestamp",
+				"options": { "notnull": false }
+			},
+			{
 				"name": "ptrp_last_reviewed_by",
 				"comment": "the last user who reviewed the page",
 				"type": "integer",
@@ -127,6 +133,11 @@
 			{
 				"name": "ptrp_reviewed_updated",
 				"columns": [ "ptrp_reviewed_updated" ],
+				"unique": false
+			},
+			{
+				"name": "ptrp_enqueued",
+				"columns": [ "ptrp_enqueued" ],
 				"unique": false
 			}
 		],

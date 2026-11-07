@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\PageTriage\HookHandlers;
 
+use MediaWiki\Extension\PageTriage\Maintenance\BackfillPtrpEnqueued;
 use MediaWiki\Installer\DatabaseUpdater;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 
@@ -19,6 +20,14 @@ class Schema implements LoadExtensionSchemaUpdatesHook {
 		$updater->addExtensionUpdate( [
 			[ __CLASS__, 'doOnSchemaUpdatesPopulatePageTriageTags' ],
 		] );
+
+		// 1.48 - T412014
+		$updater->addExtensionField(
+			'pagetriage_page',
+			'ptrp_enqueued',
+			$base . '/' . $dbType . '/patch_add_ptrp_enqueued_field.sql'
+		);
+		$updater->addExtensionUpdate( [ 'runMaintenance', BackfillPtrpEnqueued::class ] );
 	}
 
 	/**

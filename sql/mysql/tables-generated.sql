@@ -27,6 +27,7 @@ CREATE TABLE /*_*/pagetriage_page (
   ptrp_created BINARY(14) NOT NULL,
   ptrp_tags_updated BINARY(14) DEFAULT NULL,
   ptrp_reviewed_updated BINARY(14) NOT NULL,
+  ptrp_enqueued BINARY(14) DEFAULT NULL,
   ptrp_last_reviewed_by INT UNSIGNED DEFAULT 0 NOT NULL,
   INDEX ptrp_reviewed_created_page_del (
     ptrp_reviewed, ptrp_created, ptrp_page_id,
@@ -44,5 +45,6 @@ CREATE TABLE /*_*/pagetriage_page (
     ptrp_reviewed
   ),
   INDEX ptrp_reviewed_updated (ptrp_reviewed_updated),
+  INDEX ptrp_enqueued (ptrp_enqueued),
   PRIMARY KEY (ptrp_page_id)
 ) /*$wgDBTableOptions*/;

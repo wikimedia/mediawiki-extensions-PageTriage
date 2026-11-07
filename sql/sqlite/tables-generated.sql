@@ -27,6 +27,7 @@ CREATE TABLE /*_*/pagetriage_page (
   ptrp_created BLOB NOT NULL,
   ptrp_tags_updated BLOB DEFAULT NULL,
   ptrp_reviewed_updated BLOB NOT NULL,
+  ptrp_enqueued BLOB DEFAULT NULL,
   ptrp_last_reviewed_by INTEGER UNSIGNED DEFAULT 0 NOT NULL,
   PRIMARY KEY (ptrp_page_id)
 );
@@ -51,3 +52,5 @@ CREATE INDEX ptrp_updated_page_reviewed ON /*_*/pagetriage_page (
 );
 
 CREATE INDEX ptrp_reviewed_updated ON /*_*/pagetriage_page (ptrp_reviewed_updated);
+
+CREATE INDEX ptrp_enqueued ON /*_*/pagetriage_page (ptrp_enqueued);
