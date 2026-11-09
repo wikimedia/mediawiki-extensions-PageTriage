@@ -111,7 +111,7 @@
 	"pagetriage-filter-set-button": "تنظیم پالایه‌ها",
 	"pagetriage-stats-less-than-a-day": "کمتر از یک روز",
 	"pagetriage-stats-reviewed-page-count": "$1 صفحه در این هفته بررسی {{PLURAL:$1|شد|شدند}}",
-	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|صفحهٔ|صفحهٔ}} در لیست فیلتر‌ شده شما",
+	"pagetriage-stats-filter-page-count": "$1 {{PLURAL:$1|صفحه}} در فهرست فیلتر‌شدهٔ شما",
 	"pagetriage-filter-ns-all": "همه",
 	"pagetriage-filter-pending-ores-score": "ن/م",
 	"pagetriage-filter-stat-state": "حالت",
