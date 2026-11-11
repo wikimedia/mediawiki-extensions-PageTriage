@@ -264,7 +264,7 @@
 	"pagetriage-del-discussion-page-adding-error": "Неуспело додавање странице на страницу за дискусију о брисању.",
 	"pagetriage-del-title": "Означавање за брисање",
 	"pagetriage-del-tooltip": "Номинујте ову страницу за брисање",
-	"pagetriage-tagging-error": "Неуспело примењивање ознака на страници",
+	"pagetriage-tagging-error": "Неуспело примењивање $1 {{PLURAL:$1|ознаке|ознака}} на страници",
 	"pagetriage-add-tag-confirmation": "Заиста желите да додате $1 {{PLURAL:$1|ознаку|ознаке|ознака}} на тако кратак чланак?",
 	"pagetriage-tag-deletion-error": "Страница је већ означена са шаблоном за брисање. Обустављање процедуре.",
 	"pagetriage-toolbar-close": "Затвори",
@@ -300,5 +300,5 @@
 	"apihelp-pagetriagestats-param-no_inbound_links": "Укључивање само страница без улазних веза.",
 	"apihelp-pagetriagestats-param-non_autoconfirmed_users": "Укључивање само страница које направе не-аутоматски потврђени корисници.",
 	"apihelp-pagetriagestats-param-blocked_users": "Укључивање само страница које су направили блокирани корисници.",
-	"apihelp-pagetriagestats-param-username": "Укључи само странице направљене корисничким именом."
+	"apihelp-pagetriagestats-param-username": "Укључи само странице направљене било којим од следећих корисничких имена."
 }
