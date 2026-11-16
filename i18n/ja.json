@@ -209,7 +209,7 @@
 	"pagetriage-del-discussion-page-adding-error": "削除議論ページへのページ追加に失敗しました!",
 	"pagetriage-del-title": "削除の印を付ける",
 	"pagetriage-del-tooltip": "このページの削除を提案する",
-	"pagetriage-tagging-error": "ページにタグを適用するのに失敗しました",
+	"pagetriage-tagging-error": "$1 {{PLURAL:$1|タグ}}をページに適用するのに失敗しました",
 	"pagetriage-add-tag-confirmation": "短い記事に $1 {{PLURAL:$1|個のタグ}}を本当に追加しますか?",
 	"pagetriage-tag-deletion-error": "ページには削除テンプレートが既に貼り付けられています。処理を中止します。",
 	"pagetriage-toolbar-close": "閉じる",
