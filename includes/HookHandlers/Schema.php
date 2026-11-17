@@ -19,31 +19,6 @@ class Schema implements LoadExtensionSchemaUpdatesHook {
 		$updater->addExtensionUpdate( [
 			[ __CLASS__, 'doOnSchemaUpdatesPopulatePageTriageTags' ],
 		] );
-
-		// 1.35
-		$updater->dropExtensionIndex(
-			'pagetriage_page_tags',
-			'ptrpt_page_tag_id',
-			$base . '/PageTriagePageTagsPatch-pk.sql'
-		);
-
-		// 1.39
-		if ( $dbType === 'mysql' ) {
-			$updater->modifyExtensionField(
-				'pagetriage_page',
-				'ptrp_reviewed_updated',
-				$base . '/patch-pagetriage_page-timestamps.sql'
-			);
-			// T325519
-			$updater->dropExtensionTable( 'pagetriage_log' );
-		}
-
-		// T333389
-		$updater->modifyExtensionField(
-			'pagetriage_page',
-			'ptrp_tags_updated',
-			$base . '/' . $dbType . '/patch_ptrp_tags_updated_nullable.sql'
-		);
 	}
 
 	/**
