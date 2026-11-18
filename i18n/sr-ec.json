@@ -300,5 +300,5 @@
 	"apihelp-pagetriagestats-param-no_inbound_links": "Укључивање само страница без улазних веза.",
 	"apihelp-pagetriagestats-param-non_autoconfirmed_users": "Укључивање само страница које направе не-аутоматски потврђени корисници.",
 	"apihelp-pagetriagestats-param-blocked_users": "Укључивање само страница које су направили блокирани корисници.",
-	"apihelp-pagetriagestats-param-username": "Укључи само странице направљене корисничким именом."
+	"apihelp-pagetriagestats-param-username": "Укључи само странице направљене било којим од следећих корисничких имена."
 }
