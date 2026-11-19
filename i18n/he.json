@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"A100Star",
 			"Amire80",
 			"Erelon",
 			"Ex-Diktator",
@@ -172,7 +173,7 @@
 	"pagetriage-auto-refresh-list": "רענון אוטומטי",
 	"pagetriage-tag-count-total": "{{PLURAL:$1|נבחר תג אחד|נבחרו $1 תגים}}",
 	"pagetriage-button-add-tag": "הוספת התגים שנבחרו",
-	"pagetriage-button-add-tag-number": "הוספת $1 תגים שנבחרו",
+	"pagetriage-button-add-tag-number": "הוספת {{PLURAL:$1|תג אחד שנבחר|$1 תגים שנבחרו}}",
 	"pagetriage-button-add-parameters": "הוספת פרמטרים",
 	"pagetriage-button-add-details": "הוספת פרטים",
 	"pagetriage-button-edit-details": "עריכת פרטים",
@@ -359,7 +360,7 @@
 	"apihelp-pagetriagelist-param-non_autoconfirmed_users": "האם להציג רק דפים שנוצרו על־ידי משתמשים שאינם ותיקים.",
 	"apihelp-pagetriagelist-param-learners": "האם להציג רק דפים שנוצרו על־ידי משתמשים שנהיו ותיקים לאחרונה.",
 	"apihelp-pagetriagelist-param-blocked_users": "האם להציג רק דפים שנוצרו על־ידי משתמשים חסומים.",
-	"apihelp-pagetriagelist-param-username": "להציג רק דפים שנוצרו על־ידי שם משתמש.",
+	"apihelp-pagetriagelist-param-username": "להציג רק דפים שנוצרו על־ידי אחד משמות המשתמש האלה.",
 	"apihelp-pagetriagelist-param-date_range_from": "להציג רק דפים שנוצרו בתאריך הזה ולאחריו.",
 	"apihelp-pagetriagelist-param-date_range_to": "להציג רק דפים שנוצרו בתאריך הזה ולפניו.",
 	"apihelp-pagetriagelist-param-keyword": "להציג רק דפים עם מילת המפתח הזאת בקטע הקוד.",
@@ -392,7 +393,7 @@
 	"apihelp-pagetriagestats-param-non_autoconfirmed_users": "האם לכלול רק דפים שנוצרו על־ידי משתמשים שאינם ותיקים.",
 	"apihelp-pagetriagestats-param-learners": "האם לכלול רק דפים שנוצרו על־ידי משתמשים שנהיו ותיקים לאחרונה.",
 	"apihelp-pagetriagestats-param-blocked_users": "האם לכלול רק דפים שנוצרו על־ידי משתמשים חסומים.",
-	"apihelp-pagetriagestats-param-username": "לכלול רק דפים שנוצרו על־ידי שם משתמש.",
+	"apihelp-pagetriagestats-param-username": "לכלול רק דפים שנוצרו על־ידי אחד משמות המשתמש האלה.",
 	"apihelp-pagetriagestats-param-date_range_from": "לכלול רק דפים שנוצרו בתאריך הזה ולאחריו.",
 	"apihelp-pagetriagestats-param-date_range_to": "לכלול רק דפים שנוצרו בתאריך הזה ולפניו.",
 	"apihelp-pagetriagestats-param-keyword": "לכלול רק דפים עם מילת המפתח הזאת בקטע הקוד.",
