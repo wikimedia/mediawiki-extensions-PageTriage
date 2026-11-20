@@ -171,7 +171,7 @@
 	"pagetriage-auto-refresh-list": "自動重新整理",
 	"pagetriage-tag-count-total": "$1個標籤已選擇",
 	"pagetriage-button-add-tag": "添加已選擇的標籤",
-	"pagetriage-button-add-tag-number": "添加$1個已選擇的標籤",
+	"pagetriage-button-add-tag-number": "添加$1個已選擇的{{PLURAL:$1|標籤}}",
 	"pagetriage-button-add-parameters": "添加參數",
 	"pagetriage-button-add-details": "添加詳情",
 	"pagetriage-button-edit-details": "編輯詳細資料",

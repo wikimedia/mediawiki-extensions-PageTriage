@@ -18,7 +18,8 @@
 			"המקיסט",
 			"חיים",
 			"ערן",
-			"Neriah"
+			"Neriah",
+			"A100Star"
 		]
 	},
 	"pagetriage": "מיון דפים חדשים",
@@ -172,7 +173,7 @@
 	"pagetriage-auto-refresh-list": "רענון אוטומטי",
 	"pagetriage-tag-count-total": "{{PLURAL:$1|נבחר תג אחד|נבחרו $1 תגים}}",
 	"pagetriage-button-add-tag": "הוספת התגים שנבחרו",
-	"pagetriage-button-add-tag-number": "הוספת $1 תגים שנבחרו",
+	"pagetriage-button-add-tag-number": "הוספת {{PLURAL:$1|תג אחד שנבחר|$1 תגים שנבחרו}}",
 	"pagetriage-button-add-parameters": "הוספת פרמטרים",
 	"pagetriage-button-add-details": "הוספת פרטים",
 	"pagetriage-button-edit-details": "עריכת פרטים",
