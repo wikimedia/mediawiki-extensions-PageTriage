@@ -132,11 +132,42 @@ abstract class PageTriageTestCase extends ApiTestCase {
 		?UserIdentity $user = null,
 		?string $text = 'some content'
 	) {
+		return $this->makePageWithMetadata( $title, $this->draftNsId, $draftQualityClass, $copyvio, $user, $text );
+	}
+
+	/**
+	 * Create a mainspace page and calculate its PageTriage metadata immediately.
+	 *
+	 * @param string $title Page title. Do not include the namespace.
+	 * @param false|int $draftQualityClass Related to Extension:ORES.
+	 * @param bool $copyvio Whether or not to set the copyvio pagetriage_page_tag.
+	 * @param ?UserIdentity $user If null, will create a random user for you.
+	 * @param string|null $text Wikitext of the page.
+	 * @return int page_id
+	 */
+	protected function makeMainspacePage(
+		string $title,
+		false|int $draftQualityClass = false,
+		bool $copyvio = false,
+		?UserIdentity $user = null,
+		?string $text = 'some content'
+	) {
+		return $this->makePageWithMetadata( $title, NS_MAIN, $draftQualityClass, $copyvio, $user, $text );
+	}
+
+	private function makePageWithMetadata(
+		string $title,
+		int $namespace,
+		false|int $draftQualityClass,
+		bool $copyvio,
+		?UserIdentity $user,
+		?string $text
+	): int {
 		if ( !$user ) {
 			$user = static::getTestUser()->getUser();
 		}
 
-		$pageAndTitle = $this->insertPage( $title, $text, $this->draftNsId, $user );
+		$pageAndTitle = $this->insertPage( $title, $text, $namespace, $user );
 		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $pageAndTitle[ 'title' ] );
 		$revId = $page->getLatest();
 		if ( $draftQualityClass ) {
