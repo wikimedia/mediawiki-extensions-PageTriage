@@ -67,7 +67,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	}
 
 	public function testSuccessfulReviewAction() {
-		$pageId = $this->makeDraft( 'Test' );
+		$pageId = $this->makeMainspacePage( 'Test' );
 
 		[ $result, , ] = $this->doApiRequestWithToken(
 			[
@@ -84,7 +84,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	}
 
 	public function testBlockedUserReview() {
-		$pageId = $this->makeDraft( 'Test' );
+		$pageId = $this->makeMainspacePage( 'Test' );
 
 		$this->expectException( ApiUsageException::class );
 		[ $result, , ] = $this->doApiRequestWithToken(
@@ -101,7 +101,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	}
 
 	public function testBlockedUserUnReview() {
-		$pageId = $this->makeDraft( 'Test' );
+		$pageId = $this->makeMainspacePage( 'Test' );
 
 		$this->doApiRequestWithToken(
 			[
@@ -130,7 +130,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	}
 
 	public function testNoChangeReviewAction() {
-		$pageId = $this->makeDraft( 'Test ' );
+		$pageId = $this->makeMainspacePage( 'Test ' );
 
 		[ $result ] = $this->doApiRequestWithToken(
 			[
@@ -172,7 +172,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	}
 
 	public function testPermissionError() {
-		$pageId = $this->makeDraft( 'Test ' );
+		$pageId = $this->makeMainspacePage( 'Test ' );
 
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'You don\'t have permission to mark others\' edits as patrolled.' );
@@ -194,7 +194,7 @@ class ApiPageTriageActionTest extends PageTriageTestCase {
 	}
 
 	public function testPermissionErrorAnon() {
-		$pageId = $this->makeDraft( 'Test' );
+		$pageId = $this->makeMainspacePage( 'Test' );
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'You don\'t have permission to mark others\' edits as patrolled.' );
 		$this->doApiRequestWithToken(

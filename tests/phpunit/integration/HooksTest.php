@@ -173,7 +173,7 @@ class HooksTest extends PageTriageTestCase {
 
 		$this->assertFalse( (bool)$user->getUser()->getBlock(), 'User is not blocked' );
 
-		$pageId = $this->makeDraft( __METHOD__, false, false, $user->getUser() );
+		$pageId = $this->makeMainspacePage( __METHOD__, false, false, $user->getUser() );
 		$this->assertTrue( (bool)$pageId, 'Page successfully created' );
 
 		$metadata = ArticleMetadata::getMetadataForArticles( [ $pageId ] );
