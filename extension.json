@@ -863,9 +863,11 @@
 			"value": 180
 		},
 		"PageTriageMaxAge": {
+			"description": "Maximum age in days (exclusive) for PageTriage to apply noindex to unreviewed pages when $wgPageTriageNoIndexUnreviewedNewArticles is enabled. Set to null, 0, or false for no age limit. See also https://www.mediawiki.org/wiki/Extension:PageTriage#NOINDEX",
 			"value": 90
 		},
 		"PageTriageMaxNoIndexAge": {
+			"description": "Maximum age in days (exclusive) for PageTriage to apply noindex to pages containing the __NOINDEX__ magic word. Set to null, 0, or false for no age limit. Other mechanisms may still apply noindex. See also https://www.mediawiki.org/wiki/Extension:PageTriage#NOINDEX",
 			"value": 90
 		},
 		"PageTriageNoIndexUnreviewedNewArticles": {
