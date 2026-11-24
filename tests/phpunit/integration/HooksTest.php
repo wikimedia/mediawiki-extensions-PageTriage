@@ -5,12 +5,18 @@ namespace MediaWiki\Extension\PageTriage\Test;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Content\ContentHandler;
 use MediaWiki\Extension\PageTriage\ArticleMetadata;
+use MediaWiki\Extension\PageTriage\Hooks;
 use MediaWiki\Extension\PageTriage\PageTriage;
 use MediaWiki\Extension\PageTriage\PageTriageUtil;
 use MediaWiki\Extension\PageTriage\QueueRecord;
+use MediaWiki\Page\Article;
+use MediaWiki\Page\WikiPage;
+use MediaWiki\Parser\ParserOutput;
 use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
+use MWTimestamp;
+use ReflectionMethod;
 
 /**
  * Tests the Hooks class.
@@ -204,5 +210,184 @@ class HooksTest extends PageTriageTestCase {
 			$metadata[ $pageId ]['user_block_status'],
 			'Page author is marked as blocked in PageTriage system'
 		);
+	}
+
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldShowNoIndex()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldNoIndexForNewArticleReasons()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldNoIndexForMagicWordReasons()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::isNewEnoughToNoIndex()
+	 */
+	public function testShouldShowNoIndexForNewUnreviewedArticle() {
+		$this->overrideConfigValues( [
+			'PageTriageNoIndexUnreviewedNewArticles' => true,
+			'PageTriageMaxAge' => 90,
+		] );
+		$pageId = $this->makeMainspacePage( __METHOD__ );
+		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId );
+		$article = $this->createMock( Article::class );
+		$article->method( 'getPage' )->willReturn( $page );
+		$article->expects( $this->never() )->method( 'getParserOutput' );
+
+		$this->assertTrue( $this->callShouldShowNoIndex( $article ) );
+	}
+
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldShowNoIndex()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldNoIndexForNewArticleReasons()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldNoIndexForMagicWordReasons()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::isNewEnoughToNoIndex()
+	 */
+	public function testShouldNotShowNoIndexForReviewedArticle() {
+		$this->overrideConfigValues( [
+			'PageTriageNoIndexUnreviewedNewArticles' => true,
+			'PageTriageMaxAge' => 90,
+		] );
+		$pageId = $this->makeMainspacePage( __METHOD__ );
+		$pageTriage = new PageTriage( $pageId );
+		$this->assertTrue( $pageTriage->setTriageStatus( QueueRecord::REVIEW_STATUS_REVIEWED ) );
+		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId );
+		$article = $this->newArticleMock( $page, false );
+
+		$this->assertFalse( $this->callShouldShowNoIndex( $article ) );
+	}
+
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldShowNoIndex()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldNoIndexForNewArticleReasons()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldNoIndexForMagicWordReasons()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::isNewEnoughToNoIndex()
+	 * @dataProvider provideUnreviewedArticleAge
+	 */
+	public function testShouldShowNoIndexForUnreviewedArticleAge( string $created, bool $expected ) {
+		$this->overrideConfigValues( [
+			'PageTriageNoIndexUnreviewedNewArticles' => true,
+			'PageTriageMaxAge' => 1,
+		] );
+		$pageId = $this->makeMainspacePage( __METHOD__ );
+		$this->getDb()->newUpdateQueryBuilder()
+			->update( 'pagetriage_page' )
+			->set( [ 'ptrp_created' => $this->getDb()->timestamp( $created ) ] )
+			->where( [ 'ptrp_page_id' => $pageId ] )
+			->caller( __METHOD__ )
+			->execute();
+		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId );
+		$article = $this->newArticleMock( $page, false );
+		MWTimestamp::setFakeTime( '20240102000000' );
+
+		$this->assertSame( $expected, $this->callShouldShowNoIndex( $article ) );
+	}
+
+	public static function provideUnreviewedArticleAge() {
+		return [
+			'just below the age limit' => [ '20240101000001', true ],
+			'at the age limit' => [ '20240101000000', false ],
+		];
+	}
+
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldShowNoIndex()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldNoIndexForNewArticleReasons()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldNoIndexForMagicWordReasons()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::isNewEnoughToNoIndex()
+	 */
+	public function testShouldNotShowNoIndexWhenCreationDateIsUnavailable() {
+		$this->overrideConfigValues( [
+			'PageTriageNoIndexUnreviewedNewArticles' => false,
+			'PageTriageMaxNoIndexAge' => 1,
+		] );
+		$pageId = $this->makeMainspacePage( __METHOD__ );
+		$this->getDb()->newDeleteQueryBuilder()
+			->deleteFrom( 'pagetriage_page' )
+			->where( [ 'ptrp_page_id' => $pageId ] )
+			->caller( __METHOD__ )
+			->execute();
+		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId );
+		$parserOutput = new ParserOutput();
+		$parserOutput->setPageProperty( 'noindex', '' );
+		$article = $this->newArticleMock( $page, $parserOutput );
+
+		$this->assertFalse( $this->callShouldShowNoIndex( $article ) );
+	}
+
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldShowNoIndex()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldNoIndexForNewArticleReasons()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldNoIndexForMagicWordReasons()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::isNewEnoughToNoIndex()
+	 * @dataProvider provideNoIndexWithoutExistingPage
+	 */
+	public function testShouldNotShowNoIndexWithoutExistingPage( ?bool $hasNoIndex ) {
+		$this->overrideConfigValues( [
+			'PageTriageNoIndexUnreviewedNewArticles' => false,
+		] );
+		$parserOutput = $hasNoIndex === null ? false : new ParserOutput();
+		if ( $hasNoIndex ) {
+			$parserOutput->setPageProperty( 'noindex', '' );
+		}
+		$article = $this->newArticleMock( $this->newPageMock( 0 ), $parserOutput );
+
+		$this->assertFalse( $this->callShouldShowNoIndex( $article ) );
+	}
+
+	public static function provideNoIndexWithoutExistingPage() {
+		return [
+			'without parser output' => [ null ],
+			'without magic word' => [ false ],
+			'magic word on page without ID' => [ true ],
+		];
+	}
+
+	/**
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldShowNoIndex()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldNoIndexForNewArticleReasons()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::shouldNoIndexForMagicWordReasons()
+	 * @covers \MediaWiki\Extension\PageTriage\Hooks::isNewEnoughToNoIndex()
+	 */
+	public function testShouldShowNoIndexForRecentArticleWithMagicWord() {
+		$this->overrideConfigValues( [
+			'PageTriageNoIndexUnreviewedNewArticles' => false,
+			'PageTriageMaxNoIndexAge' => null,
+		] );
+		$pageId = $this->makeMainspacePage( __METHOD__ );
+		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromID( $pageId );
+		$parserOutput = new ParserOutput();
+		$parserOutput->setPageProperty( 'noindex', '' );
+		$article = $this->newArticleMock( $page, $parserOutput );
+
+		$this->assertTrue( $this->callShouldShowNoIndex( $article ) );
+	}
+
+	private function newPageMock( int $pageId ): WikiPage {
+		$page = $this->createMock( WikiPage::class );
+		$page->method( 'getId' )->willReturn( $pageId );
+		return $page;
+	}
+
+	private function newArticleMock( WikiPage $page, ParserOutput|false $parserOutput ): Article {
+		$article = $this->createMock( Article::class );
+		$article->method( 'getPage' )->willReturn( $page );
+		$article->method( 'getParserOutput' )->willReturn( $parserOutput );
+		return $article;
+	}
+
+	private function callShouldShowNoIndex( Article $article ): bool {
+		$services = $this->getServiceContainer();
+		$hooks = new Hooks(
+			$services->getMainConfig(),
+			$services->getRevisionLookup(),
+			$services->getStatsFactory(),
+			$services->getPermissionManager(),
+			$services->getRevisionStore(),
+			$services->getTitleFactory(),
+			$services->getUserOptionsManager(),
+			$services->getService( 'PageTriageQueueManager' ),
+			$services->getWikiPageFactory(),
+			$services->getService( 'PageTriageQueueLookup' ),
+			$services->getUserFactory(),
+			$services->getWANObjectCache()
+		);
+		$method = new ReflectionMethod( Hooks::class, 'shouldShowNoIndex' );
+		return $method->invoke( $hooks, $article );
 	}
 }
