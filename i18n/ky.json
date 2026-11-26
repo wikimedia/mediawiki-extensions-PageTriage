@@ -12,6 +12,8 @@
 	"pagetriage-author-blocked": "Бөгөттөлгөн",
 	"pagetriage-author-bot": "Бот",
 	"pagetriage-user-creation-dateformat": "ЖЖЖЖ-АА-КК",
+	"pagetriage-active-filters": "Колдонуудагы чыпкалар:",
+	"pagetriage-filter-predicted-issues-spam": "Спам",
 	"pagetriage-filter-article": "Макала",
 	"pagetriage-filter-username": "Колдонуучунун аты",
 	"pagetriage-filter-stat-bots": "Боттор тарабынан",
